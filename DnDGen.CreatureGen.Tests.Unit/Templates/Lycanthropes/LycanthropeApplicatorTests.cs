@@ -60,16 +60,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             (CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural, CreatureConstants.Wolf_Dire),
         };
 
-        private static IEnumerable AllLycanthropeTemplates
-        {
-            get
-            {
-                foreach (var template in templates)
-                {
-                    yield return new TestCaseData(template.Template, template.Animal);
-                }
-            }
-        }
+        private static IEnumerable AllLycanthropeTemplates => templates.Select(t => new TestCaseData(t.Template, t.Animal));
 
         [SetUp]
         public void Setup()
@@ -86,20 +77,160 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             mockSpeedsGenerator = new Mock<ISpeedsGenerator>();
 
             applicators = new Dictionary<string, TemplateApplicator>();
-            applicators[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted] = new LycanthropeBrownBearAfflictedApplicator();
-            applicators[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural] = new LycanthropeBrownBearNaturalApplicator();
-            applicators[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted] = new LycanthropeBoarAfflictedApplicator();
-            applicators[CreatureConstants.Templates.Lycanthrope_Boar_Natural] = new LycanthropeBoarNaturalApplicator();
-            applicators[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted] = new LycanthropeDireBoarAfflictedApplicator();
-            applicators[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural] = new LycanthropeDireBoarNaturalApplicator();
-            applicators[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted] = new LycanthropeDireRatAfflictedApplicator();
-            applicators[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural] = new LycanthropeDireRatNaturalApplicator();
-            applicators[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted] = new LycanthropeTigerAfflictedApplicator();
-            applicators[CreatureConstants.Templates.Lycanthrope_Tiger_Natural] = new LycanthropeTigerNaturalApplicator();
-            applicators[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted] = new LycanthropeWolfAfflictedApplicator();
-            applicators[CreatureConstants.Templates.Lycanthrope_Wolf_Natural] = new LycanthropeWolfNaturalApplicator();
-            applicators[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted] = new LycanthropeDireWolfAfflictedApplicator();
-            applicators[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural] = new LycanthropeDireWolfNaturalApplicator();
+            applicators[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted] = new LycanthropeBrownBearAfflictedApplicator(
+                mockCollectionSelector.Object,
+                mockCreatureDataSelector.Object,
+                mockHitPointsGenerator.Object,
+                mockDice.Object,
+                mockTypeAndAmountSelector.Object,
+                mockFeatsGenerator.Object,
+                mockAttacksGenerator.Object,
+                mockSavesGenerator.Object,
+                mockSkillsGenerator.Object,
+                mockSpeedsGenerator.Object);
+            applicators[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural] = new LycanthropeBrownBearNaturalApplicator(
+                mockCollectionSelector.Object,
+                mockCreatureDataSelector.Object,
+                mockHitPointsGenerator.Object,
+                mockDice.Object,
+                mockTypeAndAmountSelector.Object,
+                mockFeatsGenerator.Object,
+                mockAttacksGenerator.Object,
+                mockSavesGenerator.Object,
+                mockSkillsGenerator.Object,
+                mockSpeedsGenerator.Object);
+            applicators[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted] = new LycanthropeBoarAfflictedApplicator(
+                mockCollectionSelector.Object,
+                mockCreatureDataSelector.Object,
+                mockHitPointsGenerator.Object,
+                mockDice.Object,
+                mockTypeAndAmountSelector.Object,
+                mockFeatsGenerator.Object,
+                mockAttacksGenerator.Object,
+                mockSavesGenerator.Object,
+                mockSkillsGenerator.Object,
+                mockSpeedsGenerator.Object);
+            applicators[CreatureConstants.Templates.Lycanthrope_Boar_Natural] = new LycanthropeBoarNaturalApplicator(
+                mockCollectionSelector.Object,
+                mockCreatureDataSelector.Object,
+                mockHitPointsGenerator.Object,
+                mockDice.Object,
+                mockTypeAndAmountSelector.Object,
+                mockFeatsGenerator.Object,
+                mockAttacksGenerator.Object,
+                mockSavesGenerator.Object,
+                mockSkillsGenerator.Object,
+                mockSpeedsGenerator.Object);
+            applicators[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted] = new LycanthropeDireBoarAfflictedApplicator(
+                mockCollectionSelector.Object,
+                mockCreatureDataSelector.Object,
+                mockHitPointsGenerator.Object,
+                mockDice.Object,
+                mockTypeAndAmountSelector.Object,
+                mockFeatsGenerator.Object,
+                mockAttacksGenerator.Object,
+                mockSavesGenerator.Object,
+                mockSkillsGenerator.Object,
+                mockSpeedsGenerator.Object);
+            applicators[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural] = new LycanthropeDireBoarNaturalApplicator(
+                mockCollectionSelector.Object,
+                mockCreatureDataSelector.Object,
+                mockHitPointsGenerator.Object,
+                mockDice.Object,
+                mockTypeAndAmountSelector.Object,
+                mockFeatsGenerator.Object,
+                mockAttacksGenerator.Object,
+                mockSavesGenerator.Object,
+                mockSkillsGenerator.Object,
+                mockSpeedsGenerator.Object);
+            applicators[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted] = new LycanthropeDireRatAfflictedApplicator(
+                mockCollectionSelector.Object,
+                mockCreatureDataSelector.Object,
+                mockHitPointsGenerator.Object,
+                mockDice.Object,
+                mockTypeAndAmountSelector.Object,
+                mockFeatsGenerator.Object,
+                mockAttacksGenerator.Object,
+                mockSavesGenerator.Object,
+                mockSkillsGenerator.Object,
+                mockSpeedsGenerator.Object);
+            applicators[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural] = new LycanthropeDireRatNaturalApplicator(
+                mockCollectionSelector.Object,
+                mockCreatureDataSelector.Object,
+                mockHitPointsGenerator.Object,
+                mockDice.Object,
+                mockTypeAndAmountSelector.Object,
+                mockFeatsGenerator.Object,
+                mockAttacksGenerator.Object,
+                mockSavesGenerator.Object,
+                mockSkillsGenerator.Object,
+                mockSpeedsGenerator.Object);
+            applicators[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted] = new LycanthropeTigerAfflictedApplicator(
+                mockCollectionSelector.Object,
+                mockCreatureDataSelector.Object,
+                mockHitPointsGenerator.Object,
+                mockDice.Object,
+                mockTypeAndAmountSelector.Object,
+                mockFeatsGenerator.Object,
+                mockAttacksGenerator.Object,
+                mockSavesGenerator.Object,
+                mockSkillsGenerator.Object,
+                mockSpeedsGenerator.Object);
+            applicators[CreatureConstants.Templates.Lycanthrope_Tiger_Natural] = new LycanthropeTigerNaturalApplicator(
+                mockCollectionSelector.Object,
+                mockCreatureDataSelector.Object,
+                mockHitPointsGenerator.Object,
+                mockDice.Object,
+                mockTypeAndAmountSelector.Object,
+                mockFeatsGenerator.Object,
+                mockAttacksGenerator.Object,
+                mockSavesGenerator.Object,
+                mockSkillsGenerator.Object,
+                mockSpeedsGenerator.Object);
+            applicators[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted] = new LycanthropeWolfAfflictedApplicator(
+                mockCollectionSelector.Object,
+                mockCreatureDataSelector.Object,
+                mockHitPointsGenerator.Object,
+                mockDice.Object,
+                mockTypeAndAmountSelector.Object,
+                mockFeatsGenerator.Object,
+                mockAttacksGenerator.Object,
+                mockSavesGenerator.Object,
+                mockSkillsGenerator.Object,
+                mockSpeedsGenerator.Object);
+            applicators[CreatureConstants.Templates.Lycanthrope_Wolf_Natural] = new LycanthropeWolfNaturalApplicator(
+                mockCollectionSelector.Object,
+                mockCreatureDataSelector.Object,
+                mockHitPointsGenerator.Object,
+                mockDice.Object,
+                mockTypeAndAmountSelector.Object,
+                mockFeatsGenerator.Object,
+                mockAttacksGenerator.Object,
+                mockSavesGenerator.Object,
+                mockSkillsGenerator.Object,
+                mockSpeedsGenerator.Object);
+            applicators[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted] = new LycanthropeDireWolfAfflictedApplicator(
+                mockCollectionSelector.Object,
+                mockCreatureDataSelector.Object,
+                mockHitPointsGenerator.Object,
+                mockDice.Object,
+                mockTypeAndAmountSelector.Object,
+                mockFeatsGenerator.Object,
+                mockAttacksGenerator.Object,
+                mockSavesGenerator.Object,
+                mockSkillsGenerator.Object,
+                mockSpeedsGenerator.Object);
+            applicators[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural] = new LycanthropeDireWolfNaturalApplicator(
+                mockCollectionSelector.Object,
+                mockCreatureDataSelector.Object,
+                mockHitPointsGenerator.Object,
+                mockDice.Object,
+                mockTypeAndAmountSelector.Object,
+                mockFeatsGenerator.Object,
+                mockAttacksGenerator.Object,
+                mockSavesGenerator.Object,
+                mockSkillsGenerator.Object,
+                mockSpeedsGenerator.Object);
 
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
@@ -217,10 +348,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         }
 
         [TestCaseSource(nameof(AllLycanthropeTemplates))]
-        public void ApplyTo_AddAnimalHitPoints(string template, string animal)
+        public void ApplyTo_AddAnimalHitPoints_NoConstitutionBonus(string template, string animal)
         {
+            baseCreature.Abilities[AbilityConstants.Constitution].BaseScore = 10;
+            baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
+
             var animalHitPoints = new HitPoints();
-            animalHitPoints.HitDice = new List<HitDice>();
             animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
 
             mockCreatureDataSelector
@@ -237,19 +371,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Returns(animalHitPoints);
 
             mockDice
-                .Setup(d => d.Roll(9266).d(90210).AsIndividualRolls())
+                .Setup(d => d.Roll(9266).d(90210).AsIndividualRolls<int>())
                 .Returns(new[] { 1337 });
 
             mockDice
                 .Setup(d => d.Roll(9266).d(90210).AsPotentialAverage())
-                .Returns(1336);
+                .Returns(133600);
 
             mockDice
-                .Setup(d => d.Roll(42).d(600).AsIndividualRolls())
+                .Setup(d => d.Roll(baseCreature.HitPoints.HitDice[0].RoundedQuantity).d(baseCreature.HitPoints.HitDice[0].HitDie).AsIndividualRolls<int>())
                 .Returns(new[] { 96 });
 
             mockDice
-                .Setup(d => d.Roll(42).d(600).AsPotentialAverage())
+                .Setup(d => d.Roll(baseCreature.HitPoints.HitDice[0].RoundedQuantity).d(baseCreature.HitPoints.HitDice[0].HitDie).AsPotentialAverage())
                 .Returns(783);
 
             var creature = applicators[template].ApplyTo(baseCreature);
@@ -257,21 +391,131 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
                 .And.Contains(animalHitPoints.HitDice[0]));
             Assert.That(creature.HitPoints.Constitution, Is.EqualTo(baseCreature.Abilities[AbilityConstants.Constitution]));
-            Assert.That(creature.HitPoints.DefaultRoll, Is.EqualTo("9266d90210+42d600"));
-            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(1336 + 783));
-            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266 + 42));
-            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(9266 + 42));
+
+            Assert.That(creature.HitPoints.DefaultRoll, Is.EqualTo($"{creature.HitPoints.HitDice[0].DefaultRoll}+{animalHitPoints.HitDice[0].DefaultRoll}"));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(133600 + 783));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266 + baseCreature.HitPoints.HitDice[0].Quantity));
+            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(9266 + baseCreature.HitPoints.HitDice[0].RoundedQuantity));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(1337 + 96));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public void ApplyTo_AddAnimalHitPoints_WithConstitutionBonus(string template, string animal)
+        {
+            baseCreature.Abilities[AbilityConstants.Constitution].BaseScore = 14;
+            baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
+
+            var animalHitPoints = new HitPoints();
+            animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(animal))
+                .Returns(new CreatureDataSelection { Size = "animal size" });
+
+            mockHitPointsGenerator
+                .Setup(g => g.GenerateFor(
+                    animal,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Animal),
+                    baseCreature.Abilities[AbilityConstants.Constitution],
+                    "animal size",
+                    0))
+                .Returns(animalHitPoints);
+
+            mockDice
+                .Setup(d => d.Roll(9266).d(90210).AsIndividualRolls<int>())
+                .Returns(new[] { 1337 });
+
+            mockDice
+                .Setup(d => d.Roll(9266).d(90210).AsPotentialAverage())
+                .Returns(133600);
+
+            mockDice
+                .Setup(d => d.Roll(baseCreature.HitPoints.HitDice[0].RoundedQuantity).d(baseCreature.HitPoints.HitDice[0].HitDie).AsIndividualRolls<int>())
+                .Returns(new[] { 96 });
+
+            mockDice
+                .Setup(d => d.Roll(baseCreature.HitPoints.HitDice[0].RoundedQuantity).d(baseCreature.HitPoints.HitDice[0].HitDie).AsPotentialAverage())
+                .Returns(783);
+
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
+                .And.Contains(animalHitPoints.HitDice[0]));
+            Assert.That(creature.HitPoints.Constitution, Is.EqualTo(baseCreature.Abilities[AbilityConstants.Constitution]));
+
+            var bonus = (9266 + creature.HitPoints.HitDice[0].RoundedQuantity) * 2;
+            Assert.That(creature.HitPoints.DefaultRoll, Is.EqualTo($"{creature.HitPoints.HitDice[0].DefaultRoll}+{animalHitPoints.HitDice[0].DefaultRoll}+{bonus}"));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(133600 + 783 + bonus));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266 + baseCreature.HitPoints.HitDice[0].Quantity));
+            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(9266 + baseCreature.HitPoints.HitDice[0].RoundedQuantity));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(1337 + 96 + 4));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public void ApplyTo_AddAnimalHitPoints_NegativeConstitutionBonus(string template, string animal)
+        {
+            baseCreature.Abilities[AbilityConstants.Constitution].BaseScore = 6;
+            baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
+
+            var animalHitPoints = new HitPoints();
+            animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(animal))
+                .Returns(new CreatureDataSelection { Size = "animal size" });
+
+            mockHitPointsGenerator
+                .Setup(g => g.GenerateFor(
+                    animal,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Animal),
+                    baseCreature.Abilities[AbilityConstants.Constitution],
+                    "animal size",
+                    0))
+                .Returns(animalHitPoints);
+
+            mockDice
+                .Setup(d => d.Roll(9266).d(90210).AsIndividualRolls<int>())
+                .Returns(new[] { 1337 });
+
+            mockDice
+                .Setup(d => d.Roll(9266).d(90210).AsPotentialAverage())
+                .Returns(133600);
+
+            mockDice
+                .Setup(d => d.Roll(baseCreature.HitPoints.HitDice[0].RoundedQuantity).d(baseCreature.HitPoints.HitDice[0].HitDie).AsIndividualRolls<int>())
+                .Returns(new[] { 96 });
+
+            mockDice
+                .Setup(d => d.Roll(baseCreature.HitPoints.HitDice[0].RoundedQuantity).d(baseCreature.HitPoints.HitDice[0].HitDie).AsPotentialAverage())
+                .Returns(783);
+
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
+                .And.Contains(animalHitPoints.HitDice[0]));
+            Assert.That(creature.HitPoints.Constitution, Is.EqualTo(baseCreature.Abilities[AbilityConstants.Constitution]));
+
+            var bonus = (9266 + creature.HitPoints.HitDice[0].RoundedQuantity) * -2;
+            Assert.That(creature.HitPoints.DefaultRoll, Is.EqualTo($"{creature.HitPoints.HitDice[0].DefaultRoll}+{animalHitPoints.HitDice[0].DefaultRoll}{bonus}"));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(133600 + 783 + bonus));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266 + baseCreature.HitPoints.HitDice[0].Quantity));
+            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(9266 + baseCreature.HitPoints.HitDice[0].RoundedQuantity));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(1337 + 96 - 4));
         }
 
         [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_AddAnimalHitPoints_WithConditionalBonus(string template, string animal)
         {
+            baseCreature.Abilities[AbilityConstants.Constitution].BaseScore = 10;
+            baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
+
             baseCreature.HitPoints.HitDice[0].Quantity = 9266;
             baseCreature.HitPoints.HitDice[0].HitDie = 90210;
 
             var animalHitPoints = new HitPoints();
-            animalHitPoints.HitDice = new List<HitDice>();
             animalHitPoints.HitDice.Add(new HitDice { Quantity = 42, HitDie = 600 });
 
             mockCreatureDataSelector
@@ -288,15 +532,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Returns(animalHitPoints);
 
             mockDice
-                .Setup(d => d.Roll(9266).d(90210).AsIndividualRolls())
+                .Setup(d => d.Roll(9266).d(90210).AsIndividualRolls<int>())
                 .Returns(new[] { 1337 });
 
             mockDice
                 .Setup(d => d.Roll(9266).d(90210).AsPotentialAverage())
-                .Returns(1336);
+                .Returns(133600);
 
             mockDice
-                .Setup(d => d.Roll(42).d(600).AsIndividualRolls())
+                .Setup(d => d.Roll(42).d(600).AsIndividualRolls<int>())
                 .Returns(new[] { 96 });
 
             mockDice
@@ -320,8 +564,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
                 .And.Contains(animalHitPoints.HitDice[0]));
             Assert.That(creature.HitPoints.Constitution, Is.EqualTo(baseCreature.Abilities[AbilityConstants.Constitution]));
-            Assert.That(creature.HitPoints.DefaultRoll, Is.EqualTo("9266d90210+42d600"));
-            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(1336 + 783));
+            Assert.That(creature.HitPoints.DefaultRoll, Is.EqualTo($"9266d90210+42d600"));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(133600 + 783));
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266 + 42));
             Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(9266 + 42));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(1337 + 96));
@@ -336,7 +580,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         public void ApplyTo_AddAnimalHitPoints_WithFeats(string template, string animal)
         {
             var animalHitPoints = new HitPoints();
-            animalHitPoints.HitDice = new List<HitDice>();
             animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
 
             mockCreatureDataSelector
@@ -353,7 +596,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Returns(animalHitPoints);
 
             mockDice
-                .Setup(d => d.Roll(9266).d(90210).AsIndividualRolls())
+                .Setup(d => d.Roll(9266).d(90210).AsIndividualRolls<int>())
                 .Returns(new[] { 1337 });
 
             mockDice
@@ -361,11 +604,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Returns(1336);
 
             mockDice
-                .Setup(d => d.Roll(42).d(600).AsIndividualRolls())
+                .Setup(d => d.Roll(baseCreature.HitPoints.HitDice[0].RoundedQuantity).d(baseCreature.HitPoints.HitDice[0].HitDie).AsIndividualRolls<int>())
                 .Returns(new[] { 96 });
 
             mockDice
-                .Setup(d => d.Roll(42).d(600).AsPotentialAverage())
+                .Setup(d => d.Roll(baseCreature.HitPoints.HitDice[0].RoundedQuantity).d(baseCreature.HitPoints.HitDice[0].HitDie).AsPotentialAverage())
                 .Returns(783);
 
             var toughness = new Feat { Name = FeatConstants.Toughness, Power = 8245 };
@@ -525,8 +768,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.BaseAttackBonus = 600;
 
             var animalHitPoints = new HitPoints();
-            animalHitPoints.HitDice = new List<HitDice>();
             animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
+
+            mockDice
+                .Setup(d => d.Roll(9266).d(90210).AsIndividualRolls<int>())
+                .Returns(new[] { 1337 });
+
+            mockDice
+                .Setup(d => d.Roll(9266).d(90210).AsPotentialAverage())
+                .Returns(8245);
+
+            mockDice
+                .Setup(d => d.Roll(baseCreature.HitPoints.HitDice[0].RoundedQuantity).d(baseCreature.HitPoints.HitDice[0].HitDie).AsIndividualRolls<int>())
+                .Returns(new[] { 96 });
+
+            mockDice
+                .Setup(d => d.Roll(baseCreature.HitPoints.HitDice[0].RoundedQuantity).d(baseCreature.HitPoints.HitDice[0].HitDie).AsPotentialAverage())
+                .Returns(783);
 
             mockCreatureDataSelector
                 .Setup(s => s.SelectFor(animal))
@@ -558,8 +816,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.BaseAttackBonus = 600;
 
             var animalHitPoints = new HitPoints();
-            animalHitPoints.HitDice = new List<HitDice>();
             animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
+
+            mockDice
+                .Setup(d => d.Roll(9266).d(90210).AsIndividualRolls<int>())
+                .Returns(new[] { 1337 });
+
+            mockDice
+                .Setup(d => d.Roll(9266).d(90210).AsPotentialAverage())
+                .Returns(8245);
+
+            mockDice
+                .Setup(d => d.Roll(baseCreature.HitPoints.HitDice[0].RoundedQuantity).d(baseCreature.HitPoints.HitDice[0].HitDie).AsIndividualRolls<int>())
+                .Returns(new[] { 96 });
+
+            mockDice
+                .Setup(d => d.Roll(baseCreature.HitPoints.HitDice[0].RoundedQuantity).d(baseCreature.HitPoints.HitDice[0].HitDie).AsPotentialAverage())
+                .Returns(783);
 
             mockCreatureDataSelector
                 .Setup(s => s.SelectFor(animal))
@@ -601,8 +874,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.HitPoints.HitDice[0].Quantity = 1336;
 
             var animalHitPoints = new HitPoints();
-            animalHitPoints.HitDice = new List<HitDice>();
             animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
+
+            mockDice
+                .Setup(d => d.Roll(9266).d(90210).AsIndividualRolls<int>())
+                .Returns(new[] { 1337 });
+
+            mockDice
+                .Setup(d => d.Roll(9266).d(90210).AsPotentialAverage())
+                .Returns(8245);
+
+            mockDice
+                .Setup(d => d.Roll(1336).d(baseCreature.HitPoints.HitDice[0].HitDie).AsIndividualRolls<int>())
+                .Returns(new[] { 96 });
+
+            mockDice
+                .Setup(d => d.Roll(1336).d(baseCreature.HitPoints.HitDice[0].HitDie).AsPotentialAverage())
+                .Returns(783);
 
             mockCreatureDataSelector
                 .Setup(s => s.SelectFor(animal))
@@ -638,6 +926,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     9266 + 1336))
                 .Returns(animalAttacks);
 
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(animalAttacks, It.IsAny<IEnumerable<Feat>>(), baseCreature.Abilities))
+                .Returns(animalAttacks);
+
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks, Is.SupersetOf(animalAttacks));
@@ -653,8 +945,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.Size = SizeConstants.Large;
 
             var animalHitPoints = new HitPoints();
-            animalHitPoints.HitDice = new List<HitDice>();
             animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
+
+            mockDice
+                .Setup(d => d.Roll(9266).d(90210).AsIndividualRolls<int>())
+                .Returns(new[] { 1337 });
+
+            mockDice
+                .Setup(d => d.Roll(9266).d(90210).AsPotentialAverage())
+                .Returns(8245);
+
+            mockDice
+                .Setup(d => d.Roll(1336).d(baseCreature.HitPoints.HitDice[0].HitDie).AsIndividualRolls<int>())
+                .Returns(new[] { 96 });
+
+            mockDice
+                .Setup(d => d.Roll(1336).d(baseCreature.HitPoints.HitDice[0].HitDie).AsPotentialAverage())
+                .Returns(783);
 
             mockCreatureDataSelector
                 .Setup(s => s.SelectFor(animal))
@@ -690,6 +997,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     9266 + 1336))
                 .Returns(lycanthropeAttacks);
 
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(lycanthropeAttacks, It.IsAny<IEnumerable<Feat>>(), baseCreature.Abilities))
+                .Returns(lycanthropeAttacks);
+
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks, Is.SupersetOf(lycanthropeAttacks));
@@ -705,8 +1016,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.Size = SizeConstants.Medium;
 
             var animalHitPoints = new HitPoints();
-            animalHitPoints.HitDice = new List<HitDice>();
             animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
+
+            mockDice
+                .Setup(d => d.Roll(9266).d(90210).AsIndividualRolls<int>())
+                .Returns(new[] { 1337 });
+
+            mockDice
+                .Setup(d => d.Roll(9266).d(90210).AsPotentialAverage())
+                .Returns(8245);
+
+            mockDice
+                .Setup(d => d.Roll(1336).d(baseCreature.HitPoints.HitDice[0].HitDie).AsIndividualRolls<int>())
+                .Returns(new[] { 96 });
+
+            mockDice
+                .Setup(d => d.Roll(1336).d(baseCreature.HitPoints.HitDice[0].HitDie).AsPotentialAverage())
+                .Returns(783);
 
             mockCreatureDataSelector
                 .Setup(s => s.SelectFor(animal))
@@ -740,6 +1066,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     600 + 42,
                     baseCreature.Abilities,
                     9266 + 1336))
+                .Returns(lycanthropeAttacks);
+
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(lycanthropeAttacks, It.IsAny<IEnumerable<Feat>>(), baseCreature.Abilities))
                 .Returns(lycanthropeAttacks);
 
             var creature = applicators[template].ApplyTo(baseCreature);
@@ -757,8 +1087,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.Size = SizeConstants.Large;
 
             var animalHitPoints = new HitPoints();
-            animalHitPoints.HitDice = new List<HitDice>();
             animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
+
+            mockDice
+                .Setup(d => d.Roll(9266).d(90210).AsIndividualRolls<int>())
+                .Returns(new[] { 1337 });
+
+            mockDice
+                .Setup(d => d.Roll(9266).d(90210).AsPotentialAverage())
+                .Returns(8245);
+
+            mockDice
+                .Setup(d => d.Roll(1336).d(baseCreature.HitPoints.HitDice[0].HitDie).AsIndividualRolls<int>())
+                .Returns(new[] { 96 });
+
+            mockDice
+                .Setup(d => d.Roll(1336).d(baseCreature.HitPoints.HitDice[0].HitDie).AsPotentialAverage())
+                .Returns(783);
 
             mockCreatureDataSelector
                 .Setup(s => s.SelectFor(animal))
@@ -794,6 +1139,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     9266 + 1336))
                 .Returns(lycanthropeAttacks);
 
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(lycanthropeAttacks, It.IsAny<IEnumerable<Feat>>(), baseCreature.Abilities))
+                .Returns(lycanthropeAttacks);
+
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks, Is.SupersetOf(lycanthropeAttacks));
@@ -808,8 +1157,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.HitPoints.HitDice[0].Quantity = 1336;
 
             var animalHitPoints = new HitPoints();
-            animalHitPoints.HitDice = new List<HitDice>();
             animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
+
+            mockDice
+                .Setup(d => d.Roll(9266).d(90210).AsIndividualRolls<int>())
+                .Returns(new[] { 1337 });
+
+            mockDice
+                .Setup(d => d.Roll(9266).d(90210).AsPotentialAverage())
+                .Returns(8245);
+
+            mockDice
+                .Setup(d => d.Roll(1336).d(baseCreature.HitPoints.HitDice[0].HitDie).AsIndividualRolls<int>())
+                .Returns(new[] { 96 });
+
+            mockDice
+                .Setup(d => d.Roll(1336).d(baseCreature.HitPoints.HitDice[0].HitDie).AsPotentialAverage())
+                .Returns(783);
 
             mockCreatureDataSelector
                 .Setup(s => s.SelectFor(animal))
@@ -855,10 +1219,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(g => g.GenerateAttacks(
                     template,
                     SizeConstants.Medium,
-                    SizeConstants.Large,
+                    baseCreature.Size,
                     600 + 42,
                     baseCreature.Abilities,
                     9266 + 1336))
+                .Returns(lycanthropeAttacks);
+
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(animalAttacks, It.IsAny<IEnumerable<Feat>>(), baseCreature.Abilities))
+                .Returns(animalAttacks);
+
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(lycanthropeAttacks, It.IsAny<IEnumerable<Feat>>(), baseCreature.Abilities))
                 .Returns(lycanthropeAttacks);
 
             var creature = applicators[template].ApplyTo(baseCreature);
@@ -873,7 +1245,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(lycanthropeAttacks[0].DamageEffect, Is.Empty);
             Assert.That(lycanthropeAttacks[1].Name, Is.EqualTo("lycanthrope attack 2"));
             Assert.That(lycanthropeAttacks[1].DamageEffect, Is.Empty);
-            Assert.That(lycanthropeAttacks[2].Name, Is.EqualTo("animal attack 2"));
+            Assert.That(lycanthropeAttacks[2].Name, Is.EqualTo("animal attack 2 (in Hybrid form)"));
             Assert.That(lycanthropeAttacks[2].DamageEffect, Is.EqualTo("my damage effect"));
         }
 
@@ -925,7 +1297,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         public void ApplyTo_AddAnimalSpecialQualities(string template, string animal)
         {
             var animalHitPoints = new HitPoints();
-            animalHitPoints.HitDice = new List<HitDice>();
             animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
 
             mockCreatureDataSelector
@@ -971,7 +1342,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Union(new[] { baseSpecialQuality });
 
             var animalHitPoints = new HitPoints();
-            animalHitPoints.HitDice = new List<HitDice>();
             animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
 
             mockCreatureDataSelector
@@ -1017,7 +1387,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         public void ApplyTo_AddLycanthropeSpecialQualities(string template, string animal)
         {
             var animalHitPoints = new HitPoints();
-            animalHitPoints.HitDice = new List<HitDice>();
             animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
 
             mockCreatureDataSelector
@@ -1063,7 +1432,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Union(new[] { baseSpecialQuality });
 
             var animalHitPoints = new HitPoints();
-            animalHitPoints.HitDice = new List<HitDice>();
             animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
 
             mockCreatureDataSelector
@@ -1113,7 +1481,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.Saves[SaveConstants.Will].BaseValue = 783;
 
             var animalHitPoints = new HitPoints();
-            animalHitPoints.HitDice = new List<HitDice>();
             animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
 
             mockCreatureDataSelector
@@ -1198,7 +1565,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         public void ApplyTo_GainAnimalSkills(string template, string animal)
         {
             var animalHitPoints = new HitPoints();
-            animalHitPoints.HitDice = new List<HitDice>();
             animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
 
             mockCreatureDataSelector
@@ -1249,7 +1615,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.Skills = baseSkills;
 
             var animalHitPoints = new HitPoints();
-            animalHitPoints.HitDice = new List<HitDice>();
             animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
 
             mockCreatureDataSelector
@@ -1329,7 +1694,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             }
 
             var animalHitPoints = new HitPoints();
-            animalHitPoints.HitDice = new List<HitDice>();
             animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
 
             mockCreatureDataSelector
@@ -1396,7 +1760,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             }
 
             var animalHitPoints = new HitPoints();
-            animalHitPoints.HitDice = new List<HitDice>();
             animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
 
             mockCreatureDataSelector
@@ -1456,7 +1819,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.BaseAttackBonus = 600;
 
             var animalHitPoints = new HitPoints();
-            animalHitPoints.HitDice = new List<HitDice>();
             animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
 
             mockCreatureDataSelector
@@ -1559,7 +1921,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.Feats = baseCreature.Feats.Union(new[] { new Feat { Name = "my feat" } });
 
             var animalHitPoints = new HitPoints();
-            animalHitPoints.HitDice = new List<HitDice>();
             animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
 
             mockCreatureDataSelector
@@ -1666,7 +2027,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.Saves[SaveConstants.Will].BaseValue = 783;
 
             var animalHitPoints = new HitPoints();
-            animalHitPoints.HitDice = new List<HitDice>();
             animalHitPoints.HitDice.Add(new HitDice { Quantity = 9266, HitDie = 90210 });
 
             mockCreatureDataSelector
@@ -1710,7 +2070,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.ChallengeRating = originalChallengeRating;
 
             var animalHitPoints = new HitPoints();
-            animalHitPoints.HitDice = new List<HitDice>();
             animalHitPoints.HitDice.Add(new HitDice { Quantity = animalHitDiceQuantity, HitDie = 90210 });
 
             mockCreatureDataSelector

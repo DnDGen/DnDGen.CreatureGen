@@ -80,8 +80,11 @@ namespace DnDGen.CreatureGen.Attacks
         {
             Name = string.Empty;
             DamageRoll = string.Empty;
+            DamageEffect = string.Empty;
             AttackBonuses = new List<int>();
             MaxNumberOfAttacks = 1;
+            Frequency = new Frequency();
+            AttackType = string.Empty;
         }
     }
 }

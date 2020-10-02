@@ -20,6 +20,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Attacks
         public void AttackInitialized()
         {
             Assert.That(attack.DamageRoll, Is.Empty);
+            Assert.That(attack.DamageEffect, Is.Empty);
             Assert.That(attack.IsMelee, Is.False);
             Assert.That(attack.IsNatural, Is.False);
             Assert.That(attack.IsPrimary, Is.False);
@@ -31,6 +32,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Attacks
             Assert.That(attack.SizeModifier, Is.Zero);
             Assert.That(attack.AttackBonuses, Is.Empty);
             Assert.That(attack.MaxNumberOfAttacks, Is.EqualTo(1));
+            Assert.That(attack.AttackType, Is.Empty);
+            Assert.That(attack.DamageBonus, Is.Zero);
+            Assert.That(attack.Frequency, Is.Not.Null);
+            Assert.That(attack.Save, Is.Null);
         }
 
         [TestCase(6, 0, -2)]

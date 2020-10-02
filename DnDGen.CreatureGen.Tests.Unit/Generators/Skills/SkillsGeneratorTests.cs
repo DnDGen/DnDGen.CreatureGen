@@ -373,6 +373,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         [Test]
         public void AssignRankToClassSkill()
         {
+            creatureTypeSkillPoints = 2;
             AddCreatureSkills(3);
             AddUntrainedSkills(3);
 
@@ -413,6 +414,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         [Test]
         public void AssignRankToUntrainedSkill()
         {
+            creatureTypeSkillPoints = 2;
             AddCreatureSkills(3);
             AddUntrainedSkills(3);
 
@@ -453,6 +455,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         [Test]
         public void AssignRankToClassAndUntrainedSkill()
         {
+            creatureTypeSkillPoints = 2;
             AddCreatureSkills(3);
             AddUntrainedSkills(3);
 
@@ -3776,8 +3779,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             Assert.That(skills[0].Name, Is.EqualTo("creature skill 1"));
             Assert.That(skills[0].ClassSkill, Is.True);
-            Assert.That(skills[0].Ranks, Is.EqualTo(2));
-            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(2));
+            Assert.That(skills[0].Ranks, Is.EqualTo(3));
+            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(3));
             Assert.That(skills[1].Name, Is.EqualTo("untrained skill 1"));
             Assert.That(skills[1].ClassSkill, Is.False);
             Assert.That(skills[1].Ranks, Is.Zero);
@@ -3792,8 +3795,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills[3].EffectiveRanks, Is.Zero);
             Assert.That(skills[4].Name, Is.EqualTo("creature skill 3"));
             Assert.That(skills[4].ClassSkill, Is.True);
-            Assert.That(skills[4].Ranks, Is.EqualTo(3));
-            Assert.That(skills[4].EffectiveRanks, Is.EqualTo(3));
+            Assert.That(skills[4].Ranks, Is.EqualTo(2));
+            Assert.That(skills[4].EffectiveRanks, Is.EqualTo(2));
             Assert.That(skills[5].Name, Is.EqualTo("untrained skill 3"));
             Assert.That(skills[5].ClassSkill, Is.False);
             Assert.That(skills[5].Ranks, Is.Zero);
@@ -3831,8 +3834,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills[0].EffectiveRanks, Is.Zero);
             Assert.That(skills[1].Name, Is.EqualTo("untrained skill 1"));
             Assert.That(skills[1].ClassSkill, Is.False);
-            Assert.That(skills[1].Ranks, Is.EqualTo(2));
-            Assert.That(skills[1].EffectiveRanks, Is.EqualTo(1));
+            Assert.That(skills[1].Ranks, Is.EqualTo(3));
+            Assert.That(skills[1].EffectiveRanks, Is.EqualTo(1.5));
             Assert.That(skills[2].Name, Is.EqualTo("creature skill 2"));
             Assert.That(skills[2].ClassSkill, Is.True);
             Assert.That(skills[2].Ranks, Is.Zero);
@@ -3847,8 +3850,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills[4].EffectiveRanks, Is.Zero);
             Assert.That(skills[5].Name, Is.EqualTo("untrained skill 3"));
             Assert.That(skills[5].ClassSkill, Is.False);
-            Assert.That(skills[5].Ranks, Is.EqualTo(3));
-            Assert.That(skills[5].EffectiveRanks, Is.EqualTo(1.5));
+            Assert.That(skills[5].Ranks, Is.EqualTo(2));
+            Assert.That(skills[5].EffectiveRanks, Is.EqualTo(1));
             Assert.That(skills.Length, Is.EqualTo(6));
         }
 
@@ -3869,8 +3872,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             Assert.That(skills[0].Name, Is.EqualTo("creature skill 1"));
             Assert.That(skills[0].ClassSkill, Is.True);
-            Assert.That(skills[0].Ranks, Is.EqualTo(1));
-            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(1));
+            Assert.That(skills[0].Ranks, Is.EqualTo(2));
+            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(2));
             Assert.That(skills[1].Name, Is.EqualTo("untrained skill 1"));
             Assert.That(skills[1].ClassSkill, Is.False);
             Assert.That(skills[1].Ranks, Is.EqualTo(1));
@@ -3885,8 +3888,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills[3].EffectiveRanks, Is.EqualTo(.5));
             Assert.That(skills[4].Name, Is.EqualTo("creature skill 3"));
             Assert.That(skills[4].ClassSkill, Is.True);
-            Assert.That(skills[4].Ranks, Is.EqualTo(2));
-            Assert.That(skills[4].EffectiveRanks, Is.EqualTo(2));
+            Assert.That(skills[4].Ranks, Is.EqualTo(1));
+            Assert.That(skills[4].EffectiveRanks, Is.EqualTo(1d));
             Assert.That(skills[5].Name, Is.EqualTo("untrained skill 3"));
             Assert.That(skills[5].ClassSkill, Is.False);
             Assert.That(skills[5].Ranks, Is.EqualTo(1));
@@ -3974,6 +3977,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         {
             hitPoints.HitDice[0].Quantity = hitDiceQuantity;
             creatureTypeSkillPoints = skillPointsPerDie;
+            abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
 
             var unrankedSkills = new List<Skill>();
             while (unrankedSkills.Count < hitDiceQuantity + skillPointsPerDie)
@@ -4052,6 +4056,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         {
             hitPoints.HitDice[0].Quantity = hitDiceQuantity;
             creatureTypeSkillPoints = skillPointsPerDie;
+            abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
 
             var unrankedSkills = new List<Skill>();
             while (unrankedSkills.Count < hitDiceQuantity + skillPointsPerDie)
@@ -4176,6 +4181,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             hitPoints.HitDice[0].Quantity = hitDie;
             creatureTypeSkillPoints = 2;
             abilities[AbilityConstants.Intelligence].BaseScore = intelligence;
+            abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
 
             var unrankedSkills = new List<Skill>();
             while (unrankedSkills.Count < hitDie + intelligence)

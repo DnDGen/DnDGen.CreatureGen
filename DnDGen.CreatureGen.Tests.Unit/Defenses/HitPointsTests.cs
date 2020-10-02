@@ -1059,6 +1059,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             var average1 = (1 + 90210) / 2d * 9266;
             mockPartialRoll1.Setup(r => r.AsPotentialAverage()).Returns(average1);
             mockDice.Setup(d => d.Roll(9266).d(90210)).Returns(mockPartialRoll1.Object);
+
             var mockPartialRoll2 = new Mock<PartialRoll>();
             var average2 = (1 + 600) / 2d * 42;
             mockPartialRoll2.Setup(r => r.AsPotentialAverage()).Returns(average2);
