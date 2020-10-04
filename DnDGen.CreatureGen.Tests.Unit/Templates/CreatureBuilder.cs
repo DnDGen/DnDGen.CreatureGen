@@ -213,7 +213,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             creature.HitPoints.Constitution = creature.Abilities[AbilityConstants.Constitution];
             creature.HitPoints.HitDice.Add(new HitDice());
             creature.HitPoints.HitDice[0].Quantity = random.Next(20) + 1;
-            creature.HitPoints.HitDice[0].HitDie = random.Next(12) + 1;
+            creature.HitPoints.HitDice[0].HitDie = random.Next(9) + 4;
             creature.HitPoints.DefaultTotal = creature.HitPoints.RoundedHitDiceQuantity * creature.HitPoints.HitDice[0].HitDie / 2;
             creature.HitPoints.Total = creature.HitPoints.RoundedHitDiceQuantity * creature.HitPoints.HitDice[0].HitDie;
 

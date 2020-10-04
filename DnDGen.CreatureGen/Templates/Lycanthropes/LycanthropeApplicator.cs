@@ -1,6 +1,8 @@
 ﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Attacks;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
+using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Defenses;
@@ -101,15 +103,34 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
 
             //INFO: This depends on hit points
             //Skills
-            UpdateCreatureSkills(creature, animalCreatureType, animalHitPoints, animalData);
+            var animalSkills = UpdateCreatureSkills(creature, animalCreatureType, animalHitPoints, animalData);
 
             //INFO: This depends on skills
             // Special Qualities
-            UpdateCreatureSpecialQualities(creature, animalCreatureType, animalHitPoints, animalData);
+            var animalSpecialQualities = UpdateCreatureSpecialQualities(creature, animalCreatureType, animalHitPoints, animalData, animalSkills);
 
             //INFO: This depends on special qualities
             // Attacks
-            UpdateCreatureAttacks(creature, animalCreatureType, animalHitPoints, animalData);
+            var animalAttacks = UpdateCreatureAttacks(creature, animalCreatureType, animalHitPoints, animalData);
+
+            //INFO: This depends on special qualities, attacks, skills, abilities, hit points, 
+            // Feats
+            var animalFeats = UpdateCreatureFeats(
+                creature,
+                animalHitPoints,
+                animalData,
+                animalSkills,
+                animalAttacks.AnimalAttacks,
+                animalAttacks.AnimalBaseAttack,
+                animalSpecialQualities);
+
+            //INFO: This depends on feats, hit points
+            //Hit Points
+            UpdateCreatureHitPointsWithFeats(creature, animalFeats);
+
+            //INFO: This depends on feats, hit points
+            //Saves
+            UpdateCreatureSaves(creature, animalCreatureType, animalHitPoints, animalSpecialQualities, animalFeats);
 
             return creature;
         }
@@ -151,7 +172,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             return animalHitPoints;
         }
 
-        private void UpdateCreatureSkills(Creature creature, CreatureType animalCreatureType, HitPoints animalHitPoints, CreatureDataSelection animalData)
+        private IEnumerable<Skill> UpdateCreatureSkills(Creature creature, CreatureType animalCreatureType, HitPoints animalHitPoints, CreatureDataSelection animalData)
         {
             var animalSkills = skillsGenerator.GenerateFor(
                 animalHitPoints,
@@ -208,17 +229,24 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
                     creature.Skills = creature.Skills.Union(new[] { animalSkill });
                 }
             }
+
+            return animalSkills;
         }
 
-        private void UpdateCreatureSpecialQualities(Creature creature, CreatureType animalCreatureType, HitPoints animalHitPoints, CreatureDataSelection animalData)
+        private IEnumerable<Feat> UpdateCreatureSpecialQualities(
+            Creature creature,
+            CreatureType animalCreatureType,
+            HitPoints animalHitPoints,
+            CreatureDataSelection animalData,
+            IEnumerable<Skill> animalSkills)
         {
             var animalSpecialQualities = featsGenerator.GenerateSpecialQualities(
                 AnimalSpecies,
                 animalCreatureType,
                 animalHitPoints,
                 creature.Abilities,
-                creature.Skills,
-                creature.CanUseEquipment,
+                animalSkills,
+                animalData.CanUseEquipment,
                 animalData.Size,
                 creature.Alignment);
 
@@ -265,9 +293,80 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
                     matching.Power = sq.Power;
                 }
             }
+
+            return animalSpecialQualities;
         }
 
-        private void UpdateCreatureAttacks(Creature creature, CreatureType animalCreatureType, HitPoints animalHitPoints, CreatureDataSelection animalData)
+        private void UpdateCreatureSaves(
+            Creature creature,
+            CreatureType animalCreatureType,
+            HitPoints animalHitPoints,
+            IEnumerable<Feat> animalSpecialQualities,
+            IEnumerable<Feat> animalFeats)
+        {
+            var allFeats = animalFeats.Union(animalSpecialQualities);
+            var animalSaves = savesGenerator.GenerateWith(AnimalSpecies, animalCreatureType, animalHitPoints, allFeats, creature.Abilities);
+
+            foreach (var kvp in animalSaves)
+            {
+                creature.Saves[kvp.Key].BaseValue += kvp.Value.BaseValue;
+
+                foreach (var bonus in kvp.Value.Bonuses)
+                {
+                    creature.Saves[kvp.Key].AddBonus(bonus.Value, bonus.Condition);
+                }
+            }
+        }
+
+        private IEnumerable<Feat> UpdateCreatureFeats(
+            Creature creature,
+            HitPoints animalHitPoints,
+            CreatureDataSelection animalData,
+            IEnumerable<Skill> animalSkills,
+            IEnumerable<Attack> animalAttacks,
+            int animalBaseAttack,
+            IEnumerable<Feat> animalSpecialQualities)
+        {
+            var animalFeats = featsGenerator.GenerateFeats(
+                animalHitPoints,
+                animalBaseAttack,
+                creature.Abilities,
+                animalSkills,
+                animalAttacks,
+                animalSpecialQualities,
+                animalData.CasterLevel,
+                creature.Speeds,
+                animalData.NaturalArmor,
+                animalData.NumberOfHands,
+                animalData.Size,
+                animalData.CanUseEquipment);
+
+            foreach (var feat in animalFeats)
+            {
+                var matching = creature.Feats.FirstOrDefault(f =>
+                    f.Name == feat.Name
+                    && !f.Foci.Except(feat.Foci).Any()
+                    && !feat.Foci.Except(f.Foci).Any());
+
+                if (matching == null || feat.CanBeTakenMultipleTimes)
+                {
+                    creature.Feats = creature.Feats.Union(new[] { feat });
+                }
+                else if (matching.Power < feat.Power)
+                {
+                    matching.Power = feat.Power;
+                }
+            }
+
+            return animalFeats;
+        }
+
+        private void UpdateCreatureHitPointsWithFeats(Creature creature, IEnumerable<Feat> animalFeats)
+        {
+            creature.HitPoints = hitPointsGenerator.RegenerateWith(creature.HitPoints, animalFeats);
+        }
+
+        private (IEnumerable<Attack> AnimalAttacks, int AnimalBaseAttack) UpdateCreatureAttacks(Creature creature, CreatureType animalCreatureType, HitPoints animalHitPoints, CreatureDataSelection animalData)
         {
             var baseAttackBonus = attacksGenerator.GenerateBaseAttackBonus(animalCreatureType, animalHitPoints);
             creature.BaseAttackBonus += baseAttackBonus;
@@ -325,6 +424,8 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             }
 
             creature.Attacks = creature.Attacks.Union(animalAttacks).Union(lycanthropeAttacks);
+
+            return (animalAttacks, baseAttackBonus);
         }
 
         private string GetBiggerSize(string size1, string size2)
@@ -374,18 +475,54 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             await Task.WhenAll(tasks);
             tasks.Clear();
 
+            var animalSkills = skillTask.Result;
+
             //INFO: This depends on skills
             // Special Qualities
-            var qualityTask = Task.Run(() => UpdateCreatureSpecialQualities(creature, animalCreatureType, animalHitPoints, animalData));
+            var qualityTask = Task.Run(() => UpdateCreatureSpecialQualities(creature, animalCreatureType, animalHitPoints, animalData, animalSkills));
             tasks.Add(qualityTask);
 
             await Task.WhenAll(tasks);
             tasks.Clear();
 
+            var animalSpecialQualities = qualityTask.Result;
+
             //INFO: This depends on special qualities
             // Attacks
             var attackTask = Task.Run(() => UpdateCreatureAttacks(creature, animalCreatureType, animalHitPoints, animalData));
             tasks.Add(attackTask);
+
+            await Task.WhenAll(tasks);
+            tasks.Clear();
+
+            var animalAttacks = attackTask.Result;
+
+            //INFO: This depends on special qualities, attacks, skills, abilities, hit points, 
+            // Feats
+            var featTask = Task.Run(() => UpdateCreatureFeats(
+                creature,
+                animalHitPoints,
+                animalData,
+                animalSkills,
+                animalAttacks.AnimalAttacks,
+                animalAttacks.AnimalBaseAttack,
+                animalSpecialQualities));
+            tasks.Add(featTask);
+
+            await Task.WhenAll(tasks);
+            tasks.Clear();
+
+            var animalFeats = featTask.Result;
+
+            //INFO: This depends on feats, hit points
+            //Hit Points
+            var hitPointWithFeatsTask = Task.Run(() => UpdateCreatureHitPointsWithFeats(creature, animalFeats));
+            tasks.Add(hitPointWithFeatsTask);
+
+            //INFO: This depends on feats, hit points
+            //Saves
+            var saveTask = Task.Run(() => UpdateCreatureSaves(creature, animalCreatureType, animalHitPoints, animalSpecialQualities, animalFeats));
+            tasks.Add(saveTask);
 
             await Task.WhenAll(tasks);
             tasks.Clear();
