@@ -1586,8 +1586,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             }
         }
 
-        [TestCaseSource(nameof(AllLycanthropeTemplates))]
-        public async Task ApplyToAsync_Tests(string template, string animal)
+        [Test]
+        public async Task ApplyToAsync_Tests()
         {
             Assert.Fail("need to copy");
         }
