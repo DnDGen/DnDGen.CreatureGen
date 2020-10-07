@@ -404,7 +404,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(creature.HitPoints.Total, Is.EqualTo(baseRoll + 9266));
         }
 
-        private void SetUpAnimal(string animal, int naturalArmor = -1, string size = null)
+        private void SetUpAnimal(string animal, int naturalArmor = -1, string size = null, int hitDiceQuantity = 0)
         {
             //Data
             animalData.Size = size ?? "animal size";
@@ -419,7 +419,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             //Hit points
             var hitDie = new HitDice();
-            hitDie.Quantity = random.Next(100) + 1;
+            hitDie.Quantity = hitDiceQuantity > 0 ? hitDiceQuantity : random.Next(100) + 1;
             hitDie.HitDie = random.Next(9) + 4;
             animalHitPoints.HitDice.Add(hitDie);
 
@@ -985,7 +985,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             }
         }
 
-        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        [TestCaseSource(nameof(Sizes))]
         public void ApplyTo_AddLycanthropeAttacks_WithBonuses(string template, string animal, string size)
         {
             baseCreature.Size = size;
@@ -1495,7 +1495,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         {
             baseCreature.ChallengeRating = originalChallengeRating;
 
-            SetUpAnimal(animal);
+            SetUpAnimal(animal, hitDiceQuantity: animalHitDiceQuantity);
 
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1565,8 +1565,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     1,
                     2,
                     10,
-                    20,
-                    42,
+                    100,
                 };
 
                 foreach (var template in templates)

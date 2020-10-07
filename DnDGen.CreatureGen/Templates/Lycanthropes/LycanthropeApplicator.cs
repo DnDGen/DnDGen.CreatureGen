@@ -97,6 +97,9 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             // Abilities
             UpdateCreatureAbilities(creature);
 
+            // Level Adjustment
+            UpdateCreatureLevelAdjustment(creature);
+
             //INFO: This depends on abilities
             //Hit Points
             var animalHitPoints = UpdateCreatureHitPoints(creature, animalCreatureType, animalData);
@@ -104,6 +107,10 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             //INFO: This depends on hit points
             //Skills
             var animalSkills = UpdateCreatureSkills(creature, animalCreatureType, animalHitPoints, animalData);
+
+            //INFO: This depends on hit points
+            // Challenge ratings
+            UpdateCreatureChallengeRating(creature, animalHitPoints);
 
             //INFO: This depends on skills
             // Special Qualities
@@ -170,6 +177,43 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             creature.HitPoints.RollDefaultTotal(dice);
 
             return animalHitPoints;
+        }
+
+        private void UpdateCreatureChallengeRating(Creature creature, HitPoints animalHitPoints)
+        {
+            var challengeRatings = ChallengeRatingConstants.GetOrdered();
+            var index = Array.IndexOf(challengeRatings, creature.ChallengeRating);
+            var increase = 2;
+
+            if (animalHitPoints.HitDice[0].Quantity > 20)
+            {
+                increase = 6;
+            }
+            else if (animalHitPoints.HitDice[0].Quantity > 10)
+            {
+                increase = 5;
+            }
+            else if (animalHitPoints.HitDice[0].Quantity > 5)
+            {
+                increase = 4;
+            }
+            else if (animalHitPoints.HitDice[0].Quantity > 2)
+            {
+                increase = 3;
+            }
+
+            creature.ChallengeRating = challengeRatings[index + increase];
+        }
+
+        private void UpdateCreatureLevelAdjustment(Creature creature)
+        {
+            if (creature.LevelAdjustment.HasValue)
+            {
+                if (LycanthropeSpecies.Contains("Afflicted"))
+                    creature.LevelAdjustment += 2;
+                else if (LycanthropeSpecies.Contains("Natural"))
+                    creature.LevelAdjustment += 3;
+            }
         }
 
         private IEnumerable<Skill> UpdateCreatureSkills(Creature creature, CreatureType animalCreatureType, HitPoints animalHitPoints, CreatureDataSelection animalData)
@@ -454,6 +498,10 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             var abilityTask = Task.Run(() => UpdateCreatureAbilities(creature));
             tasks.Add(abilityTask);
 
+            // Abilities
+            var levelAdjustmentTask = Task.Run(() => UpdateCreatureLevelAdjustment(creature));
+            tasks.Add(levelAdjustmentTask);
+
             await Task.WhenAll(tasks);
             tasks.Clear();
 
@@ -471,6 +519,11 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             //Skills
             var skillTask = Task.Run(() => UpdateCreatureSkills(creature, animalCreatureType, animalHitPoints, animalData));
             tasks.Add(skillTask);
+
+            //INFO: This depends on hit points
+            //Challenge Rating
+            var challengeRatingTask = Task.Run(() => UpdateCreatureChallengeRating(creature, animalHitPoints));
+            tasks.Add(challengeRatingTask);
 
             await Task.WhenAll(tasks);
             tasks.Clear();

@@ -342,7 +342,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             SetUpRoll(42, 600, 96);
 
             hitPoints.RollTotal(mockDice.Object);
-            Assert.That(hitPoints.Total, Is.EqualTo(1336 + 96 + 663));
+            Assert.That(hitPoints.Total, Is.EqualTo(1336 + 96 + hitPoints.Constitution.Modifier * 2));
         }
 
         [Test]
@@ -1145,7 +1145,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             SetUpRoll(1, 9266, 600);
 
             hitPoints.RollTotal(mockDice.Object);
-            Assert.That(hitPoints.Total, Is.EqualTo(42 + 600));
+            Assert.That(hitPoints.Total, Is.EqualTo(42 / 2 + 600 / 4));
         }
 
         [Test]
