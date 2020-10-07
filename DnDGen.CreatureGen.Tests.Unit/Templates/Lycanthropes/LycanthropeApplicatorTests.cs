@@ -428,7 +428,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     animal,
                     It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Animal),
                     baseCreature.Abilities[AbilityConstants.Constitution],
-                    "animal size",
+                    animalData.Size,
                     0))
                 .Returns(animalHitPoints);
 
