@@ -439,15 +439,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             SetUpRoll(hitDie, average);
 
             //Skills
-            animalSkills.Add(new Skill("animal skill 1", baseCreature.Abilities[AbilityConstants.Strength], int.MaxValue)
+            animalSkills.Add(new Skill("animal skill 1", baseCreature.Abilities[AbilityConstants.Strength], hitDie.RoundedQuantity + 3)
             {
                 ClassSkill = true,
-                Ranks = random.Next(100)
+                Ranks = random.Next(hitDie.RoundedQuantity)
             });
-            animalSkills.Add(new Skill("animal skill 2", baseCreature.Abilities[AbilityConstants.Strength], int.MaxValue)
+            animalSkills.Add(new Skill("animal skill 2", baseCreature.Abilities[AbilityConstants.Strength], hitDie.RoundedQuantity + 3)
             {
                 ClassSkill = true,
-                Ranks = random.Next(100)
+                Ranks = random.Next(hitDie.RoundedQuantity)
             });
 
             mockSkillsGenerator
@@ -711,17 +711,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             baseCreature.ArmorClass.RemoveBonus(ArmorClassConstants.Natural);
 
-            //Both new for base and from animal
+            //New for base and animal
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
 
             var bonuses = creature.ArmorClass.NaturalArmorBonuses.ToArray();
             Assert.That(bonuses[0].Condition, Is.EqualTo("In base or hybrid form"));
-            Assert.That(bonuses[0].IsConditional, Is.False);
+            Assert.That(bonuses[0].IsConditional, Is.True);
             Assert.That(bonuses[0].Value, Is.EqualTo(2));
             Assert.That(bonuses[1].Condition, Is.EqualTo("In animal or hybrid form"));
-            Assert.That(bonuses[1].IsConditional, Is.False);
+            Assert.That(bonuses[1].IsConditional, Is.True);
             Assert.That(bonuses[1].Value, Is.EqualTo(2));
         }
 
@@ -732,17 +732,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             baseCreature.ArmorClass.RemoveBonus(ArmorClassConstants.Natural);
 
-            //Both new for base and from animal
+            //New for base
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
 
             var bonuses = creature.ArmorClass.NaturalArmorBonuses.ToArray();
             Assert.That(bonuses[0].Condition, Is.EqualTo("In base or hybrid form"));
-            Assert.That(bonuses[0].IsConditional, Is.False);
+            Assert.That(bonuses[0].IsConditional, Is.True);
             Assert.That(bonuses[0].Value, Is.EqualTo(2));
             Assert.That(bonuses[1].Condition, Is.EqualTo("In animal or hybrid form"));
-            Assert.That(bonuses[1].IsConditional, Is.False);
+            Assert.That(bonuses[1].IsConditional, Is.True);
             Assert.That(bonuses[1].Value, Is.EqualTo(9266 + 2));
         }
 
@@ -753,16 +753,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 90210);
 
+            //New for animal
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
 
             var bonuses = creature.ArmorClass.NaturalArmorBonuses.ToArray();
             Assert.That(bonuses[0].Condition, Is.EqualTo("In base or hybrid form"));
-            Assert.That(bonuses[0].IsConditional, Is.False);
+            Assert.That(bonuses[0].IsConditional, Is.True);
             Assert.That(bonuses[0].Value, Is.EqualTo(90210 + 2));
             Assert.That(bonuses[1].Condition, Is.EqualTo("In animal or hybrid form"));
-            Assert.That(bonuses[1].IsConditional, Is.False);
+            Assert.That(bonuses[1].IsConditional, Is.True);
             Assert.That(bonuses[1].Value, Is.EqualTo(2));
         }
 
@@ -780,10 +781,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             var bonuses = creature.ArmorClass.NaturalArmorBonuses.ToArray();
             Assert.That(bonuses[0].Condition, Is.EqualTo("In base or hybrid form"));
-            Assert.That(bonuses[0].IsConditional, Is.False);
+            Assert.That(bonuses[0].IsConditional, Is.True);
             Assert.That(bonuses[0].Value, Is.EqualTo(90210 + 2));
             Assert.That(bonuses[1].Condition, Is.EqualTo("In animal or hybrid form"));
-            Assert.That(bonuses[1].IsConditional, Is.False);
+            Assert.That(bonuses[1].IsConditional, Is.True);
             Assert.That(bonuses[1].Value, Is.EqualTo(9266 + 2));
         }
 
@@ -1158,7 +1159,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     baseCreature.Type,
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
-                    baseCreature.Skills,
+                    It.Is<IEnumerable<Skill>>(ss => ss.IsEquivalentTo(baseCreature.Skills.Union(animalSkills))),
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
                     baseCreature.Alignment))
@@ -1190,7 +1191,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     baseCreature.Type,
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
-                    baseCreature.Skills,
+                    It.Is<IEnumerable<Skill>>(ss => ss.IsEquivalentTo(baseCreature.Skills.Union(animalSkills))),
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
                     baseCreature.Alignment))
@@ -1285,56 +1286,120 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_GainAnimalSkills_CombineWithBaseCreatureSkills(string template, string animal)
         {
+            var isAfflicted = template.Contains("Afflicted");
+
             var baseSkills = new[]
             {
-                new Skill("skill 1", baseCreature.Abilities[AbilityConstants.Strength], 4567) { ClassSkill = true, Ranks = 42 },
-                new Skill("untrained skill 1", baseCreature.Abilities[AbilityConstants.Constitution], 4567) { ClassSkill = false, Ranks = 600 },
-                new Skill("skill 2", baseCreature.Abilities[AbilityConstants.Dexterity], 4567) { ClassSkill = true, Ranks = 1337 },
-                new Skill("untrained skill 2", baseCreature.Abilities[AbilityConstants.Wisdom], 4567) { ClassSkill = false, Ranks = 1336 },
-                new Skill("animal skill 3", baseCreature.Abilities[AbilityConstants.Wisdom], 4567) { ClassSkill = false, Ranks = 96 },
+                new Skill("skill 1", baseCreature.Abilities[AbilityConstants.Strength], 666) { ClassSkill = true, Ranks = 1 },
+                new Skill("untrained skill 1", baseCreature.Abilities[AbilityConstants.Constitution], 666) { ClassSkill = false, Ranks = 2 },
+                new Skill("skill 2", baseCreature.Abilities[AbilityConstants.Dexterity], 666) { ClassSkill = true, Ranks = 3 },
+                new Skill("untrained skill 2", baseCreature.Abilities[AbilityConstants.Wisdom], 666) { ClassSkill = false, Ranks = 4 },
+                new Skill("animal skill 3", baseCreature.Abilities[AbilityConstants.Wisdom], 666) { ClassSkill = false, Ranks = 5 },
             };
             baseCreature.Skills = baseSkills;
 
             SetUpAnimal(animal);
 
-            animalSkills.Add(new Skill("skill 2", baseCreature.Abilities[AbilityConstants.Dexterity], 9266 + 3) { ClassSkill = true, Ranks = 8245 });
-            animalSkills.Add(new Skill("untrained skill 2", baseCreature.Abilities[AbilityConstants.Wisdom], 9266 + 3) { ClassSkill = false, Ranks = 1234 });
-            animalSkills.Add(new Skill("animal skill 3", baseCreature.Abilities[AbilityConstants.Intelligence], 9266 + 3) { ClassSkill = true, Ranks = 3456 });
+            animalSkills.Add(new Skill("skill 2", baseCreature.Abilities[AbilityConstants.Dexterity], 666) { ClassSkill = true, Ranks = 6 });
+            animalSkills.Add(new Skill("untrained skill 2", baseCreature.Abilities[AbilityConstants.Wisdom], 666) { ClassSkill = false, Ranks = 7 });
+            animalSkills.Add(new Skill("animal skill 3", baseCreature.Abilities[AbilityConstants.Intelligence], 666) { ClassSkill = true, Ranks = 8 });
+
+            var newCap = baseCreature.HitPoints.HitDice[0].RoundedQuantity + animalHitPoints.HitDice[0].RoundedQuantity + 3;
+
+            if (isAfflicted)
+            {
+                var rankedSkills = new[]
+                {
+                    new Skill(
+                        "animal skill 1",
+                        baseCreature.Abilities[AbilityConstants.Strength],
+                        newCap)
+                    { ClassSkill = true, Ranks = animalSkills[0].Ranks },
+                    new Skill(
+                        "animal skill 2",
+                        baseCreature.Abilities[AbilityConstants.Strength],
+                        newCap)
+                    { ClassSkill = true, Ranks = animalSkills[1].Ranks },
+                    new Skill(
+                        "skill 2",
+                        baseCreature.Abilities[AbilityConstants.Strength],
+                        newCap)
+                    { ClassSkill = true, Ranks = 6 },
+                    new Skill(
+                        "untrained skill 2",
+                        baseCreature.Abilities[AbilityConstants.Strength],
+                        newCap)
+                    { ClassSkill = false, Ranks = 7 },
+                    new Skill(
+                        "animal skill 3",
+                        baseCreature.Abilities[AbilityConstants.Strength],
+                        newCap)
+                    { ClassSkill = true, Ranks = 8 },
+                    new Skill(
+                        SkillConstants.Special.ControlShape,
+                        baseCreature.Abilities[AbilityConstants.Wisdom],
+                        newCap)
+                    { ClassSkill = true, Ranks = 9 },
+                };
+
+                mockSkillsGenerator
+                    .Setup(g => g.ApplySkillPointsAsRanks(
+                        It.Is<IEnumerable<Skill>>(ss => ss.All(s => s.Ranks == 0)
+                            && ss.Any(s => s.Name == SkillConstants.Special.ControlShape
+                                && s.BaseAbility == baseCreature.Abilities[AbilityConstants.Wisdom]
+                                && s.ClassSkill
+                                && s.RankCap == newCap)),
+                        animalHitPoints,
+                        It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Animal),
+                        baseCreature.Abilities,
+                        false))
+                    .Returns(rankedSkills);
+            }
 
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Skills, Is.SupersetOf(baseSkills));
 
             var skills = creature.Skills.ToArray();
-            Assert.That(skills, Has.Length.EqualTo(7));
+            var expectedCount = isAfflicted ? 8 : 7;
+
+            Assert.That(skills, Has.Length.EqualTo(expectedCount));
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].ClassSkill, Is.True);
-            Assert.That(skills[0].Ranks, Is.EqualTo(42));
-            Assert.That(skills[0].RankCap, Is.EqualTo(4567 + 9266));
+            Assert.That(skills[0].Ranks, Is.EqualTo(1));
+            Assert.That(skills[0].RankCap, Is.EqualTo(newCap));
             Assert.That(skills[1].Name, Is.EqualTo("untrained skill 1"));
             Assert.That(skills[1].ClassSkill, Is.False);
-            Assert.That(skills[1].Ranks, Is.EqualTo(600));
-            Assert.That(skills[1].RankCap, Is.EqualTo(4567 + 9266));
+            Assert.That(skills[1].Ranks, Is.EqualTo(2));
+            Assert.That(skills[1].RankCap, Is.EqualTo(newCap));
             Assert.That(skills[2].Name, Is.EqualTo("skill 2"));
             Assert.That(skills[2].ClassSkill, Is.True);
-            Assert.That(skills[2].Ranks, Is.EqualTo(1337 + 8245));
-            Assert.That(skills[2].RankCap, Is.EqualTo(4567 + 9266));
+            Assert.That(skills[2].Ranks, Is.EqualTo(3 + 6));
+            Assert.That(skills[2].RankCap, Is.EqualTo(newCap));
             Assert.That(skills[3].Name, Is.EqualTo("untrained skill 2"));
             Assert.That(skills[3].ClassSkill, Is.False);
-            Assert.That(skills[3].Ranks, Is.EqualTo(1336 + 1234));
-            Assert.That(skills[3].RankCap, Is.EqualTo(4567 + 9266));
+            Assert.That(skills[3].Ranks, Is.EqualTo(4 + 7));
+            Assert.That(skills[3].RankCap, Is.EqualTo(newCap));
             Assert.That(skills[4].Name, Is.EqualTo("animal skill 3"));
             Assert.That(skills[4].ClassSkill, Is.True);
-            Assert.That(skills[4].Ranks, Is.EqualTo(96 + 3456));
-            Assert.That(skills[4].RankCap, Is.EqualTo(4567 + 9266));
+            Assert.That(skills[4].Ranks, Is.EqualTo(5 + 8));
+            Assert.That(skills[4].RankCap, Is.EqualTo(newCap));
             Assert.That(skills[5].Name, Is.EqualTo("animal skill 1"));
             Assert.That(skills[5].ClassSkill, Is.True);
-            Assert.That(skills[5].Ranks, Is.EqualTo(783));
-            Assert.That(skills[5].RankCap, Is.EqualTo(4567 + 9266));
+            Assert.That(skills[5].Ranks, Is.EqualTo(animalSkills[0].Ranks));
+            Assert.That(skills[5].RankCap, Is.EqualTo(newCap));
             Assert.That(skills[6].Name, Is.EqualTo("animal skill 2"));
             Assert.That(skills[6].ClassSkill, Is.True);
-            Assert.That(skills[6].Ranks, Is.EqualTo(2345));
-            Assert.That(skills[6].RankCap, Is.EqualTo(4567 + 9266));
+            Assert.That(skills[6].Ranks, Is.EqualTo(animalSkills[1].Ranks));
+            Assert.That(skills[6].RankCap, Is.EqualTo(newCap));
+
+            if (isAfflicted)
+            {
+                Assert.That(skills[7].Name, Is.EqualTo(SkillConstants.Special.ControlShape));
+                Assert.That(skills[7].ClassSkill, Is.True);
+                Assert.That(skills[7].Ranks, Is.EqualTo(9));
+                Assert.That(skills[7].RankCap, Is.EqualTo(newCap));
+            }
         }
 
         [TestCaseSource(nameof(AllLycanthropeTemplates))]
@@ -1383,26 +1448,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             SetUpAnimal(animal);
 
-            var rankedSkills = new[]
-            {
-                new Skill("ranked skill 1", baseCreature.Abilities[AbilityConstants.Strength], int.MaxValue) { ClassSkill = true, Ranks = 1337 },
-                new Skill("ranked skill 2", baseCreature.Abilities[AbilityConstants.Strength], int.MaxValue) { ClassSkill = true, Ranks = 1336 },
-            };
-
-            mockSkillsGenerator
-                .Setup(g => g.ApplySkillPointsAsRanks(
-                    It.Is<IEnumerable<Skill>>(ss => ss.All(s => s.Ranks == 0)
-                        && !ss.Any(s => s.Name == SkillConstants.Special.ControlShape)),
-                    animalHitPoints,
-                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Animal),
-                    baseCreature.Abilities,
-                    false))
-                .Returns(rankedSkills);
-
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Skills, Is.SupersetOf(animalSkills)
-                .And.SupersetOf(rankedSkills));
+            Assert.That(creature.Skills, Is.SupersetOf(animalSkills));
+
+            var skillNames = creature.Skills.Select(s => s.Name);
+            Assert.That(skillNames, Does.Not.Contain(SkillConstants.Special.ControlShape));
         }
 
         [TestCaseSource(nameof(AllLycanthropeTemplates))]

@@ -55,7 +55,7 @@ namespace DnDGen.CreatureGen.Skills
             set
             {
                 if (value > RankCap)
-                    throw new InvalidOperationException("Ranks cannot exceed the Rank Cap");
+                    throw new InvalidOperationException($"{value} Ranks for Skill '{Name}' cannot exceed the Rank Cap of {RankCap}");
 
                 ranks = value;
             }

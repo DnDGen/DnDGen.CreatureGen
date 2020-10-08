@@ -228,12 +228,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             creature.Size = $"size {Guid.NewGuid()}";
             creature.Skills = new[]
             {
-                new Skill($"skill cha {Guid.NewGuid()}", creature.Abilities[AbilityConstants.Charisma], random.Next(20) + 3),
-                new Skill($"skill con {Guid.NewGuid()}", creature.Abilities[AbilityConstants.Constitution], random.Next(20) + 3),
-                new Skill($"skill str {Guid.NewGuid()}", creature.Abilities[AbilityConstants.Strength], random.Next(20) + 3),
-                new Skill($"skill int {Guid.NewGuid()}", creature.Abilities[AbilityConstants.Intelligence], random.Next(20) + 3),
-                new Skill($"skill wis {Guid.NewGuid()}", creature.Abilities[AbilityConstants.Wisdom], random.Next(20) + 3),
-                new Skill($"skill dex {Guid.NewGuid()}", creature.Abilities[AbilityConstants.Dexterity], random.Next(20) + 3),
+                new Skill($"skill cha {Guid.NewGuid()}", creature.Abilities[AbilityConstants.Charisma], creature.HitPoints.HitDice[0].RoundedQuantity + 3),
+                new Skill($"skill con {Guid.NewGuid()}", creature.Abilities[AbilityConstants.Constitution], creature.HitPoints.HitDice[0].RoundedQuantity + 3),
+                new Skill($"skill str {Guid.NewGuid()}", creature.Abilities[AbilityConstants.Strength], creature.HitPoints.HitDice[0].RoundedQuantity + 3),
+                new Skill($"skill int {Guid.NewGuid()}", creature.Abilities[AbilityConstants.Intelligence], creature.HitPoints.HitDice[0].RoundedQuantity + 3),
+                new Skill($"skill wis {Guid.NewGuid()}", creature.Abilities[AbilityConstants.Wisdom], creature.HitPoints.HitDice[0].RoundedQuantity + 3),
+                new Skill($"skill dex {Guid.NewGuid()}", creature.Abilities[AbilityConstants.Dexterity], creature.HitPoints.HitDice[0].RoundedQuantity + 3),
             };
 
             creature.Space = new Measurement($"space unit {Guid.NewGuid()}");

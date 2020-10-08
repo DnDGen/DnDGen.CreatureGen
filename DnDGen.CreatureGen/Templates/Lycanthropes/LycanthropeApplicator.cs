@@ -100,6 +100,9 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             // Level Adjustment
             UpdateCreatureLevelAdjustment(creature);
 
+            //Armor Class
+            UpdateCreatureArmorClass(creature, animalData);
+
             //INFO: This depends on abilities
             //Hit Points
             var animalHitPoints = UpdateCreatureHitPoints(creature, animalCreatureType, animalData);
@@ -233,12 +236,14 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
                     SkillConstants.Special.ControlShape,
                     creature.Abilities[AbilityConstants.Wisdom],
                     creature.HitPoints.RoundedHitDiceQuantity + 3);
+                controlShape.ClassSkill = true;
 
                 animalSkills = animalSkills.Union(new[] { controlShape });
 
                 foreach (var animalSkill in animalSkills)
                 {
                     animalSkill.Ranks = 0;
+                    animalSkill.RankCap = creature.HitPoints.RoundedHitDiceQuantity + 3;
                 }
 
                 animalSkills = skillsGenerator.ApplySkillPointsAsRanks(
@@ -258,10 +263,11 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             {
                 animalSkill.RankCap = creature.HitPoints.RoundedHitDiceQuantity + 3;
 
-                if (creature.Skills.Any(s => s.Key == animalSkill.Key))
+                var creatureSkill = creature.Skills.FirstOrDefault(s => s.Key == animalSkill.Key);
+                if (creatureSkill != null)
                 {
-                    var creatureSkill = creature.Skills.First(s => s.Key == animalSkill.Key);
                     creatureSkill.Ranks += animalSkill.Ranks;
+                    creatureSkill.ClassSkill |= animalSkill.ClassSkill;
 
                     foreach (var bonus in animalSkill.Bonuses)
                     {
@@ -484,6 +490,22 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             return size2;
         }
 
+        private void UpdateCreatureArmorClass(Creature creature, CreatureDataSelection animalData)
+        {
+            foreach (var naturalArmorBonus in creature.ArmorClass.NaturalArmorBonuses)
+            {
+                naturalArmorBonus.Value += 2;
+                naturalArmorBonus.Condition = "In base or hybrid form";
+            }
+
+            if (!creature.ArmorClass.NaturalArmorBonuses.Any())
+            {
+                creature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 2, "In base or hybrid form");
+            }
+
+            creature.ArmorClass.AddBonus(ArmorClassConstants.Natural, animalData.NaturalArmor + 2, "In animal or hybrid form");
+        }
+
         public async Task<Creature> ApplyToAsync(Creature creature)
         {
             var animalCreatureType = new CreatureType { Name = CreatureConstants.Types.Animal };
@@ -501,6 +523,10 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             // Abilities
             var levelAdjustmentTask = Task.Run(() => UpdateCreatureLevelAdjustment(creature));
             tasks.Add(levelAdjustmentTask);
+
+            //Armor Class
+            var armorClassTask = Task.Run(() => UpdateCreatureArmorClass(creature, animalData));
+            tasks.Add(armorClassTask);
 
             await Task.WhenAll(tasks);
             tasks.Clear();
