@@ -103,6 +103,9 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             //Armor Class
             UpdateCreatureArmorClass(creature, animalData);
 
+            //Speed
+            UpdateCreatureSpeeds(creature);
+
             //INFO: This depends on abilities
             //Hit Points
             var animalHitPoints = UpdateCreatureHitPoints(creature, animalCreatureType, animalData);
@@ -368,6 +371,31 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             }
         }
 
+        private void UpdateCreatureSpeeds(Creature creature)
+        {
+            var animalSpeeds = speedsGenerator.Generate(AnimalSpecies);
+
+            foreach (var kvp in animalSpeeds)
+            {
+                if (creature.Speeds.ContainsKey(kvp.Key))
+                {
+                    var bonus = Convert.ToInt32(kvp.Value.Value - creature.Speeds[kvp.Key].Value);
+                    creature.Speeds[kvp.Key].AddBonus(bonus, "In Animal Form");
+                }
+                else
+                {
+                    creature.Speeds.Add(kvp.Key, kvp.Value);
+
+                    if (!string.IsNullOrEmpty(kvp.Value.Description))
+                    {
+                        kvp.Value.Description += ", ";
+                    }
+
+                    kvp.Value.Description += "In Animal Form";
+                }
+            }
+        }
+
         private IEnumerable<Feat> UpdateCreatureFeats(
             Creature creature,
             HitPoints animalHitPoints,
@@ -527,6 +555,10 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             //Armor Class
             var armorClassTask = Task.Run(() => UpdateCreatureArmorClass(creature, animalData));
             tasks.Add(armorClassTask);
+
+            //Speed
+            var speedTask = Task.Run(() => UpdateCreatureSpeeds(creature));
+            tasks.Add(speedTask);
 
             await Task.WhenAll(tasks);
             tasks.Clear();

@@ -673,8 +673,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         }
 
         [TestCaseSource(nameof(AllLycanthropeTemplates))]
-        public void ApplyTo_GainAnimalSpeeds(string template, string animal)
+        public void ApplyTo_GainAnimalSpeeds_AnimalFaster(string template, string animal)
         {
+            baseCreature.Speeds[SpeedConstants.Land].Value = 600;
+            baseCreature.Speeds[SpeedConstants.Climb] = new Measurement("feet per round") { Value = 1337 };
+
             SetUpAnimal(animal);
 
             var animalSpeeds = new Dictionary<string, Measurement>();
@@ -689,19 +692,139 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Speeds, Has.Count.EqualTo(baseSpeeds.Length + animalSpeeds.Count)
-                .And.SupersetOf(baseSpeeds)
-                .And.SupersetOf(animalSpeeds));
+            Assert.That(creature.Speeds, Has.Count.EqualTo(3)
+                .And.ContainKey(SpeedConstants.Land)
+                .And.ContainKey(SpeedConstants.Climb)
+                .And.ContainKey(SpeedConstants.Burrow));
 
-            foreach (var kvp in baseSpeeds)
-            {
-                Assert.That(kvp.Value.Description, Is.Empty);
-            }
+            Assert.That(creature.Speeds[SpeedConstants.Land].Value, Is.EqualTo(600));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Description, Is.Empty);
+            Assert.That(creature.Speeds[SpeedConstants.Land].Bonuses, Has.Count.EqualTo(1));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Bonuses[0].Value, Is.Positive.And.EqualTo(9266 - 600));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Bonuses[0].Condition, Is.EqualTo("In Animal Form"));
+            Assert.That(creature.Speeds[SpeedConstants.Climb].Value, Is.EqualTo(1337));
+            Assert.That(creature.Speeds[SpeedConstants.Climb].Description, Is.Empty);
+            Assert.That(creature.Speeds[SpeedConstants.Climb].Bonuses, Is.Empty);
+            Assert.That(creature.Speeds[SpeedConstants.Burrow].Value, Is.EqualTo(90210));
+            Assert.That(creature.Speeds[SpeedConstants.Burrow].Description, Is.EqualTo("In Animal Form"));
+            Assert.That(creature.Speeds[SpeedConstants.Burrow].Bonuses, Is.Empty);
+        }
 
-            foreach (var kvp in animalSpeeds)
-            {
-                Assert.That(kvp.Value.Description, Is.EqualTo("In Animal Form"));
-            }
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public void ApplyTo_GainAnimalSpeeds_AnimalSlower(string template, string animal)
+        {
+            baseCreature.Speeds[SpeedConstants.Land].Value = 600;
+            baseCreature.Speeds[SpeedConstants.Climb] = new Measurement("feet per round") { Value = 1337 };
+
+            SetUpAnimal(animal);
+
+            var animalSpeeds = new Dictionary<string, Measurement>();
+            animalSpeeds[SpeedConstants.Land] = new Measurement("feet per round") { Value = 42 };
+            animalSpeeds[SpeedConstants.Burrow] = new Measurement("feet per round") { Value = 90210 };
+
+            mockSpeedsGenerator
+                .Setup(g => g.Generate(animal))
+                .Returns(animalSpeeds);
+
+            var baseSpeeds = baseCreature.Speeds.ToArray();
+
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Speeds, Has.Count.EqualTo(3)
+                .And.ContainKey(SpeedConstants.Land)
+                .And.ContainKey(SpeedConstants.Climb)
+                .And.ContainKey(SpeedConstants.Burrow));
+
+            Assert.That(creature.Speeds[SpeedConstants.Land].Value, Is.EqualTo(600));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Description, Is.Empty);
+            Assert.That(creature.Speeds[SpeedConstants.Land].Bonuses, Has.Count.EqualTo(1));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Bonuses[0].Value, Is.Negative.And.EqualTo(42 - 600));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Bonuses[0].Condition, Is.EqualTo("In Animal Form"));
+            Assert.That(creature.Speeds[SpeedConstants.Climb].Value, Is.EqualTo(1337));
+            Assert.That(creature.Speeds[SpeedConstants.Climb].Description, Is.Empty);
+            Assert.That(creature.Speeds[SpeedConstants.Climb].Bonuses, Is.Empty);
+            Assert.That(creature.Speeds[SpeedConstants.Burrow].Value, Is.EqualTo(90210));
+            Assert.That(creature.Speeds[SpeedConstants.Burrow].Description, Is.EqualTo("In Animal Form"));
+            Assert.That(creature.Speeds[SpeedConstants.Burrow].Bonuses, Is.Empty);
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public void ApplyTo_GainAnimalSpeeds_WithManeuverability_AsBonus(string template, string animal)
+        {
+            baseCreature.Speeds[SpeedConstants.Land].Value = 600;
+            baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 1337, Description = "Decent Maneuverability" };
+
+            SetUpAnimal(animal);
+
+            var animalSpeeds = new Dictionary<string, Measurement>();
+            animalSpeeds[SpeedConstants.Land] = new Measurement("feet per round") { Value = 9266 };
+            animalSpeeds[SpeedConstants.Burrow] = new Measurement("feet per round") { Value = 90210 };
+            animalSpeeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 42, Description = "OK Maneuverability" };
+
+            mockSpeedsGenerator
+                .Setup(g => g.Generate(animal))
+                .Returns(animalSpeeds);
+
+            var baseSpeeds = baseCreature.Speeds.ToArray();
+
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Speeds, Has.Count.EqualTo(3)
+                .And.ContainKey(SpeedConstants.Land)
+                .And.ContainKey(SpeedConstants.Fly)
+                .And.ContainKey(SpeedConstants.Burrow));
+
+            Assert.That(creature.Speeds[SpeedConstants.Land].Value, Is.EqualTo(600));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Description, Is.Empty);
+            Assert.That(creature.Speeds[SpeedConstants.Land].Bonuses, Has.Count.EqualTo(1));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Bonuses[0].Value, Is.Positive.And.EqualTo(9266 - 600));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Bonuses[0].Condition, Is.EqualTo("In Animal Form"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(1337));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("Decent Maneuverability"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Bonuses, Has.Count.EqualTo(1));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Bonuses[0].Value, Is.Negative.And.EqualTo(42 - 1337));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Bonuses[0].Condition, Is.EqualTo("In Animal Form"));
+            Assert.That(creature.Speeds[SpeedConstants.Burrow].Value, Is.EqualTo(90210));
+            Assert.That(creature.Speeds[SpeedConstants.Burrow].Description, Is.EqualTo("In Animal Form"));
+            Assert.That(creature.Speeds[SpeedConstants.Burrow].Bonuses, Is.Empty);
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public void ApplyTo_GainAnimalSpeeds_WithManeuverability_AsNew(string template, string animal)
+        {
+            baseCreature.Speeds[SpeedConstants.Land].Value = 600;
+
+            SetUpAnimal(animal);
+
+            var animalSpeeds = new Dictionary<string, Measurement>();
+            animalSpeeds[SpeedConstants.Land] = new Measurement("feet per round") { Value = 9266 };
+            animalSpeeds[SpeedConstants.Burrow] = new Measurement("feet per round") { Value = 90210 };
+            animalSpeeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 42, Description = "OK Maneuverability" };
+
+            mockSpeedsGenerator
+                .Setup(g => g.Generate(animal))
+                .Returns(animalSpeeds);
+
+            var baseSpeeds = baseCreature.Speeds.ToArray();
+
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Speeds, Has.Count.EqualTo(3)
+                .And.ContainKey(SpeedConstants.Land)
+                .And.ContainKey(SpeedConstants.Fly)
+                .And.ContainKey(SpeedConstants.Burrow));
+
+            Assert.That(creature.Speeds[SpeedConstants.Land].Value, Is.EqualTo(600));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Description, Is.Empty);
+            Assert.That(creature.Speeds[SpeedConstants.Land].Bonuses, Has.Count.EqualTo(1));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Bonuses[0].Value, Is.Positive.And.EqualTo(9266 - 600));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Bonuses[0].Condition, Is.EqualTo("In Animal Form"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(42));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("OK Maneuverability, In Animal Form"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Bonuses, Is.Empty);
+            Assert.That(creature.Speeds[SpeedConstants.Burrow].Value, Is.EqualTo(90210));
+            Assert.That(creature.Speeds[SpeedConstants.Burrow].Description, Is.EqualTo("In Animal Form"));
+            Assert.That(creature.Speeds[SpeedConstants.Burrow].Bonuses, Is.Empty);
         }
 
         [TestCaseSource(nameof(AllLycanthropeTemplates))]
@@ -1314,12 +1437,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                         "animal skill 1",
                         baseCreature.Abilities[AbilityConstants.Strength],
                         newCap)
-                    { ClassSkill = true, Ranks = animalSkills[0].Ranks },
+                    { ClassSkill = true, Ranks = 10 },
                     new Skill(
                         "animal skill 2",
                         baseCreature.Abilities[AbilityConstants.Strength],
                         newCap)
-                    { ClassSkill = true, Ranks = animalSkills[1].Ranks },
+                    { ClassSkill = true, Ranks = 11 },
                     new Skill(
                         "skill 2",
                         baseCreature.Abilities[AbilityConstants.Strength],
@@ -1354,6 +1477,34 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                         baseCreature.Abilities,
                         false))
                     .Returns(rankedSkills);
+
+                mockFeatsGenerator
+                    .Setup(g => g.GenerateSpecialQualities(
+                        animal,
+                        It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Animal),
+                        animalHitPoints,
+                        baseCreature.Abilities,
+                        rankedSkills,
+                        animalData.CanUseEquipment,
+                        animalData.Size,
+                        baseCreature.Alignment))
+                    .Returns(animalSpecialQualities);
+
+                mockFeatsGenerator
+                    .Setup(g => g.GenerateFeats(
+                        animalHitPoints,
+                        animalBaseAttack,
+                        baseCreature.Abilities,
+                        rankedSkills,
+                        animalAttacks,
+                        animalSpecialQualities,
+                        animalData.CasterLevel,
+                        baseCreature.Speeds,
+                        animalData.NaturalArmor,
+                        animalData.NumberOfHands,
+                        animalData.Size,
+                        animalData.CanUseEquipment))
+                    .Returns(animalFeats);
             }
 
             var creature = applicators[template].ApplyTo(baseCreature);
@@ -1361,9 +1512,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(creature.Skills, Is.SupersetOf(baseSkills));
 
             var skills = creature.Skills.ToArray();
-            var expectedCount = isAfflicted ? 8 : 7;
 
-            Assert.That(skills, Has.Length.EqualTo(expectedCount));
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].ClassSkill, Is.True);
             Assert.That(skills[0].Ranks, Is.EqualTo(1));
@@ -1384,21 +1533,34 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(skills[4].ClassSkill, Is.True);
             Assert.That(skills[4].Ranks, Is.EqualTo(5 + 8));
             Assert.That(skills[4].RankCap, Is.EqualTo(newCap));
-            Assert.That(skills[5].Name, Is.EqualTo("animal skill 1"));
-            Assert.That(skills[5].ClassSkill, Is.True);
-            Assert.That(skills[5].Ranks, Is.EqualTo(animalSkills[0].Ranks));
-            Assert.That(skills[5].RankCap, Is.EqualTo(newCap));
-            Assert.That(skills[6].Name, Is.EqualTo("animal skill 2"));
-            Assert.That(skills[6].ClassSkill, Is.True);
-            Assert.That(skills[6].Ranks, Is.EqualTo(animalSkills[1].Ranks));
-            Assert.That(skills[6].RankCap, Is.EqualTo(newCap));
 
             if (isAfflicted)
             {
+                Assert.That(skills[5].Name, Is.EqualTo("animal skill 1"));
+                Assert.That(skills[5].ClassSkill, Is.True);
+                Assert.That(skills[5].Ranks, Is.EqualTo(10));
+                Assert.That(skills[5].RankCap, Is.EqualTo(newCap));
+                Assert.That(skills[6].Name, Is.EqualTo("animal skill 2"));
+                Assert.That(skills[6].ClassSkill, Is.True);
+                Assert.That(skills[6].Ranks, Is.EqualTo(11));
+                Assert.That(skills[6].RankCap, Is.EqualTo(newCap));
                 Assert.That(skills[7].Name, Is.EqualTo(SkillConstants.Special.ControlShape));
                 Assert.That(skills[7].ClassSkill, Is.True);
                 Assert.That(skills[7].Ranks, Is.EqualTo(9));
                 Assert.That(skills[7].RankCap, Is.EqualTo(newCap));
+                Assert.That(skills, Has.Length.EqualTo(8));
+            }
+            else
+            {
+                Assert.That(skills[5].Name, Is.EqualTo("animal skill 1"));
+                Assert.That(skills[5].ClassSkill, Is.True);
+                Assert.That(skills[5].Ranks, Is.EqualTo(animalSkills[0].Ranks));
+                Assert.That(skills[5].RankCap, Is.EqualTo(newCap));
+                Assert.That(skills[6].Name, Is.EqualTo("animal skill 2"));
+                Assert.That(skills[6].ClassSkill, Is.True);
+                Assert.That(skills[6].Ranks, Is.EqualTo(animalSkills[1].Ranks));
+                Assert.That(skills[6].RankCap, Is.EqualTo(newCap));
+                Assert.That(skills, Has.Length.EqualTo(7));
             }
         }
 
