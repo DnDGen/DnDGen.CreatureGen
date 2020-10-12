@@ -461,6 +461,12 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
                 }
             }
 
+            creature.GrappleBonus = attacksGenerator.GenerateGrappleBonus(
+                creature.Name,
+                creature.Size,
+                creature.BaseAttackBonus,
+                creature.Abilities[AbilityConstants.Strength]);
+
             var animalAttacks = attacksGenerator.GenerateAttacks(
                 AnimalSpecies,
                 animalData.Size,

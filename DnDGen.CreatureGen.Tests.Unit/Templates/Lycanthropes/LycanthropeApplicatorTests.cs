@@ -72,6 +72,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         private List<Feat> animalFeats;
         private int animalBaseAttack;
         private Dictionary<string, Save> animalSaves;
+        private Dictionary<string, Measurement> animalSpeeds;
 
         private static IEnumerable AllLycanthropeTemplates => templates.Select(t => new TestCaseData(t.Template, t.Animal));
 
@@ -258,6 +259,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             animalSpecialQualities = new List<Feat>();
             animalFeats = new List<Feat>();
             animalSaves = new Dictionary<string, Save>();
+            animalSpeeds = new Dictionary<string, Measurement>();
 
             mockHitPointsGenerator
                 .Setup(g => g.RegenerateWith(baseCreature.HitPoints, It.IsAny<IEnumerable<Feat>>()))
@@ -548,6 +550,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     It.Is<IEnumerable<Feat>>(ff => ff.IsEquivalentTo(animalSpecialQualities.Union(animalFeats))),
                     baseCreature.Abilities))
                 .Returns(animalSaves);
+
+            //Speeds
+            animalSpeeds[SpeedConstants.Land] = new Measurement("feet per round") { Value = random.Next(100) + 1 };
+
+            mockSpeedsGenerator
+                .Setup(g => g.Generate(animal))
+                .Returns(animalSpeeds);
         }
 
         private void SetUpRoll(HitDice hitDice, int roll)
@@ -676,19 +685,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         public void ApplyTo_GainAnimalSpeeds_AnimalFaster(string template, string animal)
         {
             baseCreature.Speeds[SpeedConstants.Land].Value = 600;
+            baseCreature.Speeds[SpeedConstants.Land].Description = string.Empty;
             baseCreature.Speeds[SpeedConstants.Climb] = new Measurement("feet per round") { Value = 1337 };
 
             SetUpAnimal(animal);
 
-            var animalSpeeds = new Dictionary<string, Measurement>();
             animalSpeeds[SpeedConstants.Land] = new Measurement("feet per round") { Value = 9266 };
             animalSpeeds[SpeedConstants.Burrow] = new Measurement("feet per round") { Value = 90210 };
-
-            mockSpeedsGenerator
-                .Setup(g => g.Generate(animal))
-                .Returns(animalSpeeds);
-
-            var baseSpeeds = baseCreature.Speeds.ToArray();
 
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -714,19 +717,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         public void ApplyTo_GainAnimalSpeeds_AnimalSlower(string template, string animal)
         {
             baseCreature.Speeds[SpeedConstants.Land].Value = 600;
+            baseCreature.Speeds[SpeedConstants.Land].Description = string.Empty;
             baseCreature.Speeds[SpeedConstants.Climb] = new Measurement("feet per round") { Value = 1337 };
 
             SetUpAnimal(animal);
 
-            var animalSpeeds = new Dictionary<string, Measurement>();
             animalSpeeds[SpeedConstants.Land] = new Measurement("feet per round") { Value = 42 };
             animalSpeeds[SpeedConstants.Burrow] = new Measurement("feet per round") { Value = 90210 };
-
-            mockSpeedsGenerator
-                .Setup(g => g.Generate(animal))
-                .Returns(animalSpeeds);
-
-            var baseSpeeds = baseCreature.Speeds.ToArray();
 
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -752,20 +749,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         public void ApplyTo_GainAnimalSpeeds_WithManeuverability_AsBonus(string template, string animal)
         {
             baseCreature.Speeds[SpeedConstants.Land].Value = 600;
+            baseCreature.Speeds[SpeedConstants.Land].Description = string.Empty;
             baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 1337, Description = "Decent Maneuverability" };
 
             SetUpAnimal(animal);
 
-            var animalSpeeds = new Dictionary<string, Measurement>();
             animalSpeeds[SpeedConstants.Land] = new Measurement("feet per round") { Value = 9266 };
             animalSpeeds[SpeedConstants.Burrow] = new Measurement("feet per round") { Value = 90210 };
             animalSpeeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 42, Description = "OK Maneuverability" };
-
-            mockSpeedsGenerator
-                .Setup(g => g.Generate(animal))
-                .Returns(animalSpeeds);
-
-            var baseSpeeds = baseCreature.Speeds.ToArray();
 
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -793,19 +784,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         public void ApplyTo_GainAnimalSpeeds_WithManeuverability_AsNew(string template, string animal)
         {
             baseCreature.Speeds[SpeedConstants.Land].Value = 600;
+            baseCreature.Speeds[SpeedConstants.Land].Description = string.Empty;
 
             SetUpAnimal(animal);
 
-            var animalSpeeds = new Dictionary<string, Measurement>();
             animalSpeeds[SpeedConstants.Land] = new Measurement("feet per round") { Value = 9266 };
             animalSpeeds[SpeedConstants.Burrow] = new Measurement("feet per round") { Value = 90210 };
             animalSpeeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 42, Description = "OK Maneuverability" };
-
-            mockSpeedsGenerator
-                .Setup(g => g.Generate(animal))
-                .Returns(animalSpeeds);
-
-            var baseSpeeds = baseCreature.Speeds.ToArray();
 
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1594,10 +1579,37 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     false))
                 .Returns(rankedSkills);
 
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    animal,
+                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Animal),
+                    animalHitPoints,
+                    baseCreature.Abilities,
+                    rankedSkills,
+                    animalData.CanUseEquipment,
+                    animalData.Size,
+                    baseCreature.Alignment))
+                .Returns(animalSpecialQualities);
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateFeats(
+                    animalHitPoints,
+                    animalBaseAttack,
+                    baseCreature.Abilities,
+                    rankedSkills,
+                    animalAttacks,
+                    animalSpecialQualities,
+                    animalData.CasterLevel,
+                    baseCreature.Speeds,
+                    animalData.NaturalArmor,
+                    animalData.NumberOfHands,
+                    animalData.Size,
+                    animalData.CanUseEquipment))
+                .Returns(animalFeats);
+
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Skills, Is.SupersetOf(animalSkills)
-                .And.SupersetOf(rankedSkills));
+            Assert.That(creature.Skills, Is.SupersetOf(rankedSkills));
         }
 
         [TestCaseSource(nameof(AllLycanthropeTemplates))]
@@ -1798,10 +1810,1180 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             }
         }
 
-        [Test]
-        public async Task ApplyToAsync_Tests()
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_GainShapechangerSubtype(string template, string animal)
         {
-            Assert.Fail("need to copy");
+            baseCreature.Type.SubTypes = new[]
+            {
+                "subtype 1",
+                "subtype 2",
+            };
+
+            SetUpAnimal(animal);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(3));
+            Assert.That(creature.Type.SubTypes, Contains.Item("subtype 1")
+                .And.Contains("subtype 2")
+                .And.Contains(CreatureConstants.Types.Subtypes.Shapechanger));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_AddAnimalHitPoints_NoConstitutionBonus(string template, string animal)
+        {
+            baseCreature.Abilities[AbilityConstants.Constitution].BaseScore = 10;
+            baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
+
+            SetUpAnimal(animal);
+            SetUpRoll(animalHitPoints.HitDice[0], 9266);
+            SetUpRoll(animalHitPoints.HitDice[0], 90210.42);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
+                .And.Contains(animalHitPoints.HitDice[0]));
+            Assert.That(creature.HitPoints.Constitution, Is.EqualTo(baseCreature.Abilities[AbilityConstants.Constitution]));
+            Assert.That(creature.HitPoints.DefaultRoll, Is.EqualTo($"{creature.HitPoints.HitDice[0].DefaultRoll}+{animalHitPoints.HitDice[0].DefaultRoll}"));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(Math.Floor(baseAverage + 90210.42)));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].Quantity));
+            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].RoundedQuantity));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(baseRoll + 9266));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_AddAnimalHitPoints_WithConstitutionBonus(string template, string animal)
+        {
+            baseCreature.Abilities[AbilityConstants.Constitution].BaseScore = 14;
+            baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
+
+            SetUpAnimal(animal);
+            SetUpRoll(animalHitPoints.HitDice[0], 9266);
+            SetUpRoll(animalHitPoints.HitDice[0], 90210.42);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
+                .And.Contains(animalHitPoints.HitDice[0]));
+            Assert.That(creature.HitPoints.Constitution, Is.EqualTo(baseCreature.Abilities[AbilityConstants.Constitution]));
+
+            var bonus = (animalHitPoints.HitDice[0].Quantity + creature.HitPoints.HitDice[0].RoundedQuantity) * 2;
+            Assert.That(creature.HitPoints.DefaultRoll, Is.EqualTo($"{creature.HitPoints.HitDice[0].DefaultRoll}+{animalHitPoints.HitDice[0].DefaultRoll}+{bonus}"));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(Math.Floor(baseAverage + 90210.42) + bonus));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].Quantity));
+            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].RoundedQuantity));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(baseRoll + 9266 + 4));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_AddAnimalHitPoints_NegativeConstitutionBonus(string template, string animal)
+        {
+            baseCreature.Abilities[AbilityConstants.Constitution].BaseScore = 6;
+            baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
+
+            SetUpAnimal(animal);
+            SetUpRoll(animalHitPoints.HitDice[0], 9266);
+            SetUpRoll(animalHitPoints.HitDice[0], 90210.42);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
+                .And.Contains(animalHitPoints.HitDice[0]));
+            Assert.That(creature.HitPoints.Constitution, Is.EqualTo(baseCreature.Abilities[AbilityConstants.Constitution]));
+
+            var bonus = (animalHitPoints.HitDice[0].Quantity + creature.HitPoints.HitDice[0].RoundedQuantity) * -2;
+            Assert.That(creature.HitPoints.DefaultRoll, Is.EqualTo($"{creature.HitPoints.HitDice[0].DefaultRoll}+{animalHitPoints.HitDice[0].DefaultRoll}{bonus}"));
+            Assert.That(
+                creature.HitPoints.DefaultTotal,
+                Is.EqualTo(Math.Floor(baseAverage + 90210.42) + bonus),
+                $"Base roll: {creature.HitPoints.HitDice[0].DefaultRoll}; Base Average: {baseAverage}; Animal Roll: {animalHitPoints.HitDice[0].DefaultRoll}, Bonus: {bonus}");
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].Quantity));
+            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].RoundedQuantity));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(baseRoll + 9266 - 4));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_AddAnimalHitPoints_WithConditionalBonus(string template, string animal)
+        {
+            baseCreature.Abilities[AbilityConstants.Constitution].BaseScore = 10;
+            baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
+
+            SetUpAnimal(animal);
+            SetUpRoll(animalHitPoints.HitDice[0], 9266);
+            SetUpRoll(animalHitPoints.HitDice[0], 90210.42);
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, animal))
+                .Returns(new[]
+                {
+                    new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 666 },
+                    new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 666 },
+                    new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 8245 },
+                    new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = -666 },
+                    new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = -666 },
+                    new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = -666 },
+                });
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
+                .And.Contains(animalHitPoints.HitDice[0]));
+            Assert.That(creature.HitPoints.Constitution, Is.EqualTo(baseCreature.Abilities[AbilityConstants.Constitution]));
+            Assert.That(creature.HitPoints.DefaultRoll, Is.EqualTo($"{creature.HitPoints.HitDice[0].DefaultRoll}+{animalHitPoints.HitDice[0].DefaultRoll}"));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(Math.Floor(baseAverage + 90210.42)));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].Quantity));
+            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].RoundedQuantity));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(baseRoll + 9266));
+            Assert.That(creature.HitPoints.ConditionalBonuses.Count(), Is.EqualTo(1));
+
+            var bonus = creature.HitPoints.ConditionalBonuses.Single();
+            Assert.That(bonus.Bonus, Is.EqualTo(8245 / 2 * (animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].RoundedQuantity)));
+            Assert.That(bonus.Condition, Is.EqualTo("In Animal or Hybrid form"));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_AddAnimalHitPoints_WithFeats(string template, string animal)
+        {
+            SetUpAnimal(animal);
+
+            var regeneratedHitPoints = new HitPoints();
+            mockHitPointsGenerator
+                .Setup(g => g.RegenerateWith(baseCreature.HitPoints, animalFeats))
+                .Returns(regeneratedHitPoints);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.HitPoints, Is.EqualTo(regeneratedHitPoints));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_GainAnimalSpeeds_AnimalFaster(string template, string animal)
+        {
+            baseCreature.Speeds[SpeedConstants.Land].Value = 600;
+            baseCreature.Speeds[SpeedConstants.Land].Description = string.Empty;
+            baseCreature.Speeds[SpeedConstants.Climb] = new Measurement("feet per round") { Value = 1337 };
+
+            SetUpAnimal(animal);
+
+            animalSpeeds[SpeedConstants.Land] = new Measurement("feet per round") { Value = 9266 };
+            animalSpeeds[SpeedConstants.Burrow] = new Measurement("feet per round") { Value = 90210 };
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Speeds, Has.Count.EqualTo(3)
+                .And.ContainKey(SpeedConstants.Land)
+                .And.ContainKey(SpeedConstants.Climb)
+                .And.ContainKey(SpeedConstants.Burrow));
+
+            Assert.That(creature.Speeds[SpeedConstants.Land].Value, Is.EqualTo(600));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Description, Is.Empty);
+            Assert.That(creature.Speeds[SpeedConstants.Land].Bonuses, Has.Count.EqualTo(1));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Bonuses[0].Value, Is.Positive.And.EqualTo(9266 - 600));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Bonuses[0].Condition, Is.EqualTo("In Animal Form"));
+            Assert.That(creature.Speeds[SpeedConstants.Climb].Value, Is.EqualTo(1337));
+            Assert.That(creature.Speeds[SpeedConstants.Climb].Description, Is.Empty);
+            Assert.That(creature.Speeds[SpeedConstants.Climb].Bonuses, Is.Empty);
+            Assert.That(creature.Speeds[SpeedConstants.Burrow].Value, Is.EqualTo(90210));
+            Assert.That(creature.Speeds[SpeedConstants.Burrow].Description, Is.EqualTo("In Animal Form"));
+            Assert.That(creature.Speeds[SpeedConstants.Burrow].Bonuses, Is.Empty);
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_GainAnimalSpeeds_AnimalSlower(string template, string animal)
+        {
+            baseCreature.Speeds[SpeedConstants.Land].Value = 600;
+            baseCreature.Speeds[SpeedConstants.Land].Description = string.Empty;
+            baseCreature.Speeds[SpeedConstants.Climb] = new Measurement("feet per round") { Value = 1337 };
+
+            SetUpAnimal(animal);
+
+            animalSpeeds[SpeedConstants.Land] = new Measurement("feet per round") { Value = 42 };
+            animalSpeeds[SpeedConstants.Burrow] = new Measurement("feet per round") { Value = 90210 };
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Speeds, Has.Count.EqualTo(3)
+                .And.ContainKey(SpeedConstants.Land)
+                .And.ContainKey(SpeedConstants.Climb)
+                .And.ContainKey(SpeedConstants.Burrow));
+
+            Assert.That(creature.Speeds[SpeedConstants.Land].Value, Is.EqualTo(600));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Description, Is.Empty);
+            Assert.That(creature.Speeds[SpeedConstants.Land].Bonuses, Has.Count.EqualTo(1));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Bonuses[0].Value, Is.Negative.And.EqualTo(42 - 600));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Bonuses[0].Condition, Is.EqualTo("In Animal Form"));
+            Assert.That(creature.Speeds[SpeedConstants.Climb].Value, Is.EqualTo(1337));
+            Assert.That(creature.Speeds[SpeedConstants.Climb].Description, Is.Empty);
+            Assert.That(creature.Speeds[SpeedConstants.Climb].Bonuses, Is.Empty);
+            Assert.That(creature.Speeds[SpeedConstants.Burrow].Value, Is.EqualTo(90210));
+            Assert.That(creature.Speeds[SpeedConstants.Burrow].Description, Is.EqualTo("In Animal Form"));
+            Assert.That(creature.Speeds[SpeedConstants.Burrow].Bonuses, Is.Empty);
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_GainAnimalSpeeds_WithManeuverability_AsBonus(string template, string animal)
+        {
+            baseCreature.Speeds[SpeedConstants.Land].Value = 600;
+            baseCreature.Speeds[SpeedConstants.Land].Description = string.Empty;
+            baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 1337, Description = "Decent Maneuverability" };
+
+            SetUpAnimal(animal);
+
+            animalSpeeds[SpeedConstants.Land] = new Measurement("feet per round") { Value = 9266 };
+            animalSpeeds[SpeedConstants.Burrow] = new Measurement("feet per round") { Value = 90210 };
+            animalSpeeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 42, Description = "OK Maneuverability" };
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Speeds, Has.Count.EqualTo(3)
+                .And.ContainKey(SpeedConstants.Land)
+                .And.ContainKey(SpeedConstants.Fly)
+                .And.ContainKey(SpeedConstants.Burrow));
+
+            Assert.That(creature.Speeds[SpeedConstants.Land].Value, Is.EqualTo(600));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Description, Is.Empty);
+            Assert.That(creature.Speeds[SpeedConstants.Land].Bonuses, Has.Count.EqualTo(1));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Bonuses[0].Value, Is.Positive.And.EqualTo(9266 - 600));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Bonuses[0].Condition, Is.EqualTo("In Animal Form"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(1337));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("Decent Maneuverability"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Bonuses, Has.Count.EqualTo(1));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Bonuses[0].Value, Is.Negative.And.EqualTo(42 - 1337));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Bonuses[0].Condition, Is.EqualTo("In Animal Form"));
+            Assert.That(creature.Speeds[SpeedConstants.Burrow].Value, Is.EqualTo(90210));
+            Assert.That(creature.Speeds[SpeedConstants.Burrow].Description, Is.EqualTo("In Animal Form"));
+            Assert.That(creature.Speeds[SpeedConstants.Burrow].Bonuses, Is.Empty);
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_GainAnimalSpeeds_WithManeuverability_AsNew(string template, string animal)
+        {
+            baseCreature.Speeds[SpeedConstants.Land].Value = 600;
+            baseCreature.Speeds[SpeedConstants.Land].Description = string.Empty;
+
+            SetUpAnimal(animal);
+
+            animalSpeeds[SpeedConstants.Land] = new Measurement("feet per round") { Value = 9266 };
+            animalSpeeds[SpeedConstants.Burrow] = new Measurement("feet per round") { Value = 90210 };
+            animalSpeeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 42, Description = "OK Maneuverability" };
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Speeds, Has.Count.EqualTo(3)
+                .And.ContainKey(SpeedConstants.Land)
+                .And.ContainKey(SpeedConstants.Fly)
+                .And.ContainKey(SpeedConstants.Burrow));
+
+            Assert.That(creature.Speeds[SpeedConstants.Land].Value, Is.EqualTo(600));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Description, Is.Empty);
+            Assert.That(creature.Speeds[SpeedConstants.Land].Bonuses, Has.Count.EqualTo(1));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Bonuses[0].Value, Is.Positive.And.EqualTo(9266 - 600));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Bonuses[0].Condition, Is.EqualTo("In Animal Form"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(42));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("OK Maneuverability, In Animal Form"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Bonuses, Is.Empty);
+            Assert.That(creature.Speeds[SpeedConstants.Burrow].Value, Is.EqualTo(90210));
+            Assert.That(creature.Speeds[SpeedConstants.Burrow].Description, Is.EqualTo("In Animal Form"));
+            Assert.That(creature.Speeds[SpeedConstants.Burrow].Bonuses, Is.Empty);
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_GainNaturalArmor(string template, string animal)
+        {
+            SetUpAnimal(animal, 0);
+
+            baseCreature.ArmorClass.RemoveBonus(ArmorClassConstants.Natural);
+
+            //New for base and animal
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
+
+            var bonuses = creature.ArmorClass.NaturalArmorBonuses.ToArray();
+            Assert.That(bonuses[0].Condition, Is.EqualTo("In base or hybrid form"));
+            Assert.That(bonuses[0].IsConditional, Is.True);
+            Assert.That(bonuses[0].Value, Is.EqualTo(2));
+            Assert.That(bonuses[1].Condition, Is.EqualTo("In animal or hybrid form"));
+            Assert.That(bonuses[1].IsConditional, Is.True);
+            Assert.That(bonuses[1].Value, Is.EqualTo(2));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_GainBaseNaturalArmor(string template, string animal)
+        {
+            SetUpAnimal(animal, 9266);
+
+            baseCreature.ArmorClass.RemoveBonus(ArmorClassConstants.Natural);
+
+            //New for base
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
+
+            var bonuses = creature.ArmorClass.NaturalArmorBonuses.ToArray();
+            Assert.That(bonuses[0].Condition, Is.EqualTo("In base or hybrid form"));
+            Assert.That(bonuses[0].IsConditional, Is.True);
+            Assert.That(bonuses[0].Value, Is.EqualTo(2));
+            Assert.That(bonuses[1].Condition, Is.EqualTo("In animal or hybrid form"));
+            Assert.That(bonuses[1].IsConditional, Is.True);
+            Assert.That(bonuses[1].Value, Is.EqualTo(9266 + 2));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_GainAnimalNaturalArmor(string template, string animal)
+        {
+            SetUpAnimal(animal, 0);
+
+            baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 90210);
+
+            //New for animal
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
+
+            var bonuses = creature.ArmorClass.NaturalArmorBonuses.ToArray();
+            Assert.That(bonuses[0].Condition, Is.EqualTo("In base or hybrid form"));
+            Assert.That(bonuses[0].IsConditional, Is.True);
+            Assert.That(bonuses[0].Value, Is.EqualTo(90210 + 2));
+            Assert.That(bonuses[1].Condition, Is.EqualTo("In animal or hybrid form"));
+            Assert.That(bonuses[1].IsConditional, Is.True);
+            Assert.That(bonuses[1].Value, Is.EqualTo(2));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_ImproveNaturalArmor(string template, string animal)
+        {
+            SetUpAnimal(animal, 9266);
+
+            baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 90210);
+
+            //Both new for base and from animal
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
+
+            var bonuses = creature.ArmorClass.NaturalArmorBonuses.ToArray();
+            Assert.That(bonuses[0].Condition, Is.EqualTo("In base or hybrid form"));
+            Assert.That(bonuses[0].IsConditional, Is.True);
+            Assert.That(bonuses[0].Value, Is.EqualTo(90210 + 2));
+            Assert.That(bonuses[1].Condition, Is.EqualTo("In animal or hybrid form"));
+            Assert.That(bonuses[1].IsConditional, Is.True);
+            Assert.That(bonuses[1].Value, Is.EqualTo(9266 + 2));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_AddAnimalBaseAttack(string template, string animal)
+        {
+            SetUpAnimal(animal);
+
+            var baseAttack = baseCreature.BaseAttackBonus;
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.BaseAttackBonus, Is.EqualTo(baseAttack + animalBaseAttack));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_RecomputeGrappleBonus(string template, string animal)
+        {
+            SetUpAnimal(animal);
+
+            var baseAttack = baseCreature.BaseAttackBonus;
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateGrappleBonus(
+                    baseCreature.Name,
+                    baseCreature.Size,
+                    baseAttack + animalBaseAttack,
+                    baseCreature.Abilities[AbilityConstants.Strength]))
+                .Returns(1337);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.BaseAttackBonus, Is.EqualTo(baseAttack + animalBaseAttack));
+            Assert.That(creature.GrappleBonus, Is.EqualTo(1337));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_AddAnimalAttacks(string template, string animal)
+        {
+            SetUpAnimal(animal);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Attacks, Is.SupersetOf(animalAttacks));
+            Assert.That(animalAttacks[0].Name, Is.EqualTo("animal attack 1 (in Animal form)"));
+            Assert.That(animalAttacks[1].Name, Is.EqualTo("animal attack 2 (in Animal form)"));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_AddAnimalAttacks_WithBonuses(string template, string animal)
+        {
+            SetUpAnimal(animal);
+
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    animalAttacks,
+                    It.Is<IEnumerable<Feat>>(fs =>
+                        fs.IsEquivalentTo(baseCreature.Feats
+                            .Union(baseCreature.SpecialQualities)
+                            .Union(animalSpecialQualities))),
+                    baseCreature.Abilities))
+                .Returns(animalAttacks);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Attacks, Is.SupersetOf(animalAttacks));
+            Assert.That(animalAttacks[0].Name, Is.EqualTo("animal attack 1 (in Animal form)"));
+            Assert.That(animalAttacks[1].Name, Is.EqualTo("animal attack 2 (in Animal form)"));
+        }
+
+        [TestCaseSource(nameof(SizeComparisons))]
+        public async Task ApplyToAsync_AddLycanthropeAttacks_BaseIsBigger(string template, string animal, string smallerSize, string biggerSize)
+        {
+            baseCreature.Size = biggerSize;
+
+            SetUpAnimal(animal, size: smallerSize);
+
+            var lycanthropeAttacks = new[]
+            {
+                new Attack { Name = "lycanthrope attack 1" },
+                new Attack { Name = "lycanthrope attack 2" },
+            };
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    template,
+                    SizeConstants.Medium,
+                    biggerSize,
+                    baseCreature.BaseAttackBonus + animalBaseAttack,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.HitDice[0].RoundedQuantity + animalHitPoints.HitDice[0].RoundedQuantity))
+                .Returns(lycanthropeAttacks);
+
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(lycanthropeAttacks, It.IsAny<IEnumerable<Feat>>(), baseCreature.Abilities))
+                .Returns(lycanthropeAttacks);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Attacks, Is.SupersetOf(lycanthropeAttacks));
+            Assert.That(lycanthropeAttacks[0].Name, Is.EqualTo("lycanthrope attack 1"));
+            Assert.That(lycanthropeAttacks[1].Name, Is.EqualTo("lycanthrope attack 2"));
+        }
+
+        [TestCaseSource(nameof(SizeComparisons))]
+        public async Task ApplyToAsync_AddLycanthropeAttacks_AnimalIsBigger(string template, string animal, string smallerSize, string biggerSize)
+        {
+            baseCreature.Size = smallerSize;
+
+            SetUpAnimal(animal, size: biggerSize);
+
+            var lycanthropeAttacks = new[]
+            {
+                new Attack { Name = "lycanthrope attack 1" },
+                new Attack { Name = "lycanthrope attack 2" },
+            };
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    template,
+                    SizeConstants.Medium,
+                    biggerSize,
+                    baseCreature.BaseAttackBonus + animalBaseAttack,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.HitDice[0].RoundedQuantity + animalHitPoints.HitDice[0].RoundedQuantity))
+                .Returns(lycanthropeAttacks);
+
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(lycanthropeAttacks, It.IsAny<IEnumerable<Feat>>(), baseCreature.Abilities))
+                .Returns(lycanthropeAttacks);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Attacks, Is.SupersetOf(lycanthropeAttacks));
+            Assert.That(lycanthropeAttacks[0].Name, Is.EqualTo("lycanthrope attack 1"));
+            Assert.That(lycanthropeAttacks[1].Name, Is.EqualTo("lycanthrope attack 2"));
+        }
+
+        [TestCaseSource(nameof(Sizes))]
+        public async Task ApplyToAsync_AddLycanthropeAttacks_AnimalAndBaseAreSameSize(string template, string animal, string size)
+        {
+            baseCreature.Size = size;
+
+            SetUpAnimal(animal, size: size);
+
+            var lycanthropeAttacks = new[]
+            {
+                new Attack { Name = "lycanthrope attack 1" },
+                new Attack { Name = "lycanthrope attack 2" },
+            };
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    template,
+                    SizeConstants.Medium,
+                    size,
+                    baseCreature.BaseAttackBonus + animalBaseAttack,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.HitDice[0].RoundedQuantity + animalHitPoints.HitDice[0].RoundedQuantity))
+                .Returns(lycanthropeAttacks);
+
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(lycanthropeAttacks, It.IsAny<IEnumerable<Feat>>(), baseCreature.Abilities))
+                .Returns(lycanthropeAttacks);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Attacks, Is.SupersetOf(lycanthropeAttacks));
+            Assert.That(lycanthropeAttacks[0].Name, Is.EqualTo("lycanthrope attack 1"));
+            Assert.That(lycanthropeAttacks[1].Name, Is.EqualTo("lycanthrope attack 2"));
+        }
+
+        [TestCaseSource(nameof(Sizes))]
+        public async Task ApplyToAsync_AddLycanthropeAttacks_WithBonuses(string template, string animal, string size)
+        {
+            baseCreature.Size = size;
+
+            SetUpAnimal(animal, size: size);
+
+            var lycanthropeAttacks = new[]
+            {
+                new Attack { Name = "lycanthrope attack 1" },
+                new Attack { Name = "lycanthrope attack 2" },
+            };
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    template,
+                    SizeConstants.Medium,
+                    size,
+                    baseCreature.BaseAttackBonus + animalBaseAttack,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.HitDice[0].RoundedQuantity + animalHitPoints.HitDice[0].RoundedQuantity))
+                .Returns(lycanthropeAttacks);
+
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    lycanthropeAttacks,
+                    It.Is<IEnumerable<Feat>>(fs =>
+                        fs.IsEquivalentTo(baseCreature.Feats
+                            .Union(baseCreature.SpecialQualities)
+                            .Union(animalSpecialQualities))),
+                    baseCreature.Abilities))
+                .Returns(lycanthropeAttacks);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Attacks, Is.SupersetOf(lycanthropeAttacks));
+            Assert.That(lycanthropeAttacks[0].Name, Is.EqualTo("lycanthrope attack 1"));
+            Assert.That(lycanthropeAttacks[1].Name, Is.EqualTo("lycanthrope attack 2"));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_AddAnimalAttacks_WithLycanthropy(string template, string animal)
+        {
+            SetUpAnimal(animal);
+
+            var lycanthropeAttacks = new[]
+            {
+                new Attack { Name = "lycanthrope attack 1" },
+                new Attack { Name = "lycanthrope attack 2" },
+                new Attack { Name = $"{animalAttacks[1].Name} (in Hybrid form)", DamageEffect = "my damage effect" },
+            };
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    template,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus + animalBaseAttack,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.HitDice[0].RoundedQuantity + animalHitPoints.HitDice[0].RoundedQuantity))
+                .Returns(lycanthropeAttacks);
+
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(lycanthropeAttacks, It.IsAny<IEnumerable<Feat>>(), baseCreature.Abilities))
+                .Returns(lycanthropeAttacks);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Attacks, Is.SupersetOf(animalAttacks)
+                .And.SupersetOf(lycanthropeAttacks));
+            Assert.That(animalAttacks[0].Name, Is.EqualTo("animal attack 1 (in Animal form)"));
+            Assert.That(animalAttacks[0].DamageEffect, Is.Empty);
+            Assert.That(animalAttacks[1].Name, Is.EqualTo("animal attack 2 (in Animal form)"));
+            Assert.That(animalAttacks[1].DamageEffect, Is.EqualTo("my damage effect"));
+            Assert.That(lycanthropeAttacks[0].Name, Is.EqualTo("lycanthrope attack 1"));
+            Assert.That(lycanthropeAttacks[0].DamageEffect, Is.Empty);
+            Assert.That(lycanthropeAttacks[1].Name, Is.EqualTo("lycanthrope attack 2"));
+            Assert.That(lycanthropeAttacks[1].DamageEffect, Is.Empty);
+            Assert.That(lycanthropeAttacks[2].Name, Is.EqualTo("animal attack 2 (in Hybrid form)"));
+            Assert.That(lycanthropeAttacks[2].DamageEffect, Is.EqualTo("my damage effect"));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_ModifyBaseCreatureAttacks_Humanoid(string template, string animal)
+        {
+            SetUpAnimal(animal);
+
+            var baseAttacks = new[]
+            {
+                new Attack { Name = "melee attack", IsMelee = true, IsSpecial = false },
+                new Attack { Name = "ranged attack", IsMelee = false, IsSpecial = false },
+                new Attack { Name = "special melee attack", IsMelee = true, IsSpecial = true },
+                new Attack { Name = "special ranged attack", IsMelee = false, IsSpecial = true },
+            };
+            baseCreature.Attacks = baseAttacks;
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Attacks, Is.SupersetOf(baseAttacks));
+            Assert.That(baseAttacks[0].Name, Is.EqualTo("melee attack (in Humanoid or Hybrid form)"));
+            Assert.That(baseAttacks[1].Name, Is.EqualTo("ranged attack (in Humanoid or Hybrid form)"));
+            Assert.That(baseAttacks[2].Name, Is.EqualTo("special melee attack (in Humanoid form)"));
+            Assert.That(baseAttacks[3].Name, Is.EqualTo("special ranged attack (in Humanoid form)"));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_ModifyBaseCreatureAttacks_Giant(string template, string animal)
+        {
+            SetUpAnimal(animal);
+
+            baseCreature.Type.Name = CreatureConstants.Types.Giant;
+
+            var baseAttacks = new[]
+            {
+                new Attack { Name = "melee attack", IsMelee = true, IsSpecial = false },
+                new Attack { Name = "ranged attack", IsMelee = false, IsSpecial = false },
+                new Attack { Name = "special melee attack", IsMelee = true, IsSpecial = true },
+                new Attack { Name = "special ranged attack", IsMelee = false, IsSpecial = true },
+            };
+            baseCreature.Attacks = baseAttacks;
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Attacks, Is.SupersetOf(baseAttacks));
+            Assert.That(baseAttacks[0].Name, Is.EqualTo("melee attack (in Giant or Hybrid form)"));
+            Assert.That(baseAttacks[1].Name, Is.EqualTo("ranged attack (in Giant or Hybrid form)"));
+            Assert.That(baseAttacks[2].Name, Is.EqualTo("special melee attack (in Giant form)"));
+            Assert.That(baseAttacks[3].Name, Is.EqualTo("special ranged attack (in Giant form)"));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_AddAnimalSpecialQualities(string template, string animal)
+        {
+            SetUpAnimal(animal);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(animalSpecialQualities));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_AddAnimalSpecialQualities_RemoveDuplicates(string template, string animal)
+        {
+            var baseSpecialQuality = new Feat { Name = "my special quality" };
+            baseCreature.SpecialQualities = baseCreature.SpecialQualities
+                .Union(new[] { baseSpecialQuality });
+
+            SetUpAnimal(animal);
+
+            animalSpecialQualities.Add(new Feat { Name = "my special quality" });
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.SpecialQualities, Contains.Item(animalSpecialQualities[0])
+                .And.Contains(animalSpecialQualities[1])
+                .And.Not.Contains(animalSpecialQualities[2])
+                .And.Contains(baseSpecialQuality));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_AddLycanthropeSpecialQualities(string template, string animal)
+        {
+            SetUpAnimal(animal);
+
+            var lycanthropeSpecialQualities = new[]
+            {
+                new Feat { Name = "lycanthrope special quality 1" },
+                new Feat { Name = "lycanthrope special quality 2" },
+            };
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    template,
+                    baseCreature.Type,
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    It.Is<IEnumerable<Skill>>(ss => ss.IsEquivalentTo(baseCreature.Skills.Union(animalSkills))),
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    baseCreature.Alignment))
+                .Returns(lycanthropeSpecialQualities);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(lycanthropeSpecialQualities));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_AddLycanthropeSpecialQualities_RemoveDuplicates(string template, string animal)
+        {
+            var baseSpecialQuality = new Feat { Name = "my special quality" };
+            baseCreature.SpecialQualities = baseCreature.SpecialQualities
+                .Union(new[] { baseSpecialQuality });
+
+            SetUpAnimal(animal);
+
+            var lycanthropeSpecialQualities = new[]
+            {
+                new Feat { Name = "lycanthrope special quality 1" },
+                new Feat { Name = "my special quality" },
+                new Feat { Name = "lycanthrope special quality 2" },
+            };
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    template,
+                    baseCreature.Type,
+                    baseCreature.HitPoints,
+                    baseCreature.Abilities,
+                    It.Is<IEnumerable<Skill>>(ss => ss.IsEquivalentTo(baseCreature.Skills.Union(animalSkills))),
+                    baseCreature.CanUseEquipment,
+                    baseCreature.Size,
+                    baseCreature.Alignment))
+                .Returns(lycanthropeSpecialQualities);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.SpecialQualities, Contains.Item(lycanthropeSpecialQualities[0])
+                .And.Contains(lycanthropeSpecialQualities[2])
+                .And.Not.Contains(lycanthropeSpecialQualities[1])
+                .And.Contains(baseSpecialQuality));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_AddAnimalSaveBonuses(string template, string animal)
+        {
+            baseCreature.Saves[SaveConstants.Fortitude].BaseValue = 1336;
+            baseCreature.Saves[SaveConstants.Reflex].BaseValue = 96;
+            baseCreature.Saves[SaveConstants.Will].BaseValue = 783;
+
+            SetUpAnimal(animal);
+
+            animalSaves[SaveConstants.Fortitude] = new Save { BaseValue = 600 };
+            animalSaves[SaveConstants.Reflex] = new Save { BaseValue = 1337 };
+            animalSaves[SaveConstants.Will] = new Save { BaseValue = 42 };
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Saves[SaveConstants.Fortitude].BaseValue, Is.EqualTo(1336 + 600));
+            Assert.That(creature.Saves[SaveConstants.Reflex].BaseValue, Is.EqualTo(96 + 1337));
+            Assert.That(creature.Saves[SaveConstants.Will].BaseValue, Is.EqualTo(783 + 42));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_WisdomIncreasesBy2(string template, string animal)
+        {
+            SetUpAnimal(animal);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Abilities[AbilityConstants.Wisdom].TemplateAdjustment, Is.EqualTo(2));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_ConditionalBonusesForHybridAndAnimalForms_FromAnimalBonuses(string template, string animal)
+        {
+            SetUpAnimal(animal);
+
+            var animalAbilityAdjustments = new[]
+            {
+                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 666 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 9266 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 90210 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 666 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 42 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 666 },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, animal))
+                .Returns(animalAbilityAdjustments);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Abilities[AbilityConstants.Wisdom].Bonuses, Is.Empty);
+            Assert.That(creature.Abilities[AbilityConstants.Intelligence].Bonuses, Is.Empty);
+            Assert.That(creature.Abilities[AbilityConstants.Charisma].Bonuses, Is.Empty);
+            Assert.That(creature.Abilities[AbilityConstants.Strength].Bonuses, Has.Count.EqualTo(1));
+            Assert.That(creature.Abilities[AbilityConstants.Strength].Bonuses[0].Value, Is.EqualTo(42));
+            Assert.That(creature.Abilities[AbilityConstants.Strength].Bonuses[0].IsConditional, Is.True);
+            Assert.That(creature.Abilities[AbilityConstants.Strength].Bonuses[0].Condition, Is.EqualTo("In Animal or Hybrid form"));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].Bonuses, Has.Count.EqualTo(1));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].Bonuses[0].Value, Is.EqualTo(9266));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].Bonuses[0].IsConditional, Is.True);
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].Bonuses[0].Condition, Is.EqualTo("In Animal or Hybrid form"));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].Bonuses, Has.Count.EqualTo(1));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].Bonuses[0].Value, Is.EqualTo(90210));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].Bonuses[0].IsConditional, Is.True);
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].Bonuses[0].Condition, Is.EqualTo("In Animal or Hybrid form"));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_GainAnimalSkills(string template, string animal)
+        {
+            SetUpAnimal(animal);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Skills, Is.SupersetOf(animalSkills));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_GainAnimalSkills_CombineWithBaseCreatureSkills(string template, string animal)
+        {
+            var isAfflicted = template.Contains("Afflicted");
+
+            var baseSkills = new[]
+            {
+                new Skill("skill 1", baseCreature.Abilities[AbilityConstants.Strength], 666) { ClassSkill = true, Ranks = 1 },
+                new Skill("untrained skill 1", baseCreature.Abilities[AbilityConstants.Constitution], 666) { ClassSkill = false, Ranks = 2 },
+                new Skill("skill 2", baseCreature.Abilities[AbilityConstants.Dexterity], 666) { ClassSkill = true, Ranks = 3 },
+                new Skill("untrained skill 2", baseCreature.Abilities[AbilityConstants.Wisdom], 666) { ClassSkill = false, Ranks = 4 },
+                new Skill("animal skill 3", baseCreature.Abilities[AbilityConstants.Wisdom], 666) { ClassSkill = false, Ranks = 5 },
+            };
+            baseCreature.Skills = baseSkills;
+
+            SetUpAnimal(animal);
+
+            animalSkills.Add(new Skill("skill 2", baseCreature.Abilities[AbilityConstants.Dexterity], 666) { ClassSkill = true, Ranks = 6 });
+            animalSkills.Add(new Skill("untrained skill 2", baseCreature.Abilities[AbilityConstants.Wisdom], 666) { ClassSkill = false, Ranks = 7 });
+            animalSkills.Add(new Skill("animal skill 3", baseCreature.Abilities[AbilityConstants.Intelligence], 666) { ClassSkill = true, Ranks = 8 });
+
+            var newCap = baseCreature.HitPoints.HitDice[0].RoundedQuantity + animalHitPoints.HitDice[0].RoundedQuantity + 3;
+
+            if (isAfflicted)
+            {
+                var rankedSkills = new[]
+                {
+                    new Skill(
+                        "animal skill 1",
+                        baseCreature.Abilities[AbilityConstants.Strength],
+                        newCap)
+                    { ClassSkill = true, Ranks = 10 },
+                    new Skill(
+                        "animal skill 2",
+                        baseCreature.Abilities[AbilityConstants.Strength],
+                        newCap)
+                    { ClassSkill = true, Ranks = 11 },
+                    new Skill(
+                        "skill 2",
+                        baseCreature.Abilities[AbilityConstants.Strength],
+                        newCap)
+                    { ClassSkill = true, Ranks = 6 },
+                    new Skill(
+                        "untrained skill 2",
+                        baseCreature.Abilities[AbilityConstants.Strength],
+                        newCap)
+                    { ClassSkill = false, Ranks = 7 },
+                    new Skill(
+                        "animal skill 3",
+                        baseCreature.Abilities[AbilityConstants.Strength],
+                        newCap)
+                    { ClassSkill = true, Ranks = 8 },
+                    new Skill(
+                        SkillConstants.Special.ControlShape,
+                        baseCreature.Abilities[AbilityConstants.Wisdom],
+                        newCap)
+                    { ClassSkill = true, Ranks = 9 },
+                };
+
+                mockSkillsGenerator
+                    .Setup(g => g.ApplySkillPointsAsRanks(
+                        It.Is<IEnumerable<Skill>>(ss => ss.All(s => s.Ranks == 0)
+                            && ss.Any(s => s.Name == SkillConstants.Special.ControlShape
+                                && s.BaseAbility == baseCreature.Abilities[AbilityConstants.Wisdom]
+                                && s.ClassSkill
+                                && s.RankCap == newCap)),
+                        animalHitPoints,
+                        It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Animal),
+                        baseCreature.Abilities,
+                        false))
+                    .Returns(rankedSkills);
+
+                mockFeatsGenerator
+                    .Setup(g => g.GenerateSpecialQualities(
+                        animal,
+                        It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Animal),
+                        animalHitPoints,
+                        baseCreature.Abilities,
+                        rankedSkills,
+                        animalData.CanUseEquipment,
+                        animalData.Size,
+                        baseCreature.Alignment))
+                    .Returns(animalSpecialQualities);
+
+                mockFeatsGenerator
+                    .Setup(g => g.GenerateFeats(
+                        animalHitPoints,
+                        animalBaseAttack,
+                        baseCreature.Abilities,
+                        rankedSkills,
+                        animalAttacks,
+                        animalSpecialQualities,
+                        animalData.CasterLevel,
+                        baseCreature.Speeds,
+                        animalData.NaturalArmor,
+                        animalData.NumberOfHands,
+                        animalData.Size,
+                        animalData.CanUseEquipment))
+                    .Returns(animalFeats);
+            }
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Skills, Is.SupersetOf(baseSkills));
+
+            var skills = creature.Skills.ToArray();
+
+            Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
+            Assert.That(skills[0].ClassSkill, Is.True);
+            Assert.That(skills[0].Ranks, Is.EqualTo(1));
+            Assert.That(skills[0].RankCap, Is.EqualTo(newCap));
+            Assert.That(skills[1].Name, Is.EqualTo("untrained skill 1"));
+            Assert.That(skills[1].ClassSkill, Is.False);
+            Assert.That(skills[1].Ranks, Is.EqualTo(2));
+            Assert.That(skills[1].RankCap, Is.EqualTo(newCap));
+            Assert.That(skills[2].Name, Is.EqualTo("skill 2"));
+            Assert.That(skills[2].ClassSkill, Is.True);
+            Assert.That(skills[2].Ranks, Is.EqualTo(3 + 6));
+            Assert.That(skills[2].RankCap, Is.EqualTo(newCap));
+            Assert.That(skills[3].Name, Is.EqualTo("untrained skill 2"));
+            Assert.That(skills[3].ClassSkill, Is.False);
+            Assert.That(skills[3].Ranks, Is.EqualTo(4 + 7));
+            Assert.That(skills[3].RankCap, Is.EqualTo(newCap));
+            Assert.That(skills[4].Name, Is.EqualTo("animal skill 3"));
+            Assert.That(skills[4].ClassSkill, Is.True);
+            Assert.That(skills[4].Ranks, Is.EqualTo(5 + 8));
+            Assert.That(skills[4].RankCap, Is.EqualTo(newCap));
+
+            if (isAfflicted)
+            {
+                Assert.That(skills[5].Name, Is.EqualTo("animal skill 1"));
+                Assert.That(skills[5].ClassSkill, Is.True);
+                Assert.That(skills[5].Ranks, Is.EqualTo(10));
+                Assert.That(skills[5].RankCap, Is.EqualTo(newCap));
+                Assert.That(skills[6].Name, Is.EqualTo("animal skill 2"));
+                Assert.That(skills[6].ClassSkill, Is.True);
+                Assert.That(skills[6].Ranks, Is.EqualTo(11));
+                Assert.That(skills[6].RankCap, Is.EqualTo(newCap));
+                Assert.That(skills[7].Name, Is.EqualTo(SkillConstants.Special.ControlShape));
+                Assert.That(skills[7].ClassSkill, Is.True);
+                Assert.That(skills[7].Ranks, Is.EqualTo(9));
+                Assert.That(skills[7].RankCap, Is.EqualTo(newCap));
+                Assert.That(skills, Has.Length.EqualTo(8));
+            }
+            else
+            {
+                Assert.That(skills[5].Name, Is.EqualTo("animal skill 1"));
+                Assert.That(skills[5].ClassSkill, Is.True);
+                Assert.That(skills[5].Ranks, Is.EqualTo(animalSkills[0].Ranks));
+                Assert.That(skills[5].RankCap, Is.EqualTo(newCap));
+                Assert.That(skills[6].Name, Is.EqualTo("animal skill 2"));
+                Assert.That(skills[6].ClassSkill, Is.True);
+                Assert.That(skills[6].Ranks, Is.EqualTo(animalSkills[1].Ranks));
+                Assert.That(skills[6].RankCap, Is.EqualTo(newCap));
+                Assert.That(skills, Has.Length.EqualTo(7));
+            }
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_GainControlShapeSkill_Afflicted(string template, string animal)
+        {
+            if (!template.Contains("Afflicted"))
+            {
+                Assert.Pass($"{template} is not an Afflicted lycanthrope template");
+            }
+
+            SetUpAnimal(animal);
+
+            var rankedSkills = new[]
+            {
+                new Skill("ranked skill 1", baseCreature.Abilities[AbilityConstants.Strength], int.MaxValue) { ClassSkill = true, Ranks = 1337 },
+                new Skill("ranked skill 2", baseCreature.Abilities[AbilityConstants.Strength], int.MaxValue) { ClassSkill = true, Ranks = 1336 },
+                new Skill(SkillConstants.Special.ControlShape, baseCreature.Abilities[AbilityConstants.Wisdom], int.MaxValue) { ClassSkill = true, Ranks = 96 },
+            };
+
+            mockSkillsGenerator
+                .Setup(g => g.ApplySkillPointsAsRanks(
+                    It.Is<IEnumerable<Skill>>(ss => ss.All(s => s.Ranks == 0)
+                        && ss.Any(s => s.Name == SkillConstants.Special.ControlShape
+                            && s.BaseAbility == baseCreature.Abilities[AbilityConstants.Wisdom]
+                            && s.ClassSkill
+                            && s.RankCap == baseCreature.HitPoints.RoundedHitDiceQuantity + 3)),
+                    animalHitPoints,
+                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Animal),
+                    baseCreature.Abilities,
+                    false))
+                .Returns(rankedSkills);
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateSpecialQualities(
+                    animal,
+                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Animal),
+                    animalHitPoints,
+                    baseCreature.Abilities,
+                    rankedSkills,
+                    animalData.CanUseEquipment,
+                    animalData.Size,
+                    baseCreature.Alignment))
+                .Returns(animalSpecialQualities);
+
+            mockFeatsGenerator
+                .Setup(g => g.GenerateFeats(
+                    animalHitPoints,
+                    animalBaseAttack,
+                    baseCreature.Abilities,
+                    rankedSkills,
+                    animalAttacks,
+                    animalSpecialQualities,
+                    animalData.CasterLevel,
+                    baseCreature.Speeds,
+                    animalData.NaturalArmor,
+                    animalData.NumberOfHands,
+                    animalData.Size,
+                    animalData.CanUseEquipment))
+                .Returns(animalFeats);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Skills, Is.SupersetOf(rankedSkills));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_DoNotGainControlShapeSkill_Natural(string template, string animal)
+        {
+            if (!template.Contains("Natural"))
+            {
+                Assert.Pass($"{template} is not a Natural lycanthrope template");
+            }
+
+            SetUpAnimal(animal);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Skills, Is.SupersetOf(animalSkills));
+
+            var skillNames = creature.Skills.Select(s => s.Name);
+            Assert.That(skillNames, Does.Not.Contain(SkillConstants.Special.ControlShape));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_GainAnimalFeats(string template, string animal)
+        {
+            SetUpAnimal(animal);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Feats, Is.SupersetOf(animalFeats));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_GainAnimalFeats_RemoveDuplicates(string template, string animal)
+        {
+            baseCreature.Feats = baseCreature.Feats.Union(new[] { new Feat { Name = "my feat" } });
+
+            SetUpAnimal(animal);
+
+            animalFeats.Add(new Feat { Name = "my feat" });
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Feats, Contains.Item(animalFeats[0])
+                .And.Contains(animalFeats[1])
+                .And.Not.Contains(animalFeats[2]));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_GainAnimalFeats_KeepDuplicates_IfCanBeTakenMultipleTimes(string template, string animal)
+        {
+            var creatureFeat = new Feat { Name = "my feat", CanBeTakenMultipleTimes = true };
+            baseCreature.Feats = baseCreature.Feats.Union(new[] { creatureFeat });
+
+            SetUpAnimal(animal);
+
+            animalFeats.Add(new Feat { Name = "my feat", CanBeTakenMultipleTimes = true });
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Feats, Contains.Item(creatureFeat)
+                .And.SupersetOf(animalFeats));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_AddAnimalSaveBonuses_WithBonusesFromNewFeats(string template, string animal)
+        {
+            baseCreature.Saves[SaveConstants.Fortitude].BaseValue = 1336;
+            baseCreature.Saves[SaveConstants.Reflex].BaseValue = 96;
+            baseCreature.Saves[SaveConstants.Will].BaseValue = 783;
+
+            SetUpAnimal(animal);
+
+            var animalSaves = new Dictionary<string, Save>();
+            animalSaves[SaveConstants.Fortitude] = new Save { BaseValue = 600 };
+            animalSaves[SaveConstants.Reflex] = new Save { BaseValue = 1337 };
+            animalSaves[SaveConstants.Will] = new Save { BaseValue = 42 };
+
+            animalSaves[SaveConstants.Fortitude].AddBonus(9266);
+            animalSaves[SaveConstants.Fortitude].AddBonus(1234, "with a condition");
+            animalSaves[SaveConstants.Reflex].AddBonus(90210);
+            animalSaves[SaveConstants.Reflex].AddBonus(2345, "with another condition");
+            animalSaves[SaveConstants.Will].AddBonus(8245);
+            animalSaves[SaveConstants.Will].AddBonus(3456, "with yet another condition");
+
+            mockSavesGenerator
+                .Setup(g => g.GenerateWith(
+                    animal,
+                    It.Is<CreatureType>(t => t.Name == CreatureConstants.Types.Animal),
+                    animalHitPoints,
+                    It.Is<IEnumerable<Feat>>(ff => ff.IsEquivalentTo(animalSpecialQualities.Union(animalFeats))),
+                    baseCreature.Abilities))
+                .Returns(animalSaves);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Saves[SaveConstants.Fortitude].BaseValue, Is.EqualTo(1336 + 600));
+            Assert.That(creature.Saves[SaveConstants.Fortitude].Bonus, Is.EqualTo(9266));
+            Assert.That(creature.Saves[SaveConstants.Fortitude].IsConditional, Is.True);
+            Assert.That(creature.Saves[SaveConstants.Reflex].BaseValue, Is.EqualTo(96 + 1337));
+            Assert.That(creature.Saves[SaveConstants.Reflex].Bonus, Is.EqualTo(90210));
+            Assert.That(creature.Saves[SaveConstants.Reflex].IsConditional, Is.True);
+            Assert.That(creature.Saves[SaveConstants.Will].BaseValue, Is.EqualTo(783 + 42));
+            Assert.That(creature.Saves[SaveConstants.Will].Bonus, Is.EqualTo(8245));
+            Assert.That(creature.Saves[SaveConstants.Will].IsConditional, Is.True);
+        }
+
+        [TestCaseSource(nameof(ChallengeRatings))]
+        public async Task ApplyToAsync_IncreaseChallengeRating(string template, string animal, string originalChallengeRating, int animalHitDiceQuantity, string updatedChallengeRating)
+        {
+            baseCreature.ChallengeRating = originalChallengeRating;
+
+            SetUpAnimal(animal, hitDiceQuantity: animalHitDiceQuantity);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.ChallengeRating, Is.EqualTo(updatedChallengeRating));
+        }
+
+        [TestCaseSource(nameof(LevelAdjustments))]
+        public async Task ApplyToAsync_IncreaseLevelAdjustment(string template, string animal, int? oldLevelAdjustment, int? newLevelAdjustment)
+        {
+            baseCreature.LevelAdjustment = oldLevelAdjustment;
+
+            SetUpAnimal(animal);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.LevelAdjustment, Is.EqualTo(newLevelAdjustment));
         }
     }
 }
