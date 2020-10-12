@@ -5137,27 +5137,59 @@
     <entry>Energy Drain@@True@True@False@True@1@Round (6 seconds)@@@supernatural ability@2 negative levels, Vampire gains 5 HP@0@0</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Bear (Werebear)</name>
+    <name>Lycanthrope, Bear (Werebear, Afflicted)</name>
     <entry>Claw@1d6@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite@1d8@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Boar (Wereboar)</name>
+    <name>Lycanthrope, Bear (Werebear, Natural)</name>
+    <entry>Claw@1d6@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d8@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
+    <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+    <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Boar (Wereboar, Afflicted)</name>
     <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Gore@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
     <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Rat (Wererat)</name>
+    <name>Lycanthrope, Boar (Wereboar, Natural)</name>
+    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Gore@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
+    <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)</name>
+    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Gore@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
+    <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)</name>
+    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Gore@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
+    <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Rat (Wererat, Afflicted)</name>
     <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@Disease, Curse of Lycanthropy@0.5@0</entry>
     <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
     <entry>Disease@@True@True@False@True@1@Hit@@@extraordinary ability@Filth Fever@0@0</entry>
     <entry>Filth Fever@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@incubation period 1d3 days; damage 1d3 Dex and 1d3 Con@0@0</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Tiger (Weretiger)</name>
+    <name>Lycanthrope, Dire Rat (Wererat, Natural)</name>
+    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@Disease, Curse of Lycanthropy@0.5@0</entry>
+    <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
+    <entry>Disease@@True@True@False@True@1@Hit@@@extraordinary ability@Filth Fever@0@0</entry>
+    <entry>Filth Fever@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@incubation period 1d3 days; damage 1d3 Dex and 1d3 Con@0@0</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Tiger (Weretiger, Afflicted)</name>
     <entry>Claw@1d8@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite@2d6@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
     <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
@@ -5166,7 +5198,37 @@
     <entry>Rake@1d8@True@True@True@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Wolf (Werewolf)</name>
+    <name>Lycanthrope, Tiger (Weretiger, Natural)</name>
+    <entry>Claw@1d8@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@2d6@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
+    <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
+    <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+    <entry>Pounce@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+    <entry>Rake@1d8@True@True@True@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Wolf (Werewolf, Afflicted)</name>
+    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
+    <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
+    <entry>Trip@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Wolf (Werewolf, Natural)</name>
+    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
+    <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
+    <entry>Trip@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)</name>
+    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
+    <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
+    <entry>Trip@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Wolf (Dire Werewolf, Natural)</name>
     <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
     <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>

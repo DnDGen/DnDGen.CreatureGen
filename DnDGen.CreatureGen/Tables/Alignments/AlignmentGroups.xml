@@ -3312,23 +3312,59 @@
     <entry>Any</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Bear (Werebear)</name>
-    <entry>AlwaysLawful Good</entry>
+    <name>Lycanthrope, Brown Bear (Werebear, Afflicted)</name>
+    <entry>Any</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Boar (Wereboar)</name>
-    <entry>AlwaysTrue Neutral</entry>
+    <name>Lycanthrope, Brown Bear (Werebear, Natural)</name>
+    <entry>Any</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Rat (Wererat)</name>
-    <entry>AlwaysLawful Evil</entry>
+    <name>Lycanthrope, Boar (Wereboar, Afflicted)</name>
+    <entry>Any</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Tiger (Weretiger)</name>
-    <entry>AlwaysTrue Neutral</entry>
+    <name>Lycanthrope, Boar (Wereboar, Natural)</name>
+    <entry>Any</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Wolf (Werewolf)</name>
-    <entry>AlwaysChaotic Evil</entry>
+    <name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)</name>
+    <entry>Any</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)</name>
+    <entry>Any</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Rat (Wererat, Afflicted)</name>
+    <entry>Any</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Rat (Wererat, Natural)</name>
+    <entry>Any</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Tiger (Weretiger, Afflicted)</name>
+    <entry>Any</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Tiger (Weretiger, Natural)</name>
+    <entry>Any</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Wolf (Werewolf, Afflicted)</name>
+    <entry>Any</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Wolf (Werewolf, Natural)</name>
+    <entry>Any</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)</name>
+    <entry>Any</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Wolf (Dire Werewolf, Natural)</name>
+    <entry>Any</entry>
   </collection>
 </collections>

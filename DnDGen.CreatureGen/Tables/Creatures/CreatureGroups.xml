@@ -296,7 +296,6 @@
   </collection>
   <collection>
     <name>Augmented</name>
-    <entry>Lycanthrope</entry>
     <entry>Celestial Creature</entry>
     <entry>Fiendish Creature</entry>
     <entry>Half-Celestial</entry>
@@ -1043,11 +1042,20 @@
   </collection>
   <collection>
     <name>Lycanthrope</name>
-    <entry>Lycanthrope, Bear (Werebear)</entry>
-    <entry>Lycanthrope, Boar (Wereboar)</entry>
-    <entry>Lycanthrope, Rat (Wererat)</entry>
-    <entry>Lycanthrope, Tiger (Weretiger)</entry>
-    <entry>Lycanthrope, Wolf (Werewolf)</entry>
+    <entry>Lycanthrope, Bear (Werebear, Afflicted)</entry>
+    <entry>Lycanthrope, Bear (Werebear, Natural)</entry>
+    <entry>Lycanthrope, Boar (Wereboar, Afflicted)</entry>
+    <entry>Lycanthrope, Boar (Wereboar, Natural)</entry>
+    <entry>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)</entry>
+    <entry>Lycanthrope, Dire Boar (Dire Wereboar, Natural)</entry>
+    <entry>Lycanthrope, Dire Rat (Wererat, Afflicted)</entry>
+    <entry>Lycanthrope, Dire Rat (Wererat, Natural)</entry>
+    <entry>Lycanthrope, Tiger (Weretiger, Afflicted)</entry>
+    <entry>Lycanthrope, Tiger (Weretiger, Natural)</entry>
+    <entry>Lycanthrope, Wolf (Werewolf, Afflicted)</entry>
+    <entry>Lycanthrope, Wolf (Werewolf, Natural)</entry>
+    <entry>Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)</entry>
+    <entry>Lycanthrope, Dire Wolf (Dire Werewolf, Natural)</entry>
   </collection>
   <collection>
     <name>Magical Beast</name>
