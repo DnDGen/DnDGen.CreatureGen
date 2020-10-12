@@ -98,10 +98,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Skills
         }
 
         [Test]
-        public void CannotSetRanksAboveRankCap()
+        public void CannotSetRanksAboveRankCap_Add()
         {
             skill.Ranks = skill.RankCap;
-            Assert.That(() => skill.Ranks++, Throws.InvalidOperationException.With.Message.EqualTo("Ranks cannot exceed the Rank Cap"));
+            Assert.That(() => skill.Ranks++, Throws.InvalidOperationException.With.Message.EqualTo("90211 Ranks for Skill 'skill name' cannot exceed the Rank Cap of 90210"));
+        }
+
+        [Test]
+        public void CannotSetRanksAboveRankCap_Set()
+        {
+            skill.Ranks = skill.RankCap;
+            Assert.That(() => skill.Ranks = 600 * 1337, Throws.InvalidOperationException.With.Message.EqualTo("802200 Ranks for Skill 'skill name' cannot exceed the Rank Cap of 90210"));
         }
 
         [Test]

@@ -1406,7 +1406,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             };
             baseCreature.Skills = baseSkills;
 
-            SetUpAnimal(animal);
+            SetUpAnimal(animal, hitDiceQuantity: 11);
 
             animalSkills.Add(new Skill("skill 2", baseCreature.Abilities[AbilityConstants.Dexterity], 666) { ClassSkill = true, Ranks = 6 });
             animalSkills.Add(new Skill("untrained skill 2", baseCreature.Abilities[AbilityConstants.Wisdom], 666) { ClassSkill = false, Ranks = 7 });
@@ -2653,7 +2653,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             };
             baseCreature.Skills = baseSkills;
 
-            SetUpAnimal(animal);
+            SetUpAnimal(animal, hitDiceQuantity: 11);
 
             animalSkills.Add(new Skill("skill 2", baseCreature.Abilities[AbilityConstants.Dexterity], 666) { ClassSkill = true, Ranks = 6 });
             animalSkills.Add(new Skill("untrained skill 2", baseCreature.Abilities[AbilityConstants.Wisdom], 666) { ClassSkill = false, Ranks = 7 });
