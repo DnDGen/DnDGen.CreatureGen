@@ -218,7 +218,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Groups.HalfDragon,
             CreatureConstants.Templates.HalfFiend,
             CreatureConstants.Templates.Lich,
-            CreatureConstants.Groups.Lycanthrope,
             CreatureConstants.Templates.Vampire)]
         [TestCase(CreatureConstants.Types.Subtypes.Chaotic,
             CreatureConstants.ChaosBeast,

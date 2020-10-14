@@ -44,6 +44,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
 
             AssertUniqueCollection(table[name].Select(e => helper.BuildKey(name, e)));
 
+            var actualKeys = actual.Select(d => helper.BuildKey(name, d));
+            var expectedKeys = expected.Select(d => helper.BuildKey(name, d));
+
+            Assert.That(actualKeys, Is.EqualTo(expectedKeys));
+
             for (var i = 0; i < actual.Length; i++)
             {
                 var actualKey = helper.BuildKey(name, actual[i]);

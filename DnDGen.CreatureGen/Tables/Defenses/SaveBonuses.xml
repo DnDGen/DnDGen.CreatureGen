@@ -2359,19 +2359,46 @@
     <name>Zombie</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Bear (Werebear)</name>
+    <name>Lycanthrope, Brown Bear (Werebear, Afflicted)</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Boar (Wereboar)</name>
+    <name>Lycanthrope, Brown Bear (Werebear, Natural)</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Rat (Wererat)</name>
+    <name>Lycanthrope, Boar (Wereboar, Afflicted)</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Tiger (Weretiger)</name>
+    <name>Lycanthrope, Boar (Wereboar, Natural)</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Wolf (Werewolf)</name>
+    <name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Rat (Wererat, Afflicted)</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Rat (Wererat, Natural)</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Tiger (Weretiger, Afflicted)</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Tiger (Weretiger, Natural)</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Wolf (Werewolf, Afflicted)</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Wolf (Werewolf, Natural)</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Wolf (Dire Werewolf, Natural)</name>
   </collection>
   <collection>
     <name></name>

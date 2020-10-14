@@ -346,7 +346,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction + ": in Animal or Hybrid form", focus: "Vulnerable to silver", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
             testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Boar or boar-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+            testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Dire Boar or boar-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
             testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Boars and dire boars", power: 4));
             testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
             testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
@@ -423,7 +423,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted].Add(helper.BuildData(FeatConstants.SpecialQualities.DamageReduction + ": in Animal or Hybrid form", focus: "Vulnerable to silver", power: 5, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Hit));
             testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted].Add(helper.BuildData(FeatConstants.IronWill, power: 2));
 
-            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Wolf or wolf-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
+            testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.AlternateForm, focus: "Dire Wolf or wolf-humanoid hybrid", frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
             testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.LycanthropicEmpathy, focus: "Wolves and dire wolves", power: 4));
             testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.LowLightVision));
             testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
