@@ -91,6 +91,9 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             var animalCreatureType = new CreatureType { Name = CreatureConstants.Types.Animal };
             var animalData = creatureDataSelector.SelectFor(AnimalSpecies);
 
+            // Template
+            UpdateCreatureTemplate(creature);
+
             // Creature type
             UpdateCreatureType(creature);
 
@@ -540,11 +543,20 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             creature.ArmorClass.AddBonus(ArmorClassConstants.Natural, animalData.NaturalArmor + 2, "In animal or hybrid form");
         }
 
+        private void UpdateCreatureTemplate(Creature creature)
+        {
+            creature.Template = LycanthropeSpecies;
+        }
+
         public async Task<Creature> ApplyToAsync(Creature creature)
         {
             var animalCreatureType = new CreatureType { Name = CreatureConstants.Types.Animal };
             var animalData = creatureDataSelector.SelectFor(AnimalSpecies);
             var tasks = new List<Task>();
+
+            // Template
+            var templateTask = Task.Run(() => UpdateCreatureTemplate(creature));
+            tasks.Add(templateTask);
 
             // Creature type
             var typeTask = Task.Run(() => UpdateCreatureType(creature));

@@ -2985,5 +2985,25 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.LevelAdjustment, Is.EqualTo(newLevelAdjustment));
         }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public void ApplyTo_SetsTemplate(string template, string animal)
+        {
+            SetUpAnimal(animal);
+
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Template, Is.EqualTo(template));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_SetsTemplate(string template, string animal)
+        {
+            SetUpAnimal(animal);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Template, Is.EqualTo(template));
+        }
     }
 }

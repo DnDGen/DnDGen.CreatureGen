@@ -46,6 +46,9 @@ namespace DnDGen.CreatureGen.Templates
 
         public Creature ApplyTo(Creature creature)
         {
+            // Template
+            UpdateCreatureTemplate(creature);
+
             // Creature type
             UpdateCreatureType(creature);
 
@@ -77,6 +80,11 @@ namespace DnDGen.CreatureGen.Templates
             UpdateCreatureMagic(creature);
 
             return creature;
+        }
+
+        private void UpdateCreatureTemplate(Creature creature)
+        {
+            creature.Template = CreatureConstants.Templates.CelestialCreature;
         }
 
         private void UpdateCreatureType(Creature creature)
@@ -195,6 +203,10 @@ namespace DnDGen.CreatureGen.Templates
         public async Task<Creature> ApplyToAsync(Creature creature)
         {
             var tasks = new List<Task>();
+
+            // Template
+            var templateTask = Task.Run(() => UpdateCreatureTemplate(creature));
+            tasks.Add(templateTask);
 
             // Creature type
             var typeTask = Task.Run(() => UpdateCreatureType(creature));

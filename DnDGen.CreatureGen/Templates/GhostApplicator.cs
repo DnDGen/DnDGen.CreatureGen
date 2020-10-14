@@ -61,6 +61,9 @@ namespace DnDGen.CreatureGen.Templates
 
         public Creature ApplyTo(Creature creature)
         {
+            // Template
+            UpdateCreatureTemplate(creature);
+
             //Type
             UpdateCreatureType(creature);
 
@@ -286,9 +289,18 @@ namespace DnDGen.CreatureGen.Templates
             creature.SpecialQualities = creature.SpecialQualities.Union(ghostQualities);
         }
 
+        private void UpdateCreatureTemplate(Creature creature)
+        {
+            creature.Template = CreatureConstants.Templates.Ghost;
+        }
+
         public async Task<Creature> ApplyToAsync(Creature creature)
         {
             var tasks = new List<Task>();
+
+            // Template
+            var templateTask = Task.Run(() => UpdateCreatureTemplate(creature));
+            tasks.Add(templateTask);
 
             //Type
             var typeTask = Task.Run(() => UpdateCreatureType(creature));

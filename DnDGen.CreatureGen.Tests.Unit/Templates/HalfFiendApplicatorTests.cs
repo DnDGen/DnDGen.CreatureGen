@@ -2327,5 +2327,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Magic, Is.EqualTo(newMagic));
         }
+
+        [Test]
+        public void ApplyTo_SetsTemplate()
+        {
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.HalfFiend));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_SetsTemplate()
+        {
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.HalfFiend));
+        }
     }
 }

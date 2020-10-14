@@ -5631,19 +5631,46 @@
     <name>SkeletonAutomatic</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Bear (Werebear)Automatic</name>
+    <name>Lycanthrope, Brown Bear (Werebear, Afflicted)Automatic</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Boar (Wereboar)Automatic</name>
+    <name>Lycanthrope, Brown Bear (Werebear, Natural)Automatic</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Rat (Wererat)Automatic</name>
+    <name>Lycanthrope, Boar (Wereboar, Afflicted)Automatic</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Tiger (Weretiger)Automatic</name>
+    <name>Lycanthrope, Boar (Wereboar, Natural)Automatic</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Wolf (Werewolf)Automatic</name>
+    <name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)Automatic</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)Automatic</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Rat (Wererat, Afflicted)Automatic</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Rat (Wererat, Natural)Automatic</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Tiger (Weretiger, Afflicted)Automatic</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Tiger (Weretiger, Natural)Automatic</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Wolf (Werewolf, Afflicted)Automatic</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Wolf (Werewolf, Natural)Automatic</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)Automatic</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Wolf (Dire Werewolf, Natural)Automatic</name>
   </collection>
   <collection>
     <name>Half-Dragon (Black)Automatic</name>
@@ -5710,19 +5737,46 @@
     <name>SkeletonBonus</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Bear (Werebear)Bonus</name>
+    <name>Lycanthrope, Brown Bear (Werebear, Afflicted)Bonus</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Boar (Wereboar)Bonus</name>
+    <name>Lycanthrope, Brown Bear (Werebear, Natural)Bonus</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Rat (Wererat)Bonus</name>
+    <name>Lycanthrope, Boar (Wereboar, Afflicted)Bonus</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Tiger (Weretiger)Bonus</name>
+    <name>Lycanthrope, Boar (Wereboar, Natural)Bonus</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Wolf (Werewolf)Bonus</name>
+    <name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)Bonus</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)Bonus</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Rat (Wererat, Afflicted)Bonus</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Rat (Wererat, Natural)Bonus</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Tiger (Weretiger, Afflicted)Bonus</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Tiger (Weretiger, Natural)Bonus</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Wolf (Werewolf, Afflicted)Bonus</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Wolf (Werewolf, Natural)Bonus</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)Bonus</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Wolf (Dire Werewolf, Natural)Bonus</name>
   </collection>
   <collection>
     <name>Half-Dragon (Black)Bonus</name>

@@ -2020,5 +2020,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             if (quantity > 7)
                 Assert.That(newItems[9].Name, Is.EqualTo("Item 4.2"));
         }
+
+        [Test]
+        public void ApplyTo_SetsTemplate()
+        {
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.Ghost));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_SetsTemplate()
+        {
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.Ghost));
+        }
     }
 }

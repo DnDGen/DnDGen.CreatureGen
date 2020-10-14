@@ -102,6 +102,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         {
             var creature = creatureGenerator.Generate(CreatureConstants.Human, template);
             creatureAsserter.AssertCreature(creature);
+            Assert.That(creature.Template, Is.EqualTo(template));
         }
 
         [TestCase(CreatureConstants.Ape, CreatureConstants.Templates.FiendishCreature)]
@@ -291,6 +292,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         {
             var creature = creatureGenerator.Generate(creatureName, template);
             creatureAsserter.AssertCreature(creature);
+            Assert.That(creature.Template, Is.EqualTo(template));
         }
 
         [TestCase(CreatureConstants.Destrachan)]

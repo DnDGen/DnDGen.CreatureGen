@@ -260,6 +260,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(isCompatible, Is.False);
         }
 
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
+        public void ApplyTo_SetsTemplate(string template)
+        {
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Template, Is.EqualTo(template));
+        }
+
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
+        public async Task ApplyToAsync_SetsTemplate(string template)
+        {
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Template, Is.EqualTo(template));
+        }
+
         [TestCaseSource(nameof(CreatureTypeAdjusted))]
         public void ApplyTo_CreatureTypeIsAdjusted(string template, string original)
         {

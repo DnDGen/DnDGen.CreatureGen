@@ -253,9 +253,17 @@ namespace DnDGen.CreatureGen.Tests.Integration
             Assert.That(speed.Unit, Is.EqualTo("feet per round"), message);
 
             if (name == SpeedConstants.Fly)
+            {
                 Assert.That(speed.Description, Is.Not.Empty, message);
+            }
+            else if (creatureSummary.Contains("Lycanthrope"))
+            {
+                Assert.That(speed.Description, Is.Empty.Or.EqualTo("In Animal Form"), message);
+            }
             else
+            {
                 Assert.That(speed.Description, Is.Empty, message);
+            }
         }
 
         private void VerifyAbilities(Creature creature)
