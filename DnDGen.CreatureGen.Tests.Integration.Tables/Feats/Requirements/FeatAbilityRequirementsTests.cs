@@ -280,6 +280,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
             featsWithFoci.Add($"{FeatConstants.WeaponProficiency_Martial}/{WeaponConstants.DwarvenUrgrosh}");
             featsWithFoci.Add($"{FeatConstants.WeaponProficiency_Martial}/{WeaponConstants.DwarvenWaraxe}");
             featsWithFoci.Add($"{FeatConstants.WeaponProficiency_Martial}/{WeaponConstants.OrcDoubleAxe}");
+            featsWithFoci.Add($"{FeatConstants.WeaponProficiency_Martial}/{WeaponConstants.GnomeHookedHammer}");
 
             var exoticWeapons = WeaponConstants.GetAllExotic(false, false);
             foreach (var weapon in exoticWeapons)

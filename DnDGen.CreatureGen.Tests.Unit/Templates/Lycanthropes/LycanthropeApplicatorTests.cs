@@ -74,8 +74,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         private int animalBaseAttack;
         private Dictionary<string, Save> animalSaves;
         private Dictionary<string, Measurement> animalSpeeds;
-        private Dictionary<string, ISetupSequentialResult<IEnumerable<int>>> rollSequencies;
-        private Dictionary<string, ISetupSequentialResult<double>> averageSequencies;
+        private Dictionary<string, ISetupSequentialResult<IEnumerable<int>>> rollSequences;
+        private Dictionary<string, ISetupSequentialResult<double>> averageSequences;
 
         private static IEnumerable AllLycanthropeTemplates => templates.Select(t => new TestCaseData(t.Template, t.Animal));
 
@@ -263,8 +263,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             animalFeats = new List<Feat>();
             animalSaves = new Dictionary<string, Save>();
             animalSpeeds = new Dictionary<string, Measurement>();
-            rollSequencies = new Dictionary<string, ISetupSequentialResult<IEnumerable<int>>>();
-            averageSequencies = new Dictionary<string, ISetupSequentialResult<double>>();
+            rollSequences = new Dictionary<string, ISetupSequentialResult<IEnumerable<int>>>();
+            averageSequences = new Dictionary<string, ISetupSequentialResult<double>>();
 
             mockHitPointsGenerator
                 .Setup(g => g.RegenerateWith(baseCreature.HitPoints, It.IsAny<IEnumerable<Feat>>()))
@@ -573,24 +573,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Returns(animalSpeeds);
         }
 
-        private void SetUpRoll(HitDice hitDice, int roll, bool reset = false)
+        private void SetUpRoll(HitDice hitDice, int roll)
         {
-            if (!rollSequencies.ContainsKey(hitDice.DefaultRoll) || reset)
-            {
-                rollSequencies[hitDice.DefaultRoll] = mockDice.SetupSequence(d => d.Roll(hitDice.RoundedQuantity).d(hitDice.HitDie).AsIndividualRolls<int>());
-            }
+            if (!rollSequences.ContainsKey(hitDice.DefaultRoll))
+                rollSequences[hitDice.DefaultRoll] = mockDice.SetupSequence(d => d.Roll(hitDice.RoundedQuantity).d(hitDice.HitDie).AsIndividualRolls<int>());
 
-            rollSequencies[hitDice.DefaultRoll] = rollSequencies[hitDice.DefaultRoll].Returns(new[] { roll });
+            rollSequences[hitDice.DefaultRoll] = rollSequences[hitDice.DefaultRoll].Returns(new[] { roll });
         }
 
-        private void SetUpRoll(HitDice hitDice, double average, bool reset = false)
+        private void SetUpRoll(HitDice hitDice, double average)
         {
-            if (!averageSequencies.ContainsKey(hitDice.DefaultRoll) || reset)
-            {
-                averageSequencies[hitDice.DefaultRoll] = mockDice.SetupSequence(d => d.Roll(hitDice.RoundedQuantity).d(hitDice.HitDie).AsPotentialAverage());
-            }
+            if (!averageSequences.ContainsKey(hitDice.DefaultRoll))
+                averageSequences[hitDice.DefaultRoll] = mockDice.SetupSequence(d => d.Roll(hitDice.RoundedQuantity).d(hitDice.HitDie).AsPotentialAverage());
 
-            averageSequencies[hitDice.DefaultRoll] = averageSequencies[hitDice.DefaultRoll].Returns(average);
+            averageSequences[hitDice.DefaultRoll] = averageSequences[hitDice.DefaultRoll].Returns(average);
         }
 
         [TestCaseSource(nameof(AllLycanthropeTemplates))]
@@ -660,11 +656,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.HitPoints.HitDice[0].Quantity = bQ;
             baseCreature.HitPoints.HitDice[0].HitDie = bD;
 
+            mockDice.Reset();
+            rollSequences.Clear();
+            averageSequences.Clear();
+
             baseRoll = bR;
-            SetUpRoll(baseCreature.HitPoints.HitDice[0], baseRoll, true);
+            SetUpRoll(baseCreature.HitPoints.HitDice[0], baseRoll);
 
             baseAverage = bA;
-            SetUpRoll(baseCreature.HitPoints.HitDice[0], baseAverage, true);
+            SetUpRoll(baseCreature.HitPoints.HitDice[0], baseAverage);
 
             baseCreature.Abilities[AbilityConstants.Constitution].BaseScore = 6;
             baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
@@ -723,11 +723,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.HitPoints.HitDice[0].Quantity = bQ;
             baseCreature.HitPoints.HitDice[0].HitDie = bD;
 
+            mockDice.Reset();
+            rollSequences.Clear();
+            averageSequences.Clear();
+
             baseRoll = bR;
-            SetUpRoll(baseCreature.HitPoints.HitDice[0], baseRoll, true);
+            SetUpRoll(baseCreature.HitPoints.HitDice[0], baseRoll);
 
             baseAverage = bA;
-            SetUpRoll(baseCreature.HitPoints.HitDice[0], baseAverage, true);
+            SetUpRoll(baseCreature.HitPoints.HitDice[0], baseAverage);
 
             baseCreature.Abilities[AbilityConstants.Constitution].BaseScore = 14;
             baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
@@ -761,11 +765,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.HitPoints.HitDice[0].Quantity = bQ;
             baseCreature.HitPoints.HitDice[0].HitDie = bD;
 
+            mockDice.Reset();
+            rollSequences.Clear();
+            averageSequences.Clear();
+
             baseRoll = bR;
-            SetUpRoll(baseCreature.HitPoints.HitDice[0], baseRoll, true);
+            SetUpRoll(baseCreature.HitPoints.HitDice[0], baseRoll);
 
             baseAverage = bA;
-            SetUpRoll(baseCreature.HitPoints.HitDice[0], baseAverage, true);
+            SetUpRoll(baseCreature.HitPoints.HitDice[0], baseAverage);
 
             baseCreature.Abilities[AbilityConstants.Constitution].BaseScore = 6;
             baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
@@ -802,11 +810,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.HitPoints.HitDice[0].Quantity = bQ;
             baseCreature.HitPoints.HitDice[0].HitDie = bD;
 
+            mockDice.Reset();
+            rollSequences.Clear();
+            averageSequences.Clear();
+
             baseRoll = bR;
-            SetUpRoll(baseCreature.HitPoints.HitDice[0], baseRoll, true);
+            SetUpRoll(baseCreature.HitPoints.HitDice[0], baseRoll);
 
             baseAverage = bA;
-            SetUpRoll(baseCreature.HitPoints.HitDice[0], baseAverage, true);
+            SetUpRoll(baseCreature.HitPoints.HitDice[0], baseAverage);
 
             baseCreature.Abilities[AbilityConstants.Constitution].BaseScore = 14;
             baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;

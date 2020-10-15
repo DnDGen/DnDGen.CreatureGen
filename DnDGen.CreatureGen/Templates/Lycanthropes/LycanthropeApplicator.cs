@@ -238,22 +238,12 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
 
             var newCap = creature.HitPoints.RoundedHitDiceQuantity + 3;
 
-            foreach (var creatureSkill in creature.Skills)
-            {
-                creatureSkill.RankCap = newCap;
-            }
-
-            foreach (var animalSkill in animalSkills)
-            {
-                animalSkill.RankCap = newCap;
-            }
-
             if (LycanthropeSpecies.Contains("Afflicted"))
             {
                 var controlShape = new Skill(
                     SkillConstants.Special.ControlShape,
                     creature.Abilities[AbilityConstants.Wisdom],
-                    creature.HitPoints.RoundedHitDiceQuantity + 3);
+                    animalHitPoints.RoundedHitDiceQuantity);
                 controlShape.ClassSkill = true;
 
                 animalSkills = animalSkills.Union(new[] { controlShape });
@@ -271,8 +261,15 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
                     false);
             }
 
+            foreach (var creatureSkill in creature.Skills)
+            {
+                creatureSkill.RankCap = newCap;
+            }
+
             foreach (var animalSkill in animalSkills)
             {
+                animalSkill.RankCap = newCap;
+
                 var creatureSkill = creature.Skills.FirstOrDefault(s => s.Key == animalSkill.Key);
                 if (creatureSkill != null)
                 {
