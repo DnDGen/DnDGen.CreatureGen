@@ -652,12 +652,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         }
 
         [TestCaseSource(nameof(BUG_HitPointTotals))]
-        public void BUG_ApplyTo_AddAnimalHitPoints_NegativeConstitutionBonus(string template, string animal, int bQ, int bD, double bA, int aQ, int aD)
+        public void BUG_ApplyTo_AddAnimalHitPoints_NegativeConstitutionBonus(string template, string animal, int bQ, int bD, int bR, double bA, int aQ, int aD)
         {
             baseCreature.HitPoints.HitDice[0].Quantity = bQ;
             baseCreature.HitPoints.HitDice[0].HitDie = bD;
 
-            baseRoll = random.Next(bQ * bD) + bQ;
+            baseRoll = bR;
             SetUpRoll(baseCreature.HitPoints.HitDice[0], baseRoll, true);
 
             baseAverage = bA;
@@ -695,20 +695,29 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             {
                 foreach (var template in templates)
                 {
-                    yield return new TestCaseData(template.Template, template.Animal, 8, 11, 52, 8, 11);
-                    yield return new TestCaseData(template.Template, template.Animal, 1, 5, 3.5, 4, 10);
-                    yield return new TestCaseData(template.Template, template.Animal, 1, 9, 5.5, 44, 4);
+                    yield return new TestCaseData(template.Template, template.Animal, 1, 4, 1, 3, 76, 10);
+                    yield return new TestCaseData(template.Template, template.Animal, 1, 4, 2, 3, 76, 10);
+                    yield return new TestCaseData(template.Template, template.Animal, 1, 4, 3, 3, 76, 10);
+                    yield return new TestCaseData(template.Template, template.Animal, 1, 5, 1, 3.5, 4, 10);
+                    yield return new TestCaseData(template.Template, template.Animal, 1, 5, 2, 3.5, 4, 10);
+                    yield return new TestCaseData(template.Template, template.Animal, 1, 5, 3, 3.5, 4, 10);
+                    yield return new TestCaseData(template.Template, template.Animal, 1, 9, 1, 5.5, 44, 4);
+                    yield return new TestCaseData(template.Template, template.Animal, 1, 9, 2, 5.5, 44, 4);
+                    yield return new TestCaseData(template.Template, template.Animal, 1, 9, 5, 5.5, 44, 4);
+                    yield return new TestCaseData(template.Template, template.Animal, 1, 10, 6, 6, 7, 9);
+                    yield return new TestCaseData(template.Template, template.Animal, 2, 6, 8, 8, 71, 10);
+                    yield return new TestCaseData(template.Template, template.Animal, 8, 11, 52, 52, 8, 11);
                 }
             }
         }
 
         [TestCaseSource(nameof(BUG_HitPointTotals))]
-        public void BUG_ApplyTo_AddAnimalHitPoints_WithConstitutionBonus(string template, string animal, int bQ, int bD, double bA, int aQ, int aD)
+        public void BUG_ApplyTo_AddAnimalHitPoints_WithConstitutionBonus(string template, string animal, int bQ, int bD, int bR, double bA, int aQ, int aD)
         {
             baseCreature.HitPoints.HitDice[0].Quantity = bQ;
             baseCreature.HitPoints.HitDice[0].HitDie = bD;
 
-            baseRoll = random.Next(bQ * bD) + bQ;
+            baseRoll = bR;
             SetUpRoll(baseCreature.HitPoints.HitDice[0], baseRoll, true);
 
             baseAverage = bA;
@@ -741,12 +750,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         }
 
         [TestCaseSource(nameof(BUG_HitPointTotals))]
-        public async Task BUG_ApplyToAsync_AddAnimalHitPoints_NegativeConstitutionBonus(string template, string animal, int bQ, int bD, double bA, int aQ, int aD)
+        public async Task BUG_ApplyToAsync_AddAnimalHitPoints_NegativeConstitutionBonus(string template, string animal, int bQ, int bD, int bR, double bA, int aQ, int aD)
         {
             baseCreature.HitPoints.HitDice[0].Quantity = bQ;
             baseCreature.HitPoints.HitDice[0].HitDie = bD;
 
-            baseRoll = random.Next(bQ * bD) + bQ;
+            baseRoll = bR;
             SetUpRoll(baseCreature.HitPoints.HitDice[0], baseRoll, true);
 
             baseAverage = bA;
@@ -779,12 +788,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         }
 
         [TestCaseSource(nameof(BUG_HitPointTotals))]
-        public async Task BUG_ApplyToAsync_AddAnimalHitPoints_WithConstitutionBonus(string template, string animal, int bQ, int bD, double bA, int aQ, int aD)
+        public async Task BUG_ApplyToAsync_AddAnimalHitPoints_WithConstitutionBonus(string template, string animal, int bQ, int bD, int bR, double bA, int aQ, int aD)
         {
             baseCreature.HitPoints.HitDice[0].Quantity = bQ;
             baseCreature.HitPoints.HitDice[0].HitDie = bD;
 
-            baseRoll = random.Next(bQ * bD) + bQ;
+            baseRoll = bR;
             SetUpRoll(baseCreature.HitPoints.HitDice[0], baseRoll, true);
 
             baseAverage = bA;
