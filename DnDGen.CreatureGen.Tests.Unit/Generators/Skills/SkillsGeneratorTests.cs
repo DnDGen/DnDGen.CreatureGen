@@ -173,6 +173,56 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
+        public void SetRankCap_WithFirstLevelBonus()
+        {
+            hitPoints.HitDice[0].Quantity = 42;
+
+            AddCreatureSkills(2);
+            AddUntrainedSkills(2);
+
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size, true);
+
+            var skillsArray = skills.ToArray();
+            Assert.That(skillsArray[0].Name, Is.EqualTo(untrainedSkills[0]));
+            Assert.That(skillsArray[0].ClassSkill, Is.False);
+            Assert.That(skillsArray[0].RankCap, Is.EqualTo(42 + 3));
+            Assert.That(skillsArray[1].Name, Is.EqualTo(untrainedSkills[1]));
+            Assert.That(skillsArray[1].ClassSkill, Is.False);
+            Assert.That(skillsArray[1].RankCap, Is.EqualTo(42 + 3));
+            Assert.That(skillsArray[2].Name, Is.EqualTo(creatureSkills[0]));
+            Assert.That(skillsArray[2].ClassSkill, Is.True);
+            Assert.That(skillsArray[2].RankCap, Is.EqualTo(42 + 3));
+            Assert.That(skillsArray[3].Name, Is.EqualTo(creatureSkills[1]));
+            Assert.That(skillsArray[3].ClassSkill, Is.True);
+            Assert.That(skillsArray[3].RankCap, Is.EqualTo(42 + 3));
+        }
+
+        [Test]
+        public void SetRankCap_WithoutFirstLevelBonus()
+        {
+            hitPoints.HitDice[0].Quantity = 42;
+
+            AddCreatureSkills(2);
+            AddUntrainedSkills(2);
+
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size, false);
+
+            var skillsArray = skills.ToArray();
+            Assert.That(skillsArray[0].Name, Is.EqualTo(untrainedSkills[0]));
+            Assert.That(skillsArray[0].ClassSkill, Is.False);
+            Assert.That(skillsArray[0].RankCap, Is.EqualTo(42));
+            Assert.That(skillsArray[1].Name, Is.EqualTo(untrainedSkills[1]));
+            Assert.That(skillsArray[1].ClassSkill, Is.False);
+            Assert.That(skillsArray[1].RankCap, Is.EqualTo(42));
+            Assert.That(skillsArray[2].Name, Is.EqualTo(creatureSkills[0]));
+            Assert.That(skillsArray[2].ClassSkill, Is.True);
+            Assert.That(skillsArray[2].RankCap, Is.EqualTo(42));
+            Assert.That(skillsArray[3].Name, Is.EqualTo(creatureSkills[1]));
+            Assert.That(skillsArray[3].ClassSkill, Is.True);
+            Assert.That(skillsArray[3].RankCap, Is.EqualTo(42));
+        }
+
+        [Test]
         public void SetClassSkill()
         {
             AddCreatureSkills(2);

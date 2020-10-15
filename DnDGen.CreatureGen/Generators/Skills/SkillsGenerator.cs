@@ -45,7 +45,7 @@ namespace DnDGen.CreatureGen.Generators.Skills
             //INFO: Must do union in this direction, so that when we build selections, the creature skills overwrite noncreature skills
             var allSkillNames = untrainedSkillNames.Union(creatureSkillNames);
             var skillSelections = GetSkillSelections(allSkillNames, creatureSkillNames);
-            var skills = InitializeSkills(abilities, skillSelections, hitPoints, creatureSkillNames);
+            var skills = InitializeSkills(abilities, skillSelections, hitPoints, includeFirstHitDieBonus);
 
             skills = ApplySkillPointsAsRanks(skills, hitPoints, creatureType, abilities, includeFirstHitDieBonus);
             skills = ApplyBonuses(creatureName, creatureType, skills, size);
@@ -167,7 +167,12 @@ namespace DnDGen.CreatureGen.Generators.Skills
             return skills;
         }
 
-        public IEnumerable<Skill> ApplySkillPointsAsRanks(IEnumerable<Skill> skills, HitPoints hitPoints, CreatureType creatureType, Dictionary<string, Ability> abilities, bool includeFirstHitDieBonus)
+        public IEnumerable<Skill> ApplySkillPointsAsRanks(
+            IEnumerable<Skill> skills,
+            HitPoints hitPoints,
+            CreatureType creatureType,
+            Dictionary<string, Ability> abilities,
+            bool includeFirstHitDieBonus)
         {
             var points = GetTotalSkillPoints(creatureType, hitPoints.RoundedHitDiceQuantity, abilities[AbilityConstants.Intelligence], includeFirstHitDieBonus);
             var totalRanksAvailable = skills.Sum(s => s.RankCap);
@@ -226,7 +231,13 @@ namespace DnDGen.CreatureGen.Generators.Skills
 
             if (skillSelection.RandomFociQuantity >= skillFoci.Count)
             {
-                return skillFoci.Select(f => new SkillSelection { BaseAbilityName = skillSelection.BaseAbilityName, SkillName = skillSelection.SkillName, Focus = f, ClassSkill = skillSelection.ClassSkill });
+                return skillFoci.Select(f => new SkillSelection
+                {
+                    BaseAbilityName = skillSelection.BaseAbilityName,
+                    SkillName = skillSelection.SkillName,
+                    Focus = f,
+                    ClassSkill = skillSelection.ClassSkill
+                });
             }
 
             var selections = new List<SkillSelection>();
@@ -248,7 +259,11 @@ namespace DnDGen.CreatureGen.Generators.Skills
             return selections;
         }
 
-        private IEnumerable<Skill> InitializeSkills(Dictionary<string, Ability> abilities, IEnumerable<SkillSelection> skillSelections, HitPoints hitPoints, IEnumerable<string> creatureSkills)
+        private IEnumerable<Skill> InitializeSkills(
+            Dictionary<string, Ability> abilities,
+            IEnumerable<SkillSelection> skillSelections,
+            HitPoints hitPoints,
+            bool includeFirstHitDieBonus)
         {
             var skills = new List<Skill>();
             var skillsWithArmorCheckPenalties = collectionsSelector.SelectFrom(TableNameConstants.Collection.SkillGroups, GroupConstants.ArmorCheckPenalty);
@@ -258,10 +273,12 @@ namespace DnDGen.CreatureGen.Generators.Skills
                 if (!abilities[skillSelection.BaseAbilityName].HasScore)
                     continue;
 
-                var skill = new Skill(skillSelection.SkillName, abilities[skillSelection.BaseAbilityName], hitPoints.RoundedHitDiceQuantity + 3, skillSelection.Focus);
+                var skill = new Skill(skillSelection.SkillName, abilities[skillSelection.BaseAbilityName], hitPoints.RoundedHitDiceQuantity, skillSelection.Focus);
+
+                if (includeFirstHitDieBonus)
+                    skill.RankCap += 3;
 
                 skill.HasArmorCheckPenalty = skillsWithArmorCheckPenalties.Contains(skill.Name);
-                //INFO: all creature skills are class skills
                 skill.ClassSkill = skillSelection.ClassSkill;
 
                 skills.Add(skill);

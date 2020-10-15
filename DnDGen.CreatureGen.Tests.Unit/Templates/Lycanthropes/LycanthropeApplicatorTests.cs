@@ -18,6 +18,7 @@ using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using Moq;
+using Moq.Language;
 using NUnit.Framework;
 using System;
 using System.Collections;
@@ -73,6 +74,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         private int animalBaseAttack;
         private Dictionary<string, Save> animalSaves;
         private Dictionary<string, Measurement> animalSpeeds;
+        private Dictionary<string, ISetupSequentialResult<IEnumerable<int>>> rollSequencies;
+        private Dictionary<string, ISetupSequentialResult<double>> averageSequencies;
 
         private static IEnumerable AllLycanthropeTemplates => templates.Select(t => new TestCaseData(t.Template, t.Animal));
 
@@ -260,6 +263,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             animalFeats = new List<Feat>();
             animalSaves = new Dictionary<string, Save>();
             animalSpeeds = new Dictionary<string, Measurement>();
+            rollSequencies = new Dictionary<string, ISetupSequentialResult<IEnumerable<int>>>();
+            averageSequencies = new Dictionary<string, ISetupSequentialResult<double>>();
 
             mockHitPointsGenerator
                 .Setup(g => g.RegenerateWith(baseCreature.HitPoints, It.IsAny<IEnumerable<Feat>>()))
@@ -390,9 +395,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
             baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
 
-            SetUpAnimal(animal);
-            SetUpRoll(animalHitPoints.HitDice[0], 9266);
-            SetUpRoll(animalHitPoints.HitDice[0], 90210.42);
+            SetUpAnimal(animal, roll: 9266, average: 90210.42);
 
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -406,7 +409,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(creature.HitPoints.Total, Is.EqualTo(baseRoll + 9266));
         }
 
-        private void SetUpAnimal(string animal, int naturalArmor = -1, string size = null, int hitDiceQuantity = 0)
+        private void SetUpAnimal(
+            string animal,
+            int naturalArmor = -1,
+            string size = null,
+            int hitDiceQuantity = 0,
+            int hitDiceDie = 0,
+            int roll = 0,
+            double average = 0)
         {
             //Data
             animalData.Size = size ?? "animal size";
@@ -422,7 +432,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             //Hit points
             var hitDie = new HitDice();
             hitDie.Quantity = hitDiceQuantity > 0 ? hitDiceQuantity : random.Next(100) + 1;
-            hitDie.HitDie = random.Next(9) + 4;
+            hitDie.HitDie = hitDiceDie > 0 ? hitDiceDie : random.Next(9) + 4;
             animalHitPoints.HitDice.Add(hitDie);
 
             mockHitPointsGenerator
@@ -434,10 +444,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     0))
                 .Returns(animalHitPoints);
 
-            var roll = random.Next(hitDie.RoundedQuantity * hitDie.HitDie) + hitDie.RoundedQuantity;
+            if (roll == 0)
+                roll = random.Next(hitDie.RoundedQuantity * hitDie.HitDie) + hitDie.RoundedQuantity;
+
             SetUpRoll(hitDie, roll);
 
-            var average = hitDie.RoundedQuantity * hitDie.HitDie / 2d + hitDie.RoundedQuantity;
+            if (average == 0)
+                average = hitDie.RoundedQuantity * hitDie.HitDie / 2d + hitDie.RoundedQuantity;
+
             SetUpRoll(hitDie, average);
 
             //Skills
@@ -559,18 +573,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Returns(animalSpeeds);
         }
 
-        private void SetUpRoll(HitDice hitDice, int roll)
+        private void SetUpRoll(HitDice hitDice, int roll, bool reset = false)
         {
-            mockDice
-                .Setup(d => d.Roll(hitDice.RoundedQuantity).d(hitDice.HitDie).AsIndividualRolls<int>())
-                .Returns(new[] { roll });
+            if (!rollSequencies.ContainsKey(hitDice.DefaultRoll) || reset)
+            {
+                rollSequencies[hitDice.DefaultRoll] = mockDice.SetupSequence(d => d.Roll(hitDice.RoundedQuantity).d(hitDice.HitDie).AsIndividualRolls<int>());
+            }
+
+            rollSequencies[hitDice.DefaultRoll] = rollSequencies[hitDice.DefaultRoll].Returns(new[] { roll });
         }
 
-        private void SetUpRoll(HitDice hitDice, double average)
+        private void SetUpRoll(HitDice hitDice, double average, bool reset = false)
         {
-            mockDice
-                .Setup(d => d.Roll(hitDice.RoundedQuantity).d(hitDice.HitDie).AsPotentialAverage())
-                .Returns(average);
+            if (!averageSequencies.ContainsKey(hitDice.DefaultRoll) || reset)
+            {
+                averageSequencies[hitDice.DefaultRoll] = mockDice.SetupSequence(d => d.Roll(hitDice.RoundedQuantity).d(hitDice.HitDie).AsPotentialAverage());
+            }
+
+            averageSequencies[hitDice.DefaultRoll] = averageSequencies[hitDice.DefaultRoll].Returns(average);
         }
 
         [TestCaseSource(nameof(AllLycanthropeTemplates))]
@@ -580,9 +600,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
             baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
 
-            SetUpAnimal(animal);
-            SetUpRoll(animalHitPoints.HitDice[0], 9266);
-            SetUpRoll(animalHitPoints.HitDice[0], 90210.42);
+            SetUpAnimal(animal, roll: 9266, average: 90210.42);
 
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -592,7 +610,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             var bonus = (animalHitPoints.HitDice[0].Quantity + creature.HitPoints.HitDice[0].RoundedQuantity) * 2;
             Assert.That(creature.HitPoints.DefaultRoll, Is.EqualTo($"{creature.HitPoints.HitDice[0].DefaultRoll}+{animalHitPoints.HitDice[0].DefaultRoll}+{bonus}"));
-            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(Math.Floor(baseAverage + 90210.42) + bonus), $"Base Average: {baseAverage}; Bonus: {bonus}");
+            Assert.That(
+                creature.HitPoints.DefaultTotal,
+                Is.EqualTo(Math.Floor(baseAverage + 90210.42) + bonus),
+                $"Base roll: {creature.HitPoints.HitDice[0].DefaultRoll}; Base Average: {baseAverage}; Animal Roll: {animalHitPoints.HitDice[0].DefaultRoll}, Bonus: {bonus}");
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].Quantity));
             Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].RoundedQuantity));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(baseRoll + 9266 + 4));
@@ -605,9 +626,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
             baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
 
-            SetUpAnimal(animal);
-            SetUpRoll(animalHitPoints.HitDice[0], 9266);
-            SetUpRoll(animalHitPoints.HitDice[0], 90210.42);
+            SetUpAnimal(animal, roll: 9266, average: 90210.42);
 
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -626,6 +645,157 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(creature.HitPoints.Total, Is.EqualTo(baseRoll + 9266 - 4));
         }
 
+        [TestCaseSource(nameof(BUG_HitPointTotals))]
+        public void BUG_ApplyTo_AddAnimalHitPoints_NegativeConstitutionBonus(string template, string animal, int bQ, int bD, double bA, int aQ, int aD)
+        {
+            baseCreature.HitPoints.HitDice[0].Quantity = bQ;
+            baseCreature.HitPoints.HitDice[0].HitDie = bD;
+
+            baseRoll = random.Next(bQ * bD) + bQ;
+            SetUpRoll(baseCreature.HitPoints.HitDice[0], baseRoll, true);
+
+            baseAverage = bA;
+            SetUpRoll(baseCreature.HitPoints.HitDice[0], baseAverage, true);
+
+            baseCreature.Abilities[AbilityConstants.Constitution].BaseScore = 6;
+            baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
+
+            SetUpAnimal(animal, hitDiceQuantity: aQ, hitDiceDie: aD, roll: 9266, average: 90210.42);
+
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
+                .And.Contains(animalHitPoints.HitDice[0]));
+            Assert.That(creature.HitPoints.Constitution, Is.EqualTo(baseCreature.Abilities[AbilityConstants.Constitution]));
+
+            var bonus = (animalHitPoints.HitDice[0].Quantity + creature.HitPoints.HitDice[0].RoundedQuantity) * -2;
+            Assert.That(creature.HitPoints.DefaultRoll, Is.EqualTo($"{creature.HitPoints.HitDice[0].DefaultRoll}+{animalHitPoints.HitDice[0].DefaultRoll}{bonus}"));
+            Assert.That(
+                creature.HitPoints.DefaultTotal,
+                Is.EqualTo(Math.Floor(baseAverage + 90210.42) + bonus),
+                $"Base roll: {creature.HitPoints.HitDice[0].DefaultRoll}; Base Average: {baseAverage}; Animal Roll: {animalHitPoints.HitDice[0].DefaultRoll}, Bonus: {bonus}");
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].Quantity));
+            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].RoundedQuantity));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(baseRoll + 9266 - 4));
+        }
+
+        private static IEnumerable BUG_HitPointTotals
+        {
+            get
+            {
+                foreach (var template in templates)
+                {
+                    yield return new TestCaseData(template.Template, template.Animal, 8, 11, 52, 8, 11);
+                }
+            }
+        }
+
+        [TestCaseSource(nameof(BUG_HitPointTotals))]
+        public void BUG_ApplyTo_AddAnimalHitPoints_WithConstitutionBonus(string template, string animal, int bQ, int bD, double bA, int aQ, int aD)
+        {
+            baseCreature.HitPoints.HitDice[0].Quantity = bQ;
+            baseCreature.HitPoints.HitDice[0].HitDie = bD;
+
+            baseRoll = random.Next(bQ * bD) + bQ;
+            SetUpRoll(baseCreature.HitPoints.HitDice[0], baseRoll, true);
+
+            baseAverage = bA;
+            SetUpRoll(baseCreature.HitPoints.HitDice[0], baseAverage, true);
+
+            baseCreature.Abilities[AbilityConstants.Constitution].BaseScore = 14;
+            baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
+
+            SetUpAnimal(animal, hitDiceQuantity: aQ, hitDiceDie: aD, roll: 9266, average: 90210.42);
+
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
+                .And.Contains(animalHitPoints.HitDice[0]));
+            Assert.That(creature.HitPoints.Constitution, Is.EqualTo(baseCreature.Abilities[AbilityConstants.Constitution]));
+
+            var bonus = (animalHitPoints.HitDice[0].Quantity + creature.HitPoints.HitDice[0].RoundedQuantity) * 2;
+            Assert.That(creature.HitPoints.DefaultRoll, Is.EqualTo($"{creature.HitPoints.HitDice[0].DefaultRoll}+{animalHitPoints.HitDice[0].DefaultRoll}+{bonus}"));
+            Assert.That(
+                creature.HitPoints.DefaultTotal,
+                Is.EqualTo(Math.Floor(baseAverage + 90210.42) + bonus),
+                $"Base roll: {creature.HitPoints.HitDice[0].DefaultRoll}; Base Average: {baseAverage}; Animal Roll: {animalHitPoints.HitDice[0].DefaultRoll}, Bonus: {bonus}");
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].Quantity));
+            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].RoundedQuantity));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(baseRoll + 9266 + 4));
+        }
+
+        [TestCaseSource(nameof(BUG_HitPointTotals))]
+        public async Task BUG_ApplyToAsync_AddAnimalHitPoints_NegativeConstitutionBonus(string template, string animal, int bQ, int bD, double bA, int aQ, int aD)
+        {
+            baseCreature.HitPoints.HitDice[0].Quantity = bQ;
+            baseCreature.HitPoints.HitDice[0].HitDie = bD;
+
+            baseRoll = random.Next(bQ * bD) + bQ;
+            SetUpRoll(baseCreature.HitPoints.HitDice[0], baseRoll, true);
+
+            baseAverage = bA;
+            SetUpRoll(baseCreature.HitPoints.HitDice[0], baseAverage, true);
+
+            baseCreature.Abilities[AbilityConstants.Constitution].BaseScore = 6;
+            baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
+
+            SetUpAnimal(animal, hitDiceQuantity: aQ, hitDiceDie: aD, roll: 9266, average: 90210.42);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
+                .And.Contains(animalHitPoints.HitDice[0]));
+            Assert.That(creature.HitPoints.Constitution, Is.EqualTo(baseCreature.Abilities[AbilityConstants.Constitution]));
+
+            var bonus = (animalHitPoints.HitDice[0].Quantity + creature.HitPoints.HitDice[0].RoundedQuantity) * -2;
+            Assert.That(creature.HitPoints.DefaultRoll, Is.EqualTo($"{creature.HitPoints.HitDice[0].DefaultRoll}+{animalHitPoints.HitDice[0].DefaultRoll}{bonus}"));
+            Assert.That(
+                creature.HitPoints.DefaultTotal,
+                Is.EqualTo(Math.Floor(baseAverage + 90210.42) + bonus),
+                $"Base roll: {creature.HitPoints.HitDice[0].DefaultRoll}; Base Average: {baseAverage}; Animal Roll: {animalHitPoints.HitDice[0].DefaultRoll}, Bonus: {bonus}");
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].Quantity));
+            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].RoundedQuantity));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(baseRoll + 9266 - 4));
+        }
+
+        [TestCaseSource(nameof(BUG_HitPointTotals))]
+        public async Task BUG_ApplyToAsync_AddAnimalHitPoints_WithConstitutionBonus(string template, string animal, int bQ, int bD, double bA, int aQ, int aD)
+        {
+            baseCreature.HitPoints.HitDice[0].Quantity = bQ;
+            baseCreature.HitPoints.HitDice[0].HitDie = bD;
+
+            baseRoll = random.Next(bQ * bD) + bQ;
+            SetUpRoll(baseCreature.HitPoints.HitDice[0], baseRoll, true);
+
+            baseAverage = bA;
+            SetUpRoll(baseCreature.HitPoints.HitDice[0], baseAverage, true);
+
+            baseCreature.Abilities[AbilityConstants.Constitution].BaseScore = 14;
+            baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
+            baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
+
+            SetUpAnimal(animal, hitDiceQuantity: aQ, hitDiceDie: aD, roll: 9266, average: 90210.42);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
+                .And.Contains(animalHitPoints.HitDice[0]));
+            Assert.That(creature.HitPoints.Constitution, Is.EqualTo(baseCreature.Abilities[AbilityConstants.Constitution]));
+
+            var bonus = (animalHitPoints.HitDice[0].Quantity + creature.HitPoints.HitDice[0].RoundedQuantity) * 2;
+            Assert.That(creature.HitPoints.DefaultRoll, Is.EqualTo($"{creature.HitPoints.HitDice[0].DefaultRoll}+{animalHitPoints.HitDice[0].DefaultRoll}+{bonus}"));
+            Assert.That(
+                creature.HitPoints.DefaultTotal,
+                Is.EqualTo(Math.Floor(baseAverage + 90210.42) + bonus),
+                $"Base roll: {creature.HitPoints.HitDice[0].DefaultRoll}; Base Average: {baseAverage}; Animal Roll: {animalHitPoints.HitDice[0].DefaultRoll}, Bonus: {bonus}");
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].Quantity));
+            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].RoundedQuantity));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(baseRoll + 9266 + 4));
+        }
+
         [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_AddAnimalHitPoints_WithConditionalBonus(string template, string animal)
         {
@@ -633,9 +803,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
             baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
 
-            SetUpAnimal(animal);
-            SetUpRoll(animalHitPoints.HitDice[0], 9266);
-            SetUpRoll(animalHitPoints.HitDice[0], 90210.42);
+            SetUpAnimal(animal, roll: 9266, average: 90210.42);
 
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, animal))
@@ -1567,7 +1735,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             SetUpAnimal(animal, hitDiceQuantity: 11);
 
-            var animalCap = animalHitPoints.HitDice[0].RoundedQuantity + 3;
+            var animalCap = animalHitPoints.HitDice[0].RoundedQuantity;
             animalSkills.Add(new Skill("skill 2", baseCreature.Abilities[AbilityConstants.Dexterity], animalCap) { ClassSkill = true, Ranks = animalCap - 2 });
             animalSkills.Add(new Skill("untrained skill 2", baseCreature.Abilities[AbilityConstants.Wisdom], animalCap) { ClassSkill = false, Ranks = animalCap - 1 });
             animalSkills.Add(new Skill("animal skill 3", baseCreature.Abilities[AbilityConstants.Intelligence], animalCap) { ClassSkill = true, Ranks = animalCap });
@@ -1660,23 +1828,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             Assert.That(skills[0].Name, Is.EqualTo("skill 1"));
             Assert.That(skills[0].ClassSkill, Is.True);
-            Assert.That(skills[0].Ranks, Is.EqualTo(1));
+            Assert.That(skills[0].Ranks, Is.EqualTo(oldCap - 4));
             Assert.That(skills[0].RankCap, Is.EqualTo(newCap));
             Assert.That(skills[1].Name, Is.EqualTo("untrained skill 1"));
             Assert.That(skills[1].ClassSkill, Is.False);
-            Assert.That(skills[1].Ranks, Is.EqualTo(2));
+            Assert.That(skills[1].Ranks, Is.EqualTo(oldCap - 3));
             Assert.That(skills[1].RankCap, Is.EqualTo(newCap));
             Assert.That(skills[2].Name, Is.EqualTo("skill 2"));
             Assert.That(skills[2].ClassSkill, Is.True);
-            Assert.That(skills[2].Ranks, Is.EqualTo(3 + 6));
+            Assert.That(skills[2].Ranks, Is.EqualTo(oldCap - 2 + animalCap - 2));
             Assert.That(skills[2].RankCap, Is.EqualTo(newCap));
             Assert.That(skills[3].Name, Is.EqualTo("untrained skill 2"));
             Assert.That(skills[3].ClassSkill, Is.False);
-            Assert.That(skills[3].Ranks, Is.EqualTo(4 + 7));
+            Assert.That(skills[3].Ranks, Is.EqualTo(oldCap - 1 + animalCap - 1));
             Assert.That(skills[3].RankCap, Is.EqualTo(newCap));
             Assert.That(skills[4].Name, Is.EqualTo("animal skill 3"));
             Assert.That(skills[4].ClassSkill, Is.True);
-            Assert.That(skills[4].Ranks, Is.EqualTo(5 + 8));
+            Assert.That(skills[4].Ranks, Is.EqualTo(oldCap + animalCap));
             Assert.That(skills[4].RankCap, Is.EqualTo(newCap));
 
             if (isAfflicted)
@@ -1996,9 +2164,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
             baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
 
-            SetUpAnimal(animal);
-            SetUpRoll(animalHitPoints.HitDice[0], 9266);
-            SetUpRoll(animalHitPoints.HitDice[0], 90210.42);
+            SetUpAnimal(animal, roll: 9266, average: 90210.42);
 
             var creature = await applicators[template].ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -2019,9 +2185,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
             baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
 
-            SetUpAnimal(animal);
-            SetUpRoll(animalHitPoints.HitDice[0], 9266);
-            SetUpRoll(animalHitPoints.HitDice[0], 90210.42);
+            SetUpAnimal(animal, roll: 9266, average: 90210.42);
 
             var creature = await applicators[template].ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -2050,9 +2214,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
             baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
 
-            SetUpAnimal(animal);
-            SetUpRoll(animalHitPoints.HitDice[0], 9266);
-            SetUpRoll(animalHitPoints.HitDice[0], 90210.42);
+            SetUpAnimal(animal, roll: 9266, average: 90210.42);
 
             var creature = await applicators[template].ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -2081,9 +2243,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.Abilities[AbilityConstants.Constitution].RacialAdjustment = 0;
             baseCreature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = 0;
 
-            SetUpAnimal(animal);
-            SetUpRoll(animalHitPoints.HitDice[0], 9266);
-            SetUpRoll(animalHitPoints.HitDice[0], 90210.42);
+            SetUpAnimal(animal, roll: 9266, average: 90210.42);
 
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, animal))
