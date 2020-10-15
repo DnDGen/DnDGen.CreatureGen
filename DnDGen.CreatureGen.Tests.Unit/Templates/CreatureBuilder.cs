@@ -212,10 +212,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             creature.HitPoints = new HitPoints();
             creature.HitPoints.Constitution = creature.Abilities[AbilityConstants.Constitution];
             creature.HitPoints.HitDice.Add(new HitDice());
-            creature.HitPoints.HitDice[0].Quantity = random.Next(20) + 1;
-            creature.HitPoints.HitDice[0].HitDie = random.Next(9) + 4;
+            creature.HitPoints.HitDice[0].Quantity = random.Next(30) + 1;
+            creature.HitPoints.HitDice[0].HitDie = random.Next(7) + 6;
             creature.HitPoints.DefaultTotal = creature.HitPoints.RoundedHitDiceQuantity * creature.HitPoints.HitDice[0].HitDie / 2;
-            creature.HitPoints.Total = creature.HitPoints.RoundedHitDiceQuantity * creature.HitPoints.HitDice[0].HitDie;
+            creature.HitPoints.Total = random.Next(creature.HitPoints.RoundedHitDiceQuantity * creature.HitPoints.HitDice[0].HitDie) + creature.HitPoints.HitDice[0].RoundedQuantity;
 
             creature.InitiativeBonus = random.Next(5);
             creature.Name = $"creature {Guid.NewGuid()}";

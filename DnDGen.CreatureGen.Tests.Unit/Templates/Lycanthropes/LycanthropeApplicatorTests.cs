@@ -423,7 +423,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             animalData.CasterLevel = 0;
             animalData.NumberOfHands = random.Next(3);
             animalData.CanUseEquipment = false;
-            animalData.NaturalArmor = naturalArmor > -1 ? naturalArmor : random.Next(100);
+            animalData.NaturalArmor = naturalArmor > -1 ? naturalArmor : random.Next(20);
 
             mockCreatureDataSelector
                 .Setup(s => s.SelectFor(animal))
@@ -431,8 +431,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             //Hit points
             var hitDie = new HitDice();
-            hitDie.Quantity = hitDiceQuantity > 0 ? hitDiceQuantity : random.Next(100) + 1;
-            hitDie.HitDie = hitDiceDie > 0 ? hitDiceDie : random.Next(9) + 4;
+            hitDie.Quantity = hitDiceQuantity > 0 ? hitDiceQuantity : random.Next(30) + 1;
+            hitDie.HitDie = hitDiceDie > 0 ? hitDiceDie : random.Next(7) + 6;
             animalHitPoints.HitDice.Add(hitDie);
 
             mockHitPointsGenerator
@@ -638,16 +638,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(creature.HitPoints.Constitution, Is.EqualTo(baseCreature.Abilities[AbilityConstants.Constitution]));
 
             var bonus = (animalHitPoints.HitDice[0].Quantity + creature.HitPoints.HitDice[0].RoundedQuantity) * -2;
+            var roll = Math.Max(baseRoll - 2, 1) + 9266 - 2;
+            var average = Math.Floor(baseAverage + 90210.42) + bonus;
+
             Assert.That(creature.HitPoints.DefaultRoll, Is.EqualTo($"{creature.HitPoints.HitDice[0].DefaultRoll}+{animalHitPoints.HitDice[0].DefaultRoll}{bonus}"));
             Assert.That(
                 creature.HitPoints.DefaultTotal,
-                Is.EqualTo(Math.Floor(baseAverage + 90210.42) + bonus),
+                Is.EqualTo(average),
                 $"Base roll: {creature.HitPoints.HitDice[0].DefaultRoll}; Base Average: {baseAverage}; Animal Roll: {animalHitPoints.HitDice[0].DefaultRoll}, Bonus: {bonus}");
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].Quantity));
             Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].RoundedQuantity));
             Assert.That(
                 creature.HitPoints.Total,
-                Is.EqualTo(baseRoll + 9266 - 4),
+                Is.EqualTo(roll),
                 $"Base roll: {creature.HitPoints.HitDice[0].DefaultRoll}; Base Roll: {baseRoll}; Animal Roll: {animalHitPoints.HitDice[0].DefaultRoll}, Bonus: {bonus}");
         }
 
@@ -676,16 +679,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(creature.HitPoints.Constitution, Is.EqualTo(baseCreature.Abilities[AbilityConstants.Constitution]));
 
             var bonus = (animalHitPoints.HitDice[0].Quantity + creature.HitPoints.HitDice[0].RoundedQuantity) * -2;
+            var roll = Math.Max(baseRoll - 2, 1) + 9266 - 2;
+            var average = Math.Floor(baseAverage + 90210.42) + bonus;
+
             Assert.That(creature.HitPoints.DefaultRoll, Is.EqualTo($"{creature.HitPoints.HitDice[0].DefaultRoll}+{animalHitPoints.HitDice[0].DefaultRoll}{bonus}"));
             Assert.That(
                 creature.HitPoints.DefaultTotal,
-                Is.EqualTo(Math.Floor(baseAverage + 90210.42) + bonus),
+                Is.EqualTo(average),
                 $"Base roll: {creature.HitPoints.HitDice[0].DefaultRoll}; Base Average: {baseAverage}; Animal Roll: {animalHitPoints.HitDice[0].DefaultRoll}, Bonus: {bonus}");
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].Quantity));
             Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].RoundedQuantity));
             Assert.That(
                 creature.HitPoints.Total,
-                Is.EqualTo(baseRoll + 9266 - 4),
+                Is.EqualTo(roll),
                 $"Base roll: {creature.HitPoints.HitDice[0].DefaultRoll}; Base Roll: {baseRoll}; Animal Roll: {animalHitPoints.HitDice[0].DefaultRoll}, Bonus: {bonus}");
         }
 
@@ -774,16 +780,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(creature.HitPoints.Constitution, Is.EqualTo(baseCreature.Abilities[AbilityConstants.Constitution]));
 
             var bonus = (animalHitPoints.HitDice[0].Quantity + creature.HitPoints.HitDice[0].RoundedQuantity) * -2;
+            var roll = Math.Max(baseRoll - 2, 1) + 9266 - 2;
+            var average = Math.Floor(baseAverage + 90210.42) + bonus;
+
             Assert.That(creature.HitPoints.DefaultRoll, Is.EqualTo($"{creature.HitPoints.HitDice[0].DefaultRoll}+{animalHitPoints.HitDice[0].DefaultRoll}{bonus}"));
             Assert.That(
                 creature.HitPoints.DefaultTotal,
-                Is.EqualTo(Math.Floor(baseAverage + 90210.42) + bonus),
+                Is.EqualTo(average),
                 $"Base roll: {creature.HitPoints.HitDice[0].DefaultRoll}; Base Average: {baseAverage}; Animal Roll: {animalHitPoints.HitDice[0].DefaultRoll}, Bonus: {bonus}");
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].Quantity));
             Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].RoundedQuantity));
             Assert.That(
                 creature.HitPoints.Total,
-                Is.EqualTo(baseRoll + 9266 - 4),
+                Is.EqualTo(roll),
                 $"Base roll: {creature.HitPoints.HitDice[0].DefaultRoll}; Base Roll: {baseRoll}; Animal Roll: {animalHitPoints.HitDice[0].DefaultRoll}, Bonus: {bonus}");
         }
 
@@ -2252,16 +2261,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(creature.HitPoints.Constitution, Is.EqualTo(baseCreature.Abilities[AbilityConstants.Constitution]));
 
             var bonus = (animalHitPoints.HitDice[0].Quantity + creature.HitPoints.HitDice[0].RoundedQuantity) * -2;
+            var roll = Math.Max(baseRoll - 2, 1) + 9266 - 2;
+            var average = Math.Floor(baseAverage + 90210.42) + bonus;
+
             Assert.That(creature.HitPoints.DefaultRoll, Is.EqualTo($"{creature.HitPoints.HitDice[0].DefaultRoll}+{animalHitPoints.HitDice[0].DefaultRoll}{bonus}"));
             Assert.That(
                 creature.HitPoints.DefaultTotal,
-                Is.EqualTo(Math.Floor(baseAverage + 90210.42) + bonus),
+                Is.EqualTo(average),
                 $"Base roll: {creature.HitPoints.HitDice[0].DefaultRoll}; Base Average: {baseAverage}; Animal Roll: {animalHitPoints.HitDice[0].DefaultRoll}, Bonus: {bonus}");
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].Quantity));
             Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(animalHitPoints.HitDice[0].Quantity + baseCreature.HitPoints.HitDice[0].RoundedQuantity));
             Assert.That(
                 creature.HitPoints.Total,
-                Is.EqualTo(baseRoll + 9266 - 4),
+                Is.EqualTo(roll),
                 $"Base roll: {creature.HitPoints.HitDice[0].DefaultRoll}; Base Average: {baseAverage}; Animal Roll: {animalHitPoints.HitDice[0].DefaultRoll}, Bonus: {bonus}");
         }
 
