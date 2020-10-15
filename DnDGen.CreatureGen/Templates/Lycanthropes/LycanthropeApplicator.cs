@@ -236,6 +236,18 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
                 animalData.Size,
                 false);
 
+            var newCap = creature.HitPoints.RoundedHitDiceQuantity + 3;
+
+            foreach (var creatureSkill in creature.Skills)
+            {
+                creatureSkill.RankCap = newCap;
+            }
+
+            foreach (var animalSkill in animalSkills)
+            {
+                animalSkill.RankCap = newCap;
+            }
+
             if (LycanthropeSpecies.Contains("Afflicted"))
             {
                 var controlShape = new Skill(
@@ -249,7 +261,6 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
                 foreach (var animalSkill in animalSkills)
                 {
                     animalSkill.Ranks = 0;
-                    animalSkill.RankCap = creature.HitPoints.RoundedHitDiceQuantity + 3;
                 }
 
                 animalSkills = skillsGenerator.ApplySkillPointsAsRanks(
@@ -260,15 +271,8 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
                     false);
             }
 
-            foreach (var creatureSkill in creature.Skills)
-            {
-                creatureSkill.RankCap = creature.HitPoints.RoundedHitDiceQuantity + 3;
-            }
-
             foreach (var animalSkill in animalSkills)
             {
-                animalSkill.RankCap = creature.HitPoints.RoundedHitDiceQuantity + 3;
-
                 var creatureSkill = creature.Skills.FirstOrDefault(s => s.Key == animalSkill.Key);
                 if (creatureSkill != null)
                 {
