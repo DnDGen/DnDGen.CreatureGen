@@ -57,16 +57,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             CreatureConstants.Templates.HalfDragon_Silver,
         };
 
-        private static IEnumerable AllHalfDragonTemplates
-        {
-            get
-            {
-                foreach (var template in templates)
-                {
-                    yield return new TestCaseData(template);
-                }
-            }
-        }
+        private static IEnumerable AllHalfDragonTemplates => templates.Select(t => new TestCaseData(t));
 
         [SetUp]
         public void Setup()
