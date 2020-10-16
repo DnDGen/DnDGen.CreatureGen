@@ -141,6 +141,11 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
 
             if (sizeIndex >= largeIndex)
             {
+                if (!creature.Speeds.ContainsKey(SpeedConstants.Land))
+                {
+                    throw new ArgumentException($"Creature {creature.Summary} does not have a Land speed");
+                }
+
                 var speed = Math.Min(120, creature.Speeds[SpeedConstants.Land].Value * 2);
                 creature.Speeds[SpeedConstants.Fly] = speeds[SpeedConstants.Fly];
                 creature.Speeds[SpeedConstants.Fly].Value = speed;
