@@ -75,6 +75,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = creatureGenerator.Generate(randomCreatureName, randomTemplate);
 
             creatureAsserter.AssertCreature(creature);
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
         }
 
         [Test]
@@ -98,6 +99,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = await creatureGenerator.GenerateAsync(randomCreatureName, randomTemplate);
 
             creatureAsserter.AssertCreature(creature);
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
         }
 
         [TestCase(CreatureConstants.Titan)]
