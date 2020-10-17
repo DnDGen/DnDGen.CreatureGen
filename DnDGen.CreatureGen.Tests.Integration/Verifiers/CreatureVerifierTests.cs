@@ -2,6 +2,7 @@
 using DnDGen.CreatureGen.Verifiers;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
@@ -11,7 +12,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
     {
         private ICreatureVerifier creatureVerifier;
         private Stopwatch stopwatch;
-
         private TimeSpan timeLimit;
 
         [SetUp]

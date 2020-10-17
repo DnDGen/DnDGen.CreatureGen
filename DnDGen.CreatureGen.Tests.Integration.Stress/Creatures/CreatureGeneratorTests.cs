@@ -4,6 +4,8 @@ using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.TreasureGen.Items;
 using NUnit.Framework;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,6 +17,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private CreatureAsserter creatureAsserter;
         private ICollectionSelector collectionSelector;
         private ICreatureGenerator creatureGenerator;
+        private ConcurrentDictionary<string, IEnumerable<string>> compatibleCreatures;
 
         [SetUp]
         public void Setup()
@@ -22,6 +25,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             creatureAsserter = new CreatureAsserter();
             collectionSelector = GetNewInstanceOf<ICollectionSelector>();
             creatureGenerator = GetNewInstanceOf<ICreatureGenerator>();
+            compatibleCreatures = new ConcurrentDictionary<string, IEnumerable<string>>();
         }
 
         [Test]
@@ -63,8 +67,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private void GenerateAndAssertCreatureWithTemplate()
         {
             var randomTemplate = collectionSelector.SelectRandomFrom(allTemplates);
-            var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(c, randomTemplate));
-            var randomCreatureName = collectionSelector.SelectRandomFrom(validCreatures);
+            if (!compatibleCreatures.ContainsKey(randomTemplate))
+            {
+                var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(c, randomTemplate)).ToArray();
+                compatibleCreatures.TryAdd(randomTemplate, validCreatures);
+            }
+
+            var randomCreatureName = collectionSelector.SelectRandomFrom(compatibleCreatures[randomTemplate]);
 
             var creature = creatureGenerator.Generate(randomCreatureName, randomTemplate);
 
@@ -81,8 +90,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private async Task GenerateAndAssertCreatureWithTemplateAsync()
         {
             var randomTemplate = collectionSelector.SelectRandomFrom(allTemplates);
-            var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(c, randomTemplate));
-            var randomCreatureName = collectionSelector.SelectRandomFrom(validCreatures);
+            if (!compatibleCreatures.ContainsKey(randomTemplate))
+            {
+                var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(c, randomTemplate)).ToArray();
+                compatibleCreatures.TryAdd(randomTemplate, validCreatures);
+            }
+
+            var randomCreatureName = collectionSelector.SelectRandomFrom(compatibleCreatures[randomTemplate]);
 
             var creature = await creatureGenerator.GenerateAsync(randomCreatureName, randomTemplate);
 
