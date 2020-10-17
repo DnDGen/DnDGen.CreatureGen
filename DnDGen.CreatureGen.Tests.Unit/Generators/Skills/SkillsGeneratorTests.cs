@@ -1041,38 +1041,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GenerateFor_ApplyLotsOfSkillPoints_Dynamic()
-        {
-            hitPoints.HitDice[0].Quantity = 100;
-            creatureTypeSkillPoints = 8;
-            abilities[AbilityConstants.Intelligence].BaseScore = 18;
-
-            AddCreatureSkills(20);
-
-            var cap = 103;
-            var count = 0;
-            while (cap > 0)
-            {
-                var roll = RollHelper.GetRollWithMostEvenDistribution(1, cap);
-                var result = (Math.Max(cap / 2, 1) + count) % cap + 1;
-
-                mockDice
-                    .Setup(d => d.Roll(roll).AsSum<int>())
-                    .Returns(result);
-
-                cap--;
-            }
-
-            var start = DateTime.Now;
-            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
-            var duration = DateTime.Now - start;
-
-            var totalRanks = skills.Sum(s => s.Ranks);
-            Assert.That(totalRanks, Is.EqualTo(103 * 12));
-            Assert.That(duration, Is.LessThan(TimeSpan.FromMilliseconds(100)));
-        }
-
-        [Test]
         public void GenerateFor_IfCreatureHasBaseAbility_GetSkill()
         {
             creatureSkills.Add("skill 1");
@@ -4368,43 +4336,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             mockDice
                 .Setup(d => d.Roll("2d20+1d12+1d3-3").AsSum<int>())
                 .Returns(52);
-
-            var start = DateTime.Now;
-            var skills = skillsGenerator.ApplySkillPointsAsRanks(unrankedSkills, hitPoints, creatureType, abilities, true);
-            var duration = DateTime.Now - start;
-
-            var totalRanks = skills.Sum(s => s.Ranks);
-            Assert.That(totalRanks, Is.EqualTo(103 * 12));
-            Assert.That(duration, Is.LessThan(TimeSpan.FromMilliseconds(100)));
-        }
-
-        [Test]
-        public void ApplySkillPointsAsRanks_ApplyLotsOfSkillPoints_Dynamic()
-        {
-            hitPoints.HitDice[0].Quantity = 100;
-            creatureTypeSkillPoints = 8;
-            abilities[AbilityConstants.Intelligence].BaseScore = 18;
-
-            var unrankedSkills = new List<Skill>();
-            while (unrankedSkills.Count < 20)
-            {
-                var skill = new Skill($"skill {unrankedSkills.Count + 1}", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true };
-                unrankedSkills.Add(skill);
-            };
-
-            var cap = 103;
-            var count = 0;
-            while (cap > 0)
-            {
-                var roll = RollHelper.GetRollWithMostEvenDistribution(1, cap);
-                var result = (Math.Max(cap / 2, 1) + count) % cap + 1;
-
-                mockDice
-                    .Setup(d => d.Roll(roll).AsSum<int>())
-                    .Returns(result);
-
-                cap--;
-            }
 
             var start = DateTime.Now;
             var skills = skillsGenerator.ApplySkillPointsAsRanks(unrankedSkills, hitPoints, creatureType, abilities, true);

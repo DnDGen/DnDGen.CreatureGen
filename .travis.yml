@@ -9,7 +9,7 @@ script:
     && dotnet test ./DnDGen.CreatureGen.Tests.Integration.IoC/DnDGen.CreatureGen.Tests.Integration.IoC.csproj -v normal
     && travis_wait dotnet test ./DnDGen.CreatureGen.Tests.Integration.Tables/DnDGen.CreatureGen.Tests.Integration.Tables.csproj -v minimal
     && dotnet test ./DnDGen.CreatureGen.Tests.Integration/DnDGen.CreatureGen.Tests.Integration.csproj -v normal
-    && travis_wait dotnet test ./DnDGen.CreatureGen.Tests.Integration.Stress/DnDGen.CreatureGen.Tests.Integration.Stress.csproj -v normal -c Stress
+    && dotnet test ./DnDGen.CreatureGen.Tests.Integration.Stress/DnDGen.CreatureGen.Tests.Integration.Stress.csproj -v normal -c Stress
 deploy:
   skip_cleanup: true
   provider: script
