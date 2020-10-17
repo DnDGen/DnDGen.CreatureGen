@@ -62,15 +62,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private void GenerateAndAssertCreatureWithTemplate()
         {
-            var randomCreatureName = collectionSelector.SelectRandomFrom(allCreatures);
             var randomTemplate = collectionSelector.SelectRandomFrom(allTemplates);
-
-            var attempts = 100;
-            while (!creatureVerifier.VerifyCompatibility(randomCreatureName, randomTemplate) && attempts-- > 0)
-                randomCreatureName = collectionSelector.SelectRandomFrom(allCreatures);
-
-            if (attempts == 0 && !creatureVerifier.VerifyCompatibility(randomCreatureName, randomTemplate))
-                Assert.Fail($"After 100 attempts, could not find a creature that fits template {randomTemplate}");
+            var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(c, randomTemplate));
+            var randomCreatureName = collectionSelector.SelectRandomFrom(validCreatures);
 
             var creature = creatureGenerator.Generate(randomCreatureName, randomTemplate);
 
@@ -86,15 +80,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private async Task GenerateAndAssertCreatureWithTemplateAsync()
         {
-            var randomCreatureName = collectionSelector.SelectRandomFrom(allCreatures);
             var randomTemplate = collectionSelector.SelectRandomFrom(allTemplates);
-
-            var attempts = 100;
-            while (!creatureVerifier.VerifyCompatibility(randomCreatureName, randomTemplate) && attempts-- > 0)
-                randomCreatureName = collectionSelector.SelectRandomFrom(allCreatures);
-
-            if (attempts == 0 && !creatureVerifier.VerifyCompatibility(randomCreatureName, randomTemplate))
-                Assert.Fail($"After 100 attempts, could not find a creature that fits template {randomTemplate}");
+            var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(c, randomTemplate));
+            var randomCreatureName = collectionSelector.SelectRandomFrom(validCreatures);
 
             var creature = await creatureGenerator.GenerateAsync(randomCreatureName, randomTemplate);
 
@@ -105,10 +93,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         [TestCase(CreatureConstants.Titan)]
         public void BUG_OversizedWeaponHasCorrectAttackDamage(string creatureName)
         {
-            stressor.Stress(() => GenerateAndAssertCreatureWIthOversizedWeapon(creatureName));
+            stressor.Stress(() => GenerateAndAssertCreatureWithOversizedWeapon(creatureName));
         }
 
-        private void GenerateAndAssertCreatureWIthOversizedWeapon(string creatureName)
+        private void GenerateAndAssertCreatureWithOversizedWeapon(string creatureName)
         {
             var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);
             Assert.That(creature.Equipment, Is.Not.Null);
@@ -149,10 +137,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         [TestCase(CreatureConstants.Titan)]
         public void BUG_OversizedWeaponHasCorrectAttackDamageAsync(string creatureName)
         {
-            stressor.StressAsync(async () => await GenerateAndAssertCreatureWIthOversizedWeaponAsync(creatureName));
+            stressor.StressAsync(async () => await GenerateAndAssertCreatureWithOversizedWeaponAsync(creatureName));
         }
 
-        private async Task GenerateAndAssertCreatureWIthOversizedWeaponAsync(string creatureName)
+        private async Task GenerateAndAssertCreatureWithOversizedWeaponAsync(string creatureName)
         {
             var creature = await creatureGenerator.GenerateAsync(creatureName, CreatureConstants.Templates.None);
             Assert.That(creature.Equipment, Is.Not.Null);
