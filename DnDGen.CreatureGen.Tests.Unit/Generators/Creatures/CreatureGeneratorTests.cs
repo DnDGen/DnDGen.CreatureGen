@@ -274,7 +274,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void InvalidCreatureTemplateComboThrowsException()
+        public void Generate_InvalidCreatureTemplateComboThrowsException()
         {
             mockCreatureVerifier.Setup(v => v.VerifyCompatibility("creature", "template")).Returns(false);
 
@@ -282,35 +282,35 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureName()
+        public void Generate_GenerateCreatureName()
         {
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Name, Is.EqualTo("creature"));
         }
 
         [Test]
-        public void GenerateCreatureSize()
+        public void Generate_GenerateCreatureSize()
         {
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Size, Is.EqualTo("size"));
         }
 
         [Test]
-        public void GenerateCreatureSpace()
+        public void Generate_GenerateCreatureSpace()
         {
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Space.Value, Is.EqualTo(56.78));
         }
 
         [Test]
-        public void GenerateCreatureReach()
+        public void Generate_GenerateCreatureReach()
         {
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Reach.Value, Is.EqualTo(67.89));
         }
 
         [Test]
-        public void GenerateCreatureCanUseEquipment()
+        public void Generate_GenerateCreatureCanUseEquipment()
         {
             creatureData.CanUseEquipment = true;
 
@@ -329,7 +329,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureCannotUseEquipment()
+        public void Generate_GenerateCreatureCannotUseEquipment()
         {
             creatureData.CanUseEquipment = false;
             var creature = creatureGenerator.Generate("creature", "template");
@@ -337,7 +337,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureChallengeRating()
+        public void Generate_GenerateCreatureChallengeRating()
         {
             creatureData.ChallengeRating = "challenge rating";
 
@@ -346,7 +346,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureLevelAdjustment()
+        public void Generate_GenerateCreatureLevelAdjustment()
         {
             creatureData.LevelAdjustment = 1234;
 
@@ -355,7 +355,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateNoCreatureLevelAdjustment()
+        public void Generate_GenerateNoCreatureLevelAdjustment()
         {
             creatureData.LevelAdjustment = null;
 
@@ -364,7 +364,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureLevelAdjustmentOf0()
+        public void Generate_GenerateCreatureLevelAdjustmentOf0()
         {
             creatureData.LevelAdjustment = 0;
 
@@ -373,21 +373,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureCasterLevel()
+        public void Generate_GenerateCreatureCasterLevel()
         {
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.CasterLevel, Is.EqualTo(1029));
         }
 
         [Test]
-        public void GenerateCreatureNumberOfHands()
+        public void Generate_GenerateCreatureNumberOfHands()
         {
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.NumberOfHands, Is.EqualTo(96));
         }
 
         [Test]
-        public void GenerateCreatureType()
+        public void Generate_GenerateCreatureType()
         {
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Type.Name, Is.EqualTo("type"));
@@ -395,7 +395,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureTypeWithSubtype()
+        public void Generate_GenerateCreatureTypeWithSubtype()
         {
             types.Add("subtype");
 
@@ -407,7 +407,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureTypeWithMultipleSubtypes()
+        public void Generate_GenerateCreatureTypeWithMultipleSubtypes()
         {
             types.Add("subtype");
             types.Add("other subtype");
@@ -421,14 +421,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureAbilities()
+        public void Generate_GenerateCreatureAbilities()
         {
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Abilities, Is.EqualTo(abilities));
         }
 
         [Test]
-        public void GenerateCreatureHitPoints()
+        public void Generate_GenerateCreatureHitPoints()
         {
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
@@ -441,28 +441,28 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureEquipment()
+        public void Generate_GenerateCreatureEquipment()
         {
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Equipment, Is.EqualTo(equipment));
         }
 
         [Test]
-        public void GenerateCreatureMagic()
+        public void Generate_GenerateCreatureMagic()
         {
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Magic, Is.EqualTo(magic));
         }
 
         [Test]
-        public void GenerateCreatureLanguages()
+        public void Generate_GenerateCreatureLanguages()
         {
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Languages, Is.EqualTo(languages));
         }
 
         [Test]
-        public void DoNotGenerateAdvancedCreature()
+        public void Generate_DoNotGenerateAdvancedCreature()
         {
             SetUpCreatureAdvancement();
             mockAdvancementSelector.Setup(s => s.IsAdvanced("creature")).Returns(false);
@@ -483,10 +483,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment, Is.Zero);
             Assert.That(creature.ChallengeRating, Is.EqualTo("challenge rating"));
             Assert.That(creature.CasterLevel, Is.EqualTo(1029));
+            Assert.That(creature.IsAdvanced, Is.False);
         }
 
         [Test]
-        public void GenerateAdvancedCreature()
+        public void Generate_GenerateAdvancedCreature()
         {
             var advancedhitPoints = SetUpCreatureAdvancement();
             mockAdvancementSelector.Setup(s => s.IsAdvanced("creature")).Returns(true);
@@ -507,10 +508,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment, Is.EqualTo(69));
             Assert.That(creature.ChallengeRating, Is.EqualTo("adjusted challenge rating"));
             Assert.That(creature.CasterLevel, Is.EqualTo(1029 + 6331));
+            Assert.That(creature.IsAdvanced, Is.True);
         }
 
         [Test]
-        public void GenerateAdvancedCreatureWithExistingRacialAdjustments()
+        public void Generate_GenerateAdvancedCreatureWithExistingRacialAdjustments()
         {
             abilities[AbilityConstants.Strength].RacialAdjustment = 38;
             abilities[AbilityConstants.Dexterity].RacialAdjustment = 47;
@@ -539,10 +541,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment, Is.EqualTo(69));
             Assert.That(creature.ChallengeRating, Is.EqualTo("adjusted challenge rating"));
             Assert.That(creature.CasterLevel, Is.EqualTo(1029 + 6331));
+            Assert.That(creature.IsAdvanced, Is.True);
         }
 
         [Test]
-        public void GenerateAdvancedCreatureWithMissingAbilities()
+        public void Generate_GenerateAdvancedCreatureWithMissingAbilities()
         {
             abilities[AbilityConstants.Strength].BaseScore = 0;
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
@@ -571,6 +574,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.Abilities[AbilityConstants.Constitution].HasScore, Is.False);
             Assert.That(creature.ChallengeRating, Is.EqualTo("adjusted challenge rating"));
             Assert.That(creature.CasterLevel, Is.EqualTo(1029 + 6331));
+            Assert.That(creature.IsAdvanced, Is.True);
         }
 
         private HitPoints SetUpCreatureAdvancement(int advancementAmount = 1337, string creatureName = "creature")
@@ -668,14 +672,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureSkills()
+        public void Generate_GenerateCreatureSkills()
         {
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Skills, Is.EqualTo(skills));
         }
 
         [Test]
-        public void GenerateAdvancedCreatureSkills()
+        public void Generate_GenerateAdvancedCreatureSkills()
         {
             var advancedHitPoints = SetUpCreatureAdvancement();
 
@@ -777,14 +781,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureSpecialQualities()
+        public void Generate_GenerateCreatureSpecialQualities()
         {
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.SpecialQualities, Is.EqualTo(specialQualities));
         }
 
         [Test]
-        public void GenerateAdvancedCreatureSpecialQualities()
+        public void Generate_GenerateAdvancedCreatureSpecialQualities()
         {
             var advancedHitPoints = SetUpCreatureAdvancement();
 
@@ -818,14 +822,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureBaseAttackBonus()
+        public void Generate_GenerateCreatureBaseAttackBonus()
         {
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.BaseAttackBonus, Is.EqualTo(753));
         }
 
         [Test]
-        public void GenerateAdvancedCreatureBaseAttackBonus()
+        public void Generate_GenerateAdvancedCreatureBaseAttackBonus()
         {
             var advancedHitPoints = SetUpCreatureAdvancement();
 
@@ -836,14 +840,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureAttacks()
+        public void Generate_GenerateCreatureAttacks()
         {
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Attacks, Is.EqualTo(attacks));
         }
 
         [Test]
-        public void GenerateAdvancedCreatureAttacks()
+        public void Generate_GenerateAdvancedCreatureAttacks()
         {
             var advancedHitPoints = SetUpCreatureAdvancement();
 
@@ -943,14 +947,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureFeats()
+        public void Generate_GenerateCreatureFeats()
         {
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Feats, Is.EqualTo(feats));
         }
 
         [Test]
-        public void GenerateAdvancedCreatureFeats()
+        public void Generate_GenerateAdvancedCreatureFeats()
         {
             var advancedHitPoints = SetUpCreatureAdvancement();
 
@@ -1002,7 +1006,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureHitPointsWithFeats()
+        public void Generate_GenerateCreatureHitPointsWithFeats()
         {
             var updatedHitPoints = new HitPoints();
             mockHitPointsGenerator.Setup(g => g.RegenerateWith(hitPoints, feats)).Returns(updatedHitPoints);
@@ -1022,7 +1026,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateAdvancedCreatureHitPointsWithFeats()
+        public void Generate_GenerateAdvancedCreatureHitPointsWithFeats()
         {
             var advancedHitPoints = SetUpCreatureAdvancement();
 
@@ -1125,7 +1129,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureSkillsUpdatedByFeats()
+        public void Generate_GenerateCreatureSkillsUpdatedByFeats()
         {
             var updatedSkills = new List<Skill>() { new Skill("updated skill", abilities.First().Value, 1000) };
             mockSkillsGenerator.Setup(g => g.ApplyBonusesFromFeats(skills, feats, abilities)).Returns(updatedSkills);
@@ -1142,7 +1146,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateAdvancedCreatureSkillsUpdatedByFeats()
+        public void Generate_GenerateAdvancedCreatureSkillsUpdatedByFeats()
         {
             var advancedHitPoints = SetUpCreatureAdvancement();
 
@@ -1245,7 +1249,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureGrappleBonus()
+        public void Generate_GenerateCreatureGrappleBonus()
         {
             mockAttacksGenerator.Setup(s => s.GenerateGrappleBonus("creature", "size", 753, abilities[AbilityConstants.Strength])).Returns(2345);
 
@@ -1254,7 +1258,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateAdvancedCreatureGrappleBonus()
+        public void Generate_GenerateAdvancedCreatureGrappleBonus()
         {
             SetUpCreatureAdvancement();
 
@@ -1265,7 +1269,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateNoGrappleBonus()
+        public void Generate_GenerateNoGrappleBonus()
         {
             int? noBonus = null;
             mockAttacksGenerator.Setup(s => s.GenerateGrappleBonus("creature", "size", 753, abilities[AbilityConstants.Strength])).Returns(noBonus);
@@ -1275,7 +1279,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void ApplyAttackBonuses()
+        public void Generate_ApplyAttackBonuses()
         {
             var modifiedAttacks = new[] { new Attack() { Name = "modified attack" } };
             mockAttacksGenerator.Setup(g => g.ApplyAttackBonuses(attacks, feats, abilities)).Returns(modifiedAttacks);
@@ -1299,7 +1303,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void ApplyAdvancedAttackBonuses()
+        public void Generate_ApplyAdvancedAttackBonuses()
         {
             var advancedHitPoints = SetUpCreatureAdvancement();
 
@@ -1402,7 +1406,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureInitiativeBonus()
+        public void Generate_GenerateCreatureInitiativeBonus()
         {
             abilities[AbilityConstants.Dexterity].BaseScore = 4132;
 
@@ -1414,7 +1418,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateAdvancedCreatureInitiativeBonus()
+        public void Generate_GenerateAdvancedCreatureInitiativeBonus()
         {
             abilities[AbilityConstants.Dexterity].BaseScore = 4132;
 
@@ -1428,7 +1432,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureInitiativeBonusWithImprovedInitiative()
+        public void Generate_GenerateCreatureInitiativeBonusWithImprovedInitiative()
         {
             abilities[AbilityConstants.Dexterity].BaseScore = 4132;
 
@@ -1441,7 +1445,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateAdvancedCreatureInitiativeBonusWithImprovedInitiative()
+        public void Generate_GenerateAdvancedCreatureInitiativeBonusWithImprovedInitiative()
         {
             abilities[AbilityConstants.Dexterity].BaseScore = 4132;
 
@@ -1456,7 +1460,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureInitiativeBonusWithoutDexterity()
+        public void Generate_GenerateCreatureInitiativeBonusWithoutDexterity()
         {
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
             abilities[AbilityConstants.Intelligence].BaseScore = 1234;
@@ -1469,7 +1473,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateAdvancedCreatureInitiativeBonusWithoutDexterity()
+        public void Generate_GenerateAdvancedCreatureInitiativeBonusWithoutDexterity()
         {
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
             abilities[AbilityConstants.Intelligence].BaseScore = 1234;
@@ -1485,7 +1489,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureInitiativeBonusWithImprovedInitiativeWithoutDexterity()
+        public void Generate_GenerateCreatureInitiativeBonusWithImprovedInitiativeWithoutDexterity()
         {
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
             abilities[AbilityConstants.Intelligence].BaseScore = 1234;
@@ -1499,7 +1503,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateAdvancedCreatureInitiativeBonusWithImprovedInitiativeWithoutDexterity()
+        public void Generate_GenerateAdvancedCreatureInitiativeBonusWithImprovedInitiativeWithoutDexterity()
         {
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
             abilities[AbilityConstants.Intelligence].BaseScore = 1234;
@@ -1516,7 +1520,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureSpeeds()
+        public void Generate_GenerateCreatureSpeeds()
         {
             speeds["on foot"] = new Measurement("feet per round");
             speeds["in a car"] = new Measurement("feet per round");
@@ -1526,7 +1530,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureArmorClass()
+        public void Generate_GenerateCreatureArmorClass()
         {
             var armorClass = new ArmorClass();
             mockArmorClassGenerator
@@ -1546,7 +1550,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateAdvancedCreatureArmorClass()
+        public void Generate_GenerateAdvancedCreatureArmorClass()
         {
             var advancedHitPoints = SetUpCreatureAdvancement();
 
@@ -1647,7 +1651,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureSaves()
+        public void Generate_GenerateCreatureSaves()
         {
             var saves = new Dictionary<string, Save>();
             saves["save name"] = new Save();
@@ -1659,7 +1663,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateAdvancedCreatureSaves()
+        public void Generate_GenerateAdvancedCreatureSaves()
         {
             var advancedHitPoints = SetUpCreatureAdvancement();
 
@@ -1675,7 +1679,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureAlignment()
+        public void Generate_GenerateCreatureAlignment()
         {
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature.Alignment, Is.EqualTo(alignment));
@@ -1683,7 +1687,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public void GenerateCreatureModifiedByTemplate()
+        public void Generate_GenerateCreatureModifiedByTemplate()
         {
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("template")).Returns(mockTemplateApplicator.Object);
@@ -1693,19 +1697,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var creature = creatureGenerator.Generate("creature", "template");
             Assert.That(creature, Is.EqualTo(templateCreature));
-        }
-
-        [Test]
-        public void GenerateCreatureNotModifiedByTemplate()
-        {
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("template")).Returns(mockTemplateApplicator.Object);
-
-            var templateCreature = new Creature();
-            mockTemplateApplicator.Setup(a => a.ApplyTo(It.IsAny<Creature>())).Returns((Creature c) => c);
-
-            var creature = creatureGenerator.Generate("creature", "template");
-            Assert.That(creature, Is.Not.EqualTo(templateCreature));
         }
 
         [Test]
@@ -1911,6 +1902,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment, Is.Zero);
             Assert.That(creature.ChallengeRating, Is.EqualTo("challenge rating"));
             Assert.That(creature.CasterLevel, Is.EqualTo(1029));
+            Assert.That(creature.IsAdvanced, Is.False);
         }
 
         [Test]
@@ -1935,6 +1927,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment, Is.EqualTo(69));
             Assert.That(creature.ChallengeRating, Is.EqualTo("adjusted challenge rating"));
             Assert.That(creature.CasterLevel, Is.EqualTo(1029 + 6331));
+            Assert.That(creature.IsAdvanced, Is.True);
         }
 
         [Test]
@@ -1967,6 +1960,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment, Is.EqualTo(69));
             Assert.That(creature.ChallengeRating, Is.EqualTo("adjusted challenge rating"));
             Assert.That(creature.CasterLevel, Is.EqualTo(1029 + 6331));
+            Assert.That(creature.IsAdvanced, Is.True);
         }
 
         [Test]
@@ -1999,6 +1993,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.Abilities[AbilityConstants.Constitution].HasScore, Is.False);
             Assert.That(creature.ChallengeRating, Is.EqualTo("adjusted challenge rating"));
             Assert.That(creature.CasterLevel, Is.EqualTo(1029 + 6331));
+            Assert.That(creature.IsAdvanced, Is.True);
         }
 
         [Test]
@@ -3019,19 +3014,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var creature = await creatureGenerator.GenerateAsync("creature", "template");
             Assert.That(creature, Is.EqualTo(templateCreature));
-        }
-
-        [Test]
-        public async Task GenerateAsync_GenerateCreatureNotModifiedByTemplate()
-        {
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("template")).Returns(mockTemplateApplicator.Object);
-
-            var templateCreature = new Creature();
-            mockTemplateApplicator.Setup(a => a.ApplyToAsync(It.IsAny<Creature>())).ReturnsAsync((Creature c) => c);
-
-            var creature = await creatureGenerator.GenerateAsync("creature", "template");
-            Assert.That(creature, Is.Not.EqualTo(templateCreature));
         }
     }
 }

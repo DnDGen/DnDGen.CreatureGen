@@ -19,6 +19,7 @@ namespace DnDGen.CreatureGen.Creatures
         public CreatureType Type { get; set; }
         public HitPoints HitPoints { get; set; }
         public IEnumerable<string> Languages { get; set; }
+        public bool IsAdvanced { get; set; }
 
         public int InitiativeBonus { get; set; }
         public int TotalInitiativeBonus
@@ -107,7 +108,12 @@ namespace DnDGen.CreatureGen.Creatures
         {
             get
             {
-                return $"{Template} {Name}".Trim();
+                var summary = $"{Template} {Name}";
+
+                if (IsAdvanced)
+                    summary += " [Advanced]";
+
+                return summary.Trim();
             }
         }
 

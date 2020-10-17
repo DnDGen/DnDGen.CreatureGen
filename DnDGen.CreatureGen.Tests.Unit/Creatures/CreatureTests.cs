@@ -328,7 +328,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         public void CreatureSummary()
         {
             creature.Name = Guid.NewGuid().ToString();
+
             Assert.That(creature.Summary, Is.EqualTo(creature.Name));
+        }
+
+        [Test]
+        public void CreatureSummary_Advanced()
+        {
+            creature.Name = Guid.NewGuid().ToString();
+            creature.IsAdvanced = true;
+
+            Assert.That(creature.Summary, Is.EqualTo(creature.Name + " [Advanced]"));
         }
 
         [Test]
@@ -336,7 +346,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         {
             creature.Name = Guid.NewGuid().ToString();
             creature.Template = Guid.NewGuid().ToString();
+
             Assert.That(creature.Summary, Is.EqualTo($"{creature.Template} {creature.Name}"));
+        }
+
+        [Test]
+        public void CreatureSummaryWithTemplate_Advanced()
+        {
+            creature.Name = Guid.NewGuid().ToString();
+            creature.Template = Guid.NewGuid().ToString();
+            creature.IsAdvanced = true;
+
+            Assert.That(creature.Summary, Is.EqualTo($"{creature.Template} {creature.Name} [Advanced]"));
         }
     }
 }

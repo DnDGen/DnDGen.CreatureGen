@@ -1254,7 +1254,7 @@
   </collection>
   <collection>
     <name>Cloud Giant</name>
-    <entry>Morningstar[Weapon]#Gargantuan#</entry>
+    <entry>Morningstar[Weapon]</entry>
   </collection>
   <collection>
     <name>Fire Giant</name>
@@ -2077,7 +2077,7 @@
   </collection>
   <collection>
     <name>Titan</name>
-    <entry>Warhammer[Weapon]#Gargantuan,Adamantine#(3)@True@</entry>
+    <entry>Warhammer[Weapon]#Adamantine#(3)@True@</entry>
     <entry>Half-plate[Armor](4)@True@</entry>
   </collection>
   <collection>

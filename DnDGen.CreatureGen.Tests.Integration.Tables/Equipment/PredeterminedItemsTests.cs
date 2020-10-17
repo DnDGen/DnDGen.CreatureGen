@@ -1,10 +1,14 @@
 ﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors;
+using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Tests.Integration.TestData;
+using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.TreasureGen.Items;
 using DnDGen.TreasureGen.Items.Magical;
-using Ninject;
 using NUnit.Framework;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
 {
@@ -12,6 +16,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
     public class PredeterminedItemsTests : CollectionTests
     {
         private IItemSelector itemSelector;
+        private IFeatsSelector featsSelector;
+        private ICollectionSelector collectionSelector;
 
         protected override string tableName => TableNameConstants.Collection.PredeterminedItems;
 
@@ -19,6 +25,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
         public void Setup()
         {
             itemSelector = GetNewInstanceOf<IItemSelector>();
+            featsSelector = GetNewInstanceOf<IFeatsSelector>();
+            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
         }
 
         [Test]
@@ -719,7 +727,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
         [TestCase(CreatureConstants.Angel_AstralDeva, WeaponConstants.HeavyMace, ItemTypeConstants.Weapon, 3, SpecialAbilityConstants.Disruption)]
         [TestCase(CreatureConstants.BeardedDevil_Barbazu, WeaponConstants.Glaive, ItemTypeConstants.Weapon, 0, "", "Saw-toothed")]
         [TestCase(CreatureConstants.Ghaele, WeaponConstants.Greatsword, ItemTypeConstants.Weapon, 4, SpecialAbilityConstants.Holy)]
-        [TestCase(CreatureConstants.Giant_Cloud, WeaponConstants.Morningstar, ItemTypeConstants.Weapon, 0, "", TraitConstants.Sizes.Gargantuan)]
+        [TestCase(CreatureConstants.Giant_Cloud, WeaponConstants.Morningstar, ItemTypeConstants.Weapon, 0, "")]
         [TestCase(CreatureConstants.Grimlock, WeaponConstants.Battleaxe, ItemTypeConstants.Weapon, 0, "", "Stone")]
         [TestCase(CreatureConstants.HornedDevil_Cornugon, WeaponConstants.SpikedChain, ItemTypeConstants.Weapon, 0, "")]
         [TestCase(CreatureConstants.HoundArchon, WeaponConstants.Greatsword, ItemTypeConstants.Weapon, 0, "")]
@@ -936,7 +944,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
         [Test]
         public void TitanItems()
         {
-            var warhammer = FormatSetItem(WeaponConstants.Warhammer, ItemTypeConstants.Weapon, 3, string.Empty, 0, true, TraitConstants.Sizes.Gargantuan, TraitConstants.SpecialMaterials.Adamantine);
+            var warhammer = FormatSetItem(WeaponConstants.Warhammer, ItemTypeConstants.Weapon, 3, string.Empty, 0, true, TraitConstants.SpecialMaterials.Adamantine);
             var armor = FormatSetItem(ArmorConstants.HalfPlate, ItemTypeConstants.Armor, 4, string.Empty, 0, true);
 
             base.AssertCollection(CreatureConstants.Titan, new[] { warhammer, armor });
@@ -957,6 +965,41 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
             var chain = FormatSetItem(WeaponConstants.SpikedChain, ItemTypeConstants.Weapon);
 
             base.AssertCollection(CreatureConstants.Zelekhut, new[] { chain, chain });
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        public void BUG_IfCreatureHasOversizedFeat_WeaponsDoNotHaveSize(string creature)
+        {
+            Assert.That(table, Contains.Key(creature));
+
+            if (!table[creature].Any())
+            {
+                Assert.Pass($"{creature} does not have any predetermiend items");
+            }
+
+            var creatureType = new CreatureType();
+            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
+
+            creatureType.Name = types.First();
+            creatureType.SubTypes = types.Skip(1);
+
+            var feats = featsSelector.SelectSpecialQualities(creature, creatureType);
+            if (!feats.Any(f => f.Feat == FeatConstants.SpecialQualities.OversizedWeapon))
+            {
+                Assert.Pass($"{creature} does not have the feat {FeatConstants.SpecialQualities.OversizedWeapon}");
+            }
+
+            var sizes = SizeConstants.GetOrdered();
+
+            foreach (var itemTemplate in table[creature])
+            {
+                var item = itemSelector.SelectFrom(itemTemplate);
+                if (item.ItemType != ItemTypeConstants.Weapon)
+                    continue;
+
+                var sizeTraits = item.Traits.Intersect(sizes);
+                Assert.That(sizeTraits, Is.Empty, item.Name);
+            }
         }
     }
 }

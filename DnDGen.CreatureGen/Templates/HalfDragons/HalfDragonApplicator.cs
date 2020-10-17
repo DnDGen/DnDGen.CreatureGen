@@ -55,14 +55,12 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             {
                 CreatureConstants.Types.Aberration,
                 CreatureConstants.Types.Animal,
-                CreatureConstants.Types.Elemental,
                 CreatureConstants.Types.Fey,
                 CreatureConstants.Types.Giant,
                 CreatureConstants.Types.Humanoid,
                 CreatureConstants.Types.MagicalBeast,
                 CreatureConstants.Types.MonstrousHumanoid,
                 CreatureConstants.Types.Ooze,
-                CreatureConstants.Types.Outsider,
                 CreatureConstants.Types.Plant,
                 CreatureConstants.Types.Vermin,
             };

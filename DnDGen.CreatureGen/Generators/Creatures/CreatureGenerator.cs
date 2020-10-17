@@ -106,6 +106,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             {
                 var advancement = advancementSelector.SelectRandomFor(creatureName, creature.Type, creature.Size, creature.ChallengeRating);
 
+                creature.IsAdvanced = true;
                 creature.Size = advancement.Size;
                 creature.Space.Value = advancement.Space;
                 creature.Reach.Value = advancement.Reach;
@@ -236,6 +237,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             {
                 var advancement = advancementSelector.SelectRandomFor(creatureName, creature.Type, creature.Size, creature.ChallengeRating);
 
+                creature.IsAdvanced = true;
                 creature.Size = advancement.Size;
                 creature.Space.Value = advancement.Space;
                 creature.Reach.Value = advancement.Reach;
