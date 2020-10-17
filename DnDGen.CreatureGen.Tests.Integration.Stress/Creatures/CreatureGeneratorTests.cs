@@ -74,8 +74,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
             var creature = creatureGenerator.Generate(randomCreatureName, randomTemplate);
 
-            creatureAsserter.AssertCreature(creature);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate));
+            creatureAsserter.AssertCreature(creature);
         }
 
         [Test]
@@ -98,8 +98,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
             var creature = await creatureGenerator.GenerateAsync(randomCreatureName, randomTemplate);
 
-            creatureAsserter.AssertCreature(creature);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate));
+            creatureAsserter.AssertCreature(creature);
         }
 
         [TestCase(CreatureConstants.Titan)]
@@ -111,7 +111,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private void GenerateAndAssertCreatureWIthOversizedWeapon(string creatureName)
         {
             var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);
-            creatureAsserter.AssertCreature(creature);
             Assert.That(creature.Equipment, Is.Not.Null);
             Assert.That(creature.Equipment.Weapons, Is.Not.Empty.And.All.Not.Null);
 
@@ -143,6 +142,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                     Assert.That(attack.AttackType, Contains.Substring("ranged"), $"{creature.Summary} ({creature.Size}): {weapon.Name} ({weapon.Size}) [Oversized: {oversizedSize}]");
                 }
             }
+
+            creatureAsserter.AssertCreature(creature);
         }
 
         [TestCase(CreatureConstants.Titan)]
@@ -154,7 +155,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private async Task GenerateAndAssertCreatureWIthOversizedWeaponAsync(string creatureName)
         {
             var creature = await creatureGenerator.GenerateAsync(creatureName, CreatureConstants.Templates.None);
-            creatureAsserter.AssertCreature(creature);
             Assert.That(creature.Equipment, Is.Not.Null);
             Assert.That(creature.Equipment.Weapons, Is.Not.Empty.And.All.Not.Null);
 
@@ -186,6 +186,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                     Assert.That(attack.AttackType, Contains.Substring("ranged"), $"{creature.Summary} ({creature.Size}): {weapon.Name} ({weapon.Size}) [Oversized: {oversizedSize}]");
                 }
             }
+
+            creatureAsserter.AssertCreature(creature);
         }
     }
 }

@@ -8,6 +8,7 @@ using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.RollGen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,12 +20,14 @@ namespace DnDGen.CreatureGen.Generators.Skills
         private readonly ISkillSelector skillSelector;
         private readonly ICollectionSelector collectionsSelector;
         private readonly IAdjustmentsSelector adjustmentsSelector;
+        private readonly Dice dice;
 
-        public SkillsGenerator(ISkillSelector skillSelector, ICollectionSelector collectionsSelector, IAdjustmentsSelector adjustmentsSelector)
+        public SkillsGenerator(ISkillSelector skillSelector, ICollectionSelector collectionsSelector, IAdjustmentsSelector adjustmentsSelector, Dice dice)
         {
             this.skillSelector = skillSelector;
             this.collectionsSelector = collectionsSelector;
             this.adjustmentsSelector = adjustmentsSelector;
+            this.dice = dice;
         }
 
         public IEnumerable<Skill> GenerateFor(
@@ -175,7 +178,7 @@ namespace DnDGen.CreatureGen.Generators.Skills
             bool includeFirstHitDieBonus)
         {
             var points = GetTotalSkillPoints(creatureType, hitPoints.RoundedHitDiceQuantity, abilities[AbilityConstants.Intelligence], includeFirstHitDieBonus);
-            var totalRanksAvailable = skills.Sum(s => s.RankCap);
+            var totalRanksAvailable = skills.Sum(s => s.RankCap - s.Ranks);
 
             if (points >= totalRanksAvailable)
             {
@@ -186,10 +189,15 @@ namespace DnDGen.CreatureGen.Generators.Skills
             var creatureSkills = skillsWithAvailableRanks.Where(s => s.ClassSkill);
             var untrainedSkills = skillsWithAvailableRanks.Where(s => !s.ClassSkill);
 
-            while (points-- > 0)
+            while (points > 0)
             {
                 var skill = collectionsSelector.SelectRandomFrom(creatureSkills, untrainedSkills);
-                skill.Ranks++;
+                var availableRanks = Math.Min(skill.RankCap - skill.Ranks, points);
+                var rankRoll = RollHelper.GetRollWithMostEvenDistribution(1, availableRanks);
+                var ranks = dice.Roll(rankRoll).AsSum();
+
+                skill.Ranks += ranks;
+                points -= ranks;
             }
 
             return skills;

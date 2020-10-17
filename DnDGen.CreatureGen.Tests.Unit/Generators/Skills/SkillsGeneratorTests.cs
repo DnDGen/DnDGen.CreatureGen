@@ -9,6 +9,7 @@ using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.RollGen;
 using DnDGen.TreasureGen.Items;
 using Moq;
 using NUnit.Framework;
@@ -24,6 +25,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         private ISkillsGenerator skillsGenerator;
         private Mock<IAdjustmentsSelector> mockAdjustmentsSelector;
         private Mock<ICollectionSelector> mockCollectionsSelector;
+        private Mock<Dice> mockDice;
         private Dictionary<string, Ability> abilities;
         private List<string> creatureSkills;
         private List<string> creatureTypeSkills;
@@ -42,7 +44,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             mockAdjustmentsSelector = new Mock<IAdjustmentsSelector>();
             mockCollectionsSelector = new Mock<ICollectionSelector>();
             mockSkillSelector = new Mock<ISkillSelector>();
-            skillsGenerator = new SkillsGenerator(mockSkillSelector.Object, mockCollectionsSelector.Object, mockAdjustmentsSelector.Object);
+            mockDice = new Mock<Dice>();
+            skillsGenerator = new SkillsGenerator(mockSkillSelector.Object, mockCollectionsSelector.Object, mockAdjustmentsSelector.Object, mockDice.Object);
 
             abilities = new Dictionary<string, Ability>();
             abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence);
@@ -63,6 +66,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             hitPoints.HitDice.Add(new HitDice { Quantity = 1 });
             creatureType.Name = "creature type";
             size = SizeConstants.Medium;
+            creatureTypeSkillPoints = 1;
 
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillGroups, It.IsAny<string>())).Returns(Enumerable.Empty<string>());
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillGroups, GroupConstants.All)).Returns(allSkills);
@@ -84,11 +88,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
                     null))
                 .Returns((IEnumerable<Skill> c, IEnumerable<Skill> u, IEnumerable<Skill> r, IEnumerable<Skill> v) => c.Union(u).ElementAt(index++ % c.Union(u).Count()));
 
-            mockSkillSelector.Setup(s => s.SelectFor(It.IsAny<string>())).Returns((string skill) => new SkillSelection { SkillName = skill, BaseAbilityName = AbilityConstants.Intelligence });
+            mockSkillSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string skill) => new SkillSelection { SkillName = skill, BaseAbilityName = AbilityConstants.Intelligence });
+
+            mockDice
+                .Setup(d => d.Roll(It.IsAny<string>()).AsSum<int>())
+                .Returns(1);
         }
 
         [Test]
-        public void GetSkills()
+        public void GenerateFor_GetSkills()
         {
             creatureTypeSkillPoints = 2;
             AddCreatureSkills(3);
@@ -107,7 +117,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetNoSkills()
+        public void GenerateFor_GetNoSkills()
         {
             hitPoints.HitDice[0].Quantity = 0;
             creatureTypeSkillPoints = 2;
@@ -118,7 +128,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void SkillHasArmorCheckPenalty()
+        public void GenerateFor_SkillHasArmorCheckPenalty()
         {
             creatureTypeSkillPoints = 2;
             AddCreatureSkills(3);
@@ -132,7 +142,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void SkillDoesNotHaveArmorCheckPenalty()
+        public void GenerateFor_SkillDoesNotHaveArmorCheckPenalty()
         {
             creatureTypeSkillPoints = 2;
             AddCreatureSkills(3);
@@ -154,7 +164,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void AssignAbilitiesToSkills()
+        public void GenerateFor_AssignAbilitiesToSkills()
         {
             AddCreatureSkills(1);
 
@@ -173,7 +183,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void SetRankCap_WithFirstLevelBonus()
+        public void GenerateFor_SetRankCap_WithFirstLevelBonus()
         {
             hitPoints.HitDice[0].Quantity = 42;
 
@@ -198,7 +208,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void SetRankCap_WithoutFirstLevelBonus()
+        public void GenerateFor_SetRankCap_WithoutFirstLevelBonus()
         {
             hitPoints.HitDice[0].Quantity = 42;
 
@@ -223,7 +233,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void SetClassSkill()
+        public void GenerateFor_SetClassSkill()
         {
             AddCreatureSkills(2);
 
@@ -234,7 +244,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetUntrainedSkills()
+        public void GenerateFor_GetUntrainedSkills()
         {
             AddUntrainedSkills(2);
 
@@ -253,7 +263,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void UntrainedSkillsBecomeClassSkills()
+        public void GenerateFor_UntrainedSkillsBecomeClassSkills()
         {
             AddUntrainedSkills(2);
             AddCreatureSkills(2);
@@ -268,7 +278,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void UntrainedSkillsWithNameChangeBecomeClassSkills()
+        public void GenerateFor_UntrainedSkillsWithNameChangeBecomeClassSkills()
         {
             AddUntrainedSkills(2);
             AddCreatureSkills(2);
@@ -296,7 +306,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void UntrainedSkillsWithRandomFocusBecomeClassSkills()
+        public void GenerateFor_UntrainedSkillsWithRandomFocusBecomeClassSkills()
         {
             AddUntrainedSkills(2);
             AddCreatureSkills(2);
@@ -324,7 +334,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void UntrainedSkillsRepeatingClassSkillsWithRandomFocusBecomeClassSkills()
+        public void GenerateFor_UntrainedSkillsRepeatingClassSkillsWithRandomFocusBecomeClassSkills()
         {
             AddUntrainedSkills(2);
             AddCreatureSkills(2);
@@ -359,7 +369,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void UntrainedSkillsWithSetFocusBecomeClassSkills()
+        public void GenerateFor_UntrainedSkillsWithSetFocusBecomeClassSkills()
         {
             AddUntrainedSkills(2);
             AddCreatureSkills(2);
@@ -386,7 +396,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void UntrainedSkillsWithMultipleRandomFociBecomeClassSkills()
+        public void GenerateFor_UntrainedSkillsWithMultipleRandomFociBecomeClassSkills()
         {
             AddUntrainedSkills(2);
             AddCreatureSkills(2);
@@ -421,7 +431,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void AssignRankToClassSkill()
+        public void GenerateFor_AssignRankToClassSkill()
         {
             creatureTypeSkillPoints = 2;
             AddCreatureSkills(3);
@@ -431,6 +441,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<Skill>>(c => !c.Any() || c.All(sk => sk.ClassSkill)), It.Is<IEnumerable<Skill>>(c => !c.Any() || c.All(sk => !sk.ClassSkill)), null, null))
                 .Returns((IEnumerable<Skill> c, IEnumerable<Skill> u, IEnumerable<Skill> r, IEnumerable<Skill> v) => c.ElementAt(index++ % c.Count()));
+
+            var count = 0;
+            mockDice
+                .Setup(d => d.Roll("1d4").AsSum<int>())
+                .Returns(() => count++ % 4 + 1);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
 
@@ -448,21 +463,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills[2].EffectiveRanks, Is.Zero);
             Assert.That(skills[3].Name, Is.EqualTo("creature skill 3"));
             Assert.That(skills[3].ClassSkill, Is.True);
-            Assert.That(skills[3].Ranks, Is.EqualTo(3));
-            Assert.That(skills[3].EffectiveRanks, Is.EqualTo(3));
+            Assert.That(skills[3].Ranks, Is.EqualTo(2));
+            Assert.That(skills[3].EffectiveRanks, Is.EqualTo(2));
             Assert.That(skills[4].Name, Is.EqualTo("creature skill 2"));
             Assert.That(skills[4].ClassSkill, Is.True);
             Assert.That(skills[4].Ranks, Is.EqualTo(3));
             Assert.That(skills[4].EffectiveRanks, Is.EqualTo(3));
             Assert.That(skills[5].Name, Is.EqualTo("creature skill 1"));
             Assert.That(skills[5].ClassSkill, Is.True);
-            Assert.That(skills[5].Ranks, Is.EqualTo(2));
-            Assert.That(skills[5].EffectiveRanks, Is.EqualTo(2));
+            Assert.That(skills[5].Ranks, Is.EqualTo(3));
+            Assert.That(skills[5].EffectiveRanks, Is.EqualTo(3));
             Assert.That(skills.Length, Is.EqualTo(6));
         }
 
         [Test]
-        public void AssignRankToUntrainedSkill()
+        public void GenerateFor_AssignRankToUntrainedSkill()
         {
             creatureTypeSkillPoints = 2;
             AddCreatureSkills(3);
@@ -473,20 +488,25 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
                 .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<Skill>>(c => !c.Any() || c.All(sk => sk.ClassSkill)), It.Is<IEnumerable<Skill>>(c => !c.Any() || c.All(sk => !sk.ClassSkill)), null, null))
                 .Returns((IEnumerable<Skill> c, IEnumerable<Skill> u, IEnumerable<Skill> r, IEnumerable<Skill> v) => u.ElementAt(index++ % u.Count()));
 
+            var count = 0;
+            mockDice
+                .Setup(d => d.Roll("1d4").AsSum<int>())
+                .Returns(() => count++ % 4 + 1);
+
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo("untrained skill 3"));
             Assert.That(skills[0].ClassSkill, Is.False);
-            Assert.That(skills[0].Ranks, Is.EqualTo(3));
-            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(1.5));
+            Assert.That(skills[0].Ranks, Is.EqualTo(2));
+            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(1));
             Assert.That(skills[1].Name, Is.EqualTo("untrained skill 2"));
             Assert.That(skills[1].ClassSkill, Is.False);
             Assert.That(skills[1].Ranks, Is.EqualTo(3));
             Assert.That(skills[1].EffectiveRanks, Is.EqualTo(1.5));
             Assert.That(skills[2].Name, Is.EqualTo("untrained skill 1"));
             Assert.That(skills[2].ClassSkill, Is.False);
-            Assert.That(skills[2].Ranks, Is.EqualTo(2));
-            Assert.That(skills[2].EffectiveRanks, Is.EqualTo(1));
+            Assert.That(skills[2].Ranks, Is.EqualTo(3));
+            Assert.That(skills[2].EffectiveRanks, Is.EqualTo(1.5));
             Assert.That(skills[3].Name, Is.EqualTo("creature skill 3"));
             Assert.That(skills[3].ClassSkill, Is.True);
             Assert.That(skills[3].Ranks, Is.Zero);
@@ -503,11 +523,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void AssignRankToClassAndUntrainedSkill()
+        public void GenerateFor_AssignRankToClassAndUntrainedSkill()
         {
             creatureTypeSkillPoints = 2;
             AddCreatureSkills(3);
             AddUntrainedSkills(3);
+
+            var count = 0;
+            mockDice
+                .Setup(d => d.Roll("1d4").AsSum<int>())
+                .Returns(() => count++ % 4 + 1);
 
             var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size).ToArray();
 
@@ -521,25 +546,25 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills[1].EffectiveRanks, Is.EqualTo(.5));
             Assert.That(skills[2].Name, Is.EqualTo("untrained skill 1"));
             Assert.That(skills[2].ClassSkill, Is.False);
-            Assert.That(skills[2].Ranks, Is.EqualTo(1));
-            Assert.That(skills[2].EffectiveRanks, Is.EqualTo(.5));
+            Assert.That(skills[2].Ranks, Is.Zero);
+            Assert.That(skills[2].EffectiveRanks, Is.Zero);
             Assert.That(skills[3].Name, Is.EqualTo("creature skill 3"));
             Assert.That(skills[3].ClassSkill, Is.True);
-            Assert.That(skills[3].Ranks, Is.EqualTo(2));
-            Assert.That(skills[3].EffectiveRanks, Is.EqualTo(2));
+            Assert.That(skills[3].Ranks, Is.EqualTo(1));
+            Assert.That(skills[3].EffectiveRanks, Is.EqualTo(1));
             Assert.That(skills[4].Name, Is.EqualTo("creature skill 2"));
             Assert.That(skills[4].ClassSkill, Is.True);
             Assert.That(skills[4].Ranks, Is.EqualTo(2));
             Assert.That(skills[4].EffectiveRanks, Is.EqualTo(2));
             Assert.That(skills[5].Name, Is.EqualTo("creature skill 1"));
             Assert.That(skills[5].ClassSkill, Is.True);
-            Assert.That(skills[5].Ranks, Is.EqualTo(1));
-            Assert.That(skills[5].EffectiveRanks, Is.EqualTo(1));
+            Assert.That(skills[5].Ranks, Is.EqualTo(3));
+            Assert.That(skills[5].EffectiveRanks, Is.EqualTo(3));
             Assert.That(skills.Length, Is.EqualTo(6));
         }
 
         [Test]
-        public void GetSkillWithSetFocus()
+        public void GenerateFor_GetSkillWithSetFocus()
         {
             AddCreatureSkills(1);
 
@@ -558,7 +583,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetSkillWithRandomFocus()
+        public void GenerateFor_GetSkillWithRandomFocus()
         {
             AddCreatureSkills(1);
 
@@ -578,7 +603,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetSkillWithMultipleRandomFoci()
+        public void GenerateFor_GetSkillWithMultipleRandomFoci()
         {
             AddCreatureSkills(1);
 
@@ -604,7 +629,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void DoNotRepeatFociForSkill()
+        public void GenerateFor_DoNotRepeatFociForSkill()
         {
             AddCreatureSkills(1);
 
@@ -633,7 +658,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetSkillWithAllFoci()
+        public void GenerateFor_GetSkillWithAllFoci()
         {
             AddCreatureSkills(1);
 
@@ -663,7 +688,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void AllSkillsMaxedOut()
+        public void GenerateFor_AllSkillsMaxedOut()
         {
             creatureTypeSkillPoints = 3;
             creatureSkills.Add("skill 1");
@@ -676,7 +701,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void IfCannotUseEquipment_DoNotGetUntrainedUnnaturalSkill()
+        public void GenerateFor_IfCannotUseEquipment_DoNotGetUntrainedUnnaturalSkill()
         {
             AddUntrainedSkills(2);
             AddCreatureSkills(2);
@@ -689,7 +714,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void IfCannotUseEquipment_GetTrainedUnnaturalSkill()
+        public void GenerateFor_IfCannotUseEquipment_GetTrainedUnnaturalSkill()
         {
             AddUntrainedSkills(2);
             AddCreatureSkills(2);
@@ -702,7 +727,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void IfCanUseEquipment_GetUntrainedUnnaturalSkill()
+        public void GenerateFor_IfCanUseEquipment_GetUntrainedUnnaturalSkill()
         {
             AddUntrainedSkills(2);
             AddCreatureSkills(2);
@@ -715,7 +740,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void IfCanUseEquipment_GetTrainedUnnaturalSkill()
+        public void GenerateFor_IfCanUseEquipment_GetTrainedUnnaturalSkill()
         {
             AddUntrainedSkills(2);
             AddCreatureSkills(2);
@@ -787,7 +812,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         [TestCase(18, 8, 168)]
         [TestCase(19, 8, 176)]
         [TestCase(20, 8, 184)]
-        public void SkillPointsDeterminedByHitDice(int hitDiceQuantity, int skillPointsPerDie, int skillPoints)
+        public void GenerateFor_SkillPointsDeterminedByHitDice(int hitDiceQuantity, int skillPointsPerDie, int skillPoints)
         {
             hitPoints.HitDice[0].Quantity = hitDiceQuantity;
             creatureTypeSkillPoints = skillPointsPerDie;
@@ -859,7 +884,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         [TestCase(18, 8, 144)]
         [TestCase(19, 8, 152)]
         [TestCase(20, 8, 160)]
-        public void SkillPointsDeterminedByHitDice_NotFirstHitDie(int hitDiceQuantity, int skillPointsPerDie, int skillPoints)
+        public void GenerateFor_SkillPointsDeterminedByHitDice_NotFirstHitDie(int hitDiceQuantity, int skillPointsPerDie, int skillPoints)
         {
             hitPoints.HitDice[0].Quantity = hitDiceQuantity;
             creatureTypeSkillPoints = skillPointsPerDie;
@@ -976,7 +1001,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         [TestCase(18, 18, 126)]
         [TestCase(19, 18, 132)]
         [TestCase(20, 18, 138)]
-        public void ApplyIntelligenceBonusToSkillPoints(int hitDie, int intelligence, int skillPoints)
+        public void GenerateFor_ApplyIntelligenceBonusToSkillPoints(int hitDie, int intelligence, int skillPoints)
         {
             hitPoints.HitDice[0].Quantity = hitDie;
             creatureTypeSkillPoints = 2;
@@ -990,7 +1015,65 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void IfCreatureHasBaseAbility_GetSkill()
+        public void GenerateFor_ApplyLotsOfSkillPoints()
+        {
+            hitPoints.HitDice[0].Quantity = 100;
+            creatureTypeSkillPoints = 8;
+            abilities[AbilityConstants.Intelligence].BaseScore = 18;
+
+            AddCreatureSkills(20);
+
+            mockDice
+                .Setup(d => d.Roll("1d100+1d4-1").AsSum<int>())
+                .Returns(51);
+
+            mockDice
+                .Setup(d => d.Roll("2d20+1d12+1d3-3").AsSum<int>())
+                .Returns(52);
+
+            var start = DateTime.Now;
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
+            var duration = DateTime.Now - start;
+
+            var totalRanks = skills.Sum(s => s.Ranks);
+            Assert.That(totalRanks, Is.EqualTo(103 * 12));
+            Assert.That(duration, Is.LessThan(TimeSpan.FromMilliseconds(100)));
+        }
+
+        [Test]
+        public void GenerateFor_ApplyLotsOfSkillPoints_Dynamic()
+        {
+            hitPoints.HitDice[0].Quantity = 100;
+            creatureTypeSkillPoints = 8;
+            abilities[AbilityConstants.Intelligence].BaseScore = 18;
+
+            AddCreatureSkills(20);
+
+            var cap = 103;
+            var count = 0;
+            while (cap > 0)
+            {
+                var roll = RollHelper.GetRollWithMostEvenDistribution(1, cap);
+                var result = (Math.Max(cap / 2, 1) + count) % cap + 1;
+
+                mockDice
+                    .Setup(d => d.Roll(roll).AsSum<int>())
+                    .Returns(result);
+
+                cap--;
+            }
+
+            var start = DateTime.Now;
+            var skills = skillsGenerator.GenerateFor(hitPoints, "creature", creatureType, abilities, true, size);
+            var duration = DateTime.Now - start;
+
+            var totalRanks = skills.Sum(s => s.Ranks);
+            Assert.That(totalRanks, Is.EqualTo(103 * 12));
+            Assert.That(duration, Is.LessThan(TimeSpan.FromMilliseconds(100)));
+        }
+
+        [Test]
+        public void GenerateFor_IfCreatureHasBaseAbility_GetSkill()
         {
             creatureSkills.Add("skill 1");
             creatureSkills.Add("skill 2");
@@ -1008,7 +1091,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void IfCreatureDoesNotHaveBaseAbility_CannotGetSkill()
+        public void GenerateFor_IfCreatureDoesNotHaveBaseAbility_CannotGetSkill()
         {
             creatureSkills.Add("skill 1");
             creatureSkills.Add("skill 2");
@@ -1026,7 +1109,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void DoNotAssignSkillPointsToSkillsThatTheCreatureDoesNotHaveDueToNotHavingTheBaseAbility()
+        public void GenerateFor_DoNotAssignSkillPointsToSkillsThatTheCreatureDoesNotHaveDueToNotHavingTheBaseAbility()
         {
             creatureTypeSkillPoints = 1;
             hitPoints.HitDice[0].Quantity = 2;
@@ -1050,7 +1133,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         [TestCase("skill 1Intelligence")]
         [TestCase("skill 1All")]
         [TestCase("skill 19266")]
-        public void CreatureSkillWithDifferentNameIsClassSkill(string creatureSkill)
+        public void GenerateFor_CreatureSkillWithDifferentNameIsClassSkill(string creatureSkill)
         {
             creatureTypeSkillPoints = 2;
             creatureSkills.Add(creatureSkill);
@@ -1069,7 +1152,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void SelectPresetFocusForSkill()
+        public void GenerateFor_SelectPresetFocusForSkill()
         {
             creatureTypeSkillPoints = 2;
             abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
@@ -1097,7 +1180,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void SelectRandomFocusForSkill()
+        public void GenerateFor_SelectRandomFocusForSkill()
         {
             creatureTypeSkillPoints = 2;
             abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
@@ -1125,7 +1208,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void SelectMultipleRandomFociForSkill()
+        public void GenerateFor_SelectMultipleRandomFociForSkill()
         {
             hitPoints.HitDice[0].Quantity = 20;
             creatureTypeSkillPoints = 0;
@@ -1164,7 +1247,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void DoNotSelectRepeatedRandomFociForSkill()
+        public void GenerateFor_DoNotSelectRepeatedRandomFociForSkill()
         {
             hitPoints.HitDice[0].Quantity = 20;
             creatureTypeSkillPoints = 0;
@@ -1203,7 +1286,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void SelectAllRandomFociForSkill()
+        public void GenerateFor_SelectAllRandomFociForSkill()
         {
             hitPoints.HitDice[0].Quantity = 20;
             creatureTypeSkillPoints = 0;
@@ -1239,7 +1322,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void ProfessionSkillGrantsAdditionalSkills()
+        public void GenerateFor_ProfessionSkillGrantsAdditionalSkills()
         {
             AddCreatureSkills(1);
             creatureSkills.Add("professional skill 1");
@@ -1302,7 +1385,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void RandomProfessionSkillGrantsAdditionalSkills()
+        public void GenerateFor_RandomProfessionSkillGrantsAdditionalSkills()
         {
             AddCreatureSkills(1);
             creatureSkills.Add("professional skill 1");
@@ -1366,7 +1449,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void ProfessionSkillGrantsNoDuplicateCreatureSkills()
+        public void GenerateFor_ProfessionSkillGrantsNoDuplicateCreatureSkills()
         {
             AddCreatureSkills(1);
             creatureSkills.Add("professional skill 1");
@@ -1429,7 +1512,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void ProfessionSkillGrantsNoAdditionalCreatureSkills()
+        public void GenerateFor_ProfessionSkillGrantsNoAdditionalCreatureSkills()
         {
             AddCreatureSkills(1);
             abilities["stat 1"] = new Ability("stat 1");
@@ -1454,7 +1537,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void NoProfessionSkillGrantsNoAdditionalCreatureSkills()
+        public void GenerateFor_NoProfessionSkillGrantsNoAdditionalCreatureSkills()
         {
             AddCreatureSkills(1);
             abilities["stat 1"] = new Ability("stat 1");
@@ -1480,7 +1563,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void CreaturesWithoutIntelligenceReceiveNoRanksForSkills()
+        public void GenerateFor_CreaturesWithoutIntelligenceReceiveNoRanksForSkills()
         {
             abilities[AbilityConstants.Intelligence].BaseScore = 0;
             abilities[AbilityConstants.Strength] = new Ability(AbilityConstants.Strength);
@@ -1509,7 +1592,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         [TestCase(SizeConstants.Tiny, 8)]
         [TestCase(SizeConstants.Diminutive, 12)]
         [TestCase(SizeConstants.Fine, 16)]
-        public void ApplySizeModiferToHideSkill(string creatureSize, int bonus)
+        public void GenerateFor_ApplySizeModiferToHideSkill(string creatureSize, int bonus)
         {
             AddCreatureSkills(1);
             AddUntrainedSkills(1);
@@ -1526,7 +1609,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void ApplyNoSkillBonus()
+        public void GenerateFor_ApplyNoSkillBonus()
         {
             AddCreatureSkills(1);
 
@@ -1539,7 +1622,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void ApplySkillBonus()
+        public void GenerateFor_ApplySkillBonus()
         {
             AddCreatureSkills(2);
 
@@ -1567,7 +1650,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void ApplySkillBonuses()
+        public void GenerateFor_ApplySkillBonuses()
         {
             AddCreatureSkills(2);
 
@@ -1601,7 +1684,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void ApplySkillBonusesToSameSkill()
+        public void GenerateFor_ApplySkillBonusesToSameSkill()
         {
             AddCreatureSkills(2);
 
@@ -1636,7 +1719,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void ApplySkillBonusWithCondition()
+        public void GenerateFor_ApplySkillBonusWithCondition()
         {
             AddCreatureSkills(2);
 
@@ -1664,7 +1747,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void ApplySkillBonusesWithCondition()
+        public void GenerateFor_ApplySkillBonusesWithCondition()
         {
             AddCreatureSkills(2);
 
@@ -1699,7 +1782,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void ApplySkillBonusesWithAndWithoutCondition()
+        public void GenerateFor_ApplySkillBonusesWithAndWithoutCondition()
         {
             AddCreatureSkills(2);
 
@@ -1734,7 +1817,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void ApplySkillBonusWithFocus()
+        public void GenerateFor_ApplySkillBonusWithFocus()
         {
             AddCreatureSkills(2);
 
@@ -1775,7 +1858,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void ApplySkillBonusWithFocusAndCondition()
+        public void GenerateFor_ApplySkillBonusWithFocusAndCondition()
         {
             AddCreatureSkills(2);
 
@@ -1816,7 +1899,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void ApplySkillBonusToMultipleSkills()
+        public void GenerateFor_ApplySkillBonusToMultipleSkills()
         {
             AddCreatureSkills(3);
 
@@ -1868,7 +1951,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void ApplySkillBonusWithConditionToMultipleSkills()
+        public void GenerateFor_ApplySkillBonusWithConditionToMultipleSkills()
         {
             AddCreatureSkills(3);
 
@@ -1920,7 +2003,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void ApplyDuplicateSkillBonuses()
+        public void GenerateFor_ApplyDuplicateSkillBonuses()
         {
             AddCreatureSkills(2);
 
@@ -1956,7 +2039,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
         //INFO: Example is how a centipede swarm uses Dexterity for Climb instead of Strength
         [Test]
-        public void UseAlternateBaseAbilityForSkill()
+        public void GenerateFor_UseAlternateBaseAbilityForSkill()
         {
             abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
 
@@ -1978,7 +2061,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void ApplyFeatThatGrantSkillBonusesToSkills()
+        public void GenerateFor_ApplyFeatThatGrantSkillBonusesToSkills()
         {
             var baseAbility = new Ability("base ability");
 
@@ -2016,7 +2099,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void ApplyFeatThatGrantSkillBonusesToSkillsWithFocus()
+        public void GenerateFor_ApplyFeatThatGrantSkillBonusesToSkillsWithFocus()
         {
             var baseAbility = new Ability("base ability");
 
@@ -2054,7 +2137,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void IfFocusIsSkill_ApplyBonusToThatSkill()
+        public void GenerateFor_IfFocusIsSkill_ApplyBonusToThatSkill()
         {
             var baseAbility = new Ability("base ability");
 
@@ -2089,7 +2172,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void IfFocusIsSkillWithFocus_ApplyBonusToThatSkill()
+        public void GenerateFor_IfFocusIsSkillWithFocus_ApplyBonusToThatSkill()
         {
             var baseAbility = new Ability("base ability");
 
@@ -2124,7 +2207,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void OnlyApplySkillFeatToSkillsIfSkillFocusIsPurelySkill()
+        public void GenerateFor_OnlyApplySkillFeatToSkillsIfSkillFocusIsPurelySkill()
         {
             var baseAbility = new Ability("base ability");
 
@@ -2152,7 +2235,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void NoCircumstantialBonusIfBonusApplied()
+        public void GenerateFor_NoCircumstantialBonusIfBonusApplied()
         {
             var baseAbility = new Ability("base ability");
 
@@ -2193,7 +2276,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void IfSkillBonusFocusIsNotPurelySkill_MarkSkillAsHavingCircumstantialBonus()
+        public void GenerateFor_IfSkillBonusFocusIsNotPurelySkill_MarkSkillAsHavingCircumstantialBonus()
         {
             var baseAbility = new Ability("base ability");
 
@@ -2220,7 +2303,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void MarkSkillWithCircumstantialBonusWhenOtherFociDoNotHaveCircumstantialBonus()
+        public void GenerateFor_MarkSkillWithCircumstantialBonusWhenOtherFociDoNotHaveCircumstantialBonus()
         {
             var baseAbility = new Ability("base ability");
 
@@ -2257,7 +2340,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void CircumstantialBonusIsNotOverwritten()
+        public void GenerateFor_CircumstantialBonusIsNotOverwritten()
         {
             var baseAbility = new Ability("base ability");
 
@@ -2285,7 +2368,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void SwapBaseSkillAbilityByCreature()
+        public void GenerateFor_SwapBaseSkillAbilityByCreature()
         {
             abilities[AbilityConstants.Strength] = new Ability(AbilityConstants.Strength);
             abilities[AbilityConstants.Dexterity] = new Ability(AbilityConstants.Dexterity);
@@ -2307,7 +2390,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetSkillFromCreatureType()
+        public void GenerateFor_GetSkillFromCreatureType()
         {
             creatureTypeSkills.Add("creature type skill");
 
@@ -2320,7 +2403,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetSkillFromCreatureSubtype()
+        public void GenerateFor_GetSkillFromCreatureSubtype()
         {
             creatureType.SubTypes = new[] { "subtype" };
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillGroups, "subtype")).Returns(new[] { "subtype skill" });
@@ -2334,7 +2417,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetSkillsFromCreatureSubtypes()
+        public void GenerateFor_GetSkillsFromCreatureSubtypes()
         {
             creatureType.SubTypes = new[] { "subtype", "other subtype" };
             mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.SkillGroups, "subtype")).Returns(new[] { "subtype skill" });
@@ -2357,7 +2440,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void SwapBaseSkillAbilityByCreatureType()
+        public void GenerateFor_SwapBaseSkillAbilityByCreatureType()
         {
             abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
             abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
@@ -2386,7 +2469,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void SwapBaseSkillAbilityByCreatureTypeIfCreatureDoesNotHaveSkillButSkillIsUntrained()
+        public void GenerateFor_SwapBaseSkillAbilityByCreatureTypeIfCreatureDoesNotHaveSkillButSkillIsUntrained()
         {
             abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
             abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
@@ -2417,7 +2500,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test, Ignore("Only creature type ability swap is Undead Charisma for concentration, which is a natural skill, so this is not a valid usecase")]
-        public void DoNotSwapBaseSkillAbilityByCreatureTypeIfCreatureDoesNotHaveSkill()
+        public void GenerateFor_DoNotSwapBaseSkillAbilityByCreatureTypeIfCreatureDoesNotHaveSkill()
         {
             abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
             abilities[AbilityConstants.Constitution] = new Ability(AbilityConstants.Constitution);
@@ -2443,13 +2526,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test, Ignore("No subtypes require a base ability swap")]
-        public void SwapBaseSkillAbilityByCreatureSubtype()
+        public void GenerateFor_SwapBaseSkillAbilityByCreatureSubtype()
         {
             Assert.Fail("not yet written");
         }
 
         [Test]
-        public void GetSkillBonusFromCreature()
+        public void GenerateFor_GetSkillBonusFromCreature()
         {
             AddCreatureSkills(2);
 
@@ -2477,7 +2560,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetSkillBonusFromCreatureType()
+        public void GenerateFor_GetSkillBonusFromCreatureType()
         {
             AddCreatureSkills(2);
 
@@ -2505,7 +2588,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetSkillBonusFromCreatureSubtype()
+        public void GenerateFor_GetSkillBonusFromCreatureSubtype()
         {
             AddCreatureSkills(2);
 
@@ -2535,7 +2618,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetNoSkillSynergiesBecauseSkillHasNoSynergies()
+        public void GenerateFor_GetNoSkillSynergiesBecauseSkillHasNoSynergies()
         {
             creatureTypeSkillPoints = 3;
             AddCreatureSkills(2);
@@ -2558,7 +2641,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetNoSkillSynergiesBecauseSkillHasInsufficientRanks()
+        public void GenerateFor_GetNoSkillSynergiesBecauseSkillHasInsufficientRanks()
         {
             creatureTypeSkillPoints = 3;
             AddCreatureSkills(2);
@@ -2585,7 +2668,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetNoSkillSynergiesBecauseMissingSourceSkill()
+        public void GenerateFor_GetNoSkillSynergiesBecauseMissingSourceSkill()
         {
             creatureTypeSkillPoints = 3;
             AddCreatureSkills(2);
@@ -2614,7 +2697,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetNoSkillSynergiesBecauseMissingSourceSkillAndFocus()
+        public void GenerateFor_GetNoSkillSynergiesBecauseMissingSourceSkillAndFocus()
         {
             creatureTypeSkillPoints = 3;
             AddCreatureSkills(2);
@@ -2650,7 +2733,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetNoSkillSynergiesBecauseMissingTargetSkill()
+        public void GenerateFor_GetNoSkillSynergiesBecauseMissingTargetSkill()
         {
             creatureTypeSkillPoints = 3;
             AddCreatureSkills(2);
@@ -2679,7 +2762,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetNoSkillSynergiesBecauseMissingTargetSkillAndFocus()
+        public void GenerateFor_GetNoSkillSynergiesBecauseMissingTargetSkillAndFocus()
         {
             creatureTypeSkillPoints = 3;
             AddCreatureSkills(2);
@@ -2715,7 +2798,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetSkillSynergy()
+        public void GenerateFor_GetSkillSynergy()
         {
             creatureTypeSkillPoints = 3;
             AddCreatureSkills(1);
@@ -2750,7 +2833,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetSkillSynergyWithCondition()
+        public void GenerateFor_GetSkillSynergyWithCondition()
         {
             creatureTypeSkillPoints = 3;
             AddCreatureSkills(1);
@@ -2785,7 +2868,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetSkillSynergies()
+        public void GenerateFor_GetSkillSynergies()
         {
             creatureTypeSkillPoints = 3;
             AddCreatureSkills(2);
@@ -2837,7 +2920,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetSkillSynergiesFromSameSkill()
+        public void GenerateFor_GetSkillSynergiesFromSameSkill()
         {
             creatureTypeSkillPoints = 3;
             AddCreatureSkills(2);
@@ -2890,7 +2973,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetSkillSynergiesForSameSkill()
+        public void GenerateFor_GetSkillSynergiesForSameSkill()
         {
             creatureTypeSkillPoints = 3;
             AddCreatureSkills(2);
@@ -2941,7 +3024,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetSkillSynergyFromSkillWithFocus()
+        public void GenerateFor_GetSkillSynergyFromSkillWithFocus()
         {
             creatureTypeSkillPoints = 3;
             AddCreatureSkills(2);
@@ -2999,7 +3082,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetSkillSynergyForSkillWithFocus()
+        public void GenerateFor_GetSkillSynergyForSkillWithFocus()
         {
             creatureTypeSkillPoints = 3;
             AddCreatureSkills(2);
@@ -3069,7 +3152,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetSkillSynergyFromSkillWithFocusForSkillWithFocus()
+        public void GenerateFor_GetSkillSynergyFromSkillWithFocusForSkillWithFocus()
         {
             creatureTypeSkillPoints = 3;
             AddCreatureSkills(1);
@@ -3118,7 +3201,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetSkillSynergyFromSkillWithoutFocusForSkillWithFocus()
+        public void GenerateFor_GetSkillSynergyFromSkillWithoutFocusForSkillWithFocus()
         {
             creatureTypeSkillPoints = 3;
             AddCreatureSkills(1);
@@ -3167,7 +3250,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetSkillSynergyFromSkillWithFocusForSkillWithoutFocus()
+        public void GenerateFor_GetSkillSynergyFromSkillWithFocusForSkillWithoutFocus()
         {
             creatureTypeSkillPoints = 3;
             AddCreatureSkills(1);
@@ -3216,7 +3299,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetSkillSynergyFromSkillWithoutFocusForSkillWithoutFocus()
+        public void GenerateFor_GetSkillSynergyFromSkillWithoutFocusForSkillWithoutFocus()
         {
             creatureTypeSkillPoints = 3;
             AddCreatureSkills(1);
@@ -3265,7 +3348,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetSkillSynergyFromUntrainedSkill()
+        public void GenerateFor_GetSkillSynergyFromUntrainedSkill()
         {
             creatureTypeSkillPoints = 3;
             AddUntrainedSkills(2);
@@ -3298,7 +3381,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         }
 
         [Test]
-        public void GetSkillSynergyForCreatureSkill()
+        public void GenerateFor_GetSkillSynergyForCreatureSkill()
         {
             creatureTypeSkillPoints = 3;
             AddCreatureSkills(2);
@@ -3806,6 +3889,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         [Test]
         public void ApplySkillPointsAsRanks_AssignRankToClassSkill()
         {
+            creatureTypeSkillPoints = 2;
             var unrankedSkills = new[]
             {
                 new Skill("creature skill 1", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
@@ -3825,12 +3909,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
                     null))
                 .Returns((IEnumerable<Skill> c, IEnumerable<Skill> u, IEnumerable<Skill> r, IEnumerable<Skill> v) => c.ElementAt(index++ % c.Count()));
 
+            var count = 0;
+            mockDice
+                .Setup(d => d.Roll("1d4").AsSum<int>())
+                .Returns(() => count++ % 4 + 1);
+
             var skills = skillsGenerator.ApplySkillPointsAsRanks(unrankedSkills, hitPoints, creatureType, abilities, true).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo("creature skill 1"));
             Assert.That(skills[0].ClassSkill, Is.True);
-            Assert.That(skills[0].Ranks, Is.EqualTo(3));
-            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(3));
+            Assert.That(skills[0].Ranks, Is.EqualTo(2));
+            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(2));
             Assert.That(skills[1].Name, Is.EqualTo("untrained skill 1"));
             Assert.That(skills[1].ClassSkill, Is.False);
             Assert.That(skills[1].Ranks, Is.Zero);
@@ -3845,8 +3934,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills[3].EffectiveRanks, Is.Zero);
             Assert.That(skills[4].Name, Is.EqualTo("creature skill 3"));
             Assert.That(skills[4].ClassSkill, Is.True);
-            Assert.That(skills[4].Ranks, Is.EqualTo(2));
-            Assert.That(skills[4].EffectiveRanks, Is.EqualTo(2));
+            Assert.That(skills[4].Ranks, Is.EqualTo(3));
+            Assert.That(skills[4].EffectiveRanks, Is.EqualTo(3));
             Assert.That(skills[5].Name, Is.EqualTo("untrained skill 3"));
             Assert.That(skills[5].ClassSkill, Is.False);
             Assert.That(skills[5].Ranks, Is.Zero);
@@ -3857,6 +3946,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
         [Test]
         public void ApplySkillPointsAsRanks_AssignRankToUntrainedSkill()
         {
+            creatureTypeSkillPoints = 2;
             var unrankedSkills = new[]
             {
                 new Skill("creature skill 1", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
@@ -3876,6 +3966,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
                     null))
                 .Returns((IEnumerable<Skill> c, IEnumerable<Skill> u, IEnumerable<Skill> r, IEnumerable<Skill> v) => u.ElementAt(index++ % u.Count()));
 
+            var count = 0;
+            mockDice
+                .Setup(d => d.Roll("1d4").AsSum<int>())
+                .Returns(() => count++ % 4 + 1);
+
             var skills = skillsGenerator.ApplySkillPointsAsRanks(unrankedSkills, hitPoints, creatureType, abilities, true).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo("creature skill 1"));
@@ -3884,8 +3979,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills[0].EffectiveRanks, Is.Zero);
             Assert.That(skills[1].Name, Is.EqualTo("untrained skill 1"));
             Assert.That(skills[1].ClassSkill, Is.False);
-            Assert.That(skills[1].Ranks, Is.EqualTo(3));
-            Assert.That(skills[1].EffectiveRanks, Is.EqualTo(1.5));
+            Assert.That(skills[1].Ranks, Is.EqualTo(2));
+            Assert.That(skills[1].EffectiveRanks, Is.EqualTo(1));
             Assert.That(skills[2].Name, Is.EqualTo("creature skill 2"));
             Assert.That(skills[2].ClassSkill, Is.True);
             Assert.That(skills[2].Ranks, Is.Zero);
@@ -3900,14 +3995,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills[4].EffectiveRanks, Is.Zero);
             Assert.That(skills[5].Name, Is.EqualTo("untrained skill 3"));
             Assert.That(skills[5].ClassSkill, Is.False);
-            Assert.That(skills[5].Ranks, Is.EqualTo(2));
-            Assert.That(skills[5].EffectiveRanks, Is.EqualTo(1));
+            Assert.That(skills[5].Ranks, Is.EqualTo(3));
+            Assert.That(skills[5].EffectiveRanks, Is.EqualTo(1.5));
             Assert.That(skills.Length, Is.EqualTo(6));
         }
 
         [Test]
         public void ApplySkillPointsAsRanks_AssignRankToClassAndUntrainedSkill()
         {
+            creatureTypeSkillPoints = 2;
             var unrankedSkills = new[]
             {
                 new Skill("creature skill 1", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true },
@@ -3918,12 +4014,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
                 new Skill("untrained skill 3", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = false },
             };
 
+            var count = 0;
+            mockDice
+                .Setup(d => d.Roll("1d4").AsSum<int>())
+                .Returns(() => count++ % 4 + 1);
+
             var skills = skillsGenerator.ApplySkillPointsAsRanks(unrankedSkills, hitPoints, creatureType, abilities, true).ToArray();
 
             Assert.That(skills[0].Name, Is.EqualTo("creature skill 1"));
             Assert.That(skills[0].ClassSkill, Is.True);
-            Assert.That(skills[0].Ranks, Is.EqualTo(2));
-            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(2));
+            Assert.That(skills[0].Ranks, Is.EqualTo(1));
+            Assert.That(skills[0].EffectiveRanks, Is.EqualTo(1));
             Assert.That(skills[1].Name, Is.EqualTo("untrained skill 1"));
             Assert.That(skills[1].ClassSkill, Is.False);
             Assert.That(skills[1].Ranks, Is.EqualTo(1));
@@ -3938,12 +4039,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             Assert.That(skills[3].EffectiveRanks, Is.EqualTo(.5));
             Assert.That(skills[4].Name, Is.EqualTo("creature skill 3"));
             Assert.That(skills[4].ClassSkill, Is.True);
-            Assert.That(skills[4].Ranks, Is.EqualTo(1));
-            Assert.That(skills[4].EffectiveRanks, Is.EqualTo(1d));
+            Assert.That(skills[4].Ranks, Is.EqualTo(3));
+            Assert.That(skills[4].EffectiveRanks, Is.EqualTo(3));
             Assert.That(skills[5].Name, Is.EqualTo("untrained skill 3"));
             Assert.That(skills[5].ClassSkill, Is.False);
-            Assert.That(skills[5].Ranks, Is.EqualTo(1));
-            Assert.That(skills[5].EffectiveRanks, Is.EqualTo(.5));
+            Assert.That(skills[5].Ranks, Is.Zero);
+            Assert.That(skills[5].EffectiveRanks, Is.Zero);
             Assert.That(skills.Length, Is.EqualTo(6));
         }
 
@@ -4244,6 +4345,74 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
             var totalRanks = skills.Sum(s => s.Ranks);
 
             Assert.That(totalRanks, Is.EqualTo(skillPoints));
+        }
+
+        [Test]
+        public void ApplySkillPointsAsRanks_ApplyLotsOfSkillPoints()
+        {
+            hitPoints.HitDice[0].Quantity = 100;
+            creatureTypeSkillPoints = 8;
+            abilities[AbilityConstants.Intelligence].BaseScore = 18;
+
+            var unrankedSkills = new List<Skill>();
+            while (unrankedSkills.Count < 20)
+            {
+                var skill = new Skill($"skill {unrankedSkills.Count + 1}", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true };
+                unrankedSkills.Add(skill);
+            };
+
+            mockDice
+                .Setup(d => d.Roll("1d100+1d4-1").AsSum<int>())
+                .Returns(51);
+
+            mockDice
+                .Setup(d => d.Roll("2d20+1d12+1d3-3").AsSum<int>())
+                .Returns(52);
+
+            var start = DateTime.Now;
+            var skills = skillsGenerator.ApplySkillPointsAsRanks(unrankedSkills, hitPoints, creatureType, abilities, true);
+            var duration = DateTime.Now - start;
+
+            var totalRanks = skills.Sum(s => s.Ranks);
+            Assert.That(totalRanks, Is.EqualTo(103 * 12));
+            Assert.That(duration, Is.LessThan(TimeSpan.FromMilliseconds(100)));
+        }
+
+        [Test]
+        public void ApplySkillPointsAsRanks_ApplyLotsOfSkillPoints_Dynamic()
+        {
+            hitPoints.HitDice[0].Quantity = 100;
+            creatureTypeSkillPoints = 8;
+            abilities[AbilityConstants.Intelligence].BaseScore = 18;
+
+            var unrankedSkills = new List<Skill>();
+            while (unrankedSkills.Count < 20)
+            {
+                var skill = new Skill($"skill {unrankedSkills.Count + 1}", abilities[AbilityConstants.Intelligence], hitPoints.RoundedHitDiceQuantity + 3) { ClassSkill = true };
+                unrankedSkills.Add(skill);
+            };
+
+            var cap = 103;
+            var count = 0;
+            while (cap > 0)
+            {
+                var roll = RollHelper.GetRollWithMostEvenDistribution(1, cap);
+                var result = (Math.Max(cap / 2, 1) + count) % cap + 1;
+
+                mockDice
+                    .Setup(d => d.Roll(roll).AsSum<int>())
+                    .Returns(result);
+
+                cap--;
+            }
+
+            var start = DateTime.Now;
+            var skills = skillsGenerator.ApplySkillPointsAsRanks(unrankedSkills, hitPoints, creatureType, abilities, true);
+            var duration = DateTime.Now - start;
+
+            var totalRanks = skills.Sum(s => s.Ranks);
+            Assert.That(totalRanks, Is.EqualTo(103 * 12));
+            Assert.That(duration, Is.LessThan(TimeSpan.FromMilliseconds(100)));
         }
 
         [Test]
