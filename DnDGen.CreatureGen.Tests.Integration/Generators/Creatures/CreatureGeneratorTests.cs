@@ -205,6 +205,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Girallon, CreatureConstants.Templates.FiendishCreature)]
         [TestCase(CreatureConstants.GrayRender, CreatureConstants.Templates.Zombie)]
         [TestCase(CreatureConstants.Griffon, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(CreatureConstants.Grig, CreatureConstants.Templates.HalfCelestial)]
+        [TestCase(CreatureConstants.Grig_WithFiddle, CreatureConstants.Templates.HalfCelestial)]
         [TestCase(CreatureConstants.Hawk, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(CreatureConstants.Hawk, CreatureConstants.Templates.FiendishCreature)]
         [TestCase(CreatureConstants.Hippogriff, CreatureConstants.Templates.CelestialCreature)]

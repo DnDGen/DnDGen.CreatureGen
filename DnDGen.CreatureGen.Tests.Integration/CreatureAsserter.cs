@@ -377,15 +377,12 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.Positive, creature.Summary);
             Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.Positive
-                .And.AtLeast(1)
                 .And.AtLeast(creature.HitPoints.HitDice.Count), creature.Summary);
 
             Assert.That(creature.HitPoints.Total, Is.Positive
-                .And.AtLeast(Math.Floor(creature.HitPoints.HitDiceQuantity))
                 .And.AtLeast(creature.HitPoints.RoundedHitDiceQuantity), creature.Summary);
             Assert.That(creature.HitPoints.DefaultTotal, Is.Positive
-                .And.AtLeast(creature.HitPoints.HitDiceQuantity + creature.Abilities[AbilityConstants.Constitution].Modifier)
-                .And.AtLeast(creature.HitPoints.RoundedHitDiceQuantity + creature.Abilities[AbilityConstants.Constitution].Modifier), creature.Summary);
+                .And.AtLeast(creature.HitPoints.RoundedHitDiceQuantity), creature.Summary);
 
             Assert.That(creature.FullMeleeAttack, Is.Not.Null, creature.Summary);
             Assert.That(creature.FullRangedAttack, Is.Not.Null, creature.Summary);

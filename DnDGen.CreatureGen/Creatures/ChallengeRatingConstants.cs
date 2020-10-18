@@ -39,6 +39,16 @@
         public const string TwentyEight = "28";
         public const string TwentyNine = "29";
         public const string Thirty = "30";
+        public const string ThirtyOne = "31";
+        public const string ThirtyTwo = "32";
+        public const string ThirtyThree = "33";
+        public const string ThirtyFour = "34";
+        public const string ThirtyFive = "35";
+        public const string ThirtySix = "36";
+        public const string ThirtySeven = "37";
+        public const string ThirtyEight = "38";
+        public const string ThirtyNine = "39";
+        public const string Forty = "40";
 
         internal static string[] GetOrdered()
         {
@@ -81,6 +91,16 @@
                 TwentyEight,
                 TwentyNine,
                 Thirty,
+                ThirtyOne,
+                ThirtyTwo,
+                ThirtyThree,
+                ThirtyFour,
+                ThirtyFive,
+                ThirtySix,
+                ThirtySeven,
+                ThirtyEight,
+                ThirtyNine,
+                Forty,
             };
         }
     }

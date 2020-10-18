@@ -43,6 +43,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         [TestCase(ChallengeRatingConstants.TwentyEight, "28")]
         [TestCase(ChallengeRatingConstants.TwentyNine, "29")]
         [TestCase(ChallengeRatingConstants.Thirty, "30")]
+        [TestCase(ChallengeRatingConstants.ThirtyOne, "31")]
+        [TestCase(ChallengeRatingConstants.ThirtyTwo, "32")]
+        [TestCase(ChallengeRatingConstants.ThirtyThree, "33")]
+        [TestCase(ChallengeRatingConstants.ThirtyFour, "34")]
+        [TestCase(ChallengeRatingConstants.ThirtyFive, "35")]
+        [TestCase(ChallengeRatingConstants.ThirtySix, "36")]
+        [TestCase(ChallengeRatingConstants.ThirtySeven, "37")]
+        [TestCase(ChallengeRatingConstants.ThirtyEight, "38")]
+        [TestCase(ChallengeRatingConstants.ThirtyNine, "39")]
+        [TestCase(ChallengeRatingConstants.Forty, "40")]
         public void ChallengeRatingConstant(string constant, string value)
         {
             Assert.That(constant, Is.EqualTo(value));
@@ -90,6 +100,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
             Assert.That(orderedChallengeRatings[34], Is.EqualTo(ChallengeRatingConstants.TwentyEight));
             Assert.That(orderedChallengeRatings[35], Is.EqualTo(ChallengeRatingConstants.TwentyNine));
             Assert.That(orderedChallengeRatings[36], Is.EqualTo(ChallengeRatingConstants.Thirty));
+            Assert.That(orderedChallengeRatings[37], Is.EqualTo(ChallengeRatingConstants.ThirtyOne));
+            Assert.That(orderedChallengeRatings[38], Is.EqualTo(ChallengeRatingConstants.ThirtyTwo));
+            Assert.That(orderedChallengeRatings[39], Is.EqualTo(ChallengeRatingConstants.ThirtyThree));
+            Assert.That(orderedChallengeRatings[40], Is.EqualTo(ChallengeRatingConstants.ThirtyFour));
+            Assert.That(orderedChallengeRatings[41], Is.EqualTo(ChallengeRatingConstants.ThirtyFive));
+            Assert.That(orderedChallengeRatings[42], Is.EqualTo(ChallengeRatingConstants.ThirtySix));
+            Assert.That(orderedChallengeRatings[43], Is.EqualTo(ChallengeRatingConstants.ThirtySeven));
+            Assert.That(orderedChallengeRatings[44], Is.EqualTo(ChallengeRatingConstants.ThirtyEight));
+            Assert.That(orderedChallengeRatings[45], Is.EqualTo(ChallengeRatingConstants.ThirtyNine));
+            Assert.That(orderedChallengeRatings[46], Is.EqualTo(ChallengeRatingConstants.Forty));
+            Assert.That(orderedChallengeRatings, Has.Length.EqualTo(47));
         }
     }
 }
