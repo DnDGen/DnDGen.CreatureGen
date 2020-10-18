@@ -131,22 +131,19 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
 
         private void UpdateCreatureSpeeds(Creature creature)
         {
-            var speeds = speedsGenerator.Generate(DragonSpecies);
-
             var sizes = SizeConstants.GetOrdered();
             var largeIndex = Array.IndexOf(sizes, SizeConstants.Large);
             var sizeIndex = Array.IndexOf(sizes, creature.Size);
 
-            if (sizeIndex >= largeIndex)
+            if (sizeIndex >= largeIndex
+                && creature.Speeds.ContainsKey(SpeedConstants.Land)
+                && !creature.Speeds.ContainsKey(SpeedConstants.Fly))
             {
-                if (!creature.Speeds.ContainsKey(SpeedConstants.Land))
-                {
-                    throw new ArgumentException($"Creature {creature.Summary} does not have a Land speed");
-                }
+                var dragonSpeeds = speedsGenerator.Generate(DragonSpecies);
 
-                var speed = Math.Min(120, creature.Speeds[SpeedConstants.Land].Value * 2);
-                creature.Speeds[SpeedConstants.Fly] = speeds[SpeedConstants.Fly];
-                creature.Speeds[SpeedConstants.Fly].Value = speed;
+                var dragonFlySpeedValue = Math.Min(120, creature.Speeds[SpeedConstants.Land].Value * 2);
+                creature.Speeds[SpeedConstants.Fly] = dragonSpeeds[SpeedConstants.Fly];
+                creature.Speeds[SpeedConstants.Fly].Value = dragonFlySpeedValue;
             }
         }
 

@@ -304,6 +304,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Colossal, CreatureConstants.Templates.FiendishCreature)]
         [TestCase(CreatureConstants.Squid, CreatureConstants.Templates.FiendishCreature)]
         [TestCase(CreatureConstants.Squid_Giant, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(CreatureConstants.Squid_Giant, CreatureConstants.Templates.HalfDragon_Blue)]
+        [TestCase(CreatureConstants.Squid_Giant, CreatureConstants.Templates.HalfDragon_Green)]
         [TestCase(CreatureConstants.StagBeetle_Giant, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(CreatureConstants.Tiger, CreatureConstants.Templates.FiendishCreature)]
         [TestCase(CreatureConstants.Tiger_Dire, CreatureConstants.Templates.FiendishCreature)]

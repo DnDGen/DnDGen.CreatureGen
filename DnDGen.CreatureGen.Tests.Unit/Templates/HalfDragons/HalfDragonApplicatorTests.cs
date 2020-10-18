@@ -406,7 +406,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
 
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
-                .And.ContainKey(SpeedConstants.Fly));
+                .And.ContainKey(SpeedConstants.Fly)
+                .And.ContainKey(SpeedConstants.Land));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Value, Is.EqualTo(landSpeed));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("the goodest"));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo($"{template} furlongs"));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(flySpeed));
@@ -456,14 +458,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         }
 
         [TestCaseSource(nameof(DoNotGainFlySpeed))]
-        public void ApplyTo_DoNotGainFlySpeed(string template, string size)
+        public void ApplyTo_DoNotGainFlySpeed_TooSmall(string template, string size)
         {
             baseCreature.Size = size;
             baseCreature.Speeds[SpeedConstants.Land].Value = 42;
 
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature.Speeds, Has.Count.EqualTo(1)
-                .And.Not.ContainKey(SpeedConstants.Fly));
+                .And.Not.ContainKey(SpeedConstants.Fly)
+                .And.ContainKey(SpeedConstants.Land));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Value, Is.EqualTo(42));
         }
 
         private static IEnumerable DoNotGainFlySpeed
@@ -487,6 +491,70 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     }
                 }
             }
+        }
+
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
+        public void ApplyTo_DoNotGainFlySpeed_HasNoLandSpeed(string template)
+        {
+            baseCreature.Size = SizeConstants.Large;
+            baseCreature.Speeds.Clear();
+            baseCreature.Speeds[SpeedConstants.Swim] = new Measurement("feet per round") { Value = 42 };
+
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature.Speeds, Has.Count.EqualTo(1)
+                .And.Not.ContainKey(SpeedConstants.Fly)
+                .And.ContainKey(SpeedConstants.Swim));
+            Assert.That(creature.Speeds[SpeedConstants.Swim].Value, Is.EqualTo(42));
+            Assert.That(creature.Speeds[SpeedConstants.Swim].Unit, Is.EqualTo("feet per round"));
+        }
+
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
+        public void ApplyTo_DoNotGainFlySpeed_AlreadyHasFlySpeed(string template)
+        {
+            baseCreature.Size = SizeConstants.Large;
+            baseCreature.Speeds[SpeedConstants.Land].Value = 600;
+            baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 42, Description = "so-so maneuverability" };
+
+            var creature = applicators[template].ApplyTo(baseCreature);
+            Assert.That(creature.Speeds, Has.Count.EqualTo(2)
+                .And.ContainKey(SpeedConstants.Fly)
+                .And.ContainKey(SpeedConstants.Land));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Value, Is.EqualTo(600));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(42));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo("feet per round"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("so-so maneuverability"));
+        }
+
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
+        public async Task ApplyToAsync_DoNotGainFlySpeed_HasNoLandSpeed(string template)
+        {
+            baseCreature.Size = SizeConstants.Large;
+            baseCreature.Speeds.Clear();
+            baseCreature.Speeds[SpeedConstants.Swim] = new Measurement("feet per round") { Value = 42 };
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature.Speeds, Has.Count.EqualTo(1)
+                .And.Not.ContainKey(SpeedConstants.Fly)
+                .And.ContainKey(SpeedConstants.Swim));
+            Assert.That(creature.Speeds[SpeedConstants.Swim].Value, Is.EqualTo(42));
+            Assert.That(creature.Speeds[SpeedConstants.Swim].Unit, Is.EqualTo("feet per round"));
+        }
+
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
+        public async Task ApplyToAsync_DoNotGainFlySpeed_AlreadyHasFlySpeed(string template)
+        {
+            baseCreature.Size = SizeConstants.Large;
+            baseCreature.Speeds[SpeedConstants.Land].Value = 600;
+            baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 42, Description = "so-so maneuverability" };
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            Assert.That(creature.Speeds, Has.Count.EqualTo(2)
+                .And.ContainKey(SpeedConstants.Fly)
+                .And.ContainKey(SpeedConstants.Land));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Value, Is.EqualTo(600));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(42));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo("feet per round"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("so-so maneuverability"));
         }
 
         [TestCaseSource(nameof(AllHalfDragonTemplates))]

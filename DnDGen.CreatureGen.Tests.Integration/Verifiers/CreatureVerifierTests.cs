@@ -2,7 +2,6 @@
 using DnDGen.CreatureGen.Verifiers;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
@@ -439,6 +438,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
         [TestCase(CreatureConstants.Squid, CreatureConstants.Templates.None, true)]
         [TestCase(CreatureConstants.Squid_Giant, CreatureConstants.Templates.FiendishCreature, true)]
         [TestCase(CreatureConstants.Squid_Giant, CreatureConstants.Templates.None, true)]
+        [TestCase(CreatureConstants.Squid_Giant, CreatureConstants.Templates.HalfDragon_Blue, true)]
+        [TestCase(CreatureConstants.Squid_Giant, CreatureConstants.Templates.HalfDragon_Green, true)]
         [TestCase(CreatureConstants.StagBeetle_Giant, CreatureConstants.Templates.CelestialCreature, true)]
         [TestCase(CreatureConstants.StagBeetle_Giant, CreatureConstants.Templates.None, true)]
         [TestCase(CreatureConstants.Tiger, CreatureConstants.Templates.FiendishCreature, true)]
