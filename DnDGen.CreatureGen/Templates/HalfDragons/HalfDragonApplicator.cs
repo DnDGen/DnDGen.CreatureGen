@@ -225,13 +225,13 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             var index = Array.IndexOf(challengeRatings, creature.ChallengeRating);
             var threeIndex = Array.IndexOf(challengeRatings, ChallengeRatingConstants.Three);
 
-            if (index + 2 < threeIndex)
+            if (index > -1 && index + 2 < threeIndex)
             {
                 creature.ChallengeRating = ChallengeRatingConstants.Three;
             }
             else
             {
-                creature.ChallengeRating = challengeRatings[index + 2];
+                creature.ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(creature.ChallengeRating, 2);
             }
         }
 

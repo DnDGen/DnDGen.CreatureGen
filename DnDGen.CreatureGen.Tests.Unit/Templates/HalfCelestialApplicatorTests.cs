@@ -446,6 +446,34 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
+        public void ApplyTo_DoNotGainFlySpeed_NoLandSpeed()
+        {
+            baseCreature.Speeds.Clear();
+            baseCreature.Speeds[SpeedConstants.Swim] = new Measurement("furlongs");
+            baseCreature.Speeds[SpeedConstants.Swim].Value = 600;
+
+            var creature = applicator.ApplyTo(baseCreature);
+            Assert.That(creature.Speeds, Has.Count.EqualTo(1)
+                .And.ContainKey(SpeedConstants.Swim));
+            Assert.That(creature.Speeds[SpeedConstants.Swim].Unit, Is.EqualTo("furlongs"));
+            Assert.That(creature.Speeds[SpeedConstants.Swim].Value, Is.EqualTo(600));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_DoNotGainFlySpeed_NoLandSpeed()
+        {
+            baseCreature.Speeds.Clear();
+            baseCreature.Speeds[SpeedConstants.Swim] = new Measurement("furlongs");
+            baseCreature.Speeds[SpeedConstants.Swim].Value = 600;
+
+            var creature = await applicator.ApplyToAsync(baseCreature);
+            Assert.That(creature.Speeds, Has.Count.EqualTo(1)
+                .And.ContainKey(SpeedConstants.Swim));
+            Assert.That(creature.Speeds[SpeedConstants.Swim].Unit, Is.EqualTo("furlongs"));
+            Assert.That(creature.Speeds[SpeedConstants.Swim].Value, Is.EqualTo(600));
+        }
+
+        [Test]
         public void ApplyTo_GainsNaturalArmorBonus()
         {
             var creature = applicator.ApplyTo(baseCreature);

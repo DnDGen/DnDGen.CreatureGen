@@ -1,5 +1,8 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using NUnit.Framework;
+using System;
+using System.Collections;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Creatures
 {
@@ -40,19 +43,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         [TestCase(ChallengeRatingConstants.TwentyFive, "25")]
         [TestCase(ChallengeRatingConstants.TwentySix, "26")]
         [TestCase(ChallengeRatingConstants.TwentySeven, "27")]
-        [TestCase(ChallengeRatingConstants.TwentyEight, "28")]
-        [TestCase(ChallengeRatingConstants.TwentyNine, "29")]
-        [TestCase(ChallengeRatingConstants.Thirty, "30")]
-        [TestCase(ChallengeRatingConstants.ThirtyOne, "31")]
-        [TestCase(ChallengeRatingConstants.ThirtyTwo, "32")]
-        [TestCase(ChallengeRatingConstants.ThirtyThree, "33")]
-        [TestCase(ChallengeRatingConstants.ThirtyFour, "34")]
-        [TestCase(ChallengeRatingConstants.ThirtyFive, "35")]
-        [TestCase(ChallengeRatingConstants.ThirtySix, "36")]
-        [TestCase(ChallengeRatingConstants.ThirtySeven, "37")]
-        [TestCase(ChallengeRatingConstants.ThirtyEight, "38")]
-        [TestCase(ChallengeRatingConstants.ThirtyNine, "39")]
-        [TestCase(ChallengeRatingConstants.Forty, "40")]
         public void ChallengeRatingConstant(string constant, string value)
         {
             Assert.That(constant, Is.EqualTo(value));
@@ -97,20 +87,78 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
             Assert.That(orderedChallengeRatings[31], Is.EqualTo(ChallengeRatingConstants.TwentyFive));
             Assert.That(orderedChallengeRatings[32], Is.EqualTo(ChallengeRatingConstants.TwentySix));
             Assert.That(orderedChallengeRatings[33], Is.EqualTo(ChallengeRatingConstants.TwentySeven));
-            Assert.That(orderedChallengeRatings[34], Is.EqualTo(ChallengeRatingConstants.TwentyEight));
-            Assert.That(orderedChallengeRatings[35], Is.EqualTo(ChallengeRatingConstants.TwentyNine));
-            Assert.That(orderedChallengeRatings[36], Is.EqualTo(ChallengeRatingConstants.Thirty));
-            Assert.That(orderedChallengeRatings[37], Is.EqualTo(ChallengeRatingConstants.ThirtyOne));
-            Assert.That(orderedChallengeRatings[38], Is.EqualTo(ChallengeRatingConstants.ThirtyTwo));
-            Assert.That(orderedChallengeRatings[39], Is.EqualTo(ChallengeRatingConstants.ThirtyThree));
-            Assert.That(orderedChallengeRatings[40], Is.EqualTo(ChallengeRatingConstants.ThirtyFour));
-            Assert.That(orderedChallengeRatings[41], Is.EqualTo(ChallengeRatingConstants.ThirtyFive));
-            Assert.That(orderedChallengeRatings[42], Is.EqualTo(ChallengeRatingConstants.ThirtySix));
-            Assert.That(orderedChallengeRatings[43], Is.EqualTo(ChallengeRatingConstants.ThirtySeven));
-            Assert.That(orderedChallengeRatings[44], Is.EqualTo(ChallengeRatingConstants.ThirtyEight));
-            Assert.That(orderedChallengeRatings[45], Is.EqualTo(ChallengeRatingConstants.ThirtyNine));
-            Assert.That(orderedChallengeRatings[46], Is.EqualTo(ChallengeRatingConstants.Forty));
-            Assert.That(orderedChallengeRatings, Has.Length.EqualTo(47));
+            Assert.That(orderedChallengeRatings, Has.Length.EqualTo(34));
+        }
+
+        [Test]
+        public void FractionalChallengeRatings()
+        {
+            Assert.That(ChallengeRatingConstants.Fractional, Contains.Item(ChallengeRatingConstants.OneTenth)
+                .And.Contains(ChallengeRatingConstants.OneEighth)
+                .And.Contains(ChallengeRatingConstants.OneSixth)
+                .And.Contains(ChallengeRatingConstants.OneFourth)
+                .And.Contains(ChallengeRatingConstants.OneThird)
+                .And.Contains(ChallengeRatingConstants.OneHalf));
+            Assert.That(ChallengeRatingConstants.Fractional.Count(), Is.EqualTo(6));
+        }
+
+        [TestCaseSource(nameof(FractionalIncreases))]
+        public void Increase_Fractional(string challengeRating, int increase, string expected)
+        {
+            var newCr = ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, increase);
+            Assert.That(newCr, Is.EqualTo(expected));
+        }
+
+        private static IEnumerable FractionalIncreases
+        {
+            get
+            {
+                var challengeRatings = ChallengeRatingConstants.Fractional;
+                var increases = Enumerable.Range(1, 10);
+                var ordered = ChallengeRatingConstants.GetOrdered();
+
+                foreach (var increase in increases)
+                {
+                    foreach (var cr in challengeRatings)
+                    {
+                        var index = Array.IndexOf(ordered, cr);
+
+                        yield return new TestCaseData(cr, increase, ordered[index + increase]);
+                    }
+                }
+            }
+        }
+
+        [TestCaseSource(nameof(WholeIncreases))]
+        public void Increase_WholeNumber(string challengeRating, int increase, string expected)
+        {
+            var newCr = ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, increase);
+            Assert.That(newCr, Is.EqualTo(expected));
+        }
+
+        private static IEnumerable WholeIncreases
+        {
+            get
+            {
+                var increases = Enumerable.Range(1, 10);
+                var ordered = ChallengeRatingConstants.GetOrdered().Except(ChallengeRatingConstants.Fractional).ToArray();
+
+                foreach (var increase in increases)
+                {
+                    foreach (var cr in ordered)
+                    {
+                        var expected = Convert.ToInt32(cr) + increase;
+                        yield return new TestCaseData(cr, increase, expected.ToString());
+                    }
+                }
+            }
+        }
+
+        [Test]
+        public void IncreaseOutOfRange()
+        {
+            var newCr = ChallengeRatingConstants.IncreaseChallengeRating("9266", 90210);
+            Assert.That(newCr, Is.EqualTo(99476.ToString()));
         }
     }
 }

@@ -134,11 +134,11 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureSpeeds(Creature creature)
         {
-            var speeds = speedsGenerator.Generate(CreatureConstants.Templates.HalfCelestial);
+            var celestialSpeeds = speedsGenerator.Generate(CreatureConstants.Templates.HalfCelestial);
 
-            if (!creature.Speeds.ContainsKey(SpeedConstants.Fly))
+            if (creature.Speeds.ContainsKey(SpeedConstants.Land) && !creature.Speeds.ContainsKey(SpeedConstants.Fly))
             {
-                creature.Speeds[SpeedConstants.Fly] = speeds[SpeedConstants.Fly];
+                creature.Speeds[SpeedConstants.Fly] = celestialSpeeds[SpeedConstants.Fly];
                 creature.Speeds[SpeedConstants.Fly].Value = creature.Speeds[SpeedConstants.Land].Value * 2;
             }
         }
@@ -184,20 +184,17 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureChallengeRating(Creature creature)
         {
-            var challengeRatings = ChallengeRatingConstants.GetOrdered();
-            var index = challengeRatings.ToList().IndexOf(creature.ChallengeRating);
-
             if (creature.HitPoints.HitDiceQuantity >= 11)
             {
-                creature.ChallengeRating = challengeRatings[index + 3];
+                creature.ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(creature.ChallengeRating, 3);
             }
             else if (creature.HitPoints.HitDiceQuantity >= 6)
             {
-                creature.ChallengeRating = challengeRatings[index + 2];
+                creature.ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(creature.ChallengeRating, 2);
             }
             else
             {
-                creature.ChallengeRating = challengeRatings[index + 1];
+                creature.ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(creature.ChallengeRating, 1);
             }
         }
 

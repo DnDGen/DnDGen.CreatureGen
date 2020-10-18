@@ -114,25 +114,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
 
         private string GetNextChallengeRating(string challengeRating, int amount = 1)
         {
-            var orderedChallengeRatings = ChallengeRatingConstants.GetOrdered();
-            var index = Array.IndexOf(orderedChallengeRatings, challengeRating);
-
-            if (index < 0)
-                return IncrementChallengeRating(challengeRating, amount);
-
-            if (index + amount < orderedChallengeRatings.Length)
-                return orderedChallengeRatings[index + amount];
-
-            var lastChallengeRating = orderedChallengeRatings.Last();
-            var additionalIncrement = index + amount - orderedChallengeRatings.Length + 1;
-
-            return IncrementChallengeRating(lastChallengeRating, additionalIncrement);
-        }
-
-        private string IncrementChallengeRating(string challengeRating, int amount)
-        {
-            var numericCR = Convert.ToInt32(challengeRating);
-            return Convert.ToString(numericCR + amount);
+            return ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, amount);
         }
 
         private int GetConstitutionAdjustment(string originalSize, string advancedSize)

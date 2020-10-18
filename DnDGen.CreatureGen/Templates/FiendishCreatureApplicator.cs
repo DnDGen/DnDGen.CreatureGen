@@ -131,16 +131,13 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureChallengeRating(Creature creature)
         {
-            var challengeRatings = ChallengeRatingConstants.GetOrdered();
-            var index = challengeRatings.ToList().IndexOf(creature.ChallengeRating);
-
             if (creature.HitPoints.RoundedHitDiceQuantity >= 8)
             {
-                creature.ChallengeRating = challengeRatings[index + 2];
+                creature.ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(creature.ChallengeRating, 2);
             }
             else if (creature.HitPoints.RoundedHitDiceQuantity >= 4)
             {
-                creature.ChallengeRating = challengeRatings[index + 1];
+                creature.ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(creature.ChallengeRating, 1);
             }
         }
 

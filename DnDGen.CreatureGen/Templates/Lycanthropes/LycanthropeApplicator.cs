@@ -190,8 +190,6 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
 
         private void UpdateCreatureChallengeRating(Creature creature, HitPoints animalHitPoints)
         {
-            var challengeRatings = ChallengeRatingConstants.GetOrdered();
-            var index = Array.IndexOf(challengeRatings, creature.ChallengeRating);
             var increase = 2;
 
             if (animalHitPoints.HitDice[0].Quantity > 20)
@@ -211,7 +209,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
                 increase = 3;
             }
 
-            creature.ChallengeRating = challengeRatings[index + increase];
+            creature.ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(creature.ChallengeRating, increase);
         }
 
         private void UpdateCreatureLevelAdjustment(Creature creature)

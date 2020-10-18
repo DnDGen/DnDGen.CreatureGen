@@ -183,9 +183,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureChallengeRating(Creature creature)
         {
-            var challengeRatings = ChallengeRatingConstants.GetOrdered().ToList();
-            var index = challengeRatings.IndexOf(creature.ChallengeRating);
-            creature.ChallengeRating = challengeRatings[index + 2];
+            creature.ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(creature.ChallengeRating, 2);
         }
 
         private void UpdateCreatureAttacks(Creature creature)
