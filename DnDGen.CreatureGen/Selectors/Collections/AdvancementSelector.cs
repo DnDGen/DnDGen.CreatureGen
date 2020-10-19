@@ -80,25 +80,18 @@ namespace DnDGen.CreatureGen.Selectors.Collections
 
         private string AdjustChallengeRating(string originalSize, string advancedSize, string originalChallengeRating)
         {
-            var adjustedChallengeRating = originalChallengeRating;
-            var currentSize = originalSize;
+            var sizes = SizeConstants.GetOrdered();
+            var originalSizeIndex = Array.IndexOf(sizes, originalSize);
+            var advancedIndex = Array.IndexOf(sizes, advancedSize);
+            var largeIndex = Array.IndexOf(sizes, SizeConstants.Large);
 
-            while (currentSize != advancedSize)
+            if (advancedIndex < largeIndex || originalSize == advancedSize)
             {
-                switch (currentSize)
-                {
-                    case SizeConstants.Fine: currentSize = SizeConstants.Diminutive; break;
-                    case SizeConstants.Diminutive: currentSize = SizeConstants.Tiny; break;
-                    case SizeConstants.Tiny: currentSize = SizeConstants.Small; break;
-                    case SizeConstants.Small: currentSize = SizeConstants.Medium; break;
-                    case SizeConstants.Medium: currentSize = SizeConstants.Large; adjustedChallengeRating = GetNextChallengeRating(adjustedChallengeRating); break;
-                    case SizeConstants.Large: currentSize = SizeConstants.Huge; adjustedChallengeRating = GetNextChallengeRating(adjustedChallengeRating); break;
-                    case SizeConstants.Huge: currentSize = SizeConstants.Gargantuan; adjustedChallengeRating = GetNextChallengeRating(adjustedChallengeRating); break;
-                    case SizeConstants.Gargantuan: currentSize = SizeConstants.Colossal; adjustedChallengeRating = GetNextChallengeRating(adjustedChallengeRating); break;
-                    case SizeConstants.Colossal:
-                    default: throw new ArgumentException($"{currentSize} is not a valid size that can be advanced");
-                }
+                return originalChallengeRating;
             }
+
+            var increase = advancedIndex - Math.Max(largeIndex - 1, originalSizeIndex);
+            var adjustedChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(originalChallengeRating, increase);
 
             return adjustedChallengeRating;
         }
@@ -109,12 +102,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             var divisor = creatureTypeDivisor.Amount;
             var advancementAmount = additionalHitDice / divisor;
 
-            return GetNextChallengeRating(originalChallengeRating, advancementAmount);
-        }
-
-        private string GetNextChallengeRating(string challengeRating, int amount = 1)
-        {
-            return ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, amount);
+            return ChallengeRatingConstants.IncreaseChallengeRating(originalChallengeRating, advancementAmount);
         }
 
         private int GetConstitutionAdjustment(string originalSize, string advancedSize)

@@ -155,10 +155,51 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         }
 
         [Test]
-        public void IncreaseOutOfRange()
+        public void IncreaseOutOfRange_Whole()
         {
             var newCr = ChallengeRatingConstants.IncreaseChallengeRating("9266", 90210);
             Assert.That(newCr, Is.EqualTo(99476.ToString()));
+        }
+
+        [TestCase(ChallengeRatingConstants.OneTenth, 6, 1)]
+        [TestCase(ChallengeRatingConstants.OneTenth, 10, 5)]
+        [TestCase(ChallengeRatingConstants.OneTenth, 20, 15)]
+        [TestCase(ChallengeRatingConstants.OneTenth, 90210, 90205)]
+        [TestCase(ChallengeRatingConstants.OneEighth, 6, 2)]
+        [TestCase(ChallengeRatingConstants.OneEighth, 10, 6)]
+        [TestCase(ChallengeRatingConstants.OneEighth, 20, 16)]
+        [TestCase(ChallengeRatingConstants.OneEighth, 90210, 90206)]
+        [TestCase(ChallengeRatingConstants.OneSixth, 6, 3)]
+        [TestCase(ChallengeRatingConstants.OneSixth, 10, 7)]
+        [TestCase(ChallengeRatingConstants.OneSixth, 20, 17)]
+        [TestCase(ChallengeRatingConstants.OneSixth, 90210, 90207)]
+        [TestCase(ChallengeRatingConstants.OneFourth, 6, 4)]
+        [TestCase(ChallengeRatingConstants.OneFourth, 10, 8)]
+        [TestCase(ChallengeRatingConstants.OneFourth, 20, 18)]
+        [TestCase(ChallengeRatingConstants.OneFourth, 90210, 90208)]
+        [TestCase(ChallengeRatingConstants.OneThird, 6, 5)]
+        [TestCase(ChallengeRatingConstants.OneThird, 10, 9)]
+        [TestCase(ChallengeRatingConstants.OneThird, 20, 19)]
+        [TestCase(ChallengeRatingConstants.OneThird, 90210, 90209)]
+        [TestCase(ChallengeRatingConstants.OneHalf, 6, 6)]
+        [TestCase(ChallengeRatingConstants.OneHalf, 10, 10)]
+        [TestCase(ChallengeRatingConstants.OneHalf, 20, 20)]
+        [TestCase(ChallengeRatingConstants.OneHalf, 90210, 90210)]
+        public void IncreaseOutOfRange_Fractional(string cr, int increase, int expected)
+        {
+            var newCr = ChallengeRatingConstants.IncreaseChallengeRating(cr, increase);
+            Assert.That(newCr, Is.EqualTo(expected.ToString()));
+        }
+
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(10)]
+        [TestCase(20)]
+        [TestCase(90210)]
+        public void IncreaseOutOfRange_Zero(int increase)
+        {
+            var newCr = ChallengeRatingConstants.IncreaseChallengeRating(ChallengeRatingConstants.Zero, increase);
+            Assert.That(newCr, Is.EqualTo(increase.ToString()));
         }
     }
 }

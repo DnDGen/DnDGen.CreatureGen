@@ -812,10 +812,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 var challengeRatings = ChallengeRatingConstants.GetOrdered();
 
-                //index 0 is CR 0
-                for (var i = 1; i < challengeRatings.Length - 2; i++)
+                foreach (var cr in challengeRatings)
                 {
-                    yield return new TestCaseData(challengeRatings[i], challengeRatings[i + 2]);
+                    var newCr = ChallengeRatingConstants.IncreaseChallengeRating(cr, 2);
+                    yield return new TestCaseData(cr, newCr);
                 }
             }
         }

@@ -1112,12 +1112,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
 
                 foreach (var template in templates)
                 {
-                    for (var i = 0; i < challengeRatings.Length - 2; i++)
+                    for (var i = 0; i < challengeRatings.Length; i++)
                     {
+                        var increased = ChallengeRatingConstants.IncreaseChallengeRating(challengeRatings[i], 2);
+
                         if (i + 2 < minIndex)
                             yield return new TestCaseData(template, challengeRatings[i], ChallengeRatingConstants.Three);
                         else
-                            yield return new TestCaseData(template, challengeRatings[i], challengeRatings[i + 2]);
+                            yield return new TestCaseData(template, challengeRatings[i], increased);
                     }
                 }
             }

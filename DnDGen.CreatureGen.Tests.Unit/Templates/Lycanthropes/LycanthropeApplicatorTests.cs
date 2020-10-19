@@ -2115,7 +2115,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             get
             {
                 var challengeRatings = ChallengeRatingConstants.GetOrdered();
-                var animalHitDiceQuantities = Enumerable.Range(1, 24);
+                var animalHitDiceQuantities = Enumerable.Range(1, 30);
 
                 foreach (var template in templates)
                 {
@@ -2134,9 +2134,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                         else if (animalQuantity > 20)
                             increase = 6;
 
-                        for (var i = 0; i < challengeRatings.Length - increase; i++)
+                        foreach (var cr in challengeRatings)
                         {
-                            yield return new TestCaseData(template.Template, template.Animal, challengeRatings[i], animalQuantity, challengeRatings[i + increase]);
+                            var newCr = ChallengeRatingConstants.IncreaseChallengeRating(cr, increase);
+                            yield return new TestCaseData(template.Template, template.Animal, cr, animalQuantity, newCr);
                         }
                     }
                 }

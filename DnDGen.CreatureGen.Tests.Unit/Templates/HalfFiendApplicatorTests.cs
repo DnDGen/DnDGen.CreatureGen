@@ -1363,29 +1363,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
                 foreach (var hitDie in hitDice)
                 {
-                    if (hitDie <= 4)
+                    var increase = 1;
+
+                    if (hitDie > 10)
                     {
-                        //index 0 is CR 0
-                        for (var i = 1; i < challengeRatings.Length - 1; i++)
-                        {
-                            yield return new TestCaseData(hitDie, challengeRatings[i], challengeRatings[i + 1]);
-                        }
+                        increase = 3;
                     }
-                    else if (hitDie <= 10)
+                    else if (hitDie > 4)
                     {
-                        //index 0 is CR 0
-                        for (var i = 1; i < challengeRatings.Length - 2; i++)
-                        {
-                            yield return new TestCaseData(hitDie, challengeRatings[i], challengeRatings[i + 2]);
-                        }
+                        increase = 2;
                     }
-                    else
+
+                    foreach (var cr in challengeRatings)
                     {
-                        //index 0 is CR 0
-                        for (var i = 1; i < challengeRatings.Length - 3; i++)
-                        {
-                            yield return new TestCaseData(hitDie, challengeRatings[i], challengeRatings[i + 3]);
-                        }
+                        var newCr = ChallengeRatingConstants.IncreaseChallengeRating(cr, increase);
+                        yield return new TestCaseData(hitDie, cr, newCr);
                     }
                 }
             }

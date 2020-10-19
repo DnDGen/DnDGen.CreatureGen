@@ -90,7 +90,12 @@ namespace DnDGen.CreatureGen.Creatures
             {
                 var ordered = GetOrdered();
                 var index = Array.IndexOf(ordered, challengeRating);
-                return ordered[index + increaseAmount];
+
+                if (index + increaseAmount < ordered.Length)
+                    return ordered[index + increaseAmount];
+
+                challengeRating = ordered.Last();
+                increaseAmount += index - ordered.Length + 1;
             }
 
             var cr = Convert.ToInt32(challengeRating);

@@ -749,9 +749,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 var challengeRatings = ChallengeRatingConstants.GetOrdered();
 
-                for (var i = 0; i < challengeRatings.Length - 2; i++)
+                for (var i = 0; i < challengeRatings.Length; i++)
                 {
-                    yield return new TestCaseData(challengeRatings[i], challengeRatings[i + 2]);
+                    var increased = ChallengeRatingConstants.IncreaseChallengeRating(challengeRatings[i], 2);
+                    yield return new TestCaseData(challengeRatings[i], increased);
                 }
             }
         }

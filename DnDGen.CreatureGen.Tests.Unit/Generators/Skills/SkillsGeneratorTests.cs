@@ -1037,7 +1037,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var totalRanks = skills.Sum(s => s.Ranks);
             Assert.That(totalRanks, Is.EqualTo(103 * 12));
-            Assert.That(duration, Is.LessThan(TimeSpan.FromMilliseconds(100)));
+            Assert.That(duration, Is.LessThan(TimeSpan.FromMilliseconds(200)));
         }
 
         [Test]
@@ -4343,7 +4343,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             var totalRanks = skills.Sum(s => s.Ranks);
             Assert.That(totalRanks, Is.EqualTo(103 * 12));
-            Assert.That(duration, Is.LessThan(TimeSpan.FromMilliseconds(100)));
+            Assert.That(duration, Is.LessThan(TimeSpan.FromMilliseconds(200)));
         }
 
         [Test]

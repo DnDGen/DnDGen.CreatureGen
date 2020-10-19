@@ -388,8 +388,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             {
                 get
                 {
-                    //INFO: Skipping the first, as it is Zero
-                    var challengeRatings = ChallengeRatingConstants.GetOrdered().Skip(1).ToArray();
+                    var challengeRatings = ChallengeRatingConstants.GetOrdered();
                     var additionalHitDices = Enumerable.Range(1, 50);
                     var divisors = Enumerable.Range(1, 4);
 
@@ -400,7 +399,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                             foreach (var additionalHitDice in additionalHitDices)
                             {
                                 var advancementAmount = additionalHitDice / divisor;
-                                var advancedChallengeRating = GetNextChallengeRating(challengeRating, advancementAmount);
+                                var advancedChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, advancementAmount);
 
                                 yield return new TestCaseData(challengeRating, additionalHitDice, divisor, advancedChallengeRating);
                             }
@@ -413,8 +412,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             {
                 get
                 {
-                    //INFO: Skipping the first, as it is Zero
-                    var challengeRatings = ChallengeRatingConstants.GetOrdered().Skip(1).ToArray();
+                    var challengeRatings = ChallengeRatingConstants.GetOrdered();
                     var sizes = SizeConstants.GetOrdered();
 
                     foreach (var challengeRating in challengeRatings)
@@ -437,50 +435,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             private static string GetAdjustedChallengeRating(string originalSize, string advancedSize, string originalChallengeRating)
             {
-                var adjustedChallengeRating = originalChallengeRating;
-                var currentSize = originalSize;
+                var sizes = SizeConstants.GetOrdered();
+                var originalSizeIndex = Array.IndexOf(sizes, originalSize);
+                var advancedIndex = Array.IndexOf(sizes, advancedSize);
+                var largeIndex = Array.IndexOf(sizes, SizeConstants.Large);
 
-                while (currentSize != advancedSize)
+                if (advancedIndex < largeIndex || originalSize == advancedSize)
                 {
-                    switch (currentSize)
-                    {
-                        case SizeConstants.Fine: currentSize = SizeConstants.Diminutive; break;
-                        case SizeConstants.Diminutive: currentSize = SizeConstants.Tiny; break;
-                        case SizeConstants.Tiny: currentSize = SizeConstants.Small; break;
-                        case SizeConstants.Small: currentSize = SizeConstants.Medium; break;
-                        case SizeConstants.Medium: currentSize = SizeConstants.Large; adjustedChallengeRating = GetNextChallengeRating(adjustedChallengeRating); break;
-                        case SizeConstants.Large: currentSize = SizeConstants.Huge; adjustedChallengeRating = GetNextChallengeRating(adjustedChallengeRating); break;
-                        case SizeConstants.Huge: currentSize = SizeConstants.Gargantuan; adjustedChallengeRating = GetNextChallengeRating(adjustedChallengeRating); break;
-                        case SizeConstants.Gargantuan: currentSize = SizeConstants.Colossal; adjustedChallengeRating = GetNextChallengeRating(adjustedChallengeRating); break;
-                        case SizeConstants.Colossal:
-                        default: throw new ArgumentException($"{currentSize} is not a valid size that can be advanced");
-                    }
+                    return originalChallengeRating;
                 }
 
+                var increase = advancedIndex - Math.Max(largeIndex - 1, originalSizeIndex);
+                var adjustedChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(originalChallengeRating, increase);
+
                 return adjustedChallengeRating;
-            }
-
-            private static string GetNextChallengeRating(string challengeRating, int amount = 1)
-            {
-                var orderedChallengeRatings = ChallengeRatingConstants.GetOrdered();
-                var index = Array.IndexOf(orderedChallengeRatings, challengeRating);
-
-                if (index < 0)
-                    return IncrementChallengeRating(challengeRating, amount);
-
-                if (index + amount < orderedChallengeRatings.Length)
-                    return orderedChallengeRatings[index + amount];
-
-                var lastChallengeRating = orderedChallengeRatings.Last();
-                var additionalIncrement = index + amount - orderedChallengeRatings.Length + 1;
-
-                return IncrementChallengeRating(lastChallengeRating, additionalIncrement);
-            }
-
-            private static string IncrementChallengeRating(string challengeRating, int amount)
-            {
-                var numericCR = Convert.ToInt32(challengeRating);
-                return Convert.ToString(numericCR + amount);
             }
         }
 
