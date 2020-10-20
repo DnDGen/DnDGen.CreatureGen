@@ -28,7 +28,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                     testCases[template] = new List<string[]>();
                 }
 
-                testCases[CreatureConstants.Templates.CelestialCreature].Add(helper.BuildData("Smite Evil", "0", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
+                testCases[CreatureConstants.Templates.CelestialCreature].Add(helper.BuildData(
+                    "Smite Evil", "0", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
 
                 testCases[CreatureConstants.Templates.FiendishCreature].Add(helper.BuildData("Smite Good", "0", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
 

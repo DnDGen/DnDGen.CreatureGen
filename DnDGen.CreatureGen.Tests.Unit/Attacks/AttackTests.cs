@@ -19,6 +19,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Attacks
         [Test]
         public void AttackInitialized()
         {
+            Assert.That(attack.Damages, Is.Empty);
             Assert.That(attack.DamageRoll, Is.Empty);
             Assert.That(attack.DamageEffect, Is.Empty);
             Assert.That(attack.IsMelee, Is.False);

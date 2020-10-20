@@ -12,7 +12,8 @@ namespace DnDGen.CreatureGen.Attacks
         public int SizeModifier { get; set; }
         public Ability BaseAbility { get; set; }
         public bool IsMelee { get; set; }
-        public string DamageRoll { get; set; }
+        public List<Damage> Damages { get; set; }
+        public string DamageRoll => string.Join(" + ", Damages.Select(d => d.ToString()));
         public string DamageEffect { get; set; }
         public int DamageBonus { get; set; }
         public bool IsPrimary { get; set; }
@@ -79,7 +80,7 @@ namespace DnDGen.CreatureGen.Attacks
         public Attack()
         {
             Name = string.Empty;
-            DamageRoll = string.Empty;
+            Damages = new List<Damage>();
             DamageEffect = string.Empty;
             AttackBonuses = new List<int>();
             MaxNumberOfAttacks = 1;
