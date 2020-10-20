@@ -23,6 +23,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Attacks
         }
 
         [Test]
+        public void ToString_WithRoll()
+        {
+            damage.Roll = "9266d90210";
+
+            Assert.That(damage.ToString(), Is.EqualTo("9266d90210"));
+        }
+
+        [Test]
         public void ToString_WithRollAndType()
         {
             damage.Roll = "9266d90210";

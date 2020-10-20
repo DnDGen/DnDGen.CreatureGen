@@ -24,6 +24,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
         }
 
         [Test]
+        public void BuildDataIntoArray_NoDamageType()
+        {
+            var data = helper.BuildData("my roll", string.Empty);
+            Assert.That(data[DataIndexConstants.AttackData.DamageData.RollIndex], Is.EqualTo("my roll"));
+            Assert.That(data[DataIndexConstants.AttackData.DamageData.TypeIndex], Is.Empty);
+        }
+
+        [Test]
         public void BuildDataIntoString()
         {
             var data = new[] { "this", "is", "my", "data" };
@@ -32,13 +40,49 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
         }
 
         [Test]
-        public void ParseData()
+        public void BuildDataIntoString_MultipleDamages()
+        {
+            var dataString = helper.BuildEntries("1d3", "slashing", "1d4", "acid");
+            Assert.That(dataString, Is.EqualTo("1d3#slashing,1d4#acid"));
+        }
+
+        [Test]
+        public void ParseEntry()
         {
             var data = helper.ParseEntry("this#is#my#data");
             Assert.That(data, Is.EqualTo(new[] { "this", "is", "my", "data" }));
         }
 
+        [Test]
+        public void ParseEntries_NoDamages()
+        {
+            var data = helper.ParseEntries(string.Empty);
+            Assert.That(data, Is.Empty);
+        }
+
+        [Test]
+        public void ParseEntries_Damage()
+        {
+            var data = helper.ParseEntries("roll#damage type");
+            Assert.That(data, Is.EqualTo(new[]
+            {
+                new[] { "roll", "damage type" },
+            }));
+        }
+
+        [Test]
+        public void ParseEntries_MultipleDamages()
+        {
+            var data = helper.ParseEntries("roll#damage type,other roll#other damage type");
+            Assert.That(data, Is.EqualTo(new[]
+            {
+                new[] { "roll", "damage type" },
+                new[] { "other roll", "other damage type" },
+            }));
+        }
+
         [TestCase("0", "holy")]
+        [TestCase("1d4", "")]
         [TestCase("1d6", "emotional")]
         public void BuildKey_FromData(string roll, string type)
         {
@@ -48,6 +92,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
         }
 
         [TestCase("0", "holy")]
+        [TestCase("1d4", "")]
         [TestCase("1d6", "emotional")]
         public void BuildKeyFromSections(string roll, string type)
         {

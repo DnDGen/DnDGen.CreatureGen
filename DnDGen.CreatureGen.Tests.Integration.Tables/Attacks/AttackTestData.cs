@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
@@ -20,7 +21,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             get
             {
                 var testCases = new Dictionary<string, List<string[]>>();
-                var helper = new AttackHelper();
+                var attackHelper = new AttackHelper();
+                var damageHelper = new DamageHelper();
                 var templates = CreatureConstants.Templates.GetAll();
 
                 foreach (var template in templates)
@@ -28,133 +30,332 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                     testCases[template] = new List<string[]>();
                 }
 
-                testCases[CreatureConstants.Templates.CelestialCreature].Add(helper.BuildData(
-                    "Smite Evil", "0", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
+                testCases[CreatureConstants.Templates.CelestialCreature].Add(attackHelper.BuildData("Smite Evil",
+                    damageHelper.BuildEntry("0", AlignmentConstants.Good),
+                    string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
 
-                testCases[CreatureConstants.Templates.FiendishCreature].Add(helper.BuildData("Smite Good", "0", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
+                testCases[CreatureConstants.Templates.FiendishCreature].Add(attackHelper.BuildData("Smite Good",
+                    damageHelper.BuildEntry("0", AlignmentConstants.Evil),
+                    string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
 
-                testCases[CreatureConstants.Templates.Ghost].Add(helper.BuildData("Corrupting Gaze", "2d10", "1d4 Charisma damage", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Fortitude, AbilityConstants.Charisma));
-                testCases[CreatureConstants.Templates.Ghost].Add(helper.BuildData("Corrupting Touch", "1d6", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
-                testCases[CreatureConstants.Templates.Ghost].Add(helper.BuildData("Draining Touch", string.Empty, "1d4 Ability points (of ghost's choosing), Ghost heals 5 points of damage", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
-                testCases[CreatureConstants.Templates.Ghost].Add(helper.BuildData("Frightful Moan", string.Empty, "Panic for 2d4 rounds", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Will, AbilityConstants.Charisma));
-                testCases[CreatureConstants.Templates.Ghost].Add(helper.BuildData("Horrific Appearance", string.Empty, "1d4 Str, 1d4 Dex, and 1d4 Con", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, SaveConstants.Fortitude, AbilityConstants.Charisma));
-                testCases[CreatureConstants.Templates.Ghost].Add(helper.BuildData("Malevolence", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Will, AbilityConstants.Charisma, 5));
-                testCases[CreatureConstants.Templates.Ghost].Add(helper.BuildData("Manifestation", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-                testCases[CreatureConstants.Templates.Ghost].Add(helper.BuildData("Telekinesis", string.Empty, "Panic for 2d4 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, SaveConstants.Will, AbilityConstants.Charisma));
+                testCases[CreatureConstants.Templates.Ghost].Add(attackHelper.BuildData("Corrupting Gaze",
+                    damageHelper.BuildEntries("2d10", string.Empty, "1d4", AbilityConstants.Charisma),
+                    string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true,
+                    SaveConstants.Fortitude, AbilityConstants.Charisma));
+                testCases[CreatureConstants.Templates.Ghost].Add(attackHelper.BuildData("Corrupting Touch",
+                    damageHelper.BuildEntry("1d6", string.Empty),
+                    string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
+                testCases[CreatureConstants.Templates.Ghost].Add(attackHelper.BuildData("Draining Touch",
+                    damageHelper.BuildEntry("1d4", "Ability points (of ghost's choosing)"),
+                    "Ghost heals 5 points of damage", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
+                testCases[CreatureConstants.Templates.Ghost].Add(attackHelper.BuildData("Frightful Moan",
+                    string.Empty,
+                    "Panic for 2d4 rounds", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true,
+                    SaveConstants.Will, AbilityConstants.Charisma));
+                testCases[CreatureConstants.Templates.Ghost].Add(attackHelper.BuildData("Horrific Appearance",
+                    damageHelper.BuildEntries("1d4", AbilityConstants.Strength, "1d4", AbilityConstants.Dexterity, "1d4", AbilityConstants.Constitution),
+                    string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true,
+                    SaveConstants.Fortitude, AbilityConstants.Charisma));
+                testCases[CreatureConstants.Templates.Ghost].Add(attackHelper.BuildData("Malevolence",
+                    string.Empty,
+                    string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true,
+                    SaveConstants.Will, AbilityConstants.Charisma, 5));
+                testCases[CreatureConstants.Templates.Ghost].Add(attackHelper.BuildData("Manifestation",
+                    string.Empty,
+                    string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Templates.Ghost].Add(attackHelper.BuildData(SpellConstants.Telekinesis,
+                    string.Empty,
+                    string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true,
+                    SaveConstants.Will, AbilityConstants.Charisma));
 
-                testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-                testCases[CreatureConstants.Templates.HalfCelestial].Add(helper.BuildData("Smite Evil", "0", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
+                testCases[CreatureConstants.Templates.HalfCelestial].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
+                    string.Empty,
+                    string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Templates.HalfCelestial].Add(attackHelper.BuildData("Smite Evil",
+                    damageHelper.BuildEntry("0", "Good"),
+                    string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
 
-                testCases[CreatureConstants.Templates.HalfDragon_Black].Add(helper.BuildData("Claw", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.HalfDragon_Black].Add(helper.BuildData("Bite", $"1d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Templates.HalfDragon_Black].Add(helper.BuildData("Breath Weapon", "6d8 acid", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.HalfDragon_Black].Add(attackHelper.BuildData("Claw",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.HalfDragon_Black].Add(attackHelper.BuildData("Bite",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Piercing),
+                    string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Templates.HalfDragon_Black].Add(attackHelper.BuildData("Breath Weapon",
+                    damageHelper.BuildEntry("6d8", FeatConstants.Foci.Elements.Acid),
+                    string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
+                    SaveConstants.Reflex, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Templates.HalfDragon_Blue].Add(helper.BuildData("Claw", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.HalfDragon_Blue].Add(helper.BuildData("Bite", $"1d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Templates.HalfDragon_Blue].Add(helper.BuildData("Breath Weapon", "6d8 electricity", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.HalfDragon_Blue].Add(attackHelper.BuildData("Claw",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.HalfDragon_Blue].Add(attackHelper.BuildData("Bite",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Piercing),
+                    string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Templates.HalfDragon_Blue].Add(attackHelper.BuildData("Breath Weapon",
+                    damageHelper.BuildEntry("6d8", FeatConstants.Foci.Elements.Electricity),
+                    string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
+                    SaveConstants.Reflex, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Templates.HalfDragon_Brass].Add(helper.BuildData("Claw", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.HalfDragon_Brass].Add(helper.BuildData("Bite", $"1d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Templates.HalfDragon_Brass].Add(helper.BuildData("Breath Weapon", "6d8 fire", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.HalfDragon_Brass].Add(attackHelper.BuildData("Claw",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.HalfDragon_Brass].Add(attackHelper.BuildData("Bite",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Piercing),
+                    string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Templates.HalfDragon_Brass].Add(attackHelper.BuildData("Breath Weapon",
+                    damageHelper.BuildEntry("6d8", FeatConstants.Foci.Elements.Fire),
+                    string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
+                    SaveConstants.Reflex, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Templates.HalfDragon_Bronze].Add(helper.BuildData("Claw", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.HalfDragon_Bronze].Add(helper.BuildData("Bite", $"1d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Templates.HalfDragon_Bronze].Add(helper.BuildData("Breath Weapon", "6d8 electricity", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.HalfDragon_Bronze].Add(attackHelper.BuildData("Claw",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.HalfDragon_Bronze].Add(attackHelper.BuildData("Bite",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Piercing),
+                    string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Templates.HalfDragon_Bronze].Add(attackHelper.BuildData("Breath Weapon",
+                    damageHelper.BuildEntry("6d8", FeatConstants.Foci.Elements.Electricity),
+                    string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
+                    SaveConstants.Reflex, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Templates.HalfDragon_Copper].Add(helper.BuildData("Claw", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.HalfDragon_Copper].Add(helper.BuildData("Bite", $"1d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Templates.HalfDragon_Copper].Add(helper.BuildData("Breath Weapon", "6d8 acid", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.HalfDragon_Copper].Add(attackHelper.BuildData("Claw",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.HalfDragon_Copper].Add(attackHelper.BuildData("Bite",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Piercing),
+                    string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Templates.HalfDragon_Copper].Add(attackHelper.BuildData("Breath Weapon",
+                    damageHelper.BuildEntry("6d8", FeatConstants.Foci.Elements.Acid),
+                    string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
+                    SaveConstants.Reflex, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Templates.HalfDragon_Gold].Add(helper.BuildData("Claw", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.HalfDragon_Gold].Add(helper.BuildData("Bite", $"1d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Templates.HalfDragon_Gold].Add(helper.BuildData("Breath Weapon", "6d8 fire", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.HalfDragon_Gold].Add(attackHelper.BuildData("Claw",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.HalfDragon_Gold].Add(attackHelper.BuildData("Bite",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Piercing),
+                    string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Templates.HalfDragon_Gold].Add(attackHelper.BuildData("Breath Weapon",
+                    damageHelper.BuildEntry("6d8", FeatConstants.Foci.Elements.Fire),
+                    string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
+                    SaveConstants.Reflex, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Templates.HalfDragon_Green].Add(helper.BuildData("Claw", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.HalfDragon_Green].Add(helper.BuildData("Bite", $"1d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Templates.HalfDragon_Green].Add(helper.BuildData("Breath Weapon", "6d8 acid gas", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.HalfDragon_Green].Add(attackHelper.BuildData("Claw",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.HalfDragon_Green].Add(attackHelper.BuildData("Bite",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Piercing),
+                    string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Templates.HalfDragon_Green].Add(attackHelper.BuildData("Breath Weapon",
+                    damageHelper.BuildEntry("6d8", FeatConstants.Foci.Elements.Acid + " Gas"),
+                    string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
+                    SaveConstants.Reflex, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Templates.HalfDragon_Red].Add(helper.BuildData("Claw", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.HalfDragon_Red].Add(helper.BuildData("Bite", $"1d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Templates.HalfDragon_Red].Add(helper.BuildData("Breath Weapon", "6d8 fire", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.HalfDragon_Red].Add(attackHelper.BuildData("Claw",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.HalfDragon_Red].Add(attackHelper.BuildData("Bite",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Piercing),
+                    string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Templates.HalfDragon_Red].Add(attackHelper.BuildData("Breath Weapon",
+                    damageHelper.BuildEntry("6d8", FeatConstants.Foci.Elements.Fire),
+                    string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
+                    SaveConstants.Reflex, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Templates.HalfDragon_Silver].Add(helper.BuildData("Claw", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.HalfDragon_Silver].Add(helper.BuildData("Bite", $"1d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Templates.HalfDragon_Silver].Add(helper.BuildData("Breath Weapon", "6d8 cold", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.HalfDragon_Silver].Add(attackHelper.BuildData("Claw",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.HalfDragon_Silver].Add(attackHelper.BuildData("Bite",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Piercing),
+                    string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Templates.HalfDragon_Silver].Add(attackHelper.BuildData("Breath Weapon",
+                    damageHelper.BuildEntry("6d8", FeatConstants.Foci.Elements.Cold),
+                    string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
+                    SaveConstants.Reflex, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Templates.HalfDragon_White].Add(helper.BuildData("Claw", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.HalfDragon_White].Add(helper.BuildData("Bite", $"1d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Templates.HalfDragon_White].Add(helper.BuildData("Breath Weapon", "6d8 cold", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.HalfDragon_White].Add(attackHelper.BuildData("Claw",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.HalfDragon_White].Add(attackHelper.BuildData("Bite",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Piercing),
+                    string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Templates.HalfDragon_White].Add(attackHelper.BuildData("Breath Weapon",
+                    damageHelper.BuildEntry("6d8", FeatConstants.Foci.Elements.Cold),
+                    string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, false, true, true, true,
+                    SaveConstants.Reflex, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData("Claw", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData("Bite", $"1d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-                testCases[CreatureConstants.Templates.HalfFiend].Add(helper.BuildData("Smite Good", "0", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
+                testCases[CreatureConstants.Templates.HalfFiend].Add(attackHelper.BuildData("Claw",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.HalfFiend].Add(attackHelper.BuildData("Bite",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Piercing),
+                    string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Templates.HalfFiend].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
+                    string.Empty,
+                    string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Templates.HalfFiend].Add(attackHelper.BuildData("Smite Good",
+                    damageHelper.BuildEntry("0", AlignmentConstants.Evil),
+                    string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
 
-                testCases[CreatureConstants.Templates.Lich].Add(helper.BuildData("Touch", $"1d8+5", "Paralyzing Touch", 0, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false, SaveConstants.Will, AbilityConstants.Charisma));
-                testCases[CreatureConstants.Templates.Lich].Add(helper.BuildData("Fear Aura", string.Empty, "Fear", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, SaveConstants.Will, AbilityConstants.Charisma));
-                testCases[CreatureConstants.Templates.Lich].Add(helper.BuildData("Paralyzing Touch", string.Empty, "Paralyzed", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Charisma));
+                testCases[CreatureConstants.Templates.Lich].Add(attackHelper.BuildData("Touch",
+                    damageHelper.BuildEntry("1d8+5", string.Empty),
+                    "Paralyzing Touch", 0, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false, SaveConstants.Will, AbilityConstants.Charisma));
+                testCases[CreatureConstants.Templates.Lich].Add(attackHelper.BuildData("Fear Aura",
+                    string.Empty,
+                    "Fear", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, SaveConstants.Will, AbilityConstants.Charisma));
+                testCases[CreatureConstants.Templates.Lich].Add(attackHelper.BuildData("Paralyzing Touch",
+                    string.Empty,
+                    "Paralyzed", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Charisma));
 
                 testCases[CreatureConstants.Templates.None].Add(new[] { None });
 
-                testCases[CreatureConstants.Templates.Skeleton].Add(helper.BuildData("Claw", $"1d4", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Skeleton].Add(attackHelper.BuildData("Claw",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
 
-                testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData("Slam", $"1d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData("Blood Drain", string.Empty, "1d4 Con, Vampire gains 5 HP", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-                testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData("Children of the Night", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-                testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData("Dominate", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Will, AbilityConstants.Charisma));
-                testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData("Create Spawn", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
-                testCases[CreatureConstants.Templates.Vampire].Add(helper.BuildData("Energy Drain", string.Empty, "2 negative levels, Vampire gains 5 HP", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                testCases[CreatureConstants.Templates.Vampire].Add(attackHelper.BuildData("Slam",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Bludgeoning),
+                    string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Vampire].Add(attackHelper.BuildData("Blood Drain",
+                    damageHelper.BuildEntry("1d4", AbilityConstants.Constitution),
+                    "Vampire gains 5 HP", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                testCases[CreatureConstants.Templates.Vampire].Add(attackHelper.BuildData("Children of the Night",
+                    string.Empty,
+                    string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
+                testCases[CreatureConstants.Templates.Vampire].Add(attackHelper.BuildData("Dominate",
+                    string.Empty,
+                    string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Will, AbilityConstants.Charisma));
+                testCases[CreatureConstants.Templates.Vampire].Add(attackHelper.BuildData("Create Spawn",
+                    string.Empty,
+                    string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                testCases[CreatureConstants.Templates.Vampire].Add(attackHelper.BuildData("Energy Drain",
+                    damageHelper.BuildEntry("2", "Negative Levels"),
+                    "Vampire gains 5 HP", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
-                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural].Add(helper.BuildData("Bite (in Hybrid form)", $"1d6", "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural].Add(attackHelper.BuildData("Claw (in Hybrid form)",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural].Add(attackHelper.BuildData("Bite (in Hybrid form)",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Piercing),
+                    "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural].Add(attackHelper.BuildData("Curse of Lycanthropy",
+                    string.Empty,
+                    "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true,
+                    SaveConstants.Fortitude, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural].Add(helper.BuildData("Gore (in Hybrid form)", $"1d6", "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural].Add(attackHelper.BuildData("Claw (in Hybrid form)",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural].Add(attackHelper.BuildData("Gore (in Hybrid form)",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Piercing),
+                    "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Natural].Add(attackHelper.BuildData("Curse of Lycanthropy",
+                    string.Empty,
+                    "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural].Add(helper.BuildData("Gore (in Hybrid form)", $"1d6", "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural].Add(attackHelper.BuildData("Claw (in Hybrid form)",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural].Add(attackHelper.BuildData("Gore (in Hybrid form)",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Piercing),
+                    "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural].Add(attackHelper.BuildData("Curse of Lycanthropy",
+                    string.Empty,
+                    "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural].Add(helper.BuildData("Bite (in Hybrid form)", $"1d6", "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural].Add(attackHelper.BuildData("Claw (in Hybrid form)",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural].Add(attackHelper.BuildData("Bite (in Hybrid form)",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Piercing),
+                    "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural].Add(attackHelper.BuildData("Curse of Lycanthropy",
+                    string.Empty,
+                    "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural].Add(helper.BuildData("Bite (in Hybrid form)", $"1d6", "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural].Add(attackHelper.BuildData("Claw (in Hybrid form)",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural].Add(attackHelper.BuildData("Bite (in Hybrid form)",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Piercing),
+                    "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Natural].Add(attackHelper.BuildData("Curse of Lycanthropy",
+                    string.Empty,
+                    "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural].Add(helper.BuildData("Bite (in Hybrid form)", $"1d6", "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural].Add(attackHelper.BuildData("Claw (in Hybrid form)",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural].Add(attackHelper.BuildData("Bite (in Hybrid form)",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Piercing),
+                    "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Natural].Add(attackHelper.BuildData("Curse of Lycanthropy",
+                    string.Empty,
+                    "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural].Add(helper.BuildData("Bite (in Hybrid form)", $"1d6", "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural].Add(helper.BuildData("Curse of Lycanthropy", string.Empty, "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural].Add(attackHelper.BuildData("Claw (in Hybrid form)",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural].Add(attackHelper.BuildData("Bite (in Hybrid form)",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Piercing),
+                    "Curse of Lycanthropy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural].Add(attackHelper.BuildData("Curse of Lycanthropy",
+                    string.Empty,
+                    "Contract lycanthropy", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted].Add(helper.BuildData("Bite (in Hybrid form)", $"1d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted].Add(attackHelper.BuildData("Claw (in Hybrid form)",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted].Add(attackHelper.BuildData("Bite (in Hybrid form)",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Piercing),
+                    string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted].Add(helper.BuildData("Gore (in Hybrid form)", $"1d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted].Add(attackHelper.BuildData("Claw (in Hybrid form)",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted].Add(attackHelper.BuildData("Gore (in Hybrid form)",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Piercing),
+                    string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted].Add(helper.BuildData("Gore (in Hybrid form)", $"1d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted].Add(attackHelper.BuildData("Claw (in Hybrid form)",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted].Add(attackHelper.BuildData("Gore (in Hybrid form)",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Piercing),
+                    string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted].Add(helper.BuildData("Bite (in Hybrid form)", $"1d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted].Add(attackHelper.BuildData("Claw (in Hybrid form)",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted].Add(attackHelper.BuildData("Bite (in Hybrid form)",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Piercing),
+                    string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted].Add(helper.BuildData("Bite (in Hybrid form)", $"1d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted].Add(attackHelper.BuildData("Claw (in Hybrid form)",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted].Add(attackHelper.BuildData("Bite (in Hybrid form)",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Piercing),
+                    string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted].Add(helper.BuildData("Bite (in Hybrid form)", $"1d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted].Add(attackHelper.BuildData("Claw (in Hybrid form)",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted].Add(attackHelper.BuildData("Bite (in Hybrid form)",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Piercing),
+                    string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted].Add(helper.BuildData("Claw (in Hybrid form)", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted].Add(helper.BuildData("Bite (in Hybrid form)", $"1d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted].Add(attackHelper.BuildData("Claw (in Hybrid form)",
+                    damageHelper.BuildEntry("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted].Add(attackHelper.BuildData("Bite (in Hybrid form)",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Piercing),
+                    string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-                testCases[CreatureConstants.Templates.Zombie].Add(helper.BuildData("Slam", $"1d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Templates.Zombie].Add(attackHelper.BuildData("Slam",
+                    damageHelper.BuildEntry("1d6", AttributeConstants.DamageTypes.Bludgeoning),
+                    string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
 
                 return TestDataHelper.EnumerateTestCases(testCases);
             }

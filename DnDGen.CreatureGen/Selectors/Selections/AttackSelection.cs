@@ -55,22 +55,17 @@ namespace DnDGen.CreatureGen.Selectors.Selections
             selection.SaveDcBonus = Convert.ToInt32(data[DataIndexConstants.AttackData.SaveDcBonusIndex]);
 
             var damageHelper = new DamageHelper();
+            var damageEntries = damageHelper.ParseEntries(data[DataIndexConstants.AttackData.DamageDataIndex]);
 
-            if (!string.IsNullOrEmpty(data[DataIndexConstants.AttackData.DamageDataIndex]))
+            foreach (var damageData in damageEntries)
             {
-                var damageEntries = data[DataIndexConstants.AttackData.DamageDataIndex].Split(DamageSplitDivider);
-
-                foreach (var entry in damageEntries)
+                var damage = new Damage
                 {
-                    var damageData = damageHelper.ParseEntry(entry);
-                    var damage = new Damage
-                    {
-                        Roll = damageData[DataIndexConstants.AttackData.DamageData.RollIndex],
-                        Type = damageData[DataIndexConstants.AttackData.DamageData.TypeIndex],
-                    };
+                    Roll = damageData[DataIndexConstants.AttackData.DamageData.RollIndex],
+                    Type = damageData[DataIndexConstants.AttackData.DamageData.TypeIndex],
+                };
 
-                    selection.Damages.Add(damage);
-                }
+                selection.Damages.Add(damage);
             }
 
             return selection;

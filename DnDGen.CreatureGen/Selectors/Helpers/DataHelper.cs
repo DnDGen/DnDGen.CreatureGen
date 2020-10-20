@@ -9,7 +9,7 @@
             this.divider = divider;
         }
 
-        public string BuildEntry(string[] data)
+        public string BuildEntry(params string[] data)
         {
             return string.Join(divider.ToString(), data);
         }
