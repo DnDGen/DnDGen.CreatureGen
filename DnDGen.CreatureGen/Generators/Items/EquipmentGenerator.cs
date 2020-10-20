@@ -152,7 +152,7 @@ namespace DnDGen.CreatureGen.Generators.Items
             clone.BaseAttackBonus = attack.BaseAttackBonus;
             clone.DamageBonus = attack.DamageBonus;
             clone.DamageEffect = attack.DamageEffect;
-            clone.DamageRoll = attack.DamageRoll;
+            clone.Damages = attack.Damages;
             clone.Frequency = new Frequency();
             clone.Frequency.Quantity = attack.Frequency.Quantity;
             clone.Frequency.TimePeriod = attack.Frequency.TimePeriod;
@@ -262,7 +262,7 @@ namespace DnDGen.CreatureGen.Generators.Items
                         weapons.Add(weapon);
 
                         attack.Name = weapon.Name;
-                        attack.DamageRoll = weapon.Damage;
+                        attack.Damages.Add(new Damage { Roll = weapon.Damage, Type = weapon.DamageType });
 
                         //Is not proficient with the weapon
                         if (!proficientMeleeWeaponNames.Common.Any(weapon.NameMatches)
@@ -378,7 +378,7 @@ namespace DnDGen.CreatureGen.Generators.Items
 
                         //Set up the attack
                         attack.Name = weapon.Name;
-                        attack.DamageRoll = weapon.Damage;
+                        attack.Damages.Add(new Damage { Roll = weapon.Damage, Type = weapon.DamageType });
 
                         if (!proficientRangedWeaponNames.Common.Any(weapon.NameMatches)
                             && !proficientRangedWeaponNames.Uncommon.Any(weapon.NameMatches))

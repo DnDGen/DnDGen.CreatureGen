@@ -1,14 +1,18 @@
-﻿using DnDGen.CreatureGen.Selectors.Helpers;
+﻿using DnDGen.CreatureGen.Attacks;
+using DnDGen.CreatureGen.Selectors.Helpers;
 using DnDGen.CreatureGen.Tables;
 using System;
+using System.Collections.Generic;
 
 namespace DnDGen.CreatureGen.Selectors.Selections
 {
     internal class AttackSelection
     {
         public const char Divider = '@';
+        public const char DamageDivider = '#';
+        public const char DamageSplitDivider = ',';
 
-        public string DamageRoll { get; set; }
+        public List<Damage> Damages { get; set; }
         public string DamageEffect { get; set; }
         public double DamageBonusMultiplier { get; set; }
         public string Name { get; set; }
@@ -25,7 +29,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
 
         public AttackSelection()
         {
-            DamageRoll = string.Empty;
+            Damages = new List<Damage>();
             DamageEffect = string.Empty;
             Name = string.Empty;
         }
@@ -41,7 +45,6 @@ namespace DnDGen.CreatureGen.Selectors.Selections
             selection.IsPrimary = Convert.ToBoolean(data[DataIndexConstants.AttackData.IsPrimaryIndex]);
             selection.IsSpecial = Convert.ToBoolean(data[DataIndexConstants.AttackData.IsSpecialIndex]);
             selection.Name = data[DataIndexConstants.AttackData.NameIndex];
-            selection.DamageRoll = data[DataIndexConstants.AttackData.DamageRollIndex];
             selection.DamageEffect = data[DataIndexConstants.AttackData.DamageEffectIndex];
             selection.DamageBonusMultiplier = Convert.ToDouble(data[DataIndexConstants.AttackData.DamageBonusMultiplierIndex]);
             selection.FrequencyQuantity = Convert.ToInt32(data[DataIndexConstants.AttackData.FrequencyQuantityIndex]);
@@ -50,6 +53,25 @@ namespace DnDGen.CreatureGen.Selectors.Selections
             selection.SaveAbility = data[DataIndexConstants.AttackData.SaveAbilityIndex];
             selection.AttackType = data[DataIndexConstants.AttackData.AttackTypeIndex];
             selection.SaveDcBonus = Convert.ToInt32(data[DataIndexConstants.AttackData.SaveDcBonusIndex]);
+
+            var damageHelper = new DamageHelper();
+
+            if (!string.IsNullOrEmpty(data[DataIndexConstants.AttackData.DamageDataIndex]))
+            {
+                var damageEntries = data[DataIndexConstants.AttackData.DamageDataIndex].Split(DamageSplitDivider);
+
+                foreach (var entry in damageEntries)
+                {
+                    var damageData = damageHelper.ParseEntry(entry);
+                    var damage = new Damage
+                    {
+                        Roll = damageData[DataIndexConstants.AttackData.DamageData.RollIndex],
+                        Type = damageData[DataIndexConstants.AttackData.DamageData.TypeIndex],
+                    };
+
+                    selection.Damages.Add(damage);
+                }
+            }
 
             return selection;
         }

@@ -78,7 +78,7 @@ namespace DnDGen.CreatureGen.Generators.Attacks
                 var attack = new Attack();
                 attacks.Add(attack);
 
-                attack.DamageRoll = attackSelection.DamageRoll;
+                attack.Damages = attackSelection.Damages;
                 attack.DamageEffect = attackSelection.DamageEffect;
                 attack.DamageBonus = GetDamageBonus(abilities, attackSelection.DamageBonusMultiplier);
                 attack.Name = attackSelection.Name;

@@ -1,5 +1,6 @@
 ﻿using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
+using System;
 
 namespace DnDGen.CreatureGen.Selectors.Helpers
 {
@@ -11,7 +12,7 @@ namespace DnDGen.CreatureGen.Selectors.Helpers
 
         public string[] BuildData(
             string name,
-            string damageRoll,
+            string damageData,
             string damageEffect,
             double damageBonusMultiplier,
             string attackType,
@@ -25,10 +26,22 @@ namespace DnDGen.CreatureGen.Selectors.Helpers
             string saveAbility = null,
             int saveDcBonus = 0)
         {
+            if (!string.IsNullOrEmpty(damageData))
+            {
+                var damageHelper = new DamageHelper();
+                var damageEntries = damageData.Split(AttackSelection.DamageSplitDivider);
+
+                foreach (var entry in damageEntries)
+                {
+                    if (!damageHelper.ValidateEntry(entry))
+                        throw new ArgumentException($"Data Damage Entry '{entry}' is not valid");
+                }
+            }
+
             var data = DataIndexConstants.AttackData.InitializeData();
 
             data[DataIndexConstants.AttackData.NameIndex] = name;
-            data[DataIndexConstants.AttackData.DamageRollIndex] = damageRoll;
+            data[DataIndexConstants.AttackData.DamageDataIndex] = damageData;
             data[DataIndexConstants.AttackData.DamageEffectIndex] = damageEffect;
             data[DataIndexConstants.AttackData.DamageBonusMultiplierIndex] = damageBonusMultiplier.ToString();
             data[DataIndexConstants.AttackData.IsMeleeIndex] = isMelee.ToString();
@@ -50,7 +63,7 @@ namespace DnDGen.CreatureGen.Selectors.Helpers
             return BuildKeyFromSections(creature,
                 data[DataIndexConstants.AttackData.NameIndex],
                 data[DataIndexConstants.AttackData.IsPrimaryIndex],
-                data[DataIndexConstants.AttackData.DamageRollIndex],
+                data[DataIndexConstants.AttackData.DamageDataIndex],
                 data[DataIndexConstants.AttackData.DamageEffectIndex]);
         }
 

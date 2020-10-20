@@ -16,7 +16,7 @@
         internal static class AttackData
         {
             public const int NameIndex = 0;
-            public const int DamageRollIndex = 1;
+            public const int DamageDataIndex = 1;
             public const int IsNaturalIndex = 2;
             public const int IsMeleeIndex = 3;
             public const int IsPrimaryIndex = 4;
@@ -33,6 +33,17 @@
             public static string[] InitializeData()
             {
                 return DataIndexConstants.InitializeData(SaveDcBonusIndex);
+            }
+
+            internal static class DamageData
+            {
+                public const int RollIndex = 0;
+                public const int TypeIndex = 1;
+
+                public static string[] InitializeData()
+                {
+                    return DataIndexConstants.InitializeData(TypeIndex);
+                }
             }
         }
 

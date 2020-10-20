@@ -2,6 +2,7 @@
 using DnDGen.CreatureGen.Feats;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace DnDGen.CreatureGen.Attacks
 {
@@ -64,9 +65,15 @@ namespace DnDGen.CreatureGen.Attacks
 
                 var damage = DamageRoll;
                 if (DamageBonus > 0)
-                    damage += $"+{DamageBonus}";
+                {
+                    var regex = new Regex(Regex.Escape(Damages[0].Roll));
+                    damage = regex.Replace(damage, $"{Damages[0].Roll}+{DamageBonus}", 1);
+                }
                 else if (DamageBonus < 0)
-                    damage += $"{DamageBonus}";
+                {
+                    var regex = new Regex(Regex.Escape(Damages[0].Roll));
+                    damage = regex.Replace(damage, $"{Damages[0].Roll}{DamageBonus}", 1);
+                }
 
                 if (!string.IsNullOrEmpty(DamageEffect))
                 {

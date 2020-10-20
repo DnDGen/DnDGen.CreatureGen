@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Selectors.Helpers;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using NUnit.Framework;
 
@@ -8,11 +9,169 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
     public class AttackHelperTests
     {
         private AttackHelper helper;
+        private DamageHelper damageHelper;
 
         [SetUp]
         public void Setup()
         {
             helper = new AttackHelper();
+            damageHelper = new DamageHelper();
+        }
+
+        [Test]
+        public void BuildDataIntoArray_WithEmptyDamageData()
+        {
+            var data = helper.BuildData(
+                "attack name",
+                string.Empty,
+                "damage effect",
+                92.66,
+                "attack type",
+                90210,
+                "time period",
+                true,
+                true,
+                true,
+                true);
+            Assert.That(data[DataIndexConstants.AttackData.NameIndex], Is.EqualTo("attack name"));
+            Assert.That(data[DataIndexConstants.AttackData.DamageDataIndex], Is.Empty);
+            Assert.That(data[DataIndexConstants.AttackData.DamageEffectIndex], Is.EqualTo("damage effect"));
+            Assert.That(data[DataIndexConstants.AttackData.DamageBonusMultiplierIndex], Is.EqualTo(92.66.ToString()));
+            Assert.That(data[DataIndexConstants.AttackData.AttackTypeIndex], Is.EqualTo("attack type"));
+            Assert.That(data[DataIndexConstants.AttackData.FrequencyQuantityIndex], Is.EqualTo(90210.ToString()));
+            Assert.That(data[DataIndexConstants.AttackData.FrequencyTimePeriodIndex], Is.EqualTo("time period"));
+            Assert.That(data[DataIndexConstants.AttackData.IsMeleeIndex], Is.EqualTo(true.ToString()));
+            Assert.That(data[DataIndexConstants.AttackData.IsNaturalIndex], Is.EqualTo(true.ToString()));
+            Assert.That(data[DataIndexConstants.AttackData.IsPrimaryIndex], Is.EqualTo(true.ToString()));
+            Assert.That(data[DataIndexConstants.AttackData.IsSpecialIndex], Is.EqualTo(true.ToString()));
+            Assert.That(data[DataIndexConstants.AttackData.SaveAbilityIndex], Is.Empty);
+            Assert.That(data[DataIndexConstants.AttackData.SaveIndex], Is.Empty);
+            Assert.That(data[DataIndexConstants.AttackData.SaveDcBonusIndex], Is.EqualTo(0.ToString()));
+            Assert.That(data.Length, Is.EqualTo(14));
+        }
+
+        [TestCase("1d6")]
+        [TestCase("1d6 acid")]
+        [TestCase("1d6 bludgeoning")]
+        [TestCase("damage roll")]
+        [TestCase("1d3 + 1d4 fire")]
+        public void BuildDataIntoArray_WithIncorrectDamageData(string damageData)
+        {
+            Assert.That(
+                () => helper.BuildData(
+                    "attack name",
+                    damageData,
+                    "damage effect",
+                    92.66,
+                    "attack type",
+                    90210,
+                    "time period",
+                    true,
+                    true,
+                    true,
+                    true),
+                Throws.ArgumentException.With.Message.EqualTo($"Data Damage Entry '{damageData}' is not valid"));
+        }
+
+        [Test]
+        public void BuildDataIntoArray_WithCorrectDamageData()
+        {
+            var damageData = damageHelper.BuildData("my roll", "my damage type");
+            var damageEntry = damageHelper.BuildEntry(damageData);
+            var data = helper.BuildData(
+                "attack name",
+                damageEntry,
+                "damage effect",
+                92.66,
+                "attack type",
+                90210,
+                "time period",
+                true,
+                true,
+                true,
+                true);
+            Assert.That(data[DataIndexConstants.AttackData.NameIndex], Is.EqualTo("attack name"));
+            Assert.That(data[DataIndexConstants.AttackData.DamageDataIndex], Is.EqualTo(damageEntry));
+            Assert.That(data[DataIndexConstants.AttackData.DamageEffectIndex], Is.EqualTo("damage effect"));
+            Assert.That(data[DataIndexConstants.AttackData.DamageBonusMultiplierIndex], Is.EqualTo(92.66.ToString()));
+            Assert.That(data[DataIndexConstants.AttackData.AttackTypeIndex], Is.EqualTo("attack type"));
+            Assert.That(data[DataIndexConstants.AttackData.FrequencyQuantityIndex], Is.EqualTo(90210.ToString()));
+            Assert.That(data[DataIndexConstants.AttackData.FrequencyTimePeriodIndex], Is.EqualTo("time period"));
+            Assert.That(data[DataIndexConstants.AttackData.IsMeleeIndex], Is.EqualTo(true.ToString()));
+            Assert.That(data[DataIndexConstants.AttackData.IsNaturalIndex], Is.EqualTo(true.ToString()));
+            Assert.That(data[DataIndexConstants.AttackData.IsPrimaryIndex], Is.EqualTo(true.ToString()));
+            Assert.That(data[DataIndexConstants.AttackData.IsSpecialIndex], Is.EqualTo(true.ToString()));
+            Assert.That(data[DataIndexConstants.AttackData.SaveAbilityIndex], Is.Empty);
+            Assert.That(data[DataIndexConstants.AttackData.SaveIndex], Is.Empty);
+            Assert.That(data[DataIndexConstants.AttackData.SaveDcBonusIndex], Is.EqualTo(0.ToString()));
+            Assert.That(data.Length, Is.EqualTo(14));
+        }
+
+        [TestCase("1d6")]
+        [TestCase("1d6 acid")]
+        [TestCase("1d6 bludgeoning")]
+        [TestCase("damage roll")]
+        [TestCase("1d3 + 1d4 fire")]
+        public void BuildDataIntoArray_WithAnyIncorrectDamageData(string badDamageData)
+        {
+            var damageData = damageHelper.BuildData("my roll", "my damage type");
+            var damageEntry = damageHelper.BuildEntry(damageData);
+            var damageDataEntry = string.Join(AttackSelection.DamageSplitDivider, damageEntry, badDamageData);
+
+            Assert.That(
+                () => helper.BuildData(
+                    "attack name",
+                    damageDataEntry,
+                    "damage effect",
+                    92.66,
+                    "attack type",
+                    90210,
+                    "time period",
+                    true,
+                    true,
+                    true,
+                    true),
+                Throws.ArgumentException.With.Message.EqualTo($"Data Damage Entry '{badDamageData}' is not valid"));
+        }
+
+        [Test]
+        public void BuildDataIntoArray_WithMultipleCorrectDamageData()
+        {
+            var damageData1 = damageHelper.BuildData("my roll", "my damage type");
+            var damageEntry1 = damageHelper.BuildEntry(damageData1);
+
+            var damageData2 = damageHelper.BuildData("my other roll", "my other damage type");
+            var damageEntry2 = damageHelper.BuildEntry(damageData2);
+
+            var damageDataEntry = string.Join(AttackSelection.DamageSplitDivider, damageEntry1, damageEntry2);
+
+            var data = helper.BuildData(
+                "attack name",
+                damageDataEntry,
+                "damage effect",
+                92.66,
+                "attack type",
+                90210,
+                "time period",
+                true,
+                true,
+                true,
+                true);
+            Assert.That(data[DataIndexConstants.AttackData.NameIndex], Is.EqualTo("attack name"));
+            Assert.That(data[DataIndexConstants.AttackData.DamageDataIndex], Is.EqualTo(damageDataEntry));
+            Assert.That(data[DataIndexConstants.AttackData.DamageEffectIndex], Is.EqualTo("damage effect"));
+            Assert.That(data[DataIndexConstants.AttackData.DamageBonusMultiplierIndex], Is.EqualTo(92.66.ToString()));
+            Assert.That(data[DataIndexConstants.AttackData.AttackTypeIndex], Is.EqualTo("attack type"));
+            Assert.That(data[DataIndexConstants.AttackData.FrequencyQuantityIndex], Is.EqualTo(90210.ToString()));
+            Assert.That(data[DataIndexConstants.AttackData.FrequencyTimePeriodIndex], Is.EqualTo("time period"));
+            Assert.That(data[DataIndexConstants.AttackData.IsMeleeIndex], Is.EqualTo(true.ToString()));
+            Assert.That(data[DataIndexConstants.AttackData.IsNaturalIndex], Is.EqualTo(true.ToString()));
+            Assert.That(data[DataIndexConstants.AttackData.IsPrimaryIndex], Is.EqualTo(true.ToString()));
+            Assert.That(data[DataIndexConstants.AttackData.IsSpecialIndex], Is.EqualTo(true.ToString()));
+            Assert.That(data[DataIndexConstants.AttackData.SaveAbilityIndex], Is.Empty);
+            Assert.That(data[DataIndexConstants.AttackData.SaveIndex], Is.Empty);
+            Assert.That(data[DataIndexConstants.AttackData.SaveDcBonusIndex], Is.EqualTo(0.ToString()));
+            Assert.That(data.Length, Is.EqualTo(14));
         }
 
         [TestCase(true, true, true, true)]
@@ -33,9 +192,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
         [TestCase(false, false, false, false)]
         public void BuildDataIntoArray_WithoutSave(bool melee, bool natural, bool primary, bool special)
         {
+            var damageData = damageHelper.BuildData("my roll", "my damage type");
+            var damageEntry = damageHelper.BuildEntry(damageData);
+
             var data = helper.BuildData(
                 "attack name",
-                "damage roll",
+                damageEntry,
                 "damage effect",
                 92.66,
                 "attack type",
@@ -46,7 +208,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
                 primary,
                 special);
             Assert.That(data[DataIndexConstants.AttackData.NameIndex], Is.EqualTo("attack name"));
-            Assert.That(data[DataIndexConstants.AttackData.DamageRollIndex], Is.EqualTo("damage roll"));
+            Assert.That(data[DataIndexConstants.AttackData.DamageDataIndex], Is.EqualTo("damage roll"));
             Assert.That(data[DataIndexConstants.AttackData.DamageEffectIndex], Is.EqualTo("damage effect"));
             Assert.That(data[DataIndexConstants.AttackData.DamageBonusMultiplierIndex], Is.EqualTo(92.66.ToString()));
             Assert.That(data[DataIndexConstants.AttackData.AttackTypeIndex], Is.EqualTo("attack type"));
@@ -80,10 +242,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
         [TestCase(false, false, false, false)]
         public void BuildDataIntoArray_WithSave(bool melee, bool natural, bool primary, bool special)
         {
+            var damageData = damageHelper.BuildData("my roll", "my damage type");
+            var damageEntry = damageHelper.BuildEntry(damageData);
 
             var data = helper.BuildData(
                 "attack name",
-                "damage roll",
+                damageEntry,
                 "damage effect",
                 92.66,
                 "attack type",
@@ -97,7 +261,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
                 "save ability",
                 1336);
             Assert.That(data[DataIndexConstants.AttackData.NameIndex], Is.EqualTo("attack name"));
-            Assert.That(data[DataIndexConstants.AttackData.DamageRollIndex], Is.EqualTo("damage roll"));
+            Assert.That(data[DataIndexConstants.AttackData.DamageDataIndex], Is.EqualTo("damage roll"));
             Assert.That(data[DataIndexConstants.AttackData.DamageEffectIndex], Is.EqualTo("damage effect"));
             Assert.That(data[DataIndexConstants.AttackData.DamageBonusMultiplierIndex], Is.EqualTo(92.66.ToString()));
             Assert.That(data[DataIndexConstants.AttackData.AttackTypeIndex], Is.EqualTo("attack type"));
@@ -138,9 +302,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
         [TestCase(false, "my roll", "my effect")]
         public void BuildKey_FromData(bool primary, string roll, string effect)
         {
-            var data = helper.ParseEntry($"My Attack@{roll}@True@True@{primary}@False@1@Round (6 seconds)@@@melee@{effect}@1.5@0");
+            var damageData = damageHelper.BuildData(roll, "my damage type");
+            var damageEntry = damageHelper.BuildEntry(damageData);
+
+            var data = helper.ParseEntry($"My Attack@{damageEntry}@True@True@{primary}@False@1@Round (6 seconds)@@@melee@{effect}@1.5@0");
             var key = helper.BuildKey("creature", data);
-            Assert.That(key, Is.EqualTo($"creatureMy Attack{primary}{roll}{effect}"));
+            Assert.That(key, Is.EqualTo($"creatureMy Attack{primary}{damageEntry}{effect}"));
         }
 
         [TestCase(true, "", "")]
@@ -153,8 +320,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
         [TestCase(false, "my roll", "my effect")]
         public void BuildKey_FromString_WithDamageEffect(bool primary, string roll, string effect)
         {
-            var key = helper.BuildKey("creature", $"My Attack@{roll}@True@True@{primary}@False@1@Round (6 seconds)@@@melee@{effect}@1.5@0");
-            Assert.That(key, Is.EqualTo($"creatureMy Attack{primary}{roll}{effect}"));
+            var damageData = damageHelper.BuildData(roll, "my damage type");
+            var damageEntry = damageHelper.BuildEntry(damageData);
+
+            var key = helper.BuildKey("creature", $"My Attack@{damageEntry}@True@True@{primary}@False@1@Round (6 seconds)@@@melee@{effect}@1.5@0");
+            Assert.That(key, Is.EqualTo($"creatureMy Attack{primary}{damageEntry}{effect}"));
         }
 
         [TestCase(true, "", "")]
@@ -167,8 +337,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
         [TestCase(false, "my roll", "my effect")]
         public void BuildKeyFromSections(bool primary, string roll, string effect)
         {
-            var key = helper.BuildKeyFromSections("creature", "My Attack", primary.ToString(), roll, effect);
-            Assert.That(key, Is.EqualTo($"creatureMy Attack{primary}{roll}{effect}"));
+            var damageData = damageHelper.BuildData(roll, "my damage type");
+            var damageEntry = damageHelper.BuildEntry(damageData);
+
+            var key = helper.BuildKeyFromSections("creature", "My Attack", primary.ToString(), damageEntry, effect);
+            Assert.That(key, Is.EqualTo($"creatureMy Attack{primary}{damageEntry}{effect}"));
         }
 
         [TestCase(0, false)]

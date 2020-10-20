@@ -44,7 +44,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         }
 
         [TestCase(DataIndexConstants.AttackData.NameIndex, 0)]
-        [TestCase(DataIndexConstants.AttackData.DamageRollIndex, 1)]
+        [TestCase(DataIndexConstants.AttackData.DamageDataIndex, 1)]
         [TestCase(DataIndexConstants.AttackData.IsNaturalIndex, 2)]
         [TestCase(DataIndexConstants.AttackData.IsMeleeIndex, 3)]
         [TestCase(DataIndexConstants.AttackData.IsPrimaryIndex, 4)]
@@ -63,7 +63,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         }
 
         [TestCase(DataIndexConstants.AttackData.NameIndex)]
-        [TestCase(DataIndexConstants.AttackData.DamageRollIndex)]
+        [TestCase(DataIndexConstants.AttackData.DamageDataIndex)]
         [TestCase(DataIndexConstants.AttackData.IsNaturalIndex)]
         [TestCase(DataIndexConstants.AttackData.IsMeleeIndex)]
         [TestCase(DataIndexConstants.AttackData.IsPrimaryIndex)]
@@ -79,6 +79,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         public void AttackDataIndicesInitialized(int index)
         {
             var data = DataIndexConstants.AttackData.InitializeData();
+            Assert.That(data.Count, Is.GreaterThan(index));
+            Assert.That(data, Is.All.Empty);
+        }
+
+        [TestCase(DataIndexConstants.AttackData.DamageData.RollIndex, 0)]
+        [TestCase(DataIndexConstants.AttackData.DamageData.TypeIndex, 1)]
+        public void DamageDataIndex(int constant, int value)
+        {
+            Assert.That(constant, Is.EqualTo(value));
+        }
+
+        [TestCase(DataIndexConstants.AttackData.DamageData.RollIndex)]
+        [TestCase(DataIndexConstants.AttackData.DamageData.TypeIndex)]
+        public void DamageDataIndicesInitialized(int index)
+        {
+            var data = DataIndexConstants.AttackData.DamageData.InitializeData();
             Assert.That(data.Count, Is.GreaterThan(index));
             Assert.That(data, Is.All.Empty);
         }
