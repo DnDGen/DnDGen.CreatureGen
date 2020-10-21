@@ -29,7 +29,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             AssertCollectionNames(names);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void CreaturesWithCasterHaveSpellAttack(string creature)
         {
             var attacks = attackSelector.Select(creature, SizeConstants.Medium, SizeConstants.Medium);

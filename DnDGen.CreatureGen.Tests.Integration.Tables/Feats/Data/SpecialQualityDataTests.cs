@@ -92,7 +92,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             Assert.That(keys, Is.Unique);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
@@ -124,7 +124,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
@@ -172,7 +172,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
@@ -237,7 +237,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             return testCaseSpecialQualityDatas.Where(d => d[DataIndexConstants.SpecialQualityData.FeatNameIndex] != SpecialQualityTestData.None);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
@@ -265,7 +265,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
@@ -293,7 +293,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
@@ -324,7 +324,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
@@ -361,7 +361,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
@@ -391,7 +391,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
@@ -431,7 +431,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
@@ -471,7 +471,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Types))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
@@ -518,7 +518,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void NoOverlapBetweenCreatureAndCreatureTypes(string creature)
         {
             var types = collectionMapper.Map(TableNameConstants.Collection.CreatureTypes);
@@ -548,7 +548,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void CreaturesThatCanChangeShapeIntoHumanoidCanUseEquipment(string creature)
         {
             Assert.That(table, Contains.Key(creature));

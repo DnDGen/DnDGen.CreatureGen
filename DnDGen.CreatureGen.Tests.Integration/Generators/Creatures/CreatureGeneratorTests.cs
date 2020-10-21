@@ -129,7 +129,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             Assert.That(creature.Equipment.Armor, Is.Not.Null);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void CanGenerateCreature(string creatureName)
         {
             var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);

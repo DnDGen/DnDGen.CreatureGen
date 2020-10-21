@@ -1031,7 +1031,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertTypesAndAmounts(creatureType, typesAndAmounts);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void AdvancementOnlyIncreasesHitDice(string creature)
         {
             Assert.That(table.Keys, Contains.Item(creature));
@@ -1060,7 +1060,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void AdvancementOnlyIncreasesSize(string creature)
         {
             Assert.That(table.Keys, Contains.Item(creature));
@@ -1081,7 +1081,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void AdvancementHasDistinctSizes(string creature)
         {
             Assert.That(table.Keys, Contains.Item(creature));
@@ -1093,7 +1093,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(sizes, Is.Unique);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void AdvancementHasIncreasedSizeForIncreasedMinimum(string creature)
         {
             Assert.That(table.Keys, Contains.Item(creature));

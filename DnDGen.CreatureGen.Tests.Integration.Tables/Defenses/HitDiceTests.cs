@@ -768,7 +768,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
             AssertAdjustment(creatureType, quantity);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void PositiveHitDiceQuantity(string creature)
         {
             var hitDiceQuantity = GetAdjustment(creature);

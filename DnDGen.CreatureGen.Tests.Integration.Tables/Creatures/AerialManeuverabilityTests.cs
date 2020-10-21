@@ -791,7 +791,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertDistinctCollection(creature, maneuverability);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void CreatureWithAerialSpeedHaveManeuverability(string creature)
         {
             var speeds = typesAndAmountsSelector.Select(TableNameConstants.Collection.Speeds, creature);

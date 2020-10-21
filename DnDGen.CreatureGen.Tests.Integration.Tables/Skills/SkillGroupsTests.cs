@@ -4694,7 +4694,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             base.AssertDistinctCollection(SkillConstants.Profession, foci);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void NoDuplicationOfSkillsBetweenTypeAndCreature(string creature)
         {
             var creatureTypes = collectionSelector.Explode(TableNameConstants.Collection.CreatureTypes, creature);

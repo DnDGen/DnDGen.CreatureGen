@@ -6,7 +6,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
 {
     public class CreatureTestData
     {
-        public static IEnumerable All
+        public static IEnumerable Creatures
         {
             get
             {

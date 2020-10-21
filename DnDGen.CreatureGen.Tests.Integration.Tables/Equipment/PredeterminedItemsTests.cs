@@ -967,7 +967,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
             base.AssertCollection(CreatureConstants.Zelekhut, new[] { chain, chain });
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.All))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void BUG_IfCreatureHasOversizedFeat_WeaponsDoNotHaveSize(string creature)
         {
             Assert.That(table, Contains.Key(creature));
