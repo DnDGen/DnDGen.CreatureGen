@@ -230,7 +230,7 @@ namespace DnDGen.CreatureGen.Templates
                 creature.HitPoints.RoundedHitDiceQuantity);
 
             var smiteEvil = attacks.First(a => a.Name == "Smite Evil");
-            smiteEvil.DamageRoll = Math.Min(creature.HitPoints.RoundedHitDiceQuantity, 20).ToString();
+            smiteEvil.Damages[0].Roll = Math.Min(creature.HitPoints.RoundedHitDiceQuantity, 20).ToString();
 
             creature.Attacks = creature.Attacks.Union(attacks);
         }

@@ -80,7 +80,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Assert.That(templatedAttack.AttackType, Is.EqualTo(attack.AttackType));
                 Assert.That(templatedAttack.BaseAbility, Is.EqualTo(templatedCreature.Abilities[attack.BaseAbility.Name]));
                 Assert.That(templatedAttack.BaseAttackBonus, Is.EqualTo(attack.BaseAttackBonus));
-                Assert.That(templatedAttack.Damage, Is.EqualTo(attack.Damage));
+                Assert.That(templatedAttack.DamageDescription, Is.EqualTo(attack.DamageDescription));
                 Assert.That(templatedAttack.DamageBonus, Is.EqualTo(attack.DamageBonus));
                 Assert.That(templatedAttack.DamageEffect, Is.EqualTo(attack.DamageEffect));
                 Assert.That(templatedAttack.DamageRoll, Is.EqualTo(attack.DamageRoll));
@@ -276,7 +276,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Assert.That(templatedAttack.AttackType, Is.EqualTo(attack.AttackType));
                 Assert.That(templatedAttack.BaseAbility, Is.EqualTo(templatedCreature.Abilities[attack.BaseAbility.Name]));
                 Assert.That(templatedAttack.BaseAttackBonus, Is.EqualTo(attack.BaseAttackBonus));
-                Assert.That(templatedAttack.Damage, Is.EqualTo(attack.Damage));
+                Assert.That(templatedAttack.DamageDescription, Is.EqualTo(attack.DamageDescription));
                 Assert.That(templatedAttack.DamageBonus, Is.EqualTo(attack.DamageBonus));
                 Assert.That(templatedAttack.DamageEffect, Is.EqualTo(attack.DamageEffect));
                 Assert.That(templatedAttack.DamageRoll, Is.EqualTo(attack.DamageRoll));

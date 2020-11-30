@@ -251,12 +251,12 @@ namespace DnDGen.CreatureGen.Templates
             {
                 var oldClaw = creature.Attacks.First(a => a.Name == "Slam");
 
-                var oldMax = dice.Roll(oldClaw.DamageRoll).AsPotentialMaximum();
-                var newMax = dice.Roll(newSlam.DamageRoll).AsPotentialMaximum();
+                var oldMax = dice.Roll(oldClaw.Damages[0].Roll).AsPotentialMaximum();
+                var newMax = dice.Roll(newSlam.Damages[0].Roll).AsPotentialMaximum();
 
                 if (newMax > oldMax)
                 {
-                    oldClaw.DamageRoll = newSlam.DamageRoll;
+                    oldClaw.Damages[0].Roll = newSlam.Damages[0].Roll;
                 }
 
                 zombieAttacks = zombieAttacks.Except(new[] { newSlam });

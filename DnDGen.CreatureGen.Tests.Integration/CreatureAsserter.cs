@@ -178,10 +178,10 @@ namespace DnDGen.CreatureGen.Tests.Integration
             {
                 var weapon = creature.Equipment.Weapons.FirstOrDefault(w => w.Name == attack.Name);
                 Assert.That(weapon, Is.Not.Null, $"{creature.Summary}: {attack.Name}");
-                Assert.That(weapon.Damage, Is.Not.Empty, $"{creature.Summary}: {weapon.Name}");
+                Assert.That(weapon.DamageDescription, Is.Not.Empty, $"{creature.Summary}: {weapon.Name}");
                 Assert.That(weaponNames, Contains.Item(weapon.Name), $"{creature.Summary}: {weapon.Name}");
 
-                Assert.That(attack.DamageRoll, Is.EqualTo(weapon.Damage), $"{creature.Summary}: {weapon.Name}");
+                Assert.That(attack.DamageDescription, Is.EqualTo(weapon.DamageDescription), $"{creature.Summary}: {weapon.Name}");
 
                 if (weapon.Attributes.Contains(AttributeConstants.Melee))
                 {
@@ -459,7 +459,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
                 if (attack.IsNatural)
                 {
-                    Assert.That(attack.Damage, Is.Not.Empty, message);
+                    Assert.That(attack.DamageDescription, Is.Not.Empty, message);
                 }
             }
 

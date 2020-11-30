@@ -204,12 +204,12 @@ namespace DnDGen.CreatureGen.Templates
                 var oldSlam = creature.Attacks.First(a => a.Name == "Slam");
                 var newSlam = vampireAttacks.First(a => a.Name == "Slam");
 
-                var oldMax = dice.Roll(oldSlam.DamageRoll).AsPotentialMaximum();
-                var newMax = dice.Roll(newSlam.DamageRoll).AsPotentialMaximum();
+                var oldMax = dice.Roll(oldSlam.Damages[0].Roll).AsPotentialMaximum();
+                var newMax = dice.Roll(newSlam.Damages[0].Roll).AsPotentialMaximum();
 
                 if (newMax > oldMax)
                 {
-                    oldSlam.DamageRoll = newSlam.DamageRoll;
+                    oldSlam.Damages[0].Roll = newSlam.Damages[0].Roll;
                 }
 
                 vampireAttacks = vampireAttacks.Except(new[] { newSlam });

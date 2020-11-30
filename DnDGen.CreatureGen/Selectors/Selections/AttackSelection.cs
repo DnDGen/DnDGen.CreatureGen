@@ -1,6 +1,6 @@
-﻿using DnDGen.CreatureGen.Attacks;
-using DnDGen.CreatureGen.Selectors.Helpers;
+﻿using DnDGen.CreatureGen.Selectors.Helpers;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.TreasureGen.Items;
 using System;
 using System.Collections.Generic;
 

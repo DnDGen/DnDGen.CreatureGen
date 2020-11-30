@@ -1,5 +1,6 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Feats;
+using DnDGen.TreasureGen.Items;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -14,7 +15,6 @@ namespace DnDGen.CreatureGen.Attacks
         public Ability BaseAbility { get; set; }
         public bool IsMelee { get; set; }
         public List<Damage> Damages { get; set; }
-        public string DamageRoll => string.Join(" + ", Damages.Select(d => d.ToString()));
         public string DamageEffect { get; set; }
         public int DamageBonus { get; set; }
         public bool IsPrimary { get; set; }
@@ -56,14 +56,14 @@ namespace DnDGen.CreatureGen.Attacks
             }
         }
 
-        public string Damage
+        public string DamageDescription
         {
             get
             {
-                if (string.IsNullOrEmpty(DamageRoll))
+                if (!Damages.Any())
                     return DamageEffect;
 
-                var damage = DamageRoll;
+                var damage = string.Join(" + ", Damages.Select(d => d.Description));
                 if (DamageBonus > 0)
                 {
                     var regex = new Regex(Regex.Escape(Damages[0].Roll));

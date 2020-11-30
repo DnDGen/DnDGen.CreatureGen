@@ -158,7 +158,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Club;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Club, "size"))
                 .Returns(weapon);
@@ -169,7 +169,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -199,7 +199,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Dagger;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dagger, "size"))
                 .Returns(weapon);
@@ -210,7 +210,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dagger));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -242,7 +242,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.LightMace;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.LightMace, "size"))
                 .Returns(weapon);
@@ -253,7 +253,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.LightMace));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -280,7 +280,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Club;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Club, "size"))
                 .Returns(weapon);
@@ -291,7 +291,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -318,7 +318,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Dagger;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dagger, "size"))
                 .Returns(weapon);
@@ -329,7 +329,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dagger));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -356,7 +356,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Greataxe;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Greataxe, "size"))
                 .Returns(weapon);
@@ -367,7 +367,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Greataxe));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -394,7 +394,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Greatsword;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Greatsword, "size"))
                 .Returns(weapon);
@@ -405,7 +405,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Greatsword));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -432,7 +432,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Whip;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Whip, "size"))
                 .Returns(weapon);
@@ -443,7 +443,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Whip));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -470,7 +470,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.SpikedChain;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.SpikedChain, "size"))
                 .Returns(weapon);
@@ -481,7 +481,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.SpikedChain));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -509,7 +509,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Club;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(weapon);
@@ -520,7 +520,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -548,7 +548,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Longsword;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "martial weapon", "size"))
                 .Returns(weapon);
@@ -559,7 +559,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Longsword));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -587,7 +587,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.GnomeHookedHammer;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "exotic weapon", "size"))
                 .Returns(weapon);
@@ -598,7 +598,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.GnomeHookedHammer));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -626,7 +626,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = "my gnome hooked hammer";
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.GnomeHookedHammer, "size"))
                 .Returns(weapon);
@@ -637,7 +637,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo("my gnome hooked hammer"));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -671,7 +671,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.SunBlade;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             weapon.BaseNames = new[] { WeaponConstants.ShortSword, WeaponConstants.BastardSword };
             weapon.Attributes = new[] { "my attribute", AttributeConstants.Melee };
 
@@ -685,7 +685,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.SunBlade));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -721,10 +721,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             var weapon = new Weapon
             {
                 Name = WeaponConstants.SunBlade,
-                Damage = "my predetermined damage",
                 BaseNames = new[] { WeaponConstants.ShortSword, WeaponConstants.BastardSword },
                 Attributes = new[] { AttributeConstants.Melee }
             };
+            weapon.Damages.Add(new Damage { Roll = "my predetermined roll", Type = "my predetermined damage type" });
 
             mockMagicalItemGenerator
                 .Setup(g => g.Generate(template, false))
@@ -736,7 +736,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.SunBlade));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -765,7 +765,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Club;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "oversized"))
                 .Returns(weapon);
@@ -776,7 +776,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -806,7 +806,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Club;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(weapon);
@@ -817,7 +817,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -847,7 +847,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.SunBlade;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             weapon.BaseNames = new[] { WeaponConstants.BastardSword, WeaponConstants.ShortSword };
 
             mockItemGenerator
@@ -860,7 +860,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.SunBlade));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -891,7 +891,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Club;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(weapon);
@@ -902,7 +902,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -936,9 +936,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             var weapon = new Weapon
             {
                 Name = WeaponConstants.Club,
-                Damage = "my predetermined damage",
                 Attributes = new[] { AttributeConstants.Melee }
             };
+            weapon.Damages.Add(new Damage { Roll = "my predetermined roll", Type = "my predetermined damage type" });
+
             mockMundaneItemGenerator
                 .Setup(g => g.Generate(template, false))
                 .Returns(weapon);
@@ -952,7 +953,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -995,9 +996,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             var weapon = new Weapon
             {
                 Name = WeaponConstants.Club,
-                Damage = "my predetermined damage",
                 Attributes = new[] { AttributeConstants.Melee }
             };
+            weapon.Damages.Add(new Damage { Roll = "my predetermined roll", Type = "my predetermined damage type" });
+
             mockMundaneItemGenerator
                 .Setup(g => g.Generate(template, false))
                 .Returns(weapon);
@@ -1011,7 +1013,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -1058,9 +1060,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             var weapon = new Weapon
             {
                 Name = WeaponConstants.Club,
-                Damage = "my predetermined damage",
                 Attributes = new[] { AttributeConstants.Melee }
             };
+            weapon.Damages.Add(new Damage { Roll = "my predetermined roll", Type = "my predetermined damage type" });
+
             mockMundaneItemGenerator
                 .Setup(g => g.Generate(template, false))
                 .Returns(weapon);
@@ -1074,7 +1077,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -1121,9 +1124,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             var weapon = new Weapon
             {
                 Name = WeaponConstants.Club,
-                Damage = "my predetermined damage",
                 Attributes = new[] { AttributeConstants.Melee }
             };
+            weapon.Damages.Add(new Damage { Roll = "my predetermined roll", Type = "my predetermined damage type" });
+
             mockMagicalItemGenerator
                 .Setup(g => g.Generate(template, false))
                 .Returns(weapon);
@@ -1137,7 +1141,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -1181,9 +1185,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             var weapon = new Weapon
             {
                 Name = WeaponConstants.Club,
-                Damage = "my predetermined damage",
                 Attributes = new[] { AttributeConstants.Melee }
             };
+            weapon.Damages.Add(new Damage { Roll = "my predetermined roll", Type = "my predetermined damage type" });
+
             mockMagicalItemGenerator
                 .Setup(g => g.Generate(template, false))
                 .Returns(weapon);
@@ -1197,7 +1202,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -1243,9 +1248,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             var weapon = new Weapon
             {
                 Name = WeaponConstants.Club,
-                Damage = "my predetermined damage",
                 Attributes = new[] { AttributeConstants.Melee }
             };
+            weapon.Damages.Add(new Damage { Roll = "my predetermined roll", Type = "my predetermined damage type" });
+
             mockMagicalItemGenerator
                 .Setup(g => g.Generate(template, false))
                 .Returns(weapon);
@@ -1260,7 +1266,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -1302,7 +1308,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Club;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             weapon.Size = "size";
 
             mockItemGenerator
@@ -1316,7 +1322,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -1344,7 +1350,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Club;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             weapon.Magic.Bonus = 1337;
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
@@ -1356,7 +1362,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -1384,7 +1390,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Club;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             weapon.Traits.Add(TraitConstants.Masterwork);
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
@@ -1396,7 +1402,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -1424,7 +1430,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Club;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             weapon.Traits.Add(TraitConstants.Masterwork);
             weapon.Magic.Bonus = 2;
 
@@ -1438,7 +1444,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -1467,7 +1473,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Dagger;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dagger, "size"))
                 .Returns(weapon);
@@ -1478,7 +1484,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dagger));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -1508,7 +1514,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Club;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Club, "size"))
                 .Returns(weapon);
@@ -1519,7 +1525,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -1549,7 +1555,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Quarterstaff;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Quarterstaff, "size"))
                 .Returns(weapon);
@@ -1560,7 +1566,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Quarterstaff));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -1595,20 +1601,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, It.IsAny<string>(), "size"))
-                .Returns((int l, string t, string n, string[] tt) => new Weapon { Name = n, Damage = $"my {n} damage" });
+                .Returns((int l, string t, string n, string[] tt) => new Weapon
+                {
+                    Name = n,
+                    Damages = new List<Damage>
+                    {
+                       new Damage { Roll = $"my {n} roll", Type = $"my {n} damage type" }
+                    }
+                });
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
             Assert.That(equipment.Weapons.Count(), Is.EqualTo(2));
 
             var weapons = equipment.Weapons.ToArray();
             Assert.That(weapons[0].Name, Is.EqualTo(primary));
-            Assert.That(weapons[0].Damage, Is.EqualTo($"my {primary} damage"));
+            Assert.That(weapons[0].DamageDescription, Is.EqualTo($"my {primary} damage"));
             Assert.That(weapons[1].Name, Is.EqualTo(secondary));
-            Assert.That(weapons[1].Damage, Is.EqualTo($"my {secondary} damage"));
+            Assert.That(weapons[1].DamageDescription, Is.EqualTo($"my {secondary} damage"));
 
             Assert.That(attacks, Has.Count.EqualTo(7));
             Assert.That(attacks[5].Name, Is.EqualTo(primary));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo($"my {primary} damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo($"my {primary} damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -1621,7 +1634,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             Assert.That(attacks[5].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Strength]));
 
             Assert.That(attacks[6].Name, Is.EqualTo(secondary));
-            Assert.That(attacks[6].DamageRoll, Is.EqualTo($"my {secondary} damage"));
+            Assert.That(attacks[6].DamageDescription, Is.EqualTo($"my {secondary} damage"));
             Assert.That(attacks[6].IsMelee, Is.True);
             Assert.That(attacks[6].IsNatural, Is.False);
             Assert.That(attacks[6].IsSpecial, Is.False);
@@ -1667,22 +1680,29 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, It.IsAny<string>(), "size"))
-                .Returns((int l, string t, string n, string[] tt) => new Weapon { Name = n, Damage = $"my {n} damage" });
+                .Returns((int l, string t, string n, string[] tt) => new Weapon
+                {
+                    Name = n,
+                    Damages = new List<Damage>
+                    {
+                       new Damage { Roll = $"my {n} roll", Type = $"my {n} damage type" }
+                    }
+                });
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
             Assert.That(equipment.Weapons.Count(), Is.EqualTo(3));
 
             var weapons = equipment.Weapons.ToArray();
             Assert.That(weapons[0].Name, Is.EqualTo(primary));
-            Assert.That(weapons[0].Damage, Is.EqualTo($"my {primary} damage"));
+            Assert.That(weapons[0].DamageDescription, Is.EqualTo($"my {primary} damage"));
             Assert.That(weapons[1].Name, Is.EqualTo(secondary));
-            Assert.That(weapons[1].Damage, Is.EqualTo($"my {secondary} damage"));
+            Assert.That(weapons[1].DamageDescription, Is.EqualTo($"my {secondary} damage"));
             Assert.That(weapons[2].Name, Is.EqualTo(third));
-            Assert.That(weapons[2].Damage, Is.EqualTo($"my {third} damage"));
+            Assert.That(weapons[2].DamageDescription, Is.EqualTo($"my {third} damage"));
 
             Assert.That(attacks, Has.Count.EqualTo(8));
             Assert.That(attacks[5].Name, Is.EqualTo(primary));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo($"my {primary} damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo($"my {primary} damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -1695,7 +1715,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             Assert.That(attacks[5].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Strength]));
 
             Assert.That(attacks[6].Name, Is.EqualTo(secondary));
-            Assert.That(attacks[6].DamageRoll, Is.EqualTo($"my {secondary} damage"));
+            Assert.That(attacks[6].DamageDescription, Is.EqualTo($"my {secondary} damage"));
             Assert.That(attacks[6].IsMelee, Is.True);
             Assert.That(attacks[6].IsNatural, Is.False);
             Assert.That(attacks[6].IsSpecial, Is.False);
@@ -1708,7 +1728,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             Assert.That(attacks[6].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Strength]));
 
             Assert.That(attacks[7].Name, Is.EqualTo(third));
-            Assert.That(attacks[7].DamageRoll, Is.EqualTo($"my {third} damage"));
+            Assert.That(attacks[7].DamageDescription, Is.EqualTo($"my {third} damage"));
             Assert.That(attacks[7].IsMelee, Is.True);
             Assert.That(attacks[7].IsNatural, Is.False);
             Assert.That(attacks[7].IsSpecial, Is.False);
@@ -1764,24 +1784,31 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, It.IsAny<string>(), "size"))
-                .Returns((int l, string t, string n, string[] tt) => new Weapon { Name = n, Damage = $"my {n} damage" });
+                .Returns((int l, string t, string n, string[] tt) => new Weapon
+                {
+                    Name = n,
+                    Damages = new List<Damage>
+                    {
+                       new Damage { Roll = $"my {n} roll", Type = $"my {n} damage type" }
+                    }
+                });
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
             Assert.That(equipment.Weapons.Count(), Is.EqualTo(4));
 
             var weapons = equipment.Weapons.ToArray();
             Assert.That(weapons[0].Name, Is.EqualTo(primary1));
-            Assert.That(weapons[0].Damage, Is.EqualTo($"my {primary1} damage"));
+            Assert.That(weapons[0].DamageDescription, Is.EqualTo($"my {primary1} damage"));
             Assert.That(weapons[1].Name, Is.EqualTo(primary2));
-            Assert.That(weapons[1].Damage, Is.EqualTo($"my {primary2} damage"));
+            Assert.That(weapons[1].DamageDescription, Is.EqualTo($"my {primary2} damage"));
             Assert.That(weapons[2].Name, Is.EqualTo(secondary));
-            Assert.That(weapons[2].Damage, Is.EqualTo($"my {secondary} damage"));
+            Assert.That(weapons[2].DamageDescription, Is.EqualTo($"my {secondary} damage"));
             Assert.That(weapons[3].Name, Is.EqualTo(third));
-            Assert.That(weapons[3].Damage, Is.EqualTo($"my {third} damage"));
+            Assert.That(weapons[3].DamageDescription, Is.EqualTo($"my {third} damage"));
 
             Assert.That(attacks, Has.Count.EqualTo(9));
             Assert.That(attacks[5].Name, Is.EqualTo(primary1));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo($"my {primary1} damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo($"my {primary1} damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -1794,7 +1821,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             Assert.That(attacks[5].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Strength]));
 
             Assert.That(attacks[6].Name, Is.EqualTo(primary2));
-            Assert.That(attacks[6].DamageRoll, Is.EqualTo($"my {primary2} damage"));
+            Assert.That(attacks[6].DamageDescription, Is.EqualTo($"my {primary2} damage"));
             Assert.That(attacks[6].IsMelee, Is.True);
             Assert.That(attacks[6].IsNatural, Is.False);
             Assert.That(attacks[6].IsSpecial, Is.False);
@@ -1807,7 +1834,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             Assert.That(attacks[6].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Strength]));
 
             Assert.That(attacks[7].Name, Is.EqualTo(secondary));
-            Assert.That(attacks[7].DamageRoll, Is.EqualTo($"my {secondary} damage"));
+            Assert.That(attacks[7].DamageDescription, Is.EqualTo($"my {secondary} damage"));
             Assert.That(attacks[7].IsMelee, Is.True);
             Assert.That(attacks[7].IsNatural, Is.False);
             Assert.That(attacks[7].IsSpecial, Is.False);
@@ -1820,7 +1847,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             Assert.That(attacks[7].BaseAbility, Is.EqualTo(abilities[AbilityConstants.Strength]));
 
             Assert.That(attacks[8].Name, Is.EqualTo(third));
-            Assert.That(attacks[8].DamageRoll, Is.EqualTo($"my {third} damage"));
+            Assert.That(attacks[8].DamageDescription, Is.EqualTo($"my {third} damage"));
             Assert.That(attacks[8].IsMelee, Is.True);
             Assert.That(attacks[8].IsNatural, Is.False);
             Assert.That(attacks[8].IsSpecial, Is.False);
@@ -1854,7 +1881,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Dart;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(weapon);
@@ -1865,7 +1892,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dart));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -1894,7 +1921,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Dart;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "oversized"))
                 .Returns(weapon);
@@ -1905,7 +1932,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dart));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -1935,7 +1962,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Dart;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dart, "size"))
                 .Returns(weapon);
@@ -1946,7 +1973,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dart));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -1976,7 +2003,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Javelin;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Javelin, "size"))
                 .Returns(weapon);
@@ -1987,7 +2014,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Javelin));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -2019,7 +2046,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.LightCrossbow;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.LightCrossbow, "size"))
                 .Returns(weapon);
@@ -2030,7 +2057,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.LightCrossbow));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -2057,7 +2084,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Dart;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dart, "size"))
                 .Returns(weapon);
@@ -2068,7 +2095,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dart));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -2095,7 +2122,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Dart;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dart, "size"))
                 .Returns(weapon);
@@ -2106,7 +2133,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dart));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -2133,7 +2160,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Longbow;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Longbow, "size"))
                 .Returns(weapon);
@@ -2144,7 +2171,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Longbow));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -2179,7 +2206,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = compositeTemplate;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, compositeTemplate, "size"))
                 .Returns(weapon);
@@ -2190,7 +2217,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(compositeTemplate));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -2217,7 +2244,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Longbow;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Longbow, "size"))
                 .Returns(weapon);
@@ -2228,7 +2255,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Longbow));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -2255,7 +2282,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Shuriken;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Shuriken, "size"))
                 .Returns(weapon);
@@ -2266,7 +2293,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Shuriken));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -2293,7 +2320,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.HandCrossbow;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.HandCrossbow, "size"))
                 .Returns(weapon);
@@ -2304,7 +2331,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.HandCrossbow));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -2332,7 +2359,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Dart;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(weapon);
@@ -2343,7 +2370,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dart));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -2372,7 +2399,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Longbow;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "martial weapon", "size"))
                 .Returns(weapon);
@@ -2383,7 +2410,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Longbow));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -2411,7 +2438,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Shuriken;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "exotic weapon", "size"))
                 .Returns(weapon);
@@ -2422,7 +2449,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Shuriken));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -2450,7 +2477,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = "my hand crossbow";
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.HandCrossbow, "size"))
                 .Returns(weapon);
@@ -2461,7 +2488,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo("my hand crossbow"));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -2491,7 +2518,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Dart;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(weapon);
@@ -2502,7 +2529,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dart));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -2575,7 +2602,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Oathbow;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             weapon.BaseNames = new[] { WeaponConstants.Longbow };
 
             mockItemGenerator
@@ -2588,7 +2615,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Oathbow));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -2619,7 +2646,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Javelin;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(weapon);
@@ -2630,7 +2657,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Javelin));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -2664,9 +2691,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             var weapon = new Weapon
             {
                 Name = WeaponConstants.Dart,
-                Damage = "my predetermined damage",
                 Attributes = new[] { AttributeConstants.Ranged }
             };
+            weapon.Damages.Add(new Damage { Roll = "my predetermined roll", Type = "my predetermined damage type" });
+
             mockMundaneItemGenerator
                 .Setup(g => g.Generate(template, false))
                 .Returns(weapon);
@@ -2680,7 +2708,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dart));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -2723,9 +2751,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             var weapon = new Weapon
             {
                 Name = WeaponConstants.Dart,
-                Damage = "my predetermined damage",
                 Attributes = new[] { AttributeConstants.Ranged }
             };
+            weapon.Damages.Add(new Damage { Roll = "my predetermined roll", Type = "my predetermined damage type" });
+
             mockMundaneItemGenerator
                 .Setup(g => g.Generate(template, false))
                 .Returns(weapon);
@@ -2739,7 +2768,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dart));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -2786,9 +2815,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             var weapon = new Weapon
             {
                 Name = WeaponConstants.Dart,
-                Damage = "my predetermined damage",
                 Attributes = new[] { AttributeConstants.Ranged }
             };
+            weapon.Damages.Add(new Damage { Roll = "my predetermined roll", Type = "my predetermined damage type" });
+
             mockMundaneItemGenerator
                 .Setup(g => g.Generate(template, false))
                 .Returns(weapon);
@@ -2802,7 +2832,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dart));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -2847,10 +2877,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             var weapon = new Weapon
             {
                 Name = "my projectile weapon",
-                Damage = "my predetermined damage",
                 Attributes = new[] { AttributeConstants.Ranged },
                 Ammunition = "my ammo",
             };
+            weapon.Damages.Add(new Damage { Roll = "my predetermined roll", Type = "my predetermined damage type" });
+
             mockMundaneItemGenerator
                 .Setup(g => g.Generate(template, false))
                 .Returns(weapon);
@@ -2858,9 +2889,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             var ammo = new Weapon
             {
                 Name = "my ammo",
-                Damage = "my ammo damage",
                 Attributes = new[] { AttributeConstants.Ranged },
             };
+            ammo.Damages.Add(new Damage { Roll = "my ammo roll", Type = "my ammo damage type" });
+
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "my ammo", "size"))
                 .Returns(ammo);
@@ -2875,7 +2907,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo("my projectile weapon"));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -2914,10 +2946,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             var weapon = new Weapon
             {
                 Name = "my projectile weapon",
-                Damage = "my predetermined damage",
                 Attributes = new[] { AttributeConstants.Ranged },
                 Ammunition = "my ammo"
             };
+            weapon.Damages.Add(new Damage { Roll = "my predetermined roll", Type = "my predetermined damage type" });
+
             mockMundaneItemGenerator
                 .Setup(g => g.Generate(weaponTemplate, false))
                 .Returns(weapon);
@@ -2925,9 +2958,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             var ammo = new Weapon
             {
                 Name = "my ammo",
-                Damage = "my ammo damage",
                 Attributes = new[] { AttributeConstants.Ranged }
             };
+            ammo.Damages.Add(new Damage { Roll = "my ammo roll", Type = "my ammo damage type" });
+
             mockMundaneItemGenerator
                 .Setup(g => g.Generate(ammoTemplate, false))
                 .Returns(ammo);
@@ -2942,7 +2976,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo("my projectile weapon"));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -2974,9 +3008,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             var weapon = new Weapon
             {
                 Name = WeaponConstants.Dart,
-                Damage = "my predetermined damage",
                 Attributes = new[] { AttributeConstants.Ranged }
             };
+            weapon.Damages.Add(new Damage { Roll = "my predetermined roll", Type = "my predetermined damage type" });
+
             mockMagicalItemGenerator
                 .Setup(g => g.Generate(template, false))
                 .Returns(weapon);
@@ -2990,7 +3025,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dart));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -3034,9 +3069,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             var weapon = new Weapon
             {
                 Name = WeaponConstants.Dart,
-                Damage = "my predetermined damage",
                 Attributes = new[] { AttributeConstants.Ranged }
             };
+            weapon.Damages.Add(new Damage { Roll = "my predetermined roll", Type = "my predetermined damage type" });
+
             mockMagicalItemGenerator
                 .Setup(g => g.Generate(template, false))
                 .Returns(weapon);
@@ -3050,7 +3086,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dart));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -3092,7 +3128,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Dart;
-            weapon.Damage = "my sized damage";
+            weapon.Damages.Add(new Damage { Roll = "my sized roll", Type = "my damage type" });
             weapon.Size = "size";
 
             mockItemGenerator
@@ -3106,7 +3142,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dart));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my sized damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my sized damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -3135,7 +3171,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Longbow;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             weapon.Ammunition = "my ammo";
 
             mockItemGenerator
@@ -3144,7 +3180,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var ammo = new Weapon();
             ammo.Name = "my ammo";
-            ammo.Damage = "my ammo damage";
+            ammo.Damages.Add(new Damage { Roll = "my ammo roll", Type = "my ammo damage type" });
             ammo.Quantity = 42;
 
             mockItemGenerator
@@ -3158,7 +3194,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Longbow));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -3186,7 +3222,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Javelin;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             weapon.Magic.Bonus = 1337;
             weapon.Traits = new HashSet<string> { TraitConstants.Masterwork };
 
@@ -3200,7 +3236,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Javelin));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -3228,7 +3264,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Javelin;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             weapon.Traits = new HashSet<string> { TraitConstants.Masterwork };
 
             mockItemGenerator
@@ -3241,7 +3277,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Javelin));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -3272,14 +3308,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var dart = new Weapon();
             dart.Name = WeaponConstants.Dart;
-            dart.Damage = "my dart damage";
+            dart.Damages.Add(new Damage { Roll = "my dart roll", Type = "my dart damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple weapon", "size"))
                 .Returns(dart);
 
             var javelin = new Weapon();
             javelin.Name = WeaponConstants.Javelin;
-            javelin.Damage = "my javelin damage";
+            javelin.Damages.Add(new Damage { Roll = "my javelin roll", Type = "my javelin damage type" });
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "other simple weapon", "size"))
                 .Returns(javelin);
@@ -3291,14 +3327,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(7));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dart));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my dart damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my dart damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
             Assert.That(attacks[5].AttackBonuses, Is.Empty);
 
             Assert.That(attacks[6].Name, Is.EqualTo(WeaponConstants.Javelin));
-            Assert.That(attacks[6].DamageRoll, Is.EqualTo("my javelin damage"));
+            Assert.That(attacks[6].DamageDescription, Is.EqualTo("my javelin damage"));
             Assert.That(attacks[6].IsMelee, Is.True);
             Assert.That(attacks[6].IsNatural, Is.False);
             Assert.That(attacks[6].IsSpecial, Is.False);
@@ -3327,7 +3363,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = "my ranged weapon";
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             weapon.Attributes = new[] { AttributeConstants.Thrown };
 
             mockItemGenerator
@@ -3340,7 +3376,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo("my ranged weapon"));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -3369,7 +3405,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = "my ranged weapon";
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             weapon.Attributes = new[] { AttributeConstants.Projectile };
 
             mockItemGenerator
@@ -3382,7 +3418,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo("my ranged weapon"));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -3411,7 +3447,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = "my ranged weapon";
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             weapon.Attributes = new[] { "not thrown", "not projectile" };
 
             mockItemGenerator
@@ -3424,7 +3460,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo("my ranged weapon"));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -3455,7 +3491,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = crossbow;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             weapon.Attributes = new[] { AttributeConstants.Projectile };
 
             mockItemGenerator
@@ -3468,7 +3504,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(crossbow));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -3500,7 +3536,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = "my weapon";
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             weapon.Attributes = new[] { AttributeConstants.Projectile };
             weapon.BaseNames = new[] { "my base name", crossbow };
 
@@ -3514,7 +3550,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo("my weapon"));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -3547,7 +3583,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = crossbow;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             weapon.Attributes = new[] { AttributeConstants.Projectile };
 
             mockItemGenerator
@@ -3560,7 +3596,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(crossbow));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -3593,7 +3629,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = "my weapon";
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             weapon.Attributes = new[] { AttributeConstants.Projectile };
             weapon.BaseNames = new[] { "my base name", crossbow };
 
@@ -3607,7 +3643,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo("my weapon"));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -3640,7 +3676,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = crossbow;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             weapon.Attributes = new[] { AttributeConstants.Projectile };
 
             mockItemGenerator
@@ -3653,7 +3689,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(crossbow));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my damage"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -3881,7 +3917,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var weapon = new Weapon();
             weapon.Name = WeaponConstants.Quarterstaff;
-            weapon.Damage = "my damage";
+            weapon.Damages.Add(new Damage { Roll = "my roll", Type = "my damage type" });
             weapon.Attributes = new[] { AttributeConstants.Melee, AttributeConstants.TwoHanded };
 
             mockItemGenerator
@@ -3921,14 +3957,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var dagger = new Weapon();
             dagger.Name = WeaponConstants.Dagger;
-            dagger.Damage = "my dagger damage";
+            dagger.Damages.Add(new Damage { Roll = "my dagger roll", Type = "my dagger damage type" });
+
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dagger, "size"))
                 .Returns(dagger);
 
             var club = new Weapon();
             club.Name = WeaponConstants.Club;
-            club.Damage = "my club damage";
+            club.Damages.Add(new Damage { Roll = "my club roll", Type = "my club damage type" });
+
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Club, "size"))
                 .Returns(club);
@@ -3976,14 +4014,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var dagger = new Weapon();
             dagger.Name = WeaponConstants.Dagger;
-            dagger.Damage = "my dagger damage";
+            dagger.Damages.Add(new Damage { Roll = "my dagger roll", Type = "my dagger damage type" });
+
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dagger, "size"))
                 .Returns(dagger);
 
             var crossbow = new Weapon();
             crossbow.Name = WeaponConstants.LightCrossbow;
-            crossbow.Damage = "my crossbow damage";
+            crossbow.Damages.Add(new Damage { Roll = "my crossbow roll", Type = "my crossbow damage type" });
+
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.LightCrossbow, "size"))
                 .Returns(crossbow);
@@ -4040,21 +4080,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var dagger = new Weapon();
             dagger.Name = WeaponConstants.Dagger;
-            dagger.Damage = "my dagger damage";
+            dagger.Damages.Add(new Damage { Roll = "my dagger roll", Type = "my dagger damage type" });
+
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Dagger, "size"))
                 .Returns(dagger);
 
             var club = new Weapon();
             club.Name = WeaponConstants.Club;
-            club.Damage = "my club damage";
+            club.Damages.Add(new Damage { Roll = "my club roll", Type = "my club damage type" });
+
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.Club, "size"))
                 .Returns(club);
 
             var pick = new Weapon();
             pick.Name = WeaponConstants.LightPick;
-            pick.Damage = "my pick damage";
+            pick.Damages.Add(new Damage { Roll = "my pick roll", Type = "my pick damage type" });
+
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, WeaponConstants.LightPick, "size"))
                 .Returns(pick);
@@ -4445,14 +4488,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             var meleeWeapon = new Weapon();
             meleeWeapon.Name = WeaponConstants.Club;
-            meleeWeapon.Damage = "my club damage";
+            meleeWeapon.Damages.Add(new Damage { Roll = "my club roll", Type = "my club damage type" });
+
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple melee weapon", "size"))
                 .Returns(meleeWeapon);
 
             var rangedWeapon = new Weapon();
             rangedWeapon.Name = WeaponConstants.Dart;
-            rangedWeapon.Damage = "my dart damage";
+            rangedWeapon.Damages.Add(new Damage { Roll = "my dart roll", Type = "my dart damage type" });
+
             mockItemGenerator
                 .Setup(g => g.GenerateAtLevel(9266, ItemTypeConstants.Weapon, "simple ranged weapon", "size"))
                 .Returns(rangedWeapon);
@@ -4531,14 +4576,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(7));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
-            Assert.That(attacks[5].DamageRoll, Is.EqualTo("my club damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my club damage"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
             Assert.That(attacks[5].AttackBonuses, Is.Empty);
 
             Assert.That(attacks[6].Name, Is.EqualTo(WeaponConstants.Dart));
-            Assert.That(attacks[6].DamageRoll, Is.EqualTo("my dart damage"));
+            Assert.That(attacks[6].DamageDescription, Is.EqualTo("my dart damage"));
             Assert.That(attacks[6].IsMelee, Is.False);
             Assert.That(attacks[6].IsNatural, Is.False);
             Assert.That(attacks[6].IsSpecial, Is.False);

@@ -4,7 +4,6 @@ using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace DnDGen.CreatureGen.Selectors.Collections
 {
@@ -46,8 +45,13 @@ namespace DnDGen.CreatureGen.Selectors.Collections
         {
             var selection = AttackSelection.From(input);
 
-            if (selection.IsNatural)
-                selection.DamageRoll = GetAdjustedDamage(selection.DamageRoll, originalSize, advancedSize);
+            if (selection.IsNatural && originalSize != advancedSize)
+            {
+                foreach (var damage in selection.Damages)
+                {
+                    damage.Roll = GetAdjustedDamage(damage.Roll, originalSize, advancedSize);
+                }
+            }
 
             return selection;
         }
@@ -59,12 +63,9 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             var orderedSizes = SizeConstants.GetOrdered();
             var sizeDifference = Array.IndexOf(orderedSizes, advancedSize) - Array.IndexOf(orderedSizes, originalSize);
 
-            while (sizeDifference-- > 0 && damageMaps.Keys.Any(k => adjustedDamage.Contains(k)))
+            while (sizeDifference-- > 0 && damageMaps.ContainsKey(adjustedDamage))
             {
-                foreach (var kvp in damageMaps)
-                {
-                    adjustedDamage = adjustedDamage.Replace(kvp.Key, kvp.Value);
-                }
+                adjustedDamage = damageMaps[adjustedDamage];
             }
 
             return adjustedDamage;

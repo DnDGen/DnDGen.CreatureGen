@@ -95,10 +95,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             {
                 var weapon = creature.Equipment.Weapons.FirstOrDefault(w => w.Name == attack.Name);
                 Assert.That(weapon, Is.Not.Null, $"{creature.Summary}: {attack.Name}");
-                Assert.That(weapon.Damage, Is.Not.Empty, $"{creature.Summary}: {weapon.Name}");
+                Assert.That(weapon.DamageDescription, Is.Not.Empty, $"{creature.Summary}: {weapon.Name}");
                 Assert.That(weaponNames, Contains.Item(weapon.Name), $"{creature.Summary}: {weapon.Name}");
 
-                Assert.That(attack.DamageRoll, Is.EqualTo(weapon.Damage), $"{creature.Summary} ({creature.Size}): {weapon.Name} ({weapon.Size}) [Oversized: {oversizedSize}]");
+                Assert.That(attack.DamageDescription, Is.EqualTo(weapon.DamageDescription), $"{creature.Summary} ({creature.Size}): {weapon.Name} ({weapon.Size}) [Oversized: {oversizedSize}]");
 
                 if (weapon.Attributes.Contains(AttributeConstants.Melee))
                 {

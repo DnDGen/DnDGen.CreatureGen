@@ -1,5 +1,6 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Attacks;
+using DnDGen.TreasureGen.Items;
 using NUnit.Framework;
 using System.Linq;
 
@@ -20,7 +21,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Attacks
         public void AttackInitialized()
         {
             Assert.That(attack.Damages, Is.Empty);
-            Assert.That(attack.DamageRoll, Is.Empty);
+            Assert.That(attack.DamageDescription, Is.Empty);
             Assert.That(attack.DamageEffect, Is.Empty);
             Assert.That(attack.IsMelee, Is.False);
             Assert.That(attack.IsNatural, Is.False);
@@ -521,186 +522,195 @@ namespace DnDGen.CreatureGen.Tests.Unit.Attacks
         }
 
         [Test]
-        public void DamageRoll_NoDamages()
+        public void DamageDescription_NoDamages()
         {
             attack.Damages.Clear();
 
-            Assert.That(attack.DamageRoll, Is.Empty);
+            Assert.That(attack.DamageDescription, Is.Empty);
         }
 
         [Test]
-        public void DamageRoll_Damage()
+        public void DamageDescription_Damage()
         {
             attack.Damages.Add(new Damage { Roll = "9266d90210", Type = "emotional" });
 
-            Assert.That(attack.DamageRoll, Is.EqualTo("9266d90210 emotional"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("9266d90210 emotional"));
         }
 
         [Test]
-        public void DamageRoll_MultipleDamages()
+        public void DamageDescription_Damage_WithCondition()
+        {
+            attack.Damages.Add(new Damage { Roll = "9266d90210", Type = "emotional", Condition = "on occasion" });
+
+            Assert.That(attack.DamageDescription, Is.EqualTo("9266d90210 emotional (on occasion)"));
+        }
+
+        [Test]
+        public void DamageDescription_MultipleDamages()
         {
             attack.Damages.Add(new Damage { Roll = "9266d90210", Type = "emotional" });
             attack.Damages.Add(new Damage { Roll = "42d600", Type = "spiritual" });
+            attack.Damages.Add(new Damage { Roll = "1337d1336", Type = "psychic", Condition = "to stupid people" });
 
-            Assert.That(attack.DamageRoll, Is.EqualTo("9266d90210 emotional + 42d600 spiritual"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("9266d90210 emotional + 42d600 spiritual + 1337d1336 psychic (to stupid people)"));
         }
 
         [Test]
-        public void AttackDamage()
+        public void DamageDescription_AttackDamage()
         {
             attack.Damages.Add(new Damage { Roll = "1d8", Type = "emotional" });
             attack.DamageBonus = 0;
             attack.DamageEffect = string.Empty;
 
-            Assert.That(attack.Damage, Is.EqualTo("1d8 emotional"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("1d8 emotional"));
         }
 
         [Test]
-        public void AttackDamage_MultipleDamages()
+        public void DamageDescription_AttackDamage_MultipleDamages()
         {
             attack.Damages.Add(new Damage { Roll = "1d8", Type = "emotional" });
             attack.Damages.Add(new Damage { Roll = "2d6", Type = "spiritual" });
             attack.DamageBonus = 0;
             attack.DamageEffect = string.Empty;
 
-            Assert.That(attack.Damage, Is.EqualTo("1d8 emotional + 2d6 spiritual"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("1d8 emotional + 2d6 spiritual"));
         }
 
         [Test]
-        public void AttackDamage_WithPositiveDamageBonus()
+        public void DamageDescription_AttackDamage_WithPositiveDamageBonus()
         {
             attack.Damages.Add(new Damage { Roll = "1d8", Type = "emotional" });
             attack.DamageBonus = 1;
             attack.DamageEffect = string.Empty;
 
-            Assert.That(attack.Damage, Is.EqualTo("1d8+1 emotional"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("1d8+1 emotional"));
         }
 
         [Test]
-        public void AttackDamage_WithPositiveDamageBonus_MultipleDamages()
+        public void DamageDescription_AttackDamage_WithPositiveDamageBonus_MultipleDamages()
         {
             attack.Damages.Add(new Damage { Roll = "1d8", Type = "emotional" });
             attack.Damages.Add(new Damage { Roll = "2d6", Type = "spiritual" });
             attack.DamageBonus = 1;
             attack.DamageEffect = string.Empty;
 
-            Assert.That(attack.Damage, Is.EqualTo("1d8+1 emotional + 2d6 spiritual"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("1d8+1 emotional + 2d6 spiritual"));
         }
 
         [Test]
-        public void AttackDamage_WithPositiveDamageBonus_MultipleSameDamages()
+        public void DamageDescription_AttackDamage_WithPositiveDamageBonus_MultipleSameDamages()
         {
             attack.Damages.Add(new Damage { Roll = "1d8", Type = "emotional" });
             attack.Damages.Add(new Damage { Roll = "1d8", Type = "spiritual" });
             attack.DamageBonus = 1;
             attack.DamageEffect = string.Empty;
 
-            Assert.That(attack.Damage, Is.EqualTo("1d8+1 emotional + 1d8 spiritual"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("1d8+1 emotional + 1d8 spiritual"));
         }
 
         [Test]
-        public void AttackDamage_WithNegativeDamageBonus()
+        public void DamageDescription_AttackDamage_WithNegativeDamageBonus()
         {
             attack.Damages.Add(new Damage { Roll = "1d8", Type = "emotional" });
             attack.DamageBonus = -1;
             attack.DamageEffect = string.Empty;
 
-            Assert.That(attack.Damage, Is.EqualTo("1d8-1 emotional"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("1d8-1 emotional"));
         }
 
         [Test]
-        public void AttackDamage_WithNegativeDamageBonus_MultipleDamages()
+        public void DamageDescription_AttackDamage_WithNegativeDamageBonus_MultipleDamages()
         {
             attack.Damages.Add(new Damage { Roll = "1d8", Type = "emotional" });
             attack.Damages.Add(new Damage { Roll = "2d6", Type = "spiritual" });
             attack.DamageBonus = -1;
             attack.DamageEffect = string.Empty;
 
-            Assert.That(attack.Damage, Is.EqualTo("1d8-1 emotional + 2d6 spiritual"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("1d8-1 emotional + 2d6 spiritual"));
         }
 
         [Test]
-        public void AttackDamage_WithNegativeDamageBonus_MultipleSameDamages()
+        public void DamageDescription_AttackDamage_WithNegativeDamageBonus_MultipleSameDamages()
         {
             attack.Damages.Add(new Damage { Roll = "1d8", Type = "emotional" });
             attack.Damages.Add(new Damage { Roll = "1d8", Type = "spiritual" });
             attack.DamageBonus = -1;
             attack.DamageEffect = string.Empty;
 
-            Assert.That(attack.Damage, Is.EqualTo("1d8-1 emotional + 1d8 spiritual"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("1d8-1 emotional + 1d8 spiritual"));
         }
 
         [Test]
-        public void AttackDamage_WithEffect()
+        public void DamageDescription_AttackDamage_WithEffect()
         {
             attack.Damages.Add(new Damage { Roll = "1d8", Type = "emotional" });
             attack.DamageBonus = 0;
             attack.DamageEffect = "poison";
 
-            Assert.That(attack.Damage, Is.EqualTo("1d8 emotional plus poison"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("1d8 emotional plus poison"));
         }
 
         [Test]
-        public void AttackDamage_WithEffect_MultipleDamages()
+        public void DamageDescription_AttackDamage_WithEffect_MultipleDamages()
         {
             attack.Damages.Add(new Damage { Roll = "1d8", Type = "emotional" });
             attack.Damages.Add(new Damage { Roll = "2d6", Type = "spiritual" });
             attack.DamageBonus = 0;
             attack.DamageEffect = "poison";
 
-            Assert.That(attack.Damage, Is.EqualTo("1d8 emotional + 2d6 spiritual plus poison"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("1d8 emotional + 2d6 spiritual plus poison"));
         }
 
         [Test]
-        public void AttackDamage_WithEffectAndPositiveBonus()
+        public void DamageDescription_AttackDamage_WithEffectAndPositiveBonus()
         {
             attack.Damages.Add(new Damage { Roll = "1d8", Type = "emotional" });
             attack.DamageBonus = 1;
             attack.DamageEffect = "poison";
 
-            Assert.That(attack.Damage, Is.EqualTo("1d8+1 emotional plus poison"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("1d8+1 emotional plus poison"));
         }
 
         [Test]
-        public void AttackDamage_WithEffectAndPositiveBonus_MultipleDamages()
+        public void DamageDescription_AttackDamage_WithEffectAndPositiveBonus_MultipleDamages()
         {
             attack.Damages.Add(new Damage { Roll = "1d8", Type = "emotional" });
             attack.Damages.Add(new Damage { Roll = "2d6", Type = "spiritual" });
             attack.DamageBonus = 1;
             attack.DamageEffect = "poison";
 
-            Assert.That(attack.Damage, Is.EqualTo("1d8+1 emotional + 2d6 spiritual plus poison"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("1d8+1 emotional + 2d6 spiritual plus poison"));
         }
 
         [Test]
-        public void AttackDamage_WithEffectAndNegativeBonus()
+        public void DamageDescription_AttackDamage_WithEffectAndNegativeBonus()
         {
             attack.Damages.Add(new Damage { Roll = "1d8", Type = "emotional" });
             attack.DamageBonus = -2;
             attack.DamageEffect = "poison";
 
-            Assert.That(attack.Damage, Is.EqualTo("1d8-2 emotional plus poison"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("1d8-2 emotional plus poison"));
         }
 
         [Test]
-        public void AttackDamage_WithEffectAndNegativeBonus_MultipleDamages()
+        public void DamageDescription_AttackDamage_WithEffectAndNegativeBonus_MultipleDamages()
         {
             attack.Damages.Add(new Damage { Roll = "1d8", Type = "emotional" });
             attack.Damages.Add(new Damage { Roll = "2d6", Type = "spiritual" });
             attack.DamageBonus = -2;
             attack.DamageEffect = "poison";
 
-            Assert.That(attack.Damage, Is.EqualTo("1d8-2 emotional + 2d6 spiritual plus poison"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("1d8-2 emotional + 2d6 spiritual plus poison"));
         }
 
         [Test]
-        public void AttackDamage_WithOnlyEffect()
+        public void DamageDescription_AttackDamage_WithOnlyEffect()
         {
             attack.Damages.Clear();
             attack.DamageBonus = 0;
             attack.DamageEffect = "1d4 Wisdom drain";
 
-            Assert.That(attack.Damage, Is.EqualTo("1d4 Wisdom drain"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("1d4 Wisdom drain"));
         }
     }
 }

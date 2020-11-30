@@ -269,12 +269,13 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
                 var oldClaw = creature.Attacks.First(a => a.Name == "Claw");
                 var newClaw = attacks.First(a => a.Name == "Claw");
 
-                var oldMax = dice.Roll(oldClaw.DamageRoll).AsPotentialMaximum();
-                var newMax = dice.Roll(newClaw.DamageRoll).AsPotentialMaximum();
+                //Claw attacks only ever do a single damage roll
+                var oldMax = dice.Roll(oldClaw.Damages[0].Roll).AsPotentialMaximum();
+                var newMax = dice.Roll(newClaw.Damages[0].Roll).AsPotentialMaximum();
 
                 if (newMax > oldMax)
                 {
-                    oldClaw.DamageRoll = newClaw.DamageRoll;
+                    oldClaw.Damages[0].Roll = newClaw.Damages[0].Roll;
                 }
 
                 attacks = attacks.Except(new[] { newClaw });
@@ -285,12 +286,13 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
                 var oldBite = creature.Attacks.First(a => a.Name == "Bite");
                 var newBite = attacks.First(a => a.Name == "Bite");
 
-                var oldMax = dice.Roll(oldBite.DamageRoll).AsPotentialMaximum();
-                var newMax = dice.Roll(newBite.DamageRoll).AsPotentialMaximum();
+                //Bite attacks only ever do a single damage roll
+                var oldMax = dice.Roll(oldBite.Damages[0].Roll).AsPotentialMaximum();
+                var newMax = dice.Roll(newBite.Damages[0].Roll).AsPotentialMaximum();
 
                 if (newMax > oldMax)
                 {
-                    oldBite.DamageRoll = newBite.DamageRoll;
+                    oldBite.Damages[0].Roll = newBite.Damages[0].Roll;
                 }
 
                 attacks = attacks.Except(new[] { newBite });

@@ -262,7 +262,7 @@ namespace DnDGen.CreatureGen.Generators.Items
                         weapons.Add(weapon);
 
                         attack.Name = weapon.Name;
-                        attack.Damages.Add(new Damage { Roll = weapon.Damage, Type = weapon.DamageType });
+                        attack.Damages.AddRange(weapon.Damages);
 
                         //Is not proficient with the weapon
                         if (!proficientMeleeWeaponNames.Common.Any(weapon.NameMatches)
@@ -378,7 +378,7 @@ namespace DnDGen.CreatureGen.Generators.Items
 
                         //Set up the attack
                         attack.Name = weapon.Name;
-                        attack.Damages.Add(new Damage { Roll = weapon.Damage, Type = weapon.DamageType });
+                        attack.Damages.AddRange(weapon.Damages);
 
                         if (!proficientRangedWeaponNames.Common.Any(weapon.NameMatches)
                             && !proficientRangedWeaponNames.Uncommon.Any(weapon.NameMatches))

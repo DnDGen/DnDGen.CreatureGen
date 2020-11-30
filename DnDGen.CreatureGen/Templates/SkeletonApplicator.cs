@@ -254,12 +254,12 @@ namespace DnDGen.CreatureGen.Templates
             {
                 var oldClaw = creature.Attacks.First(a => a.Name == "Claw");
 
-                var oldMax = dice.Roll(oldClaw.DamageRoll).AsPotentialMaximum();
-                var newMax = dice.Roll(newClaw.DamageRoll).AsPotentialMaximum();
+                var oldMax = dice.Roll(oldClaw.Damages[0].Roll).AsPotentialMaximum();
+                var newMax = dice.Roll(newClaw.Damages[0].Roll).AsPotentialMaximum();
 
                 if (newMax > oldMax)
                 {
-                    oldClaw.DamageRoll = newClaw.DamageRoll;
+                    oldClaw.Damages[0].Roll = newClaw.Damages[0].Roll;
                 }
 
                 skeletonAttacks = skeletonAttacks.Except(new[] { newClaw });
