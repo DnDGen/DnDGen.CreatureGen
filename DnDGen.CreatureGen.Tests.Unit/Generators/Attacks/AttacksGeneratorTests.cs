@@ -8,6 +8,7 @@ using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.TreasureGen.Items;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -183,7 +184,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             attacks.Add(new AttackSelection()
             {
                 Name = "attack",
-                DamageRoll = "damage roll",
+                Damages = new List<Damage>
+                {
+                    new Damage { Roll = "my roll", Type = "my damage type", Condition = "my condition" },
+                    new Damage { Roll = "my other roll", Type = "my other damage type", Condition = "my other condition" },
+                },
                 DamageEffect = "damage effect",
                 AttackType = "attack type",
                 FrequencyQuantity = 42,
@@ -203,7 +208,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
-            Assert.That(attack.DamageRoll, Is.EqualTo("damage roll"));
+            Assert.That(attack.Damages, Has.Count.EqualTo(2));
+            Assert.That(attack.Damages[0].Roll, Is.EqualTo("my roll"));
+            Assert.That(attack.Damages[0].Type, Is.EqualTo("my damage type"));
+            Assert.That(attack.Damages[0].Condition, Is.EqualTo("my condition"));
+            Assert.That(attack.Damages[1].Roll, Is.EqualTo("my other roll"));
+            Assert.That(attack.Damages[1].Type, Is.EqualTo("my other damage type"));
+            Assert.That(attack.Damages[1].Condition, Is.EqualTo("my other condition"));
             Assert.That(attack.DamageEffect, Is.EqualTo("damage effect"));
             Assert.That(attack.IsMelee, Is.EqualTo(isMelee));
             Assert.That(attack.IsNatural, Is.EqualTo(isNatural));
@@ -319,7 +330,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             attacks.Add(new AttackSelection()
             {
                 Name = "attack",
-                DamageRoll = "damage roll",
+                Damages = new List<Damage>
+                {
+                    new Damage { Roll = "my roll", Type = "my damage type", Condition = "my condition" },
+                    new Damage { Roll = "my other roll", Type = "my other damage type", Condition = "my other condition" },
+                },
                 DamageEffect = "damage effect",
                 AttackType = "attack type",
                 FrequencyQuantity = 42,
@@ -342,7 +357,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
-            Assert.That(attack.DamageRoll, Is.EqualTo("damage roll"));
+            Assert.That(attack.Damages, Has.Count.EqualTo(2));
+            Assert.That(attack.Damages[0].Roll, Is.EqualTo("my roll"));
+            Assert.That(attack.Damages[0].Type, Is.EqualTo("my damage type"));
+            Assert.That(attack.Damages[0].Condition, Is.EqualTo("my condition"));
+            Assert.That(attack.Damages[1].Roll, Is.EqualTo("my other roll"));
+            Assert.That(attack.Damages[1].Type, Is.EqualTo("my other damage type"));
+            Assert.That(attack.Damages[1].Condition, Is.EqualTo("my other condition"));
             Assert.That(attack.DamageEffect, Is.EqualTo("damage effect"));
             Assert.That(attack.IsMelee, Is.EqualTo(isMelee));
             Assert.That(attack.IsNatural, Is.EqualTo(isNatural));
@@ -565,7 +586,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             attacks.Add(new AttackSelection()
             {
                 Name = "attack",
-                DamageRoll = "damage roll",
+                Damages = new List<Damage>
+                {
+                    new Damage { Roll = "my roll", Type = "my damage type", Condition = "my condition" },
+                    new Damage { Roll = "my other roll", Type = "my other damage type", Condition = "my other condition" },
+                },
                 DamageEffect = "damage effect",
                 AttackType = "attack type",
                 FrequencyQuantity = 42,
@@ -584,7 +609,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
-            Assert.That(attack.DamageRoll, Is.EqualTo("damage roll"));
+            Assert.That(attack.Damages, Has.Count.EqualTo(2));
+            Assert.That(attack.Damages[0].Roll, Is.EqualTo("my roll"));
+            Assert.That(attack.Damages[0].Type, Is.EqualTo("my damage type"));
+            Assert.That(attack.Damages[0].Condition, Is.EqualTo("my condition"));
+            Assert.That(attack.Damages[1].Roll, Is.EqualTo("my other roll"));
+            Assert.That(attack.Damages[1].Type, Is.EqualTo("my other damage type"));
+            Assert.That(attack.Damages[1].Condition, Is.EqualTo("my other condition"));
             Assert.That(attack.DamageEffect, Is.EqualTo("damage effect"));
             Assert.That(attack.AttackType, Is.EqualTo("attack type"));
             Assert.That(attack.Frequency, Is.Not.Null);
@@ -601,8 +632,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         public void GenerateAttacks()
         {
             var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection() { Name = "attack", DamageRoll = "damage" });
-            attacks.Add(new AttackSelection() { Name = "other attack", DamageRoll = "other damage" });
+            attacks.Add(new AttackSelection() { Name = "attack", Damages = new List<Damage> { new Damage { Roll = "my roll", Type = "my type" } } });
+            attacks.Add(new AttackSelection() { Name = "other attack", Damages = new List<Damage> { new Damage { Roll = "my other roll", Type = "my other type" } } });
 
             mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
 
@@ -613,11 +644,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var attack = generatedAttacks.First();
             Assert.That(attack.Name, Is.EqualTo("attack"));
-            Assert.That(attack.DamageRoll, Is.EqualTo("damage"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("damage"));
 
             attack = generatedAttacks.Last();
             Assert.That(attack.Name, Is.EqualTo("other attack"));
-            Assert.That(attack.DamageRoll, Is.EqualTo("other damage"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("other damage"));
         }
 
         [Test]
@@ -877,7 +908,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             attacks.Add(new AttackSelection()
             {
                 Name = "attack",
-                DamageRoll = $"damage",
+                Damages = new List<Damage>
+                {
+                    new Damage { Roll = "my roll", Type = "my damage type", Condition = "my condition" },
+                    new Damage { Roll = "my other roll", Type = "my other damage type", Condition = "my other condition" },
+                },
                 DamageEffect = "effect",
                 DamageBonusMultiplier = multiplier,
                 FrequencyQuantity = 1,
@@ -895,7 +930,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
-            Assert.That(attack.DamageRoll, Is.EqualTo("damage"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("damage"));
             Assert.That(attack.DamageBonus, Is.EqualTo(bonus));
             Assert.That(attack.DamageEffect, Is.EqualTo("effect"));
         }
@@ -904,7 +939,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         public void GenerateAttack_Primary_Ranged_Breath()
         {
             var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection() { Name = "attack", DamageRoll = $"damage", DamageEffect = "effect", DamageBonusMultiplier = 0, FrequencyQuantity = 1, IsPrimary = true, IsMelee = false, IsNatural = true });
+            attacks.Add(new AttackSelection()
+            {
+                Name = "attack",
+                Damages = new List<Damage> { new Damage { Roll = "my roll", Type = "my type" } },
+                DamageEffect = "effect",
+                DamageBonusMultiplier = 0,
+                FrequencyQuantity = 1,
+                IsPrimary = true,
+                IsMelee = false,
+                IsNatural = true
+            });
 
             abilities[AbilityConstants.Strength].BaseScore = 90210;
 
@@ -915,7 +960,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
-            Assert.That(attack.DamageRoll, Is.EqualTo("damage"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("damage"));
             Assert.That(attack.DamageBonus, Is.Zero);
             Assert.That(attack.DamageEffect, Is.EqualTo("effect"));
         }
@@ -924,7 +969,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         public void GenerateAttack_Primary_Ranged_Thrown()
         {
             var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection() { Name = "attack", DamageRoll = $"damage", DamageEffect = "effect", DamageBonusMultiplier = 1.5, FrequencyQuantity = 1, IsPrimary = true, IsMelee = false, IsNatural = true });
+            attacks.Add(new AttackSelection()
+            {
+                Name = "attack",
+                Damages = new List<Damage> { new Damage { Roll = "my roll", Type = "my type" } },
+                DamageEffect = "effect",
+                DamageBonusMultiplier = 1.5,
+                FrequencyQuantity = 1,
+                IsPrimary = true,
+                IsMelee = false,
+                IsNatural = true
+            });
 
             abilities[AbilityConstants.Strength].BaseScore = 90210;
 
@@ -935,7 +990,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
-            Assert.That(attack.DamageRoll, Is.EqualTo("damage"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("damage"));
             Assert.That(attack.DamageBonus, Is.EqualTo(67650));
             Assert.That(attack.DamageEffect, Is.EqualTo("effect"));
         }
@@ -944,10 +999,50 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         public void GenerateAttack_Primary_AllSole()
         {
             var attackSelections = new List<AttackSelection>();
-            attackSelections.Add(new AttackSelection() { Name = "nat melee attack", DamageRoll = $"damage", DamageEffect = "effect", DamageBonusMultiplier = 1.5, FrequencyQuantity = 1, IsPrimary = true, IsMelee = true, IsNatural = true });
-            attackSelections.Add(new AttackSelection() { Name = "nat range attack", DamageRoll = $"damage", DamageEffect = "effect", DamageBonusMultiplier = 1.5, FrequencyQuantity = 1, IsPrimary = true, IsMelee = false, IsNatural = true });
-            attackSelections.Add(new AttackSelection() { Name = "melee attack", DamageRoll = $"damage", DamageEffect = "effect", DamageBonusMultiplier = 1.5, FrequencyQuantity = 1, IsPrimary = true, IsMelee = true, IsNatural = false });
-            attackSelections.Add(new AttackSelection() { Name = "range attack", DamageRoll = $"damage", DamageEffect = "effect", DamageBonusMultiplier = 1.5, FrequencyQuantity = 1, IsPrimary = true, IsMelee = false, IsNatural = false });
+            attackSelections.Add(new AttackSelection()
+            {
+                Name = "nat melee attack",
+                Damages = new List<Damage> { new Damage { Roll = "my nat melee roll", Type = "my nat melee type" } },
+                DamageEffect = "effect",
+                DamageBonusMultiplier = 1.5,
+                FrequencyQuantity = 1,
+                IsPrimary = true,
+                IsMelee = true,
+                IsNatural = true
+            });
+            attackSelections.Add(new AttackSelection()
+            {
+                Name = "nat range attack",
+                Damages = new List<Damage> { new Damage { Roll = "my nat range roll", Type = "my nat range type" } },
+                DamageEffect = "effect",
+                DamageBonusMultiplier = 1.5,
+                FrequencyQuantity = 1,
+                IsPrimary = true,
+                IsMelee = false,
+                IsNatural = true
+            });
+            attackSelections.Add(new AttackSelection()
+            {
+                Name = "melee attack",
+                Damages = new List<Damage> { new Damage { Roll = "my melee roll", Type = "my melee type" } },
+                DamageEffect = "effect",
+                DamageBonusMultiplier = 1.5,
+                FrequencyQuantity = 1,
+                IsPrimary = true,
+                IsMelee = true,
+                IsNatural = false
+            });
+            attackSelections.Add(new AttackSelection()
+            {
+                Name = "range attack",
+                Damages = new List<Damage> { new Damage { Roll = "my range roll", Type = "my range type" } },
+                DamageEffect = "effect",
+                DamageBonusMultiplier = 1.5,
+                FrequencyQuantity = 1,
+                IsPrimary = true,
+                IsMelee = false,
+                IsNatural = false
+            });
 
             abilities[AbilityConstants.Strength].BaseScore = 90210;
 
@@ -960,25 +1055,25 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             Assert.That(attacks[0].Name, Is.EqualTo("nat melee attack"));
             Assert.That(attacks[0].IsMelee, Is.True);
             Assert.That(attacks[0].IsNatural, Is.True);
-            Assert.That(attacks[0].DamageRoll, Is.EqualTo("damage"));
+            Assert.That(attacks[0].DamageDescription, Is.EqualTo("damage"));
             Assert.That(attacks[0].DamageBonus, Is.EqualTo(67650));
             Assert.That(attacks[0].DamageEffect, Is.EqualTo("effect"));
             Assert.That(attacks[1].Name, Is.EqualTo("nat range attack"));
             Assert.That(attacks[1].IsMelee, Is.False);
             Assert.That(attacks[1].IsNatural, Is.True);
-            Assert.That(attacks[1].DamageRoll, Is.EqualTo("damage"));
+            Assert.That(attacks[1].DamageDescription, Is.EqualTo("damage"));
             Assert.That(attacks[1].DamageBonus, Is.EqualTo(67650));
             Assert.That(attacks[1].DamageEffect, Is.EqualTo("effect"));
             Assert.That(attacks[2].Name, Is.EqualTo("melee attack"));
             Assert.That(attacks[2].IsMelee, Is.True);
             Assert.That(attacks[2].IsNatural, Is.False);
-            Assert.That(attacks[2].DamageRoll, Is.EqualTo("damage"));
+            Assert.That(attacks[2].DamageDescription, Is.EqualTo("damage"));
             Assert.That(attacks[2].DamageBonus, Is.EqualTo(67650));
             Assert.That(attacks[2].DamageEffect, Is.EqualTo("effect"));
             Assert.That(attacks[3].Name, Is.EqualTo("range attack"));
             Assert.That(attacks[3].IsMelee, Is.False);
             Assert.That(attacks[3].IsNatural, Is.False);
-            Assert.That(attacks[3].DamageRoll, Is.EqualTo("damage"));
+            Assert.That(attacks[3].DamageDescription, Is.EqualTo("damage"));
             Assert.That(attacks[3].DamageBonus, Is.EqualTo(67650));
             Assert.That(attacks[3].DamageEffect, Is.EqualTo("effect"));
         }
@@ -988,7 +1083,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         public void GenerateAttack_Primary_Multiple(bool isNatural)
         {
             var attackSelections = new List<AttackSelection>();
-            attackSelections.Add(new AttackSelection() { Name = "attack", DamageRoll = $"damage", DamageEffect = "effect", DamageBonusMultiplier = 1, FrequencyQuantity = 2, IsPrimary = true, IsMelee = true, IsNatural = isNatural });
+            attackSelections.Add(new AttackSelection()
+            {
+                Name = "attack",
+                Damages = new List<Damage> { new Damage { Roll = "my roll", Type = "my type" } },
+                DamageEffect = "effect",
+                DamageBonusMultiplier = 1,
+                FrequencyQuantity = 2,
+                IsPrimary = true,
+                IsMelee = true,
+                IsNatural = isNatural
+            });
 
             abilities[AbilityConstants.Strength].BaseScore = 90210;
 
@@ -999,7 +1104,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var attacks = generatedAttacks.ToArray();
             Assert.That(attacks[0].Name, Is.EqualTo("attack"));
-            Assert.That(attacks[0].DamageRoll, Is.EqualTo("damage"));
+            Assert.That(attacks[0].DamageDescription, Is.EqualTo("damage"));
             Assert.That(attacks[0].DamageBonus, Is.EqualTo(45100));
             Assert.That(attacks[0].DamageEffect, Is.EqualTo("effect"));
         }
@@ -1009,8 +1114,28 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         public void GenerateAttack_Primary_WithSecondary(bool isNatural)
         {
             var attackSelections = new List<AttackSelection>();
-            attackSelections.Add(new AttackSelection() { Name = "primary attack", DamageRoll = $"damage", DamageEffect = "effect", DamageBonusMultiplier = 1, FrequencyQuantity = 1, IsPrimary = true, IsMelee = true, IsNatural = isNatural });
-            attackSelections.Add(new AttackSelection() { Name = "secondary attack", DamageRoll = $"damage", DamageEffect = "effect", DamageBonusMultiplier = 0.5, FrequencyQuantity = 1, IsPrimary = false, IsMelee = true, IsNatural = isNatural });
+            attackSelections.Add(new AttackSelection()
+            {
+                Name = "primary attack",
+                Damages = new List<Damage> { new Damage { Roll = "my primary roll", Type = "my primary type" } },
+                DamageEffect = "effect",
+                DamageBonusMultiplier = 1,
+                FrequencyQuantity = 1,
+                IsPrimary = true,
+                IsMelee = true,
+                IsNatural = isNatural
+            });
+            attackSelections.Add(new AttackSelection()
+            {
+                Name = "secondary attack",
+                Damages = new List<Damage> { new Damage { Roll = "my secondary roll", Type = "my secondary type" } },
+                DamageEffect = "effect",
+                DamageBonusMultiplier = 0.5,
+                FrequencyQuantity = 1,
+                IsPrimary = false,
+                IsMelee = true,
+                IsNatural = isNatural
+            });
 
             abilities[AbilityConstants.Strength].BaseScore = 90210;
 
@@ -1021,11 +1146,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var attacks = generatedAttacks.ToArray();
             Assert.That(attacks[0].Name, Is.EqualTo("primary attack"));
-            Assert.That(attacks[0].DamageRoll, Is.EqualTo("damage"));
+            Assert.That(attacks[0].DamageDescription, Is.EqualTo("damage"));
             Assert.That(attacks[0].DamageBonus, Is.EqualTo(45100));
             Assert.That(attacks[0].DamageEffect, Is.EqualTo("effect"));
             Assert.That(attacks[1].Name, Is.EqualTo("secondary attack"));
-            Assert.That(attacks[1].DamageRoll, Is.EqualTo("damage"));
+            Assert.That(attacks[1].DamageDescription, Is.EqualTo("damage"));
             Assert.That(attacks[1].DamageBonus, Is.EqualTo(22550));
             Assert.That(attacks[1].DamageEffect, Is.EqualTo("effect"));
         }
@@ -1034,8 +1159,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         public void GenerateAttack_Primary_SoleAndMultiple()
         {
             var attackSelections = new List<AttackSelection>();
-            attackSelections.Add(new AttackSelection() { Name = "attack", DamageRoll = $"damage", DamageBonusMultiplier = 1.5, FrequencyQuantity = 1, IsPrimary = true, IsMelee = true, IsNatural = false });
-            attackSelections.Add(new AttackSelection() { Name = "nat attack", DamageRoll = $"damage", DamageEffect = "effect", DamageBonusMultiplier = 1, FrequencyQuantity = 2, IsPrimary = true, IsMelee = true, IsNatural = true });
+            attackSelections.Add(new AttackSelection()
+            {
+                Name = "attack",
+                Damages = new List<Damage> { new Damage { Roll = "my roll", Type = "my type" } },
+                DamageBonusMultiplier = 1.5,
+                FrequencyQuantity = 1,
+                IsPrimary = true,
+                IsMelee = true,
+                IsNatural = false
+            });
+            attackSelections.Add(new AttackSelection()
+            {
+                Name = "nat attack",
+                Damages = new List<Damage> { new Damage { Roll = "my nat roll", Type = "my nat type" } },
+                DamageEffect = "effect",
+                DamageBonusMultiplier = 1,
+                FrequencyQuantity = 2,
+                IsPrimary = true,
+                IsMelee = true,
+                IsNatural = true
+            });
 
             abilities[AbilityConstants.Strength].BaseScore = 90210;
 
@@ -1046,11 +1190,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var attacks = generatedAttacks.ToArray();
             Assert.That(attacks[0].Name, Is.EqualTo("attack"));
-            Assert.That(attacks[0].DamageRoll, Is.EqualTo("damage"));
+            Assert.That(attacks[0].DamageDescription, Is.EqualTo("damage"));
             Assert.That(attacks[0].DamageBonus, Is.EqualTo(67650));
             Assert.That(attacks[0].DamageEffect, Is.Empty);
             Assert.That(attacks[1].Name, Is.EqualTo("nat attack"));
-            Assert.That(attacks[1].DamageRoll, Is.EqualTo("damage"));
+            Assert.That(attacks[1].DamageDescription, Is.EqualTo("damage"));
             Assert.That(attacks[1].DamageBonus, Is.EqualTo(45100));
             Assert.That(attacks[1].DamageEffect, Is.EqualTo("effect"));
         }
@@ -1059,7 +1203,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         public void GenerateAttack_Secondary()
         {
             var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection() { Name = "attack", DamageRoll = $"damage", DamageEffect = "effect", DamageBonusMultiplier = 0.5, FrequencyQuantity = 1, IsPrimary = false, IsMelee = true });
+            attacks.Add(new AttackSelection()
+            {
+                Name = "attack",
+                Damages = new List<Damage> { new Damage { Roll = "my roll", Type = "my type" } },
+                DamageEffect = "effect",
+                DamageBonusMultiplier = 0.5,
+                FrequencyQuantity = 1,
+                IsPrimary = false,
+                IsMelee = true,
+            });
 
             abilities[AbilityConstants.Strength].BaseScore = 90210;
 
@@ -1070,7 +1223,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
-            Assert.That(attack.DamageRoll, Is.EqualTo("damage"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("damage"));
             Assert.That(attack.DamageBonus, Is.EqualTo(22550));
             Assert.That(attack.DamageEffect, Is.EqualTo("effect"));
         }
@@ -1084,7 +1237,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         public void GenerateAttackWithAbilityEffect(string ability)
         {
             var attacks = new List<AttackSelection>();
-            attacks.Add(new AttackSelection() { Name = "attack", DamageRoll = $"damage", DamageBonusMultiplier = 0.5, DamageEffect = $"1d4 {ability} drain", IsMelee = true });
+            attacks.Add(new AttackSelection()
+            {
+                Name = "attack",
+                Damages = new List<Damage>
+                {
+                    new Damage { Roll = "my roll", Type = "my type" },
+                    new Damage { Roll = "1d4", Type = ability },
+                },
+                DamageEffect = $"1d4 {ability} drain",
+                DamageBonusMultiplier = 0.5,
+                FrequencyQuantity = 1,
+                IsMelee = true,
+            });
 
             abilities[AbilityConstants.Strength].BaseScore = 90210;
 
@@ -1095,7 +1260,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
-            Assert.That(attack.DamageRoll, Is.EqualTo("damage"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("damage"));
             Assert.That(attack.DamageBonus, Is.EqualTo(22550));
             Assert.That(attack.DamageEffect, Is.EqualTo($"1d4 {ability} drain"));
         }
@@ -1226,14 +1391,78 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
         public void ApplySpecialAttackBonuses()
         {
             var attacks = new List<Attack>();
-            attacks.Add(new Attack { Name = "attack 1", DamageRoll = "damage 1", IsMelee = false, IsPrimary = false, IsNatural = false, IsSpecial = true });
-            attacks.Add(new Attack { Name = "attack 2", DamageRoll = "damage 2", IsMelee = false, IsPrimary = false, IsNatural = true, IsSpecial = true });
-            attacks.Add(new Attack { Name = "attack 3", DamageRoll = "damage 3", IsMelee = false, IsPrimary = true, IsNatural = false, IsSpecial = true });
-            attacks.Add(new Attack { Name = "attack 4", DamageRoll = "damage 4", IsMelee = false, IsPrimary = true, IsNatural = true, IsSpecial = true });
-            attacks.Add(new Attack { Name = "attack 5", DamageRoll = "damage 5", IsMelee = true, IsPrimary = false, IsNatural = false, IsSpecial = true });
-            attacks.Add(new Attack { Name = "attack 6", DamageRoll = "damage 6", IsMelee = true, IsPrimary = false, IsNatural = true, IsSpecial = true });
-            attacks.Add(new Attack { Name = "attack 7", DamageRoll = "damage 7", IsMelee = true, IsPrimary = true, IsNatural = false, IsSpecial = true });
-            attacks.Add(new Attack { Name = "attack 8", DamageRoll = "damage 8", IsMelee = true, IsPrimary = true, IsNatural = true, IsSpecial = true });
+            attacks.Add(new Attack
+            {
+                Name = "attack 1",
+                Damages = new List<Damage> { new Damage { Roll = "roll 1", Type = "type 1" } },
+                IsPrimary = false,
+                IsMelee = false,
+                IsNatural = false,
+                IsSpecial = true,
+            });
+            attacks.Add(new Attack
+            {
+                Name = "attack 2",
+                Damages = new List<Damage> { new Damage { Roll = "roll 2", Type = "type 2" } },
+                IsPrimary = false,
+                IsMelee = false,
+                IsNatural = true,
+                IsSpecial = true,
+            });
+            attacks.Add(new Attack
+            {
+                Name = "attack 3",
+                Damages = new List<Damage> { new Damage { Roll = "roll 3", Type = "type 3" } },
+                IsPrimary = true,
+                IsMelee = false,
+                IsNatural = false,
+                IsSpecial = true,
+            });
+            attacks.Add(new Attack
+            {
+                Name = "attack 4",
+                Damages = new List<Damage> { new Damage { Roll = "roll 4", Type = "type 4" } },
+                IsPrimary = true,
+                IsMelee = false,
+                IsNatural = true,
+                IsSpecial = true,
+            });
+            attacks.Add(new Attack
+            {
+                Name = "attack 5",
+                Damages = new List<Damage> { new Damage { Roll = "roll 5", Type = "type 5" } },
+                IsPrimary = false,
+                IsMelee = true,
+                IsNatural = false,
+                IsSpecial = true,
+            });
+            attacks.Add(new Attack
+            {
+                Name = "attack 6",
+                Damages = new List<Damage> { new Damage { Roll = "roll 6", Type = "type 6" } },
+                IsPrimary = false,
+                IsMelee = true,
+                IsNatural = true,
+                IsSpecial = true,
+            });
+            attacks.Add(new Attack
+            {
+                Name = "attack 7",
+                Damages = new List<Damage> { new Damage { Roll = "roll 7", Type = "type 7" } },
+                IsPrimary = true,
+                IsMelee = true,
+                IsNatural = false,
+                IsSpecial = true,
+            });
+            attacks.Add(new Attack
+            {
+                Name = "attack 8",
+                Damages = new List<Damage> { new Damage { Roll = "roll 8", Type = "type 8" } },
+                IsPrimary = true,
+                IsMelee = true,
+                IsNatural = true,
+                IsSpecial = true,
+            });
 
             var feats = new[]
             {

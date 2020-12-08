@@ -15,6 +15,7 @@ using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
+using DnDGen.TreasureGen.Items;
 using Moq;
 using NUnit.Framework;
 using System;
@@ -109,7 +110,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Slam",
-                    DamageRoll = "zombie damage roll",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "zombie damage roll", Type = "zombie damage type" }
+                    },
                     Frequency = new Frequency
                     {
                         Quantity = 1,
@@ -689,7 +693,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Slam",
-                    DamageRoll = "damage roll",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "damage roll", Type = "damage type" }
+                    },
                     Frequency = new Frequency
                     {
                         Quantity = 2,
@@ -720,7 +727,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
                 .Returns(zombieAttacks);
 
-            zombieAttacks[0].DamageRoll = damage;
+            zombieAttacks[0].Damages[0].Roll = damage;
 
             mockDice
                 .Setup(d => d.Roll("damage roll").AsPotentialMaximum<int>(true))
@@ -735,7 +742,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var slam = creature.Attacks.FirstOrDefault(a => a.Name == "Slam");
             Assert.That(slam, Is.Not.Null.And.Not.EqualTo(zombieAttacks[0]));
-            Assert.That(slam.DamageRoll, Is.EqualTo(damage));
+            Assert.That(slam.DamageDescription, Is.EqualTo(damage));
             Assert.That(slam.Frequency.Quantity, Is.EqualTo(2));
         }
 
@@ -771,7 +778,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Slam",
-                    DamageRoll = "zombie slam roll",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "zombie slam roll", Type = "zombie slam type" }
+                    },
                     Frequency = new Frequency { Quantity = 1, TimePeriod = FeatConstants.Frequencies.Round },
                     IsSpecial = false,
                     IsMelee = true,
@@ -794,7 +804,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var slam = creature.Attacks.FirstOrDefault(a => a.Name == "Slam");
             Assert.That(slam, Is.Not.Null.And.Not.EqualTo(zombieAttacks[0]));
-            Assert.That(slam.DamageRoll, Is.EqualTo("zombie slam roll"));
+            Assert.That(slam.DamageDescription, Is.EqualTo("zombie slam roll"));
             Assert.That(slam.AttackBonuses, Has.Count.EqualTo(1).And.Contains(92));
             Assert.That(slam.Frequency.Quantity, Is.EqualTo(1));
         }
@@ -829,7 +839,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Slam",
-                    DamageRoll = "damage roll",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "damage roll", Type = "damage type" }
+                    },
                     Frequency = new Frequency
                     {
                         Quantity = 2,
@@ -860,7 +873,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
                 .Returns(zombieAttacks);
 
-            zombieAttacks[0].DamageRoll = damage;
+            zombieAttacks[0].Damages[0].Roll = damage;
 
             mockDice
                 .Setup(d => d.Roll("damage roll").AsPotentialMaximum<int>(true))
@@ -875,7 +888,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var slam = creature.Attacks.FirstOrDefault(a => a.Name == "Slam");
             Assert.That(slam, Is.Not.Null.And.Not.EqualTo(zombieAttacks[0]));
-            Assert.That(slam.DamageRoll, Is.EqualTo("damage roll"));
+            Assert.That(slam.DamageDescription, Is.EqualTo("damage roll"));
             Assert.That(slam.Frequency.Quantity, Is.EqualTo(2));
         }
 
@@ -1372,7 +1385,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Slam",
-                    DamageRoll = "damage roll",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "damage roll", Type = "damage type" }
+                    },
                     Frequency = new Frequency
                     {
                         Quantity = 2,
@@ -1403,7 +1419,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
                 .Returns(zombieAttacks);
 
-            zombieAttacks[0].DamageRoll = damage;
+            zombieAttacks[0].Damages[0].Roll = damage;
 
             mockDice
                 .Setup(d => d.Roll("damage roll").AsPotentialMaximum<int>(true))
@@ -1418,7 +1434,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var slam = creature.Attacks.FirstOrDefault(a => a.Name == "Slam");
             Assert.That(slam, Is.Not.Null.And.Not.EqualTo(zombieAttacks[0]));
-            Assert.That(slam.DamageRoll, Is.EqualTo(damage));
+            Assert.That(slam.DamageDescription, Is.EqualTo(damage));
             Assert.That(slam.Frequency.Quantity, Is.EqualTo(2));
         }
 
@@ -1454,7 +1470,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Slam",
-                    DamageRoll = "zombie slam roll",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "zombie slam roll", Type = "zombie slam type" }
+                    },
                     Frequency = new Frequency { Quantity = 1, TimePeriod = FeatConstants.Frequencies.Round },
                     IsSpecial = false,
                     IsMelee = true,
@@ -1477,7 +1496,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var slam = creature.Attacks.FirstOrDefault(a => a.Name == "Slam");
             Assert.That(slam, Is.Not.Null.And.Not.EqualTo(zombieAttacks[0]));
-            Assert.That(slam.DamageRoll, Is.EqualTo("zombie slam roll"));
+            Assert.That(slam.DamageDescription, Is.EqualTo("zombie slam roll"));
             Assert.That(slam.AttackBonuses, Has.Count.EqualTo(1).And.Contains(92));
             Assert.That(slam.Frequency.Quantity, Is.EqualTo(1));
         }
@@ -1512,7 +1531,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Slam",
-                    DamageRoll = "damage roll",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "damage roll", Type = "damage type" }
+                    },
                     Frequency = new Frequency
                     {
                         Quantity = 2,
@@ -1543,7 +1565,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
                 .Returns(zombieAttacks);
 
-            zombieAttacks[0].DamageRoll = damage;
+            zombieAttacks[0].Damages[0].Roll = damage;
 
             mockDice
                 .Setup(d => d.Roll("damage roll").AsPotentialMaximum<int>(true))
@@ -1558,7 +1580,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var slam = creature.Attacks.FirstOrDefault(a => a.Name == "Slam");
             Assert.That(slam, Is.Not.Null.And.Not.EqualTo(zombieAttacks[0]));
-            Assert.That(slam.DamageRoll, Is.EqualTo("damage roll"));
+            Assert.That(slam.DamageDescription, Is.EqualTo("damage roll"));
             Assert.That(slam.Frequency.Quantity, Is.EqualTo(2));
         }
 
