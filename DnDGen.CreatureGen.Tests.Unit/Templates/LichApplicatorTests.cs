@@ -15,6 +15,7 @@ using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
+using DnDGen.TreasureGen.Items;
 using Moq;
 using NUnit.Framework;
 using System.Collections;
@@ -414,7 +415,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Touch", DamageRoll = "lich touch roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Touch",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "lich touch roll", Type = "lich touch type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -448,7 +458,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Touch", DamageRoll = "lich touch roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Touch",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "lich touch roll", Type = "lich touch type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -483,7 +502,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Touch", DamageRoll = "lich touch roll", IsSpecial = false, IsMelee = true, AttackBonuses = new List<int> { 92 } },
+                new Attack
+                {
+                    Name = "Touch",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "lich touch roll", Type = "lich touch type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true,
+                    AttackBonuses = new List<int> { 92 },
+                },
             };
 
             mockAttacksGenerator
@@ -962,7 +991,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Touch", DamageRoll = "lich touch roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Touch",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "lich touch roll", Type = "lich touch type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -996,7 +1034,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Touch", DamageRoll = "lich touch roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Touch",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "lich touch roll", Type = "lich touch type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -1031,7 +1078,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Touch", DamageRoll = "lich touch roll", IsSpecial = false, IsMelee = true, AttackBonuses = new List<int> { 92 } },
+                new Attack
+                {
+                    Name = "Touch",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "lich touch roll", Type = "lich touch type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true,
+                    AttackBonuses = new List<int> { 92 },
+                },
             };
 
             mockAttacksGenerator

@@ -15,6 +15,7 @@ using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
+using DnDGen.TreasureGen.Items;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -105,7 +106,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Claw",
-                    DamageRoll = "skeleton damage roll",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "skeleton damage roll", Type = "skeleton damage type" }
+                    },
                     Frequency = new Frequency
                     {
                         Quantity = 1,
@@ -496,7 +500,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Claw",
-                    DamageRoll = "damage roll",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "damage roll", Type = "damage type" }
+                    },
                     Frequency = new Frequency
                     {
                         Quantity = 2,
@@ -527,7 +534,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(skeletonAttacks);
 
-            skeletonAttacks[0].DamageRoll = damage;
+            skeletonAttacks[0].Damages[0].Roll = damage;
 
             mockDice
                 .Setup(d => d.Roll("damage roll").AsPotentialMaximum<int>(true))
@@ -542,7 +549,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var claw = creature.Attacks.FirstOrDefault(a => a.Name == "Claw");
             Assert.That(claw, Is.Not.Null.And.Not.EqualTo(skeletonAttacks[0]));
-            Assert.That(claw.DamageRoll, Is.EqualTo(damage));
+            Assert.That(claw.DamageDescription, Is.EqualTo(damage));
             Assert.That(claw.Frequency.Quantity, Is.EqualTo(2));
         }
 
@@ -578,7 +585,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Claw",
-                    DamageRoll = "skeleton claw roll",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "skeleton claw roll", Type = "skeleton claw type" }
+                    },
                     Frequency = new Frequency { Quantity = 1, TimePeriod = FeatConstants.Frequencies.Round },
                     IsSpecial = false,
                     IsMelee = true,
@@ -601,7 +611,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var claw = creature.Attacks.FirstOrDefault(a => a.Name == "Claw");
             Assert.That(claw, Is.Not.Null.And.Not.EqualTo(skeletonAttacks[0]));
-            Assert.That(claw.DamageRoll, Is.EqualTo("skeleton claw roll"));
+            Assert.That(claw.DamageDescription, Is.EqualTo("skeleton claw roll"));
             Assert.That(claw.AttackBonuses, Has.Count.EqualTo(1).And.Contains(92));
             Assert.That(claw.Frequency.Quantity, Is.EqualTo(2));
         }
@@ -635,7 +645,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Claw",
-                    DamageRoll = "damage roll",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "damage roll", Type = "damage type" }
+                    },
                     Frequency = new Frequency
                     {
                         Quantity = 2,
@@ -666,7 +679,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(skeletonAttacks);
 
-            skeletonAttacks[0].DamageRoll = damage;
+            skeletonAttacks[0].Damages[0].Roll = damage;
 
             mockDice
                 .Setup(d => d.Roll("damage roll").AsPotentialMaximum<int>(true))
@@ -681,7 +694,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var claw = creature.Attacks.FirstOrDefault(a => a.Name == "Claw");
             Assert.That(claw, Is.Not.Null.And.Not.EqualTo(skeletonAttacks[0]));
-            Assert.That(claw.DamageRoll, Is.EqualTo("damage roll"));
+            Assert.That(claw.DamageDescription, Is.EqualTo("damage roll"));
             Assert.That(claw.Frequency.Quantity, Is.EqualTo(2));
         }
 
@@ -1208,7 +1221,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Claw",
-                    DamageRoll = "damage roll",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "damage roll", Type = "damage type" }
+                    },
                     Frequency = new Frequency
                     {
                         Quantity = 2,
@@ -1239,7 +1255,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(skeletonAttacks);
 
-            skeletonAttacks[0].DamageRoll = damage;
+            skeletonAttacks[0].Damages[0].Roll = damage;
 
             mockDice
                 .Setup(d => d.Roll("damage roll").AsPotentialMaximum<int>(true))
@@ -1254,7 +1270,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var claw = creature.Attacks.FirstOrDefault(a => a.Name == "Claw");
             Assert.That(claw, Is.Not.Null.And.Not.EqualTo(skeletonAttacks[0]));
-            Assert.That(claw.DamageRoll, Is.EqualTo(damage));
+            Assert.That(claw.DamageDescription, Is.EqualTo(damage));
             Assert.That(claw.Frequency.Quantity, Is.EqualTo(2));
         }
 
@@ -1290,7 +1306,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Claw",
-                    DamageRoll = "skeleton claw roll",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "skeleton claw roll", Type = "skeleton claw type" }
+                    },
                     Frequency = new Frequency { Quantity = 1, TimePeriod = FeatConstants.Frequencies.Round },
                     IsSpecial = false,
                     IsMelee = true,
@@ -1313,7 +1332,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var claw = creature.Attacks.FirstOrDefault(a => a.Name == "Claw");
             Assert.That(claw, Is.Not.Null.And.Not.EqualTo(skeletonAttacks[0]));
-            Assert.That(claw.DamageRoll, Is.EqualTo("skeleton claw roll"));
+            Assert.That(claw.DamageDescription, Is.EqualTo("skeleton claw roll"));
             Assert.That(claw.AttackBonuses, Has.Count.EqualTo(1).And.Contains(92));
             Assert.That(claw.Frequency.Quantity, Is.EqualTo(2));
         }
@@ -1347,7 +1366,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack
                 {
                     Name = "Claw",
-                    DamageRoll = "damage roll",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "damage roll", Type = "damage type" }
+                    },
                     Frequency = new Frequency
                     {
                         Quantity = 2,
@@ -1378,7 +1400,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(skeletonAttacks);
 
-            skeletonAttacks[0].DamageRoll = damage;
+            skeletonAttacks[0].Damages[0].Roll = damage;
 
             mockDice
                 .Setup(d => d.Roll("damage roll").AsPotentialMaximum<int>(true))
@@ -1393,7 +1415,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var claw = creature.Attacks.FirstOrDefault(a => a.Name == "Claw");
             Assert.That(claw, Is.Not.Null.And.Not.EqualTo(skeletonAttacks[0]));
-            Assert.That(claw.DamageRoll, Is.EqualTo("damage roll"));
+            Assert.That(claw.DamageDescription, Is.EqualTo("damage roll"));
             Assert.That(claw.Frequency.Quantity, Is.EqualTo(2));
         }
 

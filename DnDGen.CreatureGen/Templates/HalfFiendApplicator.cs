@@ -12,6 +12,7 @@ using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
+using DnDGen.TreasureGen.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -256,8 +257,11 @@ namespace DnDGen.CreatureGen.Templates
             var allFeats = creature.Feats.Union(creature.SpecialQualities);
             attacks = attacksGenerator.ApplyAttackBonuses(attacks, allFeats, creature.Abilities);
 
-            var smiteEvil = attacks.First(a => a.Name == "Smite Good");
-            smiteEvil.Damages[0].Roll = Math.Min(creature.HitPoints.RoundedHitDiceQuantity, 20).ToString();
+            var smiteGood = attacks.First(a => a.Name == "Smite Good");
+            smiteGood.Damages.Add(new Damage
+            {
+                Roll = Math.Min(creature.HitPoints.RoundedHitDiceQuantity, 20).ToString()
+            });
 
             if (creature.Attacks.Any(a => a.Name == "Claw"))
             {

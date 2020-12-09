@@ -83,7 +83,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Assert.That(templatedAttack.DamageDescription, Is.EqualTo(attack.DamageDescription));
                 Assert.That(templatedAttack.DamageBonus, Is.EqualTo(attack.DamageBonus));
                 Assert.That(templatedAttack.DamageEffect, Is.EqualTo(attack.DamageEffect));
-                Assert.That(templatedAttack.DamageRoll, Is.EqualTo(attack.DamageRoll));
                 Assert.That(templatedAttack.Frequency.Quantity, Is.EqualTo(attack.Frequency.Quantity));
                 Assert.That(templatedAttack.Frequency.TimePeriod, Is.EqualTo(attack.Frequency.TimePeriod));
                 Assert.That(templatedAttack.IsMelee, Is.EqualTo(attack.IsMelee));
@@ -279,7 +278,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 Assert.That(templatedAttack.DamageDescription, Is.EqualTo(attack.DamageDescription));
                 Assert.That(templatedAttack.DamageBonus, Is.EqualTo(attack.DamageBonus));
                 Assert.That(templatedAttack.DamageEffect, Is.EqualTo(attack.DamageEffect));
-                Assert.That(templatedAttack.DamageRoll, Is.EqualTo(attack.DamageRoll));
                 Assert.That(templatedAttack.Frequency.Quantity, Is.EqualTo(attack.Frequency.Quantity));
                 Assert.That(templatedAttack.Frequency.TimePeriod, Is.EqualTo(attack.Frequency.TimePeriod));
                 Assert.That(templatedAttack.IsMelee, Is.EqualTo(attack.IsMelee));

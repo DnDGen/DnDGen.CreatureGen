@@ -19,6 +19,7 @@ using DnDGen.CreatureGen.Templates.HalfDragons;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
+using DnDGen.TreasureGen.Items;
 using Moq;
 using NUnit.Framework;
 using System;
@@ -677,8 +678,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "dragon claw roll", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "Bite", DamageRoll = "dragon bite roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "dragon claw roll", Type = "dragon claw type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "dragon bite roll", Type = "dragon bite type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -712,8 +731,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "dragon claw roll", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "Bite", DamageRoll = "dragon bite roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "dragon claw roll", Type = "dragon claw type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "dragon bite roll", Type = "dragon bite type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -764,8 +801,28 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "dragon claw roll", IsSpecial = false, IsMelee = true, AttackBonuses = new List<int> { 92 } },
-                new Attack { Name = "Bite", DamageRoll = "dragon bite roll", IsSpecial = false, IsMelee = true, AttackBonuses = new List<int> { -66 } },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "dragon claw roll", Type = "dragon claw type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true,
+                    AttackBonuses = new List<int> { 92 }
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "dragon bite roll", Type = "dragon bite type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true,
+                    AttackBonuses = new List<int> { -66 }
+                },
             };
 
             mockAttacksGenerator
@@ -792,8 +849,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "dragon roll", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "Bite", DamageRoll = "dragon bite roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "dragon roll", Type = "dragon type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "dragon bite roll", Type = "dragon bite type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -813,7 +888,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     baseCreature.Abilities))
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
-            var claw = new Attack { Name = "Claw", DamageRoll = "base roll", IsSpecial = false, IsMelee = true };
+            var claw = new Attack
+            {
+                Name = "Claw",
+                Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "base roll", Type = "base type" }
+                    },
+                IsSpecial = false,
+                IsMelee = true
+            };
             baseCreature.Attacks = baseCreature.Attacks.Union(new[] { claw });
 
             mockDice
@@ -831,10 +915,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 1));
             Assert.That(claws, Has.Length.EqualTo(1));
             Assert.That(claws[0], Is.EqualTo(claw));
-            Assert.That(claws[0].DamageRoll, Is.EqualTo(expectedClawDamage));
+            Assert.That(claws[0].DamageDescription, Is.EqualTo(expectedClawDamage));
             Assert.That(bites, Has.Length.EqualTo(1));
             Assert.That(bites[0], Is.EqualTo(newAttacks[3]));
-            Assert.That(bites[0].DamageRoll, Is.EqualTo("dragon bite roll"));
+            Assert.That(bites[0].DamageDescription, Is.EqualTo("dragon bite roll"));
         }
 
         private static IEnumerable GainAttacks_DuplicateAttack
@@ -864,8 +948,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "dragon claw roll", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "Bite", DamageRoll = "dragon roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "dragon claw roll", Type = "dragon claw type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "dragon roll", Type = "dragon type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -885,7 +987,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     baseCreature.Abilities))
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
-            var bite = new Attack { Name = "Bite", DamageRoll = "base roll", IsSpecial = false, IsMelee = true };
+            var bite = new Attack
+            {
+                Name = "Bite",
+                Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "base roll", Type = "base type" }
+                    },
+                IsSpecial = false,
+                IsMelee = true
+            };
             baseCreature.Attacks = baseCreature.Attacks.Union(new[] { bite });
 
             mockDice
@@ -903,10 +1014,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 1));
             Assert.That(claws, Has.Length.EqualTo(1));
             Assert.That(claws[0], Is.EqualTo(newAttacks[2]));
-            Assert.That(claws[0].DamageRoll, Is.EqualTo("dragon claw roll"));
+            Assert.That(claws[0].DamageDescription, Is.EqualTo("dragon claw roll"));
             Assert.That(bites, Has.Length.EqualTo(1));
             Assert.That(bites[0], Is.EqualTo(bite));
-            Assert.That(bites[0].DamageRoll, Is.EqualTo(expectedBiteDamage));
+            Assert.That(bites[0].DamageDescription, Is.EqualTo(expectedBiteDamage));
         }
 
         [TestCaseSource(nameof(GainAttacks_DuplicateAttacks))]
@@ -918,8 +1029,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "dragon claw roll", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "Bite", DamageRoll = "dragon bite roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "dragon claw roll", Type = "dragon claw type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "dragon bite roll", Type = "dragon bite type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -939,8 +1068,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     baseCreature.Abilities))
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
-            var claw = new Attack { Name = "Claw", DamageRoll = "base claw roll", IsSpecial = false, IsMelee = true };
-            var bite = new Attack { Name = "Bite", DamageRoll = "base bite roll", IsSpecial = false, IsMelee = true };
+            var claw = new Attack
+            {
+                Name = "Claw",
+                Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "base claw roll", Type = "base claw type" }
+                    },
+                IsSpecial = false,
+                IsMelee = true
+            };
+            var bite = new Attack
+            {
+                Name = "Bite",
+                Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "base bite roll", Type = "base bite type" }
+                    },
+                IsSpecial = false,
+                IsMelee = true
+            };
             baseCreature.Attacks = baseCreature.Attacks.Union(new[] { claw, bite });
 
             mockDice
@@ -964,10 +1111,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 2));
             Assert.That(claws, Has.Length.EqualTo(1));
             Assert.That(claws[0], Is.EqualTo(claw));
-            Assert.That(claws[0].DamageRoll, Is.EqualTo(expectedClawDamage));
+            Assert.That(claws[0].DamageDescription, Is.EqualTo(expectedClawDamage));
             Assert.That(bites, Has.Length.EqualTo(1));
             Assert.That(bites[0], Is.EqualTo(bite));
-            Assert.That(bites[0].DamageRoll, Is.EqualTo(expectedBiteDamage));
+            Assert.That(bites[0].DamageDescription, Is.EqualTo(expectedBiteDamage));
         }
 
         private static IEnumerable GainAttacks_DuplicateAttacks
@@ -1368,8 +1515,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "dragon claw roll", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "Bite", DamageRoll = "dragon bite roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "dragon claw roll", Type = "dragon claw type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "dragon bite roll", Type = "dragon bite type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -1403,8 +1568,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "dragon claw roll", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "Bite", DamageRoll = "dragon bite roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "dragon claw roll", Type = "dragon claw type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "dragon bite roll", Type = "dragon bite type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -1455,8 +1638,28 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "dragon claw roll", IsSpecial = false, IsMelee = true, AttackBonuses = new List<int> { 92 } },
-                new Attack { Name = "Bite", DamageRoll = "dragon bite roll", IsSpecial = false, IsMelee = true, AttackBonuses = new List<int> { -66 } },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "dragon claw roll", Type = "dragon claw type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true,
+                    AttackBonuses = new List<int> { 92 }
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "dragon bite roll", Type = "dragon bite type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true,
+                    AttackBonuses = new List<int> { -66 }
+                },
             };
 
             mockAttacksGenerator
@@ -1483,8 +1686,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "dragon roll", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "Bite", DamageRoll = "dragon bite roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "dragon roll", Type = "dragon type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "dragon bite roll", Type = "dragon bite type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -1504,7 +1725,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     baseCreature.Abilities))
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
-            var claw = new Attack { Name = "Claw", DamageRoll = "base roll", IsSpecial = false, IsMelee = true };
+            var claw = new Attack
+            {
+                Name = "Claw",
+                Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "base roll", Type = "base type" }
+                    },
+                IsSpecial = false,
+                IsMelee = true
+            };
             baseCreature.Attacks = baseCreature.Attacks.Union(new[] { claw });
 
             mockDice
@@ -1522,10 +1752,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 1));
             Assert.That(claws, Has.Length.EqualTo(1));
             Assert.That(claws[0], Is.EqualTo(claw));
-            Assert.That(claws[0].DamageRoll, Is.EqualTo(expectedClawDamage));
+            Assert.That(claws[0].DamageDescription, Is.EqualTo(expectedClawDamage));
             Assert.That(bites, Has.Length.EqualTo(1));
             Assert.That(bites[0], Is.EqualTo(newAttacks[3]));
-            Assert.That(bites[0].DamageRoll, Is.EqualTo("dragon bite roll"));
+            Assert.That(bites[0].DamageDescription, Is.EqualTo("dragon bite roll"));
         }
 
         [TestCaseSource(nameof(GainAttacks_DuplicateAttack))]
@@ -1535,8 +1765,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "dragon claw roll", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "Bite", DamageRoll = "dragon roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "dragon claw roll", Type = "dragon claw type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "dragon roll", Type = "dragon type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -1556,7 +1804,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     baseCreature.Abilities))
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
-            var bite = new Attack { Name = "Bite", DamageRoll = "base roll", IsSpecial = false, IsMelee = true };
+            var bite = new Attack
+            {
+                Name = "Bite",
+                Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "base roll", Type = "base type" }
+                    },
+                IsSpecial = false,
+                IsMelee = true
+            };
             baseCreature.Attacks = baseCreature.Attacks.Union(new[] { bite });
 
             mockDice
@@ -1574,10 +1831,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 1));
             Assert.That(claws, Has.Length.EqualTo(1));
             Assert.That(claws[0], Is.EqualTo(newAttacks[2]));
-            Assert.That(claws[0].DamageRoll, Is.EqualTo("dragon claw roll"));
+            Assert.That(claws[0].DamageDescription, Is.EqualTo("dragon claw roll"));
             Assert.That(bites, Has.Length.EqualTo(1));
             Assert.That(bites[0], Is.EqualTo(bite));
-            Assert.That(bites[0].DamageRoll, Is.EqualTo(expectedBiteDamage));
+            Assert.That(bites[0].DamageDescription, Is.EqualTo(expectedBiteDamage));
         }
 
         [TestCaseSource(nameof(GainAttacks_DuplicateAttacks))]
@@ -1589,8 +1846,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "dragon claw roll", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "Bite", DamageRoll = "dragon bite roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "dragon claw roll", Type = "dragon claw type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "dragon bite roll", Type = "dragon bite type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -1610,8 +1885,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     baseCreature.Abilities))
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
-            var claw = new Attack { Name = "Claw", DamageRoll = "base claw roll", IsSpecial = false, IsMelee = true };
-            var bite = new Attack { Name = "Bite", DamageRoll = "base bite roll", IsSpecial = false, IsMelee = true };
+            var claw = new Attack
+            {
+                Name = "Claw",
+                Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "base claw roll", Type = "base claw type" }
+                    },
+                IsSpecial = false,
+                IsMelee = true
+            };
+            var bite = new Attack
+            {
+                Name = "Bite",
+                Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "base bite roll", Type = "base bite type" }
+                    },
+                IsSpecial = false,
+                IsMelee = true
+            };
             baseCreature.Attacks = baseCreature.Attacks.Union(new[] { claw, bite });
 
             mockDice
@@ -1635,10 +1928,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 2));
             Assert.That(claws, Has.Length.EqualTo(1));
             Assert.That(claws[0], Is.EqualTo(claw));
-            Assert.That(claws[0].DamageRoll, Is.EqualTo(expectedClawDamage));
+            Assert.That(claws[0].DamageDescription, Is.EqualTo(expectedClawDamage));
             Assert.That(bites, Has.Length.EqualTo(1));
             Assert.That(bites[0], Is.EqualTo(bite));
-            Assert.That(bites[0].DamageRoll, Is.EqualTo(expectedBiteDamage));
+            Assert.That(bites[0].DamageDescription, Is.EqualTo(expectedBiteDamage));
         }
 
         [TestCaseSource(nameof(AllHalfDragonTemplates))]

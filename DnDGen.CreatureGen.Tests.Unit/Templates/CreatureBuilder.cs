@@ -68,7 +68,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 BaseAttackBonus = a.BaseAttackBonus,
                 DamageBonus = a.DamageBonus,
                 DamageEffect = a.DamageEffect,
-                DamageRoll = a.DamageRoll,
+                Damages = new List<Damage>(a.Damages.Select(d => new Damage { Roll = d.Roll, Type = d.Type, Condition = d.Condition })),
                 Frequency = new Frequency
                 {
                     Quantity = a.Frequency.Quantity,
@@ -352,7 +352,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 attack.AttackType = $"attack type {Guid.NewGuid()}";
                 attack.BaseAbility = creature.Abilities[AbilityConstants.Strength];
                 attack.BaseAttackBonus = random.Next(20) + 1;
-                attack.DamageRoll = $"{random.Next(1000) + 1}d{random.Next(1000) + 1}";
+                attack.Damages.Add(new Damage
+                {
+                    Roll = $"{random.Next(1000) + 1}d{random.Next(1000) + 1}",
+                    Type = $"damage type {Guid.NewGuid()}",
+                });
                 attack.Frequency = new Frequency();
                 attack.Frequency.Quantity = random.Next(4) + 1;
                 attack.Frequency.TimePeriod = $"time period {Guid.NewGuid()}";

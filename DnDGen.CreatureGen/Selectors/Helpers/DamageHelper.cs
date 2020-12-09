@@ -44,7 +44,7 @@ namespace DnDGen.CreatureGen.Selectors.Helpers
                 entries.Add(entry);
             }
 
-            return string.Join(AttackSelection.DamageSplitDivider, entries);
+            return string.Join(AttackSelection.DamageSplitDivider.ToString(), entries);
         }
 
         public string[][] ParseEntries(string entry)

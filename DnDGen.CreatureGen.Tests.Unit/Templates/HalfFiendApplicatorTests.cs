@@ -19,6 +19,7 @@ using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
+using DnDGen.TreasureGen.Items;
 using Moq;
 using Newtonsoft.Json;
 using NUnit.Framework;
@@ -575,8 +576,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
                 new Attack { Name = "Smite Good", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend claw roll", Type = "fiend claw type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend bite roll", Type = "fiend bite type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -611,8 +630,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
                 new Attack { Name = "Smite Good", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend claw roll", Type = "fiend claw type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend bite roll", Type = "fiend bite type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -664,8 +701,28 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
                 new Attack { Name = "Smite Good", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true, AttackBonuses = new List<int> { 92 } },
-                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true, AttackBonuses = new List<int> { -66 } },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend claw roll", Type = "fiend claw type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true,
+                    AttackBonuses = new List<int> { 92 }
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend bite roll", Type = "fiend bite type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true,
+                    AttackBonuses = new List<int> { -66 }
+                },
             };
 
             mockAttacksGenerator
@@ -693,8 +750,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
                 new Attack { Name = "Smite Good", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend claw roll", Type = "fiend claw type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend bite roll", Type = "fiend bite type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -746,8 +821,28 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
                 new Attack { Name = "Smite Good", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true, AttackBonuses = new List<int> { 92 } },
-                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true, AttackBonuses = new List<int> { -66 } },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend claw roll", Type = "fiend claw type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true,
+                    AttackBonuses = new List<int> { 92 },
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend bite roll", Type = "fiend bite type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true,
+                    AttackBonuses = new List<int> { -66 }
+                },
             };
 
             mockAttacksGenerator
@@ -776,8 +871,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
                 new Attack { Name = "Smite Good", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend claw roll", Type = "fiend claw type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend bite roll", Type = "fiend bite type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -797,7 +910,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Abilities))
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
-            var claw = new Attack { Name = "Claw", DamageRoll = "base claw roll", IsSpecial = false, IsMelee = true };
+            var claw = new Attack
+            {
+                Name = "Claw",
+                Damages = new List<Damage>
+                {
+                    new Damage { Roll = "base claw roll", Type = "base claw type" }
+                },
+                IsSpecial = false,
+                IsMelee = true
+            };
             baseCreature.Attacks = baseCreature.Attacks.Union(new[] { claw });
 
             mockDice
@@ -815,10 +937,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 1));
             Assert.That(claws, Has.Length.EqualTo(1));
             Assert.That(claws[0], Is.EqualTo(claw));
-            Assert.That(claws[0].DamageRoll, Is.EqualTo(expectedClawDamage));
+            Assert.That(claws[0].DamageDescription, Is.EqualTo(expectedClawDamage));
             Assert.That(bites, Has.Length.EqualTo(1));
             Assert.That(bites[0], Is.EqualTo(newAttacks[4]));
-            Assert.That(bites[0].DamageRoll, Is.EqualTo("fiend bite roll"));
+            Assert.That(bites[0].DamageDescription, Is.EqualTo("fiend bite roll"));
         }
 
         [TestCase(9266, 90210, "fiend bite roll")]
@@ -830,8 +952,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
                 new Attack { Name = "Smite Good", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend claw roll", Type = "fiend claw type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend bite roll", Type = "fiend bite type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -851,7 +991,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Abilities))
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
-            var bite = new Attack { Name = "Bite", DamageRoll = "base bite roll", IsSpecial = false, IsMelee = true };
+            var bite = new Attack
+            {
+                Name = "Bite",
+                Damages = new List<Damage>
+                {
+                    new Damage { Roll = "base bite roll", Type = "base bite type" }
+                },
+                IsSpecial = false,
+                IsMelee = true
+            };
             baseCreature.Attacks = baseCreature.Attacks.Union(new[] { bite });
 
             mockDice
@@ -869,10 +1018,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 1));
             Assert.That(claws, Has.Length.EqualTo(1));
             Assert.That(claws[0], Is.EqualTo(newAttacks[3]));
-            Assert.That(claws[0].DamageRoll, Is.EqualTo("fiend claw roll"));
+            Assert.That(claws[0].DamageDescription, Is.EqualTo("fiend claw roll"));
             Assert.That(bites, Has.Length.EqualTo(1));
             Assert.That(bites[0], Is.EqualTo(bite));
-            Assert.That(bites[0].DamageRoll, Is.EqualTo(expectedBiteDamage));
+            Assert.That(bites[0].DamageDescription, Is.EqualTo(expectedBiteDamage));
         }
 
         [TestCase(9266, 90210, "fiend claw roll", 1336, 1337, "fiend bite roll")]
@@ -886,8 +1035,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
                 new Attack { Name = "Smite Good", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend claw roll", Type = "fiend claw type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend bite roll", Type = "fiend bite type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -907,8 +1074,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Abilities))
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
-            var claw = new Attack { Name = "Claw", DamageRoll = "base claw roll", IsSpecial = false, IsMelee = true };
-            var bite = new Attack { Name = "Bite", DamageRoll = "base bite roll", IsSpecial = false, IsMelee = true };
+            var claw = new Attack
+            {
+                Name = "Claw",
+                Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "base claw roll", Type = "base claw type" }
+                    },
+                IsSpecial = false,
+                IsMelee = true
+            };
+            var bite = new Attack
+            {
+                Name = "Bite",
+                Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "base bite roll", Type = "base bite type" }
+                    },
+                IsSpecial = false,
+                IsMelee = true
+            };
             baseCreature.Attacks = baseCreature.Attacks.Union(new[] { claw, bite });
 
             mockDice
@@ -932,10 +1117,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 2));
             Assert.That(claws, Has.Length.EqualTo(1));
             Assert.That(claws[0], Is.EqualTo(claw));
-            Assert.That(claws[0].DamageRoll, Is.EqualTo(expectedClawDamage));
+            Assert.That(claws[0].DamageDescription, Is.EqualTo(expectedClawDamage));
             Assert.That(bites, Has.Length.EqualTo(1));
             Assert.That(bites[0], Is.EqualTo(bite));
-            Assert.That(bites[0].DamageRoll, Is.EqualTo(expectedBiteDamage));
+            Assert.That(bites[0].DamageDescription, Is.EqualTo(expectedBiteDamage));
         }
 
         [TestCase(9266, 90210, "fiend claw roll")]
@@ -947,8 +1132,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
                 new Attack { Name = "Smite Good", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend claw roll", Type = "fiend claw type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend bite roll", Type = "fiend bite type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -968,7 +1171,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Abilities))
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
-            var claw = new Attack { Name = "Claw", DamageRoll = "base claw roll", IsSpecial = false, IsMelee = true };
+            var claw = new Attack
+            {
+                Name = "Claw",
+                Damages = new List<Damage>
+                {
+                    new Damage { Roll = "base claw roll", Type = "base claw type" }
+                },
+                IsSpecial = false,
+                IsMelee = true
+            };
             baseCreature.Attacks = baseCreature.Attacks.Union(new[] { claw });
 
             mockDice
@@ -986,10 +1198,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 1));
             Assert.That(claws, Has.Length.EqualTo(1));
             Assert.That(claws[0], Is.EqualTo(claw));
-            Assert.That(claws[0].DamageRoll, Is.EqualTo(expectedClawDamage));
+            Assert.That(claws[0].DamageDescription, Is.EqualTo(expectedClawDamage));
             Assert.That(bites, Has.Length.EqualTo(1));
             Assert.That(bites[0], Is.EqualTo(newAttacks[4]));
-            Assert.That(bites[0].DamageRoll, Is.EqualTo("fiend bite roll"));
+            Assert.That(bites[0].DamageDescription, Is.EqualTo("fiend bite roll"));
         }
 
         [TestCase(9266, 90210, "fiend bite roll")]
@@ -1001,8 +1213,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
                 new Attack { Name = "Smite Good", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend claw roll", Type = "fiend claw type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend bite roll", Type = "fiend bite type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -1022,7 +1252,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Abilities))
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
-            var bite = new Attack { Name = "Bite", DamageRoll = "base bite roll", IsSpecial = false, IsMelee = true };
+            var bite = new Attack
+            {
+                Name = "Bite",
+                Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "base bite roll", Type = "base bite type" }
+                    },
+                IsSpecial = false,
+                IsMelee = true
+            };
             baseCreature.Attacks = baseCreature.Attacks.Union(new[] { bite });
 
             mockDice
@@ -1040,10 +1279,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 1));
             Assert.That(claws, Has.Length.EqualTo(1));
             Assert.That(claws[0], Is.EqualTo(newAttacks[3]));
-            Assert.That(claws[0].DamageRoll, Is.EqualTo("fiend claw roll"));
+            Assert.That(claws[0].DamageDescription, Is.EqualTo("fiend claw roll"));
             Assert.That(bites, Has.Length.EqualTo(1));
             Assert.That(bites[0], Is.EqualTo(bite));
-            Assert.That(bites[0].DamageRoll, Is.EqualTo(expectedBiteDamage));
+            Assert.That(bites[0].DamageDescription, Is.EqualTo(expectedBiteDamage));
         }
 
         [TestCase(9266, 90210, "fiend claw roll", 1336, 1337, "fiend bite roll")]
@@ -1057,8 +1296,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
                 new Attack { Name = "Smite Good", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend claw roll", Type = "fiend claw type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend bite roll", Type = "fiend bite type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -1078,8 +1335,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Abilities))
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
-            var claw = new Attack { Name = "Claw", DamageRoll = "base claw roll", IsSpecial = false, IsMelee = true };
-            var bite = new Attack { Name = "Bite", DamageRoll = "base bite roll", IsSpecial = false, IsMelee = true };
+            var claw = new Attack
+            {
+                Name = "Claw",
+                Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "base claw roll", Type = "base claw type" }
+                    },
+                IsSpecial = false,
+                IsMelee = true
+            };
+            var bite = new Attack
+            {
+                Name = "Bite",
+                Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "base bite roll", Type = "base bite type" }
+                    },
+                IsSpecial = false,
+                IsMelee = true
+            };
             baseCreature.Attacks = baseCreature.Attacks.Union(new[] { claw, bite });
 
             mockDice
@@ -1103,10 +1378,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length - 2));
             Assert.That(claws, Has.Length.EqualTo(1));
             Assert.That(claws[0], Is.EqualTo(claw));
-            Assert.That(claws[0].DamageRoll, Is.EqualTo(expectedClawDamage));
+            Assert.That(claws[0].DamageDescription, Is.EqualTo(expectedClawDamage));
             Assert.That(bites, Has.Length.EqualTo(1));
             Assert.That(bites[0], Is.EqualTo(bite));
-            Assert.That(bites[0].DamageRoll, Is.EqualTo(expectedBiteDamage));
+            Assert.That(bites[0].DamageDescription, Is.EqualTo(expectedBiteDamage));
         }
 
         [TestCase(.1, 1)]
@@ -1153,8 +1428,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
                 new Attack { Name = "Smite Good", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend claw roll", Type = "fiend claw type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend bite roll", Type = "fiend bite type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -1182,7 +1475,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.SpecialAttacks.Count(), Is.EqualTo(originalSpecialAttacks.Length + 3));
             Assert.That(creature.SpecialAttacks, Contains.Item(newAttacks[2]));
 
-            Assert.That(newAttacks[2].DamageRoll, Is.EqualTo(smiteDamage.ToString()));
+            Assert.That(newAttacks[2].DamageDescription, Is.EqualTo(smiteDamage.ToString()));
         }
 
         [Test]
@@ -1562,8 +1855,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
                 new Attack { Name = "Smite Good", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend claw roll", Type = "fiend claw type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend bite roll", Type = "fiend bite type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -1634,8 +1945,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
                 new Attack { Name = "Smite Good", IsSpecial = true },
-                new Attack { Name = "Claw", DamageRoll = "fiend claw roll", IsSpecial = false, IsMelee = true },
-                new Attack { Name = "Bite", DamageRoll = "fiend bite roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Claw",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend claw roll", Type = "fiend claw type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
+                new Attack
+                {
+                    Name = "Bite",
+                    Damages = new List<Damage>
+                    {
+                        new Damage { Roll = "fiend bite roll", Type = "fiend bite type" }
+                    },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -1663,7 +1992,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.SpecialAttacks.Count(), Is.EqualTo(originalSpecialAttacks.Length + 3));
             Assert.That(creature.SpecialAttacks, Contains.Item(newAttacks[2]));
 
-            Assert.That(newAttacks[2].DamageRoll, Is.EqualTo(smiteDamage.ToString()));
+            Assert.That(newAttacks[2].DamageDescription, Is.EqualTo(smiteDamage.ToString()));
         }
 
         [Test]

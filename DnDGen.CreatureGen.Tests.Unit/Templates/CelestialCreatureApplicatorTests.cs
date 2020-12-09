@@ -356,7 +356,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.SpecialAttacks.Count(), Is.EqualTo(originalSpecialAttacks.Length + 1));
             Assert.That(creature.SpecialAttacks, Contains.Item(smiteEvil));
 
-            Assert.That(smiteEvil.DamageRoll, Is.EqualTo(smiteDamage.ToString()));
+            Assert.That(smiteEvil.DamageDescription, Is.EqualTo(smiteDamage.ToString()));
         }
 
         [Test]
@@ -1375,7 +1375,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.SpecialAttacks.Count(), Is.EqualTo(originalSpecialAttacks.Length + 1));
             Assert.That(creature.SpecialAttacks, Contains.Item(smiteEvil));
 
-            Assert.That(smiteEvil.DamageRoll, Is.EqualTo(smiteDamage.ToString()));
+            Assert.That(smiteEvil.DamageDescription, Is.EqualTo(smiteDamage.ToString()));
         }
 
         [Test]

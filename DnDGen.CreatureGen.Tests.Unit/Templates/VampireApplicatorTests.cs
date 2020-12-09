@@ -14,6 +14,7 @@ using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
+using DnDGen.TreasureGen.Items;
 using Moq;
 using NUnit.Framework;
 using System.Collections;
@@ -262,7 +263,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Slam", DamageRoll = "vampire slam roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Slam",
+                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -296,7 +303,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Slam", DamageRoll = "vampire slam roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Slam",
+                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -331,7 +344,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Slam", DamageRoll = "vampire slam roll", IsSpecial = false, IsMelee = true, AttackBonuses = new List<int> { 92 } },
+                new Attack
+                {
+                    Name = "Slam",
+                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    IsSpecial = false,
+                    IsMelee = true,
+                    AttackBonuses = new List<int> { 92 },
+                },
             };
 
             mockAttacksGenerator
@@ -356,14 +376,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Attacks = baseCreature.Attacks.Union(new[]
             {
-                new Attack { Name = "Slam", DamageRoll = "base slam roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Slam",
+                    Damages = new List<Damage> { new Damage { Roll = "base slam roll", Type = "base slam type" } },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             });
 
             var newAttacks = new[]
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Slam", DamageRoll = "vampire slam roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Slam",
+                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -405,14 +437,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Attacks = baseCreature.Attacks.Union(new[]
             {
-                new Attack { Name = "Slam", DamageRoll = "base slam roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Slam",
+                    Damages = new List<Damage> { new Damage { Roll = "base slam roll", Type = "base slam type" } },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             });
 
             var newAttacks = new[]
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Slam", DamageRoll = "vampire slam roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Slam",
+                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -513,7 +557,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Slam", DamageRoll = "vampire slam roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Slam",
+                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -549,7 +599,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Slam", DamageRoll = "vampire slam roll", IsSpecial = false, IsMelee = true, AttackBonuses = new List<int> { 92 } },
+                new Attack
+                {
+                    Name = "Slam",
+                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    IsSpecial = false,
+                    IsMelee = true,
+                    AttackBonuses = new List<int> { 92 },
+                },
             };
 
             mockAttacksGenerator
@@ -575,7 +632,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Slam", DamageRoll = "vampire slam roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Slam",
+                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -611,7 +674,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Slam", DamageRoll = "vampire slam roll", IsSpecial = false, IsMelee = true, AttackBonuses = new List<int> { 92 } },
+                new Attack
+                {
+                    Name = "Slam",
+                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    IsSpecial = false,
+                    IsMelee = true,
+                    AttackBonuses = new List<int> { 92 },
+                },
             };
 
             mockAttacksGenerator
@@ -970,7 +1040,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Slam", DamageRoll = "vampire slam roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Slam",
+                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -1004,7 +1080,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Slam", DamageRoll = "vampire slam roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Slam",
+                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -1039,7 +1121,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Slam", DamageRoll = "vampire slam roll", IsSpecial = false, IsMelee = true, AttackBonuses = new List<int> { 92 } },
+                new Attack
+                {
+                    Name = "Slam",
+                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    IsSpecial = false,
+                    IsMelee = true,
+                    AttackBonuses = new List<int> { 92 },
+                },
             };
 
             mockAttacksGenerator
@@ -1064,14 +1153,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Attacks = baseCreature.Attacks.Union(new[]
             {
-                new Attack { Name = "Slam", DamageRoll = "base slam roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Slam",
+                    Damages = new List<Damage> { new Damage { Roll = "base slam roll", Type = "base slam type" } },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             });
 
             var newAttacks = new[]
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Slam", DamageRoll = "vampire slam roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Slam",
+                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator
@@ -1113,14 +1214,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Attacks = baseCreature.Attacks.Union(new[]
             {
-                new Attack { Name = "Slam", DamageRoll = "base slam roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Slam",
+                    Damages = new List<Damage> { new Damage { Roll = "base slam roll", Type = "base slam type" } },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             });
 
             var newAttacks = new[]
             {
                 new Attack { Name = "special attack 1", IsSpecial = true },
                 new Attack { Name = "special attack 2", IsSpecial = true },
-                new Attack { Name = "Slam", DamageRoll = "vampire slam roll", IsSpecial = false, IsMelee = true },
+                new Attack
+                {
+                    Name = "Slam",
+                    Damages = new List<Damage> { new Damage { Roll = "vampire slam roll", Type = "vampire slam type" } },
+                    IsSpecial = false,
+                    IsMelee = true
+                },
             };
 
             mockAttacksGenerator

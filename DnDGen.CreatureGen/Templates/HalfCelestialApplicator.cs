@@ -11,6 +11,7 @@ using DnDGen.CreatureGen.Languages;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.TreasureGen.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -230,7 +231,10 @@ namespace DnDGen.CreatureGen.Templates
                 creature.HitPoints.RoundedHitDiceQuantity);
 
             var smiteEvil = attacks.First(a => a.Name == "Smite Evil");
-            smiteEvil.Damages[0].Roll = Math.Min(creature.HitPoints.RoundedHitDiceQuantity, 20).ToString();
+            smiteEvil.Damages.Add(new Damage
+            {
+                Roll = Math.Min(creature.HitPoints.RoundedHitDiceQuantity, 20).ToString()
+            });
 
             creature.Attacks = creature.Attacks.Union(attacks);
         }
