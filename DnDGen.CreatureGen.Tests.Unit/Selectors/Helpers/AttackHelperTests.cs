@@ -208,7 +208,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
                 primary,
                 special);
             Assert.That(data[DataIndexConstants.AttackData.NameIndex], Is.EqualTo("attack name"));
-            Assert.That(data[DataIndexConstants.AttackData.DamageDataIndex], Is.EqualTo("damage roll"));
+            Assert.That(data[DataIndexConstants.AttackData.DamageDataIndex], Is.EqualTo(damageEntry));
             Assert.That(data[DataIndexConstants.AttackData.DamageEffectIndex], Is.EqualTo("damage effect"));
             Assert.That(data[DataIndexConstants.AttackData.DamageBonusMultiplierIndex], Is.EqualTo(92.66.ToString()));
             Assert.That(data[DataIndexConstants.AttackData.AttackTypeIndex], Is.EqualTo("attack type"));
@@ -261,7 +261,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
                 "save ability",
                 1336);
             Assert.That(data[DataIndexConstants.AttackData.NameIndex], Is.EqualTo("attack name"));
-            Assert.That(data[DataIndexConstants.AttackData.DamageDataIndex], Is.EqualTo("damage roll"));
+            Assert.That(data[DataIndexConstants.AttackData.DamageDataIndex], Is.EqualTo(damageEntry));
             Assert.That(data[DataIndexConstants.AttackData.DamageEffectIndex], Is.EqualTo("damage effect"));
             Assert.That(data[DataIndexConstants.AttackData.DamageBonusMultiplierIndex], Is.EqualTo(92.66.ToString()));
             Assert.That(data[DataIndexConstants.AttackData.AttackTypeIndex], Is.EqualTo("attack type"));

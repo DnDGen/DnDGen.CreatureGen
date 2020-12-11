@@ -275,7 +275,8 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
 
                 if (newMax > oldMax)
                 {
-                    oldClaw.Damages[0].Roll = newClaw.Damages[0].Roll;
+                    oldClaw.Damages.Clear();
+                    oldClaw.Damages.Add(newClaw.Damages[0]);
                 }
 
                 attacks = attacks.Except(new[] { newClaw });
@@ -292,7 +293,8 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
 
                 if (newMax > oldMax)
                 {
-                    oldBite.Damages[0].Roll = newBite.Damages[0].Roll;
+                    oldBite.Damages.Clear();
+                    oldBite.Damages.Add(newBite.Damages[0]);
                 }
 
                 attacks = attacks.Except(new[] { newBite });
