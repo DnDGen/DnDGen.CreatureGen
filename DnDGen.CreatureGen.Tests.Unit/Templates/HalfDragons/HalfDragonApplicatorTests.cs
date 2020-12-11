@@ -1755,7 +1755,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(claws[0].DamageDescription, Is.EqualTo(expectedClawDamage));
             Assert.That(bites, Has.Length.EqualTo(1));
             Assert.That(bites[0], Is.EqualTo(newAttacks[3]));
-            Assert.That(bites[0].DamageDescription, Is.EqualTo("dragon bite roll"));
+            Assert.That(bites[0].DamageDescription, Is.EqualTo("dragon bite roll dragon bite type"));
         }
 
         [TestCaseSource(nameof(GainAttacks_DuplicateAttack))]
