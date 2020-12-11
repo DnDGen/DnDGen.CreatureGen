@@ -929,8 +929,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()).And.EqualTo(1));
 
             var attack = generatedAttacks.Single();
+            var bonusString = bonus > 0 ? $"+{bonus}" : bonus < 0 ? bonus.ToString() : string.Empty;
             Assert.That(attack.Name, Is.EqualTo("attack"));
-            Assert.That(attack.DamageDescription, Is.EqualTo($"my roll+{bonus} my damage type + my other roll my other damage type"));
+            Assert.That(attack.DamageDescription, Is.EqualTo($"my roll{bonusString} my damage type + my other roll my other damage type plus effect"));
             Assert.That(attack.DamageBonus, Is.EqualTo(bonus));
             Assert.That(attack.DamageEffect, Is.EqualTo("effect"));
         }
@@ -1148,11 +1149,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             Assert.That(attacks[0].Name, Is.EqualTo("primary attack"));
             Assert.That(attacks[0].DamageDescription, Is.EqualTo("my primary roll+45100 my primary type plus primary effect"));
             Assert.That(attacks[0].DamageBonus, Is.EqualTo(45100));
-            Assert.That(attacks[0].DamageEffect, Is.EqualTo("effect"));
+            Assert.That(attacks[0].DamageEffect, Is.EqualTo("primary effect"));
             Assert.That(attacks[1].Name, Is.EqualTo("secondary attack"));
             Assert.That(attacks[1].DamageDescription, Is.EqualTo("my secondary roll+22550 my secondary type plus secondary effect"));
             Assert.That(attacks[1].DamageBonus, Is.EqualTo(22550));
-            Assert.That(attacks[1].DamageEffect, Is.EqualTo("effect"));
+            Assert.That(attacks[1].DamageEffect, Is.EqualTo("secondary effect"));
         }
 
         [Test]
@@ -1245,7 +1246,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
                     new Damage { Roll = "my roll", Type = "my type" },
                     new Damage { Roll = "1d4", Type = ability },
                 },
-                DamageEffect = $"1d4 {ability} drain",
+                DamageEffect = $"{ability} drain",
                 DamageBonusMultiplier = 0.5,
                 FrequencyQuantity = 1,
                 IsMelee = true,
@@ -1260,9 +1261,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
-            Assert.That(attack.DamageDescription, Is.EqualTo("damage"));
+            Assert.That(attack.DamageDescription, Is.EqualTo($"my roll+22550 my type + 1d4 {ability} plus {ability} drain"));
             Assert.That(attack.DamageBonus, Is.EqualTo(22550));
-            Assert.That(attack.DamageEffect, Is.EqualTo($"1d4 {ability} drain"));
+            Assert.That(attack.DamageEffect, Is.EqualTo($"{ability} drain"));
         }
 
         [Test]

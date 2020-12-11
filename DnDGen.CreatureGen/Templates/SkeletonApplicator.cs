@@ -259,7 +259,8 @@ namespace DnDGen.CreatureGen.Templates
 
                 if (newMax > oldMax)
                 {
-                    oldClaw.Damages[0].Roll = newClaw.Damages[0].Roll;
+                    oldClaw.Damages.Clear();
+                    oldClaw.Damages.Add(newClaw.Damages[0]);
                 }
 
                 skeletonAttacks = skeletonAttacks.Except(new[] { newClaw });

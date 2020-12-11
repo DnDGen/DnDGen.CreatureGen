@@ -128,5 +128,34 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
             var valid = helper.ValidateEntry(entry);
             Assert.That(valid, Is.EqualTo(isValid));
         }
+
+        [TestCase(0, true)]
+        [TestCase(1, false)]
+        [TestCase(2, true)]
+        [TestCase(3, false)]
+        [TestCase(4, true)]
+        [TestCase(5, false)]
+        [TestCase(6, true)]
+        [TestCase(7, false)]
+        [TestCase(8, true)]
+        [TestCase(9, false)]
+        [TestCase(10, true)]
+        [TestCase(11, false)]
+        [TestCase(12, true)]
+        [TestCase(13, false)]
+        [TestCase(14, true)]
+        [TestCase(15, false)]
+        [TestCase(16, true)]
+        [TestCase(17, false)]
+        [TestCase(18, true)]
+        [TestCase(19, false)]
+        [TestCase(20, true)]
+        public void ValidateEntries_IsValid(int length, bool isValid)
+        {
+            var data = new string[length];
+            var entry = helper.BuildEntries(data);
+            var valid = helper.ValidateEntries(entry);
+            Assert.That(valid, Is.EqualTo(isValid));
+        }
     }
 }

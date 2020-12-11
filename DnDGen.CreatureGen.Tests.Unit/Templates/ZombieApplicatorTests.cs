@@ -804,7 +804,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var slam = creature.Attacks.FirstOrDefault(a => a.Name == "Slam");
             Assert.That(slam, Is.Not.Null.And.Not.EqualTo(zombieAttacks[0]));
-            Assert.That(slam.DamageDescription, Is.EqualTo("zombie slam roll"));
+            Assert.That(slam.DamageDescription, Is.EqualTo("zombie slam roll zombie slam type"));
             Assert.That(slam.AttackBonuses, Has.Count.EqualTo(1).And.Contains(92));
             Assert.That(slam.Frequency.Quantity, Is.EqualTo(1));
         }
@@ -1496,7 +1496,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var slam = creature.Attacks.FirstOrDefault(a => a.Name == "Slam");
             Assert.That(slam, Is.Not.Null.And.Not.EqualTo(zombieAttacks[0]));
-            Assert.That(slam.DamageDescription, Is.EqualTo("zombie slam roll"));
+            Assert.That(slam.DamageDescription, Is.EqualTo("zombie slam roll zombie slam type"));
             Assert.That(slam.AttackBonuses, Has.Count.EqualTo(1).And.Contains(92));
             Assert.That(slam.Frequency.Quantity, Is.EqualTo(1));
         }

@@ -75,6 +75,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             if (entries[0][DataIndexConstants.AttackData.NameIndex] == AttackTestData.None)
                 entries.Clear();
 
+            foreach (var entry in entries)
+            {
+                var valid = damageHelper.ValidateEntries(entry[DataIndexConstants.AttackData.DamageDataIndex]);
+                if (!valid)
+                {
+                    Assert.Fail($"Attack {entry[DataIndexConstants.AttackData.NameIndex]} for creature {creature} has invalid damage data: {entry[DataIndexConstants.AttackData.DamageDataIndex]}");
+                }
+            }
+
             AssertData(creature, entries);
         }
 

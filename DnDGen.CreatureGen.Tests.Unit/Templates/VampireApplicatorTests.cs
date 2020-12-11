@@ -429,7 +429,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Attacks, Is.SupersetOf(newAttacks.Take(2)));
 
             var slam = creature.Attacks.First(a => a.Name == "Slam");
-            Assert.That(slam.DamageDescription, Is.EqualTo("vampire slam roll"));
+            Assert.That(slam.DamageDescription, Is.EqualTo("vampire slam roll vampire slam type"));
         }
 
         [Test]
@@ -490,7 +490,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Attacks, Is.SupersetOf(newAttacks.Take(2)));
 
             var slam = creature.Attacks.First(a => a.Name == "Slam");
-            Assert.That(slam.DamageDescription, Is.EqualTo("base slam roll"));
+            Assert.That(slam.DamageDescription, Is.EqualTo("base slam roll base slam type"));
         }
 
         [Test]
@@ -1206,7 +1206,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Attacks, Is.SupersetOf(newAttacks.Take(2)));
 
             var slam = creature.Attacks.First(a => a.Name == "Slam");
-            Assert.That(slam.DamageDescription, Is.EqualTo("vampire slam roll"));
+            Assert.That(slam.DamageDescription, Is.EqualTo("vampire slam roll vampire slam type"));
         }
 
         [Test]
@@ -1267,7 +1267,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Attacks, Is.SupersetOf(newAttacks.Take(2)));
 
             var slam = creature.Attacks.First(a => a.Name == "Slam");
-            Assert.That(slam.DamageDescription, Is.EqualTo("base slam roll"));
+            Assert.That(slam.DamageDescription, Is.EqualTo("base slam roll base slam type"));
         }
 
         [Test]

@@ -209,7 +209,8 @@ namespace DnDGen.CreatureGen.Templates
 
                 if (newMax > oldMax)
                 {
-                    oldSlam.Damages[0].Roll = newSlam.Damages[0].Roll;
+                    oldSlam.Damages.Clear();
+                    oldSlam.Damages.Add(newSlam.Damages[0]);
                 }
 
                 vampireAttacks = vampireAttacks.Except(new[] { newSlam });

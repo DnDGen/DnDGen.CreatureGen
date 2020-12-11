@@ -1,6 +1,7 @@
 ﻿using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Selectors.Helpers
 {
@@ -40,7 +41,8 @@ namespace DnDGen.CreatureGen.Selectors.Helpers
 
             for (var i = 0; i < data.Length; i += 2)
             {
-                var entry = BuildEntry(data[i], data[i + 1]);
+                var subData = data.Skip(i).Take(2).ToArray();
+                var entry = BuildEntry(subData);
                 entries.Add(entry);
             }
 
@@ -58,6 +60,19 @@ namespace DnDGen.CreatureGen.Selectors.Helpers
             }
 
             return data;
+        }
+
+        public bool ValidateEntries(string entry)
+        {
+            var entries = entry.Split(AttackSelection.DamageSplitDivider);
+            var valid = true;
+
+            foreach (var subEntry in entries)
+            {
+                valid &= ValidateEntry(subEntry);
+            }
+
+            return valid;
         }
     }
 }
