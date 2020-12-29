@@ -63,7 +63,7 @@
     <None Remove="Tables\Skills\SkillData.xml" />
     <None Remove="Tables\Skills\SkillGroups.xml" />
     <None Remove="Tables\Skills\SkillPoints.xml" />
-    <None Include="..\..\CreatureGen\DnDGen.CreatureGen\18531-twenty-sided-dice-vector-thumb.png">
+    <None Include="18531-twenty-sided-dice-vector-thumb.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
@@ -156,11 +156,6 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Skills\SkillPoints.xml" />
-  </ItemGroup>
-
-  <!--Needed for Framework compatibility when building in Travis-->
-  <ItemGroup>
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" PrivateAssets="All" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
