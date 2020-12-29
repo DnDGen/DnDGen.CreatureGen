@@ -943,7 +943,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(bites[0].DamageDescription, Is.EqualTo("fiend bite roll fiend bite type"));
         }
 
-        [TestCase(9266, 90210, "fiend bite roll find bute type")]
+        [TestCase(9266, 90210, "fiend bite roll fiend bite type")]
         [TestCase(9266, 42, "base bite roll base bite type")]
         public void ApplyTo_GainAttacks_DuplicateBiteAttack(int baseBiteMax, int fiendBiteMax, string expectedBiteDamage)
         {
@@ -1024,10 +1024,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(bites[0].DamageDescription, Is.EqualTo(expectedBiteDamage));
         }
 
-        [TestCase(9266, 90210, "fiend claw roll fiend claw type", 1336, 1337, "fiend bite roll fiend bute type")]
+        [TestCase(9266, 90210, "fiend claw roll fiend claw type", 1336, 1337, "fiend bite roll fiend bite type")]
         [TestCase(9266, 90210, "fiend claw roll fiend claw type", 1336, 600, "base bite roll base bite type")]
-        [TestCase(9266, 42, "base claw roll baaw claw type", 1336, 1337, "fiend bite roll fiend bite type")]
-        [TestCase(9266, 42, "base claw roll baaw claw type", 1336, 600, "base bite roll base bite type")]
+        [TestCase(9266, 42, "base claw roll base claw type", 1336, 1337, "fiend bite roll fiend bite type")]
+        [TestCase(9266, 42, "base claw roll base claw type", 1336, 600, "base bite roll base bite type")]
         public void ApplyTo_GainAttacks_DuplicateClawAndBiteAttack(int baseClawMax, int fiendClawMax, string expectedClawDamage, int baseBiteMax, int fiendBiteMax, string expectedBiteDamage)
         {
             var newAttacks = new[]

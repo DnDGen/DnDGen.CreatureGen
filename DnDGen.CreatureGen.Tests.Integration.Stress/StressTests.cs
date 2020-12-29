@@ -20,7 +20,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress
         {
             var options = new StressorOptions();
             options.RunningAssembly = Assembly.GetExecutingAssembly();
-            options.TimeLimitPercentage = 0.7;
+            options.TimeLimitPercentage = 1;
 
 #if STRESS
             options.IsFullStress = true;

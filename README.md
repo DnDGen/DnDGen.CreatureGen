@@ -2,7 +2,7 @@
 
 Generates a random, fleshed-out creature for Dungeons and Dragons 3.X
 
-[![Build Status](https://travis-ci.org/DnDGen/CreatureGen.svg?branch=master)](https://travis-ci.org/DnDGen/CreatureGen)
+[![Build Status](https://dev.azure.com/dndgen/DnDGen/_apis/build/status/DnDGen.CreatureGen?branchName=master)](https://dev.azure.com/dndgen/DnDGen/_build/latest?definitionId=5&branchName=master)
 
 ### Use
 
@@ -19,14 +19,12 @@ You can obtain generators from the IoC namespace within the domain project.  Bec
 ```C#
 var kernel = new StandardKernel();
 var rollGenModuleLoader = new RollGenModuleLoader();
-var coreModuleLoader = new CoreModuleLoader();
-var eventGenModuleLoader = new EventGenModuleLoader();
+var infrastructureModuleLoader = new InfrastructureModuleLoader();
 var treasureGenModuleLoader = new TreasureGenModuleLoader();
 var creatureGenModuleLoader = new CreatureGenModuleLoader();
 
 rollGenModuleLoader.LoadModules(kernel);
-coreModuleLoader.LoadModules(kernel);
-coreModuleLoader.LoadModules(kernel);
+infrastructureModuleLoader.LoadModules(kernel);
 treasureGenModuleLoader.LoadModules(kernel);
 creatureGenModuleLoader.LoadModules(kernel);
 ```
@@ -38,7 +36,3 @@ Your particular syntax for how the Ninject injection should work will depend on 
 The project is on [Nuget](https://www.nuget.org/packages/CreatureGen). Install via the NuGet Package Manager.
 
     PM > Install-Package CreatureGen
-
-#### There's CreatureGen and CreatureGen.Domain - which do I install?
-
-That depends on your project.  If you are making a library that will only **reference** CreatureGen, but does not expressly implement it (such as the EncounterGen project), then you only need the CreatureGen package.  If you actually want to run and implement the dice (such as in DnDGen.Web or in the tests for EncounterGen), then you need CreatureGen.Domain, which will install CreatureGen as a dependency.
