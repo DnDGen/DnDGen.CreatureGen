@@ -413,7 +413,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             string animal,
             int naturalArmor = -1,
             string size = null,
-            int hitDiceQuantity = 0,
+            double hitDiceQuantity = 0,
             int hitDiceDie = 0,
             int roll = 0,
             double average = 0)
@@ -2094,7 +2094,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         }
 
         [TestCaseSource(nameof(ChallengeRatings))]
-        public void ApplyTo_IncreaseChallengeRating(string template, string animal, string originalChallengeRating, int animalHitDiceQuantity, string updatedChallengeRating)
+        public void ApplyTo_IncreaseChallengeRating(string template, string animal, string originalChallengeRating, double animalHitDiceQuantity, string updatedChallengeRating)
         {
             baseCreature.ChallengeRating = originalChallengeRating;
 
@@ -2114,8 +2114,34 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         {
             get
             {
-                var challengeRatings = ChallengeRatingConstants.GetOrdered();
-                var animalHitDiceQuantities = Enumerable.Range(1, 30);
+                var challengeRatings = new[]
+                {
+                    ChallengeRatingConstants.Zero,
+                    ChallengeRatingConstants.OneTenth,
+                    ChallengeRatingConstants.OneEighth,
+                    ChallengeRatingConstants.OneSixth,
+                    ChallengeRatingConstants.OneFourth,
+                    ChallengeRatingConstants.OneThird,
+                    ChallengeRatingConstants.OneHalf,
+                    ChallengeRatingConstants.One,
+                    ChallengeRatingConstants.Two,
+                    ChallengeRatingConstants.Ten,
+                    ChallengeRatingConstants.Twenty,
+                };
+
+                //INFO: Doing specific numbers, instead of full range because the number of test cases explodes:
+                //1. Per challenge rating
+                //2. Per Lycanthrope template
+                //3. Per hit die quantity
+                //4. Synchronous and Async
+                var animalHitDiceQuantities = new[]
+                {
+                    0, .1, .5, 1, 2,
+                    3, 4, 5,
+                    6, 9, 10,
+                    11, 19, 20,
+                    21, 100
+                };
 
                 foreach (var template in templates)
                 {
@@ -3346,7 +3372,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         }
 
         [TestCaseSource(nameof(ChallengeRatings))]
-        public async Task ApplyToAsync_IncreaseChallengeRating(string template, string animal, string originalChallengeRating, int animalHitDiceQuantity, string updatedChallengeRating)
+        public async Task ApplyToAsync_IncreaseChallengeRating(string template, string animal, string originalChallengeRating, double animalHitDiceQuantity, string updatedChallengeRating)
         {
             baseCreature.ChallengeRating = originalChallengeRating;
 
