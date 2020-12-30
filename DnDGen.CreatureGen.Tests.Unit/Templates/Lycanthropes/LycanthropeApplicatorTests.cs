@@ -575,18 +575,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
         private void SetUpRoll(HitDice hitDice, int roll)
         {
-            if (!rollSequences.ContainsKey(hitDice.DefaultRoll))
-                rollSequences[hitDice.DefaultRoll] = mockDice.SetupSequence(d => d.Roll(hitDice.RoundedQuantity).d(hitDice.HitDie).AsIndividualRolls<int>());
+            var key = $"{hitDice.RoundedQuantity}d{hitDice.HitDie}";
 
-            rollSequences[hitDice.DefaultRoll] = rollSequences[hitDice.DefaultRoll].Returns(new[] { roll });
+            if (!rollSequences.ContainsKey(key))
+                rollSequences[key] = mockDice.SetupSequence(d => d.Roll(hitDice.RoundedQuantity).d(hitDice.HitDie).AsIndividualRolls<int>());
+
+            rollSequences[key] = rollSequences[key].Returns(new[] { roll });
         }
 
         private void SetUpRoll(HitDice hitDice, double average)
         {
-            if (!averageSequences.ContainsKey(hitDice.DefaultRoll))
-                averageSequences[hitDice.DefaultRoll] = mockDice.SetupSequence(d => d.Roll(hitDice.RoundedQuantity).d(hitDice.HitDie).AsPotentialAverage());
+            var key = $"{hitDice.RoundedQuantity}d{hitDice.HitDie}";
 
-            averageSequences[hitDice.DefaultRoll] = averageSequences[hitDice.DefaultRoll].Returns(average);
+            if (!averageSequences.ContainsKey(key))
+                averageSequences[key] = mockDice.SetupSequence(d => d.Roll(hitDice.RoundedQuantity).d(hitDice.HitDie).AsPotentialAverage());
+
+            averageSequences[key] = averageSequences[key].Returns(average);
         }
 
         [TestCaseSource(nameof(AllLycanthropeTemplates))]
