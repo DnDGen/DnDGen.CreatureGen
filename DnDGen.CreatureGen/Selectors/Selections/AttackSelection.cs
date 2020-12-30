@@ -63,6 +63,7 @@ namespace DnDGen.CreatureGen.Selectors.Selections
                 {
                     Roll = damageData[DataIndexConstants.AttackData.DamageData.RollIndex],
                     Type = damageData[DataIndexConstants.AttackData.DamageData.TypeIndex],
+                    Condition = damageData[DataIndexConstants.AttackData.DamageData.ConditionIndex],
                 };
 
                 selection.Damages.Add(damage);

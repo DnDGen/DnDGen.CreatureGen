@@ -5028,93 +5028,93 @@
   </collection>
   <collection>
     <name>Celestial Creature</name>
-    <entry>Smite Evil@0@True@True@True@True@1@Day@@@supernatural ability@@0@0</entry>
+    <entry>Smite Evil@@True@True@True@True@1@Day@@@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Fiendish Creature</name>
-    <entry>Smite Good@0@True@True@True@True@1@Day@@@supernatural ability@@0@0</entry>
+    <entry>Smite Good@@True@True@True@True@1@Day@@@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Ghost</name>
-    <entry>Corrupting Gaze@2d10@True@False@True@True@1@Round (6 seconds)@Charisma@Fortitude@supernatural ability@1d4 Charisma damage@0@0</entry>
+    <entry>Corrupting Gaze@2d10#1d4#Charisma@True@False@True@True@1@Round (6 seconds)@Charisma@Fortitude@supernatural ability@@0@0</entry>
     <entry>Corrupting Touch@1d6@True@True@False@True@1@Hit@@@supernatural ability@@0@0</entry>
-    <entry>Draining Touch@@True@True@False@True@1@Hit@@@supernatural ability@1d4 Ability points (of ghost's choosing), Ghost heals 5 points of damage@0@0</entry>
+    <entry>Draining Touch@1d4 Ability points (of ghost's choosing)@True@True@False@True@1@Hit@@@supernatural ability@Ghost heals 5 points of damage@0@0</entry>
     <entry>Frightful Moan@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@Panic for 2d4 rounds@0@0</entry>
-    <entry>Horrific Appearance@@True@False@False@True@1@Round (6 seconds)@Charisma@Fortitude@supernatural ability@1d4 Str, 1d4 Dex, and 1d4 Con@0@0</entry>
+    <entry>Horrific Appearance@1d4#Strength,1d4#Dexterity,1d4#Constitution@True@False@False@True@1@Round (6 seconds)@Charisma@Fortitude@supernatural ability@@0@0</entry>
     <entry>Malevolence@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@@0@5</entry>
     <entry>Manifestation@@True@False@True@True@1@Round (6 seconds)@@@supernatural ability@@0@0</entry>
     <entry>Telekinesis@@True@False@True@True@1@1d4 Round (6 seconds)@Charisma@Will@supernatural ability@Panic for 2d4 rounds@0@0</entry>
   </collection>
   <collection>
     <name>Half-Celestial</name>
-    <entry>Smite Evil@0@True@True@True@True@1@Day@@@supernatural ability@@0@0</entry>
+    <entry>Smite Evil@@True@True@True@True@1@Day@@@supernatural ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Half-Dragon (Black)</name>
-    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@6d8 acid@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Claw@1d4#Slashing@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6#Piercing@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8#Acid@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Half-Dragon (Blue)</name>
-    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@6d8 electricity@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Claw@1d4#Slashing@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6#Piercing@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8#Electricity@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Half-Dragon (Green)</name>
-    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@6d8 acid gas@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Claw@1d4#Slashing@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6#Piercing@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8#Acid gas@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Half-Dragon (Red)</name>
-    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@6d8 fire@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Claw@1d4#Slashing@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6#Piercing@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8#Fire@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Half-Dragon (White)</name>
-    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@6d8 cold@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Claw@1d4#Slashing@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6#Piercing@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8#Cold@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Half-Dragon (Brass)</name>
-    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@6d8 fire@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Claw@1d4#Slashing@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6#Piercing@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8#Fire@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Half-Dragon (Bronze)</name>
-    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@6d8 electricity@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Claw@1d4#Slashing@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6#Piercing@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8#Electricity@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Half-Dragon (Copper)</name>
-    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@6d8 acid@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Claw@1d4#Slashing@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6#Piercing@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8#Acid@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Half-Dragon (Gold)</name>
-    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@6d8 fire@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Claw@1d4#Slashing@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6#Piercing@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8#Fire@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Half-Dragon (Silver)</name>
-    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@6d8 cold@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Claw@1d4#Slashing@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6#Piercing@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8#Cold@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Half-Fiend</name>
-    <entry>Claw@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Smite Good@0@True@True@True@True@1@Day@@@supernatural ability@@0@0</entry>
+    <entry>Claw@1d4#Slashing@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6#Piercing@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Smite Good@@True@True@True@True@1@Day@@@supernatural ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>

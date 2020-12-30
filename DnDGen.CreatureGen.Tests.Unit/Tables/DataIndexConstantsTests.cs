@@ -85,6 +85,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
 
         [TestCase(DataIndexConstants.AttackData.DamageData.RollIndex, 0)]
         [TestCase(DataIndexConstants.AttackData.DamageData.TypeIndex, 1)]
+        [TestCase(DataIndexConstants.AttackData.DamageData.ConditionIndex, 2)]
         public void DamageDataIndex(int constant, int value)
         {
             Assert.That(constant, Is.EqualTo(value));
@@ -92,6 +93,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
 
         [TestCase(DataIndexConstants.AttackData.DamageData.RollIndex)]
         [TestCase(DataIndexConstants.AttackData.DamageData.TypeIndex)]
+        [TestCase(DataIndexConstants.AttackData.DamageData.ConditionIndex)]
         public void DamageDataIndicesInitialized(int index)
         {
             var data = DataIndexConstants.AttackData.DamageData.InitializeData();

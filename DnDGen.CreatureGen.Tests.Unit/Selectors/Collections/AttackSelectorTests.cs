@@ -204,7 +204,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void SelectAttackWithMultipleDamages()
         {
-            var damageData = damageHelper.BuildEntries("my roll", "my damage type", "my other roll", "my other damage type");
+            var damageData = damageHelper.BuildEntries("my roll", "my damage type", "my condition", "my other roll", "my other damage type", "my other condition");
 
             var attackData = new[]
             {
@@ -221,10 +221,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(attack.Damages, Has.Count.EqualTo(2));
             Assert.That(attack.Damages[0].Roll, Is.EqualTo("my roll"));
             Assert.That(attack.Damages[0].Type, Is.EqualTo("my damage type"));
-            Assert.That(attack.Damages[0].Condition, Is.Empty);
+            Assert.That(attack.Damages[0].Condition, Is.EqualTo("my condition"));
             Assert.That(attack.Damages[1].Roll, Is.EqualTo("my other roll"));
             Assert.That(attack.Damages[1].Type, Is.EqualTo("my other damage type"));
-            Assert.That(attack.Damages[1].Condition, Is.Empty);
+            Assert.That(attack.Damages[1].Condition, Is.EqualTo("my other condition"));
             Assert.That(attack.DamageEffect, Is.EqualTo("effect"));
             Assert.That(attack.DamageBonusMultiplier, Is.EqualTo(4.2));
             Assert.That(attack.IsMelee, Is.False);
@@ -244,7 +244,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         public void SelectAttacks()
         {
             var damageData1 = damageHelper.BuildEntries("my roll", "my damage type");
-            var damageData2 = damageHelper.BuildEntries("another roll", "another damage type", "my other roll", "my other damage type");
+            var damageData2 = damageHelper.BuildEntries("another roll", "another damage type", string.Empty, "my other roll", "my other damage type", "my other condition");
 
             var attackData = new[]
             {
@@ -282,7 +282,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(attacks[1].Damages[0].Condition, Is.Empty);
             Assert.That(attacks[1].Damages[1].Roll, Is.EqualTo("my other roll"));
             Assert.That(attacks[1].Damages[1].Type, Is.EqualTo("my other damage type"));
-            Assert.That(attacks[1].Damages[1].Condition, Is.Empty);
+            Assert.That(attacks[1].Damages[1].Condition, Is.EqualTo("my other condition"));
             Assert.That(attacks[1].Name, Is.EqualTo("other name"));
             Assert.That(attacks[1].DamageEffect, Is.Empty);
             Assert.That(attacks[1].DamageBonusMultiplier, Is.EqualTo(4.2));
@@ -736,15 +736,25 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 var originalDamagesDatas = new[]
                 {
                     damageHelper.BuildEntries("1d6", "piercing"),
-                    damageHelper.BuildEntries("1d6", "bludgeoning", "1d4", "acid"),
-                    damageHelper.BuildEntries("1d2", "bludgeoning", "1d10", "acid"),
+                    damageHelper.BuildEntries("1d6", "piercing", "sometimes"),
+                    damageHelper.BuildEntries("1d6", "bludgeoning", string.Empty, "1d4", "acid", "often"),
+                    damageHelper.BuildEntries("1d6", "bludgeoning", "sometimes", "1d4", "acid", string.Empty),
+                    damageHelper.BuildEntries("1d6", "bludgeoning", "sometimes", "1d4", "acid", "often"),
+                    damageHelper.BuildEntries("1d2", "bludgeoning", string.Empty, "1d10", "acid", "often"),
+                    damageHelper.BuildEntries("1d2", "bludgeoning", "sometimes", "1d10", "acid", string.Empty),
+                    damageHelper.BuildEntries("1d2", "bludgeoning", "sometimes", "1d10", "acid", "often"),
                 };
 
                 var adjustedDamagesDatas = new[]
                 {
                     damageHelper.BuildEntries("3d6", "piercing"),
-                    damageHelper.BuildEntries("3d6", "bludgeoning", "3d6", "acid"),
-                    damageHelper.BuildEntries("3d6", "bludgeoning", "3d8", "acid"),
+                    damageHelper.BuildEntries("3d6", "piercing", "sometimes"),
+                    damageHelper.BuildEntries("3d6", "bludgeoning", string.Empty, "3d6", "acid", "often"),
+                    damageHelper.BuildEntries("3d6", "bludgeoning", "sometimes", "3d6", "acid", string.Empty),
+                    damageHelper.BuildEntries("3d6", "bludgeoning", "sometimes", "3d6", "acid", "often"),
+                    damageHelper.BuildEntries("3d6", "bludgeoning", string.Empty, "3d8", "acid", "often"),
+                    damageHelper.BuildEntries("3d6", "bludgeoning", "sometimes", "3d8", "acid", string.Empty),
+                    damageHelper.BuildEntries("3d6", "bludgeoning", "sometimes", "3d8", "acid", "often"),
                 };
 
                 for (var i = 0; i < originalDamagesDatas.Length; i++)

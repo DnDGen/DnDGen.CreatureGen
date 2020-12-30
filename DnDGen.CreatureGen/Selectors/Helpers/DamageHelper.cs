@@ -11,12 +11,13 @@ namespace DnDGen.CreatureGen.Selectors.Helpers
             : base(AttackSelection.DamageDivider)
         { }
 
-        public string[] BuildData(string roll, string type)
+        public string[] BuildData(string roll, string type, string condition = "")
         {
             var data = DataIndexConstants.AttackData.DamageData.InitializeData();
 
             data[DataIndexConstants.AttackData.DamageData.RollIndex] = roll;
             data[DataIndexConstants.AttackData.DamageData.TypeIndex] = type;
+            data[DataIndexConstants.AttackData.DamageData.ConditionIndex] = condition;
 
             return data;
         }
@@ -25,7 +26,8 @@ namespace DnDGen.CreatureGen.Selectors.Helpers
         {
             return BuildKeyFromSections(creature,
                 data[DataIndexConstants.AttackData.DamageData.RollIndex],
-                data[DataIndexConstants.AttackData.DamageData.TypeIndex]);
+                data[DataIndexConstants.AttackData.DamageData.TypeIndex],
+                data[DataIndexConstants.AttackData.DamageData.ConditionIndex]);
         }
 
         public override bool ValidateEntry(string entry)
@@ -38,10 +40,17 @@ namespace DnDGen.CreatureGen.Selectors.Helpers
         public string BuildEntries(params string[] data)
         {
             var entries = new List<string>();
+            var init = DataIndexConstants.AttackData.DamageData.InitializeData();
 
-            for (var i = 0; i < data.Length; i += 2)
+            for (var i = 0; i < data.Length; i += init.Length)
             {
-                var subData = data.Skip(i).Take(2).ToArray();
+                var subData = data.Skip(i).Take(init.Length).ToArray();
+                if (subData.Length < init.Length)
+                {
+                    var empty = new string[init.Length - subData.Length];
+                    subData = subData.Concat(empty).ToArray();
+                }
+
                 var entry = BuildEntry(subData);
                 entries.Add(entry);
             }

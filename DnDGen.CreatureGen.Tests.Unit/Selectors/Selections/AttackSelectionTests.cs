@@ -74,7 +74,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         [Test]
         public void FromData_ReturnsSelection_WithDamage()
         {
-            var damageData = damageHelper.BuildData("my roll", "my damage type");
+            var damageData = damageHelper.BuildData("my roll", "my damage type", "my condition");
             var damageEntry = damageHelper.BuildEntry(damageData);
 
             var data = attackHelper.BuildData("name", damageEntry, "effect", 4.2, "attack type", 9266, "time period", true, true, true, true, string.Empty, string.Empty);
@@ -85,6 +85,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(selection.Damages, Has.Count.EqualTo(1));
             Assert.That(selection.Damages[0].Roll, Is.EqualTo("my roll"));
             Assert.That(selection.Damages[0].Type, Is.EqualTo("my damage type"));
+            Assert.That(selection.Damages[0].Condition, Is.EqualTo("my condition"));
             Assert.That(selection.DamageEffect, Is.EqualTo("effect"));
             Assert.That(selection.DamageBonusMultiplier, Is.EqualTo(4.2));
             Assert.That(selection.FrequencyQuantity, Is.EqualTo(9266));
@@ -102,10 +103,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         [Test]
         public void FromData_ReturnsSelection_WithMultipleDamages()
         {
-            var damageData1 = damageHelper.BuildData("my roll", "my damage type");
+            var damageData1 = damageHelper.BuildData("my roll", "my damage type", "my condition");
             var damageEntry1 = damageHelper.BuildEntry(damageData1);
 
-            var damageData2 = damageHelper.BuildData("my other roll", "my other damage type");
+            var damageData2 = damageHelper.BuildData("my other roll", "my other damage type", "my other condition");
             var damageEntry2 = damageHelper.BuildEntry(damageData2);
 
             var damageEntry = string.Join(AttackSelection.DamageSplitDivider, damageEntry1, damageEntry2);
@@ -118,8 +119,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(selection.Damages, Has.Count.EqualTo(2));
             Assert.That(selection.Damages[0].Roll, Is.EqualTo("my roll"));
             Assert.That(selection.Damages[0].Type, Is.EqualTo("my damage type"));
+            Assert.That(selection.Damages[0].Condition, Is.EqualTo("my condition"));
             Assert.That(selection.Damages[1].Roll, Is.EqualTo("my other roll"));
             Assert.That(selection.Damages[1].Type, Is.EqualTo("my other damage type"));
+            Assert.That(selection.Damages[1].Condition, Is.EqualTo("my other condition"));
             Assert.That(selection.DamageEffect, Is.EqualTo("effect"));
             Assert.That(selection.DamageBonusMultiplier, Is.EqualTo(4.2));
             Assert.That(selection.FrequencyQuantity, Is.EqualTo(9266));

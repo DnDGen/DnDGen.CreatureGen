@@ -1,6 +1,8 @@
 ﻿using DnDGen.CreatureGen.Selectors.Helpers;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using NUnit.Framework;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
@@ -19,17 +21,28 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
         [Test]
         public void BuildDataIntoArray()
         {
-            var data = helper.BuildData("my roll", "my damage type");
+            var data = helper.BuildData("my roll", "my damage type", "my condition");
             Assert.That(data[DataIndexConstants.AttackData.DamageData.RollIndex], Is.EqualTo("my roll"));
             Assert.That(data[DataIndexConstants.AttackData.DamageData.TypeIndex], Is.EqualTo("my damage type"));
+            Assert.That(data[DataIndexConstants.AttackData.DamageData.ConditionIndex], Is.EqualTo("my condition"));
+        }
+
+        [Test]
+        public void BuildDataIntoArray_NoCondition()
+        {
+            var data = helper.BuildData("my roll", "my damage type", string.Empty);
+            Assert.That(data[DataIndexConstants.AttackData.DamageData.RollIndex], Is.EqualTo("my roll"));
+            Assert.That(data[DataIndexConstants.AttackData.DamageData.TypeIndex], Is.EqualTo("my damage type"));
+            Assert.That(data[DataIndexConstants.AttackData.DamageData.ConditionIndex], Is.Empty);
         }
 
         [Test]
         public void BuildDataIntoArray_NoDamageType()
         {
-            var data = helper.BuildData("my roll", string.Empty);
+            var data = helper.BuildData("my roll", string.Empty, "my condition");
             Assert.That(data[DataIndexConstants.AttackData.DamageData.RollIndex], Is.EqualTo("my roll"));
             Assert.That(data[DataIndexConstants.AttackData.DamageData.TypeIndex], Is.Empty);
+            Assert.That(data[DataIndexConstants.AttackData.DamageData.ConditionIndex], Is.EqualTo("my condition"));
         }
 
         [Test]
@@ -43,15 +56,38 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
         [Test]
         public void BuildDataIntoString_SingleDamages()
         {
-            var dataString = helper.BuildEntries("1d3", "slashing");
-            Assert.That(dataString, Is.EqualTo("1d3#slashing"));
+            var dataString = helper.BuildEntries("1d3", "slashing", string.Empty);
+            Assert.That(dataString, Is.EqualTo("1d3#slashing#"));
+        }
+
+        [Test]
+        public void BuildDataIntoString_SingleDamages_WithImplicitEmptyConditional()
+        {
+            var implicitDataString = helper.BuildEntries("1d3", "slashing");
+            var explicitDataString = helper.BuildEntries("1d3", "slashing", string.Empty);
+
+            Assert.That(implicitDataString, Is.EqualTo("1d3#slashing#").And.EqualTo(explicitDataString));
+        }
+
+        [Test]
+        public void BuildDataIntoString_SingleDamages_WithCondition()
+        {
+            var dataString = helper.BuildEntries("1d3", "slashing", "sometimes");
+            Assert.That(dataString, Is.EqualTo("1d3#slashing#sometimes"));
         }
 
         [Test]
         public void BuildDataIntoString_MultipleDamages()
         {
-            var dataString = helper.BuildEntries("1d3", "slashing", "1d4", "acid");
-            Assert.That(dataString, Is.EqualTo("1d3#slashing,1d4#acid"));
+            var dataString = helper.BuildEntries("1d3", "slashing", string.Empty, "1d4", "acid");
+            Assert.That(dataString, Is.EqualTo("1d3#slashing#,1d4#acid#"));
+        }
+
+        [Test]
+        public void BuildDataIntoString_MultipleDamages_WithConditions()
+        {
+            var dataString = helper.BuildEntries("1d3", "slashing", "sometimes", "1d4", "acid", "occasionally");
+            Assert.That(dataString, Is.EqualTo("1d3#slashing#sometimes,1d4#acid#occasionally"));
         }
 
         [Test]
@@ -78,10 +114,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
         [Test]
         public void ParseEntries_Damage()
         {
-            var data = helper.ParseEntries("roll#damage type");
+            var data = helper.ParseEntries("roll#damage type#");
             Assert.That(data, Is.EqualTo(new[]
             {
-                new[] { "roll", "damage type" },
+                new[] { "roll", "damage type", string.Empty },
+            }));
+        }
+
+        [Test]
+        public void ParseEntries_DamageWithCondition()
+        {
+            var data = helper.ParseEntries("roll#damage type#condition");
+            Assert.That(data, Is.EqualTo(new[]
+            {
+                new[] { "roll", "damage type", "condition" },
             }));
         }
 
@@ -96,29 +142,44 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
             }));
         }
 
-        [TestCase("0", "holy")]
-        [TestCase("1d4", "")]
-        [TestCase("1d6", "emotional")]
-        public void BuildKey_FromData(string roll, string type)
+        [Test]
+        public void ParseEntries_MultipleDamagesWithConditions()
         {
-            var data = helper.ParseEntry($"{roll}#{type}");
-            var key = helper.BuildKey("creature", data);
-            Assert.That(key, Is.EqualTo($"creature{roll}{type}"));
+            var data = helper.ParseEntries("roll#damage type#condition,other roll#other damage type#other condition");
+            Assert.That(data, Is.EqualTo(new[]
+            {
+                new[] { "roll", "damage type", "condition" },
+                new[] { "other roll", "other damage type", "other condition" },
+            }));
         }
 
-        [TestCase("0", "holy")]
-        [TestCase("1d4", "")]
-        [TestCase("1d6", "emotional")]
-        public void BuildKeyFromSections(string roll, string type)
+        [TestCase("0", "holy", "")]
+        [TestCase("1d3", "", "sometimes")]
+        [TestCase("1d4", "", "")]
+        [TestCase("1d6", "emotional", "")]
+        [TestCase("1d8", "spiritual", "on Sundays")]
+        public void BuildKey_FromData(string roll, string type, string condition)
         {
-            var key = helper.BuildKeyFromSections("creature", roll, type);
-            Assert.That(key, Is.EqualTo($"creature{roll}{type}"));
+            var data = helper.ParseEntry($"{roll}#{type}#{condition}");
+            var key = helper.BuildKey("creature", data);
+            Assert.That(key, Is.EqualTo($"creature{roll}{type}{condition}"));
+        }
+
+        [TestCase("0", "holy", "")]
+        [TestCase("1d3", "", "sometimes")]
+        [TestCase("1d4", "", "")]
+        [TestCase("1d6", "emotional", "")]
+        [TestCase("1d8", "spiritual", "on Sundays")]
+        public void BuildKeyFromSections(string roll, string type, string condition)
+        {
+            var key = helper.BuildKeyFromSections("creature", roll, type, condition);
+            Assert.That(key, Is.EqualTo($"creature{roll}{type}{condition}"));
         }
 
         [TestCase(0, false)]
         [TestCase(1, false)]
-        [TestCase(2, true)]
-        [TestCase(3, false)]
+        [TestCase(2, false)]
+        [TestCase(3, true)]
         [TestCase(4, false)]
         [TestCase(5, false)]
         [TestCase(6, false)]
@@ -146,31 +207,46 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
 
         [TestCase(0, true)]
         [TestCase(1, false)]
-        [TestCase(2, true)]
-        [TestCase(3, false)]
-        [TestCase(4, true)]
+        [TestCase(2, false)]
+        [TestCase(3, true)]
+        [TestCase(4, false)]
         [TestCase(5, false)]
         [TestCase(6, true)]
         [TestCase(7, false)]
-        [TestCase(8, true)]
-        [TestCase(9, false)]
-        [TestCase(10, true)]
+        [TestCase(8, false)]
+        [TestCase(9, true)]
+        [TestCase(10, false)]
         [TestCase(11, false)]
         [TestCase(12, true)]
         [TestCase(13, false)]
-        [TestCase(14, true)]
-        [TestCase(15, false)]
-        [TestCase(16, true)]
+        [TestCase(14, false)]
+        [TestCase(15, true)]
+        [TestCase(16, false)]
         [TestCase(17, false)]
         [TestCase(18, true)]
         [TestCase(19, false)]
-        [TestCase(20, true)]
+        [TestCase(20, false)]
         public void ValidateEntries_IsValid(int length, bool isValid)
         {
             var data = Enumerable.Range(1, length).Select(i => i.ToString()).ToArray();
-            var entry = helper.BuildEntries(data);
+            var entry = BuildEntriesWithoutPadding(data);
             var valid = helper.ValidateEntries(entry);
             Assert.That(valid, Is.EqualTo(isValid));
+        }
+
+        private string BuildEntriesWithoutPadding(params string[] data)
+        {
+            var entries = new List<string>();
+            var init = DataIndexConstants.AttackData.DamageData.InitializeData();
+
+            for (var i = 0; i < data.Length; i += init.Length)
+            {
+                var subData = data.Skip(i).Take(init.Length).ToArray();
+                var entry = helper.BuildEntry(subData);
+                entries.Add(entry);
+            }
+
+            return string.Join(AttackSelection.DamageSplitDivider.ToString(), entries);
         }
     }
 }
