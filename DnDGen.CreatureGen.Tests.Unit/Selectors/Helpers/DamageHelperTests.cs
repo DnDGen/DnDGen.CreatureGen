@@ -1,4 +1,5 @@
-﻿using DnDGen.CreatureGen.Selectors.Helpers;
+﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Selectors.Helpers;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using NUnit.Framework;
@@ -91,10 +92,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
         }
 
         [Test]
+        public void BuildDataIntoString_MultipleDamages_WithoutDamageTypes()
+        {
+            var dataString = helper.BuildEntries("1d3", string.Empty, string.Empty, "1d4", "acid", "occasionally");
+            Assert.That(dataString, Is.EqualTo("1d3##,1d4#acid#occasionally"));
+        }
+
+        [Test]
         public void BuildDataIntoString_NoDamages()
         {
             var dataString = helper.BuildEntries();
             Assert.That(dataString, Is.Empty);
+        }
+
+        [TestCase("2d10##,1d4#Charisma#", "2d10", "", "", "1d4", AbilityConstants.Charisma)]
+        public void BuildEntries_RealExample(string expected, params string[] data)
+        {
+            var dataString = helper.BuildEntries(data);
+            Assert.That(dataString, Is.EqualTo(expected));
         }
 
         [Test]

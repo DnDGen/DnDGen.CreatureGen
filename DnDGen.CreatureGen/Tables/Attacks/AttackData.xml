@@ -5036,11 +5036,11 @@
   </collection>
   <collection>
     <name>Ghost</name>
-    <entry>Corrupting Gaze@2d10#1d4#Charisma@True@False@True@True@1@Round (6 seconds)@Charisma@Fortitude@supernatural ability@@0@0</entry>
-    <entry>Corrupting Touch@1d6@True@True@False@True@1@Hit@@@supernatural ability@@0@0</entry>
-    <entry>Draining Touch@1d4 Ability points (of ghost's choosing)@True@True@False@True@1@Hit@@@supernatural ability@Ghost heals 5 points of damage@0@0</entry>
+    <entry>Corrupting Gaze@2d10##,1d4#Charisma#@True@False@True@True@1@Round (6 seconds)@Charisma@Fortitude@supernatural ability@@0@0</entry>
+    <entry>Corrupting Touch@1d##6@True@True@False@True@1@Hit@@@supernatural ability@@0@0</entry>
+    <entry>Draining Touch@1d4#Ability points (of ghost's choosing)#@True@True@False@True@1@Hit@@@supernatural ability@Ghost heals 5 points of damage@0@0</entry>
     <entry>Frightful Moan@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@Panic for 2d4 rounds@0@0</entry>
-    <entry>Horrific Appearance@1d4#Strength,1d4#Dexterity,1d4#Constitution@True@False@False@True@1@Round (6 seconds)@Charisma@Fortitude@supernatural ability@@0@0</entry>
+    <entry>Horrific Appearance@1d4#Strength#,1d4#Dexterity#,1d4#Constitution#@True@False@False@True@1@Round (6 seconds)@Charisma@Fortitude@supernatural ability@@0@0</entry>
     <entry>Malevolence@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@@0@5</entry>
     <entry>Manifestation@@True@False@True@True@1@Round (6 seconds)@@@supernatural ability@@0@0</entry>
     <entry>Telekinesis@@True@False@True@True@1@1d4 Round (6 seconds)@Charisma@Will@supernatural ability@Panic for 2d4 rounds@0@0</entry>
@@ -5052,74 +5052,74 @@
   </collection>
   <collection>
     <name>Half-Dragon (Black)</name>
-    <entry>Claw@1d4#Slashing@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@1d6#Piercing@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@6d8#Acid@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Claw@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8#Acid#@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Half-Dragon (Blue)</name>
-    <entry>Claw@1d4#Slashing@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@1d6#Piercing@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@6d8#Electricity@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Claw@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8#Electricity#@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Half-Dragon (Green)</name>
-    <entry>Claw@1d4#Slashing@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@1d6#Piercing@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@6d8#Acid gas@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Claw@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8#Acid gas#@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Half-Dragon (Red)</name>
-    <entry>Claw@1d4#Slashing@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@1d6#Piercing@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@6d8#Fire@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Claw@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8#Fire#@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Half-Dragon (White)</name>
-    <entry>Claw@1d4#Slashing@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@1d6#Piercing@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@6d8#Cold@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Claw@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8#Cold#@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Half-Dragon (Brass)</name>
-    <entry>Claw@1d4#Slashing@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@1d6#Piercing@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@6d8#Fire@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Claw@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8#Fire#@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Half-Dragon (Bronze)</name>
-    <entry>Claw@1d4#Slashing@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@1d6#Piercing@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@6d8#Electricity@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Claw@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8#Electricity#@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Half-Dragon (Copper)</name>
-    <entry>Claw@1d4#Slashing@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@1d6#Piercing@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@6d8#Acid@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Claw@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8#Acid#@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Half-Dragon (Gold)</name>
-    <entry>Claw@1d4#Slashing@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@1d6#Piercing@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@6d8#Fire@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Claw@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8#Fire#@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Half-Dragon (Silver)</name>
-    <entry>Claw@1d4#Slashing@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@1d6#Piercing@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@6d8#Cold@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Claw@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Breath Weapon@6d8#Cold#@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Half-Fiend</name>
-    <entry>Claw@1d4#Slashing@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite@1d6#Piercing@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Claw@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Smite Good@@True@True@True@True@1@Day@@@supernatural ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Lich</name>
-    <entry>Touch@1d8+5@True@True@True@False@1@Round (6 seconds)@Charisma@Will@melee@Paralyzing Touch@0@0</entry>
+    <entry>Touch@1d8+5##@True@True@True@False@1@Round (6 seconds)@Charisma@Will@melee@Paralyzing Touch@0@0</entry>
     <entry>Fear Aura@@True@False@False@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@Fear@0@0</entry>
     <entry>Paralyzing Touch@@True@True@False@True@1@Hit@Charisma@Fortitude@supernatural ability@Paralyzed@0@0</entry>
   </collection>
@@ -5138,84 +5138,84 @@
   </collection>
   <collection>
     <name>Lycanthrope, Brown Bear (Werebear, Afflicted)</name>
-    <entry>Claw (in Hybrid form)@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite (in Hybrid form)@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Brown Bear (Werebear, Natural)</name>
-    <entry>Claw (in Hybrid form)@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite (in Hybrid form)@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
+    <entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
     <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Boar (Wereboar, Afflicted)</name>
-    <entry>Claw (in Hybrid form)@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Gore (in Hybrid form)@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Gore (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Boar (Wereboar, Natural)</name>
-    <entry>Claw (in Hybrid form)@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Gore (in Hybrid form)@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
+    <entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Gore (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
     <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)</name>
-    <entry>Claw (in Hybrid form)@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Gore (in Hybrid form)@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
+    <entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Gore (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
     <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)</name>
-    <entry>Claw (in Hybrid form)@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Gore (in Hybrid form)@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Gore (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Dire Rat (Wererat, Afflicted)</name>
-    <entry>Claw (in Hybrid form)@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite (in Hybrid form)@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Dire Rat (Wererat, Natural)</name>
-    <entry>Claw (in Hybrid form)@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite (in Hybrid form)@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
+    <entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
     <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Tiger (Weretiger, Afflicted)</name>
-    <entry>Claw (in Hybrid form)@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite (in Hybrid form)@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Tiger (Weretiger, Natural)</name>
-    <entry>Claw (in Hybrid form)@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite (in Hybrid form)@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
+    <entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
     <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Wolf (Werewolf, Afflicted)</name>
-    <entry>Claw (in Hybrid form)@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite (in Hybrid form)@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Wolf (Werewolf, Natural)</name>
-    <entry>Claw (in Hybrid form)@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite (in Hybrid form)@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
+    <entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
     <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)</name>
-    <entry>Claw (in Hybrid form)@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite (in Hybrid form)@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Dire Wolf (Dire Werewolf, Natural)</name>
-    <entry>Claw (in Hybrid form)@1d4@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Bite (in Hybrid form)@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
+    <entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
     <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
   </collection>
   <collection>
     <name>Zombie</name>
-    <entry>Slam@1d6@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
   </collection>
   <collection>
     <name></name>

@@ -720,7 +720,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             {
                 Assert.That(attack.Damages[i].Roll, Is.EqualTo(adjustedDamages[i][DataIndexConstants.AttackData.DamageData.RollIndex]));
                 Assert.That(attack.Damages[i].Type, Is.EqualTo(adjustedDamages[i][DataIndexConstants.AttackData.DamageData.TypeIndex]));
-                Assert.That(attack.Damages[i].Condition, Is.Empty);
+                Assert.That(attack.Damages[i].Condition, Is.EqualTo(adjustedDamages[i][DataIndexConstants.AttackData.DamageData.ConditionIndex]));
             }
 
             Assert.That(attack.IsNatural, Is.True);

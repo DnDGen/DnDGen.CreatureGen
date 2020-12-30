@@ -38,11 +38,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                     string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
 
                 testCases[CreatureConstants.Templates.Ghost].Add(attackHelper.BuildData("Corrupting Gaze",
-                    damageHelper.BuildEntries("2d10", string.Empty, "1d4", AbilityConstants.Charisma),
+                    damageHelper.BuildEntries(
+                        "2d10", string.Empty, string.Empty,
+                        "1d4", AbilityConstants.Charisma),
                     string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true,
                     SaveConstants.Fortitude, AbilityConstants.Charisma));
                 testCases[CreatureConstants.Templates.Ghost].Add(attackHelper.BuildData("Corrupting Touch",
-                    damageHelper.BuildEntries("1d6", string.Empty),
+                    damageHelper.BuildEntries("1d6"),
                     string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
                 testCases[CreatureConstants.Templates.Ghost].Add(attackHelper.BuildData("Draining Touch",
                     damageHelper.BuildEntries("1d4", "Ability points (of ghost's choosing)"),
@@ -52,7 +54,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                     "Panic for 2d4 rounds", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true,
                     SaveConstants.Will, AbilityConstants.Charisma));
                 testCases[CreatureConstants.Templates.Ghost].Add(attackHelper.BuildData("Horrific Appearance",
-                    damageHelper.BuildEntries("1d4", AbilityConstants.Strength, "1d4", AbilityConstants.Dexterity, "1d4", AbilityConstants.Constitution),
+                    damageHelper.BuildEntries(
+                        "1d4", AbilityConstants.Strength, string.Empty,
+                        "1d4", AbilityConstants.Dexterity, string.Empty,
+                        "1d4", AbilityConstants.Constitution),
                     string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true,
                     SaveConstants.Fortitude, AbilityConstants.Charisma));
                 testCases[CreatureConstants.Templates.Ghost].Add(attackHelper.BuildData("Malevolence",
@@ -198,7 +203,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                     string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
 
                 testCases[CreatureConstants.Templates.Lich].Add(attackHelper.BuildData("Touch",
-                    damageHelper.BuildEntries("1d8+5", string.Empty),
+                    damageHelper.BuildEntries("1d8+5"),
                     "Paralyzing Touch", 0, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false, SaveConstants.Will, AbilityConstants.Charisma));
                 testCases[CreatureConstants.Templates.Lich].Add(attackHelper.BuildData("Fear Aura",
                     string.Empty,
@@ -1372,42 +1377,52 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Beholder_Gauth].Add(attackHelper.BuildData("Eye ray", string.Empty, "Paralysis", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Fortitude, AbilityConstants.Charisma));
                 testCases[CreatureConstants.Beholder_Gauth].Add(attackHelper.BuildData("Eye ray", string.Empty, SpellConstants.RayOfExhaustion, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
-                testCases[CreatureConstants.Belker].Add(attackHelper.BuildData("Wing", $"1d6", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Belker].Add(attackHelper.BuildData("Bite", $"1d4", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Belker].Add(attackHelper.BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Belker].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Belker].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Belker].Add(attackHelper.BuildData("Smoke Claw", $"3d4", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
+                testCases[CreatureConstants.Belker].Add(attackHelper.BuildData("Smoke Claw", damageHelper.BuildEntries("3d4"), string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
-                testCases[CreatureConstants.Bison].Add(attackHelper.BuildData("Gore", $"1d8", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Bison].Add(attackHelper.BuildData("Gore", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Bison].Add(attackHelper.BuildData("Stampede", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, SaveConstants.Reflex, AbilityConstants.Strength));
 
-                testCases[CreatureConstants.BlackPudding].Add(attackHelper.BuildData("Slam", "2d6", "2d6 acid", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.BlackPudding].Add(attackHelper.BuildData("Slam",
+                    damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning, string.Empty, "2d6", FeatConstants.Foci.Elements.Acid),
+                    string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.BlackPudding].Add(attackHelper.BuildData("Acid", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
-                testCases[CreatureConstants.BlackPudding].Add(attackHelper.BuildData("Constrict", "2d6", "2d6 acid", 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                testCases[CreatureConstants.BlackPudding].Add(attackHelper.BuildData("Constrict",
+                    damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning, string.Empty, "2d6", FeatConstants.Foci.Elements.Acid),
+                    string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
                 testCases[CreatureConstants.BlackPudding].Add(attackHelper.BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
-                testCases[CreatureConstants.BlackPudding_Elder].Add(attackHelper.BuildData("Slam", "3d6", "3d6 acid", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.BlackPudding_Elder].Add(attackHelper.BuildData("Slam",
+                    damageHelper.BuildEntries("3d6", AttributeConstants.DamageTypes.Bludgeoning, string.Empty, "3d6", FeatConstants.Foci.Elements.Acid),
+                    string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.BlackPudding_Elder].Add(attackHelper.BuildData("Acid", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, SaveConstants.Reflex, AbilityConstants.Constitution));
-                testCases[CreatureConstants.BlackPudding_Elder].Add(attackHelper.BuildData("Constrict", "3d6", "3d6 acid", 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                testCases[CreatureConstants.BlackPudding_Elder].Add(attackHelper.BuildData("Constrict",
+                    damageHelper.BuildEntries("3d6", AttributeConstants.DamageTypes.Bludgeoning, string.Empty, "3d6", FeatConstants.Foci.Elements.Acid),
+                    string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
                 testCases[CreatureConstants.BlackPudding_Elder].Add(attackHelper.BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
                 testCases[CreatureConstants.BlinkDog].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.BlinkDog].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
-                testCases[CreatureConstants.Boar].Add(attackHelper.BuildData("Gore", $"1d8", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Boar].Add(attackHelper.BuildData("Gore", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Boar].Add(attackHelper.BuildData("Ferocity", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
-                testCases[CreatureConstants.Boar_Dire].Add(attackHelper.BuildData("Gore", $"1d8", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Boar_Dire].Add(attackHelper.BuildData("Gore", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Boar_Dire].Add(attackHelper.BuildData("Ferocity", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
                 testCases[CreatureConstants.Bodak].Add(attackHelper.BuildData("Slam", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Bodak].Add(attackHelper.BuildData("Death Gaze", string.Empty, "Death", 1.5, "melee", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Fortitude, AbilityConstants.Charisma));
 
-                testCases[CreatureConstants.BombardierBeetle_Giant].Add(attackHelper.BuildData("Bite", $"1d4", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.BombardierBeetle_Giant].Add(attackHelper.BuildData("Acid Spray", $"1d4 acid", string.Empty, 2, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, false, SaveConstants.Fortitude, AbilityConstants.Constitution));
+                testCases[CreatureConstants.BombardierBeetle_Giant].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.BombardierBeetle_Giant].Add(attackHelper.BuildData("Acid Spray",
+                    damageHelper.BuildEntries("1d4", FeatConstants.Foci.Elements.Acid),
+                    string.Empty, 2, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, false, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
                 testCases[CreatureConstants.BoneDevil_Osyluth].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.BoneDevil_Osyluth].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.BoneDevil_Osyluth].Add(attackHelper.BuildData("Sting", $"3d4", "Poison", 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.BoneDevil_Osyluth].Add(attackHelper.BuildData("Sting", damageHelper.BuildEntries("3d4", AttributeConstants.DamageTypes.Piercing), "Poison", 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.BoneDevil_Osyluth].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
                 testCases[CreatureConstants.BoneDevil_Osyluth].Add(attackHelper.BuildData("Fear Aura", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Will, AbilityConstants.Charisma));
                 testCases[CreatureConstants.BoneDevil_Osyluth].Add(attackHelper.BuildData("Poison", string.Empty, "Initial damage 1d6 Str, Secondary damage 2d6 Str", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
@@ -1417,7 +1432,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Bralani].Add(attackHelper.BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
                 testCases[CreatureConstants.Bralani].Add(attackHelper.BuildData("Slam", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Bralani].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
-                testCases[CreatureConstants.Bralani].Add(attackHelper.BuildData("Whirlwind blast", $"3d6", string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Bralani].Add(attackHelper.BuildData("Whirlwind blast",
+                    damageHelper.BuildEntries("3d6", AttributeConstants.DamageTypes.Bludgeoning),
+                    string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
 
                 testCases[CreatureConstants.Bugbear].Add(attackHelper.BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
                 testCases[CreatureConstants.Bugbear].Add(attackHelper.BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
@@ -1427,9 +1444,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Bulette].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Bulette].Add(attackHelper.BuildData("Leap", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
-                testCases[CreatureConstants.Camel_Bactrian].Add(attackHelper.BuildData("Bite", $"1d4", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Camel_Bactrian].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
-                testCases[CreatureConstants.Camel_Dromedary].Add(attackHelper.BuildData("Bite", $"1d4", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Camel_Dromedary].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
                 testCases[CreatureConstants.CarrionCrawler].Add(attackHelper.BuildData("Tentacle", string.Empty, "Paralysis", 0, "melee", 8, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.CarrionCrawler].Add(attackHelper.BuildData("Bite", "1d4", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
@@ -1440,13 +1457,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
                 testCases[CreatureConstants.Centaur].Add(attackHelper.BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
                 testCases[CreatureConstants.Centaur].Add(attackHelper.BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-                testCases[CreatureConstants.Centaur].Add(attackHelper.BuildData("Unarmed Strike", "1d4", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Centaur].Add(attackHelper.BuildData("Hoof", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Centaur].Add(attackHelper.BuildData("Unarmed Strike", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Centaur].Add(attackHelper.BuildData("Hoof",
+                    damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning),
+                    string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
 
                 testCases[CreatureConstants.Centipede_Monstrous_Tiny].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Piercing), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Centipede_Monstrous_Tiny].Add(attackHelper.BuildData("Poison", string.Empty, "Initial and secondary damage 1 Dex", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, false, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
 
-                testCases[CreatureConstants.Centipede_Monstrous_Small].Add(attackHelper.BuildData("Bite", $"1d4", "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Centipede_Monstrous_Small].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Centipede_Monstrous_Small].Add(attackHelper.BuildData("Poison", string.Empty, "Initial and secondary damage 1d2 Dex", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, false, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
 
                 testCases[CreatureConstants.Centipede_Monstrous_Medium].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
@@ -1482,31 +1501,31 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
                 testCases[CreatureConstants.Chimera_Black].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Chimera_Black].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Chimera_Black].Add(attackHelper.BuildData("Gore", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Chimera_Black].Add(attackHelper.BuildData("Gore", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Chimera_Black].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Chimera_Black].Add(attackHelper.BuildData("Breath weapon", $"3d8 acid", string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
 
                 testCases[CreatureConstants.Chimera_Blue].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Chimera_Blue].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Chimera_Blue].Add(attackHelper.BuildData("Gore", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Chimera_Blue].Add(attackHelper.BuildData("Gore", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Chimera_Blue].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Chimera_Blue].Add(attackHelper.BuildData("Breath weapon", $"3d8 electricity", string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
 
                 testCases[CreatureConstants.Chimera_Green].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Chimera_Green].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Chimera_Green].Add(attackHelper.BuildData("Gore", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Chimera_Green].Add(attackHelper.BuildData("Gore", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Chimera_Green].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Chimera_Green].Add(attackHelper.BuildData("Breath weapon", $"3d8 acid", string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
 
                 testCases[CreatureConstants.Chimera_Red].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Chimera_Red].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Chimera_Red].Add(attackHelper.BuildData("Gore", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Chimera_Red].Add(attackHelper.BuildData("Gore", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Chimera_Red].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Chimera_Red].Add(attackHelper.BuildData("Breath weapon", $"3d8 fire", string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
 
                 testCases[CreatureConstants.Chimera_White].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Chimera_White].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Chimera_White].Add(attackHelper.BuildData("Gore", $"1d8", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Chimera_White].Add(attackHelper.BuildData("Gore", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Chimera_White].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Chimera_White].Add(attackHelper.BuildData("Breath weapon", $"3d8 cold", string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
 
@@ -1520,11 +1539,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Chuul].Add(attackHelper.BuildData("Paralytic Tentacles", "1d8", "6 round paralysis", 0.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
 
                 testCases[CreatureConstants.Cloaker].Add(attackHelper.BuildData("Tail slap", $"1d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Cloaker].Add(attackHelper.BuildData("Bite", $"1d4", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Cloaker].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Cloaker].Add(attackHelper.BuildData("Moan", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, saveAbility: AbilityConstants.Charisma));
                 testCases[CreatureConstants.Cloaker].Add(attackHelper.BuildData("Engulf", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
-                testCases[CreatureConstants.Cockatrice].Add(attackHelper.BuildData("Bite", $"1d4", "Petrification", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Cockatrice].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), "Petrification", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Cockatrice].Add(attackHelper.BuildData("Petrification", string.Empty, string.Empty, 1, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
 
                 testCases[CreatureConstants.Couatl].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Piercing), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -1631,7 +1650,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Djinni_Noble].Add(attackHelper.BuildData("Whirlwind", string.Empty, string.Empty, 0, "supernatural ability", 1, $"10 {FeatConstants.Frequencies.Minute}", false, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Reflex, saveDcBonus: 3));
                 testCases[CreatureConstants.Djinni_Noble].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
-                testCases[CreatureConstants.Dog].Add(attackHelper.BuildData("Bite", $"1d4", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dog].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
 
                 testCases[CreatureConstants.Dog_Riding].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
 
@@ -1647,7 +1666,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.DragonTurtle].Add(attackHelper.BuildData("Capsize", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
                 //Tiny
-                testCases[CreatureConstants.Dragon_Black_Wyrmling].Add(attackHelper.BuildData("Bite", $"1d4", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Black_Wyrmling].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_Black_Wyrmling].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Black_Wyrmling].Add(attackHelper.BuildData("Breath Weapon", $"2d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
 
@@ -1672,7 +1691,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 //large
                 testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(attackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(attackHelper.BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(attackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(attackHelper.BuildData("Breath Weapon", $"10d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.Dragon_Black_YoungAdult].Add(attackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
@@ -1682,7 +1701,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 //large
                 testCases[CreatureConstants.Dragon_Black_Adult].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_Black_Adult].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Dragon_Black_Adult].Add(attackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Black_Adult].Add(attackHelper.BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Black_Adult].Add(attackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Black_Adult].Add(attackHelper.BuildData("Breath Weapon", $"12d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.Dragon_Black_Adult].Add(attackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
@@ -1777,7 +1796,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 //large
                 testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(attackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(attackHelper.BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(attackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(attackHelper.BuildData("Breath Weapon", $"8d8 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.Dragon_Blue_Juvenile].Add(attackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
@@ -1785,7 +1804,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 //large
                 testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(attackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(attackHelper.BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(attackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(attackHelper.BuildData("Breath Weapon", $"10d8 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.Dragon_Blue_YoungAdult].Add(attackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
@@ -1891,7 +1910,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 //large
                 testCases[CreatureConstants.Dragon_Green_Juvenile].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_Green_Juvenile].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Dragon_Green_Juvenile].Add(attackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_Juvenile].Add(attackHelper.BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Green_Juvenile].Add(attackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Green_Juvenile].Add(attackHelper.BuildData("Breath Weapon", $"8d6 gas (acid)", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.Dragon_Green_Juvenile].Add(attackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
@@ -1899,7 +1918,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 //large
                 testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(attackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(attackHelper.BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(attackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(attackHelper.BuildData("Breath Weapon", $"10d6 gas (acid)", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.Dragon_Green_YoungAdult].Add(attackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
@@ -1994,14 +2013,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 //large
                 testCases[CreatureConstants.Dragon_Red_VeryYoung].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_Red_VeryYoung].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Dragon_Red_VeryYoung].Add(attackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_VeryYoung].Add(attackHelper.BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Red_VeryYoung].Add(attackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Red_VeryYoung].Add(attackHelper.BuildData("Breath Weapon", $"4d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
 
                 //large
                 testCases[CreatureConstants.Dragon_Red_Young].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_Red_Young].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Dragon_Red_Young].Add(attackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_Young].Add(attackHelper.BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Red_Young].Add(attackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Red_Young].Add(attackHelper.BuildData("Breath Weapon", $"6d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.Dragon_Red_Young].Add(attackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
@@ -2009,7 +2028,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 //large
                 testCases[CreatureConstants.Dragon_Red_Juvenile].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_Red_Juvenile].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Dragon_Red_Juvenile].Add(attackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Red_Juvenile].Add(attackHelper.BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Red_Juvenile].Add(attackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Red_Juvenile].Add(attackHelper.BuildData("Breath Weapon", $"8d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.Dragon_Red_Juvenile].Add(attackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
@@ -2109,7 +2128,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Dragon_Red_GreatWyrm].Add(attackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
                 //tiny
-                testCases[CreatureConstants.Dragon_White_Wyrmling].Add(attackHelper.BuildData("Bite", $"1d4", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_White_Wyrmling].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_White_Wyrmling].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_White_Wyrmling].Add(attackHelper.BuildData("Breath Weapon", $"1d6 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
 
@@ -2134,7 +2153,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 //large
                 testCases[CreatureConstants.Dragon_White_YoungAdult].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_White_YoungAdult].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Dragon_White_YoungAdult].Add(attackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_YoungAdult].Add(attackHelper.BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_White_YoungAdult].Add(attackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_White_YoungAdult].Add(attackHelper.BuildData("Breath Weapon", $"5d6 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.Dragon_White_YoungAdult].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
@@ -2143,7 +2162,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 //large
                 testCases[CreatureConstants.Dragon_White_Adult].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_White_Adult].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Dragon_White_Adult].Add(attackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_White_Adult].Add(attackHelper.BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_White_Adult].Add(attackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_White_Adult].Add(attackHelper.BuildData("Breath Weapon", $"6d6 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.Dragon_White_Adult].Add(attackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
@@ -2219,7 +2238,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Dragon_White_GreatWyrm].Add(attackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
                 //tiny
-                testCases[CreatureConstants.Dragon_Brass_Wyrmling].Add(attackHelper.BuildData("Bite", $"1d4", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Brass_Wyrmling].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_Brass_Wyrmling].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Brass_Wyrmling].Add(attackHelper.BuildData("Breath Weapon (fire)", $"1d6 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.Dragon_Brass_Wyrmling].Add(attackHelper.BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+1 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
@@ -2253,7 +2272,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 //large
                 testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(attackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(attackHelper.BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(attackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(attackHelper.BuildData("Breath Weapon (fire)", $"5d6 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.Dragon_Brass_YoungAdult].Add(attackHelper.BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+5 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
@@ -2264,7 +2283,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 //large
                 testCases[CreatureConstants.Dragon_Brass_Adult].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_Brass_Adult].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Dragon_Brass_Adult].Add(attackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Brass_Adult].Add(attackHelper.BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Brass_Adult].Add(attackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Brass_Adult].Add(attackHelper.BuildData("Breath Weapon (fire)", $"6d6 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.Dragon_Brass_Adult].Add(attackHelper.BuildData("Breath Weapon (sleep)", string.Empty, "Sleep for 1d6+6 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
@@ -2373,7 +2392,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 //large
                 testCases[CreatureConstants.Dragon_Bronze_Juvenile].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_Bronze_Juvenile].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Dragon_Bronze_Juvenile].Add(attackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_Juvenile].Add(attackHelper.BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Bronze_Juvenile].Add(attackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Bronze_Juvenile].Add(attackHelper.BuildData("Breath Weapon (electricity)", $"8d6 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.Dragon_Bronze_Juvenile].Add(attackHelper.BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+4 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
@@ -2383,7 +2402,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 //large
                 testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(attackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(attackHelper.BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(attackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(attackHelper.BuildData("Breath Weapon (electricity)", $"10d6 electricity", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.Dragon_Bronze_YoungAdult].Add(attackHelper.BuildData("Breath Weapon (repulsion gas)", string.Empty, "Compelled for 1d6+5 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
@@ -2479,7 +2498,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Dragon_Bronze_GreatWyrm].Add(attackHelper.BuildData("Frightful Presence", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
 
                 //tiny
-                testCases[CreatureConstants.Dragon_Copper_Wyrmling].Add(attackHelper.BuildData("Bite", $"1d4", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Dragon_Copper_Wyrmling].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_Copper_Wyrmling].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Copper_Wyrmling].Add(attackHelper.BuildData("Breath Weapon (acid)", $"2d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.Dragon_Copper_Wyrmling].Add(attackHelper.BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed for 1d6+1 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
@@ -2509,7 +2528,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 //large
                 testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(attackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(attackHelper.BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(attackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(attackHelper.BuildData("Breath Weapon (acid)", $"10d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.Dragon_Copper_YoungAdult].Add(attackHelper.BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed for 1d6+5 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
@@ -2518,7 +2537,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 //large
                 testCases[CreatureConstants.Dragon_Copper_Adult].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_Copper_Adult].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Dragon_Copper_Adult].Add(attackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Copper_Adult].Add(attackHelper.BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Copper_Adult].Add(attackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Copper_Adult].Add(attackHelper.BuildData("Breath Weapon (acid)", $"12d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.Dragon_Copper_Adult].Add(attackHelper.BuildData("Breath Weapon (slow gas)", string.Empty, "Slowed for 1d6+6 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
@@ -2610,7 +2629,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 //large
                 testCases[CreatureConstants.Dragon_Gold_VeryYoung].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_Gold_VeryYoung].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Dragon_Gold_VeryYoung].Add(attackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_VeryYoung].Add(attackHelper.BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Gold_VeryYoung].Add(attackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Gold_VeryYoung].Add(attackHelper.BuildData("Breath Weapon (fire)", $"4d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.Dragon_Gold_VeryYoung].Add(attackHelper.BuildData("Breath Weapon (weakening gas)", string.Empty, "2 Strength", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
@@ -2618,7 +2637,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 //large
                 testCases[CreatureConstants.Dragon_Gold_Young].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_Gold_Young].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Dragon_Gold_Young].Add(attackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_Young].Add(attackHelper.BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Gold_Young].Add(attackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Gold_Young].Add(attackHelper.BuildData("Breath Weapon (fire)", $"6d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.Dragon_Gold_Young].Add(attackHelper.BuildData("Breath Weapon (weakening gas)", string.Empty, "3 Strength", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
@@ -2627,7 +2646,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 //large
                 testCases[CreatureConstants.Dragon_Gold_Juvenile].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_Gold_Juvenile].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Dragon_Gold_Juvenile].Add(attackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Gold_Juvenile].Add(attackHelper.BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Gold_Juvenile].Add(attackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Gold_Juvenile].Add(attackHelper.BuildData("Breath Weapon (fire)", $"8d10 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.Dragon_Gold_Juvenile].Add(attackHelper.BuildData("Breath Weapon (weakening gas)", string.Empty, "4 Strength", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
@@ -2759,7 +2778,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 //large
                 testCases[CreatureConstants.Dragon_Silver_Juvenile].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_Silver_Juvenile].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Dragon_Silver_Juvenile].Add(attackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_Juvenile].Add(attackHelper.BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Silver_Juvenile].Add(attackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Silver_Juvenile].Add(attackHelper.BuildData("Breath Weapon (cold)", $"8d8 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.Dragon_Silver_Juvenile].Add(attackHelper.BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+4 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
@@ -2769,7 +2788,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 //large
                 testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(attackHelper.BuildData("Wing", $"1d6", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(attackHelper.BuildData("Wing", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(attackHelper.BuildData("Tail Slap", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(attackHelper.BuildData("Breath Weapon (cold)", $"10d8 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.Dragon_Silver_YoungAdult].Add(attackHelper.BuildData("Breath Weapon (paralyzing gas)", string.Empty, "Paralyzed for 1d6+5 rounds", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
@@ -2870,13 +2889,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Dragonne].Add(attackHelper.BuildData("Roar", string.Empty, string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, SaveConstants.Will, AbilityConstants.Charisma));
 
                 testCases[CreatureConstants.Dretch].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Slashing), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Dretch].Add(attackHelper.BuildData("Bite", $"1d4", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Dretch].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Dretch].Add(attackHelper.BuildData("Summon Demon", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
                 testCases[CreatureConstants.Dretch].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
                 testCases[CreatureConstants.Drider].Add(attackHelper.BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
                 testCases[CreatureConstants.Drider].Add(attackHelper.BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-                testCases[CreatureConstants.Drider].Add(attackHelper.BuildData("Bite", $"1d4", "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Drider].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Drider].Add(attackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
                 testCases[CreatureConstants.Drider].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
                 testCases[CreatureConstants.Drider].Add(attackHelper.BuildData("Poison", string.Empty, "Initial and secondary damage 1d6 Str", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
@@ -2904,7 +2923,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Dwarf_Mountain].Add(attackHelper.BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
 
                 testCases[CreatureConstants.Eagle].Add(attackHelper.BuildData("Talons", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Eagle].Add(attackHelper.BuildData("Bite", $"1d4", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Eagle].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
                 testCases[CreatureConstants.Eagle_Giant].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Slashing), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Eagle_Giant].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
@@ -3175,7 +3194,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Erinyes].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
                 testCases[CreatureConstants.Erinyes].Add(attackHelper.BuildData("Summon Devil", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
 
-                testCases[CreatureConstants.EtherealFilcher].Add(attackHelper.BuildData("Bite", $"1d4", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.EtherealFilcher].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.EtherealFilcher].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
                 testCases[CreatureConstants.EtherealMarauder].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -3188,16 +3207,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
                 testCases[CreatureConstants.Ettin].Add(attackHelper.BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 2, FeatConstants.Frequencies.Round, true, false, true, false));
                 testCases[CreatureConstants.Ettin].Add(attackHelper.BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 2, FeatConstants.Frequencies.Round, false, false, true, false));
-                testCases[CreatureConstants.Ettin].Add(attackHelper.BuildData("Unarmed Strike", "1d4", string.Empty, 1.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Ettin].Add(attackHelper.BuildData("Unarmed Strike", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
 
                 testCases[CreatureConstants.FireBeetle_Giant].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d4", AttributeConstants.DamageTypes.Piercing), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
 
-                testCases[CreatureConstants.FormianWorker].Add(attackHelper.BuildData("Bite", $"1d4", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.FormianWorker].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.FormianWorker].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
                 testCases[CreatureConstants.FormianWarrior].Add(attackHelper.BuildData("Sting", $"2d4", "Poison", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.FormianWarrior].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.FormianWarrior].Add(attackHelper.BuildData("Bite", $"1d4", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.FormianWarrior].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.FormianWarrior].Add(attackHelper.BuildData("Poison", string.Empty, "Initial and secondary damage 1d6 Str", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
 
                 testCases[CreatureConstants.FormianTaskmaster].Add(attackHelper.BuildData("Sting", $"2d4", "Poison", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -3392,7 +3411,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Golem_Stone_Greater].Add(attackHelper.BuildData("Slam", $"4d8", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Golem_Stone_Greater].Add(attackHelper.BuildData("Slow", string.Empty, string.Empty, 0, "supernatural ability", 1, $"2 {FeatConstants.Frequencies.Round}", true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Will));
 
-                testCases[CreatureConstants.Gorgon].Add(attackHelper.BuildData("Gore", $"1d8", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Gorgon].Add(attackHelper.BuildData("Gore", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Gorgon].Add(attackHelper.BuildData("Breath weapon", string.Empty, "Turn to stone", 0, "supernatural ability", 5, FeatConstants.Frequencies.Day, false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
                 testCases[CreatureConstants.Gorgon].Add(attackHelper.BuildData("Trample", "1d8", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
@@ -3683,7 +3702,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Leopard].Add(attackHelper.BuildData("Rake", $"1d3", string.Empty, 0.5, "extraordinary ability", 2, FeatConstants.Frequencies.Round, true, true, true, true));
 
                 testCases[CreatureConstants.Lillend].Add(attackHelper.BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-                testCases[CreatureConstants.Lillend].Add(attackHelper.BuildData("Unarmed Strike", "1d4", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Lillend].Add(attackHelper.BuildData("Unarmed Strike", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Lillend].Add(attackHelper.BuildData("Tail slap", $"2d6", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Lillend].Add(attackHelper.BuildData("Constrict", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
                 testCases[CreatureConstants.Lillend].Add(attackHelper.BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
@@ -3702,14 +3721,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Lion_Dire].Add(attackHelper.BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
                 testCases[CreatureConstants.Lion_Dire].Add(attackHelper.BuildData("Rake", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Slashing), string.Empty, 0.5, "extraordinary ability", 2, FeatConstants.Frequencies.Round, true, true, true, true));
 
-                testCases[CreatureConstants.Lizard].Add(attackHelper.BuildData("Bite", $"1d4", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Lizard].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
 
                 testCases[CreatureConstants.Lizard_Monitor].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
 
                 testCases[CreatureConstants.Lizardfolk].Add(attackHelper.BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
                 testCases[CreatureConstants.Lizardfolk].Add(attackHelper.BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
                 testCases[CreatureConstants.Lizardfolk].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Lizardfolk].Add(attackHelper.BuildData("Bite", $"1d4", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Lizardfolk].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
                 testCases[CreatureConstants.Locathah].Add(attackHelper.BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
                 testCases[CreatureConstants.Locathah].Add(attackHelper.BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
@@ -3821,7 +3840,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.MindFlayer].Add(attackHelper.BuildData("Extract", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
                 testCases[CreatureConstants.Minotaur].Add(attackHelper.BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
-                testCases[CreatureConstants.Minotaur].Add(attackHelper.BuildData("Gore", $"1d8", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Minotaur].Add(attackHelper.BuildData("Gore", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Minotaur].Add(attackHelper.BuildData("Powerful Charge", $"4d6", string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
                 testCases[CreatureConstants.Mohrg].Add(attackHelper.BuildData("Slam", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -3840,7 +3859,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Mummy].Add(attackHelper.BuildData("Mummy Rot", string.Empty, "incubation period 1 minute; damage 1d6 Con and 1d6 Cha", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
 
                 testCases[CreatureConstants.Naga_Dark].Add(attackHelper.BuildData("Sting", $"2d4", "Poison", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Naga_Dark].Add(attackHelper.BuildData("Bite", $"1d4", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Naga_Dark].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Naga_Dark].Add(attackHelper.BuildData("Poison", string.Empty, "lapse into a nightmare-haunted sleep for 2d4 minutes", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
                 testCases[CreatureConstants.Naga_Dark].Add(attackHelper.BuildData("Spells", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
@@ -3932,15 +3951,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
                 testCases[CreatureConstants.Ogre].Add(attackHelper.BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
                 testCases[CreatureConstants.Ogre].Add(attackHelper.BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-                testCases[CreatureConstants.Ogre].Add(attackHelper.BuildData("Unarmed Strike", "1d4", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Ogre].Add(attackHelper.BuildData("Unarmed Strike", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
 
                 testCases[CreatureConstants.Ogre_Merrow].Add(attackHelper.BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
                 testCases[CreatureConstants.Ogre_Merrow].Add(attackHelper.BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-                testCases[CreatureConstants.Ogre_Merrow].Add(attackHelper.BuildData("Unarmed Strike", "1d4", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Ogre_Merrow].Add(attackHelper.BuildData("Unarmed Strike", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
 
                 testCases[CreatureConstants.OgreMage].Add(attackHelper.BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
                 testCases[CreatureConstants.OgreMage].Add(attackHelper.BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-                testCases[CreatureConstants.OgreMage].Add(attackHelper.BuildData("Unarmed Strike", "1d4", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.OgreMage].Add(attackHelper.BuildData("Unarmed Strike", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.OgreMage].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
                 testCases[CreatureConstants.Orc].Add(attackHelper.BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
@@ -3952,7 +3971,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Orc_Half].Add(attackHelper.BuildData("Unarmed Strike", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
 
                 testCases[CreatureConstants.Otyugh].Add(attackHelper.BuildData("Tentacle", $"1d6", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Otyugh].Add(attackHelper.BuildData("Bite", $"1d4", "Disease", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Otyugh].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), "Disease", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Otyugh].Add(attackHelper.BuildData("Constrict", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
                 testCases[CreatureConstants.Otyugh].Add(attackHelper.BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
                 testCases[CreatureConstants.Otyugh].Add(attackHelper.BuildData("Disease", string.Empty, "Filth Fever", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
@@ -4057,7 +4076,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Pyrohydra_12Heads].Add(attackHelper.BuildData("Breath weapon", $"3d6 fire per head", string.Empty, 1, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
 
                 testCases[CreatureConstants.Quasit].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Slashing), "poison", 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Quasit].Add(attackHelper.BuildData("Bite", $"1d4", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Quasit].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Quasit].Add(attackHelper.BuildData("Poison", string.Empty, $"Initial damage 1d4 Dex, Secondary damage 2d4 Dex", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution, 2));
                 testCases[CreatureConstants.Quasit].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
@@ -4107,7 +4126,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Retriever].Add(attackHelper.BuildData("Find Target", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, false, true));
                 testCases[CreatureConstants.Retriever].Add(attackHelper.BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
-                testCases[CreatureConstants.Rhinoceras].Add(attackHelper.BuildData("Gore", $"1d8", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Rhinoceras].Add(attackHelper.BuildData("Gore", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Rhinoceras].Add(attackHelper.BuildData("Powerful Charge", $"4d6", string.Empty, 3, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
                 testCases[CreatureConstants.Roc].Add(attackHelper.BuildData("Talon", $"2d6", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -4125,14 +4144,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Sahuagin].Add(attackHelper.BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
                 testCases[CreatureConstants.Sahuagin].Add(attackHelper.BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
                 testCases[CreatureConstants.Sahuagin].Add(attackHelper.BuildData("Talon", $"1d4", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Sahuagin].Add(attackHelper.BuildData("Bite", $"1d4", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Sahuagin].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Sahuagin].Add(attackHelper.BuildData("Blood Frenzy", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
                 testCases[CreatureConstants.Sahuagin].Add(attackHelper.BuildData("Rake", $"1d4", string.Empty, 0.5, "extraordinary ability", 2, FeatConstants.Frequencies.Round, true, true, false, true));
 
                 testCases[CreatureConstants.Sahuagin_Mutant].Add(attackHelper.BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, false, true, false));
                 testCases[CreatureConstants.Sahuagin_Mutant].Add(attackHelper.BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1, "ranged", 2, FeatConstants.Frequencies.Round, false, false, true, false));
                 testCases[CreatureConstants.Sahuagin_Mutant].Add(attackHelper.BuildData("Talon", $"1d4", string.Empty, 1, "melee", 4, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Sahuagin_Mutant].Add(attackHelper.BuildData("Bite", $"1d4", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Sahuagin_Mutant].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Sahuagin_Mutant].Add(attackHelper.BuildData("Blood Frenzy", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
                 testCases[CreatureConstants.Sahuagin_Mutant].Add(attackHelper.BuildData("Rake", $"1d4", string.Empty, 0.5, "extraordinary ability", 2, FeatConstants.Frequencies.Round, true, true, false, true));
 
@@ -4256,7 +4275,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.ShieldGuardian].Add(attackHelper.BuildData("Slam", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.ShieldGuardian].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
-                testCases[CreatureConstants.ShockerLizard].Add(attackHelper.BuildData("Bite", $"1d4", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.ShockerLizard].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.ShockerLizard].Add(attackHelper.BuildData("Stunning Shock", $"2d8", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
                 testCases[CreatureConstants.ShockerLizard].Add(attackHelper.BuildData("Lethal Shock", $"2d8 electricity per shocker lizard", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, false, true, true, true, save: SaveConstants.Reflex));
 
@@ -4314,10 +4333,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Snake_Viper_Small].Add(attackHelper.BuildData("Bite", $"1d2", "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Snake_Viper_Small].Add(attackHelper.BuildData("Poison", string.Empty, "Initial and secondary damage 1d6 Con", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Snake_Viper_Medium].Add(attackHelper.BuildData("Bite", $"1d4", "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Snake_Viper_Medium].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Snake_Viper_Medium].Add(attackHelper.BuildData("Poison", string.Empty, "Initial and secondary damage 1d6 Con", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Snake_Viper_Large].Add(attackHelper.BuildData("Bite", $"1d4", "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Snake_Viper_Large].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Snake_Viper_Large].Add(attackHelper.BuildData("Poison", string.Empty, "Initial and secondary damage 1d6 Con", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
                 testCases[CreatureConstants.Snake_Viper_Huge].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -4330,7 +4349,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Spider_Monstrous_Hunter_Tiny].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Piercing), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Spider_Monstrous_Hunter_Tiny].Add(attackHelper.BuildData("Poison", string.Empty, "Initial and secondary damage 1d2 Str", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Spider_Monstrous_Hunter_Small].Add(attackHelper.BuildData("Bite", $"1d4", "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Spider_Monstrous_Hunter_Small].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Spider_Monstrous_Hunter_Small].Add(attackHelper.BuildData("Poison", string.Empty, "Initial and secondary damage 1d3 Str", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
                 testCases[CreatureConstants.Spider_Monstrous_Hunter_Medium].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -4352,7 +4371,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Tiny].Add(attackHelper.BuildData("Poison", string.Empty, "Initial and secondary damage 1d2 Str", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
                 testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Tiny].Add(attackHelper.BuildData("Web", string.Empty, string.Empty, 0, "extraordinary ability", 8, FeatConstants.Frequencies.Day, false, true, true, true, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Small].Add(attackHelper.BuildData("Bite", $"1d4", "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Small].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Small].Add(attackHelper.BuildData("Poison", string.Empty, "Initial and secondary damage 1d3 Str", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
                 testCases[CreatureConstants.Spider_Monstrous_WebSpinner_Small].Add(attackHelper.BuildData("Web", string.Empty, string.Empty, 0, "extraordinary ability", 8, FeatConstants.Frequencies.Day, false, true, true, true, AbilityConstants.Constitution));
 
@@ -4482,7 +4501,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Troglodyte].Add(attackHelper.BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
                 testCases[CreatureConstants.Troglodyte].Add(attackHelper.BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
                 testCases[CreatureConstants.Troglodyte].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Troglodyte].Add(attackHelper.BuildData("Bite", $"1d4", string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Troglodyte].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Troglodyte].Add(attackHelper.BuildData("Stench", string.Empty, "Sickened 10 rounds", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
 
                 testCases[CreatureConstants.Troll].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Slashing), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -4521,7 +4540,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.VampireSpawn].Add(attackHelper.BuildData("Energy Drain", string.Empty, "1 negative level", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
                 testCases[CreatureConstants.VampireSpawn].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
-                testCases[CreatureConstants.Vargouille].Add(attackHelper.BuildData("Bite", $"1d4", "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Vargouille].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing), "Poison", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Vargouille].Add(attackHelper.BuildData("Shriek", string.Empty, "paralyzed 2d4 rounds", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude, saveDcBonus: 1));
                 testCases[CreatureConstants.Vargouille].Add(attackHelper.BuildData("Kiss", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude, saveDcBonus: 4));
                 testCases[CreatureConstants.Vargouille].Add(attackHelper.BuildData("Poison", string.Empty, "unable to heal the vargouille’s bite damage naturally or magically", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude, saveDcBonus: 1));
@@ -4735,7 +4754,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                     string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
                 testCases[CreatureConstants.Zelekhut].Add(attackHelper.BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, false, true, false));
-                testCases[CreatureConstants.Zelekhut].Add(attackHelper.BuildData("Unarmed Strike", "1d4", string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Zelekhut].Add(attackHelper.BuildData("Unarmed Strike", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Zelekhut].Add(attackHelper.BuildData("Electrified Weapon", "1d6 electricity", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
                 testCases[CreatureConstants.Zelekhut].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
