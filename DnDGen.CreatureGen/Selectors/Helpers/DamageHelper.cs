@@ -51,6 +51,11 @@ namespace DnDGen.CreatureGen.Selectors.Helpers
 
         public string[][] ParseEntries(string entry)
         {
+            if (string.IsNullOrEmpty(entry))
+            {
+                return new string[0][];
+            }
+
             var entries = entry.Split(AttackSelection.DamageSplitDivider);
             var data = new string[entries.Length][];
 
@@ -64,6 +69,11 @@ namespace DnDGen.CreatureGen.Selectors.Helpers
 
         public bool ValidateEntries(string entry)
         {
+            if (string.IsNullOrEmpty(entry))
+            {
+                return true;
+            }
+
             var entries = entry.Split(AttackSelection.DamageSplitDivider);
             var valid = true;
 

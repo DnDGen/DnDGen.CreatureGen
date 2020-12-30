@@ -413,7 +413,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             string animal,
             int naturalArmor = -1,
             string size = null,
-            double hitDiceQuantity = 0,
+            double hitDiceQuantity = -1,
             int hitDiceDie = 0,
             int roll = 0,
             double average = 0)
@@ -431,7 +431,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             //Hit points
             var hitDie = new HitDice();
-            hitDie.Quantity = hitDiceQuantity > 0 ? hitDiceQuantity : random.Next(30) + 1;
+            hitDie.Quantity = hitDiceQuantity > -1 ? hitDiceQuantity : random.Next(30) + 1;
             hitDie.HitDie = hitDiceDie > 0 ? hitDiceDie : random.Next(7) + 6;
             animalHitPoints.HitDice.Add(hitDie);
 
@@ -2114,6 +2114,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         {
             get
             {
+                //INFO: Doing specific numbers, instead of full range because the number of test cases explodes:
+                //1. Per challenge rating
+                //2. Per Lycanthrope template
+                //3. Per hit die quantity
+                //4. Synchronous and Async
                 var challengeRatings = new[]
                 {
                     ChallengeRatingConstants.Zero,
@@ -2129,11 +2134,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     ChallengeRatingConstants.Twenty,
                 };
 
-                //INFO: Doing specific numbers, instead of full range because the number of test cases explodes:
-                //1. Per challenge rating
-                //2. Per Lycanthrope template
-                //3. Per hit die quantity
-                //4. Synchronous and Async
                 var animalHitDiceQuantities = new[]
                 {
                     0, .1, .5, 1, 2,
@@ -2145,25 +2145,25 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
                 foreach (var template in templates)
                 {
-                    foreach (var animalQuantity in animalHitDiceQuantities)
+                    foreach (var animalHitDiceQuantity in animalHitDiceQuantities)
                     {
                         var increase = 0;
 
-                        if (animalQuantity <= 2)
+                        if (animalHitDiceQuantity <= 2)
                             increase = 2;
-                        else if (animalQuantity <= 5)
+                        else if (animalHitDiceQuantity <= 5)
                             increase = 3;
-                        else if (animalQuantity <= 10)
+                        else if (animalHitDiceQuantity <= 10)
                             increase = 4;
-                        else if (animalQuantity <= 20)
+                        else if (animalHitDiceQuantity <= 20)
                             increase = 5;
-                        else if (animalQuantity > 20)
+                        else if (animalHitDiceQuantity > 20)
                             increase = 6;
 
                         foreach (var cr in challengeRatings)
                         {
                             var newCr = ChallengeRatingConstants.IncreaseChallengeRating(cr, increase);
-                            yield return new TestCaseData(template.Template, template.Animal, cr, animalQuantity, newCr);
+                            yield return new TestCaseData(template.Template, template.Animal, cr, animalHitDiceQuantity, newCr);
                         }
                     }
                 }

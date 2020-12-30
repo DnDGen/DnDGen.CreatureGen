@@ -72,10 +72,10 @@ namespace DnDGen.CreatureGen.Defenses
 
             foreach (var hitDice in HitDice)
             {
-                var rolls = dice.Roll(hitDice.RoundedQuantity).d(hitDice.HitDie).AsIndividualRolls();
-
-                rolls = rolls.Select(r => Math.Max(1, r / hitDice.Divisor));
-                rolls = rolls.Select(r => Math.Max(r + Constitution.Modifier, 1));
+                var rolls = dice.Roll(hitDice.RoundedQuantity).d(hitDice.HitDie).AsIndividualRolls()
+                    .ToArray() //To not repeat randomization
+                    .Select(r => Math.Max(1, r / hitDice.Divisor))
+                    .Select(r => Math.Max(r + Constitution.Modifier, 1));
 
                 Total += rolls.Sum();
             }

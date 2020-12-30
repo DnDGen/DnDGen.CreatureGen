@@ -644,11 +644,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var attack = generatedAttacks.First();
             Assert.That(attack.Name, Is.EqualTo("attack"));
-            Assert.That(attack.DamageDescription, Is.EqualTo("damage"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("my roll my type"));
 
             attack = generatedAttacks.Last();
             Assert.That(attack.Name, Is.EqualTo("other attack"));
-            Assert.That(attack.DamageDescription, Is.EqualTo("other damage"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("my other roll my other type"));
         }
 
         [Test]
@@ -961,7 +961,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
-            Assert.That(attack.DamageDescription, Is.EqualTo("damage"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("my roll my type plus effect"));
             Assert.That(attack.DamageBonus, Is.Zero);
             Assert.That(attack.DamageEffect, Is.EqualTo("effect"));
         }
@@ -991,7 +991,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
-            Assert.That(attack.DamageDescription, Is.EqualTo("damage"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("my roll+67650 my type plus effect"));
             Assert.That(attack.DamageBonus, Is.EqualTo(67650));
             Assert.That(attack.DamageEffect, Is.EqualTo("effect"));
         }
@@ -1004,7 +1004,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             {
                 Name = "nat melee attack",
                 Damages = new List<Damage> { new Damage { Roll = "my nat melee roll", Type = "my nat melee type" } },
-                DamageEffect = "effect",
+                DamageEffect = "nat melee effect",
                 DamageBonusMultiplier = 1.5,
                 FrequencyQuantity = 1,
                 IsPrimary = true,
@@ -1015,7 +1015,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             {
                 Name = "nat range attack",
                 Damages = new List<Damage> { new Damage { Roll = "my nat range roll", Type = "my nat range type" } },
-                DamageEffect = "effect",
+                DamageEffect = "nat range effect",
                 DamageBonusMultiplier = 1.5,
                 FrequencyQuantity = 1,
                 IsPrimary = true,
@@ -1026,7 +1026,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             {
                 Name = "melee attack",
                 Damages = new List<Damage> { new Damage { Roll = "my melee roll", Type = "my melee type" } },
-                DamageEffect = "effect",
+                DamageEffect = "melee effect",
                 DamageBonusMultiplier = 1.5,
                 FrequencyQuantity = 1,
                 IsPrimary = true,
@@ -1037,7 +1037,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             {
                 Name = "range attack",
                 Damages = new List<Damage> { new Damage { Roll = "my range roll", Type = "my range type" } },
-                DamageEffect = "effect",
+                DamageEffect = "range effect",
                 DamageBonusMultiplier = 1.5,
                 FrequencyQuantity = 1,
                 IsPrimary = true,
@@ -1056,27 +1056,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             Assert.That(attacks[0].Name, Is.EqualTo("nat melee attack"));
             Assert.That(attacks[0].IsMelee, Is.True);
             Assert.That(attacks[0].IsNatural, Is.True);
-            Assert.That(attacks[0].DamageDescription, Is.EqualTo("damage"));
+            Assert.That(attacks[0].DamageDescription, Is.EqualTo("my nat melee roll+67650 my nat melee type plus nat melee effect"));
             Assert.That(attacks[0].DamageBonus, Is.EqualTo(67650));
-            Assert.That(attacks[0].DamageEffect, Is.EqualTo("effect"));
+            Assert.That(attacks[0].DamageEffect, Is.EqualTo("nat melee effect"));
             Assert.That(attacks[1].Name, Is.EqualTo("nat range attack"));
             Assert.That(attacks[1].IsMelee, Is.False);
             Assert.That(attacks[1].IsNatural, Is.True);
-            Assert.That(attacks[1].DamageDescription, Is.EqualTo("damage"));
+            Assert.That(attacks[1].DamageDescription, Is.EqualTo("my nat range roll+67650 my nat range type plus nat range effect"));
             Assert.That(attacks[1].DamageBonus, Is.EqualTo(67650));
-            Assert.That(attacks[1].DamageEffect, Is.EqualTo("effect"));
+            Assert.That(attacks[1].DamageEffect, Is.EqualTo("nat range effect"));
             Assert.That(attacks[2].Name, Is.EqualTo("melee attack"));
             Assert.That(attacks[2].IsMelee, Is.True);
             Assert.That(attacks[2].IsNatural, Is.False);
-            Assert.That(attacks[2].DamageDescription, Is.EqualTo("damage"));
+            Assert.That(attacks[2].DamageDescription, Is.EqualTo("my melee roll+67650 my melee type plus melee effect"));
             Assert.That(attacks[2].DamageBonus, Is.EqualTo(67650));
-            Assert.That(attacks[2].DamageEffect, Is.EqualTo("effect"));
+            Assert.That(attacks[2].DamageEffect, Is.EqualTo("melee effect"));
             Assert.That(attacks[3].Name, Is.EqualTo("range attack"));
             Assert.That(attacks[3].IsMelee, Is.False);
             Assert.That(attacks[3].IsNatural, Is.False);
-            Assert.That(attacks[3].DamageDescription, Is.EqualTo("damage"));
+            Assert.That(attacks[3].DamageDescription, Is.EqualTo("my range roll+67650 my range type plus range effect"));
             Assert.That(attacks[3].DamageBonus, Is.EqualTo(67650));
-            Assert.That(attacks[3].DamageEffect, Is.EqualTo("effect"));
+            Assert.That(attacks[3].DamageEffect, Is.EqualTo("range effect"));
         }
 
         [TestCase(true)]
@@ -1191,11 +1191,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var attacks = generatedAttacks.ToArray();
             Assert.That(attacks[0].Name, Is.EqualTo("attack"));
-            Assert.That(attacks[0].DamageDescription, Is.EqualTo("damage"));
+            Assert.That(attacks[0].DamageDescription, Is.EqualTo("my roll+67650 my type"));
             Assert.That(attacks[0].DamageBonus, Is.EqualTo(67650));
             Assert.That(attacks[0].DamageEffect, Is.Empty);
             Assert.That(attacks[1].Name, Is.EqualTo("nat attack"));
-            Assert.That(attacks[1].DamageDescription, Is.EqualTo("damage"));
+            Assert.That(attacks[1].DamageDescription, Is.EqualTo("my nat roll+45100 my nat type plus effect"));
             Assert.That(attacks[1].DamageBonus, Is.EqualTo(45100));
             Assert.That(attacks[1].DamageEffect, Is.EqualTo("effect"));
         }
@@ -1224,7 +1224,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
 
             var attack = generatedAttacks.Single();
             Assert.That(attack.Name, Is.EqualTo("attack"));
-            Assert.That(attack.DamageDescription, Is.EqualTo("damage"));
+            Assert.That(attack.DamageDescription, Is.EqualTo("my roll+22550 my type plus effect"));
             Assert.That(attack.DamageBonus, Is.EqualTo(22550));
             Assert.That(attack.DamageEffect, Is.EqualTo("effect"));
         }

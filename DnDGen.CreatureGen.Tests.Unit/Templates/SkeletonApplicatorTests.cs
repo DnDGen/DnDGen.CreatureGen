@@ -549,7 +549,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var claw = creature.Attacks.FirstOrDefault(a => a.Name == "Claw");
             Assert.That(claw, Is.Not.Null.And.Not.EqualTo(skeletonAttacks[0]));
-            Assert.That(claw.DamageDescription, Is.EqualTo(damage));
+            Assert.That(claw.DamageDescription, Is.EqualTo($"{damage} skeleton damage type"));
             Assert.That(claw.Frequency.Quantity, Is.EqualTo(2));
         }
 
@@ -694,7 +694,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var claw = creature.Attacks.FirstOrDefault(a => a.Name == "Claw");
             Assert.That(claw, Is.Not.Null.And.Not.EqualTo(skeletonAttacks[0]));
-            Assert.That(claw.DamageDescription, Is.EqualTo("damage roll"));
+            Assert.That(claw.DamageDescription, Is.EqualTo("damage roll damage type"));
             Assert.That(claw.Frequency.Quantity, Is.EqualTo(2));
         }
 
@@ -1270,7 +1270,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var claw = creature.Attacks.FirstOrDefault(a => a.Name == "Claw");
             Assert.That(claw, Is.Not.Null.And.Not.EqualTo(skeletonAttacks[0]));
-            Assert.That(claw.DamageDescription, Is.EqualTo(damage));
+            Assert.That(claw.DamageDescription, Is.EqualTo($"{damage} skeleton damage type"));
             Assert.That(claw.Frequency.Quantity, Is.EqualTo(2));
         }
 
@@ -1415,7 +1415,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var claw = creature.Attacks.FirstOrDefault(a => a.Name == "Claw");
             Assert.That(claw, Is.Not.Null.And.Not.EqualTo(skeletonAttacks[0]));
-            Assert.That(claw.DamageDescription, Is.EqualTo("damage roll"));
+            Assert.That(claw.DamageDescription, Is.EqualTo("damage roll damage type"));
             Assert.That(claw.Frequency.Quantity, Is.EqualTo(2));
         }
 

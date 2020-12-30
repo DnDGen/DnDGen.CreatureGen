@@ -268,8 +268,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(attacks[0].FrequencyQuantity, Is.EqualTo(9266));
             Assert.That(attacks[0].FrequencyTimePeriod, Is.EqualTo("time period"));
             Assert.That(attacks[0].AttackType, Is.EqualTo("attack type"));
-            Assert.That(attacks[0].IsMelee, Is.True);
-            Assert.That(attacks[0].IsNatural, Is.False);
+            Assert.That(attacks[0].IsMelee, Is.False);
+            Assert.That(attacks[0].IsNatural, Is.True);
             Assert.That(attacks[0].IsPrimary, Is.True);
             Assert.That(attacks[0].IsSpecial, Is.False);
             Assert.That(attacks[0].Save, Is.Empty);
@@ -289,8 +289,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(attacks[1].FrequencyQuantity, Is.EqualTo(600));
             Assert.That(attacks[1].FrequencyTimePeriod, Is.EqualTo("other time period"));
             Assert.That(attacks[1].AttackType, Is.EqualTo("other attack type"));
-            Assert.That(attacks[1].IsMelee, Is.False);
-            Assert.That(attacks[1].IsNatural, Is.True);
+            Assert.That(attacks[1].IsMelee, Is.True);
+            Assert.That(attacks[1].IsNatural, Is.False);
             Assert.That(attacks[1].IsPrimary, Is.False);
             Assert.That(attacks[1].IsSpecial, Is.True);
             Assert.That(attacks[1].Save, Is.Empty);
@@ -299,7 +299,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(attacks[2].Damages, Is.Empty);
             Assert.That(attacks[2].Name, Is.EqualTo("third name"));
-            Assert.That(attacks[2].DamageEffect, Is.EqualTo("my effect"));
+            Assert.That(attacks[2].DamageEffect, Is.Empty);
             Assert.That(attacks[2].DamageBonusMultiplier, Is.Zero);
             Assert.That(attacks[2].FrequencyQuantity, Is.EqualTo(1336));
             Assert.That(attacks[2].FrequencyTimePeriod, Is.EqualTo("third time period"));

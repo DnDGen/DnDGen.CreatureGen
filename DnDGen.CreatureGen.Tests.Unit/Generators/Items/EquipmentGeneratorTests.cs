@@ -736,7 +736,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.SunBlade));
-            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined roll my predetermined damage type"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -994,7 +994,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
-            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined roll my predetermined damage type"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -1054,7 +1054,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
-            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined roll my predetermined damage type"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -1118,7 +1118,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
-            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined roll my predetermined damage type"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -1182,7 +1182,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
-            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined roll my predetermined damage type"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -1243,7 +1243,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
-            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined roll my predetermined damage type"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -1307,7 +1307,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
-            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined roll my predetermined damage type"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -2789,7 +2789,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dart));
-            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined roll my predetermined damage type"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -2849,7 +2849,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dart));
-            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined roll my predetermined damage type"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -2913,7 +2913,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dart));
-            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined roll my predetermined damage type"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -2988,7 +2988,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo("my projectile weapon"));
-            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined roll my predetermined damage type"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -3057,7 +3057,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo("my projectile weapon"));
-            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined roll my predetermined damage type"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -3106,7 +3106,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dart));
-            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined roll my predetermined damage type"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -3167,7 +3167,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dart));
-            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my predetermined roll my predetermined damage type"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -3223,7 +3223,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(6));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dart));
-            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my sized damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my sized roll my damage type"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
@@ -3408,14 +3408,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(7));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Dart));
-            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my dart damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my dart roll my dart damage type"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
             Assert.That(attacks[5].AttackBonuses, Is.Empty);
 
             Assert.That(attacks[6].Name, Is.EqualTo(WeaponConstants.Javelin));
-            Assert.That(attacks[6].DamageDescription, Is.EqualTo("my javelin damage"));
+            Assert.That(attacks[6].DamageDescription, Is.EqualTo("my javelin roll my javelin damage type"));
             Assert.That(attacks[6].IsMelee, Is.True);
             Assert.That(attacks[6].IsNatural, Is.False);
             Assert.That(attacks[6].IsSpecial, Is.False);
@@ -4657,14 +4657,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
 
             Assert.That(attacks, Has.Count.EqualTo(7));
             Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
-            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my club damage"));
+            Assert.That(attacks[5].DamageDescription, Is.EqualTo("my club roll my club damage type"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
             Assert.That(attacks[5].IsSpecial, Is.False);
             Assert.That(attacks[5].AttackBonuses, Is.Empty);
 
             Assert.That(attacks[6].Name, Is.EqualTo(WeaponConstants.Dart));
-            Assert.That(attacks[6].DamageDescription, Is.EqualTo("my dart damage"));
+            Assert.That(attacks[6].DamageDescription, Is.EqualTo("my dart roll my dart damage type"));
             Assert.That(attacks[6].IsMelee, Is.False);
             Assert.That(attacks[6].IsNatural, Is.False);
             Assert.That(attacks[6].IsSpecial, Is.False);

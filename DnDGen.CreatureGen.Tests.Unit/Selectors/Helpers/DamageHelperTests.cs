@@ -1,6 +1,7 @@
 ﻿using DnDGen.CreatureGen.Selectors.Helpers;
 using DnDGen.CreatureGen.Tables;
 using NUnit.Framework;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
 {
@@ -40,10 +41,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
         }
 
         [Test]
+        public void BuildDataIntoString_SingleDamages()
+        {
+            var dataString = helper.BuildEntries("1d3", "slashing");
+            Assert.That(dataString, Is.EqualTo("1d3#slashing"));
+        }
+
+        [Test]
         public void BuildDataIntoString_MultipleDamages()
         {
             var dataString = helper.BuildEntries("1d3", "slashing", "1d4", "acid");
             Assert.That(dataString, Is.EqualTo("1d3#slashing,1d4#acid"));
+        }
+
+        [Test]
+        public void BuildDataIntoString_NoDamages()
+        {
+            var dataString = helper.BuildEntries();
+            Assert.That(dataString, Is.Empty);
         }
 
         [Test]
@@ -152,7 +167,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
         [TestCase(20, true)]
         public void ValidateEntries_IsValid(int length, bool isValid)
         {
-            var data = new string[length];
+            var data = Enumerable.Range(1, length).Select(i => i.ToString()).ToArray();
             var entry = helper.BuildEntries(data);
             var valid = helper.ValidateEntries(entry);
             Assert.That(valid, Is.EqualTo(isValid));
