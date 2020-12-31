@@ -1,7 +1,9 @@
 ﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Helpers;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.TreasureGen.Items;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
@@ -105,7 +107,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
             Assert.That(dataString, Is.Empty);
         }
 
-        [TestCase("2d10##,1d4#Charisma#", "2d10", "", "", "1d4", AbilityConstants.Charisma)]
+        [TestCase("2d10##,1d4#Charisma#",
+            "2d10", "", "",
+            "1d4", AbilityConstants.Charisma)]
+        [TestCase("2d6#Piercing#,1d4#Acid#",
+            "2d6", AttributeConstants.DamageTypes.Piercing, "",
+            "1d4", FeatConstants.Foci.Elements.Acid)]
         public void BuildEntries_RealExample(string expected, params string[] data)
         {
             var dataString = helper.BuildEntries(data);
