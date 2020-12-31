@@ -414,8 +414,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                     damageHelper.BuildEntries("4d6", AttributeConstants.DamageTypes.Piercing),
                     string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Achaierai].Add(attackHelper.BuildData("Black cloud",
-                    damageHelper.BuildEntries("2d6", "Toxic black cloud"),
-                    "insanity", 0, "extraordinary ability", 3, FeatConstants.Frequencies.Day, false, true, true, true,
+                    damageHelper.BuildEntries("2d6"),
+                    SpellConstants.Insanity, 0, "extraordinary ability", 3, FeatConstants.Frequencies.Day, false, true, true, true,
                     SaveConstants.Fortitude, AbilityConstants.Constitution));
 
                 testCases[CreatureConstants.Allip].Add(attackHelper.BuildData("Incorporeal touch",
@@ -3760,68 +3760,114 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
                 testCases[CreatureConstants.Marut].Add(attackHelper.BuildData("Slam", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), "Fist of Thunder", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Marut].Add(attackHelper.BuildData("Slam", damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning), "Fist of Lightning", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Marut].Add(attackHelper.BuildData("Fist of Thunder", $"3d6 sonic", "deafened 2d6 rounds", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Fortitude));
-                testCases[CreatureConstants.Marut].Add(attackHelper.BuildData("Fist of Lightning", $"3d6 electricity", "blinded 2d6 rounds", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Marut].Add(attackHelper.BuildData("Fist of Thunder",
+                    damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Sonic),
+                    "deafened 2d6 rounds", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Marut].Add(attackHelper.BuildData("Fist of Lightning",
+                    damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Electricity),
+                    "blinded 2d6 rounds", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, saveAbility: AbilityConstants.Strength, save: SaveConstants.Fortitude));
                 testCases[CreatureConstants.Marut].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
                 testCases[CreatureConstants.Medusa].Add(attackHelper.BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, false, true, false));
                 testCases[CreatureConstants.Medusa].Add(attackHelper.BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
-                testCases[CreatureConstants.Medusa].Add(attackHelper.BuildData("Snakes", $"1d4", "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Medusa].Add(attackHelper.BuildData("Snakes",
+                    damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing),
+                    "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Medusa].Add(attackHelper.BuildData("Petrifying Gaze", string.Empty, "Permanent petrification", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Fortitude, AbilityConstants.Charisma));
                 testCases[CreatureConstants.Medusa].Add(attackHelper.BuildData("Poison", string.Empty, "Initial damage 1d6 Str, Secondary damage 2d6 Str", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
-                testCases[CreatureConstants.Megaraptor].Add(attackHelper.BuildData("Talons", $"2d6", string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Megaraptor].Add(attackHelper.BuildData("Foreclaw", $"1d4", string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Megaraptor].Add(attackHelper.BuildData("Talons",
+                    damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Megaraptor].Add(attackHelper.BuildData("Foreclaw",
+                    damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Slashing),
+                    string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Megaraptor].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Megaraptor].Add(attackHelper.BuildData("Pounce", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
                 testCases[CreatureConstants.Mephit_Air].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Slashing), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Mephit_Air].Add(attackHelper.BuildData("Breath weapon", $"1d8", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
+                testCases[CreatureConstants.Mephit_Air].Add(attackHelper.BuildData("Breath weapon",
+                    damageHelper.BuildEntries("1d8"),
+                    string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
                 testCases[CreatureConstants.Mephit_Air].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
                 testCases[CreatureConstants.Mephit_Air].Add(attackHelper.BuildData("Summon Mephit", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
 
                 testCases[CreatureConstants.Mephit_Dust].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Slashing), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Mephit_Dust].Add(attackHelper.BuildData("Breath weapon", $"1d4", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
+                testCases[CreatureConstants.Mephit_Dust].Add(attackHelper.BuildData("Breath weapon",
+                    damageHelper.BuildEntries("1d4"),
+                    "Itching Skin and Burning Eyes (-4 AC, -2 attack rolls for 3 rounds)", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
                 testCases[CreatureConstants.Mephit_Dust].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
                 testCases[CreatureConstants.Mephit_Dust].Add(attackHelper.BuildData("Summon Mephit", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
 
                 testCases[CreatureConstants.Mephit_Earth].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Slashing), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Mephit_Earth].Add(attackHelper.BuildData("Breath weapon", $"1d8", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
+                testCases[CreatureConstants.Mephit_Earth].Add(attackHelper.BuildData("Breath weapon",
+                    damageHelper.BuildEntries("1d8"),
+                    string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
                 testCases[CreatureConstants.Mephit_Earth].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
                 testCases[CreatureConstants.Mephit_Earth].Add(attackHelper.BuildData("Summon Mephit", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
 
-                testCases[CreatureConstants.Mephit_Fire].Add(attackHelper.BuildData("Claw", $"1d3 + 1d4 fire", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Mephit_Fire].Add(attackHelper.BuildData("Breath weapon", $"1d8 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
+                testCases[CreatureConstants.Mephit_Fire].Add(attackHelper.BuildData("Claw",
+                    damageHelper.BuildEntries(
+                        "1d3", AttributeConstants.DamageTypes.Slashing, string.Empty,
+                        "1d4", FeatConstants.Foci.Elements.Fire),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Mephit_Fire].Add(attackHelper.BuildData("Breath weapon",
+                    damageHelper.BuildEntries("1d8", FeatConstants.Foci.Elements.Fire),
+                    string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
                 testCases[CreatureConstants.Mephit_Fire].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
                 testCases[CreatureConstants.Mephit_Fire].Add(attackHelper.BuildData("Summon Mephit", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
 
-                testCases[CreatureConstants.Mephit_Ice].Add(attackHelper.BuildData("Claw", $"1d3 + 1d4 cold", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Mephit_Ice].Add(attackHelper.BuildData("Breath weapon", $"1d4 cold", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
+                testCases[CreatureConstants.Mephit_Ice].Add(attackHelper.BuildData("Claw",
+                    damageHelper.BuildEntries(
+                        "1d3", AttributeConstants.DamageTypes.Slashing, string.Empty,
+                        "1d4", FeatConstants.Foci.Elements.Cold),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Mephit_Ice].Add(attackHelper.BuildData("Breath weapon",
+                    damageHelper.BuildEntries("1d4", FeatConstants.Foci.Elements.Cold),
+                    "Frostbitten Skin and Frozen Eyes (-4 AC, -2 attack rolls for 3 rounds)", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
                 testCases[CreatureConstants.Mephit_Ice].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
                 testCases[CreatureConstants.Mephit_Ice].Add(attackHelper.BuildData("Summon Mephit", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
 
-                testCases[CreatureConstants.Mephit_Magma].Add(attackHelper.BuildData("Claw", $"1d3 + 1d4 fire", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Mephit_Magma].Add(attackHelper.BuildData("Breath weapon", $"1d4 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
+                testCases[CreatureConstants.Mephit_Magma].Add(attackHelper.BuildData("Claw",
+                    damageHelper.BuildEntries(
+                        "1d3", AttributeConstants.DamageTypes.Slashing, string.Empty,
+                        "1d4", FeatConstants.Foci.Elements.Fire),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Mephit_Magma].Add(attackHelper.BuildData("Breath weapon",
+                    damageHelper.BuildEntries("1d4", FeatConstants.Foci.Elements.Fire),
+                    "Burning Skin and Seared Eyes (-4 AC, -2 attack rolls for 3 rounds)", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
                 testCases[CreatureConstants.Mephit_Magma].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
                 testCases[CreatureConstants.Mephit_Magma].Add(attackHelper.BuildData("Summon Mephit", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
 
                 testCases[CreatureConstants.Mephit_Ooze].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Slashing), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Mephit_Ooze].Add(attackHelper.BuildData("Breath weapon", $"1d4 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
+                testCases[CreatureConstants.Mephit_Ooze].Add(attackHelper.BuildData("Breath weapon",
+                    damageHelper.BuildEntries("1d4", FeatConstants.Foci.Elements.Acid),
+                    "Itching Skin and Burning Eyes (-4 AC, -2 attack rolls for 3 rounds)", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
                 testCases[CreatureConstants.Mephit_Ooze].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
                 testCases[CreatureConstants.Mephit_Ooze].Add(attackHelper.BuildData("Summon Mephit", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
 
                 testCases[CreatureConstants.Mephit_Salt].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Slashing), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Mephit_Salt].Add(attackHelper.BuildData("Breath weapon", $"1d4", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
+                testCases[CreatureConstants.Mephit_Salt].Add(attackHelper.BuildData("Breath weapon",
+                    damageHelper.BuildEntries("1d4"),
+                    "Itching Skin and Burning Eyes (-4 AC, -2 attack rolls for 3 rounds)", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
                 testCases[CreatureConstants.Mephit_Salt].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
                 testCases[CreatureConstants.Mephit_Salt].Add(attackHelper.BuildData("Summon Mephit", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
 
-                testCases[CreatureConstants.Mephit_Steam].Add(attackHelper.BuildData("Claw", $"1d3 + 1d4 fire", string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Mephit_Steam].Add(attackHelper.BuildData("Breath weapon", $"1d4 fire", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
+                testCases[CreatureConstants.Mephit_Steam].Add(attackHelper.BuildData("Claw",
+                    damageHelper.BuildEntries(
+                        "1d3", AttributeConstants.DamageTypes.Slashing, string.Empty,
+                        "1d4", FeatConstants.Foci.Elements.Fire),
+                    string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Mephit_Steam].Add(attackHelper.BuildData("Breath weapon",
+                    damageHelper.BuildEntries("1d4", FeatConstants.Foci.Elements.Fire),
+                    "Burning Skin and Seared Eyes (-4 AC, -2 attack rolls for 3 rounds)", 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
                 testCases[CreatureConstants.Mephit_Steam].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
                 testCases[CreatureConstants.Mephit_Steam].Add(attackHelper.BuildData("Summon Mephit", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
 
                 testCases[CreatureConstants.Mephit_Water].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Slashing), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Mephit_Water].Add(attackHelper.BuildData("Breath weapon", $"1d8 acid", string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
+                testCases[CreatureConstants.Mephit_Water].Add(attackHelper.BuildData("Breath weapon",
+                    damageHelper.BuildEntries("1d8", FeatConstants.Foci.Elements.Acid),
+                    string.Empty, 0, "supernatural ability", 1, $"1d4 {FeatConstants.Frequencies.Round}", false, true, true, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex, saveDcBonus: 1));
                 testCases[CreatureConstants.Mephit_Water].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
                 testCases[CreatureConstants.Mephit_Water].Add(attackHelper.BuildData("Summon Mephit", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, true, true, true, true));
 

@@ -91,7 +91,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         public void CreatureWithSpellLikeAbilityAttack_HasSpellLikeAbilitySpecialQuality(string creature)
         {
             Assert.That(table, Contains.Key(creature));
-            Assert.That(table[creature].All(helper.ValidateEntry), Is.True);
+
+            foreach (var entry in table[creature])
+            {
+                Assert.That(helper.ValidateEntry(entry), Is.True, $"Invalid entry: {entry}");
+            }
 
             var creatureType = GetCreatureType(creature);
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
@@ -138,7 +142,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         public void CreatureWithPsionicAttack_HasPsionicSpecialQuality(string creature)
         {
             Assert.That(table, Contains.Key(creature));
-            Assert.That(table[creature].All(helper.ValidateEntry), Is.True);
+
+            foreach (var entry in table[creature])
+            {
+                Assert.That(helper.ValidateEntry(entry), Is.True, $"Invalid entry: {entry}");
+            }
 
             var creatureType = GetCreatureType(creature);
             var specialQualities = featsSelector.SelectSpecialQualities(creature, creatureType);
@@ -154,7 +162,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         public void CreatureWithSpellsAttack_HasMagicSpells(string creature)
         {
             Assert.That(table, Contains.Key(creature));
-            Assert.That(table[creature].All(helper.ValidateEntry), Is.True);
+
+            foreach (var entry in table[creature])
+            {
+                Assert.That(helper.ValidateEntry(entry), Is.True, $"Invalid entry: {entry}");
+            }
 
             var hasSpellsAttack = table[creature]
                 .Select(helper.ParseEntry)
@@ -176,7 +188,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         public void CreatureWithUnnaturalAttack_CanUseEquipment(string creature)
         {
             Assert.That(table, Contains.Key(creature));
-            Assert.That(table[creature].All(helper.ValidateEntry), Is.True);
+
+            foreach (var entry in table[creature])
+            {
+                Assert.That(helper.ValidateEntry(entry), Is.True, $"Invalid entry: {entry}");
+            }
 
             var creatureData = creatureDataSelector.SelectFor(creature);
             var hasUnnaturalAttack = table[creature]
@@ -195,7 +211,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         public void CreatureWithUnnaturalAttack_HasNoDamageForEquipmentAttacks(string creature)
         {
             Assert.That(table, Contains.Key(creature));
-            Assert.That(table[creature].All(helper.ValidateEntry), Is.True);
+
+            foreach (var entry in table[creature])
+            {
+                Assert.That(helper.ValidateEntry(entry), Is.True, $"Invalid entry: {entry}");
+            }
 
             var unnaturalAttacks = table[creature]
                 .Select(helper.ParseEntry)
@@ -222,7 +242,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         public void CreatureWithUnnaturalAttack_HasNaturalAttack(string creature)
         {
             Assert.That(table, Contains.Key(creature));
-            Assert.That(table[creature].All(helper.ValidateEntry), Is.True);
+
+            foreach (var entry in table[creature])
+            {
+                Assert.That(helper.ValidateEntry(entry), Is.True, $"Invalid entry: {entry}");
+            }
 
             var hasUnnaturalAttack = table[creature]
                 .Select(helper.ParseEntry)
@@ -249,7 +273,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         public void CreatureHasCorrectImprovedGrab(string creature)
         {
             Assert.That(table, Contains.Key(creature));
-            Assert.That(table[creature].All(helper.ValidateEntry), Is.True);
+
+            foreach (var entry in table[creature])
+            {
+                Assert.That(helper.ValidateEntry(entry), Is.True, $"Invalid entry: {entry}");
+            }
 
             var improvedGrab = table[creature]
                 .Select(helper.ParseEntry)
@@ -280,7 +308,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         public void CreatureHasCorrectSpells(string creature)
         {
             Assert.That(table, Contains.Key(creature));
-            Assert.That(table[creature].All(helper.ValidateEntry), Is.True);
+
+            foreach (var entry in table[creature])
+            {
+                Assert.That(helper.ValidateEntry(entry), Is.True, $"Invalid entry: {entry}");
+            }
 
             var spells = table[creature]
                 .Select(helper.ParseEntry)
@@ -311,7 +343,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         public void CreatureHasCorrectSpellLikeAbility(string creature)
         {
             Assert.That(table, Contains.Key(creature));
-            Assert.That(table[creature].All(helper.ValidateEntry), Is.True);
+
+            foreach (var entry in table[creature])
+            {
+                Assert.That(helper.ValidateEntry(entry), Is.True, $"Invalid entry: {entry}");
+            }
 
             var spellLikeAbility = table[creature]
                 .Select(helper.ParseEntry)

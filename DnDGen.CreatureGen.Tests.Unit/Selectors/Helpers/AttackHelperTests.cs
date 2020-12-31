@@ -50,29 +50,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Helpers
             Assert.That(data.Length, Is.EqualTo(14));
         }
 
-        [TestCase("1d6")]
-        [TestCase("1d6 acid")]
-        [TestCase("1d6 bludgeoning")]
-        [TestCase("damage roll")]
-        [TestCase("1d3 + 1d4 fire")]
-        public void BuildDataIntoArray_WithIncorrectDamageData(string damageData)
-        {
-            Assert.That(
-                () => helper.BuildData(
-                    "attack name",
-                    damageData,
-                    "damage effect",
-                    92.66,
-                    "attack type",
-                    90210,
-                    "time period",
-                    true,
-                    true,
-                    true,
-                    true),
-                Throws.ArgumentException.With.Message.EqualTo($"Data Damage Entry '{damageData}' is not valid"));
-        }
-
         [Test]
         public void BuildDataIntoArray_WithCorrectDamageData()
         {
