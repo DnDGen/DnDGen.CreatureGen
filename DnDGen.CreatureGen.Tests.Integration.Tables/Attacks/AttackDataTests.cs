@@ -1,4 +1,5 @@
-﻿using DnDGen.CreatureGen.Creatures;
+﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Helpers;
@@ -78,13 +79,53 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             foreach (var entry in entries)
             {
                 var valid = damageHelper.ValidateEntries(entry[DataIndexConstants.AttackData.DamageDataIndex]);
-                if (!valid)
-                {
-                    Assert.Fail($"Attack {entry[DataIndexConstants.AttackData.NameIndex]} for creature {creature} has invalid damage data: {entry[DataIndexConstants.AttackData.DamageDataIndex]}");
-                }
+                Assert.That(valid, Is.True, $"{creature}: {entry[DataIndexConstants.AttackData.NameIndex]}: {entry[DataIndexConstants.AttackData.DamageDataIndex]} is not valid damage data");
             }
 
             AssertData(creature, entries);
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
+        public void CreatureEffectDoesNotHaveDamage(string creature)
+        {
+            Assert.That(table, Contains.Key(creature));
+
+            var damageTypes = new[]
+            {
+                AttributeConstants.DamageTypes.Bludgeoning.ToLower(),
+                AttributeConstants.DamageTypes.Piercing.ToLower(),
+                AttributeConstants.DamageTypes.Slashing.ToLower(),
+
+                FeatConstants.Foci.Elements.Acid.ToLower(),
+                FeatConstants.Foci.Elements.Cold.ToLower(),
+                FeatConstants.Foci.Elements.Electricity.ToLower(),
+                FeatConstants.Foci.Elements.Fire.ToLower(),
+                FeatConstants.Foci.Elements.Sonic.ToLower(),
+
+                AbilityConstants.Charisma.ToLower(),
+                AbilityConstants.Constitution.ToLower(),
+                AbilityConstants.Dexterity.ToLower(),
+                AbilityConstants.Intelligence.ToLower(),
+                AbilityConstants.Strength.ToLower(),
+                AbilityConstants.Wisdom.ToLower(),
+
+                "level",
+                "negative"
+            };
+
+            foreach (var entry in table[creature])
+            {
+                var valid = helper.ValidateEntry(entry);
+                Assert.That(valid, Is.True, $"Invalid entry: {entry}");
+
+                var attackData = helper.ParseEntry(entry);
+
+                foreach (var damageType in damageTypes)
+                {
+                    Assert.That(attackData[DataIndexConstants.AttackData.DamageEffectIndex], Does.Not.Contain(damageType), entry);
+                }
+            }
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
@@ -94,7 +135,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             foreach (var entry in table[creature])
             {
-                Assert.That(helper.ValidateEntry(entry), Is.True, $"Invalid entry: {entry}");
+                var valid = helper.ValidateEntry(entry);
+                Assert.That(valid, Is.True, $"Invalid entry: {entry}");
             }
 
             var creatureType = GetCreatureType(creature);
@@ -145,7 +187,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             foreach (var entry in table[creature])
             {
-                Assert.That(helper.ValidateEntry(entry), Is.True, $"Invalid entry: {entry}");
+                var valid = helper.ValidateEntry(entry);
+                Assert.That(valid, Is.True, $"Invalid entry: {entry}");
             }
 
             var creatureType = GetCreatureType(creature);
@@ -165,7 +208,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             foreach (var entry in table[creature])
             {
-                Assert.That(helper.ValidateEntry(entry), Is.True, $"Invalid entry: {entry}");
+                var valid = helper.ValidateEntry(entry);
+                Assert.That(valid, Is.True, $"Invalid entry: {entry}");
             }
 
             var hasSpellsAttack = table[creature]
@@ -191,7 +235,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             foreach (var entry in table[creature])
             {
-                Assert.That(helper.ValidateEntry(entry), Is.True, $"Invalid entry: {entry}");
+                var valid = helper.ValidateEntry(entry);
+                Assert.That(valid, Is.True, $"Invalid entry: {entry}");
             }
 
             var creatureData = creatureDataSelector.SelectFor(creature);
@@ -214,7 +259,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             foreach (var entry in table[creature])
             {
-                Assert.That(helper.ValidateEntry(entry), Is.True, $"Invalid entry: {entry}");
+                var valid = helper.ValidateEntry(entry);
+                Assert.That(valid, Is.True, $"Invalid entry: {entry}");
             }
 
             var unnaturalAttacks = table[creature]
@@ -245,7 +291,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             foreach (var entry in table[creature])
             {
-                Assert.That(helper.ValidateEntry(entry), Is.True, $"Invalid entry: {entry}");
+                var valid = helper.ValidateEntry(entry);
+                Assert.That(valid, Is.True, $"Invalid entry: {entry}");
             }
 
             var hasUnnaturalAttack = table[creature]
@@ -276,7 +323,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             foreach (var entry in table[creature])
             {
-                Assert.That(helper.ValidateEntry(entry), Is.True, $"Invalid entry: {entry}");
+                var valid = helper.ValidateEntry(entry);
+                Assert.That(valid, Is.True, $"Invalid entry: {entry}");
             }
 
             var improvedGrab = table[creature]
@@ -311,7 +359,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             foreach (var entry in table[creature])
             {
-                Assert.That(helper.ValidateEntry(entry), Is.True, $"Invalid entry: {entry}");
+                var valid = helper.ValidateEntry(entry);
+                Assert.That(valid, Is.True, $"Invalid entry: {entry}");
             }
 
             var spells = table[creature]
@@ -346,7 +395,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
             foreach (var entry in table[creature])
             {
-                Assert.That(helper.ValidateEntry(entry), Is.True, $"Invalid entry: {entry}");
+                var valid = helper.ValidateEntry(entry);
+                Assert.That(valid, Is.True, $"Invalid entry: {entry}");
             }
 
             var spellLikeAbility = table[creature]
