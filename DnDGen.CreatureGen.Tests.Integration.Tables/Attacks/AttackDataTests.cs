@@ -109,6 +109,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 AbilityConstants.Intelligence.ToLower(),
                 AbilityConstants.Strength.ToLower(),
                 AbilityConstants.Wisdom.ToLower(),
+                "str",
+                "con",
+                "dex",
+                "wis",
+                "int",
+                "cha",
 
                 "level",
                 "negative"
@@ -123,7 +129,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
                 foreach (var damageType in damageTypes)
                 {
-                    Assert.That(attackData[DataIndexConstants.AttackData.DamageEffectIndex], Does.Not.Contain(damageType), entry);
+                    Assert.That(attackData[DataIndexConstants.AttackData.DamageEffectIndex].ToLower(), Does.Not.Contain(damageType), entry);
                 }
             }
         }
