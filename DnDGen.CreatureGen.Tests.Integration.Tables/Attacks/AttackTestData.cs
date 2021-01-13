@@ -2940,7 +2940,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
                 testCases[CreatureConstants.Efreeti].Add(attackHelper.BuildData("Slam", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), "Heat", 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Efreeti].Add(attackHelper.BuildData("Change Size", string.Empty, string.Empty, 0, "spell-like ability", 2, FeatConstants.Frequencies.Day, false, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
-                testCases[CreatureConstants.Efreeti].Add(attackHelper.BuildData("Heat", "1d6 fire", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, false, true, true, true));
+                testCases[CreatureConstants.Efreeti].Add(attackHelper.BuildData("Heat",
+                    damageHelper.BuildEntries("1d6", FeatConstants.Foci.Elements.Fire),
+                    string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, false, true, true, true));
                 testCases[CreatureConstants.Efreeti].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
                 testCases[CreatureConstants.Elasmosaurus].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));

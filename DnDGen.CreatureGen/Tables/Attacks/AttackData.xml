@@ -1238,7 +1238,7 @@
   <collection>
     <name>Crocodile</name>
     <entry>Bite@1d8#Piercing#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Tail slap@1d12#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Tail Slap@1d12#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
@@ -1266,7 +1266,7 @@
     <name>Deep Halfling</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
-    <entry>Unarmed Strike@1d2#Blugeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Unarmed Strike@1d2#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
   </collection>
   <collection>
     <name>Deinonychus</name>
@@ -1285,23 +1285,23 @@
     <name>Derro</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
-    <entry>Unarmed Strike@1d2#Blugeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Unarmed Strike@1d2#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Poison use@@True@True@True@True@1@Hit@Constitution@Reflex@extraordinary ability@Greenblood Oil or Monstrous Spider Venom@0@0</entry>
     <entry>Greenblood Oil@@True@True@True@True@1@Hit@Constitution@Reflex@extraordinary ability@Injury DC 13, Initial 1 Con, Secondary 1d2 Con@0@0</entry>
     <entry>Monstrous Spider Venom@@True@True@True@True@1@Hit@Constitution@Reflex@extraordinary ability@Injury DC 12, Initial and secondary 1d4 Str@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
-    <entry>Sneak Attack@1d6@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+    <entry>Sneak Attack@1d6##@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Derro (Sane)</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
-    <entry>Unarmed Strike@1d2#Blugeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Unarmed Strike@1d2#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Poison use@@True@True@True@True@1@Hit@Constitution@Reflex@extraordinary ability@Greenblood Oil or Monstrous Spider Venom@0@0</entry>
     <entry>Greenblood Oil@@True@True@True@True@1@Hit@Constitution@Reflex@extraordinary ability@Injury DC 13, Initial 1 Con, Secondary 1d2 Con@0@0</entry>
     <entry>Monstrous Spider Venom@@True@True@True@True@1@Hit@Constitution@Reflex@extraordinary ability@Injury DC 12, Initial and secondary 1d4 Str@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
-    <entry>Sneak Attack@1d6@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+    <entry>Sneak Attack@1d6##@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Destrachan</name>
@@ -1322,12 +1322,12 @@
   </collection>
   <collection>
     <name>Displacer Beast</name>
-    <entry>Tentacle@1d6@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Tentacle@1d6#Bludgeoning#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite@1d8#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
     <name>Displacer Beast Pack Lord</name>
-    <entry>Tentacle@1d8@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Tentacle@1d8#Bludgeoning#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite@2d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
@@ -2790,19 +2790,19 @@
   </collection>
   <collection>
     <name>Earth Elemental, Elder</name>
-    <entry>Slam@2d10@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Slam@2d10#Bludgeoning#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Earth mastery@@True@False@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Push@@True@False@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Greater</name>
-    <entry>Slam@2d10@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Slam@2d10#Bludgeoning#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Earth mastery@@True@False@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Push@@True@False@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Huge</name>
-    <entry>Slam@2d10@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Slam@2d10#Bludgeoning#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Earth mastery@@True@False@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Push@@True@False@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
@@ -2978,7 +2978,7 @@
     <name>Forest Gnome</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
-    <entry>Unarmed Strike@1d2#Blugeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Unarmed Strike@1d2#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
@@ -3240,7 +3240,7 @@
     <name>Goblin</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
-    <entry>Unarmed Strike@1d2#Blugeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Unarmed Strike@1d2#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
   </collection>
   <collection>
     <name>Clay Golem</name>
@@ -3349,14 +3349,14 @@
     <name>Nixie</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
-    <entry>Unarmed Strike@1d2#Blugeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Unarmed Strike@1d2#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Pixie</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
-    <entry>Unarmed Strike@1d2#Blugeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Unarmed Strike@1d2#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Special Arrow (Memory Loss)@@False@True@True@True@1@Round (6 seconds)@Charisma@Will@extraordinary ability@@0@2</entry>
     <entry>Special Arrow (Sleep)@@False@True@True@True@1@Round (6 seconds)@Charisma@Fortitude@extraordinary ability@Sleep@0@2</entry>
@@ -3365,7 +3365,7 @@
     <name>Pixie with Irresistible dance</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
-    <entry>Unarmed Strike@1d2#Blugeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Unarmed Strike@1d2#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Special Arrow (Memory Loss)@@False@True@True@True@1@Round (6 seconds)@Charisma@Will@extraordinary ability@@0@2</entry>
     <entry>Special Arrow (Sleep)@@False@True@True@True@1@Round (6 seconds)@Charisma@Fortitude@extraordinary ability@Sleep@0@2</entry>
@@ -3521,114 +3521,114 @@
   </collection>
   <collection>
     <name>Five-Headed Hydra</name>
-    <entry>Bite@1d10@True@True@True@False@5@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d10#Piercing#@True@True@True@False@5@Round (6 seconds)@@@melee@@1@0</entry>
   </collection>
   <collection>
     <name>Six-Headed Hydra</name>
-    <entry>Bite@1d10@True@True@True@False@6@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d10#Piercing#@True@True@True@False@6@Round (6 seconds)@@@melee@@1@0</entry>
   </collection>
   <collection>
     <name>Seven-Headed Hydra</name>
-    <entry>Bite@1d10@True@True@True@False@7@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d10#Piercing#@True@True@True@False@7@Round (6 seconds)@@@melee@@1@0</entry>
   </collection>
   <collection>
     <name>Eight-Headed Hydra</name>
-    <entry>Bite@1d10@True@True@True@False@8@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d10#Piercing#@True@True@True@False@8@Round (6 seconds)@@@melee@@1@0</entry>
   </collection>
   <collection>
     <name>Nine-Headed Hydra</name>
-    <entry>Bite@1d10@True@True@True@False@9@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d10#Piercing#@True@True@True@False@9@Round (6 seconds)@@@melee@@1@0</entry>
   </collection>
   <collection>
     <name>Ten-Headed Hydra</name>
-    <entry>Bite@1d10@True@True@True@False@10@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d10#Piercing#@True@True@True@False@10@Round (6 seconds)@@@melee@@1@0</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Hydra</name>
-    <entry>Bite@1d10@True@True@True@False@11@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d10#Piercing#@True@True@True@False@11@Round (6 seconds)@@@melee@@1@0</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Hydra</name>
-    <entry>Bite@1d10@True@True@True@False@12@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d10#Piercing#@True@True@True@False@12@Round (6 seconds)@@@melee@@1@0</entry>
   </collection>
   <collection>
     <name>Five-Headed Cryohydra</name>
-    <entry>Bite@1d10@True@True@True@False@5@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d10#Piercing#@True@True@True@False@5@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Breath weapon@3d6 cold per head@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
   <collection>
     <name>Six-Headed Cryohydra</name>
-    <entry>Bite@1d10@True@True@True@False@6@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d10#Piercing#@True@True@True@False@6@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Breath weapon@3d6 cold per head@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
   <collection>
     <name>Seven-Headed Cryohydra</name>
-    <entry>Bite@1d10@True@True@True@False@7@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d10#Piercing#@True@True@True@False@7@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Breath weapon@3d6 cold per head@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
   <collection>
     <name>Eight-Headed Cryohydra</name>
-    <entry>Bite@1d10@True@True@True@False@8@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d10#Piercing#@True@True@True@False@8@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Breath weapon@3d6 cold per head@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
   <collection>
     <name>Nine-Headed Cryohydra</name>
-    <entry>Bite@1d10@True@True@True@False@9@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d10#Piercing#@True@True@True@False@9@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Breath weapon@3d6 cold per head@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
   <collection>
     <name>Ten-Headed Cryohydra</name>
-    <entry>Bite@1d10@True@True@True@False@10@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d10#Piercing#@True@True@True@False@10@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Breath weapon@3d6 cold per head@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Cryohydra</name>
-    <entry>Bite@1d10@True@True@True@False@11@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d10#Piercing#@True@True@True@False@11@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Breath weapon@3d6 cold per head@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Cryohydra</name>
-    <entry>Bite@1d10@True@True@True@False@12@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d10#Piercing#@True@True@True@False@12@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Breath weapon@3d6 cold per head@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
   <collection>
     <name>Five-Headed Pyrohydra</name>
-    <entry>Bite@1d10@True@True@True@False@5@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d10#Piercing#@True@True@True@False@5@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Breath weapon@3d6 fire per head@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
   <collection>
     <name>Six-Headed Pyrohydra</name>
-    <entry>Bite@1d10@True@True@True@False@6@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d10#Piercing#@True@True@True@False@6@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Breath weapon@3d6 fire per head@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
   <collection>
     <name>Seven-Headed Pyrohydra</name>
-    <entry>Bite@1d10@True@True@True@False@7@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d10#Piercing#@True@True@True@False@7@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Breath weapon@3d6 fire per head@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
   <collection>
     <name>Eight-Headed Pyrohydra</name>
-    <entry>Bite@1d10@True@True@True@False@8@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d10#Piercing#@True@True@True@False@8@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Breath weapon@3d6 fire per head@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
   <collection>
     <name>Nine-Headed Pyrohydra</name>
-    <entry>Bite@1d10@True@True@True@False@9@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d10#Piercing#@True@True@True@False@9@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Breath weapon@3d6 fire per head@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
   <collection>
     <name>Ten-Headed Pyrohydra</name>
-    <entry>Bite@1d10@True@True@True@False@10@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d10#Piercing#@True@True@True@False@10@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Breath weapon@3d6 fire per head@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Pyrohydra</name>
-    <entry>Bite@1d10@True@True@True@False@11@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d10#Piercing#@True@True@True@False@11@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Breath weapon@3d6 fire per head@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Pyrohydra</name>
-    <entry>Bite@1d10@True@True@True@False@12@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d10#Piercing#@True@True@True@False@12@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Breath weapon@3d6 fire per head@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@1@0</entry>
   </collection>
   <collection>
@@ -3674,7 +3674,7 @@
     <name>Kobold</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
-    <entry>Unarmed Strike@1d2#Blugeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Unarmed Strike@1d2#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
   </collection>
   <collection>
     <name>Kolyarut</name>
@@ -3764,7 +3764,7 @@
     <name>Lightfoot Halfling</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
-    <entry>Unarmed Strike@1d2#Blugeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Unarmed Strike@1d2#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
   </collection>
   <collection>
     <name>Lillend</name>
@@ -3865,55 +3865,55 @@
   <collection>
     <name>Dust Mephit</name>
     <entry>Claw@1d3#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Breath weapon@1d4##@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@Itching Skin and Burning Eyes@0@1</entry>
+    <entry>Breath weapon@1d4##@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@Itching Skin and Burning Eyes (-4 AC, -2 attack rolls for 3 rounds)@0@1</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Summon Mephit@@True@True@True@True@1@Day@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Earth Mephit</name>
     <entry>Claw@1d3#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Breath weapon@1d8##@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@1</entry>
+    <entry>Breath weapon@1d8##@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@Itching Skin and Burning Eyes (-4 AC, -2 attack rolls for 3 rounds)@0@1</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Summon Mephit@@True@True@True@True@1@Day@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Fire Mephit</name>
     <entry>Claw@1d3#Slashing#,1d4#Fire#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Breath weapon@1d8#Fire#@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@1</entry>
+    <entry>Breath weapon@1d8#Fire#@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@Itching Skin and Burning Eyes (-4 AC, -2 attack rolls for 3 rounds)@0@1</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Summon Mephit@@True@True@True@True@1@Day@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Ice Mephit</name>
     <entry>Claw@1d3#Slashing#,1d4#Cold#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Breath weapon@1d4#Cold#@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@1</entry>
+    <entry>Breath weapon@1d4#Cold#@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@Itching Skin and Burning Eyes (-4 AC, -2 attack rolls for 3 rounds)@0@1</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Summon Mephit@@True@True@True@True@1@Day@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Magma Mephit</name>
     <entry>Claw@1d3#Slashing#,1d4#Fire#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Breath weapon@1d4#Fire#@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@1</entry>
+    <entry>Breath weapon@1d4#Fire#@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@Itching Skin and Burning Eyes (-4 AC, -2 attack rolls for 3 rounds)@0@1</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Summon Mephit@@True@True@True@True@1@Day@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Ooze Mephit</name>
     <entry>Claw@1d3#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Breath weapon@1d4#Acid#@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@1</entry>
+    <entry>Breath weapon@1d4#Acid#@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@Itching Skin and Burning Eyes (-4 AC, -2 attack rolls for 3 rounds)@0@1</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Summon Mephit@@True@True@True@True@1@Day@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Salt Mephit</name>
     <entry>Claw@1d3#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Breath weapon@1d4##@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@1</entry>
+    <entry>Breath weapon@1d4##@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@Itching Skin and Burning Eyes (-4 AC, -2 attack rolls for 3 rounds)@0@1</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Summon Mephit@@True@True@True@True@1@Day@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Steam Mephit</name>
-    <entry>Breath weapon@1d4#Fire#@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@1</entry>
+    <entry>Breath weapon@1d4#Fire#@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@Itching Skin and Burning Eyes (-4 AC, -2 attack rolls for 3 rounds)@0@1</entry>
     <entry>Claw@1d3#Slashing#,1d4#Fire#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Summon Mephit@@True@True@True@True@1@Day@@@spell-like ability@@0@0</entry>
@@ -3921,7 +3921,7 @@
   <collection>
     <name>Water Mephit</name>
     <entry>Claw@1d3#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Breath weapon@1d8#Acid#@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@1</entry>
+    <entry>Breath weapon@1d8#Acid#@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@Itching Skin and Burning Eyes (-4 AC, -2 attack rolls for 3 rounds)@0@1</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Summon Mephit@@True@True@True@True@1@Day@@@spell-like ability@@0@0</entry>
   </collection>
@@ -4509,7 +4509,7 @@
     <name>Rock Gnome</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
-    <entry>Unarmed Strike@1d2#Blugeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Unarmed Strike@1d2#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
@@ -4670,14 +4670,14 @@
     <name>Svirfneblin</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
-    <entry>Unarmed Strike@1d2#Blugeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Unarmed Strike@1d2#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Tallfellow Halfling</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
-    <entry>Unarmed Strike@1d2#Blugeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Unarmed Strike@1d2#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
   </collection>
   <collection>
     <name>Tarrasque</name>
@@ -4918,14 +4918,14 @@
   </collection>
   <collection>
     <name>Wraith</name>
-    <entry>Constitution Drain@1d4#Constitution#@True@True@False@True@1@Hit@Charisma@Fortitude@supernatural ability@@0@0</entry>
+    <entry>Constitution Drain@1d4#Constitution#Wraith gains 5 temporary hit points@True@True@False@True@1@Hit@Charisma@Fortitude@supernatural ability@@0@0</entry>
     <entry>Create Spawn@@True@True@False@True@1@Round (6 seconds)@@@supernatural ability@@0@0</entry>
     <entry>Incorporeal touch@1d4##@True@True@True@False@1@Round (6 seconds)@@@melee@Constitution Drain@0@0</entry>
   </collection>
   <collection>
     <name>Dread Wraith</name>
     <entry>Incorporeal touch@2d6##@True@True@True@False@1@Round (6 seconds)@@@melee@Constitution Drain@0@0</entry>
-    <entry>Constitution Drain@1d8#Constitution#@True@True@False@True@1@Hit@Charisma@Fortitude@supernatural ability@@0@0</entry>
+    <entry>Constitution Drain@1d8#Constitution#Dread Wraith gains 5 temporary hit points@True@True@False@True@1@Hit@Charisma@Fortitude@supernatural ability@@0@0</entry>
     <entry>Create Spawn@@True@True@False@True@1@Round (6 seconds)@@@supernatural ability@@0@0</entry>
   </collection>
   <collection>
