@@ -123,7 +123,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 "cha",
 
                 "level",
-                "negative"
+                "negative",
+                "damage"
             };
 
             var attackNames = entries.Select(e => e[DataIndexConstants.AttackData.NameIndex]);
