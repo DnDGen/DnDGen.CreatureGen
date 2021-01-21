@@ -980,8 +980,8 @@
     <entry>Breath Weapon@7d6#Electricity#@True@False@True@True@1@Minute (10 rounds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Constrict@2d8#Bludgeoning#@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Rake@1d4#Slashing#@True@True@True@True@6@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
-    <entry>Swallow Whole@2d8#Bludgeoning#,8#Acid#@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
+    <entry>Rake@1d4#Piercing/Slashing#@True@True@True@True@6@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
+    <entry>Swallow Whole@2d8+8#Bludgeoning#,8#Acid#@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
   </collection>
   <collection>
     <name>Beholder</name>
@@ -1012,7 +1012,7 @@
     <entry>Wing@1d6#Bludgeoning#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite@1d4#Piercing/Slashing/Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Claw@1d3#Piercing/Slashing#@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Smoke Claw@3d4##@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+    <entry>Smoke Claw@3d4#Piercing/Slashing#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Bison</name>

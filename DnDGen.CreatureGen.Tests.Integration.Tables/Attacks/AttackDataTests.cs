@@ -223,9 +223,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 Assert.That(entry[DataIndexConstants.AttackData.SaveIndex], Is.Not.Empty);
 
                 var damageData = damageHelper.ParseEntries(entry[DataIndexConstants.AttackData.DamageDataIndex]);
-                Assert.That(damageData, Has.Length.EqualTo(2));
-                Assert.That(damageData[0][DataIndexConstants.AttackData.DamageData.ConditionIndex], Is.EqualTo("Initial"));
-                Assert.That(damageData[1][DataIndexConstants.AttackData.DamageData.ConditionIndex], Is.EqualTo("Secondary"));
+                Assert.That(damageData, Has.Length.EqualTo(1), entry[DataIndexConstants.AttackData.NameIndex]);
+                Assert.That(damageData[0][DataIndexConstants.AttackData.DamageData.RollIndex], Is.Not.Empty, entry[DataIndexConstants.AttackData.NameIndex]);
+                Assert.That(damageData[0][DataIndexConstants.AttackData.DamageData.TypeIndex], Is.Not.Empty, entry[DataIndexConstants.AttackData.NameIndex]);
+                Assert.That(damageData[0][DataIndexConstants.AttackData.DamageData.ConditionIndex], Does.StartWith("Incubation period"), entry[DataIndexConstants.AttackData.NameIndex]);
 
                 diseaseAttack = string.Empty;
             }
