@@ -123,8 +123,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 "cha",
 
                 "level",
-                "negative",
-                "damage"
+                "negative"
             };
 
             var attackNames = entries.Select(e => e[DataIndexConstants.AttackData.NameIndex]);
@@ -172,6 +171,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 }
 
                 var damageData = damageHelper.ParseEntries(entry[DataIndexConstants.AttackData.DamageDataIndex]);
+                Assert.That(damageData, Is.Not.Empty, entry[DataIndexConstants.AttackData.NameIndex]);
                 Assert.That(
                     damageData[0][DataIndexConstants.AttackData.DamageData.TypeIndex],
                     Is.EqualTo(damageTypes[entry[DataIndexConstants.AttackData.NameIndex].ToLower()]),
@@ -189,13 +189,24 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 }
 
                 Assert.That(entry[DataIndexConstants.AttackData.IsSpecialIndex], Is.EqualTo(bool.TrueString));
-                Assert.That(entry[DataIndexConstants.AttackData.SaveAbilityIndex], Is.Not.Empty);
                 Assert.That(entry[DataIndexConstants.AttackData.SaveIndex], Is.Not.Empty);
 
+                if (entry[DataIndexConstants.AttackData.IsNaturalIndex] == bool.TrueString)
+                    Assert.That(entry[DataIndexConstants.AttackData.SaveAbilityIndex], Is.Not.Empty);
+                else
+                    Assert.That(entry[DataIndexConstants.AttackData.SaveAbilityIndex], Is.Empty);
+
                 var damageData = damageHelper.ParseEntries(entry[DataIndexConstants.AttackData.DamageDataIndex]);
-                Assert.That(damageData, Has.Length.EqualTo(2));
-                Assert.That(damageData[0][DataIndexConstants.AttackData.DamageData.ConditionIndex], Is.EqualTo("Initial"));
-                Assert.That(damageData[1][DataIndexConstants.AttackData.DamageData.ConditionIndex], Is.EqualTo("Secondary"));
+                if (damageData.Any())
+                {
+                    Assert.That(damageData, Has.Length.EqualTo(2));
+                    Assert.That(damageData[0][DataIndexConstants.AttackData.DamageData.ConditionIndex], Is.EqualTo("Initial"));
+                    Assert.That(damageData[1][DataIndexConstants.AttackData.DamageData.ConditionIndex], Is.EqualTo("Secondary"));
+                }
+                else
+                {
+                    Assert.That(entry[DataIndexConstants.AttackData.DamageEffectIndex], Is.Not.Empty);
+                }
             }
         }
 
@@ -223,10 +234,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 Assert.That(entry[DataIndexConstants.AttackData.SaveIndex], Is.Not.Empty);
 
                 var damageData = damageHelper.ParseEntries(entry[DataIndexConstants.AttackData.DamageDataIndex]);
-                Assert.That(damageData, Has.Length.EqualTo(1), entry[DataIndexConstants.AttackData.NameIndex]);
-                Assert.That(damageData[0][DataIndexConstants.AttackData.DamageData.RollIndex], Is.Not.Empty, entry[DataIndexConstants.AttackData.NameIndex]);
-                Assert.That(damageData[0][DataIndexConstants.AttackData.DamageData.TypeIndex], Is.Not.Empty, entry[DataIndexConstants.AttackData.NameIndex]);
-                Assert.That(damageData[0][DataIndexConstants.AttackData.DamageData.ConditionIndex], Does.StartWith("Incubation period"), entry[DataIndexConstants.AttackData.NameIndex]);
+                Assert.That(damageData, Is.Not.Empty, entry[DataIndexConstants.AttackData.NameIndex]);
+
+                for (var i = 0; i < damageData.Length; i++)
+                {
+                    Assert.That(damageData[i][DataIndexConstants.AttackData.DamageData.RollIndex], Is.Not.Empty, entry[DataIndexConstants.AttackData.NameIndex]);
+                    Assert.That(damageData[i][DataIndexConstants.AttackData.DamageData.TypeIndex], Is.Not.Empty, entry[DataIndexConstants.AttackData.NameIndex]);
+                    Assert.That(damageData[i][DataIndexConstants.AttackData.DamageData.ConditionIndex], Does.StartWith("Incubation period"), entry[DataIndexConstants.AttackData.NameIndex]);
+                }
 
                 diseaseAttack = string.Empty;
             }

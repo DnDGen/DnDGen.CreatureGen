@@ -64,5 +64,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Attacks
 
             Assert.That(save.DC, Is.EqualTo(dc));
         }
+
+        [TestCase(10)]
+        [TestCase(11)]
+        [TestCase(12)]
+        [TestCase(13)]
+        [TestCase(14)]
+        [TestCase(20)]
+        [TestCase(9266)]
+        public void DC_WithoutAbility(int baseValue)
+        {
+            save.BaseValue = baseValue;
+            save.BaseAbility = null;
+
+            Assert.That(save.DC, Is.EqualTo(baseValue));
+        }
     }
 }

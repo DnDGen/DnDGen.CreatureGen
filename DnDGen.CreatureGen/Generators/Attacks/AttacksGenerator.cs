@@ -92,12 +92,19 @@ namespace DnDGen.CreatureGen.Generators.Attacks
                 attack.Frequency.Quantity = attackSelection.FrequencyQuantity;
                 attack.Frequency.TimePeriod = attackSelection.FrequencyTimePeriod;
 
-                if (!string.IsNullOrEmpty(attackSelection.SaveAbility))
+                if (!string.IsNullOrEmpty(attackSelection.SaveAbility) || !string.IsNullOrEmpty(attackSelection.Save))
                 {
                     attack.Save = new SaveDieCheck();
-                    attack.Save.BaseAbility = abilities[attackSelection.SaveAbility];
-                    attack.Save.BaseValue = 10 + hitDiceQuantity / 2 + attackSelection.SaveDcBonus;
+                    //attack.Save.BaseAbility = abilities[attackSelection.SaveAbility];
+                    //attack.Save.BaseValue = 10 + hitDiceQuantity / 2 + attackSelection.SaveDcBonus;
+                    attack.Save.BaseValue = 10 + attackSelection.SaveDcBonus;
                     attack.Save.Save = attackSelection.Save;
+
+                    if (attack.IsNatural)
+                    {
+                        attack.Save.BaseAbility = abilities[attackSelection.SaveAbility];
+                        attack.Save.BaseValue += hitDiceQuantity / 2;
+                    }
                 }
 
                 attack.BaseAttackBonus = baseAttackBonus;
