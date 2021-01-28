@@ -1,5 +1,6 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Helpers;
@@ -188,8 +189,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                     continue;
                 }
 
-                Assert.That(entry[DataIndexConstants.AttackData.IsSpecialIndex], Is.EqualTo(bool.TrueString));
-                Assert.That(entry[DataIndexConstants.AttackData.SaveIndex], Is.Not.Empty);
+                Assert.That(entry[DataIndexConstants.AttackData.IsSpecialIndex], Is.EqualTo(bool.TrueString), "Special");
+                Assert.That(entry[DataIndexConstants.AttackData.IsMeleeIndex], Is.EqualTo(bool.TrueString), "Melee");
+                Assert.That(entry[DataIndexConstants.AttackData.IsPrimaryIndex], Is.EqualTo(bool.FalseString), "Primary");
+                Assert.That(entry[DataIndexConstants.AttackData.SaveIndex], Is.Not.Empty.And.EqualTo(SaveConstants.Fortitude));
 
                 if (entry[DataIndexConstants.AttackData.IsNaturalIndex] == bool.TrueString)
                     Assert.That(entry[DataIndexConstants.AttackData.SaveAbilityIndex], Is.Not.Empty);

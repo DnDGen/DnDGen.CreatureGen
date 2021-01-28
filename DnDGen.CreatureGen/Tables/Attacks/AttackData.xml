@@ -811,7 +811,7 @@
   <collection>
     <name>Aranea</name>
     <entry>Bite@1d6#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
-    <entry>Poison@1d6#Strength#Initial,2d6#Strength#Secondary@True@False@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
+    <entry>Poison@1d6#Strength#Initial,2d6#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
     <entry>Web@@True@False@True@True@6@Day@@@ranged, extraordinary ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
@@ -1069,7 +1069,7 @@
     <entry>Sting@3d4#Piercing#@True@True@False@False@2@Round (6 seconds)@@@melee@Poison@0.5@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Fear Aura@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@@0@0</entry>
-    <entry>Poison@1d6#Strength#Initial,2d6#Strength#Secondary@True@False@True@True@1@Round (6 seconds)@Constitution@Fortitude@extraordinary ability@@0@0</entry>
+    <entry>Poison@1d6#Strength#Initial,2d6#Strength#Secondary@True@True@False@True@1@Round (6 seconds)@Constitution@Fortitude@extraordinary ability@@0@0</entry>
     <entry>Summon Devil@@True@False@True@True@1@Day@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
@@ -1127,7 +1127,7 @@
     <name>Centipede Swarm</name>
     <entry>Swarm@2d6##@True@True@True@False@1@Round (6 seconds)@@@swarm@Poison@0@0</entry>
     <entry>Distraction@@True@True@True@True@1@Round (6 seconds)@Constitution@Fortitude@extraordinary ability@@0@0</entry>
-    <entry>Poison@1d4#Dexterity#Initial,1d4#Dexterity#Secondary@True@True@True@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
+    <entry>Poison@1d4#Dexterity#Initial,1d4#Dexterity#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Chain Devil (Kyton)</name>
@@ -1221,7 +1221,7 @@
   <collection>
     <name>Couatl</name>
     <entry>Bite@1d3#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
-    <entry>Poison@2d4#Strength#Initial,4d4#Strength#Secondary@True@False@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
+    <entry>Poison@2d4#Strength#Initial,4d4#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
     <entry>Constrict@2d8#Bludgeoning#@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Psionic@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -2729,7 +2729,7 @@
     <entry>Bite@1d4#Piercing/Slashing/Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@0.5@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
-    <entry>Poison@1d6#Strength#Initial,1d6#Strength#Secondary@True@False@True@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
+    <entry>Poison@1d6#Strength#Initial,1d6#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Dryad</name>
@@ -2909,7 +2909,7 @@
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
     <entry>Unarmed Strike@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Poison@@False@True@True@True@1@Hit@@Fortitude@extraordinary ability@1 minute unconscious (Initial), 2d4 hours unconscious (Secondary)@0@3</entry>
+    <entry>Poison@@False@True@False@True@1@Hit@@Fortitude@extraordinary ability@1 minute unconscious (Initial), 2d4 hours unconscious (Secondary)@0@3</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
@@ -3198,7 +3198,7 @@
     <entry>Blindness@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@1d4 rounds blinded@0@0</entry>
     <entry>Gibbering@@True@False@False@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@1d2 rounds Confusion@0@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Swallow Whole@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+    <entry>Swallow Whole@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@Blood Drain@0@0</entry>
     <entry>Blood Drain@1d4#Constitution#@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Ground Manipulation@@True@False@True@True@1@Round (6 seconds)@@@supernatural ability@@0@0</entry>
   </collection>
@@ -3259,7 +3259,7 @@
     <name>Iron Golem</name>
     <entry>Slam@2d10#Bludgeoning#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Breath weapon@@True@False@True@True@1@1d4+1 Round (6 seconds)@@@supernatural ability@Poisonous Gas@0@0</entry>
-    <entry>Poisonous Gas@@True@False@True@True@1@Round (6 seconds)@Constitution@Fortitude@melee@Initial damage 1d4 Con, secondary damage 3d4 Con@0@0</entry>
+    <entry>Poisonous Gas@1d4#Constitution#Initial,3d4#Constitution#Secondary@True@False@True@True@1@Round (6 seconds)@Constitution@Fortitude@melee@@0@0</entry>
   </collection>
   <collection>
     <name>Stone Golem</name>
@@ -3280,7 +3280,7 @@
   <collection>
     <name>Gray Ooze</name>
     <entry>Slam@1d6#Bludgeoning#,1d6#Acid#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Acid@@True@True@True@True@1@Hit@Constitution@Reflex@extraordinary ability@@0@0</entry>
+    <entry>Acid@16#Acid#Wooden or Metal objects@True@True@True@True@1@Hit@Constitution@Reflex@extraordinary ability@@0@0</entry>
     <entry>Constrict@1d6#Bludgeoning#,1d6#Acid#@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
@@ -3309,7 +3309,7 @@
     <name>Green Hag</name>
     <entry>Claw@1d4#Piercing/Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
-    <entry>Weakness@@True@False@True@True@1@Round (6 seconds)@Charisma@Fortitude@supernatural ability@2d4 Strength damage@0@0</entry>
+    <entry>Weakness@2d4#Strength#@True@False@True@True@1@Round (6 seconds)@Charisma@Fortitude@supernatural ability@@0@0</entry>
     <entry>Mimicry@@True@False@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
@@ -3329,7 +3329,7 @@
     <entry>Bite@2d6#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@1d4#Piercing/Slashing#@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Pounce@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
-    <entry>Rake@1d6#Slashing#@True@True@False@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
+    <entry>Rake@1d6#Piercing/Slashing#@True@True@False@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
   </collection>
   <collection>
     <name>Grig</name>
@@ -3380,7 +3380,7 @@
     <name>Gynosphinx</name>
     <entry>Claw@1d6#Piercing/Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Pounce@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
-    <entry>Rake@1d6#Slashing#@True@True@False@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
+    <entry>Rake@1d6#Piercing/Slashing#@True@True@False@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
@@ -3397,7 +3397,7 @@
   </collection>
   <collection>
     <name>Hawk</name>
-    <entry>Talons@1d4#Slashing#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+    <entry>Talons@1d4#Piercing/Slashing#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
   </collection>
   <collection>
     <name>Hell Hound</name>
@@ -3417,30 +3417,30 @@
     <entry>Bite@2d8#Piercing/Slashing/Bludgeoning#@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Pounce@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Rake@1d8#Slashing#@True@True@False@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
+    <entry>Rake@1d8#Piercing/Slashing#@True@True@False@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
   </collection>
   <collection>
     <name>Hellwasp Swarm</name>
     <entry>Swarm@3d6##@True@True@True@False@1@Round (6 seconds)@@@swarm@Poison@0@0</entry>
     <entry>Distraction@@True@True@True@True@1@Minute (10 rounds)@Constitution@Fortitude@extraordinary ability@@0@0</entry>
     <entry>Inhabit@@True@True@True@True@1@Minute (10 rounds)@@@extraordinary ability@@0@0</entry>
-    <entry>Poison@@True@True@True@True@1@Hit@@@extraordinary ability@Initial and secondary damage 1d4 Dex@0@0</entry>
+    <entry>Poison@1d4#Dexterity#Initial,1d4#Dexterity#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Hezrou</name>
-    <entry>Bite@4d4#Piercing#@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@4d4#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@1d8#Piercing/Slashing#@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
-    <entry>Stench@@True@False@False@True@1@Round (6 seconds)@Constitution@Fortitude@extraordinary ability@@0@0</entry>
+    <entry>Stench@@True@False@False@True@1@Round (6 seconds)@Constitution@Fortitude@extraordinary ability@Nauseated while in range + 1d4 rounds afterwards@0@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Summon Demon@@True@False@True@True@1@Day@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Hieracosphinx</name>
-    <entry>Bite@1d10#Piercing#@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Bite@1d10#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@1d6#Piercing/Slashing#@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Pounce@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Rake@1d6#Slashing#@True@True@False@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
+    <entry>Rake@1d6#Piercing/Slashing#@True@True@False@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
   </collection>
   <collection>
     <name>Hippogriff</name>
@@ -3463,7 +3463,7 @@
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@2d6#Piercing/Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite@2d8#Piercing/Slashing/Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Tail@2d6#Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@infernal wound@0.5@0</entry>
+    <entry>Tail@2d6#Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@Infernal Wound@0.5@0</entry>
     <entry>Fear Aura@@True@False@False@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@@0@0</entry>
     <entry>Infernal Wound@2##@True@True@False@True@1@Round (6 seconds)@Constitution@@supernatural ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -3640,7 +3640,7 @@
   <collection>
     <name>Ice Devil (Gelugon)</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Claw@1d10#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Claw@1d10#Piercing/Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite@2d6#Piercing/Slashing/Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Tail@3d6#Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@slow@0.5@0</entry>
     <entry>Fear Aura@@True@False@False@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@@0@0</entry>
@@ -3651,7 +3651,7 @@
   <collection>
     <name>Imp</name>
     <entry>Sting@1d4#Piercing#@True@True@True@False@1@Round (6 seconds)@@@melee@poison@1.5@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@Initial damage 1d4 Dex, Secondary damage 2d4 Dex@0@2</entry>
+    <entry>Poison@1d4#Dexterity#Initial,2d4#Dexterity#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@2</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
@@ -3729,13 +3729,13 @@
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Touch@@True@True@True@False@1@Round (6 seconds)@@@melee touch@Wisdom Drain@0@0</entry>
-    <entry>Wisdom Drain@@True@True@False@True@1@Round (6 seconds)@@@supernatural ability@1d4 Wisdom Drain@0@0</entry>
+    <entry>Wisdom Drain@1d4#Wisdom#@True@True@False@True@1@Round (6 seconds)@@@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Lammasu</name>
     <entry>Claw@1d6#Piercing/Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Pounce@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Rake@1d6#Slashing#@True@True@True@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
+    <entry>Rake@1d6#Piercing/Slashing#@True@True@True@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
@@ -3750,7 +3750,7 @@
     <entry>Roar@2d6#Sonic#@True@False@True@True@3@Day@Charisma@Fortitude@supernatural ability@@0@0</entry>
     <entry>Pounce@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Rake@1d6#Slashing#@True@True@True@True@2@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
+    <entry>Rake@1d6#Piercing/Slashing#@True@True@True@True@2@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
@@ -3759,7 +3759,7 @@
     <entry>Claw@1d3#Piercing/Slashing#@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Pounce@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Rake@1d3#Slashing#@True@True@True@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
+    <entry>Rake@1d3#Piercing/Slashing#@True@True@True@True@2@Round (6 seconds)@@@extraordinary ability@@0.5@0</entry>
   </collection>
   <collection>
     <name>Lightfoot Halfling</name>
@@ -3852,14 +3852,14 @@
     <name>Medusa</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1@0</entry>
-    <entry>Snakes@1d4#Piercing#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@0.5@0</entry>
+    <entry>Snakes@1d4#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@0.5@0</entry>
     <entry>Petrifying Gaze@@True@False@True@True@1@Round (6 seconds)@Charisma@Fortitude@supernatural ability@Permanent petrification@0@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@Initial damage 1d6 Str, Secondary damage 2d6 Str@0@0</entry>
+    <entry>Poison@1d6#Strength#Initial,2d6#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Megaraptor</name>
-    <entry>Talons@2d6#Slashing#@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>ForeClaw@1d4#Piercing/Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
+    <entry>Talons@2d6#Piercing/Slashing#@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Foreclaw@1d4#Piercing/Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Bite@1d8#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Pounce@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
@@ -3973,169 +3973,169 @@
   <collection>
     <name>Monstrous Centipede, Colossal</name>
     <entry>Bite@4d6#Piercing/Slashing/Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
-    <entry>Poison@@True@True@False@False@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 2d6 Dex@0@0</entry>
+    <entry>Poison@2d6#Dexterity#Initial,2d6#Dexterity#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Gargantuan</name>
     <entry>Bite@2d8#Piercing/Slashing/Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
-    <entry>Poison@@True@True@False@False@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 1d8 Dex@0@0</entry>
+    <entry>Poison@1d8#Dexterity#Initial,1d8#Dexterity#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Huge</name>
     <entry>Bite@2d6#Piercing/Slashing/Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
-    <entry>Poison@@True@True@False@False@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 1d6 Dex@0@0</entry>
+    <entry>Poison@1d6#Dexterity#Initial,1d6#Dexterity#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Large</name>
     <entry>Bite@1d8#Piercing/Slashing/Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
-    <entry>Poison@@True@True@False@False@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 1d4 Dex@0@0</entry>
+    <entry>Poison@1d4#Dexterity#Initial,1d4#Dexterity#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Medium</name>
     <entry>Bite@1d6#Piercing/Slashing/Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
-    <entry>Poison@@True@True@False@False@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 1d3 Dex@0@0</entry>
+    <entry>Poison@1d3#Dexterity#Initial,1d3#Dexterity#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Small</name>
     <entry>Bite@1d4#Piercing/Slashing/Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
-    <entry>Poison@@True@True@False@False@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 1d2 Dex@0@0</entry>
+    <entry>Poison@1d2#Dexterity#Initial,1d2#Dexterity#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Tiny</name>
     <entry>Bite@1d3#Piercing/Slashing/Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
-    <entry>Poison@@True@True@False@False@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 1 Dex@0@0</entry>
+    <entry>Poison@1#Dexterity#Initial,1#Dexterity#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Colossal</name>
     <entry>Claw@2d8#Piercing/Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Sting@2d8#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@0.5@0</entry>
-    <entry>Constrict@2d8#Bludgeoning#@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
+    <entry>Constrict@2d8#Piercing/Slashing#@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@initial and secondary damage 1d10 Con@0@0</entry>
+    <entry>Poison@1d10#Constitution#Initial,1d10#Constitution#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Gargantuan</name>
     <entry>Claw@2d6#Piercing/Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Sting@2d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@0.5@0</entry>
-    <entry>Constrict@2d6#Bludgeoning#@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
+    <entry>Constrict@2d6#Piercing/Slashing#@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@initial and secondary damage 1d8 Con@0@0</entry>
+    <entry>Poison@1d8#Constitution#Initial,1d8#Constitution#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Huge</name>
     <entry>Claw@1d8#Piercing/Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Sting@1d8@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@0.5@0</entry>
-    <entry>Constrict@1d8#Bludgeoning#@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
+    <entry>Sting@1d8#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@0.5@0</entry>
+    <entry>Constrict@1d8#Piercing/Slashing#@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@initial and secondary damage 1d6 Con@0@0</entry>
+    <entry>Poison@1d6#Constitution#Initial,1d6#Constitution#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Large</name>
     <entry>Claw@1d6#Piercing/Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Sting@1d6@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@0.5@0</entry>
-    <entry>Constrict@1d6#Bludgeoning#@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
+    <entry>Sting@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@0.5@0</entry>
+    <entry>Constrict@1d6#Piercing/Slashing#@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@initial and secondary damage 1d4 Con@0@0</entry>
+    <entry>Poison@1d4#Constitution#Initial,1d4#Constitution#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Medium</name>
     <entry>Claw@1d4#Piercing/Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Sting@1d4@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@0.5@0</entry>
-    <entry>Constrict@1d4#Bludgeoning#@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
+    <entry>Sting@1d4#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@0.5@0</entry>
+    <entry>Constrict@1d4#Piercing/Slashing#@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@initial and secondary damage 1d3 Con@0@0</entry>
+    <entry>Poison@1d3#Constitution#Initial,1d3#Constitution#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Small</name>
     <entry>Claw@1d3#Piercing/Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Sting@1d3@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@0.5@0</entry>
-    <entry>Constrict@1d3#Bludgeoning#@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
+    <entry>Sting@1d3#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@0.5@0</entry>
+    <entry>Constrict@1d3#Piercing/Slashing#@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@initial and secondary damage 1d2 Con@0@0</entry>
+    <entry>Poison@1d2#Constitution#Initial,1d2#Constitution#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Tiny</name>
     <entry>Claw@1d2#Piercing/Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Sting@1d2@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@0.5@0</entry>
-    <entry>Constrict@1d2@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
+    <entry>Sting@1d2#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@0.5@0</entry>
+    <entry>Constrict@1d2#Piercing/Slashing#@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@initial and secondary damage 1 Con@0@0</entry>
+    <entry>Poison@1#Constitution#Initial,1#Constitution#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Colossal</name>
     <entry>Bite@4d6#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 2d8 Str@0@0</entry>
+    <entry>Poison@2d8#Strength#Initial,2d8#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Gargantuan</name>
     <entry>Bite@2d8#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 2d6 Str@0@0</entry>
+    <entry>Poison@2d6#Strength#Initial,2d6#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Huge</name>
     <entry>Bite@2d6#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 1d8 Str@0@0</entry>
+    <entry>Poison@1d8#Strength#Initial,1d8#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Large</name>
     <entry>Bite@1d8#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 1d6 Str@0@0</entry>
+    <entry>Poison@1d6#Strength#Initial,1d6#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Medium</name>
     <entry>Bite@1d6#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 1d4 Str@0@0</entry>
+    <entry>Poison@1d4#Strength#Initial,1d4#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Small</name>
     <entry>Bite@1d4#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 1d3 Str@0@0</entry>
+    <entry>Poison@1d3#Strength#Initial,1d3#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Tiny</name>
     <entry>Bite@1d3#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 1d2 Str@0@0</entry>
+    <entry>Poison@1d2#Strength#Initial,1d2#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Colossal</name>
     <entry>Bite@4d6#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 2d8 Str@0@0</entry>
+    <entry>Poison@2d8#Strength#Initial,2d8#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
     <entry>Web@@True@False@True@True@8@Day@@Constitution@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Gargantuan</name>
     <entry>Bite@2d8#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 2d6 Str@0@0</entry>
+    <entry>Poison@2d6#Strength#Initial,2d6#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
     <entry>Web@@True@False@True@True@8@Day@@Constitution@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Huge</name>
     <entry>Bite@2d6#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 1d8 Str@0@0</entry>
+    <entry>Poison@1d8#Strength#Initial,1d8#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
     <entry>Web@@True@False@True@True@8@Day@@Constitution@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Large</name>
     <entry>Bite@1d8#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 1d6 Str@0@0</entry>
+    <entry>Poison@1d6#Strength#Initial,1d6#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
     <entry>Web@@True@False@True@True@8@Day@@Constitution@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Medium</name>
     <entry>Bite@1d6#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 1d4 Str@0@0</entry>
+    <entry>Poison@1d4#Strength#Initial,1d4#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
     <entry>Web@@True@False@True@True@8@Day@@Constitution@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Small</name>
     <entry>Bite@1d4#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 1d3 Str@0@0</entry>
+    <entry>Poison@1d3#Strength#Initial,1d3#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
     <entry>Web@@True@False@True@True@8@Day@@Constitution@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Tiny</name>
     <entry>Bite@1d3#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@Initial and secondary damage 1d2 Str@0@0</entry>
+    <entry>Poison@1d2#Strength#Initial,1d2#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
     <entry>Web@@True@False@True@True@8@Day@@Constitution@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
@@ -4147,7 +4147,7 @@
     <entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Disease@1.5@0</entry>
     <entry>Despair@@True@True@True@True@1@Round (6 seconds)@Charisma@Will@supernatural ability@1d4 rounds fear@0@0</entry>
     <entry>Disease@@True@True@True@True@1@Hit@Charisma@Fortitude@supernatural ability@Mummy Rot@0@0</entry>
-    <entry>Mummy Rot@@True@True@True@True@1@Hit@Charisma@Fortitude@supernatural ability@incubation period 1 minute; damage 1d6 Con and 1d6 Cha@0@0</entry>
+    <entry>Mummy Rot@1d6#Constitution#Incubation period 1 minute,1d6#Charisma#Incubation period 1 minute@True@True@True@True@1@Hit@Charisma@Fortitude@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Dark Naga</name>
@@ -4187,13 +4187,13 @@
   <collection>
     <name>Night Hag</name>
     <entry>Bite@2d6#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Disease@1.5@0</entry>
-    <entry>Disease@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@incubation period 1 day, damage 1d6 Con@0@0</entry>
+    <entry>Disease@1d6#Constitution#Incubation period 1 day@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Dream Haunting@@True@True@True@True@1@Day@@@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Nightmare</name>
-    <entry>Hoof@1d8@True@True@True@False@2@Round (6 seconds)@@@melee@1d4#Fire#@1@0</entry>
+    <entry>Hoof@1d8#Bludgeoning#,1d4#Fire#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite@1d8#Piercing/Slashing/Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Flaming Hooves@@True@True@False@True@1@Hit@@@supernatural ability@@0@0</entry>
     <entry>Smoke@@True@False@False@True@1@Round (6 seconds)@Constitution@Fortitude@supernatural ability@@0@0</entry>
@@ -4203,21 +4203,21 @@
     <name>Nightmare, Cauchemar</name>
     <entry>Bite@2d6#Piercing/Slashing/Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Flaming Hooves@@True@True@False@True@1@Hit@@@supernatural ability@@0@0</entry>
-    <entry>Hoof@2d6@True@True@True@False@2@Round (6 seconds)@@@melee@1d4#Fire#@1@0</entry>
+    <entry>Hoof@2d6#Bludgeoning#,1d4#Fire#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Smoke@@True@False@False@True@1@Round (6 seconds)@Constitution@Fortitude@supernatural ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Nightcrawler</name>
     <entry>Bite@4d6#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Sting@2d8@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@0.5@0</entry>
+    <entry>Sting@2d8#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@0.5@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Desecrating Aura@@True@False@False@True@1@Round (6 seconds)@@@supernatural ability@@0@0</entry>
-    <entry>Energy Drain@@True@False@False@True@1@Round (6 seconds)@Charisma@Fortitude@supernatural ability@1 negative level@0@0</entry>
+    <entry>Energy Drain@1#Negative level#@True@False@False@True@1@Round (6 seconds)@Charisma@Fortitude@supernatural ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@initial and secondary damage 2d6 Str@0@0</entry>
+    <entry>Poison@2d6#Strength#Initial,2d6#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
     <entry>Summon Undead@@True@False@True@True@1@Day@@@supernatural ability@@0@0</entry>
-    <entry>Swallow Whole@2d8+12 bludgeoning + 12#Acid#@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@Energy Drain@0@0</entry>
+    <entry>Swallow Whole@2d8+12#Bludgeoning#,12#Acid#@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@Energy Drain@0@0</entry>
   </collection>
   <collection>
     <name>Nightwalker</name>
@@ -4583,12 +4583,12 @@
     <name>Shadow</name>
     <entry>Create Spawn@@True@True@False@True@1@Round (6 seconds)@@@supernatural ability@@0@0</entry>
     <entry>Incorporeal touch@@True@True@True@False@1@Round (6 seconds)@@@melee touch@Strength Damage@0@0</entry>
-    <entry>Strength Damage@@True@True@False@True@1@Hit@@@supernatural ability@1d6 Str@0@0</entry>
+    <entry>Strength Damage@1d6#Strength#@True@True@False@True@1@Hit@@@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Greater Shadow</name>
     <entry>Incorporeal touch@@True@True@True@False@1@Round (6 seconds)@@@melee touch@Strength Damage@0@0</entry>
-    <entry>Strength Damage@@True@True@False@True@1@Hit@@@supernatural ability@1d8 Str@0@0</entry>
+    <entry>Strength Damage@1d8#Strength#@True@True@False@True@1@Hit@@@supernatural ability@@0@0</entry>
     <entry>Create Spawn@@True@True@False@True@1@Round (6 seconds)@@@supernatural ability@@0@0</entry>
   </collection>
   <collection>
