@@ -473,6 +473,32 @@ namespace DnDGen.CreatureGen.Tests.Integration
                     .Or.EqualTo(SaveConstants.Will)
                     .Or.Empty, message);
             }
+
+            var clawDamage = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}";
+            var biteDamage = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}/{AttributeConstants.DamageTypes.Bludgeoning}";
+
+            foreach (var damage in attack.Damages)
+            {
+                Assert.That(damage.Roll, Is.Not.Empty);
+                Assert.That(damage.Type, Is.Empty
+                    .Or.EqualTo(clawDamage)
+                    .Or.EqualTo(biteDamage)
+                    .Or.EqualTo(AttributeConstants.DamageTypes.Bludgeoning)
+                    .Or.EqualTo(AttributeConstants.DamageTypes.Piercing)
+                    .Or.EqualTo(AttributeConstants.DamageTypes.Slashing)
+                    .Or.EqualTo(FeatConstants.Foci.Elements.Acid)
+                    .Or.EqualTo(FeatConstants.Foci.Elements.Fire)
+                    .Or.EqualTo(FeatConstants.Foci.Elements.Electricity)
+                    .Or.EqualTo(FeatConstants.Foci.Elements.Cold)
+                    .Or.EqualTo(FeatConstants.Foci.Elements.Sonic)
+                    .Or.EqualTo(AbilityConstants.Charisma)
+                    .Or.EqualTo(AbilityConstants.Constitution)
+                    .Or.EqualTo(AbilityConstants.Dexterity)
+                    .Or.EqualTo(AbilityConstants.Intelligence)
+                    .Or.EqualTo(AbilityConstants.Strength)
+                    .Or.EqualTo(AbilityConstants.Wisdom)
+                    .Or.EqualTo("Negative level"), $"{message}; Damage: {damage.Description}");
+            }
         }
     }
 }
