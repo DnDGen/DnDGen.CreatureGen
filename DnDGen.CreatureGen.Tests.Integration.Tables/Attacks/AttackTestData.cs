@@ -5191,27 +5191,35 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                     string.Empty,
                     string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
                 testCases[CreatureConstants.YuanTi_Halfblood_SnakeHead].Add(attackHelper.BuildData("Bite",
-                    damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+                    damageHelper.BuildEntries("1d6", biteDamageType),
                     "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.YuanTi_Halfblood_SnakeHead].Add(attackHelper.BuildData("Poison",
-                    string.Empty,
-                    "initial and secondary damage 1d6 Con", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                    damageHelper.BuildEntries(
+                        "1d6", AbilityConstants.Constitution, "Initial",
+                        "1d6", AbilityConstants.Constitution, "Secondary"),
+                    string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
                 testCases[CreatureConstants.YuanTi_Halfblood_SnakeHead].Add(attackHelper.BuildData("Produce Acid",
-                    damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Acid),
-                    "initial and secondary damage 1d6 Con", 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                    damageHelper.BuildEntries(
+                        "3d6", FeatConstants.Foci.Elements.Acid, string.Empty,
+                        "2d6", FeatConstants.Foci.Elements.Acid, "Grappling or pinning foe"),
+                    string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
                 testCases[CreatureConstants.YuanTi_Halfblood_SnakeHead].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
                     string.Empty,
                     string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
                 testCases[CreatureConstants.YuanTi_Halfblood_SnakeArms].Add(attackHelper.BuildData("Bite",
-                    damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Piercing),
+                    damageHelper.BuildEntries("1d4", biteDamageType),
                     "Poison", 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.YuanTi_Halfblood_SnakeArms].Add(attackHelper.BuildData("Poison",
-                    string.Empty,
-                    "initial and secondary damage 1d6 Con", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                    damageHelper.BuildEntries(
+                        "1d6", AbilityConstants.Constitution, "Initial",
+                        "1d6", AbilityConstants.Constitution, "Secondary"),
+                    string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
                 testCases[CreatureConstants.YuanTi_Halfblood_SnakeArms].Add(attackHelper.BuildData("Produce Acid",
-                    damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Acid),
-                    "initial and secondary damage 1d6 Con", 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                    damageHelper.BuildEntries(
+                        "3d6", FeatConstants.Foci.Elements.Acid, string.Empty,
+                        "2d6", FeatConstants.Foci.Elements.Acid, "Grappling or pinning foe"),
+                    string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
                 testCases[CreatureConstants.YuanTi_Halfblood_SnakeArms].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility,
                     string.Empty,
                     string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
@@ -5223,14 +5231,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                     string.Empty,
                     string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
                 testCases[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs].Add(attackHelper.BuildData("Bite",
-                    damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+                    damageHelper.BuildEntries("1d6", biteDamageType),
                     "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs].Add(attackHelper.BuildData("Poison",
-                    string.Empty,
-                    "initial and secondary damage 1d6 Con", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                    damageHelper.BuildEntries(
+                        "1d6", AbilityConstants.Constitution, "Initial",
+                        "1d6", AbilityConstants.Constitution, "Secondary"),
+                    string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
                 testCases[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs].Add(attackHelper.BuildData("Produce Acid",
-                    damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Acid),
-                    "initial and secondary damage 1d6 Con", 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                    damageHelper.BuildEntries(
+                        "3d6", FeatConstants.Foci.Elements.Acid, string.Empty,
+                        "2d6", FeatConstants.Foci.Elements.Acid, "Grappling or pinning foe"),
+                    string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
                 testCases[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs].Add(attackHelper.BuildData("Constrict",
                     damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning),
                     string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
@@ -5245,14 +5257,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                     string.Empty,
                     string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
                 testCases[CreatureConstants.YuanTi_Halfblood_SnakeTail].Add(attackHelper.BuildData("Bite",
-                    damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Piercing),
+                    damageHelper.BuildEntries("1d6", biteDamageType),
                     "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.YuanTi_Halfblood_SnakeTail].Add(attackHelper.BuildData("Poison",
-                    string.Empty,
-                    "initial and secondary damage 1d6 Con", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                    damageHelper.BuildEntries(
+                        "1d6", AbilityConstants.Constitution, "Initial",
+                        "1d6", AbilityConstants.Constitution, "Secondary"),
+                    string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
                 testCases[CreatureConstants.YuanTi_Halfblood_SnakeTail].Add(attackHelper.BuildData("Produce Acid",
-                    damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Acid),
-                    "initial and secondary damage 1d6 Con", 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                    damageHelper.BuildEntries(
+                        "3d6", FeatConstants.Foci.Elements.Acid, string.Empty,
+                        "2d6", FeatConstants.Foci.Elements.Acid, "Grappling or pinning foe"),
+                    string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
                 testCases[CreatureConstants.YuanTi_Halfblood_SnakeTail].Add(attackHelper.BuildData("Constrict",
                     damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning),
                     string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
@@ -5267,17 +5283,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                     string.Empty,
                     string.Empty, 1.5, "ranged", 1, FeatConstants.Frequencies.Round, false, false, true, false));
                 testCases[CreatureConstants.YuanTi_Abomination].Add(attackHelper.BuildData("Bite",
-                    damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Piercing),
+                    damageHelper.BuildEntries("2d6", biteDamageType),
                     "Poison", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.YuanTi_Abomination].Add(attackHelper.BuildData("Poison",
-                    string.Empty,
-                    "initial and secondary damage 1d6 Con", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                    damageHelper.BuildEntries(
+                        "1d6", AbilityConstants.Constitution, "Initial",
+                        "1d6", AbilityConstants.Constitution, "Secondary"),
+                    string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
                 testCases[CreatureConstants.YuanTi_Abomination].Add(attackHelper.BuildData("Aversion",
                     string.Empty,
                     "aversion 10 minutes", 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
                 testCases[CreatureConstants.YuanTi_Abomination].Add(attackHelper.BuildData("Produce Acid",
-                    damageHelper.BuildEntries("3d6", FeatConstants.Foci.Elements.Acid),
-                    "initial and secondary damage 1d6 Con", 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                    damageHelper.BuildEntries(
+                        "3d6", FeatConstants.Foci.Elements.Acid, string.Empty,
+                        "2d6", FeatConstants.Foci.Elements.Acid, "Grappling or pinning foe"),
+                    string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
                 testCases[CreatureConstants.YuanTi_Abomination].Add(attackHelper.BuildData("Constrict",
                     damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning),
                     string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
@@ -5290,7 +5310,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
                 testCases[CreatureConstants.Zelekhut].Add(attackHelper.BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, false, true, false));
                 testCases[CreatureConstants.Zelekhut].Add(attackHelper.BuildData("Unarmed Strike", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Zelekhut].Add(attackHelper.BuildData("Electrified Weapon", "1d6 electricity", string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
+                testCases[CreatureConstants.Zelekhut].Add(attackHelper.BuildData("Electrified Weapon",
+                    damageHelper.BuildEntries("1d6", FeatConstants.Foci.Elements.Electricity),
+                    string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
                 testCases[CreatureConstants.Zelekhut].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
                 return TestDataHelper.EnumerateTestCases(testCases);

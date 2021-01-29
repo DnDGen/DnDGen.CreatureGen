@@ -200,7 +200,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                     Assert.That(entry[DataIndexConstants.AttackData.SaveAbilityIndex], Is.Empty);
 
                 var damageData = damageHelper.ParseEntries(entry[DataIndexConstants.AttackData.DamageDataIndex]);
-                Assert.That(damageData, Has.Length.AtMost(2).Or.Count.EqualTo(4), entry[DataIndexConstants.AttackData.DamageDataIndex]);
+                Assert.That(damageData, Has.Length.AtMost(2).Or.Length.EqualTo(4), entry[DataIndexConstants.AttackData.DamageDataIndex]);
 
                 if (damageData.Length > 2)
                 {

@@ -2895,7 +2895,7 @@
     <entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Water mastery@@True@False@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Drench@@True@False@True@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
-    <entry>Vortex@1d#Bludgeoning#4@True@False@True@True@1@10 Minute (10 rounds)@Strength@Reflex@supernatural ability@@0@0</entry>
+    <entry>Vortex@1d4#Bludgeoning#@True@False@True@True@1@10 Minute (10 rounds)@Strength@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Elephant</name>
@@ -4620,8 +4620,8 @@
   </collection>
   <collection>
     <name>Violet Fungus</name>
-    <entry>Tentacle@1d6@True@True@True@False@4@Round (6 seconds)@@@melee@Poison@1@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@initial and secondary damage 1d4 Str and 1d4 Con@0@0</entry>
+    <entry>Tentacle@1d6#Bludgeoning#@True@True@True@False@4@Round (6 seconds)@@@melee@Poison@1@0</entry>
+    <entry>Poison@1d4#Strength#Initial,1d4#Constitution#Initial,1d4#Strength#Secondary,1d4#Constitution#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Skum</name>
@@ -4865,7 +4865,7 @@
   <collection>
     <name>Weasel</name>
     <entry>Bite@1d3#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Attach@1.5@0</entry>
-    <entry>Attach@1d3@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+    <entry>Attach@1d3#Piercing/Slashing/Bludgeoning#@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
   </collection>
   <collection>
     <name>Dire Weasel</name>
@@ -4876,12 +4876,12 @@
   <collection>
     <name>Wight</name>
     <entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Energy Drain@1.5@0</entry>
-    <entry>Energy Drain@@True@True@False@True@1@Hit@Charisma@Fortitude@supernatural ability@1 Negative Level@0@0</entry>
+    <entry>Energy Drain@1#Negative Level#@True@True@False@True@1@Hit@Charisma@Fortitude@supernatural ability@Wight gains 5 temporary hit points@0@0</entry>
     <entry>Create Spawn@@True@True@False@True@1@Round (6 seconds)@@@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Will-O'-Wisp</name>
-    <entry>Shock@@True@True@True@False@1@Round (6 seconds)@@@melee touch@2d8#Electricity#@0@0</entry>
+    <entry>Shock@2d8#Electricity#@True@True@True@False@1@Round (6 seconds)@@@melee touch@@0@0</entry>
   </collection>
   <collection>
     <name>Winter Wolf</name>
@@ -4931,11 +4931,11 @@
   </collection>
   <collection>
     <name>Wyvern</name>
-    <entry>Sting@1d6@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1@0</entry>
+    <entry>Sting@1d6#Piercing#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1@0</entry>
     <entry>Bite@2d8#Piercing/Slashing/Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Wing@1d8#Bludgeoning#@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Talon@2d6@True@True@False@False@2@Round (6 seconds)@@@melee@@1@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@initial and secondary damage 2d6 Con@0@0</entry>
+    <entry>Talon@2d6#Piercing/Slashing#@True@True@False@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+    <entry>Poison@2d6#Constitution#Initial,2d6#Constitution#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
@@ -4944,7 +4944,7 @@
     <entry>Ranged@@False@False@True@False@2@Round (6 seconds)@@@ranged@@1.5@0</entry>
     <entry>Claw@1d4#Piercing/Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@1d4#Piercing/Slashing#@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Bite@@True@True@False@False@1@Round (6 seconds)@@@melee@Paralysis@0@0</entry>
+    <entry>Bite@0#Piercing/Slashing/Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@Paralysis@0@0</entry>
     <entry>Implant@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Paralysis@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@paralyzed for 1d4 hours@0@0</entry>
@@ -4969,17 +4969,17 @@
     <name>Yrthak</name>
     <entry>Bite@2d8#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@1d6#Piercing/Slashing#@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Sonic Lance@6d6 sonic@True@False@True@False@1@2 Round (6 seconds)@@@ranged touch@@0@0</entry>
-    <entry>Explosion@2d6 piercing@True@True@False@True@1@2 Round (6 seconds)@Constitution@Fortitude@supernatural ability@@0@0</entry>
+    <entry>Sonic Lance@6d6#Sonic#@True@False@True@False@1@2 Round (6 seconds)@@@ranged touch@@0@0</entry>
+    <entry>Explosion@2d6#Piercing#@True@True@False@True@1@2 Round (6 seconds)@Constitution@Fortitude@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Yuan-ti Abomination</name>
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
     <entry>Bite@2d6#Piercing/Slashing/Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@0.5@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@initial and secondary damage 1d6 Con@0@0</entry>
+    <entry>Poison@1d6#Constitution#Initial,1d6#Constitution#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
     <entry>Aversion@@True@False@False@True@1@Round (6 seconds)@Charisma@Will@spell-like ability@aversion 10 minutes@0@0</entry>
-    <entry>Produce#Acid#@3d6#Acid#@True@True@False@True@1@Round (6 seconds)@Constitution@Fortitude@spell-like ability@initial and secondary damage 1d6 Con@0@0</entry>
+    <entry>Produce Acid@3d6#Acid#,2d6#Acid#Grappling or pinning foe@True@True@False@True@1@Round (6 seconds)@Constitution@Fortitude@spell-like ability@@0@0</entry>
     <entry>Constrict@1d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
     <entry>Improved Grab@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
@@ -4989,15 +4989,15 @@
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
     <entry>Bite@1d6#Piercing/Slashing/Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@0.5@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@initial and secondary damage 1d6 Con@0@0</entry>
-    <entry>Produce#Acid#@3d6#Acid#@True@True@False@True@1@Round (6 seconds)@Constitution@Fortitude@spell-like ability@initial and secondary damage 1d6 Con@0@0</entry>
+    <entry>Poison@1d6#Constitution#Initial,1d6#Constitution#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
+    <entry>Produce Acid#@3d6#Acid#,2d6#Acid#Grappling or pinning foe@True@True@False@True@1@Round (6 seconds)@Constitution@Fortitude@spell-like ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)</name>
     <entry>Bite@1d4#Piercing/Slashing/Bludgeoning#@True@True@False@False@2@Round (6 seconds)@@@melee@Poison@1@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@initial and secondary damage 1d6 Con@0@0</entry>
-    <entry>Produce#Acid#@3d6#Acid#@True@True@False@True@1@Round (6 seconds)@Constitution@Fortitude@spell-like ability@initial and secondary damage 1d6 Con@0@0</entry>
+    <entry>Poison@1d6#Constitution#Initial,1d6#Constitution#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
+    <entry>Produce Acid@3d6#Acid#,2d6#Acid#Grappling or pinning foe@True@True@False@True@1@Round (6 seconds)@Constitution@Fortitude@spell-like ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
@@ -5005,8 +5005,8 @@
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
     <entry>Bite@1d6#Piercing/Slashing/Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@0.5@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@initial and secondary damage 1d6 Con@0@0</entry>
-    <entry>Produce#Acid#@3d6#Acid#@True@True@False@True@1@Round (6 seconds)@Constitution@Fortitude@spell-like ability@initial and secondary damage 1d6 Con@0@0</entry>
+    <entry>Poison@1d6#Constitution#Initial,1d6#Constitution#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
+    <entry>Produce Acid@3d6#Acid#,2d6#Acid#Grappling or pinning foe@True@True@False@True@1@Round (6 seconds)@Constitution@Fortitude@spell-like ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Constrict@1d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
   </collection>
@@ -5015,8 +5015,8 @@
     <entry>Melee@@False@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
     <entry>Bite@1d6#Piercing/Slashing/Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@0.5@0</entry>
-    <entry>Poison@@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@initial and secondary damage 1d6 Con@0@0</entry>
-    <entry>Produce#Acid#@3d6#Acid#@True@True@False@True@1@Round (6 seconds)@Constitution@Fortitude@spell-like ability@initial and secondary damage 1d6 Con@0@0</entry>
+    <entry>Poison@1d6#Constitution#Initial,1d6#Constitution#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
+    <entry>Produce Acid@3d6#Acid#,2d6#Acid#Grappling or pinning foe@True@True@False@True@1@Round (6 seconds)@Constitution@Fortitude@spell-like ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Constrict@1d4#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
   </collection>
