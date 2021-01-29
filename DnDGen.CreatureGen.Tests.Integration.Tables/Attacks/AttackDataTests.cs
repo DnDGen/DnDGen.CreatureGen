@@ -200,9 +200,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                     Assert.That(entry[DataIndexConstants.AttackData.SaveAbilityIndex], Is.Empty);
 
                 var damageData = damageHelper.ParseEntries(entry[DataIndexConstants.AttackData.DamageDataIndex]);
-                Assert.That(damageData, Has.Length.AtMost(2));
+                Assert.That(damageData, Has.Length.AtMost(2).Or.Count.EqualTo(4), entry[DataIndexConstants.AttackData.DamageDataIndex]);
 
-                if (damageData.Length > 1)
+                if (damageData.Length > 2)
+                {
+                    Assert.That(damageData[0][DataIndexConstants.AttackData.DamageData.ConditionIndex], Is.EqualTo("Initial"));
+                    Assert.That(damageData[1][DataIndexConstants.AttackData.DamageData.ConditionIndex], Is.EqualTo("Initial"));
+                    Assert.That(damageData[2][DataIndexConstants.AttackData.DamageData.ConditionIndex], Is.EqualTo("Secondary"));
+                    Assert.That(damageData[3][DataIndexConstants.AttackData.DamageData.ConditionIndex], Is.EqualTo("Secondary"));
+                }
+                else if (damageData.Length > 1)
                 {
                     Assert.That(damageData[1][DataIndexConstants.AttackData.DamageData.ConditionIndex], Is.EqualTo("Secondary"));
                 }

@@ -241,7 +241,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                     string.Empty,
                     string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
                 testCases[CreatureConstants.Templates.Vampire].Add(attackHelper.BuildData("Energy Drain",
-                    damageHelper.BuildEntries("2", "Negative Levels"),
+                    damageHelper.BuildEntries("2", "Negative Level"),
                     "Vampire gains 5 temporary hit points", 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
                 testCases[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural].Add(attackHelper.BuildData("Claw (in Hybrid form)",
@@ -3814,7 +3814,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                     damageHelper.BuildEntries("5d6"),
                     "Gain temporary hit points equal to damage dealt", 0, "melee touch", 1, FeatConstants.Frequencies.Round, true, true, true, true));
                 testCases[CreatureConstants.Kolyarut].Add(attackHelper.BuildData("Enervation Ray",
-                    damageHelper.BuildEntries("1d4", "Negative level"),
+                    damageHelper.BuildEntries("1d4", "Negative Level"),
                     string.Empty, 0, "ranged touch", 1, FeatConstants.Frequencies.Round, false, true, true, true));
                 testCases[CreatureConstants.Kolyarut].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
@@ -4140,7 +4140,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Nightcrawler].Add(attackHelper.BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
                 testCases[CreatureConstants.Nightcrawler].Add(attackHelper.BuildData("Desecrating Aura", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true));
                 testCases[CreatureConstants.Nightcrawler].Add(attackHelper.BuildData("Energy Drain",
-                    damageHelper.BuildEntries("1", "Negative level"),
+                    damageHelper.BuildEntries("1", "Negative Level"),
                     string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, false, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
                 testCases[CreatureConstants.Nightcrawler].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
                 testCases[CreatureConstants.Nightcrawler].Add(attackHelper.BuildData("Poison",
@@ -4733,7 +4733,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
                 testCases[CreatureConstants.Spectre].Add(attackHelper.BuildData("Incorporeal touch", damageHelper.BuildEntries("1d8"), "Energy Drain", 0, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Spectre].Add(attackHelper.BuildData("Energy Drain",
-                    damageHelper.BuildEntries("2", "Negative level"),
+                    damageHelper.BuildEntries("2", "Negative Level"),
                     string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
                 testCases[CreatureConstants.Spectre].Add(attackHelper.BuildData("Create Spawn", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
@@ -4879,7 +4879,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
                 testCases[CreatureConstants.Succubus].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Succubus].Add(attackHelper.BuildData("Energy Drain",
-                    damageHelper.BuildEntries("1", "Negative level"),
+                    damageHelper.BuildEntries("1", "Negative Level"),
                     SpellConstants.Suggestion, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, string.Empty, AbilityConstants.Charisma));
                 testCases[CreatureConstants.Succubus].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
                 testCases[CreatureConstants.Succubus].Add(attackHelper.BuildData("Summon Demon", string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Day, false, true, true, true));
@@ -5029,7 +5029,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                     "Vampire Spawn gains 5 temporary hit points", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
                 testCases[CreatureConstants.VampireSpawn].Add(attackHelper.BuildData("Domination", string.Empty, SpellConstants.DominatePerson, 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, true, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will));
                 testCases[CreatureConstants.VampireSpawn].Add(attackHelper.BuildData("Energy Drain",
-                    damageHelper.BuildEntries("1", "Negative level"),
+                    damageHelper.BuildEntries("1", "Negative Level"),
                     "Vampire Spawn gains 5 temporary hit points", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
                 testCases[CreatureConstants.VampireSpawn].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
@@ -5067,7 +5067,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
                 testCases[CreatureConstants.Weasel].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d3", biteDamageType), "Attach", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Weasel].Add(attackHelper.BuildData("Attach",
-                    damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Piercing),
+                    damageHelper.BuildEntries("1d3", biteDamageType),
                     string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
                 testCases[CreatureConstants.Weasel_Dire].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), "Attach", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
@@ -5086,10 +5086,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Whale_Orca].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d6", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
 
                 testCases[CreatureConstants.Wight].Add(attackHelper.BuildData("Slam", damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning), "Energy Drain", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Wight].Add(attackHelper.BuildData("Energy Drain", damageHelper.BuildEntries("1", "Negative level"), "Wight gains 5 temporary hit points", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Wight].Add(attackHelper.BuildData("Energy Drain", damageHelper.BuildEntries("1", "Negative Level"), "Wight gains 5 temporary hit points", 0, "supernatural ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Fortitude));
                 testCases[CreatureConstants.Wight].Add(attackHelper.BuildData("Create Spawn", string.Empty, string.Empty, 0, "supernatural ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
-                testCases[CreatureConstants.WillOWisp].Add(attackHelper.BuildData("Shock", string.Empty, "2d8 electricity", 0, "melee touch", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.WillOWisp].Add(attackHelper.BuildData("Shock",
+                    damageHelper.BuildEntries("2d8", FeatConstants.Foci.Elements.Electricity),
+                    string.Empty, 0, "melee touch", 1, FeatConstants.Frequencies.Round, true, true, true, false));
 
                 testCases[CreatureConstants.WinterWolf].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d8", biteDamageType), "Freezing Bite", 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.WinterWolf].Add(attackHelper.BuildData("Breath Weapon",
@@ -5137,14 +5139,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Wyvern].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("2d8", biteDamageType), string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Wyvern].Add(attackHelper.BuildData("Wing", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Wyvern].Add(attackHelper.BuildData("Talon", damageHelper.BuildEntries("2d6", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Wyvern].Add(attackHelper.BuildData("Poison", string.Empty, "initial and secondary damage 2d6 Con", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
+                testCases[CreatureConstants.Wyvern].Add(attackHelper.BuildData("Poison",
+                    damageHelper.BuildEntries(
+                        "2d6", AbilityConstants.Constitution, "Initial",
+                        "2d6", AbilityConstants.Constitution, "Secondary"),
+                    string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
                 testCases[CreatureConstants.Wyvern].Add(attackHelper.BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
                 testCases[CreatureConstants.Xill].Add(attackHelper.BuildData(AttributeConstants.Melee, string.Empty, string.Empty, 1.5, "melee", 2, FeatConstants.Frequencies.Round, true, false, true, false));
                 testCases[CreatureConstants.Xill].Add(attackHelper.BuildData(AttributeConstants.Ranged, string.Empty, string.Empty, 1.5, "ranged", 2, FeatConstants.Frequencies.Round, false, false, true, false));
                 testCases[CreatureConstants.Xill].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 1, "melee", 2, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Xill].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
-                testCases[CreatureConstants.Xill].Add(attackHelper.BuildData("Bite", string.Empty, "Paralysis", 0, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Xill].Add(attackHelper.BuildData("Bite",
+                    damageHelper.BuildEntries("0", biteDamageType),
+                    "Paralysis", 0, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
                 testCases[CreatureConstants.Xill].Add(attackHelper.BuildData("Implant", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
                 testCases[CreatureConstants.Xill].Add(attackHelper.BuildData("Improved Grab", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
                 testCases[CreatureConstants.Xill].Add(attackHelper.BuildData("Paralysis", string.Empty, "paralyzed for 1d4 hours", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude));
