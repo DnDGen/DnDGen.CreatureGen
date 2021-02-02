@@ -181,15 +181,15 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 Assert.That(weapon.DamageDescription, Is.Not.Empty, $"{creature.Summary}: {weapon.Name}");
                 Assert.That(weaponNames, Contains.Item(weapon.Name), $"{creature.Summary}: {weapon.Name}");
 
-                Assert.That(attack.DamageDescription, Is.EqualTo(weapon.DamageDescription), $"{creature.Summary}: {weapon.Name}");
+                Assert.That(attack.DamageDescription, Is.EqualTo(weapon.DamageDescription), $"{creature.Summary}: {weapon.Description}");
 
                 if (weapon.Attributes.Contains(AttributeConstants.Melee))
                 {
-                    Assert.That(attack.AttackType, Contains.Substring("melee"), $"{creature.Summary}: {weapon.Name}");
+                    Assert.That(attack.AttackType, Contains.Substring("melee"), $"{creature.Summary}: {weapon.Description}");
                 }
                 else if (weapon.Attributes.Contains(AttributeConstants.Ranged))
                 {
-                    Assert.That(attack.AttackType, Contains.Substring("ranged"), $"{creature.Summary}: {weapon.Name}");
+                    Assert.That(attack.AttackType, Contains.Substring("ranged"), $"{creature.Summary}: {weapon.Description}");
                 }
             }
         }
@@ -477,6 +477,13 @@ namespace DnDGen.CreatureGen.Tests.Integration
             var clawDamage = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}";
             var biteDamage = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}/{AttributeConstants.DamageTypes.Bludgeoning}";
 
+            var weapon = creature.Equipment.Weapons.FirstOrDefault(w => w.Name == attack.Name);
+            if (weapon != null)
+            {
+                Assert.That(attack.DamageDescription, Is.EqualTo(weapon.DamageDescription), $"{message}; Weapon: {weapon.Description}");
+                return;
+            }
+
             foreach (var damage in attack.Damages)
             {
                 Assert.That(damage.Roll, Is.Not.Empty);
@@ -497,7 +504,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
                     .Or.EqualTo(AbilityConstants.Intelligence)
                     .Or.EqualTo(AbilityConstants.Strength)
                     .Or.EqualTo(AbilityConstants.Wisdom)
-                    .Or.EqualTo("Negative level"), $"{message}; Damage: {damage.Description}");
+                    .Or.EqualTo("Negative Level"), $"{message}; Damage: {damage.Description}");
             }
         }
     }

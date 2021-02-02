@@ -25,7 +25,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
         {
             var typesAndAmounts = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Advancements, creature);
 
-            return percentileSelector.SelectFrom(.1) && typesAndAmounts.Any();
+            return percentileSelector.SelectFrom(.9) && typesAndAmounts.Any();
         }
 
         public AdvancementSelection SelectRandomFor(string creature, CreatureType creatureType, string originalSize, string originalChallengeRating)

@@ -4990,7 +4990,7 @@
     <entry>Ranged@@False@False@True@False@1@Round (6 seconds)@@@ranged@@1.5@0</entry>
     <entry>Bite@1d6#Piercing/Slashing/Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@Poison@0.5@0</entry>
     <entry>Poison@1d6#Constitution#Initial,1d6#Constitution#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
-    <entry>Produce Acid#@3d6#Acid#,2d6#Acid#Grappling or pinning foe@True@True@False@True@1@Round (6 seconds)@Constitution@Fortitude@spell-like ability@@0@0</entry>
+    <entry>Produce Acid@3d6#Acid#,2d6#Acid#Grappling or pinning foe@True@True@False@True@1@Round (6 seconds)@Constitution@Fortitude@spell-like ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>

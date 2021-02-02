@@ -81,7 +81,7 @@ namespace DnDGen.CreatureGen.Generators.Items
                 || improvedTwoWeaponFeat
                 || twoWeaponFeat
                 || equipmentAttacks.Count() > 1
-                || percentileSelector.SelectFrom(.01);
+                || percentileSelector.SelectFrom(.99);
 
             if (!twoWeapon)
                 return allAttacks;
