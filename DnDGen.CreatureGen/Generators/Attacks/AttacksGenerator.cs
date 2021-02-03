@@ -95,8 +95,6 @@ namespace DnDGen.CreatureGen.Generators.Attacks
                 if (!string.IsNullOrEmpty(attackSelection.SaveAbility) || !string.IsNullOrEmpty(attackSelection.Save))
                 {
                     attack.Save = new SaveDieCheck();
-                    //attack.Save.BaseAbility = abilities[attackSelection.SaveAbility];
-                    //attack.Save.BaseValue = 10 + hitDiceQuantity / 2 + attackSelection.SaveDcBonus;
                     attack.Save.BaseValue = 10 + attackSelection.SaveDcBonus;
                     attack.Save.Save = attackSelection.Save;
 

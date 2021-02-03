@@ -23,16 +23,16 @@ namespace DnDGen.CreatureGen.Selectors.Collections
 
         public bool IsAdvanced(string creature)
         {
-            var typesAndAmounts = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Advancements, creature);
+            var advancements = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Advancements, creature);
 
-            return percentileSelector.SelectFrom(.9) && typesAndAmounts.Any();
+            return percentileSelector.SelectFrom(.9) && advancements.Any();
         }
 
         public AdvancementSelection SelectRandomFor(string creature, CreatureType creatureType, string originalSize, string originalChallengeRating)
         {
-            var typesAndAmounts = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Advancements, creature);
-            var randomTypeAndAmount = collectionSelector.SelectRandomFrom(typesAndAmounts);
-            var selection = GetAdvancementSelection(creature, creatureType, originalSize, originalChallengeRating, randomTypeAndAmount);
+            var advancements = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Advancements, creature);
+            var randomAdvancement = collectionSelector.SelectRandomFrom(advancements);
+            var selection = GetAdvancementSelection(creature, creatureType, originalSize, originalChallengeRating, randomAdvancement);
 
             return selection;
         }

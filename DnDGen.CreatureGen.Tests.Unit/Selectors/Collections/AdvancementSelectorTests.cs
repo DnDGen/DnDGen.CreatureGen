@@ -124,7 +124,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         {
             SetUpAdvancement(SizeConstants.Large, 42);
 
-            mockPercentileSelector.Setup(s => s.SelectFrom(.1)).Returns(true);
+            mockPercentileSelector.Setup(s => s.SelectFrom(.9)).Returns(true);
 
             var isAdvanced = advancementSelector.IsAdvanced("creature");
             Assert.That(isAdvanced, Is.True);
@@ -135,7 +135,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         {
             SetUpAdvancement(SizeConstants.Large, 42);
 
-            mockPercentileSelector.Setup(s => s.SelectFrom(.1)).Returns(false);
+            mockPercentileSelector.Setup(s => s.SelectFrom(.9)).Returns(false);
 
             var isAdvanced = advancementSelector.IsAdvanced("creature");
             Assert.That(isAdvanced, Is.False);
@@ -144,7 +144,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void IsNotAdvancedIfNoAdvancements()
         {
-            mockPercentileSelector.Setup(s => s.SelectFrom(.1)).Returns(true);
+            mockPercentileSelector.Setup(s => s.SelectFrom(.9)).Returns(true);
 
             var isAdvanced = advancementSelector.IsAdvanced("creature");
             Assert.That(isAdvanced, Is.False);

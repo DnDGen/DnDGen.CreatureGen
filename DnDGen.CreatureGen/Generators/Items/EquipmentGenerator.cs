@@ -76,18 +76,27 @@ namespace DnDGen.CreatureGen.Generators.Items
                 || f.Name == FeatConstants.Monster.MultiweaponFighting_Improved);
             var twoWeaponFeat = feats.Any(f => f.Name == FeatConstants.TwoWeaponFighting
                 || f.Name == FeatConstants.Monster.MultiweaponFighting);
-            var twoWeapon = superiorTwoWeaponFeat
+            var twoWeaponMelee = superiorTwoWeaponFeat
                 || greaterTwoWeaponFeat
                 || improvedTwoWeaponFeat
                 || twoWeaponFeat
-                || equipmentAttacks.Count() > 1
+                || equipmentAttacks.Count(a => a.IsMelee) > 1
+                || percentileSelector.SelectFrom(.99);
+            var twoWeaponRanged = superiorTwoWeaponFeat
+                || greaterTwoWeaponFeat
+                || improvedTwoWeaponFeat
+                || twoWeaponFeat
+                || equipmentAttacks.Count(a => !a.IsMelee) > 1
                 || percentileSelector.SelectFrom(.99);
 
-            if (!twoWeapon)
+            if (!twoWeaponMelee && !twoWeaponRanged)
                 return allAttacks;
 
-            allAttacks = AddAttacksPerHand(AttributeConstants.Melee, numberOfHands, allAttacks);
-            allAttacks = AddAttacksPerHand(AttributeConstants.Ranged, numberOfHands, allAttacks);
+            if (twoWeaponMelee)
+                allAttacks = AddAttacksPerHand(AttributeConstants.Melee, numberOfHands, allAttacks);
+
+            if (twoWeaponRanged)
+                allAttacks = AddAttacksPerHand(AttributeConstants.Ranged, numberOfHands, allAttacks);
 
             foreach (var attack in equipmentAttacks)
             {

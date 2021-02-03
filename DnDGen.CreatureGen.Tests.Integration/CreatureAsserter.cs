@@ -178,10 +178,24 @@ namespace DnDGen.CreatureGen.Tests.Integration
             {
                 var weapon = creature.Equipment.Weapons.FirstOrDefault(w => w.Name == attack.Name);
                 Assert.That(weapon, Is.Not.Null, $"{creature.Summary}: {attack.Name}");
-                Assert.That(weapon.DamageDescription, Is.Not.Empty, $"{creature.Summary}: {weapon.Name}");
-                Assert.That(weaponNames, Contains.Item(weapon.Name), $"{creature.Summary}: {weapon.Name}");
+                Assert.That(weapon.DamageDescription, Is.Not.Empty, $"{creature.Summary}: {weapon.Description}");
+                Assert.That(weaponNames, Contains.Item(weapon.Name), $"{creature.Summary}: {weapon.Description}");
 
-                Assert.That(attack.DamageDescription, Is.EqualTo(weapon.DamageDescription), $"{creature.Summary}: {weapon.Description}");
+                Assert.That(attack.Damages, Is.Not.Empty.And.Count.EqualTo(weapon.Damages.Count));
+
+                for (var i = 0; i < weapon.Damages.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Roll), $"{creature.Summary}; Weapon: {weapon.Description}");
+                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Type), $"{creature.Summary}; Weapon: {weapon.Description}");
+                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Condition), $"{creature.Summary}; Weapon: {weapon.Description}");
+                    }
+                    else
+                    {
+                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Description), $"{creature.Summary}; Weapon: {weapon.Description}");
+                    }
+                }
 
                 if (weapon.Attributes.Contains(AttributeConstants.Melee))
                 {
@@ -480,7 +494,22 @@ namespace DnDGen.CreatureGen.Tests.Integration
             var weapon = creature.Equipment.Weapons.FirstOrDefault(w => w.Name == attack.Name);
             if (weapon != null)
             {
-                Assert.That(attack.DamageDescription, Is.EqualTo(weapon.DamageDescription), $"{message}; Weapon: {weapon.Description}");
+                Assert.That(attack.Damages, Is.Not.Empty.And.Count.EqualTo(weapon.Damages.Count), $"{message}; Weapon: {weapon.Description}");
+
+                for (var i = 0; i < weapon.Damages.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Roll), $"{message}; Weapon: {weapon.Description}");
+                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Type), $"{message}; Weapon: {weapon.Description}");
+                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Condition), $"{message}; Weapon: {weapon.Description}");
+                    }
+                    else
+                    {
+                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Description), $"{message}; Weapon: {weapon.Description}");
+                    }
+                }
+
                 return;
             }
 
