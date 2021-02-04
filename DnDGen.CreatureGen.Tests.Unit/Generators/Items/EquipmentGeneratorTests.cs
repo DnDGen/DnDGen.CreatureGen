@@ -5230,6 +5230,67 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             }
         }
 
+        //INFO: This is based of Athach
+        [Test]
+        public void BUG_AddAttacks_UnnaturalEquippedAttack_FillHands_WithDistinctDamages()
+        {
+            attacks.Clear();
+            attacks.Add(new Attack
+            {
+                Name = AttributeConstants.Melee,
+                IsNatural = false,
+                IsMelee = true,
+                IsPrimary = true,
+                Frequency = new Frequency
+                {
+                    Quantity = 1,
+                    TimePeriod = FeatConstants.Frequencies.Round
+                },
+            });
+            attacks.Add(new Attack
+            {
+                Name = AttributeConstants.Melee,
+                IsNatural = false,
+                IsMelee = true,
+                IsPrimary = false,
+                Frequency = new Frequency
+                {
+                    Quantity = 2,
+                    TimePeriod = FeatConstants.Frequencies.Round
+                },
+            });
+
+            feats.Add(new Feat { Name = FeatConstants.Monster.MultiweaponFighting });
+
+            var updatedAttacks = equipmentGenerator.AddAttacks(feats, attacks, 3).ToArray();
+            Assert.That(updatedAttacks, Has.Length.EqualTo(3));
+
+            Assert.That(updatedAttacks[0].Name, Is.EqualTo(AttributeConstants.Melee));
+            Assert.That(updatedAttacks[0].IsNatural, Is.False);
+            Assert.That(updatedAttacks[0].IsMelee, Is.True);
+            Assert.That(updatedAttacks[0].IsPrimary, Is.True);
+            Assert.That(updatedAttacks[0].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[0].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(updatedAttacks[0].Damages, Is.Not.SameAs(updatedAttacks[1].Damages)
+                .And.Not.SameAs(updatedAttacks[2].Damages));
+            Assert.That(updatedAttacks[1].Name, Is.EqualTo(AttributeConstants.Melee));
+            Assert.That(updatedAttacks[1].IsNatural, Is.False);
+            Assert.That(updatedAttacks[1].IsMelee, Is.True);
+            Assert.That(updatedAttacks[1].IsPrimary, Is.False);
+            Assert.That(updatedAttacks[1].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[1].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(updatedAttacks[1].Damages, Is.Not.SameAs(updatedAttacks[0].Damages)
+                .And.Not.SameAs(updatedAttacks[2].Damages));
+            Assert.That(updatedAttacks[2].Name, Is.EqualTo(AttributeConstants.Melee));
+            Assert.That(updatedAttacks[2].IsNatural, Is.False);
+            Assert.That(updatedAttacks[2].IsMelee, Is.True);
+            Assert.That(updatedAttacks[2].IsPrimary, Is.False);
+            Assert.That(updatedAttacks[2].Frequency.Quantity, Is.EqualTo(1));
+            Assert.That(updatedAttacks[2].Frequency.TimePeriod, Is.EqualTo(FeatConstants.Frequencies.Round));
+            Assert.That(updatedAttacks[2].Damages, Is.Not.SameAs(updatedAttacks[1].Damages)
+                .And.Not.SameAs(updatedAttacks[0].Damages));
+        }
+
         [TestCase(true)]
         [TestCase(false)]
         public void AddAttacks_UnnaturalEquippedAttacks_Untrained(bool melee)

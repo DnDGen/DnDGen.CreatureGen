@@ -435,6 +435,9 @@ namespace DnDGen.CreatureGen.Tests.Integration
         private void AssertAttack(Attack attack, Creature creature)
         {
             var message = $"Creature: {creature.Summary}; Attack: {attack.Name}";
+            var meleeEquipmentAttacks = creature.Attacks.Where(a => a.IsMelee && creature.Equipment.Weapons.Any(w => a.Name.StartsWith(w.Name)));
+            var rangedEquipmentAttacks = creature.Attacks.Where(a => !a.IsMelee && creature.Equipment.Weapons.Any(w => a.Name.StartsWith(w.Name)));
+
             Assert.That(attack.Name, Is.Not.Empty, message);
             Assert.That(attack.AttackType, Is.Not.Empty, message);
             Assert.That(attack.BaseAttackBonus, Is.Not.Negative, message);
@@ -457,11 +460,15 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 Assert.That(creature.CanUseEquipment, Is.True, message);
             }
 
-            if (!attack.IsPrimary && !attack.IsSpecial && !attack.IsNatural)
+            if (!attack.IsPrimary
+                && !attack.IsSpecial
+                && !attack.IsNatural
+                && ((meleeEquipmentAttacks.Contains(attack) && meleeEquipmentAttacks.Count() > 1)
+                    || rangedEquipmentAttacks.Contains(attack) && rangedEquipmentAttacks.Count() > 1))
             {
                 Assert.That(attack.AttackBonuses, Contains.Item(-10), message);
             }
-            else if (!attack.IsPrimary && !attack.IsSpecial && attack.IsNatural)
+            else if (!attack.IsPrimary && !attack.IsSpecial)
             {
                 Assert.That(attack.AttackBonuses, Contains.Item(-5), message);
             }
@@ -479,7 +486,9 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
             if (attack.Save != null)
             {
-                Assert.That(creature.Abilities.Values, Contains.Item(attack.Save.BaseAbility), message);
+                if (attack.IsNatural && attack.Save.BaseAbility != null)
+                    Assert.That(creature.Abilities.Values, Contains.Item(attack.Save.BaseAbility), message);
+
                 Assert.That(attack.Save.BaseValue, Is.Positive, message);
                 Assert.That(attack.Save.DC, Is.Positive, message);
                 Assert.That(attack.Save.Save, Is.EqualTo(SaveConstants.Fortitude)
@@ -491,10 +500,12 @@ namespace DnDGen.CreatureGen.Tests.Integration
             var clawDamage = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}";
             var biteDamage = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}/{AttributeConstants.DamageTypes.Bludgeoning}";
 
-            var weapon = creature.Equipment.Weapons.FirstOrDefault(w => w.Name == attack.Name);
+            //INFO: Doing Contains instead of Equals, since Lycanthropes have a modifed name for the attack based on their form
+            //Pixies have their "Special Arrows", and we also must account for those by using StartsWith
+            var weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name.StartsWith(w.Name));
             if (weapon != null)
             {
-                Assert.That(attack.Damages, Is.Not.Empty.And.Count.EqualTo(weapon.Damages.Count), $"{message}; Weapon: {weapon.Description}");
+                Assert.That(attack.Damages, Is.Not.Empty.And.Count.EqualTo(weapon.Damages.Count), $"{message}; Weapon: {weapon.Description} ({weapon.DamageDescription})");
 
                 for (var i = 0; i < weapon.Damages.Count; i++)
                 {
@@ -533,7 +544,8 @@ namespace DnDGen.CreatureGen.Tests.Integration
                     .Or.EqualTo(AbilityConstants.Intelligence)
                     .Or.EqualTo(AbilityConstants.Strength)
                     .Or.EqualTo(AbilityConstants.Wisdom)
-                    .Or.EqualTo("Negative Level"), $"{message}; Damage: {damage.Description}");
+                    .Or.EqualTo("Negative Level")
+                    .Or.EqualTo("Positive energy"), $"{message}; Damage: {damage.Description}");
             }
         }
     }

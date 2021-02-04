@@ -1619,7 +1619,7 @@
     <entry>Wing@1d8#Bludgeoning#@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Tail Slap@2d6#Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Crush@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
-    <entry>Breath Weapon@12d6#Acid (gas)#@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon@12d6#Acid#Gas@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Frightful Presence@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@extraordinary ability@@0@0</entry>
@@ -1632,7 +1632,7 @@
     <entry>Tail Slap@2d8#Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Crush@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
-    <entry>Breath Weapon@20d6#Acid (gas)#@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon@20d6#Acid#Gas@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Frightful Presence@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@extraordinary ability@@0@0</entry>
@@ -1645,7 +1645,7 @@
     <entry>Tail Slap@2d8#Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Crush@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
-    <entry>Breath Weapon@24d6#Acid (gas)#@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon@24d6#Acid#Gas@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Frightful Presence@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@extraordinary ability@@0@0</entry>
@@ -1656,7 +1656,7 @@
     <entry>Claw@1d8#Piercing/Slashing#@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@1d6#Bludgeoning#@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Tail Slap@1d8#Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@8d6#Acid (gas)#@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon@8d6#Acid#Gas@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
   <collection>
@@ -1666,7 +1666,7 @@
     <entry>Wing@1d8#Bludgeoning#@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Tail Slap@2d6#Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Crush@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
-    <entry>Breath Weapon@14d6#Acid (gas)#@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon@14d6#Acid#Gas@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Frightful Presence@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@extraordinary ability@@0@0</entry>
@@ -1678,7 +1678,7 @@
     <entry>Wing@1d8#Bludgeoning#@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Tail Slap@2d6#Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Crush@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
-    <entry>Breath Weapon@16d6#Acid (gas)#@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon@16d6#Acid#Gas@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Frightful Presence@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@extraordinary ability@@0@0</entry>
@@ -1690,7 +1690,7 @@
     <entry>Wing@1d8#Bludgeoning#@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Tail Slap@2d6#Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Crush@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
-    <entry>Breath Weapon@18d6#Acid (gas)#@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon@18d6#Acid#Gas@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Frightful Presence@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@extraordinary ability@@0@0</entry>
@@ -1700,7 +1700,7 @@
     <entry>Bite@1d8#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@1d6#Piercing/Slashing#@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@1d4#Bludgeoning#@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@4d6#Acid (gas)#@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon@4d6#Acid#Gas@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Green Dragon, Wyrm</name>
@@ -1710,7 +1710,7 @@
     <entry>Tail Slap@2d8#Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Crush@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
     <entry>Tail Sweep@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@Constitution@Reflex@extraordinary ability@@1.5@0</entry>
-    <entry>Breath Weapon@22d6#Acid (gas)#@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon@22d6#Acid#Gas@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Frightful Presence@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@extraordinary ability@@0@0</entry>
@@ -1719,14 +1719,14 @@
     <name>Green Dragon, Wyrmling</name>
     <entry>Bite@1d6#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@1d4#Piercing/Slashing#@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@2d6#Acid (gas)#@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon@2d6#Acid#Gas@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Green Dragon, Young</name>
     <entry>Bite@1d8#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Claw@1d6#Piercing/Slashing#@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@1d4#Bludgeoning#@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@6d6#Acid (gas)#@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon@6d6#Acid#Gas@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Green Dragon, Young Adult</name>
@@ -1734,7 +1734,7 @@
     <entry>Claw@1d8#Piercing/Slashing#@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Wing@1d6#Bludgeoning#@True@True@False@False@2@Round (6 seconds)@@@melee@@0.5@0</entry>
     <entry>Tail Slap@1d8#Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@10d6#Acid (gas)#@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon@10d6#Acid#Gas@True@False@True@True@1@1d4 Round (6 seconds)@Constitution@Reflex@supernatural ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Frightful Presence@@True@False@True@True@1@Round (6 seconds)@Charisma@Will@extraordinary ability@@0@0</entry>
   </collection>
@@ -4100,43 +4100,43 @@
     <name>Monstrous Spider, Web-Spinner, Colossal</name>
     <entry>Bite@4d6#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
     <entry>Poison@2d8#Strength#Initial,2d8#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
-    <entry>Web@@True@False@True@True@8@Day@@Constitution@extraordinary ability@@0@0</entry>
+    <entry>Web@@True@False@True@True@8@Day@Constitution@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Gargantuan</name>
     <entry>Bite@2d8#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
     <entry>Poison@2d6#Strength#Initial,2d6#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
-    <entry>Web@@True@False@True@True@8@Day@@Constitution@extraordinary ability@@0@0</entry>
+    <entry>Web@@True@False@True@True@8@Day@Constitution@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Huge</name>
     <entry>Bite@2d6#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
     <entry>Poison@1d8#Strength#Initial,1d8#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
-    <entry>Web@@True@False@True@True@8@Day@@Constitution@extraordinary ability@@0@0</entry>
+    <entry>Web@@True@False@True@True@8@Day@Constitution@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Large</name>
     <entry>Bite@1d8#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
     <entry>Poison@1d6#Strength#Initial,1d6#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
-    <entry>Web@@True@False@True@True@8@Day@@Constitution@extraordinary ability@@0@0</entry>
+    <entry>Web@@True@False@True@True@8@Day@Constitution@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Medium</name>
     <entry>Bite@1d6#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
     <entry>Poison@1d4#Strength#Initial,1d4#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
-    <entry>Web@@True@False@True@True@8@Day@@Constitution@extraordinary ability@@0@0</entry>
+    <entry>Web@@True@False@True@True@8@Day@Constitution@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Small</name>
     <entry>Bite@1d4#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
     <entry>Poison@1d3#Strength#Initial,1d3#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
-    <entry>Web@@True@False@True@True@8@Day@@Constitution@extraordinary ability@@0@0</entry>
+    <entry>Web@@True@False@True@True@8@Day@Constitution@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Tiny</name>
     <entry>Bite@1d3#Piercing/Slashing/Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Poison@1.5@0</entry>
     <entry>Poison@1d2#Strength#Initial,1d2#Strength#Secondary@True@True@False@True@1@Hit@Constitution@Fortitude@extraordinary ability@@0@0</entry>
-    <entry>Web@@True@False@True@True@8@Day@@Constitution@extraordinary ability@@0@0</entry>
+    <entry>Web@@True@False@True@True@8@Day@Constitution@@extraordinary ability@@0@0</entry>
   </collection>
   <collection>
     <name>Mule</name>
@@ -5067,7 +5067,7 @@
     <name>Half-Dragon (Green)</name>
     <entry>Claw@1d4#Piercing/Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite@1d6#Piercing/Slashing/Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
-    <entry>Breath Weapon@6d8#Acid Gas#@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
+    <entry>Breath Weapon@6d8#Acid#Gas@True@False@True@True@1@Day@Constitution@Reflex@supernatural ability@@0@0</entry>
   </collection>
   <collection>
     <name>Half-Dragon (Red)</name>

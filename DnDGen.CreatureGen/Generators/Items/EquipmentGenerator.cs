@@ -161,7 +161,7 @@ namespace DnDGen.CreatureGen.Generators.Items
             clone.BaseAttackBonus = attack.BaseAttackBonus;
             clone.DamageBonus = attack.DamageBonus;
             clone.DamageEffect = attack.DamageEffect;
-            clone.Damages = attack.Damages;
+            clone.Damages = new List<Damage>(attack.Damages);
             clone.Frequency = new Frequency();
             clone.Frequency.Quantity = attack.Frequency.Quantity;
             clone.Frequency.TimePeriod = attack.Frequency.TimePeriod;

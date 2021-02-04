@@ -388,6 +388,62 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Attacks
             Assert.That(attack.Save.Save, Is.EqualTo("save"));
         }
 
+        [Test]
+        public void BUG_GenerateAttack_WithSave_NaturalAndWithoutAbility()
+        {
+            var attacks = new List<AttackSelection>();
+            attacks.Add(new AttackSelection()
+            {
+                Name = "attack",
+                Damages = new List<Damage>
+                {
+                    new Damage { Roll = "my roll", Type = "my damage type", Condition = "my condition" },
+                    new Damage { Roll = "my other roll", Type = "my other damage type", Condition = "my other condition" },
+                },
+                DamageEffect = "damage effect",
+                AttackType = "attack type",
+                FrequencyQuantity = 42,
+                FrequencyTimePeriod = "time period",
+                IsMelee = true,
+                IsNatural = true,
+                IsPrimary = false,
+                IsSpecial = true,
+                Save = "save",
+                SaveDcBonus = 1337
+            });
+
+            mockAttackSelector.Setup(s => s.Select("creature", "original size", "size")).Returns(attacks);
+
+            var generatedAttacks = attacksGenerator.GenerateAttacks("creature", "original size", "size", 9266, abilities, 600);
+            Assert.That(generatedAttacks, Is.Not.Empty);
+            Assert.That(generatedAttacks.Count, Is.EqualTo(attacks.Count()));
+            Assert.That(generatedAttacks.Count, Is.EqualTo(1));
+
+            var attack = generatedAttacks.Single();
+            Assert.That(attack.Name, Is.EqualTo("attack"));
+            Assert.That(attack.Damages, Has.Count.EqualTo(2));
+            Assert.That(attack.Damages[0].Roll, Is.EqualTo("my roll"));
+            Assert.That(attack.Damages[0].Type, Is.EqualTo("my damage type"));
+            Assert.That(attack.Damages[0].Condition, Is.EqualTo("my condition"));
+            Assert.That(attack.Damages[1].Roll, Is.EqualTo("my other roll"));
+            Assert.That(attack.Damages[1].Type, Is.EqualTo("my other damage type"));
+            Assert.That(attack.Damages[1].Condition, Is.EqualTo("my other condition"));
+            Assert.That(attack.DamageEffect, Is.EqualTo("damage effect"));
+            Assert.That(attack.IsMelee, Is.True);
+            Assert.That(attack.IsNatural, Is.True);
+            Assert.That(attack.IsPrimary, Is.False);
+            Assert.That(attack.IsSpecial, Is.True);
+            Assert.That(attack.AttackType, Is.EqualTo("attack type"));
+            Assert.That(attack.Frequency, Is.Not.Null);
+            Assert.That(attack.Frequency.Quantity, Is.EqualTo(42));
+            Assert.That(attack.Frequency.TimePeriod, Is.EqualTo("time period"));
+
+            Assert.That(attack.Save, Is.Not.Null);
+            Assert.That(attack.Save.BaseValue, Is.EqualTo(10 + 1337));
+            Assert.That(attack.Save.BaseAbility, Is.Null);
+            Assert.That(attack.Save.Save, Is.EqualTo("save"));
+        }
+
         [TestCase(1, 0, 10)]
         [TestCase(1, 1, 11)]
         [TestCase(1, 2, 12)]

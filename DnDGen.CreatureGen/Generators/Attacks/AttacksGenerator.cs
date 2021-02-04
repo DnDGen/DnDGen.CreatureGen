@@ -98,7 +98,8 @@ namespace DnDGen.CreatureGen.Generators.Attacks
                     attack.Save.BaseValue = 10 + attackSelection.SaveDcBonus;
                     attack.Save.Save = attackSelection.Save;
 
-                    if (attack.IsNatural)
+                    //if (attack.IsNatural)
+                    if (attack.IsNatural && !string.IsNullOrEmpty(attackSelection.SaveAbility))
                     {
                         attack.Save.BaseAbility = abilities[attackSelection.SaveAbility];
                         attack.Save.BaseValue += hitDiceQuantity / 2;
