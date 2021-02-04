@@ -505,7 +505,9 @@ namespace DnDGen.CreatureGen.Tests.Integration
             var weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name.StartsWith(w.Name));
             if (weapon != null)
             {
-                Assert.That(attack.Damages, Is.Not.Empty.And.Count.EqualTo(weapon.Damages.Count), $"{message}; Weapon: {weapon.Description} ({weapon.DamageDescription})");
+                Assert.That(attack.Damages,
+                    Is.Not.Empty.And.Count.EqualTo(weapon.Damages.Count),
+                    $"{message}; Weapon: {weapon.Description} ({weapon.DamageDescription}); Attack Damage: {attack.DamageDescription}");
 
                 for (var i = 0; i < weapon.Damages.Count; i++)
                 {
@@ -545,7 +547,8 @@ namespace DnDGen.CreatureGen.Tests.Integration
                     .Or.EqualTo(AbilityConstants.Strength)
                     .Or.EqualTo(AbilityConstants.Wisdom)
                     .Or.EqualTo("Negative Level")
-                    .Or.EqualTo("Positive energy"), $"{message}; Damage: {damage.Description}");
+                    .Or.EqualTo("Positive energy")
+                    .Or.EqualTo("Ability points (of ghost's choosing)"), $"{message}; Damage: {damage.Description}");
             }
         }
     }
