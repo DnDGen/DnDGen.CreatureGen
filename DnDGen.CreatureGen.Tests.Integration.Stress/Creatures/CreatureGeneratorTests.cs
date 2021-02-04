@@ -35,9 +35,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private void GenerateAndAssertCreature()
         {
             var randomCreatureName = collectionSelector.SelectRandomFrom(allCreatures);
+            GenerateAndAssertCreature(randomCreatureName);
+        }
 
-            var creature = creatureGenerator.Generate(randomCreatureName, CreatureConstants.Templates.None);
-
+        private void GenerateAndAssertCreature(string creatureName)
+        {
+            var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);
             creatureAsserter.AssertCreature(creature);
         }
 
@@ -100,6 +103,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
             Assert.That(creature.Template, Is.EqualTo(randomTemplate));
             creatureAsserter.AssertCreature(creature);
+        }
+
+        [TestCase(CreatureConstants.Erinyes)]
+        [TestCase(CreatureConstants.Xill)]
+        public void BUG_StressSpecificCreature(string creatureName)
+        {
+            stressor.Stress(() => GenerateAndAssertCreature(creatureName));
         }
     }
 }
