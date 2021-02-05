@@ -435,8 +435,8 @@ namespace DnDGen.CreatureGen.Tests.Integration
         private void AssertAttack(Attack attack, Creature creature)
         {
             var message = $"Creature: {creature.Summary}; Attack: {attack.Name}";
-            var meleeEquipmentAttacks = creature.Attacks.Where(a => a.IsMelee && creature.Equipment.Weapons.Any(w => a.Name.StartsWith(w.Name)));
-            var rangedEquipmentAttacks = creature.Attacks.Where(a => !a.IsMelee && creature.Equipment.Weapons.Any(w => a.Name.StartsWith(w.Name)));
+            var meleeEquipmentAttacks = creature.Attacks.Where(a => a.IsMelee && creature.Equipment.Weapons.Any(w => a.Name.StartsWith(w.Description)));
+            var rangedEquipmentAttacks = creature.Attacks.Where(a => !a.IsMelee && creature.Equipment.Weapons.Any(w => a.Name.StartsWith(w.Description)));
 
             Assert.That(attack.Name, Is.Not.Empty, message);
             Assert.That(attack.AttackType, Is.Not.Empty, message);
@@ -501,8 +501,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             var biteDamage = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}/{AttributeConstants.DamageTypes.Bludgeoning}";
 
             //INFO: Doing Contains instead of Equals, since Lycanthropes have a modifed name for the attack based on their form
-            //Pixies have their "Special Arrows", and we also must account for those by using StartsWith
-            var weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name.StartsWith(w.Name));
+            var weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name.StartsWith(w.Description));
             if (weapon != null)
             {
                 Assert.That(attack.Damages,

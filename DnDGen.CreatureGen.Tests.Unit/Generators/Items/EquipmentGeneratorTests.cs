@@ -1402,7 +1402,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             Assert.That(equipment.Weapons.Single(), Is.EqualTo(weapon));
 
             Assert.That(attacks, Has.Count.EqualTo(6));
-            Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
+            Assert.That(attacks[5].Name, Is.EqualTo(weapon.Description));
             Assert.That(attacks[5].DamageDescription, Is.EqualTo("my roll my damage type"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
@@ -1484,7 +1484,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             Assert.That(equipment.Weapons.Single(), Is.EqualTo(weapon));
 
             Assert.That(attacks, Has.Count.EqualTo(6));
-            Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Club));
+            Assert.That(attacks[5].Name, Is.EqualTo(weapon.Description));
             Assert.That(attacks[5].DamageDescription, Is.EqualTo("my roll my damage type"));
             Assert.That(attacks[5].IsMelee, Is.True);
             Assert.That(attacks[5].IsNatural, Is.False);
@@ -3316,7 +3316,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             Assert.That(equipment.Weapons.Single(), Is.EqualTo(weapon));
 
             Assert.That(attacks, Has.Count.EqualTo(6));
-            Assert.That(attacks[5].Name, Is.EqualTo(WeaponConstants.Javelin));
+            Assert.That(attacks[5].Name, Is.EqualTo(weapon.Description));
             Assert.That(attacks[5].DamageDescription, Is.EqualTo("my roll my damage type"));
             Assert.That(attacks[5].IsMelee, Is.False);
             Assert.That(attacks[5].IsNatural, Is.False);

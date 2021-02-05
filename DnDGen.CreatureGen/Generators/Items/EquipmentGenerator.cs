@@ -270,7 +270,7 @@ namespace DnDGen.CreatureGen.Generators.Items
 
                         weapons.Add(weapon);
 
-                        attack.Name = weapon.Name;
+                        attack.Name = weapon.Description;
                         attack.Damages.AddRange(weapon.Damages);
 
                         //Is not proficient with the weapon
@@ -386,7 +386,7 @@ namespace DnDGen.CreatureGen.Generators.Items
                         }
 
                         //Set up the attack
-                        attack.Name = weapon.Name;
+                        attack.Name = weapon.Description;
                         attack.Damages.AddRange(weapon.Damages);
 
                         if (!proficientRangedWeaponNames.Common.Any(weapon.NameMatches)

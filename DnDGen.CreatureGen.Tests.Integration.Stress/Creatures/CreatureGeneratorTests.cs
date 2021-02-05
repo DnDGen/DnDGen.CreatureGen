@@ -105,6 +105,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             creatureAsserter.AssertCreature(creature);
         }
 
+        [TestCase(CreatureConstants.Aranea)]
+        [TestCase(CreatureConstants.Athach)]
         [TestCase(CreatureConstants.Erinyes)]
         [TestCase(CreatureConstants.Xill)]
         public void BUG_StressSpecificCreature(string creatureName)
