@@ -172,11 +172,12 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 Assert.That(shieldNames, Contains.Item(creature.Equipment.Shield.Name), creature.Summary + creature.Equipment.Shield.Name);
             }
 
-            var unnaturalAttacks = creature.Attacks.Where(a => !a.IsNatural && weaponNames.Contains(a.Name));
+            var unnaturalAttacks = creature.Attacks.Where(a => !a.IsNatural && creature.Equipment.Weapons.Any(w => a.Name.StartsWith(w.Description)));
 
             foreach (var attack in unnaturalAttacks)
             {
-                var weapon = creature.Equipment.Weapons.FirstOrDefault(w => w.Name == attack.Name);
+                //INFO: Doing Contains instead of Equals, since Lycanthropes have a modifed name for the attack based on their form
+                var weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name.StartsWith(w.Description));
                 Assert.That(weapon, Is.Not.Null, $"{creature.Summary}: {attack.Name}");
                 Assert.That(weapon.DamageDescription, Is.Not.Empty, $"{creature.Summary}: {weapon.Description}");
                 Assert.That(weaponNames, Contains.Item(weapon.Name), $"{creature.Summary}: {weapon.Description}");
