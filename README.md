@@ -14,18 +14,12 @@ var creature = creatureGenerator.GenerateWith(CreatureConstants.Ogre, CreatureCo
 
 ### Getting the Generators
 
-You can obtain generators from the IoC namespace within the domain project.  Because the generators are very complex and are decorated in various ways, there is not a (recommended) way to build these generator manually.  Please use the IoC container in the Domain package.  **Note:** if using the CreatureGen IoC container, be sure to also load modules for RollGen, DnDGen.Core, EventGen, and TreasureGen, as it is dependent on those modules
+You can obtain generators from the IoC namespace within the domain project.  Because the generators are very complex and are decorated in various ways, there is not a (recommended) way to build these generator manually.  Please use the Module Loader in the IoC domain.  **Note**: This will also load dependencies of CreatureGen, including RollGen, Infrastructure, and TreasureGen
 
 ```C#
 var kernel = new StandardKernel();
-var rollGenModuleLoader = new RollGenModuleLoader();
-var infrastructureModuleLoader = new InfrastructureModuleLoader();
-var treasureGenModuleLoader = new TreasureGenModuleLoader();
 var creatureGenModuleLoader = new CreatureGenModuleLoader();
 
-rollGenModuleLoader.LoadModules(kernel);
-infrastructureModuleLoader.LoadModules(kernel);
-treasureGenModuleLoader.LoadModules(kernel);
 creatureGenModuleLoader.LoadModules(kernel);
 ```
 
