@@ -176,8 +176,18 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
             foreach (var attack in unnaturalAttacks)
             {
-                //INFO: Doing Contains instead of Equals, since Lycanthropes have a modifed name for the attack based on their form
-                var weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name.StartsWith(w.Description));
+                Weapon weapon = null;
+
+                //INFO: Lycanthropes have a modifed name for the attack based on their form
+                if (creature.Template.Contains("Lycanthrope"))
+                {
+                    weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name.StartsWith($"{w.Description} ("));
+                }
+                else
+                {
+                    weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name == w.Description);
+                }
+
                 Assert.That(weapon, Is.Not.Null, $"{creature.Summary}: {attack.Name}");
                 Assert.That(weapon.DamageDescription, Is.Not.Empty, $"{creature.Summary}: {weapon.Description}");
                 Assert.That(weaponNames, Contains.Item(weapon.Name), $"{creature.Summary}: {weapon.Description}");
@@ -501,8 +511,18 @@ namespace DnDGen.CreatureGen.Tests.Integration
             var clawDamage = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}";
             var biteDamage = $"{AttributeConstants.DamageTypes.Piercing}/{AttributeConstants.DamageTypes.Slashing}/{AttributeConstants.DamageTypes.Bludgeoning}";
 
-            //INFO: Doing Contains instead of Equals, since Lycanthropes have a modifed name for the attack based on their form
-            var weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name.StartsWith(w.Description));
+            Weapon weapon = null;
+
+            //INFO: Lycanthropes have a modifed name for the attack based on their form
+            if (creature.Template.Contains("Lycanthrope"))
+            {
+                weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name.StartsWith($"{w.Description} ("));
+            }
+            else
+            {
+                weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name == w.Description);
+            }
+
             if (weapon != null)
             {
                 Assert.That(attack.Damages,
