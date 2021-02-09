@@ -938,5 +938,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(int.TryParse(data[DataIndexConstants.CreatureData.NumberOfHands], out var numberOfHands), Is.True, creature);
             Assert.That(numberOfHands, Is.Not.Negative, creature);
         }
+
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
+        public void AllCreaturesWithLevelAdjustmentCanBeCharacters(string creature)
+        {
+            var data = table[creature].ToArray();
+            var characters = CreatureConstants.GetAllCharacters();
+
+            Assert.That(data.Length - 1, Is.AtLeast(DataIndexConstants.CreatureData.LevelAdjustment), creature);
+            if (string.IsNullOrEmpty(data[DataIndexConstants.CreatureData.LevelAdjustment]))
+            {
+                Assert.That(characters, Does.Not.Contains(creature));
+            }
+            else
+            {
+                Assert.That(characters, Contains.Item(creature));
+            }
+        }
     }
 }

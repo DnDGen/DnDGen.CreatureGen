@@ -16,7 +16,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         private string[] data;
 
         [SetUp]
-        public void Setup()
+        public void SelectFor_Setup()
         {
             mockCollectionSelector = new Mock<ICollectionSelector>();
             creatureDataSelector = new CreatureDataSelector(mockCollectionSelector.Object);
@@ -32,26 +32,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             data[DataIndexConstants.CreatureData.NaturalArmor] = "1337";
             data[DataIndexConstants.CreatureData.NumberOfHands] = "1336";
 
-            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureData, Creature))
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureData, Creature))
                 .Returns(data);
         }
 
         [Test]
-        public void SelectChallengeRating()
+        public void SelectFor_SelectChallengeRating()
         {
             var selection = creatureDataSelector.SelectFor(Creature);
             Assert.That(selection.ChallengeRating, Is.EqualTo("challenge rating"));
         }
 
         [Test]
-        public void SelectCreatureDataWithLevelAdjustment()
+        public void SelectFor_SelectCreatureDataWithLevelAdjustment()
         {
             var selection = creatureDataSelector.SelectFor(Creature);
             Assert.That(selection.LevelAdjustment, Is.EqualTo(9266));
         }
 
         [Test]
-        public void SelectCreatureDataWithLevelAdjustmentOfZero()
+        public void SelectFor_SelectCreatureDataWithLevelAdjustmentOfZero()
         {
             data[DataIndexConstants.CreatureData.LevelAdjustment] = "0";
 
@@ -60,7 +61,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         }
 
         [Test]
-        public void SelectCreatureDataWithoutLevelAdjustment()
+        public void SelectFor_SelectCreatureDataWithoutLevelAdjustment()
         {
             data[DataIndexConstants.CreatureData.LevelAdjustment] = string.Empty;
 
@@ -69,28 +70,28 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         }
 
         [Test]
-        public void SelectReach()
+        public void SelectFor_SelectReach()
         {
             var selection = creatureDataSelector.SelectFor(Creature);
             Assert.That(selection.Reach, Is.EqualTo(90.210));
         }
 
         [Test]
-        public void SelectSpace()
+        public void SelectFor_SelectSpace()
         {
             var selection = creatureDataSelector.SelectFor(Creature);
             Assert.That(selection.Space, Is.EqualTo(4.2));
         }
 
         [Test]
-        public void SelectCasterLevel()
+        public void SelectFor_SelectCasterLevel()
         {
             var selection = creatureDataSelector.SelectFor(Creature);
             Assert.That(selection.CasterLevel, Is.EqualTo(600));
         }
 
         [Test]
-        public void SelectCreatureDataCanUseEquipment()
+        public void SelectFor_SelectCreatureDataCanUseEquipment()
         {
             data[DataIndexConstants.CreatureData.CanUseEquipment] = bool.TrueString;
 
@@ -99,7 +100,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         }
 
         [Test]
-        public void SelectCreatureDataCannotUseEquipment()
+        public void SelectFor_SelectCreatureDataCannotUseEquipment()
         {
             data[DataIndexConstants.CreatureData.CanUseEquipment] = bool.FalseString;
 
@@ -108,14 +109,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         }
 
         [Test]
-        public void SelectNaturalArmor()
+        public void SelectFor_SelectNaturalArmor()
         {
             var selection = creatureDataSelector.SelectFor(Creature);
             Assert.That(selection.NaturalArmor, Is.EqualTo(1337));
         }
 
         [Test]
-        public void SelectNumberOfHands()
+        public void SelectFor_SelectNumberOfHands()
         {
             var selection = creatureDataSelector.SelectFor(Creature);
             Assert.That(selection.NumberOfHands, Is.EqualTo(1336));
