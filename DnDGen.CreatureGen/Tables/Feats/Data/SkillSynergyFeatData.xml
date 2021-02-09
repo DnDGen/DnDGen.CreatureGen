@@ -1,0 +1,1312 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Appraise:Profession/Appraiser</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Appraiser</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Appraise:Profession/Trader</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Trader</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Bluff:Diplomacy</name>
+    <entry>Skill Bonus</entry>
+    <entry>Diplomacy</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Bluff:Disguise</name>
+    <entry>Skill Bonus</entry>
+    <entry>Disguise: acting</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Bluff:Intimidate</name>
+    <entry>Skill Bonus</entry>
+    <entry>Intimidate</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Bluff:Profession/Dowser</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Dowser</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Bluff:Profession/Soothsayer</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Soothsayer</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Bluff:Sleight of Hand</name>
+    <entry>Skill Bonus</entry>
+    <entry>Sleight of Hand</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft:Appraise</name>
+    <entry>Skill Bonus</entry>
+    <entry>Appraise: related to items made with your Craft skill</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft:Profession/Craftsman</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Craftsman</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Alchemy:Profession/Alchemist</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Alchemist</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Alchemy:Profession/Embalmer</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Embalmer</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Armorsmithing:Profession/Armorer</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Armorer</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Blacksmithing:Profession/Blacksmith</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Blacksmith</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Bookbinding:Profession/Bookbinder</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Bookbinder</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Bowmaking:Profession/Bowyer</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Bowyer</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Bowmaking:Profession/Fletcher</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Fletcher</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Brassmaking:Profession/Brazier</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Brazier</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Brewing:Profession/Brewer</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Brewer</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Candlemaking:Profession/Chandler</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Chandler</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Coppersmithing:Profession/Coppersmith</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Coppersmith</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Dyemaking:Profession/Dyer</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Dyer</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Gemcutting:Profession/Gemcutter</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Gemcutter</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Goldsmithing:Profession/Goldsmith</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Goldsmith</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Hatmaking:Profession/Haberdasher</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Haberdasher</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Hornworking:Profession/Horner</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Horner</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Jewelmaking:Profession/Jeweler</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Jeweler</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Locksmithing:Profession/Locksmith</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Locksmith</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Mapmaking:Profession/Cartographer</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Cartographer</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Milling:Profession/Miller</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Miller</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Painting:Profession/Limner</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Limner</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Painting:Profession/Painter</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Painter</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Parchmentmaking:Profession/Parchmentmaker</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Parchmentmaker</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Pewtermaking:Profession/Pewterer</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Pewterer</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Potterymaking:Profession/Potter</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Potter</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Sculpting:Profession/Sculptor</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Sculptor</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Shipmaking:Profession/Shipwright</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Shipwright</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Shoemaking:Profession/Cobbler</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Cobbler</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Silversmithing:Profession/Silversmith</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Silversmith</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Skinning:Profession/Skinner</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Skinner</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Soapmaking:Profession/Soapmaker</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Soapmaker</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Tanning:Profession/Tanner</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Tanner</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Trapmaking:Profession/Hunter</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Hunter</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Trapmaking:Profession/Trapper</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Trapper</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Trapmaking:Search</name>
+    <entry>Skill Bonus</entry>
+    <entry>Search: finding traps</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Weaponsmithing:Profession/Weaponsmith</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Weaponsmith</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Weaving:Profession/Weaver</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Weaver</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Wheelmaking:Profession/Wheelwright</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Wheelwright</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Winemaking:Profession/Vintner</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Vintner</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Woodworking:Profession/Carpenter</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Carpenter</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Woodworking:Profession/Cartwright</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Cartwright</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Craft/Woodworking:Profession/Coffinmaker</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Coffinmaker</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Decipher Script:Use Magic Device</name>
+    <entry>Skill Bonus</entry>
+    <entry>Use Magic Device: with scrolls</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Diplomacy:Profession/Barrister</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Barrister</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Diplomacy:Profession/Butler</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Butler</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Diplomacy:Profession/City Guide</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/City Guide</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Diplomacy:Profession/Footman</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Footman</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Diplomacy:Profession/Governess</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Governess</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Diplomacy:Profession/Matchmaker</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Matchmaker</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Diplomacy:Profession/Valet</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Valet</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Escape Artist:Use Rope</name>
+    <entry>Skill Bonus</entry>
+    <entry>Use Rope: binding someone</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Handle Animal:Diplomacy</name>
+    <entry>Skill Bonus</entry>
+    <entry>Diplomacy: wild empathy</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Handle Animal:Profession/Animal Groomer</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Animal Groomer</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Handle Animal:Profession/Animal Trainer</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Animal Trainer</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Handle Animal:Profession/Exotic Animal Trainer</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Exotic Animal Trainer</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Handle Animal:Profession/Shepherd</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Shepherd</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Handle Animal:Profession/Teamster</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Teamster</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Handle Animal:Ride</name>
+    <entry>Skill Bonus</entry>
+    <entry>Ride</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Heal:Profession/Healer</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Healer</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Heal:Profession/Masseuse</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Masseuse</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Heal:Profession/Midwife</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Midwife</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Intimidate:Profession/Sailor Mate</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Sailor Mate</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Jump:Tumble</name>
+    <entry>Skill Bonus</entry>
+    <entry>Tumble</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge:Profession/Adviser</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Adviser</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge:Profession/Sage</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Sage</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge:Profession/Teacher</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Teacher</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Arcana:Spellcraft</name>
+    <entry>Skill Bonus</entry>
+    <entry>Spellcraft</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Architecture and Engineering:Profession/Architect</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Architect</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Architecture and Engineering:Profession/Engineer</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Engineer</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Architecture and Engineering:Search</name>
+    <entry>Skill Bonus</entry>
+    <entry>Search: find secret doors or compartments</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Dungeoneering:Profession/Miner</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Miner</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Dungeoneering:Survival</name>
+    <entry>Skill Bonus</entry>
+    <entry>Survival: underground</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Geography:Profession/Miner</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Miner</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Geography:Survival</name>
+    <entry>Skill Bonus</entry>
+    <entry>Survival: keep from getting lost or avoid natural hazards</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/History:Knowledge/bardic</name>
+    <entry>Skill Bonus</entry>
+    <entry>Knowledge/bardic</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Local:Gather Information</name>
+    <entry>Skill Bonus</entry>
+    <entry>Gather Information</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Local:Profession/City Guide</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/City Guide</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Local:Profession/Local Courier</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Local Courier</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Local:Profession/Out-of-Town Courier</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Out-of-Town Courier</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Local:Profession/Wilderness Guide</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Wilderness Guide</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Nature:Profession/Apothecary</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Apothecary</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Nature:Profession/Farmer</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Farmer</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Nature:Profession/Hunter</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Hunter</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Nature:Profession/Miner</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Miner</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Nature:Profession/Trapper</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Trapper</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Nature:Profession/Wilderness Guide</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Wilderness Guide</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Nature:Survival</name>
+    <entry>Skill Bonus</entry>
+    <entry>Survival: in aboveground natural environments</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Nobility and Royalty:Diplomacy</name>
+    <entry>Skill Bonus</entry>
+    <entry>Diplomacy</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Nobility and Royalty:Profession/Butler</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Butler</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Nobility and Royalty:Profession/Footman</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Footman</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Nobility and Royalty:Profession/Governess</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Governess</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/Nobility and Royalty:Profession/Maid</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Maid</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Knowledge/The Planes:Survival</name>
+    <entry>Skill Bonus</entry>
+    <entry>Survival: on other planes</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Perform:Profession/Entertainer</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Entertainer</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Adviser:Diplomacy</name>
+    <entry>Skill Bonus</entry>
+    <entry>Diplomacy</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Adviser:Knowledge</name>
+    <entry>Skill Bonus</entry>
+    <entry>Knowledge</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Alchemist:Craft/Alchemy</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Alchemy</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Animal Groomer:Handle Animal</name>
+    <entry>Skill Bonus</entry>
+    <entry>Handle Animal</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Animal Trainer:Handle Animal</name>
+    <entry>Skill Bonus</entry>
+    <entry>Handle Animal</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Apothecary:Knowledge/Nature</name>
+    <entry>Skill Bonus</entry>
+    <entry>Knowledge/Nature</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Appraiser:Appraise</name>
+    <entry>Skill Bonus</entry>
+    <entry>Appraise</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Architect:Knowledge/Architecture and Engineering</name>
+    <entry>Skill Bonus</entry>
+    <entry>Knowledge/Architecture and Engineering</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Armorer:Craft/Armorsmithing</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Armorsmithing</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Barrister:Diplomacy</name>
+    <entry>Skill Bonus</entry>
+    <entry>Diplomacy</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Blacksmith:Craft/Blacksmithing</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Blacksmithing</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Bookbinder:Craft/Bookbinding</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Bookbinding</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Bowyer:Craft/Bowmaking</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Bowmaking</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Brazier:Craft/Brassmaking</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Brassmaking</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Brewer:Craft/Brewing</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Brewing</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Butler:Diplomacy</name>
+    <entry>Skill Bonus</entry>
+    <entry>Diplomacy</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Butler:Knowledge/Nobility and Royalty</name>
+    <entry>Skill Bonus</entry>
+    <entry>Knowledge/Nobility and Royalty</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Carpenter:Craft/Woodworking</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Woodworking</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Cartographer:Craft/Mapmaking</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Mapmaking</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Cartwright:Craft/Woodworking</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Woodworking</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Chandler:Craft/Candlemaking</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Candlemaking</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/City Guide:Diplomacy</name>
+    <entry>Skill Bonus</entry>
+    <entry>Diplomacy</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/City Guide:Knowledge/Local</name>
+    <entry>Skill Bonus</entry>
+    <entry>Knowledge/Local</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Cobbler:Craft/Shoemaking</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Shoemaking</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Coffinmaker:Craft/Woodworking</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Woodworking</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Coppersmith:Craft/Coppersmithing</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Coppersmithing</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Craftsman:Craft</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Dowser:Bluff</name>
+    <entry>Skill Bonus</entry>
+    <entry>Bluff</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Dowser:Survival</name>
+    <entry>Skill Bonus</entry>
+    <entry>Survival</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Dyer:Craft/Dyemaking</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Dyemaking</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Embalmer:Craft/Alchemy</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Alchemy</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Engineer:Knowledge/Architecture and Engineering</name>
+    <entry>Skill Bonus</entry>
+    <entry>Knowledge/Architecture and Engineering</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Entertainer:Perform</name>
+    <entry>Skill Bonus</entry>
+    <entry>Perform</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Exotic Animal Trainer:Handle Animal</name>
+    <entry>Skill Bonus</entry>
+    <entry>Handle Animal</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Farmer:Knowledge/Nature</name>
+    <entry>Skill Bonus</entry>
+    <entry>Knowledge/Nature</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Fletcher:Craft/Bowmaking</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Bowmaking</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Footman:Diplomacy</name>
+    <entry>Skill Bonus</entry>
+    <entry>Diplomacy</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Footman:Knowledge/Nobility and Royalty</name>
+    <entry>Skill Bonus</entry>
+    <entry>Knowledge/Nobility and Royalty</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Gemcutter:Craft/Gemcutting</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Gemcutting</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Goldsmith:Craft/Goldsmithing</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Goldsmithing</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Governess:Diplomacy</name>
+    <entry>Skill Bonus</entry>
+    <entry>Diplomacy</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Governess:Knowledge/Nobility and Royalty</name>
+    <entry>Skill Bonus</entry>
+    <entry>Knowledge/Nobility and Royalty</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Haberdasher:Craft/Hatmaking</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Hatmaking</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Healer:Heal</name>
+    <entry>Skill Bonus</entry>
+    <entry>Heal</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Horner:Craft/Hornworking</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Hornworking</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Hunter:Craft/Trapmaking</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Trapmaking</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Hunter:Knowledge/Nature</name>
+    <entry>Skill Bonus</entry>
+    <entry>Knowledge/Nature</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Hunter:Survival</name>
+    <entry>Skill Bonus</entry>
+    <entry>Survival</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Jeweler:Craft/Jewelmaking</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Jewelmaking</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Limner:Craft/Painting</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Painting</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Local Courier:Knowledge/Local</name>
+    <entry>Skill Bonus</entry>
+    <entry>Knowledge/Local</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Locksmith:Craft/Locksmithing</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Locksmithing</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Maid:Knowledge/Nobility and Royalty</name>
+    <entry>Skill Bonus</entry>
+    <entry>Knowledge/Nobility and Royalty</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Masseuse:Heal</name>
+    <entry>Skill Bonus</entry>
+    <entry>Heal</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Midwife:Heal</name>
+    <entry>Skill Bonus</entry>
+    <entry>Heal</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Matchmaker:Diplomacy</name>
+    <entry>Skill Bonus</entry>
+    <entry>Diplomacy</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Matchmaker:Sense Motive</name>
+    <entry>Skill Bonus</entry>
+    <entry>Sense Motive</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Miller:Craft/Milling</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Milling</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Miner:Knowledge/Dungeoneering</name>
+    <entry>Skill Bonus</entry>
+    <entry>Knowledge/Dungeoneering</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Miner:Knowledge/Geography</name>
+    <entry>Skill Bonus</entry>
+    <entry>Knowledge/Geography</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Miner:Knowledge/Nature</name>
+    <entry>Skill Bonus</entry>
+    <entry>Knowledge/Nature</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Navigator:Survival</name>
+    <entry>Skill Bonus</entry>
+    <entry>Survival</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Out-of-Town Courier:Knowledge/Local</name>
+    <entry>Skill Bonus</entry>
+    <entry>Knowledge/Local</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Out-of-Town Courier:Ride</name>
+    <entry>Skill Bonus</entry>
+    <entry>Ride</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Painter:Craft/Painting</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Painting</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Parchmentmaker:Craft/Parchmentmaking</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Parchmentmaking</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Pewterer:Craft/Pewtermaking</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Pewtermaking</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Potter:Craft/Potterymaking</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Potterymaking</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Sage:Knowledge</name>
+    <entry>Skill Bonus</entry>
+    <entry>Knowledge</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Sailor Crewmember:Swim</name>
+    <entry>Skill Bonus</entry>
+    <entry>Swim</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Sailor Mate:Intimidate</name>
+    <entry>Skill Bonus</entry>
+    <entry>Intimidate</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Sailor Mate:Swim</name>
+    <entry>Skill Bonus</entry>
+    <entry>Swim</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Sculptor:Craft/Sculpting</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Sculpting</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Shepherd:Handle Animal</name>
+    <entry>Skill Bonus</entry>
+    <entry>Handle Animal</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Shipwright:Craft/Shipmaking</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Shipmaking</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Silversmith:Craft/Silversmithing</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Silversmithing</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Skinner:Craft/Skinning</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Skinning</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Soapmaker:Craft/Soapmaking</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Soapmaking</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Soothsayer:Bluff</name>
+    <entry>Skill Bonus</entry>
+    <entry>Bluff</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Tanner:Craft/Tanning</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Tanning</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Teacher:Knowledge</name>
+    <entry>Skill Bonus</entry>
+    <entry>Knowledge</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Teamster:Handle Animal</name>
+    <entry>Skill Bonus</entry>
+    <entry>Handle Animal</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Teamster:Ride</name>
+    <entry>Skill Bonus</entry>
+    <entry>Ride</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Trader:Appraise</name>
+    <entry>Skill Bonus</entry>
+    <entry>Appraise</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Trader:Sense Motive</name>
+    <entry>Skill Bonus</entry>
+    <entry>Sense Motive</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Trapper:Craft/Trapmaking</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Trapmaking</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Trapper:Knowledge/Nature</name>
+    <entry>Skill Bonus</entry>
+    <entry>Knowledge/Nature</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Trapper:Survival</name>
+    <entry>Skill Bonus</entry>
+    <entry>Survival</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Valet:Diplomacy</name>
+    <entry>Skill Bonus</entry>
+    <entry>Diplomacy</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Vintner:Craft/Winemaking</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Winemaking</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Weaponsmith:Craft/Weaponsmithing</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Weaponsmithing</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Weaver:Craft/Weaving</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Weaving</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Wheelwright:Craft/Wheelmaking</name>
+    <entry>Skill Bonus</entry>
+    <entry>Craft/Wheelmaking</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Wilderness Guide:Knowledge/Local</name>
+    <entry>Skill Bonus</entry>
+    <entry>Knowledge/Local</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Profession/Wilderness Guide:Knowledge/Nature</name>
+    <entry>Skill Bonus</entry>
+    <entry>Knowledge/Nature</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Ride:Profession/Out-of-Town Courier</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Out-of-Town Courier</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Ride:Profession/Teamster</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Teamster</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Search:Survival</name>
+    <entry>Skill Bonus</entry>
+    <entry>Survival: following tracks</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Sense Motive:Diplomacy</name>
+    <entry>Skill Bonus</entry>
+    <entry>Diplomacy</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Sense Motive:Profession/Matchmaker</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Matchmaker</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Sense Motive:Profession/Trader</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Trader</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Spellcraft:Use Magic Device</name>
+    <entry>Skill Bonus</entry>
+    <entry>Use Magic Device: with scrolls</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Survival:Knowledge/Nature</name>
+    <entry>Skill Bonus</entry>
+    <entry>Knowledge/Nature</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Survival:Profession/Dowser</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Dowser</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Survival:Profession/Hunter</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Hunter</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Survival:Profession/Navigator</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Navigator</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Survival:Profession/Trapper</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Trapper</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Swim:Profession/Sailor Crewmember</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Sailor Crewmember</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Swim:Profession/Sailor Mate</name>
+    <entry>Skill Bonus</entry>
+    <entry>Profession/Sailor Mate</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Tumble:Balance</name>
+    <entry>Skill Bonus</entry>
+    <entry>Balance</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Tumble:Jump</name>
+    <entry>Skill Bonus</entry>
+    <entry>Jump</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Use Magic Device:Spellcraft</name>
+    <entry>Skill Bonus</entry>
+    <entry>Spellcraft: decipher scrolls</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Use Rope:Climb</name>
+    <entry>Skill Bonus</entry>
+    <entry>Climb: with rope</entry>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Use Rope:Escape Artist</name>
+    <entry>Skill Bonus</entry>
+    <entry>Escape Artist: escaping rope bonds</entry>
+    <entry>2</entry>
+  </collection>
+</collections>

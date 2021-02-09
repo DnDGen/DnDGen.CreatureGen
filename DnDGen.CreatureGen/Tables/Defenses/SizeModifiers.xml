@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Colossal</name>
+    <entry>-8</entry>
+  </collection>
+  <collection>
+    <name>Gargantuan</name>
+    <entry>-4</entry>
+  </collection>
+  <collection>
+    <name>Huge</name>
+    <entry>-2</entry>
+  </collection>
+  <collection>
+    <name>Large</name>
+    <entry>-1</entry>
+  </collection>
+  <collection>
+    <name>Medium</name>
+    <entry>0</entry>
+  </collection>
+  <collection>
+    <name>Small</name>
+    <entry>1</entry>
+  </collection>
+  <collection>
+    <name>Tiny</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Diminutive</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Fine</name>
+    <entry>8</entry>
+  </collection>
+</collections>

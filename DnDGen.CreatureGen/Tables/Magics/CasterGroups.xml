@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Arcane</name>
+    <entry>Bard</entry>
+    <entry>Sorcerer</entry>
+  </collection>
+  <collection>
+    <name>Divine</name>
+    <entry>Cleric</entry>
+    <entry>Druid</entry>
+  </collection>
+  <collection>
+    <name>Prepares Spells</name>
+    <entry>Cleric</entry>
+    <entry>Druid</entry>
+  </collection>
+</collections>

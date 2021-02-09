@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Attack Bonus</name>
+    <entry>Attack Bonus</entry>
+  </collection>
+  <collection>
+    <name>Fortitude</name>
+    <entry>Great Fortitude</entry>
+  </collection>
+  <collection>
+    <name>Initiative</name>
+    <entry>Improved Initiative</entry>
+  </collection>
+  <collection>
+    <name>Reflex</name>
+    <entry>Lightning Reflexes</entry>
+  </collection>
+  <collection>
+    <name>Taken Multiple Times</name>
+    <entry>Attack Bonus</entry>
+    <entry>Dodge Bonus</entry>
+    <entry>Improved Natural Armor</entry>
+    <entry>Toughness</entry>
+  </collection>
+  <collection>
+    <name>Weapon Proficiency</name>
+    <entry>Exotic Weapon Proficiency</entry>
+    <entry>Martial Weapon Proficiency</entry>
+    <entry>Simple Weapon Proficiency</entry>
+  </collection>
+  <collection>
+    <name>Armor Proficiency</name>
+    <entry>Armor Proficiency (Light)</entry>
+    <entry>Armor Proficiency (Medium)</entry>
+    <entry>Armor Proficiency (Heavy)</entry>
+    <entry>Shield Proficiency</entry>
+    <entry>Tower Shield Proficiency</entry>
+  </collection>
+  <collection>
+    <name>Will</name>
+    <entry>Iron Will</entry>
+  </collection>
+</collections>

@@ -1,0 +1,168 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netcoreapp3.1;netstandard2.1</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Karl M. Speer</Authors>
+    <Company>DnDGen</Company>
+    <Product>CreatureGen</Product>
+    <Description>This generates creatures for the Dungeons and Dragons 3.5 system.</Description>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/DnDGen/CreatureGen</PackageProjectUrl>
+    <PackageIcon>18531-twenty-sided-dice-vector-thumb.png</PackageIcon>
+    <PackageIconUrl />
+    <RepositoryUrl>https://github.com/DnDGen/CreatureGen</RepositoryUrl>
+    <PackageTags>creature generator dice dungeons dragons d20 dnd 3.5 gen</PackageTags>
+    <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
+    <Version>0.1.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Generators\Magic\**" />
+    <EmbeddedResource Remove="Generators\Magic\**" />
+    <None Remove="Generators\Magic\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Tables\Abilities\AbilityAdjustments.xml" />
+    <None Remove="Tables\Abilities\AbilityGroups.xml" />
+    <None Remove="Tables\Alignments\AlignmentGroups.xml" />
+    <None Remove="Tables\Attacks\AttackData.xml" />
+    <None Remove="Tables\Attacks\GrappleBonuses.xml" />
+    <None Remove="Tables\Creatures\Advancements.xml" />
+    <None Remove="Tables\Creatures\AerialManeuverability.xml" />
+    <None Remove="Tables\Creatures\CreatureData.xml" />
+    <None Remove="Tables\Creatures\CreatureGroups.xml" />
+    <None Remove="Tables\Creatures\CreatureTypes.xml" />
+    <None Remove="Tables\Creatures\Speeds.xml" />
+    <None Remove="Tables\Defenses\ArmorClassBonuses.xml" />
+    <None Remove="Tables\Defenses\HitDice.xml" />
+    <None Remove="Tables\Defenses\SaveBonuses.xml" />
+    <None Remove="Tables\Defenses\SizeModifiers.xml" />
+    <None Remove="Tables\Equipment\ArcaneSpellFailures.xml" />
+    <None Remove="Tables\Equipment\PredeterminedItems.xml" />
+    <None Remove="Tables\Feats\Data\FeatData.xml" />
+    <None Remove="Tables\Feats\Data\SkillSynergyFeatData.xml" />
+    <None Remove="Tables\Feats\Data\SpecialQualityData.xml" />
+    <None Remove="Tables\Feats\FeatFoci.xml" />
+    <None Remove="Tables\Feats\FeatGroups.xml" />
+    <None Remove="Tables\Feats\Requirements\FeatAbilityRequirements.xml" />
+    <None Remove="Tables\Feats\Requirements\FeatSkillRankRequirements.xml" />
+    <None Remove="Tables\Feats\Requirements\FeatSpeedRequirements.xml" />
+    <None Remove="Tables\Feats\Requirements\RequiredAlignments.xml" />
+    <None Remove="Tables\Feats\Requirements\RequiredFeats.xml" />
+    <None Remove="Tables\Feats\Requirements\RequiredSizes.xml" />
+    <None Remove="Tables\Languages\LanguageGroups.xml" />
+    <None Remove="Tables\Magics\CasterGroups.xml" />
+    <None Remove="Tables\Magics\Casters.xml" />
+    <None Remove="Tables\Magics\KnownSpells.xml" />
+    <None Remove="Tables\Magics\SpellDomains.xml" />
+    <None Remove="Tables\Magics\SpellGroups.xml" />
+    <None Remove="Tables\Magics\SpellLevels.xml" />
+    <None Remove="Tables\Magics\SpellsPerDay.xml" />
+    <None Remove="Tables\Skills\SkillBonuses.xml" />
+    <None Remove="Tables\Skills\SkillData.xml" />
+    <None Remove="Tables\Skills\SkillGroups.xml" />
+    <None Remove="Tables\Skills\SkillPoints.xml" />
+    <None Include="18531-twenty-sided-dice-vector-thumb.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\Abilities\AbilityGroups.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Abilities\AbilityAdjustments.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Alignments\AlignmentGroups.xml" />
+    <EmbeddedResource Include="Tables\Attacks\AttackData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Attacks\GrappleBonuses.xml" />
+    <EmbeddedResource Include="Tables\Creatures\Advancements.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Creatures\AerialManeuverability.xml" />
+    <EmbeddedResource Include="Tables\Creatures\CreatureData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Creatures\CreatureGroups.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Creatures\CreatureTypes.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Creatures\Speeds.xml" />
+    <EmbeddedResource Include="Tables\Defenses\ArmorClassBonuses.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Defenses\HitDice.xml" />
+    <EmbeddedResource Include="Tables\Defenses\SaveBonuses.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Defenses\SizeModifiers.xml" />
+    <EmbeddedResource Include="Tables\Equipment\ArcaneSpellFailures.xml" />
+    <EmbeddedResource Include="Tables\Equipment\PredeterminedItems.xml" />
+    <EmbeddedResource Include="Tables\Feats\Data\FeatData.xml" />
+    <EmbeddedResource Include="Tables\Feats\Data\SkillSynergyFeatData.xml" />
+    <EmbeddedResource Include="Tables\Feats\Data\SpecialQualityData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Feats\FeatFoci.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Feats\FeatGroups.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Feats\Requirements\FeatAbilityRequirements.xml" />
+    <EmbeddedResource Include="Tables\Feats\Requirements\FeatSkillRankRequirements.xml" />
+    <EmbeddedResource Include="Tables\Feats\Requirements\FeatSpeedRequirements.xml" />
+    <EmbeddedResource Include="Tables\Feats\Requirements\RequiredAlignments.xml" />
+    <EmbeddedResource Include="Tables\Feats\Requirements\RequiredFeats.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Feats\Requirements\RequiredSizes.xml" />
+    <EmbeddedResource Include="Tables\Languages\LanguageGroups.xml" />
+    <EmbeddedResource Include="Tables\Magics\CasterGroups.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Magics\KnownSpells.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Magics\SpellGroups.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Magics\SpellLevels.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Magics\SpellsPerDay.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Magics\SpellDomains.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Magics\Casters.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Skills\SkillBonuses.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Skills\SkillData.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Skills\SkillGroups.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Skills\SkillPoints.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DnDGen.Infrastructure" Version="4.2.2" />
+    <PackageReference Include="DnDGen.RollGen" Version="15.2.2" />
+    <PackageReference Include="DnDGen.TreasureGen" Version="10.3.2" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,3822 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Bard</name>
+    <entry>Alarm</entry>
+    <entry>Alter self</entry>
+    <entry>Analyze dweomer</entry>
+    <entry>Animal messenger</entry>
+    <entry>Animal trance</entry>
+    <entry>Animate objects</entry>
+    <entry>Animate rope</entry>
+    <entry>Blindness/Deafness</entry>
+    <entry>Blink</entry>
+    <entry>Blur</entry>
+    <entry>Break enchantment</entry>
+    <entry>Calm emotions</entry>
+    <entry>Cat's grace</entry>
+    <entry>Cause fear</entry>
+    <entry>Charm monster</entry>
+    <entry>Charm person</entry>
+    <entry>Clairaudience/Clairvoyance</entry>
+    <entry>Comprehend languages</entry>
+    <entry>Confusion</entry>
+    <entry>Crushing despair</entry>
+    <entry>Cure critical wounds</entry>
+    <entry>Cure light wounds</entry>
+    <entry>Cure moderate wounds</entry>
+    <entry>Cure serious wounds</entry>
+    <entry>Dancing lights</entry>
+    <entry>Darkness</entry>
+    <entry>Daylight</entry>
+    <entry>Daze monster</entry>
+    <entry>Daze</entry>
+    <entry>Deep slumber</entry>
+    <entry>Delay poison</entry>
+    <entry>Detect magic</entry>
+    <entry>Detect scrying</entry>
+    <entry>Detect secret doors</entry>
+    <entry>Detect thoughts</entry>
+    <entry>Dimension door</entry>
+    <entry>Disguise self</entry>
+    <entry>Dispel magic</entry>
+    <entry>Displacement</entry>
+    <entry>Dominate person</entry>
+    <entry>Dream</entry>
+    <entry>Eagle's splendor</entry>
+    <entry>Enthrall</entry>
+    <entry>Erase</entry>
+    <entry>Expeditious retreat</entry>
+    <entry>Eyebite</entry>
+    <entry>False vision</entry>
+    <entry>Fear</entry>
+    <entry>Feather fall</entry>
+    <entry>Find the path</entry>
+    <entry>Flare</entry>
+    <entry>Fox's cunning</entry>
+    <entry>Freedom of movement</entry>
+    <entry>Gaseous form</entry>
+    <entry>Geas/Quest</entry>
+    <entry>Ghost sound</entry>
+    <entry>Glibness</entry>
+    <entry>Glitterdust</entry>
+    <entry>Good hope</entry>
+    <entry>Grease</entry>
+    <entry>Greater dispel magic</entry>
+    <entry>Greater heroism</entry>
+    <entry>Greater invisibility</entry>
+    <entry>Greater scrying</entry>
+    <entry>Greater shout</entry>
+    <entry>Hallucinatory terrain</entry>
+    <entry>Haste</entry>
+    <entry>Heroes' feast</entry>
+    <entry>Heroism</entry>
+    <entry>Hideous laughter</entry>
+    <entry>Hold monster</entry>
+    <entry>Hold person</entry>
+    <entry>Hypnotic pattern</entry>
+    <entry>Hypnotism</entry>
+    <entry>Identify</entry>
+    <entry>Illusory script</entry>
+    <entry>Invisibility sphere</entry>
+    <entry>Invisibility</entry>
+    <entry>Irresistible dance</entry>
+    <entry>Know direction</entry>
+    <entry>Legend lore</entry>
+    <entry>Lesser confusion</entry>
+    <entry>Lesser geas</entry>
+    <entry>Light</entry>
+    <entry>Locate creature</entry>
+    <entry>Locate object</entry>
+    <entry>Lullaby</entry>
+    <entry>Mage hand</entry>
+    <entry>Magic aura</entry>
+    <entry>Magic mouth</entry>
+    <entry>Major image</entry>
+    <entry>Mass cat's grace</entry>
+    <entry>Mass charm monster</entry>
+    <entry>Mass cure light wounds</entry>
+    <entry>Mass cure moderate wounds</entry>
+    <entry>Mass eagle's splendor</entry>
+    <entry>Mass fox's cunning</entry>
+    <entry>Mass suggestion</entry>
+    <entry>Mending</entry>
+    <entry>Message</entry>
+    <entry>Mind fog</entry>
+    <entry>Minor image</entry>
+    <entry>Mirage arcana</entry>
+    <entry>Mirror image</entry>
+    <entry>Misdirection</entry>
+    <entry>Mislead</entry>
+    <entry>Modify memory</entry>
+    <entry>Neutralize poison</entry>
+    <entry>Nightmare</entry>
+    <entry>Obscure object</entry>
+    <entry>Open/Close</entry>
+    <entry>Permanent image</entry>
+    <entry>Persistent image</entry>
+    <entry>Phantom steed</entry>
+    <entry>Prestidigitation</entry>
+    <entry>Programmed image</entry>
+    <entry>Project image</entry>
+    <entry>Pyrotechnics</entry>
+    <entry>Rage</entry>
+    <entry>Rainbow pattern</entry>
+    <entry>Read magic</entry>
+    <entry>Remove curse</entry>
+    <entry>Remove fear</entry>
+    <entry>Repel vermin</entry>
+    <entry>Resistance</entry>
+    <entry>Scare</entry>
+    <entry>Scrying</entry>
+    <entry>Sculpt sound</entry>
+    <entry>Secret page</entry>
+    <entry>Secure shelter</entry>
+    <entry>See invisibility</entry>
+    <entry>Seeming</entry>
+    <entry>Sepia snake sigil</entry>
+    <entry>Shadow conjuration</entry>
+    <entry>Shadow evocation</entry>
+    <entry>Shadow walk</entry>
+    <entry>Shatter</entry>
+    <entry>Shout</entry>
+    <entry>Silence</entry>
+    <entry>Silent image</entry>
+    <entry>Sleep</entry>
+    <entry>Slow</entry>
+    <entry>Song of discord</entry>
+    <entry>Sound burst</entry>
+    <entry>Speak with animals</entry>
+    <entry>Speak with plants</entry>
+    <entry>Suggestion</entry>
+    <entry>Summon instrument</entry>
+    <entry>Summon monster I</entry>
+    <entry>Summon monster II</entry>
+    <entry>Summon monster III</entry>
+    <entry>Summon monster IV</entry>
+    <entry>Summon monster V</entry>
+    <entry>Summon monster VI</entry>
+    <entry>Summon swarm</entry>
+    <entry>Sympathetic vibration</entry>
+    <entry>Tiny hut</entry>
+    <entry>Tongues</entry>
+    <entry>Undetectable alignment</entry>
+    <entry>Unseen servant</entry>
+    <entry>Veil</entry>
+    <entry>Ventriloquism</entry>
+    <entry>Whispering wind</entry>
+    <entry>Zone of silence</entry>
+  </collection>
+  <collection>
+    <name>Cleric</name>
+    <entry>Aid</entry>
+    <entry>Air walk</entry>
+    <entry>Align weapon</entry>
+    <entry>Animate dead</entry>
+    <entry>Animate objects</entry>
+    <entry>Antilife shell</entry>
+    <entry>Antimagic field</entry>
+    <entry>Astral projection</entry>
+    <entry>Atonement</entry>
+    <entry>Augury</entry>
+    <entry>Bane</entry>
+    <entry>Banishment</entry>
+    <entry>Bear's endurance</entry>
+    <entry>Bestow curse</entry>
+    <entry>Blade barrier</entry>
+    <entry>Blasphemy</entry>
+    <entry>Bless water</entry>
+    <entry>Bless</entry>
+    <entry>Blindness/Deafness</entry>
+    <entry>Break enchantment</entry>
+    <entry>Bull's strength</entry>
+    <entry>Calm emotions</entry>
+    <entry>Cause fear</entry>
+    <entry>Cloak of chaos</entry>
+    <entry>Command</entry>
+    <entry>Commune</entry>
+    <entry>Comprehend languages</entry>
+    <entry>Consecrate</entry>
+    <entry>Contagion</entry>
+    <entry>Continual flame</entry>
+    <entry>Control water</entry>
+    <entry>Control weather</entry>
+    <entry>Create food and water</entry>
+    <entry>Create greater undead</entry>
+    <entry>Create undead</entry>
+    <entry>Create water</entry>
+    <entry>Cure critical wounds</entry>
+    <entry>Cure light wounds</entry>
+    <entry>Cure minor wounds</entry>
+    <entry>Cure moderate wounds</entry>
+    <entry>Cure serious wounds</entry>
+    <entry>Curse water</entry>
+    <entry>Darkness</entry>
+    <entry>Daylight</entry>
+    <entry>Death knell</entry>
+    <entry>Death ward</entry>
+    <entry>Deathwatch</entry>
+    <entry>Deeper darkness</entry>
+    <entry>Delay poison</entry>
+    <entry>Desecrate</entry>
+    <entry>Destruction</entry>
+    <entry>Detect chaos</entry>
+    <entry>Detect evil</entry>
+    <entry>Detect good</entry>
+    <entry>Detect law</entry>
+    <entry>Detect magic</entry>
+    <entry>Detect poison</entry>
+    <entry>Detect undead</entry>
+    <entry>Dictum</entry>
+    <entry>Dimensional anchor</entry>
+    <entry>Dimensional lock</entry>
+    <entry>Discern lies</entry>
+    <entry>Discern location</entry>
+    <entry>Dismissal</entry>
+    <entry>Dispel chaos</entry>
+    <entry>Dispel evil</entry>
+    <entry>Dispel good</entry>
+    <entry>Dispel law</entry>
+    <entry>Dispel magic</entry>
+    <entry>Disrupting weapon</entry>
+    <entry>Divination</entry>
+    <entry>Divine favor</entry>
+    <entry>Divine power</entry>
+    <entry>Doom</entry>
+    <entry>Eagle's splendor</entry>
+    <entry>Earthquake</entry>
+    <entry>Endure elements</entry>
+    <entry>Energy drain</entry>
+    <entry>Enthrall</entry>
+    <entry>Entropic shield</entry>
+    <entry>Ethereal jaunt</entry>
+    <entry>Etherealness</entry>
+    <entry>Find the path</entry>
+    <entry>Find traps</entry>
+    <entry>Fire storm</entry>
+    <entry>Flame strike</entry>
+    <entry>Forbiddance</entry>
+    <entry>Freedom of movement</entry>
+    <entry>Gate</entry>
+    <entry>Geas/Quest</entry>
+    <entry>Gentle repose</entry>
+    <entry>Giant vermin</entry>
+    <entry>Glyph of warding</entry>
+    <entry>Greater command</entry>
+    <entry>Greater dispel magic</entry>
+    <entry>Greater glyph of warding</entry>
+    <entry>Greater magic weapon</entry>
+    <entry>Greater planar ally</entry>
+    <entry>Greater restoration</entry>
+    <entry>Greater scrying</entry>
+    <entry>Greater spell immunity</entry>
+    <entry>Guidance</entry>
+    <entry>Hallow</entry>
+    <entry>Harm</entry>
+    <entry>Heal</entry>
+    <entry>Helping hand</entry>
+    <entry>Heroes' feast</entry>
+    <entry>Hide from undead</entry>
+    <entry>Hold person</entry>
+    <entry>Holy aura</entry>
+    <entry>Holy word</entry>
+    <entry>Imbue with spell ability</entry>
+    <entry>Implosion</entry>
+    <entry>Inflict light wounds</entry>
+    <entry>Inflict critical wounds</entry>
+    <entry>Inflict moderate wounds</entry>
+    <entry>Inflict serious wounds</entry>
+    <entry>Inflict minor wounds</entry>
+    <entry>Insect plague</entry>
+    <entry>Invisibility purge</entry>
+    <entry>Lesser planar ally</entry>
+    <entry>Lesser restoration</entry>
+    <entry>Light</entry>
+    <entry>Locate object</entry>
+    <entry>Magic circle against chaos</entry>
+    <entry>Magic circle against evil</entry>
+    <entry>Magic circle against good</entry>
+    <entry>Magic circle against law</entry>
+    <entry>Magic stone</entry>
+    <entry>Magic vestment</entry>
+    <entry>Magic weapon</entry>
+    <entry>Make whole</entry>
+    <entry>Mark of justice</entry>
+    <entry>Mass bear's endurance</entry>
+    <entry>Mass bull's strength</entry>
+    <entry>Mass eagle's splendor</entry>
+    <entry>Mass owl's wisdom</entry>
+    <entry>Owl's wisdom</entry>
+    <entry>Mass cure critical wounds</entry>
+    <entry>Mass cure light wounds</entry>
+    <entry>Mass cure moderate wounds</entry>
+    <entry>Mass cure serious wounds</entry>
+    <entry>Mass heal</entry>
+    <entry>Mass inflict critical wounds</entry>
+    <entry>Mass inflict light wounds</entry>
+    <entry>Mass inflict moderate wounds</entry>
+    <entry>Mass inflict serious wounds</entry>
+    <entry>Meld into stone</entry>
+    <entry>Mending</entry>
+    <entry>Miracle</entry>
+    <entry>Neutralize poison</entry>
+    <entry>Obscure object</entry>
+    <entry>Obscuring mist</entry>
+    <entry>Planar ally</entry>
+    <entry>Plane shift</entry>
+    <entry>Poison</entry>
+    <entry>Prayer</entry>
+    <entry>Protection from chaos</entry>
+    <entry>Protection from evil</entry>
+    <entry>Protection from good</entry>
+    <entry>Protection from law</entry>
+    <entry>Protection from energy</entry>
+    <entry>Purify food and drink</entry>
+    <entry>Raise dead</entry>
+    <entry>Read magic</entry>
+    <entry>Refuge</entry>
+    <entry>Regenerate</entry>
+    <entry>Remove blindness/deafness</entry>
+    <entry>Remove curse</entry>
+    <entry>Remove disease</entry>
+    <entry>Remove fear</entry>
+    <entry>Remove paralysis</entry>
+    <entry>Repel vermin</entry>
+    <entry>Repulsion</entry>
+    <entry>Resist energy</entry>
+    <entry>Restoration</entry>
+    <entry>Resistance</entry>
+    <entry>Resurrection</entry>
+    <entry>Righteous might</entry>
+    <entry>Sanctuary</entry>
+    <entry>Scrying</entry>
+    <entry>Searing light</entry>
+    <entry>Sending</entry>
+    <entry>Shield of faith</entry>
+    <entry>Shield of law</entry>
+    <entry>Shield other</entry>
+    <entry>Silence</entry>
+    <entry>Shatter</entry>
+    <entry>Slay living</entry>
+    <entry>Soul bind</entry>
+    <entry>Sound burst</entry>
+    <entry>Speak with dead</entry>
+    <entry>Spell immunity</entry>
+    <entry>Spell resistance</entry>
+    <entry>Spiritual weapon</entry>
+    <entry>Status</entry>
+    <entry>Stone shape</entry>
+    <entry>Storm of vengeance</entry>
+    <entry>Summon monster I</entry>
+    <entry>Summon monster II</entry>
+    <entry>Summon monster III</entry>
+    <entry>Summon monster IV</entry>
+    <entry>Summon monster V</entry>
+    <entry>Summon monster VI</entry>
+    <entry>Summon monster VII</entry>
+    <entry>Summon monster VIII</entry>
+    <entry>Summon monster IX</entry>
+    <entry>Symbol of death</entry>
+    <entry>Symbol of fear</entry>
+    <entry>Symbol of insanity</entry>
+    <entry>Symbol of pain</entry>
+    <entry>Symbol of persuasion</entry>
+    <entry>Symbol of sleep</entry>
+    <entry>Symbol of stunning</entry>
+    <entry>Symbol of weakness</entry>
+    <entry>Tongues</entry>
+    <entry>True resurrection</entry>
+    <entry>True seeing</entry>
+    <entry>Undeath to death</entry>
+    <entry>Undetectable alignment</entry>
+    <entry>Unhallow</entry>
+    <entry>Unholy aura</entry>
+    <entry>Virtue</entry>
+    <entry>Wall of stone</entry>
+    <entry>Water breathing</entry>
+    <entry>Water walk</entry>
+    <entry>Wind walk</entry>
+    <entry>Wind wall</entry>
+    <entry>Word of chaos</entry>
+    <entry>Word of recall</entry>
+    <entry>Zone of truth</entry>
+  </collection>
+  <collection>
+    <name>Druid</name>
+    <entry>Animal growth</entry>
+    <entry>Air walk</entry>
+    <entry>Animal messenger</entry>
+    <entry>Animal shapes</entry>
+    <entry>Animal trance</entry>
+    <entry>Antilife shell</entry>
+    <entry>Animate plants</entry>
+    <entry>Antipathy</entry>
+    <entry>Atonement</entry>
+    <entry>Antiplant shell</entry>
+    <entry>Awaken</entry>
+    <entry>Baleful polymorph</entry>
+    <entry>Bear's endurance</entry>
+    <entry>Barkskin</entry>
+    <entry>Blight</entry>
+    <entry>Call lightning storm</entry>
+    <entry>Call lightning</entry>
+    <entry>Calm animals</entry>
+    <entry>Cat's grace</entry>
+    <entry>Changestaff</entry>
+    <entry>Bull's strength</entry>
+    <entry>Charm animal</entry>
+    <entry>Chill metal</entry>
+    <entry>Command plants</entry>
+    <entry>Commune with nature</entry>
+    <entry>Control plants</entry>
+    <entry>Control winds</entry>
+    <entry>Creeping doom</entry>
+    <entry>Contagion</entry>
+    <entry>Control water</entry>
+    <entry>Control weather</entry>
+    <entry>Create water</entry>
+    <entry>Cure critical wounds</entry>
+    <entry>Cure light wounds</entry>
+    <entry>Cure minor wounds</entry>
+    <entry>Cure moderate wounds</entry>
+    <entry>Cure serious wounds</entry>
+    <entry>Dispel magic</entry>
+    <entry>Dominate animal</entry>
+    <entry>Death ward</entry>
+    <entry>Detect animals or plants</entry>
+    <entry>Detect snares and pits</entry>
+    <entry>Diminish plants</entry>
+    <entry>Daylight</entry>
+    <entry>Elemental swarm</entry>
+    <entry>Entangle</entry>
+    <entry>Faerie fire</entry>
+    <entry>Finger of death</entry>
+    <entry>Delay poison</entry>
+    <entry>Fire seeds</entry>
+    <entry>Fire storm</entry>
+    <entry>Fire trap</entry>
+    <entry>Flame blade</entry>
+    <entry>Detect magic</entry>
+    <entry>Detect poison</entry>
+    <entry>Flame strike</entry>
+    <entry>Flaming sphere</entry>
+    <entry>Flare</entry>
+    <entry>Fog cloud</entry>
+    <entry>Foresight</entry>
+    <entry>Goodberry</entry>
+    <entry>Greater magic fang</entry>
+    <entry>Gust of wind</entry>
+    <entry>Hallow</entry>
+    <entry>Heal</entry>
+    <entry>Heat metal</entry>
+    <entry>Hide from animals</entry>
+    <entry>Hold animal</entry>
+    <entry>Ice storm</entry>
+    <entry>Insect plague</entry>
+    <entry>Ironwood</entry>
+    <entry>Jump</entry>
+    <entry>Earthquake</entry>
+    <entry>Endure elements</entry>
+    <entry>Know direction</entry>
+    <entry>Lesser restoration</entry>
+    <entry>Find the path</entry>
+    <entry>Freedom of movement</entry>
+    <entry>Giant vermin</entry>
+    <entry>Greater dispel magic</entry>
+    <entry>Light</entry>
+    <entry>Liveoak</entry>
+    <entry>Greater scrying</entry>
+    <entry>Longstrider</entry>
+    <entry>Guidance</entry>
+    <entry>Magic fang</entry>
+    <entry>Mass cat's grace</entry>
+    <entry>Magic stone</entry>
+    <entry>Mass bear's endurance</entry>
+    <entry>Mass bull's strength</entry>
+    <entry>Mass owl's wisdom</entry>
+    <entry>Owl's wisdom</entry>
+    <entry>Mass cure critical wounds</entry>
+    <entry>Mass cure light wounds</entry>
+    <entry>Mass cure moderate wounds</entry>
+    <entry>Mass cure serious wounds</entry>
+    <entry>Meld into stone</entry>
+    <entry>Mending</entry>
+    <entry>Move earth</entry>
+    <entry>Neutralize poison</entry>
+    <entry>Obscuring mist</entry>
+    <entry>Pass without trace</entry>
+    <entry>Plant growth</entry>
+    <entry>Poison</entry>
+    <entry>Produce flame</entry>
+    <entry>Quench</entry>
+    <entry>Reduce animal</entry>
+    <entry>Reincarnate</entry>
+    <entry>Repel metal or stone</entry>
+    <entry>Protection from energy</entry>
+    <entry>Purify food and drink</entry>
+    <entry>Repel wood</entry>
+    <entry>Read magic</entry>
+    <entry>Regenerate</entry>
+    <entry>Reverse gravity</entry>
+    <entry>Rusting grasp</entry>
+    <entry>Remove disease</entry>
+    <entry>Shambler</entry>
+    <entry>Shapechange</entry>
+    <entry>Repel vermin</entry>
+    <entry>Shillelagh</entry>
+    <entry>Resist energy</entry>
+    <entry>Sleet storm</entry>
+    <entry>Resistance</entry>
+    <entry>Snare</entry>
+    <entry>Soften earth and stone</entry>
+    <entry>Speak with animals</entry>
+    <entry>Scrying</entry>
+    <entry>Speak with plants</entry>
+    <entry>Spellstaff</entry>
+    <entry>Spike growth</entry>
+    <entry>Spike stones</entry>
+    <entry>Stone tell</entry>
+    <entry>Sympathy</entry>
+    <entry>Spider climb</entry>
+    <entry>Stoneskin</entry>
+    <entry>Summon swarm</entry>
+    <entry>Sunbeam</entry>
+    <entry>Sunburst</entry>
+    <entry>Transmute metal to wood</entry>
+    <entry>Transmute mud to rock</entry>
+    <entry>Transmute rock to mud</entry>
+    <entry>Transport via plants</entry>
+    <entry>Tree shape</entry>
+    <entry>Stone shape</entry>
+    <entry>Storm of vengeance</entry>
+    <entry>Summon nature's ally I</entry>
+    <entry>Summon nature's ally II</entry>
+    <entry>Summon nature's ally III</entry>
+    <entry>Summon nature's ally IV</entry>
+    <entry>Summon nature's ally V</entry>
+    <entry>Summon nature's ally VI</entry>
+    <entry>Summon nature's ally VII</entry>
+    <entry>Summon nature's ally VIII</entry>
+    <entry>Summon nature's ally IX</entry>
+    <entry>Tree stride</entry>
+    <entry>Wall of fire</entry>
+    <entry>Wall of thorns</entry>
+    <entry>Warp wood</entry>
+    <entry>Whirlwind</entry>
+    <entry>Wood shape</entry>
+    <entry>True seeing</entry>
+    <entry>Unhallow</entry>
+    <entry>Virtue</entry>
+    <entry>Wall of stone</entry>
+    <entry>Water breathing</entry>
+    <entry>Wind walk</entry>
+    <entry>Wind wall</entry>
+    <entry>Word of recall</entry>
+  </collection>
+  <collection>
+    <name>Sorcerer</name>
+    <entry>Acid arrow</entry>
+    <entry>Acid fog</entry>
+    <entry>Acid splash</entry>
+    <entry>Alarm</entry>
+    <entry>Alter self</entry>
+    <entry>Analyze dweomer</entry>
+    <entry>Animal growth</entry>
+    <entry>Animate dead</entry>
+    <entry>Animate rope</entry>
+    <entry>Antimagic field</entry>
+    <entry>Antipathy</entry>
+    <entry>Arcane eye</entry>
+    <entry>Arcane lock</entry>
+    <entry>Arcane mark</entry>
+    <entry>Arcane sight</entry>
+    <entry>Astral projection</entry>
+    <entry>Baleful polymorph</entry>
+    <entry>Banishment</entry>
+    <entry>Bear's endurance</entry>
+    <entry>Bull's strength</entry>
+    <entry>Cat's grace</entry>
+    <entry>Owl's wisdom</entry>
+    <entry>Eagle's splendor</entry>
+    <entry>Fox's cunning</entry>
+    <entry>Mass bear's endurance</entry>
+    <entry>Mass bull's strength</entry>
+    <entry>Mass cat's grace</entry>
+    <entry>Mass owl's wisdom</entry>
+    <entry>Mass eagle's splendor</entry>
+    <entry>Mass fox's cunning</entry>
+    <entry>Bestow curse</entry>
+    <entry>Binding</entry>
+    <entry>Black tentacles</entry>
+    <entry>Blight</entry>
+    <entry>Blindness/Deafness</entry>
+    <entry>Blink</entry>
+    <entry>Blur</entry>
+    <entry>Break enchantment</entry>
+    <entry>Burning hands</entry>
+    <entry>Cause fear</entry>
+    <entry>Chain lightning</entry>
+    <entry>Charm monster</entry>
+    <entry>Charm person</entry>
+    <entry>Chill touch</entry>
+    <entry>Circle of death</entry>
+    <entry>Clairaudience/Clairvoyance</entry>
+    <entry>Clenched fist</entry>
+    <entry>Clone</entry>
+    <entry>Cloudkill</entry>
+    <entry>Color spray</entry>
+    <entry>Command undead</entry>
+    <entry>Comprehend languages</entry>
+    <entry>Cone of cold</entry>
+    <entry>Confusion</entry>
+    <entry>Contact other plane</entry>
+    <entry>Contagion</entry>
+    <entry>Wish</entry>
+    <entry>Limited wish</entry>
+    <entry>Contingency</entry>
+    <entry>Continual flame</entry>
+    <entry>Control undead</entry>
+    <entry>Control water</entry>
+    <entry>Control weather</entry>
+    <entry>Create greater undead</entry>
+    <entry>Create undead</entry>
+    <entry>Crushing despair</entry>
+    <entry>Crushing hand</entry>
+    <entry>Dancing lights</entry>
+    <entry>Darkness</entry>
+    <entry>Darkvision</entry>
+    <entry>Daylight</entry>
+    <entry>Daze monster</entry>
+    <entry>Daze</entry>
+    <entry>Deep slumber</entry>
+    <entry>Delayed blast fireball</entry>
+    <entry>Demand</entry>
+    <entry>Detect magic</entry>
+    <entry>Detect poison</entry>
+    <entry>Detect scrying</entry>
+    <entry>Detect secret doors</entry>
+    <entry>Detect thoughts</entry>
+    <entry>Detect undead</entry>
+    <entry>Dimension door</entry>
+    <entry>Dimensional anchor</entry>
+    <entry>Dimensional lock</entry>
+    <entry>Discern location</entry>
+    <entry>Disguise self</entry>
+    <entry>Disintegrate</entry>
+    <entry>Dismissal</entry>
+    <entry>Dispel magic</entry>
+    <entry>Displacement</entry>
+    <entry>Disrupt undead</entry>
+    <entry>Dominate monster</entry>
+    <entry>Dominate person</entry>
+    <entry>Dream</entry>
+    <entry>Endure elements</entry>
+    <entry>Energy drain</entry>
+    <entry>Enervation</entry>
+    <entry>Enlarge person</entry>
+    <entry>Reduce person</entry>
+    <entry>Erase</entry>
+    <entry>Ethereal jaunt</entry>
+    <entry>Etherealness</entry>
+    <entry>Expeditious retreat</entry>
+    <entry>Explosive runes</entry>
+    <entry>Eyebite</entry>
+    <entry>Fabricate</entry>
+    <entry>False life</entry>
+    <entry>False vision</entry>
+    <entry>Fear</entry>
+    <entry>Feather fall</entry>
+    <entry>Feeblemind</entry>
+    <entry>Finger of death</entry>
+    <entry>Fire shield</entry>
+    <entry>Fire trap</entry>
+    <entry>Fireball</entry>
+    <entry>Flame arrow</entry>
+    <entry>Flaming sphere</entry>
+    <entry>Flare</entry>
+    <entry>Flesh to stone</entry>
+    <entry>Floating disk</entry>
+    <entry>Summon monster I</entry>
+    <entry>Summon monster II</entry>
+    <entry>Summon monster III</entry>
+    <entry>Summon monster IV</entry>
+    <entry>Summon monster V</entry>
+    <entry>Summon monster VI</entry>
+    <entry>Summon monster VII</entry>
+    <entry>Summon monster VIII</entry>
+    <entry>Summon monster IX</entry>
+    <entry>Fly</entry>
+    <entry>Fog cloud</entry>
+    <entry>Forcecage</entry>
+    <entry>Forceful hand</entry>
+    <entry>Foresight</entry>
+    <entry>Freedom</entry>
+    <entry>Freezing sphere</entry>
+    <entry>Gaseous form</entry>
+    <entry>Gate</entry>
+    <entry>Geas/Quest</entry>
+    <entry>Gentle repose</entry>
+    <entry>Ghost sound</entry>
+    <entry>Ghoul touch</entry>
+    <entry>Glitterdust</entry>
+    <entry>Globe of invulnerability</entry>
+    <entry>Grasping hand</entry>
+    <entry>Grease</entry>
+    <entry>Sleep</entry>
+    <entry>Stinking cloud</entry>
+    <entry>Greater arcane sight</entry>
+    <entry>Greater dispel magic</entry>
+    <entry>Greater heroism</entry>
+    <entry>Greater invisibility</entry>
+    <entry>Invisibility</entry>
+    <entry>Greater magic weapon</entry>
+    <entry>Magic weapon</entry>
+    <entry>Greater planar binding</entry>
+    <entry>Greater prying eyes</entry>
+    <entry>Greater scrying</entry>
+    <entry>Greater shadow conjuration</entry>
+    <entry>Greater shadow evocation</entry>
+    <entry>Greater shout</entry>
+    <entry>Greater teleport</entry>
+    <entry>Guards and wards</entry>
+    <entry>Gust of wind</entry>
+    <entry>Hallucinatory terrain</entry>
+    <entry>Phantasmal killer</entry>
+    <entry>Halt undead</entry>
+    <entry>Haste</entry>
+    <entry>Hideous laughter</entry>
+    <entry>Hold monster</entry>
+    <entry>Hold person</entry>
+    <entry>Hold portal</entry>
+    <entry>Horrid wilting</entry>
+    <entry>Heroism</entry>
+    <entry>Hypnotic pattern</entry>
+    <entry>Hypnotism</entry>
+    <entry>Ice storm</entry>
+    <entry>Identify</entry>
+    <entry>Illusory script</entry>
+    <entry>Illusory wall</entry>
+    <entry>Imprisonment</entry>
+    <entry>Incendiary cloud</entry>
+    <entry>Insanity</entry>
+    <entry>Instant summons</entry>
+    <entry>Interposing hand</entry>
+    <entry>Invisibility sphere</entry>
+    <entry>Iron body</entry>
+    <entry>Irresistible dance</entry>
+    <entry>Jump</entry>
+    <entry>Keen edge</entry>
+    <entry>Knock</entry>
+    <entry>Legend lore</entry>
+    <entry>Lesser geas</entry>
+    <entry>Lesser globe of invulnerability</entry>
+    <entry>Lesser planar binding</entry>
+    <entry>Levitate</entry>
+    <entry>Light</entry>
+    <entry>Lightning bolt</entry>
+    <entry>Locate creature</entry>
+    <entry>Locate object</entry>
+    <entry>Mage armor</entry>
+    <entry>Mage hand</entry>
+    <entry>Mage's disjunction</entry>
+    <entry>Mage's faithful hound</entry>
+    <entry>Mage's lucubration</entry>
+    <entry>Mage's magnificent mansion</entry>
+    <entry>Mage's private sanctum</entry>
+    <entry>Magic aura</entry>
+    <entry>Magic circle against evil</entry>
+    <entry>Magic circle against chaos</entry>
+    <entry>Magic circle against good</entry>
+    <entry>Magic circle against law</entry>
+    <entry>Mage's sword</entry>
+    <entry>Magic jar</entry>
+    <entry>Magic missile</entry>
+    <entry>Magic mouth</entry>
+    <entry>Major creation</entry>
+    <entry>Major image</entry>
+    <entry>Mass charm monster</entry>
+    <entry>Mass enlarge person</entry>
+    <entry>Mass hold monster</entry>
+    <entry>Mass hold person</entry>
+    <entry>Mass invisibility</entry>
+    <entry>Mass reduce person</entry>
+    <entry>Mass suggestion</entry>
+    <entry>Maze</entry>
+    <entry>Mending</entry>
+    <entry>Message</entry>
+    <entry>Meteor swarm</entry>
+    <entry>Mind blank</entry>
+    <entry>Mind fog</entry>
+    <entry>Minor creation</entry>
+    <entry>Minor image</entry>
+    <entry>Mirage arcana</entry>
+    <entry>Mirror image</entry>
+    <entry>Misdirection</entry>
+    <entry>Mislead</entry>
+    <entry>Mnemonic enhancer</entry>
+    <entry>Moment of prescience</entry>
+    <entry>Mount</entry>
+    <entry>Move earth</entry>
+    <entry>Nightmare</entry>
+    <entry>Nondetection</entry>
+    <entry>Obscure object</entry>
+    <entry>Obscuring mist</entry>
+    <entry>Open/Close</entry>
+    <entry>Overland flight</entry>
+    <entry>Passwall</entry>
+    <entry>Permanency</entry>
+    <entry>Permanent image</entry>
+    <entry>Persistent image</entry>
+    <entry>Phantom steed</entry>
+    <entry>Phantom trap</entry>
+    <entry>Phase door</entry>
+    <entry>Planar binding</entry>
+    <entry>Plane shift</entry>
+    <entry>Polar ray</entry>
+    <entry>Polymorph any object</entry>
+    <entry>Polymorph</entry>
+    <entry>Power word blind</entry>
+    <entry>Power word kill</entry>
+    <entry>Power word stun</entry>
+    <entry>Prestidigitation</entry>
+    <entry>Prismatic sphere</entry>
+    <entry>Prismatic spray</entry>
+    <entry>Prismatic wall</entry>
+    <entry>Programmed image</entry>
+    <entry>Project image</entry>
+    <entry>Protection from arrows</entry>
+    <entry>Protection from chaos</entry>
+    <entry>Protection from law</entry>
+    <entry>Protection from good</entry>
+    <entry>Protection from evil</entry>
+    <entry>Protection from energy</entry>
+    <entry>Protection from spells</entry>
+    <entry>Prying eyes</entry>
+    <entry>Pyrotechnics</entry>
+    <entry>Rage</entry>
+    <entry>Rainbow pattern</entry>
+    <entry>Ray of enfeeblement</entry>
+    <entry>Ray of exhaustion</entry>
+    <entry>Ray of frost</entry>
+    <entry>Read magic</entry>
+    <entry>Refuge</entry>
+    <entry>Remove curse</entry>
+    <entry>Repulsion</entry>
+    <entry>Resilient sphere</entry>
+    <entry>Resist energy</entry>
+    <entry>Resistance</entry>
+    <entry>Reverse gravity</entry>
+    <entry>Rope trick</entry>
+    <entry>Scare</entry>
+    <entry>Scintillating pattern</entry>
+    <entry>Scorching ray</entry>
+    <entry>Screen</entry>
+    <entry>Scrying</entry>
+    <entry>Secret chest</entry>
+    <entry>Secret page</entry>
+    <entry>Secure shelter</entry>
+    <entry>See invisibility</entry>
+    <entry>Seeming</entry>
+    <entry>Sending</entry>
+    <entry>Sepia snake sigil</entry>
+    <entry>Sequester</entry>
+    <entry>Shades</entry>
+    <entry>Shadow conjuration</entry>
+    <entry>Shadow evocation</entry>
+    <entry>Shadow walk</entry>
+    <entry>Shapechange</entry>
+    <entry>Shatter</entry>
+    <entry>Shield</entry>
+    <entry>Shocking grasp</entry>
+    <entry>Shout</entry>
+    <entry>Shrink item</entry>
+    <entry>Silent image</entry>
+    <entry>Simulacrum</entry>
+    <entry>Sleet storm</entry>
+    <entry>Slow</entry>
+    <entry>Solid fog</entry>
+    <entry>Soul bind</entry>
+    <entry>Spectral hand</entry>
+    <entry>Spell turning</entry>
+    <entry>Spider climb</entry>
+    <entry>Statue</entry>
+    <entry>Stone shape</entry>
+    <entry>Stone to flesh</entry>
+    <entry>Stoneskin</entry>
+    <entry>Suggestion</entry>
+    <entry>Summon swarm</entry>
+    <entry>Sunburst</entry>
+    <entry>Symbol of death</entry>
+    <entry>Symbol of fear</entry>
+    <entry>Symbol of insanity</entry>
+    <entry>Symbol of pain</entry>
+    <entry>Symbol of persuasion</entry>
+    <entry>Symbol of sleep</entry>
+    <entry>Symbol of stunning</entry>
+    <entry>Symbol of weakness</entry>
+    <entry>Sympathy</entry>
+    <entry>Telekinesis</entry>
+    <entry>Telekinetic sphere</entry>
+    <entry>Telepathic bond</entry>
+    <entry>Teleport object</entry>
+    <entry>Teleport</entry>
+    <entry>Teleportation circle</entry>
+    <entry>Temporal stasis</entry>
+    <entry>Time stop</entry>
+    <entry>Tiny hut</entry>
+    <entry>Tongues</entry>
+    <entry>Touch of fatigue</entry>
+    <entry>Touch of idiocy</entry>
+    <entry>Transformation</entry>
+    <entry>Transmute mud to rock</entry>
+    <entry>Transmute rock to mud</entry>
+    <entry>Trap the soul</entry>
+    <entry>True seeing</entry>
+    <entry>True strike</entry>
+    <entry>Undeath to death</entry>
+    <entry>Unseen servant</entry>
+    <entry>Vampiric touch</entry>
+    <entry>Veil</entry>
+    <entry>Ventriloquism</entry>
+    <entry>Vision</entry>
+    <entry>Wail of the banshee</entry>
+    <entry>Wall of fire</entry>
+    <entry>Wall of force</entry>
+    <entry>Wall of ice</entry>
+    <entry>Wall of iron</entry>
+    <entry>Wall of stone</entry>
+    <entry>Water breathing</entry>
+    <entry>Waves of exhaustion</entry>
+    <entry>Waves of fatigue</entry>
+    <entry>Web</entry>
+    <entry>Weird</entry>
+    <entry>Whispering wind</entry>
+    <entry>Wind wall</entry>
+  </collection>
+  <collection>
+    <name>Air</name>
+    <entry>Obscuring mist</entry>
+    <entry>Wind wall</entry>
+    <entry>Gaseous form</entry>
+    <entry>Air walk</entry>
+    <entry>Control winds</entry>
+    <entry>Chain lightning</entry>
+    <entry>Control weather</entry>
+    <entry>Whirlwind</entry>
+    <entry>Elemental swarm</entry>
+  </collection>
+  <collection>
+    <name>Animal</name>
+    <entry>Calm animals</entry>
+    <entry>Hold animal</entry>
+    <entry>Dominate animal</entry>
+    <entry>Summon nature's ally IV</entry>
+    <entry>Commune with nature</entry>
+    <entry>Antilife shell</entry>
+    <entry>Animal shapes</entry>
+    <entry>Summon nature's ally VIII</entry>
+    <entry>Shapechange</entry>
+  </collection>
+  <collection>
+    <name>Chaos</name>
+    <entry>Protection from law</entry>
+    <entry>Shatter</entry>
+    <entry>Magic circle against law</entry>
+    <entry>Chaos hammer</entry>
+    <entry>Dispel law</entry>
+    <entry>Animate objects</entry>
+    <entry>Word of chaos</entry>
+    <entry>Cloak of chaos</entry>
+    <entry>Summon monster IX</entry>
+  </collection>
+  <collection>
+    <name>Illusion</name>
+    <entry>Blur</entry>
+    <entry>Color spray</entry>
+    <entry>Disguise self</entry>
+    <entry>Displacement</entry>
+    <entry>Dream</entry>
+    <entry>False vision</entry>
+    <entry>Ghost sound</entry>
+    <entry>Greater invisibility</entry>
+    <entry>Greater shadow conjuration</entry>
+    <entry>Greater shadow evocation</entry>
+    <entry>Hallucinatory terrain</entry>
+    <entry>Hypnotic pattern</entry>
+    <entry>Illusory script</entry>
+    <entry>Illusory wall</entry>
+    <entry>Invisibility sphere</entry>
+    <entry>Invisibility</entry>
+    <entry>Magic aura</entry>
+    <entry>Magic mouth</entry>
+    <entry>Major image</entry>
+    <entry>Mass invisibility</entry>
+    <entry>Minor image</entry>
+    <entry>Mirage arcana</entry>
+    <entry>Mirror image</entry>
+    <entry>Misdirection</entry>
+    <entry>Mislead</entry>
+    <entry>Nightmare</entry>
+    <entry>Permanent image</entry>
+    <entry>Persistent image</entry>
+    <entry>Phantasmal killer</entry>
+    <entry>Phantom trap</entry>
+    <entry>Programmed image</entry>
+    <entry>Project image</entry>
+    <entry>Rainbow pattern</entry>
+    <entry>Scintillating pattern</entry>
+    <entry>Screen</entry>
+    <entry>Seeming</entry>
+    <entry>Shades</entry>
+    <entry>Shadow conjuration</entry>
+    <entry>Shadow evocation</entry>
+    <entry>Shadow walk</entry>
+    <entry>Silent image</entry>
+    <entry>Simulacrum</entry>
+    <entry>Veil</entry>
+    <entry>Ventriloquism</entry>
+    <entry>Weird</entry>
+  </collection>
+  <collection>
+    <name>Enchantment</name>
+    <entry>Antipathy</entry>
+    <entry>Binding</entry>
+    <entry>Charm monster</entry>
+    <entry>Charm person</entry>
+    <entry>Confusion</entry>
+    <entry>Crushing despair</entry>
+    <entry>Daze monster</entry>
+    <entry>Daze</entry>
+    <entry>Deep slumber</entry>
+    <entry>Demand</entry>
+    <entry>Dominate monster</entry>
+    <entry>Dominate person</entry>
+    <entry>Feeblemind</entry>
+    <entry>Geas/Quest</entry>
+    <entry>Greater heroism</entry>
+    <entry>Heroism</entry>
+    <entry>Hideous laughter</entry>
+    <entry>Hold monster</entry>
+    <entry>Hold person</entry>
+    <entry>Hypnotism</entry>
+    <entry>Insanity</entry>
+    <entry>Irresistible dance</entry>
+    <entry>Lesser geas</entry>
+    <entry>Mass charm monster</entry>
+    <entry>Mass hold monster</entry>
+    <entry>Mass hold person</entry>
+    <entry>Mass suggestion</entry>
+    <entry>Mind fog</entry>
+    <entry>Power word blind</entry>
+    <entry>Power word kill</entry>
+    <entry>Power word stun</entry>
+    <entry>Rage</entry>
+    <entry>Sleep</entry>
+    <entry>Suggestion</entry>
+    <entry>Symbol of insanity</entry>
+    <entry>Symbol of persuasion</entry>
+    <entry>Symbol of sleep</entry>
+    <entry>Symbol of stunning</entry>
+    <entry>Sympathy</entry>
+    <entry>Touch of idiocy</entry>
+  </collection>
+  <collection>
+    <name>Fire</name>
+    <entry>Burning hands</entry>
+    <entry>Produce flame</entry>
+    <entry>Resist energy</entry>
+    <entry>Wall of fire</entry>
+    <entry>Fire shield</entry>
+    <entry>Fire seeds</entry>
+    <entry>Fire storm</entry>
+    <entry>Incendiary cloud</entry>
+    <entry>Elemental swarm</entry>
+  </collection>
+  <collection>
+    <name>Destruction</name>
+    <entry>Inflict light wounds</entry>
+    <entry>Shatter</entry>
+    <entry>Contagion</entry>
+    <entry>Inflict critical wounds</entry>
+    <entry>Mass inflict light wounds</entry>
+    <entry>Harm</entry>
+    <entry>Disintegrate</entry>
+    <entry>Earthquake</entry>
+    <entry>Implosion</entry>
+  </collection>
+  <collection>
+    <name>Law</name>
+    <entry>Protection from chaos</entry>
+    <entry>Calm emotions</entry>
+    <entry>Magic circle against chaos</entry>
+    <entry>Order's wrath</entry>
+    <entry>Dispel chaos</entry>
+    <entry>Hold monster</entry>
+    <entry>Dictum</entry>
+    <entry>Shield of law</entry>
+    <entry>Summon monster IX</entry>
+  </collection>
+  <collection>
+    <name>Good</name>
+    <entry>Protection from evil</entry>
+    <entry>Aid</entry>
+    <entry>Magic circle against evil</entry>
+    <entry>Holy smite</entry>
+    <entry>Dispel evil</entry>
+    <entry>Blade barrier</entry>
+    <entry>Holy word</entry>
+    <entry>Holy aura</entry>
+    <entry>Summon monster IX</entry>
+  </collection>
+  <collection>
+    <name>Evil</name>
+    <entry>Protection from good</entry>
+    <entry>Desecrate</entry>
+    <entry>Magic circle against good</entry>
+    <entry>Unholy blight</entry>
+    <entry>Dispel good</entry>
+    <entry>Create undead</entry>
+    <entry>Blasphemy</entry>
+    <entry>Unholy aura</entry>
+    <entry>Summon monster IX</entry>
+  </collection>
+  <collection>
+    <name>Knowledge</name>
+    <entry>Detect secret doors</entry>
+    <entry>Detect thoughts</entry>
+    <entry>Clairaudience/Clairvoyance</entry>
+    <entry>Divination</entry>
+    <entry>True seeing</entry>
+    <entry>Find the path</entry>
+    <entry>Legend lore</entry>
+    <entry>Discern location</entry>
+    <entry>Foresight</entry>
+  </collection>
+  <collection>
+    <name>Plant</name>
+    <entry>Entangle</entry>
+    <entry>Barkskin</entry>
+    <entry>Plant growth</entry>
+    <entry>Command plants</entry>
+    <entry>Wall of thorns</entry>
+    <entry>Repel wood</entry>
+    <entry>Animate plants</entry>
+    <entry>Control plants</entry>
+    <entry>Shambler</entry>
+  </collection>
+  <collection>
+    <name>Sun</name>
+    <entry>Endure elements</entry>
+    <entry>Heat metal</entry>
+    <entry>Searing light</entry>
+    <entry>Fire shield</entry>
+    <entry>Flame strike</entry>
+    <entry>Fire seeds</entry>
+    <entry>Sunbeam</entry>
+    <entry>Sunburst</entry>
+    <entry>Prismatic sphere</entry>
+  </collection>
+  <collection>
+    <name>Water</name>
+    <entry>Obscuring mist</entry>
+    <entry>Fog cloud</entry>
+    <entry>Water breathing</entry>
+    <entry>Control water</entry>
+    <entry>Ice storm</entry>
+    <entry>Cone of cold</entry>
+    <entry>Acid fog</entry>
+    <entry>Horrid wilting</entry>
+    <entry>Elemental swarm</entry>
+  </collection>
+  <collection>
+    <name>War</name>
+    <entry>Magic weapon</entry>
+    <entry>Spiritual weapon</entry>
+    <entry>Magic vestment</entry>
+    <entry>Divine power</entry>
+    <entry>Flame strike</entry>
+    <entry>Blade barrier</entry>
+    <entry>Power word blind</entry>
+    <entry>Power word stun</entry>
+    <entry>Power word kill</entry>
+  </collection>
+  <collection>
+    <name>Trickery</name>
+    <entry>Disguise self</entry>
+    <entry>Invisibility</entry>
+    <entry>Nondetection</entry>
+    <entry>Confusion</entry>
+    <entry>False vision</entry>
+    <entry>Mislead</entry>
+    <entry>Screen</entry>
+    <entry>Polymorph any object</entry>
+    <entry>Time stop</entry>
+  </collection>
+  <collection>
+    <name>Luck</name>
+    <entry>Entropic shield</entry>
+    <entry>Aid</entry>
+    <entry>Protection from energy</entry>
+    <entry>Freedom of movement</entry>
+    <entry>Break enchantment</entry>
+    <entry>Mislead</entry>
+    <entry>Spell turning</entry>
+    <entry>Moment of prescience</entry>
+    <entry>Miracle</entry>
+  </collection>
+  <collection>
+    <name>Healing</name>
+    <entry>Cure light wounds</entry>
+    <entry>Cure moderate wounds</entry>
+    <entry>Cure serious wounds</entry>
+    <entry>Cure critical wounds</entry>
+    <entry>Mass cure light wounds</entry>
+    <entry>Heal</entry>
+    <entry>Regenerate</entry>
+    <entry>Mass cure critical wounds</entry>
+    <entry>Mass heal</entry>
+  </collection>
+  <collection>
+    <name>Earth</name>
+    <entry>Magic stone</entry>
+    <entry>Soften earth and stone</entry>
+    <entry>Stone shape</entry>
+    <entry>Spike stones</entry>
+    <entry>Wall of stone</entry>
+    <entry>Stoneskin</entry>
+    <entry>Earthquake</entry>
+    <entry>Iron body</entry>
+    <entry>Elemental swarm</entry>
+  </collection>
+  <collection>
+    <name>Protection</name>
+    <entry>Sanctuary</entry>
+    <entry>Shield other</entry>
+    <entry>Protection from energy</entry>
+    <entry>Spell immunity</entry>
+    <entry>Spell resistance</entry>
+    <entry>Antimagic field</entry>
+    <entry>Repulsion</entry>
+    <entry>Mind blank</entry>
+    <entry>Prismatic sphere</entry>
+  </collection>
+  <collection>
+    <name>Aasimar:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Aboleth:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Greater Basilisk:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Achaierai:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Adult Arrowhawk:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Adult Tojanida:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, Elder:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Air Elemental, Greater:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Air Elemental, Huge:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Air Elemental, Large:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Air Elemental, Medium:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Air Elemental, Small:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Air Mephit:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Allip:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Androsphinx:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Angel, Astral Deva:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Angel, Planetar:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Angel, Solar:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Colossal:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Gargantuan:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Huge:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Large:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Medium:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Small:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Tiny:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Colossal:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Gargantuan:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Huge:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Large:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Medium:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Small:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Tiny:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Colossal:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Gargantuan:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Huge:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Large:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Medium:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Small:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Tiny:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Colossal:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Gargantuan:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Huge:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Large:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Medium:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Small:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Tiny:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Colossal:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Gargantuan:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Huge:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Large:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Medium:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Small:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Tiny:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Colossal:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Gargantuan:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Huge:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Large:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Medium:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Small:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Tiny:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Colossal:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Gargantuan:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Huge:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Large:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Medium:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Small:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Tiny:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Colossal:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Gargantuan:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Huge:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Large:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Medium:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Small:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Tiny:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Colossal:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Gargantuan:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Huge:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Large:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Medium:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Small:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Tiny:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Colossal:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Gargantuan:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Huge:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Large:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Medium:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Small:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Tiny:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Colossal:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Gargantuan:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Huge:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Large:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Medium:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Small:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Tiny:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Colossal:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Gargantuan:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Huge:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Large:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Medium:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Small:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Tiny:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Colossal:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Gargantuan:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Huge:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Large:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Medium:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Small:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Tiny:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Colossal:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Gargantuan:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Huge:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Large:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Medium:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Small:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Tiny:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Colossal:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Gargantuan:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Huge:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Large:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Medium:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Small:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Tiny:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Colossal:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Gargantuan:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Huge:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Large:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Medium:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Small:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Tiny:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Colossal:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Gargantuan:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Huge:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Large:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Medium:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Small:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Tiny:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Colossal:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Gargantuan:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Huge:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Large:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Medium:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Small:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Tiny:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Colossal:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Gargantuan:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Huge:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Large:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Medium:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Small:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Tiny:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Ankheg:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Annis:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Ape:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Aquatic Elf:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Aranea:Prohibited</name>
+    <entry>Burning hands</entry>
+    <entry>Continual flame</entry>
+    <entry>Fireball</entry>
+    <entry>Delayed blast fireball</entry>
+    <entry>Fire seeds</entry>
+    <entry>Fire shield</entry>
+    <entry>Fire storm</entry>
+    <entry>Fire trap</entry>
+    <entry>Flame arrow</entry>
+    <entry>Meteor swarm</entry>
+    <entry>Flame blade</entry>
+    <entry>Flame strike</entry>
+    <entry>Flaming sphere</entry>
+    <entry>Pyrotechnics</entry>
+    <entry>Scorching ray</entry>
+    <entry>Wall of fire</entry>
+  </collection>
+  <collection>
+    <name>Assassin Vine:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Athach:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Average Salamander:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Average Xorn:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Avoral:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Azer:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Babau:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Baboon:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Badger:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Baleen Whale:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Balor:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Barbed Devil (Hamatula):Prohibited</name>
+  </collection>
+  <collection>
+    <name>Barghest:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Basilisk:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Bat:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Bat Swarm:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Bearded Devil (Barbazu):Prohibited</name>
+  </collection>
+  <collection>
+    <name>Bebilith:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Behir:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Beholder:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Belker:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Bison:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Black Bear:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Black Dragon, Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Black Dragon, Ancient:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Black Dragon, Great Wyrm:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Black Dragon, Juvenile:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Black Dragon, Mature Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Black Dragon, Old:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Black Dragon, Very Old:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Black Dragon, Very Young:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Black Dragon, Wyrm:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Black Dragon, Wyrmling:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Black Dragon, Young Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Black Dragon, Young:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Black Pudding:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Blink Dog:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Blue Dragon, Ancient:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Blue Dragon, Great Wyrm:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Blue Dragon, Juvenile:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Blue Dragon, Mature Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Blue Dragon, Old:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very Old:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very Young:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Blue Dragon, Wyrm:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Blue Dragon, Wyrmling:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Blue Dragon, Young Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Blue Dragon, Young:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Blue Slaad:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Boar:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Bodak:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Bone Devil (Osyluth):Prohibited</name>
+  </collection>
+  <collection>
+    <name>Bralani:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Brass Dragon, Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Brass Dragon, Ancient:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Brass Dragon, Great Wyrm:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Brass Dragon, Juvenile:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Brass Dragon, Mature Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Brass Dragon, Old:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very Old:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very Young:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Brass Dragon, Wyrm:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Brass Dragon, Wyrmling:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Brass Dragon, Young Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Brass Dragon, Young:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Ancient:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Great Wyrm:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Juvenile:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Mature Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Old:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very Old:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very Young:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Wyrm:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Wyrmling:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Brown Bear:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Bugbear:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Bulette:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Cachalot Whale:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Camel, Bactrian (Two-Humped):Prohibited</name>
+  </collection>
+  <collection>
+    <name>Camel, Dromedary (One-Humped):Prohibited</name>
+  </collection>
+  <collection>
+    <name>Carrion Crawler:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Cat:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Centaur:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Centipede Swarm:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Chaos Beast:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Chain Devil (Kyton):Prohibited</name>
+  </collection>
+  <collection>
+    <name>Cheetah:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Chimera (Black Dragon head):Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Chimera (Blue Dragon head):Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Chimera (Green Dragon head):Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Chimera (Red Dragon head):Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Chimera (White Dragon head):Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Choker:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Chuul:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Clay Golem:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Cloaker:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Cloud Giant:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Cockatrice:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Constrictor Snake:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Copper Dragon, Ancient:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great Wyrm:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Copper Dragon, Juvenile:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Copper Dragon, Mature Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Copper Dragon, Old:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very Old:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very Young:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Copper Dragon, Wyrm:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Copper Dragon, Wyrmling:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Copper Dragon, Young Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Copper Dragon, Young:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Couatl:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Criosphinx:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Crocodile:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Dark Naga:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Darkmantle:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Death Slaad:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Deep Halfling:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Deep Dwarf:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Deinonychus:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Delver:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Derro:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Derro (Sane):Prohibited</name>
+  </collection>
+  <collection>
+    <name>Destrachan:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Devourer:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Digester:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Dire Ape:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Dire Badger:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Dire Bat:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Dire Bear:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Dire Boar:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Dire Lion:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Dire Rat:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Dire Shark:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Dire Tiger:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Dire Weasel:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Dire Wolf:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Dire Wolverine:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Displacer Beast:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Displacer Beast Pack Lord:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Djinni:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Dog:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Dog, Riding:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Donkey:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Doppelganger:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Dragon Turtle:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Dragonne:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Dread Wraith:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Dretch:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Drider:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Drow:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Dryad:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Duergar:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Dust Mephit:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Eagle:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Earth Elemental, Elder:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Greater:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Huge:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Large:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Medium:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Small:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Earth Mephit:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Efreeti:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Eight-Headed Cryohydra:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Eight-Headed Hydra:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Eight-Headed Pyrohydra:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Elasmosaurus:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Elder Arrowhawk:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Elder Black Pudding:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Elder Tojanida:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Elder Xorn:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Elephant:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Eleven-Headed Cryohydra:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Eleven-Headed Hydra:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Eleven-Headed Pyrohydra:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Erinyes:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Ethereal Filcher:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Ethereal Marauder:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Ettercap:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Ettin:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Elder:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Greater:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Huge:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Large:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Medium:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Small:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Fire Giant:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Fire Mephit:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Five-Headed Cryohydra:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Five-Headed Hydra:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Five-Headed Pyrohydra:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Flamebrother Salamander:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Flesh Golem:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Forest Gnome:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Formian Myrmarch:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Formian Queen:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Formian Taskmaster:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Formian Warrior:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Formian Worker:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Frost Giant:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Frost Worm:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Gargoyle:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Gauth (Lesser Beholder):Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Gelatinous Cube:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Ghaele:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Ghast:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Ghoul:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Giant Ant, Queen:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Giant Ant, Soldier:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Giant Ant, Worker:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Giant Bee:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Giant Bombardier Beetle:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Giant Constrictor Snake:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Giant Crocodile:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Giant Eagle:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Giant Fire Beetle:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Giant Octopus:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Giant Owl:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Giant Praying Mantis:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Giant Squid:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Giant Stag Beetle:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Giant Wasp:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Gibbering Mouther:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Girallon:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Githyanki:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Githzerai:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Glabrezu:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Gnoll:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Goblin:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Gold Dragon, Ancient:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great Wyrm:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Gold Dragon, Juvenile:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Gold Dragon, Mature Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Gold Dragon, Old:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very Old:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very Young:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Gold Dragon, Wyrm:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Gold Dragon, Wyrmling:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Gorgon:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Gray Elf:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Gray Ooze:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Gray Render:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Gray Slaad:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Greater Barghest:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Greater Shadow:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Greater Stone Golem:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Green Dragon, Ancient:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Green Dragon, Great Wyrm:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Green Dragon, Juvenile:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Green Dragon, Mature Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Green Dragon, Old:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Green Dragon, Very Old:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Green Dragon, Very Young:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Green Dragon, Wyrm:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Green Dragon, Wyrmling:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Green Dragon, Young Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Green Dragon, Young:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Green Hag:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Green Slaad:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Grick:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Griffon:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Grig:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Grig with fiddle:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Grimlock:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Guardian Naga:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Gynosphinx:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Half-Elf:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Half-Orc:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Harpy:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Hawk:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Heavy Horse:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Heavy Warhorse:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Hell Hound:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Hellcat (Bezekira):Prohibited</name>
+  </collection>
+  <collection>
+    <name>Hellwasp Swarm:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Hezrou:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Hieracosphinx:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>High Elf:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Hill Dwarf:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Hill Giant:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Hippogriff:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Hobgoblin:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Homunculus:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Horned Devil (Cornugon):Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Hound Archon:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Howler:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Human:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Hyena:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon):Prohibited</name>
+  </collection>
+  <collection>
+    <name>Ice Mephit:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Invisible Stalker:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Imp:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Iron Golem:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Janni:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Juvenile Arrowhawk:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Juvenile Tojanida:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Kapoacinth:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Kobold:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Kolyarut:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Kraken:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Krenshar:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Kuo-toa:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Lacedon:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Lamia:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Lammasu:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Lantern Archon:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Lemure:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Leonal:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Leopard:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Light Horse:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Light Warhorse:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Lightfoot Halfling:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Lillend:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Lion:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Lizard:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Lizardfolk:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Locathah:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Locust Swarm:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Magma Mephit:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Magmin:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Manta Ray:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Manticore:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Marilith:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Marut:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Medusa:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Megaraptor:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Merfolk:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Merrow:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Mimic:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Mind Flayer (Illithid):Prohibited</name>
+  </collection>
+  <collection>
+    <name>Minor Xorn:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Minotaur:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Mohrg:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monitor Lizard:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monkey:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Colossal:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Gargantuan:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Huge:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Large:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Medium:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Small:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Tiny:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Colossal:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Gargantuan:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Huge:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Large:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Medium:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Small:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Tiny:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Colossal:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Gargantuan:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Huge:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Large:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Medium:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Small:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Tiny:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Colossal:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Gargantuan:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Huge:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Large:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Medium:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Small:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Tiny:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Mountain Dwarf:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Mule:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Mummy:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Nalfeshnee:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Nessian Warhound:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Night Hag:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Nightcrawler:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Nightmare:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Nightmare, Cauchemar:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Nightwalker:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Nightwing:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Nine-Headed Cryohydra:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Nine-Headed Hydra:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Nine-Headed Pyrohydra:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Nixie:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Noble Djinni:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Noble Salamander:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Nymph:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Ochre Jelly:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Octopus:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Ogre:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Ogre Mage:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Ooze Mephit:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Orc:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Orca Whale:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Otyugh:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Owl:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Owlbear:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Pegasus:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Phantom Fungus:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Phase Spider:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Phasm:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Pit Fiend:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Pixie:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Pixie with Irresistible dance:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Polar Bear:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Pony:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Porpoise:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Pseudodragon:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Purple Worm:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Quasit:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Rakshasa:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Rast:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Rat:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Rat Swarm:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Raven:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Ravid:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Razor Boar:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Red Dragon, Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Red Dragon, Ancient:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Red Dragon, Great Wyrm:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Red Dragon, Juvenile:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Red Dragon, Mature Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Red Dragon, Old:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Red Dragon, Very Old:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Red Dragon, Very Young:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Red Dragon, Wyrm:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Red Dragon, Wyrmling:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Red Dragon, Young Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Red Dragon, Young:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Red Slaad:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Remorhaz:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Retriever:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Rhinoceras:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Roc:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Rock Gnome:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Roper:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Rust Monster:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Sahuagin:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Sahuagin Mutant:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Malenti:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Salt Mephit:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Satyr:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Satyr with pipes:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Scorpionfolk:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Scrag:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Sea Cat:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Sea Hag:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Seven-Headed Cryohydra:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Seven-Headed Hydra:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Seven-Headed Pyrohydra:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Shadow:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Shadow Mastiff:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Shambling Mound:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Shark, Huge:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Shark, Large:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Shark, Medium:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Shield Guardian:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Shocker Lizard:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Shrieker:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Silver Dragon, Ancient:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great Wyrm:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Silver Dragon, Juvenile:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Silver Dragon, Mature Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Silver Dragon, Old:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very Old:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very Young:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Silver Dragon, Wyrm:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Silver Dragon, Wyrmling:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Six-Headed Cryohydra:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Six-Headed Hydra:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Six-Headed Pyrohydra:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Skum:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Spectre:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Spider Eater:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Spider Swarm:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Spirit Naga:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Squid:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Steam Mephit:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Stirge:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Stone Giant:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Stone Giant Elder:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Stone Golem:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Storm Giant:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Succubus:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Svirfneblin:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Tallfellow Halfling:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Tarrasque:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Ten-Headed Cryohydra:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Ten-Headed Hydra:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Ten-Headed Pyrohydra:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Tendriculos:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Thoqqua:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Tiefling:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Tiger:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Titan:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Toad:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Treant:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Triceratops:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Triton:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Troglodyte:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Troll:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Truly Horrid Umber Hulk:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Trumpet Archon:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Twelve-Headed Cryohydra:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Twelve-Headed Hydra:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Twelve-Headed Pyrohydra:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Tyrannosaurus:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Umber Hulk:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Unicorn:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Vampire Spawn:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Vargouille:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Violet Fungus:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, Huge:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, Large:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, Medium:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, Small:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, Tiny:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Vrock:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Warpony:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, Elder:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, Greater:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, Huge:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, Large:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, Medium:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, Small:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Water Mephit:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Water Naga:Prohibited</name>
+    <entry>Burning hands</entry>
+    <entry>Continual flame</entry>
+    <entry>Fireball</entry>
+    <entry>Delayed blast fireball</entry>
+    <entry>Fire seeds</entry>
+    <entry>Fire shield</entry>
+    <entry>Fire storm</entry>
+    <entry>Fire trap</entry>
+    <entry>Flame arrow</entry>
+    <entry>Meteor swarm</entry>
+    <entry>Flame blade</entry>
+    <entry>Flame strike</entry>
+    <entry>Flaming sphere</entry>
+    <entry>Pyrotechnics</entry>
+    <entry>Scorching ray</entry>
+    <entry>Wall of fire</entry>
+  </collection>
+  <collection>
+    <name>Weasel:Prohibited</name>
+  </collection>
+  <collection>
+    <name>White Dragon, Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>White Dragon, Ancient:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>White Dragon, Great Wyrm:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>White Dragon, Juvenile:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>White Dragon, Mature Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>White Dragon, Old:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>White Dragon, Very Old:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>White Dragon, Very Young:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>White Dragon, Wyrm:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>White Dragon, Wyrmling:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>White Dragon, Young Adult:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>White Dragon, Young:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Wight:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Wild Elf:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Will-O'-Wisp:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Winter Wolf:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Wolf:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Wolverine:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Worg:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Wood Elf:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Wraith:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Wyvern:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Xill:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Yeth Hound:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Yrthak:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Yuan-ti Abomination:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head):Prohibited</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes):Prohibited</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs):Prohibited</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs):Prohibited</name>
+  </collection>
+  <collection>
+    <name>Yuan-ti Pureblood:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Zelekhut:Prohibited</name>
+
+  </collection>
+  <collection>
+    <name>Bard:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Cleric:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Druid:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Sorcerer:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Air:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Animal:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Chaos:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Illusion:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Enchantment:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Fire:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Destruction:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Law:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Good:Prohibited</name>
+    <entry>Protection from good</entry>
+    <entry>Desecrate</entry>
+    <entry>Magic circle against good</entry>
+    <entry>Unholy blight</entry>
+    <entry>Dispel good</entry>
+    <entry>Blasphemy</entry>
+    <entry>Unholy aura</entry>
+  </collection>
+  <collection>
+    <name>Evil:Prohibited</name>
+    <entry>Protection from evil</entry>
+    <entry>Consecrate</entry>
+    <entry>Magic circle against evil</entry>
+    <entry>Holy smite</entry>
+    <entry>Dispel evil</entry>
+    <entry>Holy sword</entry>
+    <entry>Holy word</entry>
+    <entry>Holy aura</entry>
+  </collection>
+  <collection>
+    <name>Knowledge:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Plant:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Sun:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Water:Prohibited</name>
+  </collection>
+  <collection>
+    <name>War:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Trickery:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Luck:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Healing:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Earth:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Protection:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Neutral:Prohibited</name>
+  </collection>
+  <collection>
+    <name>Chaotic:Prohibited</name>
+    <entry>Protection from chaos</entry>
+    <entry>Magic circle against chaos</entry>
+    <entry>Order's wrath</entry>
+    <entry>Dispel chaos</entry>
+    <entry>Shield of law</entry>
+  </collection>
+  <collection>
+    <name>Lawful:Prohibited</name>
+    <entry>Protection from law</entry>
+    <entry>Magic circle against law</entry>
+    <entry>Chaos hammer</entry>
+    <entry>Dispel law</entry>
+    <entry>Word of chaos</entry>
+    <entry>Cloak of chaos</entry>
+  </collection>
+</collections>

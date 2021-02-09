@@ -1,0 +1,6412 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Armor Proficiency (Light)</name>
+  </collection>
+  <collection>
+    <name>Armor Proficiency (Medium)</name>
+  </collection>
+  <collection>
+    <name>Armor Proficiency (Heavy)</name>
+  </collection>
+  <collection>
+    <name>Augment Summoning</name>
+  </collection>
+  <collection>
+    <name>Blind-Fight</name>
+  </collection>
+  <collection>
+    <name>Cleave</name>
+  </collection>
+  <collection>
+    <name>Combat Casting</name>
+  </collection>
+  <collection>
+    <name>Combat Expertise</name>
+  </collection>
+  <collection>
+    <name>Combat Reflexes</name>
+  </collection>
+  <collection>
+    <name>Deflect Arrows</name>
+  </collection>
+  <collection>
+    <name>Diehard</name>
+  </collection>
+  <collection>
+    <name>Dodge</name>
+  </collection>
+  <collection>
+    <name>Endurance</name>
+  </collection>
+  <collection>
+    <name>Eschew Materials</name>
+  </collection>
+  <collection>
+    <name>Exotic Weapon Proficiency</name>
+  </collection>
+  <collection>
+    <name>Simple Weapon Proficiency</name>
+  </collection>
+  <collection>
+    <name>Martial Weapon Proficiency</name>
+  </collection>
+  <collection>
+    <name>Far Shot</name>
+  </collection>
+  <collection>
+    <name>Great Cleave</name>
+  </collection>
+  <collection>
+    <name>Great Fortitude</name>
+  </collection>
+  <collection>
+    <name>Greater Spell Focus</name>
+  </collection>
+  <collection>
+    <name>Greater Spell Penetration</name>
+  </collection>
+  <collection>
+    <name>Greater Two-Weapon Fighting</name>
+  </collection>
+  <collection>
+    <name>Improved Bull Rush</name>
+  </collection>
+  <collection>
+    <name>Improved Counterspell</name>
+  </collection>
+  <collection>
+    <name>Improved Critical</name>
+  </collection>
+  <collection>
+    <name>Improved Disarm</name>
+  </collection>
+  <collection>
+    <name>Improved Feint</name>
+  </collection>
+  <collection>
+    <name>Improved Grapple</name>
+  </collection>
+  <collection>
+    <name>Improved Initiative</name>
+  </collection>
+  <collection>
+    <name>Improved Overrun</name>
+  </collection>
+  <collection>
+    <name>Improved Precise Shot</name>
+  </collection>
+  <collection>
+    <name>Improved Shield Bash</name>
+  </collection>
+  <collection>
+    <name>Improved Sunder</name>
+  </collection>
+  <collection>
+    <name>Improved Trip</name>
+  </collection>
+  <collection>
+    <name>Improved Two-Weapon Fighting</name>
+  </collection>
+  <collection>
+    <name>Improved Unarmed Strike</name>
+  </collection>
+  <collection>
+    <name>Iron Will</name>
+  </collection>
+  <collection>
+    <name>Lightning Reflexes</name>
+  </collection>
+  <collection>
+    <name>Manyshot</name>
+  </collection>
+  <collection>
+    <name>Mobility</name>
+  </collection>
+  <collection>
+    <name>Mounted Archery</name>
+  </collection>
+  <collection>
+    <name>Mounted Combat</name>
+  </collection>
+  <collection>
+    <name>Point Blank Shot</name>
+  </collection>
+  <collection>
+    <name>Power Attack</name>
+  </collection>
+  <collection>
+    <name>Precise Shot</name>
+  </collection>
+  <collection>
+    <name>Quick Draw</name>
+  </collection>
+  <collection>
+    <name>Rapid Shot</name>
+  </collection>
+  <collection>
+    <name>Rapid Reload</name>
+  </collection>
+  <collection>
+    <name>Ride-By Attack</name>
+  </collection>
+  <collection>
+    <name>Run</name>
+  </collection>
+  <collection>
+    <name>Shield Proficiency</name>
+  </collection>
+  <collection>
+    <name>Shot On The Run</name>
+  </collection>
+  <collection>
+    <name>Skill Focus</name>
+  </collection>
+  <collection>
+    <name>Snatch Arrows</name>
+  </collection>
+  <collection>
+    <name>Spell Focus</name>
+  </collection>
+  <collection>
+    <name>Spell Penetration</name>
+  </collection>
+  <collection>
+    <name>Spirited Charge</name>
+  </collection>
+  <collection>
+    <name>Spring Attack</name>
+  </collection>
+  <collection>
+    <name>Stunning Fist</name>
+  </collection>
+  <collection>
+    <name>Toughness</name>
+  </collection>
+  <collection>
+    <name>Tower Shield Proficiency</name>
+  </collection>
+  <collection>
+    <name>Track</name>
+  </collection>
+  <collection>
+    <name>Trample</name>
+  </collection>
+  <collection>
+    <name>Two-Weapon Defense</name>
+  </collection>
+  <collection>
+    <name>Two-Weapon Fighting</name>
+  </collection>
+  <collection>
+    <name>Weapon Finesse</name>
+  </collection>
+  <collection>
+    <name>Weapon Focus</name>
+  </collection>
+  <collection>
+    <name>Whirlwind Attack</name>
+  </collection>
+  <collection>
+    <name>Brew Potion</name>
+  </collection>
+  <collection>
+    <name>Ability Focus</name>
+  </collection>
+  <collection>
+    <name>Awesome Blow</name>
+  </collection>
+  <collection>
+    <name>Craft Construct</name>
+  </collection>
+  <collection>
+    <name>Craft Magic Arms and Armor</name>
+  </collection>
+  <collection>
+    <name>Craft Rod</name>
+  </collection>
+  <collection>
+    <name>Craft Staff</name>
+  </collection>
+  <collection>
+    <name>Craft Wand</name>
+  </collection>
+  <collection>
+    <name>Craft Wondrous Item</name>
+  </collection>
+  <collection>
+    <name>Empower Spell</name>
+  </collection>
+  <collection>
+    <name>Empower Spell-Like Ability</name>
+  </collection>
+  <collection>
+    <name>Enlarge Spell</name>
+  </collection>
+  <collection>
+    <name>Extend Spell</name>
+  </collection>
+  <collection>
+    <name>Flyby Attack</name>
+  </collection>
+  <collection>
+    <name>Forge Ring</name>
+  </collection>
+  <collection>
+    <name>Greater Multiweapon Fighting</name>
+  </collection>
+  <collection>
+    <name>Heighten Spell</name>
+  </collection>
+  <collection>
+    <name>Hover</name>
+  </collection>
+  <collection>
+    <name>Improved Flyby Attack</name>
+  </collection>
+  <collection>
+    <name>Improved Multiattack</name>
+  </collection>
+  <collection>
+    <name>Improved Multiweapon Fighting</name>
+  </collection>
+  <collection>
+    <name>Improved Natural Armor</name>
+  </collection>
+  <collection>
+    <name>Improved Natural Attack</name>
+  </collection>
+  <collection>
+    <name>Maximize Spell</name>
+  </collection>
+  <collection>
+    <name>Multiattack</name>
+  </collection>
+  <collection>
+    <name>Multiweapon Fighting</name>
+  </collection>
+  <collection>
+    <name>Quicken Spell</name>
+  </collection>
+  <collection>
+    <name>Quicken Spell-Like Ability</name>
+  </collection>
+  <collection>
+    <name>Scribe Scroll</name>
+  </collection>
+  <collection>
+    <name>Silent Spell</name>
+  </collection>
+  <collection>
+    <name>Snatch</name>
+  </collection>
+  <collection>
+    <name>Still Spell</name>
+  </collection>
+  <collection>
+    <name>Widen Spell</name>
+  </collection>
+  <collection>
+    <name>Wingover</name>
+  </collection>
+  <collection>
+    <name>Aasimar</name>
+    <entry>Heal</entry>
+    <entry>Knowledge/Religion</entry>
+    <entry>Listen</entry>
+    <entry>Ride</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Aboleth</name>
+    <entry>Concentration</entry>
+    <entry>Knowledge</entry>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Greater Basilisk</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Achaierai</name>
+    <entry>Balance</entry>
+    <entry>Climb</entry>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Acrobatic</name>
+    <entry>Jump</entry>
+    <entry>Tumble</entry>
+  </collection>
+  <collection>
+    <name>Adult Arrowhawk</name>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Knowledge/The Planes</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Survival</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Adult Tojanida</name>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Knowledge/The Planes</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Survival</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Agile</name>
+    <entry>Balance</entry>
+    <entry>Escape Artist</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, Elder</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, Greater</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, Huge</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, Large</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, Medium</name>
+  </collection>
+  <collection>
+    <name>Air Elemental, Small</name>
+  </collection>
+  <collection>
+    <name>Air Mephit</name>
+    <entry>Bluff</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Move Silently</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Alertness</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>All</name>
+    <entry>Appraise</entry>
+    <entry>Balance</entry>
+    <entry>Bluff</entry>
+    <entry>Climb</entry>
+    <entry>Concentration</entry>
+    <entry>Craft</entry>
+    <entry>Decipher Script</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disable Device</entry>
+    <entry>Disguise</entry>
+    <entry>Escape Artist</entry>
+    <entry>Forgery</entry>
+    <entry>Gather Information</entry>
+    <entry>Handle Animal</entry>
+    <entry>Heal</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Jump</entry>
+    <entry>Knowledge</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Open Lock</entry>
+    <entry>Perform</entry>
+    <entry>Profession</entry>
+    <entry>Ride</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Sleight of Hand</entry>
+    <entry>Spellcraft</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+    <entry>Swim</entry>
+    <entry>Tumble</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Allip</name>
+    <entry>Intimidate</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Androsphinx</name>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Angel, Astral Deva</name>
+    <entry>Craft3</entry>
+    <entry>Knowledge3</entry>
+  </collection>
+  <collection>
+    <name>Angel, Planetar</name>
+    <entry>Craft4</entry>
+    <entry>Knowledge4</entry>
+    <entry>Search</entry>
+  </collection>
+  <collection>
+    <name>Angel, Solar</name>
+    <entry>Survival</entry>
+    <entry>Craft5</entry>
+    <entry>Knowledge5</entry>
+    <entry>Search</entry>
+    <entry>Spellcraft</entry>
+  </collection>
+  <collection>
+    <name>Animal Affinity</name>
+    <entry>Handle Animal</entry>
+    <entry>Ride</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Tiny</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Colossal</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Gargantuan</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Huge</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Large</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Medium</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Small</name>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Tiny</name>
+  </collection>
+  <collection>
+    <name>Ankheg</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Annis</name>
+    <entry>Bluff</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Ape</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Aquatic Elf</name>
+  </collection>
+  <collection>
+    <name>Aranea</name>
+    <entry>Climb</entry>
+    <entry>Concentration</entry>
+    <entry>Escape Artist</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Armor Check Penalty</name>
+    <entry>Balance</entry>
+    <entry>Climb</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Move Silently</entry>
+    <entry>Sleight of Hand</entry>
+    <entry>Swim</entry>
+    <entry>Tumble</entry>
+  </collection>
+  <collection>
+    <name>Assassin Vine</name>
+  </collection>
+  <collection>
+    <name>Athach</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Athletic</name>
+    <entry>Climb</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Average Salamander</name>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Bluff</entry>
+    <entry>Craft/Blacksmithing</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Search</entry>
+  </collection>
+  <collection>
+    <name>Average Xorn</name>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge/Dungeoneering</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Search</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Avoral</name>
+    <entry>Bluff</entry>
+    <entry>Disguise</entry>
+    <entry>Handle Animal</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Move Silently</entry>
+    <entry>Ride</entry>
+    <entry>Spellcraft</entry>
+  </collection>
+  <collection>
+    <name>Azer</name>
+    <entry>Climb</entry>
+    <entry>Appraise</entry>
+    <entry>Craft2</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Babau</name>
+    <entry>Climb</entry>
+    <entry>Disable Device</entry>
+    <entry>Disguise</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Open Lock</entry>
+    <entry>Search</entry>
+    <entry>Sleight of Hand</entry>
+    <entry>Survival</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Baboon</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Badger</name>
+    <entry>Balance</entry>
+    <entry>Escape Artist</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Baleen Whale</name>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Balor</name>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Spot</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge2</entry>
+    <entry>Move Silently</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spellcraft</entry>
+    <entry>Survival</entry>
+    <entry>Use Magic Device</entry>
+  </collection>
+  <collection>
+    <name>Barbed Devil (Hamatula)</name>
+    <entry>Concentration</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Survival</entry>
+    <entry>Diplomacy</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Barghest</name>
+    <entry>Bluff</entry>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Survival</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+  </collection>
+  <collection>
+    <name>Basilisk</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Bat</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Bat Swarm</name>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Bearded Devil (Barbazu)</name>
+    <entry>Climb</entry>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Bebilith</name>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Climb</entry>
+    <entry>Spot</entry>
+    <entry>Sense Motive</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Behir</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Beholder</name>
+    <entry>Hide</entry>
+    <entry>Knowledge/Arcana</entry>
+    <entry>Listen</entry>
+    <entry>Survival</entry>
+    <entry>Search</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Belker</name>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Bison</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Black Bear</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Swim</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Ancient</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Great Wyrm</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Juvenile</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Mature Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Old</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Very Old</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Very Young</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Wyrm</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Wyrmling</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Young</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Young Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Black Pudding</name>
+    <entry>Climb</entry>
+  </collection>
+  <collection>
+    <name>Blink Dog</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Bluff</entry>
+    <entry>Spellcraft</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Ancient</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Bluff</entry>
+    <entry>Spellcraft</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Great Wyrm</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Bluff</entry>
+    <entry>Spellcraft</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Juvenile</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Bluff</entry>
+    <entry>Spellcraft</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Mature Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Bluff</entry>
+    <entry>Spellcraft</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Old</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Bluff</entry>
+    <entry>Spellcraft</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very Old</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Bluff</entry>
+    <entry>Spellcraft</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very Young</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Bluff</entry>
+    <entry>Spellcraft</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Wyrm</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Bluff</entry>
+    <entry>Spellcraft</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Wyrmling</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Bluff</entry>
+    <entry>Spellcraft</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Young</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Bluff</entry>
+    <entry>Spellcraft</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Young Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Bluff</entry>
+    <entry>Spellcraft</entry>
+  </collection>
+  <collection>
+    <name>Blue Slaad</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Boar</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Bodak</name>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Bone Devil (Osyluth)</name>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Survival</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Bralani</name>
+    <entry>Escape Artist</entry>
+    <entry>Handle Animal</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Move Silently</entry>
+    <entry>Ride</entry>
+    <entry>Tumble</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Bluff</entry>
+    <entry>Gather Information</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Ancient</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Bluff</entry>
+    <entry>Gather Information</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Great Wyrm</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Bluff</entry>
+    <entry>Gather Information</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Juvenile</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Bluff</entry>
+    <entry>Gather Information</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Mature Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Bluff</entry>
+    <entry>Gather Information</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Old</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Bluff</entry>
+    <entry>Gather Information</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very Old</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Bluff</entry>
+    <entry>Gather Information</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very Young</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Bluff</entry>
+    <entry>Gather Information</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Wyrm</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Bluff</entry>
+    <entry>Gather Information</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Wyrmling</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Bluff</entry>
+    <entry>Gather Information</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Young</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Bluff</entry>
+    <entry>Gather Information</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Young Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Bluff</entry>
+    <entry>Gather Information</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Ancient</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Great Wyrm</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Juvenile</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Mature Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Old</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very Old</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very Young</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Wyrm</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Wyrmling</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Brown Bear</name>
+    <entry>Listen</entry>
+    <entry>Swim</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Bugbear</name>
+    <entry>Climb</entry>
+  </collection>
+  <collection>
+    <name>Bulette</name>
+    <entry>Jump</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Cachalot Whale</name>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Camel, Bactrian (Two-Humped)</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Camel, Dromedary (One-Humped)</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Carrion Crawler</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Cat</name>
+    <entry>Balance</entry>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>JumpDexterity</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Centaur</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Move Silently</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Centipede Swarm</name>
+    <entry>ClimbDexterity</entry>
+  </collection>
+  <collection>
+    <name>Chain Devil (Kyton)</name>
+    <entry>Climb</entry>
+    <entry>Craft/Blacksmithing</entry>
+    <entry>Escape Artist</entry>
+    <entry>Listen</entry>
+    <entry>Use Rope</entry>
+    <entry>Intimidate</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Chaos Beast</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
+    <entry>Escape Artist</entry>
+    <entry>Search</entry>
+    <entry>Survival</entry>
+    <entry>Tumble</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Cheetah</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Black Dragon head)</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Blue Dragon head)</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Green Dragon head)</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Red Dragon head)</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Chimera (White Dragon head)</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Choker</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Chuul</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Clay Golem</name>
+  </collection>
+  <collection>
+    <name>Cloaker</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Cloud Giant</name>
+    <entry>Climb</entry>
+    <entry>Craft</entry>
+    <entry>Diplomacy</entry>
+    <entry>Intimidate</entry>
+    <entry>Perform/String instruments</entry>
+    <entry>Sense Motive</entry>
+  </collection>
+  <collection>
+    <name>Cockatrice</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Constrictor Snake</name>
+    <entry>Balance</entry>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Ancient</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great Wyrm</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Juvenile</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Mature Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Old</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very Old</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very Young</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Wyrm</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Wyrmling</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Young</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Young Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Couatl</name>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Jump</entry>
+    <entry>Knowledge2</entry>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spellcraft</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+    <entry>Tumble</entry>
+    <entry>Use Magic Device</entry>
+  </collection>
+  <collection>
+    <name>Craft</name>
+    <entry>Alchemy</entry>
+    <entry>Armorsmithing</entry>
+    <entry>Blacksmithing</entry>
+    <entry>Bookbinding</entry>
+    <entry>Bowmaking</entry>
+    <entry>Brassmaking</entry>
+    <entry>Brewing</entry>
+    <entry>Candlemaking</entry>
+    <entry>Cloth</entry>
+    <entry>Coppersmithing</entry>
+    <entry>Dyemaking</entry>
+    <entry>Gemcutting</entry>
+    <entry>Glass</entry>
+    <entry>Goldsmithing</entry>
+    <entry>Hatmaking</entry>
+    <entry>Hornworking</entry>
+    <entry>Jewelmaking</entry>
+    <entry>Leather</entry>
+    <entry>Locksmithing</entry>
+    <entry>Mapmaking</entry>
+    <entry>Milling</entry>
+    <entry>Painting</entry>
+    <entry>Parchmentmaking</entry>
+    <entry>Pewtermaking</entry>
+    <entry>Potterymaking</entry>
+    <entry>Sculpting</entry>
+    <entry>Shipmaking</entry>
+    <entry>Shoemaking</entry>
+    <entry>Silversmithing</entry>
+    <entry>Skinning</entry>
+    <entry>Soapmaking</entry>
+    <entry>Stonemasonry</entry>
+    <entry>Tanning</entry>
+    <entry>Trapmaking</entry>
+    <entry>Weaponsmithing</entry>
+    <entry>Weaving</entry>
+    <entry>Wheelmaking</entry>
+    <entry>Winemaking</entry>
+    <entry>Woodworking</entry>
+  </collection>
+  <collection>
+    <name>Criosphinx</name>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Crocodile</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Dark Naga</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spellcraft</entry>
+  </collection>
+  <collection>
+    <name>Darkmantle</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Death Slaad</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
+    <entry>Concentration</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge2</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Use Rope</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Deceitful</name>
+    <entry>Disguise</entry>
+    <entry>Forgery</entry>
+  </collection>
+  <collection>
+    <name>Deep Dwarf</name>
+  </collection>
+  <collection>
+    <name>Deep Halfling</name>
+    <entry>Appraise</entry>
+    <entry>Craft</entry>
+  </collection>
+  <collection>
+    <name>Deft Hands</name>
+    <entry>Sleight of Hand</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Deinonychus</name>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Delver</name>
+    <entry>Knowledge/Dungeoneering</entry>
+    <entry>Knowledge/Nature</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Derro</name>
+    <entry>Bluff</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Derro (Sane)</name>
+    <entry>Bluff</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Destrachan</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Devourer</name>
+    <entry>Climb</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Jump</entry>
+    <entry>Listen</entry>
+    <entry>Sense Motive</entry>
+    <entry>Survival</entry>
+    <entry>Spellcraft</entry>
+    <entry>Search</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Digester</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Diligent</name>
+    <entry>Appraise</entry>
+    <entry>Decipher Script</entry>
+  </collection>
+  <collection>
+    <name>Dire Ape</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Dire Badger</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Dire Bat</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Dire Bear</name>
+    <entry>Listen</entry>
+    <entry>Swim</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Dire Boar</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Dire Lion</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Dire Rat</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Dire Shark</name>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Dire Tiger</name>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Dire Weasel</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Dire Wolf</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Dire Wolverine</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Displacer Beast</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Displacer Beast Pack Lord</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Djinni</name>
+    <entry>Appraise</entry>
+    <entry>Concentration</entry>
+    <entry>Craft</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Knowledge</entry>
+    <entry>Move Silently</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spellcraft</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Dog</name>
+    <entry>Jump</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Dog, Riding</name>
+    <entry>Jump</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Donkey</name>
+    <entry>Balance</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Doppelganger</name>
+    <entry>Bluff</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Sense Motive</entry>
+  </collection>
+  <collection>
+    <name>Dragon Turtle</name>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Dragonne</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Dread Wraith</name>
+    <entry>Diplomacy</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge/Religion</entry>
+    <entry>Sense Motive</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Dretch</name>
+    <entry>Spot</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Drider</name>
+    <entry>Climb</entry>
+    <entry>Concentration</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Drow</name>
+  </collection>
+  <collection>
+    <name>Dryad</name>
+    <entry>Escape Artist</entry>
+    <entry>Handle Animal</entry>
+    <entry>Knowledge/Nature</entry>
+    <entry>Move Silently</entry>
+    <entry>Ride</entry>
+    <entry>Survival</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Duergar</name>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Dust Mephit</name>
+    <entry>Bluff</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Move Silently</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Eagle</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Elder</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Greater</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Huge</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Large</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Medium</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Small</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Earth Mephit</name>
+    <entry>Bluff</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Efreeti</name>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Craft</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Intimidate</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spellcraft</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Eight-Headed Cryohydra</name>
+    <entry>Listen</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Eight-Headed Hydra</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Eight-Headed Pyrohydra</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Elasmosaurus</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Elder Arrowhawk</name>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Knowledge/The Planes</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Survival</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Elder Black Pudding</name>
+    <entry>Climb</entry>
+  </collection>
+  <collection>
+    <name>Elder Tojanida</name>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge/The Planes</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Survival</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Elder Xorn</name>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge/Dungeoneering</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Search</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Elephant</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Eleven-Headed Cryohydra</name>
+    <entry>Listen</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Eleven-Headed Hydra</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Eleven-Headed Pyrohydra</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Erinyes</name>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Escape Artist</entry>
+    <entry>Knowledge2</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Survival</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Ethereal Filcher</name>
+    <entry>Listen</entry>
+    <entry>Sleight of Hand</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Ethereal Marauder</name>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Ettercap</name>
+    <entry>Climb</entry>
+    <entry>Craft/Trapmaking</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Ettin</name>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Elder</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Greater</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Huge</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Large</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Medium</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Small</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Fire Giant</name>
+    <entry>Climb</entry>
+    <entry>Craft</entry>
+    <entry>Intimidate</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Fire Mephit</name>
+    <entry>Bluff</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Five-Headed Cryohydra</name>
+    <entry>Listen</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Five-Headed Hydra</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Five-Headed Pyrohydra</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Flamebrother Salamander</name>
+    <entry>Craft/Blacksmithing</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Flesh Golem</name>
+  </collection>
+  <collection>
+    <name>Forest Gnome</name>
+  </collection>
+  <collection>
+    <name>Formian Myrmarch</name>
+    <entry>Climb</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Knowledge</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Formian Queen</name>
+    <entry>Appraise</entry>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge3</entry>
+    <entry>Listen</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spellcraft</entry>
+    <entry>Spot</entry>
+    <entry>Use Magic Device</entry>
+  </collection>
+  <collection>
+    <name>Formian Taskmaster</name>
+    <entry>Climb</entry>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Formian Warrior</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Survival</entry>
+    <entry>Tumble</entry>
+  </collection>
+  <collection>
+    <name>Formian Worker</name>
+    <entry>Climb</entry>
+    <entry>Craft</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Frost Giant</name>
+    <entry>Climb</entry>
+    <entry>Craft</entry>
+    <entry>Intimidate</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Frost Worm</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Gargoyle</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Gauth (Lesser Beholder)</name>
+    <entry>Hide</entry>
+    <entry>Knowledge/Arcana</entry>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Gelatinous Cube</name>
+  </collection>
+  <collection>
+    <name>Ghaele</name>
+    <entry>Escape Artist</entry>
+    <entry>Handle Animal</entry>
+    <entry>Hide</entry>
+    <entry>Knowledge2</entry>
+    <entry>Move Silently</entry>
+    <entry>Ride</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Ghast</name>
+    <entry>Balance</entry>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Ghoul</name>
+    <entry>Balance</entry>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Giant Ant, Queen</name>
+  </collection>
+  <collection>
+    <name>Giant Ant, Soldier</name>
+    <entry>Climb</entry>
+  </collection>
+  <collection>
+    <name>Giant Ant, Worker</name>
+    <entry>Climb</entry>
+  </collection>
+  <collection>
+    <name>Giant Bee</name>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Giant Bombardier Beetle</name>
+  </collection>
+  <collection>
+    <name>Giant Constrictor Snake</name>
+    <entry>Balance</entry>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Giant Crocodile</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Giant Eagle</name>
+    <entry>Knowledge/Nature</entry>
+    <entry>Listen</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Giant Fire Beetle</name>
+  </collection>
+  <collection>
+    <name>Giant Octopus</name>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Giant Owl</name>
+    <entry>Knowledge/Nature</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Giant Praying Mantis</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Giant Squid</name>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Giant Stag Beetle</name>
+  </collection>
+  <collection>
+    <name>Giant Wasp</name>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Gibbering Mouther</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Girallon</name>
+    <entry>Climb</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Githyanki</name>
+    <entry>Climb</entry>
+    <entry>Craft/Armorsmithing</entry>
+    <entry>Craft/Weaponsmithing</entry>
+    <entry>Intimidate</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Githzerai</name>
+    <entry>Concentration</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Glabrezu</name>
+    <entry>Spot</entry>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge2</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spellcraft</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Gnoll</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Goblin</name>
+    <entry>Ride</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Heal</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Ancient</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Heal</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great Wyrm</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Heal</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Juvenile</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Heal</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Mature Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Heal</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Old</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Heal</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very Old</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Heal</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very Young</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Heal</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Wyrm</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Heal</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Wyrmling</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Heal</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Heal</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Heal</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Gorgon</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Gray Elf</name>
+  </collection>
+  <collection>
+    <name>Gray Ooze</name>
+  </collection>
+  <collection>
+    <name>Gray Render</name>
+    <entry>Hide</entry>
+    <entry>Survival</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Gray Slaad</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
+    <entry>Concentration</entry>
+    <entry>Knowledge/Arcana</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Spellcraft</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Greater Barghest</name>
+    <entry>Bluff</entry>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Move Silently</entry>
+    <entry>Climb</entry>
+    <entry>Sense Motive</entry>
+    <entry>Survival</entry>
+    <entry>Concentration</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Tumble</entry>
+  </collection>
+  <collection>
+    <name>Greater Shadow</name>
+  </collection>
+  <collection>
+    <name>Greater Stone Golem</name>
+  </collection>
+  <collection>
+    <name>Green Dragon, Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Bluff</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Ancient</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Bluff</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Great Wyrm</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Bluff</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Juvenile</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Bluff</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Mature Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Bluff</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Old</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Bluff</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very Old</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Bluff</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very Young</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Bluff</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Wyrm</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Bluff</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Wyrmling</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Bluff</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Young</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Bluff</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Young Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Bluff</entry>
+  </collection>
+  <collection>
+    <name>Green Hag</name>
+    <entry>Concentration</entry>
+    <entry>Craft</entry>
+    <entry>Knowledge</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Green Slaad</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
+    <entry>Concentration</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Grick</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Griffon</name>
+    <entry>Jump</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Grig</name>
+    <entry>Craft</entry>
+    <entry>Escape Artist</entry>
+    <entry>Jump</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Perform/String instruments</entry>
+  </collection>
+  <collection>
+    <name>Grig with fiddle</name>
+    <entry>Craft</entry>
+    <entry>Escape Artist</entry>
+    <entry>Jump</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Perform/String instruments</entry>
+  </collection>
+  <collection>
+    <name>Grimlock</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Guardian Naga</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spellcraft</entry>
+  </collection>
+  <collection>
+    <name>Gynosphinx</name>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Half-Elf</name>
+    <entry>Diplomacy</entry>
+    <entry>Gather Information</entry>
+  </collection>
+  <collection>
+    <name>Half-Orc</name>
+  </collection>
+  <collection>
+    <name>Harpy</name>
+    <entry>Bluff</entry>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Perform/Oratory</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Hawk</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Heavy Horse</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Heavy Warhorse</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Hell Hound</name>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Hellcat (Bezekira)</name>
+    <entry>Balance</entry>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Jump</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Hellwasp Swarm</name>
+    <entry>Listen</entry>
+    <entry>Hide</entry>
+  </collection>
+  <collection>
+    <name>Hezrou</name>
+    <entry>Climb</entry>
+    <entry>Spot</entry>
+    <entry>Concentration</entry>
+    <entry>Hide</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Spellcraft</entry>
+    <entry>Use Rope</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Hieracosphinx</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>High Elf</name>
+  </collection>
+  <collection>
+    <name>Hill Dwarf</name>
+  </collection>
+  <collection>
+    <name>Hill Giant</name>
+    <entry>Climb</entry>
+    <entry>Jump</entry>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Hippogriff</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Hobgoblin</name>
+  </collection>
+  <collection>
+    <name>Homunculus</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Horned Devil (Cornugon)</name>
+    <entry>Bluff</entry>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Concentration</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Survival</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Sense Motive</entry>
+  </collection>
+  <collection>
+    <name>Hound Archon</name>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Move Silently</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Howler</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Human</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Hyena</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)</name>
+    <entry>Bluff</entry>
+    <entry>Climb</entry>
+    <entry>Concentration</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Intimidate</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Spellcraft</entry>
+    <entry>Survival</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Jump</entry>
+    <entry>Knowledge3</entry>
+    <entry>Sense Motive</entry>
+  </collection>
+  <collection>
+    <name>Ice Mephit</name>
+    <entry>Bluff</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Move Silently</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Imp</name>
+    <entry>Hide</entry>
+    <entry>Diplomacy</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Knowledge</entry>
+    <entry>Search</entry>
+    <entry>Spellcraft</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Investigator</name>
+    <entry>Gather Information</entry>
+    <entry>Search</entry>
+  </collection>
+  <collection>
+    <name>Invisible Stalker</name>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Iron Golem</name>
+  </collection>
+  <collection>
+    <name>Janni</name>
+    <entry>Appraise</entry>
+    <entry>Concentration</entry>
+    <entry>Craft2</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Ride</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Juvenile Arrowhawk</name>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Knowledge/The Planes</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Survival</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Juvenile Tojanida</name>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Knowledge/The Planes</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Survival</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Kapoacinth</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Knowledge</name>
+    <entry>Arcana</entry>
+    <entry>Architecture and Engineering</entry>
+    <entry>Dungeoneering</entry>
+    <entry>Geography</entry>
+    <entry>History</entry>
+    <entry>Local</entry>
+    <entry>Nature</entry>
+    <entry>Nobility and Royalty</entry>
+    <entry>Religion</entry>
+    <entry>The Planes</entry>
+  </collection>
+  <collection>
+    <name>Kobold</name>
+    <entry>Craft/Trapmaking</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Profession/Miner</entry>
+    <entry>Search</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Kolyarut</name>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Gather Information</entry>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Kraken</name>
+    <entry>Listen</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge/Geography</entry>
+    <entry>Knowledge/Nature</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Krenshar</name>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Kuo-toa</name>
+    <entry>Craft</entry>
+    <entry>Knowledge</entry>
+    <entry>Escape Artist</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Lacedon</name>
+    <entry>Climb</entry>
+    <entry>Balance</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Lamia</name>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Lammasu</name>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Knowledge/Arcana</entry>
+    <entry>Listen</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Lantern Archon</name>
+    <entry>Knowledge/The Planes</entry>
+  </collection>
+  <collection>
+    <name>Lemure</name>
+  </collection>
+  <collection>
+    <name>Leonal</name>
+    <entry>Balance</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Jump</entry>
+    <entry>Move Silently</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Leopard</name>
+    <entry>Balance</entry>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Light Horse</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Light Warhorse</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Lightfoot Halfling</name>
+    <entry>Climb</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Lillend</name>
+    <entry>Appraise</entry>
+    <entry>Knowledge/Arcana</entry>
+    <entry>Perform</entry>
+    <entry>Spellcraft</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Lion</name>
+    <entry>Balance</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Lizard</name>
+    <entry>Balance</entry>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Lizardfolk</name>
+    <entry>Balance</entry>
+    <entry>Jump</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Locathah</name>
+    <entry>Craft</entry>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Locust Swarm</name>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Magical Aptitude</name>
+    <entry>Spellcraft</entry>
+    <entry>Use Magic Device</entry>
+  </collection>
+  <collection>
+    <name>Magma Mephit</name>
+    <entry>Bluff</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Magmin</name>
+    <entry>Climb</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Malenti</name>
+    <entry>Listen</entry>
+    <entry>Hide</entry>
+    <entry>Handle Animal</entry>
+    <entry>Profession/Hunter</entry>
+    <entry>Ride</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Manta Ray</name>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Manticore</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Marilith</name>
+    <entry>Spot</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spellcraft</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Marut</name>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Knowledge/Religion</entry>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Medusa</name>
+    <entry>Bluff</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Megaraptor</name>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Merfolk</name>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Merrow</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Mimic</name>
+    <entry>Climb</entry>
+    <entry>Disguise</entry>
+  </collection>
+  <collection>
+    <name>Mind Flayer (Illithid)</name>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Minor Xorn</name>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge/Dungeoneering</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Search</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Minotaur</name>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Mohrg</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Monitor Lizard</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Monkey</name>
+    <entry>Balance</entry>
+    <entry>ClimbDexterity</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Colossal</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Gargantuan</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Huge</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Large</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Medium</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Small</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Tiny</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Colossal</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Gargantuan</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Huge</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Large</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Medium</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Small</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Tiny</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Colossal</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Gargantuan</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Huge</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Large</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Medium</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Small</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Tiny</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Colossal</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Gargantuan</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Huge</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Large</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Medium</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Small</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Tiny</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Mountain Dwarf</name>
+  </collection>
+  <collection>
+    <name>Mule</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Mummy</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Nalfeshnee</name>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge/Arcana</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spellcraft</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+    <entry>Use Magic Device</entry>
+  </collection>
+  <collection>
+    <name>Negotiator</name>
+    <entry>Diplomacy</entry>
+    <entry>Sense Motive</entry>
+  </collection>
+  <collection>
+    <name>Nessian Warhound</name>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+    <entry>Tumble</entry>
+  </collection>
+  <collection>
+    <name>Night Hag</name>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Ride</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spellcraft</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Nightcrawler</name>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Knowledge/Arcana</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spellcraft</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Nightmare</name>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge/The Planes</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Nightmare, Cauchemar</name>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge/Arcana</entry>
+    <entry>Knowledge/The Planes</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Nightwalker</name>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Knowledge/Arcana</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spellcraft</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Nightwing</name>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spellcraft</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Nimble Fingers</name>
+    <entry>Disable Device</entry>
+    <entry>Open Lock</entry>
+  </collection>
+  <collection>
+    <name>Nine-Headed Cryohydra</name>
+    <entry>Listen</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Nine-Headed Hydra</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Nine-Headed Pyrohydra</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Nixie</name>
+    <entry>Bluff</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Craft</entry>
+    <entry>Escape Artist</entry>
+    <entry>Handle Animal</entry>
+    <entry>Perform/Sing</entry>
+  </collection>
+  <collection>
+    <name>Noble Djinni</name>
+    <entry>Appraise</entry>
+    <entry>Concentration</entry>
+    <entry>Craft</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Knowledge</entry>
+    <entry>Move Silently</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spellcraft</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Noble Salamander</name>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Bluff</entry>
+    <entry>Craft/Blacksmithing</entry>
+    <entry>Intimidate</entry>
+  </collection>
+  <collection>
+    <name>Nymph</name>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Handle Animal</entry>
+    <entry>Heal</entry>
+    <entry>Move Silently</entry>
+    <entry>Ride</entry>
+    <entry>Sense Motive</entry>
+    <entry>Swim</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Ochre Jelly</name>
+    <entry>Climb</entry>
+  </collection>
+  <collection>
+    <name>Octopus</name>
+    <entry>Escape Artist</entry>
+    <entry>Listen</entry>
+    <entry>Hide</entry>
+  </collection>
+  <collection>
+    <name>Ogre</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Ogre Mage</name>
+    <entry>Concentration</entry>
+    <entry>Listen</entry>
+    <entry>Spellcraft</entry>
+  </collection>
+  <collection>
+    <name>Ooze Mephit</name>
+    <entry>Bluff</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Move Silently</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Orc</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Orca Whale</name>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Otyugh</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Owl</name>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Owlbear</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Pegasus</name>
+    <entry>Diplomacy</entry>
+    <entry>Listen</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Perform</name>
+    <entry>Act</entry>
+    <entry>Comedy</entry>
+    <entry>Dance</entry>
+    <entry>Keyboard instruments</entry>
+    <entry>Oratory</entry>
+    <entry>Percussion instruments</entry>
+    <entry>Sing</entry>
+    <entry>String instruments</entry>
+    <entry>Wind instruments</entry>
+  </collection>
+  <collection>
+    <name>Persuasive</name>
+    <entry>Bluff</entry>
+    <entry>Intimidate</entry>
+  </collection>
+  <collection>
+    <name>Phantom Fungus</name>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Phase Spider</name>
+    <entry>Climb</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Phasm</name>
+    <entry>Bluff</entry>
+    <entry>Climb</entry>
+    <entry>Craft</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Pit Fiend</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge/Arcana</entry>
+    <entry>Search</entry>
+    <entry>Spellcraft</entry>
+    <entry>Survival</entry>
+    <entry>Balance</entry>
+    <entry>Climb</entry>
+    <entry>Jump</entry>
+    <entry>Knowledge/Nature</entry>
+    <entry>Knowledge/The Planes</entry>
+    <entry>Knowledge/Religion</entry>
+    <entry>Tumble</entry>
+  </collection>
+  <collection>
+    <name>Pixie</name>
+    <entry>Move Silently</entry>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Escape Artist</entry>
+    <entry>Ride</entry>
+  </collection>
+  <collection>
+    <name>Pixie with Irresistible dance</name>
+    <entry>Move Silently</entry>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Escape Artist</entry>
+    <entry>Ride</entry>
+  </collection>
+  <collection>
+    <name>Polar Bear</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Swim</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Pony</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Porpoise</name>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Profession</name>
+    <entry>Adviser</entry>
+    <entry>Alchemist</entry>
+    <entry>Animal Groomer</entry>
+    <entry>Animal Trainer</entry>
+    <entry>Apothecary</entry>
+    <entry>Appraiser</entry>
+    <entry>Architect</entry>
+    <entry>Armorer</entry>
+    <entry>Barrister</entry>
+    <entry>Blacksmith</entry>
+    <entry>Bookbinder</entry>
+    <entry>Bowyer</entry>
+    <entry>Brazier</entry>
+    <entry>Brewer</entry>
+    <entry>Butler</entry>
+    <entry>Carpenter</entry>
+    <entry>Cartographer</entry>
+    <entry>Cartwright</entry>
+    <entry>Chandler</entry>
+    <entry>City Guide</entry>
+    <entry>Clerk</entry>
+    <entry>Cobbler</entry>
+    <entry>Coffinmaker</entry>
+    <entry>Coiffeur</entry>
+    <entry>Cook</entry>
+    <entry>Coppersmith</entry>
+    <entry>Craftsman</entry>
+    <entry>Dowser</entry>
+    <entry>Dyer</entry>
+    <entry>Embalmer</entry>
+    <entry>Engineer</entry>
+    <entry>Entertainer</entry>
+    <entry>Exotic Animal Trainer</entry>
+    <entry>Farmer</entry>
+    <entry>Fletcher</entry>
+    <entry>Footman</entry>
+    <entry>Gemcutter</entry>
+    <entry>Goldsmith</entry>
+    <entry>Governess</entry>
+    <entry>Haberdasher</entry>
+    <entry>Healer</entry>
+    <entry>Horner</entry>
+    <entry>Hunter</entry>
+    <entry>Interpreter</entry>
+    <entry>Jeweler</entry>
+    <entry>Laborer</entry>
+    <entry>Launderer</entry>
+    <entry>Limner</entry>
+    <entry>Local Courier</entry>
+    <entry>Locksmith</entry>
+    <entry>Maid</entry>
+    <entry>Masseuse</entry>
+    <entry>Matchmaker</entry>
+    <entry>Midwife</entry>
+    <entry>Miller</entry>
+    <entry>Navigator</entry>
+    <entry>Nursemaid</entry>
+    <entry>Out-of-Town Courier</entry>
+    <entry>Painter</entry>
+    <entry>Parchmentmaker</entry>
+    <entry>Pewterer</entry>
+    <entry>Polisher</entry>
+    <entry>Porter</entry>
+    <entry>Potter</entry>
+    <entry>Sage</entry>
+    <entry>Sailor Crewmember</entry>
+    <entry>Sailor Mate</entry>
+    <entry>Scribe</entry>
+    <entry>Sculptor</entry>
+    <entry>Shepherd</entry>
+    <entry>Shipwright</entry>
+    <entry>Silversmith</entry>
+    <entry>Skinner</entry>
+    <entry>Soapmaker</entry>
+    <entry>Soothsayer</entry>
+    <entry>Tanner</entry>
+    <entry>Teacher</entry>
+    <entry>Teamster</entry>
+    <entry>Trader</entry>
+    <entry>Trapper</entry>
+    <entry>Valet</entry>
+    <entry>Vintner</entry>
+    <entry>Weaponsmith</entry>
+    <entry>Weaver</entry>
+    <entry>Wheelwright</entry>
+    <entry>Wilderness Guide</entry>
+  </collection>
+  <collection>
+    <name>Pseudodragon</name>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Purple Worm</name>
+    <entry>Listen</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Quasit</name>
+    <entry>Spot</entry>
+    <entry>Bluff</entry>
+    <entry>Intimidate</entry>
+    <entry>Disguise</entry>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Knowledge</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Spellcraft</entry>
+  </collection>
+  <collection>
+    <name>Rakshasa</name>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Perform/Oratory</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spellcraft</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Rast</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Rat</name>
+    <entry>Balance</entry>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Rat Swarm</name>
+    <entry>Balance</entry>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>SwimDexterity</entry>
+  </collection>
+  <collection>
+    <name>Raven</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Ravid</name>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Razor Boar</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Appraise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Ancient</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Appraise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Great Wyrm</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Appraise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Juvenile</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Appraise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Mature Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Appraise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Old</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Appraise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very Old</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Appraise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very Young</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Appraise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Wyrm</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Appraise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Wyrmling</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Appraise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Young</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Appraise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Young Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Appraise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Red Slaad</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Spot</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Remorhaz</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Retriever</name>
+  </collection>
+  <collection>
+    <name>Rhinoceras</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Roc</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Rock Gnome</name>
+  </collection>
+  <collection>
+    <name>Roper</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Rust Monster</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Sahuagin</name>
+    <entry>Listen</entry>
+    <entry>Hide</entry>
+    <entry>Handle Animal</entry>
+    <entry>Profession/Hunter</entry>
+    <entry>Ride</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Sahuagin Mutant</name>
+    <entry>Listen</entry>
+    <entry>Hide</entry>
+    <entry>Handle Animal</entry>
+    <entry>Profession/Hunter</entry>
+    <entry>Ride</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Salt Mephit</name>
+    <entry>Bluff</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Satyr</name>
+    <entry>Bluff</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge/Nature</entry>
+    <entry>Move Silently</entry>
+    <entry>Perform/Wind instruments</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Satyr with pipes</name>
+    <entry>Bluff</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge/Nature</entry>
+    <entry>Move Silently</entry>
+    <entry>Perform/Wind instruments</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Scorpionfolk</name>
+    <entry>Diplomacy</entry>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Scrag</name>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Sea Cat</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Sea Hag</name>
+    <entry>Craft</entry>
+    <entry>Knowledge</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Self-Sufficient</name>
+    <entry>Heal</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Seven-Headed Cryohydra</name>
+    <entry>Listen</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Seven-Headed Hydra</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Seven-Headed Pyrohydra</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Shadow</name>
+  </collection>
+  <collection>
+    <name>Shadow Mastiff</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Shambling Mound</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Shark, Huge</name>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Shark, Large</name>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Shark, Medium</name>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Shield Guardian</name>
+  </collection>
+  <collection>
+    <name>Shocker Lizard</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Hide</entry>
+    <entry>JumpDexterity</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Shrieker</name>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Ancient</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great Wyrm</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Juvenile</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Mature Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Old</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very Old</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very Young</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Wyrm</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Wyrmling</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Disguise</entry>
+    <entry>Bluff</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Six-Headed Cryohydra</name>
+    <entry>Listen</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Six-Headed Hydra</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Six-Headed Pyrohydra</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Skum</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Spectre</name>
+    <entry>Intimidate</entry>
+    <entry>Knowledge/Religion</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Spider Eater</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Spider Swarm</name>
+    <entry>ClimbDexterity</entry>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Spirit Naga</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Concentration</entry>
+    <entry>Spellcraft</entry>
+  </collection>
+  <collection>
+    <name>Squid</name>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Stealthy</name>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Steam Mephit</name>
+    <entry>Bluff</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Stirge</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Stone Giant</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Stone Giant Elder</name>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+  </collection>
+  <collection>
+    <name>Stone Golem</name>
+  </collection>
+  <collection>
+    <name>Storm Giant</name>
+    <entry>Climb</entry>
+    <entry>Concentration</entry>
+    <entry>Craft</entry>
+    <entry>Diplomacy</entry>
+    <entry>Intimidate</entry>
+    <entry>Jump</entry>
+    <entry>Listen</entry>
+    <entry>Perform/Sing</entry>
+    <entry>Sense Motive</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Succubus</name>
+    <entry>Spot</entry>
+    <entry>Bluff</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Use Rope</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Svirfneblin</name>
+  </collection>
+  <collection>
+    <name>Tallfellow Halfling</name>
+    <entry>Search</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Tarrasque</name>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Ten-Headed Cryohydra</name>
+    <entry>Listen</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Ten-Headed Hydra</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Ten-Headed Pyrohydra</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Tendriculos</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Thoqqua</name>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Tiefling</name>
+    <entry>Bluff</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Sleight of Hand</entry>
+  </collection>
+  <collection>
+    <name>Tiger</name>
+    <entry>Balance</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Titan</name>
+    <entry>Balance</entry>
+    <entry>Bluff</entry>
+    <entry>Climb</entry>
+    <entry>Concentration</entry>
+    <entry>Craft</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Heal</entry>
+    <entry>Intimidate</entry>
+    <entry>Jump</entry>
+    <entry>Knowledge</entry>
+    <entry>Perform/Oratory</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spellcraft</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Toad</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Treant</name>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge/Nature</entry>
+    <entry>Listen</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Triceratops</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Triton</name>
+    <entry>Craft</entry>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Ride</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Troglodyte</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Troll</name>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Truly Horrid Umber Hulk</name>
+    <entry>Climb</entry>
+    <entry>Jump</entry>
+    <entry>Listen</entry>
+    <entry>Sense Motive</entry>
+  </collection>
+  <collection>
+    <name>Trumpet Archon</name>
+    <entry>Escape Artist</entry>
+    <entry>Handle Animal</entry>
+    <entry>Knowledge</entry>
+    <entry>Move Silently</entry>
+    <entry>Perform/Wind instruments</entry>
+    <entry>Ride</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Twelve-Headed Cryohydra</name>
+    <entry>Listen</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Twelve-Headed Hydra</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Twelve-Headed Pyrohydra</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Tyrannosaurus</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Umber Hulk</name>
+    <entry>Climb</entry>
+    <entry>Jump</entry>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Unicorn</name>
+    <entry>Jump</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Unnatural</name>
+    <entry>Appraise</entry>
+    <entry>Craft</entry>
+    <entry>Decipher Script</entry>
+    <entry>Disable Device</entry>
+    <entry>Disguise</entry>
+    <entry>Forgery</entry>
+    <entry>Handle Animal</entry>
+    <entry>Heal</entry>
+    <entry>Knowledge</entry>
+    <entry>Open Lock</entry>
+    <entry>Perform</entry>
+    <entry>Ride</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Use Rope</entry>
+    <entry>Profession</entry>
+    <entry>Sleight of Hand</entry>
+    <entry>Spellcraft</entry>
+  </collection>
+  <collection>
+    <name>Untrained</name>
+    <entry>Appraise</entry>
+    <entry>Balance</entry>
+    <entry>Bluff</entry>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Craft</entry>
+    <entry>Disguise</entry>
+    <entry>Escape Artist</entry>
+    <entry>Forgery</entry>
+    <entry>Gather Information</entry>
+    <entry>Heal</entry>
+    <entry>Jump</entry>
+    <entry>Move Silently</entry>
+    <entry>Perform</entry>
+    <entry>Ride</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Survival</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Vampire Spawn</name>
+    <entry>Bluff</entry>
+    <entry>Climb</entry>
+    <entry>Craft</entry>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Jump</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Profession</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Vargouille</name>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Violet Fungus</name>
+  </collection>
+  <collection>
+    <name>Viper Snake, Huge</name>
+    <entry>Balance</entry>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Viper Snake, Large</name>
+    <entry>Balance</entry>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Viper Snake, Medium</name>
+    <entry>Balance</entry>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Viper Snake, Small</name>
+    <entry>Balance</entry>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Viper Snake, Tiny</name>
+    <entry>Balance</entry>
+    <entry>Climb</entry>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Vrock</name>
+    <entry>Spot</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Move Silently</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spellcraft</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Warpony</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Elder</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, Greater</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, Huge</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, Large</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, Medium</name>
+  </collection>
+  <collection>
+    <name>Water Elemental, Small</name>
+  </collection>
+  <collection>
+    <name>Water Mephit</name>
+    <entry>Bluff</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Move Silently</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Water Naga</name>
+    <entry>Concentration</entry>
+    <entry>Listen</entry>
+    <entry>Spellcraft</entry>
+  </collection>
+  <collection>
+    <name>Weasel</name>
+    <entry>Balance</entry>
+    <entry>Climb</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Ancient</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Great Wyrm</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Juvenile</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Mature Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Old</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Very Old</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Very Young</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Wyrm</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Wyrmling</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Young</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Young Adult</name>
+    <entry>Search</entry>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Knowledge</entry>
+    <entry>Sense Motive</entry>
+    <entry>Use Magic Device</entry>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Wight</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Wild Elf</name>
+  </collection>
+  <collection>
+    <name>Will-O'-Wisp</name>
+    <entry>Bluff</entry>
+    <entry>Diplomacy</entry>
+    <entry>Disguise</entry>
+    <entry>Intimidate</entry>
+    <entry>Search</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Winter Wolf</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Wolf</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Wolverine</name>
+    <entry>Climb</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Wood Elf</name>
+  </collection>
+  <collection>
+    <name>Worg</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Wraith</name>
+    <entry>Diplomacy</entry>
+    <entry>Intimidate</entry>
+    <entry>Sense Motive</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Wyvern</name>
+    <entry>Hide</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Xill</name>
+    <entry>Balance</entry>
+    <entry>Climb</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+    <entry>Tumble</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Yeth Hound</name>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Yrthak</name>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Abomination</name>
+    <entry>Concentration</entry>
+    <entry>Craft2</entry>
+    <entry>Hide</entry>
+    <entry>Knowledge2</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head)</name>
+    <entry>Concentration</entry>
+    <entry>Craft2</entry>
+    <entry>Hide</entry>
+    <entry>Knowledge2</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)</name>
+    <entry>Concentration</entry>
+    <entry>Craft2</entry>
+    <entry>Hide</entry>
+    <entry>Knowledge2</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</name>
+    <entry>Concentration</entry>
+    <entry>Craft2</entry>
+    <entry>Hide</entry>
+    <entry>Knowledge2</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)</name>
+    <entry>Concentration</entry>
+    <entry>Craft2</entry>
+    <entry>Hide</entry>
+    <entry>Knowledge2</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Pureblood</name>
+    <entry>Concentration</entry>
+    <entry>Disguise</entry>
+    <entry>Hide</entry>
+    <entry>Knowledge</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Zelekhut</name>
+    <entry>Diplomacy</entry>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+    <entry>Survival</entry>
+  </collection>
+  <collection>
+    <name>Aberration</name>
+  </collection>
+  <collection>
+    <name>Air</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Angel</name>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Escape Artist</entry>
+    <entry>Hide</entry>
+    <entry>Intimidate</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+    <entry>Use Rope</entry>
+  </collection>
+  <collection>
+    <name>Animal</name>
+  </collection>
+  <collection>
+    <name>Aquatic</name>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Archon</name>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Listen</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Augmented</name>
+  </collection>
+  <collection>
+    <name>Chaotic</name>
+    <entry>Listen</entry>
+  </collection>
+  <collection>
+    <name>Cold</name>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Construct</name>
+  </collection>
+  <collection>
+    <name>Dragon</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Dwarf</name>
+    <entry>Appraise</entry>
+    <entry>Craft/Blacksmithing</entry>
+    <entry>Craft/Stonemasonry</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Earth</name>
+  </collection>
+  <collection>
+    <name>Elemental</name>
+  </collection>
+  <collection>
+    <name>Elf</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Evil</name>
+  </collection>
+  <collection>
+    <name>Extraplanar</name>
+  </collection>
+  <collection>
+    <name>Fey</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Fire</name>
+  </collection>
+  <collection>
+    <name>Giant</name>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Gnome</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Goblinoid</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Good</name>
+    <entry>Concentration</entry>
+    <entry>Diplomacy</entry>
+    <entry>Listen</entry>
+    <entry>Sense Motive</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Halfling</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Move Silently</entry>
+  </collection>
+  <collection>
+    <name>Humanoid</name>
+  </collection>
+  <collection>
+    <name>Incorporeal</name>
+    <entry>Hide</entry>
+    <entry>Listen</entry>
+    <entry>Search</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Lawful</name>
+  </collection>
+  <collection>
+    <name>Magical Beast</name>
+  </collection>
+  <collection>
+    <name>Monstrous Humanoid</name>
+  </collection>
+  <collection>
+    <name>Native</name>
+  </collection>
+  <collection>
+    <name>Ooze</name>
+  </collection>
+  <collection>
+    <name>Outsider</name>
+  </collection>
+  <collection>
+    <name>Plant</name>
+  </collection>
+  <collection>
+    <name>Reptilian</name>
+  </collection>
+  <collection>
+    <name>Shapechanger</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Swarm</name>
+    <entry>Spot</entry>
+  </collection>
+  <collection>
+    <name>Undead</name>
+    <entry>ConcentrationCharisma</entry>
+  </collection>
+  <collection>
+    <name>Vermin</name>
+  </collection>
+  <collection>
+    <name>Water</name>
+    <entry>Listen</entry>
+    <entry>Spot</entry>
+    <entry>Swim</entry>
+  </collection>
+  <collection>
+    <name>Appraise</name>
+  </collection>
+  <collection>
+    <name>Balance</name>
+  </collection>
+  <collection>
+    <name>Bluff</name>
+  </collection>
+  <collection>
+    <name>Climb</name>
+  </collection>
+  <collection>
+    <name>Concentration</name>
+  </collection>
+  <collection>
+    <name>Decipher Script</name>
+  </collection>
+  <collection>
+    <name>Diplomacy</name>
+  </collection>
+  <collection>
+    <name>Disable Device</name>
+  </collection>
+  <collection>
+    <name>Disguise</name>
+  </collection>
+  <collection>
+    <name>Escape Artist</name>
+  </collection>
+  <collection>
+    <name>Forgery</name>
+  </collection>
+  <collection>
+    <name>Gather Information</name>
+  </collection>
+  <collection>
+    <name>Handle Animal</name>
+  </collection>
+  <collection>
+    <name>Heal</name>
+  </collection>
+  <collection>
+    <name>Hide</name>
+  </collection>
+  <collection>
+    <name>Intimidate</name>
+  </collection>
+  <collection>
+    <name>Jump</name>
+  </collection>
+  <collection>
+    <name>Listen</name>
+  </collection>
+  <collection>
+    <name>Move Silently</name>
+  </collection>
+  <collection>
+    <name>Open Lock</name>
+  </collection>
+  <collection>
+    <name>Ride</name>
+  </collection>
+  <collection>
+    <name>Search</name>
+  </collection>
+  <collection>
+    <name>Sense Motive</name>
+  </collection>
+  <collection>
+    <name>Sleight of Hand</name>
+  </collection>
+  <collection>
+    <name>Spellcraft</name>
+  </collection>
+  <collection>
+    <name>Spot</name>
+  </collection>
+  <collection>
+    <name>Survival</name>
+  </collection>
+  <collection>
+    <name>Swim</name>
+  </collection>
+  <collection>
+    <name>Tumble</name>
+  </collection>
+  <collection>
+    <name>Use Magic Device</name>
+  </collection>
+  <collection>
+    <name>Use Rope</name>
+  </collection>
+</collections>

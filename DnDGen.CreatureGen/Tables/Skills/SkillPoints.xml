@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Aberration</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Animal</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Construct</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Dragon</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Elemental</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Fey</name>
+    <entry>6</entry>
+  </collection>
+  <collection>
+    <name>Giant</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Humanoid</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Magical Beast</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Humanoid</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Ooze</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Outsider</name>
+    <entry>8</entry>
+  </collection>
+  <collection>
+    <name>Plant</name>
+    <entry>2</entry>
+  </collection>
+  <collection>
+    <name>Undead</name>
+    <entry>4</entry>
+  </collection>
+  <collection>
+    <name>Vermin</name>
+    <entry>2</entry>
+  </collection>
+</collections>
