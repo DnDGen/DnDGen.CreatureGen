@@ -159,12 +159,134 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             creatureAsserter.AssertCreature(creature);
         }
 
+        [TestCase(CreatureConstants.Aasimar)]
+        [TestCase(CreatureConstants.Azer)]
+        [TestCase(CreatureConstants.Bugbear)]
+        [TestCase(CreatureConstants.Centaur)]
+        [TestCase(CreatureConstants.Derro)]
+        [TestCase(CreatureConstants.Derro_Sane)]
+        [TestCase(CreatureConstants.Doppelganger)]
+        [TestCase(CreatureConstants.Dwarf_Deep)]
+        [TestCase(CreatureConstants.Dwarf_Duergar)]
+        [TestCase(CreatureConstants.Dwarf_Hill)]
+        [TestCase(CreatureConstants.Dwarf_Mountain)]
+        [TestCase(CreatureConstants.Eagle_Giant)]
+        [TestCase(CreatureConstants.Elf_Aquatic)]
+        [TestCase(CreatureConstants.Elf_Drow)]
+        [TestCase(CreatureConstants.Elf_Gray)]
+        [TestCase(CreatureConstants.Elf_Half)]
+        [TestCase(CreatureConstants.Elf_High)]
+        [TestCase(CreatureConstants.Elf_Wild)]
+        [TestCase(CreatureConstants.Elf_Wood)]
+        [TestCase(CreatureConstants.Gargoyle)]
+        [TestCase(CreatureConstants.Gargoyle_Kapoacinth)]
+        [TestCase(CreatureConstants.Giant_Cloud)]
+        [TestCase(CreatureConstants.Giant_Fire)]
+        [TestCase(CreatureConstants.Giant_Frost)]
+        [TestCase(CreatureConstants.Giant_Hill)]
+        [TestCase(CreatureConstants.Giant_Stone)]
+        [TestCase(CreatureConstants.Giant_Stone_Elder)]
+        [TestCase(CreatureConstants.Giant_Storm)]
+        [TestCase(CreatureConstants.Githyanki)]
+        [TestCase(CreatureConstants.Githzerai)]
+        [TestCase(CreatureConstants.Gnoll)]
+        [TestCase(CreatureConstants.Gnome_Forest)]
+        [TestCase(CreatureConstants.Gnome_Rock)]
+        [TestCase(CreatureConstants.Gnome_Svirfneblin)]
+        [TestCase(CreatureConstants.Goblin)]
+        [TestCase(CreatureConstants.Grimlock)]
+        [TestCase(CreatureConstants.Halfling_Deep)]
+        [TestCase(CreatureConstants.Halfling_Lightfoot)]
+        [TestCase(CreatureConstants.Halfling_Tallfellow)]
+        [TestCase(CreatureConstants.Harpy)]
+        [TestCase(CreatureConstants.Hobgoblin)]
+        [TestCase(CreatureConstants.HoundArchon)]
+        [TestCase(CreatureConstants.Human)]
+        [TestCase(CreatureConstants.Janni)]
+        [TestCase(CreatureConstants.Kobold)]
+        [TestCase(CreatureConstants.KuoToa)]
+        [TestCase(CreatureConstants.Lizardfolk)]
+        [TestCase(CreatureConstants.Locathah)]
+        [TestCase(CreatureConstants.Mephit_Air)]
+        [TestCase(CreatureConstants.Mephit_Dust)]
+        [TestCase(CreatureConstants.Mephit_Earth)]
+        [TestCase(CreatureConstants.Mephit_Fire)]
+        [TestCase(CreatureConstants.Mephit_Ice)]
+        [TestCase(CreatureConstants.Mephit_Magma)]
+        [TestCase(CreatureConstants.Mephit_Ooze)]
+        [TestCase(CreatureConstants.Mephit_Salt)]
+        [TestCase(CreatureConstants.Mephit_Steam)]
+        [TestCase(CreatureConstants.Mephit_Water)]
+        [TestCase(CreatureConstants.Merfolk)]
+        [TestCase(CreatureConstants.MindFlayer)]
+        [TestCase(CreatureConstants.Minotaur)]
+        [TestCase(CreatureConstants.Mummy)]
+        [TestCase(CreatureConstants.Ogre)]
+        [TestCase(CreatureConstants.OgreMage)]
+        [TestCase(CreatureConstants.Ogre_Merrow)]
+        [TestCase(CreatureConstants.Orc)]
+        [TestCase(CreatureConstants.Orc_Half)]
+        [TestCase(CreatureConstants.Owl_Giant)]
+        [TestCase(CreatureConstants.Pixie)]
+        [TestCase(CreatureConstants.Pixie_WithIrresistibleDance)]
+        [TestCase(CreatureConstants.Pseudodragon)]
+        [TestCase(CreatureConstants.Rakshasa)]
+        [TestCase(CreatureConstants.Sahuagin)]
+        [TestCase(CreatureConstants.Sahuagin_Malenti)]
+        [TestCase(CreatureConstants.Sahuagin_Mutant)]
+        [TestCase(CreatureConstants.Satyr)]
+        [TestCase(CreatureConstants.Satyr_WithPipes)]
+        [TestCase(CreatureConstants.Slaad_Blue)]
+        [TestCase(CreatureConstants.Slaad_Gray)]
+        [TestCase(CreatureConstants.Slaad_Green)]
+        [TestCase(CreatureConstants.Slaad_Red)]
+        [TestCase(CreatureConstants.Tiefling)]
+        [TestCase(CreatureConstants.Troglodyte)]
+        [TestCase(CreatureConstants.Troll)]
+        [TestCase(CreatureConstants.Troll_Scrag)]
+        [TestCase(CreatureConstants.Unicorn)]
+        [TestCase(CreatureConstants.YuanTi_Abomination)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeArms)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeHead)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTail)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs)]
+        [TestCase(CreatureConstants.YuanTi_Pureblood)]
+        public void CanGenerateCreatureAsCharacter(string creatureName)
+        {
+            var creature = creatureGenerator.GenerateAsCharacter(creatureName, CreatureConstants.Templates.None);
+            creatureAsserter.AssertCreature(creature);
+            AssertCreatureAsCharacter(creature);
+        }
+
+        private void AssertCreatureAsCharacter(Creature creature)
+        {
+            if (creature.Type.Name == CreatureConstants.Types.Humanoid)
+            {
+                Assert.That(creature.HitPoints.HitDice, Is.Empty);
+                Assert.That(creature.HitPoints.DefaultTotal, Is.Zero);
+                Assert.That(creature.HitPoints.Total, Is.Zero);
+
+                Assert.That(creature.ChallengeRating, Is.EqualTo(ChallengeRatingConstants.Zero));
+                Assert.That(creature.Feats, Is.Empty);
+                Assert.That(creature.Skills.Sum(s => s.Ranks), Is.Zero);
+            }
+        }
+
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void CanGenerateHumanTemplate(string template)
         {
             var creature = creatureGenerator.Generate(CreatureConstants.Human, template);
             creatureAsserter.AssertCreature(creature);
             Assert.That(creature.Template, Is.EqualTo(template));
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
+        public void CanGenerateHumanTemplateAsCharacter(string template)
+        {
+            var creature = creatureGenerator.GenerateAsCharacter(CreatureConstants.Human, template);
+            creatureAsserter.AssertCreature(creature);
+            Assert.That(creature.Template, Is.EqualTo(template));
+            AssertCreatureAsCharacter(creature);
         }
 
         [TestCase(CreatureConstants.Ape, CreatureConstants.Templates.FiendishCreature)]

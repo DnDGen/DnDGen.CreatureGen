@@ -80,7 +80,18 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             this.languageGenerator = languageGenerator;
         }
 
-        public Creature Generate(string creatureName, string template)
+        public Creature Generate(string creatureName, string template) => Generate(creatureName, template, false);
+
+        public Creature GenerateAsCharacter(string creatureName, string template)
+        {
+            var compatible = creatureVerifier.CanBeCharacter(creatureName);
+            if (!compatible)
+                throw new IncompatibleCreatureAsCharacterException(creatureName);
+
+            return Generate(creatureName, template, true);
+        }
+
+        private Creature Generate(string creatureName, string template, bool asCharacter)
         {
             var compatible = creatureVerifier.VerifyCompatibility(creatureName, template);
             if (!compatible)
@@ -118,11 +129,11 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 creature.Abilities[AbilityConstants.Dexterity].AdvancementAdjustment += advancement.DexterityAdjustment;
                 creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment += advancement.ConstitutionAdjustment;
 
-                creature.HitPoints = hitPointsGenerator.GenerateFor(creatureName, creature.Type, creature.Abilities[AbilityConstants.Constitution], creature.Size, advancement.AdditionalHitDice);
+                creature.HitPoints = hitPointsGenerator.GenerateFor(creatureName, creature.Type, creature.Abilities[AbilityConstants.Constitution], creature.Size, advancement.AdditionalHitDice, asCharacter);
             }
             else
             {
-                creature.HitPoints = hitPointsGenerator.GenerateFor(creatureName, creature.Type, creature.Abilities[AbilityConstants.Constitution], creature.Size);
+                creature.HitPoints = hitPointsGenerator.GenerateFor(creatureName, creature.Type, creature.Abilities[AbilityConstants.Constitution], creature.Size, asCharacter: asCharacter);
             }
 
             creature.Alignment = alignmentGenerator.Generate(creatureName);
@@ -211,7 +222,18 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return creatureType;
         }
 
-        public async Task<Creature> GenerateAsync(string creatureName, string template)
+        public async Task<Creature> GenerateAsync(string creatureName, string template) => await GenerateAsync(creatureName, template, false);
+
+        public async Task<Creature> GenerateAsCharacterAsync(string creatureName, string template)
+        {
+            var compatible = creatureVerifier.CanBeCharacter(creatureName);
+            if (!compatible)
+                throw new IncompatibleCreatureAsCharacterException(creatureName);
+
+            return await GenerateAsync(creatureName, template, true);
+        }
+
+        private async Task<Creature> GenerateAsync(string creatureName, string template, bool asCharacter)
         {
             var compatible = creatureVerifier.VerifyCompatibility(creatureName, template);
             if (!compatible)
@@ -249,11 +271,11 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 creature.Abilities[AbilityConstants.Dexterity].AdvancementAdjustment += advancement.DexterityAdjustment;
                 creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment += advancement.ConstitutionAdjustment;
 
-                creature.HitPoints = hitPointsGenerator.GenerateFor(creatureName, creature.Type, creature.Abilities[AbilityConstants.Constitution], creature.Size, advancement.AdditionalHitDice);
+                creature.HitPoints = hitPointsGenerator.GenerateFor(creatureName, creature.Type, creature.Abilities[AbilityConstants.Constitution], creature.Size, advancement.AdditionalHitDice, asCharacter);
             }
             else
             {
-                creature.HitPoints = hitPointsGenerator.GenerateFor(creatureName, creature.Type, creature.Abilities[AbilityConstants.Constitution], creature.Size);
+                creature.HitPoints = hitPointsGenerator.GenerateFor(creatureName, creature.Type, creature.Abilities[AbilityConstants.Constitution], creature.Size, asCharacter: asCharacter);
             }
 
             creature.Alignment = alignmentGenerator.Generate(creatureName);

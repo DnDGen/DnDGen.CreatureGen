@@ -8,6 +8,7 @@ using DnDGen.RollGen;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
 {
@@ -75,6 +76,98 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             Assert.That(hitPoints.HitDice[0].Quantity, Is.EqualTo(2));
             Assert.That(hitPoints.HitDice[0].HitDie, Is.EqualTo(90210));
             Assert.That(hitPoints.Total, Is.EqualTo(9266 + 42));
+        }
+
+        [TestCase(CreatureConstants.Types.Aberration, 2)]
+        [TestCase(CreatureConstants.Types.Animal, 2)]
+        [TestCase(CreatureConstants.Types.Construct, 2)]
+        [TestCase(CreatureConstants.Types.Dragon, 2)]
+        [TestCase(CreatureConstants.Types.Elemental, 2)]
+        [TestCase(CreatureConstants.Types.Fey, 2)]
+        [TestCase(CreatureConstants.Types.Giant, 2)]
+        [TestCase(CreatureConstants.Types.Humanoid, 1)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, 2)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid, 2)]
+        [TestCase(CreatureConstants.Types.Ooze, 2)]
+        [TestCase(CreatureConstants.Types.Outsider, 2)]
+        [TestCase(CreatureConstants.Types.Plant, 2)]
+        [TestCase(CreatureConstants.Types.Undead, 2)]
+        [TestCase(CreatureConstants.Types.Vermin, 2)]
+        public void GetHitDieAsCharacter(string type, int quantity)
+        {
+            creatureType.Name = type;
+            mockAdjustmentSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.HitDice, type)).Returns(Die);
+
+            var rolls = Enumerable.Range(9266, quantity).ToArray();
+            SetUpRolls(600.5, rolls);
+            mockAdjustmentSelector.Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, CreatureName)).Returns(2);
+
+            var hitPoints = hitPointsGenerator.GenerateFor(CreatureName, creatureType, constitution, "size", asCharacter: true);
+            Assert.That(hitPoints.Bonus, Is.Zero);
+            Assert.That(hitPoints.Constitution, Is.EqualTo(constitution));
+            Assert.That(hitPoints.Constitution.HasScore, Is.True);
+            Assert.That(hitPoints.DefaultRoll, Is.EqualTo($"{quantity}d90210"));
+            Assert.That(hitPoints.DefaultTotal, Is.EqualTo(600));
+            Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(quantity));
+            Assert.That(hitPoints.HitDice, Has.Count.EqualTo(1));
+            Assert.That(hitPoints.HitDice[0].Quantity, Is.EqualTo(quantity));
+            Assert.That(hitPoints.HitDice[0].HitDie, Is.EqualTo(90210));
+            Assert.That(hitPoints.Total, Is.EqualTo(9266 + (quantity > 1 ? 9267 : 0)));
+        }
+
+        [TestCase(CreatureConstants.Types.Aberration, 1)]
+        [TestCase(CreatureConstants.Types.Animal, 1)]
+        [TestCase(CreatureConstants.Types.Construct, 1)]
+        [TestCase(CreatureConstants.Types.Dragon, 1)]
+        [TestCase(CreatureConstants.Types.Elemental, 1)]
+        [TestCase(CreatureConstants.Types.Fey, 1)]
+        [TestCase(CreatureConstants.Types.Giant, 1)]
+        [TestCase(CreatureConstants.Types.Humanoid, 0)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, 1)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid, 1)]
+        [TestCase(CreatureConstants.Types.Ooze, 1)]
+        [TestCase(CreatureConstants.Types.Outsider, 1)]
+        [TestCase(CreatureConstants.Types.Plant, 1)]
+        [TestCase(CreatureConstants.Types.Undead, 1)]
+        [TestCase(CreatureConstants.Types.Vermin, 1)]
+        public void GetHitDieAsCharacter_OnlyHas1HitDie(string type, int quantity)
+        {
+            creatureType.Name = type;
+            mockAdjustmentSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.HitDice, type)).Returns(Die);
+            mockAdjustmentSelector.Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, CreatureName)).Returns(1);
+
+            if (quantity > 0)
+            {
+                var rolls = Enumerable.Range(9266, quantity).ToArray();
+                SetUpRolls(600.5, rolls);
+            }
+
+            var hitPoints = hitPointsGenerator.GenerateFor(CreatureName, creatureType, constitution, "size", asCharacter: true);
+
+            if (quantity > 0)
+            {
+                Assert.That(hitPoints.Bonus, Is.Zero);
+                Assert.That(hitPoints.Constitution, Is.EqualTo(constitution));
+                Assert.That(hitPoints.Constitution.HasScore, Is.True);
+                Assert.That(hitPoints.DefaultRoll, Is.EqualTo("1d90210"));
+                Assert.That(hitPoints.DefaultTotal, Is.EqualTo(600));
+                Assert.That(hitPoints.HitDiceQuantity, Is.EqualTo(quantity));
+                Assert.That(hitPoints.HitDice, Has.Count.EqualTo(1));
+                Assert.That(hitPoints.HitDice[0].Quantity, Is.EqualTo(quantity));
+                Assert.That(hitPoints.HitDice[0].HitDie, Is.EqualTo(90210));
+                Assert.That(hitPoints.Total, Is.EqualTo(9266));
+            }
+            else
+            {
+                Assert.That(hitPoints.Bonus, Is.Zero);
+                Assert.That(hitPoints.Constitution, Is.EqualTo(constitution));
+                Assert.That(hitPoints.Constitution.HasScore, Is.True);
+                Assert.That(hitPoints.DefaultRoll, Is.EqualTo("0"));
+                Assert.That(hitPoints.DefaultTotal, Is.Zero);
+                Assert.That(hitPoints.HitDiceQuantity, Is.Zero);
+                Assert.That(hitPoints.HitDice, Is.Empty);
+                Assert.That(hitPoints.Total, Is.Zero);
+            }
         }
 
         [Test]
