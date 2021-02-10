@@ -530,7 +530,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
         [TestCase(CreatureConstants.Dwarf_Hill, true)]
         [TestCase(CreatureConstants.Dwarf_Mountain, true)]
         [TestCase(CreatureConstants.Eagle, false)]
-        [TestCase(CreatureConstants.Eagle_Giant, false)]
+        [TestCase(CreatureConstants.Eagle_Giant, true)]
         [TestCase(CreatureConstants.Elemental_Air_Elder, false)]
         [TestCase(CreatureConstants.Elemental_Air_Greater, false)]
         [TestCase(CreatureConstants.Elemental_Air_Huge, false)]
@@ -606,16 +606,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
         [TestCase(CreatureConstants.Lizard_Monitor, false)]
         [TestCase(CreatureConstants.Locathah, true)]
         [TestCase(CreatureConstants.Megaraptor, false)]
-        [TestCase(CreatureConstants.Mephit_Air, false)]
-        [TestCase(CreatureConstants.Mephit_Dust, false)]
-        [TestCase(CreatureConstants.Mephit_Earth, false)]
-        [TestCase(CreatureConstants.Mephit_Fire, false)]
-        [TestCase(CreatureConstants.Mephit_Ice, false)]
-        [TestCase(CreatureConstants.Mephit_Magma, false)]
-        [TestCase(CreatureConstants.Mephit_Ooze, false)]
-        [TestCase(CreatureConstants.Mephit_Salt, false)]
-        [TestCase(CreatureConstants.Mephit_Steam, false)]
-        [TestCase(CreatureConstants.Mephit_Water, false)]
+        [TestCase(CreatureConstants.Mephit_Air, true)]
+        [TestCase(CreatureConstants.Mephit_Dust, true)]
+        [TestCase(CreatureConstants.Mephit_Earth, true)]
+        [TestCase(CreatureConstants.Mephit_Fire, true)]
+        [TestCase(CreatureConstants.Mephit_Ice, true)]
+        [TestCase(CreatureConstants.Mephit_Magma, true)]
+        [TestCase(CreatureConstants.Mephit_Ooze, true)]
+        [TestCase(CreatureConstants.Mephit_Salt, true)]
+        [TestCase(CreatureConstants.Mephit_Steam, true)]
+        [TestCase(CreatureConstants.Mephit_Water, true)]
         [TestCase(CreatureConstants.Merfolk, true)]
         [TestCase(CreatureConstants.MindFlayer, true)]
         [TestCase(CreatureConstants.Minotaur, true)]
@@ -627,12 +627,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
         [TestCase(CreatureConstants.Orc_Half, true)]
         [TestCase(CreatureConstants.Owl, false)]
         [TestCase(CreatureConstants.Owlbear, false)]
-        [TestCase(CreatureConstants.Owl_Giant, false)]
+        [TestCase(CreatureConstants.Owl_Giant, true)]
         [TestCase(CreatureConstants.Pixie, true)]
         [TestCase(CreatureConstants.Pixie_WithIrresistibleDance, true)]
         [TestCase(CreatureConstants.Pony, false)]
         [TestCase(CreatureConstants.Pony_War, false)]
-        [TestCase(CreatureConstants.Pseudodragon, false)]
+        [TestCase(CreatureConstants.Pseudodragon, true)]
         [TestCase(CreatureConstants.Quasit, false)]
         [TestCase(CreatureConstants.Rakshasa, true)]
         [TestCase(CreatureConstants.Rat, false)]
@@ -647,7 +647,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
         [TestCase(CreatureConstants.Satyr_WithPipes, true)]
         [TestCase(CreatureConstants.ShockerLizard, false)]
         [TestCase(CreatureConstants.Slaad_Blue, true)]
-        [TestCase(CreatureConstants.Slaad_Death, true)]
+        [TestCase(CreatureConstants.Slaad_Death, false)]
         [TestCase(CreatureConstants.Slaad_Gray, true)]
         [TestCase(CreatureConstants.Slaad_Green, true)]
         [TestCase(CreatureConstants.Slaad_Red, true)]
@@ -685,12 +685,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
         {
             var isCharacter = creatureVerifier.CanBeCharacter(creature);
             Assert.That(isCharacter, Is.EqualTo(canBeCharacter));
-
-            var characterCreatures = creatureVerifier.CanBeCharacter();
-            if (canBeCharacter)
-                Assert.That(characterCreatures, Contains.Item(creature));
-            else
-                Assert.That(characterCreatures, Does.Not.Contain(creature));
         }
     }
 }

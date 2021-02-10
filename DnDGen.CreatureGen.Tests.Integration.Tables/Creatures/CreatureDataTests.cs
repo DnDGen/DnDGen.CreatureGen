@@ -282,7 +282,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.DisplacerBeast, SizeConstants.Large, 10, 5, ChallengeRatingConstants.Four, 4, false, 0, 5, 0)]
         [TestCase(CreatureConstants.DisplacerBeast_PackLord, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.Twelve, null, false, 0, 8, 0)]
         [TestCase(CreatureConstants.Djinni, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Five, 6, true, 20, 3, 2)]
-        [TestCase(CreatureConstants.Djinni_Noble, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Eight, 6, true, 20, 3, 2)]
+        [TestCase(CreatureConstants.Djinni_Noble, SizeConstants.Large, 10, 10, ChallengeRatingConstants.Eight, null, true, 20, 3, 2)]
         [TestCase(CreatureConstants.Dog, SizeConstants.Small, 5, 5, ChallengeRatingConstants.OneThird, null, false, 0, 1, 0)]
         [TestCase(CreatureConstants.Dog_Riding, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.One, null, false, 0, 4, 0)]
         [TestCase(CreatureConstants.Donkey, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.OneSixth, null, false, 0, 2, 0)]
