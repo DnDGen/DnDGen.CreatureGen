@@ -208,7 +208,9 @@ namespace DnDGen.CreatureGen.Generators.Items
                 equipment.Armor = predeterminedArmors.FirstOrDefault(a => !a.Attributes.Contains(AttributeConstants.Shield));
             }
 
-            if (!canUseEquipment)
+            //INFO: If there are equipment attacks, but the level is 0, then this is a humanoid character
+            //These attacks will be updated when the character is generated
+            if (!canUseEquipment || level < 1)
                 return equipment;
 
             //Generate weapons and attacks

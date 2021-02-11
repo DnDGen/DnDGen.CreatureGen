@@ -38,10 +38,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             GenerateAndAssertCreature(randomCreatureName);
         }
 
-        private void GenerateAndAssertCreature(string creatureName)
+        private Creature GenerateAndAssertCreature(string creatureName)
         {
             var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);
             creatureAsserter.AssertCreature(creature);
+
+            return creature;
         }
 
         [Test]
@@ -105,13 +107,84 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             creatureAsserter.AssertCreature(creature);
         }
 
-        [TestCase(CreatureConstants.Aranea)]
-        [TestCase(CreatureConstants.Athach)]
-        [TestCase(CreatureConstants.Erinyes)]
-        [TestCase(CreatureConstants.Xill)]
-        public void BUG_StressSpecificCreature(string creatureName)
+        [Test]
+        public void StressCreatureAsCharacter()
         {
-            stressor.Stress(() => GenerateAndAssertCreature(creatureName));
+            stressor.Stress(GenerateAndAssertCreatureAsCharacter);
+        }
+
+        private void GenerateAndAssertCreatureAsCharacter()
+        {
+            var characters = CreatureConstants.GetAllCharacters();
+            var randomCreatureName = collectionSelector.SelectRandomFrom(characters);
+
+            var creature = creatureGenerator.GenerateAsCharacter(randomCreatureName, CreatureConstants.Templates.None);
+            creatureAsserter.AssertCreatureAsCharacter(creature);
+        }
+
+        [Test]
+        public async Task StressCreatureAsCharacterAsync()
+        {
+            await stressor.StressAsync(GenerateAndAssertCreatureAsCharacterAsync);
+        }
+
+        private async Task GenerateAndAssertCreatureAsCharacterAsync()
+        {
+            var characters = CreatureConstants.GetAllCharacters();
+            var randomCreatureName = collectionSelector.SelectRandomFrom(characters);
+
+            var creature = await creatureGenerator.GenerateAsCharacterAsync(randomCreatureName, CreatureConstants.Templates.None);
+            creatureAsserter.AssertCreatureAsCharacter(creature);
+        }
+
+        [Test]
+        public void StressCreatureAsCharacterWithTemplate()
+        {
+            stressor.Stress(GenerateAndAssertCreatureAsCharacterWithTemplate);
+        }
+
+        private void GenerateAndAssertCreatureAsCharacterWithTemplate()
+        {
+            var randomTemplate = collectionSelector.SelectRandomFrom(allTemplates);
+            if (!compatibleCreatures.ContainsKey(randomTemplate))
+            {
+                var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(c, randomTemplate)).ToArray();
+                compatibleCreatures.TryAdd(randomTemplate, validCreatures);
+            }
+
+            var characters = CreatureConstants.GetAllCharacters().Intersect(compatibleCreatures[randomTemplate]);
+            var randomCreatureName = collectionSelector.SelectRandomFrom(characters);
+
+            var creature = creatureGenerator.GenerateAsCharacter(randomCreatureName, randomTemplate);
+            creatureAsserter.AssertCreatureAsCharacter(creature);
+
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
+        }
+
+        [Test]
+        public async Task StressCreatureAsCharacterWithTemplateAsync()
+        {
+            await stressor.StressAsync(GenerateAndAssertCreatureAsCharacterWithTemplateAsync);
+        }
+
+        private async Task GenerateAndAssertCreatureAsCharacterWithTemplateAsync()
+        {
+            var randomTemplate = collectionSelector.SelectRandomFrom(allTemplates);
+            if (!compatibleCreatures.ContainsKey(randomTemplate))
+            {
+                var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(c, randomTemplate)).ToArray();
+                compatibleCreatures.TryAdd(randomTemplate, validCreatures);
+            }
+
+            var characters = CreatureConstants.GetAllCharacters().Intersect(compatibleCreatures[randomTemplate]);
+            var randomCreatureName = collectionSelector.SelectRandomFrom(characters);
+
+            var creature = await creatureGenerator.GenerateAsCharacterAsync(randomCreatureName, randomTemplate);
+
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
+            creatureAsserter.AssertCreatureAsCharacter(creature);
+
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
         }
     }
 }

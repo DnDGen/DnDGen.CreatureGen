@@ -21,7 +21,7 @@ namespace DnDGen.CreatureGen.Generators.Defenses
             this.adjustmentSelector = adjustmentSelector;
         }
 
-        public HitPoints GenerateFor(string creatureName, CreatureType creatureType, Ability constitution, string size, int additionalHitDice = 0)
+        public HitPoints GenerateFor(string creatureName, CreatureType creatureType, Ability constitution, string size, int additionalHitDice = 0, bool asCharacter = false)
         {
             var hitPoints = new HitPoints();
 
@@ -29,9 +29,18 @@ namespace DnDGen.CreatureGen.Generators.Defenses
             var die = adjustmentSelector.SelectFrom<int>(TableNameConstants.Adjustments.HitDice, creatureType.Name);
             quantity += additionalHitDice;
 
+            if (asCharacter && creatureType.Name == CreatureConstants.Types.Humanoid)
+            {
+                quantity--;
+            }
+
             hitPoints.Constitution = constitution;
             hitPoints.Bonus = GetBonus(creatureType, size);
-            hitPoints.HitDice.Add(new HitDice { Quantity = quantity, HitDie = die });
+
+            if (quantity > 0)
+            {
+                hitPoints.HitDice.Add(new HitDice { Quantity = quantity, HitDie = die });
+            }
 
             hitPoints.RollDefaultTotal(dice);
             hitPoints.RollTotal(dice);

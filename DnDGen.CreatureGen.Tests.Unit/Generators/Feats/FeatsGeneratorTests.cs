@@ -77,6 +77,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             Assert.That(feats, Is.Empty);
         }
 
+        [TestCase(0, 0)]
         [TestCase(1, 1)]
         [TestCase(2, 1)]
         [TestCase(3, 2)]

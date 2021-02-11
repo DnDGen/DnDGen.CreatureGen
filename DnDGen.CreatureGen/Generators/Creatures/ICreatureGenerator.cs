@@ -7,5 +7,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
     {
         Creature Generate(string creatureName, string template);
         Task<Creature> GenerateAsync(string creatureName, string template);
+        Creature GenerateAsCharacter(string creatureName, string template);
+        Task<Creature> GenerateAsCharacterAsync(string creatureName, string template);
     }
 }

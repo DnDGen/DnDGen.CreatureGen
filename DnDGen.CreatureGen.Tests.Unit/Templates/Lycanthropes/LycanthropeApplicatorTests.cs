@@ -441,7 +441,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Animal),
                     baseCreature.Abilities[AbilityConstants.Constitution],
                     animalData.Size,
-                    0))
+                    0,
+                    false))
                 .Returns(animalHitPoints);
 
             if (roll == 0)
