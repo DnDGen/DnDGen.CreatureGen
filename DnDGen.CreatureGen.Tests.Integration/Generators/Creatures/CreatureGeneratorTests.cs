@@ -254,22 +254,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         public void CanGenerateCreatureAsCharacter(string creatureName)
         {
             var creature = creatureGenerator.GenerateAsCharacter(creatureName, CreatureConstants.Templates.None);
-            creatureAsserter.AssertCreature(creature);
-            AssertCreatureAsCharacter(creature);
-        }
-
-        private void AssertCreatureAsCharacter(Creature creature)
-        {
-            if (creature.Type.Name == CreatureConstants.Types.Humanoid)
-            {
-                Assert.That(creature.HitPoints.HitDice, Is.Empty);
-                Assert.That(creature.HitPoints.DefaultTotal, Is.Zero);
-                Assert.That(creature.HitPoints.Total, Is.Zero);
-
-                Assert.That(creature.ChallengeRating, Is.EqualTo(ChallengeRatingConstants.Zero));
-                Assert.That(creature.Feats, Is.Empty);
-                Assert.That(creature.Skills.Sum(s => s.Ranks), Is.Zero);
-            }
+            creatureAsserter.AssertCreatureAsCharacter(creature);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
@@ -284,9 +269,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         public void CanGenerateHumanTemplateAsCharacter(string template)
         {
             var creature = creatureGenerator.GenerateAsCharacter(CreatureConstants.Human, template);
-            creatureAsserter.AssertCreature(creature);
+            creatureAsserter.AssertCreatureAsCharacter(creature);
             Assert.That(creature.Template, Is.EqualTo(template));
-            AssertCreatureAsCharacter(creature);
         }
 
         [TestCase(CreatureConstants.Ape, CreatureConstants.Templates.FiendishCreature)]

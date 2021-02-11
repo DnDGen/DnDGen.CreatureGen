@@ -118,30 +118,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var characters = CreatureConstants.GetAllCharacters();
             var randomCreatureName = collectionSelector.SelectRandomFrom(characters);
 
-            var creature = GenerateAndAssertCreatureAsCharacter(randomCreatureName);
-            AssertCreatureAsCharacter(creature);
-        }
-
-        private Creature GenerateAndAssertCreatureAsCharacter(string creatureName)
-        {
-            var creature = creatureGenerator.GenerateAsCharacter(creatureName, CreatureConstants.Templates.None);
-            creatureAsserter.AssertCreature(creature);
-
-            return creature;
-        }
-
-        private void AssertCreatureAsCharacter(Creature creature)
-        {
-            if (creature.Type.Name == CreatureConstants.Types.Humanoid)
-            {
-                Assert.That(creature.HitPoints.HitDice, Is.Empty);
-                Assert.That(creature.HitPoints.DefaultTotal, Is.Zero);
-                Assert.That(creature.HitPoints.Total, Is.Zero);
-
-                Assert.That(creature.ChallengeRating, Is.EqualTo(ChallengeRatingConstants.Zero));
-                Assert.That(creature.Feats, Is.Empty);
-                Assert.That(creature.Skills.Sum(s => s.Ranks), Is.Zero);
-            }
+            var creature = creatureGenerator.GenerateAsCharacter(randomCreatureName, CreatureConstants.Templates.None);
+            creatureAsserter.AssertCreatureAsCharacter(creature);
         }
 
         [Test]
@@ -156,9 +134,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var randomCreatureName = collectionSelector.SelectRandomFrom(characters);
 
             var creature = await creatureGenerator.GenerateAsCharacterAsync(randomCreatureName, CreatureConstants.Templates.None);
-
-            creatureAsserter.AssertCreature(creature);
-            AssertCreatureAsCharacter(creature);
+            creatureAsserter.AssertCreatureAsCharacter(creature);
         }
 
         [Test]
@@ -180,10 +156,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var randomCreatureName = collectionSelector.SelectRandomFrom(characters);
 
             var creature = creatureGenerator.GenerateAsCharacter(randomCreatureName, randomTemplate);
+            creatureAsserter.AssertCreatureAsCharacter(creature);
 
             Assert.That(creature.Template, Is.EqualTo(randomTemplate));
-            creatureAsserter.AssertCreature(creature);
-            AssertCreatureAsCharacter(creature);
         }
 
         [Test]
@@ -207,8 +182,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = await creatureGenerator.GenerateAsCharacterAsync(randomCreatureName, randomTemplate);
 
             Assert.That(creature.Template, Is.EqualTo(randomTemplate));
-            creatureAsserter.AssertCreature(creature);
-            AssertCreatureAsCharacter(creature);
+            creatureAsserter.AssertCreatureAsCharacter(creature);
+
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
         }
     }
 }

@@ -98,7 +98,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         [Test]
         public void GenerateNoWeapons_WhenNoUnnaturalAttacks()
         {
-            attacks.Add(new Attack { Name = "my attack", IsNatural = true });
+            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = true, IsMelee = true });
+            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = true, IsMelee = false });
             feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
@@ -108,15 +109,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         [Test]
         public void GenerateNoWeapons_WhenNoWeaponProficiencies()
         {
-            attacks.Add(new Attack { Name = "my attack", IsNatural = false });
-            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
+            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true });
+            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false });
 
             var equipment = equipmentGenerator.Generate("creature", true, feats, 9266, attacks, abilities, "size");
             Assert.That(equipment.Weapons, Is.Empty);
         }
 
         [Test]
-        public void GenerateNoMeleeWeapons_WhenNoMeleeAttacks()
+        public void GenerateNoWeapons_WhenLevelZero()
+        {
+            attacks.Add(new Attack { Name = AttributeConstants.Melee, IsNatural = false, IsMelee = true });
+            attacks.Add(new Attack { Name = AttributeConstants.Ranged, IsNatural = false, IsMelee = false });
+            feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
+
+            var equipment = equipmentGenerator.Generate("creature", true, feats, 0, attacks, abilities, "size");
+            Assert.That(equipment.Weapons, Is.Empty);
+        }
+
+        [Test]
+        public void GenerateNoMeleeWeapons_WhenNoEquipmentMeleeAttacks()
         {
             attacks.Add(new Attack { Name = "my attack", IsNatural = false, IsMelee = true });
             feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });
@@ -126,7 +138,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         }
 
         [Test]
-        public void GenerateNoRangedWeapons_WhenNoRangedAttacks()
+        public void GenerateNoRangedWeapons_WhenNoEquipmentRangedAttacks()
         {
             attacks.Add(new Attack { Name = "my attack", IsNatural = false, IsMelee = false });
             feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Simple, Foci = new[] { GroupConstants.All } });

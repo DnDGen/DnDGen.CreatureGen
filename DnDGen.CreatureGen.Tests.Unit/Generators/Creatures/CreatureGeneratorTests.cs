@@ -1716,6 +1716,64 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
+        public void Generate_IfCreatureHasNotHitDice_ChallengeRatingIsZero()
+        {
+            hitPoints.HitDice.Clear();
+            hitPoints.DefaultTotal = 0;
+            hitPoints.Total = 0;
+
+            SetUpCreature("creature", "template", false);
+
+            var creature = creatureGenerator.Generate("creature", "template");
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.Zero);
+            Assert.That(creature.ChallengeRating, Is.EqualTo(ChallengeRatingConstants.Zero));
+        }
+
+        [Test]
+        public async Task GenerateAsync_IfCreatureHasNotHitDice_ChallengeRatingIsZero()
+        {
+            hitPoints.HitDice.Clear();
+            hitPoints.DefaultTotal = 0;
+            hitPoints.Total = 0;
+
+            SetUpCreature("creature", "template", false);
+
+            var creature = await creatureGenerator.GenerateAsync("creature", "template");
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.Zero);
+            Assert.That(creature.ChallengeRating, Is.EqualTo(ChallengeRatingConstants.Zero));
+        }
+
+        [Test]
+        public void GenerateAsCharacter_IfCreatureHasNotHitDice_ChallengeRatingIsZero()
+        {
+            hitPoints.HitDice.Clear();
+            hitPoints.DefaultTotal = 0;
+            hitPoints.Total = 0;
+
+            SetUpCreature("creature", "template", true);
+            mockCreatureVerifier.Setup(v => v.CanBeCharacter("creature")).Returns(true);
+
+            var creature = creatureGenerator.GenerateAsCharacter("creature", "template");
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.Zero);
+            Assert.That(creature.ChallengeRating, Is.EqualTo(ChallengeRatingConstants.Zero));
+        }
+
+        [Test]
+        public async Task GenerateAsCharacterAsync_IfCreatureHasNotHitDice_ChallengeRatingIsZero()
+        {
+            hitPoints.HitDice.Clear();
+            hitPoints.DefaultTotal = 0;
+            hitPoints.Total = 0;
+
+            SetUpCreature("creature", "template", true);
+            mockCreatureVerifier.Setup(v => v.CanBeCharacter("creature")).Returns(true);
+
+            var creature = await creatureGenerator.GenerateAsCharacterAsync("creature", "template");
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.Zero);
+            Assert.That(creature.ChallengeRating, Is.EqualTo(ChallengeRatingConstants.Zero));
+        }
+
+        [Test]
         public async Task GenerateAsync_InvalidCreatureTemplateComboThrowsException()
         {
             mockCreatureVerifier.Setup(v => v.VerifyCompatibility("creature", "template")).Returns(false);
