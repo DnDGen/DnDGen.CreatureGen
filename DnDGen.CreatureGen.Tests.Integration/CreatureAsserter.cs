@@ -313,7 +313,11 @@ namespace DnDGen.CreatureGen.Tests.Integration
         {
             if (!creature.Skills.Any())
             {
-                Assert.That(creature.Abilities[AbilityConstants.Intelligence].HasScore, Is.False);
+                if (creature.HitPoints.HitDiceQuantity > 0)
+                    Assert.That(creature.Abilities[AbilityConstants.Intelligence].HasScore, Is.False);
+
+                if (creature.Abilities[AbilityConstants.Intelligence].HasScore)
+                    Assert.That(creature.HitPoints.HitDiceQuantity, Is.Zero);
             }
 
             foreach (var skill in creature.Skills)
@@ -384,7 +388,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
         {
             Assert.That(creature.BaseAttackBonus, Is.Not.Negative, creature.Summary);
 
-            Assert.That(creature.HitPoints.HitDice, Is.Not.Empty, creature.Summary);
+            //INFO: Hit Dice can be empty, if the creature was generated as a character
 
             foreach (var hitDice in creature.HitPoints.HitDice)
             {
@@ -400,13 +404,13 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 Assert.That(creature.HitPoints.DefaultRoll, Contains.Substring($"{hitDice.RoundedQuantity}d{hitDice.HitDie}"), creature.Summary);
             }
 
-            Assert.That(creature.HitPoints.HitDiceQuantity, Is.Positive, creature.Summary);
-            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.Positive
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.Not.Negative, creature.Summary);
+            Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.Not.Negative
                 .And.AtLeast(creature.HitPoints.HitDice.Count), creature.Summary);
 
-            Assert.That(creature.HitPoints.Total, Is.Positive
+            Assert.That(creature.HitPoints.Total, Is.Not.Negative
                 .And.AtLeast(creature.HitPoints.RoundedHitDiceQuantity), creature.Summary);
-            Assert.That(creature.HitPoints.DefaultTotal, Is.Positive
+            Assert.That(creature.HitPoints.DefaultTotal, Is.Not.Negative
                 .And.AtLeast(creature.HitPoints.RoundedHitDiceQuantity), creature.Summary);
 
             Assert.That(creature.FullMeleeAttack, Is.Not.Null, creature.Summary);
@@ -436,7 +440,11 @@ namespace DnDGen.CreatureGen.Tests.Integration
             Assert.That(creature.ArmorClass.TouchBonus, Is.Positive, creature.Summary);
 
             Assert.That(creature.InitiativeBonus, Is.Not.Negative, creature.Summary);
-            Assert.That(creature.TotalInitiativeBonus, Is.AtLeast(creature.Abilities[AbilityConstants.Dexterity].Modifier), creature.Summary);
+
+            if (creature.Abilities[AbilityConstants.Dexterity].HasScore)
+                Assert.That(creature.TotalInitiativeBonus, Is.AtLeast(creature.Abilities[AbilityConstants.Dexterity].Modifier), creature.Summary);
+            else
+                Assert.That(creature.TotalInitiativeBonus, Is.AtLeast(creature.Abilities[AbilityConstants.Intelligence].Modifier), creature.Summary);
 
             Assert.That(creature.Saves[SaveConstants.Reflex].TotalBonus, Is.AtLeast(creature.Abilities[AbilityConstants.Dexterity].Modifier), creature.Summary);
             Assert.That(creature.Saves[SaveConstants.Will].TotalBonus, Is.AtLeast(creature.Abilities[AbilityConstants.Wisdom].Modifier), creature.Summary);
@@ -446,8 +454,10 @@ namespace DnDGen.CreatureGen.Tests.Integration
         private void AssertAttack(Attack attack, Creature creature)
         {
             var message = $"Creature: {creature.Summary}; Attack: {attack.Name}";
-            var meleeEquipmentAttacks = creature.Attacks.Where(a => a.IsMelee && creature.Equipment.Weapons.Any(w => a.Name.StartsWith(w.Description)));
-            var rangedEquipmentAttacks = creature.Attacks.Where(a => !a.IsMelee && creature.Equipment.Weapons.Any(w => a.Name.StartsWith(w.Description)));
+            var meleeEquipmentAttacks = creature.Attacks.Where(a => a.IsMelee
+                && (creature.Equipment.Weapons.Any(w => a.Name.StartsWith(w.Description)) || a.Name.StartsWith(AttributeConstants.Melee)));
+            var rangedEquipmentAttacks = creature.Attacks.Where(a => !a.IsMelee
+                && (creature.Equipment.Weapons.Any(w => a.Name.StartsWith(w.Description)) || a.Name.StartsWith(AttributeConstants.Ranged)));
 
             Assert.That(attack.Name, Is.Not.Empty, message);
             Assert.That(attack.AttackType, Is.Not.Empty, message);
@@ -569,6 +579,51 @@ namespace DnDGen.CreatureGen.Tests.Integration
                     .Or.EqualTo("Negative Level")
                     .Or.EqualTo("Positive energy")
                     .Or.EqualTo("Ability points (of ghost's choosing)"), $"{message}; Damage: {damage.Description}");
+            }
+        }
+
+        public void AssertCreatureAsCharacter(Creature creature)
+        {
+            AssertCreature(creature);
+
+            var multiHitDieHumanoids = new[]
+            {
+                CreatureConstants.Bugbear,
+                CreatureConstants.Gnoll,
+                CreatureConstants.Lizardfolk,
+                CreatureConstants.Locathah,
+                CreatureConstants.Troglodyte,
+            };
+
+            var lycanthropes = new[]
+            {
+                CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted,
+                CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural,
+                CreatureConstants.Templates.Lycanthrope_Boar_Afflicted,
+                CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted,
+                CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural,
+                CreatureConstants.Templates.Lycanthrope_Boar_Natural,
+                CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted,
+                CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural,
+                CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted,
+                CreatureConstants.Templates.Lycanthrope_Tiger_Natural,
+                CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted,
+                CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted,
+                CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural,
+                CreatureConstants.Templates.Lycanthrope_Wolf_Natural,
+            };
+
+            if (creature.Type.Name == CreatureConstants.Types.Humanoid
+                && !multiHitDieHumanoids.Contains(creature.Name)
+                && !lycanthropes.Contains(creature.Template))
+            {
+                Assert.That(creature.HitPoints.HitDice, Is.Empty);
+                Assert.That(creature.HitPoints.DefaultTotal, Is.Zero);
+                Assert.That(creature.HitPoints.Total, Is.Zero);
+
+                Assert.That(creature.ChallengeRating, Is.EqualTo(ChallengeRatingConstants.Zero));
+                Assert.That(creature.Feats, Is.Empty, string.Join(", ", creature.Feats.Select(f => f.Name)));
+                Assert.That(creature.Skills, Is.Empty, string.Join(", ", creature.Skills.Select(f => f.Name)));
             }
         }
     }

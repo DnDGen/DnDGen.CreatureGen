@@ -2,6 +2,7 @@
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Selectors.Collections
@@ -15,10 +16,10 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             this.collectionSelector = collectionSelector;
         }
 
-        public CreatureDataSelection SelectFor(string creatureName)
+        private CreatureDataSelection Parse(IEnumerable<string> creatureData)
         {
             var selection = new CreatureDataSelection();
-            var data = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureData, creatureName).ToArray();
+            var data = creatureData.ToArray();
 
             selection.ChallengeRating = data[DataIndexConstants.CreatureData.ChallengeRating];
 
@@ -32,6 +33,14 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             selection.CasterLevel = Convert.ToInt32(data[DataIndexConstants.CreatureData.CasterLevel]);
             selection.NaturalArmor = Convert.ToInt32(data[DataIndexConstants.CreatureData.NaturalArmor]);
             selection.NumberOfHands = Convert.ToInt32(data[DataIndexConstants.CreatureData.NumberOfHands]);
+
+            return selection;
+        }
+
+        public CreatureDataSelection SelectFor(string creatureName)
+        {
+            var data = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureData, creatureName);
+            var selection = Parse(data);
 
             return selection;
         }

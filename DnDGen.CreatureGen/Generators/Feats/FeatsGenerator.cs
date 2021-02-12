@@ -150,7 +150,7 @@ namespace DnDGen.CreatureGen.Generators.Feats
             string size,
             bool canUseEquipment)
         {
-            if (!abilities[AbilityConstants.Intelligence].HasScore)
+            if (!abilities[AbilityConstants.Intelligence].HasScore || hitPoints.HitDiceQuantity == 0)
                 return Enumerable.Empty<Feat>();
 
             var numberOfAdditionalFeats = GetFeatQuantity(hitPoints);
