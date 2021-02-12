@@ -407,6 +407,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Shark_Large, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(CreatureConstants.Shark_Large, CreatureConstants.Templates.FiendishCreature)]
         [TestCase(CreatureConstants.Shark_Medium, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(CreatureConstants.Shrieker, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(CreatureConstants.Snake_Constrictor, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(CreatureConstants.Snake_Constrictor, CreatureConstants.Templates.FiendishCreature)]
         [TestCase(CreatureConstants.Snake_Constrictor_Giant, CreatureConstants.Templates.CelestialCreature)]

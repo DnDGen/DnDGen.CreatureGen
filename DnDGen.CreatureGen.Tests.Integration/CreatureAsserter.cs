@@ -440,7 +440,11 @@ namespace DnDGen.CreatureGen.Tests.Integration
             Assert.That(creature.ArmorClass.TouchBonus, Is.Positive, creature.Summary);
 
             Assert.That(creature.InitiativeBonus, Is.Not.Negative, creature.Summary);
-            Assert.That(creature.TotalInitiativeBonus, Is.AtLeast(creature.Abilities[AbilityConstants.Dexterity].Modifier), creature.Summary);
+
+            if (creature.Abilities[AbilityConstants.Dexterity].HasScore)
+                Assert.That(creature.TotalInitiativeBonus, Is.AtLeast(creature.Abilities[AbilityConstants.Dexterity].Modifier), creature.Summary);
+            else
+                Assert.That(creature.TotalInitiativeBonus, Is.AtLeast(creature.Abilities[AbilityConstants.Intelligence].Modifier), creature.Summary);
 
             Assert.That(creature.Saves[SaveConstants.Reflex].TotalBonus, Is.AtLeast(creature.Abilities[AbilityConstants.Dexterity].Modifier), creature.Summary);
             Assert.That(creature.Saves[SaveConstants.Will].TotalBonus, Is.AtLeast(creature.Abilities[AbilityConstants.Wisdom].Modifier), creature.Summary);
