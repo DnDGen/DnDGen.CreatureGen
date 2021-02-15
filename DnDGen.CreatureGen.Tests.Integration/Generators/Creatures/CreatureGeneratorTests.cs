@@ -312,6 +312,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Deinonychus, CreatureConstants.Templates.FiendishCreature)]
         [TestCase(CreatureConstants.Dog, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(CreatureConstants.Dog_Riding, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.Ghost)]
         [TestCase(CreatureConstants.Dragon_Red_Wyrmling, CreatureConstants.Templates.Skeleton)]
         [TestCase(CreatureConstants.Dragon_Red_VeryYoung, CreatureConstants.Templates.Skeleton)]
         [TestCase(CreatureConstants.Dragon_Red_Young, CreatureConstants.Templates.Skeleton)]

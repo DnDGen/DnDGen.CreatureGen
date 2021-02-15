@@ -73,18 +73,18 @@ namespace DnDGen.CreatureGen.Tests.Integration
                     castingAbility = AbilityConstants.Wisdom;
                 }
 
-                if (creature.Abilities[castingAbility].FullScore < 10)
+                if (creature.Abilities[castingAbility].FullScore - creature.Abilities[castingAbility].TemplateAdjustment < 10)
                 {
-                    Assert.That(creature.Magic.KnownSpells, Is.Empty, creature.Summary);
                     Assert.That(creature.Magic.SpellsPerDay, Is.Empty, creature.Summary);
+                    Assert.That(creature.Magic.KnownSpells, Is.Empty, creature.Summary);
                     Assert.That(creature.Magic.PreparedSpells, Is.Empty, creature.Summary);
 
                     return;
                 }
 
-                Assert.That(creature.Magic.KnownSpells, Is.Not.Empty, creature.Summary);
-                Assert.That(creature.Magic.SpellsPerDay, Is.Not.Empty, creature.Summary);
-                Assert.That(creature.Magic.PreparedSpells, Is.Not.Null, creature.Summary);
+                Assert.That(creature.Magic.SpellsPerDay, Is.Not.Empty, $"{creature.Summary}: {castingAbility}: {creature.Abilities[castingAbility].FullScore} (+{creature.Abilities[castingAbility].TemplateAdjustment})");
+                Assert.That(creature.Magic.KnownSpells, Is.Not.Empty, $"{creature.Summary}: {castingAbility}: {creature.Abilities[castingAbility].FullScore} (+{creature.Abilities[castingAbility].TemplateAdjustment})");
+                Assert.That(creature.Magic.PreparedSpells, Is.Not.Null, $"{creature.Summary}: {castingAbility}: {creature.Abilities[castingAbility].FullScore} (+{creature.Abilities[castingAbility].TemplateAdjustment})");
 
                 if (creature.Equipment.Armor == null && creature.Equipment.Shield == null)
                 {
