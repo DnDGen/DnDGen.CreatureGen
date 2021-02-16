@@ -83,6 +83,16 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         public Creature Generate(string creatureName, string template) => Generate(creatureName, template, false);
         public Creature GenerateAsCharacter(string creatureName, string template) => Generate(creatureName, template, true);
 
+        public Creature GenerateRandomTemplate(string template)
+        {
+            var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
+            var creatures = CreatureConstants.GetAll();
+            creatures = creatures.Where(c => templateApplicator.IsCompatible(c));
+            var randomCreature = collectionsSelector.SelectRandomFrom(creatures);
+
+            return Generate(randomCreature, template);
+        }
+
         private Creature Generate(string creatureName, string template, bool asCharacter)
         {
             var compatible = creatureVerifier.CanBeCharacter(creatureName);
@@ -260,6 +270,16 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         public async Task<Creature> GenerateAsync(string creatureName, string template) => await GenerateAsync(creatureName, template, false);
 
         public async Task<Creature> GenerateAsCharacterAsync(string creatureName, string template) => await GenerateAsync(creatureName, template, true);
+
+        public async Task<Creature> GenerateRandomTemplateAsync(string template)
+        {
+            var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
+            var creatures = CreatureConstants.GetAll();
+            creatures = creatures.Where(c => templateApplicator.IsCompatible(c));
+            var randomCreature = collectionsSelector.SelectRandomFrom(creatures);
+
+            return await GenerateAsync(randomCreature, template);
+        }
 
         private async Task<Creature> GenerateAsync(string creatureName, string template, bool asCharacter)
         {

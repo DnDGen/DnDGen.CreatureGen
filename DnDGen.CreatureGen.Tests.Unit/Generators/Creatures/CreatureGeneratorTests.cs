@@ -6025,5 +6025,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var creature = await creatureGenerator.GenerateAsCharacterAsync("creature", "template");
             Assert.That(creature, Is.EqualTo(templateCreature));
         }
+
+        [Test]
+        public void GenerateRandomTemplate_WriteTests()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public async Task GenerateRandomTemplateAsync_WriteTests()
+        {
+            Assert.Fail("not yet written");
+        }
     }
 }
