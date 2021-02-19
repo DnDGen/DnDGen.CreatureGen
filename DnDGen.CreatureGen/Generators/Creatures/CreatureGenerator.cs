@@ -87,7 +87,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         {
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
             var creatures = CreatureConstants.GetAll();
-            creatures = creatures.Where(c => templateApplicator.IsCompatible(c));
+            creatures = creatures.Where(templateApplicator.IsCompatible);
             var randomCreature = collectionsSelector.SelectRandomFrom(creatures);
 
             return Generate(randomCreature, template);
@@ -275,7 +275,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         {
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
             var creatures = CreatureConstants.GetAll();
-            creatures = creatures.Where(c => templateApplicator.IsCompatible(c));
+            creatures = creatures.Where(templateApplicator.IsCompatible);
             var randomCreature = collectionsSelector.SelectRandomFrom(creatures);
 
             return await GenerateAsync(randomCreature, template);
