@@ -1,6 +1,7 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using NUnit.Framework;
 using System.Collections;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Unit.TestCaseSources
 {
@@ -13,6 +14,33 @@ namespace DnDGen.CreatureGen.Tests.Unit.TestCaseSources
                 var creatures = CreatureConstants.GetAll();
 
                 foreach (var creature in creatures)
+                {
+                    yield return new TestCaseData(creature);
+                }
+            }
+        }
+
+        public static IEnumerable CharacterCreatures
+        {
+            get
+            {
+                var creatures = CreatureConstants.GetAllCharacters();
+
+                foreach (var creature in creatures)
+                {
+                    yield return new TestCaseData(creature);
+                }
+            }
+        }
+
+        public static IEnumerable NonCharacterCreatures
+        {
+            get
+            {
+                var characters = CreatureConstants.GetAllCharacters();
+                var creatures = CreatureConstants.GetAll();
+
+                foreach (var creature in creatures.Except(characters))
                 {
                     yield return new TestCaseData(creature);
                 }
