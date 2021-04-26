@@ -2126,50 +2126,51 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 //4. Synchronous and Async
                 var challengeRatings = new[]
                 {
-                    ChallengeRatingConstants.Zero,
-                    ChallengeRatingConstants.OneTenth,
-                    ChallengeRatingConstants.OneEighth,
-                    ChallengeRatingConstants.OneSixth,
-                    ChallengeRatingConstants.OneFourth,
-                    ChallengeRatingConstants.OneThird,
-                    ChallengeRatingConstants.OneHalf,
-                    ChallengeRatingConstants.One,
-                    ChallengeRatingConstants.Two,
-                    ChallengeRatingConstants.Ten,
-                    ChallengeRatingConstants.Twenty,
+                    ChallengeRatingConstants.Zero, //Character
+                    ChallengeRatingConstants.OneFourth, //Kobold
+                    ChallengeRatingConstants.OneThird, //Goblin
+                    ChallengeRatingConstants.OneHalf, //Dwarf, Elf, Gnome, Halfling, Hobgoblin, Merfolk, Orc
+                    ChallengeRatingConstants.One, //Duergar, Drow, Gnoll, Svirfneblin, Lizardfolk, Troglodyte
+                    ChallengeRatingConstants.Three, //Ogre
+                    ChallengeRatingConstants.Five, //Troll
+                    ChallengeRatingConstants.Six, //Ettin
+                    ChallengeRatingConstants.Seven, //Hill Giant
+                    ChallengeRatingConstants.Eight, //Stone Giant, Ogre Mage
+                    ChallengeRatingConstants.Nine, //Frost Giant, Stone Giant Elder
+                    ChallengeRatingConstants.Ten, //Fire Giant
+                    ChallengeRatingConstants.Eleven, //Cloud Giant
+                    ChallengeRatingConstants.Thirteen, //Storm Giant
                 };
 
-                var animalHitDiceQuantities = new[]
-                {
-                    0, .1, .5, 1, 2,
-                    3, 4, 5,
-                    6, 9, 10,
-                    11, 19, 20,
-                    21, 100
-                };
+                var animalHitDiceQuantities = new Dictionary<string, double>();
+                animalHitDiceQuantities[CreatureConstants.Bear_Brown] = 6;
+                animalHitDiceQuantities[CreatureConstants.Boar] = 3;
+                animalHitDiceQuantities[CreatureConstants.Boar_Dire] = 7;
+                animalHitDiceQuantities[CreatureConstants.Rat_Dire] = 1;
+                animalHitDiceQuantities[CreatureConstants.Tiger] = 6;
+                animalHitDiceQuantities[CreatureConstants.Wolf] = 2;
+                animalHitDiceQuantities[CreatureConstants.Wolf_Dire] = 6;
 
                 foreach (var template in templates)
                 {
-                    foreach (var animalHitDiceQuantity in animalHitDiceQuantities)
+                    var increase = 0;
+                    var animalHitDiceQuantity = animalHitDiceQuantities[template.Animal];
+
+                    if (animalHitDiceQuantity <= 2)
+                        increase = 2;
+                    else if (animalHitDiceQuantity <= 5)
+                        increase = 3;
+                    else if (animalHitDiceQuantity <= 10)
+                        increase = 4;
+                    else if (animalHitDiceQuantity <= 20)
+                        increase = 5;
+                    else if (animalHitDiceQuantity > 20)
+                        increase = 6;
+
+                    foreach (var cr in challengeRatings)
                     {
-                        var increase = 0;
-
-                        if (animalHitDiceQuantity <= 2)
-                            increase = 2;
-                        else if (animalHitDiceQuantity <= 5)
-                            increase = 3;
-                        else if (animalHitDiceQuantity <= 10)
-                            increase = 4;
-                        else if (animalHitDiceQuantity <= 20)
-                            increase = 5;
-                        else if (animalHitDiceQuantity > 20)
-                            increase = 6;
-
-                        foreach (var cr in challengeRatings)
-                        {
-                            var newCr = ChallengeRatingConstants.IncreaseChallengeRating(cr, increase);
-                            yield return new TestCaseData(template.Template, template.Animal, cr, animalHitDiceQuantity, newCr);
-                        }
+                        var newCr = ChallengeRatingConstants.IncreaseChallengeRating(cr, increase);
+                        yield return new TestCaseData(template.Template, template.Animal, cr, animalHitDiceQuantity, newCr);
                     }
                 }
             }
