@@ -75,9 +75,9 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
                 if (creature.Abilities[castingAbility].FullScore - creature.Abilities[castingAbility].TemplateAdjustment < 10)
                 {
-                    Assert.That(creature.Magic.SpellsPerDay, Is.Empty, creature.Summary);
-                    Assert.That(creature.Magic.KnownSpells, Is.Empty, creature.Summary);
-                    Assert.That(creature.Magic.PreparedSpells, Is.Empty, creature.Summary);
+                    Assert.That(creature.Magic.SpellsPerDay, Is.Empty, $"{creature.Summary}: {castingAbility}: {creature.Abilities[castingAbility].FullScore} (+{creature.Abilities[castingAbility].TemplateAdjustment})");
+                    Assert.That(creature.Magic.KnownSpells, Is.Empty, $"{creature.Summary}: {castingAbility}: {creature.Abilities[castingAbility].FullScore} (+{creature.Abilities[castingAbility].TemplateAdjustment})");
+                    Assert.That(creature.Magic.PreparedSpells, Is.Empty, $"{creature.Summary}: {castingAbility}: {creature.Abilities[castingAbility].FullScore} (+{creature.Abilities[castingAbility].TemplateAdjustment})");
 
                     return;
                 }
