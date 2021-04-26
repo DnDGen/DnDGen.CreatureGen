@@ -203,6 +203,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(skills);
 
             mockCreatureVerifier.Setup(v => v.VerifyCompatibility(creatureName, templateName)).Returns(true);
+            mockCreatureVerifier.Setup(v => v.CanBeCharacter(creatureName)).Returns(asCharacter);
             mockCreatureDataSelector.Setup(s => s.SelectFor(creatureName)).Returns(creatureData);
 
             mockFeatsGenerator.Setup(g =>
@@ -9991,7 +9992,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>())).Returns(true);
             mockTemplateApplicator.Setup(a => a.ApplyTo(It.Is<Creature>(c => c.Name == creatureName))).Returns((Creature c) => c);
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(CreatureConstants.GetAll()))))
+                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(CreatureConstants.GetAllCharacters()))))
                 .Returns(creatureName);
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
@@ -10002,14 +10003,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTemplateApplicator.Verify(a => a.ApplyTo(creature), Times.Once);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.NonCharacterCreatures))]
-        public void GenerateRandomOfTemplateAsCharacter_ThrowException_WhenCreatureCannotBeCharacter(string creatureName)
+        [Test]
+        public void GenerateRandomOfTemplateAsCharacter_ThrowException_WhenCreatureCannotBeCharacter()
         {
-            SetUpCreature(creatureName, "my template", true);
-
+            var nonCharacters = CreatureConstants.GetAllNonCharacters();
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
-            mockTemplateApplicator.Setup(a => a.ApplyTo(It.Is<Creature>(c => c.Name == creatureName))).Returns((Creature c) => c);
+            mockTemplateApplicator
+                .Setup(a => a.IsCompatible(It.IsAny<string>()))
+                .Returns((string c) => nonCharacters.Contains(c));
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
@@ -10411,7 +10412,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            SetUpCreatureAdvancement(false, creatureName: creatureName);
+            SetUpCreatureAdvancement(true, creatureName: creatureName);
             mockAdvancementSelector.Setup(s => s.IsAdvanced(creatureName)).Returns(false);
 
             var creature = creatureGenerator.GenerateRandomOfTemplateAsCharacter("my template");
@@ -10447,7 +10448,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var advancedhitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedhitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
             mockAdvancementSelector.Setup(s => s.IsAdvanced(creatureName)).Returns(true);
 
             var creature = creatureGenerator.GenerateRandomOfTemplateAsCharacter("my template");
@@ -10487,7 +10488,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             abilities[AbilityConstants.Dexterity].RacialAdjustment = 47;
             abilities[AbilityConstants.Constitution].RacialAdjustment = 56;
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             mockAdvancementSelector.Setup(s => s.IsAdvanced(creatureName)).Returns(true);
 
@@ -10531,7 +10532,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
             abilities[AbilityConstants.Constitution].BaseScore = 0;
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             mockAdvancementSelector.Setup(s => s.IsAdvanced(creatureName)).Returns(true);
 
@@ -10589,7 +10590,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator.Setup(s => s.GenerateAttacks(creatureName, creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
@@ -10720,7 +10721,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
             mockSkillsGenerator
@@ -10783,7 +10784,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             mockAttacksGenerator.Setup(g => g.GenerateBaseAttackBonus(It.Is<CreatureType>(c => c.Name == types[0]), advancedHitPoints)).Returns(951);
 
@@ -10823,7 +10824,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator.Setup(s => s.GenerateAttacks(creatureName, creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
@@ -10952,7 +10953,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator.Setup(s => s.GenerateAttacks(creatureName, creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
@@ -11046,7 +11047,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator.Setup(s => s.GenerateAttacks(creatureName, creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
@@ -11188,7 +11189,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator.Setup(s => s.GenerateAttacks(creatureName, creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
@@ -11322,7 +11323,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            SetUpCreatureAdvancement(false, creatureName: creatureName);
+            SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             mockAttacksGenerator.Setup(s => s.GenerateGrappleBonus(creatureName, "advanced size", 999, abilities[AbilityConstants.Strength])).Returns(2345);
 
@@ -11400,7 +11401,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator
@@ -11540,7 +11541,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             abilities[AbilityConstants.Dexterity].BaseScore = 4132;
 
-            SetUpCreatureAdvancement(false, creatureName: creatureName);
+            SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
 
@@ -11589,7 +11590,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             abilities[AbilityConstants.Dexterity].BaseScore = 4132;
 
-            SetUpCreatureAdvancement(false, creatureName: creatureName);
+            SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
             feats.Add(new Feat { Name = FeatConstants.Initiative_Improved, Power = 4 });
@@ -11640,7 +11641,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
             abilities[AbilityConstants.Intelligence].BaseScore = 1234;
 
-            SetUpCreatureAdvancement(false, creatureName: creatureName);
+            SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
             mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029 + 6331, speeds, 1336, 96, "advanced size", creatureData.CanUseEquipment)).Returns(feats);
@@ -11692,7 +11693,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
             abilities[AbilityConstants.Intelligence].BaseScore = 1234;
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
             feats.Add(new Feat { Name = FeatConstants.Initiative_Improved, Power = 4 });
@@ -11768,7 +11769,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator.Setup(s => s.GenerateAttacks(creatureName, creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
@@ -11903,7 +11904,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             mockFeatsGenerator.Setup(g => g.GenerateFeats(advancedHitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029 + 6331, speeds, 1336, 96, "advanced size", creatureData.CanUseEquipment)).Returns(feats);
 
@@ -12009,7 +12010,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>())).Returns(true);
             mockTemplateApplicator.Setup(a => a.ApplyToAsync(It.Is<Creature>(c => c.Name == creatureName))).ReturnsAsync((Creature c) => c);
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(CreatureConstants.GetAll()))))
+                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(CreatureConstants.GetAllCharacters()))))
                 .Returns(creatureName);
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
@@ -12020,17 +12021,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTemplateApplicator.Verify(a => a.ApplyToAsync(creature), Times.Once);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.NonCharacterCreatures))]
-        public async Task GenerateRandomOfTemplateAsCharacterAsync_ThrowException_WhenTemplateCannotBeCharacter(string creatureName)
+        [Test]
+        public async Task GenerateRandomOfTemplateAsCharacterAsync_ThrowException_WhenTemplateCannotBeCharacter()
         {
-            SetUpCreature(creatureName, "my template", true);
-
+            var nonCharacters = CreatureConstants.GetAllNonCharacters();
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>())).Returns(true);
-            mockTemplateApplicator.Setup(a => a.ApplyToAsync(It.Is<Creature>(c => c.Name == creatureName))).ReturnsAsync((Creature c) => c);
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(CreatureConstants.GetAll()))))
-                .Returns(creatureName);
+            mockTemplateApplicator
+                .Setup(a => a.IsCompatible(It.IsAny<string>()))
+                .Returns((string c) => nonCharacters.Contains(c));
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
@@ -12414,7 +12412,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            SetUpCreatureAdvancement(false, creatureName: creatureName);
+            SetUpCreatureAdvancement(true, creatureName: creatureName);
             mockAdvancementSelector.Setup(s => s.IsAdvanced(creatureName)).Returns(false);
 
             var creature = await creatureGenerator.GenerateRandomOfTemplateAsCharacterAsync("my template");
@@ -12450,7 +12448,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var advancedhitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedhitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
             mockAdvancementSelector.Setup(s => s.IsAdvanced(creatureName)).Returns(true);
 
             var creature = await creatureGenerator.GenerateRandomOfTemplateAsCharacterAsync("my template");
@@ -12490,7 +12488,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             abilities[AbilityConstants.Dexterity].RacialAdjustment = 47;
             abilities[AbilityConstants.Constitution].RacialAdjustment = 56;
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             mockAdvancementSelector.Setup(s => s.IsAdvanced(creatureName)).Returns(true);
 
@@ -12534,7 +12532,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
             abilities[AbilityConstants.Constitution].BaseScore = 0;
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             mockAdvancementSelector.Setup(s => s.IsAdvanced(creatureName)).Returns(true);
 
@@ -12592,7 +12590,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator.Setup(s => s.GenerateAttacks(creatureName, creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
@@ -12723,7 +12721,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             var advancedSkills = new List<Skill>() { new Skill("advanced skill", abilities.First().Value, 1000) };
             mockSkillsGenerator
@@ -12786,7 +12784,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             mockAttacksGenerator.Setup(g => g.GenerateBaseAttackBonus(It.Is<CreatureType>(c => c.Name == types[0]), advancedHitPoints)).Returns(951);
 
@@ -12826,7 +12824,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator.Setup(s => s.GenerateAttacks(creatureName, creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
@@ -12955,7 +12953,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator.Setup(s => s.GenerateAttacks(creatureName, creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
@@ -13049,7 +13047,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator.Setup(s => s.GenerateAttacks(creatureName, creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
@@ -13191,7 +13189,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator.Setup(s => s.GenerateAttacks(creatureName, creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
@@ -13325,7 +13323,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            SetUpCreatureAdvancement(false, creatureName: creatureName);
+            SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             mockAttacksGenerator.Setup(s => s.GenerateGrappleBonus(creatureName, "advanced size", 999, abilities[AbilityConstants.Strength])).Returns(2345);
 
@@ -13403,7 +13401,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator.Setup(s => s.GenerateAttacks(creatureName, creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
@@ -13541,7 +13539,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             abilities[AbilityConstants.Dexterity].BaseScore = 4132;
 
-            SetUpCreatureAdvancement(false, creatureName: creatureName);
+            SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
 
@@ -13588,7 +13586,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             abilities[AbilityConstants.Dexterity].BaseScore = 4132;
 
-            SetUpCreatureAdvancement(false, creatureName: creatureName);
+            SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
             feats.Add(new Feat { Name = FeatConstants.Initiative_Improved, Power = 4 });
@@ -13637,7 +13635,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
             abilities[AbilityConstants.Intelligence].BaseScore = 1234;
 
-            SetUpCreatureAdvancement(false, creatureName: creatureName);
+            SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
             mockFeatsGenerator.Setup(g => g.GenerateFeats(hitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029 + 6331, speeds, 1336, 96, "advanced size", creatureData.CanUseEquipment)).Returns(feats);
@@ -13687,7 +13685,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
             abilities[AbilityConstants.Intelligence].BaseScore = 1234;
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
             feats.Add(new Feat { Name = FeatConstants.Initiative_Improved, Power = 4 });
@@ -13763,7 +13761,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             var advancedAttacks = new[] { new Attack() { Name = "advanced attack" } };
             mockAttacksGenerator.Setup(s => s.GenerateAttacks(creatureName, creatureData.Size, "advanced size", 999, abilities, advancedHitPoints.RoundedHitDiceQuantity)).Returns(advancedAttacks);
@@ -13898,7 +13896,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
-            var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
+            var advancedHitPoints = SetUpCreatureAdvancement(true, creatureName: creatureName);
 
             mockFeatsGenerator.Setup(g => g.GenerateFeats(advancedHitPoints, 668 + 4633, abilities, skills, attacks, specialQualities, 1029 + 6331, speeds, 1336, 96, "advanced size", creatureData.CanUseEquipment)).Returns(feats);
 

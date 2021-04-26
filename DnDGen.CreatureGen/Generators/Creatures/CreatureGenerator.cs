@@ -104,7 +104,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             var randomCreature = collectionsSelector.SelectRandomFrom(creatures);
 
-            return Generate(randomCreature, template);
+            return Generate(randomCreature, template, true);
         }
 
         private Creature Generate(string creatureName, string template, bool asCharacter)
@@ -306,7 +306,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             var randomCreature = collectionsSelector.SelectRandomFrom(creatures);
 
-            return await GenerateAsync(randomCreature, template);
+            return await GenerateAsync(randomCreature, template, true);
         }
 
         private async Task<Creature> GenerateAsync(string creatureName, string template, bool asCharacter)
