@@ -75,16 +75,16 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
                 if (creature.Abilities[castingAbility].FullScore - creature.Abilities[castingAbility].TemplateAdjustment < 10)
                 {
-                    Assert.That(creature.Magic.SpellsPerDay, Is.Empty, $"{creature.Summary}: {castingAbility}: {creature.Abilities[castingAbility].FullScore} (+{creature.Abilities[castingAbility].TemplateAdjustment})");
-                    Assert.That(creature.Magic.KnownSpells, Is.Empty, $"{creature.Summary}: {castingAbility}: {creature.Abilities[castingAbility].FullScore} (+{creature.Abilities[castingAbility].TemplateAdjustment})");
-                    Assert.That(creature.Magic.PreparedSpells, Is.Empty, $"{creature.Summary}: {castingAbility}: {creature.Abilities[castingAbility].FullScore} (+{creature.Abilities[castingAbility].TemplateAdjustment})");
+                    Assert.That(creature.Magic.SpellsPerDay, Is.Empty, $"{creature.Summary}: {creature.Magic.Caster} ({creature.Magic.CastingAbility.Name}): {creature.Abilities[castingAbility].FullScore} (+{creature.Abilities[castingAbility].TemplateAdjustment})");
+                    Assert.That(creature.Magic.KnownSpells, Is.Empty, $"{creature.Summary}: {creature.Magic.Caster} ({creature.Magic.CastingAbility.Name}): {creature.Abilities[castingAbility].FullScore} (+{creature.Abilities[castingAbility].TemplateAdjustment})");
+                    Assert.That(creature.Magic.PreparedSpells, Is.Empty, $"{creature.Summary}: {creature.Magic.Caster} ({creature.Magic.CastingAbility.Name}): {creature.Abilities[castingAbility].FullScore} (+{creature.Abilities[castingAbility].TemplateAdjustment})");
 
                     return;
                 }
 
-                Assert.That(creature.Magic.SpellsPerDay, Is.Not.Empty, $"{creature.Summary}: {castingAbility}: {creature.Abilities[castingAbility].FullScore} (+{creature.Abilities[castingAbility].TemplateAdjustment})");
-                Assert.That(creature.Magic.KnownSpells, Is.Not.Empty, $"{creature.Summary}: {castingAbility}: {creature.Abilities[castingAbility].FullScore} (+{creature.Abilities[castingAbility].TemplateAdjustment})");
-                Assert.That(creature.Magic.PreparedSpells, Is.Not.Null, $"{creature.Summary}: {castingAbility}: {creature.Abilities[castingAbility].FullScore} (+{creature.Abilities[castingAbility].TemplateAdjustment})");
+                Assert.That(creature.Magic.SpellsPerDay, Is.Not.Empty, $"{creature.Summary}: {creature.Magic.Caster} ({creature.Magic.CastingAbility.Name}): {creature.Abilities[castingAbility].FullScore} (+{creature.Abilities[castingAbility].TemplateAdjustment})");
+                Assert.That(creature.Magic.KnownSpells, Is.Not.Empty, $"{creature.Summary}: {creature.Magic.Caster} ({creature.Magic.CastingAbility.Name}): {creature.Abilities[castingAbility].FullScore} (+{creature.Abilities[castingAbility].TemplateAdjustment})");
+                Assert.That(creature.Magic.PreparedSpells, Is.Not.Null, $"{creature.Summary}: {creature.Magic.Caster} ({creature.Magic.CastingAbility.Name}): {creature.Abilities[castingAbility].FullScore} (+{creature.Abilities[castingAbility].TemplateAdjustment})");
 
                 if (creature.Equipment.Armor == null && creature.Equipment.Shield == null)
                 {

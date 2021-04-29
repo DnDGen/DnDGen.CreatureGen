@@ -1,6 +1,7 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Creatures;
+using DnDGen.CreatureGen.Magics;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.TreasureGen.Items;
@@ -49,15 +50,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             Assert.That(creature.Magic.ArcaneSpellFailure, Is.InRange(0, 100));
             Assert.That(creature.Magic.Domains, Is.Not.Null);
 
-            if (creature.Magic.CastingAbility.FullScore > 10)
+            if (creature.Magic.CastingAbility.FullScore > 10
+                || (creature.Magic.CastingAbility.FullScore == 10 && creature.Magic.Caster == SpellConstants.Casters.Sorcerer))
             {
-                Assert.That(creature.Magic.KnownSpells, Is.Not.Empty.And.All.Not.Null, $"{creature.Magic.CastingAbility.Name}: {creature.Magic.CastingAbility.FullScore}");
-                Assert.That(creature.Magic.SpellsPerDay, Is.Not.Empty.And.All.Not.Null, $"{creature.Magic.CastingAbility.Name}: {creature.Magic.CastingAbility.FullScore}");
+                Assert.That(creature.Magic.KnownSpells, Is.Not.Empty.And.All.Not.Null, $"{creature.Summary}: {creature.Magic.Caster} ({creature.Magic.CastingAbility.Name}): {creature.Magic.CastingAbility.FullScore} (+{creature.Magic.CastingAbility.TemplateAdjustment})");
+                Assert.That(creature.Magic.SpellsPerDay, Is.Not.Empty.And.All.Not.Null, $"{creature.Summary}: {creature.Magic.Caster} ({creature.Magic.CastingAbility.Name}): {creature.Magic.CastingAbility.FullScore} (+{creature.Magic.CastingAbility.TemplateAdjustment})");
             }
             else
             {
-                Assert.That(creature.Magic.KnownSpells, Is.Empty, $"{creature.Magic.CastingAbility.Name}: {creature.Magic.CastingAbility.FullScore}");
-                Assert.That(creature.Magic.SpellsPerDay, Is.Empty, $"{creature.Magic.CastingAbility.Name}: {creature.Magic.CastingAbility.FullScore}");
+                Assert.That(creature.Magic.KnownSpells, Is.Empty, $"{creature.Summary}: {creature.Magic.Caster} ({creature.Magic.CastingAbility.Name}): {creature.Magic.CastingAbility.FullScore} (+{creature.Magic.CastingAbility.TemplateAdjustment})");
+                Assert.That(creature.Magic.SpellsPerDay, Is.Empty, $"{creature.Summary}: {creature.Magic.Caster} ({creature.Magic.CastingAbility.Name}): {creature.Magic.CastingAbility.FullScore} (+{creature.Magic.CastingAbility.TemplateAdjustment})");
             }
         }
 
