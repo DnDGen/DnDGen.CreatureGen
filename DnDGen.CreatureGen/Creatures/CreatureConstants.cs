@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Creatures
 {
@@ -1701,6 +1702,8 @@ namespace DnDGen.CreatureGen.Creatures
                 YuanTi_Pureblood,
             };
         }
+
+        public static IEnumerable<string> GetAllNonCharacters() => GetAll().Except(GetAllCharacters());
 
         public static IEnumerable<string> GetAllCharacters()
         {

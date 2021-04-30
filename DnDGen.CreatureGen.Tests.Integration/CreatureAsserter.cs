@@ -47,90 +47,11 @@ namespace DnDGen.CreatureGen.Tests.Integration
             Assert.That(creature.Languages, Is.Empty.Or.Unique, creature.Summary);
         }
 
-        private void VerifyMagic(Creature creature)
+        public void VerifyMagic(Creature creature)
         {
             Assert.That(creature.Magic, Is.Not.Null);
 
-            if (!string.IsNullOrEmpty(creature.Magic.Caster))
-            {
-                Assert.That(creature.Magic.Caster, Is.EqualTo(SpellConstants.Casters.Bard)
-                    .Or.EqualTo(SpellConstants.Casters.Cleric)
-                    .Or.EqualTo(SpellConstants.Casters.Druid)
-                    .Or.EqualTo(SpellConstants.Casters.Sorcerer), creature.Summary);
-
-                Assert.That(creature.Magic.CasterLevel, Is.Positive, creature.Summary);
-                Assert.That(creature.Magic.ArcaneSpellFailure, Is.InRange(0, 100), creature.Summary);
-                Assert.That(creature.Magic.Domains, Is.Not.Null, creature.Summary);
-
-                var castingAbility = string.Empty;
-
-                if (creature.Magic.Caster == SpellConstants.Casters.Bard || creature.Magic.Caster == SpellConstants.Casters.Sorcerer)
-                {
-                    castingAbility = AbilityConstants.Charisma;
-                }
-                else if (creature.Magic.Caster == SpellConstants.Casters.Cleric || creature.Magic.Caster == SpellConstants.Casters.Druid)
-                {
-                    castingAbility = AbilityConstants.Wisdom;
-                }
-
-                if (creature.Abilities[castingAbility].FullScore - creature.Abilities[castingAbility].TemplateAdjustment < 10)
-                {
-                    Assert.That(creature.Magic.SpellsPerDay, Is.Empty, creature.Summary);
-                    Assert.That(creature.Magic.KnownSpells, Is.Empty, creature.Summary);
-                    Assert.That(creature.Magic.PreparedSpells, Is.Empty, creature.Summary);
-
-                    return;
-                }
-
-                Assert.That(creature.Magic.SpellsPerDay, Is.Not.Empty, $"{creature.Summary}: {castingAbility}: {creature.Abilities[castingAbility].FullScore} (+{creature.Abilities[castingAbility].TemplateAdjustment})");
-                Assert.That(creature.Magic.KnownSpells, Is.Not.Empty, $"{creature.Summary}: {castingAbility}: {creature.Abilities[castingAbility].FullScore} (+{creature.Abilities[castingAbility].TemplateAdjustment})");
-                Assert.That(creature.Magic.PreparedSpells, Is.Not.Null, $"{creature.Summary}: {castingAbility}: {creature.Abilities[castingAbility].FullScore} (+{creature.Abilities[castingAbility].TemplateAdjustment})");
-
-                if (creature.Equipment.Armor == null && creature.Equipment.Shield == null)
-                {
-                    Assert.That(creature.Magic.ArcaneSpellFailure, Is.Zero, creature.Summary);
-                }
-
-                var hasDomain = creature.Magic.Domains.Any();
-
-                foreach (var spellQuantity in creature.Magic.SpellsPerDay)
-                {
-                    Assert.That(spellQuantity.BonusSpells, Is.Not.Negative, creature.Summary);
-                    Assert.That(spellQuantity.HasDomainSpell, Is.EqualTo(hasDomain && spellQuantity.Level > 0), creature.Summary);
-                    Assert.That(spellQuantity.Level, Is.InRange(0, 9), creature.Summary);
-                    Assert.That(spellQuantity.Quantity, Is.Not.Negative, creature.Summary);
-                    Assert.That(spellQuantity.Source, Is.EqualTo(creature.Magic.Caster), creature.Summary);
-                    Assert.That(spellQuantity.TotalQuantity, Is.Not.Negative, creature.Summary);
-
-                    if (creature.Magic.PreparedSpells.Any())
-                    {
-                        var spells = creature.Magic.PreparedSpells.Where(s => s.Level == spellQuantity.Level);
-                        Assert.That(spells.Count(), Is.EqualTo(spellQuantity.TotalQuantity));
-                    }
-                }
-
-                foreach (var spell in creature.Magic.KnownSpells)
-                {
-                    Assert.That(spell.Metamagic, Is.Empty, creature.Summary);
-                    Assert.That(spell.Level, Is.InRange(0, 9), creature.Summary);
-                    Assert.That(spell.Source, Is.EqualTo(creature.Magic.Caster), creature.Summary);
-                }
-
-                foreach (var spell in creature.Magic.PreparedSpells)
-                {
-                    Assert.That(spell.Metamagic, Is.Empty, creature.Summary);
-                    Assert.That(spell.Level, Is.InRange(0, 9), creature.Summary);
-                    Assert.That(spell.Source, Is.EqualTo(creature.Magic.Caster), creature.Summary);
-
-                    var knownSpells = creature.Magic.KnownSpells.Where(s => s.Name == spell.Name && s.Source == spell.Source);
-                    Assert.That(knownSpells, Is.Not.Empty, creature.Summary);
-
-                    //INFO: Doing it this way for when a spell can have multiple levels due to domains
-                    var knownLevels = knownSpells.Select(s => s.Level);
-                    Assert.That(knownLevels, Contains.Item(spell.Level), $"{creature.Summary}: {spell.Name}");
-                }
-            }
-            else
+            if (string.IsNullOrEmpty(creature.Magic.Caster))
             {
                 Assert.That(creature.Magic.CasterLevel, Is.Zero, creature.Summary);
                 Assert.That(creature.Magic.ArcaneSpellFailure, Is.Zero, creature.Summary);
@@ -138,6 +59,103 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 Assert.That(creature.Magic.SpellsPerDay, Is.Empty, creature.Summary);
                 Assert.That(creature.Magic.PreparedSpells, Is.Empty, creature.Summary);
                 Assert.That(creature.Magic.Domains, Is.Empty, creature.Summary);
+
+                return;
+            }
+
+            Assert.That(creature.Magic.Caster, Is.EqualTo(SpellConstants.Casters.Bard)
+                .Or.EqualTo(SpellConstants.Casters.Cleric)
+                .Or.EqualTo(SpellConstants.Casters.Druid)
+                .Or.EqualTo(SpellConstants.Casters.Sorcerer), creature.Summary);
+
+            Assert.That(creature.Magic.CasterLevel, Is.Positive, creature.Summary);
+            Assert.That(creature.Magic.ArcaneSpellFailure, Is.InRange(0, 100), creature.Summary);
+            Assert.That(creature.Magic.Domains, Is.Not.Null, creature.Summary);
+
+            var castingAbility = string.Empty;
+            if (creature.Magic.Caster == SpellConstants.Casters.Bard || creature.Magic.Caster == SpellConstants.Casters.Sorcerer)
+            {
+                castingAbility = AbilityConstants.Charisma;
+            }
+            else if (creature.Magic.Caster == SpellConstants.Casters.Cleric || creature.Magic.Caster == SpellConstants.Casters.Druid)
+            {
+                castingAbility = AbilityConstants.Wisdom;
+            }
+
+            Assert.That(creature.Magic.CastingAbility.Name, Is.EqualTo(castingAbility), creature.Summary);
+            Assert.That(creature.Magic.CastingAbility, Is.EqualTo(creature.Abilities[castingAbility]), creature.Summary);
+
+            //INFO: Undead templates do not get to regenerate magic based on new abilities
+            var castingScore = creature.Magic.CastingAbility.FullScore;
+            var undeadTemplates = new[]
+            {
+                CreatureConstants.Templates.Ghost,
+                CreatureConstants.Templates.Lich,
+                CreatureConstants.Templates.Vampire,
+                CreatureConstants.Templates.Skeleton,
+                CreatureConstants.Templates.Zombie,
+            };
+
+            if (undeadTemplates.Contains(creature.Template))
+            {
+                castingScore -= creature.Magic.CastingAbility.TemplateAdjustment;
+            }
+
+            if (castingScore < 10)
+            {
+                Assert.That(creature.Magic.SpellsPerDay, Is.Empty, $"{creature.Summary}: {creature.Magic.Caster} ({creature.Magic.CastingAbility.Name}): {creature.Magic.CastingAbility.FullScore} (+{creature.Magic.CastingAbility.TemplateAdjustment})");
+                Assert.That(creature.Magic.KnownSpells, Is.Empty, $"{creature.Summary}: {creature.Magic.Caster} ({creature.Magic.CastingAbility.Name}): {creature.Magic.CastingAbility.FullScore} (+{creature.Magic.CastingAbility.TemplateAdjustment})");
+                Assert.That(creature.Magic.PreparedSpells, Is.Empty, $"{creature.Summary}: {creature.Magic.Caster} ({creature.Magic.CastingAbility.Name}): {creature.Magic.CastingAbility.FullScore} (+{creature.Magic.CastingAbility.TemplateAdjustment})");
+
+                return;
+            }
+
+            Assert.That(creature.Magic.SpellsPerDay, Is.Not.Empty, $"{creature.Summary}: {creature.Magic.Caster} ({creature.Magic.CastingAbility.Name}): {creature.Magic.CastingAbility.FullScore} (+{creature.Magic.CastingAbility.TemplateAdjustment})");
+            Assert.That(creature.Magic.KnownSpells, Is.Not.Empty, $"{creature.Summary}: {creature.Magic.Caster} ({creature.Magic.CastingAbility.Name}): {creature.Magic.CastingAbility.FullScore} (+{creature.Magic.CastingAbility.TemplateAdjustment})");
+            Assert.That(creature.Magic.PreparedSpells, Is.Not.Null, $"{creature.Summary}: {creature.Magic.Caster} ({creature.Magic.CastingAbility.Name}): {creature.Magic.CastingAbility.FullScore} (+{creature.Magic.CastingAbility.TemplateAdjustment})");
+
+            if (creature.Equipment.Armor == null && creature.Equipment.Shield == null)
+            {
+                Assert.That(creature.Magic.ArcaneSpellFailure, Is.Zero, creature.Summary);
+            }
+
+            var hasDomain = creature.Magic.Domains.Any();
+
+            foreach (var spellQuantity in creature.Magic.SpellsPerDay)
+            {
+                Assert.That(spellQuantity.BonusSpells, Is.Not.Negative, creature.Summary);
+                Assert.That(spellQuantity.HasDomainSpell, Is.EqualTo(hasDomain && spellQuantity.Level > 0), creature.Summary);
+                Assert.That(spellQuantity.Level, Is.InRange(0, 9), creature.Summary);
+                Assert.That(spellQuantity.Quantity, Is.Not.Negative, creature.Summary);
+                Assert.That(spellQuantity.Source, Is.EqualTo(creature.Magic.Caster), creature.Summary);
+                Assert.That(spellQuantity.TotalQuantity, Is.Not.Negative, creature.Summary);
+
+                if (creature.Magic.PreparedSpells.Any())
+                {
+                    var spells = creature.Magic.PreparedSpells.Where(s => s.Level == spellQuantity.Level);
+                    Assert.That(spells.Count(), Is.EqualTo(spellQuantity.TotalQuantity));
+                }
+            }
+
+            foreach (var spell in creature.Magic.KnownSpells)
+            {
+                Assert.That(spell.Metamagic, Is.Empty, creature.Summary);
+                Assert.That(spell.Level, Is.InRange(0, 9), creature.Summary);
+                Assert.That(spell.Source, Is.EqualTo(creature.Magic.Caster), creature.Summary);
+            }
+
+            foreach (var spell in creature.Magic.PreparedSpells)
+            {
+                Assert.That(spell.Metamagic, Is.Empty, creature.Summary);
+                Assert.That(spell.Level, Is.InRange(0, 9), creature.Summary);
+                Assert.That(spell.Source, Is.EqualTo(creature.Magic.Caster), creature.Summary);
+
+                var knownSpells = creature.Magic.KnownSpells.Where(s => s.Name == spell.Name && s.Source == spell.Source);
+                Assert.That(knownSpells, Is.Not.Empty, creature.Summary);
+
+                //INFO: Doing it this way for when a spell can have multiple levels due to domains
+                var knownLevels = knownSpells.Select(s => s.Level);
+                Assert.That(knownLevels, Contains.Item(spell.Level), $"{creature.Summary}: {spell.Name}");
             }
         }
 

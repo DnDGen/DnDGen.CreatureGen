@@ -189,8 +189,78 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             Assert.That(creature.Template, Is.EqualTo(randomTemplate));
         }
 
+        [Test]
+        public void StressRandomCreatureOfTemplate()
+        {
+            stressor.Stress(GenerateAndAssertRandomCreatureOfTemplate);
+        }
+
+        private void GenerateAndAssertRandomCreatureOfTemplate()
+        {
+            var templates = CreatureConstants.Templates.GetAll();
+            var randomTemplate = collectionSelector.SelectRandomFrom(templates);
+
+            var creature = creatureGenerator.GenerateRandomOfTemplate(randomTemplate);
+
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
+            creatureAsserter.AssertCreature(creature);
+        }
+
+        [Test]
+        public void StressRandomCreatureOfTemplateAsCharacter()
+        {
+            stressor.Stress(GenerateAndAssertRandomCreatureOfTemplateAsCharacter);
+        }
+
+        private void GenerateAndAssertRandomCreatureOfTemplateAsCharacter()
+        {
+            var templates = CreatureConstants.Templates.GetAll();
+            var randomTemplate = collectionSelector.SelectRandomFrom(templates);
+
+            var creature = creatureGenerator.GenerateRandomOfTemplateAsCharacter(randomTemplate);
+
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
+            creatureAsserter.AssertCreatureAsCharacter(creature);
+        }
+
+        [Test]
+        public async Task StressRandomCreatureOfTemplateAsync()
+        {
+            await stressor.StressAsync(GenerateAndAssertRandomCreatureOfTemplateAsync);
+        }
+
+        private async Task GenerateAndAssertRandomCreatureOfTemplateAsync()
+        {
+            var templates = CreatureConstants.Templates.GetAll();
+            var randomTemplate = collectionSelector.SelectRandomFrom(templates);
+
+            var creature = await creatureGenerator.GenerateRandomOfTemplateAsync(randomTemplate);
+
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
+            creatureAsserter.AssertCreature(creature);
+        }
+
+        [Test]
+        public async Task StressRandomCreatureOfTemplateAsCharacterAsync()
+        {
+            await stressor.StressAsync(GenerateAndAssertRandomCreatureOfTemplateAsCharacterAsync);
+        }
+
+        private async Task GenerateAndAssertRandomCreatureOfTemplateAsCharacterAsync()
+        {
+            var templates = CreatureConstants.Templates.GetAll();
+            var randomTemplate = collectionSelector.SelectRandomFrom(templates);
+
+            var creature = await creatureGenerator.GenerateRandomOfTemplateAsCharacterAsync(randomTemplate);
+
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
+            creatureAsserter.AssertCreatureAsCharacter(creature);
+        }
+
         [TestCase(CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.Ghost)]
-        [Repeat(10)]
+        [TestCase(CreatureConstants.Dragon_White_Old, CreatureConstants.Templates.HalfFiend)]
+        [TestCase(CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.HalfCelestial)]
+        [Repeat(100)]
         [Ignore("Only use this for debugging")]
         public void BUG_StressSpecificCreature(string creatureName, string template)
         {

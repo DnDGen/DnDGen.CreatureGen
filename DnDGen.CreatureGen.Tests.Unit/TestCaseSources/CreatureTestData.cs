@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using System.Collections;
 
-namespace DnDGen.CreatureGen.Tests.Integration.TestData
+namespace DnDGen.CreatureGen.Tests.Unit.TestCaseSources
 {
     public class CreatureTestData
     {
@@ -19,13 +19,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
             }
         }
 
-        public static IEnumerable Characters
+        public static IEnumerable CharacterCreatures
         {
             get
             {
                 var creatures = CreatureConstants.GetAllCharacters();
 
                 foreach (var creature in creatures)
+                {
+                    yield return new TestCaseData(creature);
+                }
+            }
+        }
+
+        public static IEnumerable NonCharacterCreatures
+        {
+            get
+            {
+                var nonCharacters = CreatureConstants.GetAllNonCharacters();
+
+                foreach (var creature in nonCharacters)
                 {
                     yield return new TestCaseData(creature);
                 }

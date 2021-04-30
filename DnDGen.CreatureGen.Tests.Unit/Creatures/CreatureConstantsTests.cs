@@ -1125,5 +1125,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
                 CreatureConstants.Zelekhut,
             }));
         }
+
+        [Test]
+        public void GetAllNonCharacters_ReturnsNonCharacters()
+        {
+            var nonCharacters = CreatureConstants.GetAllNonCharacters();
+            var creatures = CreatureConstants.GetAll();
+            var characters = CreatureConstants.GetAllCharacters();
+
+            Assert.That(nonCharacters, Is.EqualTo(creatures.Except(characters)));
+        }
     }
 }
