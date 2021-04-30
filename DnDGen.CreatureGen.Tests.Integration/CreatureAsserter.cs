@@ -101,8 +101,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 castingScore -= creature.Magic.CastingAbility.TemplateAdjustment;
             }
 
-            if (castingScore < 10
-                || (castingScore == 10 && creature.Magic.Caster != SpellConstants.Casters.Sorcerer))
+            if (castingScore < 10)
             {
                 Assert.That(creature.Magic.SpellsPerDay, Is.Empty, $"{creature.Summary}: {creature.Magic.Caster} ({creature.Magic.CastingAbility.Name}): {creature.Magic.CastingAbility.FullScore} (+{creature.Magic.CastingAbility.TemplateAdjustment})");
                 Assert.That(creature.Magic.KnownSpells, Is.Empty, $"{creature.Summary}: {creature.Magic.Caster} ({creature.Magic.CastingAbility.Name}): {creature.Magic.CastingAbility.FullScore} (+{creature.Magic.CastingAbility.TemplateAdjustment})");
