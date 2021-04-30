@@ -1,7 +1,6 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Creatures;
-using DnDGen.CreatureGen.Magics;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.TreasureGen.Items;
@@ -23,20 +22,38 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             creatureGenerator = GetNewInstanceOf<ICreatureGenerator>();
         }
 
+        [TestCase(CreatureConstants.Androsphinx)]
         [TestCase(CreatureConstants.Angel_Planetar)]
         [TestCase(CreatureConstants.Angel_Solar)]
         [TestCase(CreatureConstants.Aranea)]
+        [TestCase(CreatureConstants.Couatl)]
         [TestCase(CreatureConstants.Dragon_Black_GreatWyrm)]
         [TestCase(CreatureConstants.Dragon_Blue_GreatWyrm)]
         [TestCase(CreatureConstants.Dragon_Green_GreatWyrm)]
         [TestCase(CreatureConstants.Dragon_Red_GreatWyrm)]
+        [TestCase(CreatureConstants.Dragon_White_Old)]
+        [TestCase(CreatureConstants.Dragon_White_VeryOld)]
+        [TestCase(CreatureConstants.Dragon_White_Ancient)]
+        [TestCase(CreatureConstants.Dragon_White_Wyrm)]
         [TestCase(CreatureConstants.Dragon_White_GreatWyrm)]
+        [TestCase(CreatureConstants.Dragon_Brass_Young)]
+        [TestCase(CreatureConstants.Dragon_Brass_Juvenile)]
+        [TestCase(CreatureConstants.Dragon_Brass_YoungAdult)]
+        [TestCase(CreatureConstants.Dragon_Brass_Adult)]
+        [TestCase(CreatureConstants.Dragon_Brass_MatureAdult)]
+        [TestCase(CreatureConstants.Dragon_Brass_Old)]
+        [TestCase(CreatureConstants.Dragon_Brass_VeryOld)]
+        [TestCase(CreatureConstants.Dragon_Brass_Ancient)]
+        [TestCase(CreatureConstants.Dragon_Brass_Wyrm)]
         [TestCase(CreatureConstants.Dragon_Brass_GreatWyrm)]
         [TestCase(CreatureConstants.Dragon_Bronze_GreatWyrm)]
         [TestCase(CreatureConstants.Dragon_Copper_GreatWyrm)]
         [TestCase(CreatureConstants.Dragon_Gold_GreatWyrm)]
         [TestCase(CreatureConstants.Dragon_Silver_GreatWyrm)]
+        [TestCase(CreatureConstants.Gynosphinx)]
+        [TestCase(CreatureConstants.Lammasu)]
         [TestCase(CreatureConstants.Rakshasa)]
+        [TestCase(CreatureConstants.TrumpetArchon)]
         public void CanGenerateSpellsForThoseWhoCastAsSpellcaster(string creatureName)
         {
             var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);
@@ -44,23 +61,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
 
             Assert.That(creature.Magic, Is.Not.Null);
             Assert.That(creature.Magic.Caster, Is.Not.Empty);
-            Assert.That(creature.Magic.CasterLevel, Is.Positive);
-            Assert.That(creature.Magic.CastingAbility, Is.Not.Null);
-            Assert.That(creature.Abilities.Values, Contains.Item(creature.Magic.CastingAbility), creature.Magic.CastingAbility.Name);
-            Assert.That(creature.Magic.ArcaneSpellFailure, Is.InRange(0, 100));
-            Assert.That(creature.Magic.Domains, Is.Not.Null);
-
-            if (creature.Magic.CastingAbility.FullScore > 10
-                || (creature.Magic.CastingAbility.FullScore == 10 && creature.Magic.Caster == SpellConstants.Casters.Sorcerer))
-            {
-                Assert.That(creature.Magic.KnownSpells, Is.Not.Empty.And.All.Not.Null, $"{creature.Summary}: {creature.Magic.Caster} ({creature.Magic.CastingAbility.Name}): {creature.Magic.CastingAbility.FullScore} (+{creature.Magic.CastingAbility.TemplateAdjustment})");
-                Assert.That(creature.Magic.SpellsPerDay, Is.Not.Empty.And.All.Not.Null, $"{creature.Summary}: {creature.Magic.Caster} ({creature.Magic.CastingAbility.Name}): {creature.Magic.CastingAbility.FullScore} (+{creature.Magic.CastingAbility.TemplateAdjustment})");
-            }
-            else
-            {
-                Assert.That(creature.Magic.KnownSpells, Is.Empty, $"{creature.Summary}: {creature.Magic.Caster} ({creature.Magic.CastingAbility.Name}): {creature.Magic.CastingAbility.FullScore} (+{creature.Magic.CastingAbility.TemplateAdjustment})");
-                Assert.That(creature.Magic.SpellsPerDay, Is.Empty, $"{creature.Summary}: {creature.Magic.Caster} ({creature.Magic.CastingAbility.Name}): {creature.Magic.CastingAbility.FullScore} (+{creature.Magic.CastingAbility.TemplateAdjustment})");
-            }
+            creatureAsserter.VerifyMagic(creature);
         }
 
         [TestCase(CreatureConstants.Human)]
@@ -161,98 +162,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             creatureAsserter.AssertCreature(creature);
         }
 
-        [TestCase(CreatureConstants.Aasimar)]
-        [TestCase(CreatureConstants.Azer)]
-        [TestCase(CreatureConstants.Bugbear)]
-        [TestCase(CreatureConstants.Centaur)]
-        [TestCase(CreatureConstants.Derro)]
-        [TestCase(CreatureConstants.Derro_Sane)]
-        [TestCase(CreatureConstants.Doppelganger)]
-        [TestCase(CreatureConstants.Dwarf_Deep)]
-        [TestCase(CreatureConstants.Dwarf_Duergar)]
-        [TestCase(CreatureConstants.Dwarf_Hill)]
-        [TestCase(CreatureConstants.Dwarf_Mountain)]
-        [TestCase(CreatureConstants.Eagle_Giant)]
-        [TestCase(CreatureConstants.Elf_Aquatic)]
-        [TestCase(CreatureConstants.Elf_Drow)]
-        [TestCase(CreatureConstants.Elf_Gray)]
-        [TestCase(CreatureConstants.Elf_Half)]
-        [TestCase(CreatureConstants.Elf_High)]
-        [TestCase(CreatureConstants.Elf_Wild)]
-        [TestCase(CreatureConstants.Elf_Wood)]
-        [TestCase(CreatureConstants.Gargoyle)]
-        [TestCase(CreatureConstants.Gargoyle_Kapoacinth)]
-        [TestCase(CreatureConstants.Giant_Cloud)]
-        [TestCase(CreatureConstants.Giant_Fire)]
-        [TestCase(CreatureConstants.Giant_Frost)]
-        [TestCase(CreatureConstants.Giant_Hill)]
-        [TestCase(CreatureConstants.Giant_Stone)]
-        [TestCase(CreatureConstants.Giant_Stone_Elder)]
-        [TestCase(CreatureConstants.Giant_Storm)]
-        [TestCase(CreatureConstants.Githyanki)]
-        [TestCase(CreatureConstants.Githzerai)]
-        [TestCase(CreatureConstants.Gnoll)]
-        [TestCase(CreatureConstants.Gnome_Forest)]
-        [TestCase(CreatureConstants.Gnome_Rock)]
-        [TestCase(CreatureConstants.Gnome_Svirfneblin)]
-        [TestCase(CreatureConstants.Goblin)]
-        [TestCase(CreatureConstants.Grimlock)]
-        [TestCase(CreatureConstants.Halfling_Deep)]
-        [TestCase(CreatureConstants.Halfling_Lightfoot)]
-        [TestCase(CreatureConstants.Halfling_Tallfellow)]
-        [TestCase(CreatureConstants.Harpy)]
-        [TestCase(CreatureConstants.Hobgoblin)]
-        [TestCase(CreatureConstants.HoundArchon)]
-        [TestCase(CreatureConstants.Human)]
-        [TestCase(CreatureConstants.Janni)]
-        [TestCase(CreatureConstants.Kobold)]
-        [TestCase(CreatureConstants.KuoToa)]
-        [TestCase(CreatureConstants.Lizardfolk)]
-        [TestCase(CreatureConstants.Locathah)]
-        [TestCase(CreatureConstants.Mephit_Air)]
-        [TestCase(CreatureConstants.Mephit_Dust)]
-        [TestCase(CreatureConstants.Mephit_Earth)]
-        [TestCase(CreatureConstants.Mephit_Fire)]
-        [TestCase(CreatureConstants.Mephit_Ice)]
-        [TestCase(CreatureConstants.Mephit_Magma)]
-        [TestCase(CreatureConstants.Mephit_Ooze)]
-        [TestCase(CreatureConstants.Mephit_Salt)]
-        [TestCase(CreatureConstants.Mephit_Steam)]
-        [TestCase(CreatureConstants.Mephit_Water)]
-        [TestCase(CreatureConstants.Merfolk)]
-        [TestCase(CreatureConstants.MindFlayer)]
-        [TestCase(CreatureConstants.Minotaur)]
-        [TestCase(CreatureConstants.Mummy)]
-        [TestCase(CreatureConstants.Ogre)]
-        [TestCase(CreatureConstants.OgreMage)]
-        [TestCase(CreatureConstants.Ogre_Merrow)]
-        [TestCase(CreatureConstants.Orc)]
-        [TestCase(CreatureConstants.Orc_Half)]
-        [TestCase(CreatureConstants.Owl_Giant)]
-        [TestCase(CreatureConstants.Pixie)]
-        [TestCase(CreatureConstants.Pixie_WithIrresistibleDance)]
-        [TestCase(CreatureConstants.Pseudodragon)]
-        [TestCase(CreatureConstants.Rakshasa)]
-        [TestCase(CreatureConstants.Sahuagin)]
-        [TestCase(CreatureConstants.Sahuagin_Malenti)]
-        [TestCase(CreatureConstants.Sahuagin_Mutant)]
-        [TestCase(CreatureConstants.Satyr)]
-        [TestCase(CreatureConstants.Satyr_WithPipes)]
-        [TestCase(CreatureConstants.Slaad_Blue)]
-        [TestCase(CreatureConstants.Slaad_Gray)]
-        [TestCase(CreatureConstants.Slaad_Green)]
-        [TestCase(CreatureConstants.Slaad_Red)]
-        [TestCase(CreatureConstants.Tiefling)]
-        [TestCase(CreatureConstants.Troglodyte)]
-        [TestCase(CreatureConstants.Troll)]
-        [TestCase(CreatureConstants.Troll_Scrag)]
-        [TestCase(CreatureConstants.Unicorn)]
-        [TestCase(CreatureConstants.YuanTi_Abomination)]
-        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeArms)]
-        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeHead)]
-        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTail)]
-        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs)]
-        [TestCase(CreatureConstants.YuanTi_Pureblood)]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Characters))]
         public void CanGenerateCreatureAsCharacter(string creatureName)
         {
             var creature = creatureGenerator.GenerateAsCharacter(creatureName, CreatureConstants.Templates.None);
@@ -315,11 +225,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Dog, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(CreatureConstants.Dog_Riding, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.Ghost)]
+        [TestCase(CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.HalfCelestial)]
         [TestCase(CreatureConstants.Dragon_Red_Wyrmling, CreatureConstants.Templates.Skeleton)]
         [TestCase(CreatureConstants.Dragon_Red_VeryYoung, CreatureConstants.Templates.Skeleton)]
         [TestCase(CreatureConstants.Dragon_Red_Young, CreatureConstants.Templates.Skeleton)]
         [TestCase(CreatureConstants.Dragon_Red_Juvenile, CreatureConstants.Templates.Skeleton)]
         [TestCase(CreatureConstants.Dragon_Red_YoungAdult, CreatureConstants.Templates.Skeleton)]
+        [TestCase(CreatureConstants.Dragon_White_Old, CreatureConstants.Templates.HalfFiend)]
         [TestCase(CreatureConstants.Eagle, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(CreatureConstants.Eagle_Giant, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(CreatureConstants.Elasmosaurus, CreatureConstants.Templates.FiendishCreature)]

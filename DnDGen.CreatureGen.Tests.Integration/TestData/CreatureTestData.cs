@@ -19,6 +19,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
             }
         }
 
+        public static IEnumerable Characters
+        {
+            get
+            {
+                var creatures = CreatureConstants.GetAllCharacters();
+
+                foreach (var creature in creatures)
+                {
+                    yield return new TestCaseData(creature);
+                }
+            }
+        }
+
         public static IEnumerable Templates
         {
             get

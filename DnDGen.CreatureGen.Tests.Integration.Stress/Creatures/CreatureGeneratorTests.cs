@@ -259,8 +259,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         [TestCase(CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.Ghost)]
         [TestCase(CreatureConstants.Dragon_White_Old, CreatureConstants.Templates.HalfFiend)]
-        [Repeat(10)]
-        //[Ignore("Only use this for debugging")]
+        [TestCase(CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.HalfCelestial)]
+        [Repeat(100)]
+        [Ignore("Only use this for debugging")]
         public void BUG_StressSpecificCreature(string creatureName, string template)
         {
             stressor.Stress(() => GenerateAndAssertCreature(creatureName, template));
