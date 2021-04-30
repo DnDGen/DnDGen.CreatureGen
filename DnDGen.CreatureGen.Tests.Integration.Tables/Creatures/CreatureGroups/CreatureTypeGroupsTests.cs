@@ -74,7 +74,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Ogre_Merrow,
             CreatureConstants.OgreMage,
             CreatureConstants.Troll,
-            CreatureConstants.Troll_Scrag)]
+            CreatureConstants.Troll_Scrag,
+            CreatureConstants.Groups.Lycanthrope)]
         [TestCase(CreatureConstants.Types.Humanoid,
             CreatureConstants.Bugbear,
             CreatureConstants.Groups.Dwarf,

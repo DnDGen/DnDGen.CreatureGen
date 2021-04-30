@@ -58,6 +58,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.TestCaseSources
             }
         }
 
+        public static IEnumerable CreatureTemplatePairs
+        {
+            get
+            {
+                var templates = CreatureConstants.Templates.GetAll();
+                var creatures = CreatureConstants.GetAll();
+
+                foreach (var template in templates)
+                {
+                    foreach (var creature in creatures)
+                    {
+                        yield return new TestCaseData(creature, template);
+                    }
+                }
+            }
+        }
+
         public static IEnumerable Types
         {
             get
