@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Tables;
 using NUnit.Framework;
 using System.Linq;
 
@@ -758,6 +759,27 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 AssertGroupDoesNotContain(subgroupName, forbiddenEntry);
                 AssertGroupDoesNotContain(subgroupName, subgroupName);
             }
+        }
+
+        [Test]
+        public void All_ContainsAllCreatures()
+        {
+            var creatures = CreatureConstants.GetAll().ToArray();
+            AssertDistinctCollection(GroupConstants.All, creatures);
+        }
+
+        [Test]
+        public void Characters_ContainsAllCharacterCreatures()
+        {
+            var creatures = CreatureConstants.GetAllCharacters().ToArray();
+            AssertDistinctCollection(GroupConstants.Characters, creatures);
+        }
+
+        [Test]
+        public void Templates_ContainsAllTemplates()
+        {
+            var templates = CreatureConstants.Templates.GetAll().ToArray();
+            AssertDistinctCollection(GroupConstants.All, templates);
         }
     }
 }

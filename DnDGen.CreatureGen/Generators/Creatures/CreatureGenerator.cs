@@ -85,7 +85,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         public string GenerateRandomNameOfTemplate(string template)
         {
-            var creatures = CreatureConstants.GetAll();
+            var creatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All);
             var templateCreatures = GetCreaturesOfTemplate(template, creatures);
             var randomCreature = collectionsSelector.SelectRandomFrom(templateCreatures);
 
@@ -108,7 +108,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         public string GenerateRandomNameOfTemplateAsCharacter(string template)
         {
-            var creatures = CreatureConstants.GetAllCharacters();
+            var creatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters);
             var templateCreatures = GetCreaturesOfTemplate(template, creatures);
 
             if (!templateCreatures.Any())
@@ -126,7 +126,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         public (string CreatureName, string Template) GenerateRandomNameOfType(string creatureType)
         {
-            var creatures = CreatureConstants.GetAll();
+            var creatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All);
             var pairings = GetCreaturesOfType(creatureType, creatures);
             var randomCreature = collectionsSelector.SelectRandomFrom(pairings);
 
@@ -136,7 +136,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         private IEnumerable<(string CreatureName, string Template)> GetCreaturesOfType(string creatureType, IEnumerable<string> creatureGroup)
         {
             var pairings = new List<(string CreatureName, string Template)>();
-            var templates = CreatureConstants.Templates.GetAll();
+            var templates = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
 
             var ofType = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
             var creaturesOfTypePairings = ofType.Intersect(creatureGroup).Select(c => (c, CreatureConstants.Templates.None));
@@ -162,7 +162,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         public (string CreatureName, string Template) GenerateRandomNameOfTypeAsCharacter(string creatureType)
         {
-            var creatures = CreatureConstants.GetAllCharacters();
+            var creatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters);
             var pairings = GetCreaturesOfType(creatureType, creatures);
 
             if (!pairings.Any())

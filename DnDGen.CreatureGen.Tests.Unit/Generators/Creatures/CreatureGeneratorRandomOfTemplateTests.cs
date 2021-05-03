@@ -167,6 +167,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
         private void SetUpCreature(string creatureName, string templateName, bool asCharacter)
         {
+            var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
+                .Returns(creatures);
+
             mockAlignmentGenerator.Setup(g => g.Generate(creatureName)).Returns(alignment);
 
             mockAttacksGenerator.Setup(g => g.GenerateBaseAttackBonus(It.Is<CreatureType>(c => c.Name == types[0]), hitPoints)).Returns(753);
@@ -388,9 +393,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             return advancedHitPoints;
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void GenerateRandomNameOfTemplate_GenerateCreatureName(string creatureName)
+        [Test]
+        public void GenerateRandomNameOfTemplate_GenerateCreatureName()
         {
+            var creatureName = "my creature";
+            var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
+                .Returns(creatures);
+
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
 
@@ -400,13 +411,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(name, Is.EqualTo(creatureName));
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void GenerateRandomNameOfTemplate_GenerateRandomCreatureName(string creatureName)
+        [Test]
+        public void GenerateRandomNameOfTemplate_GenerateRandomCreatureName()
         {
+            var creatureName = "my creature";
+            var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
+                .Returns(creatures);
+
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>())).Returns(true);
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(CreatureConstants.GetAll()))))
+                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(c => c.IsEquivalentTo(creatures))))
                 .Returns(creatureName);
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
@@ -415,9 +432,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(name, Is.EqualTo(creatureName));
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void GenerateRandomOfTemplate_GenerateCreatureName(string creatureName)
+        [Test]
+        public void GenerateRandomOfTemplate_GenerateCreatureName()
         {
+            var creatureName = "my creature";
             SetUpCreature(creatureName, "my template", false);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
@@ -432,9 +450,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTemplateApplicator.Verify(a => a.ApplyTo(creature), Times.Once);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void GenerateRandomOfTemplate_GenerateRandomCreatureName(string creatureName)
+        [Test]
+        public void GenerateRandomOfTemplate_GenerateRandomCreatureName()
         {
+            var creatureName = "my creature";
             SetUpCreature(creatureName, "my template", false);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
@@ -2418,9 +2437,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTemplateApplicator.Verify(a => a.ApplyToAsync(creature), Times.Once);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public async Task GenerateRandomOfTemplateAsync_GenerateCreatureName(string creatureName)
+        [Test]
+        public async Task GenerateRandomOfTemplateAsync_GenerateCreatureName()
         {
+            var creatureName = "my creature";
             SetUpCreature(creatureName, "my template", false);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
@@ -2435,9 +2455,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTemplateApplicator.Verify(a => a.ApplyToAsync(creature), Times.Once);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public async Task GenerateRandomOfTemplateAsync_GenerateRandomCreatureName(string creatureName)
+        [Test]
+        public async Task GenerateRandomOfTemplateAsync_GenerateRandomCreatureName()
         {
+            var creatureName = "my creature";
             SetUpCreature(creatureName, "my template", false);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();

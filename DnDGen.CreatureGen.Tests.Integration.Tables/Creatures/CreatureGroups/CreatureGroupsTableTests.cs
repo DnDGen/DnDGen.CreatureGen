@@ -81,6 +81,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 GroupConstants.GoodBaseAttack,
                 GroupConstants.AverageBaseAttack,
                 GroupConstants.PoorBaseAttack,
+                GroupConstants.All,
+                GroupConstants.Characters,
+                GroupConstants.Templates,
             };
 
             var names = entries.Union(types).Union(subtypes);
