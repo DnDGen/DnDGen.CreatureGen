@@ -775,6 +775,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Groups.Arrowhawk, "Arrowhawk")]
         [TestCase(CreatureConstants.Groups.Bear, "Bear")]
         [TestCase(CreatureConstants.Groups.Centipede_Monstrous, "Monstrous Centipede")]
+        [TestCase(CreatureConstants.Groups.Chimera, "Chimera")]
         [TestCase(CreatureConstants.Groups.Cryohydra, "Cryohydra")]
         [TestCase(CreatureConstants.Groups.Demon, "Demon")]
         [TestCase(CreatureConstants.Groups.Devil, "Devil")]

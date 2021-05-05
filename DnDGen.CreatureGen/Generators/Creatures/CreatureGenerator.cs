@@ -143,7 +143,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             pairings.AddRange(creaturesOfTypePairings);
 
             var templatesOfType = ofType.Intersect(templates);
-            foreach (var template in templates)
+            foreach (var template in templatesOfType)
             {
                 var creaturesOfType = GetCreaturesOfTemplate(template, creatureGroup);
                 creaturesOfTypePairings = creaturesOfType.Select(c => (c, template));
@@ -174,8 +174,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         public Creature GenerateRandomOfTypeAsCharacter(string creatureType)
         {
-            var randomCreature = GenerateRandomNameOfType(creatureType);
-            return Generate(randomCreature.CreatureName, randomCreature.Template);
+            var randomCreature = GenerateRandomNameOfTypeAsCharacter(creatureType);
+            return GenerateAsCharacter(randomCreature.CreatureName, randomCreature.Template);
         }
 
         private Creature Generate(string creatureName, string template, bool asCharacter)

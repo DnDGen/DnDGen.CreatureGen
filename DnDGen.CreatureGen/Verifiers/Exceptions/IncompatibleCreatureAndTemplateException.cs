@@ -17,7 +17,13 @@ namespace DnDGen.CreatureGen.Verifiers.Exceptions
         {
             get
             {
-                return $"{creature} and {template} are not compatible";
+                var formattedTemplate = $"'{template}'";
+                if (string.IsNullOrEmpty(template))
+                {
+                    formattedTemplate += " (None)";
+                }
+
+                return $"'{creature}' and {formattedTemplate} are not compatible";
             }
         }
     }
