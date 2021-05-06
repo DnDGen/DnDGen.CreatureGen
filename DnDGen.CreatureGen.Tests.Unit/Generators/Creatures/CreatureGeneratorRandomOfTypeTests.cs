@@ -513,6 +513,110 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(name.Template, Is.EqualTo(template));
         }
 
+        [TestCase(CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(CreatureConstants.Templates.FiendishCreature)]
+        public void GenerateRandomNameOfType_GenerateRandomCreatureName_WithTemplate_RemoveMagicalBeasts(string template)
+        {
+            var creatureName = "my creature";
+
+            var creatures = new[]
+            {
+                "my animal", "my vermin",
+                creatureName, "other creature name", "wrong creature name",
+                "my other animal", "my other vermin",
+            };
+            var templates = new[] { "other template", template, "wrong template name" };
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
+                .Returns(creatures);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
+                .Returns(templates);
+
+            var outsiders = new[] { creatureName, "wrong creature name" };
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Outsider))
+                .Returns(outsiders.Union(new[] { template }));
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal))
+                .Returns(new[] { "my animal", "my other animal" });
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Vermin))
+                .Returns(new[] { "my vermin", "my other vermin" });
+
+            foreach (var otherTemplate in templates)
+            {
+                var mockTemplateApplicator = new Mock<TemplateApplicator>();
+                mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>())).Returns(true);
+                mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(otherTemplate)).Returns(mockTemplateApplicator.Object);
+            }
+
+            var typePairings = new[] { creatureName, "other creature name", "wrong creature name", }
+                .Select(c => (c, template))
+                .Union(outsiders.Select(c => (c, CreatureConstants.Templates.None)));
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<(string CreatureName, string Template)>>(c => c.IsEquivalentTo(typePairings))))
+                .Returns(("other creature name", template));
+
+            var name = creatureGenerator.GenerateRandomNameOfType(CreatureConstants.Types.Outsider);
+            Assert.That(name.CreatureName, Is.EqualTo("other creature name"));
+            Assert.That(name.Template, Is.EqualTo(template));
+        }
+
+        [TestCase(CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(CreatureConstants.Templates.FiendishCreature)]
+        public void GenerateRandomNameOfType_GenerateRandomCreatureName_WithTemplate_AddMagicalBeasts(string template)
+        {
+            var creatureName = "my creature";
+
+            var creatures = new[]
+            {
+                "my animal", "my vermin",
+                creatureName, "other creature name", "wrong creature name",
+                "my other animal", "my other vermin",
+            };
+            var templates = new[] { "other template", CreatureConstants.Templates.CelestialCreature, CreatureConstants.Templates.FiendishCreature, "wrong template name" };
+            var animalsAndVermin = new[] { "my animal", "my other animal", "my vermin", "my other vermin" };
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
+                .Returns(creatures);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
+                .Returns(templates);
+
+            var magicalBeasts = new[] { creatureName, "other creature name", "wrong creature name" };
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.MagicalBeast))
+                .Returns(magicalBeasts);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal))
+                .Returns(new[] { "my animal", "my other animal" });
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Vermin))
+                .Returns(new[] { "my vermin", "my other vermin" });
+
+            foreach (var otherTemplate in templates)
+            {
+                var mockTemplateApplicator = new Mock<TemplateApplicator>();
+                mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>())).Returns((string c) => animalsAndVermin.Contains(c));
+                mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(otherTemplate)).Returns(mockTemplateApplicator.Object);
+            }
+
+            var typePairings = magicalBeasts
+                .Select(c => (c, CreatureConstants.Templates.None))
+                .Union(animalsAndVermin.Select(c => (c, CreatureConstants.Templates.CelestialCreature)))
+                .Union(animalsAndVermin.Select(c => (c, CreatureConstants.Templates.FiendishCreature)));
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<(string CreatureName, string Template)>>(c => c.IsEquivalentTo(typePairings))))
+                .Returns(("my animal", template));
+
+            var name = creatureGenerator.GenerateRandomNameOfType(CreatureConstants.Types.MagicalBeast);
+            Assert.That(name.CreatureName, Is.EqualTo("my animal"));
+            Assert.That(name.Template, Is.EqualTo(template));
+        }
+
         [Test]
         public void GenerateRandomOfType_GenerateCreatureName_NoTemplate()
         {
@@ -569,6 +673,109 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.Template, Is.EqualTo(template));
 
             mockTemplateApplicator.Verify(a => a.ApplyTo(creature), Times.Once);
+        }
+
+        [TestCase(CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(CreatureConstants.Templates.FiendishCreature)]
+        public void GenerateRandomOfType_GenerateRandomCreatureName_WithTemplate_RemoveMagicalBeasts(string template)
+        {
+            var creatureName = "my creature";
+
+            var creatures = new[]
+            {
+                "my animal", "my vermin",
+                creatureName, "other creature name", "wrong creature name",
+                "my other animal", "my other vermin",
+            };
+            var templates = new[] { "other template", template, "wrong template name" };
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
+                .Returns(creatures);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
+                .Returns(templates);
+
+            var outsiders = new[] { creatureName, "wrong creature name" };
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Outsider))
+                .Returns(outsiders.Union(new[] { template }));
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal))
+                .Returns(new[] { "my animal", "my other animal" });
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Vermin))
+                .Returns(new[] { "my vermin", "my other vermin" });
+
+            foreach (var otherTemplate in templates)
+            {
+                var mockTemplateApplicator = new Mock<TemplateApplicator>();
+                mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>())).Returns(true);
+                mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(otherTemplate)).Returns(mockTemplateApplicator.Object);
+            }
+
+            var typePairings = new[] { creatureName, "other creature name", "wrong creature name", }
+                .Select(c => (c, template))
+                .Union(outsiders.Select(c => (c, CreatureConstants.Templates.None)));
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<(string CreatureName, string Template)>>(c => c.IsEquivalentTo(typePairings))))
+                .Returns(("other creature name", template));
+
+            var name = creatureGenerator.GenerateRandomOfType(CreatureConstants.Types.Outsider);
+            Assert.That(name.Name, Is.EqualTo("other creature name"));
+            Assert.That(name.Template, Is.EqualTo(template));
+        }
+
+        [TestCase(CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(CreatureConstants.Templates.FiendishCreature)]
+        public void GenerateRandomOfType_GenerateRandomCreatureName_WithTemplate_AddMagicalBeasts(string template)
+        {
+            var creatureName = "my creature";
+
+            var creatures = new[]
+            {
+                "my animal", "my vermin",
+                creatureName, "other creature name", "wrong creature name",
+                "my other animal", "my other vermin",
+            };
+            var templates = new[] { "other template", CreatureConstants.Templates.CelestialCreature, CreatureConstants.Templates.FiendishCreature, "wrong template name" };
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
+                .Returns(creatures);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
+                .Returns(templates);
+
+            var magicalBeasts = new[] { creatureName, "other creature name", "wrong creature name" };
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.MagicalBeast))
+                .Returns(magicalBeasts);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal))
+                .Returns(new[] { "my animal", "my other animal" });
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Vermin))
+                .Returns(new[] { "my vermin", "my other vermin" });
+
+            foreach (var otherTemplate in templates)
+            {
+                var mockTemplateApplicator = new Mock<TemplateApplicator>();
+                mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>())).Returns(true);
+                mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(otherTemplate)).Returns(mockTemplateApplicator.Object);
+            }
+
+            var typePairings = magicalBeasts
+                .Select(c => (c, CreatureConstants.Templates.None))
+                .Union(new[] { "my animal", "my other animal", "my vermin", "my other vermin" }.Select(c => (c, CreatureConstants.Templates.CelestialCreature)))
+                .Union(new[] { "my animal", "my other animal", "my vermin", "my other vermin" }.Select(c => (c, CreatureConstants.Templates.FiendishCreature)));
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<(string CreatureName, string Template)>>(c => c.IsEquivalentTo(typePairings))))
+                .Returns(("my animal", template));
+
+            var name = creatureGenerator.GenerateRandomOfType(CreatureConstants.Types.MagicalBeast);
+            Assert.That(name.Name, Is.EqualTo("my animal"));
+            Assert.That(name.Template, Is.EqualTo(template));
         }
 
         [Test]
@@ -2443,6 +2650,109 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.Template, Is.EqualTo(template));
 
             mockTemplateApplicator.Verify(a => a.ApplyToAsync(creature), Times.Once);
+        }
+
+        [TestCase(CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(CreatureConstants.Templates.FiendishCreature)]
+        public async Task GenerateRandomOfTypeAsync_GenerateRandomCreatureName_WithTemplate_RemoveMagicalBeasts(string template)
+        {
+            var creatureName = "my creature";
+
+            var creatures = new[]
+            {
+                "my animal", "my vermin",
+                creatureName, "other creature name", "wrong creature name",
+                "my other animal", "my other vermin",
+            };
+            var templates = new[] { "other template", template, "wrong template name" };
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
+                .Returns(creatures);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
+                .Returns(templates);
+
+            var outsiders = new[] { creatureName, "wrong creature name" };
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Outsider))
+                .Returns(outsiders.Union(new[] { template }));
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal))
+                .Returns(new[] { "my animal", "my other animal" });
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Vermin))
+                .Returns(new[] { "my vermin", "my other vermin" });
+
+            foreach (var otherTemplate in templates)
+            {
+                var mockTemplateApplicator = new Mock<TemplateApplicator>();
+                mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>())).Returns(true);
+                mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(otherTemplate)).Returns(mockTemplateApplicator.Object);
+            }
+
+            var typePairings = new[] { creatureName, "other creature name", "wrong creature name", }
+                .Select(c => (c, template))
+                .Union(outsiders.Select(c => (c, CreatureConstants.Templates.None)));
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<(string CreatureName, string Template)>>(c => c.IsEquivalentTo(typePairings))))
+                .Returns(("other creature name", template));
+
+            var name = await creatureGenerator.GenerateRandomOfTypeAsync(CreatureConstants.Types.Outsider);
+            Assert.That(name.Name, Is.EqualTo("other creature name"));
+            Assert.That(name.Template, Is.EqualTo(template));
+        }
+
+        [TestCase(CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(CreatureConstants.Templates.FiendishCreature)]
+        public async Task GenerateRandomOfTypeAsync_GenerateRandomCreatureName_WithTemplate_AddMagicalBeasts(string template)
+        {
+            var creatureName = "my creature";
+
+            var creatures = new[]
+            {
+                "my animal", "my vermin",
+                creatureName, "other creature name", "wrong creature name",
+                "my other animal", "my other vermin",
+            };
+            var templates = new[] { "other template", CreatureConstants.Templates.CelestialCreature, CreatureConstants.Templates.FiendishCreature, "wrong template name" };
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
+                .Returns(creatures);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
+                .Returns(templates);
+
+            var magicalBeasts = new[] { creatureName, "other creature name", "wrong creature name" };
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.MagicalBeast))
+                .Returns(magicalBeasts);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal))
+                .Returns(new[] { "my animal", "my other animal" });
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Vermin))
+                .Returns(new[] { "my vermin", "my other vermin" });
+
+            foreach (var otherTemplate in templates)
+            {
+                var mockTemplateApplicator = new Mock<TemplateApplicator>();
+                mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>())).Returns(true);
+                mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(otherTemplate)).Returns(mockTemplateApplicator.Object);
+            }
+
+            var typePairings = magicalBeasts
+                .Select(c => (c, CreatureConstants.Templates.None))
+                .Union(new[] { "my animal", "my other animal", "my vermin", "my other vermin" }.Select(c => (c, CreatureConstants.Templates.CelestialCreature)))
+                .Union(new[] { "my animal", "my other animal", "my vermin", "my other vermin" }.Select(c => (c, CreatureConstants.Templates.FiendishCreature)));
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<(string CreatureName, string Template)>>(c => c.IsEquivalentTo(typePairings))))
+                .Returns(("my animal", template));
+
+            var name = await creatureGenerator.GenerateRandomOfTypeAsync(CreatureConstants.Types.MagicalBeast);
+            Assert.That(name.Name, Is.EqualTo("my animal"));
+            Assert.That(name.Template, Is.EqualTo(template));
         }
 
         [Test]
