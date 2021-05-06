@@ -74,8 +74,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Ogre_Merrow,
             CreatureConstants.OgreMage,
             CreatureConstants.Troll,
-            CreatureConstants.Troll_Scrag,
-            CreatureConstants.Groups.Lycanthrope)]
+            CreatureConstants.Troll_Scrag)]
         [TestCase(CreatureConstants.Types.Humanoid,
             CreatureConstants.Bugbear,
             CreatureConstants.Groups.Dwarf,
@@ -93,8 +92,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Locathah,
             CreatureConstants.Merfolk,
             CreatureConstants.Groups.Orc,
-            CreatureConstants.Troglodyte,
-            CreatureConstants.Groups.Lycanthrope)]
+            CreatureConstants.Troglodyte)]
         [TestCase(CreatureConstants.Types.MonstrousHumanoid,
             CreatureConstants.Centaur,
             CreatureConstants.Derro,
@@ -693,9 +691,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         public void CreatureTypeMatchesCreatureGroupType(string creature)
         {
             var types = collectionMapper.Map(TableNameConstants.Collection.CreatureTypes);
+            var lycanthropes = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.Lycanthrope);
             Assert.That(types.Keys, Contains.Item(creature));
 
-            if (creature != CreatureConstants.Templates.None)
+            if (lycanthropes.Contains(creature))
+            {
+                //INFO: Lycanthropes do not change the base type, so they do not have a type in and of themselves
+                Assert.That(types[creature], Is.Not.Empty);
+                Assert.That(types[creature].Count(), Is.EqualTo(2));
+                Assert.That(types[creature].First(), Is.Empty);
+                Assert.That(types[creature].Last(), Is.EqualTo(CreatureConstants.Types.Subtypes.Shapechanger));
+            }
+            else if (creature != CreatureConstants.Templates.None)
             {
                 Assert.That(types[creature], Is.Not.Empty);
 

@@ -269,12 +269,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();
             var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes));
 
-            var creature = creatureGenerator.GenerateRandomOfType(randomType);
+            GenerateAndAssertRandomCreatureOfType(randomType);
+        }
 
-            if (types.Contains(randomType))
-                Assert.That(creature.Type.Name, Is.EqualTo(randomType), creature.Summary);
+        private void GenerateAndAssertRandomCreatureOfType(string type)
+        {
+            var creature = creatureGenerator.GenerateRandomOfType(type);
+
+            var types = CreatureConstants.Types.GetAll();
+            if (types.Contains(type))
+                Assert.That(creature.Type.Name, Is.EqualTo(type), creature.Summary);
             else
-                Assert.That(creature.Type.SubTypes, Contains.Item(randomType), creature.Summary);
+                Assert.That(creature.Type.SubTypes, Contains.Item(type), creature.Summary);
 
             creatureAsserter.AssertCreature(creature);
         }
@@ -291,6 +297,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();
             var nonCharacterTypes = new[]
             {
+                CreatureConstants.Types.Ooze,
                 CreatureConstants.Types.Vermin,
                 CreatureConstants.Types.Subtypes.Swarm,
             };
@@ -318,6 +325,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();
             var nonCharacterTypes = new[]
             {
+                CreatureConstants.Types.Ooze,
                 CreatureConstants.Types.Vermin,
                 CreatureConstants.Types.Subtypes.Swarm,
             };
@@ -363,6 +371,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         public void BUG_StressSpecificCreature(string creatureName, string template)
         {
             stressor.Stress(() => GenerateAndAssertCreature(creatureName, template));
+        }
+
+        [TestCase(CreatureConstants.Types.Giant)]
+        [TestCase(CreatureConstants.Types.Humanoid)]
+        [Repeat(100)]
+        //[Ignore("Only use this for debugging")]
+        public void BUG_StressSpecificType(string type)
+        {
+            stressor.Stress(() => GenerateAndAssertRandomCreatureOfType(type));
         }
     }
 }
