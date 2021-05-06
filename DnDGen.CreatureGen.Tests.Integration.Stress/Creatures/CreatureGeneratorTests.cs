@@ -82,7 +82,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
             var creature = creatureGenerator.Generate(randomCreatureName, randomTemplate);
 
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
             creatureAsserter.AssertCreature(creature);
         }
 
@@ -105,7 +105,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
             var creature = await creatureGenerator.GenerateAsync(randomCreatureName, randomTemplate);
 
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
             creatureAsserter.AssertCreature(creature);
         }
 
@@ -160,7 +160,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = creatureGenerator.GenerateAsCharacter(randomCreatureName, randomTemplate);
             creatureAsserter.AssertCreatureAsCharacter(creature);
 
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
         }
 
         [Test]
@@ -186,7 +186,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             Assert.That(creature.Template, Is.EqualTo(randomTemplate));
             creatureAsserter.AssertCreatureAsCharacter(creature);
 
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
         }
 
         [Test]
@@ -202,7 +202,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
             var creature = creatureGenerator.GenerateRandomOfTemplate(randomTemplate);
 
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
             creatureAsserter.AssertCreature(creature);
         }
 
@@ -219,7 +219,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
             var creature = creatureGenerator.GenerateRandomOfTemplateAsCharacter(randomTemplate);
 
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
             creatureAsserter.AssertCreatureAsCharacter(creature);
         }
 
@@ -236,7 +236,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
             var creature = await creatureGenerator.GenerateRandomOfTemplateAsync(randomTemplate);
 
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
             creatureAsserter.AssertCreature(creature);
         }
 
@@ -253,7 +253,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
             var creature = await creatureGenerator.GenerateRandomOfTemplateAsCharacterAsync(randomTemplate);
 
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
             creatureAsserter.AssertCreatureAsCharacter(creature);
         }
 
@@ -272,9 +272,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = creatureGenerator.GenerateRandomOfType(randomType);
 
             if (types.Contains(randomType))
-                Assert.That(creature.Type.Name, Is.EqualTo(randomType));
+                Assert.That(creature.Type.Name, Is.EqualTo(randomType), creature.Summary);
             else
-                Assert.That(creature.Type.SubTypes, Contains.Item(randomType));
+                Assert.That(creature.Type.SubTypes, Contains.Item(randomType), creature.Summary);
 
             creatureAsserter.AssertCreature(creature);
         }
@@ -289,14 +289,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var types = CreatureConstants.Types.GetAll();
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();
-            var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes));
+            var nonCharacterTypes = new[]
+            {
+                CreatureConstants.Types.Vermin,
+                CreatureConstants.Types.Subtypes.Swarm,
+            };
+            var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes).Except(nonCharacterTypes));
 
             var creature = creatureGenerator.GenerateRandomOfTypeAsCharacter(randomType);
 
             if (types.Contains(randomType))
-                Assert.That(creature.Type.Name, Is.EqualTo(randomType));
+                Assert.That(creature.Type.Name, Is.EqualTo(randomType), creature.Summary);
             else
-                Assert.That(creature.Type.SubTypes, Contains.Item(randomType));
+                Assert.That(creature.Type.SubTypes, Contains.Item(randomType), creature.Summary);
 
             creatureAsserter.AssertCreatureAsCharacter(creature);
         }
@@ -311,14 +316,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var types = CreatureConstants.Types.GetAll();
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();
-            var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes));
+            var nonCharacterTypes = new[]
+            {
+                CreatureConstants.Types.Vermin,
+                CreatureConstants.Types.Subtypes.Swarm,
+            };
+            var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes).Except(nonCharacterTypes));
 
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync(randomType);
 
             if (types.Contains(randomType))
-                Assert.That(creature.Type.Name, Is.EqualTo(randomType));
+                Assert.That(creature.Type.Name, Is.EqualTo(randomType), creature.Summary);
             else
-                Assert.That(creature.Type.SubTypes, Contains.Item(randomType));
+                Assert.That(creature.Type.SubTypes, Contains.Item(randomType), creature.Summary);
 
             creatureAsserter.AssertCreature(creature);
         }
@@ -338,9 +348,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = await creatureGenerator.GenerateRandomOfTypeAsCharacterAsync(randomType);
 
             if (types.Contains(randomType))
-                Assert.That(creature.Type.Name, Is.EqualTo(randomType));
+                Assert.That(creature.Type.Name, Is.EqualTo(randomType), creature.Summary);
             else
-                Assert.That(creature.Type.SubTypes, Contains.Item(randomType));
+                Assert.That(creature.Type.SubTypes, Contains.Item(randomType), creature.Summary);
 
             creatureAsserter.AssertCreatureAsCharacter(creature);
         }
