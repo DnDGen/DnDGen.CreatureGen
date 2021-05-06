@@ -297,6 +297,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();
             var nonCharacterTypes = new[]
             {
+                CreatureConstants.Types.Animal,
                 CreatureConstants.Types.Ooze,
                 CreatureConstants.Types.Vermin,
                 CreatureConstants.Types.Subtypes.Swarm,
@@ -323,13 +324,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var types = CreatureConstants.Types.GetAll();
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();
-            var nonCharacterTypes = new[]
-            {
-                CreatureConstants.Types.Ooze,
-                CreatureConstants.Types.Vermin,
-                CreatureConstants.Types.Subtypes.Swarm,
-            };
-            var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes).Except(nonCharacterTypes));
+            var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes));
 
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync(randomType);
 
@@ -351,7 +346,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var types = CreatureConstants.Types.GetAll();
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();
-            var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes));
+            var nonCharacterTypes = new[]
+            {
+                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Ooze,
+                CreatureConstants.Types.Vermin,
+                CreatureConstants.Types.Subtypes.Swarm,
+            };
+            var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes).Except(nonCharacterTypes));
 
             var creature = await creatureGenerator.GenerateRandomOfTypeAsCharacterAsync(randomType);
 
