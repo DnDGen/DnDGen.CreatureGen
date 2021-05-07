@@ -3408,13 +3408,13 @@
   </collection>
   <collection>
     <name>Celestial Creature</name>
-    <entry>Outsider</entry>
+    <entry></entry>
     <entry>Extraplanar</entry>
     <entry>Augmented</entry>
   </collection>
   <collection>
     <name>Fiendish Creature</name>
-    <entry>Outsider</entry>
+    <entry></entry>
     <entry>Extraplanar</entry>
     <entry>Augmented</entry>
   </collection>
@@ -3506,72 +3506,72 @@
   </collection>
   <collection>
     <name>Lycanthrope, Brown Bear (Werebear, Afflicted)</name>
-    <entry>Humanoid</entry>
+    <entry></entry>
     <entry>Shapechanger</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Brown Bear (Werebear, Natural)</name>
-    <entry>Humanoid</entry>
+    <entry></entry>
     <entry>Shapechanger</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Boar (Wereboar, Afflicted)</name>
-    <entry>Humanoid</entry>
+    <entry></entry>
     <entry>Shapechanger</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Boar (Wereboar, Natural)</name>
-    <entry>Humanoid</entry>
+    <entry></entry>
     <entry>Shapechanger</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)</name>
-    <entry>Humanoid</entry>
+    <entry></entry>
     <entry>Shapechanger</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)</name>
-    <entry>Humanoid</entry>
+    <entry></entry>
     <entry>Shapechanger</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Dire Rat (Wererat, Afflicted)</name>
-    <entry>Humanoid</entry>
+    <entry></entry>
     <entry>Shapechanger</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Dire Rat (Wererat, Natural)</name>
-    <entry>Humanoid</entry>
+    <entry></entry>
     <entry>Shapechanger</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Tiger (Weretiger, Afflicted)</name>
-    <entry>Humanoid</entry>
+    <entry></entry>
     <entry>Shapechanger</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Tiger (Weretiger, Natural)</name>
-    <entry>Humanoid</entry>
+    <entry></entry>
     <entry>Shapechanger</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Wolf (Werewolf, Afflicted)</name>
-    <entry>Humanoid</entry>
+    <entry></entry>
     <entry>Shapechanger</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Wolf (Werewolf, Natural)</name>
-    <entry>Humanoid</entry>
+    <entry></entry>
     <entry>Shapechanger</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)</name>
-    <entry>Humanoid</entry>
+    <entry></entry>
     <entry>Shapechanger</entry>
   </collection>
   <collection>
     <name>Lycanthrope, Dire Wolf (Dire Werewolf, Natural)</name>
-    <entry>Humanoid</entry>
+    <entry></entry>
     <entry>Shapechanger</entry>
   </collection>
 </collections>

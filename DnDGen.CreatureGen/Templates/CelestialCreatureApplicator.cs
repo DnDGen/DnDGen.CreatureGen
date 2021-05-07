@@ -94,12 +94,16 @@ namespace DnDGen.CreatureGen.Templates
             {
                 CreatureConstants.Types.Subtypes.Extraplanar,
                 CreatureConstants.Types.Subtypes.Augmented,
-                creature.Type.Name,
             });
 
             if (creature.Type.Name == CreatureConstants.Types.Animal
                 || creature.Type.Name == CreatureConstants.Types.Vermin)
             {
+                creature.Type.SubTypes = creature.Type.SubTypes.Union(new[]
+                {
+                    creature.Type.Name
+                });
+
                 creature.Type.Name = CreatureConstants.Types.MagicalBeast;
             }
         }

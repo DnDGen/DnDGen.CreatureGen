@@ -82,7 +82,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
             var creature = creatureGenerator.Generate(randomCreatureName, randomTemplate);
 
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
             creatureAsserter.AssertCreature(creature);
         }
 
@@ -105,7 +105,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
             var creature = await creatureGenerator.GenerateAsync(randomCreatureName, randomTemplate);
 
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
             creatureAsserter.AssertCreature(creature);
         }
 
@@ -160,7 +160,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = creatureGenerator.GenerateAsCharacter(randomCreatureName, randomTemplate);
             creatureAsserter.AssertCreatureAsCharacter(creature);
 
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
         }
 
         [Test]
@@ -186,7 +186,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             Assert.That(creature.Template, Is.EqualTo(randomTemplate));
             creatureAsserter.AssertCreatureAsCharacter(creature);
 
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
         }
 
         [Test]
@@ -202,7 +202,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
             var creature = creatureGenerator.GenerateRandomOfTemplate(randomTemplate);
 
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
             creatureAsserter.AssertCreature(creature);
         }
 
@@ -219,7 +219,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
             var creature = creatureGenerator.GenerateRandomOfTemplateAsCharacter(randomTemplate);
 
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
             creatureAsserter.AssertCreatureAsCharacter(creature);
         }
 
@@ -236,7 +236,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
             var creature = await creatureGenerator.GenerateRandomOfTemplateAsync(randomTemplate);
 
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
             creatureAsserter.AssertCreature(creature);
         }
 
@@ -253,7 +253,117 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
             var creature = await creatureGenerator.GenerateRandomOfTemplateAsCharacterAsync(randomTemplate);
 
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
+            creatureAsserter.AssertCreatureAsCharacter(creature);
+        }
+
+        [Test]
+        public void StressRandomCreatureOfType()
+        {
+            stressor.Stress(GenerateAndAssertRandomCreatureOfType);
+        }
+
+        private void GenerateAndAssertRandomCreatureOfType()
+        {
+            var types = CreatureConstants.Types.GetAll();
+            var subtypes = CreatureConstants.Types.Subtypes.GetAll();
+            var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes));
+
+            GenerateAndAssertRandomCreatureOfType(randomType);
+        }
+
+        private void GenerateAndAssertRandomCreatureOfType(string type)
+        {
+            var creature = creatureGenerator.GenerateRandomOfType(type);
+
+            var types = CreatureConstants.Types.GetAll();
+            if (types.Contains(type))
+                Assert.That(creature.Type.Name, Is.EqualTo(type), creature.Summary);
+            else
+                Assert.That(creature.Type.SubTypes, Contains.Item(type), creature.Summary);
+
+            creatureAsserter.AssertCreature(creature);
+        }
+
+        [Test]
+        public void StressRandomCreatureOfTypeAsCharacter()
+        {
+            stressor.Stress(GenerateAndAssertRandomCreatureOfTypeAsCharacter);
+        }
+
+        private void GenerateAndAssertRandomCreatureOfTypeAsCharacter()
+        {
+            var types = CreatureConstants.Types.GetAll();
+            var subtypes = CreatureConstants.Types.Subtypes.GetAll();
+            var nonCharacterTypes = new[]
+            {
+                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Elemental,
+                CreatureConstants.Types.Ooze,
+                CreatureConstants.Types.Vermin,
+                CreatureConstants.Types.Subtypes.Swarm,
+            };
+            var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes).Except(nonCharacterTypes));
+
+            var creature = creatureGenerator.GenerateRandomOfTypeAsCharacter(randomType);
+
+            if (types.Contains(randomType))
+                Assert.That(creature.Type.Name, Is.EqualTo(randomType), creature.Summary);
+            else
+                Assert.That(creature.Type.SubTypes, Contains.Item(randomType), creature.Summary);
+
+            creatureAsserter.AssertCreatureAsCharacter(creature);
+        }
+
+        [Test]
+        public async Task StressRandomCreatureOfTypeAsync()
+        {
+            await stressor.StressAsync(GenerateAndAssertRandomCreatureOfTypeAsync);
+        }
+
+        private async Task GenerateAndAssertRandomCreatureOfTypeAsync()
+        {
+            var types = CreatureConstants.Types.GetAll();
+            var subtypes = CreatureConstants.Types.Subtypes.GetAll();
+            var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes));
+
+            var creature = await creatureGenerator.GenerateRandomOfTypeAsync(randomType);
+
+            if (types.Contains(randomType))
+                Assert.That(creature.Type.Name, Is.EqualTo(randomType), creature.Summary);
+            else
+                Assert.That(creature.Type.SubTypes, Contains.Item(randomType), creature.Summary);
+
+            creatureAsserter.AssertCreature(creature);
+        }
+
+        [Test]
+        public async Task StressRandomCreatureOfTypeAsCharacterAsync()
+        {
+            await stressor.StressAsync(GenerateAndAssertRandomCreatureOfTypeAsCharacterAsync);
+        }
+
+        private async Task GenerateAndAssertRandomCreatureOfTypeAsCharacterAsync()
+        {
+            var types = CreatureConstants.Types.GetAll();
+            var subtypes = CreatureConstants.Types.Subtypes.GetAll();
+            var nonCharacterTypes = new[]
+            {
+                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Elemental,
+                CreatureConstants.Types.Ooze,
+                CreatureConstants.Types.Vermin,
+                CreatureConstants.Types.Subtypes.Swarm,
+            };
+            var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes).Except(nonCharacterTypes));
+
+            var creature = await creatureGenerator.GenerateRandomOfTypeAsCharacterAsync(randomType);
+
+            if (types.Contains(randomType))
+                Assert.That(creature.Type.Name, Is.EqualTo(randomType), creature.Summary);
+            else
+                Assert.That(creature.Type.SubTypes, Contains.Item(randomType), creature.Summary);
+
             creatureAsserter.AssertCreatureAsCharacter(creature);
         }
 
@@ -265,6 +375,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         public void BUG_StressSpecificCreature(string creatureName, string template)
         {
             stressor.Stress(() => GenerateAndAssertCreature(creatureName, template));
+        }
+
+        [TestCase(CreatureConstants.Types.Giant)]
+        [TestCase(CreatureConstants.Types.Humanoid)]
+        [TestCase(CreatureConstants.Types.Outsider)]
+        [TestCase(CreatureConstants.Types.MagicalBeast)]
+        [Repeat(100)]
+        [Ignore("Only use this for debugging")]
+        public void BUG_StressSpecificType(string type)
+        {
+            stressor.Stress(() => GenerateAndAssertRandomCreatureOfType(type));
         }
     }
 }

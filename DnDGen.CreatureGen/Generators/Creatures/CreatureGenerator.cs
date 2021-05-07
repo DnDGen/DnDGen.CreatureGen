@@ -83,28 +83,100 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         public Creature Generate(string creatureName, string template) => Generate(creatureName, template, false);
         public Creature GenerateAsCharacter(string creatureName, string template) => Generate(creatureName, template, true);
 
-        public Creature GenerateRandomOfTemplate(string template)
+        public string GenerateRandomNameOfTemplate(string template)
+        {
+            var creatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All);
+            var templateCreatures = GetCreaturesOfTemplate(template, creatures);
+            var randomCreature = collectionsSelector.SelectRandomFrom(templateCreatures);
+
+            return randomCreature;
+        }
+
+        private IEnumerable<string> GetCreaturesOfTemplate(string template, IEnumerable<string> creatureGroup)
         {
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
-            var creatures = CreatureConstants.GetAll();
-            creatures = creatures.Where(templateApplicator.IsCompatible);
-            var randomCreature = collectionsSelector.SelectRandomFrom(creatures);
+            var creatures = creatureGroup.Where(templateApplicator.IsCompatible);
 
+            return creatures;
+        }
+
+        public Creature GenerateRandomOfTemplate(string template)
+        {
+            var randomCreature = GenerateRandomNameOfTemplate(template);
             return Generate(randomCreature, template);
+        }
+
+        public string GenerateRandomNameOfTemplateAsCharacter(string template)
+        {
+            var creatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters);
+            var templateCreatures = GetCreaturesOfTemplate(template, creatures);
+
+            if (!templateCreatures.Any())
+                throw new IncompatibleCreatureAsCharacterException(template);
+
+            var randomCreature = collectionsSelector.SelectRandomFrom(templateCreatures);
+            return randomCreature;
         }
 
         public Creature GenerateRandomOfTemplateAsCharacter(string template)
         {
-            var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
-            var creatures = CreatureConstants.GetAllCharacters();
-            creatures = creatures.Where(templateApplicator.IsCompatible);
-
-            if (!creatures.Any())
-                throw new IncompatibleCreatureAsCharacterException(template);
-
-            var randomCreature = collectionsSelector.SelectRandomFrom(creatures);
-
+            var randomCreature = GenerateRandomNameOfTemplateAsCharacter(template);
             return Generate(randomCreature, template, true);
+        }
+
+        public (string CreatureName, string Template) GenerateRandomNameOfType(string creatureType)
+        {
+            var creatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All);
+            var pairings = GetCreaturesOfType(creatureType, creatures);
+            var randomCreature = collectionsSelector.SelectRandomFrom(pairings);
+
+            return randomCreature;
+        }
+
+        private IEnumerable<(string CreatureName, string Template)> GetCreaturesOfType(string creatureType, IEnumerable<string> creatureGroup)
+        {
+            var pairings = new List<(string CreatureName, string Template)>();
+            var templates = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
+
+            var ofType = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var creaturesOfTypePairings = ofType.Intersect(creatureGroup).Select(c => (c, CreatureConstants.Templates.None));
+            pairings.AddRange(creaturesOfTypePairings);
+
+            var templatesOfType = ofType.Intersect(templates);
+
+            foreach (var template in templatesOfType)
+            {
+                var creaturesOfTypeAndTemplate = GetCreaturesOfTemplate(template, creatureGroup);
+                creaturesOfTypePairings = creaturesOfTypeAndTemplate.Select(c => (c, template));
+
+                pairings.AddRange(creaturesOfTypePairings);
+            }
+
+            return pairings;
+        }
+
+        public Creature GenerateRandomOfType(string creatureType)
+        {
+            var randomCreature = GenerateRandomNameOfType(creatureType);
+            return Generate(randomCreature.CreatureName, randomCreature.Template);
+        }
+
+        public (string CreatureName, string Template) GenerateRandomNameOfTypeAsCharacter(string creatureType)
+        {
+            var creatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters);
+            var pairings = GetCreaturesOfType(creatureType, creatures);
+
+            if (!pairings.Any())
+                throw new IncompatibleCreatureAsCharacterException(creatureType);
+
+            var randomCreature = collectionsSelector.SelectRandomFrom(pairings);
+            return randomCreature;
+        }
+
+        public Creature GenerateRandomOfTypeAsCharacter(string creatureType)
+        {
+            var randomCreature = GenerateRandomNameOfTypeAsCharacter(creatureType);
+            return GenerateAsCharacter(randomCreature.CreatureName, randomCreature.Template);
         }
 
         private Creature Generate(string creatureName, string template, bool asCharacter)
@@ -287,26 +359,26 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         public async Task<Creature> GenerateRandomOfTemplateAsync(string template)
         {
-            var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
-            var creatures = CreatureConstants.GetAll();
-            creatures = creatures.Where(templateApplicator.IsCompatible);
-            var randomCreature = collectionsSelector.SelectRandomFrom(creatures);
-
+            var randomCreature = GenerateRandomNameOfTemplate(template);
             return await GenerateAsync(randomCreature, template);
         }
 
         public async Task<Creature> GenerateRandomOfTemplateAsCharacterAsync(string template)
         {
-            var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
-            var creatures = CreatureConstants.GetAllCharacters();
-            creatures = creatures.Where(templateApplicator.IsCompatible);
-
-            if (!creatures.Any())
-                throw new IncompatibleCreatureAsCharacterException(template);
-
-            var randomCreature = collectionsSelector.SelectRandomFrom(creatures);
-
+            var randomCreature = GenerateRandomNameOfTemplateAsCharacter(template);
             return await GenerateAsync(randomCreature, template, true);
+        }
+
+        public async Task<Creature> GenerateRandomOfTypeAsync(string creatureType)
+        {
+            var randomCreature = GenerateRandomNameOfType(creatureType);
+            return await GenerateAsync(randomCreature.CreatureName, randomCreature.Template);
+        }
+
+        public async Task<Creature> GenerateRandomOfTypeAsCharacterAsync(string creatureType)
+        {
+            var randomCreature = GenerateRandomNameOfTypeAsCharacter(creatureType);
+            return await GenerateAsCharacterAsync(randomCreature.CreatureName, randomCreature.Template);
         }
 
         private async Task<Creature> GenerateAsync(string creatureName, string template, bool asCharacter)

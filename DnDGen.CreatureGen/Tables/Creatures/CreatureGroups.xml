@@ -925,11 +925,7 @@
     <entry>Behir</entry>
     <entry>Blink Dog</entry>
     <entry>Bulette</entry>
-    <entry>Chimera (Black Dragon head)</entry>
-    <entry>Chimera (Blue Dragon head)</entry>
-    <entry>Chimera (Green Dragon head)</entry>
-    <entry>Chimera (Red Dragon head)</entry>
-    <entry>Chimera (White Dragon head)</entry>
+    <entry>Chimera</entry>
     <entry>Cockatrice</entry>
     <entry>Darkmantle</entry>
     <entry>Digester</entry>
@@ -997,7 +993,6 @@
     <entry>Merfolk</entry>
     <entry>Orc</entry>
     <entry>Troglodyte</entry>
-    <entry>Lycanthrope</entry>
   </collection>
   <collection>
     <name>Hydra</name>
@@ -1066,11 +1061,7 @@
     <entry>Behir</entry>
     <entry>Blink Dog</entry>
     <entry>Bulette</entry>
-    <entry>Chimera (Black Dragon head)</entry>
-    <entry>Chimera (Blue Dragon head)</entry>
-    <entry>Chimera (Green Dragon head)</entry>
-    <entry>Chimera (Red Dragon head)</entry>
-    <entry>Chimera (White Dragon head)</entry>
+    <entry>Chimera</entry>
     <entry>Cockatrice</entry>
     <entry>Displacer Beast</entry>
     <entry>Displacer Beast Pack Lord</entry>
@@ -1268,8 +1259,6 @@
     <entry>Xill</entry>
     <entry>Xorn</entry>
     <entry>Yeth Hound</entry>
-    <entry>Celestial Creature</entry>
-    <entry>Fiendish Creature</entry>
     <entry>Half-Celestial</entry>
     <entry>Half-Fiend</entry>
   </collection>
@@ -1550,5 +1539,267 @@
     <entry>Vampire</entry>
     <entry>Skeleton</entry>
     <entry>Zombie</entry>
+  </collection>
+  <collection>
+    <name>All</name>
+    <entry>Aberration</entry>
+    <entry>Animal</entry>
+    <entry>Construct</entry>
+    <entry>Black Dragon</entry>
+    <entry>Green Dragon</entry>
+    <entry>Red Dragon</entry>
+    <entry>White Dragon</entry>
+    <entry>Blue Dragon</entry>
+    <entry>Brass Dragon</entry>
+    <entry>Bronze Dragon</entry>
+    <entry>Copper Dragon</entry>
+    <entry>Gold Dragon</entry>
+    <entry>Silver Dragon</entry>
+    <entry>Elemental</entry>
+    <entry>Fey</entry>
+    <entry>Elf</entry>
+    <entry>Dwarf</entry>
+    <entry>Orc</entry>
+    <entry>Gnome</entry>
+    <entry>Magical Beast</entry>
+    <entry>Monstrous Humanoid</entry>
+    <entry>Ooze</entry>
+    <entry>Demon</entry>
+    <entry>Devil</entry>
+    <entry>Archon</entry>
+    <entry>Angel</entry>
+    <entry>Plant</entry>
+    <entry>Vermin</entry>
+    <entry>Nightshade</entry>
+    <entry>Planetouched</entry>
+    <entry>Allip</entry>
+    <entry>Achaierai</entry>
+    <entry>Xorn</entry>
+    <entry>Genie</entry>
+    <entry>Tojanida</entry>
+    <entry>Salamander</entry>
+    <entry>Arrowhawk</entry>
+    <entry>Azer</entry>
+    <entry>Barghest</entry>
+    <entry>Greater Barghest</entry>
+    <entry>Avoral</entry>
+    <entry>Bodak</entry>
+    <entry>Bralani</entry>
+    <entry>Bugbear</entry>
+    <entry>Human</entry>
+    <entry>Gnoll</entry>
+    <entry>Halfling</entry>
+    <entry>Chaos Beast</entry>
+    <entry>Couatl</entry>
+    <entry>Devourer</entry>
+    <entry>Air</entry>
+    <entry>Aquatic</entry>
+    <entry>Chaotic</entry>
+    <entry>Lawful</entry>
+    <entry>Earth</entry>
+    <entry>Fire</entry>
+    <entry>Water</entry>
+    <entry>Cold</entry>
+    <entry>Goblinoid</entry>
+    <entry>Reptilian</entry>
+    <entry>Swarm</entry>
+    <entry>Ettin</entry>
+    <entry>Ghoul</entry>
+    <entry>Ghast</entry>
+    <entry>Lacedon</entry>
+    <entry>Hill Giant</entry>
+    <entry>Stone Giant</entry>
+    <entry>Stone Giant Elder</entry>
+    <entry>Fire Giant</entry>
+    <entry>Frost Giant</entry>
+    <entry>Storm Giant</entry>
+    <entry>Cloud Giant</entry>
+    <entry>Mohrg</entry>
+    <entry>Mummy</entry>
+    <entry>Ogre</entry>
+    <entry>Ogre Mage</entry>
+    <entry>Pseudodragon</entry>
+    <entry>Rakshasa</entry>
+    <entry>Shadow</entry>
+    <entry>Greater Shadow</entry>
+    <entry>Spectre</entry>
+    <entry>Troll</entry>
+    <entry>Vampire Spawn</entry>
+    <entry>Wight</entry>
+    <entry>Wraith</entry>
+    <entry>Dread Wraith</entry>
+    <entry>Githyanki</entry>
+    <entry>Githzerai</entry>
+    <entry>Leonal</entry>
+    <entry>Night Hag</entry>
+    <entry>Nightmare</entry>
+    <entry>Nightmare, Cauchemar</entry>
+    <entry>Ravid</entry>
+    <entry>Shadow Mastiff</entry>
+    <entry>Vargouille</entry>
+    <entry>Wyvern</entry>
+    <entry>Xill</entry>
+    <entry>Yeth Hound</entry>
+  </collection>
+  <collection>
+    <name>Characters</name>
+    <entry>Elf</entry>
+    <entry>Dwarf</entry>
+    <entry>Orc</entry>
+    <entry>Gnome</entry>
+    <entry>Bugbear</entry>
+    <entry>Human</entry>
+    <entry>Gnoll</entry>
+    <entry>Halfling</entry>
+    <entry>Goblinoid</entry>
+    <entry>Reptilian</entry>
+    <entry>Ettin</entry>
+    <entry>Hill Giant</entry>
+    <entry>Stone Giant</entry>
+    <entry>Stone Giant Elder</entry>
+    <entry>Fire Giant</entry>
+    <entry>Frost Giant</entry>
+    <entry>Storm Giant</entry>
+    <entry>Cloud Giant</entry>
+    <entry>Ogre</entry>
+    <entry>Ogre Mage</entry>
+    <entry>Troll</entry>
+    <entry>Planetouched</entry>
+    <entry>Aboleth</entry>
+    <entry>Sphinx</entry>
+    <entry>Angel, Astral Deva</entry>
+    <entry>Hag</entry>
+    <entry>Aranea</entry>
+    <entry>Athach</entry>
+    <entry>Azer</entry>
+    <entry>Bearded Devil (Barbazu)</entry>
+    <entry>Blink Dog</entry>
+    <entry>Bralani</entry>
+    <entry>Centaur</entry>
+    <entry>Chain Devil (Kyton)</entry>
+    <entry>Chimera</entry>
+    <entry>Couatl</entry>
+    <entry>Derro</entry>
+    <entry>Derro (Sane)</entry>
+    <entry>Displacer Beast</entry>
+    <entry>Djinni</entry>
+    <entry>Doppelganger</entry>
+    <entry>Black Dragon, Wyrmling</entry>
+    <entry>Black Dragon, Very Young</entry>
+    <entry>Black Dragon, Young</entry>
+    <entry>Black Dragon, Juvenile</entry>
+    <entry>Blue Dragon, Wyrmling</entry>
+    <entry>Blue Dragon, Very Young</entry>
+    <entry>Blue Dragon, Young</entry>
+    <entry>Green Dragon, Wyrmling</entry>
+    <entry>Green Dragon, Very Young</entry>
+    <entry>Green Dragon, Young</entry>
+    <entry>Green Dragon, Juvenile</entry>
+    <entry>Red Dragon, Wyrmling</entry>
+    <entry>Red Dragon, Very Young</entry>
+    <entry>Red Dragon, Young</entry>
+    <entry>White Dragon, Wyrmling</entry>
+    <entry>White Dragon, Very Young</entry>
+    <entry>White Dragon, Young</entry>
+    <entry>White Dragon, Juvenile</entry>
+    <entry>Brass Dragon, Wyrmling</entry>
+    <entry>Brass Dragon, Very Young</entry>
+    <entry>Brass Dragon, Young</entry>
+    <entry>Brass Dragon, Juvenile</entry>
+    <entry>Bronze Dragon, Wyrmling</entry>
+    <entry>Bronze Dragon, Very Young</entry>
+    <entry>Bronze Dragon, Young</entry>
+    <entry>Copper Dragon, Wyrmling</entry>
+    <entry>Copper Dragon, Very Young</entry>
+    <entry>Copper Dragon, Young</entry>
+    <entry>Copper Dragon, Juvenile</entry>
+    <entry>Gold Dragon, Wyrmling</entry>
+    <entry>Gold Dragon, Very Young</entry>
+    <entry>Gold Dragon, Young</entry>
+    <entry>Silver Dragon, Wyrmling</entry>
+    <entry>Silver Dragon, Very Young</entry>
+    <entry>Silver Dragon, Young</entry>
+    <entry>Dragonne</entry>
+    <entry>Dretch</entry>
+    <entry>Drider</entry>
+    <entry>Giant Eagle</entry>
+    <entry>Erinyes</entry>
+    <entry>Ettercap</entry>
+    <entry>Gargoyle</entry>
+    <entry>Kapoacinth</entry>
+    <entry>Githyanki</entry>
+    <entry>Githzerai</entry>
+    <entry>Gray Render</entry>
+    <entry>Griffon</entry>
+    <entry>Grimlock</entry>
+    <entry>Harpy</entry>
+    <entry>Hell Hound</entry>
+    <entry>Nessian Warhound</entry>
+    <entry>Fey</entry>
+    <entry>Hezrou</entry>
+    <entry>Hound Archon</entry>
+    <entry>Howler</entry>
+    <entry>Janni</entry>
+    <entry>Krenshar</entry>
+    <entry>Kuo-toa</entry>
+    <entry>Lamia</entry>
+    <entry>Lammasu</entry>
+    <entry>Lillend</entry>
+    <entry>Locathah</entry>
+    <entry>Manticore</entry>
+    <entry>Medusa</entry>
+    <entry>Mephit</entry>
+    <entry>Merfolk</entry>
+    <entry>Mind Flayer (Illithid)</entry>
+    <entry>Minotaur</entry>
+    <entry>Mummy</entry>
+    <entry>Nightmare</entry>
+    <entry>Nightmare, Cauchemar</entry>
+    <entry>Merrow</entry>
+    <entry>Giant Owl</entry>
+    <entry>Pegasus</entry>
+    <entry>Pseudodragon</entry>
+    <entry>Rakshasa</entry>
+    <entry>Sahuagin</entry>
+    <entry>Malenti</entry>
+    <entry>Sahuagin Mutant</entry>
+    <entry>Average Salamander</entry>
+    <entry>Flamebrother Salamander</entry>
+    <entry>Scorpionfolk</entry>
+    <entry>Shadow Mastiff</entry>
+    <entry>Shambling Mound</entry>
+    <entry>Skum</entry>
+    <entry>Blue Slaad</entry>
+    <entry>Green Slaad</entry>
+    <entry>Red Slaad</entry>
+    <entry>Gray Slaad</entry>
+    <entry>Succubus</entry>
+    <entry>Treant</entry>
+    <entry>Triton</entry>
+    <entry>Scrag</entry>
+    <entry>Trumpet Archon</entry>
+    <entry>Unicorn</entry>
+    <entry>Vrock</entry>
+    <entry>Winter Wolf</entry>
+    <entry>Worg</entry>
+    <entry>Xill</entry>
+    <entry>Yeth Hound</entry>
+    <entry>Yuan-ti</entry>
+    <entry>Zelekhut</entry>
+  </collection>
+  <collection>
+    <name>Templates</name>
+    <entry>Augmented</entry>
+    <entry>Lycanthrope</entry>
+    <entry>Skeleton</entry>
+    <entry>Zombie</entry>
+  </collection>
+  <collection>
+    <name>Chimera</name>
+    <entry>Chimera (Black Dragon head)</entry>
+    <entry>Chimera (Blue Dragon head)</entry>
+    <entry>Chimera (Green Dragon head)</entry>
+    <entry>Chimera (Red Dragon head)</entry>
+    <entry>Chimera (White Dragon head)</entry>
   </collection>
 </collections>

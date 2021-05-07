@@ -199,6 +199,7 @@ namespace DnDGen.CreatureGen.Creatures
             public const string Arrowhawk = "Arrowhawk";
             public const string Bear = "Bear";
             public const string Centipede_Monstrous = "Monstrous Centipede";
+            public const string Chimera = "Chimera";
             public const string Cryohydra = "Cryohydra";
             public const string Demon = "Demon";
             public const string Devil = "Devil";
