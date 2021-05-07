@@ -382,7 +382,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         [TestCase(CreatureConstants.Types.Outsider)]
         [TestCase(CreatureConstants.Types.MagicalBeast)]
         [Repeat(100)]
-        //[Ignore("Only use this for debugging")]
+        [Ignore("Only use this for debugging")]
         public void BUG_StressSpecificType(string type)
         {
             stressor.Stress(() => GenerateAndAssertRandomCreatureOfType(type));
