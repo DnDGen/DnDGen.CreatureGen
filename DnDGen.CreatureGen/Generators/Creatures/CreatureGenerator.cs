@@ -157,8 +157,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 //INFO: While Celestial and Fiendish Creatures are outsiders, Animals and Vermin become magical beasts instead
                 if (template == CreatureConstants.Templates.CelestialCreature || template == CreatureConstants.Templates.FiendishCreature)
                 {
-                    var animals = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
-                    var vermin = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+                    var animals = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal);
+                    var vermin = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Vermin);
                     var magicalBeasts = animals.Union(vermin).Intersect(creatureGroup);
 
                     if (creatureType == CreatureConstants.Types.Outsider)
