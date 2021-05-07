@@ -144,33 +144,9 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             var templatesOfType = ofType.Intersect(templates);
 
-            //INFO: While Celestial and Fiendish Creatures are outsiders, Animals and Vermin become magical beasts instead
-            if (creatureType == CreatureConstants.Types.MagicalBeast)
-            {
-                templatesOfType = templatesOfType.Union(new[] { CreatureConstants.Templates.CelestialCreature, CreatureConstants.Templates.FiendishCreature });
-            }
-
             foreach (var template in templatesOfType)
             {
                 var creaturesOfTypeAndTemplate = GetCreaturesOfTemplate(template, creatureGroup);
-
-                //INFO: While Celestial and Fiendish Creatures are outsiders, Animals and Vermin become magical beasts instead
-                if (template == CreatureConstants.Templates.CelestialCreature || template == CreatureConstants.Templates.FiendishCreature)
-                {
-                    var animals = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal);
-                    var vermin = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Vermin);
-                    var magicalBeasts = animals.Union(vermin).Intersect(creatureGroup);
-
-                    if (creatureType == CreatureConstants.Types.Outsider)
-                    {
-                        creaturesOfTypeAndTemplate = creaturesOfTypeAndTemplate.Except(magicalBeasts);
-                    }
-                    else if (creatureType == CreatureConstants.Types.MagicalBeast)
-                    {
-                        creaturesOfTypeAndTemplate = creaturesOfTypeAndTemplate.Union(magicalBeasts);
-                    }
-                }
-
                 creaturesOfTypePairings = creaturesOfTypeAndTemplate.Select(c => (c, template));
 
                 pairings.AddRange(creaturesOfTypePairings);

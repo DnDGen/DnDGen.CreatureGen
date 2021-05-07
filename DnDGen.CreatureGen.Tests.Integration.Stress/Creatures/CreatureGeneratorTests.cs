@@ -298,6 +298,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var nonCharacterTypes = new[]
             {
                 CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Elemental,
                 CreatureConstants.Types.Ooze,
                 CreatureConstants.Types.Vermin,
                 CreatureConstants.Types.Subtypes.Swarm,
@@ -349,6 +350,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var nonCharacterTypes = new[]
             {
                 CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Elemental,
                 CreatureConstants.Types.Ooze,
                 CreatureConstants.Types.Vermin,
                 CreatureConstants.Types.Subtypes.Swarm,
@@ -377,8 +379,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         [TestCase(CreatureConstants.Types.Giant)]
         [TestCase(CreatureConstants.Types.Humanoid)]
+        [TestCase(CreatureConstants.Types.Outsider)]
+        [TestCase(CreatureConstants.Types.MagicalBeast)]
         [Repeat(100)]
-        [Ignore("Only use this for debugging")]
+        //[Ignore("Only use this for debugging")]
         public void BUG_StressSpecificType(string type)
         {
             stressor.Stress(() => GenerateAndAssertRandomCreatureOfType(type));

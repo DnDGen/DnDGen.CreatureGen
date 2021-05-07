@@ -1271,10 +1271,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, CreatureConstants.Types.MonstrousHumanoid)]
         [TestCase(CreatureConstants.YuanTi_Pureblood, CreatureConstants.Types.MonstrousHumanoid)]
         [TestCase(CreatureConstants.Templates.None)]
-        [TestCase(CreatureConstants.Templates.CelestialCreature, CreatureConstants.Types.Outsider,
+        [TestCase(CreatureConstants.Templates.CelestialCreature, "",
             CreatureConstants.Types.Subtypes.Extraplanar,
             CreatureConstants.Types.Subtypes.Augmented)]
-        [TestCase(CreatureConstants.Templates.FiendishCreature, CreatureConstants.Types.Outsider,
+        [TestCase(CreatureConstants.Templates.FiendishCreature, "",
             CreatureConstants.Types.Subtypes.Extraplanar,
             CreatureConstants.Types.Subtypes.Augmented)]
         [TestCase(CreatureConstants.Templates.Ghost, CreatureConstants.Types.Undead,
@@ -1354,10 +1354,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var allSubTypes = CreatureConstants.Types.Subtypes.GetAll();
             var allTypesAndSubtypes = allTypes.Union(allSubTypes);
             var lycanthropes = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.Lycanthrope);
+            var goodnessCreatures = new[] { CreatureConstants.Templates.CelestialCreature, CreatureConstants.Templates.FiendishCreature };
 
             Assert.That(table.Keys, Contains.Item(creature), "Table keys");
 
-            var types = table[creature];
+            var types = table[creature].ToArray();
 
             if (lycanthropes.Contains(creature))
             {
@@ -1366,6 +1367,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 Assert.That(types.Count(), Is.EqualTo(2));
                 Assert.That(types.First(), Is.Empty);
                 Assert.That(types.Last(), Is.EqualTo(CreatureConstants.Types.Subtypes.Shapechanger));
+            }
+            else if (goodnessCreatures.Contains(creature))
+            {
+                //INFO: Celestial and Fiendish Creatures do not change the base creature's type (in most cases), so they do not have a type on their own
+                Assert.That(types, Is.Not.Empty.And.Length.EqualTo(3));
+                Assert.That(types[0], Is.Empty);
+                Assert.That(types[1], Is.EqualTo(CreatureConstants.Types.Subtypes.Extraplanar));
+                Assert.That(types[2], Is.EqualTo(CreatureConstants.Types.Subtypes.Augmented));
             }
             else if (creature != CreatureConstants.Templates.None)
             {
@@ -1387,10 +1396,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         {
             var allTypes = CreatureConstants.Types.GetAll();
             var lycanthropes = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.Lycanthrope);
+            var goodnessCreatures = new[] { CreatureConstants.Templates.CelestialCreature, CreatureConstants.Templates.FiendishCreature };
 
             Assert.That(table.Keys, Contains.Item(creature), "Table keys");
 
-            var types = table[creature];
+            var types = table[creature].ToArray();
 
             if (lycanthropes.Contains(creature))
             {
@@ -1399,6 +1409,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 Assert.That(types.Count(), Is.EqualTo(2));
                 Assert.That(types.First(), Is.Empty);
                 Assert.That(types.Last(), Is.EqualTo(CreatureConstants.Types.Subtypes.Shapechanger));
+            }
+            else if (goodnessCreatures.Contains(creature))
+            {
+                //INFO: Celestial and Fiendish Creatures do not change the base creature's type (in most cases), so they do not have a type on their own
+                Assert.That(types, Is.Not.Empty.And.Length.EqualTo(3));
+                Assert.That(types[0], Is.Empty);
+                Assert.That(types[1], Is.EqualTo(CreatureConstants.Types.Subtypes.Extraplanar));
+                Assert.That(types[2], Is.EqualTo(CreatureConstants.Types.Subtypes.Augmented));
             }
             else if (creature != CreatureConstants.Templates.None)
             {

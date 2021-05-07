@@ -262,12 +262,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Type.Name, Is.EqualTo(adjusted));
-            Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(5));
-            Assert.That(creature.Type.SubTypes, Contains.Item("subtype 1")
-                .And.Contains("subtype 2")
-                .And.Contains(original)
-                .And.Contains(CreatureConstants.Types.Subtypes.Augmented)
-                .And.Contains(CreatureConstants.Types.Subtypes.Extraplanar));
+            if (original == adjusted)
+            {
+                Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(4));
+                Assert.That(creature.Type.SubTypes, Contains.Item("subtype 1")
+                    .And.Contains("subtype 2")
+                    .And.Contains(CreatureConstants.Types.Subtypes.Extraplanar)
+                    .And.Contains(CreatureConstants.Types.Subtypes.Augmented));
+            }
+            else
+            {
+                Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(5));
+                Assert.That(creature.Type.SubTypes, Contains.Item("subtype 1")
+                    .And.Contains("subtype 2")
+                    .And.Contains(original)
+                    .And.Contains(CreatureConstants.Types.Subtypes.Extraplanar)
+                    .And.Contains(CreatureConstants.Types.Subtypes.Augmented));
+            }
         }
 
         [Test]
@@ -1269,12 +1280,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Type.Name, Is.EqualTo(adjusted));
-            Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(5));
-            Assert.That(creature.Type.SubTypes, Contains.Item("subtype 1")
-                .And.Contains("subtype 2")
-                .And.Contains(original)
-                .And.Contains(CreatureConstants.Types.Subtypes.Extraplanar)
-                .And.Contains(CreatureConstants.Types.Subtypes.Augmented));
+            if (original == adjusted)
+            {
+                Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(4));
+                Assert.That(creature.Type.SubTypes, Contains.Item("subtype 1")
+                    .And.Contains("subtype 2")
+                    .And.Contains(CreatureConstants.Types.Subtypes.Extraplanar)
+                    .And.Contains(CreatureConstants.Types.Subtypes.Augmented));
+            }
+            else
+            {
+                Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(5));
+                Assert.That(creature.Type.SubTypes, Contains.Item("subtype 1")
+                    .And.Contains("subtype 2")
+                    .And.Contains(original)
+                    .And.Contains(CreatureConstants.Types.Subtypes.Extraplanar)
+                    .And.Contains(CreatureConstants.Types.Subtypes.Augmented));
+            }
         }
 
         [Test]
