@@ -12,6 +12,8 @@ using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Languages;
 using DnDGen.CreatureGen.Magics;
+using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
@@ -43,6 +45,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         private Mock<ISkillsGenerator> mockSkillsGenerator;
         private Mock<IAlignmentGenerator> mockAlignmentGenerator;
         private Mock<IMagicGenerator> mockMagicGenerator;
+        private Mock<ICreatureDataSelector> mockCreatureDataSelector;
 
         private static IEnumerable<string> templates = new[]
         {
@@ -71,6 +74,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             mockSkillsGenerator = new Mock<ISkillsGenerator>();
             mockAlignmentGenerator = new Mock<IAlignmentGenerator>();
             mockMagicGenerator = new Mock<IMagicGenerator>();
+            mockCreatureDataSelector = new Mock<ICreatureDataSelector>();
 
             applicators = new Dictionary<string, TemplateApplicator>();
             applicators[CreatureConstants.Templates.HalfDragon_Black] = new HalfDragonBlackApplicator(
@@ -266,6 +270,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             var creature = await applicators[template].ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Template, Is.EqualTo(template));
+        }
+
+        [TestCaseSource(nameof(CreatureTypeAdjusted))]
+        public void GetPotentialTypes_CreatureTypeIsAdjusted(string template, string original)
+        {
+            var types = applicators[template].GetPotentialTypes("my creature");
+            Assert.That(types.First(), Is.EqualTo(CreatureConstants.Types.Dragon));
+            Assert.That(types.Skip(1), Is.EqualTo(new[] { CreatureConstants.Types.Subtypes.Augmented }));
+            Assert.Fail("add in the original creature's types as well");
         }
 
         [TestCaseSource(nameof(CreatureTypeAdjusted))]
@@ -1238,6 +1251,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
 
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature.Skills, Is.Empty);
+        }
+
+        [TestCaseSource(nameof(ChallengeRatingAdjustments))]
+        public void GetPotentialChallengeRating_ChallengeRatingAdjusted(string template, string original, string adjusted)
+        {
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor("my creature"))
+                .Returns(new CreatureDataSelection { ChallengeRating = original });
+
+            var challengeRating = applicators[template].GetPotentialChallengeRating("my creature");
+            Assert.That(challengeRating, Is.EqualTo(adjusted));
         }
 
         [TestCaseSource(nameof(ChallengeRatingAdjustments))]

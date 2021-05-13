@@ -43,6 +43,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         private Mock<ISavesGenerator> mockSavesGenerator;
         private Mock<ISkillsGenerator> mockSkillsGenerator;
         private Mock<ISpeedsGenerator> mockSpeedsGenerator;
+        private Mock<IAdjustmentsSelector> mockAdjustmentSelector;
 
         private static IEnumerable<(string Template, string Animal)> templates = new[]
         {
@@ -92,6 +93,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             mockSavesGenerator = new Mock<ISavesGenerator>();
             mockSkillsGenerator = new Mock<ISkillsGenerator>();
             mockSpeedsGenerator = new Mock<ISpeedsGenerator>();
+            mockAdjustmentSelector = new Mock<IAdjustmentsSelector>();
 
             applicators = new Dictionary<string, TemplateApplicator>();
             applicators[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted] = new LycanthropeBrownBearAfflictedApplicator(
@@ -367,6 +369,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     }
                 }
             }
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public void GetPotentialTypes_GainShapechangerSubtype(string template, string animal)
+        {
+            var types = applicators[template].GetPotentialTypes("my creature");
+            Assert.That(types.First(), Is.Empty);
+            Assert.That(types.Skip(1), Is.EqualTo(new[] { CreatureConstants.Types.Subtypes.Shapechanger }));
+            Assert.Fail("add in the original creature's types as well");
         }
 
         [TestCaseSource(nameof(AllLycanthropeTemplates))]
@@ -2096,6 +2107,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(creature.Saves[SaveConstants.Will].BaseValue, Is.EqualTo(783 + 42));
             Assert.That(creature.Saves[SaveConstants.Will].Bonus, Is.EqualTo(8245));
             Assert.That(creature.Saves[SaveConstants.Will].IsConditional, Is.True);
+        }
+
+        [TestCaseSource(nameof(ChallengeRatings))]
+        public void GetPotentialChallengeRating_IncreaseChallengeRating(string template, string animal, string originalChallengeRating, double animalHitDiceQuantity, string updatedChallengeRating)
+        {
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor("my creature"))
+                .Returns(new CreatureDataSelection { ChallengeRating = originalChallengeRating });
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, animal))
+                .Returns(animalHitDiceQuantity);
+
+            var challengeRating = applicators[template].GetPotentialChallengeRating("my creature");
+            Assert.That(challengeRating, Is.EqualTo(updatedChallengeRating));
         }
 
         [TestCaseSource(nameof(ChallengeRatings))]

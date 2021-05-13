@@ -140,12 +140,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.VampireSpawn,
             CreatureConstants.Wight,
             CreatureConstants.Wraith,
-            CreatureConstants.Wraith_Dread,
-            CreatureConstants.Templates.Ghost,
-            CreatureConstants.Templates.Lich,
-            CreatureConstants.Templates.Vampire,
-            CreatureConstants.Templates.Skeleton,
-            CreatureConstants.Templates.Zombie)]
+            CreatureConstants.Wraith_Dread)]
         [TestCase(CreatureConstants.Types.Vermin,
             CreatureConstants.Groups.Ant_Giant,
             CreatureConstants.Bee_Giant,
@@ -209,15 +204,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.HoundArchon,
             CreatureConstants.LanternArchon,
             CreatureConstants.TrumpetArchon)]
-        [TestCase(CreatureConstants.Types.Subtypes.Augmented,
-            CreatureConstants.Templates.CelestialCreature,
-            CreatureConstants.Templates.FiendishCreature,
-            CreatureConstants.Templates.Ghost,
-            CreatureConstants.Templates.HalfCelestial,
-            CreatureConstants.Groups.HalfDragon,
-            CreatureConstants.Templates.HalfFiend,
-            CreatureConstants.Templates.Lich,
-            CreatureConstants.Templates.Vampire)]
+        [TestCase(CreatureConstants.Types.Subtypes.Augmented)]
         [TestCase(CreatureConstants.Types.Subtypes.Chaotic,
             CreatureConstants.ChaosBeast,
             CreatureConstants.Babau,
@@ -345,8 +332,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Shadow_Greater,
             CreatureConstants.Spectre,
             CreatureConstants.Wraith,
-            CreatureConstants.Wraith_Dread,
-            CreatureConstants.Templates.Ghost)]
+            CreatureConstants.Wraith_Dread)]
         [TestCase(CreatureConstants.Types.Subtypes.Lawful,
             CreatureConstants.Achaierai,
             CreatureConstants.Groups.Archon,
@@ -362,9 +348,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Janni,
             CreatureConstants.Groups.Planetouched,
             CreatureConstants.Rakshasa,
-            CreatureConstants.Triton,
-            CreatureConstants.Templates.HalfCelestial,
-            CreatureConstants.Templates.HalfFiend)]
+            CreatureConstants.Triton)]
         [TestCase(CreatureConstants.Types.Subtypes.Orc,
             CreatureConstants.Orc,
             CreatureConstants.Orc_Half)]
@@ -559,8 +543,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Xill,
                 CreatureConstants.Groups.Xorn,
                 CreatureConstants.YethHound,
-                CreatureConstants.Templates.CelestialCreature,
-                CreatureConstants.Templates.FiendishCreature,
             };
 
             AssertDistinctCollection(CreatureConstants.Types.Subtypes.Extraplanar, creatures);
@@ -677,82 +659,42 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Xill,
                 CreatureConstants.Groups.Xorn,
                 CreatureConstants.YethHound,
-                CreatureConstants.Templates.HalfCelestial,
-                CreatureConstants.Templates.HalfFiend,
             };
 
             base.AssertDistinctCollection(CreatureConstants.Types.Outsider, creatures);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void CreatureTypeMatchesCreatureGroupType(string creature)
         {
             var types = collectionMapper.Map(TableNameConstants.Collection.CreatureTypes);
-            var lycanthropes = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.Lycanthrope);
-            var goodnessCreatures = new[] { CreatureConstants.Templates.CelestialCreature, CreatureConstants.Templates.FiendishCreature };
             Assert.That(types.Keys, Contains.Item(creature));
+            Assert.That(types[creature], Is.Not.Empty);
 
-            if (lycanthropes.Contains(creature))
-            {
-                //INFO: Lycanthropes do not change the base type, so they do not have a type in and of themselves
-                Assert.That(types[creature], Is.Not.Empty);
-                Assert.That(types[creature].Count(), Is.EqualTo(2));
-                Assert.That(types[creature].First(), Is.Empty);
-                Assert.That(types[creature].Last(), Is.EqualTo(CreatureConstants.Types.Subtypes.Shapechanger));
-            }
-            else if (goodnessCreatures.Contains(creature))
-            {
-                //INFO: Celestial and Fiendish Creatures do not change the base creature's type (in most cases), so they do not have a type on their own
-                var typesArray = types[creature].ToArray();
-                Assert.That(typesArray, Is.Not.Empty.And.Length.EqualTo(3));
-                Assert.That(typesArray[0], Is.Empty);
-                Assert.That(typesArray[1], Is.EqualTo(CreatureConstants.Types.Subtypes.Extraplanar));
-                Assert.That(typesArray[2], Is.EqualTo(CreatureConstants.Types.Subtypes.Augmented));
-            }
-            else if (creature != CreatureConstants.Templates.None)
-            {
-                Assert.That(types[creature], Is.Not.Empty);
+            var type = types[creature].First();
+            Assert.That(table.Keys, Contains.Item(type), "Table keys");
 
-                var type = types[creature].First();
-
-                Assert.That(table.Keys, Contains.Item(type), "Table keys");
-                var creaturesOfType = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, type);
-
-                Assert.That(creaturesOfType, Contains.Item(creature), type);
-            }
-            else
-            {
-                Assert.That(types[creature], Is.Empty);
-            }
+            var creaturesOfType = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, type);
+            Assert.That(creaturesOfType, Contains.Item(creature), type);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void CreatureSubtypesMatchCreatureGroupSubtypes(string creature)
         {
             var types = collectionMapper.Map(TableNameConstants.Collection.CreatureTypes);
             Assert.That(types.Keys, Contains.Item(creature));
+            Assert.That(types[creature], Is.Not.Empty);
 
-            if (creature != CreatureConstants.Templates.None)
+            //INFO: Have to remove types, as augmented creatures have original creature type as a subtype
+            var allTypes = CreatureConstants.Types.GetAll();
+            var subtypes = types[creature].Skip(1).Except(allTypes);
+
+            foreach (var subtype in subtypes)
             {
-                Assert.That(types[creature], Is.Not.Empty);
+                Assert.That(table.Keys, Contains.Item(subtype), "Table keys");
+                var creaturesOfSubtype = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, subtype);
 
-                //INFO: Have to remove types, as augmented creatures have original creature type as a subtype
-                var allTypes = CreatureConstants.Types.GetAll();
-                var subtypes = types[creature].Skip(1).Except(allTypes);
-
-                foreach (var subtype in subtypes)
-                {
-                    Assert.That(table.Keys, Contains.Item(subtype), "Table keys");
-                    var creaturesOfSubtype = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, subtype);
-
-                    Assert.That(creaturesOfSubtype, Contains.Item(creature), subtype);
-                }
-            }
-            else
-            {
-                Assert.That(types[creature], Is.Empty);
+                Assert.That(creaturesOfSubtype, Contains.Item(creature), subtype);
             }
         }
     }
