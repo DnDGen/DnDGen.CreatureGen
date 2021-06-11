@@ -34,6 +34,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<ICollectionSelector> mockCollectionSelector;
         private Mock<IMagicGenerator> mockMagicGenerator;
         private Mock<ICreatureDataSelector> mockCreatureDataSelector;
+        private Mock<IAdjustmentsSelector> mockAdjustmentSelector;
 
         [SetUp]
         public void SetUp()
@@ -43,8 +44,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockCollectionSelector = new Mock<ICollectionSelector>();
             mockMagicGenerator = new Mock<IMagicGenerator>();
             mockCreatureDataSelector = new Mock<ICreatureDataSelector>();
+            mockAdjustmentSelector = new Mock<IAdjustmentsSelector>();
 
-            applicator = new FiendishCreatureApplicator(mockAttackGenerator.Object, mockFeatsGenerator.Object, mockCollectionSelector.Object, mockMagicGenerator.Object);
+            applicator = new FiendishCreatureApplicator(
+                mockAttackGenerator.Object,
+                mockFeatsGenerator.Object,
+                mockCollectionSelector.Object,
+                mockMagicGenerator.Object,
+                mockAdjustmentSelector.Object,
+                mockCreatureDataSelector.Object);
 
             baseCreature = new CreatureBuilder().WithTestValues().Build();
         }
@@ -297,7 +305,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.Vermin, CreatureConstants.Types.MagicalBeast)]
         public void GetPotentialTypes_CreatureTypeIsAdjusted(string original, string adjusted)
         {
-            //TODO: Set up creature types from repo
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { original, "subtype 1", "subtype 2" });
 
             var types = applicator.GetPotentialTypes("my creature");
             Assert.That(types.First(), Is.EqualTo(adjusted));
@@ -1160,7 +1170,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCaseSource(nameof(ChallengeRatingAdjustments))]
         public void GetPotentialChallengeRating_ChallengeRatingAdjusted(double hitDiceQuantity, string original, string adjusted)
         {
-            //TODO: Set up original creature hit dice
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
+                .Returns(hitDiceQuantity);
 
             mockCreatureDataSelector
                 .Setup(s => s.SelectFor("my creature"))

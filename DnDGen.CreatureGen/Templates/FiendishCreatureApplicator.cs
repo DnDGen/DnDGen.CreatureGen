@@ -1,10 +1,12 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Languages;
+using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.TreasureGen.Items;
@@ -22,13 +24,23 @@ namespace DnDGen.CreatureGen.Templates
         private readonly ICollectionSelector collectionSelector;
         private readonly IEnumerable<string> creatureTypes;
         private readonly IMagicGenerator magicGenerator;
+        private readonly IAdjustmentsSelector adjustmentSelector;
+        private readonly ICreatureDataSelector creatureDataSelector;
 
-        public FiendishCreatureApplicator(IAttacksGenerator attackGenerator, IFeatsGenerator featGenerator, ICollectionSelector collectionSelector, IMagicGenerator magicGenerator)
+        public FiendishCreatureApplicator(
+            IAttacksGenerator attackGenerator,
+            IFeatsGenerator featGenerator,
+            ICollectionSelector collectionSelector,
+            IMagicGenerator magicGenerator,
+            IAdjustmentsSelector adjustmentSelector,
+            ICreatureDataSelector creatureDataSelector)
         {
             this.attackGenerator = attackGenerator;
             this.featGenerator = featGenerator;
             this.collectionSelector = collectionSelector;
             this.magicGenerator = magicGenerator;
+            this.adjustmentSelector = adjustmentSelector;
+            this.creatureDataSelector = creatureDataSelector;
 
             creatureTypes = new[]
             {
@@ -91,22 +103,27 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureType(Creature creature)
         {
-            creature.Type.SubTypes = creature.Type.SubTypes.Union(new[]
+            var adjustedTypes = UpdateCreatureType(creature.Type.Name, creature.Type.SubTypes);
+
+            creature.Type.Name = adjustedTypes.First();
+            creature.Type.SubTypes = adjustedTypes.Skip(1);
+        }
+
+        private IEnumerable<string> UpdateCreatureType(string creatureType, IEnumerable<string> subtypes)
+        {
+            var adjustedSubtypes = subtypes.Union(new[]
             {
                 CreatureConstants.Types.Subtypes.Extraplanar,
                 CreatureConstants.Types.Subtypes.Augmented,
             });
 
-            if (creature.Type.Name == CreatureConstants.Types.Animal
-                || creature.Type.Name == CreatureConstants.Types.Vermin)
+            if (creatureType == CreatureConstants.Types.Animal
+                || creatureType == CreatureConstants.Types.Vermin)
             {
-                creature.Type.SubTypes = creature.Type.SubTypes.Union(new[]
-                {
-                    creature.Type.Name
-                });
-
-                creature.Type.Name = CreatureConstants.Types.MagicalBeast;
+                return new[] { CreatureConstants.Types.MagicalBeast }.Union(adjustedSubtypes).Union(new[] { creatureType });
             }
+
+            return new[] { creatureType }.Union(adjustedSubtypes);
         }
 
         private void UpdateCreatureAbilities(Creature creature)
@@ -136,14 +153,21 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureChallengeRating(Creature creature)
         {
-            if (creature.HitPoints.RoundedHitDiceQuantity >= 8)
+            creature.ChallengeRating = UpdateCreatureChallengeRating(creature.ChallengeRating, creature.HitPoints.RoundedHitDiceQuantity);
+        }
+
+        private string UpdateCreatureChallengeRating(string challengeRating, int hitDiceQuantity)
+        {
+            if (hitDiceQuantity >= 8)
             {
-                creature.ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(creature.ChallengeRating, 2);
+                return ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2);
             }
-            else if (creature.HitPoints.RoundedHitDiceQuantity >= 4)
+            else if (hitDiceQuantity >= 4)
             {
-                creature.ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(creature.ChallengeRating, 1);
+                return ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 1);
             }
+
+            return challengeRating;
         }
 
         private void UpdateCreatureLevelAdjustment(Creature creature)
@@ -278,12 +302,24 @@ namespace DnDGen.CreatureGen.Templates
 
         public IEnumerable<string> GetPotentialTypes(string creature)
         {
-            throw new NotImplementedException();
+            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
+            var creatureType = types.First();
+            var subtypes = types.Skip(1);
+
+            var adjustedTypes = UpdateCreatureType(creatureType, subtypes);
+
+            return adjustedTypes;
         }
 
         public string GetPotentialChallengeRating(string creature)
         {
-            throw new NotImplementedException();
+            var quantity = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, creature);
+            var data = creatureDataSelector.SelectFor(creature);
+            var hitDice = new HitDice { Quantity = quantity };
+
+            var adjustedChallengeRating = UpdateCreatureChallengeRating(data.ChallengeRating, hitDice.RoundedQuantity);
+
+            return adjustedChallengeRating;
         }
     }
 }
