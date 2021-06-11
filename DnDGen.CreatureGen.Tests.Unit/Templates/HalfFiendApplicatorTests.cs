@@ -415,6 +415,34 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.Ooze)]
         [TestCase(CreatureConstants.Types.Plant)]
         [TestCase(CreatureConstants.Types.Vermin)]
+        public void GetPotentialTypes_CreatureTypeIsAdjusted(string original)
+        {
+            //TODO: Set up creature types from selector
+
+            var types = applicator.GetPotentialTypes("my creature");
+            Assert.That(types.First(), Is.EqualTo(CreatureConstants.Types.Outsider));
+
+            var subtypes = types.Skip(1);
+            Assert.That(subtypes.Count(), Is.EqualTo(5));
+            Assert.That(subtypes, Contains.Item("subtype 1")
+                .And.Contains("subtype 2")
+                .And.Contains(original)
+                .And.Contains(CreatureConstants.Types.Subtypes.Augmented)
+                .And.Contains(CreatureConstants.Types.Subtypes.Native));
+        }
+
+        [TestCase(CreatureConstants.Types.Aberration)]
+        [TestCase(CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Types.Dragon)]
+        [TestCase(CreatureConstants.Types.Elemental)]
+        [TestCase(CreatureConstants.Types.Fey)]
+        [TestCase(CreatureConstants.Types.Giant)]
+        [TestCase(CreatureConstants.Types.Humanoid)]
+        [TestCase(CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
+        [TestCase(CreatureConstants.Types.Ooze)]
+        [TestCase(CreatureConstants.Types.Plant)]
+        [TestCase(CreatureConstants.Types.Vermin)]
         public void ApplyTo_CreatureTypeIsAdjusted(string original)
         {
             baseCreature.Type.Name = original;
@@ -1603,6 +1631,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature.Skills, Is.Empty);
+        }
+
+        [TestCaseSource(nameof(ChallengeRatingAdjustments))]
+        public void GetPotentialChallengeRating_ChallengeRatingAdjusted(double hitDiceQuantity, string original, string adjusted)
+        {
+            //TODO: Set the original challenge rating and hit dice quantity on the selector
+
+            var challengeRating = applicator.GetPotentialChallengeRating("my creature");
+            Assert.That(challengeRating, Is.EqualTo(adjusted));
         }
 
         [TestCaseSource(nameof(ChallengeRatingAdjustments))]

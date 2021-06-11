@@ -41,7 +41,7 @@ namespace DnDGen.CreatureGen.Creatures
         public const string TwentySix = "26";
         public const string TwentySeven = "27";
 
-        internal static string[] GetOrdered()
+        public static string[] GetOrdered()
         {
             return new[]
             {

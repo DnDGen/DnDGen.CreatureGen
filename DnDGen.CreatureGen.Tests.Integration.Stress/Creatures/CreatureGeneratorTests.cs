@@ -16,6 +16,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private ICollectionSelector collectionSelector;
         private ICreatureGenerator creatureGenerator;
         private ConcurrentDictionary<string, IEnumerable<string>> compatibleCreatures;
+        private IEnumerable<string> challengeRatings;
 
         [SetUp]
         public void Setup()
@@ -24,6 +25,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             collectionSelector = GetNewInstanceOf<ICollectionSelector>();
             creatureGenerator = GetNewInstanceOf<ICreatureGenerator>();
             compatibleCreatures = new ConcurrentDictionary<string, IEnumerable<string>>();
+            challengeRatings = ChallengeRatingConstants.GetOrdered();
         }
 
         [Test]
@@ -207,6 +209,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         }
 
         [Test]
+        public void StressRandomCreatureOfTemplateWithChallengeRating()
+        {
+            stressor.Stress(GenerateAndAssertRandomCreatureOfTemplateWithChallengeRating);
+        }
+
+        private void GenerateAndAssertRandomCreatureOfTemplateWithChallengeRating()
+        {
+            var templates = CreatureConstants.Templates.GetAll();
+            var randomTemplate = collectionSelector.SelectRandomFrom(templates);
+            var challengeRating = collectionSelector.SelectRandomFrom(challengeRatings);
+
+            var creature = creatureGenerator.GenerateRandomOfTemplate(randomTemplate, challengeRating);
+
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
+            creatureAsserter.AssertCreature(creature);
+            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
+        }
+
+        [Test]
         public void StressRandomCreatureOfTemplateAsCharacter()
         {
             stressor.Stress(GenerateAndAssertRandomCreatureOfTemplateAsCharacter);
@@ -221,6 +242,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
             Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
             creatureAsserter.AssertCreatureAsCharacter(creature);
+        }
+
+        [Test]
+        public void StressRandomCreatureOfTemplateAsCharacterWithChallengeRating()
+        {
+            stressor.Stress(GenerateAndAssertRandomCreatureOfTemplateAsCharacterWithChallengeRating);
+        }
+
+        private void GenerateAndAssertRandomCreatureOfTemplateAsCharacterWithChallengeRating()
+        {
+            var templates = CreatureConstants.Templates.GetAll();
+            var randomTemplate = collectionSelector.SelectRandomFrom(templates);
+            var challengeRating = collectionSelector.SelectRandomFrom(challengeRatings);
+
+            var creature = creatureGenerator.GenerateRandomOfTemplateAsCharacter(randomTemplate, challengeRating);
+
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
+            creatureAsserter.AssertCreatureAsCharacter(creature);
+            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
         }
 
         [Test]
@@ -241,6 +281,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         }
 
         [Test]
+        public async Task StressRandomCreatureOfTemplateWithChallengeRatingAsync()
+        {
+            await stressor.StressAsync(GenerateAndAssertRandomCreatureOfTemplateWithChallengeRatingAsync);
+        }
+
+        private async Task GenerateAndAssertRandomCreatureOfTemplateWithChallengeRatingAsync()
+        {
+            var templates = CreatureConstants.Templates.GetAll();
+            var randomTemplate = collectionSelector.SelectRandomFrom(templates);
+            var challengeRating = collectionSelector.SelectRandomFrom(challengeRatings);
+
+            var creature = await creatureGenerator.GenerateRandomOfTemplateAsync(randomTemplate, challengeRating);
+
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
+            creatureAsserter.AssertCreature(creature);
+            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
+        }
+
+        [Test]
         public async Task StressRandomCreatureOfTemplateAsCharacterAsync()
         {
             await stressor.StressAsync(GenerateAndAssertRandomCreatureOfTemplateAsCharacterAsync);
@@ -258,6 +317,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         }
 
         [Test]
+        public async Task StressRandomCreatureOfTemplateAsCharacterWithChallengeRatingAsync()
+        {
+            await stressor.StressAsync(GenerateAndAssertRandomCreatureOfTemplateAsCharacterWithChallengeRatingAsync);
+        }
+
+        private async Task GenerateAndAssertRandomCreatureOfTemplateAsCharacterWithChallengeRatingAsync()
+        {
+            var templates = CreatureConstants.Templates.GetAll();
+            var randomTemplate = collectionSelector.SelectRandomFrom(templates);
+            var challengeRating = collectionSelector.SelectRandomFrom(challengeRatings);
+
+            var creature = await creatureGenerator.GenerateRandomOfTemplateAsCharacterAsync(randomTemplate, challengeRating);
+
+            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
+            creatureAsserter.AssertCreatureAsCharacter(creature);
+            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
+        }
+
+        [Test]
         public void StressRandomCreatureOfType()
         {
             stressor.Stress(GenerateAndAssertRandomCreatureOfType);
@@ -272,9 +350,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             GenerateAndAssertRandomCreatureOfType(randomType);
         }
 
-        private void GenerateAndAssertRandomCreatureOfType(string type)
+        private void GenerateAndAssertRandomCreatureOfType(string type, string challengeRating = null)
         {
-            var creature = creatureGenerator.GenerateRandomOfType(type);
+            var creature = creatureGenerator.GenerateRandomOfType(type, challengeRating);
 
             var types = CreatureConstants.Types.GetAll();
             if (types.Contains(type))
@@ -283,6 +361,27 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                 Assert.That(creature.Type.SubTypes, Contains.Item(type), creature.Summary);
 
             creatureAsserter.AssertCreature(creature);
+
+            if (challengeRating != null)
+            {
+                Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
+            }
+        }
+
+        [Test]
+        public void StressRandomCreatureOfTypeWithChallengeRating()
+        {
+            stressor.Stress(GenerateAndAssertRandomCreatureOfTypeWithChallengeRating);
+        }
+
+        private void GenerateAndAssertRandomCreatureOfTypeWithChallengeRating()
+        {
+            var types = CreatureConstants.Types.GetAll();
+            var subtypes = CreatureConstants.Types.Subtypes.GetAll();
+            var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes));
+            var challengeRating = collectionSelector.SelectRandomFrom(challengeRatings);
+
+            GenerateAndAssertRandomCreatureOfType(randomType, challengeRating);
         }
 
         [Test]
@@ -316,6 +415,38 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         }
 
         [Test]
+        public void StressRandomCreatureOfTypeAsCharacterWithChallengeRating()
+        {
+            stressor.Stress(GenerateAndAssertRandomCreatureOfTypeAsCharacterWithChallengeRating);
+        }
+
+        private void GenerateAndAssertRandomCreatureOfTypeAsCharacterWithChallengeRating()
+        {
+            var types = CreatureConstants.Types.GetAll();
+            var subtypes = CreatureConstants.Types.Subtypes.GetAll();
+            var nonCharacterTypes = new[]
+            {
+                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Elemental,
+                CreatureConstants.Types.Ooze,
+                CreatureConstants.Types.Vermin,
+                CreatureConstants.Types.Subtypes.Swarm,
+            };
+            var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes).Except(nonCharacterTypes));
+            var challengeRating = collectionSelector.SelectRandomFrom(challengeRatings);
+
+            var creature = creatureGenerator.GenerateRandomOfTypeAsCharacter(randomType, challengeRating);
+
+            if (types.Contains(randomType))
+                Assert.That(creature.Type.Name, Is.EqualTo(randomType), creature.Summary);
+            else
+                Assert.That(creature.Type.SubTypes, Contains.Item(randomType), creature.Summary);
+
+            creatureAsserter.AssertCreatureAsCharacter(creature);
+            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
+        }
+
+        [Test]
         public async Task StressRandomCreatureOfTypeAsync()
         {
             await stressor.StressAsync(GenerateAndAssertRandomCreatureOfTypeAsync);
@@ -335,6 +466,30 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                 Assert.That(creature.Type.SubTypes, Contains.Item(randomType), creature.Summary);
 
             creatureAsserter.AssertCreature(creature);
+        }
+
+        [Test]
+        public async Task StressRandomCreatureOfTypeWithChallengeRatingAsync()
+        {
+            await stressor.StressAsync(GenerateAndAssertRandomCreatureOfTypeWithChallengeRatingAsync);
+        }
+
+        private async Task GenerateAndAssertRandomCreatureOfTypeWithChallengeRatingAsync()
+        {
+            var types = CreatureConstants.Types.GetAll();
+            var subtypes = CreatureConstants.Types.Subtypes.GetAll();
+            var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes));
+            var challengeRating = collectionSelector.SelectRandomFrom(challengeRatings);
+
+            var creature = await creatureGenerator.GenerateRandomOfTypeAsync(randomType, challengeRating);
+
+            if (types.Contains(randomType))
+                Assert.That(creature.Type.Name, Is.EqualTo(randomType), creature.Summary);
+            else
+                Assert.That(creature.Type.SubTypes, Contains.Item(randomType), creature.Summary);
+
+            creatureAsserter.AssertCreature(creature);
+            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
         }
 
         [Test]
@@ -365,6 +520,107 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                 Assert.That(creature.Type.SubTypes, Contains.Item(randomType), creature.Summary);
 
             creatureAsserter.AssertCreatureAsCharacter(creature);
+        }
+
+        [Test]
+        public async Task StressRandomCreatureOfTypeAsCharacterWithChallengeRatingAsync()
+        {
+            await stressor.StressAsync(GenerateAndAssertRandomCreatureOfTypeAsCharacterWithChallengeRatingAsync);
+        }
+
+        private async Task GenerateAndAssertRandomCreatureOfTypeAsCharacterWithChallengeRatingAsync()
+        {
+            var types = CreatureConstants.Types.GetAll();
+            var subtypes = CreatureConstants.Types.Subtypes.GetAll();
+            var nonCharacterTypes = new[]
+            {
+                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Elemental,
+                CreatureConstants.Types.Ooze,
+                CreatureConstants.Types.Vermin,
+                CreatureConstants.Types.Subtypes.Swarm,
+            };
+            var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes).Except(nonCharacterTypes));
+            var challengeRating = collectionSelector.SelectRandomFrom(challengeRatings);
+
+            var creature = await creatureGenerator.GenerateRandomOfTypeAsCharacterAsync(randomType, challengeRating);
+
+            if (types.Contains(randomType))
+                Assert.That(creature.Type.Name, Is.EqualTo(randomType), creature.Summary);
+            else
+                Assert.That(creature.Type.SubTypes, Contains.Item(randomType), creature.Summary);
+
+            creatureAsserter.AssertCreatureAsCharacter(creature);
+            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
+        }
+
+        [Test]
+        public void StressRandomCreatureOfChallengeRating()
+        {
+            stressor.Stress(GenerateAndAssertRandomCreatureOfChallengeRating);
+        }
+
+        private void GenerateAndAssertRandomCreatureOfChallengeRating()
+        {
+            var challengeRating = collectionSelector.SelectRandomFrom(challengeRatings);
+
+            GenerateAndAssertRandomCreatureOfChallengeRating(challengeRating);
+        }
+
+        private void GenerateAndAssertRandomCreatureOfChallengeRating(string challengeRating)
+        {
+            var creature = creatureGenerator.GenerateRandomOfChallengeRating(challengeRating);
+
+            creatureAsserter.AssertCreature(creature);
+            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
+        }
+
+        [Test]
+        public void StressRandomCreatureOfChallengeRatingAsCharacter()
+        {
+            stressor.Stress(GenerateAndAssertRandomCreatureOfChallengeRatingAsCharacter);
+        }
+
+        private void GenerateAndAssertRandomCreatureOfChallengeRatingAsCharacter()
+        {
+            var challengeRating = collectionSelector.SelectRandomFrom(challengeRatings);
+
+            var creature = creatureGenerator.GenerateRandomOfChallengeRatingAsCharacter(challengeRating);
+
+            creatureAsserter.AssertCreatureAsCharacter(creature);
+            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
+        }
+
+        [Test]
+        public async Task StressRandomCreatureOfChallengeRatingAsync()
+        {
+            await stressor.StressAsync(GenerateAndAssertRandomCreatureOfChallengeRatingAsync);
+        }
+
+        private async Task GenerateAndAssertRandomCreatureOfChallengeRatingAsync()
+        {
+            var challengeRating = collectionSelector.SelectRandomFrom(challengeRatings);
+
+            var creature = await creatureGenerator.GenerateRandomOfChallengeRatingAsync(challengeRating);
+
+            creatureAsserter.AssertCreature(creature);
+            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
+        }
+
+        [Test]
+        public async Task StressRandomCreatureOfChallengeRatingAsCharacterAsync()
+        {
+            await stressor.StressAsync(GenerateAndAssertRandomCreatureOfChallengeRatingAsCharacterAsync);
+        }
+
+        private async Task GenerateAndAssertRandomCreatureOfChallengeRatingAsCharacterAsync()
+        {
+            var challengeRating = collectionSelector.SelectRandomFrom(challengeRatings);
+
+            var creature = await creatureGenerator.GenerateRandomOfChallengeRatingAsCharacterAsync(challengeRating);
+
+            creatureAsserter.AssertCreatureAsCharacter(creature);
+            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
         }
 
         [TestCase(CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.Ghost)]

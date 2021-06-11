@@ -244,6 +244,30 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .And.Contains(CreatureConstants.Types.Subtypes.Incorporeal));
         }
 
+        [TestCase(CreatureConstants.Types.Aberration, CreatureConstants.Types.Undead)]
+        [TestCase(CreatureConstants.Types.Animal, CreatureConstants.Types.Undead)]
+        [TestCase(CreatureConstants.Types.Dragon, CreatureConstants.Types.Undead)]
+        [TestCase(CreatureConstants.Types.Giant, CreatureConstants.Types.Undead)]
+        [TestCase(CreatureConstants.Types.Humanoid, CreatureConstants.Types.Undead)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, CreatureConstants.Types.Undead)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid, CreatureConstants.Types.Undead)]
+        [TestCase(CreatureConstants.Types.Plant, CreatureConstants.Types.Undead)]
+        public void GetPotentialTypes_CreatureTypeIsAdjusted(string original, string adjusted)
+        {
+            //TODO: Set up creature types from selector
+
+            var types = applicator.GetPotentialTypes("my creature");
+            Assert.That(types.First(), Is.EqualTo(adjusted));
+
+            var subtypes = types.Skip(1);
+            Assert.That(subtypes.Count(), Is.EqualTo(5));
+            Assert.That(subtypes, Contains.Item("subtype 1")
+                .And.Contains("subtype 2")
+                .And.Contains(original)
+                .And.Contains(CreatureConstants.Types.Subtypes.Augmented)
+                .And.Contains(CreatureConstants.Types.Subtypes.Incorporeal));
+        }
+
         [Test]
         public void ApplyTo_CharismaIncreasesBy4()
         {
@@ -794,6 +818,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Saves[SaveConstants.Fortitude].HasSave, Is.False);
             Assert.That(creature.Saves[SaveConstants.Reflex].HasSave, Is.True);
             Assert.That(creature.Saves[SaveConstants.Will].HasSave, Is.True);
+        }
+
+        [TestCaseSource(nameof(ChallengeRatingAdjustments))]
+        public void GetPotentialChallengeRating_CreatureChallengeRating_IncreasesBy2(string original, string adjusted)
+        {
+            //TODO: Set the original challenge rating
+
+            var challengeRating = applicator.GetPotentialChallengeRating("my creature");
+            Assert.That(challengeRating, Is.EqualTo(adjusted));
         }
 
         [TestCaseSource(nameof(ChallengeRatingAdjustments))]

@@ -657,5 +657,15 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
 
             return creature;
         }
+
+        public IEnumerable<string> GetPotentialTypes(string creature)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetPotentialChallengeRating(string creature)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

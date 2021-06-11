@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Creatures;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Templates
@@ -13,6 +14,16 @@ namespace DnDGen.CreatureGen.Templates
         public async Task<Creature> ApplyToAsync(Creature creature)
         {
             return creature;
+        }
+
+        public string GetPotentialChallengeRating(string creature)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IEnumerable<string> GetPotentialTypes(string creature)
+        {
+            throw new System.NotImplementedException();
         }
 
         public bool IsCompatible(string creature)

@@ -275,10 +275,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         [TestCaseSource(nameof(CreatureTypeAdjusted))]
         public void GetPotentialTypes_CreatureTypeIsAdjusted(string template, string original)
         {
+            //TODO: Set up creature types from repo
+
             var types = applicators[template].GetPotentialTypes("my creature");
             Assert.That(types.First(), Is.EqualTo(CreatureConstants.Types.Dragon));
-            Assert.That(types.Skip(1), Is.EqualTo(new[] { CreatureConstants.Types.Subtypes.Augmented }));
-            Assert.Fail("add in the original creature's types as well");
+
+            var subtypes = types.Skip(1);
+            Assert.That(subtypes.Count(), Is.EqualTo(4));
+            Assert.That(subtypes, Contains.Item("subtype 1")
+                .And.Contains("subtype 2")
+                .And.Contains(original)
+                .And.Contains(CreatureConstants.Types.Subtypes.Augmented));
         }
 
         [TestCaseSource(nameof(CreatureTypeAdjusted))]

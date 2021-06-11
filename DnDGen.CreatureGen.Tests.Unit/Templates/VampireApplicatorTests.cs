@@ -161,6 +161,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
         [TestCase(CreatureConstants.Types.Humanoid)]
         [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
+        public void GetPotentialTypes_ChangeCreatureType(string original)
+        {
+            //TODO: Set the original type and subtypes
+
+            var types = applicator.GetPotentialTypes("my creature");
+            Assert.That(types.First(), Is.EqualTo(CreatureConstants.Types.Undead));
+
+            var subtypes = types.Skip(1);
+            Assert.That(subtypes.Count(), Is.EqualTo(4));
+            Assert.That(subtypes, Contains.Item("subtype 1")
+                .And.Contains(CreatureConstants.Types.Subtypes.Augmented)
+                .And.Contains(original)
+                .And.Contains("subtype 2"));
+        }
+
+        [TestCase(CreatureConstants.Types.Humanoid)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
         public void ApplyTo_ChangeCreatureType(string original)
         {
             baseCreature.Type.Name = original;
@@ -875,6 +892,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Saves[SaveConstants.Fortitude].HasSave, Is.False);
             Assert.That(creature.Saves[SaveConstants.Reflex].HasSave, Is.True);
             Assert.That(creature.Saves[SaveConstants.Will].HasSave, Is.True);
+        }
+
+        [TestCaseSource(nameof(ChallengeRatingAdjustments))]
+        public void GetPotentialChallengeRating_IncreaseChallengeRating(string original, string adjusted)
+        {
+            //TODO: Set the original challenge rating
+
+            var challengeRating = applicator.GetPotentialChallengeRating("my creature");
+            Assert.That(challengeRating, Is.EqualTo(adjusted));
         }
 
         [TestCaseSource(nameof(ChallengeRatingAdjustments))]

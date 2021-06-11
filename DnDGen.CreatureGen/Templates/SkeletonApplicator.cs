@@ -456,5 +456,15 @@ namespace DnDGen.CreatureGen.Templates
 
             return true;
         }
+
+        public IEnumerable<string> GetPotentialTypes(string creature)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetPotentialChallengeRating(string creature)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

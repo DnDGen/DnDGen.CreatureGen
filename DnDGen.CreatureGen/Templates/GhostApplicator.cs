@@ -367,5 +367,15 @@ namespace DnDGen.CreatureGen.Templates
 
             return charismaAdjustment.Amount + Ability.DefaultScore >= 6;
         }
+
+        public IEnumerable<string> GetPotentialTypes(string creature)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetPotentialChallengeRating(string creature)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

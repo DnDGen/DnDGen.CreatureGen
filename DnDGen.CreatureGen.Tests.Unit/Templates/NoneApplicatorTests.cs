@@ -415,5 +415,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var compatible = templateApplicator.IsCompatible("whatever");
             Assert.That(compatible, Is.True);
         }
+
+        [Test]
+        public void GetPotentialTypes_ReturnOriginalCreatureTypes()
+        {
+            var creatureTypes = new[] { "my type", "subtype 1", "subtype 2" };
+
+            var types = templateApplicator.GetPotentialTypes("whatever");
+            Assert.That(types, Is.EqualTo(creatureTypes));
+        }
+
+        [Test]
+        public void GetPotentialChallengeRating_ReturnOriginalCreatureTypes()
+        {
+            var challengeRating = templateApplicator.GetPotentialChallengeRating("whatever");
+            Assert.That(challengeRating, Is.EqualTo("my challenge rating"));
+        }
     }
 }

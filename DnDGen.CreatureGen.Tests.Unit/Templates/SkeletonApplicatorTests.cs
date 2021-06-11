@@ -248,6 +248,90 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.MagicalBeast)]
         [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
         [TestCase(CreatureConstants.Types.Vermin)]
+        public void GetPotentialTypes_ChangeCreatureType(string original)
+        {
+            //TODO: Set original creature type
+
+            var types = applicator.GetPotentialTypes("my creature");
+            Assert.That(types.First(), Is.EqualTo(CreatureConstants.Types.Undead));
+        }
+
+        [TestCase(CreatureConstants.Types.Subtypes.Air)]
+        [TestCase(CreatureConstants.Types.Subtypes.Aquatic)]
+        [TestCase(CreatureConstants.Types.Subtypes.Augmented)]
+        [TestCase(CreatureConstants.Types.Subtypes.Cold)]
+        [TestCase(CreatureConstants.Types.Subtypes.Earth)]
+        [TestCase(CreatureConstants.Types.Subtypes.Extraplanar)]
+        [TestCase(CreatureConstants.Types.Subtypes.Fire)]
+        [TestCase(CreatureConstants.Types.Subtypes.Swarm)]
+        [TestCase(CreatureConstants.Types.Subtypes.Water)]
+        [TestCase(CreatureConstants.Types.Aberration)]
+        [TestCase(CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Types.Construct)]
+        [TestCase(CreatureConstants.Types.Dragon)]
+        [TestCase(CreatureConstants.Types.Elemental)]
+        [TestCase(CreatureConstants.Types.Fey)]
+        [TestCase(CreatureConstants.Types.Giant)]
+        [TestCase(CreatureConstants.Types.Humanoid)]
+        [TestCase(CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
+        [TestCase(CreatureConstants.Types.Ooze)]
+        [TestCase(CreatureConstants.Types.Outsider)]
+        [TestCase(CreatureConstants.Types.Plant)]
+        [TestCase(CreatureConstants.Types.Vermin)]
+        public void GetPotentialTypes_KeepSubtype(string subtype)
+        {
+            var subtypes = new[]
+            {
+                "subtype 1",
+                subtype,
+                "subtype 2",
+            };
+
+            var types = applicator.GetPotentialTypes("my creature");
+            Assert.That(types.Skip(1).ToArray(), Is.EqualTo(subtypes)
+                .And.Contains(subtype)
+                .And.Length.EqualTo(3));
+        }
+
+        [TestCase(CreatureConstants.Types.Subtypes.Chaotic)]
+        [TestCase(CreatureConstants.Types.Subtypes.Evil)]
+        [TestCase(CreatureConstants.Types.Subtypes.Good)]
+        [TestCase(CreatureConstants.Types.Subtypes.Lawful)]
+        [TestCase(CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Types.Subtypes.Dwarf)]
+        [TestCase(CreatureConstants.Types.Subtypes.Elf)]
+        [TestCase(CreatureConstants.Types.Subtypes.Gnoll)]
+        [TestCase(CreatureConstants.Types.Subtypes.Gnome)]
+        [TestCase(CreatureConstants.Types.Subtypes.Goblinoid)]
+        [TestCase(CreatureConstants.Types.Subtypes.Halfling)]
+        [TestCase(CreatureConstants.Types.Subtypes.Orc)]
+        [TestCase(CreatureConstants.Types.Subtypes.Reptilian)]
+        public void GetPotentialTypes_LoseSubtype(string subtype)
+        {
+            var subtypes = new[]
+            {
+                "subtype 1",
+                subtype,
+                "subtype 2",
+            };
+
+            var types = applicator.GetPotentialTypes("my creature");
+            Assert.That(types.Skip(1).ToArray(), Is.EqualTo(subtypes.Except(new[] { subtype }))
+                .And.Not.Contains(subtype)
+                .And.Length.EqualTo(2));
+        }
+
+        [TestCase(CreatureConstants.Types.Aberration)]
+        [TestCase(CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Types.Dragon)]
+        [TestCase(CreatureConstants.Types.Elemental)]
+        [TestCase(CreatureConstants.Types.Fey)]
+        [TestCase(CreatureConstants.Types.Giant)]
+        [TestCase(CreatureConstants.Types.Humanoid)]
+        [TestCase(CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
+        [TestCase(CreatureConstants.Types.Vermin)]
         public void ApplyTo_ChangeCreatureType(string original)
         {
             baseCreature.Type.Name = original;
@@ -873,6 +957,37 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creature = applicator.ApplyTo(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Feats, Is.Empty);
+        }
+
+        [TestCase(.1, ChallengeRatingConstants.OneSixth)]
+        [TestCase(.25, ChallengeRatingConstants.OneSixth)]
+        [TestCase(.5, ChallengeRatingConstants.OneSixth)]
+        [TestCase(1, ChallengeRatingConstants.OneThird)]
+        [TestCase(2, ChallengeRatingConstants.One)]
+        [TestCase(3, ChallengeRatingConstants.One)]
+        [TestCase(4, ChallengeRatingConstants.Two)]
+        [TestCase(5, ChallengeRatingConstants.Two)]
+        [TestCase(6, ChallengeRatingConstants.Three)]
+        [TestCase(7, ChallengeRatingConstants.Three)]
+        [TestCase(8, ChallengeRatingConstants.Four)]
+        [TestCase(9, ChallengeRatingConstants.Four)]
+        [TestCase(10, ChallengeRatingConstants.Five)]
+        [TestCase(11, ChallengeRatingConstants.Five)]
+        [TestCase(12, ChallengeRatingConstants.Six)]
+        [TestCase(13, ChallengeRatingConstants.Six)]
+        [TestCase(14, ChallengeRatingConstants.Six)]
+        [TestCase(15, ChallengeRatingConstants.Seven)]
+        [TestCase(16, ChallengeRatingConstants.Seven)]
+        [TestCase(17, ChallengeRatingConstants.Seven)]
+        [TestCase(18, ChallengeRatingConstants.Eight)]
+        [TestCase(19, ChallengeRatingConstants.Eight)]
+        [TestCase(20, ChallengeRatingConstants.Eight)]
+        public void GetPotentialChallengeRating_AdjustChallengeRating(double hitDice, string challengeRating)
+        {
+            //TODO: Set the hit dice quantity
+
+            var cr = applicator.GetPotentialChallengeRating("my creature");
+            Assert.That(cr, Is.EqualTo(challengeRating));
         }
 
         [TestCase(.1, ChallengeRatingConstants.OneSixth)]

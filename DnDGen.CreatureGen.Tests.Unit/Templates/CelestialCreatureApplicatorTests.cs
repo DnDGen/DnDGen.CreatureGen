@@ -8,6 +8,8 @@ using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Languages;
 using DnDGen.CreatureGen.Magics;
+using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -31,6 +33,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<IFeatsGenerator> mockFeatsGenerator;
         private Mock<ICollectionSelector> mockCollectionSelector;
         private Mock<IMagicGenerator> mockMagicGenerator;
+        private Mock<ICreatureDataSelector> mockCreatureDataSelector;
 
         [SetUp]
         public void SetUp()
@@ -39,6 +42,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
             mockCollectionSelector = new Mock<ICollectionSelector>();
             mockMagicGenerator = new Mock<IMagicGenerator>();
+            mockCreatureDataSelector = new Mock<ICreatureDataSelector>();
 
             applicator = new CelestialCreatureApplicator(mockAttackGenerator.Object, mockFeatsGenerator.Object, mockCollectionSelector.Object, mockMagicGenerator.Object);
 
@@ -273,6 +277,43 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             {
                 Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(5));
                 Assert.That(creature.Type.SubTypes, Contains.Item("subtype 1")
+                    .And.Contains("subtype 2")
+                    .And.Contains(original)
+                    .And.Contains(CreatureConstants.Types.Subtypes.Extraplanar)
+                    .And.Contains(CreatureConstants.Types.Subtypes.Augmented));
+            }
+        }
+
+        [TestCase(CreatureConstants.Types.Aberration, CreatureConstants.Types.Aberration)]
+        [TestCase(CreatureConstants.Types.Animal, CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Types.Dragon, CreatureConstants.Types.Dragon)]
+        [TestCase(CreatureConstants.Types.Fey, CreatureConstants.Types.Fey)]
+        [TestCase(CreatureConstants.Types.Giant, CreatureConstants.Types.Giant)]
+        [TestCase(CreatureConstants.Types.Humanoid, CreatureConstants.Types.Humanoid)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid, CreatureConstants.Types.MonstrousHumanoid)]
+        [TestCase(CreatureConstants.Types.Plant, CreatureConstants.Types.Plant)]
+        [TestCase(CreatureConstants.Types.Vermin, CreatureConstants.Types.MagicalBeast)]
+        public void GetPotentialTypes_CreatureTypeIsAdjusted(string original, string adjusted)
+        {
+            //TODO: Set up creature types from repo
+
+            var types = applicator.GetPotentialTypes("my creature");
+            Assert.That(types.First(), Is.EqualTo(adjusted));
+
+            var subtypes = types.Skip(1);
+            if (original == adjusted)
+            {
+                Assert.That(subtypes.Count(), Is.EqualTo(4));
+                Assert.That(subtypes, Contains.Item("subtype 1")
+                    .And.Contains("subtype 2")
+                    .And.Contains(CreatureConstants.Types.Subtypes.Extraplanar)
+                    .And.Contains(CreatureConstants.Types.Subtypes.Augmented));
+            }
+            else
+            {
+                Assert.That(subtypes.Count(), Is.EqualTo(5));
+                Assert.That(subtypes, Contains.Item("subtype 1")
                     .And.Contains("subtype 2")
                     .And.Contains(original)
                     .And.Contains(CreatureConstants.Types.Subtypes.Extraplanar)
@@ -1125,6 +1166,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Abilities[AbilityConstants.Intelligence].BaseScore, Is.Zero);
             Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(3));
             Assert.That(creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment, Is.Zero);
+        }
+
+        [TestCaseSource(nameof(ChallengeRatingAdjustments))]
+        public void GetPotentialChallengeRating_ChallengeRatingAdjusted(double hitDiceQuantity, string original, string adjusted)
+        {
+            //TODO: Set up original creature hit dice
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor("my creature"))
+                .Returns(new CreatureDataSelection { ChallengeRating = original });
+
+            var challengeRating = applicator.GetPotentialChallengeRating("my creature");
+            Assert.That(challengeRating, Is.EqualTo(adjusted));
         }
 
         [TestCaseSource(nameof(ChallengeRatingAdjustments))]
