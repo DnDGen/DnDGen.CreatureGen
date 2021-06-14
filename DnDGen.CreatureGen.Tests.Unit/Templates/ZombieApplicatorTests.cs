@@ -1148,6 +1148,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(8, ChallengeRatingConstants.Five)]
         [TestCase(9, ChallengeRatingConstants.Six)]
         [TestCase(10, ChallengeRatingConstants.Six)]
+        public void GetPotentialChallengeRating_AdjustChallengeRating(double hitDice, string challengeRating)
+        {
+            //TODO: Set the hit dice quantity
+
+            var cr = applicator.GetPotentialChallengeRating("my creature");
+            Assert.That(cr, Is.EqualTo(challengeRating));
+        }
+
+        [TestCase(.1, ChallengeRatingConstants.OneEighth)]
+        [TestCase(.25, ChallengeRatingConstants.OneEighth)]
+        [TestCase(.5, ChallengeRatingConstants.OneFourth)]
+        [TestCase(1, ChallengeRatingConstants.OneHalf)]
+        [TestCase(2, ChallengeRatingConstants.One)]
+        [TestCase(3, ChallengeRatingConstants.Two)]
+        [TestCase(4, ChallengeRatingConstants.Three)]
+        [TestCase(5, ChallengeRatingConstants.Three)]
+        [TestCase(6, ChallengeRatingConstants.Four)]
+        [TestCase(7, ChallengeRatingConstants.Four)]
+        [TestCase(8, ChallengeRatingConstants.Five)]
+        [TestCase(9, ChallengeRatingConstants.Six)]
+        [TestCase(10, ChallengeRatingConstants.Six)]
         public void ApplyTo_AdjustChallengeRating(double hitDice, string challengeRating)
         {
             baseCreature.HitPoints.HitDice[0].Quantity = hitDice;
