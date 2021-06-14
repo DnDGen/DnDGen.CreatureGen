@@ -28,6 +28,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IItemsGenerator itemsGenerator;
         private readonly ITypeAndAmountSelector typeAndAmountSelector;
         private readonly IEnumerable<string> creatureTypes;
+        private readonly ICreatureDataSelector creatureDataSelector;
 
         public GhostApplicator(
             Dice dice,
@@ -36,7 +37,8 @@ namespace DnDGen.CreatureGen.Templates
             ICollectionSelector collectionSelector,
             IFeatsGenerator featsGenerator,
             IItemsGenerator itemsGenerator,
-            ITypeAndAmountSelector typeAndAmountSelector)
+            ITypeAndAmountSelector typeAndAmountSelector,
+            ICreatureDataSelector creatureDataSelector)
         {
             this.dice = dice;
             this.speedsGenerator = speedsGenerator;
@@ -45,6 +47,7 @@ namespace DnDGen.CreatureGen.Templates
             this.featsGenerator = featsGenerator;
             this.itemsGenerator = itemsGenerator;
             this.typeAndAmountSelector = typeAndAmountSelector;
+            this.creatureDataSelector = creatureDataSelector;
 
             creatureTypes = new[]
             {
@@ -102,14 +105,17 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureType(Creature creature)
         {
-            creature.Type.SubTypes = creature.Type.SubTypes.Union(new[]
-            {
-                CreatureConstants.Types.Subtypes.Incorporeal,
-                CreatureConstants.Types.Subtypes.Augmented,
-                creature.Type.Name,
-            });
+            var adjustedTypes = UpdateCreatureType(creature.Type.Name, creature.Type.SubTypes);
 
-            creature.Type.Name = CreatureConstants.Types.Undead;
+            creature.Type.Name = adjustedTypes.First();
+            creature.Type.SubTypes = adjustedTypes.Skip(1);
+        }
+
+        private IEnumerable<string> UpdateCreatureType(string creatureType, IEnumerable<string> subtypes)
+        {
+            return new[] { CreatureConstants.Types.Undead }
+                .Union(subtypes)
+                .Union(new[] { CreatureConstants.Types.Subtypes.Incorporeal, CreatureConstants.Types.Subtypes.Augmented, creatureType });
         }
 
         private void UpdateCreatureAbilities(Creature creature)
@@ -140,7 +146,12 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureChallengeRating(Creature creature)
         {
-            creature.ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(creature.ChallengeRating, 2);
+            creature.ChallengeRating = UpdateCreatureChallengeRating(creature.ChallengeRating);
+        }
+
+        private string UpdateCreatureChallengeRating(string challengeRating)
+        {
+            return ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2);
         }
 
         private void UpdateCreatureLevelAdjustment(Creature creature)
@@ -370,12 +381,21 @@ namespace DnDGen.CreatureGen.Templates
 
         public IEnumerable<string> GetPotentialTypes(string creature)
         {
-            throw new NotImplementedException();
+            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
+            var creatureType = types.First();
+            var subtypes = types.Skip(1);
+
+            var adjustedTypes = UpdateCreatureType(creatureType, subtypes);
+
+            return adjustedTypes;
         }
 
         public string GetPotentialChallengeRating(string creature)
         {
-            throw new NotImplementedException();
+            var data = creatureDataSelector.SelectFor(creature);
+            var adjustedChallengeRating = UpdateCreatureChallengeRating(data.ChallengeRating);
+
+            return adjustedChallengeRating;
         }
     }
 }

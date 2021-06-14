@@ -36,6 +36,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<IFeatsGenerator> mockFeatsGenerator;
         private Mock<IItemsGenerator> mockItemsGenerator;
         private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
+        private Mock<ICreatureDataSelector> mockCreatureDataSelector;
 
         [SetUp]
         public void SetUp()
@@ -47,6 +48,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
             mockItemsGenerator = new Mock<IItemsGenerator>();
             mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
+            mockCreatureDataSelector = new Mock<ICreatureDataSelector>();
 
             applicator = new GhostApplicator(
                 mockDice.Object,
@@ -55,7 +57,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 mockCollectionSelector.Object,
                 mockFeatsGenerator.Object,
                 mockItemsGenerator.Object,
-                mockTypeAndAmountSelector.Object);
+                mockTypeAndAmountSelector.Object,
+                mockCreatureDataSelector.Object);
 
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
@@ -254,7 +257,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.Plant, CreatureConstants.Types.Undead)]
         public void GetPotentialTypes_CreatureTypeIsAdjusted(string original, string adjusted)
         {
-            //TODO: Set up creature types from selector
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { original, "subtype 1", "subtype 2" });
 
             var types = applicator.GetPotentialTypes("my creature");
             Assert.That(types.First(), Is.EqualTo(adjusted));
@@ -823,7 +828,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCaseSource(nameof(ChallengeRatingAdjustments))]
         public void GetPotentialChallengeRating_CreatureChallengeRating_IncreasesBy2(string original, string adjusted)
         {
-            //TODO: Set the original challenge rating
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor("my creature"))
+                .Returns(new CreatureDataSelection { ChallengeRating = original });
 
             var challengeRating = applicator.GetPotentialChallengeRating("my creature");
             Assert.That(challengeRating, Is.EqualTo(adjusted));

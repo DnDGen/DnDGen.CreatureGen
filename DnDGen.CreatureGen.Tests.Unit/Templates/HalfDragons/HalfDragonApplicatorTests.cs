@@ -85,7 +85,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockSkillsGenerator.Object,
                 mockAlignmentGenerator.Object,
                 mockDice.Object,
-                mockMagicGenerator.Object);
+                mockMagicGenerator.Object,
+                mockCreatureDataSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Blue] = new HalfDragonBlueApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -94,7 +95,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockSkillsGenerator.Object,
                 mockAlignmentGenerator.Object,
                 mockDice.Object,
-                mockMagicGenerator.Object);
+                mockMagicGenerator.Object,
+                mockCreatureDataSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Brass] = new HalfDragonBrassApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -103,7 +105,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockSkillsGenerator.Object,
                 mockAlignmentGenerator.Object,
                 mockDice.Object,
-                mockMagicGenerator.Object);
+                mockMagicGenerator.Object,
+                mockCreatureDataSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Bronze] = new HalfDragonBronzeApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -112,7 +115,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockSkillsGenerator.Object,
                 mockAlignmentGenerator.Object,
                 mockDice.Object,
-                mockMagicGenerator.Object);
+                mockMagicGenerator.Object,
+                mockCreatureDataSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Copper] = new HalfDragonCopperApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -121,7 +125,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockSkillsGenerator.Object,
                 mockAlignmentGenerator.Object,
                 mockDice.Object,
-                mockMagicGenerator.Object);
+                mockMagicGenerator.Object,
+                mockCreatureDataSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Gold] = new HalfDragonGoldApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -130,7 +135,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockSkillsGenerator.Object,
                 mockAlignmentGenerator.Object,
                 mockDice.Object,
-                mockMagicGenerator.Object);
+                mockMagicGenerator.Object,
+                mockCreatureDataSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Green] = new HalfDragonGreenApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -139,7 +145,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockSkillsGenerator.Object,
                 mockAlignmentGenerator.Object,
                 mockDice.Object,
-                mockMagicGenerator.Object);
+                mockMagicGenerator.Object,
+                mockCreatureDataSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Red] = new HalfDragonRedApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -148,7 +155,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockSkillsGenerator.Object,
                 mockAlignmentGenerator.Object,
                 mockDice.Object,
-                mockMagicGenerator.Object);
+                mockMagicGenerator.Object,
+                mockCreatureDataSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Silver] = new HalfDragonSilverApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -157,7 +165,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockSkillsGenerator.Object,
                 mockAlignmentGenerator.Object,
                 mockDice.Object,
-                mockMagicGenerator.Object);
+                mockMagicGenerator.Object,
+                mockCreatureDataSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_White] = new HalfDragonWhiteApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -166,7 +175,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockSkillsGenerator.Object,
                 mockAlignmentGenerator.Object,
                 mockDice.Object,
-                mockMagicGenerator.Object);
+                mockMagicGenerator.Object,
+                mockCreatureDataSelector.Object);
 
             baseCreature = new CreatureBuilder().WithTestValues().Build();
             baseCreature.HitPoints.HitDice[0].HitDie = 8;
@@ -275,7 +285,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         [TestCaseSource(nameof(CreatureTypeAdjusted))]
         public void GetPotentialTypes_CreatureTypeIsAdjusted(string template, string original)
         {
-            //TODO: Set up creature types from repo
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { original, "subtype 1", "subtype 2" });
 
             var types = applicators[template].GetPotentialTypes("my creature");
             Assert.That(types.First(), Is.EqualTo(CreatureConstants.Types.Dragon));
