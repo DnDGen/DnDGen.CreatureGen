@@ -120,7 +120,14 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureType(Creature creature)
         {
-            creature.Type.Name = CreatureConstants.Types.Undead;
+            var adjustedTypes = UpdateCreatureType(creature.Type.Name, creature.Type.SubTypes);
+
+            creature.Type.Name = adjustedTypes.First();
+            creature.Type.SubTypes = adjustedTypes.Skip(1);
+        }
+
+        private IEnumerable<string> UpdateCreatureType(string creatureType, IEnumerable<string> subtypes)
+        {
             var invalidSubtypes = new[]
             {
                 CreatureConstants.Types.Subtypes.Angel,
@@ -141,7 +148,9 @@ namespace DnDGen.CreatureGen.Templates
                 CreatureConstants.Types.Subtypes.Shapechanger,
             };
 
-            creature.Type.SubTypes = creature.Type.SubTypes.Except(invalidSubtypes);
+            return new[] { CreatureConstants.Types.Undead }
+                .Union(subtypes)
+                .Except(invalidSubtypes);
         }
 
         private void UpdateCreatureHitPoints(Creature creature)
@@ -184,42 +193,49 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureChallengeRating(Creature creature)
         {
-            if (creature.HitPoints.HitDiceQuantity <= 0.5)
+            creature.ChallengeRating = UpdateCreatureChallengeRating(creature.HitPoints.HitDiceQuantity);
+        }
+
+        private string UpdateCreatureChallengeRating(double hitDiceQuantity)
+        {
+            if (hitDiceQuantity <= 0.5)
             {
-                creature.ChallengeRating = ChallengeRatingConstants.OneEighth;
+                return ChallengeRatingConstants.OneEighth;
             }
-            else if (creature.HitPoints.HitDiceQuantity <= 1)
+            else if (hitDiceQuantity <= 1)
             {
-                creature.ChallengeRating = ChallengeRatingConstants.OneFourth;
+                return ChallengeRatingConstants.OneFourth;
             }
-            else if (creature.HitPoints.HitDiceQuantity <= 2)
+            else if (hitDiceQuantity <= 2)
             {
-                creature.ChallengeRating = ChallengeRatingConstants.OneHalf;
+                return ChallengeRatingConstants.OneHalf;
             }
-            else if (creature.HitPoints.HitDiceQuantity <= 4)
+            else if (hitDiceQuantity <= 4)
             {
-                creature.ChallengeRating = ChallengeRatingConstants.One;
+                return ChallengeRatingConstants.One;
             }
-            else if (creature.HitPoints.HitDiceQuantity <= 6)
+            else if (hitDiceQuantity <= 6)
             {
-                creature.ChallengeRating = ChallengeRatingConstants.Two;
+                return ChallengeRatingConstants.Two;
             }
-            else if (creature.HitPoints.HitDiceQuantity <= 10)
+            else if (hitDiceQuantity <= 10)
             {
-                creature.ChallengeRating = ChallengeRatingConstants.Three;
+                return ChallengeRatingConstants.Three;
             }
-            else if (creature.HitPoints.HitDiceQuantity <= 14)
+            else if (hitDiceQuantity <= 14)
             {
-                creature.ChallengeRating = ChallengeRatingConstants.Four;
+                return ChallengeRatingConstants.Four;
             }
-            else if (creature.HitPoints.HitDiceQuantity <= 16)
+            else if (hitDiceQuantity <= 16)
             {
-                creature.ChallengeRating = ChallengeRatingConstants.Five;
+                return ChallengeRatingConstants.Five;
             }
-            else if (creature.HitPoints.HitDiceQuantity <= 20)
+            else if (hitDiceQuantity <= 20)
             {
-                creature.ChallengeRating = ChallengeRatingConstants.Six;
+                return ChallengeRatingConstants.Six;
             }
+
+            throw new ArgumentException($"Zombie hit dice cannot be greater than 20, but was {hitDiceQuantity}");
         }
 
         private void UpdateCreatureLevelAdjustment(Creature creature)
@@ -451,12 +467,24 @@ namespace DnDGen.CreatureGen.Templates
 
         public IEnumerable<string> GetPotentialTypes(string creature)
         {
-            throw new NotImplementedException();
+            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
+            var creatureType = types.First();
+            var subtypes = types.Skip(1);
+
+            var adjustedTypes = UpdateCreatureType(creatureType, subtypes);
+
+            return adjustedTypes;
         }
 
         public string GetPotentialChallengeRating(string creature)
         {
-            throw new NotImplementedException();
+            var quantity = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, creature);
+            //INFO: Zombie hit points double the quantity
+            var hitDice = quantity * 2;
+
+            var adjustedChallengeRating = UpdateCreatureChallengeRating(hitDice);
+
+            return adjustedChallengeRating;
         }
     }
 }

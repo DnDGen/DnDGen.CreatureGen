@@ -116,7 +116,14 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureType(Creature creature)
         {
-            creature.Type.Name = CreatureConstants.Types.Undead;
+            var adjustedTypes = UpdateCreatureType(creature.Type.Name, creature.Type.SubTypes);
+
+            creature.Type.Name = adjustedTypes.First();
+            creature.Type.SubTypes = adjustedTypes.Skip(1);
+        }
+
+        private IEnumerable<string> UpdateCreatureType(string creatureType, IEnumerable<string> subtypes)
+        {
             var invalidSubtypes = new[]
             {
                 CreatureConstants.Types.Subtypes.Angel,
@@ -137,7 +144,9 @@ namespace DnDGen.CreatureGen.Templates
                 CreatureConstants.Types.Subtypes.Shapechanger,
             };
 
-            creature.Type.SubTypes = creature.Type.SubTypes.Except(invalidSubtypes);
+            return new[] { CreatureConstants.Types.Undead }
+                .Union(subtypes)
+                .Except(invalidSubtypes);
         }
 
         private void UpdateCreatureHitPoints(Creature creature)
@@ -173,46 +182,53 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureChallengeRating(Creature creature)
         {
-            if (creature.HitPoints.HitDiceQuantity <= 0.5)
+            creature.ChallengeRating = UpdateCreatureChallengeRating(creature.HitPoints.HitDiceQuantity);
+        }
+
+        private string UpdateCreatureChallengeRating(double hitDiceQuantity)
+        {
+            if (hitDiceQuantity <= 0.5)
             {
-                creature.ChallengeRating = ChallengeRatingConstants.OneSixth;
+                return ChallengeRatingConstants.OneSixth;
             }
-            else if (creature.HitPoints.HitDiceQuantity <= 1)
+            else if (hitDiceQuantity <= 1)
             {
-                creature.ChallengeRating = ChallengeRatingConstants.OneThird;
+                return ChallengeRatingConstants.OneThird;
             }
-            else if (creature.HitPoints.HitDiceQuantity <= 3)
+            else if (hitDiceQuantity <= 3)
             {
-                creature.ChallengeRating = ChallengeRatingConstants.One;
+                return ChallengeRatingConstants.One;
             }
-            else if (creature.HitPoints.HitDiceQuantity <= 5)
+            else if (hitDiceQuantity <= 5)
             {
-                creature.ChallengeRating = ChallengeRatingConstants.Two;
+                return ChallengeRatingConstants.Two;
             }
-            else if (creature.HitPoints.HitDiceQuantity <= 7)
+            else if (hitDiceQuantity <= 7)
             {
-                creature.ChallengeRating = ChallengeRatingConstants.Three;
+                return ChallengeRatingConstants.Three;
             }
-            else if (creature.HitPoints.HitDiceQuantity <= 9)
+            else if (hitDiceQuantity <= 9)
             {
-                creature.ChallengeRating = ChallengeRatingConstants.Four;
+                return ChallengeRatingConstants.Four;
             }
-            else if (creature.HitPoints.HitDiceQuantity <= 11)
+            else if (hitDiceQuantity <= 11)
             {
-                creature.ChallengeRating = ChallengeRatingConstants.Five;
+                return ChallengeRatingConstants.Five;
             }
-            else if (creature.HitPoints.HitDiceQuantity <= 14)
+            else if (hitDiceQuantity <= 14)
             {
-                creature.ChallengeRating = ChallengeRatingConstants.Six;
+                return ChallengeRatingConstants.Six;
             }
-            else if (creature.HitPoints.HitDiceQuantity <= 17)
+            else if (hitDiceQuantity <= 17)
             {
-                creature.ChallengeRating = ChallengeRatingConstants.Seven;
+                return ChallengeRatingConstants.Seven;
             }
-            else if (creature.HitPoints.HitDiceQuantity <= 20)
+            else if (hitDiceQuantity <= 20)
             {
-                creature.ChallengeRating = ChallengeRatingConstants.Eight;
+                return ChallengeRatingConstants.Eight;
             }
+
+            throw new ArgumentException($"Skeleton hit dice cannot be greater than 20, but was {hitDiceQuantity}");
         }
 
         private void UpdateCreatureLevelAdjustment(Creature creature)
@@ -459,12 +475,21 @@ namespace DnDGen.CreatureGen.Templates
 
         public IEnumerable<string> GetPotentialTypes(string creature)
         {
-            throw new NotImplementedException();
+            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
+            var creatureType = types.First();
+            var subtypes = types.Skip(1);
+
+            var adjustedTypes = UpdateCreatureType(creatureType, subtypes);
+
+            return adjustedTypes;
         }
 
         public string GetPotentialChallengeRating(string creature)
         {
-            throw new NotImplementedException();
+            var quantity = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, creature);
+            var adjustedChallengeRating = UpdateCreatureChallengeRating(quantity);
+
+            return adjustedChallengeRating;
         }
     }
 }

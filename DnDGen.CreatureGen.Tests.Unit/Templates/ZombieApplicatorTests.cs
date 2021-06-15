@@ -63,6 +63,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
+                .WithHitDiceQuantityNoMoreThan(10)
                 .Build();
 
             mockDice
@@ -264,10 +265,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.Vermin)]
         public void GetPotentialTypes_ChangeCreatureType(string original)
         {
-            //TODO: Set original creature type
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { original, "subtype 1", "subtype 2" });
 
             var types = applicator.GetPotentialTypes("my creature");
             Assert.That(types.First(), Is.EqualTo(CreatureConstants.Types.Undead));
+            Assert.That(types.Skip(1), Is.EqualTo(new[] { "subtype 1", "subtype 2" }));
         }
 
         [TestCase(CreatureConstants.Types.Subtypes.Air)]
@@ -295,17 +299,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.Vermin)]
         public void GetPotentialTypes_KeepSubtype(string subtype)
         {
-            var subtypes = new[]
-            {
-                "subtype 1",
-                subtype,
-                "subtype 2",
-            };
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { "original type", "subtype 1", subtype, "subtype 2" });
 
             var types = applicator.GetPotentialTypes("my creature");
-            Assert.That(types.Skip(1).ToArray(), Is.EqualTo(subtypes)
-                .And.Contains(subtype)
-                .And.Length.EqualTo(3));
+            Assert.That(types.First(), Is.EqualTo(CreatureConstants.Types.Undead));
+            Assert.That(types.Skip(1), Is.EqualTo(new[] { "subtype 1", subtype, "subtype 2" }));
         }
 
         [TestCase(CreatureConstants.Types.Subtypes.Chaotic)]
@@ -323,17 +323,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.Subtypes.Reptilian)]
         public void GetPotentialTypes_LoseSubtype(string subtype)
         {
-            var subtypes = new[]
-            {
-                "subtype 1",
-                subtype,
-                "subtype 2",
-            };
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { "original type", "subtype 1", "subtype 2" });
 
             var types = applicator.GetPotentialTypes("my creature");
-            Assert.That(types.Skip(1).ToArray(), Is.EqualTo(subtypes.Except(new[] { subtype }))
-                .And.Not.Contains(subtype)
-                .And.Length.EqualTo(2));
+            Assert.That(types.First(), Is.EqualTo(CreatureConstants.Types.Undead));
+            Assert.That(types.Skip(1), Is.EqualTo(new[] { "subtype 1", "subtype 2" }));
         }
 
         [TestCase(CreatureConstants.Types.Aberration)]
@@ -1150,7 +1146,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(10, ChallengeRatingConstants.Six)]
         public void GetPotentialChallengeRating_AdjustChallengeRating(double hitDice, string challengeRating)
         {
-            //TODO: Set the hit dice quantity
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
+                .Returns(hitDice);
 
             var cr = applicator.GetPotentialChallengeRating("my creature");
             Assert.That(cr, Is.EqualTo(challengeRating));
