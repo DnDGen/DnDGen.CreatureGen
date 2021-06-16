@@ -1,6 +1,7 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
+using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
@@ -9,11 +10,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
     public class CreatureChallengeRatingGroupsTests : CreatureGroupsTableTests
     {
         private ICreatureDataSelector creatureDataSelector;
+        private ICollectionSelector collectionSelector;
 
         [SetUp]
         public void Setup()
         {
             creatureDataSelector = GetNewInstanceOf<ICreatureDataSelector>();
+            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
         }
 
         [Test]
@@ -23,35 +26,231 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         }
 
         [TestCase(ChallengeRatingConstants.Zero)]
-        [TestCase(ChallengeRatingConstants.OneTenth)]
+        [TestCase(ChallengeRatingConstants.OneTenth,
+            CreatureConstants.Bat)]
         [TestCase(ChallengeRatingConstants.OneEighth)]
         [TestCase(ChallengeRatingConstants.OneSixth)]
         [TestCase(ChallengeRatingConstants.OneFourth)]
         [TestCase(ChallengeRatingConstants.OneThird)]
-        [TestCase(ChallengeRatingConstants.OneHalf)]
-        [TestCase(ChallengeRatingConstants.One)]
-        [TestCase(ChallengeRatingConstants.Two)]
-        [TestCase(ChallengeRatingConstants.Three)]
-        [TestCase(ChallengeRatingConstants.Four)]
-        [TestCase(ChallengeRatingConstants.Five)]
-        [TestCase(ChallengeRatingConstants.Six)]
-        [TestCase(ChallengeRatingConstants.Seven)]
-        [TestCase(ChallengeRatingConstants.Eight)]
-        [TestCase(ChallengeRatingConstants.Nine)]
-        [TestCase(ChallengeRatingConstants.Ten)]
-        [TestCase(ChallengeRatingConstants.Eleven)]
+        [TestCase(ChallengeRatingConstants.OneHalf,
+            CreatureConstants.Groups.Planetouched,
+            CreatureConstants.AnimatedObject_Anvil_Tiny,
+            CreatureConstants.AnimatedObject_Block_Stone_Tiny,
+            CreatureConstants.AnimatedObject_Block_Wood_Tiny,
+            CreatureConstants.AnimatedObject_Box_Tiny,
+            CreatureConstants.AnimatedObject_Carpet_Tiny,
+            CreatureConstants.AnimatedObject_Carriage_Tiny,
+            CreatureConstants.AnimatedObject_Chain_Tiny,
+            CreatureConstants.AnimatedObject_Chair_Tiny,
+            CreatureConstants.AnimatedObject_Clothes_Tiny,
+            CreatureConstants.AnimatedObject_Ladder_Tiny,
+            CreatureConstants.AnimatedObject_Rope_Tiny,
+            CreatureConstants.AnimatedObject_Rug_Tiny,
+            CreatureConstants.AnimatedObject_Sled_Tiny,
+            CreatureConstants.AnimatedObject_Statue_Animal_Tiny,
+            CreatureConstants.AnimatedObject_Statue_Humanoid_Tiny,
+            CreatureConstants.AnimatedObject_Stool_Tiny,
+            CreatureConstants.AnimatedObject_Table_Tiny,
+            CreatureConstants.AnimatedObject_Tapestry_Tiny,
+            CreatureConstants.AnimatedObject_Wagon_Tiny,
+            CreatureConstants.Groups.Elf,
+            CreatureConstants.Baboon,
+            CreatureConstants.Badger)]
+        [TestCase(ChallengeRatingConstants.One,
+            CreatureConstants.Elemental_Air_Small,
+            CreatureConstants.Elemental_Earth_Small,
+            CreatureConstants.Elemental_Fire_Small,
+            CreatureConstants.Elemental_Water_Small,
+            CreatureConstants.AnimatedObject_Anvil_Small,
+            CreatureConstants.AnimatedObject_Block_Stone_Small,
+            CreatureConstants.AnimatedObject_Block_Wood_Small,
+            CreatureConstants.AnimatedObject_Box_Small,
+            CreatureConstants.AnimatedObject_Carpet_Small,
+            CreatureConstants.AnimatedObject_Carriage_Small,
+            CreatureConstants.AnimatedObject_Chain_Small,
+            CreatureConstants.AnimatedObject_Chair_Small,
+            CreatureConstants.AnimatedObject_Clothes_Small,
+            CreatureConstants.AnimatedObject_Ladder_Small,
+            CreatureConstants.AnimatedObject_Rope_Small,
+            CreatureConstants.AnimatedObject_Rug_Small,
+            CreatureConstants.AnimatedObject_Sled_Small,
+            CreatureConstants.AnimatedObject_Statue_Animal_Small,
+            CreatureConstants.AnimatedObject_Statue_Humanoid_Small,
+            CreatureConstants.AnimatedObject_Stool_Small,
+            CreatureConstants.AnimatedObject_Table_Small,
+            CreatureConstants.AnimatedObject_Tapestry_Small,
+            CreatureConstants.AnimatedObject_Wagon_Small)]
+        [TestCase(ChallengeRatingConstants.Two,
+            CreatureConstants.AnimatedObject_Anvil_Medium,
+            CreatureConstants.AnimatedObject_Block_Stone_Medium,
+            CreatureConstants.AnimatedObject_Block_Wood_Medium,
+            CreatureConstants.AnimatedObject_Box_Medium,
+            CreatureConstants.AnimatedObject_Carpet_Medium,
+            CreatureConstants.AnimatedObject_Carriage_Medium,
+            CreatureConstants.AnimatedObject_Chain_Medium,
+            CreatureConstants.AnimatedObject_Chair_Medium,
+            CreatureConstants.AnimatedObject_Clothes_Medium,
+            CreatureConstants.AnimatedObject_Ladder_Medium,
+            CreatureConstants.AnimatedObject_Rope_Medium,
+            CreatureConstants.AnimatedObject_Rug_Medium,
+            CreatureConstants.AnimatedObject_Sled_Medium,
+            CreatureConstants.AnimatedObject_Statue_Animal_Medium,
+            CreatureConstants.AnimatedObject_Statue_Humanoid_Medium,
+            CreatureConstants.AnimatedObject_Stool_Medium,
+            CreatureConstants.AnimatedObject_Table_Medium,
+            CreatureConstants.AnimatedObject_Tapestry_Medium,
+            CreatureConstants.AnimatedObject_Wagon_Medium,
+            CreatureConstants.Ape,
+            CreatureConstants.Azer,
+            CreatureConstants.Bat_Swarm,
+            CreatureConstants.Bison,
+            CreatureConstants.Bear_Black)]
+        [TestCase(ChallengeRatingConstants.Three,
+            CreatureConstants.Elemental_Air_Medium,
+            CreatureConstants.Elemental_Earth_Medium,
+            CreatureConstants.Elemental_Fire_Medium,
+            CreatureConstants.Elemental_Water_Medium,
+            CreatureConstants.Groups.Mephit,
+            CreatureConstants.Allip,
+            CreatureConstants.AnimatedObject_Anvil_Large,
+            CreatureConstants.AnimatedObject_Block_Stone_Large,
+            CreatureConstants.AnimatedObject_Block_Wood_Large,
+            CreatureConstants.AnimatedObject_Box_Large,
+            CreatureConstants.AnimatedObject_Carpet_Large,
+            CreatureConstants.AnimatedObject_Carriage_Large,
+            CreatureConstants.AnimatedObject_Chain_Large,
+            CreatureConstants.AnimatedObject_Chair_Large,
+            CreatureConstants.AnimatedObject_Clothes_Large,
+            CreatureConstants.AnimatedObject_Ladder_Large,
+            CreatureConstants.AnimatedObject_Rope_Large,
+            CreatureConstants.AnimatedObject_Rug_Large,
+            CreatureConstants.AnimatedObject_Sled_Large,
+            CreatureConstants.AnimatedObject_Statue_Animal_Large,
+            CreatureConstants.AnimatedObject_Statue_Humanoid_Large,
+            CreatureConstants.AnimatedObject_Stool_Large,
+            CreatureConstants.AnimatedObject_Table_Large,
+            CreatureConstants.AnimatedObject_Tapestry_Large,
+            CreatureConstants.AnimatedObject_Wagon_Large,
+            CreatureConstants.Ankheg,
+            CreatureConstants.AssassinVine)]
+        [TestCase(ChallengeRatingConstants.Four,
+            CreatureConstants.Aranea,
+            CreatureConstants.Barghest)]
+        [TestCase(ChallengeRatingConstants.Five,
+            CreatureConstants.Achaierai,
+            CreatureConstants.Arrowhawk_Adult,
+            CreatureConstants.Tojanida_Adult,
+            CreatureConstants.Elemental_Air_Large,
+            CreatureConstants.Elemental_Earth_Large,
+            CreatureConstants.Elemental_Fire_Large,
+            CreatureConstants.Elemental_Water_Large,
+            CreatureConstants.AnimatedObject_Anvil_Huge,
+            CreatureConstants.AnimatedObject_Block_Stone_Huge,
+            CreatureConstants.AnimatedObject_Block_Wood_Huge,
+            CreatureConstants.AnimatedObject_Box_Huge,
+            CreatureConstants.AnimatedObject_Carpet_Huge,
+            CreatureConstants.AnimatedObject_Carriage_Huge,
+            CreatureConstants.AnimatedObject_Chain_Huge,
+            CreatureConstants.AnimatedObject_Chair_Huge,
+            CreatureConstants.AnimatedObject_Clothes_Huge,
+            CreatureConstants.AnimatedObject_Ladder_Huge,
+            CreatureConstants.AnimatedObject_Rope_Huge,
+            CreatureConstants.AnimatedObject_Rug_Huge,
+            CreatureConstants.AnimatedObject_Sled_Huge,
+            CreatureConstants.AnimatedObject_Statue_Animal_Huge,
+            CreatureConstants.AnimatedObject_Statue_Humanoid_Huge,
+            CreatureConstants.AnimatedObject_Stool_Huge,
+            CreatureConstants.AnimatedObject_Table_Huge,
+            CreatureConstants.AnimatedObject_Tapestry_Huge,
+            CreatureConstants.AnimatedObject_Wagon_Huge,
+            CreatureConstants.Basilisk,
+            CreatureConstants.BeardedDevil_Barbazu)]
+        [TestCase(ChallengeRatingConstants.Six,
+            CreatureConstants.Annis,
+            CreatureConstants.Salamander_Average,
+            CreatureConstants.Xorn_Average,
+            CreatureConstants.Babau,
+            CreatureConstants.Whale_Baleen,
+            CreatureConstants.Belker)]
+        [TestCase(ChallengeRatingConstants.Seven,
+            CreatureConstants.Aboleth,
+            CreatureConstants.Elemental_Air_Huge,
+            CreatureConstants.Elemental_Earth_Huge,
+            CreatureConstants.Elemental_Fire_Huge,
+            CreatureConstants.Elemental_Water_Huge,
+            CreatureConstants.AnimatedObject_Anvil_Gargantuan,
+            CreatureConstants.AnimatedObject_Block_Stone_Gargantuan,
+            CreatureConstants.AnimatedObject_Block_Wood_Gargantuan,
+            CreatureConstants.AnimatedObject_Box_Gargantuan,
+            CreatureConstants.AnimatedObject_Carpet_Gargantuan,
+            CreatureConstants.AnimatedObject_Carriage_Gargantuan,
+            CreatureConstants.AnimatedObject_Chain_Gargantuan,
+            CreatureConstants.AnimatedObject_Chair_Gargantuan,
+            CreatureConstants.AnimatedObject_Clothes_Gargantuan,
+            CreatureConstants.AnimatedObject_Ladder_Gargantuan,
+            CreatureConstants.AnimatedObject_Rope_Gargantuan,
+            CreatureConstants.AnimatedObject_Rug_Gargantuan,
+            CreatureConstants.AnimatedObject_Sled_Gargantuan,
+            CreatureConstants.AnimatedObject_Statue_Animal_Gargantuan,
+            CreatureConstants.AnimatedObject_Statue_Humanoid_Gargantuan,
+            CreatureConstants.AnimatedObject_Stool_Gargantuan,
+            CreatureConstants.AnimatedObject_Table_Gargantuan,
+            CreatureConstants.AnimatedObject_Tapestry_Gargantuan,
+            CreatureConstants.AnimatedObject_Wagon_Gargantuan)]
+        [TestCase(ChallengeRatingConstants.Eight,
+            CreatureConstants.Athach,
+            CreatureConstants.Behir)]
+        [TestCase(ChallengeRatingConstants.Nine,
+            CreatureConstants.Elemental_Air_Greater,
+            CreatureConstants.Elemental_Earth_Greater,
+            CreatureConstants.Elemental_Fire_Greater,
+            CreatureConstants.Elemental_Water_Greater,
+            CreatureConstants.Androsphinx,
+            CreatureConstants.Avoral)]
+        [TestCase(ChallengeRatingConstants.Ten,
+            CreatureConstants.AnimatedObject_Anvil_Colossal,
+            CreatureConstants.AnimatedObject_Block_Stone_Colossal,
+            CreatureConstants.AnimatedObject_Block_Wood_Colossal,
+            CreatureConstants.AnimatedObject_Box_Colossal,
+            CreatureConstants.AnimatedObject_Carpet_Colossal,
+            CreatureConstants.AnimatedObject_Carriage_Colossal,
+            CreatureConstants.AnimatedObject_Chain_Colossal,
+            CreatureConstants.AnimatedObject_Chair_Colossal,
+            CreatureConstants.AnimatedObject_Clothes_Colossal,
+            CreatureConstants.AnimatedObject_Ladder_Colossal,
+            CreatureConstants.AnimatedObject_Rope_Colossal,
+            CreatureConstants.AnimatedObject_Rug_Colossal,
+            CreatureConstants.AnimatedObject_Sled_Colossal,
+            CreatureConstants.AnimatedObject_Statue_Animal_Colossal,
+            CreatureConstants.AnimatedObject_Statue_Humanoid_Colossal,
+            CreatureConstants.AnimatedObject_Stool_Colossal,
+            CreatureConstants.AnimatedObject_Table_Colossal,
+            CreatureConstants.AnimatedObject_Tapestry_Colossal,
+            CreatureConstants.AnimatedObject_Wagon_Colossal,
+            CreatureConstants.Bebilith)]
+        [TestCase(ChallengeRatingConstants.Eleven,
+            CreatureConstants.Elemental_Air_Elder,
+            CreatureConstants.Elemental_Earth_Elder,
+            CreatureConstants.Elemental_Fire_Elder,
+            CreatureConstants.Elemental_Water_Elder,
+            CreatureConstants.BarbedDevil_Hamatula)]
         [TestCase(ChallengeRatingConstants.Twelve)]
-        [TestCase(ChallengeRatingConstants.Thirteen)]
-        [TestCase(ChallengeRatingConstants.Fourteen)]
+        [TestCase(ChallengeRatingConstants.Thirteen,
+            CreatureConstants.Beholder)]
+        [TestCase(ChallengeRatingConstants.Fourteen,
+            CreatureConstants.Angel_AstralDeva)]
         [TestCase(ChallengeRatingConstants.Fifteen)]
-        [TestCase(ChallengeRatingConstants.Sixteen)]
+        [TestCase(ChallengeRatingConstants.Sixteen,
+            CreatureConstants.Angel_Planetar)]
         [TestCase(ChallengeRatingConstants.Seventeen)]
         [TestCase(ChallengeRatingConstants.Eighteen)]
         [TestCase(ChallengeRatingConstants.Nineteen)]
-        [TestCase(ChallengeRatingConstants.Twenty)]
+        [TestCase(ChallengeRatingConstants.Twenty,
+            CreatureConstants.Balor)]
         [TestCase(ChallengeRatingConstants.TwentyOne)]
         [TestCase(ChallengeRatingConstants.TwentyTwo)]
-        [TestCase(ChallengeRatingConstants.TwentyThree)]
+        [TestCase(ChallengeRatingConstants.TwentyThree,
+            CreatureConstants.Angel_Solar)]
         [TestCase(ChallengeRatingConstants.TwentyFour)]
         [TestCase(ChallengeRatingConstants.TwentyFive)]
         [TestCase(ChallengeRatingConstants.TwentySix)]
@@ -65,7 +264,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         public void CreatureChallengeRatingGroupMatchesCreatureData(string creature)
         {
             var data = creatureDataSelector.SelectFor(creature);
-            Assert.That(table[data.ChallengeRating], Contains.Item(creature));
+            var ofChallengeRating = collectionSelector.Explode(tableName, data.ChallengeRating);
+            Assert.That(ofChallengeRating, Contains.Item(creature), data.ChallengeRating);
         }
     }
 }
