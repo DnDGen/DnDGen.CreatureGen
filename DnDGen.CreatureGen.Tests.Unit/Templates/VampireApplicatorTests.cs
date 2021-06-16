@@ -163,7 +163,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
         public void GetPotentialTypes_ChangeCreatureType(string original)
         {
-            //TODO: Set the original type and subtypes
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { original, "subtype 1", "subtype 2" });
 
             var types = applicator.GetPotentialTypes("my creature");
             Assert.That(types.First(), Is.EqualTo(CreatureConstants.Types.Undead));
@@ -897,7 +899,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCaseSource(nameof(ChallengeRatingAdjustments))]
         public void GetPotentialChallengeRating_IncreaseChallengeRating(string original, string adjusted)
         {
-            //TODO: Set the original challenge rating
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor("my creature"))
+                .Returns(new CreatureDataSelection { ChallengeRating = original });
 
             var challengeRating = applicator.GetPotentialChallengeRating("my creature");
             Assert.That(challengeRating, Is.EqualTo(adjusted));

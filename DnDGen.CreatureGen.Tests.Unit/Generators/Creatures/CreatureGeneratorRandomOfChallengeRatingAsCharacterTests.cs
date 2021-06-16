@@ -442,8 +442,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
+            mockTemplateApplicator.Setup(a => a.GetPotentialChallengeRating(creatureName)).Returns("my challenge rating");
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
+
+            var mockWrongTemplateApplicator1 = new Mock<TemplateApplicator>();
+            mockWrongTemplateApplicator1.Setup(a => a.IsCompatible(creatureName)).Returns(false);
+            mockWrongTemplateApplicator1.Setup(a => a.GetPotentialChallengeRating(creatureName)).Returns("my challenge rating");
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("other template")).Returns(mockWrongTemplateApplicator1.Object);
+
+            var mockWrongTemplateApplicator2 = new Mock<TemplateApplicator>();
+            mockWrongTemplateApplicator2.Setup(a => a.IsCompatible(creatureName)).Returns(true);
+            mockWrongTemplateApplicator2.Setup(a => a.GetPotentialChallengeRating(creatureName)).Returns("wrong challenge rating");
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template name")).Returns(mockWrongTemplateApplicator2.Object);
 
             var name = creatureGenerator.GenerateRandomNameOfChallengeRatingAsCharacter("my challenge rating");
             Assert.That(name.CreatureName, Is.EqualTo(creatureName));
@@ -497,6 +510,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             {
                 var mockTemplateApplicator = new Mock<TemplateApplicator>();
                 mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>())).Returns(true);
+                mockTemplateApplicator.Setup(a => a.GetPotentialChallengeRating(It.IsAny<string>())).Returns("my challenge rating");
+
                 mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(otherTemplate)).Returns(mockTemplateApplicator.Object);
             }
 
@@ -521,7 +536,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(nonCharacters);
 
             Assert.That(() => creatureGenerator.GenerateRandomNameOfChallengeRatingAsCharacter("my challenge rating"),
-                Throws.InstanceOf<IncompatibleCreatureAsCharacterException>().With.Message.EqualTo($"my type cannot be generated as a character"));
+                Throws.InstanceOf<IncompatibleCreatureAsCharacterException>().With.Message.EqualTo($"CR my challenge rating cannot be generated as a character"));
         }
 
         [Test]
@@ -560,20 +575,29 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
                 .Returns(templates);
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
-                .Returns(new[] { template });
-
             SetUpCreature(creatureName, template, true);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
+            mockTemplateApplicator.Setup(a => a.GetPotentialChallengeRating(creatureName)).Returns("my challenge rating");
             mockTemplateApplicator
                 .Setup(a => a.ApplyTo(It.Is<Creature>(c => c.Name == creatureName)))
                 .Callback((Creature c) => c.Template = template)
                 .Returns((Creature c) => c);
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
+
+            var mockWrongTemplateApplicator1 = new Mock<TemplateApplicator>();
+            mockWrongTemplateApplicator1.Setup(a => a.IsCompatible(creatureName)).Returns(false);
+            mockWrongTemplateApplicator1.Setup(a => a.GetPotentialChallengeRating(creatureName)).Returns("my challenge rating");
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("other template")).Returns(mockWrongTemplateApplicator1.Object);
+
+            var mockWrongTemplateApplicator2 = new Mock<TemplateApplicator>();
+            mockWrongTemplateApplicator2.Setup(a => a.IsCompatible(creatureName)).Returns(true);
+            mockWrongTemplateApplicator2.Setup(a => a.GetPotentialChallengeRating(creatureName)).Returns("wrong challenge rating");
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template name")).Returns(mockWrongTemplateApplicator2.Object);
 
             var creature = creatureGenerator.GenerateRandomOfChallengeRatingAsCharacter("my challenge rating");
             Assert.That(creature.Name, Is.EqualTo(creatureName));
@@ -602,6 +626,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(creatures);
 
+            foreach (var template in templates)
+            {
+                var mockTemplateApplicator = new Mock<TemplateApplicator>();
+                mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>())).Returns(false);
+
+                mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
+            }
+
             var typePairings = creatures.Select(c => (c, CreatureConstants.Templates.None));
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<(string CreatureName, string Template)>>(c => c.IsEquivalentTo(typePairings))))
@@ -628,16 +660,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
                 .Returns(templates);
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
-                .Returns(creatures.Union(templates));
-
             SetUpCreature(creatureName, template, true);
 
             foreach (var otherTemplate in templates)
             {
                 var mockTemplateApplicator = new Mock<TemplateApplicator>();
                 mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>())).Returns(true);
+                mockTemplateApplicator.Setup(a => a.GetPotentialChallengeRating(It.IsAny<string>())).Returns("my challenge rating");
                 mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(otherTemplate)).Returns(mockTemplateApplicator.Object);
 
                 if (otherTemplate == template)
@@ -649,9 +678,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 }
             }
 
-            var typePairings = creatures
-                .SelectMany(c => templates.Select(t => (c, t)))
-                .Union(creatures.Select(c => (c, CreatureConstants.Templates.None)));
+            var typePairings = creatures.SelectMany(c => templates.Select(t => (c, t)));
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<(string CreatureName, string Template)>>(c => c.IsEquivalentTo(typePairings))))
                 .Returns((creatureName, template));
@@ -670,7 +697,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(nonCharacters);
 
             Assert.That(() => creatureGenerator.GenerateRandomOfChallengeRatingAsCharacter("my challenge rating"),
-                Throws.InstanceOf<IncompatibleCreatureAsCharacterException>().With.Message.EqualTo($"my type cannot be generated as a character"));
+                Throws.InstanceOf<IncompatibleCreatureAsCharacterException>().With.Message.EqualTo($"CR my challenge rating cannot be generated as a character"));
         }
 
         [Test]
@@ -2445,20 +2472,29 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
                 .Returns(templates);
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
-                .Returns(new[] { template });
-
             SetUpCreature(creatureName, template, true);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
+            mockTemplateApplicator.Setup(a => a.GetPotentialChallengeRating(creatureName)).Returns("my challenge rating");
             mockTemplateApplicator
                 .Setup(a => a.ApplyToAsync(It.Is<Creature>(c => c.Name == creatureName)))
                 .Callback((Creature c) => c.Template = template)
                 .ReturnsAsync((Creature c) => c);
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
+
+            var mockWrongTemplateApplicator1 = new Mock<TemplateApplicator>();
+            mockWrongTemplateApplicator1.Setup(a => a.IsCompatible(creatureName)).Returns(false);
+            mockWrongTemplateApplicator1.Setup(a => a.GetPotentialChallengeRating(creatureName)).Returns("my challenge rating");
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("other template")).Returns(mockWrongTemplateApplicator1.Object);
+
+            var mockWrongTemplateApplicator2 = new Mock<TemplateApplicator>();
+            mockWrongTemplateApplicator2.Setup(a => a.IsCompatible(creatureName)).Returns(true);
+            mockWrongTemplateApplicator2.Setup(a => a.GetPotentialChallengeRating(creatureName)).Returns("wrong challenge rating");
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template name")).Returns(mockWrongTemplateApplicator2.Object);
 
             var creature = await creatureGenerator.GenerateRandomOfChallengeRatingAsCharacterAsync("my challenge rating");
             Assert.That(creature.Name, Is.EqualTo(creatureName));
@@ -2486,6 +2522,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(creatures);
+
+            foreach (var template in templates)
+            {
+                var mockTemplateApplicator = new Mock<TemplateApplicator>();
+                mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>())).Returns(false);
+
+                mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
+            }
 
             var typePairings = creatures.Select(c => (c, CreatureConstants.Templates.None));
             mockCollectionSelector
@@ -2515,14 +2559,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             SetUpCreature(creatureName, template, true);
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
-                .Returns(creatures.Union(templates));
-
             foreach (var otherTemplate in templates)
             {
                 var mockTemplateApplicator = new Mock<TemplateApplicator>();
                 mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>())).Returns(true);
+                mockTemplateApplicator.Setup(a => a.GetPotentialChallengeRating(It.IsAny<string>())).Returns("my challenge rating");
+
                 mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(otherTemplate)).Returns(mockTemplateApplicator.Object);
 
                 if (otherTemplate == template)
@@ -2534,9 +2576,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 }
             }
 
-            var typePairings = creatures
-                .SelectMany(c => templates.Select(t => (c, t)))
-                .Union(creatures.Select(c => (c, CreatureConstants.Templates.None)));
+            var typePairings = creatures.SelectMany(c => templates.Select(t => (c, t)));
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<(string CreatureName, string Template)>>(c => c.IsEquivalentTo(typePairings))))
                 .Returns((creatureName, template));

@@ -229,7 +229,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var pairings = GetCreaturesOfChallengeRating(challengeRating, creatures);
 
             if (!pairings.Any())
-                throw new IncompatibleCreatureAsCharacterException(challengeRating);
+                throw new IncompatibleCreatureAsCharacterException($"CR {challengeRating}");
 
             var randomCreature = collectionsSelector.SelectRandomFrom(pairings);
             return randomCreature;

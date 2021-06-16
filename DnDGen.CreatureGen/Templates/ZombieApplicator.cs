@@ -29,6 +29,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly ISavesGenerator savesGenerator;
         private readonly IEnumerable<string> creatureTypes;
         private readonly IHitPointsGenerator hitPointsGenerator;
+        private readonly IEnumerable<string> invalidSubtypes;
 
         public ZombieApplicator(
             ICollectionSelector collectionSelector,
@@ -59,6 +60,26 @@ namespace DnDGen.CreatureGen.Templates
                 CreatureConstants.Types.MagicalBeast,
                 CreatureConstants.Types.MonstrousHumanoid,
                 CreatureConstants.Types.Vermin,
+            };
+
+            invalidSubtypes = new[]
+            {
+                CreatureConstants.Types.Subtypes.Angel,
+                CreatureConstants.Types.Subtypes.Archon,
+                CreatureConstants.Types.Subtypes.Chaotic,
+                CreatureConstants.Types.Subtypes.Dwarf,
+                CreatureConstants.Types.Subtypes.Elf,
+                CreatureConstants.Types.Subtypes.Evil,
+                CreatureConstants.Types.Subtypes.Gnoll,
+                CreatureConstants.Types.Subtypes.Gnome,
+                CreatureConstants.Types.Subtypes.Goblinoid,
+                CreatureConstants.Types.Subtypes.Good,
+                CreatureConstants.Types.Subtypes.Halfling,
+                CreatureConstants.Types.Subtypes.Human,
+                CreatureConstants.Types.Subtypes.Lawful,
+                CreatureConstants.Types.Subtypes.Orc,
+                CreatureConstants.Types.Subtypes.Reptilian,
+                CreatureConstants.Types.Subtypes.Shapechanger,
             };
         }
 
@@ -128,26 +149,6 @@ namespace DnDGen.CreatureGen.Templates
 
         private IEnumerable<string> UpdateCreatureType(string creatureType, IEnumerable<string> subtypes)
         {
-            var invalidSubtypes = new[]
-            {
-                CreatureConstants.Types.Subtypes.Angel,
-                CreatureConstants.Types.Subtypes.Archon,
-                CreatureConstants.Types.Subtypes.Chaotic,
-                CreatureConstants.Types.Subtypes.Dwarf,
-                CreatureConstants.Types.Subtypes.Elf,
-                CreatureConstants.Types.Subtypes.Evil,
-                CreatureConstants.Types.Subtypes.Gnoll,
-                CreatureConstants.Types.Subtypes.Gnome,
-                CreatureConstants.Types.Subtypes.Goblinoid,
-                CreatureConstants.Types.Subtypes.Good,
-                CreatureConstants.Types.Subtypes.Halfling,
-                CreatureConstants.Types.Subtypes.Human,
-                CreatureConstants.Types.Subtypes.Lawful,
-                CreatureConstants.Types.Subtypes.Orc,
-                CreatureConstants.Types.Subtypes.Reptilian,
-                CreatureConstants.Types.Subtypes.Shapechanger,
-            };
-
             return new[] { CreatureConstants.Types.Undead }
                 .Union(subtypes)
                 .Except(invalidSubtypes);

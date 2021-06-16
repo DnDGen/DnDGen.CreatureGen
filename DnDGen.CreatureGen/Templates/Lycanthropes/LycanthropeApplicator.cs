@@ -37,6 +37,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
         private readonly ISkillsGenerator skillsGenerator;
         private readonly ISpeedsGenerator speedsGenerator;
         private readonly IEnumerable<string> creatureTypes;
+        private readonly IAdjustmentsSelector adjustmentSelector;
 
         public LycanthropeApplicator(
             ICollectionSelector collectionSelector,
@@ -48,7 +49,8 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             IAttacksGenerator attacksGenerator,
             ISavesGenerator savesGenerator,
             ISkillsGenerator skillsGenerator,
-            ISpeedsGenerator speedsGenerator)
+            ISpeedsGenerator speedsGenerator,
+            IAdjustmentsSelector adjustmentSelector)
         {
             this.collectionSelector = collectionSelector;
             this.creatureDataSelector = creatureDataSelector;
@@ -60,6 +62,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             this.savesGenerator = savesGenerator;
             this.skillsGenerator = skillsGenerator;
             this.speedsGenerator = speedsGenerator;
+            this.adjustmentSelector = adjustmentSelector;
 
             creatureTypes = new[]
             {
@@ -153,10 +156,17 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
 
         private void UpdateCreatureType(Creature creature)
         {
-            creature.Type.SubTypes = creature.Type.SubTypes.Union(new[]
-            {
-                CreatureConstants.Types.Subtypes.Shapechanger,
-            });
+            var adjustedTypes = UpdateCreatureType(creature.Type.Name, creature.Type.SubTypes);
+
+            creature.Type.Name = adjustedTypes.First();
+            creature.Type.SubTypes = adjustedTypes.Skip(1);
+        }
+
+        private IEnumerable<string> UpdateCreatureType(string creatureType, IEnumerable<string> subtypes)
+        {
+            return new[] { creatureType }
+                .Union(subtypes)
+                .Union(new[] { CreatureConstants.Types.Subtypes.Shapechanger });
         }
 
         private void UpdateCreatureAbilities(Creature creature)
@@ -190,26 +200,31 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
 
         private void UpdateCreatureChallengeRating(Creature creature, HitPoints animalHitPoints)
         {
+            creature.ChallengeRating = UpdateCreatureChallengeRating(creature.ChallengeRating, animalHitPoints.HitDice[0].Quantity);
+        }
+
+        private string UpdateCreatureChallengeRating(string challengeRating, double animalHitDiceQuantity)
+        {
             var increase = 2;
 
-            if (animalHitPoints.HitDice[0].Quantity > 20)
+            if (animalHitDiceQuantity > 20)
             {
                 increase = 6;
             }
-            else if (animalHitPoints.HitDice[0].Quantity > 10)
+            else if (animalHitDiceQuantity > 10)
             {
                 increase = 5;
             }
-            else if (animalHitPoints.HitDice[0].Quantity > 5)
+            else if (animalHitDiceQuantity > 5)
             {
                 increase = 4;
             }
-            else if (animalHitPoints.HitDice[0].Quantity > 2)
+            else if (animalHitDiceQuantity > 2)
             {
                 increase = 3;
             }
 
-            creature.ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(creature.ChallengeRating, increase);
+            return ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, increase);
         }
 
         private void UpdateCreatureLevelAdjustment(Creature creature)
@@ -660,12 +675,23 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
 
         public IEnumerable<string> GetPotentialTypes(string creature)
         {
-            throw new NotImplementedException();
+            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
+            var creatureType = types.First();
+            var subtypes = types.Skip(1);
+
+            var adjustedTypes = UpdateCreatureType(creatureType, subtypes);
+
+            return adjustedTypes;
         }
 
         public string GetPotentialChallengeRating(string creature)
         {
-            throw new NotImplementedException();
+            var quantity = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, AnimalSpecies);
+            var data = creatureDataSelector.SelectFor(creature);
+
+            var adjustedChallengeRating = UpdateCreatureChallengeRating(data.ChallengeRating, quantity);
+
+            return adjustedChallengeRating;
         }
     }
 }

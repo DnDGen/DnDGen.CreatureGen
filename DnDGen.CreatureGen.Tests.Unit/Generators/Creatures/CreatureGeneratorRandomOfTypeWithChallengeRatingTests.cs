@@ -413,7 +413,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
-                .Returns(new[] { creatureName });
+                .Returns(new[] { creatureName, "other creature of type" });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { "other creature of challenge rating", creatureName });
 
             var name = creatureGenerator.GenerateRandomNameOfType("my type", "my challenge rating");
             Assert.That(name.CreatureName, Is.EqualTo(creatureName));
@@ -427,7 +431,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var template = "my template";
 
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
-            var templates = new[] { "other template", template, "wrong template name" };
+            var templates = new[] { "other template", template, "wrong template name", "other wrong template" };
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
@@ -436,14 +440,33 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
                 .Returns(templates);
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
-                .Returns(new[] { template });
-
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
+            mockTemplateApplicator.Setup(a => a.GetPotentialTypes(creatureName)).Returns(new[] { "my wrong type", "my type", "my other type" });
+            mockTemplateApplicator.Setup(a => a.GetPotentialChallengeRating(creatureName)).Returns("my challenge rating");
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
+
+            var mockWrongTemplateApplicator1 = new Mock<TemplateApplicator>();
+            mockWrongTemplateApplicator1.Setup(a => a.IsCompatible(creatureName)).Returns(false);
+            mockWrongTemplateApplicator1.Setup(a => a.GetPotentialTypes(creatureName)).Returns(new[] { "my wrong type", "my type", "my other type" });
+            mockWrongTemplateApplicator1.Setup(a => a.GetPotentialChallengeRating(creatureName)).Returns("my challenge rating");
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("other template")).Returns(mockWrongTemplateApplicator1.Object);
+
+            var mockWrongTemplateApplicator2 = new Mock<TemplateApplicator>();
+            mockWrongTemplateApplicator2.Setup(a => a.IsCompatible(creatureName)).Returns(true);
+            mockWrongTemplateApplicator2.Setup(a => a.GetPotentialTypes(creatureName)).Returns(new[] { "my wrong type", "my type", "my other type" });
+            mockWrongTemplateApplicator2.Setup(a => a.GetPotentialChallengeRating(creatureName)).Returns("wrong challenge rating");
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template name")).Returns(mockWrongTemplateApplicator2.Object);
+
+            var mockWrongTemplateApplicator3 = new Mock<TemplateApplicator>();
+            mockWrongTemplateApplicator3.Setup(a => a.IsCompatible(creatureName)).Returns(true);
+            mockWrongTemplateApplicator3.Setup(a => a.GetPotentialTypes(creatureName)).Returns(new[] { "my wrong type", "my other type" });
+            mockWrongTemplateApplicator3.Setup(a => a.GetPotentialChallengeRating(creatureName)).Returns("wrong challenge rating");
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("other wrong template")).Returns(mockWrongTemplateApplicator3.Object);
 
             var name = creatureGenerator.GenerateRandomNameOfType("my type", "my challenge rating");
             Assert.That(name.CreatureName, Is.EqualTo(creatureName));
@@ -462,6 +485,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(creatures);
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(creatures);
 
             var typePairings = creatures.Select(c => (c, CreatureConstants.Templates.None));
@@ -490,20 +517,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
                 .Returns(templates);
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
-                .Returns(creatures.Union(templates));
-
             foreach (var otherTemplate in templates)
             {
                 var mockTemplateApplicator = new Mock<TemplateApplicator>();
                 mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>())).Returns(true);
+                mockTemplateApplicator.Setup(a => a.GetPotentialTypes(It.IsAny<string>())).Returns(new[] { "my wrong type", "my type", "my other type" });
+                mockTemplateApplicator.Setup(a => a.GetPotentialChallengeRating(It.IsAny<string>())).Returns("my challenge rating");
+
                 mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(otherTemplate)).Returns(mockTemplateApplicator.Object);
             }
 
-            var typePairings = creatures
-                .SelectMany(c => templates.Select(t => (c, t)))
-                .Union(creatures.Select(c => (c, CreatureConstants.Templates.None)));
+            var typePairings = creatures.SelectMany(c => templates.Select(t => (c, t)));
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<(string CreatureName, string Template)>>(c => c.IsEquivalentTo(typePairings))))
                 .Returns((creatureName, template));
@@ -526,6 +550,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             SetUpCreature(creatureName, CreatureConstants.Templates.None, false);
 
             var creature = creatureGenerator.GenerateRandomOfType("my type", "my challenge rating");
@@ -540,7 +568,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var template = "my template";
 
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
-            var templates = new[] { "other template", template, "wrong template name" };
+            var templates = new[] { "other template", template, "wrong template name", "other wrong template" };
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
@@ -549,20 +577,40 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
                 .Returns(templates);
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
-                .Returns(new[] { template });
-
             SetUpCreature(creatureName, template, false);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
+            mockTemplateApplicator.Setup(a => a.GetPotentialTypes(creatureName)).Returns(new[] { "wrong type", "my type", "other type" });
+            mockTemplateApplicator.Setup(a => a.GetPotentialChallengeRating(creatureName)).Returns("my challenge rating");
+
             mockTemplateApplicator
                 .Setup(a => a.ApplyTo(It.Is<Creature>(c => c.Name == creatureName)))
                 .Callback((Creature c) => c.Template = template)
                 .Returns((Creature c) => c);
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
+
+            var mockWrongTemplateApplicator1 = new Mock<TemplateApplicator>();
+            mockWrongTemplateApplicator1.Setup(a => a.IsCompatible(creatureName)).Returns(false);
+            mockWrongTemplateApplicator1.Setup(a => a.GetPotentialTypes(creatureName)).Returns(new[] { "wrong type", "my type", "other type" });
+            mockWrongTemplateApplicator1.Setup(a => a.GetPotentialChallengeRating(creatureName)).Returns("my challenge rating");
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("other template")).Returns(mockWrongTemplateApplicator1.Object);
+
+            var mockWrongTemplateApplicator2 = new Mock<TemplateApplicator>();
+            mockWrongTemplateApplicator2.Setup(a => a.IsCompatible(creatureName)).Returns(true);
+            mockWrongTemplateApplicator2.Setup(a => a.GetPotentialTypes(creatureName)).Returns(new[] { "wrong type", "my type", "other type" });
+            mockWrongTemplateApplicator2.Setup(a => a.GetPotentialChallengeRating(creatureName)).Returns("wrong challenge rating");
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template name")).Returns(mockWrongTemplateApplicator2.Object);
+
+            var mockWrongTemplateApplicator3 = new Mock<TemplateApplicator>();
+            mockWrongTemplateApplicator3.Setup(a => a.IsCompatible(creatureName)).Returns(true);
+            mockWrongTemplateApplicator3.Setup(a => a.GetPotentialTypes(creatureName)).Returns(new[] { "wrong type", "other type" });
+            mockWrongTemplateApplicator3.Setup(a => a.GetPotentialChallengeRating(creatureName)).Returns("my challenge rating");
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("other wrong template")).Returns(mockWrongTemplateApplicator3.Object);
 
             var creature = creatureGenerator.GenerateRandomOfType("my type", "my challenge rating");
             Assert.That(creature.Name, Is.EqualTo(creatureName));
@@ -592,6 +640,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(creatures);
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(creatures);
+
+            foreach (var template in templates)
+            {
+                var mockTemplateApplicator = new Mock<TemplateApplicator>();
+                mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>())).Returns(false);
+
+                mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
+            }
+
             var typePairings = creatures.Select(c => (c, CreatureConstants.Templates.None));
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<(string CreatureName, string Template)>>(c => c.IsEquivalentTo(typePairings))))
@@ -618,16 +678,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
                 .Returns(templates);
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
-                .Returns(creatures.Union(templates));
-
             SetUpCreature(creatureName, template, false);
 
             foreach (var otherTemplate in templates)
             {
                 var mockTemplateApplicator = new Mock<TemplateApplicator>();
                 mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>())).Returns(true);
+                mockTemplateApplicator.Setup(a => a.GetPotentialTypes(It.IsAny<string>())).Returns(new[] { "wrong type", "my type", "other type" });
+                mockTemplateApplicator.Setup(a => a.GetPotentialChallengeRating(It.IsAny<string>())).Returns("my challenge rating");
+
                 mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(otherTemplate)).Returns(mockTemplateApplicator.Object);
 
                 if (otherTemplate == template)
@@ -639,9 +698,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 }
             }
 
-            var typePairings = creatures
-                .SelectMany(c => templates.Select(t => (c, t)))
-                .Union(creatures.Select(c => (c, CreatureConstants.Templates.None)));
+            var typePairings = creatures.SelectMany(c => templates.Select(t => (c, t)));
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<(string CreatureName, string Template)>>(c => c.IsEquivalentTo(typePairings))))
                 .Returns((creatureName, template));
@@ -661,6 +718,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var creature = creatureGenerator.GenerateRandomOfType("my type", "my challenge rating");
             Assert.That(creature.Size, Is.EqualTo("size"));
         }
@@ -673,6 +734,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var creature = creatureGenerator.GenerateRandomOfType("my type", "my challenge rating");
@@ -689,6 +754,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var creature = creatureGenerator.GenerateRandomOfType("my type", "my challenge rating");
             Assert.That(creature.Reach.Value, Is.EqualTo(67.89));
         }
@@ -701,6 +770,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             creatureData.CanUseEquipment = true;
@@ -729,6 +802,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             creatureData.CanUseEquipment = false;
             var creature = creatureGenerator.GenerateRandomOfType("my type", "my challenge rating");
             Assert.That(creature.CanUseEquipment, Is.False);
@@ -742,6 +819,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             creatureData.ChallengeRating = "challenge rating";
@@ -760,6 +841,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             creatureData.LevelAdjustment = 1234;
 
             var creature = creatureGenerator.GenerateRandomOfType("my type", "my challenge rating");
@@ -774,6 +859,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             creatureData.LevelAdjustment = null;
@@ -792,6 +881,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             creatureData.LevelAdjustment = 0;
 
             var creature = creatureGenerator.GenerateRandomOfType("my type", "my challenge rating");
@@ -808,6 +901,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var creature = creatureGenerator.GenerateRandomOfType("my type", "my challenge rating");
             Assert.That(creature.CasterLevel, Is.EqualTo(1029));
         }
@@ -820,6 +917,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var creature = creatureGenerator.GenerateRandomOfType("my type", "my challenge rating");
@@ -837,6 +938,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(new[] { creatureName });
 
             types[0] = "my type";
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
 
             var creature = creatureGenerator.GenerateRandomOfType("my type", "my challenge rating");
             Assert.That(creature.Type.Name, Is.EqualTo("my type"));
@@ -856,6 +961,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             types[0] = "my type";
             types.Add("subtype");
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
 
             var creature = creatureGenerator.GenerateRandomOfType(startType);
             Assert.That(creature.Type.Name, Is.EqualTo("my type"));
@@ -880,6 +989,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             types.Add("subtype");
             types.Add("other subtype");
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var creature = creatureGenerator.GenerateRandomOfType(startType);
             Assert.That(creature.Type.Name, Is.EqualTo("my type"));
             Assert.That(creature.Type.SubTypes, Is.Not.Empty);
@@ -898,6 +1011,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var creature = creatureGenerator.GenerateRandomOfType("my type", "my challenge rating");
             Assert.That(creature.Abilities, Is.EqualTo(abilities));
         }
@@ -910,6 +1027,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var creature = creatureGenerator.GenerateRandomOfType("my type", "my challenge rating");
@@ -932,6 +1053,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var creature = creatureGenerator.GenerateRandomOfType("my type", "my challenge rating");
             Assert.That(creature.Equipment, Is.EqualTo(equipment));
         }
@@ -944,6 +1069,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var creature = creatureGenerator.GenerateRandomOfType("my type", "my challenge rating");
@@ -960,6 +1089,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var creature = creatureGenerator.GenerateRandomOfType("my type", "my challenge rating");
             Assert.That(creature.Languages, Is.EqualTo(languages));
         }
@@ -972,6 +1105,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             SetUpCreatureAdvancement(false, creatureName: creatureName);
@@ -1006,6 +1143,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var advancedhitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
             mockAdvancementSelector.Setup(s => s.IsAdvanced(creatureName)).Returns(true);
 
@@ -1036,6 +1177,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             abilities[AbilityConstants.Strength].RacialAdjustment = 38;
@@ -1078,6 +1223,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             abilities[AbilityConstants.Strength].BaseScore = 0;
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
             abilities[AbilityConstants.Constitution].BaseScore = 0;
@@ -1118,6 +1267,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var creature = creatureGenerator.GenerateRandomOfType("my type", "my challenge rating");
             Assert.That(creature.Skills, Is.EqualTo(skills));
         }
@@ -1130,6 +1283,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
@@ -1241,6 +1398,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var creature = creatureGenerator.GenerateRandomOfType("my type", "my challenge rating");
             Assert.That(creature.SpecialQualities, Is.EqualTo(specialQualities));
         }
@@ -1253,6 +1414,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
@@ -1296,6 +1461,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var creature = creatureGenerator.GenerateRandomOfType("my type", "my challenge rating");
             Assert.That(creature.BaseAttackBonus, Is.EqualTo(753));
         }
@@ -1308,6 +1477,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
@@ -1328,6 +1501,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var creature = creatureGenerator.GenerateRandomOfType("my type", "my challenge rating");
             Assert.That(creature.Attacks, Is.EqualTo(attacks));
         }
@@ -1340,6 +1517,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
@@ -1449,6 +1630,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var creature = creatureGenerator.GenerateRandomOfType("my type", "my challenge rating");
             Assert.That(creature.Feats, Is.EqualTo(feats));
         }
@@ -1461,6 +1646,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
@@ -1522,6 +1711,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var updatedHitPoints = new HitPoints();
             mockHitPointsGenerator.Setup(g => g.RegenerateWith(hitPoints, feats)).Returns(updatedHitPoints);
 
@@ -1547,6 +1740,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
@@ -1659,6 +1856,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var updatedSkills = new List<Skill>() { new Skill("updated skill", abilities.First().Value, 1000) };
             mockSkillsGenerator.Setup(g => g.ApplyBonusesFromFeats(skills, feats, abilities)).Returns(updatedSkills);
 
@@ -1681,6 +1882,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
@@ -1793,6 +1998,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             mockAttacksGenerator.Setup(s => s.GenerateGrappleBonus(creatureName, "size", 753, abilities[AbilityConstants.Strength])).Returns(2345);
 
             var creature = creatureGenerator.GenerateRandomOfType("my type", "my challenge rating");
@@ -1807,6 +2016,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             SetUpCreatureAdvancement(false, creatureName: creatureName);
@@ -1827,6 +2040,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             int? noBonus = null;
             mockAttacksGenerator.Setup(s => s.GenerateGrappleBonus(creatureName, "size", 753, abilities[AbilityConstants.Strength])).Returns(noBonus);
 
@@ -1842,6 +2059,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var modifiedAttacks = new[] { new Attack() { Name = "modified attack" } };
@@ -1873,6 +2094,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
@@ -1986,6 +2211,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             abilities[AbilityConstants.Dexterity].BaseScore = 4132;
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
@@ -2003,6 +2232,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             abilities[AbilityConstants.Dexterity].BaseScore = 4132;
@@ -2026,6 +2259,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             abilities[AbilityConstants.Dexterity].BaseScore = 4132;
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
@@ -2044,6 +2281,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             abilities[AbilityConstants.Dexterity].BaseScore = 4132;
@@ -2068,6 +2309,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
             abilities[AbilityConstants.Intelligence].BaseScore = 1234;
 
@@ -2086,6 +2331,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
@@ -2111,6 +2360,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
             abilities[AbilityConstants.Intelligence].BaseScore = 1234;
 
@@ -2130,6 +2383,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
@@ -2156,6 +2413,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             speeds["on foot"] = new Measurement("feet per round");
             speeds["in a car"] = new Measurement("feet per round");
 
@@ -2171,6 +2432,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var armorClass = new ArmorClass();
@@ -2197,6 +2462,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
@@ -2307,6 +2576,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var saves = new Dictionary<string, Save>();
             saves["save name"] = new Save();
 
@@ -2324,6 +2597,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
@@ -2349,6 +2626,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var creature = creatureGenerator.GenerateRandomOfType("my type", "my challenge rating");
             Assert.That(creature.Alignment, Is.EqualTo(alignment));
             Assert.That(creature.Alignment.Full, Is.EqualTo("creature alignment"));
@@ -2362,6 +2643,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             hitPoints.HitDice.Clear();
@@ -2383,6 +2668,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             hitPoints.HitDice.Clear();
             hitPoints.DefaultTotal = 0;
             hitPoints.Total = 0;
@@ -2401,6 +2690,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             SetUpCreature(creatureName, CreatureConstants.Templates.None, false);
 
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync("my type", "my challenge rating");
@@ -2415,7 +2708,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var template = "my template";
 
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
-            var templates = new[] { "other template", template, "wrong template name" };
+            var templates = new[] { "other template", template, "wrong template name", "other wrong template" };
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
@@ -2424,20 +2717,40 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
                 .Returns(templates);
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
-                .Returns(new[] { template });
-
             SetUpCreature(creatureName, template, false);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
+            mockTemplateApplicator.Setup(a => a.GetPotentialTypes(creatureName)).Returns(new[] { "my wrong type", "my type", "my other type" });
+            mockTemplateApplicator.Setup(a => a.GetPotentialChallengeRating(creatureName)).Returns("my challenge rating");
+
             mockTemplateApplicator
                 .Setup(a => a.ApplyToAsync(It.Is<Creature>(c => c.Name == creatureName)))
                 .Callback((Creature c) => c.Template = template)
                 .ReturnsAsync((Creature c) => c);
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
+
+            var mockWrongTemplateApplicator1 = new Mock<TemplateApplicator>();
+            mockWrongTemplateApplicator1.Setup(a => a.IsCompatible(creatureName)).Returns(false);
+            mockWrongTemplateApplicator1.Setup(a => a.GetPotentialTypes(creatureName)).Returns(new[] { "my wrong type", "my type", "my other type" });
+            mockWrongTemplateApplicator1.Setup(a => a.GetPotentialChallengeRating(creatureName)).Returns("my challenge rating");
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("other template")).Returns(mockWrongTemplateApplicator1.Object);
+
+            var mockWrongTemplateApplicator2 = new Mock<TemplateApplicator>();
+            mockWrongTemplateApplicator2.Setup(a => a.IsCompatible(creatureName)).Returns(true);
+            mockWrongTemplateApplicator2.Setup(a => a.GetPotentialTypes(creatureName)).Returns(new[] { "my wrong type", "my type", "my other type" });
+            mockWrongTemplateApplicator2.Setup(a => a.GetPotentialChallengeRating(creatureName)).Returns("wrong challenge rating");
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template name")).Returns(mockWrongTemplateApplicator2.Object);
+
+            var mockWrongTemplateApplicator3 = new Mock<TemplateApplicator>();
+            mockWrongTemplateApplicator3.Setup(a => a.IsCompatible(creatureName)).Returns(true);
+            mockWrongTemplateApplicator3.Setup(a => a.GetPotentialTypes(creatureName)).Returns(new[] { "my wrong type", "my other type" });
+            mockWrongTemplateApplicator3.Setup(a => a.GetPotentialChallengeRating(creatureName)).Returns("wrong challenge rating");
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("other wrong template")).Returns(mockWrongTemplateApplicator3.Object);
 
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync("my type", "my challenge rating");
             Assert.That(creature.Name, Is.EqualTo(creatureName));
@@ -2465,7 +2778,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(creatures);
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(creatures);
+
             SetUpCreature(creatureName, CreatureConstants.Templates.None, false);
+
+            foreach (var template in templates)
+            {
+                var mockTemplateApplicator = new Mock<TemplateApplicator>();
+                mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>())).Returns(false);
+
+                mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
+            }
 
             var typePairings = creatures.Select(c => (c, CreatureConstants.Templates.None));
             mockCollectionSelector
@@ -2495,14 +2820,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             SetUpCreature(creatureName, template, false);
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
-                .Returns(creatures.Union(templates));
-
             foreach (var otherTemplate in templates)
             {
                 var mockTemplateApplicator = new Mock<TemplateApplicator>();
                 mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>())).Returns(true);
+                mockTemplateApplicator.Setup(a => a.GetPotentialTypes(It.IsAny<string>())).Returns(new[] { "my wrong type", "my type", "my other type" });
+                mockTemplateApplicator.Setup(a => a.GetPotentialChallengeRating(It.IsAny<string>())).Returns("my challenge rating");
                 mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(otherTemplate)).Returns(mockTemplateApplicator.Object);
 
                 if (otherTemplate == template)
@@ -2514,9 +2837,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 }
             }
 
-            var typePairings = creatures
-                .SelectMany(c => templates.Select(t => (c, t)))
-                .Union(creatures.Select(c => (c, CreatureConstants.Templates.None)));
+            var typePairings = creatures.SelectMany(c => templates.Select(t => (c, t)));
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<(string CreatureName, string Template)>>(c => c.IsEquivalentTo(typePairings))))
                 .Returns((creatureName, template));
@@ -2536,6 +2857,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync("my type", "my challenge rating");
             Assert.That(creature.Size, Is.EqualTo("size"));
         }
@@ -2548,6 +2873,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync("my type", "my challenge rating");
@@ -2564,6 +2893,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync("my type", "my challenge rating");
             Assert.That(creature.Reach.Value, Is.EqualTo(67.89));
         }
@@ -2576,6 +2909,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             creatureData.CanUseEquipment = true;
@@ -2604,6 +2941,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             creatureData.CanUseEquipment = false;
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync("my type", "my challenge rating");
             Assert.That(creature.CanUseEquipment, Is.False);
@@ -2619,10 +2960,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
-            creatureData.ChallengeRating = "challenge rating";
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
+            creatureData.ChallengeRating = "my challenge rating";
 
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync("my type", "my challenge rating");
-            Assert.That(creature.ChallengeRating, Is.EqualTo("challenge rating"));
+            Assert.That(creature.ChallengeRating, Is.EqualTo("my challenge rating"));
         }
 
         [Test]
@@ -2633,6 +2978,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             creatureData.LevelAdjustment = 1234;
@@ -2651,6 +3000,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             creatureData.LevelAdjustment = null;
 
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync("my type", "my challenge rating");
@@ -2665,6 +3018,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             creatureData.LevelAdjustment = 0;
@@ -2683,6 +3040,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync("my type", "my challenge rating");
             Assert.That(creature.CasterLevel, Is.EqualTo(1029));
         }
@@ -2697,6 +3058,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync("my type", "my challenge rating");
             Assert.That(creature.NumberOfHands, Is.EqualTo(96));
         }
@@ -2709,6 +3074,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             types[0] = "my type";
@@ -2727,6 +3096,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, startType))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             types[0] = "my type";
@@ -2751,6 +3124,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, startType))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             types[0] = "my type";
             types.Add("subtype");
             types.Add("other subtype");
@@ -2773,6 +3150,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync("my type", "my challenge rating");
             Assert.That(creature.Abilities, Is.EqualTo(abilities));
         }
@@ -2785,6 +3166,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync("my type", "my challenge rating");
@@ -2807,6 +3192,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync("my type", "my challenge rating");
             Assert.That(creature.Equipment, Is.EqualTo(equipment));
         }
@@ -2821,6 +3210,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync("my type", "my challenge rating");
             Assert.That(creature.Magic, Is.EqualTo(magic));
         }
@@ -2833,6 +3226,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             SetUpCreatureAdvancement(false, creatureName: creatureName);
@@ -2867,6 +3264,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var advancedhitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
             mockAdvancementSelector.Setup(s => s.IsAdvanced(creatureName)).Returns(true);
 
@@ -2897,6 +3298,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             abilities[AbilityConstants.Strength].RacialAdjustment = 38;
@@ -2939,6 +3344,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             abilities[AbilityConstants.Strength].BaseScore = 0;
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
             abilities[AbilityConstants.Constitution].BaseScore = 0;
@@ -2979,6 +3388,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync("my type", "my challenge rating");
             Assert.That(creature.Skills, Is.EqualTo(skills));
         }
@@ -2991,6 +3404,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
@@ -3102,6 +3519,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync("my type", "my challenge rating");
             Assert.That(creature.SpecialQualities, Is.EqualTo(specialQualities));
         }
@@ -3114,6 +3535,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
@@ -3157,6 +3582,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync("my type", "my challenge rating");
             Assert.That(creature.BaseAttackBonus, Is.EqualTo(753));
         }
@@ -3169,6 +3598,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
@@ -3189,6 +3622,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync("my type", "my challenge rating");
             Assert.That(creature.Attacks, Is.EqualTo(attacks));
         }
@@ -3201,6 +3638,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
@@ -3310,6 +3751,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync("my type", "my challenge rating");
             Assert.That(creature.Feats, Is.EqualTo(feats));
         }
@@ -3322,6 +3767,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
@@ -3383,6 +3832,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var updatedHitPoints = new HitPoints();
             mockHitPointsGenerator.Setup(g => g.RegenerateWith(hitPoints, feats)).Returns(updatedHitPoints);
 
@@ -3408,6 +3861,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
@@ -3520,6 +3977,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var updatedSkills = new List<Skill>() { new Skill("updated skill", abilities.First().Value, 1000) };
             mockSkillsGenerator.Setup(g => g.ApplyBonusesFromFeats(skills, feats, abilities)).Returns(updatedSkills);
 
@@ -3542,6 +4003,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
@@ -3654,6 +4119,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             mockAttacksGenerator.Setup(s => s.GenerateGrappleBonus(creatureName, "size", 753, abilities[AbilityConstants.Strength])).Returns(2345);
 
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync("my type", "my challenge rating");
@@ -3668,6 +4137,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             SetUpCreatureAdvancement(false, creatureName: creatureName);
@@ -3688,6 +4161,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             int? noBonus = null;
             mockAttacksGenerator.Setup(s => s.GenerateGrappleBonus(creatureName, "size", 753, abilities[AbilityConstants.Strength])).Returns(noBonus);
 
@@ -3703,6 +4180,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var modifiedAttacks = new[] { new Attack() { Name = "modified attack" } };
@@ -3734,6 +4215,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
@@ -3846,6 +4331,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             abilities[AbilityConstants.Dexterity].BaseScore = 4132;
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
@@ -3862,6 +4351,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             abilities[AbilityConstants.Dexterity].BaseScore = 4132;
@@ -3884,6 +4377,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             abilities[AbilityConstants.Dexterity].BaseScore = 4132;
 
             feats.Add(new Feat { Name = "other feat", Power = 4 });
@@ -3901,6 +4398,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             abilities[AbilityConstants.Dexterity].BaseScore = 4132;
@@ -3924,6 +4425,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
             abilities[AbilityConstants.Intelligence].BaseScore = 1234;
 
@@ -3941,6 +4446,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
@@ -3965,6 +4474,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
             abilities[AbilityConstants.Intelligence].BaseScore = 1234;
 
@@ -3983,6 +4496,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             abilities[AbilityConstants.Dexterity].BaseScore = 0;
@@ -4008,6 +4525,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             speeds["on foot"] = new Measurement("feet per round");
             speeds["in a car"] = new Measurement("feet per round");
 
@@ -4023,6 +4544,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var armorClass = new ArmorClass();
@@ -4050,6 +4575,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
@@ -4160,6 +4689,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(new[] { creatureName });
+
             var saves = new Dictionary<string, Save>();
             saves["save name"] = new Save();
 
@@ -4177,6 +4710,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var advancedHitPoints = SetUpCreatureAdvancement(false, creatureName: creatureName);
@@ -4200,6 +4737,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(new[] { creatureName });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync("my type", "my challenge rating");

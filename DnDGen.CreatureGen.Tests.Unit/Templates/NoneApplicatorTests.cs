@@ -1,6 +1,11 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Selectors.Selections;
+using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
+using DnDGen.Infrastructure.Selectors.Collections;
+using Moq;
 using NUnit.Framework;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,11 +16,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
     public class NoneApplicatorTests
     {
         private TemplateApplicator templateApplicator;
+        private Mock<ICollectionSelector> mockCollectionSelector;
+        private Mock<ICreatureDataSelector> mockCreatureDataSelector;
 
         [SetUp]
         public void Setup()
         {
-            templateApplicator = new NoneApplicator();
+            mockCollectionSelector = new Mock<ICollectionSelector>();
+            mockCreatureDataSelector = new Mock<ICreatureDataSelector>();
+
+            templateApplicator = new NoneApplicator(mockCollectionSelector.Object, mockCreatureDataSelector.Object);
         }
 
         [Test]
@@ -419,16 +429,22 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void GetPotentialTypes_ReturnOriginalCreatureTypes()
         {
-            var creatureTypes = new[] { "my type", "subtype 1", "subtype 2" };
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { "my type", "subtype 1", "subtype 2" });
 
-            var types = templateApplicator.GetPotentialTypes("whatever");
-            Assert.That(types, Is.EqualTo(creatureTypes));
+            var types = templateApplicator.GetPotentialTypes("my creature");
+            Assert.That(types, Is.EqualTo(new[] { "my type", "subtype 1", "subtype 2" }));
         }
 
         [Test]
         public void GetPotentialChallengeRating_ReturnOriginalCreatureTypes()
         {
-            var challengeRating = templateApplicator.GetPotentialChallengeRating("whatever");
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor("my creature"))
+                .Returns(new CreatureDataSelection { ChallengeRating = "my challenge rating" });
+
+            var challengeRating = templateApplicator.GetPotentialChallengeRating("my creature");
             Assert.That(challengeRating, Is.EqualTo("my challenge rating"));
         }
     }

@@ -106,7 +106,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 mockAttacksGenerator.Object,
                 mockSavesGenerator.Object,
                 mockSkillsGenerator.Object,
-                mockSpeedsGenerator.Object);
+                mockSpeedsGenerator.Object,
+                mockAdjustmentSelector.Object);
             applicators[CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural] = new LycanthropeBrownBearNaturalApplicator(
                 mockCollectionSelector.Object,
                 mockCreatureDataSelector.Object,
@@ -117,7 +118,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 mockAttacksGenerator.Object,
                 mockSavesGenerator.Object,
                 mockSkillsGenerator.Object,
-                mockSpeedsGenerator.Object);
+                mockSpeedsGenerator.Object,
+                mockAdjustmentSelector.Object);
             applicators[CreatureConstants.Templates.Lycanthrope_Boar_Afflicted] = new LycanthropeBoarAfflictedApplicator(
                 mockCollectionSelector.Object,
                 mockCreatureDataSelector.Object,
@@ -128,7 +130,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 mockAttacksGenerator.Object,
                 mockSavesGenerator.Object,
                 mockSkillsGenerator.Object,
-                mockSpeedsGenerator.Object);
+                mockSpeedsGenerator.Object,
+                mockAdjustmentSelector.Object);
             applicators[CreatureConstants.Templates.Lycanthrope_Boar_Natural] = new LycanthropeBoarNaturalApplicator(
                 mockCollectionSelector.Object,
                 mockCreatureDataSelector.Object,
@@ -139,7 +142,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 mockAttacksGenerator.Object,
                 mockSavesGenerator.Object,
                 mockSkillsGenerator.Object,
-                mockSpeedsGenerator.Object);
+                mockSpeedsGenerator.Object,
+                mockAdjustmentSelector.Object);
             applicators[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted] = new LycanthropeDireBoarAfflictedApplicator(
                 mockCollectionSelector.Object,
                 mockCreatureDataSelector.Object,
@@ -150,7 +154,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 mockAttacksGenerator.Object,
                 mockSavesGenerator.Object,
                 mockSkillsGenerator.Object,
-                mockSpeedsGenerator.Object);
+                mockSpeedsGenerator.Object,
+                mockAdjustmentSelector.Object);
             applicators[CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural] = new LycanthropeDireBoarNaturalApplicator(
                 mockCollectionSelector.Object,
                 mockCreatureDataSelector.Object,
@@ -161,7 +166,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 mockAttacksGenerator.Object,
                 mockSavesGenerator.Object,
                 mockSkillsGenerator.Object,
-                mockSpeedsGenerator.Object);
+                mockSpeedsGenerator.Object,
+                mockAdjustmentSelector.Object);
             applicators[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted] = new LycanthropeDireRatAfflictedApplicator(
                 mockCollectionSelector.Object,
                 mockCreatureDataSelector.Object,
@@ -172,7 +178,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 mockAttacksGenerator.Object,
                 mockSavesGenerator.Object,
                 mockSkillsGenerator.Object,
-                mockSpeedsGenerator.Object);
+                mockSpeedsGenerator.Object,
+                mockAdjustmentSelector.Object);
             applicators[CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural] = new LycanthropeDireRatNaturalApplicator(
                 mockCollectionSelector.Object,
                 mockCreatureDataSelector.Object,
@@ -183,7 +190,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 mockAttacksGenerator.Object,
                 mockSavesGenerator.Object,
                 mockSkillsGenerator.Object,
-                mockSpeedsGenerator.Object);
+                mockSpeedsGenerator.Object,
+                mockAdjustmentSelector.Object);
             applicators[CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted] = new LycanthropeTigerAfflictedApplicator(
                 mockCollectionSelector.Object,
                 mockCreatureDataSelector.Object,
@@ -194,7 +202,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 mockAttacksGenerator.Object,
                 mockSavesGenerator.Object,
                 mockSkillsGenerator.Object,
-                mockSpeedsGenerator.Object);
+                mockSpeedsGenerator.Object,
+                mockAdjustmentSelector.Object);
             applicators[CreatureConstants.Templates.Lycanthrope_Tiger_Natural] = new LycanthropeTigerNaturalApplicator(
                 mockCollectionSelector.Object,
                 mockCreatureDataSelector.Object,
@@ -205,7 +214,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 mockAttacksGenerator.Object,
                 mockSavesGenerator.Object,
                 mockSkillsGenerator.Object,
-                mockSpeedsGenerator.Object);
+                mockSpeedsGenerator.Object,
+                mockAdjustmentSelector.Object);
             applicators[CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted] = new LycanthropeWolfAfflictedApplicator(
                 mockCollectionSelector.Object,
                 mockCreatureDataSelector.Object,
@@ -216,7 +226,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 mockAttacksGenerator.Object,
                 mockSavesGenerator.Object,
                 mockSkillsGenerator.Object,
-                mockSpeedsGenerator.Object);
+                mockSpeedsGenerator.Object,
+                mockAdjustmentSelector.Object);
             applicators[CreatureConstants.Templates.Lycanthrope_Wolf_Natural] = new LycanthropeWolfNaturalApplicator(
                 mockCollectionSelector.Object,
                 mockCreatureDataSelector.Object,
@@ -227,7 +238,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 mockAttacksGenerator.Object,
                 mockSavesGenerator.Object,
                 mockSkillsGenerator.Object,
-                mockSpeedsGenerator.Object);
+                mockSpeedsGenerator.Object,
+                mockAdjustmentSelector.Object);
             applicators[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted] = new LycanthropeDireWolfAfflictedApplicator(
                 mockCollectionSelector.Object,
                 mockCreatureDataSelector.Object,
@@ -238,7 +250,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 mockAttacksGenerator.Object,
                 mockSavesGenerator.Object,
                 mockSkillsGenerator.Object,
-                mockSpeedsGenerator.Object);
+                mockSpeedsGenerator.Object,
+                mockAdjustmentSelector.Object);
             applicators[CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural] = new LycanthropeDireWolfNaturalApplicator(
                 mockCollectionSelector.Object,
                 mockCreatureDataSelector.Object,
@@ -249,7 +262,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 mockAttacksGenerator.Object,
                 mockSavesGenerator.Object,
                 mockSkillsGenerator.Object,
-                mockSpeedsGenerator.Object);
+                mockSpeedsGenerator.Object,
+                mockAdjustmentSelector.Object);
 
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
@@ -374,10 +388,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void GetPotentialTypes_GainShapechangerSubtype(string template, string animal)
         {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { "original type", "subtype 1", "subtype 2" });
+
             var types = applicators[template].GetPotentialTypes("my creature");
-            Assert.That(types.First(), Is.Empty);
-            Assert.That(types.Skip(1), Is.EqualTo(new[] { CreatureConstants.Types.Subtypes.Shapechanger }));
-            Assert.Fail("add in the original creature's types as well");
+            Assert.That(types.First(), Is.EqualTo("original type"));
+            Assert.That(types.Skip(1), Is.EqualTo(new[] { "subtype 1", "subtype 2", CreatureConstants.Types.Subtypes.Shapechanger }));
         }
 
         [TestCaseSource(nameof(AllLycanthropeTemplates))]

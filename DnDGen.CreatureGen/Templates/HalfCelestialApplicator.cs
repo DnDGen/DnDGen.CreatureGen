@@ -432,8 +432,8 @@ namespace DnDGen.CreatureGen.Templates
         public string GetPotentialChallengeRating(string creature)
         {
             var quantity = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, creature);
-            var data = creatureDataSelector.SelectFor(creature);
             var hitDice = new HitDice { Quantity = quantity };
+            var data = creatureDataSelector.SelectFor(creature);
 
             var adjustedChallengeRating = UpdateCreatureChallengeRating(data.ChallengeRating, hitDice.RoundedQuantity);
 
