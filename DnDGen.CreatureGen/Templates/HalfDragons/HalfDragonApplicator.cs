@@ -237,11 +237,11 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
         {
             var challengeRatings = ChallengeRatingConstants.GetOrdered();
             var index = Array.IndexOf(challengeRatings, challengeRating);
-            var threeIndex = Array.IndexOf(challengeRatings, ChallengeRatingConstants.Three);
+            var threeIndex = Array.IndexOf(challengeRatings, ChallengeRatingConstants.CR3);
 
             if (index > -1 && index + 2 < threeIndex)
             {
-                return ChallengeRatingConstants.Three;
+                return ChallengeRatingConstants.CR3;
             }
 
             return ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2);

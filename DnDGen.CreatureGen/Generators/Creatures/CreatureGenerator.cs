@@ -317,7 +317,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             if (creature.HitPoints.HitDiceQuantity == 0)
             {
-                creature.ChallengeRating = ChallengeRatingConstants.Zero;
+                creature.ChallengeRating = ChallengeRatingConstants.CR0;
             }
 
             creature.Alignment = alignmentGenerator.Generate(creatureName);

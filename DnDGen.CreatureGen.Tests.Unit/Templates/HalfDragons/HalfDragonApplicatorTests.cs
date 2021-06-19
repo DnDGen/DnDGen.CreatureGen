@@ -1298,7 +1298,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             get
             {
                 var challengeRatings = ChallengeRatingConstants.GetOrdered();
-                var minIndex = Array.IndexOf(challengeRatings, ChallengeRatingConstants.Three);
+                var minIndex = Array.IndexOf(challengeRatings, ChallengeRatingConstants.CR3);
 
                 foreach (var template in templates)
                 {
@@ -1307,7 +1307,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                         var increased = ChallengeRatingConstants.IncreaseChallengeRating(challengeRatings[i], 2);
 
                         if (i + 2 < minIndex)
-                            yield return new TestCaseData(template, challengeRatings[i], ChallengeRatingConstants.Three);
+                            yield return new TestCaseData(template, challengeRatings[i], ChallengeRatingConstants.CR3);
                         else
                             yield return new TestCaseData(template, challengeRatings[i], increased);
                     }

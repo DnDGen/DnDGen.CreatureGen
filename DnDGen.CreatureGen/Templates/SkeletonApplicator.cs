@@ -190,43 +190,43 @@ namespace DnDGen.CreatureGen.Templates
         {
             if (hitDiceQuantity <= 0.5)
             {
-                return ChallengeRatingConstants.OneSixth;
+                return ChallengeRatingConstants.CR1_6th;
             }
             else if (hitDiceQuantity <= 1)
             {
-                return ChallengeRatingConstants.OneThird;
+                return ChallengeRatingConstants.CR1_3rd;
             }
             else if (hitDiceQuantity <= 3)
             {
-                return ChallengeRatingConstants.One;
+                return ChallengeRatingConstants.CR1;
             }
             else if (hitDiceQuantity <= 5)
             {
-                return ChallengeRatingConstants.Two;
+                return ChallengeRatingConstants.CR2;
             }
             else if (hitDiceQuantity <= 7)
             {
-                return ChallengeRatingConstants.Three;
+                return ChallengeRatingConstants.CR3;
             }
             else if (hitDiceQuantity <= 9)
             {
-                return ChallengeRatingConstants.Four;
+                return ChallengeRatingConstants.CR4;
             }
             else if (hitDiceQuantity <= 11)
             {
-                return ChallengeRatingConstants.Five;
+                return ChallengeRatingConstants.CR5;
             }
             else if (hitDiceQuantity <= 14)
             {
-                return ChallengeRatingConstants.Six;
+                return ChallengeRatingConstants.CR6;
             }
             else if (hitDiceQuantity <= 17)
             {
-                return ChallengeRatingConstants.Seven;
+                return ChallengeRatingConstants.CR7;
             }
             else if (hitDiceQuantity <= 20)
             {
-                return ChallengeRatingConstants.Eight;
+                return ChallengeRatingConstants.CR8;
             }
 
             throw new ArgumentException($"Skeleton hit dice cannot be greater than 20, but was {hitDiceQuantity}");

@@ -1817,9 +1817,11 @@
   </collection>
   <collection>
     <name>1/4</name>
+    <entry>Cat</entry>
   </collection>
   <collection>
     <name>1/3</name>
+    <entry>Dire Rat</entry>
   </collection>
   <collection>
     <name>1/2</name>
@@ -1846,6 +1848,8 @@
     <entry>Elf</entry>
     <entry>Baboon</entry>
     <entry>Badger</entry>
+    <entry>Dwarf</entry>
+    <entry>Halfling</entry>
   </collection>
   <collection>
     <name>1</name>
@@ -1872,6 +1876,9 @@
     <entry>Animated Object, Table, Small</entry>
     <entry>Animated Object, Tapestry, Small</entry>
     <entry>Animated Object, Wagon, Small</entry>
+    <entry>Camel, Bactrian (Two-Humped)</entry>
+    <entry>Camel, Dromedary (One-Humped)</entry>
+    <entry>Darkmantle</entry>
   </collection>
   <collection>
     <name>2</name>
@@ -1901,6 +1908,14 @@
     <entry>Black Bear</entry>
     <entry>Blink Dog</entry>
     <entry>Boar</entry>
+    <entry>Bugbear</entry>
+    <entry>Cheetah</entry>
+    <entry>Choker</entry>
+    <entry>Constrictor Snake</entry>
+    <entry>Crocodile</entry>
+    <entry>Dire Badger</entry>
+    <entry>Dire Bat</entry>
+    <entry>Dire Weasel</entry>
   </collection>
   <collection>
     <name>3</name>
@@ -1935,6 +1950,14 @@
     <entry>Blue Dragon, Wyrmling</entry>
     <entry>Brass Dragon, Wyrmling</entry>
     <entry>Bronze Dragon, Wyrmling</entry>
+    <entry>Centaur</entry>
+    <entry>Cockatrice</entry>
+    <entry>Copper Dragon, Wyrmling</entry>
+    <entry>Deinonychus</entry>
+    <entry>Derro (Sane)</entry>
+    <entry>Derro</entry>
+    <entry>Dire Ape</entry>
+    <entry>Dire Wolf</entry>
   </collection>
   <collection>
     <name>4</name>
@@ -1943,6 +1966,11 @@
     <entry>Black Dragon, Very Young</entry>
     <entry>Blue Dragon, Very Young</entry>
     <entry>Brass Dragon, Very Young</entry>
+    <entry>Brown Bear</entry>
+    <entry>Carrion Crawler</entry>
+    <entry>Centipede Swarm</entry>
+    <entry>Dire Boar</entry>
+    <entry>Dire Wolverine</entry>
   </collection>
   <collection>
     <name>5</name>
@@ -1976,6 +2004,9 @@
     <entry>Bearded Devil (Barbazu)</entry>
     <entry>Black Dragon, Young</entry>
     <entry>Bronze Dragon, Very Young</entry>
+    <entry>Cloaker</entry>
+    <entry>Copper Dragon, Very Young</entry>
+    <entry>Dire Lion</entry>
   </collection>
   <collection>
     <name>6</name>
@@ -1988,6 +2019,8 @@
     <entry>Blue Dragon, Young</entry>
     <entry>Bralani</entry>
     <entry>Brass Dragon, Young</entry>
+    <entry>Chain Devil (Kyton)</entry>
+    <entry>Digester</entry>
   </collection>
   <collection>
     <name>7</name>
@@ -2018,6 +2051,14 @@
     <entry>Black Dragon, Juvenile</entry>
     <entry>Black Pudding</entry>
     <entry>Bronze Dragon, Young</entry>
+    <entry>Bulette</entry>
+    <entry>Cachalot Whale</entry>
+    <entry>Chaos Beast</entry>
+    <entry>Chimera</entry>
+    <entry>Chuul</entry>
+    <entry>Copper Dragon, Young</entry>
+    <entry>Criosphinx</entry>
+    <entry>Dire Bear</entry>
   </collection>
   <collection>
     <name>8</name>
@@ -2027,6 +2068,9 @@
     <entry>Blue Slaad</entry>
     <entry>Bodak</entry>
     <entry>Brass Dragon, Juvenile</entry>
+    <entry>Dark Naga</entry>
+    <entry>Destrachan</entry>
+    <entry>Dire Tiger</entry>
   </collection>
   <collection>
     <name>9</name>
@@ -2039,6 +2083,9 @@
     <entry>Black Dragon, Young Adult</entry>
     <entry>Bone Devil (Osyluth)</entry>
     <entry>Bronze Dragon, Juvenile</entry>
+    <entry>Copper Dragon, Juvenile</entry>
+    <entry>Delver</entry>
+    <entry>Dire Shark</entry>
   </collection>
   <collection>
     <name>10</name>
@@ -2063,6 +2110,8 @@
     <entry>Animated Object, Wagon, Colossal</entry>
     <entry>Bebilith</entry>
     <entry>Brass Dragon, Young Adult</entry>
+    <entry>Clay Golem</entry>
+    <entry>Couatl</entry>
   </collection>
   <collection>
     <name>11</name>
@@ -2073,21 +2122,27 @@
     <entry>Barbed Devil (Hamatula)</entry>
     <entry>Black Dragon, Adult</entry>
     <entry>Blue Dragon, Young Adult</entry>
+    <entry>Cloud Giant</entry>
+    <entry>Copper Dragon, Young Adult</entry>
+    <entry>Devourer</entry>
   </collection>
   <collection>
     <name>12</name>
     <entry>Brass Dragon, Adult</entry>
     <entry>Bronze Dragon, Young Adult</entry>
+    <entry>Displacer Beast Pack Lord</entry>
   </collection>
   <collection>
     <name>13</name>
     <entry>Beholder</entry>
+    <entry>Death Slaad</entry>
   </collection>
   <collection>
     <name>14</name>
     <entry>Angel, Astral Deva</entry>
     <entry>Black Dragon, Mature Adult</entry>
     <entry>Blue Dragon, Adult</entry>
+    <entry>Copper Dragon, Adult</entry>
   </collection>
   <collection>
     <name>15</name>
@@ -2099,6 +2154,7 @@
     <entry>Angel, Planetar</entry>
     <entry>Black Dragon, Old</entry>
     <entry>Blue Dragon, Mature Adult</entry>
+    <entry>Copper Dragon, Mature Adult</entry>
   </collection>
   <collection>
     <name>17</name>
@@ -2116,6 +2172,7 @@
     <entry>Blue Dragon, Very Old</entry>
     <entry>Brass Dragon, Very Old</entry>
     <entry>Bronze Dragon, Old</entry>
+    <entry>Copper Dragon, Old</entry>
   </collection>
   <collection>
     <name>20</name>
@@ -2123,6 +2180,7 @@
     <entry>Black Dragon, Wyrm</entry>
     <entry>Brass Dragon, Ancient</entry>
     <entry>Bronze Dragon, Very Old</entry>
+    <entry>Copper Dragon, Very Old</entry>
   </collection>
   <collection>
     <name>21</name>
@@ -2133,6 +2191,7 @@
     <name>22</name>
     <entry>Black Dragon, Great Wyrm</entry>
     <entry>Bronze Dragon, Ancient</entry>
+    <entry>Copper Dragon, Ancient</entry>
   </collection>
   <collection>
     <name>23</name>
@@ -2140,6 +2199,7 @@
     <entry>Blue Dragon, Wyrm</entry>
     <entry>Brass Dragon, Great Wyrm</entry>
     <entry>Bronze Dragon, Wyrm</entry>
+    <entry>Copper Dragon, Wyrm</entry>
   </collection>
   <collection>
     <name>24</name>
@@ -2148,6 +2208,7 @@
     <name>25</name>
     <entry>Blue Dragon, Great Wyrm</entry>
     <entry>Bronze Dragon, Great Wyrm</entry>
+    <entry>Copper Dragon, Great Wyrm</entry>
   </collection>
   <collection>
     <name>26</name>

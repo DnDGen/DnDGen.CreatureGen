@@ -2169,20 +2169,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 //4. Synchronous and Async
                 var challengeRatings = new[]
                 {
-                    ChallengeRatingConstants.Zero, //Character
-                    ChallengeRatingConstants.OneFourth, //Kobold
-                    ChallengeRatingConstants.OneThird, //Goblin
-                    ChallengeRatingConstants.OneHalf, //Dwarf, Elf, Gnome, Halfling, Hobgoblin, Merfolk, Orc
-                    ChallengeRatingConstants.One, //Duergar, Drow, Gnoll, Svirfneblin, Lizardfolk, Troglodyte
-                    ChallengeRatingConstants.Three, //Ogre
-                    ChallengeRatingConstants.Five, //Troll
-                    ChallengeRatingConstants.Six, //Ettin
-                    ChallengeRatingConstants.Seven, //Hill Giant
-                    ChallengeRatingConstants.Eight, //Stone Giant, Ogre Mage
-                    ChallengeRatingConstants.Nine, //Frost Giant, Stone Giant Elder
-                    ChallengeRatingConstants.Ten, //Fire Giant
-                    ChallengeRatingConstants.Eleven, //Cloud Giant
-                    ChallengeRatingConstants.Thirteen, //Storm Giant
+                    ChallengeRatingConstants.CR0, //Character
+                    ChallengeRatingConstants.CR1_4th, //Kobold
+                    ChallengeRatingConstants.CR1_3rd, //Goblin
+                    ChallengeRatingConstants.CR1_2nd, //Dwarf, Elf, Gnome, Halfling, Hobgoblin, Merfolk, Orc
+                    ChallengeRatingConstants.CR1, //Duergar, Drow, Gnoll, Svirfneblin, Lizardfolk, Troglodyte
+                    ChallengeRatingConstants.CR3, //Ogre
+                    ChallengeRatingConstants.CR5, //Troll
+                    ChallengeRatingConstants.CR6, //Ettin
+                    ChallengeRatingConstants.CR7, //Hill Giant
+                    ChallengeRatingConstants.CR8, //Stone Giant, Ogre Mage
+                    ChallengeRatingConstants.CR9, //Frost Giant, Stone Giant Elder
+                    ChallengeRatingConstants.CR10, //Fire Giant
+                    ChallengeRatingConstants.CR11, //Cloud Giant
+                    ChallengeRatingConstants.CR13, //Storm Giant
                 };
 
                 var animalHitDiceQuantities = new Dictionary<string, double>();

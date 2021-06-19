@@ -2409,7 +2409,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var creature = creatureGenerator.GenerateRandomOfTemplate("my template");
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.Zero);
-            Assert.That(creature.ChallengeRating, Is.EqualTo(ChallengeRatingConstants.Zero));
+            Assert.That(creature.ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR0));
 
             mockTemplateApplicator.Verify(a => a.ApplyTo(creature), Times.Once);
         }
@@ -2432,7 +2432,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var creature = await creatureGenerator.GenerateRandomOfTemplateAsync("my template");
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.Zero);
-            Assert.That(creature.ChallengeRating, Is.EqualTo(ChallengeRatingConstants.Zero));
+            Assert.That(creature.ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR0));
 
             mockTemplateApplicator.Verify(a => a.ApplyToAsync(creature), Times.Once);
         }

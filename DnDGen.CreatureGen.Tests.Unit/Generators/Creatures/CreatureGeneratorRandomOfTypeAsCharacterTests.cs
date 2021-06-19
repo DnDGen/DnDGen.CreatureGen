@@ -2410,7 +2410,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var creature = creatureGenerator.GenerateRandomOfTypeAsCharacter("my type");
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.Zero);
-            Assert.That(creature.ChallengeRating, Is.EqualTo(ChallengeRatingConstants.Zero));
+            Assert.That(creature.ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR0));
         }
 
         [Test]
@@ -2429,7 +2429,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var creature = await creatureGenerator.GenerateRandomOfTypeAsCharacterAsync("my type");
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.Zero);
-            Assert.That(creature.ChallengeRating, Is.EqualTo(ChallengeRatingConstants.Zero));
+            Assert.That(creature.ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR0));
         }
 
         [Test]

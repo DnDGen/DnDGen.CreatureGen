@@ -201,39 +201,39 @@ namespace DnDGen.CreatureGen.Templates
         {
             if (hitDiceQuantity <= 0.5)
             {
-                return ChallengeRatingConstants.OneEighth;
+                return ChallengeRatingConstants.CR1_8th;
             }
             else if (hitDiceQuantity <= 1)
             {
-                return ChallengeRatingConstants.OneFourth;
+                return ChallengeRatingConstants.CR1_4th;
             }
             else if (hitDiceQuantity <= 2)
             {
-                return ChallengeRatingConstants.OneHalf;
+                return ChallengeRatingConstants.CR1_2nd;
             }
             else if (hitDiceQuantity <= 4)
             {
-                return ChallengeRatingConstants.One;
+                return ChallengeRatingConstants.CR1;
             }
             else if (hitDiceQuantity <= 6)
             {
-                return ChallengeRatingConstants.Two;
+                return ChallengeRatingConstants.CR2;
             }
             else if (hitDiceQuantity <= 10)
             {
-                return ChallengeRatingConstants.Three;
+                return ChallengeRatingConstants.CR3;
             }
             else if (hitDiceQuantity <= 14)
             {
-                return ChallengeRatingConstants.Four;
+                return ChallengeRatingConstants.CR4;
             }
             else if (hitDiceQuantity <= 16)
             {
-                return ChallengeRatingConstants.Five;
+                return ChallengeRatingConstants.CR5;
             }
             else if (hitDiceQuantity <= 20)
             {
-                return ChallengeRatingConstants.Six;
+                return ChallengeRatingConstants.CR6;
             }
 
             throw new ArgumentException($"Zombie hit dice cannot be greater than 20, but was {hitDiceQuantity}");

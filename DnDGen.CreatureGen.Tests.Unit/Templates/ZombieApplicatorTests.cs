@@ -1131,19 +1131,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Feats, Is.Empty);
         }
 
-        [TestCase(.1, ChallengeRatingConstants.OneEighth)]
-        [TestCase(.25, ChallengeRatingConstants.OneEighth)]
-        [TestCase(.5, ChallengeRatingConstants.OneFourth)]
-        [TestCase(1, ChallengeRatingConstants.OneHalf)]
-        [TestCase(2, ChallengeRatingConstants.One)]
-        [TestCase(3, ChallengeRatingConstants.Two)]
-        [TestCase(4, ChallengeRatingConstants.Three)]
-        [TestCase(5, ChallengeRatingConstants.Three)]
-        [TestCase(6, ChallengeRatingConstants.Four)]
-        [TestCase(7, ChallengeRatingConstants.Four)]
-        [TestCase(8, ChallengeRatingConstants.Five)]
-        [TestCase(9, ChallengeRatingConstants.Six)]
-        [TestCase(10, ChallengeRatingConstants.Six)]
+        [TestCase(.1, ChallengeRatingConstants.CR1_8th)]
+        [TestCase(.25, ChallengeRatingConstants.CR1_8th)]
+        [TestCase(.5, ChallengeRatingConstants.CR1_4th)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd)]
+        [TestCase(2, ChallengeRatingConstants.CR1)]
+        [TestCase(3, ChallengeRatingConstants.CR2)]
+        [TestCase(4, ChallengeRatingConstants.CR3)]
+        [TestCase(5, ChallengeRatingConstants.CR3)]
+        [TestCase(6, ChallengeRatingConstants.CR4)]
+        [TestCase(7, ChallengeRatingConstants.CR4)]
+        [TestCase(8, ChallengeRatingConstants.CR5)]
+        [TestCase(9, ChallengeRatingConstants.CR6)]
+        [TestCase(10, ChallengeRatingConstants.CR6)]
         public void GetPotentialChallengeRating_AdjustChallengeRating(double hitDice, string challengeRating)
         {
             mockAdjustmentSelector
@@ -1154,19 +1154,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(cr, Is.EqualTo(challengeRating));
         }
 
-        [TestCase(.1, ChallengeRatingConstants.OneEighth)]
-        [TestCase(.25, ChallengeRatingConstants.OneEighth)]
-        [TestCase(.5, ChallengeRatingConstants.OneFourth)]
-        [TestCase(1, ChallengeRatingConstants.OneHalf)]
-        [TestCase(2, ChallengeRatingConstants.One)]
-        [TestCase(3, ChallengeRatingConstants.Two)]
-        [TestCase(4, ChallengeRatingConstants.Three)]
-        [TestCase(5, ChallengeRatingConstants.Three)]
-        [TestCase(6, ChallengeRatingConstants.Four)]
-        [TestCase(7, ChallengeRatingConstants.Four)]
-        [TestCase(8, ChallengeRatingConstants.Five)]
-        [TestCase(9, ChallengeRatingConstants.Six)]
-        [TestCase(10, ChallengeRatingConstants.Six)]
+        [TestCase(.1, ChallengeRatingConstants.CR1_8th)]
+        [TestCase(.25, ChallengeRatingConstants.CR1_8th)]
+        [TestCase(.5, ChallengeRatingConstants.CR1_4th)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd)]
+        [TestCase(2, ChallengeRatingConstants.CR1)]
+        [TestCase(3, ChallengeRatingConstants.CR2)]
+        [TestCase(4, ChallengeRatingConstants.CR3)]
+        [TestCase(5, ChallengeRatingConstants.CR3)]
+        [TestCase(6, ChallengeRatingConstants.CR4)]
+        [TestCase(7, ChallengeRatingConstants.CR4)]
+        [TestCase(8, ChallengeRatingConstants.CR5)]
+        [TestCase(9, ChallengeRatingConstants.CR6)]
+        [TestCase(10, ChallengeRatingConstants.CR6)]
         public void ApplyTo_AdjustChallengeRating(double hitDice, string challengeRating)
         {
             baseCreature.HitPoints.HitDice[0].Quantity = hitDice;
@@ -1846,19 +1846,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Feats, Is.Empty);
         }
 
-        [TestCase(.1, ChallengeRatingConstants.OneEighth)]
-        [TestCase(.25, ChallengeRatingConstants.OneEighth)]
-        [TestCase(.5, ChallengeRatingConstants.OneFourth)]
-        [TestCase(1, ChallengeRatingConstants.OneHalf)]
-        [TestCase(2, ChallengeRatingConstants.One)]
-        [TestCase(3, ChallengeRatingConstants.Two)]
-        [TestCase(4, ChallengeRatingConstants.Three)]
-        [TestCase(5, ChallengeRatingConstants.Three)]
-        [TestCase(6, ChallengeRatingConstants.Four)]
-        [TestCase(7, ChallengeRatingConstants.Four)]
-        [TestCase(8, ChallengeRatingConstants.Five)]
-        [TestCase(9, ChallengeRatingConstants.Six)]
-        [TestCase(10, ChallengeRatingConstants.Six)]
+        [TestCase(.1, ChallengeRatingConstants.CR1_8th)]
+        [TestCase(.25, ChallengeRatingConstants.CR1_8th)]
+        [TestCase(.5, ChallengeRatingConstants.CR1_4th)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd)]
+        [TestCase(2, ChallengeRatingConstants.CR1)]
+        [TestCase(3, ChallengeRatingConstants.CR2)]
+        [TestCase(4, ChallengeRatingConstants.CR3)]
+        [TestCase(5, ChallengeRatingConstants.CR3)]
+        [TestCase(6, ChallengeRatingConstants.CR4)]
+        [TestCase(7, ChallengeRatingConstants.CR4)]
+        [TestCase(8, ChallengeRatingConstants.CR5)]
+        [TestCase(9, ChallengeRatingConstants.CR6)]
+        [TestCase(10, ChallengeRatingConstants.CR6)]
         public async Task ApplyToAsync_AdjustChallengeRating(double hitDice, string challengeRating)
         {
             baseCreature.HitPoints.HitDice[0].Quantity = hitDice;

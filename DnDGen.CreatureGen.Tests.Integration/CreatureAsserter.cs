@@ -639,7 +639,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 Assert.That(creature.HitPoints.DefaultTotal, Is.Zero);
                 Assert.That(creature.HitPoints.Total, Is.Zero);
 
-                Assert.That(creature.ChallengeRating, Is.EqualTo(ChallengeRatingConstants.Zero));
+                Assert.That(creature.ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR0));
                 Assert.That(creature.Feats, Is.Empty, string.Join(", ", creature.Feats.Select(f => f.Name)));
                 Assert.That(creature.Skills, Is.Empty, string.Join(", ", creature.Skills.Select(f => f.Name)));
             }
