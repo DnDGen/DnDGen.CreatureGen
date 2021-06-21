@@ -30,11 +30,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         [TestCase(ChallengeRatingConstants.CR1_10th,
             CreatureConstants.Bat)]
         [TestCase(ChallengeRatingConstants.CR1_8th)]
-        [TestCase(ChallengeRatingConstants.CR1_6th)]
+        [TestCase(ChallengeRatingConstants.CR1_6th,
+            CreatureConstants.Donkey)]
         [TestCase(ChallengeRatingConstants.CR1_4th,
             CreatureConstants.Cat)]
         [TestCase(ChallengeRatingConstants.CR1_3rd,
-            CreatureConstants.Rat_Dire)]
+            CreatureConstants.Rat_Dire,
+            CreatureConstants.Dog,
+            CreatureConstants.FireBeetle_Giant)]
         [TestCase(ChallengeRatingConstants.CR1_2nd,
             CreatureConstants.Groups.Planetouched,
             CreatureConstants.AnimatedObject_Anvil_Tiny,
@@ -56,11 +59,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.AnimatedObject_Table_Tiny,
             CreatureConstants.AnimatedObject_Tapestry_Tiny,
             CreatureConstants.AnimatedObject_Wagon_Tiny,
-            CreatureConstants.Groups.Elf,
+            CreatureConstants.Elf_Aquatic,
             CreatureConstants.Baboon,
             CreatureConstants.Badger,
-            CreatureConstants.Groups.Dwarf,
-            CreatureConstants.Groups.Halfling)]
+            CreatureConstants.Dwarf_Deep,
+            CreatureConstants.Groups.Halfling,
+            CreatureConstants.Eagle,
+            CreatureConstants.Groups.Gnome,
+            CreatureConstants.FormianWorker)]
         [TestCase(ChallengeRatingConstants.CR1,
             CreatureConstants.Elemental_Air_Small,
             CreatureConstants.Elemental_Earth_Small,
@@ -87,7 +93,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.AnimatedObject_Wagon_Small,
             CreatureConstants.Camel_Bactrian,
             CreatureConstants.Camel_Dromedary,
-            CreatureConstants.Darkmantle)]
+            CreatureConstants.Darkmantle,
+            CreatureConstants.Dog_Riding,
+            CreatureConstants.Elf_Drow,
+            CreatureConstants.Dwarf_Duergar,
+            CreatureConstants.Ghoul,
+            CreatureConstants.Ant_Giant_Worker,
+            CreatureConstants.Bee_Giant,
+            CreatureConstants.Githyanki,
+            CreatureConstants.Githzerai)]
         [TestCase(ChallengeRatingConstants.CR2,
             CreatureConstants.AnimatedObject_Anvil_Medium,
             CreatureConstants.AnimatedObject_Block_Stone_Medium,
@@ -122,7 +136,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Crocodile,
             CreatureConstants.Badger_Dire,
             CreatureConstants.Bat_Dire,
-            CreatureConstants.Weasel_Dire)]
+            CreatureConstants.Weasel_Dire,
+            CreatureConstants.Dretch,
+            CreatureConstants.Ant_Giant_Queen,
+            CreatureConstants.Ant_Giant_Soldier,
+            CreatureConstants.BombardierBeetle_Giant)]
         [TestCase(ChallengeRatingConstants.CR3,
             CreatureConstants.Elemental_Air_Medium,
             CreatureConstants.Elemental_Earth_Medium,
@@ -162,7 +180,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Derro_Sane,
             CreatureConstants.Derro,
             CreatureConstants.Ape_Dire,
-            CreatureConstants.Wolf_Dire)]
+            CreatureConstants.Wolf_Dire,
+            CreatureConstants.Doppelganger,
+            CreatureConstants.Dryad,
+            CreatureConstants.EtherealFilcher,
+            CreatureConstants.EtherealMarauder,
+            CreatureConstants.Ettercap,
+            CreatureConstants.Salamander_Flamebrother,
+            CreatureConstants.FormianWarrior,
+            CreatureConstants.GelatinousCube,
+            CreatureConstants.Ghoul_Ghast,
+            CreatureConstants.Eagle_Giant,
+            CreatureConstants.Owl_Giant,
+            CreatureConstants.PrayingMantis_Giant,
+            CreatureConstants.Wasp_Giant)]
         [TestCase(ChallengeRatingConstants.CR4,
             CreatureConstants.Aranea,
             CreatureConstants.Barghest,
@@ -173,7 +204,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.CarrionCrawler,
             CreatureConstants.Centipede_Swarm,
             CreatureConstants.Boar_Dire,
-            CreatureConstants.Wolverine_Dire)]
+            CreatureConstants.Wolverine_Dire,
+            CreatureConstants.DisplacerBeast,
+            CreatureConstants.Hydra_5Heads,
+            CreatureConstants.Gargoyle,
+            CreatureConstants.Crocodile_Giant,
+            CreatureConstants.StagBeetle_Giant)]
         [TestCase(ChallengeRatingConstants.CR5,
             CreatureConstants.Achaierai,
             CreatureConstants.Arrowhawk_Adult,
@@ -207,7 +243,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Dragon_Bronze_VeryYoung,
             CreatureConstants.Cloaker,
             CreatureConstants.Dragon_Copper_VeryYoung,
-            CreatureConstants.Lion_Dire)]
+            CreatureConstants.Lion_Dire,
+            CreatureConstants.Djinni,
+            CreatureConstants.Hydra_6Heads,
+            CreatureConstants.Snake_Constrictor_Giant,
+            CreatureConstants.GibberingMouther)]
         [TestCase(ChallengeRatingConstants.CR6,
             CreatureConstants.Annis,
             CreatureConstants.Salamander_Average,
@@ -219,7 +259,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Bralani,
             CreatureConstants.Dragon_Brass_Young,
             CreatureConstants.ChainDevil_Kyton,
-            CreatureConstants.Digester)]
+            CreatureConstants.Digester,
+            CreatureConstants.Cryohydra_5Heads,
+            CreatureConstants.Pyrohydra_5Heads,
+            CreatureConstants.Hydra_7Heads,
+            CreatureConstants.Ettin,
+            CreatureConstants.Beholder_Gauth,
+            CreatureConstants.Girallon)]
         [TestCase(ChallengeRatingConstants.CR7,
             CreatureConstants.Aboleth,
             CreatureConstants.Elemental_Air_Huge,
@@ -255,7 +301,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Chuul,
             CreatureConstants.Dragon_Copper_Young,
             CreatureConstants.Criosphinx,
-            CreatureConstants.Bear_Dire)]
+            CreatureConstants.Bear_Dire,
+            CreatureConstants.Dragonne,
+            CreatureConstants.Drider,
+            CreatureConstants.Cryohydra_6Heads,
+            CreatureConstants.Pyrohydra_6Heads,
+            CreatureConstants.Hydra_8Heads,
+            CreatureConstants.Elasmosaurus,
+            CreatureConstants.Elephant,
+            CreatureConstants.Golem_Flesh,
+            CreatureConstants.FormianTaskmaster)]
         [TestCase(ChallengeRatingConstants.CR8,
             CreatureConstants.Athach,
             CreatureConstants.Behir,
@@ -265,7 +320,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Dragon_Brass_Juvenile,
             CreatureConstants.Naga_Dark,
             CreatureConstants.Destrachan,
-            CreatureConstants.Tiger_Dire)]
+            CreatureConstants.Tiger_Dire,
+            CreatureConstants.Efreeti,
+            CreatureConstants.Cryohydra_7Heads,
+            CreatureConstants.Pyrohydra_7Heads,
+            CreatureConstants.Hydra_9Heads,
+            CreatureConstants.Arrowhawk_Elder,
+            CreatureConstants.Xorn_Elder,
+            CreatureConstants.Erinyes,
+            CreatureConstants.Octopus_Giant)]
         [TestCase(ChallengeRatingConstants.CR9,
             CreatureConstants.Elemental_Air_Greater,
             CreatureConstants.Elemental_Earth_Greater,
@@ -278,7 +341,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Dragon_Bronze_Juvenile,
             CreatureConstants.Dragon_Copper_Juvenile,
             CreatureConstants.Delver,
-            CreatureConstants.Shark_Dire)]
+            CreatureConstants.Shark_Dire,
+            CreatureConstants.DragonTurtle,
+            CreatureConstants.Cryohydra_8Heads,
+            CreatureConstants.Pyrohydra_8Heads,
+            CreatureConstants.Hydra_10Heads,
+            CreatureConstants.Tojanida_Elder,
+            CreatureConstants.Giant_Frost,
+            CreatureConstants.Squid_Giant)]
         [TestCase(ChallengeRatingConstants.CR10,
             CreatureConstants.AnimatedObject_Anvil_Colossal,
             CreatureConstants.AnimatedObject_Block_Stone_Colossal,
@@ -302,7 +372,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Bebilith,
             CreatureConstants.Dragon_Brass_YoungAdult,
             CreatureConstants.Golem_Clay,
-            CreatureConstants.Couatl)]
+            CreatureConstants.Couatl,
+            CreatureConstants.Cryohydra_9Heads,
+            CreatureConstants.Pyrohydra_9Heads,
+            CreatureConstants.Hydra_11Heads,
+            CreatureConstants.Giant_Fire,
+            CreatureConstants.FormianMyrmarch)]
         [TestCase(ChallengeRatingConstants.CR11,
             CreatureConstants.Elemental_Air_Elder,
             CreatureConstants.Elemental_Earth_Elder,
@@ -313,14 +388,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Dragon_Blue_YoungAdult,
             CreatureConstants.Giant_Cloud,
             CreatureConstants.Dragon_Copper_YoungAdult,
-            CreatureConstants.Devourer)]
+            CreatureConstants.Devourer,
+            CreatureConstants.Wraith_Dread,
+            CreatureConstants.Cryohydra_10Heads,
+            CreatureConstants.Pyrohydra_10Heads,
+            CreatureConstants.Hydra_12Heads)]
         [TestCase(ChallengeRatingConstants.CR12,
             CreatureConstants.Dragon_Brass_Adult,
             CreatureConstants.Dragon_Bronze_YoungAdult,
-            CreatureConstants.DisplacerBeast_PackLord)]
+            CreatureConstants.DisplacerBeast_PackLord,
+            CreatureConstants.Cryohydra_11Heads,
+            CreatureConstants.Pyrohydra_11Heads,
+            CreatureConstants.BlackPudding_Elder,
+            CreatureConstants.FrostWorm)]
         [TestCase(ChallengeRatingConstants.CR13,
             CreatureConstants.Beholder,
-            CreatureConstants.Slaad_Death)]
+            CreatureConstants.Slaad_Death,
+            CreatureConstants.Cryohydra_12Heads,
+            CreatureConstants.Pyrohydra_12Heads,
+            CreatureConstants.Ghaele,
+            CreatureConstants.Glabrezu)]
         [TestCase(ChallengeRatingConstants.CR14,
             CreatureConstants.Angel_AstralDeva,
             CreatureConstants.Dragon_Black_MatureAdult,
@@ -336,7 +423,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Dragon_Copper_MatureAdult)]
         [TestCase(ChallengeRatingConstants.CR17,
             CreatureConstants.Dragon_Brass_Old,
-            CreatureConstants.Dragon_Bronze_MatureAdult)]
+            CreatureConstants.Dragon_Bronze_MatureAdult,
+            CreatureConstants.FormianQueen)]
         [TestCase(ChallengeRatingConstants.CR18,
             CreatureConstants.Dragon_Black_VeryOld,
             CreatureConstants.Dragon_Blue_Old)]
@@ -382,13 +470,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         {
             var data = creatureDataSelector.SelectFor(creature);
             var ofChallengeRating = collectionSelector.Explode(tableName, data.ChallengeRating);
-            Assert.That(ofChallengeRating, Contains.Item(creature), data.ChallengeRating);
+            Assert.That(ofChallengeRating, Contains.Item(creature), $"Should be: {data.ChallengeRating}");
 
             var challengeRatings = ChallengeRatingConstants.GetOrdered().Except(new[] { data.ChallengeRating });
             foreach (var challengeRating in challengeRatings)
             {
                 ofChallengeRating = collectionSelector.Explode(tableName, challengeRating);
-                Assert.That(ofChallengeRating, Does.Not.Contain(creature), challengeRating);
+                Assert.That(ofChallengeRating, Does.Not.Contain(creature), $"Should NOT be: {challengeRating}");
             }
         }
     }
