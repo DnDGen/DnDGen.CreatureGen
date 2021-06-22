@@ -87,6 +87,10 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         {
             var creatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All);
             var templateCreatures = GetCreaturesOfTemplate(template, creatures, challengeRating: challengeRating);
+            if (!templateCreatures.Any())
+            {
+                throw new IncompatibleCreatureAndTemplateException($"CR {challengeRating}", template);
+            }
 
             var randomCreature = collectionsSelector.SelectRandomFrom(templateCreatures);
             return randomCreature;
@@ -122,7 +126,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var templateCreatures = GetCreaturesOfTemplate(template, creatures, challengeRating: challengeRating);
 
             if (!templateCreatures.Any())
-                throw new IncompatibleCreatureAsCharacterException(template);
+                throw new IncompatibleCreatureAsCharacterException(template, challengeRating);
 
             var randomCreature = collectionsSelector.SelectRandomFrom(templateCreatures);
             return randomCreature;
@@ -217,7 +221,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var pairings = GetCreaturesOfType(creatureType, creatures, challengeRating);
 
             if (!pairings.Any())
-                throw new IncompatibleCreatureAsCharacterException(creatureType);
+                throw new IncompatibleCreatureAsCharacterException(creatureType, challengeRating);
 
             var randomCreature = collectionsSelector.SelectRandomFrom(pairings);
             return randomCreature;

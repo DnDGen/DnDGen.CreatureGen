@@ -80,7 +80,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Types.Fey,
             CreatureConstants.Types.MonstrousHumanoid,
             CreatureConstants.Types.Outsider,
-            CreatureConstants.Types.Undead)]
+            CreatureConstants.Types.Undead,
+            CreatureConstants.Templates.Skeleton,
+            CreatureConstants.Templates.Zombie)]
         public void CreatureSaveGroup(string save, params string[] group)
         {
             AssertDistinctCollection(save, group);

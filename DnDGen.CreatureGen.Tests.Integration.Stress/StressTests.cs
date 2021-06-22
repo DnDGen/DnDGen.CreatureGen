@@ -29,6 +29,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress
             options.IsFullStress = true;
 #else
             options.IsFullStress = false;
+            options.MaxAsyncBatch = 1;
 #endif
 
             stressor = new Stressor(options);
