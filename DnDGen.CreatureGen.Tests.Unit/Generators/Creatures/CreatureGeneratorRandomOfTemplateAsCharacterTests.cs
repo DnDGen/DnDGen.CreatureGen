@@ -207,7 +207,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     equipment))
                 .Returns(skills);
 
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(creatureName, templateName)).Returns(true);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, creatureName, templateName, null, null)).Returns(true);
             mockCreatureVerifier.Setup(v => v.CanBeCharacter(creatureName)).Returns(asCharacter);
             mockCreatureDataSelector.Setup(s => s.SelectFor(creatureName)).Returns(creatureData);
 
@@ -454,7 +454,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
             Assert.That(() => creatureGenerator.GenerateRandomNameOfTemplateAsCharacter("my template"),
-                Throws.InstanceOf<IncompatibleCreatureAsCharacterException>().With.Message.EqualTo($"my template cannot be generated as a character"));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo($"my template cannot be generated as a character"));
         }
 
         [Test]
@@ -524,7 +524,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
             Assert.That(() => creatureGenerator.GenerateRandomOfTemplateAsCharacter("my template"),
-                Throws.InstanceOf<IncompatibleCreatureAsCharacterException>().With.Message.EqualTo($"my template cannot be generated as a character"));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo($"my template cannot be generated as a character"));
         }
 
         [Test]
@@ -2560,7 +2560,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
             Assert.That(async () => await creatureGenerator.GenerateRandomOfTemplateAsCharacterAsync("my template"),
-                Throws.InstanceOf<IncompatibleCreatureAsCharacterException>().With.Message.EqualTo("my template cannot be generated as a character"));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo("my template cannot be generated as a character"));
         }
 
         [Test]

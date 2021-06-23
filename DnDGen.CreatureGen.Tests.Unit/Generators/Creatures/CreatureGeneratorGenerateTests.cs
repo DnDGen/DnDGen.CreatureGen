@@ -201,7 +201,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     equipment))
                 .Returns(skills);
 
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(creatureName, templateName)).Returns(true);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, creatureName, templateName, null, null)).Returns(true);
             mockCreatureVerifier.Setup(v => v.CanBeCharacter(creatureName)).Returns(asCharacter);
             mockCreatureDataSelector.Setup(s => s.SelectFor(creatureName)).Returns(creatureData);
 
@@ -285,9 +285,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void Generate_InvalidCreatureTemplateComboThrowsException()
         {
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility("creature", "template")).Returns(false);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(false, "creature", "template", null, null)).Returns(false);
 
-            Assert.That(() => creatureGenerator.Generate("creature", "template"), Throws.InstanceOf<IncompatibleCreatureAndTemplateException>());
+            Assert.That(() => creatureGenerator.Generate("creature", "template"),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo($"Invalid creature:\n\tAs Character: False\n\tCreature: creature\n\tTemplate: template"));
         }
 
         [Test]
@@ -1751,9 +1752,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public async Task GenerateAsync_InvalidCreatureTemplateComboThrowsException()
         {
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility("creature", "template")).Returns(false);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(false, "creature", "template", null, null)).Returns(false);
 
-            Assert.That(async () => await creatureGenerator.GenerateAsync("creature", "template"), Throws.InstanceOf<IncompatibleCreatureAndTemplateException>());
+            Assert.That(async () => await creatureGenerator.GenerateAsync("creature", "template"),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo($"Invalid creature:\n\tAs Character: False\n\tCreature: creature\n\tTemplate: template"));
         }
 
         [Test]

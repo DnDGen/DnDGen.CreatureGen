@@ -490,7 +490,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
         public void CreatureVerificationIsFast(string creatureName, string templateName, bool isValid)
         {
             stopwatch.Restart();
-            var verified = creatureVerifier.VerifyCompatibility(creatureName, templateName);
+            var verified = creatureVerifier.VerifyCompatibility(false, creature: creatureName, template: templateName);
             stopwatch.Stop();
 
             Assert.That(verified, Is.EqualTo(isValid));
@@ -685,6 +685,36 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
         {
             var isCharacter = creatureVerifier.CanBeCharacter(creature);
             Assert.That(isCharacter, Is.EqualTo(canBeCharacter));
+        }
+
+        [TestCase(false, null, CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted, null, ChallengeRatingConstants.CR1_6th, false)]
+        [TestCase(false, null, CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted, null, ChallengeRatingConstants.CR1, true)]
+        [TestCase(false, null, CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural, null, ChallengeRatingConstants.CR1_6th, false)]
+        [TestCase(false, null, CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural, null, ChallengeRatingConstants.CR1, true)]
+        [TestCase(false, null, CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted, null, ChallengeRatingConstants.CR1, true)]
+        [TestCase(false, null, CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted, null, ChallengeRatingConstants.CR14, false)]
+        [TestCase(false, null, CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural, null, ChallengeRatingConstants.CR1, true)]
+        [TestCase(false, null, CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural, null, ChallengeRatingConstants.CR14, false)]
+        [TestCase(false, null, null, CreatureConstants.Types.Subtypes.Goblinoid, ChallengeRatingConstants.CR1, true)]
+        [TestCase(false, null, null, CreatureConstants.Types.Subtypes.Goblinoid, ChallengeRatingConstants.CR23, false)]
+        [TestCase(true, null, CreatureConstants.Templates.FiendishCreature, null, ChallengeRatingConstants.CR1, true)]
+        [TestCase(true, null, CreatureConstants.Templates.FiendishCreature, null, ChallengeRatingConstants.CR20, false)]
+        [TestCase(true, null, CreatureConstants.Templates.HalfDragon_Blue, null, ChallengeRatingConstants.CR1_8th, false)]
+        [TestCase(true, null, CreatureConstants.Templates.HalfDragon_Blue, null, ChallengeRatingConstants.CR1, true)]
+        [TestCase(true, null, CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted, null, ChallengeRatingConstants.CR1_6th, false)]
+        [TestCase(true, null, CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted, null, ChallengeRatingConstants.CR1, true)]
+        [TestCase(true, null, CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural, null, ChallengeRatingConstants.CR1_6th, false)]
+        [TestCase(true, null, CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural, null, ChallengeRatingConstants.CR1, true)]
+        [TestCase(true, null, CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted, null, ChallengeRatingConstants.CR1, true)]
+        [TestCase(true, null, CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted, null, ChallengeRatingConstants.CR14, false)]
+        [TestCase(true, null, CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural, null, ChallengeRatingConstants.CR1, true)]
+        [TestCase(true, null, CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural, null, ChallengeRatingConstants.CR14, false)]
+        [TestCase(true, null, null, CreatureConstants.Types.Subtypes.Goblinoid, ChallengeRatingConstants.CR1, true)]
+        [TestCase(true, null, null, CreatureConstants.Types.Subtypes.Goblinoid, ChallengeRatingConstants.CR23, false)]
+        public void CreatureVerifiction_ReturnsAccurateResponse(bool asCharacter, string creature, string template, string type, string challengeRating, bool isValid)
+        {
+            var verified = creatureVerifier.VerifyCompatibility(asCharacter, creature, template, type, challengeRating);
+            Assert.That(verified, Is.EqualTo(isValid));
         }
     }
 }

@@ -1154,6 +1154,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(cr, Is.EqualTo(challengeRating));
         }
 
+        [TestCase(11)]
+        [TestCase(12)]
+        [TestCase(20)]
+        [TestCase(96)]
+        public void GetPotentialChallengeRating_ThrowsException_IfHitDiceTooHigh(double hitDice)
+        {
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
+                .Returns(hitDice);
+
+            Assert.That(() => applicator.GetPotentialChallengeRating("my creature"),
+                Throws.ArgumentException.With.Message.EqualTo($"Zombie hit dice cannot be greater than 20, but was {hitDice * 2} for creature my creature"));
+        }
+
         [TestCase(.1, ChallengeRatingConstants.CR1_8th)]
         [TestCase(.25, ChallengeRatingConstants.CR1_8th)]
         [TestCase(.5, ChallengeRatingConstants.CR1_4th)]
@@ -1200,6 +1214,42 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(hitDice * 2));
             Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(newRounded));
             Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating));
+        }
+
+        [TestCase(11)]
+        [TestCase(12)]
+        [TestCase(20)]
+        [TestCase(96)]
+        public void ApplyTo_ThrowsException_IfHitDiceTooHigh(double hitDice)
+        {
+            baseCreature.HitPoints.HitDice[0].Quantity = hitDice;
+            var newRounded = Convert.ToInt32(Math.Max(1, hitDice * 2));
+
+            mockDice
+                .Setup(d => d
+                    .Roll(newRounded)
+                    .d(12)
+                    .AsIndividualRolls<int>())
+                .Returns(new[] { 9266 });
+            mockDice
+                .Setup(d => d
+                    .Roll(newRounded)
+                    .d(12)
+                    .AsPotentialAverage())
+                .Returns(90210);
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.Zombie,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    42,
+                    baseCreature.Abilities,
+                    newRounded))
+                .Returns(zombieAttacks);
+
+            Assert.That(() => applicator.ApplyTo(baseCreature),
+                Throws.ArgumentException.With.Message.EqualTo($"Zombie hit dice cannot be greater than 20, but was {hitDice * 2} for creature {baseCreature.Name}"));
         }
 
         [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Good)]
@@ -1892,6 +1942,42 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(hitDice * 2));
             Assert.That(creature.HitPoints.RoundedHitDiceQuantity, Is.EqualTo(newRounded));
             Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating));
+        }
+
+        [TestCase(11)]
+        [TestCase(12)]
+        [TestCase(20)]
+        [TestCase(96)]
+        public void ApplyToAsync_ThrowsException_IfHitDiceTooHigh(double hitDice)
+        {
+            baseCreature.HitPoints.HitDice[0].Quantity = hitDice;
+            var newRounded = Convert.ToInt32(Math.Max(1, hitDice * 2));
+
+            mockDice
+                .Setup(d => d
+                    .Roll(newRounded)
+                    .d(12)
+                    .AsIndividualRolls<int>())
+                .Returns(new[] { 9266 });
+            mockDice
+                .Setup(d => d
+                    .Roll(newRounded)
+                    .d(12)
+                    .AsPotentialAverage())
+                .Returns(90210);
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.Zombie,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    42,
+                    baseCreature.Abilities,
+                    newRounded))
+                .Returns(zombieAttacks);
+
+            Assert.That(async () => await applicator.ApplyToAsync(baseCreature),
+                Throws.ArgumentException.With.Message.EqualTo($"Zombie hit dice cannot be greater than 20, but was {hitDice * 2} for creature {baseCreature.Name}"));
         }
 
         [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Good)]

@@ -153,7 +153,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             hitPoints.DefaultTotal = 600;
             hitPoints.Total = 42;
 
-            SetUpCreature("creature", "template", true);
+            SetUpCreature("creature", "template", true, "type");
 
             mockSkillsGenerator.Setup(g => g.ApplyBonusesFromFeats(skills, It.IsAny<IEnumerable<Feat>>(), abilities)).Returns(skills);
             mockHitPointsGenerator.Setup(g => g.RegenerateWith(hitPoints, It.IsAny<IEnumerable<Feat>>())).Returns(hitPoints);
@@ -167,7 +167,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 GroupConstants.PoorBaseAttack)).Returns(GroupConstants.PoorBaseAttack);
         }
 
-        private void SetUpCreature(string creatureName, string templateName, bool asCharacter)
+        private void SetUpCreature(string creatureName, string templateName, bool asCharacter, string type)
         {
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
             mockCollectionSelector
@@ -208,7 +208,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     equipment))
                 .Returns(skills);
 
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(creatureName, templateName)).Returns(true);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, null, null, type, null)).Returns(true);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, creatureName, templateName, null, null)).Returns(true);
             mockCreatureVerifier.Setup(v => v.CanBeCharacter(creatureName)).Returns(asCharacter);
             mockCreatureDataSelector.Setup(s => s.SelectFor(creatureName)).Returns(creatureData);
 
@@ -526,7 +527,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(nonCharacters);
 
             Assert.That(() => creatureGenerator.GenerateRandomNameOfTypeAsCharacter("my type"),
-                Throws.InstanceOf<IncompatibleCreatureAsCharacterException>().With.Message.EqualTo($"my type cannot be generated as a character"));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo($"my type cannot be generated as a character"));
         }
 
         [Test]
@@ -542,7 +543,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             var creature = creatureGenerator.GenerateRandomOfTypeAsCharacter("my type");
             Assert.That(creature.Name, Is.EqualTo(creatureName));
@@ -565,7 +566,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
                 .Returns(templates);
 
-            SetUpCreature(creatureName, template, true);
+            SetUpCreature(creatureName, template, true, "my type");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -600,7 +601,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateRandomCreatureName_NoTemplate()
         {
             var creatureName = "my creature";
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
             var templates = new[] { "other template", "my template", "wrong template name" };
@@ -650,7 +651,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
                 .Returns(templates);
 
-            SetUpCreature(creatureName, template, true);
+            SetUpCreature(creatureName, template, true, "my type");
 
             foreach (var otherTemplate in templates)
             {
@@ -688,14 +689,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(nonCharacters);
 
             Assert.That(() => creatureGenerator.GenerateRandomOfTypeAsCharacter("my type"),
-                Throws.InstanceOf<IncompatibleCreatureAsCharacterException>().With.Message.EqualTo($"my type cannot be generated as a character"));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo($"my type cannot be generated as a character"));
         }
 
         [Test]
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureSize()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -709,7 +710,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureSpace()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -723,7 +724,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureReach()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -737,7 +738,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureCanUseEquipment()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -763,7 +764,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureCannotUseEquipment()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -778,7 +779,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureChallengeRating()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -794,7 +795,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureLevelAdjustment()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -810,7 +811,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateNoCreatureLevelAdjustment()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -826,7 +827,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureLevelAdjustmentOf0()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -842,7 +843,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureCasterLevel()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -856,7 +857,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureNumberOfHands()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -870,7 +871,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureType()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -888,7 +889,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureTypeWithSubtype(string startType)
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, startType);
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, startType))
@@ -910,7 +911,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureTypeWithMultipleSubtypes(string startType)
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, startType);
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, startType))
@@ -932,7 +933,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureAbilities()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -946,7 +947,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureHitPoints()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -966,7 +967,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureEquipment()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -980,7 +981,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureMagic()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -994,7 +995,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureLanguages()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -1008,7 +1009,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_DoNotGenerateAdvancedCreature()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -1040,7 +1041,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateAdvancedCreature()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -1072,7 +1073,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateAdvancedCreatureWithExistingRacialAdjustments()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -1112,7 +1113,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateAdvancedCreatureWithMissingAbilities()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -1152,7 +1153,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureSkills()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -1166,7 +1167,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateAdvancedCreatureSkills()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -1275,7 +1276,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureSpecialQualities()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -1289,7 +1290,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateAdvancedCreatureSpecialQualities()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -1330,7 +1331,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureBaseAttackBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -1344,7 +1345,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateAdvancedCreatureBaseAttackBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -1362,7 +1363,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureAttacks()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -1376,7 +1377,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateAdvancedCreatureAttacks()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -1483,7 +1484,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureFeats()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -1497,7 +1498,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateAdvancedCreatureFeats()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -1556,7 +1557,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureHitPointsWithFeats()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -1583,7 +1584,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateAdvancedCreatureHitPointsWithFeats()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -1693,7 +1694,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureSkillsUpdatedByFeats()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -1717,7 +1718,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateAdvancedCreatureSkillsUpdatedByFeats()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -1827,7 +1828,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureGrappleBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -1843,7 +1844,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateAdvancedCreatureGrappleBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -1861,7 +1862,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateNoGrappleBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -1878,7 +1879,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_ApplyAttackBonuses()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -1909,7 +1910,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_ApplyAdvancedAttackBonuses()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2020,7 +2021,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureInitiativeBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2039,7 +2040,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateAdvancedCreatureInitiativeBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2060,7 +2061,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureInitiativeBonusWithImprovedInitiative()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2080,7 +2081,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateAdvancedCreatureInitiativeBonusWithImprovedInitiative()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2102,7 +2103,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureInitiativeBonusWithoutDexterity()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2122,7 +2123,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateAdvancedCreatureInitiativeBonusWithoutDexterity()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2145,7 +2146,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureInitiativeBonusWithImprovedInitiativeWithoutDexterity()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2166,7 +2167,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateAdvancedCreatureInitiativeBonusWithImprovedInitiativeWithoutDexterity()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2190,7 +2191,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureSpeeds()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2207,7 +2208,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureArmorClass()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2233,7 +2234,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateAdvancedCreatureArmorClass()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2341,7 +2342,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureSaves()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2360,7 +2361,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateAdvancedCreatureSaves()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2383,7 +2384,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_GenerateCreatureAlignment()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2398,7 +2399,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTypeAsCharacter_IfCreatureHasNotHitDice_ChallengeRatingIsZero()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2417,7 +2418,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_IfCreatureHasNotHitDice_ChallengeRatingIsZero()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2440,7 +2441,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             var creature = await creatureGenerator.GenerateRandomOfTypeAsCharacterAsync("my type");
             Assert.That(creature.Name, Is.EqualTo(creatureName));
@@ -2463,7 +2464,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
                 .Returns(templates);
 
-            SetUpCreature(creatureName, template, true);
+            SetUpCreature(creatureName, template, true, "my type");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2498,7 +2499,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateRandomCreatureName_NoTemplate()
         {
             var creatureName = "my creature";
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
             var templates = new[] { "other template", "my template", "wrong template name" };
@@ -2548,7 +2549,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
                 .Returns(templates);
 
-            SetUpCreature(creatureName, template, true);
+            SetUpCreature(creatureName, template, true, "my type");
 
             foreach (var otherTemplate in templates)
             {
@@ -2580,7 +2581,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureSize()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2594,7 +2595,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureSpace()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2608,7 +2609,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureReach()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2622,7 +2623,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureCanUseEquipment()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2648,7 +2649,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureCannotUseEquipment()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2663,7 +2664,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureChallengeRating()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2679,7 +2680,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureLevelAdjustment()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2695,7 +2696,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateNoCreatureLevelAdjustment()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2711,7 +2712,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureLevelAdjustmentOf0()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2727,7 +2728,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureCasterLevel()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2741,7 +2742,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureNumberOfHands()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2755,7 +2756,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureType()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2773,7 +2774,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureTypeWithSubtype(string startType)
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, startType);
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, startType))
@@ -2795,7 +2796,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureTypeWithMultipleSubtypes(string startType)
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, startType);
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, startType))
@@ -2817,7 +2818,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureAbilities()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2831,7 +2832,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureHitPoints()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2851,7 +2852,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureEquipment()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2865,7 +2866,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureMagic()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2879,7 +2880,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_DoNotGenerateAdvancedCreature()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2911,7 +2912,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateAdvancedCreature()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2943,7 +2944,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateAdvancedCreatureWithExistingRacialAdjustments()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -2983,7 +2984,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateAdvancedCreatureWithMissingAbilities()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -3023,7 +3024,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureSkills()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -3037,7 +3038,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateAdvancedCreatureSkills()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -3146,7 +3147,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureSpecialQualities()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -3160,7 +3161,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateAdvancedCreatureSpecialQualities()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -3201,7 +3202,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureBaseAttackBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -3215,7 +3216,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateAdvancedCreatureBaseAttackBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -3233,7 +3234,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureAttacks()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -3247,7 +3248,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateAdvancedCreatureAttacks()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -3354,7 +3355,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureFeats()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -3368,7 +3369,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateAdvancedCreatureFeats()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -3427,7 +3428,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureHitPointsWithFeats()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -3454,7 +3455,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateAdvancedCreatureHitPointsWithFeats()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -3564,7 +3565,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureSkillsUpdatedByFeats()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -3588,7 +3589,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateAdvancedCreatureSkillsUpdatedByFeats()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -3698,7 +3699,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureGrappleBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -3714,7 +3715,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateAdvancedCreatureGrappleBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -3732,7 +3733,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateNoGrappleBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -3749,7 +3750,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_ApplyAttackBonuses()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -3780,7 +3781,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_ApplyAdvancedAttackBonuses()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -3890,7 +3891,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureInitiativeBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -3908,7 +3909,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateAdvancedCreatureInitiativeBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -3928,7 +3929,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureInitiativeBonusWithImprovedInitiative()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -3947,7 +3948,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateAdvancedCreatureInitiativeBonusWithImprovedInitiative()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -3968,7 +3969,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureInitiativeBonusWithoutDexterity()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -3987,7 +3988,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateAdvancedCreatureInitiativeBonusWithoutDexterity()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -4009,7 +4010,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureInitiativeBonusWithImprovedInitiativeWithoutDexterity()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -4029,7 +4030,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateAdvancedCreatureInitiativeBonusWithImprovedInitiativeWithoutDexterity()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -4052,7 +4053,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureSpeeds()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -4069,7 +4070,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureArmorClass()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -4096,7 +4097,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateAdvancedCreatureArmorClass()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -4204,7 +4205,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureSaves()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -4223,7 +4224,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateAdvancedCreatureSaves()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
@@ -4246,7 +4247,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTypeAsCharacterAsync_GenerateCreatureAlignment()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, true);
+            SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my type");
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))

@@ -201,7 +201,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     equipment))
                 .Returns(skills);
 
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(creatureName, templateName)).Returns(true);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, creatureName, templateName, null, null)).Returns(true);
             mockCreatureVerifier.Setup(v => v.CanBeCharacter(creatureName)).Returns(asCharacter);
             mockCreatureDataSelector.Setup(s => s.SelectFor(creatureName)).Returns(creatureData);
 
@@ -424,7 +424,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             SetUpCreature("creature", "template", true);
             mockCreatureVerifier.Setup(v => v.CanBeCharacter("creature")).Returns(false);
 
-            Assert.That(() => creatureGenerator.GenerateAsCharacter("creature", "template"), Throws.InstanceOf<IncompatibleCreatureAsCharacterException>());
+            Assert.That(() => creatureGenerator.GenerateAsCharacter("creature", "template"),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo($""));
         }
 
         [Test]
@@ -432,9 +433,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetUpCreature("creature", "template", true);
             mockCreatureVerifier.Setup(v => v.CanBeCharacter("creature")).Returns(true);
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility("creature", "template")).Returns(false);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(true, "creature", "template", null, null)).Returns(false);
 
-            Assert.That(() => creatureGenerator.GenerateAsCharacter("creature", "template"), Throws.InstanceOf<IncompatibleCreatureAndTemplateException>());
+            Assert.That(() => creatureGenerator.GenerateAsCharacter("creature", "template"),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo($""));
         }
 
         [Test]
@@ -1900,7 +1902,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             SetUpCreature("creature", "template", true);
             mockCreatureVerifier.Setup(v => v.CanBeCharacter("creature")).Returns(false);
 
-            Assert.That(async () => await creatureGenerator.GenerateAsCharacterAsync("creature", "template"), Throws.InstanceOf<IncompatibleCreatureAsCharacterException>());
+            Assert.That(async () => await creatureGenerator.GenerateAsCharacterAsync("creature", "template"),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo($""));
         }
 
         [Test]
@@ -1908,9 +1911,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetUpCreature("creature", "template", true);
             mockCreatureVerifier.Setup(v => v.CanBeCharacter("creature")).Returns(true);
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility("creature", "template")).Returns(false);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(true, "creature", "template", null, null)).Returns(false);
 
-            Assert.That(async () => await creatureGenerator.GenerateAsCharacterAsync("creature", "template"), Throws.InstanceOf<IncompatibleCreatureAndTemplateException>());
+            Assert.That(async () => await creatureGenerator.GenerateAsCharacterAsync("creature", "template"),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo($""));
         }
 
         [Test]

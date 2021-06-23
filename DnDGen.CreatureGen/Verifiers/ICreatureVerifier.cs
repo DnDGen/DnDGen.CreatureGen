@@ -2,7 +2,7 @@
 {
     public interface ICreatureVerifier
     {
-        bool VerifyCompatibility(string creatureName, string templateName);
+        bool VerifyCompatibility(bool asCharacter, string creature = null, string template = null, string type = null, string challengeRating = null);
         bool CanBeCharacter(string creatureName);
     }
 }

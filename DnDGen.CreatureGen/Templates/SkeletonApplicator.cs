@@ -183,10 +183,10 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureChallengeRating(Creature creature)
         {
-            creature.ChallengeRating = UpdateCreatureChallengeRating(creature.HitPoints.HitDiceQuantity);
+            creature.ChallengeRating = UpdateCreatureChallengeRating(creature.HitPoints.HitDiceQuantity, creature.Name);
         }
 
-        private string UpdateCreatureChallengeRating(double hitDiceQuantity)
+        private string UpdateCreatureChallengeRating(double hitDiceQuantity, string creature)
         {
             if (hitDiceQuantity <= 0.5)
             {
@@ -229,7 +229,7 @@ namespace DnDGen.CreatureGen.Templates
                 return ChallengeRatingConstants.CR8;
             }
 
-            throw new ArgumentException($"Skeleton hit dice cannot be greater than 20, but was {hitDiceQuantity}");
+            throw new ArgumentException($"Skeleton hit dice cannot be greater than 20, but was {hitDiceQuantity} for creature {creature}");
         }
 
         private void UpdateCreatureLevelAdjustment(Creature creature)
@@ -488,7 +488,7 @@ namespace DnDGen.CreatureGen.Templates
         public string GetPotentialChallengeRating(string creature)
         {
             var quantity = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, creature);
-            var adjustedChallengeRating = UpdateCreatureChallengeRating(quantity);
+            var adjustedChallengeRating = UpdateCreatureChallengeRating(quantity, creature);
 
             return adjustedChallengeRating;
         }

@@ -194,10 +194,10 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureChallengeRating(Creature creature)
         {
-            creature.ChallengeRating = UpdateCreatureChallengeRating(creature.HitPoints.HitDiceQuantity);
+            creature.ChallengeRating = UpdateCreatureChallengeRating(creature.HitPoints.HitDiceQuantity, creature.Name);
         }
 
-        private string UpdateCreatureChallengeRating(double hitDiceQuantity)
+        private string UpdateCreatureChallengeRating(double hitDiceQuantity, string creature)
         {
             if (hitDiceQuantity <= 0.5)
             {
@@ -236,7 +236,7 @@ namespace DnDGen.CreatureGen.Templates
                 return ChallengeRatingConstants.CR6;
             }
 
-            throw new ArgumentException($"Zombie hit dice cannot be greater than 20, but was {hitDiceQuantity}");
+            throw new ArgumentException($"Zombie hit dice cannot be greater than 20, but was {hitDiceQuantity} for creature {creature}");
         }
 
         private void UpdateCreatureLevelAdjustment(Creature creature)
@@ -483,7 +483,7 @@ namespace DnDGen.CreatureGen.Templates
             //INFO: Zombie hit points double the quantity
             var hitDice = quantity * 2;
 
-            var adjustedChallengeRating = UpdateCreatureChallengeRating(hitDice);
+            var adjustedChallengeRating = UpdateCreatureChallengeRating(hitDice, creature);
 
             return adjustedChallengeRating;
         }

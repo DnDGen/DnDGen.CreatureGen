@@ -85,12 +85,12 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         public string GenerateRandomNameOfTemplate(string template, string challengeRating = null)
         {
+            var compatible = creatureVerifier.VerifyCompatibility(false, template: template, challengeRating: challengeRating);
+            if (!compatible)
+                throw new InvalidCreatureException(false, template: template, challengeRating: challengeRating);
+
             var creatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All);
             var templateCreatures = GetCreaturesOfTemplate(template, creatures, challengeRating: challengeRating);
-            if (!templateCreatures.Any())
-            {
-                throw new IncompatibleCreatureAndTemplateException($"CR {challengeRating}", template);
-            }
 
             var randomCreature = collectionsSelector.SelectRandomFrom(templateCreatures);
             return randomCreature;
@@ -122,11 +122,12 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         public string GenerateRandomNameOfTemplateAsCharacter(string template, string challengeRating = null)
         {
+            var compatible = creatureVerifier.VerifyCompatibility(true, template: template, challengeRating: challengeRating);
+            if (!compatible)
+                throw new InvalidCreatureException(true, template: template, challengeRating: challengeRating);
+
             var creatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters);
             var templateCreatures = GetCreaturesOfTemplate(template, creatures, challengeRating: challengeRating);
-
-            if (!templateCreatures.Any())
-                throw new IncompatibleCreatureAsCharacterException(template, challengeRating);
 
             var randomCreature = collectionsSelector.SelectRandomFrom(templateCreatures);
             return randomCreature;
@@ -140,8 +141,13 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         public (string CreatureName, string Template) GenerateRandomNameOfType(string creatureType, string challengeRating = null)
         {
+            var compatible = creatureVerifier.VerifyCompatibility(false, type: creatureType, challengeRating: challengeRating);
+            if (!compatible)
+                throw new InvalidCreatureException(false, type: creatureType, challengeRating: challengeRating);
+
             var creatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All);
             var pairings = GetCreaturesOfType(creatureType, creatures, challengeRating);
+
             var randomCreature = collectionsSelector.SelectRandomFrom(pairings);
 
             return randomCreature;
@@ -217,11 +223,12 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         public (string CreatureName, string Template) GenerateRandomNameOfTypeAsCharacter(string creatureType, string challengeRating = null)
         {
+            var compatible = creatureVerifier.VerifyCompatibility(true, type: creatureType, challengeRating: challengeRating);
+            if (!compatible)
+                throw new InvalidCreatureException(true, type: creatureType, challengeRating: challengeRating);
+
             var creatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters);
             var pairings = GetCreaturesOfType(creatureType, creatures, challengeRating);
-
-            if (!pairings.Any())
-                throw new IncompatibleCreatureAsCharacterException(creatureType, challengeRating);
 
             var randomCreature = collectionsSelector.SelectRandomFrom(pairings);
             return randomCreature;
@@ -229,11 +236,12 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         public (string CreatureName, string Template) GenerateRandomNameOfChallengeRatingAsCharacter(string challengeRating)
         {
+            var compatible = creatureVerifier.VerifyCompatibility(true, challengeRating: challengeRating);
+            if (!compatible)
+                throw new InvalidCreatureException(true, challengeRating: challengeRating);
+
             var creatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters);
             var pairings = GetCreaturesOfChallengeRating(challengeRating, creatures);
-
-            if (!pairings.Any())
-                throw new IncompatibleCreatureAsCharacterException($"CR {challengeRating}");
 
             var randomCreature = collectionsSelector.SelectRandomFrom(pairings);
             return randomCreature;
@@ -252,13 +260,9 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         private Creature Generate(string creatureName, string template, bool asCharacter)
         {
-            var compatible = creatureVerifier.CanBeCharacter(creatureName);
-            if (!compatible && asCharacter)
-                throw new IncompatibleCreatureAsCharacterException(creatureName);
-
-            compatible = creatureVerifier.VerifyCompatibility(creatureName, template);
+            var compatible = creatureVerifier.VerifyCompatibility(asCharacter, creature: creatureName, template: template);
             if (!compatible)
-                throw new IncompatibleCreatureAndTemplateException(creatureName, template);
+                throw new InvalidCreatureException(asCharacter, creature: creatureName, template: template);
 
             var creature = GeneratePrototype(creatureName, asCharacter);
 
@@ -466,13 +470,9 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         private async Task<Creature> GenerateAsync(string creatureName, string template, bool asCharacter)
         {
-            var compatible = creatureVerifier.CanBeCharacter(creatureName);
-            if (!compatible && asCharacter)
-                throw new IncompatibleCreatureAsCharacterException(creatureName);
-
-            compatible = creatureVerifier.VerifyCompatibility(creatureName, template);
+            var compatible = creatureVerifier.VerifyCompatibility(asCharacter, creature: creatureName, template: template);
             if (!compatible)
-                throw new IncompatibleCreatureAndTemplateException(creatureName, template);
+                throw new InvalidCreatureException(asCharacter, creature: creatureName, template: template);
 
             var creature = GeneratePrototype(creatureName, asCharacter);
 

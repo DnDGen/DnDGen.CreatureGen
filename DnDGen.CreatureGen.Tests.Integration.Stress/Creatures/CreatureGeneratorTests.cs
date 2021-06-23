@@ -17,6 +17,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private ICreatureGenerator creatureGenerator;
         private ConcurrentDictionary<string, IEnumerable<string>> compatibleCreatures;
         private IEnumerable<string> challengeRatings;
+        private IEnumerable<string> characterChallengeRatings;
+        private Dictionary<string, Dictionary<bool, IEnumerable<string>>> templateChallengeRatings;
+        private Dictionary<string, Dictionary<bool, IEnumerable<string>>> typeChallengeRatings;
 
         [SetUp]
         public void Setup()
@@ -26,6 +29,41 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             creatureGenerator = GetNewInstanceOf<ICreatureGenerator>();
             compatibleCreatures = new ConcurrentDictionary<string, IEnumerable<string>>();
             challengeRatings = ChallengeRatingConstants.GetOrdered();
+            characterChallengeRatings = challengeRatings.Where(cr => creatureVerifier.VerifyCompatibility(true));
+
+            BuildTemplateChallengeRatings();
+            BuildTypeChallengeRatings();
+        }
+
+        private void BuildTemplateChallengeRatings()
+        {
+            templateChallengeRatings = new Dictionary<string, Dictionary<bool, IEnumerable<string>>>();
+
+            foreach (var template in CreatureConstants.Templates.GetAll())
+            {
+                templateChallengeRatings[template] = new Dictionary<bool, IEnumerable<string>>();
+                templateChallengeRatings[template][true] = characterChallengeRatings
+                    .Where(cr => creatureVerifier.VerifyCompatibility(true, template: template, challengeRating: cr));
+                templateChallengeRatings[template][false] = challengeRatings
+                    .Where(cr => creatureVerifier.VerifyCompatibility(false, template: template, challengeRating: cr));
+            }
+        }
+
+        private void BuildTypeChallengeRatings()
+        {
+            typeChallengeRatings = new Dictionary<string, Dictionary<bool, IEnumerable<string>>>();
+
+            var types = CreatureConstants.Types.GetAll();
+            var subtypes = CreatureConstants.Types.Subtypes.GetAll();
+
+            foreach (var type in types.Union(subtypes))
+            {
+                typeChallengeRatings[type] = new Dictionary<bool, IEnumerable<string>>();
+                typeChallengeRatings[type][true] = characterChallengeRatings
+                    .Where(cr => creatureVerifier.VerifyCompatibility(true, type: type, challengeRating: cr));
+                typeChallengeRatings[type][false] = challengeRatings
+                    .Where(cr => creatureVerifier.VerifyCompatibility(false, type: type, challengeRating: cr));
+            }
         }
 
         [Test]
@@ -76,7 +114,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var randomTemplate = collectionSelector.SelectRandomFrom(allTemplates);
             if (!compatibleCreatures.ContainsKey(randomTemplate))
             {
-                var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(c, randomTemplate)).ToArray();
+                var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(false, creature: c, template: randomTemplate)).ToArray();
                 compatibleCreatures.TryAdd(randomTemplate, validCreatures);
             }
 
@@ -99,7 +137,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var randomTemplate = collectionSelector.SelectRandomFrom(allTemplates);
             if (!compatibleCreatures.ContainsKey(randomTemplate))
             {
-                var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(c, randomTemplate)).ToArray();
+                var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(false, creature: c, template: randomTemplate)).ToArray();
                 compatibleCreatures.TryAdd(randomTemplate, validCreatures);
             }
 
@@ -152,7 +190,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var randomTemplate = collectionSelector.SelectRandomFrom(allTemplates);
             if (!compatibleCreatures.ContainsKey(randomTemplate))
             {
-                var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(c, randomTemplate)).ToArray();
+                var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(true, creature: c, template: randomTemplate)).ToArray();
                 compatibleCreatures.TryAdd(randomTemplate, validCreatures);
             }
 
@@ -176,7 +214,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var randomTemplate = collectionSelector.SelectRandomFrom(allTemplates);
             if (!compatibleCreatures.ContainsKey(randomTemplate))
             {
-                var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(c, randomTemplate)).ToArray();
+                var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(true, creature: c, template: randomTemplate)).ToArray();
                 compatibleCreatures.TryAdd(randomTemplate, validCreatures);
             }
 
@@ -218,7 +256,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var templates = CreatureConstants.Templates.GetAll();
             var randomTemplate = collectionSelector.SelectRandomFrom(templates);
-            var challengeRating = collectionSelector.SelectRandomFrom(challengeRatings);
+            var challengeRating = collectionSelector.SelectRandomFrom(templateChallengeRatings[randomTemplate][false]);
 
             var creature = creatureGenerator.GenerateRandomOfTemplate(randomTemplate, challengeRating);
 
@@ -254,12 +292,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var templates = CreatureConstants.Templates.GetAll();
             var randomTemplate = collectionSelector.SelectRandomFrom(templates);
-            var characterChallengeRatings = challengeRatings.Except(new[]
-            {
-                ChallengeRatingConstants.CR22,
-                ChallengeRatingConstants.CR25,
-            });
-            var challengeRating = collectionSelector.SelectRandomFrom(characterChallengeRatings);
+            var challengeRating = collectionSelector.SelectRandomFrom(templateChallengeRatings[randomTemplate][true]);
 
             var creature = creatureGenerator.GenerateRandomOfTemplateAsCharacter(randomTemplate, challengeRating);
 
@@ -295,7 +328,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var templates = CreatureConstants.Templates.GetAll();
             var randomTemplate = collectionSelector.SelectRandomFrom(templates);
-            var challengeRating = collectionSelector.SelectRandomFrom(challengeRatings);
+            var challengeRating = collectionSelector.SelectRandomFrom(templateChallengeRatings[randomTemplate][false]);
 
             var creature = await creatureGenerator.GenerateRandomOfTemplateAsync(randomTemplate, challengeRating);
 
@@ -331,12 +364,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var templates = CreatureConstants.Templates.GetAll();
             var randomTemplate = collectionSelector.SelectRandomFrom(templates);
-            var characterChallengeRatings = challengeRatings.Except(new[]
-            {
-                ChallengeRatingConstants.CR22,
-                ChallengeRatingConstants.CR25,
-            });
-            var challengeRating = collectionSelector.SelectRandomFrom(characterChallengeRatings);
+            var challengeRating = collectionSelector.SelectRandomFrom(templateChallengeRatings[randomTemplate][true]);
 
             var creature = await creatureGenerator.GenerateRandomOfTemplateAsCharacterAsync(randomTemplate, challengeRating);
 
@@ -389,7 +417,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var types = CreatureConstants.Types.GetAll();
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();
             var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes));
-            var challengeRating = collectionSelector.SelectRandomFrom(challengeRatings);
+            var challengeRating = collectionSelector.SelectRandomFrom(typeChallengeRatings[randomType][false]);
 
             GenerateAndAssertRandomCreatureOfType(randomType, challengeRating);
         }
@@ -443,12 +471,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                 CreatureConstants.Types.Subtypes.Swarm,
             };
             var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes).Except(nonCharacterTypes));
-            var characterChallengeRatings = challengeRatings.Except(new[]
-            {
-                ChallengeRatingConstants.CR22,
-                ChallengeRatingConstants.CR25,
-            });
-            var challengeRating = collectionSelector.SelectRandomFrom(characterChallengeRatings);
+            var challengeRating = collectionSelector.SelectRandomFrom(typeChallengeRatings[randomType][true]);
 
             var creature = creatureGenerator.GenerateRandomOfTypeAsCharacter(randomType, challengeRating);
 
@@ -492,7 +515,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var types = CreatureConstants.Types.GetAll();
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();
             var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes));
-            var challengeRating = collectionSelector.SelectRandomFrom(challengeRatings);
+            var challengeRating = collectionSelector.SelectRandomFrom(typeChallengeRatings[randomType][false]);
 
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync(randomType, challengeRating);
 
@@ -550,12 +573,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                 CreatureConstants.Types.Subtypes.Swarm,
             };
             var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes).Except(nonCharacterTypes));
-            var characterChallengeRatings = challengeRatings.Except(new[]
-            {
-                ChallengeRatingConstants.CR22,
-                ChallengeRatingConstants.CR25,
-            });
-            var challengeRating = collectionSelector.SelectRandomFrom(characterChallengeRatings);
+            var challengeRating = collectionSelector.SelectRandomFrom(typeChallengeRatings[randomType][true]);
 
             var creature = await creatureGenerator.GenerateRandomOfTypeAsCharacterAsync(randomType, challengeRating);
 
@@ -595,7 +613,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private void GenerateAndAssertRandomCreatureOfChallengeRatingAsCharacter()
         {
-            var challengeRating = collectionSelector.SelectRandomFrom(challengeRatings);
+            var challengeRating = collectionSelector.SelectRandomFrom(characterChallengeRatings);
 
             var creature = creatureGenerator.GenerateRandomOfChallengeRatingAsCharacter(challengeRating);
 
@@ -627,11 +645,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private async Task GenerateAndAssertRandomCreatureOfChallengeRatingAsCharacterAsync()
         {
-            var characterChallengeRatings = challengeRatings.Except(new[]
-            {
-                ChallengeRatingConstants.CR22,
-                ChallengeRatingConstants.CR25,
-            });
             var challengeRating = collectionSelector.SelectRandomFrom(characterChallengeRatings);
 
             var creature = await creatureGenerator.GenerateRandomOfChallengeRatingAsCharacterAsync(challengeRating);
