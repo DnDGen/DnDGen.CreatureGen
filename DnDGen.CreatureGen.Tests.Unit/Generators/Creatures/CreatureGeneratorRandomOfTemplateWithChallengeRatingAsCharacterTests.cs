@@ -153,7 +153,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             hitPoints.DefaultTotal = 600;
             hitPoints.Total = 42;
 
-            SetUpCreature("creature", "template", false);
+            SetUpCreature("creature", "template", false, "challenge rating");
 
             mockSkillsGenerator.Setup(g => g.ApplyBonusesFromFeats(skills, It.IsAny<IEnumerable<Feat>>(), abilities)).Returns(skills);
             mockHitPointsGenerator.Setup(g => g.RegenerateWith(hitPoints, It.IsAny<IEnumerable<Feat>>())).Returns(hitPoints);
@@ -166,7 +166,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 GroupConstants.PoorBaseAttack)).Returns(GroupConstants.PoorBaseAttack);
         }
 
-        private void SetUpCreature(string creatureName, string templateName, bool asCharacter)
+        private void SetUpCreature(string creatureName, string templateName, bool asCharacter, string challengeRating)
         {
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
             mockCollectionSelector
@@ -207,6 +207,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     equipment))
                 .Returns(skills);
 
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, null, templateName, null, challengeRating)).Returns(true);
             mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, creatureName, templateName, null, null)).Returns(true);
             mockCreatureVerifier.Setup(v => v.CanBeCharacter(creatureName)).Returns(asCharacter);
             mockCreatureDataSelector.Setup(s => s.SelectFor(creatureName)).Returns(creatureData);
@@ -398,7 +399,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomNameOfTemplateAsCharacter_GenerateCreatureName()
         {
             var creatureName = "my creature";
-            SetUpCreature(creatureName, "my template", true);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(true, null, "my template", null, "my challenge rating")).Returns(true);
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
@@ -418,7 +419,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomNameOfTemplateAsCharacter_GenerateRandomCreatureName()
         {
             var creatureName = "my creature";
-            SetUpCreature(creatureName, "my template", true);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(true, null, "my template", null, "my challenge rating")).Returns(true);
 
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
             mockCollectionSelector
@@ -444,27 +445,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             var creatureName = "my creature";
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
-                .Returns(creatures);
-
-            var nonCharacters = CreatureConstants.GetAllNonCharacters();
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.IsCompatible(It.IsAny<string>()))
-                .Returns((string c) => nonCharacters.Contains(c));
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(true, null, "my template", null, "my challenge rating")).Returns(false);
 
             Assert.That(() => creatureGenerator.GenerateRandomNameOfTemplateAsCharacter("my template", "my challenge rating"),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo($"my template cannot be generated as a character"));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo($"Invalid creature:\n\tAs Character: True\n\tTemplate: my template\n\tCR: my challenge rating"));
         }
 
         [Test]
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureName()
         {
             var creatureName = "my creature";
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
             mockCollectionSelector
@@ -489,7 +480,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateRandomCreatureName()
         {
             var creatureName = "my creature";
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
             mockCollectionSelector
@@ -516,29 +507,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateRandomOfTemplateAsCharacter_ThrowException_WhenCreatureCannotBeCharacter()
         {
-            var creatureName = "my creature";
-            var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
-                .Returns(creatures);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(true, null, "my template", null, "my challenge rating")).Returns(false);
 
-            var nonCharacters = CreatureConstants.GetAllNonCharacters();
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.IsCompatible(It.IsAny<string>()))
-                .Returns((string c) => nonCharacters.Contains(c));
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
-
-            Assert.That(() => creatureGenerator.GenerateRandomOfTemplateAsCharacter("my template"),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo($"my template cannot be generated as a character"));
+            Assert.That(() => creatureGenerator.GenerateRandomOfTemplateAsCharacter("my template", "my challenge rating"),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo($"Invalid creature:\n\tAs Character: True\n\tTemplate: my template\n\tCR: my challenge rating"));
         }
 
         [Test]
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureSize()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -557,7 +536,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureSpace()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -576,7 +555,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureReach()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -595,7 +574,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureCanUseEquipment()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -626,7 +605,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureCannotUseEquipment()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -646,7 +625,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureChallengeRating()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -667,7 +646,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureLevelAdjustment()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -688,7 +667,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateNoCreatureLevelAdjustment()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -709,7 +688,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureLevelAdjustmentOf0()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -730,7 +709,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureCasterLevel()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -749,7 +728,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureNumberOfHands()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -768,7 +747,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureType()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -788,7 +767,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureTypeWithSubtype()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -812,7 +791,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureTypeWithMultipleSubtypes()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -838,7 +817,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureAbilities()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -857,7 +836,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureHitPoints()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -882,7 +861,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureEquipment()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -901,7 +880,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureMagic()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -920,7 +899,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureLanguages()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -939,7 +918,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_DoNotGenerateAdvancedCreature()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -976,7 +955,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateAdvancedCreature()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -1013,7 +992,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateAdvancedCreatureWithExistingRacialAdjustments()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -1058,7 +1037,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateAdvancedCreatureWithMissingAbilities()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -1103,7 +1082,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureSkills()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -1122,7 +1101,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateAdvancedCreatureSkills()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -1236,7 +1215,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureSpecialQualities()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -1255,7 +1234,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateAdvancedCreatureSpecialQualities()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -1301,7 +1280,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureBaseAttackBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -1320,7 +1299,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateAdvancedCreatureBaseAttackBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -1343,7 +1322,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureAttacks()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -1362,7 +1341,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateAdvancedCreatureAttacks()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -1474,7 +1453,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureFeats()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -1493,7 +1472,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateAdvancedCreatureFeats()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -1557,7 +1536,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureHitPointsWithFeats()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -1589,7 +1568,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateAdvancedCreatureHitPointsWithFeats()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -1704,7 +1683,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureSkillsUpdatedByFeats()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -1733,7 +1712,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateAdvancedCreatureSkillsUpdatedByFeats()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -1848,7 +1827,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureGrappleBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -1869,7 +1848,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateAdvancedCreatureGrappleBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -1892,7 +1871,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateNoGrappleBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -1914,7 +1893,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_ApplyAttackBonuses()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -1950,7 +1929,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_ApplyAdvancedAttackBonuses()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2066,7 +2045,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureInitiativeBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2090,7 +2069,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateAdvancedCreatureInitiativeBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2116,7 +2095,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureInitiativeBonusWithImprovedInitiative()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2141,7 +2120,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateAdvancedCreatureInitiativeBonusWithImprovedInitiative()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2168,7 +2147,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureInitiativeBonusWithoutDexterity()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2193,7 +2172,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateAdvancedCreatureInitiativeBonusWithoutDexterity()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2221,7 +2200,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureInitiativeBonusWithImprovedInitiativeWithoutDexterity()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2247,7 +2226,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateAdvancedCreatureInitiativeBonusWithImprovedInitiativeWithoutDexterity()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2276,7 +2255,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureSpeeds()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2298,7 +2277,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureArmorClass()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2329,7 +2308,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateAdvancedCreatureArmorClass()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2442,7 +2421,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureSaves()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2466,7 +2445,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateAdvancedCreatureSaves()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2494,7 +2473,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_GenerateCreatureAlignment()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2514,7 +2493,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomOfTemplateAsCharacter_IfCreatureHasNotHitDice_ChallengeRatingIsZero()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2538,7 +2517,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_IfCreatureHasNotHitDice_ChallengeRatingIsZero()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2562,7 +2541,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureName()
         {
             var creatureName = "my creature";
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
             mockCollectionSelector
@@ -2586,7 +2565,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateRandomCreatureName()
         {
             var creatureName = "my creature";
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
             mockCollectionSelector
@@ -2612,29 +2591,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public async Task GenerateRandomOfTemplateAsCharacterAsync_ThrowException_WhenTemplateCannotBeCharacter()
         {
-            var creatureName = "my creature";
-            var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
-                .Returns(creatures);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(true, null, "my template", null, "my challenge rating")).Returns(false);
 
-            var nonCharacters = CreatureConstants.GetAllNonCharacters();
-            var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator
-                .Setup(a => a.IsCompatible(It.IsAny<string>()))
-                .Returns((string c) => nonCharacters.Contains(c));
-
-            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
-
-            Assert.That(async () => await creatureGenerator.GenerateRandomOfTemplateAsCharacterAsync("my template"),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo("my template cannot be generated as a character"));
+            Assert.That(async () => await creatureGenerator.GenerateRandomOfTemplateAsCharacterAsync("my template", "my challenge rating"),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo("Invalid creature:\n\tAs Character: True\n\tTemplate: my template\n\tCR: my challenge rating"));
         }
 
         [Test]
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureSize()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2653,7 +2620,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureSpace()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2672,7 +2639,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureReach()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2691,7 +2658,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureCanUseEquipment()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2722,7 +2689,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureCannotUseEquipment()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2742,7 +2709,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureChallengeRating()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2763,7 +2730,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureLevelAdjustment()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2784,7 +2751,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateNoCreatureLevelAdjustment()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2805,7 +2772,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureLevelAdjustmentOf0()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2826,7 +2793,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureCasterLevel()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2845,7 +2812,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureNumberOfHands()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2864,7 +2831,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureType()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2884,7 +2851,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureTypeWithSubtype()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2908,7 +2875,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureTypeWithMultipleSubtypes()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2934,7 +2901,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureAbilities()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2953,7 +2920,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureHitPoints()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2978,7 +2945,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureEquipment()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -2997,7 +2964,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureMagic()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -3016,7 +2983,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_DoNotGenerateAdvancedCreature()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -3053,7 +3020,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateAdvancedCreature()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -3090,7 +3057,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateAdvancedCreatureWithExistingRacialAdjustments()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -3135,7 +3102,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateAdvancedCreatureWithMissingAbilities()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -3180,7 +3147,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureSkills()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -3199,7 +3166,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateAdvancedCreatureSkills()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -3313,7 +3280,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureSpecialQualities()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -3332,7 +3299,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateAdvancedCreatureSpecialQualities()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -3378,7 +3345,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureBaseAttackBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -3397,7 +3364,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateAdvancedCreatureBaseAttackBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -3420,7 +3387,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureAttacks()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -3439,7 +3406,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateAdvancedCreatureAttacks()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -3551,7 +3518,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureFeats()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -3570,7 +3537,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateAdvancedCreatureFeats()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -3634,7 +3601,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureHitPointsWithFeats()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -3666,7 +3633,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateAdvancedCreatureHitPointsWithFeats()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -3781,7 +3748,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureSkillsUpdatedByFeats()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -3810,7 +3777,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateAdvancedCreatureSkillsUpdatedByFeats()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -3925,7 +3892,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureGrappleBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -3946,7 +3913,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateAdvancedCreatureGrappleBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -3969,7 +3936,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateNoGrappleBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -3991,7 +3958,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_ApplyAttackBonuses()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -4027,7 +3994,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_ApplyAdvancedAttackBonuses()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -4142,7 +4109,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureInitiativeBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -4165,7 +4132,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateAdvancedCreatureInitiativeBonus()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -4190,7 +4157,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureInitiativeBonusWithImprovedInitiative()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -4214,7 +4181,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateAdvancedCreatureInitiativeBonusWithImprovedInitiative()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -4240,7 +4207,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureInitiativeBonusWithoutDexterity()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -4264,7 +4231,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateAdvancedCreatureInitiativeBonusWithoutDexterity()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -4291,7 +4258,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureInitiativeBonusWithImprovedInitiativeWithoutDexterity()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -4316,7 +4283,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateAdvancedCreatureInitiativeBonusWithImprovedInitiativeWithoutDexterity()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -4344,7 +4311,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureSpeeds()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -4366,7 +4333,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureArmorClass()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -4398,7 +4365,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateAdvancedCreatureArmorClass()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -4511,7 +4478,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureSaves()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -4535,7 +4502,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateAdvancedCreatureSaves()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
@@ -4563,7 +4530,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public async Task GenerateRandomOfTemplateAsCharacterAsync_GenerateCreatureAlignment()
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, "my template", true);
+            SetUpCreature(creatureName, "my template", true, "my challenge rating");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
             mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);

@@ -41,32 +41,40 @@ namespace DnDGen.CreatureGen.Verifiers
                 creatures = creatures.Intersect(characters);
             }
 
+            IEnumerable<string> templates = null;
             if (!string.IsNullOrEmpty(template))
             {
                 var applicator = factory.Build<TemplateApplicator>(template);
                 creatures = creatures.Where(applicator.IsCompatible);
+
+                templates = new[] { template };
             }
 
             if (!string.IsNullOrEmpty(type))
             {
-                creatures = GetCreaturesOfType(type, creatures);
+                creatures = GetCreaturesOfType(type, creatures, templates);
             }
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
-                creatures = GetCreaturesOfChallengeRating(challengeRating, creatures);
+                creatures = GetCreaturesOfChallengeRating(challengeRating, creatures, templates);
             }
 
             return creatures.Any();
         }
 
-        private IEnumerable<string> GetCreaturesOfType(string creatureType, IEnumerable<string> creatureGroup)
+        private IEnumerable<string> GetCreaturesOfType(string creatureType, IEnumerable<string> creatureGroup, IEnumerable<string> templates = null)
         {
             var creatures = new List<string>();
-            var templates = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
 
-            var ofType = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
-            creatures.AddRange(ofType.Intersect(creatureGroup));
+            if (templates == null)
+            {
+                templates = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
+
+                //Add in non-template creatures
+                var ofType = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+                creatures.AddRange(ofType.Intersect(creatureGroup));
+            }
 
             foreach (var template in templates)
             {
@@ -77,13 +85,18 @@ namespace DnDGen.CreatureGen.Verifiers
             return creatures;
         }
 
-        private IEnumerable<string> GetCreaturesOfChallengeRating(string challengeRating, IEnumerable<string> creatureGroup)
+        private IEnumerable<string> GetCreaturesOfChallengeRating(string challengeRating, IEnumerable<string> creatureGroup, IEnumerable<string> templates = null)
         {
             var creatures = new List<string>();
-            var templates = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
 
-            var ofChallengeRating = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, challengeRating);
-            creatures.AddRange(ofChallengeRating.Intersect(creatureGroup));
+            if (templates == null)
+            {
+                templates = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
+
+                //Add in non-template creatures
+                var ofChallengeRating = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, challengeRating);
+                creatures.AddRange(ofChallengeRating.Intersect(creatureGroup));
+            }
 
             foreach (var template in templates)
             {

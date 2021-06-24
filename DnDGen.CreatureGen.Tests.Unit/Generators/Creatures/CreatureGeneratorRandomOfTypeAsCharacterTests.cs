@@ -408,6 +408,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             var creatureName = "my creature";
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(true, null, null, "my type", null)).Returns(true);
+
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(creatures);
@@ -426,6 +428,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             var creatureName = "my creature";
             var template = "my template";
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(true, null, null, "my type", null)).Returns(true);
 
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
             var templates = new[] { "other template", template, "wrong template name" };
@@ -465,6 +468,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             var creatureName = "my creature";
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(true, null, null, "my type", null)).Returns(true);
+
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(creatures);
@@ -488,6 +493,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             var creatureName = "my creature";
             var template = "my template";
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(true, null, null, "my type", null)).Returns(true);
 
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
             var templates = new[] { "other template", template, "wrong template name" };
@@ -521,13 +527,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateRandomNameOfTypeAsCharacter_ThrowException_WhenCreatureCannotBeCharacter()
         {
-            var nonCharacters = CreatureConstants.GetAllNonCharacters();
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
-                .Returns(nonCharacters);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(true, null, null, "my type", null)).Returns(false);
 
             Assert.That(() => creatureGenerator.GenerateRandomNameOfTypeAsCharacter("my type"),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo($"my type cannot be generated as a character"));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo("Invalid creature:\n\tAs Character: True\n\tType: my type"));
         }
 
         [Test]
@@ -689,7 +692,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(nonCharacters);
 
             Assert.That(() => creatureGenerator.GenerateRandomOfTypeAsCharacter("my type"),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo($"my type cannot be generated as a character"));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo($"Invalid creature:\n\tAs Character: True\n\tType: my type"));
         }
 
         [Test]
@@ -2575,6 +2578,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var creature = await creatureGenerator.GenerateRandomOfTypeAsCharacterAsync("my type");
             Assert.That(creature.Name, Is.EqualTo(creatureName));
             Assert.That(creature.Template, Is.EqualTo(template));
+        }
+
+        [Test]
+        public void GenerateRandomOfTypeAsCharacterAsync_ThrowException_WhenCreatureCannotBeCharacter()
+        {
+            var nonCharacters = CreatureConstants.GetAllNonCharacters();
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
+                .Returns(nonCharacters);
+
+            Assert.That(async () => await creatureGenerator.GenerateRandomOfTypeAsCharacterAsync("my type"),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo($"Invalid creature:\n\tAs Character: True\n\tType: my type"));
         }
 
         [Test]

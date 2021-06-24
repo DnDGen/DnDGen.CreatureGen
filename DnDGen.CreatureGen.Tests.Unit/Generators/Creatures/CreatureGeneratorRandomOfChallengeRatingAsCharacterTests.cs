@@ -208,8 +208,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     equipment))
                 .Returns(skills);
 
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, creatureName, templateName, null, challengeRating)).Returns(true);
-            mockCreatureVerifier.Setup(v => v.CanBeCharacter(creatureName)).Returns(asCharacter);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, null, null, null, challengeRating)).Returns(true);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, creatureName, templateName, null, null)).Returns(true);
             mockCreatureDataSelector.Setup(s => s.SelectFor(creatureName)).Returns(creatureData);
 
             mockFeatsGenerator.Setup(g =>
@@ -407,6 +407,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             var creatureName = "my creature";
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(true, null, null, null, "my challenge rating")).Returns(true);
+
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(creatures);
@@ -428,6 +430,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
             var templates = new[] { "other template", template, "wrong template name" };
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(true, null, null, null, "my challenge rating")).Returns(true);
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
@@ -468,6 +471,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             var creatureName = "my creature";
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(true, null, null, null, "my challenge rating")).Returns(true);
+
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(creatures);
@@ -494,6 +499,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
             var templates = new[] { "other template", template, "wrong template name" };
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(true, null, null, null, "my challenge rating")).Returns(true);
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
@@ -530,13 +536,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [Test]
         public void GenerateRandomNameOfChallengeRatingAsCharacter_ThrowException_WhenCreatureCannotBeCharacter()
         {
-            var nonCharacters = CreatureConstants.GetAllNonCharacters();
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
-                .Returns(nonCharacters);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(true, null, null, null, "my challenge rating")).Returns(false);
 
             Assert.That(() => creatureGenerator.GenerateRandomNameOfChallengeRatingAsCharacter("my challenge rating"),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo($"CR my challenge rating cannot be generated as a character"));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo($"Invalid creature:\n\tAs Character: True\n\tCR: my challenge rating"));
         }
 
         [Test]
@@ -697,7 +700,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(nonCharacters);
 
             Assert.That(() => creatureGenerator.GenerateRandomOfChallengeRatingAsCharacter("my challenge rating"),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo($"CR my challenge rating cannot be generated as a character"));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo($"Invalid creature:\n\tAs Character: True\n\tCR: my challenge rating"));
         }
 
         [Test]
@@ -886,6 +889,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(new[] { creatureName });
 
             types[0] = "my type";
+            creatureData.ChallengeRating = "my challenge rating";
 
             var creature = creatureGenerator.GenerateRandomOfChallengeRatingAsCharacter("my challenge rating");
             Assert.That(creature.ChallengeRating, Is.EqualTo("my challenge rating"));
@@ -905,6 +909,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             types[0] = "my type";
             types.Add("subtype");
+            creatureData.ChallengeRating = "my challenge rating";
 
             var creature = creatureGenerator.GenerateRandomOfChallengeRatingAsCharacter("my challenge rating");
             Assert.That(creature.ChallengeRating, Is.EqualTo("my challenge rating"));
@@ -927,9 +932,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             types[0] = "my type";
             types.Add("subtype");
             types.Add("other subtype");
+            creatureData.ChallengeRating = "my challenge rating";
 
             var creature = creatureGenerator.GenerateRandomOfChallengeRatingAsCharacter("my challenge rating");
-            Assert.That(creature.Type.Name, Is.EqualTo("my challenge rating"));
+            Assert.That(creature.ChallengeRating, Is.EqualTo("my challenge rating"));
+            Assert.That(creature.Type.Name, Is.EqualTo("my type"));
             Assert.That(creature.Type.SubTypes, Is.Not.Empty);
             Assert.That(creature.Type.SubTypes, Contains.Item("subtype"));
             Assert.That(creature.Type.SubTypes, Contains.Item("other subtype"));
@@ -2586,6 +2593,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
+        public void GenerateRandomOfChallengeRatingAsCharacterAsync_ThrowException_WhenCreatureCannotBeCharacter()
+        {
+            var nonCharacters = CreatureConstants.GetAllNonCharacters();
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Returns(nonCharacters);
+
+            Assert.That(async () => await creatureGenerator.GenerateRandomOfChallengeRatingAsCharacterAsync("my challenge rating"),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo($"Invalid creature:\n\tAs Character: True\n\tCR: my challenge rating"));
+        }
+
+        [Test]
         public async Task GenerateRandomOfChallengeRatingAsCharacterAsync_GenerateCreatureSize()
         {
             var creatureName = CreatureConstants.Human;
@@ -2770,10 +2789,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
                 .Returns(new[] { creatureName });
 
-            types[0] = "my challenge rating";
+            types[0] = "my type";
+            creatureData.ChallengeRating = "my challenge rating";
 
             var creature = await creatureGenerator.GenerateRandomOfChallengeRatingAsCharacterAsync("my challenge rating");
-            Assert.That(creature.Type.Name, Is.EqualTo("my challenge rating"));
+            Assert.That(creature.ChallengeRating, Is.EqualTo("my challenge rating"));
+            Assert.That(creature.Type.Name, Is.EqualTo("my type"));
             Assert.That(creature.Type.SubTypes, Is.Empty);
         }
 
@@ -2789,6 +2810,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             types[0] = "my type";
             types.Add("subtype");
+            creatureData.ChallengeRating = "my challenge rating";
 
             var creature = await creatureGenerator.GenerateRandomOfChallengeRatingAsCharacterAsync("my challenge rating");
             Assert.That(creature.ChallengeRating, Is.EqualTo("my challenge rating"));
@@ -2811,6 +2833,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             types[0] = "my type";
             types.Add("subtype");
             types.Add("other subtype");
+            creatureData.ChallengeRating = "my challenge rating";
 
             var creature = await creatureGenerator.GenerateRandomOfChallengeRatingAsCharacterAsync("my challenge rating");
             Assert.That(creature.ChallengeRating, Is.EqualTo("my challenge rating"));

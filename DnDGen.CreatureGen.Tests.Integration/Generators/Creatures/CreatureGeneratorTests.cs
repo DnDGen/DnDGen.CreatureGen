@@ -3,7 +3,6 @@ using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
-using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.TreasureGen.Items;
 using NUnit.Framework;
 using System.Linq;
@@ -449,46 +448,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
 
             var skillNames = nightcrawler.Skills.Select(q => q.Name);
             Assert.That(skillNames, Contains.Item(SkillConstants.Concentration));
-        }
-
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted, ChallengeRatingConstants.CR1_6th)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural, ChallengeRatingConstants.CR1_6th)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted, ChallengeRatingConstants.CR14)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural, ChallengeRatingConstants.CR14)]
-        public void TemplateChallengeRatingComboIsInvalid(string template, string challengeRating)
-        {
-            Assert.That(() => creatureGenerator.GenerateRandomNameOfTemplate(template, challengeRating),
-                Throws.InstanceOf<InvalidCreatureException>()
-                .With.Message.EqualTo($"'CR {challengeRating}' and {template} are not compatible"));
-        }
-
-        [TestCase(CreatureConstants.Templates.FiendishCreature, ChallengeRatingConstants.CR20)]
-        [TestCase(CreatureConstants.Templates.HalfDragon_Blue, ChallengeRatingConstants.CR1_8th)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted, ChallengeRatingConstants.CR1_6th)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural, ChallengeRatingConstants.CR1_6th)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted, ChallengeRatingConstants.CR14)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural, ChallengeRatingConstants.CR14)]
-        public void TemplateChallengeRatingComboAsCharacterIsInvalid(string template, string challengeRating)
-        {
-            Assert.That(() => creatureGenerator.GenerateRandomNameOfTemplateAsCharacter(template, challengeRating),
-                Throws.InstanceOf<InvalidCreatureException>()
-                .With.Message.EqualTo($"'CR {challengeRating}' and {template} are not compatible"));
-        }
-
-        [TestCase(CreatureConstants.Types.Subtypes.Goblinoid, ChallengeRatingConstants.CR23)]
-        public void TypeChallengeRatingComboIsInvalid(string type, string challengeRating)
-        {
-            Assert.That(() => creatureGenerator.GenerateRandomNameOfType(type, challengeRating),
-                Throws.InstanceOf<InvalidCreatureException>()
-                .With.Message.EqualTo($"{type} (CR {challengeRating}) cannot be generated as a character"));
-        }
-
-        [TestCase(CreatureConstants.Types.Subtypes.Goblinoid, ChallengeRatingConstants.CR23)]
-        public void TypeChallengeRatingComboAsCharacterIsInvalid(string type, string challengeRating)
-        {
-            Assert.That(() => creatureGenerator.GenerateRandomNameOfTypeAsCharacter(type, challengeRating),
-                Throws.InstanceOf<InvalidCreatureException>()
-                .With.Message.EqualTo($"{type} (CR {challengeRating}) cannot be generated as a character"));
         }
     }
 }
