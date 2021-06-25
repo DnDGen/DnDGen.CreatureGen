@@ -266,6 +266,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(isCompatible, Is.False);
         }
 
+        [Test]
+        public void IsCompatible_TypeMustMatch()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void IsCompatible_ChallengeRatingMustMatch()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void IsCompatible_TypeAndChallengeRatingMustMatch()
+        {
+            Assert.Fail("not yet written");
+        }
+
         [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void ApplyTo_SetsTemplate(string template)
         {

@@ -397,7 +397,29 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public bool IsCompatible(string creature)
+        public bool IsCompatible(string creature, string type = null, string challengeRating = null)
+        {
+            if (!IsCompatible(creature))
+                return false;
+
+            if (!string.IsNullOrEmpty(type))
+            {
+                var types = GetPotentialTypes(creature);
+                if (!types.Contains(type))
+                    return false;
+            }
+
+            if (!string.IsNullOrEmpty(challengeRating))
+            {
+                var cr = GetPotentialChallengeRating(creature);
+                if (cr != challengeRating)
+                    return false;
+            }
+
+            return true;
+        }
+
+        private bool IsCompatible(string creature)
         {
             var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
             if (types.Contains(CreatureConstants.Types.Subtypes.Incorporeal))

@@ -3,6 +3,7 @@ using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Templates
@@ -40,7 +41,29 @@ namespace DnDGen.CreatureGen.Templates
             return types;
         }
 
-        public bool IsCompatible(string creature)
+        public bool IsCompatible(string creature, string type = null, string challengeRating = null)
+        {
+            if (!IsCompatible(creature))
+                return false;
+
+            if (!string.IsNullOrEmpty(type))
+            {
+                var types = GetPotentialTypes(creature);
+                if (!types.Contains(type))
+                    return false;
+            }
+
+            if (!string.IsNullOrEmpty(challengeRating))
+            {
+                var cr = GetPotentialChallengeRating(creature);
+                if (cr != challengeRating)
+                    return false;
+            }
+
+            return true;
+        }
+
+        private bool IsCompatible(string creature)
         {
             return true;
         }

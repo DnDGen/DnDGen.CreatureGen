@@ -390,6 +390,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
+        [Test]
+        public void IsCompatible_TypeMustMatch()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void IsCompatible_ChallengeRatingMustMatch()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void IsCompatible_TypeAndChallengeRatingMustMatch()
+        {
+            Assert.Fail("not yet written");
+        }
+
         [TestCase(CreatureConstants.Types.Aberration)]
         [TestCase(CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Types.Dragon)]

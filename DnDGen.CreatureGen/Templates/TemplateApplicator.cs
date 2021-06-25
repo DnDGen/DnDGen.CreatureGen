@@ -6,7 +6,7 @@ namespace DnDGen.CreatureGen.Templates
 {
     internal interface TemplateApplicator
     {
-        bool IsCompatible(string creature);
+        bool IsCompatible(string creature, string type = null, string challengeRating = null);
         IEnumerable<string> GetPotentialTypes(string creature);
         string GetPotentialChallengeRating(string creature);
 

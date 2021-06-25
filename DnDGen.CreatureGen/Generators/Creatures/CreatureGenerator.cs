@@ -99,17 +99,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         private IEnumerable<string> GetCreaturesOfTemplate(string template, IEnumerable<string> creatureGroup, string creatureType = null, string challengeRating = null)
         {
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
-            var creatures = creatureGroup.Where(templateApplicator.IsCompatible);
-
-            if (creatureType != null)
-            {
-                creatures = creatures.Where(c => templateApplicator.GetPotentialTypes(c).Contains(creatureType));
-            }
-
-            if (challengeRating != null)
-            {
-                creatures = creatures.Where(c => templateApplicator.GetPotentialChallengeRating(c) == challengeRating);
-            }
+            var creatures = creatureGroup.Where(c => templateApplicator.IsCompatible(c, creatureType, challengeRating));
 
             return creatures;
         }
@@ -155,7 +145,6 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         private IEnumerable<(string CreatureName, string Template)> GetCreaturesOfType(string creatureType, IEnumerable<string> creatureGroup, string challengeRating = null)
         {
-            var pairings = new List<(string CreatureName, string Template)>();
             var templates = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
 
             var ofType = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
@@ -167,17 +156,16 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             }
 
             var creaturesOfTypePairings = ofType.Intersect(creatureGroup).Select(c => (c, CreatureConstants.Templates.None));
-            pairings.AddRange(creaturesOfTypePairings);
+            foreach (var pairing in creaturesOfTypePairings)
+                yield return pairing;
 
             foreach (var template in templates)
             {
                 var creaturesOfTypeAndTemplate = GetCreaturesOfTemplate(template, creatureGroup, creatureType, challengeRating);
-                creaturesOfTypePairings = creaturesOfTypeAndTemplate.Select(c => (c, template));
 
-                pairings.AddRange(creaturesOfTypePairings);
+                foreach (var pairing in creaturesOfTypeAndTemplate.Select(c => (c, template)))
+                    yield return pairing;
             }
-
-            return pairings;
         }
 
         public (string CreatureName, string Template) GenerateRandomNameOfChallengeRating(string challengeRating)
@@ -191,22 +179,20 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         private IEnumerable<(string CreatureName, string Template)> GetCreaturesOfChallengeRating(string challengeRating, IEnumerable<string> creatureGroup)
         {
-            var pairings = new List<(string CreatureName, string Template)>();
             var templates = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
 
             var ofChallengeRating = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, challengeRating);
             var creaturesOfChallengeRatingPairings = ofChallengeRating.Intersect(creatureGroup).Select(c => (c, CreatureConstants.Templates.None));
-            pairings.AddRange(creaturesOfChallengeRatingPairings);
+            foreach (var pairing in creaturesOfChallengeRatingPairings)
+                yield return pairing;
 
             foreach (var template in templates)
             {
                 var creaturesOfChallengeRatingAndTemplate = GetCreaturesOfTemplate(template, creatureGroup, challengeRating: challengeRating);
-                creaturesOfChallengeRatingPairings = creaturesOfChallengeRatingAndTemplate.Select(c => (c, template));
 
-                pairings.AddRange(creaturesOfChallengeRatingPairings);
+                foreach (var pairing in creaturesOfChallengeRatingAndTemplate.Select(c => (c, template)))
+                    yield return pairing;
             }
-
-            return pairings;
         }
 
         public Creature GenerateRandomOfType(string creatureType, string challengeRating = null)
@@ -252,6 +238,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var randomCreature = GenerateRandomNameOfTypeAsCharacter(creatureType, challengeRating);
             return GenerateAsCharacter(randomCreature.CreatureName, randomCreature.Template);
         }
+
         public Creature GenerateRandomOfChallengeRatingAsCharacter(string challengeRating)
         {
             var randomCreature = GenerateRandomNameOfChallengeRatingAsCharacter(challengeRating);

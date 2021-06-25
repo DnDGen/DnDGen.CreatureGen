@@ -246,6 +246,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
+        public void IsCompatible_TypeMustMatch()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void IsCompatible_ChallengeRatingMustMatch()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void IsCompatible_TypeAndChallengeRatingMustMatch()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
         public void ApplyTo_GainsCommon()
         {
             var originalLanguages = baseCreature.Languages.ToArray();

@@ -232,7 +232,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var defaultTemplateApplicator = new Mock<TemplateApplicator>();
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(templateName)).Returns(defaultTemplateApplicator.Object);
-            defaultTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
+            defaultTemplateApplicator.Setup(a => a.IsCompatible(creatureName, type, null)).Returns(true);
             defaultTemplateApplicator
                 .Setup(a => a.ApplyTo(It.IsAny<Creature>()))
                 .Callback((Creature c) => c.Template = templateName)
@@ -441,20 +441,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(templates);
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
-            mockTemplateApplicator.Setup(a => a.GetPotentialTypes(creatureName)).Returns(new[] { "my wrong type", "my type", "my other type" });
+            mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName, "my type", null)).Returns(true);
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
 
             var mockWrongTemplateApplicator1 = new Mock<TemplateApplicator>();
-            mockWrongTemplateApplicator1.Setup(a => a.IsCompatible(creatureName)).Returns(false);
-            mockWrongTemplateApplicator1.Setup(a => a.GetPotentialTypes(creatureName)).Returns(new[] { "my wrong type", "my type", "my other type" });
+            mockWrongTemplateApplicator1.Setup(a => a.IsCompatible(creatureName, "my type", null)).Returns(false);
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("other template")).Returns(mockWrongTemplateApplicator1.Object);
 
             var mockWrongTemplateApplicator2 = new Mock<TemplateApplicator>();
-            mockWrongTemplateApplicator2.Setup(a => a.IsCompatible(creatureName)).Returns(true);
-            mockWrongTemplateApplicator2.Setup(a => a.GetPotentialTypes(creatureName)).Returns(new[] { "my wrong type", "my other type" });
+            mockWrongTemplateApplicator2.Setup(a => a.IsCompatible(creatureName, "my type", null)).Returns(false);
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template name")).Returns(mockWrongTemplateApplicator2.Object);
 
@@ -508,8 +505,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             foreach (var otherTemplate in templates)
             {
                 var mockTemplateApplicator = new Mock<TemplateApplicator>();
-                mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>())).Returns(true);
-                mockTemplateApplicator.Setup(a => a.GetPotentialTypes(It.IsAny<string>())).Returns(new[] { "my wrong type", "my type", "my other type" });
+                mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>(), "my type", null)).Returns(true);
 
                 mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(otherTemplate)).Returns(mockTemplateApplicator.Object);
             }
@@ -572,22 +568,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             SetUpCreature(creatureName, template, false, "my type");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
-            mockTemplateApplicator.Setup(a => a.GetPotentialTypes(creatureName)).Returns(new[] { "wrong type", "my type", "other type" });
+            mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName, "my type", null)).Returns(true);
             mockTemplateApplicator
                 .Setup(a => a.ApplyTo(It.Is<Creature>(c => c.Name == creatureName)))
                 .Callback((Creature c) => c.Template = template)
                 .Returns((Creature c) => c);
 
             var mockWrongTemplateApplicator1 = new Mock<TemplateApplicator>();
-            mockWrongTemplateApplicator1.Setup(a => a.IsCompatible(creatureName)).Returns(false);
-            mockWrongTemplateApplicator1.Setup(a => a.GetPotentialTypes(creatureName)).Returns(new[] { "my wrong type", "my type", "my other type" });
+            mockWrongTemplateApplicator1.Setup(a => a.IsCompatible(creatureName, "my type", null)).Returns(false);
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("other template")).Returns(mockWrongTemplateApplicator1.Object);
 
             var mockWrongTemplateApplicator2 = new Mock<TemplateApplicator>();
-            mockWrongTemplateApplicator2.Setup(a => a.IsCompatible(creatureName)).Returns(true);
-            mockWrongTemplateApplicator2.Setup(a => a.GetPotentialTypes(creatureName)).Returns(new[] { "my wrong type", "my other type" });
+            mockWrongTemplateApplicator2.Setup(a => a.IsCompatible(creatureName, "my type", null)).Returns(false);
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template name")).Returns(mockWrongTemplateApplicator2.Object);
 
@@ -624,7 +617,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             foreach (var template in templates)
             {
                 var mockTemplateApplicator = new Mock<TemplateApplicator>();
-                mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>())).Returns(false);
+                mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>(), "my type", null)).Returns(false);
 
                 mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
             }
@@ -660,8 +653,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             foreach (var otherTemplate in templates)
             {
                 var mockTemplateApplicator = new Mock<TemplateApplicator>();
-                mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>())).Returns(true);
-                mockTemplateApplicator.Setup(a => a.GetPotentialTypes(It.IsAny<string>())).Returns(new[] { "wrong type", "my type", "other type" });
+                mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>(), "my type", null)).Returns(true);
                 mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(otherTemplate)).Returns(mockTemplateApplicator.Object);
 
                 if (otherTemplate == template)
@@ -2468,8 +2460,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             SetUpCreature(creatureName, template, false, "my type");
 
             var mockTemplateApplicator = new Mock<TemplateApplicator>();
-            mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName)).Returns(true);
-            mockTemplateApplicator.Setup(a => a.GetPotentialTypes(creatureName)).Returns(new[] { "wrong type", "my type", "other type" });
+            mockTemplateApplicator.Setup(a => a.IsCompatible(creatureName, "my type", null)).Returns(true);
             mockTemplateApplicator
                 .Setup(a => a.ApplyToAsync(It.Is<Creature>(c => c.Name == creatureName)))
                 .Callback((Creature c) => c.Template = template)
@@ -2478,14 +2469,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
 
             var mockWrongTemplateApplicator1 = new Mock<TemplateApplicator>();
-            mockWrongTemplateApplicator1.Setup(a => a.IsCompatible(creatureName)).Returns(false);
-            mockWrongTemplateApplicator1.Setup(a => a.GetPotentialTypes(creatureName)).Returns(new[] { "my wrong type", "my type", "my other type" });
+            mockWrongTemplateApplicator1.Setup(a => a.IsCompatible(creatureName, "my type", null)).Returns(false);
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("other template")).Returns(mockWrongTemplateApplicator1.Object);
 
             var mockWrongTemplateApplicator2 = new Mock<TemplateApplicator>();
-            mockWrongTemplateApplicator2.Setup(a => a.IsCompatible(creatureName)).Returns(true);
-            mockWrongTemplateApplicator2.Setup(a => a.GetPotentialTypes(creatureName)).Returns(new[] { "my wrong type", "my other type" });
+            mockWrongTemplateApplicator2.Setup(a => a.IsCompatible(creatureName, "my type", null)).Returns(false);
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template name")).Returns(mockWrongTemplateApplicator2.Object);
 
@@ -2520,7 +2509,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             foreach (var template in templates)
             {
                 var mockTemplateApplicator = new Mock<TemplateApplicator>();
-                mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>())).Returns(false);
+                mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>(), "my type", null)).Returns(false);
 
                 mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template)).Returns(mockTemplateApplicator.Object);
             }
@@ -2560,8 +2549,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             foreach (var otherTemplate in templates)
             {
                 var mockTemplateApplicator = new Mock<TemplateApplicator>();
-                mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>())).Returns(true);
-                mockTemplateApplicator.Setup(a => a.GetPotentialTypes(It.IsAny<string>())).Returns(new[] { "wrong type", "my type", "other type" });
+                mockTemplateApplicator.Setup(a => a.IsCompatible(It.IsAny<string>(), "my type", null)).Returns(true);
                 mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(otherTemplate)).Returns(mockTemplateApplicator.Object);
 
                 if (otherTemplate == template)

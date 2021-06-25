@@ -29,100 +29,53 @@ namespace DnDGen.CreatureGen.Verifiers
 
         public bool VerifyCompatibility(bool asCharacter, string creature = null, string template = null, string type = null, string challengeRating = null)
         {
-            IEnumerable<string> creatures = new[] { creature };
+            IEnumerable<string> baseCreatures = new[] { creature };
             if (string.IsNullOrEmpty(creature))
             {
-                creatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All);
+                baseCreatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All);
             }
 
             if (asCharacter)
             {
                 var characters = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters);
-                creatures = creatures.Intersect(characters);
+                baseCreatures = baseCreatures.Intersect(characters);
             }
 
-            IEnumerable<string> templates = null;
+            var creatures = baseCreatures;
             if (!string.IsNullOrEmpty(template))
             {
                 var applicator = factory.Build<TemplateApplicator>(template);
-                creatures = creatures.Where(applicator.IsCompatible);
+                creatures = baseCreatures.Where(c => applicator.IsCompatible(c, type, challengeRating));
 
-                templates = new[] { template };
+                return creatures.Any();
             }
 
             if (!string.IsNullOrEmpty(type))
             {
-                creatures = GetCreaturesOfType(type, creatures, templates);
+                var ofType = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, type);
+                creatures = ofType.Intersect(creatures);
             }
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
-                creatures = GetCreaturesOfChallengeRating(challengeRating, creatures, templates);
-            }
-
-            return creatures.Any();
-        }
-
-        private IEnumerable<string> GetCreaturesOfType(string creatureType, IEnumerable<string> creatureGroup, IEnumerable<string> templates = null)
-        {
-            var creatures = new List<string>();
-
-            if (templates == null)
-            {
-                templates = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
-
-                //Add in non-template creatures
-                var ofType = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
-                creatures.AddRange(ofType.Intersect(creatureGroup));
-            }
-
-            foreach (var template in templates)
-            {
-                var creaturesOfTypeAndTemplate = GetCreaturesOfTemplate(template, creatureGroup, creatureType: creatureType);
-                creatures.AddRange(creaturesOfTypeAndTemplate);
-            }
-
-            return creatures;
-        }
-
-        private IEnumerable<string> GetCreaturesOfChallengeRating(string challengeRating, IEnumerable<string> creatureGroup, IEnumerable<string> templates = null)
-        {
-            var creatures = new List<string>();
-
-            if (templates == null)
-            {
-                templates = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
-
-                //Add in non-template creatures
                 var ofChallengeRating = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, challengeRating);
-                creatures.AddRange(ofChallengeRating.Intersect(creatureGroup));
+                creatures = ofChallengeRating.Intersect(creatures);
             }
 
-            foreach (var template in templates)
+            if (creatures.Any())
+                return true;
+
+            var templates = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
+            foreach (var otherTemplate in templates)
             {
-                var creaturesOfChallengeRatingAndTemplate = GetCreaturesOfTemplate(template, creatureGroup, challengeRating: challengeRating);
-                creatures.AddRange(creaturesOfChallengeRatingAndTemplate);
+                var templateApplicator = factory.Build<TemplateApplicator>(otherTemplate);
+                var templateCreatures = baseCreatures.Where(c => templateApplicator.IsCompatible(c, type, challengeRating));
+
+                if (templateCreatures.Any())
+                    return true;
             }
 
-            return creatures;
-        }
-
-        private IEnumerable<string> GetCreaturesOfTemplate(string template, IEnumerable<string> creatureGroup, string creatureType = null, string challengeRating = null)
-        {
-            var templateApplicator = factory.Build<TemplateApplicator>(template);
-            var creatures = creatureGroup.Where(templateApplicator.IsCompatible);
-
-            if (creatureType != null)
-            {
-                creatures = creatures.Where(c => templateApplicator.GetPotentialTypes(c).Contains(creatureType));
-            }
-
-            if (challengeRating != null)
-            {
-                creatures = creatures.Where(c => templateApplicator.GetPotentialChallengeRating(c) == challengeRating);
-            }
-
-            return creatures;
+            return false;
         }
     }
 }
