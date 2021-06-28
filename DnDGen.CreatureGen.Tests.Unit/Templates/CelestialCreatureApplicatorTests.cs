@@ -236,22 +236,158 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
-        [Test]
-        public void IsCompatible_TypeMustMatch()
+        [TestCase(CreatureConstants.Types.Humanoid, null, true)]
+        [TestCase(CreatureConstants.Types.Humanoid, CreatureConstants.Types.Humanoid, true)]
+        [TestCase(CreatureConstants.Types.Humanoid, "subtype 1", true)]
+        [TestCase(CreatureConstants.Types.Humanoid, "subtype 2", true)]
+        [TestCase(CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Extraplanar, true)]
+        [TestCase(CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Augmented, true)]
+        [TestCase(CreatureConstants.Types.Humanoid, "wrong type", false)]
+        [TestCase(CreatureConstants.Types.Animal, null, true)]
+        [TestCase(CreatureConstants.Types.Animal, CreatureConstants.Types.Animal, true)]
+        [TestCase(CreatureConstants.Types.Animal, CreatureConstants.Types.MagicalBeast, true)]
+        [TestCase(CreatureConstants.Types.Animal, "subtype 1", true)]
+        [TestCase(CreatureConstants.Types.Animal, "subtype 2", true)]
+        [TestCase(CreatureConstants.Types.Animal, CreatureConstants.Types.Subtypes.Extraplanar, true)]
+        [TestCase(CreatureConstants.Types.Animal, CreatureConstants.Types.Subtypes.Augmented, true)]
+        [TestCase(CreatureConstants.Types.Animal, "wrong type", false)]
+        [TestCase(CreatureConstants.Types.Vermin, null, true)]
+        [TestCase(CreatureConstants.Types.Vermin, CreatureConstants.Types.Vermin, true)]
+        [TestCase(CreatureConstants.Types.Vermin, CreatureConstants.Types.MagicalBeast, true)]
+        [TestCase(CreatureConstants.Types.Vermin, "subtype 1", true)]
+        [TestCase(CreatureConstants.Types.Vermin, "subtype 2", true)]
+        [TestCase(CreatureConstants.Types.Vermin, CreatureConstants.Types.Subtypes.Extraplanar, true)]
+        [TestCase(CreatureConstants.Types.Vermin, CreatureConstants.Types.Subtypes.Augmented, true)]
+        [TestCase(CreatureConstants.Types.Vermin, "wrong type", false)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, null, true)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, CreatureConstants.Types.MagicalBeast, true)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, CreatureConstants.Types.Vermin, false)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, CreatureConstants.Types.Animal, false)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, "subtype 1", true)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, "subtype 2", true)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, CreatureConstants.Types.Subtypes.Extraplanar, true)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, CreatureConstants.Types.Subtypes.Augmented, true)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, "wrong type", false)]
+        public void IsCompatible_TypeMustMatch(string originalType, string type, bool compatible)
         {
-            Assert.Fail("not yet written");
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { originalType, "subtype 1", "subtype 2" });
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, "my creature"))
+                .Returns(new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, "other alignment group" });
+
+            var isCompatible = applicator.IsCompatible("my creature", type: type);
+            Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
-        [Test]
-        public void IsCompatible_ChallengeRatingMustMatch()
+        [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, true)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, true)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, true)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, true)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, true)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, true)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, false)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
+        [TestCase(4, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(4, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, true)]
+        [TestCase(4, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, false)]
+        [TestCase(4, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(4, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, false)]
+        [TestCase(4, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, true)]
+        [TestCase(4, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, false)]
+        [TestCase(4, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(4, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, false)]
+        [TestCase(4, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, true)]
+        [TestCase(4, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, false)]
+        [TestCase(4, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
+        [TestCase(8, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(8, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, false)]
+        [TestCase(8, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, true)]
+        [TestCase(8, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(8, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, false)]
+        [TestCase(8, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, false)]
+        [TestCase(8, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, true)]
+        [TestCase(8, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(8, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, false)]
+        [TestCase(8, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
+        [TestCase(8, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, true)]
+        [TestCase(8, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
+        [TestCase(20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, false)]
+        [TestCase(20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, true)]
+        [TestCase(20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, false)]
+        [TestCase(20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, false)]
+        [TestCase(20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, true)]
+        [TestCase(20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, false)]
+        [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
+        [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, true)]
+        [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
+        public void IsCompatible_ChallengeRatingMustMatch(double hitDiceQuantity, string original, string challengeRating, bool compatible)
         {
-            Assert.Fail("not yet written");
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, "my creature"))
+                .Returns(new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, "other alignment group" });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor("my creature"))
+                .Returns(new CreatureDataSelection { ChallengeRating = original });
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
+                .Returns(hitDiceQuantity);
+
+            var isCompatible = applicator.IsCompatible("my creature", challengeRating: challengeRating);
+            Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
-        [Test]
-        public void IsCompatible_TypeAndChallengeRatingMustMatch()
+        [TestCase(CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR2, true)]
+        [TestCase(CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR1, false)]
+        [TestCase("wrong subtype", ChallengeRatingConstants.CR2, false)]
+        [TestCase("wrong subtype", ChallengeRatingConstants.CR1, false)]
+        public void IsCompatible_TypeAndChallengeRatingMustMatch(string type, string challengeRating, bool compatible)
         {
-            Assert.Fail("not yet written");
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, "my creature"))
+                .Returns(new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, "other alignment group" });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor("my creature"))
+                .Returns(new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 });
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
+                .Returns(4);
+
+            var isCompatible = applicator.IsCompatible("my creature", type: type, challengeRating: challengeRating);
+            Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
         [TestCase(CreatureConstants.Types.Aberration, CreatureConstants.Types.Aberration)]
