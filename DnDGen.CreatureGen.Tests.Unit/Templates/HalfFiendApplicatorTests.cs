@@ -543,7 +543,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
                 .Returns(hitDiceQuantity);
 
-            var isCompatible = applicator.IsCompatible("my creature");
+            var isCompatible = applicator.IsCompatible("my creature", challengeRating: challengeRating);
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
@@ -583,7 +583,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
                 .Returns(1);
 
-            var isCompatible = applicator.IsCompatible("my creature", challengeRating: challengeRating);
+            var isCompatible = applicator.IsCompatible("my creature", challengeRating: challengeRating, type: type);
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 

@@ -266,22 +266,122 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(isCompatible, Is.False);
         }
 
-        [Test]
-        public void IsCompatible_TypeMustMatch()
+        [TestCaseSource(nameof(CreatureTypeCompatible_Filtered))]
+        public void IsCompatible_TypeMustMatch(string template, string type, bool compatible)
         {
-            Assert.Fail("not yet written");
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            var isCompatible = applicators[template].IsCompatible("my creature", type: type);
+            Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
-        [Test]
-        public void IsCompatible_ChallengeRatingMustMatch()
+        private static IEnumerable CreatureTypeCompatible_Filtered
         {
-            Assert.Fail("not yet written");
+            get
+            {
+                foreach (var template in templates)
+                {
+                    yield return new TestCaseData(template, null, true);
+                    yield return new TestCaseData(template, CreatureConstants.Types.Humanoid, true);
+                    yield return new TestCaseData(template, CreatureConstants.Types.Dragon, true);
+                    yield return new TestCaseData(template, "subtype 1", true);
+                    yield return new TestCaseData(template, "subtype 2", true);
+                    yield return new TestCaseData(template, CreatureConstants.Types.Subtypes.Augmented, true);
+                    yield return new TestCaseData(template, "wrong type", true);
+                }
+            }
         }
 
-        [Test]
-        public void IsCompatible_TypeAndChallengeRatingMustMatch()
+        [TestCaseSource(nameof(ChallengeRatingAdjustments_Filtered))]
+        public void IsCompatible_ChallengeRatingMustMatch(string template, string original, string challengeRating, bool compatible)
         {
-            Assert.Fail("not yet written");
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor("my creature"))
+                .Returns(new CreatureDataSelection { ChallengeRating = original });
+
+            var isCompatible = applicators[template].IsCompatible("my creature", challengeRating: challengeRating);
+            Assert.That(isCompatible, Is.EqualTo(compatible));
+        }
+
+        private static IEnumerable ChallengeRatingAdjustments_Filtered
+        {
+            get
+            {
+                foreach (var template in templates)
+                {
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, true);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR4, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1_2nd, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, true);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR1_2nd, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR1, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, true);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR1_2nd, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR1, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR2, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR3, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR4, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR9, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR10, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR11, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR12, true);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR13, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR1_2nd, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR1, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR2, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR3, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR4, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR19, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR20, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR21, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR22, true);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR23, false);
+                }
+            }
+        }
+
+        [TestCaseSource(nameof(ChallengeRatingAndTypeAdjustments_Filtered))]
+        public void IsCompatible_TypeAndChallengeRatingMustMatch(string template, string type, string challengeRating, bool compatible)
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor("my creature"))
+                .Returns(new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR2 });
+
+            var isCompatible = applicators[template].IsCompatible("my creature", challengeRating: challengeRating, type: type);
+            Assert.That(isCompatible, Is.EqualTo(compatible));
+        }
+
+        private static IEnumerable ChallengeRatingAndTypeAdjustments_Filtered
+        {
+            get
+            {
+                foreach (var template in templates)
+                {
+                    yield return new TestCaseData(template, CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR2, false);
+                    yield return new TestCaseData(template, CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR4, true);
+                    yield return new TestCaseData(template, "wrong subtype", ChallengeRatingConstants.CR2, false);
+                    yield return new TestCaseData(template, "wrong subtype", ChallengeRatingConstants.CR4, false);
+                }
+            }
         }
 
         [TestCaseSource(nameof(AllHalfDragonTemplates))]
