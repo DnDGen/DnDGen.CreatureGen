@@ -426,22 +426,74 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatible, Is.True);
         }
 
-        [Test]
-        public void IsCompatible_TypeMustMatch()
+        [TestCase(null, true)]
+        [TestCase(CreatureConstants.Types.Humanoid, true)]
+        [TestCase(CreatureConstants.Types.Outsider, false)]
+        [TestCase(CreatureConstants.Types.Dragon, false)]
+        [TestCase(CreatureConstants.Types.Undead, false)]
+        [TestCase("subtype 1", true)]
+        [TestCase("subtype 2", true)]
+        [TestCase(CreatureConstants.Types.Subtypes.Native, false)]
+        [TestCase(CreatureConstants.Types.Subtypes.Augmented, false)]
+        [TestCase(CreatureConstants.Types.Subtypes.Shapechanger, false)]
+        [TestCase(CreatureConstants.Types.Subtypes.Incorporeal, false)]
+        [TestCase("wrong type", false)]
+        public void IsCompatible_TypeMustMatch(string type, bool compatible)
         {
-            Assert.Fail("not yet written");
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            var isCompatible = templateApplicator.IsCompatible("my creature", type: type);
+            Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
-        [Test]
-        public void IsCompatible_ChallengeRatingMustMatch()
+        [TestCase(ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_3rd, false)]
+        [TestCase(ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, true)]
+        [TestCase(ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, false)]
+        [TestCase(ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, false)]
+        [TestCase(ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, true)]
+        [TestCase(ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, false)]
+        [TestCase(ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, false)]
+        [TestCase(ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR1, false)]
+        [TestCase(ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, true)]
+        [TestCase(ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
+        [TestCase(ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, false)]
+        [TestCase(ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
+        public void IsCompatible_ChallengeRatingMustMatch(string original, string challengeRating, bool compatible)
         {
-            Assert.Fail("not yet written");
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor("my creature"))
+                .Returns(new CreatureDataSelection { ChallengeRating = original });
+
+            var isCompatible = templateApplicator.IsCompatible("my creature", challengeRating: challengeRating);
+            Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
-        [Test]
-        public void IsCompatible_TypeAndChallengeRatingMustMatch()
+        [TestCase("subtype 1", ChallengeRatingConstants.CR2, false)]
+        [TestCase("subtype 1", ChallengeRatingConstants.CR1, true)]
+        [TestCase("wrong subtype", ChallengeRatingConstants.CR2, false)]
+        [TestCase("wrong subtype", ChallengeRatingConstants.CR1, false)]
+        public void IsCompatible_TypeAndChallengeRatingMustMatch(string type, string challengeRating, bool compatible)
         {
-            Assert.Fail("not yet written");
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor("my creature"))
+                .Returns(new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 });
+
+            var isCompatible = templateApplicator.IsCompatible("my creature", challengeRating: challengeRating, type: type);
+            Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
         [Test]

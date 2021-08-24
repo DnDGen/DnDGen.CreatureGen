@@ -289,7 +289,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     yield return new TestCaseData(template, "subtype 1", true);
                     yield return new TestCaseData(template, "subtype 2", true);
                     yield return new TestCaseData(template, CreatureConstants.Types.Subtypes.Augmented, true);
-                    yield return new TestCaseData(template, "wrong type", true);
+                    yield return new TestCaseData(template, "wrong type", false);
                 }
             }
         }

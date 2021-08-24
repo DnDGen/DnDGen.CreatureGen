@@ -103,5 +103,14 @@ namespace DnDGen.CreatureGen.Creatures
 
             return cr.ToString();
         }
+
+        public static bool IsGreaterThan(string source, string target)
+        {
+            var ordered = GetOrdered();
+            var sourceIndex = Array.IndexOf(ordered, source);
+            var targetIndex = Array.IndexOf(ordered, target);
+
+            return sourceIndex > targetIndex;
+        }
     }
 }

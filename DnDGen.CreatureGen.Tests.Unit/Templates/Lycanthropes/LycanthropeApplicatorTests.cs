@@ -364,22 +364,180 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
-        [Test]
-        public void IsCompatible_TypeMustMatch()
+        [TestCaseSource(nameof(CreatureTypeCompatible_Filtered))]
+        public void IsCompatible_TypeMustMatch(string template, string animal, string type, bool compatible)
         {
-            Assert.Fail("not yet written");
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor("my creature"))
+                .Returns(new CreatureDataSelection { Size = SizeConstants.Medium });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(animal))
+                .Returns(new CreatureDataSelection { Size = SizeConstants.Medium });
+
+            var isCompatible = applicators[template].IsCompatible("my creature", type: type);
+            Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
-        [Test]
-        public void IsCompatible_ChallengeRatingMustMatch()
+        private static IEnumerable CreatureTypeCompatible_Filtered
         {
-            Assert.Fail("not yet written");
+            get
+            {
+                foreach (var template in templates)
+                {
+                    yield return new TestCaseData(template.Template, template.Animal, null, true);
+                    yield return new TestCaseData(template.Template, template.Animal, CreatureConstants.Types.Humanoid, true);
+                    yield return new TestCaseData(template.Template, template.Animal, CreatureConstants.Types.Animal, false);
+                    yield return new TestCaseData(template.Template, template.Animal, "subtype 1", true);
+                    yield return new TestCaseData(template.Template, template.Animal, "subtype 2", true);
+                    yield return new TestCaseData(template.Template, template.Animal, CreatureConstants.Types.Subtypes.Augmented, false);
+                    yield return new TestCaseData(template.Template, template.Animal, CreatureConstants.Types.Subtypes.Shapechanger, true);
+                    yield return new TestCaseData(template.Template, template.Animal, "wrong type", false);
+                }
+            }
         }
 
-        [Test]
-        public void IsCompatible_TypeAndChallengeRatingMustMatch()
+        [TestCaseSource(nameof(ChallengeRatingAdjustments_Filtered))]
+        public void IsCompatible_ChallengeRatingMustMatch(string template, string animal, string original, double animalHitDiceQuantity, string challengeRating, bool compatible)
         {
-            Assert.Fail("not yet written");
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor("my creature"))
+                .Returns(new CreatureDataSelection { Size = SizeConstants.Medium, ChallengeRating = original });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(animal))
+                .Returns(new CreatureDataSelection { Size = SizeConstants.Medium });
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, animal))
+                .Returns(animalHitDiceQuantity);
+
+            var isCompatible = applicators[template].IsCompatible("my creature", challengeRating: challengeRating);
+            Assert.That(isCompatible, Is.EqualTo(compatible));
+        }
+
+        //Animal HD 0-2, +2
+        //Animal HD 3-5, +3
+        //Animal HD 6-10, +4
+        //Animal HD 11-20, +5
+        //Animal HD 21+, +6
+        private static IEnumerable ChallengeRatingAdjustments_Filtered
+        {
+            get
+            {
+                //INFO: Doing specific numbers, instead of full range because the number of test cases explodes:
+                //1. Per challenge rating
+                //2. Per Lycanthrope template
+                //3. Per hit die quantity
+                var challengeRatings = new[]
+                {
+                    ChallengeRatingConstants.CR0, //Character
+                    ChallengeRatingConstants.CR1_4th, //Kobold
+                    ChallengeRatingConstants.CR1_3rd, //Goblin
+                    ChallengeRatingConstants.CR1_2nd, //Dwarf, Elf, Gnome, Halfling, Hobgoblin, Merfolk, Orc
+                    ChallengeRatingConstants.CR1, //Duergar, Drow, Gnoll, Svirfneblin, Lizardfolk, Troglodyte
+                    ChallengeRatingConstants.CR3, //Ogre
+                    ChallengeRatingConstants.CR5, //Troll
+                    ChallengeRatingConstants.CR6, //Ettin
+                    ChallengeRatingConstants.CR7, //Hill Giant
+                    ChallengeRatingConstants.CR8, //Stone Giant, Ogre Mage
+                    ChallengeRatingConstants.CR9, //Frost Giant, Stone Giant Elder
+                    ChallengeRatingConstants.CR10, //Fire Giant
+                    ChallengeRatingConstants.CR11, //Cloud Giant
+                    ChallengeRatingConstants.CR13, //Storm Giant
+                };
+
+                var animalHitDiceQuantities = new Dictionary<string, double>();
+                animalHitDiceQuantities[CreatureConstants.Bear_Brown] = 6;
+                animalHitDiceQuantities[CreatureConstants.Boar] = 3;
+                animalHitDiceQuantities[CreatureConstants.Boar_Dire] = 7;
+                animalHitDiceQuantities[CreatureConstants.Rat_Dire] = 1;
+                animalHitDiceQuantities[CreatureConstants.Tiger] = 6;
+                animalHitDiceQuantities[CreatureConstants.Wolf] = 2;
+                animalHitDiceQuantities[CreatureConstants.Wolf_Dire] = 6;
+
+                foreach (var template in templates)
+                {
+                    var increase = 0;
+                    var animalHitDiceQuantity = animalHitDiceQuantities[template.Animal];
+
+                    if (animalHitDiceQuantity <= 2)
+                        increase = 2;
+                    else if (animalHitDiceQuantity <= 5)
+                        increase = 3;
+                    else if (animalHitDiceQuantity <= 10)
+                        increase = 4;
+                    else if (animalHitDiceQuantity <= 20)
+                        increase = 5;
+                    else if (animalHitDiceQuantity > 20)
+                        increase = 6;
+
+                    foreach (var cr in challengeRatings)
+                    {
+                        var low2Cr = ChallengeRatingConstants.IncreaseChallengeRating(cr, increase - 2);
+                        var low1Cr = ChallengeRatingConstants.IncreaseChallengeRating(cr, increase - 1);
+                        var newCr = ChallengeRatingConstants.IncreaseChallengeRating(cr, increase);
+                        var high1Cr = ChallengeRatingConstants.IncreaseChallengeRating(cr, increase + 1);
+                        var high2Cr = ChallengeRatingConstants.IncreaseChallengeRating(cr, increase + 2);
+
+                        if (low2Cr != cr)
+                        {
+                            yield return new TestCaseData(template.Template, template.Animal, cr, animalHitDiceQuantity, cr, false);
+                        }
+
+                        yield return new TestCaseData(template.Template, template.Animal, cr, animalHitDiceQuantity, low2Cr, false);
+                        yield return new TestCaseData(template.Template, template.Animal, cr, animalHitDiceQuantity, low1Cr, false);
+                        yield return new TestCaseData(template.Template, template.Animal, cr, animalHitDiceQuantity, newCr, true);
+                        yield return new TestCaseData(template.Template, template.Animal, cr, animalHitDiceQuantity, high1Cr, false);
+                        yield return new TestCaseData(template.Template, template.Animal, cr, animalHitDiceQuantity, high2Cr, false);
+                    }
+                }
+            }
+        }
+
+        [TestCaseSource(nameof(ChallengeRatingAndTypeAdjustments_Filtered))]
+        public void IsCompatible_TypeAndChallengeRatingMustMatch(string template, string animal, string type, string challengeRating, bool compatible)
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor("my creature"))
+                .Returns(new CreatureDataSelection { Size = SizeConstants.Medium, ChallengeRating = ChallengeRatingConstants.CR2 });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(animal))
+                .Returns(new CreatureDataSelection { Size = SizeConstants.Medium });
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, animal))
+                .Returns(1);
+
+            var isCompatible = applicators[template].IsCompatible("my creature", challengeRating: challengeRating, type: type);
+            Assert.That(isCompatible, Is.EqualTo(compatible));
+        }
+
+        private static IEnumerable ChallengeRatingAndTypeAdjustments_Filtered
+        {
+            get
+            {
+                foreach (var template in templates)
+                {
+                    yield return new TestCaseData(template.Template, template.Animal, CreatureConstants.Types.Subtypes.Shapechanger, ChallengeRatingConstants.CR2, false);
+                    yield return new TestCaseData(template.Template, template.Animal, CreatureConstants.Types.Subtypes.Shapechanger, ChallengeRatingConstants.CR4, true);
+                    yield return new TestCaseData(template.Template, template.Animal, "wrong subtype", ChallengeRatingConstants.CR2, false);
+                    yield return new TestCaseData(template.Template, template.Animal, "wrong subtype", ChallengeRatingConstants.CR4, false);
+                }
+            }
         }
 
         private static IEnumerable SizeCompatible

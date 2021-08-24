@@ -460,6 +460,11 @@ namespace DnDGen.CreatureGen.Templates
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
+                if (ChallengeRatingConstants.IsGreaterThan(challengeRating, ChallengeRatingConstants.CR6))
+                {
+                    return false;
+                }
+
                 var cr = GetPotentialChallengeRating(creature);
                 if (cr != challengeRating)
                     return false;

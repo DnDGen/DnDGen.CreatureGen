@@ -398,7 +398,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.Subtypes.Native, true)]
         [TestCase(CreatureConstants.Types.Subtypes.Augmented, true)]
         [TestCase("wrong type", false)]
-        public void IsCompatible_TypeMustMatch(string originalType, string type, bool compatible)
+        public void IsCompatible_TypeMustMatch(string type, bool compatible)
         {
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
