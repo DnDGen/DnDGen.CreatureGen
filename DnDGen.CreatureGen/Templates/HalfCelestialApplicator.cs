@@ -197,6 +197,12 @@ namespace DnDGen.CreatureGen.Templates
             creature.ChallengeRating = UpdateCreatureChallengeRating(creature.ChallengeRating, creature.HitPoints.RoundedHitDiceQuantity);
         }
 
+        public (string Lower, string Upper) GetChallengeRatingRange(string challengeRating) => (
+            ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 1),
+            ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 3));
+        //public (string Lower, string Upper) GetChallengeRatingRange() => (null, null);
+        public (double? Lower, double? Upper) GetHitDiceRange(string challengeRating) => (null, null);
+
         private string UpdateCreatureChallengeRating(string challengeRating, int hitDiceQuantity)
         {
             if (hitDiceQuantity >= 11)

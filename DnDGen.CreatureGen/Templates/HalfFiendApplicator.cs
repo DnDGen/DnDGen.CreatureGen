@@ -206,6 +206,12 @@ namespace DnDGen.CreatureGen.Templates
             return ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 1);
         }
 
+        public (string Lower, string Upper) GetChallengeRatingRange(string challengeRating) => (
+            ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 1),
+            ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 3));
+        //public (string Lower, string Upper) GetChallengeRatingRange() => (null, null);
+        public (double? Lower, double? Upper) GetHitDiceRange(string challengeRating) => (null, null);
+
         private void UpdateCreatureLevelAdjustment(Creature creature)
         {
             if (creature.LevelAdjustment.HasValue)

@@ -247,6 +247,12 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             return ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2);
         }
 
+        public (string Lower, string Upper) GetChallengeRatingRange(string challengeRating) => (
+            ChallengeRatingConstants.CR3,
+            ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2));
+        //public (string Lower, string Upper) GetChallengeRatingRange() => (null, null);
+        public (double? Lower, double? Upper) GetHitDiceRange(string challengeRating) => (null, null);
+
         private void UpdateCreatureLevelAdjustment(Creature creature)
         {
             if (creature.LevelAdjustment.HasValue)

@@ -14,12 +14,18 @@ namespace DnDGen.CreatureGen.Verifiers
         private readonly JustInTimeFactory factory;
         private readonly ICreatureDataSelector creatureDataSelector;
         private readonly ICollectionSelector collectionsSelector;
+        private readonly IAdjustmentsSelector adjustmentSelector;
 
-        public CreatureVerifier(JustInTimeFactory factory, ICreatureDataSelector creatureDataSelector, ICollectionSelector collectionsSelector)
+        public CreatureVerifier(
+            JustInTimeFactory factory,
+            ICreatureDataSelector creatureDataSelector,
+            ICollectionSelector collectionsSelector,
+            IAdjustmentsSelector adjustmentSelector)
         {
             this.factory = factory;
             this.creatureDataSelector = creatureDataSelector;
             this.collectionsSelector = collectionsSelector;
+            this.adjustmentSelector = adjustmentSelector;
         }
 
         public bool CanBeCharacter(string creatureName)
@@ -83,6 +89,7 @@ namespace DnDGen.CreatureGen.Verifiers
 
             var templates = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
             var allData = creatureDataSelector.SelectAll();
+            var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
 
             foreach (var otherTemplate in templates)
             {
@@ -91,21 +98,36 @@ namespace DnDGen.CreatureGen.Verifiers
 
                 if (!string.IsNullOrEmpty(challengeRating))
                 {
-                    //INFO: Skeleton and Zombie are the only templates that might decrease a challenge rating
-                    //So, as long as this is not one of those, we can filter out any creatures that have a HIGHER CR than the filter
-                    //If it IS a Skeleton or Zombie, we can do other filtering based on knowing their max potential CR
-                    if (otherTemplate != CreatureConstants.Templates.Skeleton && otherTemplate != CreatureConstants.Templates.Zombie)
-                    {
-                        filteredBaseCreatures = filteredBaseCreatures.Where(c => !ChallengeRatingConstants.IsGreaterThan(allData[c].ChallengeRating, challengeRating));
-                    }
-                    else if (otherTemplate == CreatureConstants.Templates.Skeleton && ChallengeRatingConstants.IsGreaterThan(challengeRating, ChallengeRatingConstants.CR8))
-                    {
-                        continue;
-                    }
-                    else if (otherTemplate == CreatureConstants.Templates.Zombie && ChallengeRatingConstants.IsGreaterThan(challengeRating, ChallengeRatingConstants.CR6))
-                    {
-                        continue;
-                    }
+                    filteredBaseCreatures = filteredBaseCreatures.Where(c => CreatureInRange(templateApplicator, allData[c].ChallengeRating, challengeRating));
+
+                    ////INFO: If the Max CR is null, then there is no upper limit.
+                    ////This means that the CR will only increase, not decrease, so we can filter out any base creatures that have a CR higher than the filter
+                    //var crRange = templateApplicator.GetChallengeRatingRange();
+                    //if (string.IsNullOrEmpty(crRange.Upper))
+                    //{
+                    //    filteredBaseCreatures = filteredBaseCreatures.Where(c => !ChallengeRatingConstants.IsGreaterThan(allData[c].ChallengeRating, challengeRating));
+                    //}
+                    ////If there is a Max CR, we can check if the filter is greater than that maximum value.
+                    //else if (ChallengeRatingConstants.IsGreaterThan(challengeRating, crRange.Upper) || ChallengeRatingConstants.IsGreaterThan(crRange.Lower, challengeRating))
+                    //{
+                    //    continue;
+                    //}
+                    ////If there is a Max CR, then the CR for any creature should decrease, so we can filter out any base creatures that have a CR lower than the filter
+                    //else
+                    //{
+                    //    filteredBaseCreatures = filteredBaseCreatures.Where(c => !ChallengeRatingConstants.IsGreaterThan(challengeRating, allData[c].ChallengeRating));
+
+                    //    var hitDiceRange = templateApplicator.GetHitDiceRange(challengeRating);
+                    //    filteredBaseCreatures = filteredBaseCreatures.Where(c => allHitDice[c] > hitDiceRange.Lower && allHitDice[c] <= hitDiceRange.Upper);
+
+                    //    //TODO: If this is Skeleton or Zombie, and the CR is low, then there might be a large number of FALSE results, which will take a long time
+                    //    //Need to figure out another filter we can add here
+                    //    //Filtering by type could be possible, but at that point we are doing the work of the template applicator, which feels weird
+                    //    //Maybe make the creature types a public property, so we can reference it here?
+                    //    //Then filter to creatures in those groups
+                    //    //Filtering by hit points (any > 20 Skeleton not valid, > 10 for Zombie), but wouldn't eliminate many options, and again, is work of the template applicator
+                    //    //Maybe return a hit point range given the CR filter, and remove creatures not in that range
+                    //}
                 }
 
                 if (!string.IsNullOrEmpty(type))
@@ -135,6 +157,13 @@ namespace DnDGen.CreatureGen.Verifiers
             }
 
             return false;
+        }
+
+        private bool CreatureInRange(TemplateApplicator applicator, string creatureChallengeRating, string filterChallengeRating)
+        {
+            var crRange = applicator.GetChallengeRatingRange(creatureChallengeRating);
+            return !ChallengeRatingConstants.IsGreaterThan(crRange.Lower, filterChallengeRating)
+                && !ChallengeRatingConstants.IsGreaterThan(filterChallengeRating, crRange.Upper);
         }
     }
 }

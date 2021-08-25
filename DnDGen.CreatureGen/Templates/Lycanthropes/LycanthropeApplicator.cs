@@ -249,6 +249,12 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             return ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, increase);
         }
 
+        public (string Lower, string Upper) GetChallengeRatingRange(string challengeRating) => (
+            ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2),
+            ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 6));
+        //public (string Lower, string Upper) GetChallengeRatingRange() => (null, null);
+        public (double? Lower, double? Upper) GetHitDiceRange(string challengeRating) => (null, null);
+
         private void UpdateCreatureLevelAdjustment(Creature creature)
         {
             if (creature.LevelAdjustment.HasValue)

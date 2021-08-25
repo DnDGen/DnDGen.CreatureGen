@@ -239,6 +239,26 @@ namespace DnDGen.CreatureGen.Templates
             throw new ArgumentException($"Zombie hit dice cannot be greater than 20, but was {hitDiceQuantity} for creature {creature}");
         }
 
+        //public (string Lower, string Upper) GetChallengeRatingRange() => (ChallengeRatingConstants.CR1_8th, ChallengeRatingConstants.CR6);
+        public (string Lower, string Upper) GetChallengeRatingRange(string challengeRating) => (ChallengeRatingConstants.CR1_8th, ChallengeRatingConstants.CR6);
+
+        public (double? Lower, double? Upper) GetHitDiceRange(string challengeRating)
+        {
+            switch (challengeRating)
+            {
+                case ChallengeRatingConstants.CR1_8th: return (0, 0.25);
+                case ChallengeRatingConstants.CR1_4th: return (0.25, 0.5);
+                case ChallengeRatingConstants.CR1_2nd: return (0.5, 1);
+                case ChallengeRatingConstants.CR1: return (1, 2);
+                case ChallengeRatingConstants.CR2: return (2, 3);
+                case ChallengeRatingConstants.CR3: return (3, 5);
+                case ChallengeRatingConstants.CR4: return (5, 7);
+                case ChallengeRatingConstants.CR5: return (7, 8);
+                case ChallengeRatingConstants.CR6: return (8, 10);
+                default: throw new ArgumentException($"Zombie challenge rating cannot be less than CR 1/8 or greater than CR 6, but was {challengeRating}");
+            }
+        }
+
         private void UpdateCreatureLevelAdjustment(Creature creature)
         {
             creature.LevelAdjustment = null;

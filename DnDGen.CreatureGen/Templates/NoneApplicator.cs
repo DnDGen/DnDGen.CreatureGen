@@ -35,6 +35,10 @@ namespace DnDGen.CreatureGen.Templates
             return data.ChallengeRating;
         }
 
+        public (string Lower, string Upper) GetChallengeRatingRange(string challengeRating) => (challengeRating, challengeRating);
+        //public (string Lower, string Upper) GetChallengeRatingRange() => (null, null);
+        public (double? Lower, double? Upper) GetHitDiceRange(string challengeRating) => (null, null);
+
         public IEnumerable<string> GetPotentialTypes(string creature)
         {
             var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);

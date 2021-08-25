@@ -232,6 +232,27 @@ namespace DnDGen.CreatureGen.Templates
             throw new ArgumentException($"Skeleton hit dice cannot be greater than 20, but was {hitDiceQuantity} for creature {creature}");
         }
 
+        //public (string Lower, string Upper) GetChallengeRatingRange() => (ChallengeRatingConstants.CR1_6th, ChallengeRatingConstants.CR8);
+        public (string Lower, string Upper) GetChallengeRatingRange(string challengeRating) => (ChallengeRatingConstants.CR1_6th, ChallengeRatingConstants.CR8);
+
+        public (double? Lower, double? Upper) GetHitDiceRange(string challengeRating)
+        {
+            switch (challengeRating)
+            {
+                case ChallengeRatingConstants.CR1_6th: return (0, 0.5);
+                case ChallengeRatingConstants.CR1_3rd: return (0.5, 1);
+                case ChallengeRatingConstants.CR1: return (1, 3);
+                case ChallengeRatingConstants.CR2: return (3, 5);
+                case ChallengeRatingConstants.CR3: return (5, 7);
+                case ChallengeRatingConstants.CR4: return (7, 9);
+                case ChallengeRatingConstants.CR5: return (9, 11);
+                case ChallengeRatingConstants.CR6: return (11, 14);
+                case ChallengeRatingConstants.CR7: return (14, 17);
+                case ChallengeRatingConstants.CR8: return (17, 20);
+                default: throw new ArgumentException($"Skeleton challenge rating cannot be less than CR 1/6 or greater than CR 8, but was {challengeRating}");
+            }
+        }
+
         private void UpdateCreatureLevelAdjustment(Creature creature)
         {
             creature.LevelAdjustment = null;
