@@ -487,14 +487,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
         [TestCase(CreatureConstants.Wolverine_Dire, CreatureConstants.Templates.None, true)]
         [TestCase(CreatureConstants.Wyvern, CreatureConstants.Templates.None, true)]
         [TestCase(CreatureConstants.Wyvern, CreatureConstants.Templates.Zombie, true)]
-        public void CreatureVerificationIsFast(string creatureName, string templateName, bool isValid)
+        public void CreatureVerification_IsValid(string creatureName, string templateName, bool isValid)
         {
-            stopwatch.Restart();
             var verified = creatureVerifier.VerifyCompatibility(false, creature: creatureName, template: templateName);
-            stopwatch.Stop();
-
             Assert.That(verified, Is.EqualTo(isValid));
-            Assert.That(stopwatch.Elapsed, Is.LessThan(timeLimit));
         }
 
         [TestCase(CreatureConstants.Aasimar, true)]
@@ -701,11 +697,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
         [TestCase(false, null, null, null, ChallengeRatingConstants.CR20, true)]
         [TestCase(false, null, null, null, ChallengeRatingConstants.CR23, true)]
         [TestCase(false, null, CreatureConstants.Templates.Skeleton, null, null, true)]
+        [TestCase(false, null, CreatureConstants.Templates.Skeleton, null, ChallengeRatingConstants.CR1_8th, false)]
+        [TestCase(false, null, CreatureConstants.Templates.Skeleton, null, ChallengeRatingConstants.CR1_6th, true)]
+        [TestCase(false, null, CreatureConstants.Templates.Skeleton, null, ChallengeRatingConstants.CR1_4th, false)]
         [TestCase(false, null, CreatureConstants.Templates.Skeleton, null, ChallengeRatingConstants.CR1, true)]
         [TestCase(false, null, CreatureConstants.Templates.Skeleton, null, ChallengeRatingConstants.CR8, true)]
         [TestCase(false, null, CreatureConstants.Templates.Skeleton, null, ChallengeRatingConstants.CR9, false)]
         [TestCase(false, null, CreatureConstants.Templates.Skeleton, null, ChallengeRatingConstants.CR20, false)]
         [TestCase(false, null, CreatureConstants.Templates.Zombie, null, null, true)]
+        [TestCase(false, null, CreatureConstants.Templates.Zombie, null, ChallengeRatingConstants.CR1_10th, false)]
+        [TestCase(false, null, CreatureConstants.Templates.Zombie, null, ChallengeRatingConstants.CR1_8th, true)]
+        [TestCase(false, null, CreatureConstants.Templates.Zombie, null, ChallengeRatingConstants.CR1_6th, false)]
+        [TestCase(false, null, CreatureConstants.Templates.Zombie, null, ChallengeRatingConstants.CR1_4th, true)]
+        [TestCase(false, null, CreatureConstants.Templates.Zombie, null, ChallengeRatingConstants.CR1_3rd, false)]
         [TestCase(false, null, CreatureConstants.Templates.Zombie, null, ChallengeRatingConstants.CR1, true)]
         [TestCase(false, null, CreatureConstants.Templates.Zombie, null, ChallengeRatingConstants.CR6, true)]
         [TestCase(false, null, CreatureConstants.Templates.Zombie, null, ChallengeRatingConstants.CR7, false)]
@@ -765,12 +769,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
         [TestCase(true, null, null, null, ChallengeRatingConstants.CR6, true)]
         [TestCase(true, null, null, null, ChallengeRatingConstants.CR14, true)]
         [TestCase(true, null, null, null, ChallengeRatingConstants.CR20, false)]
+        [TestCase(true, null, null, null, ChallengeRatingConstants.CR23, false)]
         [TestCase(true, null, CreatureConstants.Templates.Skeleton, null, null, true)]
+        [TestCase(true, null, CreatureConstants.Templates.Skeleton, null, ChallengeRatingConstants.CR1_8th, false)]
+        [TestCase(true, null, CreatureConstants.Templates.Skeleton, null, ChallengeRatingConstants.CR1_6th, true)]
+        [TestCase(true, null, CreatureConstants.Templates.Skeleton, null, ChallengeRatingConstants.CR1_4th, false)]
         [TestCase(true, null, CreatureConstants.Templates.Skeleton, null, ChallengeRatingConstants.CR1, true)]
         [TestCase(true, null, CreatureConstants.Templates.Skeleton, null, ChallengeRatingConstants.CR8, true)]
         [TestCase(true, null, CreatureConstants.Templates.Skeleton, null, ChallengeRatingConstants.CR9, false)]
         [TestCase(true, null, CreatureConstants.Templates.Skeleton, null, ChallengeRatingConstants.CR20, false)]
         [TestCase(true, null, CreatureConstants.Templates.Zombie, null, null, true)]
+        [TestCase(true, null, CreatureConstants.Templates.Zombie, null, ChallengeRatingConstants.CR1_10th, false)]
+        [TestCase(true, null, CreatureConstants.Templates.Zombie, null, ChallengeRatingConstants.CR1_8th, true)]
+        [TestCase(true, null, CreatureConstants.Templates.Zombie, null, ChallengeRatingConstants.CR1_6th, false)]
+        [TestCase(true, null, CreatureConstants.Templates.Zombie, null, ChallengeRatingConstants.CR1_4th, true)]
+        [TestCase(true, null, CreatureConstants.Templates.Zombie, null, ChallengeRatingConstants.CR1_3rd, false)]
         [TestCase(true, null, CreatureConstants.Templates.Zombie, null, ChallengeRatingConstants.CR1, true)]
         [TestCase(true, null, CreatureConstants.Templates.Zombie, null, ChallengeRatingConstants.CR6, true)]
         [TestCase(true, null, CreatureConstants.Templates.Zombie, null, ChallengeRatingConstants.CR7, false)]
@@ -822,7 +835,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
             stopwatch.Stop();
 
             Assert.That(verified, Is.EqualTo(isValid));
-            Assert.That(stopwatch.Elapsed, Is.LessThan(timeLimit));
+            Assert.That(stopwatch.Elapsed, Is.LessThan(timeLimit), $"Verified: {verified}");
         }
     }
 }

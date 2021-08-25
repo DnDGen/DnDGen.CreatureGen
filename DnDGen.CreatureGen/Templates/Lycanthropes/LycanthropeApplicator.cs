@@ -249,10 +249,15 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             return ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, increase);
         }
 
-        public (string Lower, string Upper) GetChallengeRatingRange(string challengeRating) => (
+        public IEnumerable<string> GetChallengeRatings() => null;
+        public IEnumerable<string> GetChallengeRatings(string challengeRating) => new[]
+        {
             ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2),
-            ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 6));
-        //public (string Lower, string Upper) GetChallengeRatingRange() => (null, null);
+            ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 3),
+            ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 4),
+            ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 5),
+            ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 6),
+        };
         public (double? Lower, double? Upper) GetHitDiceRange(string challengeRating) => (null, null);
 
         private void UpdateCreatureLevelAdjustment(Creature creature)

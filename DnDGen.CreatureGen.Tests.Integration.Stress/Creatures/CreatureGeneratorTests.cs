@@ -450,9 +450,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = creatureGenerator.GenerateRandomOfTypeAsCharacter(randomType);
 
             if (types.Contains(randomType))
-                Assert.That(creature.Type.Name, Is.EqualTo(randomType), creature.Summary);
+            {
+                if (creature.Template == CreatureConstants.Templates.None)
+                {
+                    Assert.That(creature.Type.Name, Is.EqualTo(randomType), creature.Summary);
+                }
+                else
+                {
+                    var allTypes = creature.Type.SubTypes.Union(new[] { creature.Type.Name });
+                    Assert.That(new[] { randomType }, Is.SubsetOf(allTypes), creature.Summary);
+                }
+            }
             else
+            {
                 Assert.That(creature.Type.SubTypes, Contains.Item(randomType), creature.Summary);
+            }
 
             creatureAsserter.AssertCreatureAsCharacter(creature);
         }

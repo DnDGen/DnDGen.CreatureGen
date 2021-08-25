@@ -235,22 +235,18 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
 
         private string UpdateCreatureChallengeRating(string challengeRating)
         {
-            var challengeRatings = ChallengeRatingConstants.GetOrdered();
-            var index = Array.IndexOf(challengeRatings, challengeRating);
-            var threeIndex = Array.IndexOf(challengeRatings, ChallengeRatingConstants.CR3);
+            var increased = ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2);
 
-            if (index > -1 && index + 2 < threeIndex)
+            if (ChallengeRatingConstants.IsGreaterThan(ChallengeRatingConstants.CR3, increased))
             {
                 return ChallengeRatingConstants.CR3;
             }
 
-            return ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2);
+            return increased;
         }
 
-        public (string Lower, string Upper) GetChallengeRatingRange(string challengeRating) => (
-            ChallengeRatingConstants.CR3,
-            ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2));
-        //public (string Lower, string Upper) GetChallengeRatingRange() => (null, null);
+        public IEnumerable<string> GetChallengeRatings() => null;
+        public IEnumerable<string> GetChallengeRatings(string challengeRating) => new[] { UpdateCreatureChallengeRating(challengeRating) };
         public (double? Lower, double? Upper) GetHitDiceRange(string challengeRating) => (null, null);
 
         private void UpdateCreatureLevelAdjustment(Creature creature)

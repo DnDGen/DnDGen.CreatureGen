@@ -55,15 +55,13 @@ namespace DnDGen.CreatureGen.Verifiers
 
                 if (!string.IsNullOrEmpty(challengeRating))
                 {
-                    //INFO: Skeleton and Zombie are the only templates that might decrease a challenge rating
-                    //If it IS a Skeleton or Zombie, we can do other filtering based on knowing their max potential CR
-                    if (template == CreatureConstants.Templates.Skeleton && ChallengeRatingConstants.IsGreaterThan(challengeRating, ChallengeRatingConstants.CR8))
+                    var templateChallengeRatings = applicator.GetChallengeRatings();
+                    if (templateChallengeRatings != null)
                     {
-                        return false;
-                    }
-                    else if (template == CreatureConstants.Templates.Zombie && ChallengeRatingConstants.IsGreaterThan(challengeRating, ChallengeRatingConstants.CR6))
-                    {
-                        return false;
+                        if (!templateChallengeRatings.Contains(challengeRating))
+                        {
+                            return false;
+                        }
                     }
                 }
 
@@ -100,34 +98,27 @@ namespace DnDGen.CreatureGen.Verifiers
                 {
                     filteredBaseCreatures = filteredBaseCreatures.Where(c => CreatureInRange(templateApplicator, allData[c].ChallengeRating, challengeRating));
 
-                    ////INFO: If the Max CR is null, then there is no upper limit.
-                    ////This means that the CR will only increase, not decrease, so we can filter out any base creatures that have a CR higher than the filter
-                    //var crRange = templateApplicator.GetChallengeRatingRange();
-                    //if (string.IsNullOrEmpty(crRange.Upper))
-                    //{
-                    //    filteredBaseCreatures = filteredBaseCreatures.Where(c => !ChallengeRatingConstants.IsGreaterThan(allData[c].ChallengeRating, challengeRating));
-                    //}
-                    ////If there is a Max CR, we can check if the filter is greater than that maximum value.
-                    //else if (ChallengeRatingConstants.IsGreaterThan(challengeRating, crRange.Upper) || ChallengeRatingConstants.IsGreaterThan(crRange.Lower, challengeRating))
-                    //{
-                    //    continue;
-                    //}
-                    ////If there is a Max CR, then the CR for any creature should decrease, so we can filter out any base creatures that have a CR lower than the filter
-                    //else
-                    //{
-                    //    filteredBaseCreatures = filteredBaseCreatures.Where(c => !ChallengeRatingConstants.IsGreaterThan(challengeRating, allData[c].ChallengeRating));
+                    //INFO: If the Max CR is null, then there is no upper limit.
+                    //This means that the CR will only increase, not decrease, so we can filter out any base creatures that have a CR higher than the filter
+                    var templateChallengeRatings = templateApplicator.GetChallengeRatings();
+                    if (templateChallengeRatings == null)
+                    {
+                        filteredBaseCreatures = filteredBaseCreatures.Where(c => !ChallengeRatingConstants.IsGreaterThan(allData[c].ChallengeRating, challengeRating));
+                    }
+                    //If there is a Max CR, we can check if the filter is greater than that maximum value.
+                    else if (!templateChallengeRatings.Contains(challengeRating))
+                    {
+                        continue;
+                    }
+                    //If there is a Max CR, then the CR for any creature should decrease, so we can filter out any base creatures that have a CR lower than the filter
+                    else
+                    {
+                        filteredBaseCreatures = filteredBaseCreatures.Where(c => !ChallengeRatingConstants.IsGreaterThan(challengeRating, allData[c].ChallengeRating));
 
-                    //    var hitDiceRange = templateApplicator.GetHitDiceRange(challengeRating);
-                    //    filteredBaseCreatures = filteredBaseCreatures.Where(c => allHitDice[c] > hitDiceRange.Lower && allHitDice[c] <= hitDiceRange.Upper);
-
-                    //    //TODO: If this is Skeleton or Zombie, and the CR is low, then there might be a large number of FALSE results, which will take a long time
-                    //    //Need to figure out another filter we can add here
-                    //    //Filtering by type could be possible, but at that point we are doing the work of the template applicator, which feels weird
-                    //    //Maybe make the creature types a public property, so we can reference it here?
-                    //    //Then filter to creatures in those groups
-                    //    //Filtering by hit points (any > 20 Skeleton not valid, > 10 for Zombie), but wouldn't eliminate many options, and again, is work of the template applicator
-                    //    //Maybe return a hit point range given the CR filter, and remove creatures not in that range
-                    //}
+                        //We can also filter based on the hit dice range that would grant the desired challenge rating filter
+                        var hitDiceRange = templateApplicator.GetHitDiceRange(challengeRating);
+                        filteredBaseCreatures = filteredBaseCreatures.Where(c => allHitDice[c] > hitDiceRange.Lower && allHitDice[c] <= hitDiceRange.Upper);
+                    }
                 }
 
                 if (!string.IsNullOrEmpty(type))
@@ -161,9 +152,10 @@ namespace DnDGen.CreatureGen.Verifiers
 
         private bool CreatureInRange(TemplateApplicator applicator, string creatureChallengeRating, string filterChallengeRating)
         {
-            var crRange = applicator.GetChallengeRatingRange(creatureChallengeRating);
-            return !ChallengeRatingConstants.IsGreaterThan(crRange.Lower, filterChallengeRating)
-                && !ChallengeRatingConstants.IsGreaterThan(filterChallengeRating, crRange.Upper);
+            var templateChallengeRatings = applicator.GetChallengeRatings(creatureChallengeRating);
+            var crInRange = templateChallengeRatings.Contains(filterChallengeRating);
+
+            return crInRange;
         }
     }
 }

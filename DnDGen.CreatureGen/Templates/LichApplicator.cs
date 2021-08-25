@@ -187,10 +187,11 @@ namespace DnDGen.CreatureGen.Templates
             return ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2);
         }
 
-        public (string Lower, string Upper) GetChallengeRatingRange(string challengeRating) => (
+        public IEnumerable<string> GetChallengeRatings() => null;
+        public IEnumerable<string> GetChallengeRatings(string challengeRating) => new[]
+        {
             ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2),
-            ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2));
-        //public (string Lower, string Upper) GetChallengeRatingRange() => (null, null);
+        };
         public (double? Lower, double? Upper) GetHitDiceRange(string challengeRating) => (null, null);
 
         private void UpdateCreatureAttacks(Creature creature)

@@ -232,8 +232,20 @@ namespace DnDGen.CreatureGen.Templates
             throw new ArgumentException($"Skeleton hit dice cannot be greater than 20, but was {hitDiceQuantity} for creature {creature}");
         }
 
-        //public (string Lower, string Upper) GetChallengeRatingRange() => (ChallengeRatingConstants.CR1_6th, ChallengeRatingConstants.CR8);
-        public (string Lower, string Upper) GetChallengeRatingRange(string challengeRating) => (ChallengeRatingConstants.CR1_6th, ChallengeRatingConstants.CR8);
+        public IEnumerable<string> GetChallengeRatings() => new[]
+        {
+            ChallengeRatingConstants.CR1_6th,
+            ChallengeRatingConstants.CR1_3rd,
+            ChallengeRatingConstants.CR1,
+            ChallengeRatingConstants.CR2,
+            ChallengeRatingConstants.CR3,
+            ChallengeRatingConstants.CR4,
+            ChallengeRatingConstants.CR5,
+            ChallengeRatingConstants.CR6,
+            ChallengeRatingConstants.CR7,
+            ChallengeRatingConstants.CR8,
+        };
+        public IEnumerable<string> GetChallengeRatings(string challengeRating) => GetChallengeRatings();
 
         public (double? Lower, double? Upper) GetHitDiceRange(string challengeRating)
         {
@@ -489,7 +501,8 @@ namespace DnDGen.CreatureGen.Templates
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
-                if (ChallengeRatingConstants.IsGreaterThan(challengeRating, ChallengeRatingConstants.CR8))
+                if (ChallengeRatingConstants.IsGreaterThan(challengeRating, ChallengeRatingConstants.CR8)
+                    || ChallengeRatingConstants.IsGreaterThan(ChallengeRatingConstants.CR1_6th, challengeRating))
                 {
                     return false;
                 }

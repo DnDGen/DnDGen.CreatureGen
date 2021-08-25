@@ -17,6 +17,7 @@ using DnDGen.CreatureGen.Verifiers;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Generators;
 using DnDGen.Infrastructure.Selectors.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -119,6 +120,12 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var creatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters);
             var templateCreatures = GetCreaturesOfTemplate(template, creatures, challengeRating: challengeRating);
 
+            if (!templateCreatures.Any())
+            {
+                var cr = string.IsNullOrEmpty(challengeRating) ? string.Empty : $" (CR {challengeRating})";
+                throw new Exception($"No characters exist for template {template}{cr}");
+            }
+
             var randomCreature = collectionsSelector.SelectRandomFrom(templateCreatures);
             return randomCreature;
         }
@@ -172,6 +179,12 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         {
             var creatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All);
             var pairings = GetCreaturesOfChallengeRating(challengeRating, creatures);
+
+            if (!pairings.Any())
+            {
+                throw new ArgumentException($"No creatures exist at CR {challengeRating}");
+            }
+
             var randomCreature = collectionsSelector.SelectRandomFrom(pairings);
 
             return randomCreature;
