@@ -180,7 +180,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
                 .Returns(1);
 
-            var isCompatible = applicator.IsCompatible("my creature");
+            var isCompatible = applicator.IsCompatible("my creature", false);
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
@@ -199,7 +199,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
                 .Returns(1);
 
-            var isCompatible = applicator.IsCompatible("my creature");
+            var isCompatible = applicator.IsCompatible("my creature", false);
             Assert.That(isCompatible, Is.False);
         }
 
@@ -218,7 +218,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
                 .Returns(1);
 
-            var isCompatible = applicator.IsCompatible("my creature");
+            var isCompatible = applicator.IsCompatible("my creature", false);
+            Assert.That(isCompatible, Is.False);
+        }
+
+        [Test]
+        public void IsCompatible_CannotBeCharacter()
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton))
+                .Returns(new[] { "my wrong creature", "my creature", "my other creature" });
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
+                .Returns(1);
+
+            var isCompatible = applicator.IsCompatible("my creature", true);
             Assert.That(isCompatible, Is.False);
         }
 
@@ -249,7 +268,112 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
                 .Returns(hitDice);
 
-            var isCompatible = applicator.IsCompatible("my creature");
+            var isCompatible = applicator.IsCompatible("my creature", false);
+            Assert.That(isCompatible, Is.EqualTo(compatible));
+        }
+
+        [TestCase(null, true)]
+        [TestCase(CreatureConstants.Types.Humanoid, false)]
+        [TestCase(CreatureConstants.Types.Undead, true)]
+        [TestCase("subtype 1", true)]
+        [TestCase("subtype 2", true)]
+        [TestCase(CreatureConstants.Types.Subtypes.Extraplanar, false)]
+        [TestCase(CreatureConstants.Types.Subtypes.Augmented, false)]
+        [TestCase("wrong type", false)]
+        public void IsCompatible_TypeMustMatch(string type, bool compatible)
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton))
+                .Returns(new[] { "my wrong creature", "my creature", "my other creature" });
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
+                .Returns(1);
+
+            var isCompatible = applicator.IsCompatible("my creature", false, type: type);
+            Assert.That(isCompatible, Is.EqualTo(compatible));
+        }
+
+        [TestCase(.1, ChallengeRatingConstants.CR1_10th, false)]
+        [TestCase(.1, ChallengeRatingConstants.CR1_8th, true)]
+        [TestCase(.1, ChallengeRatingConstants.CR1_6th, false)]
+        [TestCase(.25, ChallengeRatingConstants.CR1_10th, false)]
+        [TestCase(.25, ChallengeRatingConstants.CR1_8th, true)]
+        [TestCase(.25, ChallengeRatingConstants.CR1_6th, false)]
+        [TestCase(.5, ChallengeRatingConstants.CR1_4th, false)]
+        [TestCase(.5, ChallengeRatingConstants.CR1_4th, true)]
+        [TestCase(.5, ChallengeRatingConstants.CR1_4th, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd, true)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(2, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(2, ChallengeRatingConstants.CR1, true)]
+        [TestCase(2, ChallengeRatingConstants.CR2, false)]
+        [TestCase(3, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(3, ChallengeRatingConstants.CR2, true)]
+        [TestCase(3, ChallengeRatingConstants.CR3, false)]
+        [TestCase(4, ChallengeRatingConstants.CR2, false)]
+        [TestCase(4, ChallengeRatingConstants.CR3, true)]
+        [TestCase(4, ChallengeRatingConstants.CR4, false)]
+        [TestCase(5, ChallengeRatingConstants.CR2, false)]
+        [TestCase(5, ChallengeRatingConstants.CR3, true)]
+        [TestCase(5, ChallengeRatingConstants.CR4, false)]
+        [TestCase(6, ChallengeRatingConstants.CR3, false)]
+        [TestCase(6, ChallengeRatingConstants.CR4, true)]
+        [TestCase(6, ChallengeRatingConstants.CR5, false)]
+        [TestCase(7, ChallengeRatingConstants.CR3, false)]
+        [TestCase(7, ChallengeRatingConstants.CR4, true)]
+        [TestCase(7, ChallengeRatingConstants.CR5, false)]
+        [TestCase(8, ChallengeRatingConstants.CR4, false)]
+        [TestCase(8, ChallengeRatingConstants.CR5, true)]
+        [TestCase(8, ChallengeRatingConstants.CR6, false)]
+        [TestCase(9, ChallengeRatingConstants.CR5, false)]
+        [TestCase(9, ChallengeRatingConstants.CR6, true)]
+        [TestCase(9, ChallengeRatingConstants.CR7, false)]
+        [TestCase(10, ChallengeRatingConstants.CR5, false)]
+        [TestCase(10, ChallengeRatingConstants.CR6, true)]
+        [TestCase(10, ChallengeRatingConstants.CR7, false)]
+        public void IsCompatible_ChallengeRatingMustMatch(double hitDiceQuantity, string challengeRating, bool compatible)
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton))
+                .Returns(new[] { "my wrong creature", "my creature", "my other creature" });
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
+                .Returns(hitDiceQuantity);
+
+            var isCompatible = applicator.IsCompatible("my creature", false, challengeRating: challengeRating);
+            Assert.That(isCompatible, Is.EqualTo(compatible));
+        }
+
+        [TestCase(CreatureConstants.Types.Undead, ChallengeRatingConstants.CR2, true)]
+        [TestCase(CreatureConstants.Types.Undead, ChallengeRatingConstants.CR1, false)]
+        [TestCase("wrong subtype", ChallengeRatingConstants.CR2, false)]
+        [TestCase("wrong subtype", ChallengeRatingConstants.CR1, false)]
+        public void IsCompatible_TypeAndChallengeRatingMustMatch(string type, string challengeRating, bool compatible)
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton))
+                .Returns(new[] { "my wrong creature", "my creature", "my other creature" });
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
+                .Returns(5);
+
+            var isCompatible = applicator.IsCompatible("my creature", false, type: type, challengeRating: challengeRating);
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
@@ -1150,7 +1274,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
                 .Returns(hitDice);
 
-            var cr = applicator.GetPotentialChallengeRating("my creature");
+            var cr = applicator.GetPotentialChallengeRating("my creature", false);
             Assert.That(cr, Is.EqualTo(challengeRating));
         }
 
@@ -1164,8 +1288,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
                 .Returns(hitDice);
 
-            Assert.That(() => applicator.GetPotentialChallengeRating("my creature"),
+            Assert.That(() => applicator.GetPotentialChallengeRating("my creature", false),
                 Throws.ArgumentException.With.Message.EqualTo($"Zombie hit dice cannot be greater than 20, but was {hitDice * 2} for creature my creature"));
+        }
+
+        [Test]
+        public void GetPotentialChallengeRating_ThrowsException_IfCharacter()
+        {
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
+                .Returns(1);
+
+            Assert.That(() => applicator.GetPotentialChallengeRating("my creature", true),
+                Throws.ArgumentException.With.Message.EqualTo("Zombies cannot be characterse"));
         }
 
         [TestCase(.1, ChallengeRatingConstants.CR1_8th)]
@@ -2119,6 +2254,58 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.Zombie));
+        }
+
+        [Test]
+        public void GetChallengeRatings_ReturnsChallengeRatings()
+        {
+            var challengeRatings = applicator.GetChallengeRatings();
+            Assert.That(challengeRatings, Is.EqualTo(new[]
+            {
+                ChallengeRatingConstants.CR1_8th,
+                ChallengeRatingConstants.CR1_4th,
+                ChallengeRatingConstants.CR1_2nd,
+                ChallengeRatingConstants.CR1,
+                ChallengeRatingConstants.CR2,
+                ChallengeRatingConstants.CR3,
+                ChallengeRatingConstants.CR4,
+                ChallengeRatingConstants.CR5,
+                ChallengeRatingConstants.CR6,
+            }));
+        }
+
+        [Test]
+        public void GetChallengeRatings_FromChallengeRating_ReturnsAdjustedChallengeRating()
+        {
+            var challengeRatings = applicator.GetChallengeRatings("my challenge rating");
+            Assert.That(challengeRatings, Is.EqualTo(new[]
+            {
+                ChallengeRatingConstants.CR1_8th,
+                ChallengeRatingConstants.CR1_4th,
+                ChallengeRatingConstants.CR1_2nd,
+                ChallengeRatingConstants.CR1,
+                ChallengeRatingConstants.CR2,
+                ChallengeRatingConstants.CR3,
+                ChallengeRatingConstants.CR4,
+                ChallengeRatingConstants.CR5,
+                ChallengeRatingConstants.CR6,
+            }));
+        }
+
+        [TestCase(ChallengeRatingConstants.CR1_8th, 0, 0.25)]
+        [TestCase(ChallengeRatingConstants.CR1_4th, 0.25, 0.5)]
+        [TestCase(ChallengeRatingConstants.CR1_2nd, 0.5, 1)]
+        [TestCase(ChallengeRatingConstants.CR1, 1, 2)]
+        [TestCase(ChallengeRatingConstants.CR2, 2, 3)]
+        [TestCase(ChallengeRatingConstants.CR3, 3, 5)]
+        [TestCase(ChallengeRatingConstants.CR4, 5, 7)]
+        [TestCase(ChallengeRatingConstants.CR5, 7, 8)]
+        [TestCase(ChallengeRatingConstants.CR6, 8, 10)]
+        public void GetHitDiceRange_ReturnsNull(string challengeRating, double lower, double upper)
+        {
+            var hitDice = applicator.GetHitDiceRange(challengeRating);
+            Assert.That(hitDice.Lower, Is.EqualTo(lower));
+            Assert.That(hitDice.Upper, Is.EqualTo(upper));
         }
     }
 }

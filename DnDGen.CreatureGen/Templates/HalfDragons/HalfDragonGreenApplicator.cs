@@ -22,8 +22,19 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
                 IAlignmentGenerator alignmentGenerator,
                 Dice dice,
                 IMagicGenerator magicGenerator,
-                ICreatureDataSelector creatureDataSelector)
-            : base(collectionSelector, speedsGenerator, attacksGenerator, featsGenerator, skillsGenerator, alignmentGenerator, dice, magicGenerator, creatureDataSelector)
+                ICreatureDataSelector creatureDataSelector,
+                IAdjustmentsSelector adjustmentSelector)
+            : base(
+                  collectionSelector,
+                  speedsGenerator,
+                  attacksGenerator,
+                  featsGenerator,
+                  skillsGenerator,
+                  alignmentGenerator,
+                  dice,
+                  magicGenerator,
+                  creatureDataSelector,
+                  adjustmentSelector)
         {
         }
 

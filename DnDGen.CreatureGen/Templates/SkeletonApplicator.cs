@@ -487,8 +487,12 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public bool IsCompatible(string creature, string type = null, string challengeRating = null)
+        public bool IsCompatible(string creature, bool asCharacter, string type = null, string challengeRating = null)
         {
+            //INFO: Skeletons cannot be characters - they explicitly lose their class levels and abilities.
+            if (asCharacter)
+                return false;
+
             if (!IsCompatible(creature))
                 return false;
 
@@ -501,13 +505,13 @@ namespace DnDGen.CreatureGen.Templates
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
-                if (ChallengeRatingConstants.IsGreaterThan(challengeRating, ChallengeRatingConstants.CR8)
-                    || ChallengeRatingConstants.IsGreaterThan(ChallengeRatingConstants.CR1_6th, challengeRating))
+                var crRange = GetChallengeRatings();
+                if (!crRange.Contains(challengeRating))
                 {
                     return false;
                 }
 
-                var cr = GetPotentialChallengeRating(creature);
+                var cr = GetPotentialChallengeRating(creature, asCharacter);
                 if (cr != challengeRating)
                     return false;
             }
@@ -546,8 +550,11 @@ namespace DnDGen.CreatureGen.Templates
             return adjustedTypes;
         }
 
-        public string GetPotentialChallengeRating(string creature)
+        public string GetPotentialChallengeRating(string creature, bool asCharacter)
         {
+            if (asCharacter)
+                throw new ArgumentException($"Skeletons cannot be characters");
+
             var quantity = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, creature);
             var adjustedChallengeRating = UpdateCreatureChallengeRating(quantity, creature);
 

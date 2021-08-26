@@ -6,12 +6,12 @@ namespace DnDGen.CreatureGen.Templates
 {
     internal interface TemplateApplicator
     {
-        bool IsCompatible(string creature, string type = null, string challengeRating = null);
+        bool IsCompatible(string creature, bool asCharacter, string type = null, string challengeRating = null);
         IEnumerable<string> GetPotentialTypes(string creature);
         IEnumerable<string> GetChallengeRatings(string challengeRating);
         IEnumerable<string> GetChallengeRatings();
         (double? Lower, double? Upper) GetHitDiceRange(string challengeRating);
-        string GetPotentialChallengeRating(string creature);
+        string GetPotentialChallengeRating(string creature, bool asCharacter);
 
         Creature ApplyTo(Creature creature);
         Task<Creature> ApplyToAsync(Creature creature);

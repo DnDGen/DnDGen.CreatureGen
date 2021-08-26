@@ -71,7 +71,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             };
         }
 
-        public bool IsCompatible(string creature, string type = null, string challengeRating = null)
+        public bool IsCompatible(string creature, bool asCharacter, string type = null, string challengeRating = null)
         {
             if (!IsCompatible(creature))
                 return false;
@@ -85,7 +85,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
-                var cr = GetPotentialChallengeRating(creature);
+                var cr = GetPotentialChallengeRating(creature, asCharacter);
                 if (cr != challengeRating)
                     return false;
             }
@@ -717,12 +717,20 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             return adjustedTypes;
         }
 
-        public string GetPotentialChallengeRating(string creature)
+        public string GetPotentialChallengeRating(string creature, bool asCharacter)
         {
-            var quantity = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, AnimalSpecies);
-            var data = creatureDataSelector.SelectFor(creature);
+            var creatureQuantity = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, creature);
+            var animalQuantity = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, AnimalSpecies);
+            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
+            var creatureType = types.First();
 
-            var adjustedChallengeRating = UpdateCreatureChallengeRating(data.ChallengeRating, quantity);
+            if (asCharacter && creatureQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
+            {
+                return UpdateCreatureChallengeRating(ChallengeRatingConstants.CR0, animalQuantity);
+            }
+
+            var data = creatureDataSelector.SelectFor(creature);
+            var adjustedChallengeRating = UpdateCreatureChallengeRating(data.ChallengeRating, animalQuantity);
 
             return adjustedChallengeRating;
         }

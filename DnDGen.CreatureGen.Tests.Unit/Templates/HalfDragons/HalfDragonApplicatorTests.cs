@@ -24,7 +24,6 @@ using DnDGen.RollGen;
 using DnDGen.TreasureGen.Items;
 using Moq;
 using NUnit.Framework;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,6 +45,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         private Mock<IAlignmentGenerator> mockAlignmentGenerator;
         private Mock<IMagicGenerator> mockMagicGenerator;
         private Mock<ICreatureDataSelector> mockCreatureDataSelector;
+        private Mock<IAdjustmentsSelector> mockAdjustmentSelector;
 
         private static IEnumerable<string> templates = new[]
         {
@@ -75,6 +75,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             mockAlignmentGenerator = new Mock<IAlignmentGenerator>();
             mockMagicGenerator = new Mock<IMagicGenerator>();
             mockCreatureDataSelector = new Mock<ICreatureDataSelector>();
+            mockAdjustmentSelector = new Mock<IAdjustmentsSelector>();
 
             applicators = new Dictionary<string, TemplateApplicator>();
             applicators[CreatureConstants.Templates.HalfDragon_Black] = new HalfDragonBlackApplicator(
@@ -86,7 +87,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockAlignmentGenerator.Object,
                 mockDice.Object,
                 mockMagicGenerator.Object,
-                mockCreatureDataSelector.Object);
+                mockCreatureDataSelector.Object,
+                mockAdjustmentSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Blue] = new HalfDragonBlueApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -96,7 +98,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockAlignmentGenerator.Object,
                 mockDice.Object,
                 mockMagicGenerator.Object,
-                mockCreatureDataSelector.Object);
+                mockCreatureDataSelector.Object,
+                mockAdjustmentSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Brass] = new HalfDragonBrassApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -106,7 +109,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockAlignmentGenerator.Object,
                 mockDice.Object,
                 mockMagicGenerator.Object,
-                mockCreatureDataSelector.Object);
+                mockCreatureDataSelector.Object,
+                mockAdjustmentSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Bronze] = new HalfDragonBronzeApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -116,7 +120,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockAlignmentGenerator.Object,
                 mockDice.Object,
                 mockMagicGenerator.Object,
-                mockCreatureDataSelector.Object);
+                mockCreatureDataSelector.Object,
+                mockAdjustmentSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Copper] = new HalfDragonCopperApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -126,7 +131,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockAlignmentGenerator.Object,
                 mockDice.Object,
                 mockMagicGenerator.Object,
-                mockCreatureDataSelector.Object);
+                mockCreatureDataSelector.Object,
+                mockAdjustmentSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Gold] = new HalfDragonGoldApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -136,7 +142,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockAlignmentGenerator.Object,
                 mockDice.Object,
                 mockMagicGenerator.Object,
-                mockCreatureDataSelector.Object);
+                mockCreatureDataSelector.Object,
+                mockAdjustmentSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Green] = new HalfDragonGreenApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -146,7 +153,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockAlignmentGenerator.Object,
                 mockDice.Object,
                 mockMagicGenerator.Object,
-                mockCreatureDataSelector.Object);
+                mockCreatureDataSelector.Object,
+                mockAdjustmentSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Red] = new HalfDragonRedApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -156,7 +164,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockAlignmentGenerator.Object,
                 mockDice.Object,
                 mockMagicGenerator.Object,
-                mockCreatureDataSelector.Object);
+                mockCreatureDataSelector.Object,
+                mockAdjustmentSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Silver] = new HalfDragonSilverApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -166,7 +175,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockAlignmentGenerator.Object,
                 mockDice.Object,
                 mockMagicGenerator.Object,
-                mockCreatureDataSelector.Object);
+                mockCreatureDataSelector.Object,
+                mockAdjustmentSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_White] = new HalfDragonWhiteApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -176,7 +186,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockAlignmentGenerator.Object,
                 mockDice.Object,
                 mockMagicGenerator.Object,
-                mockCreatureDataSelector.Object);
+                mockCreatureDataSelector.Object,
+                mockAdjustmentSelector.Object);
 
             baseCreature = new CreatureBuilder().WithTestValues().Build();
             baseCreature.HitPoints.HitDice[0].HitDie = 8;
@@ -218,7 +229,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
                 .Returns(new[] { creatureType, "subtype 1", "subtype 2" });
 
-            var isCompatible = applicators[template].IsCompatible("my creature");
+            var isCompatible = applicators[template].IsCompatible("my creature", false);
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
@@ -262,7 +273,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
                 .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", CreatureConstants.Types.Subtypes.Incorporeal, "subtype 2" });
 
-            var isCompatible = applicators[template].IsCompatible("my creature");
+            var isCompatible = applicators[template].IsCompatible("my creature", false);
             Assert.That(isCompatible, Is.False);
         }
 
@@ -273,7 +284,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
                 .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
 
-            var isCompatible = applicators[template].IsCompatible("my creature", type: type);
+            var isCompatible = applicators[template].IsCompatible("my creature", false, type: type);
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
@@ -305,7 +316,89 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Setup(s => s.SelectFor("my creature"))
                 .Returns(new CreatureDataSelection { ChallengeRating = original });
 
-            var isCompatible = applicators[template].IsCompatible("my creature", challengeRating: challengeRating);
+            var isCompatible = applicators[template].IsCompatible("my creature", false, challengeRating: challengeRating);
+            Assert.That(isCompatible, Is.EqualTo(compatible));
+        }
+
+        [TestCaseSource(nameof(ChallengeRatingAdjustments_Filtered_HumanoidCharacter))]
+        public void IsCompatible_ChallengeRatingMustMatch_HumanoidAsCharacter(string template, string original, string challengeRating, bool compatible)
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor("my creature"))
+                .Returns(new CreatureDataSelection { ChallengeRating = original });
+
+            var isCompatible = applicators[template].IsCompatible("my creature", true, challengeRating: challengeRating);
+            Assert.That(isCompatible, Is.EqualTo(compatible));
+        }
+
+        private static IEnumerable ChallengeRatingAdjustments_Filtered_HumanoidCharacter
+        {
+            get
+            {
+                foreach (var template in templates)
+                {
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, true);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR4, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1_2nd, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, true);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR1_2nd, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR1, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, true);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR3, ChallengeRatingConstants.CR1_2nd, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR3, ChallengeRatingConstants.CR1, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR3, ChallengeRatingConstants.CR2, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR3, ChallengeRatingConstants.CR3, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR3, ChallengeRatingConstants.CR4, true);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR3, ChallengeRatingConstants.CR5, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR1_2nd, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR1, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR2, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR3, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR4, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR9, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR10, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR11, true);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR12, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR13, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR1_2nd, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR1, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR2, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR3, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR4, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR19, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR20, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR21, true);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR22, false);
+                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR23, false);
+                }
+            }
+        }
+
+        [TestCaseSource(nameof(ChallengeRatingAdjustments_Filtered))]
+        public void IsCompatible_ChallengeRatingMustMatch_NonHumanoidAsCharacter(string template, string original, string challengeRating, bool compatible)
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Giant, "subtype 1", "subtype 2" });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor("my creature"))
+                .Returns(new CreatureDataSelection { ChallengeRating = original });
+
+            var isCompatible = applicators[template].IsCompatible("my creature", true, challengeRating: challengeRating);
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
@@ -366,7 +459,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Setup(s => s.SelectFor("my creature"))
                 .Returns(new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR2 });
 
-            var isCompatible = applicators[template].IsCompatible("my creature", challengeRating: challengeRating, type: type);
+            var isCompatible = applicators[template].IsCompatible("my creature", false, challengeRating: challengeRating, type: type);
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
@@ -1393,11 +1486,66 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         [TestCaseSource(nameof(ChallengeRatingAdjustments))]
         public void GetPotentialChallengeRating_ChallengeRatingAdjusted(string template, string original, string adjusted)
         {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
             mockCreatureDataSelector
                 .Setup(s => s.SelectFor("my creature"))
                 .Returns(new CreatureDataSelection { ChallengeRating = original });
 
-            var challengeRating = applicators[template].GetPotentialChallengeRating("my creature");
+            var challengeRating = applicators[template].GetPotentialChallengeRating("my creature", false);
+            Assert.That(challengeRating, Is.EqualTo(adjusted));
+        }
+
+        [TestCaseSource(nameof(ChallengeRatingAdjustments_HumanoidCharacter))]
+        public void GetPotentialChallengeRating_ChallengeRatingAdjusted_HumanoidAsCharacter(string template, string original, string adjusted)
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor("my creature"))
+                .Returns(new CreatureDataSelection { ChallengeRating = original });
+
+            var challengeRating = applicators[template].GetPotentialChallengeRating("my creature", true);
+            Assert.That(challengeRating, Is.EqualTo(adjusted));
+        }
+
+        private static IEnumerable ChallengeRatingAdjustments_HumanoidCharacter
+        {
+            get
+            {
+                var challengeRatings = ChallengeRatingConstants.GetOrdered();
+
+                foreach (var template in templates)
+                {
+                    foreach (var challengeRating in challengeRatings)
+                    {
+                        var increased = ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 1);
+
+                        if (ChallengeRatingConstants.IsGreaterThan(ChallengeRatingConstants.CR3, increased))
+                            yield return new TestCaseData(template, challengeRating, ChallengeRatingConstants.CR3);
+                        else
+                            yield return new TestCaseData(template, challengeRating, increased);
+                    }
+                }
+            }
+        }
+
+        [TestCaseSource(nameof(ChallengeRatingAdjustments))]
+        public void GetPotentialChallengeRating_ChallengeRatingAdjusted_NonHumanoidAsCharacter(string template, string original, string adjusted)
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Giant, "subtype 1", "subtype 2" });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor("my creature"))
+                .Returns(new CreatureDataSelection { ChallengeRating = original });
+
+            var challengeRating = applicators[template].GetPotentialChallengeRating("my creature", true);
             Assert.That(challengeRating, Is.EqualTo(adjusted));
         }
 
@@ -1416,18 +1564,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             get
             {
                 var challengeRatings = ChallengeRatingConstants.GetOrdered();
-                var minIndex = Array.IndexOf(challengeRatings, ChallengeRatingConstants.CR3);
 
                 foreach (var template in templates)
                 {
-                    for (var i = 0; i < challengeRatings.Length; i++)
+                    foreach (var challengeRating in challengeRatings)
                     {
-                        var increased = ChallengeRatingConstants.IncreaseChallengeRating(challengeRatings[i], 2);
+                        var increased = ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2);
 
-                        if (i + 2 < minIndex)
-                            yield return new TestCaseData(template, challengeRatings[i], ChallengeRatingConstants.CR3);
+                        if (ChallengeRatingConstants.IsGreaterThan(ChallengeRatingConstants.CR3, increased))
+                            yield return new TestCaseData(template, challengeRating, ChallengeRatingConstants.CR3);
                         else
-                            yield return new TestCaseData(template, challengeRatings[i], increased);
+                            yield return new TestCaseData(template, challengeRating, increased);
                     }
                 }
             }
@@ -2629,6 +2776,28 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             var creature = await applicators[template].ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Magic, Is.EqualTo(dragonMagic));
+        }
+
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
+        public void GetChallengeRatings_ReturnsNull(string template)
+        {
+            var challengeRatings = applicators[template].GetChallengeRatings();
+            Assert.That(challengeRatings, Is.Null);
+        }
+
+        [TestCaseSource(nameof(ChallengeRatingAdjustments))]
+        public void GetChallengeRatings_FromChallengeRating_ReturnsAdjustedChallengeRating(string template, string challengeRating, string adjusted)
+        {
+            var challengeRatings = applicators[template].GetChallengeRatings(challengeRating);
+            Assert.That(challengeRatings, Is.EqualTo(new[] { adjusted }));
+        }
+
+        [TestCaseSource(nameof(ChallengeRatingAdjustments))]
+        public void GetHitDiceRange_ReturnsNull(string template, string challengeRating, string adjusted)
+        {
+            var hitDice = applicators[template].GetHitDiceRange(challengeRating);
+            Assert.That(hitDice.Lower, Is.Null);
+            Assert.That(hitDice.Upper, Is.Null);
         }
     }
 }

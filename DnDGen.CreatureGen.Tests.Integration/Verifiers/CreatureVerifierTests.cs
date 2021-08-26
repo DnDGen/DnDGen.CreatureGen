@@ -780,7 +780,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
         [TestCase(true, null, CreatureConstants.Templates.Skeleton, null, ChallengeRatingConstants.CR20, false)]
         [TestCase(true, null, CreatureConstants.Templates.Zombie, null, null, true)]
         [TestCase(true, null, CreatureConstants.Templates.Zombie, null, ChallengeRatingConstants.CR1_10th, false)]
-        [TestCase(true, null, CreatureConstants.Templates.Zombie, null, ChallengeRatingConstants.CR1_8th, true)]
+        [TestCase(true, null, CreatureConstants.Templates.Zombie, null, ChallengeRatingConstants.CR1_8th, false)]
         [TestCase(true, null, CreatureConstants.Templates.Zombie, null, ChallengeRatingConstants.CR1_6th, false)]
         [TestCase(true, null, CreatureConstants.Templates.Zombie, null, ChallengeRatingConstants.CR1_4th, true)]
         [TestCase(true, null, CreatureConstants.Templates.Zombie, null, ChallengeRatingConstants.CR1_3rd, false)]

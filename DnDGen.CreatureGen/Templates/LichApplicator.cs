@@ -25,6 +25,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IAttacksGenerator attacksGenerator;
         private readonly IFeatsGenerator featsGenerator;
         private readonly ITypeAndAmountSelector typeAndAmountSelector;
+        private readonly IAdjustmentsSelector adjustmentSelector;
 
         private const int PhylacterySpellLevel = 11;
 
@@ -34,7 +35,8 @@ namespace DnDGen.CreatureGen.Templates
             Dice dice,
             IAttacksGenerator attacksGenerator,
             IFeatsGenerator featsGenerator,
-            ITypeAndAmountSelector typeAndAmountSelector)
+            ITypeAndAmountSelector typeAndAmountSelector,
+            IAdjustmentsSelector adjustmentSelector)
         {
             this.collectionSelector = collectionSelector;
             this.creatureDataSelector = creatureDataSelector;
@@ -42,6 +44,7 @@ namespace DnDGen.CreatureGen.Templates
             this.attacksGenerator = attacksGenerator;
             this.featsGenerator = featsGenerator;
             this.typeAndAmountSelector = typeAndAmountSelector;
+            this.adjustmentSelector = adjustmentSelector;
         }
 
         public Creature ApplyTo(Creature creature)
@@ -295,7 +298,7 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public bool IsCompatible(string creature, string type = null, string challengeRating = null)
+        public bool IsCompatible(string creature, bool asCharacter, string type = null, string challengeRating = null)
         {
             if (!IsCompatible(creature))
                 return false;
@@ -309,7 +312,7 @@ namespace DnDGen.CreatureGen.Templates
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
-                var cr = GetPotentialChallengeRating(creature);
+                var cr = GetPotentialChallengeRating(creature, asCharacter);
                 if (cr != challengeRating)
                     return false;
             }
@@ -356,8 +359,17 @@ namespace DnDGen.CreatureGen.Templates
             return adjustedTypes;
         }
 
-        public string GetPotentialChallengeRating(string creature)
+        public string GetPotentialChallengeRating(string creature, bool asCharacter)
         {
+            var quantity = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, creature);
+            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
+            var creatureType = types.First();
+
+            if (asCharacter && quantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
+            {
+                return UpdateCreatureChallengeRating(ChallengeRatingConstants.CR0);
+            }
+
             var data = creatureDataSelector.SelectFor(creature);
             var adjustedChallengeRating = UpdateCreatureChallengeRating(data.ChallengeRating);
 

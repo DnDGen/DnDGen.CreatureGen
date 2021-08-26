@@ -91,16 +91,16 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 throw new InvalidCreatureException(false, template: template, challengeRating: challengeRating);
 
             var creatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All);
-            var templateCreatures = GetCreaturesOfTemplate(template, creatures, challengeRating: challengeRating);
+            var templateCreatures = GetCreaturesOfTemplate(template, creatures, false, challengeRating: challengeRating);
 
             var randomCreature = collectionsSelector.SelectRandomFrom(templateCreatures);
             return randomCreature;
         }
 
-        private IEnumerable<string> GetCreaturesOfTemplate(string template, IEnumerable<string> creatureGroup, string creatureType = null, string challengeRating = null)
+        private IEnumerable<string> GetCreaturesOfTemplate(string template, IEnumerable<string> creatureGroup, bool asCharacter, string creatureType = null, string challengeRating = null)
         {
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
-            var creatures = creatureGroup.Where(c => templateApplicator.IsCompatible(c, creatureType, challengeRating));
+            var creatures = creatureGroup.Where(c => templateApplicator.IsCompatible(c, asCharacter, creatureType, challengeRating));
 
             return creatures;
         }
@@ -118,7 +118,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 throw new InvalidCreatureException(true, template: template, challengeRating: challengeRating);
 
             var creatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters);
-            var templateCreatures = GetCreaturesOfTemplate(template, creatures, challengeRating: challengeRating);
+            var templateCreatures = GetCreaturesOfTemplate(template, creatures, true, challengeRating: challengeRating);
 
             if (!templateCreatures.Any())
             {
@@ -143,14 +143,18 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 throw new InvalidCreatureException(false, type: creatureType, challengeRating: challengeRating);
 
             var creatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All);
-            var pairings = GetCreaturesOfType(creatureType, creatures, challengeRating);
+            var pairings = GetCreaturesOfType(creatureType, creatures, false, challengeRating);
 
             var randomCreature = collectionsSelector.SelectRandomFrom(pairings);
 
             return randomCreature;
         }
 
-        private IEnumerable<(string CreatureName, string Template)> GetCreaturesOfType(string creatureType, IEnumerable<string> creatureGroup, string challengeRating = null)
+        private IEnumerable<(string CreatureName, string Template)> GetCreaturesOfType(
+            string creatureType,
+            IEnumerable<string> creatureGroup,
+            bool asCharacter,
+            string challengeRating = null)
         {
             var templates = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
 
@@ -168,7 +172,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             foreach (var template in templates)
             {
-                var creaturesOfTypeAndTemplate = GetCreaturesOfTemplate(template, creatureGroup, creatureType, challengeRating);
+                var creaturesOfTypeAndTemplate = GetCreaturesOfTemplate(template, creatureGroup, asCharacter, creatureType, challengeRating);
 
                 foreach (var pairing in creaturesOfTypeAndTemplate.Select(c => (c, template)))
                     yield return pairing;
@@ -178,7 +182,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         public (string CreatureName, string Template) GenerateRandomNameOfChallengeRating(string challengeRating)
         {
             var creatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All);
-            var pairings = GetCreaturesOfChallengeRating(challengeRating, creatures);
+            var pairings = GetCreaturesOfChallengeRating(challengeRating, creatures, false);
 
             if (!pairings.Any())
             {
@@ -190,7 +194,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return randomCreature;
         }
 
-        private IEnumerable<(string CreatureName, string Template)> GetCreaturesOfChallengeRating(string challengeRating, IEnumerable<string> creatureGroup)
+        private IEnumerable<(string CreatureName, string Template)> GetCreaturesOfChallengeRating(string challengeRating, IEnumerable<string> creatureGroup, bool asCharacter)
         {
             var templates = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
 
@@ -201,7 +205,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             foreach (var template in templates)
             {
-                var creaturesOfChallengeRatingAndTemplate = GetCreaturesOfTemplate(template, creatureGroup, challengeRating: challengeRating);
+                var creaturesOfChallengeRatingAndTemplate = GetCreaturesOfTemplate(template, creatureGroup, asCharacter, challengeRating: challengeRating);
 
                 foreach (var pairing in creaturesOfChallengeRatingAndTemplate.Select(c => (c, template)))
                     yield return pairing;
@@ -227,7 +231,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 throw new InvalidCreatureException(true, type: creatureType, challengeRating: challengeRating);
 
             var creatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters);
-            var pairings = GetCreaturesOfType(creatureType, creatures, challengeRating);
+            var pairings = GetCreaturesOfType(creatureType, creatures, true, challengeRating);
 
             var randomCreature = collectionsSelector.SelectRandomFrom(pairings);
             return randomCreature;
@@ -240,7 +244,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 throw new InvalidCreatureException(true, challengeRating: challengeRating);
 
             var creatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters);
-            var pairings = GetCreaturesOfChallengeRating(challengeRating, creatures);
+            var pairings = GetCreaturesOfChallengeRating(challengeRating, creatures, true);
 
             var randomCreature = collectionsSelector.SelectRandomFrom(pairings);
             return randomCreature;

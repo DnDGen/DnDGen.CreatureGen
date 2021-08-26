@@ -30,37 +30,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             characterChallengeRatings = challengeRatings.Where(cr => creatureVerifier.VerifyCompatibility(true)).ToArray();
         }
 
-        //private void BuildTemplateChallengeRatings()
-        //{
-        //    templateChallengeRatings = new Dictionary<string, Dictionary<bool, IEnumerable<string>>>();
-
-        //    foreach (var template in CreatureConstants.Templates.GetAll())
-        //    {
-        //        templateChallengeRatings[template] = new Dictionary<bool, IEnumerable<string>>();
-        //        templateChallengeRatings[template][true] = characterChallengeRatings
-        //            .Where(cr => creatureVerifier.VerifyCompatibility(true, template: template, challengeRating: cr));
-        //        templateChallengeRatings[template][false] = challengeRatings
-        //            .Where(cr => creatureVerifier.VerifyCompatibility(false, template: template, challengeRating: cr));
-        //    }
-        //}
-
-        //private void BuildTypeChallengeRatings()
-        //{
-        //    typeChallengeRatings = new Dictionary<string, Dictionary<bool, IEnumerable<string>>>();
-
-        //    var types = CreatureConstants.Types.GetAll();
-        //    var subtypes = CreatureConstants.Types.Subtypes.GetAll();
-
-        //    foreach (var type in types.Union(subtypes))
-        //    {
-        //        typeChallengeRatings[type] = new Dictionary<bool, IEnumerable<string>>();
-        //        typeChallengeRatings[type][true] = characterChallengeRatings
-        //            .Where(cr => creatureVerifier.VerifyCompatibility(true, type: type, challengeRating: cr));
-        //        typeChallengeRatings[type][false] = challengeRatings
-        //            .Where(cr => creatureVerifier.VerifyCompatibility(false, type: type, challengeRating: cr));
-        //    }
-        //}
-
         [Test]
         public void StressCreature()
         {
