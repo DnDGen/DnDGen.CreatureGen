@@ -217,14 +217,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
 
                 for (var i = 0; i < ordered.Length; i++)
                 {
-                    for (var l = 0; l <= i; l++)
+                    for (var j = 0; j < ordered.Length; j++)
                     {
-                        yield return new TestCaseData(ordered[i], ordered[l], false);
-                    }
-
-                    for (var g = i + 1; g < ordered.Length; g++)
-                    {
-                        yield return new TestCaseData(ordered[i], ordered[g], true);
+                        yield return new TestCaseData(ordered[i], ordered[j], i > j);
                     }
                 }
             }
