@@ -201,5 +201,33 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
             var newCr = ChallengeRatingConstants.IncreaseChallengeRating(ChallengeRatingConstants.CR0, increase);
             Assert.That(newCr, Is.EqualTo(increase.ToString()));
         }
+
+        [TestCaseSource(nameof(IsGreaterThanComparisons))]
+        public void IsGreaterThan_ComparesChallengeRatings(string source, string target, bool greater)
+        {
+            var isGreater = ChallengeRatingConstants.IsGreaterThan(source, target);
+            Assert.That(isGreater, Is.EqualTo(greater));
+        }
+
+        private static IEnumerable IsGreaterThanComparisons
+        {
+            get
+            {
+                var ordered = ChallengeRatingConstants.GetOrdered();
+
+                for (var i = 0; i < ordered.Length; i++)
+                {
+                    for (var l = 0; l <= i; l++)
+                    {
+                        yield return new TestCaseData(ordered[i], ordered[l], false);
+                    }
+
+                    for (var g = i + 1; g < ordered.Length; g++)
+                    {
+                        yield return new TestCaseData(ordered[i], ordered[g], true);
+                    }
+                }
+            }
+        }
     }
 }

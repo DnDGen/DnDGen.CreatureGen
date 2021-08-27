@@ -194,6 +194,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         }
 
         [Test]
+        public void VerifyCompatiblity_TemplateAndChallengeRating_Compatible_NoMaxChallengeRating()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void VerifyCompatiblity_TemplateAndChallengeRating_Compatible_HasMaxChallengeRating()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void VerifyCompatiblity_TemplateAndChallengeRating_Compatible_FilterOutOfRange()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
         public void VerifyCompatiblity_TemplateAndChallengeRating_NotCompatible_IfNotTemplate()
         {
             var mockApplicator = new Mock<TemplateApplicator>();
@@ -249,6 +267,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(true, template: "template", challengeRating: "challenge rating");
             Assert.That(isCompatible, Is.True);
+        }
+
+        [Test]
+        public void VerifyCompatiblity_TemplateAndChallengeRatingAsCharacter_Compatible_NoMaxChallengeRating()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void VerifyCompatiblity_TemplateAndChallengeRatingAsCharacter_Compatible_HasMaxChallengeRating()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void VerifyCompatiblity_TemplateAndChallengeRatingAsCharacter_Compatible_FilterOutOfRange()
+        {
+            Assert.Fail("not yet written");
         }
 
         [Test]
@@ -369,6 +405,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(false, type: "type", challengeRating: "challenge rating");
             Assert.That(isCompatible, Is.True);
+        }
+
+        [Test]
+        public void VerifyCompatiblity_TypeAndChallengeRating_Compatible_Template_NoMaxChallengeRating()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void VerifyCompatiblity_TypeAndChallengeRating_Compatible_Template_HasMaxChallengeRating()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void VerifyCompatiblity_TypeAndChallengeRating_Compatible_Template_FilterOutOfRange()
+        {
+            Assert.Fail("not yet written");
         }
 
         [Test]
@@ -511,6 +565,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(true, type: "type", challengeRating: "challenge rating");
             Assert.That(isCompatible, Is.True);
+        }
+
+        [Test]
+        public void VerifyCompatiblity_TypeAndChallengeRatingAsCharacter_Compatible_Template_NoMaxChallengeRating()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void VerifyCompatiblity_TypeAndChallengeRatingAsCharacter_Compatible_Template_HasMaxChallengeRating()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void VerifyCompatiblity_TypeAndChallengeRatingAsCharacter_Compatible_Template_FilterOutOfRange()
+        {
+            Assert.Fail("not yet written");
         }
 
         [Test]
@@ -674,6 +746,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         }
 
         [Test]
+        public void VerifyCompatiblity_ChallengeRating_Compatible_Template_NoMaxChallengeRating()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void VerifyCompatiblity_ChallengeRating_Compatible_Template_HasMaxChallengeRating()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void VerifyCompatiblity_ChallengeRating_Compatible_Template_FilterOutOfRange()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
         public void VerifyCompatiblity_ChallengeRating_NotCompatible_IfNotChallengeRating()
         {
             mockCollectionSelector
@@ -767,6 +857,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(true, challengeRating: "challenge rating");
             Assert.That(isCompatible, Is.True);
+        }
+
+        [Test]
+        public void VerifyCompatiblity_ChallengeRatingAsCharacter_Compatible_Template_NoMaxChallengeRating()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void VerifyCompatiblity_ChallengeRatingAsCharacter_Compatible_Template_HasMaxChallengeRating()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void VerifyCompatiblity_ChallengeRatingAsCharacter_Compatible_Template_FilterOutOfRange()
+        {
+            Assert.Fail("not yet written");
         }
 
         [Test]
@@ -888,6 +996,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         }
 
         [Test]
+        public void VerifyCompatiblity_Type_Compatible_Template_TypeFromTemplate()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void VerifyCompatiblity_Type_Compatible_Template_TypeFromCreature()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
         public void VerifyCompatiblity_Type_NotCompatible_IfNotType()
         {
             mockCollectionSelector
@@ -981,6 +1101,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
             var isCompatible = verifier.VerifyCompatibility(true, type: "type");
             Assert.That(isCompatible, Is.True);
+        }
+
+        [Test]
+        public void VerifyCompatiblity_TypeAsCharacter_Compatible_Template_TypeFromTemplate()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void VerifyCompatiblity_TypeAsCharacter_Compatible_Template_TypeFromCreature()
+        {
+            Assert.Fail("not yet written");
         }
 
         [Test]
