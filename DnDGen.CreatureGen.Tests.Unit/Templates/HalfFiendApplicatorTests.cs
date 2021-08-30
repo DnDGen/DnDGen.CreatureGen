@@ -556,24 +556,30 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, true)]
         [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, false)]
         [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
-        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, false)]
-        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, true)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR0, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, true)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, false)]
         [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, false)]
         [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR0, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR1, true)]
         [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, false)]
-        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, true)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
         [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, false)]
         [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
         [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, false)]
         [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, true)]
         [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, false)]
         [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
-        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, false)]
-        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, true)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR0, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, true)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, false)]
         [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, false)]
         [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR0, false)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR1, true)]
         [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, false)]
-        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, true)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
         [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, false)]
         [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
         [TestCase(6, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, false)]
@@ -2036,6 +2042,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCaseSource(nameof(ChallengeRatingAdjustments))]
         public void GetPotentialChallengeRating_ChallengeRatingAdjusted(double hitDiceQuantity, string original, string adjusted)
         {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
             mockAdjustmentSelector
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
                 .Returns(hitDiceQuantity);
@@ -2089,7 +2099,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     {
                         increase = 3;
                     }
-                    else if (hitDie > 5)
+                    else if (hitDie > 4)
                     {
                         increase = 2;
                     }

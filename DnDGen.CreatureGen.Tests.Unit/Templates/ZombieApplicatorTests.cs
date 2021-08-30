@@ -304,12 +304,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(.25, ChallengeRatingConstants.CR1_10th, false)]
         [TestCase(.25, ChallengeRatingConstants.CR1_8th, true)]
         [TestCase(.25, ChallengeRatingConstants.CR1_6th, false)]
-        [TestCase(.5, ChallengeRatingConstants.CR1_4th, false)]
+        [TestCase(.5, ChallengeRatingConstants.CR1_6th, false)]
         [TestCase(.5, ChallengeRatingConstants.CR1_4th, true)]
-        [TestCase(.5, ChallengeRatingConstants.CR1_4th, false)]
-        [TestCase(1, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(.5, ChallengeRatingConstants.CR1_3rd, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1_3rd, false)]
         [TestCase(1, ChallengeRatingConstants.CR1_2nd, true)]
-        [TestCase(1, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1, false)]
         [TestCase(2, ChallengeRatingConstants.CR1_2nd, false)]
         [TestCase(2, ChallengeRatingConstants.CR1, true)]
         [TestCase(2, ChallengeRatingConstants.CR2, false)]
@@ -371,7 +371,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockAdjustmentSelector
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
-                .Returns(5);
+                .Returns(3);
 
             var isCompatible = applicator.IsCompatible("my creature", false, type: type, challengeRating: challengeRating);
             Assert.That(isCompatible, Is.EqualTo(compatible));
@@ -1300,7 +1300,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(1);
 
             Assert.That(() => applicator.GetPotentialChallengeRating("my creature", true),
-                Throws.ArgumentException.With.Message.EqualTo("Zombies cannot be characterse"));
+                Throws.ArgumentException.With.Message.EqualTo("Zombies cannot be characters"));
         }
 
         [TestCase(.1, ChallengeRatingConstants.CR1_8th)]

@@ -430,13 +430,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             string animal,
             string original,
             double animalHitDiceQuantity,
+            double creatureHitDiceQuantity,
             string challengeRating,
             bool compatible)
         {
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
-                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
-
             mockCreatureDataSelector
                 .Setup(s => s.SelectFor("my creature"))
                 .Returns(new CreatureDataSelection { Size = SizeConstants.Medium, ChallengeRating = original });
@@ -448,6 +445,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             mockAdjustmentSelector
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, animal))
                 .Returns(animalHitDiceQuantity);
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
+                .Returns(creatureHitDiceQuantity);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
 
             var isCompatible = applicators[template].IsCompatible("my creature", true, challengeRating: challengeRating);
             Assert.That(isCompatible, Is.EqualTo(compatible));
@@ -462,6 +467,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         {
             get
             {
+                var creatureHitDice = new[] { 0.5, 1, 2 };
+
                 //INFO: Doing specific numbers, instead of full range because the number of test cases explodes:
                 //1. Per challenge rating
                 //2. Per Lycanthrope template
@@ -509,26 +516,31 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     else if (animalHitDiceQuantity > 20)
                         increase = 6;
 
-                    increase--;
-
                     foreach (var cr in challengeRatings)
                     {
-                        var low2Cr = ChallengeRatingConstants.IncreaseChallengeRating(cr, increase - 2);
-                        var low1Cr = ChallengeRatingConstants.IncreaseChallengeRating(cr, increase - 1);
-                        var newCr = ChallengeRatingConstants.IncreaseChallengeRating(cr, increase);
-                        var high1Cr = ChallengeRatingConstants.IncreaseChallengeRating(cr, increase + 1);
-                        var high2Cr = ChallengeRatingConstants.IncreaseChallengeRating(cr, increase + 2);
-
-                        if (low2Cr != cr && low1Cr != cr)
+                        foreach (var creatureQuantity in creatureHitDice)
                         {
-                            yield return new TestCaseData(template.Template, template.Animal, cr, animalHitDiceQuantity, cr, false);
-                        }
+                            var creatureCr = cr;
+                            if (creatureQuantity <= 1)
+                                creatureCr = ChallengeRatingConstants.CR0;
 
-                        yield return new TestCaseData(template.Template, template.Animal, cr, animalHitDiceQuantity, low2Cr, false);
-                        yield return new TestCaseData(template.Template, template.Animal, cr, animalHitDiceQuantity, low1Cr, false);
-                        yield return new TestCaseData(template.Template, template.Animal, cr, animalHitDiceQuantity, newCr, true);
-                        yield return new TestCaseData(template.Template, template.Animal, cr, animalHitDiceQuantity, high1Cr, false);
-                        yield return new TestCaseData(template.Template, template.Animal, cr, animalHitDiceQuantity, high2Cr, false);
+                            var low2Cr = ChallengeRatingConstants.IncreaseChallengeRating(creatureCr, increase - 2);
+                            var low1Cr = ChallengeRatingConstants.IncreaseChallengeRating(creatureCr, increase - 1);
+                            var newCr = ChallengeRatingConstants.IncreaseChallengeRating(creatureCr, increase);
+                            var high1Cr = ChallengeRatingConstants.IncreaseChallengeRating(creatureCr, increase + 1);
+                            var high2Cr = ChallengeRatingConstants.IncreaseChallengeRating(creatureCr, increase + 2);
+
+                            if (low2Cr != cr && low1Cr != cr && newCr != cr)
+                            {
+                                yield return new TestCaseData(template.Template, template.Animal, cr, animalHitDiceQuantity, creatureQuantity, cr, false);
+                            }
+
+                            yield return new TestCaseData(template.Template, template.Animal, cr, animalHitDiceQuantity, creatureQuantity, low2Cr, false);
+                            yield return new TestCaseData(template.Template, template.Animal, cr, animalHitDiceQuantity, creatureQuantity, low1Cr, false);
+                            yield return new TestCaseData(template.Template, template.Animal, cr, animalHitDiceQuantity, creatureQuantity, newCr, true);
+                            yield return new TestCaseData(template.Template, template.Animal, cr, animalHitDiceQuantity, creatureQuantity, high1Cr, false);
+                            yield return new TestCaseData(template.Template, template.Animal, cr, animalHitDiceQuantity, creatureQuantity, high2Cr, false);
+                        }
                     }
                 }
             }
@@ -2457,6 +2469,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, animal))
                 .Returns(animalHitDiceQuantity);
 
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
+                .Returns(1);
+
             var challengeRating = applicators[template].GetPotentialChallengeRating("my creature", false);
             Assert.That(challengeRating, Is.EqualTo(updatedChallengeRating));
         }
@@ -2467,6 +2487,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             string animal,
             string originalChallengeRating,
             double animalHitDiceQuantity,
+            double creatureHitDiceQuantity,
             string updatedChallengeRating)
         {
             mockCollectionSelector
@@ -2481,6 +2502,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, animal))
                 .Returns(animalHitDiceQuantity);
 
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
+                .Returns(creatureHitDiceQuantity);
+
             var challengeRating = applicators[template].GetPotentialChallengeRating("my creature", true);
             Assert.That(challengeRating, Is.EqualTo(updatedChallengeRating));
         }
@@ -2494,6 +2519,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         {
             get
             {
+                var creatureHitDice = new[] { 0.5, 1, 2 };
+
                 //INFO: Doing specific numbers, instead of full range because the number of test cases explodes:
                 //1. Per challenge rating
                 //2. Per Lycanthrope template
@@ -2542,12 +2569,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     else if (animalHitDiceQuantity > 20)
                         increase = 6;
 
-                    increase--;
-
                     foreach (var cr in challengeRatings)
                     {
-                        var newCr = ChallengeRatingConstants.IncreaseChallengeRating(cr, increase);
-                        yield return new TestCaseData(template.Template, template.Animal, cr, animalHitDiceQuantity, newCr);
+                        foreach (var creatureQuantity in creatureHitDice)
+                        {
+                            var creatureCr = cr;
+                            if (creatureQuantity <= 1)
+                                creatureCr = ChallengeRatingConstants.CR0;
+
+                            var newCr = ChallengeRatingConstants.IncreaseChallengeRating(creatureCr, increase);
+                            yield return new TestCaseData(template.Template, template.Animal, cr, animalHitDiceQuantity, creatureQuantity, newCr);
+                        }
                     }
                 }
             }
@@ -2572,6 +2604,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             mockAdjustmentSelector
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, animal))
                 .Returns(animalHitDiceQuantity);
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
+                .Returns(1);
 
             var challengeRating = applicators[template].GetPotentialChallengeRating("my creature", true);
             Assert.That(challengeRating, Is.EqualTo(updatedChallengeRating));
@@ -3908,16 +3944,28 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         }
 
         [TestCaseSource(nameof(ChallengeRatings))]
-        public void GetChallengeRatings_FromChallengeRating_ReturnsAdjustedChallengeRating(string template, string animal, string challengeRating, string adjusted)
+        public void GetChallengeRatings_FromChallengeRating_ReturnsAdjustedChallengeRating(
+            string template,
+            string animal,
+            string challengeRating,
+            double animalHitDiceQuantity,
+            string adjusted)
         {
             var challengeRatings = applicators[template].GetChallengeRatings(challengeRating);
-            Assert.That(challengeRatings, Is.EqualTo(new[] { adjusted }));
+            Assert.That(challengeRatings, Is.EqualTo(new[]
+            {
+                ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2),
+                ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 3),
+                ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 4),
+                ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 5),
+                ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 6),
+            }).And.Contain(adjusted));
         }
 
-        [TestCaseSource(nameof(ChallengeRatings))]
-        public void GetHitDiceRange_ReturnsNull(string template, string animal, string challengeRating, string adjusted)
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public void GetHitDiceRange_ReturnsNull(string template, string animal)
         {
-            var hitDice = applicators[template].GetHitDiceRange(challengeRating);
+            var hitDice = applicators[template].GetHitDiceRange("my challenge rating");
             Assert.That(hitDice.Lower, Is.Null);
             Assert.That(hitDice.Upper, Is.Null);
         }

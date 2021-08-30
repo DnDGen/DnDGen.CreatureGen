@@ -316,12 +316,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Setup(s => s.SelectFor("my creature"))
                 .Returns(new CreatureDataSelection { ChallengeRating = original });
 
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
+                .Returns(1);
+
             var isCompatible = applicators[template].IsCompatible("my creature", false, challengeRating: challengeRating);
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
         [TestCaseSource(nameof(ChallengeRatingAdjustments_Filtered_HumanoidCharacter))]
-        public void IsCompatible_ChallengeRatingMustMatch_HumanoidAsCharacter(string template, string original, string challengeRating, bool compatible)
+        public void IsCompatible_ChallengeRatingMustMatch_HumanoidAsCharacter(string template, double hitDiceQuantity, string original, string challengeRating, bool compatible)
         {
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
@@ -331,6 +335,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Setup(s => s.SelectFor("my creature"))
                 .Returns(new CreatureDataSelection { ChallengeRating = original });
 
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
+                .Returns(hitDiceQuantity);
+
             var isCompatible = applicators[template].IsCompatible("my creature", true, challengeRating: challengeRating);
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
@@ -339,50 +347,42 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         {
             get
             {
+                var hitDice = new[] { 0.5, 1, 2 };
+                var challengeRatings = ChallengeRatingConstants.GetOrdered();
+
                 foreach (var template in templates)
                 {
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, true);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR4, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1_2nd, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, true);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR1_2nd, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR1, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, true);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR3, ChallengeRatingConstants.CR1_2nd, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR3, ChallengeRatingConstants.CR1, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR3, ChallengeRatingConstants.CR2, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR3, ChallengeRatingConstants.CR3, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR3, ChallengeRatingConstants.CR4, true);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR3, ChallengeRatingConstants.CR5, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR1_2nd, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR1, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR2, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR3, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR4, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR9, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR10, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR11, true);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR12, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR13, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR1_2nd, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR1, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR2, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR3, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR4, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR19, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR20, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR21, true);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR22, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR23, false);
+                    foreach (var quantity in hitDice)
+                    {
+                        foreach (var cr in challengeRatings)
+                        {
+                            var increase = ChallengeRatingConstants.IncreaseChallengeRating(cr, 2);
+
+                            if (quantity <= 1)
+                            {
+                                yield return new TestCaseData(template, quantity, cr, ChallengeRatingConstants.CR2, false);
+                                yield return new TestCaseData(template, quantity, cr, ChallengeRatingConstants.CR3, true);
+                                yield return new TestCaseData(template, quantity, cr, ChallengeRatingConstants.CR4, false);
+                            }
+                            else if (ChallengeRatingConstants.IsGreaterThan(ChallengeRatingConstants.CR3, increase))
+                            {
+                                yield return new TestCaseData(template, quantity, cr, cr, false);
+                                yield return new TestCaseData(template, quantity, cr, ChallengeRatingConstants.CR2, false);
+                                yield return new TestCaseData(template, quantity, cr, ChallengeRatingConstants.CR3, true);
+                                yield return new TestCaseData(template, quantity, cr, ChallengeRatingConstants.CR4, false);
+                            }
+                            else
+                            {
+                                var low1 = ChallengeRatingConstants.IncreaseChallengeRating(cr, 1);
+                                var high1 = ChallengeRatingConstants.IncreaseChallengeRating(increase, 1);
+
+                                yield return new TestCaseData(template, quantity, cr, cr, false);
+                                yield return new TestCaseData(template, quantity, cr, low1, false);
+                                yield return new TestCaseData(template, quantity, cr, increase, true);
+                                yield return new TestCaseData(template, quantity, cr, high1, false);
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -398,6 +398,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Setup(s => s.SelectFor("my creature"))
                 .Returns(new CreatureDataSelection { ChallengeRating = original });
 
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
+                .Returns(1);
+
             var isCompatible = applicators[template].IsCompatible("my creature", true, challengeRating: challengeRating);
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
@@ -406,44 +410,32 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         {
             get
             {
+                var challengeRatings = ChallengeRatingConstants.GetOrdered();
+
                 foreach (var template in templates)
                 {
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, true);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR4, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1_2nd, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, true);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR1_2nd, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR1, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, true);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR1_2nd, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR1, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR2, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR3, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR4, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR9, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR10, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR11, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR12, true);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR10, ChallengeRatingConstants.CR13, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR1_2nd, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR1, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR2, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR3, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR4, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR19, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR20, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR21, false);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR22, true);
-                    yield return new TestCaseData(template, ChallengeRatingConstants.CR20, ChallengeRatingConstants.CR23, false);
+                    foreach (var cr in challengeRatings)
+                    {
+                        var increase = ChallengeRatingConstants.IncreaseChallengeRating(cr, 2);
+
+                        if (ChallengeRatingConstants.IsGreaterThan(ChallengeRatingConstants.CR3, increase))
+                        {
+                            yield return new TestCaseData(template, cr, cr, false);
+                            yield return new TestCaseData(template, cr, ChallengeRatingConstants.CR2, false);
+                            yield return new TestCaseData(template, cr, ChallengeRatingConstants.CR3, true);
+                            yield return new TestCaseData(template, cr, ChallengeRatingConstants.CR4, false);
+                        }
+                        else
+                        {
+                            var low1 = ChallengeRatingConstants.IncreaseChallengeRating(cr, 1);
+                            var high1 = ChallengeRatingConstants.IncreaseChallengeRating(increase, 1);
+
+                            yield return new TestCaseData(template, cr, cr, false);
+                            yield return new TestCaseData(template, cr, low1, false);
+                            yield return new TestCaseData(template, cr, increase, true);
+                            yield return new TestCaseData(template, cr, high1, false);
+                        }
+                    }
                 }
             }
         }
@@ -1494,12 +1486,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Setup(s => s.SelectFor("my creature"))
                 .Returns(new CreatureDataSelection { ChallengeRating = original });
 
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
+                .Returns(1);
+
             var challengeRating = applicators[template].GetPotentialChallengeRating("my creature", false);
             Assert.That(challengeRating, Is.EqualTo(adjusted));
         }
 
         [TestCaseSource(nameof(ChallengeRatingAdjustments_HumanoidCharacter))]
-        public void GetPotentialChallengeRating_ChallengeRatingAdjusted_HumanoidAsCharacter(string template, string original, string adjusted)
+        public void GetPotentialChallengeRating_ChallengeRatingAdjusted_HumanoidAsCharacter(string template, double hitDiceQuantity, string original, string adjusted)
         {
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
@@ -1508,6 +1504,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             mockCreatureDataSelector
                 .Setup(s => s.SelectFor("my creature"))
                 .Returns(new CreatureDataSelection { ChallengeRating = original });
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
+                .Returns(hitDiceQuantity);
 
             var challengeRating = applicators[template].GetPotentialChallengeRating("my creature", true);
             Assert.That(challengeRating, Is.EqualTo(adjusted));
@@ -1518,17 +1518,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             get
             {
                 var challengeRatings = ChallengeRatingConstants.GetOrdered();
+                var hitDice = new[] { 0.5, 1, 2 };
 
-                foreach (var template in templates)
+                foreach (var quantity in hitDice)
                 {
-                    foreach (var challengeRating in challengeRatings)
+                    foreach (var template in templates)
                     {
-                        var increased = ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 1);
+                        foreach (var challengeRating in challengeRatings)
+                        {
+                            var increased = ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2);
 
-                        if (ChallengeRatingConstants.IsGreaterThan(ChallengeRatingConstants.CR3, increased))
-                            yield return new TestCaseData(template, challengeRating, ChallengeRatingConstants.CR3);
-                        else
-                            yield return new TestCaseData(template, challengeRating, increased);
+                            if (quantity <= 1)
+                                yield return new TestCaseData(template, quantity, challengeRating, ChallengeRatingConstants.CR3);
+                            else if (ChallengeRatingConstants.IsGreaterThan(ChallengeRatingConstants.CR3, increased))
+                                yield return new TestCaseData(template, quantity, challengeRating, ChallengeRatingConstants.CR3);
+                            else
+                                yield return new TestCaseData(template, quantity, challengeRating, increased);
+                        }
                     }
                 }
             }
@@ -1544,6 +1550,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             mockCreatureDataSelector
                 .Setup(s => s.SelectFor("my creature"))
                 .Returns(new CreatureDataSelection { ChallengeRating = original });
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
+                .Returns(1);
 
             var challengeRating = applicators[template].GetPotentialChallengeRating("my creature", true);
             Assert.That(challengeRating, Is.EqualTo(adjusted));

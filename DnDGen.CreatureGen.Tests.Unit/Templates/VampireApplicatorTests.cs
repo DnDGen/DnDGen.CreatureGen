@@ -1082,6 +1082,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFor("my creature"))
                 .Returns(new CreatureDataSelection { ChallengeRating = original });
 
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
+                .Returns(1);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
             var challengeRating = applicator.GetPotentialChallengeRating("my creature", false);
             Assert.That(challengeRating, Is.EqualTo(adjusted));
         }

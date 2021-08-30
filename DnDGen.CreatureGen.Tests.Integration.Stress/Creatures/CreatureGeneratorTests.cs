@@ -2,8 +2,8 @@
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,9 +15,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private CreatureAsserter creatureAsserter;
         private ICollectionSelector collectionSelector;
         private ICreatureGenerator creatureGenerator;
-        private ConcurrentDictionary<string, IEnumerable<string>> compatibleCreatures;
-        private IEnumerable<string> challengeRatings;
-        private IEnumerable<string> characterChallengeRatings;
+        private Stopwatch stopwatch;
+        private IEnumerable<string> nonCharacterTypes;
 
         [SetUp]
         public void Setup()
@@ -25,9 +24,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             creatureAsserter = new CreatureAsserter();
             collectionSelector = GetNewInstanceOf<ICollectionSelector>();
             creatureGenerator = GetNewInstanceOf<ICreatureGenerator>();
-            compatibleCreatures = new ConcurrentDictionary<string, IEnumerable<string>>();
-            challengeRatings = ChallengeRatingConstants.GetOrdered();
-            characterChallengeRatings = challengeRatings.Where(cr => creatureVerifier.VerifyCompatibility(true)).ToArray();
+            stopwatch = new Stopwatch();
+
+            nonCharacterTypes = new[]
+            {
+                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Elemental,
+                CreatureConstants.Types.Ooze,
+                CreatureConstants.Types.Vermin,
+                CreatureConstants.Types.Subtypes.Swarm,
+            };
         }
 
         [Test]
@@ -46,7 +52,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private Creature GenerateAndAssertCreature(string creatureName, string template)
         {
+            stopwatch.Restart();
             var creature = creatureGenerator.Generate(creatureName, template);
+            stopwatch.Stop();
+
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(creature.Name, Is.EqualTo(creatureName), creature.Summary);
+            Assert.That(creature.Template, Is.EqualTo(template), creature.Summary);
+
             creatureAsserter.AssertCreature(creature);
 
             return creature;
@@ -62,7 +75,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var randomCreatureName = collectionSelector.SelectRandomFrom(allCreatures);
 
+            stopwatch.Restart();
             var creature = await creatureGenerator.GenerateAsync(randomCreatureName, CreatureConstants.Templates.None);
+            stopwatch.Stop();
+
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(creature.Name, Is.EqualTo(randomCreatureName), creature.Summary);
+            Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.None), creature.Summary);
 
             creatureAsserter.AssertCreature(creature);
         }
@@ -76,17 +95,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private void GenerateAndAssertCreatureWithTemplate()
         {
             var randomTemplate = collectionSelector.SelectRandomFrom(allTemplates);
-            if (!compatibleCreatures.ContainsKey(randomTemplate))
-            {
-                var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(false, creature: c, template: randomTemplate)).ToArray();
-                compatibleCreatures.TryAdd(randomTemplate, validCreatures);
-            }
+            var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(false, creature: c, template: randomTemplate));
+            var randomCreatureName = collectionSelector.SelectRandomFrom(validCreatures);
 
-            var randomCreatureName = collectionSelector.SelectRandomFrom(compatibleCreatures[randomTemplate]);
-
+            stopwatch.Restart();
             var creature = creatureGenerator.Generate(randomCreatureName, randomTemplate);
+            stopwatch.Stop();
 
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(creature.Name, Is.EqualTo(randomCreatureName), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
+
             creatureAsserter.AssertCreature(creature);
         }
 
@@ -99,17 +118,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private async Task GenerateAndAssertCreatureWithTemplateAsync()
         {
             var randomTemplate = collectionSelector.SelectRandomFrom(allTemplates);
-            if (!compatibleCreatures.ContainsKey(randomTemplate))
-            {
-                var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(false, creature: c, template: randomTemplate)).ToArray();
-                compatibleCreatures.TryAdd(randomTemplate, validCreatures);
-            }
+            var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(false, creature: c, template: randomTemplate));
+            var randomCreatureName = collectionSelector.SelectRandomFrom(validCreatures);
 
-            var randomCreatureName = collectionSelector.SelectRandomFrom(compatibleCreatures[randomTemplate]);
-
+            stopwatch.Restart();
             var creature = await creatureGenerator.GenerateAsync(randomCreatureName, randomTemplate);
+            stopwatch.Stop();
 
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(creature.Name, Is.EqualTo(randomCreatureName), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
+
             creatureAsserter.AssertCreature(creature);
         }
 
@@ -124,7 +143,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var characters = CreatureConstants.GetAllCharacters();
             var randomCreatureName = collectionSelector.SelectRandomFrom(characters);
 
+            stopwatch.Restart();
             var creature = creatureGenerator.GenerateAsCharacter(randomCreatureName, CreatureConstants.Templates.None);
+            stopwatch.Stop();
+
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(creature.Name, Is.EqualTo(randomCreatureName), creature.Summary);
+            Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.None), creature.Summary);
+
             creatureAsserter.AssertCreatureAsCharacter(creature);
         }
 
@@ -139,7 +165,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var characters = CreatureConstants.GetAllCharacters();
             var randomCreatureName = collectionSelector.SelectRandomFrom(characters);
 
+            stopwatch.Restart();
             var creature = await creatureGenerator.GenerateAsCharacterAsync(randomCreatureName, CreatureConstants.Templates.None);
+            stopwatch.Stop();
+
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(creature.Name, Is.EqualTo(randomCreatureName), creature.Summary);
+            Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.None), creature.Summary);
+
             creatureAsserter.AssertCreatureAsCharacter(creature);
         }
 
@@ -152,19 +185,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private void GenerateAndAssertCreatureAsCharacterWithTemplate()
         {
             var randomTemplate = collectionSelector.SelectRandomFrom(allTemplates);
-            if (!compatibleCreatures.ContainsKey(randomTemplate))
-            {
-                var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(true, creature: c, template: randomTemplate)).ToArray();
-                compatibleCreatures.TryAdd(randomTemplate, validCreatures);
-            }
+            var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(true, creature: c, template: randomTemplate));
+            var randomCreatureName = collectionSelector.SelectRandomFrom(validCreatures);
 
-            var characters = CreatureConstants.GetAllCharacters().Intersect(compatibleCreatures[randomTemplate]);
-            var randomCreatureName = collectionSelector.SelectRandomFrom(characters);
-
+            stopwatch.Restart();
             var creature = creatureGenerator.GenerateAsCharacter(randomCreatureName, randomTemplate);
-            creatureAsserter.AssertCreatureAsCharacter(creature);
+            stopwatch.Stop();
 
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(creature.Name, Is.EqualTo(randomCreatureName), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
+
+            creatureAsserter.AssertCreatureAsCharacter(creature);
         }
 
         [Test]
@@ -176,21 +208,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private async Task GenerateAndAssertCreatureAsCharacterWithTemplateAsync()
         {
             var randomTemplate = collectionSelector.SelectRandomFrom(allTemplates);
-            if (!compatibleCreatures.ContainsKey(randomTemplate))
-            {
-                var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(true, creature: c, template: randomTemplate)).ToArray();
-                compatibleCreatures.TryAdd(randomTemplate, validCreatures);
-            }
+            var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(true, creature: c, template: randomTemplate));
+            var randomCreatureName = collectionSelector.SelectRandomFrom(validCreatures);
 
-            var characters = CreatureConstants.GetAllCharacters().Intersect(compatibleCreatures[randomTemplate]);
-            var randomCreatureName = collectionSelector.SelectRandomFrom(characters);
-
+            stopwatch.Restart();
             var creature = await creatureGenerator.GenerateAsCharacterAsync(randomCreatureName, randomTemplate);
+            stopwatch.Stop();
 
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate));
-            creatureAsserter.AssertCreatureAsCharacter(creature);
-
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(creature.Name, Is.EqualTo(randomCreatureName), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
+
+            creatureAsserter.AssertCreatureAsCharacter(creature);
         }
 
         [Test]
@@ -204,9 +233,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var templates = CreatureConstants.Templates.GetAll();
             var randomTemplate = collectionSelector.SelectRandomFrom(templates);
 
+            stopwatch.Restart();
             var creature = creatureGenerator.GenerateRandomOfTemplate(randomTemplate);
+            stopwatch.Stop();
 
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
+
             creatureAsserter.AssertCreature(creature);
         }
 
@@ -220,15 +253,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var templates = CreatureConstants.Templates.GetAll();
             var randomTemplate = collectionSelector.SelectRandomFrom(templates);
-            var templateChallengeRatings = challengeRatings
-                    .Where(cr => creatureVerifier.VerifyCompatibility(false, template: randomTemplate, challengeRating: cr));
+
+            var challengeRatings = ChallengeRatingConstants.GetOrdered();
+            var templateChallengeRatings = challengeRatings.Where(cr => creatureVerifier.VerifyCompatibility(false, template: randomTemplate, challengeRating: cr));
             var challengeRating = collectionSelector.SelectRandomFrom(templateChallengeRatings);
 
+            stopwatch.Restart();
             var creature = creatureGenerator.GenerateRandomOfTemplate(randomTemplate, challengeRating);
+            stopwatch.Stop();
 
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
-            creatureAsserter.AssertCreature(creature);
             Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
+
+            creatureAsserter.AssertCreature(creature);
         }
 
         [Test]
@@ -242,9 +280,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var templates = CreatureConstants.Templates.GetAll();
             var randomTemplate = collectionSelector.SelectRandomFrom(templates);
 
+            stopwatch.Restart();
             var creature = creatureGenerator.GenerateRandomOfTemplateAsCharacter(randomTemplate);
+            stopwatch.Stop();
 
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
+
             creatureAsserter.AssertCreatureAsCharacter(creature);
         }
 
@@ -258,15 +300,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var templates = CreatureConstants.Templates.GetAll();
             var randomTemplate = collectionSelector.SelectRandomFrom(templates);
-            var templateChallengeRatings = challengeRatings
-                    .Where(cr => creatureVerifier.VerifyCompatibility(true, template: randomTemplate, challengeRating: cr));
+
+            var challengeRatings = ChallengeRatingConstants.GetOrdered();
+            var templateChallengeRatings = challengeRatings.Where(cr => creatureVerifier.VerifyCompatibility(true, template: randomTemplate, challengeRating: cr));
             var challengeRating = collectionSelector.SelectRandomFrom(templateChallengeRatings);
 
+            stopwatch.Restart();
             var creature = creatureGenerator.GenerateRandomOfTemplateAsCharacter(randomTemplate, challengeRating);
+            stopwatch.Stop();
 
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
-            creatureAsserter.AssertCreatureAsCharacter(creature);
             Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
+
+            creatureAsserter.AssertCreatureAsCharacter(creature);
         }
 
         [Test]
@@ -280,9 +327,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var templates = CreatureConstants.Templates.GetAll();
             var randomTemplate = collectionSelector.SelectRandomFrom(templates);
 
+            stopwatch.Restart();
             var creature = await creatureGenerator.GenerateRandomOfTemplateAsync(randomTemplate);
+            stopwatch.Stop();
 
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
+
             creatureAsserter.AssertCreature(creature);
         }
 
@@ -296,15 +347,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var templates = CreatureConstants.Templates.GetAll();
             var randomTemplate = collectionSelector.SelectRandomFrom(templates);
-            var templateChallengeRatings = challengeRatings
-                    .Where(cr => creatureVerifier.VerifyCompatibility(false, template: randomTemplate, challengeRating: cr));
+
+            var challengeRatings = ChallengeRatingConstants.GetOrdered();
+            var templateChallengeRatings = challengeRatings.Where(cr => creatureVerifier.VerifyCompatibility(false, template: randomTemplate, challengeRating: cr));
             var challengeRating = collectionSelector.SelectRandomFrom(templateChallengeRatings);
 
+            stopwatch.Restart();
             var creature = await creatureGenerator.GenerateRandomOfTemplateAsync(randomTemplate, challengeRating);
+            stopwatch.Stop();
 
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
-            creatureAsserter.AssertCreature(creature);
             Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
+
+            creatureAsserter.AssertCreature(creature);
         }
 
         [Test]
@@ -318,9 +374,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var templates = CreatureConstants.Templates.GetAll();
             var randomTemplate = collectionSelector.SelectRandomFrom(templates);
 
+            stopwatch.Restart();
             var creature = await creatureGenerator.GenerateRandomOfTemplateAsCharacterAsync(randomTemplate);
+            stopwatch.Stop();
 
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
+
             creatureAsserter.AssertCreatureAsCharacter(creature);
         }
 
@@ -334,15 +394,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var templates = CreatureConstants.Templates.GetAll();
             var randomTemplate = collectionSelector.SelectRandomFrom(templates);
-            var templateChallengeRatings = challengeRatings
-                    .Where(cr => creatureVerifier.VerifyCompatibility(true, template: randomTemplate, challengeRating: cr));
+
+            var challengeRatings = ChallengeRatingConstants.GetOrdered();
+            var templateChallengeRatings = challengeRatings.Where(cr => creatureVerifier.VerifyCompatibility(true, template: randomTemplate, challengeRating: cr));
             var challengeRating = collectionSelector.SelectRandomFrom(templateChallengeRatings);
 
+            stopwatch.Restart();
             var creature = await creatureGenerator.GenerateRandomOfTemplateAsCharacterAsync(randomTemplate, challengeRating);
+            stopwatch.Stop();
 
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
-            creatureAsserter.AssertCreatureAsCharacter(creature);
             Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
+
+            creatureAsserter.AssertCreatureAsCharacter(creature);
         }
 
         [Test]
@@ -355,27 +420,46 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var types = CreatureConstants.Types.GetAll();
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();
-            var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes));
+            var allTypes = types.Union(subtypes);
+            var randomType = collectionSelector.SelectRandomFrom(allTypes);
 
             GenerateAndAssertRandomCreatureOfType(randomType);
         }
 
         private void GenerateAndAssertRandomCreatureOfType(string type, string challengeRating = null)
         {
+            stopwatch.Restart();
             var creature = creatureGenerator.GenerateRandomOfType(type, challengeRating);
+            stopwatch.Stop();
 
-            var types = CreatureConstants.Types.GetAll();
-            if (types.Contains(type))
-                Assert.That(creature.Type.Name, Is.EqualTo(type), creature.Summary);
-            else
-                Assert.That(creature.Type.SubTypes, Contains.Item(type), creature.Summary);
-
-            creatureAsserter.AssertCreature(creature);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            AssertCreatureIsType(creature, type);
 
             if (challengeRating != null)
             {
                 Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
             }
+
+            creatureAsserter.AssertCreature(creature);
+        }
+
+        private void AssertCreatureIsType(Creature creature, string type)
+        {
+            var types = CreatureConstants.Types.GetAll();
+            if (!types.Contains(type))
+            {
+                Assert.That(creature.Type.SubTypes, Contains.Item(type), creature.Summary);
+                return;
+            }
+
+            if (creature.Template == CreatureConstants.Templates.None)
+            {
+                Assert.That(creature.Type.Name, Is.EqualTo(type), creature.Summary);
+                return;
+            }
+
+            var allTypes = creature.Type.SubTypes.Union(new[] { creature.Type.Name });
+            Assert.That(new[] { type }, Is.SubsetOf(allTypes), creature.Summary);
         }
 
         [Test]
@@ -388,9 +472,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var types = CreatureConstants.Types.GetAll();
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();
-            var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes));
-            var typeChallengeRatings = challengeRatings
-                    .Where(cr => creatureVerifier.VerifyCompatibility(false, type: randomType, challengeRating: cr));
+            var allTypes = types.Union(subtypes);
+            var randomType = collectionSelector.SelectRandomFrom(allTypes);
+
+            var challengeRatings = ChallengeRatingConstants.GetOrdered();
+            var typeChallengeRatings = challengeRatings.Where(cr => creatureVerifier.VerifyCompatibility(false, type: randomType, challengeRating: cr));
             var challengeRating = collectionSelector.SelectRandomFrom(typeChallengeRatings);
 
             GenerateAndAssertRandomCreatureOfType(randomType, challengeRating);
@@ -406,34 +492,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var types = CreatureConstants.Types.GetAll();
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();
-            var nonCharacterTypes = new[]
-            {
-                CreatureConstants.Types.Animal,
-                CreatureConstants.Types.Elemental,
-                CreatureConstants.Types.Ooze,
-                CreatureConstants.Types.Vermin,
-                CreatureConstants.Types.Subtypes.Swarm,
-            };
-            var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes).Except(nonCharacterTypes));
+            var validTypes = types.Union(subtypes).Except(nonCharacterTypes);
+            var randomType = collectionSelector.SelectRandomFrom(validTypes);
 
+            stopwatch.Restart();
             var creature = creatureGenerator.GenerateRandomOfTypeAsCharacter(randomType);
+            stopwatch.Stop();
 
-            if (types.Contains(randomType))
-            {
-                if (creature.Template == CreatureConstants.Templates.None)
-                {
-                    Assert.That(creature.Type.Name, Is.EqualTo(randomType), creature.Summary);
-                }
-                else
-                {
-                    var allTypes = creature.Type.SubTypes.Union(new[] { creature.Type.Name });
-                    Assert.That(new[] { randomType }, Is.SubsetOf(allTypes), creature.Summary);
-                }
-            }
-            else
-            {
-                Assert.That(creature.Type.SubTypes, Contains.Item(randomType), creature.Summary);
-            }
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            AssertCreatureIsType(creature, randomType);
 
             creatureAsserter.AssertCreatureAsCharacter(creature);
         }
@@ -448,28 +515,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var types = CreatureConstants.Types.GetAll();
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();
-            var nonCharacterTypes = new[]
-            {
-                CreatureConstants.Types.Animal,
-                CreatureConstants.Types.Elemental,
-                CreatureConstants.Types.Ooze,
-                CreatureConstants.Types.Vermin,
-                CreatureConstants.Types.Subtypes.Swarm,
-            };
-            var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes).Except(nonCharacterTypes));
-            var typeChallengeRatings = challengeRatings
-                    .Where(cr => creatureVerifier.VerifyCompatibility(true, type: randomType, challengeRating: cr));
+            var validTypes = types.Union(subtypes).Except(nonCharacterTypes);
+            var randomType = collectionSelector.SelectRandomFrom(validTypes);
+
+            var challengeRatings = ChallengeRatingConstants.GetOrdered();
+            var typeChallengeRatings = challengeRatings.Where(cr => creatureVerifier.VerifyCompatibility(true, type: randomType, challengeRating: cr));
             var challengeRating = collectionSelector.SelectRandomFrom(typeChallengeRatings);
 
+            stopwatch.Restart();
             var creature = creatureGenerator.GenerateRandomOfTypeAsCharacter(randomType, challengeRating);
+            stopwatch.Stop();
 
-            if (types.Contains(randomType))
-                Assert.That(creature.Type.Name, Is.EqualTo(randomType), creature.Summary);
-            else
-                Assert.That(creature.Type.SubTypes, Contains.Item(randomType), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
+            AssertCreatureIsType(creature, randomType);
 
             creatureAsserter.AssertCreatureAsCharacter(creature);
-            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
         }
 
         [Test]
@@ -482,12 +543,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var types = CreatureConstants.Types.GetAll();
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();
-            var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes));
+            var allTypes = types.Union(subtypes);
+            var randomType = collectionSelector.SelectRandomFrom(allTypes);
 
+            stopwatch.Restart();
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync(randomType);
+            stopwatch.Stop();
 
-            var allTypes = creature.Type.SubTypes.Union(new[] { creature.Type.Name });
-            Assert.That(allTypes, Contains.Item(randomType), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            AssertCreatureIsType(creature, randomType);
 
             creatureAsserter.AssertCreature(creature);
         }
@@ -502,18 +566,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var types = CreatureConstants.Types.GetAll();
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();
-            var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes));
-            var typeChallengeRatings = challengeRatings
-                    .Where(cr => creatureVerifier.VerifyCompatibility(false, type: randomType, challengeRating: cr));
+            var allTypes = types.Union(subtypes);
+            var randomType = collectionSelector.SelectRandomFrom(allTypes);
+
+            var challengeRatings = ChallengeRatingConstants.GetOrdered();
+            var typeChallengeRatings = challengeRatings.Where(cr => creatureVerifier.VerifyCompatibility(false, type: randomType, challengeRating: cr));
             var challengeRating = collectionSelector.SelectRandomFrom(typeChallengeRatings);
 
+            stopwatch.Restart();
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync(randomType, challengeRating);
+            stopwatch.Stop();
 
-            var allTypes = creature.Type.SubTypes.Union(new[] { creature.Type.Name });
-            Assert.That(allTypes, Contains.Item(randomType), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
+            AssertCreatureIsType(creature, randomType);
 
             creatureAsserter.AssertCreature(creature);
-            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
         }
 
         [Test]
@@ -526,20 +594,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var types = CreatureConstants.Types.GetAll();
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();
-            var nonCharacterTypes = new[]
-            {
-                CreatureConstants.Types.Animal,
-                CreatureConstants.Types.Elemental,
-                CreatureConstants.Types.Ooze,
-                CreatureConstants.Types.Vermin,
-                CreatureConstants.Types.Subtypes.Swarm,
-            };
-            var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes).Except(nonCharacterTypes));
+            var validTypes = types.Union(subtypes).Except(nonCharacterTypes);
+            var randomType = collectionSelector.SelectRandomFrom(validTypes);
 
+            stopwatch.Restart();
             var creature = await creatureGenerator.GenerateRandomOfTypeAsCharacterAsync(randomType);
+            stopwatch.Stop();
 
-            var allTypes = creature.Type.SubTypes.Union(new[] { creature.Type.Name });
-            Assert.That(allTypes, Contains.Item(randomType), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            AssertCreatureIsType(creature, randomType);
 
             creatureAsserter.AssertCreatureAsCharacter(creature);
         }
@@ -554,26 +617,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var types = CreatureConstants.Types.GetAll();
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();
-            var nonCharacterTypes = new[]
-            {
-                CreatureConstants.Types.Animal,
-                CreatureConstants.Types.Elemental,
-                CreatureConstants.Types.Ooze,
-                CreatureConstants.Types.Vermin,
-                CreatureConstants.Types.Subtypes.Swarm,
-            };
-            var randomType = collectionSelector.SelectRandomFrom(types.Union(subtypes).Except(nonCharacterTypes));
-            var typeChallengeRatings = challengeRatings
-                    .Where(cr => creatureVerifier.VerifyCompatibility(true, type: randomType, challengeRating: cr));
+            var validTypes = types.Union(subtypes).Except(nonCharacterTypes);
+            var randomType = collectionSelector.SelectRandomFrom(validTypes);
+
+            var challengeRatings = ChallengeRatingConstants.GetOrdered();
+            var typeChallengeRatings = challengeRatings.Where(cr => creatureVerifier.VerifyCompatibility(true, type: randomType, challengeRating: cr));
             var challengeRating = collectionSelector.SelectRandomFrom(typeChallengeRatings);
 
+            stopwatch.Restart();
             var creature = await creatureGenerator.GenerateRandomOfTypeAsCharacterAsync(randomType, challengeRating);
+            stopwatch.Stop();
 
-            var allTypes = creature.Type.SubTypes.Union(new[] { creature.Type.Name });
-            Assert.That(allTypes, Contains.Item(randomType), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
+            AssertCreatureIsType(creature, randomType);
 
             creatureAsserter.AssertCreatureAsCharacter(creature);
-            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
         }
 
         [Test]
@@ -584,6 +643,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private void GenerateAndAssertRandomCreatureOfChallengeRating()
         {
+            var challengeRatings = ChallengeRatingConstants.GetOrdered();
             var challengeRating = collectionSelector.SelectRandomFrom(challengeRatings);
 
             GenerateAndAssertRandomCreatureOfChallengeRating(challengeRating);
@@ -591,10 +651,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private void GenerateAndAssertRandomCreatureOfChallengeRating(string challengeRating)
         {
+            stopwatch.Restart();
             var creature = creatureGenerator.GenerateRandomOfChallengeRating(challengeRating);
+            stopwatch.Stop();
+
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
 
             creatureAsserter.AssertCreature(creature);
-            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
         }
 
         [Test]
@@ -605,12 +669,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private void GenerateAndAssertRandomCreatureOfChallengeRatingAsCharacter()
         {
+            var challengeRatings = ChallengeRatingConstants.GetOrdered();
+            var characterChallengeRatings = challengeRatings.Where(cr => creatureVerifier.VerifyCompatibility(true, challengeRating: cr));
             var challengeRating = collectionSelector.SelectRandomFrom(characterChallengeRatings);
 
+            stopwatch.Restart();
             var creature = creatureGenerator.GenerateRandomOfChallengeRatingAsCharacter(challengeRating);
+            stopwatch.Stop();
+
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
 
             creatureAsserter.AssertCreatureAsCharacter(creature);
-            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
         }
 
         [Test]
@@ -621,12 +691,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private async Task GenerateAndAssertRandomCreatureOfChallengeRatingAsync()
         {
+            var challengeRatings = ChallengeRatingConstants.GetOrdered();
             var challengeRating = collectionSelector.SelectRandomFrom(challengeRatings);
 
+            stopwatch.Restart();
             var creature = await creatureGenerator.GenerateRandomOfChallengeRatingAsync(challengeRating);
+            stopwatch.Stop();
+
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
 
             creatureAsserter.AssertCreature(creature);
-            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
         }
 
         [Test]
@@ -637,12 +712,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private async Task GenerateAndAssertRandomCreatureOfChallengeRatingAsCharacterAsync()
         {
+            var challengeRatings = ChallengeRatingConstants.GetOrdered();
+            var characterChallengeRatings = challengeRatings.Where(cr => creatureVerifier.VerifyCompatibility(true, challengeRating: cr));
             var challengeRating = collectionSelector.SelectRandomFrom(characterChallengeRatings);
 
+            stopwatch.Restart();
             var creature = await creatureGenerator.GenerateRandomOfChallengeRatingAsCharacterAsync(challengeRating);
+            stopwatch.Stop();
+
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
 
             creatureAsserter.AssertCreatureAsCharacter(creature);
-            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
         }
 
         [TestCase(CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.Ghost)]

@@ -1145,7 +1145,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(1);
 
             Assert.That(() => applicator.GetPotentialChallengeRating("my creature", true),
-                Throws.ArgumentException.With.Message.EqualTo("Zombies cannot be characterse"));
+                Throws.ArgumentException.With.Message.EqualTo("Skeletons cannot be characters"));
         }
 
         [TestCase(.1, ChallengeRatingConstants.CR1_6th)]

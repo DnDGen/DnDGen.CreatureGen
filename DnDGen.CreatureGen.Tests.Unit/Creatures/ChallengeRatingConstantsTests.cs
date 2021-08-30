@@ -224,5 +224,46 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
                 }
             }
         }
+
+        [TestCase(9266, 9266, false)]
+        [TestCase(9266, 90210, false)]
+        [TestCase(9266, 42, true)]
+        [TestCase(90210, 9266, true)]
+        [TestCase(90210, 90210, false)]
+        [TestCase(90210, 42, true)]
+        [TestCase(42, 9266, false)]
+        [TestCase(42, 90210, false)]
+        [TestCase(42, 42, false)]
+        public void IsGreaterThan_ComparesChallengeRatings_OutsideConstants(int source, int target, bool greater)
+        {
+            var isGreater = ChallengeRatingConstants.IsGreaterThan(source.ToString(), target.ToString());
+            Assert.That(isGreater, Is.EqualTo(greater));
+        }
+
+        [TestCase(ChallengeRatingConstants.CR0, "9266", false)]
+        [TestCase(ChallengeRatingConstants.CR1_10th, "9266", false)]
+        [TestCase(ChallengeRatingConstants.CR1_10th, "9266", false)]
+        [TestCase(ChallengeRatingConstants.CR1_8th, "9266", false)]
+        [TestCase(ChallengeRatingConstants.CR1_6th, "9266", false)]
+        [TestCase(ChallengeRatingConstants.CR1_4th, "9266", false)]
+        [TestCase(ChallengeRatingConstants.CR1_3rd, "9266", false)]
+        [TestCase(ChallengeRatingConstants.CR1_2nd, "9266", false)]
+        [TestCase(ChallengeRatingConstants.CR1, "9266", false)]
+        [TestCase(ChallengeRatingConstants.CR27, "9266", false)]
+        [TestCase("9266", ChallengeRatingConstants.CR0, true)]
+        [TestCase("9266", ChallengeRatingConstants.CR1_10th, true)]
+        [TestCase("9266", ChallengeRatingConstants.CR1_10th, true)]
+        [TestCase("9266", ChallengeRatingConstants.CR1_8th, true)]
+        [TestCase("9266", ChallengeRatingConstants.CR1_6th, true)]
+        [TestCase("9266", ChallengeRatingConstants.CR1_4th, true)]
+        [TestCase("9266", ChallengeRatingConstants.CR1_3rd, true)]
+        [TestCase("9266", ChallengeRatingConstants.CR1_2nd, true)]
+        [TestCase("9266", ChallengeRatingConstants.CR1, true)]
+        [TestCase("9266", ChallengeRatingConstants.CR27, true)]
+        public void IsGreaterThan_ComparesChallengeRatings_OneOutsideConstants(string source, string target, bool greater)
+        {
+            var isGreater = ChallengeRatingConstants.IsGreaterThan(source, target);
+            Assert.That(isGreater, Is.EqualTo(greater));
+        }
     }
 }

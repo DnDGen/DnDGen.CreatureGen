@@ -110,6 +110,19 @@ namespace DnDGen.CreatureGen.Creatures
             var sourceIndex = Array.IndexOf(ordered, source);
             var targetIndex = Array.IndexOf(ordered, target);
 
+            if (sourceIndex == -1 && targetIndex == -1)
+            {
+                return Convert.ToInt32(source) > Convert.ToInt32(target);
+            }
+            else if (sourceIndex == -1)
+            {
+                return true;
+            }
+            else if (targetIndex == -1)
+            {
+                return false;
+            }
+
             return sourceIndex > targetIndex;
         }
     }
