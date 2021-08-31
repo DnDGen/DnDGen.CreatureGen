@@ -54,7 +54,8 @@ namespace DnDGen.CreatureGen.Verifiers
             {
                 var applicator = factory.Build<TemplateApplicator>(template);
 
-                var filteredBaseCreatures = FilterForTemplate(applicator, creatures, asCharacter, type, challengeRating);
+                //var filteredBaseCreatures = FilterForTemplate(applicator, creatures, asCharacter, type, challengeRating);
+                var filteredBaseCreatures = applicator.GetCompatibleCreatures(creatures, asCharacter, type, challengeRating);
                 return filteredBaseCreatures.Any();
             }
 
@@ -66,13 +67,15 @@ namespace DnDGen.CreatureGen.Verifiers
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
-                var ofChallengeRating = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, challengeRating);
-                creatures = ofChallengeRating.Intersect(creatures);
-
                 if (asCharacter)
                 {
                     //TODO: Need to filter out creatures who will not have the CR after adjusting for being a character
                     throw new NotImplementedException();
+                }
+                else
+                {
+                    var ofChallengeRating = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, challengeRating);
+                    creatures = ofChallengeRating.Intersect(creatures);
                 }
             }
 
@@ -84,7 +87,8 @@ namespace DnDGen.CreatureGen.Verifiers
             {
                 var templateApplicator = factory.Build<TemplateApplicator>(otherTemplate);
 
-                var filteredBaseCreatures = FilterForTemplate(templateApplicator, baseCreatures, asCharacter, type, challengeRating);
+                //var filteredBaseCreatures = FilterForTemplate(templateApplicator, baseCreatures, asCharacter, type, challengeRating);
+                var filteredBaseCreatures = templateApplicator.GetCompatibleCreatures(baseCreatures, asCharacter, type, challengeRating);
                 if (filteredBaseCreatures.Any())
                     return true;
             }
@@ -113,34 +117,37 @@ namespace DnDGen.CreatureGen.Verifiers
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
-                filteredBaseCreatures = filteredBaseCreatures.Where(c => CreatureInRange(templateApplicator, allData[c].ChallengeRating, challengeRating));
-
-                //INFO: If the Max CR is null, then there is no upper limit.
-                //This means that the CR will only increase, not decrease, so we can filter out any base creatures that have a CR higher than the filter
-                var templateChallengeRatings = templateApplicator.GetChallengeRatings();
-                if (templateChallengeRatings == null)
-                {
-                    filteredBaseCreatures = filteredBaseCreatures.Where(c => !ChallengeRatingConstants.IsGreaterThan(allData[c].ChallengeRating, challengeRating));
-                }
-                //If there is a Max CR, we can check if the filter is greater than that maximum value.
-                else if (!templateChallengeRatings.Contains(challengeRating))
-                {
-                    return Enumerable.Empty<string>();
-                }
-                //If there is a Max CR, then the CR for any creature should decrease, so we can filter out any base creatures that have a CR lower than the filter
-                else
-                {
-                    filteredBaseCreatures = filteredBaseCreatures.Where(c => !ChallengeRatingConstants.IsGreaterThan(challengeRating, allData[c].ChallengeRating));
-
-                    //We can also filter based on the hit dice range that would grant the desired challenge rating filter
-                    var hitDiceRange = templateApplicator.GetHitDiceRange(challengeRating);
-                    filteredBaseCreatures = filteredBaseCreatures.Where(c => allHitDice[c] > hitDiceRange.Lower && allHitDice[c] <= hitDiceRange.Upper);
-                }
-
+                //INFO: Since characters might end up decreasing the CR (if they go to 0 hit dice), we have to optimize differently for them
                 if (asCharacter)
                 {
                     //TODO: Need to filter out creatures who will not have the CR after adjusting for being a character
                     throw new NotImplementedException();
+                }
+                else
+                {
+                    filteredBaseCreatures = filteredBaseCreatures.Where(c => CreatureInRange(templateApplicator, allData[c].ChallengeRating, challengeRating));
+
+                    //INFO: If the Max CR is null, then there is no upper limit.
+                    //This means that the CR will only increase, not decrease, so we can filter out any base creatures that have a CR higher than the filter
+                    var templateChallengeRatings = templateApplicator.GetChallengeRatings();
+                    if (templateChallengeRatings == null)
+                    {
+                        filteredBaseCreatures = filteredBaseCreatures.Where(c => !ChallengeRatingConstants.IsGreaterThan(allData[c].ChallengeRating, challengeRating));
+                    }
+                    //If there is a Max CR, we can check if the filter is greater than that maximum value.
+                    else if (!templateChallengeRatings.Contains(challengeRating))
+                    {
+                        return Enumerable.Empty<string>();
+                    }
+                    //If there is a Max CR, then the CR for any creature should decrease, so we can filter out any base creatures that have a CR lower than the filter
+                    else
+                    {
+                        filteredBaseCreatures = filteredBaseCreatures.Where(c => !ChallengeRatingConstants.IsGreaterThan(challengeRating, allData[c].ChallengeRating));
+
+                        //We can also filter based on the hit dice range that would grant the desired challenge rating filter
+                        var hitDiceRange = templateApplicator.GetHitDiceRange(challengeRating);
+                        filteredBaseCreatures = filteredBaseCreatures.Where(c => allHitDice[c] > hitDiceRange.Lower && allHitDice[c] <= hitDiceRange.Upper);
+                    }
                 }
             }
 

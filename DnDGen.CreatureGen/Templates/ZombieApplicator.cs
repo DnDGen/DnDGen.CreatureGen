@@ -553,5 +553,57 @@ namespace DnDGen.CreatureGen.Templates
 
             return adjustedChallengeRating;
         }
+
+        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, string type = null, string challengeRating = null)
+        {
+            //INFO: Since Zombies cannot be characters, we can return an empty enumerable
+            if (asCharacter)
+            {
+                return Enumerable.Empty<string>();
+            }
+
+            var filteredBaseCreatures = sourceCreatures;
+
+            if (!string.IsNullOrEmpty(challengeRating))
+            {
+                var templateChallengeRatings = GetChallengeRatings();
+                if (!templateChallengeRatings.Contains(challengeRating))
+                {
+                    return Enumerable.Empty<string>();
+                }
+
+                var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
+
+                filteredBaseCreatures = filteredBaseCreatures.Where(c => CreatureInRange(challengeRating, allHitDice[c]));
+            }
+
+            if (!string.IsNullOrEmpty(type))
+            {
+                //INFO: Unless this type is added by a template, it must already exist on the base creature
+                //So first, we check to see if the template could return this type for a human
+                //If not, then we can filter the base creatures down to ones that already have this type
+                var templateTypes = GetPotentialTypes(CreatureConstants.Human)
+                    .Except(new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human });
+
+                if (!templateTypes.Contains(type))
+                {
+                    var ofType = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, type);
+                    filteredBaseCreatures = filteredBaseCreatures.Intersect(ofType);
+                }
+            }
+
+            var templateCreatures = filteredBaseCreatures.Where(c => IsCompatible(c, asCharacter, type, challengeRating));
+
+            return templateCreatures;
+        }
+
+        private bool CreatureInRange(string filterChallengeRating, double creatureHitDiceQuantity)
+        {
+            var hitDiceRange = GetHitDiceRange(filterChallengeRating);
+
+            //INFO: Since Zombie CRs only decrease from the base creature, if the filter is higher than the creature CR, the creature will never meet the filter
+            return creatureHitDiceQuantity > hitDiceRange.Lower
+                && creatureHitDiceQuantity <= hitDiceRange.Upper;
+        }
     }
 }

@@ -187,6 +187,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void CanGenerateHumanTemplateAsCharacter(string template)
         {
+            if (template == CreatureConstants.Templates.Skeleton || template == CreatureConstants.Templates.Zombie)
+            {
+                Assert.Pass($"Template {template} cannot be a character");
+            }
+
             var creature = creatureGenerator.GenerateAsCharacter(CreatureConstants.Human, template);
             creatureAsserter.AssertCreatureAsCharacter(creature);
             Assert.That(creature.Template, Is.EqualTo(template));

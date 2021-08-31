@@ -10,6 +10,7 @@ namespace DnDGen.CreatureGen.Templates
         IEnumerable<string> GetPotentialTypes(string creature);
         IEnumerable<string> GetChallengeRatings(string challengeRating);
         IEnumerable<string> GetChallengeRatings();
+        IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, string type = null, string challengeRating = null);
         (double? Lower, double? Upper) GetHitDiceRange(string challengeRating);
         string GetPotentialChallengeRating(string creature, bool asCharacter);
 
