@@ -2809,5 +2809,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(hitDice.Lower, Is.Null);
             Assert.That(hitDice.Upper, Is.Null);
         }
+
+        [Test]
+        public void GetCompatibleCreatures_Tests()
+        {
+            Assert.Fail("not yet written - need to come up with test cases");
+        }
     }
 }

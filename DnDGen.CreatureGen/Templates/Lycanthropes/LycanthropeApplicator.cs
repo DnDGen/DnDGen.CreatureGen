@@ -737,78 +737,55 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
 
         public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, string type = null, string challengeRating = null)
         {
-            var filteredBaseCreatures = baseCreatures;
-            var allData = creatureDataSelector.SelectAll();
-            var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
+            var filteredBaseCreatures = sourceCreatures;
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
-                //INFO: Since characters might end up decreasing the CR (if they go to 0 hit dice), we have to optimize differently for them
-                if (asCharacter)
-                {
-                    //TODO: Need to filter out creatures who will not have the CR after adjusting for being a character
-                    throw new NotImplementedException();
-                }
-                else
-                {
-                    filteredBaseCreatures = filteredBaseCreatures.Where(c => CreatureInRange(templateApplicator, allData[c].ChallengeRating, challengeRating));
+                var allData = creatureDataSelector.SelectAll();
+                var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
+                var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
 
-                    //INFO: If the Max CR is null, then there is no upper limit.
-                    //This means that the CR will only increase, not decrease, so we can filter out any base creatures that have a CR higher than the filter
-                    var templateChallengeRatings = templateApplicator.GetChallengeRatings();
-                    if (templateChallengeRatings == null)
-                    {
-                        filteredBaseCreatures = filteredBaseCreatures.Where(c => !ChallengeRatingConstants.IsGreaterThan(allData[c].ChallengeRating, challengeRating));
-                    }
-                    //If there is a Max CR, we can check if the filter is greater than that maximum value.
-                    else if (!templateChallengeRatings.Contains(challengeRating))
-                    {
-                        return Enumerable.Empty<string>();
-                    }
-                    //If there is a Max CR, then the CR for any creature should decrease, so we can filter out any base creatures that have a CR lower than the filter
-                    else
-                    {
-                        filteredBaseCreatures = filteredBaseCreatures.Where(c => !ChallengeRatingConstants.IsGreaterThan(challengeRating, allData[c].ChallengeRating));
-
-                        //We can also filter based on the hit dice range that would grant the desired challenge rating filter
-                        var hitDiceRange = templateApplicator.GetHitDiceRange(challengeRating);
-                        filteredBaseCreatures = filteredBaseCreatures.Where(c => allHitDice[c] > hitDiceRange.Lower && allHitDice[c] <= hitDiceRange.Upper);
-                    }
-                }
+                filteredBaseCreatures = filteredBaseCreatures
+                    .Where(c => CreatureInRange(allData[c].ChallengeRating, challengeRating, asCharacter, allHitDice[c], allTypes[c]));
             }
 
             if (!string.IsNullOrEmpty(type))
             {
                 //INFO: Unless this type is added by a template, it must already exist on the base creature
-                //So first, we check to see if the template could return this type for a human and a rat
+                //So first, we check to see if the template could return this type for a human
                 //If not, then we can filter the base creatures down to ones that already have this type
-                var templateTypes = templateApplicator.GetPotentialTypes(CreatureConstants.Human)
+                var humanTypes = GetPotentialTypes(CreatureConstants.Human);
+                var templateTypes = humanTypes
                     .Except(new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human });
-                if (templateApplicator.IsCompatible(CreatureConstants.Rat, false))
-                {
-                    var ratTypes = templateApplicator.GetPotentialTypes(CreatureConstants.Rat)
-                        .Except(new[] { CreatureConstants.Types.Vermin });
-                    templateTypes = templateTypes.Union(ratTypes);
-                }
 
                 if (!templateTypes.Contains(type))
                 {
-                    var ofType = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, type);
+                    var ofType = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, type);
                     filteredBaseCreatures = filteredBaseCreatures.Intersect(ofType);
                 }
             }
 
-            var templateCreatures = filteredBaseCreatures.Where(c => templateApplicator.IsCompatible(c, asCharacter, type, challengeRating));
+            var templateCreatures = filteredBaseCreatures.Where(c => IsCompatible(c, asCharacter, type, challengeRating));
 
             return templateCreatures;
         }
 
-        private bool CreatureInRange(TemplateApplicator applicator, string creatureChallengeRating, string filterChallengeRating)
+        private bool CreatureInRange(
+            string creatureChallengeRating,
+            string filterChallengeRating,
+            bool asCharacter,
+            double creatureHitDiceQuantity,
+            IEnumerable<string> creatureTypes)
         {
-            var templateChallengeRatings = applicator.GetChallengeRatings(creatureChallengeRating);
-            var crInRange = templateChallengeRatings.Contains(filterChallengeRating);
+            var creatureType = creatureTypes.First();
 
-            return crInRange;
+            if (asCharacter && creatureHitDiceQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
+            {
+                creatureChallengeRating = ChallengeRatingConstants.CR0;
+            }
+
+            var templateChallengeRatings = GetChallengeRatings(creatureChallengeRating);
+            return templateChallengeRatings.Contains(filterChallengeRating);
         }
     }
 }

@@ -375,5 +375,58 @@ namespace DnDGen.CreatureGen.Templates
 
             return adjustedChallengeRating;
         }
+
+        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, string type = null, string challengeRating = null)
+        {
+            var filteredBaseCreatures = sourceCreatures;
+
+            if (!string.IsNullOrEmpty(challengeRating))
+            {
+                var allData = creatureDataSelector.SelectAll();
+                var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
+                var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
+
+                filteredBaseCreatures = filteredBaseCreatures
+                    .Where(c => CreatureInRange(allData[c].ChallengeRating, challengeRating, asCharacter, allHitDice[c], allTypes[c]));
+            }
+
+            if (!string.IsNullOrEmpty(type))
+            {
+                //INFO: Unless this type is added by a template, it must already exist on the base creature
+                //So first, we check to see if the template could return this type for a human
+                //If not, then we can filter the base creatures down to ones that already have this type
+                var humanTypes = GetPotentialTypes(CreatureConstants.Human);
+                var templateTypes = humanTypes
+                    .Except(new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human });
+
+                if (!templateTypes.Contains(type))
+                {
+                    var ofType = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, type);
+                    filteredBaseCreatures = filteredBaseCreatures.Intersect(ofType);
+                }
+            }
+
+            var templateCreatures = filteredBaseCreatures.Where(c => IsCompatible(c, asCharacter, type, challengeRating));
+
+            return templateCreatures;
+        }
+
+        private bool CreatureInRange(
+            string creatureChallengeRating,
+            string filterChallengeRating,
+            bool asCharacter,
+            double creatureHitDiceQuantity,
+            IEnumerable<string> creatureTypes)
+        {
+            var creatureType = creatureTypes.First();
+
+            if (asCharacter && creatureHitDiceQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
+            {
+                creatureChallengeRating = ChallengeRatingConstants.CR0;
+            }
+
+            var templateChallengeRatings = GetChallengeRatings(creatureChallengeRating);
+            return templateChallengeRatings.Contains(filterChallengeRating);
+        }
     }
 }

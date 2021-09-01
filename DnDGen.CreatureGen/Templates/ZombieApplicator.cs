@@ -601,7 +601,6 @@ namespace DnDGen.CreatureGen.Templates
         {
             var hitDiceRange = GetHitDiceRange(filterChallengeRating);
 
-            //INFO: Since Zombie CRs only decrease from the base creature, if the filter is higher than the creature CR, the creature will never meet the filter
             return creatureHitDiceQuantity > hitDiceRange.Lower
                 && creatureHitDiceQuantity <= hitDiceRange.Upper;
         }

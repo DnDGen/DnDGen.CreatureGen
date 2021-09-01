@@ -475,7 +475,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 //3. Per hit die quantity
                 var challengeRatings = new[]
                 {
-                    ChallengeRatingConstants.CR0, //Character
+                    ChallengeRatingConstants.CR0, //HUmanoid Character
                     ChallengeRatingConstants.CR1_4th, //Kobold
                     ChallengeRatingConstants.CR1_3rd, //Goblin
                     ChallengeRatingConstants.CR1_2nd, //Dwarf, Elf, Gnome, Halfling, Hobgoblin, Merfolk, Orc
@@ -3968,6 +3968,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             var hitDice = applicators[template].GetHitDiceRange("my challenge rating");
             Assert.That(hitDice.Lower, Is.Null);
             Assert.That(hitDice.Upper, Is.Null);
+        }
+
+        [Test]
+        public void GetCompatibleCreatures_Tests()
+        {
+            Assert.Fail("not yet written - need to come up with test cases");
         }
     }
 }

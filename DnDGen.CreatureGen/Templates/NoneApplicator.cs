@@ -82,5 +82,47 @@ namespace DnDGen.CreatureGen.Templates
         {
             return true;
         }
+
+        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, string type = null, string challengeRating = null)
+        {
+            var filteredBaseCreatures = sourceCreatures;
+
+            if (!string.IsNullOrEmpty(challengeRating))
+            {
+                var allData = creatureDataSelector.SelectAll();
+                var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
+                var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
+
+                filteredBaseCreatures = filteredBaseCreatures
+                    .Where(c => CreatureInRange(allData[c].ChallengeRating, challengeRating, asCharacter, allHitDice[c], allTypes[c]));
+            }
+
+            if (!string.IsNullOrEmpty(type))
+            {
+                var ofType = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, type);
+                filteredBaseCreatures = filteredBaseCreatures.Intersect(ofType);
+            }
+
+            var templateCreatures = filteredBaseCreatures.Where(c => IsCompatible(c, asCharacter, type, challengeRating));
+
+            return templateCreatures;
+        }
+
+        private bool CreatureInRange(
+            string creatureChallengeRating,
+            string filterChallengeRating,
+            bool asCharacter,
+            double creatureHitDiceQuantity,
+            IEnumerable<string> creatureTypes)
+        {
+            var creatureType = creatureTypes.First();
+
+            if (asCharacter && creatureHitDiceQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
+            {
+                creatureChallengeRating = ChallengeRatingConstants.CR0;
+            }
+
+            return creatureChallengeRating == filterChallengeRating;
+        }
     }
 }

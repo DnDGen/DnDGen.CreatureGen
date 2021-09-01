@@ -2307,5 +2307,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(hitDice.Lower, Is.EqualTo(lower));
             Assert.That(hitDice.Upper, Is.EqualTo(upper));
         }
+
+        [Test]
+        public void GetCompatibleCreatures_Tests()
+        {
+            Assert.Fail("not yet written - need to come up with test cases");
+        }
     }
 }

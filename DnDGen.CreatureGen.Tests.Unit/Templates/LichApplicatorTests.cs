@@ -1704,5 +1704,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         private static IEnumerable ChallengeRatings => ChallengeRatingConstants.GetOrdered().Select(cr => new TestCaseData(cr));
+
+        [Test]
+        public void GetCompatibleCreatures_Tests()
+        {
+            Assert.Fail("not yet written - need to come up with test cases");
+        }
     }
 }
