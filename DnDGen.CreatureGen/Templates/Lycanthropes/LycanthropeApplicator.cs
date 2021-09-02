@@ -249,8 +249,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             return ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, increase);
         }
 
-        public IEnumerable<string> GetChallengeRatings() => null;
-        public IEnumerable<string> GetChallengeRatings(string challengeRating) => new[]
+        private IEnumerable<string> GetChallengeRatings(string challengeRating) => new[]
         {
             ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2),
             ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 3),
@@ -258,7 +257,6 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 5),
             ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 6),
         };
-        public (double? Lower, double? Upper) GetHitDiceRange(string challengeRating) => (null, null);
 
         private void UpdateCreatureLevelAdjustment(Creature creature)
         {
@@ -706,7 +704,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             return creature;
         }
 
-        public IEnumerable<string> GetPotentialTypes(string creature)
+        private IEnumerable<string> GetPotentialTypes(string creature)
         {
             var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
             var creatureType = types.First();
@@ -717,7 +715,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             return adjustedTypes;
         }
 
-        public string GetPotentialChallengeRating(string creature, bool asCharacter)
+        private string GetPotentialChallengeRating(string creature, bool asCharacter)
         {
             var creatureQuantity = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, creature);
             var animalQuantity = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, AnimalSpecies);

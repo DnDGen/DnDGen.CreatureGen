@@ -100,7 +100,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         private IEnumerable<string> GetCreaturesOfTemplate(string template, IEnumerable<string> creatureGroup, bool asCharacter, string creatureType = null, string challengeRating = null)
         {
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
-            var creatures = creatureGroup.Where(c => templateApplicator.IsCompatible(c, asCharacter, creatureType, challengeRating));
+            var creatures = templateApplicator.GetCompatibleCreatures(creatureGroup, asCharacter, creatureType, challengeRating);
 
             return creatures;
         }

@@ -239,7 +239,7 @@ namespace DnDGen.CreatureGen.Templates
             throw new ArgumentException($"Zombie hit dice cannot be greater than 20, but was {hitDiceQuantity} for creature {creature}");
         }
 
-        public IEnumerable<string> GetChallengeRatings() => new[]
+        private IEnumerable<string> GetChallengeRatings() => new[]
         {
             ChallengeRatingConstants.CR1_8th,
             ChallengeRatingConstants.CR1_4th,
@@ -251,9 +251,8 @@ namespace DnDGen.CreatureGen.Templates
             ChallengeRatingConstants.CR5,
             ChallengeRatingConstants.CR6,
         };
-        public IEnumerable<string> GetChallengeRatings(string challengeRating) => GetChallengeRatings();
 
-        public (double? Lower, double? Upper) GetHitDiceRange(string challengeRating)
+        private (double? Lower, double? Upper) GetHitDiceRange(string challengeRating)
         {
             switch (challengeRating)
             {
@@ -477,12 +476,8 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public bool IsCompatible(string creature, bool asCharacter, string type = null, string challengeRating = null)
+        private bool IsCompatible(string creature, string type = null, string challengeRating = null)
         {
-            //INFO: Zombies cannot be characters - they explicitly lose their class levels and abilities.
-            if (asCharacter)
-                return false;
-
             if (!IsCompatible(creature))
                 return false;
 
@@ -495,13 +490,7 @@ namespace DnDGen.CreatureGen.Templates
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
-                var crRange = GetChallengeRatings();
-                if (!crRange.Contains(challengeRating))
-                {
-                    return false;
-                }
-
-                var cr = GetPotentialChallengeRating(creature, asCharacter);
+                var cr = GetPotentialChallengeRating(creature);
                 if (cr != challengeRating)
                     return false;
             }
@@ -529,7 +518,7 @@ namespace DnDGen.CreatureGen.Templates
             return true;
         }
 
-        public IEnumerable<string> GetPotentialTypes(string creature)
+        private IEnumerable<string> GetPotentialTypes(string creature)
         {
             var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
             var creatureType = types.First();
@@ -540,11 +529,8 @@ namespace DnDGen.CreatureGen.Templates
             return adjustedTypes;
         }
 
-        public string GetPotentialChallengeRating(string creature, bool asCharacter)
+        private string GetPotentialChallengeRating(string creature)
         {
-            if (asCharacter)
-                throw new ArgumentException($"Zombies cannot be characters");
-
             var quantity = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, creature);
             //INFO: Zombie hit points double the quantity
             var hitDice = quantity * 2;
@@ -556,7 +542,7 @@ namespace DnDGen.CreatureGen.Templates
 
         public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, string type = null, string challengeRating = null)
         {
-            //INFO: Since Zombies cannot be characters, we can return an empty enumerable
+            //INFO: Since Zombies cannot be characters (they explicitly lose their class levels), we can return an empty enumerable
             if (asCharacter)
             {
                 return Enumerable.Empty<string>();
@@ -592,7 +578,7 @@ namespace DnDGen.CreatureGen.Templates
                 }
             }
 
-            var templateCreatures = filteredBaseCreatures.Where(c => IsCompatible(c, asCharacter, type, challengeRating));
+            var templateCreatures = filteredBaseCreatures.Where(c => IsCompatible(c, type, challengeRating));
 
             return templateCreatures;
         }

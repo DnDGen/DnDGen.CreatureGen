@@ -190,12 +190,10 @@ namespace DnDGen.CreatureGen.Templates
             return ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2);
         }
 
-        public IEnumerable<string> GetChallengeRatings() => null;
-        public IEnumerable<string> GetChallengeRatings(string challengeRating) => new[]
+        private IEnumerable<string> GetChallengeRatings(string challengeRating) => new[]
         {
             ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2),
         };
-        public (double? Lower, double? Upper) GetHitDiceRange(string challengeRating) => (null, null);
 
         private void UpdateCreatureAttacks(Creature creature)
         {
@@ -348,7 +346,7 @@ namespace DnDGen.CreatureGen.Templates
             return false;
         }
 
-        public IEnumerable<string> GetPotentialTypes(string creature)
+        private IEnumerable<string> GetPotentialTypes(string creature)
         {
             var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
             var creatureType = types.First();
@@ -359,7 +357,7 @@ namespace DnDGen.CreatureGen.Templates
             return adjustedTypes;
         }
 
-        public string GetPotentialChallengeRating(string creature, bool asCharacter)
+        private string GetPotentialChallengeRating(string creature, bool asCharacter)
         {
             var quantity = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, creature);
             var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);

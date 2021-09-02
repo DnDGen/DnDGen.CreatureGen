@@ -248,9 +248,7 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             return increased;
         }
 
-        public IEnumerable<string> GetChallengeRatings() => null;
-        public IEnumerable<string> GetChallengeRatings(string challengeRating) => new[] { UpdateCreatureChallengeRating(challengeRating) };
-        public (double? Lower, double? Upper) GetHitDiceRange(string challengeRating) => (null, null);
+        private IEnumerable<string> GetChallengeRatings(string challengeRating) => new[] { UpdateCreatureChallengeRating(challengeRating) };
 
         private void UpdateCreatureLevelAdjustment(Creature creature)
         {
@@ -450,7 +448,7 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             return creature;
         }
 
-        public bool IsCompatible(string creature, bool asCharacter, string type = null, string challengeRating = null)
+        private bool IsCompatible(string creature, bool asCharacter, string type = null, string challengeRating = null)
         {
             if (!IsCompatible(creature))
                 return false;
@@ -484,7 +482,7 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             return true;
         }
 
-        public IEnumerable<string> GetPotentialTypes(string creature)
+        private IEnumerable<string> GetPotentialTypes(string creature)
         {
             var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
             var creatureType = types.First();
@@ -495,7 +493,7 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             return adjustedTypes;
         }
 
-        public string GetPotentialChallengeRating(string creature, bool asCharacter)
+        private string GetPotentialChallengeRating(string creature, bool asCharacter)
         {
             var quantity = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, creature);
             var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);

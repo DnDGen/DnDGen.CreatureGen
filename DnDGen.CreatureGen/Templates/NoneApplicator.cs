@@ -46,17 +46,13 @@ namespace DnDGen.CreatureGen.Templates
             return data.ChallengeRating;
         }
 
-        public IEnumerable<string> GetChallengeRatings() => null;
-        public IEnumerable<string> GetChallengeRatings(string challengeRating) => new[] { challengeRating };
-        public (double? Lower, double? Upper) GetHitDiceRange(string challengeRating) => (null, null);
-
-        public IEnumerable<string> GetPotentialTypes(string creature)
+        private IEnumerable<string> GetPotentialTypes(string creature)
         {
             var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
             return types;
         }
 
-        public bool IsCompatible(string creature, bool asCharacter, string type = null, string challengeRating = null)
+        private bool IsCompatible(string creature, bool asCharacter, string type = null, string challengeRating = null)
         {
             if (!IsCompatible(creature))
                 return false;

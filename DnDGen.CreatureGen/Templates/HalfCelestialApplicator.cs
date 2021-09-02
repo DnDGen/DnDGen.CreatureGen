@@ -197,14 +197,12 @@ namespace DnDGen.CreatureGen.Templates
             creature.ChallengeRating = UpdateCreatureChallengeRating(creature.ChallengeRating, creature.HitPoints.RoundedHitDiceQuantity);
         }
 
-        public IEnumerable<string> GetChallengeRatings() => null;
-        public IEnumerable<string> GetChallengeRatings(string challengeRating) => new[]
+        private IEnumerable<string> GetChallengeRatings(string challengeRating) => new[]
         {
             ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 1),
             ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2),
             ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 3),
         };
-        public (double? Lower, double? Upper) GetHitDiceRange(string challengeRating) => (null, null);
 
         private string UpdateCreatureChallengeRating(string challengeRating, int hitDiceQuantity)
         {
@@ -406,7 +404,7 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public bool IsCompatible(string creature, bool asCharacter, string type = null, string challengeRating = null)
+        private bool IsCompatible(string creature, bool asCharacter, string type = null, string challengeRating = null)
         {
             if (!IsCompatible(creature))
                 return false;
@@ -449,7 +447,7 @@ namespace DnDGen.CreatureGen.Templates
             return intelligenceAdjustment.Amount + Ability.DefaultScore >= 4;
         }
 
-        public IEnumerable<string> GetPotentialTypes(string creature)
+        private IEnumerable<string> GetPotentialTypes(string creature)
         {
             var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
             var creatureType = types.First();
@@ -460,7 +458,7 @@ namespace DnDGen.CreatureGen.Templates
             return adjustedTypes;
         }
 
-        public string GetPotentialChallengeRating(string creature, bool asCharacter)
+        private string GetPotentialChallengeRating(string creature, bool asCharacter)
         {
             var quantity = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, creature);
             var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
