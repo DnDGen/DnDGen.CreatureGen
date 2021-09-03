@@ -2309,9 +2309,61 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void GetCompatibleCreatures_Tests()
+        public void GetCompatibleCreatures_ReturnsEmpty_IfAsCharacter()
         {
-            Assert.Fail("not yet written - need to come up with test cases");
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void GetCompatibleCreatures_ReturnsCompatibleCreatures()
+        {
+            Assert.Fail("not yet written - be sure to assert some not compatible");
+        }
+
+        [Test]
+        public void GetCompatibleCreatures_WithChallengeRating_ReturnsCompatibleCreatures()
+        {
+            Assert.Fail("not yet written - be sure to assert some not compatible");
+        }
+
+        [Test]
+        public void GetCompatibleCreatures_WithChallengeRating_ReturnsEmpty_IfChallengeRatingNotValidForTemplate()
+        {
+            Assert.Fail("not yet written - be sure to assert some not compatible");
+        }
+
+        [Test]
+        public void GetCompatibleCreatures_WithChallengeRating_ReturnsCompatibleCreatures_FilterOutCreaturesWithFewerHitDice()
+        {
+            Assert.Fail("not yet written - be sure to assert some not compatible");
+            Assert.Fail("not yet written - be sure to assert compatibility not tested for some");
+        }
+
+        [Test]
+        public void GetCompatibleCreatures_WithChallengeRating_ReturnsCompatibleCreatures_FilterOutCreaturesWithMoreHitDice()
+        {
+            Assert.Fail("not yet written - be sure to assert some not compatible");
+            Assert.Fail("not yet written - be sure to assert compatibility not tested for some");
+        }
+
+        [Test]
+        public void GetCompatibleCreatures_WithType_ReturnsCompatibleCreatures()
+        {
+            Assert.Fail("not yet written - be sure to assert some not compatible");
+        }
+
+        [Test]
+        public void GetCompatibleCreatures_WithType_ReturnsCompatibleCreatures_FilterOutCreaturesWithWrongType()
+        {
+            Assert.Fail("not yet written - be sure to assert some not compatible");
+            Assert.Fail("not yet written - be sure to assert compatibility not tested for some");
+        }
+
+        [Test]
+        public void GetCompatibleCreatures_WithChallengeRatingAndType_ReturnsCompatibleCreatures()
+        {
+            Assert.Fail("not yet written - be sure to assert some not compatible");
+            Assert.Fail("not yet written - be sure to assert compatibility not tested for some");
         }
     }
 }
