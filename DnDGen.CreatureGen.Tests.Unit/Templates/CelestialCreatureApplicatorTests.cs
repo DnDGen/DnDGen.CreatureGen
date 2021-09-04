@@ -3037,7 +3037,37 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private static IEnumerable ChallengeRatings => ChallengeRatingConstants.GetOrdered().Select(cr => new TestCaseData(cr));
 
         [Test]
-        public void GetCompatibleCreatures_Tests()
+        public void GetCompatibleCreatures_ReturnCompatibleCreatures()
+        {
+            Assert.Fail("not yet written - need to come up with test cases");
+        }
+
+        [Test]
+        public void GetCompatibleCreatures_WithChallengeRating_ReturnCompatibleCreatures()
+        {
+            Assert.Fail("not yet written - need to come up with test cases");
+        }
+
+        [Test]
+        public void GetCompatibleCreatures_WithChallengeRating_ReturnCompatibleCreatures_FilterOutInvalidChallengeRatings()
+        {
+            Assert.Fail("not yet written - need to come up with test cases");
+        }
+
+        [Test]
+        public void GetCompatibleCreatures_WithType_ReturnCompatibleCreatures()
+        {
+            Assert.Fail("not yet written - need to come up with test cases");
+        }
+
+        [Test]
+        public void GetCompatibleCreatures_WithType_ReturnCompatibleCreatures_FilterOutInvalidTypes()
+        {
+            Assert.Fail("not yet written - need to come up with test cases");
+        }
+
+        [Test]
+        public void GetCompatibleCreatures_WithTypeAndChallengeRating_ReturnCompatibleCreatures()
         {
             Assert.Fail("not yet written - need to come up with test cases");
         }
