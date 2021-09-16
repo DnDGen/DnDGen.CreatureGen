@@ -222,253 +222,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Returns((string t) => new Alignment { Lawfulness = $"{t}y", Goodness = "scaley" });
         }
 
-        [TestCaseSource(nameof(CreatureTypeCompatible))]
-        public void IsCompatible_BasedOnCreatureType(string template, string creatureType, bool compatible)
-        {
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
-                .Returns(new[] { creatureType, "subtype 1", "subtype 2" });
-
-            var isCompatible = applicators[template].IsCompatible("my creature", false);
-            Assert.That(isCompatible, Is.EqualTo(compatible));
-        }
-
-        private static IEnumerable CreatureTypeCompatible
-        {
-            get
-            {
-                var compatibilities = new[]
-                {
-                    (CreatureConstants.Types.Aberration, true),
-                    (CreatureConstants.Types.Animal, true),
-                    (CreatureConstants.Types.Construct, false),
-                    (CreatureConstants.Types.Dragon, false),
-                    (CreatureConstants.Types.Elemental, false),
-                    (CreatureConstants.Types.Fey, true),
-                    (CreatureConstants.Types.Giant, true),
-                    (CreatureConstants.Types.Humanoid, true),
-                    (CreatureConstants.Types.MagicalBeast, true),
-                    (CreatureConstants.Types.MonstrousHumanoid, true),
-                    (CreatureConstants.Types.Ooze, true),
-                    (CreatureConstants.Types.Outsider, false),
-                    (CreatureConstants.Types.Plant, true),
-                    (CreatureConstants.Types.Undead, false),
-                    (CreatureConstants.Types.Vermin, true),
-                };
-
-                foreach (var template in templates)
-                {
-                    foreach (var compatibility in compatibilities)
-                    {
-                        yield return new TestCaseData(template, compatibility.Item1, compatibility.Item2);
-                    }
-                }
-            }
-        }
-
-        [TestCaseSource(nameof(AllHalfDragonTemplates))]
-        public void IsCompatible_CannotBeIncorporeal(string template)
-        {
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
-                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", CreatureConstants.Types.Subtypes.Incorporeal, "subtype 2" });
-
-            var isCompatible = applicators[template].IsCompatible("my creature", false);
-            Assert.That(isCompatible, Is.False);
-        }
-
-        [TestCaseSource(nameof(CreatureTypeCompatible_Filtered))]
-        public void IsCompatible_TypeMustMatch(string template, string type, bool compatible)
-        {
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
-                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
-
-            var isCompatible = applicators[template].IsCompatible("my creature", false, type: type);
-            Assert.That(isCompatible, Is.EqualTo(compatible));
-        }
-
-        private static IEnumerable CreatureTypeCompatible_Filtered
-        {
-            get
-            {
-                foreach (var template in templates)
-                {
-                    yield return new TestCaseData(template, null, true);
-                    yield return new TestCaseData(template, CreatureConstants.Types.Humanoid, true);
-                    yield return new TestCaseData(template, CreatureConstants.Types.Dragon, true);
-                    yield return new TestCaseData(template, "subtype 1", true);
-                    yield return new TestCaseData(template, "subtype 2", true);
-                    yield return new TestCaseData(template, CreatureConstants.Types.Subtypes.Augmented, true);
-                    yield return new TestCaseData(template, "wrong type", false);
-                }
-            }
-        }
-
-        [TestCaseSource(nameof(ChallengeRatingAdjustments_Filtered))]
-        public void IsCompatible_ChallengeRatingMustMatch(string template, string original, string challengeRating, bool compatible)
-        {
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
-                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
-
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor("my creature"))
-                .Returns(new CreatureDataSelection { ChallengeRating = original });
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
-                .Returns(1);
-
-            var isCompatible = applicators[template].IsCompatible("my creature", false, challengeRating: challengeRating);
-            Assert.That(isCompatible, Is.EqualTo(compatible));
-        }
-
-        [TestCaseSource(nameof(ChallengeRatingAdjustments_Filtered_HumanoidCharacter))]
-        public void IsCompatible_ChallengeRatingMustMatch_HumanoidAsCharacter(string template, double hitDiceQuantity, string original, string challengeRating, bool compatible)
-        {
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
-                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
-
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor("my creature"))
-                .Returns(new CreatureDataSelection { ChallengeRating = original });
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
-                .Returns(hitDiceQuantity);
-
-            var isCompatible = applicators[template].IsCompatible("my creature", true, challengeRating: challengeRating);
-            Assert.That(isCompatible, Is.EqualTo(compatible));
-        }
-
-        private static IEnumerable ChallengeRatingAdjustments_Filtered_HumanoidCharacter
-        {
-            get
-            {
-                var hitDice = new[] { 0.5, 1, 2 };
-                var challengeRatings = ChallengeRatingConstants.GetOrdered();
-
-                foreach (var template in templates)
-                {
-                    foreach (var quantity in hitDice)
-                    {
-                        foreach (var cr in challengeRatings)
-                        {
-                            var increase = ChallengeRatingConstants.IncreaseChallengeRating(cr, 2);
-
-                            if (quantity <= 1)
-                            {
-                                yield return new TestCaseData(template, quantity, cr, ChallengeRatingConstants.CR2, false);
-                                yield return new TestCaseData(template, quantity, cr, ChallengeRatingConstants.CR3, true);
-                                yield return new TestCaseData(template, quantity, cr, ChallengeRatingConstants.CR4, false);
-                            }
-                            else if (ChallengeRatingConstants.IsGreaterThan(ChallengeRatingConstants.CR3, increase))
-                            {
-                                yield return new TestCaseData(template, quantity, cr, cr, false);
-                                yield return new TestCaseData(template, quantity, cr, ChallengeRatingConstants.CR2, false);
-                                yield return new TestCaseData(template, quantity, cr, ChallengeRatingConstants.CR3, true);
-                                yield return new TestCaseData(template, quantity, cr, ChallengeRatingConstants.CR4, false);
-                            }
-                            else
-                            {
-                                var low1 = ChallengeRatingConstants.IncreaseChallengeRating(cr, 1);
-                                var high1 = ChallengeRatingConstants.IncreaseChallengeRating(increase, 1);
-
-                                yield return new TestCaseData(template, quantity, cr, cr, false);
-                                yield return new TestCaseData(template, quantity, cr, low1, false);
-                                yield return new TestCaseData(template, quantity, cr, increase, true);
-                                yield return new TestCaseData(template, quantity, cr, high1, false);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        [TestCaseSource(nameof(ChallengeRatingAdjustments_Filtered))]
-        public void IsCompatible_ChallengeRatingMustMatch_NonHumanoidAsCharacter(string template, string original, string challengeRating, bool compatible)
-        {
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
-                .Returns(new[] { CreatureConstants.Types.Giant, "subtype 1", "subtype 2" });
-
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor("my creature"))
-                .Returns(new CreatureDataSelection { ChallengeRating = original });
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
-                .Returns(1);
-
-            var isCompatible = applicators[template].IsCompatible("my creature", true, challengeRating: challengeRating);
-            Assert.That(isCompatible, Is.EqualTo(compatible));
-        }
-
-        private static IEnumerable ChallengeRatingAdjustments_Filtered
-        {
-            get
-            {
-                var challengeRatings = ChallengeRatingConstants.GetOrdered();
-
-                foreach (var template in templates)
-                {
-                    foreach (var cr in challengeRatings)
-                    {
-                        var increase = ChallengeRatingConstants.IncreaseChallengeRating(cr, 2);
-
-                        if (ChallengeRatingConstants.IsGreaterThan(ChallengeRatingConstants.CR3, increase))
-                        {
-                            yield return new TestCaseData(template, cr, cr, false);
-                            yield return new TestCaseData(template, cr, ChallengeRatingConstants.CR2, false);
-                            yield return new TestCaseData(template, cr, ChallengeRatingConstants.CR3, true);
-                            yield return new TestCaseData(template, cr, ChallengeRatingConstants.CR4, false);
-                        }
-                        else
-                        {
-                            var low1 = ChallengeRatingConstants.IncreaseChallengeRating(cr, 1);
-                            var high1 = ChallengeRatingConstants.IncreaseChallengeRating(increase, 1);
-
-                            yield return new TestCaseData(template, cr, cr, false);
-                            yield return new TestCaseData(template, cr, low1, false);
-                            yield return new TestCaseData(template, cr, increase, true);
-                            yield return new TestCaseData(template, cr, high1, false);
-                        }
-                    }
-                }
-            }
-        }
-
-        [TestCaseSource(nameof(ChallengeRatingAndTypeAdjustments_Filtered))]
-        public void IsCompatible_TypeAndChallengeRatingMustMatch(string template, string type, string challengeRating, bool compatible)
-        {
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
-                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
-
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor("my creature"))
-                .Returns(new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR2 });
-
-            var isCompatible = applicators[template].IsCompatible("my creature", false, challengeRating: challengeRating, type: type);
-            Assert.That(isCompatible, Is.EqualTo(compatible));
-        }
-
-        private static IEnumerable ChallengeRatingAndTypeAdjustments_Filtered
-        {
-            get
-            {
-                foreach (var template in templates)
-                {
-                    yield return new TestCaseData(template, CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR2, false);
-                    yield return new TestCaseData(template, CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR4, true);
-                    yield return new TestCaseData(template, "wrong subtype", ChallengeRatingConstants.CR2, false);
-                    yield return new TestCaseData(template, "wrong subtype", ChallengeRatingConstants.CR4, false);
-                }
-            }
-        }
-
         [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void ApplyTo_SetsTemplate(string template)
         {
@@ -483,24 +236,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             var creature = await applicators[template].ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Template, Is.EqualTo(template));
-        }
-
-        [TestCaseSource(nameof(CreatureTypeAdjusted))]
-        public void GetPotentialTypes_CreatureTypeIsAdjusted(string template, string original)
-        {
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
-                .Returns(new[] { original, "subtype 1", "subtype 2" });
-
-            var types = applicators[template].GetPotentialTypes("my creature");
-            Assert.That(types.First(), Is.EqualTo(CreatureConstants.Types.Dragon));
-
-            var subtypes = types.Skip(1);
-            Assert.That(subtypes.Count(), Is.EqualTo(4));
-            Assert.That(subtypes, Contains.Item("subtype 1")
-                .And.Contains("subtype 2")
-                .And.Contains(original)
-                .And.Contains(CreatureConstants.Types.Subtypes.Augmented));
         }
 
         [TestCaseSource(nameof(CreatureTypeAdjusted))]
@@ -1473,90 +1208,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
 
             var creature = applicators[template].ApplyTo(baseCreature);
             Assert.That(creature.Skills, Is.Empty);
-        }
-
-        [TestCaseSource(nameof(ChallengeRatingAdjustments))]
-        public void GetPotentialChallengeRating_ChallengeRatingAdjusted(string template, string original, string adjusted)
-        {
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
-                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
-
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor("my creature"))
-                .Returns(new CreatureDataSelection { ChallengeRating = original });
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
-                .Returns(1);
-
-            var challengeRating = applicators[template].GetPotentialChallengeRating("my creature", false);
-            Assert.That(challengeRating, Is.EqualTo(adjusted));
-        }
-
-        [TestCaseSource(nameof(ChallengeRatingAdjustments_HumanoidCharacter))]
-        public void GetPotentialChallengeRating_ChallengeRatingAdjusted_HumanoidAsCharacter(string template, double hitDiceQuantity, string original, string adjusted)
-        {
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
-                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
-
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor("my creature"))
-                .Returns(new CreatureDataSelection { ChallengeRating = original });
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
-                .Returns(hitDiceQuantity);
-
-            var challengeRating = applicators[template].GetPotentialChallengeRating("my creature", true);
-            Assert.That(challengeRating, Is.EqualTo(adjusted));
-        }
-
-        private static IEnumerable ChallengeRatingAdjustments_HumanoidCharacter
-        {
-            get
-            {
-                var challengeRatings = ChallengeRatingConstants.GetOrdered();
-                var hitDice = new[] { 0.5, 1, 2 };
-
-                foreach (var quantity in hitDice)
-                {
-                    foreach (var template in templates)
-                    {
-                        foreach (var challengeRating in challengeRatings)
-                        {
-                            var increased = ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2);
-
-                            if (quantity <= 1)
-                                yield return new TestCaseData(template, quantity, challengeRating, ChallengeRatingConstants.CR3);
-                            else if (ChallengeRatingConstants.IsGreaterThan(ChallengeRatingConstants.CR3, increased))
-                                yield return new TestCaseData(template, quantity, challengeRating, ChallengeRatingConstants.CR3);
-                            else
-                                yield return new TestCaseData(template, quantity, challengeRating, increased);
-                        }
-                    }
-                }
-            }
-        }
-
-        [TestCaseSource(nameof(ChallengeRatingAdjustments))]
-        public void GetPotentialChallengeRating_ChallengeRatingAdjusted_NonHumanoidAsCharacter(string template, string original, string adjusted)
-        {
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
-                .Returns(new[] { CreatureConstants.Types.Giant, "subtype 1", "subtype 2" });
-
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor("my creature"))
-                .Returns(new CreatureDataSelection { ChallengeRating = original });
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
-                .Returns(1);
-
-            var challengeRating = applicators[template].GetPotentialChallengeRating("my creature", true);
-            Assert.That(challengeRating, Is.EqualTo(adjusted));
         }
 
         [TestCaseSource(nameof(ChallengeRatingAdjustments))]
@@ -2789,61 +2440,439 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         }
 
         [TestCaseSource(nameof(AllHalfDragonTemplates))]
-        public void GetChallengeRatings_ReturnsNull(string template)
+        public void GetCompatibleCreatures_ReturnCompatibleCreatures(string template)
         {
-            var challengeRatings = applicators[template].GetChallengeRatings();
-            Assert.That(challengeRatings, Is.Null);
+            var creatures = new[] { "my creature", "wrong creature 1", "my other creature" };
+
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types["other creature"] = new[] { CreatureConstants.Types.Giant, "subtype 3" };
+            types["wrong creature 1"] = new[] { CreatureConstants.Types.Undead, "subtype 1", "subtype 2" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(creatures, false);
+            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
         }
 
         [TestCaseSource(nameof(ChallengeRatingAdjustments))]
-        public void GetChallengeRatings_FromChallengeRating_ReturnsAdjustedChallengeRating(string template, string challengeRating, string adjusted)
+        public void GetCompatibleCreatures_WithChallengeRating_ReturnCompatibleCreatures(string template, string original, string challengeRating)
         {
-            var challengeRatings = applicators[template].GetChallengeRatings(challengeRating);
-            Assert.That(challengeRatings, Is.EqualTo(new[] { adjusted }));
+            var creatures = new[] { "my creature", "wrong creature 1", "my other creature", "wrong creature 2" };
+
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types["other creature"] = new[] { CreatureConstants.Types.Giant, "subtype 3" };
+            types["wrong creature 1"] = new[] { CreatureConstants.Types.Undead, "subtype 1", "subtype 2" };
+            types["wrong creature 2"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = original };
+            data["my other creature"] = new CreatureDataSelection { ChallengeRating = original };
+            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = original };
+            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = challengeRating };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns(1);
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(creatures, false, challengeRating: challengeRating);
+            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
         }
 
-        [TestCaseSource(nameof(ChallengeRatingAdjustments))]
-        public void GetHitDiceRange_ReturnsNull(string template, string challengeRating, string adjusted)
+        [TestCaseSource(nameof(CreatureTypeFilter_FromTemplate))]
+        public void GetCompatibleCreatures_WithType_ReturnCompatibleCreatures(string template, string type)
         {
-            var hitDice = applicators[template].GetHitDiceRange(challengeRating);
-            Assert.That(hitDice.Lower, Is.Null);
-            Assert.That(hitDice.Upper, Is.Null);
+            var creatures = new[] { "my creature", "wrong creature 1", "my other creature" };
+
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types["other creature"] = new[] { CreatureConstants.Types.Giant, "subtype 3" };
+            types["wrong creature 1"] = new[] { CreatureConstants.Types.Undead, "subtype 1", "subtype 2" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["my other creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns(1);
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(creatures, false, type: type);
+            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
         }
 
-        [Test]
-        public void GetCompatibleCreatures_ReturnCompatibleCreatures()
+        private static IEnumerable CreatureTypeFilter_FromTemplate
         {
-            Assert.Fail("not yet written - need to come up with test cases");
+            get
+            {
+                foreach (var template in templates)
+                {
+                    yield return new TestCaseData(template, CreatureConstants.Types.Dragon);
+                    yield return new TestCaseData(template, CreatureConstants.Types.Subtypes.Augmented);
+                }
+            }
         }
 
-        [Test]
-        public void GetCompatibleCreatures_WithChallengeRating_ReturnCompatibleCreatures()
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
+        public void GetCompatibleCreatures_WithType_ReturnCompatibleCreatures_FilterOutInvalidTypes(string template)
         {
-            Assert.Fail("not yet written - need to come up with test cases");
+            var creatures = new[] { "my creature", "wrong creature 1", "my other creature", "wrong creature 2" };
+
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types["other creature"] = new[] { CreatureConstants.Types.Giant, "subtype 2" };
+            types["wrong creature 1"] = new[] { CreatureConstants.Types.Undead, "subtype 1", "subtype 2" };
+            types["wrong creature 2"] = new[] { CreatureConstants.Types.Humanoid, "subtype 3", "subtype 1" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["my other creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns(1);
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(creatures, false, type: "subtype 2");
+            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
         }
 
-        [Test]
-        public void GetCompatibleCreatures_WithChallengeRating_ReturnCompatibleCreatures_FilterOutInvalidChallengeRatings()
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
+        public void GetCompatibleCreatures_WithTypeAndChallengeRating_ReturnCompatibleCreatures(string template)
         {
-            Assert.Fail("not yet written - need to come up with test cases");
+            var creatures = new[] { "my creature", "wrong creature 1", "my other creature", "wrong creature 2", "wrong creature 3" };
+
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types["other creature"] = new[] { CreatureConstants.Types.Giant, "subtype 2" };
+            types["wrong creature 1"] = new[] { CreatureConstants.Types.Undead, "subtype 1", "subtype 2" };
+            types["wrong creature 2"] = new[] { CreatureConstants.Types.Humanoid, "subtype 3", "subtype 1" };
+            types["wrong creature 3"] = new[] { CreatureConstants.Types.Humanoid, "subtype 2", "subtype 1" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR2 };
+            data["my other creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR2 };
+            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR2 };
+            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR2 };
+            data["wrong creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR3 };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns(1);
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(creatures, false, type: "subtype 2", challengeRating: ChallengeRatingConstants.CR4);
+            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
         }
 
-        [Test]
-        public void GetCompatibleCreatures_WithType_ReturnCompatibleCreatures()
+        [TestCaseSource(nameof(CreatureTypeCompatible))]
+        public void IsCompatible_BasedOnCreatureType(string template, string creatureType, bool compatible)
         {
-            Assert.Fail("not yet written - need to come up with test cases");
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { creatureType, "subtype 1", "subtype 2" });
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(new[] { "my creature" }, false);
+            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 
-        [Test]
-        public void GetCompatibleCreatures_WithType_ReturnCompatibleCreatures_FilterOutInvalidTypes()
+        private static IEnumerable CreatureTypeCompatible
         {
-            Assert.Fail("not yet written - need to come up with test cases");
+            get
+            {
+                var compatibilities = new[]
+                {
+                    (CreatureConstants.Types.Aberration, true),
+                    (CreatureConstants.Types.Animal, true),
+                    (CreatureConstants.Types.Construct, false),
+                    (CreatureConstants.Types.Dragon, false),
+                    (CreatureConstants.Types.Elemental, false),
+                    (CreatureConstants.Types.Fey, true),
+                    (CreatureConstants.Types.Giant, true),
+                    (CreatureConstants.Types.Humanoid, true),
+                    (CreatureConstants.Types.MagicalBeast, true),
+                    (CreatureConstants.Types.MonstrousHumanoid, true),
+                    (CreatureConstants.Types.Ooze, true),
+                    (CreatureConstants.Types.Outsider, false),
+                    (CreatureConstants.Types.Plant, true),
+                    (CreatureConstants.Types.Undead, false),
+                    (CreatureConstants.Types.Vermin, true),
+                };
+
+                foreach (var template in templates)
+                {
+                    foreach (var compatibility in compatibilities)
+                    {
+                        yield return new TestCaseData(template, compatibility.Item1, compatibility.Item2);
+                    }
+                }
+            }
         }
 
-        [Test]
-        public void GetCompatibleCreatures_WithTypeAndChallengeRating_ReturnCompatibleCreatures()
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
+        public void IsCompatible_CannotBeIncorporeal(string template)
         {
-            Assert.Fail("not yet written - need to come up with test cases");
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", CreatureConstants.Types.Subtypes.Incorporeal, "subtype 2" });
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(new[] { "my creature" }, false);
+            Assert.That(compatibleCreatures, Is.Empty);
+        }
+
+        [TestCaseSource(nameof(CreatureTypeCompatible_Filtered))]
+        public void IsCompatible_TypeMustMatch(string template, string type, bool compatible)
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(new[] { "my creature" }, false, type: type);
+            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
+        private static IEnumerable CreatureTypeCompatible_Filtered
+        {
+            get
+            {
+                foreach (var template in templates)
+                {
+                    yield return new TestCaseData(template, null, true);
+                    yield return new TestCaseData(template, CreatureConstants.Types.Humanoid, true);
+                    yield return new TestCaseData(template, CreatureConstants.Types.Dragon, true);
+                    yield return new TestCaseData(template, "subtype 1", true);
+                    yield return new TestCaseData(template, "subtype 2", true);
+                    yield return new TestCaseData(template, CreatureConstants.Types.Subtypes.Augmented, true);
+                    yield return new TestCaseData(template, "wrong type", false);
+                }
+            }
+        }
+
+        [TestCaseSource(nameof(ChallengeRatingAdjustments_Filtered))]
+        public void IsCompatible_ChallengeRatingMustMatch(string template, string original, string challengeRating, bool compatible)
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor("my creature"))
+                .Returns(new CreatureDataSelection { ChallengeRating = original });
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
+                .Returns(1);
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(new[] { "my creature" }, false, challengeRating: challengeRating);
+            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
+        [TestCaseSource(nameof(ChallengeRatingAdjustments_Filtered_HumanoidCharacter))]
+        public void IsCompatible_ChallengeRatingMustMatch_HumanoidAsCharacter(string template, double hitDiceQuantity, string original, string challengeRating, bool compatible)
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor("my creature"))
+                .Returns(new CreatureDataSelection { ChallengeRating = original });
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
+                .Returns(hitDiceQuantity);
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(new[] { "my creature" }, true, challengeRating: challengeRating);
+            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
+        private static IEnumerable ChallengeRatingAdjustments_Filtered_HumanoidCharacter
+        {
+            get
+            {
+                var hitDice = new[] { 0.5, 1, 2 };
+                var challengeRatings = ChallengeRatingConstants.GetOrdered();
+
+                foreach (var template in templates)
+                {
+                    foreach (var quantity in hitDice)
+                    {
+                        foreach (var cr in challengeRatings)
+                        {
+                            var increase = ChallengeRatingConstants.IncreaseChallengeRating(cr, 2);
+
+                            if (quantity <= 1)
+                            {
+                                yield return new TestCaseData(template, quantity, cr, ChallengeRatingConstants.CR2, false);
+                                yield return new TestCaseData(template, quantity, cr, ChallengeRatingConstants.CR3, true);
+                                yield return new TestCaseData(template, quantity, cr, ChallengeRatingConstants.CR4, false);
+                            }
+                            else if (ChallengeRatingConstants.IsGreaterThan(ChallengeRatingConstants.CR3, increase))
+                            {
+                                yield return new TestCaseData(template, quantity, cr, cr, false);
+                                yield return new TestCaseData(template, quantity, cr, ChallengeRatingConstants.CR2, false);
+                                yield return new TestCaseData(template, quantity, cr, ChallengeRatingConstants.CR3, true);
+                                yield return new TestCaseData(template, quantity, cr, ChallengeRatingConstants.CR4, false);
+                            }
+                            else
+                            {
+                                var low1 = ChallengeRatingConstants.IncreaseChallengeRating(cr, 1);
+                                var high1 = ChallengeRatingConstants.IncreaseChallengeRating(increase, 1);
+
+                                yield return new TestCaseData(template, quantity, cr, cr, false);
+                                yield return new TestCaseData(template, quantity, cr, low1, false);
+                                yield return new TestCaseData(template, quantity, cr, increase, true);
+                                yield return new TestCaseData(template, quantity, cr, high1, false);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        [TestCaseSource(nameof(ChallengeRatingAdjustments_Filtered))]
+        public void IsCompatible_ChallengeRatingMustMatch_NonHumanoidAsCharacter(string template, string original, string challengeRating, bool compatible)
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Giant, "subtype 1", "subtype 2" });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor("my creature"))
+                .Returns(new CreatureDataSelection { ChallengeRating = original });
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "my creature"))
+                .Returns(1);
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(new[] { "my creature" }, true, challengeRating: challengeRating);
+            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
+        private static IEnumerable ChallengeRatingAdjustments_Filtered
+        {
+            get
+            {
+                var challengeRatings = ChallengeRatingConstants.GetOrdered();
+
+                foreach (var template in templates)
+                {
+                    foreach (var cr in challengeRatings)
+                    {
+                        var increase = ChallengeRatingConstants.IncreaseChallengeRating(cr, 2);
+
+                        if (ChallengeRatingConstants.IsGreaterThan(ChallengeRatingConstants.CR3, increase))
+                        {
+                            yield return new TestCaseData(template, cr, cr, false);
+                            yield return new TestCaseData(template, cr, ChallengeRatingConstants.CR2, false);
+                            yield return new TestCaseData(template, cr, ChallengeRatingConstants.CR3, true);
+                            yield return new TestCaseData(template, cr, ChallengeRatingConstants.CR4, false);
+                        }
+                        else
+                        {
+                            var low1 = ChallengeRatingConstants.IncreaseChallengeRating(cr, 1);
+                            var high1 = ChallengeRatingConstants.IncreaseChallengeRating(increase, 1);
+
+                            yield return new TestCaseData(template, cr, cr, false);
+                            yield return new TestCaseData(template, cr, low1, false);
+                            yield return new TestCaseData(template, cr, increase, true);
+                            yield return new TestCaseData(template, cr, high1, false);
+                        }
+                    }
+                }
+            }
+        }
+
+        [TestCaseSource(nameof(ChallengeRatingAndTypeAdjustments_Filtered))]
+        public void IsCompatible_TypeAndChallengeRatingMustMatch(string template, string type, string challengeRating, bool compatible)
+        {
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
+                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor("my creature"))
+                .Returns(new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR2 });
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(new[] { "my creature" }, false, type, challengeRating);
+            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
+        private static IEnumerable ChallengeRatingAndTypeAdjustments_Filtered
+        {
+            get
+            {
+                foreach (var template in templates)
+                {
+                    yield return new TestCaseData(template, CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR2, false);
+                    yield return new TestCaseData(template, CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR4, true);
+                    yield return new TestCaseData(template, "wrong subtype", ChallengeRatingConstants.CR2, false);
+                    yield return new TestCaseData(template, "wrong subtype", ChallengeRatingConstants.CR4, false);
+                }
+            }
         }
     }
 }

@@ -192,7 +192,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private IEnumerable<string> GetChallengeRatings(string challengeRating) => new[]
         {
-            ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2),
+            UpdateCreatureChallengeRating(challengeRating),
         };
 
         private void UpdateCreatureAttacks(Creature creature)
@@ -296,7 +296,7 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public bool IsCompatible(string creature, bool asCharacter, string type = null, string challengeRating = null)
+        private bool IsCompatible(string creature, bool asCharacter, string type = null, string challengeRating = null)
         {
             if (!IsCompatible(creature))
                 return false;
