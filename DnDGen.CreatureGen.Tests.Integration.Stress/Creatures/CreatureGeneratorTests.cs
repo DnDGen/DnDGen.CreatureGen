@@ -209,6 +209,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var randomTemplate = collectionSelector.SelectRandomFrom(allTemplates);
             var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(true, creature: c, template: randomTemplate));
+
+            if (!validCreatures.Any())
+            {
+                Assert.Fail($"Invalid combination: Template {randomTemplate}; As Character True");
+            }
+
             var randomCreatureName = collectionSelector.SelectRandomFrom(validCreatures);
 
             stopwatch.Restart();
