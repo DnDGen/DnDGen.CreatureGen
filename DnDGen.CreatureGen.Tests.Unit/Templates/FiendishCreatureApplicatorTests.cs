@@ -2594,10 +2594,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, "subtype 2", ChallengeRatingConstants.CR2);
             Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
-
-            mockCreatureDataSelector.Verify(s => s.SelectFor("wrong creature 1"), Times.Never);
-            mockCreatureDataSelector.Verify(s => s.SelectFor("wrong creature 2"), Times.Never);
-            mockCreatureDataSelector.Verify(s => s.SelectFor("wrong creature 3"), Times.Never);
         }
 
         [TestCase(CreatureConstants.Types.Aberration, true)]

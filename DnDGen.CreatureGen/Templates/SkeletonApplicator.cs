@@ -155,6 +155,9 @@ namespace DnDGen.CreatureGen.Templates
             foreach (var hitDice in creature.HitPoints.HitDice)
             {
                 hitDice.HitDie = 12;
+
+                //INFO: This handles the use case where the creature would normally be compatible, but is advanced, and has more hitpoints than it normally would
+                hitDice.Quantity = Math.Min(20, hitDice.Quantity);
             }
 
             creature.HitPoints.RollTotal(dice);

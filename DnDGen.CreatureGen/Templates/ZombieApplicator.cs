@@ -160,6 +160,9 @@ namespace DnDGen.CreatureGen.Templates
             {
                 hitDie.HitDie = 12;
                 hitDie.Quantity *= 2;
+
+                //INFO: This handles the use case where the creature would normally be compatible, but is advanced, and has more hitpoints than it normally would
+                hitDie.Quantity = Math.Min(20, hitDie.Quantity);
             }
 
             creature.HitPoints.RollTotal(dice);
@@ -194,7 +197,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureChallengeRating(Creature creature)
         {
-            creature.ChallengeRating = UpdateCreatureChallengeRating(creature.HitPoints.HitDiceQuantity, creature.Name);
+            creature.ChallengeRating = UpdateCreatureChallengeRating(creature.HitPoints.HitDiceQuantity, creature.Summary);
         }
 
         private string UpdateCreatureChallengeRating(double hitDiceQuantity, string creature)
@@ -565,6 +568,11 @@ namespace DnDGen.CreatureGen.Templates
 
             if (!string.IsNullOrEmpty(type))
             {
+                if (invalidSubtypes.Contains(type))
+                {
+                    return Enumerable.Empty<string>();
+                }
+
                 //INFO: Unless this type is added by a template, it must already exist on the base creature
                 //So first, we check to see if the template could return this type for a human
                 //If not, then we can filter the base creatures down to ones that already have this type

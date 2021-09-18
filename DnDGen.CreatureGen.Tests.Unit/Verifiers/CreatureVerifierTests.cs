@@ -1,4 +1,5 @@
-﻿using DnDGen.CreatureGen.Selectors.Collections;
+﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
@@ -344,13 +345,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
                 .Returns(new[] { "character", "creature", "wrong creature" });
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "type"))
-                .Returns(new[] { "type creature", "creature", "other wrong creature" });
+            var noneApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
+                .Returns(noneApplicator.Object);
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "challenge rating"))
-                .Returns(new[] { "CR creature", "creature", "another wrong creature" });
+            noneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), false, "type", "challenge rating"))
+                .Returns((IEnumerable<string> cc, bool asC, string t, string cr) => cc.Take(1));
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
@@ -376,13 +378,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
                 .Returns(new[] { "character", "creature", "wrong creature" });
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "type"))
-                .Returns(new[] { "type creature", "other wrong creature" });
+            var noneApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
+                .Returns(noneApplicator.Object);
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "challenge rating"))
-                .Returns(new[] { "CR creature", "another wrong creature" });
+            noneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), false, "type", "challenge rating"))
+                .Returns(Enumerable.Empty<string>());
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
@@ -413,13 +416,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
                 .Returns(new[] { "character", "creature", "wrong creature" });
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "type"))
-                .Returns(new[] { "type creature", "other wrong creature" });
+            var noneApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
+                .Returns(noneApplicator.Object);
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "challenge rating"))
-                .Returns(new[] { "CR creature", "another wrong creature" });
+            noneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), false, "type", "challenge rating"))
+                .Returns(Enumerable.Empty<string>());
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
@@ -449,13 +453,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
                 .Returns(new[] { "character", "creature", "wrong creature" });
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "type"))
-                .Returns(new[] { "type creature", "other wrong creature" });
+            var noneApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
+                .Returns(noneApplicator.Object);
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "challenge rating"))
-                .Returns(new[] { "CR creature", "another wrong creature" });
+            noneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), false, "type", "challenge rating"))
+                .Returns(Enumerable.Empty<string>());
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
@@ -489,13 +494,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "creature" });
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "type"))
-                .Returns(new[] { "type creature", "creature", "other wrong creature" });
+            var noneApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
+                .Returns(noneApplicator.Object);
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "challenge rating"))
-                .Returns(new[] { "CR creature", "creature", "another wrong creature" });
+            noneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), true, "type", "challenge rating"))
+                .Returns((IEnumerable<string> cc, bool asC, string t, string cr) => cc.Take(1));
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
@@ -525,13 +531,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "creature" });
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "type"))
-                .Returns(new[] { "type creature", "other wrong creature" });
+            var noneApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
+                .Returns(noneApplicator.Object);
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "challenge rating"))
-                .Returns(new[] { "CR creature", "another wrong creature" });
+            noneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), true, "type", "challenge rating"))
+                .Returns(Enumerable.Empty<string>());
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
@@ -562,13 +569,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "creature", "wrong creature" });
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "type"))
-                .Returns(new[] { "type creature", "other wrong creature" });
+            var noneApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
+                .Returns(noneApplicator.Object);
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "challenge rating"))
-                .Returns(new[] { "CR creature", "another wrong creature" });
+            noneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), true, "type", "challenge rating"))
+                .Returns(Enumerable.Empty<string>());
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
@@ -598,13 +606,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "creature", "wrong creature" });
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "type"))
-                .Returns(new[] { "type creature", "other wrong creature" });
+            var noneApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
+                .Returns(noneApplicator.Object);
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "challenge rating"))
-                .Returns(new[] { "CR creature", "another wrong creature" });
+            noneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), true, "type", "challenge rating"))
+                .Returns(Enumerable.Empty<string>());
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
@@ -634,13 +643,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "wrong creature" });
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "type"))
-                .Returns(new[] { "type creature", "other wrong creature" });
+            var noneApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
+                .Returns(noneApplicator.Object);
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "challenge rating"))
-                .Returns(new[] { "CR creature", "another wrong creature" });
+            noneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), true, "type", "challenge rating"))
+                .Returns(Enumerable.Empty<string>());
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
@@ -688,6 +698,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                     .Returns(mockApplicator.Object);
             }
 
+            var noneApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
+                .Returns(noneApplicator.Object);
+
+            noneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), false, null, "challenge rating"))
+                .Returns((IEnumerable<string> cc, bool asC, string t, string cr) => cc.Take(1));
+
             var isCompatible = verifier.VerifyCompatibility(false, challengeRating: "challenge rating");
             Assert.That(isCompatible, Is.True);
         }
@@ -707,6 +726,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
                 .Returns(templates);
+
+            var noneApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
+                .Returns(noneApplicator.Object);
+
+            noneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), false, null, "challenge rating"))
+                .Returns(Enumerable.Empty<string>());
 
             foreach (var template in templates)
             {
@@ -735,6 +763,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "challenge rating"))
                 .Returns(new[] { "CR creature", "another wrong creature" });
+
+            var noneApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
+                .Returns(noneApplicator.Object);
+
+            noneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), false, null, "challenge rating"))
+                .Returns(Enumerable.Empty<string>());
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
@@ -772,6 +809,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "challenge rating"))
                 .Returns(new[] { "CR creature", "creature", "another wrong creature" });
 
+            var noneApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
+                .Returns(noneApplicator.Object);
+
+            noneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), true, null, "challenge rating"))
+                .Returns((IEnumerable<string> cc, bool asC, string t, string cr) => cc.Take(1));
+
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
@@ -804,6 +850,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "challenge rating"))
                 .Returns(new[] { "CR creature", "another wrong creature" });
 
+            var noneApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
+                .Returns(noneApplicator.Object);
+
+            noneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), true, null, "challenge rating"))
+                .Returns(Enumerable.Empty<string>());
+
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
@@ -833,9 +888,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "creature", "wrong creature" });
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "challenge rating"))
-                .Returns(new[] { "CR creature", "another wrong creature" });
+            var noneApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
+                .Returns(noneApplicator.Object);
+
+            noneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), true, null, "challenge rating"))
+                .Returns(Enumerable.Empty<string>());
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
@@ -865,9 +925,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "wrong creature" });
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "challenge rating"))
-                .Returns(new[] { "CR creature", "another wrong creature" });
+            var noneApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
+                .Returns(noneApplicator.Object);
+
+            noneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), true, null, "challenge rating"))
+                .Returns(Enumerable.Empty<string>());
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
@@ -898,9 +963,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
                 .Returns(new[] { "character", "creature", "wrong creature" });
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "type"))
-                .Returns(new[] { "type creature", "creature", "other wrong creature" });
+            var noneApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
+                .Returns(noneApplicator.Object);
+
+            noneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), false, "type", null))
+                .Returns((IEnumerable<string> cc, bool asC, string t, string cr) => cc.Take(1));
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
@@ -926,9 +996,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
                 .Returns(new[] { "character", "creature", "wrong creature" });
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "type"))
-                .Returns(new[] { "type creature", "other wrong creature" });
+            var noneApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
+                .Returns(noneApplicator.Object);
+
+            noneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), false, "type", null))
+                .Returns(Enumerable.Empty<string>());
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
@@ -959,9 +1034,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
                 .Returns(new[] { "character", "creature", "wrong creature" });
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "type"))
-                .Returns(new[] { "type creature", "other wrong creature" });
+            var noneApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
+                .Returns(noneApplicator.Object);
+
+            noneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), false, "type", null))
+                .Returns(Enumerable.Empty<string>());
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
@@ -995,9 +1075,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "creature" });
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "type"))
-                .Returns(new[] { "type creature", "creature", "other wrong creature" });
+            var noneApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
+                .Returns(noneApplicator.Object);
+
+            noneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), true, "type", null))
+                .Returns((IEnumerable<string> cc, bool asC, string t, string cr) => cc.Take(1));
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
@@ -1027,9 +1112,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "creature" });
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "type"))
-                .Returns(new[] { "type creature", "other wrong creature" });
+            var noneApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
+                .Returns(noneApplicator.Object);
+
+            noneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), true, "type", null))
+                .Returns(Enumerable.Empty<string>());
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
@@ -1060,9 +1150,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "creature", "wrong creature" });
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "type"))
-                .Returns(new[] { "type creature", "other wrong creature" });
+            var noneApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
+                .Returns(noneApplicator.Object);
+
+            noneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), true, "type", null))
+                .Returns(Enumerable.Empty<string>());
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
@@ -1092,9 +1187,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "wrong creature" });
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "type"))
-                .Returns(new[] { "type creature", "other wrong creature" });
+            var noneApplicator = new Mock<TemplateApplicator>();
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
+                .Returns(noneApplicator.Object);
+
+            noneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), true, "type", null))
+                .Returns(Enumerable.Empty<string>());
 
             var templates = new[] { "template", "other template" };
             mockCollectionSelector
