@@ -377,11 +377,14 @@ namespace DnDGen.CreatureGen.Templates
                 //INFO: Unless this type is added by a template, it must already exist on the base creature
                 //So first, we check to see if the template could return this type for a human and a rat
                 //If not, then we can filter the base creatures down to ones that already have this type
-                var humanTypes = GetPotentialTypes(CreatureConstants.Human);
-                var ratTypes = GetPotentialTypes(CreatureConstants.Rat);
-                var templateTypes = humanTypes
-                    .Union(ratTypes)
-                    .Except(new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human, CreatureConstants.Types.Vermin });
+                var humanTypes = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, CreatureConstants.Human);
+                var ratTypes = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, CreatureConstants.Rat);
+                var humanTemplateTypes = GetPotentialTypes(CreatureConstants.Human);
+                var ratTemplateTypes = GetPotentialTypes(CreatureConstants.Rat);
+                var templateTypes = humanTemplateTypes
+                    .Union(ratTemplateTypes)
+                    .Except(humanTypes)
+                    .Except(ratTypes);
 
                 if (!templateTypes.Contains(type))
                 {

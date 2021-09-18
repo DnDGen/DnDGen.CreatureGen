@@ -456,9 +456,8 @@ namespace DnDGen.CreatureGen.Templates
                 //INFO: Unless this type is added by a template, it must already exist on the base creature
                 //So first, we check to see if the template could return this type for a human
                 //If not, then we can filter the base creatures down to ones that already have this type
-                var humanTypes = GetPotentialTypes(CreatureConstants.Human);
-                var templateTypes = humanTypes
-                    .Except(new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human });
+                var humanTypes = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, CreatureConstants.Human);
+                var templateTypes = GetPotentialTypes(CreatureConstants.Human).Except(humanTypes);
 
                 if (!templateTypes.Contains(type))
                 {
