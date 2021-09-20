@@ -94,9 +94,6 @@ namespace DnDGen.CreatureGen.Templates
             //Speed
             UpdateCreatureSpeeds(creature);
 
-            //Challenge Rating
-            UpdateCreatureChallengeRating(creature);
-
             //Level Adjustment
             UpdateCreatureLevelAdjustment(creature);
 
@@ -115,6 +112,10 @@ namespace DnDGen.CreatureGen.Templates
             //INFO: Depends on abilities
             //Hit Points
             UpdateCreatureHitPoints(creature);
+
+            //INFO: Depends on hit points
+            //Challenge Rating
+            UpdateCreatureChallengeRating(creature);
 
             //INFO: Depends on type, hit points, abilities, skills, alignment
             //Special Qualities
@@ -425,10 +426,6 @@ namespace DnDGen.CreatureGen.Templates
             var speedTask = Task.Run(() => UpdateCreatureSpeeds(creature));
             tasks.Add(speedTask);
 
-            //Challenge Rating
-            var challengeRatingTask = Task.Run(() => UpdateCreatureChallengeRating(creature));
-            tasks.Add(challengeRatingTask);
-
             //Level Adjustment
             var levelAdjustmentTask = Task.Run(() => UpdateCreatureLevelAdjustment(creature));
             tasks.Add(levelAdjustmentTask);
@@ -459,6 +456,11 @@ namespace DnDGen.CreatureGen.Templates
 
             await Task.WhenAll(tasks);
             tasks.Clear();
+
+            //INFO: Depends on hit points
+            //Challenge Rating
+            var challengeRatingTask = Task.Run(() => UpdateCreatureChallengeRating(creature));
+            tasks.Add(challengeRatingTask);
 
             //INFO: Depends on type, hit points, abilities, skills, alignment
             //Special Qualities

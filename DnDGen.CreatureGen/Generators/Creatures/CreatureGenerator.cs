@@ -138,6 +138,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         public (string CreatureName, string Template) GenerateRandomNameOfType(string creatureType, string challengeRating = null)
         {
+            Console.WriteLine($"[{DateTime.Now:O}] Generating random creature name of type '{creatureType}' (CR {challengeRating ?? "None"})");
+
             var compatible = creatureVerifier.VerifyCompatibility(false, type: creatureType, challengeRating: challengeRating);
             if (!compatible)
                 throw new InvalidCreatureException(false, type: creatureType, challengeRating: challengeRating);
@@ -147,6 +149,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             var randomCreature = collectionsSelector.SelectRandomFrom(pairings);
 
+            Console.WriteLine($"[{DateTime.Now:O}] Creature name: {randomCreature}");
             return randomCreature;
         }
 
@@ -181,6 +184,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         public (string CreatureName, string Template) GenerateRandomNameOfChallengeRating(string challengeRating)
         {
+            Console.WriteLine($"[{DateTime.Now:O}] Generating random creature name of CR {challengeRating}");
+
             var creatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All);
             var pairings = GetCreaturesOfChallengeRating(challengeRating, creatures, false);
 
@@ -191,6 +196,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             var randomCreature = collectionsSelector.SelectRandomFrom(pairings);
 
+            Console.WriteLine($"[{DateTime.Now:O}] Creature name: {randomCreature}");
             return randomCreature;
         }
 
@@ -270,9 +276,12 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             var creature = GeneratePrototype(creatureName, asCharacter);
 
+
+            Console.WriteLine($"[{DateTime.Now:O}] Applying template '{template}' to '{creatureName}'");
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
             creature = templateApplicator.ApplyTo(creature);
 
+            Console.WriteLine($"[{DateTime.Now:O}] Generation complete: {creature.Summary}");
             return creature;
         }
 
@@ -281,6 +290,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var creature = new Creature();
             creature.Name = creatureName;
 
+            Console.WriteLine($"[{DateTime.Now:O}] Selecting creature data for '{creatureName}'");
             var creatureData = creatureDataSelector.SelectFor(creatureName);
             creature.Size = creatureData.Size;
             creature.Space.Value = creatureData.Space;
@@ -291,11 +301,15 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             creature.CasterLevel = creatureData.CasterLevel;
             creature.NumberOfHands = creatureData.NumberOfHands;
 
+            Console.WriteLine($"[{DateTime.Now:O}] Getting creature type for '{creatureName}'");
             creature.Type = GetCreatureType(creatureName);
+
+            Console.WriteLine($"[{DateTime.Now:O}] Generating abilities for '{creatureName}'");
             creature.Abilities = abilitiesGenerator.GenerateFor(creatureName);
 
             if (advancementSelector.IsAdvanced(creatureName))
             {
+                Console.WriteLine($"[{DateTime.Now:O}] Setting advancement for '{creatureName}'");
                 var advancement = advancementSelector.SelectRandomFor(creatureName, creature.Type, creature.Size, creature.ChallengeRating);
 
                 creature.IsAdvanced = true;
@@ -310,6 +324,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 creature.Abilities[AbilityConstants.Dexterity].AdvancementAdjustment += advancement.DexterityAdjustment;
                 creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment += advancement.ConstitutionAdjustment;
 
+                Console.WriteLine($"[{DateTime.Now:O}] Generating hit points for '{creatureName}'");
                 creature.HitPoints = hitPointsGenerator.GenerateFor(
                     creatureName,
                     creature.Type,
@@ -319,6 +334,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             }
             else
             {
+                Console.WriteLine($"[{DateTime.Now:O}] Generating hit points for '{creatureName}'");
                 creature.HitPoints = hitPointsGenerator.GenerateFor(
                     creatureName,
                     creature.Type,
@@ -332,10 +348,17 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 creature.ChallengeRating = ChallengeRatingConstants.CR0;
             }
 
+            Console.WriteLine($"[{DateTime.Now:O}] Generating alignment for '{creatureName}'");
             creature.Alignment = alignmentGenerator.Generate(creatureName);
+
+            Console.WriteLine($"[{DateTime.Now:O}] Generating skills for '{creatureName}'");
             creature.Skills = skillsGenerator.GenerateFor(creature.HitPoints, creatureName, creature.Type, creature.Abilities, creature.CanUseEquipment, creature.Size);
+
+            Console.WriteLine($"[{DateTime.Now:O}] Generating languages for '{creatureName}'");
             creature.Languages = languageGenerator.GenerateWith(creatureName, creature.Abilities, creature.Skills);
 
+
+            Console.WriteLine($"[{DateTime.Now:O}] Generating special qualities for '{creatureName}'");
             creature.SpecialQualities = featsGenerator.GenerateSpecialQualities(
                 creatureName,
                 creature.Type,
@@ -346,7 +369,11 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 creature.Size,
                 creature.Alignment);
 
+
+            Console.WriteLine($"[{DateTime.Now:O}] Generating base attack bonus for '{creatureName}'");
             creature.BaseAttackBonus = attacksGenerator.GenerateBaseAttackBonus(creature.Type, creature.HitPoints);
+
+            Console.WriteLine($"[{DateTime.Now:O}] Generating attacks for '{creatureName}'");
             creature.Attacks = attacksGenerator.GenerateAttacks(
                 creatureName,
                 creatureData.Size,
@@ -355,6 +382,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 creature.Abilities,
                 creature.HitPoints.RoundedHitDiceQuantity);
 
+
+            Console.WriteLine($"[{DateTime.Now:O}] Generating feats for '{creatureName}'");
             creature.Feats = featsGenerator.GenerateFeats(
                 creature.HitPoints,
                 creature.BaseAttackBonus,
@@ -369,9 +398,14 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 creature.Size,
                 creature.CanUseEquipment);
 
+
+            Console.WriteLine($"[{DateTime.Now:O}] Applying skill bonuses from feats for '{creatureName}'");
             creature.Skills = skillsGenerator.ApplyBonusesFromFeats(creature.Skills, creature.Feats, creature.Abilities);
+
+            Console.WriteLine($"[{DateTime.Now:O}] Regenerating hit points for '{creatureName}'");
             creature.HitPoints = hitPointsGenerator.RegenerateWith(creature.HitPoints, creature.Feats);
 
+            Console.WriteLine($"[{DateTime.Now:O}] Generating grapple bonus for '{creatureName}'");
             creature.GrappleBonus = attacksGenerator.GenerateGrappleBonus(
                 creatureName,
                 creature.Size,
@@ -379,8 +413,14 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 creature.Abilities[AbilityConstants.Strength]);
 
             var allFeats = creature.Feats.Union(creature.SpecialQualities);
+
+            Console.WriteLine($"[{DateTime.Now:O}] Applying attack bonuses for '{creatureName}'");
             creature.Attacks = attacksGenerator.ApplyAttackBonuses(creature.Attacks, allFeats, creature.Abilities);
+
+            Console.WriteLine($"[{DateTime.Now:O}] Adding additional attacks for '{creatureName}'");
             creature.Attacks = equipmentGenerator.AddAttacks(allFeats, creature.Attacks, creature.NumberOfHands);
+
+            Console.WriteLine($"[{DateTime.Now:O}] Generating equipment for '{creatureName}'");
             creature.Equipment = equipmentGenerator.Generate(
                 creature.Name,
                 creature.CanUseEquipment,
@@ -390,11 +430,20 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 creature.Abilities,
                 creature.Size);
 
+
+            Console.WriteLine($"[{DateTime.Now:O}] Setting max ability bonuses for '{creatureName}'");
             creature.Abilities = abilitiesGenerator.SetMaxBonuses(creature.Abilities, creature.Equipment);
+
+            Console.WriteLine($"[{DateTime.Now:O}] Setting armor check penalties for '{creatureName}'");
             creature.Skills = skillsGenerator.SetArmorCheckPenalties(creature.Name, creature.Skills, creature.Equipment);
 
+            Console.WriteLine($"[{DateTime.Now:O}] Setting initiave bonus for '{creatureName}'");
             creature.InitiativeBonus = ComputeInitiativeBonus(creature.Feats);
+
+            Console.WriteLine($"[{DateTime.Now:O}] Generating speeds for '{creatureName}'");
             creature.Speeds = speedsGenerator.Generate(creature.Name);
+
+            Console.WriteLine($"[{DateTime.Now:O}] Generating armor class for '{creatureName}'");
             creature.ArmorClass = armorClassGenerator.GenerateWith(
                 creature.Abilities,
                 creature.Size,
@@ -403,8 +452,11 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 allFeats,
                 creatureData.NaturalArmor,
                 creature.Equipment);
+
+            Console.WriteLine($"[{DateTime.Now:O}] Generating saving throws for '{creatureName}'");
             creature.Saves = savesGenerator.GenerateWith(creature.Name, creature.Type, creature.HitPoints, allFeats, creature.Abilities);
 
+            Console.WriteLine($"[{DateTime.Now:O}] Generating magic for '{creatureName}'");
             creature.Magic = magicGenerator.GenerateWith(creature.Name, creature.Alignment, creature.Abilities, creature.Equipment);
 
             return creature;
@@ -480,9 +532,11 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             var creature = GeneratePrototype(creatureName, asCharacter);
 
+            Console.WriteLine($"[{DateTime.Now:O}] Applying template '{template}' to '{creatureName}'");
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
             creature = await templateApplicator.ApplyToAsync(creature);
 
+            Console.WriteLine($"[{DateTime.Now:O}] Generation complete: {creature.Summary}");
             return creature;
         }
     }
