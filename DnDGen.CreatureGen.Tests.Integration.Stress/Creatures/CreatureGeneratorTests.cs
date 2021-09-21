@@ -17,6 +17,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private ICreatureGenerator creatureGenerator;
         private Stopwatch stopwatch;
         private IEnumerable<string> nonCharacterTypes;
+        private IEnumerable<string> nonCharacterTemplates;
 
         [SetUp]
         public void Setup()
@@ -33,6 +34,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                 CreatureConstants.Types.Ooze,
                 CreatureConstants.Types.Vermin,
                 CreatureConstants.Types.Subtypes.Swarm,
+            };
+
+            nonCharacterTemplates = new[]
+            {
+                CreatureConstants.Templates.Skeleton,
+                CreatureConstants.Templates.Zombie,
             };
         }
 
@@ -207,14 +214,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private async Task GenerateAndAssertCreatureAsCharacterWithTemplateAsync()
         {
-            var randomTemplate = collectionSelector.SelectRandomFrom(allTemplates);
-            var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(true, creature: c, template: randomTemplate));
-
-            if (!validCreatures.Any())
+            var randomTemplate = collectionSelector.SelectRandomFrom(allTemplates.Except(nonCharacterTemplates));
+            var compatible = creatureVerifier.VerifyCompatibility(true, template: randomTemplate);
+            if (!compatible)
             {
                 Assert.Fail($"Invalid combination: Template {randomTemplate}; As Character True");
             }
 
+            var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(true, creature: c, template: randomTemplate));
             var randomCreatureName = collectionSelector.SelectRandomFrom(validCreatures);
 
             stopwatch.Restart();
