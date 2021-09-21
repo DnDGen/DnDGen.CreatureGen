@@ -5,6 +5,7 @@ using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -25,10 +26,16 @@ namespace DnDGen.CreatureGen.Generators.Defenses
         {
             var saves = new Dictionary<string, Save>();
 
+            Console.WriteLine($"[{DateTime.Now:O}] SavesGenerator: Generating Fortitude save for {creatureName}");
             saves[SaveConstants.Fortitude] = GetFortitudeSave(creatureName, creatureType, hitPoints, feats, abilities);
+
+            Console.WriteLine($"[{DateTime.Now:O}] SavesGenerator: Generating Reflex save for {creatureName}");
             saves[SaveConstants.Reflex] = GetReflexSave(creatureName, creatureType, hitPoints, feats, abilities);
+
+            Console.WriteLine($"[{DateTime.Now:O}] SavesGenerator: Generating Will save for {creatureName}");
             saves[SaveConstants.Will] = GetWillSave(creatureName, creatureType, hitPoints, feats, abilities);
 
+            Console.WriteLine($"[{DateTime.Now:O}] SavesGenerator: Generated saves for {creatureName}");
             return saves;
         }
 

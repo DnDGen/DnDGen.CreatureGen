@@ -9,6 +9,7 @@ using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -146,7 +147,10 @@ namespace DnDGen.CreatureGen.Generators.Feats
             if (!abilities[AbilityConstants.Intelligence].HasScore || hitPoints.HitDiceQuantity == 0)
                 return Enumerable.Empty<Feat>();
 
+            Console.WriteLine($"[{DateTime.Now:O}] FeatsGenerator: Getting feat quantity");
             var numberOfAdditionalFeats = GetFeatQuantity(hitPoints);
+
+            Console.WriteLine($"[{DateTime.Now:O}] FeatsGenerator: Getting feats");
             var feats = GetFeats(
                 numberOfAdditionalFeats,
                 baseAttackBonus,
@@ -161,6 +165,7 @@ namespace DnDGen.CreatureGen.Generators.Feats
                 size,
                 canUseEquipment);
 
+            Console.WriteLine($"[{DateTime.Now:O}] FeatsGenerator: Generated {feats.Count()} feats");
             return feats;
         }
 
