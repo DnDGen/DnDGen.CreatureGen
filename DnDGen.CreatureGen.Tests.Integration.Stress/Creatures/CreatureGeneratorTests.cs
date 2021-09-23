@@ -290,7 +290,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private void GenerateAndAssertRandomCreatureOfTemplateAsCharacter()
         {
-            var templates = CreatureConstants.Templates.GetAll();
+            var templates = CreatureConstants.Templates.GetAll().Except(nonCharacterTemplates);
             var randomTemplate = collectionSelector.SelectRandomFrom(templates);
 
             stopwatch.Restart();
@@ -311,7 +311,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private void GenerateAndAssertRandomCreatureOfTemplateAsCharacterWithChallengeRating()
         {
-            var templates = CreatureConstants.Templates.GetAll();
+            var templates = CreatureConstants.Templates.GetAll().Except(nonCharacterTemplates);
             var randomTemplate = collectionSelector.SelectRandomFrom(templates);
 
             var challengeRatings = ChallengeRatingConstants.GetOrdered();
@@ -384,7 +384,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private async Task GenerateAndAssertRandomCreatureOfTemplateAsCharacterAsync()
         {
-            var templates = CreatureConstants.Templates.GetAll();
+            var templates = CreatureConstants.Templates.GetAll().Except(nonCharacterTemplates);
             var randomTemplate = collectionSelector.SelectRandomFrom(templates);
 
             stopwatch.Restart();

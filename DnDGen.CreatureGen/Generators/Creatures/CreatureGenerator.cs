@@ -179,15 +179,23 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             string type = null,
             string challengeRating = null)
         {
+            Console.WriteLine($"[{DateTime.Now:O}] CreatureGenerator: Getting valid creatures (as character: {asCharacter}; type: {type}; CR: {challengeRating})");
             var validCreatures = GetValidCreatures(creatureGroup, asCharacter, type, challengeRating);
+
+            Console.WriteLine($"[{DateTime.Now:O}] CreatureGenerator: Selecting random valid creature");
             var randomCreature = collectionsSelector.SelectRandomFrom(validCreatures);
 
+            Console.WriteLine($"[{DateTime.Now:O}] CreatureGenerator: Exploding templates");
             var templates = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
             if (!templates.Contains(randomCreature))
                 return (randomCreature, CreatureConstants.Templates.None);
 
             var template = randomCreature;
+
+            Console.WriteLine($"[{DateTime.Now:O}] CreatureGenerator: Getting creatures of template {template}  (as character: {asCharacter}; type: {type}; CR: {challengeRating})");
             var creaturesOfTemplate = GetCreaturesOfTemplate(template, creatureGroup, asCharacter, type, challengeRating);
+
+            Console.WriteLine($"[{DateTime.Now:O}] CreatureGenerator: Selecting random creature of template {template}");
             randomCreature = collectionsSelector.SelectRandomFrom(creaturesOfTemplate);
 
             return (randomCreature, template);

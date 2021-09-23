@@ -40,16 +40,20 @@ namespace DnDGen.CreatureGen.Generators.Feats
             string size,
             Alignment alignment)
         {
+            Console.WriteLine($"[{DateTime.Now:O}] FeatsGenerator: Getting special quality selections for {creatureName}");
             var specialQualitySelections = featsSelector.SelectSpecialQualities(creatureName, creatureType);
             var specialQualities = new List<Feat>();
+            var addedNames = new HashSet<string>();
             var newSelections = specialQualitySelections
-                .Where(s => s.RequirementsMet(abilities, specialQualities, canUseEquipment, size, alignment, hitPoints))
-                .Where(s => !specialQualities.Any(q => q.Name == s.Feat));
+                .Where(s => s.RequirementsMet(abilities, specialQualities, canUseEquipment, size, alignment, hitPoints)
+                    && !addedNames.Contains(s.Feat));
 
             do
             {
+                Console.WriteLine($"[{DateTime.Now:O}] FeatsGenerator: Executing filtering of special qualities");
                 //INFO: Need to do this, or the foreach loop gets angry
                 var setNewSelections = newSelections.ToArray();
+                Console.WriteLine($"[{DateTime.Now:O}] FeatsGenerator: Found {setNewSelections.Length} new selections");
 
                 foreach (var selection in setNewSelections)
                 {
@@ -69,10 +73,15 @@ namespace DnDGen.CreatureGen.Generators.Feats
                     }
 
                     specialQualities.Add(specialQuality);
+                    addedNames.Add(specialQuality.Name);
                 }
             } while (newSelections.Any());
 
+            Console.WriteLine($"[{DateTime.Now:O}] FeatsGenerator: Got {specialQualities.Count} special qualities");
+
             //HACK: Handling this usecase because the orc creature and orc creature type are identical
+            Console.WriteLine($"[{DateTime.Now:O}] FeatsGenerator: Handling half-orc light sensitivity");
+
             if (creatureName == CreatureConstants.Orc_Half)
             {
                 var lightSensitivity = specialQualities.First(f => f.Name == FeatConstants.SpecialQualities.LightSensitivity);
@@ -80,6 +89,8 @@ namespace DnDGen.CreatureGen.Generators.Feats
             }
 
             //HACK: Requirements can't handle "remove this", so doing so here for particular use cases
+            Console.WriteLine($"[{DateTime.Now:O}] FeatsGenerator: Handling feats and blindness");
+
             var blindFeatNames = new[]
             {
                 FeatConstants.SpecialQualities.Blindsense,
@@ -102,6 +113,7 @@ namespace DnDGen.CreatureGen.Generators.Feats
                     .ToList();
             }
 
+            Console.WriteLine($"[{DateTime.Now:O}] FeatsGenerator: Generated {specialQualities.Count} special qualities");
             return specialQualities;
         }
 
@@ -296,8 +308,10 @@ namespace DnDGen.CreatureGen.Generators.Feats
             string size,
             bool canUseEquipment)
         {
+            Console.WriteLine($"[{DateTime.Now:O}] FeatsGenerator: Getting feat selections");
             var featSelections = featsSelector.SelectFeats();
 
+            Console.WriteLine($"[{DateTime.Now:O}] FeatsGenerator: Getting feats that meet immutable requirements");
             //INFO: Calling immediate execution, so this doesn't reevaluate every time the collection is called
             var availableFeats = featSelections
                 .Where(f => f.ImmutableRequirementsMet(
@@ -313,8 +327,10 @@ namespace DnDGen.CreatureGen.Generators.Feats
                     canUseEquipment))
                 .ToArray();
 
+            Console.WriteLine($"[{DateTime.Now:O}] FeatsGenerator: Populating random feats");
             var feats = PopulateFeatsRandomlyFrom(abilities, skills, specialQualities, availableFeats, quantity, casterLevel, attacks);
 
+            Console.WriteLine($"[{DateTime.Now:O}] FeatsGenerator: Got {feats.Count} feats");
             return feats;
         }
     }
