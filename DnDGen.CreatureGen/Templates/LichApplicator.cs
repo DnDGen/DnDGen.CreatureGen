@@ -6,6 +6,7 @@ using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Languages;
 using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -296,21 +297,70 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        private bool IsCompatible(string creature, bool asCharacter, string type = null, string challengeRating = null)
+        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, string type = null, string challengeRating = null)
         {
-            if (!IsCompatible(creature))
+            var filteredBaseCreatures = sourceCreatures;
+            var allData = creatureDataSelector.SelectAll();
+            var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
+            var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
+            var allSpellcasters = typeAndAmountSelector.SelectAll(TableNameConstants.TypeAndAmount.Casters);
+
+            if (!string.IsNullOrEmpty(challengeRating))
+            {
+                filteredBaseCreatures = filteredBaseCreatures
+                    .Where(c => CreatureInRange(allData[c].ChallengeRating, challengeRating, asCharacter, allHitDice[c], allTypes[c]));
+            }
+
+            if (!string.IsNullOrEmpty(type))
+            {
+                //INFO: Unless this type is added by a template, it must already exist on the base creature
+                //So first, we check to see if the template could return this type for a human
+                //If not, then we can filter the base creatures down to ones that already have this type
+                var templateTypes = GetPotentialTypes(allTypes[CreatureConstants.Human]).Except(allTypes[CreatureConstants.Human]);
+                if (!templateTypes.Contains(type))
+                {
+                    filteredBaseCreatures = filteredBaseCreatures.Where(c => allTypes[c].Contains(type));
+                }
+            }
+
+            var templateCreatures = filteredBaseCreatures
+                .Where(c => IsCompatible(allTypes[c], allSpellcasters[c], allData[c], allHitDice[c], asCharacter, type, challengeRating));
+
+            return templateCreatures;
+        }
+
+        private IEnumerable<string> GetPotentialTypes(IEnumerable<string> types)
+        {
+            var creatureType = types.First();
+            var subtypes = types.Skip(1);
+
+            var adjustedTypes = UpdateCreatureType(creatureType, subtypes);
+
+            return adjustedTypes;
+        }
+
+        private bool IsCompatible(
+            IEnumerable<string> types,
+            IEnumerable<TypeAndAmountSelection> spellcasters,
+            CreatureDataSelection creatureData,
+            double creatureHitDiceQuantity,
+            bool asCharacter,
+            string type = null,
+            string challengeRating = null)
+        {
+            if (!IsCompatible(types, creatureData, spellcasters))
                 return false;
 
             if (!string.IsNullOrEmpty(type))
             {
-                var types = GetPotentialTypes(creature);
-                if (!types.Contains(type))
+                var updatedTypes = GetPotentialTypes(types);
+                if (!updatedTypes.Contains(type))
                     return false;
             }
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
-                var cr = GetPotentialChallengeRating(creature, asCharacter);
+                var cr = GetPotentialChallengeRating(asCharacter, types, creatureHitDiceQuantity, creatureData);
                 if (cr != challengeRating)
                     return false;
             }
@@ -318,15 +368,13 @@ namespace DnDGen.CreatureGen.Templates
             return true;
         }
 
-        private bool IsCompatible(string creature)
+        private bool IsCompatible(IEnumerable<string> types, CreatureDataSelection creatureData, IEnumerable<TypeAndAmountSelection> spellcasters)
         {
-            var creatureTypes = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
-            if (creatureTypes.First() != CreatureConstants.Types.Humanoid)
+            if (types.First() != CreatureConstants.Types.Humanoid)
             {
                 return false;
             }
 
-            var creatureData = creatureDataSelector.SelectFor(creature);
             if (creatureData.LevelAdjustment.HasValue)
             {
                 return true;
@@ -337,7 +385,6 @@ namespace DnDGen.CreatureGen.Templates
                 return true;
             }
 
-            var spellcasters = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Casters, creature);
             if (spellcasters.Any(s => s.Amount >= PhylacterySpellLevel))
             {
                 return true;
@@ -346,66 +393,22 @@ namespace DnDGen.CreatureGen.Templates
             return false;
         }
 
-        private IEnumerable<string> GetPotentialTypes(string creature)
+        private string GetPotentialChallengeRating(
+            bool asCharacter,
+            IEnumerable<string> types,
+            double creatureQuantity,
+            CreatureDataSelection creatureData)
         {
-            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
-            var creatureType = types.First();
-            var subtypes = types.Skip(1);
-
-            var adjustedTypes = UpdateCreatureType(creatureType, subtypes);
-
-            return adjustedTypes;
-        }
-
-        private string GetPotentialChallengeRating(string creature, bool asCharacter)
-        {
-            var quantity = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, creature);
-            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
             var creatureType = types.First();
 
-            if (asCharacter && quantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
+            if (asCharacter && creatureQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
             {
                 return UpdateCreatureChallengeRating(ChallengeRatingConstants.CR0);
             }
 
-            var data = creatureDataSelector.SelectFor(creature);
-            var adjustedChallengeRating = UpdateCreatureChallengeRating(data.ChallengeRating);
+            var adjustedChallengeRating = UpdateCreatureChallengeRating(creatureData.ChallengeRating);
 
             return adjustedChallengeRating;
-        }
-
-        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, string type = null, string challengeRating = null)
-        {
-            var filteredBaseCreatures = sourceCreatures;
-
-            if (!string.IsNullOrEmpty(challengeRating))
-            {
-                var allData = creatureDataSelector.SelectAll();
-                var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
-                var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
-
-                filteredBaseCreatures = filteredBaseCreatures
-                    .Where(c => CreatureInRange(allData[c].ChallengeRating, challengeRating, asCharacter, allHitDice[c], allTypes[c]));
-            }
-
-            if (!string.IsNullOrEmpty(type))
-            {
-                //INFO: Unless this type is added by a template, it must already exist on the base creature
-                //So first, we check to see if the template could return this type for a human
-                //If not, then we can filter the base creatures down to ones that already have this type
-                var humanTypes = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, CreatureConstants.Human);
-                var templateTypes = GetPotentialTypes(CreatureConstants.Human).Except(humanTypes);
-
-                if (!templateTypes.Contains(type))
-                {
-                    var ofType = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, type);
-                    filteredBaseCreatures = filteredBaseCreatures.Intersect(ofType);
-                }
-            }
-
-            var templateCreatures = filteredBaseCreatures.Where(c => IsCompatible(c, asCharacter, type, challengeRating));
-
-            return templateCreatures;
         }
 
         private bool CreatureInRange(

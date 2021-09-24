@@ -1,5 +1,6 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using System.Collections.Generic;
@@ -31,75 +32,47 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public string GetPotentialChallengeRating(string creature, bool asCharacter)
+        private bool IsCompatible(
+            IEnumerable<string> types,
+            double creatureHitDiceQuantity,
+            CreatureDataSelection creatureData,
+            bool asCharacter,
+            string type = null,
+            string challengeRating = null)
         {
-            var quantity = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, creature);
-            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
-            var creatureType = types.First();
-
-            if (asCharacter && quantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
+            if (!string.IsNullOrEmpty(type) && !types.Contains(type))
             {
-                return ChallengeRatingConstants.CR0;
-            }
-
-            var data = creatureDataSelector.SelectFor(creature);
-            return data.ChallengeRating;
-        }
-
-        private IEnumerable<string> GetPotentialTypes(string creature)
-        {
-            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
-            return types;
-        }
-
-        private bool IsCompatible(string creature, bool asCharacter, string type = null, string challengeRating = null)
-        {
-            if (!IsCompatible(creature))
                 return false;
-
-            if (!string.IsNullOrEmpty(type))
-            {
-                var types = GetPotentialTypes(creature);
-                if (!types.Contains(type))
-                    return false;
             }
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
-                var cr = GetPotentialChallengeRating(creature, asCharacter);
-                if (cr != challengeRating)
+                if (!CreatureInRange(creatureData.ChallengeRating, challengeRating, asCharacter, creatureHitDiceQuantity, types))
                     return false;
             }
 
-            return true;
-        }
-
-        private bool IsCompatible(string creature)
-        {
             return true;
         }
 
         public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, string type = null, string challengeRating = null)
         {
             var filteredBaseCreatures = sourceCreatures;
+            var allData = creatureDataSelector.SelectAll();
+            var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
+            var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
-                var allData = creatureDataSelector.SelectAll();
-                var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
-                var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
-
                 filteredBaseCreatures = filteredBaseCreatures
                     .Where(c => CreatureInRange(allData[c].ChallengeRating, challengeRating, asCharacter, allHitDice[c], allTypes[c]));
             }
 
             if (!string.IsNullOrEmpty(type))
             {
-                var ofType = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, type);
-                filteredBaseCreatures = filteredBaseCreatures.Intersect(ofType);
+                filteredBaseCreatures = filteredBaseCreatures.Where(c => allTypes[c].Contains(type));
             }
 
-            var templateCreatures = filteredBaseCreatures.Where(c => IsCompatible(c, asCharacter, type, challengeRating));
+            var templateCreatures = filteredBaseCreatures.Where(c => IsCompatible(allTypes[c], allHitDice[c], allData[c], asCharacter, type, challengeRating));
 
             return templateCreatures;
         }

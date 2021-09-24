@@ -99,9 +99,13 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         private IEnumerable<string> GetCreaturesOfTemplate(string template, IEnumerable<string> creatureGroup, bool asCharacter, string creatureType = null, string challengeRating = null)
         {
+            Console.WriteLine($"[{DateTime.Now:O}] CreatureGenerator: Building template applicator {template}");
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
+
+            Console.WriteLine($"[{DateTime.Now:O}] CreatureGenerator: Getting creatures compatible with {template} (as character: {asCharacter}; type: {creatureType}; CR: {challengeRating})");
             var creatures = templateApplicator.GetCompatibleCreatures(creatureGroup, asCharacter, creatureType, challengeRating);
 
+            Console.WriteLine($"[{DateTime.Now:O}] CreatureGenerator: Returning compatible creatures");
             return creatures;
         }
 
@@ -140,11 +144,15 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         {
             Console.WriteLine($"[{DateTime.Now:O}] CreatureGenerator: Generating random creature name of type '{creatureType}' (CR {challengeRating ?? "None"})");
 
+            Console.WriteLine($"[{DateTime.Now:O}] CreatureGenerator: Verifying compatibility of type '{creatureType}' (CR {challengeRating ?? "None"})");
             var compatible = creatureVerifier.VerifyCompatibility(false, type: creatureType, challengeRating: challengeRating);
             if (!compatible)
                 throw new InvalidCreatureException(false, type: creatureType, challengeRating: challengeRating);
 
+            Console.WriteLine($"[{DateTime.Now:O}] CreatureGenerator: Exploding all creatures");
             var creatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All);
+
+            Console.WriteLine($"[{DateTime.Now:O}] CreatureGenerator: Getting random valid creature of type '{creatureType}' (CR {challengeRating ?? "None"})");
             var randomCreature = GetRandomValidCreature(creatures, false, creatureType, challengeRating);
 
             Console.WriteLine($"[{DateTime.Now:O}] CreatureGenerator: Creature name: {randomCreature}");
@@ -157,20 +165,21 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             string type = null,
             string challengeRating = null)
         {
-            var noneApplicator = justInTimeFactory.Build<TemplateApplicator>(CreatureConstants.Templates.None);
-            var creaturesOfType = noneApplicator.GetCompatibleCreatures(creatureGroup, asCharacter, type, challengeRating);
+            var validCreatures = new List<string>();
 
-            foreach (var creature in creaturesOfType)
-                yield return creature;
+            Console.WriteLine($"[{DateTime.Now:O}] CreatureGenerator: Getting compatible creatures with None template (as character: {asCharacter}; type: {type}; CR: {challengeRating})");
+            var compatibleCreatures = GetCreaturesOfTemplate(CreatureConstants.Templates.None, creatureGroup, asCharacter, type, challengeRating);
+            validCreatures.AddRange(compatibleCreatures);
 
+            Console.WriteLine($"[{DateTime.Now:O}] CreatureGenerator: Exploding templates");
             var templates = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
 
             //This will weight things in favor of non-templated creatures
-            foreach (var template in templates)
-            {
-                if (creatureVerifier.VerifyCompatibility(asCharacter, null, template, type, challengeRating))
-                    yield return template;
-            }
+            Console.WriteLine($"[{DateTime.Now:O}] CreatureGenerator: Verifying template compatibilities (as character: {asCharacter}; type: {type}; CR: {challengeRating})");
+            var validTemplates = templates.Where(t => creatureVerifier.VerifyCompatibility(asCharacter, null, t, type, challengeRating));
+            validCreatures.AddRange(validTemplates);
+
+            return validCreatures;
         }
 
         private (string CreatureName, string Template) GetRandomValidCreature(
@@ -181,6 +190,10 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         {
             Console.WriteLine($"[{DateTime.Now:O}] CreatureGenerator: Getting valid creatures (as character: {asCharacter}; type: {type}; CR: {challengeRating})");
             var validCreatures = GetValidCreatures(creatureGroup, asCharacter, type, challengeRating);
+            if (!validCreatures.Any())
+            {
+                throw new ArgumentException($"No valid creatures in creature group (as character: {asCharacter}; type: {type}; CR: {challengeRating})");
+            }
 
             Console.WriteLine($"[{DateTime.Now:O}] CreatureGenerator: Selecting random valid creature");
             var randomCreature = collectionsSelector.SelectRandomFrom(validCreatures);
@@ -194,6 +207,10 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             Console.WriteLine($"[{DateTime.Now:O}] CreatureGenerator: Getting creatures of template {template}  (as character: {asCharacter}; type: {type}; CR: {challengeRating})");
             var creaturesOfTemplate = GetCreaturesOfTemplate(template, creatureGroup, asCharacter, type, challengeRating);
+            if (!creaturesOfTemplate.Any())
+            {
+                throw new ArgumentException($"No valid creatures in creature group of template {template} (as character: {asCharacter}; type: {type}; CR: {challengeRating})");
+            }
 
             Console.WriteLine($"[{DateTime.Now:O}] CreatureGenerator: Selecting random creature of template {template}");
             randomCreature = collectionsSelector.SelectRandomFrom(creaturesOfTemplate);

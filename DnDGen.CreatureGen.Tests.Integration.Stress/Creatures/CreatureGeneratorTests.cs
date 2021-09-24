@@ -405,7 +405,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private async Task GenerateAndAssertRandomCreatureOfTemplateAsCharacterWithChallengeRatingAsync()
         {
-            var templates = CreatureConstants.Templates.GetAll();
+            var templates = CreatureConstants.Templates.GetAll().Except(nonCharacterTemplates);
             var randomTemplate = collectionSelector.SelectRandomFrom(templates);
 
             var challengeRatings = ChallengeRatingConstants.GetOrdered();
@@ -659,11 +659,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var challengeRatings = ChallengeRatingConstants.GetOrdered();
             var challengeRating = collectionSelector.SelectRandomFrom(challengeRatings);
 
-            GenerateAndAssertRandomCreatureOfChallengeRating(challengeRating);
-        }
-
-        private void GenerateAndAssertRandomCreatureOfChallengeRating(string challengeRating)
-        {
             stopwatch.Restart();
             var creature = creatureGenerator.GenerateRandomOfChallengeRating(challengeRating);
             stopwatch.Stop();
@@ -749,12 +744,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             stressor.Stress(() => GenerateAndAssertCreature(creatureName, template));
         }
 
+        [TestCase(CreatureConstants.Types.Dragon)]
         [TestCase(CreatureConstants.Types.Giant)]
         [TestCase(CreatureConstants.Types.Humanoid)]
         [TestCase(CreatureConstants.Types.Outsider)]
         [TestCase(CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Types.Undead)]
+        [TestCase(CreatureConstants.Types.Subtypes.Augmented)]
+        [TestCase(CreatureConstants.Types.Subtypes.Incorporeal)]
+        [TestCase(CreatureConstants.Types.Subtypes.Native)]
+        [TestCase(CreatureConstants.Types.Subtypes.Shapechanger)]
         [Repeat(100)]
-        [Ignore("Only use this for debugging")]
+        //[Ignore("Only use this for debugging")]
         public void BUG_StressSpecificType(string type)
         {
             stressor.Stress(() => GenerateAndAssertRandomCreatureOfType(type));
