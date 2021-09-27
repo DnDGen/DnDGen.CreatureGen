@@ -188,25 +188,38 @@ namespace DnDGen.CreatureGen.Generators.Skills
             Dictionary<string, Ability> abilities,
             bool includeFirstHitDieBonus)
         {
+            Console.WriteLine($"[{DateTime.Now:O}] AbilitiesGenerator: Getting total skill points");
             var points = GetTotalSkillPoints(creatureType, hitPoints.RoundedHitDiceQuantity, abilities[AbilityConstants.Intelligence], includeFirstHitDieBonus);
+
+            Console.WriteLine($"[{DateTime.Now:O}] AbilitiesGenerator: Computing available ranks");
             var totalRanksAvailable = skills.Sum(s => s.RankCap - s.Ranks);
 
             if (points >= totalRanksAvailable)
             {
+                Console.WriteLine($"[{DateTime.Now:O}] AbilitiesGenerator: Maxing out skills");
                 return MaxOutSkills(skills);
             }
 
+            Console.WriteLine($"[{DateTime.Now:O}] AbilitiesGenerator: Sorting skills");
             var skillsWithAvailableRanks = skills.Where(s => !s.RanksMaxedOut);
             var creatureSkills = skillsWithAvailableRanks.Where(s => s.ClassSkill);
             var untrainedSkills = skillsWithAvailableRanks.Where(s => !s.ClassSkill);
 
             while (points > 0)
             {
+                Console.WriteLine($"[{DateTime.Now:O}] AbilitiesGenerator: Selecting random skill");
                 var skill = collectionsSelector.SelectRandomFrom(creatureSkills, untrainedSkills);
+
+                Console.WriteLine($"[{DateTime.Now:O}] AbilitiesGenerator: Computing avilable ranks in skill {skill.Name}");
                 var availableRanks = Math.Min(skill.RankCap - skill.Ranks, points);
+
+                Console.WriteLine($"[{DateTime.Now:O}] AbilitiesGenerator: Finding best roll between 1 and {availableRanks}");
                 var rankRoll = RollHelper.GetRollWithMostEvenDistribution(1, availableRanks);
+
+                Console.WriteLine($"[{DateTime.Now:O}] AbilitiesGenerator: Rolling {rankRoll}");
                 var ranks = dice.Roll(rankRoll).AsSum();
 
+                Console.WriteLine($"[{DateTime.Now:O}] AbilitiesGenerator: Adding {ranks} ranks to {skill.Name}, subtracting {ranks} points from {points}");
                 skill.Ranks += ranks;
                 points -= ranks;
             }

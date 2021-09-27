@@ -111,6 +111,8 @@ namespace DnDGen.CreatureGen.Generators.Feats
                 specialQualities = specialQualities
                     .Where(f => !visionFeatNames.Contains(f.Name))
                     .ToList();
+
+                throw new Exception($"{creatureName} has either Blindsense or Blindsight, but might not actually be blind.  Need a different differentiator for that");
             }
 
             Console.WriteLine($"[{DateTime.Now:O}] FeatsGenerator: Generated {specialQualities.Count} special qualities");

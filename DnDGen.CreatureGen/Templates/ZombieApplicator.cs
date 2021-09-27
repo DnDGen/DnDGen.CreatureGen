@@ -587,7 +587,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private string GetPotentialChallengeRating(double creatureQuantity, string creature)
         {
-            var adjustedChallengeRating = UpdateCreatureChallengeRating(creatureQuantity, creature);
+            var adjustedChallengeRating = UpdateCreatureChallengeRating(creatureQuantity * 2, creature);
 
             return adjustedChallengeRating;
         }

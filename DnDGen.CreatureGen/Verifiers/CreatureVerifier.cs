@@ -14,18 +14,15 @@ namespace DnDGen.CreatureGen.Verifiers
         private readonly JustInTimeFactory factory;
         private readonly ICreatureDataSelector creatureDataSelector;
         private readonly ICollectionSelector collectionsSelector;
-        private readonly IAdjustmentsSelector adjustmentSelector;
 
         public CreatureVerifier(
             JustInTimeFactory factory,
             ICreatureDataSelector creatureDataSelector,
-            ICollectionSelector collectionsSelector,
-            IAdjustmentsSelector adjustmentSelector)
+            ICollectionSelector collectionsSelector)
         {
             this.factory = factory;
             this.creatureDataSelector = creatureDataSelector;
             this.collectionsSelector = collectionsSelector;
-            this.adjustmentSelector = adjustmentSelector;
         }
 
         public bool CanBeCharacter(string creatureName)
@@ -58,12 +55,14 @@ namespace DnDGen.CreatureGen.Verifiers
 
             //INFO: We can cheat and use the None template applicator
             var noneApplicator = factory.Build<TemplateApplicator>(CreatureConstants.Templates.None);
+
             var nonTemplateCreatures = noneApplicator.GetCompatibleCreatures(baseCreatures, asCharacter, type, challengeRating);
 
             if (nonTemplateCreatures.Any())
                 return true;
 
             var templates = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
+
             foreach (var otherTemplate in templates)
             {
                 var templateApplicator = factory.Build<TemplateApplicator>(otherTemplate);

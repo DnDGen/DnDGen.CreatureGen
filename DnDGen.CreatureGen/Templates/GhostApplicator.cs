@@ -377,10 +377,14 @@ namespace DnDGen.CreatureGen.Templates
         public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, string type = null, string challengeRating = null)
         {
             var filteredBaseCreatures = sourceCreatures;
+
             var allData = creatureDataSelector.SelectAll();
             var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
             var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
-            var allAbilityAdjustments = typeAndAmountSelector.SelectAll(TableNameConstants.TypeAndAmount.AbilityAdjustments);
+
+            //INFO: Select all of ability adjustments is slow, might be better to let this still be individual/per creature
+            //Console.WriteLine($"[{DateTime.Now:O}] GhostApplicator: Getting all ability adjustments");
+            //var allAbilityAdjustments = typeAndAmountSelector.SelectAll(TableNameConstants.TypeAndAmount.AbilityAdjustments);
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
@@ -401,7 +405,8 @@ namespace DnDGen.CreatureGen.Templates
             }
 
             var templateCreatures = filteredBaseCreatures
-                .Where(c => IsCompatible(allTypes[c], allAbilityAdjustments[c], allData[c], allHitDice[c], asCharacter, type, challengeRating));
+            //.Where(c => IsCompatible(allTypes[c], allAbilityAdjustments[c], allData[c], allHitDice[c], asCharacter, type, challengeRating));
+                .Where(c => IsCompatible(allTypes[c], c, allData[c], allHitDice[c], asCharacter, type, challengeRating));
 
             return templateCreatures;
         }
@@ -418,16 +423,14 @@ namespace DnDGen.CreatureGen.Templates
 
         private bool IsCompatible(
             IEnumerable<string> types,
-            IEnumerable<TypeAndAmountSelection> abilityAdjustments,
+            //IEnumerable<TypeAndAmountSelection> abilityAdjustments,
+            string creature,
             CreatureDataSelection creatureData,
             double creatureHitDiceQuantity,
             bool asCharacter,
             string type = null,
             string challengeRating = null)
         {
-            if (!IsCompatible(types, abilityAdjustments))
-                return false;
-
             if (!string.IsNullOrEmpty(type))
             {
                 var updatedTypes = GetPotentialTypes(types);
@@ -442,14 +445,20 @@ namespace DnDGen.CreatureGen.Templates
                     return false;
             }
 
+            //if (!IsCompatible(types, abilityAdjustments))
+            if (!IsCompatible(types, creature))
+                return false;
+
             return true;
         }
 
-        private bool IsCompatible(IEnumerable<string> types, IEnumerable<TypeAndAmountSelection> abilityAdjustments)
+        //private bool IsCompatible(IEnumerable<string> types, IEnumerable<TypeAndAmountSelection> abilityAdjustments)
+        private bool IsCompatible(IEnumerable<string> types, string creature)
         {
             if (!creatureTypes.Contains(types.First()))
                 return false;
 
+            var abilityAdjustments = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, creature);
             var charismaAdjustment = abilityAdjustments.FirstOrDefault(a => a.Type == AbilityConstants.Charisma);
             if (charismaAdjustment == null)
                 return false;
