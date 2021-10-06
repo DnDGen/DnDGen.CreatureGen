@@ -244,6 +244,7 @@ namespace DnDGen.CreatureGen.Feats
             public const string AuraOfMenace = "Aura of Menace";
             public const string AversionToDaylight = "Aversion to Daylight";
             public const string BarbedDefense = "Barbed Defense";
+            public const string Blind = "Blind";
             public const string Blindsense = "Blindsense";
             public const string Blindsight = "Blindsight";
             public const string Camouflage = "Camouflage";

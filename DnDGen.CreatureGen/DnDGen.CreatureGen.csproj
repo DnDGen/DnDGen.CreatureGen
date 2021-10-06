@@ -38,6 +38,7 @@
     <None Remove="Tables\Defenses\ArmorClassBonuses.xml" />
     <None Remove="Tables\Defenses\HitDice.xml" />
     <None Remove="Tables\Defenses\SaveBonuses.xml" />
+    <None Remove="Tables\Defenses\SaveGroups.xml" />
     <None Remove="Tables\Defenses\SizeModifiers.xml" />
     <None Remove="Tables\Equipment\ArcaneSpellFailures.xml" />
     <None Remove="Tables\Equipment\PredeterminedItems.xml" />
@@ -96,6 +97,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Creatures\Speeds.xml" />
+    <EmbeddedResource Include="Tables\Defenses\SaveGroups.xml" />
     <EmbeddedResource Include="Tables\Defenses\ArmorClassBonuses.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>

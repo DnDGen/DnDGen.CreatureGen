@@ -2,6 +2,7 @@
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -63,7 +64,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = creatureGenerator.Generate(creatureName, template);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.Name, Is.EqualTo(creatureName), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(template), creature.Summary);
 
@@ -86,7 +87,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = await creatureGenerator.GenerateAsync(randomCreatureName, CreatureConstants.Templates.None);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.Name, Is.EqualTo(randomCreatureName), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.None), creature.Summary);
 
@@ -109,7 +110,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = creatureGenerator.Generate(randomCreatureName, randomTemplate);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.Name, Is.EqualTo(randomCreatureName), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
 
@@ -132,7 +133,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = await creatureGenerator.GenerateAsync(randomCreatureName, randomTemplate);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.Name, Is.EqualTo(randomCreatureName), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
 
@@ -154,7 +155,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = creatureGenerator.GenerateAsCharacter(randomCreatureName, CreatureConstants.Templates.None);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.Name, Is.EqualTo(randomCreatureName), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.None), creature.Summary);
 
@@ -176,7 +177,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = await creatureGenerator.GenerateAsCharacterAsync(randomCreatureName, CreatureConstants.Templates.None);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.Name, Is.EqualTo(randomCreatureName), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.None), creature.Summary);
 
@@ -199,7 +200,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = creatureGenerator.GenerateAsCharacter(randomCreatureName, randomTemplate);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.Name, Is.EqualTo(randomCreatureName), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
 
@@ -228,7 +229,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = await creatureGenerator.GenerateAsCharacterAsync(randomCreatureName, randomTemplate);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.Name, Is.EqualTo(randomCreatureName), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
 
@@ -250,7 +251,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = creatureGenerator.GenerateRandomOfTemplate(randomTemplate);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
 
             creatureAsserter.AssertCreature(creature);
@@ -275,7 +276,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = creatureGenerator.GenerateRandomOfTemplate(randomTemplate, challengeRating);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
             Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
 
@@ -297,7 +298,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = creatureGenerator.GenerateRandomOfTemplateAsCharacter(randomTemplate);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
 
             creatureAsserter.AssertCreatureAsCharacter(creature);
@@ -322,7 +323,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = creatureGenerator.GenerateRandomOfTemplateAsCharacter(randomTemplate, challengeRating);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
             Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
 
@@ -344,7 +345,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = await creatureGenerator.GenerateRandomOfTemplateAsync(randomTemplate);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
 
             creatureAsserter.AssertCreature(creature);
@@ -369,7 +370,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = await creatureGenerator.GenerateRandomOfTemplateAsync(randomTemplate, challengeRating);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
             Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
 
@@ -391,7 +392,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = await creatureGenerator.GenerateRandomOfTemplateAsCharacterAsync(randomTemplate);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
 
             creatureAsserter.AssertCreatureAsCharacter(creature);
@@ -416,7 +417,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = await creatureGenerator.GenerateRandomOfTemplateAsCharacterAsync(randomTemplate, challengeRating);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
             Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
 
@@ -445,7 +446,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = creatureGenerator.GenerateRandomOfType(type, challengeRating);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             AssertCreatureIsType(creature, type);
 
             if (challengeRating != null)
@@ -512,7 +513,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = creatureGenerator.GenerateRandomOfTypeAsCharacter(randomType);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             AssertCreatureIsType(creature, randomType);
 
             creatureAsserter.AssertCreatureAsCharacter(creature);
@@ -539,7 +540,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = creatureGenerator.GenerateRandomOfTypeAsCharacter(randomType, challengeRating);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
             AssertCreatureIsType(creature, randomType);
 
@@ -563,7 +564,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync(randomType);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             AssertCreatureIsType(creature, randomType);
 
             creatureAsserter.AssertCreature(creature);
@@ -590,7 +591,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = await creatureGenerator.GenerateRandomOfTypeAsync(randomType, challengeRating);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
             AssertCreatureIsType(creature, randomType);
 
@@ -614,7 +615,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = await creatureGenerator.GenerateRandomOfTypeAsCharacterAsync(randomType);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             AssertCreatureIsType(creature, randomType);
 
             creatureAsserter.AssertCreatureAsCharacter(creature);
@@ -641,7 +642,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = await creatureGenerator.GenerateRandomOfTypeAsCharacterAsync(randomType, challengeRating);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
             AssertCreatureIsType(creature, randomType);
 
@@ -659,11 +660,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var challengeRatings = ChallengeRatingConstants.GetOrdered();
             var challengeRating = collectionSelector.SelectRandomFrom(challengeRatings);
 
+            while (!creatureVerifier.VerifyCompatibility(false, challengeRating: challengeRating))
+            {
+                challengeRating = collectionSelector.SelectRandomFrom(challengeRatings);
+            }
+
             stopwatch.Restart();
             var creature = creatureGenerator.GenerateRandomOfChallengeRating(challengeRating);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
 
             creatureAsserter.AssertCreature(creature);
@@ -685,7 +691,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = creatureGenerator.GenerateRandomOfChallengeRatingAsCharacter(challengeRating);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
 
             creatureAsserter.AssertCreatureAsCharacter(creature);
@@ -706,7 +712,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = await creatureGenerator.GenerateRandomOfChallengeRatingAsync(challengeRating);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
 
             creatureAsserter.AssertCreature(creature);
@@ -728,7 +734,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = await creatureGenerator.GenerateRandomOfChallengeRatingAsCharacterAsync(challengeRating);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
 
             creatureAsserter.AssertCreatureAsCharacter(creature);

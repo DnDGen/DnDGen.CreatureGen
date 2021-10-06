@@ -20,7 +20,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         private Mock<JustInTimeFactory> mockJustInTimeFactory;
         private Mock<ICreatureDataSelector> mockCreatureDataSelector;
         private Mock<ICollectionSelector> mockCollectionSelector;
-        private Mock<IAdjustmentsSelector> mockAdjustmentSelector;
 
         [SetUp]
         public void Setup()
@@ -28,8 +27,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             mockJustInTimeFactory = new Mock<JustInTimeFactory>();
             mockCreatureDataSelector = new Mock<ICreatureDataSelector>();
             mockCollectionSelector = new Mock<ICollectionSelector>();
-            mockAdjustmentSelector = new Mock<IAdjustmentsSelector>();
-            verifier = new CreatureVerifier(mockJustInTimeFactory.Object, mockCreatureDataSelector.Object, mockCollectionSelector.Object, mockAdjustmentSelector.Object);
+            verifier = new CreatureVerifier(mockJustInTimeFactory.Object, mockCreatureDataSelector.Object, mockCollectionSelector.Object);
         }
 
         [TestCase(true)]

@@ -112,7 +112,9 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         public Creature GenerateRandomOfTemplate(string template, string challengeRating = null)
         {
             var randomCreature = GenerateRandomNameOfTemplate(template, challengeRating);
-            return Generate(randomCreature, template, false, true);
+            var allowAdvanced = string.IsNullOrEmpty(challengeRating);
+
+            return Generate(randomCreature, template, false, allowAdvanced);
         }
 
         public string GenerateRandomNameOfTemplateAsCharacter(string template, string challengeRating = null)
@@ -137,7 +139,9 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         public Creature GenerateRandomOfTemplateAsCharacter(string template, string challengeRating = null)
         {
             var randomCreature = GenerateRandomNameOfTemplateAsCharacter(template, challengeRating);
-            return Generate(randomCreature, template, true, true);
+            var allowAdvanced = string.IsNullOrEmpty(challengeRating);
+
+            return Generate(randomCreature, template, true, allowAdvanced);
         }
 
         public (string CreatureName, string Template) GenerateRandomNameOfType(string creatureType, string challengeRating = null)
@@ -239,7 +243,9 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         public Creature GenerateRandomOfType(string creatureType, string challengeRating = null)
         {
             var randomCreature = GenerateRandomNameOfType(creatureType, challengeRating);
-            return Generate(randomCreature.CreatureName, randomCreature.Template, false, true);
+            var allowAdvanced = string.IsNullOrEmpty(challengeRating);
+
+            return Generate(randomCreature.CreatureName, randomCreature.Template, false, allowAdvanced);
         }
 
         public Creature GenerateRandomOfChallengeRating(string challengeRating)
@@ -273,7 +279,9 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         public Creature GenerateRandomOfTypeAsCharacter(string creatureType, string challengeRating = null)
         {
             var randomCreature = GenerateRandomNameOfTypeAsCharacter(creatureType, challengeRating);
-            return Generate(randomCreature.CreatureName, randomCreature.Template, true, true);
+            var allowAdvanced = string.IsNullOrEmpty(challengeRating);
+
+            return Generate(randomCreature.CreatureName, randomCreature.Template, true, allowAdvanced);
         }
 
         public Creature GenerateRandomOfChallengeRatingAsCharacter(string challengeRating)

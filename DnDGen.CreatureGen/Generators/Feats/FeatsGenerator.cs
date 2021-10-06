@@ -89,13 +89,7 @@ namespace DnDGen.CreatureGen.Generators.Feats
             }
 
             //HACK: Requirements can't handle "remove this", so doing so here for particular use cases
-            Console.WriteLine($"[{DateTime.Now:O}] FeatsGenerator: Handling feats and blindness");
-
-            var blindFeatNames = new[]
-            {
-                FeatConstants.SpecialQualities.Blindsense,
-                FeatConstants.SpecialQualities.Blindsight,
-            };
+            Console.WriteLine($"[{DateTime.Now:O}] FeatsGenerator: Handling blindness");
 
             var visionFeatNames = new[]
             {
@@ -105,14 +99,11 @@ namespace DnDGen.CreatureGen.Generators.Feats
                 FeatConstants.SpecialQualities.LowLightVision_Superior,
             };
 
-            var blindFeats = specialQualities.Where(f => blindFeatNames.Contains(f.Name));
-            if (blindFeats.Any())
+            if (specialQualities.Any(f => f.Name == FeatConstants.SpecialQualities.Blind))
             {
                 specialQualities = specialQualities
                     .Where(f => !visionFeatNames.Contains(f.Name))
                     .ToList();
-
-                throw new Exception($"{creatureName} has either Blindsense or Blindsight, but might not actually be blind.  Need a different differentiator for that");
             }
 
             Console.WriteLine($"[{DateTime.Now:O}] FeatsGenerator: Generated {specialQualities.Count} special qualities");
