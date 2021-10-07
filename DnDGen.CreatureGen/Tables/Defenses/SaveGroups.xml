@@ -1990,7 +1990,6 @@
     <name>Hellwasp Swarm</name>
     <entry>Fortitude</entry>
     <entry>Reflex</entry>
-    <entry>Will</entry>
   </collection>
   <collection>
     <name>Hezrou</name>
@@ -2000,13 +1999,16 @@
   </collection>
   <collection>
     <name>Hieracosphinx</name>
-    <entry>Poor Maneuverability (Wings)</entry>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>High Elf</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Hill Dwarf</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Hill Giant</name>
@@ -2014,14 +2016,15 @@
   </collection>
   <collection>
     <name>Hippogriff</name>
-    <entry>Average Maneuverability (Wings)</entry>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Hobgoblin</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Homunculus</name>
-    <entry>Good Maneuverability (Wings)</entry>
   </collection>
   <collection>
     <name>Horned Devil (Cornugon)</name>
@@ -2031,13 +2034,19 @@
   </collection>
   <collection>
     <name>Hound Archon</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Howler</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Human</name>
-    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Hyena</name>
@@ -2058,7 +2067,7 @@
   </collection>
   <collection>
     <name>Invisible Stalker</name>
-    <entry>Perfect Maneuverability (Magic)</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Imp</name>
@@ -2089,73 +2098,109 @@
   </collection>
   <collection>
     <name>Kapoacinth</name>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Kobold</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Kolyarut</name>
   </collection>
   <collection>
     <name>Kraken</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Krenshar</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Kuo-toa</name>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Lacedon</name>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Lamia</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Lammasu</name>
-    <entry>Average Maneuverability (Wings)</entry>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Lantern Archon</name>
-    <entry>Perfect Maneuverability (Magic)</entry>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Lemure</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Leonal</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Leopard</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Light Horse</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Light Warhorse</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Lightfoot Halfling</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Lillend</name>
-    <entry>Average Maneuverability (Wings)</entry>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Lion</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Lizard</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Lizardfolk</name>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Locathah</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Locust Swarm</name>
-    <entry>Poor Maneuverability (Wings)</entry>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Magma Mephit</name>
@@ -2165,13 +2210,17 @@
   </collection>
   <collection>
     <name>Magmin</name>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Manta Ray</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Manticore</name>
-    <entry>Clumsy Maneuverability (Wings)</entry>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Marilith</name>
@@ -2181,164 +2230,224 @@
   </collection>
   <collection>
     <name>Marut</name>
+  </collection>
+  <collection>
+    <name>Medusa</name>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
+  </collection>
+  <collection>
+    <name>Megaraptor</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+  </collection>
+  <collection>
+    <name>Merfolk</name>
+    <entry>Fortitude</entry>
+  </collection>
+  <collection>
+    <name>Merrow</name>
+    <entry>Fortitude</entry>
+  </collection>
+  <collection>
+    <name>Mimic</name>
+    <entry>Will</entry>
+  </collection>
+  <collection>
+    <name>Mind Flayer (Illithid)</name>
+    <entry>Will</entry>
+  </collection>
+  <collection>
+    <name>Minor Xorn</name>
     <entry>Fortitude</entry>
     <entry>Reflex</entry>
     <entry>Will</entry>
   </collection>
   <collection>
-    <name>Medusa</name>
-  </collection>
-  <collection>
-    <name>Megaraptor</name>
-  </collection>
-  <collection>
-    <name>Merfolk</name>
-  </collection>
-  <collection>
-    <name>Merrow</name>
-  </collection>
-  <collection>
-    <name>Mimic</name>
-  </collection>
-  <collection>
-    <name>Mind Flayer (Illithid)</name>
-  </collection>
-  <collection>
-    <name>Minor Xorn</name>
-  </collection>
-  <collection>
     <name>Minotaur</name>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Mohrg</name>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Monitor Lizard</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Monkey</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Colossal</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Gargantuan</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Huge</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Large</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Medium</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Small</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Tiny</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Colossal</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Gargantuan</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Huge</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Large</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Medium</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Small</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Tiny</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Colossal</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Gargantuan</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Huge</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Large</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Medium</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Small</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Tiny</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Colossal</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Gargantuan</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Huge</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Large</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Medium</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Small</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Tiny</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Mountain Dwarf</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Mule</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Mummy</name>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Nalfeshnee</name>
-    <entry>Poor Maneuverability (Wings)</entry>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Nessian Warhound</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Night Hag</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Nightcrawler</name>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Nightmare</name>
-    <entry>Good Maneuverability (Magic)</entry>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Nightmare, Cauchemar</name>
-    <entry>Good Maneuverability (Magic)</entry>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Nightwalker</name>
-    <entry>Poor Maneuverability (Magic)</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Nightwing</name>
-    <entry>Good Maneuverability (Wings)</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Nine-Headed Cryohydra</name>
@@ -2357,6 +2466,8 @@
   </collection>
   <collection>
     <name>Nixie</name>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Noble Djinni</name>
@@ -2372,19 +2483,24 @@
   </collection>
   <collection>
     <name>Nymph</name>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Ochre Jelly</name>
   </collection>
   <collection>
     <name>Octopus</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Ogre</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Ogre Mage</name>
-    <entry>Good Maneuverability (Magic)</entry>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Ooze Mephit</name>
@@ -2394,6 +2510,7 @@
   </collection>
   <collection>
     <name>Orc</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Orca Whale</name>
@@ -2402,6 +2519,7 @@
   </collection>
   <collection>
     <name>Otyugh</name>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Owl</name>
@@ -2410,75 +2528,112 @@
   </collection>
   <collection>
     <name>Owlbear</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Pegasus</name>
-    <entry>Average Maneuverability (Wings)</entry>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Phantom Fungus</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Phase Spider</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Phasm</name>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Pit Fiend</name>
-    <entry>Average Maneuverability (Wings)</entry>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Pixie</name>
-    <entry>Good Maneuverability (Wings)</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Pixie with Irresistible dance</name>
-    <entry>Good Maneuverability (Wings)</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Polar Bear</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Pony</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Porpoise</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Pseudodragon</name>
-    <entry>Good Maneuverability (Wings)</entry>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Purple Worm</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Quasit</name>
-    <entry>Perfect Maneuverability (Wings)</entry>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Rakshasa</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Rast</name>
-    <entry>Good Maneuverability (Magic)</entry>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Rat</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Rat Swarm</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Raven</name>
-    <entry>Average Maneuverability (Wings)</entry>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Ravid</name>
-    <entry>Perfect Maneuverability (Magic)</entry>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Razor Boar</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Red Dragon, Adult</name>
@@ -2560,34 +2715,49 @@
   </collection>
   <collection>
     <name>Remorhaz</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Retriever</name>
   </collection>
   <collection>
     <name>Rhinoceras</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Roc</name>
-    <entry>Average Maneuverability (Wings)</entry>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Rock Gnome</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Roper</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Rust Monster</name>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Sahuagin</name>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Sahuagin Mutant</name>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Malenti</name>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Salt Mephit</name>
@@ -2597,21 +2767,32 @@
   </collection>
   <collection>
     <name>Satyr</name>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Satyr with pipes</name>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Scorpionfolk</name>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Scrag</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Sea Cat</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Sea Hag</name>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Seven-Headed Cryohydra</name>
@@ -2630,31 +2811,44 @@
   </collection>
   <collection>
     <name>Shadow</name>
-    <entry>Good Maneuverability (Magic)</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Shadow Mastiff</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Shambling Mound</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Shark, Huge</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Shark, Large</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Shark, Medium</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Shield Guardian</name>
   </collection>
   <collection>
     <name>Shocker Lizard</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Shrieker</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Adult</name>
@@ -2745,6 +2939,7 @@
   </collection>
   <collection>
     <name>Skum</name>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Spectre</name>
@@ -2752,16 +2947,21 @@
   </collection>
   <collection>
     <name>Spider Eater</name>
-    <entry>Good Maneuverability (Wings)</entry>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Spider Swarm</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Spirit Naga</name>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Squid</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Steam Mephit</name>
@@ -2771,19 +2971,23 @@
   </collection>
   <collection>
     <name>Stirge</name>
-    <entry>Average Maneuverability (Wings)</entry>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Stone Giant</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Stone Giant Elder</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Stone Golem</name>
   </collection>
   <collection>
     <name>Storm Giant</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Succubus</name>
@@ -2793,12 +2997,16 @@
   </collection>
   <collection>
     <name>Svirfneblin</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Tallfellow Halfling</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Tarrasque</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Ten-Headed Cryohydra</name>
@@ -2817,43 +3025,66 @@
   </collection>
   <collection>
     <name>Tendriculos</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Thoqqua</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Tiefling</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Tiger</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Titan</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Toad</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Treant</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Triceratops</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Triton</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Troglodyte</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Troll</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Truly Horrid Umber Hulk</name>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Trumpet Archon</name>
-    <entry>Good Maneuverability (Wings)</entry>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Cryohydra</name>
@@ -2872,21 +3103,31 @@
   </collection>
   <collection>
     <name>Tyrannosaurus</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Umber Hulk</name>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Unicorn</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Vampire Spawn</name>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Vargouille</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Violet Fungus</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Viper Snake, Huge</name>
@@ -2926,21 +3167,27 @@
   </collection>
   <collection>
     <name>Water Elemental, Elder</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Water Elemental, Greater</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Water Elemental, Huge</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Water Elemental, Large</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Water Elemental, Medium</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Water Elemental, Small</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Water Mephit</name>
@@ -2950,9 +3197,12 @@
   </collection>
   <collection>
     <name>Water Naga</name>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Weasel</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>White Dragon, Adult</name>
@@ -3028,60 +3278,96 @@
   </collection>
   <collection>
     <name>Wight</name>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Wild Elf</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Will-O'-Wisp</name>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Winter Wolf</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Wolf</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Wolverine</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Worg</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Wood Elf</name>
+    <entry>Fortitude</entry>
   </collection>
   <collection>
     <name>Wraith</name>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Wyvern</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Xill</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Yeth Hound</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Yrthak</name>
+    <entry>Fortitude</entry>
+    <entry>Reflex</entry>
   </collection>
   <collection>
     <name>Yuan-ti Abomination</name>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head)</name>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)</name>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</name>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)</name>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Yuan-ti Pureblood</name>
+    <entry>Reflex</entry>
+    <entry>Will</entry>
   </collection>
   <collection>
     <name>Zelekhut</name>
