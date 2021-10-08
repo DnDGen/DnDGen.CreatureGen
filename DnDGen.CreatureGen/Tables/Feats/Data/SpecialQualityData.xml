@@ -1824,6 +1824,7 @@
   </collection>
   <collection>
     <name>Darkmantle</name>
+    <entry>Blind#0##0##0#False###0#0#2147483647</entry>
     <entry>Blindsight#90##0##0#False###0#0#2147483647</entry>
     <entry>Spell-Like Ability#0#Darkness#1#Day#0#False###0#0#2147483647</entry>
   </collection>
@@ -1909,6 +1910,7 @@
   </collection>
   <collection>
     <name>Destrachan</name>
+    <entry>Blind#0##0##0#False###0#0#2147483647</entry>
     <entry>Blindsight#100##0##0#False###0#0#2147483647</entry>
     <entry>Immunity#0#Gaze attacks#0##0#False###0#0#2147483647</entry>
     <entry>Immunity#0#Visual effects#0##0#False###0#0#2147483647</entry>
@@ -3145,6 +3147,7 @@
   </collection>
   <collection>
     <name>Grimlock</name>
+    <entry>Blind#0##0##0#False###0#0#2147483647</entry>
     <entry>Blindsight#40##0##0#False###0#0#2147483647</entry>
     <entry>Immunity#0#Attack forms that rely on sight#0##0#False###0#0#2147483647</entry>
     <entry>Immunity#0#Gaze attacks#0##0#False###0#0#2147483647</entry>
@@ -4120,6 +4123,7 @@
   </collection>
   <collection>
     <name>Ooze</name>
+    <entry>Blind#0##0##0#False###0#0#2147483647</entry>
     <entry>Blindsight#60##0##0#False###0#0#2147483647</entry>
     <entry>Immunity#0#Critical hits#0##0#False###0#0#2147483647</entry>
     <entry>Immunity#0#Flanking#0##0#False###0#0#2147483647</entry>
@@ -5443,6 +5447,7 @@
   </collection>
   <collection>
     <name>Yrthak</name>
+    <entry>Blind#0##0##0#False###0#0#2147483647</entry>
     <entry>Blindsight#120##0##0#False###0#0#2147483647</entry>
     <entry>Immunity#0#Attacks that rely on sight#0##0#False###0#0#2147483647</entry>
     <entry>Immunity#0#Gaze attacks#0##0#False###0#0#2147483647</entry>

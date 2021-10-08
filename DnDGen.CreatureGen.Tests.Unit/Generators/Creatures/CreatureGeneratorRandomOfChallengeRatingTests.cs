@@ -166,7 +166,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 GroupConstants.PoorBaseAttack)).Returns(GroupConstants.PoorBaseAttack);
         }
 
-        private void SetUpCreature(string creatureName, string templateName, bool asCharacter, string challengeRating)
+        private Mock<TemplateApplicator> SetUpCreature(string creatureName, string templateName, bool asCharacter, string challengeRating)
         {
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
             mockCollectionSelector
@@ -296,6 +296,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     abilities,
                     skills))
                 .Returns(languages);
+
+            return defaultTemplateApplicator;
         }
 
         private HitPoints SetUpCreatureAdvancement(bool asCharacter, int advancementAmount = 1337, string creatureName = "creature")
@@ -868,55 +870,55 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             SetUpCreature(creatureName, CreatureConstants.Templates.None, false, "my challenge rating");
 
             mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my challenge rating"))
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "my type"))
                 .Returns(new[] { creatureName });
 
-            types[0] = "my challenge rating";
+            types[0] = "my type";
 
-            var creature = creatureGenerator.GenerateRandomOfChallengeRating("my challenge rating");
-            Assert.That(creature.Type.Name, Is.EqualTo("my challenge rating"));
+            var creature = creatureGenerator.GenerateRandomOfChallengeRating("my type");
+            Assert.That(creature.Type.Name, Is.EqualTo("my type"));
             Assert.That(creature.Type.SubTypes, Is.Empty);
         }
 
-        [TestCase("my challenge rating")]
+        [TestCase("my type")]
         [TestCase("subtype")]
         public void GenerateRandomOfChallengeRating_GenerateCreatureTypeWithSubtype(string startType)
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, false, "my challenge rating");
+            var mockNoneApplicator = SetUpCreature(creatureName, CreatureConstants.Templates.None, false, "my challenge rating");
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, startType))
-                .Returns(new[] { creatureName });
+            mockNoneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), false, startType, "my challenge rating"))
+                .Returns((IEnumerable<string> cc, bool asC, string t, string cr) => cc.Intersect(new[] { creatureName }));
 
-            types[0] = "my challenge rating";
+            types[0] = "my type";
             types.Add("subtype");
 
             var creature = creatureGenerator.GenerateRandomOfChallengeRating(startType);
-            Assert.That(creature.Type.Name, Is.EqualTo("my challenge rating"));
+            Assert.That(creature.Type.Name, Is.EqualTo("my type"));
             Assert.That(creature.Type.SubTypes, Is.Not.Empty);
             Assert.That(creature.Type.SubTypes, Contains.Item("subtype"));
             Assert.That(creature.Type.SubTypes.Count, Is.EqualTo(1));
         }
 
-        [TestCase("my challenge rating")]
+        [TestCase("my type")]
         [TestCase("subtype")]
         [TestCase("other subtype")]
         public void GenerateRandomOfChallengeRating_GenerateCreatureTypeWithMultipleSubtypes(string startType)
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, false, "my challenge rating");
+            var mockNoneApplicator = SetUpCreature(creatureName, CreatureConstants.Templates.None, false, "my challenge rating");
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, startType))
-                .Returns(new[] { creatureName });
+            mockNoneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), false, startType, "my challenge rating"))
+                .Returns((IEnumerable<string> cc, bool asC, string t, string cr) => cc.Intersect(new[] { creatureName }));
 
-            types[0] = "my challenge rating";
+            types[0] = "my type";
             types.Add("subtype");
             types.Add("other subtype");
 
             var creature = creatureGenerator.GenerateRandomOfChallengeRating(startType);
-            Assert.That(creature.Type.Name, Is.EqualTo("my challenge rating"));
+            Assert.That(creature.Type.Name, Is.EqualTo("my type"));
             Assert.That(creature.Type.SubTypes, Is.Not.Empty);
             Assert.That(creature.Type.SubTypes, Contains.Item("subtype"));
             Assert.That(creature.Type.SubTypes, Contains.Item("other subtype"));
@@ -2771,45 +2773,45 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.Type.SubTypes, Is.Empty);
         }
 
-        [TestCase("my challenge rating")]
+        [TestCase("my type")]
         [TestCase("subtype")]
         public async Task GenerateRandomOfChallengeRatingAsync_GenerateCreatureTypeWithSubtype(string startType)
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, false, "my challenge rating");
+            var mockNoneApplicator = SetUpCreature(creatureName, CreatureConstants.Templates.None, false, "my challenge rating");
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, startType))
-                .Returns(new[] { creatureName });
+            mockNoneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), false, startType, "my challenge rating"))
+                .Returns((IEnumerable<string> cc, bool asC, string t, string cr) => cc.Intersect(new[] { creatureName }));
 
-            types[0] = "my challenge rating";
+            types[0] = "my type";
             types.Add("subtype");
 
             var creature = await creatureGenerator.GenerateRandomOfChallengeRatingAsync(startType);
-            Assert.That(creature.Type.Name, Is.EqualTo("my challenge rating"));
+            Assert.That(creature.Type.Name, Is.EqualTo("my type"));
             Assert.That(creature.Type.SubTypes, Is.Not.Empty);
             Assert.That(creature.Type.SubTypes, Contains.Item("subtype"));
             Assert.That(creature.Type.SubTypes.Count, Is.EqualTo(1));
         }
 
-        [TestCase("my challenge rating")]
+        [TestCase("my type")]
         [TestCase("subtype")]
         [TestCase("other subtype")]
         public async Task GenerateRandomOfChallengeRatingAsync_GenerateCreatureTypeWithMultipleSubtypes(string startType)
         {
             var creatureName = CreatureConstants.Human;
-            SetUpCreature(creatureName, CreatureConstants.Templates.None, false, "my challenge rating");
+            var mockNoneApplicator = SetUpCreature(creatureName, CreatureConstants.Templates.None, false, "my challenge rating");
 
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, startType))
-                .Returns(new[] { creatureName });
+            mockNoneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), false, startType, "my challenge rating"))
+                .Returns((IEnumerable<string> cc, bool asC, string t, string cr) => cc.Intersect(new[] { creatureName }));
 
-            types[0] = "my challenge rating";
+            types[0] = "my type";
             types.Add("subtype");
             types.Add("other subtype");
 
             var creature = await creatureGenerator.GenerateRandomOfChallengeRatingAsync(startType);
-            Assert.That(creature.Type.Name, Is.EqualTo("my challenge rating"));
+            Assert.That(creature.Type.Name, Is.EqualTo("my type"));
             Assert.That(creature.Type.SubTypes, Is.Not.Empty);
             Assert.That(creature.Type.SubTypes, Contains.Item("subtype"));
             Assert.That(creature.Type.SubTypes, Contains.Item("other subtype"));

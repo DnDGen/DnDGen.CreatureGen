@@ -746,7 +746,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         [TestCase(CreatureConstants.Dragon_Silver_Ancient, CreatureConstants.Templates.HalfCelestial)]
         [TestCase(CreatureConstants.Dragon_White_Old, CreatureConstants.Templates.HalfFiend)]
         [Repeat(100)]
-        //[Ignore("Only use this for debugging")]
+        [Ignore("Only use this for debugging")]
         public void BUG_StressSpecificCreature(string creatureName, string template)
         {
             stressor.Stress(() => GenerateAndAssertCreature(creatureName, template));
@@ -763,7 +763,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         [TestCase(CreatureConstants.Types.Subtypes.Native)]
         [TestCase(CreatureConstants.Types.Subtypes.Shapechanger)]
         [Repeat(100)]
-        //[Ignore("Only use this for debugging")]
+        [Ignore("Only use this for debugging")]
         public void BUG_StressSpecificType(string type)
         {
             stressor.Stress(() => GenerateAndAssertRandomCreatureOfType(type));

@@ -74,64 +74,50 @@ namespace DnDGen.CreatureGen.Templates
         public Creature ApplyTo(Creature creature)
         {
             // Template
-            Console.WriteLine($"[{DateTime.Now:O}] HalfCelestialApplicator: Updating creature template");
             UpdateCreatureTemplate(creature);
 
             // Creature type
-            Console.WriteLine($"[{DateTime.Now:O}] HalfCelestialApplicator: Updating creature type");
             UpdateCreatureType(creature);
 
             // Challenge ratings
-            Console.WriteLine($"[{DateTime.Now:O}] HalfCelestialApplicator: Updating creature CR");
             UpdateCreatureChallengeRating(creature);
 
             //Speed
-            Console.WriteLine($"[{DateTime.Now:O}] HalfCelestialApplicator: Updating creature speeds");
             UpdateCreatureSpeeds(creature);
 
             // Abilities
-            Console.WriteLine($"[{DateTime.Now:O}] HalfCelestialApplicator: Updating creature abilities");
             UpdateCreatureAbilities(creature);
 
             // Level Adjustment
-            Console.WriteLine($"[{DateTime.Now:O}] HalfCelestialApplicator: Updating creature level adjustment");
             UpdateCreatureLevelAdjustment(creature);
 
             // Saving Throws
-            Console.WriteLine($"[{DateTime.Now:O}] HalfCelestialApplicator: Updating creature saving throws");
             UpdateCreatureSavingThrows(creature);
 
             // Alignment
-            Console.WriteLine($"[{DateTime.Now:O}] HalfCelestialApplicator: Updating creature alignment");
             UpdateCreatureAlignment(creature);
 
             //Armor Class
-            Console.WriteLine($"[{DateTime.Now:O}] HalfCelestialApplicator: Updating creature armor class");
             UpdateCreatureArmorClass(creature);
 
             //INFO: Depends on abilities
             // Languages
-            Console.WriteLine($"[{DateTime.Now:O}] HalfCelestialApplicator: Updating creature languages");
             UpdateCreatureLanguages(creature);
 
             //INFO: Depends on abilities
             // Attacks
-            Console.WriteLine($"[{DateTime.Now:O}] HalfCelestialApplicator: Updating creature attacks");
             UpdateCreatureAttacks(creature);
 
             //INFO: Depends on creature type, abilities
             //Skills
-            Console.WriteLine($"[{DateTime.Now:O}] HalfCelestialApplicator: Updating creature skills");
             UpdateCreatureSkills(creature);
 
             //INFO: This depends on alignment, abilities
             // Magic
-            Console.WriteLine($"[{DateTime.Now:O}] HalfCelestialApplicator: Updating creature magic");
             UpdateCreatureMagic(creature);
 
             //INFO: Depends on creature type, abilities, skills, alignment
             // Special Qualities
-            Console.WriteLine($"[{DateTime.Now:O}] HalfCelestialApplicator: Updating creature special qualities");
             UpdateCreatureSpecialQualities(creature);
 
             return creature;
@@ -428,10 +414,6 @@ namespace DnDGen.CreatureGen.Templates
             var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
             var allAlignments = collectionSelector.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups);
 
-            //INFO: Select all of ability adjustments is slow, might be better to let this still be individual/per creature
-            //Console.WriteLine($"[{DateTime.Now:O}] HalfCelestialApplicator: Getting all ability adjustments");
-            //var allAbilityAdjustments = typeAndAmountSelector.SelectAll(TableNameConstants.TypeAndAmount.AbilityAdjustments);
-
             if (!string.IsNullOrEmpty(challengeRating))
             {
                 filteredBaseCreatures = filteredBaseCreatures
@@ -451,7 +433,6 @@ namespace DnDGen.CreatureGen.Templates
             }
 
             var templateCreatures = filteredBaseCreatures
-                //.Where(c => IsCompatible(allTypes[c], allAlignments[c], allAbilityAdjustments[c], allData[c], allHitDice[c], asCharacter, type, challengeRating));
                 .Where(c => IsCompatible(allTypes[c], allAlignments[c], c, allData[c], allHitDice[c], asCharacter, type, challengeRating));
 
             return templateCreatures;
@@ -470,7 +451,6 @@ namespace DnDGen.CreatureGen.Templates
         private bool IsCompatible(
             IEnumerable<string> types,
             IEnumerable<string> alignments,
-            //IEnumerable<TypeAndAmountSelection> abilityAdjustments,
             string creature,
             CreatureDataSelection creatureData,
             double creatureHitDiceQuantity,
@@ -492,14 +472,12 @@ namespace DnDGen.CreatureGen.Templates
                     return false;
             }
 
-            //if (!IsCompatible(types, alignments, abilityAdjustments))
             if (!IsCompatible(types, alignments, creature))
                 return false;
 
             return true;
         }
 
-        //private bool IsCompatible(IEnumerable<string> types, IEnumerable<string> alignments, IEnumerable<TypeAndAmountSelection> abilityAdjustments)
         private bool IsCompatible(IEnumerable<string> types, IEnumerable<string> alignments, string creature)
         {
             if (types.Contains(CreatureConstants.Types.Subtypes.Incorporeal))

@@ -445,10 +445,6 @@ namespace DnDGen.CreatureGen.Templates
             var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
             var allAlignments = collectionSelector.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups);
 
-            //INFO: Select all of ability adjustments is slow, might be better to let this still be individual/per creature
-            //Console.WriteLine($"[{DateTime.Now:O}] HalfFiendApplicator: Getting all ability adjustments");
-            //var allAbilityAdjustments = typeAndAmountSelector.SelectAll(TableNameConstants.TypeAndAmount.AbilityAdjustments);
-
             if (!string.IsNullOrEmpty(challengeRating))
             {
                 filteredBaseCreatures = filteredBaseCreatures
@@ -468,7 +464,6 @@ namespace DnDGen.CreatureGen.Templates
             }
 
             var templateCreatures = filteredBaseCreatures
-                //.Where(c => IsCompatible(allTypes[c], allAlignments[c], allAbilityAdjustments[c], allData[c], allHitDice[c], asCharacter, type, challengeRating));
                 .Where(c => IsCompatible(allTypes[c], allAlignments[c], c, allData[c], allHitDice[c], asCharacter, type, challengeRating));
 
             return templateCreatures;
@@ -487,7 +482,6 @@ namespace DnDGen.CreatureGen.Templates
         private bool IsCompatible(
             IEnumerable<string> types,
             IEnumerable<string> alignments,
-            //IEnumerable<TypeAndAmountSelection> abilityAdjustments,
             string creature,
             CreatureDataSelection creatureData,
             double creatureHitDiceQuantity,
@@ -509,14 +503,12 @@ namespace DnDGen.CreatureGen.Templates
                     return false;
             }
 
-            //if (!IsCompatible(types, alignments, abilityAdjustments))
             if (!IsCompatible(types, alignments, creature))
                 return false;
 
             return true;
         }
 
-        //private bool IsCompatible(IEnumerable<string> types, IEnumerable<string> alignments, IEnumerable<TypeAndAmountSelection> abilityAdjustments)
         private bool IsCompatible(IEnumerable<string> types, IEnumerable<string> alignments, string creature)
         {
             if (types.Contains(CreatureConstants.Types.Subtypes.Incorporeal))

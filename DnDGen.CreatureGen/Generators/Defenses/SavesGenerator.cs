@@ -26,16 +26,10 @@ namespace DnDGen.CreatureGen.Generators.Defenses
         {
             var saves = new Dictionary<string, Save>();
 
-            Console.WriteLine($"[{DateTime.Now:O}] SavesGenerator: Generating Fortitude save for {creatureName}");
             saves[SaveConstants.Fortitude] = GetFortitudeSave(creatureName, creatureType, hitPoints, feats, abilities);
-
-            Console.WriteLine($"[{DateTime.Now:O}] SavesGenerator: Generating Reflex save for {creatureName}");
             saves[SaveConstants.Reflex] = GetReflexSave(creatureName, creatureType, hitPoints, feats, abilities);
-
-            Console.WriteLine($"[{DateTime.Now:O}] SavesGenerator: Generating Will save for {creatureName}");
             saves[SaveConstants.Will] = GetWillSave(creatureName, creatureType, hitPoints, feats, abilities);
 
-            Console.WriteLine($"[{DateTime.Now:O}] SavesGenerator: Generated saves for {creatureName}");
             return saves;
         }
 
@@ -44,14 +38,9 @@ namespace DnDGen.CreatureGen.Generators.Defenses
             var save = new Save();
 
             save.BaseAbility = abilities[AbilityConstants.Constitution];
-
-            Console.WriteLine($"[{DateTime.Now:O}] SavesGenerator: Getting Fortitude base save value");
             save.BaseValue = GetSaveBaseValue(creatureName, hitPoints, SaveConstants.Fortitude);
 
-            Console.WriteLine($"[{DateTime.Now:O}] SavesGenerator: Getting Fortitude racial saving throw bonuses");
             save = GetRacialSavingThrowBonuses(save, creatureName, creatureType, SaveConstants.Fortitude);
-
-            Console.WriteLine($"[{DateTime.Now:O}] SavesGenerator: Getting Fortitude feat saving throw bonuses");
             save = GetFeatSavingThrowBonuses(save, feats, SaveConstants.Fortitude, abilities);
 
             return save;
@@ -62,14 +51,9 @@ namespace DnDGen.CreatureGen.Generators.Defenses
             var save = new Save();
 
             save.BaseAbility = abilities[AbilityConstants.Dexterity];
-
-            Console.WriteLine($"[{DateTime.Now:O}] SavesGenerator: Getting Reflex base save value");
             save.BaseValue = GetSaveBaseValue(creatureName, hitPoints, SaveConstants.Reflex);
 
-            Console.WriteLine($"[{DateTime.Now:O}] SavesGenerator: Getting Reflex racial saving throw bonuses");
             save = GetRacialSavingThrowBonuses(save, creatureName, creatureType, SaveConstants.Reflex);
-
-            Console.WriteLine($"[{DateTime.Now:O}] SavesGenerator: Getting Reflex feat saving throw bonuses");
             save = GetFeatSavingThrowBonuses(save, feats, SaveConstants.Reflex, abilities);
 
             return save;
@@ -79,7 +63,6 @@ namespace DnDGen.CreatureGen.Generators.Defenses
         {
             var save = new Save();
 
-            Console.WriteLine($"[{DateTime.Now:O}] SavesGenerator: Getting Will base save value");
             save.BaseValue = GetSaveBaseValue(creatureName, hitPoints, SaveConstants.Will);
 
             if (feats.Any(f => f.Name == FeatConstants.SpecialQualities.Madness))
@@ -87,10 +70,7 @@ namespace DnDGen.CreatureGen.Generators.Defenses
             else
                 save.BaseAbility = abilities[AbilityConstants.Wisdom];
 
-            Console.WriteLine($"[{DateTime.Now:O}] SavesGenerator: Getting Will racial saving throw bonuses");
             save = GetRacialSavingThrowBonuses(save, creatureName, creatureType, SaveConstants.Will);
-
-            Console.WriteLine($"[{DateTime.Now:O}] SavesGenerator: Getting Will feat saving throw bonuses");
             save = GetFeatSavingThrowBonuses(save, feats, SaveConstants.Will, abilities);
 
             return save;
@@ -101,10 +81,7 @@ namespace DnDGen.CreatureGen.Generators.Defenses
             if (hitPoints.RoundedHitDiceQuantity == 0)
                 return 0;
 
-            Console.WriteLine($"[{DateTime.Now:O}] SavesGenerator: Selecting strong saves for {creatureName}");
             var strongSaves = collectionsSelector.SelectFrom(TableNameConstants.Collection.SaveGroups, creatureName);
-
-            Console.WriteLine($"[{DateTime.Now:O}] SavesGenerator: Computing base save value for save {saveName} for creature {creatureName}");
             if (strongSaves.Contains(saveName))
                 return hitPoints.RoundedHitDiceQuantity / 2 + 2;
 

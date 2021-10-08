@@ -4,7 +4,6 @@ using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.RollGen;
 using DnDGen.TreasureGen.Items;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -23,27 +22,22 @@ namespace DnDGen.CreatureGen.Generators.Abilities
 
         public Dictionary<string, Ability> GenerateFor(string creatureName)
         {
-            Console.WriteLine($"[{DateTime.Now:O}] AbilitiesGenerator: Selecting ability adjustments for {creatureName}");
             var abilitySelections = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, creatureName);
 
-            Console.WriteLine($"[{DateTime.Now:O}] AbilitiesGenerator: Selecting all abilities");
             var allAbilities = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, GroupConstants.All);
             var abilities = new Dictionary<string, Ability>();
 
-            Console.WriteLine($"[{DateTime.Now:O}] AbilitiesGenerator: Setting initial abilities");
             foreach (var selection in allAbilities)
             {
                 abilities[selection.Type] = new Ability(selection.Type);
             }
 
-            Console.WriteLine($"[{DateTime.Now:O}] AbilitiesGenerator: Setting abilities for {creatureName}");
             foreach (var selection in abilitySelections)
             {
                 abilities[selection.Type].RacialAdjustment = selection.Amount;
                 abilities[selection.Type].BaseScore = dice.Roll(3).d6().AsSum();
             }
 
-            Console.WriteLine($"[{DateTime.Now:O}] AbilitiesGenerator: Removing invalid abilities for {creatureName}");
             var missingAbilities = allAbilities.Select(a => a.Type).Except(abilitySelections.Select(a => a.Type));
 
             foreach (var abilityName in missingAbilities)
@@ -51,7 +45,6 @@ namespace DnDGen.CreatureGen.Generators.Abilities
                 abilities[abilityName].BaseScore = 0;
             }
 
-            Console.WriteLine($"[{DateTime.Now:O}] AbilitiesGenerator: Returning abilities");
             return abilities;
         }
 

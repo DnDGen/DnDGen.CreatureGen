@@ -42,27 +42,16 @@ namespace DnDGen.CreatureGen.Generators.Skills
             if (hitPoints.RoundedHitDiceQuantity == 0)
                 return Enumerable.Empty<Skill>();
 
-            Console.WriteLine($"[{DateTime.Now:O}] SkillsGenerator: Getting creature skill names");
             var creatureSkillNames = GetCreatureSkillNames(creatureName, creatureType);
-
-            Console.WriteLine($"[{DateTime.Now:O}] SkillsGenerator: Getting untrained skill names");
             var untrainedSkillNames = GetUntrainedSkillsNames(canUseEquipment);
 
             //INFO: Must do union in this direction, so that when we build selections, the creature skills overwrite noncreature skills
-            Console.WriteLine($"[{DateTime.Now:O}] SkillsGenerator: Getting skill selections");
             var allSkillNames = untrainedSkillNames.Union(creatureSkillNames);
             var skillSelections = GetSkillSelections(allSkillNames, creatureSkillNames);
-
-            Console.WriteLine($"[{DateTime.Now:O}] SkillsGenerator: Initializing skills");
             var skills = InitializeSkills(abilities, skillSelections, hitPoints, includeFirstHitDieBonus);
 
-            Console.WriteLine($"[{DateTime.Now:O}] SkillsGenerator: Applying skill points as ranks");
             skills = ApplySkillPointsAsRanks(skills, hitPoints, creatureType, abilities, includeFirstHitDieBonus);
-
-            Console.WriteLine($"[{DateTime.Now:O}] SkillsGenerator: Applying skill bonuses");
             skills = ApplyBonuses(creatureName, creatureType, skills, size);
-
-            Console.WriteLine($"[{DateTime.Now:O}] SkillsGenerator: Applying skill synergy");
             skills = ApplySkillSynergy(skills);
 
             return skills;
@@ -188,38 +177,25 @@ namespace DnDGen.CreatureGen.Generators.Skills
             Dictionary<string, Ability> abilities,
             bool includeFirstHitDieBonus)
         {
-            Console.WriteLine($"[{DateTime.Now:O}] SkillsGenerator: Getting total skill points");
             var points = GetTotalSkillPoints(creatureType, hitPoints.RoundedHitDiceQuantity, abilities[AbilityConstants.Intelligence], includeFirstHitDieBonus);
-
-            Console.WriteLine($"[{DateTime.Now:O}] SkillsGenerator: Computing available ranks");
             var totalRanksAvailable = skills.Sum(s => s.RankCap - s.Ranks);
 
             if (points >= totalRanksAvailable)
             {
-                Console.WriteLine($"[{DateTime.Now:O}] SkillsGenerator: Maxing out skills");
                 return MaxOutSkills(skills);
             }
 
-            Console.WriteLine($"[{DateTime.Now:O}] SkillsGenerator: Sorting skills");
             var skillsWithAvailableRanks = skills.Where(s => !s.RanksMaxedOut);
             var creatureSkills = skillsWithAvailableRanks.Where(s => s.ClassSkill);
             var untrainedSkills = skillsWithAvailableRanks.Where(s => !s.ClassSkill);
 
             while (points > 0)
             {
-                Console.WriteLine($"[{DateTime.Now:O}] SkillsGenerator: Selecting random skill");
                 var skill = collectionsSelector.SelectRandomFrom(creatureSkills, untrainedSkills);
-
-                Console.WriteLine($"[{DateTime.Now:O}] SkillsGenerator: Computing avilable ranks in skill {skill.Name}");
                 var availableRanks = Math.Min(skill.RankCap - skill.Ranks, points);
-
-                Console.WriteLine($"[{DateTime.Now:O}] SkillsGenerator: Finding best roll between 1 and {availableRanks}");
                 var rankRoll = RollHelper.GetRollWithMostEvenDistribution(1, availableRanks);
-
-                Console.WriteLine($"[{DateTime.Now:O}] SkillsGenerator: Rolling {rankRoll}");
                 var ranks = dice.Roll(rankRoll).AsSum();
 
-                Console.WriteLine($"[{DateTime.Now:O}] SkillsGenerator: Adding {ranks} ranks to {skill.Name}, subtracting {ranks} points from {points}");
                 skill.Ranks += ranks;
                 points -= ranks;
             }

@@ -382,10 +382,6 @@ namespace DnDGen.CreatureGen.Templates
             var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
             var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
 
-            //INFO: Select all of ability adjustments is slow, might be better to let this still be individual/per creature
-            //Console.WriteLine($"[{DateTime.Now:O}] GhostApplicator: Getting all ability adjustments");
-            //var allAbilityAdjustments = typeAndAmountSelector.SelectAll(TableNameConstants.TypeAndAmount.AbilityAdjustments);
-
             if (!string.IsNullOrEmpty(challengeRating))
             {
                 filteredBaseCreatures = filteredBaseCreatures
@@ -405,7 +401,6 @@ namespace DnDGen.CreatureGen.Templates
             }
 
             var templateCreatures = filteredBaseCreatures
-            //.Where(c => IsCompatible(allTypes[c], allAbilityAdjustments[c], allData[c], allHitDice[c], asCharacter, type, challengeRating));
                 .Where(c => IsCompatible(allTypes[c], c, allData[c], allHitDice[c], asCharacter, type, challengeRating));
 
             return templateCreatures;
@@ -423,7 +418,6 @@ namespace DnDGen.CreatureGen.Templates
 
         private bool IsCompatible(
             IEnumerable<string> types,
-            //IEnumerable<TypeAndAmountSelection> abilityAdjustments,
             string creature,
             CreatureDataSelection creatureData,
             double creatureHitDiceQuantity,
@@ -445,14 +439,12 @@ namespace DnDGen.CreatureGen.Templates
                     return false;
             }
 
-            //if (!IsCompatible(types, abilityAdjustments))
             if (!IsCompatible(types, creature))
                 return false;
 
             return true;
         }
 
-        //private bool IsCompatible(IEnumerable<string> types, IEnumerable<TypeAndAmountSelection> abilityAdjustments)
         private bool IsCompatible(IEnumerable<string> types, string creature)
         {
             if (!creatureTypes.Contains(types.First()))
