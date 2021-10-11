@@ -1374,6 +1374,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             casters["wrong creature 5"] = Enumerable.Empty<TypeAndAmountSelection>();
 
             mockTypeAndAmountSelector
+                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Returns(casters);
+            mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
@@ -1464,8 +1467,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             };
 
             mockTypeAndAmountSelector
+                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Returns(casters);
+            mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["creature 1"] = 1;
+            hitDice["creature 2"] = 1;
+            hitDice["creature 3"] = 1;
+            hitDice["wrong creature 1"] = 1;
+            hitDice["wrong creature 2"] = 1;
+            hitDice["wrong creature 3"] = 1;
+            hitDice["wrong creature 4"] = 1;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, type: type);
             Assert.That(compatibleCreatures, Is.EqualTo(new[] { "creature 1", "creature 2", "creature 3" }));
@@ -1543,8 +1565,28 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             casters["wrong creature 5"] = Enumerable.Empty<TypeAndAmountSelection>();
 
             mockTypeAndAmountSelector
+                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Returns(casters);
+            mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["creature 1"] = 1;
+            hitDice["creature 2"] = 1;
+            hitDice["creature 3"] = 1;
+            hitDice["wrong creature 1"] = 1;
+            hitDice["wrong creature 2"] = 1;
+            hitDice["wrong creature 3"] = 1;
+            hitDice["wrong creature 4"] = 1;
+            hitDice["wrong creature 5"] = 1;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, type: "subtype 2");
             Assert.That(compatibleCreatures, Is.EqualTo(new[] { "creature 1", "creature 2", "creature 3" }));
@@ -1626,6 +1668,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             casters["wrong creature 6"] = Enumerable.Empty<TypeAndAmountSelection>();
 
             mockTypeAndAmountSelector
+                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Returns(casters);
+            mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
 
@@ -1668,18 +1713,49 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.Vermin, false)]
         public void IsCompatible_BasedOnCreatureType(string creatureType, bool compatible)
         {
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
-                .Returns(new[] { creatureType, "subtype 1", "subtype 2" });
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { creatureType, "subtype 1", "subtype 2" };
+            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
 
-            var creatureData = new CreatureDataSelection { CasterLevel = 0, LevelAdjustment = 0 };
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 0, LevelAdjustment = 0 };
+
             mockCreatureDataSelector
-                .Setup(s => s.SelectFor("my creature"))
-                .Returns(creatureData);
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
+            casters["my creature"] = Enumerable.Empty<TypeAndAmountSelection>();
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, "my creature"))
-                .Returns(Enumerable.Empty<TypeAndAmountSelection>());
+                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Returns(casters);
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Returns((string t, string c) => casters[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 1;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
@@ -1708,18 +1784,49 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(20, true)]
         public void IsCompatible_HasCasterLevel_CreatureData(int casterLevel, bool compatible)
         {
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
-                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
 
-            var creatureData = new CreatureDataSelection { CasterLevel = casterLevel, LevelAdjustment = null };
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = casterLevel, LevelAdjustment = null };
+
             mockCreatureDataSelector
-                .Setup(s => s.SelectFor("my creature"))
-                .Returns(creatureData);
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
+            casters["my creature"] = Enumerable.Empty<TypeAndAmountSelection>();
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, "my creature"))
-                .Returns(Enumerable.Empty<TypeAndAmountSelection>());
+                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Returns(casters);
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Returns((string t, string c) => casters[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 1;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
@@ -1748,19 +1855,49 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(20, true)]
         public void IsCompatible_HasCasterLevel_Spells(int casterLevel, bool compatible)
         {
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
+
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
-                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
-            var creatureData = new CreatureDataSelection { CasterLevel = 0, LevelAdjustment = null };
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 0, LevelAdjustment = null };
+
             mockCreatureDataSelector
-                .Setup(s => s.SelectFor("my creature"))
-                .Returns(creatureData);
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
 
-            var spellcaster = new TypeAndAmountSelection { Type = "spellcaster", Amount = casterLevel };
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
+            casters["my creature"] = new[] { new TypeAndAmountSelection { Type = "spellcaster", Amount = casterLevel } };
+
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, "my creature"))
-                .Returns(new[] { spellcaster });
+                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Returns(casters);
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Returns((string t, string c) => casters[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 1;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
@@ -1769,18 +1906,49 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void IsCompatible_ReturnsFalse_HasNoSpellcasterLevel()
         {
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
-                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
 
-            var creatureData = new CreatureDataSelection { CasterLevel = 0, LevelAdjustment = null };
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 0, LevelAdjustment = null };
+
             mockCreatureDataSelector
-                .Setup(s => s.SelectFor("my creature"))
-                .Returns(creatureData);
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
+            casters["my creature"] = Enumerable.Empty<TypeAndAmountSelection>();
 
             mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, "my creature"))
-                .Returns(Enumerable.Empty<TypeAndAmountSelection>());
+                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Returns(casters);
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Returns((string t, string c) => casters[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 1;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, true);
             Assert.That(compatibleCreatures, Is.Empty);
@@ -1809,14 +1977,49 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(20)]
         public void IsCompatible_CanBeCharacter(int levelAdjustment)
         {
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
-                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
 
-            var creatureData = new CreatureDataSelection { CasterLevel = 0, LevelAdjustment = levelAdjustment };
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 0, LevelAdjustment = levelAdjustment };
+
             mockCreatureDataSelector
-                .Setup(s => s.SelectFor("my creature"))
-                .Returns(creatureData);
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
+            casters["my creature"] = Enumerable.Empty<TypeAndAmountSelection>();
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Returns(casters);
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Returns((string t, string c) => casters[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 1;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false);
             Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature" }));
@@ -1832,20 +2035,49 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase("wrong type", false)]
         public void IsCompatible_TypeMustMatch(string type, bool compatible)
         {
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
-                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, CreatureConstants.Human))
-                .Returns(new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human });
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, type))
-                .Returns(new[] { "wrong creature", "my creature" });
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
 
-            var creatureData = new CreatureDataSelection { CasterLevel = 0, LevelAdjustment = 0 };
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, CasterLevel = 0, LevelAdjustment = 0 };
+
             mockCreatureDataSelector
-                .Setup(s => s.SelectFor("my creature"))
-                .Returns(creatureData);
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
+            casters["my creature"] = Enumerable.Empty<TypeAndAmountSelection>();
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Returns(casters);
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Returns((string t, string c) => casters[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 1;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false, type: type);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
@@ -1894,6 +2126,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockAdjustmentSelector
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
+
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
+            casters["my creature"] = Enumerable.Empty<TypeAndAmountSelection>();
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Returns(casters);
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Returns((string t, string c) => casters[c]);
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false, challengeRating: challengeRating);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
@@ -1988,6 +2230,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
+            casters["my creature"] = Enumerable.Empty<TypeAndAmountSelection>();
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Returns(casters);
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Returns((string t, string c) => casters[c]);
+
             var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, true, challengeRating: challengeRating);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
@@ -2035,6 +2287,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockAdjustmentSelector
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
+
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
+            casters["my creature"] = Enumerable.Empty<TypeAndAmountSelection>();
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Returns(casters);
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
+                .Returns((string t, string c) => casters[c]);
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false, type, challengeRating);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));

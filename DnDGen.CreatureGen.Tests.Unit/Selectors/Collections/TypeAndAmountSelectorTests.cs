@@ -28,6 +28,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         private void SetUpRoll(string roll, params int[] sums)
         {
             var mockPartialRoll = new Mock<PartialRoll>();
+            mockDice.Setup(d => d.ContainsRoll(roll, false)).Returns(true);
             mockDice.Setup(d => d.Roll(roll)).Returns(mockPartialRoll.Object);
 
             var sequence = mockPartialRoll.SetupSequence(r => r.AsSum<int>());
@@ -47,11 +48,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
 
-            SetUpRoll("9266", 42);
-
             var typeAndAmount = selector.SelectOne("table name", "name");
             Assert.That(typeAndAmount.Type, Is.EqualTo("type"));
-            Assert.That(typeAndAmount.Amount, Is.EqualTo(42));
+            Assert.That(typeAndAmount.Amount, Is.EqualTo(9266));
         }
 
         [TestCase("skill", null)]
@@ -68,11 +67,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
 
-            SetUpRoll("9266", 42);
-
             var typeAndAmount = selector.SelectOne("table name", "name");
             Assert.That(typeAndAmount.Type, Is.EqualTo(skillString));
-            Assert.That(typeAndAmount.Amount, Is.EqualTo(42));
+            Assert.That(typeAndAmount.Amount, Is.EqualTo(9266));
         }
 
         [Test]
@@ -125,9 +122,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
 
-            SetUpRoll("9266", 42);
-            SetUpRoll("90210", 600);
-
             var typesAndAmounts = selector.Select("table name", "name");
             Assert.That(typesAndAmounts.Count, Is.EqualTo(2));
 
@@ -135,9 +129,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             var last = typesAndAmounts.Last();
 
             Assert.That(first.Type, Is.EqualTo("type"));
-            Assert.That(first.Amount, Is.EqualTo(42));
+            Assert.That(first.Amount, Is.EqualTo(9266));
             Assert.That(last.Type, Is.EqualTo("other type"));
-            Assert.That(last.Amount, Is.EqualTo(600));
+            Assert.That(last.Amount, Is.EqualTo(90210));
         }
 
         [Test]
@@ -212,22 +206,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 TypeAndAmountHelper.Build("another type", "600"),
             };
 
-            SetUpRoll("9266", 1337);
-            SetUpRoll("90210", 1234);
-            SetUpRoll("42", 2345);
-            SetUpRoll("600", 3456);
-
             var typesAndAmounts = selector.SelectAll("table name");
             Assert.That(typesAndAmounts.Count, Is.EqualTo(2));
 
             Assert.That(typesAndAmounts["name"].First().Type, Is.EqualTo("type"));
-            Assert.That(typesAndAmounts["name"].First().Amount, Is.EqualTo(1337));
+            Assert.That(typesAndAmounts["name"].First().Amount, Is.EqualTo(9266));
             Assert.That(typesAndAmounts["name"].Last().Type, Is.EqualTo("other type"));
-            Assert.That(typesAndAmounts["name"].Last().Amount, Is.EqualTo(1234));
+            Assert.That(typesAndAmounts["name"].Last().Amount, Is.EqualTo(90210));
             Assert.That(typesAndAmounts["other name"].First().Type, Is.EqualTo("other type"));
-            Assert.That(typesAndAmounts["other name"].First().Amount, Is.EqualTo(2345));
+            Assert.That(typesAndAmounts["other name"].First().Amount, Is.EqualTo(42));
             Assert.That(typesAndAmounts["other name"].Last().Type, Is.EqualTo("another type"));
-            Assert.That(typesAndAmounts["other name"].Last().Amount, Is.EqualTo(3456));
+            Assert.That(typesAndAmounts["other name"].Last().Amount, Is.EqualTo(600));
         }
 
         [Test]
