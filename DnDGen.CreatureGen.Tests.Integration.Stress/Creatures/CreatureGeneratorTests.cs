@@ -3,7 +3,6 @@ using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,8 +16,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private ICollectionSelector collectionSelector;
         private ICreatureGenerator creatureGenerator;
         private Stopwatch stopwatch;
-        private IEnumerable<string> nonCharacterTypes;
-        private IEnumerable<string> nonCharacterTemplates;
 
         [SetUp]
         public void Setup()
@@ -27,434 +24,166 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             collectionSelector = GetNewInstanceOf<ICollectionSelector>();
             creatureGenerator = GetNewInstanceOf<ICreatureGenerator>();
             stopwatch = new Stopwatch();
-
-            nonCharacterTypes = new[]
-            {
-                CreatureConstants.Types.Animal,
-                CreatureConstants.Types.Elemental,
-                CreatureConstants.Types.Ooze,
-                CreatureConstants.Types.Vermin,
-                CreatureConstants.Types.Subtypes.Swarm,
-            };
-
-            nonCharacterTemplates = new[]
-            {
-                CreatureConstants.Templates.Skeleton,
-                CreatureConstants.Templates.Zombie,
-            };
         }
 
-        [Test]
-        public void StressCreature()
+        [TestCase(true, null)]
+        [TestCase(true, CreatureConstants.Templates.None)]
+        [TestCase(false, null)]
+        [TestCase(false, CreatureConstants.Templates.None)]
+        public void StressCreature(bool asCharacter, string template)
         {
-            stressor.Stress(GenerateAndAssertCreature);
+            stressor.Stress(() => GenerateAndAssertCreature(asCharacter, template));
         }
 
-        private void GenerateAndAssertCreature()
+        private void GenerateAndAssertCreature(bool asCharacter, string template)
         {
-            var randomCreatureName = collectionSelector.SelectRandomFrom(allCreatures);
-            GenerateAndAssertCreature(randomCreatureName);
+            if (template == null)
+            {
+                var validTemplates = allTemplates.Where(t => creatureVerifier.VerifyCompatibility(asCharacter, t));
+
+                template = collectionSelector.SelectRandomFrom(validTemplates);
+            }
+
+            var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(asCharacter, creature: c, template: template));
+            var randomCreatureName = collectionSelector.SelectRandomFrom(validCreatures);
+
+            GenerateAndAssertCreature(randomCreatureName, template, asCharacter);
         }
 
-        private Creature GenerateAndAssertCreature(string creatureName) => GenerateAndAssertCreature(creatureName, CreatureConstants.Templates.None);
-
-        private Creature GenerateAndAssertCreature(string creatureName, string template)
+        private Creature GenerateAndAssertCreature(string creatureName, string template, bool asCharacter)
         {
             stopwatch.Restart();
-            var creature = creatureGenerator.Generate(creatureName, template);
+            var creature = creatureGenerator.Generate(creatureName, template, asCharacter);
             stopwatch.Stop();
 
             Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.Name, Is.EqualTo(creatureName), creature.Summary);
             Assert.That(creature.Template, Is.EqualTo(template), creature.Summary);
 
-            creatureAsserter.AssertCreature(creature);
+            if (asCharacter)
+                creatureAsserter.AssertCreatureAsCharacter(creature);
+            else
+                creatureAsserter.AssertCreature(creature);
 
             return creature;
         }
 
-        [Test]
-        public async Task StressCreatureAsync()
+        [TestCase(true, null)]
+        [TestCase(true, CreatureConstants.Templates.None)]
+        [TestCase(false, null)]
+        [TestCase(false, CreatureConstants.Templates.None)]
+        public async Task StressCreatureAsync(bool asCharacter, string template)
         {
-            await stressor.StressAsync(GenerateAndAssertCreatureAsync);
+            await stressor.StressAsync(async () => await GenerateAndAssertCreatureAsync(asCharacter, template));
         }
 
-        private async Task GenerateAndAssertCreatureAsync()
+        private async Task GenerateAndAssertCreatureAsync(bool asCharacter, string template)
         {
-            var randomCreatureName = collectionSelector.SelectRandomFrom(allCreatures);
+            if (template == null)
+                template = collectionSelector.SelectRandomFrom(allTemplates);
 
-            stopwatch.Restart();
-            var creature = await creatureGenerator.GenerateAsync(randomCreatureName, CreatureConstants.Templates.None);
-            stopwatch.Stop();
-
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            Assert.That(creature.Name, Is.EqualTo(randomCreatureName), creature.Summary);
-            Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.None), creature.Summary);
-
-            creatureAsserter.AssertCreature(creature);
-        }
-
-        [Test]
-        public void StressCreatureWithTemplate()
-        {
-            stressor.Stress(GenerateAndAssertCreatureWithTemplate);
-        }
-
-        private void GenerateAndAssertCreatureWithTemplate()
-        {
-            var randomTemplate = collectionSelector.SelectRandomFrom(allTemplates);
-            var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(false, creature: c, template: randomTemplate));
+            var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(asCharacter, creature: c, template: template));
             var randomCreatureName = collectionSelector.SelectRandomFrom(validCreatures);
 
+            await GenerateAndAssertCreatureAsync(randomCreatureName, template, asCharacter);
+        }
+
+        private async Task<Creature> GenerateAndAssertCreatureAsync(string creatureName, string template, bool asCharacter)
+        {
             stopwatch.Restart();
-            var creature = creatureGenerator.Generate(randomCreatureName, randomTemplate);
+            var creature = await creatureGenerator.GenerateAsync(creatureName, template, asCharacter);
             stopwatch.Stop();
 
             Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            Assert.That(creature.Name, Is.EqualTo(randomCreatureName), creature.Summary);
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
+            Assert.That(creature.Name, Is.EqualTo(creatureName), creature.Summary);
+            Assert.That(creature.Template, Is.EqualTo(template), creature.Summary);
 
-            creatureAsserter.AssertCreature(creature);
+            if (asCharacter)
+                creatureAsserter.AssertCreatureAsCharacter(creature);
+            else
+                creatureAsserter.AssertCreature(creature);
+
+            return creature;
         }
 
-        [Test]
-        public async Task StressCreatureWithTemplateAsync()
+        [TestCase(true, true, true, true)]
+        [TestCase(true, true, true, false)]
+        [TestCase(true, true, false, true)]
+        [TestCase(true, true, false, false)]
+        [TestCase(true, false, true, true)]
+        [TestCase(true, false, true, false)]
+        [TestCase(true, false, false, true)]
+        [TestCase(true, false, false, false)]
+        [TestCase(false, true, true, true)]
+        [TestCase(false, true, true, false)]
+        [TestCase(false, true, false, true)]
+        [TestCase(false, true, false, false)]
+        [TestCase(false, false, true, true)]
+        [TestCase(false, false, true, false)]
+        [TestCase(false, false, false, true)]
+        [TestCase(false, false, false, false)]
+        public void StressRandomCreature(bool asCharacter, bool setTemplate, bool setType, bool setCr)
         {
-            await stressor.StressAsync(GenerateAndAssertCreatureWithTemplateAsync);
+            stressor.Stress(() => GenerateAndAssertRandomCreature(asCharacter, setTemplate, setType, setCr));
         }
 
-        private async Task GenerateAndAssertCreatureWithTemplateAsync()
+        private void GenerateAndAssertRandomCreature(bool asCharacter, bool setTemplate, bool setType, bool setCr)
         {
-            var randomTemplate = collectionSelector.SelectRandomFrom(allTemplates);
-            var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(false, creature: c, template: randomTemplate));
-            var randomCreatureName = collectionSelector.SelectRandomFrom(validCreatures);
+            string template = null;
+            string type = null;
+            string cr = null;
 
-            stopwatch.Restart();
-            var creature = await creatureGenerator.GenerateAsync(randomCreatureName, randomTemplate);
-            stopwatch.Stop();
-
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            Assert.That(creature.Name, Is.EqualTo(randomCreatureName), creature.Summary);
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
-
-            creatureAsserter.AssertCreature(creature);
-        }
-
-        [Test]
-        public void StressCreatureAsCharacter()
-        {
-            stressor.Stress(GenerateAndAssertCreatureAsCharacter);
-        }
-
-        private void GenerateAndAssertCreatureAsCharacter()
-        {
-            var characters = CreatureConstants.GetAllCharacters();
-            var randomCreatureName = collectionSelector.SelectRandomFrom(characters);
-
-            stopwatch.Restart();
-            var creature = creatureGenerator.GenerateAsCharacter(randomCreatureName, CreatureConstants.Templates.None);
-            stopwatch.Stop();
-
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            Assert.That(creature.Name, Is.EqualTo(randomCreatureName), creature.Summary);
-            Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.None), creature.Summary);
-
-            creatureAsserter.AssertCreatureAsCharacter(creature);
-        }
-
-        [Test]
-        public async Task StressCreatureAsCharacterAsync()
-        {
-            await stressor.StressAsync(GenerateAndAssertCreatureAsCharacterAsync);
-        }
-
-        private async Task GenerateAndAssertCreatureAsCharacterAsync()
-        {
-            var characters = CreatureConstants.GetAllCharacters();
-            var randomCreatureName = collectionSelector.SelectRandomFrom(characters);
-
-            stopwatch.Restart();
-            var creature = await creatureGenerator.GenerateAsCharacterAsync(randomCreatureName, CreatureConstants.Templates.None);
-            stopwatch.Stop();
-
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            Assert.That(creature.Name, Is.EqualTo(randomCreatureName), creature.Summary);
-            Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.None), creature.Summary);
-
-            creatureAsserter.AssertCreatureAsCharacter(creature);
-        }
-
-        [Test]
-        public void StressCreatureAsCharacterWithTemplate()
-        {
-            stressor.Stress(GenerateAndAssertCreatureAsCharacterWithTemplate);
-        }
-
-        private void GenerateAndAssertCreatureAsCharacterWithTemplate()
-        {
-            var randomTemplate = collectionSelector.SelectRandomFrom(allTemplates);
-            var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(true, creature: c, template: randomTemplate));
-            var randomCreatureName = collectionSelector.SelectRandomFrom(validCreatures);
-
-            stopwatch.Restart();
-            var creature = creatureGenerator.GenerateAsCharacter(randomCreatureName, randomTemplate);
-            stopwatch.Stop();
-
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            Assert.That(creature.Name, Is.EqualTo(randomCreatureName), creature.Summary);
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
-
-            creatureAsserter.AssertCreatureAsCharacter(creature);
-        }
-
-        [Test]
-        public async Task StressCreatureAsCharacterWithTemplateAsync()
-        {
-            await stressor.StressAsync(GenerateAndAssertCreatureAsCharacterWithTemplateAsync);
-        }
-
-        private async Task GenerateAndAssertCreatureAsCharacterWithTemplateAsync()
-        {
-            var randomTemplate = collectionSelector.SelectRandomFrom(allTemplates.Except(nonCharacterTemplates));
-            var compatible = creatureVerifier.VerifyCompatibility(true, template: randomTemplate);
-            if (!compatible)
+            if (setTemplate)
             {
-                Assert.Fail($"Invalid combination: Template {randomTemplate}; As Character True");
+                var validTemplates = allTemplates.Where(t => creatureVerifier.VerifyCompatibility(asCharacter, null, t, null, null));
+
+                template = collectionSelector.SelectRandomFrom(validTemplates);
             }
 
-            var validCreatures = allCreatures.Where(c => creatureVerifier.VerifyCompatibility(true, creature: c, template: randomTemplate));
-            var randomCreatureName = collectionSelector.SelectRandomFrom(validCreatures);
+            if (setType)
+            {
+                var types = CreatureConstants.Types.GetAll();
+                var subtypes = CreatureConstants.Types.Subtypes.GetAll();
+                var allTypes = types.Union(subtypes);
+                var validTypes = allTypes.Where(t => creatureVerifier.VerifyCompatibility(asCharacter, null, template, t, null));
 
+                type = collectionSelector.SelectRandomFrom(validTypes);
+            }
+
+            if (setCr)
+            {
+                var challengeRatings = ChallengeRatingConstants.GetOrdered();
+                var validChallengeRatings = challengeRatings.Where(c => creatureVerifier.VerifyCompatibility(asCharacter, null, template, type, c));
+
+                cr = collectionSelector.SelectRandomFrom(validChallengeRatings);
+            }
+
+            GenerateAndAssertRandomCreature(asCharacter, template, type, cr);
+        }
+
+        private Creature GenerateAndAssertRandomCreature(bool asCharacter, string template, string type, string challengeRating)
+        {
             stopwatch.Restart();
-            var creature = await creatureGenerator.GenerateAsCharacterAsync(randomCreatureName, randomTemplate);
+            var creature = creatureGenerator.GenerateRandom(asCharacter, template, type, challengeRating);
             stopwatch.Stop();
 
             Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            Assert.That(creature.Name, Is.EqualTo(randomCreatureName), creature.Summary);
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
 
-            creatureAsserter.AssertCreatureAsCharacter(creature);
-        }
+            if (template != null)
+                Assert.That(creature.Template, Is.EqualTo(template), creature.Summary);
 
-        [Test]
-        public void StressRandomCreatureOfTemplate()
-        {
-            stressor.Stress(GenerateAndAssertRandomCreatureOfTemplate);
-        }
-
-        private void GenerateAndAssertRandomCreatureOfTemplate()
-        {
-            var templates = CreatureConstants.Templates.GetAll();
-            var randomTemplate = collectionSelector.SelectRandomFrom(templates);
-
-            stopwatch.Restart();
-            var creature = creatureGenerator.GenerateRandomOfTemplate(randomTemplate);
-            stopwatch.Stop();
-
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
-
-            creatureAsserter.AssertCreature(creature);
-        }
-
-        [Test]
-        public void StressRandomCreatureOfTemplateWithChallengeRating()
-        {
-            stressor.Stress(GenerateAndAssertRandomCreatureOfTemplateWithChallengeRating);
-        }
-
-        private void GenerateAndAssertRandomCreatureOfTemplateWithChallengeRating()
-        {
-            var templates = CreatureConstants.Templates.GetAll();
-            var randomTemplate = collectionSelector.SelectRandomFrom(templates);
-
-            var challengeRatings = ChallengeRatingConstants.GetOrdered();
-            var templateChallengeRatings = challengeRatings.Where(cr => creatureVerifier.VerifyCompatibility(false, template: randomTemplate, challengeRating: cr));
-            var challengeRating = collectionSelector.SelectRandomFrom(templateChallengeRatings);
-
-            stopwatch.Restart();
-            var creature = creatureGenerator.GenerateRandomOfTemplate(randomTemplate, challengeRating);
-            stopwatch.Stop();
-
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
-            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
-
-            creatureAsserter.AssertCreature(creature);
-        }
-
-        [Test]
-        public void StressRandomCreatureOfTemplateAsCharacter()
-        {
-            stressor.Stress(GenerateAndAssertRandomCreatureOfTemplateAsCharacter);
-        }
-
-        private void GenerateAndAssertRandomCreatureOfTemplateAsCharacter()
-        {
-            var templates = CreatureConstants.Templates.GetAll().Except(nonCharacterTemplates);
-            var randomTemplate = collectionSelector.SelectRandomFrom(templates);
-
-            stopwatch.Restart();
-            var creature = creatureGenerator.GenerateRandomOfTemplateAsCharacter(randomTemplate);
-            stopwatch.Stop();
-
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
-
-            creatureAsserter.AssertCreatureAsCharacter(creature);
-        }
-
-        [Test]
-        public void StressRandomCreatureOfTemplateAsCharacterWithChallengeRating()
-        {
-            stressor.Stress(GenerateAndAssertRandomCreatureOfTemplateAsCharacterWithChallengeRating);
-        }
-
-        private void GenerateAndAssertRandomCreatureOfTemplateAsCharacterWithChallengeRating()
-        {
-            var templates = CreatureConstants.Templates.GetAll().Except(nonCharacterTemplates);
-            var randomTemplate = collectionSelector.SelectRandomFrom(templates);
-
-            var challengeRatings = ChallengeRatingConstants.GetOrdered();
-            var templateChallengeRatings = challengeRatings.Where(cr => creatureVerifier.VerifyCompatibility(true, template: randomTemplate, challengeRating: cr));
-            var challengeRating = collectionSelector.SelectRandomFrom(templateChallengeRatings);
-
-            stopwatch.Restart();
-            var creature = creatureGenerator.GenerateRandomOfTemplateAsCharacter(randomTemplate, challengeRating);
-            stopwatch.Stop();
-
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
-            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
-
-            creatureAsserter.AssertCreatureAsCharacter(creature);
-        }
-
-        [Test]
-        public async Task StressRandomCreatureOfTemplateAsync()
-        {
-            await stressor.StressAsync(GenerateAndAssertRandomCreatureOfTemplateAsync);
-        }
-
-        private async Task GenerateAndAssertRandomCreatureOfTemplateAsync()
-        {
-            var templates = CreatureConstants.Templates.GetAll();
-            var randomTemplate = collectionSelector.SelectRandomFrom(templates);
-
-            stopwatch.Restart();
-            var creature = await creatureGenerator.GenerateRandomOfTemplateAsync(randomTemplate);
-            stopwatch.Stop();
-
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
-
-            creatureAsserter.AssertCreature(creature);
-        }
-
-        [Test]
-        public async Task StressRandomCreatureOfTemplateWithChallengeRatingAsync()
-        {
-            await stressor.StressAsync(GenerateAndAssertRandomCreatureOfTemplateWithChallengeRatingAsync);
-        }
-
-        private async Task GenerateAndAssertRandomCreatureOfTemplateWithChallengeRatingAsync()
-        {
-            var templates = CreatureConstants.Templates.GetAll();
-            var randomTemplate = collectionSelector.SelectRandomFrom(templates);
-
-            var challengeRatings = ChallengeRatingConstants.GetOrdered();
-            var templateChallengeRatings = challengeRatings.Where(cr => creatureVerifier.VerifyCompatibility(false, template: randomTemplate, challengeRating: cr));
-            var challengeRating = collectionSelector.SelectRandomFrom(templateChallengeRatings);
-
-            stopwatch.Restart();
-            var creature = await creatureGenerator.GenerateRandomOfTemplateAsync(randomTemplate, challengeRating);
-            stopwatch.Stop();
-
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
-            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
-
-            creatureAsserter.AssertCreature(creature);
-        }
-
-        [Test]
-        public async Task StressRandomCreatureOfTemplateAsCharacterAsync()
-        {
-            await stressor.StressAsync(GenerateAndAssertRandomCreatureOfTemplateAsCharacterAsync);
-        }
-
-        private async Task GenerateAndAssertRandomCreatureOfTemplateAsCharacterAsync()
-        {
-            var templates = CreatureConstants.Templates.GetAll().Except(nonCharacterTemplates);
-            var randomTemplate = collectionSelector.SelectRandomFrom(templates);
-
-            stopwatch.Restart();
-            var creature = await creatureGenerator.GenerateRandomOfTemplateAsCharacterAsync(randomTemplate);
-            stopwatch.Stop();
-
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
-
-            creatureAsserter.AssertCreatureAsCharacter(creature);
-        }
-
-        [Test]
-        public async Task StressRandomCreatureOfTemplateAsCharacterWithChallengeRatingAsync()
-        {
-            await stressor.StressAsync(GenerateAndAssertRandomCreatureOfTemplateAsCharacterWithChallengeRatingAsync);
-        }
-
-        private async Task GenerateAndAssertRandomCreatureOfTemplateAsCharacterWithChallengeRatingAsync()
-        {
-            var templates = CreatureConstants.Templates.GetAll().Except(nonCharacterTemplates);
-            var randomTemplate = collectionSelector.SelectRandomFrom(templates);
-
-            var challengeRatings = ChallengeRatingConstants.GetOrdered();
-            var templateChallengeRatings = challengeRatings.Where(cr => creatureVerifier.VerifyCompatibility(true, template: randomTemplate, challengeRating: cr));
-            var challengeRating = collectionSelector.SelectRandomFrom(templateChallengeRatings);
-
-            stopwatch.Restart();
-            var creature = await creatureGenerator.GenerateRandomOfTemplateAsCharacterAsync(randomTemplate, challengeRating);
-            stopwatch.Stop();
-
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            Assert.That(creature.Template, Is.EqualTo(randomTemplate), creature.Summary);
-            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
-
-            creatureAsserter.AssertCreatureAsCharacter(creature);
-        }
-
-        [Test]
-        public void StressRandomCreatureOfType()
-        {
-            stressor.Stress(GenerateAndAssertRandomCreatureOfType);
-        }
-
-        private void GenerateAndAssertRandomCreatureOfType()
-        {
-            var types = CreatureConstants.Types.GetAll();
-            var subtypes = CreatureConstants.Types.Subtypes.GetAll();
-            var allTypes = types.Union(subtypes);
-            var randomType = collectionSelector.SelectRandomFrom(allTypes);
-
-            GenerateAndAssertRandomCreatureOfType(randomType);
-        }
-
-        private void GenerateAndAssertRandomCreatureOfType(string type, string challengeRating = null)
-        {
-            stopwatch.Restart();
-            var creature = creatureGenerator.GenerateRandomOfType(type, challengeRating);
-            stopwatch.Stop();
-
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            AssertCreatureIsType(creature, type);
+            if (type != null)
+                AssertCreatureIsType(creature, type);
 
             if (challengeRating != null)
-            {
                 Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
-            }
 
-            creatureAsserter.AssertCreature(creature);
+            if (asCharacter)
+                creatureAsserter.AssertCreatureAsCharacter(creature);
+            else
+                creatureAsserter.AssertCreature(creature);
+
+            return creature;
         }
 
         private void AssertCreatureIsType(Creature creature, string type)
@@ -476,297 +205,113 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             Assert.That(new[] { type }, Is.SubsetOf(allTypes), creature.Summary);
         }
 
-        [Test]
-        public void StressRandomCreatureOfTypeWithChallengeRating()
+        [TestCase(true, true, true, true)]
+        [TestCase(true, true, true, false)]
+        [TestCase(true, true, false, true)]
+        [TestCase(true, true, false, false)]
+        [TestCase(true, false, true, true)]
+        [TestCase(true, false, true, false)]
+        [TestCase(true, false, false, true)]
+        [TestCase(true, false, false, false)]
+        [TestCase(false, true, true, true)]
+        [TestCase(false, true, true, false)]
+        [TestCase(false, true, false, true)]
+        [TestCase(false, true, false, false)]
+        [TestCase(false, false, true, true)]
+        [TestCase(false, false, true, false)]
+        [TestCase(false, false, false, true)]
+        [TestCase(false, false, false, false)]
+        public async Task StressRandomCreatureAsync(bool asCharacter, bool setTemplate, bool setType, bool setCr)
         {
-            stressor.Stress(GenerateAndAssertRandomCreatureOfTypeWithChallengeRating);
+            await stressor.StressAsync(async () => await GenerateAndAssertRandomCreatureAsync(asCharacter, setTemplate, setType, setCr));
         }
 
-        private void GenerateAndAssertRandomCreatureOfTypeWithChallengeRating()
+        private async Task GenerateAndAssertRandomCreatureAsync(bool asCharacter, bool setTemplate, bool setType, bool setCr)
         {
-            var types = CreatureConstants.Types.GetAll();
-            var subtypes = CreatureConstants.Types.Subtypes.GetAll();
-            var allTypes = types.Union(subtypes);
-            var randomType = collectionSelector.SelectRandomFrom(allTypes);
+            string template = null;
+            string type = null;
+            string cr = null;
 
-            var challengeRatings = ChallengeRatingConstants.GetOrdered();
-            var typeChallengeRatings = challengeRatings.Where(cr => creatureVerifier.VerifyCompatibility(false, type: randomType, challengeRating: cr));
-            var challengeRating = collectionSelector.SelectRandomFrom(typeChallengeRatings);
-
-            GenerateAndAssertRandomCreatureOfType(randomType, challengeRating);
-        }
-
-        [Test]
-        public void StressRandomCreatureOfTypeAsCharacter()
-        {
-            stressor.Stress(GenerateAndAssertRandomCreatureOfTypeAsCharacter);
-        }
-
-        private void GenerateAndAssertRandomCreatureOfTypeAsCharacter()
-        {
-            var types = CreatureConstants.Types.GetAll();
-            var subtypes = CreatureConstants.Types.Subtypes.GetAll();
-            var validTypes = types.Union(subtypes).Except(nonCharacterTypes);
-            var randomType = collectionSelector.SelectRandomFrom(validTypes);
-
-            stopwatch.Restart();
-            var creature = creatureGenerator.GenerateRandomOfTypeAsCharacter(randomType);
-            stopwatch.Stop();
-
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            AssertCreatureIsType(creature, randomType);
-
-            creatureAsserter.AssertCreatureAsCharacter(creature);
-        }
-
-        [Test]
-        public void StressRandomCreatureOfTypeAsCharacterWithChallengeRating()
-        {
-            stressor.Stress(GenerateAndAssertRandomCreatureOfTypeAsCharacterWithChallengeRating);
-        }
-
-        private void GenerateAndAssertRandomCreatureOfTypeAsCharacterWithChallengeRating()
-        {
-            var types = CreatureConstants.Types.GetAll();
-            var subtypes = CreatureConstants.Types.Subtypes.GetAll();
-            var validTypes = types.Union(subtypes).Except(nonCharacterTypes);
-            var randomType = collectionSelector.SelectRandomFrom(validTypes);
-
-            var challengeRatings = ChallengeRatingConstants.GetOrdered();
-            var typeChallengeRatings = challengeRatings.Where(cr => creatureVerifier.VerifyCompatibility(true, type: randomType, challengeRating: cr));
-            var challengeRating = collectionSelector.SelectRandomFrom(typeChallengeRatings);
-
-            stopwatch.Restart();
-            var creature = creatureGenerator.GenerateRandomOfTypeAsCharacter(randomType, challengeRating);
-            stopwatch.Stop();
-
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
-            AssertCreatureIsType(creature, randomType);
-
-            creatureAsserter.AssertCreatureAsCharacter(creature);
-        }
-
-        [Test]
-        public async Task StressRandomCreatureOfTypeAsync()
-        {
-            await stressor.StressAsync(GenerateAndAssertRandomCreatureOfTypeAsync);
-        }
-
-        private async Task GenerateAndAssertRandomCreatureOfTypeAsync()
-        {
-            var types = CreatureConstants.Types.GetAll();
-            var subtypes = CreatureConstants.Types.Subtypes.GetAll();
-            var allTypes = types.Union(subtypes);
-            var randomType = collectionSelector.SelectRandomFrom(allTypes);
-
-            stopwatch.Restart();
-            var creature = await creatureGenerator.GenerateRandomOfTypeAsync(randomType);
-            stopwatch.Stop();
-
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            AssertCreatureIsType(creature, randomType);
-
-            creatureAsserter.AssertCreature(creature);
-        }
-
-        [Test]
-        public async Task StressRandomCreatureOfTypeWithChallengeRatingAsync()
-        {
-            await stressor.StressAsync(GenerateAndAssertRandomCreatureOfTypeWithChallengeRatingAsync);
-        }
-
-        private async Task GenerateAndAssertRandomCreatureOfTypeWithChallengeRatingAsync()
-        {
-            var types = CreatureConstants.Types.GetAll();
-            var subtypes = CreatureConstants.Types.Subtypes.GetAll();
-            var allTypes = types.Union(subtypes);
-            var randomType = collectionSelector.SelectRandomFrom(allTypes);
-
-            var challengeRatings = ChallengeRatingConstants.GetOrdered();
-            var typeChallengeRatings = challengeRatings.Where(cr => creatureVerifier.VerifyCompatibility(false, type: randomType, challengeRating: cr));
-            var challengeRating = collectionSelector.SelectRandomFrom(typeChallengeRatings);
-
-            stopwatch.Restart();
-            var creature = await creatureGenerator.GenerateRandomOfTypeAsync(randomType, challengeRating);
-            stopwatch.Stop();
-
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
-            AssertCreatureIsType(creature, randomType);
-
-            creatureAsserter.AssertCreature(creature);
-        }
-
-        [Test]
-        public async Task StressRandomCreatureOfTypeAsCharacterAsync()
-        {
-            await stressor.StressAsync(GenerateAndAssertRandomCreatureOfTypeAsCharacterAsync);
-        }
-
-        private async Task GenerateAndAssertRandomCreatureOfTypeAsCharacterAsync()
-        {
-            var types = CreatureConstants.Types.GetAll();
-            var subtypes = CreatureConstants.Types.Subtypes.GetAll();
-            var validTypes = types.Union(subtypes).Except(nonCharacterTypes);
-            var randomType = collectionSelector.SelectRandomFrom(validTypes);
-
-            stopwatch.Restart();
-            var creature = await creatureGenerator.GenerateRandomOfTypeAsCharacterAsync(randomType);
-            stopwatch.Stop();
-
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            AssertCreatureIsType(creature, randomType);
-
-            creatureAsserter.AssertCreatureAsCharacter(creature);
-        }
-
-        [Test]
-        public async Task StressRandomCreatureOfTypeAsCharacterWithChallengeRatingAsync()
-        {
-            await stressor.StressAsync(GenerateAndAssertRandomCreatureOfTypeAsCharacterWithChallengeRatingAsync);
-        }
-
-        private async Task GenerateAndAssertRandomCreatureOfTypeAsCharacterWithChallengeRatingAsync()
-        {
-            var types = CreatureConstants.Types.GetAll();
-            var subtypes = CreatureConstants.Types.Subtypes.GetAll();
-            var validTypes = types.Union(subtypes).Except(nonCharacterTypes);
-            var randomType = collectionSelector.SelectRandomFrom(validTypes);
-
-            var challengeRatings = ChallengeRatingConstants.GetOrdered();
-            var typeChallengeRatings = challengeRatings.Where(cr => creatureVerifier.VerifyCompatibility(true, type: randomType, challengeRating: cr));
-            var challengeRating = collectionSelector.SelectRandomFrom(typeChallengeRatings);
-
-            stopwatch.Restart();
-            var creature = await creatureGenerator.GenerateRandomOfTypeAsCharacterAsync(randomType, challengeRating);
-            stopwatch.Stop();
-
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
-            AssertCreatureIsType(creature, randomType);
-
-            creatureAsserter.AssertCreatureAsCharacter(creature);
-        }
-
-        [Test]
-        public void StressRandomCreatureOfChallengeRating()
-        {
-            stressor.Stress(GenerateAndAssertRandomCreatureOfChallengeRating);
-        }
-
-        private void GenerateAndAssertRandomCreatureOfChallengeRating()
-        {
-            var challengeRatings = ChallengeRatingConstants.GetOrdered();
-            var challengeRating = collectionSelector.SelectRandomFrom(challengeRatings);
-
-            while (!creatureVerifier.VerifyCompatibility(false, challengeRating: challengeRating))
+            if (setTemplate)
             {
-                challengeRating = collectionSelector.SelectRandomFrom(challengeRatings);
+                var templates = CreatureConstants.Templates.GetAll();
+                var validTemplates = templates.Where(t => creatureVerifier.VerifyCompatibility(asCharacter, null, t, null, null));
+
+                template = collectionSelector.SelectRandomFrom(templates);
             }
 
+            if (setType)
+            {
+                var types = CreatureConstants.Types.GetAll();
+                var subtypes = CreatureConstants.Types.Subtypes.GetAll();
+                var allTypes = types.Union(subtypes);
+                var validTypes = allTypes.Where(t => creatureVerifier.VerifyCompatibility(asCharacter, null, template, t, null));
+
+                type = collectionSelector.SelectRandomFrom(validTypes);
+            }
+
+            if (setCr)
+            {
+                var challengeRatings = ChallengeRatingConstants.GetOrdered();
+                var validChallengeRatings = challengeRatings.Where(c => creatureVerifier.VerifyCompatibility(asCharacter, null, template, type, c));
+                cr = collectionSelector.SelectRandomFrom(validChallengeRatings);
+            }
+
+            await GenerateAndAssertRandomCreatureAsync(asCharacter, template, type, cr);
+        }
+
+        private async Task<Creature> GenerateAndAssertRandomCreatureAsync(bool asCharacter, string template, string type, string challengeRating)
+        {
             stopwatch.Restart();
-            var creature = creatureGenerator.GenerateRandomOfChallengeRating(challengeRating);
+            var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, template, type, challengeRating);
             stopwatch.Stop();
 
             Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
 
-            creatureAsserter.AssertCreature(creature);
+            if (template != null)
+                Assert.That(creature.Template, Is.EqualTo(template), creature.Summary);
+
+            if (type != null)
+                AssertCreatureIsType(creature, type);
+
+            if (challengeRating != null)
+                Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
+
+            if (asCharacter)
+                creatureAsserter.AssertCreatureAsCharacter(creature);
+            else
+                creatureAsserter.AssertCreature(creature);
+
+            return creature;
         }
 
-        [Test]
-        public void StressRandomCreatureOfChallengeRatingAsCharacter()
-        {
-            stressor.Stress(GenerateAndAssertRandomCreatureOfChallengeRatingAsCharacter);
-        }
-
-        private void GenerateAndAssertRandomCreatureOfChallengeRatingAsCharacter()
-        {
-            var challengeRatings = ChallengeRatingConstants.GetOrdered();
-            var characterChallengeRatings = challengeRatings.Where(cr => creatureVerifier.VerifyCompatibility(true, challengeRating: cr));
-            var challengeRating = collectionSelector.SelectRandomFrom(characterChallengeRatings);
-
-            stopwatch.Restart();
-            var creature = creatureGenerator.GenerateRandomOfChallengeRatingAsCharacter(challengeRating);
-            stopwatch.Stop();
-
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
-
-            creatureAsserter.AssertCreatureAsCharacter(creature);
-        }
-
-        [Test]
-        public async Task StressRandomCreatureOfChallengeRatingAsync()
-        {
-            await stressor.StressAsync(GenerateAndAssertRandomCreatureOfChallengeRatingAsync);
-        }
-
-        private async Task GenerateAndAssertRandomCreatureOfChallengeRatingAsync()
-        {
-            var challengeRatings = ChallengeRatingConstants.GetOrdered();
-            var challengeRating = collectionSelector.SelectRandomFrom(challengeRatings);
-
-            stopwatch.Restart();
-            var creature = await creatureGenerator.GenerateRandomOfChallengeRatingAsync(challengeRating);
-            stopwatch.Stop();
-
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
-
-            creatureAsserter.AssertCreature(creature);
-        }
-
-        [Test]
-        public async Task StressRandomCreatureOfChallengeRatingAsCharacterAsync()
-        {
-            await stressor.StressAsync(GenerateAndAssertRandomCreatureOfChallengeRatingAsCharacterAsync);
-        }
-
-        private async Task GenerateAndAssertRandomCreatureOfChallengeRatingAsCharacterAsync()
-        {
-            var challengeRatings = ChallengeRatingConstants.GetOrdered();
-            var characterChallengeRatings = challengeRatings.Where(cr => creatureVerifier.VerifyCompatibility(true, challengeRating: cr));
-            var challengeRating = collectionSelector.SelectRandomFrom(characterChallengeRatings);
-
-            stopwatch.Restart();
-            var creature = await creatureGenerator.GenerateRandomOfChallengeRatingAsCharacterAsync(challengeRating);
-            stopwatch.Stop();
-
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
-            Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
-
-            creatureAsserter.AssertCreatureAsCharacter(creature);
-        }
-
-        [TestCase(CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.Ghost)]
-        [TestCase(CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.HalfCelestial)]
-        [TestCase(CreatureConstants.Dragon_Bronze_GreatWyrm, CreatureConstants.Templates.HalfCelestial)]
-        [TestCase(CreatureConstants.Dragon_Silver_Ancient, CreatureConstants.Templates.HalfCelestial)]
-        [TestCase(CreatureConstants.Dragon_White_Old, CreatureConstants.Templates.HalfFiend)]
+        [TestCase(CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.Ghost, false)]
+        [TestCase(CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.HalfCelestial, false)]
+        [TestCase(CreatureConstants.Dragon_Bronze_GreatWyrm, CreatureConstants.Templates.HalfCelestial, false)]
+        [TestCase(CreatureConstants.Dragon_Silver_Ancient, CreatureConstants.Templates.HalfCelestial, false)]
+        [TestCase(CreatureConstants.Dragon_White_Old, CreatureConstants.Templates.HalfFiend, false)]
         [Repeat(100)]
         [Ignore("Only use this for debugging")]
-        public void BUG_StressSpecificCreature(string creatureName, string template)
+        public void BUG_StressSpecificCreature(string creatureName, string template, bool asCharacter)
         {
-            stressor.Stress(() => GenerateAndAssertCreature(creatureName, template));
+            stressor.Stress(() => GenerateAndAssertCreature(creatureName, template, asCharacter));
         }
 
-        [TestCase(CreatureConstants.Types.Dragon)]
-        [TestCase(CreatureConstants.Types.Giant)]
-        [TestCase(CreatureConstants.Types.Humanoid)]
-        [TestCase(CreatureConstants.Types.Outsider)]
-        [TestCase(CreatureConstants.Types.MagicalBeast)]
-        [TestCase(CreatureConstants.Types.Undead)]
-        [TestCase(CreatureConstants.Types.Subtypes.Augmented)]
-        [TestCase(CreatureConstants.Types.Subtypes.Incorporeal)]
-        [TestCase(CreatureConstants.Types.Subtypes.Native)]
-        [TestCase(CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Types.Dragon, false)]
+        [TestCase(CreatureConstants.Types.Giant, false)]
+        [TestCase(CreatureConstants.Types.Humanoid, false)]
+        [TestCase(CreatureConstants.Types.Outsider, false)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, false)]
+        [TestCase(CreatureConstants.Types.Undead, false)]
+        [TestCase(CreatureConstants.Types.Subtypes.Augmented, false)]
+        [TestCase(CreatureConstants.Types.Subtypes.Incorporeal, false)]
+        [TestCase(CreatureConstants.Types.Subtypes.Native, false)]
+        [TestCase(CreatureConstants.Types.Subtypes.Shapechanger, false)]
         [Repeat(100)]
         [Ignore("Only use this for debugging")]
-        public void BUG_StressSpecificType(string type)
+        public void BUG_StressSpecificType(string type, bool asCharacter)
         {
-            stressor.Stress(() => GenerateAndAssertRandomCreatureOfType(type));
+            stressor.Stress(() => GenerateAndAssertRandomCreature(asCharacter, null, type, null));
         }
     }
 }
