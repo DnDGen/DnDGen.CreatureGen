@@ -1296,8 +1296,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             };
 
             mockTypeAndAmountSelector
+                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Returns(casters);
+            mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Casters, It.IsAny<string>()))
                 .Returns((string t, string c) => casters[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["creature 1"] = 1;
+            hitDice["creature 2"] = 1;
+            hitDice["creature 3"] = 1;
+            hitDice["wrong creature 1"] = 1;
+            hitDice["wrong creature 2"] = 1;
+            hitDice["wrong creature 3"] = 1;
+            hitDice["wrong creature 4"] = 1;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false);
             Assert.That(compatibleCreatures, Is.EqualTo(new[] { "creature 1", "creature 2", "creature 3" }));

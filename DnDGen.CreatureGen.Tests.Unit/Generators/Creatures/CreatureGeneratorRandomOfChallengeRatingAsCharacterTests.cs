@@ -1202,24 +1202,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
                 .Returns(templates);
 
-            SetUpCreature(creatureName, template, true, "my challenge rating");
+            var mockTemplateApplicator = SetUpCreature(creatureName, template, true, "my challenge rating");
 
-            foreach (var otherTemplate in templates)
+            var mockNoneApplicator = new Mock<TemplateApplicator>();
+            mockNoneApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), true, null, "my challenge rating"))
+                .Returns((IEnumerable<string> cc, bool asC, string t, string cr) => cc);
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None)).Returns(mockNoneApplicator.Object);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(creatures.Union(templates)))))
+                .Returns(template);
+
+            foreach (var otherTemplate in templates.Except(new[] { template }))
             {
-                var mockTemplateApplicator = new Mock<TemplateApplicator>();
-                mockTemplateApplicator
+                var mockOtherTemplateApplicator = new Mock<TemplateApplicator>();
+                mockOtherTemplateApplicator
                     .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), true, null, "my challenge rating"))
                     .Returns((IEnumerable<string> cc, bool asC, string t, string cr) => cc);
 
-                mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(otherTemplate)).Returns(mockTemplateApplicator.Object);
-
-                if (otherTemplate == template)
-                {
-                    mockTemplateApplicator
-                        .Setup(a => a.ApplyToAsync(It.Is<Creature>(c => c.Name == creatureName)))
-                        .Callback((Creature c) => c.Template = template)
-                        .ReturnsAsync((Creature c) => c);
-                }
+                mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(otherTemplate)).Returns(mockOtherTemplateApplicator.Object);
             }
 
             var typePairings = creatures.SelectMany(c => templates.Select(t => (c, t)));
@@ -1547,7 +1550,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [Test]
-        public async Task GenerateRandomAsync_OfChallengeRatingAsCharacterAsync_NeverGenerateAdvancedCreature()
+        public async Task GenerateRandomAsync_OfChallengeRatingAsCharacter_NeverGenerateAdvancedCreature()
         {
             var creatureName = CreatureConstants.Human;
             SetUpCreature(creatureName, CreatureConstants.Templates.None, true, "my challenge rating");

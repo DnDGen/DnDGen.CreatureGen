@@ -4,7 +4,6 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Items;
-using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
@@ -328,112 +327,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.ChallengeRating, Is.EqualTo("adjusted challenge rating"));
             Assert.That(creature.CasterLevel, Is.EqualTo(1029 + 6331));
             Assert.That(creature.IsAdvanced, Is.True);
-        }
-
-        private HitPoints SetUpCreatureAdvancement(bool asCharacter, int advancementAmount = 1337, string creatureName = "creature")
-        {
-            mockAdvancementSelector.Setup(s => s.IsAdvanced(creatureName)).Returns(true);
-
-            var advancement = new AdvancementSelection();
-            advancement.AdditionalHitDice = advancementAmount;
-            advancement.Reach = 98.76;
-            advancement.Size = "advanced size";
-            advancement.Space = 54.32;
-            advancement.AdjustedChallengeRating = "adjusted challenge rating";
-            advancement.CasterLevelAdjustment = 6331;
-            advancement.ConstitutionAdjustment = 69;
-            advancement.DexterityAdjustment = 783;
-            advancement.NaturalArmorAdjustment = 8245;
-            advancement.StrengthAdjustment = 3456;
-
-            mockAdvancementSelector
-                .Setup(s => s.SelectRandomFor(creatureName, It.Is<CreatureType>(c => c.Name == types[0]), creatureData.Size, creatureData.ChallengeRating))
-                .Returns(advancement);
-
-            var advancedHitPoints = new HitPoints();
-            advancedHitPoints.Constitution = abilities[AbilityConstants.Constitution];
-            advancedHitPoints.HitDice.Add(new HitDice { Quantity = 681, HitDie = 573 });
-            advancedHitPoints.DefaultTotal = 492;
-            advancedHitPoints.Total = 862;
-
-            mockHitPointsGenerator
-                .Setup(g => g.GenerateFor(
-                    creatureName,
-                    It.Is<CreatureType>(c => c.Name == types[0]),
-                    abilities[AbilityConstants.Constitution],
-                    "advanced size",
-                    advancementAmount,
-                    asCharacter))
-                .Returns(advancedHitPoints);
-            mockHitPointsGenerator.Setup(g => g.RegenerateWith(advancedHitPoints, It.IsAny<IEnumerable<Feat>>())).Returns(advancedHitPoints);
-
-            mockAttacksGenerator.Setup(g => g.GenerateBaseAttackBonus(It.Is<CreatureType>(c => c.Name == types[0]), advancedHitPoints)).Returns(999);
-            mockAttacksGenerator
-                .Setup(g => g.GenerateAttacks(creatureName, creatureData.Size, advancement.Size, 999, abilities, advancedHitPoints.RoundedHitDiceQuantity))
-                .Returns(attacks);
-
-            var advancedNaturalArmor = creatureData.NaturalArmor + advancement.NaturalArmorAdjustment;
-
-            mockFeatsGenerator
-                .Setup(g => g.GenerateFeats(
-                    advancedHitPoints,
-                    999,
-                    abilities,
-                    skills,
-                    attacks,
-                    specialQualities,
-                    creatureData.CasterLevel + advancement.CasterLevelAdjustment,
-                    speeds,
-                    advancedNaturalArmor,
-                    creatureData.NumberOfHands,
-                    advancement.Size,
-                    creatureData.CanUseEquipment))
-                .Returns(feats);
-
-            var advancedEquipment = new Equipment();
-            mockEquipmentGenerator
-                .Setup(g => g.AddAttacks(
-                    feats,
-                    attacks,
-                    creatureData.NumberOfHands))
-                .Returns(attacks);
-            mockEquipmentGenerator
-                .Setup(g => g.Generate(creatureName,
-                    creatureData.CanUseEquipment,
-                    It.IsAny<IEnumerable<Feat>>(),
-                    advancedHitPoints.RoundedHitDiceQuantity,
-                    attacks,
-                    abilities,
-                    advancement.Size))
-                .Returns(advancedEquipment);
-
-            mockMagicGenerator
-                .Setup(g => g.GenerateWith(creatureName,
-                    alignment,
-                    abilities,
-                    advancedEquipment))
-                .Returns(magic);
-
-            mockArmorClassGenerator
-                .Setup(g => g.GenerateWith(
-                    abilities,
-                    advancement.Size,
-                    creatureName,
-                    It.Is<CreatureType>(c => c.Name == types[0]),
-                    It.IsAny<IEnumerable<Feat>>(),
-                    advancedNaturalArmor,
-                    advancedEquipment))
-                .Returns(armorClass);
-
-            mockAbilitiesGenerator
-                .Setup(g => g.SetMaxBonuses(abilities, advancedEquipment))
-                .Returns(abilities);
-
-            mockSkillsGenerator
-                .Setup(g => g.SetArmorCheckPenalties(creatureName, skills, advancedEquipment))
-                .Returns(skills);
-
-            return advancedHitPoints;
         }
 
         [Test]

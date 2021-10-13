@@ -351,7 +351,9 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         public async Task<Creature> GenerateRandomAsync(bool asCharacter, string template = null, string type = null, string challengeRating = null)
         {
             var randomCreature = GenerateRandomName(asCharacter, template, type, challengeRating);
-            return await GenerateAsync(randomCreature.Creature, randomCreature.Template, asCharacter);
+            var allowAdvanced = string.IsNullOrEmpty(challengeRating);
+
+            return await GenerateAsync(randomCreature.Creature, randomCreature.Template, asCharacter, allowAdvanced);
         }
 
         private async Task<Creature> GenerateAsync(string creatureName, string template, bool asCharacter, bool allowAdvancement)

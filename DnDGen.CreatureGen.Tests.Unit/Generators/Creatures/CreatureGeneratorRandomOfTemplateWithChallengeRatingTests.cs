@@ -44,7 +44,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
             var name = creatureGenerator.GenerateRandomName(false, "my template", challengeRating: "my challenge rating");
-            Assert.That(name, Is.EqualTo(creatureName));
+            Assert.That(name.Creature, Is.EqualTo(creatureName));
+            Assert.That(name.Template, Is.EqualTo("my template"));
         }
 
         [Test]
@@ -70,7 +71,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("my template")).Returns(mockTemplateApplicator.Object);
 
             var name = creatureGenerator.GenerateRandomName(false, "my template", challengeRating: "my challenge rating");
-            Assert.That(name, Is.EqualTo(creatureName));
+            Assert.That(name.Creature, Is.EqualTo(creatureName));
+            Assert.That(name.Template, Is.EqualTo("my template"));
         }
 
         [Test]
