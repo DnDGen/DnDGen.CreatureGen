@@ -269,6 +269,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         [TestCase(CreatureConstants.Dragon_Bronze_GreatWyrm, CreatureConstants.Templates.HalfCelestial, false)]
         [TestCase(CreatureConstants.Dragon_Silver_Ancient, CreatureConstants.Templates.HalfCelestial, false)]
         [TestCase(CreatureConstants.Dragon_White_Old, CreatureConstants.Templates.HalfFiend, false)]
+        [TestCase(CreatureConstants.Xill, CreatureConstants.Templates.None, true)]
         [Repeat(100)]
         [Ignore("Only use this for debugging")]
         public void BUG_StressSpecificCreature(string creatureName, string template, bool asCharacter)
@@ -276,21 +277,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             stressor.Stress(() => GenerateAndAssertCreature(creatureName, template, asCharacter));
         }
 
-        [TestCase(CreatureConstants.Types.Dragon, false)]
-        [TestCase(CreatureConstants.Types.Giant, false)]
-        [TestCase(CreatureConstants.Types.Humanoid, false)]
-        [TestCase(CreatureConstants.Types.Outsider, false)]
-        [TestCase(CreatureConstants.Types.MagicalBeast, false)]
-        [TestCase(CreatureConstants.Types.Undead, false)]
-        [TestCase(CreatureConstants.Types.Subtypes.Augmented, false)]
-        [TestCase(CreatureConstants.Types.Subtypes.Incorporeal, false)]
-        [TestCase(CreatureConstants.Types.Subtypes.Native, false)]
-        [TestCase(CreatureConstants.Types.Subtypes.Shapechanger, false)]
+        [TestCase(null, true, null, null)]
+        [TestCase(CreatureConstants.Types.Dragon, false, null, null)]
+        [TestCase(CreatureConstants.Types.Giant, false, null, null)]
+        [TestCase(CreatureConstants.Types.Humanoid, false, null, null)]
+        [TestCase(CreatureConstants.Types.Outsider, false, null, null)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, false, null, null)]
+        [TestCase(CreatureConstants.Types.Undead, false, null, null)]
+        [TestCase(CreatureConstants.Types.Subtypes.Augmented, false, null, null)]
+        [TestCase(CreatureConstants.Types.Subtypes.Incorporeal, false, null, null)]
+        [TestCase(CreatureConstants.Types.Subtypes.Native, false, null, null)]
+        [TestCase(CreatureConstants.Types.Subtypes.Shapechanger, false, null, null)]
         [Repeat(100)]
         [Ignore("Only use this for debugging")]
-        public void BUG_StressSpecificType(string type, bool asCharacter)
+        public void BUG_StressSpecificFilters(string type, bool asCharacter, string template, string challengeRating)
         {
-            stressor.Stress(() => GenerateAndAssertRandomCreature(asCharacter, null, type, null));
+            stressor.Stress(() => GenerateAndAssertRandomCreature(asCharacter, template, type, challengeRating));
         }
     }
 }

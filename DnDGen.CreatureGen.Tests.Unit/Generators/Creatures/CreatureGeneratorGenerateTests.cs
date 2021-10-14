@@ -11,6 +11,7 @@ using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 {
@@ -23,8 +24,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, "creature", "template", null, null)).Returns(false);
 
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tAs Character: {asCharacter}");
+            message.AppendLine("\tCreature: creature");
+            message.AppendLine("\tTemplate: template");
+
             Assert.That(() => creatureGenerator.Generate("creature", "template", asCharacter),
-                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo($"Invalid creature:\n\tAs Character: {asCharacter}\n\tCreature: creature\n\tTemplate: template"));
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
         [TestCase(true)]
