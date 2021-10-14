@@ -92,7 +92,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
             var validCreatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, group);
 
-            if (string.IsNullOrEmpty(template))
+            if (template == null)
             {
                 return GetRandomValidCreature(validCreatures, asCharacter, type, challengeRating);
             }
@@ -227,7 +227,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                     creature.Type,
                     creature.Abilities[AbilityConstants.Constitution],
                     creature.Size,
-                    advancement.AdditionalHitDice, asCharacter);
+                    advancement.AdditionalHitDice,
+                    asCharacter);
             }
             else
             {

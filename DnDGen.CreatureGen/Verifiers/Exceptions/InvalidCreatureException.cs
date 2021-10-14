@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace DnDGen.CreatureGen.Verifiers.Exceptions
 {
@@ -23,29 +24,23 @@ namespace DnDGen.CreatureGen.Verifiers.Exceptions
         {
             get
             {
-                var message = $"Invalid creature:\n\tAs Character: {asCharacter}";
+                var message = new StringBuilder();
+                message.AppendLine("Invalid creature:");
+                message.AppendLine($"\tAs Character: {asCharacter}");
 
                 if (!string.IsNullOrEmpty(creature))
-                {
-                    message += $"\n\tCreature: {creature}";
-                }
+                    message.AppendLine($"\tCreature: {creature}");
 
                 if (!string.IsNullOrEmpty(template))
-                {
-                    message += $"\n\tTemplate: {template}";
-                }
+                    message.AppendLine($"\tTemplate: {template}");
 
-                if (!string.IsNullOrEmpty(type))
-                {
-                    message += $"\n\tType: {type}";
-                }
+                if (type != null)
+                    message.AppendLine($"\tType: {type}");
 
-                if (!string.IsNullOrEmpty(challengeRating))
-                {
-                    message += $"\n\tCR: {challengeRating}";
-                }
+                if (challengeRating != null)
+                    message.AppendLine($"\tCR: {challengeRating}");
 
-                return message;
+                return message.ToString();
             }
         }
     }
