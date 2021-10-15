@@ -37,7 +37,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC
         {
             AssertNotSingleton<JustInTimeFactory>();
             AssertNotSingleton<IPercentileSelector>();
-            AssertNotSingleton<ICollectionSelector>();
+
+            //INFO: The collection selector has a caching decorator
+            AssertSingleton<ICollectionSelector>();
         }
 
         [Test]

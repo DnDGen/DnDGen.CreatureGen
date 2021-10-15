@@ -727,10 +727,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         {
             var entries = new[]
             {
-                CreatureConstants.Types.Subtypes.Augmented,
                 CreatureConstants.Groups.Lycanthrope,
+                CreatureConstants.Groups.HalfDragon,
                 CreatureConstants.Templates.Skeleton,
                 CreatureConstants.Templates.Zombie,
+                CreatureConstants.Templates.CelestialCreature,
+                CreatureConstants.Templates.FiendishCreature,
+                CreatureConstants.Templates.Ghost,
+                CreatureConstants.Templates.Vampire,
+                CreatureConstants.Templates.Lich,
+                CreatureConstants.Templates.HalfCelestial,
+                CreatureConstants.Templates.HalfFiend,
             };
 
             AssertDistinctCollection(GroupConstants.Templates, entries);

@@ -8,6 +8,8 @@ using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Languages;
 using DnDGen.CreatureGen.Magics;
+using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.Infrastructure.Selectors.Collections;
@@ -31,6 +33,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<IFeatsGenerator> mockFeatsGenerator;
         private Mock<ICollectionSelector> mockCollectionSelector;
         private Mock<IMagicGenerator> mockMagicGenerator;
+        private Mock<ICreatureDataSelector> mockCreatureDataSelector;
+        private Mock<IAdjustmentsSelector> mockAdjustmentSelector;
 
         [SetUp]
         public void SetUp()
@@ -39,190 +43,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator = new Mock<IFeatsGenerator>();
             mockCollectionSelector = new Mock<ICollectionSelector>();
             mockMagicGenerator = new Mock<IMagicGenerator>();
+            mockCreatureDataSelector = new Mock<ICreatureDataSelector>();
+            mockAdjustmentSelector = new Mock<IAdjustmentsSelector>();
 
-            applicator = new FiendishCreatureApplicator(mockAttackGenerator.Object, mockFeatsGenerator.Object, mockCollectionSelector.Object, mockMagicGenerator.Object);
+            applicator = new FiendishCreatureApplicator(
+                mockAttackGenerator.Object,
+                mockFeatsGenerator.Object,
+                mockCollectionSelector.Object,
+                mockMagicGenerator.Object,
+                mockAdjustmentSelector.Object,
+                mockCreatureDataSelector.Object);
 
             baseCreature = new CreatureBuilder().WithTestValues().Build();
-        }
-
-        [TestCase(CreatureConstants.Types.Aberration, true)]
-        [TestCase(CreatureConstants.Types.Animal, true)]
-        [TestCase(CreatureConstants.Types.Construct, false)]
-        [TestCase(CreatureConstants.Types.Dragon, true)]
-        [TestCase(CreatureConstants.Types.Elemental, false)]
-        [TestCase(CreatureConstants.Types.Fey, true)]
-        [TestCase(CreatureConstants.Types.Giant, true)]
-        [TestCase(CreatureConstants.Types.Humanoid, true)]
-        [TestCase(CreatureConstants.Types.MagicalBeast, true)]
-        [TestCase(CreatureConstants.Types.MonstrousHumanoid, true)]
-        [TestCase(CreatureConstants.Types.Ooze, true)]
-        [TestCase(CreatureConstants.Types.Outsider, false)]
-        [TestCase(CreatureConstants.Types.Plant, true)]
-        [TestCase(CreatureConstants.Types.Undead, false)]
-        [TestCase(CreatureConstants.Types.Vermin, true)]
-        public void IsCompatible_BasedOnCreatureType(string creatureType, bool compatible)
-        {
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
-                .Returns(new[] { creatureType, "subtype 1", "subtype 2" });
-
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, "my creature"))
-                .Returns(new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" });
-
-            var isCompatible = applicator.IsCompatible("my creature");
-            Assert.That(isCompatible, Is.EqualTo(compatible));
-        }
-
-        [TestCase(CreatureConstants.Types.Aberration)]
-        [TestCase(CreatureConstants.Types.Animal)]
-        [TestCase(CreatureConstants.Types.Dragon)]
-        [TestCase(CreatureConstants.Types.Fey)]
-        [TestCase(CreatureConstants.Types.Giant)]
-        [TestCase(CreatureConstants.Types.Humanoid)]
-        [TestCase(CreatureConstants.Types.MagicalBeast)]
-        [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
-        [TestCase(CreatureConstants.Types.Ooze)]
-        [TestCase(CreatureConstants.Types.Plant)]
-        [TestCase(CreatureConstants.Types.Vermin)]
-        public void IsCompatible_IncorporealIsNotValid(string creatureType)
-        {
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
-                .Returns(new[] { creatureType, "subtype 1", CreatureConstants.Types.Subtypes.Incorporeal, "subtype 2" });
-
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, "my creature"))
-                .Returns(new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" });
-
-            var isCompatible = applicator.IsCompatible("my creature");
-            Assert.That(isCompatible, Is.False);
-        }
-
-        [TestCase(GroupConstants.All, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Good, false)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, false)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good, false)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Good, false)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Neutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Neutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Neutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Neutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Evil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Lawful, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Lawful, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Lawful, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Lawful, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Chaotic, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Chaotic, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Chaotic, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Chaotic, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.TrueNeutral, true)]
-        public void IsCompatible_MustHaveNonGoodAlignment(string alignmentGroup, bool compatible)
-        {
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
-                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
-
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, "my creature"))
-                .Returns(new[] { alignmentGroup, $"other {AlignmentConstants.Good} alignment group" });
-
-            var isCompatible = applicator.IsCompatible("my creature");
-            Assert.That(isCompatible, Is.EqualTo(compatible));
-        }
-
-        [TestCase(GroupConstants.All, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Good, false)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, false)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good, false)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Good, false)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Neutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Neutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Neutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Neutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Evil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Lawful, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Lawful, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Lawful, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Lawful, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Chaotic, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Chaotic, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Chaotic, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Chaotic, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.TrueNeutral, true)]
-        public void IsCompatible_MustHaveAnyNonGoodAlignment(string alignmentGroup, bool compatible)
-        {
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, "my creature"))
-                .Returns(new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" });
-
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, "my creature"))
-                .Returns(new[] { $"other {AlignmentConstants.Good} alignment group", alignmentGroup });
-
-            var isCompatible = applicator.IsCompatible("my creature");
-            Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
         [TestCase(CreatureConstants.Types.Aberration, CreatureConstants.Types.Aberration)]
@@ -235,7 +67,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(CreatureConstants.Types.MonstrousHumanoid, CreatureConstants.Types.MonstrousHumanoid)]
         [TestCase(CreatureConstants.Types.Plant, CreatureConstants.Types.Plant)]
         [TestCase(CreatureConstants.Types.Vermin, CreatureConstants.Types.MagicalBeast)]
-        public void CreatureTypeIsAdjusted(string original, string adjusted)
+        public void ApplyTo_CreatureTypeIsAdjusted(string original, string adjusted)
         {
             baseCreature.Type.Name = original;
             baseCreature.Type.SubTypes = new[]
@@ -282,7 +114,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void CreatureSizeIsNotAdjusted()
+        public void ApplyTo_CreatureSizeIsNotAdjusted()
         {
             baseCreature.Size = "my size";
 
@@ -1117,7 +949,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [TestCaseSource(nameof(ChallengeRatingAdjustments))]
-        public void ChallengeRatingAdjusted(double hitDiceQuantity, string original, string adjusted)
+        public void ApplyTo_ChallengeRatingAdjusted(double hitDiceQuantity, string original, string adjusted)
         {
             baseCreature.HitPoints.HitDice[0].Quantity = hitDiceQuantity;
             baseCreature.ChallengeRating = original;
@@ -2507,6 +2339,1144 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creature = await applicator.ApplyToAsync(baseCreature);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.FiendishCreature));
+        }
+
+        [Test]
+        public void GetCompatibleCreatures_ReturnCompatibleCreatures()
+        {
+            var creatures = new[] { "my creature", "wrong creature 2", "my other creature", "wrong creature 1" };
+
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types["my other creature"] = new[] { CreatureConstants.Types.Giant, "subtype 3" };
+            types["wrong creature 1"] = new[] { CreatureConstants.Types.Outsider, "subtype 2" };
+            types["wrong creature 2"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+
+            var alignments = new Dictionary<string, IEnumerable<string>>();
+            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+            alignments["my other creature"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, "other alignment group" };
+            alignments["wrong creature 1"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, "other alignment group" };
+            alignments["wrong creature 2"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Returns(alignments);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => alignments[c]);
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["my other creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 1;
+            hitDice["my other creature"] = 1;
+            hitDice["wrong creature 1"] = 1;
+            hitDice["wrong creature 2"] = 1;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
+
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false);
+            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
+        }
+
+        [TestCase(true, 0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR0)]
+        [TestCase(true, 0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR0)]
+        [TestCase(true, 0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR0)]
+        [TestCase(true, 1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR0)]
+        [TestCase(true, 1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR0)]
+        [TestCase(true, 1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR0)]
+        [TestCase(true, 4, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1)]
+        [TestCase(true, 4, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2)]
+        [TestCase(true, 4, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3)]
+        [TestCase(true, 8, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2)]
+        [TestCase(true, 8, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3)]
+        [TestCase(true, 8, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4)]
+        [TestCase(true, 20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2)]
+        [TestCase(true, 20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3)]
+        [TestCase(true, 20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4)]
+        [TestCase(false, 0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd)]
+        [TestCase(false, 0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1)]
+        [TestCase(false, 0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2)]
+        [TestCase(false, 1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd)]
+        [TestCase(false, 1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1)]
+        [TestCase(false, 1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2)]
+        [TestCase(false, 4, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1)]
+        [TestCase(false, 4, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2)]
+        [TestCase(false, 4, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3)]
+        [TestCase(false, 8, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2)]
+        [TestCase(false, 8, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3)]
+        [TestCase(false, 8, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4)]
+        [TestCase(false, 20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2)]
+        [TestCase(false, 20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3)]
+        [TestCase(false, 20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4)]
+        public void GetCompatibleCreatures_WithChallengeRating_ReturnCompatibleCreatures(bool asCharacter, double hitDiceQuantity, string original, string challengeRating)
+        {
+            var creatures = new[] { "my creature", "wrong creature 2", "my other creature", "wrong creature 1", "wrong creature 3" };
+
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types["my other creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types["wrong creature 1"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types["wrong creature 2"] = new[] { CreatureConstants.Types.Giant, "subtype 1", "subtype 2" };
+            types["wrong creature 3"] = new[] { CreatureConstants.Types.Giant, "subtype 1", "subtype 2" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+
+            var alignments = new Dictionary<string, IEnumerable<string>>();
+            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+            alignments["my other creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+            alignments["wrong creature 1"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+            alignments["wrong creature 2"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+            alignments["wrong creature 3"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Returns(alignments);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => alignments[c]);
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = original };
+            data["my other creature"] = new CreatureDataSelection { ChallengeRating = original };
+            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = original };
+            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(original, -3) };
+            data["wrong creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 3) };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = hitDiceQuantity;
+            hitDice["my other creature"] = hitDiceQuantity;
+            hitDice["wrong creature 1"] = ChallengeRatingConstants.IsGreaterThan(challengeRating, original) ? 0 : 666;
+            hitDice["wrong creature 2"] = hitDiceQuantity;
+            hitDice["wrong creature 3"] = hitDiceQuantity;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
+
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, asCharacter, challengeRating: challengeRating);
+            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
+        }
+
+        [TestCase(CreatureConstants.Types.Subtypes.Augmented)]
+        [TestCase(CreatureConstants.Types.Subtypes.Extraplanar)]
+        public void GetCompatibleCreatures_WithType_ReturnCompatibleCreatures(string type)
+        {
+            var creatures = new[] { "my creature", "wrong creature 2", "my other creature", "wrong creature 1" };
+
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types["my other creature"] = new[] { CreatureConstants.Types.Giant, "subtype 3" };
+            types["wrong creature 1"] = new[] { CreatureConstants.Types.Outsider, "subtype 2" };
+            types["wrong creature 2"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
+            types[CreatureConstants.Rat] = new[] { CreatureConstants.Types.Vermin };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+
+            var alignments = new Dictionary<string, IEnumerable<string>>();
+            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+            alignments["my other creature"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, "different alignment group" };
+            alignments["wrong creature 1"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, "different alignment group" };
+            alignments["wrong creature 2"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Returns(alignments);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => alignments[c]);
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["my other creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 1;
+            hitDice["my other creature"] = 1;
+            hitDice["wrong creature 1"] = 1;
+            hitDice["wrong creature 2"] = 1;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
+
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, type: type);
+            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
+        }
+
+        [Test]
+        public void GetCompatibleCreatures_WithType_ReturnCompatibleCreatures_FilterOutInvalidTypes()
+        {
+            var creatures = new[] { "my creature", "wrong creature 2", "my other creature", "wrong creature 1" };
+
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types["my other creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 2" };
+            types["wrong creature 1"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 3" };
+            types["wrong creature 2"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1" };
+            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
+            types[CreatureConstants.Rat] = new[] { CreatureConstants.Types.Vermin };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
+
+            var alignments = new Dictionary<string, IEnumerable<string>>();
+            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+            alignments["my other creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+            alignments["wrong creature 1"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+            alignments["wrong creature 2"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Returns(alignments);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => alignments[c]);
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["my other creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 1;
+            hitDice["my other creature"] = 1;
+            hitDice["wrong creature 1"] = 1;
+            hitDice["wrong creature 2"] = 1;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
+
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, type: "subtype 2");
+            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
+
+            mockCreatureDataSelector.Verify(s => s.SelectFor("wrong creature 1"), Times.Never);
+            mockCreatureDataSelector.Verify(s => s.SelectFor("wrong creature 2"), Times.Never);
+        }
+
+        [Test]
+        public void GetCompatibleCreatures_WithTypeAndChallengeRating_ReturnCompatibleCreatures()
+        {
+            var creatures = new[] { "my creature", "wrong creature 2", "my other creature", "wrong creature 1", "wrong creature 3" };
+
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types["my other creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 2" };
+            types["wrong creature 1"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types["wrong creature 2"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1" };
+            types["wrong creature 3"] = new[] { CreatureConstants.Types.Humanoid, "subtype 2" };
+            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
+            types[CreatureConstants.Rat] = new[] { CreatureConstants.Types.Vermin };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
+
+            var alignments = new Dictionary<string, IEnumerable<string>>();
+            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+            alignments["my other creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+            alignments["wrong creature 1"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+            alignments["wrong creature 2"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+            alignments["wrong creature 3"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Returns(alignments);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => alignments[c]);
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["my other creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR4 };
+            data["wrong creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR4 };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 4;
+            hitDice["my other creature"] = 4;
+            hitDice["wrong creature 1"] = 666;
+            hitDice["wrong creature 2"] = 4;
+            hitDice["wrong creature 3"] = 4;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
+
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, "subtype 2", ChallengeRatingConstants.CR2);
+            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
+        }
+
+        [TestCase(CreatureConstants.Types.Aberration, true)]
+        [TestCase(CreatureConstants.Types.Animal, true)]
+        [TestCase(CreatureConstants.Types.Construct, false)]
+        [TestCase(CreatureConstants.Types.Dragon, true)]
+        [TestCase(CreatureConstants.Types.Elemental, false)]
+        [TestCase(CreatureConstants.Types.Fey, true)]
+        [TestCase(CreatureConstants.Types.Giant, true)]
+        [TestCase(CreatureConstants.Types.Humanoid, true)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, true)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid, true)]
+        [TestCase(CreatureConstants.Types.Ooze, true)]
+        [TestCase(CreatureConstants.Types.Outsider, false)]
+        [TestCase(CreatureConstants.Types.Plant, true)]
+        [TestCase(CreatureConstants.Types.Undead, false)]
+        [TestCase(CreatureConstants.Types.Vermin, true)]
+        public void IsCompatible_BasedOnCreatureType(string creatureType, bool compatible)
+        {
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { creatureType, "subtype 1", "subtype 2" };
+            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
+            types[CreatureConstants.Rat] = new[] { CreatureConstants.Types.Vermin };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+
+            var alignments = new Dictionary<string, IEnumerable<string>>();
+            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Returns(alignments);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => alignments[c]);
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 1;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
+
+            var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false);
+            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
+        [TestCase(CreatureConstants.Types.Aberration)]
+        [TestCase(CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Types.Dragon)]
+        [TestCase(CreatureConstants.Types.Fey)]
+        [TestCase(CreatureConstants.Types.Giant)]
+        [TestCase(CreatureConstants.Types.Humanoid)]
+        [TestCase(CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
+        [TestCase(CreatureConstants.Types.Ooze)]
+        [TestCase(CreatureConstants.Types.Plant)]
+        [TestCase(CreatureConstants.Types.Vermin)]
+        public void IsCompatible_IncorporealIsNotValid(string creatureType)
+        {
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { creatureType, "subtype 1", CreatureConstants.Types.Subtypes.Incorporeal, "subtype 2" };
+            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
+            types[CreatureConstants.Rat] = new[] { CreatureConstants.Types.Vermin };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+
+            var alignments = new Dictionary<string, IEnumerable<string>>();
+            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Returns(alignments);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => alignments[c]);
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 1;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
+
+            var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false);
+            Assert.That(compatibleCreatures, Is.Empty);
+        }
+
+        [TestCase(GroupConstants.All, true)]
+        [TestCase(AlignmentConstants.Modifiers.Any, true)]
+        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Good, false)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, false)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good, false)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Good, false)]
+        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Neutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Neutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Neutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Neutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Evil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Lawful, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Lawful, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Lawful, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Lawful, true)]
+        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Chaotic, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Chaotic, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Chaotic, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Chaotic, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulGood, false)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticGood, false)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralEvil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralGood, false)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulEvil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulGood, false)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticGood, false)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralEvil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralGood, false)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulEvil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulGood, false)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticEvil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticGood, false)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralEvil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralGood, false)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.TrueNeutral, true)]
+        public void IsCompatible_MustHaveNonGoodAlignment(string alignmentGroup, bool compatible)
+        {
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
+            types[CreatureConstants.Rat] = new[] { CreatureConstants.Types.Vermin };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+
+            var alignments = new Dictionary<string, IEnumerable<string>>();
+            alignments["my creature"] = new[] { alignmentGroup, $"other {AlignmentConstants.Good} alignment group" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Returns(alignments);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => alignments[c]);
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 1;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
+
+            var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false);
+            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
+        [TestCase(GroupConstants.All, true)]
+        [TestCase(AlignmentConstants.Modifiers.Any, true)]
+        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Good, false)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, false)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good, false)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Good, false)]
+        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Neutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Neutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Neutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Neutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Evil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Lawful, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Lawful, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Lawful, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Lawful, true)]
+        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Chaotic, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Chaotic, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Chaotic, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Chaotic, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulGood, false)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticGood, false)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralEvil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralGood, false)]
+        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulEvil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulGood, false)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticGood, false)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralEvil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralGood, false)]
+        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulEvil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulGood, false)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticEvil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticGood, false)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticNeutral, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralEvil, true)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralGood, false)]
+        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.TrueNeutral, true)]
+        public void IsCompatible_MustHaveAnyNonGoodAlignment(string alignmentGroup, bool compatible)
+        {
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
+            types[CreatureConstants.Rat] = new[] { CreatureConstants.Types.Vermin };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+
+            var alignments = new Dictionary<string, IEnumerable<string>>();
+            alignments["my creature"] = new[] { $"other {AlignmentConstants.Good} alignment group", alignmentGroup };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Returns(alignments);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => alignments[c]);
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 1;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
+
+            var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false);
+            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
+        [TestCase(CreatureConstants.Types.Humanoid, null, true)]
+        [TestCase(CreatureConstants.Types.Humanoid, CreatureConstants.Types.Humanoid, true)]
+        [TestCase(CreatureConstants.Types.Humanoid, "subtype 1", true)]
+        [TestCase(CreatureConstants.Types.Humanoid, "subtype 2", true)]
+        [TestCase(CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Extraplanar, true)]
+        [TestCase(CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Augmented, true)]
+        [TestCase(CreatureConstants.Types.Humanoid, "wrong type", false)]
+        [TestCase(CreatureConstants.Types.Animal, null, true)]
+        [TestCase(CreatureConstants.Types.Animal, CreatureConstants.Types.Animal, true)]
+        [TestCase(CreatureConstants.Types.Animal, CreatureConstants.Types.MagicalBeast, true)]
+        [TestCase(CreatureConstants.Types.Animal, "subtype 1", true)]
+        [TestCase(CreatureConstants.Types.Animal, "subtype 2", true)]
+        [TestCase(CreatureConstants.Types.Animal, CreatureConstants.Types.Subtypes.Extraplanar, true)]
+        [TestCase(CreatureConstants.Types.Animal, CreatureConstants.Types.Subtypes.Augmented, true)]
+        [TestCase(CreatureConstants.Types.Animal, "wrong type", false)]
+        [TestCase(CreatureConstants.Types.Vermin, null, true)]
+        [TestCase(CreatureConstants.Types.Vermin, CreatureConstants.Types.Vermin, true)]
+        [TestCase(CreatureConstants.Types.Vermin, CreatureConstants.Types.MagicalBeast, true)]
+        [TestCase(CreatureConstants.Types.Vermin, "subtype 1", true)]
+        [TestCase(CreatureConstants.Types.Vermin, "subtype 2", true)]
+        [TestCase(CreatureConstants.Types.Vermin, CreatureConstants.Types.Subtypes.Extraplanar, true)]
+        [TestCase(CreatureConstants.Types.Vermin, CreatureConstants.Types.Subtypes.Augmented, true)]
+        [TestCase(CreatureConstants.Types.Vermin, "wrong type", false)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, null, true)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, CreatureConstants.Types.MagicalBeast, true)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, CreatureConstants.Types.Vermin, false)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, CreatureConstants.Types.Animal, false)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, "subtype 1", true)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, "subtype 2", true)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, CreatureConstants.Types.Subtypes.Extraplanar, true)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, CreatureConstants.Types.Subtypes.Augmented, true)]
+        [TestCase(CreatureConstants.Types.MagicalBeast, "wrong type", false)]
+        public void IsCompatible_TypeMustMatch(string originalType, string type, bool compatible)
+        {
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { originalType, "subtype 1", "subtype 2" };
+            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
+            types[CreatureConstants.Rat] = new[] { CreatureConstants.Types.Vermin };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
+
+            var alignments = new Dictionary<string, IEnumerable<string>>();
+            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Returns(alignments);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => alignments[c]);
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 1;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
+
+            var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false, type: type);
+            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
+        [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, true)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, true)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, true)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, true)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, true)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, true)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, false)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
+        [TestCase(4, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(4, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, true)]
+        [TestCase(4, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, false)]
+        [TestCase(4, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(4, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, false)]
+        [TestCase(4, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, true)]
+        [TestCase(4, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, false)]
+        [TestCase(4, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(4, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, false)]
+        [TestCase(4, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, true)]
+        [TestCase(4, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, false)]
+        [TestCase(4, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
+        [TestCase(8, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(8, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, false)]
+        [TestCase(8, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, true)]
+        [TestCase(8, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(8, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, false)]
+        [TestCase(8, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, false)]
+        [TestCase(8, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, true)]
+        [TestCase(8, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(8, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, false)]
+        [TestCase(8, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
+        [TestCase(8, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, true)]
+        [TestCase(8, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
+        [TestCase(20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, false)]
+        [TestCase(20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, true)]
+        [TestCase(20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, false)]
+        [TestCase(20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, false)]
+        [TestCase(20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, true)]
+        [TestCase(20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, false)]
+        [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
+        [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, true)]
+        [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
+        public void IsCompatible_ChallengeRatingMustMatch(double hitDiceQuantity, string original, string challengeRating, bool compatible)
+        {
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+
+            var alignments = new Dictionary<string, IEnumerable<string>>();
+            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Returns(alignments);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => alignments[c]);
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = original };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = hitDiceQuantity;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
+
+            var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false, challengeRating: challengeRating);
+            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
+        [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR0, true)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR0, true)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR0, true)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR1, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR0, true)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR0, true)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR0, true)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR1, false)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, false)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, false)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
+        [TestCase(4, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(4, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, true)]
+        [TestCase(4, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, false)]
+        [TestCase(4, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(4, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, false)]
+        [TestCase(4, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, true)]
+        [TestCase(4, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, false)]
+        [TestCase(4, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(4, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, false)]
+        [TestCase(4, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, true)]
+        [TestCase(4, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, false)]
+        [TestCase(4, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
+        [TestCase(8, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(8, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, false)]
+        [TestCase(8, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, true)]
+        [TestCase(8, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(8, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, false)]
+        [TestCase(8, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, false)]
+        [TestCase(8, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, true)]
+        [TestCase(8, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(8, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, false)]
+        [TestCase(8, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
+        [TestCase(8, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, true)]
+        [TestCase(8, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
+        [TestCase(20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, false)]
+        [TestCase(20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, true)]
+        [TestCase(20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, false)]
+        [TestCase(20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, false)]
+        [TestCase(20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, true)]
+        [TestCase(20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, false)]
+        [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
+        [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, true)]
+        [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
+        public void IsCompatible_ChallengeRatingMustMatch_HumanoidCharacter(double hitDiceQuantity, string original, string challengeRating, bool compatible)
+        {
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = original };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = hitDiceQuantity;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
+
+            var alignments = new Dictionary<string, IEnumerable<string>>();
+            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Returns(alignments);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => alignments[c]);
+
+            var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, true, challengeRating: challengeRating);
+            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
+        [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, true)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, true)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, true)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, false)]
+        [TestCase(0.5, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, true)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, true)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, false)]
+        [TestCase(1, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, true)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, false)]
+        [TestCase(1, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
+        [TestCase(4, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(4, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, true)]
+        [TestCase(4, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, false)]
+        [TestCase(4, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(4, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, false)]
+        [TestCase(4, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, true)]
+        [TestCase(4, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, false)]
+        [TestCase(4, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(4, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, false)]
+        [TestCase(4, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, true)]
+        [TestCase(4, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, false)]
+        [TestCase(4, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
+        [TestCase(8, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(8, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, false)]
+        [TestCase(8, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, true)]
+        [TestCase(8, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(8, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, false)]
+        [TestCase(8, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, false)]
+        [TestCase(8, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, true)]
+        [TestCase(8, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(8, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, false)]
+        [TestCase(8, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
+        [TestCase(8, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, true)]
+        [TestCase(8, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
+        [TestCase(20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1_2nd, false)]
+        [TestCase(20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR1, false)]
+        [TestCase(20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR2, true)]
+        [TestCase(20, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR3, false)]
+        [TestCase(20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR1, false)]
+        [TestCase(20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR2, false)]
+        [TestCase(20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR3, true)]
+        [TestCase(20, ChallengeRatingConstants.CR1, ChallengeRatingConstants.CR4, false)]
+        [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR2, false)]
+        [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR3, false)]
+        [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR4, true)]
+        [TestCase(20, ChallengeRatingConstants.CR2, ChallengeRatingConstants.CR5, false)]
+        public void IsCompatible_ChallengeRatingMustMatch_NonHumanoidCharacter(double hitDiceQuantity, string original, string challengeRating, bool compatible)
+        {
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Giant, "subtype 1", "subtype 2" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = original };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = hitDiceQuantity;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
+
+            var alignments = new Dictionary<string, IEnumerable<string>>();
+            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Returns(alignments);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => alignments[c]);
+
+            var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, true, challengeRating: challengeRating);
+            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
+        [TestCase(CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR2, true)]
+        [TestCase(CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR1, false)]
+        [TestCase("wrong subtype", ChallengeRatingConstants.CR2, false)]
+        [TestCase("wrong subtype", ChallengeRatingConstants.CR1, false)]
+        public void IsCompatible_TypeAndChallengeRatingMustMatch(string type, string challengeRating, bool compatible)
+        {
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
+            types[CreatureConstants.Rat] = new[] { CreatureConstants.Types.Vermin };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
+
+            var alignments = new Dictionary<string, IEnumerable<string>>();
+            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Returns(alignments);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => alignments[c]);
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 4;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
+
+            var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false, type, challengeRating);
+            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
     }
 }

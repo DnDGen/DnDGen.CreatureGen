@@ -8,6 +8,8 @@ using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Languages;
+using DnDGen.CreatureGen.Selectors.Collections;
+using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
@@ -31,6 +33,8 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
         private readonly Dice dice;
         private readonly IAlignmentGenerator alignmentGenerator;
         private readonly IMagicGenerator magicGenerator;
+        private readonly ICreatureDataSelector creatureDataSelector;
+        private readonly IAdjustmentsSelector adjustmentSelector;
 
         public HalfDragonApplicator(
             ICollectionSelector collectionSelector,
@@ -40,7 +44,9 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             ISkillsGenerator skillsGenerator,
             IAlignmentGenerator alignmentGenerator,
             Dice dice,
-            IMagicGenerator magicGenerator)
+            IMagicGenerator magicGenerator,
+            ICreatureDataSelector creatureDataSelector,
+            IAdjustmentsSelector adjustmentSelector)
         {
             this.collectionSelector = collectionSelector;
             this.speedsGenerator = speedsGenerator;
@@ -50,6 +56,8 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             this.alignmentGenerator = alignmentGenerator;
             this.dice = dice;
             this.magicGenerator = magicGenerator;
+            this.creatureDataSelector = creatureDataSelector;
+            this.adjustmentSelector = adjustmentSelector;
 
             creatureTypes = new[]
             {
@@ -121,12 +129,17 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
 
         private void UpdateCreatureType(Creature creature)
         {
-            creature.Type.SubTypes = creature.Type.SubTypes.Union(new[]
-            {
-                CreatureConstants.Types.Subtypes.Augmented,
-                creature.Type.Name,
-            });
-            creature.Type.Name = CreatureConstants.Types.Dragon;
+            var adjustedTypes = UpdateCreatureType(creature.Type.Name, creature.Type.SubTypes);
+
+            creature.Type.Name = adjustedTypes.First();
+            creature.Type.SubTypes = adjustedTypes.Skip(1);
+        }
+
+        private IEnumerable<string> UpdateCreatureType(string creatureType, IEnumerable<string> subtypes)
+        {
+            return new[] { CreatureConstants.Types.Dragon }
+                .Union(subtypes)
+                .Union(new[] { CreatureConstants.Types.Subtypes.Augmented, creatureType });
         }
 
         private void UpdateCreatureSpeeds(Creature creature)
@@ -221,19 +234,22 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
 
         private void UpdateCreatureChallengeRating(Creature creature)
         {
-            var challengeRatings = ChallengeRatingConstants.GetOrdered();
-            var index = Array.IndexOf(challengeRatings, creature.ChallengeRating);
-            var threeIndex = Array.IndexOf(challengeRatings, ChallengeRatingConstants.Three);
-
-            if (index > -1 && index + 2 < threeIndex)
-            {
-                creature.ChallengeRating = ChallengeRatingConstants.Three;
-            }
-            else
-            {
-                creature.ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(creature.ChallengeRating, 2);
-            }
+            creature.ChallengeRating = UpdateCreatureChallengeRating(creature.ChallengeRating);
         }
+
+        private string UpdateCreatureChallengeRating(string challengeRating)
+        {
+            var increased = ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2);
+
+            if (ChallengeRatingConstants.IsGreaterThan(ChallengeRatingConstants.CR3, increased))
+            {
+                return ChallengeRatingConstants.CR3;
+            }
+
+            return increased;
+        }
+
+        private IEnumerable<string> GetChallengeRatings(string challengeRating) => new[] { UpdateCreatureChallengeRating(challengeRating) };
 
         private void UpdateCreatureLevelAdjustment(Creature creature)
         {
@@ -433,9 +449,77 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             return creature;
         }
 
-        public bool IsCompatible(string creature)
+        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, string type = null, string challengeRating = null)
         {
-            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
+            var filteredBaseCreatures = sourceCreatures;
+            var allData = creatureDataSelector.SelectAll();
+            var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
+            var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
+
+            if (!string.IsNullOrEmpty(challengeRating))
+            {
+                filteredBaseCreatures = filteredBaseCreatures
+                    .Where(c => CreatureInRange(allData[c].ChallengeRating, challengeRating, asCharacter, allHitDice[c], allTypes[c]));
+            }
+
+            if (!string.IsNullOrEmpty(type))
+            {
+                //INFO: Unless this type is added by a template, it must already exist on the base creature
+                //So first, we check to see if the template could return this type for a human
+                //If not, then we can filter the base creatures down to ones that already have this type
+                var templateTypes = GetPotentialTypes(allTypes[CreatureConstants.Human]).Except(allTypes[CreatureConstants.Human]);
+                if (!templateTypes.Contains(type))
+                {
+                    filteredBaseCreatures = filteredBaseCreatures.Where(c => allTypes[c].Contains(type));
+                }
+            }
+
+            var templateCreatures = filteredBaseCreatures
+                .Where(c => IsCompatible(allTypes[c], allData[c], allHitDice[c], asCharacter, type, challengeRating));
+
+            return templateCreatures;
+        }
+
+        private IEnumerable<string> GetPotentialTypes(IEnumerable<string> types)
+        {
+            var creatureType = types.First();
+            var subtypes = types.Skip(1);
+
+            var adjustedTypes = UpdateCreatureType(creatureType, subtypes);
+
+            return adjustedTypes;
+        }
+
+        private bool IsCompatible(
+            IEnumerable<string> types,
+            CreatureDataSelection creatureData,
+            double creatureHitDiceQuantity,
+            bool asCharacter,
+            string type = null,
+            string challengeRating = null)
+        {
+            if (!IsCompatible(types))
+                return false;
+
+            if (!string.IsNullOrEmpty(type))
+            {
+                var updatedTypes = GetPotentialTypes(types);
+                if (!updatedTypes.Contains(type))
+                    return false;
+            }
+
+            if (!string.IsNullOrEmpty(challengeRating))
+            {
+                var cr = GetPotentialChallengeRating(asCharacter, types, creatureHitDiceQuantity, creatureData);
+                if (cr != challengeRating)
+                    return false;
+            }
+
+            return true;
+        }
+
+        private bool IsCompatible(IEnumerable<string> types)
+        {
             if (types.Contains(CreatureConstants.Types.Subtypes.Incorporeal))
                 return false;
 
@@ -443,6 +527,42 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
                 return false;
 
             return true;
+        }
+
+        private string GetPotentialChallengeRating(
+            bool asCharacter,
+            IEnumerable<string> types,
+            double creatureQuantity,
+            CreatureDataSelection creatureData)
+        {
+            var creatureType = types.First();
+
+            if (asCharacter && creatureQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
+            {
+                return UpdateCreatureChallengeRating(ChallengeRatingConstants.CR0);
+            }
+
+            var adjustedChallengeRating = UpdateCreatureChallengeRating(creatureData.ChallengeRating);
+
+            return adjustedChallengeRating;
+        }
+
+        private bool CreatureInRange(
+            string creatureChallengeRating,
+            string filterChallengeRating,
+            bool asCharacter,
+            double creatureHitDiceQuantity,
+            IEnumerable<string> creatureTypes)
+        {
+            var creatureType = creatureTypes.First();
+
+            if (asCharacter && creatureHitDiceQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
+            {
+                creatureChallengeRating = ChallengeRatingConstants.CR0;
+            }
+
+            var templateChallengeRatings = GetChallengeRatings(creatureChallengeRating);
+            return templateChallengeRatings.Contains(filterChallengeRating);
         }
     }
 }

@@ -1391,50 +1391,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void CreatureTypeMatchesCreatureGroupType(string creature)
         {
             var allTypes = CreatureConstants.Types.GetAll();
-            var lycanthropes = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.Lycanthrope);
-            var goodnessCreatures = new[] { CreatureConstants.Templates.CelestialCreature, CreatureConstants.Templates.FiendishCreature };
 
             Assert.That(table.Keys, Contains.Item(creature), "Table keys");
 
             var types = table[creature].ToArray();
+            Assert.That(types, Is.Not.Empty, creature);
+            Assert.That(types.Take(1), Is.SubsetOf(allTypes), creature);
 
-            if (lycanthropes.Contains(creature))
-            {
-                //INFO: Lycanthropes do not change the base creature's type, so they do not have a type on their own
-                Assert.That(types, Is.Not.Empty);
-                Assert.That(types.Count(), Is.EqualTo(2));
-                Assert.That(types.First(), Is.Empty);
-                Assert.That(types.Last(), Is.EqualTo(CreatureConstants.Types.Subtypes.Shapechanger));
-            }
-            else if (goodnessCreatures.Contains(creature))
-            {
-                //INFO: Celestial and Fiendish Creatures do not change the base creature's type (in most cases), so they do not have a type on their own
-                Assert.That(types, Is.Not.Empty.And.Length.EqualTo(3));
-                Assert.That(types[0], Is.Empty);
-                Assert.That(types[1], Is.EqualTo(CreatureConstants.Types.Subtypes.Extraplanar));
-                Assert.That(types[2], Is.EqualTo(CreatureConstants.Types.Subtypes.Augmented));
-            }
-            else if (creature != CreatureConstants.Templates.None)
-            {
-                Assert.That(types, Is.Not.Empty, creature);
-                Assert.That(types.Take(1), Is.SubsetOf(allTypes), creature);
-
-                var type = types.First();
-                var creaturesOfType = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, type);
-                Assert.That(creaturesOfType, Contains.Item(creature), type);
-            }
-            else
-            {
-                Assert.That(types, Is.Empty, creature);
-            }
+            var type = types.First();
+            var creaturesOfType = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, type);
+            Assert.That(creaturesOfType, Contains.Item(creature), type);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void CreatureSubtypesMatchCreatureGroupSubtypes(string creature)
         {
             var allTypes = CreatureConstants.Types.GetAll();
@@ -1443,24 +1415,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(table.Keys, Contains.Item(creature), "Table keys");
 
             var types = table[creature];
+            Assert.That(types, Is.Not.Empty, creature);
 
-            if (creature != CreatureConstants.Templates.None)
+            //INFO: We include types as subtypes, because the Augmented subtype includes the original type
+            var subtypes = types.Skip(1).Except(allTypes);
+            Assert.That(subtypes, Is.SubsetOf(allSubTypes), creature);
+
+            foreach (var subtype in subtypes)
             {
-                Assert.That(types, Is.Not.Empty, creature);
-
-                //INFO: We include types as subtypes, because the Augmented subtype includes the original type
-                var subtypes = types.Skip(1).Except(allTypes);
-                Assert.That(subtypes, Is.SubsetOf(allSubTypes), creature);
-
-                foreach (var subtype in subtypes)
-                {
-                    var creaturesOfType = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, subtype);
-                    Assert.That(creaturesOfType, Contains.Item(creature), subtype);
-                }
-            }
-            else
-            {
-                Assert.That(types, Is.Empty, creature);
+                var creaturesOfType = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, subtype);
+                Assert.That(creaturesOfType, Contains.Item(creature), subtype);
             }
         }
     }

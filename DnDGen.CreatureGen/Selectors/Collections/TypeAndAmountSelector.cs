@@ -2,6 +2,7 @@
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,7 +22,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
         public IEnumerable<TypeAndAmountSelection> Select(string tableName, string name)
         {
             var collection = collectionSelector.SelectFrom(tableName, name);
-            var typesAndAmounts = collection.Select(e => Parse(e)).ToArray(); //INFO: We want to execute this immediately, so random rolls are not re-iterated and re-rolled
+            var typesAndAmounts = collection.Select(Parse).ToArray(); //INFO: We want to execute this immediately, so random rolls are not re-iterated and re-rolled
 
             return typesAndAmounts;
         }
@@ -32,7 +33,11 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             var selection = new TypeAndAmountSelection();
 
             selection.Type = sections[0];
-            selection.Amount = dice.Roll(sections[1]).AsSum();
+
+            if (dice.ContainsRoll(sections[1]))
+                selection.Amount = dice.Roll(sections[1]).AsSum();
+            else
+                selection.Amount = Convert.ToInt32(sections[1]);
 
             return selection;
         }
@@ -43,7 +48,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             var typesAndAmounts = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
 
             foreach (var kvp in table)
-                typesAndAmounts[kvp.Key] = kvp.Value.Select(e => Parse(e)).ToArray(); //INFO: We want to execute this immediately, so random rolls are not re-iterated and re-rolled
+                typesAndAmounts[kvp.Key] = kvp.Value.Select(Parse).ToArray(); //INFO: We want to execute this immediately, so random rolls are not re-iterated and re-rolled
 
             return typesAndAmounts;
         }

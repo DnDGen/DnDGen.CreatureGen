@@ -29,50 +29,53 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             var featData = collectionsSelector.SelectAllFrom(TableNameConstants.Collection.FeatData);
             var featSelections = new List<FeatSelection>();
 
+            var featsTakenMultipleTimes = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.TakenMultipleTimes);
+            var requiredAbilities = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, TableNameConstants.TypeAndAmount.FeatAbilityRequirements);
+            var requiredSpeeds = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, TableNameConstants.TypeAndAmount.FeatSpeedRequirements);
+            var requiredSkills = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, TableNameConstants.TypeAndAmount.FeatSkillRankRequirements);
+            var requiredFeats = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredFeats);
+            var requiredSizes = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredSizes);
+
             foreach (var dataKVP in featData)
             {
-                var featSelection = SelectFeat(dataKVP);
+                var featSelection = new FeatSelection();
+                featSelection.Feat = dataKVP.Key;
+
+                var data = dataKVP.Value.ToArray();
+                featSelection.RequiredBaseAttack = Convert.ToInt32(data[DataIndexConstants.FeatData.BaseAttackRequirementIndex]);
+                featSelection.FocusType = data[DataIndexConstants.FeatData.FocusTypeIndex];
+                featSelection.Frequency.Quantity = Convert.ToInt32(data[DataIndexConstants.FeatData.FrequencyQuantityIndex]);
+                featSelection.Frequency.TimePeriod = data[DataIndexConstants.FeatData.FrequencyTimePeriodIndex];
+                featSelection.Power = Convert.ToInt32(data[DataIndexConstants.FeatData.PowerIndex]);
+                featSelection.MinimumCasterLevel = Convert.ToInt32(data[DataIndexConstants.FeatData.MinimumCasterLevelIndex]);
+                featSelection.RequiredHands = Convert.ToInt32(data[DataIndexConstants.FeatData.RequiredHandQuantityIndex]);
+                featSelection.RequiredNaturalWeapons = Convert.ToInt32(data[DataIndexConstants.FeatData.RequiredNaturalWeaponQuantityIndex]);
+                featSelection.RequiresNaturalArmor = Convert.ToBoolean(data[DataIndexConstants.FeatData.RequiresNaturalArmorIndex]);
+                featSelection.RequiresSpecialAttack = Convert.ToBoolean(data[DataIndexConstants.FeatData.RequiresSpecialAttackIndex]);
+                featSelection.RequiresSpellLikeAbility = Convert.ToBoolean(data[DataIndexConstants.FeatData.RequiresSpellLikeAbilityIndex]);
+                featSelection.RequiresEquipment = Convert.ToBoolean(data[DataIndexConstants.FeatData.RequiresEquipmentIndex]);
+
+                featSelection.RequiredFeats = GetRequiredFeats(requiredFeats, featSelection.Feat);
+                featSelection.RequiredSkills = GetRequiredSkills(requiredSkills, featSelection.Feat);
+                featSelection.RequiredAbilities = GetRequiredAbilities(requiredAbilities, featSelection.Feat);
+                featSelection.RequiredSpeeds = GetRequiredSpeeds(requiredSpeeds, featSelection.Feat);
+                featSelection.RequiredSizes = GetRequiredSizes(requiredSizes, featSelection.Feat);
+
+                featSelection.CanBeTakenMultipleTimes = featsTakenMultipleTimes.Contains(featSelection.Feat);
+
                 featSelections.Add(featSelection);
             }
 
             return featSelections;
         }
 
-        private FeatSelection SelectFeat(KeyValuePair<string, IEnumerable<string>> dataKVP)
+        private Dictionary<string, int> GetRequiredAbilities(IEnumerable<string> requiresAbilities, string feat)
         {
-            var featSelection = new FeatSelection();
-            featSelection.Feat = dataKVP.Key;
-
-            var data = dataKVP.Value.ToArray();
-            featSelection.RequiredBaseAttack = Convert.ToInt32(data[DataIndexConstants.FeatData.BaseAttackRequirementIndex]);
-            featSelection.FocusType = data[DataIndexConstants.FeatData.FocusTypeIndex];
-            featSelection.Frequency.Quantity = Convert.ToInt32(data[DataIndexConstants.FeatData.FrequencyQuantityIndex]);
-            featSelection.Frequency.TimePeriod = data[DataIndexConstants.FeatData.FrequencyTimePeriodIndex];
-            featSelection.Power = Convert.ToInt32(data[DataIndexConstants.FeatData.PowerIndex]);
-            featSelection.MinimumCasterLevel = Convert.ToInt32(data[DataIndexConstants.FeatData.MinimumCasterLevelIndex]);
-            featSelection.RequiredHands = Convert.ToInt32(data[DataIndexConstants.FeatData.RequiredHandQuantityIndex]);
-            featSelection.RequiredNaturalWeapons = Convert.ToInt32(data[DataIndexConstants.FeatData.RequiredNaturalWeaponQuantityIndex]);
-            featSelection.RequiresNaturalArmor = Convert.ToBoolean(data[DataIndexConstants.FeatData.RequiresNaturalArmorIndex]);
-            featSelection.RequiresSpecialAttack = Convert.ToBoolean(data[DataIndexConstants.FeatData.RequiresSpecialAttackIndex]);
-            featSelection.RequiresSpellLikeAbility = Convert.ToBoolean(data[DataIndexConstants.FeatData.RequiresSpellLikeAbilityIndex]);
-            featSelection.RequiresEquipment = Convert.ToBoolean(data[DataIndexConstants.FeatData.RequiresEquipmentIndex]);
-
-            featSelection.RequiredFeats = GetRequiredFeats(featSelection.Feat);
-            featSelection.RequiredSkills = GetRequiredSkills(featSelection.Feat);
-            featSelection.RequiredAbilities = GetRequiredAbilities(featSelection.Feat);
-            featSelection.RequiredSpeeds = GetRequiredSpeeds(featSelection.Feat);
-            featSelection.RequiredSizes = GetRequiredSizes(featSelection.Feat);
-
-            var featsTakenMultipleTimes = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.TakenMultipleTimes);
-            featSelection.CanBeTakenMultipleTimes = featsTakenMultipleTimes.Contains(featSelection.Feat);
-
-            return featSelection;
-        }
-
-        private Dictionary<string, int> GetRequiredAbilities(string feat)
-        {
-            var requiredAbilitiesAndValues = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, feat);
             var requiredAbilities = new Dictionary<string, int>();
+            if (!requiresAbilities.Contains(feat))
+                return requiredAbilities;
+
+            var requiredAbilitiesAndValues = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, feat);
 
             foreach (var selection in requiredAbilitiesAndValues)
             {
@@ -82,10 +85,13 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             return requiredAbilities;
         }
 
-        private Dictionary<string, int> GetRequiredSpeeds(string feat)
+        private Dictionary<string, int> GetRequiredSpeeds(IEnumerable<string> requiresSpeeds, string feat)
         {
-            var requiredSpeedsAndValues = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.FeatSpeedRequirements, feat);
             var requiredSpeeds = new Dictionary<string, int>();
+            if (!requiresSpeeds.Contains(feat))
+                return requiredSpeeds;
+
+            var requiredSpeedsAndValues = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.FeatSpeedRequirements, feat);
 
             foreach (var selection in requiredSpeedsAndValues)
             {
@@ -95,10 +101,13 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             return requiredSpeeds;
         }
 
-        private IEnumerable<RequiredSkillSelection> GetRequiredSkills(string feat)
+        private IEnumerable<RequiredSkillSelection> GetRequiredSkills(IEnumerable<string> requiresSkills, string feat)
         {
-            var requiredSkillsAndRanks = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.FeatSkillRankRequirements, feat);
             var requiredSkillSelections = new List<RequiredSkillSelection>();
+            if (!requiresSkills.Contains(feat))
+                return requiredSkillSelections;
+
+            var requiredSkillsAndRanks = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.FeatSkillRankRequirements, feat);
 
             foreach (var selection in requiredSkillsAndRanks)
             {
@@ -138,17 +147,25 @@ namespace DnDGen.CreatureGen.Selectors.Collections
                 return Enumerable.Empty<SpecialQualitySelection>();
 
             var specialQualitySelections = new List<SpecialQualitySelection>();
-            var usedSpecialQualities = new List<string>();
+            var usedSpecialQualities = new HashSet<string>();
+
+            var requiredAlignments = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredAlignments);
+            var requiredSizes = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredSizes);
+            var requiredFeats = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, TableNameConstants.Collection.RequiredFeats);
+            var requiredAbilities = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, TableNameConstants.TypeAndAmount.FeatAbilityRequirements);
 
             foreach (var specialQualityKvp in specialQualitiesWithSource)
             {
                 var source = specialQualityKvp.Key;
-                var specialQualities = specialQualityKvp.Value;
-                var newSpecialQualities = specialQualityKvp.Value.Except(usedSpecialQualities).ToArray();
 
-                foreach (var specialQuality in newSpecialQualities)
+                foreach (var specialQualityData in specialQualityKvp.Value)
                 {
-                    var data = helper.ParseEntry(specialQuality);
+                    if (usedSpecialQualities.Contains(specialQualityData))
+                    {
+                        continue;
+                    }
+
+                    var data = helper.ParseEntry(specialQualityData);
 
                     var specialQualitySelection = new SpecialQualitySelection();
                     specialQualitySelection.Feat = data[DataIndexConstants.SpecialQualityData.FeatNameIndex];
@@ -165,34 +182,43 @@ namespace DnDGen.CreatureGen.Selectors.Collections
                     specialQualitySelection.MaxHitDice = Convert.ToInt32(data[DataIndexConstants.SpecialQualityData.MaxHitDiceIndex]);
 
                     var requirementKey = helper.BuildKey(source, data);
-                    specialQualitySelection.RequiredFeats = GetRequiredFeats(requirementKey);
-                    specialQualitySelection.MinimumAbilities = GetRequiredAbilities(requirementKey);
-                    specialQualitySelection.RequiredSizes = GetRequiredSizes(requirementKey);
-                    specialQualitySelection.RequiredAlignments = GetRequiredAlignments(requirementKey);
+                    specialQualitySelection.RequiredFeats = GetRequiredFeats(requiredFeats, requirementKey);
+                    specialQualitySelection.MinimumAbilities = GetRequiredAbilities(requiredAbilities, requirementKey);
+                    specialQualitySelection.RequiredSizes = GetRequiredSizes(requiredSizes, requirementKey);
+                    specialQualitySelection.RequiredAlignments = GetRequiredAlignments(requiredAlignments, requirementKey);
 
                     specialQualitySelections.Add(specialQualitySelection);
-                    usedSpecialQualities.Add(specialQuality);
                 }
+
+                usedSpecialQualities.UnionWith(specialQualityKvp.Value);
             }
 
             return specialQualitySelections;
         }
 
-        private IEnumerable<string> GetRequiredSizes(string source)
+        private IEnumerable<string> GetRequiredSizes(IEnumerable<string> requiresSizes, string feat)
         {
-            return collectionsSelector.SelectFrom(TableNameConstants.Collection.RequiredSizes, source);
+            if (!requiresSizes.Contains(feat))
+                return Enumerable.Empty<string>();
+
+            return collectionsSelector.SelectFrom(TableNameConstants.Collection.RequiredSizes, feat);
         }
 
-        private IEnumerable<string> GetRequiredAlignments(string source)
+        private IEnumerable<string> GetRequiredAlignments(IEnumerable<string> requiresAlignments, string feat)
         {
-            return collectionsSelector.SelectFrom(TableNameConstants.Collection.RequiredAlignments, source);
+            if (!requiresAlignments.Contains(feat))
+                return Enumerable.Empty<string>();
+
+            return collectionsSelector.SelectFrom(TableNameConstants.Collection.RequiredAlignments, feat);
         }
 
-        private IEnumerable<RequiredFeatSelection> GetRequiredFeats(string feat)
+        private IEnumerable<RequiredFeatSelection> GetRequiredFeats(IEnumerable<string> requiresFeats, string feat)
         {
-            var requiredFeatsData = collectionsSelector.SelectFrom(TableNameConstants.Collection.RequiredFeats, feat);
             var requiredFeatsSelections = new List<RequiredFeatSelection>();
+            if (!requiresFeats.Contains(feat))
+                return requiredFeatsSelections;
 
+            var requiredFeatsData = collectionsSelector.SelectFrom(TableNameConstants.Collection.RequiredFeats, feat);
             foreach (var requiredFeatData in requiredFeatsData)
             {
                 var requiredFeat = ParseRequiredFeatData(requiredFeatData);

@@ -23,6 +23,7 @@ namespace DnDGen.CreatureGen.Generators.Abilities
         public Dictionary<string, Ability> GenerateFor(string creatureName)
         {
             var abilitySelections = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, creatureName);
+
             var allAbilities = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, GroupConstants.All);
             var abilities = new Dictionary<string, Ability>();
 

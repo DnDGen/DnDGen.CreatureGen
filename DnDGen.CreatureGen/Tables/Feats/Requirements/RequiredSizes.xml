@@ -11186,4 +11186,19 @@
   <collection>
     <name>ZombieToughness3</name>
   </collection>
+  <collection>
+    <name>DarkmantleBlind0</name>
+  </collection>
+  <collection>
+    <name>DestrachanBlind0</name>
+  </collection>
+  <collection>
+    <name>GrimlockBlind0</name>
+  </collection>
+  <collection>
+    <name>OozeBlind0</name>
+  </collection>
+  <collection>
+    <name>YrthakBlind0</name>
+  </collection>
 </collections>

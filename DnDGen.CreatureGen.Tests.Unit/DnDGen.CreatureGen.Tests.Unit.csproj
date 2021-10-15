@@ -8,14 +8,14 @@
 
   <ItemGroup>
     <PackageReference Include="DnDGen.RollGen" Version="15.2.2" />
-    <PackageReference Include="DnDGen.TreasureGen" Version="10.3.2" />
+    <PackageReference Include="DnDGen.TreasureGen" Version="10.3.3" />
     <PackageReference Include="Moq" Version="4.16.1" />
     <PackageReference Include="nunit" Version="3.13.2" />
-    <PackageReference Include="NUnit3TestAdapter" Version="4.0.0-alpha.1">
+    <PackageReference Include="NUnit3TestAdapter" Version="4.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
   </ItemGroup>
 
   <ItemGroup>

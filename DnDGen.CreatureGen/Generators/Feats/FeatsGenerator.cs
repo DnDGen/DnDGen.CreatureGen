@@ -9,6 +9,7 @@ using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -41,42 +42,38 @@ namespace DnDGen.CreatureGen.Generators.Feats
         {
             var specialQualitySelections = featsSelector.SelectSpecialQualities(creatureName, creatureType);
             var specialQualities = new List<Feat>();
-            var previousCount = specialQualities.Count;
-            var pickedSelections = new List<SpecialQualitySelection>();
+            var addedNames = new HashSet<string>();
+
+            var newSelections = specialQualitySelections
+                .Where(s => s.RequirementsMet(abilities, specialQualities, canUseEquipment, size, alignment, hitPoints)
+                    && !addedNames.Contains(s.Feat));
 
             do
             {
-                previousCount = specialQualities.Count;
+                //INFO: Need to do this, or the foreach loop gets angry
+                var setNewSelections = newSelections.ToArray();
 
-                foreach (var specialQualitySelection in specialQualitySelections)
+                foreach (var selection in setNewSelections)
                 {
-                    if (!specialQualitySelection.RequirementsMet(abilities, specialQualities, canUseEquipment, size, alignment, hitPoints))
-                        continue;
-
-                    pickedSelections.Add(specialQualitySelection);
-
                     var specialQuality = new Feat();
-                    specialQuality.Name = specialQualitySelection.Feat;
-                    specialQuality.Foci = GetFoci(specialQualitySelection, skills, abilities);
+                    specialQuality.Name = selection.Feat;
+                    specialQuality.Foci = GetFoci(selection, skills, abilities);
 
-                    specialQuality.Frequency = specialQualitySelection.Frequency;
-                    specialQuality.Power = specialQualitySelection.Power;
+                    specialQuality.Frequency = selection.Frequency;
+                    specialQuality.Power = selection.Power;
 
-                    if (!string.IsNullOrEmpty(specialQualitySelection.SaveAbility))
+                    if (!string.IsNullOrEmpty(selection.SaveAbility))
                     {
                         specialQuality.Save = new SaveDieCheck();
-                        specialQuality.Save.BaseAbility = abilities[specialQualitySelection.SaveAbility];
-                        specialQuality.Save.Save = specialQualitySelection.Save;
-                        specialQuality.Save.BaseValue = specialQualitySelection.SaveBaseValue;
+                        specialQuality.Save.BaseAbility = abilities[selection.SaveAbility];
+                        specialQuality.Save.Save = selection.Save;
+                        specialQuality.Save.BaseValue = selection.SaveBaseValue;
                     }
 
                     specialQualities.Add(specialQuality);
+                    addedNames.Add(specialQuality.Name);
                 }
-
-                specialQualitySelections = specialQualitySelections
-                    .Except(pickedSelections)
-                    .ToArray();
-            } while (previousCount != specialQualities.Count && specialQualitySelections.Any());
+            } while (newSelections.Any());
 
             //HACK: Handling this usecase because the orc creature and orc creature type are identical
             if (creatureName == CreatureConstants.Orc_Half)
@@ -86,12 +83,6 @@ namespace DnDGen.CreatureGen.Generators.Feats
             }
 
             //HACK: Requirements can't handle "remove this", so doing so here for particular use cases
-            var blindFeatNames = new[]
-            {
-                FeatConstants.SpecialQualities.Blindsense,
-                FeatConstants.SpecialQualities.Blindsight,
-            };
-
             var visionFeatNames = new[]
             {
                 FeatConstants.SpecialQualities.Darkvision,
@@ -100,8 +91,7 @@ namespace DnDGen.CreatureGen.Generators.Feats
                 FeatConstants.SpecialQualities.LowLightVision_Superior,
             };
 
-            var blindFeats = specialQualities.Where(f => blindFeatNames.Contains(f.Name));
-            if (blindFeats.Any())
+            if (specialQualities.Any(f => f.Name == FeatConstants.SpecialQualities.Blind))
             {
                 specialQualities = specialQualities
                     .Where(f => !visionFeatNames.Contains(f.Name))
@@ -129,7 +119,7 @@ namespace DnDGen.CreatureGen.Generators.Feats
             while (fociQuantity > foci.Count)
             {
                 var focus = featFocusGenerator.GenerateAllowingFocusOfAllFrom(specialQualitySelection.Feat, specialQualitySelection.FocusType, skills, abilities);
-                if (string.IsNullOrEmpty(focus) == false)
+                if (!string.IsNullOrEmpty(focus))
                     foci.Add(focus);
             }
 
@@ -154,6 +144,7 @@ namespace DnDGen.CreatureGen.Generators.Feats
                 return Enumerable.Empty<Feat>();
 
             var numberOfAdditionalFeats = GetFeatQuantity(hitPoints);
+
             var feats = GetFeats(
                 numberOfAdditionalFeats,
                 baseAttackBonus,
@@ -179,7 +170,6 @@ namespace DnDGen.CreatureGen.Generators.Feats
         private List<Feat> PopulateFeatsRandomlyFrom(
             Dictionary<string, Ability> abilities,
             IEnumerable<Skill> skills,
-            int baseAttackBonus,
             IEnumerable<Feat> preselectedFeats,
             IEnumerable<FeatSelection> sourceFeatSelections,
             int quantity,
@@ -316,8 +306,7 @@ namespace DnDGen.CreatureGen.Generators.Feats
                     canUseEquipment))
                 .ToArray();
 
-            var feats = PopulateFeatsRandomlyFrom(abilities, skills, baseAttackBonus, specialQualities, availableFeats, quantity, casterLevel, attacks);
-
+            var feats = PopulateFeatsRandomlyFrom(abilities, skills, specialQualities, availableFeats, quantity, casterLevel, attacks);
             return feats;
         }
     }

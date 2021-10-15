@@ -185,6 +185,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             return this;
         }
 
+        public CreatureBuilder WithHitDiceQuantityNoMoreThan(int quantity)
+        {
+            creature.HitPoints.HitDice[0].Quantity = random.Next(quantity) + 1;
+            creature.HitPoints.DefaultTotal = creature.HitPoints.RoundedHitDiceQuantity * creature.HitPoints.HitDice[0].HitDie / 2;
+            creature.HitPoints.Total = random.Next(creature.HitPoints.RoundedHitDiceQuantity * creature.HitPoints.HitDice[0].HitDie) + creature.HitPoints.HitDice[0].RoundedQuantity;
+
+            return this;
+        }
+
         public CreatureBuilder WithTestValues()
         {
             RandomizeAbilities();

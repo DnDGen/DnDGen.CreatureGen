@@ -14,14 +14,14 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             this.collectionsSelector = collectionsSelector;
         }
 
-        public Dictionary<string, int> SelectAllFrom(string tableName)
+        public Dictionary<string, T> SelectAllFrom<T>(string tableName)
         {
             var collectionTable = collectionsSelector.SelectAllFrom(tableName);
-            var adjustmentTable = new Dictionary<string, int>();
+            var adjustmentTable = new Dictionary<string, T>();
 
             foreach (var kvp in collectionTable)
             {
-                adjustmentTable[kvp.Key] = GetAdjustment<int>(kvp.Value);
+                adjustmentTable[kvp.Key] = GetAdjustment<T>(kvp.Value);
             }
 
             return adjustmentTable;

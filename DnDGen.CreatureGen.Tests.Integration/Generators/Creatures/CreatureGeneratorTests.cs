@@ -63,12 +63,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.TrumpetArchon)]
         public void CanGenerateSpellsForThoseWhoCastAsSpellcaster(string creatureName)
         {
-            var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);
+            var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None, false);
             creatureAsserter.AssertCreature(creature);
 
             Assert.That(creature.Magic, Is.Not.Null);
             Assert.That(creature.Magic.Caster, Is.Not.Empty);
-            creatureAsserter.VerifyMagic(creature);
+            creatureAsserter.VerifyMagic(creature, creature.Summary);
         }
 
         [TestCase(CreatureConstants.Human)]
@@ -86,7 +86,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Giant_Cloud)]
         public void CanGenerateWeapons(string creatureName)
         {
-            var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);
+            var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None, false);
             creatureAsserter.AssertCreature(creature);
             Assert.That(creature.Equipment, Is.Not.Null);
             Assert.That(creature.Equipment.Weapons, Is.Not.Empty.And.All.Not.Null);
@@ -95,7 +95,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Titan)]
         public void BUG_OversizedWeaponHasCorrectAttackDamage(string creatureName)
         {
-            var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);
+            var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None, false);
             creatureAsserter.AssertCreature(creature);
             Assert.That(creature.Equipment, Is.Not.Null);
             Assert.That(creature.Equipment.Weapons, Is.Not.Empty.And.All.Not.Null);
@@ -156,7 +156,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Ogre)]
         public void CanGenerateArmor(string creatureName)
         {
-            var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);
+            var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None, false);
             creatureAsserter.AssertCreature(creature);
             Assert.That(creature.Equipment, Is.Not.Null);
             Assert.That(creature.Equipment.Armor, Is.Not.Null);
@@ -165,21 +165,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void CanGenerateCreature(string creatureName)
         {
-            var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);
+            var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None, false);
             creatureAsserter.AssertCreature(creature);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Characters))]
         public void CanGenerateCreatureAsCharacter(string creatureName)
         {
-            var creature = creatureGenerator.GenerateAsCharacter(creatureName, CreatureConstants.Templates.None);
+            var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None, true);
             creatureAsserter.AssertCreatureAsCharacter(creature);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void CanGenerateHumanTemplate(string template)
         {
-            var creature = creatureGenerator.Generate(CreatureConstants.Human, template);
+            var creature = creatureGenerator.Generate(CreatureConstants.Human, template, false);
             creatureAsserter.AssertCreature(creature);
             Assert.That(creature.Template, Is.EqualTo(template));
         }
@@ -187,7 +187,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void CanGenerateHumanTemplateAsCharacter(string template)
         {
-            var creature = creatureGenerator.GenerateAsCharacter(CreatureConstants.Human, template);
+            if (template == CreatureConstants.Templates.Skeleton || template == CreatureConstants.Templates.Zombie)
+            {
+                Assert.Pass($"Template {template} cannot be a character");
+            }
+
+            var creature = creatureGenerator.Generate(CreatureConstants.Human, template, true);
             creatureAsserter.AssertCreatureAsCharacter(creature);
             Assert.That(creature.Template, Is.EqualTo(template));
         }
@@ -385,7 +390,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Wyvern, CreatureConstants.Templates.Zombie)]
         public void CanGenerateTemplate(string creatureName, string template)
         {
-            var creature = creatureGenerator.Generate(creatureName, template);
+            var creature = creatureGenerator.Generate(creatureName, template, false);
             creatureAsserter.AssertCreature(creature);
             Assert.That(creature.Template, Is.EqualTo(template));
         }
@@ -395,7 +400,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Yrthak)]
         public void BUG_DoesNotHaveSight(string creatureName)
         {
-            var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);
+            var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None, false);
             creatureAsserter.AssertCreature(creature);
 
             Assert.That(creature.SpecialQualities, Is.Not.Empty);
@@ -417,7 +422,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Elf_Wood)]
         public void BUG_ElfCanUseShield(string elfName)
         {
-            var elf = creatureGenerator.Generate(elfName, CreatureConstants.Templates.None);
+            var elf = creatureGenerator.Generate(elfName, CreatureConstants.Templates.None, false);
             creatureAsserter.AssertCreature(elf);
 
             Assert.That(elf.SpecialQualities, Is.Not.Empty);
@@ -429,7 +434,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [Test]
         public void BUG_HalfOrcIsNotSensitiveToLight()
         {
-            var halfOrc = creatureGenerator.Generate(CreatureConstants.Orc_Half, CreatureConstants.Templates.None);
+            var halfOrc = creatureGenerator.Generate(CreatureConstants.Orc_Half, CreatureConstants.Templates.None, false);
             creatureAsserter.AssertCreature(halfOrc);
 
             Assert.That(halfOrc.SpecialQualities, Is.Not.Empty);
@@ -441,7 +446,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [Test]
         public void BUG_NightcrawlerHasConcentration()
         {
-            var nightcrawler = creatureGenerator.Generate(CreatureConstants.Nightcrawler, CreatureConstants.Templates.None);
+            var nightcrawler = creatureGenerator.Generate(CreatureConstants.Nightcrawler, CreatureConstants.Templates.None, false);
             creatureAsserter.AssertCreature(nightcrawler);
 
             Assert.That(nightcrawler.Skills, Is.Not.Empty);
