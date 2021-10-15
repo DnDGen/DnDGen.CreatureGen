@@ -535,7 +535,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             message.AppendLine("Invalid creature:");
             message.AppendLine($"\tAs Character: {asCharacter}");
 
-            if (!string.IsNullOrEmpty(template))
+            if (template == CreatureConstants.Templates.None)
+                message.AppendLine($"\tTemplate: None");
+            else if (template != null)
                 message.AppendLine($"\tTemplate: {template}");
 
             if (type != null)
