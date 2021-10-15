@@ -45,7 +45,7 @@ namespace DnDGen.CreatureGen.Verifiers
                 baseCreatures = baseCreatures.Intersect(characters);
             }
 
-            if (!string.IsNullOrEmpty(template))
+            if (template != null)
             {
                 var applicator = factory.Build<TemplateApplicator>(template);
 
