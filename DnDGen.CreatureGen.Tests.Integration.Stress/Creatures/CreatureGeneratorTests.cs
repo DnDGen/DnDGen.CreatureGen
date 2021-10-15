@@ -5,6 +5,7 @@ using NUnit.Framework;
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
@@ -174,42 +175,53 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = creatureGenerator.GenerateRandom(asCharacter, template, type, challengeRating);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
+            var message = new StringBuilder();
+            var messageTemplate = template == CreatureConstants.Templates.None ? "(None)" : template ?? "Null";
+
+            message.AppendLine($"Creature: {creature.Summary}");
+            message.AppendLine($"As Character: {asCharacter}");
+            message.AppendLine($"Template: {messageTemplate}");
+            message.AppendLine($"Type: {type ?? "Null"}");
+            message.AppendLine($"CR: {challengeRating ?? "Null"}");
+
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), message.ToString());
 
             if (template != null)
-                Assert.That(creature.Template, Is.EqualTo(template), creature.Summary);
+                Assert.That(creature.Template, Is.EqualTo(template), message.ToString());
 
             if (type != null)
-                AssertCreatureIsType(creature, type);
+                AssertCreatureIsType(creature, type, message.ToString());
 
             if (challengeRating != null)
-                Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), creature.Summary);
+                Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), message.ToString());
 
             if (asCharacter)
-                creatureAsserter.AssertCreatureAsCharacter(creature);
+                creatureAsserter.AssertCreatureAsCharacter(creature, message.ToString());
             else
-                creatureAsserter.AssertCreature(creature);
+                creatureAsserter.AssertCreature(creature, message.ToString());
 
             return creature;
         }
 
-        private void AssertCreatureIsType(Creature creature, string type)
+        private void AssertCreatureIsType(Creature creature, string type, string message = null)
         {
+            message ??= creature.Summary;
+
             var types = CreatureConstants.Types.GetAll();
             if (!types.Contains(type))
             {
-                Assert.That(creature.Type.SubTypes, Contains.Item(type), creature.Summary);
+                Assert.That(creature.Type.SubTypes, Contains.Item(type), message);
                 return;
             }
 
             if (creature.Template == CreatureConstants.Templates.None)
             {
-                Assert.That(creature.Type.Name, Is.EqualTo(type), creature.Summary);
+                Assert.That(creature.Type.Name, Is.EqualTo(type), message);
                 return;
             }
 
             var allTypes = creature.Type.SubTypes.Union(new[] { creature.Type.Name });
-            Assert.That(new[] { type }, Is.SubsetOf(allTypes), creature.Summary);
+            Assert.That(new[] { type }, Is.SubsetOf(allTypes), message);
         }
 
         [TestCase(true, true, true, true)]

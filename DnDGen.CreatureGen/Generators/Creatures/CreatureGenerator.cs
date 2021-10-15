@@ -87,7 +87,9 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         {
             var compatible = creatureVerifier.VerifyCompatibility(asCharacter, template: template, type: type, challengeRating: challengeRating);
             if (!compatible)
+            {
                 throw new InvalidCreatureException(asCharacter, template: template, type: type, challengeRating: challengeRating);
+            }
 
             var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
             var validCreatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, group);
@@ -98,6 +100,11 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             }
 
             validCreatures = GetCreaturesOfTemplate(template, validCreatures, asCharacter, type, challengeRating);
+            if (!validCreatures.Any())
+            {
+                throw new InvalidCreatureException(asCharacter, template: template, type: type, challengeRating: challengeRating);
+            }
+
             var randomCreature = collectionsSelector.SelectRandomFrom(validCreatures);
             return (randomCreature, template);
         }

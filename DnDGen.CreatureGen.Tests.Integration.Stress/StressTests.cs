@@ -25,11 +25,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress
             //Also, some of the stress tests occasionally run over considerably, so we are adding an additional 2% of buffer
             options.TimeLimitPercentage = .65;
 
+            //INFO: When the tests run in parallel, and with parallel batches, the overhead of multithread switching severely impacts execution time
+            //Better to let it only one 1 at a time.
+            options.MaxAsyncBatch = 1;
+
 #if STRESS
             options.IsFullStress = true;
 #else
             options.IsFullStress = false;
-            options.MaxAsyncBatch = 1;
 #endif
 
             stressor = new Stressor(options);
