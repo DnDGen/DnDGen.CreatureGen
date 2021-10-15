@@ -68,7 +68,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
 
             Assert.That(creature.Magic, Is.Not.Null);
             Assert.That(creature.Magic.Caster, Is.Not.Empty);
-            creatureAsserter.VerifyMagic(creature);
+            creatureAsserter.VerifyMagic(creature, creature.Summary);
         }
 
         [TestCase(CreatureConstants.Human)]
