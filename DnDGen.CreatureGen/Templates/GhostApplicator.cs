@@ -66,7 +66,7 @@ namespace DnDGen.CreatureGen.Templates
             };
         }
 
-        public Creature ApplyTo(Creature creature)
+        public Creature ApplyTo(Creature creature, string presetAlignment)
         {
             // Template
             UpdateCreatureTemplate(creature);
@@ -312,7 +312,7 @@ namespace DnDGen.CreatureGen.Templates
             creature.Template = CreatureConstants.Templates.Ghost;
         }
 
-        public async Task<Creature> ApplyToAsync(Creature creature)
+        public async Task<Creature> ApplyToAsync(Creature creature, string presetAlignment)
         {
             var tasks = new List<Task>();
 
@@ -374,7 +374,12 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, string type = null, string challengeRating = null)
+        public IEnumerable<string> GetCompatibleCreatures(
+            IEnumerable<string> sourceCreatures,
+            bool asCharacter,
+            string type = null,
+            string challengeRating = null,
+            string alignment = null)
         {
             var filteredBaseCreatures = sourceCreatures;
 
@@ -398,6 +403,14 @@ namespace DnDGen.CreatureGen.Templates
                 {
                     filteredBaseCreatures = filteredBaseCreatures.Where(c => allTypes[c].Contains(type));
                 }
+            }
+
+            if (!string.IsNullOrEmpty(alignment))
+            {
+                //INFO: Ghosts do not change the base creature's alignment
+                //So as long as the base creature's alignment fits, we are good
+                var alignmentCreatures = collectionSelector.SelectFrom(TableNameConstants.Collection.AlignmentGroups, alignment);
+                filteredBaseCreatures = filteredBaseCreatures.Intersect(alignmentCreatures);
             }
 
             var templateCreatures = filteredBaseCreatures

@@ -78,9 +78,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
                 AlignmentConstants.Modifiers.Any + AlignmentConstants.Chaotic,
                 AlignmentConstants.Modifiers.Any,
                 GroupConstants.All,
+                AlignmentConstants.LawfulGood,
+                AlignmentConstants.NeutralGood,
+                AlignmentConstants.ChaoticGood,
+                AlignmentConstants.LawfulNeutral,
+                AlignmentConstants.TrueNeutral,
+                AlignmentConstants.ChaoticNeutral,
+                AlignmentConstants.LawfulEvil,
+                AlignmentConstants.NeutralEvil,
+                AlignmentConstants.ChaoticEvil,
             };
 
-            names = names.Union(creatures).Union(templates).ToArray();
+            names = names
+                .Union(creatures)
+                .Union(templates)
+                .Union(creatures.Select(c => c + GroupConstants.Exploded))
+                .ToArray();
 
             AssertCollectionNames(names);
         }
@@ -1177,6 +1190,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
 
             var creatureAlignments = collectionSelector.Explode(tableName, creature);
             Assert.That(creatureAlignments, Is.SubsetOf(allAlignments), creature);
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
+        public void AlignmentGroupsContainCreature(string creature)
+        {
+            var creatureAlignments = collectionSelector.Explode(tableName, creature);
+            foreach (var alignment in creatureAlignments)
+            {
+                Assert.That(table, Contains.Key(alignment));
+                Assert.That(table[alignment], Contains.Item(creature), alignment);
+            }
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
+        public void ExplodedCreatureAlignmentGroupsHaveSetAlignments(string creature)
+        {
+            var creatureAlignments = collectionSelector.Explode(tableName, creature);
+
+            Assert.That(table.Keys, Contains.Item(creature + GroupConstants.Exploded));
+            Assert.That(table[creature + GroupConstants.Exploded], Is.EquivalentTo(creatureAlignments));
         }
     }
 }

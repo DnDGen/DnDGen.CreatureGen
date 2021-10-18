@@ -11,6 +11,7 @@
         public const string Characters = "Characters";
         public const string Deflection = "Deflection";
         public const string DodgeBonus = "Dodge Bonus";
+        public const string Exploded = "Exploded";
         public const string GoodBaseAttack = "Good Base Attack";
         public const string Initiative = "Initiative";
         public const string ManualCrossbows = "Manual Crossbows";

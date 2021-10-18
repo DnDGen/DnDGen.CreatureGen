@@ -71,7 +71,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             };
         }
 
-        public Creature ApplyTo(Creature creature)
+        public Creature ApplyTo(Creature creature, string presetAlignment)
         {
             var animalCreatureType = new CreatureType { Name = CreatureConstants.Types.Animal };
             var animalData = creatureDataSelector.SelectFor(AnimalSpecies);
@@ -553,7 +553,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             creature.Template = LycanthropeSpecies;
         }
 
-        public async Task<Creature> ApplyToAsync(Creature creature)
+        public async Task<Creature> ApplyToAsync(Creature creature, string presetAlignment)
         {
             var animalCreatureType = new CreatureType { Name = CreatureConstants.Types.Animal };
             var animalData = creatureDataSelector.SelectFor(AnimalSpecies);
@@ -664,7 +664,12 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             return creature;
         }
 
-        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, string type = null, string challengeRating = null)
+        public IEnumerable<string> GetCompatibleCreatures(
+            IEnumerable<string> sourceCreatures,
+            bool asCharacter,
+            string type = null,
+            string challengeRating = null,
+            string alignment = null)
         {
             var filteredBaseCreatures = sourceCreatures;
             var allData = creatureDataSelector.SelectAll();
@@ -687,6 +692,14 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
                 {
                     filteredBaseCreatures = filteredBaseCreatures.Where(c => allTypes[c].Contains(type));
                 }
+            }
+
+            if (!string.IsNullOrEmpty(alignment))
+            {
+                //INFO: Lycanthropes do not change the base creature's alignment
+                //So as long as the base creature's alignment fits, we are good
+                var alignmentCreatures = collectionSelector.SelectFrom(TableNameConstants.Collection.AlignmentGroups, alignment);
+                filteredBaseCreatures = filteredBaseCreatures.Intersect(alignmentCreatures);
             }
 
             var templateCreatures = filteredBaseCreatures

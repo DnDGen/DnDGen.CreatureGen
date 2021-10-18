@@ -13,8 +13,11 @@ namespace DnDGen.CreatureGen.Generators.Alignments
             this.collectionSelector = collectionSelector;
         }
 
-        public Alignment Generate(string creatureName)
+        public Alignment Generate(string creatureName, string presetAlignment)
         {
+            if (!string.IsNullOrEmpty(presetAlignment))
+                return new Alignment(presetAlignment);
+
             var weightedAlignments = collectionSelector.ExplodeAndPreserveDuplicates(TableNameConstants.Collection.AlignmentGroups, creatureName);
             var randomAlignment = collectionSelector.SelectRandomFrom(weightedAlignments);
 

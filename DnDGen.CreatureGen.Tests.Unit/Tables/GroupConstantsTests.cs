@@ -15,6 +15,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         [TestCase(GroupConstants.Characters, "Characters")]
         [TestCase(GroupConstants.Deflection, "Deflection")]
         [TestCase(GroupConstants.DodgeBonus, "Dodge Bonus")]
+        [TestCase(GroupConstants.Exploded, "Exploded")]
         [TestCase(GroupConstants.GoodBaseAttack, "Good Base Attack")]
         [TestCase(GroupConstants.Initiative, "Initiative")]
         [TestCase(GroupConstants.ManualCrossbows, "Manual Crossbows")]

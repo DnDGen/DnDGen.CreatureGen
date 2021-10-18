@@ -140,7 +140,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 "subtype 2",
             };
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Type.Name, Is.EqualTo(adjusted));
             Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(5));
@@ -154,7 +154,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_CharismaIncreasesBy4()
         {
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.EqualTo(4));
@@ -163,7 +163,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_ConstitutionGoesAway()
         {
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateScore, Is.Zero);
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.Zero);
             Assert.That(creature.Abilities[AbilityConstants.Constitution].HasScore, Is.False);
@@ -191,7 +191,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .AsPotentialAverage())
                 .Returns(42);
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(12));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(9266 + 90210));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(42));
@@ -217,7 +217,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .AsPotentialAverage())
                 .Returns(42);
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(12));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(9266 + 90210));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(42));
@@ -235,7 +235,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(g => g.Generate(CreatureConstants.Templates.Ghost))
                 .Returns(speeds);
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
                 .And.ContainKey(SpeedConstants.Fly));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("the goodest"));
@@ -259,7 +259,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Speeds[SpeedConstants.Fly].Description = "so-so";
             baseCreature.Speeds[SpeedConstants.Fly].Value = 42;
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
                 .And.ContainKey(SpeedConstants.Fly));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("the goodest"));
@@ -283,7 +283,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Speeds[SpeedConstants.Fly].Description = "so-so";
             baseCreature.Speeds[SpeedConstants.Fly].Value = 600;
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
                 .And.ContainKey(SpeedConstants.Fly));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("the goodest"));
@@ -307,7 +307,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Speeds[SpeedConstants.Fly].Description = "so-so";
             baseCreature.Speeds[SpeedConstants.Fly].Value = 96;
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
                 .And.ContainKey(SpeedConstants.Fly));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("the goodest"));
@@ -320,7 +320,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 42);
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.Zero);
 
             var naturalArmorBonuses = creature.ArmorClass.NaturalArmorBonuses.ToArray();
@@ -336,7 +336,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 42);
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 600);
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.Zero);
 
             var naturalArmorBonuses = creature.ArmorClass.NaturalArmorBonuses.ToArray();
@@ -352,7 +352,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_CreatureArmorClass_NaturalArmorIsConditionalToBeOnlyEthereal_NoNaturalArmor()
         {
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.Zero);
             Assert.That(creature.ArmorClass.NaturalArmorBonuses, Is.Empty);
         }
@@ -362,7 +362,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 42, "only sometimes");
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.Zero);
 
             var naturalArmorBonuses = creature.ArmorClass.NaturalArmorBonuses.ToArray();
@@ -379,7 +379,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Abilities[AbilityConstants.Charisma].AdvancementAdjustment = 0;
             baseCreature.Abilities[AbilityConstants.Charisma].RacialAdjustment = 0;
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(46));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].BaseScore, Is.EqualTo(42));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
@@ -410,7 +410,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Abilities[AbilityConstants.Charisma].AdvancementAdjustment = 0;
             baseCreature.Abilities[AbilityConstants.Charisma].RacialAdjustment = 0;
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(charisma + 4));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].BaseScore, Is.EqualTo(charisma));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateScore, Is.AtLeast(-1));
@@ -460,7 +460,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(amount);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
 
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + 1 + amount));
             Assert.That(creature.Attacks, Contains.Item(manifestation).And.Contains(ghostAttacks[0]));
@@ -498,7 +498,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(ghostQualities);
 
             var originalCount = baseCreature.SpecialQualities.Count();
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
 
             Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(originalCount + ghostQualities.Length));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(ghostQualities));
@@ -526,7 +526,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(ghostQualities);
 
             var originalCount = baseCreature.SpecialQualities.Count();
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
 
             Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(originalCount + ghostQualities.Length));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(ghostQualities));
@@ -554,7 +554,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(ghostQualities);
 
             var originalCount = baseCreature.SpecialQualities.Count();
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
 
             Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(originalCount + ghostQualities.Length));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(ghostQualities));
@@ -584,7 +584,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             baseCreature.Skills = baseCreature.Skills.Union(skills);
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.Skills, Is.SupersetOf(skills));
             Assert.That(skills[0].Name, Is.EqualTo("other skill 1"));
             Assert.That(skills[0].Bonus, Is.EqualTo(600));
@@ -620,7 +620,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Skills = new List<Skill>();
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.Skills, Is.Empty);
         }
 
@@ -644,7 +644,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             baseCreature.Skills = baseCreature.Skills.Union(skills);
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.Skills, Is.SupersetOf(skills));
             Assert.That(skills[0].Name, Is.EqualTo("other skill 1"));
             Assert.That(skills[0].Bonus, Is.EqualTo(600));
@@ -669,7 +669,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var concentration = new Skill(SkillConstants.Concentration, baseCreature.Abilities[AbilityConstants.Constitution], 42);
             baseCreature.Skills = baseCreature.Skills.Union(new[] { concentration });
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.Skills, Contains.Item(concentration));
             Assert.That(concentration.BaseAbility, Is.EqualTo(creature.Abilities[AbilityConstants.Charisma]));
         }
@@ -677,7 +677,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_CreatureSkills_DoNotHaveFortitudeSave()
         {
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.Saves[SaveConstants.Fortitude].HasSave, Is.False);
             Assert.That(creature.Saves[SaveConstants.Reflex].HasSave, Is.True);
             Assert.That(creature.Saves[SaveConstants.Will].HasSave, Is.True);
@@ -689,7 +689,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var concentration = new Skill(SkillConstants.Concentration, baseCreature.Abilities[AbilityConstants.Constitution], 42);
             baseCreature.Skills = baseCreature.Skills.Union(new[] { concentration });
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.Skills, Contains.Item(concentration));
             Assert.That(concentration.BaseAbility, Is.EqualTo(creature.Abilities[AbilityConstants.Charisma]));
         }
@@ -697,7 +697,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_CreatureSkills_DoNotHaveFortitudeSave()
         {
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.Saves[SaveConstants.Fortitude].HasSave, Is.False);
             Assert.That(creature.Saves[SaveConstants.Reflex].HasSave, Is.True);
             Assert.That(creature.Saves[SaveConstants.Will].HasSave, Is.True);
@@ -708,7 +708,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.ChallengeRating = original;
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.ChallengeRating, Is.EqualTo(adjusted));
         }
@@ -738,7 +738,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.LevelAdjustment = original;
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.LevelAdjustment, Is.EqualTo(adjusted));
         }
@@ -752,7 +752,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Equipment.Shield = null;
             baseCreature.Equipment.Weapons = new List<Weapon>();
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.CanUseEquipment, Is.False);
             Assert.That(creature.Equipment.Armor, Is.Null);
             Assert.That(creature.Equipment.Items, Is.Empty);
@@ -770,7 +770,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Equipment.Shield = null;
             baseCreature.Equipment.Weapons = new List<Weapon>();
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.CanUseEquipment, Is.False);
             Assert.That(creature.Equipment.Armor, Is.Not.Null);
             Assert.That(creature.Equipment.Armor.Name, Is.EqualTo("my armor"));
@@ -788,7 +788,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Equipment.Shield = null;
             baseCreature.Equipment.Weapons = new List<Weapon>();
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.CanUseEquipment, Is.True);
             Assert.That(creature.Equipment.Armor, Is.Null);
             Assert.That(creature.Equipment.Items, Is.Empty);
@@ -822,7 +822,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(() => Enumerable.Range(1, count++)
                     .Select(i => new Item { Name = $"Item {count - 1}.{i}" }));
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.CanUseEquipment, Is.True);
             Assert.That(creature.Equipment.Armor, Is.Null);
             Assert.That(creature.Equipment.Shield, Is.Null);
@@ -877,7 +877,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(() => Enumerable.Range(1, count++)
                     .Select(i => new Item { Name = $"Item {count - 1}.{i}" }));
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.CanUseEquipment, Is.True);
             Assert.That(creature.Equipment.Armor, Is.Not.Null);
             Assert.That(creature.Equipment.Armor.Name, Is.EqualTo("my armor"));
@@ -933,7 +933,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(() => Enumerable.Range(1, count++)
                     .Select(i => new Item { Name = $"Item {count - 1}.{i}" }));
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.CanUseEquipment, Is.True);
             Assert.That(creature.Equipment.Armor, Is.Null);
             Assert.That(creature.Equipment.Shield, Is.Not.Null);
@@ -990,7 +990,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(() => Enumerable.Range(1, count++)
                     .Select(i => new Item { Name = $"Item {count - 1}.{i}" }));
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.CanUseEquipment, Is.True);
             Assert.That(creature.Equipment.Armor, Is.Null);
             Assert.That(creature.Equipment.Shield, Is.Not.Null);
@@ -1048,7 +1048,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(() => Enumerable.Range(1, count++)
                     .Select(i => new Item { Name = $"Item {count - 1}.{i}" }));
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature.CanUseEquipment, Is.True);
             Assert.That(creature.Equipment.Armor, Is.Null);
             Assert.That(creature.Equipment.Shield, Is.Not.Null);
@@ -1098,7 +1098,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 "subtype 2",
             };
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Type.Name, Is.EqualTo(adjusted));
             Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(5));
@@ -1112,7 +1112,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_CharismaIncreasesBy4()
         {
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment, Is.EqualTo(4));
@@ -1121,7 +1121,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_ConstitutionGoesAway()
         {
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateScore, Is.Zero);
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.Zero);
             Assert.That(creature.Abilities[AbilityConstants.Constitution].HasScore, Is.False);
@@ -1148,7 +1148,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .AsPotentialAverage())
                 .Returns(42);
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(12));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(9266 + 90210));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(42));
@@ -1174,7 +1174,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .AsPotentialAverage())
                 .Returns(42);
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(12));
             Assert.That(creature.HitPoints.Total, Is.EqualTo(9266 + 90210));
             Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(42));
@@ -1192,7 +1192,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(g => g.Generate(CreatureConstants.Templates.Ghost))
                 .Returns(speeds);
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
                 .And.ContainKey(SpeedConstants.Fly));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("the goodest"));
@@ -1216,7 +1216,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Speeds[SpeedConstants.Fly].Description = "so-so";
             baseCreature.Speeds[SpeedConstants.Fly].Value = 42;
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
                 .And.ContainKey(SpeedConstants.Fly));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("the goodest"));
@@ -1240,7 +1240,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Speeds[SpeedConstants.Fly].Description = "so-so";
             baseCreature.Speeds[SpeedConstants.Fly].Value = 600;
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
                 .And.ContainKey(SpeedConstants.Fly));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("the goodest"));
@@ -1264,7 +1264,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Speeds[SpeedConstants.Fly].Description = "so-so";
             baseCreature.Speeds[SpeedConstants.Fly].Value = 96;
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
                 .And.ContainKey(SpeedConstants.Fly));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("the goodest"));
@@ -1277,7 +1277,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 42);
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.Zero);
 
             var naturalArmorBonuses = creature.ArmorClass.NaturalArmorBonuses.ToArray();
@@ -1293,7 +1293,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 42);
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 600);
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.Zero);
 
             var naturalArmorBonuses = creature.ArmorClass.NaturalArmorBonuses.ToArray();
@@ -1309,7 +1309,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_CreatureArmorClass_NaturalArmorIsConditionalToBeOnlyEthereal_NoNaturalArmor()
         {
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.Zero);
             Assert.That(creature.ArmorClass.NaturalArmorBonuses, Is.Empty);
         }
@@ -1319,7 +1319,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 42, "only sometimes");
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.Zero);
 
             var naturalArmorBonuses = creature.ArmorClass.NaturalArmorBonuses.ToArray();
@@ -1336,7 +1336,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Abilities[AbilityConstants.Charisma].AdvancementAdjustment = 0;
             baseCreature.Abilities[AbilityConstants.Charisma].RacialAdjustment = 0;
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(46));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].BaseScore, Is.EqualTo(42));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
@@ -1367,7 +1367,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Abilities[AbilityConstants.Charisma].AdvancementAdjustment = 0;
             baseCreature.Abilities[AbilityConstants.Charisma].RacialAdjustment = 0;
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(charisma + 4));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].BaseScore, Is.EqualTo(charisma));
             Assert.That(creature.Abilities[AbilityConstants.Charisma].TemplateScore, Is.AtLeast(-1));
@@ -1417,7 +1417,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(amount);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
 
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + 1 + amount));
             Assert.That(creature.Attacks, Contains.Item(manifestation).And.Contains(ghostAttacks[0]));
@@ -1455,7 +1455,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(ghostQualities);
 
             var originalCount = baseCreature.SpecialQualities.Count();
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
 
             Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(originalCount + ghostQualities.Length));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(ghostQualities));
@@ -1485,7 +1485,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             baseCreature.Skills = baseCreature.Skills.Union(skills);
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.Skills, Is.SupersetOf(skills));
             Assert.That(skills[0].Name, Is.EqualTo("other skill 1"));
             Assert.That(skills[0].Bonus, Is.EqualTo(600));
@@ -1521,7 +1521,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Skills = new List<Skill>();
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.Skills, Is.Empty);
         }
 
@@ -1545,7 +1545,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             baseCreature.Skills = baseCreature.Skills.Union(skills);
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.Skills, Is.SupersetOf(skills));
             Assert.That(skills[0].Name, Is.EqualTo("other skill 1"));
             Assert.That(skills[0].Bonus, Is.EqualTo(600));
@@ -1569,7 +1569,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.ChallengeRating = original;
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.ChallengeRating, Is.EqualTo(adjusted));
         }
@@ -1585,7 +1585,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.LevelAdjustment = original;
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.LevelAdjustment, Is.EqualTo(adjusted));
         }
@@ -1599,7 +1599,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Equipment.Shield = null;
             baseCreature.Equipment.Weapons = new List<Weapon>();
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.CanUseEquipment, Is.False);
             Assert.That(creature.Equipment.Armor, Is.Null);
             Assert.That(creature.Equipment.Items, Is.Empty);
@@ -1617,7 +1617,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Equipment.Shield = null;
             baseCreature.Equipment.Weapons = new List<Weapon>();
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.CanUseEquipment, Is.False);
             Assert.That(creature.Equipment.Armor, Is.Not.Null);
             Assert.That(creature.Equipment.Armor.Name, Is.EqualTo("my armor"));
@@ -1635,7 +1635,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Equipment.Shield = null;
             baseCreature.Equipment.Weapons = new List<Weapon>();
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.CanUseEquipment, Is.True);
             Assert.That(creature.Equipment.Armor, Is.Null);
             Assert.That(creature.Equipment.Items, Is.Empty);
@@ -1669,7 +1669,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .ReturnsAsync(() => Enumerable.Range(1, count++)
                     .Select(i => new Item { Name = $"Item {count - 1}.{i}" }));
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.CanUseEquipment, Is.True);
             Assert.That(creature.Equipment.Armor, Is.Null);
             Assert.That(creature.Equipment.Shield, Is.Null);
@@ -1724,7 +1724,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .ReturnsAsync(() => Enumerable.Range(1, count++)
                     .Select(i => new Item { Name = $"Item {count - 1}.{i}" }));
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.CanUseEquipment, Is.True);
             Assert.That(creature.Equipment.Armor, Is.Not.Null);
             Assert.That(creature.Equipment.Armor.Name, Is.EqualTo("my armor"));
@@ -1780,7 +1780,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .ReturnsAsync(() => Enumerable.Range(1, count++)
                     .Select(i => new Item { Name = $"Item {count - 1}.{i}" }));
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.CanUseEquipment, Is.True);
             Assert.That(creature.Equipment.Armor, Is.Null);
             Assert.That(creature.Equipment.Shield, Is.Not.Null);
@@ -1837,7 +1837,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .ReturnsAsync(() => Enumerable.Range(1, count++)
                     .Select(i => new Item { Name = $"Item {count - 1}.{i}" }));
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.CanUseEquipment, Is.True);
             Assert.That(creature.Equipment.Armor, Is.Null);
             Assert.That(creature.Equipment.Shield, Is.Not.Null);
@@ -1895,7 +1895,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .ReturnsAsync(() => Enumerable.Range(1, count++)
                     .Select(i => new Item { Name = $"Item {count - 1}.{i}" }));
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature.CanUseEquipment, Is.True);
             Assert.That(creature.Equipment.Armor, Is.Null);
             Assert.That(creature.Equipment.Shield, Is.Not.Null);
@@ -1931,7 +1931,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_SetsTemplate()
         {
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.Ghost));
         }
@@ -1939,7 +1939,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_SetsTemplate()
         {
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.Ghost));
         }
@@ -2020,6 +2020,96 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string t, string c) => hitDice[c]);
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false);
+            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
+        }
+
+
+        [Test]
+        public void GetCompatibleCreatures_ReturnCompatibleCreatures_WithPresetAlignment()
+        {
+            var creatures = new[] { "my creature", "wrong creature 1", "my other creature", "wrong creature 2", "wrong creature 3" };
+
+            var adjustments = new[]
+            {
+                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my creature"))
+                .Returns(adjustments);
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my other creature"))
+                .Returns(adjustments);
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"))
+                .Returns(new[]
+                {
+                    new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                    new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                    new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                    new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                    new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                    new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = -6 },
+                });
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"))
+                .Returns(adjustments);
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 3"))
+                .Returns(adjustments);
+
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types["my other creature"] = new[] { CreatureConstants.Types.Giant, "subtype 3" };
+            types["wrong creature 1"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types["wrong creature 2"] = new[] { CreatureConstants.Types.Undead, "subtype 1", "subtype 2" };
+            types["wrong creature 3"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["my other creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["wrong creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 2;
+            hitDice["my other creature"] = 2;
+            hitDice["wrong creature 1"] = 2;
+            hitDice["wrong creature 2"] = 2;
+            hitDice["wrong creature 3"] = 2;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, "preset alignment"))
+                .Returns(new[] { "my creature", "wrong creature 2", "my other creature", "wrong creature 1" });
+
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, alignment: "preset alignment");
             Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
         }
 

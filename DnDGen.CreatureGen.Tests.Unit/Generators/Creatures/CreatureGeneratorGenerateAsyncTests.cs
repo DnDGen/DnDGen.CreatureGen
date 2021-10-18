@@ -38,7 +38,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateAsync_InvalidCreatureTemplateComboThrowsException(bool asCharacter)
         {
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, "creature", "template", null, null)).Returns(false);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, "creature", "template", null, null, null)).Returns(false);
 
             var message = new StringBuilder();
             message.AppendLine("Invalid creature:");
@@ -1471,7 +1471,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("template")).Returns(mockTemplateApplicator.Object);
 
             var templateCreature = new Creature();
-            mockTemplateApplicator.Setup(a => a.ApplyToAsync(It.IsAny<Creature>())).ReturnsAsync(templateCreature);
+            mockTemplateApplicator.Setup(a => a.ApplyToAsync(It.IsAny<Creature>(), null)).ReturnsAsync(templateCreature);
 
             var creature = await creatureGenerator.GenerateAsync("creature", "template", asCharacter);
             Assert.That(creature, Is.EqualTo(templateCreature));

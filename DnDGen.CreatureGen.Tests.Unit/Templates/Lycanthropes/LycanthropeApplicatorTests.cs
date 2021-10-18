@@ -304,7 +304,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             SetUpAnimal(animal);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(3));
             Assert.That(creature.Type.SubTypes, Contains.Item("subtype 1")
@@ -321,7 +321,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             SetUpAnimal(animal, roll: 9266, average: 90210.42);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
                 .And.Contains(animalHitPoints.HitDice[0]));
@@ -527,7 +527,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             SetUpAnimal(animal, roll: 9266, average: 90210.42);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
                 .And.Contains(animalHitPoints.HitDice[0]));
@@ -556,7 +556,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             SetUpAnimal(animal, roll: 9266, average: 90210.42);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
                 .And.Contains(animalHitPoints.HitDice[0]));
@@ -601,7 +601,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             SetUpAnimal(animal, hitDiceQuantity: aQ, hitDiceDie: aD, roll: 9266, average: 90210.42);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
                 .And.Contains(animalHitPoints.HitDice[0]));
@@ -668,7 +668,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             SetUpAnimal(animal, hitDiceQuantity: aQ, hitDiceDie: aD, roll: 9266, average: 90210.42);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
                 .And.Contains(animalHitPoints.HitDice[0]));
@@ -710,7 +710,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             SetUpAnimal(animal, hitDiceQuantity: aQ, hitDiceDie: aD, roll: 9266, average: 90210.42);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
                 .And.Contains(animalHitPoints.HitDice[0]));
@@ -755,7 +755,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             SetUpAnimal(animal, hitDiceQuantity: aQ, hitDiceDie: aD, roll: 9266, average: 90210.42);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
                 .And.Contains(animalHitPoints.HitDice[0]));
@@ -796,7 +796,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = -666 },
                 });
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
                 .And.Contains(animalHitPoints.HitDice[0]));
@@ -823,7 +823,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(g => g.RegenerateWith(baseCreature.HitPoints, animalFeats))
                 .Returns(regeneratedHitPoints);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.HitPoints, Is.EqualTo(regeneratedHitPoints));
         }
@@ -840,7 +840,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             animalSpeeds[SpeedConstants.Land] = new Measurement("feet per round") { Value = 9266 };
             animalSpeeds[SpeedConstants.Burrow] = new Measurement("feet per round") { Value = 90210 };
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Speeds, Has.Count.EqualTo(3)
                 .And.ContainKey(SpeedConstants.Land)
@@ -872,7 +872,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             animalSpeeds[SpeedConstants.Land] = new Measurement("feet per round") { Value = 42 };
             animalSpeeds[SpeedConstants.Burrow] = new Measurement("feet per round") { Value = 90210 };
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Speeds, Has.Count.EqualTo(3)
                 .And.ContainKey(SpeedConstants.Land)
@@ -905,7 +905,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             animalSpeeds[SpeedConstants.Burrow] = new Measurement("feet per round") { Value = 90210 };
             animalSpeeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 42, Description = "OK Maneuverability" };
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Speeds, Has.Count.EqualTo(3)
                 .And.ContainKey(SpeedConstants.Land)
@@ -939,7 +939,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             animalSpeeds[SpeedConstants.Burrow] = new Measurement("feet per round") { Value = 90210 };
             animalSpeeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 42, Description = "OK Maneuverability" };
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Speeds, Has.Count.EqualTo(3)
                 .And.ContainKey(SpeedConstants.Land)
@@ -967,7 +967,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.ArmorClass.RemoveBonus(ArmorClassConstants.Natural);
 
             //New for base and animal
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
 
@@ -988,7 +988,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.ArmorClass.RemoveBonus(ArmorClassConstants.Natural);
 
             //New for base
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
 
@@ -1009,7 +1009,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 90210);
 
             //New for animal
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
 
@@ -1030,7 +1030,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 90210);
 
             //Both new for base and from animal
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
 
@@ -1050,7 +1050,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             var baseAttack = baseCreature.BaseAttackBonus;
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.BaseAttackBonus, Is.EqualTo(baseAttack + animalBaseAttack));
         }
@@ -1070,7 +1070,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     baseCreature.Abilities[AbilityConstants.Strength]))
                 .Returns(1337);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.BaseAttackBonus, Is.EqualTo(baseAttack + animalBaseAttack));
             Assert.That(creature.GrappleBonus, Is.EqualTo(1337));
@@ -1081,7 +1081,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         {
             SetUpAnimal(animal);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks, Is.SupersetOf(animalAttacks));
             Assert.That(animalAttacks[0].Name, Is.EqualTo("animal attack 1 (in Animal form)"));
@@ -1103,7 +1103,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     baseCreature.Abilities))
                 .Returns(animalAttacks);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks, Is.SupersetOf(animalAttacks));
             Assert.That(animalAttacks[0].Name, Is.EqualTo("animal attack 1 (in Animal form)"));
@@ -1136,7 +1136,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(g => g.ApplyAttackBonuses(lycanthropeAttacks, It.IsAny<IEnumerable<Feat>>(), baseCreature.Abilities))
                 .Returns(lycanthropeAttacks);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks, Is.SupersetOf(lycanthropeAttacks));
             Assert.That(lycanthropeAttacks[0].Name, Is.EqualTo("lycanthrope attack 1"));
@@ -1185,7 +1185,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(g => g.ApplyAttackBonuses(lycanthropeAttacks, It.IsAny<IEnumerable<Feat>>(), baseCreature.Abilities))
                 .Returns(lycanthropeAttacks);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks, Is.SupersetOf(lycanthropeAttacks));
             Assert.That(lycanthropeAttacks[0].Name, Is.EqualTo("lycanthrope attack 1"));
@@ -1218,7 +1218,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(g => g.ApplyAttackBonuses(lycanthropeAttacks, It.IsAny<IEnumerable<Feat>>(), baseCreature.Abilities))
                 .Returns(lycanthropeAttacks);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks, Is.SupersetOf(lycanthropeAttacks));
             Assert.That(lycanthropeAttacks[0].Name, Is.EqualTo("lycanthrope attack 1"));
@@ -1273,7 +1273,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     baseCreature.Abilities))
                 .Returns(lycanthropeAttacks);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks, Is.SupersetOf(lycanthropeAttacks));
             Assert.That(lycanthropeAttacks[0].Name, Is.EqualTo("lycanthrope attack 1"));
@@ -1305,7 +1305,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(g => g.ApplyAttackBonuses(lycanthropeAttacks, It.IsAny<IEnumerable<Feat>>(), baseCreature.Abilities))
                 .Returns(lycanthropeAttacks);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks, Is.SupersetOf(animalAttacks)
                 .And.SupersetOf(lycanthropeAttacks));
@@ -1335,7 +1335,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             };
             baseCreature.Attacks = baseAttacks;
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks, Is.SupersetOf(baseAttacks));
             Assert.That(baseAttacks[0].Name, Is.EqualTo("melee attack (in Humanoid or Hybrid form)"));
@@ -1360,7 +1360,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             };
             baseCreature.Attacks = baseAttacks;
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks, Is.SupersetOf(baseAttacks));
             Assert.That(baseAttacks[0].Name, Is.EqualTo("melee attack (in Giant or Hybrid form)"));
@@ -1374,7 +1374,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         {
             SetUpAnimal(animal);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(animalSpecialQualities));
         }
@@ -1390,7 +1390,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             animalSpecialQualities.Add(new Feat { Name = "my special quality" });
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities, Contains.Item(animalSpecialQualities[0])
                 .And.Contains(animalSpecialQualities[1])
@@ -1420,7 +1420,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     baseCreature.Alignment))
                 .Returns(lycanthropeSpecialQualities);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(lycanthropeSpecialQualities));
         }
@@ -1452,7 +1452,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     baseCreature.Alignment))
                 .Returns(lycanthropeSpecialQualities);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities, Contains.Item(lycanthropeSpecialQualities[0])
                 .And.Contains(lycanthropeSpecialQualities[2])
@@ -1473,7 +1473,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             animalSaves[SaveConstants.Reflex] = new Save { BaseValue = 1337 };
             animalSaves[SaveConstants.Will] = new Save { BaseValue = 42 };
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Saves[SaveConstants.Fortitude].BaseValue, Is.EqualTo(1336 + 600));
             Assert.That(creature.Saves[SaveConstants.Reflex].BaseValue, Is.EqualTo(96 + 1337));
@@ -1485,7 +1485,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         {
             SetUpAnimal(animal);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Abilities[AbilityConstants.Wisdom].TemplateAdjustment, Is.EqualTo(2));
         }
@@ -1509,7 +1509,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, animal))
                 .Returns(animalAbilityAdjustments);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Abilities[AbilityConstants.Wisdom].Bonuses, Is.Empty);
             Assert.That(creature.Abilities[AbilityConstants.Intelligence].Bonuses, Is.Empty);
@@ -1533,7 +1533,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         {
             SetUpAnimal(animal);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Skills, Is.SupersetOf(animalSkills));
         }
@@ -1639,7 +1639,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     .Returns(animalFeats);
             }
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Skills, Is.SupersetOf(baseSkills));
 
@@ -1799,7 +1799,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     .Returns(animalFeats);
             }
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Skills, Is.SupersetOf(baseSkills));
 
@@ -1914,7 +1914,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     animalData.CanUseEquipment))
                 .Returns(animalFeats);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Skills, Is.SupersetOf(rankedSkills));
         }
@@ -1929,7 +1929,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             SetUpAnimal(animal);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Skills, Is.SupersetOf(animalSkills));
 
@@ -1942,7 +1942,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         {
             SetUpAnimal(animal);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Feats, Is.SupersetOf(animalFeats));
         }
@@ -1956,7 +1956,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             animalFeats.Add(new Feat { Name = "my feat" });
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Feats, Contains.Item(animalFeats[0])
                 .And.Contains(animalFeats[1])
@@ -1973,7 +1973,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             animalFeats.Add(new Feat { Name = "my feat", CanBeTakenMultipleTimes = true });
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Feats, Contains.Item(creatureFeat)
                 .And.SupersetOf(animalFeats));
@@ -2009,7 +2009,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     baseCreature.Abilities))
                 .Returns(animalSaves);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Saves[SaveConstants.Fortitude].BaseValue, Is.EqualTo(1336 + 600));
             Assert.That(creature.Saves[SaveConstants.Fortitude].Bonus, Is.EqualTo(9266));
@@ -2029,7 +2029,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             SetUpAnimal(animal, hitDiceQuantity: animalHitDiceQuantity);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.ChallengeRating, Is.EqualTo(updatedChallengeRating));
         }
@@ -2107,7 +2107,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             SetUpAnimal(animal);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.LevelAdjustment, Is.EqualTo(newLevelAdjustment));
         }
@@ -2156,7 +2156,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             SetUpAnimal(animal);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(3));
             Assert.That(creature.Type.SubTypes, Contains.Item("subtype 1")
@@ -2173,7 +2173,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             SetUpAnimal(animal, roll: 9266, average: 90210.42);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
                 .And.Contains(animalHitPoints.HitDice[0]));
@@ -2194,7 +2194,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             SetUpAnimal(animal, roll: 9266, average: 90210.42);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
                 .And.Contains(animalHitPoints.HitDice[0]));
@@ -2223,7 +2223,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             SetUpAnimal(animal, roll: 9266, average: 90210.42);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
                 .And.Contains(animalHitPoints.HitDice[0]));
@@ -2267,7 +2267,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = -666 },
                 });
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(2)
                 .And.Contains(animalHitPoints.HitDice[0]));
@@ -2294,7 +2294,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(g => g.RegenerateWith(baseCreature.HitPoints, animalFeats))
                 .Returns(regeneratedHitPoints);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.HitPoints, Is.EqualTo(regeneratedHitPoints));
         }
@@ -2311,7 +2311,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             animalSpeeds[SpeedConstants.Land] = new Measurement("feet per round") { Value = 9266 };
             animalSpeeds[SpeedConstants.Burrow] = new Measurement("feet per round") { Value = 90210 };
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Speeds, Has.Count.EqualTo(3)
                 .And.ContainKey(SpeedConstants.Land)
@@ -2343,7 +2343,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             animalSpeeds[SpeedConstants.Land] = new Measurement("feet per round") { Value = 42 };
             animalSpeeds[SpeedConstants.Burrow] = new Measurement("feet per round") { Value = 90210 };
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Speeds, Has.Count.EqualTo(3)
                 .And.ContainKey(SpeedConstants.Land)
@@ -2376,7 +2376,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             animalSpeeds[SpeedConstants.Burrow] = new Measurement("feet per round") { Value = 90210 };
             animalSpeeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 42, Description = "OK Maneuverability" };
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Speeds, Has.Count.EqualTo(3)
                 .And.ContainKey(SpeedConstants.Land)
@@ -2410,7 +2410,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             animalSpeeds[SpeedConstants.Burrow] = new Measurement("feet per round") { Value = 90210 };
             animalSpeeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 42, Description = "OK Maneuverability" };
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Speeds, Has.Count.EqualTo(3)
                 .And.ContainKey(SpeedConstants.Land)
@@ -2438,7 +2438,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.ArmorClass.RemoveBonus(ArmorClassConstants.Natural);
 
             //New for base and animal
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
 
@@ -2459,7 +2459,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.ArmorClass.RemoveBonus(ArmorClassConstants.Natural);
 
             //New for base
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
 
@@ -2480,7 +2480,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 90210);
 
             //New for animal
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
 
@@ -2501,7 +2501,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 90210);
 
             //Both new for base and from animal
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
 
@@ -2521,7 +2521,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             var baseAttack = baseCreature.BaseAttackBonus;
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.BaseAttackBonus, Is.EqualTo(baseAttack + animalBaseAttack));
         }
@@ -2541,7 +2541,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     baseCreature.Abilities[AbilityConstants.Strength]))
                 .Returns(1337);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.BaseAttackBonus, Is.EqualTo(baseAttack + animalBaseAttack));
             Assert.That(creature.GrappleBonus, Is.EqualTo(1337));
@@ -2552,7 +2552,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         {
             SetUpAnimal(animal);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks, Is.SupersetOf(animalAttacks));
             Assert.That(animalAttacks[0].Name, Is.EqualTo("animal attack 1 (in Animal form)"));
@@ -2574,7 +2574,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     baseCreature.Abilities))
                 .Returns(animalAttacks);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks, Is.SupersetOf(animalAttacks));
             Assert.That(animalAttacks[0].Name, Is.EqualTo("animal attack 1 (in Animal form)"));
@@ -2607,7 +2607,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(g => g.ApplyAttackBonuses(lycanthropeAttacks, It.IsAny<IEnumerable<Feat>>(), baseCreature.Abilities))
                 .Returns(lycanthropeAttacks);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks, Is.SupersetOf(lycanthropeAttacks));
             Assert.That(lycanthropeAttacks[0].Name, Is.EqualTo("lycanthrope attack 1"));
@@ -2640,7 +2640,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(g => g.ApplyAttackBonuses(lycanthropeAttacks, It.IsAny<IEnumerable<Feat>>(), baseCreature.Abilities))
                 .Returns(lycanthropeAttacks);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks, Is.SupersetOf(lycanthropeAttacks));
             Assert.That(lycanthropeAttacks[0].Name, Is.EqualTo("lycanthrope attack 1"));
@@ -2673,7 +2673,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(g => g.ApplyAttackBonuses(lycanthropeAttacks, It.IsAny<IEnumerable<Feat>>(), baseCreature.Abilities))
                 .Returns(lycanthropeAttacks);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks, Is.SupersetOf(lycanthropeAttacks));
             Assert.That(lycanthropeAttacks[0].Name, Is.EqualTo("lycanthrope attack 1"));
@@ -2712,7 +2712,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     baseCreature.Abilities))
                 .Returns(lycanthropeAttacks);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks, Is.SupersetOf(lycanthropeAttacks));
             Assert.That(lycanthropeAttacks[0].Name, Is.EqualTo("lycanthrope attack 1"));
@@ -2744,7 +2744,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(g => g.ApplyAttackBonuses(lycanthropeAttacks, It.IsAny<IEnumerable<Feat>>(), baseCreature.Abilities))
                 .Returns(lycanthropeAttacks);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks, Is.SupersetOf(animalAttacks)
                 .And.SupersetOf(lycanthropeAttacks));
@@ -2774,7 +2774,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             };
             baseCreature.Attacks = baseAttacks;
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks, Is.SupersetOf(baseAttacks));
             Assert.That(baseAttacks[0].Name, Is.EqualTo("melee attack (in Humanoid or Hybrid form)"));
@@ -2799,7 +2799,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             };
             baseCreature.Attacks = baseAttacks;
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks, Is.SupersetOf(baseAttacks));
             Assert.That(baseAttacks[0].Name, Is.EqualTo("melee attack (in Giant or Hybrid form)"));
@@ -2813,7 +2813,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         {
             SetUpAnimal(animal);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(animalSpecialQualities));
         }
@@ -2829,7 +2829,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             animalSpecialQualities.Add(new Feat { Name = "my special quality" });
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities, Contains.Item(animalSpecialQualities[0])
                 .And.Contains(animalSpecialQualities[1])
@@ -2859,7 +2859,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     baseCreature.Alignment))
                 .Returns(lycanthropeSpecialQualities);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(lycanthropeSpecialQualities));
         }
@@ -2891,7 +2891,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     baseCreature.Alignment))
                 .Returns(lycanthropeSpecialQualities);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities, Contains.Item(lycanthropeSpecialQualities[0])
                 .And.Contains(lycanthropeSpecialQualities[2])
@@ -2912,7 +2912,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             animalSaves[SaveConstants.Reflex] = new Save { BaseValue = 1337 };
             animalSaves[SaveConstants.Will] = new Save { BaseValue = 42 };
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Saves[SaveConstants.Fortitude].BaseValue, Is.EqualTo(1336 + 600));
             Assert.That(creature.Saves[SaveConstants.Reflex].BaseValue, Is.EqualTo(96 + 1337));
@@ -2924,7 +2924,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         {
             SetUpAnimal(animal);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Abilities[AbilityConstants.Wisdom].TemplateAdjustment, Is.EqualTo(2));
         }
@@ -2948,7 +2948,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, animal))
                 .Returns(animalAbilityAdjustments);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Abilities[AbilityConstants.Wisdom].Bonuses, Is.Empty);
             Assert.That(creature.Abilities[AbilityConstants.Intelligence].Bonuses, Is.Empty);
@@ -2972,7 +2972,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         {
             SetUpAnimal(animal);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Skills, Is.SupersetOf(animalSkills));
         }
@@ -3078,7 +3078,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     .Returns(animalFeats);
             }
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Skills, Is.SupersetOf(baseSkills));
 
@@ -3193,7 +3193,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     animalData.CanUseEquipment))
                 .Returns(animalFeats);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Skills, Is.SupersetOf(rankedSkills));
         }
@@ -3208,7 +3208,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             SetUpAnimal(animal);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Skills, Is.SupersetOf(animalSkills));
 
@@ -3221,7 +3221,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         {
             SetUpAnimal(animal);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Feats, Is.SupersetOf(animalFeats));
         }
@@ -3235,7 +3235,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             animalFeats.Add(new Feat { Name = "my feat" });
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Feats, Contains.Item(animalFeats[0])
                 .And.Contains(animalFeats[1])
@@ -3252,7 +3252,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             animalFeats.Add(new Feat { Name = "my feat", CanBeTakenMultipleTimes = true });
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Feats, Contains.Item(creatureFeat)
                 .And.SupersetOf(animalFeats));
@@ -3288,7 +3288,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     baseCreature.Abilities))
                 .Returns(animalSaves);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Saves[SaveConstants.Fortitude].BaseValue, Is.EqualTo(1336 + 600));
             Assert.That(creature.Saves[SaveConstants.Fortitude].Bonus, Is.EqualTo(9266));
@@ -3308,7 +3308,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             SetUpAnimal(animal, hitDiceQuantity: animalHitDiceQuantity);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.ChallengeRating, Is.EqualTo(updatedChallengeRating));
         }
@@ -3320,7 +3320,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             SetUpAnimal(animal);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.LevelAdjustment, Is.EqualTo(newLevelAdjustment));
         }
@@ -3330,7 +3330,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         {
             SetUpAnimal(animal);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Template, Is.EqualTo(template));
         }
@@ -3340,7 +3340,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         {
             SetUpAnimal(animal);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, null);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Template, Is.EqualTo(template));
         }
@@ -3395,6 +3395,66 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Returns((string t, string c) => hitDice[c]);
 
             var compatibleCreatures = applicators[template].GetCompatibleCreatures(creatures, false);
+            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public void GetCompatibleCreatures_ReturnCompatibleCreatures_WithPresetAlignment(string template, string animal)
+        {
+            var creatures = new[] { "my creature", "wrong creature 2", "my other creature", "wrong creature 1", "wrong creature 3", "wrong creature 4" };
+
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types["my other creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 3" };
+            types["wrong creature 1"] = new[] { CreatureConstants.Types.Undead, "subtype 1", "subtype 2" };
+            types["wrong creature 2"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types["wrong creature 3"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types["wrong creature 4"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, Size = SizeConstants.Medium };
+            data["my other creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, Size = SizeConstants.Small };
+            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, Size = SizeConstants.Medium };
+            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, Size = SizeConstants.Tiny };
+            data["wrong creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, Size = SizeConstants.Huge };
+            data["wrong creature 4"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, Size = SizeConstants.Medium };
+            data[animal] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, Size = SizeConstants.Medium };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice[animal] = 1;
+            hitDice["my creature"] = 1;
+            hitDice["my other creature"] = 1;
+            hitDice["wrong creature 1"] = 1;
+            hitDice["wrong creature 2"] = 1;
+            hitDice["wrong creature 3"] = 1;
+            hitDice["wrong creature 4"] = 1;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, "preset alignment"))
+                .Returns(new[] { "my creature", "wrong creature 2", "my other creature", "wrong creature 1", "wrong creature 3" });
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(creatures, false, alignment: "preset alignment");
             Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
         }
 
