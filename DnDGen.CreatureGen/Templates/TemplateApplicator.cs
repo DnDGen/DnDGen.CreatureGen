@@ -13,7 +13,7 @@ namespace DnDGen.CreatureGen.Templates
             string challengeRating = null,
             string alignment = null);
 
-        Creature ApplyTo(Creature creature, string presetAlignment);
-        Task<Creature> ApplyToAsync(Creature creature, string presetAlignment);
+        Creature ApplyTo(Creature creature, bool asCharacter, string type = null, string challengeRating = null, string alignment = null);
+        Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, string type = null, string challengeRating = null, string alignment = null);
     }
 }

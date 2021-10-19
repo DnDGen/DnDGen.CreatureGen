@@ -57,6 +57,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature = new CreatureBuilder().WithTestValues().Build();
         }
 
+        [Test]
+        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void ApplyTo_ReturnsCreature_WithFilters()
+        {
+            Assert.Fail("not yet written");
+        }
+
         [TestCase(CreatureConstants.Types.Aberration, CreatureConstants.Types.Aberration)]
         [TestCase(CreatureConstants.Types.Animal, CreatureConstants.Types.MagicalBeast)]
         [TestCase(CreatureConstants.Types.Dragon, CreatureConstants.Types.Dragon)]
@@ -91,7 +109,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(new[] { smiteGood });
 
-            var creature = applicator.ApplyTo(baseCreature, null);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Type.Name, Is.EqualTo(adjusted));
             if (original == adjusted)
@@ -133,7 +151,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(new[] { smiteGood });
 
-            var creature = applicator.ApplyTo(baseCreature, null);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Size, Is.EqualTo("my size"));
         }
@@ -192,7 +210,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(new[] { smiteGood });
 
-            var creature = applicator.ApplyTo(baseCreature, null);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalAttacks.Length + 1));
             Assert.That(creature.Attacks.Select(a => a.Name), Is.SupersetOf(originalAttacks.Select(a => a.Name)));
@@ -244,7 +262,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Alignment))
                 .Returns(specialQualities);
 
-            var creature = applicator.ApplyTo(baseCreature, null);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length));
@@ -301,7 +319,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Alignment))
                 .Returns(specialQualities);
 
-            var creature = applicator.ApplyTo(baseCreature, null);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
@@ -360,7 +378,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Alignment))
                 .Returns(specialQualities);
 
-            var creature = applicator.ApplyTo(baseCreature, null);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
@@ -419,7 +437,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Alignment))
                 .Returns(specialQualities);
 
-            var creature = applicator.ApplyTo(baseCreature, null);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
@@ -478,7 +496,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Alignment))
                 .Returns(specialQualities);
 
-            var creature = applicator.ApplyTo(baseCreature, null);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
@@ -543,7 +561,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 f.Name == FeatConstants.SpecialQualities.EnergyResistance
                 && f.Foci.Contains(energy));
 
-            var creature = applicator.ApplyTo(baseCreature, null);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
@@ -608,7 +626,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 f.Name == FeatConstants.SpecialQualities.EnergyResistance
                 && f.Foci.Contains(energy));
 
-            var creature = applicator.ApplyTo(baseCreature, null);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
@@ -670,7 +688,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Alignment))
                 .Returns(specialQualities);
 
-            var creature = applicator.ApplyTo(baseCreature, null);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length));
@@ -729,7 +747,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Alignment))
                 .Returns(specialQualities);
 
-            var creature = applicator.ApplyTo(baseCreature, null);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
@@ -789,7 +807,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Alignment))
                 .Returns(specialQualities);
 
-            var creature = applicator.ApplyTo(baseCreature, null);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
@@ -849,7 +867,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Alignment))
                 .Returns(specialQualities);
 
-            var creature = applicator.ApplyTo(baseCreature, null);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length));
@@ -880,7 +898,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(new[] { smiteGood });
 
-            var creature = applicator.ApplyTo(baseCreature, null);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(adjusted).And.AtLeast(3));
 
@@ -940,7 +958,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(new[] { smiteGood });
 
-            var creature = applicator.ApplyTo(baseCreature, null);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(3));
             Assert.That(creature.Abilities[AbilityConstants.Intelligence].BaseScore, Is.Zero);
@@ -969,7 +987,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(new[] { smiteGood });
 
-            var creature = applicator.ApplyTo(baseCreature, null);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(hitDiceQuantity));
             Assert.That(creature.ChallengeRating, Is.EqualTo(adjusted));
@@ -1040,9 +1058,35 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(new[] { smiteGood });
 
-            var creature = applicator.ApplyTo(baseCreature, null);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Alignment.Full, Is.EqualTo(adjusted));
+        }
+
+        [Test]
+        public void ApplyTo_GetPresetAlignment()
+        {
+            baseCreature.Alignment.Lawfulness = "original";
+            baseCreature.Alignment.Goodness = "alignment";
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Good",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.FiendishCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var creature = applicator.ApplyTo(baseCreature, false, alignment: "preset Evil");
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Alignment.Full, Is.EqualTo("preset Evil"));
         }
 
         [TestCase(null, null)]
@@ -1070,9 +1114,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(new[] { smiteGood });
 
-            var creature = applicator.ApplyTo(baseCreature, null);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.LevelAdjustment, Is.EqualTo(adjusted));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment)
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public async Task ApplyToAsync_ReturnsCreature_WithFilters()
+        {
+            Assert.Fail("not yet written");
         }
 
         [TestCase(CreatureConstants.Types.Aberration, CreatureConstants.Types.Aberration)]
@@ -1109,7 +1171,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(new[] { smiteGood });
 
-            var creature = await applicator.ApplyToAsync(baseCreature, null);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Type.Name, Is.EqualTo(adjusted));
             if (original == adjusted)
@@ -1151,7 +1213,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(new[] { smiteGood });
 
-            var creature = await applicator.ApplyToAsync(baseCreature, null);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Size, Is.EqualTo("my size"));
         }
@@ -1210,7 +1272,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(new[] { smiteGood });
 
-            var creature = await applicator.ApplyToAsync(baseCreature, null);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalAttacks.Length + 1));
             Assert.That(creature.Attacks.Select(a => a.Name), Is.SupersetOf(originalAttacks.Select(a => a.Name)));
@@ -1262,7 +1324,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Alignment))
                 .Returns(specialQualities);
 
-            var creature = await applicator.ApplyToAsync(baseCreature, null);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length));
@@ -1319,7 +1381,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Alignment))
                 .Returns(specialQualities);
 
-            var creature = await applicator.ApplyToAsync(baseCreature, null);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
@@ -1378,7 +1440,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Alignment))
                 .Returns(specialQualities);
 
-            var creature = await applicator.ApplyToAsync(baseCreature, null);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
@@ -1437,7 +1499,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Alignment))
                 .Returns(specialQualities);
 
-            var creature = await applicator.ApplyToAsync(baseCreature, null);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
@@ -1496,7 +1558,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Alignment))
                 .Returns(specialQualities);
 
-            var creature = await applicator.ApplyToAsync(baseCreature, null);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
@@ -1561,7 +1623,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 f.Name == FeatConstants.SpecialQualities.EnergyResistance
                 && f.Foci.Contains(energy));
 
-            var creature = await applicator.ApplyToAsync(baseCreature, null);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
@@ -1626,7 +1688,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 f.Name == FeatConstants.SpecialQualities.EnergyResistance
                 && f.Foci.Contains(energy));
 
-            var creature = await applicator.ApplyToAsync(baseCreature, null);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
@@ -1688,7 +1750,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Alignment))
                 .Returns(specialQualities);
 
-            var creature = await applicator.ApplyToAsync(baseCreature, null);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length));
@@ -1747,7 +1809,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Alignment))
                 .Returns(specialQualities);
 
-            var creature = await applicator.ApplyToAsync(baseCreature, null);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
@@ -1807,7 +1869,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Alignment))
                 .Returns(specialQualities);
 
-            var creature = await applicator.ApplyToAsync(baseCreature, null);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
@@ -1867,7 +1929,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Alignment))
                 .Returns(specialQualities);
 
-            var creature = await applicator.ApplyToAsync(baseCreature, null);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length));
@@ -1898,7 +1960,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(new[] { smiteGood });
 
-            var creature = await applicator.ApplyToAsync(baseCreature, null);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(adjusted).And.AtLeast(3));
 
@@ -1936,7 +1998,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(new[] { smiteGood });
 
-            var creature = await applicator.ApplyToAsync(baseCreature, null);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(3));
             Assert.That(creature.Abilities[AbilityConstants.Intelligence].BaseScore, Is.Zero);
@@ -1965,7 +2027,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(new[] { smiteGood });
 
-            var creature = await applicator.ApplyToAsync(baseCreature, null);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(hitDiceQuantity));
             Assert.That(creature.ChallengeRating, Is.EqualTo(adjusted));
@@ -2000,9 +2062,35 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(new[] { smiteGood });
 
-            var creature = await applicator.ApplyToAsync(baseCreature, null);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Alignment.Full, Is.EqualTo(adjusted));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GetPresetAlignment()
+        {
+            baseCreature.Alignment.Lawfulness = "original";
+            baseCreature.Alignment.Goodness = "alignment";
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Good",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.FiendishCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var creature = await applicator.ApplyToAsync(baseCreature, false, alignment: "preset Evil");
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Alignment.Full, Is.EqualTo("preset Evil"));
         }
 
         [TestCase(null, null)]
@@ -2030,7 +2118,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(new[] { smiteGood });
 
-            var creature = await applicator.ApplyToAsync(baseCreature, null);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.LevelAdjustment, Is.EqualTo(adjusted));
         }
@@ -2061,7 +2149,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(new[] { smiteGood });
 
-            var creature = applicator.ApplyTo(baseCreature, null);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2094,7 +2182,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(new[] { smiteGood });
 
-            var creature = applicator.ApplyTo(baseCreature, null);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages, Is.Empty);
         }
@@ -2126,7 +2214,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(new[] { smiteGood });
 
-            var creature = applicator.ApplyTo(baseCreature, null);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2159,7 +2247,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(new[] { smiteGood });
 
-            var creature = await applicator.ApplyToAsync(baseCreature, null);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2192,7 +2280,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(new[] { smiteGood });
 
-            var creature = await applicator.ApplyToAsync(baseCreature, null);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages, Is.Empty);
         }
@@ -2224,7 +2312,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(new[] { smiteGood });
 
-            var creature = await applicator.ApplyToAsync(baseCreature, null);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2258,7 +2346,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Equipment))
                 .Returns(newMagic);
 
-            var creature = applicator.ApplyTo(baseCreature, null);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Magic, Is.EqualTo(newMagic));
         }
@@ -2290,7 +2378,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Equipment))
                 .Returns(newMagic);
 
-            var creature = await applicator.ApplyToAsync(baseCreature, null);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Magic, Is.EqualTo(newMagic));
         }
@@ -2313,7 +2401,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(new[] { smiteGood });
 
-            var creature = applicator.ApplyTo(baseCreature, null);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.FiendishCreature));
         }
@@ -2336,7 +2424,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
                 .Returns(new[] { smiteGood });
 
-            var creature = await applicator.ApplyToAsync(baseCreature, null);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.FiendishCreature));
         }

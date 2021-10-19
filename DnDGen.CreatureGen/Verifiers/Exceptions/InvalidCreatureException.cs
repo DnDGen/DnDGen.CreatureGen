@@ -13,13 +13,13 @@ namespace DnDGen.CreatureGen.Verifiers.Exceptions
         private readonly string type;
         private readonly string alignment;
 
-        public InvalidCreatureException(bool asCharacter, string creature = null, string challengeRating = null, string template = null, string type = null, string alignment = null)
+        public InvalidCreatureException(bool asCharacter, string creature = null, string template = null, string type = null, string challengeRating = null, string alignment = null)
         {
             this.creature = creature;
-            this.challengeRating = challengeRating;
-            this.asCharacter = asCharacter;
             this.template = template;
+            this.asCharacter = asCharacter;
             this.type = type;
+            this.challengeRating = challengeRating;
             this.alignment = alignment;
         }
 

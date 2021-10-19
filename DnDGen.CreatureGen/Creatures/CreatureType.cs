@@ -18,5 +18,7 @@ namespace DnDGen.CreatureGen.Creatures
         {
             return creatureType == Name || SubTypes.Contains(creatureType);
         }
+
+        public IEnumerable<string> AllTypes => new[] { Name }.Union(SubTypes);
     }
 }

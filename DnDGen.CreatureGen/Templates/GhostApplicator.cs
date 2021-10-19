@@ -6,9 +6,9 @@ using DnDGen.CreatureGen.Generators.Attacks;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Selectors.Collections;
-using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using DnDGen.TreasureGen.Items;
@@ -66,8 +66,20 @@ namespace DnDGen.CreatureGen.Templates
             };
         }
 
-        public Creature ApplyTo(Creature creature, string presetAlignment)
+        public Creature ApplyTo(Creature creature, bool asCharacter, string type = null, string challengeRating = null, string alignment = null)
         {
+            if (!IsCompatible(
+                creature.Type.AllTypes,
+                new[] { creature.Alignment.Full },
+                creature.Abilities[AbilityConstants.Charisma],
+                creature.ChallengeRating,
+                type,
+                challengeRating,
+                alignment))
+            {
+                throw new InvalidCreatureException(asCharacter, creature.Name, CreatureConstants.Templates.Ghost, type, challengeRating, alignment);
+            }
+
             // Template
             UpdateCreatureTemplate(creature);
 
@@ -312,8 +324,20 @@ namespace DnDGen.CreatureGen.Templates
             creature.Template = CreatureConstants.Templates.Ghost;
         }
 
-        public async Task<Creature> ApplyToAsync(Creature creature, string presetAlignment)
+        public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, string type = null, string challengeRating = null, string alignment = null)
         {
+            if (!IsCompatible(
+                creature.Type.AllTypes,
+                new[] { creature.Alignment.Full },
+                creature.Abilities[AbilityConstants.Charisma],
+                creature.ChallengeRating,
+                type,
+                challengeRating,
+                alignment))
+            {
+                throw new InvalidCreatureException(asCharacter, creature.Name, CreatureConstants.Templates.Ghost, type, challengeRating, alignment);
+            }
+
             var tasks = new List<Task>();
 
             // Template
@@ -386,6 +410,7 @@ namespace DnDGen.CreatureGen.Templates
             var allData = creatureDataSelector.SelectAll();
             var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
             var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
+            var allAlignments = collectionSelector.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups);
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
@@ -414,7 +439,16 @@ namespace DnDGen.CreatureGen.Templates
             }
 
             var templateCreatures = filteredBaseCreatures
-                .Where(c => IsCompatible(allTypes[c], c, allData[c], allHitDice[c], asCharacter, type, challengeRating));
+                .Where(c => IsCompatible(
+                    allTypes[c],
+                    allAlignments[c + GroupConstants.Exploded],
+                    c,
+                    allData[c].ChallengeRating,
+                    allHitDice[c],
+                    asCharacter,
+                    type,
+                    challengeRating,
+                    alignment));
 
             return templateCreatures;
         }
@@ -431,13 +465,45 @@ namespace DnDGen.CreatureGen.Templates
 
         private bool IsCompatible(
             IEnumerable<string> types,
+            IEnumerable<string> alignments,
             string creature,
-            CreatureDataSelection creatureData,
+            string creatureChallengeRating,
             double creatureHitDiceQuantity,
             bool asCharacter,
             string type = null,
-            string challengeRating = null)
+            string challengeRating = null,
+            string alignment = null)
         {
+            var abilityAdjustments = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, creature);
+            var charismaAdjustment = abilityAdjustments.FirstOrDefault(a => a.Type == AbilityConstants.Charisma);
+            if (charismaAdjustment == null)
+                return false;
+
+            var charisma = new Ability(AbilityConstants.Charisma);
+            charisma.RacialAdjustment = charismaAdjustment.Amount;
+
+            var creatureType = types.First();
+
+            if (asCharacter && creatureHitDiceQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
+            {
+                creatureChallengeRating = ChallengeRatingConstants.CR0;
+            }
+
+            return IsCompatible(types, alignments, charisma, creatureChallengeRating, type, challengeRating, alignment);
+        }
+
+        private bool IsCompatible(
+            IEnumerable<string> types,
+            IEnumerable<string> alignments,
+            Ability charisma,
+            string creatureChallengeRating,
+            string type = null,
+            string challengeRating = null,
+            string alignment = null)
+        {
+            if (!IsCompatible(types, charisma))
+                return false;
+
             if (!string.IsNullOrEmpty(type))
             {
                 var updatedTypes = GetPotentialTypes(types);
@@ -447,46 +513,29 @@ namespace DnDGen.CreatureGen.Templates
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
-                var cr = GetPotentialChallengeRating(asCharacter, types, creatureHitDiceQuantity, creatureData);
+                var cr = UpdateCreatureChallengeRating(creatureChallengeRating);
                 if (cr != challengeRating)
                     return false;
             }
 
-            if (!IsCompatible(types, creature))
-                return false;
+            if (!string.IsNullOrEmpty(alignment))
+            {
+                if (!alignments.Contains(alignment))
+                    return false;
+            }
 
             return true;
         }
 
-        private bool IsCompatible(IEnumerable<string> types, string creature)
+        private bool IsCompatible(IEnumerable<string> types, Ability charisma)
         {
             if (!creatureTypes.Contains(types.First()))
                 return false;
 
-            var abilityAdjustments = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, creature);
-            var charismaAdjustment = abilityAdjustments.FirstOrDefault(a => a.Type == AbilityConstants.Charisma);
-            if (charismaAdjustment == null)
+            if (charisma == null)
                 return false;
 
-            return charismaAdjustment.Amount + Ability.DefaultScore >= 6;
-        }
-
-        private string GetPotentialChallengeRating(
-            bool asCharacter,
-            IEnumerable<string> types,
-            double creatureQuantity,
-            CreatureDataSelection creatureData)
-        {
-            var creatureType = types.First();
-
-            if (asCharacter && creatureQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
-            {
-                return UpdateCreatureChallengeRating(ChallengeRatingConstants.CR0);
-            }
-
-            var adjustedChallengeRating = UpdateCreatureChallengeRating(creatureData.ChallengeRating);
-
-            return adjustedChallengeRating;
+            return charisma.FullScore >= 6;
         }
 
         private bool CreatureInRange(

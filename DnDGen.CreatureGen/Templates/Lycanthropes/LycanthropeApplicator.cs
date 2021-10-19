@@ -12,6 +12,7 @@ using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using System;
@@ -71,10 +72,25 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             };
         }
 
-        public Creature ApplyTo(Creature creature, string presetAlignment)
+        public Creature ApplyTo(Creature creature, bool asCharacter, string type = null, string challengeRating = null, string alignment = null)
         {
             var animalCreatureType = new CreatureType { Name = CreatureConstants.Types.Animal };
             var animalData = creatureDataSelector.SelectFor(AnimalSpecies);
+            var animalHitDice = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, AnimalSpecies);
+
+            if (!IsCompatible(
+                creature.Type.AllTypes,
+                new[] { creature.Alignment.Full },
+                creature.Size,
+                creature.ChallengeRating,
+                animalData.Size,
+                animalHitDice,
+                type,
+                challengeRating,
+                alignment))
+            {
+                throw new InvalidCreatureException(asCharacter, creature.Name, $"Lycanthrope ({LycanthropeSpecies})", type, challengeRating, alignment);
+            }
 
             // Template
             UpdateCreatureTemplate(creature);
@@ -553,10 +569,26 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             creature.Template = LycanthropeSpecies;
         }
 
-        public async Task<Creature> ApplyToAsync(Creature creature, string presetAlignment)
+        public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, string type = null, string challengeRating = null, string alignment = null)
         {
             var animalCreatureType = new CreatureType { Name = CreatureConstants.Types.Animal };
             var animalData = creatureDataSelector.SelectFor(AnimalSpecies);
+            var animalHitDice = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, AnimalSpecies);
+
+            if (!IsCompatible(
+                creature.Type.AllTypes,
+                new[] { creature.Alignment.Full },
+                creature.Size,
+                creature.ChallengeRating,
+                animalData.Size,
+                animalHitDice,
+                type,
+                challengeRating,
+                alignment))
+            {
+                throw new InvalidCreatureException(asCharacter, creature.Name, $"Lycanthrope ({LycanthropeSpecies})", type, challengeRating, alignment);
+            }
+
             var tasks = new List<Task>();
 
             // Template
@@ -675,6 +707,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             var allData = creatureDataSelector.SelectAll();
             var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
             var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
+            var allAlignments = collectionSelector.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups);
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
@@ -703,7 +736,18 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             }
 
             var templateCreatures = filteredBaseCreatures
-                .Where(c => IsCompatible(allTypes[c], allData[c], allData[AnimalSpecies], allHitDice[c], allHitDice[AnimalSpecies], asCharacter, type, challengeRating));
+                .Where(c => IsCompatible(
+                    allTypes[c],
+                    allAlignments[c + GroupConstants.Exploded],
+                    allData[c].Size,
+                    allData[c].ChallengeRating,
+                    allData[AnimalSpecies].Size,
+                    allHitDice[c],
+                    allHitDice[AnimalSpecies],
+                    asCharacter,
+                    type,
+                    challengeRating,
+                    alignment));
 
             return templateCreatures;
         }
@@ -720,15 +764,39 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
 
         private bool IsCompatible(
             IEnumerable<string> types,
-            CreatureDataSelection creatureData,
-            CreatureDataSelection animalData,
+            IEnumerable<string> alignments,
+            string creatureSize,
+            string creatureChallengeRating,
+            string animalSize,
             double creatureHitDiceQuantity,
             double animalHitDiceQuantity,
             bool asCharacter,
             string type = null,
-            string challengeRating = null)
+            string challengeRating = null,
+            string alignment = null)
         {
-            if (!IsCompatible(types, creatureData, animalData))
+            var creatureType = types.First();
+
+            if (asCharacter && creatureHitDiceQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
+            {
+                creatureChallengeRating = ChallengeRatingConstants.CR0;
+            }
+
+            return IsCompatible(types, alignments, creatureSize, creatureChallengeRating, animalSize, animalHitDiceQuantity, type, challengeRating, alignment);
+        }
+
+        private bool IsCompatible(
+            IEnumerable<string> types,
+            IEnumerable<string> alignments,
+            string creatureSize,
+            string creatureChallengeRating,
+            string animalSize,
+            double animalHitDiceQuantity,
+            string type = null,
+            string challengeRating = null,
+            string alignment = null)
+        {
+            if (!IsCompatible(types, creatureSize, animalSize))
                 return false;
 
             if (!string.IsNullOrEmpty(type))
@@ -740,46 +808,33 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
-                var cr = GetPotentialChallengeRating(asCharacter, types, creatureHitDiceQuantity, animalHitDiceQuantity, creatureData);
+                var cr = UpdateCreatureChallengeRating(creatureChallengeRating, animalHitDiceQuantity);
                 if (cr != challengeRating)
+                    return false;
+            }
+
+            if (!string.IsNullOrEmpty(alignment))
+            {
+                if (!alignments.Contains(alignment))
                     return false;
             }
 
             return true;
         }
 
-        private bool IsCompatible(IEnumerable<string> types, CreatureDataSelection creatureData, CreatureDataSelection animalData)
+        private bool IsCompatible(IEnumerable<string> types, string creatureSize, string animalSize)
         {
             if (!creatureTypes.Contains(types.First()))
                 return false;
 
             var sizes = SizeConstants.GetOrdered();
-            var creatureIndex = Array.IndexOf(sizes, creatureData.Size);
-            var animalIndex = Array.IndexOf(sizes, animalData.Size);
+            var creatureIndex = Array.IndexOf(sizes, creatureSize);
+            var animalIndex = Array.IndexOf(sizes, animalSize);
 
             if (Math.Abs(creatureIndex - animalIndex) > 1)
                 return false;
 
             return true;
-        }
-
-        private string GetPotentialChallengeRating(
-            bool asCharacter,
-            IEnumerable<string> types,
-            double creatureQuantity,
-            double animalQuantity,
-            CreatureDataSelection creatureData)
-        {
-            var creatureType = types.First();
-
-            if (asCharacter && creatureQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
-            {
-                return UpdateCreatureChallengeRating(ChallengeRatingConstants.CR0, animalQuantity);
-            }
-
-            var adjustedChallengeRating = UpdateCreatureChallengeRating(creatureData.ChallengeRating, animalQuantity);
-
-            return adjustedChallengeRating;
         }
 
         private bool CreatureInRange(
