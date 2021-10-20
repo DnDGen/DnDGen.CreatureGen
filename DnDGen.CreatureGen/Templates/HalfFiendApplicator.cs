@@ -512,7 +512,7 @@ namespace DnDGen.CreatureGen.Templates
             if (!string.IsNullOrEmpty(alignment))
             {
                 var presetAlignment = new Alignment(alignment);
-                if (presetAlignment.Goodness != AlignmentConstants.Good)
+                if (presetAlignment.Goodness != AlignmentConstants.Evil)
                 {
                     return Enumerable.Empty<string>();
                 }
