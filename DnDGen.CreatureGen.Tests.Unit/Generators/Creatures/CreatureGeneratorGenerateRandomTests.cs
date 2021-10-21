@@ -2156,9 +2156,34 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template")).Returns(mockWrongTemplateApplicator.Object);
 
             var templateCreature = new Creature();
-            mockTemplateApplicator.Setup(a => a.ApplyTo(It.IsAny<Creature>(), null)).Returns(templateCreature);
+            mockTemplateApplicator.Setup(a => a.ApplyTo(It.IsAny<Creature>(), asCharacter, null, null, null)).Returns(templateCreature);
 
             var creature = creatureGenerator.GenerateRandom(asCharacter);
+            Assert.That(creature, Is.EqualTo(templateCreature));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void GenerateRandom_GenerateCreatureModifiedByTemplate_WithFilters(bool asCharacter)
+        {
+            var mockTemplateApplicator = SetUpCreature("creature", "my template", asCharacter);
+
+            var templates = new[] { "wrong template", "my template" };
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
+                .Returns(templates);
+
+            var mockWrongTemplateApplicator = new Mock<TemplateApplicator>();
+            mockWrongTemplateApplicator
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null, null, null))
+                .Returns(Enumerable.Empty<string>());
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template")).Returns(mockWrongTemplateApplicator.Object);
+
+            var templateCreature = new Creature();
+            mockTemplateApplicator.Setup(a => a.ApplyTo(It.IsAny<Creature>(), asCharacter, "my type", "my challenge rating", "my alignment")).Returns(templateCreature);
+
+            var creature = creatureGenerator.GenerateRandom(asCharacter, type: "my type", challengeRating: "my challenge rating", alignment: "my alignment");
             Assert.That(creature, Is.EqualTo(templateCreature));
         }
 

@@ -69,7 +69,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid)
                 .Build();
+
+            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore += 6;
 
             var speeds = new Dictionary<string, Measurement>();
             speeds[SpeedConstants.Fly] = new Measurement("furlongs");
@@ -438,7 +441,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(AbilityConstants.Charisma)]
         [TestCase(AbilityConstants.Constitution)]
         [TestCase(AbilityConstants.Dexterity)]
-        [TestCase(AbilityConstants.Intelligence)]
+        [TestCase(AbilityConstants.Intelligence, Ignore = "Intelligence is required")]
         [TestCase(AbilityConstants.Strength)]
         [TestCase(AbilityConstants.Wisdom)]
         public void ApplyTo_AbilitiesImprove_DoNotImproveMissingAbility(string ability)

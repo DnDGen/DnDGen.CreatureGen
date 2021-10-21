@@ -79,24 +79,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void ApplyTo_GainsCommon()
-        {
-            var originalLanguages = baseCreature.Languages.ToArray();
-
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(
-                    TableNameConstants.Collection.LanguageGroups,
-                    CreatureConstants.Templates.Lich + LanguageConstants.Groups.Automatic))
-                .Returns("Spoopy");
-
-            var creature = applicator.ApplyTo(baseCreature, false);
-            Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
-            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
-                .And.Contains("Spoopy"));
-        }
-
-        [Test]
         public void ApplyTo_ThrowsException_WhenCreatureNotCompatible()
         {
             Assert.Fail("not yet written");
@@ -112,6 +94,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void ApplyTo_ReturnsCreature_WithFilters()
         {
             Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void ApplyTo_GainsCommon()
+        {
+            var originalLanguages = baseCreature.Languages.ToArray();
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    TableNameConstants.Collection.LanguageGroups,
+                    CreatureConstants.Templates.Lich + LanguageConstants.Groups.Automatic))
+                .Returns("Spoopy");
+
+            var creature = applicator.ApplyTo(baseCreature, false);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
+            Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
+                .And.Contains("Spoopy"));
         }
 
         [Test]

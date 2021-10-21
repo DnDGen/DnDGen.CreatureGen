@@ -81,7 +81,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             this.languageGenerator = languageGenerator;
         }
 
-        public Creature Generate(string creatureName, string template, bool asCharacter) => Generate(creatureName, template, asCharacter, true, null);
+        public Creature Generate(string creatureName, string template, bool asCharacter) => Generate(creatureName, template, asCharacter, true);
 
         public (string Creature, string Template) GenerateRandomName(
             bool asCharacter,
@@ -133,7 +133,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var randomCreature = GenerateRandomName(asCharacter, template, type, challengeRating);
             var allowAdvanced = string.IsNullOrEmpty(challengeRating);
 
-            var creature = Generate(randomCreature.Creature, randomCreature.Template, asCharacter, allowAdvanced, alignment);
+            var creature = Generate(randomCreature.Creature, randomCreature.Template, asCharacter, allowAdvanced, type, challengeRating, alignment);
 
             return creature;
         }
@@ -196,16 +196,23 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return (randomCreature, template);
         }
 
-        private Creature Generate(string creatureName, string template, bool asCharacter, bool allowAdvancement, string presetAlignment)
+        private Creature Generate(
+            string creatureName,
+            string template,
+            bool asCharacter,
+            bool allowAdvancement,
+            string type = null,
+            string challengeRating = null,
+            string alignment = null)
         {
             var compatible = creatureVerifier.VerifyCompatibility(asCharacter, creature: creatureName, template: template);
             if (!compatible)
                 throw new InvalidCreatureException(asCharacter, creature: creatureName, template: template);
 
-            var creature = GeneratePrototype(creatureName, asCharacter, allowAdvancement, presetAlignment);
+            var creature = GeneratePrototype(creatureName, asCharacter, allowAdvancement, alignment);
 
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
-            creature = templateApplicator.ApplyTo(creature, presetAlignment);
+            creature = templateApplicator.ApplyTo(creature, asCharacter, type, challengeRating, alignment);
 
             return creature;
         }
@@ -369,26 +376,33 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return creatureType;
         }
 
-        public async Task<Creature> GenerateAsync(string creatureName, string template, bool asCharacter) => await GenerateAsync(creatureName, template, asCharacter, true, null);
+        public async Task<Creature> GenerateAsync(string creatureName, string template, bool asCharacter) => await GenerateAsync(creatureName, template, asCharacter, true);
 
         public async Task<Creature> GenerateRandomAsync(bool asCharacter, string template = null, string type = null, string challengeRating = null, string alignment = null)
         {
             var randomCreature = GenerateRandomName(asCharacter, template, type, challengeRating);
             var allowAdvanced = string.IsNullOrEmpty(challengeRating);
 
-            return await GenerateAsync(randomCreature.Creature, randomCreature.Template, asCharacter, allowAdvanced, alignment);
+            return await GenerateAsync(randomCreature.Creature, randomCreature.Template, asCharacter, allowAdvanced, type, challengeRating, alignment);
         }
 
-        private async Task<Creature> GenerateAsync(string creatureName, string template, bool asCharacter, bool allowAdvancement, string presetAlignment)
+        private async Task<Creature> GenerateAsync(
+            string creatureName,
+            string template,
+            bool asCharacter,
+            bool allowAdvancement,
+            string type = null,
+            string challengeRating = null,
+            string alignment = null)
         {
             var compatible = creatureVerifier.VerifyCompatibility(asCharacter, creature: creatureName, template: template);
             if (!compatible)
                 throw new InvalidCreatureException(asCharacter, creature: creatureName, template: template);
 
-            var creature = GeneratePrototype(creatureName, asCharacter, allowAdvancement, presetAlignment);
+            var creature = GeneratePrototype(creatureName, asCharacter, allowAdvancement, alignment);
 
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
-            creature = await templateApplicator.ApplyToAsync(creature, presetAlignment);
+            creature = await templateApplicator.ApplyToAsync(creature, asCharacter, type, challengeRating, alignment);
 
             return creature;
         }

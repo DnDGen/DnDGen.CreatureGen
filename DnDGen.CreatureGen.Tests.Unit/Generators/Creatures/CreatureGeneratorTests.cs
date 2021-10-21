@@ -238,11 +238,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, typeFilter, crFilter, alignmentFilter))
                 .Returns((IEnumerable<string> cc, bool asC, string t, string cr) => cc.Intersect(new[] { creatureName }));
             defaultTemplateApplicator
-                .Setup(a => a.ApplyTo(It.IsAny<Creature>(), alignmentFilter))
+                .Setup(a => a.ApplyTo(It.IsAny<Creature>(), asCharacter, typeFilter, crFilter, alignmentFilter))
                 .Callback((Creature c) => c.Template = templateName)
                 .Returns((Creature c) => c);
             defaultTemplateApplicator
-                .Setup(a => a.ApplyToAsync(It.IsAny<Creature>(), alignmentFilter))
+                .Setup(a => a.ApplyToAsync(It.IsAny<Creature>(), asCharacter, typeFilter, crFilter, alignmentFilter))
                 .Callback((Creature c) => c.Template = templateName)
                 .ReturnsAsync((Creature c) => c);
 

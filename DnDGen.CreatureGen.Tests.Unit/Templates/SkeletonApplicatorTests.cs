@@ -61,6 +61,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
                 .WithHitDiceQuantityNoMoreThan(20)
+                .WithCreatureType(CreatureConstants.Types.Humanoid)
                 .Build();
 
             mockDice

@@ -1471,7 +1471,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("template")).Returns(mockTemplateApplicator.Object);
 
             var templateCreature = new Creature();
-            mockTemplateApplicator.Setup(a => a.ApplyToAsync(It.IsAny<Creature>(), null)).ReturnsAsync(templateCreature);
+            mockTemplateApplicator.Setup(a => a.ApplyToAsync(It.IsAny<Creature>(), asCharacter, null, null, null)).ReturnsAsync(templateCreature);
 
             var creature = await creatureGenerator.GenerateAsync("creature", "template", asCharacter);
             Assert.That(creature, Is.EqualTo(templateCreature));
