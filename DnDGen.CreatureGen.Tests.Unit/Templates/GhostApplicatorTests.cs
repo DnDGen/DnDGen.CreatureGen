@@ -67,6 +67,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .WithTestValues()
                 .CanUseEquipment(false)
                 .WithCreatureType(CreatureConstants.Types.Humanoid)
+                .WithMinimumAbility(AbilityConstants.Charisma, 6)
                 .Build();
 
             mockDice

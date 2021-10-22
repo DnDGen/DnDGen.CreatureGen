@@ -139,6 +139,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                             .Union(skeletonQualities))),
                     baseCreature.Abilities))
                 .Returns(skeletonAttacks);
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton))
+                .Returns(new[] { "my wrong creature", baseCreature.Name, "my other creature" });
         }
 
         [Test]

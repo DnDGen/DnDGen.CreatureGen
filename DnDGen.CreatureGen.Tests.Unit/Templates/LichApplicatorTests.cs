@@ -53,6 +53,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
                 .WithCreatureType(CreatureConstants.Types.Humanoid)
+                .WithLevelAdjustment(0)
                 .Build();
 
             applicator = new LichApplicator(
@@ -401,7 +402,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Skills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Evil)))
                 .Returns(lichQualities);
 
             var originalCount = baseCreature.SpecialQualities.Count();
@@ -429,7 +430,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Skills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Evil)))
                 .Returns(lichQualities);
 
             var originalCount = baseCreature.SpecialQualities.Count();
@@ -659,7 +660,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_GetPresetAlignment()
         {
-            baseCreature.Alignment.Lawfulness = "original";
+            baseCreature.Alignment.Lawfulness = "preset";
             baseCreature.Alignment.Goodness = "alignment";
 
             var creature = applicator.ApplyTo(baseCreature, false, alignment: "preset Evil");
@@ -677,6 +678,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void ApplyTo_ImproveLevelAdjustment(int? original, int? adjusted)
         {
             baseCreature.LevelAdjustment = original;
+            baseCreature.CasterLevel = 11;
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
@@ -1250,7 +1252,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_GetPresetAlignment()
         {
-            baseCreature.Alignment.Lawfulness = "original";
+            baseCreature.Alignment.Lawfulness = "preset";
             baseCreature.Alignment.Goodness = "alignment";
 
             var creature = await applicator.ApplyToAsync(baseCreature, false, alignment: "preset Evil");

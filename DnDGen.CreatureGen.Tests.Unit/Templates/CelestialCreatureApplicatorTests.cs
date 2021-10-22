@@ -12,6 +12,7 @@ using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
+using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
 using Moq;
 using Newtonsoft.Json;
@@ -20,6 +21,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Templates
@@ -54,25 +56,63 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 mockAdjustmentSelector.Object,
                 mockCreatureDataSelector.Object);
 
-            baseCreature = new CreatureBuilder().WithTestValues().Build();
+            baseCreature = new CreatureBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid)
+                .Build();
         }
 
         [Test]
         public void ApplyTo_ThrowsException_WhenCreatureNotCompatible()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Type.Name = CreatureConstants.Types.Outsider;
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tAs Character: {false}");
+            message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.CelestialCreature}");
+
+            Assert.That(() => applicator.ApplyTo(baseCreature, false),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
-        [Test]
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.NeutralGood)]
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, AlignmentConstants.LawfulGood)]
+        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR1, AlignmentConstants.LawfulGood)]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.LawfulGood)]
         public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment)
         {
-            Assert.Fail("not yet written");
+            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
+            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.HitPoints.HitDice[0].Quantity = 1;
+            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
+            baseCreature.Alignment = new Alignment(AlignmentConstants.LawfulNeutral);
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tAs Character: {asCharacter}");
+            message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.CelestialCreature}");
+            message.AppendLine($"\tType: {type}");
+            message.AppendLine($"\tCR: {challengeRating}");
+            message.AppendLine($"\tAlignment: {alignment}");
+
+            Assert.That(() => applicator.ApplyTo(baseCreature, asCharacter, type, challengeRating, alignment),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
         [Test]
         public void ApplyTo_ReturnsCreature_WithFilters()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
+            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.HitPoints.HitDice[0].Quantity = 1;
+            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
+            baseCreature.Alignment = new Alignment(AlignmentConstants.LawfulNeutral);
+
+            var creature = applicator.ApplyTo(baseCreature, false, "subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.LawfulGood);
+            Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.CelestialCreature));
         }
 
         [TestCase(CreatureConstants.Types.Aberration, CreatureConstants.Types.Aberration)]
@@ -1078,7 +1118,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_GetPresetAlignment()
         {
-            baseCreature.Alignment.Lawfulness = "original";
+            baseCreature.Alignment.Lawfulness = "preset";
             baseCreature.Alignment.Goodness = "alignment";
 
             var smiteEvil = new Attack
@@ -1134,19 +1174,54 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Type.Name = CreatureConstants.Types.Outsider;
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tAs Character: {false}");
+            message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.CelestialCreature}");
+
+            Assert.That(async () => await applicator.ApplyToAsync(baseCreature, false),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
-        [Test]
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.NeutralGood)]
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, AlignmentConstants.LawfulGood)]
+        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR1, AlignmentConstants.LawfulGood)]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.LawfulGood)]
         public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment)
         {
-            Assert.Fail("not yet written");
+            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
+            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.HitPoints.HitDice[0].Quantity = 1;
+            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
+            baseCreature.Alignment = new Alignment(AlignmentConstants.LawfulNeutral);
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tAs Character: {asCharacter}");
+            message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.CelestialCreature}");
+            message.AppendLine($"\tType: {type}");
+            message.AppendLine($"\tCR: {challengeRating}");
+            message.AppendLine($"\tAlignment: {alignment}");
+
+            Assert.That(async () => await applicator.ApplyToAsync(baseCreature, asCharacter, type, challengeRating, alignment),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
         [Test]
         public async Task ApplyToAsync_ReturnsCreature_WithFilters()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
+            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.HitPoints.HitDice[0].Quantity = 1;
+            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
+            baseCreature.Alignment = new Alignment(AlignmentConstants.LawfulNeutral);
+
+            var creature = await applicator.ApplyToAsync(baseCreature, false, "subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.LawfulGood);
+            Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.CelestialCreature));
         }
 
         [TestCase(CreatureConstants.Types.Aberration, CreatureConstants.Types.Aberration)]
@@ -2094,7 +2169,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_GetPresetAlignment()
         {
-            baseCreature.Alignment.Lawfulness = "original";
+            baseCreature.Alignment.Lawfulness = "preset";
             baseCreature.Alignment.Goodness = "alignment";
 
             var smiteEvil = new Attack

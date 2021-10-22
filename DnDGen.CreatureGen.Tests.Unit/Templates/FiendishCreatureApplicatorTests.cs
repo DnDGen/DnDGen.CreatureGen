@@ -54,7 +54,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 mockAdjustmentSelector.Object,
                 mockCreatureDataSelector.Object);
 
-            baseCreature = new CreatureBuilder().WithTestValues().Build();
+            baseCreature = new CreatureBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid)
+                .Build();
         }
 
         [Test]
@@ -1066,7 +1069,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_GetPresetAlignment()
         {
-            baseCreature.Alignment.Lawfulness = "original";
+            baseCreature.Alignment.Lawfulness = "preset";
             baseCreature.Alignment.Goodness = "alignment";
 
             var smiteEvil = new Attack
@@ -2070,7 +2073,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_GetPresetAlignment()
         {
-            baseCreature.Alignment.Lawfulness = "original";
+            baseCreature.Alignment.Lawfulness = "preset";
             baseCreature.Alignment.Goodness = "alignment";
 
             var smiteEvil = new Attack

@@ -70,9 +70,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
                 .WithCreatureType(CreatureConstants.Types.Humanoid)
+                .WithMinimumAbility(AbilityConstants.Intelligence, 6)
                 .Build();
-
-            baseCreature.Abilities[AbilityConstants.Intelligence].BaseScore += 6;
 
             var speeds = new Dictionary<string, Measurement>();
             speeds[SpeedConstants.Fly] = new Measurement("furlongs");
@@ -398,7 +397,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     newSkills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good)))
                 .Returns(newQualities);
 
             var originalCount = baseCreature.SpecialQualities.Count();
@@ -588,7 +587,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_GetPresetAlignment()
         {
-            baseCreature.Alignment.Lawfulness = "original";
+            baseCreature.Alignment.Lawfulness = "preset";
             baseCreature.Alignment.Goodness = "alignment";
 
             var creature = applicator.ApplyTo(baseCreature, false, alignment: "preset Good");
@@ -1036,7 +1035,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_GetPresetAlignment()
         {
-            baseCreature.Alignment.Lawfulness = "original";
+            baseCreature.Alignment.Lawfulness = "preset";
             baseCreature.Alignment.Goodness = "alignment";
 
             var creature = await applicator.ApplyToAsync(baseCreature, false, alignment: "preset Good");

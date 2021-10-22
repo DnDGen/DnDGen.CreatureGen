@@ -43,6 +43,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             return this;
         }
 
+        public CreatureBuilder WithLevelAdjustment(int? levelAdjustment)
+        {
+            creature.LevelAdjustment = levelAdjustment;
+
+            return this;
+        }
+
+        public CreatureBuilder WithMinimumAbility(string ability, int minValue)
+        {
+            while (creature.Abilities[ability].FullScore < minValue)
+            {
+                creature.Abilities[ability].BaseScore += minValue;
+            }
+
+            return this;
+        }
+
         public CreatureBuilder Clone(Creature source)
         {
             creature.Abilities = new Dictionary<string, Ability>();

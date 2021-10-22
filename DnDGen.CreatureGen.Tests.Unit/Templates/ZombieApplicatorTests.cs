@@ -151,6 +151,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                         f.IsEquivalentTo(baseCreature.SpecialQualities
                             .Union(zombieQualities)))))
                 .Returns(baseCreature.HitPoints);
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton))
+                .Returns(new[] { "my wrong creature", baseCreature.Name, "my other creature" });
         }
 
         [Test]
