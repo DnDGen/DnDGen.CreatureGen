@@ -335,6 +335,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             return this;
         }
 
+        public CreatureBuilder AddSubtype(string subtype)
+        {
+            creature.Type.SubTypes = creature.Type.SubTypes.Union(new[] { subtype });
+
+            return this;
+        }
+
+        public CreatureBuilder WithChallengeRating(string cr)
+        {
+            creature.ChallengeRating = cr;
+
+            return this;
+        }
+
+        public CreatureBuilder WithAlignment(string alignment)
+        {
+            creature.Alignment = new Alignment(alignment);
+
+            return this;
+        }
+
         private void RandomizeAbilities()
         {
             creature.Abilities = new Dictionary<string, Ability>();

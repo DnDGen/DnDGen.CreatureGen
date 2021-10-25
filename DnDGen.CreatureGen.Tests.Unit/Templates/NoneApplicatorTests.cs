@@ -4,12 +4,14 @@ using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
+using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
 using Moq;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Templates
@@ -33,21 +35,60 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
+        [Ignore("Creatures with no filters are always compatible for None template")]
         public void ApplyTo_ThrowsException_WhenCreatureNotCompatible()
         {
             Assert.Fail("not yet written");
         }
 
-        [Test]
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, "wrong alignment")]
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, "original alignment")]
+        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR1, "original alignment")]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR1, "original alignment", Ignore = "As Character doesn't affect already-generated creature compatiblity")]
         public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment)
         {
-            Assert.Fail("not yet written");
+            var creature = new CreatureBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid)
+                .AddSubtype("subtype 1")
+                .WithChallengeRating(ChallengeRatingConstants.CR1)
+                .WithAlignment("original alignment")
+                .Build();
+
+            var clone = new CreatureBuilder()
+                .Clone(creature)
+                .Build();
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tAs Character: {asCharacter}");
+            message.AppendLine($"\tCreature: {creature.Name}");
+            message.AppendLine($"\tTemplate: None");
+            message.AppendLine($"\tType: {type}");
+            message.AppendLine($"\tCR: {challengeRating}");
+            message.AppendLine($"\tAlignment: {alignment}");
+
+            Assert.That(() => templateApplicator.ApplyTo(clone, asCharacter, type, challengeRating, alignment),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
         [Test]
         public void ApplyTo_ReturnsCreature_WithFilters()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreatureBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid)
+                .AddSubtype("subtype 1")
+                .WithChallengeRating(ChallengeRatingConstants.CR1)
+                .WithAlignment("original alignment")
+                .Build();
+
+            var clone = new CreatureBuilder()
+                .Clone(creature)
+                .Build();
+
+            var templatedCreature = templateApplicator.ApplyTo(clone, false, "subtype 1", ChallengeRatingConstants.CR1, "original alignment");
+            Assert.That(templatedCreature, Is.EqualTo(clone));
         }
 
         [Test]
@@ -246,21 +287,60 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
+        [Ignore("Creatures with no filters are always compatible for None template")]
         public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible()
         {
             Assert.Fail("not yet written");
         }
 
-        [Test]
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, "wrong alignment")]
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, "original alignment")]
+        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR1, "original alignment")]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR1, "original alignment", Ignore = "As Character doesn't affect already-generated creature compatiblity")]
         public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment)
         {
-            Assert.Fail("not yet written");
+            var creature = new CreatureBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid)
+                .AddSubtype("subtype 1")
+                .WithChallengeRating(ChallengeRatingConstants.CR1)
+                .WithAlignment("original alignment")
+                .Build();
+
+            var clone = new CreatureBuilder()
+                .Clone(creature)
+                .Build();
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tAs Character: {asCharacter}");
+            message.AppendLine($"\tCreature: {creature.Name}");
+            message.AppendLine($"\tTemplate: None");
+            message.AppendLine($"\tType: {type}");
+            message.AppendLine($"\tCR: {challengeRating}");
+            message.AppendLine($"\tAlignment: {alignment}");
+
+            Assert.That(async () => await templateApplicator.ApplyToAsync(clone, asCharacter, type, challengeRating, alignment),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
         [Test]
         public async Task ApplyToAsync_ReturnsCreature_WithFilters()
         {
-            Assert.Fail("not yet written");
+            var creature = new CreatureBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid)
+                .AddSubtype("subtype 1")
+                .WithChallengeRating(ChallengeRatingConstants.CR1)
+                .WithAlignment("original alignment")
+                .Build();
+
+            var clone = new CreatureBuilder()
+                .Clone(creature)
+                .Build();
+
+            var templatedCreature = await templateApplicator.ApplyToAsync(clone, false, "subtype 1", ChallengeRatingConstants.CR1, "original alignment");
+            Assert.That(templatedCreature, Is.EqualTo(clone));
         }
 
         [Test]

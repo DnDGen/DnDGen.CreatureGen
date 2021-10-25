@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Attacks;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
@@ -15,6 +16,7 @@ using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Templates.Lycanthropes;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
+using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using Moq;
@@ -24,6 +26,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
@@ -293,22 +296,74 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             SetUpRoll(baseCreature.HitPoints.HitDice[0], baseAverage);
         }
 
-        [Test]
-        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible()
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible(string template, string animal)
         {
-            Assert.Fail("not yet written");
+            baseCreature.Type.Name = CreatureConstants.Types.Outsider;
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tAs Character: {false}");
+            message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: {template}");
+
+            Assert.That(() => applicators[template].ApplyTo(baseCreature, false),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
-        [Test]
-        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment)
+        [TestCaseSource(nameof(IncompatibleFilters))]
+        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(
+            string template,
+            string animal,
+            bool asCharacter,
+            string type,
+            string challengeRating,
+            string alignment)
         {
-            Assert.Fail("not yet written");
+            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
+            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.HitPoints.HitDice[0].Quantity = 1;
+            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
+            baseCreature.Alignment = new Alignment($"original alignment");
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tAs Character: {false}");
+            message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: {template}");
+            message.AppendLine($"\tType: {type}");
+            message.AppendLine($"\tCR: {challengeRating}");
+            message.AppendLine($"\tAlignment: {alignment}");
+
+            Assert.That(() => applicators[template].ApplyTo(baseCreature, asCharacter, type, challengeRating, alignment),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
-        [Test]
-        public void ApplyTo_ReturnsCreature_WithFilters()
+        private static IEnumerable IncompatibleFilters
         {
-            Assert.Fail("not yet written");
+            get
+            {
+                foreach (var template in templates)
+                {
+                    yield return new TestCaseData(template.Template, template.Animal, false, "subtype 1", ChallengeRatingConstants.CR3, "wrong alignment");
+                    yield return new TestCaseData(template.Template, template.Animal, false, "subtype 1", ChallengeRatingConstants.CR2, "original alignment");
+                    yield return new TestCaseData(template.Template, template.Animal, false, "wrong subtype", ChallengeRatingConstants.CR3, "original alignment");
+                    yield return new TestCaseData(template.Template, template.Animal, true, "subtype 1", ChallengeRatingConstants.CR3, "original alignment");
+                }
+            }
+        }
+
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public void ApplyTo_ReturnsCreature_WithFilters(string template, string animal)
+        {
+            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
+            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.HitPoints.HitDice[0].Quantity = 1;
+            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
+            baseCreature.Alignment = new Alignment($"original alignment");
+
+            var creature = applicators[template].ApplyTo(baseCreature, false, "subtype 1", ChallengeRatingConstants.CR3, $"{template}y scaley");
+            Assert.That(creature.Template, Is.EqualTo(template));
         }
 
         [TestCaseSource(nameof(AllLycanthropeTemplates))]
@@ -2163,22 +2218,60 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             }
         }
 
-        [Test]
-        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible()
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible(string template, string animal)
         {
-            Assert.Fail("not yet written");
+            baseCreature.Type.Name = CreatureConstants.Types.Outsider;
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tAs Character: {false}");
+            message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: {template}");
+
+            Assert.That(async () => await applicators[template].ApplyToAsync(baseCreature, false),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
-        [Test]
-        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment)
+        [TestCaseSource(nameof(IncompatibleFilters))]
+        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(
+            string template,
+            string animal,
+            bool asCharacter,
+            string type,
+            string challengeRating,
+            string alignment)
         {
-            Assert.Fail("not yet written");
+            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
+            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.HitPoints.HitDice[0].Quantity = 1;
+            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
+            baseCreature.Alignment = new Alignment($"original alignment");
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tAs Character: {false}");
+            message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: {template}");
+            message.AppendLine($"\tType: {type}");
+            message.AppendLine($"\tCR: {challengeRating}");
+            message.AppendLine($"\tAlignment: {alignment}");
+
+            Assert.That(async () => await applicators[template].ApplyToAsync(baseCreature, asCharacter, type, challengeRating, alignment),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
-        [Test]
-        public async Task ApplyToAsync_ReturnsCreature_WithFilters()
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_ReturnsCreature_WithFilters(string template, string animal)
         {
-            Assert.Fail("not yet written");
+            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
+            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.HitPoints.HitDice[0].Quantity = 1;
+            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
+            baseCreature.Alignment = new Alignment($"original alignment");
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false, "subtype 1", ChallengeRatingConstants.CR3, $"{template}y scaley");
+            Assert.That(creature.Template, Is.EqualTo(template));
         }
 
         [TestCaseSource(nameof(AllLycanthropeTemplates))]

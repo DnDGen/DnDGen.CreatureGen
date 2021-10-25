@@ -130,7 +130,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         public Creature GenerateRandom(bool asCharacter, string template = null, string type = null, string challengeRating = null, string alignment = null)
         {
-            var randomCreature = GenerateRandomName(asCharacter, template, type, challengeRating);
+            var randomCreature = GenerateRandomName(asCharacter, template, type, challengeRating, alignment);
             var allowAdvanced = string.IsNullOrEmpty(challengeRating);
 
             var creature = Generate(randomCreature.Creature, randomCreature.Template, asCharacter, allowAdvanced, type, challengeRating, alignment);
@@ -380,7 +380,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         public async Task<Creature> GenerateRandomAsync(bool asCharacter, string template = null, string type = null, string challengeRating = null, string alignment = null)
         {
-            var randomCreature = GenerateRandomName(asCharacter, template, type, challengeRating);
+            var randomCreature = GenerateRandomName(asCharacter, template, type, challengeRating, alignment);
             var allowAdvanced = string.IsNullOrEmpty(challengeRating);
 
             return await GenerateAsync(randomCreature.Creature, randomCreature.Template, asCharacter, allowAdvanced, type, challengeRating, alignment);

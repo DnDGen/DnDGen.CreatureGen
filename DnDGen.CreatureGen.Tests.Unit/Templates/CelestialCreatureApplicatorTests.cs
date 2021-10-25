@@ -80,7 +80,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.NeutralGood)]
         [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, AlignmentConstants.LawfulGood)]
         [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR1, AlignmentConstants.LawfulGood)]
-        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.LawfulGood)]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.LawfulGood, Ignore = "As Character doesn't affect already-generated creature compatiblity")]
         public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment)
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
@@ -110,6 +110,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.HitPoints.HitDice[0].Quantity = 1;
             baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
             baseCreature.Alignment = new Alignment(AlignmentConstants.LawfulNeutral);
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
 
             var creature = applicator.ApplyTo(baseCreature, false, "subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.LawfulGood);
             Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.CelestialCreature));
@@ -300,7 +315,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Skills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(specialQualities);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -358,7 +373,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Skills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(specialQualities);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -418,7 +433,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Skills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(specialQualities);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -478,7 +493,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Skills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(specialQualities);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -538,7 +553,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Skills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(specialQualities);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -601,7 +616,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Skills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(specialQualities);
 
             var celestialSpecialQuality = specialQualities.First(f =>
@@ -668,7 +683,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Skills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(specialQualities);
 
             var celestialSpecialQuality = specialQualities.First(f =>
@@ -734,7 +749,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Skills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(specialQualities);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -794,7 +809,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Skills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(specialQualities);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -855,7 +870,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Skills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(specialQualities);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -916,7 +931,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Skills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(specialQualities);
 
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -1189,7 +1204,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.NeutralGood)]
         [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, AlignmentConstants.LawfulGood)]
         [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR1, AlignmentConstants.LawfulGood)]
-        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.LawfulGood)]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.LawfulGood, Ignore = "As Character doesn't affect already-generated creature compatiblity")]
         public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment)
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
@@ -1219,6 +1234,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.HitPoints.HitDice[0].Quantity = 1;
             baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
             baseCreature.Alignment = new Alignment(AlignmentConstants.LawfulNeutral);
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
 
             var creature = await applicator.ApplyToAsync(baseCreature, false, "subtype 1", ChallengeRatingConstants.CR1, AlignmentConstants.LawfulGood);
             Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.CelestialCreature));
@@ -1409,7 +1439,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Skills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(specialQualities);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -1467,7 +1497,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Skills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(specialQualities);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -1527,7 +1557,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Skills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(specialQualities);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -1587,7 +1617,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Skills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(specialQualities);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -1647,7 +1677,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Skills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(specialQualities);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -1710,7 +1740,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Skills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(specialQualities);
 
             var celestialSpecialQuality = specialQualities.First(f =>
@@ -1777,7 +1807,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Skills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(specialQualities);
 
             var celestialSpecialQuality = specialQualities.First(f =>
@@ -1843,7 +1873,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Skills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(specialQualities);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -1903,7 +1933,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Skills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(specialQualities);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -1964,7 +1994,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Skills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(specialQualities);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
@@ -2025,7 +2055,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Skills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(specialQualities);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
