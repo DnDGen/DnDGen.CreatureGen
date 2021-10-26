@@ -225,6 +225,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             mockAlignmentGenerator
                 .Setup(g => g.Generate(It.IsAny<string>(), null))
                 .Returns((string t, string p) => new Alignment { Lawfulness = $"{t}y", Goodness = "scaley" });
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => new[] { $"other alignment", $"{c.Replace(GroupConstants.Exploded, string.Empty)}y scaley", "preset alignment" });
         }
 
         [TestCaseSource(nameof(AllHalfDragonTemplates))]
@@ -273,7 +277,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     yield return new TestCaseData(template, false, "subtype 1", ChallengeRatingConstants.CR3, $"wrong alignment");
                     yield return new TestCaseData(template, false, "subtype 1", ChallengeRatingConstants.CR2, $"{template}y scaley");
                     yield return new TestCaseData(template, false, "wrong subtype", ChallengeRatingConstants.CR3, $"{template}y scaley");
-                    yield return new TestCaseData(template, true, "subtype 1", ChallengeRatingConstants.CR3, $"{template}y scaley");
+                    //INFO: This test case isn't valid, since As Character doesn't affect already-generated creature compatibility
+                    //yield return new TestCaseData(template, true, "subtype 1", ChallengeRatingConstants.CR3, $"{template}y scaley");
                 }
             }
         }
@@ -286,6 +291,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             baseCreature.HitPoints.HitDice[0].Quantity = 1;
             baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
             baseCreature.Alignment = new Alignment($"original alignment");
+
+            mockDice
+                .Setup(d => d
+                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .d(10)
+                    .AsIndividualRolls<int>())
+                .Returns(new[] { 9266 });
+            mockDice
+                .Setup(d => d
+                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .d(10)
+                    .AsPotentialAverage())
+                .Returns(90210);
 
             var creature = applicators[template].ApplyTo(baseCreature, false, "subtype 1", ChallengeRatingConstants.CR3, $"{template}y scaley");
             Assert.That(creature.Template, Is.EqualTo(template));
@@ -1322,8 +1340,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         public void ApplyTo_GetPresetAlignment(string template)
         {
             mockAlignmentGenerator
-                .Setup(g => g.Generate(It.IsAny<string>(), "preset alignment"))
+                .Setup(g => g.Generate(template, "preset alignment"))
                 .Returns((string t, string p) => new Alignment(p));
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, template + GroupConstants.Exploded))
+                .Returns((string t, string c) => new[] { $"other alignment", $"preset alignment" });
 
             var creature = applicators[template].ApplyTo(baseCreature, false, alignment: "preset alignment");
             Assert.That(creature.Alignment.Lawfulness, Is.EqualTo("preset"));
