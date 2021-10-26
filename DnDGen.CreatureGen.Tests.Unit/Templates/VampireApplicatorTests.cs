@@ -1615,6 +1615,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public async Task ApplyToAsync_ImproveLevelAdjustment(int? original, int? adjusted)
         {
             baseCreature.LevelAdjustment = original;
+            baseCreature.HitPoints.HitDice[0].Quantity = 5;
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));

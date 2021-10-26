@@ -2571,10 +2571,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, "other alignment group" };
-            alignments["my other creature"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good, "other alignment group" };
-            alignments["wrong creature 1"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good, "other alignment group" };
-            alignments["wrong creature 2"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulGood, "other alignment" };
+            alignments["my other creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralGood, "other alignment" };
+            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { AlignmentConstants.ChaoticGood, "other alignment" };
+            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralEvil };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -2632,10 +2632,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, "other alignment group" };
-            alignments["my other creature"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good, "other alignment group" };
-            alignments["wrong creature 1"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good, "other alignment group" };
-            alignments["wrong creature 2"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulGood, "other alignment" };
+            alignments["my other creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralGood, "other alignment" };
+            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { AlignmentConstants.ChaoticGood, "other alignment" };
+            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralEvil };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -2693,10 +2693,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, "other alignment group" };
-            alignments["my other creature"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good, "other alignment group" };
-            alignments["wrong creature 1"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good, "other alignment group" };
-            alignments["wrong creature 2"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulGood, "other alignment" };
+            alignments["my other creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralGood, "other alignment" };
+            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { AlignmentConstants.ChaoticGood, "other alignment" };
+            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralEvil };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -2784,11 +2784,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, "other alignment group" };
-            alignments["my other creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, "other alignment group" };
-            alignments["wrong creature 1"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, "other alignment group" };
-            alignments["wrong creature 2"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, "other alignment group" };
-            alignments["wrong creature 3"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, "other alignment group" };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulGood, "other alignment" };
+            alignments["my other creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralGood, "other alignment" };
+            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { AlignmentConstants.ChaoticGood, "other alignment" };
+            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralGood, "other alignment" };
+            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulGood, "other alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -2851,10 +2851,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, "other alignment group" };
-            alignments["my other creature"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good, "different alignment group" };
-            alignments["wrong creature 1"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good, "different alignment group" };
-            alignments["wrong creature 2"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulGood, "other alignment" };
+            alignments["my other creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralGood, "different alignment" };
+            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { AlignmentConstants.ChaoticGood, "different alignment" };
+            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralEvil };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -2917,11 +2917,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, "other alignment group" };
-            alignments["my other creature"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good, "different alignment group" };
-            alignments["wrong creature 1"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good, "different alignment group" };
-            alignments["wrong creature 2"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good };
-            alignments["wrong creature 3"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulGood, "other alignment" };
+            alignments["my other creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralGood, "different alignment" };
+            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { AlignmentConstants.ChaoticGood, "different alignment" };
+            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralGood };
+            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulGood };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -2990,11 +2990,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, "other alignment group" };
-            alignments["my other creature"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good, "different alignment group" };
-            alignments["wrong creature 1"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good, "different alignment group" };
-            alignments["wrong creature 2"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good };
-            alignments["wrong creature 3"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulGood, "other alignment" };
+            alignments["my other creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralGood, "different alignment" };
+            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { AlignmentConstants.ChaoticGood, "different alignment" };
+            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralGood };
+            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulGood };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -3065,7 +3065,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, "other alignment group" };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulGood, "other alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -3123,7 +3123,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, "other alignment group" };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulGood, "other alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -3156,55 +3156,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures, Is.Empty);
         }
 
-        [TestCase(GroupConstants.All, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Good, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Good, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Neutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Neutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Neutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Neutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Evil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Lawful, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Lawful, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Lawful, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Lawful, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Chaotic, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Chaotic, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Chaotic, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Chaotic, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulGood, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticGood, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralEvil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralGood, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulEvil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulGood, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticGood, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralEvil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralGood, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulEvil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulGood, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticEvil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticGood, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralEvil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralGood, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.TrueNeutral, true)]
         [TestCase(AlignmentConstants.LawfulGood, true)]
         [TestCase(AlignmentConstants.NeutralGood, true)]
         [TestCase(AlignmentConstants.ChaoticGood, true)]
@@ -3214,7 +3165,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(AlignmentConstants.LawfulEvil, false)]
         [TestCase(AlignmentConstants.NeutralEvil, false)]
         [TestCase(AlignmentConstants.ChaoticEvil, false)]
-        public void IsCompatible_MustHaveNonEvilAlignment(string alignmentGroup, bool compatible)
+        public void IsCompatible_MustHaveNonEvilAlignment(string alignment, bool compatible)
         {
             var types = new Dictionary<string, IEnumerable<string>>();
             types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
@@ -3229,7 +3180,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { alignmentGroup, $"other {AlignmentConstants.Evil} alignment group" };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { alignment, "other Evil" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -3262,55 +3213,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 
-        [TestCase(GroupConstants.All, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Good, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Good, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Neutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Neutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Neutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Neutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Evil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Lawful, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Lawful, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Lawful, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Lawful, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Chaotic, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Chaotic, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Chaotic, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Chaotic, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulGood, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticGood, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralEvil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralGood, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulEvil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulGood, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticGood, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralEvil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralGood, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulEvil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulGood, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticEvil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticGood, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralEvil, false)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralGood, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.TrueNeutral, true)]
         [TestCase(AlignmentConstants.LawfulGood, true)]
         [TestCase(AlignmentConstants.NeutralGood, true)]
         [TestCase(AlignmentConstants.ChaoticGood, true)]
@@ -3320,7 +3222,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(AlignmentConstants.LawfulEvil, false)]
         [TestCase(AlignmentConstants.NeutralEvil, false)]
         [TestCase(AlignmentConstants.ChaoticEvil, false)]
-        public void IsCompatible_MustHaveAnyNonEvilAlignment(string alignmentGroup, bool compatible)
+        public void IsCompatible_MustHaveAnyNonEvilAlignment(string alignment, bool compatible)
         {
             var types = new Dictionary<string, IEnumerable<string>>();
             types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
@@ -3335,7 +3237,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { $"other {AlignmentConstants.Evil} alignment group", alignmentGroup };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { "other Evil", alignment };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -3418,7 +3320,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, "other alignment group" };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulGood, "other alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -3544,7 +3446,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string t, string c) => hitDice[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, "other alignment group" };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulGood, "other alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -3658,7 +3560,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string t, string c) => hitDice[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, "other alignment group" };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulGood, "other alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -3764,7 +3666,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string t, string c) => hitDice[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, "other alignment group" };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulGood, "other alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -3822,8 +3724,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, "other alignment group" };
-            alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", creatureAlignment };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { "other Evil", creatureAlignment };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -3882,7 +3783,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, "other alignment group" };
             alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", AlignmentConstants.LawfulNeutral };
 
             mockCollectionSelector

@@ -379,7 +379,15 @@ namespace DnDGen.CreatureGen.Templates
             }
 
             var templateCreatures = filteredBaseCreatures
-                .Where(c => IsCompatible(allTypes[c], allAlignments[c + GroupConstants.Exploded], allData[c].ChallengeRating, allHitDice[c], asCharacter, type, challengeRating));
+                .Where(c => IsCompatible(
+                    allTypes[c],
+                    allAlignments[c + GroupConstants.Exploded],
+                    allData[c].ChallengeRating,
+                    allHitDice[c],
+                    asCharacter,
+                    type,
+                    challengeRating,
+                    alignment));
 
             return templateCreatures;
         }
