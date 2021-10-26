@@ -89,7 +89,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
                 challengeRating,
                 alignment))
             {
-                throw new InvalidCreatureException(asCharacter, creature.Name, $"Lycanthrope ({LycanthropeSpecies})", type, challengeRating, alignment);
+                throw new InvalidCreatureException(asCharacter, creature.Name, LycanthropeSpecies, type, challengeRating, alignment);
             }
 
             // Template
@@ -586,7 +586,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
                 challengeRating,
                 alignment))
             {
-                throw new InvalidCreatureException(asCharacter, creature.Name, $"Lycanthrope ({LycanthropeSpecies})", type, challengeRating, alignment);
+                throw new InvalidCreatureException(asCharacter, creature.Name, LycanthropeSpecies, type, challengeRating, alignment);
             }
 
             var tasks = new List<Task>();

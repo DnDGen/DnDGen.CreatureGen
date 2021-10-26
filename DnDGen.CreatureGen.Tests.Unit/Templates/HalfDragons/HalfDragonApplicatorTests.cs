@@ -1432,6 +1432,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
             baseCreature.Alignment = new Alignment($"original alignment");
 
+            mockDice
+                .Setup(d => d
+                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .d(10)
+                    .AsIndividualRolls<int>())
+                .Returns(new[] { 9266 });
+            mockDice
+                .Setup(d => d
+                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .d(10)
+                    .AsPotentialAverage())
+                .Returns(90210);
+
             var creature = await applicators[template].ApplyToAsync(baseCreature, false, "subtype 1", ChallengeRatingConstants.CR3, $"{template}y scaley");
             Assert.That(creature.Template, Is.EqualTo(template));
         }
@@ -2695,7 +2708,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Setup(s => s.Explode(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
                 .Returns(new[] { "my alignment", "other alignment", "wrong alignment" });
 
-            var compatibleCreatures = applicators[template].GetCompatibleCreatures(creatures, false, alignment: "preset alignment");
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(creatures, false, alignment: "wrong alignment");
             Assert.That(compatibleCreatures, Is.Empty);
         }
 

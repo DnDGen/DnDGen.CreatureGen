@@ -375,7 +375,7 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             var dragonAlignments = collectionSelector.SelectFrom(TableNameConstants.Collection.AlignmentGroups, DragonSpecies + GroupConstants.Exploded);
 
             if (!IsCompatible(creature.Type.AllTypes, dragonAlignments, creature.ChallengeRating, type, challengeRating, alignment))
-                throw new InvalidCreatureException(asCharacter, creature.Name, $"Half-Dragon ({DragonSpecies})", type, challengeRating, alignment);
+                throw new InvalidCreatureException(asCharacter, creature.Name, DragonSpecies, type, challengeRating, alignment);
 
             var tasks = new List<Task>();
 
