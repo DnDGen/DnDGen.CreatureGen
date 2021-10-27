@@ -731,8 +731,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             {
                 //INFO: Lycanthropes do not change the base creature's alignment
                 //So as long as the base creature's alignment fits, we are good
-                var alignmentCreatures = collectionSelector.SelectFrom(TableNameConstants.Collection.AlignmentGroups, alignment);
-                filteredBaseCreatures = filteredBaseCreatures.Intersect(alignmentCreatures);
+                filteredBaseCreatures = filteredBaseCreatures.Intersect(allAlignments[alignment]);
             }
 
             var templateCreatures = filteredBaseCreatures

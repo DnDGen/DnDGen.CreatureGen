@@ -2705,7 +2705,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Returns((string t, string c) => hitDice[c]);
 
             mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, template + GroupConstants.Exploded))
                 .Returns(new[] { "my alignment", "other alignment", "wrong alignment" });
 
             var compatibleCreatures = applicators[template].GetCompatibleCreatures(creatures, false, alignment: "wrong alignment");
@@ -2754,7 +2754,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Returns((string t, string c) => hitDice[c]);
 
             mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, template + GroupConstants.Exploded))
                 .Returns(new[] { "my alignment", "other alignment", "preset alignment", "wrong alignment" });
 
             var compatibleCreatures = applicators[template].GetCompatibleCreatures(creatures, false, alignment: "preset alignment");
@@ -3334,8 +3334,76 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             }
         }
 
-        [TestCaseSource(nameof(ChallengeRatingAndTypeAdjustments_Filtered))]
-        public void IsCompatible_TypeAndChallengeRatingMustMatch(string template, string type, string challengeRating, bool compatible)
+        [TestCaseSource(nameof(Alignments_Filtered))]
+        public void IsCompatible_AlignmentMustMatch(
+            string template,
+            string dragonAlignment,
+            string alignment,
+            bool compatible)
+        {
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Giant, "subtype 1", "subtype 2" };
+            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "subtype 2"))
+                .Returns(new[] { "wrong creature", "my creature" });
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, Size = SizeConstants.Medium };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 1;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
+
+            var alignments = new Dictionary<string, IEnumerable<string>>();
+            alignments[template + GroupConstants.Exploded] = new[] { "other alignment", dragonAlignment, "original alignment" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Returns(alignments);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => alignments[c]);
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(new[] { "my creature" }, false, alignment: alignment);
+            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
+        private static IEnumerable Alignments_Filtered
+        {
+            get
+            {
+                foreach (var template in templates)
+                {
+                    yield return new TestCaseData(template, "preset alignment", "preset alignment", true);
+                    yield return new TestCaseData(template, "preset alignment", "wrong alignment", false);
+                    yield return new TestCaseData(template, "other alignment", "preset alignment", false);
+                }
+            }
+        }
+
+        [TestCaseSource(nameof(AllFilters))]
+        public void IsCompatible_AllFiltersMustMatch(string template, string type, string challengeRating, string alignment, bool compatible)
         {
             var types = new Dictionary<string, IEnumerable<string>>();
             types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
@@ -3371,20 +3439,34 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
+            var alignments = new Dictionary<string, IEnumerable<string>>();
+            alignments[template + GroupConstants.Exploded] = new[] { "other alignment", "preset alignment", "original alignment" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Returns(alignments);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => alignments[c]);
+
             var compatibleCreatures = applicators[template].GetCompatibleCreatures(new[] { "my creature" }, false, type, challengeRating);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 
-        private static IEnumerable ChallengeRatingAndTypeAdjustments_Filtered
+        private static IEnumerable AllFilters
         {
             get
             {
                 foreach (var template in templates)
                 {
-                    yield return new TestCaseData(template, CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR2, false);
-                    yield return new TestCaseData(template, CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR4, true);
-                    yield return new TestCaseData(template, "wrong subtype", ChallengeRatingConstants.CR2, false);
-                    yield return new TestCaseData(template, "wrong subtype", ChallengeRatingConstants.CR4, false);
+                    yield return new TestCaseData(template, CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR2, "preset alignment", false);
+                    yield return new TestCaseData(template, CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR2, "wrong alignment", false);
+                    yield return new TestCaseData(template, CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR4, "preset alignment", false);
+                    yield return new TestCaseData(template, CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR4, "wrong alignment", true);
+                    yield return new TestCaseData(template, "wrong subtype", ChallengeRatingConstants.CR2, "preset alignment", false);
+                    yield return new TestCaseData(template, "wrong subtype", ChallengeRatingConstants.CR2, "wrong alignment", false);
+                    yield return new TestCaseData(template, "wrong subtype", ChallengeRatingConstants.CR4, "preset alignment", false);
+                    yield return new TestCaseData(template, "wrong subtype", ChallengeRatingConstants.CR4, "wrong alignment", false);
                 }
             }
         }
