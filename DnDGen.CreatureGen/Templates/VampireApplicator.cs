@@ -487,9 +487,7 @@ namespace DnDGen.CreatureGen.Templates
                     return false;
                 }
 
-                var newAlignments = alignments
-                    .Where(a => !a.Contains(AlignmentConstants.Good))
-                    .Select(UpdateCreatureAlignment);
+                var newAlignments = alignments.Select(UpdateCreatureAlignment);
                 if (!newAlignments.Any(a => a.Full == alignment))
                     return false;
             }

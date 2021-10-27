@@ -920,7 +920,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(22)]
         [TestCase(30)]
         [TestCase(96)]
-        public void ApplyTo_ReturnsCreature_IfHitDiceTooHigh(double hitDice)
+        public void ApplyTo_ThrowException_IfHitDiceTooHigh(double hitDice)
         {
             baseCreature.HitPoints.HitDice[0].Quantity = hitDice;
 
@@ -947,9 +947,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     20))
                 .Returns(skeletonAttacks);
 
-            var creature = applicator.ApplyTo(baseCreature, false);
-            Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(20));
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tAs Character: {false}");
+            message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Skeleton}");
+
+            Assert.That(() => applicator.ApplyTo(baseCreature, false),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
         [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Good)]
@@ -1736,7 +1741,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(22)]
         [TestCase(30)]
         [TestCase(96)]
-        public async Task ApplyToAsync_ReturnsCreature_IfHitDiceTooHigh(double hitDice)
+        public async Task ApplyToAsync_ThrowsException_IfHitDiceTooHigh(double hitDice)
         {
             baseCreature.HitPoints.HitDice[0].Quantity = hitDice;
 
@@ -1763,9 +1768,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     20))
                 .Returns(skeletonAttacks);
 
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
-            Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(20));
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tAs Character: {false}");
+            message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.Skeleton}");
+
+            Assert.That(async () => await applicator.ApplyToAsync(baseCreature, false),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
         [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Good)]
@@ -1910,6 +1920,92 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false);
             Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
+        }
+
+        [TestCase(AlignmentConstants.LawfulGood)]
+        [TestCase(AlignmentConstants.NeutralGood)]
+        [TestCase(AlignmentConstants.ChaoticGood)]
+        [TestCase(AlignmentConstants.LawfulNeutral)]
+        [TestCase(AlignmentConstants.TrueNeutral)]
+        [TestCase(AlignmentConstants.ChaoticNeutral)]
+        [TestCase(AlignmentConstants.LawfulEvil)]
+        [TestCase(AlignmentConstants.ChaoticEvil)]
+        [TestCase("wrong alignment")]
+        public void GetCompatibleCreatures_ReturnEmpty_WhenAlignmentFilterInvalid(string alignmentFilter)
+        {
+            var creatures = new[] { "my creature", "wrong creature 2", "my other creature", "wrong creature 1" };
+
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types["my other creature"] = new[] { CreatureConstants.Types.Giant, "subtype 3" };
+            types["wrong creature 1"] = new[] { CreatureConstants.Types.Outsider, "subtype 2" };
+            types["wrong creature 2"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 1;
+            hitDice["my other creature"] = 1;
+            hitDice["wrong creature 1"] = 1;
+            hitDice["wrong creature 2"] = 21;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton))
+                .Returns(new[] { "my wrong creature", "my creature", "my other creature", "yet another creature" });
+
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, alignment: alignmentFilter);
+            Assert.That(compatibleCreatures, Is.Empty);
+        }
+
+        [Test]
+        public void GetCompatibleCreatures_ReturnCompatibleCreatures_WhenAlignmentFilterValid()
+        {
+            var creatures = new[] { "my creature", "wrong creature 2", "my other creature", "wrong creature 1" };
+
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types["my other creature"] = new[] { CreatureConstants.Types.Giant, "subtype 3" };
+            types["wrong creature 1"] = new[] { CreatureConstants.Types.Outsider, "subtype 2" };
+            types["wrong creature 2"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 1;
+            hitDice["my other creature"] = 1;
+            hitDice["wrong creature 1"] = 1;
+            hitDice["wrong creature 2"] = 21;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
+
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton))
+                .Returns(new[] { "my wrong creature", "my creature", "my other creature", "yet another creature" });
+
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, alignment: AlignmentConstants.NeutralEvil);
+            Assert.That(compatibleCreatures, Is.EquivalentTo(new[] { "my creature", "my other creature" }));
         }
 
         [TestCase(ChallengeRatingConstants.CR1_6th, 0, 0.5)]
@@ -2545,10 +2641,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [TestCase(AlignmentConstants.LawfulGood, false)]
-        [TestCase(AlignmentConstants.NeutralGood, true)]
+        [TestCase(AlignmentConstants.NeutralGood, false)]
         [TestCase(AlignmentConstants.ChaoticGood, false)]
         [TestCase(AlignmentConstants.LawfulNeutral, false)]
-        [TestCase(AlignmentConstants.TrueNeutral, true)]
+        [TestCase(AlignmentConstants.TrueNeutral, false)]
         [TestCase(AlignmentConstants.ChaoticNeutral, false)]
         [TestCase(AlignmentConstants.LawfulEvil, false)]
         [TestCase(AlignmentConstants.NeutralEvil, true)]
@@ -2556,6 +2652,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase("wrong alignment", false)]
         public void IsCompatible_AlignmentMustMatch(string alignmentFilter, bool compatible)
         {
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton))
+                .Returns(new[] { "my wrong creature", "my creature", "my other creature" });
+
             var types = new Dictionary<string, IEnumerable<string>>();
             types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
             types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
@@ -2567,7 +2667,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
                 .Returns((string t, string c) => types[c]);
             mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, alignmentFilter))
                 .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var hitDice = new Dictionary<string, double>();

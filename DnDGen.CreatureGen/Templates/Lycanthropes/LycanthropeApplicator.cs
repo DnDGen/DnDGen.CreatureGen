@@ -708,6 +708,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
             var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
             var allAlignments = collectionSelector.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups);
+            var allCreatureGroups = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureGroups);
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
@@ -731,7 +732,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             {
                 //INFO: Lycanthropes do not change the base creature's alignment
                 //So as long as the base creature's alignment fits, we are good
-                filteredBaseCreatures = filteredBaseCreatures.Intersect(allAlignments[alignment]);
+                filteredBaseCreatures = filteredBaseCreatures.Intersect(allCreatureGroups[alignment]);
             }
 
             var templateCreatures = filteredBaseCreatures

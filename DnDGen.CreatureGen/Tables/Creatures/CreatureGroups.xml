@@ -2598,4 +2598,40 @@
     <name>27</name>
     <entry>Gold Dragon, Great Wyrm</entry>
   </collection>
+  <collection>
+    <name>Lawful Good</name>
+    <entry></entry>
+  </collection>
+  <collection>
+    <name>Lawful Neutral</name>
+    <entry></entry>
+  </collection>
+  <collection>
+    <name>Lawful Evil</name>
+    <entry></entry>
+  </collection>
+  <collection>
+    <name>Neutral Good</name>
+    <entry></entry>
+  </collection>
+  <collection>
+    <name>True Neutral</name>
+    <entry></entry>
+  </collection>
+  <collection>
+    <name>Neutral Evil</name>
+    <entry></entry>
+  </collection>
+  <collection>
+    <name>Chaotic Good</name>
+    <entry></entry>
+  </collection>
+  <collection>
+    <name>Chaotic Neutral</name>
+    <entry></entry>
+  </collection>
+  <collection>
+    <name>Chaotic Evil</name>
+    <entry></entry>
+  </collection>
 </collections>

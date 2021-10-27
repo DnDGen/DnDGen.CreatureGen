@@ -316,7 +316,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "creature", "wrong character" });
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, template: CreatureConstants.Templates.None, challengeRating: cr, type: type);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, template: CreatureConstants.Templates.None, challengeRating: cr, type: type, alignment: alignment);
             Assert.That(isCompatible, Is.True);
         }
 
@@ -351,7 +351,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
                 .Returns(new[] { "character", "creature", "wrong creature" });
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, template: "template", challengeRating: cr, type: type);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, template: "template", challengeRating: cr, type: type, alignment: alignment);
             Assert.That(isCompatible, Is.False);
         }
 
@@ -386,7 +386,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
                 .Returns(new[] { "character", "creature", "wrong creature" });
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, template: CreatureConstants.Templates.None, challengeRating: cr, type: type);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, template: CreatureConstants.Templates.None, challengeRating: cr, type: type, alignment: alignment);
             Assert.That(isCompatible, Is.False);
         }
 
@@ -413,7 +413,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "wrong creature" });
 
-            var isCompatible = verifier.VerifyCompatibility(true, template: "template", challengeRating: cr, type: type);
+            var isCompatible = verifier.VerifyCompatibility(true, template: "template", challengeRating: cr, type: type, alignment: alignment);
             Assert.That(isCompatible, Is.False);
         }
 
@@ -440,7 +440,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
                 .Returns(new[] { "character", "wrong creature" });
 
-            var isCompatible = verifier.VerifyCompatibility(true, template: CreatureConstants.Templates.None, challengeRating: cr, type: type);
+            var isCompatible = verifier.VerifyCompatibility(true, template: CreatureConstants.Templates.None, challengeRating: cr, type: type, alignment: alignment);
             Assert.That(isCompatible, Is.False);
         }
 
@@ -491,7 +491,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                     .Returns(mockApplicator.Object);
             }
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, type: type, challengeRating: cr);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, type: type, challengeRating: cr, alignment: alignment);
             Assert.That(isCompatible, Is.True);
         }
 
@@ -547,7 +547,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                     .Returns(mockApplicator.Object);
             }
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, type: type, challengeRating: cr);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, type: type, challengeRating: cr, alignment: alignment);
             Assert.That(isCompatible, Is.True);
         }
 
@@ -603,7 +603,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                     .Returns(mockApplicator.Object);
             }
 
-            var isCompatible = verifier.VerifyCompatibility(asCharacter, template: CreatureConstants.Templates.None, type: type, challengeRating: cr);
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, template: CreatureConstants.Templates.None, type: type, challengeRating: cr, alignment: alignment);
             Assert.That(isCompatible, Is.False);
         }
 
@@ -648,7 +648,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                     .Returns(mockApplicator.Object);
             }
 
-            var isCompatible = verifier.VerifyCompatibility(true, type: type, challengeRating: cr);
+            var isCompatible = verifier.VerifyCompatibility(true, type: type, challengeRating: cr, alignment: alignment);
             Assert.That(isCompatible, Is.False);
         }
     }

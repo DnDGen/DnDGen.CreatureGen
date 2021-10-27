@@ -2209,7 +2209,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
         }
 
-
         [Test]
         public void GetCompatibleCreatures_ReturnCompatibleCreatures_WithPresetAlignment()
         {
@@ -2221,6 +2220,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { "other alignment", "wrong alignment" };
             alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "wrong alignment", "original alignment" };
             alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { "other alignment", "original alignment" };
+            alignments["preset alignment"] = new[] { "wrong creature 4", "my other creature", "wrong creature 5", "my creature" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -2310,7 +2310,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(new[] { "my creature", "wrong creature 2", "my other creature", "wrong creature 1" });
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, alignment: "preset alignment");
-            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
+            Assert.That(compatibleCreatures, Is.EquivalentTo(new[] { "my creature", "my other creature" }));
         }
 
         [TestCase(ChallengeRatingConstants.CR1_3rd, ChallengeRatingConstants.CR1)]
@@ -3214,10 +3214,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase("original alignment", "wrong alignment", false)]
         public void IsCompatible_AlignmentMustMatch(string alignmentFilter, string creatureAlignment, bool compatible)
         {
+            var adjustments = new[]
+            {
+                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 0 },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my creature"))
+                .Returns(adjustments);
+
             var types = new Dictionary<string, IEnumerable<string>>();
             types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
             types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
-            types[CreatureConstants.Rat] = new[] { CreatureConstants.Types.Vermin };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
@@ -3231,6 +3244,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", creatureAlignment };
+            alignments[alignmentFilter] = new[] { "other creature", "wrong creature" };
+            alignments[creatureAlignment] = new[] { "other creature", "my creature", "wrong creature" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -3266,12 +3281,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 
-        [TestCase(CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR2, "original alignment", true)]
-        [TestCase(CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR2, "wrong alignment", false)]
+        [TestCase(CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR3, "original alignment", true)]
+        [TestCase(CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR3, "wrong alignment", false)]
         [TestCase(CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR1, "original alignment", false)]
         [TestCase(CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR1, "wrong alignment", false)]
-        [TestCase("wrong subtype", ChallengeRatingConstants.CR2, "original alignment", false)]
-        [TestCase("wrong subtype", ChallengeRatingConstants.CR2, "wrong alignment", false)]
+        [TestCase("wrong subtype", ChallengeRatingConstants.CR3, "original alignment", false)]
+        [TestCase("wrong subtype", ChallengeRatingConstants.CR3, "wrong alignment", false)]
         [TestCase("wrong subtype", ChallengeRatingConstants.CR1, "original alignment", false)]
         [TestCase("wrong subtype", ChallengeRatingConstants.CR1, "wrong alignment", false)]
         public void IsCompatible_AllFiltersMustMatch(string type, string challengeRating, string alignment, bool compatible)
@@ -3292,6 +3307,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "original alignment" };
+            alignments["wrong alignment"] = new[] { "other creature", "wrong creature" };
+            alignments["original alignment"] = new[] { "other creature", "my creature", "wrong creature" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))

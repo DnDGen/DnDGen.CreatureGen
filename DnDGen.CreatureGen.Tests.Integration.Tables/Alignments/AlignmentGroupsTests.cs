@@ -93,6 +93,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
                 .Union(creatures)
                 .Union(templates)
                 .Union(creatures.Select(c => c + GroupConstants.Exploded))
+                .Union(templates.Select(c => c + GroupConstants.Exploded))
                 .ToArray();
 
             AssertCollectionNames(names);
@@ -1175,6 +1176,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void AllCreaturesHaveAlignment(string creature)
         {
             var alignments = collectionSelector.ExplodeAndPreserveDuplicates(tableName, creature);
@@ -1182,6 +1184,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void CreatureAlignmentGroupsBoilDownToSetAlignments(string creature)
         {
             var allAlignments = table[GroupConstants.All];
@@ -1193,17 +1196,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void AlignmentGroupsContainCreature(string creature)
-        {
-            var creatureAlignments = collectionSelector.Explode(tableName, creature);
-            foreach (var alignment in creatureAlignments)
-            {
-                Assert.That(table, Contains.Key(alignment));
-                Assert.That(table[alignment], Contains.Item(creature), alignment);
-            }
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void ExplodedCreatureAlignmentGroupsHaveSetAlignments(string creature)
         {
             var creatureAlignments = collectionSelector.Explode(tableName, creature);
