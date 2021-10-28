@@ -114,7 +114,6 @@ namespace DnDGen.CreatureGen.Templates
             var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
             var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
             var allAlignments = collectionSelector.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups);
-            var allCreatureGroups = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureGroups);
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
@@ -129,7 +128,8 @@ namespace DnDGen.CreatureGen.Templates
 
             if (!string.IsNullOrEmpty(alignment))
             {
-                filteredBaseCreatures = filteredBaseCreatures.Intersect(allCreatureGroups[alignment]);
+                var alignmentCreatures = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureGroups, alignment);
+                filteredBaseCreatures = filteredBaseCreatures.Intersect(alignmentCreatures);
             }
 
             var templateCreatures = filteredBaseCreatures

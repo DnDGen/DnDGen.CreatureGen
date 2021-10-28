@@ -1,7 +1,9 @@
-﻿using DnDGen.CreatureGen.Tables;
-using DnDGen.CreatureGen.Tests.Integration.TestData;
+﻿using DnDGen.CreatureGen.Alignments;
+using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
@@ -23,24 +25,29 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             AssertCreatureGroupNamesAreComplete();
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void AlignmentGroupsContainCreature(string creature)
+        [TestCase(AlignmentConstants.LawfulGood)]
+        [TestCase(AlignmentConstants.NeutralGood)]
+        [TestCase(AlignmentConstants.ChaoticGood)]
+        [TestCase(AlignmentConstants.LawfulNeutral)]
+        [TestCase(AlignmentConstants.TrueNeutral)]
+        [TestCase(AlignmentConstants.ChaoticNeutral)]
+        [TestCase(AlignmentConstants.LawfulEvil)]
+        [TestCase(AlignmentConstants.NeutralEvil)]
+        [TestCase(AlignmentConstants.ChaoticEvil)]
+        public void AlignmentGroupContainsCorrectCreatures(string alignment)
         {
-            var creatureAlignments = collectionSelector.Explode(TableNameConstants.Collection.AlignmentGroups, creature);
-            var allAlignments = collectionSelector.Explode(TableNameConstants.Collection.AlignmentGroups, GroupConstants.All);
-            var invalidAlignments = allAlignments.Except(creatureAlignments);
+            var allCreatures = CreatureConstants.GetAll();
+            var entries = new List<string>();
+            var allAlignmentGroups = collectionSelector.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups);
 
-            foreach (var alignment in creatureAlignments)
+            foreach (var creature in allCreatures)
             {
-                Assert.That(table, Contains.Key(alignment));
-                Assert.That(table[alignment], Contains.Item(creature), alignment);
+                if (allAlignmentGroups[creature + GroupConstants.Exploded].Contains(alignment))
+                    entries.Add(creature);
             }
 
-            foreach (var alignment in invalidAlignments)
-            {
-                Assert.That(table, Contains.Key(alignment));
-                Assert.That(table[alignment], Does.Not.Contain(creature), alignment);
-            }
+            Assert.That(entries, Is.Not.Empty);
+            AssertDistinctCollection(alignment, entries.ToArray());
         }
     }
 }

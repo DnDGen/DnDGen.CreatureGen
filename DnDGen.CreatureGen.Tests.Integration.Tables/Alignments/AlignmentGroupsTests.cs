@@ -78,15 +78,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
                 AlignmentConstants.Modifiers.Any + AlignmentConstants.Chaotic,
                 AlignmentConstants.Modifiers.Any,
                 GroupConstants.All,
-                AlignmentConstants.LawfulGood,
-                AlignmentConstants.NeutralGood,
-                AlignmentConstants.ChaoticGood,
-                AlignmentConstants.LawfulNeutral,
-                AlignmentConstants.TrueNeutral,
-                AlignmentConstants.ChaoticNeutral,
-                AlignmentConstants.LawfulEvil,
-                AlignmentConstants.NeutralEvil,
-                AlignmentConstants.ChaoticEvil,
             };
 
             names = names
