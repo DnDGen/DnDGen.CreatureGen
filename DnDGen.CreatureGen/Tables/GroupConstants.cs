@@ -3,6 +3,7 @@
     internal static class GroupConstants
     {
         public const string All = "All";
+        public const string AllowedInput = "Allowed Input";
         public const string ArmorBonus = "Armor Bonus";
         public const string ArmorCheckPenalty = "Armor Check Penalty";
         public const string ArmorProficiency = "Armor Proficiency";

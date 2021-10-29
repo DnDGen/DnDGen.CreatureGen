@@ -209,7 +209,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             if (!compatible)
                 throw new InvalidCreatureException(asCharacter, creature: creatureName, template: template);
 
-            var creature = GeneratePrototype(creatureName, asCharacter, allowAdvancement, alignment);
+            var creature = GeneratePrototype(creatureName, template, asCharacter, allowAdvancement, alignment);
 
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
             creature = templateApplicator.ApplyTo(creature, asCharacter, type, challengeRating, alignment);
@@ -217,7 +217,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return creature;
         }
 
-        private Creature GeneratePrototype(string creatureName, bool asCharacter, bool allowAdvancement, string presetAlignment)
+        private Creature GeneratePrototype(string creatureName, string template, bool asCharacter, bool allowAdvancement, string presetAlignment)
         {
             var creature = new Creature();
             creature.Name = creatureName;
@@ -274,7 +274,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 creature.ChallengeRating = ChallengeRatingConstants.CR0;
             }
 
-            creature.Alignment = alignmentGenerator.Generate(creatureName, presetAlignment);
+            creature.Alignment = alignmentGenerator.Generate(creatureName, template, presetAlignment);
             creature.Skills = skillsGenerator.GenerateFor(creature.HitPoints, creatureName, creature.Type, creature.Abilities, creature.CanUseEquipment, creature.Size);
             creature.Languages = languageGenerator.GenerateWith(creatureName, creature.Abilities, creature.Skills);
 
@@ -399,7 +399,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             if (!compatible)
                 throw new InvalidCreatureException(asCharacter, creature: creatureName, template: template);
 
-            var creature = GeneratePrototype(creatureName, asCharacter, allowAdvancement, alignment);
+            var creature = GeneratePrototype(creatureName, template, asCharacter, allowAdvancement, alignment);
 
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
             creature = await templateApplicator.ApplyToAsync(creature, asCharacter, type, challengeRating, alignment);

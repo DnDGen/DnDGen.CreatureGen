@@ -234,7 +234,7 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
 
         private void UpdateCreatureAlignment(Creature creature, string presetAlignment)
         {
-            creature.Alignment = alignmentGenerator.Generate(DragonSpecies, presetAlignment);
+            creature.Alignment = alignmentGenerator.Generate(DragonSpecies, null, presetAlignment);
         }
 
         private void UpdateCreatureChallengeRating(Creature creature)

@@ -175,7 +175,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, group))
                 .Returns(creatures);
 
-            mockAlignmentGenerator.Setup(g => g.Generate(creatureName, alignmentFilter)).Returns(alignment);
+            mockAlignmentGenerator.Setup(g => g.Generate(creatureName, templateName, alignmentFilter)).Returns(alignment);
 
             mockAttacksGenerator.Setup(g => g.GenerateBaseAttackBonus(It.Is<CreatureType>(c => c.Name == types[0]), hitPoints)).Returns(753);
             mockAttacksGenerator.Setup(g => g.GenerateAttacks(creatureName, creatureData.Size, creatureData.Size, 753, abilities, hitPoints.RoundedHitDiceQuantity)).Returns(attacks);

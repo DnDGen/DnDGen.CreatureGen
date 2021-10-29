@@ -7247,4 +7247,400 @@
     <entry>Chaotic Neutral</entry>
     <entry>Chaotic Evil</entry>
   </collection>
+  <collection>
+    <name>Half-Dragon (Black)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Blue)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Green)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Red)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (White)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Brass)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Bronze)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Copper)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Gold)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Silver)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Celestial CreatureAllowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Half-CelestialAllowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Fiendish CreatureAllowed Input</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-FiendAllowed Input</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>LichAllowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>VampireAllowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>SkeletonAllowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>ZombieAllowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>GhostAllowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Brown Bear (Werebear, Afflicted)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Brown Bear (Werebear, Natural)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Boar (Wereboar, Afflicted)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Boar (Wereboar, Natural)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Rat (Wererat, Afflicted)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Rat (Wererat, Natural)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Tiger (Weretiger, Afflicted)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Tiger (Weretiger, Natural)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Wolf (Werewolf, Afflicted)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Wolf (Werewolf, Natural)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Wolf (Dire Werewolf, Natural)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
 </collections>

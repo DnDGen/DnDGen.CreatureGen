@@ -391,8 +391,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         public void CanGenerateTemplate(string creatureName, string template)
         {
             var creature = creatureGenerator.Generate(creatureName, template, false);
-            creatureAsserter.AssertCreature(creature);
+            Assert.That(creature.Name, Is.EqualTo(creatureName));
             Assert.That(creature.Template, Is.EqualTo(template));
+
+            creatureAsserter.AssertCreature(creature);
         }
 
         [TestCase(CreatureConstants.Destrachan)]

@@ -223,8 +223,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Returns(90210);
 
             mockAlignmentGenerator
-                .Setup(g => g.Generate(It.IsAny<string>(), null))
-                .Returns((string t, string p) => new Alignment { Lawfulness = $"{t}y", Goodness = "scaley" });
+                .Setup(g => g.Generate(It.IsAny<string>(), null, null))
+                .Returns((string c, string t, string p) => new Alignment { Lawfulness = $"{c}y", Goodness = "scaley" });
 
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
@@ -1340,8 +1340,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         public void ApplyTo_GetPresetAlignment(string template)
         {
             mockAlignmentGenerator
-                .Setup(g => g.Generate(template, "preset alignment"))
-                .Returns((string t, string p) => new Alignment(p));
+                .Setup(g => g.Generate(template, null, "preset alignment"))
+                .Returns((string c, string t, string p) => new Alignment(p));
 
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, template + GroupConstants.Exploded))
@@ -2185,8 +2185,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         public async Task ApplyToAsync_GetPresetAlignment(string template)
         {
             mockAlignmentGenerator
-                .Setup(g => g.Generate(It.IsAny<string>(), "preset alignment"))
-                .Returns((string t, string p) => new Alignment(p));
+                .Setup(g => g.Generate(template, null, "preset alignment"))
+                .Returns((string c, string t, string p) => new Alignment(p));
 
             var creature = await applicators[template].ApplyToAsync(baseCreature, false, alignment: "preset alignment");
             Assert.That(creature, Is.EqualTo(baseCreature));

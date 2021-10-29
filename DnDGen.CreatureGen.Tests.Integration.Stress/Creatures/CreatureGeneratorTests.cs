@@ -152,7 +152,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             GenerateAndAssertRandomCreature(asCharacter, filters.Template, filters.Type, filters.ChallengeRating, filters.Alignment);
         }
 
-        private (string Template, string Type, string ChallengeRating, string Alignment) GetRandomFilters(bool asCharacter, bool setTemplate, bool setType, bool setCr, bool setAlignment)
+        private (string Template, string Type, string ChallengeRating, string Alignment) GetRandomFilters(
+            bool asCharacter, 
+            bool setTemplate, 
+            bool setType, 
+            bool setCr, 
+            bool setAlignment)
         {
             string template = null;
             string type = null;
@@ -346,6 +351,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             return creature;
         }
 
+        [TestCase(CreatureConstants.Chimera_White, CreatureConstants.Templates.Skeleton, false)]
         [TestCase(CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.Ghost, false)]
         [TestCase(CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.HalfCelestial, false)]
         [TestCase(CreatureConstants.Dragon_Bronze_GreatWyrm, CreatureConstants.Templates.HalfCelestial, false)]
