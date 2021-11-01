@@ -153,10 +153,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         }
 
         private (string Template, string Type, string ChallengeRating, string Alignment) GetRandomFilters(
-            bool asCharacter, 
-            bool setTemplate, 
-            bool setType, 
-            bool setCr, 
+            bool asCharacter,
+            bool setTemplate,
+            bool setType,
+            bool setCr,
             bool setAlignment)
         {
             string template = null;
@@ -214,7 +214,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private Creature GenerateAndAssertRandomCreature(bool asCharacter, string template, string type, string challengeRating, string alignment)
         {
             stopwatch.Restart();
-            var creature = creatureGenerator.GenerateRandom(asCharacter, template, type, challengeRating);
+            var creature = creatureGenerator.GenerateRandom(asCharacter, template, type, challengeRating, alignment);
             stopwatch.Stop();
 
             var message = new StringBuilder();
@@ -239,7 +239,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                 Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), message.ToString());
 
             if (alignment != null)
-                Assert.That(creature.Alignment, Is.EqualTo(alignment), message.ToString());
+                Assert.That(creature.Alignment.Full, Is.EqualTo(alignment), message.ToString());
 
             if (asCharacter)
                 creatureAsserter.AssertCreatureAsCharacter(creature, message.ToString());
@@ -316,7 +316,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private async Task<Creature> GenerateAndAssertRandomCreatureAsync(bool asCharacter, string template, string type, string challengeRating, string alignment)
         {
             stopwatch.Restart();
-            var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, template, type, challengeRating);
+            var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, template, type, challengeRating, alignment);
             stopwatch.Stop();
 
             var message = new StringBuilder();
@@ -341,7 +341,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                 Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), message.ToString());
 
             if (alignment != null)
-                Assert.That(creature.Alignment, Is.EqualTo(alignment), message.ToString());
+                Assert.That(creature.Alignment.Full, Is.EqualTo(alignment), message.ToString());
 
             if (asCharacter)
                 creatureAsserter.AssertCreatureAsCharacter(creature, message.ToString());
