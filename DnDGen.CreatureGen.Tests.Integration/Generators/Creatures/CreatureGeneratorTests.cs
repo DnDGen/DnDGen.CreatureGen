@@ -18,7 +18,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [SetUp]
         public void Setup()
         {
-            creatureAsserter = new CreatureAsserter();
+            creatureAsserter = GetNewInstanceOf<CreatureAsserter>();
             creatureGenerator = GetNewInstanceOf<ICreatureGenerator>();
         }
 
@@ -236,6 +236,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Deinonychus, CreatureConstants.Templates.FiendishCreature)]
         [TestCase(CreatureConstants.Dog, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(CreatureConstants.Dog_Riding, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(CreatureConstants.Dragon_Black_Young, CreatureConstants.Templates.Zombie)]
         [TestCase(CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.Ghost)]
         [TestCase(CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.HalfCelestial)]
         [TestCase(CreatureConstants.Dragon_Red_Wyrmling, CreatureConstants.Templates.Skeleton)]

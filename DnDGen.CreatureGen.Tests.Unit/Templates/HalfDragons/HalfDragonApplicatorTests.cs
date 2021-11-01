@@ -238,6 +238,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
 
             var message = new StringBuilder();
             message.AppendLine("Invalid creature:");
+            message.AppendLine("\tReason: Type 'Outsider' is not valid");
             message.AppendLine($"\tAs Character: {false}");
             message.AppendLine($"\tCreature: {baseCreature.Name}");
             message.AppendLine($"\tTemplate: {template}");
@@ -247,7 +248,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         }
 
         [TestCaseSource(nameof(IncompatibleFilters))]
-        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(string template, bool asCharacter, string type, string challengeRating, string alignment)
+        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(
+            string template,
+            bool asCharacter,
+            string type,
+            string challengeRating,
+            string alignment,
+            string reason)
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
             baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
@@ -257,6 +264,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
 
             var message = new StringBuilder();
             message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tReason: {reason}");
             message.AppendLine($"\tAs Character: {false}");
             message.AppendLine($"\tCreature: {baseCreature.Name}");
             message.AppendLine($"\tTemplate: {template}");
@@ -274,9 +282,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             {
                 foreach (var template in templates)
                 {
-                    yield return new TestCaseData(template, false, "subtype 1", ChallengeRatingConstants.CR3, $"wrong alignment");
-                    yield return new TestCaseData(template, false, "subtype 1", ChallengeRatingConstants.CR2, $"{template}y scaley");
-                    yield return new TestCaseData(template, false, "wrong subtype", ChallengeRatingConstants.CR3, $"{template}y scaley");
+                    yield return new TestCaseData(template, false, "subtype 1", ChallengeRatingConstants.CR3, $"wrong alignment", "Alignment filter 'wrong alignment' is not valid");
+                    yield return new TestCaseData(template, false, "subtype 1", ChallengeRatingConstants.CR2, $"{template}y scaley", "CR filter 2 does not match updated creature CR 3 (from CR 1)");
+                    yield return new TestCaseData(template, false, "wrong subtype", ChallengeRatingConstants.CR3, $"{template}y scaley", "Type filter 'wrong subtype' is not valid");
                     //INFO: This test case isn't valid, since As Character doesn't affect already-generated creature compatibility
                     //yield return new TestCaseData(template, true, "subtype 1", ChallengeRatingConstants.CR3, $"{template}y scaley");
                 }
@@ -1393,6 +1401,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
 
             var message = new StringBuilder();
             message.AppendLine("Invalid creature:");
+            message.AppendLine("\tReason: Type 'Outsider' is not valid");
             message.AppendLine($"\tAs Character: {false}");
             message.AppendLine($"\tCreature: {baseCreature.Name}");
             message.AppendLine($"\tTemplate: {template}");
@@ -1402,7 +1411,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         }
 
         [TestCaseSource(nameof(IncompatibleFilters))]
-        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(string template, bool asCharacter, string type, string challengeRating, string alignment)
+        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(
+            string template,
+            bool asCharacter,
+            string type,
+            string challengeRating,
+            string alignment,
+            string reason)
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
             baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
@@ -1412,6 +1427,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
 
             var message = new StringBuilder();
             message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tReason: {reason}");
             message.AppendLine($"\tAs Character: {false}");
             message.AppendLine($"\tCreature: {baseCreature.Name}");
             message.AppendLine($"\tTemplate: {template}");

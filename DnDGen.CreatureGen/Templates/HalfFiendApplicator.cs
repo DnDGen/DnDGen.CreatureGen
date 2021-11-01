@@ -77,7 +77,7 @@ namespace DnDGen.CreatureGen.Templates
 
         public Creature ApplyTo(Creature creature, bool asCharacter, string type = null, string challengeRating = null, string alignment = null)
         {
-            if (!IsCompatible(
+            var compatibility = IsCompatible(
                 creature.Type.AllTypes,
                 new[] { creature.Alignment.Full },
                 creature.Abilities[AbilityConstants.Intelligence],
@@ -85,9 +85,10 @@ namespace DnDGen.CreatureGen.Templates
                 creature.HitPoints.RoundedHitDiceQuantity,
                 type,
                 challengeRating,
-                alignment))
+                alignment);
+            if (!compatibility.Compatible)
             {
-                throw new InvalidCreatureException(asCharacter, creature.Name, CreatureConstants.Templates.HalfFiend, type, challengeRating, alignment);
+                throw new InvalidCreatureException(compatibility.Reason, asCharacter, creature.Name, CreatureConstants.Templates.HalfFiend, type, challengeRating, alignment);
             }
 
             // Template
@@ -390,7 +391,7 @@ namespace DnDGen.CreatureGen.Templates
 
         public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, string type = null, string challengeRating = null, string alignment = null)
         {
-            if (!IsCompatible(
+            var compatibility = IsCompatible(
                 creature.Type.AllTypes,
                 new[] { creature.Alignment.Full },
                 creature.Abilities[AbilityConstants.Intelligence],
@@ -398,9 +399,10 @@ namespace DnDGen.CreatureGen.Templates
                 creature.HitPoints.RoundedHitDiceQuantity,
                 type,
                 challengeRating,
-                alignment))
+                alignment);
+            if (!compatibility.Compatible)
             {
-                throw new InvalidCreatureException(asCharacter, creature.Name, CreatureConstants.Templates.HalfFiend, type, challengeRating, alignment);
+                throw new InvalidCreatureException(compatibility.Reason, asCharacter, creature.Name, CreatureConstants.Templates.HalfFiend, type, challengeRating, alignment);
             }
 
             var tasks = new List<Task>();
@@ -570,10 +572,11 @@ namespace DnDGen.CreatureGen.Templates
             var intelligence = new Ability(AbilityConstants.Intelligence);
             intelligence.RacialAdjustment = intelligenceAdjustment.Amount;
 
-            return IsCompatible(types, alignments, intelligence, creatureChallengeRating, hitDice.RoundedQuantity, type, challengeRating, alignment);
+            var compatibility = IsCompatible(types, alignments, intelligence, creatureChallengeRating, hitDice.RoundedQuantity, type, challengeRating, alignment);
+            return compatibility.Compatible;
         }
 
-        private bool IsCompatible(
+        private (bool Compatible, string Reason) IsCompatible(
             IEnumerable<string> types,
             IEnumerable<string> alignments,
             Ability intelligence,
@@ -583,21 +586,22 @@ namespace DnDGen.CreatureGen.Templates
             string challengeRating = null,
             string alignment = null)
         {
-            if (!IsCompatible(types, alignments, intelligence))
-                return false;
+            var compatibility = IsCompatible(types, alignments, intelligence);
+            if (!compatibility.Compatible)
+                return (false, compatibility.Reason);
 
             if (!string.IsNullOrEmpty(type))
             {
                 var updatedTypes = GetPotentialTypes(types);
                 if (!updatedTypes.Contains(type))
-                    return false;
+                    return (false, $"Type filter '{type}' is not valid");
             }
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
                 var cr = UpdateCreatureChallengeRating(creatureChallengeRating, creatureHitDiceQuantity);
                 if (cr != challengeRating)
-                    return false;
+                    return (false, $"CR filter {challengeRating} does not match updated creature CR {cr} (from CR {creatureChallengeRating})");
             }
 
             if (!string.IsNullOrEmpty(alignment))
@@ -605,31 +609,34 @@ namespace DnDGen.CreatureGen.Templates
                 var presetAlignment = new Alignment(alignment);
                 if (presetAlignment.Goodness != AlignmentConstants.Evil)
                 {
-                    return false;
+                    return (false, $"Alignment filter '{alignment}' is not valid");
                 }
 
                 var newAlignments = alignments
                     .Where(a => !a.Contains(AlignmentConstants.Good))
                     .Select(UpdateCreatureAlignment);
                 if (!newAlignments.Any(a => a.Full == alignment))
-                    return false;
+                    return (false, $"Alignment filter '{alignment}' is not valid for creature alignments");
             }
 
-            return true;
+            return (true, null);
         }
 
-        private bool IsCompatible(IEnumerable<string> types, IEnumerable<string> alignments, Ability intelligence)
+        private (bool Compatible, string Reason) IsCompatible(IEnumerable<string> types, IEnumerable<string> alignments, Ability intelligence)
         {
             if (types.Contains(CreatureConstants.Types.Subtypes.Incorporeal))
-                return false;
+                return (false, "Creature is Incorporeal");
 
             if (!creatureTypes.Contains(types.First()))
-                return false;
+                return (false, $"Type '{types.First()}' is not valid");
 
             if (!alignments.Any(a => !a.Contains(AlignmentConstants.Good)))
-                return false;
+                return (false, "Creature has no non-good alignments");
 
-            return intelligence.FullScore >= 4;
+            if (intelligence.FullScore < 4)
+                return (false, $"Creature has insufficient Intelligence ({intelligence.FullScore}, needs 4)");
+
+            return (true, null);
         }
 
         private bool CreatureInRange(

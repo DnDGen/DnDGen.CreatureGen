@@ -312,9 +312,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             return defaultTemplateApplicator;
         }
 
-        protected HitPoints SetUpCreatureAdvancement(bool asCharacter, int advancementAmount = 1337, string creatureName = "creature")
+        protected HitPoints SetUpCreatureAdvancement(bool asCharacter, string creatureName, string template, string challengeRatingFilter, int advancementAmount = 1337)
         {
-            mockAdvancementSelector.Setup(s => s.IsAdvanced(creatureName)).Returns(true);
+            mockAdvancementSelector.Setup(s => s.IsAdvanced(creatureName, template, challengeRatingFilter)).Returns(true);
 
             var advancement = new AdvancementSelection();
             advancement.AdditionalHitDice = advancementAmount;

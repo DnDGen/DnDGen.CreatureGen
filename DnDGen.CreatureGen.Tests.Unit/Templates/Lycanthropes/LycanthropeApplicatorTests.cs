@@ -305,6 +305,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             var message = new StringBuilder();
             message.AppendLine("Invalid creature:");
+            message.AppendLine("\tReason: Type 'Outsider' is not valid");
             message.AppendLine($"\tAs Character: {false}");
             message.AppendLine($"\tCreature: {baseCreature.Name}");
             message.AppendLine($"\tTemplate: {template}");
@@ -320,7 +321,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             bool asCharacter,
             string type,
             string challengeRating,
-            string alignment)
+            string alignment,
+            string reason)
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
             baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
@@ -332,6 +334,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             var message = new StringBuilder();
             message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tReason: {reason}");
             message.AppendLine($"\tAs Character: {false}");
             message.AppendLine($"\tCreature: {baseCreature.Name}");
             message.AppendLine($"\tTemplate: {template}");
@@ -349,9 +352,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             {
                 foreach (var template in templates)
                 {
-                    yield return new TestCaseData(template.Template, template.Animal, false, "subtype 1", ChallengeRatingConstants.CR3, "wrong alignment");
-                    yield return new TestCaseData(template.Template, template.Animal, false, "subtype 1", ChallengeRatingConstants.CR2, "original alignment");
-                    yield return new TestCaseData(template.Template, template.Animal, false, "wrong subtype", ChallengeRatingConstants.CR3, "original alignment");
+                    yield return new TestCaseData(template.Template, template.Animal, false, "subtype 1", ChallengeRatingConstants.CR3, "wrong alignment", "Alignment filter 'wrong alignment' is not valid");
+                    yield return new TestCaseData(template.Template, template.Animal, false, "subtype 1", ChallengeRatingConstants.CR2, "original alignment", "CR filter 2 does not match updated creature CR 3 (from CR 1)");
+                    yield return new TestCaseData(template.Template, template.Animal, false, "wrong subtype", ChallengeRatingConstants.CR3, "original alignment", "Type filter 'wrong subtype' is not valid");
                     //INFO: This test case isn't valid, since As Character doesn't affect already-generated creature compatibility
                     //yield return new TestCaseData(template.Template, template.Animal, true, "subtype 1", ChallengeRatingConstants.CR3, "original alignment");
                 }
@@ -2241,6 +2244,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             var message = new StringBuilder();
             message.AppendLine("Invalid creature:");
+            message.AppendLine("\tReason: Type 'Outsider' is not valid");
             message.AppendLine($"\tAs Character: {false}");
             message.AppendLine($"\tCreature: {baseCreature.Name}");
             message.AppendLine($"\tTemplate: {template}");
@@ -2256,7 +2260,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             bool asCharacter,
             string type,
             string challengeRating,
-            string alignment)
+            string alignment,
+            string reason)
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
             baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
@@ -2268,6 +2273,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             var message = new StringBuilder();
             message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tReason: {reason}");
             message.AppendLine($"\tAs Character: {false}");
             message.AppendLine($"\tCreature: {baseCreature.Name}");
             message.AppendLine($"\tTemplate: {template}");

@@ -22,7 +22,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         [SetUp]
         public void Setup()
         {
-            creatureAsserter = new CreatureAsserter();
+            creatureAsserter = GetNewInstanceOf<CreatureAsserter>();
             collectionSelector = GetNewInstanceOf<ICollectionSelector>();
             creatureGenerator = GetNewInstanceOf<ICreatureGenerator>();
             stopwatch = new Stopwatch();
@@ -357,6 +357,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         [TestCase(CreatureConstants.Dragon_Bronze_GreatWyrm, CreatureConstants.Templates.HalfCelestial, false)]
         [TestCase(CreatureConstants.Dragon_Silver_Ancient, CreatureConstants.Templates.HalfCelestial, false)]
         [TestCase(CreatureConstants.Dragon_White_Old, CreatureConstants.Templates.HalfFiend, false)]
+        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Ghost, false)]
         [TestCase(CreatureConstants.Xill, CreatureConstants.Templates.None, true)]
         [Repeat(100)]
         [Ignore("Only use this for debugging")]

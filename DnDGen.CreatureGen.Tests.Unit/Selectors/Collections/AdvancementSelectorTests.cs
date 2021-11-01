@@ -120,33 +120,99 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         }
 
         [Test]
-        public void IsRandomlyAdvanced()
+        public void IsAdvanced_IsRandomlyAdvanced()
         {
             SetUpAdvancement(SizeConstants.Large, 42);
 
             mockPercentileSelector.Setup(s => s.SelectFrom(.9)).Returns(true);
 
-            var isAdvanced = advancementSelector.IsAdvanced("creature");
+            var isAdvanced = advancementSelector.IsAdvanced("creature", null, null);
             Assert.That(isAdvanced, Is.True);
         }
 
         [Test]
-        public void IsRandomlyNotAdvanced()
+        public void IsAdvanced_IsRandomlyNotAdvanced()
         {
             SetUpAdvancement(SizeConstants.Large, 42);
 
             mockPercentileSelector.Setup(s => s.SelectFrom(.9)).Returns(false);
 
-            var isAdvanced = advancementSelector.IsAdvanced("creature");
+            var isAdvanced = advancementSelector.IsAdvanced("creature", null, null);
             Assert.That(isAdvanced, Is.False);
         }
 
         [Test]
-        public void IsNotAdvancedIfNoAdvancements()
+        public void IsAdvanced_IsNotAdvanced_IfNoAdvancements()
         {
             mockPercentileSelector.Setup(s => s.SelectFrom(.9)).Returns(true);
 
-            var isAdvanced = advancementSelector.IsAdvanced("creature");
+            var isAdvanced = advancementSelector.IsAdvanced("creature", null, null);
+            Assert.That(isAdvanced, Is.False);
+        }
+
+        [Test]
+        public void IsAdvanced_IsNotAdvanced_WhenChallengeRatingIsFiltered()
+        {
+            SetUpAdvancement(SizeConstants.Large, 42);
+
+            mockPercentileSelector.Setup(s => s.SelectFrom(.9)).Returns(true);
+
+            var isAdvanced = advancementSelector.IsAdvanced("creature", null, "my challenge rating");
+            Assert.That(isAdvanced, Is.False);
+        }
+
+        [TestCase(CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(CreatureConstants.Templates.Ghost)]
+        [TestCase(CreatureConstants.Templates.HalfCelestial)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Black)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Blue)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Brass)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Bronze)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Copper)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Gold)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Green)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Red)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Silver)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_White)]
+        [TestCase(CreatureConstants.Templates.HalfFiend)]
+        [TestCase(CreatureConstants.Templates.Lich)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Afflicted)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Natural)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Natural)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Natural)]
+        [TestCase(CreatureConstants.Templates.None)]
+        [TestCase(CreatureConstants.Templates.Vampire)]
+        [TestCase("my template")]
+        public void IsAdvanced_IsAdvanced_WhenTemplateAllows(string template)
+        {
+            SetUpAdvancement(SizeConstants.Large, 42);
+
+            mockPercentileSelector.Setup(s => s.SelectFrom(.9)).Returns(true);
+
+            var isAdvanced = advancementSelector.IsAdvanced("creature", template, null);
+            Assert.That(isAdvanced, Is.True);
+        }
+
+        [TestCase(CreatureConstants.Templates.Skeleton)]
+        [TestCase(CreatureConstants.Templates.Zombie)]
+        public void IsAdvanced_IsNotAdvanced_WhenTemplateDoesNotAllow(string template)
+        {
+            SetUpAdvancement(SizeConstants.Large, 42);
+
+            mockPercentileSelector.Setup(s => s.SelectFrom(.9)).Returns(true);
+
+            var isAdvanced = advancementSelector.IsAdvanced("creature", template, null);
             Assert.That(isAdvanced, Is.False);
         }
 

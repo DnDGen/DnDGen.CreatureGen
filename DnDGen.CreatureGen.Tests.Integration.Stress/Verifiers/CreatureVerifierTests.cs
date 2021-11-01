@@ -90,7 +90,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Verifiers
             var verified = creatureVerifier.VerifyCompatibility(asCharacter, creature, template, type, cr, alignment);
             stopwatch.Stop();
 
-            var failure = new InvalidCreatureException(asCharacter, creature, template, type, cr, alignment);
+            var failure = new InvalidCreatureException(null, asCharacter, creature, template, type, cr, alignment);
             Assert.That(stopwatch.Elapsed, Is.LessThan(timeLimit), $"Verified: {verified}\n{failure.Message}");
         }
     }

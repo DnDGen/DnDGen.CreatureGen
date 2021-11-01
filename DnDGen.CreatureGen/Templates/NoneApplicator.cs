@@ -24,15 +24,16 @@ namespace DnDGen.CreatureGen.Templates
 
         public Creature ApplyTo(Creature creature, bool asCharacter, string type = null, string challengeRating = null, string alignment = null)
         {
-            if (!IsCompatible(
+            var compatibility = IsCompatible(
                 creature.Type.AllTypes,
                 new[] { creature.Alignment.Full },
                 creature.ChallengeRating,
                 type,
                 challengeRating,
-                alignment))
+                alignment);
+            if (!compatibility.Compatible)
             {
-                throw new InvalidCreatureException(asCharacter, creature.Name, CreatureConstants.Templates.None, type, challengeRating, alignment);
+                throw new InvalidCreatureException(compatibility.Reason, asCharacter, creature.Name, CreatureConstants.Templates.None, type, challengeRating, alignment);
             }
 
             return creature;
@@ -40,15 +41,16 @@ namespace DnDGen.CreatureGen.Templates
 
         public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, string type = null, string challengeRating = null, string alignment = null)
         {
-            if (!IsCompatible(
+            var compatibility = IsCompatible(
                 creature.Type.AllTypes,
                 new[] { creature.Alignment.Full },
                 creature.ChallengeRating,
                 type,
                 challengeRating,
-                alignment))
+                alignment);
+            if (!compatibility.Compatible)
             {
-                throw new InvalidCreatureException(asCharacter, creature.Name, CreatureConstants.Templates.None, type, challengeRating, alignment);
+                throw new InvalidCreatureException(compatibility.Reason, asCharacter, creature.Name, CreatureConstants.Templates.None, type, challengeRating, alignment);
             }
 
             return creature;
@@ -71,10 +73,11 @@ namespace DnDGen.CreatureGen.Templates
                 creatureChallengeRating = ChallengeRatingConstants.CR0;
             }
 
-            return IsCompatible(types, alignments, creatureChallengeRating, type, challengeRating, alignment);
+            var compatibility = IsCompatible(types, alignments, creatureChallengeRating, type, challengeRating, alignment);
+            return compatibility.Compatible;
         }
 
-        private bool IsCompatible(
+        private (bool Compatible, string Reason) IsCompatible(
             IEnumerable<string> types,
             IEnumerable<string> alignments,
             string creatureChallengeRating,
@@ -84,22 +87,22 @@ namespace DnDGen.CreatureGen.Templates
         {
             if (!string.IsNullOrEmpty(type) && !types.Contains(type))
             {
-                return false;
+                return (false, $"Type filter '{type}' is not valid");
             }
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
                 if (creatureChallengeRating != challengeRating)
-                    return false;
+                    return (false, $"CR filter {challengeRating} does not match creature CR {creatureChallengeRating}");
             }
 
             if (!string.IsNullOrEmpty(alignment))
             {
                 if (!alignments.Contains(alignment))
-                    return false;
+                    return (false, $"Alignment filter '{alignment}' is not valid");
             }
 
-            return true;
+            return (true, null);
         }
 
         public IEnumerable<string> GetCompatibleCreatures(

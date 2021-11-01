@@ -21,11 +21,20 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             this.collectionSelector = collectionSelector;
         }
 
-        public bool IsAdvanced(string creature)
+        public bool IsAdvanced(string creature, string template, string challengeRatingFilter)
         {
-            var advancements = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Advancements, creature);
+            if (challengeRatingFilter != null)
+                return false;
 
-            return percentileSelector.SelectFrom(.9) && advancements.Any();
+            if (template == CreatureConstants.Templates.Skeleton || template == CreatureConstants.Templates.Zombie)
+                return false;
+
+            var advancements = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Advancements, creature);
+            if (!advancements.Any())
+                return false;
+
+            var isAdvanced = percentileSelector.SelectFrom(.9);
+            return isAdvanced;
         }
 
         public AdvancementSelection SelectRandomFor(string creature, CreatureType creatureType, string originalSize, string originalChallengeRating)

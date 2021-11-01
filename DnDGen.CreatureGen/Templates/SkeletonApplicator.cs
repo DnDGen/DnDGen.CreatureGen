@@ -84,8 +84,7 @@ namespace DnDGen.CreatureGen.Templates
         public Creature ApplyTo(Creature creature, bool asCharacter, string type = null, string challengeRating = null, string alignment = null)
         {
             var hasSkeleton = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton);
-
-            if (!IsCompatible(
+            var compatibility = IsCompatible(
                 creature.Type.AllTypes,
                 hasSkeleton,
                 creature.HitPoints.HitDiceQuantity,
@@ -93,9 +92,11 @@ namespace DnDGen.CreatureGen.Templates
                 asCharacter,
                 type,
                 challengeRating,
-                alignment))
+                alignment);
+
+            if (!compatibility.Compatible)
             {
-                throw new InvalidCreatureException(asCharacter, creature.Name, CreatureConstants.Templates.Skeleton, type, challengeRating, alignment);
+                throw new InvalidCreatureException(compatibility.Reason, asCharacter, creature.Name, CreatureConstants.Templates.Skeleton, type, challengeRating, alignment);
             }
 
             // Template
@@ -425,8 +426,7 @@ namespace DnDGen.CreatureGen.Templates
         public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, string type = null, string challengeRating = null, string alignment = null)
         {
             var hasSkeleton = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton);
-
-            if (!IsCompatible(
+            var compatibility = IsCompatible(
                 creature.Type.AllTypes,
                 hasSkeleton,
                 creature.HitPoints.HitDiceQuantity,
@@ -434,9 +434,11 @@ namespace DnDGen.CreatureGen.Templates
                 asCharacter,
                 type,
                 challengeRating,
-                alignment))
+                alignment);
+
+            if (!compatibility.Compatible)
             {
-                throw new InvalidCreatureException(asCharacter, creature.Name, CreatureConstants.Templates.Skeleton, type, challengeRating, alignment);
+                throw new InvalidCreatureException(compatibility.Reason, asCharacter, creature.Name, CreatureConstants.Templates.Skeleton, type, challengeRating, alignment);
             }
 
             var tasks = new List<Task>();
@@ -573,7 +575,8 @@ namespace DnDGen.CreatureGen.Templates
                 return Enumerable.Empty<string>();
             }
 
-            var templateCreatures = filteredBaseCreatures.Where(c => IsCompatible(allTypes[c], hasSkeleton, allHitDice[c], c, asCharacter, type, challengeRating, alignment));
+            var templateCreatures = filteredBaseCreatures
+                .Where(c => IsCompatible(allTypes[c], hasSkeleton, allHitDice[c], c, asCharacter, type, challengeRating, alignment).Compatible);
 
             return templateCreatures;
         }
@@ -596,7 +599,7 @@ namespace DnDGen.CreatureGen.Templates
             return adjustedTypes;
         }
 
-        private bool IsCompatible(
+        private (bool Compatible, string Reason) IsCompatible(
             IEnumerable<string> types,
             IEnumerable<string> hasSkeleton,
             double creatureHitDiceQuantity,
@@ -606,46 +609,50 @@ namespace DnDGen.CreatureGen.Templates
             string challengeRating = null,
             string alignment = null)
         {
-            if (!IsCompatible(asCharacter, types, hasSkeleton, creature, creatureHitDiceQuantity))
-                return false;
+            var compatibility = IsCompatible(asCharacter, types, hasSkeleton, creature, creatureHitDiceQuantity);
+            if (!compatibility.Compatible)
+                return (false, compatibility.Reason);
 
             if (!string.IsNullOrEmpty(type))
             {
                 var updatedTypes = GetPotentialTypes(types);
                 if (!updatedTypes.Contains(type))
-                    return false;
+                    return (false, $"Type filter '{type}' is not valid");
             }
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
                 var cr = UpdateCreatureChallengeRating(creatureHitDiceQuantity, creature);
                 if (cr != challengeRating)
-                    return false;
+                    return (false, $"CR filter {challengeRating} does not match updated creature CR {cr}");
             }
 
             if (!string.IsNullOrEmpty(alignment) && alignment != AlignmentConstants.NeutralEvil)
             {
-                return false;
+                return (false, $"Alignment filter '{alignment}' is not valid");
             }
 
-            return true;
+            return (true, null);
         }
 
-        private bool IsCompatible(bool asCharacter, IEnumerable<string> types, IEnumerable<string> hasSkeleton, string creature, double creatureHitDiceQuantity)
+        private (bool Compatible, string Reason) IsCompatible(bool asCharacter, IEnumerable<string> types, IEnumerable<string> hasSkeleton, string creature, double creatureHitDiceQuantity)
         {
             if (asCharacter)
-                return false;
+                return (false, "Skeletons cannot be characters");
 
             if (!creatureTypes.Contains(types.First()))
-                return false;
+                return (false, $"Type '{types.First()}' is not valid");
 
             if (types.Contains(CreatureConstants.Types.Subtypes.Incorporeal))
-                return false;
+                return (false, "Creature is Incorporeal");
 
             if (!hasSkeleton.Contains(creature))
-                return false;
+                return (false, "Creature does not have a skeleton");
 
-            return creatureHitDiceQuantity <= 20;
+            if (creatureHitDiceQuantity > 20)
+                return (false, $"Creature has too many hit dice ({creatureHitDiceQuantity} > 20)");
+
+            return (true, null);
         }
     }
 }

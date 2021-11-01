@@ -41,11 +41,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.Fail("not yet written");
         }
 
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, "wrong alignment")]
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, "original alignment")]
-        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR1, "original alignment")]
-        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR1, "original alignment", Ignore = "As Character doesn't affect already-generated creature compatiblity")]
-        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment)
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, "wrong alignment", "Alignment filter 'wrong alignment' is not valid")]
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, "original alignment", "CR filter 2 does not match creature CR 1")]
+        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR1, "original alignment", "Type filter 'wrong subtype' is not valid")]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR1, "original alignment", "",
+            Ignore = "As Character doesn't affect already-generated creature compatiblity")]
+        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment, string reason)
         {
             var creature = new CreatureBuilder()
                 .WithTestValues()
@@ -61,6 +62,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var message = new StringBuilder();
             message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tReason: {reason}");
             message.AppendLine($"\tAs Character: {asCharacter}");
             message.AppendLine($"\tCreature: {creature.Name}");
             message.AppendLine($"\tTemplate: None");
@@ -293,11 +295,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.Fail("not yet written");
         }
 
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, "wrong alignment")]
-        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, "original alignment")]
-        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR1, "original alignment")]
-        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR1, "original alignment", Ignore = "As Character doesn't affect already-generated creature compatiblity")]
-        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment)
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR1, "wrong alignment", "Alignment filter 'wrong alignment' is not valid")]
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, "original alignment", "CR filter 2 does not match creature CR 1")]
+        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR1, "original alignment", "Type filter 'wrong subtype' is not valid")]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR1, "original alignment", "",
+            Ignore = "As Character doesn't affect already-generated creature compatiblity")]
+        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment, string reason)
         {
             var creature = new CreatureBuilder()
                 .WithTestValues()
@@ -313,6 +316,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var message = new StringBuilder();
             message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tReason: {reason}");
             message.AppendLine($"\tAs Character: {asCharacter}");
             message.AppendLine($"\tCreature: {creature.Name}");
             message.AppendLine($"\tTemplate: None");

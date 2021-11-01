@@ -3,7 +3,6 @@ using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.RollGen;
-using DnDGen.TreasureGen.Items;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -35,7 +34,8 @@ namespace DnDGen.CreatureGen.Generators.Abilities
             foreach (var selection in abilitySelections)
             {
                 abilities[selection.Type].RacialAdjustment = selection.Amount;
-                abilities[selection.Type].BaseScore = dice.Roll(3).d6().AsSum();
+                //This gives you always-average scores as base values
+                abilities[selection.Type].BaseScore = dice.Roll("1d2+9").AsSum();
             }
 
             var missingAbilities = allAbilities.Select(a => a.Type).Except(abilitySelections.Select(a => a.Type));
@@ -52,17 +52,14 @@ namespace DnDGen.CreatureGen.Generators.Abilities
         {
             if (equipment.Armor != null)
             {
-                var armor = equipment.Armor as Armor;
-                abilities[AbilityConstants.Dexterity].MaxModifier = armor.MaxDexterityBonus;
+                abilities[AbilityConstants.Dexterity].MaxModifier = equipment.Armor.MaxDexterityBonus;
             }
 
             if (equipment.Shield != null)
             {
-                var shield = equipment.Shield as Armor;
-
-                if (shield.MaxDexterityBonus < abilities[AbilityConstants.Dexterity].MaxModifier)
+                if (equipment.Shield.MaxDexterityBonus < abilities[AbilityConstants.Dexterity].MaxModifier)
                 {
-                    abilities[AbilityConstants.Dexterity].MaxModifier = shield.MaxDexterityBonus;
+                    abilities[AbilityConstants.Dexterity].MaxModifier = equipment.Shield.MaxDexterityBonus;
                 }
             }
 

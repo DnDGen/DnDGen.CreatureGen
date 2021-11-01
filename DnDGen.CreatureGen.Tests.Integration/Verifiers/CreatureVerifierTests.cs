@@ -590,6 +590,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
         [TestCase(false, CreatureConstants.Dragon_Red_GreatWyrm, null, null, null, AlignmentConstants.ChaoticGood, false)]
         [TestCase(false, CreatureConstants.Dragon_Red_GreatWyrm, null, null, null, AlignmentConstants.ChaoticEvil, true)]
         [TestCase(false, CreatureConstants.Human, null, null, null, null, true)]
+        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Ghost, null, null, null, true)]
         [TestCase(false, CreatureConstants.Hydra_8Heads, null, CreatureConstants.Types.MagicalBeast, ChallengeRatingConstants.CR9, AlignmentConstants.LawfulEvil, true)]
         [TestCase(false, CreatureConstants.Hydra_8Heads, CreatureConstants.Templates.HalfDragon_Blue, CreatureConstants.Types.MagicalBeast, ChallengeRatingConstants.CR9, AlignmentConstants.LawfulEvil, true)]
         [TestCase(false, CreatureConstants.Salamander_Average, null, CreatureConstants.Types.Subtypes.Extraplanar, null, AlignmentConstants.ChaoticNeutral, true)]
