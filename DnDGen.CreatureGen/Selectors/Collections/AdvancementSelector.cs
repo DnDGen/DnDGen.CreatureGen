@@ -47,6 +47,15 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             var maxHitDice = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.HitDice, template);
             var validAdvancements = advancements.Where(a => creatureHitDice + a.Amount <= maxHitDice);
 
+            if (!validAdvancements.Any())
+            {
+                var minimumAdvancement = advancements.OrderBy(a => a.Amount).First();
+                var newAdvancementAmount = maxHitDice - (int)Math.Max(creatureHitDice, 1);
+                minimumAdvancement.Amount = Math.Min(newAdvancementAmount, minimumAdvancement.Amount);
+
+                validAdvancements = new[] { minimumAdvancement };
+            }
+
             var randomAdvancement = collectionSelector.SelectRandomFrom(validAdvancements);
             var selection = GetAdvancementSelection(creature, creatureType, originalSize, originalChallengeRating, randomAdvancement);
 

@@ -352,8 +352,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         }
 
         [TestCase(CreatureConstants.Chimera_White, CreatureConstants.Templates.Skeleton, false)]
+        [TestCase(CreatureConstants.Criosphinx, CreatureConstants.Templates.Zombie, false)]
         [TestCase(CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.Ghost, false)]
         [TestCase(CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.HalfCelestial, false)]
+        [TestCase(CreatureConstants.Dragon_Copper_Adult, CreatureConstants.Templates.Skeleton, false)]
         [TestCase(CreatureConstants.Dragon_Bronze_GreatWyrm, CreatureConstants.Templates.HalfCelestial, false)]
         [TestCase(CreatureConstants.Dragon_Silver_Ancient, CreatureConstants.Templates.HalfCelestial, false)]
         [TestCase(CreatureConstants.Dragon_White_Old, CreatureConstants.Templates.HalfFiend, false)]
@@ -363,7 +365,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         [TestCase(CreatureConstants.Otyugh, CreatureConstants.Templates.Zombie, false)]
         [TestCase(CreatureConstants.Xill, CreatureConstants.Templates.None, true)]
         [Repeat(100)]
-        //[Ignore("Only use this for debugging")]
+        [Ignore("Only use this for debugging")]
         public void BUG_StressSpecificCreature(string creatureName, string template, bool asCharacter)
         {
             stressor.Stress(() => GenerateAndAssertCreature(creatureName, template, asCharacter));
@@ -383,7 +385,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         [TestCase(CreatureConstants.Types.Subtypes.Native, false, null, null, null)]
         [TestCase(CreatureConstants.Types.Subtypes.Shapechanger, false, null, null, null)]
         [Repeat(100)]
-        //[Ignore("Only use this for debugging")]
+        [Ignore("Only use this for debugging")]
         public void BUG_StressSpecificFilters(string type, bool asCharacter, string template, string challengeRating, string alignment)
         {
             stressor.Stress(() => GenerateAndAssertRandomCreature(asCharacter, template, type, challengeRating, alignment));

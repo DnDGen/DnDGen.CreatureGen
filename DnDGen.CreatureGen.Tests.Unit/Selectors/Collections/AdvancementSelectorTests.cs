@@ -155,6 +155,28 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(advancement.Size, Is.EqualTo(SizeConstants.Large));
         }
 
+        [TestCase(0.1, 19)]
+        [TestCase(0.5, 19)]
+        [TestCase(1, 19)]
+        [TestCase(2, 18)]
+        [TestCase(10, 10)]
+        [TestCase(19, 1)]
+        [TestCase(20, 0)]
+        public void SelectMinimumFromNoValidAdvancements(double creatureHitDice, int additionalHitDice)
+        {
+            SetUpAdvancement(SizeConstants.Medium, 42);
+            SetUpAdvancement(SizeConstants.Large, 96);
+            SetUpAdvancement(SizeConstants.Huge, 9266);
+            SetUpAdvancement("wrong advanced size", 90210);
+
+            mockAdjustmentsSelector.Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, "creature")).Returns(creatureHitDice);
+            mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.HitDice, "template")).Returns(20);
+
+            var advancement = advancementSelector.SelectRandomFor("creature", "template", creatureType, SizeConstants.Medium, ChallengeRatingConstants.CR1);
+            Assert.That(advancement.AdditionalHitDice, Is.EqualTo(additionalHitDice));
+            Assert.That(advancement.Size, Is.EqualTo(SizeConstants.Medium));
+        }
+
         [Test]
         public void SelectNoAdvancements()
         {
