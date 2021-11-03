@@ -1,62 +1,16 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using NUnit.Framework;
 using System.Collections;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Unit.TestCaseSources
 {
     public class CreatureTestData
     {
-        public static IEnumerable Creatures
-        {
-            get
-            {
-                var creatures = CreatureConstants.GetAll();
-
-                foreach (var creature in creatures)
-                {
-                    yield return new TestCaseData(creature);
-                }
-            }
-        }
-
-        public static IEnumerable CharacterCreatures
-        {
-            get
-            {
-                var creatures = CreatureConstants.GetAllCharacters();
-
-                foreach (var creature in creatures)
-                {
-                    yield return new TestCaseData(creature);
-                }
-            }
-        }
-
-        public static IEnumerable NonCharacterCreatures
-        {
-            get
-            {
-                var nonCharacters = CreatureConstants.GetAllNonCharacters();
-
-                foreach (var creature in nonCharacters)
-                {
-                    yield return new TestCaseData(creature);
-                }
-            }
-        }
-
-        public static IEnumerable Templates
-        {
-            get
-            {
-                var templates = CreatureConstants.Templates.GetAll();
-
-                foreach (var template in templates)
-                {
-                    yield return new TestCaseData(template);
-                }
-            }
-        }
+        public static IEnumerable Creatures => CreatureConstants.GetAll().Select(c => new TestCaseData(c));
+        public static IEnumerable CharacterCreatures => CreatureConstants.GetAllCharacters().Select(c => new TestCaseData(c));
+        public static IEnumerable NonCharacterCreatures => CreatureConstants.GetAllNonCharacters().Select(c => new TestCaseData(c));
+        public static IEnumerable Templates => CreatureConstants.Templates.GetAll().Select(c => new TestCaseData(c));
 
         public static IEnumerable CreatureTemplatePairs
         {
@@ -75,30 +29,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.TestCaseSources
             }
         }
 
-        public static IEnumerable Types
-        {
-            get
-            {
-                var types = CreatureConstants.Types.GetAll();
-
-                foreach (var creatureType in types)
-                {
-                    yield return new TestCaseData(creatureType);
-                }
-            }
-        }
-
-        public static IEnumerable Subtypes
-        {
-            get
-            {
-                var subtypes = CreatureConstants.Types.Subtypes.GetAll();
-
-                foreach (var subtype in subtypes)
-                {
-                    yield return new TestCaseData(subtype);
-                }
-            }
-        }
+        public static IEnumerable Types => CreatureConstants.Types.GetAll().Select(c => new TestCaseData(c));
+        public static IEnumerable Subtypes => CreatureConstants.Types.Subtypes.GetAll().Select(c => new TestCaseData(c));
     }
 }

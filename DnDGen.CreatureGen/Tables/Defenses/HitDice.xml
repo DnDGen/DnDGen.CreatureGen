@@ -2945,4 +2945,140 @@
     <name>Zelekhut</name>
     <entry>8</entry>
   </collection>
+  <collection>
+    <name>Celestial Creature</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Fiendish Creature</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Ghost</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Lich</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Vampire</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Half-Celestial</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Black)</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Blue)</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Red)</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (White)</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Brass)</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Bronze)</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Copper)</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Gold)</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Silver)</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Green)</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Half-Fiend</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Skeleton</name>
+    <entry>20</entry>
+  </collection>
+  <collection>
+    <name>Zombie</name>
+    <entry>10</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Brown Bear (Werebear, Afflicted)</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Brown Bear (Werebear, Natural)</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Boar (Wereboar, Afflicted)</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Boar (Wereboar, Natural)</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Rat (Wererat, Afflicted)</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Rat (Wererat, Natural)</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Tiger (Weretiger, Afflicted)</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Tiger (Weretiger, Natural)</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Wolf (Werewolf, Afflicted)</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Wolf (Werewolf, Natural)</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Wolf (Dire Werewolf, Natural)</name>
+    <entry>2147483647</entry>
+  </collection>
+  <collection>
+    <name></name>
+    <entry>2147483647</entry>
+  </collection>
 </collections>

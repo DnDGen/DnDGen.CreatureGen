@@ -314,7 +314,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
         protected HitPoints SetUpCreatureAdvancement(bool asCharacter, string creatureName, string template, string challengeRatingFilter, int advancementAmount = 1337)
         {
-            mockAdvancementSelector.Setup(s => s.IsAdvanced(creatureName, template, challengeRatingFilter)).Returns(true);
+            mockAdvancementSelector.Setup(s => s.IsAdvanced(creatureName, challengeRatingFilter)).Returns(true);
 
             var advancement = new AdvancementSelection();
             advancement.AdditionalHitDice = advancementAmount;
@@ -329,7 +329,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             advancement.StrengthAdjustment = 3456;
 
             mockAdvancementSelector
-                .Setup(s => s.SelectRandomFor(creatureName, It.Is<CreatureType>(c => c.Name == types[0]), creatureData.Size, creatureData.ChallengeRating))
+                .Setup(s => s.SelectRandomFor(creatureName, template, It.Is<CreatureType>(c => c.Name == types[0]), creatureData.Size, creatureData.ChallengeRating))
                 .Returns(advancement);
 
             var advancedHitPoints = new HitPoints();

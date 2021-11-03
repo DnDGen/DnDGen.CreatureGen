@@ -81,7 +81,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             this.languageGenerator = languageGenerator;
         }
 
-        public Creature Generate(string creatureName, string template, bool asCharacter) => Generate(creatureName, template, asCharacter);
+        public Creature Generate(string creatureName, string template, bool asCharacter) => Generate(creatureName, template, asCharacter, null, null, null);
 
         public (string Creature, string Template) GenerateRandomName(
             bool asCharacter,
@@ -118,9 +118,9 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             string template,
             IEnumerable<string> creatureGroup,
             bool asCharacter,
-            string creatureType = null,
-            string challengeRating = null,
-            string alignment = null)
+            string creatureType,
+            string challengeRating,
+            string alignment)
         {
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
             var creatures = templateApplicator.GetCompatibleCreatures(creatureGroup, asCharacter, creatureType, challengeRating, alignment);
@@ -139,9 +139,9 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         private IEnumerable<string> GetValidCreatures(
             IEnumerable<string> creatureGroup,
             bool asCharacter,
-            string type = null,
-            string challengeRating = null,
-            string alignment = null)
+            string type,
+            string challengeRating,
+            string alignment)
         {
             var validCreatures = new List<string>();
 
@@ -165,9 +165,9 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         private (string CreatureName, string Template) GetRandomValidCreature(
             IEnumerable<string> creatureGroup,
             bool asCharacter,
-            string type = null,
-            string challengeRating = null,
-            string alignment = null)
+            string type,
+            string challengeRating,
+            string alignment)
         {
             var validCreatures = GetValidCreatures(creatureGroup, asCharacter, type, challengeRating, alignment);
             if (!validCreatures.Any())
@@ -198,9 +198,9 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             string creatureName,
             string template,
             bool asCharacter,
-            string type = null,
-            string challengeRating = null,
-            string alignment = null)
+            string type,
+            string challengeRating,
+            string alignment)
         {
             var compatible = creatureVerifier.VerifyCompatibility(asCharacter, creature: creatureName, template: template);
             if (!compatible)
@@ -232,9 +232,9 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             creature.Type = GetCreatureType(creatureName);
             creature.Abilities = abilitiesGenerator.GenerateFor(creatureName);
 
-            if (advancementSelector.IsAdvanced(creatureName, template, challengeRatingFilter))
+            if (advancementSelector.IsAdvanced(creatureName, challengeRatingFilter))
             {
-                var advancement = advancementSelector.SelectRandomFor(creatureName, creature.Type, creature.Size, creature.ChallengeRating);
+                var advancement = advancementSelector.SelectRandomFor(creatureName, template, creature.Type, creature.Size, creature.ChallengeRating);
 
                 creature.IsAdvanced = true;
                 creature.Size = advancement.Size;
@@ -373,7 +373,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return creatureType;
         }
 
-        public async Task<Creature> GenerateAsync(string creatureName, string template, bool asCharacter) => await GenerateAsync(creatureName, template, asCharacter);
+        public async Task<Creature> GenerateAsync(string creatureName, string template, bool asCharacter)
+            => await GenerateAsync(creatureName, template, asCharacter, null, null, null);
 
         public async Task<Creature> GenerateRandomAsync(bool asCharacter, string template = null, string type = null, string challengeRating = null, string alignment = null)
         {
@@ -385,9 +386,9 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             string creatureName,
             string template,
             bool asCharacter,
-            string type = null,
-            string challengeRating = null,
-            string alignment = null)
+            string type,
+            string challengeRating,
+            string alignment)
         {
             var compatible = creatureVerifier.VerifyCompatibility(asCharacter, creature: creatureName, template: template);
             if (!compatible)

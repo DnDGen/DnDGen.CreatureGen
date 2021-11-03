@@ -885,51 +885,29 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false, "template", null, "challenge rating")]
         [TestCase(false, "template", "type", null)]
         [TestCase(false, "template", "type", "challenge rating")]
-        public async Task GenerateRandomAsync_DoNotGenerateAdvancedCreature_IfChallengeRatingSet(bool asCharacter, string template, string type, string challengeRating)
+        public async Task GenerateRandomAsync_GenerateAdvancedCreature_WithFilters(bool asCharacter, string template, string type, string challengeRating)
         {
             SetUpCreature("creature", template ?? CreatureConstants.Templates.None, asCharacter, type, challengeRating);
             var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", template ?? CreatureConstants.Templates.None, challengeRating);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, template, type, challengeRating);
 
-            if (string.IsNullOrEmpty(challengeRating))
-            {
-                Assert.That(creature.HitPoints, Is.EqualTo(advancedHitPoints));
-                Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(681));
-                Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(1));
-                Assert.That(creature.HitPoints.HitDice[0].Quantity, Is.EqualTo(681));
-                Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(573));
-                Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(492));
-                Assert.That(creature.HitPoints.Total, Is.EqualTo(862));
-                Assert.That(creature.Size, Is.EqualTo("advanced size"));
-                Assert.That(creature.Space.Value, Is.EqualTo(54.32));
-                Assert.That(creature.Reach.Value, Is.EqualTo(98.76));
-                Assert.That(creature.Abilities[AbilityConstants.Strength].AdvancementAdjustment, Is.EqualTo(3456));
-                Assert.That(creature.Abilities[AbilityConstants.Dexterity].AdvancementAdjustment, Is.EqualTo(783));
-                Assert.That(creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment, Is.EqualTo(69));
-                Assert.That(creature.ChallengeRating, Is.EqualTo("adjusted challenge rating"));
-                Assert.That(creature.CasterLevel, Is.EqualTo(1029 + 6331));
-                Assert.That(creature.IsAdvanced, Is.True);
-            }
-            else
-            {
-                Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));
-                Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(9266));
-                Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(1));
-                Assert.That(creature.HitPoints.HitDice[0].Quantity, Is.EqualTo(9266));
-                Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(90210));
-                Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(600));
-                Assert.That(creature.HitPoints.Total, Is.EqualTo(42));
-                Assert.That(creature.Size, Is.EqualTo("size"));
-                Assert.That(creature.Space.Value, Is.EqualTo(56.78));
-                Assert.That(creature.Reach.Value, Is.EqualTo(67.89));
-                Assert.That(creature.Abilities[AbilityConstants.Strength].AdvancementAdjustment, Is.Zero);
-                Assert.That(creature.Abilities[AbilityConstants.Dexterity].AdvancementAdjustment, Is.Zero);
-                Assert.That(creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment, Is.Zero);
-                Assert.That(creature.ChallengeRating, Is.EqualTo("challenge rating"));
-                Assert.That(creature.CasterLevel, Is.EqualTo(1029));
-                Assert.That(creature.IsAdvanced, Is.False);
-            }
+            Assert.That(creature.HitPoints, Is.EqualTo(advancedHitPoints));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(681));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(1));
+            Assert.That(creature.HitPoints.HitDice[0].Quantity, Is.EqualTo(681));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(573));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(492));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(862));
+            Assert.That(creature.Size, Is.EqualTo("advanced size"));
+            Assert.That(creature.Space.Value, Is.EqualTo(54.32));
+            Assert.That(creature.Reach.Value, Is.EqualTo(98.76));
+            Assert.That(creature.Abilities[AbilityConstants.Strength].AdvancementAdjustment, Is.EqualTo(3456));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].AdvancementAdjustment, Is.EqualTo(783));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment, Is.EqualTo(69));
+            Assert.That(creature.ChallengeRating, Is.EqualTo("adjusted challenge rating"));
+            Assert.That(creature.CasterLevel, Is.EqualTo(1029 + 6331));
+            Assert.That(creature.IsAdvanced, Is.True);
         }
 
         [TestCase(true)]
@@ -938,7 +916,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetUpCreature("creature", CreatureConstants.Templates.None, asCharacter);
             var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", CreatureConstants.Templates.None, null);
-            mockAdvancementSelector.Setup(s => s.IsAdvanced("creature", CreatureConstants.Templates.None, null)).Returns(false);
+            mockAdvancementSelector.Setup(s => s.IsAdvanced("creature", null)).Returns(false);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));

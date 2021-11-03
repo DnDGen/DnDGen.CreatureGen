@@ -29,7 +29,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             abilitiesGenerator = new AbilitiesGenerator(mockTypeAndAmountSelector.Object, mockDice.Object);
 
             abilitySelections = new List<TypeAndAmountSelection>();
-            mockPartialTotal = new Mock<PartialRoll>();
 
             abilitySelections.Add(new TypeAndAmountSelection { Type = "ability", Amount = 0 });
             abilitySelections.Add(new TypeAndAmountSelection { Type = "other ability", Amount = 9266 });
@@ -38,8 +37,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "creature name")).Returns(abilitySelections);
             mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, GroupConstants.All)).Returns(abilitySelections);
 
-            var mockPartialDie = new Mock<PartialRoll>();
-            mockDice.Setup(d => d.Roll("1d2+9")).Returns(mockPartialDie.Object);
+            mockPartialTotal = new Mock<PartialRoll>();
+            mockDice.Setup(d => d.Roll("1d2+9")).Returns(mockPartialTotal.Object);
 
             mockPartialTotal.SetupSequence(d => d.AsSum<int>()).Returns(42).Returns(600).Returns(1337);
         }
@@ -98,7 +97,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             Assert.That(abilities["ability"].FullScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].HasScore, Is.True);
             Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
-            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(0));
+            Assert.That(abilities["other ability"].BaseScore, Is.Zero);
             Assert.That(abilities["other ability"].RacialAdjustment, Is.Zero);
             Assert.That(abilities["other ability"].FullScore, Is.Zero);
             Assert.That(abilities["other ability"].HasScore, Is.False);

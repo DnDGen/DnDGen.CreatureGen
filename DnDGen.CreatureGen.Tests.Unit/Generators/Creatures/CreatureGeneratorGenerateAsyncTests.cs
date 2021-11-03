@@ -269,7 +269,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetUpCreature("creature", "template", asCharacter);
             SetUpCreatureAdvancement(asCharacter, "creature", "template", null);
-            mockAdvancementSelector.Setup(s => s.IsAdvanced("creature", "template", null)).Returns(false);
+            mockAdvancementSelector.Setup(s => s.IsAdvanced("creature", null)).Returns(false);
 
             var creature = await creatureGenerator.GenerateAsync("creature", "template", asCharacter);
             Assert.That(creature.HitPoints, Is.EqualTo(hitPoints));

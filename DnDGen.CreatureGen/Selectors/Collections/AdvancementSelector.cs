@@ -13,20 +13,23 @@ namespace DnDGen.CreatureGen.Selectors.Collections
         private readonly ITypeAndAmountSelector typeAndAmountSelector;
         private readonly IPercentileSelector percentileSelector;
         private readonly ICollectionSelector collectionSelector;
+        private readonly IAdjustmentsSelector adjustmentsSelector;
 
-        public AdvancementSelector(ITypeAndAmountSelector typeAndAmountSelector, IPercentileSelector percentileSelector, ICollectionSelector collectionSelector)
+        public AdvancementSelector(
+            ITypeAndAmountSelector typeAndAmountSelector,
+            IPercentileSelector percentileSelector,
+            ICollectionSelector collectionSelector,
+            IAdjustmentsSelector adjustmentsSelector)
         {
             this.typeAndAmountSelector = typeAndAmountSelector;
             this.percentileSelector = percentileSelector;
             this.collectionSelector = collectionSelector;
+            this.adjustmentsSelector = adjustmentsSelector;
         }
 
-        public bool IsAdvanced(string creature, string template, string challengeRatingFilter)
+        public bool IsAdvanced(string creature, string challengeRatingFilter)
         {
             if (challengeRatingFilter != null)
-                return false;
-
-            if (template == CreatureConstants.Templates.Skeleton || template == CreatureConstants.Templates.Zombie)
                 return false;
 
             var advancements = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Advancements, creature);
@@ -37,10 +40,14 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             return isAdvanced;
         }
 
-        public AdvancementSelection SelectRandomFor(string creature, CreatureType creatureType, string originalSize, string originalChallengeRating)
+        public AdvancementSelection SelectRandomFor(string creature, string template, CreatureType creatureType, string originalSize, string originalChallengeRating)
         {
             var advancements = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Advancements, creature);
-            var randomAdvancement = collectionSelector.SelectRandomFrom(advancements);
+            var creatureHitDice = adjustmentsSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, creature);
+            var maxHitDice = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.HitDice, template);
+            var validAdvancements = advancements.Where(a => creatureHitDice + a.Amount <= maxHitDice);
+
+            var randomAdvancement = collectionSelector.SelectRandomFrom(validAdvancements);
             var selection = GetAdvancementSelection(creature, creatureType, originalSize, originalChallengeRating, randomAdvancement);
 
             return selection;

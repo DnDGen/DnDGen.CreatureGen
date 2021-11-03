@@ -266,6 +266,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Grig_WithFiddle, CreatureConstants.Templates.HalfCelestial)]
         [TestCase(CreatureConstants.Hawk, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(CreatureConstants.Hawk, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(CreatureConstants.Hieracosphinx, CreatureConstants.Templates.Skeleton)]
         [TestCase(CreatureConstants.Hippogriff, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(CreatureConstants.Horse_Heavy, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(CreatureConstants.Horse_Heavy_War, CreatureConstants.Templates.CelestialCreature)]
@@ -309,6 +310,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Orc_Half, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(CreatureConstants.Orc_Half, CreatureConstants.Templates.HalfFiend)]
         [TestCase(CreatureConstants.Orc_Half, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(CreatureConstants.Otyugh, CreatureConstants.Templates.Zombie)]
         [TestCase(CreatureConstants.Owl, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(CreatureConstants.Owl, CreatureConstants.Templates.FiendishCreature)]
         [TestCase(CreatureConstants.Owl_Giant, CreatureConstants.Templates.CelestialCreature)]
@@ -409,6 +411,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             Assert.That(creature.SpecialQualities, Is.Not.Empty);
 
             var specialQualityNames = creature.SpecialQualities.Select(q => q.Name);
+            Assert.That(specialQualityNames, Contains.Item(FeatConstants.SpecialQualities.Blind));
             Assert.That(specialQualityNames, Contains.Item(FeatConstants.SpecialQualities.Blindsight));
             Assert.That(specialQualityNames, Does.Not.Contain(FeatConstants.SpecialQualities.AllAroundVision)
                 .And.Not.Contain(FeatConstants.SpecialQualities.Darkvision)
