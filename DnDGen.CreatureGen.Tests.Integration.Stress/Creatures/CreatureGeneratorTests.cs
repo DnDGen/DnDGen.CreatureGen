@@ -2,6 +2,7 @@
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.RollGen;
 using NUnit.Framework;
 using System;
 using System.Diagnostics;
@@ -18,6 +19,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private ICollectionSelector collectionSelector;
         private ICreatureGenerator creatureGenerator;
         private Stopwatch stopwatch;
+        private Dice dice;
 
         [SetUp]
         public void Setup()
@@ -25,12 +27,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             creatureAsserter = GetNewInstanceOf<CreatureAsserter>();
             collectionSelector = GetNewInstanceOf<ICollectionSelector>();
             creatureGenerator = GetNewInstanceOf<ICreatureGenerator>();
+            dice = GetNewInstanceOf<Dice>();
             stopwatch = new Stopwatch();
         }
 
-        [TestCase(true, null)]
+        [TestCase(true, null)] //INFO: Pre-random template
         [TestCase(true, CreatureConstants.Templates.None)]
-        [TestCase(false, null)]
+        [TestCase(false, null)] //INFO: Pre-random template
         [TestCase(false, CreatureConstants.Templates.None)]
         public void StressCreature(bool asCharacter, string template)
         {
@@ -76,9 +79,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             return creature;
         }
 
-        [TestCase(true, null)]
+        [TestCase(true, null)] //INFO: Pre-random template
         [TestCase(true, CreatureConstants.Templates.None)]
-        [TestCase(false, null)]
+        [TestCase(false, null)] //INFO: Pre-random template
         [TestCase(false, CreatureConstants.Templates.None)]
         public async Task StressCreatureAsync(bool asCharacter, string template)
         {
@@ -109,47 +112,28 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             return creature;
         }
 
-        [TestCase(true, true, true, true, true)]
-        [TestCase(true, true, true, true, false)]
-        [TestCase(true, true, true, false, true)]
-        [TestCase(true, true, true, false, false)]
-        [TestCase(true, true, false, true, true)]
-        [TestCase(true, true, false, true, false)]
-        [TestCase(true, true, false, false, true)]
-        [TestCase(true, true, false, false, false)]
-        [TestCase(true, false, true, true, true)]
-        [TestCase(true, false, true, true, false)]
-        [TestCase(true, false, true, false, true)]
-        [TestCase(true, false, true, false, false)]
-        [TestCase(true, false, false, true, true)]
-        [TestCase(true, false, false, true, false)]
-        [TestCase(true, false, false, false, true)]
-        [TestCase(true, false, false, false, false)]
-        [TestCase(false, true, true, true, true)]
-        [TestCase(false, true, true, true, false)]
-        [TestCase(false, true, true, false, true)]
-        [TestCase(false, true, true, false, false)]
-        [TestCase(false, true, false, true, true)]
-        [TestCase(false, true, false, true, false)]
-        [TestCase(false, true, false, false, true)]
-        [TestCase(false, true, false, false, false)]
-        [TestCase(false, false, true, true, true)]
-        [TestCase(false, false, true, true, false)]
-        [TestCase(false, false, true, false, true)]
-        [TestCase(false, false, true, false, false)]
-        [TestCase(false, false, false, true, true)]
-        [TestCase(false, false, false, true, false)]
-        [TestCase(false, false, false, false, true)]
-        [TestCase(false, false, false, false, false)]
-        public void StressRandomCreature(bool asCharacter, bool setTemplate, bool setType, bool setCr, bool setAlignment)
+        [Test]
+        public void StressRandomCreature()
         {
-            stressor.Stress(() => GenerateAndAssertRandomCreature(asCharacter, setTemplate, setType, setCr, setAlignment));
+            stressor.Stress(GenerateAndAssertRandomCreature);
         }
 
-        private void GenerateAndAssertRandomCreature(bool asCharacter, bool setTemplate, bool setType, bool setCr, bool setAlignment)
+        private void GenerateAndAssertRandomCreature()
         {
+            var filters = GetRandomFilters();
+            GenerateAndAssertRandomCreature(filters.AsCharacter, filters.Template, filters.Type, filters.ChallengeRating, filters.Alignment);
+        }
+
+        private (bool AsCharacter, string Template, string Type, string ChallengeRating, string Alignment) GetRandomFilters()
+        {
+            var asCharacter = dice.Roll().d2().AsTrueOrFalse();
+            var setTemplate = dice.Roll().d2().AsTrueOrFalse();
+            var setType = dice.Roll().d2().AsTrueOrFalse();
+            var setCr = dice.Roll().d2().AsTrueOrFalse();
+            var setAlignment = dice.Roll().d2().AsTrueOrFalse();
+
             var filters = GetRandomFilters(asCharacter, setTemplate, setType, setCr, setAlignment);
-            GenerateAndAssertRandomCreature(asCharacter, filters.Template, filters.Type, filters.ChallengeRating, filters.Alignment);
+            return (asCharacter, filters.Template, filters.Type, filters.ChallengeRating, filters.Alignment);
         }
 
         private (string Template, string Type, string ChallengeRating, string Alignment) GetRandomFilters(
@@ -270,47 +254,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             Assert.That(new[] { type }, Is.SubsetOf(allTypes), message);
         }
 
-        [TestCase(true, true, true, true, true)]
-        [TestCase(true, true, true, true, false)]
-        [TestCase(true, true, true, false, true)]
-        [TestCase(true, true, true, false, false)]
-        [TestCase(true, true, false, true, true)]
-        [TestCase(true, true, false, true, false)]
-        [TestCase(true, true, false, false, true)]
-        [TestCase(true, true, false, false, false)]
-        [TestCase(true, false, true, true, true)]
-        [TestCase(true, false, true, true, false)]
-        [TestCase(true, false, true, false, true)]
-        [TestCase(true, false, true, false, false)]
-        [TestCase(true, false, false, true, true)]
-        [TestCase(true, false, false, true, false)]
-        [TestCase(true, false, false, false, true)]
-        [TestCase(true, false, false, false, false)]
-        [TestCase(false, true, true, true, true)]
-        [TestCase(false, true, true, true, false)]
-        [TestCase(false, true, true, false, true)]
-        [TestCase(false, true, true, false, false)]
-        [TestCase(false, true, false, true, true)]
-        [TestCase(false, true, false, true, false)]
-        [TestCase(false, true, false, false, true)]
-        [TestCase(false, true, false, false, false)]
-        [TestCase(false, false, true, true, true)]
-        [TestCase(false, false, true, true, false)]
-        [TestCase(false, false, true, false, true)]
-        [TestCase(false, false, true, false, false)]
-        [TestCase(false, false, false, true, true)]
-        [TestCase(false, false, false, true, false)]
-        [TestCase(false, false, false, false, true)]
-        [TestCase(false, false, false, false, false)]
-        public async Task StressRandomCreatureAsync(bool asCharacter, bool setTemplate, bool setType, bool setCr, bool setAlignment)
+        [Test]
+        public async Task StressRandomCreatureAsync()
         {
-            await stressor.StressAsync(async () => await GenerateAndAssertRandomCreatureAsync(asCharacter, setTemplate, setType, setCr, setAlignment));
+            await stressor.StressAsync(GenerateAndAssertRandomCreatureAsync);
         }
 
-        private async Task GenerateAndAssertRandomCreatureAsync(bool asCharacter, bool setTemplate, bool setType, bool setCr, bool setAlignment)
+        private async Task GenerateAndAssertRandomCreatureAsync()
         {
-            var filters = GetRandomFilters(asCharacter, setTemplate, setType, setCr, setAlignment);
-            await GenerateAndAssertRandomCreatureAsync(asCharacter, filters.Template, filters.Type, filters.ChallengeRating, filters.Alignment);
+            var filters = GetRandomFilters();
+            await GenerateAndAssertRandomCreatureAsync(filters.AsCharacter, filters.Template, filters.Type, filters.ChallengeRating, filters.Alignment);
         }
 
         private async Task<Creature> GenerateAndAssertRandomCreatureAsync(bool asCharacter, string template, string type, string challengeRating, string alignment)
