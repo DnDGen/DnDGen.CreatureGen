@@ -19,6 +19,7 @@ using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Templates.HalfDragons;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
+using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using DnDGen.TreasureGen.Items;
@@ -27,6 +28,7 @@ using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
@@ -189,7 +191,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockCreatureDataSelector.Object,
                 mockAdjustmentSelector.Object);
 
-            baseCreature = new CreatureBuilder().WithTestValues().Build();
+            baseCreature = new CreatureBuilder()
+                .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid)
+                .Build();
             baseCreature.HitPoints.HitDice[0].HitDie = 8;
 
             mockSpeedsGenerator
@@ -218,14 +223,104 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Returns(90210);
 
             mockAlignmentGenerator
-                .Setup(g => g.Generate(It.IsAny<string>()))
-                .Returns((string t) => new Alignment { Lawfulness = $"{t}y", Goodness = "scaley" });
+                .Setup(g => g.Generate(It.IsAny<string>(), null, null))
+                .Returns((string c, string t, string p) => new Alignment { Lawfulness = $"{c}y", Goodness = "scaley" });
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => new[] { $"other alignment", $"{c.Replace(GroupConstants.Exploded, string.Empty)}y scaley", "preset alignment" });
+        }
+
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
+        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible(string template)
+        {
+            baseCreature.Type.Name = CreatureConstants.Types.Outsider;
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine("\tReason: Type 'Outsider' is not valid");
+            message.AppendLine($"\tAs Character: {false}");
+            message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: {template}");
+
+            Assert.That(() => applicators[template].ApplyTo(baseCreature, false),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+        }
+
+        [TestCaseSource(nameof(IncompatibleFilters))]
+        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(
+            string template,
+            bool asCharacter,
+            string type,
+            string challengeRating,
+            string alignment,
+            string reason)
+        {
+            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
+            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.HitPoints.HitDice[0].Quantity = 1;
+            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
+            baseCreature.Alignment = new Alignment($"original alignment");
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tReason: {reason}");
+            message.AppendLine($"\tAs Character: {false}");
+            message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: {template}");
+            message.AppendLine($"\tType: {type}");
+            message.AppendLine($"\tCR: {challengeRating}");
+            message.AppendLine($"\tAlignment: {alignment}");
+
+            Assert.That(() => applicators[template].ApplyTo(baseCreature, asCharacter, type, challengeRating, alignment),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+        }
+
+        private static IEnumerable IncompatibleFilters
+        {
+            get
+            {
+                foreach (var template in templates)
+                {
+                    yield return new TestCaseData(template, false, "subtype 1", ChallengeRatingConstants.CR3, $"wrong alignment", "Alignment filter 'wrong alignment' is not valid");
+                    yield return new TestCaseData(template, false, "subtype 1", ChallengeRatingConstants.CR2, $"{template}y scaley", "CR filter 2 does not match updated creature CR 3 (from CR 1)");
+                    yield return new TestCaseData(template, false, "wrong subtype", ChallengeRatingConstants.CR3, $"{template}y scaley", "Type filter 'wrong subtype' is not valid");
+                    //INFO: This test case isn't valid, since As Character doesn't affect already-generated creature compatibility
+                    //yield return new TestCaseData(template, true, "subtype 1", ChallengeRatingConstants.CR3, $"{template}y scaley");
+                }
+            }
+        }
+
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
+        public void ApplyTo_ReturnsCreature_WithFilters(string template)
+        {
+            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
+            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.HitPoints.HitDice[0].Quantity = 1;
+            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
+            baseCreature.Alignment = new Alignment($"original alignment");
+
+            mockDice
+                .Setup(d => d
+                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .d(10)
+                    .AsIndividualRolls<int>())
+                .Returns(new[] { 9266 });
+            mockDice
+                .Setup(d => d
+                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .d(10)
+                    .AsPotentialAverage())
+                .Returns(90210);
+
+            var creature = applicators[template].ApplyTo(baseCreature, false, "subtype 1", ChallengeRatingConstants.CR3, $"{template}y scaley");
+            Assert.That(creature.Template, Is.EqualTo(template));
         }
 
         [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void ApplyTo_SetsTemplate(string template)
         {
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Template, Is.EqualTo(template));
         }
@@ -233,7 +328,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public async Task ApplyToAsync_SetsTemplate(string template)
         {
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Template, Is.EqualTo(template));
         }
@@ -248,7 +343,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 "subtype 2",
             };
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Type.Name, Is.EqualTo(CreatureConstants.Types.Dragon));
             Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(4));
@@ -307,7 +402,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     .AsPotentialAverage())
                 .Returns(42);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.EqualTo(2));
@@ -360,7 +455,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     .AsPotentialAverage())
                 .Returns(96);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.EqualTo(2));
@@ -375,7 +470,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             baseCreature.Size = size;
             baseCreature.Speeds[SpeedConstants.Land].Value = landSpeed;
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
                 .And.ContainKey(SpeedConstants.Fly)
                 .And.ContainKey(SpeedConstants.Land));
@@ -434,7 +529,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             baseCreature.Size = size;
             baseCreature.Speeds[SpeedConstants.Land].Value = 42;
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(1)
                 .And.Not.ContainKey(SpeedConstants.Fly)
                 .And.ContainKey(SpeedConstants.Land));
@@ -471,7 +566,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             baseCreature.Speeds.Clear();
             baseCreature.Speeds[SpeedConstants.Swim] = new Measurement("feet per round") { Value = 42 };
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(1)
                 .And.Not.ContainKey(SpeedConstants.Fly)
                 .And.ContainKey(SpeedConstants.Swim));
@@ -486,7 +581,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             baseCreature.Speeds[SpeedConstants.Land].Value = 600;
             baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 42, Description = "so-so maneuverability" };
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
                 .And.ContainKey(SpeedConstants.Fly)
                 .And.ContainKey(SpeedConstants.Land));
@@ -503,7 +598,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             baseCreature.Speeds.Clear();
             baseCreature.Speeds[SpeedConstants.Swim] = new Measurement("feet per round") { Value = 42 };
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(1)
                 .And.Not.ContainKey(SpeedConstants.Fly)
                 .And.ContainKey(SpeedConstants.Swim));
@@ -518,7 +613,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             baseCreature.Speeds[SpeedConstants.Land].Value = 600;
             baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 42, Description = "so-so maneuverability" };
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
                 .And.ContainKey(SpeedConstants.Fly)
                 .And.ContainKey(SpeedConstants.Land));
@@ -531,7 +626,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void ApplyTo_AdjustAbilities(string template)
         {
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature.Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Strength].TemplateAdjustment, Is.EqualTo(8));
             Assert.That(creature.Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
@@ -551,7 +646,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         {
             baseCreature.Abilities[ability].BaseScore = 0;
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature.Abilities[ability].HasScore, Is.False);
             Assert.That(creature.Abilities[ability].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[ability].TemplateAdjustment, Is.Zero);
@@ -584,7 +679,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void ApplyTo_GainNaturalArmor(string template)
         {
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(4));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
 
@@ -598,7 +693,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         {
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(9270));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
 
@@ -613,7 +708,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266);
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 90210);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(90214));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
 
@@ -631,7 +726,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         {
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266, "only sometimes");
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.Zero);
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
 
@@ -688,7 +783,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
 
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length));
             Assert.That(creature.Attacks, Is.SupersetOf(newAttacks));
@@ -806,7 +901,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Returns(attacksWithBonuses);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
 
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + attacksWithBonuses.Length));
             Assert.That(creature.Attacks, Is.SupersetOf(attacksWithBonuses));
@@ -878,7 +973,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Returns(dragonClawMax);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             var claws = creature.Attacks.Where(a => a.Name == "Claw").ToArray();
             var bites = creature.Attacks.Where(a => a.Name == "Bite").ToArray();
 
@@ -977,7 +1072,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Returns(dragonBiteMax);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             var claws = creature.Attacks.Where(a => a.Name == "Claw").ToArray();
             var bites = creature.Attacks.Where(a => a.Name == "Bite").ToArray();
 
@@ -1074,7 +1169,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Returns(dragonBiteMax);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             var bites = creature.Attacks.Where(a => a.Name == "Bite").ToArray();
             var claws = creature.Attacks.Where(a => a.Name == "Claw").ToArray();
 
@@ -1155,7 +1250,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Returns(newQualities);
 
             var originalCount = baseCreature.SpecialQualities.Count();
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
 
             Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(originalCount + newQualities.Length));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(newQualities));
@@ -1186,7 +1281,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     true))
                 .Returns(newSkills);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature.Skills, Is.EqualTo(newSkills));
         }
 
@@ -1206,7 +1301,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     true))
                 .Returns(Enumerable.Empty<Skill>());
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature.Skills, Is.Empty);
         }
 
@@ -1215,7 +1310,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         {
             baseCreature.ChallengeRating = original;
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.ChallengeRating, Is.EqualTo(adjusted));
         }
@@ -1244,9 +1339,25 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public void ApplyTo_GetNewAlignment(string template)
         {
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature.Alignment.Lawfulness, Is.EqualTo($"{template}y"));
             Assert.That(creature.Alignment.Goodness, Is.EqualTo($"scaley"));
+        }
+
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
+        public void ApplyTo_GetPresetAlignment(string template)
+        {
+            mockAlignmentGenerator
+                .Setup(g => g.Generate(template, null, "preset alignment"))
+                .Returns((string c, string t, string p) => new Alignment(p));
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, template + GroupConstants.Exploded))
+                .Returns((string t, string c) => new[] { $"other alignment", $"preset alignment" });
+
+            var creature = applicators[template].ApplyTo(baseCreature, false, alignment: "preset alignment");
+            Assert.That(creature.Alignment.Lawfulness, Is.EqualTo("preset"));
+            Assert.That(creature.Alignment.Goodness, Is.EqualTo("alignment"));
         }
 
         [TestCaseSource(nameof(LevelAdjustmentIncreased))]
@@ -1254,7 +1365,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         {
             baseCreature.LevelAdjustment = adjustment;
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.LevelAdjustment, Is.EqualTo(adjusted));
         }
@@ -1283,6 +1394,77 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             }
         }
 
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
+        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible(string template)
+        {
+            baseCreature.Type.Name = CreatureConstants.Types.Outsider;
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine("\tReason: Type 'Outsider' is not valid");
+            message.AppendLine($"\tAs Character: {false}");
+            message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: {template}");
+
+            Assert.That(async () => await applicators[template].ApplyToAsync(baseCreature, false),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+        }
+
+        [TestCaseSource(nameof(IncompatibleFilters))]
+        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(
+            string template,
+            bool asCharacter,
+            string type,
+            string challengeRating,
+            string alignment,
+            string reason)
+        {
+            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
+            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.HitPoints.HitDice[0].Quantity = 1;
+            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
+            baseCreature.Alignment = new Alignment($"original alignment");
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tReason: {reason}");
+            message.AppendLine($"\tAs Character: {false}");
+            message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: {template}");
+            message.AppendLine($"\tType: {type}");
+            message.AppendLine($"\tCR: {challengeRating}");
+            message.AppendLine($"\tAlignment: {alignment}");
+
+            Assert.That(async () => await applicators[template].ApplyToAsync(baseCreature, asCharacter, type, challengeRating, alignment),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+        }
+
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
+        public async Task ApplyToAsync_ReturnsCreature_WithFilters(string template)
+        {
+            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
+            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.HitPoints.HitDice[0].Quantity = 1;
+            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
+            baseCreature.Alignment = new Alignment($"original alignment");
+
+            mockDice
+                .Setup(d => d
+                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .d(10)
+                    .AsIndividualRolls<int>())
+                .Returns(new[] { 9266 });
+            mockDice
+                .Setup(d => d
+                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .d(10)
+                    .AsPotentialAverage())
+                .Returns(90210);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false, "subtype 1", ChallengeRatingConstants.CR3, $"{template}y scaley");
+            Assert.That(creature.Template, Is.EqualTo(template));
+        }
+
         [TestCaseSource(nameof(CreatureTypeAdjusted))]
         public async Task ApplyToAsync_CreatureTypeIsAdjusted(string template, string original)
         {
@@ -1293,7 +1475,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 "subtype 2",
             };
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Type.Name, Is.EqualTo(CreatureConstants.Types.Dragon));
             Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(4));
@@ -1324,7 +1506,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     .AsPotentialAverage())
                 .Returns(42);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.EqualTo(2));
@@ -1354,7 +1536,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     .AsPotentialAverage())
                 .Returns(96);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment, Is.EqualTo(2));
@@ -1369,7 +1551,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             baseCreature.Size = size;
             baseCreature.Speeds[SpeedConstants.Land].Value = landSpeed;
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
                 .And.ContainKey(SpeedConstants.Fly));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("the goodest"));
@@ -1383,7 +1565,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             baseCreature.Size = size;
             baseCreature.Speeds[SpeedConstants.Land].Value = 42;
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(1)
                 .And.Not.ContainKey(SpeedConstants.Fly));
         }
@@ -1391,7 +1573,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public async Task ApplyToAsync_AdjustAbilities(string template)
         {
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature.Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Strength].TemplateAdjustment, Is.EqualTo(8));
             Assert.That(creature.Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
@@ -1411,7 +1593,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         {
             baseCreature.Abilities[ability].BaseScore = 0;
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature.Abilities[ability].HasScore, Is.False);
             Assert.That(creature.Abilities[ability].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[ability].TemplateAdjustment, Is.Zero);
@@ -1420,7 +1602,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public async Task ApplyToAsync_GainNaturalArmor(string template)
         {
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(4));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
 
@@ -1434,7 +1616,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         {
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(9270));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
 
@@ -1449,7 +1631,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266);
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 90210);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(90214));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
 
@@ -1467,7 +1649,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         {
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266, "only sometimes");
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.Zero);
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
 
@@ -1524,7 +1706,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
 
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length));
             Assert.That(creature.Attacks, Is.SupersetOf(newAttacks));
@@ -1642,7 +1824,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Returns(attacksWithBonuses);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
 
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + attacksWithBonuses.Length));
             Assert.That(creature.Attacks, Is.SupersetOf(attacksWithBonuses));
@@ -1714,7 +1896,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Returns(dragonClawMax);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             var claws = creature.Attacks.Where(a => a.Name == "Claw").ToArray();
             var bites = creature.Attacks.Where(a => a.Name == "Bite").ToArray();
 
@@ -1793,7 +1975,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Returns(dragonBiteMax);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             var claws = creature.Attacks.Where(a => a.Name == "Claw").ToArray();
             var bites = creature.Attacks.Where(a => a.Name == "Bite").ToArray();
 
@@ -1890,7 +2072,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Returns(dragonBiteMax);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             var bites = creature.Attacks.Where(a => a.Name == "Bite").ToArray();
             var claws = creature.Attacks.Where(a => a.Name == "Claw").ToArray();
 
@@ -1941,7 +2123,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Returns(newQualities);
 
             var originalCount = baseCreature.SpecialQualities.Count();
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
 
             Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(originalCount + newQualities.Length));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(newQualities));
@@ -1972,7 +2154,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     true))
                 .Returns(newSkills);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature.Skills, Is.EqualTo(newSkills));
         }
 
@@ -1992,7 +2174,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     true))
                 .Returns(Enumerable.Empty<Skill>());
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature.Skills, Is.Empty);
         }
 
@@ -2001,7 +2183,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         {
             baseCreature.ChallengeRating = original;
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.ChallengeRating, Is.EqualTo(adjusted));
         }
@@ -2009,10 +2191,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         [TestCaseSource(nameof(AllHalfDragonTemplates))]
         public async Task ApplyToAsync_GetNewAlignment(string template)
         {
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Alignment.Lawfulness, Is.EqualTo($"{template}y"));
             Assert.That(creature.Alignment.Goodness, Is.EqualTo($"scaley"));
+        }
+
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
+        public async Task ApplyToAsync_GetPresetAlignment(string template)
+        {
+            mockAlignmentGenerator
+                .Setup(g => g.Generate(template, null, "preset alignment"))
+                .Returns((string c, string t, string p) => new Alignment(p));
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false, alignment: "preset alignment");
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Alignment.Lawfulness, Is.EqualTo($"preset"));
+            Assert.That(creature.Alignment.Goodness, Is.EqualTo($"alignment"));
         }
 
         [TestCaseSource(nameof(LevelAdjustmentIncreased))]
@@ -2020,7 +2215,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         {
             baseCreature.LevelAdjustment = adjustment;
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.LevelAdjustment, Is.EqualTo(adjusted));
         }
@@ -2036,7 +2231,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     template + LanguageConstants.Groups.Automatic))
                 .Returns($"{template}ish");
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2054,7 +2249,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     template + LanguageConstants.Groups.Automatic))
                 .Returns($"{template}ish");
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages, Is.Empty);
         }
@@ -2071,7 +2266,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     template + LanguageConstants.Groups.Automatic))
                 .Returns($"{template}ish");
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2104,7 +2299,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
                 .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 2));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2138,7 +2333,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
                 .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 2));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2172,7 +2367,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
                 .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2206,7 +2401,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
                 .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2226,7 +2421,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     template + LanguageConstants.Groups.Automatic))
                 .Returns($"{template}ish");
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2244,7 +2439,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     template + LanguageConstants.Groups.Automatic))
                 .Returns($"{template}ish");
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages, Is.Empty);
         }
@@ -2261,7 +2456,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     template + LanguageConstants.Groups.Automatic))
                 .Returns($"{template}ish");
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2294,7 +2489,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
                 .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 2));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2328,7 +2523,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
                 .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 2));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2362,7 +2557,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
                 .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2396,7 +2591,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
                 .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2417,7 +2612,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     baseCreature.Equipment))
                 .Returns(dragonMagic);
 
-            var creature = applicators[template].ApplyTo(baseCreature);
+            var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Magic, Is.EqualTo(dragonMagic));
         }
@@ -2434,7 +2629,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     baseCreature.Equipment))
                 .Returns(dragonMagic);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature);
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Magic, Is.EqualTo(dragonMagic));
         }
@@ -2481,6 +2676,104 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Returns((string t, string c) => hitDice[c]);
 
             var compatibleCreatures = applicators[template].GetCompatibleCreatures(creatures, false);
+            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
+        }
+
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
+        public void GetCompatibleCreatures_ReturnEmpty_IfAlignmentFilterNotValid(string template)
+        {
+            var creatures = new[] { "my creature", "wrong creature 1", "my other creature" };
+
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types["my other creature"] = new[] { CreatureConstants.Types.Giant, "subtype 3" };
+            types["wrong creature 1"] = new[] { CreatureConstants.Types.Undead, "subtype 1", "subtype 2" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["my other creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 1;
+            hitDice["my other creature"] = 1;
+            hitDice["wrong creature 1"] = 1;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, template + GroupConstants.Exploded))
+                .Returns(new[] { "my alignment", "other alignment", "other wrong alignment" });
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(creatures, false, alignment: "wrong alignment");
+            Assert.That(compatibleCreatures, Is.Empty);
+        }
+
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
+        public void GetCompatibleCreatures_ReturnCompatibleCreatures_IfAlignmentFilterValid(string template)
+        {
+            var creatures = new[] { "my creature", "wrong creature 1", "my other creature" };
+
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types["my other creature"] = new[] { CreatureConstants.Types.Giant, "subtype 3" };
+            types["wrong creature 1"] = new[] { CreatureConstants.Types.Undead, "subtype 1", "subtype 2" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["my other creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 1;
+            hitDice["my other creature"] = 1;
+            hitDice["wrong creature 1"] = 1;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, template + GroupConstants.Exploded))
+                .Returns(new[] { "my alignment", "other alignment", "preset alignment", "wrong alignment" });
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(creatures, false, alignment: "preset alignment");
             Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
         }
 
@@ -3057,8 +3350,76 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             }
         }
 
-        [TestCaseSource(nameof(ChallengeRatingAndTypeAdjustments_Filtered))]
-        public void IsCompatible_TypeAndChallengeRatingMustMatch(string template, string type, string challengeRating, bool compatible)
+        [TestCaseSource(nameof(Alignments_Filtered))]
+        public void IsCompatible_AlignmentMustMatch(
+            string template,
+            string dragonAlignment,
+            string alignment,
+            bool compatible)
+        {
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Giant, "subtype 1", "subtype 2" };
+            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, "subtype 2"))
+                .Returns(new[] { "wrong creature", "my creature" });
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1, Size = SizeConstants.Medium };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 1;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
+
+            var alignments = new Dictionary<string, IEnumerable<string>>();
+            alignments[template + GroupConstants.Exploded] = new[] { "other alignment", dragonAlignment, "original alignment" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Returns(alignments);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => alignments[c]);
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(new[] { "my creature" }, false, alignment: alignment);
+            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
+        private static IEnumerable Alignments_Filtered
+        {
+            get
+            {
+                foreach (var template in templates)
+                {
+                    yield return new TestCaseData(template, "preset alignment", "preset alignment", true);
+                    yield return new TestCaseData(template, "preset alignment", "wrong alignment", false);
+                    yield return new TestCaseData(template, "other alignment", "preset alignment", false);
+                }
+            }
+        }
+
+        [TestCaseSource(nameof(AllFilters))]
+        public void IsCompatible_AllFiltersMustMatch(string template, string type, string challengeRating, string alignment, bool compatible)
         {
             var types = new Dictionary<string, IEnumerable<string>>();
             types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
@@ -3094,20 +3455,34 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
-            var compatibleCreatures = applicators[template].GetCompatibleCreatures(new[] { "my creature" }, false, type, challengeRating);
+            var alignments = new Dictionary<string, IEnumerable<string>>();
+            alignments[template + GroupConstants.Exploded] = new[] { "other alignment", "preset alignment", "original alignment" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Returns(alignments);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => alignments[c]);
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(new[] { "my creature" }, false, type, challengeRating, alignment);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 
-        private static IEnumerable ChallengeRatingAndTypeAdjustments_Filtered
+        private static IEnumerable AllFilters
         {
             get
             {
                 foreach (var template in templates)
                 {
-                    yield return new TestCaseData(template, CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR2, false);
-                    yield return new TestCaseData(template, CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR4, true);
-                    yield return new TestCaseData(template, "wrong subtype", ChallengeRatingConstants.CR2, false);
-                    yield return new TestCaseData(template, "wrong subtype", ChallengeRatingConstants.CR4, false);
+                    yield return new TestCaseData(template, CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR2, "preset alignment", false);
+                    yield return new TestCaseData(template, CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR2, "wrong alignment", false);
+                    yield return new TestCaseData(template, CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR4, "preset alignment", true);
+                    yield return new TestCaseData(template, CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR4, "wrong alignment", false);
+                    yield return new TestCaseData(template, "wrong subtype", ChallengeRatingConstants.CR2, "preset alignment", false);
+                    yield return new TestCaseData(template, "wrong subtype", ChallengeRatingConstants.CR2, "wrong alignment", false);
+                    yield return new TestCaseData(template, "wrong subtype", ChallengeRatingConstants.CR4, "preset alignment", false);
+                    yield return new TestCaseData(template, "wrong subtype", ChallengeRatingConstants.CR4, "wrong alignment", false);
                 }
             }
         }

@@ -17,6 +17,7 @@ using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
+using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using DnDGen.TreasureGen.Items;
@@ -27,6 +28,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Templates
@@ -75,6 +77,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
+                .WithCreatureType(CreatureConstants.Types.Humanoid)
+                .WithMinimumAbility(AbilityConstants.Intelligence, 6)
                 .Build();
 
             var speeds = new Dictionary<string, Measurement>();
@@ -115,6 +119,90 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
         }
 
+        [Test]
+        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible()
+        {
+            baseCreature.Type.Name = CreatureConstants.Types.Outsider;
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine("\tReason: Type 'Outsider' is not valid");
+            message.AppendLine($"\tAs Character: {false}");
+            message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.HalfFiend}");
+
+            Assert.That(() => applicator.ApplyTo(baseCreature, false),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+        }
+
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, AlignmentConstants.NeutralEvil, "Alignment filter 'Neutral Evil' is not valid for creature alignments")]
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR3, AlignmentConstants.LawfulEvil, "CR filter 3 does not match updated creature CR 2 (from CR 1)")]
+        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR2, AlignmentConstants.LawfulEvil, "Type filter 'wrong subtype' is not valid")]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR2, AlignmentConstants.LawfulEvil, "",
+            Ignore = "As Character doesn't affect already-generated creature compatiblity")]
+        public void ApplyTo_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment, string reason)
+        {
+            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
+            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.HitPoints.HitDice[0].Quantity = 1;
+            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
+            baseCreature.Alignment = new Alignment(AlignmentConstants.LawfulNeutral);
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tReason: {reason}");
+            message.AppendLine($"\tAs Character: {asCharacter}");
+            message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.HalfFiend}");
+            message.AppendLine($"\tType: {type}");
+            message.AppendLine($"\tCR: {challengeRating}");
+            message.AppendLine($"\tAlignment: {alignment}");
+
+            Assert.That(() => applicator.ApplyTo(baseCreature, asCharacter, type, challengeRating, alignment),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+        }
+
+        [Test]
+        public void ApplyTo_ReturnsCreature_WithFilters()
+        {
+            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
+            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.HitPoints.HitDice[0].Quantity = 1;
+            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
+            baseCreature.Alignment = new Alignment(AlignmentConstants.LawfulNeutral);
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Good",
+                IsSpecial = true
+            };
+            var attacks = new[]
+            {
+                smiteEvil,
+                new Attack { Name = "other attack" },
+                new Attack { Name = "Claw" },
+                new Attack { Name = "Bite" },
+            };
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.HalfFiend,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(attacks);
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    attacks,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    baseCreature.Abilities))
+                .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
+
+            var creature = applicator.ApplyTo(baseCreature, false, "subtype 1", ChallengeRatingConstants.CR2, AlignmentConstants.LawfulEvil);
+            Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.HalfFiend));
+        }
+
         [TestCase(CreatureConstants.Types.Aberration)]
         [TestCase(CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Types.Dragon)]
@@ -136,7 +224,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 "subtype 2",
             };
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(5));
@@ -152,7 +240,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Speeds[SpeedConstants.Land].Value = 96;
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
                 .And.ContainKey(SpeedConstants.Fly));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("the goodest"));
@@ -168,7 +256,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Speeds[SpeedConstants.Fly].Description = "so-so";
             baseCreature.Speeds[SpeedConstants.Fly].Value = 42;
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
                 .And.ContainKey(SpeedConstants.Fly));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("the goodest"));
@@ -184,7 +272,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Speeds[SpeedConstants.Fly].Description = "so-so";
             baseCreature.Speeds[SpeedConstants.Fly].Value = 600;
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
                 .And.ContainKey(SpeedConstants.Fly));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("so-so"));
@@ -199,7 +287,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Speeds[SpeedConstants.Swim] = new Measurement("furlongs");
             baseCreature.Speeds[SpeedConstants.Swim].Value = 600;
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(1)
                 .And.ContainKey(SpeedConstants.Swim));
             Assert.That(creature.Speeds[SpeedConstants.Swim].Unit, Is.EqualTo("furlongs"));
@@ -213,7 +301,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Speeds[SpeedConstants.Swim] = new Measurement("furlongs");
             baseCreature.Speeds[SpeedConstants.Swim].Value = 600;
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(1)
                 .And.ContainKey(SpeedConstants.Swim));
             Assert.That(creature.Speeds[SpeedConstants.Swim].Unit, Is.EqualTo("furlongs"));
@@ -223,7 +311,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_GainsNaturalArmorBonus()
         {
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(1));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
 
@@ -237,7 +325,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266);
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(9267));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
 
@@ -252,7 +340,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266);
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 90210);
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(90211));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
 
@@ -270,7 +358,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266, "only sometimes");
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.Zero);
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
 
@@ -328,7 +416,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
 
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length));
             Assert.That(creature.Attacks, Is.SupersetOf(newAttacks));
@@ -405,7 +493,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     newSkills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Evil && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(newQualities);
 
             var attacksWithBonuses = new[]
@@ -448,7 +536,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(attacksWithBonuses);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
 
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + attacksWithBonuses.Length));
             Assert.That(creature.Attacks, Is.SupersetOf(attacksWithBonuses));
@@ -525,7 +613,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     newSkills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Evil && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(newQualities);
 
             var attacksWithBonuses = new[]
@@ -568,7 +656,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(attacksWithBonuses);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
 
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + attacksWithBonuses.Length));
             Assert.That(creature.Attacks, Is.SupersetOf(attacksWithBonuses));
@@ -642,7 +730,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(fiendClawMax);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             var claws = creature.Attacks.Where(a => a.Name == "Claw").ToArray();
             var bites = creature.Attacks.Where(a => a.Name == "Bite").ToArray();
 
@@ -723,7 +811,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(fiendBiteMax);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             var claws = creature.Attacks.Where(a => a.Name == "Claw").ToArray();
             var bites = creature.Attacks.Where(a => a.Name == "Bite").ToArray();
 
@@ -822,7 +910,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(fiendBiteMax);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             var bites = creature.Attacks.Where(a => a.Name == "Bite").ToArray();
             var claws = creature.Attacks.Where(a => a.Name == "Claw").ToArray();
 
@@ -903,7 +991,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(fiendClawMax);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             var claws = creature.Attacks.Where(a => a.Name == "Claw").ToArray();
             var bites = creature.Attacks.Where(a => a.Name == "Bite").ToArray();
 
@@ -984,7 +1072,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(fiendBiteMax);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             var bites = creature.Attacks.Where(a => a.Name == "Bite").ToArray();
             var claws = creature.Attacks.Where(a => a.Name == "Claw").ToArray();
 
@@ -1083,7 +1171,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(fiendBiteMax);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             var bites = creature.Attacks.Where(a => a.Name == "Bite").ToArray();
             var claws = creature.Attacks.Where(a => a.Name == "Claw").ToArray();
 
@@ -1179,7 +1267,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Abilities))
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalAttacks.Length + 5));
             Assert.That(creature.Attacks.Select(a => a.Name), Is.SupersetOf(originalAttacks.Select(a => a.Name)));
@@ -1224,11 +1312,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     newSkills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Evil)))
                 .Returns(newQualities);
 
             var originalCount = baseCreature.SpecialQualities.Count();
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
 
             Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(originalCount + newQualities.Length));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(newQualities));
@@ -1237,7 +1325,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_AbilitiesImprove()
         {
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature.Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Strength].TemplateAdjustment, Is.EqualTo(4));
             Assert.That(creature.Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
@@ -1255,14 +1343,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(AbilityConstants.Charisma)]
         [TestCase(AbilityConstants.Constitution)]
         [TestCase(AbilityConstants.Dexterity)]
-        [TestCase(AbilityConstants.Intelligence)]
+        [TestCase(AbilityConstants.Intelligence, Ignore = "Intelligence is required")]
         [TestCase(AbilityConstants.Strength)]
         [TestCase(AbilityConstants.Wisdom)]
         public void ApplyTo_AbilitiesImprove_DoNotImproveMissingAbility(string ability)
         {
             baseCreature.Abilities[ability].BaseScore = 0;
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature.Abilities[ability].HasScore, Is.False);
             Assert.That(creature.Abilities[ability].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[ability].TemplateAdjustment, Is.Zero);
@@ -1293,7 +1381,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     true))
                 .Returns(newSkills);
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature.Skills, Is.EqualTo(newSkills));
         }
 
@@ -1313,7 +1401,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     true))
                 .Returns(Enumerable.Empty<Skill>());
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature.Skills, Is.Empty);
         }
 
@@ -1346,7 +1434,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Abilities))
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(hitDiceQuantity));
             Assert.That(creature.ChallengeRating, Is.EqualTo(adjusted));
@@ -1388,13 +1476,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             }
         }
 
-        [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Good, AlignmentConstants.ChaoticEvil)]
         [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Neutral, AlignmentConstants.ChaoticEvil)]
         [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Evil, AlignmentConstants.ChaoticEvil)]
-        [TestCase(AlignmentConstants.Neutral, AlignmentConstants.Good, AlignmentConstants.NeutralEvil)]
         [TestCase(AlignmentConstants.Neutral, AlignmentConstants.Neutral, AlignmentConstants.NeutralEvil)]
         [TestCase(AlignmentConstants.Neutral, AlignmentConstants.Evil, AlignmentConstants.NeutralEvil)]
-        [TestCase(AlignmentConstants.Lawful, AlignmentConstants.Good, AlignmentConstants.LawfulEvil)]
         [TestCase(AlignmentConstants.Lawful, AlignmentConstants.Neutral, AlignmentConstants.LawfulEvil)]
         [TestCase(AlignmentConstants.Lawful, AlignmentConstants.Evil, AlignmentConstants.LawfulEvil)]
         public void ApplyTo_AlignmentAdjusted(string lawfulness, string goodness, string adjusted)
@@ -1402,9 +1487,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Alignment.Lawfulness = lawfulness;
             baseCreature.Alignment.Goodness = goodness;
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Alignment.Full, Is.EqualTo(adjusted));
+        }
+
+        [Test]
+        public void ApplyTo_GetPresetAlignment()
+        {
+            baseCreature.Alignment.Lawfulness = "preset";
+            baseCreature.Alignment.Goodness = "alignment";
+
+            var creature = applicator.ApplyTo(baseCreature, false, alignment: "preset Evil");
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Alignment.Full, Is.EqualTo("preset Evil"));
         }
 
         [TestCase(null, null)]
@@ -1417,9 +1513,93 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.LevelAdjustment = adjustment;
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.LevelAdjustment, Is.EqualTo(adjusted));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible()
+        {
+            baseCreature.Type.Name = CreatureConstants.Types.Outsider;
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine("\tReason: Type 'Outsider' is not valid");
+            message.AppendLine($"\tAs Character: {false}");
+            message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.HalfFiend}");
+
+            Assert.That(async () => await applicator.ApplyToAsync(baseCreature, false),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+        }
+
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR2, AlignmentConstants.NeutralEvil, "Alignment filter 'Neutral Evil' is not valid for creature alignments")]
+        [TestCase(false, "subtype 1", ChallengeRatingConstants.CR3, AlignmentConstants.LawfulEvil, "CR filter 3 does not match updated creature CR 2 (from CR 1)")]
+        [TestCase(false, "wrong subtype", ChallengeRatingConstants.CR2, AlignmentConstants.LawfulEvil, "Type filter 'wrong subtype' is not valid")]
+        [TestCase(true, "subtype 1", ChallengeRatingConstants.CR2, AlignmentConstants.LawfulEvil, "",
+            Ignore = "As Character doesn't affect already-generated creature compatiblity")]
+        public async Task ApplyToAsync_ThrowsException_WhenCreatureNotCompatible_WithFilters(bool asCharacter, string type, string challengeRating, string alignment, string reason)
+        {
+            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
+            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.HitPoints.HitDice[0].Quantity = 1;
+            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
+            baseCreature.Alignment = new Alignment(AlignmentConstants.LawfulNeutral);
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tReason: {reason}");
+            message.AppendLine($"\tAs Character: {asCharacter}");
+            message.AppendLine($"\tCreature: {baseCreature.Name}");
+            message.AppendLine($"\tTemplate: {CreatureConstants.Templates.HalfFiend}");
+            message.AppendLine($"\tType: {type}");
+            message.AppendLine($"\tCR: {challengeRating}");
+            message.AppendLine($"\tAlignment: {alignment}");
+
+            Assert.That(async () => await applicator.ApplyToAsync(baseCreature, asCharacter, type, challengeRating, alignment),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_ReturnsCreature_WithFilters()
+        {
+            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
+            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.HitPoints.HitDice[0].Quantity = 1;
+            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
+            baseCreature.Alignment = new Alignment(AlignmentConstants.LawfulNeutral);
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Good",
+                IsSpecial = true
+            };
+            var attacks = new[]
+            {
+                smiteEvil,
+                new Attack { Name = "other attack" },
+                new Attack { Name = "Claw" },
+                new Attack { Name = "Bite" },
+            };
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.HalfFiend,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(attacks);
+            mockAttacksGenerator
+                .Setup(g => g.ApplyAttackBonuses(
+                    attacks,
+                    It.IsAny<IEnumerable<Feat>>(),
+                    baseCreature.Abilities))
+                .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
+
+            var creature = await applicator.ApplyToAsync(baseCreature, false, "subtype 1", ChallengeRatingConstants.CR2, AlignmentConstants.LawfulEvil);
+            Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.HalfFiend));
         }
 
         [TestCase(CreatureConstants.Types.Aberration)]
@@ -1443,7 +1623,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 "subtype 2",
             };
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(creature.Type.SubTypes.Count(), Is.EqualTo(5));
@@ -1459,7 +1639,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Speeds[SpeedConstants.Land].Value = 96;
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
                 .And.ContainKey(SpeedConstants.Fly));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("the goodest"));
@@ -1475,7 +1655,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Speeds[SpeedConstants.Fly].Description = "so-so";
             baseCreature.Speeds[SpeedConstants.Fly].Value = 42;
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
                 .And.ContainKey(SpeedConstants.Fly));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("the goodest"));
@@ -1491,7 +1671,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Speeds[SpeedConstants.Fly].Description = "so-so";
             baseCreature.Speeds[SpeedConstants.Fly].Value = 600;
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
                 .And.ContainKey(SpeedConstants.Fly));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("so-so"));
@@ -1502,7 +1682,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_GainsNaturalArmorBonus()
         {
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(1));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
 
@@ -1516,7 +1696,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266);
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(9267));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
 
@@ -1531,7 +1711,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266);
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 90210);
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.EqualTo(90211));
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(2));
 
@@ -1549,7 +1729,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.ArmorClass.AddBonus(ArmorClassConstants.Natural, 9266, "only sometimes");
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature.ArmorClass.NaturalArmorBonus, Is.Zero);
             Assert.That(creature.ArmorClass.NaturalArmorBonuses.Count(), Is.EqualTo(1));
 
@@ -1607,7 +1787,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
             var originalCount = baseCreature.Attacks.Count();
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
 
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalCount + newAttacks.Length));
             Assert.That(creature.Attacks, Is.SupersetOf(newAttacks));
@@ -1696,7 +1876,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Abilities))
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Attacks.Count(), Is.EqualTo(originalAttacks.Length + 5));
             Assert.That(creature.Attacks.Select(a => a.Name), Is.SupersetOf(originalAttacks.Select(a => a.Name)));
@@ -1741,11 +1921,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     newSkills,
                     baseCreature.CanUseEquipment,
                     baseCreature.Size,
-                    baseCreature.Alignment))
+                    It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Evil && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(newQualities);
 
             var originalCount = baseCreature.SpecialQualities.Count();
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
 
             Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(originalCount + newQualities.Length));
             Assert.That(creature.SpecialQualities, Is.SupersetOf(newQualities));
@@ -1754,7 +1934,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_AbilitiesImprove()
         {
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature.Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[AbilityConstants.Strength].TemplateAdjustment, Is.EqualTo(4));
             Assert.That(creature.Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
@@ -1772,14 +1952,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(AbilityConstants.Charisma)]
         [TestCase(AbilityConstants.Constitution)]
         [TestCase(AbilityConstants.Dexterity)]
-        [TestCase(AbilityConstants.Intelligence)]
+        [TestCase(AbilityConstants.Intelligence, Ignore = "Intelligence is required")]
         [TestCase(AbilityConstants.Strength)]
         [TestCase(AbilityConstants.Wisdom)]
         public async Task ApplyToAsync_AbilitiesImprove_DoNotImproveMissingAbility(string ability)
         {
             baseCreature.Abilities[ability].BaseScore = 0;
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature.Abilities[ability].HasScore, Is.False);
             Assert.That(creature.Abilities[ability].TemplateScore, Is.EqualTo(-1));
             Assert.That(creature.Abilities[ability].TemplateAdjustment, Is.Zero);
@@ -1810,7 +1990,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     true))
                 .Returns(newSkills);
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature.Skills, Is.EqualTo(newSkills));
         }
 
@@ -1830,7 +2010,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     true))
                 .Returns(Enumerable.Empty<Skill>());
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature.Skills, Is.Empty);
         }
 
@@ -1863,19 +2043,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Abilities))
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(hitDiceQuantity));
             Assert.That(creature.ChallengeRating, Is.EqualTo(adjusted));
         }
 
-        [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Good, AlignmentConstants.ChaoticEvil)]
         [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Neutral, AlignmentConstants.ChaoticEvil)]
         [TestCase(AlignmentConstants.Chaotic, AlignmentConstants.Evil, AlignmentConstants.ChaoticEvil)]
-        [TestCase(AlignmentConstants.Neutral, AlignmentConstants.Good, AlignmentConstants.NeutralEvil)]
         [TestCase(AlignmentConstants.Neutral, AlignmentConstants.Neutral, AlignmentConstants.NeutralEvil)]
         [TestCase(AlignmentConstants.Neutral, AlignmentConstants.Evil, AlignmentConstants.NeutralEvil)]
-        [TestCase(AlignmentConstants.Lawful, AlignmentConstants.Good, AlignmentConstants.LawfulEvil)]
         [TestCase(AlignmentConstants.Lawful, AlignmentConstants.Neutral, AlignmentConstants.LawfulEvil)]
         [TestCase(AlignmentConstants.Lawful, AlignmentConstants.Evil, AlignmentConstants.LawfulEvil)]
         public async Task ApplyToAsync_AlignmentAdjusted(string lawfulness, string goodness, string adjusted)
@@ -1883,9 +2060,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Alignment.Lawfulness = lawfulness;
             baseCreature.Alignment.Goodness = goodness;
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Alignment.Full, Is.EqualTo(adjusted));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_GetPresetAlignment()
+        {
+            baseCreature.Alignment.Lawfulness = "preset";
+            baseCreature.Alignment.Goodness = "alignment";
+
+            var creature = await applicator.ApplyToAsync(baseCreature, false, alignment: "preset Evil");
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Alignment.Full, Is.EqualTo("preset Evil"));
         }
 
         [TestCase(null, null)]
@@ -1898,7 +2086,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.LevelAdjustment = adjustment;
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.LevelAdjustment, Is.EqualTo(adjusted));
         }
@@ -1914,7 +2102,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Automatic))
                 .Returns("Mordor");
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -1932,7 +2120,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Automatic))
                 .Returns("Mordor");
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages, Is.Empty);
         }
@@ -1949,7 +2137,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Automatic))
                 .Returns("Mordor");
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -1982,7 +2170,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
                 .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 3));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2017,7 +2205,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
                 .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 3));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2052,7 +2240,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
                 .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 2));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2086,7 +2274,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
                 .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2120,7 +2308,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
                 .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2140,7 +2328,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Automatic))
                 .Returns("Mordor");
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2158,7 +2346,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Automatic))
                 .Returns("Mordor");
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages, Is.Empty);
         }
@@ -2175,7 +2363,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     CreatureConstants.Templates.HalfFiend + LanguageConstants.Groups.Automatic))
                 .Returns("Mordor");
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2208,7 +2396,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
                 .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 3));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2243,7 +2431,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
                 .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 3));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2278,7 +2466,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
                 .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 2));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2312,7 +2500,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
                 .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2346,7 +2534,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>()))
                 .Returns((IEnumerable<string> ss) => ss.ElementAt(count++ % ss.Count()));
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Languages.Count(), Is.EqualTo(originalLanguages.Length + 1));
             Assert.That(creature.Languages, Is.SupersetOf(originalLanguages)
@@ -2367,7 +2555,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Equipment))
                 .Returns(newMagic);
 
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Magic, Is.EqualTo(newMagic));
         }
@@ -2384,7 +2572,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.Equipment))
                 .Returns(newMagic);
 
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Magic, Is.EqualTo(newMagic));
         }
@@ -2392,7 +2580,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_SetsTemplate()
         {
-            var creature = applicator.ApplyTo(baseCreature);
+            var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.HalfFiend));
         }
@@ -2400,7 +2588,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_SetsTemplate()
         {
-            var creature = await applicator.ApplyToAsync(baseCreature);
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.HalfFiend));
         }
@@ -2451,11 +2639,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(adjustments);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
-            alignments["my other creature"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, "other alignment group" };
-            alignments["wrong creature 1"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, "other alignment group" };
-            alignments["wrong creature 2"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, "other alignment group" };
-            alignments["wrong creature 3"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulEvil, "other alignment" };
+            alignments["my other creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralEvil, "other alignment" };
+            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { AlignmentConstants.ChaoticEvil, "other alignment" };
+            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { AlignmentConstants.ChaoticNeutral, "other alignment" };
+            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralGood };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -2493,6 +2681,174 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string c) => data[c]);
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false);
+            Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
+        }
+
+        [Test]
+        public void GetCompatibleCreatures_ReturnEmpty_WhenAlignmentFilterInvalid()
+        {
+            var creatures = new[] { "my creature", "wrong creature 2", "my other creature", "wrong creature 1" };
+
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types["my other creature"] = new[] { CreatureConstants.Types.Giant, "subtype 3" };
+            types["wrong creature 1"] = new[] { CreatureConstants.Types.Outsider, "subtype 2" };
+            types["wrong creature 2"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+
+            var alignments = new Dictionary<string, IEnumerable<string>>();
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulEvil, "other alignment" };
+            alignments["my other creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralEvil, "other alignment" };
+            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { AlignmentConstants.ChaoticEvil, "other alignment" };
+            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralGood };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Returns(alignments);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => alignments[c]);
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["my other creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 1;
+            hitDice["my other creature"] = 1;
+            hitDice["wrong creature 1"] = 1;
+            hitDice["wrong creature 2"] = 1;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
+
+            var adjustments = new[]
+            {
+                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my creature"))
+                .Returns(adjustments);
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my other creature"))
+                .Returns(adjustments);
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"))
+                .Returns(adjustments);
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"))
+                .Returns(adjustments);
+
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, alignment: "preset alignment");
+            Assert.That(compatibleCreatures, Is.Empty);
+        }
+
+        [Test]
+        public void GetCompatibleCreatures_ReturnCompatibleCreatures_WhenAlignmentFilterValid()
+        {
+            var creatures = new[] { "my creature", "wrong creature 2", "my other creature", "wrong creature 1" };
+
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types["my other creature"] = new[] { CreatureConstants.Types.Giant, "subtype 3" };
+            types["wrong creature 1"] = new[] { CreatureConstants.Types.Outsider, "subtype 2" };
+            types["wrong creature 2"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+
+            var alignments = new Dictionary<string, IEnumerable<string>>();
+            alignments["my creature" + GroupConstants.Exploded] = new[] { "preset Evil", "other alignment" };
+            alignments["my other creature" + GroupConstants.Exploded] = new[] { "preset Neutral", "other alignment" };
+            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { AlignmentConstants.ChaoticEvil, "other alignment" };
+            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralGood };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Returns(alignments);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => alignments[c]);
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["my other creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 1;
+            hitDice["my other creature"] = 1;
+            hitDice["wrong creature 1"] = 1;
+            hitDice["wrong creature 2"] = 1;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
+
+            var adjustments = new[]
+            {
+                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my creature"))
+                .Returns(adjustments);
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my other creature"))
+                .Returns(adjustments);
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"))
+                .Returns(adjustments);
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"))
+                .Returns(adjustments);
+
+            var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, alignment: "preset Evil");
             Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
         }
 
@@ -2574,13 +2930,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(adjustments);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
-            alignments["my other creature"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, "other alignment group" };
-            alignments["wrong creature 1"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, "other alignment group" };
-            alignments["wrong creature 2"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, "other alignment group" };
-            alignments["wrong creature 3"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good };
-            alignments["wrong creature 4"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, "other alignment group" };
-            alignments["wrong creature 5"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, "other alignment group" };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulEvil, "other alignment" };
+            alignments["my other creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralEvil, "other alignment" };
+            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { AlignmentConstants.ChaoticEvil, "other alignment" };
+            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { AlignmentConstants.ChaoticNeutral, "other alignment" };
+            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralGood };
+            alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { AlignmentConstants.TrueNeutral, "other alignment" };
+            alignments["wrong creature 5" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulNeutral, "other alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -2681,11 +3037,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(adjustments);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
-            alignments["my other creature"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, "other alignment group" };
-            alignments["wrong creature 1"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, "other alignment group" };
-            alignments["wrong creature 2"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, "other alignment group" };
-            alignments["wrong creature 3"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulEvil, "other alignment" };
+            alignments["my other creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralEvil, "other alignment" };
+            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { AlignmentConstants.ChaoticEvil, "other alignment" };
+            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { AlignmentConstants.ChaoticNeutral, "other alignment" };
+            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralGood };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -2788,12 +3144,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(adjustments);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
-            alignments["my other creature"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, "other alignment group" };
-            alignments["wrong creature 1"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, "other alignment group" };
-            alignments["wrong creature 2"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, "other alignment group" };
-            alignments["wrong creature 3"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good };
-            alignments["wrong creature 4"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, "other alignment group" };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulEvil, "other alignment" };
+            alignments["my other creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralEvil, "other alignment" };
+            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { AlignmentConstants.ChaoticEvil, "other alignment" };
+            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { AlignmentConstants.ChaoticNeutral, "other alignment" };
+            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralGood };
+            alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { AlignmentConstants.TrueNeutral, "other alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -2908,14 +3264,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(adjustments);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
-            alignments["my other creature"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, "other alignment group" };
-            alignments["wrong creature 1"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, "other alignment group" };
-            alignments["wrong creature 2"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, "other alignment group" };
-            alignments["wrong creature 3"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good };
-            alignments["wrong creature 4"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, "other alignment group" };
-            alignments["wrong creature 5"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, "other alignment group" };
-            alignments["wrong creature 6"] = new[] { AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, "other alignment group" };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulEvil, "other alignment" };
+            alignments["my other creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralEvil, "other alignment" };
+            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { AlignmentConstants.ChaoticEvil, "other alignment" };
+            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { AlignmentConstants.ChaoticNeutral, "other alignment" };
+            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralGood };
+            alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { AlignmentConstants.TrueNeutral, "other alignment" };
+            alignments["wrong creature 5" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulNeutral, "other alignment" };
+            alignments["wrong creature 6" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulEvil, "other alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -2994,7 +3350,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulEvil, "other alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -3059,7 +3415,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulEvil, "other alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -3124,7 +3480,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulEvil, "other alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -3199,7 +3555,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulEvil, "other alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -3246,56 +3602,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 
-        [TestCase(GroupConstants.All, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Good, false)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, false)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good, false)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Good, false)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Neutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Neutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Neutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Neutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Evil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Lawful, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Lawful, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Lawful, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Lawful, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Chaotic, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Chaotic, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Chaotic, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Chaotic, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.TrueNeutral, true)]
-        public void IsCompatible_MustHaveNonEvilAlignment(string alignmentGroup, bool compatible)
+        [TestCase(AlignmentConstants.LawfulGood, false)]
+        [TestCase(AlignmentConstants.NeutralGood, false)]
+        [TestCase(AlignmentConstants.ChaoticGood, false)]
+        [TestCase(AlignmentConstants.LawfulNeutral, true)]
+        [TestCase(AlignmentConstants.TrueNeutral, true)]
+        [TestCase(AlignmentConstants.ChaoticNeutral, true)]
+        [TestCase(AlignmentConstants.LawfulEvil, true)]
+        [TestCase(AlignmentConstants.NeutralEvil, true)]
+        [TestCase(AlignmentConstants.ChaoticEvil, true)]
+        public void IsCompatible_MustHaveNonEvilAlignment(string alignment, bool compatible)
         {
             var types = new Dictionary<string, IEnumerable<string>>();
             types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
@@ -3312,7 +3628,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { alignmentGroup, $"other {AlignmentConstants.Good} alignment group" };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { alignment, "other Good" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -3359,56 +3675,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 
-        [TestCase(GroupConstants.All, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Good, false)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Good, false)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Good, false)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Good, false)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Neutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Neutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Neutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Neutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Evil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Evil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Lawful, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Lawful, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Lawful, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Lawful, true)]
-        [TestCase(AlignmentConstants.Modifiers.Any + AlignmentConstants.Chaotic, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.Chaotic, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.Chaotic, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.Chaotic, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.ChaoticNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.NeutralGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.LawfulNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.NeutralGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Usually + AlignmentConstants.TrueNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.LawfulNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.ChaoticNeutral, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralEvil, true)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.NeutralGood, false)]
-        [TestCase(AlignmentConstants.Modifiers.Often + AlignmentConstants.TrueNeutral, true)]
-        public void IsCompatible_MustHaveAnyNonEvilAlignment(string alignmentGroup, bool compatible)
+        [TestCase(AlignmentConstants.LawfulGood, false)]
+        [TestCase(AlignmentConstants.NeutralGood, false)]
+        [TestCase(AlignmentConstants.ChaoticGood, false)]
+        [TestCase(AlignmentConstants.LawfulNeutral, true)]
+        [TestCase(AlignmentConstants.TrueNeutral, true)]
+        [TestCase(AlignmentConstants.ChaoticNeutral, true)]
+        [TestCase(AlignmentConstants.LawfulEvil, true)]
+        [TestCase(AlignmentConstants.NeutralEvil, true)]
+        [TestCase(AlignmentConstants.ChaoticEvil, true)]
+        public void IsCompatible_MustHaveAnyNonEvilAlignment(string alignment, bool compatible)
         {
             var types = new Dictionary<string, IEnumerable<string>>();
             types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
@@ -3425,7 +3701,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { $"other {AlignmentConstants.Good} alignment group", alignmentGroup };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { "other Good", alignment };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -3497,7 +3773,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulEvil, "other alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -3657,7 +3933,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(adjustments);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulEvil, "other alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -3794,7 +4070,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(adjustments);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulEvil, "other alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -3925,7 +4201,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(adjustments);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulEvil, "other alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -3938,11 +4214,107 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 
-        [TestCase(CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR2, true)]
-        [TestCase(CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR1, false)]
-        [TestCase("wrong subtype", ChallengeRatingConstants.CR2, false)]
-        [TestCase("wrong subtype", ChallengeRatingConstants.CR1, false)]
-        public void IsCompatible_TypeAndChallengeRatingMustMatch(string type, string challengeRating, bool compatible)
+        [TestCase(AlignmentConstants.LawfulEvil, AlignmentConstants.LawfulGood, false)]
+        [TestCase(AlignmentConstants.LawfulEvil, AlignmentConstants.NeutralGood, false)]
+        [TestCase(AlignmentConstants.LawfulEvil, AlignmentConstants.ChaoticGood, false)]
+        [TestCase(AlignmentConstants.LawfulEvil, AlignmentConstants.LawfulNeutral, true)]
+        [TestCase(AlignmentConstants.LawfulEvil, AlignmentConstants.TrueNeutral, false)]
+        [TestCase(AlignmentConstants.LawfulEvil, AlignmentConstants.ChaoticNeutral, false)]
+        [TestCase(AlignmentConstants.LawfulEvil, AlignmentConstants.LawfulEvil, true)]
+        [TestCase(AlignmentConstants.LawfulEvil, AlignmentConstants.NeutralEvil, false)]
+        [TestCase(AlignmentConstants.LawfulEvil, AlignmentConstants.ChaoticEvil, false)]
+        [TestCase(AlignmentConstants.NeutralEvil, AlignmentConstants.LawfulGood, false)]
+        [TestCase(AlignmentConstants.NeutralEvil, AlignmentConstants.NeutralGood, false)]
+        [TestCase(AlignmentConstants.NeutralEvil, AlignmentConstants.ChaoticGood, false)]
+        [TestCase(AlignmentConstants.NeutralEvil, AlignmentConstants.LawfulNeutral, false)]
+        [TestCase(AlignmentConstants.NeutralEvil, AlignmentConstants.TrueNeutral, true)]
+        [TestCase(AlignmentConstants.NeutralEvil, AlignmentConstants.ChaoticNeutral, false)]
+        [TestCase(AlignmentConstants.NeutralEvil, AlignmentConstants.LawfulEvil, false)]
+        [TestCase(AlignmentConstants.NeutralEvil, AlignmentConstants.NeutralEvil, true)]
+        [TestCase(AlignmentConstants.NeutralEvil, AlignmentConstants.ChaoticEvil, false)]
+        [TestCase(AlignmentConstants.ChaoticEvil, AlignmentConstants.LawfulGood, false)]
+        [TestCase(AlignmentConstants.ChaoticEvil, AlignmentConstants.NeutralGood, false)]
+        [TestCase(AlignmentConstants.ChaoticEvil, AlignmentConstants.ChaoticGood, false)]
+        [TestCase(AlignmentConstants.ChaoticEvil, AlignmentConstants.LawfulNeutral, false)]
+        [TestCase(AlignmentConstants.ChaoticEvil, AlignmentConstants.TrueNeutral, false)]
+        [TestCase(AlignmentConstants.ChaoticEvil, AlignmentConstants.ChaoticNeutral, true)]
+        [TestCase(AlignmentConstants.ChaoticEvil, AlignmentConstants.LawfulEvil, false)]
+        [TestCase(AlignmentConstants.ChaoticEvil, AlignmentConstants.NeutralEvil, false)]
+        [TestCase(AlignmentConstants.ChaoticEvil, AlignmentConstants.ChaoticEvil, true)]
+        public void IsCompatible_AlignmentMustMatch(string alignmentFilter, string creatureAlignment, bool compatible)
+        {
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
+            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
+            types[CreatureConstants.Rat] = new[] { CreatureConstants.Types.Vermin };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string t, string c) => types[c]);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
+
+            var alignments = new Dictionary<string, IEnumerable<string>>();
+            alignments["my creature" + GroupConstants.Exploded] = new[] { "other Good", creatureAlignment };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Returns(alignments);
+            mockCollectionSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string t, string c) => alignments[c]);
+
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+            mockCreatureDataSelector
+                .Setup(s => s.SelectFor(It.IsAny<string>()))
+                .Returns((string c) => data[c]);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["my creature"] = 4;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+            mockAdjustmentSelector
+                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
+                .Returns((string t, string c) => hitDice[c]);
+
+            var adjustments = new[]
+            {
+                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 9266 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my creature"))
+                .Returns(adjustments);
+
+            var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false, alignment: alignmentFilter);
+            Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
+        [TestCase(CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR2, AlignmentConstants.LawfulEvil, true)]
+        [TestCase(CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR2, AlignmentConstants.NeutralEvil, false)]
+        [TestCase(CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR1, AlignmentConstants.LawfulEvil, false)]
+        [TestCase(CreatureConstants.Types.Subtypes.Augmented, ChallengeRatingConstants.CR1, AlignmentConstants.NeutralEvil, false)]
+        [TestCase("wrong subtype", ChallengeRatingConstants.CR2, AlignmentConstants.LawfulEvil, false)]
+        [TestCase("wrong subtype", ChallengeRatingConstants.CR2, AlignmentConstants.NeutralEvil, false)]
+        [TestCase("wrong subtype", ChallengeRatingConstants.CR1, AlignmentConstants.LawfulEvil, false)]
+        [TestCase("wrong subtype", ChallengeRatingConstants.CR1, AlignmentConstants.NeutralEvil, false)]
+        public void IsCompatible_AllFiltersMustMatch(string type, string challengeRating, string alignment, bool compatible)
         {
             var types = new Dictionary<string, IEnumerable<string>>();
             types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
@@ -3990,7 +4362,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(adjustments);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature"] = new[] { AlignmentConstants.Modifiers.Always + AlignmentConstants.Evil, "other alignment group" };
+            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulEvil, "other alignment" };
 
             mockCollectionSelector
                 .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
@@ -3999,7 +4371,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
                 .Returns((string t, string c) => alignments[c]);
 
-            var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false, type, challengeRating);
+            var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false, type, challengeRating, alignment);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
     }

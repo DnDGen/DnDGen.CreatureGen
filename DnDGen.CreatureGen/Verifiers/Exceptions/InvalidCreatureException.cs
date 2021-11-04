@@ -11,14 +11,18 @@ namespace DnDGen.CreatureGen.Verifiers.Exceptions
         private readonly bool asCharacter;
         private readonly string template;
         private readonly string type;
+        private readonly string alignment;
+        private readonly string reason;
 
-        public InvalidCreatureException(bool asCharacter, string creature = null, string challengeRating = null, string template = null, string type = null)
+        public InvalidCreatureException(string reason, bool asCharacter, string creature = null, string template = null, string type = null, string challengeRating = null, string alignment = null)
         {
+            this.reason = reason;
             this.creature = creature;
-            this.challengeRating = challengeRating;
-            this.asCharacter = asCharacter;
             this.template = template;
+            this.asCharacter = asCharacter;
             this.type = type;
+            this.challengeRating = challengeRating;
+            this.alignment = alignment;
         }
 
         public override string Message
@@ -27,6 +31,10 @@ namespace DnDGen.CreatureGen.Verifiers.Exceptions
             {
                 var message = new StringBuilder();
                 message.AppendLine("Invalid creature:");
+
+                if (reason != null)
+                    message.AppendLine($"\tReason: {reason}");
+
                 message.AppendLine($"\tAs Character: {asCharacter}");
 
                 if (creature != null)
@@ -42,6 +50,9 @@ namespace DnDGen.CreatureGen.Verifiers.Exceptions
 
                 if (challengeRating != null)
                     message.AppendLine($"\tCR: {challengeRating}");
+
+                if (alignment != null)
+                    message.AppendLine($"\tAlignment: {alignment}");
 
                 return message.ToString();
             }

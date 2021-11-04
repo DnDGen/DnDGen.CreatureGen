@@ -1,5 +1,8 @@
-﻿using DnDGen.CreatureGen.Creatures;
+﻿using DnDGen.CreatureGen.Alignments;
+using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.RollGen;
 using NUnit.Framework;
 using System;
 using System.Diagnostics;
@@ -13,107 +16,82 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Verifiers
         private ICollectionSelector collectionSelector;
         private Stopwatch stopwatch;
         private TimeSpan timeLimit;
-        private Random random;
+        private Dice dice;
 
         [SetUp]
         public void Setup()
         {
             stopwatch = new Stopwatch();
             collectionSelector = GetNewInstanceOf<ICollectionSelector>();
-            random = new Random();
+            dice = GetNewInstanceOf<Dice>();
 
             timeLimit = TimeSpan.FromSeconds(1);
         }
 
         [Test]
-        public void StressCreatureVerification()
+        public void StressVerification()
         {
-            stressor.Stress(ValidateRandomCreatureAndTemplate);
+            stressor.Stress(ValidateRandomCreatureWithFilters);
         }
 
-        private void ValidateRandomCreatureAndTemplate()
+        private void ValidateRandomCreatureWithFilters()
         {
-            var randomCreatureName = collectionSelector.SelectRandomFrom(allCreatures);
-            var randomTemplate = collectionSelector.SelectRandomFrom(allTemplates);
-            var asCharacter = Convert.ToBoolean(random.Next(2));
+            var asCharacter = dice.Roll().d2().AsTrueOrFalse();
+            var withCreature = dice.Roll().d2().AsTrueOrFalse();
+            var withTemplate = dice.Roll().d2().AsTrueOrFalse();
+            var withType = dice.Roll().d2().AsTrueOrFalse();
+            var withCr = dice.Roll().d2().AsTrueOrFalse();
+            var withAlignment = dice.Roll().d2().AsTrueOrFalse();
 
-            stopwatch.Restart();
-            var verified = creatureVerifier.VerifyCompatibility(asCharacter, randomCreatureName, randomTemplate);
-            stopwatch.Stop();
-
-            var message = $"As Character: {asCharacter}; Creature: {randomCreatureName}; Template: {randomTemplate}; Verified: {verified}";
-            Assert.That(stopwatch.Elapsed, Is.LessThan(timeLimit), message);
-        }
-
-        [Test]
-        public void StressTemplateVerification()
-        {
-            stressor.Stress(ValidateRandomTemplateAndChallengeRating);
-        }
-
-        private void ValidateRandomTemplateAndChallengeRating()
-        {
-            var randomTemplate = collectionSelector.SelectRandomFrom(allTemplates);
-            var challengeRatings = ChallengeRatingConstants.GetOrdered();
-            var asCharacter = Convert.ToBoolean(random.Next(2));
-            var withCr = Convert.ToBoolean(random.Next(2));
+            string creature = null;
+            string template = null;
+            string type = null;
             string cr = null;
+            string alignment = null;
+
+            if (withCreature)
+                creature = collectionSelector.SelectRandomFrom(allCreatures);
+
+            if (withTemplate)
+                template = collectionSelector.SelectRandomFrom(allTemplates);
+
+            if (withType)
+            {
+                var types = CreatureConstants.Types.GetAll();
+                var subtypes = CreatureConstants.Types.Subtypes.GetAll();
+                var allTypes = types.Union(subtypes);
+                type = collectionSelector.SelectRandomFrom(allTypes);
+            }
 
             if (withCr)
+            {
+                var challengeRatings = ChallengeRatingConstants.GetOrdered();
                 cr = collectionSelector.SelectRandomFrom(challengeRatings);
+            }
+
+            if (withAlignment)
+            {
+                var alignments = new[]
+                {
+                    AlignmentConstants.LawfulGood,
+                    AlignmentConstants.NeutralGood,
+                    AlignmentConstants.ChaoticGood,
+                    AlignmentConstants.LawfulNeutral,
+                    AlignmentConstants.TrueNeutral,
+                    AlignmentConstants.ChaoticNeutral,
+                    AlignmentConstants.LawfulEvil,
+                    AlignmentConstants.NeutralEvil,
+                    AlignmentConstants.ChaoticEvil,
+                };
+                alignment = collectionSelector.SelectRandomFrom(alignments);
+            }
 
             stopwatch.Restart();
-            var verified = creatureVerifier.VerifyCompatibility(asCharacter, template: randomTemplate, challengeRating: cr);
+            var verified = creatureVerifier.VerifyCompatibility(asCharacter, creature, template, type, cr, alignment);
             stopwatch.Stop();
 
-            var message = $"As Character: {asCharacter}; Template: {randomTemplate}; CR: {cr ?? "None"}; Verified: {verified}";
-            Assert.That(stopwatch.Elapsed, Is.LessThan(timeLimit), message);
-        }
-
-        [Test]
-        public void StressTypeVerification()
-        {
-            stressor.Stress(ValidateRandomTypeAndChallengeRating);
-        }
-
-        private void ValidateRandomTypeAndChallengeRating()
-        {
-            var types = CreatureConstants.Types.GetAll().Union(CreatureConstants.Types.Subtypes.GetAll());
-            var randomType = collectionSelector.SelectRandomFrom(types);
-            var challengeRatings = ChallengeRatingConstants.GetOrdered();
-            var asCharacter = Convert.ToBoolean(random.Next(2));
-            var withCr = Convert.ToBoolean(random.Next(2));
-            string cr = null;
-
-            if (withCr)
-                cr = collectionSelector.SelectRandomFrom(challengeRatings);
-
-            stopwatch.Restart();
-            var verified = creatureVerifier.VerifyCompatibility(asCharacter, type: randomType, challengeRating: cr);
-            stopwatch.Stop();
-
-            var message = $"As Character: {asCharacter}; Type: {randomType}; CR: {cr ?? "None"}; Verified: {verified}";
-            Assert.That(stopwatch.Elapsed, Is.LessThan(timeLimit), message);
-        }
-
-        [Test]
-        public void StressChallengeRatingVerification()
-        {
-            stressor.Stress(ValidateRandomChallengeRating);
-        }
-
-        private void ValidateRandomChallengeRating()
-        {
-            var challengeRatings = ChallengeRatingConstants.GetOrdered();
-            var cr = collectionSelector.SelectRandomFrom(challengeRatings);
-            var asCharacter = Convert.ToBoolean(random.Next(2));
-
-            stopwatch.Restart();
-            var verified = creatureVerifier.VerifyCompatibility(asCharacter, challengeRating: cr);
-            stopwatch.Stop();
-
-            var message = $"As Character: {asCharacter}; CR: {cr}; Verified: {verified}";
-            Assert.That(stopwatch.Elapsed, Is.LessThan(timeLimit), message);
+            var failure = new InvalidCreatureException(null, asCharacter, creature, template, type, cr, alignment);
+            Assert.That(stopwatch.Elapsed, Is.LessThan(timeLimit), $"Verified: {verified}\n{failure.Message}");
         }
     }
 }

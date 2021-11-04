@@ -161,7 +161,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 GroupConstants.PoorBaseAttack)).Returns(GroupConstants.PoorBaseAttack);
         }
 
-        protected Mock<TemplateApplicator> SetUpCreature(string creatureName, string templateName, bool asCharacter, string crFilter = null, string typeFilter = null)
+        protected Mock<TemplateApplicator> SetUpCreature(
+            string creatureName,
+            string templateName,
+            bool asCharacter,
+            string typeFilter = null,
+            string crFilter = null,
+            string alignmentFilter = null)
         {
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
             var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
@@ -169,7 +175,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, group))
                 .Returns(creatures);
 
-            mockAlignmentGenerator.Setup(g => g.Generate(creatureName)).Returns(alignment);
+            mockAlignmentGenerator.Setup(g => g.Generate(creatureName, templateName, alignmentFilter)).Returns(alignment);
 
             mockAttacksGenerator.Setup(g => g.GenerateBaseAttackBonus(It.Is<CreatureType>(c => c.Name == types[0]), hitPoints)).Returns(753);
             mockAttacksGenerator.Setup(g => g.GenerateAttacks(creatureName, creatureData.Size, creatureData.Size, 753, abilities, hitPoints.RoundedHitDiceQuantity)).Returns(attacks);
@@ -203,11 +209,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     equipment))
                 .Returns(skills);
 
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, null, null, typeFilter, crFilter)).Returns(true);
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, null, templateName, typeFilter, crFilter)).Returns(true);
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, creatureName, templateName, null, null)).Returns(true);
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, creatureName, templateName, typeFilter, crFilter)).Returns(true);
-            mockCreatureVerifier.Setup(v => v.CanBeCharacter(creatureName)).Returns(asCharacter);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, null, null, typeFilter, crFilter, alignmentFilter)).Returns(true);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, null, templateName, typeFilter, crFilter, alignmentFilter)).Returns(true);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, creatureName, templateName, null, null, null)).Returns(true);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, creatureName, templateName, typeFilter, crFilter, alignmentFilter)).Returns(true);
             mockCreatureDataSelector.Setup(s => s.SelectFor(creatureName)).Returns(creatureData);
 
             mockFeatsGenerator.Setup(g =>
@@ -230,24 +235,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var defaultTemplateApplicator = new Mock<TemplateApplicator>();
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(templateName)).Returns(defaultTemplateApplicator.Object);
             defaultTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, typeFilter, crFilter))
-                .Returns((IEnumerable<string> cc, bool asC, string t, string cr) => cc.Intersect(new[] { creatureName }));
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, typeFilter, crFilter, alignmentFilter))
+                .Returns((IEnumerable<string> cc, bool asC, string t, string cr, string a) => cc.Intersect(new[] { creatureName }));
             defaultTemplateApplicator
-                .Setup(a => a.ApplyTo(It.IsAny<Creature>()))
-                .Callback((Creature c) => c.Template = templateName)
-                .Returns((Creature c) => c);
+                .Setup(a => a.ApplyTo(It.IsAny<Creature>(), asCharacter, typeFilter, crFilter, alignmentFilter))
+                .Callback((Creature c, bool asC, string t, string cr, string a) => c.Template = templateName)
+                .Returns((Creature c, bool asC, string t, string cr, string a) => c);
             defaultTemplateApplicator
-                .Setup(a => a.ApplyToAsync(It.IsAny<Creature>()))
-                .Callback((Creature c) => c.Template = templateName)
-                .ReturnsAsync((Creature c) => c);
+                .Setup(a => a.ApplyToAsync(It.IsAny<Creature>(), asCharacter, typeFilter, crFilter, alignmentFilter))
+                .Callback((Creature c, bool asC, string t, string cr, string a) => c.Template = templateName)
+                .ReturnsAsync((Creature c, bool asC, string t, string cr, string a) => c);
 
             if (templateName != CreatureConstants.Templates.None)
             {
                 var noneApplicator = new Mock<TemplateApplicator>();
                 mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None)).Returns(noneApplicator.Object);
                 noneApplicator
-                    .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, typeFilter, crFilter))
-                    .Returns((IEnumerable<string> cc, bool asC, string t, string cr) => Enumerable.Empty<string>());
+                    .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, typeFilter, crFilter, alignmentFilter))
+                    .Returns(Enumerable.Empty<string>());
             }
 
             mockAbilitiesGenerator.Setup(g => g.GenerateFor(creatureName)).Returns(abilities);
@@ -307,9 +312,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             return defaultTemplateApplicator;
         }
 
-        protected HitPoints SetUpCreatureAdvancement(bool asCharacter, int advancementAmount = 1337, string creatureName = "creature")
+        protected HitPoints SetUpCreatureAdvancement(bool asCharacter, string creatureName, string template, string challengeRatingFilter, int advancementAmount = 1337)
         {
-            mockAdvancementSelector.Setup(s => s.IsAdvanced(creatureName)).Returns(true);
+            mockAdvancementSelector.Setup(s => s.IsAdvanced(creatureName, challengeRatingFilter)).Returns(true);
 
             var advancement = new AdvancementSelection();
             advancement.AdditionalHitDice = advancementAmount;
@@ -324,7 +329,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             advancement.StrengthAdjustment = 3456;
 
             mockAdvancementSelector
-                .Setup(s => s.SelectRandomFor(creatureName, It.Is<CreatureType>(c => c.Name == types[0]), creatureData.Size, creatureData.ChallengeRating))
+                .Setup(s => s.SelectRandomFor(creatureName, template, It.Is<CreatureType>(c => c.Name == types[0]), creatureData.Size, creatureData.ChallengeRating))
                 .Returns(advancement);
 
             var advancedHitPoints = new HitPoints();

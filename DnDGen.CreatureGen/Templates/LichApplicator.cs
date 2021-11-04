@@ -9,6 +9,7 @@ using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using System;
@@ -28,7 +29,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly ITypeAndAmountSelector typeAndAmountSelector;
         private readonly IAdjustmentsSelector adjustmentSelector;
 
-        private const int PhylacterySpellLevel = 11;
+        private const int PhylacterySpellCasterLevel = 11;
 
         public LichApplicator(
             ICollectionSelector collectionSelector,
@@ -48,8 +49,22 @@ namespace DnDGen.CreatureGen.Templates
             this.adjustmentSelector = adjustmentSelector;
         }
 
-        public Creature ApplyTo(Creature creature)
+        public Creature ApplyTo(Creature creature, bool asCharacter, string type = null, string challengeRating = null, string alignment = null)
         {
+            var compatibility = IsCompatible(
+                creature.Type.AllTypes,
+                new[] { creature.Alignment.Full },
+                creature.ChallengeRating,
+                creature.LevelAdjustment,
+                new[] { creature.CasterLevel, creature.Magic.CasterLevel },
+                type,
+                challengeRating,
+                alignment);
+            if (!compatibility.Compatible)
+            {
+                throw new InvalidCreatureException(compatibility.Reason, asCharacter, creature.Name, CreatureConstants.Templates.Lich, type, challengeRating, alignment);
+            }
+
             // Template
             UpdateCreatureTemplate(creature);
 
@@ -60,7 +75,7 @@ namespace DnDGen.CreatureGen.Templates
             UpdateCreatureLevelAdjustment(creature);
 
             // Alignment
-            UpdateCreatureAlignment(creature);
+            UpdateCreatureAlignment(creature, alignment);
 
             // Languages
             UpdateCreatureLanguages(creature);
@@ -135,9 +150,24 @@ namespace DnDGen.CreatureGen.Templates
                 creature.LevelAdjustment += 4;
         }
 
-        private void UpdateCreatureAlignment(Creature creature)
+        private void UpdateCreatureAlignment(Creature creature, string presetAlignment)
         {
-            creature.Alignment.Goodness = AlignmentConstants.Evil;
+            if (presetAlignment != null)
+            {
+                creature.Alignment = new Alignment(presetAlignment);
+            }
+            else
+            {
+                creature.Alignment = UpdateCreatureAlignment(creature.Alignment.Full);
+            }
+        }
+
+        private Alignment UpdateCreatureAlignment(string alignment)
+        {
+            var newAlignment = new Alignment(alignment);
+            newAlignment.Goodness = AlignmentConstants.Evil;
+
+            return newAlignment;
         }
 
         private void UpdateCreatureAbilities(Creature creature)
@@ -237,8 +267,22 @@ namespace DnDGen.CreatureGen.Templates
             creature.Template = CreatureConstants.Templates.Lich;
         }
 
-        public async Task<Creature> ApplyToAsync(Creature creature)
+        public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, string type = null, string challengeRating = null, string alignment = null)
         {
+            var compatibility = IsCompatible(
+                creature.Type.AllTypes,
+                new[] { creature.Alignment.Full },
+                creature.ChallengeRating,
+                creature.LevelAdjustment,
+                new[] { creature.CasterLevel, creature.Magic.CasterLevel },
+                type,
+                challengeRating,
+                alignment);
+            if (!compatibility.Compatible)
+            {
+                throw new InvalidCreatureException(compatibility.Reason, asCharacter, creature.Name, CreatureConstants.Templates.Lich, type, challengeRating, alignment);
+            }
+
             var tasks = new List<Task>();
 
             // Template
@@ -254,7 +298,7 @@ namespace DnDGen.CreatureGen.Templates
             tasks.Add(levelAdjustmentTask);
 
             // Alignment
-            var alignmentTask = Task.Run(() => UpdateCreatureAlignment(creature));
+            var alignmentTask = Task.Run(() => UpdateCreatureAlignment(creature, alignment));
             tasks.Add(alignmentTask);
 
             // Languages
@@ -297,13 +341,19 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, string type = null, string challengeRating = null)
+        public IEnumerable<string> GetCompatibleCreatures(
+            IEnumerable<string> sourceCreatures,
+            bool asCharacter,
+            string type = null,
+            string challengeRating = null,
+            string alignment = null)
         {
             var filteredBaseCreatures = sourceCreatures;
             var allData = creatureDataSelector.SelectAll();
             var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
             var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
             var allSpellcasters = typeAndAmountSelector.SelectAll(TableNameConstants.TypeAndAmount.Casters);
+            var allAlignments = collectionSelector.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups);
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
@@ -324,7 +374,16 @@ namespace DnDGen.CreatureGen.Templates
             }
 
             var templateCreatures = filteredBaseCreatures
-                .Where(c => IsCompatible(allTypes[c], allSpellcasters[c], allData[c], allHitDice[c], asCharacter, type, challengeRating));
+                .Where(c => IsCompatible(
+                    allTypes[c],
+                    allSpellcasters[c],
+                    allAlignments[c + GroupConstants.Exploded],
+                    allData[c],
+                    allHitDice[c],
+                    asCharacter,
+                    type,
+                    challengeRating,
+                    alignment));
 
             return templateCreatures;
         }
@@ -342,73 +401,90 @@ namespace DnDGen.CreatureGen.Templates
         private bool IsCompatible(
             IEnumerable<string> types,
             IEnumerable<TypeAndAmountSelection> spellcasters,
+            IEnumerable<string> alignments,
             CreatureDataSelection creatureData,
             double creatureHitDiceQuantity,
             bool asCharacter,
             string type = null,
-            string challengeRating = null)
+            string challengeRating = null,
+            string alignment = null)
         {
-            if (!IsCompatible(types, creatureData, spellcasters))
-                return false;
+            var creatureType = types.First();
+            var creatureChallengeRating = creatureData.ChallengeRating;
+
+            if (asCharacter && creatureHitDiceQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
+            {
+                creatureChallengeRating = ChallengeRatingConstants.CR0;
+            }
+
+            var casterLevels = spellcasters.Select(s => s.Amount).Union(new[] { creatureData.CasterLevel });
+
+            var compatibility = IsCompatible(types, alignments, creatureChallengeRating, creatureData.LevelAdjustment, casterLevels, type, challengeRating, alignment);
+            return compatibility.Compatible;
+        }
+
+        private (bool Compatible, string Reason) IsCompatible(
+            IEnumerable<string> types,
+            IEnumerable<string> alignments,
+            string creatureChallengeRating,
+            int? levelAdjustment,
+            IEnumerable<int> casterLevels,
+            string type = null,
+            string challengeRating = null,
+            string alignment = null)
+        {
+            var compatibility = IsCompatible(types, levelAdjustment, casterLevels);
+            if (!compatibility.Compatible)
+                return (false, compatibility.Reason);
 
             if (!string.IsNullOrEmpty(type))
             {
                 var updatedTypes = GetPotentialTypes(types);
                 if (!updatedTypes.Contains(type))
-                    return false;
+                    return (false, $"Type filter '{type}' is not valid");
             }
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
-                var cr = GetPotentialChallengeRating(asCharacter, types, creatureHitDiceQuantity, creatureData);
+                var cr = UpdateCreatureChallengeRating(creatureChallengeRating);
                 if (cr != challengeRating)
-                    return false;
+                    return (false, $"CR filter {challengeRating} does not match updated creature CR {cr} (from CR {creatureChallengeRating})");
             }
 
-            return true;
+            if (!string.IsNullOrEmpty(alignment))
+            {
+                var presetAlignment = new Alignment(alignment);
+                if (presetAlignment.Goodness != AlignmentConstants.Evil)
+                {
+                    return (false, $"Alignment filter '{alignment}' is not valid");
+                }
+
+                var newAlignments = alignments.Select(UpdateCreatureAlignment);
+                if (!newAlignments.Any(a => a.Full == alignment))
+                    return (false, $"Alignment filter '{alignment}' is not valid for creature alignments");
+            }
+
+            return (true, null);
         }
 
-        private bool IsCompatible(IEnumerable<string> types, CreatureDataSelection creatureData, IEnumerable<TypeAndAmountSelection> spellcasters)
+        private (bool Compatible, string Reason) IsCompatible(IEnumerable<string> types, int? levelAdjustment, IEnumerable<int> casterLevels)
         {
             if (types.First() != CreatureConstants.Types.Humanoid)
             {
-                return false;
+                return (false, $"Type '{types.First()}' is not valid");
             }
 
-            if (creatureData.LevelAdjustment.HasValue)
+            if (levelAdjustment.HasValue)
             {
-                return true;
+                return (true, null);
             }
 
-            if (creatureData.CasterLevel >= PhylacterySpellLevel)
+            if (casterLevels.Any() && casterLevels.Max() >= PhylacterySpellCasterLevel)
             {
-                return true;
+                return (true, null);
             }
 
-            if (spellcasters.Any(s => s.Amount >= PhylacterySpellLevel))
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        private string GetPotentialChallengeRating(
-            bool asCharacter,
-            IEnumerable<string> types,
-            double creatureQuantity,
-            CreatureDataSelection creatureData)
-        {
-            var creatureType = types.First();
-
-            if (asCharacter && creatureQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
-            {
-                return UpdateCreatureChallengeRating(ChallengeRatingConstants.CR0);
-            }
-
-            var adjustedChallengeRating = UpdateCreatureChallengeRating(creatureData.ChallengeRating);
-
-            return adjustedChallengeRating;
+            return (false, "Creature is unable to cast spells");
         }
 
         private bool CreatureInRange(

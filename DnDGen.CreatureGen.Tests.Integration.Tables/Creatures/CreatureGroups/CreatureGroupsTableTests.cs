@@ -1,4 +1,5 @@
-﻿using DnDGen.CreatureGen.Creatures;
+﻿using DnDGen.CreatureGen.Alignments;
+using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Tables;
 using NUnit.Framework;
@@ -88,7 +89,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 GroupConstants.Templates,
             };
 
-            var names = entries.Union(types).Union(subtypes).Union(challengeRatings);
+            var alignments = new[]
+            {
+                AlignmentConstants.LawfulGood,
+                AlignmentConstants.LawfulNeutral,
+                AlignmentConstants.LawfulEvil,
+                AlignmentConstants.NeutralGood,
+                AlignmentConstants.TrueNeutral,
+                AlignmentConstants.NeutralEvil,
+                AlignmentConstants.ChaoticGood,
+                AlignmentConstants.ChaoticNeutral,
+                AlignmentConstants.ChaoticEvil,
+            };
+
+            var names = entries.Union(types).Union(subtypes).Union(challengeRatings).Union(alignments);
 
             AssertCollectionNames(names);
         }

@@ -9,8 +9,8 @@ using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Generators.Skills;
 using DnDGen.CreatureGen.Languages;
 using DnDGen.CreatureGen.Selectors.Collections;
-using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using System;
@@ -74,8 +74,14 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             };
         }
 
-        public Creature ApplyTo(Creature creature)
+        public Creature ApplyTo(Creature creature, bool asCharacter, string type = null, string challengeRating = null, string alignment = null)
         {
+            var dragonAlignments = collectionSelector.SelectFrom(TableNameConstants.Collection.AlignmentGroups, DragonSpecies + GroupConstants.Exploded);
+            var compatibility = IsCompatible(creature.Type.AllTypes, dragonAlignments, creature.ChallengeRating, type, challengeRating, alignment);
+
+            if (!compatibility.Compatible)
+                throw new InvalidCreatureException(compatibility.Reason, asCharacter, creature.Name, DragonSpecies, type, challengeRating, alignment);
+
             // Template
             UpdateCreatureTemplate(creature);
 
@@ -95,7 +101,7 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             UpdateCreatureLevelAdjustment(creature);
 
             // Alignment
-            UpdateCreatureAlignment(creature);
+            UpdateCreatureAlignment(creature, alignment);
 
             //Armor Class
             UpdateCreatureArmorClass(creature);
@@ -227,9 +233,9 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             creature.Template = DragonSpecies;
         }
 
-        private void UpdateCreatureAlignment(Creature creature)
+        private void UpdateCreatureAlignment(Creature creature, string presetAlignment)
         {
-            creature.Alignment = alignmentGenerator.Generate(DragonSpecies);
+            creature.Alignment = alignmentGenerator.Generate(DragonSpecies, null, presetAlignment);
         }
 
         private void UpdateCreatureChallengeRating(Creature creature)
@@ -365,8 +371,14 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             creature.HitPoints.RollDefaultTotal(dice);
         }
 
-        public async Task<Creature> ApplyToAsync(Creature creature)
+        public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, string type = null, string challengeRating = null, string alignment = null)
         {
+            var dragonAlignments = collectionSelector.SelectFrom(TableNameConstants.Collection.AlignmentGroups, DragonSpecies + GroupConstants.Exploded);
+            var compatibility = IsCompatible(creature.Type.AllTypes, dragonAlignments, creature.ChallengeRating, type, challengeRating, alignment);
+
+            if (!compatibility.Compatible)
+                throw new InvalidCreatureException(compatibility.Reason, asCharacter, creature.Name, DragonSpecies, type, challengeRating, alignment);
+
             var tasks = new List<Task>();
 
             // Template
@@ -394,7 +406,7 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             tasks.Add(levelAdjustmentTask);
 
             // Alignment
-            var alignmentTask = Task.Run(() => UpdateCreatureAlignment(creature));
+            var alignmentTask = Task.Run(() => UpdateCreatureAlignment(creature, alignment));
             tasks.Add(alignmentTask);
 
             //Armor Class
@@ -449,12 +461,18 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             return creature;
         }
 
-        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, string type = null, string challengeRating = null)
+        public IEnumerable<string> GetCompatibleCreatures(
+            IEnumerable<string> sourceCreatures,
+            bool asCharacter,
+            string type = null,
+            string challengeRating = null,
+            string alignment = null)
         {
             var filteredBaseCreatures = sourceCreatures;
             var allData = creatureDataSelector.SelectAll();
             var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
             var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
+            var dragonAlignments = collectionSelector.SelectFrom(TableNameConstants.Collection.AlignmentGroups, DragonSpecies + GroupConstants.Exploded);
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
@@ -474,8 +492,15 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
                 }
             }
 
+            if (!string.IsNullOrEmpty(alignment))
+            {
+                //INFO: For Half-Dragons, alignments are purely based on Dragon Species, not Base Creature
+                if (!dragonAlignments.Contains(alignment))
+                    return Enumerable.Empty<string>();
+            }
+
             var templateCreatures = filteredBaseCreatures
-                .Where(c => IsCompatible(allTypes[c], allData[c], allHitDice[c], asCharacter, type, challengeRating));
+                .Where(c => IsCompatible(allTypes[c], dragonAlignments, allData[c].ChallengeRating, allHitDice[c], asCharacter, type, challengeRating, alignment));
 
             return templateCreatures;
         }
@@ -492,59 +517,70 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
 
         private bool IsCompatible(
             IEnumerable<string> types,
-            CreatureDataSelection creatureData,
+            IEnumerable<string> dragonAlignments,
+            string creatureChallengeRating,
             double creatureHitDiceQuantity,
             bool asCharacter,
             string type = null,
-            string challengeRating = null)
+            string challengeRating = null,
+            string alignment = null)
         {
-            if (!IsCompatible(types))
-                return false;
+            var creatureType = types.First();
+
+            if (asCharacter && creatureHitDiceQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
+            {
+                creatureChallengeRating = ChallengeRatingConstants.CR0;
+            }
+
+            var compatibility = IsCompatible(types, dragonAlignments, creatureChallengeRating, type, challengeRating, alignment);
+            return compatibility.Compatible;
+        }
+
+        private (bool Compatible, string Reason) IsCompatible(
+            IEnumerable<string> types,
+            IEnumerable<string> dragonAlignments,
+            string creatureChallengeRating,
+            string type = null,
+            string challengeRating = null,
+            string alignment = null)
+        {
+            var compatibility = IsCompatible(types);
+            if (!compatibility.Compatible)
+                return (false, compatibility.Reason);
 
             if (!string.IsNullOrEmpty(type))
             {
                 var updatedTypes = GetPotentialTypes(types);
                 if (!updatedTypes.Contains(type))
-                    return false;
+                    return (false, $"Type filter '{type}' is not valid");
             }
 
             if (!string.IsNullOrEmpty(challengeRating))
             {
-                var cr = GetPotentialChallengeRating(asCharacter, types, creatureHitDiceQuantity, creatureData);
+                var cr = UpdateCreatureChallengeRating(creatureChallengeRating);
                 if (cr != challengeRating)
-                    return false;
+                    return (false, $"CR filter {challengeRating} does not match updated creature CR {cr} (from CR {creatureChallengeRating})");
             }
 
-            return true;
+            if (!string.IsNullOrEmpty(alignment))
+            {
+                //INFO: For Half-Dragons, alignments are purely based on Dragon Species, not Base Creature
+                if (!dragonAlignments.Contains(alignment))
+                    return (false, $"Alignment filter '{alignment}' is not valid");
+            }
+
+            return (true, null);
         }
 
-        private bool IsCompatible(IEnumerable<string> types)
+        private (bool Compatible, string Reason) IsCompatible(IEnumerable<string> types)
         {
             if (types.Contains(CreatureConstants.Types.Subtypes.Incorporeal))
-                return false;
+                return (false, "Creature is incorporeal");
 
             if (!creatureTypes.Contains(types.First()))
-                return false;
+                return (false, $"Type '{types.First()}' is not valid");
 
-            return true;
-        }
-
-        private string GetPotentialChallengeRating(
-            bool asCharacter,
-            IEnumerable<string> types,
-            double creatureQuantity,
-            CreatureDataSelection creatureData)
-        {
-            var creatureType = types.First();
-
-            if (asCharacter && creatureQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
-            {
-                return UpdateCreatureChallengeRating(ChallengeRatingConstants.CR0);
-            }
-
-            var adjustedChallengeRating = UpdateCreatureChallengeRating(creatureData.ChallengeRating);
-
-            return adjustedChallengeRating;
+            return (true, null);
         }
 
         private bool CreatureInRange(

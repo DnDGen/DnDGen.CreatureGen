@@ -18,7 +18,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [SetUp]
         public void Setup()
         {
-            creatureAsserter = new CreatureAsserter();
+            creatureAsserter = GetNewInstanceOf<CreatureAsserter>();
             creatureGenerator = GetNewInstanceOf<ICreatureGenerator>();
         }
 
@@ -236,6 +236,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Deinonychus, CreatureConstants.Templates.FiendishCreature)]
         [TestCase(CreatureConstants.Dog, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(CreatureConstants.Dog_Riding, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(CreatureConstants.Dragon_Black_Young, CreatureConstants.Templates.Zombie)]
         [TestCase(CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.Ghost)]
         [TestCase(CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.HalfCelestial)]
         [TestCase(CreatureConstants.Dragon_Red_Wyrmling, CreatureConstants.Templates.Skeleton)]
@@ -265,6 +266,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Grig_WithFiddle, CreatureConstants.Templates.HalfCelestial)]
         [TestCase(CreatureConstants.Hawk, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(CreatureConstants.Hawk, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(CreatureConstants.Hieracosphinx, CreatureConstants.Templates.Skeleton)]
         [TestCase(CreatureConstants.Hippogriff, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(CreatureConstants.Horse_Heavy, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(CreatureConstants.Horse_Heavy_War, CreatureConstants.Templates.CelestialCreature)]
@@ -308,6 +310,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Orc_Half, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(CreatureConstants.Orc_Half, CreatureConstants.Templates.HalfFiend)]
         [TestCase(CreatureConstants.Orc_Half, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(CreatureConstants.Otyugh, CreatureConstants.Templates.Zombie)]
         [TestCase(CreatureConstants.Owl, CreatureConstants.Templates.CelestialCreature)]
         [TestCase(CreatureConstants.Owl, CreatureConstants.Templates.FiendishCreature)]
         [TestCase(CreatureConstants.Owl_Giant, CreatureConstants.Templates.CelestialCreature)]
@@ -391,8 +394,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         public void CanGenerateTemplate(string creatureName, string template)
         {
             var creature = creatureGenerator.Generate(creatureName, template, false);
-            creatureAsserter.AssertCreature(creature);
+            Assert.That(creature.Name, Is.EqualTo(creatureName));
             Assert.That(creature.Template, Is.EqualTo(template));
+
+            creatureAsserter.AssertCreature(creature);
         }
 
         [TestCase(CreatureConstants.Destrachan)]
@@ -406,6 +411,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             Assert.That(creature.SpecialQualities, Is.Not.Empty);
 
             var specialQualityNames = creature.SpecialQualities.Select(q => q.Name);
+            Assert.That(specialQualityNames, Contains.Item(FeatConstants.SpecialQualities.Blind));
             Assert.That(specialQualityNames, Contains.Item(FeatConstants.SpecialQualities.Blindsight));
             Assert.That(specialQualityNames, Does.Not.Contain(FeatConstants.SpecialQualities.AllAroundVision)
                 .And.Not.Contain(FeatConstants.SpecialQualities.Darkvision)

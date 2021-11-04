@@ -6,20 +6,25 @@ using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Magics;
 using DnDGen.CreatureGen.Skills;
+using DnDGen.CreatureGen.Verifiers;
 using DnDGen.TreasureGen.Items;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace DnDGen.CreatureGen.Tests.Integration
 {
     public class CreatureAsserter
     {
         private readonly IEnumerable<string> skillsWithFoci;
+        private readonly ICreatureVerifier creatureVerifier;
 
-        public CreatureAsserter()
+        public CreatureAsserter(ICreatureVerifier creatureVerifier)
         {
+            this.creatureVerifier = creatureVerifier;
+
             skillsWithFoci = new[]
             {
                 SkillConstants.Craft,
@@ -32,6 +37,20 @@ namespace DnDGen.CreatureGen.Tests.Integration
         public void AssertCreature(Creature creature, string message = null)
         {
             message ??= creature.Summary;
+
+            foreach (var type in creature.Type.AllTypes)
+            {
+                var verifierMessage = new StringBuilder();
+                verifierMessage.AppendLine(message);
+                verifierMessage.AppendLine($"\tAs Character: {false}");
+                verifierMessage.AppendLine($"\tCreature Type: {type}");
+                verifierMessage.AppendLine($"\tCreature Alignment: {creature.Alignment.Full}");
+
+                //INFO: We are not asserting that the challenge rating is valid
+                //Since the CR can be altered by advancement and by generating as a character
+                var isValid = creatureVerifier.VerifyCompatibility(false, creature.Name, creature.Template, type, null, creature.Alignment.Full);
+                Assert.That(isValid, Is.True, verifierMessage.ToString());
+            }
 
             VerifySummary(creature, message);
             VerifyAlignment(creature, message);
@@ -609,6 +628,20 @@ namespace DnDGen.CreatureGen.Tests.Integration
             message ??= creature.Summary;
 
             AssertCreature(creature, message);
+
+            foreach (var type in creature.Type.AllTypes)
+            {
+                var verifierMessage = new StringBuilder();
+                verifierMessage.AppendLine(message);
+                verifierMessage.AppendLine($"\tAs Character: {true}");
+                verifierMessage.AppendLine($"\tCreature Type: {type}");
+                verifierMessage.AppendLine($"\tCreature Alignment: {creature.Alignment.Full}");
+
+                //INFO: We are not asserting that the challenge rating is valid
+                //Since the CR can be altered by advancement and by generating as a character
+                var isValid = creatureVerifier.VerifyCompatibility(true, creature.Name, creature.Template, type, null, creature.Alignment.Full);
+                Assert.That(isValid, Is.True, verifierMessage.ToString());
+            }
 
             var multiHitDieHumanoids = new[]
             {

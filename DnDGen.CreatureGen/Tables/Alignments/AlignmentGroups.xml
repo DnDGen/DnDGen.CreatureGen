@@ -3367,4 +3367,4280 @@
     <name>Lycanthrope, Dire Wolf (Dire Werewolf, Natural)</name>
     <entry>Any</entry>
   </collection>
+  <collection>
+    <name>AasimarExploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>AbolethExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Greater BasiliskExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>AchaieraiExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Adult ArrowhawkExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>AllipExploded</name>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>AndrosphinxExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>AnkhegExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, ColossalExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, GargantuanExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, HugeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, LargeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, MediumExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, SmallExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, TinyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), ColossalExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), GargantuanExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), HugeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), LargeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), MediumExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), SmallExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), TinyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), ColossalExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), GargantuanExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), HugeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), LargeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), MediumExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), SmallExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), TinyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, ColossalExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, GargantuanExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, HugeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, LargeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, MediumExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, SmallExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, TinyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, ColossalExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, GargantuanExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, HugeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, LargeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, MediumExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, SmallExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, TinyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, ColossalExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, GargantuanExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, HugeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, LargeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, MediumExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, SmallExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, TinyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, ColossalExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, GargantuanExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, HugeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, LargeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, MediumExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, SmallExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, TinyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, ColossalExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, GargantuanExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, HugeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, LargeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, MediumExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, SmallExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, TinyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, ColossalExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, GargantuanExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, HugeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, LargeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, MediumExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, SmallExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, TinyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, ColossalExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, GargantuanExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, HugeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, LargeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, MediumExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, SmallExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, TinyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, ColossalExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, GargantuanExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, HugeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, LargeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, MediumExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, SmallExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, TinyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, ColossalExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, GargantuanExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, HugeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, LargeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, MediumExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, SmallExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, TinyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, ColossalExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, GargantuanExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, HugeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, LargeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, MediumExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, SmallExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, TinyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), ColossalExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), GargantuanExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), HugeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), LargeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), MediumExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), SmallExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), TinyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), ColossalExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), GargantuanExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), HugeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), LargeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), MediumExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), SmallExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), TinyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, ColossalExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, GargantuanExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, HugeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, LargeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, MediumExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, SmallExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, TinyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, ColossalExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, GargantuanExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, HugeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, LargeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, MediumExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, SmallExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, TinyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, ColossalExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, GargantuanExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, HugeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, LargeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, MediumExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, SmallExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, TinyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, ColossalExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, GargantuanExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, HugeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, LargeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, MediumExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, SmallExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, TinyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>AnnisExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>ApeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>AraneaExploded</name>
+    <entry>True Neutral</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Assassin VineExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Angel, Astral DevaExploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Neutral Good</entry>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>AthachExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Evil</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>AvoralExploded</name>
+    <entry>Neutral Good</entry>
+  </collection>
+  <collection>
+    <name>AzerExploded</name>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>BabauExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>BaboonExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>BadgerExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Baleen WhaleExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>BalorExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Barbed Devil (Hamatula)Exploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>BarghestExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>BasiliskExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>BatExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Bat SwarmExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Bearded Devil (Barbazu)Exploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>BebilithExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>BehirExploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Neutral Good</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>True Neutral</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>BeholderExploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>Gauth (Lesser Beholder)Exploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>BelkerExploded</name>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Chaotic Evil</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>BisonExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Black BearExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Black PuddingExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Blink DogExploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Neutral Good</entry>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>BoarExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>BodakExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Bone Devil (Osyluth)Exploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>BralaniExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Brown BearExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>BugbearExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>BuletteExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Cachalot WhaleExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Camel, Bactrian (Two-Humped)Exploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Camel, Dromedary (One-Humped)Exploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Carrion CrawlerExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>CatExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>CentaurExploded</name>
+    <entry>Neutral Good</entry>
+    <entry>Lawful Good</entry>
+    <entry>Chaotic Good</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Centipede SwarmExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Chain Devil (Kyton)Exploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Chaos BeastExploded</name>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>CheetahExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Black Dragon head)Exploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Blue Dragon head)Exploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Green Dragon head)Exploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Red Dragon head)Exploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Chimera (White Dragon head)Exploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>ChokerExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>ChuulExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>CloakerExploded</name>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Evil</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>CockatriceExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Constrictor SnakeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>CouatlExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>CriosphinxExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>CrocodileExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Dark NagaExploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>DarkmantleExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>DeinonychusExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>DelverExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>DerroExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Derro (Sane)Exploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>DestrachanExploded</name>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Chaotic Evil</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>DevourerExploded</name>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>DigesterExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Dire ApeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Dire BadgerExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Dire BatExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Dire BearExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Dire BoarExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Dire LionExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Displacer BeastExploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>Displacer Beast Pack LordExploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>DjinniExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Noble DjinniExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>DogExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Dog, RidingExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>DonkeyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>DoppelgangerExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, WyrmlingExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Very YoungExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, YoungExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, JuvenileExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Young AdultExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, AdultExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Mature AdultExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, OldExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Very OldExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, AncientExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, WyrmExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Great WyrmExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, WyrmlingExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very YoungExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, YoungExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, JuvenileExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Young AdultExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, AdultExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Mature AdultExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, OldExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very OldExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, AncientExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, WyrmExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Great WyrmExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, WyrmlingExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very YoungExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, YoungExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, JuvenileExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Young AdultExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AdultExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Mature AdultExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, OldExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very OldExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, AncientExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, WyrmExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Great WyrmExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, WyrmlingExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very YoungExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, YoungExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, JuvenileExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young AdultExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AdultExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Mature AdultExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, OldExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very OldExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, AncientExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, WyrmExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Great WyrmExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmlingExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very YoungExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, YoungExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, JuvenileExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Young AdultExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AdultExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Mature AdultExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, OldExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very OldExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, AncientExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, WyrmExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great WyrmExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, WyrmlingExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very YoungExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, YoungExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, JuvenileExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young AdultExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AdultExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Mature AdultExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, OldExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very OldExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, AncientExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, WyrmExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great WyrmExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, WyrmlingExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very YoungExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, YoungExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, JuvenileExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Young AdultExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, AdultExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Mature AdultExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, OldExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very OldExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, AncientExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, WyrmExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Great WyrmExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, WyrmlingExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very YoungExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, YoungExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, JuvenileExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Young AdultExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, AdultExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Mature AdultExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, OldExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very OldExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, AncientExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, WyrmExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Great WyrmExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmlingExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very YoungExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, YoungExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, JuvenileExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young AdultExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AdultExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Mature AdultExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, OldExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very OldExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, AncientExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, WyrmExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great WyrmExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmlingExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Very YoungExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, YoungExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, JuvenileExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Young AdultExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, AdultExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Mature AdultExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, OldExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Very OldExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, AncientExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, WyrmExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Great WyrmExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Dragon TurtleExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>DragonneExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>DretchExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>DriderExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>DrowExploded</name>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Chaotic Evil</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>DryadExploded</name>
+    <entry>Chaotic Good</entry>
+    <entry>Neutral Good</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>DuergarExploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Chaotic Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Good</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Deep DwarfExploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Hill DwarfExploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>Chaotic Good</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Mountain DwarfExploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>Chaotic Good</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>EagleExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Giant EagleExploded</name>
+    <entry>Neutral Good</entry>
+    <entry>Lawful Good</entry>
+    <entry>Chaotic Good</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>EfreetiExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>ElasmosaurusExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Elder ArrowhawkExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Elder Black PuddingExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, ElderExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, GreaterExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, HugeExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, LargeExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, MediumExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, SmallExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, ElderExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, GreaterExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, HugeExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, LargeExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, MediumExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, SmallExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, ElderExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, GreaterExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, HugeExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, LargeExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, MediumExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, SmallExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, ElderExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, GreaterExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, HugeExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, LargeExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, MediumExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, SmallExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>ElephantExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Aquatic ElfExploded</name>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Good</entry>
+  </collection>
+  <collection>
+    <name>Gray ElfExploded</name>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Good</entry>
+  </collection>
+  <collection>
+    <name>Half-ElfExploded</name>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>High ElfExploded</name>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Good</entry>
+  </collection>
+  <collection>
+    <name>Wild ElfExploded</name>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Good</entry>
+  </collection>
+  <collection>
+    <name>Wood ElfExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>ErinyesExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Ethereal FilcherExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Ethereal MarauderExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>EttercapExploded</name>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Chaotic Evil</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>EttinExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Formian MyrmarchExploded</name>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>Formian QueenExploded</name>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>Formian TaskmasterExploded</name>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>Formian WarriorExploded</name>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>Formian WorkerExploded</name>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>Frost WormExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>GargoyleExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>KapoacinthExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Gelatinous CubeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>GhaeleExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>GhoulExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>GhastExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>LacedonExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Giant Ant, QueenExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Giant Ant, SoldierExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Giant Ant, WorkerExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Giant BeeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Giant Bombardier BeetleExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Giant Constrictor SnakeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Giant CrocodileExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Giant Fire BeetleExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Giant OctopusExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Giant Praying MantisExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Giant Stag BeetleExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Giant WaspExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Cloud GiantExploded</name>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Chaotic Evil</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>Lawful Good</entry>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Fire GiantExploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Chaotic Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Good</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Frost GiantExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Evil</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Hill GiantExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Evil</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Stone GiantExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Stone Giant ElderExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Storm GiantExploded</name>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>Lawful Good</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Gibbering MoutherExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>GirallonExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>GithyankiExploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Evil</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>True Neutral</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>GithzeraiExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>True Neutral</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>GlabrezuExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>GnollExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Forest GnomeExploded</name>
+    <entry>Neutral Good</entry>
+    <entry>Lawful Good</entry>
+    <entry>Chaotic Good</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Rock GnomeExploded</name>
+    <entry>Neutral Good</entry>
+    <entry>Lawful Good</entry>
+    <entry>Chaotic Good</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>SvirfneblinExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>GoblinExploded</name>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Chaotic Evil</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Clay GolemExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Flesh GolemExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Iron GolemExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Stone GolemExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Greater Stone GolemExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>GorgonExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Gray OozeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Gray RenderExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Greater BarghestExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Green HagExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>GrickExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>GriffonExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>GrigExploded</name>
+    <entry>Neutral Good</entry>
+  </collection>
+  <collection>
+    <name>Grig with fiddleExploded</name>
+    <entry>Neutral Good</entry>
+  </collection>
+  <collection>
+    <name>GrimlockExploded</name>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Chaotic Evil</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Guardian NagaExploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Neutral Good</entry>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>GynosphinxExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Half-OrcExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Evil</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>Deep HalflingExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Lightfoot HalflingExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Tallfellow HalflingExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>HarpyExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>HawkExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Hell HoundExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Hellcat (Bezekira)Exploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Hellwasp SwarmExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>HezrouExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>HieracosphinxExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>HippogriffExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>HobgoblinExploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>HowlerExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>HomunculusExploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Horned Devil (Cornugon)Exploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Hound ArchonExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Heavy HorseExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Heavy WarhorseExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Light HorseExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Light WarhorseExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>HumanExploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Five-Headed CryohydraExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Six-Headed CryohydraExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Seven-Headed CryohydraExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Eight-Headed CryohydraExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Nine-Headed CryohydraExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Ten-Headed CryohydraExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Eleven-Headed CryohydraExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Twelve-Headed CryohydraExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Five-Headed HydraExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Six-Headed HydraExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Seven-Headed HydraExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Eight-Headed HydraExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Nine-Headed HydraExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Ten-Headed HydraExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Eleven-Headed HydraExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Twelve-Headed HydraExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Five-Headed PyrohydraExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Six-Headed PyrohydraExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Seven-Headed PyrohydraExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Eight-Headed PyrohydraExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Nine-Headed PyrohydraExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Ten-Headed PyrohydraExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Eleven-Headed PyrohydraExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Twelve-Headed PyrohydraExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>HyenaExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)Exploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>ImpExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Invisible StalkerExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>JanniExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Juvenile ArrowhawkExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>KoboldExploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>KolyarutExploded</name>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>KrakenExploded</name>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Chaotic Evil</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>KrensharExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Kuo-toaExploded</name>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Chaotic Evil</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>LamiaExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>LammasuExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Lantern ArchonExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>LemureExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>LeonalExploded</name>
+    <entry>Neutral Good</entry>
+  </collection>
+  <collection>
+    <name>LeopardExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>LillendExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>LionExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>LizardExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>LizardfolkExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>LocathahExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Locust SwarmExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>MagminExploded</name>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Manta RayExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>ManticoreExploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>MarutExploded</name>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>MarilithExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>MedusaExploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>MegaraptorExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Air MephitExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Dust MephitExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Earth MephitExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Fire MephitExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Ice MephitExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Magma MephitExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Ooze MephitExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Salt MephitExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Steam MephitExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Water MephitExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>MerfolkExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>MerrowExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>MimicExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Mind Flayer (Illithid)Exploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>MinotaurExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>MohrgExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Monitor LizardExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>MonkeyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, ColossalExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, GargantuanExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, HugeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, LargeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, MediumExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, SmallExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, TinyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, ColossalExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, GargantuanExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, HugeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, LargeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, MediumExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, SmallExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, TinyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, ColossalExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, GargantuanExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, HugeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, LargeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, MediumExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, SmallExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, TinyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, ColossalExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, GargantuanExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, HugeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, LargeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, MediumExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, SmallExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, TinyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>MuleExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>MummyExploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>NalfeshneeExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Nessian WarhoundExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Night HagExploded</name>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>NightcrawlerExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>NightmareExploded</name>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Nightmare, CauchemarExploded</name>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>NightwalkerExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>NightwingExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>NixieExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>NymphExploded</name>
+    <entry>Chaotic Good</entry>
+    <entry>Neutral Good</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Ochre JellyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>OctopusExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>OgreExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Ogre MageExploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>OrcExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Evil</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Orca WhaleExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>OtyughExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>OwlExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Giant OwlExploded</name>
+    <entry>Neutral Good</entry>
+    <entry>Lawful Good</entry>
+    <entry>Chaotic Good</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>OwlbearExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>PegasusExploded</name>
+    <entry>Chaotic Good</entry>
+    <entry>Neutral Good</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Phantom FungusExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Phase SpiderExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>PhasmExploded</name>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Evil</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Pit FiendExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Angel, PlanetarExploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Neutral Good</entry>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>PixieExploded</name>
+    <entry>Neutral Good</entry>
+  </collection>
+  <collection>
+    <name>Pixie with Irresistible danceExploded</name>
+    <entry>Neutral Good</entry>
+  </collection>
+  <collection>
+    <name>Polar BearExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>PonyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>WarponyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>PorpoiseExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>PseudodragonExploded</name>
+    <entry>Neutral Good</entry>
+  </collection>
+  <collection>
+    <name>Purple WormExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>QuasitExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>RakshasaExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>RastExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>RatExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Dire RatExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Rat SwarmExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>RavenExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>RavidExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Razor BoarExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>RemorhazExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>RetrieverExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>RhinocerasExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>RocExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>RoperExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Rust MonsterExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>SahuaginExploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>Sahuagin MutantExploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>MalentiExploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>Average SalamanderExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>True Neutral</entry>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>Flamebrother SalamanderExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>True Neutral</entry>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>Noble SalamanderExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>True Neutral</entry>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>SatyrExploded</name>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Evil</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Satyr with pipesExploded</name>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Evil</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>ScorpionfolkExploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>ScragExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Sea CatExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Sea HagExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>ShadowExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Greater ShadowExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Shadow MastiffExploded</name>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Shambling MoundExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Dire SharkExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Shark, HugeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Shark, LargeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Shark, MediumExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Shield GuardianExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Shocker LizardExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>ShriekerExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>SkumExploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>Red SlaadExploded</name>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Evil</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Blue SlaadExploded</name>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Evil</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Green SlaadExploded</name>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Evil</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Gray SlaadExploded</name>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Evil</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Death SlaadExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Angel, SolarExploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Neutral Good</entry>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>SpectreExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Spider EaterExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Spider SwarmExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Spirit NagaExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>SquidExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Giant SquidExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>StirgeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>SuccubusExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>TarrasqueExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>TendriculosExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>ThoqquaExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>TieflingExploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Evil</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>True Neutral</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>TigerExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Dire TigerExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>TitanExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>ToadExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Adult TojanidaExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Juvenile TojanidaExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Elder TojanidaExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>TreantExploded</name>
+    <entry>Neutral Good</entry>
+    <entry>Lawful Good</entry>
+    <entry>Chaotic Good</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>TriceratopsExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>TritonExploded</name>
+    <entry>Neutral Good</entry>
+    <entry>Lawful Good</entry>
+    <entry>Chaotic Good</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>TroglodyteExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>TrollExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Truly Horrid Umber HulkExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Trumpet ArchonExploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>TyrannosaurusExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Umber HulkExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>UnicornExploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Vampire SpawnExploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>VargouilleExploded</name>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Violet FungusExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Viper Snake, HugeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Viper Snake, LargeExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Viper Snake, MediumExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Viper Snake, SmallExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Viper Snake, TinyExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>VrockExploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Water NagaExploded</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>WeaselExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Dire WeaselExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>WightExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Will-O'-WispExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Winter WolfExploded</name>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Chaotic Evil</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>WolfExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Dire WolfExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>WolverineExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>Dire WolverineExploded</name>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>WorgExploded</name>
+    <entry>Neutral Evil</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Chaotic Evil</entry>
+    <entry>True Neutral</entry>
+  </collection>
+  <collection>
+    <name>WraithExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Dread WraithExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>WyvernExploded</name>
+    <entry>True Neutral</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Neutral Good</entry>
+  </collection>
+  <collection>
+    <name>XillExploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Average XornExploded</name>
+    <entry>True Neutral</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Neutral Good</entry>
+  </collection>
+  <collection>
+    <name>Elder XornExploded</name>
+    <entry>True Neutral</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Neutral Good</entry>
+  </collection>
+  <collection>
+    <name>Minor XornExploded</name>
+    <entry>True Neutral</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Neutral Good</entry>
+  </collection>
+  <collection>
+    <name>Yeth HoundExploded</name>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>YrthakExploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Neutral Good</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>True Neutral</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti PurebloodExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head)Exploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)Exploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)Exploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)Exploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti AbominationExploded</name>
+    <entry>Chaotic Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>ZelekhutExploded</name>
+    <entry>Lawful Neutral</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Black)Exploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Blue)Exploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Green)Exploded</name>
+    <entry>Lawful Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Red)Exploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (White)Exploded</name>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Brass)Exploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Bronze)Exploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Copper)Exploded</name>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Gold)Exploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Silver)Exploded</name>
+    <entry>Lawful Good</entry>
+  </collection>
+  <collection>
+    <name>Celestial CreatureExploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Neutral Good</entry>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Half-CelestialExploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Neutral Good</entry>
+    <entry>Chaotic Good</entry>
+  </collection>
+  <collection>
+    <name>Fiendish CreatureExploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-FiendExploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>LichExploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>VampireExploded</name>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>SkeletonExploded</name>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>ZombieExploded</name>
+    <entry>Neutral Evil</entry>
+  </collection>
+  <collection>
+    <name>GhostExploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Exploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Brown Bear (Werebear, Afflicted)Exploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Brown Bear (Werebear, Natural)Exploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Boar (Wereboar, Afflicted)Exploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Boar (Wereboar, Natural)Exploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)Exploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)Exploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Rat (Wererat, Afflicted)Exploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Rat (Wererat, Natural)Exploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Tiger (Weretiger, Afflicted)Exploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Tiger (Weretiger, Natural)Exploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Wolf (Werewolf, Afflicted)Exploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Wolf (Werewolf, Natural)Exploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)Exploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Wolf (Dire Werewolf, Natural)Exploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Black)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Blue)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Green)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Red)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (White)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Brass)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Bronze)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Copper)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Gold)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Silver)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Celestial CreatureAllowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Half-CelestialAllowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+  </collection>
+  <collection>
+    <name>Fiendish CreatureAllowed Input</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Half-FiendAllowed Input</name>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>LichAllowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>VampireAllowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>SkeletonAllowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>ZombieAllowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>GhostAllowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Brown Bear (Werebear, Afflicted)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Brown Bear (Werebear, Natural)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Boar (Wereboar, Afflicted)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Boar (Wereboar, Natural)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Rat (Wererat, Afflicted)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Rat (Wererat, Natural)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Tiger (Weretiger, Afflicted)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Tiger (Weretiger, Natural)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Wolf (Werewolf, Afflicted)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Wolf (Werewolf, Natural)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Wolf (Dire Werewolf, Natural)Allowed Input</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
 </collections>
