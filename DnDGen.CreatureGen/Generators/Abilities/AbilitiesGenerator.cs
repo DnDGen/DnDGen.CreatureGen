@@ -19,10 +19,9 @@ namespace DnDGen.CreatureGen.Generators.Abilities
             this.dice = dice;
         }
 
-        public Dictionary<string, Ability> GenerateFor(string creatureName)
+        public Dictionary<string, Ability> GenerateFor(string creatureName, AbilityRandomizer randomizer)
         {
             var abilitySelections = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, creatureName);
-
             var allAbilities = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, GroupConstants.All);
             var abilities = new Dictionary<string, Ability>();
 
@@ -34,8 +33,30 @@ namespace DnDGen.CreatureGen.Generators.Abilities
             foreach (var selection in abilitySelections)
             {
                 abilities[selection.Type].RacialAdjustment = selection.Amount;
-                //This gives you always-average scores as base values
-                abilities[selection.Type].BaseScore = dice.Roll("1d2+9").AsSum();
+
+                if (randomizer.AbilityAdvancements.ContainsKey(selection.Type))
+                {
+                    abilities[selection.Type].AdvancementAdjustment = randomizer.AbilityAdvancements[selection.Type];
+                }
+
+                if (randomizer.SetRolls.ContainsKey(selection.Type))
+                {
+                    abilities[selection.Type].BaseScore = randomizer.SetRolls[selection.Type];
+                }
+                else
+                {
+                    abilities[selection.Type].BaseScore = dice.Roll(randomizer.Roll).AsSum();
+                }
+            }
+
+            if (randomizer.PriorityAbility != null && abilities.ContainsKey(randomizer.PriorityAbility))
+            {
+                var maxAbilityScore = abilities.Values.Max(a => a.BaseScore);
+                var maxAbility = abilities.Values.First(a => a.BaseScore == maxAbilityScore);
+                var originalAbilityScore = abilities[randomizer.PriorityAbility].BaseScore;
+
+                abilities[randomizer.PriorityAbility].BaseScore = maxAbilityScore;
+                maxAbility.BaseScore = originalAbilityScore;
             }
 
             var missingAbilities = allAbilities.Select(a => a.Type).Except(abilitySelections.Select(a => a.Type));
