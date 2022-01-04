@@ -20,6 +20,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         private IAbilitiesGenerator abilitiesGenerator;
         private List<TypeAndAmountSelection> abilitySelections;
         private Mock<PartialRoll> mockPartialTotal;
+        private AbilityRandomizer randomizer;
 
         [SetUp]
         public void Setup()
@@ -27,6 +28,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
             mockDice = new Mock<Dice>();
             abilitiesGenerator = new AbilitiesGenerator(mockTypeAndAmountSelector.Object, mockDice.Object);
+            randomizer = new AbilityRandomizer();
 
             abilitySelections = new List<TypeAndAmountSelection>();
 
@@ -38,15 +40,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, GroupConstants.All)).Returns(abilitySelections);
 
             mockPartialTotal = new Mock<PartialRoll>();
-            mockDice.Setup(d => d.Roll("1d2+9")).Returns(mockPartialTotal.Object);
+            mockDice.Setup(d => d.Roll("my roll")).Returns(mockPartialTotal.Object);
 
             mockPartialTotal.SetupSequence(d => d.AsSum<int>()).Returns(42).Returns(600).Returns(1337);
+
+            randomizer.Roll = "my roll";
         }
 
         [Test]
-        public void GetAbilitiesFromSelections()
+        public void GenerateFor_GetAbilitiesFromSelections()
         {
-            var abilities = abilitiesGenerator.GenerateFor("creature name");
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
             Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
@@ -56,9 +60,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         }
 
         [Test]
-        public void RollBaseScoresForAbilities()
+        public void GenerateFor_RollBaseScoresForAbilities()
         {
-            var abilities = abilitiesGenerator.GenerateFor("creature name");
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -77,7 +81,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         }
 
         [Test]
-        public void MissingAbilitiesHaveNoScore()
+        public void GenerateFor_MissingAbilitiesHaveNoScore()
         {
             var allAbilities = new[]
             {
@@ -90,7 +94,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
 
             abilitySelections.RemoveAt(1);
 
-            var abilities = abilitiesGenerator.GenerateFor("creature name");
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
@@ -104,6 +108,164 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
             Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(600)); //INFO: 600 instead of 1337 because we never rolled for the ability without a score
             Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].HasScore, Is.True);
+        }
+
+        [Test]
+        public void GenerateFor_ApplyAbilityAdvancement()
+        {
+            randomizer.AbilityAdvancements["other ability"] = 1336;
+
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer);
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].AdvancementAdjustment, Is.Zero);
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(9266));
+            Assert.That(abilities["other ability"].AdvancementAdjustment, Is.EqualTo(1336));
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].AdvancementAdjustment, Is.Zero);
+        }
+
+        [Test]
+        public void GenerateFor_ApplyAbilityAdvancements()
+        {
+            randomizer.AbilityAdvancements["ability"] = 1336;
+            randomizer.AbilityAdvancements["other ability"] = -96;
+
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer);
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].AdvancementAdjustment, Is.EqualTo(1336));
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(-96));
+            Assert.That(abilities["other ability"].AdvancementAdjustment, Is.EqualTo(9266));
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].AdvancementAdjustment, Is.Zero);
+        }
+
+        [Test]
+        public void GenerateFor_ApplySetAbilityScore()
+        {
+            randomizer.SetRolls["other ability"] = 1336;
+
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer);
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].FullScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].HasScore, Is.True);
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(1336));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(9266));
+            Assert.That(abilities["other ability"].FullScore, Is.EqualTo(1336 + 9266));
+            Assert.That(abilities["other ability"].HasScore, Is.True);
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(1337));
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].HasScore, Is.True);
+        }
+
+        [Test]
+        public void GenerateFor_ApplySetAbilityScores()
+        {
+            randomizer.SetRolls["ability"] = 1336;
+            randomizer.SetRolls["other ability"] = 96;
+
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer);
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].BaseScore, Is.EqualTo(1336));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].FullScore, Is.EqualTo(1336));
+            Assert.That(abilities["ability"].HasScore, Is.True);
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(96));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(9266));
+            Assert.That(abilities["other ability"].FullScore, Is.EqualTo(96 + 9266));
+            Assert.That(abilities["other ability"].HasScore, Is.True);
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(1337));
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].HasScore, Is.True);
+        }
+
+        [Test]
+        public void GenerateFor_ApplyPriorityAbility()
+        {
+            randomizer.PriorityAbility = "ability";
+
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer);
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].BaseScore, Is.EqualTo(1337));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].FullScore, Is.EqualTo(1337));
+            Assert.That(abilities["ability"].HasScore, Is.True);
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(600));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(9266));
+            Assert.That(abilities["other ability"].FullScore, Is.EqualTo(9866));
+            Assert.That(abilities["other ability"].HasScore, Is.True);
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(42));
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].HasScore, Is.True);
+        }
+
+        [Test]
+        public void GenerateFor_ApplyPriorityAbility_PriorityIsHighest()
+        {
+            randomizer.PriorityAbility = "last ability";
+
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer);
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].FullScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].HasScore, Is.True);
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(600));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(9266));
+            Assert.That(abilities["other ability"].FullScore, Is.EqualTo(9866));
+            Assert.That(abilities["other ability"].HasScore, Is.True);
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(1337));
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
+            Assert.That(abilities["last ability"].HasScore, Is.True);
+        }
+
+        [Test]
+        public void GenerateFor_ApplyAllModifiers()
+        {
+            randomizer.AbilityAdvancements["ability"] = 1336;
+            randomizer.AbilityAdvancements["other ability"] = -96;
+            randomizer.SetRolls["last ability"] = 783;
+            randomizer.SetRolls["other ability"] = 8245;
+            randomizer.PriorityAbility = "last ability";
+
+            var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer);
+            Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
+            Assert.That(abilities["ability"].BaseScore, Is.EqualTo(42));
+            Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
+            Assert.That(abilities["ability"].AdvancementAdjustment, Is.EqualTo(1336));
+            Assert.That(abilities["ability"].FullScore, Is.EqualTo(42 + 1336));
+            Assert.That(abilities["ability"].HasScore, Is.True);
+            Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
+            Assert.That(abilities["other ability"].BaseScore, Is.EqualTo(783));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(9266));
+            Assert.That(abilities["other ability"].AdvancementAdjustment, Is.EqualTo(-96));
+            Assert.That(abilities["other ability"].FullScore, Is.EqualTo(783 + 9266 - 96));
+            Assert.That(abilities["other ability"].HasScore, Is.True);
+            Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(8245));
+            Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
+            Assert.That(abilities["last ability"].AdvancementAdjustment, Is.Zero);
             Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
             Assert.That(abilities["last ability"].HasScore, Is.True);
         }
