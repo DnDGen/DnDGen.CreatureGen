@@ -1,5 +1,7 @@
-﻿using DnDGen.CreatureGen.Creatures;
+﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Feats;
+using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
@@ -459,6 +461,83 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
 
             var skillNames = nightcrawler.Skills.Select(q => q.Name);
             Assert.That(skillNames, Contains.Item(SkillConstants.Concentration));
+        }
+
+        [TestCase(AbilityConstants.RandomizerRolls.Best, 16, 18)]
+        [TestCase(AbilityConstants.RandomizerRolls.BestOfFour, 3, 18)]
+        [TestCase(AbilityConstants.RandomizerRolls.Default, 10, 11)]
+        [TestCase(AbilityConstants.RandomizerRolls.Good, 12, 15)]
+        [TestCase(AbilityConstants.RandomizerRolls.OnesAsSixes, 6, 18)]
+        [TestCase(AbilityConstants.RandomizerRolls.Poor, 4, 9)]
+        [TestCase(AbilityConstants.RandomizerRolls.Raw, 3, 18)]
+        [TestCase(AbilityConstants.RandomizerRolls.Wild, 2, 20)]
+        [TestCase("42d600+9266", 42 + 9266, 42 * 600 + 9266)]
+        public void Generate_HumanWithAbilityRandomizer(string roll, int lower, int upper)
+        {
+            var randomizer = new AbilityRandomizer();
+            randomizer.Roll = roll;
+
+            var creature = creatureGenerator.Generate(CreatureConstants.Human, CreatureConstants.Templates.None, false, randomizer);
+            creatureAsserter.AssertCreature(creature);
+            Assert.That(creature.Abilities.Values.Select(v => v.BaseScore), Is.All.InRange(lower, upper));
+        }
+
+        [Test]
+        public void Generate_HumanWithSetRolls()
+        {
+            var randomizer = new AbilityRandomizer();
+            randomizer.SetRolls[AbilityConstants.Charisma] = 9266;
+            randomizer.SetRolls[AbilityConstants.Constitution] = 90210;
+            randomizer.SetRolls[AbilityConstants.Dexterity] = 42;
+            randomizer.SetRolls[AbilityConstants.Intelligence] = 600;
+            randomizer.SetRolls[AbilityConstants.Strength] = 1337;
+            randomizer.SetRolls[AbilityConstants.Wisdom] = 1336;
+
+            var creature = creatureGenerator.Generate(CreatureConstants.Human, CreatureConstants.Templates.None, false, randomizer);
+            creatureAsserter.AssertCreature(creature);
+            Assert.That(creature.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(9266));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(90210));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(42));
+            Assert.That(creature.Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(600));
+            Assert.That(creature.Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(1337));
+            Assert.That(creature.Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(1336));
+        }
+
+        [Test]
+        public void Generate_HumanWithAdvancementBonuses()
+        {
+            var randomizer = new AbilityRandomizer();
+            randomizer.AbilityAdvancements[AbilityConstants.Charisma] = 9266;
+            randomizer.AbilityAdvancements[AbilityConstants.Constitution] = 90210;
+            randomizer.AbilityAdvancements[AbilityConstants.Dexterity] = 42;
+            randomizer.AbilityAdvancements[AbilityConstants.Intelligence] = 600;
+            randomizer.AbilityAdvancements[AbilityConstants.Strength] = 1337;
+            randomizer.AbilityAdvancements[AbilityConstants.Wisdom] = 1336;
+
+            var creature = creatureGenerator.Generate(CreatureConstants.Human, CreatureConstants.Templates.None, false, randomizer);
+            creatureAsserter.AssertCreature(creature);
+            Assert.That(creature.Abilities[AbilityConstants.Charisma].AdvancementAdjustment, Is.EqualTo(9266));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment, Is.EqualTo(90210));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].AdvancementAdjustment, Is.EqualTo(42));
+            Assert.That(creature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment, Is.EqualTo(600));
+            Assert.That(creature.Abilities[AbilityConstants.Strength].AdvancementAdjustment, Is.EqualTo(1337));
+            Assert.That(creature.Abilities[AbilityConstants.Wisdom].AdvancementAdjustment, Is.EqualTo(1336));
+        }
+
+        [TestCase(AbilityConstants.Charisma)]
+        [TestCase(AbilityConstants.Constitution)]
+        [TestCase(AbilityConstants.Dexterity)]
+        [TestCase(AbilityConstants.Intelligence)]
+        [TestCase(AbilityConstants.Strength)]
+        [TestCase(AbilityConstants.Wisdom)]
+        public void Generate_HumanWithPriorityAbility(string ability)
+        {
+            var randomizer = new AbilityRandomizer();
+            randomizer.PriorityAbility = ability;
+
+            var creature = creatureGenerator.Generate(CreatureConstants.Human, CreatureConstants.Templates.None, false, randomizer);
+            creatureAsserter.AssertCreature(creature);
+            Assert.That(creature.Abilities.Values.Max(v => v.BaseScore), Is.EqualTo(creature.Abilities[ability].BaseScore));
         }
     }
 }

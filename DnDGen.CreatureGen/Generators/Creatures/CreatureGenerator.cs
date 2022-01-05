@@ -209,6 +209,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             creature.NumberOfHands = creatureData.NumberOfHands;
 
             creature.Type = GetCreatureType(creatureName);
+            abilityRandomizer ??= new AbilityRandomizer { Roll = AbilityConstants.RandomizerRolls.Default };
             creature.Abilities = abilitiesGenerator.GenerateFor(creatureName, abilityRandomizer);
 
             if (advancementSelector.IsAdvanced(creatureName, filters?.ChallengeRating))
