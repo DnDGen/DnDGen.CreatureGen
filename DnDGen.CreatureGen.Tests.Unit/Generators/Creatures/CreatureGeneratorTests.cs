@@ -212,7 +212,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, null, It.Is<RandomFilters>(f => f.Type == typeFilter
                 && f.ChallengeRating == crFilter
-                && f.Alignment == alignmentFilter))).Returns(true);
+                && f.Alignment == alignmentFilter
+                && f.Template == null))).Returns(true);
             mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, null, It.Is<RandomFilters>(f => f.Type == typeFilter
                 && f.ChallengeRating == crFilter
                 && f.Alignment == alignmentFilter
