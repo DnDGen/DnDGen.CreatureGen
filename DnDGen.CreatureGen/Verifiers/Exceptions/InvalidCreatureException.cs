@@ -16,14 +16,27 @@ namespace DnDGen.CreatureGen.Verifiers.Exceptions
         private readonly string reason;
 
         public InvalidCreatureException(string reason, bool asCharacter, string creature = null, RandomFilters filters = null)
+            : this(reason, asCharacter, creature, filters?.Template, filters?.Type, filters?.ChallengeRating, filters?.Alignment)
+        {
+
+        }
+
+        public InvalidCreatureException(
+            string reason, 
+            bool asCharacter, 
+            string creature = null, 
+            string template = null,
+            string type = null, 
+            string challengeRating = null, 
+            string alignment = null)
         {
             this.reason = reason;
             this.asCharacter = asCharacter;
             this.creature = creature;
-            template = filters?.Template;
-            type = filters?.Type;
-            challengeRating = filters?.ChallengeRating;
-            alignment = filters?.Alignment;
+            this.template = template;
+            this.type = type;
+            this.challengeRating = challengeRating;
+            this.alignment = alignment;
         }
 
         public override string Message
