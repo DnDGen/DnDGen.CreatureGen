@@ -72,7 +72,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             };
         }
 
-        public Creature ApplyTo(Creature creature, bool asCharacter, string type = null, string challengeRating = null, string alignment = null)
+        public Creature ApplyTo(Creature creature, bool asCharacter, RandomFilters filters = null)
         {
             var animalCreatureType = new CreatureType { Name = CreatureConstants.Types.Animal };
             var animalData = creatureDataSelector.SelectFor(AnimalSpecies);
@@ -84,13 +84,11 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
                 creature.ChallengeRating,
                 animalData.Size,
                 animalHitDice,
-                type,
-                challengeRating,
-                alignment);
+                filters);
 
             if (!compatibility.Compatible)
             {
-                throw new InvalidCreatureException(compatibility.Reason, asCharacter, creature.Name, LycanthropeSpecies, type, challengeRating, alignment);
+                throw new InvalidCreatureException(compatibility.Reason, asCharacter, creature.Name, LycanthropeSpecies, filters?.Type, filters?.ChallengeRating, filters?.Alignment);
             }
 
             // Template
@@ -570,7 +568,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             creature.Template = LycanthropeSpecies;
         }
 
-        public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, string type = null, string challengeRating = null, string alignment = null)
+        public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, RandomFilters filters = null)
         {
             var animalCreatureType = new CreatureType { Name = CreatureConstants.Types.Animal };
             var animalData = creatureDataSelector.SelectFor(AnimalSpecies);
@@ -582,9 +580,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
                 creature.ChallengeRating,
                 animalData.Size,
                 animalHitDice,
-                type,
-                challengeRating,
-                alignment);
+                filters);
 
             if (!compatibility.Compatible)
             {
@@ -698,12 +694,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             return creature;
         }
 
-        public IEnumerable<string> GetCompatibleCreatures(
-            IEnumerable<string> sourceCreatures,
-            bool asCharacter,
-            string type = null,
-            string challengeRating = null,
-            string alignment = null)
+        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, RandomFilters filters = null)
         {
             var filteredBaseCreatures = sourceCreatures;
             var allData = creatureDataSelector.SelectAll();
@@ -773,9 +764,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             double creatureHitDiceQuantity,
             double animalHitDiceQuantity,
             bool asCharacter,
-            string type = null,
-            string challengeRating = null,
-            string alignment = null)
+            RandomFilters filters)
         {
             var creatureType = types.First();
 
@@ -784,7 +773,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
                 creatureChallengeRating = ChallengeRatingConstants.CR0;
             }
 
-            var compatibility = IsCompatible(types, alignments, creatureSize, creatureChallengeRating, animalSize, animalHitDiceQuantity, type, challengeRating, alignment);
+            var compatibility = IsCompatible(types, alignments, creatureSize, creatureChallengeRating, animalSize, animalHitDiceQuantity, filters);
             return compatibility.Compatible;
         }
 
@@ -795,32 +784,30 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             string creatureChallengeRating,
             string animalSize,
             double animalHitDiceQuantity,
-            string type = null,
-            string challengeRating = null,
-            string alignment = null)
+            RandomFilters filters)
         {
             var compatibility = IsCompatible(types, creatureSize, animalSize);
             if (!compatibility.Compatible)
                 return (false, compatibility.Reason);
 
-            if (!string.IsNullOrEmpty(type))
+            if (!string.IsNullOrEmpty(filters?.Type))
             {
                 var updatedTypes = GetPotentialTypes(types);
-                if (!updatedTypes.Contains(type))
-                    return (false, $"Type filter '{type}' is not valid");
+                if (!updatedTypes.Contains(filters.Type))
+                    return (false, $"Type filter '{filters.Type}' is not valid");
             }
 
-            if (!string.IsNullOrEmpty(challengeRating))
+            if (!string.IsNullOrEmpty(filters?.ChallengeRating))
             {
                 var cr = UpdateCreatureChallengeRating(creatureChallengeRating, animalHitDiceQuantity);
-                if (cr != challengeRating)
-                    return (false, $"CR filter {challengeRating} does not match updated creature CR {cr} (from CR {creatureChallengeRating})");
+                if (cr != filters.ChallengeRating)
+                    return (false, $"CR filter {filters.ChallengeRating} does not match updated creature CR {cr} (from CR {creatureChallengeRating})");
             }
 
-            if (!string.IsNullOrEmpty(alignment))
+            if (!string.IsNullOrEmpty(filters?.Alignment))
             {
-                if (!alignments.Contains(alignment))
-                    return (false, $"Alignment filter '{alignment}' is not valid");
+                if (!alignments.Contains(filters.Alignment))
+                    return (false, $"Alignment filter '{filters.Alignment}' is not valid");
             }
 
             return (true, null);
