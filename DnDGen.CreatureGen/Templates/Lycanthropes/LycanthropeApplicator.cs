@@ -584,7 +584,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
 
             if (!compatibility.Compatible)
             {
-                throw new InvalidCreatureException(compatibility.Reason, asCharacter, creature.Name, LycanthropeSpecies, type, challengeRating, alignment);
+                throw new InvalidCreatureException(compatibility.Reason, asCharacter, creature.Name, LycanthropeSpecies, filters?.Type, filters?.ChallengeRating, filters?.Alignment);
             }
 
             var tasks = new List<Task>();
@@ -702,29 +702,29 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
             var allAlignments = collectionSelector.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups);
 
-            if (!string.IsNullOrEmpty(challengeRating))
+            if (!string.IsNullOrEmpty(filters?.ChallengeRating))
             {
                 filteredBaseCreatures = filteredBaseCreatures
-                    .Where(c => CreatureInRange(allData[c].ChallengeRating, challengeRating, asCharacter, allHitDice[c], allTypes[c]));
+                    .Where(c => CreatureInRange(allData[c].ChallengeRating, filters.ChallengeRating, asCharacter, allHitDice[c], allTypes[c]));
             }
 
-            if (!string.IsNullOrEmpty(type))
+            if (!string.IsNullOrEmpty(filters?.Type))
             {
                 //INFO: Unless this type is added by a template, it must already exist on the base creature
                 //So first, we check to see if the template could return this type for a human
                 //If not, then we can filter the base creatures down to ones that already have this type
                 var templateTypes = GetPotentialTypes(allTypes[CreatureConstants.Human]).Except(allTypes[CreatureConstants.Human]);
-                if (!templateTypes.Contains(type))
+                if (!templateTypes.Contains(filters.Type))
                 {
-                    filteredBaseCreatures = filteredBaseCreatures.Where(c => allTypes[c].Contains(type));
+                    filteredBaseCreatures = filteredBaseCreatures.Where(c => allTypes[c].Contains(filters.Type));
                 }
             }
 
-            if (!string.IsNullOrEmpty(alignment))
+            if (!string.IsNullOrEmpty(filters?.Alignment))
             {
                 //INFO: Lycanthropes do not change the base creature's alignment
                 //So as long as the base creature's alignment fits, we are good
-                var alignmentCreatures = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureGroups, alignment);
+                var alignmentCreatures = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureGroups, filters.Alignment);
                 filteredBaseCreatures = filteredBaseCreatures.Intersect(alignmentCreatures);
             }
 
@@ -738,9 +738,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
                     allHitDice[c],
                     allHitDice[AnimalSpecies],
                     asCharacter,
-                    type,
-                    challengeRating,
-                    alignment));
+                    filters));
 
             return templateCreatures;
         }
