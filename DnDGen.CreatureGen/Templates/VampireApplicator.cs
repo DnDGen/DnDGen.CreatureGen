@@ -52,7 +52,7 @@ namespace DnDGen.CreatureGen.Templates
             };
         }
 
-        public Creature ApplyTo(Creature creature, bool asCharacter, RandomFilters filters = null)
+        public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
             var compatibility = IsCompatible(
                 creature.Type.AllTypes,
@@ -304,7 +304,7 @@ namespace DnDGen.CreatureGen.Templates
             creature.Template = CreatureConstants.Templates.Vampire;
         }
 
-        public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, RandomFilters filters = null)
+        public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, Filters filters = null)
         {
             var compatibility = IsCompatible(
                 creature.Type.AllTypes,
@@ -389,7 +389,7 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, RandomFilters filters = null)
+        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
         {
             var filteredBaseCreatures = sourceCreatures;
             var allData = creatureDataSelector.SelectAll();
@@ -446,7 +446,7 @@ namespace DnDGen.CreatureGen.Templates
             CreatureDataSelection creatureData,
             double creatureHitDiceQuantity,
             bool asCharacter,
-            RandomFilters filters)
+            Filters filters)
         {
             var creatureType = types.First();
             var creatureChallengeRating = creatureData.ChallengeRating;
@@ -466,7 +466,7 @@ namespace DnDGen.CreatureGen.Templates
             string creatureChallengeRating,
             int? levelAdjustment,
             double creatureHitDiceQuantity,
-            RandomFilters filters)
+            Filters filters)
         {
             var compatibility = IsCompatible(types, levelAdjustment, creatureHitDiceQuantity);
             if (!compatibility.Compatible)

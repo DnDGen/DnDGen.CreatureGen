@@ -84,7 +84,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         public Creature Generate(string creatureName, string template, bool asCharacter, AbilityRandomizer abilityRandomizer = null) 
             => Generate(creatureName, template, asCharacter, abilityRandomizer, null);
 
-        public (string Creature, string Template) GenerateRandomName(bool asCharacter, RandomFilters filters = null)
+        public (string Creature, string Template) GenerateRandomName(bool asCharacter, Filters filters = null)
         {
             var compatible = creatureVerifier.VerifyCompatibility(asCharacter, null, filters);
             if (!compatible)
@@ -110,7 +110,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return (randomCreature, filters.Template);
         }
 
-        private IEnumerable<string> GetCreaturesOfTemplate(string template, IEnumerable<string> creatureGroup, bool asCharacter, RandomFilters filters)
+        private IEnumerable<string> GetCreaturesOfTemplate(string template, IEnumerable<string> creatureGroup, bool asCharacter, Filters filters)
         {
             var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
             var creatures = templateApplicator.GetCompatibleCreatures(creatureGroup, asCharacter, filters);
@@ -118,7 +118,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return creatures;
         }
 
-        public Creature GenerateRandom(bool asCharacter, AbilityRandomizer abilityRandomizer, RandomFilters filters = null)
+        public Creature GenerateRandom(bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters = null)
         {
             var randomCreature = GenerateRandomName(asCharacter, filters);
             var creature = Generate(randomCreature.Creature, randomCreature.Template, asCharacter, abilityRandomizer, filters);
@@ -126,7 +126,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return creature;
         }
 
-        private IEnumerable<string> GetValidCreatures(IEnumerable<string> creatureGroup, bool asCharacter, RandomFilters filters)
+        private IEnumerable<string> GetValidCreatures(IEnumerable<string> creatureGroup, bool asCharacter, Filters filters)
         {
             var validCreatures = new List<string>();
 
@@ -147,7 +147,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return validCreatures;
         }
 
-        private (string CreatureName, string Template) GetRandomValidCreature(IEnumerable<string> creatureGroup, bool asCharacter, RandomFilters filters)
+        private (string CreatureName, string Template) GetRandomValidCreature(IEnumerable<string> creatureGroup, bool asCharacter, Filters filters)
         {
             var validCreatures = GetValidCreatures(creatureGroup, asCharacter, filters);
             if (!validCreatures.Any())
@@ -179,7 +179,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             string template,
             bool asCharacter,
             AbilityRandomizer abilityRandomizer,
-            RandomFilters filters)
+            Filters filters)
         {
             var compatible = creatureVerifier.VerifyCompatibility(asCharacter, creatureName, filters);
             if (!compatible)
@@ -193,7 +193,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             return creature;
         }
 
-        private Creature GeneratePrototype(string creatureName, string template, bool asCharacter, AbilityRandomizer abilityRandomizer, RandomFilters filters)
+        private Creature GeneratePrototype(string creatureName, string template, bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters)
         {
             var creature = new Creature();
             creature.Name = creatureName;
@@ -356,13 +356,13 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         public async Task<Creature> GenerateAsync(string creatureName, string template, bool asCharacter, AbilityRandomizer abilityRandomizer)
             => await GenerateAsync(creatureName, template, asCharacter, abilityRandomizer, null);
 
-        public async Task<Creature> GenerateRandomAsync(bool asCharacter, AbilityRandomizer abilityRandomizer, RandomFilters filters = null)
+        public async Task<Creature> GenerateRandomAsync(bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters = null)
         {
             var randomCreature = GenerateRandomName(asCharacter, filters);
             return await GenerateAsync(randomCreature.Creature, randomCreature.Template, asCharacter, abilityRandomizer, filters);
         }
 
-        private async Task<Creature> GenerateAsync(string creatureName, string template, bool asCharacter, AbilityRandomizer abilityRandomizer, RandomFilters filters)
+        private async Task<Creature> GenerateAsync(string creatureName, string template, bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters)
         {
             var compatible = creatureVerifier.VerifyCompatibility(asCharacter, creatureName, filters);
             if (!compatible)

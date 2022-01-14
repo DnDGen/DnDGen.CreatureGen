@@ -23,7 +23,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public void Generate_InvalidCreatureTemplateComboThrowsException(bool asCharacter)
         {
-            var filters = new RandomFilters { Template = "template" };
+            var filters = new Filters { Template = "template" };
             mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, "creature", filters)).Returns(false);
 
             var message = new StringBuilder();

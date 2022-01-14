@@ -4,6 +4,7 @@ using DnDGen.CreatureGen.Attacks;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
+using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Magics;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Verifiers;
@@ -48,7 +49,12 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
                 //INFO: We are not asserting that the challenge rating is valid
                 //Since the CR can be altered by advancement and by generating as a character
-                var isValid = creatureVerifier.VerifyCompatibility(false, creature.Name, creature.Template, type, null, creature.Alignment.Full);
+                var filters = new Filters();
+                filters.Type = type;
+                filters.Template = creature.Template;
+                filters.Alignment = creature.Alignment.Full;
+
+                var isValid = creatureVerifier.VerifyCompatibility(false, creature.Name, filters);
                 Assert.That(isValid, Is.True, verifierMessage.ToString());
             }
 
@@ -639,7 +645,12 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
                 //INFO: We are not asserting that the challenge rating is valid
                 //Since the CR can be altered by advancement and by generating as a character
-                var isValid = creatureVerifier.VerifyCompatibility(true, creature.Name, creature.Template, type, null, creature.Alignment.Full);
+                var filters = new Filters();
+                filters.Type = type;
+                filters.Template = creature.Template;
+                filters.Alignment = creature.Alignment.Full;
+
+                var isValid = creatureVerifier.VerifyCompatibility(true, creature.Name, filters);
                 Assert.That(isValid, Is.True, verifierMessage.ToString());
             }
 

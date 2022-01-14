@@ -71,7 +71,7 @@ namespace DnDGen.CreatureGen.Templates
             };
         }
 
-        public Creature ApplyTo(Creature creature, bool asCharacter, RandomFilters filters = null)
+        public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
             var compatibility = IsCompatible(
                 creature.Type.AllTypes,
@@ -362,7 +362,7 @@ namespace DnDGen.CreatureGen.Templates
             creature.Template = CreatureConstants.Templates.HalfCelestial;
         }
 
-        public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, RandomFilters filters = null)
+        public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, Filters filters = null)
         {
             var compatibility = IsCompatible(
                 creature.Type.AllTypes,
@@ -458,7 +458,7 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, RandomFilters filters = null)
+        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
         {
             var filteredBaseCreatures = sourceCreatures;
 
@@ -524,7 +524,7 @@ namespace DnDGen.CreatureGen.Templates
             string creatureChallengeRating,
             double creatureHitDiceQuantity,
             bool asCharacter,
-            RandomFilters filters)
+            Filters filters)
         {
             var creatureType = types.First();
             var hitDice = new HitDice { Quantity = creatureHitDiceQuantity };
@@ -552,7 +552,7 @@ namespace DnDGen.CreatureGen.Templates
             Ability intelligence,
             string creatureChallengeRating,
             int creatureHitDiceQuantity,
-            RandomFilters filters)
+            Filters filters)
         {
             var compatibility = IsCompatible(types, alignments, intelligence);
             if (!compatibility.Compatible)

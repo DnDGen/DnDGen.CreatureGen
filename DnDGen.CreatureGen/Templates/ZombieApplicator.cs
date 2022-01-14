@@ -85,7 +85,7 @@ namespace DnDGen.CreatureGen.Templates
             };
         }
 
-        public Creature ApplyTo(Creature creature, bool asCharacter, RandomFilters filters = null)
+        public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
             var hasSkeleton = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton);
             var compatibility = IsCompatible(
@@ -414,7 +414,7 @@ namespace DnDGen.CreatureGen.Templates
             creature.Template = CreatureConstants.Templates.Zombie;
         }
 
-        public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, RandomFilters filters = null)
+        public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, Filters filters = null)
         {
             var hasSkeleton = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton);
             var compatibility = IsCompatible(
@@ -523,7 +523,7 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, RandomFilters filters = null)
+        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
         {
             //INFO: Since Zombies cannot be characters (they explicitly lose their class levels), we can return an empty enumerable
             if (asCharacter)
@@ -599,7 +599,7 @@ namespace DnDGen.CreatureGen.Templates
             double creatureHitDiceQuantity,
             string creature,
             bool asCharacter,
-            RandomFilters filters)
+            Filters filters)
         {
             var compatibility = IsCompatible(asCharacter, types, hasSkeleton, creature, creatureHitDiceQuantity);
             if (!compatibility.Compatible)

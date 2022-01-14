@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DnDGen.CreatureGen.Generators.Creatures
 {
-    public class RandomFilters
+    public class Filters
     {
         public string Template { get; set; }
         public string Type { get; set; }

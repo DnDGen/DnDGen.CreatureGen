@@ -23,7 +23,7 @@ namespace DnDGen.CreatureGen.Templates
             this.adjustmentSelector = adjustmentSelector;
         }
 
-        public Creature ApplyTo(Creature creature, bool asCharacter, RandomFilters filters = null)
+        public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
             var compatibility = IsCompatible(
                 creature.Type.AllTypes,
@@ -45,7 +45,7 @@ namespace DnDGen.CreatureGen.Templates
             return creature;
         }
 
-        public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, RandomFilters filters = null)
+        public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, Filters filters = null)
         {
             var compatibility = IsCompatible(
                 creature.Type.AllTypes,
@@ -73,7 +73,7 @@ namespace DnDGen.CreatureGen.Templates
             double creatureHitDiceQuantity,
             string creatureChallengeRating,
             bool asCharacter,
-            RandomFilters filters)
+            Filters filters)
         {
             var creatureType = types.First();
 
@@ -90,7 +90,7 @@ namespace DnDGen.CreatureGen.Templates
             IEnumerable<string> types,
             IEnumerable<string> alignments,
             string creatureChallengeRating,
-            RandomFilters filters)
+            Filters filters)
         {
             if (!string.IsNullOrEmpty(filters?.Type) && !types.Contains(filters.Type))
             {
@@ -110,7 +110,7 @@ namespace DnDGen.CreatureGen.Templates
             return (true, null);
         }
 
-        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, RandomFilters filters = null)
+        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
         {
             var filteredBaseCreatures = sourceCreatures;
             var allData = creatureDataSelector.SelectAll();

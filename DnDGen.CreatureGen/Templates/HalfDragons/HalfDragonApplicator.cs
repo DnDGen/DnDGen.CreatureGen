@@ -74,7 +74,7 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             };
         }
 
-        public Creature ApplyTo(Creature creature, bool asCharacter, RandomFilters filters = null)
+        public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
             var dragonAlignments = collectionSelector.SelectFrom(TableNameConstants.Collection.AlignmentGroups, DragonSpecies + GroupConstants.Exploded);
             var compatibility = IsCompatible(creature.Type.AllTypes, dragonAlignments, creature.ChallengeRating, filters);
@@ -371,7 +371,7 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             creature.HitPoints.RollDefaultTotal(dice);
         }
 
-        public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, RandomFilters filters = null)
+        public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, Filters filters = null)
         {
             var dragonAlignments = collectionSelector.SelectFrom(TableNameConstants.Collection.AlignmentGroups, DragonSpecies + GroupConstants.Exploded);
             var compatibility = IsCompatible(creature.Type.AllTypes, dragonAlignments, creature.ChallengeRating, filters);
@@ -462,7 +462,7 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             return creature;
         }
 
-        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, RandomFilters filters = null)
+        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
         {
             var filteredBaseCreatures = sourceCreatures;
             var allData = creatureDataSelector.SelectAll();
@@ -517,7 +517,7 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             string creatureChallengeRating,
             double creatureHitDiceQuantity,
             bool asCharacter,
-            RandomFilters filters)
+            Filters filters)
         {
             var creatureType = types.First();
 
@@ -534,7 +534,7 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             IEnumerable<string> types,
             IEnumerable<string> dragonAlignments,
             string creatureChallengeRating,
-            RandomFilters filters)
+            Filters filters)
         {
             var compatibility = IsCompatible(types);
             if (!compatibility.Compatible)

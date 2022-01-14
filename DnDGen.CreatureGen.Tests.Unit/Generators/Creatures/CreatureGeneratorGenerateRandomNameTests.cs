@@ -35,7 +35,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             var creatureName = "my creature";
             var template = "my template";
-            var filters = new RandomFilters();
+            var filters = new Filters();
             filters.Type = type;
             filters.ChallengeRating = cr;
             filters.Alignment = alignment;
@@ -105,7 +105,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             var creatureName = "my creature";
             var template = CreatureConstants.Templates.None;
-            var filters = new RandomFilters();
+            var filters = new Filters();
             filters.Template = template;
             filters.Type = type;
             filters.ChallengeRating = cr;
@@ -151,7 +151,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             var creatureName = "my creature";
             var template = "my template";
-            var filters = new RandomFilters();
+            var filters = new Filters();
             filters.Template = template;
             filters.Type = type;
             filters.ChallengeRating = cr;
@@ -197,7 +197,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             var creatureName = "my creature";
             var template = "my template";
-            var filters = new RandomFilters();
+            var filters = new Filters();
             filters.Type = type;
             filters.ChallengeRating = cr;
             filters.Alignment = alignment;
@@ -267,7 +267,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             var creatureName = "my creature";
             var template = "my template";
-            var filters = new RandomFilters();
+            var filters = new Filters();
             filters.Type = type;
             filters.ChallengeRating = cr;
             filters.Alignment = alignment;
@@ -341,7 +341,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             var creatureName = "my creature";
             var template = "my template";
-            var filters = new RandomFilters();
+            var filters = new Filters();
             filters.Type = type;
             filters.ChallengeRating = cr;
             filters.Alignment = alignment;
@@ -415,7 +415,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             var creatureName = "my creature";
             var template = CreatureConstants.Templates.None;
-            var filters = new RandomFilters();
+            var filters = new Filters();
             filters.Template = template;
             filters.Type = type;
             filters.ChallengeRating = cr;
@@ -469,7 +469,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             var creatureName = "my creature";
             var template = "my template";
-            var filters = new RandomFilters();
+            var filters = new Filters();
             filters.Template = template;
             filters.Type = type;
             filters.ChallengeRating = cr;
@@ -523,7 +523,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             var creatureName = "my creature";
             var template = "my template";
-            var filters = new RandomFilters();
+            var filters = new Filters();
             filters.Type = type;
             filters.ChallengeRating = cr;
             filters.Alignment = alignment;
@@ -642,7 +642,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false, "template", "type", "challenge rating", "my alignment")]
         public void GenerateRandomName_ThrowException_WhenNotCompatible(bool asCharacter, string template, string type, string challengeRating, string alignment)
         {
-            var filters = new RandomFilters();
+            var filters = new Filters();
             filters.Template = template;
             filters.Type = type;
             filters.ChallengeRating = challengeRating;

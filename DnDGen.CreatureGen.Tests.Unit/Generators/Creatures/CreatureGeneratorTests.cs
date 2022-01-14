@@ -210,16 +210,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     equipment))
                 .Returns(skills);
 
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, null, It.Is<RandomFilters>(f => f.Type == typeFilter
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, null, It.Is<Filters>(f => f.Type == typeFilter
                 && f.ChallengeRating == crFilter
                 && f.Alignment == alignmentFilter
                 && f.Template == null))).Returns(true);
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, null, It.Is<RandomFilters>(f => f.Type == typeFilter
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, null, It.Is<Filters>(f => f.Type == typeFilter
                 && f.ChallengeRating == crFilter
                 && f.Alignment == alignmentFilter
                 && f.Template == templateName))).Returns(true);
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, creatureName, It.Is<RandomFilters>(f => f.Template == templateName))).Returns(true);
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, creatureName, It.Is<RandomFilters>(f => f.Type == typeFilter
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, creatureName, It.Is<Filters>(f => f.Template == templateName))).Returns(true);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, creatureName, It.Is<Filters>(f => f.Type == typeFilter
                 && f.ChallengeRating == crFilter
                 && f.Alignment == alignmentFilter
                 && f.Template == templateName))).Returns(true);
@@ -245,29 +245,29 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var defaultTemplateApplicator = new Mock<TemplateApplicator>();
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(templateName)).Returns(defaultTemplateApplicator.Object);
             defaultTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, It.Is<RandomFilters>(f => f.Type == typeFilter
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, It.Is<Filters>(f => f.Type == typeFilter
                     && f.ChallengeRating == crFilter
                     && f.Alignment == alignmentFilter)))
-                .Returns((IEnumerable<string> cc, bool asC, RandomFilters f) => cc.Intersect(new[] { creatureName }));
+                .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc.Intersect(new[] { creatureName }));
             defaultTemplateApplicator
-                .Setup(a => a.ApplyTo(It.IsAny<Creature>(), asCharacter, It.Is<RandomFilters>(f => f.Type == typeFilter
+                .Setup(a => a.ApplyTo(It.IsAny<Creature>(), asCharacter, It.Is<Filters>(f => f.Type == typeFilter
                     && f.ChallengeRating == crFilter
                     && f.Alignment == alignmentFilter)))
-                .Callback((Creature c, bool asC, RandomFilters f) => c.Template = templateName)
-                .Returns((Creature c, bool asC, RandomFilters f) => c);
+                .Callback((Creature c, bool asC, Filters f) => c.Template = templateName)
+                .Returns((Creature c, bool asC, Filters f) => c);
             defaultTemplateApplicator
-                .Setup(a => a.ApplyToAsync(It.IsAny<Creature>(), asCharacter, It.Is<RandomFilters>(f => f.Type == typeFilter
+                .Setup(a => a.ApplyToAsync(It.IsAny<Creature>(), asCharacter, It.Is<Filters>(f => f.Type == typeFilter
                     && f.ChallengeRating == crFilter
                     && f.Alignment == alignmentFilter)))
-                .Callback((Creature c, bool asC, RandomFilters f) => c.Template = templateName)
-                .ReturnsAsync((Creature c, bool asC, RandomFilters f) => c);
+                .Callback((Creature c, bool asC, Filters f) => c.Template = templateName)
+                .ReturnsAsync((Creature c, bool asC, Filters f) => c);
 
             if (templateName != CreatureConstants.Templates.None)
             {
                 var noneApplicator = new Mock<TemplateApplicator>();
                 mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None)).Returns(noneApplicator.Object);
                 noneApplicator
-                    .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, It.Is<RandomFilters>(f => f.Type == typeFilter
+                    .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, It.Is<Filters>(f => f.Type == typeFilter
                         && f.ChallengeRating == crFilter
                         && f.Alignment == alignmentFilter)))
                     .Returns(Enumerable.Empty<string>());
