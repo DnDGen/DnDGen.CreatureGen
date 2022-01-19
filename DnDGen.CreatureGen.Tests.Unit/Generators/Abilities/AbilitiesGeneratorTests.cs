@@ -133,15 +133,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
         public void GenerateFor_ApplyAbilityAdvancements()
         {
             randomizer.AbilityAdvancements["ability"] = 1336;
-            randomizer.AbilityAdvancements["other ability"] = -96;
+            randomizer.AbilityAdvancements["other ability"] = 96;
 
             var abilities = abilitiesGenerator.GenerateFor("creature name", randomizer);
             Assert.That(abilities["ability"].Name, Is.EqualTo("ability"));
             Assert.That(abilities["ability"].RacialAdjustment, Is.Zero);
             Assert.That(abilities["ability"].AdvancementAdjustment, Is.EqualTo(1336));
             Assert.That(abilities["other ability"].Name, Is.EqualTo("other ability"));
-            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(-96));
-            Assert.That(abilities["other ability"].AdvancementAdjustment, Is.EqualTo(9266));
+            Assert.That(abilities["other ability"].RacialAdjustment, Is.EqualTo(9266));
+            Assert.That(abilities["other ability"].AdvancementAdjustment, Is.EqualTo(96));
             Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
             Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
             Assert.That(abilities["last ability"].AdvancementAdjustment, Is.Zero);
@@ -164,7 +164,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             Assert.That(abilities["other ability"].FullScore, Is.EqualTo(1336 + 9266));
             Assert.That(abilities["other ability"].HasScore, Is.True);
             Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
-            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(1337));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(600));
             Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
             Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
             Assert.That(abilities["last ability"].HasScore, Is.True);
@@ -188,7 +188,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Abilities
             Assert.That(abilities["other ability"].FullScore, Is.EqualTo(96 + 9266));
             Assert.That(abilities["other ability"].HasScore, Is.True);
             Assert.That(abilities["last ability"].Name, Is.EqualTo("last ability"));
-            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(1337));
+            Assert.That(abilities["last ability"].BaseScore, Is.EqualTo(42));
             Assert.That(abilities["last ability"].RacialAdjustment, Is.EqualTo(-90210));
             Assert.That(abilities["last ability"].FullScore, Is.EqualTo(1));
             Assert.That(abilities["last ability"].HasScore, Is.True);

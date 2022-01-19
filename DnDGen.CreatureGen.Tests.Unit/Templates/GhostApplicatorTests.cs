@@ -2338,7 +2338,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, "preset alignment"))
                 .Returns(new[] { "my creature", "wrong creature 2", "my other creature", "wrong creature 1" });
 
-            var filters = new Filters { Alignment = "preset Alignment" };
+            var filters = new Filters { Alignment = "preset alignment" };
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, filters);
             Assert.That(compatibleCreatures, Is.EquivalentTo(new[] { "my creature", "my other creature" }));

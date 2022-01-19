@@ -534,6 +534,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         {
             var randomizer = new AbilityRandomizer();
             randomizer.PriorityAbility = ability;
+            randomizer.Roll = AbilityConstants.RandomizerRolls.Wild;
 
             var creature = creatureGenerator.Generate(CreatureConstants.Human, CreatureConstants.Templates.None, false, randomizer);
             creatureAsserter.AssertCreature(creature);

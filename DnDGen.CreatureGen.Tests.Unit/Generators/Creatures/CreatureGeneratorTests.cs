@@ -210,18 +210,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     equipment))
                 .Returns(skills);
 
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, null, It.Is<Filters>(f => f.Type == typeFilter
-                && f.ChallengeRating == crFilter
-                && f.Alignment == alignmentFilter
-                && f.Template == null))).Returns(true);
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, null, It.Is<Filters>(f => f.Type == typeFilter
-                && f.ChallengeRating == crFilter
-                && f.Alignment == alignmentFilter
-                && f.Template == templateName))).Returns(true);
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, creatureName, It.Is<Filters>(f => f.Template == templateName))).Returns(true);
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, creatureName, It.Is<Filters>(f => f.Type == typeFilter
-                && f.ChallengeRating == crFilter
-                && f.Alignment == alignmentFilter
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(
+                    asCharacter, 
+                    It.Is<string>(c => c == null || c == creatureName),
+                    It.Is<Filters>(f => f == null
+                        || ((f.Template == templateName || f.Template == null)
+                            && f.Type == typeFilter
+                            && f.ChallengeRating == crFilter
+                            && f.Alignment == alignmentFilter)
+                        || (f.Template == templateName || f.Template == null))))
+                .Returns(true);
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, creatureName, It.Is<Filters>(f => f != null
                 && f.Template == templateName))).Returns(true);
             mockCreatureDataSelector.Setup(s => s.SelectFor(creatureName)).Returns(creatureData);
 
@@ -245,20 +245,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var defaultTemplateApplicator = new Mock<TemplateApplicator>();
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(templateName)).Returns(defaultTemplateApplicator.Object);
             defaultTemplateApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, It.Is<Filters>(f => f.Type == typeFilter
-                    && f.ChallengeRating == crFilter
-                    && f.Alignment == alignmentFilter)))
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, It.Is<Filters>(f => f == null 
+                    || (f.Type == typeFilter
+                        && f.ChallengeRating == crFilter
+                        && f.Alignment == alignmentFilter))))
                 .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc.Intersect(new[] { creatureName }));
             defaultTemplateApplicator
-                .Setup(a => a.ApplyTo(It.IsAny<Creature>(), asCharacter, It.Is<Filters>(f => f.Type == typeFilter
-                    && f.ChallengeRating == crFilter
-                    && f.Alignment == alignmentFilter)))
+                .Setup(a => a.ApplyTo(It.IsAny<Creature>(), asCharacter, It.Is<Filters>(f => f == null
+                    || (f.Type == typeFilter
+                        && f.ChallengeRating == crFilter
+                        && f.Alignment == alignmentFilter))))
                 .Callback((Creature c, bool asC, Filters f) => c.Template = templateName)
                 .Returns((Creature c, bool asC, Filters f) => c);
             defaultTemplateApplicator
-                .Setup(a => a.ApplyToAsync(It.IsAny<Creature>(), asCharacter, It.Is<Filters>(f => f.Type == typeFilter
-                    && f.ChallengeRating == crFilter
-                    && f.Alignment == alignmentFilter)))
+                .Setup(a => a.ApplyToAsync(It.IsAny<Creature>(), asCharacter, It.Is<Filters>(f => f == null
+                    || (f.Type == typeFilter
+                        && f.ChallengeRating == crFilter
+                        && f.Alignment == alignmentFilter))))
                 .Callback((Creature c, bool asC, Filters f) => c.Template = templateName)
                 .ReturnsAsync((Creature c, bool asC, Filters f) => c);
 
@@ -267,15 +270,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 var noneApplicator = new Mock<TemplateApplicator>();
                 mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None)).Returns(noneApplicator.Object);
                 noneApplicator
-                    .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, It.Is<Filters>(f => f.Type == typeFilter
+                    .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, It.Is<Filters>(f => f == null
+                    || (f.Type == typeFilter
                         && f.ChallengeRating == crFilter
-                        && f.Alignment == alignmentFilter)))
+                        && f.Alignment == alignmentFilter))))
                     .Returns(Enumerable.Empty<string>());
             }
 
             if (randomizer == null)
             {
-                mockAbilitiesGenerator.Setup(g => g.GenerateFor(creatureName, It.IsAny<AbilityRandomizer>())).Returns(abilities);
+                mockAbilitiesGenerator
+                    .Setup(g => g.GenerateFor(creatureName, It.Is<AbilityRandomizer>(r => r.Roll == AbilityConstants.RandomizerRolls.Default
+                        && r.PriorityAbility == null
+                        && !r.AbilityAdvancements.Any()
+                        && !r.SetRolls.Any())))
+                    .Returns(abilities);
             }
             else
             {

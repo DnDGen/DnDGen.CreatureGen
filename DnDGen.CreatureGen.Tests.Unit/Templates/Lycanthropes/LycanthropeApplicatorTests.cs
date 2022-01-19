@@ -387,7 +387,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             var filters = new Filters();
             filters.Type = "subtype 1";
             filters.ChallengeRating = ChallengeRatingConstants.CR3;
-            filters.Alignment = "orignal alignment";
+            filters.Alignment = "original alignment";
 
             var creature = applicators[template].ApplyTo(baseCreature, false, filters);
             Assert.That(creature.Template, Is.EqualTo(template));
@@ -2307,7 +2307,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
             baseCreature.HitPoints.HitDice[0].Quantity = 1;
             baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
-            baseCreature.Alignment = new Alignment($"original alignment");
+            baseCreature.Alignment = new Alignment("original alignment");
 
             mockDice.Reset();
             rollSequences.Clear();
@@ -2321,7 +2321,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             var filters = new Filters();
             filters.Type = "subtype 1";
             filters.ChallengeRating = ChallengeRatingConstants.CR3;
-            filters.Alignment = "orignal alignment";
+            filters.Alignment = "original alignment";
 
             var creature = await applicators[template].ApplyToAsync(baseCreature, false, filters);
             Assert.That(creature.Template, Is.EqualTo(template));

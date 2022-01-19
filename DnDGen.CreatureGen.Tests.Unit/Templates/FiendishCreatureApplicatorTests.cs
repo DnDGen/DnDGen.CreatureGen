@@ -3045,7 +3045,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
-            var filters = new Filters { Type = "sybtype 2", ChallengeRating = ChallengeRatingConstants.CR2 };
+            var filters = new Filters { Type = "subtype 2", ChallengeRating = ChallengeRatingConstants.CR2 };
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(creatures, false, filters);
             Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));

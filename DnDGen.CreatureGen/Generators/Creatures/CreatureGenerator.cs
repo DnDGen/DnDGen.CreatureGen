@@ -82,7 +82,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         }
 
         public Creature Generate(string creatureName, string template, bool asCharacter, AbilityRandomizer abilityRandomizer = null) 
-            => Generate(creatureName, template, asCharacter, abilityRandomizer, null);
+            => Generate(creatureName, template, asCharacter, abilityRandomizer, new Filters { Template = template });
 
         public (string Creature, string Template) GenerateRandomName(bool asCharacter, Filters filters = null)
         {
@@ -209,7 +209,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             creature.NumberOfHands = creatureData.NumberOfHands;
 
             creature.Type = GetCreatureType(creatureName);
-            abilityRandomizer ??= new AbilityRandomizer { Roll = AbilityConstants.RandomizerRolls.Default };
+            abilityRandomizer ??= new AbilityRandomizer();
             creature.Abilities = abilitiesGenerator.GenerateFor(creatureName, abilityRandomizer);
 
             if (advancementSelector.IsAdvanced(creatureName, filters?.ChallengeRating))
@@ -354,7 +354,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         }
 
         public async Task<Creature> GenerateAsync(string creatureName, string template, bool asCharacter, AbilityRandomizer abilityRandomizer)
-            => await GenerateAsync(creatureName, template, asCharacter, abilityRandomizer, null);
+            => await GenerateAsync(creatureName, template, asCharacter, abilityRandomizer, new Filters { Template = template });
 
         public async Task<Creature> GenerateRandomAsync(bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters = null)
         {
