@@ -7,6 +7,7 @@ using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private ICreatureGenerator creatureGenerator;
         private Stopwatch stopwatch;
         private Dice dice;
+        private Dictionary<string, (string Ability, int Minimum)> templateAbilityMinimums;
 
         [SetUp]
         public void Setup()
@@ -31,6 +33,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             creatureGenerator = GetNewInstanceOf<ICreatureGenerator>();
             dice = GetNewInstanceOf<Dice>();
             stopwatch = new Stopwatch();
+
+            templateAbilityMinimums = new Dictionary<string, (string Ability, int Minimum)>();
+            templateAbilityMinimums[CreatureConstants.Templates.Ghost] = (AbilityConstants.Charisma, 6);
+            templateAbilityMinimums[CreatureConstants.Templates.HalfCelestial] = (AbilityConstants.Intelligence, 4);
+            templateAbilityMinimums[CreatureConstants.Templates.HalfFiend] = (AbilityConstants.Intelligence, 4);
         }
 
         [TestCase(true, null)] //INFO: Pre-random template
@@ -63,7 +70,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             return (randomCreatureName, template);
         }
 
-        private AbilityRandomizer GetAbilityRandomizer()
+        private AbilityRandomizer GetAbilityRandomizer(string template)
         {
             var rolls = new[]
             {
@@ -80,12 +87,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var randomizer = new AbilityRandomizer();
             randomizer.Roll = collectionSelector.SelectRandomFrom(rolls);
 
+            //HACK: This is just to avoid the issue when a randomly-rolled ability
+            //(especially with "Poor" or "Wild") ends up much lower than normally would be with the "Default" roll,
+            //and the template requires an ability to be a minimum value
+            if (template != null && templateAbilityMinimums.ContainsKey(template))
+            {
+                randomizer.AbilityAdvancements[templateAbilityMinimums[template].Ability] = templateAbilityMinimums[template].Minimum;
+            }
+
             return randomizer;
         }
 
         private Creature GenerateAndAssertCreature(string creatureName, string template, bool asCharacter)
         {
-            var randomizer = GetAbilityRandomizer();
+            var randomizer = GetAbilityRandomizer(template);
 
             stopwatch.Restart();
             var creature = creatureGenerator.Generate(creatureName, template, asCharacter, randomizer);
@@ -229,7 +244,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             filters.ChallengeRating = challengeRating;
             filters.Alignment = alignment;
 
-            var randomizer = GetAbilityRandomizer();
+            var randomizer = GetAbilityRandomizer(template);
 
             stopwatch.Restart();
             var creature = creatureGenerator.GenerateRandom(asCharacter, randomizer, filters);
@@ -308,7 +323,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             filters.ChallengeRating = challengeRating;
             filters.Alignment = alignment;
 
-            var randomizer = GetAbilityRandomizer();
+            var randomizer = GetAbilityRandomizer(template);
 
             stopwatch.Restart();
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, randomizer, filters);
@@ -354,10 +369,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         [TestCase(CreatureConstants.Dragon_Bronze_GreatWyrm, CreatureConstants.Templates.HalfCelestial, false)]
         [TestCase(CreatureConstants.Dragon_Silver_Ancient, CreatureConstants.Templates.HalfCelestial, false)]
         [TestCase(CreatureConstants.Dragon_White_Old, CreatureConstants.Templates.HalfFiend, false)]
+        [TestCase(CreatureConstants.Gargoyle_Kapoacinth, CreatureConstants.Templates.Ghost, false)]
         [TestCase(CreatureConstants.GrayRender, CreatureConstants.Templates.None, true)]
         [TestCase(CreatureConstants.Hieracosphinx, CreatureConstants.Templates.Skeleton, false)]
         [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Ghost, false)]
         [TestCase(CreatureConstants.Otyugh, CreatureConstants.Templates.Zombie, false)]
+        [TestCase(CreatureConstants.ShamblingMound, CreatureConstants.Templates.HalfFiend, true)]
+        [TestCase(CreatureConstants.Skum, CreatureConstants.Templates.Ghost, true)]
         [TestCase(CreatureConstants.Xill, CreatureConstants.Templates.None, true)]
         [Repeat(100)]
         [Ignore("Only use this for debugging")]
@@ -367,6 +385,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         }
 
         [TestCase(null, true, null, null, null)]
+        [TestCase(null, true, CreatureConstants.Templates.Ghost, null, AlignmentConstants.LawfulEvil)]
+        [TestCase(null, false, CreatureConstants.Templates.Ghost, null, AlignmentConstants.ChaoticNeutral)]
         [TestCase(null, false, CreatureConstants.Templates.Skeleton, null, null)]
         [TestCase(null, false, CreatureConstants.Templates.Zombie, null, null)]
         [TestCase(CreatureConstants.Types.Dragon, false, null, null, null)]
@@ -384,6 +404,38 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         public void BUG_StressSpecificFilters(string type, bool asCharacter, string template, string challengeRating, string alignment)
         {
             stressor.Stress(() => GenerateAndAssertRandomCreature(asCharacter, template, type, challengeRating, alignment));
+        }
+
+        [Test]
+        public void BUG_StressProblematicCreature()
+        {
+            stressor.Stress(GenerateAndAssertProblematicCreature);
+        }
+
+        private void GenerateAndAssertProblematicCreature()
+        {
+            var problematicCreatures = new (string Creature, string Template, bool AsCharacter)[]
+            {
+                (CreatureConstants.Chimera_White, CreatureConstants.Templates.Skeleton, false),
+                (CreatureConstants.Criosphinx, CreatureConstants.Templates.Zombie, false),
+                (CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.Ghost, false),
+                (CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.HalfCelestial, false),
+                (CreatureConstants.Dragon_Copper_Adult, CreatureConstants.Templates.Skeleton, false),
+                (CreatureConstants.Dragon_Bronze_GreatWyrm, CreatureConstants.Templates.HalfCelestial, false),
+                (CreatureConstants.Dragon_Silver_Ancient, CreatureConstants.Templates.HalfCelestial, false),
+                (CreatureConstants.Dragon_White_Old, CreatureConstants.Templates.HalfFiend, false),
+                (CreatureConstants.Gargoyle_Kapoacinth, CreatureConstants.Templates.Ghost, false),
+                (CreatureConstants.GrayRender, CreatureConstants.Templates.None, true),
+                (CreatureConstants.Hieracosphinx, CreatureConstants.Templates.Skeleton, false),
+                (CreatureConstants.Human, CreatureConstants.Templates.Ghost, false),
+                (CreatureConstants.Otyugh, CreatureConstants.Templates.Zombie, false),
+                (CreatureConstants.ShamblingMound, CreatureConstants.Templates.HalfFiend, true),
+                (CreatureConstants.Skum, CreatureConstants.Templates.Ghost, true),
+                (CreatureConstants.Xill, CreatureConstants.Templates.None, true),
+            };
+
+            var randomCreature = collectionSelector.SelectRandomFrom(problematicCreatures);
+            GenerateAndAssertCreature(randomCreature.Creature, randomCreature.Template, randomCreature.AsCharacter);
         }
     }
 }
