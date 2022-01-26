@@ -7,6 +7,7 @@ using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using NUnit.Framework;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -35,7 +36,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             stopwatch = new Stopwatch();
 
             templateAbilityMinimums = new Dictionary<string, (string Ability, int Minimum)>();
-            templateAbilityMinimums[CreatureConstants.Templates.Ghost] = (AbilityConstants.Charisma, 6);
+            //HACK: While 6 is the minimum Charisma for Ghost, some creatures have racial adjustments that decrease it further, so 6+ helps alleviate that.
+            templateAbilityMinimums[CreatureConstants.Templates.Ghost] = (AbilityConstants.Charisma, 7);
             templateAbilityMinimums[CreatureConstants.Templates.HalfCelestial] = (AbilityConstants.Intelligence, 4);
             templateAbilityMinimums[CreatureConstants.Templates.HalfFiend] = (AbilityConstants.Intelligence, 4);
         }
@@ -361,22 +363,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             return creature;
         }
 
-        [TestCase(CreatureConstants.Chimera_White, CreatureConstants.Templates.Skeleton, false)]
-        [TestCase(CreatureConstants.Criosphinx, CreatureConstants.Templates.Zombie, false)]
-        [TestCase(CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.Ghost, false)]
-        [TestCase(CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.HalfCelestial, false)]
-        [TestCase(CreatureConstants.Dragon_Copper_Adult, CreatureConstants.Templates.Skeleton, false)]
-        [TestCase(CreatureConstants.Dragon_Bronze_GreatWyrm, CreatureConstants.Templates.HalfCelestial, false)]
-        [TestCase(CreatureConstants.Dragon_Silver_Ancient, CreatureConstants.Templates.HalfCelestial, false)]
-        [TestCase(CreatureConstants.Dragon_White_Old, CreatureConstants.Templates.HalfFiend, false)]
-        [TestCase(CreatureConstants.Gargoyle_Kapoacinth, CreatureConstants.Templates.Ghost, false)]
-        [TestCase(CreatureConstants.GrayRender, CreatureConstants.Templates.None, true)]
-        [TestCase(CreatureConstants.Hieracosphinx, CreatureConstants.Templates.Skeleton, false)]
-        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Ghost, false)]
-        [TestCase(CreatureConstants.Otyugh, CreatureConstants.Templates.Zombie, false)]
-        [TestCase(CreatureConstants.ShamblingMound, CreatureConstants.Templates.HalfFiend, true)]
-        [TestCase(CreatureConstants.Skum, CreatureConstants.Templates.Ghost, true)]
-        [TestCase(CreatureConstants.Xill, CreatureConstants.Templates.None, true)]
+        [TestCaseSource(nameof(ProblematicCreaturesTestCases))]
         [Repeat(100)]
         [Ignore("Only use this for debugging")]
         public void BUG_StressSpecificCreature(string creatureName, string template, bool asCharacter)
@@ -384,27 +371,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             stressor.Stress(() => GenerateAndAssertCreature(creatureName, template, asCharacter));
         }
 
-        [TestCase(null, true, null, null, null)]
-        [TestCase(null, true, CreatureConstants.Templates.Ghost, null, AlignmentConstants.LawfulEvil)]
-        [TestCase(null, false, CreatureConstants.Templates.Ghost, null, AlignmentConstants.ChaoticNeutral)]
-        [TestCase(null, false, CreatureConstants.Templates.Skeleton, null, null)]
-        [TestCase(null, false, CreatureConstants.Templates.Zombie, null, null)]
-        [TestCase(CreatureConstants.Types.Dragon, false, null, null, null)]
-        [TestCase(CreatureConstants.Types.Giant, false, null, null, null)]
-        [TestCase(CreatureConstants.Types.Humanoid, false, null, null, null)]
-        [TestCase(CreatureConstants.Types.Outsider, false, null, null, null)]
-        [TestCase(CreatureConstants.Types.MagicalBeast, false, null, null, null)]
-        [TestCase(CreatureConstants.Types.Undead, false, null, null, null)]
-        [TestCase(CreatureConstants.Types.Subtypes.Augmented, false, null, null, null)]
-        [TestCase(CreatureConstants.Types.Subtypes.Incorporeal, false, null, null, null)]
-        [TestCase(CreatureConstants.Types.Subtypes.Native, false, null, null, null)]
-        [TestCase(CreatureConstants.Types.Subtypes.Shapechanger, false, null, null, null)]
+        public static IEnumerable ProblematicCreaturesTestCases => ProblematicCreatures.Select(pc => new TestCaseData(pc.Creature, pc.Template, pc.AsCharacter));
+
+        [TestCaseSource(nameof(ProblematicFiltersTestCases))]
         [Repeat(100)]
         [Ignore("Only use this for debugging")]
         public void BUG_StressSpecificFilters(string type, bool asCharacter, string template, string challengeRating, string alignment)
         {
             stressor.Stress(() => GenerateAndAssertRandomCreature(asCharacter, template, type, challengeRating, alignment));
         }
+
+        public static IEnumerable ProblematicFiltersTestCases => ProblematicFilters
+            .Select(pf => new TestCaseData(pf.Filters.Type, pf.AsCharacter, pf.Filters.Template, pf.Filters.ChallengeRating, pf.Filters.Alignment));
 
         [Test]
         public void BUG_StressProblematicCreature()
@@ -414,28 +392,66 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private void GenerateAndAssertProblematicCreature()
         {
-            var problematicCreatures = new (string Creature, string Template, bool AsCharacter)[]
-            {
-                (CreatureConstants.Chimera_White, CreatureConstants.Templates.Skeleton, false),
-                (CreatureConstants.Criosphinx, CreatureConstants.Templates.Zombie, false),
-                (CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.Ghost, false),
-                (CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.HalfCelestial, false),
-                (CreatureConstants.Dragon_Copper_Adult, CreatureConstants.Templates.Skeleton, false),
-                (CreatureConstants.Dragon_Bronze_GreatWyrm, CreatureConstants.Templates.HalfCelestial, false),
-                (CreatureConstants.Dragon_Silver_Ancient, CreatureConstants.Templates.HalfCelestial, false),
-                (CreatureConstants.Dragon_White_Old, CreatureConstants.Templates.HalfFiend, false),
-                (CreatureConstants.Gargoyle_Kapoacinth, CreatureConstants.Templates.Ghost, false),
-                (CreatureConstants.GrayRender, CreatureConstants.Templates.None, true),
-                (CreatureConstants.Hieracosphinx, CreatureConstants.Templates.Skeleton, false),
-                (CreatureConstants.Human, CreatureConstants.Templates.Ghost, false),
-                (CreatureConstants.Otyugh, CreatureConstants.Templates.Zombie, false),
-                (CreatureConstants.ShamblingMound, CreatureConstants.Templates.HalfFiend, true),
-                (CreatureConstants.Skum, CreatureConstants.Templates.Ghost, true),
-                (CreatureConstants.Xill, CreatureConstants.Templates.None, true),
-            };
-
-            var randomCreature = collectionSelector.SelectRandomFrom(problematicCreatures);
+            var randomCreature = collectionSelector.SelectRandomFrom(ProblematicCreatures);
             GenerateAndAssertCreature(randomCreature.Creature, randomCreature.Template, randomCreature.AsCharacter);
+        }
+
+        private static IEnumerable<(string Creature, string Template, bool AsCharacter)> ProblematicCreatures => new (string Creature, string Template, bool AsCharacter)[]
+        {
+            (CreatureConstants.Chimera_White, CreatureConstants.Templates.Skeleton, false),
+            (CreatureConstants.Criosphinx, CreatureConstants.Templates.Zombie, false),
+            (CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.Ghost, false),
+            (CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.HalfCelestial, false),
+            (CreatureConstants.Dragon_Copper_Adult, CreatureConstants.Templates.Skeleton, false),
+            (CreatureConstants.Dragon_Bronze_GreatWyrm, CreatureConstants.Templates.HalfCelestial, false),
+            (CreatureConstants.Dragon_Silver_Ancient, CreatureConstants.Templates.HalfCelestial, false),
+            (CreatureConstants.Dragon_White_Old, CreatureConstants.Templates.HalfFiend, false),
+            (CreatureConstants.Gargoyle_Kapoacinth, CreatureConstants.Templates.Ghost, false),
+            (CreatureConstants.GrayRender, CreatureConstants.Templates.None, true),
+            (CreatureConstants.Hieracosphinx, CreatureConstants.Templates.Skeleton, false),
+            (CreatureConstants.Human, CreatureConstants.Templates.Ghost, false),
+            (CreatureConstants.Otyugh, CreatureConstants.Templates.Ghost, false),
+            (CreatureConstants.Otyugh, CreatureConstants.Templates.Zombie, false),
+            (CreatureConstants.ShamblingMound, CreatureConstants.Templates.HalfFiend, true),
+            (CreatureConstants.Skum, CreatureConstants.Templates.Ghost, true),
+            (CreatureConstants.Xill, CreatureConstants.Templates.None, true),
+        };
+
+        private static IEnumerable<(bool AsCharacter, Filters Filters)> ProblematicFilters => new (bool AsCharacter, Filters Filters)[]
+        {
+                (true, new Filters()),
+                (true, new Filters { Template = CreatureConstants.Templates.Ghost, Alignment = AlignmentConstants.LawfulEvil }),
+                (false, new Filters { Template = CreatureConstants.Templates.Ghost, Alignment = AlignmentConstants.ChaoticNeutral }),
+                (false, new Filters { Template = CreatureConstants.Templates.Skeleton }),
+                (false, new Filters { Template = CreatureConstants.Templates.Zombie }),
+                (false, new Filters { Type = CreatureConstants.Types.Aberration, ChallengeRating = ChallengeRatingConstants.CR6 }),
+                (false, new Filters { Type = CreatureConstants.Types.Dragon }),
+                (false, new Filters { Type = CreatureConstants.Types.Giant }),
+                (false, new Filters { Type = CreatureConstants.Types.Humanoid }),
+                (false, new Filters { Type = CreatureConstants.Types.Outsider }),
+                (false, new Filters { Type = CreatureConstants.Types.MagicalBeast }),
+                (false, new Filters { Type = CreatureConstants.Types.Undead }),
+                (false, new Filters { Type = CreatureConstants.Types.Subtypes.Augmented }),
+                (false, new Filters { Type = CreatureConstants.Types.Subtypes.Incorporeal }),
+                (false, new Filters { Type = CreatureConstants.Types.Subtypes.Native }),
+                (false, new Filters { Type = CreatureConstants.Types.Subtypes.Shapechanger }),
+        };
+
+        [Test]
+        public void BUG_StressProblematicFilters()
+        {
+            stressor.Stress(GenerateAndAssertProblematicFilters);
+        }
+
+        private void GenerateAndAssertProblematicFilters()
+        {
+            var randomFilters = collectionSelector.SelectRandomFrom(ProblematicFilters);
+            GenerateAndAssertRandomCreature(
+                randomFilters.AsCharacter, 
+                randomFilters.Filters.Template,
+                randomFilters.Filters.Type,
+                randomFilters.Filters.ChallengeRating, 
+                randomFilters.Filters.Alignment);
         }
     }
 }
