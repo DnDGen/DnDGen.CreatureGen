@@ -37,9 +37,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
             templateAbilityMinimums = new Dictionary<string, (string Ability, int Minimum)>();
             //HACK: While 6 is the minimum Charisma for Ghost, some creatures have racial adjustments that decrease it further, so 6+ helps alleviate that.
-            templateAbilityMinimums[CreatureConstants.Templates.Ghost] = (AbilityConstants.Charisma, 7);
-            templateAbilityMinimums[CreatureConstants.Templates.HalfCelestial] = (AbilityConstants.Intelligence, 4);
-            templateAbilityMinimums[CreatureConstants.Templates.HalfFiend] = (AbilityConstants.Intelligence, 4);
+            templateAbilityMinimums[CreatureConstants.Templates.Ghost] = (AbilityConstants.Charisma, 6 + 2);
+            //HACK: While 4 is the minimum Intelligence for Half-Celestial, some creatures have racial adjustments that decrease it further, so 4+ helps alleviate that.
+            templateAbilityMinimums[CreatureConstants.Templates.HalfCelestial] = (AbilityConstants.Intelligence, 4 + 2);
+            //HACK: While 4 is the minimum Intelligence for Half-Fiend, some creatures have racial adjustments that decrease it further, so 4+ helps alleviate that.
+            templateAbilityMinimums[CreatureConstants.Templates.HalfFiend] = (AbilityConstants.Intelligence, 4 + 2);
         }
 
         [TestCase(true, null)] //INFO: Pre-random template
@@ -410,6 +412,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             (CreatureConstants.GrayRender, CreatureConstants.Templates.None, true),
             (CreatureConstants.Hieracosphinx, CreatureConstants.Templates.Skeleton, false),
             (CreatureConstants.Human, CreatureConstants.Templates.Ghost, false),
+            (CreatureConstants.Mimic, CreatureConstants.Templates.Ghost, false),
             (CreatureConstants.Otyugh, CreatureConstants.Templates.Ghost, false),
             (CreatureConstants.Otyugh, CreatureConstants.Templates.Zombie, false),
             (CreatureConstants.ShamblingMound, CreatureConstants.Templates.HalfFiend, true),
@@ -422,6 +425,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                 (true, new Filters()),
                 (true, new Filters { Template = CreatureConstants.Templates.Ghost, Alignment = AlignmentConstants.LawfulEvil }),
                 (false, new Filters { Template = CreatureConstants.Templates.Ghost, Alignment = AlignmentConstants.ChaoticNeutral }),
+                (false, new Filters { Template = CreatureConstants.Templates.Ghost, Type = CreatureConstants.Types.Aberration, ChallengeRating = ChallengeRatingConstants.CR6 }),
                 (false, new Filters { Template = CreatureConstants.Templates.Skeleton }),
                 (false, new Filters { Template = CreatureConstants.Templates.Zombie }),
                 (false, new Filters { Type = CreatureConstants.Types.Aberration, ChallengeRating = ChallengeRatingConstants.CR6 }),
