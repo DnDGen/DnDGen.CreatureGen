@@ -139,8 +139,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
         private async Task<Creature> GenerateAndAssertCreatureAsync(string creatureName, string template, bool asCharacter)
         {
+            var randomizer = GetAbilityRandomizer(template);
+
             stopwatch.Restart();
-            var creature = await creatureGenerator.GenerateAsync(creatureName, template, asCharacter);
+            var creature = await creatureGenerator.GenerateAsync(creatureName, template, asCharacter, randomizer);
             stopwatch.Stop();
 
             Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
@@ -415,8 +417,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             (CreatureConstants.Mimic, CreatureConstants.Templates.Ghost, false),
             (CreatureConstants.Otyugh, CreatureConstants.Templates.Ghost, false),
             (CreatureConstants.Otyugh, CreatureConstants.Templates.Zombie, false),
+            (CreatureConstants.RazorBoar, CreatureConstants.Templates.Ghost, false),
             (CreatureConstants.ShamblingMound, CreatureConstants.Templates.HalfFiend, true),
             (CreatureConstants.Skum, CreatureConstants.Templates.Ghost, true),
+            (CreatureConstants.Troglodyte, CreatureConstants.Templates.HalfCelestial, false),
             (CreatureConstants.Xill, CreatureConstants.Templates.None, true),
         };
 
@@ -425,7 +429,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                 (true, new Filters()),
                 (true, new Filters { Template = CreatureConstants.Templates.Ghost, Alignment = AlignmentConstants.LawfulEvil }),
                 (false, new Filters { Template = CreatureConstants.Templates.Ghost, Alignment = AlignmentConstants.ChaoticNeutral }),
-                (false, new Filters { Template = CreatureConstants.Templates.Ghost, Type = CreatureConstants.Types.Aberration, ChallengeRating = ChallengeRatingConstants.CR6 }),
+                (false, new Filters { Template = CreatureConstants.Templates.Ghost, Type = CreatureConstants.Types.Undead }),
+                (false, new Filters 
+                    {
+                        Template = CreatureConstants.Templates.Ghost,
+                        Type = CreatureConstants.Types.Aberration, 
+                        ChallengeRating = ChallengeRatingConstants.CR6 
+                    }),
+                (false, new Filters 
+                    {
+                        Template = CreatureConstants.Templates.Ghost,
+                        Type = CreatureConstants.Types.Subtypes.Reptilian, 
+                        ChallengeRating = ChallengeRatingConstants.CR2 
+                    }),
                 (false, new Filters { Template = CreatureConstants.Templates.Skeleton }),
                 (false, new Filters { Template = CreatureConstants.Templates.Zombie }),
                 (false, new Filters { Type = CreatureConstants.Types.Aberration, ChallengeRating = ChallengeRatingConstants.CR6 }),
@@ -438,6 +454,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                 (false, new Filters { Type = CreatureConstants.Types.Subtypes.Augmented }),
                 (false, new Filters { Type = CreatureConstants.Types.Subtypes.Incorporeal }),
                 (false, new Filters { Type = CreatureConstants.Types.Subtypes.Native }),
+                (false, new Filters { Type = CreatureConstants.Types.Subtypes.Reptilian, ChallengeRating = ChallengeRatingConstants.CR2 }),
                 (false, new Filters { Type = CreatureConstants.Types.Subtypes.Shapechanger }),
         };
 
