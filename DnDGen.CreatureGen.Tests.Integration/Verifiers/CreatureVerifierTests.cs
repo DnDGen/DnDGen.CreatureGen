@@ -1,6 +1,7 @@
 ﻿using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Creatures;
+using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.CreatureGen.Verifiers;
 using NUnit.Framework;
 using System;
@@ -496,6 +497,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
             Assert.That(verified, Is.EqualTo(isValid));
         }
 
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicCreaturesTestCases))]
+        public void ProblematicCreaturesAreValid(string creature, string template, bool asCharacter)
+        {
+            var verified = creatureVerifier.VerifyCompatibility(asCharacter, creature, new Filters { Template = template });
+            Assert.That(verified, Is.True);
+        }
+
         [TestCase(false, null, null, null, null, AlignmentConstants.ChaoticEvil, true)]
         [TestCase(false, null, null, null, null, AlignmentConstants.ChaoticGood, true)]
         [TestCase(false, null, null, null, null, AlignmentConstants.ChaoticNeutral, true)]
@@ -719,6 +727,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Verifiers
 
             Assert.That(verified, Is.EqualTo(isValid));
             Assert.That(stopwatch.Elapsed, Is.LessThan(timeLimit), $"Verified: {verified}");
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicFiltersTestCases))]
+        public void ProblematicFiltersAreValid(string type, bool asCharacter, string template, string challengeRating, string alignment)
+        {
+            var filters = new Filters { Template = template, Type = type, ChallengeRating = challengeRating, Alignment = alignment };
+            var verified = creatureVerifier.VerifyCompatibility(asCharacter, null, filters);
+            Assert.That(verified, Is.True);
         }
     }
 }

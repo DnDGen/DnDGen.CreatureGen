@@ -467,6 +467,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Wolverine, CreatureConstants.Templates.FiendishCreature)]
         [TestCase(CreatureConstants.Wolverine_Dire, CreatureConstants.Templates.FiendishCreature)]
         [TestCase(CreatureConstants.Wyvern, CreatureConstants.Templates.Zombie)]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicCreaturesTestCases))]
         public void CanGenerateTemplate(string creatureName, string template, bool asCharacter = false)
         {
             var creature = creatureGenerator.Generate(creatureName, template, asCharacter);
