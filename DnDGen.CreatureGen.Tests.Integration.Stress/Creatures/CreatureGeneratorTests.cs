@@ -37,12 +37,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             stopwatch = new Stopwatch();
 
             templateAbilityMinimums = new Dictionary<string, (string Ability, int Minimum)>();
-            //HACK: While 6 is the minimum Charisma for Ghost, some creatures have racial adjustments that decrease it further, so 6+ helps alleviate that.
-            templateAbilityMinimums[CreatureConstants.Templates.Ghost] = (AbilityConstants.Charisma, 6 + 2);
-            //HACK: While 4 is the minimum Intelligence for Half-Celestial, some creatures have racial adjustments that decrease it further, so 4+ helps alleviate that.
-            templateAbilityMinimums[CreatureConstants.Templates.HalfCelestial] = (AbilityConstants.Intelligence, 4 + 2);
-            //HACK: While 4 is the minimum Intelligence for Half-Fiend, some creatures have racial adjustments that decrease it further, so 4+ helps alleviate that.
-            templateAbilityMinimums[CreatureConstants.Templates.HalfFiend] = (AbilityConstants.Intelligence, 4 + 2);
+            templateAbilityMinimums[CreatureConstants.Templates.Ghost] = (AbilityConstants.Charisma, 6);
+            templateAbilityMinimums[CreatureConstants.Templates.HalfCelestial] = (AbilityConstants.Intelligence, 4);
+            templateAbilityMinimums[CreatureConstants.Templates.HalfFiend] = (AbilityConstants.Intelligence, 4);
         }
 
         [TestCase(true, null)] //INFO: Pre-random template
@@ -98,6 +95,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             if (template != null && templateAbilityMinimums.ContainsKey(template))
             {
                 randomizer.AbilityAdvancements[templateAbilityMinimums[template].Ability] = templateAbilityMinimums[template].Minimum;
+                randomizer.PriorityAbility = templateAbilityMinimums[template].Ability;
+            }
+            else if (template == null)
+            {
+                //HACK: Here, the template might be randomly selected, so we have to guard against it for the sake of stress testing
+                foreach (var kvp in templateAbilityMinimums)
+                {
+                    if (dice.Roll(randomizer.Roll).AsPotentialMinimum() < kvp.Value.Minimum)
+                    {
+                        randomizer.AbilityAdvancements[kvp.Value.Ability] = kvp.Value.Minimum;
+                    }
+                }
             }
 
             return randomizer;
