@@ -8,7 +8,6 @@ using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using NUnit.Framework;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -112,9 +111,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             return randomizer;
         }
 
-        private Creature GenerateAndAssertCreature(string creatureName, string template, bool asCharacter)
+        private Creature GenerateAndAssertCreature(string creatureName, string template, bool asCharacter, bool useDefaultAbilities = false)
         {
             var randomizer = GetAbilityRandomizer(template);
+            if (useDefaultAbilities)
+                randomizer.Roll = AbilityConstants.RandomizerRolls.Default;
 
             stopwatch.Restart();
             var creature = creatureGenerator.Generate(creatureName, template, asCharacter, randomizer);
@@ -252,7 +253,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             return (template, type, cr, alignment);
         }
 
-        private Creature GenerateAndAssertRandomCreature(bool asCharacter, string template, string type, string challengeRating, string alignment)
+        private Creature GenerateAndAssertRandomCreature(bool asCharacter, string template, string type, string challengeRating, string alignment, bool useDefaultAbilities = false)
         {
             var filters = new Filters();
             filters.Template = template;
@@ -261,6 +262,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             filters.Alignment = alignment;
 
             var randomizer = GetAbilityRandomizer(template);
+            if (useDefaultAbilities)
+                randomizer.Roll = AbilityConstants.RandomizerRolls.Default;
 
             stopwatch.Restart();
             var creature = creatureGenerator.GenerateRandom(asCharacter, randomizer, filters);
@@ -402,7 +405,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private void GenerateAndAssertProblematicCreature()
         {
             var randomCreature = collectionSelector.SelectRandomFrom(CreatureTestData.ProblematicCreatures);
-            GenerateAndAssertCreature(randomCreature.Creature, randomCreature.Template, randomCreature.AsCharacter);
+            GenerateAndAssertCreature(randomCreature.Creature, randomCreature.Template, randomCreature.AsCharacter, true);
         }
 
         [Test]
@@ -415,11 +418,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         {
             var randomFilters = collectionSelector.SelectRandomFrom(CreatureTestData.ProblematicFilters);
             GenerateAndAssertRandomCreature(
-                randomFilters.AsCharacter, 
+                randomFilters.AsCharacter,
                 randomFilters.Filters.Template,
                 randomFilters.Filters.Type,
-                randomFilters.Filters.ChallengeRating, 
-                randomFilters.Filters.Alignment);
+                randomFilters.Filters.ChallengeRating,
+                randomFilters.Filters.Alignment,
+                true);
         }
     }
 }
