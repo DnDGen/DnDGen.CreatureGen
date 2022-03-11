@@ -3,6 +3,7 @@ using DnDGen.CreatureGen.Attacks;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
+using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Templates;
@@ -22,7 +23,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public void Generate_InvalidCreatureTemplateComboThrowsException(bool asCharacter)
         {
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, "creature", "template", null, null, null)).Returns(false);
+            var filters = new Filters { Template = "template" };
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, "creature", filters)).Returns(false);
 
             var message = new StringBuilder();
             message.AppendLine("Invalid creature:");
@@ -1467,7 +1469,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("template")).Returns(mockTemplateApplicator.Object);
 
             var templateCreature = new Creature();
-            mockTemplateApplicator.Setup(a => a.ApplyTo(It.IsAny<Creature>(), asCharacter, null, null, null)).Returns(templateCreature);
+            mockTemplateApplicator
+                .Setup(a => a.ApplyTo(It.IsAny<Creature>(), asCharacter, It.Is<Filters>(f => f != null
+                    && f.Template == "template"
+                    && f.ChallengeRating == null
+                    && f.Type == null
+                    && f.Alignment == null)))
+                .Returns(templateCreature);
 
             var creature = creatureGenerator.Generate("creature", "template", asCharacter);
             Assert.That(creature, Is.EqualTo(templateCreature));

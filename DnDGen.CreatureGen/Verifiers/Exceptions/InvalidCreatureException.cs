@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Generators.Creatures;
 using System;
 using System.Text;
 
@@ -14,12 +15,25 @@ namespace DnDGen.CreatureGen.Verifiers.Exceptions
         private readonly string alignment;
         private readonly string reason;
 
-        public InvalidCreatureException(string reason, bool asCharacter, string creature = null, string template = null, string type = null, string challengeRating = null, string alignment = null)
+        public InvalidCreatureException(string reason, bool asCharacter, string creature = null, Filters filters = null)
+            : this(reason, asCharacter, creature, filters?.Template, filters?.Type, filters?.ChallengeRating, filters?.Alignment)
+        {
+
+        }
+
+        public InvalidCreatureException(
+            string reason, 
+            bool asCharacter, 
+            string creature = null, 
+            string template = null,
+            string type = null, 
+            string challengeRating = null, 
+            string alignment = null)
         {
             this.reason = reason;
+            this.asCharacter = asCharacter;
             this.creature = creature;
             this.template = template;
-            this.asCharacter = asCharacter;
             this.type = type;
             this.challengeRating = challengeRating;
             this.alignment = alignment;

@@ -342,7 +342,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             message.AppendLine($"\tCR: {challengeRating}");
             message.AppendLine($"\tAlignment: {alignment}");
 
-            Assert.That(() => applicators[template].ApplyTo(baseCreature, asCharacter, type, challengeRating, alignment),
+            var filters = new Filters();
+            filters.Type = type;
+            filters.ChallengeRating = challengeRating;
+            filters.Alignment = alignment;
+
+            Assert.That(() => applicators[template].ApplyTo(baseCreature, asCharacter, filters),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
@@ -379,7 +384,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             SetUpAnimal(animal, hitDiceQuantity: 1);
 
-            var creature = applicators[template].ApplyTo(baseCreature, false, "subtype 1", ChallengeRatingConstants.CR3, "original alignment");
+            var filters = new Filters();
+            filters.Type = "subtype 1";
+            filters.ChallengeRating = ChallengeRatingConstants.CR3;
+            filters.Alignment = "original alignment";
+
+            var creature = applicators[template].ApplyTo(baseCreature, false, filters);
             Assert.That(creature.Template, Is.EqualTo(template));
         }
 
@@ -2281,7 +2291,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             message.AppendLine($"\tCR: {challengeRating}");
             message.AppendLine($"\tAlignment: {alignment}");
 
-            Assert.That(async () => await applicators[template].ApplyToAsync(baseCreature, asCharacter, type, challengeRating, alignment),
+            var filters = new Filters();
+            filters.Type = type;
+            filters.ChallengeRating = challengeRating;
+            filters.Alignment = alignment;
+
+            Assert.That(async () => await applicators[template].ApplyToAsync(baseCreature, asCharacter, filters),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
@@ -2292,7 +2307,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
             baseCreature.HitPoints.HitDice[0].Quantity = 1;
             baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
-            baseCreature.Alignment = new Alignment($"original alignment");
+            baseCreature.Alignment = new Alignment("original alignment");
 
             mockDice.Reset();
             rollSequences.Clear();
@@ -2303,7 +2318,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             SetUpAnimal(animal, hitDiceQuantity: 1);
 
-            var creature = await applicators[template].ApplyToAsync(baseCreature, false, "subtype 1", ChallengeRatingConstants.CR3, "original alignment");
+            var filters = new Filters();
+            filters.Type = "subtype 1";
+            filters.ChallengeRating = ChallengeRatingConstants.CR3;
+            filters.Alignment = "original alignment";
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false, filters);
             Assert.That(creature.Template, Is.EqualTo(template));
         }
 
@@ -3645,7 +3665,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureGroups, "preset alignment"))
                 .Returns(new[] { "my creature", "wrong creature 2", "my other creature", "wrong creature 1", "wrong creature 3" });
 
-            var compatibleCreatures = applicators[template].GetCompatibleCreatures(creatures, false, alignment: "preset alignment");
+            var filters = new Filters { Alignment = "preset alignment" };
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(creatures, false, filters);
             Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
         }
 
@@ -3725,7 +3747,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
                 .Returns((string t, string c) => alignments[c]);
 
-            var compatibleCreatures = applicators[template].GetCompatibleCreatures(creatures, false, challengeRating: updatedChallengeRating);
+            var filters = new Filters { ChallengeRating = updatedChallengeRating };
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(creatures, false, filters);
             Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
         }
 
@@ -3795,7 +3819,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
                 .Returns((string t, string c) => alignments[c]);
 
-            var compatibleCreatures = applicators[template].GetCompatibleCreatures(creatures, false, type: CreatureConstants.Types.Subtypes.Shapechanger);
+            var filters = new Filters { Type = CreatureConstants.Types.Subtypes.Shapechanger };
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(creatures, false, filters);
             Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
         }
 
@@ -3870,7 +3896,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
                 .Returns((string t, string c) => alignments[c]);
 
-            var compatibleCreatures = applicators[template].GetCompatibleCreatures(creatures, false, type: "subtype 2");
+            var filters = new Filters { Type = "subtype 2" };
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(creatures, false, filters);
             Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
         }
 
@@ -3958,7 +3986,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
                 .Returns((string t, string c) => alignments[c]);
 
-            var compatibleCreatures = applicators[template].GetCompatibleCreatures(creatures, false, "subtype 2", ChallengeRatingConstants.CR3);
+            var filters = new Filters { Type = "subtype 2", ChallengeRating = ChallengeRatingConstants.CR3 };
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(creatures, false, filters);
             Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
         }
 
@@ -4171,7 +4201,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
                 .Returns((string t, string c) => alignments[c]);
 
-            var compatibleCreatures = applicators[template].GetCompatibleCreatures(new[] { "my creature" }, false, type: type);
+            var filters = new Filters { Type = type };
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(new[] { "my creature" }, false, filters);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 
@@ -4242,7 +4274,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
                 .Returns((string t, string c) => alignments[c]);
 
-            var compatibleCreatures = applicators[template].GetCompatibleCreatures(new[] { "my creature" }, false, challengeRating: challengeRating);
+            var filters = new Filters { ChallengeRating = challengeRating };
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(new[] { "my creature" }, false, filters);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 
@@ -4302,7 +4336,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
                 .Returns((string t, string c) => alignments[c]);
 
-            var compatibleCreatures = applicators[template].GetCompatibleCreatures(new[] { "my creature" }, true, challengeRating: challengeRating);
+            var filters = new Filters { ChallengeRating = challengeRating };
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(new[] { "my creature" }, true, filters);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 
@@ -4449,7 +4485,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
                 .Returns((string t, string c) => alignments[c]);
 
-            var compatibleCreatures = applicators[template].GetCompatibleCreatures(new[] { "my creature" }, true, challengeRating: challengeRating);
+            var filters = new Filters { ChallengeRating = challengeRating };
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(new[] { "my creature" }, true, filters);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 
@@ -4593,7 +4631,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureGroups, "wrong alignment"))
                 .Returns(new[] { "wrong creature 2", "wrong creature 1", "wrong creature 3" });
 
-            var compatibleCreatures = applicators[template].GetCompatibleCreatures(new[] { "my creature" }, false, alignment: alignment);
+            var filters = new Filters { Alignment = alignment };
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(new[] { "my creature" }, false, filters);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 
@@ -4666,7 +4706,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureGroups, "wrong alignment"))
                 .Returns(new[] { "wrong creature 2", "wrong creature 1", "wrong creature 3" });
 
-            var compatibleCreatures = applicators[template].GetCompatibleCreatures(new[] { "my creature" }, false, type, challengeRating, alignment);
+            var filters = new Filters { Alignment = alignment, Type = type, ChallengeRating = challengeRating };
+
+            var compatibleCreatures = applicators[template].GetCompatibleCreatures(new[] { "my creature" }, false, filters);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
         }
 

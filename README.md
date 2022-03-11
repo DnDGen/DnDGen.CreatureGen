@@ -1,4 +1,4 @@
-# CharacterGen
+# CreatureGen
 
 Generates a random, fleshed-out creature for Dungeons and Dragons 3.X
 
@@ -9,7 +9,31 @@ Generates a random, fleshed-out creature for Dungeons and Dragons 3.X
 To use CreatureGen, simply use the CreatureGenerator.
 
 ```C#
-var creature = creatureGenerator.GenerateWith(CreatureConstants.Ogre, CreatureConstants.Templates.Zombie);
+var creature = creatureGenerator.Generate(CreatureConstants.Ogre, CreatureConstants.Templates.Zombie, false);
+var asyncCreature = await creatureGenerator.GenerateAsync(CreatureConstants.Human, CreatureConstants.Templates.None, false);
+var character = creatureGenerator.Generate(CreatureConstants.Human, CreatureConstants.Templates.None, true);
+
+//INFO: When the ability randomizer is not passed in, it defaults to no modifications and the default roll (1d2+9, or 10-11)
+var abilityRandomizer = new AbilityRandomizer();
+abilityRandomizer.Roll = AbilityConstants.RandomizerRolls.Best;
+abilityRandomizer.PriorityAbility = AbilityConstants.Intelligence;
+
+var creatureWithAbilities = creatureGenerator.Generate(CreatureConstants.Elf_High, CreatureConstants.Templates.Lich, true, abilityRandomizer);
+
+var randomName = creatureGenerator.GenerateRandomName(false);
+var randomCharacter = creatureGenerator.GenerateRandomName(true);
+
+//INFO: When the filters are not passed, they default to allowing anything.
+//To not have a particular filter set, simply leave it as null
+var filters = new Filters();
+filters.Template = CreatureConstants.Templates.HalfFiend;
+filters.Type = CreatureConstants.Types.Humanoid;
+filters.ChallengeRating = ChallengeRatingConstants.CR3;
+filters.Alignment = AlignmentConstants.NeutralEvil;
+
+var randomNameWithFilters = creatureGenerator.GenerateRandomName(false, filters);
+var randomWithFilters = creatureGenerator.GenerateRandom(false, null, filters);
+var randomAsyncWithFilters = await creatureGenerator.GenerateRandomAsync(false, abilityRandomizer, filters);
 ```
 
 ### Getting the Generators

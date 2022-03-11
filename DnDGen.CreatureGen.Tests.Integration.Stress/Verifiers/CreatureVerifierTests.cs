@@ -1,5 +1,6 @@
 ﻿using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
@@ -86,11 +87,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Verifiers
                 alignment = collectionSelector.SelectRandomFrom(alignments);
             }
 
+            var filters = new Filters();
+            filters.Type = type;
+            filters.ChallengeRating = cr;
+            filters.Alignment = alignment;
+            filters.Template = template;
+
             stopwatch.Restart();
-            var verified = creatureVerifier.VerifyCompatibility(asCharacter, creature, template, type, cr, alignment);
+            var verified = creatureVerifier.VerifyCompatibility(asCharacter, creature, filters);
             stopwatch.Stop();
 
-            var failure = new InvalidCreatureException(null, asCharacter, creature, template, type, cr, alignment);
+            var failure = new InvalidCreatureException(null, asCharacter, creature, filters);
             Assert.That(stopwatch.Elapsed, Is.LessThan(timeLimit), $"Verified: {verified}\n{failure.Message}");
         }
     }

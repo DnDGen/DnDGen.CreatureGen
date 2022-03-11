@@ -3,6 +3,8 @@ using DnDGen.CreatureGen.Attacks;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
+using DnDGen.CreatureGen.Generators.Abilities;
+using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Templates;
@@ -38,7 +40,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public async Task GenerateAsync_InvalidCreatureTemplateComboThrowsException(bool asCharacter)
         {
-            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, "creature", "template", null, null, null)).Returns(false);
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(asCharacter, "creature", It.Is<Filters>(f => f != null
+                    && f.Template == "template"
+                    && f.ChallengeRating == null
+                    && f.Type == null
+                    && f.Alignment == null)))
+                .Returns(false);
 
             var message = new StringBuilder();
             message.AppendLine("Invalid creature:");
@@ -226,6 +234,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             SetUpCreature("creature", "template", asCharacter);
             var creature = await creatureGenerator.GenerateAsync("creature", "template", asCharacter);
+            Assert.That(creature.Abilities, Is.EqualTo(abilities));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public async Task GenerateAsync_GenerateCreatureAbilities_WithSpecifiedRandomizer(bool asCharacter)
+        {
+            var randomizer = new AbilityRandomizer();
+            randomizer.Roll = "my special roll";
+
+            SetUpCreature("creature", "template", asCharacter, randomizer: randomizer);
+            var creature = await creatureGenerator.GenerateAsync("creature", "template", asCharacter, randomizer);
             Assert.That(creature.Abilities, Is.EqualTo(abilities));
         }
 
@@ -1466,7 +1486,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("template")).Returns(mockTemplateApplicator.Object);
 
             var templateCreature = new Creature();
-            mockTemplateApplicator.Setup(a => a.ApplyToAsync(It.IsAny<Creature>(), asCharacter, null, null, null)).ReturnsAsync(templateCreature);
+            mockTemplateApplicator
+                .Setup(a => a.ApplyToAsync(It.IsAny<Creature>(), asCharacter, It.Is<Filters>(f => f != null
+                    && f.Template == "template"
+                    && f.ChallengeRating == null
+                    && f.Type == null
+                    && f.Alignment == null)))
+                .ReturnsAsync(templateCreature);
 
             var creature = await creatureGenerator.GenerateAsync("creature", "template", asCharacter);
             Assert.That(creature, Is.EqualTo(templateCreature));

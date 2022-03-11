@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
 using DnDGen.Infrastructure.Generators;
@@ -19,12 +20,7 @@ namespace DnDGen.CreatureGen.Verifiers
             this.collectionsSelector = collectionsSelector;
         }
 
-        public bool VerifyCompatibility(bool asCharacter,
-            string creature = null,
-            string template = null,
-            string type = null,
-            string challengeRating = null,
-            string alignment = null)
+        public bool VerifyCompatibility(bool asCharacter, string creature = null, Filters filters = null)
         {
             IEnumerable<string> baseCreatures = new[] { creature };
             if (string.IsNullOrEmpty(creature))
@@ -41,18 +37,18 @@ namespace DnDGen.CreatureGen.Verifiers
             if (!baseCreatures.Any())
                 return false;
 
-            if (template != null)
+            if (filters?.Template != null)
             {
-                var applicator = factory.Build<TemplateApplicator>(template);
+                var applicator = factory.Build<TemplateApplicator>(filters.Template);
 
-                var filteredBaseCreatures = applicator.GetCompatibleCreatures(baseCreatures, asCharacter, type, challengeRating, alignment);
+                var filteredBaseCreatures = applicator.GetCompatibleCreatures(baseCreatures, asCharacter, filters);
                 return filteredBaseCreatures.Any();
             }
 
             //INFO: We can cheat and use the None template applicator
             var noneApplicator = factory.Build<TemplateApplicator>(CreatureConstants.Templates.None);
 
-            var nonTemplateCreatures = noneApplicator.GetCompatibleCreatures(baseCreatures, asCharacter, type, challengeRating, alignment);
+            var nonTemplateCreatures = noneApplicator.GetCompatibleCreatures(baseCreatures, asCharacter, filters);
             if (nonTemplateCreatures.Any())
                 return true;
 
@@ -62,7 +58,7 @@ namespace DnDGen.CreatureGen.Verifiers
             {
                 var templateApplicator = factory.Build<TemplateApplicator>(otherTemplate);
 
-                var filteredBaseCreatures = templateApplicator.GetCompatibleCreatures(baseCreatures, asCharacter, type, challengeRating, alignment);
+                var filteredBaseCreatures = templateApplicator.GetCompatibleCreatures(baseCreatures, asCharacter, filters);
                 if (filteredBaseCreatures.Any())
                     return true;
             }
