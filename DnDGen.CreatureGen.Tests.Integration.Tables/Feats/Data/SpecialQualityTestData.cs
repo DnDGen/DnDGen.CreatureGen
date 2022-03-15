@@ -4474,6 +4474,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             testCases[CreatureConstants.Zelekhut].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Geas_Lesser, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Week, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will, saveBaseValue: 14));
             testCases[CreatureConstants.Zelekhut].Add(helper.BuildData(FeatConstants.MountedCombat));
 
+            testCases[CreatureConstants.Cow].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+
+            testCases[CreatureConstants.Chicken].Add(helper.BuildData(FeatConstants.WeaponFinesse));
+
             return testCases;
         }
 

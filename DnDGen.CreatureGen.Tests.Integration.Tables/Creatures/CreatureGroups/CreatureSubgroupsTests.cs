@@ -1059,7 +1059,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         {
             var creatures = CreatureConstants.GetAll();
             var allCreatures = collectionSelector.Explode(tableName, GroupConstants.All);
-            Assert.That(allCreatures, Is.EquivalentTo(creatures));
+
+            //HACK: The failure message for Is.Equivalent is truncated because of the size of the collection
+            //So, we will alter the assertions
+            Assert.That(creatures, Is.Unique, "From GetAll");
+            Assert.That(allCreatures, Is.Unique, "From Explode");
+            Assert.That(creatures.Except(allCreatures), Is.Empty, "From GetAll");
+            Assert.That(allCreatures.Except(creatures), Is.Empty, "From Explode");
         }
 
         [Test]

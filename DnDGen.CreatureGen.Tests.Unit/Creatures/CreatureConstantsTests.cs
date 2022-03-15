@@ -62,6 +62,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Centipede_Swarm, "Centipede Swarm")]
         [TestCase(CreatureConstants.ChaosBeast, "Chaos Beast")]
         [TestCase(CreatureConstants.Cheetah, "Cheetah")]
+        [TestCase(CreatureConstants.Chicken, "Chicken")]
         [TestCase(CreatureConstants.Chimera_Black, "Chimera (Black Dragon head)")]
         [TestCase(CreatureConstants.Chimera_Blue, "Chimera (Blue Dragon head)")]
         [TestCase(CreatureConstants.Chimera_Green, "Chimera (Green Dragon head)")]
@@ -72,6 +73,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Cloaker, "Cloaker")]
         [TestCase(CreatureConstants.Cockatrice, "Cockatrice")]
         [TestCase(CreatureConstants.Couatl, "Couatl")]
+        [TestCase(CreatureConstants.Cow, "Cow")]
         [TestCase(CreatureConstants.Criosphinx, "Criosphinx")]
         [TestCase(CreatureConstants.Crocodile, "Crocodile")]
         [TestCase(CreatureConstants.Crocodile_Giant, "Giant Crocodile")]
@@ -887,7 +889,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
             var constantFields = fields.Where(f => f.IsLiteral && !f.IsInitOnly);
             var constants = constantFields.Select(f => f.GetValue(null) as string);
 
-            Assert.That(creatures, Is.EquivalentTo(constants));
+            //HACK: The failure message for Is.Equivalent is truncated because of the size of the collection
+            //So, we will alter the assertions
+            Assert.That(creatures, Is.Unique, "From GetAll");
+            Assert.That(constants, Is.Unique, "From Reflection");
+            Assert.That(creatures.Except(constants), Is.Empty, "From GetAll");
+            Assert.That(constants.Except(creatures), Is.Empty, "From Reflection");
         }
 
         [Test]

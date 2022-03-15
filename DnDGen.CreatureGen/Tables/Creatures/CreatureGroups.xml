@@ -115,6 +115,12 @@
     <entry>Dire Wolf</entry>
     <entry>Wolverine</entry>
     <entry>Dire Wolverine</entry>
+	  <entry>Cow</entry>
+	  <entry>Goat</entry>
+	  <entry>Goat, Riding</entry>
+	  <entry>Goat, War</entry>
+	  <entry>Pig</entry>
+	  <entry>Chicken</entry>
   </collection>
   <collection>
     <name>Animated Object</name>
@@ -3492,6 +3498,8 @@
     <entry>Worg</entry>
     <entry>Wyvern</entry>
     <entry>Yrthak</entry>
+	  <entry>Cow</entry>
+	  <entry>Chicken</entry>
   </collection>
   <collection>
     <name>Neutral Evil</name>

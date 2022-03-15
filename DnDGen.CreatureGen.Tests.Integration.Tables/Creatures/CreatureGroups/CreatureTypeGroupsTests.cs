@@ -487,6 +487,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Wolf_Dire,
                 CreatureConstants.Wolverine,
                 CreatureConstants.Wolverine_Dire,
+                CreatureConstants.Cow,
+                CreatureConstants.Chicken,
             };
 
             AssertDistinctCollection(CreatureConstants.Types.Animal, creatures);

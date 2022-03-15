@@ -986,6 +986,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.YuanTi_Pureblood][None] = new string[0];
                 testCases[CreatureConstants.Zelekhut][RollHelper.GetRollWithMostEvenDistribution(8, 9, 16)] = GetData(SizeConstants.Large, 10, 10);
                 testCases[CreatureConstants.Zelekhut][RollHelper.GetRollWithMostEvenDistribution(8, 17, 24)] = GetData(SizeConstants.Huge, 15, 15);
+                testCases[CreatureConstants.Cow][RollHelper.GetRollWithMostEvenDistribution(7, 8, 100)] = GetData(SizeConstants.Huge, 15, 10);
+                testCases[CreatureConstants.Chicken][None] = new string[0];
 
                 foreach (var testCase in testCases)
                 {

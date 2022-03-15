@@ -746,6 +746,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs)]
         [TestCase(CreatureConstants.YuanTi_Pureblood)]
         [TestCase(CreatureConstants.Zelekhut)]
+        [TestCase(CreatureConstants.Cow)]
+        [TestCase(CreatureConstants.Chicken)]
         [TestCase(CreatureConstants.Types.Aberration)]
         [TestCase(CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Types.Construct)]

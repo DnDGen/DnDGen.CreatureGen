@@ -2536,4 +2536,22 @@
   <collection>
     <name></name>
   </collection>
+	<collection>
+		<name>Cow</name>
+	</collection>
+	<collection>
+		<name>Goat</name>
+	</collection>
+	<collection>
+		<name>Goat, Riding</name>
+	</collection>
+	<collection>
+		<name>Goat, War</name>
+	</collection>
+	<collection>
+		<name>Pig</name>
+	</collection>
+	<collection>
+		<name>Chicken</name>
+	</collection>
 </collections>

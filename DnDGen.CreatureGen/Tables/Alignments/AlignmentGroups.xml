@@ -7643,4 +7643,20 @@
     <entry>Chaotic Neutral</entry>
     <entry>Chaotic Evil</entry>
   </collection>
+	<collection>
+		<name>Cow</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Chicken</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>CowExploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>ChickenExploded</name>
+		<entry>True Neutral</entry>
+	</collection>
 </collections>

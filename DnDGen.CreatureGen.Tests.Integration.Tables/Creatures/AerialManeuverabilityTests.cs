@@ -751,6 +751,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs)]
         [TestCase(CreatureConstants.YuanTi_Pureblood)]
         [TestCase(CreatureConstants.Zelekhut, "Average Maneuverability (Wings)")]
+        [TestCase(CreatureConstants.Cow)]
+        [TestCase(CreatureConstants.Chicken)]
         [TestCase(CreatureConstants.Templates.CelestialCreature)]
         [TestCase(CreatureConstants.Templates.FiendishCreature)]
         [TestCase(CreatureConstants.Templates.Ghost, "Perfect Maneuverability (Magic)")]

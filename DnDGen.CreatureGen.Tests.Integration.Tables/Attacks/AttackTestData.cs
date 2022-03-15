@@ -5315,6 +5315,29 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                     string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Hit, true, true, false, true));
                 testCases[CreatureConstants.Zelekhut].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
+                testCases[CreatureConstants.Cow].Add(attackHelper.BuildData("Gore",
+                    damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing),
+                    string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Cow].Add(attackHelper.BuildData("Hoof",
+                    damageHelper.BuildEntries("1d4", AttributeConstants.DamageTypes.Bludgeoning),
+                    string.Empty, 0.5, "melee", 2, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Cow].Add(attackHelper.BuildData("Stampede",
+                    string.Empty,
+                    string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Reflex));
+                testCases[CreatureConstants.Cow].Add(attackHelper.BuildData("Thunderous Moo",
+                    string.Empty,
+                    "Deafen for 3 rounds", 0, "extraordinary ability", 1, $"3 {FeatConstants.Frequencies.Round}", false, true, false, true, saveAbility: AbilityConstants.Constitution, save: SaveConstants.Fortitude, saveDcBonus: 1));
+                testCases[CreatureConstants.Cow].Add(attackHelper.BuildData("Ultimate Bull Rush",
+                    damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning),
+                    string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+                testCases[CreatureConstants.Cow].Add(attackHelper.BuildData("Produce Milk",
+                    string.Empty,
+                    string.Empty, 0, "extraordinary ability", 2, FeatConstants.Frequencies.Day, false, true, false, true));
+
+                testCases[CreatureConstants.Chicken].Add(attackHelper.BuildData("Peck",
+                    damageHelper.BuildEntries("1d2", AttributeConstants.DamageTypes.Piercing),
+                    string.Empty, 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+
                 return TestDataHelper.EnumerateTestCases(testCases);
             }
         }

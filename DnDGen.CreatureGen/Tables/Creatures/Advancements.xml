@@ -2863,4 +2863,22 @@
     <entry>Large,10,10@1d8</entry>
     <entry>Huge,15,15@1d8+8</entry>
   </collection>
+	<collection>
+		<name>Cow</name>
+	</collection>
+	<collection>
+		<name>Goat</name>
+	</collection>
+	<collection>
+		<name>Goat, Riding</name>
+	</collection>
+	<collection>
+		<name>Goat, War</name>
+	</collection>
+	<collection>
+		<name>Pig</name>
+	</collection>
+	<collection>
+		<name>Chicken</name>
+	</collection>
 </collections>

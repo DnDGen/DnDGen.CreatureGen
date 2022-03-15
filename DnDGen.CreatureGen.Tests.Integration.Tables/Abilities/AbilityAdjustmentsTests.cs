@@ -4042,6 +4042,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
                 testCases[CreatureConstants.Zelekhut][AbilityConstants.Intelligence] = 0;
                 testCases[CreatureConstants.Zelekhut][AbilityConstants.Strength] = 10;
                 testCases[CreatureConstants.Zelekhut][AbilityConstants.Wisdom] = 6;
+                testCases[CreatureConstants.Cow][AbilityConstants.Charisma] = -6;
+                testCases[CreatureConstants.Cow][AbilityConstants.Constitution] = 12;
+                testCases[CreatureConstants.Cow][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.Cow][AbilityConstants.Intelligence] = -8;
+                testCases[CreatureConstants.Cow][AbilityConstants.Strength] = 14;
+                testCases[CreatureConstants.Cow][AbilityConstants.Wisdom] = 2;
+                testCases[CreatureConstants.Chicken][AbilityConstants.Charisma] = -4;
+                testCases[CreatureConstants.Chicken][AbilityConstants.Constitution] = 0;
+                testCases[CreatureConstants.Chicken][AbilityConstants.Dexterity] = 4;
+                testCases[CreatureConstants.Chicken][AbilityConstants.Intelligence] = -8;
+                testCases[CreatureConstants.Chicken][AbilityConstants.Strength] = -10;
+                testCases[CreatureConstants.Chicken][AbilityConstants.Wisdom] = 4;
 
                 foreach (var testCase in testCases)
                 {
@@ -4051,42 +4063,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void HaveAtLeast1Ability(string creature)
-        {
-            Assert.That(table.Keys, Contains.Item(creature));
-
-            var abilities = GetCollection(creature);
-            Assert.That(abilities, Is.Not.Empty, creature);
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void HaveUniqueAbilities(string creature)
-        {
-            Assert.That(table.Keys, Contains.Item(creature));
-
-            var abilities = typesAndAmountsSelector.Select(tableName, creature);
-            Assert.That(abilities, Is.Not.Empty, creature);
-
-            var abilityNames = abilities.Select(a => a.Type);
-            Assert.That(abilityNames, Is.Unique);
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void AllAbilityAdjustmentsAreMultiplesOf2(string creature)
-        {
-            Assert.That(table.Keys, Contains.Item(creature));
-
-            var abilities = typesAndAmountsSelector.Select(tableName, creature);
-            Assert.That(abilities, Is.Not.Empty, creature);
-
-            foreach (var ability in abilities)
-            {
-                Assert.That(ability.Amount % 2, Is.Zero, $"{creature} {ability.Type} {ability.Amount}");
-            }
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void AllAbilityAdjustmentsAreRealAbilities(string creature)
+        public void AbilityAdjustments_AreFormattedCorrectly(string creature)
         {
             var allAbilities = new[]
             {
@@ -4104,47 +4081,58 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
             Assert.That(abilities, Is.Not.Empty, creature);
 
             var abilityNames = abilities.Select(a => a.Type);
-            Assert.That(abilityNames, Is.SubsetOf(allAbilities), creature);
+            Assert.That(abilityNames, Is.Unique.And.SubsetOf(allAbilities), creature);
+
+            foreach (var ability in abilities)
+            {
+                Assert.That(ability.Amount % 2, Is.Zero, $"{creature} {ability.Type} {ability.Amount}");
+            }
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void DoNotHaveConstitution(string creature)
+        public void Type_DoesNotHaveAbility(string creature)
         {
             var typesWithoutConstitution = new[] { CreatureConstants.Types.Construct, CreatureConstants.Types.Undead };
-            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
-
-            if (typesWithoutConstitution.Contains(types.First()))
+            var typesWithoutStrength = new[] { CreatureConstants.Types.Subtypes.Incorporeal };
+            var typesWithoutIntelligence = new[] { CreatureConstants.Types.Ooze, CreatureConstants.Types.Vermin };
+            var typesWithAllAbilities = new[]
             {
-                var abilities = typesAndAmountsSelector.Select(tableName, creature);
-                var abilityNames = abilities.Select(a => a.Type);
+                CreatureConstants.Types.Aberration,
+                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Dragon,
+                CreatureConstants.Types.Elemental,
+                CreatureConstants.Types.Fey,
+                CreatureConstants.Types.Giant,
+                CreatureConstants.Types.Humanoid,
+                CreatureConstants.Types.MagicalBeast,
+                CreatureConstants.Types.MonstrousHumanoid,
+            };
+
+            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
+            var abilities = typesAndAmountsSelector.Select(tableName, creature);
+            var abilityNames = abilities.Select(a => a.Type);
+
+            if (typesWithoutConstitution.Intersect(types).Any())
+            {
                 Assert.That(abilityNames, Does.Not.Contains(AbilityConstants.Constitution), creature);
             }
-        }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void DoNotHaveStrength(string creature)
-        {
-            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
-
-            if (types.Contains(CreatureConstants.Types.Subtypes.Incorporeal))
+            if (typesWithoutStrength.Intersect(types).Any())
             {
-                var abilities = typesAndAmountsSelector.Select(tableName, creature);
-                var abilityNames = abilities.Select(a => a.Type);
                 Assert.That(abilityNames, Does.Not.Contains(AbilityConstants.Strength), creature);
             }
-        }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void DoNotHaveIntelligence(string creature)
-        {
-            var typesWithoutIntelligence = new[] { CreatureConstants.Types.Ooze, CreatureConstants.Types.Vermin };
-            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
-
-            if (typesWithoutIntelligence.Contains(types.First()))
+            if (typesWithoutIntelligence.Intersect(types).Any())
             {
-                var abilities = typesAndAmountsSelector.Select(tableName, creature);
-                var abilityNames = abilities.Select(a => a.Type);
                 Assert.That(abilityNames, Does.Not.Contains(AbilityConstants.Intelligence), creature);
+            }
+
+            if (typesWithAllAbilities.Intersect(types).Any())
+            {
+                var allAbilities = typesAndAmountsSelector.Select(tableName, GroupConstants.All);
+                var allAbilitiesNames = allAbilities.Select(a => a.Type);
+
+                Assert.That(abilityNames, Is.EquivalentTo(allAbilitiesNames), creature);
             }
         }
 
@@ -4162,34 +4150,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
                 var intelligence = abilities.Single(a => a.Type == AbilityConstants.Intelligence);
                 Assert.That(intelligence.Amount, Is.EqualTo(-8).Or.EqualTo(-10), creature);
             }
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void HaveAllAbilities(string creature)
-        {
-            var typesWithAllAbilities = new[]
+            else
             {
-                CreatureConstants.Types.Aberration,
-                CreatureConstants.Types.Animal,
-                CreatureConstants.Types.Dragon,
-                CreatureConstants.Types.Elemental,
-                CreatureConstants.Types.Fey,
-                CreatureConstants.Types.Giant,
-                CreatureConstants.Types.Humanoid,
-                CreatureConstants.Types.MagicalBeast,
-                CreatureConstants.Types.MonstrousHumanoid,
-            };
-
-            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
-
-            var allAbilities = typesAndAmountsSelector.Select(tableName, GroupConstants.All);
-            var allAbilitiesNames = allAbilities.Select(a => a.Type);
-
-            if (typesWithAllAbilities.Contains(types.First()))
-            {
-                var abilities = typesAndAmountsSelector.Select(tableName, creature);
-                var abilityNames = abilities.Select(a => a.Type);
-                Assert.That(allAbilitiesNames, Is.EquivalentTo(abilityNames), creature);
+                Assert.Pass($"{creature} is not an Animal");
             }
         }
     }

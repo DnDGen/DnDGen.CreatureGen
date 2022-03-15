@@ -1270,6 +1270,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTail, CreatureConstants.Types.MonstrousHumanoid)]
         [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, CreatureConstants.Types.MonstrousHumanoid)]
         [TestCase(CreatureConstants.YuanTi_Pureblood, CreatureConstants.Types.MonstrousHumanoid)]
+        [TestCase(CreatureConstants.Cow, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Chicken, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Templates.None)]
         [TestCase(CreatureConstants.Templates.CelestialCreature, "",
             CreatureConstants.Types.Subtypes.Extraplanar,

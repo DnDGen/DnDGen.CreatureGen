@@ -763,6 +763,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTail, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR5, 5, true, 4, 4, 2)]
         [TestCase(CreatureConstants.YuanTi_Pureblood, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR3, 2, true, 4, 1, 2)]
         [TestCase(CreatureConstants.Zelekhut, SizeConstants.Large, 10, 10, ChallengeRatingConstants.CR9, 7, true, 8, 10, 2)]
+        [TestCase(CreatureConstants.Cow, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, null, false, 0, 6, 0)]
+        [TestCase(CreatureConstants.Chicken, SizeConstants.Tiny, 2.5, 0, ChallengeRatingConstants.CR1_6th, null, false, 0, 0, 0)]
         public void CreatureData(string creature, string size, double space, double reach, string challengeRating, int? levelAdjustment, bool canUseEquipment, int casterLevel, int naturalArmor, int numberOfHands)
         {
             var collection = DataIndexConstants.CreatureData.InitializeData();

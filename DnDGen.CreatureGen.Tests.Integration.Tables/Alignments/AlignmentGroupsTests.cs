@@ -1055,6 +1055,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.YuanTi_Pureblood, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Zelekhut, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulNeutral)]
+        [TestCase(CreatureConstants.Cow, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Chicken, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Templates.CelestialCreature, AlignmentConstants.Modifiers.Any + AlignmentConstants.Good)]
         [TestCase(CreatureConstants.Templates.FiendishCreature, AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil)]
         [TestCase(CreatureConstants.Templates.Ghost, AlignmentConstants.Modifiers.Any)]

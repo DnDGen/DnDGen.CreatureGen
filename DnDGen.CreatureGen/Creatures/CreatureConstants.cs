@@ -460,6 +460,7 @@ namespace DnDGen.CreatureGen.Creatures
         public const string ChainDevil_Kyton = "Chain Devil (Kyton)";
         public const string ChaosBeast = "Chaos Beast";
         public const string Cheetah = "Cheetah";
+        public const string Chicken = "Chicken";
         public const string Chimera_Black = "Chimera (Black Dragon head)";
         public const string Chimera_Blue = "Chimera (Blue Dragon head)";
         public const string Chimera_Green = "Chimera (Green Dragon head)";
@@ -470,6 +471,7 @@ namespace DnDGen.CreatureGen.Creatures
         public const string Cloaker = "Cloaker";
         public const string Cockatrice = "Cockatrice";
         public const string Couatl = "Couatl";
+        public const string Cow = "Cow";
         public const string Criosphinx = "Criosphinx";
         public const string Crocodile = "Crocodile";
         public const string Crocodile_Giant = "Giant Crocodile";
@@ -1701,6 +1703,8 @@ namespace DnDGen.CreatureGen.Creatures
                 YuanTi_Halfblood_SnakeTail,
                 YuanTi_Halfblood_SnakeTailAndHumanLegs,
                 YuanTi_Pureblood,
+                Cow,
+                Chicken,
             };
         }
 
