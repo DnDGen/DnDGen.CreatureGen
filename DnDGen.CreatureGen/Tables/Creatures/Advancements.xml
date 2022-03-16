@@ -601,6 +601,26 @@
     <name>Bison</name>
     <entry>Large,10,5@1d2</entry>
   </collection>
+	<collection>
+		<name>Goat</name>
+		<entry>Medium,5,5@1d2</entry>
+	</collection>
+	<collection>
+		<name>Llama</name>
+		<entry>Large,10,5@1d2</entry>
+	</collection>
+	<collection>
+		<name>Milk Cow</name>
+		<entry>Large,10,5@1d2</entry>
+	</collection>
+	<collection>
+		<name>Ox</name>
+		<entry>Large,10,5@1d2</entry>
+	</collection>
+	<collection>
+		<name>Sheep</name>
+		<entry>Medium,5,5@1d2</entry>
+	</collection>
   <collection>
     <name>Black Bear</name>
     <entry>Medium,5,5@1d2</entry>
@@ -719,6 +739,10 @@
     <name>Boar</name>
     <entry>Medium,5,5@1d2</entry>
   </collection>
+	<collection>
+		<name>Pig</name>
+		<entry>Medium,5,5@1d2</entry>
+	</collection>
   <collection>
     <name>Bodak</name>
     <entry>Medium,5,5@1d4</entry>
@@ -2269,6 +2293,18 @@
   <collection>
     <name>Raven</name>
   </collection>
+	<collection>
+		<name>Chicken</name>
+	</collection>
+	<collection>
+		<name>Turkey</name>
+	</collection>
+	<collection>
+		<name>Peacock</name>
+	</collection>
+	<collection>
+		<name>Pheasant</name>
+	</collection>
   <collection>
     <name>Ravid</name>
     <entry>Medium,5,5@1</entry>
@@ -2863,22 +2899,4 @@
     <entry>Large,10,10@1d8</entry>
     <entry>Huge,15,15@1d8+8</entry>
   </collection>
-	<collection>
-		<name>Cow</name>
-	</collection>
-	<collection>
-		<name>Goat</name>
-	</collection>
-	<collection>
-		<name>Goat, Riding</name>
-	</collection>
-	<collection>
-		<name>Goat, War</name>
-	</collection>
-	<collection>
-		<name>Pig</name>
-	</collection>
-	<collection>
-		<name>Chicken</name>
-	</collection>
 </collections>

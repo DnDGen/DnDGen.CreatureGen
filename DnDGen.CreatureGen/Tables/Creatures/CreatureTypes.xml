@@ -746,6 +746,26 @@
     <name>Bison</name>
     <entry>Animal</entry>
   </collection>
+	<collection>
+		<name>Goat</name>
+		<entry>Animal</entry>
+	</collection>
+	<collection>
+		<name>Llama</name>
+		<entry>Animal</entry>
+	</collection>
+	<collection>
+		<name>Milk Cow</name>
+		<entry>Animal</entry>
+	</collection>
+	<collection>
+		<name>Ox</name>
+		<entry>Animal</entry>
+	</collection>
+	<collection>
+		<name>Sheep</name>
+		<entry>Animal</entry>
+	</collection>
   <collection>
     <name>Black Pudding</name>
     <entry>Ooze</entry>
@@ -768,6 +788,10 @@
     <name>Boar</name>
     <entry>Animal</entry>
   </collection>
+	<collection>
+		<name>Pig</name>
+		<entry>Animal</entry>
+	</collection>
   <collection>
     <name>Dire Boar</name>
     <entry>Animal</entry>
@@ -2954,6 +2978,22 @@
     <name>Raven</name>
     <entry>Animal</entry>
   </collection>
+	<collection>
+		<name>Chicken</name>
+		<entry>Animal</entry>
+	</collection>
+	<collection>
+		<name>Turkey</name>
+		<entry>Animal</entry>
+	</collection>
+	<collection>
+		<name>Peacock</name>
+		<entry>Animal</entry>
+	</collection>
+	<collection>
+		<name>Pheasant</name>
+		<entry>Animal</entry>
+	</collection>
   <collection>
     <name>Ravid</name>
     <entry>Outsider</entry>

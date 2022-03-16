@@ -276,11 +276,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Belker][RollHelper.GetRollWithMostEvenDistribution(7, 8, 10)] = GetData(SizeConstants.Large, 10, 10);
                 testCases[CreatureConstants.Belker][RollHelper.GetRollWithMostEvenDistribution(7, 11, 21)] = GetData(SizeConstants.Huge, 15, 15);
                 testCases[CreatureConstants.Bison][RollHelper.GetRollWithMostEvenDistribution(5, 6, 7)] = GetData(SizeConstants.Large, 10, 5);
+                testCases[CreatureConstants.Bison_Goat][RollHelper.GetRollWithMostEvenDistribution(5, 6, 7)] = GetData(SizeConstants.Medium, 10, 5);
+                testCases[CreatureConstants.Bison_Llama][RollHelper.GetRollWithMostEvenDistribution(5, 6, 7)] = GetData(SizeConstants.Large, 10, 5);
+                testCases[CreatureConstants.Bison_MilkCow][RollHelper.GetRollWithMostEvenDistribution(5, 6, 7)] = GetData(SizeConstants.Large, 10, 5);
+                testCases[CreatureConstants.Bison_Ox][RollHelper.GetRollWithMostEvenDistribution(5, 6, 7)] = GetData(SizeConstants.Large, 10, 5);
+                testCases[CreatureConstants.Bison_Sheep][RollHelper.GetRollWithMostEvenDistribution(5, 6, 7)] = GetData(SizeConstants.Medium, 10, 5);
                 testCases[CreatureConstants.BlackPudding][RollHelper.GetRollWithMostEvenDistribution(10, 11, 15)] = GetData(SizeConstants.Huge, 15, 10);
                 testCases[CreatureConstants.BlackPudding_Elder][None] = new string[0];
                 testCases[CreatureConstants.BlinkDog][RollHelper.GetRollWithMostEvenDistribution(4, 5, 7)] = GetData(SizeConstants.Medium, 5, 5);
                 testCases[CreatureConstants.BlinkDog][RollHelper.GetRollWithMostEvenDistribution(4, 8, 12)] = GetData(SizeConstants.Large, 10, 5);
                 testCases[CreatureConstants.Boar][RollHelper.GetRollWithMostEvenDistribution(3, 4, 5)] = GetData(SizeConstants.Medium, 5, 5);
+                testCases[CreatureConstants.Boar_Pig][RollHelper.GetRollWithMostEvenDistribution(3, 4, 5)] = GetData(SizeConstants.Medium, 5, 5);
                 testCases[CreatureConstants.Boar_Dire][RollHelper.GetRollWithMostEvenDistribution(7, 8, 16)] = GetData(SizeConstants.Large, 10, 5);
                 testCases[CreatureConstants.Boar_Dire][RollHelper.GetRollWithMostEvenDistribution(7, 17, 21)] = GetData(SizeConstants.Huge, 15, 10);
                 testCases[CreatureConstants.Bodak][RollHelper.GetRollWithMostEvenDistribution(9, 10, 13)] = GetData(SizeConstants.Medium, 5, 5);
@@ -805,6 +811,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Rat_Dire][RollHelper.GetRollWithMostEvenDistribution(1, 4, 6)] = GetData(SizeConstants.Medium, 5, 5);
                 testCases[CreatureConstants.Rat_Swarm][None] = new string[0];
                 testCases[CreatureConstants.Raven][None] = new string[0];
+                testCases[CreatureConstants.Raven_Chicken][None] = new string[0];
+                testCases[CreatureConstants.Raven_Turkey][None] = new string[0];
+                testCases[CreatureConstants.Raven_Peacock][None] = new string[0];
+                testCases[CreatureConstants.Raven_Pheasant][None] = new string[0];
                 testCases[CreatureConstants.Ravid][RollHelper.GetRollWithMostEvenDistribution(3, 4, 4)] = GetData(SizeConstants.Medium, 5, 5);
                 testCases[CreatureConstants.Ravid][RollHelper.GetRollWithMostEvenDistribution(3, 5, 9)] = GetData(SizeConstants.Large, 10, 5);
                 testCases[CreatureConstants.RazorBoar][RollHelper.GetRollWithMostEvenDistribution(15, 16, 30)] = GetData(SizeConstants.Large, 10, 5);
@@ -986,8 +996,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.YuanTi_Pureblood][None] = new string[0];
                 testCases[CreatureConstants.Zelekhut][RollHelper.GetRollWithMostEvenDistribution(8, 9, 16)] = GetData(SizeConstants.Large, 10, 10);
                 testCases[CreatureConstants.Zelekhut][RollHelper.GetRollWithMostEvenDistribution(8, 17, 24)] = GetData(SizeConstants.Huge, 15, 15);
-                testCases[CreatureConstants.Cow][RollHelper.GetRollWithMostEvenDistribution(7, 8, 100)] = GetData(SizeConstants.Huge, 15, 10);
-                testCases[CreatureConstants.Chicken][None] = new string[0];
 
                 foreach (var testCase in testCases)
                 {

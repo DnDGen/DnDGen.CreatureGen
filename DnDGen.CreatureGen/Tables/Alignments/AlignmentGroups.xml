@@ -7644,7 +7644,27 @@
     <entry>Chaotic Evil</entry>
   </collection>
 	<collection>
-		<name>Cow</name>
+		<name>Milk Cow</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Goat</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Llama</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Ox</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Sheep</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Pig</name>
 		<entry>AlwaysTrue Neutral</entry>
 	</collection>
 	<collection>
@@ -7652,11 +7672,55 @@
 		<entry>AlwaysTrue Neutral</entry>
 	</collection>
 	<collection>
-		<name>CowExploded</name>
+		<name>Turkey</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Peacock</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Pheasant</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Milk CowExploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>GoatExploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>LlamaExploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>OxExploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>SheepExploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>PigExploded</name>
 		<entry>True Neutral</entry>
 	</collection>
 	<collection>
 		<name>ChickenExploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>TurkeyExploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>PeacockExploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>PheasantExploded</name>
 		<entry>True Neutral</entry>
 	</collection>
 </collections>

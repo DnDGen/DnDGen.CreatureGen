@@ -434,7 +434,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Bat_Swarm,
                 CreatureConstants.Groups.Bear,
                 CreatureConstants.Bison,
+                CreatureConstants.Bison_Goat,
+                CreatureConstants.Bison_Llama,
+                CreatureConstants.Bison_MilkCow,
+                CreatureConstants.Bison_Ox,
+                CreatureConstants.Bison_Sheep,
                 CreatureConstants.Boar,
+                CreatureConstants.Boar_Pig,
                 CreatureConstants.Boar_Dire,
                 CreatureConstants.Camel_Bactrian,
                 CreatureConstants.Camel_Dromedary,
@@ -469,6 +475,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Rat_Dire,
                 CreatureConstants.Rat_Swarm,
                 CreatureConstants.Raven,
+                CreatureConstants.Raven_Chicken,
+                CreatureConstants.Raven_Turkey,
+                CreatureConstants.Raven_Pheasant,
+                CreatureConstants.Raven_Peacock,
                 CreatureConstants.Rhinoceras,
                 CreatureConstants.Roc,
                 CreatureConstants.Snake_Constrictor,
@@ -487,8 +497,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Wolf_Dire,
                 CreatureConstants.Wolverine,
                 CreatureConstants.Wolverine_Dire,
-                CreatureConstants.Cow,
-                CreatureConstants.Chicken,
             };
 
             AssertDistinctCollection(CreatureConstants.Types.Animal, creatures);
