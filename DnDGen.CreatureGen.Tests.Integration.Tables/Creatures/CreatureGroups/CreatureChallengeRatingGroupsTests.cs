@@ -37,7 +37,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Donkey,
             CreatureConstants.Lizard,
             CreatureConstants.Monkey,
-            CreatureConstants.Raven)]
+            CreatureConstants.Raven,
+            CreatureConstants.Raven_Chicken,
+            CreatureConstants.Raven_Turkey,
+            CreatureConstants.Raven_Pheasant,
+            CreatureConstants.Raven_Peacock)]
         [TestCase(ChallengeRatingConstants.CR1_4th,
             CreatureConstants.Cat,
             CreatureConstants.Kobold,
@@ -170,7 +174,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Gnome_Svirfneblin,
             CreatureConstants.Troglodyte,
             CreatureConstants.Snake_Viper_Medium,
-            CreatureConstants.Wolf)]
+            CreatureConstants.Wolf,
+            CreatureConstants.Bison_Goat,
+            CreatureConstants.Bison_Sheep)]
         [TestCase(ChallengeRatingConstants.CR2,
             CreatureConstants.AnimatedObject_Anvil_Medium,
             CreatureConstants.AnimatedObject_Block_Stone_Medium,
@@ -195,9 +201,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Azer,
             CreatureConstants.Bat_Swarm,
             CreatureConstants.Bison,
+            CreatureConstants.Bison_MilkCow,
+            CreatureConstants.Bison_Llama,
+            CreatureConstants.Bison_Ox,
             CreatureConstants.Bear_Black,
             CreatureConstants.BlinkDog,
             CreatureConstants.Boar,
+            CreatureConstants.Boar_Pig,
             CreatureConstants.Bugbear,
             CreatureConstants.Cheetah,
             CreatureConstants.Choker,
