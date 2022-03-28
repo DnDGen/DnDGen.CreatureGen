@@ -28,10 +28,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
             (CreatureConstants.Dragon_Silver_Ancient, CreatureConstants.Templates.HalfCelestial, false),
             (CreatureConstants.Dragon_White_Old, CreatureConstants.Templates.HalfFiend, false),
             (CreatureConstants.Elemental_Air_Small, CreatureConstants.Templates.HalfCelestial, false),
+            (CreatureConstants.Gargoyle, CreatureConstants.Templates.HalfCelestial, true),
             (CreatureConstants.Gargoyle_Kapoacinth, CreatureConstants.Templates.Ghost, false),
             (CreatureConstants.GrayRender, CreatureConstants.Templates.None, true),
             (CreatureConstants.Hieracosphinx, CreatureConstants.Templates.Skeleton, false),
             (CreatureConstants.Human, CreatureConstants.Templates.Ghost, false),
+            (CreatureConstants.Kobold, CreatureConstants.Templates.HalfFiend, false),
             (CreatureConstants.Lizardfolk, CreatureConstants.Templates.HalfFiend, false),
             (CreatureConstants.Mimic, CreatureConstants.Templates.Ghost, false),
             (CreatureConstants.Otyugh, CreatureConstants.Templates.Ghost, false),
@@ -49,6 +51,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
         {
                 (true, new Filters()),
                 (true, new Filters { Template = CreatureConstants.Templates.Ghost, Alignment = AlignmentConstants.LawfulEvil }),
+                (true, new Filters { Type = CreatureConstants.Types.Subtypes.Earth, ChallengeRating = ChallengeRatingConstants.CR5 }),
+                (true, new Filters
+                    {
+                        Template = CreatureConstants.Templates.HalfCelestial,
+                        Type = CreatureConstants.Types.Subtypes.Earth,
+                        ChallengeRating = ChallengeRatingConstants.CR5
+                    }),
                 (false, new Filters { Template = CreatureConstants.Templates.Ghost, Type = CreatureConstants.Types.Undead }),
                 (false, new Filters { Template = CreatureConstants.Templates.Ghost, Alignment = AlignmentConstants.ChaoticNeutral }),
                 (false, new Filters
@@ -70,6 +79,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
                         Type = CreatureConstants.Types.Subtypes.Reptilian,
                         ChallengeRating = ChallengeRatingConstants.CR2
                     }),
+                (false, new Filters
+                    {
+                        Template = CreatureConstants.Templates.HalfFiend,
+                        Type = CreatureConstants.Types.Subtypes.Reptilian,
+                        ChallengeRating = ChallengeRatingConstants.CR1_3rd
+                    }),
                 (false, new Filters { Template = CreatureConstants.Templates.HalfFiend, ChallengeRating = ChallengeRatingConstants.CR15 }),
                 (false, new Filters { Template = CreatureConstants.Templates.Skeleton }),
                 (false, new Filters { Template = CreatureConstants.Templates.Zombie }),
@@ -83,6 +98,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
                 (false, new Filters { Type = CreatureConstants.Types.Subtypes.Augmented }),
                 (false, new Filters { Type = CreatureConstants.Types.Subtypes.Incorporeal }),
                 (false, new Filters { Type = CreatureConstants.Types.Subtypes.Native }),
+                (false, new Filters { Type = CreatureConstants.Types.Subtypes.Reptilian, ChallengeRating = ChallengeRatingConstants.CR1_3rd }),
                 (false, new Filters { Type = CreatureConstants.Types.Subtypes.Reptilian, ChallengeRating = ChallengeRatingConstants.CR2 }),
                 (false, new Filters { Type = CreatureConstants.Types.Subtypes.Shapechanger }),
                 (false, new Filters { ChallengeRating = ChallengeRatingConstants.CR15 }),
