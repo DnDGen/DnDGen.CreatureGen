@@ -866,6 +866,26 @@
     <name>Bison</name>
     <entry>Scent#0##0##0#False###0#0#2147483647</entry>
   </collection>
+	<collection>
+		<name>Goat</name>
+		<entry>Scent#0##0##0#False###0#0#2147483647</entry>
+	</collection>
+	<collection>
+		<name>Llama</name>
+		<entry>Scent#0##0##0#False###0#0#2147483647</entry>
+	</collection>
+	<collection>
+		<name>Milk Cow</name>
+		<entry>Scent#0##0##0#False###0#0#2147483647</entry>
+	</collection>
+	<collection>
+		<name>Ox</name>
+		<entry>Scent#0##0##0#False###0#0#2147483647</entry>
+	</collection>
+	<collection>
+		<name>Sheep</name>
+		<entry>Scent#0##0##0#False###0#0#2147483647</entry>
+	</collection>
   <collection>
     <name>Black Bear</name>
     <entry>Scent#0##0##0#False###0#0#2147483647</entry>
@@ -1172,6 +1192,10 @@
     <name>Boar</name>
     <entry>Scent#0##0##0#False###0#0#2147483647</entry>
   </collection>
+	<collection>
+		<name>Pig</name>
+		<entry>Scent#0##0##0#False###0#0#2147483647</entry>
+	</collection>
   <collection>
     <name>Bodak</name>
     <entry>Damage Reduction#10#Vulnerable to cold iron weapons#1#Hit#0#False###0#0#2147483647</entry>
@@ -4335,6 +4359,22 @@
     <name>Raven</name>
     <entry>Weapon Finesse#0##0##0#False###0#0#2147483647</entry>
   </collection>
+	<collection>
+		<name>Chicken</name>
+		<entry>Weapon Finesse#0##0##0#False###0#0#2147483647</entry>
+	</collection>
+	<collection>
+		<name>Turkey</name>
+		<entry>Weapon Finesse#0##0##0#False###0#0#2147483647</entry>
+	</collection>
+	<collection>
+		<name>Peacock</name>
+		<entry>Weapon Finesse#0##0##0#False###0#0#2147483647</entry>
+	</collection>
+	<collection>
+		<name>Pheasant</name>
+		<entry>Weapon Finesse#0##0##0#False###0#0#2147483647</entry>
+	</collection>
   <collection>
     <name>Ravid</name>
     <entry>Flight#0##0##0#False###0#0#2147483647</entry>

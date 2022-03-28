@@ -558,6 +558,36 @@
   <collection>
     <name>Bison</name>
   </collection>
+	<collection>
+		<name>Goat</name>
+	</collection>
+	<collection>
+		<name>Sheep</name>
+	</collection>
+	<collection>
+		<name>Milk Cow</name>
+	</collection>
+	<collection>
+		<name>Ox</name>
+	</collection>
+	<collection>
+		<name>Llama</name>
+	</collection>
+	<collection>
+		<name>Pig</name>
+	</collection>
+	<collection>
+		<name>Chicken</name>
+	</collection>
+	<collection>
+		<name>Turkey</name>
+	</collection>
+	<collection>
+		<name>Peacock</name>
+	</collection>
+	<collection>
+		<name>Pheasant</name>
+	</collection>
   <collection>
     <name>Black Bear</name>
   </collection>

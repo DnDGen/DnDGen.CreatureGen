@@ -81,7 +81,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             this.languageGenerator = languageGenerator;
         }
 
-        public Creature Generate(string creatureName, string template, bool asCharacter, AbilityRandomizer abilityRandomizer = null) 
+        public Creature Generate(string creatureName, string template, bool asCharacter, AbilityRandomizer abilityRandomizer = null)
             => Generate(creatureName, template, asCharacter, abilityRandomizer, new Filters { Template = template });
 
         public (string Creature, string Template) GenerateRandomName(bool asCharacter, Filters filters = null)

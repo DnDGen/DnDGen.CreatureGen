@@ -1054,6 +1054,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
 
             testCases[CreatureConstants.Bison].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
 
+            testCases[CreatureConstants.Bison_Goat].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+
+            testCases[CreatureConstants.Bison_Llama].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+
+            testCases[CreatureConstants.Bison_MilkCow].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+
+            testCases[CreatureConstants.Bison_Ox].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+
+            testCases[CreatureConstants.Bison_Sheep].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+
             testCases[CreatureConstants.BlackPudding].Add(helper.BuildData(FeatConstants.SpecialQualities.Split));
 
             testCases[CreatureConstants.BlackPudding_Elder].Add(helper.BuildData(FeatConstants.SpecialQualities.Split));
@@ -1064,6 +1074,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             testCases[CreatureConstants.BlinkDog].Add(helper.BuildData(FeatConstants.Track));
 
             testCases[CreatureConstants.Boar].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+
+            testCases[CreatureConstants.Boar_Pig].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
 
             testCases[CreatureConstants.Boar_Dire].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
 
@@ -3780,6 +3792,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             testCases[CreatureConstants.Rat_Swarm].Add(helper.BuildData(FeatConstants.WeaponFinesse));
 
             testCases[CreatureConstants.Raven].Add(helper.BuildData(FeatConstants.WeaponFinesse));
+
+            testCases[CreatureConstants.Raven_Chicken].Add(helper.BuildData(FeatConstants.WeaponFinesse));
+
+            testCases[CreatureConstants.Raven_Turkey].Add(helper.BuildData(FeatConstants.WeaponFinesse));
+
+            testCases[CreatureConstants.Raven_Peacock].Add(helper.BuildData(FeatConstants.WeaponFinesse));
+
+            testCases[CreatureConstants.Raven_Pheasant].Add(helper.BuildData(FeatConstants.WeaponFinesse));
 
             testCases[CreatureConstants.Ravid].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
             testCases[CreatureConstants.Ravid].Add(helper.BuildData(FeatConstants.SpecialQualities.Flight));

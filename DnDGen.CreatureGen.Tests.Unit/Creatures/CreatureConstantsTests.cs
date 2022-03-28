@@ -45,10 +45,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Beholder_Gauth, "Gauth (Lesser Beholder)")]
         [TestCase(CreatureConstants.Belker, "Belker")]
         [TestCase(CreatureConstants.Bison, "Bison")]
+        [TestCase(CreatureConstants.Bison_Goat, "Goat")]
+        [TestCase(CreatureConstants.Bison_MilkCow, "Milk Cow")]
+        [TestCase(CreatureConstants.Bison_Ox, "Ox")]
+        [TestCase(CreatureConstants.Bison_Sheep, "Sheep")]
+        [TestCase(CreatureConstants.Bison_Llama, "Llama")]
         [TestCase(CreatureConstants.BlackPudding, "Black Pudding")]
         [TestCase(CreatureConstants.BlinkDog, "Blink Dog")]
         [TestCase(CreatureConstants.Boar, "Boar")]
         [TestCase(CreatureConstants.Boar_Dire, "Dire Boar")]
+        [TestCase(CreatureConstants.Boar_Pig, "Pig")]
         [TestCase(CreatureConstants.Bodak, "Bodak")]
         [TestCase(CreatureConstants.BombardierBeetle_Giant, "Giant Bombardier Beetle")]
         [TestCase(CreatureConstants.Bralani, "Bralani")]
@@ -241,6 +247,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Rat_Dire, "Dire Rat")]
         [TestCase(CreatureConstants.Rat_Swarm, "Rat Swarm")]
         [TestCase(CreatureConstants.Raven, "Raven")]
+        [TestCase(CreatureConstants.Raven_Chicken, "Chicken")]
+        [TestCase(CreatureConstants.Raven_Turkey, "Turkey")]
+        [TestCase(CreatureConstants.Raven_Peacock, "Peacock")]
         [TestCase(CreatureConstants.Ravid, "Ravid")]
         [TestCase(CreatureConstants.RazorBoar, "Razor Boar")]
         [TestCase(CreatureConstants.Remorhaz, "Remorhaz")]
@@ -887,7 +896,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
             var constantFields = fields.Where(f => f.IsLiteral && !f.IsInitOnly);
             var constants = constantFields.Select(f => f.GetValue(null) as string);
 
-            Assert.That(creatures, Is.EquivalentTo(constants));
+            //HACK: The failure message for Is.Equivalent is truncated because of the size of the collection
+            //So, we will alter the assertions
+            Assert.That(creatures, Is.Unique, "From GetAll");
+            Assert.That(constants, Is.Unique, "From Reflection");
+            Assert.That(creatures.Except(constants), Is.Empty, "From GetAll");
+            Assert.That(constants.Except(creatures), Is.Empty, "From Reflection");
         }
 
         [Test]

@@ -1,7 +1,6 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Feats;
-using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
@@ -16,7 +15,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
     public class SkillGroupsTests : CollectionTests
     {
         private ICollectionSelector collectionSelector;
-        private ITypeAndAmountSelector typesAndAmountsSelector;
 
         protected override string tableName
         {
@@ -27,7 +25,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         public void Setup()
         {
             collectionSelector = GetNewInstanceOf<ICollectionSelector>();
-            typesAndAmountsSelector = GetNewInstanceOf<ITypeAndAmountSelector>();
         }
 
         [Test]
@@ -695,6 +692,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(CreatureConstants.Bison,
             SkillConstants.Listen,
             SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Bison_Goat,
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Bison_Llama,
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Bison_MilkCow,
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Bison_Ox,
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Bison_Sheep,
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
         [TestCase(CreatureConstants.BlackPudding, SkillConstants.Climb)]
         [TestCase(CreatureConstants.BlackPudding_Elder, SkillConstants.Climb)]
         [TestCase(CreatureConstants.BlinkDog,
@@ -704,6 +716,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Boar,
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Boar_Pig,
             SkillConstants.Listen,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Boar_Dire,
@@ -3614,6 +3629,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.MoveSilently,
             SkillConstants.Swim + AbilityConstants.Dexterity)]
         [TestCase(CreatureConstants.Raven,
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Raven_Chicken,
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Raven_Turkey,
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Raven_Peacock,
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Raven_Pheasant,
             SkillConstants.Listen,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Ravid,

@@ -279,11 +279,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             CreatureConstants.Types.Subtypes.Air,
             CreatureConstants.Types.Subtypes.Extraplanar)]
         [TestCase(CreatureConstants.Bison, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Bison_Goat, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Bison_MilkCow, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Bison_Ox, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Bison_Sheep, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Bison_Llama, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.BlackPudding, CreatureConstants.Types.Ooze)]
         [TestCase(CreatureConstants.BlackPudding_Elder, CreatureConstants.Types.Ooze)]
         [TestCase(CreatureConstants.BlinkDog, CreatureConstants.Types.MagicalBeast)]
         [TestCase(CreatureConstants.Boar, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Boar_Dire, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Boar_Pig, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Bodak, CreatureConstants.Types.Undead,
             CreatureConstants.Types.Subtypes.Extraplanar)]
         [TestCase(CreatureConstants.BombardierBeetle_Giant, CreatureConstants.Types.Vermin)]
@@ -1070,6 +1076,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Rat_Swarm, CreatureConstants.Types.Animal,
             CreatureConstants.Types.Subtypes.Swarm)]
         [TestCase(CreatureConstants.Raven, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Raven_Chicken, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Raven_Turkey, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Raven_Peacock, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Raven_Pheasant, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Ravid, CreatureConstants.Types.Outsider,
             CreatureConstants.Types.Subtypes.Extraplanar)]
         [TestCase(CreatureConstants.RazorBoar, CreatureConstants.Types.MagicalBeast)]

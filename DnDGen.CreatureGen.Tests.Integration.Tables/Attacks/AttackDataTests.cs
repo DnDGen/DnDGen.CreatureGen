@@ -74,7 +74,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             if (entries[0][DataIndexConstants.AttackData.NameIndex] == AttackTestData.None)
                 entries.Clear();
 
-
             foreach (var entry in entries)
             {
                 var stringEntry = helper.BuildEntry(entry);
