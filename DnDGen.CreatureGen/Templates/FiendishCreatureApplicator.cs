@@ -269,7 +269,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureTemplate(Creature creature)
         {
-            creature.Template = CreatureConstants.Templates.FiendishCreature;
+            creature.Templates.Add(CreatureConstants.Templates.FiendishCreature);
         }
 
         public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, Filters filters = null)

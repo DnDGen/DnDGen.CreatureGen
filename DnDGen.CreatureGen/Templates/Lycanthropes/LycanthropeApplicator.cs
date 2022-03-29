@@ -565,7 +565,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
 
         private void UpdateCreatureTemplate(Creature creature)
         {
-            creature.Template = LycanthropeSpecies;
+            creature.Templates.Add(LycanthropeSpecies);
         }
 
         public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, Filters filters = null)

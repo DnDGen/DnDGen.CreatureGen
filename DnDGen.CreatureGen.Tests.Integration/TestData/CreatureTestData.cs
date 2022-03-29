@@ -16,36 +16,37 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
         public static IEnumerable Types => CreatureConstants.Types.GetAll().Select(t => new TestCaseData(t));
         public static IEnumerable Subtypes => CreatureConstants.Types.Subtypes.GetAll().Select(t => new TestCaseData(t));
 
-        public static IEnumerable<(string Creature, string Template, bool AsCharacter)> ProblematicCreatures => new (string Creature, string Template, bool AsCharacter)[]
-        {
-            (CreatureConstants.Chimera_White, CreatureConstants.Templates.Skeleton, false),
-            (CreatureConstants.Criosphinx, CreatureConstants.Templates.Zombie, false),
-            (CreatureConstants.DisplacerBeast_PackLord, CreatureConstants.Templates.HalfFiend, false),
-            (CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.Ghost, false),
-            (CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.HalfCelestial, false),
-            (CreatureConstants.Dragon_Bronze_GreatWyrm, CreatureConstants.Templates.HalfCelestial, false),
-            (CreatureConstants.Dragon_Copper_Adult, CreatureConstants.Templates.Skeleton, false),
-            (CreatureConstants.Dragon_Silver_Ancient, CreatureConstants.Templates.HalfCelestial, false),
-            (CreatureConstants.Dragon_White_Old, CreatureConstants.Templates.HalfFiend, false),
-            (CreatureConstants.Elemental_Air_Small, CreatureConstants.Templates.HalfCelestial, false),
-            (CreatureConstants.Gargoyle, CreatureConstants.Templates.HalfCelestial, true),
-            (CreatureConstants.Gargoyle_Kapoacinth, CreatureConstants.Templates.Ghost, false),
-            (CreatureConstants.GrayRender, CreatureConstants.Templates.None, true),
-            (CreatureConstants.Hieracosphinx, CreatureConstants.Templates.Skeleton, false),
-            (CreatureConstants.Human, CreatureConstants.Templates.Ghost, false),
-            (CreatureConstants.Kobold, CreatureConstants.Templates.HalfFiend, false),
-            (CreatureConstants.Lizardfolk, CreatureConstants.Templates.HalfFiend, false),
-            (CreatureConstants.Mimic, CreatureConstants.Templates.Ghost, false),
-            (CreatureConstants.Otyugh, CreatureConstants.Templates.Ghost, false),
-            (CreatureConstants.Otyugh, CreatureConstants.Templates.Zombie, false),
-            (CreatureConstants.RazorBoar, CreatureConstants.Templates.Ghost, false),
-            (CreatureConstants.ShamblingMound, CreatureConstants.Templates.HalfFiend, true),
-            (CreatureConstants.Skum, CreatureConstants.Templates.Ghost, true),
-            (CreatureConstants.Troglodyte, CreatureConstants.Templates.HalfCelestial, false),
-            (CreatureConstants.Xill, CreatureConstants.Templates.None, true),
-        };
+        public static IEnumerable<(bool AsCharacter, string Creature, string[] Templates)> ProblematicCreatures =>
+            new (bool AsCharacter, string Creature, string[] Templates)[]
+            {
+                (false, CreatureConstants.Chimera_White, new[] { CreatureConstants.Templates.Skeleton }),
+                (false, CreatureConstants.Criosphinx, new[] { CreatureConstants.Templates.Zombie }),
+                (false, CreatureConstants.DisplacerBeast_PackLord, new[] { CreatureConstants.Templates.HalfFiend }),
+                (false, CreatureConstants.Dragon_Brass_Young, new[] { CreatureConstants.Templates.Ghost }),
+                (false, CreatureConstants.Dragon_Brass_Young, new[] { CreatureConstants.Templates.HalfCelestial }),
+                (false, CreatureConstants.Dragon_Bronze_GreatWyrm, new[] { CreatureConstants.Templates.HalfCelestial }),
+                (false, CreatureConstants.Dragon_Copper_Adult, new[] { CreatureConstants.Templates.Skeleton }),
+                (false, CreatureConstants.Dragon_Silver_Ancient, new[] { CreatureConstants.Templates.HalfCelestial }),
+                (false, CreatureConstants.Dragon_White_Old, new[] { CreatureConstants.Templates.HalfFiend }),
+                (false, CreatureConstants.Elemental_Air_Small, new[] { CreatureConstants.Templates.HalfCelestial }),
+                (true, CreatureConstants.Gargoyle, new[] { CreatureConstants.Templates.HalfCelestial }),
+                (false, CreatureConstants.Gargoyle_Kapoacinth, new[] { CreatureConstants.Templates.Ghost }),
+                (true, CreatureConstants.GrayRender, new string[0]),
+                (false, CreatureConstants.Hieracosphinx, new[] { CreatureConstants.Templates.Skeleton}),
+                (false, CreatureConstants.Human, new[] { CreatureConstants.Templates.Ghost }),
+                (false, CreatureConstants.Kobold, new[] { CreatureConstants.Templates.HalfFiend}),
+                (false, CreatureConstants.Lizardfolk, new[] { CreatureConstants.Templates.HalfFiend}),
+                (false, CreatureConstants.Mimic, new[] { CreatureConstants.Templates.Ghost}),
+                (false, CreatureConstants.Otyugh, new[] { CreatureConstants.Templates.Ghost}),
+                (false, CreatureConstants.Otyugh, new[] { CreatureConstants.Templates.Zombie}),
+                (false, CreatureConstants.RazorBoar, new[] { CreatureConstants.Templates.Ghost}),
+                (true, CreatureConstants.ShamblingMound, new[] { CreatureConstants.Templates.HalfFiend}),
+                (true, CreatureConstants.Skum, new[] { CreatureConstants.Templates.Ghost}),
+                (false, CreatureConstants.Troglodyte, new[] { CreatureConstants.Templates.HalfCelestial }),
+                (true, CreatureConstants.Xill, new string[0]),
+            };
 
-        public static IEnumerable ProblematicCreaturesTestCases => ProblematicCreatures.Select(pc => new TestCaseData(pc.Creature, pc.Template, pc.AsCharacter));
+        public static IEnumerable ProblematicCreaturesTestCases => ProblematicCreatures.Select(pc => new TestCaseData(pc.AsCharacter, pc.Creature, pc.Templates));
 
         public static IEnumerable<(bool AsCharacter, Filters Filters)> ProblematicFilters => new (bool AsCharacter, Filters Filters)[]
         {

@@ -71,7 +71,7 @@ namespace DnDGen.CreatureGen.Templates
             {
                 throw new InvalidCreatureException(
                     compatibility.Reason,
-                    asCharacter, 
+                    asCharacter,
                     creature.Name,
                     CreatureConstants.Templates.CelestialCreature,
                     filters?.Type,
@@ -117,7 +117,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureTemplate(Creature creature)
         {
-            creature.Template = CreatureConstants.Templates.CelestialCreature;
+            creature.Templates.Add(CreatureConstants.Templates.CelestialCreature);
         }
 
         private void UpdateCreatureType(Creature creature)

@@ -14,7 +14,7 @@ namespace DnDGen.CreatureGen.Creatures
     public class Creature
     {
         public string Name { get; set; }
-        public string Template { get; set; }
+        public List<string> Templates { get; set; }
         public string Size { get; set; }
         public CreatureType Type { get; set; }
         public HitPoints HitPoints { get; set; }
@@ -108,7 +108,8 @@ namespace DnDGen.CreatureGen.Creatures
         {
             get
             {
-                var summary = $"{Template} {Name}";
+                var summary = string.Join(" ", Templates);
+                summary += $" {Name}";
 
                 if (IsAdvanced)
                     summary += " [Advanced]";
@@ -135,7 +136,7 @@ namespace DnDGen.CreatureGen.Creatures
             Skills = Enumerable.Empty<Skill>();
             Space = new Measurement("feet");
             SpecialQualities = Enumerable.Empty<Feat>();
-            Template = string.Empty;
+            Templates = new List<string>();
             Type = new CreatureType();
             Speeds = new Dictionary<string, Measurement>();
             Equipment = new Equipment();

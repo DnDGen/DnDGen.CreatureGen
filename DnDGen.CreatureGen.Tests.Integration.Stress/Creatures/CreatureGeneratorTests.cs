@@ -53,7 +53,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private void GenerateAndAssertCreature(bool asCharacter, string template)
         {
             var randomCreature = GetCreatureAndTemplate(asCharacter, template);
-            GenerateAndAssertCreature(randomCreature.Creature, randomCreature.Template, asCharacter);
+            GenerateAndAssertCreature(randomCreature.Creature, asCharacter, false, randomCreature.Template);
         }
 
         private (string Creature, string Template) GetCreatureAndTemplate(bool asCharacter, string template)
@@ -71,7 +71,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             return (randomCreatureName, template);
         }
 
-        private AbilityRandomizer GetAbilityRandomizer(string template)
+        private AbilityRandomizer GetAbilityRandomizer(params string[] templates)
         {
             var rolls = new[]
             {
@@ -91,12 +91,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             //HACK: This is just to avoid the issue when a randomly-rolled ability
             //(especially with "Poor" or "Wild") ends up much lower than normally would be with the "Default" roll,
             //and the template requires an ability to be a minimum value
-            if (template != null && templateAbilityMinimums.ContainsKey(template))
+            if (templates.Any(t => t != null && templateAbilityMinimums.ContainsKey(t)))
             {
-                randomizer.AbilityAdvancements[templateAbilityMinimums[template].Ability] = templateAbilityMinimums[template].Minimum;
-                randomizer.PriorityAbility = templateAbilityMinimums[template].Ability;
+                foreach (var template in templates.Where(t => templateAbilityMinimums.ContainsKey(t)))
+                {
+                    var newMin = Math.Max(randomizer.AbilityAdvancements[templateAbilityMinimums[template].Ability], templateAbilityMinimums[template].Minimum);
+                    randomizer.AbilityAdvancements[templateAbilityMinimums[template].Ability] = newMin;
+                    randomizer.PriorityAbility = templateAbilityMinimums[template].Ability;
+                }
             }
-            else if (template == null)
+            else if (templates.Contains(null))
             {
                 //HACK: Here, the template might be randomly selected, so we have to guard against it for the sake of stress testing
                 foreach (var kvp in templateAbilityMinimums)
@@ -111,19 +115,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             return randomizer;
         }
 
-        private Creature GenerateAndAssertCreature(string creatureName, string template, bool asCharacter, bool useDefaultAbilities = false)
+        private Creature GenerateAndAssertCreature(string creatureName, bool asCharacter, bool useDefaultAbilities = false, params string[] templates)
         {
-            var randomizer = GetAbilityRandomizer(template);
+            var randomizer = GetAbilityRandomizer(templates);
             if (useDefaultAbilities)
                 randomizer.Roll = AbilityConstants.RandomizerRolls.Default;
 
             stopwatch.Restart();
-            var creature = creatureGenerator.Generate(creatureName, template, asCharacter, randomizer);
+            var creature = creatureGenerator.Generate(asCharacter, creatureName, randomizer, templates);
             stopwatch.Stop();
 
             Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.Name, Is.EqualTo(creatureName), creature.Summary);
-            Assert.That(creature.Template, Is.EqualTo(template), creature.Summary);
+            Assert.That(creature.Templates, Is.EqualTo(templates), creature.Summary);
 
             if (asCharacter)
                 creatureAsserter.AssertCreatureAsCharacter(creature);
@@ -153,12 +157,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var randomizer = GetAbilityRandomizer(template);
 
             stopwatch.Restart();
-            var creature = await creatureGenerator.GenerateAsync(creatureName, template, asCharacter, randomizer);
+            var creature = await creatureGenerator.GenerateAsync(asCharacter, creatureName, randomizer, template);
             stopwatch.Stop();
 
             Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.Name, Is.EqualTo(creatureName), creature.Summary);
-            Assert.That(creature.Template, Is.EqualTo(template), creature.Summary);
+            Assert.That(creature.Templates, Is.EqualTo(new[] { template }), creature.Summary);
 
             if (asCharacter)
                 creatureAsserter.AssertCreatureAsCharacter(creature);
@@ -269,6 +273,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = creatureGenerator.GenerateRandom(asCharacter, randomizer, filters);
             stopwatch.Stop();
 
+            AssertRandomCreature(creature, template, asCharacter, type, challengeRating, alignment);
+
+            return creature;
+        }
+
+        private void AssertRandomCreature(Creature creature, string template, bool asCharacter, string type, string challengeRating, string alignment)
+        {
             var message = new StringBuilder();
             var messageTemplate = template == CreatureConstants.Templates.None ? "(None)" : template ?? "Null";
 
@@ -282,7 +293,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), message.ToString());
 
             if (template != null)
-                Assert.That(creature.Template, Is.EqualTo(template), message.ToString());
+                Assert.That(creature.Templates, Is.EqualTo(new[] { template }), message.ToString());
 
             if (type != null)
                 AssertCreatureIsType(creature, type, message.ToString());
@@ -297,8 +308,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                 creatureAsserter.AssertCreatureAsCharacter(creature, message.ToString());
             else
                 creatureAsserter.AssertCreature(creature, message.ToString());
-
-            return creature;
         }
 
         private void AssertCreatureIsType(Creature creature, string type, string message = null)
@@ -312,7 +321,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
                 return;
             }
 
-            if (creature.Template == CreatureConstants.Templates.None)
+            if (!creature.Templates.Any())
             {
                 Assert.That(creature.Type.Name, Is.EqualTo(type), message);
                 return;
@@ -348,34 +357,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, randomizer, filters);
             stopwatch.Stop();
 
-            var message = new StringBuilder();
-            var messageTemplate = template == CreatureConstants.Templates.None ? "(None)" : template ?? "Null";
-
-            message.AppendLine($"Creature: {creature.Summary}");
-            message.AppendLine($"As Character: {asCharacter}");
-            message.AppendLine($"Template: {messageTemplate}");
-            message.AppendLine($"Type: {type ?? "Null"}");
-            message.AppendLine($"CR: {challengeRating ?? "Null"}");
-            message.AppendLine($"Alignment: {alignment ?? "Null"}");
-
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), message.ToString());
-
-            if (template != null)
-                Assert.That(creature.Template, Is.EqualTo(template), message.ToString());
-
-            if (type != null)
-                AssertCreatureIsType(creature, type, message.ToString());
-
-            if (challengeRating != null)
-                Assert.That(creature.ChallengeRating, Is.EqualTo(challengeRating), message.ToString());
-
-            if (alignment != null)
-                Assert.That(creature.Alignment.Full, Is.EqualTo(alignment), message.ToString());
-
-            if (asCharacter)
-                creatureAsserter.AssertCreatureAsCharacter(creature, message.ToString());
-            else
-                creatureAsserter.AssertCreature(creature, message.ToString());
+            AssertRandomCreature(creature, template, asCharacter, type, challengeRating, alignment);
 
             return creature;
         }
@@ -383,9 +365,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicCreaturesTestCases))]
         [Repeat(100)]
         [Ignore("Only use this for debugging")]
-        public void BUG_StressSpecificCreature(string creatureName, string template, bool asCharacter)
+        public void BUG_StressSpecificCreature(bool asCharacter, string creatureName, params string[] templates)
         {
-            stressor.Stress(() => GenerateAndAssertCreature(creatureName, template, asCharacter));
+            stressor.Stress(() => GenerateAndAssertCreature(creatureName, asCharacter, false, templates));
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicFiltersTestCases))]
@@ -405,7 +387,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private void GenerateAndAssertProblematicCreature()
         {
             var randomCreature = collectionSelector.SelectRandomFrom(CreatureTestData.ProblematicCreatures);
-            GenerateAndAssertCreature(randomCreature.Creature, randomCreature.Template, randomCreature.AsCharacter, true);
+            GenerateAndAssertCreature(randomCreature.Creature, randomCreature.AsCharacter, true, randomCreature.Templates);
         }
 
         [Test]

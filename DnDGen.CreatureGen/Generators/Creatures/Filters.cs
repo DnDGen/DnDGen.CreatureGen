@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace DnDGen.CreatureGen.Generators.Creatures
 {
     public class Filters
     {
-        public string Template { get; set; }
+        public List<string> Templates { get; set; }
         public string Type { get; set; }
         public string ChallengeRating { get; set; }
         public string Alignment { get; set; }

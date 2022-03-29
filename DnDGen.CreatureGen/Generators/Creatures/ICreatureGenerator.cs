@@ -6,8 +6,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 {
     public interface ICreatureGenerator
     {
-        Creature Generate(string creatureName, string template, bool asCharacter, AbilityRandomizer abilityRandomizer = null);
-        Task<Creature> GenerateAsync(string creatureName, string template, bool asCharacter, AbilityRandomizer abilityRandomizer = null);
+        Creature Generate(bool asCharacter, string creatureName, AbilityRandomizer abilityRandomizer = null, params string[] templates);
+        Task<Creature> GenerateAsync(bool asCharacter, string creatureName, AbilityRandomizer abilityRandomizer = null, params string[] templates);
 
         (string Creature, string Template) GenerateRandomName(bool asCharacter, Filters filters = null);
         Creature GenerateRandom(bool asCharacter, AbilityRandomizer abilityRandomizer = null, Filters filters = null);

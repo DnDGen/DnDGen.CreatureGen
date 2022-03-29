@@ -49,13 +49,28 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
                 //INFO: We are not asserting that the challenge rating is valid
                 //Since the CR can be altered by advancement and by generating as a character
-                var filters = new Filters();
-                filters.Type = type;
-                filters.Template = creature.Template;
-                filters.Alignment = creature.Alignment.Full;
+                if (!creature.Templates.Any())
+                {
+                    var filters = new Filters();
+                    filters.Type = type;
+                    filters.Alignment = creature.Alignment.Full;
 
-                var isValid = creatureVerifier.VerifyCompatibility(false, creature.Name, filters);
-                Assert.That(isValid, Is.True, verifierMessage.ToString());
+                    var isValid = creatureVerifier.VerifyCompatibility(false, creature.Name, filters);
+                    Assert.That(isValid, Is.True, verifierMessage.ToString());
+                }
+                else
+                {
+                    foreach (var template in creature.Templates)
+                    {
+                        var filters = new Filters();
+                        filters.Type = type;
+                        filters.Template = template;
+                        filters.Alignment = creature.Alignment.Full;
+
+                        var isValid = creatureVerifier.VerifyCompatibility(false, creature.Name, filters);
+                        Assert.That(isValid, Is.True, verifierMessage.ToString());
+                    }
+                }
             }
 
             VerifySummary(creature, message);
@@ -123,7 +138,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 CreatureConstants.Templates.Zombie,
             };
 
-            if (undeadTemplates.Contains(creature.Template))
+            if (undeadTemplates.Intersect(creature.Templates).Any())
             {
                 castingScore -= creature.Magic.CastingAbility.TemplateAdjustment;
             }
@@ -228,7 +243,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 Weapon weapon = null;
 
                 //INFO: Lycanthropes have a modifed name for the attack based on their form
-                if (creature.Template.Contains("Lycanthrope"))
+                if (creature.Templates.Any(t => t.Contains("Lycanthrope")))
                 {
                     weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name.StartsWith($"{w.Description} ("));
                 }

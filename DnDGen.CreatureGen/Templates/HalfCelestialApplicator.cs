@@ -359,7 +359,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureTemplate(Creature creature)
         {
-            creature.Template = CreatureConstants.Templates.HalfCelestial;
+            creature.Templates.Add(CreatureConstants.Templates.HalfCelestial);
         }
 
         public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, Filters filters = null)

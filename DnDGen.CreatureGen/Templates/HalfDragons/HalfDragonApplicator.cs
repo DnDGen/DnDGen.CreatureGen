@@ -230,7 +230,7 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
 
         private void UpdateCreatureTemplate(Creature creature)
         {
-            creature.Template = DragonSpecies;
+            creature.Templates.Add(DragonSpecies);
         }
 
         private void UpdateCreatureAlignment(Creature creature, string presetAlignment)
@@ -407,7 +407,7 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
 
             // Alignment
             var alignmentTask = Task.Run(() => UpdateCreatureAlignment(creature, filters?.Alignment));
-            
+
             tasks.Add(alignmentTask);
 
             //Armor Class

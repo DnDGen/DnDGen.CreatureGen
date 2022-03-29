@@ -1,27 +1,28 @@
 ﻿using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Generators.Alignments
 {
     internal class AlignmentGenerator : IAlignmentGenerator
     {
-        private ICollectionSelector collectionSelector;
+        private readonly ICollectionSelector collectionSelector;
 
         public AlignmentGenerator(ICollectionSelector collectionSelector)
         {
             this.collectionSelector = collectionSelector;
         }
 
-        public Alignment Generate(string creatureName, string template, string presetAlignment)
+        public Alignment Generate(string creatureName, IEnumerable<string> templates, string presetAlignment)
         {
             if (!string.IsNullOrEmpty(presetAlignment))
                 return new Alignment(presetAlignment);
 
             var weightedAlignments = collectionSelector.ExplodeAndPreserveDuplicates(TableNameConstants.Collection.AlignmentGroups, creatureName);
 
-            if (template != null)
+            foreach (var template in templates)
             {
                 var templateAlignments = collectionSelector.SelectFrom(TableNameConstants.Collection.AlignmentGroups, template + GroupConstants.AllowedInput);
                 //INFO: Doing this instead of intersect in order to preserve duplicates

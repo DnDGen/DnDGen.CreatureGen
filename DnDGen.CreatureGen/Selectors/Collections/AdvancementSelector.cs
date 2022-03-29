@@ -4,6 +4,7 @@ using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.Infrastructure.Selectors.Percentiles;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Selectors.Collections
@@ -40,13 +41,19 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             return isAdvanced;
         }
 
-        public AdvancementSelection SelectRandomFor(string creature, string template, CreatureType creatureType, string originalSize, string originalChallengeRating)
+        public AdvancementSelection SelectRandomFor(string creature, IEnumerable<string> templates, CreatureType creatureType, string originalSize, string originalChallengeRating)
         {
             var advancements = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Advancements, creature);
             var creatureHitDice = adjustmentsSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, creature);
-            var maxHitDice = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.HitDice, template);
-            var validAdvancements = advancements.Where(a => creatureHitDice + a.Amount <= maxHitDice);
+            var maxHitDice = int.MaxValue;
 
+            foreach (var template in templates)
+            {
+                var templateMaxHitDice = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.HitDice, template);
+                maxHitDice = Math.Min(templateMaxHitDice, maxHitDice);
+            }
+
+            var validAdvancements = advancements.Where(a => creatureHitDice + a.Amount <= maxHitDice);
             if (!validAdvancements.Any())
             {
                 var minimumAdvancement = advancements.OrderBy(a => a.Amount).First();
