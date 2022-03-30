@@ -29,19 +29,92 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
 
         [TestCase(true)]
         [TestCase(false)]
-        public void VerifyCompatibility_CreatureAndTemplate_Compatible_IfTemplateApplicatorSaysSo(bool compatible)
+        public void VerifyCompatibility_CreatureAndTemplate_Compatible_IfTemplateApplicatorSaysSo_1Template(bool compatible)
         {
             var filters = new Filters();
-            filters.Template = "template";
+            filters.Templates.Add("template");
 
             var mockApplicator = new Mock<TemplateApplicator>();
             mockApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), false, filters))
-                .Returns((IEnumerable<string> cc, bool asc, Filters f) => cc.Where(c => compatible));
+                .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<string>>(), false, filters))
+                .Returns((IEnumerable<string> cc, bool asc, Filters f) => cc.Where(c => compatible).Select(c => new CreaturePrototype { Name = c }));
 
             mockJustInTimeFactory
                 .Setup(f => f.Build<TemplateApplicator>("template"))
                 .Returns(mockApplicator.Object);
+
+            var isCompatible = verifier.VerifyCompatibility(false, "creature", filters);
+            Assert.That(isCompatible, Is.EqualTo(compatible));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void VerifyCompatibility_CreatureAndTemplate_Compatible_IfTemplateApplicatorSaysSo_2Templates(bool compatible)
+        {
+            var filters = new Filters();
+            filters.Templates.Add("template 1");
+            filters.Templates.Add("template 2");
+
+            var mockApplicator1 = new Mock<TemplateApplicator>();
+            var mockApplicator2 = new Mock<TemplateApplicator>();
+            var prototypes1 = new[] { new CreaturePrototype { Name = "protoype 1" }, new CreaturePrototype { Name = "protoype 2" } };
+
+            mockApplicator1
+                .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<string>>(), false, filters))
+                .Returns(prototypes1);
+            mockApplicator2
+                .Setup(a => a.GetCompatiblePrototypes(prototypes1, false, filters))
+                .Returns((IEnumerable<CreaturePrototype> pp, bool asc, Filters f) => pp.Where(p => compatible));
+
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>("template 1"))
+                .Returns(mockApplicator1.Object);
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>("template 2"))
+                .Returns(mockApplicator2.Object);
+
+            var isCompatible = verifier.VerifyCompatibility(false, "creature", filters);
+            Assert.That(isCompatible, Is.EqualTo(compatible));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void VerifyCompatibility_CreatureAndTemplate_Compatible_IfTemplateApplicatorSaysSo_3Templates(bool compatible)
+        {
+            var filters = new Filters();
+            filters.Templates.Add("template 1");
+            filters.Templates.Add("template 2");
+            filters.Templates.Add("template 3");
+
+            var mockApplicator1 = new Mock<TemplateApplicator>();
+            var mockApplicator2 = new Mock<TemplateApplicator>();
+            var mockApplicator3 = new Mock<TemplateApplicator>();
+            var prototypes1 = new[]
+            {
+                new CreaturePrototype { Name = "protoype 1" },
+                new CreaturePrototype { Name = "protoype 2" },
+                new CreaturePrototype { Name = "protoype 3" } };
+            var prototypes2 = new[] { new CreaturePrototype { Name = "protoype 1" }, new CreaturePrototype { Name = "protoype 3" } };
+
+            mockApplicator1
+                .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<string>>(), false, filters))
+                .Returns(prototypes1);
+            mockApplicator2
+                .Setup(a => a.GetCompatiblePrototypes(prototypes1, false, filters))
+                .Returns(prototypes2);
+            mockApplicator3
+                .Setup(a => a.GetCompatiblePrototypes(prototypes2, false, filters))
+                .Returns((IEnumerable<CreaturePrototype> pp, bool asc, Filters f) => pp.Where(p => compatible));
+
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>("template 1"))
+                .Returns(mockApplicator1.Object);
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>("template 2"))
+                .Returns(mockApplicator2.Object);
+            mockJustInTimeFactory
+                .Setup(f => f.Build<TemplateApplicator>("template 3"))
+                .Returns(mockApplicator3.Object);
 
             var isCompatible = verifier.VerifyCompatibility(false, "creature", filters);
             Assert.That(isCompatible, Is.EqualTo(compatible));

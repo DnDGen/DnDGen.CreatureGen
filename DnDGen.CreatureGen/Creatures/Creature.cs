@@ -1,5 +1,4 @@
 ﻿using DnDGen.CreatureGen.Abilities;
-using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Attacks;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
@@ -11,12 +10,10 @@ using System.Linq;
 
 namespace DnDGen.CreatureGen.Creatures
 {
-    public class Creature
+    public class Creature : CreaturePrototype
     {
-        public string Name { get; set; }
         public List<string> Templates { get; set; }
         public string Size { get; set; }
-        public CreatureType Type { get; set; }
         public HitPoints HitPoints { get; set; }
         public IEnumerable<string> Languages { get; set; }
         public bool IsAdvanced { get; set; }
@@ -49,13 +46,8 @@ namespace DnDGen.CreatureGen.Creatures
         public Measurement Reach { get; set; }
         public IEnumerable<Feat> SpecialQualities { get; set; }
         public Dictionary<string, Save> Saves { get; set; }
-        public Dictionary<string, Ability> Abilities { get; set; }
         public IEnumerable<Skill> Skills { get; set; }
         public IEnumerable<Feat> Feats { get; set; }
-        public string ChallengeRating { get; set; }
-        public Alignment Alignment { get; set; }
-        public int? LevelAdjustment { get; set; }
-        public int CasterLevel { get; set; }
         public int NumberOfHands { get; set; }
         public bool CanUseEquipment { get; set; }
         public IEnumerable<Attack> Attacks { get; set; }
@@ -122,14 +114,10 @@ namespace DnDGen.CreatureGen.Creatures
 
         public Creature()
         {
-            Abilities = new Dictionary<string, Ability>();
-            Alignment = new Alignment();
             ArmorClass = new ArmorClass();
             Attacks = Enumerable.Empty<Attack>();
-            ChallengeRating = string.Empty;
             Feats = Enumerable.Empty<Feat>();
             HitPoints = new HitPoints();
-            Name = string.Empty;
             Reach = new Measurement("feet");
             Saves = new Dictionary<string, Save>();
             Size = string.Empty;
@@ -137,7 +125,6 @@ namespace DnDGen.CreatureGen.Creatures
             Space = new Measurement("feet");
             SpecialQualities = Enumerable.Empty<Feat>();
             Templates = new List<string>();
-            Type = new CreatureType();
             Speeds = new Dictionary<string, Measurement>();
             Equipment = new Equipment();
             Magic = new Magic();

@@ -347,6 +347,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.Vampire)]
         [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.HalfDragon_Blue, CreatureConstants.Templates.Vampire)]
         [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.HalfDragon_Blue, CreatureConstants.Templates.Vampire)]
+        [TestCase(false, CreatureConstants.Human,
+            CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted,
+            CreatureConstants.Templates.HalfDragon_Blue,
+            CreatureConstants.Templates.Vampire)]
+        [TestCase(true, CreatureConstants.Human,
+            CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted,
+            CreatureConstants.Templates.HalfDragon_Blue,
+            CreatureConstants.Templates.Vampire)]
         [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Zombie)]
         [TestCase(false, CreatureConstants.Kobold)]
         [TestCase(true, CreatureConstants.Kobold)]

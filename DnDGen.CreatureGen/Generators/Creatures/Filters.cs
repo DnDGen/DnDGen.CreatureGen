@@ -8,5 +8,10 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         public string Type { get; set; }
         public string ChallengeRating { get; set; }
         public string Alignment { get; set; }
+
+        public Filters()
+        {
+            Templates = new List<string>();
+        }
     }
 }

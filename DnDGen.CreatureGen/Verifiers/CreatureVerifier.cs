@@ -40,19 +40,23 @@ namespace DnDGen.CreatureGen.Verifiers
             if (filters?.Templates?.Any() == true)
             {
                 var applicator = factory.Build<TemplateApplicator>(filters.Templates[0]);
-                var filteredBaseCreatures = applicator.GetCompatibleCreatures(baseCreatures, asCharacter, filters);
-
-                if (!filteredBaseCreatures.Any())
-                {
-                    return false;
-                }
+                var prototypes = applicator.GetCompatiblePrototypes(baseCreatures, asCharacter);
 
                 for (var i = 1; i < filters.Templates.Count; i++)
                 {
-                    //TODO: Maybe we test compatiblity of the previous template?
+                    applicator = factory.Build<TemplateApplicator>(filters.Templates[i]);
+
+                    if (i == filters.Templates.Count - 1)
+                    {
+                        prototypes = applicator.GetCompatiblePrototypes(prototypes, asCharacter, filters);
+                    }
+                    else
+                    {
+                        prototypes = applicator.GetCompatiblePrototypes(prototypes, asCharacter);
+                    }
                 }
 
-                return filteredBaseCreatures.Any();
+                return prototypes.Any();
             }
 
             //INFO: We can cheat and use the None template applicator
