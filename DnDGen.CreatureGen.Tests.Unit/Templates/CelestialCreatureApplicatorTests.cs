@@ -112,6 +112,54 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
+        public void ApplyTo_ReturnsCreature()
+        {
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var creature = applicator.ApplyTo(baseCreature, false);
+            Assert.That(creature.Templates.Single(), Is.EqualTo(CreatureConstants.Templates.CelestialCreature));
+        }
+
+        [Test]
+        public void ApplyTo_ReturnsCreature_WithOtherTemplate()
+        {
+            baseCreature.Templates.Add("other template");
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var creature = applicator.ApplyTo(baseCreature, false);
+            Assert.That(creature.Templates, Has.Count.EqualTo(2));
+            Assert.That(creature.Templates[0], Is.EqualTo("other template"));
+            Assert.That(creature.Templates[1], Is.EqualTo(CreatureConstants.Templates.CelestialCreature));
+        }
+
+        [Test]
         public void ApplyTo_ReturnsCreature_WithFilters()
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
@@ -141,7 +189,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             filters.Alignment = AlignmentConstants.LawfulGood;
 
             var creature = applicator.ApplyTo(baseCreature, false, filters);
-            Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.CelestialCreature));
+            Assert.That(creature.Templates.Single(), Is.EqualTo(CreatureConstants.Templates.CelestialCreature));
         }
 
         [TestCase(CreatureConstants.Types.Aberration, CreatureConstants.Types.Aberration)]
@@ -1248,6 +1296,54 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
+        public async Task ApplyToAsync_ReturnsCreature()
+        {
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            Assert.That(creature.Templates.Single(), Is.EqualTo(CreatureConstants.Templates.CelestialCreature));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_ReturnsCreature_WithOtherTemplates()
+        {
+            baseCreature.Templates.Add("other template");
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.CelestialCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil });
+
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            Assert.That(creature.Templates, Has.Count.EqualTo(2));
+            Assert.That(creature.Templates[0], Is.EqualTo("other template"));
+            Assert.That(creature.Templates[1], Is.EqualTo(CreatureConstants.Templates.CelestialCreature));
+        }
+
+        [Test]
         public async Task ApplyToAsync_ReturnsCreature_WithFilters()
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
@@ -1277,7 +1373,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             filters.Alignment = AlignmentConstants.LawfulGood;
 
             var creature = await applicator.ApplyToAsync(baseCreature, false, filters);
-            Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.CelestialCreature));
+            Assert.That(creature.Templates.Single(), Is.EqualTo(CreatureConstants.Templates.CelestialCreature));
         }
 
         [TestCase(CreatureConstants.Types.Aberration, CreatureConstants.Types.Aberration)]
@@ -2535,52 +2631,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Magic, Is.EqualTo(newMagic));
-        }
-
-        [Test]
-        public void ApplyTo_SetsTemplate()
-        {
-            var smiteEvil = new Attack
-            {
-                Name = "Smite Evil",
-                IsSpecial = true
-            };
-            mockAttackGenerator
-                .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.CelestialCreature,
-                    baseCreature.Size,
-                    baseCreature.Size,
-                    baseCreature.BaseAttackBonus,
-                    baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
-
-            var creature = applicator.ApplyTo(baseCreature, false);
-            Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.CelestialCreature));
-        }
-
-        [Test]
-        public async Task ApplyToAsync_SetsTemplate()
-        {
-            var smiteEvil = new Attack
-            {
-                Name = "Smite Evil",
-                IsSpecial = true
-            };
-            mockAttackGenerator
-                .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.CelestialCreature,
-                    baseCreature.Size,
-                    baseCreature.Size,
-                    baseCreature.BaseAttackBonus,
-                    baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
-
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
-            Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.CelestialCreature));
         }
 
         [Test]
@@ -3869,6 +3919,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false, filters);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
+        [Test]
+        public void GetCompatiblePrototypes_FromNames_CopyTests()
+        {
+            Assert.Fail("not yet written.  Copy from get compatible creatures");
+        }
+
+        [Test]
+        public void GetCompatiblePrototypes_FromPrototypes_CopyTests()
+        {
+            Assert.Fail("not yet written.  Copy from get compatible creatures");
         }
     }
 }

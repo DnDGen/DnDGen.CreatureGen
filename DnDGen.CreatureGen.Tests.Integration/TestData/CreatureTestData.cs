@@ -51,44 +51,70 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
         public static IEnumerable<(bool AsCharacter, Filters Filters)> ProblematicFilters => new (bool AsCharacter, Filters Filters)[]
         {
             (true, new Filters()),
-            (true, new Filters { Template = CreatureConstants.Templates.Ghost, Alignment = AlignmentConstants.LawfulEvil }),
+            (true, new Filters
+                {
+                    Templates = new List<string> { CreatureConstants.Templates.Ghost },
+                    Alignment = AlignmentConstants.LawfulEvil
+                }),
             (true, new Filters { Type = CreatureConstants.Types.Subtypes.Earth, ChallengeRating = ChallengeRatingConstants.CR5 }),
             (true, new Filters
                 {
-                    Template = CreatureConstants.Templates.HalfCelestial,
+                    Templates = new List<string> { CreatureConstants.Templates.HalfCelestial },
                     Type = CreatureConstants.Types.Subtypes.Earth,
                     ChallengeRating = ChallengeRatingConstants.CR5
                 }),
-            (false, new Filters { Template = CreatureConstants.Templates.Ghost, Type = CreatureConstants.Types.Undead }),
-            (false, new Filters { Template = CreatureConstants.Templates.Ghost, Alignment = AlignmentConstants.ChaoticNeutral }),
             (false, new Filters
                 {
-                    Template = CreatureConstants.Templates.Ghost,
+                    Templates = new List<string> { CreatureConstants.Templates.Ghost },
+                    Type = CreatureConstants.Types.Undead
+                }),
+            (false, new Filters
+                {
+                    Templates = new List<string> { CreatureConstants.Templates.Ghost },
+                    Alignment = AlignmentConstants.ChaoticNeutral
+                }),
+            (false, new Filters
+                {
+                    Templates = new List<string> { CreatureConstants.Templates.Ghost },
                     Type = CreatureConstants.Types.Aberration,
                     ChallengeRating = ChallengeRatingConstants.CR6
                 }),
-            (false, new Filters { Template = CreatureConstants.Templates.HalfCelestial, Type = CreatureConstants.Types.Subtypes.Native }),
             (false, new Filters
                 {
-                    Template = CreatureConstants.Templates.HalfCelestial,
+                    Templates = new List<string> { CreatureConstants.Templates.HalfCelestial },
+                    Type = CreatureConstants.Types.Subtypes.Native
+                }),
+            (false, new Filters
+                {
+                    Templates = new List<string> { CreatureConstants.Templates.HalfCelestial },
                     Type = CreatureConstants.Types.Subtypes.Reptilian,
                     ChallengeRating = ChallengeRatingConstants.CR2
                 }),
             (false, new Filters
                 {
-                    Template = CreatureConstants.Templates.HalfFiend,
+                    Templates = new List<string> { CreatureConstants.Templates.HalfFiend },
                     Type = CreatureConstants.Types.Subtypes.Reptilian,
                     ChallengeRating = ChallengeRatingConstants.CR2
                 }),
             (false, new Filters
                 {
-                    Template = CreatureConstants.Templates.HalfFiend,
+                    Templates = new List<string> { CreatureConstants.Templates.HalfFiend },
                     Type = CreatureConstants.Types.Subtypes.Reptilian,
                     ChallengeRating = ChallengeRatingConstants.CR1_3rd
                 }),
-            (false, new Filters { Template = CreatureConstants.Templates.HalfFiend, ChallengeRating = ChallengeRatingConstants.CR15 }),
-            (false, new Filters { Template = CreatureConstants.Templates.Skeleton }),
-            (false, new Filters { Template = CreatureConstants.Templates.Zombie }),
+            (false, new Filters
+                {
+                    Templates = new List<string> { CreatureConstants.Templates.HalfFiend },
+                    ChallengeRating = ChallengeRatingConstants.CR15
+                }),
+            (false, new Filters
+                {
+                    Templates = new List<string> { CreatureConstants.Templates.Skeleton }
+                }),
+            (false, new Filters
+                {
+                    Templates = new List<string> { CreatureConstants.Templates.Zombie }
+                }),
             (false, new Filters { Type = CreatureConstants.Types.Aberration, ChallengeRating = ChallengeRatingConstants.CR6 }),
             (false, new Filters { Type = CreatureConstants.Types.Dragon }),
             (false, new Filters { Type = CreatureConstants.Types.Giant }),
@@ -106,6 +132,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
         };
 
         public static IEnumerable ProblematicFiltersTestCases => ProblematicFilters
-            .Select(pf => new TestCaseData(pf.Filters.Type, pf.AsCharacter, pf.Filters.Template, pf.Filters.ChallengeRating, pf.Filters.Alignment));
+            .Select(pf => new TestCaseData(pf.Filters.Type, pf.AsCharacter, pf.Filters.Templates.FirstOrDefault(), pf.Filters.ChallengeRating, pf.Filters.Alignment));
     }
 }
