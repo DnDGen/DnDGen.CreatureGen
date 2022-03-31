@@ -10,14 +10,14 @@ namespace DnDGen.CreatureGen.Creatures
         public CreatureType Type { get; set; }
         public Dictionary<string, Ability> Abilities { get; set; }
         public string ChallengeRating { get; set; }
-        public Alignment Alignment { get; set; }
+        public List<Alignment> Alignments { get; set; }
         public int? LevelAdjustment { get; set; }
         public int CasterLevel { get; set; }
 
         public CreaturePrototype()
         {
             Abilities = new Dictionary<string, Ability>();
-            Alignment = new Alignment();
+            Alignments = new List<Alignment>();
             ChallengeRating = string.Empty;
             Name = string.Empty;
             Type = new CreatureType();

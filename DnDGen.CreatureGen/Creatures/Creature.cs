@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Attacks;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Feats;
@@ -10,8 +11,15 @@ using System.Linq;
 
 namespace DnDGen.CreatureGen.Creatures
 {
-    public class Creature : CreaturePrototype
+    public class Creature
     {
+        public string Name { get; set; }
+        public CreatureType Type { get; set; }
+        public Dictionary<string, Ability> Abilities { get; set; }
+        public string ChallengeRating { get; set; }
+        public Alignment Alignment { get; set; }
+        public int? LevelAdjustment { get; set; }
+        public int CasterLevel { get; set; }
         public List<string> Templates { get; set; }
         public string Size { get; set; }
         public HitPoints HitPoints { get; set; }
@@ -114,6 +122,11 @@ namespace DnDGen.CreatureGen.Creatures
 
         public Creature()
         {
+            Abilities = new Dictionary<string, Ability>();
+            Alignment = new Alignment();
+            ChallengeRating = string.Empty;
+            Name = string.Empty;
+            Type = new CreatureType();
             ArmorClass = new ArmorClass();
             Attacks = Enumerable.Empty<Attack>();
             Feats = Enumerable.Empty<Feat>();
