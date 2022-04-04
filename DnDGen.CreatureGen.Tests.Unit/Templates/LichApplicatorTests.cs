@@ -131,6 +131,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
+        public void ApplyTo_ReturnsCreature_WithOtherTemplate()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
         public void ApplyTo_ReturnsCreature_WithFilters()
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
@@ -158,7 +164,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             filters.Alignment = "original Evil";
 
             var creature = applicator.ApplyTo(baseCreature, false, filters);
-            Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.Lich));
+            Assert.That(creature.Templates.Single(), Is.EqualTo(CreatureConstants.Templates.Lich));
         }
 
         [Test]
@@ -800,6 +806,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
+        public void ApplyToAsync_ReturnsCreature_WithOtherTemplate()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
         public async Task ApplyToAsync_ReturnsCreature_WithFilters()
         {
             baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
@@ -827,7 +839,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             filters.Alignment = "original Evil";
 
             var creature = await applicator.ApplyToAsync(baseCreature, false, filters);
-            Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.Lich));
+            Assert.That(creature.Templates.Single(), Is.EqualTo(CreatureConstants.Templates.Lich));
         }
 
         [Test]
@@ -1411,7 +1423,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.Lich));
+            Assert.That(creature.Templates.Single(), Is.EqualTo(CreatureConstants.Templates.Lich));
         }
 
         [Test]
@@ -1419,7 +1431,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Template, Is.EqualTo(CreatureConstants.Templates.Lich));
+            Assert.That(creature.Templates.Single(), Is.EqualTo(CreatureConstants.Templates.Lich));
         }
 
         [Test]
@@ -3026,6 +3038,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var compatibleCreatures = applicator.GetCompatibleCreatures(new[] { "my creature" }, false, filters);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
+        [Test]
+        public void GetCompatiblePrototypes_FromNames_CopyTests()
+        {
+            Assert.Fail("not yet written.  Copy from get compatible creatures");
+        }
+
+        [Test]
+        public void GetCompatiblePrototypes_FromPrototypes_CopyTests()
+        {
+            Assert.Fail("not yet written.  Copy from get compatible creatures");
         }
     }
 }

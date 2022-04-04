@@ -13,6 +13,7 @@ namespace DnDGen.CreatureGen.Creatures
         public List<Alignment> Alignments { get; set; }
         public int? LevelAdjustment { get; set; }
         public int CasterLevel { get; set; }
+        public double HitDiceQuantity { get; set; }
 
         public CreaturePrototype()
         {

@@ -294,7 +294,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             }
 
             Assert.That(templatedCreature.Summary, Is.EqualTo(creature.Summary));
-            Assert.That(templatedCreature.Template, Is.EqualTo(creature.Template).And.EqualTo(CreatureConstants.Templates.None));
+            Assert.That(templatedCreature.Templates.Single(), Is.EqualTo(creature.Templates.Single()).And.EqualTo(CreatureConstants.Templates.None));
             Assert.That(templatedCreature.Type.Name, Is.EqualTo(creature.Type.Name));
             Assert.That(templatedCreature.Type.SubTypes, Is.EquivalentTo(creature.Type.SubTypes));
         }
@@ -559,7 +559,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             }
 
             Assert.That(templatedCreature.Summary, Is.EqualTo(creature.Summary));
-            Assert.That(templatedCreature.Template, Is.EqualTo(creature.Template).And.EqualTo(CreatureConstants.Templates.None));
+            Assert.That(templatedCreature.Templates.Single(), Is.EqualTo(creature.Templates.Single()).And.EqualTo(CreatureConstants.Templates.None));
             Assert.That(templatedCreature.Type.Name, Is.EqualTo(creature.Type.Name));
             Assert.That(templatedCreature.Type.SubTypes, Is.EquivalentTo(creature.Type.SubTypes));
         }
@@ -1414,6 +1414,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var compatibleCreatures = templateApplicator.GetCompatibleCreatures(new[] { "my creature" }, false, filters);
             Assert.That(compatibleCreatures.Any(), Is.EqualTo(compatible));
+        }
+
+        [Test]
+        public void GetCompatiblePrototypes_FromNames_CopyTests()
+        {
+            Assert.Fail("not yet written.  Copy from get compatible creatures");
+        }
+
+        [Test]
+        public void GetCompatiblePrototypes_FromPrototypes_CopyTests()
+        {
+            Assert.Fail("not yet written.  Copy from get compatible creatures");
         }
     }
 }

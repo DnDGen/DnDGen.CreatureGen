@@ -624,5 +624,15 @@ namespace DnDGen.CreatureGen.Templates
             var templateChallengeRatings = GetChallengeRatings(creatureChallengeRating);
             return templateChallengeRatings.Contains(filterChallengeRating);
         }
+
+        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, bool asCharacter, Filters filters = null)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

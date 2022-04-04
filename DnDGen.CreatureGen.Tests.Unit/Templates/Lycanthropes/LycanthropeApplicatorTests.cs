@@ -366,6 +366,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             }
         }
 
+        [Test]
+        public void ApplyTo_ReturnsCreature_WithOtherTemplate()
+        {
+            Assert.Fail("not yet written");
+        }
+
         [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public void ApplyTo_ReturnsCreature_WithFilters(string template, string animal)
         {
@@ -390,7 +396,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             filters.Alignment = "original alignment";
 
             var creature = applicators[template].ApplyTo(baseCreature, false, filters);
-            Assert.That(creature.Template, Is.EqualTo(template));
+            Assert.That(creature.Templates.Single(), Is.EqualTo(template));
         }
 
         [TestCaseSource(nameof(AllLycanthropeTemplates))]
@@ -2300,6 +2306,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
+        [Test]
+        public void ApplyToAsync_ReturnsCreature_WithOtherTemplate()
+        {
+            Assert.Fail("not yet written");
+        }
+
         [TestCaseSource(nameof(AllLycanthropeTemplates))]
         public async Task ApplyToAsync_ReturnsCreature_WithFilters(string template, string animal)
         {
@@ -2324,7 +2336,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             filters.Alignment = "original alignment";
 
             var creature = await applicators[template].ApplyToAsync(baseCreature, false, filters);
-            Assert.That(creature.Template, Is.EqualTo(template));
+            Assert.That(creature.Templates.Single(), Is.EqualTo(template));
         }
 
         [TestCaseSource(nameof(AllLycanthropeTemplates))]
@@ -3514,7 +3526,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Template, Is.EqualTo(template));
+            Assert.That(creature.Templates.Single(), Is.EqualTo(template));
         }
 
         [TestCaseSource(nameof(AllLycanthropeTemplates))]
@@ -3524,7 +3536,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
 
             var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Template, Is.EqualTo(template));
+            Assert.That(creature.Templates.Single(), Is.EqualTo(template));
         }
 
         [TestCaseSource(nameof(AllLycanthropeTemplates))]
@@ -4728,6 +4740,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     yield return new TestCaseData(template.Template, template.Animal, "wrong subtype", ChallengeRatingConstants.CR4, "wrong alignment", false);
                 }
             }
+        }
+
+        [Test]
+        public void GetCompatiblePrototypes_FromNames_CopyTests()
+        {
+            Assert.Fail("not yet written.  Copy from get compatible creatures");
+        }
+
+        [Test]
+        public void GetCompatiblePrototypes_FromPrototypes_CopyTests()
+        {
+            Assert.Fail("not yet written.  Copy from get compatible creatures");
         }
     }
 }

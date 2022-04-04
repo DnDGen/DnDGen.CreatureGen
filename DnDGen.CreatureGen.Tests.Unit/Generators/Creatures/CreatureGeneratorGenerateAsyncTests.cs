@@ -42,7 +42,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             mockCreatureVerifier
                 .Setup(v => v.VerifyCompatibility(asCharacter, "creature", It.Is<Filters>(f => f != null
-                    && f.Template == "template"
+                    && f.Templates.Single() == "template"
                     && f.ChallengeRating == null
                     && f.Type == null
                     && f.Alignment == null)))
@@ -55,6 +55,30 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             message.AppendLine("\tTemplate: template");
 
             Assert.That(async () => await creatureGenerator.GenerateAsync(asCharacter, "creature", null, "template"),
+                Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public async Task GenerateAsync_InvalidCreatureTemplateComboThrowsException_MultipleTemplates(bool asCharacter)
+        {
+            mockCreatureVerifier
+                .Setup(v => v.VerifyCompatibility(asCharacter, "creature", It.Is<Filters>(f => f != null
+                    && f.Templates.Count == 2
+                    && f.Templates[0] == "template"
+                    && f.Templates[1] == "other template"
+                    && f.ChallengeRating == null
+                    && f.Type == null
+                    && f.Alignment == null)))
+                .Returns(false);
+
+            var message = new StringBuilder();
+            message.AppendLine("Invalid creature:");
+            message.AppendLine($"\tAs Character: {asCharacter}");
+            message.AppendLine("\tCreature: creature");
+            message.AppendLine("\tTemplate: template");
+
+            Assert.That(async () => await creatureGenerator.GenerateAsync(asCharacter, "creature", null, "template", "other template"),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
@@ -1498,7 +1522,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var templateCreature = new Creature();
             mockTemplateApplicator
                 .Setup(a => a.ApplyToAsync(It.IsAny<Creature>(), asCharacter, It.Is<Filters>(f => f != null
-                    && f.Template == "template"
+                    && f.Templates.Single() == "template"
                     && f.ChallengeRating == null
                     && f.Type == null
                     && f.Alignment == null)))
@@ -1523,7 +1547,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var templateCreature1 = new Creature();
             mockTemplateApplicator1
                 .Setup(a => a.ApplyToAsync(It.IsAny<Creature>(), asCharacter, It.Is<Filters>(f => f != null
-                    && f.Template == "template 1"
+                    && f.Templates.Count == 2
+                    && f.Templates[0] == "template 1"
+                    && f.Templates[1] == "template 2"
                     && f.ChallengeRating == null
                     && f.Type == null
                     && f.Alignment == null)))
@@ -1532,7 +1558,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var templateCreature2 = new Creature();
             mockTemplateApplicator2
                 .Setup(a => a.ApplyToAsync(templateCreature1, asCharacter, It.Is<Filters>(f => f != null
-                    && f.Template == "template 2"
+                    && f.Templates.Count == 2
+                    && f.Templates[0] == "template 1"
+                    && f.Templates[1] == "template 2"
                     && f.ChallengeRating == null
                     && f.Type == null
                     && f.Alignment == null)))

@@ -324,7 +324,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             filters.Alignment = $"{template}y scaley";
 
             var creature = applicators[template].ApplyTo(baseCreature, false, filters);
-            Assert.That(creature.Template, Is.EqualTo(template));
+            Assert.That(creature.Templates.Single(), Is.EqualTo(template));
         }
 
         [TestCaseSource(nameof(AllHalfDragonTemplates))]
@@ -332,7 +332,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         {
             var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Template, Is.EqualTo(template));
+            Assert.That(creature.Templates.Single(), Is.EqualTo(template));
         }
 
         [TestCaseSource(nameof(AllHalfDragonTemplates))]
@@ -340,7 +340,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         {
             var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Template, Is.EqualTo(template));
+            Assert.That(creature.Templates.Single(), Is.EqualTo(template));
+        }
+
+        [Test]
+        public void ApplyTo_ReturnsCreature_WithOtherTemplate()
+        {
+            Assert.Fail("not yet written");
+        }
+
+        [Test]
+        public void ApplyToAsync_ReturnsCreature_WithOtherTemplate()
+        {
+            Assert.Fail("not yet written");
         }
 
         [TestCaseSource(nameof(CreatureTypeAdjusted))]
@@ -1484,7 +1496,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             filters.Alignment = $"{template}y scaley";
 
             var creature = await applicators[template].ApplyToAsync(baseCreature, false, filters);
-            Assert.That(creature.Template, Is.EqualTo(template));
+            Assert.That(creature.Templates.Single(), Is.EqualTo(template));
         }
 
         [TestCaseSource(nameof(CreatureTypeAdjusted))]
@@ -3533,6 +3545,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                     yield return new TestCaseData(template, "wrong subtype", ChallengeRatingConstants.CR4, "wrong alignment", false);
                 }
             }
+        }
+
+        [Test]
+        public void GetCompatiblePrototypes_FromNames_CopyTests()
+        {
+            Assert.Fail("not yet written.  Copy from get compatible creatures");
+        }
+
+        [Test]
+        public void GetCompatiblePrototypes_FromPrototypes_CopyTests()
+        {
+            Assert.Fail("not yet written.  Copy from get compatible creatures");
         }
     }
 }

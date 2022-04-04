@@ -658,5 +658,15 @@ namespace DnDGen.CreatureGen.Templates
 
             return (true, null);
         }
+
+        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, bool asCharacter, Filters filters = null)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
