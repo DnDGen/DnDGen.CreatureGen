@@ -23,7 +23,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         [TestCase(false)]
         public void Generate_InvalidCreatureTemplateComboThrowsException(bool asCharacter)
         {
-            var filters = new Filters { Template = "template" };
+            var filters = new Filters();
+            filters.Templates.Add("template");
+
             mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, "creature", filters)).Returns(false);
 
             var message = new StringBuilder();
@@ -1481,7 +1483,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var templateCreature = new Creature();
             mockTemplateApplicator
                 .Setup(a => a.ApplyTo(It.IsAny<Creature>(), asCharacter, It.Is<Filters>(f => f != null
-                    && f.Template == "template"
+                    && f.Templates.Single() == "template"
                     && f.ChallengeRating == null
                     && f.Type == null
                     && f.Alignment == null)))
@@ -1506,7 +1508,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var templateCreature1 = new Creature();
             mockTemplateApplicator1
                 .Setup(a => a.ApplyTo(It.IsAny<Creature>(), asCharacter, It.Is<Filters>(f => f != null
-                    && f.Template == "template 1"
+                    && f.Templates.Single() == "template 1"
                     && f.ChallengeRating == null
                     && f.Type == null
                     && f.Alignment == null)))
@@ -1515,7 +1517,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var templateCreature2 = new Creature();
             mockTemplateApplicator2
                 .Setup(a => a.ApplyTo(templateCreature1, asCharacter, It.Is<Filters>(f => f != null
-                    && f.Template == "template 2"
+                    && f.Templates.Single() == "template 2"
                     && f.ChallengeRating == null
                     && f.Type == null
                     && f.Alignment == null)))

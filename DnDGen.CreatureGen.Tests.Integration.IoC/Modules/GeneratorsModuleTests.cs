@@ -158,6 +158,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural)]
         [TestCase(CreatureConstants.Templates.Zombie)]
+        [TestCase(null)]
         public void TemplateApplicatorIsInjected(string name)
         {
             AssertNotSingleton<TemplateApplicator>(name);
@@ -259,10 +260,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
             AssertNamedIsInstanceOf<TemplateApplicator, LichApplicator>(CreatureConstants.Templates.Lich);
         }
 
-        [Test]
-        public void NoneApplicatorIsInjected()
+        [TestCase(null)]
+        [TestCase("")]
+        [TestCase(CreatureConstants.Templates.None)]
+        public void NoneApplicatorIsInjected(string name)
         {
-            AssertNamedIsInstanceOf<TemplateApplicator, NoneApplicator>(CreatureConstants.Templates.None);
+            AssertNamedIsInstanceOf<TemplateApplicator, NoneApplicator>(name);
         }
 
         [Test]

@@ -82,7 +82,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var name = creatureGenerator.GenerateRandomName(asCharacter, filters);
             Assert.That(name.Creature, Is.EqualTo(creatureName));
-            Assert.That(name.Template, Is.EqualTo(CreatureConstants.Templates.None));
+            Assert.That(name.Templates, Is.Empty);
         }
 
         [TestCase(true, null, null, null)]
@@ -106,7 +106,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var creatureName = "my creature";
             var template = CreatureConstants.Templates.None;
             var filters = new Filters();
-            filters.Template = template;
+            filters.Templates.Add(template);
             filters.Type = type;
             filters.ChallengeRating = cr;
             filters.Alignment = alignment;
@@ -128,7 +128,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var name = creatureGenerator.GenerateRandomName(asCharacter, filters);
             Assert.That(name.Creature, Is.EqualTo(creatureName));
-            Assert.That(name.Template, Is.EqualTo(template));
+            Assert.That(name.Templates.Single(), Is.EqualTo(template));
         }
 
         [TestCase(true, null, null, null)]
@@ -152,7 +152,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var creatureName = "my creature";
             var template = "my template";
             var filters = new Filters();
-            filters.Template = template;
+            filters.Templates.Add(template);
             filters.Type = type;
             filters.ChallengeRating = cr;
             filters.Alignment = alignment;
@@ -174,7 +174,62 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var name = creatureGenerator.GenerateRandomName(asCharacter, filters);
             Assert.That(name.Creature, Is.EqualTo(creatureName));
-            Assert.That(name.Template, Is.EqualTo(template));
+            Assert.That(name.Templates.Single(), Is.EqualTo(template));
+        }
+
+        [TestCase(true, null, null, null)]
+        [TestCase(true, null, null, "my alignment")]
+        [TestCase(true, null, "my challenge rating", null)]
+        [TestCase(true, null, "my challenge rating", "my alignment")]
+        [TestCase(true, "my type", null, null)]
+        [TestCase(true, "my type", null, "my alignment")]
+        [TestCase(true, "my type", "my challenge rating", null)]
+        [TestCase(true, "my type", "my challenge rating", "my alignment")]
+        [TestCase(false, null, null, null)]
+        [TestCase(false, null, null, "my alignment")]
+        [TestCase(false, null, "my challenge rating", null)]
+        [TestCase(false, null, "my challenge rating", "my alignment")]
+        [TestCase(false, "my type", null, null)]
+        [TestCase(false, "my type", null, "my alignment")]
+        [TestCase(false, "my type", "my challenge rating", null)]
+        [TestCase(false, "my type", "my challenge rating", "my alignment")]
+        public void GenerateRandomName_GenerateCreatureName_WithMultiplePresetTemplates(bool asCharacter, string type, string cr, string alignment)
+        {
+            var creatureName = "my creature";
+            var template1 = "my template";
+            var template2 = "my other template";
+            var filters = new Filters();
+            filters.Templates.Add(template1);
+            filters.Templates.Add(template2);
+            filters.Type = type;
+            filters.ChallengeRating = cr;
+            filters.Alignment = alignment;
+
+            var creatures = new[] { "wrong creature", creatureName, "other creature" };
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, null, filters)).Returns(true);
+
+            var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, group))
+                .Returns(creatures);
+
+            var mockTemplateApplicator1 = new Mock<TemplateApplicator>();
+            mockTemplateApplicator1
+                .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<string>>(), asCharacter, filters))
+                .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc.Select(c => new CreaturePrototype { Name = c }));
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template1)).Returns(mockTemplateApplicator1.Object);
+
+            var mockTemplateApplicator2 = new Mock<TemplateApplicator>();
+            mockTemplateApplicator2
+                .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<CreaturePrototype>>(), asCharacter, filters))
+                .Returns((IEnumerable<CreaturePrototype> cc, bool asC, Filters f) => cc.Where(c => c.Name == creatureName));
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template2)).Returns(mockTemplateApplicator2.Object);
+
+            var name = creatureGenerator.GenerateRandomName(asCharacter, filters);
+            Assert.That(name.Creature, Is.EqualTo(creatureName));
+            Assert.That(name.Templates, Is.EqualTo(new[] { template1, template2 }));
         }
 
         [TestCase(true, null, null, null)]
@@ -244,7 +299,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var name = creatureGenerator.GenerateRandomName(asCharacter, filters);
             Assert.That(name.Creature, Is.EqualTo(creatureName));
-            Assert.That(name.Template, Is.EqualTo(template));
+            Assert.That(name.Templates.Single(), Is.EqualTo(template));
         }
 
         [TestCase(true, null, null, null)]
@@ -318,7 +373,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var name = creatureGenerator.GenerateRandomName(asCharacter, filters);
             Assert.That(name.Creature, Is.EqualTo(creatureName));
-            Assert.That(name.Template, Is.EqualTo(template));
+            Assert.That(name.Templates.Single(), Is.EqualTo(template));
         }
 
         [TestCase(true, null, null, null)]
@@ -392,7 +447,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var name = creatureGenerator.GenerateRandomName(asCharacter, filters);
             Assert.That(name.Creature, Is.EqualTo(creatureName));
-            Assert.That(name.Template, Is.EqualTo(CreatureConstants.Templates.None));
+            Assert.That(name.Templates, Is.Empty);
         }
 
         [TestCase(true, null, null, null)]
@@ -416,7 +471,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var creatureName = "my creature";
             var template = CreatureConstants.Templates.None;
             var filters = new Filters();
-            filters.Template = template;
+            filters.Templates.Add(template);
             filters.Type = type;
             filters.ChallengeRating = cr;
             filters.Alignment = alignment;
@@ -446,7 +501,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var name = creatureGenerator.GenerateRandomName(asCharacter, filters);
             Assert.That(name.Creature, Is.EqualTo(creatureName));
-            Assert.That(name.Template, Is.EqualTo(CreatureConstants.Templates.None));
+            Assert.That(name.Templates.Single(), Is.EqualTo(CreatureConstants.Templates.None));
         }
 
         [TestCase(true, null, null, null)]
@@ -470,7 +525,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var creatureName = "my creature";
             var template = "my template";
             var filters = new Filters();
-            filters.Template = template;
+            filters.Templates.Add(template);
             filters.Type = type;
             filters.ChallengeRating = cr;
             filters.Alignment = alignment;
@@ -500,7 +555,70 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var name = creatureGenerator.GenerateRandomName(asCharacter, filters);
             Assert.That(name.Creature, Is.EqualTo(creatureName));
-            Assert.That(name.Template, Is.EqualTo(template));
+            Assert.That(name.Templates.Single(), Is.EqualTo(template));
+        }
+
+        [TestCase(true, null, null, null)]
+        [TestCase(true, null, null, "my alignment")]
+        [TestCase(true, null, "my challenge rating", null)]
+        [TestCase(true, null, "my challenge rating", "my alignment")]
+        [TestCase(true, "my type", null, null)]
+        [TestCase(true, "my type", null, "my alignment")]
+        [TestCase(true, "my type", "my challenge rating", null)]
+        [TestCase(true, "my type", "my challenge rating", "my alignment")]
+        [TestCase(false, null, null, null)]
+        [TestCase(false, null, null, "my alignment")]
+        [TestCase(false, null, "my challenge rating", null)]
+        [TestCase(false, null, "my challenge rating", "my alignment")]
+        [TestCase(false, "my type", null, null)]
+        [TestCase(false, "my type", null, "my alignment")]
+        [TestCase(false, "my type", "my challenge rating", null)]
+        [TestCase(false, "my type", "my challenge rating", "my alignment")]
+        public void GenerateRandomName_GenerateRandomCreatureName_WithMultiplePresetTemplates(bool asCharacter, string type, string cr, string alignment)
+        {
+            var creatureName = "my creature";
+            var template1 = "my template";
+            var template2 = "my other template";
+            var filters = new Filters();
+            filters.Templates.Add(template1);
+            filters.Templates.Add(template2);
+            filters.Type = type;
+            filters.ChallengeRating = cr;
+            filters.Alignment = alignment;
+
+            var creatures = new[] { "wrong creature", creatureName, "other creature" };
+            var templates = new[] { "wrong template", template1, "other template", template2, "another template" };
+            mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, null, filters)).Returns(true);
+
+            var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, group))
+                .Returns(creatures);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
+                .Returns(templates);
+
+            var mockTemplateApplicator1 = new Mock<TemplateApplicator>();
+            mockTemplateApplicator1
+                .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<string>>(), asCharacter, filters))
+                .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc.Select(c => new CreaturePrototype { Name = c }));
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template1)).Returns(mockTemplateApplicator1.Object);
+
+            var mockTemplateApplicator2 = new Mock<TemplateApplicator>();
+            mockTemplateApplicator2
+                .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<CreaturePrototype>>(), asCharacter, filters))
+                .Returns((IEnumerable<CreaturePrototype> cc, bool asC, Filters f) => cc);
+
+            mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>(template2)).Returns(mockTemplateApplicator2.Object);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(creatures))))
+                .Returns(creatureName);
+
+            var name = creatureGenerator.GenerateRandomName(asCharacter, filters);
+            Assert.That(name.Creature, Is.EqualTo(creatureName));
+            Assert.That(name.Templates, Is.EqualTo(new[] { template1, template2 }));
         }
 
         [TestCase(true, null, null, null)]
@@ -589,7 +707,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var name = creatureGenerator.GenerateRandomName(asCharacter, filters);
             Assert.That(name.Creature, Is.EqualTo(creatureName));
-            Assert.That(name.Template, Is.EqualTo(template));
+            Assert.That(name.Templates.Single(), Is.EqualTo(template));
         }
 
         [TestCase(true, null, null, null, null)]
@@ -643,7 +761,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandomName_ThrowException_WhenNotCompatible(bool asCharacter, string template, string type, string challengeRating, string alignment)
         {
             var filters = new Filters();
-            filters.Template = template;
+            filters.Templates.Add(template);
             filters.Type = type;
             filters.ChallengeRating = challengeRating;
             filters.Alignment = alignment;
