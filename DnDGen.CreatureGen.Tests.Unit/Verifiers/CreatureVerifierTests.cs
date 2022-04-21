@@ -125,7 +125,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         public void BUG_VerifyCompatibility_CreatureAndTemplate_Compatible_IfTemplateApplicatorSaysSo_HonorNoneTemplate(bool compatible)
         {
             var filters = new Filters();
-            filters.Template = CreatureConstants.Templates.None;
+            filters.Templates.Add(CreatureConstants.Templates.None);
 
             var mockApplicator = new Mock<TemplateApplicator>();
             mockApplicator
@@ -145,7 +145,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         public void VerifyCompatiblity_CreatureAndTemplateAsCharacter_Compatible_IfCharacterAndTemplateApplicatorSaysSo(bool compatible)
         {
             var filters = new Filters();
-            filters.Template = "template";
+            filters.Templates.Add("template");
 
             var mockApplicator = new Mock<TemplateApplicator>();
             mockApplicator
@@ -169,7 +169,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         public void BUG_VerifyCompatiblity_CreatureAndTemplateAsCharacter_Compatible_IfCharacterAndTemplateApplicatorSaysSo_HonorNoneTemplate(bool compatible)
         {
             var filters = new Filters();
-            filters.Template = CreatureConstants.Templates.None;
+            filters.Templates.Add(CreatureConstants.Templates.None);
 
             var mockApplicator = new Mock<TemplateApplicator>();
             mockApplicator
@@ -192,7 +192,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         public void VerifyCompatiblity_CreatureAndTemplateAsCharacter_NotCompatible_IfNotCharacter()
         {
             var filters = new Filters();
-            filters.Template = "template";
+            filters.Templates.Add("template");
 
             var mockApplicator = new Mock<TemplateApplicator>();
             mockApplicator
@@ -215,7 +215,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         public void BUG_VerifyCompatiblity_CreatureAndTemplateAsCharacter_NotCompatible_IfNotCharacter_HonorNoneTemplate()
         {
             var filters = new Filters();
-            filters.Template = CreatureConstants.Templates.None;
+            filters.Templates.Add(CreatureConstants.Templates.None);
 
             var mockApplicator = new Mock<TemplateApplicator>();
             mockApplicator
@@ -238,7 +238,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         public void VerifyCompatiblity_Template_Compatible()
         {
             var filters = new Filters();
-            filters.Template = "template";
+            filters.Templates.Add("template");
 
             var mockApplicator = new Mock<TemplateApplicator>();
             mockApplicator
@@ -261,7 +261,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         public void BUG_VerifyCompatiblity_Template_Compatible_HonorNoneTemplate()
         {
             var filters = new Filters();
-            filters.Template = CreatureConstants.Templates.None;
+            filters.Templates.Add(CreatureConstants.Templates.None);
 
             var mockApplicator = new Mock<TemplateApplicator>();
             mockApplicator
@@ -285,7 +285,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         public void VerifyCompatiblity_Template_Compatible_IfTemplate(bool asCharacter)
         {
             var filters = new Filters();
-            filters.Template = "template";
+            filters.Templates.Add("template");
 
             var mockApplicator = new Mock<TemplateApplicator>();
             mockApplicator
@@ -309,7 +309,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         public void BUG_VerifyCompatiblity_Template_NotCompatible_IfNotTemplate_HonorNoneTemplate(bool asCharacter)
         {
             var filters = new Filters();
-            filters.Template = CreatureConstants.Templates.None;
+            filters.Templates.Add(CreatureConstants.Templates.None);
 
             var mockApplicator = new Mock<TemplateApplicator>();
             mockApplicator
@@ -332,7 +332,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
         public void VerifyCompatiblity_TemplateAsCharacter_NotCompatible_IfNotCharacter()
         {
             var filters = new Filters();
-            filters.Template = "template";
+            filters.Templates.Add("template");
 
             var mockApplicator = new Mock<TemplateApplicator>();
             mockApplicator
@@ -373,7 +373,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             filters.Type = type;
             filters.ChallengeRating = cr;
             filters.Alignment = alignment;
-            filters.Template = "template";
+            filters.Templates.Add("template");
 
             var mockApplicator = new Mock<TemplateApplicator>();
             mockApplicator
@@ -417,7 +417,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             filters.Type = type;
             filters.ChallengeRating = cr;
             filters.Alignment = alignment;
-            filters.Template = CreatureConstants.Templates.None;
+            filters.Templates.Add(CreatureConstants.Templates.None);
 
             var mockApplicator = new Mock<TemplateApplicator>();
             mockApplicator
@@ -461,7 +461,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             filters.Type = type;
             filters.ChallengeRating = cr;
             filters.Alignment = alignment;
-            filters.Template = "template";
+            filters.Templates.Add("template");
 
             var mockApplicator = new Mock<TemplateApplicator>();
             mockApplicator
@@ -502,7 +502,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             filters.Type = type;
             filters.ChallengeRating = cr;
             filters.Alignment = alignment;
-            filters.Template = CreatureConstants.Templates.None;
+            filters.Templates.Add(CreatureConstants.Templates.None);
 
             var mockApplicator = new Mock<TemplateApplicator>();
             mockApplicator
@@ -535,7 +535,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             filters.Type = type;
             filters.ChallengeRating = cr;
             filters.Alignment = alignment;
-            filters.Template = "template";
+            filters.Templates.Add("template");
 
             var mockApplicator = new Mock<TemplateApplicator>();
             mockApplicator
@@ -568,7 +568,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             filters.Type = type;
             filters.ChallengeRating = cr;
             filters.Alignment = alignment;
-            filters.Template = CreatureConstants.Templates.None;
+            filters.Templates.Add(CreatureConstants.Templates.None);
 
             var mockApplicator = new Mock<TemplateApplicator>();
             mockApplicator
@@ -726,7 +726,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             filters.Type = type;
             filters.ChallengeRating = cr;
             filters.Alignment = alignment;
-            filters.Template = CreatureConstants.Templates.None;
+            filters.Templates.Add(CreatureConstants.Templates.None);
 
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All))
