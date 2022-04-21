@@ -215,14 +215,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     asCharacter,
                     It.Is<string>(c => c == null || c == creatureName),
                     It.Is<Filters>(f => f == null
-                        || ((templateNames.Contains(f.Template) || f.Template == null)
+                        || ((!f.Templates.Except(templateNames).Any())
                             && f.Type == typeFilter
                             && f.ChallengeRating == crFilter
                             && f.Alignment == alignmentFilter)
-                        || (templateNames.Contains(f.Template) || f.Template == null))))
+                        || (!f.Templates.Except(templateNames).Any()))))
                 .Returns(true);
             mockCreatureVerifier.Setup(v => v.VerifyCompatibility(asCharacter, creatureName, It.Is<Filters>(f => f != null
-                && templateNames.Contains(f.Template)))).Returns(true);
+                && !f.Templates.Except(templateNames).Any()))).Returns(true);
             mockCreatureDataSelector.Setup(s => s.SelectFor(creatureName)).Returns(creatureData);
 
             mockFeatsGenerator.Setup(g =>
