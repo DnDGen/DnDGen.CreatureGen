@@ -99,10 +99,10 @@ namespace DnDGen.CreatureGen.Templates
                     compatibility.Reason,
                     asCharacter,
                     creature.Name,
-                    CreatureConstants.Templates.Skeleton,
                     filters?.Type,
                     filters?.ChallengeRating,
-                    filters?.Alignment);
+                    filters?.Alignment,
+                    creature.Templates.Union(new[] { CreatureConstants.Templates.Skeleton }).ToArray());
             }
 
             // Template
@@ -446,10 +446,10 @@ namespace DnDGen.CreatureGen.Templates
                     compatibility.Reason,
                     asCharacter,
                     creature.Name,
-                    CreatureConstants.Templates.Skeleton,
                     filters?.Type,
                     filters?.ChallengeRating,
-                    filters?.Alignment);
+                    filters?.Alignment,
+                    creature.Templates.Union(new[] { CreatureConstants.Templates.Skeleton }).ToArray());
             }
 
             var tasks = new List<Task>();

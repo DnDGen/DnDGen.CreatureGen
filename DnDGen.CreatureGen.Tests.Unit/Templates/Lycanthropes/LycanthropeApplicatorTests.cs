@@ -366,10 +366,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
             }
         }
 
-        [Test]
-        public void ApplyTo_ReturnsCreature_WithOtherTemplate()
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public void ApplyTo_ReturnsCreature_WithOtherTemplate(string template, string animal)
         {
-            Assert.Fail("not yet written");
+            baseCreature.Templates.Add("my other template");
+
+            SetUpAnimal(animal, hitDiceQuantity: 1);
+
+            var creature = applicators[template].ApplyTo(baseCreature, false);
+            Assert.That(creature.Templates, Has.Count.EqualTo(2));
+            Assert.That(creature.Templates[0], Is.EqualTo("my other template"));
+            Assert.That(creature.Templates[1], Is.EqualTo(template));
         }
 
         [TestCaseSource(nameof(AllLycanthropeTemplates))]
@@ -2306,10 +2313,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));
         }
 
-        [Test]
-        public void ApplyToAsync_ReturnsCreature_WithOtherTemplate()
+        [TestCaseSource(nameof(AllLycanthropeTemplates))]
+        public async Task ApplyToAsync_ReturnsCreature_WithOtherTemplate(string template, string animal)
         {
-            Assert.Fail("not yet written");
+            baseCreature.Templates.Add("my other template");
+
+            SetUpAnimal(animal, hitDiceQuantity: 1);
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
+            Assert.That(creature.Templates, Has.Count.EqualTo(2));
+            Assert.That(creature.Templates[0], Is.EqualTo("my other template"));
+            Assert.That(creature.Templates[1], Is.EqualTo(template));
         }
 
         [TestCaseSource(nameof(AllLycanthropeTemplates))]

@@ -90,10 +90,10 @@ namespace DnDGen.CreatureGen.Templates
                     compatibility.Reason,
                     asCharacter,
                     creature.Name,
-                    CreatureConstants.Templates.HalfFiend,
                     filters?.Type,
                     filters?.ChallengeRating,
-                    filters?.Alignment);
+                    filters?.Alignment,
+                    creature.Templates.Union(new[] { CreatureConstants.Templates.HalfFiend }).ToArray());
             }
 
             // Template
@@ -409,10 +409,10 @@ namespace DnDGen.CreatureGen.Templates
                     compatibility.Reason,
                     asCharacter,
                     creature.Name,
-                    CreatureConstants.Templates.HalfFiend,
                     filters?.Type,
                     filters?.ChallengeRating,
-                    filters?.Alignment);
+                    filters?.Alignment,
+                    creature.Templates.Union(new[] { CreatureConstants.Templates.HalfFiend }).ToArray());
             }
 
             var tasks = new List<Task>();

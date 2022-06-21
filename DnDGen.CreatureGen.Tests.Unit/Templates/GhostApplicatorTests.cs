@@ -179,7 +179,58 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_ReturnsCreature_WithOtherTemplate()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
+            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.HitPoints.HitDice[0].Quantity = 1;
+            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
+            baseCreature.Alignment = new Alignment("original alignment");
+            baseCreature.Templates.Add("my other template");
+
+            mockDice
+                .Setup(d => d
+                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .d(12)
+                    .AsIndividualRolls<int>())
+                .Returns(new[] { 9266 });
+            mockDice
+                .Setup(d => d
+                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .d(12)
+                    .AsPotentialAverage())
+                .Returns(90210);
+
+            var ghostAttacks = new[]
+            {
+                new Attack { Name = "spoopy", IsSpecial = true },
+                new Attack { Name = "Manifestation", IsSpecial = true },
+                new Attack { Name = "spooky", IsSpecial = true },
+                new Attack { Name = "scary", IsSpecial = true },
+                new Attack { Name = "skeletons", IsSpecial = true },
+                new Attack { Name = "shout", IsSpecial = true },
+                new Attack { Name = "starkly", IsSpecial = true },
+                new Attack { Name = "thrilling", IsSpecial = true },
+                new Attack { Name = "screams", IsSpecial = true },
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.Ghost,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(ghostAttacks);
+
+            var filters = new Filters();
+            filters.Type = "subtype 1";
+            filters.ChallengeRating = ChallengeRatingConstants.CR3;
+            filters.Alignment = "original alignment";
+
+            var creature = applicator.ApplyTo(baseCreature, false, filters);
+            Assert.That(creature.Templates, Has.Count.EqualTo(2));
+            Assert.That(creature.Templates[0], Is.EqualTo("my other template"));
+            Assert.That(creature.Templates[1], Is.EqualTo(CreatureConstants.Templates.Ghost));
         }
 
         [Test]
@@ -1238,9 +1289,60 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void ApplyToAsync_ReturnsCreature_WithOtherTemplate()
+        public async Task ApplyToAsync_ReturnsCreature_WithOtherTemplate()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
+            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.HitPoints.HitDice[0].Quantity = 1;
+            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
+            baseCreature.Alignment = new Alignment("original alignment");
+            baseCreature.Templates.Add("my other template");
+
+            mockDice
+                .Setup(d => d
+                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .d(12)
+                    .AsIndividualRolls<int>())
+                .Returns(new[] { 9266 });
+            mockDice
+                .Setup(d => d
+                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity)
+                    .d(12)
+                    .AsPotentialAverage())
+                .Returns(90210);
+
+            var ghostAttacks = new[]
+            {
+                new Attack { Name = "spoopy", IsSpecial = true },
+                new Attack { Name = "Manifestation", IsSpecial = true },
+                new Attack { Name = "spooky", IsSpecial = true },
+                new Attack { Name = "scary", IsSpecial = true },
+                new Attack { Name = "skeletons", IsSpecial = true },
+                new Attack { Name = "shout", IsSpecial = true },
+                new Attack { Name = "starkly", IsSpecial = true },
+                new Attack { Name = "thrilling", IsSpecial = true },
+                new Attack { Name = "screams", IsSpecial = true },
+            };
+
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.Ghost,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(ghostAttacks);
+
+            var filters = new Filters();
+            filters.Type = "subtype 1";
+            filters.ChallengeRating = ChallengeRatingConstants.CR3;
+            filters.Alignment = "original alignment";
+
+            var creature = await applicator.ApplyToAsync(baseCreature, false, filters);
+            Assert.That(creature.Templates, Has.Count.EqualTo(2));
+            Assert.That(creature.Templates[0], Is.EqualTo("my other template"));
+            Assert.That(creature.Templates[1], Is.EqualTo(CreatureConstants.Templates.Ghost));
         }
 
         [Test]

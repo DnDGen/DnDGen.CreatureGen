@@ -74,10 +74,10 @@ namespace DnDGen.CreatureGen.Templates
                     compatibility.Reason,
                     asCharacter,
                     creature.Name,
-                    CreatureConstants.Templates.FiendishCreature,
                     filters?.Type,
                     filters?.ChallengeRating,
-                    filters?.Alignment);
+                    filters?.Alignment,
+                    creature.Templates.Union(new[] { CreatureConstants.Templates.FiendishCreature }).ToArray());
             }
 
             // Template
@@ -286,10 +286,10 @@ namespace DnDGen.CreatureGen.Templates
                     compatibility.Reason,
                     asCharacter,
                     creature.Name,
-                    CreatureConstants.Templates.FiendishCreature,
                     filters?.Type,
                     filters?.ChallengeRating,
-                    filters?.Alignment);
+                    filters?.Alignment,
+                    creature.Templates.Union(new[] { CreatureConstants.Templates.FiendishCreature }).ToArray());
             }
 
             var tasks = new List<Task>();

@@ -80,7 +80,14 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             var compatibility = IsCompatible(creature.Type.AllTypes, dragonAlignments, creature.ChallengeRating, filters);
 
             if (!compatibility.Compatible)
-                throw new InvalidCreatureException(compatibility.Reason, asCharacter, creature.Name, DragonSpecies, filters?.Type, filters?.ChallengeRating, filters?.Alignment);
+                throw new InvalidCreatureException(
+                    compatibility.Reason,
+                    asCharacter, 
+                    creature.Name, 
+                    filters?.Type, 
+                    filters?.ChallengeRating,
+                    filters?.Alignment,
+                    creature.Templates.Union(new[] { DragonSpecies }).ToArray());
 
             // Template
             UpdateCreatureTemplate(creature);
@@ -377,7 +384,14 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             var compatibility = IsCompatible(creature.Type.AllTypes, dragonAlignments, creature.ChallengeRating, filters);
 
             if (!compatibility.Compatible)
-                throw new InvalidCreatureException(compatibility.Reason, asCharacter, creature.Name, DragonSpecies, filters?.Type, filters?.ChallengeRating, filters?.Alignment);
+                throw new InvalidCreatureException(
+                    compatibility.Reason,
+                    asCharacter,
+                    creature.Name,
+                    filters?.Type,
+                    filters?.ChallengeRating,
+                    filters?.Alignment,
+                    creature.Templates.Union(new[] { DragonSpecies }).ToArray());
 
             var tasks = new List<Task>();
 

@@ -151,7 +151,32 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_ReturnsCreature_WithOtherTemplate()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
+            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.HitPoints.HitDice[0].Quantity = 1;
+            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
+            baseCreature.Alignment = new Alignment(AlignmentConstants.LawfulNeutral);
+            baseCreature.Templates.Add("my other template");
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.HalfCelestial,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil, new Attack { Name = "other attack" } });
+
+            var creature = applicator.ApplyTo(baseCreature, false);
+            Assert.That(creature.Templates, Has.Count.EqualTo(2));
+            Assert.That(creature.Templates[0], Is.EqualTo("my other template"));
+            Assert.That(creature.Templates[1], Is.EqualTo(CreatureConstants.Templates.HalfCelestial));
         }
 
         [Test]
@@ -729,9 +754,34 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
-        public void ApplyToAsync_ReturnsCreature_WithOtherTemplate()
+        public async Task ApplyToAsync_ReturnsCreature_WithOtherTemplate()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
+            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
+            baseCreature.HitPoints.HitDice[0].Quantity = 1;
+            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
+            baseCreature.Alignment = new Alignment(AlignmentConstants.LawfulNeutral);
+            baseCreature.Templates.Add("my other template");
+
+            var smiteEvil = new Attack
+            {
+                Name = "Smite Evil",
+                IsSpecial = true
+            };
+            mockAttacksGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.HalfCelestial,
+                    SizeConstants.Medium,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteEvil, new Attack { Name = "other attack" } });
+
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            Assert.That(creature.Templates, Has.Count.EqualTo(2));
+            Assert.That(creature.Templates[0], Is.EqualTo("my other template"));
+            Assert.That(creature.Templates[1], Is.EqualTo(CreatureConstants.Templates.HalfCelestial));
         }
 
         [Test]

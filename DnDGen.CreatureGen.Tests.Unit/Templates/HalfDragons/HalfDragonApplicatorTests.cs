@@ -343,16 +343,28 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Templates.Single(), Is.EqualTo(template));
         }
 
-        [Test]
-        public void ApplyTo_ReturnsCreature_WithOtherTemplate()
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
+        public void ApplyTo_ReturnsCreature_WithOtherTemplate(string template)
         {
-            Assert.Fail("not yet written");
+            baseCreature.Templates.Add("my other template");
+
+            var creature = applicators[template].ApplyTo(baseCreature, false);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Templates, Has.Count.EqualTo(2));
+            Assert.That(creature.Templates[0], Is.EqualTo("my other template"));
+            Assert.That(creature.Templates[1], Is.EqualTo(template));
         }
 
-        [Test]
-        public void ApplyToAsync_ReturnsCreature_WithOtherTemplate()
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
+        public async Task ApplyToAsync_ReturnsCreature_WithOtherTemplate(string template)
         {
-            Assert.Fail("not yet written");
+            baseCreature.Templates.Add("my other template");
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Templates, Has.Count.EqualTo(2));
+            Assert.That(creature.Templates[0], Is.EqualTo("my other template"));
+            Assert.That(creature.Templates[1], Is.EqualTo(template));
         }
 
         [TestCaseSource(nameof(CreatureTypeAdjusted))]

@@ -36,10 +36,10 @@ namespace DnDGen.CreatureGen.Templates
                     compatibility.Reason,
                     asCharacter,
                     creature.Name,
-                    CreatureConstants.Templates.None,
                     filters?.Type,
                     filters?.ChallengeRating,
-                    filters?.Alignment);
+                    filters?.Alignment,
+                    creature.Templates.Union(new[] { CreatureConstants.Templates.None }).ToArray());
             }
 
             return creature;
@@ -58,10 +58,10 @@ namespace DnDGen.CreatureGen.Templates
                     compatibility.Reason,
                     asCharacter,
                     creature.Name,
-                    CreatureConstants.Templates.None,
                     filters?.Type,
                     filters?.ChallengeRating,
-                    filters?.Alignment);
+                    filters?.Alignment,
+                    creature.Templates.Union(new[] { CreatureConstants.Templates.None }).ToArray());
             }
 
             return creature;

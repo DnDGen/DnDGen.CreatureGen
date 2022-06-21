@@ -88,7 +88,14 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
 
             if (!compatibility.Compatible)
             {
-                throw new InvalidCreatureException(compatibility.Reason, asCharacter, creature.Name, LycanthropeSpecies, filters?.Type, filters?.ChallengeRating, filters?.Alignment);
+                throw new InvalidCreatureException(
+                    compatibility.Reason,
+                    asCharacter,
+                    creature.Name,
+                    filters?.Type,
+                    filters?.ChallengeRating,
+                    filters?.Alignment,
+                    creature.Templates.Union(new[] { LycanthropeSpecies }).ToArray());
             }
 
             // Template
@@ -584,7 +591,14 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
 
             if (!compatibility.Compatible)
             {
-                throw new InvalidCreatureException(compatibility.Reason, asCharacter, creature.Name, LycanthropeSpecies, filters?.Type, filters?.ChallengeRating, filters?.Alignment);
+                throw new InvalidCreatureException(
+                    compatibility.Reason,
+                    asCharacter,
+                    creature.Name,
+                    filters?.Type,
+                    filters?.ChallengeRating,
+                    filters?.Alignment,
+                    creature.Templates.Union(new[] { LycanthropeSpecies }).ToArray());
             }
 
             var tasks = new List<Task>();

@@ -114,7 +114,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_ReturnsCreature_WithOtherTemplate()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Templates.Add("other template");
+
+            var smiteGood = new Attack
+            {
+                Name = "Smite Good",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.FiendishCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteGood });
+
+            var creature = applicator.ApplyTo(baseCreature, false);
+            Assert.That(creature.Templates, Has.Count.EqualTo(2));
+            Assert.That(creature.Templates[0], Is.EqualTo("other template"));
+            Assert.That(creature.Templates[1], Is.EqualTo(CreatureConstants.Templates.FiendishCreature));
         }
 
         [Test]
@@ -1244,7 +1264,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_ReturnsCreature_WithOtherTemplate()
         {
-            Assert.Fail("not yet written");
+            baseCreature.Templates.Add("other template");
+
+            var smiteGood = new Attack
+            {
+                Name = "Smite Good",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.FiendishCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteGood });
+
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            Assert.That(creature.Templates, Has.Count.EqualTo(2));
+            Assert.That(creature.Templates[0], Is.EqualTo("other template"));
+            Assert.That(creature.Templates[1], Is.EqualTo(CreatureConstants.Templates.FiendishCreature));
         }
 
         [Test]

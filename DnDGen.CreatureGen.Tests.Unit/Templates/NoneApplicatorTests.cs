@@ -294,7 +294,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             }
 
             Assert.That(templatedCreature.Summary, Is.EqualTo(creature.Summary));
-            Assert.That(templatedCreature.Templates.Single(), Is.EqualTo(creature.Templates.Single()).And.EqualTo(CreatureConstants.Templates.None));
+            Assert.That(templatedCreature.Templates, Is.Empty);
             Assert.That(templatedCreature.Type.Name, Is.EqualTo(creature.Type.Name));
             Assert.That(templatedCreature.Type.SubTypes, Is.EquivalentTo(creature.Type.SubTypes));
         }
@@ -559,7 +559,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             }
 
             Assert.That(templatedCreature.Summary, Is.EqualTo(creature.Summary));
-            Assert.That(templatedCreature.Templates.Single(), Is.EqualTo(creature.Templates.Single()).And.EqualTo(CreatureConstants.Templates.None));
+            Assert.That(templatedCreature.Templates, Is.Empty);
             Assert.That(templatedCreature.Type.Name, Is.EqualTo(creature.Type.Name));
             Assert.That(templatedCreature.Type.SubTypes, Is.EquivalentTo(creature.Type.SubTypes));
         }
