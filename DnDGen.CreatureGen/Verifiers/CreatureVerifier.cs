@@ -40,12 +40,22 @@ namespace DnDGen.CreatureGen.Verifiers
             if (filters?.Templates?.Any() == true)
             {
                 var applicator = factory.Build<TemplateApplicator>(filters.Templates[0]);
-                var prototypes = applicator.GetCompatiblePrototypes(baseCreatures, asCharacter);
+                IEnumerable<CreaturePrototype> prototypes;
+
+                if (filters.Templates.Count == 1)
+                {
+                    prototypes = applicator.GetCompatiblePrototypes(baseCreatures, asCharacter, filters);
+                }
+                else
+                {
+                    prototypes = applicator.GetCompatiblePrototypes(baseCreatures, asCharacter);
+                }
 
                 for (var i = 1; i < filters.Templates.Count; i++)
                 {
                     applicator = factory.Build<TemplateApplicator>(filters.Templates[i]);
 
+                    //INFO: We only want to apply filters on the last template, once all other templates have been applied
                     if (i == filters.Templates.Count - 1)
                     {
                         prototypes = applicator.GetCompatiblePrototypes(prototypes, asCharacter, filters);

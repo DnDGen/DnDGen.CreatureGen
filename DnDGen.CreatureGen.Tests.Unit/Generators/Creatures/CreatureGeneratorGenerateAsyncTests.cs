@@ -76,7 +76,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             message.AppendLine("Invalid creature:");
             message.AppendLine($"\tAs Character: {asCharacter}");
             message.AppendLine("\tCreature: creature");
-            message.AppendLine("\tTemplate: template");
+            message.AppendLine("\tTemplate: template, other template");
 
             Assert.That(async () => await creatureGenerator.GenerateAsync(asCharacter, "creature", null, "template", "other template"),
                 Throws.InstanceOf<InvalidCreatureException>().With.Message.EqualTo(message.ToString()));

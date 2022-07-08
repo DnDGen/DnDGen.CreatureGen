@@ -60,7 +60,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             var prototypes1 = new[] { new CreaturePrototype { Name = "protoype 1" }, new CreaturePrototype { Name = "protoype 2" } };
 
             mockApplicator1
-                .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<string>>(), false, filters))
+                .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<string>>(), false, null))
                 .Returns(prototypes1);
             mockApplicator2
                 .Setup(a => a.GetCompatiblePrototypes(prototypes1, false, filters))
@@ -97,10 +97,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             var prototypes2 = new[] { new CreaturePrototype { Name = "protoype 1" }, new CreaturePrototype { Name = "protoype 3" } };
 
             mockApplicator1
-                .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<string>>(), false, filters))
+                .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<string>>(), false, null))
                 .Returns(prototypes1);
             mockApplicator2
-                .Setup(a => a.GetCompatiblePrototypes(prototypes1, false, filters))
+                .Setup(a => a.GetCompatiblePrototypes(prototypes1, false, null))
                 .Returns(prototypes2);
             mockApplicator3
                 .Setup(a => a.GetCompatiblePrototypes(prototypes2, false, filters))
@@ -267,6 +267,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             mockApplicator
                 .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), false, filters))
                 .Returns((IEnumerable<string> cc, bool asc, Filters f) => cc);
+            mockApplicator
+                .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<string>>(), false, filters))
+                .Returns((IEnumerable<string> cc, bool asc, Filters f) => cc.Select(c => new CreaturePrototype { Name = c }));
 
             mockJustInTimeFactory
                 .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))

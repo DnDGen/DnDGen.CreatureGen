@@ -210,35 +210,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_ReturnsCreature_WithOtherTemplate()
         {
-            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
-            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
-            baseCreature.HitPoints.HitDice[0].Quantity = 1;
-            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
-            baseCreature.Alignment = new Alignment("original alignment");
             baseCreature.Templates.Add("my other template");
-
-            mockDice
-                .Setup(d => d
-                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity * 2)
-                    .d(12)
-                    .AsIndividualRolls<int>())
-                .Returns(new[] { 9266 });
-            mockDice
-                .Setup(d => d
-                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity * 2)
-                    .d(12)
-                    .AsPotentialAverage())
-                .Returns(90210);
-
-            mockAttacksGenerator
-                .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.Zombie,
-                    SizeConstants.Medium,
-                    baseCreature.Size,
-                    zombieBaseAttack,
-                    baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
-                .Returns(zombieAttacks);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature.Templates, Has.Count.EqualTo(2));
@@ -1256,35 +1228,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_ReturnsCreature_WithOtherTemplate()
         {
-            baseCreature.Type.Name = CreatureConstants.Types.Humanoid;
-            baseCreature.Type.SubTypes = new[] { "subtype 1", "subtype 2" };
-            baseCreature.HitPoints.HitDice[0].Quantity = 1;
-            baseCreature.ChallengeRating = ChallengeRatingConstants.CR1;
-            baseCreature.Alignment = new Alignment("original alignment");
             baseCreature.Templates.Add("my other template");
-
-            mockDice
-                .Setup(d => d
-                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity * 2)
-                    .d(12)
-                    .AsIndividualRolls<int>())
-                .Returns(new[] { 9266 });
-            mockDice
-                .Setup(d => d
-                    .Roll(baseCreature.HitPoints.RoundedHitDiceQuantity * 2)
-                    .d(12)
-                    .AsPotentialAverage())
-                .Returns(90210);
-
-            mockAttacksGenerator
-                .Setup(g => g.GenerateAttacks(
-                    CreatureConstants.Templates.Zombie,
-                    SizeConstants.Medium,
-                    baseCreature.Size,
-                    zombieBaseAttack,
-                    baseCreature.Abilities,
-                    baseCreature.HitPoints.RoundedHitDiceQuantity * 2))
-                .Returns(zombieAttacks);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature.Templates, Has.Count.EqualTo(2));
