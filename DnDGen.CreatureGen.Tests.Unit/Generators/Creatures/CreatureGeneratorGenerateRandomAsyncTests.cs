@@ -284,6 +284,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
                 .Returns(templates);
 
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { creatureName, template }))))
+                .Returns(template);
+
             var mockNoneApplicator = new Mock<TemplateApplicator>();
             mockNoneApplicator
                 .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, filters))
@@ -316,7 +320,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, null, filters);
             Assert.That(creature.Name, Is.EqualTo(creatureName));
-            Assert.That(creature.Templates.Single(), Is.EqualTo(template));
+            Assert.That(creature.Templates, Is.EqualTo(new[] { template }));
         }
 
         [TestCase(true, null, null, null)]
@@ -355,6 +359,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
                 .Returns(templates);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { creatureName, template, "other template" }))))
+                .Returns(template);
 
             var mockNoneApplicator = new Mock<TemplateApplicator>();
             mockNoneApplicator
@@ -509,6 +517,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
                 .Returns(templates);
 
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { creatureName, template }))))
+                .Returns(template);
+
             var mockNoneApplicator = new Mock<TemplateApplicator>();
             mockNoneApplicator
                 .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, filters))
@@ -524,7 +536,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, null, filters);
             Assert.That(creature.Name, Is.EqualTo(creatureName));
-            Assert.That(creature.Templates, Is.Empty);
+            Assert.That(creature.Templates, Is.EqualTo(new[] { CreatureConstants.Templates.None }));
         }
 
         [TestCase(true, null, null, null)]
@@ -683,6 +695,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
                 .Returns(templates);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { creatureName, template, "other template" }))))
+                .Returns(template);
 
             var mockNoneApplicator = new Mock<TemplateApplicator>();
             mockNoneApplicator
@@ -1044,40 +1060,65 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.Languages, Is.EqualTo(languages));
         }
 
-        [TestCase(true, null, null, null)]
-        [TestCase(true, null, null, "challenge rating")]
-        [TestCase(true, null, "type", null)]
-        [TestCase(true, null, "type", "challenge rating")]
-        [TestCase(true, CreatureConstants.Templates.None, null, null)]
-        [TestCase(true, CreatureConstants.Templates.None, null, "challenge rating")]
-        [TestCase(true, CreatureConstants.Templates.None, "type", null)]
-        [TestCase(true, CreatureConstants.Templates.None, "type", "challenge rating")]
-        [TestCase(true, "template", null, null)]
-        [TestCase(true, "template", null, "challenge rating")]
-        [TestCase(true, "template", "type", null)]
-        [TestCase(true, "template", "type", "challenge rating")]
-        [TestCase(false, null, null, null)]
-        [TestCase(false, null, null, "challenge rating")]
-        [TestCase(false, null, "type", null)]
-        [TestCase(false, null, "type", "challenge rating")]
-        [TestCase(false, CreatureConstants.Templates.None, null, null)]
-        [TestCase(false, CreatureConstants.Templates.None, null, "challenge rating")]
-        [TestCase(false, CreatureConstants.Templates.None, "type", null)]
-        [TestCase(false, CreatureConstants.Templates.None, "type", "challenge rating")]
-        [TestCase(false, "template", null, null)]
-        [TestCase(false, "template", null, "challenge rating")]
-        [TestCase(false, "template", "type", null)]
-        [TestCase(false, "template", "type", "challenge rating")]
-        public async Task GenerateRandomAsync_GenerateAdvancedCreature_WithFilters(bool asCharacter, string template, string type, string challengeRating)
+        [TestCase(null, true, null, null, null)]
+        [TestCase(null, true, null, null, "challenge rating")]
+        [TestCase(null, true, null, "type", null)]
+        [TestCase(null, true, null, "type", "challenge rating")]
+        [TestCase(null, true, CreatureConstants.Templates.None, null, null)]
+        [TestCase(null, true, CreatureConstants.Templates.None, null, "challenge rating")]
+        [TestCase(null, true, CreatureConstants.Templates.None, "type", null)]
+        [TestCase(null, true, CreatureConstants.Templates.None, "type", "challenge rating")]
+        [TestCase(null, true, "template", null, null)]
+        [TestCase(null, true, "template", null, "challenge rating")]
+        [TestCase(null, true, "template", "type", null)]
+        [TestCase(null, true, "template", "type", "challenge rating")]
+        [TestCase(null, false, null, null, null)]
+        [TestCase(null, false, null, null, "challenge rating")]
+        [TestCase(null, false, null, "type", null)]
+        [TestCase(null, false, null, "type", "challenge rating")]
+        [TestCase(null, false, CreatureConstants.Templates.None, null, null)]
+        [TestCase(null, false, CreatureConstants.Templates.None, null, "challenge rating")]
+        [TestCase(null, false, CreatureConstants.Templates.None, "type", null)]
+        [TestCase(null, false, CreatureConstants.Templates.None, "type", "challenge rating")]
+        [TestCase(null, false, "template", null, null)]
+        [TestCase(null, false, "template", null, "challenge rating")]
+        [TestCase(null, false, "template", "type", null)]
+        [TestCase(null, false, "template", "type", "challenge rating")]
+        [TestCase("my alignment", true, null, null, null)]
+        [TestCase("my alignment", true, null, null, "challenge rating")]
+        [TestCase("my alignment", true, null, "type", null)]
+        [TestCase("my alignment", true, null, "type", "challenge rating")]
+        [TestCase("my alignment", true, CreatureConstants.Templates.None, null, null)]
+        [TestCase("my alignment", true, CreatureConstants.Templates.None, null, "challenge rating")]
+        [TestCase("my alignment", true, CreatureConstants.Templates.None, "type", null)]
+        [TestCase("my alignment", true, CreatureConstants.Templates.None, "type", "challenge rating")]
+        [TestCase("my alignment", true, "template", null, null)]
+        [TestCase("my alignment", true, "template", null, "challenge rating")]
+        [TestCase("my alignment", true, "template", "type", null)]
+        [TestCase("my alignment", true, "template", "type", "challenge rating")]
+        [TestCase("my alignment", false, null, null, null)]
+        [TestCase("my alignment", false, null, null, "challenge rating")]
+        [TestCase("my alignment", false, null, "type", null)]
+        [TestCase("my alignment", false, null, "type", "challenge rating")]
+        [TestCase("my alignment", false, CreatureConstants.Templates.None, null, null)]
+        [TestCase("my alignment", false, CreatureConstants.Templates.None, null, "challenge rating")]
+        [TestCase("my alignment", false, CreatureConstants.Templates.None, "type", null)]
+        [TestCase("my alignment", false, CreatureConstants.Templates.None, "type", "challenge rating")]
+        [TestCase("my alignment", false, "template", null, null)]
+        [TestCase("my alignment", false, "template", null, "challenge rating")]
+        [TestCase("my alignment", false, "template", "type", null)]
+        [TestCase("my alignment", false, "template", "type", "challenge rating")]
+        public async Task GenerateRandomAsync_GenerateAdvancedCreature_WithFilters(string alignment, bool asCharacter, string template, string type, string challengeRating)
         {
             var filters = new Filters();
             filters.Type = type;
             filters.ChallengeRating = challengeRating;
+            filters.Alignment = alignment;
 
             if (template != null)
                 filters.Templates.Add(template);
 
-            SetUpCreature("creature", asCharacter, type, challengeRating, null, null, template);
+            SetUpCreature("creature", asCharacter, type, challengeRating, alignment, null, template);
             var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", challengeRating, 1337, template);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, null, filters);
@@ -2323,7 +2364,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template")).Returns(mockWrongTemplateApplicator.Object);
 
             var templateCreature = new Creature { Name = "Creature modified by template", Templates = new List<string> { "my template" } };
-            mockTemplateApplicators[0].Setup(a => a.ApplyToAsync(It.IsAny<Creature>(), asCharacter, null)).ReturnsAsync(templateCreature);
+            mockTemplateApplicators[0]
+                .Setup(a => a.ApplyToAsync(It.IsAny<Creature>(), asCharacter, It.Is<Filters>(f =>
+                    f.Templates.Count == 1
+                    && f.Templates[0] == "my template"
+                    && f.Type == null
+                    && f.ChallengeRating == null
+                    && f.Alignment == null)))
+                .ReturnsAsync(templateCreature);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter);
             Assert.That(creature, Is.EqualTo(templateCreature), creature.Summary);

@@ -312,22 +312,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                         || (f.Type == typeFilter
                             && f.ChallengeRating == crFilter
                             && f.Alignment == alignmentFilter))))
-                    .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc.Intersect(new[] { creatureName }));
+                    .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc);
                 noneApplicator
                     .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<string>>(), asCharacter, It.Is<Filters>(f => f == null
                         || (f.Type == typeFilter
                             && f.ChallengeRating == crFilter
                             && f.Alignment == alignmentFilter))))
                     .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc
-                        .Intersect(new[] { creatureName })
                         .Select(c => new CreaturePrototype { Name = c }));
                 noneApplicator
                     .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<CreaturePrototype>>(), asCharacter, It.Is<Filters>(f => f == null
                         || (f.Type == typeFilter
                             && f.ChallengeRating == crFilter
                             && f.Alignment == alignmentFilter))))
-                    .Returns((IEnumerable<CreaturePrototype> pp, bool asC, Filters f) => pp
-                        .Where(p => p.Name == creatureName));
+                    .Returns((IEnumerable<CreaturePrototype> pp, bool asC, Filters f) => pp);
                 noneApplicator
                     .Setup(a => a.ApplyTo(It.IsAny<Creature>(), asCharacter, It.Is<Filters>(f => f == null
                         || (f.Type == typeFilter

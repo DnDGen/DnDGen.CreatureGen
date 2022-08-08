@@ -283,6 +283,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
                 .Returns(templates);
 
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { creatureName, "other creature name", "wrong creature name", template }))))
+                .Returns(template);
+
             var mockNoneApplicator = new Mock<TemplateApplicator>();
             mockNoneApplicator
                 .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, filters))
@@ -354,6 +359,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
                 .Returns(templates);
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { creatureName, "other creature name", "wrong creature name", template, "other template" }))))
+                .Returns(template);
 
             var mockNoneApplicator = new Mock<TemplateApplicator>();
             mockNoneApplicator
@@ -1094,12 +1104,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void GenerateRandom_GenerateAdvancedCreature_WithFilters(string alignment, bool asCharacter, string template, string type, string challengeRating)
         {
             var filters = new Filters();
-            filters.Templates.Add(template);
             filters.Type = type;
             filters.ChallengeRating = challengeRating;
+            filters.Alignment = alignment;
 
-            SetUpCreature("creature", asCharacter, type, challengeRating, alignment, null, template ?? CreatureConstants.Templates.None);
-            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", challengeRating, 1337, template ?? CreatureConstants.Templates.None);
+            if (template != null)
+                filters.Templates.Add(template);
+
+            SetUpCreature("creature", asCharacter, type, challengeRating, alignment, null, template);
+            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", challengeRating, 1337, template);
 
             var creature = creatureGenerator.GenerateRandom(asCharacter, null, filters);
 
@@ -2332,6 +2345,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
                 .Returns(templates);
 
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "creature", "other creature name", "wrong creature name", "my template" }))))
+                .Returns("my template");
+
             var mockWrongTemplateApplicator = new Mock<TemplateApplicator>();
             mockWrongTemplateApplicator
                 .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, null))
@@ -2339,17 +2357,29 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template")).Returns(mockWrongTemplateApplicator.Object);
 
-            var templateCreature = new Creature();
-            mockTemplateApplicators.Single().Setup(a => a.ApplyTo(It.IsAny<Creature>(), asCharacter, null)).Returns(templateCreature);
+            var templateCreature = new Creature { Name = "Creature modified by template", Templates = new List<string> { "my template" } };
+            mockTemplateApplicators[0]
+                .Setup(a => a.ApplyTo(It.IsAny<Creature>(), asCharacter, It.Is<Filters>(f =>
+                    f.Templates.Count == 1
+                    && f.Templates[0] == "my template"
+                    && f.Type == null
+                    && f.ChallengeRating == null
+                    && f.Alignment == null)))
+                .Returns(templateCreature);
 
             var creature = creatureGenerator.GenerateRandom(asCharacter);
-            Assert.That(creature, Is.EqualTo(templateCreature));
+            Assert.That(creature, Is.EqualTo(templateCreature), creature.Summary);
         }
 
+        //INFO: Random will never randomly produce multi-template creatures.
+        //Multiple templates must be specified in the filters
         [TestCase(true)]
         [TestCase(false)]
         public void GenerateRandom_GenerateCreatureModifiedByMultipleTemplates(bool asCharacter)
         {
+            var filters = new Filters();
+            filters.Templates.AddRange(new[] { "my template", "my other template" });
+
             var mockTemplateApplicators = SetUpCreature("creature", asCharacter, null, null, null, null, "my template", "my other template");
 
             var templates = new[] { "wrong template", "my template", "my other template" };
@@ -2364,14 +2394,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template")).Returns(mockWrongTemplateApplicator.Object);
 
-            var templateCreature1 = new Creature();
-            mockTemplateApplicators.First().Setup(a => a.ApplyTo(It.IsAny<Creature>(), asCharacter, null)).Returns(templateCreature1);
+            var templateCreature1 = new Creature { Name = "Creature modified by template 1", Templates = new List<string> { "my template" } };
+            var templateCreature2 = new Creature { Name = "Creature modified by template 2", Templates = new List<string> { "my template", "my other template" } };
+            mockTemplateApplicators[0].Setup(a => a.ApplyTo(It.IsAny<Creature>(), asCharacter, null)).Returns(templateCreature1);
+            mockTemplateApplicators[1].Setup(a => a.ApplyTo(templateCreature1, asCharacter, filters)).Returns(templateCreature2);
 
-            var templateCreature2 = new Creature();
-            mockTemplateApplicators.Last().Setup(a => a.ApplyTo(templateCreature1, asCharacter, null)).Returns(templateCreature2);
-
-            var creature = creatureGenerator.GenerateRandom(asCharacter);
-            Assert.That(creature, Is.EqualTo(templateCreature2));
+            var creature = creatureGenerator.GenerateRandom(asCharacter, null, filters);
+            Assert.That(creature, Is.EqualTo(templateCreature2), creature.Summary);
         }
 
         [TestCase(true)]
@@ -2390,6 +2419,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
                 .Returns(templates);
 
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "creature", "other creature name", "wrong creature name", "my template" }))))
+                .Returns("my template");
+
             var mockWrongTemplateApplicator = new Mock<TemplateApplicator>();
             mockWrongTemplateApplicator
                 .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, filters))
@@ -2397,25 +2431,28 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template")).Returns(mockWrongTemplateApplicator.Object);
 
-            var templateCreature = new Creature();
-            mockTemplateApplicators.Single().Setup(a => a.ApplyTo(It.IsAny<Creature>(), asCharacter, filters)).Returns(templateCreature);
+            var templateCreature = new Creature { Name = "Creature modified by template", Templates = new List<string> { "my template" } };
+            mockTemplateApplicators[0].Setup(a => a.ApplyTo(It.IsAny<Creature>(), asCharacter, filters)).Returns(templateCreature);
 
             var creature = creatureGenerator.GenerateRandom(asCharacter, null, filters);
-            Assert.That(creature, Is.EqualTo(templateCreature));
+            Assert.That(creature, Is.EqualTo(templateCreature), creature.Summary);
         }
 
+        //INFO: Random will never randomly produce multi-template creatures.
+        //Multiple templates must be specified in the filters
         [TestCase(true)]
         [TestCase(false)]
         public void GenerateRandom_GenerateCreatureModifiedByMultipleTemplates_WithFilters(bool asCharacter)
         {
             var filters = new Filters();
+            filters.Templates.AddRange(new[] { "my template", "my other template" });
             filters.Type = "my type";
             filters.ChallengeRating = "my challenge rating";
             filters.Alignment = "my alignment";
 
             var mockTemplateApplicators = SetUpCreature("creature", asCharacter, "my type", "my challenge rating", "my alignment", null, "my template", "my other template");
 
-            var templates = new[] { "wrong template", "my template" };
+            var templates = new[] { "wrong template", "my template", "my other template" };
             mockCollectionSelector
                 .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates))
                 .Returns(templates);
@@ -2427,14 +2464,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             mockJustInTimeFactory.Setup(f => f.Build<TemplateApplicator>("wrong template")).Returns(mockWrongTemplateApplicator.Object);
 
-            var templateCreature1 = new Creature();
-            mockTemplateApplicators.First().Setup(a => a.ApplyTo(It.IsAny<Creature>(), asCharacter, null)).Returns(templateCreature1);
-
-            var templateCreature2 = new Creature();
-            mockTemplateApplicators.Last().Setup(a => a.ApplyTo(templateCreature1, asCharacter, null)).Returns(templateCreature2);
+            var templateCreature1 = new Creature { Name = "Creature modified by template 1", Templates = new List<string> { "my template" } };
+            var templateCreature2 = new Creature { Name = "Creature modified by template 2", Templates = new List<string> { "my template", "my other template" } };
+            mockTemplateApplicators[0].Setup(a => a.ApplyTo(It.IsAny<Creature>(), asCharacter, null)).Returns(templateCreature1);
+            mockTemplateApplicators[1].Setup(a => a.ApplyTo(templateCreature1, asCharacter, filters)).Returns(templateCreature2);
 
             var creature = creatureGenerator.GenerateRandom(asCharacter, null, filters);
-            Assert.That(creature, Is.EqualTo(templateCreature2));
+            Assert.That(creature, Is.EqualTo(templateCreature2), creature.Summary);
         }
 
         [TestCase(true)]
