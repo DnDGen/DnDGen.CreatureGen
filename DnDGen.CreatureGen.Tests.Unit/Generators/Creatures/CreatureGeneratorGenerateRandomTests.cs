@@ -724,9 +724,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[]
                 {
-                    "other creature",
+                    "other creature name",
                     creatureName,
-                    "other wrong creature",
+                    "wrong creature name",
                     template,
                     "other template"
                 }))))
@@ -734,9 +734,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[]
                 {
-                    "other creature",
+                    "other creature name",
                     creatureName,
-                    "wrong creature"
+                    "wrong creature name"
                 }))))
                 .Returns(creatureName);
 

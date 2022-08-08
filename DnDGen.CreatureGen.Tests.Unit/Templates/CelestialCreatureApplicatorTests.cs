@@ -49,6 +49,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockMagicGenerator = new Mock<IMagicGenerator>();
             mockCreatureDataSelector = new Mock<ICreatureDataSelector>();
             mockAdjustmentSelector = new Mock<IAdjustmentsSelector>();
+            mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
 
             applicator = new CelestialCreatureApplicator(
                 mockAttackGenerator.Object,

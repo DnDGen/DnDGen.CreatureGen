@@ -1,5 +1,6 @@
 ﻿using DnDGen.CreatureGen.Abilities;
 using DnDGen.CreatureGen.Alignments;
+using DnDGen.CreatureGen.Defenses;
 using System.Collections.Generic;
 
 namespace DnDGen.CreatureGen.Creatures
@@ -22,6 +23,14 @@ namespace DnDGen.CreatureGen.Creatures
             ChallengeRating = string.Empty;
             Name = string.Empty;
             Type = new CreatureType();
+        }
+
+        public int GetRoundedHitDiceQuantity()
+        {
+            var hitDice = new HitDice();
+            hitDice.Quantity = HitDiceQuantity;
+
+            return hitDice.RoundedQuantity;
         }
     }
 }

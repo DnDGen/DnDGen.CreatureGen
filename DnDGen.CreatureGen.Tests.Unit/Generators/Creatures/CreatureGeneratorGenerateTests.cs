@@ -7,6 +7,7 @@ using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Templates;
+using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
 using Moq;
 using NUnit.Framework;
@@ -1507,23 +1508,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var templateCreature1 = new Creature();
             mockTemplateApplicator1
-                .Setup(a => a.ApplyTo(It.IsAny<Creature>(), asCharacter, It.Is<Filters>(f => f != null
-                    && f.Templates.Single() == "template 1"
-                    && f.ChallengeRating == null
-                    && f.Type == null
-                    && f.Alignment == null)))
+                .Setup(a => a.ApplyTo(It.IsAny<Creature>(), asCharacter, null))
                 .Returns(templateCreature1);
 
             var templateCreature2 = new Creature();
             mockTemplateApplicator2
                 .Setup(a => a.ApplyTo(templateCreature1, asCharacter, It.Is<Filters>(f => f != null
-                    && f.Templates.Single() == "template 2"
+                    && f.Templates.IsEquivalentTo(new[] { "template 1", "template 2" })
                     && f.ChallengeRating == null
                     && f.Type == null
                     && f.Alignment == null)))
                 .Returns(templateCreature2);
 
-            var creature = creatureGenerator.Generate(asCharacter, "creature", null, "template");
+            var creature = creatureGenerator.Generate(asCharacter, "creature", null, "template 1", "template 2");
             Assert.That(creature, Is.EqualTo(templateCreature2));
         }
 
