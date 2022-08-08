@@ -1,5 +1,4 @@
-﻿using DnDGen.CreatureGen.Creatures;
-using DnDGen.CreatureGen.Generators.Creatures;
+﻿using DnDGen.CreatureGen.Generators.Creatures;
 using System;
 using System.Linq;
 using System.Text;
@@ -55,8 +54,10 @@ namespace DnDGen.CreatureGen.Verifiers.Exceptions
                 if (creature != null)
                     message.AppendLine($"\tCreature: {creature}");
 
-                var joinedTemplates = string.Join(", ", templates.Select(t => t == CreatureConstants.Templates.None ? "None" : t));
-                if (templates.Any())
+                var nonEmptyTemplates = templates.Where(t => !string.IsNullOrEmpty(t));
+                var joinedTemplates = string.Join(", ", nonEmptyTemplates);
+
+                if (nonEmptyTemplates.Any())
                     message.AppendLine($"\tTemplate: {joinedTemplates}");
 
                 if (type != null)

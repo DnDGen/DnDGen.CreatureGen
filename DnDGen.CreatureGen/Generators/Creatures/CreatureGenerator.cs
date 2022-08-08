@@ -117,12 +117,23 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 return Enumerable.Empty<string>();
 
             var applicator = justInTimeFactory.Build<TemplateApplicator>(filters.Templates[0]);
-            var prototypes = applicator.GetCompatiblePrototypes(creatureGroup, asCharacter);
+            IEnumerable<CreaturePrototype> prototypes;
+
+            //INFO: We only want to apply filters to the last template in the series
+            if (filters.Templates.Count == 1)
+            {
+                prototypes = applicator.GetCompatiblePrototypes(creatureGroup, asCharacter, filters);
+            }
+            else
+            {
+                prototypes = applicator.GetCompatiblePrototypes(creatureGroup, asCharacter);
+            }
 
             for (var i = 1; i < filters.Templates.Count; i++)
             {
                 applicator = justInTimeFactory.Build<TemplateApplicator>(filters.Templates[i]);
 
+                //INFO: We only want to apply filters to the last template in the series
                 if (i == filters.Templates.Count - 1)
                 {
                     prototypes = applicator.GetCompatiblePrototypes(prototypes, asCharacter, filters);
@@ -148,9 +159,11 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         {
             var randomCreature = GenerateRandomName(asCharacter, filters);
 
-            if (filters != null)
+            var nonNullTemplates = randomCreature.Templates.Where(t => t != CreatureConstants.Templates.None);
+            if (filters?.Templates.Any() != true && nonNullTemplates.Any())
             {
-                filters.Templates = new List<string>(randomCreature.Templates);
+                filters ??= new Filters();
+                filters.Templates.AddRange(randomCreature.Templates);
             }
 
             var creature = Generate(asCharacter, randomCreature.Creature, abilityRandomizer, filters);
@@ -219,11 +232,15 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             if (filters?.Templates?.Any() == true)
             {
-                foreach (var template in filters.Templates)
+                foreach (var template in filters.Templates.Take(filters.Templates.Count() - 1))
                 {
                     var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
-                    creature = templateApplicator.ApplyTo(creature, asCharacter, filters);
+                    creature = templateApplicator.ApplyTo(creature, asCharacter, null);
                 }
+
+                var lastTemplate = filters.Templates.Last();
+                var lastTemplateApplicator = justInTimeFactory.Build<TemplateApplicator>(lastTemplate);
+                creature = lastTemplateApplicator.ApplyTo(creature, asCharacter, filters);
             }
 
             return creature;
@@ -398,9 +415,11 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         {
             var randomCreature = GenerateRandomName(asCharacter, filters);
 
-            if (filters != null)
+            var nonNullTemplates = randomCreature.Templates.Where(t => t != CreatureConstants.Templates.None);
+            if (filters?.Templates.Any() != true && nonNullTemplates.Any())
             {
-                filters.Templates = new List<string>(randomCreature.Templates);
+                filters ??= new Filters();
+                filters.Templates.AddRange(randomCreature.Templates);
             }
 
             return await GenerateAsync(asCharacter, randomCreature.Creature, abilityRandomizer, filters);
@@ -416,11 +435,15 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             if (filters?.Templates?.Any() == true)
             {
-                foreach (var template in filters.Templates)
+                foreach (var template in filters.Templates.Take(filters.Templates.Count() - 1))
                 {
                     var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
-                    creature = await templateApplicator.ApplyToAsync(creature, asCharacter, filters);
+                    creature = await templateApplicator.ApplyToAsync(creature, asCharacter, null);
                 }
+
+                var lastTemplate = filters.Templates.Last();
+                var lastTemplateApplicator = justInTimeFactory.Build<TemplateApplicator>(lastTemplate);
+                creature = await lastTemplateApplicator.ApplyToAsync(creature, asCharacter, filters);
             }
 
             return creature;
