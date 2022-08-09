@@ -38,7 +38,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<IMagicGenerator> mockMagicGenerator;
         private Mock<ICreatureDataSelector> mockCreatureDataSelector;
         private Mock<IAdjustmentsSelector> mockAdjustmentSelector;
-        private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
+        private Mock<ICreaturePrototypeFactory> mockPrototypeFactory;
 
         [SetUp]
         public void SetUp()
@@ -49,7 +49,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockMagicGenerator = new Mock<IMagicGenerator>();
             mockCreatureDataSelector = new Mock<ICreatureDataSelector>();
             mockAdjustmentSelector = new Mock<IAdjustmentsSelector>();
-            mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
+            mockPrototypeFactory = new Mock<ICreaturePrototypeFactory>();
 
             applicator = new CelestialCreatureApplicator(
                 mockAttackGenerator.Object,
@@ -57,7 +57,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 mockCollectionSelector.Object,
                 mockMagicGenerator.Object,
                 mockAdjustmentSelector.Object,
-                mockCreatureDataSelector.Object);
+                mockCreatureDataSelector.Object,
+                mockPrototypeFactory.Object);
 
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
@@ -3980,27 +3981,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my creature"))
-                .Returns(new[]
-                {
-                    new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
-                });
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my other creature"))
-                .Returns(new[]
-                {
-                    new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 96 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 783 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 8245 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = -8 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 0 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1 },
-                });
+            var prototypes = new[]
+            {
+                new CreaturePrototype { Name = "my creature" },
+                new CreaturePrototype { Name = "my other creature" },
+            };
+            mockPrototypeFactory
+                .Setup(f => f.Build(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "my creature", "my other creature" })), false))
+                .Returns(prototypes);
 
             var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false).ToArray();
             Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
