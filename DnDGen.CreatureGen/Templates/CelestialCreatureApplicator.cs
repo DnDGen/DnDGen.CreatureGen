@@ -28,6 +28,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IMagicGenerator magicGenerator;
         private readonly IAdjustmentsSelector adjustmentSelector;
         private readonly ICreatureDataSelector creatureDataSelector;
+        private readonly ICreaturePrototypeFactory prototypeFactory;
 
         public CelestialCreatureApplicator(
             IAttacksGenerator attackGenerator,
@@ -35,7 +36,8 @@ namespace DnDGen.CreatureGen.Templates
             ICollectionSelector collectionSelector,
             IMagicGenerator magicGenerator,
             IAdjustmentsSelector adjustmentSelector,
-            ICreatureDataSelector creatureDataSelector)
+            ICreatureDataSelector creatureDataSelector,
+            ICreaturePrototypeFactory prototypeFactory)
         {
             this.attackGenerator = attackGenerator;
             this.featGenerator = featGenerator;
@@ -43,6 +45,7 @@ namespace DnDGen.CreatureGen.Templates
             this.magicGenerator = magicGenerator;
             this.adjustmentSelector = adjustmentSelector;
             this.creatureDataSelector = creatureDataSelector;
+            this.prototypeFactory = prototypeFactory;
 
             creatureTypes = new[]
             {
@@ -533,54 +536,36 @@ namespace DnDGen.CreatureGen.Templates
         public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
         {
             var compatibleCreatures = GetCompatibleCreatures(sourceCreatures, asCharacter, filters);
-            var prototypes = BuildPrototypes(compatibleCreatures);
+            var prototypes = prototypeFactory.Build(compatibleCreatures, asCharacter);
+            var updatedPrototypes = prototypes.Select(ApplyToPrototype);
 
-            return ApplyToPrototypes(prototypes);
+            return updatedPrototypes;
         }
 
-        private IEnumerable<CreaturePrototype> BuildPrototypes(IEnumerable<string> creatureNames)
+        private CreaturePrototype ApplyToPrototype(CreaturePrototype prototype)
         {
-            var prototypes = new List<CreaturePrototype>();
-            var allData = creatureDataSelector.SelectAll();
-            var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
-            var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
-            var allAlignments = collectionSelector.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups);
+            UpdateCreatureAbilities(prototype);
+            UpdateCreatureAlignment(prototype);
+            UpdateCreatureChallengeRating(prototype);
+            UpdateCreatureLevelAdjustment(prototype);
+            UpdateCreatureType(prototype);
 
-            foreach (var creature in creatureNames)
-            {
-                var prototype = new CreaturePrototype();
-                prototype.Name = creature;
-                prototype.Abilities = ...;
-                prototype.Alignments = allAlignments[creature].Select(a => new Alignment(a)).ToList();
-                prototype.CasterLevel = allData[creature].CasterLevel;
-                prototype.ChallengeRating = allData[creature].ChallengeRating;
-                prototype.HitDiceQuantity = allHitDice[creature];
-                prototype.LevelAdjustment = allData[creature].LevelAdjustment;
-                prototype.Type = new CreatureType(allTypes[creature]);
-
-                prototypes.Add(prototype);
-            }
-
-            return prototypes;
-        }
-
-        private IEnumerable<CreaturePrototype> ApplyToPrototypes(IEnumerable<CreaturePrototype> prototypes)
-        {
-            foreach (var prototype in prototypes)
-            {
-                UpdateCreatureAbilities(prototype);
-                UpdateCreatureAlignment(prototype);
-                UpdateCreatureChallengeRating(prototype);
-                UpdateCreatureLevelAdjustment(prototype);
-                UpdateCreatureType(prototype);
-            }
-
-            return prototypes;
+            return prototype;
         }
 
         public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, bool asCharacter, Filters filters = null)
         {
-            throw new NotImplementedException();
+            var compatiblePrototypes = sourceCreatures
+                .Where(p => IsCompatible(
+                    p.Type.AllTypes,
+                    p.Alignments.Select(a => a.Full),
+                    p.ChallengeRating,
+                    p.GetRoundedHitDiceQuantity(),
+                    false, //INFO: We have already initiated the prototypes, so applying as-character adjustments isn't needed
+                    filters));
+            var updatedPrototypes = compatiblePrototypes.Select(ApplyToPrototype);
+
+            return updatedPrototypes;
         }
     }
 }

@@ -159,6 +159,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural)]
         [TestCase(CreatureConstants.Templates.Zombie)]
         [TestCase(null)]
+        [TestCase("")]
         public void TemplateApplicatorIsInjected(string name)
         {
             AssertNotSingleton<TemplateApplicator>(name);
@@ -368,6 +369,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
         public void ZombieApplicatorIsInjected()
         {
             AssertNamedIsInstanceOf<TemplateApplicator, ZombieApplicator>(CreatureConstants.Templates.Zombie);
+        }
+
+        [Test]
+        public void CreaturePrototypeFactoryIsInjected()
+        {
+            AssertNotSingleton<ICreaturePrototypeFactory>();
         }
     }
 }
