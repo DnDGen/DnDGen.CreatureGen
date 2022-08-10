@@ -63,7 +63,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
         public CreaturePrototypeBuilder WithTestValues()
         {
-            RandomizeAbilities();
+            InitializeAbilities();
 
             prototype.Alignments.Add(new Alignment($"Alignment 1-{Guid.NewGuid()}"));
             prototype.Alignments.Add(new Alignment($"Alignment 2-{Guid.NewGuid()}"));
@@ -112,7 +112,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             return this;
         }
 
-        private void RandomizeAbilities()
+        private void InitializeAbilities()
         {
             prototype.Abilities = new Dictionary<string, Ability>();
             prototype.Abilities[AbilityConstants.Charisma] = new Ability(AbilityConstants.Charisma);
@@ -121,27 +121,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             prototype.Abilities[AbilityConstants.Intelligence] = new Ability(AbilityConstants.Intelligence);
             prototype.Abilities[AbilityConstants.Strength] = new Ability(AbilityConstants.Strength);
             prototype.Abilities[AbilityConstants.Wisdom] = new Ability(AbilityConstants.Wisdom);
+        }
 
-            prototype.Abilities[AbilityConstants.Charisma].BaseScore = random.Next(20) + 3;
-            prototype.Abilities[AbilityConstants.Constitution].BaseScore = random.Next(20) + 3;
-            prototype.Abilities[AbilityConstants.Dexterity].BaseScore = random.Next(20) + 3;
-            prototype.Abilities[AbilityConstants.Intelligence].BaseScore = random.Next(20) + 3;
-            prototype.Abilities[AbilityConstants.Strength].BaseScore = random.Next(20) + 3;
-            prototype.Abilities[AbilityConstants.Wisdom].BaseScore = random.Next(20) + 3;
+        public CreaturePrototypeBuilder WithoutAbility(string ability)
+        {
+            prototype.Abilities[ability].BaseScore = 0;
 
-            prototype.Abilities[AbilityConstants.Charisma].AdvancementAdjustment = random.Next(3);
-            prototype.Abilities[AbilityConstants.Constitution].AdvancementAdjustment = random.Next(3);
-            prototype.Abilities[AbilityConstants.Dexterity].AdvancementAdjustment = random.Next(3);
-            prototype.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment = random.Next(3);
-            prototype.Abilities[AbilityConstants.Strength].AdvancementAdjustment = random.Next(3);
-            prototype.Abilities[AbilityConstants.Wisdom].AdvancementAdjustment = random.Next(3);
+            return this;
+        }
 
-            prototype.Abilities[AbilityConstants.Charisma].RacialAdjustment = random.Next(10) * 2 - 10;
-            prototype.Abilities[AbilityConstants.Constitution].RacialAdjustment = random.Next(10) * 2 - 10;
-            prototype.Abilities[AbilityConstants.Dexterity].RacialAdjustment = random.Next(10) * 2 - 10;
-            prototype.Abilities[AbilityConstants.Intelligence].RacialAdjustment = random.Next(10) * 2 - 10;
-            prototype.Abilities[AbilityConstants.Strength].RacialAdjustment = random.Next(10) * 2 - 10;
-            prototype.Abilities[AbilityConstants.Wisdom].RacialAdjustment = random.Next(10) * 2 - 10;
+        public CreaturePrototypeBuilder WithAbility(string ability, int racial)
+        {
+            prototype.Abilities[ability].RacialAdjustment = racial;
+
+            return this;
         }
     }
 }

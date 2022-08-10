@@ -137,6 +137,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(alignments);
 
             var abilities = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
+            abilities[CreatureConstants.Human] = new[]
+            {
+                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 0 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 0 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 0 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 0 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 0 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 0 },
+            };
             abilities["creature 1"] = new[]
             {
                 new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 0 },
@@ -231,7 +240,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .And.ContainKey(AbilityConstants.Wisdom)
                 .And.ContainKey(AbilityConstants.Charisma));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Strength].Name, Is.EqualTo(AbilityConstants.Strength));
-            Assert.That(prototypes[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(0));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Constitution].Name, Is.EqualTo(AbilityConstants.Constitution));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Dexterity].Name, Is.EqualTo(AbilityConstants.Dexterity));
@@ -511,6 +520,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(alignments);
 
             var abilities = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
+            abilities[CreatureConstants.Human] = new[]
+            {
+                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 0 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 0 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 0 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 0 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 0 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 0 },
+            };
             abilities["creature 1"] = new[]
             {
                 new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 0 },

@@ -35,6 +35,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
             var allAlignments = collectionSelector.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups);
             var allAbilityAdjustments = typeAndAmountSelector.SelectAll(TableNameConstants.TypeAndAmount.AbilityAdjustments);
+            var abilityNames = allAbilityAdjustments[CreatureConstants.Human].Select(s => s.Type);
 
             foreach (var creature in creatureNames)
             {
@@ -52,6 +53,12 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 if (asCharacter && prototype.HitDiceQuantity <= 1 && prototype.Type.Name == CreatureConstants.Types.Humanoid)
                 {
                     prototype.ChallengeRating = ChallengeRatingConstants.CR0;
+                }
+
+                var missingAbilityNames = abilityNames.Except(prototype.Abilities.Keys).ToArray();
+                foreach (var missingAbility in missingAbilityNames)
+                {
+                    prototype.Abilities[missingAbility] = new Ability(missingAbility) { BaseScore = 0 };
                 }
 
                 yield return prototype;

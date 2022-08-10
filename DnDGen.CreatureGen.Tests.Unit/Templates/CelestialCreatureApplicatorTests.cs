@@ -4304,9 +4304,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
             Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
-
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"), Times.Never);
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"), Times.Never);
         }
 
         [TestCase(true, 0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR0)]
@@ -4399,27 +4396,44 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my creature"))
-                .Returns(new[]
-                {
-                    new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
-                });
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my other creature"))
-                .Returns(new[]
-                {
-                    new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 96 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 783 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 8245 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = -8 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 0 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1 },
-                });
+            var prototypes = new[]
+            {
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my creature")
+                    .WithCreatureType(types["my creature"].ToArray())
+                    .WithAlignments(alignments["my creature" + GroupConstants.Exploded].ToArray())
+                    .WithChallengeRating(data["my creature"].ChallengeRating)
+                    .WithCasterLevel(data["my creature"].CasterLevel)
+                    .WithLevelAdjustment(data["my creature"].LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["my creature"])
+                    .WithoutAbility(AbilityConstants.Strength)
+                    .WithAbility(AbilityConstants.Constitution, 90210)
+                    .WithAbility(AbilityConstants.Dexterity, 42)
+                    .WithAbility(AbilityConstants.Intelligence, 600)
+                    .WithAbility(AbilityConstants.Wisdom, 1337)
+                    .WithAbility(AbilityConstants.Charisma, 1336)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my other creature")
+                    .WithCreatureType(types["my other creature"].ToArray())
+                    .WithAlignments(alignments["my other creature" + GroupConstants.Exploded].ToArray())
+                    .WithChallengeRating(data["my other creature"].ChallengeRating)
+                    .WithCasterLevel(data["my other creature"].CasterLevel)
+                    .WithLevelAdjustment(data["my other creature"].LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["my other creature"])
+                    .WithAbility(AbilityConstants.Strength, 96)
+                    .WithAbility(AbilityConstants.Constitution, 783)
+                    .WithAbility(AbilityConstants.Dexterity, 8245)
+                    .WithAbility(AbilityConstants.Intelligence, -8)
+                    .WithAbility(AbilityConstants.Wisdom, 0)
+                    .WithAbility(AbilityConstants.Charisma, 1)
+                    .Build(),
+            };
+            mockPrototypeFactory
+                .Setup(f => f.Build(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "my creature", "my other creature" })), false))
+                .Returns(prototypes);
 
             var filters = new Filters { ChallengeRating = challengeRating };
 
@@ -4487,9 +4501,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
             Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
-
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"), Times.Never);
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"), Times.Never);
         }
 
         [TestCase(CreatureConstants.Types.Subtypes.Augmented)]
@@ -4552,27 +4563,44 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my creature"))
-                .Returns(new[]
-                {
-                    new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
-                });
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my other creature"))
-                .Returns(new[]
-                {
-                    new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 96 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 783 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 8245 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = -8 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 0 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1 },
-                });
+            var prototypes = new[]
+            {
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my creature")
+                    .WithCreatureType(types["my creature"].ToArray())
+                    .WithAlignments(alignments["my creature" + GroupConstants.Exploded].ToArray())
+                    .WithChallengeRating(data["my creature"].ChallengeRating)
+                    .WithCasterLevel(data["my creature"].CasterLevel)
+                    .WithLevelAdjustment(data["my creature"].LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["my creature"])
+                    .WithoutAbility(AbilityConstants.Strength)
+                    .WithAbility(AbilityConstants.Constitution, 90210)
+                    .WithAbility(AbilityConstants.Dexterity, 42)
+                    .WithAbility(AbilityConstants.Intelligence, 600)
+                    .WithAbility(AbilityConstants.Wisdom, 1337)
+                    .WithAbility(AbilityConstants.Charisma, 1336)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my other creature")
+                    .WithCreatureType(types["my other creature"].ToArray())
+                    .WithAlignments(alignments["my other creature" + GroupConstants.Exploded].ToArray())
+                    .WithChallengeRating(data["my other creature"].ChallengeRating)
+                    .WithCasterLevel(data["my other creature"].CasterLevel)
+                    .WithLevelAdjustment(data["my other creature"].LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["my other creature"])
+                    .WithAbility(AbilityConstants.Strength, 96)
+                    .WithAbility(AbilityConstants.Constitution, 783)
+                    .WithAbility(AbilityConstants.Dexterity, 8245)
+                    .WithAbility(AbilityConstants.Intelligence, -8)
+                    .WithAbility(AbilityConstants.Wisdom, 0)
+                    .WithAbility(AbilityConstants.Charisma, 1)
+                    .Build(),
+            };
+            mockPrototypeFactory
+                .Setup(f => f.Build(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "my creature", "my other creature" })), false))
+                .Returns(prototypes);
 
             var filters = new Filters { Type = type };
 
@@ -4640,9 +4668,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
             Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
-
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"), Times.Never);
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"), Times.Never);
         }
 
         [Test]
@@ -4710,27 +4735,44 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my creature"))
-                .Returns(new[]
-                {
-                    new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
-                });
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my other creature"))
-                .Returns(new[]
-                {
-                    new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 96 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 783 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 8245 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = -8 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 0 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1 },
-                });
+            var prototypes = new[]
+            {
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my creature")
+                    .WithCreatureType(types["my creature"].ToArray())
+                    .WithAlignments(alignments["my creature" + GroupConstants.Exploded].ToArray())
+                    .WithChallengeRating(data["my creature"].ChallengeRating)
+                    .WithCasterLevel(data["my creature"].CasterLevel)
+                    .WithLevelAdjustment(data["my creature"].LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["my creature"])
+                    .WithoutAbility(AbilityConstants.Strength)
+                    .WithAbility(AbilityConstants.Constitution, 90210)
+                    .WithAbility(AbilityConstants.Dexterity, 42)
+                    .WithAbility(AbilityConstants.Intelligence, 600)
+                    .WithAbility(AbilityConstants.Wisdom, 1337)
+                    .WithAbility(AbilityConstants.Charisma, 1336)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my other creature")
+                    .WithCreatureType(types["my other creature"].ToArray())
+                    .WithAlignments(alignments["my other creature" + GroupConstants.Exploded].ToArray())
+                    .WithChallengeRating(data["my other creature"].ChallengeRating)
+                    .WithCasterLevel(data["my other creature"].CasterLevel)
+                    .WithLevelAdjustment(data["my other creature"].LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["my other creature"])
+                    .WithAbility(AbilityConstants.Strength, 96)
+                    .WithAbility(AbilityConstants.Constitution, 783)
+                    .WithAbility(AbilityConstants.Dexterity, 8245)
+                    .WithAbility(AbilityConstants.Intelligence, -8)
+                    .WithAbility(AbilityConstants.Wisdom, 0)
+                    .WithAbility(AbilityConstants.Charisma, 1)
+                    .Build(),
+            };
+            mockPrototypeFactory
+                .Setup(f => f.Build(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "my creature", "my other creature" })), false))
+                .Returns(prototypes);
 
             var filters = new Filters { Type = "subtype 2" };
 
@@ -4801,9 +4843,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockCreatureDataSelector.Verify(s => s.SelectFor("wrong creature 1"), Times.Never);
             mockCreatureDataSelector.Verify(s => s.SelectFor("wrong creature 2"), Times.Never);
-
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"), Times.Never);
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"), Times.Never);
         }
 
         [Test]
@@ -4872,27 +4911,44 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my creature"))
-                .Returns(new[]
-                {
-                    new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
-                });
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my other creature"))
-                .Returns(new[]
-                {
-                    new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 96 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 783 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 8245 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = -8 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 0 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1 },
-                });
+            var prototypes = new[]
+            {
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my creature")
+                    .WithCreatureType(types["my creature"].ToArray())
+                    .WithAlignments(alignments["my creature" + GroupConstants.Exploded].ToArray())
+                    .WithChallengeRating(data["my creature"].ChallengeRating)
+                    .WithCasterLevel(data["my creature"].CasterLevel)
+                    .WithLevelAdjustment(data["my creature"].LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["my creature"])
+                    .WithoutAbility(AbilityConstants.Strength)
+                    .WithAbility(AbilityConstants.Constitution, 90210)
+                    .WithAbility(AbilityConstants.Dexterity, 42)
+                    .WithAbility(AbilityConstants.Intelligence, 600)
+                    .WithAbility(AbilityConstants.Wisdom, 1337)
+                    .WithAbility(AbilityConstants.Charisma, 1336)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my other creature")
+                    .WithCreatureType(types["my other creature"].ToArray())
+                    .WithAlignments(alignments["my other creature" + GroupConstants.Exploded].ToArray())
+                    .WithChallengeRating(data["my other creature"].ChallengeRating)
+                    .WithCasterLevel(data["my other creature"].CasterLevel)
+                    .WithLevelAdjustment(data["my other creature"].LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["my other creature"])
+                    .WithAbility(AbilityConstants.Strength, 96)
+                    .WithAbility(AbilityConstants.Constitution, 783)
+                    .WithAbility(AbilityConstants.Dexterity, 8245)
+                    .WithAbility(AbilityConstants.Intelligence, -8)
+                    .WithAbility(AbilityConstants.Wisdom, 0)
+                    .WithAbility(AbilityConstants.Charisma, 1)
+                    .Build(),
+            };
+            mockPrototypeFactory
+                .Setup(f => f.Build(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "my creature", "my other creature" })), false))
+                .Returns(prototypes);
 
             var filters = new Filters { ChallengeRating = ChallengeRatingConstants.CR2, Type = "subtype 2" };
 
@@ -4960,9 +5016,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
             Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
-
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"), Times.Never);
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"), Times.Never);
         }
 
         [Test]
@@ -4970,109 +5023,65 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creatures = new[]
             {
-                new CreaturePrototype
-                {
-                    Name = "my creature",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Humanoid,
-                        SubTypes = new[] { "subtype 1", "subtype 2" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment(AlignmentConstants.LawfulGood),
-                        new Alignment("other alignment"),
-                    },
-                    ChallengeRating = ChallengeRatingConstants.CR1,
-                    CasterLevel = 9266,
-                    LevelAdjustment = 90210,
-                    HitDiceQuantity = 9,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = 90210 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = 42 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = 600 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = 1337 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = 1336 } },
-                    },
-
-                },
-                new CreaturePrototype
-                {
-                    Name = "wrong creature 2",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Humanoid,
-                        SubTypes = new[] { "subtype 1", "subtype 2" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment(AlignmentConstants.NeutralEvil),
-                    },
-                    ChallengeRating = ChallengeRatingConstants.CR1,
-                    HitDiceQuantity = 1,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Strength, new Ability(AbilityConstants.Strength) { RacialAdjustment = -2 } },
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = 3 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = -4 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = 5 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = -6 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = 7 } },
-                    },
-                },
-                new CreaturePrototype
-                {
-                    Name = "my other creature",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Animal,
-                        SubTypes = new[] { "subtype 3" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment(AlignmentConstants.NeutralGood),
-                        new Alignment(AlignmentConstants.ChaoticNeutral),
-                        new Alignment("other alignment"),
-                    },
-                    ChallengeRating = ChallengeRatingConstants.CR3,
-                    CasterLevel = 0,
-                    HitDiceQuantity = 5,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Strength, new Ability(AbilityConstants.Strength) { RacialAdjustment = 96 } },
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = 783 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = 8245 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = -8 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = 0 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = 1 } },
-                    },
-                },
-                new CreaturePrototype
-                {
-                    Name = "wrong creature 1",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Outsider,
-                        SubTypes = new[] { "subtype 1", "subtype 2" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment(AlignmentConstants.ChaoticGood),
-                        new Alignment("other alignment"),
-                    },
-                    ChallengeRating = ChallengeRatingConstants.CR1,
-                    HitDiceQuantity = 1,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Strength, new Ability(AbilityConstants.Strength) { RacialAdjustment = 8 } },
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = -9 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = 0 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = -1 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = 2 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = -3 } },
-                    },
-                },
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my creature")
+                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                    .WithAlignments(AlignmentConstants.LawfulGood, "other alignment")
+                    .WithChallengeRating(ChallengeRatingConstants.CR1)
+                    .WithCasterLevel(9266)
+                    .WithLevelAdjustment(90210)
+                    .WithHitDiceQuantity(9)
+                    .WithoutAbility(AbilityConstants.Strength)
+                    .WithAbility(AbilityConstants.Constitution, 90210)
+                    .WithAbility(AbilityConstants.Dexterity, 42)
+                    .WithAbility(AbilityConstants.Intelligence, 600)
+                    .WithAbility(AbilityConstants.Wisdom, 1337)
+                    .WithAbility(AbilityConstants.Charisma, 1336)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("wrong creature 2")
+                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                    .WithAlignments(AlignmentConstants.NeutralEvil)
+                    .WithChallengeRating(ChallengeRatingConstants.CR1)
+                    .WithHitDiceQuantity(1)
+                    .WithAbility(AbilityConstants.Strength, -2)
+                    .WithAbility(AbilityConstants.Constitution, 3)
+                    .WithAbility(AbilityConstants.Dexterity, -4)
+                    .WithAbility(AbilityConstants.Intelligence, 5)
+                    .WithAbility(AbilityConstants.Wisdom, -6)
+                    .WithAbility(AbilityConstants.Charisma, 7)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my other creature")
+                    .WithCreatureType(CreatureConstants.Types.Animal, "subtype 3")
+                    .WithAlignments(AlignmentConstants.NeutralGood, AlignmentConstants.ChaoticNeutral, "other alignment")
+                    .WithChallengeRating(ChallengeRatingConstants.CR3)
+                    .WithCasterLevel(0)
+                    .WithHitDiceQuantity(5)
+                    .WithAbility(AbilityConstants.Strength, 96)
+                    .WithAbility(AbilityConstants.Constitution, 783)
+                    .WithAbility(AbilityConstants.Dexterity, 8245)
+                    .WithAbility(AbilityConstants.Intelligence, -8)
+                    .WithAbility(AbilityConstants.Wisdom, 0)
+                    .WithAbility(AbilityConstants.Charisma, 1)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("wrong creature 1")
+                    .WithCreatureType(CreatureConstants.Types.Outsider, "subtype 1", "subtype 2")
+                    .WithAlignments(AlignmentConstants.ChaoticGood, "other alignment")
+                    .WithChallengeRating(ChallengeRatingConstants.CR1)
+                    .WithHitDiceQuantity(1)
+                    .WithAbility(AbilityConstants.Strength, 8)
+                    .WithAbility(AbilityConstants.Constitution, -9)
+                    .WithAbility(AbilityConstants.Dexterity, 0)
+                    .WithAbility(AbilityConstants.Intelligence, -1)
+                    .WithAbility(AbilityConstants.Wisdom, 2)
+                    .WithAbility(AbilityConstants.Charisma, -3)
+                    .Build(),
             };
 
             var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false).ToArray();
@@ -5139,9 +5148,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
             Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
-
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"), Times.Never);
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"), Times.Never);
         }
 
         [Test]
@@ -5149,117 +5155,71 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creatures = new[]
             {
-                new CreaturePrototype
-                {
-                    Name = "my creature",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Humanoid,
-                        SubTypes = new[] { "subtype 1", "subtype 2" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment(AlignmentConstants.LawfulGood),
-                        new Alignment("other alignment"),
-                    },
-                    ChallengeRating = ChallengeRatingConstants.CR1,
-                    CasterLevel = 9266,
-                    LevelAdjustment = 90210,
-                    HitDiceQuantity = 9,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = 90210 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = 42 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = 600 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = 1337 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = 1336 } },
-                    },
-
-                },
-                new CreaturePrototype
-                {
-                    Name = "wrong creature 2",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Humanoid,
-                        SubTypes = new[] { "subtype 1", "subtype 2" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment(AlignmentConstants.NeutralEvil),
-                    },
-                    ChallengeRating = ChallengeRatingConstants.CR1,
-                    HitDiceQuantity = 1,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Strength, new Ability(AbilityConstants.Strength) { RacialAdjustment = -2 } },
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = 3 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = -4 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = 5 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = -6 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = 7 } },
-                    },
-                },
-                new CreaturePrototype
-                {
-                    Name = "my other creature",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Animal,
-                        SubTypes = new[] { "subtype 3" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment(AlignmentConstants.NeutralGood),
-                        new Alignment(AlignmentConstants.ChaoticNeutral),
-                        new Alignment("other alignment"),
-                    },
-                    ChallengeRating = ChallengeRatingConstants.CR3,
-                    CasterLevel = 0,
-                    HitDiceQuantity = 5,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Strength, new Ability(AbilityConstants.Strength) { RacialAdjustment = 96 } },
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = 783 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = 8245 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = -8 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = 0 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = 1 } },
-                    },
-                },
-                new CreaturePrototype
-                {
-                    Name = "wrong creature 1",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Outsider,
-                        SubTypes = new[] { "subtype 1", "subtype 2" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment(AlignmentConstants.ChaoticGood),
-                        new Alignment("other alignment"),
-                    },
-                    ChallengeRating = ChallengeRatingConstants.CR1,
-                    HitDiceQuantity = 1,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Strength, new Ability(AbilityConstants.Strength) { RacialAdjustment = 8 } },
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = -9 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = 0 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = -1 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = 2 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = -3 } },
-                    },
-                },
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my creature")
+                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                    .WithAlignments(AlignmentConstants.LawfulGood, "other alignment")
+                    .WithChallengeRating(ChallengeRatingConstants.CR1)
+                    .WithCasterLevel(9266)
+                    .WithLevelAdjustment(90210)
+                    .WithHitDiceQuantity(9)
+                    .WithoutAbility(AbilityConstants.Strength)
+                    .WithAbility(AbilityConstants.Constitution, 90210)
+                    .WithAbility(AbilityConstants.Dexterity, 42)
+                    .WithAbility(AbilityConstants.Intelligence, 600)
+                    .WithAbility(AbilityConstants.Wisdom, 1337)
+                    .WithAbility(AbilityConstants.Charisma, 1336)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("wrong creature 2")
+                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                    .WithAlignments(AlignmentConstants.NeutralEvil)
+                    .WithChallengeRating(ChallengeRatingConstants.CR1)
+                    .WithHitDiceQuantity(1)
+                    .WithAbility(AbilityConstants.Strength, -2)
+                    .WithAbility(AbilityConstants.Constitution, 3)
+                    .WithAbility(AbilityConstants.Dexterity, -4)
+                    .WithAbility(AbilityConstants.Intelligence, 5)
+                    .WithAbility(AbilityConstants.Wisdom, -6)
+                    .WithAbility(AbilityConstants.Charisma, 7)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my other creature")
+                    .WithCreatureType(CreatureConstants.Types.Animal, "subtype 3")
+                    .WithAlignments(AlignmentConstants.NeutralGood, AlignmentConstants.ChaoticNeutral, "other alignment")
+                    .WithChallengeRating(ChallengeRatingConstants.CR3)
+                    .WithCasterLevel(0)
+                    .WithHitDiceQuantity(5)
+                    .WithAbility(AbilityConstants.Strength, 96)
+                    .WithAbility(AbilityConstants.Constitution, 783)
+                    .WithAbility(AbilityConstants.Dexterity, 8245)
+                    .WithAbility(AbilityConstants.Intelligence, -8)
+                    .WithAbility(AbilityConstants.Wisdom, 0)
+                    .WithAbility(AbilityConstants.Charisma, 1)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("wrong creature 1")
+                    .WithCreatureType(CreatureConstants.Types.Outsider, "subtype 1", "subtype 2")
+                    .WithAlignments(AlignmentConstants.ChaoticGood, "other alignment")
+                    .WithChallengeRating(ChallengeRatingConstants.CR1)
+                    .WithHitDiceQuantity(1)
+                    .WithAbility(AbilityConstants.Strength, 8)
+                    .WithAbility(AbilityConstants.Constitution, -9)
+                    .WithAbility(AbilityConstants.Dexterity, 0)
+                    .WithAbility(AbilityConstants.Intelligence, -1)
+                    .WithAbility(AbilityConstants.Wisdom, 2)
+                    .WithAbility(AbilityConstants.Charisma, -3)
+                    .Build(),
             };
 
             var filters = new Filters { Alignment = "preset alignment" };
 
             var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters);
             Assert.That(compatibleCreatures, Is.Empty);
-
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, It.IsAny<string>()), Times.Never);
         }
 
         [Test]
@@ -5267,108 +5227,65 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creatures = new[]
             {
-                new CreaturePrototype
-                {
-                    Name = "my creature",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Humanoid,
-                        SubTypes = new[] { "subtype 1", "subtype 2" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment("preset Good"),
-                        new Alignment("other alignment"),
-                    },
-                    ChallengeRating = ChallengeRatingConstants.CR1,
-                    CasterLevel = 9266,
-                    LevelAdjustment = 90210,
-                    HitDiceQuantity = 9,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = 90210 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = 42 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = 600 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = 1337 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = 1336 } },
-                    },
-
-                },
-                new CreaturePrototype
-                {
-                    Name = "wrong creature 2",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Humanoid,
-                        SubTypes = new[] { "subtype 1", "subtype 2" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment(AlignmentConstants.NeutralEvil),
-                    },
-                    ChallengeRating = ChallengeRatingConstants.CR1,
-                    HitDiceQuantity = 1,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Strength, new Ability(AbilityConstants.Strength) { RacialAdjustment = -2 } },
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = 3 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = -4 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = 5 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = -6 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = 7 } },
-                    },
-                },
-                new CreaturePrototype
-                {
-                    Name = "my other creature",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Animal,
-                        SubTypes = new[] { "subtype 3" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment("preset Neutral"),
-                        new Alignment("other alignment"),
-                    },
-                    ChallengeRating = ChallengeRatingConstants.CR3,
-                    CasterLevel = 0,
-                    HitDiceQuantity = 5,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Strength, new Ability(AbilityConstants.Strength) { RacialAdjustment = 96 } },
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = 783 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = 8245 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = -8 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = 0 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = 1 } },
-                    },
-                },
-                new CreaturePrototype
-                {
-                    Name = "wrong creature 1",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Outsider,
-                        SubTypes = new[] { "subtype 1", "subtype 2" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment(AlignmentConstants.ChaoticGood),
-                        new Alignment("other alignment"),
-                    },
-                    ChallengeRating = ChallengeRatingConstants.CR1,
-                    HitDiceQuantity = 1,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Strength, new Ability(AbilityConstants.Strength) { RacialAdjustment = 8 } },
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = -9 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = 0 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = -1 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = 2 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = -3 } },
-                    },
-                },
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my creature")
+                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                    .WithAlignments("preset Good", "other alignment")
+                    .WithChallengeRating(ChallengeRatingConstants.CR1)
+                    .WithCasterLevel(9266)
+                    .WithLevelAdjustment(90210)
+                    .WithHitDiceQuantity(9)
+                    .WithoutAbility(AbilityConstants.Strength)
+                    .WithAbility(AbilityConstants.Constitution, 90210)
+                    .WithAbility(AbilityConstants.Dexterity, 42)
+                    .WithAbility(AbilityConstants.Intelligence, 600)
+                    .WithAbility(AbilityConstants.Wisdom, 1337)
+                    .WithAbility(AbilityConstants.Charisma, 1336)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("wrong creature 2")
+                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                    .WithAlignments(AlignmentConstants.NeutralEvil)
+                    .WithChallengeRating(ChallengeRatingConstants.CR1)
+                    .WithHitDiceQuantity(1)
+                    .WithAbility(AbilityConstants.Strength, -2)
+                    .WithAbility(AbilityConstants.Constitution, 3)
+                    .WithAbility(AbilityConstants.Dexterity, -4)
+                    .WithAbility(AbilityConstants.Intelligence, 5)
+                    .WithAbility(AbilityConstants.Wisdom, -6)
+                    .WithAbility(AbilityConstants.Charisma, 7)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my other creature")
+                    .WithCreatureType(CreatureConstants.Types.Animal, "subtype 3")
+                    .WithAlignments("preset Neutral", AlignmentConstants.ChaoticNeutral, "other alignment")
+                    .WithChallengeRating(ChallengeRatingConstants.CR3)
+                    .WithCasterLevel(0)
+                    .WithHitDiceQuantity(5)
+                    .WithAbility(AbilityConstants.Strength, 96)
+                    .WithAbility(AbilityConstants.Constitution, 783)
+                    .WithAbility(AbilityConstants.Dexterity, 8245)
+                    .WithAbility(AbilityConstants.Intelligence, -8)
+                    .WithAbility(AbilityConstants.Wisdom, 0)
+                    .WithAbility(AbilityConstants.Charisma, 1)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("wrong creature 1")
+                    .WithCreatureType(CreatureConstants.Types.Outsider, "subtype 1", "subtype 2")
+                    .WithAlignments(AlignmentConstants.ChaoticGood, "other alignment")
+                    .WithChallengeRating(ChallengeRatingConstants.CR1)
+                    .WithHitDiceQuantity(1)
+                    .WithAbility(AbilityConstants.Strength, 8)
+                    .WithAbility(AbilityConstants.Constitution, -9)
+                    .WithAbility(AbilityConstants.Dexterity, 0)
+                    .WithAbility(AbilityConstants.Intelligence, -1)
+                    .WithAbility(AbilityConstants.Wisdom, 2)
+                    .WithAbility(AbilityConstants.Charisma, -3)
+                    .Build(),
             };
 
             var filters = new Filters { Alignment = "preset Good" };
@@ -5437,9 +5354,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
             Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
-
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"), Times.Never);
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"), Times.Never);
         }
 
         [TestCase(true, 0.5, ChallengeRatingConstants.CR1_2nd, ChallengeRatingConstants.CR0)]
@@ -5476,133 +5390,79 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creatures = new[]
             {
-                new CreaturePrototype
-                {
-                    Name = "my creature",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Humanoid,
-                        SubTypes = new[] { "subtype 1", "subtype 2" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment(AlignmentConstants.LawfulGood),
-                        new Alignment("other alignment"),
-                    },
-                    ChallengeRating = original,
-                    CasterLevel = 9266,
-                    LevelAdjustment = 90210,
-                    HitDiceQuantity = hitDiceQuantity,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = 90210 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = 42 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = 600 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = 1337 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = 1336 } },
-                    },
-
-                },
-                new CreaturePrototype
-                {
-                    Name = "wrong creature 2",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Humanoid,
-                        SubTypes = new[] { "subtype 1", "subtype 2" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment(AlignmentConstants.NeutralEvil),
-                    },
-                    ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(original, -3),
-                    HitDiceQuantity = hitDiceQuantity,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Strength, new Ability(AbilityConstants.Strength) { RacialAdjustment = -2 } },
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = 3 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = -4 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = 5 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = -6 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = 7 } },
-                    },
-                },
-                new CreaturePrototype
-                {
-                    Name = "wrong creature 3",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Humanoid,
-                        SubTypes = new[] { "subtype 1", "subtype 2" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment(AlignmentConstants.NeutralEvil),
-                    },
-                    ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 3),
-                    HitDiceQuantity = hitDiceQuantity,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Strength, new Ability(AbilityConstants.Strength) { RacialAdjustment = -2 } },
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = 3 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = -4 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = 5 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = -6 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = 7 } },
-                    },
-                },
-                new CreaturePrototype
-                {
-                    Name = "my other creature",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Animal,
-                        SubTypes = new[] { "subtype 3" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment(AlignmentConstants.NeutralGood),
-                        new Alignment(AlignmentConstants.ChaoticNeutral),
-                        new Alignment("other alignment"),
-                    },
-                    ChallengeRating = original,
-                    CasterLevel = 0,
-                    HitDiceQuantity = hitDiceQuantity,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Strength, new Ability(AbilityConstants.Strength) { RacialAdjustment = 96 } },
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = 783 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = 8245 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = -8 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = 0 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = 1 } },
-                    },
-                },
-                new CreaturePrototype
-                {
-                    Name = "wrong creature 1",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Outsider,
-                        SubTypes = new[] { "subtype 1", "subtype 2" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment(AlignmentConstants.ChaoticGood),
-                        new Alignment("other alignment"),
-                    },
-                    ChallengeRating = original,
-                    HitDiceQuantity = ChallengeRatingConstants.IsGreaterThan(challengeRating, original) ? 0 : 666,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Strength, new Ability(AbilityConstants.Strength) { RacialAdjustment = 8 } },
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = -9 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = 0 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = -1 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = 2 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = -3 } },
-                    },
-                },
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my creature")
+                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                    .WithAlignments(AlignmentConstants.LawfulGood, "other alignment")
+                    .WithChallengeRating(original)
+                    .WithCasterLevel(9266)
+                    .WithLevelAdjustment(90210)
+                    .WithHitDiceQuantity(hitDiceQuantity)
+                    .WithoutAbility(AbilityConstants.Strength)
+                    .WithAbility(AbilityConstants.Constitution, 90210)
+                    .WithAbility(AbilityConstants.Dexterity, 42)
+                    .WithAbility(AbilityConstants.Intelligence, 600)
+                    .WithAbility(AbilityConstants.Wisdom, 1337)
+                    .WithAbility(AbilityConstants.Charisma, 1336)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("wrong creature 2")
+                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                    .WithAlignments(AlignmentConstants.NeutralGood)
+                    .WithChallengeRating(ChallengeRatingConstants.IncreaseChallengeRating(original, -3))
+                    .WithHitDiceQuantity(hitDiceQuantity)
+                    .WithAbility(AbilityConstants.Strength, -2)
+                    .WithAbility(AbilityConstants.Constitution, 3)
+                    .WithAbility(AbilityConstants.Dexterity, -4)
+                    .WithAbility(AbilityConstants.Intelligence, 5)
+                    .WithAbility(AbilityConstants.Wisdom, -6)
+                    .WithAbility(AbilityConstants.Charisma, 7)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("wrong creature 3")
+                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                    .WithAlignments(AlignmentConstants.NeutralGood)
+                    .WithChallengeRating(ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 3))
+                    .WithHitDiceQuantity(hitDiceQuantity)
+                    .WithAbility(AbilityConstants.Strength, -2)
+                    .WithAbility(AbilityConstants.Constitution, 3)
+                    .WithAbility(AbilityConstants.Dexterity, -4)
+                    .WithAbility(AbilityConstants.Intelligence, 5)
+                    .WithAbility(AbilityConstants.Wisdom, -6)
+                    .WithAbility(AbilityConstants.Charisma, 7)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my other creature")
+                    .WithCreatureType(CreatureConstants.Types.Animal, "subtype 3")
+                    .WithAlignments(AlignmentConstants.NeutralGood, AlignmentConstants.ChaoticNeutral, "other alignment")
+                    .WithChallengeRating(original)
+                    .WithCasterLevel(0)
+                    .WithHitDiceQuantity(hitDiceQuantity)
+                    .WithAbility(AbilityConstants.Strength, 96)
+                    .WithAbility(AbilityConstants.Constitution, 783)
+                    .WithAbility(AbilityConstants.Dexterity, 8245)
+                    .WithAbility(AbilityConstants.Intelligence, -8)
+                    .WithAbility(AbilityConstants.Wisdom, 0)
+                    .WithAbility(AbilityConstants.Charisma, 1)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("wrong creature 1")
+                    .WithCreatureType(CreatureConstants.Types.Outsider, "subtype 1", "subtype 2")
+                    .WithAlignments(AlignmentConstants.ChaoticGood, "other alignment")
+                    .WithChallengeRating(original)
+                    .WithHitDiceQuantity(ChallengeRatingConstants.IsGreaterThan(challengeRating, original) ? 0 : 666)
+                    .WithAbility(AbilityConstants.Strength, 8)
+                    .WithAbility(AbilityConstants.Constitution, -9)
+                    .WithAbility(AbilityConstants.Dexterity, 0)
+                    .WithAbility(AbilityConstants.Intelligence, -1)
+                    .WithAbility(AbilityConstants.Wisdom, 2)
+                    .WithAbility(AbilityConstants.Charisma, -3)
+                    .Build(),
             };
 
             var filters = new Filters { ChallengeRating = challengeRating };
@@ -5671,9 +5531,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
             Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
-
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"), Times.Never);
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"), Times.Never);
         }
 
         [TestCase(CreatureConstants.Types.Subtypes.Augmented)]
@@ -5682,108 +5539,65 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creatures = new[]
             {
-                new CreaturePrototype
-                {
-                    Name = "my creature",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Humanoid,
-                        SubTypes = new[] { "subtype 1", "subtype 2" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment("preset Good"),
-                        new Alignment("other alignment"),
-                    },
-                    ChallengeRating = ChallengeRatingConstants.CR1,
-                    CasterLevel = 9266,
-                    LevelAdjustment = 90210,
-                    HitDiceQuantity = 9,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = 90210 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = 42 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = 600 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = 1337 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = 1336 } },
-                    },
-
-                },
-                new CreaturePrototype
-                {
-                    Name = "wrong creature 2",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Humanoid,
-                        SubTypes = new[] { "subtype 1", "subtype 2" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment(AlignmentConstants.NeutralEvil),
-                    },
-                    ChallengeRating = ChallengeRatingConstants.CR1,
-                    HitDiceQuantity = 1,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Strength, new Ability(AbilityConstants.Strength) { RacialAdjustment = -2 } },
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = 3 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = -4 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = 5 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = -6 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = 7 } },
-                    },
-                },
-                new CreaturePrototype
-                {
-                    Name = "my other creature",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Animal,
-                        SubTypes = new[] { "subtype 3" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment("preset Neutral"),
-                        new Alignment("other alignment"),
-                    },
-                    ChallengeRating = ChallengeRatingConstants.CR3,
-                    CasterLevel = 0,
-                    HitDiceQuantity = 5,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Strength, new Ability(AbilityConstants.Strength) { RacialAdjustment = 96 } },
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = 783 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = 8245 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = -8 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = 0 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = 1 } },
-                    },
-                },
-                new CreaturePrototype
-                {
-                    Name = "wrong creature 1",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Outsider,
-                        SubTypes = new[] { "subtype 1", "subtype 2" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment(AlignmentConstants.ChaoticGood),
-                        new Alignment("other alignment"),
-                    },
-                    ChallengeRating = ChallengeRatingConstants.CR1,
-                    HitDiceQuantity = 1,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Strength, new Ability(AbilityConstants.Strength) { RacialAdjustment = 8 } },
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = -9 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = 0 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = -1 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = 2 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = -3 } },
-                    },
-                },
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my creature")
+                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                    .WithAlignments(AlignmentConstants.LawfulGood, "other alignment")
+                    .WithChallengeRating(ChallengeRatingConstants.CR1)
+                    .WithCasterLevel(9266)
+                    .WithLevelAdjustment(90210)
+                    .WithHitDiceQuantity(9)
+                    .WithoutAbility(AbilityConstants.Strength)
+                    .WithAbility(AbilityConstants.Constitution, 90210)
+                    .WithAbility(AbilityConstants.Dexterity, 42)
+                    .WithAbility(AbilityConstants.Intelligence, 600)
+                    .WithAbility(AbilityConstants.Wisdom, 1337)
+                    .WithAbility(AbilityConstants.Charisma, 1336)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("wrong creature 2")
+                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                    .WithAlignments(AlignmentConstants.NeutralEvil)
+                    .WithChallengeRating(ChallengeRatingConstants.CR1)
+                    .WithHitDiceQuantity(1)
+                    .WithAbility(AbilityConstants.Strength, -2)
+                    .WithAbility(AbilityConstants.Constitution, 3)
+                    .WithAbility(AbilityConstants.Dexterity, -4)
+                    .WithAbility(AbilityConstants.Intelligence, 5)
+                    .WithAbility(AbilityConstants.Wisdom, -6)
+                    .WithAbility(AbilityConstants.Charisma, 7)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my other creature")
+                    .WithCreatureType(CreatureConstants.Types.Animal, "subtype 3")
+                    .WithAlignments(AlignmentConstants.NeutralGood, AlignmentConstants.ChaoticNeutral, "other alignment")
+                    .WithChallengeRating(ChallengeRatingConstants.CR3)
+                    .WithCasterLevel(0)
+                    .WithHitDiceQuantity(5)
+                    .WithAbility(AbilityConstants.Strength, 96)
+                    .WithAbility(AbilityConstants.Constitution, 783)
+                    .WithAbility(AbilityConstants.Dexterity, 8245)
+                    .WithAbility(AbilityConstants.Intelligence, -8)
+                    .WithAbility(AbilityConstants.Wisdom, 0)
+                    .WithAbility(AbilityConstants.Charisma, 1)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("wrong creature 1")
+                    .WithCreatureType(CreatureConstants.Types.Outsider, "subtype 1", "subtype 2")
+                    .WithAlignments(AlignmentConstants.ChaoticGood, "other alignment")
+                    .WithChallengeRating(ChallengeRatingConstants.CR1)
+                    .WithHitDiceQuantity(1)
+                    .WithAbility(AbilityConstants.Strength, 8)
+                    .WithAbility(AbilityConstants.Constitution, -9)
+                    .WithAbility(AbilityConstants.Dexterity, 0)
+                    .WithAbility(AbilityConstants.Intelligence, -1)
+                    .WithAbility(AbilityConstants.Wisdom, 2)
+                    .WithAbility(AbilityConstants.Charisma, -3)
+                    .Build(),
             };
 
             var filters = new Filters { Type = type };
@@ -5852,97 +5666,73 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
             Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
-
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"), Times.Never);
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"), Times.Never);
         }
 
         [Test]
         public void GetCompatiblePrototypes_FromPrototypes_WithType_ReturnCompatibleCreatures_FilterOutInvalidTypes()
         {
-            var creatures = new[] { "my creature", "wrong creature 2", "my other creature", "wrong creature 1" };
-
-            var types = new Dictionary<string, IEnumerable<string>>();
-            types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
-            types["my other creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 2" };
-            types["wrong creature 1"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 3" };
-            types["wrong creature 2"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1" };
-            types[CreatureConstants.Human] = new[] { CreatureConstants.Types.Humanoid, CreatureConstants.Types.Subtypes.Human };
-            types[CreatureConstants.Rat] = new[] { CreatureConstants.Types.Vermin };
-
-            mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
-                .Returns(types);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string t, string c) => types[c]);
-            mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
-
-            var alignments = new Dictionary<string, IEnumerable<string>>();
-            alignments["my creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulGood, "other alignment" };
-            alignments["my other creature" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralGood, "different alignment" };
-            alignments["wrong creature 1" + GroupConstants.Exploded] = new[] { AlignmentConstants.ChaoticGood, "different alignment" };
-            alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { AlignmentConstants.NeutralGood };
-            alignments["wrong creature 3" + GroupConstants.Exploded] = new[] { AlignmentConstants.LawfulGood };
-
-            mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
-                .Returns(alignments);
-            mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => alignments[c]);
-
-            var data = new Dictionary<string, CreatureDataSelection>();
-            data["my creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-            data["my other creature"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-            data["wrong creature 1"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR1 };
-            data["wrong creature 2"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR4 };
-            data["wrong creature 3"] = new CreatureDataSelection { ChallengeRating = ChallengeRatingConstants.CR4 };
-
-            mockCreatureDataSelector
-                .Setup(s => s.SelectAll())
-                .Returns(data);
-            mockCreatureDataSelector
-                .Setup(s => s.SelectFor(It.IsAny<string>()))
-                .Returns((string c) => data[c]);
-
-            var hitDice = new Dictionary<string, double>();
-            hitDice["my creature"] = 4;
-            hitDice["my other creature"] = 4;
-            hitDice["wrong creature 1"] = 666;
-            hitDice["wrong creature 2"] = 4;
-            hitDice["wrong creature 3"] = 4;
-
-            mockAdjustmentSelector
-                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
-                .Returns(hitDice);
-            mockAdjustmentSelector
-                .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
-                .Returns((string t, string c) => hitDice[c]);
-
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my creature"))
-                .Returns(new[]
-                {
-                    new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
-                });
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my other creature"))
-                .Returns(new[]
-                {
-                    new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 96 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 783 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 8245 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = -8 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 0 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1 },
-                });
+            var creatures = new[]
+            {
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my creature")
+                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                    .WithAlignments(AlignmentConstants.LawfulGood, "other alignment")
+                    .WithChallengeRating(ChallengeRatingConstants.CR1)
+                    .WithCasterLevel(9266)
+                    .WithLevelAdjustment(90210)
+                    .WithHitDiceQuantity(4)
+                    .WithoutAbility(AbilityConstants.Strength)
+                    .WithAbility(AbilityConstants.Constitution, 90210)
+                    .WithAbility(AbilityConstants.Dexterity, 42)
+                    .WithAbility(AbilityConstants.Intelligence, 600)
+                    .WithAbility(AbilityConstants.Wisdom, 1337)
+                    .WithAbility(AbilityConstants.Charisma, 1336)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("wrong creature 2")
+                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                    .WithAlignments(AlignmentConstants.NeutralGood)
+                    .WithChallengeRating(ChallengeRatingConstants.CR4)
+                    .WithHitDiceQuantity(4)
+                    .WithAbility(AbilityConstants.Strength, -2)
+                    .WithAbility(AbilityConstants.Constitution, 3)
+                    .WithAbility(AbilityConstants.Dexterity, -4)
+                    .WithAbility(AbilityConstants.Intelligence, 5)
+                    .WithAbility(AbilityConstants.Wisdom, -6)
+                    .WithAbility(AbilityConstants.Charisma, 7)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my other creature")
+                    .WithCreatureType(CreatureConstants.Types.Animal, "subtype 3")
+                    .WithAlignments(AlignmentConstants.ChaoticNeutral, "different alignment")
+                    .WithChallengeRating(ChallengeRatingConstants.CR3)
+                    .WithCasterLevel(0)
+                    .WithHitDiceQuantity(4)
+                    .WithAbility(AbilityConstants.Strength, 96)
+                    .WithAbility(AbilityConstants.Constitution, 783)
+                    .WithAbility(AbilityConstants.Dexterity, 8245)
+                    .WithAbility(AbilityConstants.Intelligence, -8)
+                    .WithAbility(AbilityConstants.Wisdom, 0)
+                    .WithAbility(AbilityConstants.Charisma, 1)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("wrong creature 1")
+                    .WithCreatureType(CreatureConstants.Types.Outsider, "subtype 1", "subtype 2")
+                    .WithAlignments(AlignmentConstants.ChaoticGood, "other alignment")
+                    .WithChallengeRating(ChallengeRatingConstants.CR1)
+                    .WithHitDiceQuantity(666)
+                    .WithAbility(AbilityConstants.Strength, 8)
+                    .WithAbility(AbilityConstants.Constitution, -9)
+                    .WithAbility(AbilityConstants.Dexterity, 0)
+                    .WithAbility(AbilityConstants.Intelligence, -1)
+                    .WithAbility(AbilityConstants.Wisdom, 2)
+                    .WithAbility(AbilityConstants.Charisma, -3)
+                    .Build(),
+            };
 
             var filters = new Filters { Type = "subtype 2" };
 
@@ -6013,9 +5803,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             mockCreatureDataSelector.Verify(s => s.SelectFor("wrong creature 1"), Times.Never);
             mockCreatureDataSelector.Verify(s => s.SelectFor("wrong creature 2"), Times.Never);
-
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"), Times.Never);
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"), Times.Never);
         }
 
         [Test]
@@ -6023,133 +5810,76 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             var creatures = new[]
             {
-                new CreaturePrototype
-                {
-                    Name = "my creature",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Humanoid,
-                        SubTypes = new[] { "subtype 1", "subtype 2" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment(AlignmentConstants.LawfulGood),
-                        new Alignment("other alignment"),
-                    },
-                    ChallengeRating = ChallengeRatingConstants.CR1,
-                    CasterLevel = 9266,
-                    LevelAdjustment = 90210,
-                    HitDiceQuantity = 4,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = 90210 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = 42 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = 600 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = 1337 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = 1336 } },
-                    },
-
-                },
-                new CreaturePrototype
-                {
-                    Name = "wrong creature 2",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Humanoid,
-                        SubTypes = new[] { "subtype 1", "subtype 2" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment(AlignmentConstants.NeutralEvil),
-                    },
-                    ChallengeRating = ChallengeRatingConstants.CR4,
-                    HitDiceQuantity = 4,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Strength, new Ability(AbilityConstants.Strength) { RacialAdjustment = -2 } },
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = 3 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = -4 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = 5 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = -6 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = 7 } },
-                    },
-                },
-                new CreaturePrototype
-                {
-                    Name = "wrong creature 3",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Humanoid,
-                        SubTypes = new[] { "subtype 1", "subtype 2" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment(AlignmentConstants.NeutralEvil),
-                    },
-                    ChallengeRating = ChallengeRatingConstants.CR4,
-                    HitDiceQuantity = 4,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Strength, new Ability(AbilityConstants.Strength) { RacialAdjustment = -2 } },
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = 3 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = -4 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = 5 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = -6 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = 7 } },
-                    },
-                },
-                new CreaturePrototype
-                {
-                    Name = "my other creature",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Animal,
-                        SubTypes = new[] { "subtype 3" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment(AlignmentConstants.NeutralGood),
-                        new Alignment(AlignmentConstants.ChaoticNeutral),
-                        new Alignment("other alignment"),
-                    },
-                    ChallengeRating = ChallengeRatingConstants.CR1,
-                    CasterLevel = 0,
-                    HitDiceQuantity = 4,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Strength, new Ability(AbilityConstants.Strength) { RacialAdjustment = 96 } },
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = 783 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = 8245 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = -8 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = 0 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = 1 } },
-                    },
-                },
-                new CreaturePrototype
-                {
-                    Name = "wrong creature 1",
-                    Type = new CreatureType
-                    {
-                        Name = CreatureConstants.Types.Outsider,
-                        SubTypes = new[] { "subtype 1", "subtype 2" },
-                    },
-                    Alignments = new List<Alignment>
-                    {
-                        new Alignment(AlignmentConstants.ChaoticGood),
-                        new Alignment("other alignment"),
-                    },
-                    ChallengeRating = ChallengeRatingConstants.CR1,
-                    HitDiceQuantity = 666,
-                    Abilities = new Dictionary<string, Ability>
-                    {
-                        { AbilityConstants.Strength, new Ability(AbilityConstants.Strength) { RacialAdjustment = 8 } },
-                        { AbilityConstants.Constitution, new Ability(AbilityConstants.Constitution) { RacialAdjustment = -9 } },
-                        { AbilityConstants.Dexterity, new Ability(AbilityConstants.Dexterity) { RacialAdjustment = 0 } },
-                        { AbilityConstants.Intelligence, new Ability(AbilityConstants.Intelligence) { RacialAdjustment = -1 } },
-                        { AbilityConstants.Wisdom, new Ability(AbilityConstants.Wisdom) { RacialAdjustment = 2 } },
-                        { AbilityConstants.Charisma, new Ability(AbilityConstants.Charisma) { RacialAdjustment = -3 } },
-                    },
-                },
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my creature")
+                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                    .WithAlignments(AlignmentConstants.LawfulGood, "other alignment")
+                    .WithChallengeRating(ChallengeRatingConstants.CR1)
+                    .WithHitDiceQuantity(4)
+                    .WithoutAbility(AbilityConstants.Strength)
+                    .WithAbility(AbilityConstants.Constitution, 90210)
+                    .WithAbility(AbilityConstants.Dexterity, 42)
+                    .WithAbility(AbilityConstants.Intelligence, 600)
+                    .WithAbility(AbilityConstants.Wisdom, 1337)
+                    .WithAbility(AbilityConstants.Charisma, 1336)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("wrong creature 2")
+                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1")
+                    .WithAlignments(AlignmentConstants.NeutralGood)
+                    .WithChallengeRating(ChallengeRatingConstants.CR4)
+                    .WithHitDiceQuantity(4)
+                    .WithAbility(AbilityConstants.Strength, -2)
+                    .WithAbility(AbilityConstants.Constitution, 3)
+                    .WithAbility(AbilityConstants.Dexterity, -4)
+                    .WithAbility(AbilityConstants.Intelligence, 5)
+                    .WithAbility(AbilityConstants.Wisdom, -6)
+                    .WithAbility(AbilityConstants.Charisma, 7)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("wrong creature 3")
+                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 2")
+                    .WithAlignments(AlignmentConstants.LawfulGood)
+                    .WithChallengeRating(ChallengeRatingConstants.CR4)
+                    .WithHitDiceQuantity(4)
+                    .WithAbility(AbilityConstants.Strength, -2)
+                    .WithAbility(AbilityConstants.Constitution, 3)
+                    .WithAbility(AbilityConstants.Dexterity, -4)
+                    .WithAbility(AbilityConstants.Intelligence, 5)
+                    .WithAbility(AbilityConstants.Wisdom, -6)
+                    .WithAbility(AbilityConstants.Charisma, 7)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my other creature")
+                    .WithCreatureType(CreatureConstants.Types.Animal, "subtype 3")
+                    .WithAlignments(AlignmentConstants.NeutralGood, "different alignment")
+                    .WithChallengeRating(ChallengeRatingConstants.CR1)
+                    .WithHitDiceQuantity(4)
+                    .WithAbility(AbilityConstants.Strength, 96)
+                    .WithAbility(AbilityConstants.Constitution, 783)
+                    .WithAbility(AbilityConstants.Dexterity, 8245)
+                    .WithAbility(AbilityConstants.Intelligence, -8)
+                    .WithAbility(AbilityConstants.Wisdom, 0)
+                    .WithAbility(AbilityConstants.Charisma, 1)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("wrong creature 1")
+                    .WithCreatureType(CreatureConstants.Types.Outsider, "subtype 1", "subtype 2")
+                    .WithAlignments(AlignmentConstants.ChaoticGood, "different alignment")
+                    .WithChallengeRating(ChallengeRatingConstants.CR1)
+                    .WithHitDiceQuantity(666)
+                    .WithAbility(AbilityConstants.Strength, 8)
+                    .WithAbility(AbilityConstants.Constitution, -9)
+                    .WithAbility(AbilityConstants.Dexterity, 0)
+                    .WithAbility(AbilityConstants.Intelligence, -1)
+                    .WithAbility(AbilityConstants.Wisdom, 2)
+                    .WithAbility(AbilityConstants.Charisma, -3)
+                    .Build(),
             };
 
             var filters = new Filters { ChallengeRating = ChallengeRatingConstants.CR2, Type = "subtype 2" };
@@ -6218,9 +5948,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
             Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(9));
-
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"), Times.Never);
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"), Times.Never);
         }
     }
 }
