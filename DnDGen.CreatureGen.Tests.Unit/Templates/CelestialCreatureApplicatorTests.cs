@@ -13,6 +13,7 @@ using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Templates;
+using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
 using Moq;
@@ -3983,8 +3984,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var prototypes = new[]
             {
-                new CreaturePrototype { Name = "my creature" },
-                new CreaturePrototype { Name = "my other creature" },
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my creature")
+                    .WithCreatureType(types["my creature"].ToArray())
+                    .WithAlignments(alignments["my creature" + GroupConstants.Exploded].ToArray())
+                    .WithChallengeRating(data["my creature"].ChallengeRating)
+                    .WithCasterLevel(data["my creature"].CasterLevel)
+                    .WithLevelAdjustment(data["my creature"].LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["my creature"])
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my other creature")
+                    .WithCreatureType(types["my other creature"].ToArray())
+                    .WithAlignments(alignments["my other creature" + GroupConstants.Exploded].ToArray())
+                    .WithChallengeRating(data["my other creature"].ChallengeRating)
+                    .WithCasterLevel(data["my other creature"].CasterLevel)
+                    .WithLevelAdjustment(data["my other creature"].LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["my other creature"])
+                    .Build(),
             };
             mockPrototypeFactory
                 .Setup(f => f.Build(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "my creature", "my other creature" })), false))
@@ -4054,9 +4073,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
             Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
-
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 1"), Times.Never);
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "wrong creature 2"), Times.Never);
         }
 
         [Test]
@@ -4121,7 +4137,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters);
             Assert.That(compatibleCreatures, Is.Empty);
 
-            mockTypeAndAmountSelector.Verify(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, It.IsAny<string>()), Times.Never);
+            mockPrototypeFactory.Verify(s => s.Build(It.IsAny<IEnumerable<string>>(), It.IsAny<bool>()), Times.Never);
         }
 
         [Test]
@@ -4181,27 +4197,44 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Setup(s => s.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, It.IsAny<string>()))
                 .Returns((string t, string c) => hitDice[c]);
 
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my creature"))
-                .Returns(new[]
-                {
-                    new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 90210 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 42 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 600 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 1337 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1336 },
-                });
-            mockTypeAndAmountSelector
-                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, "my other creature"))
-                .Returns(new[]
-                {
-                    new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 96 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 783 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 8245 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = -8 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 0 },
-                    new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 1 },
-                });
+            var prototypes = new[]
+            {
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my creature")
+                    .WithCreatureType(types["my creature"].ToArray())
+                    .WithAlignments(alignments["my creature" + GroupConstants.Exploded].ToArray())
+                    .WithChallengeRating(data["my creature"].ChallengeRating)
+                    .WithCasterLevel(data["my creature"].CasterLevel)
+                    .WithLevelAdjustment(data["my creature"].LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["my creature"])
+                    .WithoutAbility(AbilityConstants.Strength)
+                    .WithAbility(AbilityConstants.Constitution, 90210)
+                    .WithAbility(AbilityConstants.Dexterity, 42)
+                    .WithAbility(AbilityConstants.Intelligence, 600)
+                    .WithAbility(AbilityConstants.Wisdom, 1337)
+                    .WithAbility(AbilityConstants.Charisma, 1336)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my other creature")
+                    .WithCreatureType(types["my other creature"].ToArray())
+                    .WithAlignments(alignments["my other creature" + GroupConstants.Exploded].ToArray())
+                    .WithChallengeRating(data["my other creature"].ChallengeRating)
+                    .WithCasterLevel(data["my other creature"].CasterLevel)
+                    .WithLevelAdjustment(data["my other creature"].LevelAdjustment)
+                    .WithHitDiceQuantity(hitDice["my other creature"])
+                    .WithAbility(AbilityConstants.Strength, 96)
+                    .WithAbility(AbilityConstants.Constitution, 783)
+                    .WithAbility(AbilityConstants.Dexterity, 8245)
+                    .WithAbility(AbilityConstants.Intelligence, -8)
+                    .WithAbility(AbilityConstants.Wisdom, 0)
+                    .WithAbility(AbilityConstants.Charisma, 1)
+                    .Build(),
+            };
+            mockPrototypeFactory
+                .Setup(f => f.Build(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "my creature", "my other creature" })), false))
+                .Returns(prototypes);
 
             var filters = new Filters { Alignment = "preset Good" };
 
@@ -4218,7 +4251,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 CreatureConstants.Types.Subtypes.Extraplanar,
                 CreatureConstants.Types.Subtypes.Augmented
             }));
-            Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(5));
+            Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.Zero);
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.Zero);
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore + 1336));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.Zero);
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore + 600));
