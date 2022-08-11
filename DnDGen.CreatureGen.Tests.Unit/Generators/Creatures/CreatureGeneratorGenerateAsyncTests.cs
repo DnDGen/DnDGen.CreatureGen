@@ -1546,13 +1546,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             var templateCreature1 = new Creature();
             mockTemplateApplicator1
-                .Setup(a => a.ApplyToAsync(It.IsAny<Creature>(), asCharacter, It.Is<Filters>(f => f != null
-                    && f.Templates.Count == 2
-                    && f.Templates[0] == "template 1"
-                    && f.Templates[1] == "template 2"
-                    && f.ChallengeRating == null
-                    && f.Type == null
-                    && f.Alignment == null)))
+                .Setup(a => a.ApplyToAsync(It.IsAny<Creature>(), asCharacter, null))
                 .ReturnsAsync(templateCreature1);
 
             var templateCreature2 = new Creature();

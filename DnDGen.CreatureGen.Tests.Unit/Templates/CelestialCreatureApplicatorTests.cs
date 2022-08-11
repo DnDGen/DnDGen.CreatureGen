@@ -346,6 +346,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void CreatureGainSpecialQualities()
         {
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
 
             var smiteEvil = new Attack
             {
@@ -375,7 +376,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
                     CreatureConstants.Templates.CelestialCreature,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Humanoid
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Extraplanar,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                        }))),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
                     baseCreature.Skills,
@@ -404,6 +410,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Union(new[] { spellResistance });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
 
             var smiteEvil = new Attack
             {
@@ -433,7 +440,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
                     CreatureConstants.Templates.CelestialCreature,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Humanoid
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Extraplanar,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                        }))),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
                     baseCreature.Skills,
@@ -464,6 +476,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Union(new[] { spellResistance });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
 
             var smiteEvil = new Attack
             {
@@ -493,7 +506,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
                     CreatureConstants.Templates.CelestialCreature,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Humanoid
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Extraplanar,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                        }))),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
                     baseCreature.Skills,
@@ -524,6 +542,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Union(new[] { darkvision });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
 
             var smiteEvil = new Attack
             {
@@ -553,7 +572,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
                     CreatureConstants.Templates.CelestialCreature,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Humanoid
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Extraplanar,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                        }))),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
                     baseCreature.Skills,
@@ -584,6 +608,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Union(new[] { darkvision });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
 
             var smiteEvil = new Attack
             {
@@ -613,7 +638,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
                     CreatureConstants.Templates.CelestialCreature,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Humanoid
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Extraplanar,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                        }))),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
                     baseCreature.Skills,
@@ -647,6 +677,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Union(new[] { energyResistance });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
 
             var smiteEvil = new Attack
             {
@@ -676,7 +707,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
                     CreatureConstants.Templates.CelestialCreature,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Humanoid
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Extraplanar,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                        }))),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
                     baseCreature.Skills,
@@ -714,6 +750,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Union(new[] { energyResistance });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
 
             var smiteEvil = new Attack
             {
@@ -743,7 +780,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
                     CreatureConstants.Templates.CelestialCreature,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Humanoid
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Extraplanar,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                        }))),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
                     baseCreature.Skills,
@@ -795,6 +837,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(new[] { smiteEvil });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
 
             var specialQualities = new[]
             {
@@ -809,7 +852,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
                     CreatureConstants.Templates.CelestialCreature,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Humanoid
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Extraplanar,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                        }))),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
                     baseCreature.Skills,
@@ -855,6 +903,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(new[] { smiteEvil });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
 
             var specialQualities = new[]
             {
@@ -869,7 +918,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
                     CreatureConstants.Templates.CelestialCreature,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Humanoid
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Extraplanar,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                        }))),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
                     baseCreature.Skills,
@@ -901,6 +955,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Union(new[] { damageReduction });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
 
             var smiteEvil = new Attack
             {
@@ -930,7 +985,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
                     CreatureConstants.Templates.CelestialCreature,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Humanoid
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Extraplanar,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                        }))),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
                     baseCreature.Skills,
@@ -962,6 +1022,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Union(new[] { damageReduction });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
 
             var smiteEvil = new Attack
             {
@@ -991,7 +1052,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
                     CreatureConstants.Templates.CelestialCreature,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Humanoid
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Extraplanar,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                        }))),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
                     baseCreature.Skills,
@@ -1530,6 +1596,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public async Task ApplyToAsync_CreatureGainSpecialQualities()
         {
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
 
             var smiteEvil = new Attack
             {
@@ -1559,7 +1626,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
                     CreatureConstants.Templates.CelestialCreature,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Humanoid
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Extraplanar,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                        }))),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
                     baseCreature.Skills,
@@ -1588,6 +1660,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Union(new[] { spellResistance });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
 
             var smiteEvil = new Attack
             {
@@ -1617,7 +1690,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
                     CreatureConstants.Templates.CelestialCreature,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Humanoid
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Extraplanar,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                        }))),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
                     baseCreature.Skills,
@@ -1648,6 +1726,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Union(new[] { spellResistance });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
 
             var smiteEvil = new Attack
             {
@@ -1677,7 +1756,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
                     CreatureConstants.Templates.CelestialCreature,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Humanoid
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Extraplanar,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                        }))),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
                     baseCreature.Skills,
@@ -1708,6 +1792,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Union(new[] { darkvision });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
 
             var smiteEvil = new Attack
             {
@@ -1737,7 +1822,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
                     CreatureConstants.Templates.CelestialCreature,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Humanoid
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Extraplanar,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                        }))),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
                     baseCreature.Skills,
@@ -1768,6 +1858,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Union(new[] { darkvision });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
 
             var smiteEvil = new Attack
             {
@@ -1797,7 +1888,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
                     CreatureConstants.Templates.CelestialCreature,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Humanoid
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Extraplanar,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                        }))),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
                     baseCreature.Skills,
@@ -1831,6 +1927,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Union(new[] { energyResistance });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
 
             var smiteEvil = new Attack
             {
@@ -1860,7 +1957,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
                     CreatureConstants.Templates.CelestialCreature,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Humanoid
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Extraplanar,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                        }))),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
                     baseCreature.Skills,
@@ -1898,6 +2000,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Union(new[] { energyResistance });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
 
             var smiteEvil = new Attack
             {
@@ -1927,7 +2030,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
                     CreatureConstants.Templates.CelestialCreature,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Humanoid
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Extraplanar,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                        }))),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
                     baseCreature.Skills,
@@ -1979,6 +2087,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(new[] { smiteEvil });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
 
             var specialQualities = new[]
             {
@@ -1993,7 +2102,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
                     CreatureConstants.Templates.CelestialCreature,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Humanoid
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Extraplanar,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                        }))),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
                     baseCreature.Skills,
@@ -2039,6 +2153,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(new[] { smiteEvil });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
 
             var specialQualities = new[]
             {
@@ -2053,7 +2168,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
                     CreatureConstants.Templates.CelestialCreature,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Humanoid
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Extraplanar,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                        }))),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
                     baseCreature.Skills,
@@ -2085,6 +2205,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Union(new[] { damageReduction });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
 
             var smiteEvil = new Attack
             {
@@ -2114,7 +2235,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
                     CreatureConstants.Templates.CelestialCreature,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Humanoid
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Extraplanar,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                        }))),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
                     baseCreature.Skills,
@@ -2146,6 +2272,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Union(new[] { damageReduction });
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
 
             var smiteEvil = new Attack
             {
@@ -2175,7 +2302,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
                     CreatureConstants.Templates.CelestialCreature,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Humanoid
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Extraplanar,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                        }))),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
                     baseCreature.Skills,
@@ -4450,17 +4582,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 CreatureConstants.Types.Subtypes.Extraplanar,
                 CreatureConstants.Types.Subtypes.Augmented
             }));
-            Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(5));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.Zero);
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(0));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1346));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(610));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.Zero);
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.Zero);
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.Zero);
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.Zero);
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(1347));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(52));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(90220));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.LawfulGood),
@@ -4480,18 +4614,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 CreatureConstants.Types.Subtypes.Augmented
             }));
             Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.Zero);
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(11));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(3));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(3));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.Zero);
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.Zero);
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.Zero);
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.Zero);
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(8255));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(793));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(106));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.NeutralGood),

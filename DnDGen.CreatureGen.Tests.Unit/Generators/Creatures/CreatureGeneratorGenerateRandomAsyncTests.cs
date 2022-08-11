@@ -285,7 +285,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(templates);
 
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { creatureName, template }))))
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { creatureName, "other creature name", "wrong creature name", template }))))
                 .Returns(template);
 
             var mockNoneApplicator = new Mock<TemplateApplicator>();
@@ -361,7 +362,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(templates);
 
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { creatureName, template, "other template" }))))
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { creatureName, "other creature name", "wrong creature name", template, "other template" }))))
                 .Returns(template);
 
             var mockNoneApplicator = new Mock<TemplateApplicator>();
@@ -731,9 +733,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[]
                 {
-                    "other creature",
+                    "other creature name",
                     creatureName,
-                    "other wrong creature",
+                    "wrong creature name",
                     template,
                     "other template"
                 }))))
@@ -741,9 +743,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[]
                 {
-                    "other creature",
+                    "other creature name",
                     creatureName,
-                    "wrong creature"
+                    "wrong creature name"
                 }))))
                 .Returns(creatureName);
 
@@ -2353,7 +2355,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(templates);
 
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "creature", "my template" }))))
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "creature", "other creature name", "wrong creature name", "my template" }))))
                 .Returns("my template");
 
             var mockWrongTemplateApplicator = new Mock<TemplateApplicator>();
@@ -2426,7 +2429,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(templates);
 
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "creature", "my template" }))))
+                .Setup(s => s.SelectRandomFrom(
+                    It.Is<IEnumerable<string>>(cc => cc.IsEquivalentTo(new[] { "creature", "other creature name", "wrong creature name", "my template" }))))
                 .Returns("my template");
 
             var mockWrongTemplateApplicator = new Mock<TemplateApplicator>();
