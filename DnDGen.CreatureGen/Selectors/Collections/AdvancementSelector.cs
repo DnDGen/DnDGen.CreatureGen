@@ -46,6 +46,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             var advancements = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Advancements, creature);
             var creatureHitDice = adjustmentsSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, creature);
             var maxHitDice = int.MaxValue;
+            templates ??= Enumerable.Empty<string>();
 
             foreach (var template in templates)
             {

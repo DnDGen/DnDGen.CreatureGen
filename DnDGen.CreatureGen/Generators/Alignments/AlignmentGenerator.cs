@@ -21,6 +21,7 @@ namespace DnDGen.CreatureGen.Generators.Alignments
                 return new Alignment(presetAlignment);
 
             var weightedAlignments = collectionSelector.ExplodeAndPreserveDuplicates(TableNameConstants.Collection.AlignmentGroups, creatureName);
+            templates ??= Enumerable.Empty<string>();
 
             foreach (var template in templates)
             {

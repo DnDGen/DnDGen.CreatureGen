@@ -78,8 +78,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.HitDice, "template")).Returns(610);
 
             var advancement = advancementSelector.SelectRandomFor("creature", null, creatureType, SizeConstants.Medium, ChallengeRatingConstants.CR1);
-            Assert.That(advancement.AdditionalHitDice, Is.EqualTo(42));
-            Assert.That(advancement.Size, Is.EqualTo(SizeConstants.Large));
+            Assert.That(advancement.AdditionalHitDice, Is.EqualTo(600));
+            Assert.That(advancement.Size, Is.EqualTo(SizeConstants.Huge));
         }
 
         [Test]

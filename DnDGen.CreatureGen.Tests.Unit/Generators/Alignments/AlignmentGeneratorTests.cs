@@ -285,7 +285,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
                     "other alignment",
                 });
 
-            randomIndex = 3;
+            randomIndex = 2;
 
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, "my template" + GroupConstants.AllowedInput))

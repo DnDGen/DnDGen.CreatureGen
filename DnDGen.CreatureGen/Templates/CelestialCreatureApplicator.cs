@@ -166,19 +166,26 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureAlignment(Creature creature, string presetAlignment)
         {
-            if (presetAlignment != null)
-            {
-                creature.Alignment = new Alignment(presetAlignment);
-            }
-            else
-            {
-                creature.Alignment = UpdateCreatureAlignment(creature.Alignment.Full);
-            }
+            creature.Alignment = UpdateCreatureAlignment(creature.Alignment, presetAlignment);
         }
 
-        private void UpdateCreatureAlignment(CreaturePrototype creature)
+        private void UpdateCreatureAlignment(CreaturePrototype creature, string presetAlignment)
         {
-            creature.Alignments = creature.Alignments.Select(a => UpdateCreatureAlignment(a.Full)).Distinct().ToList();
+            creature.Alignments = creature.Alignments
+                .Where(a => a.Goodness != AlignmentConstants.Evil)
+                .Select(a => UpdateCreatureAlignment(a, presetAlignment))
+                .Distinct()
+                .ToList();
+        }
+
+        private Alignment UpdateCreatureAlignment(Alignment alignment, string presetAlignment)
+        {
+            if (presetAlignment != null)
+            {
+                return new Alignment(presetAlignment);
+            }
+
+            return UpdateCreatureAlignment(alignment.Full);
         }
 
         private Alignment UpdateCreatureAlignment(string alignment)
@@ -536,16 +543,19 @@ namespace DnDGen.CreatureGen.Templates
         public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
         {
             var compatibleCreatures = GetCompatibleCreatures(sourceCreatures, asCharacter, filters);
+            if (!compatibleCreatures.Any())
+                return Enumerable.Empty<CreaturePrototype>();
+
             var prototypes = prototypeFactory.Build(compatibleCreatures, asCharacter);
-            var updatedPrototypes = prototypes.Select(ApplyToPrototype);
+            var updatedPrototypes = prototypes.Select(p => ApplyToPrototype(p, filters?.Alignment));
 
             return updatedPrototypes;
         }
 
-        private CreaturePrototype ApplyToPrototype(CreaturePrototype prototype)
+        private CreaturePrototype ApplyToPrototype(CreaturePrototype prototype, string presetAlignment)
         {
             UpdateCreatureAbilities(prototype);
-            UpdateCreatureAlignment(prototype);
+            UpdateCreatureAlignment(prototype, presetAlignment);
             UpdateCreatureChallengeRating(prototype);
             UpdateCreatureLevelAdjustment(prototype);
             UpdateCreatureType(prototype);
@@ -563,7 +573,7 @@ namespace DnDGen.CreatureGen.Templates
                     p.GetRoundedHitDiceQuantity(),
                     false, //INFO: We have already initiated the prototypes, so applying as-character adjustments isn't needed
                     filters));
-            var updatedPrototypes = compatiblePrototypes.Select(ApplyToPrototype);
+            var updatedPrototypes = compatiblePrototypes.Select(p => ApplyToPrototype(p, filters?.Alignment));
 
             return updatedPrototypes;
         }
