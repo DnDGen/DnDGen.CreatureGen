@@ -40,16 +40,14 @@ namespace DnDGen.CreatureGen.Verifiers
             if (filters?.Templates?.Any() == true)
             {
                 var applicator = factory.Build<TemplateApplicator>(filters.Templates[0]);
-                IEnumerable<CreaturePrototype> prototypes;
 
                 if (filters.Templates.Count == 1)
                 {
-                    prototypes = applicator.GetCompatiblePrototypes(baseCreatures, asCharacter, filters);
+                    var compatibleCreatures = applicator.GetCompatibleCreatures(baseCreatures, asCharacter, filters);
+                    return compatibleCreatures.Any();
                 }
-                else
-                {
-                    prototypes = applicator.GetCompatiblePrototypes(baseCreatures, asCharacter);
-                }
+
+                var prototypes = applicator.GetCompatiblePrototypes(baseCreatures, asCharacter);
 
                 for (var i = 1; i < filters.Templates.Count; i++)
                 {
