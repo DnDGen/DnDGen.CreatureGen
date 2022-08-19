@@ -68,17 +68,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             prototype.Alignments.Add(new Alignment($"Alignment 1-{Guid.NewGuid()}"));
             prototype.Alignments.Add(new Alignment($"Alignment 2-{Guid.NewGuid()}"));
 
-            prototype.ChallengeRating = Convert.ToString(random.Next(20) + 1);
-            prototype.HitDiceQuantity = random.Next(30) + 1;
+            prototype.ChallengeRating = ChallengeRatingConstants.CR1;
+            prototype.HitDiceQuantity = 1;
             prototype.Name = $"creature {Guid.NewGuid()}";
             prototype.CasterLevel = 0;
             prototype.LevelAdjustment = null;
-
-            if (Convert.ToBoolean(random.Next(2)))
-                prototype.CasterLevel = random.Next(20) + 1;
-
-            if (Convert.ToBoolean(random.Next(2)))
-                prototype.LevelAdjustment = random.Next(20) + 1;
 
             prototype.Type = new CreatureType();
             prototype.Type.Name = $"creature type {Guid.NewGuid()}";
