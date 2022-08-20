@@ -173,7 +173,7 @@ namespace DnDGen.CreatureGen.Templates
         private void UpdateCreatureAlignment(CreaturePrototype creature, string presetAlignment)
         {
             creature.Alignments = creature.Alignments
-                .Where(a => a.Goodness != AlignmentConstants.Evil)
+                .Where(a => a.Goodness != AlignmentConstants.Good)
                 .Select(a => UpdateCreatureAlignment(a, presetAlignment))
                 .Distinct()
                 .ToList();
