@@ -31,6 +31,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IEnumerable<string> creatureTypes;
         private readonly ICreatureDataSelector creatureDataSelector;
         private readonly IAdjustmentsSelector adjustmentSelector;
+        private readonly ICreaturePrototypeFactory prototypeFactory;
 
         public GhostApplicator(
             Dice dice,
@@ -41,7 +42,8 @@ namespace DnDGen.CreatureGen.Templates
             IItemsGenerator itemsGenerator,
             ITypeAndAmountSelector typeAndAmountSelector,
             ICreatureDataSelector creatureDataSelector,
-            IAdjustmentsSelector adjustmentSelector)
+            IAdjustmentsSelector adjustmentSelector,
+            ICreaturePrototypeFactory prototypeFactory)
         {
             this.dice = dice;
             this.speedsGenerator = speedsGenerator;
@@ -52,6 +54,7 @@ namespace DnDGen.CreatureGen.Templates
             this.typeAndAmountSelector = typeAndAmountSelector;
             this.creatureDataSelector = creatureDataSelector;
             this.adjustmentSelector = adjustmentSelector;
+            this.prototypeFactory = prototypeFactory;
 
             creatureTypes = new[]
             {
@@ -128,9 +131,13 @@ namespace DnDGen.CreatureGen.Templates
         private void UpdateCreatureType(Creature creature)
         {
             var adjustedTypes = UpdateCreatureType(creature.Type.Name, creature.Type.SubTypes);
+            creature.Type = new CreatureType(adjustedTypes);
+        }
 
-            creature.Type.Name = adjustedTypes.First();
-            creature.Type.SubTypes = adjustedTypes.Skip(1);
+        private void UpdateCreatureType(CreaturePrototype creature)
+        {
+            var adjustedTypes = UpdateCreatureType(creature.Type.Name, creature.Type.SubTypes);
+            creature.Type = new CreatureType(adjustedTypes);
         }
 
         private IEnumerable<string> UpdateCreatureType(string creatureType, IEnumerable<string> subtypes)
@@ -141,6 +148,12 @@ namespace DnDGen.CreatureGen.Templates
         }
 
         private void UpdateCreatureAbilities(Creature creature)
+        {
+            creature.Abilities[AbilityConstants.Constitution].TemplateScore = 0;
+            creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment = 4;
+        }
+
+        private void UpdateCreatureAbilities(CreaturePrototype creature)
         {
             creature.Abilities[AbilityConstants.Constitution].TemplateScore = 0;
             creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment = 4;
@@ -171,6 +184,11 @@ namespace DnDGen.CreatureGen.Templates
             creature.ChallengeRating = UpdateCreatureChallengeRating(creature.ChallengeRating);
         }
 
+        private void UpdateCreatureChallengeRating(CreaturePrototype creature)
+        {
+            creature.ChallengeRating = UpdateCreatureChallengeRating(creature.ChallengeRating);
+        }
+
         private string UpdateCreatureChallengeRating(string challengeRating)
         {
             return ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2);
@@ -182,6 +200,14 @@ namespace DnDGen.CreatureGen.Templates
         };
 
         private void UpdateCreatureLevelAdjustment(Creature creature)
+        {
+            if (creature.LevelAdjustment.HasValue)
+            {
+                creature.LevelAdjustment += 5;
+            }
+        }
+
+        private void UpdateCreatureLevelAdjustment(CreaturePrototype creature)
         {
             if (creature.LevelAdjustment.HasValue)
             {
@@ -485,6 +511,19 @@ namespace DnDGen.CreatureGen.Templates
             var charisma = new Ability(AbilityConstants.Charisma);
             charisma.RacialAdjustment = charismaAdjustment.Amount;
 
+            var compatible = IsCompatible(types, alignments, charisma, creatureChallengeRating, creatureHitDiceQuantity, asCharacter, filters);
+            return compatible;
+        }
+
+        private bool IsCompatible(
+            IEnumerable<string> types,
+            IEnumerable<string> alignments,
+            Ability charisma,
+            string creatureChallengeRating,
+            double creatureHitDiceQuantity,
+            bool asCharacter,
+            Filters filters)
+        {
             var creatureType = types.First();
 
             if (asCharacter && creatureHitDiceQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
@@ -564,12 +603,40 @@ namespace DnDGen.CreatureGen.Templates
 
         public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
         {
-            throw new NotImplementedException();
+            var compatibleCreatures = GetCompatibleCreatures(sourceCreatures, asCharacter, filters);
+            if (!compatibleCreatures.Any())
+                return Enumerable.Empty<CreaturePrototype>();
+
+            var prototypes = prototypeFactory.Build(compatibleCreatures, asCharacter);
+            var updatedPrototypes = prototypes.Select(ApplyToPrototype);
+
+            return updatedPrototypes;
+        }
+
+        private CreaturePrototype ApplyToPrototype(CreaturePrototype prototype)
+        {
+            UpdateCreatureAbilities(prototype);
+            UpdateCreatureChallengeRating(prototype);
+            UpdateCreatureLevelAdjustment(prototype);
+            UpdateCreatureType(prototype);
+
+            return prototype;
         }
 
         public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, bool asCharacter, Filters filters = null)
         {
-            throw new NotImplementedException();
+            var compatiblePrototypes = sourceCreatures
+                .Where(p => IsCompatible(
+                    p.Type.AllTypes,
+                    p.Alignments.Select(a => a.Full),
+                    p.Abilities[AbilityConstants.Charisma],
+                    p.ChallengeRating,
+                    p.GetRoundedHitDiceQuantity(),
+                    false, //INFO: We have already initiated the prototypes, so applying as-character adjustments isn't needed
+                    filters));
+            var updatedPrototypes = compatiblePrototypes.Select(ApplyToPrototype);
+
+            return updatedPrototypes;
         }
     }
 }
