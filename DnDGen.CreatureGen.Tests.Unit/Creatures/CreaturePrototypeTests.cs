@@ -28,5 +28,29 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
             Assert.That(creature.CasterLevel, Is.Zero);
             Assert.That(creature.HitDiceQuantity, Is.Zero);
         }
+
+        [TestCase(0, 0)]
+        [TestCase(.01, 1)]
+        [TestCase(.1, 1)]
+        [TestCase(.25, 1)]
+        [TestCase(.5, 1)]
+        [TestCase(.6, 1)]
+        [TestCase(.9266, 1)]
+        [TestCase(1, 1)]
+        [TestCase(1.5, 1)]
+        [TestCase(2, 2)]
+        [TestCase(2.5, 2)]
+        [TestCase(2.999999999, 2)]
+        [TestCase(9.266, 9)]
+        [TestCase(92.66, 92)]
+        [TestCase(926.6, 926)]
+        [TestCase(9266, 9266)]
+        public void GetRoundedHitDiceQuantity_ReturnsRoundedValue(double quantity, int roundedValue)
+        {
+            creature.HitDiceQuantity = quantity;
+
+            var roundedQuantity = creature.GetRoundedHitDiceQuantity();
+            Assert.That(roundedQuantity, Is.EqualTo(roundedValue));
+        }
     }
 }
