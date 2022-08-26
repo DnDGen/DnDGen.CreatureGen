@@ -466,6 +466,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_GainSpecialQualities()
         {
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
+
             var newSkills = new[]
             {
                 new Skill("my skill", baseCreature.Abilities[AbilityConstants.Strength], 9266) { Ranks = 42 },
@@ -477,7 +479,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                         ss == baseCreature.Skills
                         && ss.All(s => s.Ranks == 0)),
                     baseCreature.HitPoints,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Outsider
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Native,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                            CreatureConstants.Types.Humanoid
+                        }))),
                     baseCreature.Abilities,
                     true))
                 .Returns(newSkills);
@@ -491,7 +499,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
                     CreatureConstants.Templates.HalfCelestial,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Outsider
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Native,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                            CreatureConstants.Types.Humanoid
+                        }))),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
                     newSkills,
@@ -562,6 +576,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 skill.Ranks = ranks++ % skill.RankCap;
             }
 
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
+
             var newSkills = new[]
             {
                 new Skill("my skill", baseCreature.Abilities[AbilityConstants.Strength], 9266) { Ranks = 42 },
@@ -573,7 +589,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                         ss == baseCreature.Skills
                         && ss.All(s => s.Ranks == 0)),
                     baseCreature.HitPoints,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Outsider
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Native,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                            CreatureConstants.Types.Humanoid
+                        }))),
                     baseCreature.Abilities,
                     true))
                 .Returns(newSkills);
@@ -586,6 +608,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public void ApplyTo_GainsSkillPoints_NoSkills()
         {
             baseCreature.Skills = Enumerable.Empty<Skill>();
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
 
             mockSkillsGenerator
                 .Setup(g => g.ApplySkillPointsAsRanks(
@@ -593,7 +616,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                         ss == baseCreature.Skills
                         && !ss.Any()),
                     baseCreature.HitPoints,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Outsider
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Native,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                            CreatureConstants.Types.Humanoid
+                        }))),
                     baseCreature.Abilities,
                     true))
                 .Returns(Enumerable.Empty<Skill>());
@@ -1043,6 +1072,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_GainSpecialQualities()
         {
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
             var newSkills = new[]
             {
                 new Skill("my skill", baseCreature.Abilities[AbilityConstants.Strength], 9266) { Ranks = 42 },
@@ -1054,7 +1084,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                         ss == baseCreature.Skills
                         && ss.All(s => s.Ranks == 0)),
                     baseCreature.HitPoints,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Outsider
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Native,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                            CreatureConstants.Types.Humanoid
+                        }))),
                     baseCreature.Abilities,
                     true))
                 .Returns(newSkills);
@@ -1068,7 +1104,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockFeatsGenerator
                 .Setup(g => g.GenerateSpecialQualities(
                     CreatureConstants.Templates.HalfCelestial,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Outsider
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Native,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                            CreatureConstants.Types.Humanoid
+                        }))),
                     baseCreature.HitPoints,
                     baseCreature.Abilities,
                     newSkills,
@@ -1139,6 +1181,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 skill.Ranks = ranks++ % skill.RankCap;
             }
 
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
             var newSkills = new[]
             {
                 new Skill("my skill", baseCreature.Abilities[AbilityConstants.Strength], 9266) { Ranks = 42 },
@@ -1150,7 +1193,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                         ss == baseCreature.Skills
                         && ss.All(s => s.Ranks == 0)),
                     baseCreature.HitPoints,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Outsider
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Native,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                            CreatureConstants.Types.Humanoid
+                        }))),
                     baseCreature.Abilities,
                     true))
                 .Returns(newSkills);
@@ -1163,6 +1212,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public async Task ApplyToAsync_GainsSkillPoints_NoSkills()
         {
             baseCreature.Skills = Enumerable.Empty<Skill>();
+            var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
 
             mockSkillsGenerator
                 .Setup(g => g.ApplySkillPointsAsRanks(
@@ -1170,7 +1220,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                         ss == baseCreature.Skills
                         && !ss.Any()),
                     baseCreature.HitPoints,
-                    baseCreature.Type,
+                    It.Is<CreatureType>(ct => ct.Name == CreatureConstants.Types.Outsider
+                        && ct.SubTypes.IsEquivalentTo(originalSubtypes.Union(new[]
+                        {
+                            CreatureConstants.Types.Subtypes.Native,
+                            CreatureConstants.Types.Subtypes.Augmented,
+                            CreatureConstants.Types.Humanoid
+                        }))),
                     baseCreature.Abilities,
                     true))
                 .Returns(Enumerable.Empty<Skill>());
@@ -3643,70 +3699,70 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
             Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Humanoid));
+            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 1",
                 "subtype 2",
                 CreatureConstants.Types.Subtypes.Native,
-                CreatureConstants.Types.Subtypes.Augmented
+                CreatureConstants.Types.Subtypes.Augmented,
+                CreatureConstants.Types.Humanoid,
             }));
             Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(0));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10 + 1336 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10 + 600 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10 + 1337 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10 + 90210 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.LawfulGood),
                 new Alignment("other Good"),
             }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.EqualTo(9266));
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR3));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.EqualTo(90212));
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(9));
+            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
+            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
+            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
+            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(1));
 
             Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
             Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.MagicalBeast));
+            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 3",
                 CreatureConstants.Types.Subtypes.Native,
                 CreatureConstants.Types.Subtypes.Augmented,
-                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Giant,
             }));
             Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore + 1 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore - 8 + 2));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore + 0 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore + 8245 + 2));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore + 783 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore + 96 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.NeutralGood),
-                new Alignment(AlignmentConstants.ChaoticGood),
                 new Alignment("other Good"),
             }));
             Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
+            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
+            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(1));
         }
 
         [Test]
@@ -3830,75 +3886,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var filters = new Filters { Alignment = "preset alignment" };
 
-            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters).ToArray();
-            Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
-
-            Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
-            Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Humanoid));
-            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 1",
-                "subtype 2",
-                CreatureConstants.Types.Subtypes.Native,
-                CreatureConstants.Types.Subtypes.Augmented
-            }));
-            Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.LawfulGood),
-                new Alignment("other Good"),
-            }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.EqualTo(9266));
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR3));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.EqualTo(90212));
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(9));
-
-            Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
-            Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.MagicalBeast));
-            Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
-            {
-                "subtype 3",
-                CreatureConstants.Types.Subtypes.Native,
-                CreatureConstants.Types.Subtypes.Augmented,
-                CreatureConstants.Types.Animal,
-            }));
-            Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
-            {
-                new Alignment(AlignmentConstants.NeutralGood),
-                new Alignment(AlignmentConstants.ChaoticGood),
-                new Alignment("other Good"),
-            }));
-            Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
-            Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
+            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false, filters);
+            Assert.That(compatibleCreatures, Is.Empty);
         }
 
         [Test]
@@ -4027,70 +4016,68 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
             Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Humanoid));
+            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 1",
                 "subtype 2",
                 CreatureConstants.Types.Subtypes.Native,
-                CreatureConstants.Types.Subtypes.Augmented
+                CreatureConstants.Types.Subtypes.Augmented,
+                CreatureConstants.Types.Humanoid,
             }));
             Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(0));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10 + 1336 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10 + 600 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10 + 1337 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10 + 90210 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
             {
-                new Alignment(AlignmentConstants.LawfulGood),
-                new Alignment("other Good"),
+                new Alignment("preset Good"),
             }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.EqualTo(9266));
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR3));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.EqualTo(90212));
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(9));
+            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
+            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
+            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
+            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(1));
 
             Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
             Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.MagicalBeast));
+            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 3",
                 CreatureConstants.Types.Subtypes.Native,
                 CreatureConstants.Types.Subtypes.Augmented,
-                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Giant,
             }));
             Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore + 1 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore - 8 + 2));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore + 0 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore + 8245 + 2));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore + 783 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore + 96 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
             {
-                new Alignment(AlignmentConstants.NeutralGood),
-                new Alignment(AlignmentConstants.ChaoticGood),
-                new Alignment("other Good"),
+                new Alignment("preset Good"),
             }));
             Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
+            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
+            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(1));
         }
 
         [TestCase(0.5, ChallengeRatingConstants.CR1_3rd, ChallengeRatingConstants.CR1_2nd)]
@@ -4274,61 +4261,60 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 CreatureConstants.Types.Humanoid,
             }));
             Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(0));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10 + 1336 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10 + 600 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10 + 1337 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10 + 90210 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.LawfulGood),
                 new Alignment("other Good"),
             }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.EqualTo(9266));
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR3));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.EqualTo(90212));
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(9));
+            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
+            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(challengeRating));
+            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
+            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(hitDiceQuantity));
 
             Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
             Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.MagicalBeast));
+            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 3",
                 CreatureConstants.Types.Subtypes.Native,
                 CreatureConstants.Types.Subtypes.Augmented,
-                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Giant,
             }));
             Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore + 1 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore - 8 + 2));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore + 0 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore + 8245 + 2));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore + 783 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore + 96 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.NeutralGood),
-                new Alignment(AlignmentConstants.ChaoticGood),
                 new Alignment("other Good"),
             }));
             Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
+            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(challengeRating));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
+            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(hitDiceQuantity));
         }
 
         [TestCase(CreatureConstants.Types.Outsider)]
@@ -4490,70 +4476,70 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
             Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Humanoid));
+            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 1",
                 "subtype 2",
                 CreatureConstants.Types.Subtypes.Native,
-                CreatureConstants.Types.Subtypes.Augmented
+                CreatureConstants.Types.Subtypes.Augmented,
+                CreatureConstants.Types.Humanoid
             }));
             Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(0));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10 + 1336 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10 + 600 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10 + 1337 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10 + 90210 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.LawfulGood),
                 new Alignment("other Good"),
             }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.EqualTo(9266));
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR3));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.EqualTo(90212));
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(9));
+            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
+            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
+            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
+            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(4));
 
             Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
             Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.MagicalBeast));
+            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 3",
                 CreatureConstants.Types.Subtypes.Native,
                 CreatureConstants.Types.Subtypes.Augmented,
-                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Giant,
             }));
             Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore + 1 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore - 8 + 2));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore + 0 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore + 8245 + 2));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore + 783 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore + 96 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.NeutralGood),
-                new Alignment(AlignmentConstants.ChaoticGood),
                 new Alignment("other Good"),
             }));
             Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
+            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
+            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(4));
         }
 
         [Test]
@@ -4708,70 +4694,71 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
             Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Humanoid));
+            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 1",
                 "subtype 2",
                 CreatureConstants.Types.Subtypes.Native,
-                CreatureConstants.Types.Subtypes.Augmented
+                CreatureConstants.Types.Subtypes.Augmented,
+                CreatureConstants.Types.Humanoid,
             }));
             Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(0));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10 + 1336 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10 + 600 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10 + 1337 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10 + 90210 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.LawfulGood),
                 new Alignment("other Good"),
             }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.EqualTo(9266));
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR3));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.EqualTo(90212));
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(9));
+            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
+            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
+            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
+            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(4));
 
             Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
             Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.MagicalBeast));
+            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 3",
+                "subtype 1",
                 CreatureConstants.Types.Subtypes.Native,
                 CreatureConstants.Types.Subtypes.Augmented,
-                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Giant,
             }));
             Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore + 1 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore - 8 + 2));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore + 0 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore + 8245 + 2));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore + 783 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore + 96 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.NeutralGood),
-                new Alignment(AlignmentConstants.ChaoticGood),
                 new Alignment("other Good"),
             }));
             Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
+            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
+            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(4));
         }
 
         [Test]
@@ -4942,70 +4929,71 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
             Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Humanoid));
+            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 1",
                 "subtype 2",
                 CreatureConstants.Types.Subtypes.Native,
-                CreatureConstants.Types.Subtypes.Augmented
+                CreatureConstants.Types.Subtypes.Augmented,
+                CreatureConstants.Types.Humanoid,
             }));
             Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(0));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10 + 1336 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10 + 600 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10 + 1337 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10 + 90210 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.LawfulGood),
                 new Alignment("other Good"),
             }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.EqualTo(9266));
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR3));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.EqualTo(90212));
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(9));
+            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
+            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
+            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
+            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(4));
 
             Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
             Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.MagicalBeast));
+            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 3",
+                "subtype 1",
                 CreatureConstants.Types.Subtypes.Native,
                 CreatureConstants.Types.Subtypes.Augmented,
-                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Giant,
             }));
             Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore + 1 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore - 8 + 2));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore + 0 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore + 8245 + 2));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore + 783 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore + 96 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.NeutralGood),
-                new Alignment(AlignmentConstants.ChaoticGood),
                 new Alignment("other Good"),
             }));
             Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
+            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
+            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(4));
         }
 
         [Test]
@@ -5176,70 +5164,71 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
             Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Humanoid));
+            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 1",
                 "subtype 2",
                 CreatureConstants.Types.Subtypes.Native,
-                CreatureConstants.Types.Subtypes.Augmented
+                CreatureConstants.Types.Subtypes.Augmented,
+                CreatureConstants.Types.Humanoid,
             }));
             Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(0));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10 + 1336 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10 + 600 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10 + 1337 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10 + 90210 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.LawfulGood),
                 new Alignment("other Good"),
             }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.EqualTo(9266));
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR3));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.EqualTo(90212));
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(9));
+            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
+            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
+            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
+            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(4));
 
             Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
             Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.MagicalBeast));
+            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 3",
+                "subtype 1",
                 CreatureConstants.Types.Subtypes.Native,
                 CreatureConstants.Types.Subtypes.Augmented,
-                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Giant,
             }));
             Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore + 1 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore - 8 + 2));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore + 0 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore + 8245 + 2));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore + 783 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore + 96 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.NeutralGood),
-                new Alignment(AlignmentConstants.ChaoticGood),
                 new Alignment("other Good"),
             }));
             Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
+            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
+            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(4));
         }
 
         [Test]
@@ -5410,70 +5399,71 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
             Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Humanoid));
+            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 1",
                 "subtype 2",
                 CreatureConstants.Types.Subtypes.Native,
-                CreatureConstants.Types.Subtypes.Augmented
+                CreatureConstants.Types.Subtypes.Augmented,
+                CreatureConstants.Types.Humanoid,
             }));
             Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(0));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10 + 1336 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10 + 600 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10 + 1337 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10 + 90210 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.LawfulGood),
                 new Alignment("other Good"),
             }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.EqualTo(9266));
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR3));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.EqualTo(90212));
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(9));
+            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
+            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
+            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
+            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(4));
 
             Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
             Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.MagicalBeast));
+            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 3",
+                "subtype 1",
                 CreatureConstants.Types.Subtypes.Native,
                 CreatureConstants.Types.Subtypes.Augmented,
-                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Giant,
             }));
             Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore + 1 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore - 8 + 2));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore + 0 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore + 8245 + 2));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore + 783 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore + 96 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.NeutralGood),
-                new Alignment(AlignmentConstants.ChaoticGood),
                 new Alignment("other Good"),
             }));
             Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
+            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
+            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(4));
         }
 
         [Test]
@@ -5548,70 +5538,70 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
             Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Humanoid));
+            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 1",
                 "subtype 2",
                 CreatureConstants.Types.Subtypes.Native,
-                CreatureConstants.Types.Subtypes.Augmented
+                CreatureConstants.Types.Subtypes.Augmented,
+                CreatureConstants.Types.Humanoid,
             }));
             Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 9266 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10 + 1336 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10 + 600 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10 + 1337 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10 + 90210 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.LawfulGood),
                 new Alignment("other Good"),
             }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.EqualTo(9266));
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR3));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.EqualTo(90212));
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(9));
+            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
+            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
+            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
+            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(1));
 
             Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
             Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.MagicalBeast));
+            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 3",
                 CreatureConstants.Types.Subtypes.Native,
                 CreatureConstants.Types.Subtypes.Augmented,
-                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Giant,
             }));
             Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 9266 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10 + 1336 + 4));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10 + 600 + 2));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10 + 1337 + 4));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 + 2));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10 + 90210 + 4));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.NeutralGood),
-                new Alignment(AlignmentConstants.ChaoticGood),
                 new Alignment("other Good"),
             }));
             Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
+            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
+            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(1));
         }
 
         [Test]
@@ -5737,67 +5727,68 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
             Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Humanoid));
+            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 1",
                 "subtype 2",
                 CreatureConstants.Types.Subtypes.Native,
-                CreatureConstants.Types.Subtypes.Augmented
+                CreatureConstants.Types.Subtypes.Augmented,
+                CreatureConstants.Types.Humanoid,
             }));
             Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 9266 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10 + 1336 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10 + 600 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10 + 1337 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10 + 90210 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
             {
                 new Alignment("preset Good"),
             }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.EqualTo(9266));
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR3));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.EqualTo(90212));
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(9));
+            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
+            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
+            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
+            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(1));
 
             Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
             Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.MagicalBeast));
+            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 3",
                 CreatureConstants.Types.Subtypes.Native,
                 CreatureConstants.Types.Subtypes.Augmented,
-                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Giant,
             }));
             Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 9266 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10 + 1336 + 4));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10 + 600 + 2));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10 + 1337 + 4));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 + 2));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10 + 90210 + 4));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
             {
                 new Alignment("preset Good"),
             }));
             Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
+            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
+            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(1));
         }
 
         [TestCase(0.5, ChallengeRatingConstants.CR1_3rd, ChallengeRatingConstants.CR1_2nd)]
@@ -5927,64 +5918,64 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
             Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Humanoid));
+            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 1",
                 "subtype 2",
                 CreatureConstants.Types.Subtypes.Native,
-                CreatureConstants.Types.Subtypes.Augmented
+                CreatureConstants.Types.Subtypes.Augmented,
+                CreatureConstants.Types.Humanoid,
             }));
             Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 9266 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10 + 1336 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10 + 600 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10 + 1337 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10 + 90210 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.LawfulGood),
                 new Alignment("other Good"),
             }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.EqualTo(9266));
+            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
             Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(challengeRating));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.EqualTo(90212));
+            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
             Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(hitDiceQuantity));
 
             Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
             Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.MagicalBeast));
+            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 3",
                 CreatureConstants.Types.Subtypes.Native,
                 CreatureConstants.Types.Subtypes.Augmented,
-                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Giant,
             }));
             Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 9266 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10 + 1336 + 4));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10 + 600 + 2));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10 + 1337 + 4));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 + 2));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10 + 90210 + 4));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.NeutralGood),
-                new Alignment(AlignmentConstants.ChaoticGood),
                 new Alignment("other Good"),
             }));
             Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
@@ -6074,70 +6065,70 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
             Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Humanoid));
+            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 1",
                 "subtype 2",
                 CreatureConstants.Types.Subtypes.Native,
-                CreatureConstants.Types.Subtypes.Augmented
+                CreatureConstants.Types.Subtypes.Augmented,
+                CreatureConstants.Types.Humanoid,
             }));
             Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 9266 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10 + 1336 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10 + 600 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10 + 1337 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10 + 90210 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.LawfulGood),
                 new Alignment("other Good"),
             }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.EqualTo(9266));
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR3));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.EqualTo(90212));
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(9));
+            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
+            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
+            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
+            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(4));
 
             Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
             Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.MagicalBeast));
+            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 3",
                 CreatureConstants.Types.Subtypes.Native,
                 CreatureConstants.Types.Subtypes.Augmented,
-                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Giant,
             }));
             Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 9266 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10 + 1336 + 4));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10 + 600 + 2));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10 + 1337 + 4));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 + 2));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10 + 90210 + 4));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.NeutralGood),
-                new Alignment(AlignmentConstants.ChaoticGood),
                 new Alignment("other Good"),
             }));
             Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
+            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
+            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(4));
         }
 
         [Test]
@@ -6232,70 +6223,71 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
             Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Humanoid));
+            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 1",
                 "subtype 2",
                 CreatureConstants.Types.Subtypes.Native,
-                CreatureConstants.Types.Subtypes.Augmented
+                CreatureConstants.Types.Subtypes.Augmented,
+                CreatureConstants.Types.Humanoid,
             }));
             Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 9266 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10 + 1336 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10 + 600 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10 + 1337 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10 + 90210 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.LawfulGood),
                 new Alignment("other Good"),
             }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.EqualTo(9266));
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR3));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.EqualTo(90212));
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(9));
+            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
+            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
+            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
+            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(4));
 
             Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
             Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.MagicalBeast));
+            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 3",
+                "subtype 1",
                 CreatureConstants.Types.Subtypes.Native,
                 CreatureConstants.Types.Subtypes.Augmented,
-                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Giant,
             }));
             Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 9266 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10 + 1336 + 4));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10 + 600 + 2));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10 + 1337 + 4));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 + 2));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10 + 90210 + 4));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.NeutralGood),
-                new Alignment(AlignmentConstants.ChaoticGood),
                 new Alignment("other Good"),
             }));
             Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
+            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
+            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(4));
         }
 
         [Test]
@@ -6371,7 +6363,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 new CreaturePrototypeBuilder()
                     .WithTestValues()
                     .WithName("wrong creature 4")
-                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 3")
+                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 2", "subtype 3")
                     .WithAlignments(AlignmentConstants.TrueNeutral, "other alignment")
                     .WithHitDiceQuantity(4)
                     .WithAbility(AbilityConstants.Strength, 9266)
@@ -6406,6 +6398,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .WithAbility(AbilityConstants.Intelligence, 600)
                     .WithAbility(AbilityConstants.Wisdom, 1337)
                     .WithAbility(AbilityConstants.Charisma, 1336)
+                    .WithChallengeRating(ChallengeRatingConstants.CR2)
                     .Build(),
             };
 
@@ -6416,70 +6409,71 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
             Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Humanoid));
+            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 1",
                 "subtype 2",
                 CreatureConstants.Types.Subtypes.Native,
-                CreatureConstants.Types.Subtypes.Augmented
+                CreatureConstants.Types.Subtypes.Augmented,
+                CreatureConstants.Types.Humanoid,
             }));
             Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 9266 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10 + 1336 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10 + 600 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10 + 1337 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10 + 90210 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.LawfulGood),
                 new Alignment("other Good"),
             }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.EqualTo(9266));
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR3));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.EqualTo(90212));
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(9));
+            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
+            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
+            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
+            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(4));
 
             Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
             Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.MagicalBeast));
+            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 3",
+                "subtype 1",
                 CreatureConstants.Types.Subtypes.Native,
                 CreatureConstants.Types.Subtypes.Augmented,
-                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Giant,
             }));
             Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 9266 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10 + 1336 + 4));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10 + 600 + 2));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10 + 1337 + 4));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 + 2));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10 + 90210 + 4));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.NeutralGood),
-                new Alignment(AlignmentConstants.ChaoticGood),
                 new Alignment("other Good"),
             }));
             Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
+            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
+            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(4));
         }
 
         [Test]
@@ -6524,70 +6518,71 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
             Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Humanoid));
+            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 1",
                 "subtype 2",
                 CreatureConstants.Types.Subtypes.Native,
-                CreatureConstants.Types.Subtypes.Augmented
+                CreatureConstants.Types.Subtypes.Augmented,
+                CreatureConstants.Types.Humanoid,
             }));
             Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 9266 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10 + 1336 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10 + 600 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10 + 1337 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10 + 90210 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.LawfulGood),
                 new Alignment("other Good"),
             }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.EqualTo(9266));
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR3));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.EqualTo(90212));
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(9));
+            Assert.That(compatibleCreatures[0].CasterLevel, Is.EqualTo(783));
+            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
+            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.EqualTo(4));
+            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(4));
 
             Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
             Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.MagicalBeast));
+            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 3",
+                "subtype 1",
                 CreatureConstants.Types.Subtypes.Native,
                 CreatureConstants.Types.Subtypes.Augmented,
-                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Giant,
             }));
             Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 9266 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10 + 1336 + 4));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10 + 600 + 2));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10 + 1337 + 4));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 + 2));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10 + 90210 + 4));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.NeutralGood),
-                new Alignment(AlignmentConstants.ChaoticGood),
                 new Alignment("other Good"),
             }));
-            Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
-            Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
+            Assert.That(compatibleCreatures[1].CasterLevel, Is.EqualTo(8245));
+            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
+            Assert.That(compatibleCreatures[1].LevelAdjustment, Is.EqualTo(100));
+            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(4));
         }
 
         [Test]
@@ -6628,68 +6623,174 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
             Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Humanoid));
+            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 1",
                 "subtype 2",
                 CreatureConstants.Types.Subtypes.Native,
-                CreatureConstants.Types.Subtypes.Augmented
+                CreatureConstants.Types.Subtypes.Augmented,
+                CreatureConstants.Types.Humanoid,
             }));
             Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 9266 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10 + 1336 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10 + 600 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10 + 1337 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 + 2));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10 + 90210 + 4));
             Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.ChaoticGood),
                 new Alignment("other Good"),
             }));
-            Assert.That(compatibleCreatures[0].CasterLevel, Is.EqualTo(9266));
-            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR3));
-            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.EqualTo(90212));
-            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(9));
+            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
+            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
+            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
+            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(4));
 
             Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
             Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
-            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.MagicalBeast));
+            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
             Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
             {
                 "subtype 3",
+                "subtype 1",
                 CreatureConstants.Types.Subtypes.Native,
                 CreatureConstants.Types.Subtypes.Augmented,
-                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Giant,
             }));
             Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 9266 + 4));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10 + 1336 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10 + 600 + 2));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10 + 1337 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 + 2));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10 + 90210 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
-            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore));
+            Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
+            {
+                new Alignment(AlignmentConstants.NeutralGood),
+            }));
+            Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
+            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
+            Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
+            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(4));
+        }
+
+        [Test]
+        public void GetCompatiblePrototypes_FromPrototypes_ReturnCompatibleCreatures_WithImprovedTemplateAdjustment()
+        {
+            var creatures = new[]
+            {
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my creature")
+                    .WithCreatureType(CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2")
+                    .WithAlignments(AlignmentConstants.ChaoticNeutral, "other alignment", "other Evil")
+                    .WithHitDiceQuantity(4)
+                    .WithAbility(AbilityConstants.Strength, 9266, 96)
+                    .WithAbility(AbilityConstants.Constitution, 90210, 783)
+                    .WithAbility(AbilityConstants.Dexterity, 42, 8245)
+                    .WithAbility(AbilityConstants.Intelligence, 600, 69)
+                    .WithAbility(AbilityConstants.Wisdom, 1337, 420)
+                    .WithAbility(AbilityConstants.Charisma, 1336, 1)
+                    .Build(),
+                new CreaturePrototypeBuilder()
+                    .WithTestValues()
+                    .WithName("my other creature")
+                    .WithCreatureType(CreatureConstants.Types.Giant, "subtype 3", "subtype 1")
+                    .WithAlignments(AlignmentConstants.TrueNeutral, "wrong Evil")
+                    .WithHitDiceQuantity(4)
+                    .WithAbility(AbilityConstants.Strength, 2, -3)
+                    .WithAbility(AbilityConstants.Constitution, -4, 5)
+                    .WithAbility(AbilityConstants.Dexterity, -6, 7)
+                    .WithAbility(AbilityConstants.Intelligence, 8, -9)
+                    .WithAbility(AbilityConstants.Wisdom, 10, 11)
+                    .WithAbility(AbilityConstants.Charisma, -12, 13)
+                    .Build(),
+            };
+
+            var compatibleCreatures = applicator.GetCompatiblePrototypes(creatures, false).ToArray();
+            Assert.That(compatibleCreatures, Has.Length.EqualTo(2));
+
+            Assert.That(compatibleCreatures[0].Name, Is.EqualTo("my creature"));
+            Assert.That(compatibleCreatures[0].Type, Is.Not.Null);
+            Assert.That(compatibleCreatures[0].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
+            Assert.That(compatibleCreatures[0].Type.SubTypes, Is.EqualTo(new[]
+            {
+                "subtype 1",
+                "subtype 2",
+                CreatureConstants.Types.Subtypes.Native,
+                CreatureConstants.Types.Subtypes.Augmented,
+                CreatureConstants.Types.Humanoid,
+            }));
+            Assert.That(compatibleCreatures[0].Abilities, Has.Count.EqualTo(6));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(10 + 9266 + 96 + 4));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10 + 1336 + 1 + 4));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10 + 600 + 69 + 2));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10 + 1337 + 420 + 4));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10 + 42 + 8245 + 2));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10 + 90210 + 783 + 4));
+            Assert.That(compatibleCreatures[0].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[0].Alignments, Is.EqualTo(new[]
+            {
+                new Alignment(AlignmentConstants.ChaoticGood),
+                new Alignment("other Good"),
+            }));
+            Assert.That(compatibleCreatures[0].CasterLevel, Is.Zero);
+            Assert.That(compatibleCreatures[0].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
+            Assert.That(compatibleCreatures[0].LevelAdjustment, Is.Null);
+            Assert.That(compatibleCreatures[0].HitDiceQuantity, Is.EqualTo(4));
+
+            Assert.That(compatibleCreatures[1].Name, Is.EqualTo("my other creature"));
+            Assert.That(compatibleCreatures[1].Type, Is.Not.Null);
+            Assert.That(compatibleCreatures[1].Type.Name, Is.EqualTo(CreatureConstants.Types.Outsider));
+            Assert.That(compatibleCreatures[1].Type.SubTypes, Is.EqualTo(new[]
+            {
+                "subtype 3",
+                "subtype 1",
+                CreatureConstants.Types.Subtypes.Native,
+                CreatureConstants.Types.Subtypes.Augmented,
+                CreatureConstants.Types.Giant,
+            }));
+            Assert.That(compatibleCreatures[1].Abilities, Has.Count.EqualTo(6));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(Ability.DefaultScore - 12 + 13 + 4));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Charisma].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(Ability.DefaultScore + 8 - 9 + 2));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Intelligence].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(Ability.DefaultScore + 10 + 11 + 4));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Wisdom].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(Ability.DefaultScore - 6 + 7 + 2));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Dexterity].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(Ability.DefaultScore - 4 + 5 + 4));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Constitution].TemplateScore, Is.EqualTo(-1));
+            Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(Ability.DefaultScore + 2 - 3 + 4));
             Assert.That(compatibleCreatures[1].Abilities[AbilityConstants.Strength].TemplateScore, Is.EqualTo(-1));
             Assert.That(compatibleCreatures[1].Alignments, Is.EqualTo(new[]
             {
                 new Alignment(AlignmentConstants.NeutralGood),
             }));
             Assert.That(compatibleCreatures[1].CasterLevel, Is.Zero);
-            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR4));
+            Assert.That(compatibleCreatures[1].ChallengeRating, Is.EqualTo(ChallengeRatingConstants.CR2));
             Assert.That(compatibleCreatures[1].LevelAdjustment, Is.Null);
-            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(5));
+            Assert.That(compatibleCreatures[1].HitDiceQuantity, Is.EqualTo(4));
         }
     }
 }

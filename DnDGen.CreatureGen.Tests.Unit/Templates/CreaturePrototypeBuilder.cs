@@ -124,9 +124,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             return this;
         }
 
-        public CreaturePrototypeBuilder WithAbility(string ability, int racial)
+        public CreaturePrototypeBuilder WithAbility(string ability, int racial, int template = 0)
         {
             prototype.Abilities[ability].RacialAdjustment = racial;
+            prototype.Abilities[ability].TemplateAdjustment = template;
 
             return this;
         }

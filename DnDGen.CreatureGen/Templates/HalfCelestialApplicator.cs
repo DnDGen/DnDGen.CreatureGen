@@ -198,22 +198,22 @@ namespace DnDGen.CreatureGen.Templates
         private void UpdateCreatureAbilities(Dictionary<string, Ability> abilities)
         {
             if (abilities[AbilityConstants.Strength].HasScore)
-                abilities[AbilityConstants.Strength].TemplateAdjustment = 4;
+                abilities[AbilityConstants.Strength].TemplateAdjustment += 4;
 
             if (abilities[AbilityConstants.Dexterity].HasScore)
-                abilities[AbilityConstants.Dexterity].TemplateAdjustment = 2;
+                abilities[AbilityConstants.Dexterity].TemplateAdjustment += 2;
 
             if (abilities[AbilityConstants.Constitution].HasScore)
-                abilities[AbilityConstants.Constitution].TemplateAdjustment = 4;
+                abilities[AbilityConstants.Constitution].TemplateAdjustment += 4;
 
             if (abilities[AbilityConstants.Intelligence].HasScore)
-                abilities[AbilityConstants.Intelligence].TemplateAdjustment = 2;
+                abilities[AbilityConstants.Intelligence].TemplateAdjustment += 2;
 
             if (abilities[AbilityConstants.Wisdom].HasScore)
-                abilities[AbilityConstants.Wisdom].TemplateAdjustment = 4;
+                abilities[AbilityConstants.Wisdom].TemplateAdjustment += 4;
 
             if (abilities[AbilityConstants.Charisma].HasScore)
-                abilities[AbilityConstants.Charisma].TemplateAdjustment = 4;
+                abilities[AbilityConstants.Charisma].TemplateAdjustment += 4;
         }
 
         private void UpdateCreatureAbilities(CreaturePrototype creature) => UpdateCreatureAbilities(creature.Abilities);
