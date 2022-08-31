@@ -682,7 +682,7 @@ namespace DnDGen.CreatureGen.Templates
             return prototype;
         }
 
-        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, bool asCharacter, Filters filters = null)
+        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, Filters filters = null)
         {
             var compatiblePrototypes = sourceCreatures
                 .Where(p => IsCompatible(

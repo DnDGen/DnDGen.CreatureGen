@@ -499,8 +499,6 @@ namespace DnDGen.CreatureGen.Templates
             IEnumerable<string> alignments,
             string creature,
             string creatureChallengeRating,
-            double creatureHitDiceQuantity,
-            bool asCharacter,
             Filters filters)
         {
             var abilityAdjustments = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, creature);
@@ -511,14 +509,14 @@ namespace DnDGen.CreatureGen.Templates
             var charisma = new Ability(AbilityConstants.Charisma);
             charisma.RacialAdjustment = charismaAdjustment.Amount;
 
-            var compatible = IsCompatible(types, alignments, charisma, creatureChallengeRating, creatureHitDiceQuantity, asCharacter, filters);
-            return compatible;
+            var compatible = IsCompatible(types, alignments, charisma, creatureChallengeRating, filters);
+            return compatible.Compatible;
         }
 
         private bool IsCompatible(
             IEnumerable<string> types,
             IEnumerable<string> alignments,
-            Ability charisma,
+            string creature,
             string creatureChallengeRating,
             double creatureHitDiceQuantity,
             bool asCharacter,
@@ -531,8 +529,8 @@ namespace DnDGen.CreatureGen.Templates
                 creatureChallengeRating = ChallengeRatingConstants.CR0;
             }
 
-            var compatibility = IsCompatible(types, alignments, charisma, creatureChallengeRating, filters);
-            return compatibility.Compatible;
+            var compatibility = IsCompatible(types, alignments, creature, creatureChallengeRating, filters);
+            return compatibility;
         }
 
         private (bool Compatible, string Reason) IsCompatible(
@@ -628,7 +626,7 @@ namespace DnDGen.CreatureGen.Templates
             return prototype;
         }
 
-        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, bool asCharacter, Filters filters = null)
+        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, Filters filters = null)
         {
             var compatiblePrototypes = sourceCreatures
                 .Where(p => IsCompatible(
@@ -636,9 +634,7 @@ namespace DnDGen.CreatureGen.Templates
                     p.Alignments.Select(a => a.Full),
                     p.Abilities[AbilityConstants.Charisma],
                     p.ChallengeRating,
-                    p.GetRoundedHitDiceQuantity(),
-                    false, //INFO: We have already initiated the prototypes, so applying as-character adjustments isn't needed
-                    filters));
+                    filters).Compatible);
             var updatedPrototypes = compatiblePrototypes.Select(p => ApplyToPrototype(p, filters?.Alignment));
 
             return updatedPrototypes;

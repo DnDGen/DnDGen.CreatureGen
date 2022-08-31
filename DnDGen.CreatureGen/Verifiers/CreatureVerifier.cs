@@ -56,11 +56,11 @@ namespace DnDGen.CreatureGen.Verifiers
                     //INFO: We only want to apply filters on the last template, once all other templates have been applied
                     if (i == filters.Templates.Count - 1)
                     {
-                        prototypes = applicator.GetCompatiblePrototypes(prototypes, asCharacter, filters);
+                        prototypes = applicator.GetCompatiblePrototypes(prototypes, filters);
                     }
                     else
                     {
-                        prototypes = applicator.GetCompatiblePrototypes(prototypes, asCharacter);
+                        prototypes = applicator.GetCompatiblePrototypes(prototypes);
                     }
                 }
 

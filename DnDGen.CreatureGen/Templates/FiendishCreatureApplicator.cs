@@ -564,7 +564,7 @@ namespace DnDGen.CreatureGen.Templates
             return prototype;
         }
 
-        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, bool asCharacter, Filters filters = null)
+        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, Filters filters = null)
         {
             var compatiblePrototypes = sourceCreatures
                 .Where(p => IsCompatible(
@@ -572,8 +572,7 @@ namespace DnDGen.CreatureGen.Templates
                     p.Alignments.Select(a => a.Full),
                     p.ChallengeRating,
                     p.GetRoundedHitDiceQuantity(),
-                    false, //INFO: We have already initiated the prototypes, so applying as-character adjustments isn't needed
-                    filters));
+                    filters).Compatible);
             var updatedPrototypes = compatiblePrototypes.Select(p => ApplyToPrototype(p, filters?.Alignment));
 
             return updatedPrototypes;

@@ -1,4 +1,5 @@
 ﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Alignments;
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Generators.Alignments;
@@ -35,6 +36,7 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
         private readonly IMagicGenerator magicGenerator;
         private readonly ICreatureDataSelector creatureDataSelector;
         private readonly IAdjustmentsSelector adjustmentSelector;
+        private readonly ICreaturePrototypeFactory prototypeFactory;
 
         public HalfDragonApplicator(
             ICollectionSelector collectionSelector,
@@ -46,7 +48,8 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             Dice dice,
             IMagicGenerator magicGenerator,
             ICreatureDataSelector creatureDataSelector,
-            IAdjustmentsSelector adjustmentSelector)
+            IAdjustmentsSelector adjustmentSelector,
+            ICreaturePrototypeFactory prototypeFactory)
         {
             this.collectionSelector = collectionSelector;
             this.speedsGenerator = speedsGenerator;
@@ -58,6 +61,7 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             this.magicGenerator = magicGenerator;
             this.creatureDataSelector = creatureDataSelector;
             this.adjustmentSelector = adjustmentSelector;
+            this.prototypeFactory = prototypeFactory;
 
             creatureTypes = new[]
             {
@@ -82,9 +86,9 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             if (!compatibility.Compatible)
                 throw new InvalidCreatureException(
                     compatibility.Reason,
-                    asCharacter, 
-                    creature.Name, 
-                    filters?.Type, 
+                    asCharacter,
+                    creature.Name,
+                    filters?.Type,
                     filters?.ChallengeRating,
                     filters?.Alignment,
                     creature.Templates.Union(new[] { DragonSpecies }).ToArray());
@@ -143,9 +147,13 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
         private void UpdateCreatureType(Creature creature)
         {
             var adjustedTypes = UpdateCreatureType(creature.Type.Name, creature.Type.SubTypes);
+            creature.Type = new CreatureType(adjustedTypes);
+        }
 
-            creature.Type.Name = adjustedTypes.First();
-            creature.Type.SubTypes = adjustedTypes.Skip(1);
+        private void UpdateCreatureType(CreaturePrototype creature)
+        {
+            var adjustedTypes = UpdateCreatureType(creature.Type.Name, creature.Type.SubTypes);
+            creature.Type = new CreatureType(adjustedTypes);
         }
 
         private IEnumerable<string> UpdateCreatureType(string creatureType, IEnumerable<string> subtypes)
@@ -220,20 +228,24 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             }
         }
 
-        private void UpdateCreatureAbilities(Creature creature)
+        private void UpdateCreatureAbilities(Creature creature) => UpdateCreatureAbilities(creature.Abilities);
+
+        private void UpdateCreatureAbilities(Dictionary<string, Ability> abilities)
         {
-            if (creature.Abilities[AbilityConstants.Strength].HasScore)
-                creature.Abilities[AbilityConstants.Strength].TemplateAdjustment = 8;
+            if (abilities[AbilityConstants.Strength].HasScore)
+                abilities[AbilityConstants.Strength].TemplateAdjustment += 8;
 
-            if (creature.Abilities[AbilityConstants.Constitution].HasScore)
-                creature.Abilities[AbilityConstants.Constitution].TemplateAdjustment = 2;
+            if (abilities[AbilityConstants.Constitution].HasScore)
+                abilities[AbilityConstants.Constitution].TemplateAdjustment += 2;
 
-            if (creature.Abilities[AbilityConstants.Intelligence].HasScore)
-                creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment = 2;
+            if (abilities[AbilityConstants.Intelligence].HasScore)
+                abilities[AbilityConstants.Intelligence].TemplateAdjustment += 2;
 
-            if (creature.Abilities[AbilityConstants.Charisma].HasScore)
-                creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment = 2;
+            if (abilities[AbilityConstants.Charisma].HasScore)
+                abilities[AbilityConstants.Charisma].TemplateAdjustment += 2;
         }
+
+        private void UpdateCreatureAbilities(CreaturePrototype creature) => UpdateCreatureAbilities(creature.Abilities);
 
         private void UpdateCreatureTemplate(Creature creature)
         {
@@ -245,7 +257,24 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             creature.Alignment = alignmentGenerator.Generate(DragonSpecies, null, presetAlignment);
         }
 
+        private void UpdateCreatureAlignment(CreaturePrototype creature, string presetAlignment, IEnumerable<string> dragonAlignments)
+        {
+            if (presetAlignment != null)
+            {
+                creature.Alignments = new List<Alignment> { new Alignment(presetAlignment) };
+            }
+            else
+            {
+                creature.Alignments = dragonAlignments.Distinct().Select(a => new Alignment(a)).ToList();
+            }
+        }
+
         private void UpdateCreatureChallengeRating(Creature creature)
+        {
+            creature.ChallengeRating = UpdateCreatureChallengeRating(creature.ChallengeRating);
+        }
+
+        private void UpdateCreatureChallengeRating(CreaturePrototype creature)
         {
             creature.ChallengeRating = UpdateCreatureChallengeRating(creature.ChallengeRating);
         }
@@ -265,6 +294,12 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
         private IEnumerable<string> GetChallengeRatings(string challengeRating) => new[] { UpdateCreatureChallengeRating(challengeRating) };
 
         private void UpdateCreatureLevelAdjustment(Creature creature)
+        {
+            if (creature.LevelAdjustment.HasValue)
+                creature.LevelAdjustment += 3;
+        }
+
+        private void UpdateCreatureLevelAdjustment(CreaturePrototype creature)
         {
             if (creature.LevelAdjustment.HasValue)
                 creature.LevelAdjustment += 3;
@@ -609,12 +644,40 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
 
         public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
         {
-            throw new NotImplementedException();
+            var compatibleCreatures = GetCompatibleCreatures(sourceCreatures, asCharacter, filters);
+            if (!compatibleCreatures.Any())
+                return Enumerable.Empty<CreaturePrototype>();
+
+            var dragonAlignments = collectionSelector.SelectFrom(TableNameConstants.Collection.AlignmentGroups, DragonSpecies + GroupConstants.Exploded);
+            var prototypes = prototypeFactory.Build(compatibleCreatures, asCharacter);
+            var updatedPrototypes = prototypes.Select(p => ApplyToPrototype(p, filters?.Alignment, dragonAlignments));
+
+            return updatedPrototypes;
         }
 
-        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, bool asCharacter, Filters filters = null)
+        private CreaturePrototype ApplyToPrototype(CreaturePrototype prototype, string presetAlignment, IEnumerable<string> dragonAlignments)
         {
-            throw new NotImplementedException();
+            UpdateCreatureAbilities(prototype);
+            UpdateCreatureAlignment(prototype, presetAlignment, dragonAlignments);
+            UpdateCreatureChallengeRating(prototype);
+            UpdateCreatureLevelAdjustment(prototype);
+            UpdateCreatureType(prototype);
+
+            return prototype;
+        }
+
+        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, Filters filters = null)
+        {
+            var dragonAlignments = collectionSelector.SelectFrom(TableNameConstants.Collection.AlignmentGroups, DragonSpecies + GroupConstants.Exploded);
+            var compatiblePrototypes = sourceCreatures
+                .Where(p => IsCompatible(
+                    p.Type.AllTypes,
+                    dragonAlignments,
+                    p.ChallengeRating,
+                    filters).Compatible);
+            var updatedPrototypes = compatiblePrototypes.Select(p => ApplyToPrototype(p, filters?.Alignment, dragonAlignments));
+
+            return updatedPrototypes;
         }
     }
 }

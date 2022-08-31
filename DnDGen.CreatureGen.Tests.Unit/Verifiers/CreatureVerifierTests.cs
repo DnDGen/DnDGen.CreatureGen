@@ -63,8 +63,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<string>>(), false, null))
                 .Returns(prototypes1);
             mockApplicator2
-                .Setup(a => a.GetCompatiblePrototypes(prototypes1, false, filters))
-                .Returns((IEnumerable<CreaturePrototype> pp, bool asc, Filters f) => pp.Where(p => compatible));
+                .Setup(a => a.GetCompatiblePrototypes(prototypes1, filters))
+                .Returns((IEnumerable<CreaturePrototype> pp, Filters f) => pp.Where(p => compatible));
 
             mockJustInTimeFactory
                 .Setup(f => f.Build<TemplateApplicator>("template 1"))
@@ -100,11 +100,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<string>>(), false, null))
                 .Returns(prototypes1);
             mockApplicator2
-                .Setup(a => a.GetCompatiblePrototypes(prototypes1, false, null))
+                .Setup(a => a.GetCompatiblePrototypes(prototypes1, null))
                 .Returns(prototypes2);
             mockApplicator3
-                .Setup(a => a.GetCompatiblePrototypes(prototypes2, false, filters))
-                .Returns((IEnumerable<CreaturePrototype> pp, bool asc, Filters f) => pp.Where(p => compatible));
+                .Setup(a => a.GetCompatiblePrototypes(prototypes2, filters))
+                .Returns((IEnumerable<CreaturePrototype> pp, Filters f) => pp.Where(p => compatible));
 
             mockJustInTimeFactory
                 .Setup(f => f.Build<TemplateApplicator>("template 1"))

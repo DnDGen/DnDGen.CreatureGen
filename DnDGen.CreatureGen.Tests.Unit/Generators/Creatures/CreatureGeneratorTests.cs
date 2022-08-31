@@ -266,11 +266,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                         .Intersect(new[] { creatureName })
                         .Select(c => new CreaturePrototype { Name = c }));
                 defaultTemplateApplicator
-                    .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<CreaturePrototype>>(), asCharacter, It.Is<Filters>(f => f == null
+                    .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<CreaturePrototype>>(), It.Is<Filters>(f => f == null
                         || (f.Type == typeFilter
                             && f.ChallengeRating == crFilter
                             && f.Alignment == alignmentFilter))))
-                    .Returns((IEnumerable<CreaturePrototype> pp, bool asC, Filters f) => pp
+                    .Returns((IEnumerable<CreaturePrototype> pp, Filters f) => pp
                         .Where(p => p.Name == creatureName));
                 defaultTemplateApplicator
                     .Setup(a => a.ApplyTo(It.IsAny<Creature>(), asCharacter, It.Is<Filters>(f => f == null
@@ -321,11 +321,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     .Returns((IEnumerable<string> cc, bool asC, Filters f) => cc
                         .Select(c => new CreaturePrototype { Name = c }));
                 noneApplicator
-                    .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<CreaturePrototype>>(), asCharacter, It.Is<Filters>(f => f == null
+                    .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<CreaturePrototype>>(), It.Is<Filters>(f => f == null
                         || (f.Type == typeFilter
                             && f.ChallengeRating == crFilter
                             && f.Alignment == alignmentFilter))))
-                    .Returns((IEnumerable<CreaturePrototype> pp, bool asC, Filters f) => pp);
+                    .Returns((IEnumerable<CreaturePrototype> pp, Filters f) => pp);
                 noneApplicator
                     .Setup(a => a.ApplyTo(It.IsAny<Creature>(), asCharacter, It.Is<Filters>(f => f == null
                         || (f.Type == typeFilter
