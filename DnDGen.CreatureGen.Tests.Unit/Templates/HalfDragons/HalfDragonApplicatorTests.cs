@@ -1399,7 +1399,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         {
             get
             {
-                var challengeRatings = ChallengeRatingConstants.GetOrdered();
+                //INFO: We will only deal with the first 12 (up to CR 5), as anything after that is basic Increase functionality
+                var challengeRatings = ChallengeRatingConstants.GetOrdered().Take(12);
 
                 foreach (var template in templates)
                 {
@@ -3385,8 +3386,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         {
             get
             {
+                //INFO: We will only deal with the first 12 (up to CR 5), as anything after that is basic Increase functionality
+                var challengeRatings = ChallengeRatingConstants.GetOrdered().Take(12);
                 var hitDice = new[] { 0.5, 1, 2 };
-                var challengeRatings = ChallengeRatingConstants.GetOrdered();
 
                 foreach (var template in templates)
                 {
@@ -3468,7 +3470,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         {
             get
             {
-                var challengeRatings = ChallengeRatingConstants.GetOrdered();
+                //INFO: We will only deal with the first 12 (up to CR 5), as anything after that is basic Increase functionality
+                var challengeRatings = ChallengeRatingConstants.GetOrdered().Take(12);
 
                 foreach (var template in templates)
                 {

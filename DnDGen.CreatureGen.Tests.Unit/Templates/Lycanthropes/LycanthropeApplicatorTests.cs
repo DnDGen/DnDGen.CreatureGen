@@ -2156,28 +2156,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
         {
             get
             {
-                //INFO: Doing specific numbers, instead of full range because the number of test cases explodes:
-                //1. Per challenge rating
-                //2. Per Lycanthrope template
-                //3. Per hit die quantity
-                //4. Synchronous and Async
-                var challengeRatings = new[]
-                {
-                    ChallengeRatingConstants.CR0, //Character
-                    ChallengeRatingConstants.CR1_4th, //Kobold
-                    ChallengeRatingConstants.CR1_3rd, //Goblin
-                    ChallengeRatingConstants.CR1_2nd, //Dwarf, Elf, Gnome, Halfling, Hobgoblin, Merfolk, Orc
-                    ChallengeRatingConstants.CR1, //Duergar, Drow, Gnoll, Svirfneblin, Lizardfolk, Troglodyte
-                    ChallengeRatingConstants.CR3, //Ogre
-                    ChallengeRatingConstants.CR5, //Troll
-                    ChallengeRatingConstants.CR6, //Ettin
-                    ChallengeRatingConstants.CR7, //Hill Giant
-                    ChallengeRatingConstants.CR8, //Stone Giant, Ogre Mage
-                    ChallengeRatingConstants.CR9, //Frost Giant, Stone Giant Elder
-                    ChallengeRatingConstants.CR10, //Fire Giant
-                    ChallengeRatingConstants.CR11, //Cloud Giant
-                    ChallengeRatingConstants.CR13, //Storm Giant
-                };
+                //INFO: Don't need to test every CR, since it is the basic Increase functionality, which is tested separately
+                //So, we only need to test the amount it is increased, not every CR permutation
+                var challengeRating = ChallengeRatingConstants.CR1;
 
                 var animalHitDiceQuantities = new Dictionary<string, double>();
                 animalHitDiceQuantities[CreatureConstants.Bear_Brown] = 6;
@@ -2204,11 +2185,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.Lycanthropes
                     else if (animalHitDiceQuantity > 20)
                         increase = 6;
 
-                    foreach (var cr in challengeRatings)
-                    {
-                        var newCr = ChallengeRatingConstants.IncreaseChallengeRating(cr, increase);
-                        yield return new TestCaseData(template.Template, template.Animal, cr, animalHitDiceQuantity, newCr);
-                    }
+                    var newCr = ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, increase);
+                    yield return new TestCaseData(template.Template, template.Animal, challengeRating, animalHitDiceQuantity, newCr);
                 }
             }
         }
