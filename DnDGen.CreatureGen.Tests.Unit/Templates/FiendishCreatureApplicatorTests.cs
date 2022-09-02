@@ -1083,7 +1083,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             get
             {
-                var baseScores = Enumerable.Range(3, 12);
+                var baseScores = NumericTestData.BaseAbilityTestNumbers;
                 var raceAdjustments = Enumerable.Range(-5, 5 + 1 + 2).Select(i => i * 2);
                 var advanceds = Enumerable.Range(0, 4);
 
@@ -1170,7 +1170,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .1, .2, .3, .4, .5, .6, .7, .8, .9,
                 });
 
-                var challengeRatings = ChallengeRatingConstants.GetOrdered();
+                //INFO: Don't need to test every CR, since it is the basic Increase functionality, which is tested separately
+                //So, we only need to test the amount it is increased, not every CR permutation
+                var challengeRating = ChallengeRatingConstants.CR1;
 
                 foreach (var hitDie in hitDice)
                 {
@@ -1185,11 +1187,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                         increase = 1;
                     }
 
-                    foreach (var cr in challengeRatings)
-                    {
-                        var newCr = ChallengeRatingConstants.IncreaseChallengeRating(cr, increase);
-                        yield return new TestCaseData(hitDie, cr, newCr);
-                    }
+                    var newCr = ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, increase);
+                    yield return new TestCaseData(hitDie, challengeRating, newCr);
                 }
             }
         }

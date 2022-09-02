@@ -515,21 +515,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             {
                 get
                 {
-                    var challengeRatings = ChallengeRatingConstants.GetOrdered();
+                    //INFO: Don't need to test every CR, since it is the basic Increase functionality, which is tested separately
+                    //So, we only need to test the amount it is increased, not every CR permutation
+                    var challengeRating = ChallengeRatingConstants.CR1;
                     var additionalHitDices = Enumerable.Range(1, 50);
                     var divisors = Enumerable.Range(1, 4);
 
-                    foreach (var challengeRating in challengeRatings)
+                    foreach (var divisor in divisors)
                     {
-                        foreach (var divisor in divisors)
+                        foreach (var additionalHitDice in additionalHitDices)
                         {
-                            foreach (var additionalHitDice in additionalHitDices)
-                            {
-                                var advancementAmount = additionalHitDice / divisor;
-                                var advancedChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, advancementAmount);
+                            var advancementAmount = additionalHitDice / divisor;
+                            var advancedChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, advancementAmount);
 
-                                yield return new TestCaseData(challengeRating, additionalHitDice, divisor, advancedChallengeRating);
-                            }
+                            yield return new TestCaseData(challengeRating, additionalHitDice, divisor, advancedChallengeRating);
                         }
                     }
                 }
@@ -539,22 +538,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             {
                 get
                 {
-                    var challengeRatings = ChallengeRatingConstants.GetOrdered();
+                    //INFO: Don't need to test every CR, since it is the basic Increase functionality, which is tested separately
+                    //So, we only need to test the amount it is increased, not every CR permutation
+                    var challengeRating = ChallengeRatingConstants.CR1;
                     var sizes = SizeConstants.GetOrdered();
 
-                    foreach (var challengeRating in challengeRatings)
+                    for (var i = 0; i < sizes.Length; i++)
                     {
-                        for (var i = 0; i < sizes.Length; i++)
+                        var originalSize = sizes[i];
+
+                        for (var j = i; j < sizes.Length; j++)
                         {
-                            var originalSize = sizes[i];
+                            var advancedSize = sizes[j];
+                            var advancedChallengeRating = GetAdjustedChallengeRating(originalSize, advancedSize, challengeRating);
 
-                            for (var j = i; j < sizes.Length; j++)
-                            {
-                                var advancedSize = sizes[j];
-                                var advancedChallengeRating = GetAdjustedChallengeRating(originalSize, advancedSize, challengeRating);
-
-                                yield return new TestCaseData(originalSize, advancedSize, challengeRating, advancedChallengeRating);
-                            }
+                            yield return new TestCaseData(originalSize, advancedSize, challengeRating, advancedChallengeRating);
                         }
                     }
                 }
