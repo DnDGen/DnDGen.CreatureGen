@@ -29,6 +29,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IFeatsGenerator featsGenerator;
         private readonly ITypeAndAmountSelector typeAndAmountSelector;
         private readonly IAdjustmentsSelector adjustmentSelector;
+        private readonly ICreaturePrototypeFactory prototypeFactory;
 
         private const int PhylacterySpellCasterLevel = 11;
 
@@ -39,7 +40,8 @@ namespace DnDGen.CreatureGen.Templates
             IAttacksGenerator attacksGenerator,
             IFeatsGenerator featsGenerator,
             ITypeAndAmountSelector typeAndAmountSelector,
-            IAdjustmentsSelector adjustmentSelector)
+            IAdjustmentsSelector adjustmentSelector,
+            ICreaturePrototypeFactory prototypeFactory)
         {
             this.collectionSelector = collectionSelector;
             this.creatureDataSelector = creatureDataSelector;
@@ -48,6 +50,7 @@ namespace DnDGen.CreatureGen.Templates
             this.featsGenerator = featsGenerator;
             this.typeAndAmountSelector = typeAndAmountSelector;
             this.adjustmentSelector = adjustmentSelector;
+            this.prototypeFactory = prototypeFactory;
         }
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
@@ -176,18 +179,21 @@ namespace DnDGen.CreatureGen.Templates
             return newAlignment;
         }
 
-        private void UpdateCreatureAbilities(Creature creature)
+        private void UpdateCreatureAbilities(Creature creature) => UpdateCreatureAbilities(creature.Abilities);
+        private void UpdateCreatureAbilities(CreaturePrototype creature) => UpdateCreatureAbilities(creature.Abilities);
+
+        private void UpdateCreatureAbilities(Dictionary<string, Ability> abilities)
         {
-            creature.Abilities[AbilityConstants.Constitution].TemplateScore = 0;
+            abilities[AbilityConstants.Constitution].TemplateScore = 0;
 
-            if (creature.Abilities[AbilityConstants.Wisdom].HasScore)
-                creature.Abilities[AbilityConstants.Wisdom].TemplateAdjustment = 2;
+            if (abilities[AbilityConstants.Wisdom].HasScore)
+                abilities[AbilityConstants.Wisdom].TemplateAdjustment = 2;
 
-            if (creature.Abilities[AbilityConstants.Intelligence].HasScore)
-                creature.Abilities[AbilityConstants.Intelligence].TemplateAdjustment = 2;
+            if (abilities[AbilityConstants.Intelligence].HasScore)
+                abilities[AbilityConstants.Intelligence].TemplateAdjustment = 2;
 
-            if (creature.Abilities[AbilityConstants.Charisma].HasScore)
-                creature.Abilities[AbilityConstants.Charisma].TemplateAdjustment = 2;
+            if (abilities[AbilityConstants.Charisma].HasScore)
+                abilities[AbilityConstants.Charisma].TemplateAdjustment = 2;
         }
 
         private void UpdateCreatureSkills(Creature creature)
@@ -507,12 +513,39 @@ namespace DnDGen.CreatureGen.Templates
 
         public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
         {
-            throw new NotImplementedException();
+            var compatibleCreatures = GetCompatibleCreatures(sourceCreatures, asCharacter, filters);
+            if (!compatibleCreatures.Any())
+                return Enumerable.Empty<CreaturePrototype>();
+
+            var prototypes = prototypeFactory.Build(compatibleCreatures, asCharacter);
+            var updatedPrototypes = prototypes.Select(p => ApplyToPrototype(p, filters?.Alignment));
+
+            return updatedPrototypes;
+        }
+
+        private CreaturePrototype ApplyToPrototype(CreaturePrototype prototype, string presetAlignment)
+        {
+            UpdateCreatureAbilities(prototype);
+            UpdateCreatureChallengeRating(prototype);
+            UpdateCreatureLevelAdjustment(prototype);
+            UpdateCreatureType(prototype);
+            UpdateCreatureAlignment(prototype, presetAlignment);
+
+            return prototype;
         }
 
         public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, Filters filters = null)
         {
-            throw new NotImplementedException();
+            var compatiblePrototypes = sourceCreatures
+                .Where(p => IsCompatible(
+                    p.Type.AllTypes,
+                    p.Alignments.Select(a => a.Full),
+                    p.Abilities[AbilityConstants.Charisma],
+                    p.ChallengeRating,
+                    filters).Compatible);
+            var updatedPrototypes = compatiblePrototypes.Select(p => ApplyToPrototype(p, filters?.Alignment));
+
+            return updatedPrototypes;
         }
     }
 }
