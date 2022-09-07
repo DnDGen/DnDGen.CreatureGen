@@ -217,6 +217,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.AbilityAdjustments))
                 .Returns(abilities);
 
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
+            casters["creature 1"] = new List<TypeAndAmountSelection>();
+            casters["wrong creature"] = new List<TypeAndAmountSelection>();
+            casters["creature 2"] = new List<TypeAndAmountSelection>();
+            casters["creature 3"] = new List<TypeAndAmountSelection>();
+            casters["creature 4"] = new List<TypeAndAmountSelection>();
+            casters["creature 5"] = new List<TypeAndAmountSelection>();
+            casters["creature 6"] = new List<TypeAndAmountSelection>();
+            casters["creature 7"] = new List<TypeAndAmountSelection>();
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Returns(casters);
+
             var creatures = new[]
             {
                 "creature 1",
@@ -600,6 +614,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.AbilityAdjustments))
                 .Returns(abilities);
 
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
+            casters["creature 1"] = new List<TypeAndAmountSelection>();
+            casters["wrong creature"] = new List<TypeAndAmountSelection>();
+            casters["creature 2"] = new List<TypeAndAmountSelection>();
+            casters["creature 3"] = new List<TypeAndAmountSelection>();
+            casters["creature 4"] = new List<TypeAndAmountSelection>();
+            casters["creature 5"] = new List<TypeAndAmountSelection>();
+            casters["creature 6"] = new List<TypeAndAmountSelection>();
+            casters["creature 7"] = new List<TypeAndAmountSelection>();
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Returns(casters);
+
             var creatures = new[]
             {
                 "creature 1",
@@ -801,6 +829,127 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[6].HitDiceQuantity, Is.EqualTo(hitDice["creature 7"]));
             Assert.That(prototypes[6].LevelAdjustment, Is.EqualTo(data["creature 7"].LevelAdjustment));
             Assert.That(prototypes[6].Type.AllTypes, Is.EqualTo(types["creature 7"]));
+        }
+
+        //INFO: Since prototypes are for Template validation, we only want the Maximum caster level between spellcasting and at-will abilities
+        //The caster type/amount is equivalent to the Magic caster level, as opposed to the caster level on the creature data
+        [TestCase(0, 0, 0)]
+        [TestCase(0, 1, 1)]
+        [TestCase(0, 2, 2)]
+        [TestCase(0, 10, 10)]
+        [TestCase(1, 0, 1)]
+        [TestCase(1, 1, 1)]
+        [TestCase(1, 2, 2)]
+        [TestCase(1, 10, 10)]
+        [TestCase(2, 0, 2)]
+        [TestCase(2, 1, 2)]
+        [TestCase(2, 2, 2)]
+        [TestCase(2, 10, 10)]
+        [TestCase(10, 0, 10)]
+        [TestCase(10, 1, 10)]
+        [TestCase(10, 2, 10)]
+        [TestCase(10, 10, 10)]
+        public void Build_ReturnsCreaturePrototypes_WithCasterLevelAndCaster(int casterLevel, int caster, int expected)
+        {
+            var data = new Dictionary<string, CreatureDataSelection>();
+            data["creature 1"] = new CreatureDataSelection
+            {
+                CasterLevel = casterLevel,
+                ChallengeRating = ChallengeRatingConstants.CR2,
+                LevelAdjustment = null,
+            };
+
+            mockCreatureDataSelector
+                .Setup(s => s.SelectAll())
+                .Returns(data);
+
+            var hitDice = new Dictionary<string, double>();
+            hitDice["creature 1"] = 0.5;
+
+            mockAdjustmentSelector
+                .Setup(s => s.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice))
+                .Returns(hitDice);
+
+            var types = new Dictionary<string, IEnumerable<string>>();
+            types["creature 1"] = new[] { "my creature type" };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Returns(types);
+
+            var alignments = new Dictionary<string, IEnumerable<string>>();
+            alignments["creature 1"] = new[] { AlignmentConstants.ChaoticEvil };
+
+            mockCollectionSelector
+                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Returns(alignments);
+
+            var abilities = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
+            abilities[CreatureConstants.Human] = new[]
+            {
+                new TypeAndAmountSelection { Type = AbilityConstants.Strength, Amount = 0 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 0 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 0 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 0 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 0 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 0 },
+            };
+            abilities["creature 1"] = new[]
+            {
+                new TypeAndAmountSelection { Type = AbilityConstants.Constitution, Amount = 0 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Dexterity, Amount = 0 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Intelligence, Amount = 0 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Wisdom, Amount = 0 },
+                new TypeAndAmountSelection { Type = AbilityConstants.Charisma, Amount = 0 },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.AbilityAdjustments))
+                .Returns(abilities);
+
+            var casters = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
+            casters["creature 1"] = new[]
+            {
+                new TypeAndAmountSelection { Type = "spellcaster", Amount = caster },
+            };
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.SelectAll(TableNameConstants.TypeAndAmount.Casters))
+                .Returns(casters);
+
+            var creatures = new[]
+            {
+                "creature 1",
+            };
+
+            var prototypes = prototypeFactory.Build(creatures, false).ToArray();
+            Assert.That(prototypes, Has.Length.EqualTo(1));
+            Assert.That(prototypes[0].Name, Is.EqualTo("creature 1"));
+            Assert.That(prototypes[0].Alignments, Is.EqualTo(alignments["creature 1"].Select(a => new Alignment(a)).Distinct()));
+            Assert.That(prototypes[0].Abilities, Has.Count.EqualTo(6)
+                .And.ContainKey(AbilityConstants.Strength)
+                .And.ContainKey(AbilityConstants.Constitution)
+                .And.ContainKey(AbilityConstants.Dexterity)
+                .And.ContainKey(AbilityConstants.Intelligence)
+                .And.ContainKey(AbilityConstants.Wisdom)
+                .And.ContainKey(AbilityConstants.Charisma));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Strength].Name, Is.EqualTo(AbilityConstants.Strength));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(0));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Constitution].Name, Is.EqualTo(AbilityConstants.Constitution));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(10));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Dexterity].Name, Is.EqualTo(AbilityConstants.Dexterity));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(10));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Intelligence].Name, Is.EqualTo(AbilityConstants.Intelligence));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(10));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Wisdom].Name, Is.EqualTo(AbilityConstants.Wisdom));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(10));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
+            Assert.That(prototypes[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10));
+            Assert.That(prototypes[0].CasterLevel, Is.EqualTo(expected));
+            Assert.That(prototypes[0].ChallengeRating, Is.EqualTo(data["creature 1"].ChallengeRating));
+            Assert.That(prototypes[0].HitDiceQuantity, Is.EqualTo(hitDice["creature 1"]));
+            Assert.That(prototypes[0].LevelAdjustment, Is.EqualTo(data["creature 1"].LevelAdjustment));
+            Assert.That(prototypes[0].Type.AllTypes, Is.EqualTo(types["creature 1"]));
         }
     }
 }

@@ -29,15 +29,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             AssertCollectionNames(names);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void CreaturesWithCasterHaveSpellAttack(string creature)
-        {
-            var attacks = attackSelector.Select(creature, SizeConstants.Medium, SizeConstants.Medium);
-            var hasCaster = table[creature].Any();
-
-            Assert.That(attacks.Any(a => a.Name == "Spells"), Is.EqualTo(hasCaster));
-        }
-
         [TestCase(CreatureConstants.Androsphinx, SpellConstants.Casters.Cleric, 6)]
         [TestCase(CreatureConstants.Angel_Planetar, SpellConstants.Casters.Cleric, 17)]
         [TestCase(CreatureConstants.Angel_Solar, SpellConstants.Casters.Cleric, 20)]
@@ -154,6 +145,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
             typeAndAmount[caster] = casterLevel;
 
             AssertTypesAndAmounts(creature, typeAndAmount);
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
+        public void CreaturesWithCasterHaveSpellAttack(string creature)
+        {
+            var attacks = attackSelector.Select(creature, SizeConstants.Medium, SizeConstants.Medium);
+            var hasCaster = table[creature].Any();
+
+            Assert.That(attacks.Any(a => a.Name == "Spells"), Is.EqualTo(hasCaster));
         }
     }
 }

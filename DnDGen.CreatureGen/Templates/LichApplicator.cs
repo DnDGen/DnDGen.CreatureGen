@@ -116,9 +116,13 @@ namespace DnDGen.CreatureGen.Templates
         private void UpdateCreatureType(Creature creature)
         {
             var adjustedTypes = UpdateCreatureType(creature.Type.Name, creature.Type.SubTypes);
+            creature.Type = new CreatureType(adjustedTypes);
+        }
 
-            creature.Type.Name = adjustedTypes.First();
-            creature.Type.SubTypes = adjustedTypes.Skip(1);
+        private void UpdateCreatureType(CreaturePrototype creature)
+        {
+            var adjustedTypes = UpdateCreatureType(creature.Type.Name, creature.Type.SubTypes);
+            creature.Type = new CreatureType(adjustedTypes);
         }
 
         private IEnumerable<string> UpdateCreatureType(string creatureType, IEnumerable<string> subtypes)
@@ -159,16 +163,33 @@ namespace DnDGen.CreatureGen.Templates
                 creature.LevelAdjustment += 4;
         }
 
+        private void UpdateCreatureLevelAdjustment(CreaturePrototype creature)
+        {
+            if (creature.LevelAdjustment.HasValue)
+                creature.LevelAdjustment += 4;
+        }
+
         private void UpdateCreatureAlignment(Creature creature, string presetAlignment)
+        {
+            creature.Alignment = UpdateCreatureAlignment(creature.Alignment, presetAlignment);
+        }
+
+        private void UpdateCreatureAlignment(CreaturePrototype creature, string presetAlignment)
+        {
+            creature.Alignments = creature.Alignments
+                .Select(a => UpdateCreatureAlignment(a, presetAlignment))
+                .Distinct()
+                .ToList();
+        }
+
+        private Alignment UpdateCreatureAlignment(Alignment alignment, string presetAlignment)
         {
             if (presetAlignment != null)
             {
-                creature.Alignment = new Alignment(presetAlignment);
+                return new Alignment(presetAlignment);
             }
-            else
-            {
-                creature.Alignment = UpdateCreatureAlignment(creature.Alignment.Full);
-            }
+
+            return UpdateCreatureAlignment(alignment.Full);
         }
 
         private Alignment UpdateCreatureAlignment(string alignment)
@@ -187,13 +208,13 @@ namespace DnDGen.CreatureGen.Templates
             abilities[AbilityConstants.Constitution].TemplateScore = 0;
 
             if (abilities[AbilityConstants.Wisdom].HasScore)
-                abilities[AbilityConstants.Wisdom].TemplateAdjustment = 2;
+                abilities[AbilityConstants.Wisdom].TemplateAdjustment += 2;
 
             if (abilities[AbilityConstants.Intelligence].HasScore)
-                abilities[AbilityConstants.Intelligence].TemplateAdjustment = 2;
+                abilities[AbilityConstants.Intelligence].TemplateAdjustment += 2;
 
             if (abilities[AbilityConstants.Charisma].HasScore)
-                abilities[AbilityConstants.Charisma].TemplateAdjustment = 2;
+                abilities[AbilityConstants.Charisma].TemplateAdjustment += 2;
         }
 
         private void UpdateCreatureSkills(Creature creature)
@@ -224,6 +245,11 @@ namespace DnDGen.CreatureGen.Templates
         }
 
         private void UpdateCreatureChallengeRating(Creature creature)
+        {
+            creature.ChallengeRating = UpdateCreatureChallengeRating(creature.ChallengeRating);
+        }
+
+        private void UpdateCreatureChallengeRating(CreaturePrototype creature)
         {
             creature.ChallengeRating = UpdateCreatureChallengeRating(creature.ChallengeRating);
         }
@@ -540,8 +566,9 @@ namespace DnDGen.CreatureGen.Templates
                 .Where(p => IsCompatible(
                     p.Type.AllTypes,
                     p.Alignments.Select(a => a.Full),
-                    p.Abilities[AbilityConstants.Charisma],
                     p.ChallengeRating,
+                    p.LevelAdjustment,
+                    new[] { p.CasterLevel },
                     filters).Compatible);
             var updatedPrototypes = compatiblePrototypes.Select(p => ApplyToPrototype(p, filters?.Alignment));
 

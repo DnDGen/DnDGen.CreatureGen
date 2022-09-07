@@ -887,13 +887,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             get
             {
-                var challengeRatings = ChallengeRatingConstants.GetOrdered();
+                //INFO: Don't need to test every CR, since it is the basic Increase functionality, which is tested separately
+                //So, we only need to test the amount it is increased, not every CR permutation
+                var challengeRating = ChallengeRatingConstants.CR1;
 
-                foreach (var cr in challengeRatings)
-                {
-                    var newCr = ChallengeRatingConstants.IncreaseChallengeRating(cr, 2);
-                    yield return new TestCaseData(cr, newCr);
-                }
+                var newCr = ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2);
+                yield return new TestCaseData(challengeRating, newCr);
             }
         }
 

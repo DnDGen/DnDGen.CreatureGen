@@ -4,6 +4,7 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -35,6 +36,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
             var allAlignments = collectionSelector.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups);
             var allAbilityAdjustments = typeAndAmountSelector.SelectAll(TableNameConstants.TypeAndAmount.AbilityAdjustments);
+            var allCasterLevels = typeAndAmountSelector.SelectAll(TableNameConstants.TypeAndAmount.Casters);
             var abilityNames = allAbilityAdjustments[CreatureConstants.Human].Select(s => s.Type);
 
             foreach (var creature in creatureNames)
@@ -59,6 +61,14 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 foreach (var missingAbility in missingAbilityNames)
                 {
                     prototype.Abilities[missingAbility] = new Ability(missingAbility) { BaseScore = 0 };
+                }
+
+                //INFO: Since prototypes are for Template validation, we only want the Maximum caster level between spellcasting and at-will abilities
+                //The caster type/amount is equivalent to the Magic caster level, as opposed to the caster level on the creature data
+                if (allCasterLevels[creature].Any())
+                {
+                    var maxLevel = allCasterLevels[creature].Max(c => c.Amount);
+                    prototype.CasterLevel = Math.Max(maxLevel, allData[creature].CasterLevel);
                 }
 
                 yield return prototype;
