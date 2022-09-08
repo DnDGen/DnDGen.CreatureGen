@@ -46,48 +46,56 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 CasterLevel = 0,
                 ChallengeRating = ChallengeRatingConstants.CR2,
                 LevelAdjustment = null,
+                Size = SizeConstants.Diminutive,
             };
             data["wrong creature"] = new CreatureDataSelection
             {
                 CasterLevel = 666,
                 ChallengeRating = 666.ToString(),
                 LevelAdjustment = 666,
+                Size = "wrong size",
             };
             data["creature 2"] = new CreatureDataSelection
             {
                 CasterLevel = 1,
                 ChallengeRating = ChallengeRatingConstants.CR1,
                 LevelAdjustment = 0,
+                Size = SizeConstants.Colossal,
             };
             data["creature 3"] = new CreatureDataSelection
             {
                 CasterLevel = 2,
                 ChallengeRating = ChallengeRatingConstants.CR1_2nd,
                 LevelAdjustment = 1,
+                Size = SizeConstants.Large,
             };
             data["creature 4"] = new CreatureDataSelection
             {
                 CasterLevel = 3,
                 ChallengeRating = ChallengeRatingConstants.CR3,
                 LevelAdjustment = 2,
+                Size = SizeConstants.Fine,
             };
             data["creature 5"] = new CreatureDataSelection
             {
                 CasterLevel = 4,
                 ChallengeRating = ChallengeRatingConstants.CR1_3rd,
                 LevelAdjustment = 3,
+                Size = SizeConstants.Gargantuan,
             };
             data["creature 6"] = new CreatureDataSelection
             {
                 CasterLevel = 5,
                 ChallengeRating = ChallengeRatingConstants.CR4,
                 LevelAdjustment = 4,
+                Size = SizeConstants.Huge,
             };
             data["creature 7"] = new CreatureDataSelection
             {
                 CasterLevel = 6,
                 ChallengeRating = ChallengeRatingConstants.CR1_4th,
                 LevelAdjustment = 5,
+                Size = SizeConstants.Medium,
             };
 
             mockCreatureDataSelector
@@ -266,6 +274,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[0].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
             Assert.That(prototypes[0].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(10));
             Assert.That(prototypes[0].CasterLevel, Is.EqualTo(data["creature 1"].CasterLevel));
+            Assert.That(prototypes[0].Size, Is.EqualTo(data["creature 1"].Size));
             Assert.That(prototypes[0].ChallengeRating, Is.EqualTo(data["creature 1"].ChallengeRating));
             Assert.That(prototypes[0].HitDiceQuantity, Is.EqualTo(hitDice["creature 1"]));
             Assert.That(prototypes[0].LevelAdjustment, Is.EqualTo(data["creature 1"].LevelAdjustment));
@@ -293,6 +302,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[1].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
             Assert.That(prototypes[1].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(0));
             Assert.That(prototypes[1].CasterLevel, Is.EqualTo(data["creature 6"].CasterLevel));
+            Assert.That(prototypes[1].Size, Is.EqualTo(data["creature 6"].Size));
             Assert.That(prototypes[1].ChallengeRating, Is.EqualTo(data["creature 6"].ChallengeRating));
             Assert.That(prototypes[1].HitDiceQuantity, Is.EqualTo(hitDice["creature 6"]));
             Assert.That(prototypes[1].LevelAdjustment, Is.EqualTo(data["creature 6"].LevelAdjustment));
@@ -320,6 +330,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[2].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
             Assert.That(prototypes[2].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(7));
             Assert.That(prototypes[2].CasterLevel, Is.EqualTo(data["creature 2"].CasterLevel));
+            Assert.That(prototypes[2].Size, Is.EqualTo(data["creature 2"].Size));
             Assert.That(prototypes[2].ChallengeRating, Is.EqualTo(data["creature 2"].ChallengeRating));
             Assert.That(prototypes[2].HitDiceQuantity, Is.EqualTo(hitDice["creature 2"]));
             Assert.That(prototypes[2].LevelAdjustment, Is.EqualTo(data["creature 2"].LevelAdjustment));
@@ -347,6 +358,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[3].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
             Assert.That(prototypes[3].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
             Assert.That(prototypes[3].CasterLevel, Is.EqualTo(data["creature 5"].CasterLevel));
+            Assert.That(prototypes[3].Size, Is.EqualTo(data["creature 5"].Size));
             Assert.That(prototypes[3].ChallengeRating, Is.EqualTo(data["creature 5"].ChallengeRating));
             Assert.That(prototypes[3].HitDiceQuantity, Is.EqualTo(hitDice["creature 5"]));
             Assert.That(prototypes[3].LevelAdjustment, Is.EqualTo(data["creature 5"].LevelAdjustment));
@@ -374,6 +386,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[4].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
             Assert.That(prototypes[4].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(1));
             Assert.That(prototypes[4].CasterLevel, Is.EqualTo(data["creature 3"].CasterLevel));
+            Assert.That(prototypes[4].Size, Is.EqualTo(data["creature 3"].Size));
             Assert.That(prototypes[4].ChallengeRating, Is.EqualTo(data["creature 3"].ChallengeRating));
             Assert.That(prototypes[4].HitDiceQuantity, Is.EqualTo(hitDice["creature 3"]));
             Assert.That(prototypes[4].LevelAdjustment, Is.EqualTo(data["creature 3"].LevelAdjustment));
@@ -401,6 +414,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[5].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
             Assert.That(prototypes[5].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(15));
             Assert.That(prototypes[5].CasterLevel, Is.EqualTo(data["creature 4"].CasterLevel));
+            Assert.That(prototypes[5].Size, Is.EqualTo(data["creature 4"].Size));
             Assert.That(prototypes[5].ChallengeRating, Is.EqualTo(data["creature 4"].ChallengeRating));
             Assert.That(prototypes[5].HitDiceQuantity, Is.EqualTo(hitDice["creature 4"]));
             Assert.That(prototypes[5].LevelAdjustment, Is.EqualTo(data["creature 4"].LevelAdjustment));
@@ -428,6 +442,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(prototypes[6].Abilities[AbilityConstants.Charisma].Name, Is.EqualTo(AbilityConstants.Charisma));
             Assert.That(prototypes[6].Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(27));
             Assert.That(prototypes[6].CasterLevel, Is.EqualTo(data["creature 7"].CasterLevel));
+            Assert.That(prototypes[6].Size, Is.EqualTo(data["creature 7"].Size));
             Assert.That(prototypes[6].ChallengeRating, Is.EqualTo(data["creature 7"].ChallengeRating));
             Assert.That(prototypes[6].HitDiceQuantity, Is.EqualTo(hitDice["creature 7"]));
             Assert.That(prototypes[6].LevelAdjustment, Is.EqualTo(data["creature 7"].LevelAdjustment));

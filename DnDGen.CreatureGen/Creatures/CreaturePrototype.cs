@@ -10,6 +10,7 @@ namespace DnDGen.CreatureGen.Creatures
         public string Name { get; set; }
         public CreatureType Type { get; set; }
         public Dictionary<string, Ability> Abilities { get; set; }
+        public string Size { get; set; }
         public string ChallengeRating { get; set; }
         public List<Alignment> Alignments { get; set; }
         public int? LevelAdjustment { get; set; }
@@ -20,6 +21,7 @@ namespace DnDGen.CreatureGen.Creatures
         {
             Abilities = new Dictionary<string, Ability>();
             Alignments = new List<Alignment>();
+            Size = string.Empty;
             ChallengeRating = string.Empty;
             Name = string.Empty;
             Type = new CreatureType();

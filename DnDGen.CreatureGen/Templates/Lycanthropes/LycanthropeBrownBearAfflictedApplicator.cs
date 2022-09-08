@@ -26,7 +26,8 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             ISavesGenerator savesGenerator,
             ISkillsGenerator skillsGenerator,
             ISpeedsGenerator speedsGenerator,
-            IAdjustmentsSelector adjustmentsSelector)
+            IAdjustmentsSelector adjustmentsSelector,
+            ICreaturePrototypeFactory creaturePrototypeFactory)
             : base(
                   collectionSelector,
                   creatureDataSelector,
@@ -38,7 +39,8 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
                   savesGenerator,
                   skillsGenerator,
                   speedsGenerator,
-                  adjustmentsSelector)
+                  adjustmentsSelector,
+                  creaturePrototypeFactory)
         {
         }
     }

@@ -1083,21 +1083,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             get
             {
-                var baseScores = NumericTestData.BaseAbilityTestNumbers;
-                var raceAdjustments = Enumerable.Range(-5, 5 + 1 + 2).Select(i => i * 2);
-                var advanceds = Enumerable.Range(0, 4);
-
-                foreach (var score in baseScores)
-                {
-                    foreach (var race in raceAdjustments)
-                    {
-                        foreach (var advanced in advanceds)
-                        {
-                            var adjusted = score + race + advanced;
-                            yield return new TestCaseData(race, score, advanced, Math.Max(adjusted, 3));
-                        }
-                    }
-                }
+                //INFO: Don't need every combination, just want to test the 3 threshold
+                yield return new TestCaseData(0, 10, 0, 10);
+                yield return new TestCaseData(0, 10, 2, 12);
+                yield return new TestCaseData(-2, 10, 0, 8);
+                yield return new TestCaseData(-8, 10, 0, 3);
+                yield return new TestCaseData(-10, 10, 0, 3);
+                yield return new TestCaseData(-8, 10, 2, 4);
             }
         }
 

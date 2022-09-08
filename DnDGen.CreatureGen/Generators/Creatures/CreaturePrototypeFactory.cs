@@ -47,6 +47,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                     .ToDictionary(a => a.Type, a => new Ability(a.Type) { RacialAdjustment = a.Amount });
                 prototype.Alignments = allAlignments[creature].Select(a => new Alignment(a)).Distinct().ToList();
                 prototype.CasterLevel = allData[creature].CasterLevel;
+                prototype.Size = allData[creature].Size;
                 prototype.ChallengeRating = allData[creature].ChallengeRating;
                 prototype.HitDiceQuantity = allHitDice[creature];
                 prototype.LevelAdjustment = allData[creature].LevelAdjustment;

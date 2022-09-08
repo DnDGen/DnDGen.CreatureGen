@@ -68,6 +68,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             prototype.Alignments.Add(new Alignment($"Alignment 1-{Guid.NewGuid()}"));
             prototype.Alignments.Add(new Alignment($"Alignment 2-{Guid.NewGuid()}"));
 
+            prototype.Size = SizeConstants.Medium;
             prototype.ChallengeRating = ChallengeRatingConstants.CR1;
             prototype.HitDiceQuantity = 1;
             prototype.Name = $"creature {Guid.NewGuid()}";
@@ -95,6 +96,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         public CreaturePrototypeBuilder WithChallengeRating(string cr)
         {
             prototype.ChallengeRating = cr;
+
+            return this;
+        }
+
+        public CreaturePrototypeBuilder WithSize(string size)
+        {
+            prototype.Size = size;
 
             return this;
         }

@@ -40,6 +40,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         {
             Assert.That(typesAndAmounts, Is.Not.Empty, $"{name}'s test was not set up");
             AssertTypesAndAmounts(name, typesAndAmounts);
+
+            //Correct format
+            var allAbilities = new[]
+            {
+                AbilityConstants.Charisma,
+                AbilityConstants.Constitution,
+                AbilityConstants.Dexterity,
+                AbilityConstants.Intelligence,
+                AbilityConstants.Strength,
+                AbilityConstants.Wisdom,
+            };
+
+            Assert.That(typesAndAmounts, Is.Not.Empty);
+            Assert.That(typesAndAmounts.Keys, Is.Unique.And.SubsetOf(allAbilities));
+
+            foreach (var kvp in typesAndAmounts)
+            {
+                Assert.That(kvp.Value % 2, Is.Zero, $"{name} {kvp.Key} {kvp.Value}");
+            }
         }
 
         public static IEnumerable AbilityAdjustmentsTestData
@@ -4107,33 +4126,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
                 {
                     yield return new TestCaseData(testCase.Key, testCase.Value);
                 }
-            }
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void AbilityAdjustments_AreFormattedCorrectly(string creature)
-        {
-            var allAbilities = new[]
-            {
-                AbilityConstants.Charisma,
-                AbilityConstants.Constitution,
-                AbilityConstants.Dexterity,
-                AbilityConstants.Intelligence,
-                AbilityConstants.Strength,
-                AbilityConstants.Wisdom,
-            };
-
-            Assert.That(table.Keys, Contains.Item(creature));
-
-            var abilities = typesAndAmountsSelector.Select(tableName, creature);
-            Assert.That(abilities, Is.Not.Empty, creature);
-
-            var abilityNames = abilities.Select(a => a.Type);
-            Assert.That(abilityNames, Is.Unique.And.SubsetOf(allAbilities), creature);
-
-            foreach (var ability in abilities)
-            {
-                Assert.That(ability.Amount % 2, Is.Zero, $"{creature} {ability.Type} {ability.Amount}");
             }
         }
 

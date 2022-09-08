@@ -15,12 +15,18 @@ namespace DnDGen.CreatureGen.Templates
         private readonly ICollectionSelector collectionSelector;
         private readonly ICreatureDataSelector creatureDataSelector;
         private readonly IAdjustmentsSelector adjustmentSelector;
+        private readonly ICreaturePrototypeFactory prototypeFactory;
 
-        public NoneApplicator(ICollectionSelector collectionSelector, ICreatureDataSelector creatureDataSelector, IAdjustmentsSelector adjustmentSelector)
+        public NoneApplicator(
+            ICollectionSelector collectionSelector,
+            ICreatureDataSelector creatureDataSelector,
+            IAdjustmentsSelector adjustmentSelector,
+            ICreaturePrototypeFactory prototypeFactory)
         {
             this.collectionSelector = collectionSelector;
             this.creatureDataSelector = creatureDataSelector;
             this.adjustmentSelector = adjustmentSelector;
+            this.prototypeFactory = prototypeFactory;
         }
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
@@ -166,12 +172,37 @@ namespace DnDGen.CreatureGen.Templates
 
         public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
         {
-            throw new System.NotImplementedException();
+            var compatibleCreatures = GetCompatibleCreatures(sourceCreatures, asCharacter, filters);
+            if (!compatibleCreatures.Any())
+                return Enumerable.Empty<CreaturePrototype>();
+
+            var prototypes = prototypeFactory.Build(compatibleCreatures, asCharacter);
+            var updatedPrototypes = prototypes.Select(p => ApplyToPrototype(p, filters?.Alignment));
+
+            return updatedPrototypes;
+        }
+
+        private CreaturePrototype ApplyToPrototype(CreaturePrototype prototype, string presetAlignment)
+        {
+            if (!string.IsNullOrEmpty(presetAlignment))
+            {
+                prototype.Alignments = prototype.Alignments.Where(adjustmentSelector => adjustmentSelector.Full == presetAlignment).ToList();
+            }
+
+            return prototype;
         }
 
         public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, Filters filters = null)
         {
-            throw new System.NotImplementedException();
+            var compatiblePrototypes = sourceCreatures
+                .Where(p => IsCompatible(
+                    p.Type.AllTypes,
+                    p.Alignments.Select(a => a.Full),
+                    p.ChallengeRating,
+                    filters).Compatible);
+            var updatedPrototypes = compatiblePrototypes.Select(p => ApplyToPrototype(p, filters?.Alignment));
+
+            return updatedPrototypes;
         }
     }
 }
