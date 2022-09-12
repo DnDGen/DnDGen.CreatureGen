@@ -136,11 +136,11 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 //INFO: We only want to apply filters to the last template in the series
                 if (i == filters.Templates.Count - 1)
                 {
-                    prototypes = applicator.GetCompatiblePrototypes(prototypes, filters);
+                    prototypes = applicator.GetCompatiblePrototypes(prototypes, asCharacter, filters);
                 }
                 else
                 {
-                    prototypes = applicator.GetCompatiblePrototypes(prototypes);
+                    prototypes = applicator.GetCompatiblePrototypes(prototypes, asCharacter);
                 }
             }
 

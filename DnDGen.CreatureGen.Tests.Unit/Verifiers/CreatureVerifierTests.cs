@@ -27,29 +27,37 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             verifier = new CreatureVerifier(mockJustInTimeFactory.Object, mockCollectionSelector.Object);
         }
 
-        [TestCase(true)]
-        [TestCase(false)]
-        public void VerifyCompatibility_CreatureAndTemplate_Compatible_IfTemplateApplicatorSaysSo_1Template(bool compatible)
+        [TestCase(true, true)]
+        [TestCase(true, false)]
+        [TestCase(false, true)]
+        [TestCase(false, false)]
+        public void VerifyCompatibility_CreatureAndTemplate_Compatible_IfTemplateApplicatorSaysSo_1Template(bool asCharacter, bool compatible)
         {
             var filters = new Filters();
             filters.Templates.Add("template");
 
             var mockApplicator = new Mock<TemplateApplicator>();
             mockApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), false, filters))
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, filters))
                 .Returns((IEnumerable<string> cc, bool asc, Filters f) => cc.Where(c => compatible));
 
             mockJustInTimeFactory
                 .Setup(f => f.Build<TemplateApplicator>("template"))
                 .Returns(mockApplicator.Object);
 
-            var isCompatible = verifier.VerifyCompatibility(false, "creature", filters);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
+                .Returns(new[] { "character", "creature", "wrong creature" });
+
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, "creature", filters);
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
-        [TestCase(true)]
-        [TestCase(false)]
-        public void VerifyCompatibility_CreatureAndTemplate_Compatible_IfTemplateApplicatorSaysSo_2Templates(bool compatible)
+        [TestCase(true, true)]
+        [TestCase(true, false)]
+        [TestCase(false, true)]
+        [TestCase(false, false)]
+        public void VerifyCompatibility_CreatureAndTemplate_Compatible_IfTemplateApplicatorSaysSo_2Templates(bool asCharacter, bool compatible)
         {
             var filters = new Filters();
             filters.Templates.Add("template 1");
@@ -60,11 +68,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             var prototypes1 = new[] { new CreaturePrototype { Name = "protoype 1" }, new CreaturePrototype { Name = "protoype 2" } };
 
             mockApplicator1
-                .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<string>>(), false, null))
+                .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<string>>(), asCharacter, null))
                 .Returns(prototypes1);
             mockApplicator2
-                .Setup(a => a.GetCompatiblePrototypes(prototypes1, filters))
-                .Returns((IEnumerable<CreaturePrototype> pp, Filters f) => pp.Where(p => compatible));
+                .Setup(a => a.GetCompatiblePrototypes(prototypes1, asCharacter, filters))
+                .Returns((IEnumerable<CreaturePrototype> pp, bool asC, Filters f) => pp.Where(p => compatible));
 
             mockJustInTimeFactory
                 .Setup(f => f.Build<TemplateApplicator>("template 1"))
@@ -73,13 +81,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(f => f.Build<TemplateApplicator>("template 2"))
                 .Returns(mockApplicator2.Object);
 
-            var isCompatible = verifier.VerifyCompatibility(false, "creature", filters);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
+                .Returns(new[] { "character", "creature", "wrong creature" });
+
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, "creature", filters);
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
-        [TestCase(true)]
-        [TestCase(false)]
-        public void VerifyCompatibility_CreatureAndTemplate_Compatible_IfTemplateApplicatorSaysSo_3Templates(bool compatible)
+        [TestCase(true, true)]
+        [TestCase(true, false)]
+        [TestCase(false, true)]
+        [TestCase(false, false)]
+        public void VerifyCompatibility_CreatureAndTemplate_Compatible_IfTemplateApplicatorSaysSo_3Templates(bool asCharacter, bool compatible)
         {
             var filters = new Filters();
             filters.Templates.Add("template 1");
@@ -97,14 +111,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
             var prototypes2 = new[] { new CreaturePrototype { Name = "protoype 1" }, new CreaturePrototype { Name = "protoype 3" } };
 
             mockApplicator1
-                .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<string>>(), false, null))
+                .Setup(a => a.GetCompatiblePrototypes(It.IsAny<IEnumerable<string>>(), asCharacter, null))
                 .Returns(prototypes1);
             mockApplicator2
-                .Setup(a => a.GetCompatiblePrototypes(prototypes1, null))
+                .Setup(a => a.GetCompatiblePrototypes(prototypes1, asCharacter, null))
                 .Returns(prototypes2);
             mockApplicator3
-                .Setup(a => a.GetCompatiblePrototypes(prototypes2, filters))
-                .Returns((IEnumerable<CreaturePrototype> pp, Filters f) => pp.Where(p => compatible));
+                .Setup(a => a.GetCompatiblePrototypes(prototypes2, asCharacter, filters))
+                .Returns((IEnumerable<CreaturePrototype> pp, bool asC, Filters f) => pp.Where(p => compatible));
 
             mockJustInTimeFactory
                 .Setup(f => f.Build<TemplateApplicator>("template 1"))
@@ -116,27 +130,37 @@ namespace DnDGen.CreatureGen.Tests.Unit.Verifiers
                 .Setup(f => f.Build<TemplateApplicator>("template 3"))
                 .Returns(mockApplicator3.Object);
 
-            var isCompatible = verifier.VerifyCompatibility(false, "creature", filters);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
+                .Returns(new[] { "character", "creature", "wrong creature" });
+
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, "creature", filters);
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
-        [TestCase(true)]
-        [TestCase(false)]
-        public void BUG_VerifyCompatibility_CreatureAndTemplate_Compatible_IfTemplateApplicatorSaysSo_HonorNoneTemplate(bool compatible)
+        [TestCase(true, true)]
+        [TestCase(true, false)]
+        [TestCase(false, true)]
+        [TestCase(false, false)]
+        public void BUG_VerifyCompatibility_CreatureAndTemplate_Compatible_IfTemplateApplicatorSaysSo_HonorNoneTemplate(bool asCharacter, bool compatible)
         {
             var filters = new Filters();
             filters.Templates.Add(CreatureConstants.Templates.None);
 
             var mockApplicator = new Mock<TemplateApplicator>();
             mockApplicator
-                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), false, filters))
+                .Setup(a => a.GetCompatibleCreatures(It.IsAny<IEnumerable<string>>(), asCharacter, filters))
                 .Returns((IEnumerable<string> cc, bool asc, Filters f) => cc.Where(c => compatible));
 
             mockJustInTimeFactory
                 .Setup(f => f.Build<TemplateApplicator>(CreatureConstants.Templates.None))
                 .Returns(mockApplicator.Object);
 
-            var isCompatible = verifier.VerifyCompatibility(false, "creature", filters);
+            mockCollectionSelector
+                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters))
+                .Returns(new[] { "character", "creature", "wrong creature" });
+
+            var isCompatible = verifier.VerifyCompatibility(asCharacter, "creature", filters);
             Assert.That(isCompatible, Is.EqualTo(compatible));
         }
 
