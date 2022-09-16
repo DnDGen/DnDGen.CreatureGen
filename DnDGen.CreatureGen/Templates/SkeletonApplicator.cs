@@ -409,6 +409,12 @@ namespace DnDGen.CreatureGen.Templates
         private void UpdateCreatureMagic(Creature creature)
         {
             creature.Magic = new Magic();
+            creature.CasterLevel = 0;
+        }
+
+        private void UpdateCreatureMagic(CreaturePrototype creature)
+        {
+            creature.CasterLevel = 0;
         }
 
         private void UpdateCreatureSaves(Creature creature)
@@ -705,6 +711,7 @@ namespace DnDGen.CreatureGen.Templates
             UpdateCreatureLevelAdjustment(prototype);
             UpdateCreatureType(prototype);
             UpdateCreatureAlignment(prototype);
+            UpdateCreatureMagic(prototype);
 
             return prototype;
         }
