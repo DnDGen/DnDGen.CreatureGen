@@ -158,7 +158,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural)]
         [TestCase(CreatureConstants.Templates.Zombie)]
-        [TestCase(null)]
+        [TestCase(null, Ignore = "Null is not a valid name in Ninject")]
         [TestCase("")]
         public void TemplateApplicatorIsInjected(string name)
         {
@@ -261,7 +261,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
             AssertNamedIsInstanceOf<TemplateApplicator, LichApplicator>(CreatureConstants.Templates.Lich);
         }
 
-        [TestCase(null)]
+        [TestCase(null, Ignore = "Null is not a valid name in Ninject")]
         [TestCase("")]
         [TestCase(CreatureConstants.Templates.None)]
         public void NoneApplicatorIsInjected(string name)

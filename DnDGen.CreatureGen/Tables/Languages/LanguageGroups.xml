@@ -5655,10 +5655,10 @@
     <name>YrthakBonus</name>
   </collection>
   <collection>
-    <name>Automatic</name>
+    <name>NoneAutomatic</name>
   </collection>
   <collection>
-    <name>Bonus</name>
+    <name>NoneBonus</name>
   </collection>
   <collection>
     <name>Celestial CreatureAutomatic</name>

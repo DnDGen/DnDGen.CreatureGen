@@ -1164,13 +1164,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             Assert.That(mode, Is.EqualTo(alignment));
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void AllCreaturesOfTypeAreTrueNeutral(string creature)
+        [TestCase(CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Types.Vermin)]
+        public void AllCreaturesOfTypeAreTrueNeutral(string creatureType)
         {
-            var neutralTypes = new[] { CreatureConstants.Types.Animal, CreatureConstants.Types.Vermin };
-            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
+            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
-            if (neutralTypes.Contains(types.First()))
+            foreach (var creature in creatures)
             {
                 var alignments = collectionSelector.ExplodeAndPreserveDuplicates(tableName, creature);
                 Assert.That(alignments, Has.Count.EqualTo(1).And.Contains(AlignmentConstants.TrueNeutral), creature);
@@ -1179,32 +1179,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void AllCreaturesHaveAlignment(string creature)
+        public void AllCreaturesHaveValidExplodedAlignment(string creature)
         {
-            var alignments = collectionSelector.ExplodeAndPreserveDuplicates(tableName, creature);
+            var alignments = collectionSelector.Explode(tableName, creature);
             Assert.That(alignments, Is.Not.Empty, creature);
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void CreatureAlignmentGroupsBoilDownToSetAlignments(string creature)
-        {
-            var allAlignments = table[GroupConstants.All];
-
-            Assert.That(table.Keys, Contains.Item(creature));
-
-            var creatureAlignments = collectionSelector.Explode(tableName, creature);
-            Assert.That(creatureAlignments, Is.SubsetOf(allAlignments), creature);
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void ExplodedCreatureAlignmentGroupsHaveSetAlignments(string creature)
-        {
-            var creatureAlignments = collectionSelector.Explode(tableName, creature);
+            Assert.That(alignments, Is.SubsetOf(table[GroupConstants.All]), creature);
 
             Assert.That(table.Keys, Contains.Item(creature + GroupConstants.Exploded));
-            Assert.That(table[creature + GroupConstants.Exploded], Is.EquivalentTo(creatureAlignments));
+            Assert.That(table[creature + GroupConstants.Exploded], Is.EquivalentTo(alignments));
         }
 
         [TestCase(CreatureConstants.Templates.CelestialCreature,

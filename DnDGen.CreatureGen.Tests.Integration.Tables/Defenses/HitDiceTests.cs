@@ -1,6 +1,5 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.CreatureGen.Tests.Integration.TestData;
 using NUnit.Framework;
 using System.Linq;
 
@@ -757,6 +756,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         public void HitDiceQuantity(string creature, double quantity)
         {
             AssertAdjustment(creature, quantity);
+            Assert.That(quantity, Is.Positive);
         }
 
         [TestCase(CreatureConstants.Types.Aberration, 8)]
@@ -777,38 +777,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         public void HitDie(string creatureType, int quantity)
         {
             AssertAdjustment(creatureType, quantity);
-        }
+            Assert.That(quantity, Is.Positive);
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void PositiveHitDiceQuantity(string creature)
-        {
-            var hitDiceQuantity = GetAdjustment(creature);
-            Assert.That(hitDiceQuantity, Is.Positive);
-        }
-
-        [TestCase(CreatureConstants.Types.Aberration)]
-        [TestCase(CreatureConstants.Types.Animal)]
-        [TestCase(CreatureConstants.Types.Construct)]
-        [TestCase(CreatureConstants.Types.Dragon)]
-        [TestCase(CreatureConstants.Types.Elemental)]
-        [TestCase(CreatureConstants.Types.Fey)]
-        [TestCase(CreatureConstants.Types.Giant)]
-        [TestCase(CreatureConstants.Types.Humanoid)]
-        [TestCase(CreatureConstants.Types.MagicalBeast)]
-        [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
-        [TestCase(CreatureConstants.Types.Ooze)]
-        [TestCase(CreatureConstants.Types.Outsider)]
-        [TestCase(CreatureConstants.Types.Plant)]
-        [TestCase(CreatureConstants.Types.Undead)]
-        [TestCase(CreatureConstants.Types.Vermin)]
-        public void CreatureTypeHasValidHitDie(string creatureType)
-        {
             var validDie = new[] { 2, 3, 4, 6, 8, 10, 12, 20, 100 };
-
-            var hitDie = GetAdjustment(creatureType);
-            Assert.That(hitDie, Is.Positive);
-            Assert.That(validDie, Contains.Item(hitDie));
+            Assert.That(validDie, Contains.Item(quantity));
         }
 
         [TestCase(CreatureConstants.Templates.CelestialCreature, int.MaxValue)]
@@ -848,6 +820,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         public void MaxHitDice(string template, double quantity)
         {
             AssertAdjustment(template, quantity);
+            Assert.That(quantity, Is.Positive);
         }
     }
 }

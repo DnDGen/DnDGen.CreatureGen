@@ -3308,7 +3308,7 @@
     <entry>Any</entry>
   </collection>
   <collection>
-    <name></name>
+    <name>None</name>
     <entry>Any</entry>
   </collection>
   <collection>
@@ -7068,7 +7068,7 @@
     <entry>Chaotic Evil</entry>
   </collection>
   <collection>
-    <name>Exploded</name>
+    <name>NoneExploded</name>
     <entry>Lawful Good</entry>
     <entry>Lawful Neutral</entry>
     <entry>Lawful Evil</entry>
@@ -7464,7 +7464,7 @@
     <entry>Chaotic Evil</entry>
   </collection>
   <collection>
-    <name>Allowed Input</name>
+    <name>NoneAllowed Input</name>
     <entry>Lawful Good</entry>
     <entry>Lawful Neutral</entry>
     <entry>Lawful Evil</entry>

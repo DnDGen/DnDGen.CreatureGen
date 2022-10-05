@@ -292,13 +292,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
         private CreatureType GetCreatureType(string creatureName)
         {
-            var creatureType = new CreatureType();
             var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creatureName);
-
-            creatureType.Name = types.First();
-            creatureType.SubTypes = types.Skip(1);
-
-            return creatureType;
+            return new CreatureType(types);
         }
 
         [Test]

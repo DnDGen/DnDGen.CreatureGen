@@ -31,6 +31,8 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IEnumerable<string> creatureTypes;
         private readonly ICreaturePrototypeFactory prototypeFactory;
 
+        private const int MinimumVampireHitDice = 5;
+
         public VampireApplicator(
             Dice dice,
             IAttacksGenerator attacksGenerator,
@@ -537,8 +539,8 @@ namespace DnDGen.CreatureGen.Templates
             if (!creatureTypes.Contains(types.First()))
                 return (false, $"Type '{types.First()}' is not valid");
 
-            if (!levelAdjustment.HasValue && creatureHitDiceQuantity < 5)
-                return (false, "Creature has insufficient Hit Dice");
+            if (!levelAdjustment.HasValue && creatureHitDiceQuantity < MinimumVampireHitDice)
+                return (false, $"Creature has insufficient Hit Dice ({creatureHitDiceQuantity} < {MinimumVampireHitDice})");
 
             return (true, null);
         }
