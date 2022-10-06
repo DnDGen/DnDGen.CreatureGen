@@ -23,7 +23,7 @@ namespace DnDGen.CreatureGen.Generators.Alignments
             var weightedAlignments = collectionSelector.ExplodeAndPreserveDuplicates(TableNameConstants.Collection.AlignmentGroups, creatureName);
             templates ??= Enumerable.Empty<string>();
 
-            foreach (var template in templates)
+            foreach (var template in templates.Where(t => !string.IsNullOrEmpty(t)))
             {
                 var templateAlignments = collectionSelector.SelectFrom(TableNameConstants.Collection.AlignmentGroups, template + GroupConstants.AllowedInput);
                 //INFO: Doing this instead of intersect in order to preserve duplicates

@@ -116,7 +116,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             if (templates?.Any() != true)
                 return Enumerable.Empty<string>();
 
-            var applicator = justInTimeFactory.Build<TemplateApplicator>(filters.Templates[0]);
+            var template = filters.Templates[0] ?? string.Empty;
+            var applicator = justInTimeFactory.Build<TemplateApplicator>(template);
             IEnumerable<CreaturePrototype> prototypes;
 
             //INFO: We only want to apply filters to the last template in the series
@@ -131,7 +132,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             for (var i = 1; i < filters.Templates.Count; i++)
             {
-                applicator = justInTimeFactory.Build<TemplateApplicator>(filters.Templates[i]);
+                template = filters.Templates[i] ?? string.Empty;
+                applicator = justInTimeFactory.Build<TemplateApplicator>(template);
 
                 //INFO: We only want to apply filters to the last template in the series
                 if (i == filters.Templates.Count - 1)
@@ -232,13 +234,17 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             if (filters?.Templates?.Any() == true)
             {
-                foreach (var template in filters.Templates.Take(filters.Templates.Count() - 1))
+                var templates = filters.Templates.Where(t => !string.IsNullOrEmpty(t));
+                if (!templates.Any())
+                    return creature;
+
+                foreach (var template in templates.Take(templates.Count() - 1))
                 {
                     var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
                     creature = templateApplicator.ApplyTo(creature, asCharacter, null);
                 }
 
-                var lastTemplate = filters.Templates.Last();
+                var lastTemplate = templates.Last();
                 var lastTemplateApplicator = justInTimeFactory.Build<TemplateApplicator>(lastTemplate);
                 creature = lastTemplateApplicator.ApplyTo(creature, asCharacter, filters);
             }
@@ -435,13 +441,17 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             if (filters?.Templates?.Any() == true)
             {
-                foreach (var template in filters.Templates.Take(filters.Templates.Count() - 1))
+                var templates = filters.Templates.Where(t => !string.IsNullOrEmpty(t));
+                if (!templates.Any())
+                    return creature;
+
+                foreach (var template in templates.Take(templates.Count() - 1))
                 {
                     var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
                     creature = await templateApplicator.ApplyToAsync(creature, asCharacter, null);
                 }
 
-                var lastTemplate = filters.Templates.Last();
+                var lastTemplate = templates.Last();
                 var lastTemplateApplicator = justInTimeFactory.Build<TemplateApplicator>(lastTemplate);
                 creature = await lastTemplateApplicator.ApplyToAsync(creature, asCharacter, filters);
             }

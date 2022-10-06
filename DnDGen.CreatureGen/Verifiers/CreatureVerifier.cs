@@ -37,9 +37,10 @@ namespace DnDGen.CreatureGen.Verifiers
             if (!baseCreatures.Any())
                 return false;
 
-            if (filters?.Templates?.Any() == true)
+            if (filters?.Templates?.Any(t => !string.IsNullOrEmpty(t)) == true)
             {
-                var applicator = factory.Build<TemplateApplicator>(filters.Templates[0]);
+                var template = filters.Templates[0] ?? string.Empty;
+                var applicator = factory.Build<TemplateApplicator>(template);
 
                 if (filters.Templates.Count == 1)
                 {
@@ -51,6 +52,7 @@ namespace DnDGen.CreatureGen.Verifiers
 
                 for (var i = 1; i < filters.Templates.Count; i++)
                 {
+                    template = filters.Templates[i] ?? string.Empty;
                     applicator = factory.Build<TemplateApplicator>(filters.Templates[i]);
 
                     //INFO: We only want to apply filters on the last template, once all other templates have been applied

@@ -57,6 +57,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
                     Alignment = AlignmentConstants.LawfulEvil
                 }),
             (true, new Filters { Type = CreatureConstants.Types.Subtypes.Earth, ChallengeRating = ChallengeRatingConstants.CR5 }),
+            (true, new Filters { Type = CreatureConstants.Types.Subtypes.Reptilian, ChallengeRating = ChallengeRatingConstants.CR0 }),
             (true, new Filters
                 {
                     Templates = new List<string> { CreatureConstants.Templates.HalfCelestial },
@@ -125,7 +126,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.TestData
             (false, new Filters { Type = CreatureConstants.Types.Subtypes.Augmented }),
             (false, new Filters { Type = CreatureConstants.Types.Subtypes.Incorporeal }),
             (false, new Filters { Type = CreatureConstants.Types.Subtypes.Native }),
+            (false, new Filters { Type = CreatureConstants.Types.Subtypes.Reptilian, ChallengeRating = ChallengeRatingConstants.CR1_4th }),
             (false, new Filters { Type = CreatureConstants.Types.Subtypes.Reptilian, ChallengeRating = ChallengeRatingConstants.CR1_3rd }),
+            (false, new Filters { Type = CreatureConstants.Types.Subtypes.Reptilian, ChallengeRating = ChallengeRatingConstants.CR1 }),
             (false, new Filters { Type = CreatureConstants.Types.Subtypes.Reptilian, ChallengeRating = ChallengeRatingConstants.CR2 }),
             (false, new Filters { Type = CreatureConstants.Types.Subtypes.Shapechanger }),
             (false, new Filters { ChallengeRating = ChallengeRatingConstants.CR15 }),

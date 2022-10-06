@@ -101,6 +101,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             {
                 foreach (var template in templates.Where(t => templateAbilityMinimums.ContainsKey(t)))
                 {
+                    if (!randomizer.AbilityAdvancements.ContainsKey(templateAbilityMinimums[template].Ability))
+                    {
+                        randomizer.AbilityAdvancements[templateAbilityMinimums[template].Ability] = 0;
+                    }
+
                     var newMin = Math.Max(randomizer.AbilityAdvancements[templateAbilityMinimums[template].Ability], templateAbilityMinimums[template].Minimum);
                     randomizer.AbilityAdvancements[templateAbilityMinimums[template].Ability] = newMin;
                     randomizer.PriorityAbility = templateAbilityMinimums[template].Ability;
@@ -133,7 +138,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
             Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.Name, Is.EqualTo(creatureName), creature.Summary);
-            Assert.That(creature.Templates, Is.EqualTo(templates), creature.Summary);
+            Assert.That(creature.Templates, Is.EqualTo(templates.Where(t => t != CreatureConstants.Templates.None)), creature.Summary);
 
             if (asCharacter)
                 creatureAsserter.AssertCreatureAsCharacter(creature);
@@ -168,7 +173,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
             Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.Name, Is.EqualTo(creatureName), creature.Summary);
-            Assert.That(creature.Templates, Is.EqualTo(new[] { template }), creature.Summary);
+
+            if (template != CreatureConstants.Templates.None)
+                Assert.That(creature.Templates, Is.EqualTo(new[] { template }), creature.Summary);
 
             if (asCharacter)
                 creatureAsserter.AssertCreatureAsCharacter(creature);
@@ -317,7 +324,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
 
             Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), message.ToString());
 
-            Assert.That(creature.Templates, Is.EqualTo(templates), message.ToString());
+            if (templates.Any(t => !string.IsNullOrEmpty(t)))
+                Assert.That(creature.Templates, Is.EqualTo(templates.Where(t => t != CreatureConstants.Templates.None)), message.ToString());
 
             if (type != null)
                 AssertCreatureIsType(creature, type, message.ToString());

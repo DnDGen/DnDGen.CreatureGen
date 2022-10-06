@@ -64,13 +64,25 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Alignments
         {
             mockCollectionSelector
                 .Setup(s => s.ExplodeAndPreserveDuplicates(TableNameConstants.Collection.AlignmentGroups, "creature name"))
-                .Returns(new[] { "lawfulness goodness", "wrong alignment" });
+                .Returns(new[] { "other wrong alignment", "lawfulness goodness", "wrong alignment" });
 
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, "my template" + GroupConstants.AllowedInput))
                 .Returns(new[] { "template alignment", "lawfulness goodness" });
 
             var alignment = alignmentGenerator.Generate("creature name", new[] { "my template" }, null);
+            Assert.That(alignment.Full, Is.EqualTo("lawfulness goodness"));
+        }
+
+        [TestCase(null)]
+        [TestCase("")]
+        public void Generate_Alignment_WithEmptyTemplate(string empty)
+        {
+            mockCollectionSelector
+                .Setup(s => s.ExplodeAndPreserveDuplicates(TableNameConstants.Collection.AlignmentGroups, "creature name"))
+                .Returns(new[] { "lawfulness goodness", "wrong alignment" });
+
+            var alignment = alignmentGenerator.Generate("creature name", new[] { empty }, null);
             Assert.That(alignment.Full, Is.EqualTo("lawfulness goodness"));
         }
 

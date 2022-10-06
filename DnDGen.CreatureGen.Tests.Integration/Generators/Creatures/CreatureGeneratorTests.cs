@@ -183,7 +183,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         {
             var creature = creatureGenerator.Generate(false, CreatureConstants.Human, null, template);
             creatureAsserter.AssertCreature(creature);
-            Assert.That(creature.Templates, Has.Count.EqualTo(1).And.Contains(template));
+
+            if (template != CreatureConstants.Templates.None)
+                Assert.That(creature.Templates, Has.Count.EqualTo(1).And.Contains(template));
+            else
+                Assert.That(creature.Templates, Is.Empty);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
@@ -196,7 +200,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
 
             var creature = creatureGenerator.Generate(true, CreatureConstants.Human, null, template);
             creatureAsserter.AssertCreatureAsCharacter(creature);
-            Assert.That(creature.Templates, Has.Count.EqualTo(1).And.Contains(template));
+
+            if (template != CreatureConstants.Templates.None)
+                Assert.That(creature.Templates, Has.Count.EqualTo(1).And.Contains(template));
+            else
+                Assert.That(creature.Templates, Is.Empty);
         }
 
         [TestCase(false, CreatureConstants.Aboleth)]
@@ -310,12 +318,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.HalfFiend)]
         [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.HalfDragon_Black, CreatureConstants.Templates.HalfFiend)]
         [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.HalfDragon_Black, CreatureConstants.Templates.HalfFiend)]
-        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.HalfFiend, CreatureConstants.Templates.HalfDragon_Black)]
-        [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.HalfFiend, CreatureConstants.Templates.HalfDragon_Black)]
         [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Lich)]
         [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.Lich)]
-        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.HalfDragon_Red, CreatureConstants.Templates.Lich)]
-        [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.HalfDragon_Red, CreatureConstants.Templates.Lich)]
         [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted)]
         [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted)]
         [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural)]
@@ -345,16 +349,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Skeleton)]
         [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Vampire)]
         [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.Vampire)]
-        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.HalfDragon_Blue, CreatureConstants.Templates.Vampire)]
-        [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.HalfDragon_Blue, CreatureConstants.Templates.Vampire)]
         [TestCase(false, CreatureConstants.Human,
             CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted,
             CreatureConstants.Templates.HalfDragon_Blue,
-            CreatureConstants.Templates.Vampire)]
+            CreatureConstants.Templates.Ghost)]
         [TestCase(true, CreatureConstants.Human,
             CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted,
             CreatureConstants.Templates.HalfDragon_Blue,
-            CreatureConstants.Templates.Vampire)]
+            CreatureConstants.Templates.Ghost)]
         [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Zombie)]
         [TestCase(false, CreatureConstants.Kobold)]
         [TestCase(true, CreatureConstants.Kobold)]
