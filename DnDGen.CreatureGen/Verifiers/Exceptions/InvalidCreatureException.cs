@@ -16,7 +16,7 @@ namespace DnDGen.CreatureGen.Verifiers.Exceptions
         private readonly string reason;
 
         public InvalidCreatureException(string reason, bool asCharacter, string creature = null, Filters filters = null)
-            : this(reason, asCharacter, creature, filters?.Type, filters?.ChallengeRating, filters?.Alignment, filters?.Templates?.ToArray() ?? new string[0])
+            : this(reason, asCharacter, creature, filters?.Type, filters?.ChallengeRating, filters?.Alignment, filters?.CleanTemplates?.ToArray() ?? new string[0])
         {
 
         }

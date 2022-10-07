@@ -58,7 +58,6 @@ namespace DnDGen.CreatureGen.IoC.Modules
             Bind<TemplateApplicator>().To<HalfFiendApplicator>().Named(CreatureConstants.Templates.HalfFiend);
             Bind<TemplateApplicator>().To<LichApplicator>().Named(CreatureConstants.Templates.Lich);
             Bind<TemplateApplicator>().To<NoneApplicator>().Named(CreatureConstants.Templates.None);
-            Bind<TemplateApplicator>().To<NoneApplicator>().Named(string.Empty);
             Bind<TemplateApplicator>().To<SkeletonApplicator>().Named(CreatureConstants.Templates.Skeleton);
             Bind<TemplateApplicator>().To<VampireApplicator>().Named(CreatureConstants.Templates.Vampire);
             Bind<TemplateApplicator>().To<LycanthropeBrownBearAfflictedApplicator>().Named(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted);

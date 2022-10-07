@@ -95,33 +95,33 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
             var validCreatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, group);
 
-            if (filters?.Templates?.Any() != true)
+            if (filters?.CleanTemplates?.Any() != true)
             {
                 var randomValidCreature = GetRandomValidCreature(validCreatures, asCharacter, filters);
                 return (randomValidCreature.CreatureName, new[] { randomValidCreature.Template });
             }
 
-            validCreatures = GetCreaturesOfTemplates(filters.Templates, validCreatures, asCharacter, filters);
+            validCreatures = GetCreaturesOfTemplates(validCreatures, asCharacter, filters);
             if (!validCreatures.Any())
             {
-                throw new InvalidCreatureException($"No valid creatures ({group}) of template {string.Join(", ", filters.Templates)}", asCharacter, null, filters);
+                throw new InvalidCreatureException($"No valid creatures ({group}) of template {string.Join(", ", filters.CleanTemplates)}", asCharacter, null, filters);
             }
 
             var randomCreature = collectionsSelector.SelectRandomFrom(validCreatures);
-            return (randomCreature, filters.Templates?.ToArray());
+            return (randomCreature, filters.CleanTemplates?.ToArray());
         }
 
-        private IEnumerable<string> GetCreaturesOfTemplates(List<string> templates, IEnumerable<string> creatureGroup, bool asCharacter, Filters filters)
+        private IEnumerable<string> GetCreaturesOfTemplates(IEnumerable<string> creatureGroup, bool asCharacter, Filters filters)
         {
-            if (templates?.Any() != true)
+            if (filters?.CleanTemplates.Any() != true)
                 return Enumerable.Empty<string>();
 
-            var template = filters.Templates[0] ?? string.Empty;
+            var template = filters.CleanTemplates[0] ?? string.Empty;
             var applicator = justInTimeFactory.Build<TemplateApplicator>(template);
             IEnumerable<CreaturePrototype> prototypes;
 
             //INFO: We only want to apply filters to the last template in the series
-            if (filters.Templates.Count == 1)
+            if (filters.CleanTemplates.Count == 1)
             {
                 prototypes = applicator.GetCompatiblePrototypes(creatureGroup, asCharacter, filters);
             }
@@ -130,13 +130,13 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 prototypes = applicator.GetCompatiblePrototypes(creatureGroup, asCharacter);
             }
 
-            for (var i = 1; i < filters.Templates.Count; i++)
+            for (var i = 1; i < filters.CleanTemplates.Count; i++)
             {
-                template = filters.Templates[i] ?? string.Empty;
+                template = filters.CleanTemplates[i] ?? string.Empty;
                 applicator = justInTimeFactory.Build<TemplateApplicator>(template);
 
                 //INFO: We only want to apply filters to the last template in the series
-                if (i == filters.Templates.Count - 1)
+                if (i == filters.CleanTemplates.Count - 1)
                 {
                     prototypes = applicator.GetCompatiblePrototypes(prototypes, asCharacter, filters);
                 }
@@ -162,7 +162,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var randomCreature = GenerateRandomName(asCharacter, filters);
 
             var nonNullTemplates = randomCreature.Templates.Where(t => t != CreatureConstants.Templates.None);
-            if (filters?.Templates.Any() != true && nonNullTemplates.Any())
+            if (filters?.CleanTemplates.Any() != true && nonNullTemplates.Any())
             {
                 filters ??= new Filters();
                 filters.Templates.AddRange(randomCreature.Templates);
@@ -232,19 +232,15 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             var creature = GeneratePrototype(creatureName, asCharacter, abilityRandomizer, filters);
 
-            if (filters?.Templates?.Any() == true)
+            if (filters?.CleanTemplates?.Any() == true)
             {
-                var templates = filters.Templates.Where(t => !string.IsNullOrEmpty(t));
-                if (!templates.Any())
-                    return creature;
-
-                foreach (var template in templates.Take(templates.Count() - 1))
+                foreach (var template in filters.CleanTemplates.Take(filters.CleanTemplates.Count - 1))
                 {
                     var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
                     creature = templateApplicator.ApplyTo(creature, asCharacter, null);
                 }
 
-                var lastTemplate = templates.Last();
+                var lastTemplate = filters.CleanTemplates.Last();
                 var lastTemplateApplicator = justInTimeFactory.Build<TemplateApplicator>(lastTemplate);
                 creature = lastTemplateApplicator.ApplyTo(creature, asCharacter, filters);
             }
@@ -254,7 +250,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         private Creature GeneratePrototype(string creatureName, bool asCharacter, AbilityRandomizer abilityRandomizer, Filters filters)
         {
-            var templates = filters?.Templates ?? new List<string>();
+            var templates = filters?.CleanTemplates ?? new List<string>();
 
             var creature = new Creature();
             creature.Name = creatureName;
@@ -422,7 +418,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var randomCreature = GenerateRandomName(asCharacter, filters);
 
             var nonNullTemplates = randomCreature.Templates.Where(t => t != CreatureConstants.Templates.None);
-            if (filters?.Templates.Any() != true && nonNullTemplates.Any())
+            if (filters?.CleanTemplates.Any() != true && nonNullTemplates.Any())
             {
                 filters ??= new Filters();
                 filters.Templates.AddRange(randomCreature.Templates);
@@ -439,19 +435,15 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             var creature = GeneratePrototype(creatureName, asCharacter, abilityRandomizer, filters);
 
-            if (filters?.Templates?.Any() == true)
+            if (filters?.CleanTemplates?.Any() == true)
             {
-                var templates = filters.Templates.Where(t => !string.IsNullOrEmpty(t));
-                if (!templates.Any())
-                    return creature;
-
-                foreach (var template in templates.Take(templates.Count() - 1))
+                foreach (var template in filters.CleanTemplates.Take(filters.CleanTemplates.Count - 1))
                 {
                     var templateApplicator = justInTimeFactory.Build<TemplateApplicator>(template);
                     creature = await templateApplicator.ApplyToAsync(creature, asCharacter, null);
                 }
 
-                var lastTemplate = templates.Last();
+                var lastTemplate = filters.CleanTemplates.Last();
                 var lastTemplateApplicator = justInTimeFactory.Build<TemplateApplicator>(lastTemplate);
                 creature = await lastTemplateApplicator.ApplyToAsync(creature, asCharacter, filters);
             }

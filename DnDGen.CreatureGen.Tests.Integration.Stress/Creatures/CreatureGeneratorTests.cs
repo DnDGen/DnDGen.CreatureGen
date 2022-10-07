@@ -25,6 +25,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
         private Stopwatch stopwatch;
         private Dice dice;
         private Dictionary<string, (string Ability, int Minimum)> templateAbilityMinimums;
+        private int generationTimeLimitInSeconds;
 
         [SetUp]
         public void Setup()
@@ -39,6 +40,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             templateAbilityMinimums[CreatureConstants.Templates.Ghost] = (AbilityConstants.Charisma, 6);
             templateAbilityMinimums[CreatureConstants.Templates.HalfCelestial] = (AbilityConstants.Intelligence, 4);
             templateAbilityMinimums[CreatureConstants.Templates.HalfFiend] = (AbilityConstants.Intelligence, 4);
+
+            //INFO: This accounts for how tests and generation may run more slowly when running locally versus in Azure
+#if STRESS
+            generationTimeLimitInSeconds = 1;
+#else
+            generationTimeLimitInSeconds = 5;
+#endif
+
         }
 
         [TestCase(true, null)] //INFO: Pre-random template
@@ -136,7 +145,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = creatureGenerator.Generate(asCharacter, creatureName, randomizer, templates);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(generationTimeLimitInSeconds).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.Name, Is.EqualTo(creatureName), creature.Summary);
             Assert.That(creature.Templates, Is.EqualTo(templates.Where(t => t != CreatureConstants.Templates.None)), creature.Summary);
 
@@ -171,7 +180,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             var creature = await creatureGenerator.GenerateAsync(asCharacter, creatureName, randomizer, template);
             stopwatch.Stop();
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(generationTimeLimitInSeconds).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), creature.Summary);
             Assert.That(creature.Name, Is.EqualTo(creatureName), creature.Summary);
 
             if (template != CreatureConstants.Templates.None)
@@ -322,7 +331,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Stress.Creatures
             message.AppendLine($"CR: {challengeRating ?? "Null"}");
             message.AppendLine($"Alignment: {alignment ?? "Null"}");
 
-            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(1).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), message.ToString());
+            Assert.That(stopwatch.Elapsed.TotalSeconds, Is.LessThan(generationTimeLimitInSeconds).Or.LessThan(creature.HitPoints.HitDiceQuantity * 0.1), message.ToString());
 
             if (templates.Any(t => !string.IsNullOrEmpty(t)))
                 Assert.That(creature.Templates, Is.EqualTo(templates.Where(t => t != CreatureConstants.Templates.None)), message.ToString());

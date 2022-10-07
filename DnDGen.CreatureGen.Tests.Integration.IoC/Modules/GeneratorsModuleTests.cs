@@ -140,9 +140,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
         [TestCase(CreatureConstants.Templates.HalfDragon_White)]
         [TestCase(CreatureConstants.Templates.HalfFiend)]
         [TestCase(CreatureConstants.Templates.Lich)]
-        [TestCase(CreatureConstants.Templates.None)]
-        [TestCase(CreatureConstants.Templates.Skeleton)]
-        [TestCase(CreatureConstants.Templates.Vampire)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Afflicted)]
@@ -157,9 +154,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Natural)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural)]
+        [TestCase(CreatureConstants.Templates.None)]
+        [TestCase(CreatureConstants.Templates.Skeleton)]
+        [TestCase(CreatureConstants.Templates.Vampire)]
         [TestCase(CreatureConstants.Templates.Zombie)]
-        [TestCase(null, Ignore = "Null is not a valid name in Ninject")]
-        [TestCase("")]
         public void TemplateApplicatorIsInjected(string name)
         {
             AssertNotSingleton<TemplateApplicator>(name);
@@ -261,12 +259,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
             AssertNamedIsInstanceOf<TemplateApplicator, LichApplicator>(CreatureConstants.Templates.Lich);
         }
 
-        [TestCase(null, Ignore = "Null is not a valid name in Ninject")]
-        [TestCase("")]
-        [TestCase(CreatureConstants.Templates.None)]
-        public void NoneApplicatorIsInjected(string name)
+        [Test]
+        public void NoneApplicatorIsInjected()
         {
-            AssertNamedIsInstanceOf<TemplateApplicator, NoneApplicator>(name);
+            AssertNamedIsInstanceOf<TemplateApplicator, NoneApplicator>(CreatureConstants.Templates.None);
         }
 
         [Test]
