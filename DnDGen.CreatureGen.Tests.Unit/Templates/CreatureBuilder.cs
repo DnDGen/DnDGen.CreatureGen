@@ -194,7 +194,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 creature.Speeds[kvp.Key].Value = kvp.Value.Value;
             }
 
-            creature.Template = source.Template;
+            creature.Templates.AddRange(source.Templates);
             creature.Type = new CreatureType();
             creature.Type.Name = source.Type.Name;
             creature.Type.SubTypes = source.Type.SubTypes.ToArray();
@@ -277,7 +277,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             creature.Speeds[SpeedConstants.Land].Value = (random.Next(5) + 1) * 10;
             creature.Speeds[SpeedConstants.Land].Description = $"speed description {Guid.NewGuid()}";
 
-            creature.Template = CreatureConstants.Templates.None;
             creature.Type = new CreatureType();
             creature.Type.Name = $"creature type {Guid.NewGuid()}";
             creature.Type.SubTypes = new[]

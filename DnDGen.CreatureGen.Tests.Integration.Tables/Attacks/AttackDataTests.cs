@@ -292,13 +292,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
         private CreatureType GetCreatureType(string creatureName)
         {
-            var creatureType = new CreatureType();
             var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creatureName);
-
-            creatureType.Name = types.First();
-            creatureType.SubTypes = types.Skip(1);
-
-            return creatureType;
+            return new CreatureType(types);
         }
 
         [Test]
@@ -378,29 +373,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             }
 
             var creatureData = creatureDataSelector.SelectFor(creature);
-            var hasUnnaturalAttack = table[creature]
-                .Select(helper.ParseEntry)
-                .Any(d => !Convert.ToBoolean(d[DataIndexConstants.AttackData.IsNaturalIndex]));
-
-            if (!hasUnnaturalAttack)
-            {
-                Assert.Pass($"{creature} has all-natural, 100% USDA Organic attacks");
-            }
-
-            Assert.That(hasUnnaturalAttack, Is.True.And.EqualTo(creatureData.CanUseEquipment));
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void CreatureWithUnnaturalAttack_HasNoDamageForEquipmentAttacks(string creature)
-        {
-            Assert.That(table, Contains.Key(creature));
-
-            foreach (var entry in table[creature])
-            {
-                var valid = helper.ValidateEntry(entry);
-                Assert.That(valid, Is.True, $"Invalid entry: {entry}");
-            }
-
             var unnaturalAttacks = table[creature]
                 .Select(helper.ParseEntry)
                 .Where(d => !Convert.ToBoolean(d[DataIndexConstants.AttackData.IsNaturalIndex]));
@@ -410,6 +382,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 Assert.Pass($"{creature} has all-natural, 100% USDA Organic attacks");
             }
 
+            Assert.That(unnaturalAttacks.Any(), Is.True.And.EqualTo(creatureData.CanUseEquipment));
+
+            //No Damage for Equipment attacks
             foreach (var attack in unnaturalAttacks)
             {
                 if (attack[DataIndexConstants.AttackData.NameIndex] != AttributeConstants.Melee
@@ -420,28 +395,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
                 Assert.That(attack[DataIndexConstants.AttackData.DamageDataIndex], Is.Empty, attack[DataIndexConstants.AttackData.NameIndex]);
             }
-        }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void CreatureWithUnnaturalAttack_HasNaturalAttack(string creature)
-        {
-            Assert.That(table, Contains.Key(creature));
-
-            foreach (var entry in table[creature])
-            {
-                var valid = helper.ValidateEntry(entry);
-                Assert.That(valid, Is.True, $"Invalid entry: {entry}");
-            }
-
-            var hasUnnaturalAttack = table[creature]
-                .Select(helper.ParseEntry)
-                .Any(d => !Convert.ToBoolean(d[DataIndexConstants.AttackData.IsNaturalIndex]));
-
-            if (!hasUnnaturalAttack)
-            {
-                Assert.Pass($"{creature} has all-natural, 100% USDA Organic attacks");
-            }
-
+            //Has Natural Attack
             var naturalAttack = table[creature]
                 .Select(helper.ParseEntry)
                 .FirstOrDefault(d => d[DataIndexConstants.AttackData.IsNaturalIndex] == bool.TrueString

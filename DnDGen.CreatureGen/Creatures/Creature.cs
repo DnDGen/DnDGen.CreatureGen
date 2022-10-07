@@ -14,9 +14,14 @@ namespace DnDGen.CreatureGen.Creatures
     public class Creature
     {
         public string Name { get; set; }
-        public string Template { get; set; }
-        public string Size { get; set; }
         public CreatureType Type { get; set; }
+        public Dictionary<string, Ability> Abilities { get; set; }
+        public string ChallengeRating { get; set; }
+        public Alignment Alignment { get; set; }
+        public int? LevelAdjustment { get; set; }
+        public int CasterLevel { get; set; }
+        public List<string> Templates { get; set; }
+        public string Size { get; set; }
         public HitPoints HitPoints { get; set; }
         public IEnumerable<string> Languages { get; set; }
         public bool IsAdvanced { get; set; }
@@ -49,13 +54,8 @@ namespace DnDGen.CreatureGen.Creatures
         public Measurement Reach { get; set; }
         public IEnumerable<Feat> SpecialQualities { get; set; }
         public Dictionary<string, Save> Saves { get; set; }
-        public Dictionary<string, Ability> Abilities { get; set; }
         public IEnumerable<Skill> Skills { get; set; }
         public IEnumerable<Feat> Feats { get; set; }
-        public string ChallengeRating { get; set; }
-        public Alignment Alignment { get; set; }
-        public int? LevelAdjustment { get; set; }
-        public int CasterLevel { get; set; }
         public int NumberOfHands { get; set; }
         public bool CanUseEquipment { get; set; }
         public IEnumerable<Attack> Attacks { get; set; }
@@ -108,7 +108,8 @@ namespace DnDGen.CreatureGen.Creatures
         {
             get
             {
-                var summary = $"{Template} {Name}";
+                var summary = string.Join(" ", Templates);
+                summary += $" {Name}";
 
                 if (IsAdvanced)
                     summary += " [Advanced]";
@@ -123,20 +124,20 @@ namespace DnDGen.CreatureGen.Creatures
         {
             Abilities = new Dictionary<string, Ability>();
             Alignment = new Alignment();
+            ChallengeRating = string.Empty;
+            Name = string.Empty;
+            Type = new CreatureType();
             ArmorClass = new ArmorClass();
             Attacks = Enumerable.Empty<Attack>();
-            ChallengeRating = string.Empty;
             Feats = Enumerable.Empty<Feat>();
             HitPoints = new HitPoints();
-            Name = string.Empty;
             Reach = new Measurement("feet");
             Saves = new Dictionary<string, Save>();
             Size = string.Empty;
             Skills = Enumerable.Empty<Skill>();
             Space = new Measurement("feet");
             SpecialQualities = Enumerable.Empty<Feat>();
-            Template = string.Empty;
-            Type = new CreatureType();
+            Templates = new List<string>();
             Speeds = new Dictionary<string, Measurement>();
             Equipment = new Equipment();
             Magic = new Magic();

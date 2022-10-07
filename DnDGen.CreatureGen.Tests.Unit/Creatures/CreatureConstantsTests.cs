@@ -754,7 +754,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Templates.HalfDragon_Silver, "Half-Dragon (Silver)")]
         [TestCase(CreatureConstants.Templates.HalfFiend, "Half-Fiend")]
         [TestCase(CreatureConstants.Templates.Lich, "Lich")]
-        [TestCase(CreatureConstants.Templates.None, "")]
+        [TestCase(CreatureConstants.Templates.None, "None")]
         [TestCase(CreatureConstants.Templates.Skeleton, "Skeleton")]
         [TestCase(CreatureConstants.Templates.Vampire, "Vampire")]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted, "Lycanthrope, Brown Bear (Werebear, Afflicted)")]

@@ -52,7 +52,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
             Assert.That(creature.SpecialQualities, Is.Empty);
             Assert.That(creature.Speeds, Is.Empty);
             Assert.That(creature.Summary, Is.Empty);
-            Assert.That(creature.Template, Is.Empty);
+            Assert.That(creature.Templates, Is.Empty);
             Assert.That(creature.Type, Is.Not.Null);
             Assert.That(creature.Magic, Is.Not.Null);
             Assert.That(creature.Languages, Is.Empty);
@@ -345,19 +345,40 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         public void CreatureSummaryWithTemplate()
         {
             creature.Name = Guid.NewGuid().ToString();
-            creature.Template = Guid.NewGuid().ToString();
+            creature.Templates.Add("my template");
 
-            Assert.That(creature.Summary, Is.EqualTo($"{creature.Template} {creature.Name}"));
+            Assert.That(creature.Summary, Is.EqualTo($"my template {creature.Name}"));
         }
 
         [Test]
         public void CreatureSummaryWithTemplate_Advanced()
         {
             creature.Name = Guid.NewGuid().ToString();
-            creature.Template = Guid.NewGuid().ToString();
+            creature.Templates.Add("my template");
             creature.IsAdvanced = true;
 
-            Assert.That(creature.Summary, Is.EqualTo($"{creature.Template} {creature.Name} [Advanced]"));
+            Assert.That(creature.Summary, Is.EqualTo($"my template {creature.Name} [Advanced]"));
+        }
+
+        [Test]
+        public void CreatureSummaryWithMultipleTemplates()
+        {
+            creature.Name = Guid.NewGuid().ToString();
+            creature.Templates.Add("my template");
+            creature.Templates.Add("my other template");
+
+            Assert.That(creature.Summary, Is.EqualTo($"my template my other template {creature.Name}"));
+        }
+
+        [Test]
+        public void CreatureSummaryWithMultipleTemplates_Advanced()
+        {
+            creature.Name = Guid.NewGuid().ToString();
+            creature.Templates.Add("my template");
+            creature.Templates.Add("my other template");
+            creature.IsAdvanced = true;
+
+            Assert.That(creature.Summary, Is.EqualTo($"my template my other template {creature.Name} [Advanced]"));
         }
     }
 }

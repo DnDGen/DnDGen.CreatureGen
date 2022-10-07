@@ -37,12 +37,34 @@ namespace DnDGen.CreatureGen.Verifiers
             if (!baseCreatures.Any())
                 return false;
 
-            if (filters?.Template != null)
+            if (filters?.CleanTemplates?.Any() == true)
             {
-                var applicator = factory.Build<TemplateApplicator>(filters.Template);
+                var applicator = factory.Build<TemplateApplicator>(filters.CleanTemplates[0]);
 
-                var filteredBaseCreatures = applicator.GetCompatibleCreatures(baseCreatures, asCharacter, filters);
-                return filteredBaseCreatures.Any();
+                if (filters.CleanTemplates.Count == 1)
+                {
+                    var compatibleCreatures = applicator.GetCompatibleCreatures(baseCreatures, asCharacter, filters);
+                    return compatibleCreatures.Any();
+                }
+
+                var prototypes = applicator.GetCompatiblePrototypes(baseCreatures, asCharacter);
+
+                for (var i = 1; i < filters.CleanTemplates.Count; i++)
+                {
+                    applicator = factory.Build<TemplateApplicator>(filters.CleanTemplates[i]);
+
+                    //INFO: We only want to apply filters on the last template, once all other templates have been applied
+                    if (i == filters.CleanTemplates.Count - 1)
+                    {
+                        prototypes = applicator.GetCompatiblePrototypes(prototypes, asCharacter, filters);
+                    }
+                    else
+                    {
+                        prototypes = applicator.GetCompatiblePrototypes(prototypes, asCharacter);
+                    }
+                }
+
+                return prototypes.Any();
             }
 
             //INFO: We can cheat and use the None template applicator

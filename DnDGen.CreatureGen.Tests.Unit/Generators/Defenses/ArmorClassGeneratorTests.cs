@@ -51,7 +51,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
 
             mockAdjustmentsSelector.Setup(s => s.SelectFrom<int>(TableNameConstants.Adjustments.SizeModifiers, "size")).Returns(0);
 
-            mockBonusSelector.Setup(s => s.SelectFor(TableNameConstants.TypeAndAmount.ArmorClassBonuses, It.IsAny<string>())).Returns((string t, string s) => racialBonuses[s]);
+            mockBonusSelector
+                .Setup(s => s.SelectFor(TableNameConstants.TypeAndAmount.ArmorClassBonuses, It.IsAny<string>()))
+                .Returns((string t, string s) => racialBonuses[s]);
         }
 
         [Test]
@@ -243,23 +245,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             {
                 get
                 {
-                    foreach (var creatureSource in Sources)
+                    foreach (var source in Sources)
                     {
-                        foreach (var creatureTypeSource in Sources)
-                        {
-                            yield return new TestCaseData(creatureSource, creatureTypeSource, Enumerable.Empty<string>());
-
-                            foreach (var subtypeSource1 in Sources)
-                            {
-                                yield return new TestCaseData(creatureSource, creatureTypeSource, new[] { subtypeSource1 });
-
-                                foreach (var subtypeSource2 in Sources)
-                                {
-                                    yield return new TestCaseData(creatureSource, creatureTypeSource, new[] { subtypeSource1, subtypeSource2 });
-                                }
-                            }
-                        }
+                        yield return new TestCaseData(source, null, Enumerable.Empty<string>());
+                        yield return new TestCaseData(null, source, Enumerable.Empty<string>());
+                        yield return new TestCaseData(null, null, new[] { source });
+                        yield return new TestCaseData(source, source, new[] { source, source });
                     }
+
+                    yield return new TestCaseData(
+                        ArmorClassConstants.Dodge,
+                        ArmorClassConstants.Armor,
+                        new[] { ArmorClassConstants.Shield, ArmorClassConstants.Deflection, ArmorClassConstants.Natural });
                 }
             }
 

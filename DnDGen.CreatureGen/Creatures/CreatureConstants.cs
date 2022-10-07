@@ -143,7 +143,7 @@ namespace DnDGen.CreatureGen.Creatures
             public const string Lycanthrope_Wolf_Natural = "Lycanthrope, Wolf (Werewolf, Natural)";
             public const string Lycanthrope_Wolf_Dire_Afflicted = "Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)";
             public const string Lycanthrope_Wolf_Dire_Natural = "Lycanthrope, Dire Wolf (Dire Werewolf, Natural)";
-            public const string None = "";
+            public const string None = "None";
             public const string Skeleton = "Skeleton";
             public const string Vampire = "Vampire";
             public const string Zombie = "Zombie";

@@ -51,7 +51,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 //Since the CR can be altered by advancement and by generating as a character
                 var filters = new Filters();
                 filters.Type = type;
-                filters.Template = creature.Template;
+                filters.Templates = creature.Templates;
                 filters.Alignment = creature.Alignment.Full;
 
                 var isValid = creatureVerifier.VerifyCompatibility(false, creature.Name, filters);
@@ -123,7 +123,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 CreatureConstants.Templates.Zombie,
             };
 
-            if (undeadTemplates.Contains(creature.Template))
+            if (undeadTemplates.Intersect(creature.Templates).Any())
             {
                 castingScore -= creature.Magic.CastingAbility.TemplateAdjustment;
             }
@@ -228,7 +228,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 Weapon weapon = null;
 
                 //INFO: Lycanthropes have a modifed name for the attack based on their form
-                if (creature.Template.Contains("Lycanthrope"))
+                if (creature.Templates.Any(t => t.Contains("Lycanthrope")))
                 {
                     weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name.StartsWith($"{w.Description} ("));
                 }
@@ -273,10 +273,14 @@ namespace DnDGen.CreatureGen.Tests.Integration
         private void VerifySummary(Creature creature, string message)
         {
             Assert.That(creature.Name, Is.Not.Empty, message);
-            Assert.That(creature.Template, Is.Not.Null, message);
+            Assert.That(creature.Templates, Is.Not.Null, message);
             Assert.That(creature.Summary, Is.Not.Empty, message);
             Assert.That(creature.Summary, Contains.Substring(creature.Name), message);
-            Assert.That(creature.Summary, Contains.Substring(creature.Template), message);
+
+            foreach (var template in creature.Templates)
+            {
+                Assert.That(creature.Summary, Contains.Substring(template), message);
+            }
         }
 
         private void VerifyAlignment(Creature creature, string message)
@@ -571,7 +575,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             Weapon weapon = null;
 
             //INFO: Lycanthropes have a modifed name for the attack based on their form
-            if (creature.Template.Contains("Lycanthrope"))
+            if (creature.Templates.Any(t => t.Contains("Lycanthrope")))
             {
                 weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name.StartsWith($"{w.Description} ("));
             }
@@ -647,7 +651,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 //Since the CR can be altered by advancement and by generating as a character
                 var filters = new Filters();
                 filters.Type = type;
-                filters.Template = creature.Template;
+                filters.Templates = creature.Templates;
                 filters.Alignment = creature.Alignment.Full;
 
                 var isValid = creatureVerifier.VerifyCompatibility(true, creature.Name, filters);
@@ -683,7 +687,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
             if (creature.Type.Name == CreatureConstants.Types.Humanoid
                 && !multiHitDieHumanoids.Contains(creature.Name)
-                && !lycanthropes.Contains(creature.Template))
+                && !lycanthropes.Intersect(creature.Templates).Any())
             {
                 Assert.That(creature.HitPoints.HitDice, Is.Empty, message);
                 Assert.That(creature.HitPoints.DefaultTotal, Is.Zero, message);
