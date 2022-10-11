@@ -105,6 +105,9 @@ namespace DnDGen.CreatureGen.Templates
             // Creature type
             UpdateCreatureType(creature);
 
+            // Demographics
+            UpdateCreatureDemographics(creature);
+
             // Challenge ratings
             UpdateCreatureChallengeRating(creature);
 
@@ -163,6 +166,11 @@ namespace DnDGen.CreatureGen.Templates
             return new[] { CreatureConstants.Types.Outsider }
                 .Union(subtypes)
                 .Union(new[] { CreatureConstants.Types.Subtypes.Native, CreatureConstants.Types.Subtypes.Augmented, creatureType });
+        }
+
+        private void UpdateCreatureDemographics(Creature creature)
+        {
+            throw new NotImplementedException("Update demographics for template");
         }
 
         private void UpdateCreatureSpeeds(Creature creature)
@@ -458,6 +466,10 @@ namespace DnDGen.CreatureGen.Templates
             // Creature type
             var typeTask = Task.Run(() => UpdateCreatureType(creature));
             tasks.Add(typeTask);
+
+            // Demographics
+            var demographicsTask = Task.Run(() => UpdateCreatureDemographics(creature));
+            tasks.Add(demographicsTask);
 
             // Challenge ratings
             var challengeRatingTask = Task.Run(() => UpdateCreatureChallengeRating(creature));

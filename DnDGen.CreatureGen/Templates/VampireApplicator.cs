@@ -84,6 +84,9 @@ namespace DnDGen.CreatureGen.Templates
             //Type
             UpdateCreatureType(creature);
 
+            // Demographics
+            UpdateCreatureDemographics(creature);
+
             // Level Adjustment
             UpdateCreatureLevelAdjustment(creature);
 
@@ -135,6 +138,11 @@ namespace DnDGen.CreatureGen.Templates
             return new[] { CreatureConstants.Types.Undead }
                 .Union(subtypes)
                 .Union(new[] { CreatureConstants.Types.Subtypes.Augmented, creatureType });
+        }
+
+        private void UpdateCreatureDemographics(Creature creature)
+        {
+            throw new NotImplementedException("Update demographics for template");
         }
 
         private void UpdateCreatureInitiativeBonus(Creature creature)
@@ -369,6 +377,10 @@ namespace DnDGen.CreatureGen.Templates
             //Type
             var typeTask = Task.Run(() => UpdateCreatureType(creature));
             tasks.Add(typeTask);
+
+            // Demographics
+            var demographicsTask = Task.Run(() => UpdateCreatureDemographics(creature));
+            tasks.Add(demographicsTask);
 
             // Level Adjustment
             var levelAdjustmentTask = Task.Run(() => UpdateCreatureLevelAdjustment(creature));

@@ -43,6 +43,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         private readonly IEquipmentGenerator equipmentGenerator;
         private readonly IMagicGenerator magicGenerator;
         private readonly ILanguageGenerator languageGenerator;
+        private readonly IDemographicsGenerator demographicsGenerator;
 
         public CreatureGenerator(IAlignmentGenerator alignmentGenerator,
             ICreatureVerifier creatureVerifier,
@@ -60,7 +61,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             ISpeedsGenerator speedsGenerator,
             IEquipmentGenerator equipmentGenerator,
             IMagicGenerator magicGenerator,
-            ILanguageGenerator languageGenerator)
+            ILanguageGenerator languageGenerator,
+            IDemographicsGenerator demographicsGenerator)
         {
             this.alignmentGenerator = alignmentGenerator;
             this.abilitiesGenerator = abilitiesGenerator;
@@ -79,6 +81,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             this.equipmentGenerator = equipmentGenerator;
             this.magicGenerator = magicGenerator;
             this.languageGenerator = languageGenerator;
+            this.demographicsGenerator = demographicsGenerator;
         }
 
         public Creature Generate(bool asCharacter, string creatureName, AbilityRandomizer abilityRandomizer = null, params string[] templates)
@@ -266,6 +269,9 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             creature.NumberOfHands = creatureData.NumberOfHands;
 
             creature.Type = GetCreatureType(creatureName);
+
+            creature.Demographics = demographicsGenerator.Generate(creatureName);
+
             abilityRandomizer ??= new AbilityRandomizer();
             creature.Abilities = abilitiesGenerator.GenerateFor(creatureName, abilityRandomizer);
 

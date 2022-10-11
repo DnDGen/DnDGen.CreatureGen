@@ -59,6 +59,7 @@ namespace DnDGen.CreatureGen.Tests.Integration
             }
 
             VerifySummary(creature, message);
+            VerifyDemographics(creature, message);
             VerifyAlignment(creature, message);
             VerifyStatistics(creature, message);
             VerifyAbilities(creature, message);
@@ -281,6 +282,28 @@ namespace DnDGen.CreatureGen.Tests.Integration
             {
                 Assert.That(creature.Summary, Contains.Substring(template), message);
             }
+        }
+
+        private void VerifyDemographics(Creature creature, string message)
+        {
+            Assert.That(creature.Demographics, Is.Not.Null, message);
+            Assert.That(creature.Demographics.Age, Is.Not.Null, message);
+            Assert.That(creature.Demographics.Age.Unit, Is.EqualTo("years"), message);
+            Assert.That(creature.Demographics.Age.Value, Is.Positive, message);
+            Assert.That(creature.Demographics.Age.Description, Is.Not.Empty, message);
+            Assert.That(creature.Demographics.Gender, Is.Not.Empty, message);
+            Assert.That(creature.Demographics.HeightOrLength, Is.Not.Null, message);
+            Assert.That(creature.Demographics.HeightOrLength.Unit, Is.EqualTo("inches"), message);
+            Assert.That(creature.Demographics.HeightOrLength.Value, Is.Positive, message);
+            Assert.That(creature.Demographics.HeightOrLength.Description, Is.Not.Empty, message);
+            Assert.That(creature.Demographics.MaximumAge, Is.Not.Null, message);
+            Assert.That(creature.Demographics.MaximumAge.Unit, Is.EqualTo("years"), message);
+            Assert.That(creature.Demographics.MaximumAge.Value, Is.Positive, message);
+            Assert.That(creature.Demographics.MaximumAge.Description, Is.Not.Empty, message);
+            Assert.That(creature.Demographics.Weight, Is.Not.Null, message);
+            Assert.That(creature.Demographics.Weight.Unit, Is.EqualTo("pounds"), message);
+            Assert.That(creature.Demographics.Weight.Value, Is.Positive, message);
+            Assert.That(creature.Demographics.Weight.Description, Is.Not.Empty, message);
         }
 
         private void VerifyAlignment(Creature creature, string message)

@@ -3,6 +3,7 @@ using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.RollGen;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -65,6 +66,8 @@ namespace DnDGen.CreatureGen.Generators.Abilities
             {
                 abilities[abilityName].BaseScore = 0;
             }
+
+            throw new NotImplementedException("Apply age effects to abilities");
 
             return abilities;
         }

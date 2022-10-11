@@ -19,6 +19,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
         {
             Assert.That(selection.Amount, Is.Zero);
             Assert.That(selection.Type, Is.Empty);
+            Assert.That(selection.RawAmount, Is.Empty);
         }
 
         [Test]

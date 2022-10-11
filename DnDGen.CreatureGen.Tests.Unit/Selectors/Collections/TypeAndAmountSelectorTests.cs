@@ -51,6 +51,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             var typeAndAmount = selector.SelectOne("table name", "name");
             Assert.That(typeAndAmount.Type, Is.EqualTo("type"));
             Assert.That(typeAndAmount.Amount, Is.EqualTo(9266));
+            Assert.That(typeAndAmount.RawAmount, Is.EqualTo("9266"));
         }
 
         [TestCase("skill", null)]
@@ -70,6 +71,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             var typeAndAmount = selector.SelectOne("table name", "name");
             Assert.That(typeAndAmount.Type, Is.EqualTo(skillString));
             Assert.That(typeAndAmount.Amount, Is.EqualTo(9266));
+            Assert.That(typeAndAmount.RawAmount, Is.EqualTo("9266"));
         }
 
         [Test]
@@ -88,6 +90,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             var typeAndAmount = selector.SelectOne("table name", "name");
             Assert.That(typeAndAmount.Type, Is.EqualTo("type"));
             Assert.That(typeAndAmount.Amount, Is.EqualTo(42));
+            Assert.That(typeAndAmount.RawAmount, Is.EqualTo("amount"));
         }
 
         [Test]
@@ -106,9 +109,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             var typeAndAmount = selector.SelectOne("table name", "name");
             Assert.That(typeAndAmount.Type, Is.EqualTo("type"));
             Assert.That(typeAndAmount.Amount, Is.EqualTo(42));
+            Assert.That(typeAndAmount.RawAmount, Is.EqualTo("amount"));
 
             Assert.That(typeAndAmount.Type, Is.EqualTo("type"));
             Assert.That(typeAndAmount.Amount, Is.EqualTo(42));
+            Assert.That(typeAndAmount.RawAmount, Is.EqualTo("amount"));
         }
 
         [Test]
@@ -130,8 +135,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(first.Type, Is.EqualTo("type"));
             Assert.That(first.Amount, Is.EqualTo(9266));
+            Assert.That(first.RawAmount, Is.EqualTo("9266"));
             Assert.That(last.Type, Is.EqualTo("other type"));
             Assert.That(last.Amount, Is.EqualTo(90210));
+            Assert.That(last.RawAmount, Is.EqualTo("9266"));
         }
 
         [Test]
@@ -156,8 +163,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(first.Type, Is.EqualTo("type"));
             Assert.That(first.Amount, Is.EqualTo(42));
+            Assert.That(first.RawAmount, Is.EqualTo("amount"));
             Assert.That(last.Type, Is.EqualTo("other type"));
             Assert.That(last.Amount, Is.EqualTo(600));
+            Assert.That(last.RawAmount, Is.EqualTo("other amount"));
         }
 
         [Test]
@@ -179,13 +188,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(typesAndAmounts.First().Type, Is.EqualTo("type"));
             Assert.That(typesAndAmounts.First().Amount, Is.EqualTo(42));
+            Assert.That(typesAndAmounts.First().RawAmount, Is.EqualTo("amount"));
             Assert.That(typesAndAmounts.Last().Type, Is.EqualTo("other type"));
             Assert.That(typesAndAmounts.Last().Amount, Is.EqualTo(600));
+            Assert.That(typesAndAmounts.Last().RawAmount, Is.EqualTo("other amount"));
 
             Assert.That(typesAndAmounts.First().Type, Is.EqualTo("type"));
             Assert.That(typesAndAmounts.First().Amount, Is.EqualTo(42));
+            Assert.That(typesAndAmounts.First().RawAmount, Is.EqualTo("amount"));
             Assert.That(typesAndAmounts.Last().Type, Is.EqualTo("other type"));
             Assert.That(typesAndAmounts.Last().Amount, Is.EqualTo(600));
+            Assert.That(typesAndAmounts.Last().RawAmount, Is.EqualTo("other amount"));
         }
 
         [Test]
@@ -211,12 +224,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             Assert.That(typesAndAmounts["name"].First().Type, Is.EqualTo("type"));
             Assert.That(typesAndAmounts["name"].First().Amount, Is.EqualTo(9266));
+            Assert.That(typesAndAmounts["name"].First().RawAmount, Is.EqualTo("9266"));
             Assert.That(typesAndAmounts["name"].Last().Type, Is.EqualTo("other type"));
             Assert.That(typesAndAmounts["name"].Last().Amount, Is.EqualTo(90210));
+            Assert.That(typesAndAmounts["name"].Last().RawAmount, Is.EqualTo("90210"));
             Assert.That(typesAndAmounts["other name"].First().Type, Is.EqualTo("other type"));
             Assert.That(typesAndAmounts["other name"].First().Amount, Is.EqualTo(42));
+            Assert.That(typesAndAmounts["other name"].First().RawAmount, Is.EqualTo("42"));
             Assert.That(typesAndAmounts["other name"].Last().Type, Is.EqualTo("another type"));
             Assert.That(typesAndAmounts["other name"].Last().Amount, Is.EqualTo(600));
+            Assert.That(typesAndAmounts["other name"].Last().RawAmount, Is.EqualTo("600"));
         }
 
         [Test]
@@ -247,13 +264,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(typesAndAmounts["name"].Count, Is.EqualTo(2));
             Assert.That(typesAndAmounts["name"].First().Type, Is.EqualTo("type"));
             Assert.That(typesAndAmounts["name"].First().Amount, Is.EqualTo(1337));
+            Assert.That(typesAndAmounts["name"].First().RawAmount, Is.EqualTo("amount"));
             Assert.That(typesAndAmounts["name"].Last().Type, Is.EqualTo("other type"));
             Assert.That(typesAndAmounts["name"].Last().Amount, Is.EqualTo(1234));
+            Assert.That(typesAndAmounts["name"].Last().RawAmount, Is.EqualTo("other amount"));
             Assert.That(typesAndAmounts["other name"].Count, Is.EqualTo(2));
             Assert.That(typesAndAmounts["other name"].First().Type, Is.EqualTo("other type"));
             Assert.That(typesAndAmounts["other name"].First().Amount, Is.EqualTo(2345));
+            Assert.That(typesAndAmounts["other name"].First().RawAmount, Is.EqualTo("other amount"));
             Assert.That(typesAndAmounts["other name"].Last().Type, Is.EqualTo("another type"));
             Assert.That(typesAndAmounts["other name"].Last().Amount, Is.EqualTo(3456));
+            Assert.That(typesAndAmounts["other name"].Last().RawAmount, Is.EqualTo("another amount"));
         }
 
         [Test]
@@ -284,24 +305,32 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(typesAndAmounts["name"].Count, Is.EqualTo(2));
             Assert.That(typesAndAmounts["name"].First().Type, Is.EqualTo("type"));
             Assert.That(typesAndAmounts["name"].First().Amount, Is.EqualTo(1337));
+            Assert.That(typesAndAmounts["name"].First().RawAmount, Is.EqualTo("amount"));
             Assert.That(typesAndAmounts["name"].Last().Type, Is.EqualTo("other type"));
             Assert.That(typesAndAmounts["name"].Last().Amount, Is.EqualTo(1234));
+            Assert.That(typesAndAmounts["name"].Last().RawAmount, Is.EqualTo("other amount"));
             Assert.That(typesAndAmounts["other name"].Count, Is.EqualTo(2));
             Assert.That(typesAndAmounts["other name"].First().Type, Is.EqualTo("other type"));
             Assert.That(typesAndAmounts["other name"].First().Amount, Is.EqualTo(2345));
+            Assert.That(typesAndAmounts["other name"].First().RawAmount, Is.EqualTo("other amount"));
             Assert.That(typesAndAmounts["other name"].Last().Type, Is.EqualTo("another type"));
             Assert.That(typesAndAmounts["other name"].Last().Amount, Is.EqualTo(3456));
+            Assert.That(typesAndAmounts["other name"].Last().RawAmount, Is.EqualTo("another amount"));
 
             Assert.That(typesAndAmounts["name"].Count, Is.EqualTo(2));
             Assert.That(typesAndAmounts["name"].First().Type, Is.EqualTo("type"));
             Assert.That(typesAndAmounts["name"].First().Amount, Is.EqualTo(1337));
+            Assert.That(typesAndAmounts["name"].First().RawAmount, Is.EqualTo("amount"));
             Assert.That(typesAndAmounts["name"].Last().Type, Is.EqualTo("other type"));
             Assert.That(typesAndAmounts["name"].Last().Amount, Is.EqualTo(1234));
+            Assert.That(typesAndAmounts["name"].Last().RawAmount, Is.EqualTo("other amount"));
             Assert.That(typesAndAmounts["other name"].Count, Is.EqualTo(2));
             Assert.That(typesAndAmounts["other name"].First().Type, Is.EqualTo("other type"));
             Assert.That(typesAndAmounts["other name"].First().Amount, Is.EqualTo(2345));
+            Assert.That(typesAndAmounts["other name"].First().RawAmount, Is.EqualTo("other amount"));
             Assert.That(typesAndAmounts["other name"].Last().Type, Is.EqualTo("another type"));
             Assert.That(typesAndAmounts["other name"].Last().Amount, Is.EqualTo(3456));
+            Assert.That(typesAndAmounts["other name"].Last().RawAmount, Is.EqualTo("another amount"));
         }
     }
 }

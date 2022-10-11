@@ -107,6 +107,9 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             // Creature type
             UpdateCreatureType(creature);
 
+            // Demographics
+            UpdateCreatureDemographics(creature);
+
             // Abilities
             UpdateCreatureAbilities(creature);
 
@@ -165,6 +168,11 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
         {
             var adjustedTypes = UpdateCreatureType(creature.Type.Name, creature.Type.SubTypes);
             creature.Type = new CreatureType(adjustedTypes);
+        }
+
+        private void UpdateCreatureDemographics(Creature creature)
+        {
+            throw new NotImplementedException("Update demographics for template");
         }
 
         private void UpdateCreatureType(CreaturePrototype creature)
@@ -643,6 +651,10 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             // Creature type
             var typeTask = Task.Run(() => UpdateCreatureType(creature));
             tasks.Add(typeTask);
+
+            // Demographics
+            var demographicsTask = Task.Run(() => UpdateCreatureDemographics(creature));
+            tasks.Add(demographicsTask);
 
             // Abilities
             var abilityTask = Task.Run(() => UpdateCreatureAbilities(creature));
