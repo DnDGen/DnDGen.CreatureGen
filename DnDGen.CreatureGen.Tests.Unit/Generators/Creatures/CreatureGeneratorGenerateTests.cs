@@ -213,6 +213,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
         [TestCase(true)]
         [TestCase(false)]
+        public void Generate_GenerateDemographics(bool asCharacter)
+        {
+            SetUpCreature("creature", asCharacter, null, null, null, null, "template");
+
+            var creature = creatureGenerator.Generate(asCharacter, "creature", null, "template");
+            Assert.That(creature.Demographics, Is.Not.Null.And.EqualTo(demographics));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
         public void Generate_GenerateCreatureAbilities(bool asCharacter)
         {
             SetUpCreature("creature", asCharacter, null, null, null, null, "template");

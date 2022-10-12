@@ -254,6 +254,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
         [TestCase(true)]
         [TestCase(false)]
+        public async Task GenerateAsync_GenerateDemographics(bool asCharacter)
+        {
+            SetUpCreature("creature", asCharacter, null, null, null, null, "template");
+
+            var creature = await creatureGenerator.GenerateAsync(asCharacter, "creature", null, "template");
+            Assert.That(creature.Demographics, Is.Not.Null.And.EqualTo(demographics));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
         public async Task GenerateAsync_GenerateCreatureAbilities(bool asCharacter)
         {
             SetUpCreature("creature", asCharacter, null, null, null, null, "template");

@@ -13,6 +13,7 @@ namespace DnDGen.CreatureGen.Abilities
         public int BaseScore { get; set; }
         public int RacialAdjustment { get; set; }
         public int AdvancementAdjustment { get; set; }
+        public int AgeAdjustment { get; set; }
         public int TemplateAdjustment { get; set; }
         public int TemplateScore { get; set; }
         public int MaxModifier { get; set; }
@@ -42,7 +43,7 @@ namespace DnDGen.CreatureGen.Abilities
                 if (HasTemplateScore)
                     return TemplateScore + TemplateAdjustment;
 
-                return Math.Max(BaseScore + TemplateAdjustment + RacialAdjustment + AdvancementAdjustment + Bonus, 1);
+                return Math.Max(BaseScore + TemplateAdjustment + RacialAdjustment + AgeAdjustment + AdvancementAdjustment + Bonus, 1);
             }
         }
 

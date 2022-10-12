@@ -1035,6 +1035,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
         [TestCase(true)]
         [TestCase(false)]
+        public void GenerateRandom_GenerateDemographics(bool asCharacter)
+        {
+            SetUpCreature("creature", asCharacter);
+
+            var creature = creatureGenerator.GenerateRandom(asCharacter);
+            Assert.That(creature.Demographics, Is.Not.Null.And.EqualTo(demographics));
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
         public void GenerateRandom_GenerateCreatureTypeWithMultipleSubtypes(bool asCharacter)
         {
             SetUpCreature("creature", asCharacter);

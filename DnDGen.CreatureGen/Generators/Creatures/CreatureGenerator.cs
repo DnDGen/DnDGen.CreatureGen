@@ -273,7 +273,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             creature.Demographics = demographicsGenerator.Generate(creatureName);
 
             abilityRandomizer ??= new AbilityRandomizer();
-            creature.Abilities = abilitiesGenerator.GenerateFor(creatureName, abilityRandomizer);
+            creature.Abilities = abilitiesGenerator.GenerateFor(creatureName, abilityRandomizer, creature.Demographics);
 
             if (advancementSelector.IsAdvanced(creatureName, filters?.ChallengeRating))
             {

@@ -52,6 +52,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         protected Mock<IEquipmentGenerator> mockEquipmentGenerator;
         protected Mock<IMagicGenerator> mockMagicGenerator;
         protected Mock<ILanguageGenerator> mockLanguageGenerator;
+        protected Mock<IDemographicsGenerator> mockDemographicsGenerator;
 
         protected Dictionary<string, Ability> abilities;
         protected List<Skill> skills;
@@ -67,6 +68,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         protected Equipment equipment;
         protected Magic magic;
         protected List<string> languages;
+        protected Demographics demographics;
 
         [SetUp]
         public void GeneratorSetup()
@@ -88,6 +90,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockEquipmentGenerator = new Mock<IEquipmentGenerator>();
             mockMagicGenerator = new Mock<IMagicGenerator>();
             mockLanguageGenerator = new Mock<ILanguageGenerator>();
+            mockDemographicsGenerator = new Mock<IDemographicsGenerator>();
 
             creatureGenerator = new CreatureGenerator(
                 mockAlignmentGenerator.Object,
@@ -106,7 +109,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 mockSpeedsGenerator.Object,
                 mockEquipmentGenerator.Object,
                 mockMagicGenerator.Object,
-                mockLanguageGenerator.Object);
+                mockLanguageGenerator.Object,
+                mockDemographicsGenerator.Object);
 
             feats = new List<Feat>();
             abilities = new Dictionary<string, Ability>();
@@ -121,6 +125,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             equipment = new Equipment();
             magic = new Magic();
             languages = new List<string>();
+            demographics = new Demographics();
 
             alignment = new Alignment("creature alignment");
 
@@ -347,15 +352,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             if (randomizer == null)
             {
                 mockAbilitiesGenerator
-                    .Setup(g => g.GenerateFor(creatureName, It.Is<AbilityRandomizer>(r => r.Roll == AbilityConstants.RandomizerRolls.Default
-                        && r.PriorityAbility == null
-                        && !r.AbilityAdvancements.Any()
-                        && !r.SetRolls.Any())))
+                    .Setup(g => g.GenerateFor(
+                        creatureName,
+                        It.Is<AbilityRandomizer>(r => r.Roll == AbilityConstants.RandomizerRolls.Default
+                            && r.PriorityAbility == null
+                            && !r.AbilityAdvancements.Any()
+                            && !r.SetRolls.Any()),
+                        demographics))
                     .Returns(abilities);
             }
             else
             {
-                mockAbilitiesGenerator.Setup(g => g.GenerateFor(creatureName, randomizer)).Returns(abilities);
+                mockAbilitiesGenerator.Setup(g => g.GenerateFor(creatureName, randomizer, demographics)).Returns(abilities);
             }
 
             mockAbilitiesGenerator.Setup(g => g.SetMaxBonuses(abilities, equipment)).Returns(abilities);
@@ -410,6 +418,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     abilities,
                     skills))
                 .Returns(languages);
+
+            mockDemographicsGenerator.Setup(g => g.Generate(creatureName)).Returns(demographics);
 
             return templateApplicators;
         }

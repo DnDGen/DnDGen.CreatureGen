@@ -1,9 +1,9 @@
 ﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.RollGen;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,10 +20,11 @@ namespace DnDGen.CreatureGen.Generators.Abilities
             this.dice = dice;
         }
 
-        public Dictionary<string, Ability> GenerateFor(string creatureName, AbilityRandomizer randomizer)
+        public Dictionary<string, Ability> GenerateFor(string creatureName, AbilityRandomizer randomizer, Demographics demographics)
         {
             var abilitySelections = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, creatureName);
             var allAbilities = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, GroupConstants.All);
+            var ageAbilities = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, demographics.Age.Description);
             var abilities = new Dictionary<string, Ability>();
 
             foreach (var selection in allAbilities)
@@ -67,7 +68,10 @@ namespace DnDGen.CreatureGen.Generators.Abilities
                 abilities[abilityName].BaseScore = 0;
             }
 
-            throw new NotImplementedException("Apply age effects to abilities");
+            foreach (var selection in ageAbilities)
+            {
+                abilities[selection.Type].AgeAdjustment = selection.Amount;
+            }
 
             return abilities;
         }

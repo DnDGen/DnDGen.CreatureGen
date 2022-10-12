@@ -65,14 +65,12 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         private TypeAndAmountSelection GetRandomAgeRoll(string creatureName)
         {
-            var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, creatureName).ToArray();
-            if (ageRolls.Length == 1)
-                return ageRolls[0];
-
-            var common = new[] { ageRolls[0] };
-            var uncommon = new[] { ageRolls[1] };
-            var rare = new[] { ageRolls[2] };
-            var veryRare = new[] { ageRolls[3] };
+            var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, creatureName);
+            var nonMax = ageRolls.Where(r => r.Type != AgeConstants.Categories.Maximum);
+            var common = nonMax.Take(1);
+            var uncommon = nonMax.Skip(1).Take(1);
+            var rare = nonMax.Skip(2).Take(1);
+            var veryRare = nonMax.Skip(3).Take(1);
 
             var randomAgeRoll = collectionsSelector.SelectRandomFrom(common, uncommon, rare, veryRare);
             return randomAgeRoll;
@@ -86,8 +84,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             if (age.Value > maxAge.Value)
                 maxAge.Value = age.Value;
 
-            var categories = collectionsSelector.SelectFrom(TableNameConstants.Collection.AgeCategories, creatureName + AgeConstants.Categories.Maximum);
-            maxAge.Description = categories.Single();
+            var descriptions = collectionsSelector.SelectFrom(TableNameConstants.Collection.MaxAgeDescriptions, creatureName);
+            maxAge.Description = descriptions.Single();
 
             return maxAge;
         }

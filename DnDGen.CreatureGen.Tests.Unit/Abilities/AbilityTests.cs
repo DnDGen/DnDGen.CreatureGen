@@ -431,6 +431,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Abilities
         }
 
         [Test]
+        public void FullScore_AddAgeAdjustment()
+        {
+            ability.AgeAdjustment = -2;
+            Assert.That(ability.FullScore, Is.EqualTo(8));
+            Assert.That(ability.Modifier, Is.EqualTo(-1));
+        }
+
+        [Test]
         public void FullScore_AddAdvancementAdjustment()
         {
             ability.AdvancementAdjustment = 9266;
@@ -452,15 +460,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Abilities
             ability.AdvancementAdjustment = 9266;
             ability.RacialAdjustment = 90210;
             ability.TemplateAdjustment = 42;
+            ability.AgeAdjustment = -2;
 
-            Assert.That(ability.FullScore, Is.EqualTo(Ability.DefaultScore + 9266 + 90210 + 42));
-            Assert.That(ability.Modifier, Is.EqualTo(49759));
+            Assert.That(ability.FullScore, Is.EqualTo(Ability.DefaultScore + 9266 + 90210 + 42 - 2));
+            Assert.That(ability.Modifier, Is.EqualTo(49758));
         }
 
         [Test]
-        public void AbilityCannotHaveFullScoreLessThan1()
+        public void AbilityCannotHaveFullScoreLessThan1_FromRacial()
         {
             ability.RacialAdjustment = -9266;
+            Assert.That(ability.FullScore, Is.EqualTo(1));
+            Assert.That(ability.Modifier, Is.EqualTo(-5));
+        }
+
+        [Test]
+        public void AbilityCannotHaveFullScoreLessThan1_FromAge()
+        {
+            ability.AgeAdjustment = -9266;
             Assert.That(ability.FullScore, Is.EqualTo(1));
             Assert.That(ability.Modifier, Is.EqualTo(-5));
         }

@@ -16,6 +16,7 @@
             public const string AbilityGroups = "AbilityGroups";
             public const string AerialManeuverability = "AerialManeuverability";
             public const string AlignmentGroups = "AlignmentGroups";
+            public const string Appearances = "Appearances";
             public const string AttackData = "AttackData";
             public const string CasterGroups = "CasterGroups";
             public const string CreatureData = "CreatureData";
@@ -26,6 +27,7 @@
             public const string FeatGroups = "FeatGroups";
             public const string Genders = "Genders";
             public const string LanguageGroups = "LanguageGroups";
+            public const string MaxAgeDescriptions = "MaxAgeDescriptions";
             public const string PredeterminedItems = "PredeterminedItems";
             public const string RequiredAlignments = "RequiredAlignments";
             public const string RequiredFeats = "RequiredFeats";
