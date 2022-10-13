@@ -172,7 +172,8 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            throw new NotImplementedException("Update demographics for template");
+            var appearance = collectionSelector.SelectRandomFrom(TableNameConstants.Collection.Appearances, LycanthropeSpecies);
+            creature.Demographics.Appearance += " " + appearance;
         }
 
         private void UpdateCreatureType(CreaturePrototype creature)

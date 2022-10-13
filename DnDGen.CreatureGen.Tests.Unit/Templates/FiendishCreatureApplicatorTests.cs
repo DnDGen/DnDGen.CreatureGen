@@ -231,6 +231,35 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
+        public void ApplyTo_DemographicsAreAdjusted()
+        {
+            baseCreature.Demographics.Appearance = "I look like a potato.";
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, CreatureConstants.Templates.FiendishCreature))
+                .Returns("I am the ugliest urchin.");
+
+            var smiteGood = new Attack
+            {
+                Name = "Smite Good",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.FiendishCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteGood });
+
+            var creature = applicator.ApplyTo(baseCreature, false);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the ugliest urchin."));
+        }
+
+        [Test]
         public void ApplyTo_CreatureSizeIsNotAdjusted()
         {
             baseCreature.Size = "my size";
@@ -1435,6 +1464,35 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .And.Contains(CreatureConstants.Types.Subtypes.Extraplanar)
                     .And.Contains(CreatureConstants.Types.Subtypes.Augmented));
             }
+        }
+
+        [Test]
+        public async Task ApplyToAsync_DemographicsAreAdjusted()
+        {
+            baseCreature.Demographics.Appearance = "I look like a potato.";
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, CreatureConstants.Templates.FiendishCreature))
+                .Returns("I am the ugliest urchin.");
+
+            var smiteGood = new Attack
+            {
+                Name = "Smite Good",
+                IsSpecial = true
+            };
+            mockAttackGenerator
+                .Setup(g => g.GenerateAttacks(
+                    CreatureConstants.Templates.FiendishCreature,
+                    baseCreature.Size,
+                    baseCreature.Size,
+                    baseCreature.BaseAttackBonus,
+                    baseCreature.Abilities,
+                    baseCreature.HitPoints.RoundedHitDiceQuantity))
+                .Returns(new[] { smiteGood });
+
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the ugliest urchin."));
         }
 
         [Test]

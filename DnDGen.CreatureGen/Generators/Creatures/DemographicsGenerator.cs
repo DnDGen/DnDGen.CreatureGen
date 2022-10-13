@@ -26,7 +26,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         {
             var demographics = new Demographics();
 
-            demographics.Gender = DetermineGender(creatureName);
+            demographics.Gender = collectionsSelector.SelectRandomFrom(TableNameConstants.Collection.Genders, creatureName);
             demographics.Age = DetermineAge(creatureName);
             demographics.MaximumAge = DetermineMaximumAge(creatureName, demographics.Age);
 
@@ -44,12 +44,9 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             demographics.Weight.Value = baseWeight.Amount + heightModifier.Amount * weightModifier.Amount;
             demographics.Weight.Description = GetDescription(weightModifier.RawAmount, weightModifier.Amount, "Light", "Average", "Heavy");
 
-            return demographics;
-        }
+            demographics.Appearance = collectionsSelector.SelectRandomFrom(TableNameConstants.Collection.Appearances, creatureName);
 
-        private string DetermineGender(string creatureName)
-        {
-            return collectionsSelector.SelectRandomFrom(TableNameConstants.Collection.Genders, creatureName);
+            return demographics;
         }
 
         private Measurement DetermineAge(string creatureName)

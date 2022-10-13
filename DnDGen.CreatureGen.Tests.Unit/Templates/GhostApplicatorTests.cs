@@ -320,6 +320,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         }
 
         [Test]
+        public void ApplyTo_DemographicsAdjusted()
+        {
+            var creature = applicator.ApplyTo(baseCreature, false);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(AgeConstants.Ageless));
+        }
+
+        [Test]
         public void ApplyTo_CharismaIncreasesBy4()
         {
             var creature = applicator.ApplyTo(baseCreature, false);
@@ -1435,6 +1443,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .And.Contains(original)
                 .And.Contains(CreatureConstants.Types.Subtypes.Incorporeal)
                 .And.Contains(CreatureConstants.Types.Subtypes.Augmented));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_DemographicsAdjusted()
+        {
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(AgeConstants.Ageless));
         }
 
         [Test]

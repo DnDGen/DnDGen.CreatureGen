@@ -3560,11 +3560,29 @@
     <name>Vampire</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Afflicted)</name>
+    <name>Lycanthrope, Black Bear (Werebear, Afflicted)</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Natural)</name>
+    <name>Lycanthrope, Black Bear (Werebear, Natural)</name>
   </collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Natural)</name>
+	</collection>
   <collection>
     <name>Lycanthrope, Boar (Wereboar, Afflicted)</name>
   </collection>
@@ -3595,6 +3613,18 @@
   <collection>
     <name>Lycanthrope, Tiger (Weretiger, Natural)</name>
   </collection>
+	<collection>
+		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Afflicted)</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Natural)</name>
+	</collection>
   <collection>
     <name>Lycanthrope, Dire Rat (Wererat, Afflicted)</name>
   </collection>

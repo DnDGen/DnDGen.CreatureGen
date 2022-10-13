@@ -692,20 +692,30 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
             var lycanthropes = new[]
             {
+                CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted,
+                CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural,
                 CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted,
                 CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural,
+                CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted,
+                CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural,
+                CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted,
+                CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural,
                 CreatureConstants.Templates.Lycanthrope_Boar_Afflicted,
+                CreatureConstants.Templates.Lycanthrope_Boar_Natural,
                 CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted,
                 CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural,
-                CreatureConstants.Templates.Lycanthrope_Boar_Natural,
+                CreatureConstants.Templates.Lycanthrope_Rat_Afflicted,
+                CreatureConstants.Templates.Lycanthrope_Rat_Natural,
                 CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted,
                 CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural,
                 CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted,
                 CreatureConstants.Templates.Lycanthrope_Tiger_Natural,
+                CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted,
+                CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural,
                 CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted,
+                CreatureConstants.Templates.Lycanthrope_Wolf_Natural,
                 CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted,
                 CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural,
-                CreatureConstants.Templates.Lycanthrope_Wolf_Natural,
             };
 
             if (creature.Type.Name == CreatureConstants.Types.Humanoid

@@ -129,16 +129,26 @@ namespace DnDGen.CreatureGen.Creatures
             public const string HalfDragon_Silver = "Half-Dragon (Silver)";
             public const string HalfFiend = "Half-Fiend";
             public const string Lich = "Lich";
+            public const string Lycanthrope_Bear_Black_Afflicted = "Lycanthrope, Black Bear (Werebear, Afflicted)";
+            public const string Lycanthrope_Bear_Black_Natural = "Lycanthrope, Black Bear (Werebear, Natural)";
             public const string Lycanthrope_Bear_Brown_Afflicted = "Lycanthrope, Brown Bear (Werebear, Afflicted)";
             public const string Lycanthrope_Bear_Brown_Natural = "Lycanthrope, Brown Bear (Werebear, Natural)";
+            public const string Lycanthrope_Bear_Dire_Afflicted = "Lycanthrope, Dire Bear (Dire Werebear, Afflicted)";
+            public const string Lycanthrope_Bear_Dire_Natural = "Lycanthrope, Dire Bear (Dire Werebear, Natural)";
+            public const string Lycanthrope_Bear_Polar_Afflicted = "Lycanthrope, Polar Bear (Werebear, Afflicted)";
+            public const string Lycanthrope_Bear_Polar_Natural = "Lycanthrope, Polar Bear (Werebear, Natural)";
             public const string Lycanthrope_Boar_Afflicted = "Lycanthrope, Boar (Wereboar, Afflicted)";
             public const string Lycanthrope_Boar_Natural = "Lycanthrope, Boar (Wereboar, Natural)";
             public const string Lycanthrope_Boar_Dire_Afflicted = "Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)";
             public const string Lycanthrope_Boar_Dire_Natural = "Lycanthrope, Dire Boar (Dire Wereboar, Natural)";
+            public const string Lycanthrope_Rat_Afflicted = "Lycanthrope, Rat (Wererat, Afflicted)";
+            public const string Lycanthrope_Rat_Natural = "Lycanthrope, Rat (Wererat, Natural)";
             public const string Lycanthrope_Rat_Dire_Afflicted = "Lycanthrope, Dire Rat (Wererat, Afflicted)";
             public const string Lycanthrope_Rat_Dire_Natural = "Lycanthrope, Dire Rat (Wererat, Natural)";
             public const string Lycanthrope_Tiger_Afflicted = "Lycanthrope, Tiger (Weretiger, Afflicted)";
             public const string Lycanthrope_Tiger_Natural = "Lycanthrope, Tiger (Weretiger, Natural)";
+            public const string Lycanthrope_Tiger_Dire_Afflicted = "Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)";
+            public const string Lycanthrope_Tiger_Dire_Natural = "Lycanthrope, Dire Tiger (Dire Weretiger, Natural)";
             public const string Lycanthrope_Wolf_Afflicted = "Lycanthrope, Wolf (Werewolf, Afflicted)";
             public const string Lycanthrope_Wolf_Natural = "Lycanthrope, Wolf (Werewolf, Natural)";
             public const string Lycanthrope_Wolf_Dire_Afflicted = "Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)";
@@ -171,16 +181,26 @@ namespace DnDGen.CreatureGen.Creatures
                     None,
                     Skeleton,
                     Vampire,
+                    Lycanthrope_Bear_Black_Afflicted,
+                    Lycanthrope_Bear_Black_Natural,
                     Lycanthrope_Bear_Brown_Afflicted,
                     Lycanthrope_Bear_Brown_Natural,
+                    Lycanthrope_Bear_Dire_Afflicted,
+                    Lycanthrope_Bear_Dire_Natural,
+                    Lycanthrope_Bear_Polar_Afflicted,
+                    Lycanthrope_Bear_Polar_Natural,
                     Lycanthrope_Boar_Afflicted,
                     Lycanthrope_Boar_Natural,
                     Lycanthrope_Boar_Dire_Afflicted,
                     Lycanthrope_Boar_Dire_Natural,
+                    Lycanthrope_Rat_Afflicted,
+                    Lycanthrope_Rat_Natural,
                     Lycanthrope_Rat_Dire_Afflicted,
                     Lycanthrope_Rat_Dire_Natural,
                     Lycanthrope_Tiger_Afflicted,
                     Lycanthrope_Tiger_Natural,
+                    Lycanthrope_Tiger_Dire_Afflicted,
+                    Lycanthrope_Tiger_Dire_Natural,
                     Lycanthrope_Wolf_Afflicted,
                     Lycanthrope_Wolf_Natural,
                     Lycanthrope_Wolf_Dire_Afflicted,

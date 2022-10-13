@@ -83,6 +83,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     .d(12)
                     .AsPotentialAverage())
                 .Returns(90210);
+
+            var ageRolls = new List<TypeAndAmountSelection>();
+            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 1000, RawAmount = "raw 1000" });
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.Lich))
+                .Returns(ageRolls);
         }
 
         [Test]
@@ -230,6 +237,34 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .And.Contains(CreatureConstants.Types.Subtypes.Augmented)
                 .And.Contains(CreatureConstants.Types.Humanoid)
                 .And.Contains("subtype 2"));
+        }
+
+        [Test]
+        public void ApplyTo_DemographicsAdjusted()
+        {
+            baseCreature.Demographics.Appearance = "I look like a potato.";
+            baseCreature.Demographics.Age.Value = 42;
+            baseCreature.Demographics.MaximumAge.Value = 600;
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, CreatureConstants.Templates.Lich))
+                .Returns("I am the meanest boi.");
+
+            var ageRolls = new List<TypeAndAmountSelection>();
+            ageRolls.Add(new TypeAndAmountSelection { Type = "my only age description", Amount = 9266, RawAmount = "raw 9266" });
+            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" });
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.Lich))
+                .Returns(ageRolls);
+
+            var multiplier = 90210 / 600d;
+
+            var creature = applicator.ApplyTo(baseCreature, false);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 * multiplier));
+            Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(AgeConstants.Ageless));
+            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the meanest boi."));
         }
 
         [TestCase(4)]
@@ -921,6 +956,34 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .And.Contains("subtype 2")
                 .And.Contains(CreatureConstants.Types.Humanoid)
                 .And.Contains(CreatureConstants.Types.Subtypes.Augmented));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_DemographicsAdjusted()
+        {
+            baseCreature.Demographics.Appearance = "I look like a potato.";
+            baseCreature.Demographics.Age.Value = 42;
+            baseCreature.Demographics.MaximumAge.Value = 600;
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, CreatureConstants.Templates.Lich))
+                .Returns("I am the meanest boi.");
+
+            var ageRolls = new List<TypeAndAmountSelection>();
+            ageRolls.Add(new TypeAndAmountSelection { Type = "my only age description", Amount = 9266, RawAmount = "raw 9266" });
+            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" });
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.Lich))
+                .Returns(ageRolls);
+
+            var multiplier = 90210 / 600d;
+
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 * multiplier));
+            Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(AgeConstants.Ageless));
+            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the meanest boi."));
         }
 
         [TestCase(4)]

@@ -2,7 +2,6 @@
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -33,11 +32,8 @@ namespace DnDGen.CreatureGen.Selectors.Collections
             var selection = new TypeAndAmountSelection();
 
             selection.Type = sections[0];
-
-            if (dice.ContainsRoll(sections[1]))
-                selection.Amount = dice.Roll(sections[1]).AsSum();
-            else
-                selection.Amount = Convert.ToInt32(sections[1]);
+            selection.RawAmount = sections[1];
+            selection.Amount = dice.Roll(selection.RawAmount).AsSum();
 
             return selection;
         }

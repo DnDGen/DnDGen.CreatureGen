@@ -37,6 +37,7 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
         private readonly ICreatureDataSelector creatureDataSelector;
         private readonly IAdjustmentsSelector adjustmentSelector;
         private readonly ICreaturePrototypeFactory prototypeFactory;
+        private readonly ITypeAndAmountSelector typeAndAmountSelector;
 
         public HalfDragonApplicator(
             ICollectionSelector collectionSelector,
@@ -49,7 +50,8 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             IMagicGenerator magicGenerator,
             ICreatureDataSelector creatureDataSelector,
             IAdjustmentsSelector adjustmentSelector,
-            ICreaturePrototypeFactory prototypeFactory)
+            ICreaturePrototypeFactory prototypeFactory,
+            ITypeAndAmountSelector typeAndAmountSelector)
         {
             this.collectionSelector = collectionSelector;
             this.speedsGenerator = speedsGenerator;
@@ -62,6 +64,7 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             this.creatureDataSelector = creatureDataSelector;
             this.adjustmentSelector = adjustmentSelector;
             this.prototypeFactory = prototypeFactory;
+            this.typeAndAmountSelector = typeAndAmountSelector;
 
             creatureTypes = new[]
             {
@@ -105,9 +108,6 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             // Challenge ratings
             UpdateCreatureChallengeRating(creature);
 
-            //Speed
-            UpdateCreatureSpeeds(creature);
-
             // Abilities
             UpdateCreatureAbilities(creature);
 
@@ -119,6 +119,10 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
 
             //Armor Class
             UpdateCreatureArmorClass(creature);
+
+            //INFO: This depends on demographics
+            //Speed
+            UpdateCreatureSpeeds(creature);
 
             //INFO: This depends on abilities
             //Hit Points
@@ -155,7 +159,15 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            throw new NotImplementedException("Update demographics for template");
+            var appearance = collectionSelector.SelectRandomFrom(TableNameConstants.Collection.Appearances, DragonSpecies);
+            creature.Demographics.Appearance += " " + appearance;
+
+            var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, DragonSpecies);
+            var maxAgeRoll = ageRolls.FirstOrDefault(r => r.Type == AgeConstants.Categories.Maximum);
+            var multiplier = maxAgeRoll.Amount / creature.Demographics.MaximumAge.Value / 2;
+
+            creature.Demographics.Age.Value *= multiplier;
+            creature.Demographics.MaximumAge.Value *= multiplier;
         }
 
         private void UpdateCreatureType(CreaturePrototype creature)
@@ -177,15 +189,18 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             var largeIndex = Array.IndexOf(sizes, SizeConstants.Large);
             var sizeIndex = Array.IndexOf(sizes, creature.Size);
 
-            if (sizeIndex >= largeIndex
-                && creature.Speeds.ContainsKey(SpeedConstants.Land)
-                && !creature.Speeds.ContainsKey(SpeedConstants.Fly))
+            if (sizeIndex >= largeIndex && creature.Speeds.ContainsKey(SpeedConstants.Land))
             {
-                var dragonSpeeds = speedsGenerator.Generate(DragonSpecies);
+                creature.Demographics.Appearance += " Has dragon wings.";
 
-                var dragonFlySpeedValue = Math.Min(120, creature.Speeds[SpeedConstants.Land].Value * 2);
-                creature.Speeds[SpeedConstants.Fly] = dragonSpeeds[SpeedConstants.Fly];
-                creature.Speeds[SpeedConstants.Fly].Value = dragonFlySpeedValue;
+                if (!creature.Speeds.ContainsKey(SpeedConstants.Fly))
+                {
+                    var dragonSpeeds = speedsGenerator.Generate(DragonSpecies);
+
+                    var dragonFlySpeedValue = Math.Min(120, creature.Speeds[SpeedConstants.Land].Value * 2);
+                    creature.Speeds[SpeedConstants.Fly] = dragonSpeeds[SpeedConstants.Fly];
+                    creature.Speeds[SpeedConstants.Fly].Value = dragonFlySpeedValue;
+                }
             }
         }
 
@@ -454,10 +469,6 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
             var challengeRatingTask = Task.Run(() => UpdateCreatureChallengeRating(creature));
             tasks.Add(challengeRatingTask);
 
-            //Speed
-            var speedTask = Task.Run(() => UpdateCreatureSpeeds(creature));
-            tasks.Add(speedTask);
-
             // Abilities
             var abilityTask = Task.Run(() => UpdateCreatureAbilities(creature));
             tasks.Add(abilityTask);
@@ -477,6 +488,11 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
 
             await Task.WhenAll(tasks);
             tasks.Clear();
+
+            //INFO: This depends on demographics
+            //Speed
+            var speedTask = Task.Run(() => UpdateCreatureSpeeds(creature));
+            tasks.Add(speedTask);
 
             //INFO: This depends on abilities
             //Hit Points

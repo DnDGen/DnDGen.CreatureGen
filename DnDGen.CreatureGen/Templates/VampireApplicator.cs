@@ -30,6 +30,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IAdjustmentsSelector adjustmentSelector;
         private readonly IEnumerable<string> creatureTypes;
         private readonly ICreaturePrototypeFactory prototypeFactory;
+        private readonly ITypeAndAmountSelector typeAndAmountSelector;
 
         private const int MinimumVampireHitDice = 5;
 
@@ -40,7 +41,8 @@ namespace DnDGen.CreatureGen.Templates
             ICollectionSelector collectionSelector,
             ICreatureDataSelector creatureDataSelector,
             IAdjustmentsSelector adjustmentSelector,
-            ICreaturePrototypeFactory prototypeFactory)
+            ICreaturePrototypeFactory prototypeFactory,
+            ITypeAndAmountSelector typeAndAmountSelector)
         {
             this.dice = dice;
             this.attacksGenerator = attacksGenerator;
@@ -49,6 +51,7 @@ namespace DnDGen.CreatureGen.Templates
             this.creatureDataSelector = creatureDataSelector;
             this.adjustmentSelector = adjustmentSelector;
             this.prototypeFactory = prototypeFactory;
+            this.typeAndAmountSelector = typeAndAmountSelector;
 
             creatureTypes = new[]
             {
@@ -142,7 +145,15 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            throw new NotImplementedException("Update demographics for template");
+            var appearance = collectionSelector.SelectRandomFrom(TableNameConstants.Collection.Appearances, CreatureConstants.Templates.Vampire);
+            creature.Demographics.Appearance += " " + appearance;
+
+            var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.Vampire);
+            var maxAgeRoll = ageRolls.FirstOrDefault(r => r.Type == AgeConstants.Categories.Maximum);
+            var multiplier = maxAgeRoll.Amount / creature.Demographics.MaximumAge.Value;
+
+            creature.Demographics.Age.Value *= multiplier;
+            creature.Demographics.MaximumAge.Value = AgeConstants.Ageless;
         }
 
         private void UpdateCreatureInitiativeBonus(Creature creature)

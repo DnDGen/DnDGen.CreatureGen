@@ -120,6 +120,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     It.IsAny<IEnumerable<Feat>>(),
                     baseCreature.Abilities))
                 .Returns((IEnumerable<Attack> a, IEnumerable<Feat> f, Dictionary<string, Ability> ab) => a);
+
+            var ageRolls = new List<TypeAndAmountSelection>();
+            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 100_000, RawAmount = "raw 100,000" });
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.HalfFiend))
+                .Returns(ageRolls);
         }
 
         [Test]
@@ -290,6 +297,33 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .And.Contains(original)
                 .And.Contains(CreatureConstants.Types.Subtypes.Augmented)
                 .And.Contains(CreatureConstants.Types.Subtypes.Native));
+        }
+
+        [Test]
+        public void ApplyTo_DemographicsAdjusted()
+        {
+            baseCreature.Demographics.Appearance = "I look like a potato.";
+            baseCreature.Demographics.Age.Value = 42;
+            baseCreature.Demographics.MaximumAge.Value = 600;
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, CreatureConstants.Templates.HalfFiend))
+                .Returns("I am the ugliest urchin.");
+
+            var ageRolls = new List<TypeAndAmountSelection>();
+            ageRolls.Add(new TypeAndAmountSelection { Type = "my only age description", Amount = 9266, RawAmount = "raw 9266" });
+            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" });
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.HalfFiend))
+                .Returns(ageRolls);
+
+            var multiplier = 90210 / 600d / 2;
+
+            var creature = applicator.ApplyTo(baseCreature, false);
+            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the ugliest urchin."));
+            Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(AgeConstants.Ageless));
+            Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 * multiplier));
         }
 
         [Test]
@@ -1797,6 +1831,33 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .And.Contains(original)
                 .And.Contains(CreatureConstants.Types.Subtypes.Augmented)
                 .And.Contains(CreatureConstants.Types.Subtypes.Native));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_DemographicsAdjusted()
+        {
+            baseCreature.Demographics.Appearance = "I look like a potato.";
+            baseCreature.Demographics.Age.Value = 42;
+            baseCreature.Demographics.MaximumAge.Value = 600;
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, CreatureConstants.Templates.HalfFiend))
+                .Returns("I am the ugliest urchin.");
+
+            var ageRolls = new List<TypeAndAmountSelection>();
+            ageRolls.Add(new TypeAndAmountSelection { Type = "my only age description", Amount = 9266, RawAmount = "raw 9266" });
+            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" });
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.HalfFiend))
+                .Returns(ageRolls);
+
+            var multiplier = 90210 / 600d / 2;
+
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the ugliest urchin."));
+            Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(AgeConstants.Ageless));
+            Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 * multiplier));
         }
 
         [Test]

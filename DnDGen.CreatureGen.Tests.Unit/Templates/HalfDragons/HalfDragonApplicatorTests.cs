@@ -49,6 +49,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         private Mock<ICreatureDataSelector> mockCreatureDataSelector;
         private Mock<IAdjustmentsSelector> mockAdjustmentSelector;
         private Mock<ICreaturePrototypeFactory> mockPrototypeFactory;
+        private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
 
         private static IEnumerable<string> templates = new[]
         {
@@ -80,6 +81,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             mockCreatureDataSelector = new Mock<ICreatureDataSelector>();
             mockAdjustmentSelector = new Mock<IAdjustmentsSelector>();
             mockPrototypeFactory = new Mock<ICreaturePrototypeFactory>();
+            mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
 
             applicators = new Dictionary<string, TemplateApplicator>();
             applicators[CreatureConstants.Templates.HalfDragon_Black] = new HalfDragonBlackApplicator(
@@ -93,7 +95,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockMagicGenerator.Object,
                 mockCreatureDataSelector.Object,
                 mockAdjustmentSelector.Object,
-                mockPrototypeFactory.Object);
+                mockPrototypeFactory.Object,
+                mockTypeAndAmountSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Blue] = new HalfDragonBlueApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -105,7 +108,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockMagicGenerator.Object,
                 mockCreatureDataSelector.Object,
                 mockAdjustmentSelector.Object,
-                mockPrototypeFactory.Object);
+                mockPrototypeFactory.Object,
+                mockTypeAndAmountSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Brass] = new HalfDragonBrassApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -117,7 +121,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockMagicGenerator.Object,
                 mockCreatureDataSelector.Object,
                 mockAdjustmentSelector.Object,
-                mockPrototypeFactory.Object);
+                mockPrototypeFactory.Object,
+                mockTypeAndAmountSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Bronze] = new HalfDragonBronzeApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -129,7 +134,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockMagicGenerator.Object,
                 mockCreatureDataSelector.Object,
                 mockAdjustmentSelector.Object,
-                mockPrototypeFactory.Object);
+                mockPrototypeFactory.Object,
+                mockTypeAndAmountSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Copper] = new HalfDragonCopperApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -141,7 +147,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockMagicGenerator.Object,
                 mockCreatureDataSelector.Object,
                 mockAdjustmentSelector.Object,
-                mockPrototypeFactory.Object);
+                mockPrototypeFactory.Object,
+                mockTypeAndAmountSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Gold] = new HalfDragonGoldApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -153,7 +160,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockMagicGenerator.Object,
                 mockCreatureDataSelector.Object,
                 mockAdjustmentSelector.Object,
-                mockPrototypeFactory.Object);
+                mockPrototypeFactory.Object,
+                mockTypeAndAmountSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Green] = new HalfDragonGreenApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -165,7 +173,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockMagicGenerator.Object,
                 mockCreatureDataSelector.Object,
                 mockAdjustmentSelector.Object,
-                mockPrototypeFactory.Object);
+                mockPrototypeFactory.Object,
+                mockTypeAndAmountSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Red] = new HalfDragonRedApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -177,7 +186,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockMagicGenerator.Object,
                 mockCreatureDataSelector.Object,
                 mockAdjustmentSelector.Object,
-                mockPrototypeFactory.Object);
+                mockPrototypeFactory.Object,
+                mockTypeAndAmountSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_Silver] = new HalfDragonSilverApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -189,7 +199,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockMagicGenerator.Object,
                 mockCreatureDataSelector.Object,
                 mockAdjustmentSelector.Object,
-                mockPrototypeFactory.Object);
+                mockPrototypeFactory.Object,
+                mockTypeAndAmountSelector.Object);
             applicators[CreatureConstants.Templates.HalfDragon_White] = new HalfDragonWhiteApplicator(
                 mockCollectionSelector.Object,
                 mockSpeedsGenerator.Object,
@@ -201,7 +212,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 mockMagicGenerator.Object,
                 mockCreatureDataSelector.Object,
                 mockAdjustmentSelector.Object,
-                mockPrototypeFactory.Object);
+                mockPrototypeFactory.Object,
+                mockTypeAndAmountSelector.Object);
 
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
@@ -241,6 +253,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             mockCollectionSelector
                 .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
                 .Returns((string t, string c) => new[] { $"other alignment", $"{c.Replace(GroupConstants.Exploded, string.Empty)}y scaley", "preset alignment" });
+
+            var ageRolls = new List<TypeAndAmountSelection>();
+            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 100_000, RawAmount = "raw 100,000" });
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, It.IsAny<string>()))
+                .Returns(ageRolls);
         }
 
         [TestCaseSource(nameof(AllHalfDragonTemplates))]
@@ -427,6 +446,62 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             }
         }
 
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
+        public void ApplyTo_ReturnsCreature_WithAdjustedDemographics(string template)
+        {
+            baseCreature.Demographics.Appearance = "I look like a potato.";
+            baseCreature.Demographics.Age.Value = 42;
+            baseCreature.Demographics.MaximumAge.Value = 600;
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, template))
+                .Returns("I am the scaliest boi.");
+
+            var ageRolls = new List<TypeAndAmountSelection>();
+            ageRolls.Add(new TypeAndAmountSelection { Type = "my only age description", Amount = 9266, RawAmount = "raw 9266" });
+            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" });
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, template))
+                .Returns(ageRolls);
+
+            var multiplier = 90210 / 600d / 2;
+
+            var creature = applicators[template].ApplyTo(baseCreature, false);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi."));
+            Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 * multiplier));
+            Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(600 * multiplier));
+        }
+
+        [TestCaseSource(nameof(AllHalfDragonTemplates))]
+        public async Task ApplyToAsync_ReturnsCreature_WithAdjustedDemographics(string template)
+        {
+            baseCreature.Demographics.Appearance = "I look like a potato.";
+            baseCreature.Demographics.Age.Value = 42;
+            baseCreature.Demographics.MaximumAge.Value = 600;
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, template))
+                .Returns("I am the scaliest boi.");
+
+            var ageRolls = new List<TypeAndAmountSelection>();
+            ageRolls.Add(new TypeAndAmountSelection { Type = "my only age description", Amount = 9266, RawAmount = "raw 9266" });
+            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" });
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, template))
+                .Returns(ageRolls);
+
+            var multiplier = 90210 / 600d / 2;
+
+            var creature = await applicators[template].ApplyToAsync(baseCreature, false);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi."));
+            Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 * multiplier));
+            Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(600 * multiplier));
+        }
+
         [TestCaseSource(nameof(HitDieIncreased))]
         public void ApplyTo_HitDieIncreases(string template, int original, int increased)
         {
@@ -515,6 +590,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         {
             baseCreature.Size = size;
             baseCreature.Speeds[SpeedConstants.Land].Value = landSpeed;
+            baseCreature.Demographics.Appearance = "I look like a potato.";
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, template))
+                .Returns("I am the scaliest boi.");
 
             var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
@@ -524,6 +604,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("the goodest"));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo($"{template} furlongs"));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(flySpeed));
+            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi. Has dragon wings."));
         }
 
         private static IEnumerable GainFlySpeed
@@ -574,12 +655,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         {
             baseCreature.Size = size;
             baseCreature.Speeds[SpeedConstants.Land].Value = 42;
+            baseCreature.Demographics.Appearance = "I look like a potato.";
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, template))
+                .Returns("I am the scaliest boi.");
 
             var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(1)
                 .And.Not.ContainKey(SpeedConstants.Fly)
                 .And.ContainKey(SpeedConstants.Land));
             Assert.That(creature.Speeds[SpeedConstants.Land].Value, Is.EqualTo(42));
+            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi."));
         }
 
         private static IEnumerable DoNotGainFlySpeed
@@ -611,6 +698,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             baseCreature.Size = SizeConstants.Large;
             baseCreature.Speeds.Clear();
             baseCreature.Speeds[SpeedConstants.Swim] = new Measurement("feet per round") { Value = 42 };
+            baseCreature.Demographics.Appearance = "I look like a potato.";
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, template))
+                .Returns("I am the scaliest boi.");
 
             var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(1)
@@ -618,6 +710,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .And.ContainKey(SpeedConstants.Swim));
             Assert.That(creature.Speeds[SpeedConstants.Swim].Value, Is.EqualTo(42));
             Assert.That(creature.Speeds[SpeedConstants.Swim].Unit, Is.EqualTo("feet per round"));
+            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi."));
         }
 
         [TestCaseSource(nameof(AllHalfDragonTemplates))]
@@ -626,6 +719,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             baseCreature.Size = SizeConstants.Large;
             baseCreature.Speeds[SpeedConstants.Land].Value = 600;
             baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 42, Description = "so-so maneuverability" };
+            baseCreature.Demographics.Appearance = "I look like a potato.";
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, template))
+                .Returns("I am the scaliest boi.");
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, template))
+                .Returns("I am the scaliest boi.");
 
             var creature = applicators[template].ApplyTo(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
@@ -635,6 +737,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(42));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo("feet per round"));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("so-so maneuverability"));
+            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi. Has dragon wings."));
         }
 
         [TestCaseSource(nameof(AllHalfDragonTemplates))]
@@ -643,6 +746,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             baseCreature.Size = SizeConstants.Large;
             baseCreature.Speeds.Clear();
             baseCreature.Speeds[SpeedConstants.Swim] = new Measurement("feet per round") { Value = 42 };
+            baseCreature.Demographics.Appearance = "I look like a potato.";
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, template))
+                .Returns("I am the scaliest boi.");
 
             var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(1)
@@ -650,6 +758,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
                 .And.ContainKey(SpeedConstants.Swim));
             Assert.That(creature.Speeds[SpeedConstants.Swim].Value, Is.EqualTo(42));
             Assert.That(creature.Speeds[SpeedConstants.Swim].Unit, Is.EqualTo("feet per round"));
+            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi."));
         }
 
         [TestCaseSource(nameof(AllHalfDragonTemplates))]
@@ -658,6 +767,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             baseCreature.Size = SizeConstants.Large;
             baseCreature.Speeds[SpeedConstants.Land].Value = 600;
             baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 42, Description = "so-so maneuverability" };
+            baseCreature.Demographics.Appearance = "I look like a potato.";
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, template))
+                .Returns("I am the scaliest boi.");
 
             var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
@@ -667,6 +781,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(42));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo("feet per round"));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("so-so maneuverability"));
+            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi. Has dragon wings."));
         }
 
         [TestCaseSource(nameof(AllHalfDragonTemplates))]
@@ -1643,6 +1758,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         {
             baseCreature.Size = size;
             baseCreature.Speeds[SpeedConstants.Land].Value = landSpeed;
+            baseCreature.Demographics.Appearance = "I look like a potato.";
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, template))
+                .Returns("I am the scaliest boi.");
 
             var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
@@ -1650,6 +1770,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("the goodest"));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo($"{template} furlongs"));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(flySpeed));
+            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi. Has dragon wings."));
         }
 
         [TestCaseSource(nameof(DoNotGainFlySpeed))]
@@ -1657,10 +1778,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates.HalfDragons
         {
             baseCreature.Size = size;
             baseCreature.Speeds[SpeedConstants.Land].Value = 42;
+            baseCreature.Demographics.Appearance = "I look like a potato.";
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, template))
+                .Returns("I am the scaliest boi.");
 
             var creature = await applicators[template].ApplyToAsync(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(1)
                 .And.Not.ContainKey(SpeedConstants.Fly));
+            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi."));
         }
 
         [TestCaseSource(nameof(AllHalfDragonTemplates))]

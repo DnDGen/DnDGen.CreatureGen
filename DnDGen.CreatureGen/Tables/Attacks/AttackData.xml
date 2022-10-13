@@ -5184,16 +5184,49 @@
     <entry>Energy Drain@2#Negative Level#@True@True@False@True@1@Round (6 seconds)@@@supernatural ability@Vampire gains 5 temporary hit points@0@0</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Afflicted)</name>
+    <name>Lycanthrope, Black Bear (Werebear, Afflicted)</name>
     <entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Natural)</name>
+    <name>Lycanthrope, Black Bear (Werebear, Natural)</name>
     <entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
     <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
   </collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)</name>
+		<entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+		<entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)</name>
+		<entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+		<entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
+		<entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)</name>
+		<entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+		<entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)</name>
+		<entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+		<entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
+		<entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)</name>
+		<entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+		<entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Natural)</name>
+		<entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+		<entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
+		<entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
+	</collection>
   <collection>
     <name>Lycanthrope, Boar (Wereboar, Afflicted)</name>
     <entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
@@ -5217,23 +5250,45 @@
     <entry>Gore (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Afflicted)</name>
+    <name>Lycanthrope, Rat (Wererat, Afflicted)</name>
     <entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Natural)</name>
+    <name>Lycanthrope, Rat (Wererat, Natural)</name>
     <entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
     <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
   </collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)</name>
+		<entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+		<entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)</name>
+		<entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+		<entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
+		<entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Afflicted)</name>
+		<entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+		<entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Natural)</name>
+		<entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
+		<entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
+		<entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>
+	</collection>
   <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Afflicted)</name>
+    <name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)</name>
     <entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Natural)</name>
+    <name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)</name>
     <entry>Claw (in Hybrid form)@1d4#Slashing#@True@True@True@False@2@Round (6 seconds)@@@melee@@1@0</entry>
     <entry>Bite (in Hybrid form)@1d6#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@Curse of Lycanthropy@0.5@0</entry>
     <entry>Curse of Lycanthropy@@True@True@False@True@1@Hit@Constitution@Fortitude@supernatural ability@Contract lycanthropy@0@0</entry>

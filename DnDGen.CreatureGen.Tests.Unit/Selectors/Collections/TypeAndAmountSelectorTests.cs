@@ -48,6 +48,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
 
+            SetUpRoll("9266", 9266);
+
             var typeAndAmount = selector.SelectOne("table name", "name");
             Assert.That(typeAndAmount.Type, Is.EqualTo("type"));
             Assert.That(typeAndAmount.Amount, Is.EqualTo(9266));
@@ -67,6 +69,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             };
 
             mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
+
+            SetUpRoll("9266", 9266);
 
             var typeAndAmount = selector.SelectOne("table name", "name");
             Assert.That(typeAndAmount.Type, Is.EqualTo(skillString));
@@ -127,6 +131,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
 
             mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
 
+            SetUpRoll("9266", 9266);
+            SetUpRoll("90210", 90210);
+
             var typesAndAmounts = selector.Select("table name", "name");
             Assert.That(typesAndAmounts.Count, Is.EqualTo(2));
 
@@ -138,7 +145,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             Assert.That(first.RawAmount, Is.EqualTo("9266"));
             Assert.That(last.Type, Is.EqualTo("other type"));
             Assert.That(last.Amount, Is.EqualTo(90210));
-            Assert.That(last.RawAmount, Is.EqualTo("9266"));
+            Assert.That(last.RawAmount, Is.EqualTo("90210"));
         }
 
         [Test]
@@ -218,6 +225,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 TypeAndAmountHelper.Build("other type", "42"),
                 TypeAndAmountHelper.Build("another type", "600"),
             };
+
+            SetUpRoll("9266", 9266);
+            SetUpRoll("90210", 90210);
+            SetUpRoll("42", 42);
+            SetUpRoll("600", 600);
 
             var typesAndAmounts = selector.SelectAll("table name");
             Assert.That(typesAndAmounts.Count, Is.EqualTo(2));

@@ -170,7 +170,15 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            throw new NotImplementedException("Update demographics for template");
+            var appearance = collectionSelector.SelectRandomFrom(TableNameConstants.Collection.Appearances, CreatureConstants.Templates.HalfFiend);
+            creature.Demographics.Appearance += " " + appearance;
+
+            var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.HalfFiend);
+            var maxAgeRoll = ageRolls.FirstOrDefault(r => r.Type == AgeConstants.Categories.Maximum);
+            var multiplier = maxAgeRoll.Amount / creature.Demographics.MaximumAge.Value / 2;
+
+            creature.Demographics.Age.Value *= multiplier;
+            creature.Demographics.MaximumAge.Value = AgeConstants.Ageless;
         }
 
         private void UpdateCreatureSpeeds(Creature creature)

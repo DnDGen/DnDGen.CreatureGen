@@ -189,7 +189,9 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            throw new NotImplementedException("Update demographics for template");
+            var appearance = collectionSelector.SelectRandomFrom(TableNameConstants.Collection.Appearances, CreatureConstants.Templates.Zombie);
+            creature.Demographics.Appearance += " " + appearance;
+            creature.Demographics.MaximumAge.Value = AgeConstants.Ageless;
         }
 
         private void UpdateCreatureHitPoints(Creature creature)

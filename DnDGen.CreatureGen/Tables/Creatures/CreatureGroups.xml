@@ -1036,16 +1036,26 @@
   </collection>
   <collection>
     <name>Lycanthrope</name>
-    <entry>Lycanthrope, Brown Bear (Werebear, Afflicted)</entry>
-    <entry>Lycanthrope, Brown Bear (Werebear, Natural)</entry>
+    <entry>Lycanthrope, Black Bear (Werebear, Afflicted)</entry>
+    <entry>Lycanthrope, Black Bear (Werebear, Natural)</entry>
+	  <entry>Lycanthrope, Brown Bear (Werebear, Afflicted)</entry>
+	  <entry>Lycanthrope, Brown Bear (Werebear, Natural)</entry>
+	  <entry>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)</entry>
+	  <entry>Lycanthrope, Dire Bear (Dire Werebear, Natural)</entry>
+	  <entry>Lycanthrope, Polar Bear (Werebear, Afflicted)</entry>
+	  <entry>Lycanthrope, Polar Bear (Werebear, Natural)</entry>
     <entry>Lycanthrope, Boar (Wereboar, Afflicted)</entry>
     <entry>Lycanthrope, Boar (Wereboar, Natural)</entry>
     <entry>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)</entry>
     <entry>Lycanthrope, Dire Boar (Dire Wereboar, Natural)</entry>
-    <entry>Lycanthrope, Dire Rat (Wererat, Afflicted)</entry>
-    <entry>Lycanthrope, Dire Rat (Wererat, Natural)</entry>
-    <entry>Lycanthrope, Tiger (Weretiger, Afflicted)</entry>
-    <entry>Lycanthrope, Tiger (Weretiger, Natural)</entry>
+    <entry>Lycanthrope, Rat (Wererat, Afflicted)</entry>
+    <entry>Lycanthrope, Rat (Wererat, Natural)</entry>
+	  <entry>Lycanthrope, Dire Rat (Wererat, Afflicted)</entry>
+	  <entry>Lycanthrope, Dire Rat (Wererat, Natural)</entry>
+	  <entry>Lycanthrope, Tiger (Weretiger, Afflicted)</entry>
+	  <entry>Lycanthrope, Tiger (Weretiger, Natural)</entry>
+    <entry>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)</entry>
+    <entry>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)</entry>
     <entry>Lycanthrope, Wolf (Werewolf, Afflicted)</entry>
     <entry>Lycanthrope, Wolf (Werewolf, Natural)</entry>
     <entry>Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)</entry>

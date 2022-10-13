@@ -342,6 +342,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .And.Length.EqualTo(2));
         }
 
+        [Test]
+        public void ApplyTo_DemographicsAdjusted()
+        {
+            baseCreature.Demographics.Appearance = "I look like a potato.";
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, CreatureConstants.Templates.Skeleton))
+                .Returns("I am spooky and scary.");
+
+            var creature = applicator.ApplyTo(baseCreature, false);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I am spooky and scary."));
+            Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(AgeConstants.Ageless));
+        }
+
         [TestCase(4)]
         [TestCase(6)]
         [TestCase(8)]
@@ -1205,6 +1220,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Type.SubTypes.ToArray(), Is.EqualTo(subtypes.Except(new[] { subtype }))
                 .And.Not.Contains(subtype)
                 .And.Length.EqualTo(2));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_DemographicsAdjusted()
+        {
+            baseCreature.Demographics.Appearance = "I look like a potato.";
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, CreatureConstants.Templates.Skeleton))
+                .Returns("I am spooky and scary.");
+
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I am spooky and scary."));
+            Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(AgeConstants.Ageless));
         }
 
         [TestCase(4)]

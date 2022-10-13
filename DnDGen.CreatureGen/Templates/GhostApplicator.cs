@@ -152,7 +152,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            throw new NotImplementedException("Update demographics for template");
+            creature.Demographics.MaximumAge.Value = AgeConstants.Ageless;
         }
 
         private void UpdateCreatureAbilities(Creature creature)

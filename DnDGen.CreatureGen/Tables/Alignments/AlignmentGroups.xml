@@ -3312,13 +3312,37 @@
     <entry>Any</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Afflicted)</name>
+    <name>Lycanthrope, Black Bear (Werebear, Afflicted)</name>
     <entry>Any</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Natural)</name>
+    <name>Lycanthrope, Black Bear (Werebear, Natural)</name>
     <entry>Any</entry>
   </collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)</name>
+		<entry>Any</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)</name>
+		<entry>Any</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)</name>
+		<entry>Any</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)</name>
+		<entry>Any</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)</name>
+		<entry>Any</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Natural)</name>
+		<entry>Any</entry>
+	</collection>
   <collection>
     <name>Lycanthrope, Boar (Wereboar, Afflicted)</name>
     <entry>Any</entry>
@@ -3336,19 +3360,35 @@
     <entry>Any</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Afflicted)</name>
+    <name>Lycanthrope, Rat (Wererat, Afflicted)</name>
     <entry>Any</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Natural)</name>
+    <name>Lycanthrope, Rat (Wererat, Natural)</name>
+    <entry>Any</entry>
+  </collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)</name>
+		<entry>Any</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)</name>
+		<entry>Any</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Afflicted)</name>
+		<entry>Any</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Natural)</name>
+		<entry>Any</entry>
+	</collection>
+  <collection>
+    <name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)</name>
     <entry>Any</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Afflicted)</name>
-    <entry>Any</entry>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Natural)</name>
+    <name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)</name>
     <entry>Any</entry>
   </collection>
   <collection>
@@ -7080,7 +7120,7 @@
     <entry>Chaotic Evil</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Afflicted)Exploded</name>
+    <name>Lycanthrope, Black Bear (Werebear, Afflicted)Exploded</name>
     <entry>Lawful Good</entry>
     <entry>Lawful Neutral</entry>
     <entry>Lawful Evil</entry>
@@ -7092,7 +7132,7 @@
     <entry>Chaotic Evil</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Natural)Exploded</name>
+    <name>Lycanthrope, Black Bear (Werebear, Natural)Exploded</name>
     <entry>Lawful Good</entry>
     <entry>Lawful Neutral</entry>
     <entry>Lawful Evil</entry>
@@ -7103,6 +7143,78 @@
     <entry>Chaotic Neutral</entry>
     <entry>Chaotic Evil</entry>
   </collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)Exploded</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)Exploded</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)Exploded</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)Exploded</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)Exploded</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Natural)Exploded</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
   <collection>
     <name>Lycanthrope, Boar (Wereboar, Afflicted)Exploded</name>
     <entry>Lawful Good</entry>
@@ -7152,7 +7264,7 @@
     <entry>Chaotic Evil</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Afflicted)Exploded</name>
+    <name>Lycanthrope, Rat (Wererat, Afflicted)Exploded</name>
     <entry>Lawful Good</entry>
     <entry>Lawful Neutral</entry>
     <entry>Lawful Evil</entry>
@@ -7164,7 +7276,67 @@
     <entry>Chaotic Evil</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Natural)Exploded</name>
+    <name>Lycanthrope, Rat (Wererat, Natural)Exploded</name>
+    <entry>Lawful Good</entry>
+    <entry>Lawful Neutral</entry>
+    <entry>Lawful Evil</entry>
+    <entry>Neutral Good</entry>
+    <entry>True Neutral</entry>
+    <entry>Neutral Evil</entry>
+    <entry>Chaotic Good</entry>
+    <entry>Chaotic Neutral</entry>
+    <entry>Chaotic Evil</entry>
+  </collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)Exploded</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)Exploded</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Afflicted)Exploded</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Natural)Exploded</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
+  <collection>
+    <name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)Exploded</name>
     <entry>Lawful Good</entry>
     <entry>Lawful Neutral</entry>
     <entry>Lawful Evil</entry>
@@ -7176,19 +7348,7 @@
     <entry>Chaotic Evil</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Afflicted)Exploded</name>
-    <entry>Lawful Good</entry>
-    <entry>Lawful Neutral</entry>
-    <entry>Lawful Evil</entry>
-    <entry>Neutral Good</entry>
-    <entry>True Neutral</entry>
-    <entry>Neutral Evil</entry>
-    <entry>Chaotic Good</entry>
-    <entry>Chaotic Neutral</entry>
-    <entry>Chaotic Evil</entry>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Natural)Exploded</name>
+    <name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)Exploded</name>
     <entry>Lawful Good</entry>
     <entry>Lawful Neutral</entry>
     <entry>Lawful Evil</entry>
@@ -7475,30 +7635,102 @@
     <entry>Chaotic Neutral</entry>
     <entry>Chaotic Evil</entry>
   </collection>
-  <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Afflicted)Allowed Input</name>
-    <entry>Lawful Good</entry>
-    <entry>Lawful Neutral</entry>
-    <entry>Lawful Evil</entry>
-    <entry>Neutral Good</entry>
-    <entry>True Neutral</entry>
-    <entry>Neutral Evil</entry>
-    <entry>Chaotic Good</entry>
-    <entry>Chaotic Neutral</entry>
-    <entry>Chaotic Evil</entry>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Natural)Allowed Input</name>
-    <entry>Lawful Good</entry>
-    <entry>Lawful Neutral</entry>
-    <entry>Lawful Evil</entry>
-    <entry>Neutral Good</entry>
-    <entry>True Neutral</entry>
-    <entry>Neutral Evil</entry>
-    <entry>Chaotic Good</entry>
-    <entry>Chaotic Neutral</entry>
-    <entry>Chaotic Evil</entry>
-  </collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Afflicted)Allowed Input</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Black Bear (Werebear, Natural)Allowed Input</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)Allowed Input</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)Allowed Input</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)Allowed Input</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)Allowed Input</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)Allowed Input</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Natural)Allowed Input</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
   <collection>
     <name>Lycanthrope, Boar (Wereboar, Afflicted)Allowed Input</name>
     <entry>Lawful Good</entry>
@@ -7547,54 +7779,102 @@
     <entry>Chaotic Neutral</entry>
     <entry>Chaotic Evil</entry>
   </collection>
-  <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Afflicted)Allowed Input</name>
-    <entry>Lawful Good</entry>
-    <entry>Lawful Neutral</entry>
-    <entry>Lawful Evil</entry>
-    <entry>Neutral Good</entry>
-    <entry>True Neutral</entry>
-    <entry>Neutral Evil</entry>
-    <entry>Chaotic Good</entry>
-    <entry>Chaotic Neutral</entry>
-    <entry>Chaotic Evil</entry>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Natural)Allowed Input</name>
-    <entry>Lawful Good</entry>
-    <entry>Lawful Neutral</entry>
-    <entry>Lawful Evil</entry>
-    <entry>Neutral Good</entry>
-    <entry>True Neutral</entry>
-    <entry>Neutral Evil</entry>
-    <entry>Chaotic Good</entry>
-    <entry>Chaotic Neutral</entry>
-    <entry>Chaotic Evil</entry>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Afflicted)Allowed Input</name>
-    <entry>Lawful Good</entry>
-    <entry>Lawful Neutral</entry>
-    <entry>Lawful Evil</entry>
-    <entry>Neutral Good</entry>
-    <entry>True Neutral</entry>
-    <entry>Neutral Evil</entry>
-    <entry>Chaotic Good</entry>
-    <entry>Chaotic Neutral</entry>
-    <entry>Chaotic Evil</entry>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Natural)Allowed Input</name>
-    <entry>Lawful Good</entry>
-    <entry>Lawful Neutral</entry>
-    <entry>Lawful Evil</entry>
-    <entry>Neutral Good</entry>
-    <entry>True Neutral</entry>
-    <entry>Neutral Evil</entry>
-    <entry>Chaotic Good</entry>
-    <entry>Chaotic Neutral</entry>
-    <entry>Chaotic Evil</entry>
-  </collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Afflicted)Allowed Input</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Natural)Allowed Input</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)Allowed Input</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)Allowed Input</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Afflicted)Allowed Input</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Natural)Allowed Input</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)Allowed Input</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)Allowed Input</name>
+		<entry>Lawful Good</entry>
+		<entry>Lawful Neutral</entry>
+		<entry>Lawful Evil</entry>
+		<entry>Neutral Good</entry>
+		<entry>True Neutral</entry>
+		<entry>Neutral Evil</entry>
+		<entry>Chaotic Good</entry>
+		<entry>Chaotic Neutral</entry>
+		<entry>Chaotic Evil</entry>
+	</collection>
   <collection>
     <name>Lycanthrope, Wolf (Werewolf, Afflicted)Allowed Input</name>
     <entry>Lawful Good</entry>

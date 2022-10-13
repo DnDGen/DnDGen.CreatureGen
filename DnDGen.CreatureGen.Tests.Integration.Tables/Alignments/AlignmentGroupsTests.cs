@@ -1081,16 +1081,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Templates.HalfDragon_White, CreatureConstants.Dragon_White_Adult)]
         [TestCase(CreatureConstants.Templates.HalfFiend, AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil)]
         [TestCase(CreatureConstants.Templates.Lich, AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted, AlignmentConstants.Modifiers.Any)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural, AlignmentConstants.Modifiers.Any)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted, AlignmentConstants.Modifiers.Any)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural, AlignmentConstants.Modifiers.Any)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted, AlignmentConstants.Modifiers.Any)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Afflicted, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Natural, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural, AlignmentConstants.Modifiers.Any)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Afflicted, AlignmentConstants.Modifiers.Any)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Natural, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Natural, AlignmentConstants.Modifiers.Any)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted, AlignmentConstants.Modifiers.Any)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Natural, AlignmentConstants.Modifiers.Any)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted, AlignmentConstants.Modifiers.Any)]
@@ -1337,6 +1347,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             AlignmentConstants.LawfulEvil,
             AlignmentConstants.NeutralEvil,
             AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted,
             AlignmentConstants.LawfulGood,
             AlignmentConstants.NeutralGood,
@@ -1357,7 +1387,57 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             AlignmentConstants.LawfulEvil,
             AlignmentConstants.NeutralEvil,
             AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Afflicted,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Natural,
             AlignmentConstants.LawfulGood,
             AlignmentConstants.NeutralGood,
             AlignmentConstants.ChaoticGood,
@@ -1387,7 +1467,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             AlignmentConstants.LawfulEvil,
             AlignmentConstants.NeutralEvil,
             AlignmentConstants.ChaoticEvil)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Natural,
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Afflicted,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Natural,
             AlignmentConstants.LawfulGood,
             AlignmentConstants.NeutralGood,
             AlignmentConstants.ChaoticGood,
@@ -1437,7 +1527,37 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             AlignmentConstants.LawfulEvil,
             AlignmentConstants.NeutralEvil,
             AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Natural,
             AlignmentConstants.LawfulGood,
             AlignmentConstants.NeutralGood,
             AlignmentConstants.ChaoticGood,
@@ -1458,16 +1578,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             AlignmentConstants.NeutralEvil,
             AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural,
-            AlignmentConstants.LawfulGood,
-            AlignmentConstants.NeutralGood,
-            AlignmentConstants.ChaoticGood,
-            AlignmentConstants.LawfulNeutral,
-            AlignmentConstants.TrueNeutral,
-            AlignmentConstants.ChaoticNeutral,
-            AlignmentConstants.LawfulEvil,
-            AlignmentConstants.NeutralEvil,
-            AlignmentConstants.ChaoticEvil)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Natural,
             AlignmentConstants.LawfulGood,
             AlignmentConstants.NeutralGood,
             AlignmentConstants.ChaoticGood,

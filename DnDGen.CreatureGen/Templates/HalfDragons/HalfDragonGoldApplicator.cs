@@ -24,7 +24,8 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
                 IMagicGenerator magicGenerator,
                 ICreatureDataSelector creatureDataSelector,
                 IAdjustmentsSelector adjustmentSelector,
-                ICreaturePrototypeFactory prototypeFactory)
+                ICreaturePrototypeFactory prototypeFactory,
+                ITypeAndAmountSelector typeAndAmountSelector)
             : base(
                   collectionSelector,
                   speedsGenerator,
@@ -36,7 +37,8 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
                   magicGenerator,
                   creatureDataSelector,
                   adjustmentSelector,
-                  prototypeFactory)
+                  prototypeFactory,
+                  typeAndAmountSelector)
         {
         }
 
