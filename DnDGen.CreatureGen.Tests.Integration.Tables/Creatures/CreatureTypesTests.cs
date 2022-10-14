@@ -1350,6 +1350,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             CreatureConstants.Types.Subtypes.Shapechanger)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural, "",
             CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Black_Natural, "",
+            CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Black_Afflicted, "",
+            CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Dire_Natural, "",
+            CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Dire_Afflicted, "",
+            CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Polar_Natural, "",
+            CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Polar_Afflicted, "",
+            CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Natural, "",
+            CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Afflicted, "",
+            CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Natural, "",
+            CreatureConstants.Types.Subtypes.Shapechanger)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Dire_Afflicted, "",
+            CreatureConstants.Types.Subtypes.Shapechanger)]
         public void CreatureTypes(string creature, params string[] types)
         {
             AssertOrderedCollection(creature, types);

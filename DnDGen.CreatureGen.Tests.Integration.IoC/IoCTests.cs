@@ -25,11 +25,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC
             Assert.That(first, Is.Not.EqualTo(second));
         }
 
-        protected void AssertNamedIsInstanceOf<I, T>(string name)
+        protected I AssertNamedIsInstanceOf<I, T>(string name)
             where T : I
         {
             var item = GetNewInstanceOf<I>(name);
             Assert.That(item, Is.InstanceOf<T>());
+
+            return item;
         }
     }
 }

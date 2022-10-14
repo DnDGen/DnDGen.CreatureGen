@@ -3062,13 +3062,37 @@
     <entry>10</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Afflicted)</name>
+    <name>Lycanthrope, Black Bear (Werebear, Afflicted)</name>
     <entry>2147483647</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Natural)</name>
+    <name>Lycanthrope, Black Bear (Werebear, Natural)</name>
     <entry>2147483647</entry>
   </collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)</name>
+		<entry>2147483647</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)</name>
+		<entry>2147483647</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)</name>
+		<entry>2147483647</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)</name>
+		<entry>2147483647</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)</name>
+		<entry>2147483647</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Natural)</name>
+		<entry>2147483647</entry>
+	</collection>
   <collection>
     <name>Lycanthrope, Boar (Wereboar, Afflicted)</name>
     <entry>2147483647</entry>
@@ -3086,19 +3110,35 @@
     <entry>2147483647</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Afflicted)</name>
+    <name>Lycanthrope, Rat (Wererat, Afflicted)</name>
     <entry>2147483647</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Natural)</name>
+    <name>Lycanthrope, Rat (Wererat, Natural)</name>
+    <entry>2147483647</entry>
+  </collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)</name>
+		<entry>2147483647</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)</name>
+		<entry>2147483647</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Afflicted)</name>
+		<entry>2147483647</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Natural)</name>
+		<entry>2147483647</entry>
+	</collection>
+  <collection>
+    <name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)</name>
     <entry>2147483647</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Afflicted)</name>
-    <entry>2147483647</entry>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Natural)</name>
+    <name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)</name>
     <entry>2147483647</entry>
   </collection>
   <collection>

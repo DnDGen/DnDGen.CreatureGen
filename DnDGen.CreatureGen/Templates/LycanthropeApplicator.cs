@@ -20,12 +20,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DnDGen.CreatureGen.Templates.Lycanthropes
+namespace DnDGen.CreatureGen.Templates
 {
-    internal abstract class LycanthropeApplicator : TemplateApplicator
+    internal class LycanthropeApplicator : TemplateApplicator
     {
-        protected abstract string LycanthropeSpecies { get; }
-        protected abstract string AnimalSpecies { get; }
+        public string LycanthropeSpecies { get; set; }
+        public string AnimalSpecies { get; set; }
+        public bool IsNatural { get; set; }
 
         private readonly ICollectionSelector collectionSelector;
         private readonly ICreatureDataSelector creatureDataSelector;
@@ -275,10 +276,10 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
         {
             if (creature.LevelAdjustment.HasValue)
             {
-                if (LycanthropeSpecies.Contains("Afflicted"))
-                    creature.LevelAdjustment += 2;
-                else if (LycanthropeSpecies.Contains("Natural"))
+                if (IsNatural)
                     creature.LevelAdjustment += 3;
+                else
+                    creature.LevelAdjustment += 2;
             }
         }
 
@@ -286,10 +287,10 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
         {
             if (creature.LevelAdjustment.HasValue)
             {
-                if (LycanthropeSpecies.Contains("Afflicted"))
-                    creature.LevelAdjustment += 2;
-                else if (LycanthropeSpecies.Contains("Natural"))
+                if (IsNatural)
                     creature.LevelAdjustment += 3;
+                else
+                    creature.LevelAdjustment += 2;
             }
         }
 
@@ -306,7 +307,7 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
 
             var newCap = creature.HitPoints.RoundedHitDiceQuantity + 3;
 
-            if (LycanthropeSpecies.Contains("Afflicted"))
+            if (!IsNatural)
             {
                 var controlShape = new Skill(
                     SkillConstants.Special.ControlShape,

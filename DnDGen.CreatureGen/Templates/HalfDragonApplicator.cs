@@ -19,11 +19,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DnDGen.CreatureGen.Templates.HalfDragons
+namespace DnDGen.CreatureGen.Templates
 {
-    internal abstract class HalfDragonApplicator : TemplateApplicator
+    internal class HalfDragonApplicator : TemplateApplicator
     {
-        protected abstract string DragonSpecies { get; }
+        public string DragonSpecies { get; set; }
 
         private readonly ICollectionSelector collectionSelector;
         private readonly IEnumerable<string> creatureTypes;

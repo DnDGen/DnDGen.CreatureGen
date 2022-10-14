@@ -5691,11 +5691,29 @@
     <name>SkeletonAutomatic</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Afflicted)Automatic</name>
+    <name>Lycanthrope, Black Bear (Werebear, Afflicted)Automatic</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Natural)Automatic</name>
+    <name>Lycanthrope, Black Bear (Werebear, Natural)Automatic</name>
   </collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)Automatic</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)Automatic</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)Automatic</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)Automatic</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)Automatic</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Natural)Automatic</name>
+	</collection>
   <collection>
     <name>Lycanthrope, Boar (Wereboar, Afflicted)Automatic</name>
   </collection>
@@ -5709,16 +5727,28 @@
     <name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)Automatic</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Afflicted)Automatic</name>
+    <name>Lycanthrope, Rat (Wererat, Afflicted)Automatic</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Natural)Automatic</name>
+    <name>Lycanthrope, Rat (Wererat, Natural)Automatic</name>
+  </collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)Automatic</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)Automatic</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Afflicted)Automatic</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Natural)Automatic</name>
+	</collection>
+  <collection>
+    <name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)Automatic</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Afflicted)Automatic</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Natural)Automatic</name>
+    <name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)Automatic</name>
   </collection>
   <collection>
     <name>Lycanthrope, Wolf (Werewolf, Afflicted)Automatic</name>
@@ -5797,11 +5827,29 @@
     <name>SkeletonBonus</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Afflicted)Bonus</name>
+    <name>Lycanthrope, Black Bear (Werebear, Afflicted)Bonus</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Natural)Bonus</name>
+    <name>Lycanthrope, Black Bear (Werebear, Natural)Bonus</name>
   </collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)Bonus</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)Bonus</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)Bonus</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)Bonus</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)Bonus</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Natural)Bonus</name>
+	</collection>
   <collection>
     <name>Lycanthrope, Boar (Wereboar, Afflicted)Bonus</name>
   </collection>
@@ -5815,16 +5863,28 @@
     <name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)Bonus</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Afflicted)Bonus</name>
+    <name>Lycanthrope, Rat (Wererat, Afflicted)Bonus</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Natural)Bonus</name>
+    <name>Lycanthrope, Rat (Wererat, Natural)Bonus</name>
+  </collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)Bonus</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)Bonus</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Afflicted)Bonus</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Natural)Bonus</name>
+	</collection>
+  <collection>
+    <name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)Bonus</name>
   </collection>
   <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Afflicted)Bonus</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Natural)Bonus</name>
+    <name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)Bonus</name>
   </collection>
   <collection>
     <name>Lycanthrope, Wolf (Werewolf, Afflicted)Bonus</name>

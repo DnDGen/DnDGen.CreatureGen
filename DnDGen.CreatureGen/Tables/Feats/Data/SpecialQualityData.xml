@@ -5908,8 +5908,8 @@
     <entry>Improved Initiative#4##0##0#False###0#0#2147483647</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Afflicted)</name>
-    <entry>Alternate Form#0#Brown bear or bear-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+    <name>Lycanthrope, Black Bear (Werebear, Afflicted)</name>
+    <entry>Alternate Form#0#Black bear or bear-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
     <entry>Lycanthropic Empathy#4#Bears and dire bears#0##0#False###0#0#2147483647</entry>
     <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
     <entry>Scent#0##0##0#False###0#0#2147483647</entry>
@@ -5917,14 +5917,68 @@
     <entry>Iron Will#2##0##0#False###0#0#2147483647</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Brown Bear (Werebear, Natural)</name>
-    <entry>Alternate Form#0#Brown bear or bear-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+    <name>Lycanthrope, Black Bear (Werebear, Natural)</name>
+    <entry>Alternate Form#0#Black bear or bear-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
     <entry>Lycanthropic Empathy#4#Bears and dire bears#0##0#False###0#0#2147483647</entry>
     <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
     <entry>Scent#0##0##0#False###0#0#2147483647</entry>
     <entry>Damage Reduction: in Animal or Hybrid form#10#Vulnerable to silver#1#Hit#0#False###0#0#2147483647</entry>
     <entry>Iron Will#2##0##0#False###0#0#2147483647</entry>
   </collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)</name>
+		<entry>Alternate Form#0#Brown bear or bear-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+		<entry>Lycanthropic Empathy#4#Bears and dire bears#0##0#False###0#0#2147483647</entry>
+		<entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
+		<entry>Scent#0##0##0#False###0#0#2147483647</entry>
+		<entry>Damage Reduction: in Animal or Hybrid form#5#Vulnerable to silver#1#Hit#0#False###0#0#2147483647</entry>
+		<entry>Iron Will#2##0##0#False###0#0#2147483647</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)</name>
+		<entry>Alternate Form#0#Brown bear or bear-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+		<entry>Lycanthropic Empathy#4#Bears and dire bears#0##0#False###0#0#2147483647</entry>
+		<entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
+		<entry>Scent#0##0##0#False###0#0#2147483647</entry>
+		<entry>Damage Reduction: in Animal or Hybrid form#10#Vulnerable to silver#1#Hit#0#False###0#0#2147483647</entry>
+		<entry>Iron Will#2##0##0#False###0#0#2147483647</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)</name>
+		<entry>Alternate Form#0#Dire bear or bear-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+		<entry>Lycanthropic Empathy#4#Bears and dire bears#0##0#False###0#0#2147483647</entry>
+		<entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
+		<entry>Scent#0##0##0#False###0#0#2147483647</entry>
+		<entry>Damage Reduction: in Animal or Hybrid form#5#Vulnerable to silver#1#Hit#0#False###0#0#2147483647</entry>
+		<entry>Iron Will#2##0##0#False###0#0#2147483647</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)</name>
+		<entry>Alternate Form#0#Dire bear or bear-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+		<entry>Lycanthropic Empathy#4#Bears and dire bears#0##0#False###0#0#2147483647</entry>
+		<entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
+		<entry>Scent#0##0##0#False###0#0#2147483647</entry>
+		<entry>Damage Reduction: in Animal or Hybrid form#10#Vulnerable to silver#1#Hit#0#False###0#0#2147483647</entry>
+		<entry>Iron Will#2##0##0#False###0#0#2147483647</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)</name>
+		<entry>Alternate Form#0#Polar bear or bear-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+		<entry>Lycanthropic Empathy#4#Bears and dire bears#0##0#False###0#0#2147483647</entry>
+		<entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
+		<entry>Scent#0##0##0#False###0#0#2147483647</entry>
+		<entry>Damage Reduction: in Animal or Hybrid form#5#Vulnerable to silver#1#Hit#0#False###0#0#2147483647</entry>
+		<entry>Iron Will#2##0##0#False###0#0#2147483647</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Natural)</name>
+		<entry>Alternate Form#0#Polar bear or bear-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+		<entry>Lycanthropic Empathy#4#Bears and dire bears#0##0#False###0#0#2147483647</entry>
+		<entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
+		<entry>Scent#0##0##0#False###0#0#2147483647</entry>
+		<entry>Damage Reduction: in Animal or Hybrid form#10#Vulnerable to silver#1#Hit#0#False###0#0#2147483647</entry>
+		<entry>Iron Will#2##0##0#False###0#0#2147483647</entry>
+	</collection>
   <collection>
     <name>Lycanthrope, Boar (Wereboar, Afflicted)</name>
     <entry>Alternate Form#0#Boar or boar-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
@@ -5962,8 +6016,8 @@
     <entry>Iron Will#2##0##0#False###0#0#2147483647</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Afflicted)</name>
-    <entry>Alternate Form#0#Dire rat or bipedal rat-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+    <name>Lycanthrope, Rat (Wererat, Afflicted)</name>
+    <entry>Alternate Form#0#Rat or bipedal rat-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
     <entry>Lycanthropic Empathy#4#Rats and dire rats#0##0#False###0#0#2147483647</entry>
     <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
     <entry>Scent#0##0##0#False###0#0#2147483647</entry>
@@ -5971,17 +6025,53 @@
     <entry>Iron Will#2##0##0#False###0#0#2147483647</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Natural)</name>
-    <entry>Alternate Form#0#Dire rat or bipedal rat-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+    <name>Lycanthrope, Rat (Wererat, Natural)</name>
+    <entry>Alternate Form#0#Rat or bipedal rat-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
     <entry>Lycanthropic Empathy#4#Rats and dire rats#0##0#False###0#0#2147483647</entry>
     <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
     <entry>Scent#0##0##0#False###0#0#2147483647</entry>
     <entry>Damage Reduction: in Animal or Hybrid form#10#Vulnerable to silver#1#Hit#0#False###0#0#2147483647</entry>
     <entry>Iron Will#2##0##0#False###0#0#2147483647</entry>
   </collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Afflicted)</name>
+		<entry>Alternate Form#0#Dire rat or bipedal rat-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+		<entry>Lycanthropic Empathy#4#Rats and dire rats#0##0#False###0#0#2147483647</entry>
+		<entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
+		<entry>Scent#0##0##0#False###0#0#2147483647</entry>
+		<entry>Damage Reduction: in Animal or Hybrid form#5#Vulnerable to silver#1#Hit#0#False###0#0#2147483647</entry>
+		<entry>Iron Will#2##0##0#False###0#0#2147483647</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Rat (Wererat, Natural)</name>
+		<entry>Alternate Form#0#Dire rat or bipedal rat-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+		<entry>Lycanthropic Empathy#4#Rats and dire rats#0##0#False###0#0#2147483647</entry>
+		<entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
+		<entry>Scent#0##0##0#False###0#0#2147483647</entry>
+		<entry>Damage Reduction: in Animal or Hybrid form#10#Vulnerable to silver#1#Hit#0#False###0#0#2147483647</entry>
+		<entry>Iron Will#2##0##0#False###0#0#2147483647</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Afflicted)</name>
+		<entry>Alternate Form#0#Tiger or bipedal tiger-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+		<entry>Lycanthropic Empathy#4#Tigers and dire tigers#0##0#False###0#0#2147483647</entry>
+		<entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
+		<entry>Scent#0##0##0#False###0#0#2147483647</entry>
+		<entry>Damage Reduction: in Animal or Hybrid form#5#Vulnerable to silver#1#Hit#0#False###0#0#2147483647</entry>
+		<entry>Iron Will#2##0##0#False###0#0#2147483647</entry>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Tiger (Weretiger, Natural)</name>
+		<entry>Alternate Form#0#Tiger or bipedal tiger-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+		<entry>Lycanthropic Empathy#4#Tigers and dire tigers#0##0#False###0#0#2147483647</entry>
+		<entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
+		<entry>Scent#0##0##0#False###0#0#2147483647</entry>
+		<entry>Damage Reduction: in Animal or Hybrid form#10#Vulnerable to silver#1#Hit#0#False###0#0#2147483647</entry>
+		<entry>Iron Will#2##0##0#False###0#0#2147483647</entry>
+	</collection>
   <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Afflicted)</name>
-    <entry>Alternate Form#0#Tiger or bipedal tiger-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+    <name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)</name>
+    <entry>Alternate Form#0#Dire Tiger or bipedal tiger-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
     <entry>Lycanthropic Empathy#4#Tigers and dire tigers#0##0#False###0#0#2147483647</entry>
     <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
     <entry>Scent#0##0##0#False###0#0#2147483647</entry>
@@ -5989,8 +6079,8 @@
     <entry>Iron Will#2##0##0#False###0#0#2147483647</entry>
   </collection>
   <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Natural)</name>
-    <entry>Alternate Form#0#Tiger or bipedal tiger-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
+    <name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)</name>
+    <entry>Alternate Form#0#Dire Tiger or bipedal tiger-humanoid hybrid#1#Round (6 seconds)#0#False###0#0#2147483647</entry>
     <entry>Lycanthropic Empathy#4#Tigers and dire tigers#0##0#False###0#0#2147483647</entry>
     <entry>Low-Light Vision#0##0##0#False###0#0#2147483647</entry>
     <entry>Scent#0##0##0#False###0#0#2147483647</entry>
