@@ -38,6 +38,7 @@
     <None Remove="Tables\Creatures\CreatureData.xml" />
     <None Remove="Tables\Creatures\CreatureGroups.xml" />
     <None Remove="Tables\Creatures\CreatureTypes.xml" />
+    <None Remove="Tables\Creatures\Genders.xml" />
     <None Remove="Tables\Creatures\Speeds.xml" />
     <None Remove="Tables\Defenses\ArmorClassBonuses.xml" />
     <None Remove="Tables\Defenses\HitDice.xml" />
@@ -91,6 +92,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Creatures\AerialManeuverability.xml" />
+    <EmbeddedResource Include="Tables\Creatures\Genders.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tables\Creatures\CreatureData.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>

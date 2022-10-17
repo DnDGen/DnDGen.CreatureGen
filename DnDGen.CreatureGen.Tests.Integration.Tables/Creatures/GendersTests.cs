@@ -2,6 +2,7 @@
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 {
@@ -365,17 +366,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Magmin, GenderConstants.Agender)]
         [TestCase(CreatureConstants.Manticore, GenderConstants.Female, GenderConstants.Male)]
         [TestCase(CreatureConstants.Marilith, GenderConstants.Female)]
-        [TestCase(CreatureConstants.Medusa,
-            GenderConstants.Female,
-            GenderConstants.Female,
-            GenderConstants.Female,
-            GenderConstants.Female,
-            GenderConstants.Female,
-            GenderConstants.Female,
-            GenderConstants.Female,
-            GenderConstants.Female,
-            GenderConstants.Female,
-            GenderConstants.Male)]
         [TestCase(CreatureConstants.Mephit_Air, GenderConstants.Agender, GenderConstants.Female, GenderConstants.Male)]
         [TestCase(CreatureConstants.Mephit_Dust, GenderConstants.Agender, GenderConstants.Female, GenderConstants.Male)]
         [TestCase(CreatureConstants.Mephit_Earth, GenderConstants.Agender, GenderConstants.Female, GenderConstants.Male)]
@@ -389,11 +379,40 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Merfolk, GenderConstants.Female, GenderConstants.Male)]
         [TestCase(CreatureConstants.Mimic, GenderConstants.Agender)]
         [TestCase(CreatureConstants.MindFlayer, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Minotaur, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Mohrg, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Mummy, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Naga_Dark, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Naga_Guardian, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Naga_Spirit, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Naga_Water, GenderConstants.Female, GenderConstants.Male)]
         [TestCase(CreatureConstants.Nalfeshnee, GenderConstants.Agender)]
         [TestCase(CreatureConstants.NightHag, GenderConstants.Female)]
+        [TestCase(CreatureConstants.Nightcrawler, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Nightwalker, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Nightwing, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Nightmare, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Nightmare_Cauchemar, GenderConstants.Agender)]
         [TestCase(CreatureConstants.Nixie, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Nymph, GenderConstants.Female)]
+        [TestCase(CreatureConstants.Ogre, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Ogre_Merrow, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.OgreMage, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Orc, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Orc_Half, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Otyugh, GenderConstants.Hermaphrodite)]
+        [TestCase(CreatureConstants.Owl_Giant, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Owlbear, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Pegasus, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.PhantomFungus, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.PhaseSpider, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Phasm, GenderConstants.Agender)]
         [TestCase(CreatureConstants.PitFiend, GenderConstants.Agender)]
         [TestCase(CreatureConstants.Pixie, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Pixie_WithIrresistibleDance, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.PrayingMantis_Giant, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Pseudodragon, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.PurpleWorm, GenderConstants.Female, GenderConstants.Male)]
         [TestCase(CreatureConstants.Pyrohydra_5Heads, GenderConstants.Female, GenderConstants.Male)]
         [TestCase(CreatureConstants.Pyrohydra_6Heads, GenderConstants.Female, GenderConstants.Male)]
         [TestCase(CreatureConstants.Pyrohydra_7Heads, GenderConstants.Female, GenderConstants.Male)]
@@ -403,14 +422,136 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Pyrohydra_11Heads, GenderConstants.Female, GenderConstants.Male)]
         [TestCase(CreatureConstants.Pyrohydra_12Heads, GenderConstants.Female, GenderConstants.Male)]
         [TestCase(CreatureConstants.Quasit, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Rakshasa, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Rast, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Ravid, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.RazorBoar, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Remorhaz, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Roper, GenderConstants.Hermaphrodite)]
+        [TestCase(CreatureConstants.RustMonster, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Sahuagin, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Sahuagin_Malenti, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Sahuagin_Mutant, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Salamander_Average, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Salamander_Flamebrother, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Salamander_Noble, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Satyr, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Satyr_WithPipes, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Scorpionfolk, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Colossal, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Gargantuan, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Huge, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Large, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Medium, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Small, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Scorpion_Monstrous_Tiny, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.SeaCat, GenderConstants.Female, GenderConstants.Male)]
         [TestCase(CreatureConstants.SeaHag, GenderConstants.Female)]
+        [TestCase(CreatureConstants.Shadow, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Shadow_Greater, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.ShadowMastiff, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.ShamblingMound, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.ShockerLizard, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Shrieker, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Skum, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Slaad_Blue, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Slaad_Death, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Slaad_Gray, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Slaad_Green, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Slaad_Red, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Spectre, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.SpiderEater, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Colossal, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Gargantuan, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Huge, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Large, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Medium, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Small, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Tiny, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Colossal, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Huge, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Large, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Medium, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Small, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Tiny, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.StagBeetle_Giant, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Stirge, GenderConstants.Female, GenderConstants.Male)]
         [TestCase(CreatureConstants.Succubus, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Tarrasque, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Tendriculos, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Thoqqua, GenderConstants.Agender)]
         [TestCase(CreatureConstants.Tiefling, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Titan, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Tojanida_Adult, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Tojanida_Elder, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Tojanida_Juvenile, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Treant, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Triton, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Troglodyte, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Troll, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Troll_Scrag, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.TrumpetArchon, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.UmberHulk,
+            GenderConstants.Male,
+            GenderConstants.Male,
+            GenderConstants.Male,
+            GenderConstants.Male,
+            GenderConstants.Male,
+            GenderConstants.Male,
+            GenderConstants.Male,
+            GenderConstants.Male,
+            GenderConstants.Male,
+            GenderConstants.Female)]
+        [TestCase(CreatureConstants.UmberHulk_TrulyHorrid,
+            GenderConstants.Male,
+            GenderConstants.Male,
+            GenderConstants.Male,
+            GenderConstants.Male,
+            GenderConstants.Male,
+            GenderConstants.Male,
+            GenderConstants.Male,
+            GenderConstants.Male,
+            GenderConstants.Male,
+            GenderConstants.Female)]
+        [TestCase(CreatureConstants.Unicorn, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.VampireSpawn, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Vargouille, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.VioletFungus, GenderConstants.Agender)]
         [TestCase(CreatureConstants.Vrock, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Wasp_Giant, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Wight, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.WillOWisp, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.WinterWolf, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Worg, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Wraith, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Wraith_Dread, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Wyvern, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Xill, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Xorn_Average, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Xorn_Elder, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Xorn_Minor, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.YethHound, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Yrthak, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.YuanTi_Abomination, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeArms, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeHead, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTail, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.YuanTi_Pureblood, GenderConstants.Female, GenderConstants.Male)]
         public void Genders(string creature, params string[] genders)
         {
-            Assert.Fail("Left off at Mind Flayer (done)");
             AssertDistinctCollection(creature, genders);
+        }
+
+        [Test]
+        public void MedusaAre99PercentFemale()
+        {
+            var genders = Enumerable.Repeat(GenderConstants.Female, 99).Union(new[] { GenderConstants.Male }).ToArray();
+            AssertDistinctCollection(CreatureConstants.Medusa, genders);
+            Assert.That(genders, Has.Length.EqualTo(100));
+            Assert.That(genders.Count(g => g == GenderConstants.Female), Is.EqualTo(99));
+            Assert.That(genders.Count(g => g == GenderConstants.Male), Is.EqualTo(1));
         }
 
         [TestCase(CreatureConstants.Types.Construct)]

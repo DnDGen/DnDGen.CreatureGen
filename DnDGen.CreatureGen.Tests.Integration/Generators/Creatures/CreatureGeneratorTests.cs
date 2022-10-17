@@ -641,5 +641,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             creatureAsserter.AssertCreature(creature);
             Assert.That(creature.Abilities.Values.Max(v => v.BaseScore), Is.EqualTo(creature.Abilities[ability].BaseScore));
         }
+
+        [Test]
+        [Repeat(10)] //INFO: We have to repeat to ensure we get males, since gender is random
+        public void BUG_MaleSpiderEaterDoesNotHaveImplantAbility()
+        {
+            var spiderEater = creatureGenerator.Generate(false, CreatureConstants.SpiderEater);
+            creatureAsserter.AssertCreature(spiderEater);
+
+            Assert.That(spiderEater.Attacks, Is.Not.Empty);
+            var attackNames = spiderEater.Attacks.Select(q => q.Name);
+
+            if (spiderEater.Demographics.Gender == GenderConstants.Male)
+            {
+                Assert.That(attackNames, Does.Not.Contain("Implant"));
+            }
+            else if (spiderEater.Demographics.Gender == GenderConstants.Female)
+            {
+                Assert.That(attackNames, Contains.Item("Implant"));
+            }
+        }
     }
 }
