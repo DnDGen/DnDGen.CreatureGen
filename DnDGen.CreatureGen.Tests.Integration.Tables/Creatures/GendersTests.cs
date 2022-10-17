@@ -353,8 +353,42 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Janni, GenderConstants.Agender, GenderConstants.Female, GenderConstants.Male)]
         [TestCase(CreatureConstants.Kobold, GenderConstants.Female, GenderConstants.Male)]
         [TestCase(CreatureConstants.Kraken, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Krenshar, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.KuoToa, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Lamia, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Lammasu, GenderConstants.Female, GenderConstants.Male)]
         [TestCase(CreatureConstants.Lemure, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Leonal, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Lillend, GenderConstants.Female, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Lizardfolk, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Locathah, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Magmin, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.Manticore, GenderConstants.Female, GenderConstants.Male)]
         [TestCase(CreatureConstants.Marilith, GenderConstants.Female)]
+        [TestCase(CreatureConstants.Medusa,
+            GenderConstants.Female,
+            GenderConstants.Female,
+            GenderConstants.Female,
+            GenderConstants.Female,
+            GenderConstants.Female,
+            GenderConstants.Female,
+            GenderConstants.Female,
+            GenderConstants.Female,
+            GenderConstants.Female,
+            GenderConstants.Male)]
+        [TestCase(CreatureConstants.Mephit_Air, GenderConstants.Agender, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Mephit_Dust, GenderConstants.Agender, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Mephit_Earth, GenderConstants.Agender, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Mephit_Fire, GenderConstants.Agender, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Mephit_Ice, GenderConstants.Agender, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Mephit_Magma, GenderConstants.Agender, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Mephit_Ooze, GenderConstants.Agender, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Mephit_Salt, GenderConstants.Agender, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Mephit_Steam, GenderConstants.Agender, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Mephit_Water, GenderConstants.Agender, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Merfolk, GenderConstants.Female, GenderConstants.Male)]
+        [TestCase(CreatureConstants.Mimic, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.MindFlayer, GenderConstants.Agender)]
         [TestCase(CreatureConstants.Nalfeshnee, GenderConstants.Agender)]
         [TestCase(CreatureConstants.NightHag, GenderConstants.Female)]
         [TestCase(CreatureConstants.Nixie, GenderConstants.Female, GenderConstants.Male)]
@@ -375,7 +409,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Vrock, GenderConstants.Agender)]
         public void Genders(string creature, params string[] genders)
         {
-            Assert.Fail("Left off at Kraken (done)");
+            Assert.Fail("Left off at Mind Flayer (done)");
             AssertDistinctCollection(creature, genders);
         }
 
