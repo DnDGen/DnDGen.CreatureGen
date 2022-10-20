@@ -26,7 +26,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
         protected void AssertCollectionNames(IEnumerable<string> names)
         {
             AssertUniqueCollection(names);
-            AssertCollection(table.Keys, names);
+            AssertCollection(table.Keys, names, "Table Keys");
         }
 
         protected IEnumerable<string> GetCollection(string name)
@@ -48,12 +48,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
         public void AssertCollection(string name, params string[] collection)
         {
             Assert.That(table, Contains.Key(name));
-            AssertCollection(table[name], collection);
+            AssertCollection(table[name], collection, name);
         }
 
-        private void AssertCollection(IEnumerable<string> source, IEnumerable<string> expected)
+        private void AssertCollection(IEnumerable<string> source, IEnumerable<string> expected, string message)
         {
-            Assert.That(source.OrderBy(s => s), Is.EquivalentTo(expected.OrderBy(e => e)));
+            Assert.That(source.OrderBy(s => s), Is.EquivalentTo(expected.OrderBy(e => e)), message);
         }
 
         public void AssertOrderedCollection(string name, params string[] collection)
