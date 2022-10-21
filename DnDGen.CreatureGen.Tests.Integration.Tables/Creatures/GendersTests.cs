@@ -20,7 +20,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         }
 
         [Test]
-        public void SaveGroupsNames()
+        public void GendersNames()
         {
             var creatures = CreatureConstants.GetAll();
             AssertCollectionNames(creatures);
@@ -541,14 +541,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.YuanTi_Pureblood, GenderConstants.Female, GenderConstants.Male)]
         public void Genders(string creature, params string[] genders)
         {
-            AssertDistinctCollection(creature, genders);
+            AssertCollection(creature, genders);
         }
 
         [Test]
         public void MedusaAre99PercentFemale()
         {
-            var genders = Enumerable.Repeat(GenderConstants.Female, 99).Union(new[] { GenderConstants.Male }).ToArray();
-            AssertDistinctCollection(CreatureConstants.Medusa, genders);
+            var genders = Enumerable.Repeat(GenderConstants.Female, 99).Concat(new[] { GenderConstants.Male }).ToArray();
+            AssertCollection(CreatureConstants.Medusa, genders);
             Assert.That(genders, Has.Length.EqualTo(100));
             Assert.That(genders.Count(g => g == GenderConstants.Female), Is.EqualTo(99));
             Assert.That(genders.Count(g => g == GenderConstants.Male), Is.EqualTo(1));
@@ -572,10 +572,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [Test]
         public void AnimalsAreMaleAndFemale()
         {
-            var constructs = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal);
-            Assert.That(table.Keys, Is.SupersetOf(constructs));
+            var animals = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal);
+            var swarms = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Swarm);
+            Assert.That(table.Keys, Is.SupersetOf(animals));
 
-            foreach (var creature in constructs)
+            foreach (var creature in animals.Except(swarms))
             {
                 AssertDistinctCollection(creature, GenderConstants.Female, GenderConstants.Male);
             }
