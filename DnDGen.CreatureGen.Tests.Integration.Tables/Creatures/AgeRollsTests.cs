@@ -57,7 +57,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Allip][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
                 testCases[CreatureConstants.Androsphinx][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithFewestDice(16, 10_000);
                 testCases[CreatureConstants.Androsphinx][AgeConstants.Categories.Maximum] = RollHelper.GetRollWithFewestDice(5_000, 10_000);
-                testCases[CreatureConstants.Angel_AstralDeva][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithFewestDice(1, 10_000);
+                testCases[CreatureConstants.Angel_AstralDeva][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithFewestDice(0, 10_000);
                 testCases[CreatureConstants.Angel_AstralDeva][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
                 testCases[CreatureConstants.Angel_Planetar][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithFewestDice(1_000, 10_000);
                 testCases[CreatureConstants.Angel_Planetar][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
