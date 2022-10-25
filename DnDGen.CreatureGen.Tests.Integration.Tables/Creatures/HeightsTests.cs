@@ -1,6 +1,7 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.RollGen;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
@@ -52,6 +53,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Aasimar][GenderConstants.Female] = "5*12+0";
             heights[CreatureConstants.Aasimar][GenderConstants.Male] = "5*12+2";
             heights[CreatureConstants.Aasimar][CreatureConstants.Aasimar] = "2d8";
+            heights[CreatureConstants.Aboleth][GenderConstants.Hermaphrodite] = "17*12";
+            heights[CreatureConstants.Aboleth][CreatureConstants.Aboleth] = RollHelper.GetRollWithFewestDice(12, 5 * 12);
+            heights[CreatureConstants.Achaierai][GenderConstants.Female] = "13*12";
+            heights[CreatureConstants.Achaierai][GenderConstants.Male] = "13*12";
+            heights[CreatureConstants.Achaierai][CreatureConstants.Achaierai] = RollHelper.GetRollWithFewestDice(6, 42);
             heights[CreatureConstants.Dwarf_Deep][GenderConstants.Female] = "3*12+7";
             heights[CreatureConstants.Dwarf_Deep][GenderConstants.Male] = "3*12+9";
             heights[CreatureConstants.Dwarf_Deep][CreatureConstants.Dwarf_Deep] = "2d4";

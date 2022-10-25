@@ -1,6 +1,7 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
+using DnDGen.RollGen;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
@@ -51,9 +52,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     weights[creature] = new Dictionary<string, string>();
                 }
 
+                //INFO: The weight modifier is multiplied by the height modifier
                 weights[CreatureConstants.Aasimar][GenderConstants.Female] = "90";
                 weights[CreatureConstants.Aasimar][GenderConstants.Male] = "110";
                 weights[CreatureConstants.Aasimar][CreatureConstants.Aasimar] = "2d4"; //x5
+                weights[CreatureConstants.Aboleth][GenderConstants.Hermaphrodite] = "5800";
+                weights[CreatureConstants.Aboleth][CreatureConstants.Aboleth] = RollHelper.GetRollWithFewestDice(4, 11);
+                weights[CreatureConstants.Achaierai][GenderConstants.Female] = "650";
+                weights[CreatureConstants.Achaierai][GenderConstants.Male] = "650";
+                weights[CreatureConstants.Achaierai][CreatureConstants.Achaierai] = RollHelper.GetRollWithFewestDice(4, 5);
                 weights[CreatureConstants.Dwarf_Deep][GenderConstants.Female] = "100";
                 weights[CreatureConstants.Dwarf_Deep][GenderConstants.Male] = "130";
                 weights[CreatureConstants.Dwarf_Deep][CreatureConstants.Dwarf_Deep] = "2d6"; //x7
