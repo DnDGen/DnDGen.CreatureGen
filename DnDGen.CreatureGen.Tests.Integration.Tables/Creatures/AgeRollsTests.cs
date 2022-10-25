@@ -1,8 +1,6 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Generators.Creatures;
-using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using NUnit.Framework;
 using System.Collections;
@@ -13,17 +11,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     [TestFixture]
     public class AgeRollsTests : TypesAndAmountsTests
     {
-        private ICollectionSelector collectionSelector;
-        private ITypeAndAmountSelector typesAndAmountsSelector;
-
         protected override string tableName => TableNameConstants.TypeAndAmount.AgeRolls;
-
-        [SetUp]
-        public void Setup()
-        {
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
-            typesAndAmountsSelector = GetNewInstanceOf<ITypeAndAmountSelector>();
-        }
 
         [Test]
         public void AgeRollsNames()
@@ -37,6 +25,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         {
             Assert.That(typesAndRolls, Is.Not.Empty
                 .And.Count.AtLeast(2)
+                .And.ContainKey(AgeConstants.Categories.Adulthood)
                 .And.ContainKey(AgeConstants.Categories.Maximum), name);
             AssertTypesAndAmounts(name, typesAndRolls);
         }
@@ -417,6 +406,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Gnome_Svirfneblin][AgeConstants.Categories.Old] = RollHelper.GetRollWithFewestDice(150, 199);
                 testCases[CreatureConstants.Gnome_Svirfneblin][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithFewestDice(200, 500);
                 testCases[CreatureConstants.Gnome_Svirfneblin][AgeConstants.Categories.Maximum] = "200+3d100";
+                testCases[CreatureConstants.Goblin][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithFewestDice(12, 19);
+                testCases[CreatureConstants.Goblin][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithFewestDice(20, 29);
+                testCases[CreatureConstants.Goblin][AgeConstants.Categories.Old] = RollHelper.GetRollWithFewestDice(30, 39);
+                testCases[CreatureConstants.Goblin][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithFewestDice(40, 60);
+                testCases[CreatureConstants.Goblin][AgeConstants.Categories.Maximum] = "40+1d20";
                 testCases[CreatureConstants.Gynosphinx][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithFewestDice(16, 10_000);
                 testCases[CreatureConstants.Gynosphinx][AgeConstants.Categories.Maximum] = RollHelper.GetRollWithFewestDice(5_000, 10_000);
                 testCases[CreatureConstants.Halfling_Deep][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithFewestDice(20, 49);
@@ -436,11 +430,31 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Halfling_Tallfellow][AgeConstants.Categories.Maximum] = "100+5d20";
                 testCases[CreatureConstants.Hieracosphinx][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithFewestDice(16, 10_000);
                 testCases[CreatureConstants.Hieracosphinx][AgeConstants.Categories.Maximum] = RollHelper.GetRollWithFewestDice(5_000, 10_000);
+                testCases[CreatureConstants.Hobgoblin][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithFewestDice(14, 29);
+                testCases[CreatureConstants.Hobgoblin][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithFewestDice(30, 44);
+                testCases[CreatureConstants.Hobgoblin][AgeConstants.Categories.Old] = RollHelper.GetRollWithFewestDice(45, 59);
+                testCases[CreatureConstants.Hobgoblin][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithFewestDice(60, 80);
+                testCases[CreatureConstants.Hobgoblin][AgeConstants.Categories.Maximum] = "60+2d10";
                 testCases[CreatureConstants.Human][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithFewestDice(15, 34);
                 testCases[CreatureConstants.Human][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithFewestDice(35, 52);
                 testCases[CreatureConstants.Human][AgeConstants.Categories.Old] = RollHelper.GetRollWithFewestDice(53, 69);
                 testCases[CreatureConstants.Human][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithFewestDice(70, 110);
                 testCases[CreatureConstants.Human][AgeConstants.Categories.Maximum] = "70+2d20";
+                testCases[CreatureConstants.Kobold][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithFewestDice(12, 19);
+                testCases[CreatureConstants.Kobold][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithFewestDice(20, 29);
+                testCases[CreatureConstants.Kobold][AgeConstants.Categories.Old] = RollHelper.GetRollWithFewestDice(30, 39);
+                testCases[CreatureConstants.Kobold][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithFewestDice(40, 60);
+                testCases[CreatureConstants.Kobold][AgeConstants.Categories.Maximum] = "40+1d20";
+                testCases[CreatureConstants.Merfolk][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithFewestDice(15, 34);
+                testCases[CreatureConstants.Merfolk][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithFewestDice(35, 52);
+                testCases[CreatureConstants.Merfolk][AgeConstants.Categories.Old] = RollHelper.GetRollWithFewestDice(53, 69);
+                testCases[CreatureConstants.Merfolk][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithFewestDice(70, 110);
+                testCases[CreatureConstants.Merfolk][AgeConstants.Categories.Maximum] = "70+2d20";
+                testCases[CreatureConstants.Orc][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithFewestDice(12, 19);
+                testCases[CreatureConstants.Orc][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithFewestDice(20, 29);
+                testCases[CreatureConstants.Orc][AgeConstants.Categories.Old] = RollHelper.GetRollWithFewestDice(30, 39);
+                testCases[CreatureConstants.Orc][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithFewestDice(40, 60);
+                testCases[CreatureConstants.Orc][AgeConstants.Categories.Maximum] = "40+1d20";
                 testCases[CreatureConstants.Orc_Half][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithFewestDice(14, 29);
                 testCases[CreatureConstants.Orc_Half][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithFewestDice(30, 44);
                 testCases[CreatureConstants.Orc_Half][AgeConstants.Categories.Old] = RollHelper.GetRollWithFewestDice(45, 59);
