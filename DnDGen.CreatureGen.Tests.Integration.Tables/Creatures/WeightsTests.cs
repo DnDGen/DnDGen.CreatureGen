@@ -89,8 +89,224 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.AnimatedObject_Anvil_Medium][CreatureConstants.AnimatedObject_Anvil_Medium] = GetCreatureFromAverage(150, 3 * 12);
             weights[CreatureConstants.AnimatedObject_Anvil_Small][GenderConstants.Agender] = GetGenderFromAverage(75);
             weights[CreatureConstants.AnimatedObject_Anvil_Small][CreatureConstants.AnimatedObject_Anvil_Small] = GetCreatureFromAverage(75, 18);
-            weights[CreatureConstants.AnimatedObject_Anvil_Tiny][GenderConstants.Agender] = GetGenderFromAverage(37);
-            weights[CreatureConstants.AnimatedObject_Anvil_Tiny][CreatureConstants.AnimatedObject_Anvil_Tiny] = GetCreatureFromAverage(37, 10);
+            weights[CreatureConstants.AnimatedObject_Anvil_Tiny][GenderConstants.Agender] = GetGenderFromAverage(75 / 2);
+            weights[CreatureConstants.AnimatedObject_Anvil_Tiny][CreatureConstants.AnimatedObject_Anvil_Tiny] = GetCreatureFromAverage(75 / 2, 10);
+            weights[CreatureConstants.AnimatedObject_Block_Stone_Colossal][GenderConstants.Agender] = GetGenderFromAverage(8_011_128);
+            weights[CreatureConstants.AnimatedObject_Block_Stone_Colossal][CreatureConstants.AnimatedObject_Block_Stone_Colossal] = GetCreatureFromAverage(8_011_128, 36 * 12);
+            weights[CreatureConstants.AnimatedObject_Block_Stone_Gargantuan][GenderConstants.Agender] = GetGenderFromAverage(1_001_391);
+            weights[CreatureConstants.AnimatedObject_Block_Stone_Gargantuan][CreatureConstants.AnimatedObject_Block_Stone_Gargantuan] = GetCreatureFromAverage(1_001_391, 18 * 12);
+            weights[CreatureConstants.AnimatedObject_Block_Stone_Huge][GenderConstants.Agender] = GetGenderFromAverage(125_173);
+            weights[CreatureConstants.AnimatedObject_Block_Stone_Huge][CreatureConstants.AnimatedObject_Block_Stone_Huge] = GetCreatureFromAverage(125_173, 18 * 12 / 2);
+            weights[CreatureConstants.AnimatedObject_Block_Stone_Large][GenderConstants.Agender] = GetGenderFromAverage(18_402);
+            weights[CreatureConstants.AnimatedObject_Block_Stone_Large][CreatureConstants.AnimatedObject_Block_Stone_Large] = GetCreatureFromAverage(18_402, 57);
+            weights[CreatureConstants.AnimatedObject_Block_Stone_Medium][GenderConstants.Agender] = GetGenderFromAverage(3905);
+            weights[CreatureConstants.AnimatedObject_Block_Stone_Medium][CreatureConstants.AnimatedObject_Block_Stone_Medium] = GetCreatureFromAverage(3905, 34);
+            weights[CreatureConstants.AnimatedObject_Block_Stone_Small][GenderConstants.Agender] = GetGenderFromAverage(579);
+            weights[CreatureConstants.AnimatedObject_Block_Stone_Small][CreatureConstants.AnimatedObject_Block_Stone_Small] = GetCreatureFromAverage(579, 18);
+            weights[CreatureConstants.AnimatedObject_Block_Stone_Tiny][GenderConstants.Agender] = GetGenderFromAverage(99);
+            weights[CreatureConstants.AnimatedObject_Block_Stone_Tiny][CreatureConstants.AnimatedObject_Block_Stone_Tiny] = GetCreatureFromAverage(99, 10);
+            weights[CreatureConstants.AnimatedObject_Block_Wood_Colossal][GenderConstants.Agender] = "1500000";
+            weights[CreatureConstants.AnimatedObject_Block_Wood_Colossal][CreatureConstants.AnimatedObject_Block_Wood_Colossal] = RollHelper.GetRollWithFewestDice(1_500_000, 1_726_272, 2_612_736);
+            weights[CreatureConstants.AnimatedObject_Block_Wood_Gargantuan][GenderConstants.Agender] = "200000";
+            weights[CreatureConstants.AnimatedObject_Block_Wood_Gargantuan][CreatureConstants.AnimatedObject_Block_Wood_Gargantuan] = RollHelper.GetRollWithFewestDice(200_000, 215_784, 326_592);
+            weights[CreatureConstants.AnimatedObject_Block_Wood_Huge][GenderConstants.Agender] = "20000";
+            weights[CreatureConstants.AnimatedObject_Block_Wood_Huge][CreatureConstants.AnimatedObject_Block_Wood_Huge] = RollHelper.GetRollWithFewestDice(20_000, 26_973, 40_824);
+            weights[CreatureConstants.AnimatedObject_Block_Wood_Large][GenderConstants.Agender] = "3000";
+            weights[CreatureConstants.AnimatedObject_Block_Wood_Large][CreatureConstants.AnimatedObject_Block_Wood_Large] = RollHelper.GetRollWithFewestDice(3000, 3965, 6002);
+            weights[CreatureConstants.AnimatedObject_Block_Wood_Medium][GenderConstants.Agender] = "800";
+            weights[CreatureConstants.AnimatedObject_Block_Wood_Medium][CreatureConstants.AnimatedObject_Block_Wood_Medium] = RollHelper.GetRollWithFewestDice(800, 841, 1274);
+            weights[CreatureConstants.AnimatedObject_Block_Wood_Small][GenderConstants.Agender] = "120";
+            weights[CreatureConstants.AnimatedObject_Block_Wood_Small][CreatureConstants.AnimatedObject_Block_Wood_Small] = RollHelper.GetRollWithFewestDice(120, 124, 189);
+            weights[CreatureConstants.AnimatedObject_Block_Wood_Tiny][GenderConstants.Agender] = "20";
+            weights[CreatureConstants.AnimatedObject_Block_Wood_Tiny][CreatureConstants.AnimatedObject_Block_Wood_Tiny] = RollHelper.GetRollWithFewestDice(20, 21, 33);
+            weights[CreatureConstants.AnimatedObject_Box_Colossal][GenderConstants.Agender] = GetGenderFromAverage(1024);
+            weights[CreatureConstants.AnimatedObject_Box_Colossal][CreatureConstants.AnimatedObject_Box_Colossal] = GetCreatureFromAverage(1024, 864);
+            weights[CreatureConstants.AnimatedObject_Box_Gargantuan][GenderConstants.Agender] = GetGenderFromAverage(512);
+            weights[CreatureConstants.AnimatedObject_Box_Gargantuan][CreatureConstants.AnimatedObject_Box_Gargantuan] = GetCreatureFromAverage(512, 432);
+            weights[CreatureConstants.AnimatedObject_Box_Huge][GenderConstants.Agender] = GetGenderFromAverage(256);
+            weights[CreatureConstants.AnimatedObject_Box_Huge][CreatureConstants.AnimatedObject_Box_Huge] = GetCreatureFromAverage(256, 216);
+            weights[CreatureConstants.AnimatedObject_Box_Large][GenderConstants.Agender] = GetGenderFromAverage(128);
+            weights[CreatureConstants.AnimatedObject_Box_Large][CreatureConstants.AnimatedObject_Box_Large] = GetCreatureFromAverage(128, 108);
+            weights[CreatureConstants.AnimatedObject_Box_Medium][GenderConstants.Agender] = GetGenderFromAverage(64);
+            weights[CreatureConstants.AnimatedObject_Box_Medium][CreatureConstants.AnimatedObject_Box_Medium] = GetCreatureFromAverage(64, 57);
+            weights[CreatureConstants.AnimatedObject_Box_Small][GenderConstants.Agender] = GetGenderFromAverage(32);
+            weights[CreatureConstants.AnimatedObject_Box_Small][CreatureConstants.AnimatedObject_Box_Small] = GetCreatureFromAverage(32, 18);
+            weights[CreatureConstants.AnimatedObject_Box_Tiny][GenderConstants.Agender] = GetGenderFromAverage(16);
+            weights[CreatureConstants.AnimatedObject_Box_Tiny][CreatureConstants.AnimatedObject_Box_Tiny] = GetCreatureFromAverage(16, 10);
+            weights[CreatureConstants.AnimatedObject_Carpet_Colossal][GenderConstants.Agender] = GetGenderFromAverage(1600);
+            weights[CreatureConstants.AnimatedObject_Carpet_Colossal][CreatureConstants.AnimatedObject_Carpet_Colossal] = GetCreatureFromAverage(1600, 80 * 12);
+            weights[CreatureConstants.AnimatedObject_Carpet_Gargantuan][GenderConstants.Agender] = GetGenderFromAverage(800);
+            weights[CreatureConstants.AnimatedObject_Carpet_Gargantuan][CreatureConstants.AnimatedObject_Carpet_Gargantuan] = GetCreatureFromAverage(800, 40 * 12);
+            weights[CreatureConstants.AnimatedObject_Carpet_Huge][GenderConstants.Agender] = GetGenderFromAverage(400);
+            weights[CreatureConstants.AnimatedObject_Carpet_Huge][CreatureConstants.AnimatedObject_Carpet_Huge] = GetCreatureFromAverage(400, 20 * 12);
+            weights[CreatureConstants.AnimatedObject_Carpet_Large][GenderConstants.Agender] = GetGenderFromAverage(100);
+            weights[CreatureConstants.AnimatedObject_Carpet_Large][CreatureConstants.AnimatedObject_Carpet_Large] = GetCreatureFromAverage(100, 10 * 12);
+            weights[CreatureConstants.AnimatedObject_Carpet_Medium][GenderConstants.Agender] = GetGenderFromAverage(25);
+            weights[CreatureConstants.AnimatedObject_Carpet_Medium][CreatureConstants.AnimatedObject_Carpet_Medium] = GetCreatureFromAverage(25, 5 * 12);
+            weights[CreatureConstants.AnimatedObject_Carpet_Small][GenderConstants.Agender] = GetGenderFromAverage(16);
+            weights[CreatureConstants.AnimatedObject_Carpet_Small][CreatureConstants.AnimatedObject_Carpet_Small] = GetCreatureFromAverage(16, 4 * 12);
+            weights[CreatureConstants.AnimatedObject_Carpet_Tiny][GenderConstants.Agender] = GetGenderFromAverage(6);
+            weights[CreatureConstants.AnimatedObject_Carpet_Tiny][CreatureConstants.AnimatedObject_Carpet_Tiny] = GetCreatureFromAverage(6, 2 * 12 + 6);
+            weights[CreatureConstants.AnimatedObject_Carriage_Colossal][GenderConstants.Agender] = GetGenderFromAverage(1600);
+            weights[CreatureConstants.AnimatedObject_Carriage_Colossal][CreatureConstants.AnimatedObject_Carriage_Colossal] = GetCreatureFromAverage(1600, 176 * 12);
+            weights[CreatureConstants.AnimatedObject_Carriage_Gargantuan][GenderConstants.Agender] = GetGenderFromAverage(800);
+            weights[CreatureConstants.AnimatedObject_Carriage_Gargantuan][CreatureConstants.AnimatedObject_Carriage_Gargantuan] = GetCreatureFromAverage(4800, 88 * 12);
+            weights[CreatureConstants.AnimatedObject_Carriage_Huge][GenderConstants.Agender] = GetGenderFromAverage(400);
+            weights[CreatureConstants.AnimatedObject_Carriage_Huge][CreatureConstants.AnimatedObject_Carriage_Huge] = GetCreatureFromAverage(2400, 44 * 12);
+            weights[CreatureConstants.AnimatedObject_Carriage_Large][GenderConstants.Agender] = GetGenderFromAverage(100);
+            weights[CreatureConstants.AnimatedObject_Carriage_Large][CreatureConstants.AnimatedObject_Carriage_Large] = GetCreatureFromAverage(1200, 22 * 12);
+            weights[CreatureConstants.AnimatedObject_Carriage_Medium][GenderConstants.Agender] = GetGenderFromAverage(25);
+            weights[CreatureConstants.AnimatedObject_Carriage_Medium][CreatureConstants.AnimatedObject_Carriage_Medium] = GetCreatureFromAverage(600, 11 * 12);
+            weights[CreatureConstants.AnimatedObject_Carriage_Small][GenderConstants.Agender] = GetGenderFromAverage(16);
+            weights[CreatureConstants.AnimatedObject_Carriage_Small][CreatureConstants.AnimatedObject_Carriage_Small] = GetCreatureFromAverage(300, 6 * 12);
+            weights[CreatureConstants.AnimatedObject_Carriage_Tiny][GenderConstants.Agender] = GetGenderFromAverage(6);
+            weights[CreatureConstants.AnimatedObject_Carriage_Tiny][CreatureConstants.AnimatedObject_Carriage_Tiny] = GetCreatureFromAverage(150, 3 * 12);
+            weights[CreatureConstants.AnimatedObject_Chain_Colossal][GenderConstants.Agender] = GetGenderFromAverage(32);
+            weights[CreatureConstants.AnimatedObject_Chain_Colossal][CreatureConstants.AnimatedObject_Chain_Colossal] = GetCreatureFromAverage(32, 160 * 12);
+            weights[CreatureConstants.AnimatedObject_Chain_Gargantuan][GenderConstants.Agender] = GetGenderFromAverage(16);
+            weights[CreatureConstants.AnimatedObject_Chain_Gargantuan][CreatureConstants.AnimatedObject_Chain_Gargantuan] = GetCreatureFromAverage(16, 80 * 12);
+            weights[CreatureConstants.AnimatedObject_Chain_Huge][GenderConstants.Agender] = GetGenderFromAverage(8);
+            weights[CreatureConstants.AnimatedObject_Chain_Huge][CreatureConstants.AnimatedObject_Chain_Huge] = GetCreatureFromAverage(8, 40 * 12);
+            weights[CreatureConstants.AnimatedObject_Chain_Large][GenderConstants.Agender] = GetGenderFromAverage(4);
+            weights[CreatureConstants.AnimatedObject_Chain_Large][CreatureConstants.AnimatedObject_Chain_Large] = GetCreatureFromAverage(4, 20 * 12);
+            weights[CreatureConstants.AnimatedObject_Chain_Medium][GenderConstants.Agender] = GetGenderFromAverage(2);
+            weights[CreatureConstants.AnimatedObject_Chain_Medium][CreatureConstants.AnimatedObject_Chain_Medium] = GetCreatureFromAverage(2, 10 * 12);
+            weights[CreatureConstants.AnimatedObject_Chain_Small][GenderConstants.Agender] = GetGenderFromAverage(1);
+            weights[CreatureConstants.AnimatedObject_Chain_Small][CreatureConstants.AnimatedObject_Chain_Small] = GetCreatureFromAverage(1, 5 * 12);
+            weights[CreatureConstants.AnimatedObject_Chain_Tiny][GenderConstants.Agender] = GetGenderFromAverage(0.5);
+            weights[CreatureConstants.AnimatedObject_Chain_Tiny][CreatureConstants.AnimatedObject_Chain_Tiny] = GetCreatureFromAverage(1, 2 * 12 + 6);
+            weights[CreatureConstants.AnimatedObject_Chair_Colossal][GenderConstants.Agender] = GetGenderFromAverage(208);
+            weights[CreatureConstants.AnimatedObject_Chair_Colossal][CreatureConstants.AnimatedObject_Chair_Colossal] = GetCreatureFromAverage(480, 592);
+            weights[CreatureConstants.AnimatedObject_Chair_Gargantuan][GenderConstants.Agender] = GetGenderFromAverage(104);
+            weights[CreatureConstants.AnimatedObject_Chair_Gargantuan][CreatureConstants.AnimatedObject_Chair_Gargantuan] = GetCreatureFromAverage(240, 296);
+            weights[CreatureConstants.AnimatedObject_Chair_Huge][GenderConstants.Agender] = GetGenderFromAverage(52);
+            weights[CreatureConstants.AnimatedObject_Chair_Huge][CreatureConstants.AnimatedObject_Chair_Huge] = GetCreatureFromAverage(120, 148);
+            weights[CreatureConstants.AnimatedObject_Chair_Large][GenderConstants.Agender] = GetGenderFromAverage(26);
+            weights[CreatureConstants.AnimatedObject_Chair_Large][CreatureConstants.AnimatedObject_Chair_Large] = GetCreatureFromAverage(60, 74);
+            weights[CreatureConstants.AnimatedObject_Chair_Medium][GenderConstants.Agender] = GetGenderFromAverage(13);
+            weights[CreatureConstants.AnimatedObject_Chair_Medium][CreatureConstants.AnimatedObject_Chair_Medium] = GetCreatureFromAverage(13, 37);
+            weights[CreatureConstants.AnimatedObject_Chair_Small][GenderConstants.Agender] = GetGenderFromAverage(6);
+            weights[CreatureConstants.AnimatedObject_Chair_Small][CreatureConstants.AnimatedObject_Chair_Small] = GetCreatureFromAverage(6, 18);
+            weights[CreatureConstants.AnimatedObject_Chair_Tiny][GenderConstants.Agender] = GetGenderFromAverage(3);
+            weights[CreatureConstants.AnimatedObject_Chair_Tiny][CreatureConstants.AnimatedObject_Chair_Tiny] = GetCreatureFromAverage(3, 9);
+            weights[CreatureConstants.AnimatedObject_Clothes_Colossal][GenderConstants.Agender] = GetGenderFromAverage(64);
+            weights[CreatureConstants.AnimatedObject_Clothes_Colossal][CreatureConstants.AnimatedObject_Clothes_Colossal] = GetCreatureFromAverage(64, 1080);
+            weights[CreatureConstants.AnimatedObject_Clothes_Gargantuan][GenderConstants.Agender] = GetGenderFromAverage(32);
+            weights[CreatureConstants.AnimatedObject_Clothes_Gargantuan][CreatureConstants.AnimatedObject_Clothes_Gargantuan] = GetCreatureFromAverage(32, 540);
+            weights[CreatureConstants.AnimatedObject_Clothes_Huge][GenderConstants.Agender] = GetGenderFromAverage(16);
+            weights[CreatureConstants.AnimatedObject_Clothes_Huge][CreatureConstants.AnimatedObject_Clothes_Huge] = GetCreatureFromAverage(16, 260);
+            weights[CreatureConstants.AnimatedObject_Clothes_Large][GenderConstants.Agender] = GetGenderFromAverage(8);
+            weights[CreatureConstants.AnimatedObject_Clothes_Large][CreatureConstants.AnimatedObject_Clothes_Large] = GetCreatureFromAverage(8, 130);
+            weights[CreatureConstants.AnimatedObject_Clothes_Medium][GenderConstants.Agender] = GetGenderFromAverage(4);
+            weights[CreatureConstants.AnimatedObject_Clothes_Medium][CreatureConstants.AnimatedObject_Clothes_Medium] = GetCreatureFromAverage(4, 67);
+            weights[CreatureConstants.AnimatedObject_Clothes_Small][GenderConstants.Agender] = GetGenderFromAverage(2);
+            weights[CreatureConstants.AnimatedObject_Clothes_Small][CreatureConstants.AnimatedObject_Clothes_Small] = GetCreatureFromAverage(2, 33);
+            weights[CreatureConstants.AnimatedObject_Clothes_Tiny][GenderConstants.Agender] = GetGenderFromAverage(1);
+            weights[CreatureConstants.AnimatedObject_Clothes_Tiny][CreatureConstants.AnimatedObject_Clothes_Tiny] = GetCreatureFromAverage(1, 16);
+            weights[CreatureConstants.AnimatedObject_Ladder_Colossal][GenderConstants.Agender] = GetGenderFromAverage(320);
+            weights[CreatureConstants.AnimatedObject_Ladder_Colossal][CreatureConstants.AnimatedObject_Ladder_Colossal] = GetCreatureFromAverage(320, 1920);
+            weights[CreatureConstants.AnimatedObject_Ladder_Gargantuan][GenderConstants.Agender] = GetGenderFromAverage(160);
+            weights[CreatureConstants.AnimatedObject_Ladder_Gargantuan][CreatureConstants.AnimatedObject_Ladder_Gargantuan] = GetCreatureFromAverage(160, 960);
+            weights[CreatureConstants.AnimatedObject_Ladder_Huge][GenderConstants.Agender] = GetGenderFromAverage(80);
+            weights[CreatureConstants.AnimatedObject_Ladder_Huge][CreatureConstants.AnimatedObject_Ladder_Huge] = GetCreatureFromAverage(80, 480);
+            weights[CreatureConstants.AnimatedObject_Ladder_Large][GenderConstants.Agender] = GetGenderFromAverage(40);
+            weights[CreatureConstants.AnimatedObject_Ladder_Large][CreatureConstants.AnimatedObject_Ladder_Large] = GetCreatureFromAverage(40, 240);
+            weights[CreatureConstants.AnimatedObject_Ladder_Medium][GenderConstants.Agender] = GetGenderFromAverage(20);
+            weights[CreatureConstants.AnimatedObject_Ladder_Medium][CreatureConstants.AnimatedObject_Ladder_Medium] = GetCreatureFromAverage(20, 120);
+            weights[CreatureConstants.AnimatedObject_Ladder_Small][GenderConstants.Agender] = GetGenderFromAverage(10);
+            weights[CreatureConstants.AnimatedObject_Ladder_Small][CreatureConstants.AnimatedObject_Ladder_Small] = GetCreatureFromAverage(10, 60);
+            weights[CreatureConstants.AnimatedObject_Ladder_Tiny][GenderConstants.Agender] = GetGenderFromAverage(5);
+            weights[CreatureConstants.AnimatedObject_Ladder_Tiny][CreatureConstants.AnimatedObject_Ladder_Tiny] = GetCreatureFromAverage(5, 30);
+            weights[CreatureConstants.AnimatedObject_Rope_Colossal][GenderConstants.Agender] = GetGenderFromAverage(160);
+            weights[CreatureConstants.AnimatedObject_Rope_Colossal][CreatureConstants.AnimatedObject_Rope_Colossal] = GetCreatureFromAverage(160, 9600);
+            weights[CreatureConstants.AnimatedObject_Rope_Gargantuan][GenderConstants.Agender] = GetGenderFromAverage(80);
+            weights[CreatureConstants.AnimatedObject_Rope_Gargantuan][CreatureConstants.AnimatedObject_Rope_Gargantuan] = GetCreatureFromAverage(80, 4800);
+            weights[CreatureConstants.AnimatedObject_Rope_Huge][GenderConstants.Agender] = GetGenderFromAverage(40);
+            weights[CreatureConstants.AnimatedObject_Rope_Huge][CreatureConstants.AnimatedObject_Rope_Huge] = GetCreatureFromAverage(40, 2400);
+            weights[CreatureConstants.AnimatedObject_Rope_Large][GenderConstants.Agender] = GetGenderFromAverage(20);
+            weights[CreatureConstants.AnimatedObject_Rope_Large][CreatureConstants.AnimatedObject_Rope_Large] = GetCreatureFromAverage(20, 1200);
+            weights[CreatureConstants.AnimatedObject_Rope_Medium][GenderConstants.Agender] = GetGenderFromAverage(10);
+            weights[CreatureConstants.AnimatedObject_Rope_Medium][CreatureConstants.AnimatedObject_Rope_Medium] = GetCreatureFromAverage(10, 50 * 12);
+            weights[CreatureConstants.AnimatedObject_Rope_Small][GenderConstants.Agender] = GetGenderFromAverage(5);
+            weights[CreatureConstants.AnimatedObject_Rope_Small][CreatureConstants.AnimatedObject_Rope_Small] = GetCreatureFromAverage(5, 25 * 12);
+            weights[CreatureConstants.AnimatedObject_Rope_Tiny][GenderConstants.Agender] = GetGenderFromAverage(2);
+            weights[CreatureConstants.AnimatedObject_Rope_Tiny][CreatureConstants.AnimatedObject_Rope_Tiny] = GetCreatureFromAverage(2, 144);
+            weights[CreatureConstants.AnimatedObject_Rug_Colossal][GenderConstants.Agender] = GetGenderFromAverage(1600);
+            weights[CreatureConstants.AnimatedObject_Rug_Colossal][CreatureConstants.AnimatedObject_Rug_Colossal] = GetCreatureFromAverage(1600, 80 * 12);
+            weights[CreatureConstants.AnimatedObject_Rug_Gargantuan][GenderConstants.Agender] = GetGenderFromAverage(800);
+            weights[CreatureConstants.AnimatedObject_Rug_Gargantuan][CreatureConstants.AnimatedObject_Rug_Gargantuan] = GetCreatureFromAverage(800, 40 * 12);
+            weights[CreatureConstants.AnimatedObject_Rug_Huge][GenderConstants.Agender] = GetGenderFromAverage(400);
+            weights[CreatureConstants.AnimatedObject_Rug_Huge][CreatureConstants.AnimatedObject_Rug_Huge] = GetCreatureFromAverage(400, 20 * 12);
+            weights[CreatureConstants.AnimatedObject_Rug_Large][GenderConstants.Agender] = GetGenderFromAverage(100);
+            weights[CreatureConstants.AnimatedObject_Rug_Large][CreatureConstants.AnimatedObject_Rug_Large] = GetCreatureFromAverage(100, 10 * 12);
+            weights[CreatureConstants.AnimatedObject_Rug_Medium][GenderConstants.Agender] = GetGenderFromAverage(25);
+            weights[CreatureConstants.AnimatedObject_Rug_Medium][CreatureConstants.AnimatedObject_Rug_Medium] = GetCreatureFromAverage(25, 5 * 12);
+            weights[CreatureConstants.AnimatedObject_Rug_Small][GenderConstants.Agender] = GetGenderFromAverage(16);
+            weights[CreatureConstants.AnimatedObject_Rug_Small][CreatureConstants.AnimatedObject_Rug_Small] = GetCreatureFromAverage(16, 4 * 12);
+            weights[CreatureConstants.AnimatedObject_Rug_Tiny][GenderConstants.Agender] = GetGenderFromAverage(6);
+            weights[CreatureConstants.AnimatedObject_Rug_Tiny][CreatureConstants.AnimatedObject_Rug_Tiny] = GetCreatureFromAverage(6, 2 * 12 + 6);
+            weights[CreatureConstants.AnimatedObject_Sled_Colossal][GenderConstants.Agender] = "144";
+            weights[CreatureConstants.AnimatedObject_Sled_Colossal][CreatureConstants.AnimatedObject_Sled_Colossal] = "6d8";
+            weights[CreatureConstants.AnimatedObject_Sled_Gargantuan][GenderConstants.Agender] = "72";
+            weights[CreatureConstants.AnimatedObject_Sled_Gargantuan][CreatureConstants.AnimatedObject_Sled_Gargantuan] = "4d6";
+            weights[CreatureConstants.AnimatedObject_Sled_Huge][GenderConstants.Agender] = "36";
+            weights[CreatureConstants.AnimatedObject_Sled_Huge][CreatureConstants.AnimatedObject_Sled_Huge] = "3d4";
+            weights[CreatureConstants.AnimatedObject_Sled_Large][GenderConstants.Agender] = "18";
+            weights[CreatureConstants.AnimatedObject_Sled_Large][CreatureConstants.AnimatedObject_Sled_Large] = "2d3";
+            weights[CreatureConstants.AnimatedObject_Sled_Medium][GenderConstants.Agender] = "9";
+            weights[CreatureConstants.AnimatedObject_Sled_Medium][CreatureConstants.AnimatedObject_Sled_Medium] = "1d3";
+            weights[CreatureConstants.AnimatedObject_Sled_Small][GenderConstants.Agender] = "4";
+            weights[CreatureConstants.AnimatedObject_Sled_Small][CreatureConstants.AnimatedObject_Sled_Small] = "1d2";
+            weights[CreatureConstants.AnimatedObject_Sled_Tiny][GenderConstants.Agender] = "2";
+            weights[CreatureConstants.AnimatedObject_Sled_Tiny][CreatureConstants.AnimatedObject_Sled_Tiny] = "1";
+            weights[CreatureConstants.AnimatedObject_Statue_Animal_Colossal][GenderConstants.Agender] = GetGenderFromAverage(72 * 12);
+            weights[CreatureConstants.AnimatedObject_Statue_Animal_Colossal][CreatureConstants.AnimatedObject_Statue_Animal_Colossal] = GetCreatureFromAverage(72 * 12);
+            weights[CreatureConstants.AnimatedObject_Statue_Animal_Gargantuan][GenderConstants.Agender] = GetGenderFromAverage(36 * 12);
+            weights[CreatureConstants.AnimatedObject_Statue_Animal_Gargantuan][CreatureConstants.AnimatedObject_Statue_Animal_Gargantuan] = GetCreatureFromAverage(36 * 12);
+            weights[CreatureConstants.AnimatedObject_Statue_Animal_Huge][GenderConstants.Agender] = GetGenderFromAverage(18 * 12);
+            weights[CreatureConstants.AnimatedObject_Statue_Animal_Huge][CreatureConstants.AnimatedObject_Statue_Animal_Huge] = GetCreatureFromAverage(18 * 12);
+            weights[CreatureConstants.AnimatedObject_Statue_Animal_Large][GenderConstants.Agender] = GetGenderFromAverage(660 * 3); //Large Animal
+            weights[CreatureConstants.AnimatedObject_Statue_Animal_Large][CreatureConstants.AnimatedObject_Statue_Animal_Large] = GetCreatureFromAverage(660 * 3, 8 * 12);
+            weights[CreatureConstants.AnimatedObject_Statue_Animal_Medium][GenderConstants.Agender] = GetGenderFromAverage(210);
+            weights[CreatureConstants.AnimatedObject_Statue_Animal_Medium][CreatureConstants.AnimatedObject_Statue_Animal_Medium] = GetCreatureFromAverage(210, 52);
+            weights[CreatureConstants.AnimatedObject_Statue_Animal_Small][GenderConstants.Agender] = GetGenderFromAverage(30);
+            weights[CreatureConstants.AnimatedObject_Statue_Animal_Small][CreatureConstants.AnimatedObject_Statue_Animal_Small] = GetCreatureFromAverage(30, 18);
+            weights[CreatureConstants.AnimatedObject_Statue_Animal_Tiny][GenderConstants.Agender] = GetGenderFromAverage(15);
+            weights[CreatureConstants.AnimatedObject_Statue_Animal_Tiny][CreatureConstants.AnimatedObject_Statue_Animal_Tiny] = GetCreatureFromAverage(15, 9);
+            weights[CreatureConstants.AnimatedObject_Statue_Humanoid_Colossal][GenderConstants.Agender] = "1160";
+            weights[CreatureConstants.AnimatedObject_Statue_Humanoid_Colossal][CreatureConstants.AnimatedObject_Statue_Humanoid_Colossal] = "12d20";
+            weights[CreatureConstants.AnimatedObject_Statue_Humanoid_Gargantuan][GenderConstants.Agender] = "580";
+            weights[CreatureConstants.AnimatedObject_Statue_Humanoid_Gargantuan][CreatureConstants.AnimatedObject_Statue_Humanoid_Gargantuan] = "6d20";
+            weights[CreatureConstants.AnimatedObject_Statue_Humanoid_Huge][GenderConstants.Agender] = "290"; //Huge
+            weights[CreatureConstants.AnimatedObject_Statue_Humanoid_Huge][CreatureConstants.AnimatedObject_Statue_Humanoid_Huge] = "3d20";
+            weights[CreatureConstants.AnimatedObject_Statue_Humanoid_Large][GenderConstants.Agender] = "15*12+4"; //Large
+            weights[CreatureConstants.AnimatedObject_Statue_Humanoid_Large][CreatureConstants.AnimatedObject_Statue_Humanoid_Large] = "2d20";
+            weights[CreatureConstants.AnimatedObject_Statue_Humanoid_Medium][GenderConstants.Agender] = "4*12+5"; //Medium
+            weights[CreatureConstants.AnimatedObject_Statue_Humanoid_Medium][CreatureConstants.AnimatedObject_Statue_Humanoid_Medium] = "2d12";
+            weights[CreatureConstants.AnimatedObject_Statue_Humanoid_Small][GenderConstants.Agender] = "2*12+6"; //Small
+            weights[CreatureConstants.AnimatedObject_Statue_Humanoid_Small][CreatureConstants.AnimatedObject_Statue_Humanoid_Small] = "2d6";
+            weights[CreatureConstants.AnimatedObject_Statue_Humanoid_Tiny][GenderConstants.Agender] = GetGenderFromAverage(18);
+            weights[CreatureConstants.AnimatedObject_Statue_Humanoid_Tiny][CreatureConstants.AnimatedObject_Statue_Humanoid_Tiny] = GetCreatureFromAverage(18);
+            weights[CreatureConstants.AnimatedObject_Stool_Colossal][GenderConstants.Agender] = "272";
+            weights[CreatureConstants.AnimatedObject_Stool_Colossal][CreatureConstants.AnimatedObject_Stool_Colossal] = "6d8";
+            weights[CreatureConstants.AnimatedObject_Stool_Gargantuan][GenderConstants.Agender] = "136";
+            weights[CreatureConstants.AnimatedObject_Stool_Gargantuan][CreatureConstants.AnimatedObject_Stool_Gargantuan] = "4d6";
+            weights[CreatureConstants.AnimatedObject_Stool_Huge][GenderConstants.Agender] = "68";
+            weights[CreatureConstants.AnimatedObject_Stool_Huge][CreatureConstants.AnimatedObject_Stool_Huge] = "3d4";
+            weights[CreatureConstants.AnimatedObject_Stool_Large][GenderConstants.Agender] = "34";
+            weights[CreatureConstants.AnimatedObject_Stool_Large][CreatureConstants.AnimatedObject_Stool_Large] = "2d3";
+            weights[CreatureConstants.AnimatedObject_Stool_Medium][GenderConstants.Agender] = "17";
+            weights[CreatureConstants.AnimatedObject_Stool_Medium][CreatureConstants.AnimatedObject_Stool_Medium] = "1d3";
+            weights[CreatureConstants.AnimatedObject_Stool_Small][GenderConstants.Agender] = "8";
+            weights[CreatureConstants.AnimatedObject_Stool_Small][CreatureConstants.AnimatedObject_Stool_Small] = "1d2";
+            weights[CreatureConstants.AnimatedObject_Stool_Tiny][GenderConstants.Agender] = "4";
+            weights[CreatureConstants.AnimatedObject_Stool_Tiny][CreatureConstants.AnimatedObject_Stool_Tiny] = "1";
+            weights[CreatureConstants.Bear_Brown][GenderConstants.Female] = GetGenderFromAverage(1800);
+            weights[CreatureConstants.Bear_Brown][GenderConstants.Male] = GetGenderFromAverage(1800);
+            weights[CreatureConstants.Bear_Brown][CreatureConstants.Bear_Brown] = GetCreatureFromAverage(1800, 9 * 12);
+            weights[CreatureConstants.Cat][GenderConstants.Female] = GetGenderFromAverage(9); //Small Animal
+            weights[CreatureConstants.Cat][GenderConstants.Male] = GetGenderFromAverage(11);
+            weights[CreatureConstants.Cat][CreatureConstants.Cat] = GetCreatureFromAverage(10, 18);
             weights[CreatureConstants.Dwarf_Deep][GenderConstants.Female] = "100";
             weights[CreatureConstants.Dwarf_Deep][GenderConstants.Male] = "130";
             weights[CreatureConstants.Dwarf_Deep][CreatureConstants.Dwarf_Deep] = "2d6"; //x7
@@ -166,13 +382,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Tiefling][GenderConstants.Female] = "85";
             weights[CreatureConstants.Tiefling][GenderConstants.Male] = "120";
             weights[CreatureConstants.Tiefling][CreatureConstants.Tiefling] = "2d4"; //x5
+            weights[CreatureConstants.Wolf][GenderConstants.Female] = "39"; //Medium Animal
+            weights[CreatureConstants.Wolf][GenderConstants.Male] = "39";
+            weights[CreatureConstants.Wolf][CreatureConstants.Wolf] = "2d12";
 
             return weights;
         }
 
         public static IEnumerable CreatureWeightsData => GetCreatureWeights().Select(t => new TestCaseData(t.Key, t.Value));
 
-        private static string GetGenderFromAverage(int average)
+        private static string GetGenderFromAverage(double average)
         {
             var gender = average * 8 / 10;
             return gender.ToString();
@@ -208,6 +427,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.AnimatedObject_Anvil_Medium, GenderConstants.Agender, 150)]
         [TestCase(CreatureConstants.AnimatedObject_Anvil_Small, GenderConstants.Agender, 75)]
         [TestCase(CreatureConstants.AnimatedObject_Anvil_Tiny, GenderConstants.Agender, 37)]
+        [TestCase(CreatureConstants.AnimatedObject_Chain_Colossal, GenderConstants.Agender, 32)]
+        [TestCase(CreatureConstants.AnimatedObject_Chain_Gargantuan, GenderConstants.Agender, 16)]
+        [TestCase(CreatureConstants.AnimatedObject_Chain_Huge, GenderConstants.Agender, 8)]
+        [TestCase(CreatureConstants.AnimatedObject_Chain_Large, GenderConstants.Agender, 4)]
+        [TestCase(CreatureConstants.AnimatedObject_Chain_Medium, GenderConstants.Agender, 2)]
+        [TestCase(CreatureConstants.AnimatedObject_Chain_Small, GenderConstants.Agender, 1)]
+        [TestCase(CreatureConstants.AnimatedObject_Chain_Tiny, GenderConstants.Agender, 1)]
+        [TestCase(CreatureConstants.Bear_Brown, GenderConstants.Male, 1800)]
+        [TestCase(CreatureConstants.Bear_Brown, GenderConstants.Female, 1800)]
         public void RollCalculationsAreAccurate(string creature, string gender, int average)
         {
             var heights = HeightsTests.GetCreatureHeights();
@@ -224,13 +452,35 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var weightMultiplierMax = dice.Roll(weights[creature][creature]).AsPotentialMaximum();
             var sigma = Math.Max(1, average * 0.05);
 
-            Assert.That(baseWeight, Is.EqualTo(average * 0.8).Within(sigma), "Base Weight (80%)");
-            Assert.That(heightMultiplierMin * weightMultiplierMin, Is.EqualTo(average * 0.1).Within(sigma), $"Min (10%). H:{heightMultiplierMin}, W:{weightMultiplierMin}");
-            Assert.That(heightMultiplierAvg * weightMultiplierAvg, Is.EqualTo(average * 0.2).Within(sigma), $"Average (20%). H:{heightMultiplierAvg}, W:{weightMultiplierAvg}");
-            Assert.That(heightMultiplierMax * weightMultiplierMax, Is.EqualTo(average * 0.3).Within(sigma), $"Max (30%). H:{heightMultiplierMax}, W:{weightMultiplierMax}");
-            Assert.That(baseWeight + heightMultiplierMin * weightMultiplierMin, Is.EqualTo(average * 0.9).Within(sigma), "Min (-10%)");
-            Assert.That(baseWeight + heightMultiplierAvg * weightMultiplierAvg, Is.EqualTo(average).Within(sigma), "Average");
-            Assert.That(baseWeight + heightMultiplierMax * weightMultiplierMax, Is.EqualTo(average * 1.1).Within(sigma), "Max (+10%)");
+            Assert.That(baseWeight, Is.Positive.And.EqualTo(average * 0.8).Within(sigma), "Base Weight (80%)");
+            Assert.That(heightMultiplierMin * weightMultiplierMin, Is.Positive.And.EqualTo(average * 0.1).Within(sigma), $"Min (10%). H:{heightMultiplierMin}, W:{weightMultiplierMin}");
+            Assert.That(heightMultiplierAvg * weightMultiplierAvg, Is.Positive.And.EqualTo(average * 0.2).Within(sigma), $"Average (20%). H:{heightMultiplierAvg}, W:{weightMultiplierAvg}");
+            Assert.That(heightMultiplierMax * weightMultiplierMax, Is.Positive.And.EqualTo(average * 0.3).Within(sigma), $"Max (30%). H:{heightMultiplierMax}, W:{weightMultiplierMax}");
+            Assert.That(baseWeight + heightMultiplierMin * weightMultiplierMin, Is.Positive.And.EqualTo(average * 0.9).Within(sigma), "Min (-10%)");
+            Assert.That(baseWeight + heightMultiplierAvg * weightMultiplierAvg, Is.Positive.And.EqualTo(average).Within(sigma), "Average");
+            Assert.That(baseWeight + heightMultiplierMax * weightMultiplierMax, Is.Positive.And.EqualTo(average * 1.1).Within(sigma), "Max (+10%)");
+        }
+
+        [TestCase(CreatureConstants.Wolf, GenderConstants.Male, 55, 85)]
+        [TestCase(CreatureConstants.Wolf, GenderConstants.Female, 55, 85)]
+        public void RollCalculationsAreAccurate(string creature, string gender, int min, int max)
+        {
+            var heights = HeightsTests.GetCreatureHeights();
+
+            var heightMultiplierMin = dice.Roll(heights[creature][creature]).AsPotentialMinimum();
+            var heightMultiplierAvg = dice.Roll(heights[creature][creature]).AsPotentialAverage();
+            var heightMultiplierMax = dice.Roll(heights[creature][creature]).AsPotentialMaximum();
+
+            var weights = GetCreatureWeights();
+
+            var baseWeight = dice.Roll(weights[creature][gender]).AsSum();
+            var weightMultiplierMin = dice.Roll(weights[creature][creature]).AsPotentialMinimum();
+            var weightMultiplierAvg = dice.Roll(weights[creature][creature]).AsPotentialAverage();
+            var weightMultiplierMax = dice.Roll(weights[creature][creature]).AsPotentialMaximum();
+
+            Assert.That(baseWeight + heightMultiplierMin * weightMultiplierMin, Is.Positive.And.EqualTo(min), "Min");
+            Assert.That(baseWeight + heightMultiplierAvg * weightMultiplierAvg, Is.Positive.And.EqualTo((min + max) / 2).Within(1), "Average");
+            Assert.That(baseWeight + heightMultiplierMax * weightMultiplierMax, Is.Positive.And.EqualTo(max), "Max");
         }
     }
 }

@@ -13,6 +13,8 @@ using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
 using Moq;
 using NUnit.Framework;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -1264,6 +1266,59 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.ChallengeRating, Is.EqualTo("adjusted challenge rating"));
             Assert.That(creature.CasterLevel, Is.EqualTo(1029 + 6331));
             Assert.That(creature.IsAdvanced, Is.True);
+        }
+
+        [TestCaseSource(nameof(SizeIncreases))]
+        public async Task GenerateRandomAsync_GenerateAdvancedCreature_AdjustDemographics(string originalSize, string advancedSize, int multiplier)
+        {
+            creatureData.Size = originalSize;
+            demographics.Weight.Value = 1324;
+            demographics.HeightOrLength.Value = 2435;
+            demographics.Age.Value = 3546;
+            demographics.MaximumAge.Value = 4657;
+
+            SetUpCreature("creature", false, null, null, null, null, "template");
+            var advancedHitPoints = SetUpCreatureAdvancement(false, "creature", null, 1337, advancedSize, "template");
+
+            var creature = await creatureGenerator.GenerateRandomAsync(false);
+            Assert.That(creature.HitPoints, Is.EqualTo(advancedHitPoints));
+            Assert.That(creature.HitPoints.HitDiceQuantity, Is.EqualTo(681));
+            Assert.That(creature.HitPoints.HitDice, Has.Count.EqualTo(1));
+            Assert.That(creature.HitPoints.HitDice[0].Quantity, Is.EqualTo(681));
+            Assert.That(creature.HitPoints.HitDice[0].HitDie, Is.EqualTo(573));
+            Assert.That(creature.HitPoints.DefaultTotal, Is.EqualTo(492));
+            Assert.That(creature.HitPoints.Total, Is.EqualTo(862));
+            Assert.That(creature.Size, Is.EqualTo(advancedSize));
+            Assert.That(creature.Space.Value, Is.EqualTo(54.32));
+            Assert.That(creature.Reach.Value, Is.EqualTo(98.76));
+            Assert.That(creature.Abilities[AbilityConstants.Strength].AdvancementAdjustment, Is.EqualTo(3456));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].AdvancementAdjustment, Is.EqualTo(783));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment, Is.EqualTo(69));
+            Assert.That(creature.ChallengeRating, Is.EqualTo("adjusted challenge rating"));
+            Assert.That(creature.CasterLevel, Is.EqualTo(1029 + 6331));
+            Assert.That(creature.IsAdvanced, Is.True);
+
+            Assert.That(creature.Demographics.Age.Value, Is.EqualTo(3546));
+            Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(4657));
+            Assert.That(creature.Demographics.HeightOrLength.Value, Is.EqualTo(2435 * multiplier));
+            Assert.That(creature.Demographics.Weight.Value, Is.EqualTo(1324 * multiplier));
+        }
+
+        private static IEnumerable SizeIncreases
+        {
+            get
+            {
+                var sizes = SizeConstants.GetOrdered();
+
+                for (var o = 0; o < sizes.Length; o++)
+                {
+                    for (var a = o; a < sizes.Length; a++)
+                    {
+                        var multiplier = Math.Pow(2, a - o);
+                        yield return new TestCaseData(sizes[o], sizes[a], multiplier);
+                    }
+                }
+            }
         }
 
         [TestCase(true)]

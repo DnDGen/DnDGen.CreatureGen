@@ -269,7 +269,6 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             creature.NumberOfHands = creatureData.NumberOfHands;
 
             creature.Type = GetCreatureType(creatureName);
-
             creature.Demographics = demographicsGenerator.Generate(creatureName);
 
             abilityRandomizer ??= new AbilityRandomizer();
@@ -298,6 +297,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                     creature.Size,
                     advancement.AdditionalHitDice,
                     asCharacter);
+
+                creature.Demographics = AdjustDemographics(creature.Demographics, creatureData.Size, advancement.Size);
             }
             else
             {
@@ -392,6 +393,25 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             creature.Magic = magicGenerator.GenerateWith(creature.Name, creature.Alignment, creature.Abilities, creature.Equipment);
 
             return creature;
+        }
+
+        private Demographics AdjustDemographics(Demographics demographics, string originalSize, string advancedSize)
+        {
+            var orderedSizes = SizeConstants.GetOrdered();
+            var originalIndex = Array.IndexOf(orderedSizes, originalSize);
+            var advancedIndex = Array.IndexOf(orderedSizes, advancedSize);
+            var sizeDifference = advancedIndex - originalIndex;
+
+            //INFO: If the advancement has adjusted the size of the creature, we need to increase the demographics,
+            //specifically the height and weight. Roughly, x2 for each size category increase
+            if (sizeDifference > 0)
+            {
+                var multiplier = Math.Pow(2, sizeDifference);
+                demographics.HeightOrLength.Value *= multiplier;
+                demographics.Weight.Value *= multiplier;
+            }
+
+            return demographics;
         }
 
         private int ComputeInitiativeBonus(IEnumerable<Feat> feats)

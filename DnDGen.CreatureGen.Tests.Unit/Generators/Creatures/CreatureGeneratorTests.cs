@@ -424,14 +424,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             return templateApplicators;
         }
 
-        protected HitPoints SetUpCreatureAdvancement(bool asCharacter, string creatureName, string challengeRatingFilter, int advancementAmount = 1337, params string[] templates)
+        protected HitPoints SetUpCreatureAdvancement(
+            bool asCharacter,
+            string creatureName,
+            string challengeRatingFilter,
+            int advancementAmount = 1337,
+            string advancedSize = "advanced size",
+            params string[] templates)
         {
             mockAdvancementSelector.Setup(s => s.IsAdvanced(creatureName, challengeRatingFilter)).Returns(true);
 
             var advancement = new AdvancementSelection();
             advancement.AdditionalHitDice = advancementAmount;
             advancement.Reach = 98.76;
-            advancement.Size = "advanced size";
+            advancement.Size = advancedSize ?? "advanced size";
             advancement.Space = 54.32;
             advancement.AdjustedChallengeRating = "adjusted challenge rating";
             advancement.CasterLevelAdjustment = 6331;
@@ -456,7 +462,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     creatureName,
                     It.Is<CreatureType>(c => c.Name == types[0]),
                     abilities[AbilityConstants.Constitution],
-                    "advanced size",
+                    advancement.Size,
                     advancementAmount,
                     asCharacter))
                 .Returns(advancedHitPoints);
