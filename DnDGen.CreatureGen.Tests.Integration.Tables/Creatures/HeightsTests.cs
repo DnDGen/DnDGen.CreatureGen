@@ -346,9 +346,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Bear_Brown][GenderConstants.Female] = GetGenderFromAverage(9 * 12);
             heights[CreatureConstants.Bear_Brown][GenderConstants.Male] = GetGenderFromAverage(9 * 12);
             heights[CreatureConstants.Bear_Brown][CreatureConstants.Bear_Brown] = GetCreatureFromAverage(9 * 12);
+            heights[CreatureConstants.Bugbear][GenderConstants.Female] = "5*12";
+            heights[CreatureConstants.Bugbear][GenderConstants.Male] = "5*12";
+            heights[CreatureConstants.Bugbear][CreatureConstants.Bugbear] = RollHelper.GetRollWithFewestDice(5 * 12, 6 * 12, 8 * 12);
             heights[CreatureConstants.Cat][GenderConstants.Female] = GetGenderFromAverage(17); //Small Animal
             heights[CreatureConstants.Cat][GenderConstants.Male] = GetGenderFromAverage(19);
             heights[CreatureConstants.Cat][CreatureConstants.Cat] = GetCreatureFromAverage(18);
+            //TODO: Centaur
             heights[CreatureConstants.Criosphinx][GenderConstants.Male] = GetGenderFromAverage(120);
             heights[CreatureConstants.Criosphinx][CreatureConstants.Criosphinx] = GetCreatureFromAverage(120);
             heights[CreatureConstants.Dwarf_Deep][GenderConstants.Female] = "3*12+7";
@@ -393,6 +397,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Giant_Hill][GenderConstants.Female] = "15*12+4"; //Large
             heights[CreatureConstants.Giant_Hill][GenderConstants.Male] = "16*12";
             heights[CreatureConstants.Giant_Hill][CreatureConstants.Giant_Hill] = "1d12";
+            //TODO: Gnoll
             heights[CreatureConstants.Gnome_Forest][GenderConstants.Female] = "2*12+10";
             heights[CreatureConstants.Gnome_Forest][GenderConstants.Male] = "3*12+0";
             heights[CreatureConstants.Gnome_Forest][CreatureConstants.Gnome_Forest] = "2d4";
@@ -431,21 +436,31 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Horse_Light][GenderConstants.Female] = "56";
             heights[CreatureConstants.Horse_Light][GenderConstants.Male] = "56";
             heights[CreatureConstants.Horse_Light][CreatureConstants.Horse_Light] = "1d4";
+            heights[CreatureConstants.Horse_Heavy_War][GenderConstants.Female] = GetGenderFromAverage(6 * 12);
+            heights[CreatureConstants.Horse_Heavy_War][GenderConstants.Male] = GetGenderFromAverage(6 * 12);
+            heights[CreatureConstants.Horse_Heavy_War][CreatureConstants.Horse_Heavy] = GetCreatureFromAverage(6 * 12);
+            heights[CreatureConstants.Horse_Light_War][GenderConstants.Female] = "56";
+            heights[CreatureConstants.Horse_Light_War][GenderConstants.Male] = "56";
+            heights[CreatureConstants.Horse_Light_War][CreatureConstants.Horse_Light] = "1d4";
             heights[CreatureConstants.Human][GenderConstants.Female] = "4*12+5"; //Medium
             heights[CreatureConstants.Human][GenderConstants.Male] = "4*12+10";
             heights[CreatureConstants.Human][CreatureConstants.Human] = "2d10";
             heights[CreatureConstants.Kobold][GenderConstants.Female] = "2*12+4";
             heights[CreatureConstants.Kobold][GenderConstants.Male] = "2*12+6";
             heights[CreatureConstants.Kobold][CreatureConstants.Kobold] = "2d4";
+            //TODO: Lizardfolk
+            //TODO: Locathah
             heights[CreatureConstants.Merfolk][GenderConstants.Female] = "5*12+8";
             heights[CreatureConstants.Merfolk][GenderConstants.Male] = "5*12+10";
             heights[CreatureConstants.Merfolk][CreatureConstants.Merfolk] = "2d10";
+            //TODO: Minotaur
             heights[CreatureConstants.Ogre][GenderConstants.Female] = "110";
             heights[CreatureConstants.Ogre][GenderConstants.Male] = "120";
             heights[CreatureConstants.Ogre][CreatureConstants.Ogre] = "1d10";
             heights[CreatureConstants.Ogre_Merrow][GenderConstants.Female] = "110";
             heights[CreatureConstants.Ogre_Merrow][GenderConstants.Male] = "120";
             heights[CreatureConstants.Ogre_Merrow][CreatureConstants.Ogre] = "1d10";
+            //TODO: Ogre Mage
             heights[CreatureConstants.Orc][GenderConstants.Female] = "5*12+1";
             heights[CreatureConstants.Orc][GenderConstants.Male] = "4*12+9";
             heights[CreatureConstants.Orc][CreatureConstants.Orc] = "2d12";
@@ -531,6 +546,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Medium, GenderConstants.Agender, 4 * 12, 8 * 12 - 1)]
         [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Small, GenderConstants.Agender, 2 * 12, 4 * 12 - 1)]
         [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Tiny, GenderConstants.Agender, 12, 23)]
+        [TestCase(CreatureConstants.Bugbear, GenderConstants.Male, 6 * 12, 8 * 12)]
+        [TestCase(CreatureConstants.Bugbear, GenderConstants.Female, 6 * 12, 8 * 12)]
         [TestCase(CreatureConstants.Ettin, GenderConstants.Male, 13 * 12, 13 * 12 + 10)]
         [TestCase(CreatureConstants.Ettin, GenderConstants.Female, 12 * 12 + 4, 13 * 12 + 2)]
         [TestCase(CreatureConstants.Giant_Cloud, GenderConstants.Male, 24 * 12 + 4, 26 * 12 + 8)]
@@ -555,10 +572,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var multiplierMin = dice.Roll(heights[creature][creature]).AsPotentialMinimum();
             var multiplierAvg = dice.Roll(heights[creature][creature]).AsPotentialAverage();
             var multiplierMax = dice.Roll(heights[creature][creature]).AsPotentialMaximum();
+            var theoreticalRoll = RollHelper.GetRollWithFewestDice(min, max);
 
-            Assert.That(baseHeight + multiplierMin, Is.EqualTo(min), "Min");
-            Assert.That(baseHeight + multiplierAvg, Is.EqualTo((min + max) / 2).Within(1), "Average");
-            Assert.That(baseHeight + multiplierMax, Is.EqualTo(max), "Max");
+            Assert.That(baseHeight + multiplierMin, Is.EqualTo(min), $"Min; Theoretical: {theoreticalRoll}");
+            Assert.That(baseHeight + multiplierAvg, Is.EqualTo((min + max) / 2).Within(1), $"Average; Theoretical: {theoreticalRoll}");
+            Assert.That(baseHeight + multiplierMax, Is.EqualTo(max), $"Max; Theoretical: {theoreticalRoll}");
         }
     }
 }

@@ -349,9 +349,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Bear_Brown][GenderConstants.Female] = GetGenderFromAverage(1800);
             weights[CreatureConstants.Bear_Brown][GenderConstants.Male] = GetGenderFromAverage(1800);
             weights[CreatureConstants.Bear_Brown][CreatureConstants.Bear_Brown] = GetCreatureFromAverage(1800, 9 * 12);
+            weights[CreatureConstants.Bugbear][GenderConstants.Female] = "200";
+            weights[CreatureConstants.Bugbear][GenderConstants.Male] = "200";
+            weights[CreatureConstants.Bugbear][CreatureConstants.Bugbear] = RollHelper.GetRollWithFewestDice(200, 250, 350);
             weights[CreatureConstants.Cat][GenderConstants.Female] = GetGenderFromAverage(9); //Small Animal
             weights[CreatureConstants.Cat][GenderConstants.Male] = GetGenderFromAverage(11);
             weights[CreatureConstants.Cat][CreatureConstants.Cat] = GetCreatureFromAverage(10, 18);
+            //TODO: Centaur
             weights[CreatureConstants.Criosphinx][GenderConstants.Male] = GetGenderFromAverage(800);
             weights[CreatureConstants.Criosphinx][CreatureConstants.Criosphinx] = GetCreatureFromAverage(800, 120);
             weights[CreatureConstants.Dwarf_Deep][GenderConstants.Female] = "100";
@@ -396,6 +400,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Giant_Hill][GenderConstants.Female] = "290"; //Huge
             weights[CreatureConstants.Giant_Hill][GenderConstants.Male] = "270";
             weights[CreatureConstants.Giant_Hill][CreatureConstants.Giant_Cloud] = "3d10";
+            //TODO: Gnoll
             weights[CreatureConstants.Gnome_Forest][GenderConstants.Female] = "35";
             weights[CreatureConstants.Gnome_Forest][GenderConstants.Male] = "40";
             weights[CreatureConstants.Gnome_Forest][CreatureConstants.Gnome_Forest] = "1"; //x1
@@ -435,10 +440,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Kobold][GenderConstants.Female] = "20";
             weights[CreatureConstants.Kobold][GenderConstants.Male] = "25";
             weights[CreatureConstants.Kobold][CreatureConstants.Kobold] = "1"; //x1
+            //TODO: Lizardfolk
+            //TODO: Locathah
             weights[CreatureConstants.Merfolk][GenderConstants.Female] = "135";
             weights[CreatureConstants.Merfolk][GenderConstants.Male] = "145";
             weights[CreatureConstants.Merfolk][CreatureConstants.Merfolk] = "2d4"; //x5
+            //TODO: Minotaur
             //TODO: Ogre
+            //TODO: Ogre (Merrow)
+            //TODO: Ogre Mage
             weights[CreatureConstants.Orc][GenderConstants.Female] = "120";
             weights[CreatureConstants.Orc][GenderConstants.Male] = "160";
             weights[CreatureConstants.Orc][CreatureConstants.Orc_Half] = "2d6"; //x7
@@ -549,6 +559,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Medium, GenderConstants.Agender, 60 * 3, 500 * 3 - 1)]
         [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Small, GenderConstants.Agender, 8 * 3, 60 * 3 - 1)]
         [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Tiny, GenderConstants.Agender, 3, 23)]
+        [TestCase(CreatureConstants.Bugbear, GenderConstants.Male, 250, 350)]
+        [TestCase(CreatureConstants.Bugbear, GenderConstants.Female, 250, 350)]
         [TestCase(CreatureConstants.Ettin, GenderConstants.Male, 930, 5200)]
         [TestCase(CreatureConstants.Ettin, GenderConstants.Female, 930, 5200)]
         [TestCase(CreatureConstants.Wolf, GenderConstants.Male, 55, 85)]
@@ -568,9 +580,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var weightMultiplierAvg = dice.Roll(weights[creature][creature]).AsPotentialAverage();
             var weightMultiplierMax = dice.Roll(weights[creature][creature]).AsPotentialMaximum();
 
-            Assert.That(baseWeight + heightMultiplierMin * weightMultiplierMin, Is.Positive.And.EqualTo(min), "Min");
-            Assert.That(baseWeight + heightMultiplierAvg * weightMultiplierAvg, Is.Positive.And.EqualTo((min + max) / 2).Within(1), "Average");
-            Assert.That(baseWeight + heightMultiplierMax * weightMultiplierMax, Is.Positive.And.EqualTo(max), "Max");
+            var theoreticalRoll = RollHelper.GetRollWithFewestDice(min, max);
+
+            Assert.That(baseWeight + heightMultiplierMin * weightMultiplierMin, Is.Positive.And.EqualTo(min), $"Min; Theoretical: {theoreticalRoll}");
+            Assert.That(baseWeight + heightMultiplierAvg * weightMultiplierAvg, Is.Positive.And.EqualTo((min + max) / 2).Within(1), $"Average; Theoretical: {theoreticalRoll}");
+            Assert.That(baseWeight + heightMultiplierMax * weightMultiplierMax, Is.Positive.And.EqualTo(max), $"Max; Theoretical: {theoreticalRoll}");
         }
     }
 }
