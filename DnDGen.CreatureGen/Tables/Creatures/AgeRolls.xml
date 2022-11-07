@@ -1,0 +1,3681 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<collections>
+  <collection>
+    <name>Aasimar</name>
+	  <entry>Adulthood@2d8+18</entry>
+	  <entry>Middle Age@17d2+18</entry>
+	  <entry>Old@8d3+45</entry>
+	  <entry>Venerable@8d6+62</entry>
+	  <entry>Maximum@70+2d20</entry>
+  </collection>
+  <collection>
+    <name>Aboleth</name>
+    <entry>Adulthood@1997d6-1982</entry>
+    <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Greater Basilisk</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Achaierai</name>
+	  <entry>Adulthood@3d10</entry>
+	  <entry>Middle Age@1d10+30</entry>
+	  <entry>Old@1d10+40</entry>
+	  <entry>Venerable@1d10+50</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Adult Arrowhawk</name>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Adult Tojanida</name>
+    <entry>Land@10</entry>
+    <entry>Swim@90</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, Elder</name>
+    <entry>Fly@100</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, Greater</name>
+    <entry>Fly@100</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, Huge</name>
+    <entry>Fly@100</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, Large</name>
+    <entry>Fly@100</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, Medium</name>
+    <entry>Fly@100</entry>
+  </collection>
+  <collection>
+    <name>Air Elemental, Small</name>
+    <entry>Fly@100</entry>
+  </collection>
+  <collection>
+    <name>Air Mephit</name>
+    <entry>Land@30</entry>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Allip</name>
+	  <entry>Adulthood@140d8-120</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Androsphinx</name>
+	  <entry>Adulthood@3328d4-3312</entry>
+	  <entry>Maximum@1000d6+4000</entry>
+  </collection>
+  <collection>
+    <name>Angel, Astral Deva</name>
+	  <entry>Adulthood@2000d6-2000</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Angel, Planetar</name>
+	  <entry>Adulthood@1000d10</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Angel, Solar</name>
+	  <entry>Adulthood@1000d6+4000</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Colossal</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Gargantuan</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Huge</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Large</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Medium</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Small</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Anvil, Tiny</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Colossal</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Gargantuan</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Huge</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Large</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Medium</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Small</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Stone), Tiny</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Colossal</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Gargantuan</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Huge</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Large</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Medium</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Small</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Block (Wood), Tiny</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Colossal</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Gargantuan</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Huge</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Large</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Medium</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Small</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Box, Tiny</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Colossal</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Gargantuan</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Huge</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Large</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Medium</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Small</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carpet, Tiny</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Colossal</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Gargantuan</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Huge</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Large</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Medium</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Small</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Carriage, Tiny</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Colossal</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Gargantuan</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Huge</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Large</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Medium</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Small</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chain, Tiny</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Colossal</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Gargantuan</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Huge</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Large</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Medium</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Small</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Chair, Tiny</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Colossal</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Gargantuan</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Huge</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Large</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Medium</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Small</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Clothes, Tiny</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Colossal</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Gargantuan</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Huge</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Large</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Medium</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Small</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Ladder, Tiny</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Colossal</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Gargantuan</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Huge</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Large</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Medium</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Small</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rope, Tiny</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Colossal</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Gargantuan</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Huge</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Large</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Medium</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Small</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Rug, Tiny</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Colossal</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Gargantuan</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Huge</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Large</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Medium</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Small</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Sled, Tiny</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Colossal</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Gargantuan</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Huge</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Large</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Medium</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Small</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Animal), Tiny</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Colossal</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Gargantuan</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Huge</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Large</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Medium</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Small</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Statue (Humanoid), Tiny</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Colossal</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Gargantuan</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Huge</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Large</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Medium</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Small</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Stool, Tiny</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Colossal</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Gargantuan</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Huge</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Large</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Medium</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Small</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Table, Tiny</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Colossal</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Gargantuan</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Huge</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Large</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Medium</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Small</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Tapestry, Tiny</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Colossal</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Gargantuan</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Huge</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Large</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Medium</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Small</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Animated Object, Wagon, Tiny</name>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
+  </collection>
+  <collection>
+    <name>Ankheg</name>
+    <entry>Land@30</entry>
+    <entry>Burrow@20</entry>
+  </collection>
+  <collection>
+    <name>Annis</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Ape</name>
+    <entry>Land@30</entry>
+    <entry>Climb@30</entry>
+  </collection>
+  <collection>
+    <name>Aquatic Elf</name>
+    <entry>Land@30</entry>
+    <entry>Swim@40</entry>
+  </collection>
+  <collection>
+    <name>Aranea</name>
+    <entry>Land@50</entry>
+    <entry>Climb@25</entry>
+  </collection>
+  <collection>
+    <name>Assassin Vine</name>
+    <entry>Land@5</entry>
+  </collection>
+  <collection>
+    <name>Athach</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Average Salamander</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Average Xorn</name>
+    <entry>Land@20</entry>
+    <entry>Burrow@20</entry>
+  </collection>
+  <collection>
+    <name>Avoral</name>
+    <entry>Land@40</entry>
+    <entry>Fly@90</entry>
+  </collection>
+  <collection>
+    <name>Azer</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Babau</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Baboon</name>
+    <entry>Land@40</entry>
+    <entry>Climb@30</entry>
+  </collection>
+  <collection>
+    <name>Badger</name>
+    <entry>Land@30</entry>
+    <entry>Burrow@10</entry>
+  </collection>
+  <collection>
+    <name>Baleen Whale</name>
+    <entry>Swim@40</entry>
+  </collection>
+  <collection>
+    <name>Balor</name>
+    <entry>Land@40</entry>
+    <entry>Fly@90</entry>
+  </collection>
+  <collection>
+    <name>Barbed Devil (Hamatula)</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Barghest</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Basilisk</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Bat</name>
+    <entry>Land@5</entry>
+    <entry>Fly@40</entry>
+  </collection>
+  <collection>
+    <name>Bat Swarm</name>
+    <entry>Land@5</entry>
+    <entry>Fly@40</entry>
+  </collection>
+  <collection>
+    <name>Bearded Devil (Barbazu)</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Bebilith</name>
+    <entry>Land@40</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Behir</name>
+    <entry>Land@40</entry>
+    <entry>Climb@15</entry>
+  </collection>
+  <collection>
+    <name>Beholder</name>
+    <entry>Land@5</entry>
+    <entry>Fly@20</entry>
+  </collection>
+  <collection>
+    <name>Belker</name>
+    <entry>Land@30</entry>
+    <entry>Fly@50</entry>
+  </collection>
+  <collection>
+    <name>Bison</name>
+    <entry>Land@40</entry>
+  </collection>
+	<collection>
+		<name>Llama</name>
+		<entry>Land@40</entry>
+	</collection>
+	<collection>
+		<name>Milk Cow</name>
+		<entry>Land@40</entry>
+	</collection>
+	<collection>
+		<name>Ox</name>
+		<entry>Land@40</entry>
+	</collection>
+	<collection>
+		<name>Goat</name>
+		<entry>Land@40</entry>
+	</collection>
+	<collection>
+		<name>Sheep</name>
+		<entry>Land@40</entry>
+	</collection>
+  <collection>
+    <name>Black Bear</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Adult</name>
+    <entry>Land@60</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Ancient</name>
+    <entry>Land@60</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Great Wyrm</name>
+    <entry>Land@60</entry>
+    <entry>Fly@200</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Juvenile</name>
+    <entry>Land@60</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Mature Adult</name>
+    <entry>Land@60</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Old</name>
+    <entry>Land@60</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Very Old</name>
+    <entry>Land@60</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Very Young</name>
+    <entry>Land@60</entry>
+    <entry>Fly@100</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Wyrm</name>
+    <entry>Land@60</entry>
+    <entry>Fly@200</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Wyrmling</name>
+    <entry>Land@60</entry>
+    <entry>Fly@100</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Young Adult</name>
+    <entry>Land@60</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Black Dragon, Young</name>
+    <entry>Land@60</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Black Pudding</name>
+    <entry>Land@20</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Blink Dog</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Adult</name>
+    <entry>Land@40</entry>
+    <entry>Burrow@20</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Ancient</name>
+    <entry>Land@40</entry>
+    <entry>Burrow@20</entry>
+    <entry>Fly@200</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Great Wyrm</name>
+    <entry>Land@40</entry>
+    <entry>Burrow@20</entry>
+    <entry>Fly@200</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Juvenile</name>
+    <entry>Land@40</entry>
+    <entry>Burrow@20</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Mature Adult</name>
+    <entry>Land@40</entry>
+    <entry>Burrow@20</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Old</name>
+    <entry>Land@40</entry>
+    <entry>Burrow@20</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very Old</name>
+    <entry>Land@40</entry>
+    <entry>Burrow@20</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Very Young</name>
+    <entry>Land@40</entry>
+    <entry>Burrow@20</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Wyrm</name>
+    <entry>Land@40</entry>
+    <entry>Burrow@20</entry>
+    <entry>Fly@200</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Wyrmling</name>
+    <entry>Land@40</entry>
+    <entry>Burrow@20</entry>
+    <entry>Fly@100</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Young Adult</name>
+    <entry>Land@40</entry>
+    <entry>Burrow@20</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Blue Dragon, Young</name>
+    <entry>Land@40</entry>
+    <entry>Burrow@20</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Blue Slaad</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Boar</name>
+    <entry>Land@40</entry>
+  </collection>
+	<collection>
+		<name>Pig</name>
+		<entry>Land@40</entry>
+	</collection>
+  <collection>
+    <name>Bodak</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Bone Devil (Osyluth)</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Bralani</name>
+    <entry>Land@40</entry>
+    <entry>Fly@100</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Adult</name>
+    <entry>Land@60</entry>
+    <entry>Fly@200</entry>
+    <entry>Burrow@30</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Ancient</name>
+    <entry>Land@60</entry>
+    <entry>Burrow@30</entry>
+    <entry>Fly@200</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Great Wyrm</name>
+    <entry>Land@60</entry>
+    <entry>Burrow@30</entry>
+    <entry>Fly@250</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Juvenile</name>
+    <entry>Land@60</entry>
+    <entry>Burrow@30</entry>
+    <entry>Fly@200</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Mature Adult</name>
+    <entry>Land@60</entry>
+    <entry>Burrow@30</entry>
+    <entry>Fly@200</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Old</name>
+    <entry>Land@60</entry>
+    <entry>Burrow@30</entry>
+    <entry>Fly@200</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very Old</name>
+    <entry>Land@60</entry>
+    <entry>Burrow@30</entry>
+    <entry>Fly@200</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Very Young</name>
+    <entry>Land@60</entry>
+    <entry>Burrow@30</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Wyrm</name>
+    <entry>Land@60</entry>
+    <entry>Burrow@30</entry>
+    <entry>Fly@250</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Wyrmling</name>
+    <entry>Land@60</entry>
+    <entry>Burrow@30</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Young Adult</name>
+    <entry>Land@60</entry>
+    <entry>Burrow@30</entry>
+    <entry>Fly@200</entry>
+  </collection>
+  <collection>
+    <name>Brass Dragon, Young</name>
+    <entry>Land@60</entry>
+    <entry>Burrow@30</entry>
+    <entry>Fly@200</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Adult</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Ancient</name>
+    <entry>Land@40</entry>
+    <entry>Fly@200</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Great Wyrm</name>
+    <entry>Land@40</entry>
+    <entry>Fly@200</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Juvenile</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Mature Adult</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Old</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very Old</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Very Young</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Wyrm</name>
+    <entry>Land@40</entry>
+    <entry>Fly@200</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Wyrmling</name>
+    <entry>Land@40</entry>
+    <entry>Fly@100</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young Adult</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Bronze Dragon, Young</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Brown Bear</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Bugbear</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Bulette</name>
+    <entry>Land@40</entry>
+    <entry>Burrow@10</entry>
+  </collection>
+  <collection>
+    <name>Cachalot Whale</name>
+    <entry>Swim@40</entry>
+  </collection>
+  <collection>
+    <name>Camel, Bactrian (Two-Humped)</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Camel, Dromedary (One-Humped)</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Carrion Crawler</name>
+    <entry>Land@30</entry>
+    <entry>Climb@15</entry>
+  </collection>
+  <collection>
+    <name>Cat</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Centaur</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Centipede Swarm</name>
+    <entry>Land@20</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Chaos Beast</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Chain Devil (Kyton)</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Cheetah</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Black Dragon head)</name>
+    <entry>Land@30</entry>
+    <entry>Fly@50</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Blue Dragon head)</name>
+    <entry>Land@30</entry>
+    <entry>Fly@50</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Green Dragon head)</name>
+    <entry>Land@30</entry>
+    <entry>Fly@50</entry>
+  </collection>
+  <collection>
+    <name>Chimera (Red Dragon head)</name>
+    <entry>Land@30</entry>
+    <entry>Fly@50</entry>
+  </collection>
+  <collection>
+    <name>Chimera (White Dragon head)</name>
+    <entry>Land@30</entry>
+    <entry>Fly@50</entry>
+  </collection>
+  <collection>
+    <name>Choker</name>
+    <entry>Land@20</entry>
+    <entry>Climb@10</entry>
+  </collection>
+  <collection>
+    <name>Chuul</name>
+    <entry>Land@30</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Clay Golem</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Cloaker</name>
+    <entry>Land@10</entry>
+    <entry>Fly@40</entry>
+  </collection>
+  <collection>
+    <name>Cloud Giant</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Cockatrice</name>
+    <entry>Land@20</entry>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Constrictor Snake</name>
+    <entry>Land@20</entry>
+    <entry>Climb@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Adult</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Ancient</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Great Wyrm</name>
+    <entry>Land@40</entry>
+    <entry>Fly@200</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Juvenile</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Mature Adult</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Old</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very Old</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Very Young</name>
+    <entry>Land@40</entry>
+    <entry>Fly@100</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Wyrm</name>
+    <entry>Land@40</entry>
+    <entry>Fly@200</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Wyrmling</name>
+    <entry>Land@40</entry>
+    <entry>Fly@100</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Young Adult</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Copper Dragon, Young</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Couatl</name>
+    <entry>Land@20</entry>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Criosphinx</name>
+    <entry>Land@30</entry>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Crocodile</name>
+    <entry>Land@20</entry>
+    <entry>Swim@30</entry>
+  </collection>
+  <collection>
+    <name>Dark Naga</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Darkmantle</name>
+    <entry>Land@20</entry>
+    <entry>Fly@30</entry>
+  </collection>
+  <collection>
+    <name>Death Slaad</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Deep Halfling</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Deep Dwarf</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Deinonychus</name>
+    <entry>Land@60</entry>
+  </collection>
+  <collection>
+    <name>Delver</name>
+    <entry>Land@30</entry>
+    <entry>Burrow@10</entry>
+  </collection>
+  <collection>
+    <name>Derro</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Derro (Sane)</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Destrachan</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Devourer</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Digester</name>
+    <entry>Land@60</entry>
+  </collection>
+  <collection>
+    <name>Dire Ape</name>
+    <entry>Land@30</entry>
+    <entry>Climb@15</entry>
+  </collection>
+  <collection>
+    <name>Dire Badger</name>
+    <entry>Land@30</entry>
+    <entry>Burrow@10</entry>
+  </collection>
+  <collection>
+    <name>Dire Bat</name>
+    <entry>Land@20</entry>
+    <entry>Fly@40</entry>
+  </collection>
+  <collection>
+    <name>Dire Bear</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Dire Boar</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Dire Lion</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Dire Rat</name>
+    <entry>Land@40</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Dire Shark</name>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Dire Tiger</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Dire Weasel</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Dire Wolf</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Dire Wolverine</name>
+    <entry>Land@30</entry>
+    <entry>Climb@10</entry>
+  </collection>
+  <collection>
+    <name>Displacer Beast</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Displacer Beast Pack Lord</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Djinni</name>
+    <entry>Land@20</entry>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Dog</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Dog, Riding</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Donkey</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Doppelganger</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Dragon Turtle</name>
+    <entry>Land@20</entry>
+    <entry>Swim@30</entry>
+  </collection>
+  <collection>
+    <name>Dragonne</name>
+    <entry>Land@40</entry>
+    <entry>Fly@30</entry>
+  </collection>
+  <collection>
+    <name>Dread Wraith</name>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Dretch</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Drider</name>
+    <entry>Land@30</entry>
+    <entry>Climb@15</entry>
+  </collection>
+  <collection>
+    <name>Drow</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Dryad</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Duergar</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Dust Mephit</name>
+    <entry>Land@30</entry>
+    <entry>Fly@50</entry>
+  </collection>
+  <collection>
+    <name>Eagle</name>
+    <entry>Land@10</entry>
+    <entry>Fly@80</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Elder</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Greater</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Huge</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Large</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Medium</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Earth Elemental, Small</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Earth Mephit</name>
+    <entry>Land@30</entry>
+    <entry>Fly@40</entry>
+  </collection>
+  <collection>
+    <name>Efreeti</name>
+    <entry>Land@20</entry>
+    <entry>Fly@40</entry>
+  </collection>
+  <collection>
+    <name>Eight-Headed Cryohydra</name>
+    <entry>Land@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Eight-Headed Hydra</name>
+    <entry>Land@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Eight-Headed Pyrohydra</name>
+    <entry>Land@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Elasmosaurus</name>
+    <entry>Land@20</entry>
+    <entry>Swim@50</entry>
+  </collection>
+  <collection>
+    <name>Elder Arrowhawk</name>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Elder Black Pudding</name>
+    <entry>Land@20</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Elder Tojanida</name>
+    <entry>Land@10</entry>
+    <entry>Swim@90</entry>
+  </collection>
+  <collection>
+    <name>Elder Xorn</name>
+    <entry>Land@20</entry>
+    <entry>Burrow@20</entry>
+  </collection>
+  <collection>
+    <name>Elephant</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Eleven-Headed Cryohydra</name>
+    <entry>Land@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Eleven-Headed Hydra</name>
+    <entry>Land@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Eleven-Headed Pyrohydra</name>
+    <entry>Land@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Erinyes</name>
+    <entry>Land@30</entry>
+    <entry>Fly@50</entry>
+  </collection>
+  <collection>
+    <name>Ethereal Filcher</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Ethereal Marauder</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Ettercap</name>
+    <entry>Land@30</entry>
+    <entry>Climb@30</entry>
+  </collection>
+  <collection>
+    <name>Ettin</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Elder</name>
+    <entry>Land@60</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Greater</name>
+    <entry>Land@60</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Huge</name>
+    <entry>Land@60</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Large</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Medium</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Fire Elemental, Small</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Fire Giant</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Fire Mephit</name>
+    <entry>Land@30</entry>
+    <entry>Fly@40</entry>
+  </collection>
+  <collection>
+    <name>Five-Headed Cryohydra</name>
+    <entry>Land@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Five-Headed Hydra</name>
+    <entry>Land@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Five-Headed Pyrohydra</name>
+    <entry>Land@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Flamebrother Salamander</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Flesh Golem</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Forest Gnome</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Formian Myrmarch</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Formian Queen</name>
+    <entry>Land@0</entry>
+  </collection>
+  <collection>
+    <name>Formian Taskmaster</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Formian Warrior</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Formian Worker</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Frost Giant</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Frost Worm</name>
+    <entry>Land@30</entry>
+    <entry>Burrow@10</entry>
+  </collection>
+  <collection>
+    <name>Gargoyle</name>
+    <entry>Land@40</entry>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Gauth (Lesser Beholder)</name>
+    <entry>Land@5</entry>
+    <entry>Fly@20</entry>
+  </collection>
+  <collection>
+    <name>Gelatinous Cube</name>
+    <entry>Land@15</entry>
+  </collection>
+  <collection>
+    <name>Ghaele</name>
+    <entry>Land@50</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Ghast</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Ghoul</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Giant Ant, Queen</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Giant Ant, Soldier</name>
+    <entry>Land@50</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Giant Ant, Worker</name>
+    <entry>Land@50</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Giant Bee</name>
+    <entry>Land@20</entry>
+    <entry>Fly@80</entry>
+  </collection>
+  <collection>
+    <name>Giant Bombardier Beetle</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Giant Constrictor Snake</name>
+    <entry>Land@20</entry>
+    <entry>Climb@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Giant Crocodile</name>
+    <entry>Land@20</entry>
+    <entry>Swim@30</entry>
+  </collection>
+  <collection>
+    <name>Giant Eagle</name>
+    <entry>Land@10</entry>
+    <entry>Fly@80</entry>
+  </collection>
+  <collection>
+    <name>Giant Fire Beetle</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Giant Octopus</name>
+    <entry>Land@20</entry>
+    <entry>Swim@30</entry>
+  </collection>
+  <collection>
+    <name>Giant Owl</name>
+    <entry>Land@10</entry>
+    <entry>Fly@70</entry>
+  </collection>
+  <collection>
+    <name>Giant Praying Mantis</name>
+    <entry>Land@20</entry>
+    <entry>Fly@40</entry>
+  </collection>
+  <collection>
+    <name>Giant Squid</name>
+    <entry>Swim@80</entry>
+  </collection>
+  <collection>
+    <name>Giant Stag Beetle</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Giant Wasp</name>
+    <entry>Land@20</entry>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Gibbering Mouther</name>
+    <entry>Land@10</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Girallon</name>
+    <entry>Land@40</entry>
+    <entry>Climb@40</entry>
+  </collection>
+  <collection>
+    <name>Githyanki</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Githzerai</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Glabrezu</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Gnoll</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Goblin</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Adult</name>
+    <entry>Land@60</entry>
+    <entry>Fly@200</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Ancient</name>
+    <entry>Land@60</entry>
+    <entry>Fly@250</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Great Wyrm</name>
+    <entry>Land@60</entry>
+    <entry>Fly@250</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Juvenile</name>
+    <entry>Land@60</entry>
+    <entry>Fly@200</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Mature Adult</name>
+    <entry>Land@60</entry>
+    <entry>Fly@200</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Old</name>
+    <entry>Land@60</entry>
+    <entry>Fly@250</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very Old</name>
+    <entry>Land@60</entry>
+    <entry>Fly@250</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Very Young</name>
+    <entry>Land@60</entry>
+    <entry>Fly@200</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Wyrm</name>
+    <entry>Land@60</entry>
+    <entry>Fly@250</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Wyrmling</name>
+    <entry>Land@60</entry>
+    <entry>Fly@200</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young Adult</name>
+    <entry>Land@60</entry>
+    <entry>Fly@200</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Gold Dragon, Young</name>
+    <entry>Land@60</entry>
+    <entry>Fly@200</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Gorgon</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Gray Elf</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Gray Ooze</name>
+    <entry>Land@10</entry>
+  </collection>
+  <collection>
+    <name>Gray Render</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Gray Slaad</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Greater Barghest</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Greater Shadow</name>
+    <entry>Fly@40</entry>
+  </collection>
+  <collection>
+    <name>Greater Stone Golem</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Adult</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@40</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Ancient</name>
+    <entry>Land@40</entry>
+    <entry>Fly@200</entry>
+    <entry>Swim@40</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Great Wyrm</name>
+    <entry>Land@40</entry>
+    <entry>Fly@200</entry>
+    <entry>Swim@40</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Juvenile</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@40</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Mature Adult</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@40</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Old</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@40</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very Old</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@40</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Very Young</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@40</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Wyrm</name>
+    <entry>Land@40</entry>
+    <entry>Fly@200</entry>
+    <entry>Swim@40</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Wyrmling</name>
+    <entry>Land@40</entry>
+    <entry>Fly@100</entry>
+    <entry>Swim@40</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Young Adult</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@40</entry>
+  </collection>
+  <collection>
+    <name>Green Dragon, Young</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@40</entry>
+  </collection>
+  <collection>
+    <name>Green Hag</name>
+    <entry>Land@30</entry>
+    <entry>Swim@30</entry>
+  </collection>
+  <collection>
+    <name>Green Slaad</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Grick</name>
+    <entry>Land@30</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Griffon</name>
+    <entry>Land@30</entry>
+    <entry>Fly@80</entry>
+  </collection>
+  <collection>
+    <name>Grig</name>
+    <entry>Land@20</entry>
+    <entry>Fly@40</entry>
+  </collection>
+  <collection>
+    <name>Grig with fiddle</name>
+    <entry>Land@20</entry>
+    <entry>Fly@40</entry>
+  </collection>
+  <collection>
+    <name>Grimlock</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Guardian Naga</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Gynosphinx</name>
+    <entry>Land@40</entry>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Half-Elf</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Half-Orc</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Harpy</name>
+    <entry>Land@20</entry>
+    <entry>Fly@80</entry>
+  </collection>
+  <collection>
+    <name>Hawk</name>
+    <entry>Land@10</entry>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Heavy Horse</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Heavy Warhorse</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Hell Hound</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Hellcat (Bezekira)</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Hellwasp Swarm</name>
+    <entry>Land@5</entry>
+    <entry>Fly@40</entry>
+  </collection>
+  <collection>
+    <name>Hezrou</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Hieracosphinx</name>
+    <entry>Land@30</entry>
+    <entry>Fly@90</entry>
+  </collection>
+  <collection>
+    <name>High Elf</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Hill Dwarf</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Hill Giant</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Hippogriff</name>
+    <entry>Land@50</entry>
+    <entry>Fly@100</entry>
+  </collection>
+  <collection>
+    <name>Hobgoblin</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Homunculus</name>
+    <entry>Land@20</entry>
+    <entry>Fly@50</entry>
+  </collection>
+  <collection>
+    <name>Horned Devil (Cornugon)</name>
+    <entry>Land@20</entry>
+    <entry>Fly@50</entry>
+  </collection>
+  <collection>
+    <name>Hound Archon</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Howler</name>
+    <entry>Land@60</entry>
+  </collection>
+  <collection>
+    <name>Human</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Hyena</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Ice Devil (Gelugon)</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Ice Mephit</name>
+    <entry>Land@30</entry>
+    <entry>Fly@50</entry>
+  </collection>
+  <collection>
+    <name>Imp</name>
+    <entry>Land@20</entry>
+    <entry>Fly@50</entry>
+  </collection>
+  <collection>
+    <name>Invisible Stalker</name>
+    <entry>Land@30</entry>
+    <entry>Fly@30</entry>
+  </collection>
+  <collection>
+    <name>Iron Golem</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Janni</name>
+    <entry>Land@30</entry>
+    <entry>Fly@20</entry>
+  </collection>
+  <collection>
+    <name>Juvenile Arrowhawk</name>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Juvenile Tojanida</name>
+    <entry>Land@10</entry>
+    <entry>Swim@90</entry>
+  </collection>
+  <collection>
+    <name>Kapoacinth</name>
+    <entry>Land@40</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Kobold</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Kolyarut</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Kraken</name>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Krenshar</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Kuo-toa</name>
+    <entry>Land@20</entry>
+    <entry>Swim@50</entry>
+  </collection>
+  <collection>
+    <name>Lacedon</name>
+    <entry>Land@30</entry>
+    <entry>Swim@30</entry>
+  </collection>
+  <collection>
+    <name>Lamia</name>
+    <entry>Land@60</entry>
+  </collection>
+  <collection>
+    <name>Lammasu</name>
+    <entry>Land@30</entry>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Lantern Archon</name>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Lemure</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Leonal</name>
+    <entry>Land@60</entry>
+  </collection>
+  <collection>
+    <name>Leopard</name>
+    <entry>Land@40</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Light Horse</name>
+    <entry>Land@60</entry>
+  </collection>
+  <collection>
+    <name>Light Warhorse</name>
+    <entry>Land@60</entry>
+  </collection>
+  <collection>
+    <name>Lightfoot Halfling</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Lillend</name>
+    <entry>Land@20</entry>
+    <entry>Fly@70</entry>
+  </collection>
+  <collection>
+    <name>Lion</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Lizard</name>
+    <entry>Land@20</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Lizardfolk</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Locathah</name>
+    <entry>Land@10</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Locust Swarm</name>
+    <entry>Land@10</entry>
+    <entry>Fly@30</entry>
+  </collection>
+  <collection>
+    <name>Magma Mephit</name>
+    <entry>Land@30</entry>
+    <entry>Fly@50</entry>
+  </collection>
+  <collection>
+    <name>Magmin</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Manta Ray</name>
+    <entry>Swim@30</entry>
+  </collection>
+  <collection>
+    <name>Manticore</name>
+    <entry>Land@30</entry>
+    <entry>Fly@50</entry>
+  </collection>
+  <collection>
+    <name>Marilith</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Marut</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Medusa</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Megaraptor</name>
+    <entry>Land@60</entry>
+  </collection>
+  <collection>
+    <name>Merfolk</name>
+    <entry>Land@5</entry>
+    <entry>Swim@50</entry>
+  </collection>
+  <collection>
+    <name>Merrow</name>
+    <entry>Land@30</entry>
+    <entry>Swim@40</entry>
+  </collection>
+  <collection>
+    <name>Mimic</name>
+    <entry>Land@10</entry>
+  </collection>
+  <collection>
+    <name>Mind Flayer (Illithid)</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Minor Xorn</name>
+    <entry>Land@20</entry>
+    <entry>Burrow@20</entry>
+  </collection>
+  <collection>
+    <name>Minotaur</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Mohrg</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Monitor Lizard</name>
+    <entry>Land@30</entry>
+    <entry>Swim@30</entry>
+  </collection>
+  <collection>
+    <name>Monkey</name>
+    <entry>Land@30</entry>
+    <entry>Climb@30</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Colossal</name>
+    <entry>Land@40</entry>
+    <entry>Climb@40</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Gargantuan</name>
+    <entry>Land@40</entry>
+    <entry>Climb@40</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Huge</name>
+    <entry>Land@40</entry>
+    <entry>Climb@40</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Large</name>
+    <entry>Land@40</entry>
+    <entry>Climb@40</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Medium</name>
+    <entry>Land@40</entry>
+    <entry>Climb@40</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Small</name>
+    <entry>Land@30</entry>
+    <entry>Climb@30</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Centipede, Tiny</name>
+    <entry>Land@20</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Colossal</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Gargantuan</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Huge</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Large</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Medium</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Small</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Scorpion, Tiny</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Colossal</name>
+    <entry>Land@40</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Gargantuan</name>
+    <entry>Land@40</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Huge</name>
+    <entry>Land@40</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Large</name>
+    <entry>Land@40</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Medium</name>
+    <entry>Land@40</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Small</name>
+    <entry>Land@40</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Hunter, Tiny</name>
+    <entry>Land@30</entry>
+    <entry>Climb@10</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Colossal</name>
+    <entry>Land@30</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Gargantuan</name>
+    <entry>Land@30</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Huge</name>
+    <entry>Land@30</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Large</name>
+    <entry>Land@30</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Medium</name>
+    <entry>Land@30</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Small</name>
+    <entry>Land@30</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Monstrous Spider, Web-Spinner, Tiny</name>
+    <entry>Land@20</entry>
+    <entry>Climb@10</entry>
+  </collection>
+  <collection>
+    <name>Mountain Dwarf</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Mule</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Mummy</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Nalfeshnee</name>
+    <entry>Land@30</entry>
+    <entry>Fly@40</entry>
+  </collection>
+  <collection>
+    <name>Nessian Warhound</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Night Hag</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Nightcrawler</name>
+    <entry>Land@30</entry>
+    <entry>Burrow@60</entry>
+  </collection>
+  <collection>
+    <name>Nightmare</name>
+    <entry>Land@40</entry>
+    <entry>Fly@90</entry>
+  </collection>
+  <collection>
+    <name>Nightmare, Cauchemar</name>
+    <entry>Land@40</entry>
+    <entry>Fly@90</entry>
+  </collection>
+  <collection>
+    <name>Nightwalker</name>
+    <entry>Land@40</entry>
+    <entry>Fly@20</entry>
+  </collection>
+  <collection>
+    <name>Nightwing</name>
+    <entry>Land@20</entry>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Nine-Headed Cryohydra</name>
+    <entry>Land@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Nine-Headed Hydra</name>
+    <entry>Land@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Nine-Headed Pyrohydra</name>
+    <entry>Land@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Nixie</name>
+    <entry>Land@20</entry>
+    <entry>Swim@30</entry>
+  </collection>
+  <collection>
+    <name>Noble Djinni</name>
+    <entry>Land@20</entry>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Noble Salamander</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Nymph</name>
+    <entry>Land@30</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Ochre Jelly</name>
+    <entry>Land@10</entry>
+    <entry>Climb@10</entry>
+  </collection>
+  <collection>
+    <name>Octopus</name>
+    <entry>Land@20</entry>
+    <entry>Swim@30</entry>
+  </collection>
+  <collection>
+    <name>Ogre Mage</name>
+    <entry>Land@40</entry>
+    <entry>Fly@40</entry>
+  </collection>
+  <collection>
+    <name>Ogre</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Ooze Mephit</name>
+    <entry>Land@30</entry>
+    <entry>Fly@40</entry>
+    <entry>Swim@30</entry>
+  </collection>
+  <collection>
+    <name>Orc</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Orca Whale</name>
+    <entry>Swim@50</entry>
+  </collection>
+  <collection>
+    <name>Otyugh</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Owl</name>
+    <entry>Land@10</entry>
+    <entry>Fly@40</entry>
+  </collection>
+  <collection>
+    <name>Owlbear</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Pegasus</name>
+    <entry>Land@60</entry>
+    <entry>Fly@120</entry>
+  </collection>
+  <collection>
+    <name>Phantom Fungus</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Phase Spider</name>
+    <entry>Land@40</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Phasm</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Pit Fiend</name>
+    <entry>Land@40</entry>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Pixie</name>
+    <entry>Land@20</entry>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Pixie with Irresistible dance</name>
+    <entry>Land@20</entry>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Polar Bear</name>
+    <entry>Land@40</entry>
+    <entry>Swim@30</entry>
+  </collection>
+  <collection>
+    <name>Pony</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Porpoise</name>
+    <entry>Swim@80</entry>
+  </collection>
+  <collection>
+    <name>Pseudodragon</name>
+    <entry>Land@15</entry>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Purple Worm</name>
+    <entry>Land@20</entry>
+    <entry>Burrow@20</entry>
+    <entry>Swim@10</entry>
+  </collection>
+  <collection>
+    <name>Quasit</name>
+    <entry>Land@20</entry>
+    <entry>Fly@50</entry>
+  </collection>
+  <collection>
+    <name>Rakshasa</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Rast</name>
+    <entry>Land@5</entry>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Rat</name>
+    <entry>Land@15</entry>
+    <entry>Climb@15</entry>
+    <entry>Swim@15</entry>
+  </collection>
+  <collection>
+    <name>Rat Swarm</name>
+    <entry>Land@15</entry>
+    <entry>Climb@15</entry>
+  </collection>
+  <collection>
+    <name>Raven</name>
+    <entry>Land@10</entry>
+    <entry>Fly@40</entry>
+  </collection>
+	<collection>
+		<name>Chicken</name>
+		<entry>Land@10</entry>
+		<entry>Fly@10</entry>
+	</collection>
+	<collection>
+		<name>Peacock</name>
+		<entry>Land@10</entry>
+		<entry>Fly@10</entry>
+	</collection>
+	<collection>
+		<name>Turkey</name>
+		<entry>Land@10</entry>
+		<entry>Fly@10</entry>
+	</collection>
+	<collection>
+		<name>Pheasant</name>
+		<entry>Land@10</entry>
+		<entry>Fly@40</entry>
+	</collection>
+  <collection>
+    <name>Ravid</name>
+    <entry>Land@20</entry>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Razor Boar</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Adult</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Ancient</name>
+    <entry>Land@40</entry>
+    <entry>Fly@200</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Great Wyrm</name>
+    <entry>Land@40</entry>
+    <entry>Fly@200</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Juvenile</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Mature Adult</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Old</name>
+    <entry>Land@40</entry>
+    <entry>Fly@200</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very Old</name>
+    <entry>Land@40</entry>
+    <entry>Fly@200</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Very Young</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Wyrm</name>
+    <entry>Land@40</entry>
+    <entry>Fly@200</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Wyrmling</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Young Adult</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Red Dragon, Young</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Red Slaad</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Remorhaz</name>
+    <entry>Land@30</entry>
+    <entry>Burrow@20</entry>
+  </collection>
+  <collection>
+    <name>Retriever</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Rhinoceras</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Roc</name>
+    <entry>Land@20</entry>
+    <entry>Fly@80</entry>
+  </collection>
+  <collection>
+    <name>Rock Gnome</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Roper</name>
+    <entry>Land@10</entry>
+  </collection>
+  <collection>
+    <name>Rust Monster</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Sahuagin</name>
+    <entry>Land@30</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Sahuagin Mutant</name>
+    <entry>Land@30</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Malenti</name>
+    <entry>Land@30</entry>
+    <entry>Swim@40</entry>
+  </collection>
+  <collection>
+    <name>Salt Mephit</name>
+    <entry>Land@30</entry>
+    <entry>Fly@40</entry>
+  </collection>
+  <collection>
+    <name>Satyr</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Satyr with pipes</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Scorpionfolk</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Scrag</name>
+    <entry>Land@20</entry>
+    <entry>Swim@40</entry>
+  </collection>
+  <collection>
+    <name>Sea Cat</name>
+    <entry>Land@10</entry>
+    <entry>Swim@40</entry>
+  </collection>
+  <collection>
+    <name>Sea Hag</name>
+    <entry>Land@30</entry>
+    <entry>Swim@40</entry>
+  </collection>
+  <collection>
+    <name>Seven-Headed Cryohydra</name>
+    <entry>Land@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Seven-Headed Hydra</name>
+    <entry>Land@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Seven-Headed Pyrohydra</name>
+    <entry>Land@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Shadow</name>
+    <entry>Fly@40</entry>
+  </collection>
+  <collection>
+    <name>Shadow Mastiff</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Shambling Mound</name>
+    <entry>Land@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Shark, Huge</name>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Shark, Large</name>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Shark, Medium</name>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Shield Guardian</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Shocker Lizard</name>
+    <entry>Land@40</entry>
+    <entry>Climb@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Shrieker</name>
+    <entry>Land@0</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Adult</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Ancient</name>
+    <entry>Land@40</entry>
+    <entry>Fly@200</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Great Wyrm</name>
+    <entry>Land@40</entry>
+    <entry>Fly@200</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Juvenile</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Mature Adult</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Old</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very Old</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Very Young</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Wyrm</name>
+    <entry>Land@40</entry>
+    <entry>Fly@200</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Wyrmling</name>
+    <entry>Land@40</entry>
+    <entry>Fly@100</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young Adult</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Silver Dragon, Young</name>
+    <entry>Land@40</entry>
+    <entry>Fly@150</entry>
+  </collection>
+  <collection>
+    <name>Six-Headed Cryohydra</name>
+    <entry>Land@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Six-Headed Hydra</name>
+    <entry>Land@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Six-Headed Pyrohydra</name>
+    <entry>Land@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Skum</name>
+    <entry>Land@20</entry>
+    <entry>Swim@40</entry>
+  </collection>
+  <collection>
+    <name>Spectre</name>
+    <entry>Land@40</entry>
+    <entry>Fly@80</entry>
+  </collection>
+  <collection>
+    <name>Spider Eater</name>
+    <entry>Land@30</entry>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Spider Swarm</name>
+    <entry>Land@20</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>Spirit Naga</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Squid</name>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Steam Mephit</name>
+    <entry>Land@30</entry>
+    <entry>Fly@50</entry>
+  </collection>
+  <collection>
+    <name>Stirge</name>
+    <entry>Land@10</entry>
+    <entry>Fly@40</entry>
+  </collection>
+  <collection>
+    <name>Stone Giant</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Stone Giant Elder</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Stone Golem</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Storm Giant</name>
+    <entry>Land@50</entry>
+    <entry>Swim@40</entry>
+  </collection>
+  <collection>
+    <name>Succubus</name>
+    <entry>Land@30</entry>
+    <entry>Fly@50</entry>
+  </collection>
+  <collection>
+    <name>Svirfneblin</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Tallfellow Halfling</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Tarrasque</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Ten-Headed Cryohydra</name>
+    <entry>Land@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Ten-Headed Hydra</name>
+    <entry>Land@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Ten-Headed Pyrohydra</name>
+    <entry>Land@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Tendriculos</name>
+    <entry>Land@20</entry>
+  </collection>
+  <collection>
+    <name>Thoqqua</name>
+    <entry>Land@30</entry>
+    <entry>Burrow@20</entry>
+  </collection>
+  <collection>
+    <name>Tiefling</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Tiger</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Titan</name>
+    <entry>Land@60</entry>
+  </collection>
+  <collection>
+    <name>Toad</name>
+    <entry>Land@5</entry>
+  </collection>
+  <collection>
+    <name>Treant</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Triceratops</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Triton</name>
+    <entry>Land@5</entry>
+    <entry>Swim@40</entry>
+  </collection>
+  <collection>
+    <name>Troglodyte</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Troll</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Truly Horrid Umber Hulk</name>
+    <entry>Land@20</entry>
+    <entry>Burrow@20</entry>
+  </collection>
+  <collection>
+    <name>Trumpet Archon</name>
+    <entry>Land@40</entry>
+    <entry>Fly@90</entry>
+  </collection>
+  <collection>
+    <name>Twelve-Headed Cryohydra</name>
+    <entry>Land@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Twelve-Headed Hydra</name>
+    <entry>Land@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Twelve-Headed Pyrohydra</name>
+    <entry>Land@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Tyrannosaurus</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Umber Hulk</name>
+    <entry>Land@20</entry>
+    <entry>Burrow@20</entry>
+  </collection>
+  <collection>
+    <name>Unicorn</name>
+    <entry>Land@60</entry>
+  </collection>
+  <collection>
+    <name>Vampire Spawn</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Vargouille</name>
+    <entry>Fly@30</entry>
+  </collection>
+  <collection>
+    <name>Violet Fungus</name>
+    <entry>Land@10</entry>
+  </collection>
+  <collection>
+    <name>Viper Snake, Huge</name>
+    <entry>Land@20</entry>
+    <entry>Climb@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Viper Snake, Large</name>
+    <entry>Land@20</entry>
+    <entry>Climb@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Viper Snake, Medium</name>
+    <entry>Land@20</entry>
+    <entry>Climb@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Viper Snake, Small</name>
+    <entry>Land@20</entry>
+    <entry>Climb@20</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Viper Snake, Tiny</name>
+    <entry>Land@15</entry>
+    <entry>Climb@15</entry>
+    <entry>Swim@15</entry>
+  </collection>
+  <collection>
+    <name>Vrock</name>
+    <entry>Land@30</entry>
+    <entry>Fly@50</entry>
+  </collection>
+  <collection>
+    <name>Warpony</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Elder</name>
+    <entry>Land@30</entry>
+    <entry>Swim@120</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Greater</name>
+    <entry>Land@30</entry>
+    <entry>Swim@120</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Huge</name>
+    <entry>Land@30</entry>
+    <entry>Swim@120</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Large</name>
+    <entry>Land@20</entry>
+    <entry>Swim@90</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Medium</name>
+    <entry>Land@20</entry>
+    <entry>Swim@90</entry>
+  </collection>
+  <collection>
+    <name>Water Elemental, Small</name>
+    <entry>Land@20</entry>
+    <entry>Swim@90</entry>
+  </collection>
+  <collection>
+    <name>Water Mephit</name>
+    <entry>Land@30</entry>
+    <entry>Fly@40</entry>
+    <entry>Swim@30</entry>
+  </collection>
+  <collection>
+    <name>Water Naga</name>
+    <entry>Land@30</entry>
+    <entry>Swim@50</entry>
+  </collection>
+  <collection>
+    <name>Weasel</name>
+    <entry>Land@20</entry>
+    <entry>Climb@20</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Adult</name>
+    <entry>Land@60</entry>
+    <entry>Burrow@30</entry>
+    <entry>Fly@200</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Ancient</name>
+    <entry>Land@60</entry>
+    <entry>Burrow@30</entry>
+    <entry>Fly@200</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Great Wyrm</name>
+    <entry>Land@60</entry>
+    <entry>Burrow@30</entry>
+    <entry>Fly@250</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Juvenile</name>
+    <entry>Land@60</entry>
+    <entry>Burrow@30</entry>
+    <entry>Fly@200</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Mature Adult</name>
+    <entry>Land@60</entry>
+    <entry>Burrow@30</entry>
+    <entry>Fly@200</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Old</name>
+    <entry>Land@60</entry>
+    <entry>Burrow@30</entry>
+    <entry>Fly@200</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Very Old</name>
+    <entry>Land@60</entry>
+    <entry>Burrow@30</entry>
+    <entry>Fly@200</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Very Young</name>
+    <entry>Land@60</entry>
+    <entry>Burrow@30</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Wyrm</name>
+    <entry>Land@60</entry>
+    <entry>Burrow@30</entry>
+    <entry>Fly@250</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Wyrmling</name>
+    <entry>Land@60</entry>
+    <entry>Burrow@30</entry>
+    <entry>Fly@150</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Young Adult</name>
+    <entry>Land@60</entry>
+    <entry>Burrow@30</entry>
+    <entry>Fly@200</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>White Dragon, Young</name>
+    <entry>Land@60</entry>
+    <entry>Burrow@30</entry>
+    <entry>Fly@200</entry>
+    <entry>Swim@60</entry>
+  </collection>
+  <collection>
+    <name>Wight</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Wild Elf</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Will-O'-Wisp</name>
+    <entry>Fly@50</entry>
+  </collection>
+  <collection>
+    <name>Winter Wolf</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Wolf</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Wolverine</name>
+    <entry>Land@30</entry>
+    <entry>Burrow@10</entry>
+    <entry>Climb@10</entry>
+  </collection>
+  <collection>
+    <name>Wood Elf</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Worg</name>
+    <entry>Land@50</entry>
+  </collection>
+  <collection>
+    <name>Wraith</name>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Wyvern</name>
+    <entry>Land@20</entry>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Xill</name>
+    <entry>Land@40</entry>
+  </collection>
+  <collection>
+    <name>Yeth Hound</name>
+    <entry>Land@40</entry>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Yrthak</name>
+    <entry>Land@20</entry>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Abomination</name>
+    <entry>Land@30</entry>
+    <entry>Swim@20</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head)</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</name>
+    <entry>Land@30</entry>
+    <entry>Swim@15</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)</name>
+    <entry>Land@20</entry>
+    <entry>Climb@15</entry>
+    <entry>Swim@15</entry>
+  </collection>
+  <collection>
+    <name>Yuan-ti Pureblood</name>
+    <entry>Land@30</entry>
+  </collection>
+  <collection>
+    <name>Zelekhut</name>
+    <entry>Land@50</entry>
+    <entry>Fly@60</entry>
+  </collection>
+  <collection>
+    <name>Ghost</name>
+    <entry>Fly@30</entry>
+  </collection>
+  <collection>
+    <name>Celestial Creature</name>
+  </collection>
+  <collection>
+    <name>Fiendish Creature</name>
+  </collection>
+  <collection>
+    <name>Half-Celestial</name>
+    <entry>Fly@666</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Black)</name>
+    <entry>Fly@666</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Blue)</name>
+    <entry>Fly@666</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Green)</name>
+    <entry>Fly@666</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Red)</name>
+    <entry>Fly@666</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (White)</name>
+    <entry>Fly@666</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Brass)</name>
+    <entry>Fly@666</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Bronze)</name>
+    <entry>Fly@666</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Copper)</name>
+    <entry>Fly@666</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Gold)</name>
+    <entry>Fly@666</entry>
+  </collection>
+  <collection>
+    <name>Half-Dragon (Silver)</name>
+    <entry>Fly@666</entry>
+  </collection>
+  <collection>
+    <name>Half-Fiend</name>
+    <entry>Fly@666</entry>
+  </collection>
+  <collection>
+    <name>Lich</name>
+  </collection>
+  <collection>
+    <name>Skeleton</name>
+  </collection>
+  <collection>
+    <name>Zombie</name>
+  </collection>
+  <collection>
+    <name>Vampire</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Black Bear (Werebear, Afflicted)</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Black Bear (Werebear, Natural)</name>
+  </collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Brown Bear (Werebear, Natural)</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Polar Bear (Werebear, Natural)</name>
+	</collection>
+  <collection>
+    <name>Lycanthrope, Boar (Wereboar, Afflicted)</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Boar (Wereboar, Natural)</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Wolf (Werewolf, Afflicted)</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Wolf (Werewolf, Natural)</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Wolf (Dire Werewolf, Natural)</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Tiger (Weretiger, Afflicted)</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Tiger (Weretiger, Natural)</name>
+  </collection>
+	<collection>
+		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Afflicted)</name>
+	</collection>
+	<collection>
+		<name>Lycanthrope, Rat (Wererat, Natural)</name>
+	</collection>
+  <collection>
+    <name>Lycanthrope, Dire Rat (Wererat, Afflicted)</name>
+  </collection>
+  <collection>
+    <name>Lycanthrope, Dire Rat (Wererat, Natural)</name>
+  </collection>
+  <collection>
+    <name>None</name>
+  </collection>
+</collections>
