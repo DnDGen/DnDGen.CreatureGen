@@ -28,41 +28,48 @@
   </collection>
   <collection>
     <name>Adult Arrowhawk</name>
-    <entry>Fly@60</entry>
+    <entry>Adulthood@29d2-18</entry>
+	  <entry>Maximum@41</entry>
   </collection>
   <collection>
     <name>Adult Tojanida</name>
-    <entry>Land@10</entry>
-    <entry>Swim@90</entry>
+    <entry>Adulthood@6d10+20</entry>
+    <entry>Maximum@81</entry>
   </collection>
   <collection>
     <name>Air Elemental, Elder</name>
-    <entry>Fly@100</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Air Elemental, Greater</name>
-    <entry>Fly@100</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Air Elemental, Huge</name>
-    <entry>Fly@100</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Air Elemental, Large</name>
-    <entry>Fly@100</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Air Elemental, Medium</name>
-    <entry>Fly@100</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Air Elemental, Small</name>
-    <entry>Fly@100</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Air Mephit</name>
-    <entry>Land@30</entry>
-    <entry>Fly@60</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Allip</name>
@@ -756,8 +763,11 @@
   </collection>
   <collection>
     <name>Ankheg</name>
-    <entry>Land@30</entry>
-    <entry>Burrow@20</entry>
+    <entry>Adulthood@31d10-11</entry>
+    <entry>Middle Age@1d100+299</entry>
+    <entry>Old@1d100+399</entry>
+    <entry>Venerable@10d6+490</entry>
+    <entry>Maximum@7d8+494</entry>
   </collection>
   <collection>
     <name>Annis</name>
@@ -770,8 +780,11 @@
   </collection>
   <collection>
     <name>Aquatic Elf</name>
-    <entry>Land@30</entry>
-    <entry>Swim@40</entry>
+    <entry>Adulthood@59d2+41</entry>
+    <entry>Middle Age@59d2+101</entry>
+    <entry>Old@79d2+141</entry>
+    <entry>Venerable@60d6+240</entry>
+    <entry>Maximum@300+3d100</entry>
   </collection>
   <collection>
     <name>Aranea</name>
@@ -1581,8 +1594,8 @@
   </collection>
   <collection>
     <name>Dust Mephit</name>
-    <entry>Land@30</entry>
-    <entry>Fly@50</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Eagle</name>
@@ -1591,32 +1604,38 @@
   </collection>
   <collection>
     <name>Earth Elemental, Elder</name>
-    <entry>Land@30</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Greater</name>
-    <entry>Land@30</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Huge</name>
-    <entry>Land@30</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Large</name>
-    <entry>Land@20</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Medium</name>
-    <entry>Land@20</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Small</name>
-    <entry>Land@20</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Earth Mephit</name>
-    <entry>Land@30</entry>
-    <entry>Fly@40</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Efreeti</name>
@@ -1705,27 +1724,33 @@
   </collection>
   <collection>
     <name>Fire Elemental, Elder</name>
-    <entry>Land@60</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Greater</name>
-    <entry>Land@60</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Huge</name>
-    <entry>Land@60</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Large</name>
-    <entry>Land@50</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Medium</name>
-    <entry>Land@50</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Small</name>
-    <entry>Land@50</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Fire Giant</name>
@@ -1733,8 +1758,8 @@
   </collection>
   <collection>
     <name>Fire Mephit</name>
-    <entry>Land@30</entry>
-    <entry>Fly@40</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Five-Headed Cryohydra</name>
@@ -2239,8 +2264,8 @@
   </collection>
   <collection>
     <name>Ice Mephit</name>
-    <entry>Land@30</entry>
-    <entry>Fly@50</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Imp</name>
@@ -2369,8 +2394,8 @@
   </collection>
   <collection>
     <name>Magma Mephit</name>
-    <entry>Land@30</entry>
-    <entry>Fly@50</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Magmin</name>
@@ -2680,9 +2705,8 @@
   </collection>
   <collection>
     <name>Ooze Mephit</name>
-    <entry>Land@30</entry>
-    <entry>Fly@40</entry>
-    <entry>Swim@30</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Orc</name>
@@ -2932,8 +2956,8 @@
   </collection>
   <collection>
     <name>Salt Mephit</name>
-    <entry>Land@30</entry>
-    <entry>Fly@40</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Satyr</name>
@@ -3121,8 +3145,8 @@
   </collection>
   <collection>
     <name>Steam Mephit</name>
-    <entry>Land@30</entry>
-    <entry>Fly@50</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Stirge</name>
@@ -3315,39 +3339,38 @@
   </collection>
   <collection>
     <name>Water Elemental, Elder</name>
-    <entry>Land@30</entry>
-    <entry>Swim@120</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Water Elemental, Greater</name>
-    <entry>Land@30</entry>
-    <entry>Swim@120</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Water Elemental, Huge</name>
-    <entry>Land@30</entry>
-    <entry>Swim@120</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Water Elemental, Large</name>
-    <entry>Land@20</entry>
-    <entry>Swim@90</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Water Elemental, Medium</name>
-    <entry>Land@20</entry>
-    <entry>Swim@90</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Water Elemental, Small</name>
-    <entry>Land@20</entry>
-    <entry>Swim@90</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Water Mephit</name>
-    <entry>Land@30</entry>
-    <entry>Fly@40</entry>
-    <entry>Swim@30</entry>
+    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Water Naga</name>
@@ -3532,150 +3555,5 @@
     <name>Zelekhut</name>
     <entry>Land@50</entry>
     <entry>Fly@60</entry>
-  </collection>
-  <collection>
-    <name>Ghost</name>
-    <entry>Fly@30</entry>
-  </collection>
-  <collection>
-    <name>Celestial Creature</name>
-  </collection>
-  <collection>
-    <name>Fiendish Creature</name>
-  </collection>
-  <collection>
-    <name>Half-Celestial</name>
-    <entry>Fly@666</entry>
-  </collection>
-  <collection>
-    <name>Half-Dragon (Black)</name>
-    <entry>Fly@666</entry>
-  </collection>
-  <collection>
-    <name>Half-Dragon (Blue)</name>
-    <entry>Fly@666</entry>
-  </collection>
-  <collection>
-    <name>Half-Dragon (Green)</name>
-    <entry>Fly@666</entry>
-  </collection>
-  <collection>
-    <name>Half-Dragon (Red)</name>
-    <entry>Fly@666</entry>
-  </collection>
-  <collection>
-    <name>Half-Dragon (White)</name>
-    <entry>Fly@666</entry>
-  </collection>
-  <collection>
-    <name>Half-Dragon (Brass)</name>
-    <entry>Fly@666</entry>
-  </collection>
-  <collection>
-    <name>Half-Dragon (Bronze)</name>
-    <entry>Fly@666</entry>
-  </collection>
-  <collection>
-    <name>Half-Dragon (Copper)</name>
-    <entry>Fly@666</entry>
-  </collection>
-  <collection>
-    <name>Half-Dragon (Gold)</name>
-    <entry>Fly@666</entry>
-  </collection>
-  <collection>
-    <name>Half-Dragon (Silver)</name>
-    <entry>Fly@666</entry>
-  </collection>
-  <collection>
-    <name>Half-Fiend</name>
-    <entry>Fly@666</entry>
-  </collection>
-  <collection>
-    <name>Lich</name>
-  </collection>
-  <collection>
-    <name>Skeleton</name>
-  </collection>
-  <collection>
-    <name>Zombie</name>
-  </collection>
-  <collection>
-    <name>Vampire</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Black Bear (Werebear, Afflicted)</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Black Bear (Werebear, Natural)</name>
-  </collection>
-	<collection>
-		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)</name>
-	</collection>
-	<collection>
-		<name>Lycanthrope, Brown Bear (Werebear, Natural)</name>
-	</collection>
-	<collection>
-		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)</name>
-	</collection>
-	<collection>
-		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)</name>
-	</collection>
-	<collection>
-		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)</name>
-	</collection>
-	<collection>
-		<name>Lycanthrope, Polar Bear (Werebear, Natural)</name>
-	</collection>
-  <collection>
-    <name>Lycanthrope, Boar (Wereboar, Afflicted)</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Boar (Wereboar, Natural)</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Wolf (Werewolf, Afflicted)</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Wolf (Werewolf, Natural)</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Dire Wolf (Dire Werewolf, Natural)</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Afflicted)</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Natural)</name>
-  </collection>
-	<collection>
-		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)</name>
-	</collection>
-	<collection>
-		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)</name>
-	</collection>
-	<collection>
-		<name>Lycanthrope, Rat (Wererat, Afflicted)</name>
-	</collection>
-	<collection>
-		<name>Lycanthrope, Rat (Wererat, Natural)</name>
-	</collection>
-  <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Afflicted)</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Natural)</name>
-  </collection>
-  <collection>
-    <name>None</name>
   </collection>
 </collections>
