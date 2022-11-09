@@ -446,9 +446,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             advancement.NaturalArmorAdjustment = 8245;
             advancement.StrengthAdjustment = 3456;
 
-            var nonEmptyTemplates = templates.Where(t => !string.IsNullOrEmpty(t));
             mockAdvancementSelector
-                .Setup(s => s.SelectRandomFor(creatureName, nonEmptyTemplates, It.Is<CreatureType>(c => c.Name == types[0]), creatureData.Size, creatureData.ChallengeRating))
+                .Setup(s => s.SelectRandomFor(
+                    creatureName,
+                    It.Is<IEnumerable<string>>(tt => tt.IsEquivalentTo(templates.Where(t => !string.IsNullOrEmpty(t)))),
+                    It.Is<CreatureType>(c => c.Name == types[0]),
+                    creatureData.Size,
+                    creatureData.ChallengeRating))
                 .Returns(advancement);
 
             var advancedHitPoints = new HitPoints();

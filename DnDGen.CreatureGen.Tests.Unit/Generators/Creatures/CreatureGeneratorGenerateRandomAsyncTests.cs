@@ -1193,7 +1193,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 filters.Templates.Add(template);
 
             SetUpCreature("creature", asCharacter, type, challengeRating, alignment, null, template);
-            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", challengeRating, 1337, template);
+            var advancedHitPoints = SetUpCreatureAdvancement(asCharacter, "creature", challengeRating, 1337, null, template);
 
             var creature = await creatureGenerator.GenerateRandomAsync(asCharacter, null, filters);
 
@@ -1277,8 +1277,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             demographics.Age.Value = 3546;
             demographics.MaximumAge.Value = 4657;
 
-            SetUpCreature("creature", false, null, null, null, null, "template");
-            var advancedHitPoints = SetUpCreatureAdvancement(false, "creature", null, 1337, advancedSize, "template");
+            SetUpCreature("creature", false);
+            var advancedHitPoints = SetUpCreatureAdvancement(false, "creature", null, 1337, advancedSize);
 
             var creature = await creatureGenerator.GenerateRandomAsync(false);
             Assert.That(creature.HitPoints, Is.EqualTo(advancedHitPoints));
@@ -1314,7 +1314,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 {
                     for (var a = o; a < sizes.Length; a++)
                     {
-                        var multiplier = Math.Pow(2, a - o);
+                        var multiplier = (int)Math.Pow(2, a - o);
                         yield return new TestCaseData(sizes[o], sizes[a], multiplier);
                     }
                 }
