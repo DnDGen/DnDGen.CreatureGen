@@ -771,12 +771,16 @@
   </collection>
   <collection>
     <name>Annis</name>
-    <entry>Land@40</entry>
+    <entry>Adulthood@92d6-52</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Ape</name>
-    <entry>Land@30</entry>
-    <entry>Climb@30</entry>
+    <entry>Adulthood@2d6+8</entry>
+    <entry>Middle Age@1d10+20</entry>
+    <entry>Old@1d4+30</entry>
+    <entry>Venerable@1d6+34</entry>
+    <entry>Maximum@34+1d6</entry>
   </collection>
   <collection>
     <name>Aquatic Elf</name>
@@ -788,20 +792,32 @@
   </collection>
   <collection>
     <name>Aranea</name>
-    <entry>Land@50</entry>
-    <entry>Climb@25</entry>
+    <entry>Adulthood@41d2-21</entry>
+    <entry>Middle Age@6d6+56</entry>
+    <entry>Old@31d2+62</entry>
+    <entry>Venerable@12d6+113</entry>
+    <entry>Maximum@125+3d20</entry>
   </collection>
   <collection>
     <name>Assassin Vine</name>
-    <entry>Land@5</entry>
+    <entry>Adulthood@1d4</entry>
+    <entry>Middle Age@1d2+4</entry>
+    <entry>Old@1d3+6</entry>
+    <entry>Venerable@2d6+8</entry>
+    <entry>Maximum@10+1d10</entry>
   </collection>
   <collection>
     <name>Athach</name>
-    <entry>Land@50</entry>
+    <entry>Adulthood@43d2-7</entry>
+    <entry>Middle Age@13d4+67</entry>
+    <entry>Old@13d4+107</entry>
+    <entry>Venerable@8d6+152</entry>
+    <entry>Maximum@160+2d20</entry>
   </collection>
   <collection>
     <name>Average Salamander</name>
-    <entry>Land@20</entry>
+    <entry>Adulthood@899d2-799</entry>
+    <entry>Maximum@1000</entry>
   </collection>
   <collection>
     <name>Average Xorn</name>

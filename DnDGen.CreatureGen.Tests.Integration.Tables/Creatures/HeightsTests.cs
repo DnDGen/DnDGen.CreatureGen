@@ -367,6 +367,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Athach][GenderConstants.Female] = GetGenderFromAverage(18 * 12);
             heights[CreatureConstants.Athach][GenderConstants.Male] = GetGenderFromAverage(18 * 12);
             heights[CreatureConstants.Athach][CreatureConstants.Athach] = GetCreatureFromAverage(18 * 12);
+            heights[CreatureConstants.Avoral][GenderConstants.Female] = "6*12";
+            heights[CreatureConstants.Avoral][GenderConstants.Male] = "6*12";
+            heights[CreatureConstants.Avoral][GenderConstants.Agender] = "6*12";
+            heights[CreatureConstants.Avoral][CreatureConstants.Centaur] = RollHelper.GetRollWithFewestDice(6 * 12, 6 * 12 + 6, 7 * 12);
+            heights[CreatureConstants.Azer][GenderConstants.Male] = "4*12";
+            heights[CreatureConstants.Azer][GenderConstants.Female] = "4*12";
+            heights[CreatureConstants.Azer][GenderConstants.Agender] = "4*12";
+            heights[CreatureConstants.Azer][CreatureConstants.Centaur] = RollHelper.GetRollWithFewestDice(4 * 12, 4 * 12 + 5, 4 * 12 + 9);
             heights[CreatureConstants.Bear_Brown][GenderConstants.Female] = GetGenderFromAverage(9 * 12);
             heights[CreatureConstants.Bear_Brown][GenderConstants.Male] = GetGenderFromAverage(9 * 12);
             heights[CreatureConstants.Bear_Brown][CreatureConstants.Bear_Brown] = GetCreatureFromAverage(9 * 12);
@@ -526,6 +534,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Kobold][GenderConstants.Female] = "2*12+4";
             heights[CreatureConstants.Kobold][GenderConstants.Male] = "2*12+6";
             heights[CreatureConstants.Kobold][CreatureConstants.Kobold] = "2d4";
+            heights[CreatureConstants.Leonal][GenderConstants.Female] = "5*12+7";
+            heights[CreatureConstants.Leonal][GenderConstants.Male] = "5*12+7";
+            heights[CreatureConstants.Leonal][CreatureConstants.Leonal] = "2d4";
             heights[CreatureConstants.Lizardfolk][GenderConstants.Female] = "5*12";
             heights[CreatureConstants.Lizardfolk][GenderConstants.Male] = "5*12";
             heights[CreatureConstants.Lizardfolk][CreatureConstants.Lizardfolk] = RollHelper.GetRollWithFewestDice(5 * 12, 6 * 12, 7 * 12);
@@ -622,6 +633,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Wolf][GenderConstants.Female] = "39"; //Medium Animal
             heights[CreatureConstants.Wolf][GenderConstants.Male] = "39";
             heights[CreatureConstants.Wolf][CreatureConstants.Wolf] = "2d12";
+            heights[CreatureConstants.Xorn_Minor][GenderConstants.Agender] = GetGenderFromAverage(3 * 12);
+            heights[CreatureConstants.Xorn_Minor][CreatureConstants.Xorn_Minor] = GetCreatureFromAverage(3 * 12);
+            heights[CreatureConstants.Xorn_Average][GenderConstants.Agender] = GetGenderFromAverage(5 * 12);
+            heights[CreatureConstants.Xorn_Average][CreatureConstants.Xorn_Average] = GetCreatureFromAverage(5 * 12);
+            heights[CreatureConstants.Xorn_Elder][GenderConstants.Agender] = GetGenderFromAverage(8 * 12);
+            heights[CreatureConstants.Xorn_Elder][CreatureConstants.Xorn_Elder] = GetCreatureFromAverage(8 * 12);
 
             return heights;
         }
@@ -698,6 +715,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.AnimatedObject_Statue_Humanoid_Tiny, GenderConstants.Agender, 12, 23)]
         [TestCase(CreatureConstants.Ape, GenderConstants.Male, 5 * 12 + 6, 6 * 12)]
         [TestCase(CreatureConstants.Ape, GenderConstants.Female, 5 * 12 + 6, 6 * 12)]
+        [TestCase(CreatureConstants.Azer, GenderConstants.Agender, 4 * 12 + 5, 4 * 12 + 9)]
         [TestCase(CreatureConstants.Bugbear, GenderConstants.Male, 6 * 12, 8 * 12)]
         [TestCase(CreatureConstants.Bugbear, GenderConstants.Female, 6 * 12, 8 * 12)]
         [TestCase(CreatureConstants.Centaur, GenderConstants.Male, 7 * 12, 9 * 12)]
