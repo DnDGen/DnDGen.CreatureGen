@@ -378,9 +378,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Azer][GenderConstants.Male] = GetGenderFromAverage(200);
             weights[CreatureConstants.Azer][GenderConstants.Agender] = GetGenderFromAverage(200);
             weights[CreatureConstants.Azer][CreatureConstants.Azer] = GetCreatureFromAverage(200, 4 * 12 + 7);
+            weights[CreatureConstants.Babau][GenderConstants.Agender] = GetGenderFromAverage(140);
+            weights[CreatureConstants.Babau][CreatureConstants.Babau] = GetCreatureFromAverage(140, 6 * 12 + 6);
+            weights[CreatureConstants.Balor][GenderConstants.Agender] = GetGenderFromAverage(4500);
+            weights[CreatureConstants.Balor][CreatureConstants.Balor] = GetCreatureFromAverage(4500, 12 * 12);
             weights[CreatureConstants.Bear_Brown][GenderConstants.Female] = GetGenderFromAverage(1800);
             weights[CreatureConstants.Bear_Brown][GenderConstants.Male] = GetGenderFromAverage(1800);
             weights[CreatureConstants.Bear_Brown][CreatureConstants.Bear_Brown] = GetCreatureFromAverage(1800, 9 * 12);
+            weights[CreatureConstants.Bebilith][GenderConstants.Agender] = GetGenderFromAverage(4500);
+            weights[CreatureConstants.Bebilith][CreatureConstants.Bebilith] = GetCreatureFromAverage(4500, 14 * 12);
             weights[CreatureConstants.Bugbear][GenderConstants.Female] = "200";
             weights[CreatureConstants.Bugbear][GenderConstants.Male] = "200";
             weights[CreatureConstants.Bugbear][CreatureConstants.Bugbear] = RollHelper.GetRollWithFewestDice(200, 250, 350);
@@ -392,6 +398,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Centaur][CreatureConstants.Centaur] = GetCreatureFromAverage(2100, 8 * 12);
             weights[CreatureConstants.Criosphinx][GenderConstants.Male] = GetGenderFromAverage(800);
             weights[CreatureConstants.Criosphinx][CreatureConstants.Criosphinx] = GetCreatureFromAverage(800, 120);
+            weights[CreatureConstants.Dretch][GenderConstants.Agender] = GetGenderFromAverage(60);
+            weights[CreatureConstants.Dretch][CreatureConstants.Dretch] = GetCreatureFromAverage(60, 4 * 12);
             weights[CreatureConstants.Dwarf_Deep][GenderConstants.Female] = "100";
             weights[CreatureConstants.Dwarf_Deep][GenderConstants.Male] = "130";
             weights[CreatureConstants.Dwarf_Deep][CreatureConstants.Dwarf_Deep] = "2d6"; //x7
@@ -482,6 +490,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Giant_Hill][GenderConstants.Female] = "290"; //Huge
             weights[CreatureConstants.Giant_Hill][GenderConstants.Male] = "270";
             weights[CreatureConstants.Giant_Hill][CreatureConstants.Giant_Cloud] = "3d10";
+            weights[CreatureConstants.Glabrezu][GenderConstants.Agender] = GetGenderFromAverage(5500);
+            weights[CreatureConstants.Glabrezu][CreatureConstants.Glabrezu] = GetCreatureFromAverage(5500, 12 * 12);
             weights[CreatureConstants.Gnoll][GenderConstants.Female] = "250";
             weights[CreatureConstants.Gnoll][GenderConstants.Male] = "250";
             weights[CreatureConstants.Gnoll][CreatureConstants.Bugbear] = RollHelper.GetRollWithFewestDice(250, 280, 320);
@@ -514,6 +524,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Halfling_Tallfellow][GenderConstants.Female] = "25";
             weights[CreatureConstants.Halfling_Tallfellow][GenderConstants.Male] = "30";
             weights[CreatureConstants.Halfling_Tallfellow][CreatureConstants.Halfling_Tallfellow] = "1"; //x1
+            weights[CreatureConstants.Hezrou][GenderConstants.Agender] = GetGenderFromAverage(750);
+            weights[CreatureConstants.Hezrou][CreatureConstants.Hezrou] = GetCreatureFromAverage(750, 8 * 12);
             weights[CreatureConstants.Hieracosphinx][GenderConstants.Male] = GetGenderFromAverage(800);
             weights[CreatureConstants.Hieracosphinx][CreatureConstants.Hieracosphinx] = GetCreatureFromAverage(800, 10 * 12);
             weights[CreatureConstants.Hobgoblin][GenderConstants.Female] = "145";
@@ -546,6 +558,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Locathah][GenderConstants.Female] = GetGenderFromAverage(175);
             weights[CreatureConstants.Locathah][GenderConstants.Male] = GetGenderFromAverage(175);
             weights[CreatureConstants.Locathah][CreatureConstants.Locathah] = GetCreatureFromAverage(175, 5 * 12);
+            weights[CreatureConstants.Marilith][GenderConstants.Female] = GetGenderFromAverage(2 * 2000);
+            weights[CreatureConstants.Marilith][CreatureConstants.Marilith] = GetCreatureFromAverage(2 * 2000, 20 * 12);
             weights[CreatureConstants.Mephit_Air][GenderConstants.Agender] = GetGenderFromAverage(1);
             weights[CreatureConstants.Mephit_Air][GenderConstants.Female] = GetGenderFromAverage(1);
             weights[CreatureConstants.Mephit_Air][GenderConstants.Male] = GetGenderFromAverage(1);
@@ -592,6 +606,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Minotaur][GenderConstants.Female] = GetGenderFromAverage(700);
             weights[CreatureConstants.Minotaur][GenderConstants.Male] = GetGenderFromAverage(700);
             weights[CreatureConstants.Minotaur][CreatureConstants.Locathah] = GetCreatureFromAverage(700, 8 * 12);
+            weights[CreatureConstants.Nalfeshnee][GenderConstants.Agender] = GetGenderFromAverage(8000);
+            weights[CreatureConstants.Nalfeshnee][CreatureConstants.Nalfeshnee] = GetCreatureFromAverage(8000, 15 * 12);
             weights[CreatureConstants.Ogre][GenderConstants.Female] = "554";
             weights[CreatureConstants.Ogre][GenderConstants.Male] = "599";
             weights[CreatureConstants.Ogre][CreatureConstants.Ogre] = "1d10";
@@ -613,6 +629,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Pixie_WithIrresistibleDance][GenderConstants.Female] = GetGenderFromAverage(30);
             weights[CreatureConstants.Pixie_WithIrresistibleDance][GenderConstants.Male] = GetGenderFromAverage(30);
             weights[CreatureConstants.Pixie_WithIrresistibleDance][CreatureConstants.Pixie_WithIrresistibleDance] = GetCreatureFromAverage(30, 21);
+            weights[CreatureConstants.Quasit][GenderConstants.Agender] = GetGenderFromAverage(8);
+            weights[CreatureConstants.Quasit][CreatureConstants.Quasit] = GetCreatureFromAverage(8, 18);
+            weights[CreatureConstants.Retriever][GenderConstants.Agender] = GetGenderFromAverage(6500);
+            weights[CreatureConstants.Retriever][CreatureConstants.Retriever] = GetCreatureFromAverage(6500, 14 * 12);
             weights[CreatureConstants.Salamander_Flamebrother][GenderConstants.Agender] = "5";
             weights[CreatureConstants.Salamander_Flamebrother][CreatureConstants.Salamander_Flamebrother] = RollHelper.GetRollWithMostEvenDistribution(5, 8, 60);
             weights[CreatureConstants.Salamander_Average][GenderConstants.Agender] = "50";
@@ -621,6 +641,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Salamander_Noble][CreatureConstants.Salamander_Noble] = RollHelper.GetRollWithMostEvenDistribution(400, 500, 4000);
             weights[CreatureConstants.SeaHag][GenderConstants.Female] = "85";
             weights[CreatureConstants.SeaHag][CreatureConstants.SeaHag] = "2d4";
+            weights[CreatureConstants.Succubus][GenderConstants.Female] = GetGenderFromAverage(125);
+            weights[CreatureConstants.Succubus][GenderConstants.Male] = GetGenderFromAverage(125);
+            weights[CreatureConstants.Succubus][CreatureConstants.Succubus] = GetCreatureFromAverage(125, 6 * 12);
             weights[CreatureConstants.Tiefling][GenderConstants.Female] = "85";
             weights[CreatureConstants.Tiefling][GenderConstants.Male] = "120";
             weights[CreatureConstants.Tiefling][CreatureConstants.Tiefling] = "2d4"; //x5
@@ -633,6 +656,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Tojanida_Elder][GenderConstants.Female] = GetGenderFromAverage(500);
             weights[CreatureConstants.Tojanida_Elder][GenderConstants.Male] = GetGenderFromAverage(500);
             weights[CreatureConstants.Tojanida_Elder][CreatureConstants.Tojanida_Elder] = GetCreatureFromAverage(500, 9 * 12);
+            weights[CreatureConstants.Vrock][GenderConstants.Agender] = GetGenderFromAverage(500);
+            weights[CreatureConstants.Vrock][CreatureConstants.Vrock] = GetCreatureFromAverage(500, 8 * 12);
             weights[CreatureConstants.Wolf][GenderConstants.Female] = "39"; //Medium Animal
             weights[CreatureConstants.Wolf][GenderConstants.Male] = "39";
             weights[CreatureConstants.Wolf][CreatureConstants.Wolf] = "2d12";
@@ -692,6 +717,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.AnimatedObject_Chain_Small, GenderConstants.Agender, 1)]
         [TestCase(CreatureConstants.AnimatedObject_Chain_Tiny, GenderConstants.Agender, 1)]
         [TestCase(CreatureConstants.Avoral, GenderConstants.Agender, 120)]
+        [TestCase(CreatureConstants.Babau, GenderConstants.Agender, 140)]
         [TestCase(CreatureConstants.Bear_Brown, GenderConstants.Male, 1800)]
         [TestCase(CreatureConstants.Bear_Brown, GenderConstants.Female, 1800)]
         [TestCase(CreatureConstants.Centaur, GenderConstants.Male, 2100)]
@@ -754,6 +780,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Ape_Dire, GenderConstants.Male, 800, 1200)]
         [TestCase(CreatureConstants.Ape_Dire, GenderConstants.Female, 800, 1200)]
         [TestCase(CreatureConstants.Azer, GenderConstants.Agender, 180, 220)]
+        [TestCase(CreatureConstants.Balor, GenderConstants.Agender, 4000, 4900)]
         [TestCase(CreatureConstants.Bugbear, GenderConstants.Male, 250, 350)]
         [TestCase(CreatureConstants.Bugbear, GenderConstants.Female, 250, 350)]
         [TestCase(CreatureConstants.Ettin, GenderConstants.Male, 930, 5200)]
