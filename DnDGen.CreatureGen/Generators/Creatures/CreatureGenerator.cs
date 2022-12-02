@@ -403,12 +403,13 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var sizeDifference = advancedIndex - originalIndex;
 
             //INFO: If the advancement has adjusted the size of the creature, we need to increase the demographics,
-            //specifically the height and weight. Roughly, x2 for each size category increase
+            //specifically the height and weight. Roughly, x2 for each size category increase for height and x8 for the weight
             if (sizeDifference > 0)
             {
-                var multiplier = Math.Pow(2, sizeDifference);
-                demographics.HeightOrLength.Value *= multiplier;
-                demographics.Weight.Value *= multiplier;
+                var heightMultiplier = Math.Pow(2, sizeDifference);
+                var weightMultiplier = Math.Pow(8, sizeDifference);
+                demographics.HeightOrLength.Value *= heightMultiplier;
+                demographics.Weight.Value *= weightMultiplier;
             }
 
             return demographics;

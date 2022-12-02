@@ -329,7 +329,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         }
 
         [TestCaseSource(nameof(SizeIncreases))]
-        public void Generate_GenerateAdvancedCreature_AdjustDemographics(string originalSize, string advancedSize, int multiplier)
+        public void Generate_GenerateAdvancedCreature_AdjustDemographics(string originalSize, string advancedSize, int heightMultiplier, int weightMultiplier)
         {
             creatureData.Size = originalSize;
             demographics.Weight.Value = 1324;
@@ -360,8 +360,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             Assert.That(creature.Demographics.Age.Value, Is.EqualTo(3546));
             Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(4657));
-            Assert.That(creature.Demographics.HeightOrLength.Value, Is.EqualTo(2435 * multiplier));
-            Assert.That(creature.Demographics.Weight.Value, Is.EqualTo(1324 * multiplier));
+            Assert.That(creature.Demographics.HeightOrLength.Value, Is.EqualTo(2435 * heightMultiplier));
+            Assert.That(creature.Demographics.Weight.Value, Is.EqualTo(1324 * weightMultiplier));
         }
 
         private static IEnumerable SizeIncreases
@@ -374,8 +374,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 {
                     for (var a = o; a < sizes.Length; a++)
                     {
-                        var multiplier = (int)Math.Pow(2, a - o);
-                        yield return new TestCaseData(sizes[o], sizes[a], multiplier);
+                        var heightMultiplier = (int)Math.Pow(2, a - o);
+                        var weightMultiplier = (int)Math.Pow(8, a - o);
+                        yield return new TestCaseData(sizes[o], sizes[a], heightMultiplier, weightMultiplier);
                     }
                 }
             }

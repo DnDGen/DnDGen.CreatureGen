@@ -821,21 +821,29 @@
   </collection>
   <collection>
     <name>Average Xorn</name>
-    <entry>Land@20</entry>
-    <entry>Burrow@20</entry>
+	  <entry>Adulthood@166d3+168</entry>
+	  <entry>Maximum@667</entry>
   </collection>
   <collection>
     <name>Avoral</name>
-    <entry>Land@40</entry>
-    <entry>Fly@90</entry>
+	  <entry>Adulthood@1d20+14</entry>
+	  <entry>Middle Age@17d2+18</entry>
+	  <entry>Old@8d3+45</entry>
+	  <entry>Venerable@8d6+62</entry>
+	  <entry>Maximum@70+2d20</entry>
   </collection>
   <collection>
     <name>Azer</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@52d3-32</entry>
+	  <entry>Middle Age@31d3+94</entry>
+	  <entry>Old@61d2+127</entry>
+	  <entry>Venerable@40d6+210</entry>
+	  <entry>Maximum@250+2d100</entry>
   </collection>
   <collection>
     <name>Babau</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@2000d6-2000</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Baboon</name>
@@ -853,8 +861,8 @@
   </collection>
   <collection>
     <name>Balor</name>
-    <entry>Land@40</entry>
-    <entry>Fly@90</entry>
+	  <entry>Adulthood@2000d6-2000</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Barbed Devil (Hamatula)</name>
@@ -884,8 +892,8 @@
   </collection>
   <collection>
     <name>Bebilith</name>
-    <entry>Land@40</entry>
-    <entry>Climb@20</entry>
+	  <entry>Adulthood@2000d6-2000</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Behir</name>
