@@ -458,6 +458,9 @@ namespace DnDGen.CreatureGen.Creatures
         public const string Bison_Ox = "Ox";
         public const string Bison_Sheep = "Sheep";
         public const string Bison_Llama = "Llama";
+        public const string Bison_Deer = "Deer";
+        public const string Bison_Moose = "Moose";
+        public const string Bison_Antelope = "Antelope";
         public const string BlackPudding = "Black Pudding";
         public const string BlackPudding_Elder = "Elder Black Pudding";
         public const string BlinkDog = "Blink Dog";
@@ -759,6 +762,7 @@ namespace DnDGen.CreatureGen.Creatures
         public const string Horse_Heavy_War = "Heavy Warhorse";
         public const string Horse_Light = "Light Horse";
         public const string Horse_Light_War = "Light Warhorse";
+        public const string Horse_Zebra = "Zebra";
         public const string HoundArchon = "Hound Archon";
         public const string Howler = "Howler";
         public const string Human = "Human";
