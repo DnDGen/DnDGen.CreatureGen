@@ -924,6 +924,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
                 testCases[CreatureConstants.Bison_Sheep][AbilityConstants.Intelligence] = -8;
                 testCases[CreatureConstants.Bison_Sheep][AbilityConstants.Strength] = 4;
                 testCases[CreatureConstants.Bison_Sheep][AbilityConstants.Wisdom] = 0;
+                testCases[CreatureConstants.Bison_Moose][AbilityConstants.Charisma] = -6;
+                testCases[CreatureConstants.Bison_Moose][AbilityConstants.Constitution] = 6;
+                testCases[CreatureConstants.Bison_Moose][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.Bison_Moose][AbilityConstants.Intelligence] = -8;
+                testCases[CreatureConstants.Bison_Moose][AbilityConstants.Strength] = 12;
+                testCases[CreatureConstants.Bison_Moose][AbilityConstants.Wisdom] = 0;
+                testCases[CreatureConstants.Bison_Deer][AbilityConstants.Charisma] = -6;
+                testCases[CreatureConstants.Bison_Deer][AbilityConstants.Constitution] = 2;
+                testCases[CreatureConstants.Bison_Deer][AbilityConstants.Dexterity] = 2;
+                testCases[CreatureConstants.Bison_Deer][AbilityConstants.Intelligence] = -8;
+                testCases[CreatureConstants.Bison_Deer][AbilityConstants.Strength] = 4;
+                testCases[CreatureConstants.Bison_Deer][AbilityConstants.Wisdom] = 0;
                 testCases[CreatureConstants.BlackPudding][AbilityConstants.Charisma] = -10;
                 testCases[CreatureConstants.BlackPudding][AbilityConstants.Constitution] = 12;
                 testCases[CreatureConstants.BlackPudding][AbilityConstants.Dexterity] = -10;
@@ -2699,6 +2711,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
                 testCases[CreatureConstants.Horse_Light_War][AbilityConstants.Intelligence] = -8;
                 testCases[CreatureConstants.Horse_Light_War][AbilityConstants.Strength] = 6;
                 testCases[CreatureConstants.Horse_Light_War][AbilityConstants.Wisdom] = 2;
+                testCases[CreatureConstants.Horse_Zebra][AbilityConstants.Charisma] = -4;
+                testCases[CreatureConstants.Horse_Zebra][AbilityConstants.Constitution] = 4;
+                testCases[CreatureConstants.Horse_Zebra][AbilityConstants.Dexterity] = 2;
+                testCases[CreatureConstants.Horse_Zebra][AbilityConstants.Intelligence] = -8;
+                testCases[CreatureConstants.Horse_Zebra][AbilityConstants.Strength] = 4;
+                testCases[CreatureConstants.Horse_Zebra][AbilityConstants.Wisdom] = 2;
                 testCases[CreatureConstants.HoundArchon][AbilityConstants.Charisma] = 2;
                 testCases[CreatureConstants.HoundArchon][AbilityConstants.Constitution] = 2;
                 testCases[CreatureConstants.HoundArchon][AbilityConstants.Dexterity] = 0;
@@ -4176,23 +4194,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void AnimalsHaveLowIntelligence(string creature)
+        [Test]
+        public void AnimalsHaveLowIntelligence()
         {
-            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
+            var animals = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal);
 
-            if (types.First() == CreatureConstants.Types.Animal)
+            foreach (var animal in animals)
             {
-                var abilities = typesAndAmountsSelector.Select(tableName, creature);
+                var abilities = typesAndAmountsSelector.Select(tableName, animal);
                 var abilityNames = abilities.Select(a => a.Type);
-                Assert.That(abilityNames, Contains.Item(AbilityConstants.Intelligence), creature);
+                Assert.That(abilityNames, Contains.Item(AbilityConstants.Intelligence), animal);
 
                 var intelligence = abilities.Single(a => a.Type == AbilityConstants.Intelligence);
-                Assert.That(intelligence.Amount, Is.EqualTo(-8).Or.EqualTo(-10), creature);
-            }
-            else
-            {
-                Assert.Pass($"{creature} is not an Animal");
+                Assert.That(intelligence.Amount, Is.EqualTo(-8).Or.EqualTo(-10), animal);
             }
         }
     }

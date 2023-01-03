@@ -1388,6 +1388,24 @@
 		<entry>Strength@4</entry>
 		<entry>Wisdom@0</entry>
 	</collection>
+	<collection>
+		<name>Deer</name>
+		<entry>Charisma@-6</entry>
+		<entry>Constitution@2</entry>
+		<entry>Dexterity@2</entry>
+		<entry>Intelligence@-8</entry>
+		<entry>Strength@4</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Moose</name>
+		<entry>Charisma@-6</entry>
+		<entry>Constitution@6</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@-8</entry>
+		<entry>Strength@12</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
   <collection>
     <name>Black Bear</name>
     <entry>Charisma@-4</entry>
@@ -4034,6 +4052,15 @@
     <entry>Strength@6</entry>
     <entry>Wisdom@2</entry>
   </collection>
+	<collection>
+		<name>Zebra</name>
+		<entry>Charisma@-4</entry>
+		<entry>Constitution@4</entry>
+		<entry>Dexterity@2</entry>
+		<entry>Intelligence@-8</entry>
+		<entry>Strength@4</entry>
+		<entry>Wisdom@2</entry>
+	</collection>
   <collection>
     <name>Lightfoot Halfling</name>
     <entry>Charisma@0</entry>
