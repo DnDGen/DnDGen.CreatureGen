@@ -342,6 +342,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Bison_MilkCow][RollHelper.GetRollWithMostEvenDistribution(5, 6, 7)] = GetData(SizeConstants.Large, 10, 5);
                 testCases[CreatureConstants.Bison_Ox][RollHelper.GetRollWithMostEvenDistribution(5, 6, 7)] = GetData(SizeConstants.Large, 10, 5);
                 testCases[CreatureConstants.Bison_Sheep][RollHelper.GetRollWithMostEvenDistribution(5, 6, 7)] = GetData(SizeConstants.Medium, 5, 5);
+                testCases[CreatureConstants.Bison_Moose][RollHelper.GetRollWithMostEvenDistribution(5, 6, 7)] = GetData(SizeConstants.Large, 10, 5);
+                testCases[CreatureConstants.Bison_Deer][RollHelper.GetRollWithMostEvenDistribution(5, 6, 7)] = GetData(SizeConstants.Medium, 5, 5);
                 testCases[CreatureConstants.BlackPudding][RollHelper.GetRollWithMostEvenDistribution(10, 11, 15)] = GetData(SizeConstants.Huge, 15, 10);
                 testCases[CreatureConstants.BlackPudding_Elder][None] = new string[0];
                 testCases[CreatureConstants.BlinkDog][RollHelper.GetRollWithMostEvenDistribution(4, 5, 7)] = GetData(SizeConstants.Medium, 5, 5);
@@ -705,6 +707,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Horse_Heavy_War][None] = new string[0];
                 testCases[CreatureConstants.Horse_Light][None] = new string[0];
                 testCases[CreatureConstants.Horse_Light_War][None] = new string[0];
+                testCases[CreatureConstants.Horse_Zebra][None] = new string[0];
                 testCases[CreatureConstants.HoundArchon][RollHelper.GetRollWithMostEvenDistribution(6, 7, 9)] = GetData(SizeConstants.Medium, 5, 5);
                 testCases[CreatureConstants.HoundArchon][RollHelper.GetRollWithMostEvenDistribution(6, 10, 18)] = GetData(SizeConstants.Large, 10, 10);
                 testCases[CreatureConstants.Howler][RollHelper.GetRollWithMostEvenDistribution(6, 7, 9)] = GetData(SizeConstants.Large, 10, 5);

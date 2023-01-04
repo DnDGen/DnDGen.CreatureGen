@@ -621,6 +621,14 @@
 		<name>Sheep</name>
 		<entry>Medium,5,5@1d2</entry>
 	</collection>
+	<collection>
+		<name>Moose</name>
+		<entry>Large,10,5@1d2</entry>
+	</collection>
+	<collection>
+		<name>Deer</name>
+		<entry>Medium,5,5@1d2</entry>
+	</collection>
   <collection>
     <name>Black Bear</name>
     <entry>Medium,5,5@1d2</entry>
@@ -1710,6 +1718,9 @@
   <collection>
     <name>Heavy Warhorse</name>
   </collection>
+	<collection>
+		<name>Zebra</name>
+	</collection>
   <collection>
     <name>Hell Hound</name>
     <entry>Medium,5,5@1d4</entry>

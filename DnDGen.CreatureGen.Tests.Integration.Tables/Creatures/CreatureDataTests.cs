@@ -1,6 +1,5 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 using System;
@@ -228,6 +227,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Bison_Ox, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
         [TestCase(CreatureConstants.Bison_Sheep, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
         [TestCase(CreatureConstants.Bison_Llama, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
+        [TestCase(CreatureConstants.Bison_Moose, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
+        [TestCase(CreatureConstants.Bison_Deer, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR1, null, false, 0, 2, 0)]
         [TestCase(CreatureConstants.BlackPudding, SizeConstants.Huge, 15, 10, ChallengeRatingConstants.CR7, null, false, 0, 0, 0)]
         [TestCase(CreatureConstants.BlackPudding_Elder, SizeConstants.Gargantuan, 20, 20, ChallengeRatingConstants.CR12, null, false, 0, 0, 0)]
         [TestCase(CreatureConstants.BlinkDog, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR2, 2, false, 8, 3, 0)]
@@ -528,6 +529,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Horse_Heavy_War, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR2, null, false, 0, 4, 0)]
         [TestCase(CreatureConstants.Horse_Light, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR1, null, false, 0, 3, 0)]
         [TestCase(CreatureConstants.Horse_Light_War, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR1, null, false, 0, 4, 0)]
+        [TestCase(CreatureConstants.Horse_Zebra, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR1, null, false, 0, 3, 0)]
         [TestCase(CreatureConstants.HoundArchon, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR4, 5, true, 6, 0, 2)]
         [TestCase(CreatureConstants.Howler, SizeConstants.Large, 10, 5, ChallengeRatingConstants.CR3, 3, false, 0, 5, 0)]
         [TestCase(CreatureConstants.Human, SizeConstants.Medium, 5, 5, ChallengeRatingConstants.CR1_2nd, 0, true, 0, 0, 2)]
@@ -844,6 +846,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(actualSpace, Is.Positive, creature);
 
             //Valid Level Adjustment
+            var characters = CreatureConstants.GetAllCharacters();
+
             Assert.That(data.Length - 1, Is.AtLeast(DataIndexConstants.CreatureData.LevelAdjustment), creature);
 
             if (!string.IsNullOrEmpty(data[DataIndexConstants.CreatureData.LevelAdjustment]))
@@ -851,11 +855,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 Assert.That(int.TryParse(data[DataIndexConstants.CreatureData.LevelAdjustment], out var actualLevelAdjustment), Is.True, creature);
                 Assert.That(levelAdjustment, Is.Not.Negative, creature);
                 Assert.That(actualLevelAdjustment, Is.Not.Negative, creature);
+                Assert.That(characters, Contains.Item(creature));
             }
             else
             {
                 Assert.That(levelAdjustment, Is.Null, creature);
                 Assert.That(data[DataIndexConstants.CreatureData.LevelAdjustment], Is.Empty, creature);
+                Assert.That(characters, Does.Not.Contains(creature), creature);
             }
 
             //Valid Can Use Equipment
@@ -882,59 +888,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(actualNumberOfHands, Is.Not.Negative, creature);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void CreaturesOfTypeCanUseEquipment(string creature)
+        [TestCase(CreatureConstants.Types.Animal, false)]
+        [TestCase(CreatureConstants.Types.Fey, true)]
+        [TestCase(CreatureConstants.Types.Giant, true)]
+        [TestCase(CreatureConstants.Types.Humanoid, true)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid, true)]
+        [TestCase(CreatureConstants.Types.Ooze, false)]
+        [TestCase(CreatureConstants.Types.Vermin, false)]
+        public void CreaturesOfTypeCanUseEquipment(string creatureType, bool useEquipment)
         {
-            var equipmentTypes = new[]
-            {
-                CreatureConstants.Types.Fey,
-                CreatureConstants.Types.Giant,
-                CreatureConstants.Types.Humanoid,
-                CreatureConstants.Types.MonstrousHumanoid,
-            };
-            var noEquipmentTypes = new[]
-            {
-                CreatureConstants.Types.Animal,
-                CreatureConstants.Types.Ooze,
-                CreatureConstants.Types.Vermin,
-            };
-            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
-            var creatureType = types.First();
+            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var templates = CreatureConstants.Templates.GetAll();
 
-            if (equipmentTypes.Contains(creatureType))
+            foreach (var creature in creatures.Except(templates))
             {
+                Assert.That(table, Contains.Key(creature));
+
                 var data = table[creature].ToArray();
-
                 Assert.That(data.Length - 1, Is.AtLeast(DataIndexConstants.CreatureData.CanUseEquipment), creature);
-                Assert.That(data[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(bool.TrueString), creature);
-            }
-            else if (noEquipmentTypes.Contains(creatureType))
-            {
-                var data = table[creature].ToArray();
-
-                Assert.That(data.Length - 1, Is.AtLeast(DataIndexConstants.CreatureData.CanUseEquipment), creature);
-                Assert.That(data[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(bool.FalseString), creature);
-            }
-            else
-            {
-                Assert.Pass($"{creature} may or may not use equipment based on type");
-            }
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void AllCreaturesWithLevelAdjustmentCanBeCharacters(string creature)
-        {
-            var data = table[creature].ToArray();
-            var characters = CreatureConstants.GetAllCharacters();
-
-            Assert.That(data.Length - 1, Is.AtLeast(DataIndexConstants.CreatureData.LevelAdjustment), creature);
-            if (string.IsNullOrEmpty(data[DataIndexConstants.CreatureData.LevelAdjustment]))
-            {
-                Assert.That(characters, Does.Not.Contains(creature));
-            }
-            else
-            {
-                Assert.That(characters, Contains.Item(creature));
+                Assert.That(data[DataIndexConstants.CreatureData.CanUseEquipment], Is.EqualTo(useEquipment.ToString()), creature);
             }
         }
     }
