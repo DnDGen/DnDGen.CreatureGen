@@ -79,7 +79,8 @@
     <entry>Eagle</entry>
     <entry>Elephant</entry>
     <entry>Hawk</entry>
-    <entry>Horse</entry>
+	  <entry>Horse</entry>
+	  <entry>Zebra</entry>
     <entry>Hyena</entry>
     <entry>Leopard</entry>
     <entry>Lion</entry>
@@ -119,6 +120,8 @@
 	  <entry>Goat</entry>
 	  <entry>Sheep</entry>
 	  <entry>Ox</entry>
+	  <entry>Deer</entry>
+	  <entry>Moose</entry>
 	  <entry>Llama</entry>
 	  <entry>Pig</entry>
 	  <entry>Chicken</entry>

@@ -284,6 +284,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Bison_Ox, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Bison_Sheep, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Bison_Llama, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Bison_Moose, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Bison_Deer, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.BlackPudding, CreatureConstants.Types.Ooze)]
         [TestCase(CreatureConstants.BlackPudding_Elder, CreatureConstants.Types.Ooze)]
         [TestCase(CreatureConstants.BlinkDog, CreatureConstants.Types.MagicalBeast)]
@@ -866,6 +868,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Horse_Heavy_War, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Horse_Light, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Horse_Light_War, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Horse_Zebra, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Howler, CreatureConstants.Types.Outsider,
             CreatureConstants.Types.Subtypes.Chaotic,
             CreatureConstants.Types.Subtypes.Evil,

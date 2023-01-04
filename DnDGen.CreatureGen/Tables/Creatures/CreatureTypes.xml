@@ -766,6 +766,14 @@
 		<name>Sheep</name>
 		<entry>Animal</entry>
 	</collection>
+	<collection>
+		<name>Moose</name>
+		<entry>Animal</entry>
+	</collection>
+	<collection>
+		<name>Deer</name>
+		<entry>Animal</entry>
+	</collection>
   <collection>
     <name>Black Pudding</name>
     <entry>Ooze</entry>
@@ -2264,6 +2272,10 @@
     <name>Light Warhorse</name>
     <entry>Animal</entry>
   </collection>
+	<collection>
+		<name>Zebra</name>
+		<entry>Animal</entry>
+	</collection>
   <collection>
     <name>Hound Archon</name>
     <entry>Outsider</entry>

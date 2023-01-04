@@ -2,7 +2,6 @@
 using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 using System.Collections;
@@ -4147,49 +4146,48 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void Type_DoesNotHaveAbility(string creature)
+        [TestCase(CreatureConstants.Types.Construct, AbilityConstants.Constitution)]
+        [TestCase(CreatureConstants.Types.Undead, AbilityConstants.Constitution)]
+        [TestCase(CreatureConstants.Types.Subtypes.Incorporeal, AbilityConstants.Strength)]
+        [TestCase(CreatureConstants.Types.Ooze, AbilityConstants.Intelligence)]
+        [TestCase(CreatureConstants.Types.Vermin, AbilityConstants.Intelligence)]
+        public void Type_DoesNotHaveAbility(string creatureType, string ability)
         {
-            var typesWithoutConstitution = new[] { CreatureConstants.Types.Construct, CreatureConstants.Types.Undead };
-            var typesWithoutStrength = new[] { CreatureConstants.Types.Subtypes.Incorporeal };
-            var typesWithoutIntelligence = new[] { CreatureConstants.Types.Ooze, CreatureConstants.Types.Vermin };
-            var typesWithAllAbilities = new[]
-            {
-                CreatureConstants.Types.Aberration,
-                CreatureConstants.Types.Animal,
-                CreatureConstants.Types.Dragon,
-                CreatureConstants.Types.Elemental,
-                CreatureConstants.Types.Fey,
-                CreatureConstants.Types.Giant,
-                CreatureConstants.Types.Humanoid,
-                CreatureConstants.Types.MagicalBeast,
-                CreatureConstants.Types.MonstrousHumanoid,
-            };
+            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var abilities = typesAndAmountsSelector.SelectAll(tableName);
 
-            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
-            var abilities = typesAndAmountsSelector.Select(tableName, creature);
-            var abilityNames = abilities.Select(a => a.Type);
-
-            if (typesWithoutConstitution.Intersect(types).Any())
+            foreach (var creature in creatures)
             {
-                Assert.That(abilityNames, Does.Not.Contains(AbilityConstants.Constitution), creature);
+                Assert.That(abilities, Contains.Key(creature), creature);
+
+                var abilityNames = abilities[creature].Select(a => a.Type);
+                Assert.That(abilityNames, Does.Not.Contain(ability), creature);
             }
+        }
 
-            if (typesWithoutStrength.Intersect(types).Any())
+        [TestCase(CreatureConstants.Types.Aberration)]
+        [TestCase(CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Types.Dragon)]
+        [TestCase(CreatureConstants.Types.Elemental)]
+        [TestCase(CreatureConstants.Types.Fey)]
+        [TestCase(CreatureConstants.Types.Giant)]
+        [TestCase(CreatureConstants.Types.Humanoid)]
+        [TestCase(CreatureConstants.Types.MagicalBeast)]
+        [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
+        public void Type_HasAllAbilities(string creatureType)
+        {
+            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var abilities = typesAndAmountsSelector.SelectAll(tableName);
+            var templates = CreatureConstants.Templates.GetAll();
+
+            //INFO: Templates handle typing differently, so we want to ignore those for this test
+            foreach (var creature in creatures.Except(templates))
             {
-                Assert.That(abilityNames, Does.Not.Contains(AbilityConstants.Strength), creature);
-            }
+                Assert.That(abilities, Contains.Key(creature), creature);
+                Assert.That(abilities, Contains.Key(GroupConstants.All), creature);
 
-            if (typesWithoutIntelligence.Intersect(types).Any())
-            {
-                Assert.That(abilityNames, Does.Not.Contains(AbilityConstants.Intelligence), creature);
-            }
-
-            if (typesWithAllAbilities.Intersect(types).Any())
-            {
-                var allAbilities = typesAndAmountsSelector.Select(tableName, GroupConstants.All);
-                var allAbilitiesNames = allAbilities.Select(a => a.Type);
-
+                var abilityNames = abilities[creature].Select(a => a.Type);
+                var allAbilitiesNames = abilities[GroupConstants.All].Select(a => a.Type);
                 Assert.That(abilityNames, Is.EquivalentTo(allAbilitiesNames), creature);
             }
         }
@@ -4197,15 +4195,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         [Test]
         public void AnimalsHaveLowIntelligence()
         {
-            var animals = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal);
+            var animals = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal);
+            var abilities = typesAndAmountsSelector.SelectAll(tableName);
 
             foreach (var animal in animals)
             {
-                var abilities = typesAndAmountsSelector.Select(tableName, animal);
-                var abilityNames = abilities.Select(a => a.Type);
+                Assert.That(abilities, Contains.Key(animal), animal);
+
+                var abilityNames = abilities[animal].Select(a => a.Type);
                 Assert.That(abilityNames, Contains.Item(AbilityConstants.Intelligence), animal);
 
-                var intelligence = abilities.Single(a => a.Type == AbilityConstants.Intelligence);
+                var intelligence = abilities[animal].Single(a => a.Type == AbilityConstants.Intelligence);
                 Assert.That(intelligence.Amount, Is.EqualTo(-8).Or.EqualTo(-10), animal);
             }
         }
