@@ -853,6 +853,14 @@
 		<name>Sheep</name>
 		<entry>Land@40</entry>
 	</collection>
+	<collection>
+		<name>Moose</name>
+		<entry>Land@40</entry>
+	</collection>
+	<collection>
+		<name>Deer</name>
+		<entry>Land@40</entry>
+	</collection>
   <collection>
     <name>Black Bear</name>
     <entry>Land@40</entry>
@@ -2291,6 +2299,10 @@
     <name>Light Warhorse</name>
     <entry>Land@60</entry>
   </collection>
+	<collection>
+		<name>Zebra</name>
+		<entry>Land@60</entry>
+	</collection>
   <collection>
     <name>Lightfoot Halfling</name>
     <entry>Land@20</entry>

@@ -1134,6 +1134,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
 
             testCases[CreatureConstants.Bison_Sheep].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
 
+            testCases[CreatureConstants.Bison_Moose].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+
+            testCases[CreatureConstants.Bison_Deer].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+
             testCases[CreatureConstants.BlackPudding].Add(helper.BuildData(FeatConstants.SpecialQualities.Split));
 
             testCases[CreatureConstants.BlackPudding_Elder].Add(helper.BuildData(FeatConstants.SpecialQualities.Split));
@@ -3178,6 +3182,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             testCases[CreatureConstants.Horse_Light].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
 
             testCases[CreatureConstants.Horse_Light_War].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+
+            testCases[CreatureConstants.Horse_Zebra].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
 
             testCases[CreatureConstants.HoundArchon].Add(helper.BuildData(FeatConstants.SpecialQualities.AuraOfMenace, saveAbility: AbilityConstants.Charisma, save: SaveConstants.Will, saveBaseValue: 15));
             testCases[CreatureConstants.HoundArchon].Add(helper.BuildData(FeatConstants.SpecialQualities.ChangeShape, focus: "Any canine form of Small to Large size", frequencyTimePeriod: FeatConstants.Frequencies.AtWill));

@@ -886,6 +886,14 @@
 		<name>Sheep</name>
 		<entry>Scent#0##0##0#False###0#0#2147483647</entry>
 	</collection>
+	<collection>
+		<name>Moose</name>
+		<entry>Scent#0##0##0#False###0#0#2147483647</entry>
+	</collection>
+	<collection>
+		<name>Deer</name>
+		<entry>Scent#0##0##0#False###0#0#2147483647</entry>
+	</collection>
   <collection>
     <name>Black Bear</name>
     <entry>Scent#0##0##0#False###0#0#2147483647</entry>
@@ -3594,6 +3602,10 @@
     <name>Light Warhorse</name>
     <entry>Scent#0##0##0#False###0#0#2147483647</entry>
   </collection>
+	<collection>
+		<name>Zebra</name>
+		<entry>Scent#0##0##0#False###0#0#2147483647</entry>
+	</collection>
   <collection>
     <name>Lightfoot Halfling</name>
   </collection>

@@ -405,6 +405,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Bison_MilkCow][SpeedConstants.Land] = 40;
                 testCases[CreatureConstants.Bison_Ox][SpeedConstants.Land] = 40;
                 testCases[CreatureConstants.Bison_Sheep][SpeedConstants.Land] = 40;
+                testCases[CreatureConstants.Bison_Moose][SpeedConstants.Land] = 40;
+                testCases[CreatureConstants.Bison_Deer][SpeedConstants.Land] = 40;
                 testCases[CreatureConstants.BlackPudding][SpeedConstants.Land] = 20;
                 testCases[CreatureConstants.BlackPudding][SpeedConstants.Climb] = 20;
                 testCases[CreatureConstants.BlackPudding_Elder][SpeedConstants.Land] = 20;
@@ -1029,6 +1031,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Horse_Heavy_War][SpeedConstants.Land] = 50;
                 testCases[CreatureConstants.Horse_Light][SpeedConstants.Land] = 60;
                 testCases[CreatureConstants.Horse_Light_War][SpeedConstants.Land] = 60;
+                testCases[CreatureConstants.Horse_Zebra][SpeedConstants.Land] = 60;
                 testCases[CreatureConstants.HoundArchon][SpeedConstants.Land] = 40;
                 testCases[CreatureConstants.Howler][SpeedConstants.Land] = 60;
                 testCases[CreatureConstants.Human][SpeedConstants.Land] = 30;

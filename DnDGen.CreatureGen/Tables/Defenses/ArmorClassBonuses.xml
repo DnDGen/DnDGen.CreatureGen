@@ -572,6 +572,15 @@
 	<collection>
 		<name>Sheep</name>
 	</collection>
+	<collection>
+		<name>Moose</name>
+	</collection>
+	<collection>
+		<name>Deer</name>
+	</collection>
+	<collection>
+		<name>Zebra</name>
+	</collection>
   <collection>
     <name>Black Bear</name>
   </collection>

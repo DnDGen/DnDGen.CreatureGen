@@ -1005,6 +1005,14 @@
     <name>Bison</name>
     <entry>AlwaysTrue Neutral</entry>
   </collection>
+	<collection>
+		<name>Moose</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Deer</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
   <collection>
     <name>Black Bear</name>
     <entry>AlwaysTrue Neutral</entry>
@@ -2243,6 +2251,10 @@
     <name>Light Warhorse</name>
     <entry>AlwaysTrue Neutral</entry>
   </collection>
+	<collection>
+		<name>Zebra</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
   <collection>
     <name>Human</name>
     <entry>Any</entry>
@@ -4106,6 +4118,14 @@
     <name>BisonExploded</name>
     <entry>True Neutral</entry>
   </collection>
+	<collection>
+		<name>MooseExploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>DeerExploded</name>
+		<entry>True Neutral</entry>
+	</collection>
   <collection>
     <name>Black BearExploded</name>
     <entry>True Neutral</entry>
@@ -5659,6 +5679,10 @@
     <name>Light WarhorseExploded</name>
     <entry>True Neutral</entry>
   </collection>
+	<collection>
+		<name>ZebraExploded</name>
+		<entry>True Neutral</entry>
+	</collection>
   <collection>
     <name>HumanExploded</name>
     <entry>Lawful Good</entry>

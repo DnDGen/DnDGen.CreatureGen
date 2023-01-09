@@ -267,7 +267,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void CreatureWithSpellLikeAbilityAttack_HasSpellLikeAbilitySpecialQuality(string creature)
+        public void CreatureWithSpecificAttack_HasCorrespondingAbility(string creature)
+        {
+            CreatureWithSpellLikeAbilityAttack_HasSpellLikeAbilitySpecialQuality(creature);
+            CreatureWithPsionicAttack_HasPsionicSpecialQuality(creature);
+            CreatureWithSpellsAttack_HasMagicSpells(creature);
+            CreatureWithUnnaturalAttack_CanUseEquipment(creature);
+        }
+
+        private void CreatureWithSpellLikeAbilityAttack_HasSpellLikeAbilitySpecialQuality(string creature)
         {
             Assert.That(table, Contains.Key(creature));
 
@@ -313,8 +321,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(keys, Is.Unique);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void CreatureWithPsionicAttack_HasPsionicSpecialQuality(string creature)
+        private void CreatureWithPsionicAttack_HasPsionicSpecialQuality(string creature)
         {
             Assert.That(table, Contains.Key(creature));
 
@@ -334,8 +341,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             Assert.That(hasPsionicAttack, Is.EqualTo(hasPsionicSpecialQuality));
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void CreatureWithSpellsAttack_HasMagicSpells(string creature)
+        private void CreatureWithSpellsAttack_HasMagicSpells(string creature)
         {
             Assert.That(table, Contains.Key(creature));
 
@@ -361,8 +367,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void CreatureWithUnnaturalAttack_CanUseEquipment(string creature)
+        private void CreatureWithUnnaturalAttack_CanUseEquipment(string creature)
         {
             Assert.That(table, Contains.Key(creature));
 

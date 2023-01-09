@@ -597,6 +597,12 @@
 	<collection>
 		<name>Sheep</name>
 	</collection>
+	<collection>
+		<name>Moose</name>
+	</collection>
+	<collection>
+		<name>Deer</name>
+	</collection>
   <collection>
     <name>Black Bear</name>
   </collection>
@@ -1624,6 +1630,9 @@
   <collection>
     <name>Light Warhorse</name>
   </collection>
+	<collection>
+		<name>Zebra</name>
+	</collection>
   <collection>
     <name>Lightfoot Halfling</name>
   </collection>
