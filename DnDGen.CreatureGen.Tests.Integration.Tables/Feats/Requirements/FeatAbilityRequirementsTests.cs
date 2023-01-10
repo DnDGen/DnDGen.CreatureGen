@@ -10,6 +10,7 @@ using DnDGen.TreasureGen.Items;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
 {
@@ -33,7 +34,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
             var monster = FeatConstants.Monster.All();
             var craft = FeatConstants.MagicItemCreation.All();
             var specialQualities = SpecialQualityTestData.GetRequirementKeys();
-            var featsWithFoci = GetFeatsWithFoci();
+            var featsWithFoci = GetAllFeatsWithFoci();
 
             var names = new List<string>();
             names.AddRange(feats);
@@ -57,12 +58,30 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
             AssertTypesAndAmounts(name, typesAndAmounts);
         }
 
+        [Test]
+        public void NoAbilityRequirements()
+        {
+            var names = GetNames();
+            var feats = GetFeatAbilityRequirementNames();
+            var monsters = GetMonsterAbilityRequirementNames();
+            var specialQualities = GetSpecialQualitiesAbilityRequirementNames();
+            var featsWithFoci = GetFeatsWithFociAbilityRequirementNames();
+
+            var emptyRequirements = names.Except(feats).Except(monsters).Except(specialQualities).Except(featsWithFoci);
+
+            foreach (var requirement in emptyRequirements)
+            {
+                var empty = new Dictionary<string, int>();
+                AssertTypesAndAmounts(requirement, empty);
+            }
+        }
+
         public static IEnumerable Feats
         {
             get
             {
                 var testCases = new Dictionary<string, Dictionary<string, int>>();
-                var feats = FeatConstants.All();
+                var feats = GetFeatAbilityRequirementNames();
 
                 foreach (var feat in feats)
                 {
@@ -107,17 +126,46 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
             }
         }
 
+        private static IEnumerable<string> GetFeatAbilityRequirementNames()
+        {
+            return new[]
+            {
+                FeatConstants.BullRush_Improved,
+                FeatConstants.Cleave,
+                FeatConstants.Cleave_Great,
+                FeatConstants.CombatExpertise,
+                FeatConstants.DeflectArrows,
+                FeatConstants.Disarm_Improved,
+                FeatConstants.Dodge,
+                FeatConstants.Feint_Improved,
+                FeatConstants.Grapple_Improved,
+                FeatConstants.Manyshot,
+                FeatConstants.Mobility,
+                //INFO: Natural Spell is only available to Druids
+                //FeatConstants.NaturalSpell,
+                FeatConstants.Overrun_Improved,
+                FeatConstants.PowerAttack,
+                FeatConstants.PreciseShot_Improved,
+                FeatConstants.RapidShot,
+                FeatConstants.ShotOnTheRun,
+                FeatConstants.SnatchArrows,
+                FeatConstants.SpringAttack,
+                FeatConstants.StunningFist,
+                FeatConstants.Sunder_Improved,
+                FeatConstants.Trip_Improved,
+                FeatConstants.TwoWeaponDefense,
+                FeatConstants.TwoWeaponFighting,
+                FeatConstants.TwoWeaponFighting_Greater,
+                FeatConstants.TwoWeaponFighting_Improved,
+                FeatConstants.WhirlwindAttack,
+            };
+        }
+
         public static IEnumerable Metamagic
         {
             get
             {
                 var testCases = new Dictionary<string, Dictionary<string, int>>();
-                var feats = FeatConstants.Metamagic.All();
-
-                foreach (var feat in feats)
-                {
-                    testCases[feat] = new Dictionary<string, int>();
-                }
 
                 foreach (var testCase in testCases)
                 {
@@ -131,7 +179,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
             get
             {
                 var testCases = new Dictionary<string, Dictionary<string, int>>();
-                var feats = FeatConstants.Monster.All();
+                var feats = GetMonsterAbilityRequirementNames();
 
                 foreach (var feat in feats)
                 {
@@ -151,17 +199,23 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
             }
         }
 
+        private static IEnumerable<string> GetMonsterAbilityRequirementNames()
+        {
+            return new[]
+            {
+                FeatConstants.Monster.AwesomeBlow,
+                FeatConstants.Monster.MultiweaponFighting,
+                FeatConstants.Monster.MultiweaponFighting_Greater,
+                FeatConstants.Monster.MultiweaponFighting_Improved,
+                FeatConstants.Monster.NaturalArmor_Improved,
+            };
+        }
+
         public static IEnumerable Craft
         {
             get
             {
                 var testCases = new Dictionary<string, Dictionary<string, int>>();
-                var feats = FeatConstants.MagicItemCreation.All();
-
-                foreach (var feat in feats)
-                {
-                    testCases[feat] = new Dictionary<string, int>();
-                }
 
                 foreach (var testCase in testCases)
                 {
@@ -176,7 +230,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
             {
                 var testCases = new Dictionary<string, Dictionary<string, int>>();
                 var helper = new SpecialQualityHelper();
-                var keys = SpecialQualityTestData.GetRequirementKeys();
+                var keys = GetSpecialQualitiesAbilityRequirementNames();
 
                 foreach (var key in keys)
                 {
@@ -260,7 +314,59 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
             }
         }
 
-        public static IEnumerable<string> GetFeatsWithFoci()
+        private static IEnumerable<string> GetSpecialQualitiesAbilityRequirementNames()
+        {
+            var helper = new SpecialQualityHelper();
+
+            return new[]
+            {
+                helper.BuildKeyFromSections(CreatureConstants.Dwarf_Deep, FeatConstants.WeaponProficiency_Martial, WeaponConstants.DwarvenWaraxe, 0.ToString()),
+
+                helper.BuildKeyFromSections(CreatureConstants.Dwarf_Hill, FeatConstants.WeaponProficiency_Martial, WeaponConstants.DwarvenWaraxe, 0.ToString()),
+
+                helper.BuildKeyFromSections(CreatureConstants.Dwarf_Mountain, FeatConstants.WeaponProficiency_Martial, WeaponConstants.DwarvenWaraxe, 0.ToString()),
+
+                helper.BuildKeyFromSections(CreatureConstants.Gnome_Forest, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DancingLights, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Gnome_Forest, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.GhostSound, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Gnome_Forest, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Prestidigitation, 0.ToString()),
+
+                helper.BuildKeyFromSections(CreatureConstants.Gnome_Rock, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DancingLights, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Gnome_Rock, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.GhostSound, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Gnome_Rock, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Prestidigitation, 0.ToString()),
+
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfCelestial, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.ProtectionFromEvil, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfCelestial, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Bless, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfCelestial, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Aid, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfCelestial, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DetectEvil, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfCelestial, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CureSeriousWounds, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfCelestial, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.NeutralizePoison, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfCelestial, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.HolySmite, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfCelestial, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.RemoveDisease, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfCelestial, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.DispelEvil, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfCelestial, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.HolyWord, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfCelestial, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.HolyAura, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfCelestial, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Hallow, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfCelestial, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.CharmMonster_Mass, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfCelestial, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.SummonMonsterIX, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfCelestial, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Resurrection, 0.ToString()),
+
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfFiend, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Darkness, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfFiend, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Desecrate, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfFiend, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.UnholyBlight, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfFiend, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Poison, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfFiend, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Contagion, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfFiend, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Blasphemy, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfFiend, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.UnholyAura, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfFiend, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Unhallow, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfFiend, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.HorridWilting, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfFiend, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.SummonMonsterIX, 0.ToString()),
+                helper.BuildKeyFromSections(CreatureConstants.Templates.HalfFiend, FeatConstants.SpecialQualities.SpellLikeAbility, SpellConstants.Destruction, 0.ToString()),
+
+                helper.BuildKeyFromSections(CreatureConstants.Templates.Vampire, FeatConstants.Dodge, string.Empty, 1.ToString()),
+            };
+        }
+
+        public static IEnumerable<string> GetAllFeatsWithFoci()
         {
             var featsWithFoci = new List<string>();
 
@@ -487,7 +593,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                 var testCases = new Dictionary<string, Dictionary<string, int>>();
 
                 //Prep feats with foci
-                var featsWithFoci = GetFeatsWithFoci();
+                var featsWithFoci = GetFeatsWithFociAbilityRequirementNames();
                 foreach (var featWithFoci in featsWithFoci)
                 {
                     testCases[featWithFoci] = new Dictionary<string, int>();
@@ -504,6 +610,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                     yield return new TestCaseData(testCase.Key, testCase.Value);
                 }
             }
+        }
+
+        private static IEnumerable<string> GetFeatsWithFociAbilityRequirementNames()
+        {
+            return new[]
+            {
+                $"{FeatConstants.WeaponProficiency_Exotic}/{WeaponConstants.BastardSword}",
+                $"{FeatConstants.WeaponProficiency_Exotic}/{WeaponConstants.DwarvenWaraxe}",
+                $"{FeatConstants.WeaponProficiency_Martial}/{WeaponConstants.DwarvenWaraxe}",
+            };
         }
     }
 }

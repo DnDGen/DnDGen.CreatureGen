@@ -2406,6 +2406,15 @@
 	<collection>
 		<name>LlamaAutomatic</name>
 	</collection>
+	<collection>
+		<name>MooseAutomatic</name>
+	</collection>
+	<collection>
+		<name>DeerAutomatic</name>
+	</collection>
+	<collection>
+		<name>ZebraAutomatic</name>
+	</collection>
   <collection>
     <name>Black BearAutomatic</name>
   </collection>
@@ -2516,6 +2525,15 @@
 	</collection>
 	<collection>
 		<name>LlamaBonus</name>
+	</collection>
+	<collection>
+		<name>MooseBonus</name>
+	</collection>
+	<collection>
+		<name>DeerBonus</name>
+	</collection>
+	<collection>
+		<name>ZebraBonus</name>
 	</collection>
   <collection>
     <name>Black BearBonus</name>

@@ -741,6 +741,14 @@
 		<name>Ox</name>
 		<entry>5</entry>
 	</collection>
+	<collection>
+		<name>Moose</name>
+		<entry>5</entry>
+	</collection>
+	<collection>
+		<name>Deer</name>
+		<entry>5</entry>
+	</collection>
   <collection>
     <name>Black Bear</name>
     <entry>3</entry>
@@ -1957,6 +1965,10 @@
     <name>Light Warhorse</name>
     <entry>3</entry>
   </collection>
+	<collection>
+		<name>Zebra</name>
+		<entry>3</entry>
+	</collection>
   <collection>
     <name>Lightfoot Halfling</name>
     <entry>1</entry>

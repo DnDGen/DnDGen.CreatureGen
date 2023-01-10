@@ -1303,6 +1303,15 @@
 	<collection>
 		<name>OxScent0</name>
 	</collection>
+	<collection>
+		<name>MooseScent0</name>
+	</collection>
+	<collection>
+		<name>DeerScent0</name>
+	</collection>
+	<collection>
+		<name>ZebraScent0</name>
+	</collection>
   <collection>
     <name>Black BearScent0</name>
   </collection>

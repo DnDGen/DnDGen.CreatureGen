@@ -757,6 +757,21 @@
 		<entry>Female</entry>
 		<entry>Male</entry>
 	</collection>
+	<collection>
+		<name>Moose</name>
+		<entry>Female</entry>
+		<entry>Male</entry>
+	</collection>
+	<collection>
+		<name>Deer</name>
+		<entry>Female</entry>
+		<entry>Male</entry>
+	</collection>
+	<collection>
+		<name>Zebra</name>
+		<entry>Female</entry>
+		<entry>Male</entry>
+	</collection>
   <collection>
     <name>Black Pudding</name>
 	  <entry>Agender</entry>

@@ -1980,6 +1980,8 @@
 	  <entry>Wolf</entry>
 	  <entry>Sheep</entry>
 	  <entry>Goat</entry>
+	  <entry>Deer</entry>
+	  <entry>Zebra</entry>
   </collection>
   <collection>
     <name>2</name>
@@ -2009,6 +2011,7 @@
 	  <entry>Llama</entry>
 	  <entry>Milk Cow</entry>
 	  <entry>Ox</entry>
+	  <entry>Moose</entry>
     <entry>Black Bear</entry>
     <entry>Blink Dog</entry>
     <entry>Boar</entry>
@@ -3293,6 +3296,9 @@
     <entry>Greater Basilisk</entry>
     <entry>Behir</entry>
     <entry>Bison</entry>
+	  <entry>Moose</entry>
+	  <entry>Deer</entry>
+	  <entry>Zebra</entry>
     <entry>Light Horse</entry>
     <entry>Heavy Horse</entry>
     <entry>Light Warhorse</entry>

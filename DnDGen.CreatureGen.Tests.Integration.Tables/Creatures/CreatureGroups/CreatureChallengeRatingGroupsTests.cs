@@ -176,7 +176,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Snake_Viper_Medium,
             CreatureConstants.Wolf,
             CreatureConstants.Bison_Goat,
-            CreatureConstants.Bison_Sheep)]
+            CreatureConstants.Bison_Sheep,
+            CreatureConstants.Bison_Deer,
+            CreatureConstants.Horse_Zebra)]
         [TestCase(ChallengeRatingConstants.CR2,
             CreatureConstants.AnimatedObject_Anvil_Medium,
             CreatureConstants.AnimatedObject_Block_Stone_Medium,
@@ -204,6 +206,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Bison_MilkCow,
             CreatureConstants.Bison_Llama,
             CreatureConstants.Bison_Ox,
+            CreatureConstants.Bison_Moose,
             CreatureConstants.Bear_Black,
             CreatureConstants.BlinkDog,
             CreatureConstants.Boar,
