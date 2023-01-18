@@ -655,6 +655,16 @@
 		<entry>Fortitude</entry>
 		<entry>Reflex</entry>
 	</collection>
+	<collection>
+		<name>Moose</name>
+		<entry>Fortitude</entry>
+		<entry>Reflex</entry>
+	</collection>
+	<collection>
+		<name>Deer</name>
+		<entry>Fortitude</entry>
+		<entry>Reflex</entry>
+	</collection>
   <collection>
     <name>Black Bear</name>
     <entry>Fortitude</entry>
@@ -2200,6 +2210,11 @@
     <entry>Fortitude</entry>
     <entry>Reflex</entry>
   </collection>
+	<collection>
+		<name>Zebra</name>
+		<entry>Fortitude</entry>
+		<entry>Reflex</entry>
+	</collection>
   <collection>
     <name>Lightfoot Halfling</name>
     <entry>Fortitude</entry>

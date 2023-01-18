@@ -422,6 +422,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Bison_Ox][None] = 0;
 
+                testCases[CreatureConstants.Bison_Moose][None] = 0;
+
+                testCases[CreatureConstants.Bison_Deer][None] = 0;
+
                 testCases[CreatureConstants.BlackPudding][GetData(SkillConstants.Climb)] = 8;
                 testCases[CreatureConstants.BlackPudding][GetData(SkillConstants.Climb, condition: "can always take 10")] = 10;
 
@@ -1168,6 +1172,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.Horse_Light][None] = 0;
 
                 testCases[CreatureConstants.Horse_Light_War][None] = 0;
+
+                testCases[CreatureConstants.Horse_Zebra][None] = 0;
 
                 testCases[CreatureConstants.Howler][None] = 0;
 

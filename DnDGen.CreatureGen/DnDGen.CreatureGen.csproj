@@ -2,6 +2,7 @@
 
   <PropertyGroup>
 	  <TargetFrameworks>net6.0</TargetFrameworks>
+    <TargetFrameworks>net6.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Karl M. Speer</Authors>
     <Company>DnDGen</Company>
@@ -176,9 +177,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DnDGen.Infrastructure" Version="4.2.4" />
-    <PackageReference Include="DnDGen.RollGen" Version="15.3.0" />
-    <PackageReference Include="DnDGen.TreasureGen" Version="10.3.4" />
+    <PackageReference Include="DnDGen.Infrastructure" Version="4.3.0" />
+    <PackageReference Include="DnDGen.RollGen" Version="15.4.2" />
+    <PackageReference Include="DnDGen.TreasureGen" Version="10.4.0" />
   </ItemGroup>
 
 </Project>

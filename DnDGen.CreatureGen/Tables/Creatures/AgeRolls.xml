@@ -28,12 +28,12 @@
   </collection>
   <collection>
     <name>Adult Arrowhawk</name>
-    <entry>Adulthood@29d2-18</entry>
+    <entry>Adult (Arrowhawk)@29d2-18</entry>
 	  <entry>Maximum@41</entry>
   </collection>
   <collection>
     <name>Adult Tojanida</name>
-    <entry>Adulthood@6d10+20</entry>
+    <entry>Adult (Tojanida)@6d10+20</entry>
     <entry>Maximum@81</entry>
   </collection>
   <collection>
@@ -816,12 +816,12 @@
   </collection>
   <collection>
     <name>Average Salamander</name>
-    <entry>Adulthood@899d2-799</entry>
+    <entry>Average (Salamander)@899d2-799</entry>
     <entry>Maximum@1000</entry>
   </collection>
   <collection>
     <name>Average Xorn</name>
-	  <entry>Adulthood@166d3+168</entry>
+	  <entry>Average (Xorn)@166d3+168</entry>
 	  <entry>Maximum@667</entry>
   </collection>
   <collection>
@@ -847,17 +847,27 @@
   </collection>
   <collection>
     <name>Baboon</name>
-    <entry>Land@40</entry>
-    <entry>Climb@30</entry>
+	  <entry>Adulthood@1d6+5</entry>
+	  <entry>Middle Age@1d4+11</entry>
+	  <entry>Old@1d4+15</entry>
+	  <entry>Venerable@2d6+18</entry>
+    <entry>Maximum@20+1d10</entry>
   </collection>
   <collection>
     <name>Badger</name>
-    <entry>Land@30</entry>
-    <entry>Burrow@10</entry>
+	  <entry>Adulthood@1d4</entry>
+	  <entry>Middle Age@1d2+4</entry>
+	  <entry>Old@1d2+6</entry>
+	  <entry>Venerable@1d2+8</entry>
+	  <entry>Maximum@8+1d2</entry>
   </collection>
   <collection>
     <name>Baleen Whale</name>
-    <entry>Swim@40</entry>
+	  <entry>Adulthood@4d6+1</entry>
+	  <entry>Middle Age@2d3+34</entry>
+	  <entry>Old@1d4+40</entry>
+	  <entry>Venerable@1d6+44</entry>
+	  <entry>Maximum@44+1d6</entry>
   </collection>
   <collection>
     <name>Balor</name>
@@ -866,29 +876,39 @@
   </collection>
   <collection>
     <name>Barbed Devil (Hamatula)</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@2000d6-2000</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Barghest</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@20d6-20</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Basilisk</name>
-    <entry>Land@20</entry>
+	  <entry>Adulthood@29d2-28</entry>
+	  <entry>Middle Age@2d10+29</entry>
+	  <entry>Old@1d10+49</entry>
+	  <entry>Venerable@2d4+58</entry>
+	  <entry>Maximum@60+1d6</entry>
   </collection>
   <collection>
     <name>Bat</name>
-    <entry>Land@5</entry>
-    <entry>Fly@40</entry>
+	  <entry>Adulthood@2d3-1</entry>
+	  <entry>Middle Age@1d2+5</entry>
+	  <entry>Old@1d2+7</entry>
+	  <entry>Venerable@2d6+8</entry>
+	  <entry>Maximum@10+1d10</entry>
   </collection>
   <collection>
     <name>Bat Swarm</name>
-    <entry>Land@5</entry>
-    <entry>Fly@40</entry>
+	  <entry>Adulthood@1d20</entry>
+	  <entry>Maximum@10+1d10</entry>
   </collection>
   <collection>
     <name>Bearded Devil (Barbazu)</name>
-    <entry>Land@40</entry>
+	  <entry>Adulthood@2000d6-2000</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Bebilith</name>
@@ -897,22 +917,32 @@
   </collection>
   <collection>
     <name>Behir</name>
-    <entry>Land@40</entry>
-    <entry>Climb@15</entry>
+	  <entry>Adulthood@4d8-3</entry>
+	  <entry>Middle Age@1d10+29</entry>
+	  <entry>Old@1d10+39</entry>
+	  <entry>Venerable@2d6+48</entry>
+	  <entry>Maximum@50+1d10</entry>
   </collection>
   <collection>
     <name>Beholder</name>
-    <entry>Land@5</entry>
-    <entry>Fly@20</entry>
+	  <entry>Adulthood@29d4-27</entry>
+	  <entry>Middle Age@1d20+89</entry>
+	  <entry>Old@1d10+109</entry>
+	  <entry>Venerable@6d6+114</entry>
+	  <entry>Maximum@120+3d10</entry>
   </collection>
   <collection>
     <name>Belker</name>
-    <entry>Land@30</entry>
-    <entry>Fly@50</entry>
+	  <entry>Adulthood@200d6-200</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Bison</name>
-    <entry>Land@40</entry>
+	  <entry>Adulthood@4d3-2</entry>
+	  <entry>Middle Age@2d3+9</entry>
+	  <entry>Old@1d4+15</entry>
+	  <entry>Venerable@1d3+19</entry>
+	  <entry>Maximum@20+1d2</entry>
   </collection>
 	<collection>
 		<name>Llama</name>
@@ -934,33 +964,45 @@
 		<name>Sheep</name>
 		<entry>Land@40</entry>
 	</collection>
+	<collection>
+		<name>Moose</name>
+		<entry>Land@40</entry>
+	</collection>
+	<collection>
+		<name>Deer</name>
+		<entry>Land@40</entry>
+	</collection>
+	<collection>
+		<name>Zebra</name>
+		<entry>Land@40</entry>
+	</collection>
   <collection>
     <name>Black Bear</name>
-    <entry>Land@40</entry>
+	  <entry>Adulthood@1d8+2</entry>
+	  <entry>Middle Age@1d4+10</entry>
+	  <entry>Old@1d3+14</entry>
+	  <entry>Venerable@17d2+1</entry>
+	  <entry>Maximum@17d2+1</entry>
   </collection>
   <collection>
     <name>Black Dragon, Adult</name>
-    <entry>Land@60</entry>
-    <entry>Fly@150</entry>
-    <entry>Swim@60</entry>
+	  <entry>Adult (Dragon)@1d100+100</entry>
+	  <entry>Maximum@201</entry>
   </collection>
   <collection>
     <name>Black Dragon, Ancient</name>
-    <entry>Land@60</entry>
-    <entry>Fly@150</entry>
-    <entry>Swim@60</entry>
+	  <entry>Ancient (Dragon)@199d2+602</entry>
+	  <entry>Maximum@1001</entry>
   </collection>
   <collection>
     <name>Black Dragon, Great Wyrm</name>
-    <entry>Land@60</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@60</entry>
+	  <entry>Great Wyrm (Dragon)@799d2+402</entry>
+	  <entry>Maximum@201</entry>
   </collection>
   <collection>
     <name>Black Dragon, Juvenile</name>
-    <entry>Land@60</entry>
-    <entry>Fly@150</entry>
-    <entry>Swim@60</entry>
+	  <entry>Juvenile (Dragon)@8d4+18</entry>
+	  <entry>Maximum@51</entry>
   </collection>
   <collection>
     <name>Black Dragon, Mature Adult</name>
@@ -1021,27 +1063,23 @@
   </collection>
   <collection>
     <name>Blue Dragon, Adult</name>
-    <entry>Land@40</entry>
-    <entry>Burrow@20</entry>
-    <entry>Fly@150</entry>
+	  <entry>Adult (Dragon)@1d100+100</entry>
+	  <entry>Maximum@201</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Ancient</name>
-    <entry>Land@40</entry>
-    <entry>Burrow@20</entry>
-    <entry>Fly@200</entry>
+	  <entry>Ancient (Dragon)@199d2+602</entry>
+	  <entry>Maximum@1001</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Great Wyrm</name>
-    <entry>Land@40</entry>
-    <entry>Burrow@20</entry>
-    <entry>Fly@200</entry>
+	  <entry>Great Wyrm (Dragon)@799d2+402</entry>
+	  <entry>Maximum@201</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Juvenile</name>
-    <entry>Land@40</entry>
-    <entry>Burrow@20</entry>
-    <entry>Fly@150</entry>
+	  <entry>Juvenile (Dragon)@8d4+18</entry>
+	  <entry>Maximum@51</entry>
   </collection>
   <collection>
     <name>Blue Dragon, Mature Adult</name>
@@ -1118,27 +1156,23 @@
   </collection>
   <collection>
     <name>Brass Dragon, Adult</name>
-    <entry>Land@60</entry>
-    <entry>Fly@200</entry>
-    <entry>Burrow@30</entry>
+	  <entry>Adult (Dragon)@1d100+100</entry>
+	  <entry>Maximum@201</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Ancient</name>
-    <entry>Land@60</entry>
-    <entry>Burrow@30</entry>
-    <entry>Fly@200</entry>
+	  <entry>Ancient (Dragon)@199d2+602</entry>
+	  <entry>Maximum@1001</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Great Wyrm</name>
-    <entry>Land@60</entry>
-    <entry>Burrow@30</entry>
-    <entry>Fly@250</entry>
+	  <entry>Great Wyrm (Dragon)@799d2+402</entry>
+	  <entry>Maximum@201</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Juvenile</name>
-    <entry>Land@60</entry>
-    <entry>Burrow@30</entry>
-    <entry>Fly@200</entry>
+	  <entry>Juvenile (Dragon)@8d4+18</entry>
+	  <entry>Maximum@51</entry>
   </collection>
   <collection>
     <name>Brass Dragon, Mature Adult</name>
@@ -1190,27 +1224,23 @@
   </collection>
   <collection>
     <name>Bronze Dragon, Adult</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
-    <entry>Swim@60</entry>
+	  <entry>Adult (Dragon)@1d100+100</entry>
+	  <entry>Maximum@201</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Ancient</name>
-    <entry>Land@40</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@60</entry>
+	  <entry>Ancient (Dragon)@199d2+602</entry>
+	  <entry>Maximum@1001</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Great Wyrm</name>
-    <entry>Land@40</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@60</entry>
+	  <entry>Great Wyrm (Dragon)@799d2+402</entry>
+	  <entry>Maximum@201</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Juvenile</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
-    <entry>Swim@60</entry>
+	  <entry>Juvenile (Dragon)@8d4+18</entry>
+	  <entry>Maximum@51</entry>
   </collection>
   <collection>
     <name>Bronze Dragon, Mature Adult</name>
@@ -1376,23 +1406,23 @@
   </collection>
   <collection>
     <name>Copper Dragon, Adult</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
+	  <entry>Adult (Dragon)@1d100+100</entry>
+	  <entry>Maximum@201</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Ancient</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
+	  <entry>Ancient (Dragon)@199d2+602</entry>
+	  <entry>Maximum@1001</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Great Wyrm</name>
-    <entry>Land@40</entry>
-    <entry>Fly@200</entry>
+	  <entry>Great Wyrm (Dragon)@799d2+402</entry>
+	  <entry>Maximum@201</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Juvenile</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
+	  <entry>Juvenile (Dragon)@8d4+18</entry>
+	  <entry>Maximum@51</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Mature Adult</name>
@@ -1971,27 +2001,23 @@
   </collection>
   <collection>
     <name>Gold Dragon, Adult</name>
-    <entry>Land@60</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@60</entry>
+	  <entry>Adult (Dragon)@1d100+100</entry>
+	  <entry>Maximum@201</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Ancient</name>
-    <entry>Land@60</entry>
-    <entry>Fly@250</entry>
-    <entry>Swim@60</entry>
+	  <entry>Ancient (Dragon)@199d2+602</entry>
+	  <entry>Maximum@1001</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Great Wyrm</name>
-    <entry>Land@60</entry>
-    <entry>Fly@250</entry>
-    <entry>Swim@60</entry>
+	  <entry>Great Wyrm (Dragon)@799d2+402</entry>
+	  <entry>Maximum@201</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Juvenile</name>
-    <entry>Land@60</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@60</entry>
+	  <entry>Juvenile (Dragon)@8d4+18</entry>
+	  <entry>Maximum@51</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Mature Adult</name>
@@ -2075,27 +2101,23 @@
   </collection>
   <collection>
     <name>Green Dragon, Adult</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
-    <entry>Swim@40</entry>
+	  <entry>Adult (Dragon)@1d100+100</entry>
+	  <entry>Maximum@201</entry>
   </collection>
   <collection>
     <name>Green Dragon, Ancient</name>
-    <entry>Land@40</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@40</entry>
+	  <entry>Ancient (Dragon)@199d2+602</entry>
+	  <entry>Maximum@1001</entry>
   </collection>
   <collection>
     <name>Green Dragon, Great Wyrm</name>
-    <entry>Land@40</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@40</entry>
+	  <entry>Great Wyrm (Dragon)@799d2+402</entry>
+	  <entry>Maximum@201</entry>
   </collection>
   <collection>
     <name>Green Dragon, Juvenile</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
-    <entry>Swim@40</entry>
+	  <entry>Juvenile (Dragon)@8d4+18</entry>
+	  <entry>Maximum@51</entry>
   </collection>
   <collection>
     <name>Green Dragon, Mature Adult</name>
@@ -2871,23 +2893,23 @@
   </collection>
   <collection>
     <name>Red Dragon, Adult</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
+	  <entry>Adult (Dragon)@1d100+100</entry>
+	  <entry>Maximum@201</entry>
   </collection>
   <collection>
     <name>Red Dragon, Ancient</name>
-    <entry>Land@40</entry>
-    <entry>Fly@200</entry>
+	  <entry>Ancient (Dragon)@199d2+602</entry>
+	  <entry>Maximum@1001</entry>
   </collection>
   <collection>
     <name>Red Dragon, Great Wyrm</name>
-    <entry>Land@40</entry>
-    <entry>Fly@200</entry>
+	  <entry>Great Wyrm (Dragon)@799d2+402</entry>
+	  <entry>Maximum@201</entry>
   </collection>
   <collection>
     <name>Red Dragon, Juvenile</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
+	  <entry>Juvenile (Dragon)@8d4+18</entry>
+	  <entry>Maximum@51</entry>
   </collection>
   <collection>
     <name>Red Dragon, Mature Adult</name>
@@ -3066,23 +3088,23 @@
   </collection>
   <collection>
     <name>Silver Dragon, Adult</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
+	  <entry>Adult (Dragon)@1d100+100</entry>
+	  <entry>Maximum@201</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Ancient</name>
-    <entry>Land@40</entry>
-    <entry>Fly@200</entry>
+	  <entry>Ancient (Dragon)@199d2+602</entry>
+	  <entry>Maximum@1001</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Great Wyrm</name>
-    <entry>Land@40</entry>
-    <entry>Fly@200</entry>
+	  <entry>Great Wyrm (Dragon)@799d2+402</entry>
+	  <entry>Maximum@201</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Juvenile</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
+	  <entry>Juvenile (Dragon)@8d4+18</entry>
+	  <entry>Maximum@51</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Mature Adult</name>
@@ -3408,31 +3430,23 @@
   </collection>
   <collection>
     <name>White Dragon, Adult</name>
-    <entry>Land@60</entry>
-    <entry>Burrow@30</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@60</entry>
+	  <entry>Adult (Dragon)@1d100+100</entry>
+	  <entry>Maximum@201</entry>
   </collection>
   <collection>
     <name>White Dragon, Ancient</name>
-    <entry>Land@60</entry>
-    <entry>Burrow@30</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@60</entry>
+	  <entry>Ancient (Dragon)@199d2+602</entry>
+	  <entry>Maximum@1001</entry>
   </collection>
   <collection>
     <name>White Dragon, Great Wyrm</name>
-    <entry>Land@60</entry>
-    <entry>Burrow@30</entry>
-    <entry>Fly@250</entry>
-    <entry>Swim@60</entry>
+	  <entry>Great Wyrm (Dragon)@799d2+402</entry>
+	  <entry>Maximum@201</entry>
   </collection>
   <collection>
     <name>White Dragon, Juvenile</name>
-    <entry>Land@60</entry>
-    <entry>Burrow@30</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@60</entry>
+	  <entry>Juvenile (Dragon)@8d4+18</entry>
+	  <entry>Maximum@51</entry>
   </collection>
   <collection>
     <name>White Dragon, Mature Adult</name>

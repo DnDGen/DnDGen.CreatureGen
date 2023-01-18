@@ -6,6 +6,7 @@ using DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
 {
@@ -53,9 +54,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
         public void NoFeatRequirements()
         {
             var names = GetNames();
-            var specialQualities = RequiredFeatsTestData.GetSpecialQualitiesAlignmentRequirementNames();
+            var feats = RequiredFeatsTestData.GetFeatFeatRequirementNames();
+            var monsters = RequiredFeatsTestData.GetMonsterFeatRequirementNames();
+            var specialQualities = RequiredFeatsTestData.GetSpecialQualitiesFeatRequirementNames();
 
-            var emptyRequirements = names.Except(specialQualities);
+            var emptyRequirements = names.Except(feats).Except(monsters).Except(specialQualities);
 
             foreach (var requirement in emptyRequirements)
             {
@@ -71,7 +74,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                 get
                 {
                     var testCases = new Dictionary<string, string[]>();
-                    var feats = FeatConstants.All();
+                    var feats = GetFeatFeatRequirementNames();
 
                     foreach (var feat in feats)
                     {
@@ -134,150 +137,181 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Requirements
                 }
             }
 
-            private static IEnumerable<string> GetFeatFeatRequirementNames()
+            public static IEnumerable<string> GetFeatFeatRequirementNames()
             {
                 return new[]
                 {
-                    FeatConstants.ArmorProficiency_Heavy] = new string[2] { FeatConstants.ArmorProficiency_Light, FeatConstants.ArmorProficiency_Medium };
-                FeatConstants.ArmorProficiency_Medium] = new string[1] { FeatConstants.ArmorProficiency_Light };
-                FeatConstants.AugmentSummoning] = new string[1] { $"{FeatConstants.SpellFocus}/{FeatConstants.Foci.Schools.Conjuration}" };
-                FeatConstants.BullRush_Improved] = new string[1] { FeatConstants.PowerAttack };
-                FeatConstants.Cleave] = new string[1] { FeatConstants.PowerAttack };
-                FeatConstants.Cleave_Great] = new string[2] { FeatConstants.Cleave, FeatConstants.PowerAttack };
-                FeatConstants.Critical_Improved] = new string[1] { GroupConstants.WeaponProficiency };
-                FeatConstants.DeflectArrows] = new string[1] { FeatConstants.UnarmedStrike_Improved };
-                FeatConstants.Diehard] = new string[1] { FeatConstants.Endurance };
-                FeatConstants.Disarm_Improved] = new string[1] { FeatConstants.CombatExpertise };
-                FeatConstants.FarShot] = new string[1] { FeatConstants.PointBlankShot };
-                FeatConstants.Feint_Improved] = new string[1] { FeatConstants.CombatExpertise };
-                FeatConstants.Grapple_Improved] = new string[1] { FeatConstants.UnarmedStrike_Improved };
-                FeatConstants.Manyshot] = new string[2] { FeatConstants.PointBlankShot, FeatConstants.RapidShot };
-                FeatConstants.Mobility] = new string[1] { FeatConstants.Dodge };
-                FeatConstants.MountedArchery] = new string[1] { FeatConstants.MountedCombat };
-                //INFO: Wild Shape is only had by Druid classes
-                //FeatConstants.NaturalSpell] = new string[1] { FeatConstants.WildShape };
-                FeatConstants.Overrun_Improved] = new string[1] { FeatConstants.PowerAttack };
-                FeatConstants.PreciseShot] = new string[1] { FeatConstants.PointBlankShot };
-                FeatConstants.PreciseShot_Improved] = new string[2] { FeatConstants.PointBlankShot, FeatConstants.PreciseShot };
-                FeatConstants.RapidReload] = new string[1] { GroupConstants.WeaponProficiency };
-                FeatConstants.RapidShot] = new string[1] { FeatConstants.PointBlankShot };
-                FeatConstants.RideByAttack] = new string[1] { FeatConstants.MountedCombat };
-                FeatConstants.ShieldBash_Improved] = new string[1] { FeatConstants.ShieldProficiency };
-                FeatConstants.ShieldProficiency_Tower] = new string[1] { FeatConstants.ShieldProficiency };
-                FeatConstants.ShotOnTheRun] = new string[3] { FeatConstants.Dodge, FeatConstants.Mobility, FeatConstants.PointBlankShot };
-                FeatConstants.SnatchArrows] = new string[2] { FeatConstants.DeflectArrows, FeatConstants.UnarmedStrike_Improved };
-                FeatConstants.SpellFocus_Greater] = new string[1] { FeatConstants.SpellFocus };
-                FeatConstants.SpellPenetration_Greater] = new string[1] { FeatConstants.SpellPenetration };
-                FeatConstants.SpiritedCharge] = new string[2] { FeatConstants.MountedCombat, FeatConstants.RideByAttack };
-                FeatConstants.SpringAttack] = new string[2] { FeatConstants.Dodge, FeatConstants.Mobility };
-                FeatConstants.StunningFist] = new string[1] { FeatConstants.UnarmedStrike_Improved };
-                FeatConstants.Sunder_Improved] = new string[1] { FeatConstants.PowerAttack };
-                FeatConstants.Trample] = new string[1] { FeatConstants.MountedCombat };
-                FeatConstants.Trip_Improved] = new string[1] { FeatConstants.CombatExpertise };
-                //INFO: No monsters can natively turn or rebuke
-                //FeatConstants.Turning_Extra] = new string[1] { FeatConstants.Turn };
-                //FeatConstants.Turning_Improved] = new string[1] { FeatConstants.Turn };
-                FeatConstants.TwoWeaponDefense] = new string[1] { FeatConstants.TwoWeaponFighting };
-                FeatConstants.TwoWeaponFighting_Greater] = new string[2] { FeatConstants.TwoWeaponFighting_Improved, FeatConstants.TwoWeaponFighting };
-                FeatConstants.TwoWeaponFighting_Improved] = new string[1] { FeatConstants.TwoWeaponFighting };
-                //INFO: Being a Fighter is a requirement for these feats
-                FeatConstants.WeaponFocus] = new string[1] { GroupConstants.WeaponProficiency };
-                //FeatConstants.WeaponFocus_Greater] = new string[1] { FeatConstants.WeaponFocus };
-                //INFO: Being a Fighter is a requirement for these feats
-                //FeatConstants.WeaponSpecialization_Greater] = new string[1] { FeatConstants.WeaponSpecialization };
-                FeatConstants.WhirlwindAttack] = new string[4] { FeatConstants.CombatExpertise, FeatConstants.Dodge, FeatConstants.Mobility, FeatConstants.SpringAttack };
-            };
-        }
+                    FeatConstants.ArmorProficiency_Heavy,
+                    FeatConstants.ArmorProficiency_Medium,
+                    FeatConstants.AugmentSummoning,
+                    FeatConstants.BullRush_Improved,
+                    FeatConstants.Cleave,
+                    FeatConstants.Cleave_Great,
+                    FeatConstants.Critical_Improved,
+                    FeatConstants.DeflectArrows,
+                    FeatConstants.Diehard,
+                    FeatConstants.Disarm_Improved,
+                    FeatConstants.FarShot,
+                    FeatConstants.Feint_Improved,
+                    FeatConstants.Grapple_Improved,
+                    FeatConstants.Manyshot,
+                    FeatConstants.Mobility,
+                    FeatConstants.MountedArchery,
+                    //INFO: Wild Shape is only had by Druid classes
+                    //FeatConstants.NaturalSpell,
+                    FeatConstants.Overrun_Improved,
+                    FeatConstants.PreciseShot,
+                    FeatConstants.PreciseShot_Improved,
+                    FeatConstants.RapidReload,
+                    FeatConstants.RapidShot,
+                    FeatConstants.RideByAttack,
+                    FeatConstants.ShieldBash_Improved,
+                    FeatConstants.ShieldProficiency_Tower,
+                    FeatConstants.ShotOnTheRun,
+                    FeatConstants.SnatchArrows,
+                    FeatConstants.SpellFocus_Greater,
+                    FeatConstants.SpellPenetration_Greater,
+                    FeatConstants.SpiritedCharge,
+                    FeatConstants.SpringAttack,
+                    FeatConstants.StunningFist,
+                    FeatConstants.Sunder_Improved,
+                    FeatConstants.Trample,
+                    FeatConstants.Trip_Improved,
+                    //INFO: No monsters can natively turn or rebuke
+                    //FeatConstants.Turning_Extra,
+                    //FeatConstants.Turning_Improved,
+                    FeatConstants.TwoWeaponDefense,
+                    FeatConstants.TwoWeaponFighting_Greater,
+                    FeatConstants.TwoWeaponFighting_Improved,
+                    //INFO: Being a Fighter is a requirement for these feats
+                    FeatConstants.WeaponFocus,
+                    //FeatConstants.WeaponFocus_Greater,
+                    //INFO: Being a Fighter is a requirement for these feats
+                    //FeatConstants.WeaponSpecialization_Greater,
+                    FeatConstants.WhirlwindAttack,
+                };
+            }
 
-        public static IEnumerable Metamagic
-        {
-            get
+            public static IEnumerable Metamagic
             {
-                var testCases = new Dictionary<string, string[]>();
-
-                foreach (var testCase in testCases)
+                get
                 {
-                    yield return new TestCaseData(testCase.Key, testCase.Value);
+                    var testCases = new Dictionary<string, string[]>();
+
+                    foreach (var testCase in testCases)
+                    {
+                        yield return new TestCaseData(testCase.Key, testCase.Value);
+                    }
                 }
             }
-        }
 
-        public static IEnumerable Monster
-        {
-            get
+            public static IEnumerable Monster
             {
-                var testCases = new Dictionary<string, string[]>();
-                var feats = FeatConstants.Monster.All();
-
-                foreach (var feat in feats)
+                get
                 {
-                    testCases[feat] = new string[0];
-                }
+                    var testCases = new Dictionary<string, string[]>();
+                    var feats = GetMonsterFeatRequirementNames();
 
-                testCases[FeatConstants.Monster.AwesomeBlow] = new string[2] { FeatConstants.PowerAttack, FeatConstants.BullRush_Improved };
-                testCases[FeatConstants.Monster.CraftConstruct] = new string[2] { FeatConstants.MagicItemCreation.CraftMagicArmsAndArmor, FeatConstants.MagicItemCreation.CraftWondrousItem };
-                testCases[FeatConstants.Monster.FlybyAttack_Improved] = new string[3] { FeatConstants.Dodge, FeatConstants.Mobility, FeatConstants.Monster.FlybyAttack };
-                testCases[FeatConstants.Monster.Multiattack_Improved] = new string[1] { FeatConstants.Monster.Multiattack };
-                testCases[FeatConstants.Monster.MultiweaponFighting_Greater] = new string[2] { FeatConstants.Monster.MultiweaponFighting, FeatConstants.Monster.MultiweaponFighting_Improved };
-                testCases[FeatConstants.Monster.MultiweaponFighting_Improved] = new string[1] { FeatConstants.Monster.MultiweaponFighting };
+                    foreach (var feat in feats)
+                    {
+                        testCases[feat] = new string[0];
+                    }
 
-                foreach (var testCase in testCases)
-                {
-                    yield return new TestCaseData(testCase.Key, testCase.Value);
-                }
-            }
-        }
+                    testCases[FeatConstants.Monster.AwesomeBlow] = new string[2] { FeatConstants.PowerAttack, FeatConstants.BullRush_Improved };
+                    testCases[FeatConstants.Monster.CraftConstruct] = new string[2] { FeatConstants.MagicItemCreation.CraftMagicArmsAndArmor, FeatConstants.MagicItemCreation.CraftWondrousItem };
+                    testCases[FeatConstants.Monster.FlybyAttack_Improved] = new string[3] { FeatConstants.Dodge, FeatConstants.Mobility, FeatConstants.Monster.FlybyAttack };
+                    testCases[FeatConstants.Monster.Multiattack_Improved] = new string[1] { FeatConstants.Monster.Multiattack };
+                    testCases[FeatConstants.Monster.MultiweaponFighting_Greater] = new string[2] { FeatConstants.Monster.MultiweaponFighting, FeatConstants.Monster.MultiweaponFighting_Improved };
+                    testCases[FeatConstants.Monster.MultiweaponFighting_Improved] = new string[1] { FeatConstants.Monster.MultiweaponFighting };
 
-        public static IEnumerable Craft
-        {
-            get
-            {
-                var testCases = new Dictionary<string, string[]>();
-
-                foreach (var testCase in testCases)
-                {
-                    yield return new TestCaseData(testCase.Key, testCase.Value);
+                    foreach (var testCase in testCases)
+                    {
+                        yield return new TestCaseData(testCase.Key, testCase.Value);
+                    }
                 }
             }
-        }
 
-        public static IEnumerable SpecialQualities
-        {
-            get
+            public static IEnumerable<string> GetMonsterFeatRequirementNames()
             {
-                var testCases = new Dictionary<string, string[]>();
+                return new[]
+                {
+                    FeatConstants.Monster.AwesomeBlow,
+                    FeatConstants.Monster.CraftConstruct,
+                    FeatConstants.Monster.FlybyAttack_Improved,
+                    FeatConstants.Monster.Multiattack_Improved,
+                    FeatConstants.Monster.MultiweaponFighting_Greater,
+                    FeatConstants.Monster.MultiweaponFighting_Improved,
+                };
+            }
+
+            public static IEnumerable Craft
+            {
+                get
+                {
+                    var testCases = new Dictionary<string, string[]>();
+
+                    foreach (var testCase in testCases)
+                    {
+                        yield return new TestCaseData(testCase.Key, testCase.Value);
+                    }
+                }
+            }
+
+            public static IEnumerable SpecialQualities
+            {
+                get
+                {
+                    var testCases = new Dictionary<string, string[]>();
+                    var helper = new SpecialQualityHelper();
+                    var keys = GetSpecialQualitiesFeatRequirementNames();
+
+                    foreach (var key in keys)
+                    {
+                        testCases[key] = new string[0];
+                    }
+
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Aberration, FeatConstants.ShieldProficiency, string.Empty, 0.ToString())] = new string[1] { FeatConstants.ArmorProficiency_Light };
+
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Elemental, FeatConstants.ShieldProficiency, string.Empty, 0.ToString())] = new string[1] { FeatConstants.ArmorProficiency_Light };
+
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Fey, FeatConstants.ShieldProficiency, string.Empty, 0.ToString())] = new string[1] { FeatConstants.ArmorProficiency_Light };
+
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Giant, FeatConstants.ShieldProficiency, string.Empty, 0.ToString())] = new string[1] { FeatConstants.ArmorProficiency_Light };
+
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Humanoid, FeatConstants.ShieldProficiency, string.Empty, 0.ToString())] = new string[1] { FeatConstants.ArmorProficiency_Light };
+
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Types.MonstrousHumanoid, FeatConstants.ShieldProficiency, string.Empty, 0.ToString())] = new string[1] { FeatConstants.ArmorProficiency_Light };
+
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Outsider, FeatConstants.ShieldProficiency, string.Empty, 0.ToString())] = new string[1] { FeatConstants.ArmorProficiency_Light };
+
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Undead, FeatConstants.ShieldProficiency, string.Empty, 0.ToString())] = new string[1] { FeatConstants.ArmorProficiency_Light };
+
+                    testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Subtypes.Shapechanger, FeatConstants.ShieldProficiency, string.Empty, 0.ToString())] = new string[1] { FeatConstants.ArmorProficiency_Light };
+
+                    foreach (var testCase in testCases)
+                    {
+                        yield return new TestCaseData(testCase.Key, testCase.Value);
+                    }
+                }
+            }
+
+            public static IEnumerable<string> GetSpecialQualitiesFeatRequirementNames()
+            {
                 var helper = new SpecialQualityHelper();
-                var keys = SpecialQualityTestData.GetRequirementKeys();
 
-                foreach (var key in keys)
+                return new[]
                 {
-                    testCases[key] = new string[0];
-                }
-
-                testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Aberration, FeatConstants.ShieldProficiency, string.Empty, 0.ToString())] = new string[1] { FeatConstants.ArmorProficiency_Light };
-
-                testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Elemental, FeatConstants.ShieldProficiency, string.Empty, 0.ToString())] = new string[1] { FeatConstants.ArmorProficiency_Light };
-
-                testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Fey, FeatConstants.ShieldProficiency, string.Empty, 0.ToString())] = new string[1] { FeatConstants.ArmorProficiency_Light };
-
-                testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Giant, FeatConstants.ShieldProficiency, string.Empty, 0.ToString())] = new string[1] { FeatConstants.ArmorProficiency_Light };
-
-                testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Humanoid, FeatConstants.ShieldProficiency, string.Empty, 0.ToString())] = new string[1] { FeatConstants.ArmorProficiency_Light };
-
-                testCases[helper.BuildKeyFromSections(CreatureConstants.Types.MonstrousHumanoid, FeatConstants.ShieldProficiency, string.Empty, 0.ToString())] = new string[1] { FeatConstants.ArmorProficiency_Light };
-
-                testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Outsider, FeatConstants.ShieldProficiency, string.Empty, 0.ToString())] = new string[1] { FeatConstants.ArmorProficiency_Light };
-
-                testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Undead, FeatConstants.ShieldProficiency, string.Empty, 0.ToString())] = new string[1] { FeatConstants.ArmorProficiency_Light };
-
-                testCases[helper.BuildKeyFromSections(CreatureConstants.Types.Subtypes.Shapechanger, FeatConstants.ShieldProficiency, string.Empty, 0.ToString())] = new string[1] { FeatConstants.ArmorProficiency_Light };
-
-                foreach (var testCase in testCases)
-                {
-                    yield return new TestCaseData(testCase.Key, testCase.Value);
-                }
+                    helper.BuildKeyFromSections(CreatureConstants.Types.Aberration, FeatConstants.ShieldProficiency, string.Empty, 0.ToString()),
+                    helper.BuildKeyFromSections(CreatureConstants.Types.Elemental, FeatConstants.ShieldProficiency, string.Empty, 0.ToString()),
+                    helper.BuildKeyFromSections(CreatureConstants.Types.Fey, FeatConstants.ShieldProficiency, string.Empty, 0.ToString()),
+                    helper.BuildKeyFromSections(CreatureConstants.Types.Giant, FeatConstants.ShieldProficiency, string.Empty, 0.ToString()),
+                    helper.BuildKeyFromSections(CreatureConstants.Types.Humanoid, FeatConstants.ShieldProficiency, string.Empty, 0.ToString()),
+                    helper.BuildKeyFromSections(CreatureConstants.Types.MonstrousHumanoid, FeatConstants.ShieldProficiency, string.Empty, 0.ToString()),
+                    helper.BuildKeyFromSections(CreatureConstants.Types.Outsider, FeatConstants.ShieldProficiency, string.Empty, 0.ToString()),
+                    helper.BuildKeyFromSections(CreatureConstants.Types.Undead, FeatConstants.ShieldProficiency, string.Empty, 0.ToString()),
+                    helper.BuildKeyFromSections(CreatureConstants.Types.Subtypes.Shapechanger, FeatConstants.ShieldProficiency, string.Empty, 0.ToString()),
+                };
             }
         }
     }
-}
 }

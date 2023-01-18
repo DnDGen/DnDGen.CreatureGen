@@ -707,6 +707,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(CreatureConstants.Bison_Sheep,
             SkillConstants.Listen,
             SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Bison_Moose,
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Bison_Deer,
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
         [TestCase(CreatureConstants.BlackPudding, SkillConstants.Climb)]
         [TestCase(CreatureConstants.BlackPudding_Elder, SkillConstants.Climb)]
         [TestCase(CreatureConstants.BlinkDog,
@@ -2906,6 +2912,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Listen,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Horse_Light_War,
+            SkillConstants.Listen,
+            SkillConstants.Spot)]
+        [TestCase(CreatureConstants.Horse_Zebra,
             SkillConstants.Listen,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.HoundArchon,

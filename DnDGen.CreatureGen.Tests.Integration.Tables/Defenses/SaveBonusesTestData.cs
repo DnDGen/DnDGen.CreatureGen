@@ -397,6 +397,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Bison_Ox][None] = 0;
 
+                testCases[CreatureConstants.Bison_Moose][None] = 0;
+
+                testCases[CreatureConstants.Bison_Deer][None] = 0;
+
                 testCases[CreatureConstants.BlackPudding][None] = 0;
 
                 testCases[CreatureConstants.BlackPudding_Elder][None] = 0;
@@ -999,6 +1003,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
                 testCases[CreatureConstants.Horse_Light][None] = 0;
 
                 testCases[CreatureConstants.Horse_Light_War][None] = 0;
+
+                testCases[CreatureConstants.Horse_Zebra][None] = 0;
 
                 testCases[CreatureConstants.HoundArchon][None] = 0;
 

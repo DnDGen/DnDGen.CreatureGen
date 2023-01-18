@@ -1888,6 +1888,15 @@
 	<collection>
 		<name>Pheasant:Prohibited</name>
 	</collection>
+	<collection>
+		<name>Moose:Prohibited</name>
+	</collection>
+	<collection>
+		<name>Deer:Prohibited</name>
+	</collection>
+	<collection>
+		<name>Zebra:Prohibited</name>
+	</collection>
   <collection>
     <name>Black Bear:Prohibited</name>
   </collection>

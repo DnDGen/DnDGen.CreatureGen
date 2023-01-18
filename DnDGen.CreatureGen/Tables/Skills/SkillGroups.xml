@@ -1150,6 +1150,21 @@
 		<entry>Listen</entry>
 		<entry>Spot</entry>
 	</collection>
+	<collection>
+		<name>Moose</name>
+		<entry>Listen</entry>
+		<entry>Spot</entry>
+	</collection>
+	<collection>
+		<name>Deer</name>
+		<entry>Listen</entry>
+		<entry>Spot</entry>
+	</collection>
+	<collection>
+		<name>Zebra</name>
+		<entry>Listen</entry>
+		<entry>Spot</entry>
+	</collection>
   <collection>
     <name>Black Bear</name>
     <entry>Climb</entry>
