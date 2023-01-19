@@ -11,6 +11,7 @@
             public const string Old = "Old";
             public const string Venerable = "Venerable";
             public const string Maximum = "Maximum";
+            public const string Swarm = "Swarm";
 
             public static class Dragon
             {
@@ -54,6 +55,11 @@
                 public const string Minor = "Minor (Xorn)";
                 public const string Average = "Average (Xorn)";
                 public const string Elder = "Elder (Xorn)";
+            }
+
+            public static class BlackPudding
+            {
+                public const string Elder = "Elder (Black Pudding)";
             }
         }
     }

@@ -11,6 +11,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         [TestCase(AgeConstants.Categories.Old, "Old")]
         [TestCase(AgeConstants.Categories.Venerable, "Venerable")]
         [TestCase(AgeConstants.Categories.Maximum, "Maximum")]
+        [TestCase(AgeConstants.Categories.Swarm, "Swarm")]
         [TestCase(AgeConstants.Categories.Arrowhawk.Juvenile, "Juvenile (Arrowhawk)")]
         [TestCase(AgeConstants.Categories.Arrowhawk.Adult, "Adult (Arrowhawk)")]
         [TestCase(AgeConstants.Categories.Arrowhawk.Elder, "Elder (Arrowhawk)")]
@@ -35,6 +36,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         [TestCase(AgeConstants.Categories.Xorn.Minor, "Minor (Xorn)")]
         [TestCase(AgeConstants.Categories.Xorn.Average, "Average (Xorn)")]
         [TestCase(AgeConstants.Categories.Xorn.Elder, "Elder (Xorn)")]
+        [TestCase(AgeConstants.Categories.BlackPudding.Elder, "Elder (Black Pudding)")]
         public void AgeConstant_Text(string constant, string value)
         {
             Assert.That(constant, Is.EqualTo(value));
