@@ -12,6 +12,8 @@
             public const string Venerable = "Venerable";
             public const string Maximum = "Maximum";
             public const string Swarm = "Swarm";
+            public const string Undead = "Undead";
+            public const string Construct = "Construct";
 
             public static class Dragon
             {
