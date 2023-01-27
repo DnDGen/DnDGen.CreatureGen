@@ -1796,7 +1796,8 @@
   </collection>
   <collection>
     <name>Dread Wraith</name>
-    <entry>Fly@60</entry>
+    <entry>Undead@100d100+1000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Dretch</name>
@@ -1805,8 +1806,11 @@
   </collection>
   <collection>
     <name>Drider</name>
-    <entry>Land@30</entry>
-    <entry>Climb@15</entry>
+	  <entry>Adulthood@149d2-149</entry>
+	  <entry>Middle Age@1d100+149</entry>
+	  <entry>Old@1d100+249</entry>
+	  <entry>Venerable@80d6+270</entry>
+	  <entry>Maximum@350+4d100</entry>
   </collection>
   <collection>
     <name>Drow</name>
@@ -1818,7 +1822,8 @@
   </collection>
   <collection>
     <name>Dryad</name>
-    <entry>Land@30</entry>
+    <entry>Adulthood@100d10</entry>
+    <entry>Maximum@1000+9d100</entry>
   </collection>
   <collection>
     <name>Duergar</name>
@@ -1835,37 +1840,40 @@
   </collection>
   <collection>
     <name>Eagle</name>
-    <entry>Land@10</entry>
-    <entry>Fly@80</entry>
+	  <entry>Adulthood@1d10+4</entry>
+	  <entry>Middle Age@1d3+14</entry>
+	  <entry>Old@1d2+17</entry>
+	  <entry>Venerable@2d6+18</entry>
+	  <entry>Maximum@20+1d10</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Elder</name>
-    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Adulthood@10000d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Greater</name>
-    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Adulthood@10000d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Huge</name>
-    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Adulthood@10000d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Large</name>
-    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Adulthood@10000d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Medium</name>
-    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Adulthood@10000d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Small</name>
-    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Adulthood@10000d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -1875,79 +1883,95 @@
   </collection>
   <collection>
     <name>Efreeti</name>
-    <entry>Land@20</entry>
-    <entry>Fly@40</entry>
+    <entry>Adulthood@10000d100</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Eight-Headed Cryohydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+    <entry>Adulthood@20d100+2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Eight-Headed Hydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+    <entry>Adulthood@20d100+2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Eight-Headed Pyrohydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+    <entry>Adulthood@20d100+2000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Elasmosaurus</name>
-    <entry>Land@20</entry>
-    <entry>Swim@50</entry>
+	  <entry>Adulthood@1d20+9</entry>
+	  <entry>Middle Age@2d3+28</entry>
+	  <entry>Old@2d3+33</entry>
+	  <entry>Venerable@8d6+32</entry>
+	  <entry>Maximum@40+4d10</entry>
   </collection>
   <collection>
     <name>Elder Arrowhawk</name>
-    <entry>Fly@60</entry>
+    <entry>Elder (Arrowhawk)@17d3+24</entry>
+	  <entry>Maximum@75</entry>
   </collection>
   <collection>
     <name>Elder Black Pudding</name>
-    <entry>Land@20</entry>
-    <entry>Climb@20</entry>
+    <entry>Elder (Black Pudding)@899d2-798</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Elder Tojanida</name>
-    <entry>Land@10</entry>
-    <entry>Swim@90</entry>
+    <entry>Elder (Tojanida)@23d4+58</entry>
+	  <entry>Maximum@150</entry>
   </collection>
   <collection>
     <name>Elder Xorn</name>
-    <entry>Land@20</entry>
-    <entry>Burrow@20</entry>
+    <entry>Elder (Xorn)@37d10+630</entry>
+	  <entry>Maximum@900+1d100</entry>
   </collection>
   <collection>
     <name>Elephant</name>
-    <entry>Land@40</entry>
+	  <entry>Adulthood@5d8+5</entry>
+	  <entry>Middle Age@4d3+42</entry>
+	  <entry>Old@2d3+53</entry>
+	  <entry>Venerable@2d6+58</entry>
+	  <entry>Maximum@60+1d10</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Cryohydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+    <entry>Adulthood@20d100+8000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Hydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+    <entry>Adulthood@20d100+8000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Pyrohydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+    <entry>Adulthood@20d100+8000</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Erinyes</name>
-    <entry>Land@30</entry>
-    <entry>Fly@50</entry>
+    <entry>Adulthood@10000d100</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Ethereal Filcher</name>
-    <entry>Land@40</entry>
+	  <entry>Adulthood@29d2-24</entry>
+	  <entry>Middle Age@2d3+33</entry>
+	  <entry>Old@2d3+38</entry>
+	  <entry>Venerable@2d6+43</entry>
+	  <entry>Maximum@45+1d10</entry>
   </collection>
   <collection>
     <name>Ethereal Marauder</name>
-    <entry>Land@40</entry>
+	  <entry>Adulthood@29d2-24</entry>
+	  <entry>Middle Age@2d3+33</entry>
+	  <entry>Old@2d3+38</entry>
+	  <entry>Venerable@2d6+43</entry>
+	  <entry>Maximum@45+1d10</entry>
   </collection>
   <collection>
     <name>Ettercap</name>
@@ -1956,36 +1980,40 @@
   </collection>
   <collection>
     <name>Ettin</name>
-    <entry>Land@40</entry>
+	  <entry>Adulthood@4d8-3</entry>
+	  <entry>Middle Age@1d20+29</entry>
+	  <entry>Old@1d20+49</entry>
+	  <entry>Venerable@2d6+68</entry>
+	  <entry>Maximum@70+1d10</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Elder</name>
-    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Adulthood@10000d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Greater</name>
-    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Adulthood@10000d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Huge</name>
-    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Adulthood@10000d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Large</name>
-    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Adulthood@10000d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Medium</name>
-    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Adulthood@10000d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Small</name>
-    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Adulthood@10000d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -3590,32 +3618,32 @@
   </collection>
   <collection>
     <name>Water Elemental, Elder</name>
-    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Adulthood@10000d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Water Elemental, Greater</name>
-    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Adulthood@10000d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Water Elemental, Huge</name>
-    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Adulthood@10000d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Water Elemental, Large</name>
-    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Adulthood@10000d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Water Elemental, Medium</name>
-    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Adulthood@10000d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Water Elemental, Small</name>
-    <entry>Adulthood@2000d6-2000</entry>
+    <entry>Adulthood@10000d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
