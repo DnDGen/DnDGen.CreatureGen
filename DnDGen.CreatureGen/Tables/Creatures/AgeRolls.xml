@@ -1975,8 +1975,11 @@
   </collection>
   <collection>
     <name>Ettercap</name>
-    <entry>Land@30</entry>
-    <entry>Climb@30</entry>
+    <entry>Adulthood@2d6+1</entry>
+    <entry>Middle Age@1d8+13</entry>
+    <entry>Old@1d10+21</entry>
+    <entry>Venerable@2d4+30</entry>
+    <entry>Maximum@32+1d6</entry>
   </collection>
   <collection>
     <name>Ettin</name>
@@ -2027,22 +2030,23 @@
   </collection>
   <collection>
     <name>Five-Headed Cryohydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+    <entry>Adulthood@25d20</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Five-Headed Hydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+    <entry>Adulthood@25d20</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Five-Headed Pyrohydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+    <entry>Adulthood@25d20</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Flamebrother Salamander</name>
-    <entry>Land@20</entry>
+    <entry>Flamebrother (Salamander)@89d2-79</entry>
+    <entry>Maximum@100</entry>
   </collection>
   <collection>
     <name>Flesh Golem</name>
@@ -2051,7 +2055,11 @@
   </collection>
   <collection>
     <name>Forest Gnome</name>
-    <entry>Land@20</entry>
+    <entry>Adulthood@59d2-19</entry>
+    <entry>Middle Age@7d8+93</entry>
+    <entry>Old@7d8+143</entry>
+    <entry>Venerable@60d6+140</entry>
+    <entry>Maximum@200+3d100</entry>
   </collection>
   <collection>
     <name>Formian Myrmarch</name>
