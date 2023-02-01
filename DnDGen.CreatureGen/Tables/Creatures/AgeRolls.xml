@@ -2021,7 +2021,11 @@
   </collection>
   <collection>
     <name>Fire Giant</name>
-    <entry>Land@40</entry>
+    <entry>Adulthood@127d2-55</entry>
+    <entry>Middle Age@7d8+193</entry>
+    <entry>Old@7d8+243</entry>
+    <entry>Venerable@10d6+290</entry>
+    <entry>Maximum@300+5d10</entry>
   </collection>
   <collection>
     <name>Fire Mephit</name>
@@ -2063,32 +2067,59 @@
   </collection>
   <collection>
     <name>Formian Myrmarch</name>
-    <entry>Land@50</entry>
+    <entry>Adulthood@13d3-10</entry>
+    <entry>Middle Age@1d10+29</entry>
+    <entry>Old@2d3+38</entry>
+    <entry>Venerable@2d6+43</entry>
+    <entry>Maximum@45+1d10</entry>
   </collection>
   <collection>
     <name>Formian Queen</name>
-    <entry>Land@0</entry>
+    <entry>Adulthood@13d3-10</entry>
+    <entry>Middle Age@1d10+29</entry>
+    <entry>Old@2d3+38</entry>
+    <entry>Venerable@2d6+43</entry>
+    <entry>Maximum@45+1d10</entry>
   </collection>
   <collection>
     <name>Formian Taskmaster</name>
-    <entry>Land@40</entry>
+    <entry>Adulthood@13d3-10</entry>
+    <entry>Middle Age@1d10+29</entry>
+    <entry>Old@2d3+38</entry>
+    <entry>Venerable@2d6+43</entry>
+    <entry>Maximum@45+1d10</entry>
   </collection>
   <collection>
     <name>Formian Warrior</name>
-    <entry>Land@40</entry>
+    <entry>Adulthood@13d3-10</entry>
+    <entry>Middle Age@1d10+29</entry>
+    <entry>Old@2d3+38</entry>
+    <entry>Venerable@2d6+43</entry>
+    <entry>Maximum@45+1d10</entry>
   </collection>
   <collection>
     <name>Formian Worker</name>
-    <entry>Land@40</entry>
+    <entry>Adulthood@13d3-10</entry>
+    <entry>Middle Age@1d10+29</entry>
+    <entry>Old@2d3+38</entry>
+    <entry>Venerable@2d6+43</entry>
+    <entry>Maximum@45+1d10</entry>
   </collection>
   <collection>
     <name>Frost Giant</name>
-    <entry>Land@40</entry>
+    <entry>Adulthood@113d2-77</entry>
+    <entry>Middle Age@7d8+143</entry>
+    <entry>Old@7d8+193</entry>
+    <entry>Venerable@10d6+240</entry>
+    <entry>Maximum@250+5d10</entry>
   </collection>
   <collection>
     <name>Frost Worm</name>
-    <entry>Land@30</entry>
-    <entry>Burrow@10</entry>
+    <entry>Adulthood@13d3-10</entry>
+    <entry>Middle Age@1d10+29</entry>
+    <entry>Old@2d3+38</entry>
+    <entry>Venerable@2d6+43</entry>
+    <entry>Maximum@45+1d10</entry>
   </collection>
   <collection>
     <name>Gargoyle</name>
@@ -2097,8 +2128,11 @@
   </collection>
   <collection>
     <name>Gauth (Lesser Beholder)</name>
-    <entry>Land@5</entry>
-    <entry>Fly@20</entry>
+    <entry>Adulthood@29d4-27</entry>
+    <entry>Middle Age@1d20+89</entry>
+    <entry>Old@1d10+109</entry>
+    <entry>Venerable@6d6+114</entry>
+    <entry>Maximum@120+3d10</entry>
   </collection>
   <collection>
     <name>Gelatinous Cube</name>

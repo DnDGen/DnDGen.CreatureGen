@@ -661,5 +661,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
                 Assert.That(attackNames, Contains.Item("Implant"));
             }
         }
+
+        [Test]
+        public void SnakeHasLength()
+        {
+            var snake = creatureGenerator.Generate(false, CreatureConstants.Snake_Constrictor);
+            creatureAsserter.AssertCreature(snake);
+
+            Assert.That(snake.Demographics.Length, Is.Not.Null);
+            Assert.That(snake.Demographics.Length.Unit, Is.EqualTo("inches"));
+            Assert.That(snake.Demographics.Length.Value, Is.Positive);
+            Assert.That(snake.Demographics.Length.Description, Is.Not.Empty);
+        }
     }
 }

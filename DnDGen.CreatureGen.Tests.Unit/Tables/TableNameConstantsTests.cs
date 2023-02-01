@@ -46,11 +46,15 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         [TestCase(TableNameConstants.TypeAndAmount.FeatAbilityRequirements, "FeatAbilityRequirements")]
         [TestCase(TableNameConstants.TypeAndAmount.FeatSkillRankRequirements, "FeatSkillRankRequirements")]
         [TestCase(TableNameConstants.TypeAndAmount.FeatSpeedRequirements, "FeatSpeedRequirements")]
+        [TestCase(TableNameConstants.TypeAndAmount.Heights, "Heights")]
+        [TestCase(TableNameConstants.TypeAndAmount.KnownSpells, "KnownSpells")]
+        [TestCase(TableNameConstants.TypeAndAmount.Lengths, "Lengths")]
         [TestCase(TableNameConstants.TypeAndAmount.SaveBonuses, "SaveBonuses")]
         [TestCase(TableNameConstants.TypeAndAmount.SkillBonuses, "SkillBonuses")]
         [TestCase(TableNameConstants.TypeAndAmount.SpellDomains, "SpellDomains")]
         [TestCase(TableNameConstants.TypeAndAmount.SpellLevels, "SpellLevels")]
         [TestCase(TableNameConstants.TypeAndAmount.SpellsPerDay, "SpellsPerDay")]
+        [TestCase(TableNameConstants.TypeAndAmount.Weights, "Weights")]
         public void TableNameConstant(string constant, string value)
         {
             Assert.That(constant, Is.EqualTo(value));

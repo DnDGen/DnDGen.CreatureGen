@@ -334,7 +334,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             creature.Demographics.Age.Value = random.Next(100) + 20;
             creature.Demographics.Appearance = $"appearance {Guid.NewGuid()}";
             creature.Demographics.Gender = $"gender {Guid.NewGuid()}";
-            creature.Demographics.HeightOrLength.Value = random.Next(20) + 50;
+            creature.Demographics.Height.Value = random.Next(20) + 50;
             creature.Demographics.MaximumAge.Value = creature.Demographics.Age.Value + random.Next(100);
             creature.Demographics.Weight.Value = random.Next(200) + 100;
 

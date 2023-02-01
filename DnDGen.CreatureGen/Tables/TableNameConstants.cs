@@ -54,6 +54,7 @@
             public const string FeatSpeedRequirements = "FeatSpeedRequirements";
             public const string Heights = "Heights";
             public const string KnownSpells = "KnownSpells";
+            public const string Lengths = "Lengths";
             public const string SaveBonuses = "SaveBonuses";
             public const string SkillBonuses = "SkillBonuses";
             public const string SpellDomains = "SpellDomains";

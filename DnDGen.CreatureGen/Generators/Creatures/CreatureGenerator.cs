@@ -408,7 +408,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             {
                 var heightMultiplier = Math.Pow(2, sizeDifference);
                 var weightMultiplier = Math.Pow(8, sizeDifference);
-                demographics.HeightOrLength.Value *= heightMultiplier;
+                demographics.Height.Value *= heightMultiplier;
+                demographics.Length.Value *= heightMultiplier;
                 demographics.Weight.Value *= weightMultiplier;
             }
 

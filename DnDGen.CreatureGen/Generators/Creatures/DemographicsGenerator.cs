@@ -14,12 +14,19 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         private readonly ICollectionSelector collectionsSelector;
         private readonly Dice dice;
         private readonly ITypeAndAmountSelector typeAndAmountSelector;
+        private readonly string[] heightDescriptions;
+        private readonly string[] lengthDescriptions;
+        private readonly string[] weightDescriptions;
 
         public DemographicsGenerator(ICollectionSelector collectionsSelector, Dice dice, ITypeAndAmountSelector typeAndAmountSelector)
         {
             this.collectionsSelector = collectionsSelector;
             this.dice = dice;
             this.typeAndAmountSelector = typeAndAmountSelector;
+
+            heightDescriptions = new[] { "Very Short", "Short", "Average", "Tall", "Very Tall" };
+            lengthDescriptions = new[] { "Very Short", "Short", "Average", "Long", "Very Long" };
+            weightDescriptions = new[] { "Very Light", "Light", "Average", "Heavy", "Very Heavy" };
         }
 
         public Demographics Generate(string creatureName)
@@ -34,15 +41,23 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var baseHeight = heights.First(h => h.Type == demographics.Gender);
             var heightModifier = heights.First(h => h.Type == creatureName);
 
-            demographics.HeightOrLength.Value = baseHeight.Amount + heightModifier.Amount;
-            demographics.HeightOrLength.Description = GetDescription(heightModifier.RawAmount, heightModifier.Amount, "Short", "Average", "Tall");
+            demographics.Height.Value = baseHeight.Amount + heightModifier.Amount;
+            demographics.Height.Description = GetDescription(heightModifier.RawAmount, heightModifier.Amount, heightDescriptions);
+
+            var lengths = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Lengths, creatureName);
+            var baseLength = lengths.First(h => h.Type == demographics.Gender);
+            var lengthModifier = lengths.First(h => h.Type == creatureName);
+
+            demographics.Length.Value = baseLength.Amount + lengthModifier.Amount;
+            demographics.Length.Description = GetDescription(lengthModifier.RawAmount, lengthModifier.Amount, lengthDescriptions);
 
             var weights = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Weights, creatureName);
             var baseWeight = weights.First(h => h.Type == demographics.Gender);
             var weightModifier = weights.First(h => h.Type == creatureName);
+            var multiplier = Math.Max(heightModifier.Amount, lengthModifier.Amount);
 
-            demographics.Weight.Value = baseWeight.Amount + heightModifier.Amount * weightModifier.Amount;
-            demographics.Weight.Description = GetDescription(weightModifier.RawAmount, weightModifier.Amount, "Light", "Average", "Heavy");
+            demographics.Weight.Value = baseWeight.Amount + multiplier * weightModifier.Amount;
+            demographics.Weight.Description = GetDescription(weightModifier.RawAmount, weightModifier.Amount, weightDescriptions);
 
             demographics.Appearance = collectionsSelector.SelectRandomFrom(TableNameConstants.Collection.Appearances, creatureName);
 

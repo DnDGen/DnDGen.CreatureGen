@@ -1273,7 +1273,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         {
             creatureData.Size = originalSize;
             demographics.Weight.Value = 2;
-            demographics.HeightOrLength.Value = 2435;
+            demographics.Height.Value = 2435;
+            demographics.Length.Value = 922;
             demographics.Age.Value = 3546;
             demographics.MaximumAge.Value = 4657;
 
@@ -1300,7 +1301,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
 
             Assert.That(creature.Demographics.Age.Value, Is.EqualTo(3546));
             Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(4657));
-            Assert.That(creature.Demographics.HeightOrLength.Value, Is.EqualTo(2435 * heightMultiplier));
+            Assert.That(creature.Demographics.Height.Value, Is.EqualTo(2435 * heightMultiplier));
+            Assert.That(creature.Demographics.Length.Value, Is.EqualTo(922 * heightMultiplier));
             Assert.That(creature.Demographics.Weight.Value, Is.EqualTo(2 * weightMultiplier));
         }
 
