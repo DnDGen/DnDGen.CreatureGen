@@ -662,16 +662,38 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             }
         }
 
-        [Test]
-        public void SnakeHasLength()
+        [TestCase(CreatureConstants.Human, true, false)]
+        [TestCase(CreatureConstants.Snake_Constrictor, false, true)]
+        [TestCase(CreatureConstants.Wolf, true, true)]
+        public void SnakeHasLength(string creatureName, bool hasHeight, bool hasLength)
         {
-            var snake = creatureGenerator.Generate(false, CreatureConstants.Snake_Constrictor);
-            creatureAsserter.AssertCreature(snake);
+            var creature = creatureGenerator.Generate(false, creatureName);
+            creatureAsserter.AssertCreature(creature);
 
-            Assert.That(snake.Demographics.Length, Is.Not.Null);
-            Assert.That(snake.Demographics.Length.Unit, Is.EqualTo("inches"));
-            Assert.That(snake.Demographics.Length.Value, Is.Positive);
-            Assert.That(snake.Demographics.Length.Description, Is.Not.Empty);
+            Assert.That(creature.Demographics.Height, Is.Not.Null);
+            Assert.That(creature.Demographics.Height.Unit, Is.EqualTo("inches"));
+            Assert.That(creature.Demographics.Height.Description, Is.Not.Empty);
+            Assert.That(creature.Demographics.Length, Is.Not.Null);
+            Assert.That(creature.Demographics.Length.Unit, Is.EqualTo("inches"));
+            Assert.That(creature.Demographics.Length.Description, Is.Not.Empty);
+
+            if (hasHeight)
+            {
+                Assert.That(creature.Demographics.Height.Value, Is.Positive);
+            }
+            else
+            {
+                Assert.That(creature.Demographics.Height.Value, Is.Zero);
+            }
+
+            if (hasLength)
+            {
+                Assert.That(creature.Demographics.Length.Value, Is.Positive);
+            }
+            else
+            {
+                Assert.That(creature.Demographics.Length.Value, Is.Zero);
+            }
         }
     }
 }
