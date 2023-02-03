@@ -665,6 +665,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Human, true, false)]
         [TestCase(CreatureConstants.Snake_Constrictor, false, true)]
         [TestCase(CreatureConstants.Wolf, true, true)]
+        [TestCase(CreatureConstants.YuanTi_Abomination, true, true)]
+        [TestCase(CreatureConstants.YuanTi_Pureblood, true, false)]
+        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeHead, true, false)]
         public void SnakeHasLength(string creatureName, bool hasHeight, bool hasLength)
         {
             var creature = creatureGenerator.Generate(false, creatureName);

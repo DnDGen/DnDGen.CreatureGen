@@ -962,7 +962,11 @@
 	</collection>
 	<collection>
 		<name>Goat</name>
-		<entry>Land@40</entry>
+		<entry>Adulthood@1d4+1</entry>
+		<entry>Middle Age@1d2+5</entry>
+		<entry>Old@1d2+7</entry>
+		<entry>Venerable@2d8+8</entry>
+		<entry>Maximum@10+2d12</entry>
 	</collection>
 	<collection>
 		<name>Sheep</name>
@@ -2291,16 +2295,27 @@
   </collection>
   <collection>
     <name>Girallon</name>
-    <entry>Land@40</entry>
-    <entry>Climb@40</entry>
+	  <entry>Adulthood@1d8+11</entry>
+	  <entry>Middle Age@2d3+18</entry>
+	  <entry>Old@2d3+23</entry>
+	  <entry>Venerable@1d6+29</entry>
+	  <entry>Maximum@29+1d6</entry>
   </collection>
   <collection>
     <name>Githyanki</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@1d20+14</entry>
+	  <entry>Middle Age@17d2+18</entry>
+	  <entry>Old@2d10+51</entry>
+	  <entry>Venerable@16d4+56</entry>
+	  <entry>Maximum@72+4d12</entry>
   </collection>
   <collection>
     <name>Githzerai</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@1d20+14</entry>
+	  <entry>Middle Age@17d2+18</entry>
+	  <entry>Old@8d3+45</entry>
+	  <entry>Venerable@6d6+64</entry>
+	  <entry>Maximum@70+3d10</entry>
   </collection>
   <collection>
     <name>Glabrezu</name>
@@ -2385,7 +2400,11 @@
   </collection>
   <collection>
     <name>Gorgon</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@29d2-24</entry>
+	  <entry>Middle Age@2d8+33</entry>
+	  <entry>Old@1d10+49</entry>
+	  <entry>Venerable@3d6+57</entry>
+	  <entry>Maximum@59+2d8</entry>
   </collection>
   <collection>
     <name>Gray Elf</name>
@@ -2397,11 +2416,16 @@
   </collection>
   <collection>
     <name>Gray Ooze</name>
-    <entry>Land@10</entry>
+	  <entry>Adulthood@1d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Gray Render</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@16d4-15</entry>
+	  <entry>Middle Age@8d4+42</entry>
+	  <entry>Old@8d4+67</entry>
+	  <entry>Venerable@40d6+60</entry>
+	  <entry>Maximum@100+2d100</entry>
   </collection>
   <collection>
     <name>Gray Slaad</name>
@@ -2415,7 +2439,8 @@
   </collection>
   <collection>
     <name>Greater Shadow</name>
-    <entry>Fly@40</entry>
+	  <entry>Undead@100d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Greater Stone Golem</name>
@@ -2494,27 +2519,37 @@
   </collection>
   <collection>
     <name>Grick</name>
-    <entry>Land@30</entry>
-    <entry>Climb@20</entry>
+	  <entry>Adulthood@16d4-15</entry>
+	  <entry>Middle Age@8d4+42</entry>
+	  <entry>Old@2d8+73</entry>
+	  <entry>Venerable@2d6+88</entry>
+	  <entry>Maximum@90+1d10</entry>
   </collection>
   <collection>
     <name>Griffon</name>
-    <entry>Land@30</entry>
-    <entry>Fly@80</entry>
+	  <entry>Adulthood@8d4-7</entry>
+	  <entry>Middle Age@2d10+24</entry>
+	  <entry>Old@2d8+43</entry>
+	  <entry>Venerable@2d6+58</entry>
+	  <entry>Maximum@60+1d10</entry>
   </collection>
   <collection>
     <name>Grig</name>
-    <entry>Land@20</entry>
-    <entry>Fly@40</entry>
+	  <entry>Adulthood@1000d100+16</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Grig with fiddle</name>
-    <entry>Land@20</entry>
-    <entry>Fly@40</entry>
+	  <entry>Adulthood@1000d100+16</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Grimlock</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@1d10+14</entry>
+	  <entry>Middle Age@1d8+24</entry>
+	  <entry>Old@8d3+25</entry>
+	  <entry>Venerable@2d6+48</entry>
+	  <entry>Maximum@50+1d10</entry>
   </collection>
   <collection>
     <name>Guardian Naga</name>
@@ -2526,72 +2561,105 @@
   </collection>
   <collection>
     <name>Gynosphinx</name>
-    <entry>Land@40</entry>
-    <entry>Fly@60</entry>
+	  <entry>Adulthood@100d100+16</entry>
+	  <entry>Maximum@50d100+5000</entry>
   </collection>
   <collection>
     <name>Half-Elf</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@41d2-21</entry>
+	  <entry>Middle Age@6d6+56</entry>
+	  <entry>Old@31d2+62</entry>
+	  <entry>Venerable@12d6+113</entry>
+	  <entry>Maximum@125+3d20</entry>
   </collection>
   <collection>
     <name>Half-Orc</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@3d6+11</entry>
+	  <entry>Middle Age@2d8+28</entry>
+	  <entry>Old@2d8+43</entry>
+	  <entry>Venerable@4d6+56</entry>
+	  <entry>Maximum@60+2d10</entry>
   </collection>
   <collection>
     <name>Harpy</name>
-    <entry>Land@20</entry>
-    <entry>Fly@80</entry>
+	  <entry>Adulthood@2d12</entry>
+	  <entry>Middle Age@1d10+24</entry>
+	  <entry>Old@1d8+34</entry>
+	  <entry>Venerable@1d8+42</entry>
+	  <entry>Maximum@42+1d8</entry>
   </collection>
   <collection>
     <name>Hawk</name>
-    <entry>Land@10</entry>
-    <entry>Fly@60</entry>
+	  <entry>Adulthood@2d3+1</entry>
+	  <entry>Middle Age@1d2+7</entry>
+	  <entry>Old@1d2+9</entry>
+	  <entry>Venerable@4d3+8</entry>
+	  <entry>Maximum@12+1d8</entry>
   </collection>
   <collection>
     <name>Heavy Horse</name>
-    <entry>Land@50</entry>
+	  <entry>Adulthood@2d8+3</entry>
+	  <entry>Middle Age@2d3+18</entry>
+	  <entry>Old@2d3+23</entry>
+	  <entry>Venerable@1d6+29</entry>
+	  <entry>Maximum@12+1d8</entry>
   </collection>
   <collection>
     <name>Heavy Warhorse</name>
-    <entry>Land@50</entry>
+	  <entry>Adulthood@2d8+3</entry>
+	  <entry>Middle Age@1d2+7</entry>
+	  <entry>Old@1d2+9</entry>
+	  <entry>Venerable@1d6+29</entry>
+	  <entry>Maximum@30+1d6</entry>
   </collection>
   <collection>
     <name>Hell Hound</name>
-    <entry>Land@40</entry>
+	  <entry>Adulthood@10000d100+2</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Hellcat (Bezekira)</name>
-    <entry>Land@40</entry>
+	  <entry>Adulthood@10000d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Hellwasp Swarm</name>
-    <entry>Land@5</entry>
-    <entry>Fly@40</entry>
+	  <entry>Swarm@10000d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Hezrou</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@10000d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Hieracosphinx</name>
-    <entry>Land@30</entry>
-    <entry>Fly@90</entry>
+	  <entry>Adulthood@100d100+16</entry>
+	  <entry>Maximum@50d100+5000</entry>
   </collection>
   <collection>
     <name>High Elf</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@32d3+78</entry>
+	  <entry>Middle Age@29d4+146</entry>
+	  <entry>Old@43d3+220</entry>
+	  <entry>Venerable@80d6+270</entry>
+	  <entry>Maximum@350+4d100</entry>
   </collection>
   <collection>
     <name>Hill Dwarf</name>
-	  <entry>Adulthood@47d3-2</entry>
-	  <entry>Middle Age@23d3+117</entry>
-	  <entry>Old@46d3+141</entry>
-	  <entry>Venerable@40d6+240</entry>
-	  <entry>Maximum@280+2d100</entry>
+	  <entry>Adulthood@12d8+28</entry>
+	  <entry>Middle Age@31d3+94</entry>
+	  <entry>Old@61d2+127</entry>
+	  <entry>Venerable@40d6+210</entry>
+	  <entry>Maximum@250+2d100</entry>
   </collection>
   <collection>
     <name>Hill Giant</name>
-    <entry>Land@40</entry>
+	  <entry>Adulthood@43d2-7</entry>
+	  <entry>Middle Age@13d4+67</entry>
+	  <entry>Old@13d4+107</entry>
+	  <entry>Venerable@8d6+152</entry>
+	  <entry>Maximum@160+2d20</entry>
   </collection>
   <collection>
     <name>Hippogriff</name>
@@ -2600,7 +2668,11 @@
   </collection>
   <collection>
     <name>Hobgoblin</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@3d6+11</entry>
+	  <entry>Middle Age@2d8+28</entry>
+	  <entry>Old@2d8+43</entry>
+	  <entry>Venerable@4d6+56</entry>
+	  <entry>Maximum@60+2d10</entry>
   </collection>
   <collection>
     <name>Homunculus</name>
@@ -2609,8 +2681,8 @@
   </collection>
   <collection>
     <name>Horned Devil (Cornugon)</name>
-    <entry>Land@20</entry>
-    <entry>Fly@50</entry>
+	  <entry>Adulthood@10000d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Hound Archon</name>
