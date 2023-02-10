@@ -2602,13 +2602,13 @@
 	  <entry>Middle Age@2d3+18</entry>
 	  <entry>Old@2d3+23</entry>
 	  <entry>Venerable@1d6+29</entry>
-	  <entry>Maximum@12+1d8</entry>
+	  <entry>Maximum@30+1d6</entry>
   </collection>
   <collection>
     <name>Heavy Warhorse</name>
 	  <entry>Adulthood@2d8+3</entry>
-	  <entry>Middle Age@1d2+7</entry>
-	  <entry>Old@1d2+9</entry>
+	  <entry>Middle Age@2d3+18</entry>
+	  <entry>Old@2d3+23</entry>
 	  <entry>Venerable@1d6+29</entry>
 	  <entry>Maximum@30+1d6</entry>
   </collection>
@@ -2663,8 +2663,11 @@
   </collection>
   <collection>
     <name>Hippogriff</name>
-    <entry>Land@50</entry>
-    <entry>Fly@100</entry>
+	  <entry>Adulthood@1d20+14</entry>
+	  <entry>Middle Age@17d2+18</entry>
+	  <entry>Old@8d3+45</entry>
+	  <entry>Venerable@24d6+46</entry>
+	  <entry>Maximum@70+6d20</entry>
   </collection>
   <collection>
     <name>Hobgoblin</name>
@@ -2676,8 +2679,8 @@
   </collection>
   <collection>
     <name>Homunculus</name>
-    <entry>Land@20</entry>
-    <entry>Fly@50</entry>
+	  <entry>Construct@1d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Horned Devil (Cornugon)</name>
@@ -2694,7 +2697,11 @@
   </collection>
   <collection>
     <name>Human</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@1d20+14</entry>
+	  <entry>Middle Age@17d2+18</entry>
+	  <entry>Old@8d3+45</entry>
+	  <entry>Venerable@8d6+62</entry>
+	  <entry>Maximum@70+2d20</entry>
   </collection>
   <collection>
     <name>Hyena</name>
@@ -2702,7 +2709,8 @@
   </collection>
   <collection>
     <name>Ice Devil (Gelugon)</name>
-    <entry>Land@40</entry>
+	  <entry>Adulthood@10000d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Ice Mephit</name>
@@ -2711,13 +2719,13 @@
   </collection>
   <collection>
     <name>Imp</name>
-    <entry>Land@20</entry>
-    <entry>Fly@50</entry>
+	  <entry>Adulthood@10000d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Invisible Stalker</name>
-    <entry>Land@30</entry>
-    <entry>Fly@30</entry>
+	  <entry>Adulthood@10000d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Iron Golem</name>
@@ -2726,17 +2734,18 @@
   </collection>
   <collection>
     <name>Janni</name>
-    <entry>Land@30</entry>
-    <entry>Fly@20</entry>
+	  <entry>Adulthood@10000d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Juvenile Arrowhawk</name>
-    <entry>Fly@60</entry>
+	  <entry>Juvenile (Arrowhawk)@1d10</entry>
+	  <entry>Maximum@11</entry>
   </collection>
   <collection>
     <name>Juvenile Tojanida</name>
-    <entry>Land@10</entry>
-    <entry>Swim@90</entry>
+	  <entry>Juvenile (Tojanida)@8d4-7</entry>
+	  <entry>Maximum@26</entry>
   </collection>
   <collection>
     <name>Kapoacinth</name>
@@ -2748,7 +2757,11 @@
   </collection>
   <collection>
     <name>Kobold</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@1d8+11</entry>
+	  <entry>Middle Age@1d10+19</entry>
+	  <entry>Old@1d10+29</entry>
+	  <entry>Venerable@4d6+36</entry>
+	  <entry>Maximum@40+1d20</entry>
   </collection>
   <collection>
     <name>Kolyarut</name>

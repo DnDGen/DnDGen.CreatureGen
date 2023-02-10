@@ -61,6 +61,7 @@
             public const string SpellLevels = "SpellLevels";
             public const string SpellsPerDay = "SpellsPerDay";
             public const string Weights = "Weights";
+            public const string Wingspans = "Wingspans";
         }
     }
 }

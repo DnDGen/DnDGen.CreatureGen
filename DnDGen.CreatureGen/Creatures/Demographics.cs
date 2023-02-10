@@ -8,6 +8,7 @@
         public Measurement Height { get; set; }
         public Measurement Length { get; set; }
         public Measurement Weight { get; set; }
+        public Measurement Wingspan { get; set; }
         public string Appearance { get; set; }
 
         public Demographics()
@@ -17,6 +18,7 @@
             MaximumAge = new Measurement("years");
             Height = new Measurement("inches");
             Length = new Measurement("inches");
+            Wingspan = new Measurement("inches");
             Weight = new Measurement("pounds");
             Appearance = string.Empty;
         }

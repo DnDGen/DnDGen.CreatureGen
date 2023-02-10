@@ -16,6 +16,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         private readonly ITypeAndAmountSelector typeAndAmountSelector;
         private readonly string[] heightDescriptions;
         private readonly string[] lengthDescriptions;
+        private readonly string[] wingspanDescriptions;
         private readonly string[] weightDescriptions;
 
         public DemographicsGenerator(ICollectionSelector collectionsSelector, Dice dice, ITypeAndAmountSelector typeAndAmountSelector)
@@ -26,6 +27,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             heightDescriptions = new[] { "Very Short", "Short", "Average", "Tall", "Very Tall" };
             lengthDescriptions = new[] { "Very Short", "Short", "Average", "Long", "Very Long" };
+            wingspanDescriptions = new[] { "Very Narrow", "Narrow", "Average", "Broad", "Very Broad" };
             weightDescriptions = new[] { "Very Light", "Light", "Average", "Heavy", "Very Heavy" };
         }
 
@@ -58,6 +60,13 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             demographics.Weight.Value = baseWeight.Amount + multiplier * weightModifier.Amount;
             demographics.Weight.Description = GetDescription(weightModifier.RawAmount, weightModifier.Amount, weightDescriptions);
+
+            var wingspans = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Wingspans, creatureName);
+            var baseWingspan = wingspans.First(h => h.Type == demographics.Gender);
+            var wingspanModifier = wingspans.First(h => h.Type == creatureName);
+
+            demographics.Wingspan.Value = baseWingspan.Amount + wingspanModifier.Amount;
+            demographics.Wingspan.Description = GetDescription(wingspanModifier.RawAmount, wingspanModifier.Amount, wingspanDescriptions);
 
             demographics.Appearance = collectionsSelector.SelectRandomFrom(TableNameConstants.Collection.Appearances, creatureName);
 

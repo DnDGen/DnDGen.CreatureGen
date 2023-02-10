@@ -28,6 +28,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
             Assert.That(demographics.Length.Unit, Is.EqualTo("inches"));
             Assert.That(demographics.Weight, Is.Not.Null);
             Assert.That(demographics.Weight.Unit, Is.EqualTo("pounds"));
+            Assert.That(demographics.Wingspan, Is.Not.Null);
+            Assert.That(demographics.Wingspan.Unit, Is.EqualTo("inches"));
             Assert.That(demographics.Appearance, Is.Empty);
         }
     }

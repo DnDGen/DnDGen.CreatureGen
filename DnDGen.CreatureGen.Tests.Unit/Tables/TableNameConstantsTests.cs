@@ -55,6 +55,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         [TestCase(TableNameConstants.TypeAndAmount.SpellLevels, "SpellLevels")]
         [TestCase(TableNameConstants.TypeAndAmount.SpellsPerDay, "SpellsPerDay")]
         [TestCase(TableNameConstants.TypeAndAmount.Weights, "Weights")]
+        [TestCase(TableNameConstants.TypeAndAmount.Wingspans, "Wingspans")]
         public void TableNameConstant(string constant, string value)
         {
             Assert.That(constant, Is.EqualTo(value));
