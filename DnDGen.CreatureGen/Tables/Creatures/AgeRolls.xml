@@ -2689,11 +2689,16 @@
   </collection>
   <collection>
     <name>Hound Archon</name>
-    <entry>Land@40</entry>
+	  <entry>Adulthood@10000d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Howler</name>
-    <entry>Land@60</entry>
+	  <entry>Adulthood@17d2-14</entry>
+	  <entry>Middle Age@1d10+20</entry>
+	  <entry>Old@1d10+30</entry>
+	  <entry>Venerable@1d10+40</entry>
+	  <entry>Maximum@40+1d10</entry>
   </collection>
   <collection>
     <name>Human</name>
@@ -2705,7 +2710,11 @@
   </collection>
   <collection>
     <name>Hyena</name>
-    <entry>Land@50</entry>
+	  <entry>Adulthood@1d8+2</entry>
+	  <entry>Middle Age@2d3+9</entry>
+	  <entry>Old@1d4+15</entry>
+	  <entry>Venerable@4d6+16</entry>
+	  <entry>Maximum@20+2d10</entry>
   </collection>
   <collection>
     <name>Ice Devil (Gelugon)</name>
@@ -2765,15 +2774,21 @@
   </collection>
   <collection>
     <name>Kolyarut</name>
-    <entry>Land@30</entry>
+	  <entry>Construct@10000d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Kraken</name>
-    <entry>Swim@20</entry>
+	  <entry>Adulthood@1000d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Krenshar</name>
-    <entry>Land@40</entry>
+	  <entry>Adulthood@2d4+2</entry>
+	  <entry>Middle Age@1d2+10</entry>
+	  <entry>Old@1d2+12</entry>
+	  <entry>Venerable@1d6+14</entry>
+	  <entry>Maximum@14+1d6</entry>
   </collection>
   <collection>
     <name>Kuo-toa</name>
@@ -2782,8 +2797,8 @@
   </collection>
   <collection>
     <name>Lacedon</name>
-    <entry>Land@30</entry>
-    <entry>Swim@30</entry>
+	  <entry>Undead@100d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Lamia</name>
@@ -2796,15 +2811,21 @@
   </collection>
   <collection>
     <name>Lantern Archon</name>
-    <entry>Fly@60</entry>
+	  <entry>Adulthood@10000d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Lemure</name>
-    <entry>Land@20</entry>
+	  <entry>Adulthood@10000d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Leonal</name>
-    <entry>Land@60</entry>
+	  <entry>Adulthood@1d20+14</entry>
+	  <entry>Middle Age@17d2+18</entry>
+	  <entry>Old@8d3+45</entry>
+	  <entry>Venerable@8d6+62</entry>
+	  <entry>Maximum@70+2d20</entry>
   </collection>
   <collection>
     <name>Leopard</name>
@@ -2813,11 +2834,19 @@
   </collection>
   <collection>
     <name>Light Horse</name>
-    <entry>Land@60</entry>
+	  <entry>Adulthood@2d8+3</entry>
+	  <entry>Middle Age@2d3+18</entry>
+	  <entry>Old@2d3+23</entry>
+	  <entry>Venerable@1d6+29</entry>
+	  <entry>Maximum@30+1d6</entry>
   </collection>
   <collection>
     <name>Light Warhorse</name>
-    <entry>Land@60</entry>
+	  <entry>Adulthood@2d8+3</entry>
+	  <entry>Middle Age@2d3+18</entry>
+	  <entry>Old@2d3+23</entry>
+	  <entry>Venerable@1d6+29</entry>
+	  <entry>Maximum@30+1d6</entry>
   </collection>
   <collection>
     <name>Lightfoot Halfling</name>
