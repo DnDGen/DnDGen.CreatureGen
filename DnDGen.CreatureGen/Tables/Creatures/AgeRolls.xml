@@ -948,46 +948,6 @@
 	  <entry>Venerable@1d3+19</entry>
 	  <entry>Maximum@20+1d2</entry>
   </collection>
-	<collection>
-		<name>Llama</name>
-		<entry>Land@40</entry>
-	</collection>
-	<collection>
-		<name>Milk Cow</name>
-		<entry>Land@40</entry>
-	</collection>
-	<collection>
-		<name>Ox</name>
-		<entry>Land@40</entry>
-	</collection>
-	<collection>
-		<name>Goat</name>
-		<entry>Adulthood@1d4+1</entry>
-		<entry>Middle Age@1d2+5</entry>
-		<entry>Old@1d2+7</entry>
-		<entry>Venerable@2d8+8</entry>
-		<entry>Maximum@10+2d12</entry>
-	</collection>
-	<collection>
-		<name>Sheep</name>
-		<entry>Land@40</entry>
-	</collection>
-	<collection>
-		<name>Moose</name>
-		<entry>Land@40</entry>
-	</collection>
-	<collection>
-		<name>Deer</name>
-		<entry>Adulthood@4d3-2</entry>
-		<entry>Middle Age@1d2+10</entry>
-		<entry>Old@1d2+12</entry>
-		<entry>Venerable@1d6+14</entry>
-		<entry>Maximum@14+1d6</entry>
-	</collection>
-	<collection>
-		<name>Zebra</name>
-		<entry>Land@40</entry>
-	</collection>
   <collection>
     <name>Black Bear</name>
 	  <entry>Adulthood@1d8+2</entry>
@@ -1142,10 +1102,6 @@
 	  <entry>Venerable@2d3+8</entry>
 	  <entry>Maximum@10+1d4</entry>
   </collection>
-	<collection>
-		<name>Pig</name>
-		<entry>Land@40</entry>
-	</collection>
   <collection>
     <name>Bodak</name>
 	  <entry>Undead@100d100</entry>
@@ -2792,8 +2748,11 @@
   </collection>
   <collection>
     <name>Kuo-toa</name>
-    <entry>Land@20</entry>
-    <entry>Swim@50</entry>
+	  <entry>Adulthood@193d2-187</entry>
+	  <entry>Middle Age@83d4+117</entry>
+	  <entry>Old@83d4+367</entry>
+	  <entry>Venerable@60d6+640</entry>
+	  <entry>Maximum@700+3d100</entry>
   </collection>
   <collection>
     <name>Lacedon</name>
@@ -2802,12 +2761,19 @@
   </collection>
   <collection>
     <name>Lamia</name>
-    <entry>Land@60</entry>
+	  <entry>Adulthood@13d4+7</entry>
+	  <entry>Middle Age@13d4+47</entry>
+	  <entry>Old@17d3+83</entry>
+	  <entry>Venerable@6d6+129</entry>
+	  <entry>Maximum@135+3d10</entry>
   </collection>
   <collection>
     <name>Lammasu</name>
-    <entry>Land@30</entry>
-    <entry>Fly@60</entry>
+	  <entry>Adulthood@59d2-39</entry>
+	  <entry>Middle Age@13d4+67</entry>
+	  <entry>Old@13d4+107</entry>
+	  <entry>Venerable@8d6+152</entry>
+	  <entry>Maximum@160+2d20</entry>
   </collection>
   <collection>
     <name>Lantern Archon</name>
@@ -2829,8 +2795,11 @@
   </collection>
   <collection>
     <name>Leopard</name>
-    <entry>Land@40</entry>
-    <entry>Climb@20</entry>
+	  <entry>Adulthood@1d6+1</entry>
+	  <entry>Middle Age@1d2+7</entry>
+	  <entry>Old@1d2+9</entry>
+	  <entry>Venerable@4d4+8</entry>
+	  <entry>Maximum@12+2d6</entry>
   </collection>
   <collection>
     <name>Light Horse</name>
@@ -2858,31 +2827,45 @@
   </collection>
   <collection>
     <name>Lillend</name>
-    <entry>Land@20</entry>
-    <entry>Fly@70</entry>
+	  <entry>Adulthood@1000d100</entry>
+	  <entry>Maximum@10000d100</entry>
   </collection>
   <collection>
     <name>Lion</name>
-    <entry>Land@40</entry>
+	  <entry>Adulthood@1d4+3</entry>
+	  <entry>Middle Age@1d2+7</entry>
+	  <entry>Old@1d2+9</entry>
+	  <entry>Venerable@2d3+10</entry>
+	  <entry>Maximum@12+1d4</entry>
   </collection>
   <collection>
     <name>Lizard</name>
-    <entry>Land@20</entry>
-    <entry>Climb@20</entry>
+	  <entry>Adulthood@1d8+1</entry>
+	  <entry>Middle Age@1d3+9</entry>
+	  <entry>Old@1d2+12</entry>
+	  <entry>Venerable@3d6+12</entry>
+	  <entry>Maximum@14+2d8</entry>
   </collection>
   <collection>
     <name>Lizardfolk</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@13d4+2</entry>
+	  <entry>Middle Age@17d2+38</entry>
+	  <entry>Old@4d10+69</entry>
+	  <entry>Venerable@4d6+106</entry>
+	  <entry>Maximum@110+2d10</entry>
   </collection>
   <collection>
     <name>Locathah</name>
-    <entry>Land@10</entry>
-    <entry>Swim@60</entry>
+	  <entry>Adulthood@1d10+14</entry>
+	  <entry>Middle Age@1d8+24</entry>
+	  <entry>Old@8d3+25</entry>
+	  <entry>Venerable@8d4+42</entry>
+	  <entry>Maximum@50+2d12</entry>
   </collection>
   <collection>
     <name>Locust Swarm</name>
-    <entry>Land@10</entry>
-    <entry>Fly@30</entry>
+	  <entry>Swarm@1d2-1</entry>
+	  <entry>Maximum@1d2-1</entry>
   </collection>
   <collection>
     <name>Magma Mephit</name>
@@ -2891,24 +2874,34 @@
   </collection>
   <collection>
     <name>Magmin</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@10000d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Manta Ray</name>
-    <entry>Swim@30</entry>
+	  <entry>Adulthood@1d20+9</entry>
+	  <entry>Middle Age@1d10+29</entry>
+	  <entry>Old@2d3+38</entry>
+	  <entry>Venerable@1d6+44</entry>
+	  <entry>Maximum@44+1d6</entry>
   </collection>
   <collection>
     <name>Manticore</name>
-    <entry>Land@30</entry>
-    <entry>Fly@50</entry>
+	  <entry>Adulthood@2d4+3</entry>
+	  <entry>Middle Age@1d3+11</entry>
+	  <entry>Old@1d3+14</entry>
+	  <entry>Venerable@2d3+16</entry>
+	  <entry>Maximum@18+1d4</entry>
   </collection>
   <collection>
     <name>Marilith</name>
-    <entry>Land@40</entry>
+	  <entry>Adulthood@10000d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Marut</name>
-    <entry>Land@40</entry>
+	  <entry>Construct@10000d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Medusa</name>
@@ -2920,13 +2913,19 @@
   </collection>
   <collection>
     <name>Merfolk</name>
-    <entry>Land@5</entry>
-    <entry>Swim@50</entry>
+	  <entry>Adulthood@1d20+14</entry>
+	  <entry>Middle Age@17d2+18</entry>
+	  <entry>Old@8d3+45</entry>
+	  <entry>Venerable@8d6+62</entry>
+	  <entry>Maximum@70+2d20</entry>
   </collection>
   <collection>
     <name>Merrow</name>
-    <entry>Land@30</entry>
-    <entry>Swim@40</entry>
+	  <entry>Adulthood@29d2-14</entry>
+	  <entry>Middle Age@2d8+43</entry>
+	  <entry>Old@29d2+31</entry>
+	  <entry>Venerable@4d6+86</entry>
+	  <entry>Maximum@90+2d20</entry>
   </collection>
   <collection>
     <name>Mimic</name>
@@ -3312,29 +3311,6 @@
     <entry>Land@10</entry>
     <entry>Fly@40</entry>
   </collection>
-	<collection>
-		<name>Chicken</name>
-		<entry>Adulthood@1d3-1</entry>
-		<entry>Middle Age@3</entry>
-		<entry>Old@4</entry>
-		<entry>Venerable@1d6+4</entry>
-		<entry>Maximum@1d6+4</entry>
-	</collection>
-	<collection>
-		<name>Peacock</name>
-		<entry>Land@10</entry>
-		<entry>Fly@10</entry>
-	</collection>
-	<collection>
-		<name>Turkey</name>
-		<entry>Land@10</entry>
-		<entry>Fly@10</entry>
-	</collection>
-	<collection>
-		<name>Pheasant</name>
-		<entry>Land@10</entry>
-		<entry>Fly@40</entry>
-	</collection>
   <collection>
     <name>Ravid</name>
     <entry>Land@20</entry>
@@ -3451,8 +3427,11 @@
   </collection>
   <collection>
     <name>Malenti</name>
-    <entry>Land@30</entry>
-    <entry>Swim@40</entry>
+	  <entry>Adulthood@1d20+15</entry>
+	  <entry>Middle Age@1d20+35</entry>
+	  <entry>Old@1d20+55</entry>
+	  <entry>Venerable@8d4+68</entry>
+	  <entry>Maximum@76+2d12</entry>
   </collection>
   <collection>
     <name>Salt Mephit</name>
