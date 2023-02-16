@@ -387,20 +387,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Bison][None] = 0;
 
-                testCases[CreatureConstants.Bison_Goat][None] = 0;
-
-                testCases[CreatureConstants.Bison_Sheep][None] = 0;
-
-                testCases[CreatureConstants.Bison_Llama][None] = 0;
-
-                testCases[CreatureConstants.Bison_MilkCow][None] = 0;
-
-                testCases[CreatureConstants.Bison_Ox][None] = 0;
-
-                testCases[CreatureConstants.Bison_Moose][None] = 0;
-
-                testCases[CreatureConstants.Bison_Deer][None] = 0;
-
                 testCases[CreatureConstants.BlackPudding][None] = 0;
 
                 testCases[CreatureConstants.BlackPudding_Elder][None] = 0;
@@ -408,8 +394,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
                 testCases[CreatureConstants.BlinkDog][None] = 0;
 
                 testCases[CreatureConstants.Boar][None] = 0;
-
-                testCases[CreatureConstants.Boar_Pig][None] = 0;
 
                 testCases[CreatureConstants.Boar_Dire][None] = 0;
 
@@ -1004,8 +988,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
 
                 testCases[CreatureConstants.Horse_Light_War][None] = 0;
 
-                testCases[CreatureConstants.Horse_Zebra][None] = 0;
-
                 testCases[CreatureConstants.HoundArchon][None] = 0;
 
                 testCases[CreatureConstants.Howler][None] = 0;
@@ -1231,14 +1213,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
                 testCases[CreatureConstants.Rat_Swarm][None] = 0;
 
                 testCases[CreatureConstants.Raven][None] = 0;
-
-                testCases[CreatureConstants.Raven_Chicken][None] = 0;
-
-                testCases[CreatureConstants.Raven_Turkey][None] = 0;
-
-                testCases[CreatureConstants.Raven_Peacock][None] = 0;
-
-                testCases[CreatureConstants.Raven_Pheasant][None] = 0;
 
                 testCases[CreatureConstants.Ravid][None] = 0;
 

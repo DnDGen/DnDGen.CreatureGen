@@ -749,58 +749,6 @@
     <name>Bison</name>
     <entry>0</entry>
   </collection>
-	<collection>
-		<name>Goat</name>
-		<entry>0</entry>
-	</collection>
-	<collection>
-		<name>Sheep</name>
-		<entry>0</entry>
-	</collection>
-	<collection>
-		<name>Llama</name>
-		<entry>0</entry>
-	</collection>
-	<collection>
-		<name>Milk Cow</name>
-		<entry>0</entry>
-	</collection>
-	<collection>
-		<name>Ox</name>
-		<entry>0</entry>
-	</collection>
-	<collection>
-		<name>Moose</name>
-		<entry>0</entry>
-	</collection>
-	<collection>
-		<name>Deer</name>
-		<entry>0</entry>
-	</collection>
-	<collection>
-		<name>Zebra</name>
-		<entry>0</entry>
-	</collection>
-	<collection>
-		<name>Pig</name>
-		<entry>0</entry>
-	</collection>
-	<collection>
-		<name>Chicken</name>
-		<entry>0</entry>
-	</collection>
-	<collection>
-		<name>Turkey</name>
-		<entry>0</entry>
-	</collection>
-	<collection>
-		<name>Peacock</name>
-		<entry>0</entry>
-	</collection>
-	<collection>
-		<name>Pheasant</name>
-		<entry>0</entry>
-	</collection>
   <collection>
     <name>Black Bear</name>
     <entry>0</entry>

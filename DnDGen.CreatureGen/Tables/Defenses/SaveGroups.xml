@@ -630,41 +630,6 @@
     <entry>Fortitude</entry>
     <entry>Reflex</entry>
   </collection>
-	<collection>
-		<name>Goat</name>
-		<entry>Fortitude</entry>
-		<entry>Reflex</entry>
-	</collection>
-	<collection>
-		<name>Sheep</name>
-		<entry>Fortitude</entry>
-		<entry>Reflex</entry>
-	</collection>
-	<collection>
-		<name>Llama</name>
-		<entry>Fortitude</entry>
-		<entry>Reflex</entry>
-	</collection>
-	<collection>
-		<name>Milk Cow</name>
-		<entry>Fortitude</entry>
-		<entry>Reflex</entry>
-	</collection>
-	<collection>
-		<name>Ox</name>
-		<entry>Fortitude</entry>
-		<entry>Reflex</entry>
-	</collection>
-	<collection>
-		<name>Moose</name>
-		<entry>Fortitude</entry>
-		<entry>Reflex</entry>
-	</collection>
-	<collection>
-		<name>Deer</name>
-		<entry>Fortitude</entry>
-		<entry>Reflex</entry>
-	</collection>
   <collection>
     <name>Black Bear</name>
     <entry>Fortitude</entry>
@@ -833,11 +798,6 @@
     <entry>Fortitude</entry>
     <entry>Reflex</entry>
   </collection>
-	<collection>
-		<name>Pig</name>
-		<entry>Fortitude</entry>
-		<entry>Reflex</entry>
-	</collection>
   <collection>
     <name>Bodak</name>
     <entry>Will</entry>
@@ -2210,11 +2170,6 @@
     <entry>Fortitude</entry>
     <entry>Reflex</entry>
   </collection>
-	<collection>
-		<name>Zebra</name>
-		<entry>Fortitude</entry>
-		<entry>Reflex</entry>
-	</collection>
   <collection>
     <name>Lightfoot Halfling</name>
     <entry>Fortitude</entry>
@@ -2669,26 +2624,6 @@
     <entry>Fortitude</entry>
     <entry>Reflex</entry>
   </collection>
-	<collection>
-		<name>Chicken</name>
-		<entry>Fortitude</entry>
-		<entry>Reflex</entry>
-	</collection>
-	<collection>
-		<name>Turkey</name>
-		<entry>Fortitude</entry>
-		<entry>Reflex</entry>
-	</collection>
-	<collection>
-		<name>Peacock</name>
-		<entry>Fortitude</entry>
-		<entry>Reflex</entry>
-	</collection>
-	<collection>
-		<name>Pheasant</name>
-		<entry>Fortitude</entry>
-		<entry>Reflex</entry>
-	</collection>
   <collection>
     <name>Ravid</name>
     <entry>Fortitude</entry>

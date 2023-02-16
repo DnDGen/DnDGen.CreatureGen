@@ -3,7 +3,6 @@ using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Languages;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.CreatureGen.Tests.Integration.TestData;
 using NUnit.Framework;
 using System.Linq;
 
@@ -513,19 +512,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
         [TestCase(CreatureConstants.Badger)]
         [TestCase(CreatureConstants.Badger_Dire)]
         [TestCase(CreatureConstants.Bison)]
-        [TestCase(CreatureConstants.Bison_Goat)]
-        [TestCase(CreatureConstants.Bison_Sheep)]
-        [TestCase(CreatureConstants.Bison_MilkCow)]
-        [TestCase(CreatureConstants.Bison_Ox)]
-        [TestCase(CreatureConstants.Bison_Llama)]
-        [TestCase(CreatureConstants.Bison_Moose)]
-        [TestCase(CreatureConstants.Bison_Deer)]
         [TestCase(CreatureConstants.Bear_Black)]
         [TestCase(CreatureConstants.Bear_Brown)]
         [TestCase(CreatureConstants.Bear_Dire)]
         [TestCase(CreatureConstants.Bear_Polar)]
         [TestCase(CreatureConstants.Boar)]
-        [TestCase(CreatureConstants.Boar_Pig)]
         [TestCase(CreatureConstants.Boar_Dire)]
         [TestCase(CreatureConstants.BlackPudding)]
         [TestCase(CreatureConstants.BlackPudding_Elder)]
@@ -669,7 +660,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
         [TestCase(CreatureConstants.Horse_Heavy_War)]
         [TestCase(CreatureConstants.Horse_Light)]
         [TestCase(CreatureConstants.Horse_Light_War)]
-        [TestCase(CreatureConstants.Horse_Zebra)]
         [TestCase(CreatureConstants.Hyena)]
         [TestCase(CreatureConstants.Leopard)]
         [TestCase(CreatureConstants.Lizard)]
@@ -764,10 +754,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
         [TestCase(CreatureConstants.Tarrasque)]
         [TestCase(CreatureConstants.Rhinoceras)]
         [TestCase(CreatureConstants.Raven)]
-        [TestCase(CreatureConstants.Raven_Chicken)]
-        [TestCase(CreatureConstants.Raven_Turkey)]
-        [TestCase(CreatureConstants.Raven_Peacock)]
-        [TestCase(CreatureConstants.Raven_Pheasant)]
         [TestCase(CreatureConstants.Tendriculos)]
         [TestCase(CreatureConstants.Toad)]
         [TestCase(CreatureConstants.Beholder,
@@ -1837,19 +1823,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
         [TestCase(CreatureConstants.Badger)]
         [TestCase(CreatureConstants.Badger_Dire)]
         [TestCase(CreatureConstants.Bison)]
-        [TestCase(CreatureConstants.Bison_Goat)]
-        [TestCase(CreatureConstants.Bison_Sheep)]
-        [TestCase(CreatureConstants.Bison_Llama)]
-        [TestCase(CreatureConstants.Bison_MilkCow)]
-        [TestCase(CreatureConstants.Bison_Ox)]
-        [TestCase(CreatureConstants.Bison_Moose)]
-        [TestCase(CreatureConstants.Bison_Deer)]
         [TestCase(CreatureConstants.Bear_Black)]
         [TestCase(CreatureConstants.Bear_Brown)]
         [TestCase(CreatureConstants.Bear_Dire)]
         [TestCase(CreatureConstants.Bear_Polar)]
         [TestCase(CreatureConstants.Boar)]
-        [TestCase(CreatureConstants.Boar_Pig)]
         [TestCase(CreatureConstants.Boar_Dire)]
         [TestCase(CreatureConstants.BlackPudding)]
         [TestCase(CreatureConstants.BlackPudding_Elder)]
@@ -1964,7 +1942,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
         [TestCase(CreatureConstants.Horse_Heavy_War)]
         [TestCase(CreatureConstants.Horse_Light)]
         [TestCase(CreatureConstants.Horse_Light_War)]
-        [TestCase(CreatureConstants.Horse_Zebra)]
         [TestCase(CreatureConstants.Hyena)]
         [TestCase(CreatureConstants.Leopard)]
         [TestCase(CreatureConstants.Lizard)]
@@ -2033,10 +2010,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
         [TestCase(CreatureConstants.Tarrasque)]
         [TestCase(CreatureConstants.Rhinoceras)]
         [TestCase(CreatureConstants.Raven)]
-        [TestCase(CreatureConstants.Raven_Chicken)]
-        [TestCase(CreatureConstants.Raven_Turkey)]
-        [TestCase(CreatureConstants.Raven_Peacock)]
-        [TestCase(CreatureConstants.Raven_Pheasant)]
         [TestCase(CreatureConstants.Tendriculos)]
         [TestCase(CreatureConstants.Toad)]
         [TestCase(CreatureConstants.Beholder)]
@@ -2419,32 +2392,40 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Languages
             base.AssertDistinctCollection(creature + LanguageConstants.Groups.Bonus, generalLanguages);
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void IfNoAutomaticLanguages_NoBonusLanguages(string creature)
+        [Test]
+        public void IfNoAutomaticLanguages_NoBonusLanguages()
         {
-            var automatic = table[creature + LanguageConstants.Groups.Automatic];
-            var bonus = table[creature + LanguageConstants.Groups.Bonus];
+            var creatures = CreatureConstants.GetAll();
+            foreach (var creature in creatures)
+            {
+                var automatic = table[creature + LanguageConstants.Groups.Automatic];
+                var bonus = table[creature + LanguageConstants.Groups.Bonus];
 
-            if (!automatic.Any())
-            {
-                Assert.That(bonus, Is.Empty);
-            }
-            else if (bonus.Any())
-            {
-                Assert.That(automatic, Is.Not.Empty);
+                if (!automatic.Any())
+                {
+                    Assert.That(bonus, Is.Empty, creature);
+                }
+                else if (bonus.Any())
+                {
+                    Assert.That(automatic, Is.Not.Empty, creature);
+                }
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void IfLowOrNoIntelligence_NoLanguages(string creature)
+        [Test]
+        public void IfLowOrNoIntelligence_NoLanguages()
         {
-            var abilities = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, creature);
-            var intelligence = abilities.FirstOrDefault(a => a.Type == AbilityConstants.Intelligence);
+            var creatures = CreatureConstants.GetAll();
+            var allAbilities = typeAndAmountSelector.SelectAll(TableNameConstants.TypeAndAmount.AbilityAdjustments);
 
-            if (intelligence == null || intelligence.Amount + Ability.DefaultScore <= 3)
+            foreach (var creature in creatures)
             {
-                Assert.That(table[creature + LanguageConstants.Groups.Automatic], Is.Empty);
-                Assert.That(table[creature + LanguageConstants.Groups.Bonus], Is.Empty);
+                var intelligence = allAbilities[creature].FirstOrDefault(a => a.Type == AbilityConstants.Intelligence);
+                if (intelligence == null || intelligence.Amount + Ability.DefaultScore <= 3)
+                {
+                    Assert.That(table[creature + LanguageConstants.Groups.Automatic], Is.Empty, creature);
+                    Assert.That(table[creature + LanguageConstants.Groups.Bonus], Is.Empty, creature);
+                }
             }
         }
     }

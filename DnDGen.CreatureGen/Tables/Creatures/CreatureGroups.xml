@@ -80,7 +80,6 @@
     <entry>Elephant</entry>
     <entry>Hawk</entry>
 	  <entry>Horse</entry>
-	  <entry>Zebra</entry>
     <entry>Hyena</entry>
     <entry>Leopard</entry>
     <entry>Lion</entry>
@@ -116,18 +115,6 @@
     <entry>Dire Wolf</entry>
     <entry>Wolverine</entry>
     <entry>Dire Wolverine</entry>
-	  <entry>Milk Cow</entry>
-	  <entry>Goat</entry>
-	  <entry>Sheep</entry>
-	  <entry>Ox</entry>
-	  <entry>Deer</entry>
-	  <entry>Moose</entry>
-	  <entry>Llama</entry>
-	  <entry>Pig</entry>
-	  <entry>Chicken</entry>
-	  <entry>Turkey</entry>
-	  <entry>Peacock</entry>
-	  <entry>Pheasant</entry>
   </collection>
   <collection>
     <name>Animated Object</name>
@@ -1833,10 +1820,6 @@
     <entry>Lizard</entry>
     <entry>Monkey</entry>
 	  <entry>Raven</entry>
-	  <entry>Chicken</entry>
-	  <entry>Turkey</entry>
-	  <entry>Pheasant</entry>
-	  <entry>Peacock</entry>
   </collection>
   <collection>
     <name>1/4</name>
@@ -1978,10 +1961,6 @@
     <entry>Troglodyte</entry>
     <entry>Viper Snake, Medium</entry>
 	  <entry>Wolf</entry>
-	  <entry>Sheep</entry>
-	  <entry>Goat</entry>
-	  <entry>Deer</entry>
-	  <entry>Zebra</entry>
   </collection>
   <collection>
     <name>2</name>
@@ -2008,10 +1987,6 @@
     <entry>Azer</entry>
     <entry>Bat Swarm</entry>
 	  <entry>Bison</entry>
-	  <entry>Llama</entry>
-	  <entry>Milk Cow</entry>
-	  <entry>Ox</entry>
-	  <entry>Moose</entry>
     <entry>Black Bear</entry>
     <entry>Blink Dog</entry>
     <entry>Boar</entry>
@@ -2053,7 +2028,6 @@
     <entry>White Dragon, Wyrmling</entry>
     <entry>Wolverine</entry>
     <entry>Worg</entry>
-    <entry>Pig</entry>
   </collection>
   <collection>
     <name>3</name>
@@ -3296,9 +3270,6 @@
     <entry>Greater Basilisk</entry>
     <entry>Behir</entry>
     <entry>Bison</entry>
-	  <entry>Moose</entry>
-	  <entry>Deer</entry>
-	  <entry>Zebra</entry>
     <entry>Light Horse</entry>
     <entry>Heavy Horse</entry>
     <entry>Light Warhorse</entry>
@@ -3531,16 +3502,6 @@
     <entry>Worg</entry>
     <entry>Wyvern</entry>
     <entry>Yrthak</entry>
-	  <entry>Milk Cow</entry>
-	  <entry>Goat</entry>
-	  <entry>Sheep</entry>
-	  <entry>Ox</entry>
-	  <entry>Llama</entry>
-	  <entry>Pig</entry>
-	  <entry>Chicken</entry>
-	  <entry>Turkey</entry>
-	  <entry>Peacock</entry>
-	  <entry>Pheasant</entry>
   </collection>
   <collection>
     <name>Neutral Evil</name>

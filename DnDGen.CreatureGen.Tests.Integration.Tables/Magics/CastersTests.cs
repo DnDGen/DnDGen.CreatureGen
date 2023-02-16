@@ -23,7 +23,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         }
 
         [Test]
-        public void CastersContainsAllCreatures()
+        public void CastersNames()
         {
             var names = CreatureConstants.GetAll();
             AssertCollectionNames(names);

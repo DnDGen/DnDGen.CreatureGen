@@ -833,34 +833,6 @@
     <name>Bison</name>
     <entry>Land@40</entry>
   </collection>
-	<collection>
-		<name>Llama</name>
-		<entry>Land@40</entry>
-	</collection>
-	<collection>
-		<name>Milk Cow</name>
-		<entry>Land@40</entry>
-	</collection>
-	<collection>
-		<name>Ox</name>
-		<entry>Land@40</entry>
-	</collection>
-	<collection>
-		<name>Goat</name>
-		<entry>Land@40</entry>
-	</collection>
-	<collection>
-		<name>Sheep</name>
-		<entry>Land@40</entry>
-	</collection>
-	<collection>
-		<name>Moose</name>
-		<entry>Land@40</entry>
-	</collection>
-	<collection>
-		<name>Deer</name>
-		<entry>Land@40</entry>
-	</collection>
   <collection>
     <name>Black Bear</name>
     <entry>Land@40</entry>
@@ -1026,10 +998,6 @@
     <name>Boar</name>
     <entry>Land@40</entry>
   </collection>
-	<collection>
-		<name>Pig</name>
-		<entry>Land@40</entry>
-	</collection>
   <collection>
     <name>Bodak</name>
     <entry>Land@20</entry>
@@ -2299,10 +2267,6 @@
     <name>Light Warhorse</name>
     <entry>Land@60</entry>
   </collection>
-	<collection>
-		<name>Zebra</name>
-		<entry>Land@60</entry>
-	</collection>
   <collection>
     <name>Lightfoot Halfling</name>
     <entry>Land@20</entry>
@@ -2760,26 +2724,6 @@
     <entry>Land@10</entry>
     <entry>Fly@40</entry>
   </collection>
-	<collection>
-		<name>Chicken</name>
-		<entry>Land@10</entry>
-		<entry>Fly@10</entry>
-	</collection>
-	<collection>
-		<name>Peacock</name>
-		<entry>Land@10</entry>
-		<entry>Fly@10</entry>
-	</collection>
-	<collection>
-		<name>Turkey</name>
-		<entry>Land@10</entry>
-		<entry>Fly@10</entry>
-	</collection>
-	<collection>
-		<name>Pheasant</name>
-		<entry>Land@10</entry>
-		<entry>Fly@40</entry>
-	</collection>
   <collection>
     <name>Ravid</name>
     <entry>Land@20</entry>

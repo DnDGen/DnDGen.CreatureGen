@@ -692,27 +692,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(CreatureConstants.Bison,
             SkillConstants.Listen,
             SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Bison_Goat,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Bison_Llama,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Bison_MilkCow,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Bison_Ox,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Bison_Sheep,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Bison_Moose,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Bison_Deer,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
         [TestCase(CreatureConstants.BlackPudding, SkillConstants.Climb)]
         [TestCase(CreatureConstants.BlackPudding_Elder, SkillConstants.Climb)]
         [TestCase(CreatureConstants.BlinkDog,
@@ -722,9 +701,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.Survival,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Boar,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Boar_Pig,
             SkillConstants.Listen,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Boar_Dire,
@@ -2914,9 +2890,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         [TestCase(CreatureConstants.Horse_Light_War,
             SkillConstants.Listen,
             SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Horse_Zebra,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
         [TestCase(CreatureConstants.HoundArchon,
             SkillConstants.Hide,
             SkillConstants.Jump,
@@ -3638,18 +3611,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             SkillConstants.MoveSilently,
             SkillConstants.Swim + AbilityConstants.Dexterity)]
         [TestCase(CreatureConstants.Raven,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Raven_Chicken,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Raven_Turkey,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Raven_Peacock,
-            SkillConstants.Listen,
-            SkillConstants.Spot)]
-        [TestCase(CreatureConstants.Raven_Pheasant,
             SkillConstants.Listen,
             SkillConstants.Spot)]
         [TestCase(CreatureConstants.Ravid,

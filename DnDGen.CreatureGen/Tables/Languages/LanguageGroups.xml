@@ -2391,30 +2391,6 @@
   <collection>
     <name>BisonAutomatic</name>
   </collection>
-	<collection>
-		<name>GoatAutomatic</name>
-	</collection>
-	<collection>
-		<name>SheepAutomatic</name>
-	</collection>
-	<collection>
-		<name>Milk CowAutomatic</name>
-	</collection>
-	<collection>
-		<name>OxAutomatic</name>
-	</collection>
-	<collection>
-		<name>LlamaAutomatic</name>
-	</collection>
-	<collection>
-		<name>MooseAutomatic</name>
-	</collection>
-	<collection>
-		<name>DeerAutomatic</name>
-	</collection>
-	<collection>
-		<name>ZebraAutomatic</name>
-	</collection>
   <collection>
     <name>Black BearAutomatic</name>
   </collection>
@@ -2430,9 +2406,6 @@
   <collection>
     <name>BoarAutomatic</name>
   </collection>
-	<collection>
-		<name>PigAutomatic</name>
-	</collection>
   <collection>
     <name>Dire BoarAutomatic</name>
   </collection>
@@ -2511,30 +2484,6 @@
   <collection>
     <name>BisonBonus</name>
   </collection>
-	<collection>
-		<name>GoatBonus</name>
-	</collection>
-	<collection>
-		<name>SheepBonus</name>
-	</collection>
-	<collection>
-		<name>Milk CowBonus</name>
-	</collection>
-	<collection>
-		<name>OxBonus</name>
-	</collection>
-	<collection>
-		<name>LlamaBonus</name>
-	</collection>
-	<collection>
-		<name>MooseBonus</name>
-	</collection>
-	<collection>
-		<name>DeerBonus</name>
-	</collection>
-	<collection>
-		<name>ZebraBonus</name>
-	</collection>
   <collection>
     <name>Black BearBonus</name>
   </collection>
@@ -2550,9 +2499,6 @@
   <collection>
     <name>BoarBonus</name>
   </collection>
-	<collection>
-		<name>PigBonus</name>
-	</collection>
   <collection>
     <name>Dire BoarBonus</name>
   </collection>
@@ -3500,18 +3446,6 @@
   <collection>
     <name>RavenBonus</name>
   </collection>
-	<collection>
-		<name>ChickenBonus</name>
-	</collection>
-	<collection>
-		<name>TurkeyBonus</name>
-	</collection>
-	<collection>
-		<name>PeacockBonus</name>
-	</collection>
-	<collection>
-		<name>PheasantBonus</name>
-	</collection>
   <collection>
     <name>RhinocerasBonus</name>
   </collection>
@@ -3560,18 +3494,6 @@
   <collection>
     <name>RavenAutomatic</name>
   </collection>
-	<collection>
-		<name>ChickenAutomatic</name>
-	</collection>
-	<collection>
-		<name>TurkeyAutomatic</name>
-	</collection>
-	<collection>
-		<name>PeacockAutomatic</name>
-	</collection>
-	<collection>
-		<name>PheasantAutomatic</name>
-	</collection>
   <collection>
     <name>RhinocerasAutomatic</name>
   </collection>

@@ -1858,45 +1858,6 @@
   <collection>
     <name>Bison:Prohibited</name>
   </collection>
-	<collection>
-		<name>Llama:Prohibited</name>
-	</collection>
-	<collection>
-		<name>Sheep:Prohibited</name>
-	</collection>
-	<collection>
-		<name>Goat:Prohibited</name>
-	</collection>
-	<collection>
-		<name>Milk Cow:Prohibited</name>
-	</collection>
-	<collection>
-		<name>Ox:Prohibited</name>
-	</collection>
-	<collection>
-		<name>Pig:Prohibited</name>
-	</collection>
-	<collection>
-		<name>Chicken:Prohibited</name>
-	</collection>
-	<collection>
-		<name>Turkey:Prohibited</name>
-	</collection>
-	<collection>
-		<name>Peacock:Prohibited</name>
-	</collection>
-	<collection>
-		<name>Pheasant:Prohibited</name>
-	</collection>
-	<collection>
-		<name>Moose:Prohibited</name>
-	</collection>
-	<collection>
-		<name>Deer:Prohibited</name>
-	</collection>
-	<collection>
-		<name>Zebra:Prohibited</name>
-	</collection>
   <collection>
     <name>Black Bear:Prohibited</name>
   </collection>

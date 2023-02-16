@@ -1343,69 +1343,6 @@
     <entry>Strength@12</entry>
     <entry>Wisdom@0</entry>
   </collection>
-	<collection>
-		<name>Goat</name>
-		<entry>Charisma@-6</entry>
-		<entry>Constitution@2</entry>
-		<entry>Dexterity@2</entry>
-		<entry>Intelligence@-8</entry>
-		<entry>Strength@4</entry>
-		<entry>Wisdom@0</entry>
-	</collection>
-	<collection>
-		<name>Llama</name>
-		<entry>Charisma@-6</entry>
-		<entry>Constitution@6</entry>
-		<entry>Dexterity@0</entry>
-		<entry>Intelligence@-8</entry>
-		<entry>Strength@12</entry>
-		<entry>Wisdom@0</entry>
-	</collection>
-	<collection>
-		<name>Milk Cow</name>
-		<entry>Charisma@-6</entry>
-		<entry>Constitution@6</entry>
-		<entry>Dexterity@0</entry>
-		<entry>Intelligence@-8</entry>
-		<entry>Strength@12</entry>
-		<entry>Wisdom@0</entry>
-	</collection>
-	<collection>
-		<name>Ox</name>
-		<entry>Charisma@-6</entry>
-		<entry>Constitution@6</entry>
-		<entry>Dexterity@0</entry>
-		<entry>Intelligence@-8</entry>
-		<entry>Strength@12</entry>
-		<entry>Wisdom@0</entry>
-	</collection>
-	<collection>
-		<name>Sheep</name>
-		<entry>Charisma@-6</entry>
-		<entry>Constitution@2</entry>
-		<entry>Dexterity@2</entry>
-		<entry>Intelligence@-8</entry>
-		<entry>Strength@4</entry>
-		<entry>Wisdom@0</entry>
-	</collection>
-	<collection>
-		<name>Deer</name>
-		<entry>Charisma@-6</entry>
-		<entry>Constitution@2</entry>
-		<entry>Dexterity@2</entry>
-		<entry>Intelligence@-8</entry>
-		<entry>Strength@4</entry>
-		<entry>Wisdom@0</entry>
-	</collection>
-	<collection>
-		<name>Moose</name>
-		<entry>Charisma@-6</entry>
-		<entry>Constitution@6</entry>
-		<entry>Dexterity@0</entry>
-		<entry>Intelligence@-8</entry>
-		<entry>Strength@12</entry>
-		<entry>Wisdom@0</entry>
-	</collection>
   <collection>
     <name>Black Bear</name>
     <entry>Charisma@-4</entry>
@@ -1666,15 +1603,6 @@
     <entry>Strength@4</entry>
     <entry>Wisdom@2</entry>
   </collection>
-	<collection>
-		<name>Pig</name>
-		<entry>Charisma@-6</entry>
-		<entry>Constitution@6</entry>
-		<entry>Dexterity@0</entry>
-		<entry>Intelligence@-8</entry>
-		<entry>Strength@4</entry>
-		<entry>Wisdom@2</entry>
-	</collection>
   <collection>
     <name>Bodak</name>
     <entry>Charisma@2</entry>
@@ -4052,15 +3980,6 @@
     <entry>Strength@6</entry>
     <entry>Wisdom@2</entry>
   </collection>
-	<collection>
-		<name>Zebra</name>
-		<entry>Charisma@-4</entry>
-		<entry>Constitution@4</entry>
-		<entry>Dexterity@2</entry>
-		<entry>Intelligence@-8</entry>
-		<entry>Strength@4</entry>
-		<entry>Wisdom@2</entry>
-	</collection>
   <collection>
     <name>Lightfoot Halfling</name>
     <entry>Charisma@0</entry>
@@ -4907,42 +4826,6 @@
     <entry>Strength@-10</entry>
     <entry>Wisdom@4</entry>
   </collection>
-	<collection>
-		<name>Chicken</name>
-		<entry>Charisma@-4</entry>
-		<entry>Constitution@0</entry>
-		<entry>Dexterity@4</entry>
-		<entry>Intelligence@-8</entry>
-		<entry>Strength@-10</entry>
-		<entry>Wisdom@4</entry>
-	</collection>
-	<collection>
-		<name>Turkey</name>
-		<entry>Charisma@-4</entry>
-		<entry>Constitution@0</entry>
-		<entry>Dexterity@4</entry>
-		<entry>Intelligence@-8</entry>
-		<entry>Strength@-10</entry>
-		<entry>Wisdom@4</entry>
-	</collection>
-	<collection>
-		<name>Peacock</name>
-		<entry>Charisma@-4</entry>
-		<entry>Constitution@0</entry>
-		<entry>Dexterity@4</entry>
-		<entry>Intelligence@-8</entry>
-		<entry>Strength@-10</entry>
-		<entry>Wisdom@4</entry>
-	</collection>
-	<collection>
-		<name>Pheasant</name>
-		<entry>Charisma@-4</entry>
-		<entry>Constitution@0</entry>
-		<entry>Dexterity@4</entry>
-		<entry>Intelligence@-8</entry>
-		<entry>Strength@-10</entry>
-		<entry>Wisdom@4</entry>
-	</collection>
   <collection>
     <name>Ravid</name>
     <entry>Charisma@4</entry>

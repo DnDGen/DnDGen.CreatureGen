@@ -1005,14 +1005,6 @@
     <name>Bison</name>
     <entry>AlwaysTrue Neutral</entry>
   </collection>
-	<collection>
-		<name>Moose</name>
-		<entry>AlwaysTrue Neutral</entry>
-	</collection>
-	<collection>
-		<name>Deer</name>
-		<entry>AlwaysTrue Neutral</entry>
-	</collection>
   <collection>
     <name>Black Bear</name>
     <entry>AlwaysTrue Neutral</entry>
@@ -2251,10 +2243,6 @@
     <name>Light Warhorse</name>
     <entry>AlwaysTrue Neutral</entry>
   </collection>
-	<collection>
-		<name>Zebra</name>
-		<entry>AlwaysTrue Neutral</entry>
-	</collection>
   <collection>
     <name>Human</name>
     <entry>Any</entry>
@@ -4118,14 +4106,6 @@
     <name>BisonExploded</name>
     <entry>True Neutral</entry>
   </collection>
-	<collection>
-		<name>MooseExploded</name>
-		<entry>True Neutral</entry>
-	</collection>
-	<collection>
-		<name>DeerExploded</name>
-		<entry>True Neutral</entry>
-	</collection>
   <collection>
     <name>Black BearExploded</name>
     <entry>True Neutral</entry>
@@ -5679,10 +5659,6 @@
     <name>Light WarhorseExploded</name>
     <entry>True Neutral</entry>
   </collection>
-	<collection>
-		<name>ZebraExploded</name>
-		<entry>True Neutral</entry>
-	</collection>
   <collection>
     <name>HumanExploded</name>
     <entry>Lawful Good</entry>
@@ -7947,84 +7923,4 @@
     <entry>Chaotic Neutral</entry>
     <entry>Chaotic Evil</entry>
   </collection>
-	<collection>
-		<name>Milk Cow</name>
-		<entry>AlwaysTrue Neutral</entry>
-	</collection>
-	<collection>
-		<name>Goat</name>
-		<entry>AlwaysTrue Neutral</entry>
-	</collection>
-	<collection>
-		<name>Llama</name>
-		<entry>AlwaysTrue Neutral</entry>
-	</collection>
-	<collection>
-		<name>Ox</name>
-		<entry>AlwaysTrue Neutral</entry>
-	</collection>
-	<collection>
-		<name>Sheep</name>
-		<entry>AlwaysTrue Neutral</entry>
-	</collection>
-	<collection>
-		<name>Pig</name>
-		<entry>AlwaysTrue Neutral</entry>
-	</collection>
-	<collection>
-		<name>Chicken</name>
-		<entry>AlwaysTrue Neutral</entry>
-	</collection>
-	<collection>
-		<name>Turkey</name>
-		<entry>AlwaysTrue Neutral</entry>
-	</collection>
-	<collection>
-		<name>Peacock</name>
-		<entry>AlwaysTrue Neutral</entry>
-	</collection>
-	<collection>
-		<name>Pheasant</name>
-		<entry>AlwaysTrue Neutral</entry>
-	</collection>
-	<collection>
-		<name>Milk CowExploded</name>
-		<entry>True Neutral</entry>
-	</collection>
-	<collection>
-		<name>GoatExploded</name>
-		<entry>True Neutral</entry>
-	</collection>
-	<collection>
-		<name>LlamaExploded</name>
-		<entry>True Neutral</entry>
-	</collection>
-	<collection>
-		<name>OxExploded</name>
-		<entry>True Neutral</entry>
-	</collection>
-	<collection>
-		<name>SheepExploded</name>
-		<entry>True Neutral</entry>
-	</collection>
-	<collection>
-		<name>PigExploded</name>
-		<entry>True Neutral</entry>
-	</collection>
-	<collection>
-		<name>ChickenExploded</name>
-		<entry>True Neutral</entry>
-	</collection>
-	<collection>
-		<name>TurkeyExploded</name>
-		<entry>True Neutral</entry>
-	</collection>
-	<collection>
-		<name>PeacockExploded</name>
-		<entry>True Neutral</entry>
-	</collection>
-	<collection>
-		<name>PheasantExploded</name>
-		<entry>True Neutral</entry>
-	</collection>
 </collections>

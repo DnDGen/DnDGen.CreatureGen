@@ -732,46 +732,6 @@
 	  <entry>Female</entry>
 	  <entry>Male</entry>
   </collection>
-	<collection>
-		<name>Goat</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
-	</collection>
-	<collection>
-		<name>Llama</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
-	</collection>
-	<collection>
-		<name>Milk Cow</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
-	</collection>
-	<collection>
-		<name>Ox</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
-	</collection>
-	<collection>
-		<name>Sheep</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
-	</collection>
-	<collection>
-		<name>Moose</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
-	</collection>
-	<collection>
-		<name>Deer</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
-	</collection>
-	<collection>
-		<name>Zebra</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
-	</collection>
   <collection>
     <name>Black Pudding</name>
 	  <entry>Agender</entry>
@@ -794,11 +754,6 @@
 	  <entry>Female</entry>
 	  <entry>Male</entry>
   </collection>
-	<collection>
-		<name>Pig</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
-	</collection>
   <collection>
     <name>Dire Boar</name>
 	  <entry>Female</entry>
@@ -3049,26 +3004,6 @@
 	  <entry>Female</entry>
 	  <entry>Male</entry>
   </collection>
-	<collection>
-		<name>Chicken</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
-	</collection>
-	<collection>
-		<name>Turkey</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
-	</collection>
-	<collection>
-		<name>Peacock</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
-	</collection>
-	<collection>
-		<name>Pheasant</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
-	</collection>
   <collection>
     <name>Ravid</name>
 	  <entry>Agender</entry>
