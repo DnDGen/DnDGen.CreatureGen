@@ -11,7 +11,7 @@
   </collection>
   <collection>
     <name>Aboleth</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -42,727 +42,727 @@
   </collection>
   <collection>
     <name>Air Elemental, Elder</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Air Elemental, Greater</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Air Elemental, Huge</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Air Elemental, Large</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Air Elemental, Medium</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Air Elemental, Small</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Air Mephit</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Allip</name>
-	  <entry>Undead@100d100</entry>
+	  <entry>Undead@1d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Androsphinx</name>
-	  <entry>Adulthood@100d100+16</entry>
+	  <entry>Adulthood@1d100d100+16</entry>
 	  <entry>Maximum@50d100+5000</entry>
   </collection>
   <collection>
     <name>Angel, Astral Deva</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Angel, Planetar</name>
-    <entry>Adulthood@10000d100+1000</entry>
+    <entry>Adulthood@1d100d100d100+1000</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Angel, Solar</name>
-    <entry>Adulthood@10000d100+5000</entry>
+    <entry>Adulthood@1d100d100d100+5000</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Anvil, Colossal</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Anvil, Gargantuan</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Anvil, Huge</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Anvil, Large</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Anvil, Medium</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Anvil, Small</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Anvil, Tiny</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Block (Stone), Colossal</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Block (Stone), Gargantuan</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Block (Stone), Huge</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Block (Stone), Large</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Block (Stone), Medium</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Block (Stone), Small</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Block (Stone), Tiny</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Block (Wood), Colossal</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Block (Wood), Gargantuan</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Block (Wood), Huge</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Block (Wood), Large</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Block (Wood), Medium</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Block (Wood), Small</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Block (Wood), Tiny</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Box, Colossal</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Box, Gargantuan</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Box, Huge</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Box, Large</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Box, Medium</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Box, Small</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Box, Tiny</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Carpet, Colossal</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Carpet, Gargantuan</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Carpet, Huge</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Carpet, Large</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Carpet, Medium</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Carpet, Small</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Carpet, Tiny</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Carriage, Colossal</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Carriage, Gargantuan</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Carriage, Huge</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Carriage, Large</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Carriage, Medium</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Carriage, Small</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Carriage, Tiny</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Chain, Colossal</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Chain, Gargantuan</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Chain, Huge</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Chain, Large</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Chain, Medium</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Chain, Small</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Chain, Tiny</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Chair, Colossal</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Chair, Gargantuan</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Chair, Huge</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Chair, Large</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Chair, Medium</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Chair, Small</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Chair, Tiny</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Clothes, Colossal</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Clothes, Gargantuan</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Clothes, Huge</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Clothes, Large</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Clothes, Medium</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Clothes, Small</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Clothes, Tiny</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Ladder, Colossal</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Ladder, Gargantuan</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Ladder, Huge</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Ladder, Large</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Ladder, Medium</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Ladder, Small</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Ladder, Tiny</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Rope, Colossal</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Rope, Gargantuan</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Rope, Huge</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Rope, Large</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Rope, Medium</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Rope, Small</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Rope, Tiny</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Rug, Colossal</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Rug, Gargantuan</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Rug, Huge</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Rug, Large</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Rug, Medium</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Rug, Small</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Rug, Tiny</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Sled, Colossal</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Sled, Gargantuan</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Sled, Huge</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Sled, Large</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Sled, Medium</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Sled, Small</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Sled, Tiny</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Statue (Animal), Colossal</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Statue (Animal), Gargantuan</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Statue (Animal), Huge</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Statue (Animal), Large</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Statue (Animal), Medium</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Statue (Animal), Small</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Statue (Animal), Tiny</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Statue (Humanoid), Colossal</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Statue (Humanoid), Gargantuan</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Statue (Humanoid), Huge</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Statue (Humanoid), Large</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Statue (Humanoid), Medium</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Statue (Humanoid), Small</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Statue (Humanoid), Tiny</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Stool, Colossal</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Stool, Gargantuan</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Stool, Huge</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Stool, Large</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Stool, Medium</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Stool, Small</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Stool, Tiny</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Table, Colossal</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Table, Gargantuan</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Table, Huge</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Table, Large</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Table, Medium</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Table, Small</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Table, Tiny</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Tapestry, Colossal</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Tapestry, Gargantuan</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Tapestry, Huge</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Tapestry, Large</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Tapestry, Medium</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Tapestry, Small</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Tapestry, Tiny</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Wagon, Colossal</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Wagon, Gargantuan</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Wagon, Huge</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Wagon, Large</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Wagon, Medium</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Wagon, Small</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Animated Object, Wagon, Tiny</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -846,7 +846,7 @@
   </collection>
   <collection>
     <name>Babau</name>
-	  <entry>Adulthood@10000d100</entry>
+	  <entry>Adulthood@1d100d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -875,12 +875,12 @@
   </collection>
   <collection>
     <name>Balor</name>
-	  <entry>Adulthood@10000d100</entry>
+	  <entry>Adulthood@1d100d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Barbed Devil (Hamatula)</name>
-	  <entry>Adulthood@10000d100</entry>
+	  <entry>Adulthood@1d100d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -911,12 +911,12 @@
   </collection>
   <collection>
     <name>Bearded Devil (Barbazu)</name>
-	  <entry>Adulthood@10000d100</entry>
+	  <entry>Adulthood@1d100d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Bebilith</name>
-	  <entry>Adulthood@10000d100</entry>
+	  <entry>Adulthood@1d100d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -937,7 +937,7 @@
   </collection>
   <collection>
     <name>Belker</name>
-	  <entry>Adulthood@100d100</entry>
+	  <entry>Adulthood@1d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -1104,12 +1104,12 @@
   </collection>
   <collection>
     <name>Bodak</name>
-	  <entry>Undead@100d100</entry>
+	  <entry>Undead@1d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Bone Devil (Osyluth)</name>
-	  <entry>Adulthood@10000d100</entry>
+	  <entry>Adulthood@1d100d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -1324,7 +1324,7 @@
   </collection>
   <collection>
     <name>Chain Devil (Kyton)</name>
-	  <entry>Adulthood@10000d100</entry>
+	  <entry>Adulthood@1d100d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -1393,7 +1393,7 @@
   </collection>
   <collection>
     <name>Clay Golem</name>
-	  <entry>Construct@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -1585,7 +1585,7 @@
   </collection>
   <collection>
     <name>Devourer</name>
-	  <entry>Undead@100d100</entry>
+	  <entry>Undead@1d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -1710,7 +1710,7 @@
   </collection>
   <collection>
     <name>Djinni</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -1765,7 +1765,7 @@
   </collection>
   <collection>
     <name>Dretch</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -1799,7 +1799,7 @@
   </collection>
   <collection>
     <name>Dust Mephit</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -1812,42 +1812,42 @@
   </collection>
   <collection>
     <name>Earth Elemental, Elder</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Greater</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Huge</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Large</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Medium</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Small</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Earth Mephit</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Efreeti</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -1918,7 +1918,7 @@
   </collection>
   <collection>
     <name>Erinyes</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -1955,32 +1955,32 @@
   </collection>
   <collection>
     <name>Fire Elemental, Elder</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Greater</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Huge</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Large</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Medium</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Small</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -1993,7 +1993,7 @@
   </collection>
   <collection>
     <name>Fire Mephit</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -2018,7 +2018,7 @@
   </collection>
   <collection>
     <name>Flesh Golem</name>
-	  <entry>Construct@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -2116,12 +2116,12 @@
   </collection>
   <collection>
     <name>Ghast</name>
-	  <entry>Undead@100d100</entry>
+	  <entry>Undead@1d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Ghoul</name>
-	  <entry>Undead@100d100</entry>
+	  <entry>Undead@1d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -2275,7 +2275,7 @@
   </collection>
   <collection>
     <name>Glabrezu</name>
-	  <entry>Adulthood@10000d100</entry>
+	  <entry>Adulthood@1d100d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -2395,12 +2395,12 @@
   </collection>
   <collection>
     <name>Greater Shadow</name>
-	  <entry>Undead@100d100</entry>
+	  <entry>Undead@1d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Greater Stone Golem</name>
-	  <entry>Construct@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -2570,22 +2570,22 @@
   </collection>
   <collection>
     <name>Hell Hound</name>
-	  <entry>Adulthood@10000d100+2</entry>
+	  <entry>Adulthood@1d100d100d100+2</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Hellcat (Bezekira)</name>
-	  <entry>Adulthood@10000d100</entry>
+	  <entry>Adulthood@1d100d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Hellwasp Swarm</name>
-	  <entry>Swarm@10000d100</entry>
+	  <entry>Swarm@1d100d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Hezrou</name>
-	  <entry>Adulthood@10000d100</entry>
+	  <entry>Adulthood@1d100d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -2640,12 +2640,12 @@
   </collection>
   <collection>
     <name>Horned Devil (Cornugon)</name>
-	  <entry>Adulthood@10000d100</entry>
+	  <entry>Adulthood@1d100d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Hound Archon</name>
-	  <entry>Adulthood@10000d100</entry>
+	  <entry>Adulthood@1d100d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -2674,32 +2674,32 @@
   </collection>
   <collection>
     <name>Ice Devil (Gelugon)</name>
-	  <entry>Adulthood@10000d100</entry>
+	  <entry>Adulthood@1d100d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Ice Mephit</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Imp</name>
-	  <entry>Adulthood@10000d100</entry>
+	  <entry>Adulthood@1d100d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Invisible Stalker</name>
-	  <entry>Adulthood@10000d100</entry>
+	  <entry>Adulthood@1d100d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Iron Golem</name>
-	  <entry>Construct@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Janni</name>
-	  <entry>Adulthood@10000d100</entry>
+	  <entry>Adulthood@1d100d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -2730,7 +2730,7 @@
   </collection>
   <collection>
     <name>Kolyarut</name>
-	  <entry>Construct@10000d100</entry>
+	  <entry>Construct@1d100d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -2756,7 +2756,7 @@
   </collection>
   <collection>
     <name>Lacedon</name>
-	  <entry>Undead@100d100</entry>
+	  <entry>Undead@1d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -2777,12 +2777,12 @@
   </collection>
   <collection>
     <name>Lantern Archon</name>
-	  <entry>Adulthood@10000d100</entry>
+	  <entry>Adulthood@1d100d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Lemure</name>
-	  <entry>Adulthood@10000d100</entry>
+	  <entry>Adulthood@1d100d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -2828,7 +2828,7 @@
   <collection>
     <name>Lillend</name>
 	  <entry>Adulthood@1000d100</entry>
-	  <entry>Maximum@10000d100</entry>
+	  <entry>Maximum@1d100d100d100</entry>
   </collection>
   <collection>
     <name>Lion</name>
@@ -2869,12 +2869,12 @@
   </collection>
   <collection>
     <name>Magma Mephit</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Magmin</name>
-	  <entry>Adulthood@10000d100</entry>
+	  <entry>Adulthood@1d100d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -2895,12 +2895,12 @@
   </collection>
   <collection>
     <name>Marilith</name>
-	  <entry>Adulthood@10000d100</entry>
+	  <entry>Adulthood@1d100d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Marut</name>
-	  <entry>Construct@10000d100</entry>
+	  <entry>Construct@1d100d100d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -3167,7 +3167,7 @@
   </collection>
   <collection>
     <name>Noble Djinni</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -3200,7 +3200,7 @@
   </collection>
   <collection>
     <name>Ooze Mephit</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -3435,7 +3435,7 @@
   </collection>
   <collection>
     <name>Salt Mephit</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -3628,7 +3628,7 @@
   </collection>
   <collection>
     <name>Steam Mephit</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -3646,7 +3646,7 @@
   </collection>
   <collection>
     <name>Stone Golem</name>
-	  <entry>Construct@100d100</entry>
+	  <entry>Construct@1d10d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -3827,37 +3827,37 @@
   </collection>
   <collection>
     <name>Water Elemental, Elder</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Water Elemental, Greater</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Water Elemental, Huge</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Water Elemental, Large</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Water Elemental, Medium</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Water Elemental, Small</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Water Mephit</name>
-    <entry>Adulthood@10000d100</entry>
+    <entry>Adulthood@1d100d100d100</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>

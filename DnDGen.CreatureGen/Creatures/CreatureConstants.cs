@@ -280,139 +280,79 @@ namespace DnDGen.CreatureGen.Creatures
         public const string Allip = "Allip";
         public const string Androsphinx = "Androsphinx";
         public const string Angel_AstralDeva = "Angel, Astral Deva";
-        public const string AnimatedObject_Anvil_Colossal = "Animated Object, Anvil, Colossal";
-        public const string AnimatedObject_Anvil_Gargantuan = "Animated Object, Anvil, Gargantuan";
-        public const string AnimatedObject_Anvil_Huge = "Animated Object, Anvil, Huge";
-        public const string AnimatedObject_Anvil_Large = "Animated Object, Anvil, Large";
-        public const string AnimatedObject_Anvil_Medium = "Animated Object, Anvil, Medium";
-        public const string AnimatedObject_Anvil_Small = "Animated Object, Anvil, Small";
-        public const string AnimatedObject_Anvil_Tiny = "Animated Object, Anvil, Tiny";
-        public const string AnimatedObject_Block_Stone_Colossal = "Animated Object, Block (Stone), Colossal";
-        public const string AnimatedObject_Block_Stone_Gargantuan = "Animated Object, Block (Stone), Gargantuan";
-        public const string AnimatedObject_Block_Stone_Huge = "Animated Object, Block (Stone), Huge";
-        public const string AnimatedObject_Block_Stone_Large = "Animated Object, Block (Stone), Large";
-        public const string AnimatedObject_Block_Stone_Medium = "Animated Object, Block (Stone), Medium";
-        public const string AnimatedObject_Block_Stone_Small = "Animated Object, Block (Stone), Small";
-        public const string AnimatedObject_Block_Stone_Tiny = "Animated Object, Block (Stone), Tiny";
-        public const string AnimatedObject_Block_Wood_Colossal = "Animated Object, Block (Wood), Colossal";
-        public const string AnimatedObject_Block_Wood_Gargantuan = "Animated Object, Block (Wood), Gargantuan";
-        public const string AnimatedObject_Block_Wood_Huge = "Animated Object, Block (Wood), Huge";
-        public const string AnimatedObject_Block_Wood_Large = "Animated Object, Block (Wood), Large";
-        public const string AnimatedObject_Block_Wood_Medium = "Animated Object, Block (Wood), Medium";
-        public const string AnimatedObject_Block_Wood_Small = "Animated Object, Block (Wood), Small";
-        public const string AnimatedObject_Block_Wood_Tiny = "Animated Object, Block (Wood), Tiny";
-        public const string AnimatedObject_Box_Colossal = "Animated Object, Box, Colossal";
-        public const string AnimatedObject_Box_Gargantuan = "Animated Object, Box, Gargantuan";
-        public const string AnimatedObject_Box_Huge = "Animated Object, Box, Huge";
-        public const string AnimatedObject_Box_Large = "Animated Object, Box, Large";
-        public const string AnimatedObject_Box_Medium = "Animated Object, Box, Medium";
-        public const string AnimatedObject_Box_Small = "Animated Object, Box, Small";
-        public const string AnimatedObject_Box_Tiny = "Animated Object, Box, Tiny";
-        public const string AnimatedObject_Carpet_Colossal = "Animated Object, Carpet, Colossal";
-        public const string AnimatedObject_Carpet_Gargantuan = "Animated Object, Carpet, Gargantuan";
-        public const string AnimatedObject_Carpet_Huge = "Animated Object, Carpet, Huge";
-        public const string AnimatedObject_Carpet_Large = "Animated Object, Carpet, Large";
-        public const string AnimatedObject_Carpet_Medium = "Animated Object, Carpet, Medium";
-        public const string AnimatedObject_Carpet_Small = "Animated Object, Carpet, Small";
-        public const string AnimatedObject_Carpet_Tiny = "Animated Object, Carpet, Tiny";
-        public const string AnimatedObject_Carriage_Colossal = "Animated Object, Carriage, Colossal";
-        public const string AnimatedObject_Carriage_Gargantuan = "Animated Object, Carriage, Gargantuan";
-        public const string AnimatedObject_Carriage_Huge = "Animated Object, Carriage, Huge";
-        public const string AnimatedObject_Carriage_Large = "Animated Object, Carriage, Large";
-        public const string AnimatedObject_Carriage_Medium = "Animated Object, Carriage, Medium";
-        public const string AnimatedObject_Carriage_Small = "Animated Object, Carriage, Small";
-        public const string AnimatedObject_Carriage_Tiny = "Animated Object, Carriage, Tiny";
-        public const string AnimatedObject_Chain_Colossal = "Animated Object, Chain, Colossal";
-        public const string AnimatedObject_Chain_Gargantuan = "Animated Object, Chain, Gargantuan";
-        public const string AnimatedObject_Chain_Huge = "Animated Object, Chain, Huge";
-        public const string AnimatedObject_Chain_Large = "Animated Object, Chain, Large";
-        public const string AnimatedObject_Chain_Medium = "Animated Object, Chain, Medium";
-        public const string AnimatedObject_Chain_Small = "Animated Object, Chain, Small";
-        public const string AnimatedObject_Chain_Tiny = "Animated Object, Chain, Tiny";
-        public const string AnimatedObject_Chair_Colossal = "Animated Object, Chair, Colossal";
-        public const string AnimatedObject_Chair_Gargantuan = "Animated Object, Chair, Gargantuan";
-        public const string AnimatedObject_Chair_Huge = "Animated Object, Chair, Huge";
-        public const string AnimatedObject_Chair_Large = "Animated Object, Chair, Large";
-        public const string AnimatedObject_Chair_Medium = "Animated Object, Chair, Medium";
-        public const string AnimatedObject_Chair_Small = "Animated Object, Chair, Small";
-        public const string AnimatedObject_Chair_Tiny = "Animated Object, Chair, Tiny";
-        public const string AnimatedObject_Clothes_Colossal = "Animated Object, Clothes, Colossal";
-        public const string AnimatedObject_Clothes_Gargantuan = "Animated Object, Clothes, Gargantuan";
-        public const string AnimatedObject_Clothes_Huge = "Animated Object, Clothes, Huge";
-        public const string AnimatedObject_Clothes_Large = "Animated Object, Clothes, Large";
-        public const string AnimatedObject_Clothes_Medium = "Animated Object, Clothes, Medium";
-        public const string AnimatedObject_Clothes_Small = "Animated Object, Clothes, Small";
-        public const string AnimatedObject_Clothes_Tiny = "Animated Object, Clothes, Tiny";
-        public const string AnimatedObject_Ladder_Colossal = "Animated Object, Ladder, Colossal";
-        public const string AnimatedObject_Ladder_Gargantuan = "Animated Object, Ladder, Gargantuan";
-        public const string AnimatedObject_Ladder_Huge = "Animated Object, Ladder, Huge";
-        public const string AnimatedObject_Ladder_Large = "Animated Object, Ladder, Large";
-        public const string AnimatedObject_Ladder_Medium = "Animated Object, Ladder, Medium";
-        public const string AnimatedObject_Ladder_Small = "Animated Object, Ladder, Small";
-        public const string AnimatedObject_Ladder_Tiny = "Animated Object, Ladder, Tiny";
-        public const string AnimatedObject_Rope_Colossal = "Animated Object, Rope, Colossal";
-        public const string AnimatedObject_Rope_Gargantuan = "Animated Object, Rope, Gargantuan";
-        public const string AnimatedObject_Rope_Huge = "Animated Object, Rope, Huge";
-        public const string AnimatedObject_Rope_Large = "Animated Object, Rope, Large";
-        public const string AnimatedObject_Rope_Medium = "Animated Object, Rope, Medium";
-        public const string AnimatedObject_Rope_Small = "Animated Object, Rope, Small";
-        public const string AnimatedObject_Rope_Tiny = "Animated Object, Rope, Tiny";
-        public const string AnimatedObject_Rug_Colossal = "Animated Object, Rug, Colossal";
-        public const string AnimatedObject_Rug_Gargantuan = "Animated Object, Rug, Gargantuan";
-        public const string AnimatedObject_Rug_Huge = "Animated Object, Rug, Huge";
-        public const string AnimatedObject_Rug_Large = "Animated Object, Rug, Large";
-        public const string AnimatedObject_Rug_Medium = "Animated Object, Rug, Medium";
-        public const string AnimatedObject_Rug_Small = "Animated Object, Rug, Small";
-        public const string AnimatedObject_Rug_Tiny = "Animated Object, Rug, Tiny";
-        public const string AnimatedObject_Sled_Colossal = "Animated Object, Sled, Colossal";
-        public const string AnimatedObject_Sled_Gargantuan = "Animated Object, Sled, Gargantuan";
-        public const string AnimatedObject_Sled_Huge = "Animated Object, Sled, Huge";
-        public const string AnimatedObject_Sled_Large = "Animated Object, Sled, Large";
-        public const string AnimatedObject_Sled_Medium = "Animated Object, Sled, Medium";
-        public const string AnimatedObject_Sled_Small = "Animated Object, Sled, Small";
-        public const string AnimatedObject_Sled_Tiny = "Animated Object, Sled, Tiny";
-        public const string AnimatedObject_Statue_Animal_Colossal = "Animated Object, Statue (Animal), Colossal";
-        public const string AnimatedObject_Statue_Animal_Gargantuan = "Animated Object, Statue (Animal), Gargantuan";
-        public const string AnimatedObject_Statue_Animal_Huge = "Animated Object, Statue (Animal), Huge";
-        public const string AnimatedObject_Statue_Animal_Large = "Animated Object, Statue (Animal), Large";
-        public const string AnimatedObject_Statue_Animal_Medium = "Animated Object, Statue (Animal), Medium";
-        public const string AnimatedObject_Statue_Animal_Small = "Animated Object, Statue (Animal), Small";
-        public const string AnimatedObject_Statue_Animal_Tiny = "Animated Object, Statue (Animal), Tiny";
-        public const string AnimatedObject_Statue_Humanoid_Colossal = "Animated Object, Statue (Humanoid), Colossal";
-        public const string AnimatedObject_Statue_Humanoid_Gargantuan = "Animated Object, Statue (Humanoid), Gargantuan";
-        public const string AnimatedObject_Statue_Humanoid_Huge = "Animated Object, Statue (Humanoid), Huge";
-        public const string AnimatedObject_Statue_Humanoid_Large = "Animated Object, Statue (Humanoid), Large";
-        public const string AnimatedObject_Statue_Humanoid_Medium = "Animated Object, Statue (Humanoid), Medium";
-        public const string AnimatedObject_Statue_Humanoid_Small = "Animated Object, Statue (Humanoid), Small";
-        public const string AnimatedObject_Statue_Humanoid_Tiny = "Animated Object, Statue (Humanoid), Tiny";
-        public const string AnimatedObject_Stool_Colossal = "Animated Object, Stool, Colossal";
-        public const string AnimatedObject_Stool_Gargantuan = "Animated Object, Stool, Gargantuan";
-        public const string AnimatedObject_Stool_Huge = "Animated Object, Stool, Huge";
-        public const string AnimatedObject_Stool_Large = "Animated Object, Stool, Large";
-        public const string AnimatedObject_Stool_Medium = "Animated Object, Stool, Medium";
-        public const string AnimatedObject_Stool_Small = "Animated Object, Stool, Small";
-        public const string AnimatedObject_Stool_Tiny = "Animated Object, Stool, Tiny";
-        public const string AnimatedObject_Table_Colossal = "Animated Object, Table, Colossal";
-        public const string AnimatedObject_Table_Gargantuan = "Animated Object, Table, Gargantuan";
-        public const string AnimatedObject_Table_Huge = "Animated Object, Table, Huge";
-        public const string AnimatedObject_Table_Large = "Animated Object, Table, Large";
-        public const string AnimatedObject_Table_Medium = "Animated Object, Table, Medium";
-        public const string AnimatedObject_Table_Small = "Animated Object, Table, Small";
-        public const string AnimatedObject_Table_Tiny = "Animated Object, Table, Tiny";
-        public const string AnimatedObject_Tapestry_Colossal = "Animated Object, Tapestry, Colossal";
-        public const string AnimatedObject_Tapestry_Gargantuan = "Animated Object, Tapestry, Gargantuan";
-        public const string AnimatedObject_Tapestry_Huge = "Animated Object, Tapestry, Huge";
-        public const string AnimatedObject_Tapestry_Large = "Animated Object, Tapestry, Large";
-        public const string AnimatedObject_Tapestry_Medium = "Animated Object, Tapestry, Medium";
-        public const string AnimatedObject_Tapestry_Small = "Animated Object, Tapestry, Small";
-        public const string AnimatedObject_Tapestry_Tiny = "Animated Object, Tapestry, Tiny";
-        public const string AnimatedObject_Wagon_Colossal = "Animated Object, Wagon, Colossal";
-        public const string AnimatedObject_Wagon_Gargantuan = "Animated Object, Wagon, Gargantuan";
-        public const string AnimatedObject_Wagon_Huge = "Animated Object, Wagon, Huge";
-        public const string AnimatedObject_Wagon_Large = "Animated Object, Wagon, Large";
-        public const string AnimatedObject_Wagon_Medium = "Animated Object, Wagon, Medium";
-        public const string AnimatedObject_Wagon_Small = "Animated Object, Wagon, Small";
-        public const string AnimatedObject_Wagon_Tiny = "Animated Object, Wagon, Tiny";
+
+        //block, anvil, candle, crowbar, caltrop, grappling hook, hammer, jug, lamp, lantern, lock, spyglass, vial, clock
+        public const string AnimatedObject_Colossal = "Animated Object, Colossal";
+        //Sled, block, box, ram, torch
+        public const string AnimatedObject_Colossal_Wooden = "Animated Object, Colossal (Wooden)";
+        //Carpet, rug, tapestry, clothes
+        public const string AnimatedObject_Colossal_Sheetlike = "Animated Object, Colossal (Sheetlike)";
+        //rope, vine, chain, manacles, necklace
+        public const string AnimatedObject_Colossal_Flexible = "Animated Object, Colossal (Flexible)";
+        //ladder, humanoid statue
+        public const string AnimatedObject_Colossal_TwoLegs_Wooden = "Animated Object, Colossal (Two Legs, Wooden)";
+        //ladder, humanoid statue
+        public const string AnimatedObject_Colossal_TwoLegs = "Animated Object, Colossal (Two Legs)";
+        //table, chair, stool, animal statue, desk, bed
+        public const string AnimatedObject_Colossal_MultipleLegs_Wooden = "Animated Object, Colossal (More Than Two Legs, Wooden)";
+        //table, chair, stool, animal statue, desk, bed
+        public const string AnimatedObject_Colossal_MultipleLegs = "Animated Object, Colossal (More Than Two Legs)";
+        //wagon, carriage, cart
+        public const string AnimatedObject_Colossal_Wheels_Wooden = "Animated Object, Colossal (Wheels, Wooden)";
+        public const string AnimatedObject_Gargantuan = "Animated Object, Gargantuan";
+        public const string AnimatedObject_Gargantuan_Wooden = "Animated Object, Gargantuan (Wooden)";
+        public const string AnimatedObject_Gargantuan_Sheetlike = "Animated Object, Gargantuan (Sheetlike)";
+        public const string AnimatedObject_Gargantuan_Flexible = "Animated Object, Gargantuan (Flexible)";
+        public const string AnimatedObject_Gargantuan_TwoLegs_Wooden = "Animated Object, Gargantuan (Two Legs, Wooden)";
+        public const string AnimatedObject_Gargantuan_TwoLegs = "Animated Object, Gargantuan (Two Legs)";
+        public const string AnimatedObject_Gargantuan_MultipleLegs_Wooden = "Animated Object, Gargantuan (More Than Two Legs, Wooden)";
+        public const string AnimatedObject_Gargantuan_MultipleLegs = "Animated Object, Gargantuan (More Than Two Legs)";
+        public const string AnimatedObject_Gargantuan_Wheels_Wooden = "Animated Object, Gargantuan (Wheels, Wooden)";
+        public const string AnimatedObject_Huge = "Animated Object, Huge";
+        public const string AnimatedObject_Huge_Wooden = "Animated Object, Huge (Wooden)";
+        public const string AnimatedObject_Huge_Sheetlike = "Animated Object, Huge (Sheetlike)";
+        public const string AnimatedObject_Huge_Flexible = "Animated Object, Huge (Flexible)";
+        public const string AnimatedObject_Huge_TwoLegs_Wooden = "Animated Object, Huge (Two Legs, Wooden)";
+        public const string AnimatedObject_Huge_TwoLegs = "Animated Object, Huge (Two Legs)";
+        public const string AnimatedObject_Huge_MultipleLegs_Wooden = "Animated Object, Huge (More Than Two Legs, Wooden)";
+        public const string AnimatedObject_Huge_MultipleLegs = "Animated Object, Huge (More Than Two Legs)";
+        public const string AnimatedObject_Huge_Wheels_Wooden = "Animated Object, Huge (Wheels, Wooden)";
+        public const string AnimatedObject_Large = "Animated Object, Large";
+        public const string AnimatedObject_Large_Wooden = "Animated Object, Large (Wooden)";
+        public const string AnimatedObject_Large_Sheetlike = "Animated Object, Large (Sheetlike)";
+        public const string AnimatedObject_Large_Flexible = "Animated Object, Large (Flexible)";
+        public const string AnimatedObject_Large_TwoLegs_Wooden = "Animated Object, Large (Two Legs, Wooden)";
+        public const string AnimatedObject_Large_TwoLegs = "Animated Object, Large (Two Legs)";
+        public const string AnimatedObject_Large_MultipleLegs_Wooden = "Animated Object, Large (More Than Two Legs, Wooden)";
+        public const string AnimatedObject_Large_MultipleLegs = "Animated Object, Large (More Than Two Legs)";
+        public const string AnimatedObject_Large_Wheels_Wooden = "Animated Object, Large (Wheels, Wooden)";
+        public const string AnimatedObject_Medium = "Animated Object, Medium";
+        public const string AnimatedObject_Medium_Wooden = "Animated Object, Medium (Wooden)";
+        public const string AnimatedObject_Medium_Sheetlike = "Animated Object, Medium (Sheetlike)";
+        public const string AnimatedObject_Medium_Flexible = "Animated Object, Medium (Flexible)";
+        public const string AnimatedObject_Medium_TwoLegs_Wooden = "Animated Object, Medium (Two Legs, Wooden)";
+        public const string AnimatedObject_Medium_TwoLegs = "Animated Object, Medium (Two Legs)";
+        public const string AnimatedObject_Medium_MultipleLegs_Wooden = "Animated Object, Medium (More Than Two Legs, Wooden)";
+        public const string AnimatedObject_Medium_MultipleLegs = "Animated Object, Medium (More Than Two Legs)";
+        public const string AnimatedObject_Medium_Wheels_Wooden = "Animated Object, Medium (Wheels, Wooden)";
+        public const string AnimatedObject_Small = "Animated Object, Small";
+        public const string AnimatedObject_Small_Wooden = "Animated Object, Small (Wooden)";
+        public const string AnimatedObject_Small_Sheetlike = "Animated Object, Small (Sheetlike)";
+        public const string AnimatedObject_Small_Flexible = "Animated Object, Small (Flexible)";
+        public const string AnimatedObject_Small_TwoLegs_Wooden = "Animated Object, Small (Two Legs, Wooden)";
+        public const string AnimatedObject_Small_TwoLegs = "Animated Object, Small (Two Legs)";
+        public const string AnimatedObject_Small_MultipleLegs_Wooden = "Animated Object, Small (More Than Two Legs, Wooden)";
+        public const string AnimatedObject_Small_MultipleLegs = "Animated Object, Small (More Than Two Legs)";
+        public const string AnimatedObject_Small_Wheels_Wooden = "Animated Object, Small (Wheels, Wooden)";
+        public const string AnimatedObject_Tiny = "Animated Object, Tiny";
+        public const string AnimatedObject_Tiny_Wooden = "Animated Object, Tiny (Wooden)";
+        public const string AnimatedObject_Tiny_Sheetlike = "Animated Object, Tiny (Sheetlike)";
+        public const string AnimatedObject_Tiny_Flexible = "Animated Object, Tiny (Flexible)";
+        public const string AnimatedObject_Tiny_TwoLegs_Wooden = "Animated Object, Tiny (Two Legs, Wooden)";
+        public const string AnimatedObject_Tiny_TwoLegs = "Animated Object, Tiny (Two Legs)";
+        public const string AnimatedObject_Tiny_MultipleLegs_Wooden = "Animated Object, Tiny (More Than Two Legs, Wooden)";
+        public const string AnimatedObject_Tiny_MultipleLegs = "Animated Object, Tiny (More Than Two Legs)";
+        public const string AnimatedObject_Tiny_Wheels_Wooden = "Animated Object, Tiny (Wheels, Wooden)";
         public const string Ankheg = "Ankheg";
         public const string Annis = "Annis";
         public const string Ant_Giant_Queen = "Giant Ant, Queen";
@@ -1005,139 +945,69 @@ namespace DnDGen.CreatureGen.Creatures
                 Achaierai,
                 Allip,
                 Androsphinx,
-                AnimatedObject_Anvil_Colossal,
-                AnimatedObject_Anvil_Gargantuan,
-                AnimatedObject_Anvil_Huge,
-                AnimatedObject_Anvil_Large,
-                AnimatedObject_Anvil_Medium,
-                AnimatedObject_Anvil_Small,
-                AnimatedObject_Anvil_Tiny,
-                AnimatedObject_Block_Stone_Colossal,
-                AnimatedObject_Block_Stone_Gargantuan,
-                AnimatedObject_Block_Stone_Huge,
-                AnimatedObject_Block_Stone_Large,
-                AnimatedObject_Block_Stone_Medium,
-                AnimatedObject_Block_Stone_Small,
-                AnimatedObject_Block_Stone_Tiny,
-                AnimatedObject_Block_Wood_Colossal,
-                AnimatedObject_Block_Wood_Gargantuan,
-                AnimatedObject_Block_Wood_Huge,
-                AnimatedObject_Block_Wood_Large,
-                AnimatedObject_Block_Wood_Medium,
-                AnimatedObject_Block_Wood_Small,
-                AnimatedObject_Block_Wood_Tiny,
-                AnimatedObject_Box_Colossal,
-                AnimatedObject_Box_Gargantuan,
-                AnimatedObject_Box_Huge,
-                AnimatedObject_Box_Large,
-                AnimatedObject_Box_Medium,
-                AnimatedObject_Box_Small,
-                AnimatedObject_Box_Tiny,
-                AnimatedObject_Carpet_Colossal,
-                AnimatedObject_Carpet_Gargantuan,
-                AnimatedObject_Carpet_Huge,
-                AnimatedObject_Carpet_Large,
-                AnimatedObject_Carpet_Medium,
-                AnimatedObject_Carpet_Small,
-                AnimatedObject_Carpet_Tiny,
-                AnimatedObject_Carriage_Colossal,
-                AnimatedObject_Carriage_Gargantuan,
-                AnimatedObject_Carriage_Huge,
-                AnimatedObject_Carriage_Large,
-                AnimatedObject_Carriage_Medium,
-                AnimatedObject_Carriage_Small,
-                AnimatedObject_Carriage_Tiny,
-                AnimatedObject_Chain_Colossal,
-                AnimatedObject_Chain_Gargantuan,
-                AnimatedObject_Chain_Huge,
-                AnimatedObject_Chain_Large,
-                AnimatedObject_Chain_Medium,
-                AnimatedObject_Chain_Small,
-                AnimatedObject_Chain_Tiny,
-                AnimatedObject_Chair_Colossal,
-                AnimatedObject_Chair_Gargantuan,
-                AnimatedObject_Chair_Huge,
-                AnimatedObject_Chair_Large,
-                AnimatedObject_Chair_Medium,
-                AnimatedObject_Chair_Small,
-                AnimatedObject_Chair_Tiny,
-                AnimatedObject_Clothes_Colossal,
-                AnimatedObject_Clothes_Gargantuan,
-                AnimatedObject_Clothes_Huge,
-                AnimatedObject_Clothes_Large,
-                AnimatedObject_Clothes_Medium,
-                AnimatedObject_Clothes_Small,
-                AnimatedObject_Clothes_Tiny,
-                AnimatedObject_Ladder_Colossal,
-                AnimatedObject_Ladder_Gargantuan,
-                AnimatedObject_Ladder_Huge,
-                AnimatedObject_Ladder_Large,
-                AnimatedObject_Ladder_Medium,
-                AnimatedObject_Ladder_Small,
-                AnimatedObject_Ladder_Tiny,
-                AnimatedObject_Rope_Colossal,
-                AnimatedObject_Rope_Gargantuan,
-                AnimatedObject_Rope_Huge,
-                AnimatedObject_Rope_Large,
-                AnimatedObject_Rope_Medium,
-                AnimatedObject_Rope_Small,
-                AnimatedObject_Rope_Tiny,
-                AnimatedObject_Rug_Colossal,
-                AnimatedObject_Rug_Gargantuan,
-                AnimatedObject_Rug_Huge,
-                AnimatedObject_Rug_Large,
-                AnimatedObject_Rug_Medium,
-                AnimatedObject_Rug_Small,
-                AnimatedObject_Rug_Tiny,
-                AnimatedObject_Sled_Colossal,
-                AnimatedObject_Sled_Gargantuan,
-                AnimatedObject_Sled_Huge,
-                AnimatedObject_Sled_Large,
-                AnimatedObject_Sled_Medium,
-                AnimatedObject_Sled_Small,
-                AnimatedObject_Sled_Tiny,
-                AnimatedObject_Statue_Animal_Colossal,
-                AnimatedObject_Statue_Animal_Gargantuan,
-                AnimatedObject_Statue_Animal_Huge,
-                AnimatedObject_Statue_Animal_Large,
-                AnimatedObject_Statue_Animal_Medium,
-                AnimatedObject_Statue_Animal_Small,
-                AnimatedObject_Statue_Animal_Tiny,
-                AnimatedObject_Statue_Humanoid_Colossal,
-                AnimatedObject_Statue_Humanoid_Gargantuan,
-                AnimatedObject_Statue_Humanoid_Huge,
-                AnimatedObject_Statue_Humanoid_Large,
-                AnimatedObject_Statue_Humanoid_Medium,
-                AnimatedObject_Statue_Humanoid_Small,
-                AnimatedObject_Statue_Humanoid_Tiny,
-                AnimatedObject_Stool_Colossal,
-                AnimatedObject_Stool_Gargantuan,
-                AnimatedObject_Stool_Huge,
-                AnimatedObject_Stool_Large,
-                AnimatedObject_Stool_Medium,
-                AnimatedObject_Stool_Small,
-                AnimatedObject_Stool_Tiny,
-                AnimatedObject_Table_Colossal,
-                AnimatedObject_Table_Gargantuan,
-                AnimatedObject_Table_Huge,
-                AnimatedObject_Table_Large,
-                AnimatedObject_Table_Medium,
-                AnimatedObject_Table_Small,
-                AnimatedObject_Table_Tiny,
-                AnimatedObject_Tapestry_Colossal,
-                AnimatedObject_Tapestry_Gargantuan,
-                AnimatedObject_Tapestry_Huge,
-                AnimatedObject_Tapestry_Large,
-                AnimatedObject_Tapestry_Medium,
-                AnimatedObject_Tapestry_Small,
-                AnimatedObject_Tapestry_Tiny,
-                AnimatedObject_Wagon_Colossal,
-                AnimatedObject_Wagon_Gargantuan,
-                AnimatedObject_Wagon_Huge,
-                AnimatedObject_Wagon_Large,
-                AnimatedObject_Wagon_Medium,
-                AnimatedObject_Wagon_Small,
-                AnimatedObject_Wagon_Tiny,
+                AnimatedObject_Colossal,
+                AnimatedObject_Colossal_Flexible,
+                AnimatedObject_Colossal_MultipleLegs,
+                AnimatedObject_Colossal_MultipleLegs_Wooden,
+                AnimatedObject_Colossal_Sheetlike,
+                AnimatedObject_Colossal_TwoLegs,
+                AnimatedObject_Colossal_TwoLegs_Wooden,
+                AnimatedObject_Colossal_Wheels_Wooden,
+                AnimatedObject_Colossal_Wooden,
+                AnimatedObject_Gargantuan,
+                AnimatedObject_Gargantuan_Flexible,
+                AnimatedObject_Gargantuan_MultipleLegs,
+                AnimatedObject_Gargantuan_MultipleLegs_Wooden,
+                AnimatedObject_Gargantuan_Sheetlike,
+                AnimatedObject_Gargantuan_TwoLegs,
+                AnimatedObject_Gargantuan_TwoLegs_Wooden,
+                AnimatedObject_Gargantuan_Wheels_Wooden,
+                AnimatedObject_Gargantuan_Wooden,
+                AnimatedObject_Huge,
+                AnimatedObject_Huge_Flexible,
+                AnimatedObject_Huge_MultipleLegs,
+                AnimatedObject_Huge_MultipleLegs_Wooden,
+                AnimatedObject_Huge_Sheetlike,
+                AnimatedObject_Huge_TwoLegs,
+                AnimatedObject_Huge_TwoLegs_Wooden,
+                AnimatedObject_Huge_Wheels_Wooden,
+                AnimatedObject_Huge_Wooden,
+                AnimatedObject_Large,
+                AnimatedObject_Large_Flexible,
+                AnimatedObject_Large_MultipleLegs,
+                AnimatedObject_Large_MultipleLegs_Wooden,
+                AnimatedObject_Large_Sheetlike,
+                AnimatedObject_Large_TwoLegs,
+                AnimatedObject_Large_TwoLegs_Wooden,
+                AnimatedObject_Large_Wheels_Wooden,
+                AnimatedObject_Large_Wooden,
+                AnimatedObject_Medium,
+                AnimatedObject_Medium_Flexible,
+                AnimatedObject_Medium_MultipleLegs,
+                AnimatedObject_Medium_MultipleLegs_Wooden,
+                AnimatedObject_Medium_Sheetlike,
+                AnimatedObject_Medium_TwoLegs,
+                AnimatedObject_Medium_TwoLegs_Wooden,
+                AnimatedObject_Medium_Wheels_Wooden,
+                AnimatedObject_Medium_Wooden,
+                AnimatedObject_Small,
+                AnimatedObject_Small_Flexible,
+                AnimatedObject_Small_MultipleLegs,
+                AnimatedObject_Small_MultipleLegs_Wooden,
+                AnimatedObject_Small_Sheetlike,
+                AnimatedObject_Small_TwoLegs,
+                AnimatedObject_Small_TwoLegs_Wooden,
+                AnimatedObject_Small_Wheels_Wooden,
+                AnimatedObject_Small_Wooden,
+                AnimatedObject_Tiny,
+                AnimatedObject_Tiny_Flexible,
+                AnimatedObject_Tiny_MultipleLegs,
+                AnimatedObject_Tiny_MultipleLegs_Wooden,
+                AnimatedObject_Tiny_Sheetlike,
+                AnimatedObject_Tiny_TwoLegs,
+                AnimatedObject_Tiny_TwoLegs_Wooden,
+                AnimatedObject_Tiny_Wheels_Wooden,
+                AnimatedObject_Tiny_Wooden,
                 Ankheg,
                 Annis,
                 Ant_Giant_Queen,

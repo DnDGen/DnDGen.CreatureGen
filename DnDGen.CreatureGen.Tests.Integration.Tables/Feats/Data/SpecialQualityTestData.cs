@@ -636,271 +636,69 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             testCases[CreatureConstants.Angel_Solar].Add(helper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Greatsword, requiresEquipment: true));
             testCases[CreatureConstants.Angel_Solar].Add(helper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.CompositeLongbow, requiresEquipment: true));
 
-            testCases[CreatureConstants.AnimatedObject_Anvil_Tiny].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Anvil_Small].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Anvil_Medium].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Anvil_Large].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Anvil_Huge].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Anvil_Gargantuan].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Anvil_Colossal].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Block_Stone_Tiny].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Block_Stone_Small].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Block_Stone_Medium].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Block_Stone_Large].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Block_Stone_Huge].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Block_Stone_Gargantuan].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Block_Stone_Colossal].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Block_Wood_Tiny].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Block_Wood_Small].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Block_Wood_Medium].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Block_Wood_Large].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Block_Wood_Huge].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Block_Wood_Gargantuan].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Block_Wood_Colossal].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Box_Tiny].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Box_Small].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Box_Medium].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Box_Large].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Box_Huge].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Box_Gargantuan].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Box_Colossal].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Carpet_Tiny].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Carpet_Small].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Carpet_Medium].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Carpet_Large].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Carpet_Huge].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Carpet_Gargantuan].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Carpet_Colossal].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Carriage_Tiny].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Carriage_Small].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Carriage_Medium].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Carriage_Large].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Carriage_Huge].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Carriage_Gargantuan].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Carriage_Colossal].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Chain_Tiny].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Chain_Small].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Chain_Medium].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Chain_Large].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Chain_Huge].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Chain_Gargantuan].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Chain_Colossal].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Chair_Tiny].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Chair_Small].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Chair_Medium].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Chair_Large].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Chair_Huge].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Chair_Gargantuan].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Chair_Colossal].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Clothes_Tiny].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Clothes_Small].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Clothes_Medium].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Clothes_Large].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Clothes_Huge].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Clothes_Gargantuan].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Clothes_Colossal].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Ladder_Tiny].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Ladder_Small].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Ladder_Medium].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Ladder_Large].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Ladder_Huge].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Ladder_Gargantuan].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Ladder_Colossal].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Rope_Tiny].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Rope_Small].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Rope_Medium].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Rope_Large].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Rope_Huge].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Rope_Gargantuan].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Rope_Colossal].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Rug_Tiny].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Rug_Small].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Rug_Medium].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Rug_Large].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Rug_Huge].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Rug_Gargantuan].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Rug_Colossal].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Sled_Tiny].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Sled_Small].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Sled_Medium].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Sled_Large].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Sled_Huge].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Sled_Gargantuan].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Sled_Colossal].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Statue_Animal_Tiny].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Statue_Animal_Small].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Statue_Animal_Medium].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Statue_Animal_Large].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Statue_Animal_Huge].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Statue_Animal_Gargantuan].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Statue_Animal_Colossal].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Tiny].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Small].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Medium].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Large].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Huge].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Gargantuan].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Statue_Humanoid_Colossal].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Stool_Tiny].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Stool_Small].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Stool_Medium].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Stool_Large].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Stool_Huge].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Stool_Gargantuan].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Stool_Colossal].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Table_Tiny].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Table_Small].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Table_Medium].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Table_Large].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Table_Huge].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Table_Gargantuan].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Table_Colossal].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Tapestry_Tiny].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Tapestry_Small].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Tapestry_Medium].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Tapestry_Large].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Tapestry_Huge].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Tapestry_Gargantuan].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Tapestry_Colossal].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Wagon_Tiny].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Wagon_Small].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Wagon_Medium].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Wagon_Large].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Wagon_Huge].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Wagon_Gargantuan].Add(helper.BuildData(None));
-
-            testCases[CreatureConstants.AnimatedObject_Wagon_Colossal].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Colossal].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Colossal_Flexible].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Colossal_Sheetlike].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Colossal_TwoLegs].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Colossal_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Gargantuan].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Gargantuan_Flexible].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Gargantuan_Sheetlike].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Gargantuan_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Huge].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Huge_Flexible].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Huge_Sheetlike].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Huge_TwoLegs].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Huge_Wheels_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Huge_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Large].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Large_Flexible].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Large_Sheetlike].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Large_TwoLegs].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Large_Wheels_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Large_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Medium].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Medium_Flexible].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Medium_MultipleLegs].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Medium_MultipleLegs_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Medium_Sheetlike].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Medium_TwoLegs].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Medium_TwoLegs_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Medium_Wheels_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Medium_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Small].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Small_Flexible].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Small_MultipleLegs].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Small_MultipleLegs_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Small_Sheetlike].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Small_TwoLegs].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Small_TwoLegs_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Small_Wheels_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Small_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Tiny].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Tiny_Flexible].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Tiny_MultipleLegs].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Tiny_MultipleLegs_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Tiny_Sheetlike].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Tiny_TwoLegs].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden].Add(helper.BuildData(None));
+            testCases[CreatureConstants.AnimatedObject_Tiny_Wooden].Add(helper.BuildData(None));
 
             testCases[CreatureConstants.Ankheg].Add(helper.BuildData(FeatConstants.SpecialQualities.Tremorsense, power: 60));
 
