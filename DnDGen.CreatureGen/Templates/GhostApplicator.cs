@@ -152,6 +152,14 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
+            var appearance = collectionSelector.SelectRandomFrom(TableNameConstants.Collection.Appearances, CreatureConstants.Templates.Ghost);
+            creature.Demographics.Appearance += " " + appearance;
+
+            var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.Ghost);
+            var undeadAgeRoll = ageRolls.FirstOrDefault(r => r.Type == AgeConstants.Categories.Undead);
+
+            creature.Demographics.Age.Value += undeadAgeRoll.Amount;
+            creature.Demographics.Age.Description = AgeConstants.Categories.Undead;
             creature.Demographics.MaximumAge.Value = AgeConstants.Ageless;
         }
 

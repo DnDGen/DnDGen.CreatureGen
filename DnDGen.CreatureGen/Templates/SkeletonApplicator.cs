@@ -32,6 +32,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IEnumerable<string> creatureTypes;
         private readonly IEnumerable<string> invalidSubtypes;
         private readonly ICreaturePrototypeFactory prototypeFactory;
+        private readonly ITypeAndAmountSelector typeAndAmountSelector;
 
         public SkeletonApplicator(
             ICollectionSelector collectionSelector,
@@ -40,7 +41,8 @@ namespace DnDGen.CreatureGen.Templates
             IAttacksGenerator attacksGenerator,
             IFeatsGenerator featsGenerator,
             ISavesGenerator savesGenerator,
-            ICreaturePrototypeFactory prototypeFactory)
+            ICreaturePrototypeFactory prototypeFactory,
+            ITypeAndAmountSelector typeAndAmountSelector)
         {
             this.collectionSelector = collectionSelector;
             this.adjustmentSelector = adjustmentSelector;
@@ -49,6 +51,7 @@ namespace DnDGen.CreatureGen.Templates
             this.featsGenerator = featsGenerator;
             this.savesGenerator = savesGenerator;
             this.prototypeFactory = prototypeFactory;
+            this.typeAndAmountSelector = typeAndAmountSelector;
 
             creatureTypes = new[]
             {
@@ -188,6 +191,12 @@ namespace DnDGen.CreatureGen.Templates
         {
             var appearance = collectionSelector.SelectRandomFrom(TableNameConstants.Collection.Appearances, CreatureConstants.Templates.Skeleton);
             creature.Demographics.Appearance = appearance;
+
+            var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.Skeleton);
+            var undeadAgeRoll = ageRolls.FirstOrDefault(r => r.Type == AgeConstants.Categories.Undead);
+
+            creature.Demographics.Age.Value += undeadAgeRoll.Amount;
+            creature.Demographics.Age.Description = AgeConstants.Categories.Undead;
             creature.Demographics.MaximumAge.Value = AgeConstants.Ageless;
         }
 

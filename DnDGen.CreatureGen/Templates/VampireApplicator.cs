@@ -149,10 +149,10 @@ namespace DnDGen.CreatureGen.Templates
             creature.Demographics.Appearance += " " + appearance;
 
             var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.Vampire);
-            var maxAgeRoll = ageRolls.FirstOrDefault(r => r.Type == AgeConstants.Categories.Maximum);
-            var multiplier = maxAgeRoll.Amount / creature.Demographics.MaximumAge.Value;
+            var undeadAgeRoll = ageRolls.FirstOrDefault(r => r.Type == AgeConstants.Categories.Undead);
 
-            creature.Demographics.Age.Value *= multiplier;
+            creature.Demographics.Age.Value += undeadAgeRoll.Amount;
+            creature.Demographics.Age.Description = AgeConstants.Categories.Undead;
             creature.Demographics.MaximumAge.Value = AgeConstants.Ageless;
         }
 

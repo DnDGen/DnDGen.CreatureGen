@@ -33,6 +33,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IHitPointsGenerator hitPointsGenerator;
         private readonly IEnumerable<string> invalidSubtypes;
         private readonly ICreaturePrototypeFactory prototypeFactory;
+        private readonly ITypeAndAmountSelector typeAndAmountSelector;
 
         public ZombieApplicator(
             ICollectionSelector collectionSelector,
@@ -42,7 +43,8 @@ namespace DnDGen.CreatureGen.Templates
             IFeatsGenerator featsGenerator,
             ISavesGenerator savesGenerator,
             IHitPointsGenerator hitPointsGenerator,
-            ICreaturePrototypeFactory prototypeFactory)
+            ICreaturePrototypeFactory prototypeFactory,
+            ITypeAndAmountSelector typeAndAmountSelector)
         {
             this.collectionSelector = collectionSelector;
             this.adjustmentSelector = adjustmentSelector;
@@ -52,6 +54,7 @@ namespace DnDGen.CreatureGen.Templates
             this.savesGenerator = savesGenerator;
             this.hitPointsGenerator = hitPointsGenerator;
             this.prototypeFactory = prototypeFactory;
+            this.typeAndAmountSelector = typeAndAmountSelector;
 
             creatureTypes = new[]
             {
@@ -191,6 +194,12 @@ namespace DnDGen.CreatureGen.Templates
         {
             var appearance = collectionSelector.SelectRandomFrom(TableNameConstants.Collection.Appearances, CreatureConstants.Templates.Zombie);
             creature.Demographics.Appearance += " " + appearance;
+
+            var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.Zombie);
+            var undeadAgeRoll = ageRolls.FirstOrDefault(r => r.Type == AgeConstants.Categories.Undead);
+
+            creature.Demographics.Age.Value += undeadAgeRoll.Amount;
+            creature.Demographics.Age.Description = AgeConstants.Categories.Undead;
             creature.Demographics.MaximumAge.Value = AgeConstants.Ageless;
         }
 
