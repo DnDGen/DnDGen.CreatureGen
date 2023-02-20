@@ -5,7 +5,6 @@ using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Helpers;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.TreasureGen.Items;
 using NUnit.Framework;
@@ -93,6 +92,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             AssertDiseaseAttacksHaveCorrectDamageTypes(entries);
 
             AssertData(creature, entries);
+
+            var templates = CreatureConstants.Templates.GetAll();
+            if (templates.Contains(creature))
+            {
+                Assert.Pass("The following assertions only apply to creatures, not templates");
+            }
+
+            CreatureWithSpellLikeAbilityAttack_HasSpellLikeAbilitySpecialQuality(creature);
+            CreatureWithPsionicAttack_HasPsionicSpecialQuality(creature);
+            CreatureWithSpellsAttack_HasMagicSpells(creature);
+            CreatureWithUnnaturalAttack_CanUseEquipment(creature);
         }
 
         private void AssertCreatureEffectDoesNotHaveDamage(List<string[]> entries)
@@ -264,15 +274,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
             {
                 Assert.Fail($"Could not find disease '{diseaseAttack}'");
             }
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void CreatureWithSpecificAttack_HasCorrespondingAbility(string creature)
-        {
-            CreatureWithSpellLikeAbilityAttack_HasSpellLikeAbilitySpecialQuality(creature);
-            CreatureWithPsionicAttack_HasPsionicSpecialQuality(creature);
-            CreatureWithSpellsAttack_HasMagicSpells(creature);
-            CreatureWithUnnaturalAttack_CanUseEquipment(creature);
         }
 
         private void CreatureWithSpellLikeAbilityAttack_HasSpellLikeAbilitySpecialQuality(string creature)

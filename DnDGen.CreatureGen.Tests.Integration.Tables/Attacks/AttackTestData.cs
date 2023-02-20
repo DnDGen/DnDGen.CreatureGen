@@ -600,7 +600,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.AnimatedObject_Tiny_Flexible].Add(attackHelper.BuildData("Slam",
                     damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning),
                     string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.AnimatedObject_Tiny_Sheetlike].Add(attackHelper.BuildData("Constrict",
+                testCases[CreatureConstants.AnimatedObject_Tiny_Flexible].Add(attackHelper.BuildData("Constrict",
                     damageHelper.BuildEntries("1d3", AttributeConstants.DamageTypes.Bludgeoning),
                     string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
@@ -787,17 +787,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                     string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
                 testCases[CreatureConstants.AnimatedObject_Large_Wheels_Wooden].Add(attackHelper.BuildData("Slam",
-                    damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning),
+                    damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning),
                     string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.AnimatedObject_Large_Wheels_Wooden].Add(attackHelper.BuildData("Trample",
-                    damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning),
+                    damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning),
                     string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
                 testCases[CreatureConstants.AnimatedObject_Large_Wooden].Add(attackHelper.BuildData("Slam",
-                    damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning),
+                    damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning),
                     string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.AnimatedObject_Large_Wooden].Add(attackHelper.BuildData("Trample",
-                    damageHelper.BuildEntries("2d6", AttributeConstants.DamageTypes.Bludgeoning),
+                    damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning),
                     string.Empty, 1.5, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
                 testCases[CreatureConstants.AnimatedObject_Huge].Add(attackHelper.BuildData("Slam",

@@ -1328,433 +1328,195 @@
     <name>Angel, Solar:Prohibited</name>
 
   </collection>
-  <collection>
-    <name>Animated Object, Anvil, Colossal:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Gargantuan:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Huge:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Large:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Medium:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Small:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Tiny:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Colossal:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Gargantuan:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Huge:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Large:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Medium:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Small:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Tiny:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Colossal:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Gargantuan:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Huge:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Large:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Medium:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Small:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Tiny:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Colossal:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Gargantuan:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Huge:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Large:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Medium:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Small:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Tiny:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Colossal:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Gargantuan:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Huge:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Large:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Medium:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Small:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Tiny:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Colossal:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Gargantuan:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Huge:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Large:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Medium:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Small:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Tiny:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Colossal:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Gargantuan:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Huge:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Large:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Medium:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Small:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Tiny:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Colossal:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Gargantuan:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Huge:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Large:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Medium:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Small:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Tiny:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Colossal:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Gargantuan:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Huge:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Large:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Medium:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Small:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Tiny:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Colossal:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Gargantuan:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Huge:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Large:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Medium:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Small:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Tiny:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Colossal:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Gargantuan:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Huge:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Large:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Medium:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Small:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Tiny:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Colossal:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Gargantuan:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Huge:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Large:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Medium:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Small:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Tiny:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Colossal:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Gargantuan:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Huge:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Large:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Medium:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Small:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Tiny:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Colossal:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Gargantuan:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Huge:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Large:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Medium:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Small:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Tiny:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Colossal:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Gargantuan:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Huge:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Large:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Medium:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Small:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Tiny:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Colossal:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Gargantuan:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Huge:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Large:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Medium:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Small:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Tiny:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Colossal:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Gargantuan:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Huge:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Large:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Medium:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Small:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Tiny:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Colossal:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Gargantuan:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Huge:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Large:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Medium:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Small:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Tiny:Prohibited</name>
-
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Colossal:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Gargantuan:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Huge:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Large:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Medium:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Small:Prohibited</name>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Tiny:Prohibited</name>
-  </collection>
+	<collection>
+		<name>Animated Object, Colossal:Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Flexible):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Sheetlike):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Two Legs):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Two Legs, Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Wheels, Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan:Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Flexible):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Sheetlike):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Two Legs):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Two Legs, Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Wheels, Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge:Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Flexible):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Sheetlike):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Two Legs):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Two Legs, Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Wheels, Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large:Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Flexible):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Sheetlike):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Two Legs):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Two Legs, Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Wheels, Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium:Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Flexible):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (More Than Two Legs):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (More Than Two Legs, Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Sheetlike):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Two Legs):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Two Legs, Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Wheels, Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Small:Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Flexible):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (More Than Two Legs):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (More Than Two Legs, Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Sheetlike):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Two Legs):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Two Legs, Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Wheels, Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny:Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Flexible):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (More Than Two Legs):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (More Than Two Legs, Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Sheetlike):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Two Legs):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Two Legs, Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Wheels, Wooden):Prohibited</name>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Wooden):Prohibited</name>
+	</collection>
   <collection>
     <name>Ankheg:Prohibited</name>
   </collection>

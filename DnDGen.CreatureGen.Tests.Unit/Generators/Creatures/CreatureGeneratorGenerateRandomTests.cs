@@ -1266,6 +1266,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             demographics.Weight.Value = 2;
             demographics.Height.Value = 2435;
             demographics.Length.Value = 922;
+            demographics.Wingspan.Value = 2022;
             demographics.Age.Value = 3546;
             demographics.MaximumAge.Value = 4657;
 
@@ -1294,6 +1295,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(4657));
             Assert.That(creature.Demographics.Height.Value, Is.EqualTo(2435 * heightMultiplier));
             Assert.That(creature.Demographics.Length.Value, Is.EqualTo(922 * heightMultiplier));
+            Assert.That(creature.Demographics.Wingspan.Value, Is.EqualTo(2022 * heightMultiplier));
             Assert.That(creature.Demographics.Weight.Value, Is.EqualTo(2 * weightMultiplier));
         }
 

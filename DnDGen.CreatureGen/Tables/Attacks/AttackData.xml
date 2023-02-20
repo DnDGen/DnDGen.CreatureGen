@@ -118,664 +118,315 @@
     <entry>Spell-Like Ability@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
     <entry>Spells@@True@False@True@True@1@Round (6 seconds)@@@spell-like ability@@0@0</entry>
   </collection>
-  <collection>
-    <name>Animated Object, Anvil, Colossal</name>
-    <entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Gargantuan</name>
-    <entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Huge</name>
-    <entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Large</name>
-    <entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Medium</name>
-    <entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Small</name>
-    <entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Tiny</name>
-    <entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Colossal</name>
-    <entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Gargantuan</name>
-    <entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Huge</name>
-    <entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Large</name>
-    <entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Medium</name>
-    <entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Small</name>
-    <entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Tiny</name>
-    <entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Colossal</name>
-    <entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Gargantuan</name>
-    <entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Huge</name>
-    <entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Large</name>
-    <entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Medium</name>
-    <entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Small</name>
-    <entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Tiny</name>
-    <entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Colossal</name>
-    <entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Gargantuan</name>
-    <entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Huge</name>
-    <entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Large</name>
-    <entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Medium</name>
-    <entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Small</name>
-    <entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Tiny</name>
-    <entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Colossal</name>
-    <entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Gargantuan</name>
-    <entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Huge</name>
-    <entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Large</name>
-    <entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Medium</name>
-    <entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@1d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Small</name>
-    <entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@1d4#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Tiny</name>
-    <entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@1d3#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Colossal</name>
-    <entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Gargantuan</name>
-    <entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Huge</name>
-    <entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Large</name>
-    <entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Medium</name>
-    <entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Small</name>
-    <entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Tiny</name>
-    <entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Colossal</name>
-    <entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Constrict@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Trample@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Gargantuan</name>
-    <entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Constrict@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Trample@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Huge</name>
-    <entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Constrict@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Trample@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Large</name>
-    <entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Constrict@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Trample@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Medium</name>
-    <entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Constrict@1d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Small</name>
-    <entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Constrict@1d4#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Tiny</name>
-    <entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Constrict@1d3#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Colossal</name>
-    <entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Gargantuan</name>
-    <entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Huge</name>
-    <entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Large</name>
-    <entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Medium</name>
-    <entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Small</name>
-    <entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Tiny</name>
-    <entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Colossal</name>
-    <entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Gargantuan</name>
-    <entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Huge</name>
-    <entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Large</name>
-    <entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Medium</name>
-    <entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@1d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Small</name>
-    <entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@1d4#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Tiny</name>
-    <entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@1d3#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Colossal</name>
-    <entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Gargantuan</name>
-    <entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Huge</name>
-    <entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Large</name>
-    <entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Medium</name>
-    <entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Small</name>
-    <entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Tiny</name>
-    <entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Colossal</name>
-    <entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Constrict@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Gargantuan</name>
-    <entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Constrict@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Huge</name>
-    <entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Constrict@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Large</name>
-    <entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Constrict@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Medium</name>
-    <entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Constrict@1d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Small</name>
-    <entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Constrict@1d4#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Tiny</name>
-    <entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Constrict@1d3#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Colossal</name>
-    <entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Gargantuan</name>
-    <entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Huge</name>
-    <entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Large</name>
-    <entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Medium</name>
-    <entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@1d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Small</name>
-    <entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@1d4#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Tiny</name>
-    <entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@1d3#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Colossal</name>
-    <entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Gargantuan</name>
-    <entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Huge</name>
-    <entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Large</name>
-    <entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Medium</name>
-    <entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Small</name>
-    <entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Tiny</name>
-    <entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Colossal</name>
-    <entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Gargantuan</name>
-    <entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Huge</name>
-    <entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Large</name>
-    <entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Medium</name>
-    <entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Small</name>
-    <entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Tiny</name>
-    <entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Colossal</name>
-    <entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Gargantuan</name>
-    <entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Huge</name>
-    <entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Large</name>
-    <entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Medium</name>
-    <entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Small</name>
-    <entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Tiny</name>
-    <entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Colossal</name>
-    <entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Gargantuan</name>
-    <entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Huge</name>
-    <entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Large</name>
-    <entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Medium</name>
-    <entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Small</name>
-    <entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Tiny</name>
-    <entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Colossal</name>
-    <entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Gargantuan</name>
-    <entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Huge</name>
-    <entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Large</name>
-    <entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Medium</name>
-    <entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Small</name>
-    <entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Tiny</name>
-    <entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Colossal</name>
-    <entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Gargantuan</name>
-    <entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Huge</name>
-    <entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Large</name>
-    <entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Medium</name>
-    <entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@1d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Small</name>
-    <entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@1d4#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Tiny</name>
-    <entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-    <entry>Constrict@1d3#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Colossal</name>
-    <entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Gargantuan</name>
-    <entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Huge</name>
-    <entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Large</name>
-    <entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Trample@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Medium</name>
-    <entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Small</name>
-    <entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Tiny</name>
-    <entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-  </collection>
+	<collection>
+		<name>Animated Object, Colossal</name>
+		<entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Flexible)</name>
+		<entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Constrict@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs)</name>
+		<entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Wooden)</name>
+		<entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Sheetlike)</name>
+		<entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Constrict@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Two Legs)</name>
+		<entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Two Legs, Wooden)</name>
+		<entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Wheels, Wooden)</name>
+		<entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Wooden)</name>
+		<entry>Slam@4d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@4d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan</name>
+		<entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Flexible)</name>
+		<entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Constrict@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs)</name>
+		<entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Wooden)</name>
+		<entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Sheetlike)</name>
+		<entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Constrict@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Two Legs)</name>
+		<entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Two Legs, Wooden)</name>
+		<entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Wheels, Wooden)</name>
+		<entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Wooden)</name>
+		<entry>Slam@2d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@2d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge</name>
+		<entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Flexible)</name>
+		<entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Constrict@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs)</name>
+		<entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Wooden)</name>
+		<entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Sheetlike)</name>
+		<entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Constrict@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Two Legs)</name>
+		<entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Two Legs, Wooden)</name>
+		<entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Wheels, Wooden)</name>
+		<entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Wooden)</name>
+		<entry>Slam@2d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@2d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large</name>
+		<entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Flexible)</name>
+		<entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Constrict@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs)</name>
+		<entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Wooden)</name>
+		<entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Sheetlike)</name>
+		<entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Constrict@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Two Legs)</name>
+		<entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Two Legs, Wooden)</name>
+		<entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Wheels, Wooden)</name>
+		<entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Wooden)</name>
+		<entry>Slam@1d8#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Trample@1d8#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium</name>
+		<entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Flexible)</name>
+		<entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Constrict@1d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (More Than Two Legs)</name>
+		<entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (More Than Two Legs, Wooden)</name>
+		<entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Sheetlike)</name>
+		<entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Constrict@1d6#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Two Legs)</name>
+		<entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Two Legs, Wooden)</name>
+		<entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Wheels, Wooden)</name>
+		<entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Wooden)</name>
+		<entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small</name>
+		<entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Flexible)</name>
+		<entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Constrict@1d4#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (More Than Two Legs)</name>
+		<entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (More Than Two Legs, Wooden)</name>
+		<entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Sheetlike)</name>
+		<entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Constrict@1d4#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Two Legs)</name>
+		<entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Two Legs, Wooden)</name>
+		<entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Wheels, Wooden)</name>
+		<entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Wooden)</name>
+		<entry>Slam@1d4#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny</name>
+		<entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Flexible)</name>
+		<entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Constrict@1d3#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (More Than Two Legs)</name>
+		<entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (More Than Two Legs, Wooden)</name>
+		<entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Sheetlike)</name>
+		<entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+		<entry>Blind@@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+		<entry>Constrict@1d3#Bludgeoning#@True@True@True@True@1@Round (6 seconds)@@@extraordinary ability@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Two Legs)</name>
+		<entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Two Legs, Wooden)</name>
+		<entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Wheels, Wooden)</name>
+		<entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Wooden)</name>
+		<entry>Slam@1d3#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
+	</collection>
   <collection>
     <name>Ankheg</name>
     <entry>Bite@2d6#Piercing/Slashing/Bludgeoning#,1d4#Acid#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>

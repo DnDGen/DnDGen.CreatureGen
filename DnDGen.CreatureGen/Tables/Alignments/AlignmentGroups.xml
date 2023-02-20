@@ -373,538 +373,258 @@
     <name>Ankheg</name>
     <entry>AlwaysTrue Neutral</entry>
   </collection>
-  <collection>
-    <name>Animated Object, Anvil, Colossal</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Gargantuan</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Huge</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Large</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Medium</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Small</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Tiny</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Colossal</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Gargantuan</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Huge</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Large</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Medium</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Small</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Tiny</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Colossal</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Gargantuan</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Huge</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Large</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Medium</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Small</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Tiny</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Colossal</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Gargantuan</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Huge</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Large</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Medium</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Small</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Tiny</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Colossal</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Gargantuan</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Huge</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Large</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Medium</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Small</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Tiny</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Colossal</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Gargantuan</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Huge</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Large</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Medium</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Small</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Tiny</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Colossal</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Gargantuan</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Huge</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Large</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Medium</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Small</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Tiny</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Colossal</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Gargantuan</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Huge</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Large</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Medium</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Small</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Tiny</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Colossal</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Gargantuan</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Huge</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Large</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Medium</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Small</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Tiny</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Colossal</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Gargantuan</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Huge</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Large</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Medium</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Small</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Tiny</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Colossal</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Gargantuan</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Huge</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Large</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Medium</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Small</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Tiny</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Colossal</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Gargantuan</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Huge</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Large</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Medium</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Small</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Tiny</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Colossal</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Gargantuan</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Huge</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Large</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Medium</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Small</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Tiny</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Colossal</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Gargantuan</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Huge</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Large</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Medium</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Small</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Tiny</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Colossal</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Gargantuan</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Huge</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Large</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Medium</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Small</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Tiny</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Colossal</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Gargantuan</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Huge</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Large</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Medium</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Small</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Tiny</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Colossal</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Gargantuan</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Huge</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Large</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Medium</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Small</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Tiny</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Colossal</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Gargantuan</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Huge</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Large</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Medium</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Small</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Tiny</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Colossal</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Gargantuan</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Huge</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Large</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Medium</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Small</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Tiny</name>
-    <entry>AlwaysTrue Neutral</entry>
-  </collection>
+	<collection>
+		<name>Animated Object, Colossal</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Flexible)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Sheetlike)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Two Legs)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Two Legs, Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Wheels, Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Flexible)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Sheetlike)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Two Legs)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Two Legs, Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Wheels, Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Flexible)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Sheetlike)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Two Legs)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Two Legs, Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Wheels, Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Flexible)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Sheetlike)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Two Legs)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Two Legs, Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Wheels, Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Flexible)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (More Than Two Legs)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (More Than Two Legs, Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Sheetlike)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Two Legs)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Two Legs, Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Wheels, Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Flexible)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (More Than Two Legs)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (More Than Two Legs, Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Sheetlike)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Two Legs)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Two Legs, Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Wheels, Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Flexible)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (More Than Two Legs)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (More Than Two Legs, Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Sheetlike)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Two Legs)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Two Legs, Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Wheels, Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Wooden)</name>
+		<entry>AlwaysTrue Neutral</entry>
+	</collection>
   <collection>
     <name>Annis</name>
     <entry>UsuallyChaotic Evil</entry>
@@ -3446,538 +3166,258 @@
     <name>AnkhegExploded</name>
     <entry>True Neutral</entry>
   </collection>
-  <collection>
-    <name>Animated Object, Anvil, ColossalExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, GargantuanExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, HugeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, LargeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, MediumExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, SmallExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, TinyExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), ColossalExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), GargantuanExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), HugeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), LargeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), MediumExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), SmallExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), TinyExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), ColossalExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), GargantuanExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), HugeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), LargeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), MediumExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), SmallExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), TinyExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, ColossalExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, GargantuanExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, HugeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, LargeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, MediumExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, SmallExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, TinyExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, ColossalExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, GargantuanExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, HugeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, LargeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, MediumExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, SmallExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, TinyExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, ColossalExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, GargantuanExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, HugeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, LargeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, MediumExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, SmallExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, TinyExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, ColossalExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, GargantuanExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, HugeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, LargeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, MediumExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, SmallExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, TinyExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, ColossalExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, GargantuanExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, HugeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, LargeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, MediumExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, SmallExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, TinyExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, ColossalExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, GargantuanExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, HugeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, LargeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, MediumExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, SmallExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, TinyExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, ColossalExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, GargantuanExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, HugeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, LargeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, MediumExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, SmallExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, TinyExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, ColossalExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, GargantuanExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, HugeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, LargeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, MediumExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, SmallExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, TinyExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, ColossalExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, GargantuanExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, HugeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, LargeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, MediumExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, SmallExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, TinyExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, ColossalExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, GargantuanExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, HugeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, LargeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, MediumExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, SmallExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, TinyExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), ColossalExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), GargantuanExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), HugeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), LargeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), MediumExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), SmallExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), TinyExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), ColossalExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), GargantuanExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), HugeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), LargeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), MediumExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), SmallExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), TinyExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, ColossalExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, GargantuanExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, HugeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, LargeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, MediumExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, SmallExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, TinyExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, ColossalExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, GargantuanExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, HugeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, LargeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, MediumExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, SmallExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, TinyExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, ColossalExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, GargantuanExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, HugeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, LargeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, MediumExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, SmallExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, TinyExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, ColossalExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, GargantuanExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, HugeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, LargeExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, MediumExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, SmallExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, TinyExploded</name>
-    <entry>True Neutral</entry>
-  </collection>
+	<collection>
+		<name>Animated Object, ColossalExploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Flexible)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Sheetlike)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Two Legs)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Two Legs, Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Wheels, Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, GargantuanExploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Flexible)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Sheetlike)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Two Legs)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Two Legs, Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Wheels, Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, HugeExploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Flexible)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Sheetlike)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Two Legs)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Two Legs, Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Wheels, Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, LargeExploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Flexible)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Sheetlike)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Two Legs)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Two Legs, Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Wheels, Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, MediumExploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Flexible)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (More Than Two Legs)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (More Than Two Legs, Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Sheetlike)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Two Legs)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Two Legs, Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Wheels, Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, SmallExploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Flexible)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (More Than Two Legs)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (More Than Two Legs, Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Sheetlike)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Two Legs)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Two Legs, Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Wheels, Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, TinyExploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Flexible)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (More Than Two Legs)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (More Than Two Legs, Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Sheetlike)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Two Legs)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Two Legs, Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Wheels, Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Wooden)Exploded</name>
+		<entry>True Neutral</entry>
+	</collection>
   <collection>
     <name>AnnisExploded</name>
     <entry>Chaotic Evil</entry>
