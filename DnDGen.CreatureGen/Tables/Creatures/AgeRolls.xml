@@ -100,671 +100,321 @@
     <entry>Adulthood@1d100d100d100+5000</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
-  <collection>
-    <name>Animated Object, Anvil, Colossal</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Gargantuan</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Huge</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Large</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Medium</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Small</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Anvil, Tiny</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Colossal</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Gargantuan</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Huge</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Large</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Medium</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Small</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Stone), Tiny</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Colossal</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Gargantuan</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Huge</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Large</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Medium</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Small</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Block (Wood), Tiny</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Colossal</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Gargantuan</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Huge</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Large</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Medium</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Small</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Box, Tiny</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Colossal</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Gargantuan</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Huge</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Large</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Medium</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Small</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carpet, Tiny</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Colossal</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Gargantuan</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Huge</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Large</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Medium</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Small</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Carriage, Tiny</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Colossal</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Gargantuan</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Huge</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Large</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Medium</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Small</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chain, Tiny</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Colossal</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Gargantuan</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Huge</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Large</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Medium</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Small</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Chair, Tiny</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Colossal</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Gargantuan</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Huge</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Large</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Medium</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Small</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Clothes, Tiny</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Colossal</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Gargantuan</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Huge</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Large</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Medium</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Small</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Ladder, Tiny</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Colossal</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Gargantuan</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Huge</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Large</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Medium</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Small</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rope, Tiny</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Colossal</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Gargantuan</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Huge</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Large</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Medium</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Small</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Rug, Tiny</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Colossal</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Gargantuan</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Huge</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Large</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Medium</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Small</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Sled, Tiny</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Colossal</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Gargantuan</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Huge</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Large</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Medium</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Small</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Animal), Tiny</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Colossal</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Gargantuan</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Huge</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Large</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Medium</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Small</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Statue (Humanoid), Tiny</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Colossal</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Gargantuan</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Huge</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Large</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Medium</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Small</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Stool, Tiny</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Colossal</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Gargantuan</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Huge</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Large</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Medium</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Small</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Table, Tiny</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Colossal</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Gargantuan</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Huge</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Large</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Medium</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Small</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Tapestry, Tiny</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Colossal</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Gargantuan</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Huge</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Large</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Medium</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Small</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Wagon, Tiny</name>
-	  <entry>Construct@1d10d100</entry>
-	  <entry>Maximum@-1</entry>
-  </collection>
+	<collection>
+		<name>Animated Object, Colossal</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Flexible)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Sheetlike)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Two Legs)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Two Legs, Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Wheels, Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Flexible)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (More Than Two Legs, Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Sheetlike)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Two Legs)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Two Legs, Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Wheels, Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Gargantuan (Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Flexible)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (More Than Two Legs, Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Sheetlike)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Two Legs)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Two Legs, Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Wheels, Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Huge (Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Flexible)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (More Than Two Legs, Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Sheetlike)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Two Legs)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Two Legs, Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Wheels, Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Large (Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Flexible)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (More Than Two Legs)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (More Than Two Legs, Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Sheetlike)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Two Legs)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Two Legs, Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Wheels, Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Medium (Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Flexible)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (More Than Two Legs)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (More Than Two Legs, Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Sheetlike)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Two Legs)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Two Legs, Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Wheels, Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Small (Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Flexible)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (More Than Two Legs)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (More Than Two Legs, Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Sheetlike)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Two Legs)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Two Legs, Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Wheels, Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Tiny (Wooden)</name>
+		<entry>Construct@1d10d100</entry>
+		<entry>Maximum@-1</entry>
+	</collection>
   <collection>
     <name>Ankheg</name>
     <entry>Adulthood@31d10-11</entry>
@@ -1490,12 +1140,12 @@
   </collection>
   <collection>
     <name>Couatl</name>
-	  <entry>Adulthood@100d100+35</entry>
+	  <entry>Adulthood@1d100d100+35</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Criosphinx</name>
-	  <entry>Adulthood@100d100+16</entry>
+	  <entry>Adulthood@1d100d100+16</entry>
 	  <entry>Maximum@50d100+5000</entry>
   </collection>
   <collection>
@@ -1747,7 +1397,7 @@
   </collection>
   <collection>
     <name>Dragon Turtle</name>
-    <entry>Adulthood@100d100</entry>
+    <entry>Adulthood@1d100d100</entry>
     <entry>Maximum@9000+10d100</entry>
   </collection>
   <collection>
@@ -1760,7 +1410,7 @@
   </collection>
   <collection>
     <name>Dread Wraith</name>
-    <entry>Undead@100d100+1000</entry>
+    <entry>Undead@1d100d100+1000</entry>
     <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -2491,12 +2141,12 @@
   </collection>
   <collection>
     <name>Grig</name>
-	  <entry>Adulthood@1000d100+16</entry>
+	  <entry>Adulthood@10d100d100+16</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Grig with fiddle</name>
-	  <entry>Adulthood@1000d100+16</entry>
+	  <entry>Adulthood@10d100d100+16</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -2517,7 +2167,7 @@
   </collection>
   <collection>
     <name>Gynosphinx</name>
-	  <entry>Adulthood@100d100+16</entry>
+	  <entry>Adulthood@1d100d100+16</entry>
 	  <entry>Maximum@50d100+5000</entry>
   </collection>
   <collection>
@@ -2590,7 +2240,7 @@
   </collection>
   <collection>
     <name>Hieracosphinx</name>
-	  <entry>Adulthood@100d100+16</entry>
+	  <entry>Adulthood@1d100d100+16</entry>
 	  <entry>Maximum@50d100+5000</entry>
   </collection>
   <collection>
@@ -2827,8 +2477,8 @@
   </collection>
   <collection>
     <name>Lillend</name>
-	  <entry>Adulthood@1000d100</entry>
-	  <entry>Maximum@1d100d100d100</entry>
+	  <entry>Adulthood@10d100d100</entry>
+	  <entry>Maximum@1d100d100d100+50000</entry>
   </collection>
   <collection>
     <name>Lion</name>
@@ -2905,11 +2555,19 @@
   </collection>
   <collection>
     <name>Medusa</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@4d12+1</entry>
+	  <entry>Middle Age@5d6+45</entry>
+	  <entry>Old@23d2+53</entry>
+	  <entry>Venerable@80d6+20</entry>
+	  <entry>Maximum@100+4d100</entry>
   </collection>
   <collection>
     <name>Megaraptor</name>
-    <entry>Land@60</entry>
+	  <entry>Adulthood@1d8+1</entry>
+	  <entry>Middle Age@1d3+9</entry>
+	  <entry>Old@1d2+12</entry>
+	  <entry>Venerable@1d6+14</entry>
+	  <entry>Maximum@14+1d6</entry>
   </collection>
   <collection>
     <name>Merfolk</name>
@@ -2929,167 +2587,277 @@
   </collection>
   <collection>
     <name>Mimic</name>
-    <entry>Land@10</entry>
+	  <entry>Adulthood@16d3-14</entry>
+	  <entry>Middle Age@17d2+18</entry>
+	  <entry>Old@8d3+45</entry>
+	  <entry>Venerable@6d6+64</entry>
+	  <entry>Maximum@70+3d10</entry>
   </collection>
   <collection>
     <name>Mind Flayer (Illithid)</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@8d4+2</entry>
+	  <entry>Middle Age@17d2+18</entry>
+	  <entry>Old@8d8+45</entry>
+	  <entry>Venerable@6d6+104</entry>
+	  <entry>Maximum@110+3d10</entry>
   </collection>
   <collection>
     <name>Minor Xorn</name>
-    <entry>Land@20</entry>
-    <entry>Burrow@20</entry>
+	  <entry>Minor (Xorn)@166d3-165</entry>
+	  <entry>Maximum@334</entry>
   </collection>
   <collection>
     <name>Minotaur</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@31d3-19</entry>
+	  <entry>Middle Age@8d4+67</entry>
+	  <entry>Old@7d8+93</entry>
+	  <entry>Venerable@20d6+130</entry>
+	  <entry>Maximum@150+1d100</entry>
   </collection>
   <collection>
     <name>Mohrg</name>
-    <entry>Land@30</entry>
+	  <entry>Undead@1d100d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Monitor Lizard</name>
-    <entry>Land@30</entry>
-    <entry>Swim@30</entry>
+	  <entry>Adulthood@2d4+3</entry>
+	  <entry>Middle Age@1d3+11</entry>
+	  <entry>Old@1d3+14</entry>
+	  <entry>Venerable@2d3+16</entry>
+	  <entry>Maximum@18+1d4</entry>
   </collection>
   <collection>
     <name>Monkey</name>
-    <entry>Land@30</entry>
-    <entry>Climb@30</entry>
+	  <entry>Adulthood@1d6+4</entry>
+	  <entry>Middle Age@1d2+10</entry>
+	  <entry>Old@1d2+12</entry>
+	  <entry>Venerable@5d8+10</entry>
+	  <entry>Maximum@14+3d12</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Colossal</name>
-    <entry>Land@40</entry>
-    <entry>Climb@40</entry>
+	  <entry>Adulthood@1d2+2</entry>
+	  <entry>Middle Age@5</entry>
+	  <entry>Old@6</entry>
+	  <entry>Venerable@7</entry>
+	  <entry>Maximum@7</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Gargantuan</name>
-    <entry>Land@40</entry>
-    <entry>Climb@40</entry>
+	  <entry>Adulthood@1d2+2</entry>
+	  <entry>Middle Age@5</entry>
+	  <entry>Old@6</entry>
+	  <entry>Venerable@7</entry>
+	  <entry>Maximum@7</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Huge</name>
-    <entry>Land@40</entry>
-    <entry>Climb@40</entry>
+	  <entry>Adulthood@1d2+2</entry>
+	  <entry>Middle Age@5</entry>
+	  <entry>Old@6</entry>
+	  <entry>Venerable@7</entry>
+	  <entry>Maximum@7</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Large</name>
-    <entry>Land@40</entry>
-    <entry>Climb@40</entry>
+	  <entry>Adulthood@1d2+2</entry>
+	  <entry>Middle Age@5</entry>
+	  <entry>Old@6</entry>
+	  <entry>Venerable@7</entry>
+	  <entry>Maximum@7</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Medium</name>
-    <entry>Land@40</entry>
-    <entry>Climb@40</entry>
+	  <entry>Adulthood@1d2+2</entry>
+	  <entry>Middle Age@5</entry>
+	  <entry>Old@6</entry>
+	  <entry>Venerable@7</entry>
+	  <entry>Maximum@7</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Small</name>
-    <entry>Land@30</entry>
-    <entry>Climb@30</entry>
+	  <entry>Adulthood@1d2+2</entry>
+	  <entry>Middle Age@5</entry>
+	  <entry>Old@6</entry>
+	  <entry>Venerable@7</entry>
+	  <entry>Maximum@7</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Tiny</name>
-    <entry>Land@20</entry>
-    <entry>Climb@20</entry>
+	  <entry>Adulthood@1d2+2</entry>
+	  <entry>Middle Age@5</entry>
+	  <entry>Old@6</entry>
+	  <entry>Venerable@7</entry>
+	  <entry>Maximum@7</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Colossal</name>
-    <entry>Land@50</entry>
+	  <entry>Adulthood@1d3-1</entry>
+	  <entry>Middle Age@3</entry>
+	  <entry>Old@4</entry>
+	  <entry>Venerable@2d6+3</entry>
+	  <entry>Maximum@5+1d10</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Gargantuan</name>
-    <entry>Land@50</entry>
+	  <entry>Adulthood@1d3-1</entry>
+	  <entry>Middle Age@3</entry>
+	  <entry>Old@4</entry>
+	  <entry>Venerable@2d6+3</entry>
+	  <entry>Maximum@5+1d10</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Huge</name>
-    <entry>Land@50</entry>
+	  <entry>Adulthood@1d3-1</entry>
+	  <entry>Middle Age@3</entry>
+	  <entry>Old@4</entry>
+	  <entry>Venerable@2d6+3</entry>
+	  <entry>Maximum@5+1d10</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Large</name>
-    <entry>Land@50</entry>
+	  <entry>Adulthood@1d3-1</entry>
+	  <entry>Middle Age@3</entry>
+	  <entry>Old@4</entry>
+	  <entry>Venerable@2d6+3</entry>
+	  <entry>Maximum@5+1d10</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Medium</name>
-    <entry>Land@40</entry>
+	  <entry>Adulthood@1d3-1</entry>
+	  <entry>Middle Age@3</entry>
+	  <entry>Old@4</entry>
+	  <entry>Venerable@2d6+3</entry>
+	  <entry>Maximum@5+1d10</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Small</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@1d3-1</entry>
+	  <entry>Middle Age@3</entry>
+	  <entry>Old@4</entry>
+	  <entry>Venerable@2d6+3</entry>
+	  <entry>Maximum@5+1d10</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Tiny</name>
-    <entry>Land@20</entry>
+	  <entry>Adulthood@1d3-1</entry>
+	  <entry>Middle Age@3</entry>
+	  <entry>Old@4</entry>
+	  <entry>Venerable@2d6+3</entry>
+	  <entry>Maximum@5+1d10</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Colossal</name>
-    <entry>Land@40</entry>
-    <entry>Climb@20</entry>
+	  <entry>Adulthood@1d2-1</entry>
+	  <entry>Middle Age@2</entry>
+	  <entry>Old@2</entry>
+	  <entry>Venerable@1d2+1</entry>
+	  <entry>Maximum@1d2+1</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Gargantuan</name>
-    <entry>Land@40</entry>
-    <entry>Climb@20</entry>
+	  <entry>Adulthood@1d2-1</entry>
+	  <entry>Middle Age@2</entry>
+	  <entry>Old@2</entry>
+	  <entry>Venerable@1d2+1</entry>
+	  <entry>Maximum@1d2+1</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Huge</name>
-    <entry>Land@40</entry>
-    <entry>Climb@20</entry>
+	  <entry>Adulthood@1d2-1</entry>
+	  <entry>Middle Age@2</entry>
+	  <entry>Old@2</entry>
+	  <entry>Venerable@1d2+1</entry>
+	  <entry>Maximum@1d2+1</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Large</name>
-    <entry>Land@40</entry>
-    <entry>Climb@20</entry>
+	  <entry>Adulthood@1d2-1</entry>
+	  <entry>Middle Age@2</entry>
+	  <entry>Old@2</entry>
+	  <entry>Venerable@1d2+1</entry>
+	  <entry>Maximum@1d2+1</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Medium</name>
-    <entry>Land@40</entry>
-    <entry>Climb@20</entry>
+	  <entry>Adulthood@1d2-1</entry>
+	  <entry>Middle Age@2</entry>
+	  <entry>Old@2</entry>
+	  <entry>Venerable@1d2+1</entry>
+	  <entry>Maximum@1d2+1</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Small</name>
-    <entry>Land@40</entry>
-    <entry>Climb@20</entry>
+	  <entry>Adulthood@1d2-1</entry>
+	  <entry>Middle Age@2</entry>
+	  <entry>Old@2</entry>
+	  <entry>Venerable@1d2+1</entry>
+	  <entry>Maximum@1d2+1</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Tiny</name>
-    <entry>Land@30</entry>
-    <entry>Climb@10</entry>
+	  <entry>Adulthood@1d2-1</entry>
+	  <entry>Middle Age@2</entry>
+	  <entry>Old@2</entry>
+	  <entry>Venerable@1d2+1</entry>
+	  <entry>Maximum@1d2+1</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Colossal</name>
-    <entry>Land@30</entry>
-    <entry>Climb@20</entry>
+	  <entry>Adulthood@1d2-1</entry>
+	  <entry>Middle Age@2</entry>
+	  <entry>Old@2</entry>
+	  <entry>Venerable@1d2+1</entry>
+	  <entry>Maximum@1d2+1</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Gargantuan</name>
-    <entry>Land@30</entry>
-    <entry>Climb@20</entry>
+	  <entry>Adulthood@1d2-1</entry>
+	  <entry>Middle Age@2</entry>
+	  <entry>Old@2</entry>
+	  <entry>Venerable@1d2+1</entry>
+	  <entry>Maximum@1d2+1</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Huge</name>
-    <entry>Land@30</entry>
-    <entry>Climb@20</entry>
+	  <entry>Adulthood@1d2-1</entry>
+	  <entry>Middle Age@2</entry>
+	  <entry>Old@2</entry>
+	  <entry>Venerable@1d2+1</entry>
+	  <entry>Maximum@1d2+1</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Large</name>
-    <entry>Land@30</entry>
-    <entry>Climb@20</entry>
+	  <entry>Adulthood@1d2-1</entry>
+	  <entry>Middle Age@2</entry>
+	  <entry>Old@2</entry>
+	  <entry>Venerable@1d2+1</entry>
+	  <entry>Maximum@1d2+1</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Medium</name>
-    <entry>Land@30</entry>
-    <entry>Climb@20</entry>
+	  <entry>Adulthood@1d2-1</entry>
+	  <entry>Middle Age@2</entry>
+	  <entry>Old@2</entry>
+	  <entry>Venerable@1d2+1</entry>
+	  <entry>Maximum@1d2+1</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Small</name>
-    <entry>Land@30</entry>
-    <entry>Climb@20</entry>
+	  <entry>Adulthood@1d2-1</entry>
+	  <entry>Middle Age@2</entry>
+	  <entry>Old@2</entry>
+	  <entry>Venerable@1d2+1</entry>
+	  <entry>Maximum@1d2+1</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Tiny</name>
-    <entry>Land@20</entry>
-    <entry>Climb@10</entry>
+	  <entry>Adulthood@1d2-1</entry>
+	  <entry>Middle Age@2</entry>
+	  <entry>Old@2</entry>
+	  <entry>Venerable@1d2+1</entry>
+	  <entry>Maximum@1d2+1</entry>
   </collection>
   <collection>
     <name>Mountain Dwarf</name>
