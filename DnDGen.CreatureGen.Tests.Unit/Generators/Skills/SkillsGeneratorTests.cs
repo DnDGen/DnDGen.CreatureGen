@@ -1023,12 +1023,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
 
             AddCreatureSkills(20);
 
+            //[1,103]
             mockDice
-                .Setup(d => d.Roll("1d100+1d4-1").AsSum<int>())
+                .Setup(d => d.Roll("1d103").AsSum<int>())
                 .Returns(51);
 
+            //[1,52]
             mockDice
-                .Setup(d => d.Roll("2d20+1d12+1d3-3").AsSum<int>())
+                .Setup(d => d.Roll("1d52").AsSum<int>())
                 .Returns(52);
 
             var start = DateTime.Now;
@@ -4329,12 +4331,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Skills
                 unrankedSkills.Add(skill);
             };
 
+            //[1,103]
             mockDice
-                .Setup(d => d.Roll("1d100+1d4-1").AsSum<int>())
+                .Setup(d => d.Roll("1d103").AsSum<int>())
                 .Returns(51);
 
+            //[1,52]
             mockDice
-                .Setup(d => d.Roll("2d20+1d12+1d3-3").AsSum<int>())
+                .Setup(d => d.Roll("1d52").AsSum<int>())
                 .Returns(52);
 
             var start = DateTime.Now;

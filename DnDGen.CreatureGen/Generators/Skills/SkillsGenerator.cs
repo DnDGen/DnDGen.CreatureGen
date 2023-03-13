@@ -193,7 +193,7 @@ namespace DnDGen.CreatureGen.Generators.Skills
             {
                 var skill = collectionsSelector.SelectRandomFrom(creatureSkills, untrainedSkills);
                 var availableRanks = Math.Min(skill.RankCap - skill.Ranks, points);
-                var rankRoll = RollHelper.GetRollWithMostEvenDistribution(1, availableRanks);
+                var rankRoll = RollHelper.GetRollWithMostEvenDistribution(1, availableRanks, allowNonstandardDice: true);
                 var ranks = dice.Roll(rankRoll).AsSum();
 
                 skill.Ranks += ranks;
