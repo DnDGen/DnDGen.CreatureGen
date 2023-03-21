@@ -3086,7 +3086,7 @@
 	  <entry>Adulthood@1d4+1d2+3</entry>
 	  <entry>Middle Age@1d4+1d2+8</entry>
 	  <entry>Old@1d10+14</entry>
-	  <entry>Venerable@(1d3-1)*7+1d6+1d2+88</entry>
+	  <entry>Venerable@(1d8-1)*2+1d2+24</entry>
 	  <entry>Maximum@24+2d8</entry>
   </collection>
   <collection>
@@ -3110,7 +3110,7 @@
 	  <entry>Adulthood@(1d10-1)*7+1d6+1d2+28</entry>
 	  <entry>Middle Age@1d20+99</entry>
 	  <entry>Old@(1d3-1)*5+1d4+1d2+118</entry>
-	  <entry>Venerable@(1d3-1)*7+1d6+1d2+88</entry>
+	  <entry>Venerable@1d20+1d12+133</entry>
 	  <entry>Maximum@135+3d10</entry>
   </collection>
   <collection>
@@ -3127,8 +3127,8 @@
     <name>Rast</name>
 	  <entry>Adulthood@(1d10-1)*3+1d3+4</entry>
 	  <entry>Middle Age@1d4+1d2+33</entry>
-	  <entry>Old@(1d10-1)*3+1d3+59</entry>
-	  <entry>Venerable@(1d3-1)*7+1d6+1d2+88</entry>
+	  <entry>Old@1d4+1d2+38</entry>
+	  <entry>Venerable@1d10+1d2+43</entry>
 	  <entry>Maximum@45+1d10</entry>
   </collection>
   <collection>
@@ -3148,8 +3148,8 @@
     <name>Raven</name>
 	  <entry>Adulthood@1d4+1d2-1</entry>
 	  <entry>Middle Age@1d2+5</entry>
-	  <entry>Old@2</entry>
-	  <entry>Venerable@1d2+2</entry>
+	  <entry>Old@1d2+7</entry>
+	  <entry>Venerable@1d6+9</entry>
 	  <entry>Maximum@9+1d6</entry>
   </collection>
   <collection>
@@ -3160,9 +3160,9 @@
   <collection>
     <name>Razor Boar</name>
 	  <entry>Adulthood@1d4+1</entry>
-	  <entry>Middle Age@1</entry>
-	  <entry>Old@2</entry>
-	  <entry>Venerable@1d2+2</entry>
+	  <entry>Middle Age@1d2+5</entry>
+	  <entry>Old@1d2+7</entry>
+	  <entry>Venerable@1d4+1d2+8</entry>
 	  <entry>Maximum@10+1d4</entry>
   </collection>
   <collection>
@@ -3233,9 +3233,9 @@
   <collection>
     <name>Remorhaz</name>
 	  <entry>Adulthood@(1d8-1)*2+1d2-1</entry>
-	  <entry>Middle Age@1</entry>
-	  <entry>Old@2</entry>
-	  <entry>Venerable@1d2+2</entry>
+	  <entry>Middle Age@1d4+1d2+14</entry>
+	  <entry>Old@1d6+20</entry>
+	  <entry>Venerable@1d6+1d2+25</entry>
 	  <entry>Maximum@27+1d6</entry>
   </collection>
   <collection>
@@ -3245,28 +3245,43 @@
   </collection>
   <collection>
     <name>Rhinoceras</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@1d12+1d6+1</entry>
+	  <entry>Middle Age@1d6+19</entry>
+	  <entry>Old@(1d3-1)*3+1d3+25</entry>
+	  <entry>Venerable@1d6+27</entry>
+	  <entry>Maximum@34+2d8</entry>
   </collection>
   <collection>
     <name>Roc</name>
-    <entry>Land@20</entry>
-    <entry>Fly@80</entry>
+	  <entry>Adulthood@(1d20-1)*4+1d4+19</entry>
+	  <entry>Middle Age@(1d10-1)*5+1d4+1d2+98</entry>
+	  <entry>Old@(1d10-1)*5+1d4+1d2+148</entry>
+	  <entry>Venerable@1d6+27</entry>
+	  <entry>Maximum@200+2d100</entry>
   </collection>
   <collection>
     <name>Rock Gnome</name>
 	  <entry>Adulthood@(1d20-1)*3+1d3+39</entry>
-	  <entry>Middle Age@1</entry>
-	  <entry>Old@2</entry>
-	  <entry>Venerable@1d2+2</entry>
-	  <entry>Maximum@27+1d6</entry>
+	  <entry>Middle Age@(1d10-1)*5+1d4+1d2+98</entry>
+	  <entry>Old@(1d10-1)*5+1d4+1d2+148</entry>
+	  <entry>Venerable@3d100+1d4+196</entry>
+	  <entry>Maximum@200+3d100</entry>
   </collection>
   <collection>
     <name>Roper</name>
-    <entry>Land@10</entry>
+	  <entry>Adulthood@(1d10-1)*3+1d3+4</entry>
+	  <entry>Middle Age@1d4+1d2+33</entry>
+	  <entry>Old@2</entry>
+	  <entry>Venerable@1d2+2</entry>
+	  <entry>Maximum@45+1d10</entry>
   </collection>
   <collection>
     <name>Rust Monster</name>
-    <entry>Land@40</entry>
+	  <entry>Adulthood@(1d3-1)*11+1d10+1d2</entry>
+	  <entry>Middle Age@1d4+1d2+33</entry>
+	  <entry>Old@2</entry>
+	  <entry>Venerable@1d2+2</entry>
+	  <entry>Maximum@45+1d10</entry>
   </collection>
   <collection>
     <name>Sahuagin</name>
@@ -3299,74 +3314,110 @@
   </collection>
   <collection>
     <name>Satyr</name>
-    <entry>Land@40</entry>
+	  <entry>Adulthood@(1d20-1)*6+1d6+19</entry>
+	  <entry>Middle Age@1d20+35</entry>
+	  <entry>Old@1d20+55</entry>
+	  <entry>Venerable@2d100+300</entry>
+	  <entry>Maximum@300+2d100</entry>
   </collection>
   <collection>
     <name>Satyr with pipes</name>
-    <entry>Land@40</entry>
+	  <entry>Adulthood@(1d20-1)*6+1d6+19</entry>
+	  <entry>Middle Age@1d20+35</entry>
+	  <entry>Old@1d20+55</entry>
+	  <entry>Venerable@2d100+300</entry>
+	  <entry>Maximum@300+2d100</entry>
   </collection>
   <collection>
     <name>Scorpionfolk</name>
-    <entry>Land@40</entry>
+	  <entry>Adulthood@1d12+1d8+16</entry>
+	  <entry>Middle Age@1d12+1d2+35</entry>
+	  <entry>Old@1d20+55</entry>
+	  <entry>Venerable@1d20+1d6+74</entry>
+	  <entry>Maximum@75+2d20</entry>
   </collection>
   <collection>
     <name>Scrag</name>
-    <entry>Land@20</entry>
-    <entry>Swim@40</entry>
+	  <entry>Adulthood@(1d20-1)*2+1d2+9</entry>
+	  <entry>Middle Age@(1d3-1)*5+1d4+1d2+48</entry>
+	  <entry>Old@1d20+55</entry>
+	  <entry>Venerable@1d20+1d6+74</entry>
+	  <entry>Maximum@90+2d10</entry>
   </collection>
   <collection>
     <name>Sea Cat</name>
-    <entry>Land@10</entry>
-    <entry>Swim@40</entry>
+	  <entry>Adulthood@1d100+19</entry>
+	  <entry>Middle Age@(1d20-1)*4+1d4+119</entry>
+	  <entry>Old@1d20+55</entry>
+	  <entry>Venerable@1d20+1d6+74</entry>
+	  <entry>Maximum@270+3d20</entry>
   </collection>
   <collection>
     <name>Sea Hag</name>
-    <entry>Land@30</entry>
-    <entry>Swim@40</entry>
+	  <entry>Adulthood@7d100+3d20+1d10+1d2+28</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Seven-Headed Cryohydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Adulthood@(1d100-1)*10+1d10+1000</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Seven-Headed Hydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Adulthood@(1d100-1)*10+1d10+1000</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Seven-Headed Pyrohydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Adulthood@(1d100-1)*10+1d10+1000</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Shadow</name>
-    <entry>Fly@40</entry>
+	  <entry>Undead@(1d100-1)*100+1d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Shadow Mastiff</name>
-    <entry>Land@50</entry>
+	  <entry>Adulthood@(1d100-1)*10000+(1d100-1)*100+1d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Shambling Mound</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Adulthood@(1d10-1)*3+1d3+19</entry>
+	  <entry>Middle Age@(1d20-1)*4+1d4+119</entry>
+	  <entry>Old@1d20+55</entry>
+	  <entry>Venerable@1d20+1d6+74</entry>
+	  <entry>Maximum@270+3d20</entry>
   </collection>
   <collection>
     <name>Shark, Huge</name>
-    <entry>Swim@60</entry>
+	  <entry>Adulthood@1d4+13</entry>
+	  <entry>Middle Age@1d20+35</entry>
+	  <entry>Old@1d20+55</entry>
+	  <entry>Venerable@1d20+1d6+74</entry>
+	  <entry>Maximum@20+1d10</entry>
   </collection>
   <collection>
     <name>Shark, Large</name>
-    <entry>Swim@60</entry>
+	  <entry>Adulthood@1d4+13</entry>
+	  <entry>Middle Age@1d20+35</entry>
+	  <entry>Old@1d20+55</entry>
+	  <entry>Venerable@1d20+1d6+74</entry>
+	  <entry>Maximum@20+1d10</entry>
   </collection>
   <collection>
     <name>Shark, Medium</name>
-    <entry>Swim@60</entry>
+	  <entry>Adulthood@1d4+13</entry>
+	  <entry>Middle Age@1d20+35</entry>
+	  <entry>Old@1d20+55</entry>
+	  <entry>Venerable@1d20+1d6+74</entry>
+	  <entry>Maximum@20+1d10</entry>
   </collection>
   <collection>
     <name>Shield Guardian</name>
-    <entry>Land@30</entry>
+	  <entry>Construct@(1d100-1)*10+1d10</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Shocker Lizard</name>
