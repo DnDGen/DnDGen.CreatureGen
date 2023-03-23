@@ -860,8 +860,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Dragon_Silver_Wyrm][AgeConstants.Categories.Maximum] = "1201";
                 testCases[CreatureConstants.Dragon_Silver_GreatWyrm][AgeConstants.Categories.Dragon.GreatWyrm] = RollHelper.GetRollWithMostEvenDistribution(1201, 2000, true);
                 testCases[CreatureConstants.Dragon_Silver_GreatWyrm][AgeConstants.Categories.Maximum] = "2000";
-                testCases[CreatureConstants.Dragon_Silver_Wyrmling][AgeConstants.Categories.Dragon.Wyrmling] = RollHelper.GetRollWithMostEvenDistribution(0, 5, true);
-                testCases[CreatureConstants.Dragon_Silver_Wyrmling][AgeConstants.Categories.Maximum] = "6";
+                testCases[CreatureConstants.Dragon_White_Wyrmling][AgeConstants.Categories.Dragon.Wyrmling] = RollHelper.GetRollWithMostEvenDistribution(0, 5, true);
+                testCases[CreatureConstants.Dragon_White_Wyrmling][AgeConstants.Categories.Maximum] = "6";
                 testCases[CreatureConstants.Dragon_White_VeryYoung][AgeConstants.Categories.Dragon.VeryYoung] = RollHelper.GetRollWithMostEvenDistribution(6, 15, true);
                 testCases[CreatureConstants.Dragon_White_VeryYoung][AgeConstants.Categories.Maximum] = "16";
                 testCases[CreatureConstants.Dragon_White_Young][AgeConstants.Categories.Dragon.Young] = RollHelper.GetRollWithMostEvenDistribution(16, 25, true);
@@ -2065,7 +2065,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Treant][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(400, 699, true);
                 testCases[CreatureConstants.Treant][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(700, 999, true);
                 testCases[CreatureConstants.Treant][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(1000, 10_000, true);
-                testCases[CreatureConstants.Treant][AgeConstants.Categories.Maximum] = "1000+10d100";
+                testCases[CreatureConstants.Treant][AgeConstants.Categories.Maximum] = "1000+100d100";
                 //Source: https://jurassic-park-ecology.fandom.com/wiki/Triceratops
                 testCases[CreatureConstants.Triceratops][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(6, 19, true);
                 testCases[CreatureConstants.Triceratops][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(20, 27, true);
@@ -2096,6 +2096,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Troll_Scrag][AgeConstants.Categories.Maximum] = "90+2d10";
                 testCases[CreatureConstants.TrumpetArchon][AgeConstants.Categories.Adulthood] = outsiderAgeRoll;
                 testCases[CreatureConstants.TrumpetArchon][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
+                //Source: https://jurassic-park-ecology.fandom.com/wiki/Tyrannosaurus_rex
+                testCases[CreatureConstants.Tyrannosaurus][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(6, 23, true);
+                testCases[CreatureConstants.Tyrannosaurus][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(24, 31, true);
+                testCases[CreatureConstants.Tyrannosaurus][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(32, 39, true);
+                testCases[CreatureConstants.Tyrannosaurus][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(40, 44, true);
+                testCases[CreatureConstants.Tyrannosaurus][AgeConstants.Categories.Maximum] = "40+1d4";
                 //Source: https://forgottenrealms.fandom.com/wiki/Umber_hulk#Life_cycle
                 testCases[CreatureConstants.UmberHulk][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(2, 34, true);
                 testCases[CreatureConstants.UmberHulk][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(35, 39, true);
@@ -2108,6 +2114,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.UmberHulk_TrulyHorrid][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(40, 44, true);
                 testCases[CreatureConstants.UmberHulk_TrulyHorrid][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(45, 85, true);
                 testCases[CreatureConstants.UmberHulk_TrulyHorrid][AgeConstants.Categories.Maximum] = "45+2d20";
+                //Source: https://adnd2e.fandom.com/wiki/Unicorn
+                testCases[CreatureConstants.Unicorn][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(5, 1100, true);
+                testCases[CreatureConstants.Unicorn][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(1000, 1100, true);
+                testCases[CreatureConstants.Unicorn][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(1000, 1100, true);
+                testCases[CreatureConstants.Unicorn][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(1000, 1100, true);
+                testCases[CreatureConstants.Unicorn][AgeConstants.Categories.Maximum] = "1000";
+                testCases[CreatureConstants.VampireSpawn][AgeConstants.Categories.Undead] = undeadAgeRoll;
+                testCases[CreatureConstants.VampireSpawn][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
+                testCases[CreatureConstants.Vargouille][AgeConstants.Categories.Adulthood] = outsiderAgeRoll;
+                testCases[CreatureConstants.Vargouille][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
+                //Source: (Max Age) https://www.worldanvil.com/w/faerun-tatortotzke/a/violet-fungus-species
+                testCases[CreatureConstants.VioletFungus][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(10, 499, true);
+                testCases[CreatureConstants.VioletFungus][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(500, 699, true);
+                testCases[CreatureConstants.VioletFungus][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(700, 899, true);
+                testCases[CreatureConstants.VioletFungus][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(900, 1100, true);
+                testCases[CreatureConstants.VioletFungus][AgeConstants.Categories.Maximum] = "900+2d100";
                 testCases[CreatureConstants.Vrock][AgeConstants.Categories.Adulthood] = outsiderAgeRoll;
                 testCases[CreatureConstants.Vrock][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
                 testCases[CreatureConstants.Wasp_Giant][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(0, 0, true);
@@ -2140,6 +2162,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Whale_Orca][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(36, 39, true);
                 testCases[CreatureConstants.Whale_Orca][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(40, 70, true);
                 testCases[CreatureConstants.Whale_Orca][AgeConstants.Categories.Maximum] = "40+3d10";
+                testCases[CreatureConstants.Wight][AgeConstants.Categories.Undead] = undeadAgeRoll;
+                testCases[CreatureConstants.Wight][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
+                testCases[CreatureConstants.WillOWisp][AgeConstants.Categories.Adulthood] = tenKRoll;
+                testCases[CreatureConstants.WillOWisp][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
+                //Source: https://pathfinderwiki.com/wiki/Winter_wolf
+                testCases[CreatureConstants.WinterWolf][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(3, 25, true);
+                testCases[CreatureConstants.WinterWolf][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(26, 35, true);
+                testCases[CreatureConstants.WinterWolf][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(36, 44, true);
+                testCases[CreatureConstants.WinterWolf][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(45, 55, true);
+                testCases[CreatureConstants.WinterWolf][AgeConstants.Categories.Maximum] = "45+1d10";
                 testCases[CreatureConstants.Wolf][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(3, 5, true);
                 testCases[CreatureConstants.Wolf][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(6, 8, true);
                 testCases[CreatureConstants.Wolf][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(9, 11, true);
@@ -2160,16 +2192,70 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Wolverine_Dire][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(7, 7, true);
                 testCases[CreatureConstants.Wolverine_Dire][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(8, 10, true);
                 testCases[CreatureConstants.Wolverine_Dire][AgeConstants.Categories.Maximum] = "7+1d3";
+                //Source: https://www.reddit.com/r/dndnext/comments/3vxt0g/playable_worgs/
+                testCases[CreatureConstants.Worg][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(4, 20, true);
+                testCases[CreatureConstants.Worg][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(21, 27, true);
+                testCases[CreatureConstants.Worg][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(28, 34, true);
+                testCases[CreatureConstants.Worg][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(35, 55, true);
+                testCases[CreatureConstants.Worg][AgeConstants.Categories.Maximum] = "35+2d10";
                 testCases[CreatureConstants.Wraith][AgeConstants.Categories.Undead] = RollHelper.GetRollWithMostEvenDistribution(1, 1000, true);
                 testCases[CreatureConstants.Wraith][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
                 testCases[CreatureConstants.Wraith_Dread][AgeConstants.Categories.Undead] = $"{undeadAgeRoll}+1000";
                 testCases[CreatureConstants.Wraith_Dread][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
+                //Source: (Max) https://www.worldanvil.com/w/faerun-tatortotzke/a/wyvern-article
+                testCases[CreatureConstants.Wyvern][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(10, 74, true);
+                testCases[CreatureConstants.Wyvern][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(75, 99, true);
+                testCases[CreatureConstants.Wyvern][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(100, 134, true);
+                testCases[CreatureConstants.Wyvern][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(135, 165, true);
+                testCases[CreatureConstants.Wyvern][AgeConstants.Categories.Maximum] = "135+3d10";
+                testCases[CreatureConstants.Xill][AgeConstants.Categories.Adulthood] = outsiderAgeRoll;
+                testCases[CreatureConstants.Xill][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
                 testCases[CreatureConstants.Xorn_Minor][AgeConstants.Categories.Xorn.Minor] = RollHelper.GetRollWithMostEvenDistribution(1, 333, true);
                 testCases[CreatureConstants.Xorn_Minor][AgeConstants.Categories.Maximum] = "334";
                 testCases[CreatureConstants.Xorn_Average][AgeConstants.Categories.Xorn.Average] = RollHelper.GetRollWithMostEvenDistribution(334, 666, true);
                 testCases[CreatureConstants.Xorn_Average][AgeConstants.Categories.Maximum] = "667";
                 testCases[CreatureConstants.Xorn_Elder][AgeConstants.Categories.Xorn.Elder] = RollHelper.GetRollWithMostEvenDistribution(667, 1000, true);
                 testCases[CreatureConstants.Xorn_Elder][AgeConstants.Categories.Maximum] = "900+1d100";
+                testCases[CreatureConstants.YethHound][AgeConstants.Categories.Adulthood] = outsiderAgeRoll;
+                testCases[CreatureConstants.YethHound][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
+                //INFO: Can't find anything on lifespan. So, making it up
+                testCases[CreatureConstants.Yrthak][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(5, 34, true);
+                testCases[CreatureConstants.Yrthak][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(35, 39, true);
+                testCases[CreatureConstants.Yrthak][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(40, 44, true);
+                testCases[CreatureConstants.Yrthak][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(45, 55, true);
+                testCases[CreatureConstants.Yrthak][AgeConstants.Categories.Maximum] = "45+1d10";
+                //Source: https://forgottenrealms.fandom.com/wiki/Yuan-ti_pureblood
+                testCases[CreatureConstants.YuanTi_Pureblood][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(12, 39, true);
+                testCases[CreatureConstants.YuanTi_Pureblood][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(40, 59, true);
+                testCases[CreatureConstants.YuanTi_Pureblood][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(60, 79, true);
+                testCases[CreatureConstants.YuanTi_Pureblood][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(80, 120, true);
+                testCases[CreatureConstants.YuanTi_Pureblood][AgeConstants.Categories.Maximum] = "80+2d20";
+                //Source: https://forgottenrealms.fandom.com/wiki/Yuan-ti_malison
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeArms][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(12, 39, true);
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeArms][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(40, 59, true);
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeArms][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(60, 79, true);
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeArms][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(80, 120, true);
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeArms][AgeConstants.Categories.Maximum] = "80+2d20";
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeHead][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(12, 39, true);
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeHead][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(40, 59, true);
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeHead][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(60, 79, true);
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeHead][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(80, 120, true);
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeHead][AgeConstants.Categories.Maximum] = "80+2d20";
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeTail][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(12, 39, true);
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeTail][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(40, 59, true);
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeTail][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(60, 79, true);
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeTail][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(80, 120, true);
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeTail][AgeConstants.Categories.Maximum] = "80+2d20";
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(12, 39, true);
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(40, 59, true);
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(60, 79, true);
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(80, 120, true);
+                testCases[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs][AgeConstants.Categories.Maximum] = "80+2d20";
+                testCases[CreatureConstants.YuanTi_Abomination][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(12, 39, true);
+                testCases[CreatureConstants.YuanTi_Abomination][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(40, 59, true);
+                testCases[CreatureConstants.YuanTi_Abomination][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(60, 79, true);
+                testCases[CreatureConstants.YuanTi_Abomination][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(80, 120, true);
+                testCases[CreatureConstants.YuanTi_Abomination][AgeConstants.Categories.Maximum] = "80+2d20";
                 testCases[CreatureConstants.Zelekhut][AgeConstants.Categories.Construct] = outsiderAgeRoll;
                 testCases[CreatureConstants.Zelekhut][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
 

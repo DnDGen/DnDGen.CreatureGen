@@ -3638,17 +3638,17 @@
   <collection>
     <name>Tendriculos</name>
 	  <entry>Adulthood@(1d10-1)*3+1d3+4</entry>
-	  <entry>Middle Age@1d20+1d6+48</entry>
-	  <entry>Old@1d20+1d6+73</entry>
-	  <entry>Venerable@1d100+1d2+98</entry>
+	  <entry>Middle Age@1d4+1d2+33</entry>
+	  <entry>Old@1d4+1d2+38</entry>
+	  <entry>Venerable@1d10+1d2+43</entry>
 	  <entry>Maximum@45+1d10</entry>
   </collection>
   <collection>
     <name>Thoqqua</name>
 	  <entry>Adulthood@(1d10-1)*3+1d3+4</entry>
-	  <entry>Middle Age@1d20+1d6+48</entry>
-	  <entry>Old@1d20+1d6+73</entry>
-	  <entry>Venerable@1d100+1d2+98</entry>
+	  <entry>Middle Age@1d4+1d2+33</entry>
+	  <entry>Old@1d4+1d2+38</entry>
+	  <entry>Venerable@1d10+1d2+43</entry>
 	  <entry>Maximum@45+1d10</entry>
   </collection>
   <collection>
@@ -3656,7 +3656,7 @@
 	  <entry>Adulthood@(1d3-1)*5+1d4+1d2+18</entry>
 	  <entry>Middle Age@(1d6-1)*3+1d3+34</entry>
 	  <entry>Old@1d12+1d6+51</entry>
-	  <entry>Venerable@1d100+1d2+98</entry>
+	  <entry>Venerable@2d20+1d3+67</entry>
 	  <entry>Maximum@70+2d20</entry>
   </collection>
   <collection>
@@ -3675,38 +3675,42 @@
   <collection>
     <name>Toad</name>
 	  <entry>Adulthood@1d4+1</entry>
-	  <entry>Middle Age@6</entry>
-	  <entry>Old@7</entry>
-	  <entry>Venerable@1d3+7</entry>
-	  <entry>Maximum@7+1d3</entry>
+	  <entry>Middle Age@1d2+5</entry>
+	  <entry>Old@1d2+7</entry>
+	  <entry>Venerable@1d3+9</entry>
+	  <entry>Maximum@10+1d2</entry>
   </collection>
   <collection>
     <name>Treant</name>
 	  <entry>Adulthood@(1d100-1)*3+1d3+99</entry>
-	  <entry>Middle Age@(1d6-1)*3+1d3+34</entry>
-	  <entry>Old@1d20+1d6+73</entry>
-	  <entry>Venerable@1d100+1d2+98</entry>
-	  <entry>Maximum@70+2d20</entry>
+	  <entry>Middle Age@(1d100-1)*3+1d3+399</entry>
+	  <entry>Old@(1d100-1)*3+1d3+699</entry>
+	  <entry>Venerable@90d100+4d20+1d12+1d4+904</entry>
+	  <entry>Maximum@1000+100d100</entry>
   </collection>
   <collection>
     <name>Triceratops</name>
 	  <entry>Adulthood@(1d2-1)*7+1d6+1d2+4</entry>
-	  <entry>Middle Age@(1d6-1)*3+1d3+34</entry>
-	  <entry>Old@1d20+1d6+73</entry>
-	  <entry>Venerable@1d100+1d2+98</entry>
-	  <entry>Maximum@70+2d20</entry>
+	  <entry>Middle Age@1d8+19</entry>
+	  <entry>Old@1d8+27</entry>
+	  <entry>Venerable@(1d3-1)*3+1d3+35</entry>
+	  <entry>Maximum@36+2d4</entry>
   </collection>
   <collection>
     <name>Triton</name>
 	  <entry>Adulthood@4d20+1d8+1d2+9</entry>
-	  <entry>Middle Age@(1d6-1)*3+1d3+34</entry>
-	  <entry>Old@1d20+1d6+73</entry>
-	  <entry>Venerable@1d100+1d2+98</entry>
-	  <entry>Maximum@70+2d20</entry>
+	  <entry>Middle Age@(1d20-1)*2+1d2+99</entry>
+	  <entry>Old@(1d20-1)*2+1d2+139</entry>
+	  <entry>Venerable@2d20+1d3+177</entry>
+	  <entry>Maximum@180+2d20</entry>
   </collection>
   <collection>
     <name>Troglodyte</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@1d20+9</entry>
+	  <entry>Middle Age@1d10+29</entry>
+	  <entry>Old@1d10+39</entry>
+	  <entry>Venerable@1d10+1d2+48</entry>
+	  <entry>Maximum@50+1d10</entry>
   </collection>
   <collection>
     <name>Troll</name>
@@ -3718,8 +3722,11 @@
   </collection>
   <collection>
     <name>Truly Horrid Umber Hulk</name>
-    <entry>Land@20</entry>
-    <entry>Burrow@20</entry>
+	  <entry>Adulthood@(1d3-1)*11+1d10+1d2</entry>
+	  <entry>Middle Age@1d4+1d2+33</entry>
+	  <entry>Old@1d4+1d2+38</entry>
+	  <entry>Venerable@2d20+1d3+42</entry>
+	  <entry>Maximum@45+2d20</entry>
   </collection>
   <collection>
     <name>Trumpet Archon</name>
@@ -3743,67 +3750,98 @@
   </collection>
   <collection>
     <name>Tyrannosaurus</name>
-    <entry>Land@40</entry>
+	  <entry>Adulthood@(1d6-1)*3+1d3+5</entry>
+	  <entry>Middle Age@1d8+23</entry>
+	  <entry>Old@1d8+31</entry>
+	  <entry>Venerable@1d4+1d2+38</entry>
+	  <entry>Maximum@40+1d4</entry>
   </collection>
   <collection>
     <name>Umber Hulk</name>
-    <entry>Land@20</entry>
-    <entry>Burrow@20</entry>
+	  <entry>Adulthood@(1d3-1)*11+1d10+1d2</entry>
+	  <entry>Middle Age@1d4+1d2+33</entry>
+	  <entry>Old@1d4+1d2+38</entry>
+	  <entry>Venerable@2d20+1d3+42</entry>
+	  <entry>Maximum@45+2d20</entry>
   </collection>
   <collection>
     <name>Unicorn</name>
-    <entry>Land@60</entry>
+	  <entry>Adulthood@(1d8-1)*137+1d100+1d20+1d12+1d8+1</entry>
+	  <entry>Middle Age@1d100+1d2+998</entry>
+	  <entry>Old@1d100+1d2+998</entry>
+	  <entry>Venerable@1d100+1d2+998</entry>
+	  <entry>Maximum@1000</entry>
   </collection>
   <collection>
     <name>Vampire Spawn</name>
-    <entry>Land@30</entry>
+	  <entry>Undead@(1d100-1)*100+1d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Vargouille</name>
-    <entry>Fly@30</entry>
+	  <entry>Adulthood@(1d100-1)*10000+(1d100-1)*100+1d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Violet Fungus</name>
-    <entry>Land@10</entry>
+	  <entry>Adulthood@(1d10-1)*49+2d20+1d10+1d2+6</entry>
+	  <entry>Middle Age@(1d100-1)*2+1d2+499</entry>
+	  <entry>Old@(1d100-1)*2+1d2+699</entry>
+	  <entry>Venerable@(1d3-1)*67+3d20+1d10+896</entry>
+	  <entry>Maximum@900+2d100</entry>
   </collection>
   <collection>
     <name>Viper Snake, Huge</name>
-    <entry>Land@20</entry>
-    <entry>Climb@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Adulthood@1d4+1</entry>
+	  <entry>Middle Age@1d2+5</entry>
+	  <entry>Old@1d2+7</entry>
+	  <entry>Venerable@(1d8-1)*2+1d2+9</entry>
+	  <entry>Maximum@9+2d8</entry>
   </collection>
   <collection>
     <name>Viper Snake, Large</name>
-    <entry>Land@20</entry>
-    <entry>Climb@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Adulthood@1d4+1</entry>
+	  <entry>Middle Age@1d2+5</entry>
+	  <entry>Old@1d2+7</entry>
+	  <entry>Venerable@(1d8-1)*2+1d2+9</entry>
+	  <entry>Maximum@9+2d8</entry>
   </collection>
   <collection>
     <name>Viper Snake, Medium</name>
-    <entry>Land@20</entry>
-    <entry>Climb@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Adulthood@1d4+1</entry>
+	  <entry>Middle Age@1d2+5</entry>
+	  <entry>Old@1d2+7</entry>
+	  <entry>Venerable@(1d8-1)*2+1d2+9</entry>
+	  <entry>Maximum@9+2d8</entry>
   </collection>
   <collection>
     <name>Viper Snake, Small</name>
-    <entry>Land@20</entry>
-    <entry>Climb@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Adulthood@1d4+1</entry>
+	  <entry>Middle Age@1d2+5</entry>
+	  <entry>Old@1d2+7</entry>
+	  <entry>Venerable@(1d8-1)*2+1d2+9</entry>
+	  <entry>Maximum@9+2d8</entry>
   </collection>
   <collection>
     <name>Viper Snake, Tiny</name>
-    <entry>Land@15</entry>
-    <entry>Climb@15</entry>
-    <entry>Swim@15</entry>
+	  <entry>Adulthood@1d4+1</entry>
+	  <entry>Middle Age@1d2+5</entry>
+	  <entry>Old@1d2+7</entry>
+	  <entry>Venerable@(1d8-1)*2+1d2+9</entry>
+	  <entry>Maximum@9+2d8</entry>
   </collection>
   <collection>
     <name>Vrock</name>
-    <entry>Land@30</entry>
-    <entry>Fly@50</entry>
+	  <entry>Adulthood@(1d100-1)*10000+(1d100-1)*100+1d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Warpony</name>
-    <entry>Land@40</entry>
+	  <entry>Adulthood@1d4+1d2+3</entry>
+	  <entry>Middle Age@1d4+1d2+8</entry>
+	  <entry>Old@1d10+14</entry>
+	  <entry>Venerable@(1d8-1)*2+1d2+24</entry>
+	  <entry>Maximum@24+2d8</entry>
   </collection>
   <collection>
     <name>Water Elemental, Elder</name>
@@ -3845,13 +3883,16 @@
 	  <entry>Adulthood@(1d20-1)*24+(1d12-1)*2+1d2+19</entry>
 	  <entry>Middle Age@(1d100-1)*2+1d2+499</entry>
 	  <entry>Old@(1d100-1)*2+1d2+699</entry>
-	  <entry>Venerable@40d6+860</entry>
+	  <entry>Venerable@(1d3-1)*67+3d20+1d10+896</entry>
 	  <entry>Maximum@900+2d100</entry>
   </collection>
   <collection>
     <name>Weasel</name>
-    <entry>Land@20</entry>
-    <entry>Climb@20</entry>
+	  <entry>Adulthood@1d4</entry>
+	  <entry>Middle Age@5</entry>
+	  <entry>Old@6</entry>
+	  <entry>Venerable@1d4+6</entry>
+	  <entry>Maximum@6+1d4</entry>
   </collection>
   <collection>
     <name>White Dragon, Adult</name>
@@ -3915,92 +3956,144 @@
   </collection>
   <collection>
     <name>Wight</name>
-    <entry>Land@30</entry>
+	  <entry>Undead@(1d100-1)*100+1d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Wild Elf</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@3d20+1d8+106</entry>
+	  <entry>Middle Age@(1d8-1)*11+1d10+1d2+173</entry>
+	  <entry>Old@(1d3-1)*29+1d20+1d10+261</entry>
+	  <entry>Venerable@4d100+1d4+1d2+344</entry>
+	  <entry>Maximum@350+4d100</entry>
   </collection>
   <collection>
     <name>Will-O'-Wisp</name>
-    <entry>Fly@50</entry>
+	  <entry>Adulthood@(1d100-1)*100+1d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Winter Wolf</name>
-    <entry>Land@50</entry>
+	  <entry>Adulthood@1d20+1d4+1</entry>
+	  <entry>Middle Age@1d10+25</entry>
+	  <entry>Old@(1d3-1)*3+1d3+35</entry>
+	  <entry>Venerable@1d10+1d2+43</entry>
+	  <entry>Maximum@45+1d10</entry>
   </collection>
   <collection>
     <name>Wolf</name>
-    <entry>Land@50</entry>
+	  <entry>Adulthood@1d3+2</entry>
+	  <entry>Middle Age@1d3+5</entry>
+	  <entry>Old@1d3+8</entry>
+	  <entry>Venerable@1d3+11</entry>
+	  <entry>Maximum@12+1d2</entry>
   </collection>
   <collection>
     <name>Wolverine</name>
-    <entry>Land@30</entry>
-    <entry>Burrow@10</entry>
-    <entry>Climb@10</entry>
+	  <entry>Adulthood@1d4+1d2-1</entry>
+	  <entry>Middle Age@6</entry>
+	  <entry>Old@7</entry>
+	  <entry>Venerable@1d3+7</entry>
+	  <entry>Maximum@7+1d3</entry>
   </collection>
   <collection>
     <name>Wood Elf</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@3d20+1d8+106</entry>
+	  <entry>Middle Age@(1d8-1)*11+1d10+1d2+173</entry>
+	  <entry>Old@(1d3-1)*29+1d20+1d10+261</entry>
+	  <entry>Venerable@4d100+1d4+1d2+344</entry>
+	  <entry>Maximum@350+4d100</entry>
   </collection>
   <collection>
     <name>Worg</name>
-    <entry>Land@50</entry>
+	  <entry>Adulthood@1d12+1d6+2</entry>
+	  <entry>Middle Age@1d6+1d2+19</entry>
+	  <entry>Old@1d6+1d2+26</entry>
+	  <entry>Venerable@(1d3-1)*7+1d6+1d2+33</entry>
+	  <entry>Maximum@35+2d10</entry>
   </collection>
   <collection>
     <name>Wraith</name>
-    <entry>Fly@60</entry>
+	  <entry>Undead@(1d100-1)*10+1d10</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Wyvern</name>
-    <entry>Land@20</entry>
-    <entry>Fly@60</entry>
+	  <entry>Adulthood@3d20+1d8+6</entry>
+	  <entry>Middle Age@1d20+1d6+73</entry>
+	  <entry>Old@1d20+1d12+1d4+1d2+96</entry>
+	  <entry>Venerable@1d4+6</entry>
+	  <entry>Maximum@135+3d10</entry>
   </collection>
   <collection>
     <name>Xill</name>
-    <entry>Land@40</entry>
+	  <entry>Adulthood@(1d100-1)*10000+(1d100-1)*100+1d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Yeth Hound</name>
-    <entry>Land@40</entry>
-    <entry>Fly@60</entry>
+	  <entry>Adulthood@(1d100-1)*10000+(1d100-1)*100+1d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Yrthak</name>
-    <entry>Land@20</entry>
-    <entry>Fly@60</entry>
+	  <entry>Adulthood@(1d10-1)*3+1d3+4</entry>
+	  <entry>Middle Age@1d4+1d2+33</entry>
+	  <entry>Old@1d4+1d2+38</entry>
+	  <entry>Venerable@1d4+6</entry>
+	  <entry>Maximum@45+1d10</entry>
   </collection>
   <collection>
     <name>Yuan-ti Abomination</name>
-    <entry>Land@30</entry>
-    <entry>Swim@20</entry>
+	  <entry>Adulthood@(1d4-1)*7+1d6+1d2+10</entry>
+	  <entry>Middle Age@1d20+39</entry>
+	  <entry>Old@1d20+59</entry>
+	  <entry>Venerable@2d20+1d3+77</entry>
+	  <entry>Maximum@80+2d20</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head)</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@(1d4-1)*7+1d6+1d2+10</entry>
+	  <entry>Middle Age@1d20+39</entry>
+	  <entry>Old@1d20+59</entry>
+	  <entry>Venerable@2d20+1d3+77</entry>
+	  <entry>Maximum@80+2d20</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@(1d4-1)*7+1d6+1d2+10</entry>
+	  <entry>Middle Age@1d20+39</entry>
+	  <entry>Old@1d20+59</entry>
+	  <entry>Venerable@2d20+1d3+77</entry>
+	  <entry>Maximum@80+2d20</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</name>
-    <entry>Land@30</entry>
-    <entry>Swim@15</entry>
+	  <entry>Adulthood@(1d4-1)*7+1d6+1d2+10</entry>
+	  <entry>Middle Age@1d20+39</entry>
+	  <entry>Old@1d20+59</entry>
+	  <entry>Venerable@2d20+1d3+77</entry>
+	  <entry>Maximum@80+2d20</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)</name>
-    <entry>Land@20</entry>
-    <entry>Climb@15</entry>
-    <entry>Swim@15</entry>
+	  <entry>Adulthood@(1d4-1)*7+1d6+1d2+10</entry>
+	  <entry>Middle Age@1d20+39</entry>
+	  <entry>Old@1d20+59</entry>
+	  <entry>Venerable@2d20+1d3+77</entry>
+	  <entry>Maximum@80+2d20</entry>
   </collection>
   <collection>
     <name>Yuan-ti Pureblood</name>
-    <entry>Land@30</entry>
+	  <entry>Adulthood@(1d4-1)*7+1d6+1d2+10</entry>
+	  <entry>Middle Age@1d20+39</entry>
+	  <entry>Old@1d20+59</entry>
+	  <entry>Venerable@2d20+1d3+77</entry>
+	  <entry>Maximum@80+2d20</entry>
   </collection>
   <collection>
     <name>Zelekhut</name>
-    <entry>Land@50</entry>
-    <entry>Fly@60</entry>
+	  <entry>Construct@(1d100-1)*10000+(1d100-1)*100+1d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
 </collections>
