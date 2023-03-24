@@ -2116,8 +2116,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.UmberHulk_TrulyHorrid][AgeConstants.Categories.Maximum] = "45+2d20";
                 //Source: https://adnd2e.fandom.com/wiki/Unicorn
                 testCases[CreatureConstants.Unicorn][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(5, 1100, true);
-                testCases[CreatureConstants.Unicorn][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(1000, 1100, true);
-                testCases[CreatureConstants.Unicorn][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(1000, 1100, true);
                 testCases[CreatureConstants.Unicorn][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(1000, 1100, true);
                 testCases[CreatureConstants.Unicorn][AgeConstants.Categories.Maximum] = "1000";
                 testCases[CreatureConstants.VampireSpawn][AgeConstants.Categories.Undead] = undeadAgeRoll;

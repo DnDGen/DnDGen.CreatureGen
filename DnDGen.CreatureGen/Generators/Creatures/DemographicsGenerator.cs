@@ -44,14 +44,14 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var heightModifier = heights.First(h => h.Type == creatureName);
 
             demographics.Height.Value = baseHeight.Amount + heightModifier.Amount;
-            demographics.Height.Description = GetDescription(heightModifier.RawAmount, heightModifier.Amount, heightDescriptions);
+            demographics.Height.Description = dice.Describe(heightModifier.RawAmount, heightModifier.Amount, heightDescriptions);
 
             var lengths = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Lengths, creatureName);
             var baseLength = lengths.First(h => h.Type == demographics.Gender);
             var lengthModifier = lengths.First(h => h.Type == creatureName);
 
             demographics.Length.Value = baseLength.Amount + lengthModifier.Amount;
-            demographics.Length.Description = GetDescription(lengthModifier.RawAmount, lengthModifier.Amount, lengthDescriptions);
+            demographics.Length.Description = dice.Describe(lengthModifier.RawAmount, lengthModifier.Amount, lengthDescriptions);
 
             var weights = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Weights, creatureName);
             var baseWeight = weights.First(h => h.Type == demographics.Gender);
@@ -59,14 +59,14 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var multiplier = Math.Max(heightModifier.Amount, lengthModifier.Amount);
 
             demographics.Weight.Value = baseWeight.Amount + multiplier * weightModifier.Amount;
-            demographics.Weight.Description = GetDescription(weightModifier.RawAmount, weightModifier.Amount, weightDescriptions);
+            demographics.Weight.Description = dice.Describe(weightModifier.RawAmount, weightModifier.Amount, weightDescriptions);
 
             var wingspans = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Wingspans, creatureName);
             var baseWingspan = wingspans.First(h => h.Type == demographics.Gender);
             var wingspanModifier = wingspans.First(h => h.Type == creatureName);
 
             demographics.Wingspan.Value = baseWingspan.Amount + wingspanModifier.Amount;
-            demographics.Wingspan.Description = GetDescription(wingspanModifier.RawAmount, wingspanModifier.Amount, wingspanDescriptions);
+            demographics.Wingspan.Description = dice.Describe(wingspanModifier.RawAmount, wingspanModifier.Amount, wingspanDescriptions);
 
             demographics.Appearance = collectionsSelector.SelectRandomFrom(TableNameConstants.Collection.Appearances, creatureName);
 
@@ -87,11 +87,17 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         private TypeAndAmountSelection GetRandomAgeRoll(string creatureName)
         {
             var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, creatureName);
-            var nonMax = ageRolls.Where(r => r.Type != AgeConstants.Categories.Maximum);
-            var common = nonMax.Take(1);
-            var uncommon = nonMax.Skip(1).Take(1);
-            var rare = nonMax.Skip(2).Take(1);
-            var veryRare = nonMax.Skip(3).Take(1);
+            var nonCommonCategories = new[]
+            {
+                AgeConstants.Categories.MiddleAge,
+                AgeConstants.Categories.Old,
+                AgeConstants.Categories.Venerable,
+                AgeConstants.Categories.Maximum
+            };
+            var common = ageRolls.Where(r => !nonCommonCategories.Contains(r.Type));
+            var uncommon = ageRolls.Where(r => r.Type == AgeConstants.Categories.MiddleAge);
+            var rare = ageRolls.Where(r => r.Type == AgeConstants.Categories.Old);
+            var veryRare = ageRolls.Where(r => r.Type == AgeConstants.Categories.Venerable);
 
             var randomAgeRoll = collectionsSelector.SelectRandomFrom(common, uncommon, rare, veryRare);
             return randomAgeRoll;
@@ -120,32 +126,6 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 return AgeConstants.Ageless;
 
             return maxAgeRoll.Amount;
-        }
-
-        private string GetDescription(string roll, int value, params string[] descriptions)
-        {
-            var percentile = GetPercentile(roll, value);
-
-            var rawIndex = percentile * descriptions.Length;
-            rawIndex = Math.Floor(rawIndex);
-
-            var index = Convert.ToInt32(rawIndex);
-            index = Math.Min(index, descriptions.Count() - 1);
-
-            return descriptions[index];
-        }
-
-        private double GetPercentile(string roll, double value)
-        {
-            var minimumRoll = dice.Roll(roll).AsPotentialMinimum();
-            var maximumRoll = dice.Roll(roll).AsPotentialMaximum();
-            var totalRange = maximumRoll - minimumRoll;
-            var range = value - minimumRoll;
-
-            if (totalRange > 0)
-                return range / totalRange;
-
-            return .5;
         }
     }
 }
