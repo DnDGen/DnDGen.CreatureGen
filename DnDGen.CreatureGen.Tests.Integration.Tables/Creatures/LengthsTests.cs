@@ -251,35 +251,38 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Azer][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Azer][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.Azer][CreatureConstants.Azer] = "0";
-            //TODO: Double-check from here
-            lengths[CreatureConstants.Babau][GenderConstants.Agender] = "5*12";
-            lengths[CreatureConstants.Babau][CreatureConstants.Babau] = RollHelper.GetRollWithFewestDice(5 * 12, 6 * 12, 7 * 12);
-            lengths[CreatureConstants.Baboon][GenderConstants.Female] = "21";
-            lengths[CreatureConstants.Baboon][GenderConstants.Male] = "25";
-            lengths[CreatureConstants.Baboon][CreatureConstants.Baboon] = "1d6";
-            lengths[CreatureConstants.Badger][GenderConstants.Female] = "20";
-            lengths[CreatureConstants.Badger][GenderConstants.Male] = "20";
-            lengths[CreatureConstants.Badger][CreatureConstants.Badger] = RollHelper.GetRollWithFewestDice(20, 24, 36);
-            lengths[CreatureConstants.Badger_Dire][GenderConstants.Female] = "60";
-            lengths[CreatureConstants.Badger_Dire][GenderConstants.Male] = "60";
-            lengths[CreatureConstants.Badger_Dire][CreatureConstants.Badger_Dire] = RollHelper.GetRollWithFewestDice(60, 5 * 12, 7 * 12);
-            lengths[CreatureConstants.Balor][GenderConstants.Agender] = GetBaseFromAverage(12 * 12);
-            lengths[CreatureConstants.Balor][CreatureConstants.Balor] = GetMultiplierFromAverage(12 * 12);
-            lengths[CreatureConstants.BarbedDevil_Hamatula][GenderConstants.Agender] = GetBaseFromAverage(7 * 12);
-            lengths[CreatureConstants.BarbedDevil_Hamatula][CreatureConstants.BarbedDevil_Hamatula] = GetMultiplierFromAverage(7 * 12);
+            lengths[CreatureConstants.Babau][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.Babau][CreatureConstants.Babau] = "0";
+            lengths[CreatureConstants.Baboon][GenderConstants.Female] = "0";
+            lengths[CreatureConstants.Baboon][GenderConstants.Male] = "0";
+            lengths[CreatureConstants.Baboon][CreatureConstants.Baboon] = "0";
+            lengths[CreatureConstants.Badger][GenderConstants.Female] = GetBaseFromRange(22, 30);
+            lengths[CreatureConstants.Badger][GenderConstants.Male] = GetBaseFromRange(22, 30);
+            lengths[CreatureConstants.Badger][CreatureConstants.Badger] = GetMultiplierFromRange(22, 30);
+            //Source: https://forgottenrealms.fandom.com/wiki/Dire_badger
+            lengths[CreatureConstants.Badger_Dire][GenderConstants.Female] = GetBaseFromRange(4 * 12, 7 * 12 + 8);
+            lengths[CreatureConstants.Badger_Dire][GenderConstants.Male] = GetBaseFromRange(4 * 12, 7 * 12 + 8);
+            lengths[CreatureConstants.Badger_Dire][CreatureConstants.Badger_Dire] = GetMultiplierFromRange(4 * 12, 7 * 12 + 8);
+            lengths[CreatureConstants.Balor][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.Balor][CreatureConstants.Balor] = "0";
+            lengths[CreatureConstants.BarbedDevil_Hamatula][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.BarbedDevil_Hamatula][CreatureConstants.BarbedDevil_Hamatula] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Barghest
             lengths[CreatureConstants.Barghest][GenderConstants.Agender] = GetBaseFromAverage(6 * 12);
             lengths[CreatureConstants.Barghest][CreatureConstants.Barghest] = GetMultiplierFromAverage(6 * 12);
             lengths[CreatureConstants.Barghest_Greater][GenderConstants.Agender] = GetBaseFromAverage(6 * 12);
             lengths[CreatureConstants.Barghest_Greater][CreatureConstants.Barghest_Greater] = GetMultiplierFromAverage(6 * 12);
-            lengths[CreatureConstants.Bear_Brown][GenderConstants.Female] = GetBaseFromAverage(9 * 12);
-            lengths[CreatureConstants.Bear_Brown][GenderConstants.Male] = GetBaseFromAverage(9 * 12);
-            lengths[CreatureConstants.Bear_Brown][CreatureConstants.Bear_Brown] = GetMultiplierFromAverage(9 * 12);
-            lengths[CreatureConstants.BeardedDevil_Barbazu][GenderConstants.Agender] = GetBaseFromAverage(6 * 12);
-            lengths[CreatureConstants.BeardedDevil_Barbazu][CreatureConstants.BeardedDevil_Barbazu] = GetMultiplierFromAverage(6 * 12);
+            lengths[CreatureConstants.Bear_Brown][GenderConstants.Female] = GetBaseFromRange(55, 110);
+            lengths[CreatureConstants.Bear_Brown][GenderConstants.Male] = GetBaseFromRange(55, 110);
+            lengths[CreatureConstants.Bear_Brown][CreatureConstants.Bear_Brown] = GetMultiplierFromRange(55, 110);
+            lengths[CreatureConstants.BeardedDevil_Barbazu][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.BeardedDevil_Barbazu][CreatureConstants.BeardedDevil_Barbazu] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Bebilith
             lengths[CreatureConstants.Bebilith][GenderConstants.Agender] = GetBaseFromAverage(14 * 12);
             lengths[CreatureConstants.Bebilith][CreatureConstants.Bebilith] = GetMultiplierFromAverage(14 * 12);
-            lengths[CreatureConstants.BoneDevil_Osyluth][GenderConstants.Agender] = GetBaseFromAverage(9 * 12);
-            lengths[CreatureConstants.BoneDevil_Osyluth][CreatureConstants.BoneDevil_Osyluth] = GetMultiplierFromAverage(9 * 12);
+            lengths[CreatureConstants.BoneDevil_Osyluth][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.BoneDevil_Osyluth][CreatureConstants.BoneDevil_Osyluth] = "0";
+            //TODO: Double-check from here
             lengths[CreatureConstants.Bugbear][GenderConstants.Female] = "5*12";
             lengths[CreatureConstants.Bugbear][GenderConstants.Male] = "5*12";
             lengths[CreatureConstants.Bugbear][CreatureConstants.Bugbear] = RollHelper.GetRollWithFewestDice(5 * 12, 6 * 12, 8 * 12);

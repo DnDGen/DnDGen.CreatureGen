@@ -49,6 +49,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<IAdjustmentsSelector> mockAdjustmentSelector;
         private Mock<ICreaturePrototypeFactory> mockPrototypeFactory;
         private Mock<ITypeAndAmountSelector> mockTypeAndAmountSelector;
+        private Mock<IDemographicsGenerator> mockDemographicsGenerator;
 
         [SetUp]
         public void Setup()
@@ -65,6 +66,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockAdjustmentSelector = new Mock<IAdjustmentsSelector>();
             mockPrototypeFactory = new Mock<ICreaturePrototypeFactory>();
             mockTypeAndAmountSelector = new Mock<ITypeAndAmountSelector>();
+            mockDemographicsGenerator = new Mock<IDemographicsGenerator>();
 
             applicator = new HalfDragonApplicator(
                 mockCollectionSelector.Object,
@@ -78,7 +80,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 mockCreatureDataSelector.Object,
                 mockAdjustmentSelector.Object,
                 mockPrototypeFactory.Object,
-                mockTypeAndAmountSelector.Object);
+                mockTypeAndAmountSelector.Object,
+                mockDemographicsGenerator.Object);
             applicator.DragonSpecies = "my dragon species";
 
             baseCreature = new CreatureBuilder()
@@ -305,12 +308,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             }
         }
 
-        [Test]
-        public void ApplyTo_ReturnsCreature_WithAdjustedDemographics()
+        [TestCase(SizeConstants.Large)]
+        [TestCase(SizeConstants.Huge)]
+        [TestCase(SizeConstants.Gargantuan)]
+        [TestCase(SizeConstants.Colossal)]
+        public void ApplyTo_ReturnsCreature_WithAdjustedDemographics_WithWingspan(string size)
         {
             baseCreature.Demographics.Appearance = "I look like a potato.";
             baseCreature.Demographics.Age.Value = 42;
             baseCreature.Demographics.MaximumAge.Value = 600;
+            baseCreature.Size = size;
 
             mockCollectionSelector
                 .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my dragon species"))
@@ -325,16 +332,99 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .Returns(ageRolls);
 
             var multiplier = 90210 / 600d / 2;
+
+            var wingspan = new Measurement("inches") { Value = 1337, Description = "Scaley" };
+            mockDemographicsGenerator
+                .Setup(g => g.GenerateWingspan("my dragon species", baseCreature.Size))
+                .Returns(wingspan);
+
+            var creature = applicator.ApplyTo(baseCreature, false);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi. Has dragon wings."));
+            Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 * multiplier));
+            Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(600 * multiplier));
+            Assert.That(creature.Demographics.Wingspan, Is.EqualTo(wingspan));
+        }
+
+        [TestCase(SizeConstants.Tiny)]
+        [TestCase(SizeConstants.Small)]
+        [TestCase(SizeConstants.Medium)]
+        public void ApplyTo_ReturnsCreature_WithAdjustedDemographics_WithoutWingspan(string size)
+        {
+            baseCreature.Demographics.Appearance = "I look like a potato.";
+            baseCreature.Demographics.Age.Value = 42;
+            baseCreature.Demographics.MaximumAge.Value = 600;
+            baseCreature.Size = size;
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my dragon species"))
+                .Returns("I am the scaliest boi.");
+
+            var ageRolls = new List<TypeAndAmountSelection>();
+            ageRolls.Add(new TypeAndAmountSelection { Type = "my only age description", Amount = 9266, RawAmount = "raw 9266" });
+            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" });
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my dragon species"))
+                .Returns(ageRolls);
+
+            var multiplier = 90210 / 600d / 2;
+
+            var wingspan = new Measurement("inches") { Value = 1337, Description = "Scaley" };
+            mockDemographicsGenerator
+                .Setup(g => g.GenerateWingspan("my dragon species", baseCreature.Size))
+                .Returns(wingspan);
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi."));
             Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 * multiplier));
             Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(600 * multiplier));
+            Assert.That(creature.Demographics.Wingspan, Is.Not.EqualTo(wingspan));
         }
 
-        [Test]
-        public async Task ApplyToAsync_ReturnsCreature_WithAdjustedDemographics()
+        [TestCase(SizeConstants.Large)]
+        [TestCase(SizeConstants.Huge)]
+        [TestCase(SizeConstants.Gargantuan)]
+        [TestCase(SizeConstants.Colossal)]
+        public async Task ApplyToAsync_ReturnsCreature_WithAdjustedDemographics_WithWingspan(string size)
+        {
+            baseCreature.Demographics.Appearance = "I look like a potato.";
+            baseCreature.Demographics.Age.Value = 42;
+            baseCreature.Demographics.MaximumAge.Value = 600;
+            baseCreature.Size = size;
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my dragon species"))
+                .Returns("I am the scaliest boi.");
+
+            var ageRolls = new List<TypeAndAmountSelection>();
+            ageRolls.Add(new TypeAndAmountSelection { Type = "my only age description", Amount = 9266, RawAmount = "raw 9266" });
+            ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Maximum, Amount = 90210, RawAmount = "raw 90210" });
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.AgeRolls, "my dragon species"))
+                .Returns(ageRolls);
+
+            var multiplier = 90210 / 600d / 2;
+
+            var wingspan = new Measurement("inches") { Value = 1337, Description = "Scaley" };
+            mockDemographicsGenerator
+                .Setup(g => g.GenerateWingspan("my dragon species", baseCreature.Size))
+                .Returns(wingspan);
+
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            Assert.That(creature, Is.EqualTo(baseCreature));
+            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi. Has dragon wings."));
+            Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 * multiplier));
+            Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(600 * multiplier));
+            Assert.That(creature.Demographics.Wingspan, Is.EqualTo(wingspan));
+        }
+
+        [TestCase(SizeConstants.Tiny)]
+        [TestCase(SizeConstants.Small)]
+        [TestCase(SizeConstants.Medium)]
+        public async Task ApplyToAsync_ReturnsCreature_WithAdjustedDemographics_WithoutWingspan(string size)
         {
             baseCreature.Demographics.Appearance = "I look like a potato.";
             baseCreature.Demographics.Age.Value = 42;
@@ -354,11 +444,17 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var multiplier = 90210 / 600d / 2;
 
+            var wingspan = new Measurement("inches") { Value = 1337, Description = "Scaley" };
+            mockDemographicsGenerator
+                .Setup(g => g.GenerateWingspan("my dragon species", baseCreature.Size))
+                .Returns(wingspan);
+
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi."));
             Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 * multiplier));
             Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(600 * multiplier));
+            Assert.That(creature.Demographics.Wingspan, Is.Not.EqualTo(wingspan));
         }
 
         [TestCaseSource(nameof(HitDieIncreased))]

@@ -49,6 +49,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         private Mock<ICreatureDataSelector> mockCreatureDataSelector;
         private Mock<IAdjustmentsSelector> mockAdjustmentSelector;
         private Mock<ICreaturePrototypeFactory> mockPrototypeFactory;
+        private Mock<IDemographicsGenerator> mockDemographicsGenerator;
 
         [SetUp]
         public void Setup()
@@ -64,6 +65,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             mockCreatureDataSelector = new Mock<ICreatureDataSelector>();
             mockAdjustmentSelector = new Mock<IAdjustmentsSelector>();
             mockPrototypeFactory = new Mock<ICreaturePrototypeFactory>();
+            mockDemographicsGenerator = new Mock<IDemographicsGenerator>();
 
             applicator = new HalfFiendApplicator(
                 mockCollectionSelector.Object,
@@ -76,7 +78,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 mockMagicGenerator.Object,
                 mockAdjustmentSelector.Object,
                 mockCreatureDataSelector.Object,
-                mockPrototypeFactory.Object);
+                mockPrototypeFactory.Object,
+                mockDemographicsGenerator.Object);
 
             baseCreature = new CreatureBuilder()
                 .WithTestValues()
@@ -320,10 +323,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var multiplier = 90210 / 600d / 2;
 
+            var wingspan = new Measurement("inches") { Value = 1337, Description = "Batty" };
+            mockDemographicsGenerator
+                .Setup(g => g.GenerateWingspan(CreatureConstants.Templates.HalfFiend, baseCreature.Size))
+                .Returns(wingspan);
+
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the ugliest urchin."));
             Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(AgeConstants.Ageless));
             Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 * multiplier));
+            Assert.That(creature.Demographics.Wingspan, Is.EqualTo(wingspan));
         }
 
         [Test]
@@ -1854,10 +1863,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var multiplier = 90210 / 600d / 2;
 
+            var wingspan = new Measurement("inches") { Value = 1337, Description = "Batty" };
+            mockDemographicsGenerator
+                .Setup(g => g.GenerateWingspan(CreatureConstants.Templates.HalfFiend, baseCreature.Size))
+                .Returns(wingspan);
+
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the ugliest urchin."));
             Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(AgeConstants.Ageless));
             Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 * multiplier));
+            Assert.That(creature.Demographics.Wingspan, Is.EqualTo(wingspan));
         }
 
         [Test]

@@ -178,7 +178,7 @@ namespace DnDGen.CreatureGen.Templates
 
             if (sizeIndex >= largeIndex && creature.Speeds.ContainsKey(SpeedConstants.Land))
             {
-                creature.Demographics.Wingspan = demographicsGenerator.GenerateWingspan(CreatureConstants.Templates.HalfCelestial, creature.Size);
+                creature.Demographics.Wingspan = demographicsGenerator.GenerateWingspan(DragonSpecies, creature.Size);
             }
         }
 

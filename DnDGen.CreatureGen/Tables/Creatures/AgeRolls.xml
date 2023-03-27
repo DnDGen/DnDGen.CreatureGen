@@ -3767,8 +3767,6 @@
   <collection>
     <name>Unicorn</name>
 	  <entry>Adulthood@(1d8-1)*137+1d100+1d20+1d12+1d8+1</entry>
-	  <entry>Middle Age@1d100+1d2+998</entry>
-	  <entry>Old@1d100+1d2+998</entry>
 	  <entry>Venerable@1d100+1d2+998</entry>
 	  <entry>Maximum@1000</entry>
   </collection>
