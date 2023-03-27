@@ -1374,5 +1374,78 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(demographics.Weight.Description, Is.EqualTo("Average"));
             Assert.That(demographics.Appearance, Is.EqualTo("my random appearance"));
         }
+
+        [Test]
+        public void GenerateWingspan_ReturnsWingspan()
+        {
+            var wingspanRolls = new List<TypeAndAmountSelection>();
+            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my base key", Amount = 123, RawAmount = "raw 123" });
+            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other base key", Amount = 234, RawAmount = "raw 234" });
+            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 345, RawAmount = "raw 345" });
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Returns(wingspanRolls);
+
+            SetUpMinMaxRolls("raw 345", 335, 355);
+
+            var wingspan = generator.GenerateWingspan("my creature", "my base key");
+            Assert.That(wingspan, Is.Not.Null);
+            Assert.That(wingspan.Value, Is.EqualTo(123 + 345));
+            Assert.That(wingspan.Unit, Is.EqualTo("inches"));
+            Assert.That(wingspan.Description, Is.EqualTo("Average"));
+        }
+
+        [TestCase(335, "Very Narrow")]
+        [TestCase(338, "Very Narrow")]
+        [TestCase(339, "Narrow")]
+        [TestCase(342, "Narrow")]
+        [TestCase(343, "Average")]
+        [TestCase(345, "Average")]
+        [TestCase(346, "Average")]
+        [TestCase(347, "Broad")]
+        [TestCase(350, "Broad")]
+        [TestCase(351, "Very Broad")]
+        [TestCase(355, "Very Broad")]
+        public void GenerateWingspan_ReturnsWingspan_WithDescription(int roll, string description)
+        {
+            var wingspanRolls = new List<TypeAndAmountSelection>();
+            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my base key", Amount = 123, RawAmount = "raw 123" });
+            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other base key", Amount = 234, RawAmount = "raw 234" });
+            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = roll, RawAmount = "raw 345" });
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Returns(wingspanRolls);
+
+            SetUpMinMaxRolls("raw 345", 335, 355);
+
+            var wingspan = generator.GenerateWingspan("my creature", "my base key");
+            Assert.That(wingspan, Is.Not.Null);
+            Assert.That(wingspan.Value, Is.EqualTo(123 + roll));
+            Assert.That(wingspan.Unit, Is.EqualTo("inches"));
+            Assert.That(wingspan.Description, Is.EqualTo(description));
+        }
+
+        [Test]
+        public void GenerateWingspan_ReturnsWingspan_WithNoWingspan()
+        {
+            var wingspanRolls = new List<TypeAndAmountSelection>();
+            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my base key", Amount = 0, RawAmount = "raw 0" });
+            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other base key", Amount = 0, RawAmount = "raw 0" });
+            wingspanRolls.Add(new TypeAndAmountSelection { Type = "my creature", Amount = 0, RawAmount = "raw 0" });
+
+            mockTypeAndAmountSelector
+                .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
+                .Returns(wingspanRolls);
+
+            SetUpMinMaxRolls("raw 0", 0, 0);
+
+            var wingspan = generator.GenerateWingspan("my creature", "my base key");
+            Assert.That(wingspan, Is.Not.Null);
+            Assert.That(wingspan.Value, Is.Zero);
+            Assert.That(wingspan.Unit, Is.EqualTo("inches"));
+            Assert.That(wingspan.Description, Is.EqualTo("Average"));
+        }
     }
 }

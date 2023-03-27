@@ -33,6 +33,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IAdjustmentsSelector adjustmentSelector;
         private readonly ICreatureDataSelector creatureDataSelector;
         private readonly ICreaturePrototypeFactory prototypeFactory;
+        private readonly IDemographicsGenerator demographicsGenerator;
 
         public HalfCelestialApplicator(
             ICollectionSelector collectionSelector,
@@ -44,7 +45,8 @@ namespace DnDGen.CreatureGen.Templates
             IMagicGenerator magicGenerator,
             IAdjustmentsSelector adjustmentSelector,
             ICreatureDataSelector creatureDataSelector,
-            ICreaturePrototypeFactory prototypeFactory)
+            ICreaturePrototypeFactory prototypeFactory,
+            IDemographicsGenerator demographicsGenerator)
         {
             this.collectionSelector = collectionSelector;
             this.typeAndAmountSelector = typeAndAmountSelector;
@@ -56,6 +58,7 @@ namespace DnDGen.CreatureGen.Templates
             this.adjustmentSelector = adjustmentSelector;
             this.creatureDataSelector = creatureDataSelector;
             this.prototypeFactory = prototypeFactory;
+            this.demographicsGenerator = demographicsGenerator;
 
             creatureTypes = new[]
             {
@@ -183,6 +186,7 @@ namespace DnDGen.CreatureGen.Templates
 
             creature.Demographics.Age.Value *= multiplier;
             creature.Demographics.MaximumAge.Value = AgeConstants.Ageless;
+            creature.Demographics.Wingspan = demographicsGenerator.GenerateWingspan(CreatureConstants.Templates.HalfCelestial, creature.Size);
         }
 
         private void UpdateCreatureSpeeds(Creature creature)

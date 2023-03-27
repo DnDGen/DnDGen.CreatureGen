@@ -61,13 +61,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             demographics.Weight.Value = baseWeight.Amount + multiplier * weightModifier.Amount;
             demographics.Weight.Description = dice.Describe(weightModifier.RawAmount, weightModifier.Amount, weightDescriptions);
 
-            var wingspans = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Wingspans, creatureName);
-            var baseWingspan = wingspans.First(h => h.Type == demographics.Gender);
-            var wingspanModifier = wingspans.First(h => h.Type == creatureName);
-
-            demographics.Wingspan.Value = baseWingspan.Amount + wingspanModifier.Amount;
-            demographics.Wingspan.Description = dice.Describe(wingspanModifier.RawAmount, wingspanModifier.Amount, wingspanDescriptions);
-
+            demographics.Wingspan = GenerateWingspan(creatureName, demographics.Gender);
             demographics.Appearance = collectionsSelector.SelectRandomFrom(TableNameConstants.Collection.Appearances, creatureName);
 
             return demographics;
@@ -126,6 +120,19 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 return AgeConstants.Ageless;
 
             return maxAgeRoll.Amount;
+        }
+
+        public Measurement GenerateWingspan(string creatureName, string baseKey)
+        {
+            var wingspans = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Wingspans, creatureName);
+            var baseWingspan = wingspans.First(h => h.Type == baseKey);
+            var wingspanModifier = wingspans.First(h => h.Type == creatureName);
+
+            var wingspan = new Measurement("inches");
+            wingspan.Value = baseWingspan.Amount + wingspanModifier.Amount;
+            wingspan.Description = dice.Describe(wingspanModifier.RawAmount, wingspanModifier.Amount, wingspanDescriptions);
+
+            return wingspan;
         }
     }
 }

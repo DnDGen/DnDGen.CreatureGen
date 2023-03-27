@@ -38,6 +38,7 @@ namespace DnDGen.CreatureGen.Templates
         private readonly IAdjustmentsSelector adjustmentSelector;
         private readonly ICreaturePrototypeFactory prototypeFactory;
         private readonly ITypeAndAmountSelector typeAndAmountSelector;
+        private readonly IDemographicsGenerator demographicsGenerator;
 
         public HalfDragonApplicator(
             ICollectionSelector collectionSelector,
@@ -51,7 +52,8 @@ namespace DnDGen.CreatureGen.Templates
             ICreatureDataSelector creatureDataSelector,
             IAdjustmentsSelector adjustmentSelector,
             ICreaturePrototypeFactory prototypeFactory,
-            ITypeAndAmountSelector typeAndAmountSelector)
+            ITypeAndAmountSelector typeAndAmountSelector,
+            IDemographicsGenerator demographicsGenerator)
         {
             this.collectionSelector = collectionSelector;
             this.speedsGenerator = speedsGenerator;
@@ -65,6 +67,7 @@ namespace DnDGen.CreatureGen.Templates
             this.adjustmentSelector = adjustmentSelector;
             this.prototypeFactory = prototypeFactory;
             this.typeAndAmountSelector = typeAndAmountSelector;
+            this.demographicsGenerator = demographicsGenerator;
 
             creatureTypes = new[]
             {
@@ -168,6 +171,15 @@ namespace DnDGen.CreatureGen.Templates
 
             creature.Demographics.Age.Value *= multiplier;
             creature.Demographics.MaximumAge.Value *= multiplier;
+
+            var sizes = SizeConstants.GetOrdered();
+            var largeIndex = Array.IndexOf(sizes, SizeConstants.Large);
+            var sizeIndex = Array.IndexOf(sizes, creature.Size);
+
+            if (sizeIndex >= largeIndex && creature.Speeds.ContainsKey(SpeedConstants.Land))
+            {
+                creature.Demographics.Wingspan = demographicsGenerator.GenerateWingspan(CreatureConstants.Templates.HalfCelestial, creature.Size);
+            }
         }
 
         private void UpdateCreatureType(CreaturePrototype creature)
