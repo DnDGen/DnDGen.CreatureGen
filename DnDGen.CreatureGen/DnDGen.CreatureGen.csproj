@@ -42,8 +42,10 @@
     <None Remove="Tables\Creatures\CreatureTypes.xml" />
     <None Remove="Tables\Creatures\Genders.xml" />
     <None Remove="Tables\Creatures\Heights.xml" />
+    <None Remove="Tables\Creatures\Lengths.xml" />
     <None Remove="Tables\Creatures\Speeds.xml" />
     <None Remove="Tables\Creatures\Weights.xml" />
+    <None Remove="Tables\Creatures\Wingspans.xml" />
     <None Remove="Tables\Defenses\ArmorClassBonuses.xml" />
     <None Remove="Tables\Defenses\HitDice.xml" />
     <None Remove="Tables\Defenses\SaveBonuses.xml" />
@@ -109,6 +111,8 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Creatures\AgeRolls.xml" />
+    <EmbeddedResource Include="Tables\Creatures\Lengths.xml" />
+    <EmbeddedResource Include="Tables\Creatures\Wingspans.xml" />
     <EmbeddedResource Include="Tables\Creatures\Heights.xml" />
     <EmbeddedResource Include="Tables\Creatures\Weights.xml" />
     <EmbeddedResource Include="Tables\Creatures\Speeds.xml" />

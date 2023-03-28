@@ -187,6 +187,8 @@ namespace DnDGen.CreatureGen.Templates
             creature.Demographics.Age.Value *= multiplier;
             creature.Demographics.MaximumAge.Value = AgeConstants.Ageless;
             creature.Demographics.Wingspan = demographicsGenerator.GenerateWingspan(CreatureConstants.Templates.HalfCelestial, creature.Size);
+
+            //TODO: It would be better to generate the wingspan as equal to the creature height/length...
         }
 
         private void UpdateCreatureSpeeds(Creature creature)

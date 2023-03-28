@@ -3,14 +3,12 @@
 <collections>
   <collection>
     <name>Aasimar</name>
-	  <entry>Aasimar@2d10</entry>
-	  <entry>Male@61</entry>
-	  <entry>Female@60</entry>
+    <entry>Land@30</entry>
   </collection>
   <collection>
     <name>Aboleth</name>
-    <entry>Aboleth@0</entry>
-    <entry>Hermaphrodite@0</entry>
+    <entry>Land@10</entry>
+    <entry>Swim@60</entry>
   </collection>
   <collection>
     <name>Greater Basilisk</name>
@@ -18,401 +16,321 @@
   </collection>
   <collection>
     <name>Achaierai</name>
-	  <entry>Achaierai@4d10</entry>
-	  <entry>Female@158</entry>
-	  <entry>Male@158</entry>
+    <entry>Land@50</entry>
   </collection>
   <collection>
     <name>Adult Arrowhawk</name>
-    <entry>Adult Arrowhawk@0</entry>
-	  <entry>Female@0</entry>
-	  <entry>Male@0</entry>
+    <entry>Fly@60</entry>
   </collection>
   <collection>
     <name>Adult Tojanida</name>
-	  <entry>Adult Tojanida@0</entry>
-	  <entry>Agender@0</entry>
+    <entry>Land@10</entry>
+    <entry>Swim@90</entry>
   </collection>
   <collection>
     <name>Air Elemental, Elder</name>
-	  <entry>Air Elemental, Elder@32d4</entry>
-	  <entry>Agender@400</entry>
+    <entry>Fly@100</entry>
   </collection>
   <collection>
     <name>Air Elemental, Greater</name>
-	  <entry>Air Elemental, Greater@29d4</entry>
-	  <entry>Agender@359</entry>
+    <entry>Fly@100</entry>
   </collection>
   <collection>
     <name>Air Elemental, Huge</name>
-	  <entry>Air Elemental, Huge@7d12</entry>
-	  <entry>Agender@338</entry>
+    <entry>Fly@100</entry>
   </collection>
   <collection>
     <name>Air Elemental, Large</name>
-	  <entry>Air Elemental, Large@13d4</entry>
-	  <entry>Agender@159</entry>
+    <entry>Fly@100</entry>
   </collection>
   <collection>
     <name>Air Elemental, Medium</name>
-	  <entry>Air Elemental, Medium@1d20</entry>
-	  <entry>Agender@85</entry>
+    <entry>Fly@100</entry>
   </collection>
   <collection>
     <name>Air Elemental, Small</name>
-	  <entry>Air Elemental, Small@1d10</entry>
-	  <entry>Agender@42</entry>
+    <entry>Fly@100</entry>
   </collection>
   <collection>
     <name>Air Mephit</name>
-	  <entry>Agender@42</entry>
-	  <entry>Male@42</entry>
-	  <entry>Female@42</entry>
-    <entry>Air Mephit@1d10</entry>
+    <entry>Land@30</entry>
+    <entry>Fly@60</entry>
   </collection>
   <collection>
     <name>Allip</name>
-	  <entry>Male@4*12+10</entry>
-	  <entry>Female@4*12+5</entry>
-	  <entry>Allip@2d10</entry>
+    <entry>Fly@30</entry>
   </collection>
   <collection>
     <name>Androsphinx</name>
-	  <entry>Male@0</entry>
-	  <entry>Androsphinx@0</entry>
+    <entry>Land@50</entry>
+    <entry>Fly@80</entry>
   </collection>
   <collection>
     <name>Angel, Astral Deva</name>
-	  <entry>Male@82</entry>
-	  <entry>Female@82</entry>
-	  <entry>Angel, Astral Deva@2d4</entry>
+    <entry>Land@50</entry>
+    <entry>Fly@100</entry>
   </collection>
   <collection>
     <name>Angel, Planetar</name>
-	  <entry>Male@92</entry>
-	  <entry>Female@92</entry>
-	  <entry>Angel, Planetar@4d4</entry>
+    <entry>Land@30</entry>
+    <entry>Fly@90</entry>
   </collection>
   <collection>
     <name>Angel, Solar</name>
-	  <entry>Male@104</entry>
-	  <entry>Female@104</entry>
-	  <entry>Angel, Solar@4d4</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Colossal (Flexible)</name>
-	  <entry>Agender@0</entry>
-	  <entry>Animated Object, Colossal (Flexible)@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Colossal (More Than Two Legs)</name>
-	  <entry>Agender@512</entry>
-	  <entry>Animated Object, Colossal (More Than Two Legs)@256d4</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Colossal (More Than Two Legs, Wooden)</name>
-	  <entry>Agender@512</entry>
-	  <entry>Animated Object, Colossal (More Than Two Legs, Wooden)@256d4</entry>
+    <entry>Land@50</entry>
+    <entry>Fly@150</entry>
   </collection>
 	<collection>
+		<name>Animated Object, Colossal (Flexible)</name>
+		<entry>Land@10</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs)</name>
+		<entry>Land@10</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (More Than Two Legs, Wooden)</name>
+		<entry>Land@20</entry>
+	</collection>
+	<collection>
 		<name>Animated Object, Colossal (Two Legs)</name>
-		<entry>Agender@512</entry>
-		<entry>Animated Object, Colossal (Two Legs)@256d4</entry>
+		<entry>Land@10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Two Legs, Wooden)</name>
-		<entry>Agender@512</entry>
-		<entry>Animated Object, Colossal (Two Legs, Wooden)@256d4</entry>
+		<entry>Land@20</entry>
 	</collection>
-  <collection>
-    <name>Animated Object, Colossal (Sheetlike)</name>
-	  <entry>Agender@0</entry>
-	  <entry>Animated Object, Colossal (Sheetlike)@0</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Colossal (Wheels, Wooden)</name>
-	  <entry>Agender@512</entry>
-	  <entry>Animated Object, Colossal (Wheels, Wooden)@256d4</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Colossal (Wooden)</name>
-	  <entry>Agender@512</entry>
-	  <entry>Animated Object, Colossal (Wooden)@256d4</entry>
-  </collection>
-  <collection>
-    <name>Animated Object, Colossal</name>
-	  <entry>Agender@512</entry>
-	  <entry>Animated Object, Colossal@256d4</entry>
-  </collection>
+	<collection>
+		<name>Animated Object, Colossal (Sheetlike)</name>
+		<entry>Land@20</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Wheels, Wooden)</name>
+		<entry>Land@30</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal (Wooden)</name>
+		<entry>Land@30</entry>
+	</collection>
+	<collection>
+		<name>Animated Object, Colossal</name>
+		<entry>Land@40</entry>
+	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Flexible)</name>
-		<entry>Agender@0</entry>
-		<entry>Animated Object, Gargantuan (Flexible)@0</entry>
+		<entry>Land@10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (More Than Two Legs)</name>
-		<entry>Agender@256</entry>
-		<entry>Animated Object, Gargantuan (More Than Two Legs)@128d4</entry>
+		<entry>Land@10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (More Than Two Legs, Wooden)</name>
-		<entry>Agender@256</entry>
-		<entry>Animated Object, Gargantuan (More Than Two Legs, Wooden)@128d4</entry>
+		<entry>Land@20</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Two Legs)</name>
-		<entry>Agender@256</entry>
-		<entry>Animated Object, Gargantuan (Two Legs)@128d4</entry>
+		<entry>Land@10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Two Legs, Wooden)</name>
-		<entry>Agender@256</entry>
-		<entry>Animated Object, Gargantuan (Two Legs, Wooden)@128d4</entry>
+		<entry>Land@20</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Sheetlike)</name>
-		<entry>Agender@0</entry>
-		<entry>Animated Object, Gargantuan (Sheetlike)@0</entry>
+		<entry>Land@20</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Wheels, Wooden)</name>
-		<entry>Agender@256</entry>
-		<entry>Animated Object, Gargantuan (Wheels, Wooden)@128d4</entry>
+		<entry>Land@30</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Wooden)</name>
-		<entry>Agender@256</entry>
-		<entry>Animated Object, Gargantuan (Wooden)@128d4</entry>
+		<entry>Land@30</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan</name>
-		<entry>Agender@256</entry>
-		<entry>Animated Object, Gargantuan@128d4</entry>
+		<entry>Land@40</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Flexible)</name>
-		<entry>Agender@0</entry>
-		<entry>Animated Object, Huge (Flexible)@0</entry>
+		<entry>Land@10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (More Than Two Legs)</name>
-		<entry>Agender@128</entry>
-		<entry>Animated Object, Huge (More Than Two Legs)@64d4</entry>
+		<entry>Land@10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (More Than Two Legs, Wooden)</name>
-		<entry>Agender@128</entry>
-		<entry>Animated Object, Huge (More Than Two Legs, Wooden)@64d4</entry>
+		<entry>Land@20</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Two Legs)</name>
-		<entry>Agender@128</entry>
-		<entry>Animated Object, Huge (Two Legs)@64d4</entry>
+		<entry>Land@10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Two Legs, Wooden)</name>
-		<entry>Agender@128</entry>
-		<entry>Animated Object, Huge (Two Legs, Wooden)@64d4</entry>
+		<entry>Land@20</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Sheetlike)</name>
-		<entry>Agender@0</entry>
-		<entry>Animated Object, Huge (Sheetlike)@0</entry>
+		<entry>Land@20</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Wheels, Wooden)</name>
-		<entry>Agender@128</entry>
-		<entry>Animated Object, Huge (Wheels, Wooden)@64d4</entry>
+		<entry>Land@30</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Wooden)</name>
-		<entry>Agender@128</entry>
-		<entry>Animated Object, Huge (Wooden)@64d4</entry>
+		<entry>Land@30</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge</name>
-		<entry>Agender@128</entry>
-		<entry>Animated Object, Huge@64d4</entry>
+		<entry>Land@40</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Flexible)</name>
-		<entry>Agender@0</entry>
-		<entry>Animated Object, Large (Flexible)@0</entry>
+		<entry>Land@10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (More Than Two Legs)</name>
-		<entry>Agender@64</entry>
-		<entry>Animated Object, Large (More Than Two Legs)@32d4</entry>
+		<entry>Land@10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (More Than Two Legs, Wooden)</name>
-		<entry>Agender@64</entry>
-		<entry>Animated Object, Large (More Than Two Legs, Wooden)@32d4</entry>
+		<entry>Land@20</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Two Legs)</name>
-		<entry>Agender@64</entry>
-		<entry>Animated Object, Large (Two Legs)@32d4</entry>
+		<entry>Land@10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Two Legs, Wooden)</name>
-		<entry>Agender@64</entry>
-		<entry>Animated Object, Large (Two Legs, Wooden)@32d4</entry>
+		<entry>Land@20</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Sheetlike)</name>
-		<entry>Agender@0</entry>
-		<entry>Animated Object, Large (Sheetlike)@0</entry>
+		<entry>Land@20</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Wheels, Wooden)</name>
-		<entry>Agender@64</entry>
-		<entry>Animated Object, Large (Wheels, Wooden)@32d4</entry>
+		<entry>Land@30</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Wooden)</name>
-		<entry>Agender@64</entry>
-		<entry>Animated Object, Large (Wooden)@32d4</entry>
+		<entry>Land@30</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large</name>
-		<entry>Agender@64</entry>
-		<entry>Animated Object, Large@32d4</entry>
+		<entry>Land@40</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Flexible)</name>
-		<entry>Agender@0</entry>
-		<entry>Animated Object, Medium (Flexible)@0</entry>
+		<entry>Land@10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (More Than Two Legs)</name>
-		<entry>Agender@32</entry>
-		<entry>Animated Object, Medium (More Than Two Legs)@16d4</entry>
+		<entry>Land@10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (More Than Two Legs, Wooden)</name>
-		<entry>Agender@32</entry>
-		<entry>Animated Object, Medium (More Than Two Legs, Wooden)@16d4</entry>
+		<entry>Land@20</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Two Legs)</name>
-		<entry>Agender@32</entry>
-		<entry>Animated Object, Medium (Two Legs)@16d4</entry>
+		<entry>Land@10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Two Legs, Wooden)</name>
-		<entry>Agender@32</entry>
-		<entry>Animated Object, Medium (Two Legs, Wooden)@16d4</entry>
+		<entry>Land@20</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Sheetlike)</name>
-		<entry>Agender@0</entry>
-		<entry>Animated Object, Medium (Sheetlike)@0</entry>
+		<entry>Land@20</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Wheels, Wooden)</name>
-		<entry>Agender@32</entry>
-		<entry>Animated Object, Medium (Wheels, Wooden)@16d4</entry>
+		<entry>Land@30</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Wooden)</name>
-		<entry>Agender@32</entry>
-		<entry>Animated Object, Medium (Wooden)@16d4</entry>
+		<entry>Land@30</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium</name>
-		<entry>Agender@32</entry>
-		<entry>Animated Object, Medium@16d4</entry>
+		<entry>Land@40</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Flexible)</name>
-		<entry>Agender@0</entry>
-		<entry>Animated Object, Small (Flexible)@0</entry>
+		<entry>Land@10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (More Than Two Legs)</name>
-		<entry>Agender@16</entry>
-		<entry>Animated Object, Small (More Than Two Legs)@8d4</entry>
+		<entry>Land@10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (More Than Two Legs, Wooden)</name>
-		<entry>Agender@16</entry>
-		<entry>Animated Object, Small (More Than Two Legs, Wooden)@8d4</entry>
+		<entry>Land@20</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Two Legs)</name>
-		<entry>Agender@16</entry>
-		<entry>Animated Object, Small (Two Legs)@8d4</entry>
+		<entry>Land@10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Two Legs, Wooden)</name>
-		<entry>Agender@16</entry>
-		<entry>Animated Object, Small (Two Legs, Wooden)@8d4</entry>
+		<entry>Land@20</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Sheetlike)</name>
-		<entry>Agender@0</entry>
-		<entry>Animated Object, Small (Sheetlike)@0</entry>
+		<entry>Land@20</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Wheels, Wooden)</name>
-		<entry>Agender@16</entry>
-		<entry>Animated Object, Small (Wheels, Wooden)@8d4</entry>
+		<entry>Land@30</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Wooden)</name>
-		<entry>Agender@16</entry>
-		<entry>Animated Object, Small (Wooden)@8d4</entry>
+		<entry>Land@30</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small</name>
-		<entry>Agender@16</entry>
-		<entry>Animated Object, Small@8d4</entry>
+		<entry>Land@40</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Flexible)</name>
-		<entry>Agender@0</entry>
-		<entry>Animated Object, Tiny (Flexible)@0</entry>
+		<entry>Land@10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (More Than Two Legs)</name>
-		<entry>Agender@8</entry>
-		<entry>Animated Object, Tiny (More Than Two Legs)@4d4</entry>
+		<entry>Land@10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (More Than Two Legs, Wooden)</name>
-		<entry>Agender@8</entry>
-		<entry>Animated Object, Tiny (More Than Two Legs, Wooden)@4d4</entry>
+		<entry>Land@20</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Two Legs)</name>
-		<entry>Agender@8</entry>
-		<entry>Animated Object, Tiny (Two Legs)@4d4</entry>
+		<entry>Land@10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Two Legs, Wooden)</name>
-		<entry>Agender@8</entry>
-		<entry>Animated Object, Tiny (Two Legs, Wooden)@4d4</entry>
+		<entry>Land@20</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Sheetlike)</name>
-		<entry>Agender@0</entry>
-		<entry>Animated Object, Tiny (Sheetlike)@0</entry>
+		<entry>Land@20</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Wheels, Wooden)</name>
-		<entry>Agender@8</entry>
-		<entry>Animated Object, Tiny (Wheels, Wooden)@4d4</entry>
+		<entry>Land@30</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Wooden)</name>
-		<entry>Agender@8</entry>
-		<entry>Animated Object, Tiny (Wooden)@4d4</entry>
+		<entry>Land@30</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny</name>
-		<entry>Agender@8</entry>
-		<entry>Animated Object, Tiny@4d4</entry>
+		<entry>Land@40</entry>
 	</collection>
   <collection>
     <name>Ankheg</name>
@@ -1241,10 +1159,8 @@
   </collection>
   <collection>
     <name>Dust Mephit</name>
-	  <entry>Agender@42</entry>
-	  <entry>Male@42</entry>
-	  <entry>Female@42</entry>
-	  <entry>Air Mephit@1d10</entry>
+    <entry>Land@30</entry>
+    <entry>Fly@50</entry>
   </collection>
   <collection>
     <name>Eagle</name>
@@ -1277,10 +1193,8 @@
   </collection>
   <collection>
     <name>Earth Mephit</name>
-	  <entry>Agender@42</entry>
-	  <entry>Male@42</entry>
-	  <entry>Female@42</entry>
-	  <entry>Air Mephit@1d10</entry>
+    <entry>Land@30</entry>
+    <entry>Fly@40</entry>
   </collection>
   <collection>
     <name>Efreeti</name>
@@ -1397,10 +1311,8 @@
   </collection>
   <collection>
     <name>Fire Mephit</name>
-	  <entry>Agender@42</entry>
-	  <entry>Male@42</entry>
-	  <entry>Female@42</entry>
-	  <entry>Air Mephit@1d10</entry>
+    <entry>Land@30</entry>
+    <entry>Fly@40</entry>
   </collection>
   <collection>
     <name>Five-Headed Cryohydra</name>
@@ -1893,9 +1805,7 @@
   </collection>
   <collection>
     <name>Human</name>
-	  <entry>Male@4*12+10</entry>
-	  <entry>Female@4*12+5</entry>
-	  <entry>Allip@2d10</entry>
+    <entry>Land@30</entry>
   </collection>
   <collection>
     <name>Hyena</name>
@@ -1907,10 +1817,8 @@
   </collection>
   <collection>
     <name>Ice Mephit</name>
-	  <entry>Agender@42</entry>
-	  <entry>Male@42</entry>
-	  <entry>Female@42</entry>
-	  <entry>Air Mephit@1d10</entry>
+    <entry>Land@30</entry>
+    <entry>Fly@50</entry>
   </collection>
   <collection>
     <name>Imp</name>
@@ -2039,10 +1947,8 @@
   </collection>
   <collection>
     <name>Magma Mephit</name>
-	  <entry>Agender@42</entry>
-	  <entry>Male@42</entry>
-	  <entry>Female@42</entry>
-	  <entry>Air Mephit@1d10</entry>
+    <entry>Land@30</entry>
+    <entry>Fly@50</entry>
   </collection>
   <collection>
     <name>Magmin</name>
@@ -2352,10 +2258,9 @@
   </collection>
   <collection>
     <name>Ooze Mephit</name>
-	  <entry>Agender@42</entry>
-	  <entry>Male@42</entry>
-	  <entry>Female@42</entry>
-	  <entry>Air Mephit@1d10</entry>
+    <entry>Land@30</entry>
+    <entry>Fly@40</entry>
+    <entry>Swim@30</entry>
   </collection>
   <collection>
     <name>Orc</name>
@@ -2605,10 +2510,8 @@
   </collection>
   <collection>
     <name>Salt Mephit</name>
-	  <entry>Agender@42</entry>
-	  <entry>Male@42</entry>
-	  <entry>Female@42</entry>
-	  <entry>Air Mephit@1d10</entry>
+    <entry>Land@30</entry>
+    <entry>Fly@40</entry>
   </collection>
   <collection>
     <name>Satyr</name>
@@ -2796,10 +2699,8 @@
   </collection>
   <collection>
     <name>Steam Mephit</name>
-	  <entry>Agender@42</entry>
-	  <entry>Male@42</entry>
-	  <entry>Female@42</entry>
-	  <entry>Air Mephit@1d10</entry>
+    <entry>Land@30</entry>
+    <entry>Fly@50</entry>
   </collection>
   <collection>
     <name>Stirge</name>
@@ -3022,10 +2923,9 @@
   </collection>
   <collection>
     <name>Water Mephit</name>
-	  <entry>Agender@42</entry>
-	  <entry>Male@42</entry>
-	  <entry>Female@42</entry>
-	  <entry>Air Mephit@1d10</entry>
+    <entry>Land@30</entry>
+    <entry>Fly@40</entry>
+    <entry>Swim@30</entry>
   </collection>
   <collection>
     <name>Water Naga</name>
