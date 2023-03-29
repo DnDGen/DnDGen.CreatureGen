@@ -416,27 +416,32 @@
 	</collection>
   <collection>
     <name>Ankheg</name>
-    <entry>Land@30</entry>
-    <entry>Burrow@20</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Ankheg@0</entry>
   </collection>
   <collection>
     <name>Annis</name>
-    <entry>Land@40</entry>
+	  <entry>Female@85</entry>
+	  <entry>Annis@1d20</entry>
   </collection>
   <collection>
     <name>Ape</name>
-    <entry>Land@30</entry>
-    <entry>Climb@30</entry>
+	  <entry>Male@62</entry>
+	  <entry>Female@62</entry>
+	  <entry>Ape@1d10</entry>
   </collection>
   <collection>
     <name>Aquatic Elf</name>
-    <entry>Land@30</entry>
-    <entry>Swim@40</entry>
+	  <entry>Male@4*12+5</entry>
+	  <entry>Female@4*12+5</entry>
+	  <entry>Aquatic Elf@2d6</entry>
   </collection>
   <collection>
     <name>Aranea</name>
-    <entry>Land@50</entry>
-    <entry>Climb@25</entry>
+	  <entry>Male@4*12+7</entry>
+	  <entry>Female@4*12+5</entry>
+	  <entry>Aranea@2d8</entry>
   </collection>
   <collection>
     <name>Assassin Vine</name>
@@ -444,52 +449,66 @@
   </collection>
   <collection>
     <name>Athach</name>
-    <entry>Land@50</entry>
+	  <entry>Male@151</entry>
+	  <entry>Female@151</entry>
+	  <entry>Athach@43d2</entry>
   </collection>
   <collection>
     <name>Average Salamander</name>
-    <entry>Land@20</entry>
+	  <entry>Agender@16</entry>
+	  <entry>Average Salamander@8d4</entry>
   </collection>
   <collection>
     <name>Average Xorn</name>
-    <entry>Land@20</entry>
-    <entry>Burrow@20</entry>
+	  <entry>Agender@50</entry>
+	  <entry>Average Xorn@4d4</entry>
   </collection>
   <collection>
     <name>Avoral</name>
-    <entry>Land@40</entry>
-    <entry>Fly@90</entry>
+	  <entry>Agender@76</entry>
+	  <entry>Male@76</entry>
+	  <entry>Female@76</entry>
+	  <entry>Avoral@2d4</entry>
   </collection>
   <collection>
     <name>Azer</name>
-    <entry>Land@30</entry>
+	  <entry>Agender@50</entry>
+	  <entry>Male@50</entry>
+	  <entry>Female@50</entry>
+	  <entry>Avoral@4d4</entry>
   </collection>
   <collection>
     <name>Babau</name>
-    <entry>Land@30</entry>
+	  <entry>Agender@68</entry>
+	  <entry>Babau@4d4</entry>
   </collection>
   <collection>
     <name>Baboon</name>
-    <entry>Land@40</entry>
-    <entry>Climb@30</entry>
+	  <entry>Male@12</entry>
+	  <entry>Female@12</entry>
+	  <entry>Baboon@8d3</entry>
   </collection>
   <collection>
     <name>Badger</name>
-    <entry>Land@30</entry>
-    <entry>Burrow@10</entry>
+	  <entry>Male@10</entry>
+	  <entry>Female@10</entry>
+	  <entry>Badger@1d6</entry>
   </collection>
   <collection>
     <name>Baleen Whale</name>
-    <entry>Swim@40</entry>
+	  <entry>Male@92</entry>
+	  <entry>Female@92</entry>
+	  <entry>Baleen Whale@4d6</entry>
   </collection>
   <collection>
     <name>Balor</name>
-    <entry>Land@40</entry>
-    <entry>Fly@90</entry>
+	  <entry>Agender@100</entry>
+	  <entry>Balor@29d2</entry>
   </collection>
   <collection>
     <name>Barbed Devil (Hamatula)</name>
-    <entry>Land@30</entry>
+	  <entry>Agender@58</entry>
+	  <entry>Barbed Devil (Hamatula)@17d2</entry>
   </collection>
   <collection>
     <name>Barghest</name>

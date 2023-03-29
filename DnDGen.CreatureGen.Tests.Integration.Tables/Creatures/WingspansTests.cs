@@ -212,11 +212,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.d20srd.org/srd/monsters/hag.htm#annis
             wingspans[CreatureConstants.Annis][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Annis][CreatureConstants.Annis] = "0";
-            //Source: (Male) https://www.d20srd.org/srd/monsters/ape.htm, (Female) https://nationalzoo.si.edu/animals/western-lowland-gorilla
             wingspans[CreatureConstants.Ape][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Ape][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Ape][CreatureConstants.Ape] = "0";
-            //Multiplying the female up
             wingspans[CreatureConstants.Ape_Dire][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Ape_Dire][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Ape_Dire][CreatureConstants.Ape_Dire] = "0";
@@ -234,6 +232,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Arrowhawk_Elder][GenderConstants.Female] = GetBaseFromAverage(30 * 12);
             wingspans[CreatureConstants.Arrowhawk_Elder][GenderConstants.Male] = GetBaseFromAverage(30 * 12);
             wingspans[CreatureConstants.Arrowhawk_Elder][CreatureConstants.Arrowhawk_Elder] = GetMultiplierFromAverage(30 * 12);
+            wingspans[CreatureConstants.AssassinVine][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.AssassinVine][CreatureConstants.AssassinVine] = "0";
             //Source: https://www.d20srd.org/srd/monsters/athach.htm
             wingspans[CreatureConstants.Athach][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Athach][GenderConstants.Male] = "0";
@@ -267,6 +267,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Barghest][CreatureConstants.Barghest] = "0";
             wingspans[CreatureConstants.Barghest_Greater][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.Barghest_Greater][CreatureConstants.Barghest_Greater] = "0";
+            wingspans[CreatureConstants.Basilisk][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Basilisk][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Basilisk][CreatureConstants.Basilisk] = "0";
+            wingspans[CreatureConstants.Basilisk_Greater][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Basilisk_Greater][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Basilisk_Greater][CreatureConstants.Basilisk_Greater] = "0";
             wingspans[CreatureConstants.Bear_Brown][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Bear_Brown][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Bear_Brown][CreatureConstants.Bear_Brown] = "0";

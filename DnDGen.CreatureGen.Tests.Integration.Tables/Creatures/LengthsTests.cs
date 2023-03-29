@@ -215,14 +215,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.d20srd.org/srd/monsters/hag.htm#annis
             lengths[CreatureConstants.Annis][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Annis][CreatureConstants.Annis] = "0";
-            //Source: (Male) https://www.d20srd.org/srd/monsters/ape.htm, (Female) https://nationalzoo.si.edu/animals/western-lowland-gorilla
-            lengths[CreatureConstants.Ape][GenderConstants.Female] = "0";
-            lengths[CreatureConstants.Ape][GenderConstants.Male] = "0";
-            lengths[CreatureConstants.Ape][CreatureConstants.Ape] = "0";
-            //Multiplying the female up
-            lengths[CreatureConstants.Ape_Dire][GenderConstants.Female] = "0";
-            lengths[CreatureConstants.Ape_Dire][GenderConstants.Male] = "0";
-            lengths[CreatureConstants.Ape_Dire][CreatureConstants.Ape_Dire] = "0";
+            //Source: https://www.dimensions.com/element/eastern-lowland-gorilla-gorilla-beringei-graueri
+            lengths[CreatureConstants.Ape][GenderConstants.Female] = GetBaseFromRange(37, 42);
+            lengths[CreatureConstants.Ape][GenderConstants.Male] = GetBaseFromRange(37, 42);
+            lengths[CreatureConstants.Ape][CreatureConstants.Ape] = GetMultiplierFromRange(37, 42);
+            //Multiplying up from normal ape, where Dire is about 1.5x the dimensions of the normal
+            lengths[CreatureConstants.Ape_Dire][GenderConstants.Female] = GetBaseFromRange(55, 63);
+            lengths[CreatureConstants.Ape_Dire][GenderConstants.Male] = GetBaseFromRange(55, 63);
+            lengths[CreatureConstants.Ape_Dire][CreatureConstants.Ape_Dire] = GetMultiplierFromRange(55, 63);
             //INFO: Based on Half-Elf, since could be Human, Half-Elf, or Drow
             lengths[CreatureConstants.Aranea][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Aranea][GenderConstants.Male] = "0";
@@ -237,6 +237,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Arrowhawk_Elder][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
             lengths[CreatureConstants.Arrowhawk_Elder][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
             lengths[CreatureConstants.Arrowhawk_Elder][CreatureConstants.Arrowhawk_Elder] = GetMultiplierFromAverage(20 * 12);
+            //Source: https://forgottenrealms.fandom.com/wiki/Assassin_vine
+            lengths[CreatureConstants.AssassinVine][GenderConstants.Agender] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.AssassinVine][CreatureConstants.AssassinVine] = GetMultiplierFromAverage(20 * 12);
             //Source: https://www.d20srd.org/srd/monsters/athach.htm
             lengths[CreatureConstants.Athach][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Athach][GenderConstants.Male] = "0";
@@ -253,10 +256,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Azer][CreatureConstants.Azer] = "0";
             lengths[CreatureConstants.Babau][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.Babau][CreatureConstants.Babau] = "0";
-            //Source: https://www.d20srd.org/srd/monsters/baboon.htm
-            lengths[CreatureConstants.Baboon][GenderConstants.Female] = GetBaseFromRange(24, 48);
-            lengths[CreatureConstants.Baboon][GenderConstants.Male] = GetBaseFromRange(24, 48);
-            lengths[CreatureConstants.Baboon][CreatureConstants.Baboon] = GetMultiplierFromRange(24, 48);
+            //Source: https://www.dimensions.com/element/mandrill-mandrillus-sphinx
+            lengths[CreatureConstants.Baboon][GenderConstants.Female] = GetBaseFromRange(21, 38);
+            lengths[CreatureConstants.Baboon][GenderConstants.Male] = GetBaseFromRange(21, 38);
+            lengths[CreatureConstants.Baboon][CreatureConstants.Baboon] = GetMultiplierFromRange(21, 38);
             //Source: https://www.d20srd.org/srd/monsters/badger.htm
             lengths[CreatureConstants.Badger][GenderConstants.Female] = GetBaseFromRange(24, 36);
             lengths[CreatureConstants.Badger][GenderConstants.Male] = GetBaseFromRange(24, 36);
@@ -274,6 +277,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Barghest][CreatureConstants.Barghest] = GetMultiplierFromAverage(6 * 12);
             lengths[CreatureConstants.Barghest_Greater][GenderConstants.Agender] = GetBaseFromAverage(6 * 12);
             lengths[CreatureConstants.Barghest_Greater][CreatureConstants.Barghest_Greater] = GetMultiplierFromAverage(6 * 12);
+            //Source: https://forgottenrealms.fandom.com/wiki/Basilisk
+            lengths[CreatureConstants.Basilisk][GenderConstants.Female] = GetBaseFromRange(11 * 12, 13 * 12);
+            lengths[CreatureConstants.Basilisk][GenderConstants.Male] = GetBaseFromRange(11 * 12, 13 * 12);
+            lengths[CreatureConstants.Basilisk][CreatureConstants.Basilisk] = GetMultiplierFromRange(11 * 12, 13 * 12);
+            //Scaling up. Since 1 size category bigger, just doubling everything
+            lengths[CreatureConstants.Basilisk_Greater][GenderConstants.Female] = GetBaseFromRange(22 * 12, 26 * 12);
+            lengths[CreatureConstants.Basilisk_Greater][GenderConstants.Male] = GetBaseFromRange(22 * 12, 26 * 12);
+            lengths[CreatureConstants.Basilisk_Greater][CreatureConstants.Basilisk_Greater] = GetMultiplierFromRange(22 * 12, 26 * 12);
             //Source: https://www.dimensions.com/element/grizzly-bear
             lengths[CreatureConstants.Bear_Brown][GenderConstants.Female] = GetBaseFromRange(5 * 12 + 6, 6 * 12 + 6);
             lengths[CreatureConstants.Bear_Brown][GenderConstants.Male] = GetBaseFromRange(7 * 12, 8 * 12);
@@ -459,7 +470,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Horse_Heavy_War][CreatureConstants.Horse_Heavy_War] = GetMultiplierFromAverage(8 * 12);
             lengths[CreatureConstants.Horse_Light_War][GenderConstants.Female] = GetBaseFromAverage(8 * 12);
             lengths[CreatureConstants.Horse_Light_War][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
-            lengths[CreatureConstants.Horse_Light_War][CreatureConstants.Horse_Light_War] = GetMultiplierFromAverage(8 * 121);
+            lengths[CreatureConstants.Horse_Light_War][CreatureConstants.Horse_Light_War] = GetMultiplierFromAverage(8 * 12);
             lengths[CreatureConstants.Human][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Human][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Human][CreatureConstants.Human] = "0";
