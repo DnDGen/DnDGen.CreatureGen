@@ -445,7 +445,8 @@
   </collection>
   <collection>
     <name>Assassin Vine</name>
-    <entry>Land@5</entry>
+	  <entry>Agender@0</entry>
+	  <entry>Assassin Vine@0</entry>
   </collection>
   <collection>
     <name>Athach</name>
@@ -475,7 +476,7 @@
 	  <entry>Agender@50</entry>
 	  <entry>Male@50</entry>
 	  <entry>Female@50</entry>
-	  <entry>Avoral@4d4</entry>
+	  <entry>Azer@4d4</entry>
   </collection>
   <collection>
     <name>Babau</name>
@@ -512,145 +513,136 @@
   </collection>
   <collection>
     <name>Barghest</name>
-    <entry>Land@30</entry>
+	  <entry>Male@52</entry>
+	  <entry>Female@52</entry>
+	  <entry>Barghest@8d4</entry>
   </collection>
   <collection>
     <name>Basilisk</name>
-    <entry>Land@20</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Basilisk@0</entry>
   </collection>
   <collection>
     <name>Bat</name>
-    <entry>Land@5</entry>
-    <entry>Fly@40</entry>
+	  <entry>Male@3</entry>
+	  <entry>Female@3</entry>
+	  <entry>Bat@1d2</entry>
   </collection>
   <collection>
     <name>Bat Swarm</name>
-    <entry>Land@5</entry>
-    <entry>Fly@40</entry>
+	  <entry>Agender@100</entry>
+	  <entry>Bat Swarm@8d4</entry>
   </collection>
   <collection>
     <name>Bearded Devil (Barbazu)</name>
-    <entry>Land@40</entry>
+	  <entry>Agender@61</entry>
+	  <entry>Bearded Devil (Barbazu)@3d6</entry>
   </collection>
   <collection>
     <name>Bebilith</name>
-    <entry>Land@40</entry>
-    <entry>Climb@20</entry>
+	  <entry>Agender@0</entry>
+	  <entry>Bebilith@0</entry>
   </collection>
   <collection>
     <name>Behir</name>
-    <entry>Land@40</entry>
-    <entry>Climb@15</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Behir@0</entry>
   </collection>
   <collection>
     <name>Beholder</name>
-    <entry>Land@5</entry>
-    <entry>Fly@20</entry>
+	  <entry>Agender@85</entry>
+	  <entry>Beholder@1d20</entry>
   </collection>
   <collection>
     <name>Belker</name>
-    <entry>Land@30</entry>
-    <entry>Fly@50</entry>
+	  <entry>Agender@76</entry>
+	  <entry>Belker@8d4</entry>
   </collection>
   <collection>
     <name>Bison</name>
-    <entry>Land@40</entry>
+	  <entry>Male@63</entry>
+	  <entry>Female@63</entry>
+	  <entry>Bison@1d20</entry>
   </collection>
-	<collection>
-		<name>Llama</name>
-		<entry>Land@40</entry>
-	</collection>
-	<collection>
-		<name>Milk Cow</name>
-		<entry>Land@40</entry>
-	</collection>
-	<collection>
-		<name>Ox</name>
-		<entry>Land@40</entry>
-	</collection>
-	<collection>
-		<name>Goat</name>
-		<entry>Land@40</entry>
-	</collection>
-	<collection>
-		<name>Sheep</name>
-		<entry>Land@40</entry>
-	</collection>
   <collection>
     <name>Black Bear</name>
-    <entry>Land@40</entry>
+	  <entry>Male@33</entry>
+	  <entry>Female@29</entry>
+	  <entry>Black Bear@2d4</entry>
   </collection>
   <collection>
     <name>Black Dragon, Adult</name>
-    <entry>Land@60</entry>
-    <entry>Fly@150</entry>
-    <entry>Swim@60</entry>
+	  <entry>Male@58</entry>
+	  <entry>Female@58</entry>
+	  <entry>Black Dragon, Adult@17d2</entry>
   </collection>
   <collection>
     <name>Black Dragon, Ancient</name>
-    <entry>Land@60</entry>
-    <entry>Fly@150</entry>
-    <entry>Swim@60</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Black Dragon, Ancient@29d2</entry>
   </collection>
   <collection>
     <name>Black Dragon, Great Wyrm</name>
-    <entry>Land@60</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@60</entry>
+	  <entry>Male@159</entry>
+	  <entry>Female@159</entry>
+	  <entry>Black Dragon, Great Wyrm@13d4</entry>
   </collection>
   <collection>
     <name>Black Dragon, Juvenile</name>
-    <entry>Land@60</entry>
-    <entry>Fly@150</entry>
-    <entry>Swim@60</entry>
+	  <entry>Male@42</entry>
+	  <entry>Female@42</entry>
+	  <entry>Black Dragon, Juvenile@1d10</entry>
   </collection>
   <collection>
     <name>Black Dragon, Mature Adult</name>
-    <entry>Land@60</entry>
-    <entry>Fly@150</entry>
-    <entry>Swim@60</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Black Dragon, Mature Adult@29d2</entry>
   </collection>
   <collection>
     <name>Black Dragon, Old</name>
-    <entry>Land@60</entry>
-    <entry>Fly@150</entry>
-    <entry>Swim@60</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Black Dragon, Old@29d2</entry>
   </collection>
   <collection>
     <name>Black Dragon, Very Old</name>
-    <entry>Land@60</entry>
-    <entry>Fly@150</entry>
-    <entry>Swim@60</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Black Dragon, Very Old@29d2</entry>
   </collection>
   <collection>
     <name>Black Dragon, Very Young</name>
-    <entry>Land@60</entry>
-    <entry>Fly@100</entry>
-    <entry>Swim@60</entry>
+	  <entry>Male@20</entry>
+	  <entry>Female@20</entry>
+	  <entry>Black Dragon, Very Young@1d6</entry>
   </collection>
   <collection>
     <name>Black Dragon, Wyrm</name>
-    <entry>Land@60</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@60</entry>
+	  <entry>Male@159</entry>
+	  <entry>Female@159</entry>
+	  <entry>Black Dragon, Wyrm@13d4</entry>
   </collection>
   <collection>
     <name>Black Dragon, Wyrmling</name>
-    <entry>Land@60</entry>
-    <entry>Fly@100</entry>
-    <entry>Swim@60</entry>
+	  <entry>Male@9</entry>
+	  <entry>Female@9</entry>
+	  <entry>Black Dragon, Wyrmling@1d4</entry>
   </collection>
   <collection>
     <name>Black Dragon, Young Adult</name>
-    <entry>Land@60</entry>
-    <entry>Fly@150</entry>
-    <entry>Swim@60</entry>
+	  <entry>Male@58</entry>
+	  <entry>Female@58</entry>
+	  <entry>Black Dragon, Young Adult@17d2</entry>
   </collection>
   <collection>
     <name>Black Dragon, Young</name>
-    <entry>Land@60</entry>
-    <entry>Fly@150</entry>
-    <entry>Swim@60</entry>
+	  <entry>Male@42</entry>
+	  <entry>Female@42</entry>
+	  <entry>Black Dragon, Young@1d10</entry>
   </collection>
   <collection>
     <name>Black Pudding</name>
