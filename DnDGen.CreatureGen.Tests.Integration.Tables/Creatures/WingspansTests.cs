@@ -310,12 +310,35 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.BlinkDog][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.BlinkDog][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.BlinkDog][CreatureConstants.BlinkDog] = "0";
+            wingspans[CreatureConstants.Boar][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Boar][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Boar][CreatureConstants.Boar] = "0";
+            wingspans[CreatureConstants.Boar_Dire][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Boar_Dire][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Boar_Dire][CreatureConstants.Boar_Dire] = "0";
+            wingspans[CreatureConstants.Bodak][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Bodak][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Bodak][CreatureConstants.Bodak] = "0";
             wingspans[CreatureConstants.BoneDevil_Osyluth][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.BoneDevil_Osyluth][CreatureConstants.BoneDevil_Osyluth] = "0";
-            //TODO: Double-check from here
+            wingspans[CreatureConstants.Bralani][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Bralani][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Bralani][CreatureConstants.Bralani] = "0";
             wingspans[CreatureConstants.Bugbear][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Bugbear][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Bugbear][CreatureConstants.Bugbear] = "0";
+            wingspans[CreatureConstants.Bulette][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Bulette][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Bulette][CreatureConstants.Bulette] = "0";
+            wingspans[CreatureConstants.Camel_Dromedary][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Camel_Dromedary][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Camel_Dromedary][CreatureConstants.Camel_Dromedary] = "0";
+            wingspans[CreatureConstants.Camel_Bactrian][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Camel_Bactrian][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Camel_Bactrian][CreatureConstants.Camel_Bactrian] = "0";
+            wingspans[CreatureConstants.CarrionCrawler][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.CarrionCrawler][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.CarrionCrawler][CreatureConstants.CarrionCrawler] = "0";
             wingspans[CreatureConstants.Cat][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Cat][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Cat][CreatureConstants.Cat] = "0";
@@ -326,6 +349,35 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Centipede_Swarm][CreatureConstants.Centipede_Swarm] = "0";
             wingspans[CreatureConstants.ChainDevil_Kyton][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.ChainDevil_Kyton][CreatureConstants.ChainDevil_Kyton] = "0";
+            wingspans[CreatureConstants.ChaosBeast][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.ChaosBeast][CreatureConstants.ChaosBeast] = "0";
+            wingspans[CreatureConstants.Cheetah][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Cheetah][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Cheetah][CreatureConstants.Cheetah] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Chimera - basing wingspan off of Large Red Dragon, since Chimeras are Large and weight is comparable
+            wingspans[CreatureConstants.Chimera_Black][GenderConstants.Female] = GetBaseFromAverage(45 * 12);
+            wingspans[CreatureConstants.Chimera_Black][GenderConstants.Male] = GetBaseFromAverage(45 * 12);
+            wingspans[CreatureConstants.Chimera_Black][CreatureConstants.Chimera_Black] = GetMultiplierFromAverage(45 * 12);
+            wingspans[CreatureConstants.Chimera_Blue][GenderConstants.Female] = GetBaseFromAverage(45 * 12);
+            wingspans[CreatureConstants.Chimera_Blue][GenderConstants.Male] = GetBaseFromAverage(45 * 12);
+            wingspans[CreatureConstants.Chimera_Blue][CreatureConstants.Chimera_Blue] = GetMultiplierFromAverage(45 * 12);
+            wingspans[CreatureConstants.Chimera_Green][GenderConstants.Female] = GetBaseFromAverage(45 * 12);
+            wingspans[CreatureConstants.Chimera_Green][GenderConstants.Male] = GetBaseFromAverage(45 * 12);
+            wingspans[CreatureConstants.Chimera_Green][CreatureConstants.Chimera_Green] = GetMultiplierFromAverage(45 * 12);
+            wingspans[CreatureConstants.Chimera_Red][GenderConstants.Female] = GetBaseFromAverage(45 * 12);
+            wingspans[CreatureConstants.Chimera_Red][GenderConstants.Male] = GetBaseFromAverage(45 * 12);
+            wingspans[CreatureConstants.Chimera_Red][CreatureConstants.Chimera_Red] = GetMultiplierFromAverage(45 * 12);
+            wingspans[CreatureConstants.Chimera_White][GenderConstants.Female] = GetBaseFromAverage(45 * 12);
+            wingspans[CreatureConstants.Chimera_White][GenderConstants.Male] = GetBaseFromAverage(45 * 12);
+            wingspans[CreatureConstants.Chimera_White][CreatureConstants.Chimera_White] = GetMultiplierFromAverage(45 * 12);
+            //Source: https://forgottenrealms.fandom.com/wiki/Choker
+            wingspans[CreatureConstants.Choker][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Choker][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Choker][CreatureConstants.Choker] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Cloaker and https://www.mojobob.com/roleplay/monstrousmanual/c/cloaker.html
+            wingspans[CreatureConstants.Cloaker][GenderConstants.Female] = GetBaseFromAverage(8 * 12);
+            wingspans[CreatureConstants.Cloaker][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
+            wingspans[CreatureConstants.Cloaker][CreatureConstants.Cloaker] = GetMultiplierFromAverage(8 * 12);
             wingspans[CreatureConstants.Criosphinx][GenderConstants.Male] = GetBaseFromAverage(120);
             wingspans[CreatureConstants.Criosphinx][CreatureConstants.Criosphinx] = GetMultiplierFromAverage(120);
             wingspans[CreatureConstants.Dog][GenderConstants.Female] = "0";
@@ -981,6 +1033,24 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Satyr_WithPipes][CreatureConstants.Satyr] = "0";
             wingspans[CreatureConstants.SeaHag][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.SeaHag][CreatureConstants.SeaHag] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Blue_slaad
+            wingspans[CreatureConstants.Slaad_Blue][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Slaad_Blue][CreatureConstants.Slaad_Blue] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Red_slaad
+            wingspans[CreatureConstants.Slaad_Red][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Slaad_Red][CreatureConstants.Slaad_Red] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Green_slaad
+            wingspans[CreatureConstants.Slaad_Green][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Slaad_Green][CreatureConstants.Slaad_Green] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Gray_slaad
+            wingspans[CreatureConstants.Slaad_Gray][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Slaad_Gray][CreatureConstants.Slaad_Gray] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Gray_slaad
+            wingspans[CreatureConstants.Slaad_Death][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Slaad_Death][CreatureConstants.Slaad_Death] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/swarm.htm
+            wingspans[CreatureConstants.Spider_Swarm][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Spider_Swarm][CreatureConstants.Spider_Swarm] = "0";
             //Source: https://forgottenrealms.fandom.com/wiki/Succubus - Large wings, so double height
             wingspans[CreatureConstants.Succubus][GenderConstants.Female] = GetBaseFromAverage(6 * 12 * 2);
             wingspans[CreatureConstants.Succubus][GenderConstants.Male] = GetBaseFromAverage(6 * 12 * 2);

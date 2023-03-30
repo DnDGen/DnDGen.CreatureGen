@@ -331,12 +331,41 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.BlinkDog][GenderConstants.Female] = GetBaseFromRange(28, 47);
             lengths[CreatureConstants.BlinkDog][GenderConstants.Male] = GetBaseFromRange(28, 47);
             lengths[CreatureConstants.BlinkDog][CreatureConstants.Dog_Riding] = GetMultiplierFromRange(28, 47);
+            //Source: https://www.dimensions.com/element/wild-boar
+            lengths[CreatureConstants.Boar][GenderConstants.Female] = GetBaseFromRange(5 * 12, 6 * 12);
+            lengths[CreatureConstants.Boar][GenderConstants.Male] = GetBaseFromRange(5 * 12, 6 * 12);
+            lengths[CreatureConstants.Boar][CreatureConstants.Boar] = GetMultiplierFromRange(5 * 12, 6 * 12);
+            //Source: https://forgottenrealms.fandom.com/wiki/Dire_boar
+            lengths[CreatureConstants.Boar_Dire][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
+            lengths[CreatureConstants.Boar_Dire][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
+            lengths[CreatureConstants.Boar_Dire][CreatureConstants.Boar] = GetMultiplierFromAverage(12 * 12);
+            lengths[CreatureConstants.Bodak][GenderConstants.Female] = "0";
+            lengths[CreatureConstants.Bodak][GenderConstants.Male] = "0";
+            lengths[CreatureConstants.Bodak][CreatureConstants.Bodak] = "0";
             lengths[CreatureConstants.BoneDevil_Osyluth][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.BoneDevil_Osyluth][CreatureConstants.BoneDevil_Osyluth] = "0";
-            //TODO: Double-check from here
+            lengths[CreatureConstants.Bralani][GenderConstants.Female] = "0";
+            lengths[CreatureConstants.Bralani][GenderConstants.Male] = "0";
+            lengths[CreatureConstants.Bralani][CreatureConstants.Bralani] = "0";
             lengths[CreatureConstants.Bugbear][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Bugbear][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Bugbear][CreatureConstants.Bugbear] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Bulette
+            lengths[CreatureConstants.Bulette][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
+            lengths[CreatureConstants.Bulette][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
+            lengths[CreatureConstants.Bulette][CreatureConstants.Bulette] = GetMultiplierFromAverage(12 * 12);
+            //Source: https://www.dimensions.com/element/bactrian-camel
+            lengths[CreatureConstants.Camel_Bactrian][GenderConstants.Female] = GetBaseFromRange(89, 138);
+            lengths[CreatureConstants.Camel_Bactrian][GenderConstants.Male] = GetBaseFromRange(89, 138);
+            lengths[CreatureConstants.Camel_Bactrian][CreatureConstants.Camel_Bactrian] = GetMultiplierFromRange(89, 138);
+            //Source: https://www.dimensions.com/element/dromedary-camel
+            lengths[CreatureConstants.Camel_Dromedary][GenderConstants.Female] = GetBaseFromRange(86, 134);
+            lengths[CreatureConstants.Camel_Dromedary][GenderConstants.Male] = GetBaseFromRange(86, 134);
+            lengths[CreatureConstants.Camel_Dromedary][CreatureConstants.Camel_Dromedary] = GetMultiplierFromRange(86, 134);
+            //Source: https://forgottenrealms.fandom.com/wiki/Carrion_crawler
+            lengths[CreatureConstants.CarrionCrawler][GenderConstants.Female] = GetBaseFromRange(9 * 12, 10 * 12);
+            lengths[CreatureConstants.CarrionCrawler][GenderConstants.Male] = GetBaseFromRange(9 * 12, 10 * 1);
+            lengths[CreatureConstants.CarrionCrawler][CreatureConstants.CarrionCrawler] = GetMultiplierFromRange(9 * 12, 10 * 1);
             //Source: https://www.dimensions.com/element/american-shorthair-cat
             lengths[CreatureConstants.Cat][GenderConstants.Female] = GetBaseFromRange(12, 15);
             lengths[CreatureConstants.Cat][GenderConstants.Male] = GetBaseFromRange(12, 15);
@@ -350,6 +379,41 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Centipede_Swarm][CreatureConstants.Centipede_Swarm] = GetMultiplierFromAverage(10 * 12);
             lengths[CreatureConstants.ChainDevil_Kyton][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.ChainDevil_Kyton][CreatureConstants.ChainDevil_Kyton] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Chaos_beast
+            lengths[CreatureConstants.ChaosBeast][GenderConstants.Agender] = GetBaseFromRange(3 * 12, 9 * 12);
+            lengths[CreatureConstants.ChaosBeast][CreatureConstants.ChaosBeast] = GetMultiplierFromRange(3 * 12, 9 * 12);
+            //Source: https://www.dimensions.com/element/cheetahs
+            lengths[CreatureConstants.Cheetah][GenderConstants.Female] = GetBaseFromRange(44, 59);
+            lengths[CreatureConstants.Cheetah][GenderConstants.Male] = GetBaseFromRange(44, 59);
+            lengths[CreatureConstants.Cheetah][CreatureConstants.Cheetah] = GetMultiplierFromRange(44, 59);
+            //Source: https://forgottenrealms.fandom.com/wiki/Chimera
+            lengths[CreatureConstants.Chimera_Black][GenderConstants.Female] = GetBaseFromAverage(10 * 12);
+            lengths[CreatureConstants.Chimera_Black][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
+            lengths[CreatureConstants.Chimera_Black][CreatureConstants.Chimera_Black] = GetMultiplierFromAverage(10 * 12);
+            lengths[CreatureConstants.Chimera_Blue][GenderConstants.Female] = GetBaseFromAverage(10 * 12);
+            lengths[CreatureConstants.Chimera_Blue][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
+            lengths[CreatureConstants.Chimera_Blue][CreatureConstants.Chimera_Blue] = GetMultiplierFromAverage(10 * 12);
+            lengths[CreatureConstants.Chimera_Green][GenderConstants.Female] = GetBaseFromAverage(10 * 12);
+            lengths[CreatureConstants.Chimera_Green][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
+            lengths[CreatureConstants.Chimera_Green][CreatureConstants.Chimera_Green] = GetMultiplierFromAverage(10 * 12);
+            lengths[CreatureConstants.Chimera_Red][GenderConstants.Female] = GetBaseFromAverage(10 * 12);
+            lengths[CreatureConstants.Chimera_Red][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
+            lengths[CreatureConstants.Chimera_Red][CreatureConstants.Chimera_Red] = GetMultiplierFromAverage(10 * 12);
+            lengths[CreatureConstants.Chimera_White][GenderConstants.Female] = GetBaseFromAverage(10 * 12);
+            lengths[CreatureConstants.Chimera_White][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
+            lengths[CreatureConstants.Chimera_White][CreatureConstants.Chimera_White] = GetMultiplierFromAverage(10 * 12);
+            //Source: https://forgottenrealms.fandom.com/wiki/Choker
+            lengths[CreatureConstants.Choker][GenderConstants.Female] = "0";
+            lengths[CreatureConstants.Choker][GenderConstants.Male] = "0";
+            lengths[CreatureConstants.Choker][CreatureConstants.Choker] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Chuul
+            lengths[CreatureConstants.Chuul][GenderConstants.Female] = GetBaseFromAverage(8 * 12);
+            lengths[CreatureConstants.Chuul][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
+            lengths[CreatureConstants.Chuul][CreatureConstants.Chuul] = GetMultiplierFromAverage(8 * 12);
+            //Source: https://forgottenrealms.fandom.com/wiki/Cloaker and https://www.mojobob.com/roleplay/monstrousmanual/c/cloaker.html
+            lengths[CreatureConstants.Cloaker][GenderConstants.Female] = GetBaseFromAverage(8 * 12);
+            lengths[CreatureConstants.Cloaker][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
+            lengths[CreatureConstants.Cloaker][CreatureConstants.Cloaker] = GetMultiplierFromAverage(8 * 12);
             //Source: https://www.d20srd.org/srd/monsters/sphinx.htm
             lengths[CreatureConstants.Criosphinx][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
             lengths[CreatureConstants.Criosphinx][CreatureConstants.Androsphinx] = GetMultiplierFromAverage(10 * 12);
@@ -1011,6 +1075,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Satyr_WithPipes][CreatureConstants.Satyr] = "0";
             lengths[CreatureConstants.SeaHag][GenderConstants.Female] = "0";
             lengths[CreatureConstants.SeaHag][CreatureConstants.SeaHag] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Blue_slaad
+            lengths[CreatureConstants.Slaad_Blue][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.Slaad_Blue][CreatureConstants.Slaad_Blue] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Red_slaad
+            lengths[CreatureConstants.Slaad_Red][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.Slaad_Red][CreatureConstants.Slaad_Red] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Green_slaad
+            lengths[CreatureConstants.Slaad_Green][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.Slaad_Green][CreatureConstants.Slaad_Green] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Gray_slaad
+            lengths[CreatureConstants.Slaad_Gray][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.Slaad_Gray][CreatureConstants.Slaad_Gray] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Gray_slaad
+            lengths[CreatureConstants.Slaad_Death][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.Slaad_Death][CreatureConstants.Slaad_Death] = "0";
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
             lengths[CreatureConstants.Spider_Swarm][GenderConstants.Agender] = GetBaseFromAverage(10 * 12);
             lengths[CreatureConstants.Spider_Swarm][CreatureConstants.Spider_Swarm] = GetMultiplierFromAverage(10 * 12);
