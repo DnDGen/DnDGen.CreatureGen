@@ -63,6 +63,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     testCases[creature] = new Dictionary<string, string>();
                 }
 
+                /*INFO: For animal ages, and ages I create, here is my method:
+                 * 1. Get the range of maximum age possible. If not found, assume 50 or 100 (whichever seems more reasonable), +/-10%
+                 * 2. Figure out when "adulthood" starts. If not found, assume at 20% of the max age (for 50, it would be 10; 100 = 20)
+                 * 4. If a "wild" versus "captivity" age is specified, captivity = venerable, wild = old.
+                 * 3. Middle Age starts at halfway to average maximum age (50 = 25, 100 = 50)
+                 * 5. Split the remaining distance between ages
+                 *   A. For max of 50, ranges are A:10-24,M:25-34,O:35-44,V:45-55
+                 *   B. For max of 100, ranges are A:20-49,M:50-69,O:70-89,V:90-110
+                */
+
                 //Source: http://people.wku.edu/charles.plemons/ad&d/races/age.html
                 testCases[CreatureConstants.Aasimar][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(16, 61, true);
                 testCases[CreatureConstants.Aasimar][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(62, 82, true);
@@ -234,16 +244,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Ant_Giant_Worker][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(0, 0, true);
                 testCases[CreatureConstants.Ant_Giant_Worker][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(0, 1, true);
                 testCases[CreatureConstants.Ant_Giant_Worker][AgeConstants.Categories.Maximum] = "1d2-1";
-                testCases[CreatureConstants.Ape][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(10, 20, true);
-                testCases[CreatureConstants.Ape][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(21, 30, true);
-                testCases[CreatureConstants.Ape][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(31, 34, true);
-                testCases[CreatureConstants.Ape][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(35, 40, true);
-                testCases[CreatureConstants.Ape][AgeConstants.Categories.Maximum] = "34+1d6";
-                testCases[CreatureConstants.Ape_Dire][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(10, 20, true);
-                testCases[CreatureConstants.Ape_Dire][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(21, 30, true);
-                testCases[CreatureConstants.Ape_Dire][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(31, 34, true);
-                testCases[CreatureConstants.Ape_Dire][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(35, 40, true);
-                testCases[CreatureConstants.Ape_Dire][AgeConstants.Categories.Maximum] = "34+1d6";
+                //Source: https://www.dimensions.com/element/eastern-lowland-gorilla-gorilla-beringei-graueri
+                testCases[CreatureConstants.Ape][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(10, 24, true);
+                testCases[CreatureConstants.Ape][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(25, 29, true);
+                testCases[CreatureConstants.Ape][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(30, 39, true);
+                testCases[CreatureConstants.Ape][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(40, 60, true);
+                testCases[CreatureConstants.Ape][AgeConstants.Categories.Maximum] = "40+2d10";
+                testCases[CreatureConstants.Ape_Dire][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(10, 24, true);
+                testCases[CreatureConstants.Ape_Dire][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(25, 29, true);
+                testCases[CreatureConstants.Ape_Dire][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(30, 39, true);
+                testCases[CreatureConstants.Ape_Dire][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(40, 60, true);
+                testCases[CreatureConstants.Ape_Dire][AgeConstants.Categories.Maximum] = "40+2d10";
                 //INFO: Based on Half-Elf, since could be Human, Half-Elf, or Drow
                 testCases[CreatureConstants.Aranea][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(20, 61, true);
                 testCases[CreatureConstants.Aranea][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(62, 92, true);
@@ -282,21 +293,23 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Azer][AgeConstants.Categories.Maximum] = "250+2d100";
                 testCases[CreatureConstants.Babau][AgeConstants.Categories.Adulthood] = outsiderAgeRoll;
                 testCases[CreatureConstants.Babau][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
-                testCases[CreatureConstants.Baboon][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(6, 11, true);
-                testCases[CreatureConstants.Baboon][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(12, 15, true);
-                testCases[CreatureConstants.Baboon][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(16, 19, true);
-                testCases[CreatureConstants.Baboon][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(20, 30, true);
-                testCases[CreatureConstants.Baboon][AgeConstants.Categories.Maximum] = "20+1d10";
+                //Source: https://www.dimensions.com/element/mandrill-mandrillus-sphinx
+                testCases[CreatureConstants.Baboon][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(6, 17, true);
+                testCases[CreatureConstants.Baboon][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(18, 23, true);
+                testCases[CreatureConstants.Baboon][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(24, 28, true);
+                testCases[CreatureConstants.Baboon][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(29, 40, true);
+                testCases[CreatureConstants.Baboon][AgeConstants.Categories.Maximum] = "28+2d6";
+                //Source: https://www.dimensions.com/element/honey-badger-mellivora-capensis
                 testCases[CreatureConstants.Badger][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(1, 4, true);
-                testCases[CreatureConstants.Badger][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(5, 6, true);
-                testCases[CreatureConstants.Badger][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(7, 8, true);
-                testCases[CreatureConstants.Badger][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(9, 10, true);
-                testCases[CreatureConstants.Badger][AgeConstants.Categories.Maximum] = "8+1d2";
+                testCases[CreatureConstants.Badger][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(5, 5, true);
+                testCases[CreatureConstants.Badger][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(6, 6, true);
+                testCases[CreatureConstants.Badger][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(7, 26, true);
+                testCases[CreatureConstants.Badger][AgeConstants.Categories.Maximum] = "8+3d6";
                 testCases[CreatureConstants.Badger_Dire][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(1, 4, true);
-                testCases[CreatureConstants.Badger_Dire][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(5, 6, true);
-                testCases[CreatureConstants.Badger_Dire][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(7, 8, true);
-                testCases[CreatureConstants.Badger_Dire][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(9, 10, true);
-                testCases[CreatureConstants.Badger_Dire][AgeConstants.Categories.Maximum] = "8+1d2";
+                testCases[CreatureConstants.Badger_Dire][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(5, 5, true);
+                testCases[CreatureConstants.Badger_Dire][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(6, 6, true);
+                testCases[CreatureConstants.Badger_Dire][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(7, 26, true);
+                testCases[CreatureConstants.Badger_Dire][AgeConstants.Categories.Maximum] = "8+3d6";
                 testCases[CreatureConstants.Balor][AgeConstants.Categories.Adulthood] = outsiderAgeRoll;
                 testCases[CreatureConstants.Balor][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
                 testCases[CreatureConstants.BarbedDevil_Hamatula][AgeConstants.Categories.Adulthood] = outsiderAgeRoll;
@@ -316,38 +329,42 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Basilisk_Greater][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(50, 59, true);
                 testCases[CreatureConstants.Basilisk_Greater][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(60, 66, true);
                 testCases[CreatureConstants.Basilisk_Greater][AgeConstants.Categories.Maximum] = "60+1d6";
-                testCases[CreatureConstants.Bat][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(1, 5, true);
-                testCases[CreatureConstants.Bat][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(6, 7, true);
-                testCases[CreatureConstants.Bat][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(8, 9, true);
-                testCases[CreatureConstants.Bat][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(10, 20, true);
-                testCases[CreatureConstants.Bat][AgeConstants.Categories.Maximum] = "10+1d10";
-                testCases[CreatureConstants.Bat_Dire][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(1, 5, true);
-                testCases[CreatureConstants.Bat_Dire][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(6, 7, true);
-                testCases[CreatureConstants.Bat_Dire][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(8, 9, true);
-                testCases[CreatureConstants.Bat_Dire][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(10, 20, true);
-                testCases[CreatureConstants.Bat_Dire][AgeConstants.Categories.Maximum] = "10+1d10";
-                testCases[CreatureConstants.Bat_Swarm][AgeConstants.Categories.Swarm] = "1d20";
-                testCases[CreatureConstants.Bat_Swarm][AgeConstants.Categories.Maximum] = "10+1d10";
-                testCases[CreatureConstants.Bear_Brown][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(5, 15, true);
-                testCases[CreatureConstants.Bear_Brown][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(16, 20, true);
-                testCases[CreatureConstants.Bear_Brown][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(21, 25, true);
-                testCases[CreatureConstants.Bear_Brown][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(26, 30, true);
-                testCases[CreatureConstants.Bear_Brown][AgeConstants.Categories.Maximum] = RollHelper.GetRollWithFewestDice(26, 30);
-                testCases[CreatureConstants.Bear_Black][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(3, 10, true);
-                testCases[CreatureConstants.Bear_Black][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(11, 14, true);
-                testCases[CreatureConstants.Bear_Black][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(15, 17, true);
-                testCases[CreatureConstants.Bear_Black][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(18, 35, true);
-                testCases[CreatureConstants.Bear_Black][AgeConstants.Categories.Maximum] = RollHelper.GetRollWithFewestDice(18, 35);
-                testCases[CreatureConstants.Bear_Dire][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(5, 15, true);
-                testCases[CreatureConstants.Bear_Dire][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(16, 20, true);
-                testCases[CreatureConstants.Bear_Dire][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(21, 25, true);
-                testCases[CreatureConstants.Bear_Dire][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(26, 30, true);
-                testCases[CreatureConstants.Bear_Dire][AgeConstants.Categories.Maximum] = RollHelper.GetRollWithFewestDice(26, 30);
-                testCases[CreatureConstants.Bear_Polar][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(6, 15, true);
-                testCases[CreatureConstants.Bear_Polar][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(16, 17, true);
-                testCases[CreatureConstants.Bear_Polar][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(18, 19, true);
-                testCases[CreatureConstants.Bear_Polar][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(20, 43, true);
-                testCases[CreatureConstants.Bear_Polar][AgeConstants.Categories.Maximum] = RollHelper.GetRollWithFewestDice(20, 43);
+                //Souce: https://www.dimensions.com/element/little-brown-bat-myotis-lucifugus
+                testCases[CreatureConstants.Bat][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(1, 4, true);
+                testCases[CreatureConstants.Bat][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(5, 5, true);
+                testCases[CreatureConstants.Bat][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(6, 6, true);
+                testCases[CreatureConstants.Bat][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(7, 34, true);
+                testCases[CreatureConstants.Bat][AgeConstants.Categories.Maximum] = RollHelper.GetRollWithFewestDice(7, 34);
+                testCases[CreatureConstants.Bat_Dire][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(1, 4, true);
+                testCases[CreatureConstants.Bat_Dire][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(5, 5, true);
+                testCases[CreatureConstants.Bat_Dire][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(6, 6, true);
+                testCases[CreatureConstants.Bat_Dire][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(7, 34, true);
+                testCases[CreatureConstants.Bat_Dire][AgeConstants.Categories.Maximum] = RollHelper.GetRollWithFewestDice(7, 34);
+                testCases[CreatureConstants.Bat_Swarm][AgeConstants.Categories.Swarm] = "1d10";
+                testCases[CreatureConstants.Bat_Swarm][AgeConstants.Categories.Maximum] = RollHelper.GetRollWithFewestDice(7, 34);
+                //Source: https://www.dimensions.com/element/grizzly-bear
+                testCases[CreatureConstants.Bear_Brown][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(5, 17, true);
+                testCases[CreatureConstants.Bear_Brown][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(18, 19, true);
+                testCases[CreatureConstants.Bear_Brown][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(20, 25, true);
+                testCases[CreatureConstants.Bear_Brown][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(26, 45, true);
+                testCases[CreatureConstants.Bear_Brown][AgeConstants.Categories.Maximum] = "25+2d10";
+                //Source: https://www.dimensions.com/element/american-black-bear
+                testCases[CreatureConstants.Bear_Black][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(3, 17, true);
+                testCases[CreatureConstants.Bear_Black][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(18, 19, true);
+                testCases[CreatureConstants.Bear_Black][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(20, 25, true);
+                testCases[CreatureConstants.Bear_Black][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(26, 45, true);
+                testCases[CreatureConstants.Bear_Black][AgeConstants.Categories.Maximum] = RollHelper.GetRollWithFewestDice(26, 45);
+                testCases[CreatureConstants.Bear_Dire][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(5, 17, true);
+                testCases[CreatureConstants.Bear_Dire][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(18, 19, true);
+                testCases[CreatureConstants.Bear_Dire][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(20, 25, true);
+                testCases[CreatureConstants.Bear_Dire][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(26, 45, true);
+                testCases[CreatureConstants.Bear_Dire][AgeConstants.Categories.Maximum] = RollHelper.GetRollWithFewestDice(26, 45);
+                //Source: https://www.dimensions.com/element/polar-bears
+                testCases[CreatureConstants.Bear_Polar][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(6, 18, true);
+                testCases[CreatureConstants.Bear_Polar][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(19, 19, true);
+                testCases[CreatureConstants.Bear_Polar][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(20, 30, true);
+                testCases[CreatureConstants.Bear_Polar][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(31, 45, true);
+                testCases[CreatureConstants.Bear_Polar][AgeConstants.Categories.Maximum] = RollHelper.GetRollWithFewestDice(31, 45);
                 testCases[CreatureConstants.BeardedDevil_Barbazu][AgeConstants.Categories.Adulthood] = outsiderAgeRoll;
                 testCases[CreatureConstants.BeardedDevil_Barbazu][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
                 testCases[CreatureConstants.Bebilith][AgeConstants.Categories.Adulthood] = outsiderAgeRoll;
@@ -374,11 +391,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Beholder_Gauth][AgeConstants.Categories.Maximum] = "120+3d10";
                 testCases[CreatureConstants.Belker][AgeConstants.Categories.Adulthood] = undeadAgeRoll;
                 testCases[CreatureConstants.Belker][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
+                //Source: https://www.dimensions.com/element/american-bison-bison-bison
                 testCases[CreatureConstants.Bison][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(2, 10, true);
-                testCases[CreatureConstants.Bison][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(11, 15, true);
-                testCases[CreatureConstants.Bison][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(16, 19, true);
-                testCases[CreatureConstants.Bison][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(20, 22, true);
-                testCases[CreatureConstants.Bison][AgeConstants.Categories.Maximum] = "20+1d2";
+                testCases[CreatureConstants.Bison][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(11, 11, true);
+                testCases[CreatureConstants.Bison][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(12, 20, true);
+                testCases[CreatureConstants.Bison][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(21, 40, true);
+                testCases[CreatureConstants.Bison][AgeConstants.Categories.Maximum] = "20+2d10";
                 testCases[CreatureConstants.BlackPudding][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(0, 100, true);
                 testCases[CreatureConstants.BlackPudding][AgeConstants.Categories.Maximum] = "101";
                 testCases[CreatureConstants.BlackPudding_Elder][AgeConstants.Categories.BlackPudding.Elder] = RollHelper.GetRollWithMostEvenDistribution(101, 1_000, true);

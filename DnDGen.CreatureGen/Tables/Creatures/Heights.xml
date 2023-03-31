@@ -78,8 +78,8 @@
   </collection>
   <collection>
     <name>Androsphinx</name>
-	  <entry>Male@0</entry>
-	  <entry>Androsphinx@0</entry>
+	  <entry>Male@85</entry>
+	  <entry>Androsphinx@1d20</entry>
   </collection>
   <collection>
     <name>Angel, Astral Deva</name>
@@ -562,9 +562,9 @@
   </collection>
   <collection>
     <name>Bison</name>
-	  <entry>Male@63</entry>
-	  <entry>Female@63</entry>
-	  <entry>Bison@1d20</entry>
+	  <entry>Male@58</entry>
+	  <entry>Female@58</entry>
+	  <entry>Bison@2d10</entry>
   </collection>
   <collection>
     <name>Black Bear</name>
@@ -915,7 +915,7 @@
     <name>Bulette</name>
 	  <entry>Male@94</entry>
 	  <entry>Female@94</entry>
-	  <entry>Bugbear@3d8</entry>
+	  <entry>Bulette@3d8</entry>
   </collection>
   <collection>
     <name>Cachalot Whale</name>
@@ -925,15 +925,15 @@
   </collection>
   <collection>
     <name>Camel, Bactrian (Two-Humped)</name>
-	  <entry>Male@58</entry>
-	  <entry>Female@58</entry>
-	  <entry>Camel, Bactrian (Two-Humped)@17d2</entry>
+	  <entry>Male@61</entry>
+	  <entry>Female@61</entry>
+	  <entry>Camel, Bactrian (Two-Humped)@1d10</entry>
   </collection>
   <collection>
     <name>Camel, Dromedary (One-Humped)</name>
-	  <entry>Male@58</entry>
-	  <entry>Female@58</entry>
-	  <entry>Camel, Dromedary (One-Humped)@17d2</entry>
+	  <entry>Male@70</entry>
+	  <entry>Female@70</entry>
+	  <entry>Camel, Dromedary (One-Humped)@1d8</entry>
   </collection>
   <collection>
     <name>Carrion Crawler</name>
@@ -960,243 +960,308 @@
   </collection>
   <collection>
     <name>Chaos Beast</name>
-    <entry>Land@20</entry>
+	  <entry>Agender@52</entry>
+	  <entry>Chaos Beast@8d4</entry>
   </collection>
   <collection>
     <name>Chain Devil (Kyton)</name>
-    <entry>Land@30</entry>
+	  <entry>Agender@61</entry>
+	  <entry>Male@61</entry>
+	  <entry>Female@61</entry>
+	  <entry>Chain Devil (Kyton)@3d6</entry>
   </collection>
   <collection>
     <name>Cheetah</name>
-    <entry>Land@50</entry>
+	  <entry>Male@27</entry>
+	  <entry>Female@27</entry>
+	  <entry>Cheetah@1d8</entry>
   </collection>
   <collection>
     <name>Chimera (Black Dragon head)</name>
-    <entry>Land@30</entry>
-    <entry>Fly@50</entry>
+	  <entry>Male@50</entry>
+	  <entry>Female@50</entry>
+	  <entry>Chimera (Black Dragon head)@4d4</entry>
   </collection>
   <collection>
     <name>Chimera (Blue Dragon head)</name>
-    <entry>Land@30</entry>
-    <entry>Fly@50</entry>
+	  <entry>Male@50</entry>
+	  <entry>Female@50</entry>
+	  <entry>Chimera (Blue Dragon head)@4d4</entry>
   </collection>
   <collection>
     <name>Chimera (Green Dragon head)</name>
-    <entry>Land@30</entry>
-    <entry>Fly@50</entry>
+	  <entry>Male@50</entry>
+	  <entry>Female@50</entry>
+	  <entry>Chimera (Green Dragon head)@4d4</entry>
   </collection>
   <collection>
     <name>Chimera (Red Dragon head)</name>
-    <entry>Land@30</entry>
-    <entry>Fly@50</entry>
+	  <entry>Male@50</entry>
+	  <entry>Female@50</entry>
+	  <entry>Chimera (Red Dragon head)@4d4</entry>
   </collection>
   <collection>
     <name>Chimera (White Dragon head)</name>
-    <entry>Land@30</entry>
-    <entry>Fly@50</entry>
+	  <entry>Male@50</entry>
+	  <entry>Female@50</entry>
+	  <entry>Chimera (White Dragon head)@4d4</entry>
   </collection>
   <collection>
     <name>Choker</name>
-    <entry>Land@20</entry>
-    <entry>Climb@10</entry>
+	  <entry>Male@36</entry>
+	  <entry>Female@36</entry>
+	  <entry>Choker@1d10</entry>
   </collection>
   <collection>
     <name>Chuul</name>
-    <entry>Land@30</entry>
-    <entry>Swim@20</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Chuul@0</entry>
   </collection>
   <collection>
     <name>Clay Golem</name>
-    <entry>Land@20</entry>
+	  <entry>Agender@85</entry>
+	  <entry>Clay Golem@1d20</entry>
   </collection>
   <collection>
     <name>Cloaker</name>
-    <entry>Land@10</entry>
-    <entry>Fly@40</entry>
+	  <entry>Agender@0</entry>
+	  <entry>Cloaker@0</entry>
   </collection>
   <collection>
     <name>Cloud Giant</name>
-    <entry>Land@50</entry>
+	  <entry>Male@288</entry>
+	  <entry>Female@268</entry>
+	  <entry>Cloud Giant@4d8</entry>
   </collection>
   <collection>
     <name>Cockatrice</name>
-    <entry>Land@20</entry>
-    <entry>Fly@60</entry>
+	  <entry>Male@31</entry>
+	  <entry>Female@31</entry>
+	  <entry>Cockatrice@1d8</entry>
   </collection>
   <collection>
     <name>Constrictor Snake</name>
-    <entry>Land@20</entry>
-    <entry>Climb@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Constrictor Snake@1d2</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Adult</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
+	  <entry>Male@58</entry>
+	  <entry>Female@58</entry>
+	  <entry>Copper Dragon, Adult@17d2</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Ancient</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Copper Dragon, Ancient@29d2</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Great Wyrm</name>
-    <entry>Land@40</entry>
-    <entry>Fly@200</entry>
+	  <entry>Male@159</entry>
+	  <entry>Female@159</entry>
+	  <entry>Copper Dragon, Great Wyrm@13d4</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Juvenile</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
+	  <entry>Male@42</entry>
+	  <entry>Female@42</entry>
+	  <entry>Copper Dragon, Juvenile@1d10</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Mature Adult</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Copper Dragon, Mature Adult@29d2</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Old</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Copper Dragon, Old@29d2</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Very Old</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Copper Dragon, Very Old@29d2</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Very Young</name>
-    <entry>Land@40</entry>
-    <entry>Fly@100</entry>
+	  <entry>Male@20</entry>
+	  <entry>Female@20</entry>
+	  <entry>Copper Dragon, Very Young@1d6</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Wyrm</name>
-    <entry>Land@40</entry>
-    <entry>Fly@200</entry>
+	  <entry>Male@159</entry>
+	  <entry>Female@159</entry>
+	  <entry>Copper Dragon, Wyrm@13d4</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Wyrmling</name>
-    <entry>Land@40</entry>
-    <entry>Fly@100</entry>
+	  <entry>Male@9</entry>
+	  <entry>Female@9</entry>
+	  <entry>Copper Dragon, Wyrmling@1d4</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Young Adult</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
+	  <entry>Male@58</entry>
+	  <entry>Female@58</entry>
+	  <entry>Copper Dragon, Young Adult@17d2</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Young</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
+	  <entry>Male@42</entry>
+	  <entry>Female@42</entry>
+	  <entry>Copper Dragon, Young@1d10</entry>
   </collection>
   <collection>
     <name>Couatl</name>
-    <entry>Land@20</entry>
-    <entry>Fly@60</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Couatl@0</entry>
   </collection>
   <collection>
     <name>Criosphinx</name>
-    <entry>Land@30</entry>
-    <entry>Fly@60</entry>
+	  <entry>Male@79</entry>
+	  <entry>Criosphinx@2d10</entry>
   </collection>
   <collection>
     <name>Crocodile</name>
-    <entry>Land@20</entry>
-    <entry>Swim@30</entry>
+	  <entry>Male@11</entry>
+	  <entry>Female@11</entry>
+	  <entry>Crocodile@1d8</entry>
   </collection>
   <collection>
     <name>Dark Naga</name>
-    <entry>Land@40</entry>
+	  <entry>Hermaphrodite@0</entry>
+	  <entry>Dark Naga@0</entry>
   </collection>
   <collection>
     <name>Darkmantle</name>
-    <entry>Land@20</entry>
-    <entry>Fly@30</entry>
+	  <entry>Hermaphrodite@0</entry>
+	  <entry>Darkmantle@0</entry>
   </collection>
   <collection>
     <name>Death Slaad</name>
-    <entry>Land@30</entry>
+	  <entry>Agender@61</entry>
+	  <entry>Death Slaad@3d6</entry>
   </collection>
   <collection>
     <name>Deep Halfling</name>
-    <entry>Land@20</entry>
+	  <entry>Male@2*12+8</entry>
+	  <entry>Female@2*12+6</entry>
+	  <entry>Deep Halfling@2d4</entry>
   </collection>
   <collection>
     <name>Deep Dwarf</name>
-    <entry>Land@20</entry>
+	  <entry>Male@3*12+9</entry>
+	  <entry>Female@3*12+7</entry>
+	  <entry>Deep Dwarf@2d4</entry>
   </collection>
   <collection>
     <name>Deinonychus</name>
-    <entry>Land@60</entry>
+	  <entry>Male@11</entry>
+	  <entry>Female@11</entry>
+	  <entry>Deinonychus@23d2</entry>
   </collection>
   <collection>
     <name>Delver</name>
-    <entry>Land@30</entry>
-    <entry>Burrow@10</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Delver@29d2</entry>
   </collection>
   <collection>
     <name>Derro</name>
-    <entry>Land@20</entry>
+	  <entry>Male@32</entry>
+	  <entry>Female@32</entry>
+	  <entry>Derro@4d4</entry>
   </collection>
   <collection>
     <name>Derro (Sane)</name>
-    <entry>Land@20</entry>
+	  <entry>Male@32</entry>
+	  <entry>Female@32</entry>
+	  <entry>Derro (Sane)@4d4</entry>
   </collection>
   <collection>
     <name>Destrachan</name>
-    <entry>Land@30</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Destrachan@0</entry>
   </collection>
   <collection>
     <name>Devourer</name>
-    <entry>Land@30</entry>
+	  <entry>Agender@94</entry>
+	  <entry>Devourer@3d8</entry>
   </collection>
   <collection>
     <name>Digester</name>
-    <entry>Land@60</entry>
+	  <entry>Male@50</entry>
+	  <entry>Female@50</entry>
+	  <entry>Digester@4d4</entry>
   </collection>
   <collection>
     <name>Dire Ape</name>
-    <entry>Land@30</entry>
-    <entry>Climb@15</entry>
+	  <entry>Male@94</entry>
+	  <entry>Female@94</entry>
+	  <entry>Dire Ape@3d8</entry>
   </collection>
   <collection>
     <name>Dire Badger</name>
-    <entry>Land@30</entry>
-    <entry>Burrow@10</entry>
+	  <entry>Male@20</entry>
+	  <entry>Female@20</entry>
+	  <entry>Dire Badger@2d10</entry>
   </collection>
   <collection>
     <name>Dire Bat</name>
-    <entry>Land@20</entry>
-    <entry>Fly@40</entry>
+	  <entry>Male@57</entry>
+	  <entry>Female@57</entry>
+	  <entry>Dire Bat@3d6</entry>
   </collection>
   <collection>
     <name>Dire Bear</name>
-    <entry>Land@40</entry>
+	  <entry>Male@61</entry>
+	  <entry>Female@61</entry>
+	  <entry>Dire Bear@2d10</entry>
   </collection>
   <collection>
     <name>Dire Boar</name>
-    <entry>Land@40</entry>
+	  <entry>Male@61</entry>
+	  <entry>Female@61</entry>
+	  <entry>Dire Boar@3d6</entry>
   </collection>
   <collection>
     <name>Dire Lion</name>
-    <entry>Land@40</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Dire Lion@8d4</entry>
   </collection>
   <collection>
     <name>Dire Rat</name>
-    <entry>Land@40</entry>
-    <entry>Climb@20</entry>
+	  <entry>Male@8</entry>
+	  <entry>Female@8</entry>
+	  <entry>Dire Rat@4d4</entry>
   </collection>
   <collection>
     <name>Dire Shark</name>
-    <entry>Swim@60</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Dire Shark@0</entry>
   </collection>
   <collection>
     <name>Dire Tiger</name>
-    <entry>Land@40</entry>
+	  <entry>Male@66</entry>
+	  <entry>Female@66</entry>
+	  <entry>Dire Tiger@2d12</entry>
   </collection>
   <collection>
     <name>Dire Weasel</name>
-    <entry>Land@40</entry>
+	  <entry>Male@27</entry>
+	  <entry>Female@27</entry>
+	  <entry>Dire Weasel@3d6</entry>
   </collection>
   <collection>
     <name>Dire Wolf</name>
@@ -1222,11 +1287,15 @@
   </collection>
   <collection>
     <name>Dog</name>
-    <entry>Land@40</entry>
+	  <entry>Male@12</entry>
+	  <entry>Female@12</entry>
+	  <entry>Dog@4d3</entry>
   </collection>
   <collection>
     <name>Dog, Riding</name>
-    <entry>Land@40</entry>
+	  <entry>Male@19</entry>
+	  <entry>Female@19</entry>
+	  <entry>Dog, Riding@3d6</entry>
   </collection>
   <collection>
     <name>Donkey</name>
