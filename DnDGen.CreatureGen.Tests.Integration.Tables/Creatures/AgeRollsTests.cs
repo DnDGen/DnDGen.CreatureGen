@@ -64,13 +64,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 }
 
                 /*INFO: For animal ages, and ages I create, here is my method:
-                 * 1. Get the range of maximum age possible. If not found, assume 50 or 100 (whichever seems more reasonable), +/-10%
-                 * 2. Figure out when "adulthood" starts. If not found, assume at 20% of the max age (for 50, it would be 10; 100 = 20)
-                 * 4. If a "wild" versus "captivity" age is specified, captivity = venerable, wild = old.
-                 * 3. Middle Age starts at halfway to average maximum age (50 = 25, 100 = 50)
-                 * 5. Split the remaining distance between ages
-                 *   A. For max of 50, ranges are A:10-24,M:25-34,O:35-44,V:45-55
-                 *   B. For max of 100, ranges are A:20-49,M:50-69,O:70-89,V:90-110
+                 1. Get the start of the Venerable age category. If not found, assume 50 or 100 (whichever seems more reasonable)
+                 2. Maximum is +50% for maximum
+                 2. Figure out when "adulthood" starts. If not found, assume at 20% of venerable (for 50, it would be 10; 100 = 20)
+                 3. Middle Age starts at halfway to venerable (50 = 25, 100 = 50)
+                 4. If a "wild" versus "captivity" age is specified, captivity = venerable, wild = old. Otherwise, Old = 75% of venerable
+
+                 Example: Human
+                   
+                    Adulthood = [15, 34];
+                    MiddleAge = [35, 52];
+                    Old = [53, 69];
+                    Venerable = [70, 110];
+                    Maximum = "70+2d20";
+
+                    1. Venerable starts at 70
+                    2. Maximum = 70 + 70/2 = 35 ~= 3d12 (close enough to 2d20 for making something up)
+                    2. Adulthood is 70*.2 = 14 (close enough to 15 for making something up)
+                    3. Middle Age = 70/2 = 35
+                    4. Old = 70*.75 = 52.5 (round up to 53)
                 */
 
                 //Source: http://people.wku.edu/charles.plemons/ad&d/races/age.html
@@ -79,16 +91,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Aasimar][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(83, 124, true);
                 testCases[CreatureConstants.Aasimar][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(125, 165, true);
                 testCases[CreatureConstants.Aasimar][AgeConstants.Categories.Maximum] = "125+2d20";
-                testCases[CreatureConstants.Aboleth][AgeConstants.Categories.Adulthood] = outsiderAgeRoll;
+                //Source: https://forgottenrealms.fandom.com/wiki/Aboleth
+                testCases[CreatureConstants.Aboleth][AgeConstants.Categories.Adulthood] = $"{oneMRoll}+10";
                 testCases[CreatureConstants.Aboleth][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
-                testCases[CreatureConstants.Achaierai][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(3, 30, true);
-                testCases[CreatureConstants.Achaierai][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(31, 40, true);
-                testCases[CreatureConstants.Achaierai][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(41, 50, true);
-                testCases[CreatureConstants.Achaierai][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(51, 60, true);
+                //Source: https://forgottenrealms.fandom.com/wiki/Achaierai#Ecology - "extremely long lived", so x1.5 from Venerable
+                testCases[CreatureConstants.Achaierai][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(3, 14, true);
+                testCases[CreatureConstants.Achaierai][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(15, 22, true);
+                testCases[CreatureConstants.Achaierai][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(23, 29, true);
+                testCases[CreatureConstants.Achaierai][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(30, 75, true);
                 testCases[CreatureConstants.Achaierai][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
                 testCases[CreatureConstants.Allip][AgeConstants.Categories.Undead] = undeadAgeRoll;
                 testCases[CreatureConstants.Allip][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
-                testCases[CreatureConstants.Androsphinx][AgeConstants.Categories.Adulthood] = $"{tenKRoll}+16";
+                //Source: https://pathfinder.d20srd.org/bestiary3/sphinx.html (adulthood)
+                //https://www.belloflostsouls.net/2021/12/dd-monster-spotlight-androsphinx.html (maximum)
+                testCases[CreatureConstants.Androsphinx][AgeConstants.Categories.Adulthood] = $"{tenKRoll}+3";
+                //TODO, still need to either find original source or redo
                 testCases[CreatureConstants.Androsphinx][AgeConstants.Categories.Maximum] = "50d100+5000";
                 testCases[CreatureConstants.Angel_AstralDeva][AgeConstants.Categories.Adulthood] = outsiderAgeRoll;
                 testCases[CreatureConstants.Angel_AstralDeva][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
@@ -563,7 +580,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Cockatrice][AgeConstants.Categories.Maximum] = "20+1d10";
                 testCases[CreatureConstants.Couatl][AgeConstants.Categories.Adulthood] = $"{tenKRoll}+35";
                 testCases[CreatureConstants.Couatl][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
-                testCases[CreatureConstants.Criosphinx][AgeConstants.Categories.Adulthood] = $"{tenKRoll}+16";
+                //Source: https://pathfinder.d20srd.org/bestiary3/sphinx.html (adulthood)
+                //https://www.belloflostsouls.net/2021/12/dd-monster-spotlight-androsphinx.html (maximum)
+                testCases[CreatureConstants.Criosphinx][AgeConstants.Categories.Adulthood] = $"{tenKRoll}+3";
                 testCases[CreatureConstants.Criosphinx][AgeConstants.Categories.Maximum] = "50d100+5000";
                 testCases[CreatureConstants.Crocodile][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(12, 49, true);
                 testCases[CreatureConstants.Crocodile][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(50, 59, true);
@@ -1269,7 +1288,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Grimlock][AgeConstants.Categories.Old] = RollHelper.GetRollWithMostEvenDistribution(33, 49, true);
                 testCases[CreatureConstants.Grimlock][AgeConstants.Categories.Venerable] = RollHelper.GetRollWithMostEvenDistribution(50, 60, true);
                 testCases[CreatureConstants.Grimlock][AgeConstants.Categories.Maximum] = "50+1d10";
-                testCases[CreatureConstants.Gynosphinx][AgeConstants.Categories.Adulthood] = $"{tenKRoll}+16";
+                //Source: https://pathfinder.d20srd.org/bestiary3/sphinx.html (adulthood)
+                //https://www.belloflostsouls.net/2021/12/dd-monster-spotlight-androsphinx.html (maximum)
+                testCases[CreatureConstants.Gynosphinx][AgeConstants.Categories.Adulthood] = $"{tenKRoll}+3";
                 testCases[CreatureConstants.Gynosphinx][AgeConstants.Categories.Maximum] = "50d100+5000";
                 //Source: https://www.d20srd.org/srd/description.htm#vitalStatistics
                 testCases[CreatureConstants.Halfling_Deep][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(20, 49, true);
@@ -1307,7 +1328,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Hellwasp_Swarm][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
                 testCases[CreatureConstants.Hezrou][AgeConstants.Categories.Adulthood] = outsiderAgeRoll;
                 testCases[CreatureConstants.Hezrou][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
-                testCases[CreatureConstants.Hieracosphinx][AgeConstants.Categories.Adulthood] = $"{tenKRoll}+16";
+                //Source: https://pathfinder.d20srd.org/bestiary3/sphinx.html (adulthood)
+                //https://www.belloflostsouls.net/2021/12/dd-monster-spotlight-androsphinx.html (maximum)
+                testCases[CreatureConstants.Hieracosphinx][AgeConstants.Categories.Adulthood] = $"{tenKRoll}+3";
                 testCases[CreatureConstants.Hieracosphinx][AgeConstants.Categories.Maximum] = "50d100+5000";
                 testCases[CreatureConstants.Hippogriff][AgeConstants.Categories.Adulthood] = RollHelper.GetRollWithMostEvenDistribution(15, 34, true);
                 testCases[CreatureConstants.Hippogriff][AgeConstants.Categories.MiddleAge] = RollHelper.GetRollWithMostEvenDistribution(35, 52, true);
