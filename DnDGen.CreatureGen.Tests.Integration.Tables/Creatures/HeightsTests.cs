@@ -499,14 +499,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Djinni_Noble][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
             heights[CreatureConstants.Djinni_Noble][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
             heights[CreatureConstants.Djinni_Noble][CreatureConstants.Djinni_Noble] = GetMultiplierFromAverage(12 * 12);
-            //Source: https://www.dimensions.com/search?query=dog average of various dogs in the 20-50 pound weight range
-            heights[CreatureConstants.Dog][GenderConstants.Female] = GetBaseFromRange(16, 24);
-            heights[CreatureConstants.Dog][GenderConstants.Male] = GetBaseFromRange(16, 24);
-            heights[CreatureConstants.Dog][CreatureConstants.Dog] = GetMultiplierFromRange(16, 24);
-            //Source: https://www.dimensions.com/search?query=dog st. bernard, husky, and collies
-            heights[CreatureConstants.Dog_Riding][GenderConstants.Female] = GetBaseFromRange(22, 37);
-            heights[CreatureConstants.Dog_Riding][GenderConstants.Male] = GetBaseFromRange(22, 37);
-            heights[CreatureConstants.Dog_Riding][CreatureConstants.Dog_Riding] = GetMultiplierFromRange(22, 37);
+            //Source: https://www.dimensions.com/search?query=dog average of various dogs in the 20-50 pound weight range, including coyote
+            heights[CreatureConstants.Dog][GenderConstants.Female] = GetBaseFromRange(16, 25);
+            heights[CreatureConstants.Dog][GenderConstants.Male] = GetBaseFromRange(16, 25);
+            heights[CreatureConstants.Dog][CreatureConstants.Dog] = GetMultiplierFromRange(16, 25);
+            //Source: https://www.dimensions.com/element/saint-bernard-dog M:28-30,F:26-28
+            //https://www.dimensions.com/element/siberian-husky 20-24
+            //https://www.dimensions.com/element/dogs-collie M:22-24,F:20-22
+            heights[CreatureConstants.Dog_Riding][GenderConstants.Female] = GetBaseFromRange(20, 28);
+            heights[CreatureConstants.Dog_Riding][GenderConstants.Male] = GetBaseFromRange(22, 30);
+            heights[CreatureConstants.Dog_Riding][CreatureConstants.Dog_Riding] = GetMultiplierFromRange(22, 30);
             //Source: https://www.dimensions.com/element/donkey-equus-africanus-asinus
             heights[CreatureConstants.Donkey][GenderConstants.Female] = GetBaseFromRange(36, 48);
             heights[CreatureConstants.Donkey][GenderConstants.Male] = GetBaseFromRange(36, 48);

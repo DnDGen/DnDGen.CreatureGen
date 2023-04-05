@@ -482,14 +482,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Djinni_Noble][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Djinni_Noble][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Djinni_Noble][CreatureConstants.Djinni_Noble] = "0";
-            //Source: https://www.dimensions.com/search?query=dog
-            lengths[CreatureConstants.Dog][GenderConstants.Female] = GetBaseFromRange(22, 33);
-            lengths[CreatureConstants.Dog][GenderConstants.Male] = GetBaseFromRange(22, 33);
-            lengths[CreatureConstants.Dog][CreatureConstants.Dog] = GetMultiplierFromRange(22, 33);
-            //Source: https://www.dimensions.com/search?query=dog
-            lengths[CreatureConstants.Dog_Riding][GenderConstants.Female] = GetBaseFromRange(28, 47);
-            lengths[CreatureConstants.Dog_Riding][GenderConstants.Male] = GetBaseFromRange(28, 47);
-            lengths[CreatureConstants.Dog_Riding][CreatureConstants.Dog_Riding] = GetMultiplierFromRange(28, 47);
+            //Source: https://www.dimensions.com/search?query=dog average of various dogs in the 20-50 pound weight range, including coyote
+            lengths[CreatureConstants.Dog][GenderConstants.Female] = GetBaseFromRange(22, 39);
+            lengths[CreatureConstants.Dog][GenderConstants.Male] = GetBaseFromRange(22, 39);
+            lengths[CreatureConstants.Dog][CreatureConstants.Dog] = GetMultiplierFromRange(22, 39);
+            //Source: https://www.dimensions.com/element/saint-bernard-dog M:43-47,F:40-44
+            //https://www.dimensions.com/element/siberian-husky 30-35
+            //https://www.dimensions.com/element/dogs-collie M:31-34,F:29-32
+            lengths[CreatureConstants.Dog_Riding][GenderConstants.Female] = GetBaseFromRange(29, 44);
+            lengths[CreatureConstants.Dog_Riding][GenderConstants.Male] = GetBaseFromRange(32, 47);
+            lengths[CreatureConstants.Dog_Riding][CreatureConstants.Dog_Riding] = GetMultiplierFromRange(32, 47);
             //Source: https://www.dimensions.com/element/donkey-equus-africanus-asinus
             lengths[CreatureConstants.Donkey][GenderConstants.Female] = GetBaseFromRange(57, 76);
             lengths[CreatureConstants.Donkey][GenderConstants.Male] = GetBaseFromRange(57, 76);
