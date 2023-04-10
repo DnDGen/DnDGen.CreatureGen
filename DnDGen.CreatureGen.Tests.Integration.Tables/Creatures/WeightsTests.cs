@@ -465,6 +465,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var lower = weightAverage / 10 / lowerMultiplier;
             var upper = weightAverage * 3 / 10 / upperMultiplier;
 
+            //HACK: This is a bug, need to adjust
+            if (upper < lower)
+                return $"[{lower},{upper}] IS NOT A VALID RANGE";
+
             var creature = RollHelper.GetRollWithFewestDice(lower, upper);
 
             return creature;

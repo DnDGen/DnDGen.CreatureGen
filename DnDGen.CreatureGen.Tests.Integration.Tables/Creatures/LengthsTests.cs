@@ -374,8 +374,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Camel_Dromedary][CreatureConstants.Camel_Dromedary] = GetMultiplierFromRange(86, 134);
             //Source: https://forgottenrealms.fandom.com/wiki/Carrion_crawler
             lengths[CreatureConstants.CarrionCrawler][GenderConstants.Female] = GetBaseFromRange(9 * 12, 10 * 12);
-            lengths[CreatureConstants.CarrionCrawler][GenderConstants.Male] = GetBaseFromRange(9 * 12, 10 * 1);
-            lengths[CreatureConstants.CarrionCrawler][CreatureConstants.CarrionCrawler] = GetMultiplierFromRange(9 * 12, 10 * 1);
+            lengths[CreatureConstants.CarrionCrawler][GenderConstants.Male] = GetBaseFromRange(9 * 12, 10 * 12);
+            lengths[CreatureConstants.CarrionCrawler][CreatureConstants.CarrionCrawler] = GetMultiplierFromRange(9 * 12, 10 * 12);
             //Source: https://www.dimensions.com/element/american-shorthair-cat
             lengths[CreatureConstants.Cat][GenderConstants.Female] = GetBaseFromRange(12, 15);
             lengths[CreatureConstants.Cat][GenderConstants.Male] = GetBaseFromRange(12, 15);
