@@ -1265,20 +1265,27 @@
   </collection>
   <collection>
     <name>Dire Wolf</name>
-    <entry>Land@50</entry>
+	  <entry>Male@50</entry>
+	  <entry>Female@50</entry>
+	  <entry>Dire Wolf@2d8</entry>
   </collection>
   <collection>
     <name>Dire Wolverine</name>
-    <entry>Land@30</entry>
-    <entry>Climb@10</entry>
+	  <entry>Male@52</entry>
+	  <entry>Female@52</entry>
+	  <entry>Dire Wolverine@4d8</entry>
   </collection>
   <collection>
     <name>Displacer Beast</name>
-    <entry>Land@40</entry>
+	  <entry>Male@50</entry>
+	  <entry>Female@50</entry>
+	  <entry>Displacer Beast@4d4</entry>
   </collection>
   <collection>
     <name>Displacer Beast Pack Lord</name>
-    <entry>Land@40</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Displacer Beast Pack Lord@8d4</entry>
   </collection>
   <collection>
     <name>Djinni</name>
@@ -1287,19 +1294,21 @@
   </collection>
   <collection>
     <name>Dog</name>
-	  <entry>Male@12</entry>
-	  <entry>Female@12</entry>
-	  <entry>Dog@4d3</entry>
+	  <entry>Male@15</entry>
+	  <entry>Female@15</entry>
+	  <entry>Dog@1d10</entry>
   </collection>
   <collection>
     <name>Dog, Riding</name>
-	  <entry>Male@19</entry>
-	  <entry>Female@19</entry>
-	  <entry>Dog, Riding@3d6</entry>
+	  <entry>Male@18</entry>
+	  <entry>Female@16</entry>
+	  <entry>Dog, Riding@4d3</entry>
   </collection>
   <collection>
     <name>Donkey</name>
-    <entry>Land@30</entry>
+	  <entry>Male@32</entry>
+	  <entry>Female@32</entry>
+	  <entry>Donkey@4d4</entry>
   </collection>
   <collection>
     <name>Doppelganger</name>
@@ -1307,8 +1316,9 @@
   </collection>
   <collection>
     <name>Dragon Turtle</name>
-    <entry>Land@20</entry>
-    <entry>Swim@30</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Dragon Turtle@0</entry>
   </collection>
   <collection>
     <name>Dragonne</name>
@@ -1330,7 +1340,9 @@
   </collection>
   <collection>
     <name>Drow</name>
-    <entry>Land@30</entry>
+	  <entry>Male@4*12+5</entry>
+	  <entry>Female@4*12+5</entry>
+	  <entry>Drow@2d6</entry>
   </collection>
   <collection>
     <name>Dryad</name>
@@ -2566,26 +2578,6 @@
     <entry>Land@10</entry>
     <entry>Fly@40</entry>
   </collection>
-	<collection>
-		<name>Chicken</name>
-		<entry>Land@10</entry>
-		<entry>Fly@10</entry>
-	</collection>
-	<collection>
-		<name>Peacock</name>
-		<entry>Land@10</entry>
-		<entry>Fly@10</entry>
-	</collection>
-	<collection>
-		<name>Turkey</name>
-		<entry>Land@10</entry>
-		<entry>Fly@10</entry>
-	</collection>
-	<collection>
-		<name>Pheasant</name>
-		<entry>Land@10</entry>
-		<entry>Fly@40</entry>
-	</collection>
   <collection>
     <name>Ravid</name>
     <entry>Land@20</entry>
@@ -3315,146 +3307,5 @@
   <collection>
     <name>Ghost</name>
     <entry>Fly@30</entry>
-  </collection>
-  <collection>
-    <name>Celestial Creature</name>
-  </collection>
-  <collection>
-    <name>Fiendish Creature</name>
-  </collection>
-  <collection>
-    <name>Half-Celestial</name>
-    <entry>Fly@666</entry>
-  </collection>
-  <collection>
-    <name>Half-Dragon (Black)</name>
-    <entry>Fly@666</entry>
-  </collection>
-  <collection>
-    <name>Half-Dragon (Blue)</name>
-    <entry>Fly@666</entry>
-  </collection>
-  <collection>
-    <name>Half-Dragon (Green)</name>
-    <entry>Fly@666</entry>
-  </collection>
-  <collection>
-    <name>Half-Dragon (Red)</name>
-    <entry>Fly@666</entry>
-  </collection>
-  <collection>
-    <name>Half-Dragon (White)</name>
-    <entry>Fly@666</entry>
-  </collection>
-  <collection>
-    <name>Half-Dragon (Brass)</name>
-    <entry>Fly@666</entry>
-  </collection>
-  <collection>
-    <name>Half-Dragon (Bronze)</name>
-    <entry>Fly@666</entry>
-  </collection>
-  <collection>
-    <name>Half-Dragon (Copper)</name>
-    <entry>Fly@666</entry>
-  </collection>
-  <collection>
-    <name>Half-Dragon (Gold)</name>
-    <entry>Fly@666</entry>
-  </collection>
-  <collection>
-    <name>Half-Dragon (Silver)</name>
-    <entry>Fly@666</entry>
-  </collection>
-  <collection>
-    <name>Half-Fiend</name>
-    <entry>Fly@666</entry>
-  </collection>
-  <collection>
-    <name>Lich</name>
-  </collection>
-  <collection>
-    <name>Skeleton</name>
-  </collection>
-  <collection>
-    <name>Zombie</name>
-  </collection>
-  <collection>
-    <name>Vampire</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Black Bear (Werebear, Afflicted)</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Black Bear (Werebear, Natural)</name>
-  </collection>
-	<collection>
-		<name>Lycanthrope, Brown Bear (Werebear, Afflicted)</name>
-	</collection>
-	<collection>
-		<name>Lycanthrope, Brown Bear (Werebear, Natural)</name>
-	</collection>
-	<collection>
-		<name>Lycanthrope, Dire Bear (Dire Werebear, Afflicted)</name>
-	</collection>
-	<collection>
-		<name>Lycanthrope, Dire Bear (Dire Werebear, Natural)</name>
-	</collection>
-	<collection>
-		<name>Lycanthrope, Polar Bear (Werebear, Afflicted)</name>
-	</collection>
-	<collection>
-		<name>Lycanthrope, Polar Bear (Werebear, Natural)</name>
-	</collection>
-  <collection>
-    <name>Lycanthrope, Boar (Wereboar, Afflicted)</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Boar (Wereboar, Natural)</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Dire Boar (Dire Wereboar, Afflicted)</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Dire Boar (Dire Wereboar, Natural)</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Wolf (Werewolf, Afflicted)</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Wolf (Werewolf, Natural)</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Dire Wolf (Dire Werewolf, Natural)</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Afflicted)</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Tiger (Weretiger, Natural)</name>
-  </collection>
-	<collection>
-		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Afflicted)</name>
-	</collection>
-	<collection>
-		<name>Lycanthrope, Dire Tiger (Dire Weretiger, Natural)</name>
-	</collection>
-	<collection>
-		<name>Lycanthrope, Rat (Wererat, Afflicted)</name>
-	</collection>
-	<collection>
-		<name>Lycanthrope, Rat (Wererat, Natural)</name>
-	</collection>
-  <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Afflicted)</name>
-  </collection>
-  <collection>
-    <name>Lycanthrope, Dire Rat (Wererat, Natural)</name>
-  </collection>
-  <collection>
-    <name>None</name>
   </collection>
 </collections>

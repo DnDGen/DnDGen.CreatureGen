@@ -423,9 +423,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Digester][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Digester][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Digester][CreatureConstants.Digester] = "0";
+            wingspans[CreatureConstants.Djinni][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.Djinni][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Djinni][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Djinni][CreatureConstants.Djinni] = "0";
+            wingspans[CreatureConstants.Djinni_Noble][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.Djinni_Noble][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Djinni_Noble][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Djinni_Noble][CreatureConstants.Djinni_Noble] = "0";
@@ -438,6 +440,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Donkey][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Donkey][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Donkey][CreatureConstants.Donkey] = "0";
+            wingspans[CreatureConstants.Doppelganger][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Doppelganger][CreatureConstants.Doppelganger] = "0";
             //Source: Draconomicon
             wingspans[CreatureConstants.Dragon_Black_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(8 * 12);
             wingspans[CreatureConstants.Dragon_Black_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
@@ -799,8 +803,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Dragon_White_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(72 * 12);
             wingspans[CreatureConstants.Dragon_White_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(72 * 12);
             wingspans[CreatureConstants.Dragon_White_GreatWyrm][CreatureConstants.Dragon_White_GreatWyrm] = GetMultiplierFromAverage(72 * 12);
+            wingspans[CreatureConstants.DragonTurtle][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.DragonTurtle][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.DragonTurtle][CreatureConstants.DragonTurtle] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Dragonne "smaller version of wings of Brass Dragons". Dragonne are large, so use medium brass
+            wingspans[CreatureConstants.Dragonne][GenderConstants.Female] = GetBaseFromAverage(18 * 12);
+            wingspans[CreatureConstants.Dragonne][GenderConstants.Male] = GetBaseFromAverage(18 * 12);
+            wingspans[CreatureConstants.Dragonne][CreatureConstants.Dragonne] = GetMultiplierFromAverage(18 * 12);
             wingspans[CreatureConstants.Dretch][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Dretch][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Dretch][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Dretch][CreatureConstants.Dretch] = "0";
+            wingspans[CreatureConstants.Drider][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Drider][CreatureConstants.Drider] = "0";
             wingspans[CreatureConstants.Dwarf_Deep][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Dwarf_Deep][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Dwarf_Deep][CreatureConstants.Dwarf_Deep] = "0";
@@ -1192,6 +1207,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Wolverine_Dire][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Wolverine_Dire][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Wolverine_Dire][CreatureConstants.Wolverine_Dire] = "0";
+            wingspans[CreatureConstants.Wraith][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Wraith][CreatureConstants.Wraith] = "0";
+            wingspans[CreatureConstants.Wraith_Dread][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Wraith_Dread][CreatureConstants.Wraith_Dread] = "0";
             wingspans[CreatureConstants.Xorn_Minor][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.Xorn_Minor][CreatureConstants.Xorn_Minor] = "0";
             wingspans[CreatureConstants.Xorn_Average][GenderConstants.Agender] = "0";

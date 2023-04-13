@@ -492,10 +492,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.DisplacerBeast_PackLord][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
             heights[CreatureConstants.DisplacerBeast_PackLord][CreatureConstants.DisplacerBeast_PackLord] = GetMultiplierFromAverage(10 * 12);
             //Source: https://forgottenrealms.fandom.com/wiki/Djinni
+            heights[CreatureConstants.Djinni][GenderConstants.Agender] = GetBaseFromAverage(10 * 12 + 6);
             heights[CreatureConstants.Djinni][GenderConstants.Female] = GetBaseFromAverage(10 * 12 + 6);
             heights[CreatureConstants.Djinni][GenderConstants.Male] = GetBaseFromAverage(10 * 12 + 6);
             heights[CreatureConstants.Djinni][CreatureConstants.Djinni] = GetMultiplierFromAverage(10 * 12 + 6);
             //Source: https://forgottenrealms.fandom.com/wiki/Noble_djinni
+            heights[CreatureConstants.Djinni_Noble][GenderConstants.Agender] = GetBaseFromAverage(12 * 12);
             heights[CreatureConstants.Djinni_Noble][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
             heights[CreatureConstants.Djinni_Noble][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
             heights[CreatureConstants.Djinni_Noble][CreatureConstants.Djinni_Noble] = GetMultiplierFromAverage(12 * 12);
@@ -514,8 +516,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Donkey][GenderConstants.Male] = GetBaseFromRange(36, 48);
             heights[CreatureConstants.Donkey][CreatureConstants.Donkey] = GetMultiplierFromRange(36, 48);
             //Source: https://forgottenrealms.fandom.com/wiki/Doppelganger
-            heights[CreatureConstants.Doppelganger][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            heights[CreatureConstants.Doppelganger][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
+            heights[CreatureConstants.Doppelganger][GenderConstants.Agender] = GetBaseFromAverage(5 * 12);
             heights[CreatureConstants.Doppelganger][CreatureConstants.Doppelganger] = GetMultiplierFromAverage(5 * 12);
             //Source: Draconomicon
             heights[CreatureConstants.Dragon_Black_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(12);
@@ -882,9 +883,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.DragonTurtle][GenderConstants.Female] = "0";
             heights[CreatureConstants.DragonTurtle][GenderConstants.Male] = "0";
             heights[CreatureConstants.DragonTurtle][CreatureConstants.DragonTurtle] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Dragonne
+            heights[CreatureConstants.Dragonne][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
+            heights[CreatureConstants.Dragonne][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
+            heights[CreatureConstants.Dragonne][CreatureConstants.Dragonne] = GetMultiplierFromAverage(5 * 12);
             //Source: https://forgottenrealms.fandom.com/wiki/Dretch
             heights[CreatureConstants.Dretch][GenderConstants.Agender] = GetBaseFromAverage(4 * 12);
+            heights[CreatureConstants.Dretch][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
+            heights[CreatureConstants.Dretch][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
             heights[CreatureConstants.Dretch][CreatureConstants.Dretch] = GetMultiplierFromAverage(4 * 12);
+            //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/drider-species
+            //https://www.5esrd.com/database/race/drider/ (for height)
+            heights[CreatureConstants.Drider][GenderConstants.Agender] = GetBaseFromAverage(7 * 12);
+            heights[CreatureConstants.Drider][CreatureConstants.Drider] = GetMultiplierFromAverage(7 * 12);
             //Source: https://www.d20srd.org/srd/description.htm#vitalStatistics
             heights[CreatureConstants.Dwarf_Deep][GenderConstants.Female] = "3*12+7";
             heights[CreatureConstants.Dwarf_Deep][GenderConstants.Male] = "3*12+9";
@@ -1349,6 +1360,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Wolverine_Dire][GenderConstants.Female] = GetBaseFromRange(14 * 4, 21 * 4);
             heights[CreatureConstants.Wolverine_Dire][GenderConstants.Male] = GetBaseFromRange(14 * 4, 21 * 4);
             heights[CreatureConstants.Wolverine_Dire][CreatureConstants.Wolverine_Dire] = GetMultiplierFromRange(14 * 4, 21 * 4);
+            //Source: https://www.d20srd.org/srd/monsters/wraith.htm W:Human, DW:Ogre
+            heights[CreatureConstants.Wraith][GenderConstants.Agender] = "4*12+10";
+            heights[CreatureConstants.Wraith][CreatureConstants.Wraith] = "2d10";
+            heights[CreatureConstants.Wraith_Dread][GenderConstants.Agender] = "96";
+            heights[CreatureConstants.Wraith_Dread][CreatureConstants.Wraith_Dread] = "2d12";
             //Source: https://forgottenrealms.fandom.com/wiki/Xorn
             heights[CreatureConstants.Xorn_Minor][GenderConstants.Agender] = GetBaseFromAverage(3 * 12);
             heights[CreatureConstants.Xorn_Minor][CreatureConstants.Xorn_Minor] = GetMultiplierFromAverage(3 * 12);
@@ -1495,6 +1511,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             foreach (var creature in creatures)
             {
+                Assert.That(heights, Contains.Key(creature));
+                Assert.That(heights[creature], Contains.Key(creature));
+                Assert.That(lengths, Contains.Key(creature));
+                Assert.That(lengths[creature], Contains.Key(creature));
+
                 Assert.That(heights[creature][creature], Is.Not.Empty);
                 Assert.That(lengths[creature][creature], Is.Not.Empty);
 

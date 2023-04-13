@@ -16,11 +16,11 @@
   </collection>
   <collection>
     <name>Greater Basilisk</name>
-	  <entry>Adulthood@(1d10-1)*3+1d3</entry>
-	  <entry>Middle Age@1d12+1d8+29</entry>
-	  <entry>Old@1d10+49</entry>
-	  <entry>Venerable@1d6+1d2+58</entry>
-	  <entry>Maximum@60+1d6</entry>
+	  <entry>Adulthood@(1d3-1)*9+(1d3-1)*3+1d3+2</entry>
+	  <entry>Middle Age@(1d3-1)*5+1d4+1d2+28</entry>
+	  <entry>Old@(1d3-1)*5+1d4+1d2+43</entry>
+	  <entry>Venerable@1d20+1d12+58</entry>
+	  <entry>Maximum@3d10+60</entry>
   </collection>
   <collection>
     <name>Achaierai</name>
@@ -928,7 +928,7 @@
 	  <entry>Middle Age@19</entry>
 	  <entry>Old@(1d3-1)*7+1d6+1d2+18</entry>
 	  <entry>Venerable@1d10+40</entry>
-	  <entry>Maximum@40+1d10</entry>
+	  <entry>Maximum@1d10+40</entry>
   </collection>
   <collection>
     <name>Camel, Dromedary (One-Humped)</name>
@@ -936,7 +936,7 @@
 	  <entry>Middle Age@1d10+19</entry>
 	  <entry>Old@1d10+29</entry>
 	  <entry>Venerable@1d10+1d2+38</entry>
-	  <entry>Maximum@40+1d10</entry>
+	  <entry>Maximum@1d10+40</entry>
   </collection>
   <collection>
     <name>Carrion Crawler</name>
@@ -983,7 +983,7 @@
 	  <entry>Middle Age@1d2+4</entry>
 	  <entry>Old@1d3+6</entry>
 	  <entry>Venerable@1d3+9</entry>
-	  <entry>Maximum@10+1d2</entry>
+	  <entry>Maximum@1d3+9</entry>
   </collection>
   <collection>
     <name>Chimera (Black Dragon head)</name>
@@ -1051,7 +1051,7 @@
 	  <entry>Adulthood@(1d12-1)*2+1d2+15</entry>
 	  <entry>Middle Age@1d20+39</entry>
 	  <entry>Old@1d20+59</entry>
-	  <entry>Venerable@2d20+1d3+7</entry>
+	  <entry>Venerable@2d20+1d3+77</entry>
 	  <entry>Maximum@2d20+80</entry>
   </collection>
   <collection>
@@ -1072,11 +1072,11 @@
   </collection>
   <collection>
     <name>Constrictor Snake</name>
-	  <entry>Adulthood@1d6+1d2+1</entry>
-	  <entry>Middle Age@1d4+1d2+8</entry>
-	  <entry>Old@1d4+1d2+13</entry>
-	  <entry>Venerable@1d10+1d2+18</entry>
-	  <entry>Maximum@20+1d10</entry>
+	  <entry>Adulthood@1d4+1</entry>
+	  <entry>Middle Age@1d3+5</entry>
+	  <entry>Old@1d3+8</entry>
+	  <entry>Venerable@(1d3-1)*3+1d3+11</entry>
+	  <entry>Maximum@1d8+12</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Adult</name>
@@ -1090,8 +1090,8 @@
   </collection>
   <collection>
     <name>Copper Dragon, Great Wyrm</name>
-	  <entry>Great Wyrm (Dragon)@(1d100-1)*8+1d8+1200</entry>
-	  <entry>Maximum@2000</entry>
+	  <entry>Great Wyrm (Dragon)@(1d100-1)*22+(1d2-1)*11+1d10+1d2+1199</entry>
+	  <entry>Maximum@3401</entry>
   </collection>
   <collection>
     <name>Copper Dragon, Juvenile</name>
@@ -1145,32 +1145,29 @@
   </collection>
   <collection>
     <name>Criosphinx</name>
-	  <entry>Adulthood@(1d100-1)*100+1d100+16</entry>
-	  <entry>Maximum@50d100+5000</entry>
+	  <entry>Adulthood@(1d100-1)*100+1d100+3</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Crocodile</name>
-	  <entry>Adulthood@(1d2-1)*19+1d12+1d8+10</entry>
-	  <entry>Middle Age@1d10+49</entry>
-	  <entry>Old@1d10+59</entry>
-	  <entry>Venerable@1d20+1d12+68</entry>
-	  <entry>Maximum@70+3d10</entry>
+	  <entry>Adulthood@1d12+1d2+10</entry>
+	  <entry>Middle Age@1d12+24</entry>
+	  <entry>Old@1d12+1d2+35</entry>
+	  <entry>Venerable@1d20+1d12+48</entry>
+	  <entry>Maximum@3d10+50</entry>
   </collection>
   <collection>
     <name>Dark Naga</name>
-	  <entry>Adulthood@(1d20-1)*24+(1d12-1)*2+1d2+19</entry>
-	  <entry>Middle Age@(1d100-1)*2+1d2+499</entry>
-	  <entry>Old@(1d100-1)*2+1d2+699</entry>
-	  <entry>Venerable@(1d3-1)*67+3d20+1d10+896</entry>
-	  <entry>Maximum@900+2d100</entry>
+	  <entry>Adulthood@(1d100-1)*100+1d100+20</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Darkmantle</name>
-	  <entry>Adulthood@1d4-1</entry>
-	  <entry>Middle Age@4</entry>
-	  <entry>Old@5</entry>
-	  <entry>Venerable@1d2+5</entry>
-	  <entry>Maximum@5+1d2</entry>
+	  <entry>Adulthood@1d2-1</entry>
+	  <entry>Middle Age@2</entry>
+	  <entry>Old@3</entry>
+	  <entry>Venerable@1d4+3</entry>
+	  <entry>Maximum@1d4+3</entry>
   </collection>
   <collection>
     <name>Death Slaad</name>
@@ -1187,51 +1184,51 @@
   </collection>
   <collection>
     <name>Deep Dwarf</name>
-	  <entry>Adulthood@4d20+1d12+1d8+39</entry>
-	  <entry>Middle Age@2d20+1d8+1d2+136</entry>
-	  <entry>Old@(1d3-1)*31+1d20+1d12+185</entry>
-	  <entry>Venerable@(1d3-1)*67+3d20+1d10+276</entry>
-	  <entry>Maximum@280+2d100</entry>
+	  <entry>Adulthood@4d20+1d8+1d2+34</entry>
+	  <entry>Middle Age@(1d3-1)*21+(1d3-1)*7+1d6+1d2+123</entry>
+	  <entry>Old@(1d2-1)*31+1d20+1d12+186</entry>
+	  <entry>Venerable@(1d3-1)*67+3d20+1d10+246</entry>
+	  <entry>Maximum@250+2d100</entry>
   </collection>
   <collection>
     <name>Deinonychus</name>
-	  <entry>Adulthood@1d6+1d2</entry>
-	  <entry>Middle Age@1d2+8</entry>
-	  <entry>Old@1d2+10</entry>
-	  <entry>Venerable@1d2+12</entry>
-	  <entry>Maximum@12+1d2</entry>
+	  <entry>Adulthood@(1d12-1)*2+1d2+14</entry>
+	  <entry>Middle Age@1d12+1d8+37</entry>
+	  <entry>Old@1d20+57</entry>
+	  <entry>Venerable@(1d20-1)*2+1d2+77</entry>
+	  <entry>Maximum@13d4+65</entry>
   </collection>
   <collection>
     <name>Delver</name>
-	  <entry>Adulthood@(1d10-1)*3+1d3+4</entry>
-	  <entry>Middle Age@1d4+1d2+33</entry>
-	  <entry>Old@1d4+1d2+38</entry>
-	  <entry>Venerable@1d10+1d2+43</entry>
-	  <entry>Maximum@45+1d10</entry>
+	  <entry>Adulthood@(1d3-1)*5+1d4+1d2+8</entry>
+	  <entry>Middle Age@1d12+24</entry>
+	  <entry>Old@1d12+1d2+35</entry>
+	  <entry>Venerable@(1d2-1)*13+1d12+1d2+48</entry>
+	  <entry>Maximum@5d6+45</entry>
   </collection>
   <collection>
     <name>Derro</name>
 	  <entry>Adulthood@(1d3-1)*5+1d4+1d2+13</entry>
-	  <entry>Middle Age@1d20+29</entry>
-	  <entry>Old@1d20+49</entry>
-	  <entry>Venerable@1d10+1d2+68</entry>
-	  <entry>Maximum@70+1d10</entry>
+	  <entry>Middle Age@(1d3-1)*5+1d4+1d2+28</entry>
+	  <entry>Old@(1d3-1)*5+1d4+1d2+43</entry>
+	  <entry>Venerable@1d20+1d12+58</entry>
+	  <entry>Maximum@3d10+60</entry>
   </collection>
   <collection>
     <name>Derro (Sane)</name>
 	  <entry>Adulthood@(1d3-1)*5+1d4+1d2+13</entry>
-	  <entry>Middle Age@1d20+29</entry>
-	  <entry>Old@1d20+49</entry>
-	  <entry>Venerable@1d10+1d2+68</entry>
-	  <entry>Maximum@70+1d10</entry>
+	  <entry>Middle Age@(1d3-1)*5+1d4+1d2+28</entry>
+	  <entry>Old@(1d3-1)*5+1d4+1d2+43</entry>
+	  <entry>Venerable@1d20+1d12+58</entry>
+	  <entry>Maximum@3d10+60</entry>
   </collection>
   <collection>
     <name>Destrachan</name>
-	  <entry>Adulthood@(1d10-1)*3+1d3+4</entry>
-	  <entry>Middle Age@1d4+1d2+33</entry>
-	  <entry>Old@1d4+1d2+38</entry>
-	  <entry>Venerable@1d10+1d2+43</entry>
-	  <entry>Maximum@45+1d10</entry>
+	  <entry>Adulthood@(1d3-1)*5+1d4+1d2+8</entry>
+	  <entry>Middle Age@1d12+24</entry>
+	  <entry>Old@1d12+1d2+35</entry>
+	  <entry>Venerable@(1d2-1)*13+1d12+1d2+48</entry>
+	  <entry>Maximum@5d6+45</entry>
   </collection>
   <collection>
     <name>Devourer</name>
@@ -1240,123 +1237,123 @@
   </collection>
   <collection>
     <name>Digester</name>
-	  <entry>Adulthood@(1d10-1)*3+1d3+4</entry>
-	  <entry>Middle Age@1d4+1d2+33</entry>
-	  <entry>Old@1d4+1d2+38</entry>
-	  <entry>Venerable@1d10+1d2+43</entry>
-	  <entry>Maximum@45+1d10</entry>
+	  <entry>Adulthood@(1d3-1)*5+1d4+1d2+8</entry>
+	  <entry>Middle Age@1d12+24</entry>
+	  <entry>Old@1d12+1d2+35</entry>
+	  <entry>Venerable@(1d2-1)*13+1d12+1d2+48</entry>
+	  <entry>Maximum@5d6+45</entry>
   </collection>
   <collection>
     <name>Dire Ape</name>
-	  <entry>Adulthood@1d10+1d2+8</entry>
-	  <entry>Middle Age@1d10+20</entry>
-	  <entry>Old@1d4+30</entry>
-	  <entry>Venerable@1d6+34</entry>
-	  <entry>Maximum@34+1d6</entry>
+	  <entry>Adulthood@1d10+9</entry>
+	  <entry>Middle Age@1d10+19</entry>
+	  <entry>Old@1d10+29</entry>
+	  <entry>Venerable@(1d3-1)*7+1d6+1d2+38</entry>
+	  <entry>Maximum@1d20+40</entry>
   </collection>
   <collection>
     <name>Dire Badger</name>
-	  <entry>Adulthood@1d4</entry>
-	  <entry>Middle Age@1d2+4</entry>
-	  <entry>Old@1d2+6</entry>
-	  <entry>Venerable@1d2+8</entry>
-	  <entry>Maximum@8+1d2</entry>
+	  <entry>Adulthood@2</entry>
+	  <entry>Middle Age@1d2+2</entry>
+	  <entry>Old@1d2+4</entry>
+	  <entry>Venerable@1d20+6</entry>
+	  <entry>Maximum@1d20+6</entry>
   </collection>
   <collection>
     <name>Dire Bat</name>
-	  <entry>Adulthood@1d4+1d2-1</entry>
-	  <entry>Middle Age@1d2+5</entry>
-	  <entry>Old@1d2+7</entry>
-	  <entry>Venerable@1d10+1d2+8</entry>
-	  <entry>Maximum@10+1d10</entry>
+	  <entry>Adulthood@1d3-1</entry>
+	  <entry>Middle Age@1d2+2</entry>
+	  <entry>Old@1d2+4</entry>
+	  <entry>Venerable@(1d4-1)*7+1d6+1d2+5</entry>
+	  <entry>Maximum@3d10+4</entry>
   </collection>
   <collection>
     <name>Dire Bear</name>
-	  <entry>Adulthood@1d10+1d2+3</entry>
-	  <entry>Middle Age@1d4+1d2+14</entry>
-	  <entry>Old@1d4+1d2+19</entry>
-	  <entry>Venerable@1d4+1d2+24</entry>
-	  <entry>Maximum@2d3+24</entry>
+	  <entry>Adulthood@1d8+4</entry>
+	  <entry>Middle Age@1d6+1d2+11</entry>
+	  <entry>Old@1d6+19</entry>
+	  <entry>Venerable@1d20+25</entry>
+	  <entry>Maximum@1d20+25</entry>
   </collection>
   <collection>
     <name>Dire Boar</name>
-	  <entry>Adulthood@1d4+1</entry>
-	  <entry>Middle Age@1d2+5</entry>
-	  <entry>Old@1d2+7</entry>
-	  <entry>Venerable@1d4+1d2+8</entry>
-	  <entry>Maximum@10+1d4</entry>
+	  <entry>Adulthood@1d4+1d2</entry>
+	  <entry>Middle Age@1d3+6</entry>
+	  <entry>Old@1d4+1d2+8</entry>
+	  <entry>Venerable@1d6+14</entry>
+	  <entry>Maximum@1d6+14</entry>
   </collection>
   <collection>
     <name>Dire Lion</name>
-	  <entry>Adulthood@1d4+3</entry>
+	  <entry>Adulthood@1d4+1d2+1</entry>
 	  <entry>Middle Age@1d2+7</entry>
-	  <entry>Old@1d2+9</entry>
-	  <entry>Venerable@1d4+1d2+10</entry>
-	  <entry>Maximum@12+1d4</entry>
+	  <entry>Old@1d6+9</entry>
+	  <entry>Venerable@(1d3-1)*5+1d4+1d2+14</entry>
+	  <entry>Maximum@2d8+14</entry>
   </collection>
   <collection>
     <name>Dire Rat</name>
 	  <entry>Adulthood@0</entry>
 	  <entry>Middle Age@1</entry>
-	  <entry>Old@2</entry>
-	  <entry>Venerable@1d2+2</entry>
-	  <entry>Maximum@2+1d2</entry>
+	  <entry>Old@1d2</entry>
+	  <entry>Venerable@1d2+1</entry>
+	  <entry>Maximum@1d2+1</entry>
   </collection>
   <collection>
     <name>Dire Shark</name>
-	  <entry>Adulthood@1d4+13</entry>
-	  <entry>Middle Age@18</entry>
-	  <entry>Old@19</entry>
-	  <entry>Venerable@1d10+1d2+18</entry>
-	  <entry>Maximum@20+1d10</entry>
+	  <entry>Adulthood@1d2+25</entry>
+	  <entry>Middle Age@28</entry>
+	  <entry>Old@29</entry>
+	  <entry>Venerable@2d20+1d3+27</entry>
+	  <entry>Maximum@2d20+30</entry>
   </collection>
   <collection>
     <name>Dire Tiger</name>
-	  <entry>Adulthood@1d4+1</entry>
-	  <entry>Middle Age@6</entry>
-	  <entry>Old@7</entry>
-	  <entry>Venerable@1d3+7</entry>
-	  <entry>Maximum@7+1d3</entry>
+	  <entry>Adulthood@1d4+1d2+1</entry>
+	  <entry>Middle Age@1d3+7</entry>
+	  <entry>Old@1d6+1d2+9</entry>
+	  <entry>Venerable@1d8+17</entry>
+	  <entry>Maximum@1d8+17</entry>
   </collection>
   <collection>
     <name>Dire Weasel</name>
-	  <entry>Adulthood@1d4</entry>
-	  <entry>Middle Age@5</entry>
-	  <entry>Old@6</entry>
-	  <entry>Venerable@1d4+6</entry>
-	  <entry>Maximum@6+1d4</entry>
+	  <entry>Adulthood@1d2-1</entry>
+	  <entry>Middle Age@1</entry>
+	  <entry>Old@1d2</entry>
+	  <entry>Venerable@1d8+1</entry>
+	  <entry>Maximum@1d8+1</entry>
   </collection>
   <collection>
     <name>Dire Wolf</name>
-	  <entry>Adulthood@1d3+2</entry>
-	  <entry>Middle Age@1d3+5</entry>
-	  <entry>Old@1d3+8</entry>
-	  <entry>Venerable@1d3+11</entry>
-	  <entry>Maximum@12+1d2</entry>
+	  <entry>Adulthood@1d2+1</entry>
+	  <entry>Middle Age@1d2+3</entry>
+	  <entry>Old@1d3+5</entry>
+	  <entry>Venerable@(1d3-1)*3+1d3+8</entry>
+	  <entry>Maximum@1d8+9</entry>
   </collection>
   <collection>
     <name>Dire Wolverine</name>
-	  <entry>Adulthood@1d4+1d2-1</entry>
-	  <entry>Middle Age@6</entry>
-	  <entry>Old@7</entry>
-	  <entry>Venerable@1d3+7</entry>
-	  <entry>Maximum@7+1d3</entry>
+	  <entry>Adulthood@2</entry>
+	  <entry>Middle Age@1d2+2</entry>
+	  <entry>Old@1d2+4</entry>
+	  <entry>Venerable@1d10+1d2+5</entry>
+	  <entry>Maximum@1d10+7</entry>
   </collection>
   <collection>
     <name>Displacer Beast</name>
-	  <entry>Adulthood@2d20+1d10+1d2-3</entry>
-	  <entry>Middle Age@1d20+49</entry>
-	  <entry>Old@1d20+69</entry>
-	  <entry>Venerable@1d10+1d2+88</entry>
-	  <entry>Maximum@90+1d10</entry>
+	  <entry>Adulthood@(1d3-1)*13+1d12+1d2-1</entry>
+	  <entry>Middle Age@1d20+39</entry>
+	  <entry>Old@1d20+59</entry>
+	  <entry>Venerable@2d20+1d3+77</entry>
+	  <entry>Maximum@2d20+80</entry>
   </collection>
   <collection>
     <name>Displacer Beast Pack Lord</name>
-	  <entry>Adulthood@2d20+1d10+1d2-3</entry>
-	  <entry>Middle Age@1d20+49</entry>
-	  <entry>Old@1d20+69</entry>
-	  <entry>Venerable@1d10+1d2+88</entry>
-	  <entry>Maximum@90+1d10</entry>
+	  <entry>Adulthood@(1d3-1)*13+1d12+1d2-1</entry>
+	  <entry>Middle Age@1d20+39</entry>
+	  <entry>Old@1d20+59</entry>
+	  <entry>Venerable@2d20+1d3+77</entry>
+	  <entry>Maximum@2d20+80</entry>
   </collection>
   <collection>
     <name>Djinni</name>
@@ -1365,48 +1362,48 @@
   </collection>
   <collection>
     <name>Dog</name>
-	  <entry>Adulthood@1d4+1d2-1</entry>
-	  <entry>Middle Age@1d2+5</entry>
-	  <entry>Old@1d2+7</entry>
-	  <entry>Venerable@1d4+9</entry>
-	  <entry>Maximum@10+1d3</entry>
+	  <entry>Adulthood@1d6+1d2-1</entry>
+	  <entry>Middle Age@1d2+7</entry>
+	  <entry>Old@1d6+9</entry>
+	  <entry>Venerable@1d4+1d2+14</entry>
+	  <entry>Maximum@1d4+16</entry>
   </collection>
   <collection>
     <name>Dog, Riding</name>
-	  <entry>Adulthood@1d4+1d2-1</entry>
-	  <entry>Middle Age@1d2+5</entry>
-	  <entry>Old@1d2+7</entry>
-	  <entry>Venerable@1d4+9</entry>
-	  <entry>Maximum@10+1d3</entry>
+	  <entry>Adulthood@1d3</entry>
+	  <entry>Middle Age@1d2+3</entry>
+	  <entry>Old@1d2+5</entry>
+	  <entry>Venerable@(1d3-1)*3+1d3+7</entry>
+	  <entry>Maximum@1d8+8</entry>
   </collection>
   <collection>
     <name>Donkey</name>
-	  <entry>Adulthood@(1d2-1)*7+1d6+1d2-1</entry>
-	  <entry>Middle Age@1d6+14</entry>
-	  <entry>Old@1d6+20</entry>
-	  <entry>Venerable@(1d2-1)*7+1d6+1d2+25</entry>
-	  <entry>Maximum@28+2d6</entry>
+	  <entry>Adulthood@(1d3-1)*3+1d3+2</entry>
+	  <entry>Middle Age@1d6+11</entry>
+	  <entry>Old@1d6+1d2+16</entry>
+	  <entry>Venerable@(1d8-1)*2+1d2+24</entry>
+	  <entry>Maximum@3d6+22</entry>
   </collection>
   <collection>
     <name>Doppelganger</name>
-	  <entry>Adulthood@1d20+14</entry>
-	  <entry>Middle Age@(1d6-1)*3+1d3+34</entry>
-	  <entry>Old@1d12+1d6+51</entry>
-	  <entry>Venerable@2d20+1d3+67</entry>
-	  <entry>Maximum@70+2d20</entry>
+	  <entry>Adulthood@(1d2-1)*11+1d10+1d2+12</entry>
+	  <entry>Middle Age@(1d6-1)*3+1d3+35</entry>
+	  <entry>Old@(1d6-1)*3+1d3+53</entry>
+	  <entry>Venerable@1d20+1d12+1d6+1d2+68</entry>
+	  <entry>Maximum@3d12+72</entry>
   </collection>
   <collection>
     <name>Dragon Turtle</name>
     <entry>Adulthood@(1d100-1)*100+1d100</entry>
-    <entry>Maximum@9000+10d100</entry>
+    <entry>Maximum@50d100+10000</entry>
   </collection>
   <collection>
     <name>Dragonne</name>
-	  <entry>Adulthood@(1d20-1)*2+1d2+9</entry>
-	  <entry>Middle Age@1d20+49</entry>
-	  <entry>Old@1d20+69</entry>
-	  <entry>Venerable@1d10+1d2+88</entry>
-	  <entry>Maximum@90+1d10</entry>
+	  <entry>Adulthood@(1d10-1)*3+1d3+19</entry>
+	  <entry>Middle Age@1d20+1d6+48</entry>
+	  <entry>Old@1d20+1d6+73</entry>
+	  <entry>Venerable@(1d3-1)*17+1d12+1d6+98</entry>
+	  <entry>Maximum@5d10+100</entry>
   </collection>
   <collection>
     <name>Dread Wraith</name>
@@ -1420,11 +1417,11 @@
   </collection>
   <collection>
     <name>Drider</name>
-	  <entry>Adulthood@(1d10-1)*15+(1d3-1)*5+1d4+1d2-2</entry>
-	  <entry>Middle Age@1d100+149</entry>
-	  <entry>Old@1d100+249</entry>
-	  <entry>Venerable@4d100+1d4+1d2+344</entry>
-	  <entry>Maximum@350+4d100</entry>
+	  <entry>Adulthood@(1d20-1)*9+(1d3-1)*3+1d3+119</entry>
+	  <entry>Middle Age@(1d10-1)*15+(1d3-1)*5+1d4+1d2+298</entry>
+	  <entry>Old@(1d10-1)*15+(1d3-1)*5+1d4+1d2+448</entry>
+	  <entry>Venerable@3d100+1d4+596</entry>
+	  <entry>Maximum@3d100+600</entry>
   </collection>
   <collection>
     <name>Drow</name>
@@ -1436,16 +1433,16 @@
   </collection>
   <collection>
     <name>Dryad</name>
-    <entry>Adulthood@9d100+1d10+90</entry>
-    <entry>Maximum@1000+9d100</entry>
+    <entry>Adulthood@(1d100-1)*1000+(1d100-1)*10+1d10</entry>
+    <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Duergar</name>
-	  <entry>Adulthood@(1d10-1)*11+1d10+1d2+38</entry>
-	  <entry>Middle Age@(1d10-1)*5+1d4+1d2+148</entry>
-	  <entry>Old@1d100+199</entry>
-	  <entry>Venerable@(1d3-1)*67+3d20+1d10+296</entry>
-	  <entry>Maximum@300+2d100</entry>
+	  <entry>Adulthood@4d20+1d8+1d2+34</entry>
+	  <entry>Middle Age@(1d3-1)*21+(1d3-1)*7+1d6+1d2+123</entry>
+	  <entry>Old@(1d2-1)*31+1d20+1d12+186</entry>
+	  <entry>Venerable@(1d3-1)*67+3d20+1d10+246</entry>
+	  <entry>Maximum@250+2d100</entry>
   </collection>
   <collection>
     <name>Dust Mephit</name>
@@ -1454,11 +1451,11 @@
   </collection>
   <collection>
     <name>Eagle</name>
-	  <entry>Adulthood@1d10+4</entry>
-	  <entry>Middle Age@1d3+14</entry>
-	  <entry>Old@1d2+17</entry>
+	  <entry>Adulthood@1d4+1d2+3</entry>
+	  <entry>Middle Age@1d4+1d2+8</entry>
+	  <entry>Old@1d4+1d2+13</entry>
 	  <entry>Venerable@1d10+1d2+18</entry>
-	  <entry>Maximum@20+1d10</entry>
+	  <entry>Maximum@1d10+20</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Elder</name>
@@ -1517,11 +1514,11 @@
   </collection>
   <collection>
     <name>Elasmosaurus</name>
-	  <entry>Adulthood@1d20+9</entry>
-	  <entry>Middle Age@1d4+1d2+28</entry>
-	  <entry>Old@1d4+1d2+33</entry>
-	  <entry>Venerable@2d20+1d3+37</entry>
-	  <entry>Maximum@40+4d10</entry>
+	  <entry>Adulthood@1d20+11</entry>
+	  <entry>Middle Age@(1d8-1)*2+1d2+31</entry>
+	  <entry>Old@(1d8-1)*2+1d2+47</entry>
+	  <entry>Venerable@(1d3-1)*11+1d10+1d2+62</entry>
+	  <entry>Maximum@4d8+64</entry>
   </collection>
   <collection>
     <name>Elder Arrowhawk</name>
@@ -1541,15 +1538,15 @@
   <collection>
     <name>Elder Xorn</name>
     <entry>Elder (Xorn)@(1d2-1)*167+1d100+3d20+1d10+1d2+661</entry>
-	  <entry>Maximum@900+1d100</entry>
+	  <entry>Maximum@74d4+704</entry>
   </collection>
   <collection>
     <name>Elephant</name>
-	  <entry>Adulthood@(1d12-1)*3+1d3+9</entry>
-	  <entry>Middle Age@(1d3-1)*3+1d3+45</entry>
-	  <entry>Old@1d4+1d2+53</entry>
-	  <entry>Venerable@1d10+1d2+58</entry>
-	  <entry>Maximum@60+1d10</entry>
+	  <entry>Adulthood@1d20+9</entry>
+	  <entry>Middle Age@(1d3-1)*5+1d4+1d2+28</entry>
+	  <entry>Old@(1d3-1)*5+1d4+1d2+43</entry>
+	  <entry>Venerable@(1d8-1)*2+1d2+59</entry>
+	  <entry>Maximum@3d6+57</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Cryohydra</name>
@@ -1573,23 +1570,23 @@
   </collection>
   <collection>
     <name>Ethereal Filcher</name>
-	  <entry>Adulthood@(1d10-1)*3+1d3+4</entry>
-	  <entry>Middle Age@1d4+1d2+33</entry>
-	  <entry>Old@1d4+1d2+38</entry>
-	  <entry>Venerable@1d10+1d2+43</entry>
-	  <entry>Maximum@45+1d10</entry>
+	  <entry>Adulthood@(1d3-1)*5+1d4+1d2+8</entry>
+	  <entry>Middle Age@1d12+24</entry>
+	  <entry>Old@1d12+1d2+35</entry>
+	  <entry>Venerable@(1d2-1)*13+1d12+1d2+48</entry>
+	  <entry>Maximum@5d6+45</entry>
   </collection>
   <collection>
     <name>Ethereal Marauder</name>
-	  <entry>Adulthood@(1d10-1)*3+1d3+4</entry>
-	  <entry>Middle Age@1d4+1d2+33</entry>
-	  <entry>Old@1d4+1d2+38</entry>
-	  <entry>Venerable@1d10+1d2+43</entry>
-	  <entry>Maximum@45+1d10</entry>
+	  <entry>Adulthood@(1d3-1)*5+1d4+1d2+8</entry>
+	  <entry>Middle Age@1d12+24</entry>
+	  <entry>Old@1d12+1d2+35</entry>
+	  <entry>Venerable@(1d2-1)*13+1d12+1d2+48</entry>
+	  <entry>Maximum@5d6+45</entry>
   </collection>
   <collection>
     <name>Ettercap</name>
-    <entry>Adulthood@1d10+1d2+1</entry>
+    <entry>Adulthood@1d8+5</entry>
     <entry>Middle Age@1d8+13</entry>
     <entry>Old@1d10+21</entry>
     <entry>Venerable@1d6+1d2+30</entry>
@@ -1598,10 +1595,10 @@
   <collection>
     <name>Ettin</name>
 	  <entry>Adulthood@1d20+1d10-1</entry>
-	  <entry>Middle Age@1d20+29</entry>
-	  <entry>Old@1d20+49</entry>
-	  <entry>Venerable@1d10+1d2+68</entry>
-	  <entry>Maximum@70+1d10</entry>
+	  <entry>Middle Age@(1d3-1)*5+1d4+1d2+28</entry>
+	  <entry>Old@(1d3-1)*5+1d4+1d2+43</entry>
+	  <entry>Venerable@1d20+1d12+58</entry>
+	  <entry>Maximum@3d10+60</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Elder</name>
@@ -1635,11 +1632,11 @@
   </collection>
   <collection>
     <name>Fire Giant</name>
-    <entry>Adulthood@(1d8-1)*16+(1d8-1)*2+1d2+71</entry>
-    <entry>Middle Age@(1d10-1)*5+1d4+1d2+198</entry>
-    <entry>Old@(1d10-1)*5+1d4+1d2+248</entry>
-    <entry>Venerable@(1d3-1)*17+1d12+1d6+298</entry>
-    <entry>Maximum@300+5d10</entry>
+    <entry>Adulthood@(1d12-1)*7+1d6+1d2+54</entry>
+    <entry>Middle Age@(1d10-1)*7+1d6+1d2+138</entry>
+    <entry>Old@(1d10-1)*7+1d6+1d2+208</entry>
+    <entry>Venerable@(1d3-1)*47+2d20+1d8+1d2+276</entry>
+    <entry>Maximum@7d20+280</entry>
   </collection>
   <collection>
     <name>Fire Mephit</name>
@@ -1663,8 +1660,8 @@
   </collection>
   <collection>
     <name>Flamebrother Salamander</name>
-    <entry>Flamebrother (Salamander)@(1d10-1)*9+(1d3-1)*3+1d3+9</entry>
-    <entry>Maximum@100</entry>
+    <entry>Flamebrother (Salamander)@(1d3-1)*3+1d3</entry>
+    <entry>Maximum@10</entry>
   </collection>
   <collection>
     <name>Flesh Golem</name>
@@ -1681,88 +1678,88 @@
   </collection>
   <collection>
     <name>Formian Myrmarch</name>
-    <entry>Adulthood@(1d3-1)*9+(1d3-1)*3+1d3+2</entry>
-    <entry>Middle Age@1d10+29</entry>
-    <entry>Old@1d4+1d2+38</entry>
-    <entry>Venerable@1d10+1d2+43</entry>
-    <entry>Maximum@45+1d10</entry>
+    <entry>Adulthood@1d12+1d6+1</entry>
+    <entry>Middle Age@1d10+19</entry>
+    <entry>Old@1d10+29</entry>
+    <entry>Venerable@(1d3-1)*7+1d6+1d2+38</entry>
+    <entry>Maximum@1d20+40</entry>
   </collection>
   <collection>
     <name>Formian Queen</name>
-    <entry>Adulthood@(1d3-1)*9+(1d3-1)*3+1d3+2</entry>
-    <entry>Middle Age@1d10+29</entry>
-    <entry>Old@1d4+1d2+38</entry>
-    <entry>Venerable@1d10+1d2+43</entry>
-    <entry>Maximum@45+1d10</entry>
+    <entry>Adulthood@1d100+5d20+1d3-4</entry>
+    <entry>Middle Age@1d100+199</entry>
+    <entry>Old@1d100+299</entry>
+    <entry>Venerable@(1d3-1)*67+3d20+1d10+396</entry>
+    <entry>Maximum@2d100+400</entry>
   </collection>
   <collection>
     <name>Formian Taskmaster</name>
-    <entry>Adulthood@(1d3-1)*9+(1d3-1)*3+1d3+2</entry>
-    <entry>Middle Age@1d10+29</entry>
-    <entry>Old@1d4+1d2+38</entry>
-    <entry>Venerable@1d10+1d2+43</entry>
-    <entry>Maximum@45+1d10</entry>
+    <entry>Adulthood@1d12+1d6+1</entry>
+    <entry>Middle Age@1d10+19</entry>
+    <entry>Old@1d10+29</entry>
+    <entry>Venerable@(1d3-1)*7+1d6+1d2+38</entry>
+    <entry>Maximum@1d20+40</entry>
   </collection>
   <collection>
     <name>Formian Warrior</name>
-    <entry>Adulthood@(1d3-1)*9+(1d3-1)*3+1d3+2</entry>
-    <entry>Middle Age@1d10+29</entry>
-    <entry>Old@1d4+1d2+38</entry>
-    <entry>Venerable@1d10+1d2+43</entry>
-    <entry>Maximum@45+1d10</entry>
+    <entry>Adulthood@1d12+1d6+1</entry>
+    <entry>Middle Age@1d10+19</entry>
+    <entry>Old@1d10+29</entry>
+    <entry>Venerable@(1d3-1)*7+1d6+1d2+38</entry>
+    <entry>Maximum@1d20+40</entry>
   </collection>
   <collection>
     <name>Formian Worker</name>
-    <entry>Adulthood@(1d3-1)*9+(1d3-1)*3+1d3+2</entry>
-    <entry>Middle Age@1d10+29</entry>
-    <entry>Old@1d4+1d2+38</entry>
-    <entry>Venerable@1d10+1d2+43</entry>
-    <entry>Maximum@45+1d10</entry>
+    <entry>Adulthood@1d12+1d6+1</entry>
+    <entry>Middle Age@1d10+19</entry>
+    <entry>Old@1d10+29</entry>
+    <entry>Venerable@(1d3-1)*7+1d6+1d2+38</entry>
+    <entry>Maximum@1d20+40</entry>
   </collection>
   <collection>
     <name>Frost Giant</name>
-    <entry>Adulthood@(1d6-1)*19+1d12+1d8+34</entry>
-    <entry>Middle Age@(1d10-1)*5+1d4+1d2+148</entry>
-    <entry>Old@(1d10-1)*5+1d4+1d2+198</entry>
-    <entry>Venerable@(1d3-1)*17+1d12+1d6+248</entry>
-    <entry>Maximum@250+5d10</entry>
+    <entry>Adulthood@(1d20-1)*3+1d3+39</entry>
+    <entry>Middle Age@(1d10-1)*5+1d4+1d2+98</entry>
+    <entry>Old@(1d10-1)*5+1d4+1d2+148</entry>
+    <entry>Venerable@1d100+1d2+198</entry>
+    <entry>Maximum@1d100+200</entry>
   </collection>
   <collection>
     <name>Frost Worm</name>
-    <entry>Adulthood@(1d3-1)*9+(1d3-1)*3+1d3+2</entry>
-    <entry>Middle Age@1d10+29</entry>
-    <entry>Old@1d4+1d2+38</entry>
-    <entry>Venerable@1d10+1d2+43</entry>
-    <entry>Maximum@45+1d10</entry>
+    <entry>Adulthood@(1d3-1)*3+1d3+2</entry>
+    <entry>Middle Age@1d6+11</entry>
+    <entry>Old@1d6+1d2+16</entry>
+    <entry>Venerable@1d12+1d2+23</entry>
+    <entry>Maximum@1d12+25</entry>
   </collection>
   <collection>
     <name>Gargoyle</name>
-	  <entry>Adulthood@(1d3-1)*15+(1d3-1)*5+1d4+1d2-1</entry>
-	  <entry>Middle Age@(1d6-1)*9+(1d3-1)*3+1d3+45</entry>
-	  <entry>Old@1d100+99</entry>
-	  <entry>Venerable@(1d3-1)*67+3d20+1d10+196</entry>
-	  <entry>Maximum@200+2d100</entry>
+	  <entry>Adulthood@1d12+7</entry>
+	  <entry>Middle Age@1d10+19</entry>
+	  <entry>Old@1d10+29</entry>
+	  <entry>Venerable@(1d3-1)*7+1d6+1d2+38</entry>
+	  <entry>Maximum@1d20+40</entry>
   </collection>
   <collection>
     <name>Gauth (Lesser Beholder)</name>
     <entry>Adulthood@(1d8-1)*11+1d10+1d2</entry>
-    <entry>Middle Age@1d20+89</entry>
-    <entry>Old@1d10+109</entry>
+    <entry>Middle Age@(1d3-1)*5+1d4+1d2+88</entry>
+    <entry>Old@(1d3-1)*5+1d4+1d2+103</entry>
     <entry>Venerable@1d20+1d12+118</entry>
-    <entry>Maximum@120+3d10</entry>
+    <entry>Maximum@3d10+120</entry>
   </collection>
   <collection>
     <name>Gelatinous Cube</name>
-	  <entry>Adulthood@1d100</entry>
+	  <entry>Adulthood@(1d100-1)*10+1d10</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Ghaele</name>
-	  <entry>Adulthood@1d100+99</entry>
+	  <entry>Adulthood@(1d20-1)*6+1d6+79</entry>
 	  <entry>Middle Age@1d100+199</entry>
 	  <entry>Old@1d100+299</entry>
 	  <entry>Venerable@4d100+1d4+1d2+394</entry>
-	  <entry>Maximum@400+4d100</entry>
+	  <entry>Maximum@4d100+400</entry>
   </collection>
   <collection>
     <name>Ghast</name>
@@ -1776,67 +1773,67 @@
   </collection>
   <collection>
     <name>Giant Ant, Queen</name>
-	  <entry>Adulthood@1d6</entry>
-	  <entry>Middle Age@1d4+6</entry>
-	  <entry>Old@1d3+10</entry>
-	  <entry>Venerable@(1d8-1)*2+1d2+13</entry>
-	  <entry>Maximum@13+2d8</entry>
+	  <entry>Adulthood@1d4+1d2-2</entry>
+	  <entry>Middle Age@1d2+4</entry>
+	  <entry>Old@1d3+6</entry>
+	  <entry>Venerable@1d6+9</entry>
+	  <entry>Maximum@1d6+9</entry>
   </collection>
   <collection>
     <name>Giant Ant, Soldier</name>
 	  <entry>Adulthood@0</entry>
-	  <entry>Middle Age@0</entry>
-	  <entry>Old@0</entry>
-	  <entry>Venerable@1d2-1</entry>
-	  <entry>Maximum@1d2-1</entry>
+	  <entry>Middle Age@1d2-1</entry>
+	  <entry>Old@1</entry>
+	  <entry>Venerable@1d2</entry>
+	  <entry>Maximum@1d2</entry>
   </collection>
   <collection>
     <name>Giant Ant, Worker</name>
 	  <entry>Adulthood@0</entry>
-	  <entry>Middle Age@0</entry>
-	  <entry>Old@0</entry>
-	  <entry>Venerable@1d2-1</entry>
-	  <entry>Maximum@1d2-1</entry>
+	  <entry>Middle Age@1d2-1</entry>
+	  <entry>Old@1</entry>
+	  <entry>Venerable@1d2</entry>
+	  <entry>Maximum@1d2</entry>
   </collection>
   <collection>
     <name>Giant Bee</name>
 	  <entry>Adulthood@0</entry>
 	  <entry>Middle Age@0</entry>
 	  <entry>Old@0</entry>
-	  <entry>Venerable@1d2-1</entry>
-	  <entry>Maximum@1d2-1</entry>
+	  <entry>Venerable@0</entry>
+	  <entry>Maximum@0</entry>
   </collection>
   <collection>
     <name>Giant Bombardier Beetle</name>
 	  <entry>Adulthood@0</entry>
-	  <entry>Middle Age@0</entry>
+	  <entry>Middle Age@1d2-1</entry>
 	  <entry>Old@1</entry>
 	  <entry>Venerable@1d2+1</entry>
 	  <entry>Maximum@1d2+1</entry>
   </collection>
   <collection>
     <name>Giant Constrictor Snake</name>
-	  <entry>Adulthood@1d6+1d2+1</entry>
+	  <entry>Adulthood@1d6+3</entry>
 	  <entry>Middle Age@1d4+1d2+8</entry>
 	  <entry>Old@1d4+1d2+13</entry>
-	  <entry>Venerable@1d10+1d2+18</entry>
-	  <entry>Maximum@20+1d10</entry>
+	  <entry>Venerable@(1d3-1)*3+1d3+19</entry>
+	  <entry>Maximum@1d8+20</entry>
   </collection>
   <collection>
     <name>Giant Crocodile</name>
 	  <entry>Adulthood@(1d2-1)*19+1d12+1d8+10</entry>
-	  <entry>Middle Age@1d10+49</entry>
-	  <entry>Old@1d10+59</entry>
-	  <entry>Venerable@1d20+1d12+68</entry>
-	  <entry>Maximum@70+3d10</entry>
+	  <entry>Middle Age@1d20+49</entry>
+	  <entry>Old@1d20+1d12+68</entry>
+	  <entry>Venerable@1d20+100</entry>
+	  <entry>Maximum@1d20+100</entry>
   </collection>
   <collection>
     <name>Giant Eagle</name>
-	  <entry>Adulthood@1d10+4</entry>
-	  <entry>Middle Age@1d3+14</entry>
-	  <entry>Old@1d2+17</entry>
+	  <entry>Adulthood@1d4+1d2+3</entry>
+	  <entry>Middle Age@1d4+1d2+8</entry>
+	  <entry>Old@1d4+1d2+13</entry>
 	  <entry>Venerable@1d10+1d2+18</entry>
-	  <entry>Maximum@20+1d10</entry>
+	  <entry>Maximum@1d10+20</entry>
   </collection>
   <collection>
     <name>Giant Fire Beetle</name>
@@ -1848,19 +1845,19 @@
   </collection>
   <collection>
     <name>Giant Octopus</name>
-	  <entry>Adulthood@0</entry>
-	  <entry>Middle Age@1</entry>
-	  <entry>Old@2</entry>
+	  <entry>Adulthood@1d2+1</entry>
+	  <entry>Middle Age@3</entry>
+	  <entry>Old@3</entry>
 	  <entry>Venerable@1d3+2</entry>
-	  <entry>Maximum@2+1d3</entry>
+	  <entry>Maximum@1d3+2</entry>
   </collection>
   <collection>
     <name>Giant Owl</name>
-	  <entry>Adulthood@1d3-1</entry>
-	  <entry>Middle Age@3</entry>
-	  <entry>Old@4</entry>
-	  <entry>Venerable@1d8+4</entry>
-	  <entry>Maximum@4+1d8</entry>
+	  <entry>Adulthood@1d4+1</entry>
+	  <entry>Middle Age@1d3+5</entry>
+	  <entry>Old@1d4+8</entry>
+	  <entry>Venerable@1d20+1d4+11</entry>
+	  <entry>Maximum@2d12+11</entry>
   </collection>
   <collection>
     <name>Giant Praying Mantis</name>
@@ -1872,40 +1869,40 @@
   </collection>
   <collection>
     <name>Giant Squid</name>
-	  <entry>Adulthood@0</entry>
-	  <entry>Middle Age@0</entry>
-	  <entry>Old@0</entry>
-	  <entry>Venerable@1d3</entry>
-	  <entry>Maximum@1d3</entry>
+	  <entry>Adulthood@2</entry>
+	  <entry>Middle Age@2</entry>
+	  <entry>Old@2</entry>
+	  <entry>Venerable@1d4+1</entry>
+	  <entry>Maximum@1d4+1</entry>
   </collection>
   <collection>
     <name>Giant Stag Beetle</name>
-	  <entry>Adulthood@0</entry>
-	  <entry>Middle Age@0</entry>
-	  <entry>Old@0</entry>
-	  <entry>Venerable@1d2</entry>
-	  <entry>Maximum@1d2</entry>
+	  <entry>Adulthood@2</entry>
+	  <entry>Middle Age@2</entry>
+	  <entry>Old@2</entry>
+	  <entry>Venerable@1d2+1</entry>
+	  <entry>Maximum@1d2+1</entry>
   </collection>
   <collection>
     <name>Giant Wasp</name>
 	  <entry>Adulthood@0</entry>
 	  <entry>Middle Age@0</entry>
 	  <entry>Old@0</entry>
-	  <entry>Venerable@1d2-1</entry>
-	  <entry>Maximum@1d2-1</entry>
+	  <entry>Venerable@0</entry>
+	  <entry>Maximum@0</entry>
   </collection>
   <collection>
     <name>Gibbering Mouther</name>
-	  <entry>Adulthood@1d100</entry>
+	  <entry>Adulthood@(1d100-1)*10+1d10</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Girallon</name>
-	  <entry>Adulthood@1d8+11</entry>
-	  <entry>Middle Age@1d4+1d2+18</entry>
-	  <entry>Old@1d4+1d2+23</entry>
-	  <entry>Venerable@1d6+29</entry>
-	  <entry>Maximum@29+1d6</entry>
+	  <entry>Adulthood@1d2+11</entry>
+	  <entry>Middle Age@1d6+1d2+12</entry>
+	  <entry>Old@1d6+1d2+19</entry>
+	  <entry>Venerable@(1d3-1)*5+1d4+1d2+26</entry>
+	  <entry>Maximum@2d8+26</entry>
   </collection>
   <collection>
     <name>Githyanki</name>
@@ -1956,8 +1953,8 @@
   </collection>
   <collection>
     <name>Gold Dragon, Great Wyrm</name>
-	  <entry>Great Wyrm (Dragon)@(1d100-1)*8+1d8+1200</entry>
-	  <entry>Maximum@2000</entry>
+	  <entry>Great Wyrm (Dragon)@(1d100-1)*32+(1d8-1)*4+1d4+1200</entry>
+	  <entry>Maximum@4401</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Juvenile</name>
@@ -2006,11 +2003,11 @@
   </collection>
   <collection>
     <name>Gorgon</name>
-	  <entry>Adulthood@(1d10-1)*3+1d3+4</entry>
-	  <entry>Middle Age@(1d3-1)*5+1d4+1d2+33</entry>
+	  <entry>Adulthood@1d20+1d6+3</entry>
+	  <entry>Middle Age@1d20+29</entry>
 	  <entry>Old@1d10+49</entry>
 	  <entry>Venerable@(1d8-1)*2+1d2+59</entry>
-	  <entry>Maximum@59+2d8</entry>
+	  <entry>Maximum@3d6+57</entry>
   </collection>
   <collection>
     <name>Gray Elf</name>
@@ -2022,16 +2019,16 @@
   </collection>
   <collection>
     <name>Gray Ooze</name>
-	  <entry>Adulthood@1d100</entry>
+	  <entry>Adulthood@(1d100-1)*10+1d10</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Gray Render</name>
-	  <entry>Adulthood@2d20+1d10+1d2-3</entry>
-	  <entry>Middle Age@1d20+1d6+48</entry>
-	  <entry>Old@1d20+1d6+73</entry>
-	  <entry>Venerable@(1d3-1)*67+3d20+1d10+96</entry>
-	  <entry>Maximum@100+2d100</entry>
+	  <entry>Adulthood@1d100+1d20-1</entry>
+	  <entry>Middle Age@(1d20-1)*3+1d3+119</entry>
+	  <entry>Old@(1d20-1)*3+1d3+179</entry>
+	  <entry>Venerable@1d100+1d20+1d3+237</entry>
+	  <entry>Maximum@6d20+240</entry>
   </collection>
   <collection>
     <name>Gray Slaad</name>
@@ -2065,8 +2062,8 @@
   </collection>
   <collection>
     <name>Green Dragon, Great Wyrm</name>
-	  <entry>Great Wyrm (Dragon)@(1d100-1)*8+1d8+1200</entry>
-	  <entry>Maximum@2000</entry>
+	  <entry>Great Wyrm (Dragon)@(1d100-1)*11+1d10+1d2+1199</entry>
+	  <entry>Maximum@2301</entry>
   </collection>
   <collection>
     <name>Green Dragon, Juvenile</name>
@@ -2115,7 +2112,7 @@
   </collection>
   <collection>
     <name>Green Hag</name>
-	  <entry>Adulthood@9d100+3d20+1d12+1d2+26</entry>
+	  <entry>Adulthood@4d100+2d20+1d12+1d6+42</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -2125,19 +2122,19 @@
   </collection>
   <collection>
     <name>Grick</name>
-	  <entry>Adulthood@2d20+1d10+1d2-3</entry>
-	  <entry>Middle Age@1d20+1d6+48</entry>
-	  <entry>Old@(1d3-1)*5+1d4+1d2+73</entry>
-	  <entry>Venerable@1d10+1d2+88</entry>
-	  <entry>Maximum@90+1d10</entry>
+	  <entry>Adulthood@1d3</entry>
+	  <entry>Middle Age@1d2+3</entry>
+	  <entry>Old@1d2+5</entry>
+	  <entry>Venerable@1d4+1d2+6</entry>
+	  <entry>Maximum@1d4+8</entry>
   </collection>
   <collection>
     <name>Griffon</name>
-	  <entry>Adulthood@1d20+1d6-1</entry>
-	  <entry>Middle Age@1d12+1d8+24</entry>
-	  <entry>Old@(1d3-1)*5+1d4+1d2+43</entry>
-	  <entry>Venerable@1d10+1d2+58</entry>
-	  <entry>Maximum@60+1d10</entry>
+	  <entry>Adulthood@1d12-1</entry>
+	  <entry>Middle Age@1d6+11</entry>
+	  <entry>Old@1d6+1d2+16</entry>
+	  <entry>Venerable@(1d2-1)*23+1d20+1d4+23</entry>
+	  <entry>Maximum@6d6+34</entry>
   </collection>
   <collection>
     <name>Grig</name>
@@ -2157,24 +2154,21 @@
   </collection>
   <collection>
     <name>Grimlock</name>
-	  <entry>Adulthood@1d10+14</entry>
-	  <entry>Middle Age@1d8+24</entry>
-	  <entry>Old@1d12+1d6+31</entry>
-	  <entry>Venerable@1d10+1d2+48</entry>
-	  <entry>Maximum@50+1d10</entry>
+	  <entry>Adulthood@(1d3-1)*5+1d4+1d2+7</entry>
+	  <entry>Middle Age@1d12+23</entry>
+	  <entry>Old@1d12+35</entry>
+	  <entry>Venerable@1d20+1d6+46</entry>
+	  <entry>Maximum@2d12+48</entry>
   </collection>
   <collection>
     <name>Guardian Naga</name>
-	  <entry>Adulthood@(1d20-1)*24+(1d12-1)*2+1d2+19</entry>
-	  <entry>Middle Age@(1d100-1)*2+1d2+499</entry>
-	  <entry>Old@(1d100-1)*2+1d2+699</entry>
-	  <entry>Venerable@(1d3-1)*67+3d20+1d10+896</entry>
-	  <entry>Maximum@900+2d100</entry>
+	  <entry>Adulthood@(1d100-1)*100+1d100+20</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Gynosphinx</name>
-	  <entry>Adulthood@(1d100-1)*100+1d100+16</entry>
-	  <entry>Maximum@50d100+5000</entry>
+	  <entry>Adulthood@(1d100-1)*100+1d100+3</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Half-Elf</name>
@@ -2195,34 +2189,34 @@
   <collection>
     <name>Harpy</name>
 	  <entry>Adulthood@1d20+1d4</entry>
-	  <entry>Middle Age@1d10+24</entry>
-	  <entry>Old@1d8+34</entry>
-	  <entry>Venerable@1d8+42</entry>
-	  <entry>Maximum@42+1d8</entry>
+	  <entry>Middle Age@25</entry>
+	  <entry>Old@1d8+24</entry>
+	  <entry>Venerable@(1d6-1)*3+1d3+32</entry>
+	  <entry>Maximum@17d2+16</entry>
   </collection>
   <collection>
     <name>Hawk</name>
-	  <entry>Adulthood@1d4+1d2+1</entry>
-	  <entry>Middle Age@1d2+7</entry>
-	  <entry>Old@1d2+9</entry>
-	  <entry>Venerable@(1d3-1)*3+1d3+11</entry>
-	  <entry>Maximum@12+1d8</entry>
+	  <entry>Adulthood@(1d3-1)*3+1d3+2</entry>
+	  <entry>Middle Age@1d6+11</entry>
+	  <entry>Old@1d6+1d2+16</entry>
+	  <entry>Venerable@1d8+24</entry>
+	  <entry>Maximum@1d8+24</entry>
   </collection>
   <collection>
     <name>Heavy Horse</name>
-	  <entry>Adulthood@(1d3-1)*5+1d4+1d2+3</entry>
-	  <entry>Middle Age@1d4+1d2+18</entry>
-	  <entry>Old@1d4+1d2+23</entry>
-	  <entry>Venerable@1d6+29</entry>
-	  <entry>Maximum@30+1d6</entry>
+	  <entry>Adulthood@1d6+1d2+1</entry>
+	  <entry>Middle Age@1d4+1d2+8</entry>
+	  <entry>Old@1d4+1d2+13</entry>
+	  <entry>Venerable@1d6+19</entry>
+	  <entry>Maximum@1d6+19</entry>
   </collection>
   <collection>
     <name>Heavy Warhorse</name>
-	  <entry>Adulthood@(1d3-1)*5+1d4+1d2+3</entry>
-	  <entry>Middle Age@1d4+1d2+18</entry>
-	  <entry>Old@1d4+1d2+23</entry>
-	  <entry>Venerable@1d6+29</entry>
-	  <entry>Maximum@30+1d6</entry>
+	  <entry>Adulthood@1d6+1d2+1</entry>
+	  <entry>Middle Age@1d4+1d2+8</entry>
+	  <entry>Old@1d4+1d2+13</entry>
+	  <entry>Venerable@1d6+19</entry>
+	  <entry>Maximum@1d6+19</entry>
   </collection>
   <collection>
     <name>Hell Hound</name>
@@ -2246,8 +2240,8 @@
   </collection>
   <collection>
     <name>Hieracosphinx</name>
-	  <entry>Adulthood@(1d100-1)*100+1d100+16</entry>
-	  <entry>Maximum@50d100+5000</entry>
+	  <entry>Adulthood@(1d100-1)*100+1d100+3</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>High Elf</name>
@@ -2267,19 +2261,19 @@
   </collection>
   <collection>
     <name>Hill Giant</name>
-	  <entry>Adulthood@(1d4-1)*11+1d10+1d2+34</entry>
+	  <entry>Adulthood@(1d12-1)*4+1d4+31</entry>
 	  <entry>Middle Age@(1d20-1)*2+1d2+79</entry>
 	  <entry>Old@(1d20-1)*2+1d2+119</entry>
-	  <entry>Venerable@2d20+1d3+157</entry>
-	  <entry>Maximum@160+2d20</entry>
+	  <entry>Venerable@(1d3-1)*27+(1d3-1)*9+(1d3-1)*3+1d3+159</entry>
+	  <entry>Maximum@4d20+160</entry>
   </collection>
   <collection>
     <name>Hippogriff</name>
-	  <entry>Adulthood@1d20+14</entry>
-	  <entry>Middle Age@(1d6-1)*3+1d3+34</entry>
-	  <entry>Old@1d12+1d6+51</entry>
-	  <entry>Venerable@1d100+1d20+1d3+67</entry>
-	  <entry>Maximum@70+6d20</entry>
+	  <entry>Adulthood@1d10+1d2-1</entry>
+	  <entry>Middle Age@1d6+11</entry>
+	  <entry>Old@1d6+1d2+16</entry>
+	  <entry>Venerable@1d6+24</entry>
+	  <entry>Maximum@1d6+24</entry>
   </collection>
   <collection>
     <name>Hobgoblin</name>
@@ -2306,11 +2300,11 @@
   </collection>
   <collection>
     <name>Howler</name>
-	  <entry>Adulthood@(1d6-1)*3+1d3+2</entry>
-	  <entry>Middle Age@1d10+20</entry>
-	  <entry>Old@1d10+30</entry>
-	  <entry>Venerable@1d10+40</entry>
-	  <entry>Maximum@40+1d10</entry>
+	  <entry>Adulthood@(1d3-1)*5+1d4+1d2+8</entry>
+	  <entry>Middle Age@1d12+24</entry>
+	  <entry>Old@1d12+1d2+35</entry>
+	  <entry>Venerable@(1d2-1)*13+1d12+1d2+48</entry>
+	  <entry>Maximum@5d6+45</entry>
   </collection>
   <collection>
     <name>Human</name>
@@ -2322,11 +2316,11 @@
   </collection>
   <collection>
     <name>Hyena</name>
-	  <entry>Adulthood@1d8+2</entry>
-	  <entry>Middle Age@1d4+1d2+9</entry>
-	  <entry>Old@1d4+15</entry>
-	  <entry>Venerable@(1d3-1)*7+1d6+1d2+18</entry>
-	  <entry>Maximum@20+2d10</entry>
+	  <entry>Adulthood@1d4+1</entry>
+	  <entry>Middle Age@1d3+5</entry>
+	  <entry>Old@1d3+8</entry>
+	  <entry>Venerable@(1d2-1)*7+1d6+1d2+10</entry>
+	  <entry>Maximum@13d2-1</entry>
   </collection>
   <collection>
     <name>Ice Devil (Gelugon)</name>
@@ -2370,11 +2364,11 @@
   </collection>
   <collection>
     <name>Kapoacinth</name>
-	  <entry>Adulthood@(1d3-1)*15+(1d3-1)*5+1d4+1d2-1</entry>
-	  <entry>Middle Age@(1d6-1)*9+(1d3-1)*3+1d3+45</entry>
-	  <entry>Old@1d100+99</entry>
-	  <entry>Venerable@(1d3-1)*67+3d20+1d10+196</entry>
-	  <entry>Maximum@200+2d100</entry>
+	  <entry>Adulthood@1d12+7</entry>
+	  <entry>Middle Age@1d10+19</entry>
+	  <entry>Old@1d10+29</entry>
+	  <entry>Venerable@(1d3-1)*7+1d6+1d2+38</entry>
+	  <entry>Maximum@1d20+40</entry>
   </collection>
   <collection>
     <name>Kobold</name>
@@ -2391,20 +2385,20 @@
   </collection>
   <collection>
     <name>Kraken</name>
-	  <entry>Adulthood@1000d100</entry>
+	  <entry>Adulthood@(1d100-1)*1000+(1d100-1)*10+1d10</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Krenshar</name>
-	  <entry>Adulthood@1d6+1d2+2</entry>
-	  <entry>Middle Age@1d2+10</entry>
-	  <entry>Old@1d2+12</entry>
-	  <entry>Venerable@1d6+14</entry>
-	  <entry>Maximum@14+1d6</entry>
+	  <entry>Adulthood@1d6+3</entry>
+	  <entry>Middle Age@1d3+9</entry>
+	  <entry>Old@1d3+12</entry>
+	  <entry>Venerable@1d4+1d2+14</entry>
+	  <entry>Maximum@1d4+16</entry>
   </collection>
   <collection>
     <name>Kuo-toa</name>
-	  <entry>Adulthood@(1d2-1)*97+5d20+1d2</entry>
+	  <entry>Adulthood@1d100+4d20+1d10+9</entry>
 	  <entry>Middle Age@(1d10-1)*25+1d20+1d6+198</entry>
 	  <entry>Old@(1d10-1)*25+1d20+1d6+448</entry>
 	  <entry>Venerable@3d100+1d4+696</entry>
@@ -2417,19 +2411,19 @@
   </collection>
   <collection>
     <name>Lamia</name>
-	  <entry>Adulthood@(1d20-1)*2+1d2+19</entry>
-	  <entry>Middle Age@(1d20-1)*2+1d2+59</entry>
-	  <entry>Old@1d20+1d12+1d4+1d2+96</entry>
-	  <entry>Venerable@1d20+1d12+133</entry>
-	  <entry>Maximum@135+3d10</entry>
+	  <entry>Adulthood@2d20+1d12+1d6+16</entry>
+	  <entry>Middle Age@1d20+1d12+1d6+1d2+71</entry>
+	  <entry>Old@(1d2-1)*19+1d12+1d8+110</entry>
+	  <entry>Venerable@(1d4-1)*19+1d12+1d8+148</entry>
+	  <entry>Maximum@15d6+135</entry>
   </collection>
   <collection>
     <name>Lammasu</name>
-	  <entry>Adulthood@(1d20-1)*3+1d3+19</entry>
-	  <entry>Middle Age@(1d20-1)*2+1d2+79</entry>
-	  <entry>Old@(1d20-1)*2+1d2+119</entry>
-	  <entry>Venerable@2d20+1d3+157</entry>
-	  <entry>Maximum@160+2d20</entry>
+	  <entry>Adulthood@(1d3-1)*15+(1d3-1)*5+1d4+1d2+28</entry>
+	  <entry>Middle Age@1d20+1d12+1d6+1d2+71</entry>
+	  <entry>Old@(1d2-1)*19+1d12+1d8+110</entry>
+	  <entry>Venerable@(1d4-1)*19+1d12+1d8+148</entry>
+	  <entry>Maximum@15d6+135</entry>
   </collection>
   <collection>
     <name>Lantern Archon</name>
@@ -2443,35 +2437,32 @@
   </collection>
   <collection>
     <name>Leonal</name>
-	  <entry>Adulthood@1d20+14</entry>
-	  <entry>Middle Age@(1d6-1)*3+1d3+34</entry>
-	  <entry>Old@1d12+1d6+51</entry>
-	  <entry>Venerable@2d20+1d3+67</entry>
-	  <entry>Maximum@70+2d20</entry>
+	  <entry>Adulthood@(1d100-1)*10000+(1d100-1)*100+1d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Leopard</name>
 	  <entry>Adulthood@1d6+1</entry>
 	  <entry>Middle Age@1d2+7</entry>
-	  <entry>Old@1d2+9</entry>
-	  <entry>Venerable@1d12+1d2+10</entry>
-	  <entry>Maximum@12+2d6</entry>
+	  <entry>Old@1d6+9</entry>
+	  <entry>Venerable@1d4+1d2+14</entry>
+	  <entry>Maximum@1d4+16</entry>
   </collection>
   <collection>
     <name>Light Horse</name>
-	  <entry>Adulthood@(1d3-1)*5+1d4+1d2+3</entry>
-	  <entry>Middle Age@1d4+1d2+18</entry>
-	  <entry>Old@1d4+1d2+23</entry>
-	  <entry>Venerable@1d6+29</entry>
-	  <entry>Maximum@30+1d6</entry>
+	  <entry>Adulthood@1d8+3</entry>
+	  <entry>Middle Age@1d6+11</entry>
+	  <entry>Old@1d6+1d2+16</entry>
+	  <entry>Venerable@1d6+24</entry>
+	  <entry>Maximum@1d6+24</entry>
   </collection>
   <collection>
     <name>Light Warhorse</name>
-	  <entry>Adulthood@(1d3-1)*5+1d4+1d2+3</entry>
-	  <entry>Middle Age@1d4+1d2+18</entry>
-	  <entry>Old@1d4+1d2+23</entry>
-	  <entry>Venerable@1d6+29</entry>
-	  <entry>Maximum@30+1d6</entry>
+	  <entry>Adulthood@1d8+3</entry>
+	  <entry>Middle Age@1d6+11</entry>
+	  <entry>Old@1d6+1d2+16</entry>
+	  <entry>Venerable@1d6+24</entry>
+	  <entry>Maximum@1d6+24</entry>
   </collection>
   <collection>
     <name>Lightfoot Halfling</name>
@@ -2483,24 +2474,24 @@
   </collection>
   <collection>
     <name>Lillend</name>
-	  <entry>Adulthood@(1d100-1)*1000+(1d100-1)*10+1d10</entry>
-	  <entry>Maximum@(1d100-1)*10000+(1d100-1)*100+1d100+50000</entry>
+	  <entry>Adulthood@(1d100-1)*10000+(1d100-1)*100+1d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Lion</name>
-	  <entry>Adulthood@1d4+3</entry>
+	  <entry>Adulthood@1d4+1d2+1</entry>
 	  <entry>Middle Age@1d2+7</entry>
-	  <entry>Old@1d2+9</entry>
-	  <entry>Venerable@1d4+1d2+10</entry>
-	  <entry>Maximum@12+1d4</entry>
+	  <entry>Old@1d6+9</entry>
+	  <entry>Venerable@(1d3-1)*5+1d4+1d2+14</entry>
+	  <entry>Maximum@2d8+14</entry>
   </collection>
   <collection>
     <name>Lizard</name>
-	  <entry>Adulthood@1d8+1</entry>
-	  <entry>Middle Age@1d3+9</entry>
-	  <entry>Old@1d2+12</entry>
-	  <entry>Venerable@(1d8-1)*2+1d2+14</entry>
-	  <entry>Maximum@14+2d8</entry>
+	  <entry>Adulthood@1d4+1</entry>
+	  <entry>Middle Age@1d3+5</entry>
+	  <entry>Old@1d3+8</entry>
+	  <entry>Venerable@(1d2-1)*7+1d6+1d2+10</entry>
+	  <entry>Maximum@13d2-1</entry>
   </collection>
   <collection>
     <name>Lizardfolk</name>
@@ -2535,19 +2526,19 @@
   </collection>
   <collection>
     <name>Manta Ray</name>
-	  <entry>Adulthood@1d20+9</entry>
-	  <entry>Middle Age@1d10+29</entry>
-	  <entry>Old@1d4+1d2+38</entry>
-	  <entry>Venerable@1d6+44</entry>
-	  <entry>Maximum@44+1d6</entry>
+	  <entry>Adulthood@1d12+7</entry>
+	  <entry>Middle Age@1d10+19</entry>
+	  <entry>Old@1d10+29</entry>
+	  <entry>Venerable@1d10+1d2+38</entry>
+	  <entry>Maximum@1d10+40</entry>
   </collection>
   <collection>
     <name>Manticore</name>
-	  <entry>Adulthood@1d6+1d2+3</entry>
-	  <entry>Middle Age@1d3+11</entry>
-	  <entry>Old@1d3+14</entry>
-	  <entry>Venerable@1d4+1d2+16</entry>
-	  <entry>Maximum@18+1d4</entry>
+	  <entry>Adulthood@1d4+1d2+3</entry>
+	  <entry>Middle Age@1d4+1d2+8</entry>
+	  <entry>Old@1d4+1d2+13</entry>
+	  <entry>Venerable@1d10+1d2+18</entry>
+	  <entry>Maximum@1d10+20</entry>
   </collection>
   <collection>
     <name>Marilith</name>
@@ -2561,19 +2552,16 @@
   </collection>
   <collection>
     <name>Medusa</name>
-	  <entry>Adulthood@(1d3-1)*15+(1d3-1)*5+1d4+1d2+3</entry>
-	  <entry>Middle Age@(1d2-1)*13+1d12+1d2+48</entry>
-	  <entry>Old@(1d12-1)*2+1d2+75</entry>
-	  <entry>Venerable@4d100+1d4+1d2+94</entry>
-	  <entry>Maximum@100+4d100</entry>
+	  <entry>Adulthood@(1d2-1)*493+4d100+5d20+1d2+5</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Megaraptor</name>
-	  <entry>Adulthood@1d8+1</entry>
-	  <entry>Middle Age@1d3+9</entry>
-	  <entry>Old@1d2+12</entry>
-	  <entry>Venerable@1d6+14</entry>
-	  <entry>Maximum@14+1d6</entry>
+	  <entry>Adulthood@1d12+1d6+9</entry>
+	  <entry>Middle Age@(1d2-1)*7+1d6+1d2+26</entry>
+	  <entry>Old@(1d2-1)*7+1d6+1d2+40</entry>
+	  <entry>Venerable@1d20+1d10+54</entry>
+	  <entry>Maximum@3d8+60</entry>
   </collection>
   <collection>
     <name>Merfolk</name>
@@ -2588,24 +2576,24 @@
 	  <entry>Adulthood@(1d10-1)*3+1d3+14</entry>
 	  <entry>Middle Age@(1d3-1)*5+1d4+1d2+43</entry>
 	  <entry>Old@(1d10-1)*3+1d3+59</entry>
-	  <entry>Venerable@(1d3-1)*7+1d6+1d2+88</entry>
+	  <entry>Venerable@2d20+1d3+87</entry>
 	  <entry>Maximum@90+2d20</entry>
   </collection>
   <collection>
     <name>Mimic</name>
-	  <entry>Adulthood@(1d3-1)*11+1d10+1d2</entry>
-	  <entry>Middle Age@(1d6-1)*3+1d3+34</entry>
-	  <entry>Old@1d12+1d6+51</entry>
-	  <entry>Venerable@1d20+1d12+68</entry>
-	  <entry>Maximum@70+3d10</entry>
+	  <entry>Adulthood@(1d12-1)*4+1d4+1</entry>
+	  <entry>Middle Age@1d20+1d6+48</entry>
+	  <entry>Old@1d20+1d6+73</entry>
+	  <entry>Venerable@(1d3-1)*17+1d12+1d6+98</entry>
+	  <entry>Maximum@5d10+100</entry>
   </collection>
   <collection>
     <name>Mind Flayer (Illithid)</name>
-	  <entry>Adulthood@1d20+1d6+8</entry>
-	  <entry>Middle Age@(1d6-1)*3+1d3+34</entry>
-	  <entry>Old@(1d3-1)*19+1d12+1d8+51</entry>
-	  <entry>Venerable@1d20+1d12+108</entry>
-	  <entry>Maximum@110+3d10</entry>
+	  <entry>Adulthood@(1d20-1)*2+1d2+9</entry>
+	  <entry>Middle Age@1d20+1d6+48</entry>
+	  <entry>Old@1d20+1d6+73</entry>
+	  <entry>Venerable@(1d3-1)*17+1d12+1d6+98</entry>
+	  <entry>Maximum@5d10+100</entry>
   </collection>
   <collection>
     <name>Minor Xorn</name>
@@ -2627,240 +2615,240 @@
   </collection>
   <collection>
     <name>Monitor Lizard</name>
-	  <entry>Adulthood@1d6+1d2+3</entry>
-	  <entry>Middle Age@1d3+11</entry>
-	  <entry>Old@1d3+14</entry>
-	  <entry>Venerable@1d4+1d2+16</entry>
-	  <entry>Maximum@18+1d4</entry>
+	  <entry>Adulthood@1d2+1</entry>
+	  <entry>Middle Age@1d2+3</entry>
+	  <entry>Old@1d2+5</entry>
+	  <entry>Venerable@1d12+1d2+6</entry>
+	  <entry>Maximum@1d12+8</entry>
   </collection>
   <collection>
     <name>Monkey</name>
-	  <entry>Adulthood@1d6+4</entry>
-	  <entry>Middle Age@1d2+10</entry>
-	  <entry>Old@1d2+12</entry>
-	  <entry>Venerable@(1d12-1)*3+1d3+14</entry>
-	  <entry>Maximum@14+3d12</entry>
+	  <entry>Adulthood@1d6+1d2+4</entry>
+	  <entry>Middle Age@1d2+12</entry>
+	  <entry>Old@1d10+1d2+13</entry>
+	  <entry>Venerable@1d20+1d6+24</entry>
+	  <entry>Maximum@2d12+26</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Colossal</name>
-	  <entry>Adulthood@1d2+2</entry>
-	  <entry>Middle Age@5</entry>
-	  <entry>Old@6</entry>
-	  <entry>Venerable@7</entry>
-	  <entry>Maximum@7</entry>
+	  <entry>Adulthood@1d2-1</entry>
+	  <entry>Middle Age@2</entry>
+	  <entry>Old@3</entry>
+	  <entry>Venerable@1d3+3</entry>
+	  <entry>Maximum@1d3+3</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Gargantuan</name>
-	  <entry>Adulthood@1d2+2</entry>
-	  <entry>Middle Age@5</entry>
-	  <entry>Old@6</entry>
-	  <entry>Venerable@7</entry>
-	  <entry>Maximum@7</entry>
+	  <entry>Adulthood@1d2-1</entry>
+	  <entry>Middle Age@2</entry>
+	  <entry>Old@3</entry>
+	  <entry>Venerable@1d3+3</entry>
+	  <entry>Maximum@1d3+3</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Huge</name>
-	  <entry>Adulthood@1d2+2</entry>
-	  <entry>Middle Age@5</entry>
-	  <entry>Old@6</entry>
-	  <entry>Venerable@7</entry>
-	  <entry>Maximum@7</entry>
+	  <entry>Adulthood@1d2-1</entry>
+	  <entry>Middle Age@2</entry>
+	  <entry>Old@3</entry>
+	  <entry>Venerable@1d3+3</entry>
+	  <entry>Maximum@1d3+3</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Large</name>
-	  <entry>Adulthood@1d2+2</entry>
-	  <entry>Middle Age@5</entry>
-	  <entry>Old@6</entry>
-	  <entry>Venerable@7</entry>
-	  <entry>Maximum@7</entry>
+	  <entry>Adulthood@1d2-1</entry>
+	  <entry>Middle Age@2</entry>
+	  <entry>Old@3</entry>
+	  <entry>Venerable@1d3+3</entry>
+	  <entry>Maximum@1d3+3</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Medium</name>
-	  <entry>Adulthood@1d2+2</entry>
-	  <entry>Middle Age@5</entry>
-	  <entry>Old@6</entry>
-	  <entry>Venerable@7</entry>
-	  <entry>Maximum@7</entry>
+	  <entry>Adulthood@1d2-1</entry>
+	  <entry>Middle Age@2</entry>
+	  <entry>Old@3</entry>
+	  <entry>Venerable@1d3+3</entry>
+	  <entry>Maximum@1d3+3</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Small</name>
-	  <entry>Adulthood@1d2+2</entry>
-	  <entry>Middle Age@5</entry>
-	  <entry>Old@6</entry>
-	  <entry>Venerable@7</entry>
-	  <entry>Maximum@7</entry>
+	  <entry>Adulthood@1d2-1</entry>
+	  <entry>Middle Age@2</entry>
+	  <entry>Old@3</entry>
+	  <entry>Venerable@1d3+3</entry>
+	  <entry>Maximum@1d3+3</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Tiny</name>
-	  <entry>Adulthood@1d2+2</entry>
-	  <entry>Middle Age@5</entry>
-	  <entry>Old@6</entry>
-	  <entry>Venerable@7</entry>
-	  <entry>Maximum@7</entry>
+	  <entry>Adulthood@1d2-1</entry>
+	  <entry>Middle Age@2</entry>
+	  <entry>Old@3</entry>
+	  <entry>Venerable@1d3+3</entry>
+	  <entry>Maximum@1d3+3</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Colossal</name>
-	  <entry>Adulthood@1d3-1</entry>
-	  <entry>Middle Age@3</entry>
-	  <entry>Old@4</entry>
-	  <entry>Venerable@1d10+1d2+3</entry>
-	  <entry>Maximum@5+1d10</entry>
+	  <entry>Adulthood@4</entry>
+	  <entry>Middle Age@1d2+4</entry>
+	  <entry>Old@1d4+6</entry>
+	  <entry>Venerable@1d10+10</entry>
+	  <entry>Maximum@1d10+10</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Gargantuan</name>
-	  <entry>Adulthood@1d3-1</entry>
-	  <entry>Middle Age@3</entry>
-	  <entry>Old@4</entry>
-	  <entry>Venerable@1d10+1d2+3</entry>
-	  <entry>Maximum@5+1d10</entry>
+	  <entry>Adulthood@4</entry>
+	  <entry>Middle Age@1d2+4</entry>
+	  <entry>Old@1d4+6</entry>
+	  <entry>Venerable@1d10+10</entry>
+	  <entry>Maximum@1d10+10</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Huge</name>
-	  <entry>Adulthood@1d3-1</entry>
-	  <entry>Middle Age@3</entry>
-	  <entry>Old@4</entry>
-	  <entry>Venerable@1d10+1d2+3</entry>
-	  <entry>Maximum@5+1d10</entry>
+	  <entry>Adulthood@4</entry>
+	  <entry>Middle Age@1d2+4</entry>
+	  <entry>Old@1d4+6</entry>
+	  <entry>Venerable@1d10+10</entry>
+	  <entry>Maximum@1d10+10</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Large</name>
-	  <entry>Adulthood@1d3-1</entry>
-	  <entry>Middle Age@3</entry>
-	  <entry>Old@4</entry>
-	  <entry>Venerable@1d10+1d2+3</entry>
-	  <entry>Maximum@5+1d10</entry>
+	  <entry>Adulthood@4</entry>
+	  <entry>Middle Age@1d2+4</entry>
+	  <entry>Old@1d4+6</entry>
+	  <entry>Venerable@1d10+10</entry>
+	  <entry>Maximum@1d10+10</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Medium</name>
-	  <entry>Adulthood@1d3-1</entry>
-	  <entry>Middle Age@3</entry>
-	  <entry>Old@4</entry>
-	  <entry>Venerable@1d10+1d2+3</entry>
-	  <entry>Maximum@5+1d10</entry>
+	  <entry>Adulthood@4</entry>
+	  <entry>Middle Age@1d2+4</entry>
+	  <entry>Old@1d4+6</entry>
+	  <entry>Venerable@1d10+10</entry>
+	  <entry>Maximum@1d10+10</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Small</name>
-	  <entry>Adulthood@1d3-1</entry>
-	  <entry>Middle Age@3</entry>
-	  <entry>Old@4</entry>
-	  <entry>Venerable@1d10+1d2+3</entry>
-	  <entry>Maximum@5+1d10</entry>
+	  <entry>Adulthood@4</entry>
+	  <entry>Middle Age@1d2+4</entry>
+	  <entry>Old@1d4+6</entry>
+	  <entry>Venerable@1d10+10</entry>
+	  <entry>Maximum@1d10+10</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Tiny</name>
-	  <entry>Adulthood@1d3-1</entry>
-	  <entry>Middle Age@3</entry>
-	  <entry>Old@4</entry>
-	  <entry>Venerable@1d10+1d2+3</entry>
-	  <entry>Maximum@5+1d10</entry>
+	  <entry>Adulthood@4</entry>
+	  <entry>Middle Age@1d2+4</entry>
+	  <entry>Old@1d4+6</entry>
+	  <entry>Venerable@1d10+10</entry>
+	  <entry>Maximum@1d10+10</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Colossal</name>
-	  <entry>Adulthood@1d2-1</entry>
-	  <entry>Middle Age@2</entry>
-	  <entry>Old@2</entry>
-	  <entry>Venerable@1d2+1</entry>
-	  <entry>Maximum@1d2+1</entry>
+	  <entry>Adulthood@2</entry>
+	  <entry>Middle Age@1d4+2</entry>
+	  <entry>Old@1d3+6</entry>
+	  <entry>Venerable@1d10+1d2+8</entry>
+	  <entry>Maximum@1d10+10</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Gargantuan</name>
-	  <entry>Adulthood@1d2-1</entry>
-	  <entry>Middle Age@2</entry>
-	  <entry>Old@2</entry>
-	  <entry>Venerable@1d2+1</entry>
-	  <entry>Maximum@1d2+1</entry>
+	  <entry>Adulthood@2</entry>
+	  <entry>Middle Age@1d4+2</entry>
+	  <entry>Old@1d3+6</entry>
+	  <entry>Venerable@1d10+1d2+8</entry>
+	  <entry>Maximum@1d10+10</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Huge</name>
-	  <entry>Adulthood@1d2-1</entry>
-	  <entry>Middle Age@2</entry>
-	  <entry>Old@2</entry>
-	  <entry>Venerable@1d2+1</entry>
-	  <entry>Maximum@1d2+1</entry>
+	  <entry>Adulthood@2</entry>
+	  <entry>Middle Age@1d4+2</entry>
+	  <entry>Old@1d3+6</entry>
+	  <entry>Venerable@1d10+1d2+8</entry>
+	  <entry>Maximum@1d10+10</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Large</name>
-	  <entry>Adulthood@1d2-1</entry>
-	  <entry>Middle Age@2</entry>
-	  <entry>Old@2</entry>
-	  <entry>Venerable@1d2+1</entry>
-	  <entry>Maximum@1d2+1</entry>
+	  <entry>Adulthood@2</entry>
+	  <entry>Middle Age@1d4+2</entry>
+	  <entry>Old@1d3+6</entry>
+	  <entry>Venerable@1d10+1d2+8</entry>
+	  <entry>Maximum@1d10+10</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Medium</name>
-	  <entry>Adulthood@1d2-1</entry>
-	  <entry>Middle Age@2</entry>
-	  <entry>Old@2</entry>
-	  <entry>Venerable@1d2+1</entry>
-	  <entry>Maximum@1d2+1</entry>
+	  <entry>Adulthood@2</entry>
+	  <entry>Middle Age@1d4+2</entry>
+	  <entry>Old@1d3+6</entry>
+	  <entry>Venerable@1d10+1d2+8</entry>
+	  <entry>Maximum@1d10+10</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Small</name>
-	  <entry>Adulthood@1d2-1</entry>
-	  <entry>Middle Age@2</entry>
-	  <entry>Old@2</entry>
-	  <entry>Venerable@1d2+1</entry>
-	  <entry>Maximum@1d2+1</entry>
+	  <entry>Adulthood@2</entry>
+	  <entry>Middle Age@1d4+2</entry>
+	  <entry>Old@1d3+6</entry>
+	  <entry>Venerable@1d10+1d2+8</entry>
+	  <entry>Maximum@1d10+10</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Tiny</name>
-	  <entry>Adulthood@1d2-1</entry>
-	  <entry>Middle Age@2</entry>
-	  <entry>Old@2</entry>
-	  <entry>Venerable@1d2+1</entry>
-	  <entry>Maximum@1d2+1</entry>
+	  <entry>Adulthood@2</entry>
+	  <entry>Middle Age@1d4+2</entry>
+	  <entry>Old@1d3+6</entry>
+	  <entry>Venerable@1d10+1d2+8</entry>
+	  <entry>Maximum@1d10+10</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Colossal</name>
-	  <entry>Adulthood@1d2-1</entry>
-	  <entry>Middle Age@2</entry>
+	  <entry>Adulthood@0</entry>
+	  <entry>Middle Age@1</entry>
 	  <entry>Old@2</entry>
 	  <entry>Venerable@1d2+1</entry>
 	  <entry>Maximum@1d2+1</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Gargantuan</name>
-	  <entry>Adulthood@1d2-1</entry>
-	  <entry>Middle Age@2</entry>
+	  <entry>Adulthood@0</entry>
+	  <entry>Middle Age@1</entry>
 	  <entry>Old@2</entry>
 	  <entry>Venerable@1d2+1</entry>
 	  <entry>Maximum@1d2+1</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Huge</name>
-	  <entry>Adulthood@1d2-1</entry>
-	  <entry>Middle Age@2</entry>
+	  <entry>Adulthood@0</entry>
+	  <entry>Middle Age@1</entry>
 	  <entry>Old@2</entry>
 	  <entry>Venerable@1d2+1</entry>
 	  <entry>Maximum@1d2+1</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Large</name>
-	  <entry>Adulthood@1d2-1</entry>
-	  <entry>Middle Age@2</entry>
+	  <entry>Adulthood@0</entry>
+	  <entry>Middle Age@1</entry>
 	  <entry>Old@2</entry>
 	  <entry>Venerable@1d2+1</entry>
 	  <entry>Maximum@1d2+1</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Medium</name>
-	  <entry>Adulthood@1d2-1</entry>
-	  <entry>Middle Age@2</entry>
+	  <entry>Adulthood@0</entry>
+	  <entry>Middle Age@1</entry>
 	  <entry>Old@2</entry>
 	  <entry>Venerable@1d2+1</entry>
 	  <entry>Maximum@1d2+1</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Small</name>
-	  <entry>Adulthood@1d2-1</entry>
-	  <entry>Middle Age@2</entry>
+	  <entry>Adulthood@0</entry>
+	  <entry>Middle Age@1</entry>
 	  <entry>Old@2</entry>
 	  <entry>Venerable@1d2+1</entry>
 	  <entry>Maximum@1d2+1</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Tiny</name>
-	  <entry>Adulthood@1d2-1</entry>
-	  <entry>Middle Age@2</entry>
+	  <entry>Adulthood@0</entry>
+	  <entry>Middle Age@1</entry>
 	  <entry>Old@2</entry>
 	  <entry>Venerable@1d2+1</entry>
 	  <entry>Maximum@1d2+1</entry>
@@ -2875,11 +2863,11 @@
   </collection>
   <collection>
     <name>Mule</name>
-	  <entry>Adulthood@(1d3-1)*3+1d3+5</entry>
-	  <entry>Middle Age@1d6+14</entry>
-	  <entry>Old@(1d3-1)*3+1d3+20</entry>
-	  <entry>Venerable@(1d3-1)*7+1d6+1d2+28</entry>
-	  <entry>Maximum@30+2d10</entry>
+	  <entry>Adulthood@1d10+1d2+2</entry>
+	  <entry>Middle Age@1d6+1d2+13</entry>
+	  <entry>Old@1d8+21</entry>
+	  <entry>Venerable@1d10+1d2+28</entry>
+	  <entry>Maximum@1d10+30</entry>
   </collection>
   <collection>
     <name>Mummy</name>
@@ -2898,7 +2886,7 @@
   </collection>
   <collection>
     <name>Night Hag</name>
-	  <entry>Adulthood@(1d2-1)*493+4d100+5d20+1d2+5</entry>
+	  <entry>Adulthood@(1d100-1)*10000+(1d100-1)*100+1d100+50</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -2956,7 +2944,7 @@
   </collection>
   <collection>
     <name>Noble Salamander</name>
-	  <entry>Noble (Salamander)@90d100+4d20+1d12+1d4+904</entry>
+	  <entry>Noble (Salamander)@9d100+1d10+90</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -2966,16 +2954,16 @@
   </collection>
   <collection>
     <name>Ochre Jelly</name>
-	  <entry>Adulthood@1d100</entry>
+	  <entry>Adulthood@(1d100-1)*10+1d10</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Octopus</name>
-	  <entry>Adulthood@0</entry>
+	  <entry>Adulthood@1d2-1</entry>
 	  <entry>Middle Age@1</entry>
-	  <entry>Old@2</entry>
-	  <entry>Venerable@1d3+2</entry>
-	  <entry>Maximum@2+1d3</entry>
+	  <entry>Old@1</entry>
+	  <entry>Venerable@1d2</entry>
+	  <entry>Maximum@1d2</entry>
   </collection>
   <collection>
     <name>Ogre Mage</name>
@@ -2990,7 +2978,7 @@
 	  <entry>Adulthood@(1d10-1)*3+1d3+14</entry>
 	  <entry>Middle Age@(1d3-1)*5+1d4+1d2+43</entry>
 	  <entry>Old@(1d10-1)*3+1d3+59</entry>
-	  <entry>Venerable@(1d3-1)*7+1d6+1d2+88</entry>
+	  <entry>Venerable@2d20+1d3+87</entry>
 	  <entry>Maximum@90+2d20</entry>
   </collection>
   <collection>
@@ -3008,64 +2996,64 @@
   </collection>
   <collection>
     <name>Orca Whale</name>
-	  <entry>Adulthood@(1d8-1)*2+1d2+14</entry>
-	  <entry>Middle Age@1d4+1d2+29</entry>
-	  <entry>Old@1d4+35</entry>
-	  <entry>Venerable@1d20+1d12+38</entry>
-	  <entry>Maximum@40+3d10</entry>
+	  <entry>Adulthood@1d12+1d8+4</entry>
+	  <entry>Middle Age@1d4+1d2+23</entry>
+	  <entry>Old@(1d3-1)*7+1d6+1d2+28</entry>
+	  <entry>Venerable@1d20+50</entry>
+	  <entry>Maximum@1d20+50</entry>
   </collection>
   <collection>
     <name>Otyugh</name>
-	  <entry>Adulthood@1d100</entry>
+	  <entry>Adulthood@(1d100-1)*10+1d10</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Owl</name>
-	  <entry>Adulthood@1d3-1</entry>
-	  <entry>Middle Age@3</entry>
-	  <entry>Old@4</entry>
-	  <entry>Venerable@1d8+4</entry>
-	  <entry>Maximum@4+1d8</entry>
+	  <entry>Adulthood@1d4+1</entry>
+	  <entry>Middle Age@1d3+5</entry>
+	  <entry>Old@1d4+8</entry>
+	  <entry>Venerable@1d20+1d4+11</entry>
+	  <entry>Maximum@2d12+11</entry>
   </collection>
   <collection>
     <name>Owlbear</name>
-	  <entry>Adulthood@1d8+3</entry>
-	  <entry>Middle Age@1d3+11</entry>
-	  <entry>Old@1d3+14</entry>
-	  <entry>Venerable@1d4+1d2+16</entry>
-	  <entry>Maximum@18+1d4</entry>
+	  <entry>Adulthood@1d4+1</entry>
+	  <entry>Middle Age@1d3+5</entry>
+	  <entry>Old@1d4+8</entry>
+	  <entry>Venerable@1d8+12</entry>
+	  <entry>Maximum@1d8+12</entry>
   </collection>
   <collection>
     <name>Pegasus</name>
-	  <entry>Adulthood@(1d6-1)*3+1d3+7</entry>
-	  <entry>Middle Age@1d4+1d2+24</entry>
-	  <entry>Old@1d4+1d2+29</entry>
-	  <entry>Venerable@(1d3-1)*3+1d3+35</entry>
-	  <entry>Maximum@36+1d8</entry>
+	  <entry>Adulthood@1d12+3</entry>
+	  <entry>Middle Age@1d8+15</entry>
+	  <entry>Old@1d8+23</entry>
+	  <entry>Venerable@1d12+1d6+30</entry>
+	  <entry>Maximum@2d8+32</entry>
   </collection>
   <collection>
     <name>Phantom Fungus</name>
-	  <entry>Adulthood@(1d10-1)*3+1d3+4</entry>
-	  <entry>Middle Age@1d4+1d2+33</entry>
-	  <entry>Old@1d4+1d2+38</entry>
-	  <entry>Venerable@1d10+1d2+43</entry>
-	  <entry>Maximum@45+1d10</entry>
+	  <entry>Adulthood@(1d3-1)*5+1d4+1d2+8</entry>
+	  <entry>Middle Age@1d12+24</entry>
+	  <entry>Old@1d12+1d2+35</entry>
+	  <entry>Venerable@(1d2-1)*13+1d12+1d2+48</entry>
+	  <entry>Maximum@5d6+45</entry>
   </collection>
   <collection>
     <name>Phase Spider</name>
-	  <entry>Adulthood@(1d10-1)*3+1d3+4</entry>
-	  <entry>Middle Age@1d4+1d2+33</entry>
-	  <entry>Old@1d4+1d2+38</entry>
-	  <entry>Venerable@1d10+1d2+43</entry>
-	  <entry>Maximum@45+1d10</entry>
+	  <entry>Adulthood@(1d3-1)*5+1d4+1d2+8</entry>
+	  <entry>Middle Age@1d12+24</entry>
+	  <entry>Old@1d12+1d2+35</entry>
+	  <entry>Venerable@(1d2-1)*13+1d12+1d2+48</entry>
+	  <entry>Maximum@5d6+45</entry>
   </collection>
   <collection>
     <name>Phasm</name>
-	  <entry>Adulthood@(1d10-1)*3+1d3+4</entry>
-	  <entry>Middle Age@1d4+1d2+33</entry>
-	  <entry>Old@1d4+1d2+38</entry>
-	  <entry>Venerable@1d10+1d2+43</entry>
-	  <entry>Maximum@45+1d10</entry>
+	  <entry>Adulthood@(1d3-1)*5+1d4+1d2+8</entry>
+	  <entry>Middle Age@1d12+24</entry>
+	  <entry>Old@1d12+1d2+35</entry>
+	  <entry>Venerable@(1d2-1)*13+1d12+1d2+48</entry>
+	  <entry>Maximum@5d6+45</entry>
   </collection>
   <collection>
     <name>Pit Fiend</name>
@@ -3090,43 +3078,43 @@
   </collection>
   <collection>
     <name>Polar Bear</name>
-	  <entry>Adulthood@1d10+5</entry>
-	  <entry>Middle Age@1d2+15</entry>
-	  <entry>Old@1d2+17</entry>
-	  <entry>Venerable@(1d12-1)*2+1d2+19</entry>
-	  <entry>Maximum@23d2-3</entry>
+	  <entry>Adulthood@(1d3-1)*3+1d3+5</entry>
+	  <entry>Middle Age@1d4+1d2+13</entry>
+	  <entry>Old@1d10+1d2+18</entry>
+	  <entry>Venerable@(1d3-1)*5+1d4+1d2+29</entry>
+	  <entry>Maximum@2d8+29</entry>
   </collection>
   <collection>
     <name>Pony</name>
-	  <entry>Adulthood@1d4+1d2+3</entry>
-	  <entry>Middle Age@1d4+1d2+8</entry>
-	  <entry>Old@1d10+14</entry>
-	  <entry>Venerable@(1d8-1)*2+1d2+24</entry>
-	  <entry>Maximum@24+2d8</entry>
+	  <entry>Adulthood@1d6+1d2+3</entry>
+	  <entry>Middle Age@1d6+11</entry>
+	  <entry>Old@1d6+17</entry>
+	  <entry>Venerable@1d12+1d2+22</entry>
+	  <entry>Maximum@1d12+24</entry>
   </collection>
   <collection>
     <name>Porpoise</name>
-	  <entry>Adulthood@1d3+2</entry>
-	  <entry>Middle Age@6</entry>
-	  <entry>Old@7</entry>
-	  <entry>Venerable@1d3+7</entry>
-	  <entry>Maximum@7+1d3</entry>
+	  <entry>Adulthood@3</entry>
+	  <entry>Middle Age@1d2+3</entry>
+	  <entry>Old@1d2+5</entry>
+	  <entry>Venerable@1d12+1d2+6</entry>
+	  <entry>Maximum@1d12+8</entry>
   </collection>
   <collection>
     <name>Pseudodragon</name>
-	  <entry>Adulthood@1d4+1d2</entry>
-	  <entry>Middle Age@1d2+6</entry>
-	  <entry>Old@9</entry>
+	  <entry>Adulthood@1d3+1</entry>
+	  <entry>Middle Age@1d2+4</entry>
+	  <entry>Old@1d3+6</entry>
 	  <entry>Venerable@1d6+9</entry>
-	  <entry>Maximum@9+1d6</entry>
+	  <entry>Maximum@1d6+9</entry>
   </collection>
   <collection>
     <name>Purple Worm</name>
-	  <entry>Adulthood@(1d10-1)*7+1d6+1d2+28</entry>
-	  <entry>Middle Age@1d20+99</entry>
-	  <entry>Old@(1d3-1)*5+1d4+1d2+118</entry>
-	  <entry>Venerable@1d20+1d12+133</entry>
-	  <entry>Maximum@135+3d10</entry>
+	  <entry>Adulthood@(1d12-1)*3+1d3+23</entry>
+	  <entry>Middle Age@(1d10-1)*3+1d3+59</entry>
+	  <entry>Old@(1d10-1)*3+1d3+89</entry>
+	  <entry>Venerable@3d20+1d4+116</entry>
+	  <entry>Maximum@3d20+120</entry>
   </collection>
   <collection>
     <name>Quasit</name>
@@ -3140,32 +3128,29 @@
   </collection>
   <collection>
     <name>Rast</name>
-	  <entry>Adulthood@(1d10-1)*3+1d3+4</entry>
-	  <entry>Middle Age@1d4+1d2+33</entry>
-	  <entry>Old@1d4+1d2+38</entry>
-	  <entry>Venerable@1d10+1d2+43</entry>
-	  <entry>Maximum@45+1d10</entry>
+	  <entry>Adulthood@(1d100-1)*10000+(1d100-1)*100+1d100</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Rat</name>
 	  <entry>Adulthood@0</entry>
 	  <entry>Middle Age@1</entry>
-	  <entry>Old@2</entry>
-	  <entry>Venerable@1d2+2</entry>
-	  <entry>Maximum@2+1d2</entry>
+	  <entry>Old@1d2</entry>
+	  <entry>Venerable@1d2+1</entry>
+	  <entry>Maximum@1d2+1</entry>
   </collection>
   <collection>
     <name>Rat Swarm</name>
     <entry>Swarm@1d4+1d2-2</entry>
-	  <entry>Maximum@2+1d2</entry>
+	  <entry>Maximum@1d4</entry>
   </collection>
   <collection>
     <name>Raven</name>
-	  <entry>Adulthood@1d4+1d2-1</entry>
-	  <entry>Middle Age@1d2+5</entry>
-	  <entry>Old@1d2+7</entry>
-	  <entry>Venerable@1d6+9</entry>
-	  <entry>Maximum@9+1d6</entry>
+	  <entry>Adulthood@1d2+2</entry>
+	  <entry>Middle Age@1d2+4</entry>
+	  <entry>Old@1d3+6</entry>
+	  <entry>Venerable@1d20+1d12+1d4+1d2+6</entry>
+	  <entry>Maximum@17d3-7</entry>
   </collection>
   <collection>
     <name>Ravid</name>
@@ -3174,11 +3159,11 @@
   </collection>
   <collection>
     <name>Razor Boar</name>
-	  <entry>Adulthood@1d4+1</entry>
-	  <entry>Middle Age@1d2+5</entry>
-	  <entry>Old@1d2+7</entry>
-	  <entry>Venerable@1d4+1d2+8</entry>
-	  <entry>Maximum@10+1d4</entry>
+	  <entry>Adulthood@1d4+1d2</entry>
+	  <entry>Middle Age@1d3+6</entry>
+	  <entry>Old@1d4+1d2+8</entry>
+	  <entry>Venerable@1d6+14</entry>
+	  <entry>Maximum@1d6+14</entry>
   </collection>
   <collection>
     <name>Red Dragon, Adult</name>
@@ -3192,8 +3177,8 @@
   </collection>
   <collection>
     <name>Red Dragon, Great Wyrm</name>
-	  <entry>Great Wyrm (Dragon)@(1d100-1)*8+1d8+1200</entry>
-	  <entry>Maximum@2000</entry>
+	  <entry>Great Wyrm (Dragon)@(1d100-1)*13+1d12+1d2+1199</entry>
+	  <entry>Maximum@2501</entry>
   </collection>
   <collection>
     <name>Red Dragon, Juvenile</name>
@@ -3247,11 +3232,11 @@
   </collection>
   <collection>
     <name>Remorhaz</name>
-	  <entry>Adulthood@(1d8-1)*2+1d2-1</entry>
-	  <entry>Middle Age@1d4+1d2+14</entry>
-	  <entry>Old@1d6+20</entry>
-	  <entry>Venerable@1d6+1d2+25</entry>
-	  <entry>Maximum@27+1d6</entry>
+	  <entry>Adulthood@1d8+3</entry>
+	  <entry>Middle Age@1d6+11</entry>
+	  <entry>Old@1d6+17</entry>
+	  <entry>Venerable@1d12+1d2+22</entry>
+	  <entry>Maximum@1d12+24</entry>
   </collection>
   <collection>
     <name>Retriever</name>
@@ -3260,19 +3245,19 @@
   </collection>
   <collection>
     <name>Rhinoceras</name>
-	  <entry>Adulthood@1d12+1d6+1</entry>
-	  <entry>Middle Age@1d6+19</entry>
-	  <entry>Old@(1d3-1)*3+1d3+25</entry>
-	  <entry>Venerable@(1d8-1)*2+1d2+34</entry>
-	  <entry>Maximum@34+2d8</entry>
+	  <entry>Adulthood@1d10+1d2+2</entry>
+	  <entry>Middle Age@1d6+1d2+13</entry>
+	  <entry>Old@1d8+21</entry>
+	  <entry>Venerable@(1d3-1)*7+1d6+1d2+28</entry>
+	  <entry>Maximum@1d20+30</entry>
   </collection>
   <collection>
     <name>Roc</name>
-	  <entry>Adulthood@(1d20-1)*4+1d4+19</entry>
-	  <entry>Middle Age@(1d10-1)*5+1d4+1d2+98</entry>
-	  <entry>Old@(1d10-1)*5+1d4+1d2+148</entry>
-	  <entry>Venerable@(1d3-1)*67+3d20+1d10+196</entry>
-	  <entry>Maximum@200+2d100</entry>
+	  <entry>Adulthood@(1d12-1)*4+1d4+31</entry>
+	  <entry>Middle Age@(1d20-1)*2+1d2+79</entry>
+	  <entry>Old@(1d20-1)*2+1d2+119</entry>
+	  <entry>Venerable@(1d3-1)*27+(1d3-1)*9+(1d3-1)*3+1d3+159</entry>
+	  <entry>Maximum@4d20+160</entry>
   </collection>
   <collection>
     <name>Rock Gnome</name>
@@ -3284,19 +3269,19 @@
   </collection>
   <collection>
     <name>Roper</name>
-	  <entry>Adulthood@(1d10-1)*3+1d3+4</entry>
-	  <entry>Middle Age@1d4+1d2+33</entry>
-	  <entry>Old@1d4+1d2+38</entry>
-	  <entry>Venerable@1d10+1d2+43</entry>
-	  <entry>Maximum@45+1d10</entry>
+	  <entry>Adulthood@1d4+1d2+1</entry>
+	  <entry>Middle Age@1d4+7</entry>
+	  <entry>Old@1d4+11</entry>
+	  <entry>Venerable@(1d3-1)*3+1d3+15</entry>
+	  <entry>Maximum@1d8+16</entry>
   </collection>
   <collection>
     <name>Rust Monster</name>
-	  <entry>Adulthood@(1d3-1)*11+1d10+1d2</entry>
-	  <entry>Middle Age@1d4+1d2+33</entry>
-	  <entry>Old@1d4+1d2+38</entry>
-	  <entry>Venerable@1d10+1d2+43</entry>
-	  <entry>Maximum@45+1d10</entry>
+	  <entry>Adulthood@1d6+1</entry>
+	  <entry>Middle Age@1d4+7</entry>
+	  <entry>Old@1d4+11</entry>
+	  <entry>Venerable@(1d3-1)*3+1d3+15</entry>
+	  <entry>Maximum@1d8+16</entry>
   </collection>
   <collection>
     <name>Sahuagin</name>
@@ -3345,31 +3330,31 @@
   </collection>
   <collection>
     <name>Scorpionfolk</name>
-	  <entry>Adulthood@1d12+1d8+16</entry>
-	  <entry>Middle Age@1d12+1d2+35</entry>
-	  <entry>Old@1d20+1d6+48</entry>
-	  <entry>Venerable@2d20+1d3+72</entry>
-	  <entry>Maximum@75+2d20</entry>
+	  <entry>Adulthood@(1d10-1)*3+1d3+19</entry>
+	  <entry>Middle Age@1d20+1d6+48</entry>
+	  <entry>Old@1d20+1d6+73</entry>
+	  <entry>Venerable@(1d3-1)*17+1d12+1d6+98</entry>
+	  <entry>Maximum@5d10+100</entry>
   </collection>
   <collection>
     <name>Scrag</name>
-	  <entry>Adulthood@(1d20-1)*2+1d2+9</entry>
-	  <entry>Middle Age@(1d3-1)*5+1d4+1d2+48</entry>
-	  <entry>Old@1d20+1d6+63</entry>
-	  <entry>Venerable@(1d3-1)*7+1d6+1d2+88</entry>
-	  <entry>Maximum@90+2d10</entry>
+	  <entry>Adulthood@(1d12-1)*2+1d2+15</entry>
+	  <entry>Middle Age@1d20+39</entry>
+	  <entry>Old@1d20+59</entry>
+	  <entry>Venerable@2d20+1d3+77</entry>
+	  <entry>Maximum@2d20+80</entry>
   </collection>
   <collection>
     <name>Sea Cat</name>
-	  <entry>Adulthood@1d100+19</entry>
-	  <entry>Middle Age@(1d20-1)*4+1d4+119</entry>
-	  <entry>Old@(1d10-1)*7+1d6+1d2+198</entry>
-	  <entry>Venerable@3d20+1d4+266</entry>
-	  <entry>Maximum@270+3d20</entry>
+	  <entry>Adulthood@(1d3-1)*5+1d4+1d2+8</entry>
+	  <entry>Middle Age@1d12+24</entry>
+	  <entry>Old@1d12+1d2+35</entry>
+	  <entry>Venerable@(1d2-1)*13+1d12+1d2+48</entry>
+	  <entry>Maximum@5d6+45</entry>
   </collection>
   <collection>
     <name>Sea Hag</name>
-	  <entry>Adulthood@7d100+3d20+1d10+1d2+28</entry>
+	  <entry>Adulthood@4d100+2d20+1d12+1d6+42</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
@@ -3400,34 +3385,34 @@
   <collection>
     <name>Shambling Mound</name>
 	  <entry>Adulthood@(1d10-1)*3+1d3+19</entry>
-	  <entry>Middle Age@1d20+49</entry>
-	  <entry>Old@1d20+69</entry>
-	  <entry>Venerable@(1d3-1)*7+1d6+1d2+88</entry>
-	  <entry>Maximum@90+2d10</entry>
+	  <entry>Middle Age@1d20+1d6+48</entry>
+	  <entry>Old@1d20+1d6+73</entry>
+	  <entry>Venerable@(1d3-1)*17+1d12+1d6+98</entry>
+	  <entry>Maximum@5d10+100</entry>
   </collection>
   <collection>
     <name>Shark, Huge</name>
-	  <entry>Adulthood@1d4+13</entry>
-	  <entry>Middle Age@18</entry>
-	  <entry>Old@19</entry>
-	  <entry>Venerable@1d10+1d2+18</entry>
-	  <entry>Maximum@20+1d10</entry>
+	  <entry>Adulthood@1d2+25</entry>
+	  <entry>Middle Age@28</entry>
+	  <entry>Old@29</entry>
+	  <entry>Venerable@2d20+1d3+27</entry>
+	  <entry>Maximum@2d20+30</entry>
   </collection>
   <collection>
     <name>Shark, Large</name>
-	  <entry>Adulthood@1d4+13</entry>
-	  <entry>Middle Age@18</entry>
-	  <entry>Old@19</entry>
-	  <entry>Venerable@1d10+1d2+18</entry>
-	  <entry>Maximum@20+1d10</entry>
+	  <entry>Adulthood@1d6+1d2+1</entry>
+	  <entry>Middle Age@1d4+1d2+8</entry>
+	  <entry>Old@1d4+1d2+13</entry>
+	  <entry>Venerable@1d20+1d12+18</entry>
+	  <entry>Maximum@3d10+20</entry>
   </collection>
   <collection>
     <name>Shark, Medium</name>
-	  <entry>Adulthood@1d4+13</entry>
-	  <entry>Middle Age@18</entry>
-	  <entry>Old@19</entry>
-	  <entry>Venerable@1d10+1d2+18</entry>
-	  <entry>Maximum@20+1d10</entry>
+	  <entry>Adulthood@1d2+3</entry>
+	  <entry>Middle Age@1d3+5</entry>
+	  <entry>Old@1d3+8</entry>
+	  <entry>Venerable@1d4+1d2+10</entry>
+	  <entry>Maximum@1d4+12</entry>
   </collection>
   <collection>
     <name>Shield Guardian</name>
@@ -3436,19 +3421,19 @@
   </collection>
   <collection>
     <name>Shocker Lizard</name>
-	  <entry>Adulthood@(1d10-1)*3+1d3+4</entry>
-	  <entry>Middle Age@1d4+1d2+33</entry>
-	  <entry>Old@1d4+1d2+38</entry>
-	  <entry>Venerable@1d10+1d2+43</entry>
-	  <entry>Maximum@45+1d10</entry>
+	  <entry>Adulthood@(1d3-1)*5+1d4+1d2+8</entry>
+	  <entry>Middle Age@1d12+24</entry>
+	  <entry>Old@1d12+1d2+35</entry>
+	  <entry>Venerable@(1d2-1)*13+1d12+1d2+48</entry>
+	  <entry>Maximum@5d6+45</entry>
   </collection>
   <collection>
     <name>Shrieker</name>
-	  <entry>Adulthood@(1d10-1)*49+2d20+1d10+1d2+6</entry>
-	  <entry>Middle Age@(1d100-1)*2+1d2+499</entry>
-	  <entry>Old@(1d100-1)*2+1d2+699</entry>
-	  <entry>Venerable@(1d3-1)*67+3d20+1d10+896</entry>
-	  <entry>Maximum@900+2d100</entry>
+	  <entry>Adulthood@(1d20-1)*12+1d12+159</entry>
+	  <entry>Middle Age@(1d100-1)*2+1d2+399</entry>
+	  <entry>Old@(1d100-1)*2+1d2+599</entry>
+	  <entry>Venerable@4d100+1d4+1d2+794</entry>
+	  <entry>Maximum@4d100+800</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Adult</name>
@@ -3462,8 +3447,8 @@
   </collection>
   <collection>
     <name>Silver Dragon, Great Wyrm</name>
-	  <entry>Great Wyrm (Dragon)@(1d100-1)*8+1d8+1200</entry>
-	  <entry>Maximum@2000</entry>
+	  <entry>Great Wyrm (Dragon)@(1d100-1)*30+(1d10-1)*3+1d3+1200</entry>
+	  <entry>Maximum@4201</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Juvenile</name>
@@ -3527,11 +3512,11 @@
   </collection>
   <collection>
     <name>Skum</name>
-	  <entry>Adulthood@1d12+2</entry>
-	  <entry>Middle Age@1d6+14</entry>
-	  <entry>Old@1d6+20</entry>
-	  <entry>Venerable@1d6+1d2+25</entry>
-	  <entry>Maximum@27+1d6</entry>
+	  <entry>Adulthood@(1d3-1)*3+1d3+2</entry>
+	  <entry>Middle Age@1d6+11</entry>
+	  <entry>Old@1d6+17</entry>
+	  <entry>Venerable@1d12+1d2+22</entry>
+	  <entry>Maximum@1d12+24</entry>
   </collection>
   <collection>
     <name>Spectre</name>
@@ -3540,32 +3525,29 @@
   </collection>
   <collection>
     <name>Spider Eater</name>
-	  <entry>Adulthood@(1d10-1)*3+1d3+4</entry>
-	  <entry>Middle Age@1d4+1d2+33</entry>
-	  <entry>Old@1d4+1d2+38</entry>
-	  <entry>Venerable@1d10+1d2+43</entry>
-	  <entry>Maximum@45+1d10</entry>
+	  <entry>Adulthood@(1d3-1)*5+1d4+1d2+8</entry>
+	  <entry>Middle Age@1d12+24</entry>
+	  <entry>Old@1d12+1d2+35</entry>
+	  <entry>Venerable@(1d2-1)*13+1d12+1d2+48</entry>
+	  <entry>Maximum@5d6+45</entry>
   </collection>
   <collection>
     <name>Spider Swarm</name>
-	  <entry>Swarm@1d4-1</entry>
-	  <entry>Maximum@1d2+1</entry>
+	  <entry>Swarm@1d4+1d2-2</entry>
+	  <entry>Maximum@1d4</entry>
   </collection>
   <collection>
     <name>Spirit Naga</name>
-	  <entry>Adulthood@(1d20-1)*24+(1d12-1)*2+1d2+19</entry>
-	  <entry>Middle Age@(1d100-1)*2+1d2+499</entry>
-	  <entry>Old@(1d100-1)*2+1d2+699</entry>
-	  <entry>Venerable@(1d3-1)*67+3d20+1d10+896</entry>
-	  <entry>Maximum@900+2d100</entry>
+	  <entry>Adulthood@(1d100-1)*100+1d100+20</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Squid</name>
 	  <entry>Adulthood@0</entry>
-	  <entry>Middle Age@0</entry>
-	  <entry>Old@0</entry>
-	  <entry>Venerable@1d3</entry>
-	  <entry>Maximum@1d3</entry>
+	  <entry>Middle Age@1d2-1</entry>
+	  <entry>Old@1</entry>
+	  <entry>Venerable@1d2</entry>
+	  <entry>Maximum@1d2</entry>
   </collection>
   <collection>
     <name>Steam Mephit</name>
@@ -3574,27 +3556,27 @@
   </collection>
   <collection>
     <name>Stirge</name>
-	  <entry>Adulthood@1d4+1d2-1</entry>
-	  <entry>Middle Age@1d2+5</entry>
-	  <entry>Old@1d2+7</entry>
+	  <entry>Adulthood@1d3+1</entry>
+	  <entry>Middle Age@1d2+4</entry>
+	  <entry>Old@1d3+6</entry>
 	  <entry>Venerable@1d10+1d2+8</entry>
-	  <entry>Maximum@10+1d10</entry>
+	  <entry>Maximum@1d10+10</entry>
   </collection>
   <collection>
     <name>Stone Giant</name>
-	  <entry>Adulthood@(1d12-1)*13+1d12+1d2+142</entry>
-	  <entry>Middle Age@(1d100-1)*2+1d2+299</entry>
-	  <entry>Old@(1d100-1)*2+1d2+499</entry>
-	  <entry>Venerable@1d100+1d2+698</entry>
-	  <entry>Maximum@700+1d100</entry>
+	  <entry>Adulthood@(1d20-1)*8+1d8+105</entry>
+	  <entry>Middle Age@1d100+1d20+1d12+1d4+262</entry>
+	  <entry>Old@(1d2-1)*67+3d20+1d10+395</entry>
+	  <entry>Venerable@(1d4-1)*67+3d20+1d10+529</entry>
+	  <entry>Maximum@89d4+444</entry>
   </collection>
   <collection>
     <name>Stone Giant Elder</name>
-	  <entry>Adulthood@(1d12-1)*13+1d12+1d2+142</entry>
-	  <entry>Middle Age@(1d100-1)*2+1d2+299</entry>
-	  <entry>Old@(1d100-1)*2+1d2+499</entry>
-	  <entry>Venerable@1d100+1d2+698</entry>
-	  <entry>Maximum@700+1d100</entry>
+	  <entry>Adulthood@(1d20-1)*8+1d8+105</entry>
+	  <entry>Middle Age@1d100+1d20+1d12+1d4+262</entry>
+	  <entry>Old@(1d2-1)*67+3d20+1d10+395</entry>
+	  <entry>Venerable@(1d4-1)*67+3d20+1d10+529</entry>
+	  <entry>Maximum@89d4+444</entry>
   </collection>
   <collection>
     <name>Stone Golem</name>
@@ -3603,11 +3585,11 @@
   </collection>
   <collection>
     <name>Storm Giant</name>
-	  <entry>Adulthood@(1d12-1)*13+1d12+1d2+142</entry>
-	  <entry>Middle Age@1d100+299</entry>
-	  <entry>Old@1d100+399</entry>
-	  <entry>Venerable@1d100+1d2+498</entry>
-	  <entry>Maximum@500+1d100</entry>
+	  <entry>Adulthood@(1d12-1)*12+1d12+95</entry>
+	  <entry>Middle Age@(1d20-1)*6+1d6+239</entry>
+	  <entry>Old@(1d20-1)*6+1d6+359</entry>
+	  <entry>Venerable@2d100+2d20+1d4+1d2+474</entry>
+	  <entry>Maximum@12d20+480</entry>
   </collection>
   <collection>
     <name>Succubus</name>
@@ -3620,7 +3602,7 @@
 	  <entry>Middle Age@(1d10-1)*5+1d4+1d2+98</entry>
 	  <entry>Old@(1d10-1)*5+1d4+1d2+148</entry>
 	  <entry>Venerable@1d100+1d2+198</entry>
-	  <entry>Maximum@200+5d20</entry>
+	  <entry>Maximum@200+1d100</entry>
   </collection>
   <collection>
     <name>Tallfellow Halfling</name>
@@ -3652,19 +3634,19 @@
   </collection>
   <collection>
     <name>Tendriculos</name>
-	  <entry>Adulthood@(1d10-1)*3+1d3+4</entry>
-	  <entry>Middle Age@1d4+1d2+33</entry>
-	  <entry>Old@1d4+1d2+38</entry>
-	  <entry>Venerable@1d10+1d2+43</entry>
-	  <entry>Maximum@45+1d10</entry>
+	  <entry>Adulthood@(1d3-1)*5+1d4+1d2+8</entry>
+	  <entry>Middle Age@1d12+24</entry>
+	  <entry>Old@1d12+1d2+35</entry>
+	  <entry>Venerable@(1d2-1)*13+1d12+1d2+48</entry>
+	  <entry>Maximum@5d6+45</entry>
   </collection>
   <collection>
     <name>Thoqqua</name>
-	  <entry>Adulthood@(1d10-1)*3+1d3+4</entry>
-	  <entry>Middle Age@1d4+1d2+33</entry>
-	  <entry>Old@1d4+1d2+38</entry>
-	  <entry>Venerable@1d10+1d2+43</entry>
-	  <entry>Maximum@45+1d10</entry>
+	  <entry>Adulthood@(1d3-1)*5+1d4+1d2+8</entry>
+	  <entry>Middle Age@1d12+24</entry>
+	  <entry>Old@1d12+1d2+35</entry>
+	  <entry>Venerable@(1d2-1)*13+1d12+1d2+48</entry>
+	  <entry>Maximum@5d6+45</entry>
   </collection>
   <collection>
     <name>Tiefling</name>
@@ -3676,11 +3658,11 @@
   </collection>
   <collection>
     <name>Tiger</name>
-	  <entry>Adulthood@1d4+1</entry>
-	  <entry>Middle Age@6</entry>
-	  <entry>Old@7</entry>
-	  <entry>Venerable@1d3+7</entry>
-	  <entry>Maximum@7+1d3</entry>
+	  <entry>Adulthood@1d4+1d2+1</entry>
+	  <entry>Middle Age@1d3+7</entry>
+	  <entry>Old@1d6+1d2+9</entry>
+	  <entry>Venerable@1d8+17</entry>
+	  <entry>Maximum@1d8+17</entry>
   </collection>
   <collection>
     <name>Titan</name>
@@ -3689,59 +3671,59 @@
   </collection>
   <collection>
     <name>Toad</name>
-	  <entry>Adulthood@1d4+1</entry>
-	  <entry>Middle Age@1d2+5</entry>
-	  <entry>Old@1d2+7</entry>
-	  <entry>Venerable@1d3+9</entry>
-	  <entry>Maximum@10+1d2</entry>
+	  <entry>Adulthood@1d2+2</entry>
+	  <entry>Middle Age@1d2+4</entry>
+	  <entry>Old@1d3+6</entry>
+	  <entry>Venerable@1d20+1d12+8</entry>
+	  <entry>Maximum@3d10+10</entry>
   </collection>
   <collection>
     <name>Treant</name>
-	  <entry>Adulthood@(1d100-1)*3+1d3+99</entry>
-	  <entry>Middle Age@(1d100-1)*3+1d3+399</entry>
-	  <entry>Old@(1d100-1)*3+1d3+699</entry>
-	  <entry>Venerable@90d100+4d20+1d12+1d4+904</entry>
-	  <entry>Maximum@1000+100d100</entry>
+	  <entry>Adulthood@(1d100-1)*9+(1d3-1)*3+1d3+599</entry>
+	  <entry>Middle Age@(1d10-1)*75+(1d3-1)*25+1d20+1d6+1498</entry>
+	  <entry>Old@(1d10-1)*75+(1d3-1)*25+1d20+1d6+2248</entry>
+	  <entry>Venerable@15d100+1d12+1d4+1d2+2982</entry>
+	  <entry>Maximum@15d100+3000</entry>
   </collection>
   <collection>
     <name>Triceratops</name>
-	  <entry>Adulthood@(1d2-1)*7+1d6+1d2+4</entry>
-	  <entry>Middle Age@1d8+19</entry>
-	  <entry>Old@1d8+27</entry>
-	  <entry>Venerable@(1d3-1)*3+1d3+35</entry>
-	  <entry>Maximum@36+2d4</entry>
+	  <entry>Adulthood@(1d6-1)*3+1d3+10</entry>
+	  <entry>Middle Age@(1d2-1)*7+1d6+1d2+27</entry>
+	  <entry>Old@(1d3-1)*5+1d4+1d2+41</entry>
+	  <entry>Venerable@(1d10-1)*3+1d3+57</entry>
+	  <entry>Maximum@29d2+29</entry>
   </collection>
   <collection>
     <name>Triton</name>
-	  <entry>Adulthood@4d20+1d8+1d2+9</entry>
-	  <entry>Middle Age@(1d20-1)*2+1d2+99</entry>
-	  <entry>Old@(1d20-1)*2+1d2+139</entry>
-	  <entry>Venerable@2d20+1d3+177</entry>
-	  <entry>Maximum@180+2d20</entry>
+	  <entry>Adulthood@(1d12-1)*4+1d4+31</entry>
+	  <entry>Middle Age@(1d20-1)*2+1d2+79</entry>
+	  <entry>Old@(1d20-1)*2+1d2+119</entry>
+	  <entry>Venerable@(1d3-1)*27+(1d3-1)*9+(1d3-1)*3+1d3+159</entry>
+	  <entry>Maximum@4d20+160</entry>
   </collection>
   <collection>
     <name>Troglodyte</name>
-	  <entry>Adulthood@1d20+9</entry>
-	  <entry>Middle Age@1d10+29</entry>
-	  <entry>Old@1d10+39</entry>
+	  <entry>Adulthood@(1d3-1)*5+1d4+1d2+8</entry>
+	  <entry>Middle Age@1d12+24</entry>
+	  <entry>Old@1d12+1d2+35</entry>
 	  <entry>Venerable@1d10+1d2+48</entry>
-	  <entry>Maximum@50+1d10</entry>
+	  <entry>Maximum@1d10+50</entry>
   </collection>
   <collection>
     <name>Troll</name>
-	  <entry>Adulthood@(1d20-1)*2+1d2+9</entry>
-	  <entry>Middle Age@(1d3-1)*5+1d4+1d2+48</entry>
-	  <entry>Old@1d20+1d6+63</entry>
-	  <entry>Venerable@(1d3-1)*7+1d6+1d2+88</entry>
-	  <entry>Maximum@90+2d10</entry>
+	  <entry>Adulthood@(1d12-1)*2+1d2+15</entry>
+	  <entry>Middle Age@1d20+39</entry>
+	  <entry>Old@1d20+59</entry>
+	  <entry>Venerable@2d20+1d3+77</entry>
+	  <entry>Maximum@2d20+80</entry>
   </collection>
   <collection>
     <name>Truly Horrid Umber Hulk</name>
-	  <entry>Adulthood@(1d3-1)*11+1d10+1d2</entry>
-	  <entry>Middle Age@1d4+1d2+33</entry>
-	  <entry>Old@1d4+1d2+38</entry>
-	  <entry>Venerable@2d20+1d3+42</entry>
-	  <entry>Maximum@45+2d20</entry>
+	  <entry>Adulthood@1d20+1d4</entry>
+	  <entry>Middle Age@1d12+24</entry>
+	  <entry>Old@1d12+1d2+35</entry>
+	  <entry>Venerable@(1d2-1)*13+1d12+1d2+48</entry>
+	  <entry>Maximum@5d6+45</entry>
   </collection>
   <collection>
     <name>Trumpet Archon</name>
@@ -3765,24 +3747,26 @@
   </collection>
   <collection>
     <name>Tyrannosaurus</name>
-	  <entry>Adulthood@(1d6-1)*3+1d3+5</entry>
-	  <entry>Middle Age@1d8+23</entry>
-	  <entry>Old@1d8+31</entry>
-	  <entry>Venerable@1d4+1d2+38</entry>
-	  <entry>Maximum@40+1d4</entry>
+	  <entry>Adulthood@(1d8-1)*2+1d2+9</entry>
+	  <entry>Middle Age@1d12+1d2+24</entry>
+	  <entry>Old@1d12+1d2+37</entry>
+	  <entry>Venerable@(1d4-1)*7+1d6+1d2+50</entry>
+	  <entry>Maximum@3d10+49</entry>
   </collection>
   <collection>
     <name>Umber Hulk</name>
-	  <entry>Adulthood@(1d3-1)*11+1d10+1d2</entry>
-	  <entry>Middle Age@1d4+1d2+33</entry>
-	  <entry>Old@1d4+1d2+38</entry>
-	  <entry>Venerable@2d20+1d3+42</entry>
-	  <entry>Maximum@45+2d20</entry>
+	  <entry>Adulthood@1d20+1d4</entry>
+	  <entry>Middle Age@1d12+24</entry>
+	  <entry>Old@1d12+1d2+35</entry>
+	  <entry>Venerable@(1d2-1)*13+1d12+1d2+48</entry>
+	  <entry>Maximum@5d6+45</entry>
   </collection>
   <collection>
     <name>Unicorn</name>
-	  <entry>Adulthood@(1d8-1)*137+1d100+1d20+1d12+1d8+1</entry>
-	  <entry>Venerable@1d100+1d2+998</entry>
+	  <entry>Adulthood@10d100+1d6+1d2-8</entry>
+	  <entry>Middle Age@(1d3-1)*167+1d100+3d20+1d10+1d2+994</entry>
+	  <entry>Old@(1d3-1)*167+1d100+3d20+1d10+1d2+994</entry>
+	  <entry>Venerable@(1d3-1)*167+1d100+3d20+1d10+1d2+994</entry>
 	  <entry>Maximum@1000</entry>
   </collection>
   <collection>
@@ -3797,51 +3781,51 @@
   </collection>
   <collection>
     <name>Violet Fungus</name>
-	  <entry>Adulthood@(1d10-1)*49+2d20+1d10+1d2+6</entry>
-	  <entry>Middle Age@(1d100-1)*2+1d2+499</entry>
-	  <entry>Old@(1d100-1)*2+1d2+699</entry>
-	  <entry>Venerable@(1d3-1)*67+3d20+1d10+896</entry>
-	  <entry>Maximum@900+2d100</entry>
+	  <entry>Adulthood@(1d20-1)*12+1d12+159</entry>
+	  <entry>Middle Age@(1d100-1)*2+1d2+399</entry>
+	  <entry>Old@(1d100-1)*2+1d2+599</entry>
+	  <entry>Venerable@4d100+1d4+1d2+794</entry>
+	  <entry>Maximum@4d100+800</entry>
   </collection>
   <collection>
     <name>Viper Snake, Huge</name>
-	  <entry>Adulthood@1d4+1</entry>
-	  <entry>Middle Age@1d2+5</entry>
-	  <entry>Old@1d2+7</entry>
-	  <entry>Venerable@(1d8-1)*2+1d2+9</entry>
-	  <entry>Maximum@9+2d8</entry>
+	  <entry>Adulthood@1d2+4</entry>
+	  <entry>Middle Age@1d4+6</entry>
+	  <entry>Old@1d4+10</entry>
+	  <entry>Venerable@(1d3-1)*3+1d3+14</entry>
+	  <entry>Maximum@1d8+15</entry>
   </collection>
   <collection>
     <name>Viper Snake, Large</name>
-	  <entry>Adulthood@1d4+1</entry>
-	  <entry>Middle Age@1d2+5</entry>
-	  <entry>Old@1d2+7</entry>
-	  <entry>Venerable@(1d8-1)*2+1d2+9</entry>
-	  <entry>Maximum@9+2d8</entry>
+	  <entry>Adulthood@1d4</entry>
+	  <entry>Middle Age@1d2+4</entry>
+	  <entry>Old@1d3+6</entry>
+	  <entry>Venerable@1d10+1d2+8</entry>
+	  <entry>Maximum@1d10+10</entry>
   </collection>
   <collection>
     <name>Viper Snake, Medium</name>
-	  <entry>Adulthood@1d4+1</entry>
-	  <entry>Middle Age@1d2+5</entry>
-	  <entry>Old@1d2+7</entry>
-	  <entry>Venerable@(1d8-1)*2+1d2+9</entry>
-	  <entry>Maximum@9+2d8</entry>
+	  <entry>Adulthood@1d4+1d2</entry>
+	  <entry>Middle Age@1d4+6</entry>
+	  <entry>Old@1d4+10</entry>
+	  <entry>Venerable@1d12+14</entry>
+	  <entry>Maximum@1d12+14</entry>
   </collection>
   <collection>
     <name>Viper Snake, Small</name>
-	  <entry>Adulthood@1d4+1</entry>
-	  <entry>Middle Age@1d2+5</entry>
-	  <entry>Old@1d2+7</entry>
-	  <entry>Venerable@(1d8-1)*2+1d2+9</entry>
-	  <entry>Maximum@9+2d8</entry>
+	  <entry>Adulthood@1d3+1</entry>
+	  <entry>Middle Age@1d2+4</entry>
+	  <entry>Old@1d3+6</entry>
+	  <entry>Venerable@(1d3-1)*7+1d6+1d2+8</entry>
+	  <entry>Maximum@1d20+10</entry>
   </collection>
   <collection>
     <name>Viper Snake, Tiny</name>
-	  <entry>Adulthood@1d4+1</entry>
-	  <entry>Middle Age@1d2+5</entry>
-	  <entry>Old@1d2+7</entry>
-	  <entry>Venerable@(1d8-1)*2+1d2+9</entry>
-	  <entry>Maximum@9+2d8</entry>
+	  <entry>Adulthood@1d2+1</entry>
+	  <entry>Middle Age@1d2+3</entry>
+	  <entry>Old@1d3+5</entry>
+	  <entry>Venerable@1d3+8</entry>
+	  <entry>Maximum@1d3+8</entry>
   </collection>
   <collection>
     <name>Vrock</name>
@@ -3850,11 +3834,11 @@
   </collection>
   <collection>
     <name>Warpony</name>
-	  <entry>Adulthood@1d4+1d2+3</entry>
-	  <entry>Middle Age@1d4+1d2+8</entry>
-	  <entry>Old@1d10+14</entry>
-	  <entry>Venerable@(1d8-1)*2+1d2+24</entry>
-	  <entry>Maximum@24+2d8</entry>
+	  <entry>Adulthood@1d6+1d2+3</entry>
+	  <entry>Middle Age@1d6+11</entry>
+	  <entry>Old@1d6+17</entry>
+	  <entry>Venerable@1d12+1d2+22</entry>
+	  <entry>Maximum@1d12+24</entry>
   </collection>
   <collection>
     <name>Water Elemental, Elder</name>
@@ -3893,19 +3877,16 @@
   </collection>
   <collection>
     <name>Water Naga</name>
-	  <entry>Adulthood@(1d20-1)*24+(1d12-1)*2+1d2+19</entry>
-	  <entry>Middle Age@(1d100-1)*2+1d2+499</entry>
-	  <entry>Old@(1d100-1)*2+1d2+699</entry>
-	  <entry>Venerable@(1d3-1)*67+3d20+1d10+896</entry>
-	  <entry>Maximum@900+2d100</entry>
+	  <entry>Adulthood@(1d100-1)*100+1d100+20</entry>
+	  <entry>Maximum@-1</entry>
   </collection>
   <collection>
     <name>Weasel</name>
-	  <entry>Adulthood@1d4</entry>
-	  <entry>Middle Age@5</entry>
-	  <entry>Old@6</entry>
-	  <entry>Venerable@1d4+6</entry>
-	  <entry>Maximum@6+1d4</entry>
+	  <entry>Adulthood@1d2-1</entry>
+	  <entry>Middle Age@1</entry>
+	  <entry>Old@1d2</entry>
+	  <entry>Venerable@1d8+1</entry>
+	  <entry>Maximum@1d8+1</entry>
   </collection>
   <collection>
     <name>White Dragon, Adult</name>
@@ -3919,8 +3900,8 @@
   </collection>
   <collection>
     <name>White Dragon, Great Wyrm</name>
-	  <entry>Great Wyrm (Dragon)@(1d100-1)*8+1d8+1200</entry>
-	  <entry>Maximum@2000</entry>
+	  <entry>Great Wyrm (Dragon)@(1d100-1)*9+(1d3-1)*3+1d3+1200</entry>
+	  <entry>Maximum@2101</entry>
   </collection>
   <collection>
     <name>White Dragon, Juvenile</name>
@@ -3987,27 +3968,27 @@
   </collection>
   <collection>
     <name>Winter Wolf</name>
-	  <entry>Adulthood@1d20+1d4+1</entry>
-	  <entry>Middle Age@1d10+25</entry>
-	  <entry>Old@(1d3-1)*3+1d3+35</entry>
-	  <entry>Venerable@1d10+1d2+43</entry>
-	  <entry>Maximum@45+1d10</entry>
+	  <entry>Adulthood@(1d2-1)*11+1d10+1d2+1</entry>
+	  <entry>Middle Age@25</entry>
+	  <entry>Old@1d8+24</entry>
+	  <entry>Venerable@(1d6-1)*3+1d3+32</entry>
+	  <entry>Maximum@17d2+16</entry>
   </collection>
   <collection>
     <name>Wolf</name>
-	  <entry>Adulthood@1d3+2</entry>
-	  <entry>Middle Age@1d3+5</entry>
-	  <entry>Old@1d3+8</entry>
-	  <entry>Venerable@1d3+11</entry>
-	  <entry>Maximum@12+1d2</entry>
+	  <entry>Adulthood@1d2+1</entry>
+	  <entry>Middle Age@1d2+3</entry>
+	  <entry>Old@1d3+5</entry>
+	  <entry>Venerable@(1d3-1)*3+1d3+8</entry>
+	  <entry>Maximum@1d8+9</entry>
   </collection>
   <collection>
     <name>Wolverine</name>
-	  <entry>Adulthood@1d4+1d2-1</entry>
-	  <entry>Middle Age@6</entry>
-	  <entry>Old@7</entry>
-	  <entry>Venerable@1d3+7</entry>
-	  <entry>Maximum@7+1d3</entry>
+	  <entry>Adulthood@2</entry>
+	  <entry>Middle Age@1d2+2</entry>
+	  <entry>Old@1d2+4</entry>
+	  <entry>Venerable@1d10+1d2+5</entry>
+	  <entry>Maximum@1d10+7</entry>
   </collection>
   <collection>
     <name>Wood Elf</name>
@@ -4019,11 +4000,11 @@
   </collection>
   <collection>
     <name>Worg</name>
-	  <entry>Adulthood@1d12+1d6+2</entry>
-	  <entry>Middle Age@1d6+1d2+19</entry>
-	  <entry>Old@1d6+1d2+26</entry>
-	  <entry>Venerable@(1d3-1)*7+1d6+1d2+33</entry>
-	  <entry>Maximum@35+2d10</entry>
+	  <entry>Adulthood@(1d3-1)*5+1d4+1d2+8</entry>
+	  <entry>Middle Age@1d12+24</entry>
+	  <entry>Old@1d12+1d2+35</entry>
+	  <entry>Venerable@(1d2-1)*13+1d12+1d2+48</entry>
+	  <entry>Maximum@5d6+45</entry>
   </collection>
   <collection>
     <name>Wraith</name>
@@ -4032,11 +4013,11 @@
   </collection>
   <collection>
     <name>Wyvern</name>
-	  <entry>Adulthood@3d20+1d8+6</entry>
-	  <entry>Middle Age@1d20+1d6+73</entry>
-	  <entry>Old@1d20+1d12+1d4+1d2+96</entry>
-	  <entry>Venerable@1d20+1d12+133</entry>
-	  <entry>Maximum@135+3d10</entry>
+	  <entry>Adulthood@(1d12-1)*3+1d3+23</entry>
+	  <entry>Middle Age@(1d10-1)*3+1d3+59</entry>
+	  <entry>Old@(1d10-1)*3+1d3+89</entry>
+	  <entry>Venerable@3d20+1d4+116</entry>
+	  <entry>Maximum@3d20+120</entry>
   </collection>
   <collection>
     <name>Xill</name>
@@ -4050,11 +4031,11 @@
   </collection>
   <collection>
     <name>Yrthak</name>
-	  <entry>Adulthood@(1d10-1)*3+1d3+4</entry>
-	  <entry>Middle Age@1d4+1d2+33</entry>
-	  <entry>Old@1d4+1d2+38</entry>
-	  <entry>Venerable@1d10+1d2+43</entry>
-	  <entry>Maximum@45+1d10</entry>
+	  <entry>Adulthood@(1d3-1)*5+1d4+1d2+8</entry>
+	  <entry>Middle Age@1d12+24</entry>
+	  <entry>Old@1d12+1d2+35</entry>
+	  <entry>Venerable@(1d2-1)*13+1d12+1d2+48</entry>
+	  <entry>Maximum@5d6+45</entry>
   </collection>
   <collection>
     <name>Yuan-ti Abomination</name>
@@ -4062,7 +4043,7 @@
 	  <entry>Middle Age@1d20+39</entry>
 	  <entry>Old@1d20+59</entry>
 	  <entry>Venerable@2d20+1d3+77</entry>
-	  <entry>Maximum@80+2d20</entry>
+	  <entry>Maximum@2d20+80</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head)</name>
@@ -4070,7 +4051,7 @@
 	  <entry>Middle Age@1d20+39</entry>
 	  <entry>Old@1d20+59</entry>
 	  <entry>Venerable@2d20+1d3+77</entry>
-	  <entry>Maximum@80+2d20</entry>
+	  <entry>Maximum@2d20+80</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)</name>
@@ -4078,7 +4059,7 @@
 	  <entry>Middle Age@1d20+39</entry>
 	  <entry>Old@1d20+59</entry>
 	  <entry>Venerable@2d20+1d3+77</entry>
-	  <entry>Maximum@80+2d20</entry>
+	  <entry>Maximum@2d20+80</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</name>
@@ -4086,7 +4067,7 @@
 	  <entry>Middle Age@1d20+39</entry>
 	  <entry>Old@1d20+59</entry>
 	  <entry>Venerable@2d20+1d3+77</entry>
-	  <entry>Maximum@80+2d20</entry>
+	  <entry>Maximum@2d20+80</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)</name>
@@ -4094,7 +4075,7 @@
 	  <entry>Middle Age@1d20+39</entry>
 	  <entry>Old@1d20+59</entry>
 	  <entry>Venerable@2d20+1d3+77</entry>
-	  <entry>Maximum@80+2d20</entry>
+	  <entry>Maximum@2d20+80</entry>
   </collection>
   <collection>
     <name>Yuan-ti Pureblood</name>
@@ -4102,7 +4083,7 @@
 	  <entry>Middle Age@1d20+39</entry>
 	  <entry>Old@1d20+59</entry>
 	  <entry>Venerable@2d20+1d3+77</entry>
-	  <entry>Maximum@80+2d20</entry>
+	  <entry>Maximum@2d20+80</entry>
   </collection>
   <collection>
     <name>Zelekhut</name>

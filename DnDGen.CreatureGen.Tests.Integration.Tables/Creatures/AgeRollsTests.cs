@@ -41,32 +41,39 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 Assert.That(isValid, Is.True, roll);
             }
 
-            if (typesAndRolls.ContainsKey(AgeConstants.Categories.Venerable))
+            //INFO: Unicorns don't age normally, so their age categories don't abide by these rules
+            if (typesAndRolls.ContainsKey(AgeConstants.Categories.Venerable) && name != CreatureConstants.Unicorn)
             {
                 var maxV = dice.Roll(typesAndRolls[AgeConstants.Categories.Venerable]).AsPotentialMaximum();
                 var maxMax = dice.Roll(typesAndRolls[AgeConstants.Categories.Maximum]).AsPotentialMaximum();
-                Assert.That(maxV, Is.EqualTo(maxMax));
+                Assert.That(maxV, Is.EqualTo(maxMax), $"V:{typesAndRolls[AgeConstants.Categories.Venerable]}, Max:{typesAndRolls[AgeConstants.Categories.Maximum]}");
 
                 var minV = dice.Roll(typesAndRolls[AgeConstants.Categories.Venerable]).AsPotentialMinimum();
                 var minMax = dice.Roll(typesAndRolls[AgeConstants.Categories.Maximum]).AsPotentialMinimum();
-                Assert.That(minMax, Is.AtLeast(minV));
+                Assert.That(minMax, Is.AtLeast(minV), $"V:{typesAndRolls[AgeConstants.Categories.Venerable]}, Max:{typesAndRolls[AgeConstants.Categories.Maximum]}");
 
                 if (typesAndRolls.ContainsKey(AgeConstants.Categories.Old))
                 {
                     var maxO = dice.Roll(typesAndRolls[AgeConstants.Categories.Old]).AsPotentialMaximum();
-                    Assert.That(maxO, Is.LessThanOrEqualTo(minV).And.EqualTo(minV).Within(1));
+                    Assert.That(maxO,
+                        Is.LessThanOrEqualTo(minV).And.EqualTo(minV).Within(1),
+                        $"O:{typesAndRolls[AgeConstants.Categories.Old]}, V:{typesAndRolls[AgeConstants.Categories.Venerable]}");
 
                     if (typesAndRolls.ContainsKey(AgeConstants.Categories.MiddleAge))
                     {
                         var maxM = dice.Roll(typesAndRolls[AgeConstants.Categories.MiddleAge]).AsPotentialMaximum();
                         var minO = dice.Roll(typesAndRolls[AgeConstants.Categories.Old]).AsPotentialMinimum();
-                        Assert.That(maxM, Is.LessThanOrEqualTo(minO).And.EqualTo(minO).Within(1));
+                        Assert.That(maxM,
+                            Is.LessThanOrEqualTo(minO).And.EqualTo(minO).Within(1),
+                            $"M:{typesAndRolls[AgeConstants.Categories.MiddleAge]}, O:{typesAndRolls[AgeConstants.Categories.Old]}");
 
                         if (typesAndRolls.ContainsKey(AgeConstants.Categories.Adulthood))
                         {
                             var maxA = dice.Roll(typesAndRolls[AgeConstants.Categories.Adulthood]).AsPotentialMaximum();
                             var minM = dice.Roll(typesAndRolls[AgeConstants.Categories.MiddleAge]).AsPotentialMinimum();
-                            Assert.That(maxA, Is.LessThanOrEqualTo(minM).And.EqualTo(minM).Within(1));
+                            Assert.That(maxA,
+                                Is.LessThanOrEqualTo(minM).And.EqualTo(minM).Within(1),
+                                $"A:{typesAndRolls[AgeConstants.Categories.Adulthood]}, M:{typesAndRolls[AgeConstants.Categories.MiddleAge]}");
                         }
                     }
                 }
@@ -95,34 +102,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 {
                     testCases[creature] = new Dictionary<string, string>();
                 }
-
-                /*INFO: For animal ages, and ages I create, here is my method:
-                 1. Get the start of the Venerable age category. If not found, assume 50 or 100 (whichever seems more reasonable)
-                   A. If lifespan is described by a range, use that
-                   B. If lifespan described as "over", then use as start of Venerable
-                   C. If lifespan described as "average", then use as 1.25x of Venerable
-                   D. If lifespan described as "up to", then use that as 1.5x of Venerable
-                 2. Maximum is +50%
-                 2. Figure out when "adulthood" starts. If not found, assume at 20% of venerable (for 50, it would be 10; 100 = 20)
-                 3. Middle Age starts at halfway to venerable (50 = 25, 100 = 50)
-                 4. If a "wild" versus "captivity" age is specified, captivity = venerable, wild = old. Otherwise, Old = 75% of venerable
-
-                 Example: Human
-                   
-                    Adulthood = [15, 34];
-                    MiddleAge = [35, 52];
-                    Old = [53, 69];
-                    Venerable = [70, 110];
-                    Maximum = "70+2d20";
-
-                    1. Venerable starts at 70
-                    2. Maximum = 70*1.5 = 105 ~= 3d12 (close enough to 2d20 for making something up)
-                    2. Adulthood is 70*.2 = 14 (close enough to 15 for making something up)
-                    3. Middle Age = 70*.5 = 35
-                    4. Old = 70*.75 = 52.5 (round up to 53)
-
-                For swarms, let the age be 0 to double max
-                */
 
                 //Source: http://people.wku.edu/charles.plemons/ad&d/races/age.html
                 testCases[CreatureConstants.Aasimar][AgeConstants.Categories.Adulthood] = GetRoll(16, 61);
@@ -295,13 +274,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Ant_Giant_Queen][AgeConstants.Categories.Venerable] = GetVenerableRoll(10, 15);
                 testCases[CreatureConstants.Ant_Giant_Queen][AgeConstants.Categories.Maximum] = GetMaximumRoll(10, 15);
                 testCases[CreatureConstants.Ant_Giant_Soldier][AgeConstants.Categories.Adulthood] = "0";
-                testCases[CreatureConstants.Ant_Giant_Soldier][AgeConstants.Categories.MiddleAge] = "0";
-                testCases[CreatureConstants.Ant_Giant_Soldier][AgeConstants.Categories.Old] = "0";
+                testCases[CreatureConstants.Ant_Giant_Soldier][AgeConstants.Categories.MiddleAge] = GetRoll(0, 1);
+                testCases[CreatureConstants.Ant_Giant_Soldier][AgeConstants.Categories.Old] = "1";
                 testCases[CreatureConstants.Ant_Giant_Soldier][AgeConstants.Categories.Venerable] = "1d2";
                 testCases[CreatureConstants.Ant_Giant_Soldier][AgeConstants.Categories.Maximum] = "1d2";
                 testCases[CreatureConstants.Ant_Giant_Worker][AgeConstants.Categories.Adulthood] = "0";
-                testCases[CreatureConstants.Ant_Giant_Worker][AgeConstants.Categories.MiddleAge] = "0";
-                testCases[CreatureConstants.Ant_Giant_Worker][AgeConstants.Categories.Old] = "0";
+                testCases[CreatureConstants.Ant_Giant_Worker][AgeConstants.Categories.MiddleAge] = GetRoll(0, 1);
+                testCases[CreatureConstants.Ant_Giant_Worker][AgeConstants.Categories.Old] = "1";
                 testCases[CreatureConstants.Ant_Giant_Worker][AgeConstants.Categories.Venerable] = "1d2";
                 testCases[CreatureConstants.Ant_Giant_Worker][AgeConstants.Categories.Maximum] = "1d2";
                 //Source: https://www.dimensions.com/element/eastern-lowland-gorilla-gorilla-beringei-graueri (maximum)
@@ -499,10 +478,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Bodak][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
                 //Source: https://web.stanford.edu/~cbross/bombbeetle.html
                 testCases[CreatureConstants.BombardierBeetle_Giant][AgeConstants.Categories.Adulthood] = "0";
-                testCases[CreatureConstants.BombardierBeetle_Giant][AgeConstants.Categories.MiddleAge] = "0";
+                testCases[CreatureConstants.BombardierBeetle_Giant][AgeConstants.Categories.MiddleAge] = GetRoll(0, 1);
                 testCases[CreatureConstants.BombardierBeetle_Giant][AgeConstants.Categories.Old] = "1";
-                testCases[CreatureConstants.BombardierBeetle_Giant][AgeConstants.Categories.Venerable] = "1d2+1";
-                testCases[CreatureConstants.BombardierBeetle_Giant][AgeConstants.Categories.Maximum] = "1+1d2";
+                testCases[CreatureConstants.BombardierBeetle_Giant][AgeConstants.Categories.Venerable] = GetRoll(2, 3);
+                testCases[CreatureConstants.BombardierBeetle_Giant][AgeConstants.Categories.Maximum] = GetMaximumRoll(2, 3);
                 testCases[CreatureConstants.BoneDevil_Osyluth][AgeConstants.Categories.Adulthood] = outsiderAgeRoll;
                 testCases[CreatureConstants.BoneDevil_Osyluth][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
                 //Source: https://forgottenrealms.fandom.com/wiki/Bralani
@@ -675,7 +654,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 //Source: https://www.dimensions.com/element/saltwater-crocodile-crocodylus-porosus
                 //https://en.wikipedia.org/wiki/Saltwater_crocodile (adulthood, same as nile crocodiles)
                 testCases[CreatureConstants.Crocodile_Giant][AgeConstants.Categories.Adulthood] = GetAdulthoodRoll(101, 12);
-                testCases[CreatureConstants.Crocodile_Giant][AgeConstants.Categories.MiddleAge] = GetMiddleAgeRoll(101);
+                testCases[CreatureConstants.Crocodile_Giant][AgeConstants.Categories.MiddleAge] = GetMiddleAgeRoll(101, 70);
                 testCases[CreatureConstants.Crocodile_Giant][AgeConstants.Categories.Old] = GetRoll(70, 100);
                 testCases[CreatureConstants.Crocodile_Giant][AgeConstants.Categories.Venerable] = GetRoll(101, 120);
                 testCases[CreatureConstants.Crocodile_Giant][AgeConstants.Categories.Maximum] = GetMaximumRoll(101, 120);
@@ -1026,7 +1005,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Dragon_White_GreatWyrm][AgeConstants.Categories.Maximum] = "2101";
                 //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/dragon-turtle-article
                 testCases[CreatureConstants.DragonTurtle][AgeConstants.Categories.Adulthood] = tenKRoll;
-                testCases[CreatureConstants.DragonTurtle][AgeConstants.Categories.Maximum] = "10000+10d100";
+                testCases[CreatureConstants.DragonTurtle][AgeConstants.Categories.Maximum] = GetMaximumRoll(10_000);
                 //Source: https://forgottenrealms.fandom.com/wiki/Dragonne
                 //Nothing on aging other than 150 years been exceptionally/magically old. So, will use 150 as "up to"
                 testCases[CreatureConstants.Dragonne][AgeConstants.Categories.Adulthood] = GetAdulthoodRollFromUpTo(150);
@@ -1439,8 +1418,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Halfling_Tallfellow][AgeConstants.Categories.Maximum] = "100+5d20";
                 //Source: https://forgottenrealms.fandom.com/wiki/Harpy
                 testCases[CreatureConstants.Harpy][AgeConstants.Categories.Adulthood] = GetRoll(2, 24);
-                testCases[CreatureConstants.Harpy][AgeConstants.Categories.MiddleAge] = "25"; //Up to 50 means O = 50 * (2/3) * (3/4) = 50/2 = 25
-                testCases[CreatureConstants.Harpy][AgeConstants.Categories.Old] = GetOldRollFromUpTo(50);
+                testCases[CreatureConstants.Harpy][AgeConstants.Categories.MiddleAge] = "25";
+                testCases[CreatureConstants.Harpy][AgeConstants.Categories.Old] = GetRoll(25, 32);
                 testCases[CreatureConstants.Harpy][AgeConstants.Categories.Venerable] = GetVenerableRollFromUpTo(50);
                 testCases[CreatureConstants.Harpy][AgeConstants.Categories.Maximum] = GetMaximumRollFromUpTo(50);
                 //Source: https://www.dimensions.com/element/osprey-pandion-haliaetus (maximum)
@@ -2288,7 +2267,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 //Source: https://www.dimensions.com/element/humboldt-squid-dosidicus-gigas V:1-2
                 //http://bioweb.uwlax.edu/bio203/f2013/kitzmann_nath/reproduction.htm A:0
                 testCases[CreatureConstants.Squid][AgeConstants.Categories.Adulthood] = "0";
-                testCases[CreatureConstants.Squid][AgeConstants.Categories.MiddleAge] = "1";
+                testCases[CreatureConstants.Squid][AgeConstants.Categories.MiddleAge] = GetRoll(0, 1);
                 testCases[CreatureConstants.Squid][AgeConstants.Categories.Old] = "1";
                 testCases[CreatureConstants.Squid][AgeConstants.Categories.Venerable] = GetRoll(1, 2);
                 testCases[CreatureConstants.Squid][AgeConstants.Categories.Maximum] = GetMaximumRoll(1, 2);
@@ -2482,8 +2461,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.WillOWisp][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
                 //Source: https://pathfinderwiki.com/wiki/Winter_wolf A:3,M:25,V:u50
                 testCases[CreatureConstants.WinterWolf][AgeConstants.Categories.Adulthood] = GetRoll(3, 24);
-                testCases[CreatureConstants.WinterWolf][AgeConstants.Categories.MiddleAge] = "25"; //Up to 50 means O = 50 * (2/3) * (3/4) = 50/2 = 25
-                testCases[CreatureConstants.WinterWolf][AgeConstants.Categories.Old] = GetOldRollFromUpTo(50);
+                testCases[CreatureConstants.WinterWolf][AgeConstants.Categories.MiddleAge] = "25";
+                testCases[CreatureConstants.WinterWolf][AgeConstants.Categories.Old] = GetRoll(25, 32);
                 testCases[CreatureConstants.WinterWolf][AgeConstants.Categories.Venerable] = GetVenerableRollFromUpTo(50);
                 testCases[CreatureConstants.WinterWolf][AgeConstants.Categories.Maximum] = GetMaximumRollFromUpTo(50);
                 //Source: https://www.dimensions.com/element/gray-wolf O:6-8,V:9-17
@@ -2681,12 +2660,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(40, 100, "3d20+40")]
         [TestCase(50, 70, "1d20+50")]
         [TestCase(50, 74, "2d12+50")]
+        [TestCase(50, 75, "5d6+45")]
         [TestCase(60, 80, "1d20+60")]
         [TestCase(65, 85, "1d20+65")]
         [TestCase(70, 110, "2d20+70")]
         [TestCase(80, 120, "2d20+80")]
         [TestCase(90, 130, "2d20+90")]
         [TestCase(95, 135, "2d20+95")]
+        [TestCase(100, 150, "5d10+100")]
         [TestCase(100, 200, "1d100+100")]
         [TestCase(101, 200, "1d100+100")]
         [TestCase(110, 130, "1d20+110")]
