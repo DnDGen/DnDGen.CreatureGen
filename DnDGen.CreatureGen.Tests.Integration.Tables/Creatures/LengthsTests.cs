@@ -37,6 +37,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var genders = collectionSelector.SelectFrom(TableNameConstants.Collection.Genders, name);
             Assert.That(typesAndRolls.Keys, Is.EquivalentTo(genders.Union(new[] { name })).And.Not.Empty, $"TEST DATA: {name}");
 
+            foreach (var roll in typesAndRolls.Values)
+            {
+                var isValid = dice.Roll(roll).IsValid();
+                Assert.That(isValid, Is.True, roll);
+            }
+
             AssertTypesAndAmounts(name, typesAndRolls);
         }
 
@@ -67,15 +73,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.d20srd.org/srd/monsters/sphinx.htm
             lengths[CreatureConstants.Androsphinx][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
             lengths[CreatureConstants.Androsphinx][CreatureConstants.Androsphinx] = GetMultiplierFromAverage(10 * 12);
-            //Source: https://forgottenrealms.fandom.com/wiki/Astral_Deva
             lengths[CreatureConstants.Angel_AstralDeva][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Angel_AstralDeva][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Angel_AstralDeva][CreatureConstants.Angel_AstralDeva] = "0";
-            //Source: https://forgottenrealms.fandom.com/wiki/Planetar
             lengths[CreatureConstants.Angel_Planetar][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Angel_Planetar][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Angel_Planetar][CreatureConstants.Angel_Planetar] = "0";
-            //Source: https://forgottenrealms.fandom.com/wiki/Solar
             lengths[CreatureConstants.Angel_Solar][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Angel_Solar][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Angel_Solar][CreatureConstants.Angel_Solar] = "0";
@@ -255,9 +258,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Babau][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.Babau][CreatureConstants.Babau] = "0";
             //Source: https://www.dimensions.com/element/mandrill-mandrillus-sphinx
+            //https://www.d20srd.org/srd/monsters/baboon.htm (male)
             lengths[CreatureConstants.Baboon][GenderConstants.Female] = GetBaseFromRange(21, 38);
-            lengths[CreatureConstants.Baboon][GenderConstants.Male] = GetBaseFromRange(21, 38);
-            lengths[CreatureConstants.Baboon][CreatureConstants.Baboon] = GetMultiplierFromRange(21, 38);
+            lengths[CreatureConstants.Baboon][GenderConstants.Male] = GetBaseFromRange(2 * 12, 4 * 12);
+            lengths[CreatureConstants.Baboon][CreatureConstants.Baboon] = GetMultiplierFromRange(2 * 12, 4 * 12);
             //Source: https://www.d20srd.org/srd/monsters/badger.htm
             lengths[CreatureConstants.Badger][GenderConstants.Female] = GetBaseFromRange(24, 36);
             lengths[CreatureConstants.Badger][GenderConstants.Male] = GetBaseFromRange(24, 36);
@@ -295,9 +299,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Bat_Swarm][GenderConstants.Agender] = GetBaseFromAverage(10 * 12);
             lengths[CreatureConstants.Bat_Swarm][CreatureConstants.Bat_Swarm] = GetMultiplierFromAverage(10 * 12);
             //Source: https://www.dimensions.com/element/american-black-bear
-            lengths[CreatureConstants.Bear_Black][GenderConstants.Female] = GetBaseFromRange(4 * 12, 5 * 12 + 6);
-            lengths[CreatureConstants.Bear_Black][GenderConstants.Male] = GetBaseFromRange(5 * 12 + 2, 6 * 12 + 8);
-            lengths[CreatureConstants.Bear_Black][CreatureConstants.Bear_Black] = GetMultiplierFromRange(5 * 12 + 2, 6 * 12 + 8);
+            lengths[CreatureConstants.Bear_Black][GenderConstants.Female] = GetBaseFromUpTo(5 * 12);
+            lengths[CreatureConstants.Bear_Black][GenderConstants.Male] = GetBaseFromUpTo(5 * 12);
+            lengths[CreatureConstants.Bear_Black][CreatureConstants.Bear_Black] = GetMultiplierFromUpTo(5 * 12);
             //Source: https://www.dimensions.com/element/grizzly-bear
             lengths[CreatureConstants.Bear_Brown][GenderConstants.Female] = GetBaseFromRange(5 * 12 + 6, 6 * 12 + 6);
             lengths[CreatureConstants.Bear_Brown][GenderConstants.Male] = GetBaseFromRange(7 * 12, 8 * 12);
@@ -876,6 +880,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/drider-species
             lengths[CreatureConstants.Drider][GenderConstants.Agender] = GetBaseFromRange(7 * 12, 9 * 12);
             lengths[CreatureConstants.Drider][CreatureConstants.Drider] = GetMultiplierFromRange(7 * 12, 9 * 12);
+            lengths[CreatureConstants.Dryad][GenderConstants.Female] = "0";
+            lengths[CreatureConstants.Dryad][CreatureConstants.Dryad] = "0";
             lengths[CreatureConstants.Dwarf_Deep][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Dwarf_Deep][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Dwarf_Deep][CreatureConstants.Dwarf_Deep] = "0";
@@ -1310,8 +1316,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public static IEnumerable CreatureLengthsData => GetCreatureLengths().Select(t => new TestCaseData(t.Key, t.Value));
 
         private static string GetBaseFromAverage(int average) => GetBaseFromRange(average * 9 / 10, average * 11 / 10);
+        private static string GetBaseFromUpTo(int upTo) => GetBaseFromRange(upTo * 9 / 11, upTo);
+        private static string GetBaseFromAtLeast(int atLeast) => GetBaseFromRange(atLeast, atLeast * 11 / 9);
 
         private static string GetMultiplierFromAverage(int average) => GetMultiplierFromRange(average * 9 / 10, average * 11 / 10);
+        private static string GetMultiplierFromUpTo(int upTo) => GetMultiplierFromRange(upTo * 9 / 11, upTo);
+        private static string GetMultiplierFromAtLeast(int atLeast) => GetMultiplierFromRange(atLeast, atLeast * 11 / 9);
 
         private static string GetBaseFromRange(int lower, int upper)
         {

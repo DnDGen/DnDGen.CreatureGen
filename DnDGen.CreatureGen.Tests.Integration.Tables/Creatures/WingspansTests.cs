@@ -37,6 +37,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var genders = collectionSelector.SelectFrom(TableNameConstants.Collection.Genders, name);
             Assert.That(typesAndRolls.Keys, Is.EquivalentTo(genders.Union(new[] { name })).And.Not.Empty, $"TEST DATA: {name}");
 
+            foreach (var roll in typesAndRolls.Values)
+            {
+                var isValid = dice.Roll(roll).IsValid();
+                Assert.That(isValid, Is.True, roll);
+            }
+
             AssertTypesAndAmounts(name, typesAndRolls);
         }
 
@@ -64,7 +70,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Allip][CreatureConstants.Allip] = "0";
             wingspans[CreatureConstants.Androsphinx][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
             wingspans[CreatureConstants.Androsphinx][CreatureConstants.Androsphinx] = GetMultiplierFromAverage(10 * 12);
-            //Source: https://forgottenrealms.fandom.com/wiki/Astral_Deva
+            //Source: https://forgottenrealms.fandom.com/wiki/Astral_deva
             wingspans[CreatureConstants.Angel_AstralDeva][GenderConstants.Female] = GetBaseFromRange(7 * 12, 7 * 12 + 6);
             wingspans[CreatureConstants.Angel_AstralDeva][GenderConstants.Male] = GetBaseFromRange(7 * 12, 7 * 12 + 6);
             wingspans[CreatureConstants.Angel_AstralDeva][CreatureConstants.Angel_AstralDeva] = GetMultiplierFromRange(7 * 12, 7 * 12 + 6);
@@ -816,6 +822,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Dretch][CreatureConstants.Dretch] = "0";
             wingspans[CreatureConstants.Drider][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.Drider][CreatureConstants.Drider] = "0";
+            wingspans[CreatureConstants.Dryad][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Dryad][CreatureConstants.Dryad] = "0";
             wingspans[CreatureConstants.Dwarf_Deep][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Dwarf_Deep][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Dwarf_Deep][CreatureConstants.Dwarf_Deep] = "0";
@@ -1224,8 +1232,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public static IEnumerable CreatureWingspansData => GetCreatureWingspans().Select(t => new TestCaseData(t.Key, t.Value));
 
         private static string GetBaseFromAverage(int average) => GetBaseFromRange(average * 9 / 10, average * 11 / 10);
+        private static string GetBaseFromUpTo(int upTo) => GetBaseFromRange(upTo * 9 / 11, upTo);
+        private static string GetBaseFromAtLeast(int atLeast) => GetBaseFromRange(atLeast, atLeast * 11 / 9);
 
         private static string GetMultiplierFromAverage(int average) => GetMultiplierFromRange(average * 9 / 10, average * 11 / 10);
+        private static string GetMultiplierFromUpTo(int upTo) => GetMultiplierFromRange(upTo * 9 / 11, upTo);
+        private static string GetMultiplierFromAtLeast(int atLeast) => GetMultiplierFromRange(atLeast, atLeast * 11 / 9);
 
         private static string GetBaseFromRange(int lower, int upper)
         {

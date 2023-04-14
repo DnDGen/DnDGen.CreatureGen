@@ -1289,8 +1289,10 @@
   </collection>
   <collection>
     <name>Djinni</name>
-    <entry>Land@20</entry>
-    <entry>Fly@60</entry>
+	  <entry>Agender@108</entry>
+	  <entry>Male@108</entry>
+	  <entry>Female@108</entry>
+	  <entry>Djinni@5d6</entry>
   </collection>
   <collection>
     <name>Dog</name>
@@ -1312,7 +1314,8 @@
   </collection>
   <collection>
     <name>Doppelganger</name>
-    <entry>Land@30</entry>
+	  <entry>Agender@50</entry>
+	  <entry>Doppelganger@4d4</entry>
   </collection>
   <collection>
     <name>Dragon Turtle</name>
@@ -1322,21 +1325,24 @@
   </collection>
   <collection>
     <name>Dragonne</name>
-    <entry>Land@40</entry>
-    <entry>Fly@30</entry>
+	  <entry>Male@50</entry>
+	  <entry>Female@50</entry>
+	  <entry>Dragonne@4d4</entry>
   </collection>
   <collection>
     <name>Dread Wraith</name>
-    <entry>Fly@60</entry>
+	  <entry>Agender@96</entry>
+	  <entry>Dread Wraith@2d12</entry>
   </collection>
   <collection>
     <name>Dretch</name>
-    <entry>Land@20</entry>
+	  <entry>Agender@42</entry>
+	  <entry>Dretch@1d10</entry>
   </collection>
   <collection>
     <name>Drider</name>
-    <entry>Land@30</entry>
-    <entry>Climb@15</entry>
+	  <entry>Agender@58</entry>
+	  <entry>Drider@17d2</entry>
   </collection>
   <collection>
     <name>Drow</name>

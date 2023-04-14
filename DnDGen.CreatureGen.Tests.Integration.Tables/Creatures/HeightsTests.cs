@@ -37,6 +37,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var genders = collectionSelector.SelectFrom(TableNameConstants.Collection.Genders, name);
             Assert.That(typesAndRolls.Keys, Is.EquivalentTo(genders.Union(new[] { name })).And.Not.Empty, $"TEST DATA: {name}");
 
+            foreach (var roll in typesAndRolls.Values)
+            {
+                var isValid = dice.Roll(roll).IsValid();
+                Assert.That(isValid, Is.True, roll);
+            }
+
             AssertTypesAndAmounts(name, typesAndRolls);
         }
 
@@ -68,7 +74,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.mojobob.com/roleplay/monstrousmanual/s/sphinx.html
             heights[CreatureConstants.Androsphinx][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
             heights[CreatureConstants.Androsphinx][CreatureConstants.Androsphinx] = GetMultiplierFromAverage(8 * 12);
-            //Source: https://forgottenrealms.fandom.com/wiki/Astral_Deva
+            //Source: https://forgottenrealms.fandom.com/wiki/Astral_deva
             heights[CreatureConstants.Angel_AstralDeva][GenderConstants.Female] = GetBaseFromRange(7 * 12, 7 * 12 + 6);
             heights[CreatureConstants.Angel_AstralDeva][GenderConstants.Male] = GetBaseFromRange(7 * 12, 7 * 12 + 6);
             heights[CreatureConstants.Angel_AstralDeva][CreatureConstants.Angel_AstralDeva] = GetMultiplierFromRange(7 * 12, 7 * 12 + 6);
@@ -215,9 +221,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Annis][GenderConstants.Female] = GetBaseFromAverage(8 * 12);
             heights[CreatureConstants.Annis][CreatureConstants.Annis] = GetMultiplierFromAverage(8 * 12);
             //Source: https://www.dimensions.com/element/eastern-lowland-gorilla-gorilla-beringei-graueri
+            //https://www.d20srd.org/srd/monsters/ape.htm (male)
             heights[CreatureConstants.Ape][GenderConstants.Female] = GetBaseFromRange(63, 72);
-            heights[CreatureConstants.Ape][GenderConstants.Male] = GetBaseFromRange(63, 72);
-            heights[CreatureConstants.Ape][CreatureConstants.Ape] = GetMultiplierFromRange(63, 72);
+            heights[CreatureConstants.Ape][GenderConstants.Male] = GetBaseFromRange(5 * 12 + 6, 6 * 12);
+            heights[CreatureConstants.Ape][CreatureConstants.Ape] = GetMultiplierFromRange(5 * 12 + 6, 6 * 12);
             //Source: https://www.d20srd.org/srd/monsters/direApe.htm
             heights[CreatureConstants.Ape_Dire][GenderConstants.Female] = GetBaseFromAverage(9 * 12);
             heights[CreatureConstants.Ape_Dire][GenderConstants.Male] = GetBaseFromAverage(9 * 12);
@@ -896,6 +903,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //https://www.5esrd.com/database/race/drider/ (for height)
             heights[CreatureConstants.Drider][GenderConstants.Agender] = GetBaseFromAverage(7 * 12);
             heights[CreatureConstants.Drider][CreatureConstants.Drider] = GetMultiplierFromAverage(7 * 12);
+            //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/dryad-species
+            heights[CreatureConstants.Dryad][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
+            heights[CreatureConstants.Dryad][CreatureConstants.Dryad] = GetMultiplierFromAverage(5 * 12);
             //Source: https://www.d20srd.org/srd/description.htm#vitalStatistics
             heights[CreatureConstants.Dwarf_Deep][GenderConstants.Female] = "3*12+7";
             heights[CreatureConstants.Dwarf_Deep][GenderConstants.Male] = "3*12+9";
@@ -1379,8 +1389,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public static IEnumerable CreatureHeightsData => GetCreatureHeights().Select(t => new TestCaseData(t.Key, t.Value));
 
         private static string GetBaseFromAverage(int average) => GetBaseFromRange(average * 9 / 10, average * 11 / 10);
+        private static string GetBaseFromUpTo(int upTo) => GetBaseFromRange(upTo * 9 / 11, upTo);
+        private static string GetBaseFromAtLeast(int atLeast) => GetBaseFromRange(atLeast, atLeast * 11 / 9);
 
         private static string GetMultiplierFromAverage(int average) => GetMultiplierFromRange(average * 9 / 10, average * 11 / 10);
+        private static string GetMultiplierFromUpTo(int upTo) => GetMultiplierFromRange(upTo * 9 / 11, upTo);
+        private static string GetMultiplierFromAtLeast(int atLeast) => GetMultiplierFromRange(atLeast, atLeast * 11 / 9);
 
         private static string GetBaseFromRange(int lower, int upper)
         {
