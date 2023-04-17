@@ -1270,17 +1270,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Minotaur, GenderConstants.Female, 7 * 12)]
         public void RollCalculationsAreAccurate_FromAverage(string creature, string gender, int average)
         {
-            var heights = GetCreatureWingspans();
+            var wingspans = GetCreatureWingspans();
 
-            var baseHeight = dice.Roll(heights[creature][gender]).AsSum();
-            var multiplierMin = dice.Roll(heights[creature][creature]).AsPotentialMinimum();
-            var multiplierAvg = dice.Roll(heights[creature][creature]).AsPotentialAverage();
-            var multiplierMax = dice.Roll(heights[creature][creature]).AsPotentialMaximum();
+            Assert.That(wingspans, Contains.Key(creature));
+            Assert.That(wingspans[creature], Contains.Key(creature).And.ContainKey(gender));
+
+            var baseWingspan = dice.Roll(wingspans[creature][gender]).AsSum();
+            var multiplierMin = dice.Roll(wingspans[creature][creature]).AsPotentialMinimum();
+            var multiplierAvg = dice.Roll(wingspans[creature][creature]).AsPotentialAverage();
+            var multiplierMax = dice.Roll(wingspans[creature][creature]).AsPotentialMaximum();
             var theoreticalRoll = RollHelper.GetRollWithFewestDice(average * 9 / 10, average * 11 / 10);
 
-            Assert.That(baseHeight + multiplierMin, Is.EqualTo(average * 0.9).Within(1), $"Min (-10%); Theoretical: {theoreticalRoll}");
-            Assert.That(baseHeight + multiplierAvg, Is.EqualTo(average).Within(1), $"Average; Theoretical: {theoreticalRoll}");
-            Assert.That(baseHeight + multiplierMax, Is.EqualTo(average * 1.1).Within(1), $"Max (+10%); Theoretical: {theoreticalRoll}");
+            Assert.That(baseWingspan + multiplierMin, Is.EqualTo(average * 0.9).Within(1), $"Min (-10%); Theoretical: {theoreticalRoll}");
+            Assert.That(baseWingspan + multiplierAvg, Is.EqualTo(average).Within(1), $"Average; Theoretical: {theoreticalRoll}");
+            Assert.That(baseWingspan + multiplierMax, Is.EqualTo(average * 1.1).Within(1), $"Max (+10%); Theoretical: {theoreticalRoll}");
         }
 
         [TestCase(CreatureConstants.Angel_AstralDeva, GenderConstants.Male, 7 * 12, 7 * 12 + 6)]
@@ -1335,34 +1338,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Whale_Baleen, GenderConstants.Female, 30 * 12, 60 * 12)]
         public void RollCalculationsAreAccurate_FromRange(string creature, string gender, int min, int max)
         {
-            var heights = GetCreatureWingspans();
+            var wingspans = GetCreatureWingspans();
 
-            var baseHeight = dice.Roll(heights[creature][gender]).AsSum();
-            var multiplierMin = dice.Roll(heights[creature][creature]).AsPotentialMinimum();
-            var multiplierAvg = dice.Roll(heights[creature][creature]).AsPotentialAverage();
-            var multiplierMax = dice.Roll(heights[creature][creature]).AsPotentialMaximum();
+            Assert.That(wingspans, Contains.Key(creature));
+            Assert.That(wingspans[creature], Contains.Key(creature).And.ContainKey(gender));
+
+            var baseWingspan = dice.Roll(wingspans[creature][gender]).AsSum();
+            var multiplierMin = dice.Roll(wingspans[creature][creature]).AsPotentialMinimum();
+            var multiplierMax = dice.Roll(wingspans[creature][creature]).AsPotentialMaximum();
             var theoreticalRoll = RollHelper.GetRollWithFewestDice(min, max);
 
-            Assert.That(baseHeight + multiplierMin, Is.EqualTo(min), $"Min; Theoretical: {theoreticalRoll}");
-            Assert.That(baseHeight + multiplierAvg, Is.EqualTo((min + max) / 2).Within(1), $"Average; Theoretical: {theoreticalRoll}");
-            Assert.That(baseHeight + multiplierMax, Is.EqualTo(max), $"Max; Theoretical: {theoreticalRoll}");
-        }
-
-        [Test]
-        public void IfCreatureHasNoLength_HasHeight()
-        {
-            var heights = HeightsTests.GetCreatureHeights();
-            var Wingspans = GetCreatureWingspans();
-            var creatures = CreatureConstants.GetAll();
-
-            foreach (var creature in creatures)
-            {
-                Assert.That(Wingspans[creature][creature], Is.Not.Empty);
-                Assert.That(heights[creature][creature], Is.Not.Empty);
-
-                if (Wingspans[creature][creature] == "0")
-                    Assert.That(heights[creature][creature], Is.Not.EqualTo("0"), creature);
-            }
+            Assert.That(baseWingspan + multiplierMin, Is.EqualTo(min), $"Min; Theoretical: {theoreticalRoll}");
+            Assert.That(baseWingspan + multiplierMax, Is.EqualTo(max), $"Max; Theoretical: {theoreticalRoll}");
         }
     }
 }

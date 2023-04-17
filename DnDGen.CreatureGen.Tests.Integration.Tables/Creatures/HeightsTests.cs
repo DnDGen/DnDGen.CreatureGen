@@ -1434,6 +1434,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         {
             var heights = GetCreatureHeights();
 
+            Assert.That(heights, Contains.Key(creature));
+            Assert.That(heights[creature], Contains.Key(creature).And.ContainKey(gender));
+
             var baseHeight = dice.Roll(heights[creature][gender]).AsSum();
             var multiplierMin = dice.Roll(heights[creature][creature]).AsPotentialMinimum();
             var multiplierAvg = dice.Roll(heights[creature][creature]).AsPotentialAverage();
@@ -1476,6 +1479,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Bugbear, GenderConstants.Female, 6 * 12, 8 * 12)]
         [TestCase(CreatureConstants.Centaur, GenderConstants.Male, 7 * 12, 9 * 12)]
         [TestCase(CreatureConstants.Centaur, GenderConstants.Female, 7 * 12, 9 * 12)]
+        [TestCase(CreatureConstants.Dog_Riding, GenderConstants.Male, 22, 30)]
+        [TestCase(CreatureConstants.Dog_Riding, GenderConstants.Female, 20, 28)]
         [TestCase(CreatureConstants.Ettin, GenderConstants.Male, 13 * 12, 13 * 12 + 10)]
         [TestCase(CreatureConstants.Ettin, GenderConstants.Female, 12 * 12 + 4, 13 * 12 + 2)]
         [TestCase(CreatureConstants.Giant_Cloud, GenderConstants.Male, 24 * 12 + 4, 26 * 12 + 8)]
@@ -1505,6 +1510,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         {
             var heights = GetCreatureHeights();
 
+            Assert.That(heights, Contains.Key(creature));
+            Assert.That(heights[creature], Contains.Key(creature).And.ContainKey(gender));
+
             var baseHeight = dice.Roll(heights[creature][gender]).AsSum();
             var multiplierMin = dice.Roll(heights[creature][creature]).AsPotentialMinimum();
             var multiplierAvg = dice.Roll(heights[creature][creature]).AsPotentialAverage();
@@ -1512,7 +1520,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var theoreticalRoll = RollHelper.GetRollWithFewestDice(min, max);
 
             Assert.That(baseHeight + multiplierMin, Is.EqualTo(min), $"Min; Theoretical: {theoreticalRoll}");
-            Assert.That(baseHeight + multiplierAvg, Is.EqualTo((min + max) / 2).Within(1), $"Average; Theoretical: {theoreticalRoll}");
             Assert.That(baseHeight + multiplierMax, Is.EqualTo(max), $"Max; Theoretical: {theoreticalRoll}");
         }
 

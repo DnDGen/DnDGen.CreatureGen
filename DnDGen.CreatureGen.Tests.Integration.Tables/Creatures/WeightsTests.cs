@@ -60,10 +60,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 weights[creature] = new Dictionary<string, string>();
             }
 
-            //Source: http://people.wku.edu/charles.plemons/ad&d/races/height.html
+            //Source: http://people.wku.edu/charles.plemons/ad&d/races/height.html 5d10 = Mountain Dwarf, so 2d6
             weights[CreatureConstants.Aasimar][GenderConstants.Female] = "90";
             weights[CreatureConstants.Aasimar][GenderConstants.Male] = "140";
-            weights[CreatureConstants.Aasimar][CreatureConstants.Aasimar] = "5d10"; //x5
+            weights[CreatureConstants.Aasimar][CreatureConstants.Aasimar] = "2d6";
             //Source: https://forgottenrealms.fandom.com/wiki/Aboleth
             weights[CreatureConstants.Aboleth][GenderConstants.Hermaphrodite] = GetBaseFromAverage(CreatureConstants.Aboleth, 6500);
             weights[CreatureConstants.Aboleth][CreatureConstants.Aboleth] = GetMultiplierFromAverage(CreatureConstants.Aboleth, 6500);
@@ -591,443 +591,527 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Crocodile_Giant][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Crocodile_Giant, 880, 2200);
             weights[CreatureConstants.Crocodile_Giant][CreatureConstants.Crocodile_Giant] = GetMultiplierFromRange(CreatureConstants.Crocodile_Giant, 880, 2200);
             //Source: https://forgottenrealms.fandom.com/wiki/Darkmantle
-            heights[CreatureConstants.Darkmantle][GenderConstants.Hermaphrodite] = "0";
-            heights[CreatureConstants.Darkmantle][CreatureConstants.Darkmantle] = "0";
+            weights[CreatureConstants.Darkmantle][GenderConstants.Hermaphrodite] = GetBaseFromAverage(CreatureConstants.Darkmantle, 30);
+            weights[CreatureConstants.Darkmantle][CreatureConstants.Darkmantle] = GetMultiplierFromAverage(CreatureConstants.Darkmantle, 30);
             //Source: https://www.dimensions.com/element/deinonychus-deinonychus-antirrhopus
-            heights[CreatureConstants.Deinonychus][GenderConstants.Female] = GetBaseFromRange(34, 57);
-            heights[CreatureConstants.Deinonychus][GenderConstants.Male] = GetBaseFromRange(34, 57);
-            heights[CreatureConstants.Deinonychus][CreatureConstants.Deinonychus] = GetMultiplierFromRange(34, 57);
+            weights[CreatureConstants.Deinonychus][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Deinonychus, 160, 220);
+            weights[CreatureConstants.Deinonychus][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Deinonychus, 160, 220);
+            weights[CreatureConstants.Deinonychus][CreatureConstants.Deinonychus] = GetMultiplierFromRange(CreatureConstants.Deinonychus, 160, 220);
             //Source: https://dungeonsdragons.fandom.com/wiki/Delver
-            heights[CreatureConstants.Delver][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Delver][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Delver][CreatureConstants.Delver] = GetMultiplierFromAverage(12 * 12);
+            weights[CreatureConstants.Delver][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Delver, 6000);
+            weights[CreatureConstants.Delver][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Delver, 6000);
+            weights[CreatureConstants.Delver][CreatureConstants.Delver] = GetMultiplierFromAverage(CreatureConstants.Delver, 6000);
             //Source: https://monster.fandom.com/wiki/Derro
-            heights[CreatureConstants.Derro][GenderConstants.Female] = GetBaseFromRange(3 * 12, 4 * 12);
-            heights[CreatureConstants.Derro][GenderConstants.Male] = GetBaseFromRange(3 * 12, 4 * 12);
-            heights[CreatureConstants.Derro][CreatureConstants.Derro] = GetMultiplierFromRange(3 * 12, 4 * 12);
-            heights[CreatureConstants.Derro_Sane][GenderConstants.Female] = GetBaseFromRange(3 * 12, 4 * 12);
-            heights[CreatureConstants.Derro_Sane][GenderConstants.Male] = GetBaseFromRange(3 * 12, 4 * 12);
-            heights[CreatureConstants.Derro_Sane][CreatureConstants.Derro_Sane] = GetMultiplierFromRange(3 * 12, 4 * 12);
+            weights[CreatureConstants.Derro][GenderConstants.Female] = GetBaseFromUpTo(CreatureConstants.Derro, 40);
+            weights[CreatureConstants.Derro][GenderConstants.Male] = GetBaseFromUpTo(CreatureConstants.Derro, 40);
+            weights[CreatureConstants.Derro][CreatureConstants.Derro] = GetMultiplierFromUpTo(CreatureConstants.Derro, 40);
+            weights[CreatureConstants.Derro_Sane][GenderConstants.Female] = GetBaseFromUpTo(CreatureConstants.Derro_Sane, 40);
+            weights[CreatureConstants.Derro_Sane][GenderConstants.Male] = GetBaseFromUpTo(CreatureConstants.Derro_Sane, 40);
+            weights[CreatureConstants.Derro_Sane][CreatureConstants.Derro_Sane] = GetMultiplierFromUpTo(CreatureConstants.Derro_Sane, 40);
             //Source: https://forgottenrealms.fandom.com/wiki/Destrachan
-            heights[CreatureConstants.Destrachan][GenderConstants.Female] = "0";
-            heights[CreatureConstants.Destrachan][GenderConstants.Male] = "0";
-            heights[CreatureConstants.Destrachan][CreatureConstants.Destrachan] = "0";
+            weights[CreatureConstants.Destrachan][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Delver, 4000);
+            weights[CreatureConstants.Destrachan][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Delver, 4000);
+            weights[CreatureConstants.Destrachan][CreatureConstants.Destrachan] = GetMultiplierFromAverage(CreatureConstants.Delver, 4000);
             //Source: https://www.d20srd.org/srd/monsters/devourer.htm
-            heights[CreatureConstants.Devourer][GenderConstants.Agender] = GetBaseFromAverage(9 * 12);
-            heights[CreatureConstants.Devourer][CreatureConstants.Devourer] = GetMultiplierFromAverage(9 * 12);
+            weights[CreatureConstants.Devourer][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Delver, 500);
+            weights[CreatureConstants.Devourer][CreatureConstants.Devourer] = GetMultiplierFromAverage(CreatureConstants.Devourer, 500);
             //Source: https://forgottenrealms.fandom.com/wiki/Digester
-            heights[CreatureConstants.Digester][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            heights[CreatureConstants.Digester][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
-            heights[CreatureConstants.Digester][CreatureConstants.Digester] = GetMultiplierFromAverage(5 * 12);
-            //Scaled down from Pack Lord, x2 based on length
-            heights[CreatureConstants.DisplacerBeast][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            heights[CreatureConstants.DisplacerBeast][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
-            heights[CreatureConstants.DisplacerBeast][CreatureConstants.DisplacerBeast] = GetMultiplierFromAverage(5 * 12);
+            weights[CreatureConstants.Digester][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Digester, 350);
+            weights[CreatureConstants.Digester][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Digester, 350);
+            weights[CreatureConstants.Digester][CreatureConstants.Digester] = GetMultiplierFromAverage(CreatureConstants.Digester, 350);
             //Source: https://forgottenrealms.fandom.com/wiki/Displacer_beast
-            heights[CreatureConstants.DisplacerBeast_PackLord][GenderConstants.Female] = GetBaseFromAverage(10 * 12);
-            heights[CreatureConstants.DisplacerBeast_PackLord][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
-            heights[CreatureConstants.DisplacerBeast_PackLord][CreatureConstants.DisplacerBeast_PackLord] = GetMultiplierFromAverage(10 * 12);
+            weights[CreatureConstants.DisplacerBeast][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.DisplacerBeast, 450, 450 * 2);
+            weights[CreatureConstants.DisplacerBeast][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.DisplacerBeast, 500, 500 * 2);
+            weights[CreatureConstants.DisplacerBeast][CreatureConstants.DisplacerBeast] = GetMultiplierFromRange(CreatureConstants.DisplacerBeast, 500, 500 * 2);
+            //Source: scale up from normal, x8
+            weights[CreatureConstants.DisplacerBeast_PackLord][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.DisplacerBeast_PackLord, 450 * 8, 450 * 16);
+            weights[CreatureConstants.DisplacerBeast_PackLord][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.DisplacerBeast_PackLord, 500 * 8, 500 * 16);
+            weights[CreatureConstants.DisplacerBeast_PackLord][CreatureConstants.DisplacerBeast_PackLord] =
+                GetMultiplierFromRange(CreatureConstants.DisplacerBeast_PackLord, 500 * 8, 500 * 16);
             //Source: https://forgottenrealms.fandom.com/wiki/Djinni
-            heights[CreatureConstants.Djinni][GenderConstants.Agender] = GetBaseFromAverage(10 * 12 + 6);
-            heights[CreatureConstants.Djinni][GenderConstants.Female] = GetBaseFromAverage(10 * 12 + 6);
-            heights[CreatureConstants.Djinni][GenderConstants.Male] = GetBaseFromAverage(10 * 12 + 6);
-            heights[CreatureConstants.Djinni][CreatureConstants.Djinni] = GetMultiplierFromAverage(10 * 12 + 6);
-            //Source: https://forgottenrealms.fandom.com/wiki/Noble_djinni
-            heights[CreatureConstants.Djinni_Noble][GenderConstants.Agender] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Djinni_Noble][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Djinni_Noble][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Djinni_Noble][CreatureConstants.Djinni_Noble] = GetMultiplierFromAverage(12 * 12);
-            //Source: https://www.dimensions.com/search?query=dog average of various dogs in the 20-50 pound weight range, including coyote
-            heights[CreatureConstants.Dog][GenderConstants.Female] = GetBaseFromRange(16, 25);
-            heights[CreatureConstants.Dog][GenderConstants.Male] = GetBaseFromRange(16, 25);
-            heights[CreatureConstants.Dog][CreatureConstants.Dog] = GetMultiplierFromRange(16, 25);
-            //Source: https://www.dimensions.com/element/saint-bernard-dog M:28-30,F:26-28
-            //https://www.dimensions.com/element/siberian-husky 20-24
-            //https://www.dimensions.com/element/dogs-collie M:22-24,F:20-22
-            heights[CreatureConstants.Dog_Riding][GenderConstants.Female] = GetBaseFromRange(20, 28);
-            heights[CreatureConstants.Dog_Riding][GenderConstants.Male] = GetBaseFromRange(22, 30);
-            heights[CreatureConstants.Dog_Riding][CreatureConstants.Dog_Riding] = GetMultiplierFromRange(22, 30);
+            weights[CreatureConstants.Djinni][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Djinni, 1000);
+            weights[CreatureConstants.Djinni][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Djinni, 1000);
+            weights[CreatureConstants.Djinni][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Djinni, 1000);
+            weights[CreatureConstants.Djinni][CreatureConstants.Djinni] = GetMultiplierFromAverage(CreatureConstants.Djinni, 1000);
+            //Source: https://forgottenrealms.fandom.com/wiki/Noble_djinni height increase by x1.14, so weight increase by x1.5
+            weights[CreatureConstants.Djinni_Noble][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Djinni_Noble, 1500);
+            weights[CreatureConstants.Djinni_Noble][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Djinni_Noble, 1500);
+            weights[CreatureConstants.Djinni_Noble][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Djinni_Noble, 1500);
+            weights[CreatureConstants.Djinni_Noble][CreatureConstants.Djinni_Noble] = GetMultiplierFromAverage(CreatureConstants.Djinni_Noble, 1500);
+            //Source: https://www.d20srd.org/srd/monsters/dog.htm
+            weights[CreatureConstants.Dog][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Dog, 20, 50);
+            weights[CreatureConstants.Dog][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Dog, 20, 50);
+            weights[CreatureConstants.Dog][CreatureConstants.Dog] = GetMultiplierFromRange(CreatureConstants.Dog, 20, 50);
+            //Source: https://www.dimensions.com/element/saint-bernard-dog M:140-180,F:120-140
+            //https://www.dimensions.com/element/siberian-husky 35-65
+            //https://www.dimensions.com/element/dogs-collie M:45-65,F:40-55
+            weights[CreatureConstants.Dog_Riding][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Dog_Riding, 35, 140);
+            weights[CreatureConstants.Dog_Riding][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Dog_Riding, 35, 180);
+            weights[CreatureConstants.Dog_Riding][CreatureConstants.Dog_Riding] = GetMultiplierFromRange(CreatureConstants.Dog_Riding, 35, 180);
             //Source: https://www.dimensions.com/element/donkey-equus-africanus-asinus
-            heights[CreatureConstants.Donkey][GenderConstants.Female] = GetBaseFromRange(36, 48);
-            heights[CreatureConstants.Donkey][GenderConstants.Male] = GetBaseFromRange(36, 48);
-            heights[CreatureConstants.Donkey][CreatureConstants.Donkey] = GetMultiplierFromRange(36, 48);
+            weights[CreatureConstants.Donkey][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Donkey, 400, 500);
+            weights[CreatureConstants.Donkey][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Donkey, 400, 500);
+            weights[CreatureConstants.Donkey][CreatureConstants.Donkey] = GetMultiplierFromRange(CreatureConstants.Donkey, 400, 500);
             //Source: https://forgottenrealms.fandom.com/wiki/Doppelganger
-            heights[CreatureConstants.Doppelganger][GenderConstants.Agender] = GetBaseFromAverage(5 * 12);
-            heights[CreatureConstants.Doppelganger][CreatureConstants.Doppelganger] = GetMultiplierFromAverage(5 * 12);
+            weights[CreatureConstants.Doppelganger][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Doppelganger, 150);
+            weights[CreatureConstants.Doppelganger][CreatureConstants.Doppelganger] = GetMultiplierFromAverage(CreatureConstants.Doppelganger, 150);
             //Source: Draconomicon
-            heights[CreatureConstants.Dragon_Black_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(12);
-            heights[CreatureConstants.Dragon_Black_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(12);
-            heights[CreatureConstants.Dragon_Black_Wyrmling][CreatureConstants.Dragon_Black_Wyrmling] = GetMultiplierFromAverage(12);
-            heights[CreatureConstants.Dragon_Black_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(24);
-            heights[CreatureConstants.Dragon_Black_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(24);
-            heights[CreatureConstants.Dragon_Black_VeryYoung][CreatureConstants.Dragon_Black_VeryYoung] = GetMultiplierFromAverage(24);
-            heights[CreatureConstants.Dragon_Black_Young][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Black_Young][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Black_Young][CreatureConstants.Dragon_Black_Young] = GetMultiplierFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Black_Juvenile][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Black_Juvenile][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Black_Juvenile][CreatureConstants.Dragon_Black_Juvenile] = GetMultiplierFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Black_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Black_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Black_YoungAdult][CreatureConstants.Dragon_Black_YoungAdult] = GetMultiplierFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Black_Adult][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Black_Adult][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Black_Adult][CreatureConstants.Dragon_Black_Adult] = GetMultiplierFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Black_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Black_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Black_MatureAdult][CreatureConstants.Dragon_Black_MatureAdult] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Black_Old][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Black_Old][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Black_Old][CreatureConstants.Dragon_Black_Old] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Black_VeryOld][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Black_VeryOld][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Black_VeryOld][CreatureConstants.Dragon_Black_VeryOld] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Black_Ancient][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Black_Ancient][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Black_Ancient][CreatureConstants.Dragon_Black_Ancient] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Black_Wyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Black_Wyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Black_Wyrm][CreatureConstants.Dragon_Black_Wyrm] = GetMultiplierFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Black_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Black_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Black_GreatWyrm][CreatureConstants.Dragon_Black_GreatWyrm] = GetMultiplierFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Blue_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(24);
-            heights[CreatureConstants.Dragon_Blue_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(24);
-            heights[CreatureConstants.Dragon_Blue_Wyrmling][CreatureConstants.Dragon_Blue_Wyrmling] = GetMultiplierFromAverage(24);
-            heights[CreatureConstants.Dragon_Blue_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Blue_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Blue_VeryYoung][CreatureConstants.Dragon_Blue_VeryYoung] = GetMultiplierFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Blue_Young][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Blue_Young][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Blue_Young][CreatureConstants.Dragon_Blue_Young] = GetMultiplierFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Blue_Juvenile][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Blue_Juvenile][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Blue_Juvenile][CreatureConstants.Dragon_Blue_Juvenile] = GetMultiplierFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Blue_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Blue_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Blue_YoungAdult][CreatureConstants.Dragon_Blue_YoungAdult] = GetMultiplierFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Blue_Adult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Blue_Adult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Blue_Adult][CreatureConstants.Dragon_Blue_Adult] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Blue_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Blue_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Blue_MatureAdult][CreatureConstants.Dragon_Blue_MatureAdult] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Blue_Old][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Blue_Old][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Blue_Old][CreatureConstants.Dragon_Blue_Old] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Blue_VeryOld][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Blue_VeryOld][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Blue_VeryOld][CreatureConstants.Dragon_Blue_VeryOld] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Blue_Ancient][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Blue_Ancient][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Blue_Ancient][CreatureConstants.Dragon_Blue_Ancient] = GetMultiplierFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Blue_Wyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Blue_Wyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Blue_Wyrm][CreatureConstants.Dragon_Blue_Wyrm] = GetMultiplierFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Blue_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Blue_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Blue_GreatWyrm][CreatureConstants.Dragon_Blue_GreatWyrm] = GetMultiplierFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Brass_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(12);
-            heights[CreatureConstants.Dragon_Brass_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(12);
-            heights[CreatureConstants.Dragon_Brass_Wyrmling][CreatureConstants.Dragon_Brass_Wyrmling] = GetMultiplierFromAverage(12);
-            heights[CreatureConstants.Dragon_Brass_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(24);
-            heights[CreatureConstants.Dragon_Brass_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(24);
-            heights[CreatureConstants.Dragon_Brass_VeryYoung][CreatureConstants.Dragon_Brass_VeryYoung] = GetMultiplierFromAverage(24);
-            heights[CreatureConstants.Dragon_Brass_Young][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Brass_Young][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Brass_Young][CreatureConstants.Dragon_Brass_Young] = GetMultiplierFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Brass_Juvenile][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Brass_Juvenile][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Brass_Juvenile][CreatureConstants.Dragon_Brass_Juvenile] = GetMultiplierFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Brass_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Brass_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Brass_YoungAdult][CreatureConstants.Dragon_Brass_YoungAdult] = GetMultiplierFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Brass_Adult][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Brass_Adult][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Brass_Adult][CreatureConstants.Dragon_Brass_Adult] = GetMultiplierFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Brass_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Brass_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Brass_MatureAdult][CreatureConstants.Dragon_Brass_MatureAdult] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Brass_Old][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Brass_Old][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Brass_Old][CreatureConstants.Dragon_Brass_Old] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Brass_VeryOld][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Brass_VeryOld][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Brass_VeryOld][CreatureConstants.Dragon_Brass_VeryOld] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Brass_Ancient][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Brass_Ancient][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Brass_Ancient][CreatureConstants.Dragon_Brass_Ancient] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Brass_Wyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Brass_Wyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Brass_Wyrm][CreatureConstants.Dragon_Brass_Wyrm] = GetMultiplierFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Brass_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Brass_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Brass_GreatWyrm][CreatureConstants.Dragon_Brass_GreatWyrm] = GetMultiplierFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Bronze_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(24);
-            heights[CreatureConstants.Dragon_Bronze_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(24);
-            heights[CreatureConstants.Dragon_Bronze_Wyrmling][CreatureConstants.Dragon_Bronze_Wyrmling] = GetMultiplierFromAverage(24);
-            heights[CreatureConstants.Dragon_Bronze_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Bronze_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Bronze_VeryYoung][CreatureConstants.Dragon_Bronze_VeryYoung] = GetMultiplierFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Bronze_Young][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Bronze_Young][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Bronze_Young][CreatureConstants.Dragon_Bronze_Young] = GetMultiplierFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Bronze_Juvenile][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Bronze_Juvenile][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Bronze_Juvenile][CreatureConstants.Dragon_Bronze_Juvenile] = GetMultiplierFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Bronze_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Bronze_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Bronze_YoungAdult][CreatureConstants.Dragon_Bronze_YoungAdult] = GetMultiplierFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Bronze_Adult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Bronze_Adult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Bronze_Adult][CreatureConstants.Dragon_Bronze_Adult] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Bronze_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Bronze_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Bronze_MatureAdult][CreatureConstants.Dragon_Bronze_MatureAdult] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Bronze_Old][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Bronze_Old][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Bronze_Old][CreatureConstants.Dragon_Bronze_Old] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Bronze_VeryOld][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Bronze_VeryOld][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Bronze_VeryOld][CreatureConstants.Dragon_Bronze_VeryOld] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Bronze_Ancient][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Bronze_Ancient][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Bronze_Ancient][CreatureConstants.Dragon_Bronze_Ancient] = GetMultiplierFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Bronze_Wyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Bronze_Wyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Bronze_Wyrm][CreatureConstants.Dragon_Bronze_Wyrm] = GetMultiplierFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Bronze_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Bronze_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Bronze_GreatWyrm][CreatureConstants.Dragon_Bronze_GreatWyrm] = GetMultiplierFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Copper_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(12);
-            heights[CreatureConstants.Dragon_Copper_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(12);
-            heights[CreatureConstants.Dragon_Copper_Wyrmling][CreatureConstants.Dragon_Copper_Wyrmling] = GetMultiplierFromAverage(12);
-            heights[CreatureConstants.Dragon_Copper_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(24);
-            heights[CreatureConstants.Dragon_Copper_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(24);
-            heights[CreatureConstants.Dragon_Copper_VeryYoung][CreatureConstants.Dragon_Copper_VeryYoung] = GetMultiplierFromAverage(24);
-            heights[CreatureConstants.Dragon_Copper_Young][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Copper_Young][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Copper_Young][CreatureConstants.Dragon_Copper_Young] = GetMultiplierFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Copper_Juvenile][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Copper_Juvenile][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Copper_Juvenile][CreatureConstants.Dragon_Copper_Juvenile] = GetMultiplierFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Copper_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Copper_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Copper_YoungAdult][CreatureConstants.Dragon_Copper_YoungAdult] = GetMultiplierFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Copper_Adult][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Copper_Adult][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Copper_Adult][CreatureConstants.Dragon_Copper_Adult] = GetMultiplierFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Copper_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Copper_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Copper_MatureAdult][CreatureConstants.Dragon_Copper_MatureAdult] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Copper_Old][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Copper_Old][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Copper_Old][CreatureConstants.Dragon_Copper_Old] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Copper_VeryOld][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Copper_VeryOld][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Copper_VeryOld][CreatureConstants.Dragon_Copper_VeryOld] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Copper_Ancient][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Copper_Ancient][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Copper_Ancient][CreatureConstants.Dragon_Copper_Ancient] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Copper_Wyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Copper_Wyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Copper_Wyrm][CreatureConstants.Dragon_Copper_Wyrm] = GetMultiplierFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Copper_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Copper_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Copper_GreatWyrm][CreatureConstants.Dragon_Copper_GreatWyrm] = GetMultiplierFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Gold_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Gold_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Gold_Wyrmling][CreatureConstants.Dragon_Gold_Wyrmling] = GetMultiplierFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Gold_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Gold_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Gold_VeryYoung][CreatureConstants.Dragon_Gold_VeryYoung] = GetMultiplierFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Gold_Young][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Gold_Young][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Gold_Young][CreatureConstants.Dragon_Gold_Young] = GetMultiplierFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Gold_Juvenile][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Gold_Juvenile][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Gold_Juvenile][CreatureConstants.Dragon_Gold_Juvenile] = GetMultiplierFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Gold_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Gold_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Gold_YoungAdult][CreatureConstants.Dragon_Gold_YoungAdult] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Gold_Adult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Gold_Adult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Gold_Adult][CreatureConstants.Dragon_Gold_Adult] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Gold_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Gold_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Gold_MatureAdult][CreatureConstants.Dragon_Gold_MatureAdult] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Gold_Old][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Gold_Old][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Gold_Old][CreatureConstants.Dragon_Gold_Old] = GetMultiplierFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Gold_VeryOld][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Gold_VeryOld][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Gold_VeryOld][CreatureConstants.Dragon_Gold_VeryOld] = GetMultiplierFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Gold_Ancient][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Gold_Ancient][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Gold_Ancient][CreatureConstants.Dragon_Gold_Ancient] = GetMultiplierFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Gold_Wyrm][GenderConstants.Female] = GetBaseFromAverage(22 * 12);
-            heights[CreatureConstants.Dragon_Gold_Wyrm][GenderConstants.Male] = GetBaseFromAverage(22 * 12);
-            heights[CreatureConstants.Dragon_Gold_Wyrm][CreatureConstants.Dragon_Gold_Wyrm] = GetMultiplierFromAverage(22 * 12);
-            heights[CreatureConstants.Dragon_Gold_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(22 * 12);
-            heights[CreatureConstants.Dragon_Gold_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(22 * 12);
-            heights[CreatureConstants.Dragon_Gold_GreatWyrm][CreatureConstants.Dragon_Gold_GreatWyrm] = GetMultiplierFromAverage(22 * 12);
-            heights[CreatureConstants.Dragon_Green_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(30);
-            heights[CreatureConstants.Dragon_Green_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(30);
-            heights[CreatureConstants.Dragon_Green_Wyrmling][CreatureConstants.Dragon_Green_Wyrmling] = GetMultiplierFromAverage(30);
-            heights[CreatureConstants.Dragon_Green_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            heights[CreatureConstants.Dragon_Green_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
-            heights[CreatureConstants.Dragon_Green_VeryYoung][CreatureConstants.Dragon_Green_VeryYoung] = GetMultiplierFromAverage(5 * 12);
-            heights[CreatureConstants.Dragon_Green_Young][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            heights[CreatureConstants.Dragon_Green_Young][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
-            heights[CreatureConstants.Dragon_Green_Young][CreatureConstants.Dragon_Green_Young] = GetMultiplierFromAverage(5 * 12);
-            heights[CreatureConstants.Dragon_Green_Juvenile][GenderConstants.Female] = GetBaseFromAverage(9 * 12);
-            heights[CreatureConstants.Dragon_Green_Juvenile][GenderConstants.Male] = GetBaseFromAverage(9 * 12);
-            heights[CreatureConstants.Dragon_Green_Juvenile][CreatureConstants.Dragon_Green_Juvenile] = GetMultiplierFromAverage(9 * 12);
-            heights[CreatureConstants.Dragon_Green_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(9 * 12);
-            heights[CreatureConstants.Dragon_Green_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(9 * 12);
-            heights[CreatureConstants.Dragon_Green_YoungAdult][CreatureConstants.Dragon_Green_YoungAdult] = GetMultiplierFromAverage(9 * 12);
-            heights[CreatureConstants.Dragon_Green_Adult][GenderConstants.Female] = GetBaseFromAverage(15 * 12);
-            heights[CreatureConstants.Dragon_Green_Adult][GenderConstants.Male] = GetBaseFromAverage(15 * 12);
-            heights[CreatureConstants.Dragon_Green_Adult][CreatureConstants.Dragon_Green_Adult] = GetMultiplierFromAverage(15 * 12);
-            heights[CreatureConstants.Dragon_Green_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(15 * 12);
-            heights[CreatureConstants.Dragon_Green_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(15 * 12);
-            heights[CreatureConstants.Dragon_Green_MatureAdult][CreatureConstants.Dragon_Green_MatureAdult] = GetMultiplierFromAverage(15 * 12);
-            heights[CreatureConstants.Dragon_Green_Old][GenderConstants.Female] = GetBaseFromAverage(15 * 12);
-            heights[CreatureConstants.Dragon_Green_Old][GenderConstants.Male] = GetBaseFromAverage(15 * 12);
-            heights[CreatureConstants.Dragon_Green_Old][CreatureConstants.Dragon_Green_Old] = GetMultiplierFromAverage(15 * 12);
-            heights[CreatureConstants.Dragon_Green_VeryOld][GenderConstants.Female] = GetBaseFromAverage(15 * 12);
-            heights[CreatureConstants.Dragon_Green_VeryOld][GenderConstants.Male] = GetBaseFromAverage(15 * 12);
-            heights[CreatureConstants.Dragon_Green_VeryOld][CreatureConstants.Dragon_Green_VeryOld] = GetMultiplierFromAverage(15 * 12);
-            heights[CreatureConstants.Dragon_Green_Ancient][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
-            heights[CreatureConstants.Dragon_Green_Ancient][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
-            heights[CreatureConstants.Dragon_Green_Ancient][CreatureConstants.Dragon_Green_Ancient] = GetMultiplierFromAverage(20 * 12);
-            heights[CreatureConstants.Dragon_Green_Wyrm][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
-            heights[CreatureConstants.Dragon_Green_Wyrm][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
-            heights[CreatureConstants.Dragon_Green_Wyrm][CreatureConstants.Dragon_Green_Wyrm] = GetMultiplierFromAverage(20 * 12);
-            heights[CreatureConstants.Dragon_Green_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
-            heights[CreatureConstants.Dragon_Green_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
-            heights[CreatureConstants.Dragon_Green_GreatWyrm][CreatureConstants.Dragon_Green_GreatWyrm] = GetMultiplierFromAverage(20 * 12);
-            heights[CreatureConstants.Dragon_Red_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Red_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Red_Wyrmling][CreatureConstants.Dragon_Red_Wyrmling] = GetMultiplierFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Red_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Red_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Red_VeryYoung][CreatureConstants.Dragon_Red_VeryYoung] = GetMultiplierFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Red_Young][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Red_Young][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Red_Young][CreatureConstants.Dragon_Red_Young] = GetMultiplierFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Red_Juvenile][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Red_Juvenile][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Red_Juvenile][CreatureConstants.Dragon_Red_Juvenile] = GetMultiplierFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Red_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Red_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Red_YoungAdult][CreatureConstants.Dragon_Red_YoungAdult] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Red_Adult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Red_Adult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Red_Adult][CreatureConstants.Dragon_Red_Adult] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Red_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Red_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Red_MatureAdult][CreatureConstants.Dragon_Red_MatureAdult] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Red_Old][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Red_Old][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Red_Old][CreatureConstants.Dragon_Red_Old] = GetMultiplierFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Red_VeryOld][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Red_VeryOld][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Red_VeryOld][CreatureConstants.Dragon_Red_VeryOld] = GetMultiplierFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Red_Ancient][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Red_Ancient][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Red_Ancient][CreatureConstants.Dragon_Red_Ancient] = GetMultiplierFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Red_Wyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Red_Wyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Red_Wyrm][CreatureConstants.Dragon_Red_Wyrm] = GetMultiplierFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Red_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(22 * 12);
-            heights[CreatureConstants.Dragon_Red_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(22 * 12);
-            heights[CreatureConstants.Dragon_Red_GreatWyrm][CreatureConstants.Dragon_Red_GreatWyrm] = GetMultiplierFromAverage(22 * 12);
-            heights[CreatureConstants.Dragon_Silver_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(2 * 12);
-            heights[CreatureConstants.Dragon_Silver_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(2 * 12);
-            heights[CreatureConstants.Dragon_Silver_Wyrmling][CreatureConstants.Dragon_Silver_Wyrmling] = GetMultiplierFromAverage(2 * 12);
-            heights[CreatureConstants.Dragon_Silver_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Silver_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Silver_VeryYoung][CreatureConstants.Dragon_Silver_VeryYoung] = GetMultiplierFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_Silver_Young][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Silver_Young][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Silver_Young][CreatureConstants.Dragon_Silver_Young] = GetMultiplierFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Silver_Juvenile][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Silver_Juvenile][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Silver_Juvenile][CreatureConstants.Dragon_Silver_Juvenile] = GetMultiplierFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Silver_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Silver_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Silver_YoungAdult][CreatureConstants.Dragon_Silver_YoungAdult] = GetMultiplierFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_Silver_Adult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Silver_Adult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Silver_Adult][CreatureConstants.Dragon_Silver_Adult] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Silver_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Silver_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Silver_MatureAdult][CreatureConstants.Dragon_Silver_MatureAdult] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Silver_Old][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Silver_Old][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Silver_Old][CreatureConstants.Dragon_Silver_Old] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Silver_VeryOld][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Silver_VeryOld][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Silver_VeryOld][CreatureConstants.Dragon_Silver_VeryOld] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_Silver_Ancient][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Silver_Ancient][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Silver_Ancient][CreatureConstants.Dragon_Silver_Ancient] = GetMultiplierFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Silver_Wyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Silver_Wyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Silver_Wyrm][CreatureConstants.Dragon_Silver_Wyrm] = GetMultiplierFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_Silver_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(22 * 12);
-            heights[CreatureConstants.Dragon_Silver_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(22 * 12);
-            heights[CreatureConstants.Dragon_Silver_GreatWyrm][CreatureConstants.Dragon_Silver_GreatWyrm] = GetMultiplierFromAverage(22 * 12);
-            heights[CreatureConstants.Dragon_White_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(12);
-            heights[CreatureConstants.Dragon_White_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(12);
-            heights[CreatureConstants.Dragon_White_Wyrmling][CreatureConstants.Dragon_White_Wyrmling] = GetMultiplierFromAverage(12);
-            heights[CreatureConstants.Dragon_White_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(24);
-            heights[CreatureConstants.Dragon_White_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(24);
-            heights[CreatureConstants.Dragon_White_VeryYoung][CreatureConstants.Dragon_White_VeryYoung] = GetMultiplierFromAverage(24);
-            heights[CreatureConstants.Dragon_White_Young][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_White_Young][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_White_Young][CreatureConstants.Dragon_White_Young] = GetMultiplierFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_White_Juvenile][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_White_Juvenile][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_White_Juvenile][CreatureConstants.Dragon_White_Juvenile] = GetMultiplierFromAverage(4 * 12);
-            heights[CreatureConstants.Dragon_White_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_White_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_White_YoungAdult][CreatureConstants.Dragon_White_YoungAdult] = GetMultiplierFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_White_Adult][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_White_Adult][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_White_Adult][CreatureConstants.Dragon_White_Adult] = GetMultiplierFromAverage(7 * 12);
-            heights[CreatureConstants.Dragon_White_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_White_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_White_MatureAdult][CreatureConstants.Dragon_White_MatureAdult] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_White_Old][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_White_Old][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_White_Old][CreatureConstants.Dragon_White_Old] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_White_VeryOld][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_White_VeryOld][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_White_VeryOld][CreatureConstants.Dragon_White_VeryOld] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_White_Ancient][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_White_Ancient][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_White_Ancient][CreatureConstants.Dragon_White_Ancient] = GetMultiplierFromAverage(12 * 12);
-            heights[CreatureConstants.Dragon_White_Wyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_White_Wyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_White_Wyrm][CreatureConstants.Dragon_White_Wyrm] = GetMultiplierFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_White_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_White_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            heights[CreatureConstants.Dragon_White_GreatWyrm][CreatureConstants.Dragon_White_GreatWyrm] = GetMultiplierFromAverage(16 * 12);
+            weights[CreatureConstants.Dragon_Black_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Black_Wyrmling, 5);
+            weights[CreatureConstants.Dragon_Black_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Black_Wyrmling, 5);
+            weights[CreatureConstants.Dragon_Black_Wyrmling][CreatureConstants.Dragon_Black_Wyrmling] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Black_Wyrmling, 5);
+            weights[CreatureConstants.Dragon_Black_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Black_VeryYoung, 40);
+            weights[CreatureConstants.Dragon_Black_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Black_VeryYoung, 40);
+            weights[CreatureConstants.Dragon_Black_VeryYoung][CreatureConstants.Dragon_Black_VeryYoung] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Black_VeryYoung, 40);
+            weights[CreatureConstants.Dragon_Black_Young][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Black_Young, 320);
+            weights[CreatureConstants.Dragon_Black_Young][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Black_Young, 320);
+            weights[CreatureConstants.Dragon_Black_Young][CreatureConstants.Dragon_Black_Young] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Black_Young, 320);
+            weights[CreatureConstants.Dragon_Black_Juvenile][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Black_Juvenile, 320);
+            weights[CreatureConstants.Dragon_Black_Juvenile][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Black_Juvenile, 320);
+            weights[CreatureConstants.Dragon_Black_Juvenile][CreatureConstants.Dragon_Black_Juvenile] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Black_Juvenile, 320);
+            weights[CreatureConstants.Dragon_Black_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Black_YoungAdult, 2500);
+            weights[CreatureConstants.Dragon_Black_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Black_YoungAdult, 2500);
+            weights[CreatureConstants.Dragon_Black_YoungAdult][CreatureConstants.Dragon_Black_YoungAdult] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Black_YoungAdult, 2500);
+            weights[CreatureConstants.Dragon_Black_Adult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Black_Adult, 2500);
+            weights[CreatureConstants.Dragon_Black_Adult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Black_Adult, 2500);
+            weights[CreatureConstants.Dragon_Black_Adult][CreatureConstants.Dragon_Black_Adult] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Black_Adult, 2500);
+            weights[CreatureConstants.Dragon_Black_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Black_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Black_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Black_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Black_MatureAdult][CreatureConstants.Dragon_Black_MatureAdult] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Black_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Black_Old][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Black_Old, 20_000);
+            weights[CreatureConstants.Dragon_Black_Old][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Black_Old, 20_000);
+            weights[CreatureConstants.Dragon_Black_Old][CreatureConstants.Dragon_Black_Old] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Black_Old, 20_000);
+            weights[CreatureConstants.Dragon_Black_VeryOld][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Black_VeryOld, 20_000);
+            weights[CreatureConstants.Dragon_Black_VeryOld][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Black_VeryOld, 20_000);
+            weights[CreatureConstants.Dragon_Black_VeryOld][CreatureConstants.Dragon_Black_VeryOld] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Black_VeryOld, 20_000);
+            weights[CreatureConstants.Dragon_Black_Ancient][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Black_Ancient, 20_000);
+            weights[CreatureConstants.Dragon_Black_Ancient][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Black_Ancient, 20_000);
+            weights[CreatureConstants.Dragon_Black_Ancient][CreatureConstants.Dragon_Black_Ancient] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Black_Ancient, 20_000);
+            weights[CreatureConstants.Dragon_Black_Wyrm][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Black_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_Black_Wyrm][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Black_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_Black_Wyrm][CreatureConstants.Dragon_Black_Wyrm] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Black_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_Black_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Black_GreatWyrm, 160_000);
+            weights[CreatureConstants.Dragon_Black_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Black_GreatWyrm, 160_000);
+            weights[CreatureConstants.Dragon_Black_GreatWyrm][CreatureConstants.Dragon_Black_GreatWyrm] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Black_GreatWyrm, 160_000);
+            weights[CreatureConstants.Dragon_Blue_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Blue_Wyrmling, 40);
+            weights[CreatureConstants.Dragon_Blue_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Blue_Wyrmling, 40);
+            weights[CreatureConstants.Dragon_Blue_Wyrmling][CreatureConstants.Dragon_Blue_Wyrmling] = GetMultiplierFromAverage(CreatureConstants.Dragon_Blue_Wyrmling, 40);
+            weights[CreatureConstants.Dragon_Blue_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Blue_VeryYoung, 320);
+            weights[CreatureConstants.Dragon_Blue_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Blue_VeryYoung, 320);
+            weights[CreatureConstants.Dragon_Blue_VeryYoung][CreatureConstants.Dragon_Blue_VeryYoung] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Blue_VeryYoung, 320);
+            weights[CreatureConstants.Dragon_Blue_Young][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Blue_Young, 320);
+            weights[CreatureConstants.Dragon_Blue_Young][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Blue_Young, 320);
+            weights[CreatureConstants.Dragon_Blue_Young][CreatureConstants.Dragon_Blue_Young] = GetMultiplierFromAverage(CreatureConstants.Dragon_Blue_Young, 320);
+            weights[CreatureConstants.Dragon_Blue_Juvenile][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Blue_Juvenile, 2500);
+            weights[CreatureConstants.Dragon_Blue_Juvenile][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Blue_Juvenile, 2500);
+            weights[CreatureConstants.Dragon_Blue_Juvenile][CreatureConstants.Dragon_Blue_Juvenile] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Blue_Juvenile, 2500);
+            weights[CreatureConstants.Dragon_Blue_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Blue_YoungAdult, 2500);
+            weights[CreatureConstants.Dragon_Blue_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Blue_YoungAdult, 2500);
+            weights[CreatureConstants.Dragon_Blue_YoungAdult][CreatureConstants.Dragon_Blue_YoungAdult] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Blue_YoungAdult, 2500);
+            weights[CreatureConstants.Dragon_Blue_Adult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Blue_Adult, 20_000);
+            weights[CreatureConstants.Dragon_Blue_Adult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Blue_Adult, 20_000);
+            weights[CreatureConstants.Dragon_Blue_Adult][CreatureConstants.Dragon_Blue_Adult] = GetMultiplierFromAverage(CreatureConstants.Dragon_Blue_Adult, 20_000);
+            weights[CreatureConstants.Dragon_Blue_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Blue_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Blue_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Blue_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Blue_MatureAdult][CreatureConstants.Dragon_Blue_MatureAdult] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Blue_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Blue_Old][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Blue_Old, 20_000);
+            weights[CreatureConstants.Dragon_Blue_Old][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Blue_Old, 20_000);
+            weights[CreatureConstants.Dragon_Blue_Old][CreatureConstants.Dragon_Blue_Old] = GetMultiplierFromAverage(CreatureConstants.Dragon_Blue_Old, 20_000);
+            weights[CreatureConstants.Dragon_Blue_VeryOld][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Blue_VeryOld, 20_000);
+            weights[CreatureConstants.Dragon_Blue_VeryOld][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Blue_VeryOld, 20_000);
+            weights[CreatureConstants.Dragon_Blue_VeryOld][CreatureConstants.Dragon_Blue_VeryOld] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Blue_VeryOld, 20_000);
+            weights[CreatureConstants.Dragon_Blue_Ancient][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Blue_Ancient, 160_000);
+            weights[CreatureConstants.Dragon_Blue_Ancient][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Blue_Ancient, 160_000);
+            weights[CreatureConstants.Dragon_Blue_Ancient][CreatureConstants.Dragon_Blue_Ancient] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Blue_Ancient, 160_000);
+            weights[CreatureConstants.Dragon_Blue_Wyrm][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Blue_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_Blue_Wyrm][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Blue_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_Blue_Wyrm][CreatureConstants.Dragon_Blue_Wyrm] = GetMultiplierFromAverage(CreatureConstants.Dragon_Blue_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_Blue_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Blue_GreatWyrm, 160_000);
+            weights[CreatureConstants.Dragon_Blue_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Blue_GreatWyrm, 160_000);
+            weights[CreatureConstants.Dragon_Blue_GreatWyrm][CreatureConstants.Dragon_Blue_GreatWyrm] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Blue_GreatWyrm, 160_000);
+            weights[CreatureConstants.Dragon_Brass_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Brass_Wyrmling, 5);
+            weights[CreatureConstants.Dragon_Brass_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Brass_Wyrmling, 5);
+            weights[CreatureConstants.Dragon_Brass_Wyrmling][CreatureConstants.Dragon_Brass_Wyrmling] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Brass_Wyrmling, 5);
+            weights[CreatureConstants.Dragon_Brass_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Brass_VeryYoung, 40);
+            weights[CreatureConstants.Dragon_Brass_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Brass_VeryYoung, 40);
+            weights[CreatureConstants.Dragon_Brass_VeryYoung][CreatureConstants.Dragon_Brass_VeryYoung] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Brass_VeryYoung, 40);
+            weights[CreatureConstants.Dragon_Brass_Young][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Brass_Young, 320);
+            weights[CreatureConstants.Dragon_Brass_Young][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Brass_Young, 320);
+            weights[CreatureConstants.Dragon_Brass_Young][CreatureConstants.Dragon_Brass_Young] = GetMultiplierFromAverage(CreatureConstants.Dragon_Brass_Young, 320);
+            weights[CreatureConstants.Dragon_Brass_Juvenile][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Brass_Juvenile, 320);
+            weights[CreatureConstants.Dragon_Brass_Juvenile][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Brass_Juvenile, 320);
+            weights[CreatureConstants.Dragon_Brass_Juvenile][CreatureConstants.Dragon_Brass_Juvenile] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Brass_Juvenile, 320);
+            weights[CreatureConstants.Dragon_Brass_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Brass_YoungAdult, 2500);
+            weights[CreatureConstants.Dragon_Brass_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Brass_YoungAdult, 2500);
+            weights[CreatureConstants.Dragon_Brass_YoungAdult][CreatureConstants.Dragon_Brass_YoungAdult] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Brass_YoungAdult, 2500);
+            weights[CreatureConstants.Dragon_Brass_Adult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Brass_Adult, 2500);
+            weights[CreatureConstants.Dragon_Brass_Adult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Brass_Adult, 2500);
+            weights[CreatureConstants.Dragon_Brass_Adult][CreatureConstants.Dragon_Brass_Adult] = GetMultiplierFromAverage(CreatureConstants.Dragon_Brass_Adult, 2500);
+            weights[CreatureConstants.Dragon_Brass_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Brass_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Brass_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Brass_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Brass_MatureAdult][CreatureConstants.Dragon_Brass_MatureAdult] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Brass_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Brass_Old][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Brass_Old, 20_000);
+            weights[CreatureConstants.Dragon_Brass_Old][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Brass_Old, 20_000);
+            weights[CreatureConstants.Dragon_Brass_Old][CreatureConstants.Dragon_Brass_Old] = GetMultiplierFromAverage(CreatureConstants.Dragon_Brass_Old, 20_000);
+            weights[CreatureConstants.Dragon_Brass_VeryOld][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Brass_VeryOld, 20_000);
+            weights[CreatureConstants.Dragon_Brass_VeryOld][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Brass_VeryOld, 20_000);
+            weights[CreatureConstants.Dragon_Brass_VeryOld][CreatureConstants.Dragon_Brass_VeryOld] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Brass_VeryOld, 20_000);
+            weights[CreatureConstants.Dragon_Brass_Ancient][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Brass_Ancient, 20_000);
+            weights[CreatureConstants.Dragon_Brass_Ancient][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Brass_Ancient, 20_000);
+            weights[CreatureConstants.Dragon_Brass_Ancient][CreatureConstants.Dragon_Brass_Ancient] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Brass_Ancient, 20_000);
+            weights[CreatureConstants.Dragon_Brass_Wyrm][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Brass_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_Brass_Wyrm][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Brass_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_Brass_Wyrm][CreatureConstants.Dragon_Brass_Wyrm] = GetMultiplierFromAverage(CreatureConstants.Dragon_Brass_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_Brass_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Brass_GreatWyrm, 160_000);
+            weights[CreatureConstants.Dragon_Brass_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Brass_GreatWyrm, 160_000);
+            weights[CreatureConstants.Dragon_Brass_GreatWyrm][CreatureConstants.Dragon_Brass_GreatWyrm] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Brass_GreatWyrm, 160_000);
+            weights[CreatureConstants.Dragon_Bronze_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Bronze_Wyrmling, 40);
+            weights[CreatureConstants.Dragon_Bronze_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Bronze_Wyrmling, 40);
+            weights[CreatureConstants.Dragon_Bronze_Wyrmling][CreatureConstants.Dragon_Bronze_Wyrmling] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Bronze_Wyrmling, 40);
+            weights[CreatureConstants.Dragon_Bronze_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Bronze_VeryYoung, 320);
+            weights[CreatureConstants.Dragon_Bronze_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Bronze_VeryYoung, 320);
+            weights[CreatureConstants.Dragon_Bronze_VeryYoung][CreatureConstants.Dragon_Bronze_VeryYoung] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Bronze_VeryYoung, 320);
+            weights[CreatureConstants.Dragon_Bronze_Young][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Bronze_Young, 320);
+            weights[CreatureConstants.Dragon_Bronze_Young][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Bronze_Young, 320);
+            weights[CreatureConstants.Dragon_Bronze_Young][CreatureConstants.Dragon_Bronze_Young] = GetMultiplierFromAverage(CreatureConstants.Dragon_Bronze_Young, 320);
+            weights[CreatureConstants.Dragon_Bronze_Juvenile][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Bronze_Juvenile, 2500);
+            weights[CreatureConstants.Dragon_Bronze_Juvenile][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Bronze_Juvenile, 2500);
+            weights[CreatureConstants.Dragon_Bronze_Juvenile][CreatureConstants.Dragon_Bronze_Juvenile] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Bronze_Juvenile, 2500);
+            weights[CreatureConstants.Dragon_Bronze_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Bronze_YoungAdult, 2500);
+            weights[CreatureConstants.Dragon_Bronze_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Bronze_YoungAdult, 2500);
+            weights[CreatureConstants.Dragon_Bronze_YoungAdult][CreatureConstants.Dragon_Bronze_YoungAdult] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Bronze_YoungAdult, 2500);
+            weights[CreatureConstants.Dragon_Bronze_Adult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Bronze_Adult, 20_000);
+            weights[CreatureConstants.Dragon_Bronze_Adult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Bronze_Adult, 20_000);
+            weights[CreatureConstants.Dragon_Bronze_Adult][CreatureConstants.Dragon_Bronze_Adult] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Bronze_Adult, 20_000);
+            weights[CreatureConstants.Dragon_Bronze_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Bronze_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Bronze_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Bronze_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Bronze_MatureAdult][CreatureConstants.Dragon_Bronze_MatureAdult] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Bronze_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Bronze_Old][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Bronze_Old, 20_000);
+            weights[CreatureConstants.Dragon_Bronze_Old][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Bronze_Old, 20_000);
+            weights[CreatureConstants.Dragon_Bronze_Old][CreatureConstants.Dragon_Bronze_Old] = GetMultiplierFromAverage(CreatureConstants.Dragon_Bronze_Old, 20_000);
+            weights[CreatureConstants.Dragon_Bronze_VeryOld][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Bronze_VeryOld, 20_000);
+            weights[CreatureConstants.Dragon_Bronze_VeryOld][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Bronze_VeryOld, 20_000);
+            weights[CreatureConstants.Dragon_Bronze_VeryOld][CreatureConstants.Dragon_Bronze_VeryOld] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Bronze_VeryOld, 20_000);
+            weights[CreatureConstants.Dragon_Bronze_Ancient][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Bronze_Ancient, 160_000);
+            weights[CreatureConstants.Dragon_Bronze_Ancient][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Bronze_Ancient, 160_000);
+            weights[CreatureConstants.Dragon_Bronze_Ancient][CreatureConstants.Dragon_Bronze_Ancient] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Bronze_Ancient, 160_000);
+            weights[CreatureConstants.Dragon_Bronze_Wyrm][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Bronze_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_Bronze_Wyrm][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Bronze_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_Bronze_Wyrm][CreatureConstants.Dragon_Bronze_Wyrm] = GetMultiplierFromAverage(CreatureConstants.Dragon_Bronze_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_Bronze_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Bronze_GreatWyrm, 160_000);
+            weights[CreatureConstants.Dragon_Bronze_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Bronze_GreatWyrm, 160_000);
+            weights[CreatureConstants.Dragon_Bronze_GreatWyrm][CreatureConstants.Dragon_Bronze_GreatWyrm] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Bronze_GreatWyrm, 160_000);
+            weights[CreatureConstants.Dragon_Copper_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Copper_Wyrmling, 5);
+            weights[CreatureConstants.Dragon_Copper_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Copper_Wyrmling, 5);
+            weights[CreatureConstants.Dragon_Copper_Wyrmling][CreatureConstants.Dragon_Copper_Wyrmling] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Copper_Wyrmling, 5);
+            weights[CreatureConstants.Dragon_Copper_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Copper_VeryYoung, 40);
+            weights[CreatureConstants.Dragon_Copper_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Copper_VeryYoung, 40);
+            weights[CreatureConstants.Dragon_Copper_VeryYoung][CreatureConstants.Dragon_Copper_VeryYoung] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Copper_VeryYoung, 40);
+            weights[CreatureConstants.Dragon_Copper_Young][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Copper_Young, 320);
+            weights[CreatureConstants.Dragon_Copper_Young][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Copper_Young, 320);
+            weights[CreatureConstants.Dragon_Copper_Young][CreatureConstants.Dragon_Copper_Young] = GetMultiplierFromAverage(CreatureConstants.Dragon_Copper_Young, 320);
+            weights[CreatureConstants.Dragon_Copper_Juvenile][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Copper_Juvenile, 320);
+            weights[CreatureConstants.Dragon_Copper_Juvenile][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Copper_Juvenile, 320);
+            weights[CreatureConstants.Dragon_Copper_Juvenile][CreatureConstants.Dragon_Copper_Juvenile] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Copper_Juvenile, 320);
+            weights[CreatureConstants.Dragon_Copper_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Copper_YoungAdult, 2500);
+            weights[CreatureConstants.Dragon_Copper_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Copper_YoungAdult, 2500);
+            weights[CreatureConstants.Dragon_Copper_YoungAdult][CreatureConstants.Dragon_Copper_YoungAdult] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Copper_YoungAdult, 2500);
+            weights[CreatureConstants.Dragon_Copper_Adult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Copper_Adult, 2500);
+            weights[CreatureConstants.Dragon_Copper_Adult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Copper_Adult, 2500);
+            weights[CreatureConstants.Dragon_Copper_Adult][CreatureConstants.Dragon_Copper_Adult] = GetMultiplierFromAverage(CreatureConstants.Dragon_Copper_Adult, 2500);
+            weights[CreatureConstants.Dragon_Copper_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Copper_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Copper_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Copper_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Copper_MatureAdult][CreatureConstants.Dragon_Copper_MatureAdult] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Copper_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Copper_Old][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Copper_Old, 20_000);
+            weights[CreatureConstants.Dragon_Copper_Old][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Copper_Old, 20_000);
+            weights[CreatureConstants.Dragon_Copper_Old][CreatureConstants.Dragon_Copper_Old] = GetMultiplierFromAverage(CreatureConstants.Dragon_Copper_Old, 20_000);
+            weights[CreatureConstants.Dragon_Copper_VeryOld][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Copper_VeryOld, 20_000);
+            weights[CreatureConstants.Dragon_Copper_VeryOld][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Copper_VeryOld, 20_000);
+            weights[CreatureConstants.Dragon_Copper_VeryOld][CreatureConstants.Dragon_Copper_VeryOld] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Copper_VeryOld, 20_000);
+            weights[CreatureConstants.Dragon_Copper_Ancient][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Copper_Ancient, 20_000);
+            weights[CreatureConstants.Dragon_Copper_Ancient][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Copper_Ancient, 20_000);
+            weights[CreatureConstants.Dragon_Copper_Ancient][CreatureConstants.Dragon_Copper_Ancient] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Copper_Ancient, 20_000);
+            weights[CreatureConstants.Dragon_Copper_Wyrm][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Copper_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_Copper_Wyrm][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Copper_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_Copper_Wyrm][CreatureConstants.Dragon_Copper_Wyrm] = GetMultiplierFromAverage(CreatureConstants.Dragon_Copper_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_Copper_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Copper_GreatWyrm, 160_000);
+            weights[CreatureConstants.Dragon_Copper_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Copper_GreatWyrm, 160_000);
+            weights[CreatureConstants.Dragon_Copper_GreatWyrm][CreatureConstants.Dragon_Copper_GreatWyrm] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Copper_GreatWyrm, 160_000);
+            weights[CreatureConstants.Dragon_Gold_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Gold_Wyrmling, 320);
+            weights[CreatureConstants.Dragon_Gold_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Gold_Wyrmling, 320);
+            weights[CreatureConstants.Dragon_Gold_Wyrmling][CreatureConstants.Dragon_Gold_Wyrmling] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Gold_Wyrmling, 320);
+            weights[CreatureConstants.Dragon_Gold_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Gold_VeryYoung, 2500);
+            weights[CreatureConstants.Dragon_Gold_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Gold_VeryYoung, 2500);
+            weights[CreatureConstants.Dragon_Gold_VeryYoung][CreatureConstants.Dragon_Gold_VeryYoung] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Gold_VeryYoung, 2500);
+            weights[CreatureConstants.Dragon_Gold_Young][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Gold_Young, 2500);
+            weights[CreatureConstants.Dragon_Gold_Young][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Gold_Young, 2500);
+            weights[CreatureConstants.Dragon_Gold_Young][CreatureConstants.Dragon_Gold_Young] = GetMultiplierFromAverage(CreatureConstants.Dragon_Gold_Young, 2500);
+            weights[CreatureConstants.Dragon_Gold_Juvenile][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Gold_Juvenile, 2500);
+            weights[CreatureConstants.Dragon_Gold_Juvenile][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Gold_Juvenile, 2500);
+            weights[CreatureConstants.Dragon_Gold_Juvenile][CreatureConstants.Dragon_Gold_Juvenile] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Gold_Juvenile, 2500);
+            weights[CreatureConstants.Dragon_Gold_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Gold_YoungAdult, 20_000);
+            weights[CreatureConstants.Dragon_Gold_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Gold_YoungAdult, 20_000);
+            weights[CreatureConstants.Dragon_Gold_YoungAdult][CreatureConstants.Dragon_Gold_YoungAdult] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Gold_YoungAdult, 20_000);
+            weights[CreatureConstants.Dragon_Gold_Adult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Gold_Adult, 20_000);
+            weights[CreatureConstants.Dragon_Gold_Adult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Gold_Adult, 20_000);
+            weights[CreatureConstants.Dragon_Gold_Adult][CreatureConstants.Dragon_Gold_Adult] = GetMultiplierFromAverage(CreatureConstants.Dragon_Gold_Adult, 20_000);
+            weights[CreatureConstants.Dragon_Gold_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Gold_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Gold_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Gold_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Gold_MatureAdult][CreatureConstants.Dragon_Gold_MatureAdult] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Gold_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Gold_Old][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Gold_Old, 160_000);
+            weights[CreatureConstants.Dragon_Gold_Old][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Gold_Old, 160_000);
+            weights[CreatureConstants.Dragon_Gold_Old][CreatureConstants.Dragon_Gold_Old] = GetMultiplierFromAverage(CreatureConstants.Dragon_Gold_Old, 160_000);
+            weights[CreatureConstants.Dragon_Gold_VeryOld][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Gold_VeryOld, 160_000);
+            weights[CreatureConstants.Dragon_Gold_VeryOld][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Gold_VeryOld, 160_000);
+            weights[CreatureConstants.Dragon_Gold_VeryOld][CreatureConstants.Dragon_Gold_VeryOld] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Gold_VeryOld, 160_000);
+            weights[CreatureConstants.Dragon_Gold_Ancient][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Gold_Ancient, 160_000);
+            weights[CreatureConstants.Dragon_Gold_Ancient][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Gold_Ancient, 160_000);
+            weights[CreatureConstants.Dragon_Gold_Ancient][CreatureConstants.Dragon_Gold_Ancient] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Gold_Ancient, 160_000);
+            weights[CreatureConstants.Dragon_Gold_Wyrm][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Gold_Wyrm, 1_280_000);
+            weights[CreatureConstants.Dragon_Gold_Wyrm][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Gold_Wyrm, 1_280_000);
+            weights[CreatureConstants.Dragon_Gold_Wyrm][CreatureConstants.Dragon_Gold_Wyrm] = GetMultiplierFromAverage(CreatureConstants.Dragon_Gold_Wyrm, 1_280_000);
+            weights[CreatureConstants.Dragon_Gold_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Gold_GreatWyrm, 1_280_000);
+            weights[CreatureConstants.Dragon_Gold_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Gold_GreatWyrm, 1_280_000);
+            weights[CreatureConstants.Dragon_Gold_GreatWyrm][CreatureConstants.Dragon_Gold_GreatWyrm] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Gold_GreatWyrm, 1_280_000);
+            weights[CreatureConstants.Dragon_Green_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Green_Wyrmling, 40);
+            weights[CreatureConstants.Dragon_Green_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Green_Wyrmling, 40);
+            weights[CreatureConstants.Dragon_Green_Wyrmling][CreatureConstants.Dragon_Green_Wyrmling] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Green_Wyrmling, 40);
+            weights[CreatureConstants.Dragon_Green_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Green_VeryYoung, 320);
+            weights[CreatureConstants.Dragon_Green_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Green_VeryYoung, 320);
+            weights[CreatureConstants.Dragon_Green_VeryYoung][CreatureConstants.Dragon_Green_VeryYoung] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Green_VeryYoung, 320);
+            weights[CreatureConstants.Dragon_Green_Young][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Green_Young, 320);
+            weights[CreatureConstants.Dragon_Green_Young][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Green_Young, 320);
+            weights[CreatureConstants.Dragon_Green_Young][CreatureConstants.Dragon_Green_Young] = GetMultiplierFromAverage(CreatureConstants.Dragon_Green_Young, 320);
+            weights[CreatureConstants.Dragon_Green_Juvenile][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Green_Juvenile, 2500);
+            weights[CreatureConstants.Dragon_Green_Juvenile][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Green_Juvenile, 2500);
+            weights[CreatureConstants.Dragon_Green_Juvenile][CreatureConstants.Dragon_Green_Juvenile] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Green_Juvenile, 2500);
+            weights[CreatureConstants.Dragon_Green_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Green_YoungAdult, 2500);
+            weights[CreatureConstants.Dragon_Green_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Green_YoungAdult, 2500);
+            weights[CreatureConstants.Dragon_Green_YoungAdult][CreatureConstants.Dragon_Green_YoungAdult] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Green_YoungAdult, 2500);
+            weights[CreatureConstants.Dragon_Green_Adult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Green_Adult, 20_000);
+            weights[CreatureConstants.Dragon_Green_Adult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Green_Adult, 20_000);
+            weights[CreatureConstants.Dragon_Green_Adult][CreatureConstants.Dragon_Green_Adult] = GetMultiplierFromAverage(CreatureConstants.Dragon_Green_Adult, 20_000);
+            weights[CreatureConstants.Dragon_Green_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Green_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Green_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Green_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Green_MatureAdult][CreatureConstants.Dragon_Green_MatureAdult] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Green_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Green_Old][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Green_Old, 20_000);
+            weights[CreatureConstants.Dragon_Green_Old][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Green_Old, 20_000);
+            weights[CreatureConstants.Dragon_Green_Old][CreatureConstants.Dragon_Green_Old] = GetMultiplierFromAverage(CreatureConstants.Dragon_Green_Old, 20_000);
+            weights[CreatureConstants.Dragon_Green_VeryOld][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Green_VeryOld, 20_000);
+            weights[CreatureConstants.Dragon_Green_VeryOld][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Green_VeryOld, 20_000);
+            weights[CreatureConstants.Dragon_Green_VeryOld][CreatureConstants.Dragon_Green_VeryOld] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Green_VeryOld, 20_000);
+            weights[CreatureConstants.Dragon_Green_Ancient][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Green_Ancient, 160_000);
+            weights[CreatureConstants.Dragon_Green_Ancient][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Green_Ancient, 160_000);
+            weights[CreatureConstants.Dragon_Green_Ancient][CreatureConstants.Dragon_Green_Ancient] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Green_Ancient, 160_000);
+            weights[CreatureConstants.Dragon_Green_Wyrm][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Green_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_Green_Wyrm][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Green_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_Green_Wyrm][CreatureConstants.Dragon_Green_Wyrm] = GetMultiplierFromAverage(CreatureConstants.Dragon_Green_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_Green_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Green_GreatWyrm, 160_000);
+            weights[CreatureConstants.Dragon_Green_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Green_GreatWyrm, 160_000);
+            weights[CreatureConstants.Dragon_Green_GreatWyrm][CreatureConstants.Dragon_Green_GreatWyrm] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Green_GreatWyrm, 160_000);
+            weights[CreatureConstants.Dragon_Red_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Red_Wyrmling, 320);
+            weights[CreatureConstants.Dragon_Red_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Red_Wyrmling, 320);
+            weights[CreatureConstants.Dragon_Red_Wyrmling][CreatureConstants.Dragon_Red_Wyrmling] = GetMultiplierFromAverage(CreatureConstants.Dragon_Red_Wyrmling, 320);
+            weights[CreatureConstants.Dragon_Red_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Red_VeryYoung, 2500);
+            weights[CreatureConstants.Dragon_Red_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Red_VeryYoung, 2500);
+            weights[CreatureConstants.Dragon_Red_VeryYoung][CreatureConstants.Dragon_Red_VeryYoung] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Red_VeryYoung, 2500);
+            weights[CreatureConstants.Dragon_Red_Young][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Red_Young, 2500);
+            weights[CreatureConstants.Dragon_Red_Young][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Red_Young, 2500);
+            weights[CreatureConstants.Dragon_Red_Young][CreatureConstants.Dragon_Red_Young] = GetMultiplierFromAverage(CreatureConstants.Dragon_Red_Young, 2500);
+            weights[CreatureConstants.Dragon_Red_Juvenile][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Red_Juvenile, 2500);
+            weights[CreatureConstants.Dragon_Red_Juvenile][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Red_Juvenile, 2500);
+            weights[CreatureConstants.Dragon_Red_Juvenile][CreatureConstants.Dragon_Red_Juvenile] = GetMultiplierFromAverage(CreatureConstants.Dragon_Red_Juvenile, 2500);
+            weights[CreatureConstants.Dragon_Red_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Red_YoungAdult, 20_000);
+            weights[CreatureConstants.Dragon_Red_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Red_YoungAdult, 20_000);
+            weights[CreatureConstants.Dragon_Red_YoungAdult][CreatureConstants.Dragon_Red_YoungAdult] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Red_YoungAdult, 20_000);
+            weights[CreatureConstants.Dragon_Red_Adult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Red_Adult, 20_000);
+            weights[CreatureConstants.Dragon_Red_Adult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Red_Adult, 20_000);
+            weights[CreatureConstants.Dragon_Red_Adult][CreatureConstants.Dragon_Red_Adult] = GetMultiplierFromAverage(CreatureConstants.Dragon_Red_Adult, 20_000);
+            weights[CreatureConstants.Dragon_Red_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Red_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Red_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Red_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Red_MatureAdult][CreatureConstants.Dragon_Red_MatureAdult] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Red_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Red_Old][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Red_Old, 160_000);
+            weights[CreatureConstants.Dragon_Red_Old][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Red_Old, 160_000);
+            weights[CreatureConstants.Dragon_Red_Old][CreatureConstants.Dragon_Red_Old] = GetMultiplierFromAverage(CreatureConstants.Dragon_Red_Old, 160_000);
+            weights[CreatureConstants.Dragon_Red_VeryOld][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Red_VeryOld, 160_000);
+            weights[CreatureConstants.Dragon_Red_VeryOld][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Red_VeryOld, 160_000);
+            weights[CreatureConstants.Dragon_Red_VeryOld][CreatureConstants.Dragon_Red_VeryOld] = GetMultiplierFromAverage(CreatureConstants.Dragon_Red_VeryOld, 160_000);
+            weights[CreatureConstants.Dragon_Red_Ancient][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Red_Ancient, 160_000);
+            weights[CreatureConstants.Dragon_Red_Ancient][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Red_Ancient, 160_000);
+            weights[CreatureConstants.Dragon_Red_Ancient][CreatureConstants.Dragon_Red_Ancient] = GetMultiplierFromAverage(CreatureConstants.Dragon_Red_Ancient, 160_000);
+            weights[CreatureConstants.Dragon_Red_Wyrm][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Red_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_Red_Wyrm][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Red_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_Red_Wyrm][CreatureConstants.Dragon_Red_Wyrm] = GetMultiplierFromAverage(CreatureConstants.Dragon_Red_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_Red_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Red_GreatWyrm, 1_280_000);
+            weights[CreatureConstants.Dragon_Red_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Red_GreatWyrm, 1_280_000);
+            weights[CreatureConstants.Dragon_Red_GreatWyrm][CreatureConstants.Dragon_Red_GreatWyrm] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Red_GreatWyrm, 1_280_000);
+            weights[CreatureConstants.Dragon_Silver_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Silver_Wyrmling, 40);
+            weights[CreatureConstants.Dragon_Silver_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Silver_Wyrmling, 40);
+            weights[CreatureConstants.Dragon_Silver_Wyrmling][CreatureConstants.Dragon_Silver_Wyrmling] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Silver_Wyrmling, 40);
+            weights[CreatureConstants.Dragon_Silver_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Silver_VeryYoung, 320);
+            weights[CreatureConstants.Dragon_Silver_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Silver_VeryYoung, 320);
+            weights[CreatureConstants.Dragon_Silver_VeryYoung][CreatureConstants.Dragon_Silver_VeryYoung] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Silver_VeryYoung, 320);
+            weights[CreatureConstants.Dragon_Silver_Young][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Silver_Young, 2500);
+            weights[CreatureConstants.Dragon_Silver_Young][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Silver_Young, 2500);
+            weights[CreatureConstants.Dragon_Silver_Young][CreatureConstants.Dragon_Silver_Young] = GetMultiplierFromAverage(CreatureConstants.Dragon_Silver_Young, 2500);
+            weights[CreatureConstants.Dragon_Silver_Juvenile][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Silver_Juvenile, 2500);
+            weights[CreatureConstants.Dragon_Silver_Juvenile][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Silver_Juvenile, 2500);
+            weights[CreatureConstants.Dragon_Silver_Juvenile][CreatureConstants.Dragon_Silver_Juvenile] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Silver_Juvenile, 2500);
+            weights[CreatureConstants.Dragon_Silver_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Silver_YoungAdult, 2500);
+            weights[CreatureConstants.Dragon_Silver_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Silver_YoungAdult, 2500);
+            weights[CreatureConstants.Dragon_Silver_YoungAdult][CreatureConstants.Dragon_Silver_YoungAdult] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Silver_YoungAdult, 2500);
+            weights[CreatureConstants.Dragon_Silver_Adult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Silver_Adult, 20_000);
+            weights[CreatureConstants.Dragon_Silver_Adult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Silver_Adult, 20_000);
+            weights[CreatureConstants.Dragon_Silver_Adult][CreatureConstants.Dragon_Silver_Adult] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Silver_Adult, 20_000);
+            weights[CreatureConstants.Dragon_Silver_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Silver_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Silver_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Silver_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Silver_MatureAdult][CreatureConstants.Dragon_Silver_MatureAdult] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Silver_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_Silver_Old][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Silver_Old, 20_000);
+            weights[CreatureConstants.Dragon_Silver_Old][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Silver_Old, 20_000);
+            weights[CreatureConstants.Dragon_Silver_Old][CreatureConstants.Dragon_Silver_Old] = GetMultiplierFromAverage(CreatureConstants.Dragon_Silver_Old, 20_000);
+            weights[CreatureConstants.Dragon_Silver_VeryOld][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Silver_VeryOld, 20_000);
+            weights[CreatureConstants.Dragon_Silver_VeryOld][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Silver_VeryOld, 20_000);
+            weights[CreatureConstants.Dragon_Silver_VeryOld][CreatureConstants.Dragon_Silver_VeryOld] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Silver_VeryOld, 20_000);
+            weights[CreatureConstants.Dragon_Silver_Ancient][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Silver_Ancient, 160_000);
+            weights[CreatureConstants.Dragon_Silver_Ancient][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Silver_Ancient, 160_000);
+            weights[CreatureConstants.Dragon_Silver_Ancient][CreatureConstants.Dragon_Silver_Ancient] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Silver_Ancient, 160_000);
+            weights[CreatureConstants.Dragon_Silver_Wyrm][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Silver_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_Silver_Wyrm][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Silver_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_Silver_Wyrm][CreatureConstants.Dragon_Silver_Wyrm] = GetMultiplierFromAverage(CreatureConstants.Dragon_Silver_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_Silver_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_Silver_GreatWyrm, 1_280_000);
+            weights[CreatureConstants.Dragon_Silver_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_Silver_GreatWyrm, 1_280_000);
+            weights[CreatureConstants.Dragon_Silver_GreatWyrm][CreatureConstants.Dragon_Silver_GreatWyrm] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_Silver_GreatWyrm, 1_280_000);
+            weights[CreatureConstants.Dragon_White_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_White_Wyrmling, 5);
+            weights[CreatureConstants.Dragon_White_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_White_Wyrmling, 5);
+            weights[CreatureConstants.Dragon_White_Wyrmling][CreatureConstants.Dragon_White_Wyrmling] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_White_Wyrmling, 5);
+            weights[CreatureConstants.Dragon_White_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_White_VeryYoung, 40);
+            weights[CreatureConstants.Dragon_White_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_White_VeryYoung, 40);
+            weights[CreatureConstants.Dragon_White_VeryYoung][CreatureConstants.Dragon_White_VeryYoung] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_White_VeryYoung, 40);
+            weights[CreatureConstants.Dragon_White_Young][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_White_Young, 320);
+            weights[CreatureConstants.Dragon_White_Young][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_White_Young, 320);
+            weights[CreatureConstants.Dragon_White_Young][CreatureConstants.Dragon_White_Young] = GetMultiplierFromAverage(CreatureConstants.Dragon_White_Young, 320);
+            weights[CreatureConstants.Dragon_White_Juvenile][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_White_Juvenile, 320);
+            weights[CreatureConstants.Dragon_White_Juvenile][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_White_Juvenile, 320);
+            weights[CreatureConstants.Dragon_White_Juvenile][CreatureConstants.Dragon_White_Juvenile] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_White_Juvenile, 320);
+            weights[CreatureConstants.Dragon_White_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_White_YoungAdult, 2500);
+            weights[CreatureConstants.Dragon_White_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_White_YoungAdult, 2500);
+            weights[CreatureConstants.Dragon_White_YoungAdult][CreatureConstants.Dragon_White_YoungAdult] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_White_YoungAdult, 2500);
+            weights[CreatureConstants.Dragon_White_Adult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_White_Adult, 2500);
+            weights[CreatureConstants.Dragon_White_Adult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_White_Adult, 2500);
+            weights[CreatureConstants.Dragon_White_Adult][CreatureConstants.Dragon_White_Adult] = GetMultiplierFromAverage(CreatureConstants.Dragon_White_Adult, 2500);
+            weights[CreatureConstants.Dragon_White_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_White_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_White_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_White_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_White_MatureAdult][CreatureConstants.Dragon_White_MatureAdult] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_White_MatureAdult, 20_000);
+            weights[CreatureConstants.Dragon_White_Old][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_White_Old, 20_000);
+            weights[CreatureConstants.Dragon_White_Old][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_White_Old, 20_000);
+            weights[CreatureConstants.Dragon_White_Old][CreatureConstants.Dragon_White_Old] = GetMultiplierFromAverage(CreatureConstants.Dragon_White_Old, 20_000);
+            weights[CreatureConstants.Dragon_White_VeryOld][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_White_VeryOld, 20_000);
+            weights[CreatureConstants.Dragon_White_VeryOld][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_White_VeryOld, 20_000);
+            weights[CreatureConstants.Dragon_White_VeryOld][CreatureConstants.Dragon_White_VeryOld] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_White_VeryOld, 20_000);
+            weights[CreatureConstants.Dragon_White_Ancient][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_White_Ancient, 20_000);
+            weights[CreatureConstants.Dragon_White_Ancient][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_White_Ancient, 20_000);
+            weights[CreatureConstants.Dragon_White_Ancient][CreatureConstants.Dragon_White_Ancient] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_White_Ancient, 20_000);
+            weights[CreatureConstants.Dragon_White_Wyrm][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_White_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_White_Wyrm][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_White_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_White_Wyrm][CreatureConstants.Dragon_White_Wyrm] = GetMultiplierFromAverage(CreatureConstants.Dragon_White_Wyrm, 160_000);
+            weights[CreatureConstants.Dragon_White_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragon_White_GreatWyrm, 160_000);
+            weights[CreatureConstants.Dragon_White_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragon_White_GreatWyrm, 160_000);
+            weights[CreatureConstants.Dragon_White_GreatWyrm][CreatureConstants.Dragon_White_GreatWyrm] =
+                GetMultiplierFromAverage(CreatureConstants.Dragon_White_GreatWyrm, 160_000);
             //Source: https://forgottenrealms.fandom.com/wiki/Dragon_turtle
-            heights[CreatureConstants.DragonTurtle][GenderConstants.Female] = "0";
-            heights[CreatureConstants.DragonTurtle][GenderConstants.Male] = "0";
-            heights[CreatureConstants.DragonTurtle][CreatureConstants.DragonTurtle] = "0";
+            weights[CreatureConstants.DragonTurtle][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.DragonTurtle, 8000, 32_000);
+            weights[CreatureConstants.DragonTurtle][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.DragonTurtle, 8000, 32_000);
+            weights[CreatureConstants.DragonTurtle][CreatureConstants.DragonTurtle] = GetMultiplierFromRange(CreatureConstants.DragonTurtle, 8000, 32_000);
             //Source: https://forgottenrealms.fandom.com/wiki/Dragonne
-            heights[CreatureConstants.Dragonne][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            heights[CreatureConstants.Dragonne][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
-            heights[CreatureConstants.Dragonne][CreatureConstants.Dragonne] = GetMultiplierFromAverage(5 * 12);
+            weights[CreatureConstants.Dragonne][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dragonne, 700);
+            weights[CreatureConstants.Dragonne][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dragonne, 700);
+            weights[CreatureConstants.Dragonne][CreatureConstants.Dragonne] = GetMultiplierFromAverage(CreatureConstants.Dragonne, 700);
+            //Source: https://forgottenrealms.fandom.com/wiki/Dretch
             weights[CreatureConstants.Dretch][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Dretch, 60);
             weights[CreatureConstants.Dretch][CreatureConstants.Dretch] = GetMultiplierFromAverage(CreatureConstants.Dretch, 60);
             //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/dryad-species
             weights[CreatureConstants.Dryad][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Dryad, 150);
             weights[CreatureConstants.Dryad][CreatureConstants.Dryad] = GetMultiplierFromAverage(CreatureConstants.Dryad, 150);
+            //Source: https://www.d20srd.org/srd/description.htm#vitalStatistics
             weights[CreatureConstants.Dwarf_Deep][GenderConstants.Female] = "100";
             weights[CreatureConstants.Dwarf_Deep][GenderConstants.Male] = "130";
             weights[CreatureConstants.Dwarf_Deep][CreatureConstants.Dwarf_Deep] = "2d6"; //x7
@@ -1040,6 +1124,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Dwarf_Mountain][GenderConstants.Female] = "100";
             weights[CreatureConstants.Dwarf_Mountain][GenderConstants.Male] = "130";
             weights[CreatureConstants.Dwarf_Mountain][CreatureConstants.Dwarf_Mountain] = "2d6"; //x7
+            //Source: https://www.d20srd.org/srd/monsters/elemental.htm
             weights[CreatureConstants.Elemental_Air_Small][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Elemental_Air_Small, 1);
             weights[CreatureConstants.Elemental_Air_Small][CreatureConstants.Elemental_Air_Small] = GetMultiplierFromAverage(CreatureConstants.Elemental_Air_Small, 1);
             weights[CreatureConstants.Elemental_Air_Medium][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Elemental_Air_Medium, 2);
@@ -1088,6 +1173,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Elemental_Water_Greater][CreatureConstants.Elemental_Air_Small] = GetMultiplierFromAverage(CreatureConstants.Elemental_Water_Greater, 21_000);
             weights[CreatureConstants.Elemental_Water_Elder][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Elemental_Water_Elder, 24_000);
             weights[CreatureConstants.Elemental_Water_Elder][CreatureConstants.Elemental_Air_Small] = GetMultiplierFromAverage(CreatureConstants.Elemental_Water_Elder, 24_000);
+            //Source: https://www.d20srd.org/srd/description.htm#vitalStatistics
             weights[CreatureConstants.Elf_Aquatic][GenderConstants.Female] = "80";
             weights[CreatureConstants.Elf_Aquatic][GenderConstants.Male] = "85";
             weights[CreatureConstants.Elf_Aquatic][CreatureConstants.Elf_Aquatic] = "1d6"; //x3
@@ -1109,22 +1195,37 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Elf_Wood][GenderConstants.Female] = "80";
             weights[CreatureConstants.Elf_Wood][GenderConstants.Male] = "85";
             weights[CreatureConstants.Elf_Wood][CreatureConstants.Elf_Wood] = "1d6"; //x3
+            //Source: https://www.d20srd.org/srd/monsters/devil.htm#erinyes
             weights[CreatureConstants.Erinyes][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Erinyes, 150);
             weights[CreatureConstants.Erinyes][CreatureConstants.Erinyes] = GetMultiplierFromAverage(CreatureConstants.Erinyes, 150);
-            weights[CreatureConstants.Ettin][GenderConstants.Female] = "912";
-            weights[CreatureConstants.Ettin][GenderConstants.Male] = "912";
-            weights[CreatureConstants.Ettin][CreatureConstants.Ettin] = "18d20";
-            weights[CreatureConstants.Giant_Cloud][GenderConstants.Female] = "290"; //Huge
-            weights[CreatureConstants.Giant_Cloud][GenderConstants.Male] = "270";
-            weights[CreatureConstants.Giant_Cloud][CreatureConstants.Giant_Cloud] = "3d10";
-            weights[CreatureConstants.Giant_Hill][GenderConstants.Female] = "290"; //Huge
-            weights[CreatureConstants.Giant_Hill][GenderConstants.Male] = "270";
-            weights[CreatureConstants.Giant_Hill][CreatureConstants.Giant_Cloud] = "3d10";
+            //Source: https://forgottenrealms.fandom.com/wiki/Ettin
+            weights[CreatureConstants.Ettin][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Ettin, 930, 5200);
+            weights[CreatureConstants.Ettin][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Ettin, 930, 5200);
+            weights[CreatureConstants.Ettin][CreatureConstants.Ettin] = GetMultiplierFromRange(CreatureConstants.Ettin, 930, 5200);
+            //Source: https://forgottenrealms.fandom.com/wiki/Cloud_giant
+            weights[CreatureConstants.Giant_Cloud][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Giant_Cloud, 11_500);
+            weights[CreatureConstants.Giant_Cloud][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Giant_Cloud, 11_500);
+            weights[CreatureConstants.Giant_Cloud][CreatureConstants.Giant_Cloud] = GetMultiplierFromAverage(CreatureConstants.Giant_Cloud, 11_500);
+            //Source: https://forgottenrealms.fandom.com/wiki/Hill_giant
+            weights[CreatureConstants.Giant_Hill][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Giant_Hill, 4500);
+            weights[CreatureConstants.Giant_Hill][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Giant_Hill, 4500);
+            weights[CreatureConstants.Giant_Hill][CreatureConstants.Giant_Hill] = GetMultiplierFromAverage(CreatureConstants.Giant_Hill, 4500);
+            //Source: http://people.wku.edu/charles.plemons/ad&d/races/height.html 3d10 = High Elf, so 1d6
+            weights[CreatureConstants.Githyanki][GenderConstants.Female] = "90";
+            weights[CreatureConstants.Githyanki][GenderConstants.Male] = "120";
+            weights[CreatureConstants.Githyanki][CreatureConstants.Githyanki] = "1d6";
+            //Source: http://people.wku.edu/charles.plemons/ad&d/races/height.html
+            weights[CreatureConstants.Githzerai][GenderConstants.Female] = "90";
+            weights[CreatureConstants.Githzerai][GenderConstants.Male] = "120";
+            weights[CreatureConstants.Githzerai][CreatureConstants.Githzerai] = "1d6";
+            //Source: https://forgottenrealms.fandom.com/wiki/Glabrezu
             weights[CreatureConstants.Glabrezu][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Glabrezu, 5500);
             weights[CreatureConstants.Glabrezu][CreatureConstants.Glabrezu] = GetMultiplierFromAverage(CreatureConstants.Glabrezu, 5500);
-            weights[CreatureConstants.Gnoll][GenderConstants.Female] = "250";
-            weights[CreatureConstants.Gnoll][GenderConstants.Male] = "250";
-            weights[CreatureConstants.Gnoll][CreatureConstants.Bugbear] = RollHelper.GetRollWithFewestDice(250, 280, 320);
+            //Source: http://people.wku.edu/charles.plemons/ad&d/races/height.html 4d10 = Hill Dwarf, so 2d6
+            weights[CreatureConstants.Gnoll][GenderConstants.Female] = "160";
+            weights[CreatureConstants.Gnoll][GenderConstants.Male] = "180";
+            weights[CreatureConstants.Gnoll][CreatureConstants.Bugbear] = "2d6";
+            //Source: https://www.d20srd.org/srd/description.htm#vitalStatistics
             weights[CreatureConstants.Gnome_Forest][GenderConstants.Female] = "35";
             weights[CreatureConstants.Gnome_Forest][GenderConstants.Male] = "40";
             weights[CreatureConstants.Gnome_Forest][CreatureConstants.Gnome_Forest] = "1"; //x1
@@ -1134,8 +1235,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Gnome_Svirfneblin][GenderConstants.Female] = "1";
             weights[CreatureConstants.Gnome_Svirfneblin][GenderConstants.Male] = "1";
             weights[CreatureConstants.Gnome_Svirfneblin][CreatureConstants.Gnome_Svirfneblin] = "1"; //x1
-            weights[CreatureConstants.Goblin][GenderConstants.Female] = "25";
-            weights[CreatureConstants.Goblin][GenderConstants.Male] = "30";
+            //Source: http://people.wku.edu/charles.plemons/ad&d/races/height.html 5d4 = Gnome, so 1
+            weights[CreatureConstants.Goblin][GenderConstants.Female] = "68";
+            weights[CreatureConstants.Goblin][GenderConstants.Male] = "72";
             weights[CreatureConstants.Goblin][CreatureConstants.Goblin] = "1"; //x1
             weights[CreatureConstants.GreenHag][GenderConstants.Female] = "85";
             weights[CreatureConstants.GreenHag][CreatureConstants.GreenHag] = "2d4";
@@ -1403,17 +1505,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Angel_Solar, GenderConstants.Female, 500)]
         [TestCase(CreatureConstants.Avoral, GenderConstants.Agender, 120)]
         [TestCase(CreatureConstants.Babau, GenderConstants.Agender, 140)]
+        [TestCase(CreatureConstants.Baboon, GenderConstants.Male, 90)]
         [TestCase(CreatureConstants.Badger_Dire, GenderConstants.Male, 500)]
         [TestCase(CreatureConstants.Badger_Dire, GenderConstants.Female, 500)]
         [TestCase(CreatureConstants.Barghest, GenderConstants.Agender, 180)]
         [TestCase(CreatureConstants.Bear_Brown, GenderConstants.Male, 1800)]
         [TestCase(CreatureConstants.Bear_Brown, GenderConstants.Female, 1800)]
+        //https://forgottenrealms.fandom.com/wiki/Centaur
         [TestCase(CreatureConstants.Centaur, GenderConstants.Male, 2100)]
         [TestCase(CreatureConstants.Centaur, GenderConstants.Female, 2100)]
         [TestCase(CreatureConstants.Giant_Cloud, GenderConstants.Male, 5000)]
         [TestCase(CreatureConstants.Giant_Cloud, GenderConstants.Female, 5000)]
         [TestCase(CreatureConstants.Giant_Hill, GenderConstants.Male, 1100)]
         [TestCase(CreatureConstants.Giant_Hill, GenderConstants.Female, 1100)]
+        //https://forgottenrealms.fandom.com/wiki/Goblin
+        [TestCase(CreatureConstants.Goblin, GenderConstants.Male, 60)]
+        [TestCase(CreatureConstants.Goblin, GenderConstants.Female, 60)]
         [TestCase(CreatureConstants.Grig, GenderConstants.Male, 1)]
         [TestCase(CreatureConstants.Grig, GenderConstants.Female, 1)]
         [TestCase(CreatureConstants.Hieracosphinx, GenderConstants.Male, 800)]
@@ -1434,11 +1541,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         {
             var heights = HeightsTests.GetCreatureHeights();
 
+            Assert.That(heights, Contains.Key(creature));
+            Assert.That(heights[creature], Contains.Key(creature).And.ContainKey(gender));
+
             var heightMultiplierMin = dice.Roll(heights[creature][creature]).AsPotentialMinimum();
             var heightMultiplierAvg = dice.Roll(heights[creature][creature]).AsPotentialAverage();
             var heightMultiplierMax = dice.Roll(heights[creature][creature]).AsPotentialMaximum();
 
             var weights = GetCreatureWeights();
+
+            Assert.That(weights, Contains.Key(creature));
+            Assert.That(weights[creature], Contains.Key(creature).And.ContainKey(gender));
 
             var baseWeight = dice.Roll(weights[creature][gender]).AsSum();
             var weightMultiplierMin = dice.Roll(weights[creature][creature]).AsPotentialMinimum();
@@ -1448,16 +1561,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             var theoreticalRoll = RollHelper.GetRollWithFewestDice(average * 9 / 10, average * 11 / 10);
 
-            Assert.That(baseWeight, Is.Positive.And.EqualTo(average * 0.8).Within(sigma), $"Base Weight (80%); Theoretical: {theoreticalRoll}");
-            Assert.That(heightMultiplierMin * weightMultiplierMin, Is.Positive.And.EqualTo(average * 0.1).Within(sigma), $"Min (10%); Theoretical: {theoreticalRoll}; H:{heightMultiplierMin}, W:{weightMultiplierMin}");
-            Assert.That(heightMultiplierAvg * weightMultiplierAvg, Is.Positive.And.EqualTo(average * 0.2).Within(sigma), $"Average (20%); Theoretical: {theoreticalRoll}; H:{heightMultiplierAvg}, W:{weightMultiplierAvg}");
-            Assert.That(heightMultiplierMax * weightMultiplierMax, Is.Positive.And.EqualTo(average * 0.3).Within(sigma), $"Max (30%); Theoretical: {theoreticalRoll}; H:{heightMultiplierMax}, W:{weightMultiplierMax}");
             Assert.That(baseWeight + heightMultiplierMin * weightMultiplierMin, Is.Positive.And.EqualTo(average * 0.9).Within(sigma), $"Min (90%); Theoretical: {theoreticalRoll}");
             Assert.That(baseWeight + heightMultiplierAvg * weightMultiplierAvg, Is.Positive.And.EqualTo(average).Within(sigma), $"Average; Theoretical: {theoreticalRoll}");
             Assert.That(baseWeight + heightMultiplierMax * weightMultiplierMax, Is.Positive.And.EqualTo(average * 1.1).Within(sigma), $"Max (110%); Theoretical: {theoreticalRoll}");
         }
 
-        //Weights: https://www.d20srd.org/srd/combat/movementPositionAndDistance.htm
+        //https://forgottenrealms.fandom.com/wiki/Aasimar
+        [TestCase(CreatureConstants.Aasimar, GenderConstants.Male, 124, 280)]
+        [TestCase(CreatureConstants.Aasimar, GenderConstants.Female, 89, 245)]
         [TestCase(CreatureConstants.AnimatedObject_Tiny, GenderConstants.Agender, 1, 8)]
         [TestCase(CreatureConstants.AnimatedObject_Tiny_Flexible, GenderConstants.Agender, 1, 8)]
         [TestCase(CreatureConstants.AnimatedObject_Small, GenderConstants.Agender, 8, 60)]
@@ -1473,21 +1584,38 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.AnimatedObject_Colossal, GenderConstants.Agender, 125 * 2000, 1000 * 2000)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_Flexible, GenderConstants.Agender, 125 * 2000, 1000 * 2000)]
         [TestCase(CreatureConstants.Ape, GenderConstants.Male, 300, 400)]
-        [TestCase(CreatureConstants.Ape, GenderConstants.Female, 300, 400)]
+        [TestCase(CreatureConstants.Ape, GenderConstants.Female, 220, 460)]
         [TestCase(CreatureConstants.Ape_Dire, GenderConstants.Male, 800, 1200)]
         [TestCase(CreatureConstants.Ape_Dire, GenderConstants.Female, 800, 1200)]
         [TestCase(CreatureConstants.Azer, GenderConstants.Agender, 180, 220)]
-        [TestCase(CreatureConstants.Baboon, GenderConstants.Male, 22, 82)]
-        [TestCase(CreatureConstants.Baboon, GenderConstants.Female, 22, 42)]
+        [TestCase(CreatureConstants.Baboon, GenderConstants.Female, 22, 82)]
         [TestCase(CreatureConstants.Badger, GenderConstants.Male, 25, 35)]
         [TestCase(CreatureConstants.Badger, GenderConstants.Female, 25, 35)]
         [TestCase(CreatureConstants.Balor, GenderConstants.Agender, 4000, 4900)]
+        [TestCase(CreatureConstants.Bear_Black, GenderConstants.Male, 375, 600)]
+        [TestCase(CreatureConstants.Bear_Black, GenderConstants.Female, 200, 450)]
+        [TestCase(CreatureConstants.Bear_Polar, GenderConstants.Male, 775, 1500)]
+        [TestCase(CreatureConstants.Bear_Polar, GenderConstants.Female, 330, 650)]
+        //https://forgottenrealms.fandom.com/wiki/Bugbear
         [TestCase(CreatureConstants.Bugbear, GenderConstants.Male, 250, 350)]
         [TestCase(CreatureConstants.Bugbear, GenderConstants.Female, 250, 350)]
         [TestCase(CreatureConstants.Crocodile_Giant, GenderConstants.Male, 880, 2200)]
         [TestCase(CreatureConstants.Crocodile_Giant, GenderConstants.Female, 180, 220)]
+        [TestCase(CreatureConstants.DisplacerBeast, GenderConstants.Male, 500, 1000)]
+        [TestCase(CreatureConstants.DisplacerBeast, GenderConstants.Female, 450, 900)]
+        [TestCase(CreatureConstants.DisplacerBeast_PackLord, GenderConstants.Male, 4000, 8000)]
+        [TestCase(CreatureConstants.DisplacerBeast_PackLord, GenderConstants.Female, 3600, 7200)]
+        [TestCase(CreatureConstants.Dog_Riding, GenderConstants.Male, 35, 180)]
+        [TestCase(CreatureConstants.Dog_Riding, GenderConstants.Female, 35, 140)]
         [TestCase(CreatureConstants.Ettin, GenderConstants.Male, 930, 5200)]
         [TestCase(CreatureConstants.Ettin, GenderConstants.Female, 930, 5200)]
+        //https://forgottenrealms.fandom.com/wiki/Githyanki
+        [TestCase(CreatureConstants.Githyanki, GenderConstants.Male, 124, 280)]
+        [TestCase(CreatureConstants.Githyanki, GenderConstants.Female, 89, 245)]
+        //https://forgottenrealms.fandom.com/wiki/Githzerai
+        [TestCase(CreatureConstants.Githzerai, GenderConstants.Male, 92, 196)]
+        [TestCase(CreatureConstants.Githzerai, GenderConstants.Female, 92, 196)]
+        //https://forgottenrealms.fandom.com/wiki/Gnoll
         [TestCase(CreatureConstants.Gnoll, GenderConstants.Male, 280, 320)]
         [TestCase(CreatureConstants.Gnoll, GenderConstants.Female, 280, 320)]
         [TestCase(CreatureConstants.Lizardfolk, GenderConstants.Male, 200, 250)]
@@ -1503,21 +1631,24 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         {
             var heights = HeightsTests.GetCreatureHeights();
 
+            Assert.That(heights, Contains.Key(creature));
+            Assert.That(heights[creature], Contains.Key(creature).And.ContainKey(gender));
+
             var heightMultiplierMin = dice.Roll(heights[creature][creature]).AsPotentialMinimum();
-            var heightMultiplierAvg = dice.Roll(heights[creature][creature]).AsPotentialAverage();
             var heightMultiplierMax = dice.Roll(heights[creature][creature]).AsPotentialMaximum();
 
             var weights = GetCreatureWeights();
 
+            Assert.That(weights, Contains.Key(creature));
+            Assert.That(weights[creature], Contains.Key(creature).And.ContainKey(gender));
+
             var baseWeight = dice.Roll(weights[creature][gender]).AsSum();
             var weightMultiplierMin = dice.Roll(weights[creature][creature]).AsPotentialMinimum();
-            var weightMultiplierAvg = dice.Roll(weights[creature][creature]).AsPotentialAverage();
             var weightMultiplierMax = dice.Roll(weights[creature][creature]).AsPotentialMaximum();
 
             var theoreticalRoll = RollHelper.GetRollWithFewestDice(min, max);
 
             Assert.That(baseWeight + heightMultiplierMin * weightMultiplierMin, Is.Positive.And.EqualTo(min), $"Min; Theoretical: {theoreticalRoll}; Height: {heights[creature][creature]}");
-            Assert.That(baseWeight + heightMultiplierAvg * weightMultiplierAvg, Is.Positive.And.EqualTo((min + max) / 2).Within(1), $"Average; Theoretical: {theoreticalRoll}; Height: {heights[creature][creature]}");
             Assert.That(baseWeight + heightMultiplierMax * weightMultiplierMax, Is.Positive.And.EqualTo(max), $"Max; Theoretical: {theoreticalRoll}; Height: {heights[creature][creature]}");
         }
     }

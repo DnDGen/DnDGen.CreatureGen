@@ -1355,17 +1355,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Minotaur, GenderConstants.Female, 7 * 12)]
         public void RollCalculationsAreAccurate_FromAverage(string creature, string gender, int average)
         {
-            var heights = GetCreatureLengths();
+            var lengths = GetCreatureLengths();
 
-            var baseHeight = dice.Roll(heights[creature][gender]).AsSum();
-            var multiplierMin = dice.Roll(heights[creature][creature]).AsPotentialMinimum();
-            var multiplierAvg = dice.Roll(heights[creature][creature]).AsPotentialAverage();
-            var multiplierMax = dice.Roll(heights[creature][creature]).AsPotentialMaximum();
+            Assert.That(lengths, Contains.Key(creature));
+            Assert.That(lengths[creature], Contains.Key(creature).And.ContainKey(gender));
+
+            var baseLength = dice.Roll(lengths[creature][gender]).AsSum();
+            var multiplierMin = dice.Roll(lengths[creature][creature]).AsPotentialMinimum();
+            var multiplierAvg = dice.Roll(lengths[creature][creature]).AsPotentialAverage();
+            var multiplierMax = dice.Roll(lengths[creature][creature]).AsPotentialMaximum();
             var theoreticalRoll = RollHelper.GetRollWithFewestDice(average * 9 / 10, average * 11 / 10);
 
-            Assert.That(baseHeight + multiplierMin, Is.EqualTo(average * 0.9).Within(1), $"Min (-10%); Theoretical: {theoreticalRoll}");
-            Assert.That(baseHeight + multiplierAvg, Is.EqualTo(average).Within(1), $"Average; Theoretical: {theoreticalRoll}");
-            Assert.That(baseHeight + multiplierMax, Is.EqualTo(average * 1.1).Within(1), $"Max (+10%); Theoretical: {theoreticalRoll}");
+            Assert.That(baseLength + multiplierMin, Is.EqualTo(average * 0.9).Within(1), $"Min (-10%); Theoretical: {theoreticalRoll}");
+            Assert.That(baseLength + multiplierAvg, Is.EqualTo(average).Within(1), $"Average; Theoretical: {theoreticalRoll}");
+            Assert.That(baseLength + multiplierMax, Is.EqualTo(average * 1.1).Within(1), $"Max (+10%); Theoretical: {theoreticalRoll}");
         }
 
         [TestCase(CreatureConstants.Angel_AstralDeva, GenderConstants.Male, 7 * 12, 7 * 12 + 6)]
@@ -1385,6 +1388,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Ape, GenderConstants.Female, 4 * 12, 4 * 12 + 6)]
         [TestCase(CreatureConstants.Azer, GenderConstants.Agender, 4 * 12 + 5, 4 * 12 + 9)]
         [TestCase(CreatureConstants.Babau, GenderConstants.Agender, 6 * 12, 7 * 12)]
+        [TestCase(CreatureConstants.Baboon, GenderConstants.Male, 24, 48)]
+        [TestCase(CreatureConstants.Baboon, GenderConstants.Female, 21, 38)]
         [TestCase(CreatureConstants.Badger, GenderConstants.Male, 24, 36)]
         [TestCase(CreatureConstants.Badger, GenderConstants.Female, 24, 36)]
         [TestCase(CreatureConstants.Badger_Dire, GenderConstants.Male, 5 * 12, 7 * 12)]
@@ -1403,6 +1408,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Crocodile_Giant, GenderConstants.Female, 7 * 12 + 6, 11 * 12)]
         [TestCase(CreatureConstants.DisplacerBeast, GenderConstants.Male, 9 * 12, 12 * 12)]
         [TestCase(CreatureConstants.DisplacerBeast, GenderConstants.Female, 8 * 12, 9 * 12)]
+        [TestCase(CreatureConstants.Dog_Riding, GenderConstants.Male, 32, 47)]
+        [TestCase(CreatureConstants.Dog_Riding, GenderConstants.Female, 29, 44)]
         [TestCase(CreatureConstants.Ettin, GenderConstants.Male, 13 * 12, 13 * 12 + 10)]
         [TestCase(CreatureConstants.Ettin, GenderConstants.Female, 12 * 12 + 4, 13 * 12 + 2)]
         [TestCase(CreatureConstants.Giant_Cloud, GenderConstants.Male, 24 * 12 + 4, 26 * 12 + 8)]
@@ -1433,17 +1440,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Whale_Baleen, GenderConstants.Female, 30 * 12, 60 * 12)]
         public void RollCalculationsAreAccurate_FromRange(string creature, string gender, int min, int max)
         {
-            var heights = GetCreatureLengths();
+            var lengths = GetCreatureLengths();
 
-            var baseHeight = dice.Roll(heights[creature][gender]).AsSum();
-            var multiplierMin = dice.Roll(heights[creature][creature]).AsPotentialMinimum();
-            var multiplierAvg = dice.Roll(heights[creature][creature]).AsPotentialAverage();
-            var multiplierMax = dice.Roll(heights[creature][creature]).AsPotentialMaximum();
+            Assert.That(lengths, Contains.Key(creature));
+            Assert.That(lengths[creature], Contains.Key(creature).And.ContainKey(gender));
+
+            var baseLength = dice.Roll(lengths[creature][gender]).AsSum();
+            var multiplierMin = dice.Roll(lengths[creature][creature]).AsPotentialMinimum();
+            var multiplierMax = dice.Roll(lengths[creature][creature]).AsPotentialMaximum();
             var theoreticalRoll = RollHelper.GetRollWithFewestDice(min, max);
 
-            Assert.That(baseHeight + multiplierMin, Is.EqualTo(min), $"Min; Theoretical: {theoreticalRoll}");
-            Assert.That(baseHeight + multiplierAvg, Is.EqualTo((min + max) / 2).Within(1), $"Average; Theoretical: {theoreticalRoll}");
-            Assert.That(baseHeight + multiplierMax, Is.EqualTo(max), $"Max; Theoretical: {theoreticalRoll}");
+            Assert.That(baseLength + multiplierMin, Is.EqualTo(min), $"Min; Theoretical: {theoreticalRoll}");
+            Assert.That(baseLength + multiplierMax, Is.EqualTo(max), $"Max; Theoretical: {theoreticalRoll}");
         }
 
         [Test]
