@@ -396,10 +396,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Chaos_beast
             lengths[CreatureConstants.ChaosBeast][GenderConstants.Agender] = GetBaseFromRange(3 * 12, 9 * 12);
             lengths[CreatureConstants.ChaosBeast][CreatureConstants.ChaosBeast] = GetMultiplierFromRange(3 * 12, 9 * 12);
-            //Source: https://www.dimensions.com/element/cheetahs
-            lengths[CreatureConstants.Cheetah][GenderConstants.Female] = GetBaseFromRange(44, 59);
-            lengths[CreatureConstants.Cheetah][GenderConstants.Male] = GetBaseFromRange(44, 59);
-            lengths[CreatureConstants.Cheetah][CreatureConstants.Cheetah] = GetMultiplierFromRange(44, 59);
+            //Source: https://www.d20srd.org/srd/monsters/cheetah.htm
+            lengths[CreatureConstants.Cheetah][GenderConstants.Female] = GetBaseFromRange(3 * 12, 5 * 12);
+            lengths[CreatureConstants.Cheetah][GenderConstants.Male] = GetBaseFromRange(3 * 12, 5 * 12);
+            lengths[CreatureConstants.Cheetah][CreatureConstants.Cheetah] = GetMultiplierFromRange(3 * 12, 5 * 12);
             //Source: https://forgottenrealms.fandom.com/wiki/Chimera
             lengths[CreatureConstants.Chimera_Black][GenderConstants.Female] = GetBaseFromAverage(10 * 12);
             lengths[CreatureConstants.Chimera_Black][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
@@ -438,14 +438,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.d20srd.org/srd/monsters/sphinx.htm
             lengths[CreatureConstants.Criosphinx][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
             lengths[CreatureConstants.Criosphinx][CreatureConstants.Criosphinx] = GetMultiplierFromAverage(10 * 12);
-            //Source: https://www.dimensions.com/element/nile-crocodile-crocodylus-niloticus
-            lengths[CreatureConstants.Crocodile][GenderConstants.Female] = GetBaseFromRange(114, 173);
-            lengths[CreatureConstants.Crocodile][GenderConstants.Male] = GetBaseFromRange(114, 173);
-            lengths[CreatureConstants.Crocodile][CreatureConstants.Crocodile] = GetMultiplierFromRange(114, 173);
-            //Source: https://www.dimensions.com/element/saltwater-crocodile-crocodylus-porosus
-            lengths[CreatureConstants.Crocodile_Giant][GenderConstants.Female] = GetBaseFromRange(7 * 12 + 6, 11 * 12);
-            lengths[CreatureConstants.Crocodile_Giant][GenderConstants.Male] = GetBaseFromRange(14 * 12, 23 * 12);
-            lengths[CreatureConstants.Crocodile_Giant][CreatureConstants.Crocodile_Giant] = GetMultiplierFromRange(14 * 12, 23 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/crocodile.htm
+            lengths[CreatureConstants.Crocodile][GenderConstants.Female] = GetBaseFromRange(11 * 12, 12 * 12);
+            lengths[CreatureConstants.Crocodile][GenderConstants.Male] = GetBaseFromRange(11 * 12, 12 * 12);
+            lengths[CreatureConstants.Crocodile][CreatureConstants.Crocodile] = GetMultiplierFromRange(11 * 12, 12 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/crocodileGiant.htm
+            lengths[CreatureConstants.Crocodile_Giant][GenderConstants.Female] = GetBaseFromAtLeast(20 * 12);
+            lengths[CreatureConstants.Crocodile_Giant][GenderConstants.Male] = GetBaseFromAtLeast(20 * 12);
+            lengths[CreatureConstants.Crocodile_Giant][CreatureConstants.Crocodile_Giant] = GetMultiplierFromAtLeast(20 * 12);
             //Source: https://forgottenrealms.fandom.com/wiki/Darkmantle
             lengths[CreatureConstants.Darkmantle][GenderConstants.Hermaphrodite] = GetBaseFromAverage(4 * 12);
             lengths[CreatureConstants.Darkmantle][CreatureConstants.Darkmantle] = GetMultiplierFromAverage(4 * 12);
