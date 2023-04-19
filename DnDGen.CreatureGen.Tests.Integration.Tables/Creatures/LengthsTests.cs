@@ -1061,9 +1061,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Lion][GenderConstants.Male] = GetBaseFromRange(4 * 12 + 6, 6 * 12 + 6);
             lengths[CreatureConstants.Lion][CreatureConstants.Lion] = GetMultiplierFromRange(4 * 12 + 6, 6 * 12 + 6);
             //Source: https://forgottenrealms.fandom.com/wiki/Dire_lion
-            lengths[CreatureConstants.Lion_Dire][GenderConstants.Female] = GetBaseFromAverage(15 * 12);
-            lengths[CreatureConstants.Lion_Dire][GenderConstants.Male] = GetBaseFromAverage(15 * 12);
-            lengths[CreatureConstants.Lion_Dire][CreatureConstants.Lion_Dire] = GetMultiplierFromAverage(15 * 12);
+            lengths[CreatureConstants.Lion_Dire][GenderConstants.Female] = GetBaseFromUpTo(15 * 12);
+            lengths[CreatureConstants.Lion_Dire][GenderConstants.Male] = GetBaseFromUpTo(15 * 12);
+            lengths[CreatureConstants.Lion_Dire][CreatureConstants.Lion_Dire] = GetMultiplierFromUpTo(15 * 12);
             lengths[CreatureConstants.Lizardfolk][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Lizardfolk][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Lizardfolk][CreatureConstants.Lizardfolk] = "0";
@@ -1116,6 +1116,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Mephit_Water][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Mephit_Water][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Mephit_Water][CreatureConstants.Mephit_Water] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Merfolk
             lengths[CreatureConstants.Merfolk][GenderConstants.Female] = GetBaseFromAverage(8 * 12);
             lengths[CreatureConstants.Merfolk][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
             lengths[CreatureConstants.Merfolk][CreatureConstants.Merfolk] = GetMultiplierFromAverage(8 * 12);

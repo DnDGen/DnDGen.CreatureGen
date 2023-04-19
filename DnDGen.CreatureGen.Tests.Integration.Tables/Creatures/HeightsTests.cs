@@ -1428,6 +1428,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Lion, GenderConstants.Female, 2 * 12 + 10)]
         [TestCase(CreatureConstants.Locathah, GenderConstants.Male, 5 * 12)]
         [TestCase(CreatureConstants.Locathah, GenderConstants.Female, 5 * 12)]
+        //https://forgottenrealms.fandom.com/wiki/Minotaur
         [TestCase(CreatureConstants.Minotaur, GenderConstants.Male, 9 * 12)]
         [TestCase(CreatureConstants.Minotaur, GenderConstants.Female, 7 * 12)]
         public void RollCalculationsAreAccurate_FromAverage(string creature, string gender, int average)
@@ -1493,6 +1494,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Horse_Heavy, GenderConstants.Female, 64, 72)]
         [TestCase(CreatureConstants.Horse_Light, GenderConstants.Male, 57, 61)]
         [TestCase(CreatureConstants.Horse_Light, GenderConstants.Female, 57, 61)]
+        [TestCase(CreatureConstants.Lizardfolk, GenderConstants.Male, 6 * 12, 7 * 12)]
+        [TestCase(CreatureConstants.Lizardfolk, GenderConstants.Female, 6 * 12, 7 * 12)]
         [TestCase(CreatureConstants.Nalfeshnee, GenderConstants.Agender, 10 * 12, 20 * 12)]
         [TestCase(CreatureConstants.Ogre, GenderConstants.Male, 10 * 12 + 1, 10 * 12 + 10)]
         [TestCase(CreatureConstants.Ogre, GenderConstants.Female, 9 * 12 + 3, 10 * 12)]
