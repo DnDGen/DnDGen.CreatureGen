@@ -446,6 +446,31 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Crocodile_Giant][GenderConstants.Female] = GetBaseFromAtLeast(20 * 12);
             lengths[CreatureConstants.Crocodile_Giant][GenderConstants.Male] = GetBaseFromAtLeast(20 * 12);
             lengths[CreatureConstants.Crocodile_Giant][CreatureConstants.Crocodile_Giant] = GetMultiplierFromAtLeast(20 * 12);
+            //Source: https://forgottenrealms.fandom.com/wiki/Hydra
+            lengths[CreatureConstants.Cryohydra_5Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Cryohydra_5Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Cryohydra_5Heads][CreatureConstants.Cryohydra_5Heads] = GetMultiplierFromAverage(20 * 12);
+            lengths[CreatureConstants.Cryohydra_6Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Cryohydra_6Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Cryohydra_6Heads][CreatureConstants.Cryohydra_6Heads] = GetMultiplierFromAverage(20 * 12);
+            lengths[CreatureConstants.Cryohydra_7Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Cryohydra_7Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Cryohydra_7Heads][CreatureConstants.Cryohydra_7Heads] = GetMultiplierFromAverage(20 * 12);
+            lengths[CreatureConstants.Cryohydra_8Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Cryohydra_8Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Cryohydra_8Heads][CreatureConstants.Cryohydra_8Heads] = GetMultiplierFromAverage(20 * 12);
+            lengths[CreatureConstants.Cryohydra_9Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Cryohydra_9Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Cryohydra_9Heads][CreatureConstants.Cryohydra_9Heads] = GetMultiplierFromAverage(20 * 12);
+            lengths[CreatureConstants.Cryohydra_10Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Cryohydra_10Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Cryohydra_10Heads][CreatureConstants.Cryohydra_10Heads] = GetMultiplierFromAverage(20 * 12);
+            lengths[CreatureConstants.Cryohydra_11Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Cryohydra_11Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Cryohydra_11Heads][CreatureConstants.Cryohydra_11Heads] = GetMultiplierFromAverage(20 * 12);
+            lengths[CreatureConstants.Cryohydra_12Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Cryohydra_12Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Cryohydra_12Heads][CreatureConstants.Cryohydra_5Heads] = GetMultiplierFromAverage(20 * 12);
             //Source: https://forgottenrealms.fandom.com/wiki/Darkmantle
             lengths[CreatureConstants.Darkmantle][GenderConstants.Hermaphrodite] = GetBaseFromAverage(4 * 12);
             lengths[CreatureConstants.Darkmantle][CreatureConstants.Darkmantle] = GetMultiplierFromAverage(4 * 12);
@@ -902,6 +927,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Efreeti][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Efreeti][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Efreeti][CreatureConstants.Efreeti] = "0";
+            //Source: https://jurassicworld-evolution.fandom.com/wiki/Elasmosaurus
+            lengths[CreatureConstants.Elasmosaurus][GenderConstants.Female] = GetBaseFromAverage(394);
+            lengths[CreatureConstants.Elasmosaurus][GenderConstants.Male] = GetBaseFromAverage(394);
+            lengths[CreatureConstants.Elasmosaurus][CreatureConstants.Elasmosaurus] = GetMultiplierFromAverage(394);
             lengths[CreatureConstants.Elemental_Air_Small][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.Elemental_Air_Small][CreatureConstants.Elemental_Air_Small] = "0";
             lengths[CreatureConstants.Elemental_Air_Medium][GenderConstants.Agender] = "0";
@@ -950,6 +979,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Elemental_Water_Greater][CreatureConstants.Elemental_Water_Greater] = "0";
             lengths[CreatureConstants.Elemental_Water_Elder][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.Elemental_Water_Elder][CreatureConstants.Elemental_Water_Elder] = "0";
+            //Source: https://www.dimensions.com/element/african-bush-elephant-loxodonta-africana
+            lengths[CreatureConstants.Elephant][GenderConstants.Female] = GetBaseFromRange(10 * 12, 16 * 12 + 6);
+            lengths[CreatureConstants.Elephant][GenderConstants.Male] = GetBaseFromRange(10 * 12, 16 * 12 + 6);
+            lengths[CreatureConstants.Elephant][CreatureConstants.Elephant] = GetMultiplierFromRange(10 * 12, 16 * 12 + 6);
             lengths[CreatureConstants.Elf_Aquatic][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Elf_Aquatic][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Elf_Aquatic][CreatureConstants.Elf_Aquatic] = "0";
@@ -971,8 +1004,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Elf_Wood][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Elf_Wood][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Elf_Wood][CreatureConstants.Elf_Wood] = "0";
-            lengths[CreatureConstants.Erinyes][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.Erinyes][GenderConstants.Female] = "0";
+            lengths[CreatureConstants.Erinyes][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Erinyes][CreatureConstants.Erinyes] = "0";
+            lengths[CreatureConstants.EtherealFilcher][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.EtherealFilcher][CreatureConstants.EtherealFilcher] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/etherealMarauder.htm
+            lengths[CreatureConstants.EtherealMarauder][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
+            lengths[CreatureConstants.EtherealMarauder][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
+            lengths[CreatureConstants.EtherealMarauder][CreatureConstants.EtherealMarauder] = GetMultiplierFromAverage(7 * 12);
             lengths[CreatureConstants.Ettin][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Ettin][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Ettin][CreatureConstants.Ettin] = "0";
@@ -1052,6 +1092,31 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Human][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Human][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Human][CreatureConstants.Human] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Hydra
+            lengths[CreatureConstants.Hydra_5Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Hydra_5Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Hydra_5Heads][CreatureConstants.Hydra_5Heads] = GetMultiplierFromAverage(20 * 12);
+            lengths[CreatureConstants.Hydra_6Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Hydra_6Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Hydra_6Heads][CreatureConstants.Hydra_6Heads] = GetMultiplierFromAverage(20 * 12);
+            lengths[CreatureConstants.Hydra_7Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Hydra_7Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Hydra_7Heads][CreatureConstants.Hydra_7Heads] = GetMultiplierFromAverage(20 * 12);
+            lengths[CreatureConstants.Hydra_8Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Hydra_8Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Hydra_8Heads][CreatureConstants.Hydra_8Heads] = GetMultiplierFromAverage(20 * 12);
+            lengths[CreatureConstants.Hydra_9Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Hydra_9Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Hydra_9Heads][CreatureConstants.Hydra_9Heads] = GetMultiplierFromAverage(20 * 12);
+            lengths[CreatureConstants.Hydra_10Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Hydra_10Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Hydra_10Heads][CreatureConstants.Hydra_10Heads] = GetMultiplierFromAverage(20 * 12);
+            lengths[CreatureConstants.Hydra_11Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Hydra_11Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Hydra_11Heads][CreatureConstants.Hydra_11Heads] = GetMultiplierFromAverage(20 * 12);
+            lengths[CreatureConstants.Hydra_12Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Hydra_12Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Hydra_12Heads][CreatureConstants.Hydra_12Heads] = GetMultiplierFromAverage(20 * 12);
             lengths[CreatureConstants.IceDevil_Gelugon][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.IceDevil_Gelugon][CreatureConstants.IceDevil_Gelugon] = "0";
             lengths[CreatureConstants.Imp][GenderConstants.Agender] = "0";
@@ -1168,6 +1233,31 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Pixie_WithIrresistibleDance][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Pixie_WithIrresistibleDance][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Pixie_WithIrresistibleDance][CreatureConstants.Pixie_WithIrresistibleDance] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Hydra
+            lengths[CreatureConstants.Pyrohydra_5Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Pyrohydra_5Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Pyrohydra_5Heads][CreatureConstants.Pyrohydra_5Heads] = GetMultiplierFromAverage(20 * 12);
+            lengths[CreatureConstants.Pyrohydra_6Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Pyrohydra_6Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Pyrohydra_6Heads][CreatureConstants.Pyrohydra_6Heads] = GetMultiplierFromAverage(20 * 12);
+            lengths[CreatureConstants.Pyrohydra_7Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Pyrohydra_7Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Pyrohydra_7Heads][CreatureConstants.Pyrohydra_7Heads] = GetMultiplierFromAverage(20 * 12);
+            lengths[CreatureConstants.Pyrohydra_8Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Pyrohydra_8Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Pyrohydra_8Heads][CreatureConstants.Pyrohydra_8Heads] = GetMultiplierFromAverage(20 * 12);
+            lengths[CreatureConstants.Pyrohydra_9Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Pyrohydra_9Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Pyrohydra_9Heads][CreatureConstants.Pyrohydra_9Heads] = GetMultiplierFromAverage(20 * 12);
+            lengths[CreatureConstants.Pyrohydra_10Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Pyrohydra_10Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Pyrohydra_10Heads][CreatureConstants.Pyrohydra_10Heads] = GetMultiplierFromAverage(20 * 12);
+            lengths[CreatureConstants.Pyrohydra_11Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Pyrohydra_11Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Pyrohydra_11Heads][CreatureConstants.Pyrohydra_11Heads] = GetMultiplierFromAverage(20 * 12);
+            lengths[CreatureConstants.Pyrohydra_12Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Pyrohydra_12Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Pyrohydra_12Heads][CreatureConstants.Pyrohydra_12Heads] = GetMultiplierFromAverage(20 * 12);
             lengths[CreatureConstants.Quasit][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.Quasit][CreatureConstants.Quasit] = "0";
             //Source: https://www.dimensions.com/element/common-rat
