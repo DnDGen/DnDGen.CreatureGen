@@ -894,6 +894,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Dwarf_Mountain][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Dwarf_Mountain][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Dwarf_Mountain][CreatureConstants.Dwarf_Mountain] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/eagle.htm
+            lengths[CreatureConstants.Eagle][GenderConstants.Female] = GetBaseFromAverage(3 * 12);
+            lengths[CreatureConstants.Eagle][GenderConstants.Male] = GetBaseFromAverage(3 * 12);
+            lengths[CreatureConstants.Eagle][CreatureConstants.Eagle] = GetMultiplierFromAverage(3 * 12);
+            lengths[CreatureConstants.Efreeti][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.Efreeti][GenderConstants.Female] = "0";
+            lengths[CreatureConstants.Efreeti][GenderConstants.Male] = "0";
+            lengths[CreatureConstants.Efreeti][CreatureConstants.Efreeti] = "0";
             lengths[CreatureConstants.Elemental_Air_Small][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.Elemental_Air_Small][CreatureConstants.Elemental_Air_Small] = "0";
             lengths[CreatureConstants.Elemental_Air_Medium][GenderConstants.Agender] = "0";
@@ -1185,13 +1193,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Sahuagin_Mutant][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Sahuagin_Mutant][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Sahuagin_Mutant][CreatureConstants.Locathah] = "0";
-            //Source: ??? - Numbers are most likely length
-            lengths[CreatureConstants.Salamander_Flamebrother][GenderConstants.Agender] = GetBaseFromRange(24, 48);
-            lengths[CreatureConstants.Salamander_Flamebrother][CreatureConstants.Salamander_Flamebrother] = GetMultiplierFromRange(24, 48);
-            lengths[CreatureConstants.Salamander_Average][GenderConstants.Agender] = GetBaseFromRange(48, 8 * 12);
-            lengths[CreatureConstants.Salamander_Average][CreatureConstants.Salamander_Average] = GetMultiplierFromRange(48, 8 * 12);
-            lengths[CreatureConstants.Salamander_Noble][GenderConstants.Agender] = GetBaseFromRange(8 * 12, 16 * 12);
-            lengths[CreatureConstants.Salamander_Noble][CreatureConstants.Salamander_Noble] = GetMultiplierFromRange(8 * 12, 16 * 12);
+            //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/salamander-article (average)
+            //Scaling down by half for flamebrother, Scaling up x2 for noble.
+            lengths[CreatureConstants.Salamander_Flamebrother][GenderConstants.Agender] = GetBaseFromAverage(20 * 12 / 2);
+            lengths[CreatureConstants.Salamander_Flamebrother][CreatureConstants.Salamander_Flamebrother] = GetMultiplierFromAverage(20 * 12 / 2);
+            lengths[CreatureConstants.Salamander_Average][GenderConstants.Agender] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Salamander_Average][CreatureConstants.Salamander_Average] = GetMultiplierFromAverage(20 * 12);
+            lengths[CreatureConstants.Salamander_Noble][GenderConstants.Agender] = GetBaseFromAverage(20 * 12 * 2);
+            lengths[CreatureConstants.Salamander_Noble][CreatureConstants.Salamander_Noble] = GetMultiplierFromAverage(20 * 12 * 2);
             lengths[CreatureConstants.Satyr][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Satyr][CreatureConstants.Satyr] = "0";
             lengths[CreatureConstants.Satyr_WithPipes][GenderConstants.Male] = "0";
@@ -1267,10 +1276,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Weasel][GenderConstants.Female] = GetBaseFromRange(6, 10);
             lengths[CreatureConstants.Weasel][GenderConstants.Male] = GetBaseFromRange(6, 10);
             lengths[CreatureConstants.Weasel][CreatureConstants.Weasel] = GetMultiplierFromRange(6, 10);
-            //Source: https://www.dimensions.com/element/least-weasel-mustela-nivalis
-            lengths[CreatureConstants.Weasel_Dire][GenderConstants.Female] = GetBaseFromAverage(10 * 12);
-            lengths[CreatureConstants.Weasel_Dire][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
-            lengths[CreatureConstants.Weasel_Dire][CreatureConstants.Weasel_Dire] = GetMultiplierFromAverage(10 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/direWeasel.htm
+            lengths[CreatureConstants.Weasel_Dire][GenderConstants.Female] = GetBaseFromUpTo(10 * 12);
+            lengths[CreatureConstants.Weasel_Dire][GenderConstants.Male] = GetBaseFromUpTo(10 * 12);
+            lengths[CreatureConstants.Weasel_Dire][CreatureConstants.Weasel_Dire] = GetMultiplierFromUpTo(10 * 12);
             //Source: https://www.d20srd.org/srd/monsters/whale.htm
             lengths[CreatureConstants.Whale_Baleen][GenderConstants.Female] = GetBaseFromRange(30 * 12, 60 * 12);
             lengths[CreatureConstants.Whale_Baleen][GenderConstants.Male] = GetBaseFromRange(30 * 12, 60 * 12);
@@ -1295,7 +1304,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Wolverine][GenderConstants.Female] = GetBaseFromRange(25, 41);
             lengths[CreatureConstants.Wolverine][GenderConstants.Male] = GetBaseFromRange(25, 41);
             lengths[CreatureConstants.Wolverine][CreatureConstants.Wolverine] = GetMultiplierFromRange(25, 41);
-            //Source: https://www.dimensions.com/element/wolverine-gulo-gulo
+            //Source: https://www.d20srd.org/srd/monsters/direWolverine.htm
             lengths[CreatureConstants.Wolverine_Dire][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
             lengths[CreatureConstants.Wolverine_Dire][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
             lengths[CreatureConstants.Wolverine_Dire][CreatureConstants.Wolverine_Dire] = GetMultiplierFromAverage(12 * 12);

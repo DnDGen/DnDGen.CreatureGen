@@ -919,6 +919,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Dwarf_Mountain][GenderConstants.Female] = "3*12+7";
             heights[CreatureConstants.Dwarf_Mountain][GenderConstants.Male] = "3*12+9";
             heights[CreatureConstants.Dwarf_Mountain][CreatureConstants.Dwarf_Mountain] = "2d4";
+            //Source: https://www.dimensions.com/element/bald-eagle-haliaeetus-leucocephalus
+            heights[CreatureConstants.Eagle][GenderConstants.Female] = GetBaseFromRange(17, 24);
+            heights[CreatureConstants.Eagle][GenderConstants.Male] = GetBaseFromRange(17, 24);
+            heights[CreatureConstants.Eagle][CreatureConstants.Eagle] = GetMultiplierFromRange(17, 24);
+            //Source: https://forgottenrealms.fandom.com/wiki/Efreeti
+            heights[CreatureConstants.Efreeti][GenderConstants.Agender] = GetBaseFromAverage(12 * 12);
+            heights[CreatureConstants.Efreeti][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
+            heights[CreatureConstants.Efreeti][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
+            heights[CreatureConstants.Efreeti][CreatureConstants.Efreeti] = GetMultiplierFromAverage(12 * 12);
             //Source: https://www.d20srd.org/srd/monsters/elemental.htm
             heights[CreatureConstants.Elemental_Air_Small][GenderConstants.Agender] = GetBaseFromAverage(4 * 12);
             heights[CreatureConstants.Elemental_Air_Small][CreatureConstants.Elemental_Air_Small] = GetMultiplierFromAverage(4 * 12);
@@ -1253,21 +1262,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Sahuagin_Mutant][GenderConstants.Female] = "50";
             heights[CreatureConstants.Sahuagin_Mutant][GenderConstants.Male] = "50";
             heights[CreatureConstants.Sahuagin_Mutant][CreatureConstants.Locathah] = "1d8";
-            //Source: ??? - Numbers are most likely length. Halving for height
-            heights[CreatureConstants.Salamander_Flamebrother][GenderConstants.Agender] = GetBaseFromRange(24 / 2, 48 / 2);
-            heights[CreatureConstants.Salamander_Flamebrother][CreatureConstants.Salamander_Flamebrother] = GetMultiplierFromRange(24 / 2, 48 / 2);
-            heights[CreatureConstants.Salamander_Average][GenderConstants.Agender] = GetBaseFromRange(48 / 2, 8 * 12 / 2);
-            heights[CreatureConstants.Salamander_Average][CreatureConstants.Salamander_Average] = GetMultiplierFromRange(48 / 2, 8 * 12 / 2);
-            heights[CreatureConstants.Salamander_Noble][GenderConstants.Agender] = GetBaseFromRange(8 * 12 / 2, 16 * 12 / 2);
-            heights[CreatureConstants.Salamander_Noble][CreatureConstants.Salamander_Noble] = GetMultiplierFromRange(8 * 12 / 2, 16 * 12 / 2);
-            //Source: http://people.wku.edu/charles.plemons/ad&d/races/height.html
-            heights[CreatureConstants.Satyr][GenderConstants.Male] = "55";
-            heights[CreatureConstants.Satyr][CreatureConstants.Satyr] = "1d10";
-            heights[CreatureConstants.Satyr_WithPipes][GenderConstants.Male] = "55";
-            heights[CreatureConstants.Satyr_WithPipes][CreatureConstants.Satyr] = "1d10";
-            //Source: https://forgottenrealms.fandom.com/wiki/Sea_hag
-            heights[CreatureConstants.SeaHag][GenderConstants.Female] = GetBaseFromRange(5 * 12, 6 * 12);
-            heights[CreatureConstants.SeaHag][CreatureConstants.SeaHag] = GetMultiplierFromRange(5 * 12, 6 * 12);
+            //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/salamander-article (average)
+            //Scaling down by half for flamebrother, Scaling up x2 for noble. Assuming height is half of length
+            heights[CreatureConstants.Salamander_Flamebrother][GenderConstants.Agender] = GetBaseFromAverage(20 * 12 / 4);
+            heights[CreatureConstants.Salamander_Flamebrother][CreatureConstants.Salamander_Flamebrother] = GetMultiplierFromAverage(20 * 12 / 4);
+            heights[CreatureConstants.Salamander_Average][GenderConstants.Agender] = GetBaseFromAverage(20 * 12 / 2);
+            heights[CreatureConstants.Salamander_Average][CreatureConstants.Salamander_Average] = GetMultiplierFromAverage(20 * 12 / 2);
+            heights[CreatureConstants.Salamander_Noble][GenderConstants.Agender] = GetBaseFromAverage(20 * 12);
+            heights[CreatureConstants.Salamander_Noble][CreatureConstants.Salamander_Noble] = GetMultiplierFromAverage(20 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/satyr.htm - copy from Half-Elf
+            heights[CreatureConstants.Satyr][GenderConstants.Male] = "4*12+7";
+            heights[CreatureConstants.Satyr][CreatureConstants.Satyr] = "2d8";
+            heights[CreatureConstants.Satyr_WithPipes][GenderConstants.Male] = "4*12+7";
+            heights[CreatureConstants.Satyr_WithPipes][CreatureConstants.Satyr_WithPipes] = "2d8";
+            //Source: https://www.d20srd.org/srd/monsters/hag.htm - copy from Human
+            heights[CreatureConstants.SeaHag][GenderConstants.Female] = "4*12+5";
+            heights[CreatureConstants.SeaHag][CreatureConstants.SeaHag] = "2d10";
             //Source: https://www.dimensions.com/element/blacktip-shark-carcharhinus-limbatus
             heights[CreatureConstants.Shark_Medium][GenderConstants.Female] = "0";
             heights[CreatureConstants.Shark_Medium][GenderConstants.Male] = "0";

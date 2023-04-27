@@ -836,6 +836,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Dwarf_Mountain][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Dwarf_Mountain][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Dwarf_Mountain][CreatureConstants.Dwarf_Mountain] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/eagle.htm
+            wingspans[CreatureConstants.Eagle][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
+            wingspans[CreatureConstants.Eagle][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
+            wingspans[CreatureConstants.Eagle][CreatureConstants.Eagle] = GetMultiplierFromAverage(7 * 12);
+            wingspans[CreatureConstants.Efreeti][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Efreeti][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Efreeti][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Efreeti][CreatureConstants.Efreeti] = "0";
             wingspans[CreatureConstants.Elemental_Air_Small][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.Elemental_Air_Small][CreatureConstants.Elemental_Air_Small] = "0";
             wingspans[CreatureConstants.Elemental_Air_Medium][GenderConstants.Agender] = "0";
