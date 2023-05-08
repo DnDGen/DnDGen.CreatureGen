@@ -1170,7 +1170,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.EtherealMarauder][AgeConstants.Categories.Old] = GetOldRoll(50);
                 testCases[CreatureConstants.EtherealMarauder][AgeConstants.Categories.Venerable] = GetVenerableRoll(50);
                 testCases[CreatureConstants.EtherealMarauder][AgeConstants.Categories.Maximum] = GetMaximumRoll(50);
-                //INFO: https://syrikdarkenedskies.obsidianportal.com/wikis/ettercap-race
+                //Source: https://syrikdarkenedskies.obsidianportal.com/wikis/ettercap-race
                 testCases[CreatureConstants.Ettercap][AgeConstants.Categories.Adulthood] = GetRoll(6, 13);
                 testCases[CreatureConstants.Ettercap][AgeConstants.Categories.MiddleAge] = GetRoll(14, 21);
                 testCases[CreatureConstants.Ettercap][AgeConstants.Categories.Old] = GetRoll(22, 31);

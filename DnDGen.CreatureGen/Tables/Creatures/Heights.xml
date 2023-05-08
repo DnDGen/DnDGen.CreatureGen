@@ -1422,26 +1422,27 @@
   </collection>
   <collection>
     <name>Eight-Headed Cryohydra</name>
-	  <entry>Male@42</entry>
-	  <entry>Female@42</entry>
-	  <entry>Eight-Headed Cryohydra@1d10</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Eight-Headed Cryohydra@8d4</entry>
   </collection>
   <collection>
     <name>Eight-Headed Hydra</name>
-	  <entry>Male@42</entry>
-	  <entry>Female@42</entry>
-	  <entry>Eight-Headed Hydra@1d10</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Eight-Headed Hydra@8d4</entry>
   </collection>
   <collection>
     <name>Eight-Headed Pyrohydra</name>
-	  <entry>Male@42</entry>
-	  <entry>Female@42</entry>
-	  <entry>Eight-Headed Pyrohydra@1d10</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Eight-Headed Pyrohydra@8d4</entry>
   </collection>
   <collection>
     <name>Elasmosaurus</name>
-    <entry>Land@20</entry>
-    <entry>Swim@50</entry>
+	  <entry>Male@32</entry>
+	  <entry>Female@32</entry>
+	  <entry>Elasmosaurus@4d3</entry>
   </collection>
   <collection>
     <name>Elder Arrowhawk</name>
@@ -1466,68 +1467,86 @@
   </collection>
   <collection>
     <name>Elephant</name>
-    <entry>Land@40</entry>
+	  <entry>Male@96</entry>
+	  <entry>Female@96</entry>
+	  <entry>Elephant@6d10</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Cryohydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Eleven-Headed Cryohydra@8d4</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Hydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Eleven-Headed Hydra@8d4</entry>
   </collection>
   <collection>
     <name>Eleven-Headed Pyrohydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Eleven-Headed Pyrohydra@8d4</entry>
   </collection>
   <collection>
     <name>Erinyes</name>
-    <entry>Land@30</entry>
-    <entry>Fly@50</entry>
+	  <entry>Male@61</entry>
+	  <entry>Female@61</entry>
+	  <entry>Erinyes@3d6</entry>
   </collection>
   <collection>
     <name>Ethereal Filcher</name>
-    <entry>Land@40</entry>
+	  <entry>Agender@47</entry>
+	  <entry>Ethereal Filcher@1d12</entry>
   </collection>
   <collection>
     <name>Ethereal Marauder</name>
-    <entry>Land@40</entry>
+	  <entry>Male@42</entry>
+	  <entry>Female@42</entry>
+	  <entry>Ethereal Marauder@1d10</entry>
   </collection>
   <collection>
     <name>Ettercap</name>
-    <entry>Land@30</entry>
-    <entry>Climb@30</entry>
+	  <entry>Male@61</entry>
+	  <entry>Female@61</entry>
+	  <entry>Ettercap@3d6</entry>
   </collection>
   <collection>
     <name>Ettin</name>
-    <entry>Land@40</entry>
+	  <entry>Male@12*12+10</entry>
+	  <entry>Female@12*12+2</entry>
+	  <entry>Ettin@2d6</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Elder</name>
-    <entry>Land@60</entry>
+	  <entry>Agender@400</entry>
+	  <entry>Fire Elemental, Elder@32d4</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Greater</name>
-    <entry>Land@60</entry>
+	  <entry>Agender@359</entry>
+	  <entry>Fire Elemental, Greater@29d4</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Huge</name>
-    <entry>Land@60</entry>
+	  <entry>Agender@338</entry>
+	  <entry>Fire Elemental, Huge@7d12</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Large</name>
-    <entry>Land@50</entry>
+	  <entry>Agender@159</entry>
+	  <entry>Fire Elemental, Large@13d4</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Medium</name>
-    <entry>Land@50</entry>
+	  <entry>Agender@85</entry>
+	  <entry>Fire Elemental, Medium@1d20</entry>
   </collection>
   <collection>
     <name>Fire Elemental, Small</name>
-    <entry>Land@50</entry>
+	  <entry>Agender@42</entry>
+	  <entry>Fire Elemental, Small@1d10</entry>
   </collection>
   <collection>
     <name>Fire Giant</name>
@@ -1538,26 +1557,30 @@
 	  <entry>Agender@42</entry>
 	  <entry>Male@42</entry>
 	  <entry>Female@42</entry>
-	  <entry>Air Mephit@1d10</entry>
+	  <entry>Fire Mephit@1d10</entry>
   </collection>
   <collection>
     <name>Five-Headed Cryohydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Five-Headed Cryohydra@8d4</entry>
   </collection>
   <collection>
     <name>Five-Headed Hydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Five-Headed Hydra@8d4</entry>
   </collection>
   <collection>
     <name>Five-Headed Pyrohydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Five-Headed Pyrohydra@8d4</entry>
   </collection>
   <collection>
     <name>Flamebrother Salamander</name>
-    <entry>Land@20</entry>
+	  <entry>Agender@50</entry>
+	  <entry>Flamebrother Salamander@4d4</entry>
   </collection>
   <collection>
     <name>Flesh Golem</name>
@@ -1565,7 +1588,9 @@
   </collection>
   <collection>
     <name>Forest Gnome</name>
-    <entry>Land@20</entry>
+	  <entry>Male@3*12+0</entry>
+	  <entry>Female@2*12+10</entry>
+	  <entry>Forest Gnome@2d4</entry>
   </collection>
   <collection>
     <name>Formian Myrmarch</name>
@@ -2048,7 +2073,7 @@
 	  <entry>Agender@42</entry>
 	  <entry>Male@42</entry>
 	  <entry>Female@42</entry>
-	  <entry>Air Mephit@1d10</entry>
+	  <entry>Ice Mephit@1d10</entry>
   </collection>
   <collection>
     <name>Imp</name>
@@ -2180,7 +2205,7 @@
 	  <entry>Agender@42</entry>
 	  <entry>Male@42</entry>
 	  <entry>Female@42</entry>
-	  <entry>Air Mephit@1d10</entry>
+	  <entry>Magma Mephit@1d10</entry>
   </collection>
   <collection>
     <name>Magmin</name>
@@ -2493,7 +2518,7 @@
 	  <entry>Agender@42</entry>
 	  <entry>Male@42</entry>
 	  <entry>Female@42</entry>
-	  <entry>Air Mephit@1d10</entry>
+	  <entry>Ooze Mephit@1d10</entry>
   </collection>
   <collection>
     <name>Orc</name>
@@ -2726,7 +2751,7 @@
 	  <entry>Agender@42</entry>
 	  <entry>Male@42</entry>
 	  <entry>Female@42</entry>
-	  <entry>Air Mephit@1d10</entry>
+	  <entry>Salt Mephit@1d10</entry>
   </collection>
   <collection>
     <name>Satyr</name>
@@ -2917,7 +2942,7 @@
 	  <entry>Agender@42</entry>
 	  <entry>Male@42</entry>
 	  <entry>Female@42</entry>
-	  <entry>Air Mephit@1d10</entry>
+	  <entry>Steam Mephit@1d10</entry>
   </collection>
   <collection>
     <name>Stirge</name>
@@ -3143,7 +3168,7 @@
 	  <entry>Agender@42</entry>
 	  <entry>Male@42</entry>
 	  <entry>Female@42</entry>
-	  <entry>Air Mephit@1d10</entry>
+	  <entry>Water Mephit@1d10</entry>
   </collection>
   <collection>
     <name>Water Naga</name>

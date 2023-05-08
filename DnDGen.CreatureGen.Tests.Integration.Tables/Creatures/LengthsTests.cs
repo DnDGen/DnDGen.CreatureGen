@@ -1013,9 +1013,24 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.EtherealMarauder][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
             lengths[CreatureConstants.EtherealMarauder][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
             lengths[CreatureConstants.EtherealMarauder][CreatureConstants.EtherealMarauder] = GetMultiplierFromAverage(7 * 12);
+            //Source: https://syrikdarkenedskies.obsidianportal.com/wikis/ettercap-race
+            lengths[CreatureConstants.Ettercap][GenderConstants.Female] = "0";
+            lengths[CreatureConstants.Ettercap][GenderConstants.Male] = "0";
+            lengths[CreatureConstants.Ettercap][CreatureConstants.Ettin] = "0";
             lengths[CreatureConstants.Ettin][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Ettin][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Ettin][CreatureConstants.Ettin] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/formian.htm
+            lengths[CreatureConstants.FormianWorker][GenderConstants.Male] = GetBaseFromAverage(3 * 12);
+            lengths[CreatureConstants.FormianWorker][CreatureConstants.FormianWorker] = GetMultiplierFromAverage(3 * 12);
+            lengths[CreatureConstants.FormianWarrior][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
+            lengths[CreatureConstants.FormianWarrior][CreatureConstants.FormianWarrior] = GetMultiplierFromAverage(5 * 12);
+            lengths[CreatureConstants.FormianTaskmaster][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
+            lengths[CreatureConstants.FormianTaskmaster][CreatureConstants.FormianTaskmaster] = GetMultiplierFromAverage(5 * 12);
+            lengths[CreatureConstants.FormianMyrmarch][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
+            lengths[CreatureConstants.FormianMyrmarch][CreatureConstants.FormianMyrmarch] = GetMultiplierFromAverage(7 * 12);
+            lengths[CreatureConstants.FormianQueen][GenderConstants.Female] = GetBaseFromAverage(10 * 12);
+            lengths[CreatureConstants.FormianQueen][CreatureConstants.FormianQueen] = GetMultiplierFromAverage(10 * 12);
             //Source: https://forgottenrealms.fandom.com/wiki/Cloud_giant
             lengths[CreatureConstants.Giant_Cloud][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Giant_Cloud][GenderConstants.Male] = "0";
@@ -1040,6 +1055,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Goblin][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Goblin][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Goblin][CreatureConstants.Goblin] = "0";
+            lengths[CreatureConstants.Golem_Clay][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.Golem_Clay][CreatureConstants.Golem_Clay] = "0";
+            lengths[CreatureConstants.Golem_Flesh][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.Golem_Flesh][CreatureConstants.Golem_Flesh] = "0";
             lengths[CreatureConstants.GreenHag][GenderConstants.Female] = "0";
             lengths[CreatureConstants.GreenHag][CreatureConstants.GreenHag] = "0";
             lengths[CreatureConstants.Grig][GenderConstants.Female] = "0";

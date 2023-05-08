@@ -952,9 +952,23 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.EtherealMarauder][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.EtherealMarauder][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.EtherealMarauder][CreatureConstants.EtherealMarauder] = "0";
+            //Source: https://syrikdarkenedskies.obsidianportal.com/wikis/ettercap-race
+            wingspans[CreatureConstants.Ettercap][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Ettercap][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Ettercap][CreatureConstants.Ettin] = "0";
             wingspans[CreatureConstants.Ettin][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Ettin][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Ettin][CreatureConstants.Ettin] = "0";
+            wingspans[CreatureConstants.FormianWorker][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.FormianWorker][CreatureConstants.FormianWorker] = "0";
+            wingspans[CreatureConstants.FormianWarrior][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.FormianWarrior][CreatureConstants.FormianWarrior] = "0";
+            wingspans[CreatureConstants.FormianTaskmaster][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.FormianTaskmaster][CreatureConstants.FormianTaskmaster] = "0";
+            wingspans[CreatureConstants.FormianMyrmarch][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.FormianMyrmarch][CreatureConstants.FormianMyrmarch] = "0";
+            wingspans[CreatureConstants.FormianQueen][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.FormianQueen][CreatureConstants.FormianQueen] = "0";
             //Source: https://forgottenrealms.fandom.com/wiki/Cloud_giant
             wingspans[CreatureConstants.Giant_Cloud][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Giant_Cloud][GenderConstants.Male] = "0";
@@ -979,6 +993,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Goblin][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Goblin][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Goblin][CreatureConstants.Goblin] = "0";
+            wingspans[CreatureConstants.Golem_Clay][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Golem_Clay][CreatureConstants.Golem_Clay] = "0";
+            wingspans[CreatureConstants.Golem_Flesh][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Golem_Flesh][CreatureConstants.Golem_Flesh] = "0";
             wingspans[CreatureConstants.GreenHag][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.GreenHag][CreatureConstants.GreenHag] = "0";
             wingspans[CreatureConstants.Grig][GenderConstants.Female] = "0";

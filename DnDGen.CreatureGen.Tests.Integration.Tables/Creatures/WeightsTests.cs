@@ -1259,10 +1259,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.EtherealMarauder][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.EtherealMarauder, 200);
             weights[CreatureConstants.EtherealMarauder][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.EtherealMarauder, 200);
             weights[CreatureConstants.EtherealMarauder][CreatureConstants.EtherealMarauder] = GetMultiplierFromAverage(CreatureConstants.EtherealMarauder, 200);
+            //Source: https://syrikdarkenedskies.obsidianportal.com/wikis/ettercap-race
+            weights[CreatureConstants.Ettercap][GenderConstants.Female] = "150";
+            weights[CreatureConstants.Ettercap][GenderConstants.Male] = "130";
+            weights[CreatureConstants.Ettercap][CreatureConstants.Ettin] = "2d4";
             //Source: https://forgottenrealms.fandom.com/wiki/Ettin
             weights[CreatureConstants.Ettin][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Ettin, 930, 5200);
             weights[CreatureConstants.Ettin][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Ettin, 930, 5200);
             weights[CreatureConstants.Ettin][CreatureConstants.Ettin] = GetMultiplierFromRange(CreatureConstants.Ettin, 930, 5200);
+            //Source: https://www.d20srd.org/srd/monsters/formian.htm
+            weights[CreatureConstants.FormianWorker][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.FormianWorker, 60);
+            weights[CreatureConstants.FormianWorker][CreatureConstants.FormianWorker] = GetMultiplierFromAverage(CreatureConstants.FormianWorker, 60);
+            weights[CreatureConstants.FormianWarrior][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.FormianWarrior, 180);
+            weights[CreatureConstants.FormianWarrior][CreatureConstants.FormianWarrior] = GetMultiplierFromAverage(CreatureConstants.FormianWarrior, 180);
+            weights[CreatureConstants.FormianTaskmaster][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.FormianTaskmaster, 180);
+            weights[CreatureConstants.FormianTaskmaster][CreatureConstants.FormianTaskmaster] = GetMultiplierFromAverage(CreatureConstants.FormianTaskmaster, 180);
+            weights[CreatureConstants.FormianMyrmarch][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.FormianMyrmarch, 1500);
+            weights[CreatureConstants.FormianMyrmarch][CreatureConstants.FormianMyrmarch] = GetMultiplierFromAverage(CreatureConstants.FormianMyrmarch, 1500);
+            weights[CreatureConstants.FormianQueen][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.FormianQueen, 3500);
+            weights[CreatureConstants.FormianQueen][CreatureConstants.FormianQueen] = GetMultiplierFromAverage(CreatureConstants.FormianQueen, 3500);
             //Source: https://forgottenrealms.fandom.com/wiki/Cloud_giant
             weights[CreatureConstants.Giant_Cloud][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Giant_Cloud, 11_500);
             weights[CreatureConstants.Giant_Cloud][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Giant_Cloud, 11_500);
@@ -1303,6 +1318,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://pathfinderwiki.com/wiki/Clay_golem
             weights[CreatureConstants.Golem_Clay][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Golem_Clay, 600);
             weights[CreatureConstants.Golem_Clay][CreatureConstants.Golem_Clay] = GetMultiplierFromAverage(CreatureConstants.Golem_Clay, 600);
+            //Source: https://www.d20srd.org/srd/monsters/golem.htm
+            weights[CreatureConstants.Golem_Flesh][GenderConstants.Agender] = GetBaseFromUpTo(CreatureConstants.Golem_Flesh, 500);
+            weights[CreatureConstants.Golem_Flesh][CreatureConstants.Golem_Flesh] = GetMultiplierFromUpTo(CreatureConstants.Golem_Flesh, 500);
             //Source: https://www.d20srd.org/srd/monsters/hag.htm#greenHag Female human
             weights[CreatureConstants.GreenHag][GenderConstants.Female] = "85";
             weights[CreatureConstants.GreenHag][CreatureConstants.GreenHag] = "2d4";

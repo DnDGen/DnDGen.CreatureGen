@@ -62,24 +62,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.TestCaseSources
             }
         }
 
-        public static IEnumerable SumOfValuesLessThanPositiveRequirement
-        {
-            get
-            {
-                foreach (var requirement in PositiveValues)
-                {
-                    foreach (var value1 in PositiveValues)
-                    {
-                        foreach (var value2 in AllTestValues)
-                        {
-                            if (value1 + value2 < requirement)
-                                yield return new TestCaseData(requirement, value1, value2);
-                        }
-                    }
-                }
-            }
-        }
-
         public static IEnumerable SumOfValuesLessThanPositiveRequirementWithMinimumOne
         {
             get
