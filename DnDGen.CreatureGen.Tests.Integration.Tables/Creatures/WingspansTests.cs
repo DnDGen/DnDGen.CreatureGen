@@ -969,10 +969,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.FormianMyrmarch][CreatureConstants.FormianMyrmarch] = "0";
             wingspans[CreatureConstants.FormianQueen][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.FormianQueen][CreatureConstants.FormianQueen] = "0";
+            wingspans[CreatureConstants.FrostWorm][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.FrostWorm][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.FrostWorm][CreatureConstants.FrostWorm] = "0";
+            //Using height
+            wingspans[CreatureConstants.Gargoyle][GenderConstants.Agender] = "5*12";
+            wingspans[CreatureConstants.Gargoyle][CreatureConstants.Gargoyle] = "2d10";
+            wingspans[CreatureConstants.Gargoyle_Kapoacinth][GenderConstants.Agender] = "5*12";
+            wingspans[CreatureConstants.Gargoyle_Kapoacinth][CreatureConstants.Gargoyle_Kapoacinth] = "2d10";
+            wingspans[CreatureConstants.GelatinousCube][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.GelatinousCube][CreatureConstants.GelatinousCube] = "0";
             //Source: https://forgottenrealms.fandom.com/wiki/Cloud_giant
             wingspans[CreatureConstants.Giant_Cloud][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Giant_Cloud][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Giant_Cloud][CreatureConstants.Giant_Cloud] = "0";
+            wingspans[CreatureConstants.Giant_Fire][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Giant_Fire][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Giant_Fire][CreatureConstants.Giant_Fire] = "0";
+            wingspans[CreatureConstants.Giant_Frost][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Giant_Frost][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Giant_Frost][CreatureConstants.Giant_Frost] = "0";
             wingspans[CreatureConstants.Giant_Hill][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Giant_Hill][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Giant_Hill][CreatureConstants.Giant_Hill] = "0";

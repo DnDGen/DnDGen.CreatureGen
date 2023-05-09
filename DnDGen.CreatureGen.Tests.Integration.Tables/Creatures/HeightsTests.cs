@@ -1062,6 +1062,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.FormianMyrmarch][CreatureConstants.FormianMyrmarch] = GetMultiplierFromAverage(5 * 12 + 6);
             heights[CreatureConstants.FormianQueen][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
             heights[CreatureConstants.FormianQueen][CreatureConstants.FormianQueen] = GetMultiplierFromAverage(4 * 12);
+            //Source: https://forgottenrealms.fandom.com/wiki/Frost_worm
+            heights[CreatureConstants.FrostWorm][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
+            heights[CreatureConstants.FrostWorm][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
+            heights[CreatureConstants.FrostWorm][CreatureConstants.FrostWorm] = GetMultiplierFromAverage(5 * 12);
+            //Source: https://dungeonsdragons.fandom.com/wiki/Gargoyle
+            heights[CreatureConstants.Gargoyle][GenderConstants.Agender] = "5*12";
+            heights[CreatureConstants.Gargoyle][CreatureConstants.Gargoyle] = "2d10";
+            heights[CreatureConstants.Gargoyle_Kapoacinth][GenderConstants.Agender] = "5*12";
+            heights[CreatureConstants.Gargoyle_Kapoacinth][CreatureConstants.Gargoyle_Kapoacinth] = "2d10";
+            //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/gelatinous-cube-species
+            heights[CreatureConstants.GelatinousCube][GenderConstants.Agender] = GetBaseFromAverage(10 * 12);
+            heights[CreatureConstants.GelatinousCube][CreatureConstants.GelatinousCube] = GetMultiplierFromAverage(10 * 12);
+            //Source: https://forgottenrealms.fandom.com/wiki/Ghaele
+            heights[CreatureConstants.Ghaele][GenderConstants.Female] = GetBaseFromRange(4 * 12 + 7, 6 * 12 + 7);
+            heights[CreatureConstants.Ghaele][GenderConstants.Male] = GetBaseFromRange(5 * 12 + 2, 7 * 12);
+            heights[CreatureConstants.Ghaele][CreatureConstants.Ghaele] = GetMultiplierFromRange(5 * 12 + 2, 7 * 12);
             //Source: https://forgottenrealms.fandom.com/wiki/Cloud_giant
             heights[CreatureConstants.Giant_Cloud][GenderConstants.Female] = GetBaseFromRange(22 * 12 + 8, 25 * 12);
             heights[CreatureConstants.Giant_Cloud][GenderConstants.Male] = GetBaseFromRange(24 * 12 + 4, 26 * 12 + 8);
@@ -1070,6 +1086,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Giant_Fire][GenderConstants.Female] = GetBaseFromRange(17 * 12 + 5, 19 * 12);
             heights[CreatureConstants.Giant_Fire][GenderConstants.Male] = GetBaseFromRange(18 * 12 + 2, 19 * 12 + 8);
             heights[CreatureConstants.Giant_Fire][CreatureConstants.Giant_Fire] = GetMultiplierFromRange(18 * 12 + 2, 19 * 12 + 8);
+            //Source: https://forgottenrealms.fandom.com/wiki/Frost_giant
+            heights[CreatureConstants.Giant_Frost][GenderConstants.Female] = GetBaseFromRange(20 * 12 + 1, 22 * 12 + 4);
+            heights[CreatureConstants.Giant_Frost][GenderConstants.Male] = GetBaseFromRange(21 * 12 + 3, 23 * 12 + 6);
+            heights[CreatureConstants.Giant_Frost][CreatureConstants.Giant_Frost] = GetMultiplierFromRange(21 * 12 + 3, 23 * 12 + 6);
             //Source: https://forgottenrealms.fandom.com/wiki/Hill_giant
             heights[CreatureConstants.Giant_Hill][GenderConstants.Female] = GetBaseFromRange(15 * 12 + 5, 16 * 12 + 4);
             heights[CreatureConstants.Giant_Hill][GenderConstants.Male] = GetBaseFromRange(16 * 12 + 1, 17 * 12);
@@ -1607,10 +1627,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Dog_Riding, GenderConstants.Female, 20, 28)]
         [TestCase(CreatureConstants.Ettin, GenderConstants.Male, 13 * 12, 13 * 12 + 10)]
         [TestCase(CreatureConstants.Ettin, GenderConstants.Female, 12 * 12 + 4, 13 * 12 + 2)]
+        [TestCase(CreatureConstants.Ghaele, GenderConstants.Male, 5 * 12 + 2, 7 * 12)]
+        [TestCase(CreatureConstants.Ghaele, GenderConstants.Female, 4 * 12 + 7, 6 * 12 + 7)]
         [TestCase(CreatureConstants.Giant_Cloud, GenderConstants.Male, 24 * 12 + 4, 26 * 12 + 8)]
         [TestCase(CreatureConstants.Giant_Cloud, GenderConstants.Female, 22 * 12 + 8, 25 * 12)]
         [TestCase(CreatureConstants.Giant_Fire, GenderConstants.Male, 18 * 12 + 2, 19 * 12 + 8)]
         [TestCase(CreatureConstants.Giant_Fire, GenderConstants.Female, 17 * 12 + 5, 19 * 12)]
+        [TestCase(CreatureConstants.Giant_Frost, GenderConstants.Male, 21 * 12 + 3, 23 * 12 + 6)]
+        [TestCase(CreatureConstants.Giant_Frost, GenderConstants.Female, 20 * 12 + 1, 22 * 12 + 4)]
         [TestCase(CreatureConstants.Giant_Hill, GenderConstants.Male, 16 * 12 + 1, 17 * 12)]
         [TestCase(CreatureConstants.Giant_Hill, GenderConstants.Female, 15 * 12 + 5, 16 * 12 + 4)]
         [TestCase(CreatureConstants.Gnoll, GenderConstants.Male, 7 * 12, 7 * 12 + 6)]
@@ -1643,7 +1667,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             var baseHeight = dice.Roll(heights[creature][gender]).AsSum();
             var multiplierMin = dice.Roll(heights[creature][creature]).AsPotentialMinimum();
-            var multiplierAvg = dice.Roll(heights[creature][creature]).AsPotentialAverage();
             var multiplierMax = dice.Roll(heights[creature][creature]).AsPotentialMaximum();
             var theoreticalRoll = RollHelper.GetRollWithFewestDice(min, max);
 
@@ -1660,13 +1683,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             foreach (var creature in creatures)
             {
-                Assert.That(heights, Contains.Key(creature));
-                Assert.That(heights[creature], Contains.Key(creature));
-                Assert.That(lengths, Contains.Key(creature));
-                Assert.That(lengths[creature], Contains.Key(creature));
+                Assert.That(heights, Contains.Key(creature), "Heights");
+                Assert.That(heights[creature], Contains.Key(creature), $"Heights[{creature}]");
+                Assert.That(lengths, Contains.Key(creature), "Lengths");
+                Assert.That(lengths[creature], Contains.Key(creature), $"Lengths[{creature}]");
 
-                Assert.That(heights[creature][creature], Is.Not.Empty);
-                Assert.That(lengths[creature][creature], Is.Not.Empty);
+                Assert.That(heights[creature][creature], Is.Not.Empty, $"Heights[{creature}][{creature}]");
+                Assert.That(lengths[creature][creature], Is.Not.Empty, $"Lengths[{creature}][{creature}]");
 
                 if (heights[creature][creature] == "0")
                     Assert.That(lengths[creature][creature], Is.Not.EqualTo("0"), creature);

@@ -1031,10 +1031,24 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.FormianMyrmarch][CreatureConstants.FormianMyrmarch] = GetMultiplierFromAverage(7 * 12);
             lengths[CreatureConstants.FormianQueen][GenderConstants.Female] = GetBaseFromAverage(10 * 12);
             lengths[CreatureConstants.FormianQueen][CreatureConstants.FormianQueen] = GetMultiplierFromAverage(10 * 12);
+            //Source: https://forgottenrealms.fandom.com/wiki/Frost_worm
+            lengths[CreatureConstants.FrostWorm][GenderConstants.Female] = GetBaseFromAverage(40 * 12);
+            lengths[CreatureConstants.FrostWorm][GenderConstants.Male] = GetBaseFromAverage(40 * 12);
+            lengths[CreatureConstants.FrostWorm][CreatureConstants.FrostWorm] = GetMultiplierFromAverage(40 * 12);
+            lengths[CreatureConstants.Gargoyle][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.Gargoyle][CreatureConstants.Gargoyle] = "0";
+            lengths[CreatureConstants.Gargoyle_Kapoacinth][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.Gargoyle_Kapoacinth][CreatureConstants.Gargoyle_Kapoacinth] = "0";
             //Source: https://forgottenrealms.fandom.com/wiki/Cloud_giant
             lengths[CreatureConstants.Giant_Cloud][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Giant_Cloud][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Giant_Cloud][CreatureConstants.Giant_Cloud] = "0";
+            lengths[CreatureConstants.Giant_Fire][GenderConstants.Female] = "0";
+            lengths[CreatureConstants.Giant_Fire][GenderConstants.Male] = "0";
+            lengths[CreatureConstants.Giant_Fire][CreatureConstants.Giant_Fire] = "0";
+            lengths[CreatureConstants.Giant_Frost][GenderConstants.Female] = "0";
+            lengths[CreatureConstants.Giant_Frost][GenderConstants.Male] = "0";
+            lengths[CreatureConstants.Giant_Frost][CreatureConstants.Giant_Frost] = "0";
             lengths[CreatureConstants.Giant_Hill][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Giant_Hill][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Giant_Hill][CreatureConstants.Giant_Hill] = "0";
@@ -1582,13 +1596,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             foreach (var creature in creatures)
             {
-                Assert.That(lengths, Contains.Key(creature));
-                Assert.That(lengths[creature], Contains.Key(creature));
-                Assert.That(heights, Contains.Key(creature));
-                Assert.That(heights[creature], Contains.Key(creature));
+                Assert.That(lengths, Contains.Key(creature), "Lengths");
+                Assert.That(lengths[creature], Contains.Key(creature), $"Lengths[{creature}]");
+                Assert.That(heights, Contains.Key(creature), "Heights");
+                Assert.That(heights[creature], Contains.Key(creature), $"Heights[{creature}]");
 
-                Assert.That(lengths[creature][creature], Is.Not.Empty);
-                Assert.That(heights[creature][creature], Is.Not.Empty);
+                Assert.That(lengths[creature][creature], Is.Not.Empty, $"Lengths[{creature}][{creature}]");
+                Assert.That(heights[creature][creature], Is.Not.Empty, $"Heights[{creature}][{creature}]");
 
                 if (lengths[creature][creature] == "0")
                     Assert.That(heights[creature][creature], Is.Not.EqualTo("0"), creature);

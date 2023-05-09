@@ -1508,9 +1508,9 @@
   </collection>
   <collection>
     <name>Ettercap</name>
-	  <entry>Male@61</entry>
-	  <entry>Female@61</entry>
-	  <entry>Ettercap@3d6</entry>
+	  <entry>Male@5*12+2</entry>
+	  <entry>Female@5*12+7</entry>
+	  <entry>Ettercap@2d10</entry>
   </collection>
   <collection>
     <name>Ettin</name>
@@ -1550,7 +1550,9 @@
   </collection>
   <collection>
     <name>Fire Giant</name>
-    <entry>Land@40</entry>
+	  <entry>Male@216</entry>
+	  <entry>Female@208</entry>
+	  <entry>Fire Giant@2d10</entry>
   </collection>
   <collection>
     <name>Fire Mephit</name>
@@ -1584,7 +1586,8 @@
   </collection>
   <collection>
     <name>Flesh Golem</name>
-    <entry>Land@30</entry>
+	  <entry>Agender@85</entry>
+	  <entry>Flesh Golem@1d20</entry>
   </collection>
   <collection>
     <name>Forest Gnome</name>
@@ -1594,32 +1597,40 @@
   </collection>
   <collection>
     <name>Formian Myrmarch</name>
-    <entry>Land@50</entry>
+	  <entry>Male@46</entry>
+	  <entry>Formian Myrmarch@13d2</entry>
   </collection>
   <collection>
     <name>Formian Queen</name>
-    <entry>Land@0</entry>
+	  <entry>Female@42</entry>
+	  <entry>Formian Myrmarch@1d10</entry>
   </collection>
   <collection>
     <name>Formian Taskmaster</name>
-    <entry>Land@40</entry>
+	  <entry>Male@47</entry>
+	  <entry>Formian Myrmarch@1d12</entry>
   </collection>
   <collection>
     <name>Formian Warrior</name>
-    <entry>Land@40</entry>
+	  <entry>Male@47</entry>
+	  <entry>Formian Myrmarch@1d12</entry>
   </collection>
   <collection>
     <name>Formian Worker</name>
-    <entry>Land@40</entry>
+	  <entry>Male@25</entry>
+	  <entry>Formian Myrmarch@2d4</entry>
   </collection>
   <collection>
     <name>Frost Giant</name>
-    <entry>Land@40</entry>
+	  <entry>Male@252</entry>
+	  <entry>Female@238</entry>
+	  <entry>Frost Giant@3d10</entry>
   </collection>
   <collection>
     <name>Frost Worm</name>
-    <entry>Land@30</entry>
-    <entry>Burrow@10</entry>
+	  <entry>Male@50</entry>
+	  <entry>Female@50</entry>
+	  <entry>Frost Worm@4d4</entry>
   </collection>
   <collection>
     <name>Gargoyle</name>
@@ -1628,8 +1639,8 @@
   </collection>
   <collection>
     <name>Gauth (Lesser Beholder)</name>
-    <entry>Land@5</entry>
-    <entry>Fly@20</entry>
+	  <entry>Agender@40</entry>
+	  <entry>Gauth (Lesser Beholder)@8d4</entry>
   </collection>
   <collection>
     <name>Gelatinous Cube</name>

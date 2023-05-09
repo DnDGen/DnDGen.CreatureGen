@@ -1278,10 +1278,34 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.FormianMyrmarch][CreatureConstants.FormianMyrmarch] = GetMultiplierFromAverage(CreatureConstants.FormianMyrmarch, 1500);
             weights[CreatureConstants.FormianQueen][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.FormianQueen, 3500);
             weights[CreatureConstants.FormianQueen][CreatureConstants.FormianQueen] = GetMultiplierFromAverage(CreatureConstants.FormianQueen, 3500);
+            //Source: https://forgottenrealms.fandom.com/wiki/Frost_worm
+            weights[CreatureConstants.FrostWorm][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.FrostWorm, 8000);
+            weights[CreatureConstants.FrostWorm][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.FrostWorm, 8000);
+            weights[CreatureConstants.FrostWorm][CreatureConstants.FrostWorm] = GetMultiplierFromAverage(CreatureConstants.FrostWorm, 8000);
+            //Source: https://dnd-wiki.org/wiki/Gargoyle_(3.5e_Race)
+            weights[CreatureConstants.Gargoyle][GenderConstants.Agender] = "300";
+            weights[CreatureConstants.Gargoyle][CreatureConstants.Gargoyle] = "2d6";
+            weights[CreatureConstants.Gargoyle_Kapoacinth][GenderConstants.Agender] = "300";
+            weights[CreatureConstants.Gargoyle_Kapoacinth][CreatureConstants.Gargoyle_Kapoacinth] = "2d6";
+            //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/gelatinous-cube-species
+            weights[CreatureConstants.GelatinousCube][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.GelatinousCube, 15_000);
+            weights[CreatureConstants.GelatinousCube][CreatureConstants.GelatinousCube] = GetMultiplierFromAverage(CreatureConstants.GelatinousCube, 15_000);
+            //Source: https://forgottenrealms.fandom.com/wiki/Ghaele
+            weights[CreatureConstants.Ghaele][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Ghaele, 131, 185);
+            weights[CreatureConstants.Ghaele][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Ghaele, 146, 200);
+            weights[CreatureConstants.Ghaele][CreatureConstants.Ghaele] = GetMultiplierFromRange(CreatureConstants.Ghaele, 146, 200);
             //Source: https://forgottenrealms.fandom.com/wiki/Cloud_giant
             weights[CreatureConstants.Giant_Cloud][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Giant_Cloud, 11_500);
             weights[CreatureConstants.Giant_Cloud][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Giant_Cloud, 11_500);
             weights[CreatureConstants.Giant_Cloud][CreatureConstants.Giant_Cloud] = GetMultiplierFromAverage(CreatureConstants.Giant_Cloud, 11_500);
+            //Source: https://forgottenrealms.fandom.com/wiki/Fire_giant
+            weights[CreatureConstants.Giant_Fire][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Giant_Fire, 7000, 8000);
+            weights[CreatureConstants.Giant_Fire][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Giant_Fire, 7000, 8000);
+            weights[CreatureConstants.Giant_Fire][CreatureConstants.Giant_Fire] = GetMultiplierFromRange(CreatureConstants.Giant_Fire, 7000, 8000);
+            //Source: https://forgottenrealms.fandom.com/wiki/Frost_giant
+            weights[CreatureConstants.Giant_Frost][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Giant_Frost, 8000);
+            weights[CreatureConstants.Giant_Frost][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Giant_Frost, 8000);
+            weights[CreatureConstants.Giant_Frost][CreatureConstants.Giant_Frost] = GetMultiplierFromAverage(CreatureConstants.Giant_Frost, 8000);
             //Source: https://forgottenrealms.fandom.com/wiki/Hill_giant
             weights[CreatureConstants.Giant_Hill][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Giant_Hill, 4500);
             weights[CreatureConstants.Giant_Hill][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Giant_Hill, 4500);
@@ -1821,6 +1845,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Centaur, GenderConstants.Female, 2100)]
         [TestCase(CreatureConstants.Giant_Cloud, GenderConstants.Male, 5000)]
         [TestCase(CreatureConstants.Giant_Cloud, GenderConstants.Female, 5000)]
+        [TestCase(CreatureConstants.Giant_Fire, GenderConstants.Male, 7500)]
+        [TestCase(CreatureConstants.Giant_Fire, GenderConstants.Female, 7500)]
         [TestCase(CreatureConstants.Giant_Hill, GenderConstants.Male, 1100)]
         [TestCase(CreatureConstants.Giant_Hill, GenderConstants.Female, 1100)]
         //https://forgottenrealms.fandom.com/wiki/Goblin
@@ -1928,6 +1954,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Dog_Riding, GenderConstants.Female, 35, 140)]
         [TestCase(CreatureConstants.Ettin, GenderConstants.Male, 930, 5200)]
         [TestCase(CreatureConstants.Ettin, GenderConstants.Female, 930, 5200)]
+        [TestCase(CreatureConstants.Ghaele, GenderConstants.Male, 146, 200)]
+        [TestCase(CreatureConstants.Ghaele, GenderConstants.Female, 131, 185)]
         //https://forgottenrealms.fandom.com/wiki/Githyanki
         [TestCase(CreatureConstants.Githyanki, GenderConstants.Male, 124, 280)]
         [TestCase(CreatureConstants.Githyanki, GenderConstants.Female, 89, 245)]
