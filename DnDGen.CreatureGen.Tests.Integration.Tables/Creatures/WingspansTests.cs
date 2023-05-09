@@ -213,6 +213,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Ankheg][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Ankheg][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Ankheg][CreatureConstants.Ankheg] = "0";
+            wingspans[CreatureConstants.Ant_Giant_Worker][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Ant_Giant_Worker][CreatureConstants.Ant_Giant_Worker] = "0";
+            wingspans[CreatureConstants.Ant_Giant_Soldier][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Ant_Giant_Soldier][CreatureConstants.Ant_Giant_Soldier] = "0";
+            wingspans[CreatureConstants.Ant_Giant_Queen][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Ant_Giant_Queen][CreatureConstants.Ant_Giant_Queen] = "0";
             //Source: https://www.d20srd.org/srd/monsters/hag.htm#annis
             wingspans[CreatureConstants.Annis][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Annis][CreatureConstants.Annis] = "0";
@@ -302,6 +308,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.BeardedDevil_Barbazu][CreatureConstants.BeardedDevil_Barbazu] = "0";
             wingspans[CreatureConstants.Bebilith][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.Bebilith][CreatureConstants.Bebilith] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/giantBee.htm
+            //https://www.dimensions.com/element/western-honey-bee-apis-mellifera scale up, [.71,.79]*5*12/[.39,.59] = [109,80] = [80,109]
+            wingspans[CreatureConstants.Bee_Giant][GenderConstants.Male] = GetBaseFromRange(80, 109);
+            wingspans[CreatureConstants.Bee_Giant][CreatureConstants.Bee_Giant] = GetMultiplierFromRange(80, 109);
             //Source: https://forgottenrealms.fandom.com/wiki/Behir
             wingspans[CreatureConstants.Behir][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Behir][GenderConstants.Male] = "0";
@@ -332,6 +342,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Bodak][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Bodak][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Bodak][CreatureConstants.Bodak] = "0";
+            wingspans[CreatureConstants.BombardierBeetle_Giant][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.BombardierBeetle_Giant][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.BombardierBeetle_Giant][CreatureConstants.BombardierBeetle_Giant] = "0";
             wingspans[CreatureConstants.BoneDevil_Osyluth][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.BoneDevil_Osyluth][CreatureConstants.BoneDevil_Osyluth] = "0";
             wingspans[CreatureConstants.Bralani][GenderConstants.Female] = "0";
@@ -864,6 +877,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Eagle][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
             wingspans[CreatureConstants.Eagle][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
             wingspans[CreatureConstants.Eagle][CreatureConstants.Eagle] = GetMultiplierFromAverage(7 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/eagleGiant.htm
+            wingspans[CreatureConstants.Eagle_Giant][GenderConstants.Female] = GetBaseFromUpTo(20 * 12);
+            wingspans[CreatureConstants.Eagle_Giant][GenderConstants.Male] = GetBaseFromUpTo(20 * 12);
+            wingspans[CreatureConstants.Eagle_Giant][CreatureConstants.Eagle_Giant] = GetMultiplierFromUpTo(20 * 12);
             wingspans[CreatureConstants.Efreeti][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.Efreeti][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Efreeti][GenderConstants.Male] = "0";
@@ -959,6 +976,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Ettin][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Ettin][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Ettin][CreatureConstants.Ettin] = "0";
+            wingspans[CreatureConstants.FireBeetle_Giant][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.FireBeetle_Giant][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.FireBeetle_Giant][CreatureConstants.FireBeetle_Giant] = "0";
             wingspans[CreatureConstants.FormianWorker][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.FormianWorker][CreatureConstants.FormianWorker] = "0";
             wingspans[CreatureConstants.FormianWarrior][GenderConstants.Male] = "0";
@@ -982,6 +1002,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Ghaele][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Ghaele][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Ghaele][CreatureConstants.Ghaele] = "0";
+            wingspans[CreatureConstants.Ghoul][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Ghoul][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Ghoul][CreatureConstants.Ghoul] = "0";
+            wingspans[CreatureConstants.Ghoul_Ghast][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Ghoul_Ghast][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Ghoul_Ghast][CreatureConstants.Ghoul_Ghast] = "0";
+            wingspans[CreatureConstants.Ghoul_Lacedon][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Ghoul_Lacedon][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Ghoul_Lacedon][CreatureConstants.Ghoul_Lacedon] = "0";
             //Source: https://forgottenrealms.fandom.com/wiki/Cloud_giant
             wingspans[CreatureConstants.Giant_Cloud][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Giant_Cloud][GenderConstants.Male] = "0";
@@ -1177,6 +1206,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Nalfeshnee Wings are "greatly undersized", so we will say 1/3
             wingspans[CreatureConstants.Nalfeshnee][GenderConstants.Agender] = GetBaseFromRange(10 * 12 / 3, 20 * 12 / 3);
             wingspans[CreatureConstants.Nalfeshnee][CreatureConstants.Nalfeshnee] = GetMultiplierFromRange(10 * 12 / 3, 20 * 12 / 3);
+            wingspans[CreatureConstants.Octopus_Giant][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Octopus_Giant][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Octopus_Giant][CreatureConstants.Octopus_Giant] = "0";
             wingspans[CreatureConstants.Ogre][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Ogre][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Ogre][CreatureConstants.Ogre] = "0";
@@ -1192,6 +1224,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Orc_Half][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Orc_Half][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Orc_Half][CreatureConstants.Orc_Half] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/owlGiant.htm
+            wingspans[CreatureConstants.Owl_Giant][GenderConstants.Female] = GetBaseFromUpTo(20 * 12);
+            wingspans[CreatureConstants.Owl_Giant][GenderConstants.Male] = GetBaseFromUpTo(20 * 12);
+            wingspans[CreatureConstants.Owl_Giant][CreatureConstants.Owl_Giant] = GetMultiplierFromUpTo(20 * 12);
             //Source: https://forgottenrealms.fandom.com/wiki/Pit_fiend Pair of "massive" wings, so triple height
             wingspans[CreatureConstants.PitFiend][GenderConstants.Agender] = GetBaseFromAverage(12 * 12 * 3);
             wingspans[CreatureConstants.PitFiend][CreatureConstants.PitFiend] = GetMultiplierFromAverage(12 * 12 * 3);
@@ -1202,6 +1238,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Pixie_WithIrresistibleDance][GenderConstants.Female] = "23";
             wingspans[CreatureConstants.Pixie_WithIrresistibleDance][GenderConstants.Male] = "24";
             wingspans[CreatureConstants.Pixie_WithIrresistibleDance][CreatureConstants.Pixie_WithIrresistibleDance] = "3d6";
+            //Source: http://www.biokids.umich.edu/critters/Tenodera_aridifolia/
+            //https://forgottenrealms.fandom.com/wiki/Giant_praying_mantis scale up: [1,2]*[2*12,5*12]/[2,5] = [12,24]
+            wingspans[CreatureConstants.PrayingMantis_Giant][GenderConstants.Female] = GetBaseFromRange(12, 24);
+            wingspans[CreatureConstants.PrayingMantis_Giant][GenderConstants.Male] = GetBaseFromRange(12, 24);
+            wingspans[CreatureConstants.PrayingMantis_Giant][CreatureConstants.PrayingMantis_Giant] = GetMultiplierFromRange(12, 24);
             wingspans[CreatureConstants.Pyrohydra_5Heads][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Pyrohydra_5Heads][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Pyrohydra_5Heads][CreatureConstants.Pyrohydra_5Heads] = "0";
@@ -1295,6 +1336,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
             wingspans[CreatureConstants.Spider_Swarm][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.Spider_Swarm][CreatureConstants.Spider_Swarm] = "0";
+            wingspans[CreatureConstants.Squid_Giant][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Squid_Giant][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Squid_Giant][CreatureConstants.Squid_Giant] = "0";
+            wingspans[CreatureConstants.StagBeetle_Giant][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.StagBeetle_Giant][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.StagBeetle_Giant][CreatureConstants.StagBeetle_Giant] = "0";
             //Source: https://forgottenrealms.fandom.com/wiki/Succubus - Large wings, so double height
             wingspans[CreatureConstants.Succubus][GenderConstants.Female] = GetBaseFromAverage(6 * 12 * 2);
             wingspans[CreatureConstants.Succubus][GenderConstants.Male] = GetBaseFromAverage(6 * 12 * 2);

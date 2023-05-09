@@ -1603,22 +1603,22 @@
   <collection>
     <name>Formian Queen</name>
 	  <entry>Female@42</entry>
-	  <entry>Formian Myrmarch@1d10</entry>
+	  <entry>Formian Queen@1d10</entry>
   </collection>
   <collection>
     <name>Formian Taskmaster</name>
 	  <entry>Male@47</entry>
-	  <entry>Formian Myrmarch@1d12</entry>
+	  <entry>Formian Taskmaster@1d12</entry>
   </collection>
   <collection>
     <name>Formian Warrior</name>
 	  <entry>Male@47</entry>
-	  <entry>Formian Myrmarch@1d12</entry>
+	  <entry>Formian Warrior@1d12</entry>
   </collection>
   <collection>
     <name>Formian Worker</name>
 	  <entry>Male@25</entry>
-	  <entry>Formian Myrmarch@2d4</entry>
+	  <entry>Formian Worker@2d4</entry>
   </collection>
   <collection>
     <name>Frost Giant</name>
@@ -1634,8 +1634,8 @@
   </collection>
   <collection>
     <name>Gargoyle</name>
-    <entry>Land@40</entry>
-    <entry>Fly@60</entry>
+	  <entry>Agender@5*12</entry>
+	  <entry>Gargoyle@2d10</entry>
   </collection>
   <collection>
     <name>Gauth (Lesser Beholder)</name>
@@ -1644,59 +1644,70 @@
   </collection>
   <collection>
     <name>Gelatinous Cube</name>
-    <entry>Land@15</entry>
+	  <entry>Agender@100</entry>
+	  <entry>Gelatinous Cube@8d4</entry>
   </collection>
   <collection>
     <name>Ghaele</name>
-    <entry>Land@50</entry>
-    <entry>Fly@150</entry>
+	  <entry>Male@60</entry>
+	  <entry>Female@47</entry>
+	  <entry>Ghaele@2d12</entry>
   </collection>
   <collection>
     <name>Ghast</name>
-    <entry>Land@30</entry>
+	  <entry>Male@4*12</entry>
+	  <entry>Female@4*12</entry>
+	  <entry>Ghast@2d12</entry>
   </collection>
   <collection>
     <name>Ghoul</name>
-    <entry>Land@30</entry>
+	  <entry>Male@4*12</entry>
+	  <entry>Female@4*12</entry>
+	  <entry>Ghoul@2d12</entry>
   </collection>
   <collection>
     <name>Giant Ant, Queen</name>
-    <entry>Land@40</entry>
+	  <entry>Female@10</entry>
+	  <entry>Giant Ant, Queen@2d3</entry>
   </collection>
   <collection>
     <name>Giant Ant, Soldier</name>
-    <entry>Land@50</entry>
-    <entry>Climb@20</entry>
+	  <entry>Male@15</entry>
+	  <entry>Giant Ant, Soldier@1d4</entry>
   </collection>
   <collection>
     <name>Giant Ant, Worker</name>
-    <entry>Land@50</entry>
-    <entry>Climb@20</entry>
+	  <entry>Male@15</entry>
+	  <entry>Giant Ant, Worker@1d4</entry>
   </collection>
   <collection>
     <name>Giant Bee</name>
-    <entry>Land@20</entry>
-    <entry>Fly@80</entry>
+	  <entry>Male@17</entry>
+	  <entry>Giant Bee@1d4</entry>
   </collection>
   <collection>
     <name>Giant Bombardier Beetle</name>
-    <entry>Land@30</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Giant Bombardier Beetle@0</entry>
   </collection>
   <collection>
     <name>Giant Constrictor Snake</name>
-    <entry>Land@20</entry>
-    <entry>Climb@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Male@1</entry>
+	  <entry>Female@1</entry>
+	  <entry>Giant Constrictor Snake@2d4</entry>
   </collection>
   <collection>
     <name>Giant Crocodile</name>
-    <entry>Land@20</entry>
-    <entry>Swim@30</entry>
+	  <entry>Male@6</entry>
+	  <entry>Female@6</entry>
+	  <entry>Giant Crocodile@4d6</entry>
   </collection>
   <collection>
     <name>Giant Eagle</name>
-    <entry>Land@10</entry>
-    <entry>Fly@80</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Giant Eagle@8d4</entry>
   </collection>
   <collection>
     <name>Giant Fire Beetle</name>

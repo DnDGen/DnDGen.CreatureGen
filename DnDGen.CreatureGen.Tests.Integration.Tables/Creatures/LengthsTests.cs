@@ -216,6 +216,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.d20srd.org/srd/monsters/hag.htm#annis
             lengths[CreatureConstants.Annis][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Annis][CreatureConstants.Annis] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/giantAnt.htm
+            lengths[CreatureConstants.Ant_Giant_Worker][GenderConstants.Male] = GetBaseFromAverage(6 * 12);
+            lengths[CreatureConstants.Ant_Giant_Worker][CreatureConstants.Ant_Giant_Worker] = GetMultiplierFromAverage(6 * 12);
+            lengths[CreatureConstants.Ant_Giant_Soldier][GenderConstants.Male] = GetBaseFromAverage(6 * 12);
+            lengths[CreatureConstants.Ant_Giant_Soldier][CreatureConstants.Ant_Giant_Soldier] = GetMultiplierFromAverage(6 * 12);
+            lengths[CreatureConstants.Ant_Giant_Queen][GenderConstants.Female] = GetBaseFromAverage(9 * 12);
+            lengths[CreatureConstants.Ant_Giant_Queen][CreatureConstants.Ant_Giant_Queen] = GetMultiplierFromAverage(9 * 12);
             //Source: https://www.dimensions.com/element/eastern-lowland-gorilla-gorilla-beringei-graueri
             lengths[CreatureConstants.Ape][GenderConstants.Female] = GetBaseFromRange(37, 42);
             lengths[CreatureConstants.Ape][GenderConstants.Male] = GetBaseFromRange(37, 42);
@@ -319,6 +326,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Bebilith
             lengths[CreatureConstants.Bebilith][GenderConstants.Agender] = GetBaseFromAverage(14 * 12);
             lengths[CreatureConstants.Bebilith][CreatureConstants.Bebilith] = GetMultiplierFromAverage(14 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/giantBee.htm
+            lengths[CreatureConstants.Bee_Giant][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
+            lengths[CreatureConstants.Bee_Giant][CreatureConstants.Bee_Giant] = GetMultiplierFromAverage(5 * 12);
             //Source: https://forgottenrealms.fandom.com/wiki/Behir
             lengths[CreatureConstants.Behir][GenderConstants.Female] = GetBaseFromAverage(40 * 12);
             lengths[CreatureConstants.Behir][GenderConstants.Male] = GetBaseFromAverage(40 * 12);
@@ -356,6 +366,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Bodak][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Bodak][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Bodak][CreatureConstants.Bodak] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/giantBombardierBeetle.htm
+            lengths[CreatureConstants.BombardierBeetle_Giant][GenderConstants.Female] = GetBaseFromAverage(6 * 12);
+            lengths[CreatureConstants.BombardierBeetle_Giant][GenderConstants.Male] = GetBaseFromAverage(6 * 12);
+            lengths[CreatureConstants.BombardierBeetle_Giant][CreatureConstants.BombardierBeetle_Giant] = GetMultiplierFromAverage(6 * 12);
             lengths[CreatureConstants.BoneDevil_Osyluth][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.BoneDevil_Osyluth][CreatureConstants.BoneDevil_Osyluth] = "0";
             lengths[CreatureConstants.Bralani][GenderConstants.Female] = "0";
@@ -923,6 +937,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Eagle][GenderConstants.Female] = GetBaseFromAverage(3 * 12);
             lengths[CreatureConstants.Eagle][GenderConstants.Male] = GetBaseFromAverage(3 * 12);
             lengths[CreatureConstants.Eagle][CreatureConstants.Eagle] = GetMultiplierFromAverage(3 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/eagleGiant.htm
+            //https://www.dimensions.com/element/bald-eagle-haliaeetus-leucocephalus scale up: 3*12*10*12/[17,24] = [254,180]
+            lengths[CreatureConstants.Eagle_Giant][GenderConstants.Female] = GetBaseFromRange(180, 254);
+            lengths[CreatureConstants.Eagle_Giant][GenderConstants.Male] = GetBaseFromRange(180, 254);
+            lengths[CreatureConstants.Eagle_Giant][CreatureConstants.Eagle_Giant] = GetMultiplierFromRange(180, 254);
             lengths[CreatureConstants.Efreeti][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.Efreeti][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Efreeti][GenderConstants.Male] = "0";
@@ -1020,6 +1039,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Ettin][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Ettin][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Ettin][CreatureConstants.Ettin] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/giantFireBeetle.htm
+            lengths[CreatureConstants.FireBeetle_Giant][GenderConstants.Male] = GetBaseFromAverage(2 * 12);
+            lengths[CreatureConstants.FireBeetle_Giant][GenderConstants.Female] = GetBaseFromAverage(2 * 12);
+            lengths[CreatureConstants.FireBeetle_Giant][CreatureConstants.FireBeetle_Giant] = GetMultiplierFromAverage(2 * 12);
             //Source: https://www.d20srd.org/srd/monsters/formian.htm
             lengths[CreatureConstants.FormianWorker][GenderConstants.Male] = GetBaseFromAverage(3 * 12);
             lengths[CreatureConstants.FormianWorker][CreatureConstants.FormianWorker] = GetMultiplierFromAverage(3 * 12);
@@ -1045,6 +1068,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Ghaele][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Ghaele][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Ghaele][CreatureConstants.Ghaele] = "0";
+            lengths[CreatureConstants.Ghoul][GenderConstants.Female] = "0";
+            lengths[CreatureConstants.Ghoul][GenderConstants.Male] = "0";
+            lengths[CreatureConstants.Ghoul][CreatureConstants.Ghoul] = "0";
+            lengths[CreatureConstants.Ghoul_Ghast][GenderConstants.Female] = "0";
+            lengths[CreatureConstants.Ghoul_Ghast][GenderConstants.Male] = "0";
+            lengths[CreatureConstants.Ghoul_Ghast][CreatureConstants.Ghoul_Ghast] = "0";
+            lengths[CreatureConstants.Ghoul_Lacedon][GenderConstants.Female] = "0";
+            lengths[CreatureConstants.Ghoul_Lacedon][GenderConstants.Male] = "0";
+            lengths[CreatureConstants.Ghoul_Lacedon][CreatureConstants.Ghoul_Lacedon] = "0";
             //Source: https://forgottenrealms.fandom.com/wiki/Cloud_giant
             lengths[CreatureConstants.Giant_Cloud][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Giant_Cloud][GenderConstants.Male] = "0";
@@ -1249,6 +1281,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Naga_Water][CreatureConstants.Naga_Water] = GetMultiplierFromRange(10 * 12, 20 * 12);
             lengths[CreatureConstants.Nalfeshnee][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.Nalfeshnee][CreatureConstants.Nalfeshnee] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/octopusGiant.htm
+            lengths[CreatureConstants.Octopus_Giant][GenderConstants.Female] = GetBaseFromAtLeast(10 * 12);
+            lengths[CreatureConstants.Octopus_Giant][GenderConstants.Male] = GetBaseFromAtLeast(10 * 12);
+            lengths[CreatureConstants.Octopus_Giant][CreatureConstants.Octopus_Giant] = GetMultiplierFromAtLeast(10 * 12);
             lengths[CreatureConstants.Ogre][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Ogre][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Ogre][CreatureConstants.Ogre] = "0";
@@ -1264,6 +1300,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Orc_Half][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Orc_Half][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Orc_Half][CreatureConstants.Orc_Half] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/owlGiant.htm
+            //https://www.dimensions.com/element/great-horned-owl-bubo-virginianus scale up: [17,25]*9*12/[9,14] = [204,193]
+            lengths[CreatureConstants.Owl_Giant][GenderConstants.Female] = GetBaseFromRange(193, 204);
+            lengths[CreatureConstants.Owl_Giant][GenderConstants.Male] = GetBaseFromRange(193, 204);
+            lengths[CreatureConstants.Owl_Giant][CreatureConstants.Owl_Giant] = GetMultiplierFromRange(193, 204);
             lengths[CreatureConstants.PitFiend][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.PitFiend][CreatureConstants.PitFiend] = "0";
             lengths[CreatureConstants.Pixie][GenderConstants.Female] = "0";
@@ -1272,6 +1313,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Pixie_WithIrresistibleDance][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Pixie_WithIrresistibleDance][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Pixie_WithIrresistibleDance][CreatureConstants.Pixie_WithIrresistibleDance] = "0";
+            lengths[CreatureConstants.PrayingMantis_Giant][GenderConstants.Female] = "0";
+            lengths[CreatureConstants.PrayingMantis_Giant][GenderConstants.Male] = "0";
+            lengths[CreatureConstants.PrayingMantis_Giant][CreatureConstants.PrayingMantis_Giant] = "0";
             //Source: https://forgottenrealms.fandom.com/wiki/Hydra
             lengths[CreatureConstants.Pyrohydra_5Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
             lengths[CreatureConstants.Pyrohydra_5Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
@@ -1378,6 +1422,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
             lengths[CreatureConstants.Spider_Swarm][GenderConstants.Agender] = GetBaseFromAverage(10 * 12);
             lengths[CreatureConstants.Spider_Swarm][CreatureConstants.Spider_Swarm] = GetMultiplierFromAverage(10 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/squidGiant.htm
+            lengths[CreatureConstants.Squid_Giant][GenderConstants.Female] = GetBaseFromUpTo(20 * 20);
+            lengths[CreatureConstants.Squid_Giant][GenderConstants.Male] = GetBaseFromUpTo(20 * 20);
+            lengths[CreatureConstants.Squid_Giant][CreatureConstants.Squid_Giant] = GetMultiplierFromUpTo(20 * 20);
+            //Source: https://www.d20srd.org/srd/monsters/giantStagBeetle.htm
+            lengths[CreatureConstants.StagBeetle_Giant][GenderConstants.Female] = GetBaseFromAverage(10 * 12);
+            lengths[CreatureConstants.StagBeetle_Giant][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
+            lengths[CreatureConstants.StagBeetle_Giant][CreatureConstants.StagBeetle_Giant] = GetMultiplierFromAverage(10 * 12);
             lengths[CreatureConstants.Succubus][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Succubus][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Succubus][CreatureConstants.Succubus] = "0";

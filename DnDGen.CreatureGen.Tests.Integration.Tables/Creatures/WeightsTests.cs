@@ -350,6 +350,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.d20srd.org/srd/monsters/hag.htm#annis
             weights[CreatureConstants.Annis][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Annis, 325);
             weights[CreatureConstants.Annis][CreatureConstants.Annis] = GetMultiplierFromAverage(CreatureConstants.Annis, 325);
+            //Source: https://www.d20srd.org/srd/monsters/giantAnt.htm
+            //https://www.findingdulcinea.com/how-much-does-an-ant-weigh/
+            //https://www.dimensions.com/element/black-garden-ant-lasius-niger - scale up, [1mg,2mg]*(6*12/[.14,.2])^3 = [300,206]
+            weights[CreatureConstants.Ant_Giant_Worker][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Ant_Giant_Worker, 206, 300);
+            weights[CreatureConstants.Ant_Giant_Worker][CreatureConstants.Ant_Giant_Worker] = GetMultiplierFromRange(CreatureConstants.Ant_Giant_Worker, 206, 300);
+            weights[CreatureConstants.Ant_Giant_Soldier][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Ant_Giant_Soldier, 206, 300);
+            weights[CreatureConstants.Ant_Giant_Soldier][CreatureConstants.Ant_Giant_Soldier] = GetMultiplierFromRange(CreatureConstants.Ant_Giant_Soldier, 206, 300);
+            //https://www.dimensions.com/element/black-garden-ant-lasius-niger - scale up, up to 10mg*(9*12/[.31,.35])^3 = [932,648]
+            //https://www.retirefearless.com/post/how-much-does-an-ant-weigh#spanblack-garden-antspan
+            weights[CreatureConstants.Ant_Giant_Queen][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Ant_Giant_Queen, 648, 932);
+            weights[CreatureConstants.Ant_Giant_Queen][CreatureConstants.Ant_Giant_Queen] = GetMultiplierFromRange(CreatureConstants.Ant_Giant_Queen, 648, 932);
             //Source: https://www.dimensions.com/element/eastern-lowland-gorilla-gorilla-beringei-graueri
             //https://www.d20srd.org/srd/monsters/ape.htm (male)
             weights[CreatureConstants.Ape][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Ape, 220, 460);
@@ -460,6 +471,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Bebilith
             weights[CreatureConstants.Bebilith][GenderConstants.Agender] = GetBaseFromAtLeast(CreatureConstants.Bebilith, 4000);
             weights[CreatureConstants.Bebilith][CreatureConstants.Bebilith] = GetMultiplierFromAtLeast(CreatureConstants.Bebilith, 4000);
+            //Source: https://www.d20srd.org/srd/monsters/giantBee.htm
+            //https://www.dimensions.com/element/western-honey-bee-apis-mellifera scale up, [115mg,128mg]*(5*12/[.39,.59])^3 = [923,297]
+            weights[CreatureConstants.Bee_Giant][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Bee_Giant, 297, 923);
+            weights[CreatureConstants.Bee_Giant][CreatureConstants.Bee_Giant] = GetMultiplierFromRange(CreatureConstants.Bee_Giant, 297, 923);
             //Source: https://forgottenrealms.fandom.com/wiki/Behir
             weights[CreatureConstants.Behir][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Behir, 4000);
             weights[CreatureConstants.Behir][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Behir, 4000);
@@ -499,6 +514,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Bodak][GenderConstants.Female] = "85";
             weights[CreatureConstants.Bodak][GenderConstants.Male] = "120";
             weights[CreatureConstants.Bodak][CreatureConstants.Bodak] = "2d4";
+            //Source: https://factanimal.com/bombardier-beetle/
+            //https://www.d20srd.org/srd/monsters/giantBombardierBeetle.htm scale up: 1g*(6*12/1)^3 = 823 pounds
+            weights[CreatureConstants.BombardierBeetle_Giant][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.BombardierBeetle_Giant, 823);
+            weights[CreatureConstants.BombardierBeetle_Giant][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.BombardierBeetle_Giant, 823);
+            weights[CreatureConstants.BombardierBeetle_Giant][CreatureConstants.BombardierBeetle_Giant] =
+                GetMultiplierFromAverage(CreatureConstants.BombardierBeetle_Giant, 823);
             //Source: https://forgottenrealms.fandom.com/wiki/Osyluth
             weights[CreatureConstants.BoneDevil_Osyluth][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.BoneDevil_Osyluth, 500);
             weights[CreatureConstants.BoneDevil_Osyluth][CreatureConstants.BoneDevil_Osyluth] = GetMultiplierFromAverage(CreatureConstants.BoneDevil_Osyluth, 500);
@@ -1153,6 +1174,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Eagle][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Eagle, 6, 14);
             weights[CreatureConstants.Eagle][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Eagle, 6, 14);
             weights[CreatureConstants.Eagle][CreatureConstants.Eagle] = GetMultiplierFromRange(CreatureConstants.Eagle, 6, 14);
+            //Source: https://www.d20srd.org/srd/monsters/eagleGiant.htm
+            weights[CreatureConstants.Eagle_Giant][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Eagle_Giant, 500);
+            weights[CreatureConstants.Eagle_Giant][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Eagle_Giant, 500);
+            weights[CreatureConstants.Eagle_Giant][CreatureConstants.Eagle_Giant] = GetMultiplierFromAverage(CreatureConstants.Eagle_Giant, 500);
             //Source: https://forgottenrealms.fandom.com/wiki/Efreeti
             weights[CreatureConstants.Efreeti][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Efreeti, 2000);
             weights[CreatureConstants.Efreeti][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Efreeti, 2000);
@@ -1267,6 +1292,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Ettin][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Ettin, 930, 5200);
             weights[CreatureConstants.Ettin][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Ettin, 930, 5200);
             weights[CreatureConstants.Ettin][CreatureConstants.Ettin] = GetMultiplierFromRange(CreatureConstants.Ettin, 930, 5200);
+            //Source: https://www.d20srd.org/srd/monsters/giantFireBeetle.htm
+            //https://www.guinnessworldrecords.com/world-records/most-bioluminescent-insect scale up: .3g*(2*12/[.39,.55])^3 = [154,55]
+            weights[CreatureConstants.FireBeetle_Giant][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.FireBeetle_Giant, 55, 154);
+            weights[CreatureConstants.FireBeetle_Giant][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.FireBeetle_Giant, 55, 154);
+            weights[CreatureConstants.FireBeetle_Giant][CreatureConstants.FireBeetle_Giant] = GetMultiplierFromRange(CreatureConstants.FireBeetle_Giant, 55, 154);
             //Source: https://www.d20srd.org/srd/monsters/formian.htm
             weights[CreatureConstants.FormianWorker][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.FormianWorker, 60);
             weights[CreatureConstants.FormianWorker][CreatureConstants.FormianWorker] = GetMultiplierFromAverage(CreatureConstants.FormianWorker, 60);
@@ -1294,6 +1324,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Ghaele][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Ghaele, 131, 185);
             weights[CreatureConstants.Ghaele][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Ghaele, 146, 200);
             weights[CreatureConstants.Ghaele][CreatureConstants.Ghaele] = GetMultiplierFromRange(CreatureConstants.Ghaele, 146, 200);
+            //Source: https://www.dandwiki.com/wiki/Ghoul_(5e_Race)
+            weights[CreatureConstants.Ghoul][GenderConstants.Female] = "110";
+            weights[CreatureConstants.Ghoul][GenderConstants.Male] = "110";
+            weights[CreatureConstants.Ghoul][CreatureConstants.Ghoul] = "1d4";
+            weights[CreatureConstants.Ghoul_Ghast][GenderConstants.Female] = "110";
+            weights[CreatureConstants.Ghoul_Ghast][GenderConstants.Male] = "110";
+            weights[CreatureConstants.Ghoul_Ghast][CreatureConstants.Ghoul_Ghast] = "1d4";
+            weights[CreatureConstants.Ghoul_Lacedon][GenderConstants.Female] = "110";
+            weights[CreatureConstants.Ghoul_Lacedon][GenderConstants.Male] = "110";
+            weights[CreatureConstants.Ghoul_Lacedon][CreatureConstants.Ghoul_Lacedon] = "1d4";
             //Source: https://forgottenrealms.fandom.com/wiki/Cloud_giant
             weights[CreatureConstants.Giant_Cloud][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Giant_Cloud, 11_500);
             weights[CreatureConstants.Giant_Cloud][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Giant_Cloud, 11_500);
@@ -1530,6 +1570,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Nalfeshnee
             weights[CreatureConstants.Nalfeshnee][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Nalfeshnee, 8000);
             weights[CreatureConstants.Nalfeshnee][CreatureConstants.Nalfeshnee] = GetMultiplierFromAverage(CreatureConstants.Nalfeshnee, 8000);
+            //Source: https://www.dimensions.com/element/giant-pacific-octopus-enteroctopus-dofleini
+            weights[CreatureConstants.Octopus_Giant][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Octopus_Giant, 22, 110);
+            weights[CreatureConstants.Octopus_Giant][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Octopus_Giant, 22, 110);
+            weights[CreatureConstants.Octopus_Giant][CreatureConstants.Octopus_Giant] = GetMultiplierFromRange(CreatureConstants.Octopus_Giant, 22, 110);
             //Source: http://people.wku.edu/charles.plemons/ad&d/races/height.html 3d20 doesn't match another, so let's try 2d12
             weights[CreatureConstants.Ogre][GenderConstants.Female] = "280";
             weights[CreatureConstants.Ogre][GenderConstants.Male] = "320";
@@ -1549,6 +1593,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Orc_Half][GenderConstants.Female] = "110";
             weights[CreatureConstants.Orc_Half][GenderConstants.Male] = "150";
             weights[CreatureConstants.Orc_Half][CreatureConstants.Orc_Half] = "2d6";
+            //Source: https://www.d20srd.org/srd/monsters/owlGiant.htm
+            //https://www.dimensions.com/element/great-horned-owl-bubo-virginianus scale up: [2,6]*(9*12/[9,14])^3 = [3456,2754]
+            weights[CreatureConstants.Owl_Giant][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Owl_Giant, 2754, 3456);
+            weights[CreatureConstants.Owl_Giant][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Owl_Giant, 2754, 3456);
+            weights[CreatureConstants.Owl_Giant][CreatureConstants.Owl_Giant] = GetMultiplierFromRange(CreatureConstants.Owl_Giant, 2754, 3456);
             //Source: https://forgottenrealms.fandom.com/wiki/Pit_fiend
             weights[CreatureConstants.PitFiend][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.PitFiend, 800);
             weights[CreatureConstants.PitFiend][CreatureConstants.PitFiend] = GetMultiplierFromAverage(CreatureConstants.PitFiend, 800);
@@ -1559,6 +1608,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Pixie_WithIrresistibleDance][GenderConstants.Female] = "22";
             weights[CreatureConstants.Pixie_WithIrresistibleDance][GenderConstants.Male] = "25";
             weights[CreatureConstants.Pixie_WithIrresistibleDance][CreatureConstants.Pixie_WithIrresistibleDance] = "1";
+            //Source: http://www.biokids.umich.edu/critters/Tenodera_aridifolia/
+            //https://forgottenrealms.fandom.com/wiki/Giant_praying_mantis scale up: 3g*([2*12,5*12]/[2,5])^3 = [11,11]
+            weights[CreatureConstants.PrayingMantis_Giant][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.PrayingMantis_Giant, 11);
+            weights[CreatureConstants.PrayingMantis_Giant][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.PrayingMantis_Giant, 11);
+            weights[CreatureConstants.PrayingMantis_Giant][CreatureConstants.PrayingMantis_Giant] = GetMultiplierFromAverage(CreatureConstants.PrayingMantis_Giant, 11);
             //Source: https://forgottenrealms.fandom.com/wiki/Hydra
             weights[CreatureConstants.Pyrohydra_5Heads][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Pyrohydra_5Heads, 4000);
             weights[CreatureConstants.Pyrohydra_5Heads][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Pyrohydra_5Heads, 4000);
@@ -1672,6 +1726,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //https://a-z-animals.com/animals/black-widow-spider/ [0.035 ounces]x5000 = 10.9 pounds
             weights[CreatureConstants.Spider_Swarm][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Spider_Swarm, 11);
             weights[CreatureConstants.Spider_Swarm][CreatureConstants.Spider_Swarm] = GetMultiplierFromAverage(CreatureConstants.Spider_Swarm, 11);
+            //Source: https://www.dimensions.com/element/giant-squid 
+            weights[CreatureConstants.Squid_Giant][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Squid_Giant, 440, 2000);
+            weights[CreatureConstants.Squid_Giant][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Squid_Giant, 440, 2000);
+            weights[CreatureConstants.Squid_Giant][CreatureConstants.Squid_Giant] = GetMultiplierFromRange(CreatureConstants.Squid_Giant, 440, 2000);
+            //Source: https://www.d20srd.org/srd/monsters/giantStagBeetle.htm
+            //https://en.wikipedia.org/wiki/Hercules_beetle scale up: [100g]*(10*12/[2.36,7.09])^3 = [28_983,1_069]
+            weights[CreatureConstants.StagBeetle_Giant][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.StagBeetle_Giant, 1_069, 28_983);
+            weights[CreatureConstants.StagBeetle_Giant][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.StagBeetle_Giant, 1_069, 28_983);
+            weights[CreatureConstants.StagBeetle_Giant][CreatureConstants.StagBeetle_Giant] = GetMultiplierFromRange(CreatureConstants.StagBeetle_Giant, 1_069, 28_983);
             //Source: https://forgottenrealms.fandom.com/wiki/Succubus
             weights[CreatureConstants.Succubus][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Succubus, 125);
             weights[CreatureConstants.Succubus][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Succubus, 125);
@@ -1928,6 +1991,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Flexible, GenderConstants.Agender, 16 * 2000, 125 * 2000)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal, GenderConstants.Agender, 125 * 2000, 1000 * 2000)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_Flexible, GenderConstants.Agender, 125 * 2000, 1000 * 2000)]
+        [TestCase(CreatureConstants.Ant_Giant_Worker, GenderConstants.Male, 0, 0)]
+        [TestCase(CreatureConstants.Ant_Giant_Soldier, GenderConstants.Male, 0, 0)]
+        [TestCase(CreatureConstants.Ant_Giant_Queen, GenderConstants.Female, 0, 0)]
         [TestCase(CreatureConstants.Ape, GenderConstants.Male, 300, 400)]
         [TestCase(CreatureConstants.Ape, GenderConstants.Female, 220, 460)]
         [TestCase(CreatureConstants.Ape_Dire, GenderConstants.Male, 800, 1200)]
