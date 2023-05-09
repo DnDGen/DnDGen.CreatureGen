@@ -1039,6 +1039,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Gargoyle][CreatureConstants.Gargoyle] = "0";
             lengths[CreatureConstants.Gargoyle_Kapoacinth][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.Gargoyle_Kapoacinth][CreatureConstants.Gargoyle_Kapoacinth] = "0";
+            //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/gelatinous-cube-species
+            lengths[CreatureConstants.GelatinousCube][GenderConstants.Agender] = GetBaseFromAverage(10 * 12);
+            lengths[CreatureConstants.GelatinousCube][CreatureConstants.GelatinousCube] = GetMultiplierFromAverage(10 * 12);
+            lengths[CreatureConstants.Ghaele][GenderConstants.Female] = "0";
+            lengths[CreatureConstants.Ghaele][GenderConstants.Male] = "0";
+            lengths[CreatureConstants.Ghaele][CreatureConstants.Ghaele] = "0";
             //Source: https://forgottenrealms.fandom.com/wiki/Cloud_giant
             lengths[CreatureConstants.Giant_Cloud][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Giant_Cloud][GenderConstants.Male] = "0";

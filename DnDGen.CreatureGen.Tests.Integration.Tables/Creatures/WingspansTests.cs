@@ -979,6 +979,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Gargoyle_Kapoacinth][CreatureConstants.Gargoyle_Kapoacinth] = "2d10";
             wingspans[CreatureConstants.GelatinousCube][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.GelatinousCube][CreatureConstants.GelatinousCube] = "0";
+            wingspans[CreatureConstants.Ghaele][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Ghaele][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Ghaele][CreatureConstants.Ghaele] = "0";
             //Source: https://forgottenrealms.fandom.com/wiki/Cloud_giant
             wingspans[CreatureConstants.Giant_Cloud][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Giant_Cloud][GenderConstants.Male] = "0";
