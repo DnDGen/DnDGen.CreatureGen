@@ -1128,6 +1128,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Giant_Hill][GenderConstants.Female] = GetBaseFromRange(15 * 12 + 5, 16 * 12 + 4);
             heights[CreatureConstants.Giant_Hill][GenderConstants.Male] = GetBaseFromRange(16 * 12 + 1, 17 * 12);
             heights[CreatureConstants.Giant_Hill][CreatureConstants.Giant_Hill] = GetMultiplierFromRange(15 * 12 + 5, 16 * 12 + 4);
+            //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/gibbering-mouther-species
+            heights[CreatureConstants.GibberingMouther][GenderConstants.Agender] = GetBaseFromRange(3 * 12, 7 * 12);
+            heights[CreatureConstants.GibberingMouther][CreatureConstants.GibberingMouther] = GetMultiplierFromRange(3 * 12, 7 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/girallon.htm
+            heights[CreatureConstants.Girallon][GenderConstants.Female] = GetBaseFromAverage(8 * 12);
+            heights[CreatureConstants.Girallon][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
+            heights[CreatureConstants.Girallon][CreatureConstants.Girallon] = GetMultiplierFromAverage(8 * 12);
             //Source: http://people.wku.edu/charles.plemons/ad&d/races/height.html
             heights[CreatureConstants.Githyanki][GenderConstants.Female] = "60";
             heights[CreatureConstants.Githyanki][GenderConstants.Male] = "62";
@@ -1531,6 +1538,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Vrock
             heights[CreatureConstants.Vrock][GenderConstants.Agender] = GetBaseFromAverage(8 * 12);
             heights[CreatureConstants.Vrock][CreatureConstants.Vrock] = GetMultiplierFromAverage(8 * 12);
+            //Source: https://www.dimensions.com/element/red-paper-wasp-polistes-carolina
+            //https://forgottenrealms.fandom.com/wiki/Giant_wasp scale up: [.23,.33]*5*12/[.94,1.26] = [14,16]
+            heights[CreatureConstants.Wasp_Giant][GenderConstants.Male] = GetBaseFromRange(14, 16);
+            heights[CreatureConstants.Wasp_Giant][CreatureConstants.Wasp_Giant] = GetMultiplierFromRange(14, 16);
             //Source: https://www.dimensions.com/element/least-weasel-mustela-nivalis
             heights[CreatureConstants.Weasel][GenderConstants.Female] = GetBaseFromRange(2, 3);
             heights[CreatureConstants.Weasel][GenderConstants.Male] = GetBaseFromRange(2, 3);

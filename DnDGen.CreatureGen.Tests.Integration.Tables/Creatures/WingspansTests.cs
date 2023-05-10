@@ -1024,6 +1024,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Giant_Hill][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Giant_Hill][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Giant_Hill][CreatureConstants.Giant_Hill] = "0";
+            wingspans[CreatureConstants.GibberingMouther][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.GibberingMouther][CreatureConstants.GibberingMouther] = "0";
+            wingspans[CreatureConstants.Girallon][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Girallon][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Girallon][CreatureConstants.Girallon] = "0";
             wingspans[CreatureConstants.Glabrezu][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.Glabrezu][CreatureConstants.Glabrezu] = "0";
             wingspans[CreatureConstants.Gnoll][GenderConstants.Female] = "0";
@@ -1364,6 +1369,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Vrock - "broad" wings, so double height
             wingspans[CreatureConstants.Vrock][GenderConstants.Agender] = GetBaseFromAverage(8 * 12 * 2);
             wingspans[CreatureConstants.Vrock][CreatureConstants.Vrock] = GetMultiplierFromAverage(8 * 12 * 2);
+            //Source: https://www.dimensions.com/element/red-paper-wasp-polistes-carolina
+            //https://forgottenrealms.fandom.com/wiki/Giant_wasp scale up: [.59,.98]*5*12/[.94,1.26] = [38,47]
+            wingspans[CreatureConstants.Wasp_Giant][GenderConstants.Male] = GetBaseFromRange(38, 47);
+            wingspans[CreatureConstants.Wasp_Giant][CreatureConstants.Wasp_Giant] = GetMultiplierFromRange(38, 47);
             wingspans[CreatureConstants.Weasel][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Weasel][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Weasel][CreatureConstants.Weasel] = "0";

@@ -1090,6 +1090,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Giant_Hill][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Giant_Hill][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Giant_Hill][CreatureConstants.Giant_Hill] = "0";
+            lengths[CreatureConstants.GibberingMouther][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.GibberingMouther][CreatureConstants.GibberingMouther] = "0";
+            lengths[CreatureConstants.Girallon][GenderConstants.Female] = "0";
+            lengths[CreatureConstants.Girallon][GenderConstants.Male] = "0";
+            lengths[CreatureConstants.Girallon][CreatureConstants.Girallon] = "0";
             lengths[CreatureConstants.Glabrezu][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.Glabrezu][CreatureConstants.Glabrezu] = "0";
             lengths[CreatureConstants.Gnoll][GenderConstants.Female] = "0";
@@ -1453,6 +1458,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Tojanida_Elder][CreatureConstants.Tojanida_Elder] = GetMultiplierFromAverage(9 * 12);
             lengths[CreatureConstants.Vrock][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.Vrock][CreatureConstants.Vrock] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Giant_wasp
+            lengths[CreatureConstants.Wasp_Giant][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
+            lengths[CreatureConstants.Wasp_Giant][CreatureConstants.Wasp_Giant] = GetMultiplierFromAverage(5 * 12);
             //Source: https://www.dimensions.com/element/least-weasel-mustela-nivalis
             lengths[CreatureConstants.Weasel][GenderConstants.Female] = GetBaseFromRange(6, 10);
             lengths[CreatureConstants.Weasel][GenderConstants.Male] = GetBaseFromRange(6, 10);

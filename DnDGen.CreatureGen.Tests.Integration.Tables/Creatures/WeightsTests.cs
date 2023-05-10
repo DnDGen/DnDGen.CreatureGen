@@ -1350,6 +1350,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Giant_Hill][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Giant_Hill, 4500);
             weights[CreatureConstants.Giant_Hill][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Giant_Hill, 4500);
             weights[CreatureConstants.Giant_Hill][CreatureConstants.Giant_Hill] = GetMultiplierFromAverage(CreatureConstants.Giant_Hill, 4500);
+            //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/gibbering-mouther-species
+            weights[CreatureConstants.GibberingMouther][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.GibberingMouther, 200);
+            weights[CreatureConstants.GibberingMouther][CreatureConstants.GibberingMouther] = GetMultiplierFromAverage(CreatureConstants.GibberingMouther, 200);
+            //Source: https://www.d20srd.org/srd/monsters/girallon.htm
+            weights[CreatureConstants.Girallon][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Girallon, 800);
+            weights[CreatureConstants.Girallon][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Girallon, 800);
+            weights[CreatureConstants.Girallon][CreatureConstants.Girallon] = GetMultiplierFromAverage(CreatureConstants.Girallon, 800);
             //Source: http://people.wku.edu/charles.plemons/ad&d/races/height.html 3d10 = High Elf, so 1d6
             weights[CreatureConstants.Githyanki][GenderConstants.Female] = "90";
             weights[CreatureConstants.Githyanki][GenderConstants.Male] = "120";
@@ -1764,6 +1771,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Vrock
             weights[CreatureConstants.Vrock][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Vrock, 500);
             weights[CreatureConstants.Vrock][CreatureConstants.Vrock] = GetMultiplierFromAverage(CreatureConstants.Vrock, 500);
+            //Source: https://en.wikipedia.org/wiki/Eastern_yellowjacket scale up: .04g*(5*12/[.94,1.26])^3 = [23,9]
+            weights[CreatureConstants.Wasp_Giant][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Wasp_Giant, 9, 23);
+            weights[CreatureConstants.Wasp_Giant][CreatureConstants.Wasp_Giant] = GetMultiplierFromRange(CreatureConstants.Wasp_Giant, 9, 23);
             //Source: https://www.dimensions.com/element/least-weasel-mustela-nivalis
             weights[CreatureConstants.Weasel][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Weasel, 1, 3);
             weights[CreatureConstants.Weasel][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Weasel, 1, 3);

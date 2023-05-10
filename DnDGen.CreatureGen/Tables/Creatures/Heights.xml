@@ -1753,19 +1753,26 @@
   </collection>
   <collection>
     <name>Githyanki</name>
-    <entry>Land@30</entry>
+	  <entry>Female@60</entry>
+	  <entry>Male@62</entry>
+	  <entry>Githyanki@2d10</entry>
   </collection>
   <collection>
     <name>Githzerai</name>
-    <entry>Land@30</entry>
+	  <entry>Female@60</entry>
+	  <entry>Male@62</entry>
+	  <entry>Githzerai@2d10</entry>
   </collection>
   <collection>
     <name>Glabrezu</name>
-    <entry>Land@40</entry>
+	  <entry>Agender@100</entry>
+	  <entry>Githzerai@8d10</entry>
   </collection>
   <collection>
     <name>Gnoll</name>
-    <entry>Land@30</entry>
+	  <entry>Female@80</entry>
+	  <entry>Male@84</entry>
+	  <entry>Gnoll@1d12</entry>
   </collection>
   <collection>
     <name>Goblin</name>
