@@ -14,7 +14,9 @@
   </collection>
   <collection>
     <name>Greater Basilisk</name>
-    <entry>Land@20</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Greater Basilisk@0</entry>
   </collection>
   <collection>
     <name>Achaierai</name>
@@ -1711,45 +1713,55 @@
   </collection>
   <collection>
     <name>Giant Fire Beetle</name>
-    <entry>Land@30</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Giant Fire Beetle@0</entry>
   </collection>
   <collection>
     <name>Giant Octopus</name>
-    <entry>Land@20</entry>
-    <entry>Swim@30</entry>
+	  <entry>Male@18</entry>
+	  <entry>Female@18</entry>
+	  <entry>Giant Octopus@2d3</entry>
   </collection>
   <collection>
     <name>Giant Owl</name>
-    <entry>Land@10</entry>
-    <entry>Fly@70</entry>
+	  <entry>Male@94</entry>
+	  <entry>Female@94</entry>
+	  <entry>Giant Owl@3d8</entry>
   </collection>
   <collection>
     <name>Giant Praying Mantis</name>
-    <entry>Land@20</entry>
-    <entry>Fly@40</entry>
+	  <entry>Male@20</entry>
+	  <entry>Female@20</entry>
+	  <entry>Giant Praying Mantis@4d10</entry>
   </collection>
   <collection>
     <name>Giant Squid</name>
-    <entry>Swim@80</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Giant Squid@0</entry>
   </collection>
   <collection>
     <name>Giant Stag Beetle</name>
-    <entry>Land@20</entry>
+	  <entry>Male@20</entry>
+	  <entry>Female@20</entry>
+	  <entry>Giant Stag Beetle@1d6</entry>
   </collection>
   <collection>
     <name>Giant Wasp</name>
-    <entry>Land@20</entry>
-    <entry>Fly@60</entry>
+	  <entry>Male@13</entry>
+	  <entry>Giant Wasp@1d3</entry>
   </collection>
   <collection>
     <name>Gibbering Mouther</name>
-    <entry>Land@10</entry>
-    <entry>Swim@20</entry>
+	  <entry>Agender@20</entry>
+	  <entry>Gibbering Mouther@16d4</entry>
   </collection>
   <collection>
     <name>Girallon</name>
-    <entry>Land@40</entry>
-    <entry>Climb@40</entry>
+	  <entry>Male@85</entry>
+	  <entry>Female@85</entry>
+	  <entry>Girallon@1d20</entry>
   </collection>
   <collection>
     <name>Githyanki</name>
@@ -1766,7 +1778,7 @@
   <collection>
     <name>Glabrezu</name>
 	  <entry>Agender@100</entry>
-	  <entry>Githzerai@8d10</entry>
+	  <entry>Glabrezu@8d10</entry>
   </collection>
   <collection>
     <name>Gnoll</name>
@@ -1776,192 +1788,206 @@
   </collection>
   <collection>
     <name>Goblin</name>
-    <entry>Land@30</entry>
+	  <entry>Female@41</entry>
+	  <entry>Male@43</entry>
+	  <entry>Goblin@1d10</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Adult</name>
-    <entry>Land@60</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@60</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Gold Dragon, Adult@29d2</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Ancient</name>
-    <entry>Land@60</entry>
-    <entry>Fly@250</entry>
-    <entry>Swim@60</entry>
+	  <entry>Male@159</entry>
+	  <entry>Female@159</entry>
+	  <entry>Gold Dragon, Ancient@13d4</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Great Wyrm</name>
-    <entry>Land@60</entry>
-    <entry>Fly@250</entry>
-    <entry>Swim@60</entry>
+	  <entry>Male@184</entry>
+	  <entry>Female@184</entry>
+	  <entry>Gold Dragon, Great Wyrm@53d2</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Juvenile</name>
-    <entry>Land@60</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@60</entry>
+	  <entry>Male@58</entry>
+	  <entry>Female@58</entry>
+	  <entry>Gold Dragon, Juvenile@17d2</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Mature Adult</name>
-    <entry>Land@60</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@60</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Gold Dragon, Mature Adult@29d2</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Old</name>
-    <entry>Land@60</entry>
-    <entry>Fly@250</entry>
-    <entry>Swim@60</entry>
+	  <entry>Male@159</entry>
+	  <entry>Female@159</entry>
+	  <entry>Gold Dragon, Old@13d4</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Very Old</name>
-    <entry>Land@60</entry>
-    <entry>Fly@250</entry>
-    <entry>Swim@60</entry>
+	  <entry>Male@159</entry>
+	  <entry>Female@159</entry>
+	  <entry>Gold Dragon, Very Old@13d4</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Very Young</name>
-    <entry>Land@60</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@60</entry>
+	  <entry>Male@58</entry>
+	  <entry>Female@58</entry>
+	  <entry>Gold Dragon, Very Young@17d2</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Wyrm</name>
-    <entry>Land@60</entry>
-    <entry>Fly@250</entry>
-    <entry>Swim@60</entry>
+	  <entry>Male@184</entry>
+	  <entry>Female@184</entry>
+	  <entry>Gold Dragon, Wyrm@53d2</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Wyrmling</name>
-    <entry>Land@60</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@60</entry>
+	  <entry>Male@42</entry>
+	  <entry>Female@42</entry>
+	  <entry>Gold Dragon, Wyrmling@1d10</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Young Adult</name>
-    <entry>Land@60</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@60</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Gold Dragon, Young Adult@29d2</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Young</name>
-    <entry>Land@60</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@60</entry>
+	  <entry>Male@58</entry>
+	  <entry>Female@58</entry>
+	  <entry>Gold Dragon, Young@17d2</entry>
   </collection>
   <collection>
     <name>Gorgon</name>
-    <entry>Land@30</entry>
+	  <entry>Male@61</entry>
+	  <entry>Female@61</entry>
+	  <entry>Gorgon@3d6</entry>
   </collection>
   <collection>
     <name>Gray Elf</name>
-    <entry>Land@30</entry>
+	  <entry>Male@4*12+5</entry>
+	  <entry>Female@4*12+5</entry>
+	  <entry>Gray Elf@2d6</entry>
   </collection>
   <collection>
     <name>Gray Ooze</name>
-    <entry>Land@10</entry>
+	  <entry>Agender@4</entry>
+	  <entry>Gray Ooze@1d2</entry>
   </collection>
   <collection>
     <name>Gray Render</name>
-    <entry>Land@30</entry>
+	  <entry>Agender@94</entry>
+	  <entry>Gray Render@3d8</entry>
   </collection>
   <collection>
     <name>Gray Slaad</name>
-    <entry>Land@30</entry>
+	  <entry>Agender@61</entry>
+	  <entry>Gray Slaad@3d6</entry>
   </collection>
   <collection>
     <name>Greater Barghest</name>
-    <entry>Land@40</entry>
+	  <entry>Male@76</entry>
+	  <entry>Female@76</entry>
+	  <entry>Greater Barghest@8d4</entry>
   </collection>
   <collection>
     <name>Greater Shadow</name>
-    <entry>Fly@40</entry>
+	  <entry>Agender@56</entry>
+	  <entry>Greater Shadow@4d4</entry>
   </collection>
   <collection>
     <name>Greater Stone Golem</name>
-    <entry>Land@20</entry>
+	  <entry>Agender@151</entry>
+	  <entry>Greater Stone Golem@43d2</entry>
   </collection>
   <collection>
     <name>Green Dragon, Adult</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
-    <entry>Swim@40</entry>
+	  <entry>Male@158</entry>
+	  <entry>Female@158</entry>
+	  <entry>Green Dragon, Adult@4d10</entry>
   </collection>
   <collection>
     <name>Green Dragon, Ancient</name>
-    <entry>Land@40</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@40</entry>
+	  <entry>Male@200</entry>
+	  <entry>Female@200</entry>
+	  <entry>Green Dragon, Ancient@16d4</entry>
   </collection>
   <collection>
     <name>Green Dragon, Great Wyrm</name>
-    <entry>Land@40</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@40</entry>
+	  <entry>Male@200</entry>
+	  <entry>Female@200</entry>
+	  <entry>Green Dragon, Great Wyrm@16d4</entry>
   </collection>
   <collection>
     <name>Green Dragon, Juvenile</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
-    <entry>Swim@40</entry>
+	  <entry>Male@94</entry>
+	  <entry>Female@94</entry>
+	  <entry>Green Dragon, Juvenile@3d8</entry>
   </collection>
   <collection>
     <name>Green Dragon, Mature Adult</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
-    <entry>Swim@40</entry>
+	  <entry>Male@158</entry>
+	  <entry>Female@158</entry>
+	  <entry>Green Dragon, Mature Adult@4d10</entry>
   </collection>
   <collection>
     <name>Green Dragon, Old</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
-    <entry>Swim@40</entry>
+	  <entry>Male@158</entry>
+	  <entry>Female@158</entry>
+	  <entry>Green Dragon, Old@4d10</entry>
   </collection>
   <collection>
     <name>Green Dragon, Very Old</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
-    <entry>Swim@40</entry>
+	  <entry>Male@158</entry>
+	  <entry>Female@158</entry>
+	  <entry>Green Dragon, Very Old@4d10</entry>
   </collection>
   <collection>
     <name>Green Dragon, Very Young</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
-    <entry>Swim@40</entry>
+	  <entry>Male@50</entry>
+	  <entry>Female@50</entry>
+	  <entry>Green Dragon, Very Young@4d4</entry>
   </collection>
   <collection>
     <name>Green Dragon, Wyrm</name>
-    <entry>Land@40</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@40</entry>
+	  <entry>Male@200</entry>
+	  <entry>Female@200</entry>
+	  <entry>Green Dragon, Wyrm@16d4</entry>
   </collection>
   <collection>
     <name>Green Dragon, Wyrmling</name>
-    <entry>Land@40</entry>
-    <entry>Fly@100</entry>
-    <entry>Swim@40</entry>
+	  <entry>Male@25</entry>
+	  <entry>Female@25</entry>
+	  <entry>Green Dragon, Wyrmling@2d4</entry>
   </collection>
   <collection>
     <name>Green Dragon, Young Adult</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
-    <entry>Swim@40</entry>
+	  <entry>Male@94</entry>
+	  <entry>Female@94</entry>
+	  <entry>Green Dragon, Young Adult@3d8</entry>
   </collection>
   <collection>
     <name>Green Dragon, Young</name>
-    <entry>Land@40</entry>
-    <entry>Fly@150</entry>
-    <entry>Swim@40</entry>
+	  <entry>Male@50</entry>
+	  <entry>Female@50</entry>
+	  <entry>Green Dragon, Young@4d4</entry>
   </collection>
   <collection>
     <name>Green Hag</name>
-    <entry>Land@30</entry>
-    <entry>Swim@30</entry>
+    <entry>Female@4*12+5</entry>
+    <entry>Green Hag@2d10</entry>
   </collection>
   <collection>
     <name>Green Slaad</name>
-    <entry>Land@30</entry>
+	  <entry>Agender@58</entry>
+	  <entry>Green Slaad@17d2</entry>
   </collection>
   <collection>
     <name>Grick</name>

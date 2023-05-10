@@ -1050,8 +1050,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Golem_Clay][CreatureConstants.Golem_Clay] = "0";
             wingspans[CreatureConstants.Golem_Flesh][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.Golem_Flesh][CreatureConstants.Golem_Flesh] = "0";
+            wingspans[CreatureConstants.Golem_Iron][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Golem_Iron][CreatureConstants.Golem_Iron] = "0";
+            wingspans[CreatureConstants.Golem_Stone][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Golem_Stone][CreatureConstants.Golem_Stone] = "0";
+            wingspans[CreatureConstants.Golem_Stone_Greater][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Golem_Stone_Greater][CreatureConstants.Golem_Stone_Greater] = "0";
+            wingspans[CreatureConstants.Gorgon][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Gorgon][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Gorgon][CreatureConstants.Gorgon] = "0";
+            wingspans[CreatureConstants.GrayOoze][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.GrayOoze][CreatureConstants.GrayOoze] = "0";
+            wingspans[CreatureConstants.GrayRender][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.GrayRender][CreatureConstants.GrayRender] = "0";
             wingspans[CreatureConstants.GreenHag][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.GreenHag][CreatureConstants.GreenHag] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/grick.htm
+            wingspans[CreatureConstants.Grick][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Grick][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Grick][CreatureConstants.Grick] = "0";
             wingspans[CreatureConstants.Grig][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Grig][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Grig][CreatureConstants.Grig] = "0";
@@ -1305,6 +1322,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Satyr_WithPipes][CreatureConstants.Satyr] = "0";
             wingspans[CreatureConstants.SeaHag][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.SeaHag][CreatureConstants.SeaHag] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/shadow.htm
+            wingspans[CreatureConstants.Shadow][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Shadow][CreatureConstants.Shadow] = "0";
+            wingspans[CreatureConstants.Shadow_Greater][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Shadow_Greater][CreatureConstants.Shadow_Greater] = "0";
             wingspans[CreatureConstants.Shark_Medium][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Shark_Medium][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Shark_Medium][CreatureConstants.Shark_Medium] = "0";

@@ -1074,7 +1074,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Ettin][CreatureConstants.Ettin] = "2d6";
             heights[CreatureConstants.FireBeetle_Giant][GenderConstants.Female] = "0";
             heights[CreatureConstants.FireBeetle_Giant][GenderConstants.Male] = "0";
-            heights[CreatureConstants.FireBeetle_Giant][CreatureConstants.Ettin] = "0";
+            heights[CreatureConstants.FireBeetle_Giant][CreatureConstants.FireBeetle_Giant] = "0";
             //Source: https://www.d20srd.org/srd/monsters/formian.htm
             heights[CreatureConstants.FormianWorker][GenderConstants.Male] = GetBaseFromAverage(2 * 12 + 6);
             heights[CreatureConstants.FormianWorker][CreatureConstants.FormianWorker] = GetMultiplierFromAverage(2 * 12 + 6);
@@ -1170,9 +1170,32 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.d20srd.org/srd/monsters/golem.htm
             heights[CreatureConstants.Golem_Flesh][GenderConstants.Agender] = GetBaseFromAverage(8 * 12);
             heights[CreatureConstants.Golem_Flesh][CreatureConstants.Golem_Flesh] = GetMultiplierFromAverage(8 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/golem.htm
+            heights[CreatureConstants.Golem_Iron][GenderConstants.Agender] = GetBaseFromAverage(12 * 12);
+            heights[CreatureConstants.Golem_Iron][CreatureConstants.Golem_Iron] = GetMultiplierFromAverage(12 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/golem.htm
+            heights[CreatureConstants.Golem_Stone][GenderConstants.Agender] = GetBaseFromAverage(9 * 12);
+            heights[CreatureConstants.Golem_Stone][CreatureConstants.Golem_Stone] = GetMultiplierFromAverage(9 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/golem.htm
+            heights[CreatureConstants.Golem_Stone_Greater][GenderConstants.Agender] = GetBaseFromAverage(18 * 12);
+            heights[CreatureConstants.Golem_Stone_Greater][CreatureConstants.Golem_Stone_Greater] = GetMultiplierFromAverage(18 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/gorgon.htm
+            heights[CreatureConstants.Gorgon][GenderConstants.Female] = GetBaseFromAverage(6 * 12);
+            heights[CreatureConstants.Gorgon][GenderConstants.Male] = GetBaseFromAverage(6 * 12);
+            heights[CreatureConstants.Gorgon][CreatureConstants.Gorgon] = GetMultiplierFromAverage(6 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/ooze.htm#grayOoze
+            heights[CreatureConstants.GrayOoze][GenderConstants.Agender] = GetBaseFromAverage(6);
+            heights[CreatureConstants.GrayOoze][CreatureConstants.GrayOoze] = GetMultiplierFromAverage(6);
+            //Source: https://www.d20srd.org/srd/monsters/grayRender.htm
+            heights[CreatureConstants.GrayRender][GenderConstants.Agender] = GetBaseFromAverage(9 * 12);
+            heights[CreatureConstants.GrayRender][CreatureConstants.GrayRender] = GetMultiplierFromAverage(9 * 12);
             //Source: https://www.d20srd.org/srd/monsters/hag.htm#greenHag
             heights[CreatureConstants.GreenHag][GenderConstants.Female] = "4*12+5";
             heights[CreatureConstants.GreenHag][CreatureConstants.GreenHag] = "2d10";
+            //Source: https://www.d20srd.org/srd/monsters/grick.htm
+            heights[CreatureConstants.Grick][GenderConstants.Female] = "0";
+            heights[CreatureConstants.Grick][GenderConstants.Male] = "0";
+            heights[CreatureConstants.Grick][CreatureConstants.Grick] = "0";
             //Source: https://www.d20srd.org/srd/monsters/sprite.htm#grig
             heights[CreatureConstants.Grig][GenderConstants.Female] = GetBaseFromAverage(18);
             heights[CreatureConstants.Grig][GenderConstants.Male] = GetBaseFromAverage(18);
@@ -1464,6 +1487,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.d20srd.org/srd/monsters/hag.htm - copy from Human
             heights[CreatureConstants.SeaHag][GenderConstants.Female] = "4*12+5";
             heights[CreatureConstants.SeaHag][CreatureConstants.SeaHag] = "2d10";
+            //Source: https://www.d20srd.org/srd/monsters/shadow.htm
+            heights[CreatureConstants.Shadow][GenderConstants.Agender] = GetBaseFromRange(5 * 12, 6 * 12);
+            heights[CreatureConstants.Shadow][CreatureConstants.Shadow] = GetMultiplierFromRange(5 * 12, 6 * 12);
+            heights[CreatureConstants.Shadow_Greater][GenderConstants.Agender] = GetBaseFromRange(5 * 12, 6 * 12);
+            heights[CreatureConstants.Shadow_Greater][CreatureConstants.Shadow_Greater] = GetMultiplierFromRange(5 * 12, 6 * 12);
             //Source: https://www.dimensions.com/element/blacktip-shark-carcharhinus-limbatus
             heights[CreatureConstants.Shark_Medium][GenderConstants.Female] = "0";
             heights[CreatureConstants.Shark_Medium][GenderConstants.Male] = "0";

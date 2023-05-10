@@ -1116,8 +1116,27 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Golem_Clay][CreatureConstants.Golem_Clay] = "0";
             lengths[CreatureConstants.Golem_Flesh][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.Golem_Flesh][CreatureConstants.Golem_Flesh] = "0";
+            lengths[CreatureConstants.Golem_Iron][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.Golem_Iron][CreatureConstants.Golem_Iron] = "0";
+            lengths[CreatureConstants.Golem_Stone][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.Golem_Stone][CreatureConstants.Golem_Stone] = "0";
+            lengths[CreatureConstants.Golem_Stone_Greater][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.Golem_Stone_Greater][CreatureConstants.Golem_Stone_Greater] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/gorgon.htm
+            lengths[CreatureConstants.Gorgon][GenderConstants.Female] = GetBaseFromAverage(8 * 12);
+            lengths[CreatureConstants.Gorgon][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
+            lengths[CreatureConstants.Gorgon][CreatureConstants.Gorgon] = GetMultiplierFromAverage(8 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/ooze.htm#grayOoze
+            lengths[CreatureConstants.GrayOoze][GenderConstants.Agender] = GetBaseFromUpTo(10 * 12);
+            lengths[CreatureConstants.GrayOoze][CreatureConstants.GrayOoze] = GetMultiplierFromUpTo(10 * 12);
+            lengths[CreatureConstants.GrayRender][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.GrayRender][CreatureConstants.GrayRender] = "0";
             lengths[CreatureConstants.GreenHag][GenderConstants.Female] = "0";
             lengths[CreatureConstants.GreenHag][CreatureConstants.GreenHag] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/grick.htm
+            lengths[CreatureConstants.Grick][GenderConstants.Female] = GetBaseFromAverage(8 * 12);
+            lengths[CreatureConstants.Grick][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
+            lengths[CreatureConstants.Grick][CreatureConstants.Grick] = GetMultiplierFromAverage(8 * 12);
             lengths[CreatureConstants.Grig][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Grig][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Grig][CreatureConstants.Grig] = "0";
@@ -1385,6 +1404,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Satyr_WithPipes][CreatureConstants.Satyr] = "0";
             lengths[CreatureConstants.SeaHag][GenderConstants.Female] = "0";
             lengths[CreatureConstants.SeaHag][CreatureConstants.SeaHag] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/shadow.htm
+            lengths[CreatureConstants.Shadow][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.Shadow][CreatureConstants.Shadow] = "0";
+            lengths[CreatureConstants.Shadow_Greater][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.Shadow_Greater][CreatureConstants.Shadow_Greater] = "0";
             //Source: https://www.dimensions.com/element/blacktip-shark-carcharhinus-limbatus
             lengths[CreatureConstants.Shark_Medium][GenderConstants.Female] = GetBaseFromRange(59, 8 * 12);
             lengths[CreatureConstants.Shark_Medium][GenderConstants.Male] = GetBaseFromRange(59, 8 * 12);

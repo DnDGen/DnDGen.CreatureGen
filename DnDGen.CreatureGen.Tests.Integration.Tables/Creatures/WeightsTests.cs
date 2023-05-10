@@ -1392,9 +1392,32 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.d20srd.org/srd/monsters/golem.htm
             weights[CreatureConstants.Golem_Flesh][GenderConstants.Agender] = GetBaseFromUpTo(CreatureConstants.Golem_Flesh, 500);
             weights[CreatureConstants.Golem_Flesh][CreatureConstants.Golem_Flesh] = GetMultiplierFromUpTo(CreatureConstants.Golem_Flesh, 500);
+            //Source: https://www.d20srd.org/srd/monsters/golem.htm
+            weights[CreatureConstants.Golem_Iron][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Golem_Iron, 5000);
+            weights[CreatureConstants.Golem_Iron][CreatureConstants.Golem_Iron] = GetMultiplierFromAverage(CreatureConstants.Golem_Iron, 5000);
+            //Source: https://www.d20srd.org/srd/monsters/golem.htm
+            weights[CreatureConstants.Golem_Stone][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Golem_Stone, 2000);
+            weights[CreatureConstants.Golem_Stone][CreatureConstants.Golem_Stone] = GetMultiplierFromAverage(CreatureConstants.Golem_Stone, 2000);
+            //Source: https://www.d20srd.org/srd/monsters/golem.htm
+            weights[CreatureConstants.Golem_Stone_Greater][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Golem_Stone_Greater, 32_000);
+            weights[CreatureConstants.Golem_Stone_Greater][CreatureConstants.Golem_Stone_Greater] = GetMultiplierFromAverage(CreatureConstants.Golem_Stone_Greater, 32_000);
+            //Source: https://www.d20srd.org/srd/monsters/gorgon.htm
+            weights[CreatureConstants.Gorgon][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Gorgon, 4000);
+            weights[CreatureConstants.Gorgon][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Gorgon, 4000);
+            weights[CreatureConstants.Gorgon][CreatureConstants.Gorgon] = GetMultiplierFromAverage(CreatureConstants.Gorgon, 4000);
+            //Source: https://www.d20srd.org/srd/monsters/ooze.htm#grayOoze
+            weights[CreatureConstants.GrayOoze][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.GrayOoze, 700);
+            weights[CreatureConstants.GrayOoze][CreatureConstants.GrayOoze] = GetMultiplierFromAverage(CreatureConstants.GrayOoze, 700);
+            //Source: https://www.d20srd.org/srd/monsters/grayRender.htm
+            weights[CreatureConstants.GrayRender][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.GrayRender, 4000);
+            weights[CreatureConstants.GrayRender][CreatureConstants.GrayRender] = GetMultiplierFromAverage(CreatureConstants.GrayRender, 4000);
             //Source: https://www.d20srd.org/srd/monsters/hag.htm#greenHag Female human
             weights[CreatureConstants.GreenHag][GenderConstants.Female] = "85";
             weights[CreatureConstants.GreenHag][CreatureConstants.GreenHag] = "2d4";
+            //Source: https://www.d20srd.org/srd/monsters/grick.htm
+            weights[CreatureConstants.Grick][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Grick, 200);
+            weights[CreatureConstants.Grick][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Grick, 200);
+            weights[CreatureConstants.Grick][CreatureConstants.Grick] = GetMultiplierFromAverage(CreatureConstants.Grick, 200);
             //Source: https://www.d20srd.org/srd/monsters/sprite.htm#grig
             weights[CreatureConstants.Grig][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Grig, 1); //Tiny
             weights[CreatureConstants.Grig][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Grig, 1);
@@ -1689,6 +1712,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.d20srd.org/srd/monsters/hag.htm - copy from Human
             weights[CreatureConstants.SeaHag][GenderConstants.Female] = "4*12+5";
             weights[CreatureConstants.SeaHag][CreatureConstants.SeaHag] = "2d10";
+            //Source: https://www.d20srd.org/srd/monsters/shadow.htm
+            weights[CreatureConstants.Shadow][GenderConstants.Agender] = "0";
+            weights[CreatureConstants.Shadow][CreatureConstants.Shadow] = "0";
+            weights[CreatureConstants.Shadow_Greater][GenderConstants.Agender] = "0";
+            weights[CreatureConstants.Shadow_Greater][CreatureConstants.Shadow_Greater] = "0";
             //Source: https://www.dimensions.com/element/blacktip-shark-carcharhinus-limbatus
             weights[CreatureConstants.Shark_Medium][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Shark_Medium, 150, 270);
             weights[CreatureConstants.Shark_Medium][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Shark_Medium, 150, 270);
