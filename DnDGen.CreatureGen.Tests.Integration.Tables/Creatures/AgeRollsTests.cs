@@ -1574,13 +1574,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Lemure][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
                 testCases[CreatureConstants.Leonal][AgeConstants.Categories.Adulthood] = outsiderAgeRoll;
                 testCases[CreatureConstants.Leonal][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
-                //Source: https://www.dimensions.com/element/clouded-leopard O:11-15,V:17-20
-                //https://nationalzoo.si.edu/animals/clouded-leopard (adulthood)
-                testCases[CreatureConstants.Leopard][AgeConstants.Categories.Adulthood] = GetAdulthoodRoll(16, 2);
-                testCases[CreatureConstants.Leopard][AgeConstants.Categories.MiddleAge] = GetMiddleAgeRoll(16, 10);
-                testCases[CreatureConstants.Leopard][AgeConstants.Categories.Old] = GetRoll(10, 15);
-                testCases[CreatureConstants.Leopard][AgeConstants.Categories.Venerable] = GetRoll(16, 20);
-                testCases[CreatureConstants.Leopard][AgeConstants.Categories.Maximum] = GetMaximumRoll(16, 20);
+                //Source: https://www.dimensions.com/element/cougar O:11-15,V:17-20
+                //https://en.wikipedia.org/wiki/Cougar (adulthood)
+                testCases[CreatureConstants.Leopard][AgeConstants.Categories.Adulthood] = GetAdulthoodRoll(14, 2);
+                testCases[CreatureConstants.Leopard][AgeConstants.Categories.MiddleAge] = GetMiddleAgeRoll(14, 10);
+                testCases[CreatureConstants.Leopard][AgeConstants.Categories.Old] = GetRoll(10, 13);
+                testCases[CreatureConstants.Leopard][AgeConstants.Categories.Venerable] = GetRoll(14, 20);
+                testCases[CreatureConstants.Leopard][AgeConstants.Categories.Maximum] = GetMaximumRoll(14, 20);
                 testCases[CreatureConstants.Lillend][AgeConstants.Categories.Adulthood] = outsiderAgeRoll;
                 testCases[CreatureConstants.Lillend][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
                 //Source: https://www.dimensions.com/element/african-lion (maximum)
