@@ -1366,6 +1366,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Lammasu][GenderConstants.Female] = GetBaseFromRange(62, 78);
             heights[CreatureConstants.Lammasu][GenderConstants.Male] = GetBaseFromRange(62, 78);
             heights[CreatureConstants.Lammasu][CreatureConstants.Lammasu] = GetMultiplierFromRange(62, 78);
+            //Source: https://forgottenrealms.fandom.com/wiki/Lantern_archon
+            heights[CreatureConstants.LanternArchon][GenderConstants.Agender] = GetBaseFromRange(12, 36);
+            heights[CreatureConstants.LanternArchon][CreatureConstants.LanternArchon] = GetMultiplierFromRange(12, 36);
             //Source: https://forgottenrealms.fandom.com/wiki/Lemure
             heights[CreatureConstants.Lemure][GenderConstants.Agender] = GetBaseFromAverage(5 * 12);
             heights[CreatureConstants.Lemure][CreatureConstants.Lemure] = GetMultiplierFromAverage(5 * 12);
@@ -1373,6 +1376,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Leonal][GenderConstants.Female] = GetBaseFromAverage(6 * 12);
             heights[CreatureConstants.Leonal][GenderConstants.Male] = GetBaseFromAverage(6 * 12);
             heights[CreatureConstants.Leonal][CreatureConstants.Leonal] = GetMultiplierFromAverage(6 * 12);
+            //Source: https://www.dimensions.com/element/cougar
+            heights[CreatureConstants.Leopard][GenderConstants.Female] = GetBaseFromRange(21, 28);
+            heights[CreatureConstants.Leopard][GenderConstants.Male] = GetBaseFromRange(21, 28);
+            heights[CreatureConstants.Leopard][CreatureConstants.Leopard] = GetMultiplierFromRange(21, 28);
             //Source: https://www.dimensions.com/element/african-lion
             heights[CreatureConstants.Lion][GenderConstants.Female] = GetBaseFromAverage(2 * 12 + 10);
             heights[CreatureConstants.Lion][GenderConstants.Male] = GetBaseFromAverage(3 * 12 + 4);
