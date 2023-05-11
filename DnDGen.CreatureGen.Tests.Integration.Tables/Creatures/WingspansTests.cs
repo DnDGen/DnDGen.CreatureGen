@@ -1069,12 +1069,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Grick][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Grick][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Grick][CreatureConstants.Grick] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/griffon.htm
+            wingspans[CreatureConstants.Griffon][GenderConstants.Female] = GetBaseFromAtLeast(25 * 12);
+            wingspans[CreatureConstants.Griffon][GenderConstants.Male] = GetBaseFromAtLeast(25 * 12);
+            wingspans[CreatureConstants.Griffon][CreatureConstants.Griffon] = GetMultiplierFromAtLeast(25 * 12);
             wingspans[CreatureConstants.Grig][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Grig][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Grig][CreatureConstants.Grig] = "0";
             wingspans[CreatureConstants.Grig_WithFiddle][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Grig_WithFiddle][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Grig_WithFiddle][CreatureConstants.Grig_WithFiddle] = "0";
+            wingspans[CreatureConstants.Grimlock][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Grimlock][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Grimlock][CreatureConstants.Grimlock] = "0";
             //Source: https://www.d20srd.org/srd/monsters/sphinx.htm
             wingspans[CreatureConstants.Gynosphinx][GenderConstants.Female] = GetBaseFromAverage(10 * 12);
             wingspans[CreatureConstants.Gynosphinx][CreatureConstants.Gynosphinx] = GetMultiplierFromAverage(10 * 12);
@@ -1087,7 +1094,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Halfling_Tallfellow][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Halfling_Tallfellow][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Halfling_Tallfellow][CreatureConstants.Halfling_Tallfellow] = "0";
-            wingspans[CreatureConstants.Hellcat_Bezekira][GenderConstants.Agender] = "0";
+            //Source: https://www.5esrd.com/database/race/harpy/ Assuming same as height
+            wingspans[CreatureConstants.Harpy][GenderConstants.Female] = "4*12+5";
+            wingspans[CreatureConstants.Harpy][GenderConstants.Male] = "4*12+10";
+            wingspans[CreatureConstants.Harpy][CreatureConstants.Harpy] = "2d10";
+            //Source: https://www.d20srd.org/srd/monsters/hawk.htm
+            wingspans[CreatureConstants.Hawk][GenderConstants.Female] = GetBaseFromUpTo(6 * 12);
+            wingspans[CreatureConstants.Hawk][GenderConstants.Male] = GetBaseFromUpTo(6 * 12);
+            wingspans[CreatureConstants.Hawk][CreatureConstants.Hawk] = GetMultiplierFromUpTo(6 * 12);
+            wingspans[CreatureConstants.HellHound][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.HellHound][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.HellHound][CreatureConstants.HellHound] = "0";
+            wingspans[CreatureConstants.HellHound_NessianWarhound][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.HellHound_NessianWarhound][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.HellHound_NessianWarhound][CreatureConstants.HellHound_NessianWarhound] = "0";
+            wingspans[CreatureConstants.Hellcat_Bezekira][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Hellcat_Bezekira][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Hellcat_Bezekira][CreatureConstants.Hellcat_Bezekira] = "0";
             wingspans[CreatureConstants.Hellwasp_Swarm][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.Hellwasp_Swarm][CreatureConstants.Hellwasp_Swarm] = "0";
@@ -1096,9 +1118,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.d20srd.org/srd/monsters/sphinx.htm
             wingspans[CreatureConstants.Hieracosphinx][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
             wingspans[CreatureConstants.Hieracosphinx][CreatureConstants.Hieracosphinx] = GetMultiplierFromAverage(10 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/hippogriff.htm
+            wingspans[CreatureConstants.Hippogriff][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            wingspans[CreatureConstants.Hippogriff][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            wingspans[CreatureConstants.Hippogriff][CreatureConstants.Hippogriff] = GetMultiplierFromAverage(20 * 12);
             wingspans[CreatureConstants.Hobgoblin][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Hobgoblin][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Hobgoblin][CreatureConstants.Hobgoblin] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Homunculus
+            //https://www.dimensions.com/element/eastern-gray-squirrel
+            wingspans[CreatureConstants.Homunculus][GenderConstants.Agender] = GetBaseFromRange(8, 11);
+            wingspans[CreatureConstants.Homunculus][CreatureConstants.Homunculus] = GetMultiplierFromRange(8, 11);
             //Source: https://forgottenrealms.fandom.com/wiki/Cornugon Wings are massive, so we will say triple their height
             wingspans[CreatureConstants.HornedDevil_Cornugon][GenderConstants.Agender] = GetBaseFromAverage(3 * 9 * 12);
             wingspans[CreatureConstants.HornedDevil_Cornugon][CreatureConstants.HornedDevil_Cornugon] = GetMultiplierFromAverage(3 * 9 * 12);
@@ -1114,6 +1144,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Horse_Light_War][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Horse_Light_War][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Horse_Light_War][CreatureConstants.Horse_Light_War] = "0";
+            wingspans[CreatureConstants.HoundArchon][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.HoundArchon][CreatureConstants.HoundArchon] = "0";
+            wingspans[CreatureConstants.Howler][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Howler][CreatureConstants.Howler] = "0";
             wingspans[CreatureConstants.Human][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Human][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Human][CreatureConstants.Human] = "0";
@@ -1141,18 +1175,50 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Hydra_12Heads][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Hydra_12Heads][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Hydra_12Heads][CreatureConstants.Hydra_12Heads] = "0";
+            wingspans[CreatureConstants.Hyena][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Hyena][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Hyena][CreatureConstants.Hyena] = "0";
             wingspans[CreatureConstants.IceDevil_Gelugon][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.IceDevil_Gelugon][CreatureConstants.IceDevil_Gelugon] = "0";
             wingspans[CreatureConstants.Imp][GenderConstants.Agender] = GetBaseFromAverage(2 * 12);
+            wingspans[CreatureConstants.Imp][GenderConstants.Female] = GetBaseFromAverage(2 * 12);
+            wingspans[CreatureConstants.Imp][GenderConstants.Male] = GetBaseFromAverage(2 * 12);
             wingspans[CreatureConstants.Imp][CreatureConstants.Imp] = GetMultiplierFromAverage(2 * 12);
+            wingspans[CreatureConstants.InvisibleStalker][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.InvisibleStalker][CreatureConstants.InvisibleStalker] = "0";
             wingspans[CreatureConstants.Kobold][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Kobold][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Kobold][CreatureConstants.Kobold] = "0";
+            wingspans[CreatureConstants.Kolyarut][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Kolyarut][CreatureConstants.Kolyarut] = "0";
+            wingspans[CreatureConstants.Kraken][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Kraken][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Kraken][CreatureConstants.Kraken] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/krenshar.htm
+            wingspans[CreatureConstants.Krenshar][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Krenshar][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Krenshar][CreatureConstants.Krenshar] = "0";
+            wingspans[CreatureConstants.KuoToa][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.KuoToa][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.KuoToa][CreatureConstants.KuoToa] = "0";
+            wingspans[CreatureConstants.Lamia][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Lamia][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Lamia][CreatureConstants.Lamia] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Lammasu
+            //https://www.d20srd.org/srd/monsters/eagleGiant.htm
+            wingspans[CreatureConstants.Lammasu][GenderConstants.Female] = GetBaseFromUpTo(20 * 12);
+            wingspans[CreatureConstants.Lammasu][GenderConstants.Male] = GetBaseFromUpTo(20 * 12);
+            wingspans[CreatureConstants.Lammasu][CreatureConstants.Lammasu] = GetMultiplierFromUpTo(20 * 12);
+            wingspans[CreatureConstants.LanternArchon][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.LanternArchon][CreatureConstants.LanternArchon] = "0";
             wingspans[CreatureConstants.Lemure][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.Lemure][CreatureConstants.Lemure] = "0";
             wingspans[CreatureConstants.Leonal][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Leonal][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Leonal][CreatureConstants.Leonal] = "0";
+            wingspans[CreatureConstants.Leopard][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Leopard][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Leopard][CreatureConstants.Leopard] = "0";
             wingspans[CreatureConstants.Lion][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Lion][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Lion][CreatureConstants.Lion] = "0";
@@ -1170,6 +1236,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Locust_Swarm][CreatureConstants.Locust_Swarm] = "0";
             wingspans[CreatureConstants.Marilith][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Marilith][CreatureConstants.Marilith] = "0";
+            wingspans[CreatureConstants.Marut][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Marut][CreatureConstants.Marut] = "0";
             //Source: https://forgottenrealms.fandom.com/wiki/Mephit
             wingspans[CreatureConstants.Mephit_Air][GenderConstants.Agender] = GetBaseFromAverage(4 * 12);
             wingspans[CreatureConstants.Mephit_Air][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
@@ -1432,6 +1500,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Xorn_Average][CreatureConstants.Xorn_Average] = "0";
             wingspans[CreatureConstants.Xorn_Elder][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.Xorn_Elder][CreatureConstants.Xorn_Elder] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Zelekhut using Griffon stats
+            wingspans[CreatureConstants.Zelekhut][GenderConstants.Agender] = GetBaseFromAtLeast(25 * 12);
+            wingspans[CreatureConstants.Zelekhut][CreatureConstants.Zelekhut] = GetMultiplierFromAtLeast(25 * 12);
 
             return wingspans;
         }

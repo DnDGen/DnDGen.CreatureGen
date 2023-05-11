@@ -1519,13 +1519,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Hydra_11Heads][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
                 testCases[CreatureConstants.Hydra_12Heads][AgeConstants.Categories.Adulthood] = GetRoll(10_000, 12_000);
                 testCases[CreatureConstants.Hydra_12Heads][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
-                //Source: https://www.dimensions.com/element/spotted-hyena-crocuta-crocuta (maximum)
-                //https://ielc.libguides.com/sdzg/factsheets/spottedhyena (adulthood)
-                testCases[CreatureConstants.Hyena][AgeConstants.Categories.Adulthood] = GetAdulthoodRoll(12, 2);
-                testCases[CreatureConstants.Hyena][AgeConstants.Categories.MiddleAge] = GetMiddleAgeRoll(12);
-                testCases[CreatureConstants.Hyena][AgeConstants.Categories.Old] = GetOldRoll(12);
-                testCases[CreatureConstants.Hyena][AgeConstants.Categories.Venerable] = GetVenerableRoll(12, 25);
-                testCases[CreatureConstants.Hyena][AgeConstants.Categories.Maximum] = GetMaximumRoll(12, 25);
+                //Source: https://www.dimensions.com/element/striped-hyena-hyaena-hyaena (maximum)
+                //https://zooboise.org/animals/striped-hyena/ (adulthood)
+                testCases[CreatureConstants.Hyena][AgeConstants.Categories.Adulthood] = GetAdulthoodRoll(10, 2);
+                testCases[CreatureConstants.Hyena][AgeConstants.Categories.MiddleAge] = GetMiddleAgeRoll(10);
+                testCases[CreatureConstants.Hyena][AgeConstants.Categories.Old] = GetOldRoll(10);
+                testCases[CreatureConstants.Hyena][AgeConstants.Categories.Venerable] = GetVenerableRoll(10, 25);
+                testCases[CreatureConstants.Hyena][AgeConstants.Categories.Maximum] = GetMaximumRoll(10, 25);
                 testCases[CreatureConstants.IceDevil_Gelugon][AgeConstants.Categories.Adulthood] = outsiderAgeRoll;
                 testCases[CreatureConstants.IceDevil_Gelugon][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
                 testCases[CreatureConstants.Imp][AgeConstants.Categories.Adulthood] = outsiderAgeRoll;

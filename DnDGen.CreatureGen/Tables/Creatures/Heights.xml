@@ -1991,137 +1991,173 @@
   </collection>
   <collection>
     <name>Grick</name>
-    <entry>Land@30</entry>
-    <entry>Climb@20</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Grick@0</entry>
   </collection>
   <collection>
     <name>Griffon</name>
-    <entry>Land@30</entry>
-    <entry>Fly@80</entry>
+	  <entry>Male@50</entry>
+	  <entry>Female@50</entry>
+	  <entry>Griffon@4d4</entry>
   </collection>
   <collection>
     <name>Grig</name>
-    <entry>Land@20</entry>
-    <entry>Fly@40</entry>
+	  <entry>Male@15</entry>
+	  <entry>Female@15</entry>
+	  <entry>Grig@1d4</entry>
   </collection>
   <collection>
     <name>Grig with fiddle</name>
-    <entry>Land@20</entry>
-    <entry>Fly@40</entry>
+	  <entry>Male@15</entry>
+	  <entry>Female@15</entry>
+	  <entry>Grig with fiddle@1d4</entry>
   </collection>
   <collection>
     <name>Grimlock</name>
-    <entry>Land@30</entry>
+	  <entry>Male@58</entry>
+	  <entry>Female@58</entry>
+	  <entry>Grimlock@2d4</entry>
   </collection>
   <collection>
     <name>Guardian Naga</name>
-    <entry>Land@40</entry>
+	  <entry>Hermaphrodite@0</entry>
+	  <entry>Guardian Naga@0</entry>
   </collection>
   <collection>
     <name>Gynosphinx</name>
-    <entry>Land@40</entry>
-    <entry>Fly@60</entry>
+	  <entry>Female@58</entry>
+	  <entry>Gynosphinx@17d2</entry>
   </collection>
   <collection>
     <name>Half-Elf</name>
-    <entry>Land@30</entry>
+	  <entry>Male@4*12+7</entry>
+	  <entry>Female@4*12+5</entry>
+	  <entry>Half-Elf@2d8</entry>
   </collection>
   <collection>
     <name>Half-Orc</name>
-    <entry>Land@30</entry>
+	  <entry>Male@4*12+10</entry>
+	  <entry>Female@4*12+5</entry>
+	  <entry>Half-Orc@2d12</entry>
   </collection>
   <collection>
     <name>Harpy</name>
-    <entry>Land@20</entry>
-    <entry>Fly@80</entry>
+	  <entry>Male@4*12+10</entry>
+	  <entry>Female@4*12+5</entry>
+	  <entry>Harpy@2d10</entry>
   </collection>
   <collection>
     <name>Hawk</name>
-    <entry>Land@10</entry>
-    <entry>Fly@60</entry>
+	  <entry>Male@10</entry>
+	  <entry>Female@10</entry>
+	  <entry>Hawk@1d6</entry>
   </collection>
   <collection>
     <name>Heavy Horse</name>
-    <entry>Land@50</entry>
+	  <entry>Male@60</entry>
+	  <entry>Female@60</entry>
+	  <entry>Heavy Horse@4d3</entry>
   </collection>
   <collection>
     <name>Heavy Warhorse</name>
-    <entry>Land@50</entry>
+	  <entry>Male@60</entry>
+	  <entry>Female@60</entry>
+	  <entry>Heavy Warhorse@4d3</entry>
   </collection>
   <collection>
     <name>Hell Hound</name>
-    <entry>Land@40</entry>
+	  <entry>Male@18</entry>
+	  <entry>Female@18</entry>
+	  <entry>Hell Hound@6d6</entry>
   </collection>
   <collection>
     <name>Hellcat (Bezekira)</name>
-    <entry>Land@40</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Hellcat (Bezekira)@0</entry>
   </collection>
   <collection>
     <name>Hellwasp Swarm</name>
-    <entry>Land@5</entry>
-    <entry>Fly@40</entry>
+	  <entry>Agender@100</entry>
+	  <entry>Hellwasp Swarm@8d4</entry>
   </collection>
   <collection>
     <name>Hezrou</name>
-    <entry>Land@30</entry>
+	  <entry>Agender@85</entry>
+	  <entry>Hezrou@1d20</entry>
   </collection>
   <collection>
     <name>Hieracosphinx</name>
-    <entry>Land@30</entry>
-    <entry>Fly@90</entry>
+	  <entry>Male@58</entry>
+	  <entry>Hieracosphinx@17d2</entry>
   </collection>
   <collection>
     <name>High Elf</name>
-    <entry>Land@30</entry>
+	  <entry>Male@4*12+5</entry>
+	  <entry>Female@4*12+5</entry>
+	  <entry>High Elf@2d6</entry>
   </collection>
   <collection>
     <name>Hill Dwarf</name>
-    <entry>Land@20</entry>
+	  <entry>Male@3*12+9</entry>
+	  <entry>Female@3*12+7</entry>
+	  <entry>Hill Dwarf@2d4</entry>
   </collection>
   <collection>
     <name>Hill Giant</name>
-    <entry>Land@40</entry>
+	  <entry>Male@192</entry>
+	  <entry>Female@184</entry>
+	  <entry>Hill Giant@1d12</entry>
   </collection>
   <collection>
     <name>Hippogriff</name>
-    <entry>Land@50</entry>
-    <entry>Fly@100</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Hippogriff@0</entry>
   </collection>
   <collection>
     <name>Hobgoblin</name>
-    <entry>Land@30</entry>
+	  <entry>Male@72</entry>
+	  <entry>Female@68</entry>
+	  <entry>Hobgoblin@1d8</entry>
   </collection>
   <collection>
     <name>Homunculus</name>
-    <entry>Land@20</entry>
-    <entry>Fly@50</entry>
+	  <entry>Agender@3</entry>
+	  <entry>Homunculus@1d3</entry>
   </collection>
   <collection>
     <name>Horned Devil (Cornugon)</name>
-    <entry>Land@20</entry>
-    <entry>Fly@50</entry>
+	  <entry>Agender@94</entry>
+	  <entry>Horned Devil (Cornugon)@3d8</entry>
   </collection>
   <collection>
     <name>Hound Archon</name>
-    <entry>Land@40</entry>
+	  <entry>Agender@61</entry>
+	  <entry>Hound Archon@3d6</entry>
   </collection>
   <collection>
     <name>Howler</name>
-    <entry>Land@60</entry>
+	  <entry>Agender@85</entry>
+	  <entry>Howler@1d20</entry>
   </collection>
   <collection>
     <name>Human</name>
 	  <entry>Male@4*12+10</entry>
 	  <entry>Female@4*12+5</entry>
-	  <entry>Allip@2d10</entry>
+	  <entry>Human@2d10</entry>
   </collection>
   <collection>
     <name>Hyena</name>
-    <entry>Land@50</entry>
+	  <entry>Male@24</entry>
+	  <entry>Female@24</entry>
+	  <entry>Hyena@1d6</entry>
   </collection>
   <collection>
     <name>Ice Devil (Gelugon)</name>
-    <entry>Land@40</entry>
+	  <entry>Agender@124</entry>
+	  <entry>Ice Devil (Gelugon)@2d10</entry>
   </collection>
   <collection>
     <name>Ice Mephit</name>
@@ -2132,66 +2168,84 @@
   </collection>
   <collection>
     <name>Imp</name>
-    <entry>Land@20</entry>
-    <entry>Fly@50</entry>
+	  <entry>Agender@20</entry>
+	  <entry>Male@20</entry>
+	  <entry>Female@20</entry>
+	  <entry>Imp@1d6</entry>
   </collection>
   <collection>
     <name>Invisible Stalker</name>
-    <entry>Land@30</entry>
-    <entry>Fly@30</entry>
+	  <entry>Agender@64</entry>
+	  <entry>Invisible Stalker@32d4</entry>
   </collection>
   <collection>
     <name>Iron Golem</name>
-    <entry>Land@20</entry>
+	  <entry>Agender@100</entry>
+	  <entry>Iron Golem@29d2</entry>
   </collection>
   <collection>
     <name>Janni</name>
-    <entry>Land@30</entry>
-    <entry>Fly@20</entry>
+	  <entry>Agender@68</entry>
+	  <entry>Male@68</entry>
+	  <entry>Female@68</entry>
+	  <entry>Janni@4d4</entry>
   </collection>
   <collection>
     <name>Juvenile Arrowhawk</name>
-    <entry>Fly@60</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Juvenile Arrowhawk@0</entry>
   </collection>
   <collection>
     <name>Juvenile Tojanida</name>
-    <entry>Land@10</entry>
-    <entry>Swim@90</entry>
+	  <entry>Agender@0</entry>
+	  <entry>Juvenile Tojanida@0</entry>
   </collection>
   <collection>
     <name>Kapoacinth</name>
-    <entry>Land@40</entry>
-    <entry>Swim@60</entry>
+	  <entry>Agender@5*12</entry>
+	  <entry>Kapoacinth@2d10</entry>
   </collection>
   <collection>
     <name>Kobold</name>
-    <entry>Land@30</entry>
+	  <entry>Male@32</entry>
+	  <entry>Female@30</entry>
+	  <entry>Kobold@3d4</entry>
   </collection>
   <collection>
     <name>Kolyarut</name>
-    <entry>Land@30</entry>
+	  <entry>Agender@5*12</entry>
+	  <entry>Kolyarut@2d12</entry>
   </collection>
   <collection>
     <name>Kraken</name>
-    <entry>Swim@20</entry>
+	  <entry>Male@316</entry>
+	  <entry>Female@316</entry>
+	  <entry>Kraken@8d10</entry>
   </collection>
   <collection>
     <name>Krenshar</name>
-    <entry>Land@40</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Krenshar@0</entry>
   </collection>
   <collection>
     <name>Kuo-toa</name>
-    <entry>Land@20</entry>
-    <entry>Swim@50</entry>
+	  <entry>Male@50</entry>
+	  <entry>Female@50</entry>
+	  <entry>Kuo-toa@4d4</entry>
   </collection>
   <collection>
     <name>Lacedon</name>
-    <entry>Land@30</entry>
-    <entry>Swim@30</entry>
+    <entry>Female@4*12</entry>
+	  <entry>Male@4*12</entry>
+	  <entry>Lacedon@2d12</entry>
   </collection>
   <collection>
     <name>Lamia</name>
-    <entry>Land@60</entry>
+	  <entry>Male@61</entry>
+	  <entry>Female@61</entry>
+	  <entry>Lamia@3d6</entry>
   </collection>
   <collection>
     <name>Lammasu</name>
@@ -2204,11 +2258,14 @@
   </collection>
   <collection>
     <name>Lemure</name>
-    <entry>Land@20</entry>
+	  <entry>Agender@50</entry>
+	  <entry>Lemure@4d4</entry>
   </collection>
   <collection>
     <name>Leonal</name>
-    <entry>Land@60</entry>
+	  <entry>Male@61</entry>
+	  <entry>Female@61</entry>
+	  <entry>Leonal@3d6</entry>
   </collection>
   <collection>
     <name>Leopard</name>
