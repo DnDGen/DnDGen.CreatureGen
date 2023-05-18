@@ -1298,6 +1298,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Leopard][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
             lengths[CreatureConstants.Leopard][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
             lengths[CreatureConstants.Leopard][CreatureConstants.Leopard] = GetMultiplierFromAverage(4 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/lillend.htm
+            lengths[CreatureConstants.Lillend][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Lillend][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Lillend][CreatureConstants.Lillend] = GetMultiplierFromAverage(20 * 12);
             //Source: https://www.dimensions.com/element/african-lion
             lengths[CreatureConstants.Lion][GenderConstants.Female] = GetBaseFromAverage(4 * 12 + 6);
             lengths[CreatureConstants.Lion][GenderConstants.Male] = GetBaseFromRange(4 * 12 + 6, 6 * 12 + 6);
@@ -1306,6 +1310,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Lion_Dire][GenderConstants.Female] = GetBaseFromUpTo(15 * 12);
             lengths[CreatureConstants.Lion_Dire][GenderConstants.Male] = GetBaseFromUpTo(15 * 12);
             lengths[CreatureConstants.Lion_Dire][CreatureConstants.Lion_Dire] = GetMultiplierFromUpTo(15 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/lizard.htm
+            lengths[CreatureConstants.Lizard][GenderConstants.Female] = GetBaseFromRange(12, 24);
+            lengths[CreatureConstants.Lizard][GenderConstants.Male] = GetBaseFromRange(12, 24);
+            lengths[CreatureConstants.Lizard][CreatureConstants.Lizard] = GetMultiplierFromRange(12, 24);
+            //Source: https://www.d20srd.org/srd/monsters/lizardMonitor.htm
+            lengths[CreatureConstants.Lizard_Monitor][GenderConstants.Female] = GetBaseFromRange(3 * 12, 5 * 12);
+            lengths[CreatureConstants.Lizard_Monitor][GenderConstants.Male] = GetBaseFromRange(3 * 12, 5 * 12);
+            lengths[CreatureConstants.Lizard_Monitor][CreatureConstants.Lizard_Monitor] = GetMultiplierFromRange(3 * 12, 5 * 12);
             lengths[CreatureConstants.Lizardfolk][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Lizardfolk][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Lizardfolk][CreatureConstants.Lizardfolk] = "0";
@@ -1315,11 +1327,28 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
             lengths[CreatureConstants.Locust_Swarm][GenderConstants.Agender] = GetBaseFromAverage(10 * 12);
             lengths[CreatureConstants.Locust_Swarm][CreatureConstants.Locust_Swarm] = GetMultiplierFromAverage(10 * 12);
+            lengths[CreatureConstants.Magmin][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.Magmin][CreatureConstants.Magmin] = "0";
+            //Source: https://www.dimensions.com/element/reef-manta-ray-mobula-alfredi
+            lengths[CreatureConstants.MantaRay][GenderConstants.Female] = GetBaseFromRange(5 * 12, 5 * 12 + 9);
+            lengths[CreatureConstants.MantaRay][GenderConstants.Male] = GetBaseFromRange(5 * 12, 5 * 12 + 9);
+            lengths[CreatureConstants.MantaRay][CreatureConstants.MantaRay] = GetMultiplierFromRange(5 * 12, 5 * 12 + 9);
+            //Source: https://forgottenrealms.fandom.com/wiki/Manticore
+            lengths[CreatureConstants.Manticore][GenderConstants.Female] = GetBaseFromAverage(10 * 12);
+            lengths[CreatureConstants.Manticore][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
+            lengths[CreatureConstants.Manticore][CreatureConstants.Manticore] = GetMultiplierFromAverage(10 * 12);
             //Source: https://forgottenrealms.fandom.com/wiki/Marilith
             lengths[CreatureConstants.Marilith][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
             lengths[CreatureConstants.Marilith][CreatureConstants.Marilith] = GetMultiplierFromAverage(20 * 12);
             lengths[CreatureConstants.Marut][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.Marut][CreatureConstants.Marut] = "0";
+            lengths[CreatureConstants.Medusa][GenderConstants.Female] = "0";
+            lengths[CreatureConstants.Medusa][GenderConstants.Male] = "0";
+            lengths[CreatureConstants.Medusa][CreatureConstants.Medusa] = "0";
+            //Source: https://jurassicworld-evolution.fandom.com/wiki/Velociraptor
+            lengths[CreatureConstants.Megaraptor][GenderConstants.Female] = GetBaseFromAverage(154);
+            lengths[CreatureConstants.Megaraptor][GenderConstants.Male] = GetBaseFromAverage(154);
+            lengths[CreatureConstants.Megaraptor][CreatureConstants.Megaraptor] = GetMultiplierFromAverage(154);
             lengths[CreatureConstants.Mephit_Air][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.Mephit_Air][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Mephit_Air][GenderConstants.Male] = "0";
@@ -1364,9 +1393,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Merfolk][GenderConstants.Female] = GetBaseFromAverage(8 * 12);
             lengths[CreatureConstants.Merfolk][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
             lengths[CreatureConstants.Merfolk][CreatureConstants.Merfolk] = GetMultiplierFromAverage(8 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/mimic.htm
+            lengths[CreatureConstants.Mimic][GenderConstants.Agender] = GetBaseFromRange(3 * 12, 10 * 12);
+            lengths[CreatureConstants.Mimic][CreatureConstants.Mimic] = GetMultiplierFromRange(3 * 12, 10 * 12);
+            lengths[CreatureConstants.MindFlayer][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.MindFlayer][CreatureConstants.MindFlayer] = "0";
             lengths[CreatureConstants.Minotaur][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Minotaur][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Minotaur][CreatureConstants.Minotaur] = "0";
+            lengths[CreatureConstants.Mohrg][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.Mohrg][CreatureConstants.Mohrg] = "0";
+            //Source: https://www.dimensions.com/element/tufted-capuchin-sapajus-apella
+            lengths[CreatureConstants.Monkey][GenderConstants.Female] = GetBaseFromRange(13, 22);
+            lengths[CreatureConstants.Monkey][GenderConstants.Male] = GetBaseFromRange(13, 22);
+            lengths[CreatureConstants.Monkey][CreatureConstants.Monkey] = GetMultiplierFromRange(13, 22);
             //Source: https://forgottenrealms.fandom.com/wiki/Dark_naga
             lengths[CreatureConstants.Naga_Dark][GenderConstants.Hermaphrodite] = GetBaseFromAverage(12 * 12);
             lengths[CreatureConstants.Naga_Dark][CreatureConstants.Naga_Dark] = GetMultiplierFromAverage(12 * 12);
@@ -1459,13 +1499,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Retriever][CreatureConstants.Retriever] = GetMultiplierFromAverage(14 * 12);
             lengths[CreatureConstants.Sahuagin][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Sahuagin][GenderConstants.Male] = "0";
-            lengths[CreatureConstants.Sahuagin][CreatureConstants.Locathah] = "0";
+            lengths[CreatureConstants.Sahuagin][CreatureConstants.Sahuagin] = "0";
             lengths[CreatureConstants.Sahuagin_Malenti][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Sahuagin_Malenti][GenderConstants.Male] = "0";
-            lengths[CreatureConstants.Sahuagin_Malenti][CreatureConstants.Locathah] = "0";
+            lengths[CreatureConstants.Sahuagin_Malenti][CreatureConstants.Sahuagin_Malenti] = "0";
             lengths[CreatureConstants.Sahuagin_Mutant][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Sahuagin_Mutant][GenderConstants.Male] = "0";
-            lengths[CreatureConstants.Sahuagin_Mutant][CreatureConstants.Locathah] = "0";
+            lengths[CreatureConstants.Sahuagin_Mutant][CreatureConstants.Sahuagin_Mutant] = "0";
             //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/salamander-article (average)
             //Scaling down by half for flamebrother, Scaling up x2 for noble.
             lengths[CreatureConstants.Salamander_Flamebrother][GenderConstants.Agender] = GetBaseFromAverage(20 * 12 / 2);
@@ -1625,18 +1665,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         private static string GetMultiplierFromUpTo(int upTo) => GetMultiplierFromRange(upTo * 9 / 11, upTo);
         private static string GetMultiplierFromAtLeast(int atLeast) => GetMultiplierFromRange(atLeast, atLeast * 11 / 9);
 
-        private static string GetBaseFromRange(int lower, int upper)
-        {
-            var roll = RollHelper.GetRollWithFewestDice(lower, upper);
-            var sections = roll.Split('+');
-            return sections[1];
-        }
+        private static string GetBaseFromRange(int lower, int upper) => GetFromRange(lower, upper, 1);
 
-        private static string GetMultiplierFromRange(int lower, int upper)
+        private static string GetMultiplierFromRange(int lower, int upper) => GetFromRange(lower, upper, 0);
+
+        private static string GetFromRange(int lower, int upper, int index)
         {
             var roll = RollHelper.GetRollWithFewestDice(lower, upper);
             var sections = roll.Split('+');
-            return sections[0];
+            if (sections.Length - 1 < index)
+                return "0";
+
+            return sections[index];
         }
 
         [TestCase(CreatureConstants.Aboleth, GenderConstants.Hermaphrodite, 20 * 12)]

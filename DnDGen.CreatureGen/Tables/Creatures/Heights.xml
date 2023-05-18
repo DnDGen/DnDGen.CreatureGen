@@ -2295,31 +2295,38 @@
   </collection>
   <collection>
     <name>Lillend</name>
-    <entry>Land@20</entry>
-    <entry>Fly@70</entry>
+	  <entry>Male@4*12+10</entry>
+	  <entry>Female@4*12+5</entry>
+	  <entry>Lillend@2d10</entry>
   </collection>
   <collection>
     <name>Lion</name>
-    <entry>Land@40</entry>
+	  <entry>Male@32</entry>
+	  <entry>Female@29</entry>
+	  <entry>Lion@4d3</entry>
   </collection>
   <collection>
     <name>Lizard</name>
-    <entry>Land@20</entry>
-    <entry>Climb@20</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Lion@1d2</entry>
   </collection>
   <collection>
     <name>Lizardfolk</name>
-    <entry>Land@30</entry>
+	  <entry>Male@60</entry>
+	  <entry>Female@60</entry>
+	  <entry>Lizardfolk@2d12</entry>
   </collection>
   <collection>
     <name>Locathah</name>
-    <entry>Land@10</entry>
-    <entry>Swim@60</entry>
+	  <entry>Male@60</entry>
+	  <entry>Female@60</entry>
+	  <entry>Locathah@1d12</entry>
   </collection>
   <collection>
     <name>Locust Swarm</name>
-    <entry>Land@10</entry>
-    <entry>Fly@30</entry>
+    <entry>Agender@100</entry>
+    <entry>Locust Swarm@8d4</entry>
   </collection>
   <collection>
     <name>Magma Mephit</name>
@@ -2330,46 +2337,59 @@
   </collection>
   <collection>
     <name>Magmin</name>
-    <entry>Land@30</entry>
+	  <entry>Agender@32</entry>
+	  <entry>Magmin@4d4</entry>
   </collection>
   <collection>
     <name>Manta Ray</name>
-    <entry>Swim@30</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Manta Ray@0</entry>
   </collection>
   <collection>
     <name>Manticore</name>
-    <entry>Land@30</entry>
-    <entry>Fly@50</entry>
+	  <entry>Male@32</entry>
+	  <entry>Female@29</entry>
+	  <entry>Manticore@4d3</entry>
   </collection>
   <collection>
     <name>Marilith</name>
-    <entry>Land@40</entry>
+	  <entry>Female@76</entry>
+	  <entry>Marilith@8d4</entry>
   </collection>
   <collection>
     <name>Marut</name>
-    <entry>Land@40</entry>
+	  <entry>Agender@100</entry>
+	  <entry>Marut@29d2</entry>
   </collection>
   <collection>
     <name>Medusa</name>
-    <entry>Land@30</entry>
+	  <entry>Male@56</entry>
+	  <entry>Female@56</entry>
+	  <entry>Medusa@4d4</entry>
   </collection>
   <collection>
     <name>Megaraptor</name>
-    <entry>Land@60</entry>
+	  <entry>Male@47</entry>
+	  <entry>Female@47</entry>
+	  <entry>Megaraptor@13d2</entry>
   </collection>
   <collection>
     <name>Merfolk</name>
-    <entry>Land@5</entry>
-    <entry>Swim@50</entry>
+	  <entry>Male@60</entry>
+	  <entry>Female@54</entry>
+	  <entry>Merfolk@1d12</entry>
   </collection>
   <collection>
     <name>Merrow</name>
-    <entry>Land@30</entry>
-    <entry>Swim@40</entry>
+	  <entry>Male@96</entry>
+	  <entry>Female@93</entry>
+	  <entry>Merrow@2d12</entry>
   </collection>
   <collection>
     <name>Mimic</name>
-    <entry>Land@10</entry>
+	  <entry>Agender@24</entry>
+	  <entry>Mimic@12d8</entry>
   </collection>
   <collection>
     <name>Mind Flayer (Illithid)</name>
@@ -2377,12 +2397,14 @@
   </collection>
   <collection>
     <name>Minor Xorn</name>
-    <entry>Land@20</entry>
-    <entry>Burrow@20</entry>
+	  <entry>Agender@31</entry>
+	  <entry>Minor Xorn@1d8</entry>
   </collection>
   <collection>
     <name>Minotaur</name>
-    <entry>Land@30</entry>
+	  <entry>Male@80</entry>
+	  <entry>Female@84</entry>
+	  <entry>Minotaur@2d6</entry>
   </collection>
   <collection>
     <name>Mohrg</name>
@@ -2864,8 +2886,9 @@
   </collection>
   <collection>
     <name>Malenti</name>
-    <entry>Land@30</entry>
-    <entry>Swim@40</entry>
+    <entry>Female@50</entry>
+	  <entry>Male@50</entry>
+	  <entry>Malenti@1d8</entry>
   </collection>
   <collection>
     <name>Salt Mephit</name>

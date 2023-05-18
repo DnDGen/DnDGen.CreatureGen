@@ -1219,12 +1219,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Leopard][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Leopard][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Leopard][CreatureConstants.Leopard] = "0";
+            //Using Human
+            wingspans[CreatureConstants.Lillend][GenderConstants.Female] = "4*12+5";
+            wingspans[CreatureConstants.Lillend][GenderConstants.Male] = "4*12+10";
+            wingspans[CreatureConstants.Lillend][CreatureConstants.Lillend] = "2d10";
             wingspans[CreatureConstants.Lion][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Lion][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Lion][CreatureConstants.Lion] = "0";
             wingspans[CreatureConstants.Lion_Dire][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Lion_Dire][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Lion_Dire][CreatureConstants.Lion_Dire] = "0";
+            wingspans[CreatureConstants.Lizard][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Lizard][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Lizard][CreatureConstants.Lizard] = "0";
+            wingspans[CreatureConstants.Lizard_Monitor][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Lizard_Monitor][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Lizard_Monitor][CreatureConstants.Lizard_Monitor] = "0";
             wingspans[CreatureConstants.Lizardfolk][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Lizardfolk][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Lizardfolk][CreatureConstants.Lizardfolk] = "0";
@@ -1234,10 +1244,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
             wingspans[CreatureConstants.Locust_Swarm][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.Locust_Swarm][CreatureConstants.Locust_Swarm] = "0";
+            wingspans[CreatureConstants.Magmin][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Magmin][CreatureConstants.Magmin] = "0";
+            //Source: https://www.dimensions.com/element/reef-manta-ray-mobula-alfredi
+            wingspans[CreatureConstants.MantaRay][GenderConstants.Female] = GetBaseFromRange(118, 138);
+            wingspans[CreatureConstants.MantaRay][GenderConstants.Male] = GetBaseFromRange(118, 138);
+            wingspans[CreatureConstants.MantaRay][CreatureConstants.MantaRay] = GetMultiplierFromRange(118, 138);
+            //Source: https://forgottenrealms.fandom.com/wiki/Manticore Using Large Red Dragon
+            wingspans[CreatureConstants.Manticore][GenderConstants.Female] = GetBaseFromAverage(45 * 12);
+            wingspans[CreatureConstants.Manticore][GenderConstants.Male] = GetBaseFromAverage(45 * 12);
+            wingspans[CreatureConstants.Manticore][CreatureConstants.Manticore] = GetMultiplierFromAverage(45 * 12);
             wingspans[CreatureConstants.Marilith][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Marilith][CreatureConstants.Marilith] = "0";
             wingspans[CreatureConstants.Marut][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.Marut][CreatureConstants.Marut] = "0";
+            wingspans[CreatureConstants.Medusa][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Medusa][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Medusa][CreatureConstants.Medusa] = "0";
+            wingspans[CreatureConstants.Megaraptor][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Megaraptor][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Megaraptor][CreatureConstants.Megaraptor] = "0";
             //Source: https://forgottenrealms.fandom.com/wiki/Mephit
             wingspans[CreatureConstants.Mephit_Air][GenderConstants.Agender] = GetBaseFromAverage(4 * 12);
             wingspans[CreatureConstants.Mephit_Air][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
@@ -1282,9 +1308,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Merfolk][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Merfolk][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Merfolk][CreatureConstants.Merfolk] = "0";
+            wingspans[CreatureConstants.Mimic][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Mimic][CreatureConstants.Mimic] = "0";
+            wingspans[CreatureConstants.MindFlayer][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.MindFlayer][CreatureConstants.MindFlayer] = "0";
             wingspans[CreatureConstants.Minotaur][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Minotaur][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Minotaur][CreatureConstants.Minotaur] = "0";
+            wingspans[CreatureConstants.Mohrg][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Mohrg][CreatureConstants.Mohrg] = "0";
+            wingspans[CreatureConstants.Monkey][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Monkey][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Monkey][CreatureConstants.Monkey] = "0";
             wingspans[CreatureConstants.Naga_Dark][GenderConstants.Hermaphrodite] = "0";
             wingspans[CreatureConstants.Naga_Dark][CreatureConstants.Naga_Dark] = "0";
             wingspans[CreatureConstants.Naga_Guardian][GenderConstants.Hermaphrodite] = "0";
@@ -1517,18 +1552,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         private static string GetMultiplierFromUpTo(int upTo) => GetMultiplierFromRange(upTo * 9 / 11, upTo);
         private static string GetMultiplierFromAtLeast(int atLeast) => GetMultiplierFromRange(atLeast, atLeast * 11 / 9);
 
-        private static string GetBaseFromRange(int lower, int upper)
-        {
-            var roll = RollHelper.GetRollWithFewestDice(lower, upper);
-            var sections = roll.Split('+');
-            return sections[1];
-        }
+        private static string GetBaseFromRange(int lower, int upper) => GetFromRange(lower, upper, 1);
 
-        private static string GetMultiplierFromRange(int lower, int upper)
+        private static string GetMultiplierFromRange(int lower, int upper) => GetFromRange(lower, upper, 0);
+
+        private static string GetFromRange(int lower, int upper, int index)
         {
             var roll = RollHelper.GetRollWithFewestDice(lower, upper);
             var sections = roll.Split('+');
-            return sections[0];
+            if (sections.Length - 1 < index)
+                return "0";
+
+            return sections[index];
         }
 
         [TestCase(CreatureConstants.Aboleth, GenderConstants.Hermaphrodite, 20 * 12)]
