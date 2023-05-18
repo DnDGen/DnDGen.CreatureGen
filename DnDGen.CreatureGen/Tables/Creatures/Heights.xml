@@ -2249,12 +2249,14 @@
   </collection>
   <collection>
     <name>Lammasu</name>
-    <entry>Land@30</entry>
-    <entry>Fly@60</entry>
+	  <entry>Male@54</entry>
+	  <entry>Female@54</entry>
+	  <entry>Lammasu@8d3</entry>
   </collection>
   <collection>
     <name>Lantern Archon</name>
-    <entry>Fly@60</entry>
+	  <entry>Agender@4</entry>
+	  <entry>Lantern Archon@8d4</entry>
   </collection>
   <collection>
     <name>Lemure</name>
@@ -2269,20 +2271,27 @@
   </collection>
   <collection>
     <name>Leopard</name>
-    <entry>Land@40</entry>
-    <entry>Climb@20</entry>
+	  <entry>Male@20</entry>
+	  <entry>Female@20</entry>
+	  <entry>Leopard@1d8</entry>
   </collection>
   <collection>
     <name>Light Horse</name>
-    <entry>Land@60</entry>
+	  <entry>Male@55</entry>
+	  <entry>Female@55</entry>
+	  <entry>Light Horse@2d3</entry>
   </collection>
   <collection>
     <name>Light Warhorse</name>
-    <entry>Land@60</entry>
+	  <entry>Male@55</entry>
+	  <entry>Female@55</entry>
+	  <entry>Light Warhorse@2d3</entry>
   </collection>
   <collection>
     <name>Lightfoot Halfling</name>
-    <entry>Land@20</entry>
+	  <entry>Male@2*12+8</entry>
+	  <entry>Female@2*12+6</entry>
+	  <entry>Lightfoot Halfling@2d4</entry>
   </collection>
   <collection>
     <name>Lillend</name>
