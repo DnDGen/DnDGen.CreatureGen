@@ -2309,7 +2309,7 @@
     <name>Lizard</name>
 	  <entry>Male@0</entry>
 	  <entry>Female@0</entry>
-	  <entry>Lion@1d2</entry>
+	  <entry>Lizard@1d2</entry>
   </collection>
   <collection>
     <name>Lizardfolk</name>
@@ -2393,7 +2393,8 @@
   </collection>
   <collection>
     <name>Mind Flayer (Illithid)</name>
-    <entry>Land@30</entry>
+	  <entry>Agender@61</entry>
+	  <entry>Mind Flayer (Illithid)@3d6</entry>
   </collection>
   <collection>
     <name>Minor Xorn</name>
@@ -2408,253 +2409,311 @@
   </collection>
   <collection>
     <name>Mohrg</name>
-    <entry>Land@30</entry>
+	  <entry>Agender@56</entry>
+	  <entry>Mohrg@4d4</entry>
   </collection>
   <collection>
     <name>Monitor Lizard</name>
-    <entry>Land@30</entry>
-    <entry>Swim@30</entry>
+	  <entry>Male@6</entry>
+	  <entry>Female@6</entry>
+	  <entry>Monitor Lizard@1d2</entry>
   </collection>
   <collection>
     <name>Monkey</name>
-    <entry>Land@30</entry>
-    <entry>Climb@30</entry>
+	  <entry>Male@8</entry>
+	  <entry>Female@8</entry>
+	  <entry>Monkey@2d4</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Colossal</name>
-    <entry>Land@40</entry>
-    <entry>Climb@40</entry>
+	  <entry>Male@85</entry>
+	  <entry>Female@85</entry>
+	  <entry>Monstrous Centipede, Colossal@1d20</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Gargantuan</name>
-    <entry>Land@40</entry>
-    <entry>Climb@40</entry>
+	  <entry>Male@42</entry>
+	  <entry>Female@42</entry>
+	  <entry>Monstrous Centipede, Gargantuan@1d10</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Huge</name>
-    <entry>Land@40</entry>
-    <entry>Climb@40</entry>
+	  <entry>Male@20</entry>
+	  <entry>Female@20</entry>
+	  <entry>Monstrous Centipede, Huge@1d6</entry>
   </collection>
   <collection>
-    <name>Monstrous Centipede, Large</name>
-    <entry>Land@40</entry>
-    <entry>Climb@40</entry>
+	  <name>Monstrous Centipede, Large</name>
+	  <entry>Male@9</entry>
+	  <entry>Female@9</entry>
+	  <entry>Monstrous Centipede, Large@1d4</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Medium</name>
-    <entry>Land@40</entry>
-    <entry>Climb@40</entry>
+	  <entry>Male@4</entry>
+	  <entry>Female@4</entry>
+	  <entry>Monstrous Centipede, Medium@1d2</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Small</name>
-    <entry>Land@30</entry>
-    <entry>Climb@30</entry>
+	  <entry>Male@1</entry>
+	  <entry>Female@1</entry>
+	  <entry>Monstrous Centipede, Small@1d2</entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, Tiny</name>
-    <entry>Land@20</entry>
-    <entry>Climb@20</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Monstrous Centipede, Tiny@1d2</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Colossal</name>
-    <entry>Land@50</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Monstrous Scorpion, Colossal@8d4</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Gargantuan</name>
-    <entry>Land@50</entry>
+	  <entry>Male@50</entry>
+	  <entry>Female@50</entry>
+	  <entry>Monstrous Scorpion, Gargantuan@4d4</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Huge</name>
-    <entry>Land@50</entry>
+	  <entry>Male@25</entry>
+	  <entry>Female@25</entry>
+	  <entry>Monstrous Scorpion, Huge@2d4</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Large</name>
-    <entry>Land@50</entry>
+	  <entry>Male@15</entry>
+	  <entry>Female@15</entry>
+	  <entry>Monstrous Scorpion, Large@1d4</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Medium</name>
-    <entry>Land@40</entry>
+	  <entry>Male@4</entry>
+	  <entry>Female@4</entry>
+	  <entry>Monstrous Scorpion, Medium@1d2</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Small</name>
-    <entry>Land@30</entry>
+	  <entry>Male@1</entry>
+	  <entry>Female@1</entry>
+	  <entry>Monstrous Scorpion, Small@1d2</entry>
   </collection>
   <collection>
     <name>Monstrous Scorpion, Tiny</name>
-    <entry>Land@20</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Monstrous Scorpion, Tiny@1d2</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Colossal</name>
-    <entry>Land@40</entry>
-    <entry>Climb@20</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Monstrous Spider, Hunter, Colossal@8d4</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Gargantuan</name>
-    <entry>Land@40</entry>
-    <entry>Climb@20</entry>
+	  <entry>Male@50</entry>
+	  <entry>Female@50</entry>
+	  <entry>Monstrous Spider, Hunter, Gargantuan@4d4</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Huge</name>
-    <entry>Land@40</entry>
-    <entry>Climb@20</entry>
+	  <entry>Male@25</entry>
+	  <entry>Female@25</entry>
+	  <entry>Monstrous Spider, Hunter, Huge@2d4</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Large</name>
-    <entry>Land@40</entry>
-    <entry>Climb@20</entry>
+	  <entry>Male@15</entry>
+	  <entry>Female@15</entry>
+	  <entry>Monstrous Spider, Hunter, Large@1d4</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Medium</name>
-    <entry>Land@40</entry>
-    <entry>Climb@20</entry>
+	  <entry>Male@4</entry>
+	  <entry>Female@4</entry>
+	  <entry>Monstrous Spider, Hunter, Medium@1d2</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Small</name>
-    <entry>Land@40</entry>
-    <entry>Climb@20</entry>
+	  <entry>Male@1</entry>
+	  <entry>Female@1</entry>
+	  <entry>Monstrous Spider, Hunter, Small@1d2</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, Tiny</name>
-    <entry>Land@30</entry>
-    <entry>Climb@10</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Monstrous Spider, Hunter, Tiny@1d2</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Colossal</name>
-    <entry>Land@30</entry>
-    <entry>Climb@20</entry>
+	  <entry>Male@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Monstrous Spider, Web-Spinner, Colossal@8d4</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Gargantuan</name>
-    <entry>Land@30</entry>
-    <entry>Climb@20</entry>
+	  <entry>Male@50</entry>
+	  <entry>Female@50</entry>
+	  <entry>Monstrous Spider, Web-Spinner, Gargantuan@4d4</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Huge</name>
-    <entry>Land@30</entry>
-    <entry>Climb@20</entry>
+	  <entry>Male@25</entry>
+	  <entry>Female@25</entry>
+	  <entry>Monstrous Spider, Web-Spinner, Huge@2d4</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Large</name>
-    <entry>Land@30</entry>
-    <entry>Climb@20</entry>
+	  <entry>Male@15</entry>
+	  <entry>Female@15</entry>
+	  <entry>Monstrous Spider, Web-Spinner, Large@1d4</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Medium</name>
-    <entry>Land@30</entry>
-    <entry>Climb@20</entry>
+	  <entry>Male@4</entry>
+	  <entry>Female@4</entry>
+	  <entry>Monstrous Spider, Web-Spinner, Medium@1d2</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Small</name>
-    <entry>Land@30</entry>
-    <entry>Climb@20</entry>
+	  <entry>Male@1</entry>
+	  <entry>Female@1</entry>
+	  <entry>Monstrous Spider, Web-Spinner, Small@1d2</entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, Tiny</name>
-    <entry>Land@20</entry>
-    <entry>Climb@10</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Monstrous Spider, Web-Spinner, Tiny@1d2</entry>
   </collection>
   <collection>
     <name>Mountain Dwarf</name>
-    <entry>Land@20</entry>
+	  <entry>Male@3*12+9</entry>
+	  <entry>Female@3*12+7</entry>
+	  <entry>Mountain Dwarf@2d4</entry>
   </collection>
   <collection>
     <name>Mule</name>
-    <entry>Land@30</entry>
+	  <entry>Male@52</entry>
+	  <entry>Female@52</entry>
+	  <entry>Mule@4d4</entry>
   </collection>
   <collection>
     <name>Mummy</name>
-    <entry>Land@20</entry>
+	  <entry>Female@56</entry>
+	  <entry>Male@56</entry>
+	  <entry>Mummy@4d4</entry>
   </collection>
   <collection>
     <name>Nalfeshnee</name>
-    <entry>Land@30</entry>
-    <entry>Fly@40</entry>
+    <entry>Agender@96</entry>
+    <entry>Nalfeshnee@24d6</entry>
   </collection>
   <collection>
     <name>Nessian Warhound</name>
-    <entry>Land@40</entry>
+	  <entry>Male@60</entry>
+	  <entry>Female@60</entry>
+	  <entry>Nessian Warhound@4d3</entry>
   </collection>
   <collection>
     <name>Night Hag</name>
-    <entry>Land@20</entry>
+	  <entry>Female@4*12+5</entry>
+	  <entry>Night Hag@2d10</entry>
   </collection>
   <collection>
     <name>Nightcrawler</name>
-    <entry>Land@30</entry>
-    <entry>Burrow@60</entry>
+    <entry>Agender@58</entry>
+    <entry>Nightcrawler@17d2</entry>
   </collection>
   <collection>
     <name>Nightmare</name>
-    <entry>Land@40</entry>
-    <entry>Fly@90</entry>
+	  <entry>Agender@55</entry>
+	  <entry>Nightmare@2d3</entry>
   </collection>
   <collection>
     <name>Nightmare, Cauchemar</name>
-    <entry>Land@40</entry>
-    <entry>Fly@90</entry>
+	  <entry>Agender@110</entry>
+	  <entry>Nightmare, Cauchemar@4d3</entry>
   </collection>
   <collection>
     <name>Nightwalker</name>
-    <entry>Land@40</entry>
-    <entry>Fly@20</entry>
+	  <entry>Agender@200</entry>
+	  <entry>Nightwalker@16d4</entry>
   </collection>
   <collection>
     <name>Nightwing</name>
-    <entry>Land@20</entry>
-    <entry>Fly@60</entry>
+	  <entry>Agender@142</entry>
+	  <entry>Nightwing@4d4</entry>
   </collection>
   <collection>
     <name>Nine-Headed Cryohydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Female@100</entry>
+	  <entry>Male@100</entry>
+	  <entry>Nine-Headed Cryohydra@8d4</entry>
   </collection>
   <collection>
     <name>Nine-Headed Hydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Female@100</entry>
+	  <entry>Male@100</entry>
+	  <entry>Nine-Headed Hydra@8d4</entry>
   </collection>
   <collection>
     <name>Nine-Headed Pyrohydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Female@100</entry>
+	  <entry>Male@100</entry>
+	  <entry>Nine-Headed Pyrohydra@8d4</entry>
   </collection>
   <collection>
     <name>Nixie</name>
-    <entry>Land@20</entry>
-    <entry>Swim@30</entry>
+	  <entry>Female@42</entry>
+	  <entry>Male@42</entry>
+	  <entry>Nixie@1d10</entry>
   </collection>
   <collection>
     <name>Noble Djinni</name>
-    <entry>Land@20</entry>
-    <entry>Fly@60</entry>
+	  <entry>Agender@100</entry>
+	  <entry>Female@100</entry>
+	  <entry>Male@100</entry>
+	  <entry>Noble Djinni@29d2</entry>
   </collection>
   <collection>
     <name>Noble Salamander</name>
-    <entry>Land@20</entry>
+	  <entry>Agender@200</entry>
+	  <entry>Noble Salamander@16d4</entry>
   </collection>
   <collection>
     <name>Nymph</name>
-    <entry>Land@30</entry>
-    <entry>Swim@20</entry>
+    <entry>Female@4*12+5</entry>
+    <entry>Nymph@2d6</entry>
   </collection>
   <collection>
     <name>Ochre Jelly</name>
-    <entry>Land@10</entry>
-    <entry>Climb@10</entry>
+    <entry>Agender@4</entry>
+    <entry>Ochre Jelly@1d2</entry>
   </collection>
   <collection>
     <name>Octopus</name>
-    <entry>Land@20</entry>
-    <entry>Swim@30</entry>
+	  <entry>Female@4</entry>
+	  <entry>Male@4</entry>
+	  <entry>Octopus@2d3</entry>
   </collection>
   <collection>
     <name>Ogre Mage</name>
-    <entry>Land@40</entry>
-    <entry>Fly@40</entry>
+	  <entry>Female@96</entry>
+	  <entry>Male@114</entry>
+	  <entry>Ogre Mage@2d6</entry>
   </collection>
   <collection>
     <name>Ogre</name>
-    <entry>Land@40</entry>
+	  <entry>Female@93</entry>
+	  <entry>Male@96</entry>
+	  <entry>Ogre@2d12</entry>
   </collection>
   <collection>
     <name>Ooze Mephit</name>
@@ -2665,90 +2724,112 @@
   </collection>
   <collection>
     <name>Orc</name>
-    <entry>Land@30</entry>
+	  <entry>Female@56</entry>
+	  <entry>Male@58</entry>
+	  <entry>Orc@1d12</entry>
   </collection>
   <collection>
     <name>Orca Whale</name>
-    <entry>Swim@50</entry>
+	  <entry>Female@60</entry>
+	  <entry>Male@60</entry>
+	  <entry>Orca Whale@3d10</entry>
   </collection>
   <collection>
     <name>Otyugh</name>
-    <entry>Land@20</entry>
+	  <entry>Hermaphrodite@158</entry>
+	  <entry>Otyugh@4d10</entry>
   </collection>
   <collection>
     <name>Owl</name>
-    <entry>Land@10</entry>
-    <entry>Fly@40</entry>
+	  <entry>Female@8</entry>
+	  <entry>Male@8</entry>
+	  <entry>Owl@1d6</entry>
   </collection>
   <collection>
     <name>Owlbear</name>
-    <entry>Land@30</entry>
+	  <entry>Female@29</entry>
+	  <entry>Male@39</entry>
+	  <entry>Owlbear@4d6</entry>
   </collection>
   <collection>
     <name>Pegasus</name>
-    <entry>Land@60</entry>
-    <entry>Fly@120</entry>
+	  <entry>Female@61</entry>
+	  <entry>Male@61</entry>
+	  <entry>Pegasus@3d6</entry>
   </collection>
   <collection>
     <name>Phantom Fungus</name>
-    <entry>Land@20</entry>
+	  <entry>Agender@61</entry>
+	  <entry>Phantom Fungus@3d6</entry>
   </collection>
   <collection>
     <name>Phase Spider</name>
-    <entry>Land@40</entry>
-    <entry>Climb@20</entry>
+	  <entry>Female@9</entry>
+	  <entry>Male@9</entry>
+	  <entry>Phase Spider@1d4</entry>
   </collection>
   <collection>
     <name>Phasm</name>
-    <entry>Land@30</entry>
+	  <entry>Agender@20</entry>
+	  <entry>Phasm@1d6</entry>
   </collection>
   <collection>
     <name>Pit Fiend</name>
-    <entry>Land@40</entry>
-    <entry>Fly@60</entry>
+    <entry>Agender@100</entry>
+    <entry>Pit Fiend@29d2</entry>
   </collection>
   <collection>
     <name>Pixie</name>
-    <entry>Land@20</entry>
-    <entry>Fly@60</entry>
+	  <entry>Female@23</entry>
+	  <entry>Male@24</entry>
+	  <entry>Pixie@3d6</entry>
   </collection>
   <collection>
     <name>Pixie with Irresistible dance</name>
-    <entry>Land@20</entry>
-    <entry>Fly@60</entry>
+	  <entry>Female@23</entry>
+	  <entry>Male@24</entry>
+	  <entry>Pixie with Irresistible dance@3d6</entry>
   </collection>
   <collection>
     <name>Polar Bear</name>
-    <entry>Land@40</entry>
-    <entry>Swim@30</entry>
+	  <entry>Female@29</entry>
+	  <entry>Male@39</entry>
+	  <entry>Polar Bear@4d6</entry>
   </collection>
   <collection>
     <name>Pony</name>
-    <entry>Land@40</entry>
+	  <entry>Female@20</entry>
+	  <entry>Male@20</entry>
+	  <entry>Pony@8d3</entry>
   </collection>
   <collection>
     <name>Porpoise</name>
-    <entry>Swim@80</entry>
+	  <entry>Female@13</entry>
+	  <entry>Male@13</entry>
+	  <entry>Porpoise@1d3</entry>
   </collection>
   <collection>
     <name>Pseudodragon</name>
-    <entry>Land@15</entry>
-    <entry>Fly@60</entry>
+	  <entry>Female@7</entry>
+	  <entry>Male@7</entry>
+	  <entry>Porpoise@1d2</entry>
   </collection>
   <collection>
     <name>Purple Worm</name>
-    <entry>Land@20</entry>
-    <entry>Burrow@20</entry>
-    <entry>Swim@10</entry>
+	  <entry>Female@50</entry>
+	  <entry>Male@50</entry>
+	  <entry>Purple Worm@4d4</entry>
   </collection>
   <collection>
     <name>Quasit</name>
-    <entry>Land@20</entry>
-    <entry>Fly@50</entry>
+    <entry>Agender@8</entry>
+    <entry>Quasit@4d4</entry>
   </collection>
   <collection>
     <name>Rakshasa</name>
-    <entry>Land@40</entry>
+	  <entry>Female@4*12+5</entry>
+	  <entry>Male@4*12+10</entry>
+	  <entry>Rakshasa@2d10</entry>
   </collection>
   <collection>
     <name>Rast</name>

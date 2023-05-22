@@ -2316,11 +2316,11 @@
   </collection>
   <collection>
     <name>Hyena</name>
-	  <entry>Adulthood@1d4+1</entry>
-	  <entry>Middle Age@1d3+5</entry>
-	  <entry>Old@1d3+8</entry>
-	  <entry>Venerable@(1d2-1)*7+1d6+1d2+10</entry>
-	  <entry>Maximum@13d2-1</entry>
+	  <entry>Adulthood@1d3+1</entry>
+	  <entry>Middle Age@1d2+4</entry>
+	  <entry>Old@1d3+6</entry>
+	  <entry>Venerable@(1d8-1)*2+1d2+9</entry>
+	  <entry>Maximum@3d6+7</entry>
   </collection>
   <collection>
     <name>Ice Devil (Gelugon)</name>
@@ -2442,11 +2442,11 @@
   </collection>
   <collection>
     <name>Leopard</name>
-	  <entry>Adulthood@1d6+1</entry>
-	  <entry>Middle Age@1d2+7</entry>
-	  <entry>Old@1d6+9</entry>
-	  <entry>Venerable@1d4+1d2+14</entry>
-	  <entry>Maximum@1d4+16</entry>
+	  <entry>Adulthood@1d4+1d2</entry>
+	  <entry>Middle Age@1d3+6</entry>
+	  <entry>Old@1d4+9</entry>
+	  <entry>Venerable@1d6+1d2+12</entry>
+	  <entry>Maximum@1d6+14</entry>
   </collection>
   <collection>
     <name>Light Horse</name>

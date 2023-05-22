@@ -402,6 +402,34 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Centaur][GenderConstants.Female] = GetBaseFromAverage(8 * 12);
             lengths[CreatureConstants.Centaur][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
             lengths[CreatureConstants.Centaur][CreatureConstants.Centaur] = GetMultiplierFromAverage(8 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Tiny
+            lengths[CreatureConstants.Centipede_Monstrous_Tiny][GenderConstants.Female] = GetBaseFromAverage(2 * 12);
+            lengths[CreatureConstants.Centipede_Monstrous_Tiny][GenderConstants.Male] = GetBaseFromAverage(2 * 12);
+            lengths[CreatureConstants.Centipede_Monstrous_Tiny][CreatureConstants.Centipede_Monstrous_Tiny] = GetBaseFromAverage(2 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Small
+            lengths[CreatureConstants.Centipede_Monstrous_Small][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
+            lengths[CreatureConstants.Centipede_Monstrous_Small][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
+            lengths[CreatureConstants.Centipede_Monstrous_Small][CreatureConstants.Centipede_Monstrous_Small] = GetBaseFromAverage(4 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Medium
+            lengths[CreatureConstants.Centipede_Monstrous_Medium][GenderConstants.Female] = GetBaseFromAverage(8 * 12);
+            lengths[CreatureConstants.Centipede_Monstrous_Medium][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
+            lengths[CreatureConstants.Centipede_Monstrous_Medium][CreatureConstants.Centipede_Monstrous_Medium] = GetBaseFromAverage(8 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Large
+            lengths[CreatureConstants.Centipede_Monstrous_Large][GenderConstants.Female] = GetBaseFromAverage(15 * 12);
+            lengths[CreatureConstants.Centipede_Monstrous_Large][GenderConstants.Male] = GetBaseFromAverage(15 * 12);
+            lengths[CreatureConstants.Centipede_Monstrous_Large][CreatureConstants.Centipede_Monstrous_Large] = GetBaseFromAverage(15 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Huge
+            lengths[CreatureConstants.Centipede_Monstrous_Huge][GenderConstants.Female] = GetBaseFromAverage(30 * 12);
+            lengths[CreatureConstants.Centipede_Monstrous_Huge][GenderConstants.Male] = GetBaseFromAverage(30 * 12);
+            lengths[CreatureConstants.Centipede_Monstrous_Huge][CreatureConstants.Centipede_Monstrous_Huge] = GetBaseFromAverage(30 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Gargantuan
+            lengths[CreatureConstants.Centipede_Monstrous_Gargantuan][GenderConstants.Female] = GetBaseFromAverage(60 * 12);
+            lengths[CreatureConstants.Centipede_Monstrous_Gargantuan][GenderConstants.Male] = GetBaseFromAverage(60 * 12);
+            lengths[CreatureConstants.Centipede_Monstrous_Gargantuan][CreatureConstants.Centipede_Monstrous_Gargantuan] = GetBaseFromAverage(60 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Colossal
+            lengths[CreatureConstants.Centipede_Monstrous_Colossal][GenderConstants.Female] = GetBaseFromAverage(120 * 12);
+            lengths[CreatureConstants.Centipede_Monstrous_Colossal][GenderConstants.Male] = GetBaseFromAverage(120 * 12);
+            lengths[CreatureConstants.Centipede_Monstrous_Colossal][CreatureConstants.Centipede_Monstrous_Colossal] = GetBaseFromAverage(120 * 12);
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
             lengths[CreatureConstants.Centipede_Swarm][GenderConstants.Agender] = GetBaseFromAverage(10 * 12);
             lengths[CreatureConstants.Centipede_Swarm][CreatureConstants.Centipede_Swarm] = GetMultiplierFromAverage(10 * 12);
@@ -1208,7 +1236,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Horse_Heavy][CreatureConstants.Horse_Heavy] = GetMultiplierFromAverage(8 * 12);
             lengths[CreatureConstants.Horse_Light][GenderConstants.Female] = GetBaseFromAverage(8 * 12);
             lengths[CreatureConstants.Horse_Light][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
-            lengths[CreatureConstants.Horse_Light][CreatureConstants.Horse_Light] = GetMultiplierFromAverage(8 * 121);
+            lengths[CreatureConstants.Horse_Light][CreatureConstants.Horse_Light] = GetMultiplierFromAverage(8 * 12);
             lengths[CreatureConstants.Horse_Heavy_War][GenderConstants.Female] = GetBaseFromAverage(8 * 12);
             lengths[CreatureConstants.Horse_Heavy_War][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
             lengths[CreatureConstants.Horse_Heavy_War][CreatureConstants.Horse_Heavy_War] = GetMultiplierFromAverage(8 * 12);
@@ -1407,6 +1435,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Monkey][GenderConstants.Female] = GetBaseFromRange(13, 22);
             lengths[CreatureConstants.Monkey][GenderConstants.Male] = GetBaseFromRange(13, 22);
             lengths[CreatureConstants.Monkey][CreatureConstants.Monkey] = GetMultiplierFromRange(13, 22);
+            //Source: https://www.dimensions.com/element/mule-equus-asinus-x-equus-caballus
+            lengths[CreatureConstants.Mule][GenderConstants.Female] = GetBaseFromRange(71, 87);
+            lengths[CreatureConstants.Mule][GenderConstants.Male] = GetBaseFromRange(71, 87);
+            lengths[CreatureConstants.Mule][CreatureConstants.Mule] = GetMultiplierFromRange(71, 87);
+            lengths[CreatureConstants.Mummy][GenderConstants.Female] = "0";
+            lengths[CreatureConstants.Mummy][GenderConstants.Male] = "0";
+            lengths[CreatureConstants.Mummy][CreatureConstants.Mummy] = "0";
             //Source: https://forgottenrealms.fandom.com/wiki/Dark_naga
             lengths[CreatureConstants.Naga_Dark][GenderConstants.Hermaphrodite] = GetBaseFromAverage(12 * 12);
             lengths[CreatureConstants.Naga_Dark][CreatureConstants.Naga_Dark] = GetMultiplierFromAverage(12 * 12);
@@ -1421,6 +1456,35 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Naga_Water][CreatureConstants.Naga_Water] = GetMultiplierFromRange(10 * 12, 20 * 12);
             lengths[CreatureConstants.Nalfeshnee][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.Nalfeshnee][CreatureConstants.Nalfeshnee] = "0";
+            lengths[CreatureConstants.NightHag][GenderConstants.Female] = "0";
+            lengths[CreatureConstants.NightHag][CreatureConstants.NightHag] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/nightshade.htm
+            lengths[CreatureConstants.Nightcrawler][GenderConstants.Agender] = GetBaseFromAverage(100 * 12);
+            lengths[CreatureConstants.Nightcrawler][CreatureConstants.Nightcrawler] = GetMultiplierFromAverage(100 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/nightmare.htm
+            lengths[CreatureConstants.Nightmare][GenderConstants.Agender] = GetBaseFromAverage(8 * 12);
+            lengths[CreatureConstants.Nightmare][CreatureConstants.Nightmare] = GetMultiplierFromAverage(8 * 12);
+            //Scale up x2
+            lengths[CreatureConstants.Nightmare_Cauchemar][GenderConstants.Agender] = GetBaseFromAverage(8 * 12 * 2);
+            lengths[CreatureConstants.Nightmare_Cauchemar][CreatureConstants.Nightmare_Cauchemar] = GetMultiplierFromAverage(8 * 12 * 2);
+            lengths[CreatureConstants.Nightwalker][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.Nightwalker][CreatureConstants.Nightwalker] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/nightshade.htm
+            //https://www.dimensions.com/element/giant-golden-crowned-flying-fox-acerodon-jubatus scaled up: [11,16]*40*12/[59,67] = [89,115]
+            lengths[CreatureConstants.Nightwing][GenderConstants.Agender] = GetBaseFromRange(89, 115);
+            lengths[CreatureConstants.Nightwing][CreatureConstants.Nightwing] = GetMultiplierFromRange(89, 115);
+            lengths[CreatureConstants.Nixie][GenderConstants.Female] = "0";
+            lengths[CreatureConstants.Nixie][GenderConstants.Male] = "0";
+            lengths[CreatureConstants.Nixie][CreatureConstants.Nixie] = "0";
+            lengths[CreatureConstants.Nymph][GenderConstants.Female] = "0";
+            lengths[CreatureConstants.Nymph][CreatureConstants.Nymph] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/ooze.htm#ochreJelly
+            lengths[CreatureConstants.OchreJelly][GenderConstants.Agender] = GetBaseFromAverage(15 * 12);
+            lengths[CreatureConstants.OchreJelly][CreatureConstants.OchreJelly] = GetMultiplierFromAverage(15 * 12);
+            //Source: https://www.dimensions.com/element/common-octopus-octopus-vulgaris
+            lengths[CreatureConstants.Octopus][GenderConstants.Female] = GetBaseFromRange(30, 39);
+            lengths[CreatureConstants.Octopus][GenderConstants.Male] = GetBaseFromRange(30, 39);
+            lengths[CreatureConstants.Octopus][CreatureConstants.Octopus] = GetMultiplierFromRange(30, 39);
             //Source: https://www.d20srd.org/srd/monsters/octopusGiant.htm
             lengths[CreatureConstants.Octopus_Giant][GenderConstants.Female] = GetBaseFromAtLeast(10 * 12);
             lengths[CreatureConstants.Octopus_Giant][GenderConstants.Male] = GetBaseFromAtLeast(10 * 12);
@@ -1440,11 +1504,37 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Orc_Half][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Orc_Half][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Orc_Half][CreatureConstants.Orc_Half] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/otyugh.htm
+            lengths[CreatureConstants.Otyugh][GenderConstants.Hermaphrodite] = GetBaseFromAverage(8 * 12);
+            lengths[CreatureConstants.Otyugh][CreatureConstants.Otyugh] = GetMultiplierFromAverage(8 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/owl.htm
+            lengths[CreatureConstants.Owl][GenderConstants.Female] = GetBaseFromRange(12, 24);
+            lengths[CreatureConstants.Owl][GenderConstants.Male] = GetBaseFromRange(12, 24);
+            lengths[CreatureConstants.Owl][CreatureConstants.Owl] = GetMultiplierFromRange(12, 24);
             //Source: https://www.d20srd.org/srd/monsters/owlGiant.htm
             //https://www.dimensions.com/element/great-horned-owl-bubo-virginianus scale up: [17,25]*9*12/[9,14] = [204,193]
             lengths[CreatureConstants.Owl_Giant][GenderConstants.Female] = GetBaseFromRange(193, 204);
             lengths[CreatureConstants.Owl_Giant][GenderConstants.Male] = GetBaseFromRange(193, 204);
             lengths[CreatureConstants.Owl_Giant][CreatureConstants.Owl_Giant] = GetMultiplierFromRange(193, 204);
+            //Source: https://forgottenrealms.fandom.com/wiki/Owlbear Females are "a little smaller", so 95%
+            lengths[CreatureConstants.Owlbear][GenderConstants.Female] = GetBaseFromAverage(91);
+            lengths[CreatureConstants.Owlbear][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
+            lengths[CreatureConstants.Owlbear][CreatureConstants.Owlbear] = GetMultiplierFromAverage(8 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/pegasus.htm
+            //Heavy horse as similar height, so using for length
+            lengths[CreatureConstants.Pegasus][GenderConstants.Female] = GetBaseFromAverage(8 * 12);
+            lengths[CreatureConstants.Pegasus][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
+            lengths[CreatureConstants.Pegasus][CreatureConstants.Pegasus] = GetMultiplierFromAverage(8 * 12);
+            //Source: https://www.d20pfsrd.com/bestiary/monster-listings/plants/fungus-phantom/ No actual length defined, but it's 4-legged, so assume square-ish
+            lengths[CreatureConstants.PhantomFungus][GenderConstants.Agender] = GetBaseFromAverage(6 * 12);
+            lengths[CreatureConstants.PhantomFungus][CreatureConstants.PhantomFungus] = GetMultiplierFromAverage(6 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/phaseSpider.htm
+            lengths[CreatureConstants.PhaseSpider][GenderConstants.Female] = GetBaseFromAverage(8 * 12);
+            lengths[CreatureConstants.PhaseSpider][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
+            lengths[CreatureConstants.PhaseSpider][CreatureConstants.PhaseSpider] = GetMultiplierFromAverage(8 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/phasm.htm
+            lengths[CreatureConstants.Phasm][GenderConstants.Agender] = GetBaseFromAverage(5 * 12);
+            lengths[CreatureConstants.Phasm][CreatureConstants.Phasm] = GetMultiplierFromAverage(5 * 12);
             lengths[CreatureConstants.PitFiend][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.PitFiend][CreatureConstants.PitFiend] = "0";
             lengths[CreatureConstants.Pixie][GenderConstants.Female] = "0";
@@ -1453,9 +1543,29 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Pixie_WithIrresistibleDance][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Pixie_WithIrresistibleDance][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Pixie_WithIrresistibleDance][CreatureConstants.Pixie_WithIrresistibleDance] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/pony.htm
+            //Scaling from light horse: 8*12*[28,44]/[57,61] = [47,69]
+            lengths[CreatureConstants.Pony][GenderConstants.Female] = GetBaseFromRange(47, 69);
+            lengths[CreatureConstants.Pony][GenderConstants.Male] = GetBaseFromRange(47, 69);
+            lengths[CreatureConstants.Pony][CreatureConstants.Pony] = GetMultiplierFromRange(47, 69);
+            lengths[CreatureConstants.Pony_War][GenderConstants.Female] = GetBaseFromRange(47, 69);
+            lengths[CreatureConstants.Pony_War][GenderConstants.Male] = GetBaseFromRange(47, 69);
+            lengths[CreatureConstants.Pony_War][CreatureConstants.Pony_War] = GetMultiplierFromRange(47, 69);
+            //Source: https://www.d20srd.org/srd/monsters/porpoise.htm
+            lengths[CreatureConstants.Porpoise][GenderConstants.Female] = GetBaseFromRange(4 * 12, 6 * 12);
+            lengths[CreatureConstants.Porpoise][GenderConstants.Male] = GetBaseFromRange(4 * 12, 6 * 12);
+            lengths[CreatureConstants.Porpoise][CreatureConstants.Porpoise] = GetMultiplierFromRange(4 * 12, 6 * 12);
             lengths[CreatureConstants.PrayingMantis_Giant][GenderConstants.Female] = "0";
             lengths[CreatureConstants.PrayingMantis_Giant][GenderConstants.Male] = "0";
             lengths[CreatureConstants.PrayingMantis_Giant][CreatureConstants.PrayingMantis_Giant] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/pseudodragon.htm
+            lengths[CreatureConstants.Pseudodragon][GenderConstants.Female] = GetBaseFromAverage(3 * 12);
+            lengths[CreatureConstants.Pseudodragon][GenderConstants.Male] = GetBaseFromAverage(3 * 12);
+            lengths[CreatureConstants.Pseudodragon][CreatureConstants.Pseudodragon] = GetMultiplierFromAverage(3 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/purpleWorm.htm
+            lengths[CreatureConstants.PurpleWorm][GenderConstants.Female] = GetBaseFromAverage(80 * 12);
+            lengths[CreatureConstants.PurpleWorm][GenderConstants.Male] = GetBaseFromAverage(80 * 12);
+            lengths[CreatureConstants.PurpleWorm][CreatureConstants.PurpleWorm] = GetMultiplierFromAverage(80 * 12);
             //Source: https://forgottenrealms.fandom.com/wiki/Hydra
             lengths[CreatureConstants.Pyrohydra_5Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
             lengths[CreatureConstants.Pyrohydra_5Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
@@ -1483,6 +1593,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Pyrohydra_12Heads][CreatureConstants.Pyrohydra_12Heads] = GetMultiplierFromAverage(20 * 12);
             lengths[CreatureConstants.Quasit][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.Quasit][CreatureConstants.Quasit] = "0";
+            lengths[CreatureConstants.Rakshasa][GenderConstants.Female] = "0";
+            lengths[CreatureConstants.Rakshasa][GenderConstants.Male] = "0";
+            lengths[CreatureConstants.Rakshasa][CreatureConstants.Rakshasa] = "0";
             //Source: https://www.dimensions.com/element/common-rat
             lengths[CreatureConstants.Rat][GenderConstants.Female] = GetBaseFromRange(6, 10);
             lengths[CreatureConstants.Rat][GenderConstants.Male] = GetBaseFromRange(6, 10);
@@ -1518,6 +1631,34 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Satyr][CreatureConstants.Satyr] = "0";
             lengths[CreatureConstants.Satyr_WithPipes][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Satyr_WithPipes][CreatureConstants.Satyr] = "0";
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Scorpion,_Tiny
+            lengths[CreatureConstants.Scorpion_Monstrous_Tiny][GenderConstants.Female] = GetBaseFromAverage(2 * 12);
+            lengths[CreatureConstants.Scorpion_Monstrous_Tiny][GenderConstants.Male] = GetBaseFromAverage(2 * 12);
+            lengths[CreatureConstants.Scorpion_Monstrous_Tiny][CreatureConstants.Scorpion_Monstrous_Tiny] = GetBaseFromAverage(2 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Scorpion,_Small
+            lengths[CreatureConstants.Scorpion_Monstrous_Small][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
+            lengths[CreatureConstants.Scorpion_Monstrous_Small][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
+            lengths[CreatureConstants.Scorpion_Monstrous_Small][CreatureConstants.Scorpion_Monstrous_Small] = GetBaseFromAverage(4 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Scorpion,_Medium
+            lengths[CreatureConstants.Scorpion_Monstrous_Medium][GenderConstants.Female] = GetBaseFromAverage(6 * 12);
+            lengths[CreatureConstants.Scorpion_Monstrous_Medium][GenderConstants.Male] = GetBaseFromAverage(6 * 12);
+            lengths[CreatureConstants.Scorpion_Monstrous_Medium][CreatureConstants.Scorpion_Monstrous_Medium] = GetBaseFromAverage(6 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Scorpion,_Large
+            lengths[CreatureConstants.Scorpion_Monstrous_Large][GenderConstants.Female] = GetBaseFromAverage(10 * 12);
+            lengths[CreatureConstants.Scorpion_Monstrous_Large][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
+            lengths[CreatureConstants.Scorpion_Monstrous_Large][CreatureConstants.Scorpion_Monstrous_Large] = GetBaseFromAverage(10 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Scorpion,_Huge
+            lengths[CreatureConstants.Scorpion_Monstrous_Huge][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Scorpion_Monstrous_Huge][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Scorpion_Monstrous_Huge][CreatureConstants.Scorpion_Monstrous_Huge] = GetBaseFromAverage(20 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Scorpion,_Gargantuan
+            lengths[CreatureConstants.Scorpion_Monstrous_Gargantuan][GenderConstants.Female] = GetBaseFromAverage(40 * 12);
+            lengths[CreatureConstants.Scorpion_Monstrous_Gargantuan][GenderConstants.Male] = GetBaseFromAverage(40 * 12);
+            lengths[CreatureConstants.Scorpion_Monstrous_Gargantuan][CreatureConstants.Scorpion_Monstrous_Gargantuan] = GetBaseFromAverage(40 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Scorpion,_Colossal
+            lengths[CreatureConstants.Scorpion_Monstrous_Colossal][GenderConstants.Female] = GetBaseFromAverage(80 * 12);
+            lengths[CreatureConstants.Scorpion_Monstrous_Colossal][GenderConstants.Male] = GetBaseFromAverage(80 * 12);
+            lengths[CreatureConstants.Scorpion_Monstrous_Colossal][CreatureConstants.Scorpion_Monstrous_Colossal] = GetBaseFromAverage(80 * 12);
             lengths[CreatureConstants.SeaHag][GenderConstants.Female] = "0";
             lengths[CreatureConstants.SeaHag][CreatureConstants.SeaHag] = "0";
             //Source: https://www.d20srd.org/srd/monsters/shadow.htm
@@ -1564,6 +1705,62 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Snake_Constrictor_Giant][GenderConstants.Female] = GetBaseFromRange(8 * 12, 26 * 12);
             lengths[CreatureConstants.Snake_Constrictor_Giant][GenderConstants.Male] = GetBaseFromRange(8 * 12, 26 * 12);
             lengths[CreatureConstants.Snake_Constrictor_Giant][CreatureConstants.Snake_Constrictor_Giant] = GetMultiplierFromRange(8 * 12, 26 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Tiny
+            lengths[CreatureConstants.Spider_Monstrous_Hunter_Tiny][GenderConstants.Female] = GetBaseFromAverage(2 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_Hunter_Tiny][GenderConstants.Male] = GetBaseFromAverage(2 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_Hunter_Tiny][CreatureConstants.Spider_Monstrous_Hunter_Tiny] = GetMultiplierFromAverage(2 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Small
+            lengths[CreatureConstants.Spider_Monstrous_Hunter_Small][GenderConstants.Female] = GetBaseFromAverage(3 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_Hunter_Small][GenderConstants.Male] = GetBaseFromAverage(3 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_Hunter_Small][CreatureConstants.Spider_Monstrous_Hunter_Small] = GetMultiplierFromAverage(3 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Medium
+            lengths[CreatureConstants.Spider_Monstrous_Hunter_Medium][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_Hunter_Medium][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_Hunter_Medium][CreatureConstants.Spider_Monstrous_Hunter_Medium] = GetMultiplierFromAverage(5 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Large
+            lengths[CreatureConstants.Spider_Monstrous_Hunter_Large][GenderConstants.Female] = GetBaseFromAverage(10 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_Hunter_Large][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_Hunter_Large][CreatureConstants.Spider_Monstrous_Hunter_Large] = GetMultiplierFromAverage(10 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Huge
+            lengths[CreatureConstants.Spider_Monstrous_Hunter_Huge][GenderConstants.Female] = GetBaseFromAverage(15 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_Hunter_Huge][GenderConstants.Male] = GetBaseFromAverage(15 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_Hunter_Huge][CreatureConstants.Spider_Monstrous_Hunter_Huge] = GetMultiplierFromAverage(15 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Gargantuan
+            lengths[CreatureConstants.Spider_Monstrous_Hunter_Gargantuan][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_Hunter_Gargantuan][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_Hunter_Gargantuan][CreatureConstants.Spider_Monstrous_Hunter_Gargantuan] = GetMultiplierFromAverage(20 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Colossal
+            lengths[CreatureConstants.Spider_Monstrous_Hunter_Colossal][GenderConstants.Female] = GetBaseFromAverage(40 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_Hunter_Colossal][GenderConstants.Male] = GetBaseFromAverage(40 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_Hunter_Colossal][CreatureConstants.Spider_Monstrous_Hunter_Colossal] = GetMultiplierFromAverage(40 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Tiny
+            lengths[CreatureConstants.Spider_Monstrous_WebSpinner_Tiny][GenderConstants.Female] = GetBaseFromAverage(2 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_WebSpinner_Tiny][GenderConstants.Male] = GetBaseFromAverage(2 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_WebSpinner_Tiny][CreatureConstants.Spider_Monstrous_WebSpinner_Tiny] = GetMultiplierFromAverage(2 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Small
+            lengths[CreatureConstants.Spider_Monstrous_WebSpinner_Small][GenderConstants.Female] = GetBaseFromAverage(3 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_WebSpinner_Small][GenderConstants.Male] = GetBaseFromAverage(3 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_WebSpinner_Small][CreatureConstants.Spider_Monstrous_WebSpinner_Small] = GetMultiplierFromAverage(3 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Medium
+            lengths[CreatureConstants.Spider_Monstrous_WebSpinner_Medium][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_WebSpinner_Medium][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_WebSpinner_Medium][CreatureConstants.Spider_Monstrous_WebSpinner_Medium] = GetMultiplierFromAverage(5 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Large
+            lengths[CreatureConstants.Spider_Monstrous_WebSpinner_Large][GenderConstants.Female] = GetBaseFromAverage(10 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_WebSpinner_Large][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_WebSpinner_Large][CreatureConstants.Spider_Monstrous_WebSpinner_Large] = GetMultiplierFromAverage(10 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Huge
+            lengths[CreatureConstants.Spider_Monstrous_WebSpinner_Huge][GenderConstants.Female] = GetBaseFromAverage(15 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_WebSpinner_Huge][GenderConstants.Male] = GetBaseFromAverage(15 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_WebSpinner_Huge][CreatureConstants.Spider_Monstrous_WebSpinner_Huge] = GetMultiplierFromAverage(15 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Gargantuan
+            lengths[CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan][CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan] = GetMultiplierFromAverage(20 * 12);
+            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Colossal
+            lengths[CreatureConstants.Spider_Monstrous_WebSpinner_Colossal][GenderConstants.Female] = GetBaseFromAverage(40 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_WebSpinner_Colossal][GenderConstants.Male] = GetBaseFromAverage(40 * 12);
+            lengths[CreatureConstants.Spider_Monstrous_WebSpinner_Colossal][CreatureConstants.Spider_Monstrous_WebSpinner_Colossal] = GetMultiplierFromAverage(40 * 12);
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
             lengths[CreatureConstants.Spider_Swarm][GenderConstants.Agender] = GetBaseFromAverage(10 * 12);
             lengths[CreatureConstants.Spider_Swarm][CreatureConstants.Spider_Swarm] = GetMultiplierFromAverage(10 * 12);
@@ -1695,6 +1892,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Locathah, GenderConstants.Female, 5 * 12)]
         [TestCase(CreatureConstants.Minotaur, GenderConstants.Male, 9 * 12)]
         [TestCase(CreatureConstants.Minotaur, GenderConstants.Female, 7 * 12)]
+        [TestCase(CreatureConstants.Owlbear, GenderConstants.Male, 8 * 12)]
+        [TestCase(CreatureConstants.Owlbear, GenderConstants.Female, 91)]
         public void RollCalculationsAreAccurate_FromAverage(string creature, string gender, int average)
         {
             var lengths = GetCreatureLengths();
