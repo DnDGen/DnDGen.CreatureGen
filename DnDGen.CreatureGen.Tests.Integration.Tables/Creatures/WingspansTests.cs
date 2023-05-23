@@ -1484,6 +1484,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Rakshasa][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Rakshasa][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Rakshasa][CreatureConstants.Rakshasa] = "0";
+            wingspans[CreatureConstants.Rast][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Rast][CreatureConstants.Rast] = "0";
             wingspans[CreatureConstants.Rat][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Rat][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Rat][CreatureConstants.Rat] = "0";
@@ -1492,8 +1494,32 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Rat_Dire][CreatureConstants.Rat_Dire] = "0";
             wingspans[CreatureConstants.Rat_Swarm][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.Rat_Swarm][CreatureConstants.Rat_Swarm] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/raven.htm
+            wingspans[CreatureConstants.Raven][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
+            wingspans[CreatureConstants.Raven][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
+            wingspans[CreatureConstants.Raven][CreatureConstants.Raven] = GetMultiplierFromAverage(4 * 12);
+            wingspans[CreatureConstants.Ravid][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Ravid][CreatureConstants.Ravid] = "0";
+            wingspans[CreatureConstants.RazorBoar][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.RazorBoar][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.RazorBoar][CreatureConstants.RazorBoar] = "0";
+            wingspans[CreatureConstants.Remorhaz][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Remorhaz][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Remorhaz][CreatureConstants.Remorhaz] = "0";
             wingspans[CreatureConstants.Retriever][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.Retriever][CreatureConstants.Retriever] = "0";
+            wingspans[CreatureConstants.Rhinoceras][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Rhinoceras][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Rhinoceras][CreatureConstants.Rhinoceras] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Roc
+            wingspans[CreatureConstants.Roc][GenderConstants.Female] = GetBaseFromRange(80 * 12, 120 * 12);
+            wingspans[CreatureConstants.Roc][GenderConstants.Male] = GetBaseFromRange(80 * 12, 120 * 12);
+            wingspans[CreatureConstants.Roc][CreatureConstants.Roc] = GetMultiplierFromRange(80 * 12, 120 * 12);
+            wingspans[CreatureConstants.Roper][GenderConstants.Hermaphrodite] = "0";
+            wingspans[CreatureConstants.Roper][CreatureConstants.Roper] = "0";
+            wingspans[CreatureConstants.RustMonster][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.RustMonster][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.RustMonster][CreatureConstants.RustMonster] = "0";
             wingspans[CreatureConstants.Sahuagin][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Sahuagin][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Sahuagin][CreatureConstants.Sahuagin] = "0";
@@ -1534,6 +1560,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Scorpion_Monstrous_Colossal][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Scorpion_Monstrous_Colossal][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Scorpion_Monstrous_Colossal][CreatureConstants.Scorpion_Monstrous_Colossal] = "0";
+            wingspans[CreatureConstants.Scorpionfolk][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Scorpionfolk][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Scorpionfolk][CreatureConstants.Scorpionfolk] = "0";
+            wingspans[CreatureConstants.SeaCat][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.SeaCat][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.SeaCat][CreatureConstants.SeaCat] = "0";
             wingspans[CreatureConstants.SeaHag][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.SeaHag][CreatureConstants.SeaHag] = "0";
             //Source: https://www.d20srd.org/srd/monsters/shadow.htm
@@ -1541,6 +1573,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Shadow][CreatureConstants.Shadow] = "0";
             wingspans[CreatureConstants.Shadow_Greater][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.Shadow_Greater][CreatureConstants.Shadow_Greater] = "0";
+            wingspans[CreatureConstants.ShadowMastiff][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.ShadowMastiff][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.ShadowMastiff][CreatureConstants.ShadowMastiff] = "0";
+            wingspans[CreatureConstants.ShamblingMound][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.ShamblingMound][CreatureConstants.ShamblingMound] = "0";
             wingspans[CreatureConstants.Shark_Medium][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Shark_Medium][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Shark_Medium][CreatureConstants.Shark_Medium] = "0";
@@ -1553,6 +1590,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Shark_Dire][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Shark_Dire][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Shark_Dire][CreatureConstants.Shark_Dire] = "0";
+            wingspans[CreatureConstants.ShieldGuardian][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.ShieldGuardian][CreatureConstants.ShieldGuardian] = "0";
+            wingspans[CreatureConstants.ShockerLizard][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.ShockerLizard][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.ShockerLizard][CreatureConstants.ShockerLizard] = "0";
+            wingspans[CreatureConstants.Shrieker][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Shrieker][CreatureConstants.Shrieker] = "0";
+            wingspans[CreatureConstants.Skum][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Skum][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Skum][CreatureConstants.Skum] = "0";
             //Source: https://forgottenrealms.fandom.com/wiki/Blue_slaad
             wingspans[CreatureConstants.Slaad_Blue][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.Slaad_Blue][CreatureConstants.Slaad_Blue] = "0";
@@ -1574,6 +1621,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Snake_Constrictor_Giant][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Snake_Constrictor_Giant][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Snake_Constrictor_Giant][CreatureConstants.Snake_Constrictor_Giant] = "0";
+            wingspans[CreatureConstants.Spectre][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Spectre][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Spectre][CreatureConstants.Spectre] = "0";
             wingspans[CreatureConstants.Spider_Monstrous_Hunter_Tiny][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Spider_Monstrous_Hunter_Tiny][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Spider_Monstrous_Hunter_Tiny][CreatureConstants.Spider_Monstrous_Hunter_Tiny] = "0";
@@ -1619,12 +1669,23 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
             wingspans[CreatureConstants.Spider_Swarm][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.Spider_Swarm][CreatureConstants.Spider_Swarm] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/spiderEater.htm
+            wingspans[CreatureConstants.SpiderEater][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
+            wingspans[CreatureConstants.SpiderEater][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
+            wingspans[CreatureConstants.SpiderEater][CreatureConstants.SpiderEater] = GetMultiplierFromAverage(20 * 12);
+            wingspans[CreatureConstants.Squid][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Squid][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Squid][CreatureConstants.Squid] = "0";
             wingspans[CreatureConstants.Squid_Giant][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Squid_Giant][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Squid_Giant][CreatureConstants.Squid_Giant] = "0";
             wingspans[CreatureConstants.StagBeetle_Giant][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.StagBeetle_Giant][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.StagBeetle_Giant][CreatureConstants.StagBeetle_Giant] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/stirge.htm
+            wingspans[CreatureConstants.Stirge][GenderConstants.Female] = GetBaseFromAverage(24);
+            wingspans[CreatureConstants.Stirge][GenderConstants.Male] = GetBaseFromAverage(24);
+            wingspans[CreatureConstants.Stirge][CreatureConstants.Stirge] = GetMultiplierFromAverage(24);
             //Source: https://forgottenrealms.fandom.com/wiki/Succubus - Large wings, so double height
             wingspans[CreatureConstants.Succubus][GenderConstants.Female] = GetBaseFromAverage(6 * 12 * 2);
             wingspans[CreatureConstants.Succubus][GenderConstants.Male] = GetBaseFromAverage(6 * 12 * 2);
@@ -1644,6 +1705,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Tojanida_Adult][CreatureConstants.Tojanida_Adult] = "0";
             wingspans[CreatureConstants.Tojanida_Elder][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.Tojanida_Elder][CreatureConstants.Tojanida_Elder] = "0";
+            wingspans[CreatureConstants.Troll][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Troll][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Troll][CreatureConstants.Troll] = "0";
+            wingspans[CreatureConstants.Troll_Scrag][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Troll_Scrag][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Troll_Scrag][CreatureConstants.Troll_Scrag] = "0";
+            wingspans[CreatureConstants.VioletFungus][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.VioletFungus][CreatureConstants.VioletFungus] = "0";
             //Source: https://forgottenrealms.fandom.com/wiki/Vrock - "broad" wings, so double height
             wingspans[CreatureConstants.Vrock][GenderConstants.Agender] = GetBaseFromAverage(8 * 12 * 2);
             wingspans[CreatureConstants.Vrock][CreatureConstants.Vrock] = GetMultiplierFromAverage(8 * 12 * 2);
