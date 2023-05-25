@@ -1403,6 +1403,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Giant_Hill][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Giant_Hill, 4500);
             weights[CreatureConstants.Giant_Hill][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Giant_Hill, 4500);
             weights[CreatureConstants.Giant_Hill][CreatureConstants.Giant_Hill] = GetMultiplierFromAverage(CreatureConstants.Giant_Hill, 4500);
+            //Source: https://forgottenrealms.fandom.com/wiki/Stone_giant
+            weights[CreatureConstants.Giant_Stone][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Giant_Stone, 9000);
+            weights[CreatureConstants.Giant_Stone][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Giant_Stone, 9000);
+            weights[CreatureConstants.Giant_Stone][CreatureConstants.Giant_Stone] = GetMultiplierFromAverage(CreatureConstants.Giant_Stone, 9000);
+            weights[CreatureConstants.Giant_Stone_Elder][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Giant_Stone_Elder, 9000);
+            weights[CreatureConstants.Giant_Stone_Elder][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Giant_Stone_Elder, 9000);
+            weights[CreatureConstants.Giant_Stone_Elder][CreatureConstants.Giant_Stone_Elder] = GetMultiplierFromAverage(CreatureConstants.Giant_Stone_Elder, 9000);
+            //Source: https://forgottenrealms.fandom.com/wiki/Storm_giant
+            weights[CreatureConstants.Giant_Storm][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Giant_Storm, 15_000);
+            weights[CreatureConstants.Giant_Storm][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Giant_Storm, 15_000);
+            weights[CreatureConstants.Giant_Storm][CreatureConstants.Giant_Storm] = GetMultiplierFromAverage(CreatureConstants.Giant_Storm, 15_000);
             //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/gibbering-mouther-species
             weights[CreatureConstants.GibberingMouther][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.GibberingMouther, 200);
             weights[CreatureConstants.GibberingMouther][CreatureConstants.GibberingMouther] = GetMultiplierFromAverage(CreatureConstants.GibberingMouther, 200);
@@ -2135,6 +2146,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Snake_Constrictor_Giant][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Snake_Constrictor_Giant, 15, 165);
             weights[CreatureConstants.Snake_Constrictor_Giant][CreatureConstants.Snake_Constrictor_Giant] =
                 GetMultiplierFromRange(CreatureConstants.Snake_Constrictor_Giant, 15, 165);
+            //Source: https://www.dimensions.com/element/ribbon-snake-thamnophis-saurita 
+            weights[CreatureConstants.Snake_Viper_Tiny][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Snake_Viper_Tiny, 2, 3);
+            weights[CreatureConstants.Snake_Viper_Tiny][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Snake_Viper_Tiny, 2, 3);
+            weights[CreatureConstants.Snake_Viper_Tiny][CreatureConstants.Snake_Viper_Tiny] = GetMultiplierFromRange(CreatureConstants.Snake_Viper_Tiny, 2, 3);
+            //Source: https://www.dimensions.com/element/copperhead-agkistrodon-contortrix 
+            weights[CreatureConstants.Snake_Viper_Small][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Snake_Viper_Small, 1);
+            weights[CreatureConstants.Snake_Viper_Small][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Snake_Viper_Small, 1);
+            weights[CreatureConstants.Snake_Viper_Small][CreatureConstants.Snake_Viper_Small] = GetMultiplierFromAverage(CreatureConstants.Snake_Viper_Small, 1);
+            //Source: https://www.dimensions.com/element/western-diamondback-rattlesnake-crotalus-atrox 
+            weights[CreatureConstants.Snake_Viper_Medium][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Snake_Viper_Medium, 3, 15);
+            weights[CreatureConstants.Snake_Viper_Medium][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Snake_Viper_Medium, 3, 15);
+            weights[CreatureConstants.Snake_Viper_Medium][CreatureConstants.Snake_Viper_Medium] = GetMultiplierFromRange(CreatureConstants.Snake_Viper_Medium, 3, 15);
+            //Source: https://www.dimensions.com/element/black-mamba-dendroaspis-polylepis 
+            weights[CreatureConstants.Snake_Viper_Large][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Snake_Viper_Large, 2, 4);
+            weights[CreatureConstants.Snake_Viper_Large][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Snake_Viper_Large, 2, 4);
+            weights[CreatureConstants.Snake_Viper_Large][CreatureConstants.Snake_Viper_Large] = GetMultiplierFromRange(CreatureConstants.Snake_Viper_Large, 2, 4);
+            //Source: https://www.dimensions.com/element/king-cobra-ophiophagus-hannah 
+            weights[CreatureConstants.Snake_Viper_Huge][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Snake_Viper_Huge, 11, 15);
+            weights[CreatureConstants.Snake_Viper_Huge][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Snake_Viper_Huge, 11, 15);
+            weights[CreatureConstants.Snake_Viper_Huge][CreatureConstants.Snake_Viper_Huge] = GetMultiplierFromRange(CreatureConstants.Snake_Viper_Huge, 11, 15);
             weights[CreatureConstants.Spectre][GenderConstants.Female] = "0";
             weights[CreatureConstants.Spectre][GenderConstants.Male] = "0";
             weights[CreatureConstants.Spectre][CreatureConstants.Spectre] = "0";
@@ -2275,6 +2306,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Succubus][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Succubus, 125);
             weights[CreatureConstants.Succubus][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Succubus, 125);
             weights[CreatureConstants.Succubus][CreatureConstants.Succubus] = GetMultiplierFromAverage(CreatureConstants.Succubus, 125);
+            //Source: https://www.d20srd.org/srd/monsters/tarrasque.htm
+            weights[CreatureConstants.Tarrasque][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Tarrasque, 130 * 2000);
+            weights[CreatureConstants.Tarrasque][CreatureConstants.Tarrasque] = GetMultiplierFromAverage(CreatureConstants.Tarrasque, 130 * 2000);
+            //Source: https://www.d20srd.org/srd/monsters/tendriculos.htm
+            weights[CreatureConstants.Tendriculos][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Tendriculos, 3500);
+            weights[CreatureConstants.Tendriculos][CreatureConstants.Tendriculos] = GetMultiplierFromAverage(CreatureConstants.Tendriculos, 3500);
+            //Source: https://www.d20srd.org/srd/monsters/thoqqua.htm
+            weights[CreatureConstants.Thoqqua][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Thoqqua, 200);
+            weights[CreatureConstants.Thoqqua][CreatureConstants.Thoqqua] = GetMultiplierFromAverage(CreatureConstants.Thoqqua, 200);
             //Source: http://people.wku.edu/charles.plemons/ad&d/races/height.html 6d10 = Human, so 2d4
             weights[CreatureConstants.Tiefling][GenderConstants.Female] = "90";
             weights[CreatureConstants.Tiefling][GenderConstants.Male] = "140";
@@ -2287,6 +2327,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Tiger_Dire][GenderConstants.Female] = GetBaseFromUpTo(CreatureConstants.Tiger_Dire, 6000);
             weights[CreatureConstants.Tiger_Dire][GenderConstants.Male] = GetBaseFromUpTo(CreatureConstants.Tiger_Dire, 6000);
             weights[CreatureConstants.Tiger_Dire][CreatureConstants.Tiger_Dire] = GetMultiplierFromUpTo(CreatureConstants.Tiger_Dire, 6000);
+            //Source: https://www.d20srd.org/srd/monsters/titan.htm
+            weights[CreatureConstants.Titan][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Titan, 14_000);
+            weights[CreatureConstants.Titan][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Titan, 14_000);
+            weights[CreatureConstants.Titan][CreatureConstants.Titan] = GetMultiplierFromAverage(CreatureConstants.Titan, 14_000);
+            //Source: https://www.dimensions.com/element/common-toad-bufo-bufo
+            weights[CreatureConstants.Toad][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Toad, 1);
+            weights[CreatureConstants.Toad][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Toad, 1);
+            weights[CreatureConstants.Toad][CreatureConstants.Toad] = GetMultiplierFromAverage(CreatureConstants.Toad, 1);
             //Source: https://forgottenrealms.fandom.com/wiki/Tojanida
             weights[CreatureConstants.Tojanida_Juvenile][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Tojanida_Juvenile, 60);
             weights[CreatureConstants.Tojanida_Juvenile][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Tojanida_Juvenile, 60);
@@ -2297,6 +2345,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Tojanida_Elder][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Tojanida_Elder, 500);
             weights[CreatureConstants.Tojanida_Elder][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Tojanida_Elder, 500);
             weights[CreatureConstants.Tojanida_Elder][CreatureConstants.Tojanida_Elder] = GetMultiplierFromAverage(CreatureConstants.Tojanida_Elder, 500);
+            //Source: https://www.d20srd.org/srd/monsters/treant.htm
+            weights[CreatureConstants.Treant][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Treant, 4500);
+            weights[CreatureConstants.Treant][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Treant, 4500);
+            weights[CreatureConstants.Treant][CreatureConstants.Treant] = GetMultiplierFromAverage(CreatureConstants.Treant, 4500);
+            //Source: https://jurassicworld-evolution.fandom.com/wiki/Triceratops
+            weights[CreatureConstants.Triceratops][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Triceratops, 12 * 2000);
+            weights[CreatureConstants.Triceratops][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Triceratops, 12 * 2000);
+            weights[CreatureConstants.Triceratops][CreatureConstants.Triceratops] = GetMultiplierFromAverage(CreatureConstants.Triceratops, 12 * 2000);
+            //Source: https://www.d20srd.org/srd/monsters/triton.htm Copying from Human
+            weights[CreatureConstants.Triton][GenderConstants.Female] = "85";
+            weights[CreatureConstants.Triton][GenderConstants.Male] = "120";
+            weights[CreatureConstants.Triton][CreatureConstants.Triton] = "2d4";
+            //Source: https://forgottenrealms.fandom.com/wiki/Troglodyte
+            weights[CreatureConstants.Troglodyte][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Troglodyte, 150);
+            weights[CreatureConstants.Troglodyte][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Troglodyte, 150);
+            weights[CreatureConstants.Troglodyte][CreatureConstants.Troglodyte] = GetMultiplierFromAverage(CreatureConstants.Troglodyte, 150);
             //Source: https://www.d20srd.org/srd/monsters/troll.htm Female "slightly larger than males", so 110%
             weights[CreatureConstants.Troll][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Troll, 500);
             weights[CreatureConstants.Troll][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Troll, 550);
@@ -2304,6 +2368,33 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Troll_Scrag][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Troll_Scrag, 500);
             weights[CreatureConstants.Troll_Scrag][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Troll_Scrag, 550);
             weights[CreatureConstants.Troll_Scrag][CreatureConstants.Troll_Scrag] = GetMultiplierFromAverage(CreatureConstants.Troll_Scrag, 500);
+            //Source: https://forgottenrealms.fandom.com/wiki/Trumpet_archon
+            weights[CreatureConstants.TrumpetArchon][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.TrumpetArchon, 165, 210);
+            weights[CreatureConstants.TrumpetArchon][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.TrumpetArchon, 185, 230);
+            weights[CreatureConstants.TrumpetArchon][CreatureConstants.TrumpetArchon] = GetMultiplierFromRange(CreatureConstants.TrumpetArchon, 185, 230);
+            //Source: https://jurassicworld-evolution.fandom.com/wiki/Tyrannosaurus
+            weights[CreatureConstants.Tyrannosaurus][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Tyrannosaurus, 36_600);
+            weights[CreatureConstants.Tyrannosaurus][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Tyrannosaurus, 36_600);
+            weights[CreatureConstants.Tyrannosaurus][CreatureConstants.Tyrannosaurus] = GetMultiplierFromAverage(CreatureConstants.Tyrannosaurus, 36_600);
+            //Source: https://forgottenrealms.fandom.com/wiki/Umber_hulk
+            weights[CreatureConstants.UmberHulk][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.UmberHulk, 800, 1750);
+            weights[CreatureConstants.UmberHulk][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.UmberHulk, 800, 1750);
+            weights[CreatureConstants.UmberHulk][CreatureConstants.UmberHulk] = GetMultiplierFromRange(CreatureConstants.UmberHulk, 800, 1750);
+            weights[CreatureConstants.UmberHulk_TrulyHorrid][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.UmberHulk_TrulyHorrid, 8000);
+            weights[CreatureConstants.UmberHulk_TrulyHorrid][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.UmberHulk_TrulyHorrid, 8000);
+            weights[CreatureConstants.UmberHulk_TrulyHorrid][CreatureConstants.UmberHulk_TrulyHorrid] =
+                GetMultiplierFromAverage(CreatureConstants.UmberHulk_TrulyHorrid, 8000);
+            //Source: https://www.d20srd.org/srd/monsters/unicorn.htm Females "slightly smaller", so 90%
+            weights[CreatureConstants.Unicorn][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Unicorn, 1080);
+            weights[CreatureConstants.Unicorn][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Unicorn, 1200);
+            weights[CreatureConstants.Unicorn][CreatureConstants.Unicorn] = GetMultiplierFromAverage(CreatureConstants.Unicorn, 1200);
+            //Source: https://www.d20srd.org/srd/monsters/vampire.htm#vampireSpawn Copying from Human
+            weights[CreatureConstants.VampireSpawn][GenderConstants.Female] = "85";
+            weights[CreatureConstants.VampireSpawn][GenderConstants.Male] = "120";
+            weights[CreatureConstants.VampireSpawn][CreatureConstants.VampireSpawn] = "2d4";
+            //Source: https://www.d20srd.org/srd/monsters/vargouille.htm
+            weights[CreatureConstants.Vargouille][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Vargouille, 10);
+            weights[CreatureConstants.Vargouille][CreatureConstants.Vargouille] = GetMultiplierFromAverage(CreatureConstants.Vargouille, 10);
             //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/violet-fungus-species
             weights[CreatureConstants.VioletFungus][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.VioletFungus, 50);
             weights[CreatureConstants.VioletFungus][CreatureConstants.VioletFungus] = GetMultiplierFromAverage(CreatureConstants.VioletFungus, 50);
@@ -2333,6 +2424,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Whale_Orca][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Whale_Orca, 3000, 6 * 2000);
             weights[CreatureConstants.Whale_Orca][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Whale_Orca, 3000, 6 * 2000);
             weights[CreatureConstants.Whale_Orca][CreatureConstants.Whale_Orca] = GetMultiplierFromRange(CreatureConstants.Whale_Orca, 3000, 6 * 2000);
+            //Source: https://www.d20srd.org/srd/monsters/wight.htm Copy from Human
+            weights[CreatureConstants.Wight][GenderConstants.Female] = "85";
+            weights[CreatureConstants.Wight][GenderConstants.Male] = "120";
+            weights[CreatureConstants.Wight][CreatureConstants.Wight] = "2d4";
+            //Source: https://www.d20srd.org/srd/monsters/willOWisp.htm
+            weights[CreatureConstants.WillOWisp][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.WillOWisp, 3);
+            weights[CreatureConstants.WillOWisp][CreatureConstants.WillOWisp] = GetMultiplierFromAverage(CreatureConstants.WillOWisp, 3);
+            //Source: https://www.d20srd.org/srd/monsters/winterWolf.htm
+            weights[CreatureConstants.WinterWolf][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.WinterWolf, 450);
+            weights[CreatureConstants.WinterWolf][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.WinterWolf, 450);
+            weights[CreatureConstants.WinterWolf][CreatureConstants.WinterWolf] = GetMultiplierFromAverage(CreatureConstants.WinterWolf, 450);
             //Source: https://www.dimensions.com/element/gray-wolf
             weights[CreatureConstants.Wolf][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Wolf, 50, 150);
             weights[CreatureConstants.Wolf][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Wolf, 50, 150);
@@ -2349,11 +2451,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Wolverine_Dire][GenderConstants.Female] = GetBaseFromUpTo(CreatureConstants.Wolverine_Dire, 2000);
             weights[CreatureConstants.Wolverine_Dire][GenderConstants.Male] = GetBaseFromUpTo(CreatureConstants.Wolverine_Dire, 2000);
             weights[CreatureConstants.Wolverine_Dire][CreatureConstants.Wolverine_Dire] = GetMultiplierFromUpTo(CreatureConstants.Wolverine_Dire, 2000);
+            //Source: https://www.d20srd.org/srd/monsters/worg.htm
+            weights[CreatureConstants.Worg][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Worg, 300);
+            weights[CreatureConstants.Worg][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Worg, 300);
+            weights[CreatureConstants.Worg][CreatureConstants.Worg] = GetMultiplierFromAverage(CreatureConstants.Worg, 300);
             //Source: https://www.d20srd.org/srd/monsters/wraith.htm
             weights[CreatureConstants.Wraith][GenderConstants.Agender] = "0";
             weights[CreatureConstants.Wraith][CreatureConstants.Wraith] = "0";
             weights[CreatureConstants.Wraith_Dread][GenderConstants.Agender] = "0";
             weights[CreatureConstants.Wraith_Dread][CreatureConstants.Wraith_Dread] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Wyvern
+            weights[CreatureConstants.Wyvern][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Wyvern, 2000);
+            weights[CreatureConstants.Wyvern][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Wyvern, 2000);
+            weights[CreatureConstants.Wyvern][CreatureConstants.Wyvern] = GetMultiplierFromAverage(CreatureConstants.Wyvern, 2000);
+            //Source: https://www.d20srd.org/srd/monsters/xill.htm
+            weights[CreatureConstants.Xill][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Xill, 100);
+            weights[CreatureConstants.Xill][CreatureConstants.Xill] = GetMultiplierFromAverage(CreatureConstants.Xill, 100);
             //Source: https://forgottenrealms.fandom.com/wiki/Xorn
             weights[CreatureConstants.Xorn_Minor][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Xorn_Minor, 120);
             weights[CreatureConstants.Xorn_Minor][CreatureConstants.Xorn_Minor] = GetMultiplierFromAverage(CreatureConstants.Xorn_Minor, 120);
@@ -2361,6 +2474,39 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Xorn_Average][CreatureConstants.Xorn_Average] = GetMultiplierFromAverage(CreatureConstants.Xorn_Average, 600);
             weights[CreatureConstants.Xorn_Elder][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Xorn_Elder, 9000);
             weights[CreatureConstants.Xorn_Elder][CreatureConstants.Xorn_Elder] = GetMultiplierFromAverage(CreatureConstants.Xorn_Elder, 9000);
+            //Source: https://forgottenrealms.fandom.com/wiki/Yeth_hound
+            weights[CreatureConstants.YethHound][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.YethHound, 400);
+            weights[CreatureConstants.YethHound][CreatureConstants.YethHound] = GetMultiplierFromAverage(CreatureConstants.YethHound, 400);
+            //Source: https://www.d20srd.org/srd/monsters/yrthak.htm
+            weights[CreatureConstants.Yrthak][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Yrthak, 5000);
+            weights[CreatureConstants.Yrthak][CreatureConstants.Yrthak] = GetMultiplierFromAverage(CreatureConstants.Yrthak, 5000);
+            //Source: https://forgottenrealms.fandom.com/wiki/Yuan-ti_pureblood
+            weights[CreatureConstants.YuanTi_Pureblood][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.YuanTi_Pureblood, 90, 280);
+            weights[CreatureConstants.YuanTi_Pureblood][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.YuanTi_Pureblood, 90, 280);
+            weights[CreatureConstants.YuanTi_Pureblood][CreatureConstants.YuanTi_Pureblood] = GetMultiplierFromRange(CreatureConstants.YuanTi_Pureblood, 90, 280);
+            //Source: https://forgottenrealms.fandom.com/wiki/Yuan-ti_malison
+            weights[CreatureConstants.YuanTi_Halfblood_SnakeArms][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.YuanTi_Halfblood_SnakeArms, 90, 280);
+            weights[CreatureConstants.YuanTi_Halfblood_SnakeArms][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.YuanTi_Halfblood_SnakeArms, 90, 280);
+            weights[CreatureConstants.YuanTi_Halfblood_SnakeArms][CreatureConstants.YuanTi_Halfblood_SnakeArms] =
+                GetMultiplierFromRange(CreatureConstants.YuanTi_Halfblood_SnakeArms, 90, 280);
+            weights[CreatureConstants.YuanTi_Halfblood_SnakeHead][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.YuanTi_Halfblood_SnakeHead, 90, 280);
+            weights[CreatureConstants.YuanTi_Halfblood_SnakeHead][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.YuanTi_Halfblood_SnakeHead, 90, 280);
+            weights[CreatureConstants.YuanTi_Halfblood_SnakeHead][CreatureConstants.YuanTi_Halfblood_SnakeHead] =
+                GetMultiplierFromRange(CreatureConstants.YuanTi_Halfblood_SnakeHead, 90, 280);
+            weights[CreatureConstants.YuanTi_Halfblood_SnakeTail][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.YuanTi_Halfblood_SnakeTail, 90, 280);
+            weights[CreatureConstants.YuanTi_Halfblood_SnakeTail][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.YuanTi_Halfblood_SnakeTail, 90, 280);
+            weights[CreatureConstants.YuanTi_Halfblood_SnakeTail][CreatureConstants.YuanTi_Halfblood_SnakeTail] =
+                GetMultiplierFromRange(CreatureConstants.YuanTi_Halfblood_SnakeTail, 90, 280);
+            weights[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs][GenderConstants.Female] =
+                GetBaseFromRange(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, 90, 280);
+            weights[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs][GenderConstants.Male] =
+                GetBaseFromRange(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, 90, 280);
+            weights[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs][CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs] =
+                GetMultiplierFromRange(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, 90, 280);
+            //Source: https://forgottenrealms.fandom.com/wiki/Yuan-ti_abomination
+            weights[CreatureConstants.YuanTi_Abomination][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.YuanTi_Abomination, 200, 300);
+            weights[CreatureConstants.YuanTi_Abomination][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.YuanTi_Abomination, 200, 300);
+            weights[CreatureConstants.YuanTi_Abomination][CreatureConstants.YuanTi_Abomination] = GetMultiplierFromRange(CreatureConstants.YuanTi_Abomination, 200, 300);
             //Source: https://forgottenrealms.fandom.com/wiki/Zelekhut - using Centaur, but scaled from iron golem: [1002,1016]*(12/8)^3 = [3382,3429]
             weights[CreatureConstants.Zelekhut][GenderConstants.Agender] = GetBaseFromRange(CreatureConstants.Zelekhut, 3382, 3429);
             weights[CreatureConstants.Zelekhut][CreatureConstants.Zelekhut] = GetMultiplierFromRange(CreatureConstants.Zelekhut, 3382, 3429);
@@ -2427,6 +2573,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             var range = upper / maxMultiplier - lower / minMultiplier + 1;
             var adjustedUpper = range + lower - 1;
+            lower = Math.Max(1, lower);
+
             if (adjustedUpper < lower)
                 return $"[{lower},{adjustedUpper}] IS NOT A VALID RANGE";
 
@@ -2487,6 +2635,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Sahuagin, GenderConstants.Female, 200)]
         [TestCase(CreatureConstants.Troll, GenderConstants.Male, 500)]
         [TestCase(CreatureConstants.Troll, GenderConstants.Female, 550)]
+        [TestCase(CreatureConstants.Unicorn, GenderConstants.Male, 1200)]
+        [TestCase(CreatureConstants.Unicorn, GenderConstants.Female, 1080)]
         [TestCase(CreatureConstants.Whale_Baleen, GenderConstants.Male, 44 * 2000)]
         [TestCase(CreatureConstants.Whale_Baleen, GenderConstants.Female, 44 * 2000)]
         [TestCase(CreatureConstants.Whale_Cachalot, GenderConstants.Male, 45 * 2000)]
@@ -2602,6 +2752,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Salamander_Noble, GenderConstants.Agender, 500, 4000)]
         [TestCase(CreatureConstants.Salamander_Average, GenderConstants.Agender, 60, 500)]
         [TestCase(CreatureConstants.Salamander_Flamebrother, GenderConstants.Agender, 8, 60)]
+        [TestCase(CreatureConstants.TrumpetArchon, GenderConstants.Male, 185, 230)]
+        [TestCase(CreatureConstants.TrumpetArchon, GenderConstants.Female, 165, 210)]
         //https://forgottenrealms.fandom.com/wiki/Tiefling
         [TestCase(CreatureConstants.Tiefling, GenderConstants.Male, 114, 238)]
         [TestCase(CreatureConstants.Tiefling, GenderConstants.Female, 114, 238)]

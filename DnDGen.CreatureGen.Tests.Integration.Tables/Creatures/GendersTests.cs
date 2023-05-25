@@ -491,7 +491,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Troglodyte, GenderConstants.Female, GenderConstants.Male)]
         [TestCase(CreatureConstants.Troll, GenderConstants.Female, GenderConstants.Male)]
         [TestCase(CreatureConstants.Troll_Scrag, GenderConstants.Female, GenderConstants.Male)]
-        [TestCase(CreatureConstants.TrumpetArchon, GenderConstants.Agender)]
+        [TestCase(CreatureConstants.TrumpetArchon, GenderConstants.Female, GenderConstants.Male)]
         [TestCase(CreatureConstants.UmberHulk,
             GenderConstants.Male,
             GenderConstants.Male,
@@ -556,7 +556,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
         [TestCase(CreatureConstants.Types.Construct)]
         [TestCase(CreatureConstants.Types.Ooze)]
-        [TestCase(CreatureConstants.Types.Subtypes.Archon)]
         [TestCase(CreatureConstants.Types.Subtypes.Swarm)]
         public void CreaturesOfTypeAreAgender(string type)
         {

@@ -3199,18 +3199,21 @@
   </collection>
   <collection>
     <name>Skum</name>
-    <entry>Land@20</entry>
-    <entry>Swim@40</entry>
+	  <entry>Female@4*12+5</entry>
+	  <entry>Male@4*12+10</entry>
+	  <entry>Skum@2d10</entry>
   </collection>
   <collection>
     <name>Spectre</name>
-    <entry>Land@40</entry>
-    <entry>Fly@80</entry>
+	  <entry>Female@4*12+5</entry>
+	  <entry>Male@4*12+10</entry>
+	  <entry>Spectre@2d10</entry>
   </collection>
   <collection>
     <name>Spider Eater</name>
-    <entry>Land@30</entry>
-    <entry>Fly@60</entry>
+	  <entry>Female@42</entry>
+	  <entry>Male@42</entry>
+	  <entry>Spider Eater@1d10</entry>
   </collection>
   <collection>
     <name>Spider Swarm</name>
@@ -3224,7 +3227,9 @@
   </collection>
   <collection>
     <name>Squid</name>
-    <entry>Swim@60</entry>
+	  <entry>Female@19</entry>
+	  <entry>Male@19</entry>
+	  <entry>Squid@10d6</entry>
   </collection>
   <collection>
     <name>Steam Mephit</name>
@@ -3235,222 +3240,272 @@
   </collection>
   <collection>
     <name>Stirge</name>
-    <entry>Land@10</entry>
-    <entry>Fly@40</entry>
+	  <entry>Female@0</entry>
+	  <entry>Male@0</entry>
+	  <entry>Stirge@0</entry>
   </collection>
   <collection>
     <name>Stone Giant</name>
-    <entry>Land@40</entry>
+	  <entry>Female@208</entry>
+	  <entry>Male@216</entry>
+	  <entry>Stone Giant@2d10</entry>
   </collection>
   <collection>
     <name>Stone Giant Elder</name>
-    <entry>Land@40</entry>
+	  <entry>Female@208</entry>
+	  <entry>Male@216</entry>
+	  <entry>Stone Giant Elder@2d10</entry>
   </collection>
   <collection>
     <name>Stone Golem</name>
-    <entry>Land@20</entry>
+	  <entry>Agender@94</entry>
+	  <entry>Stone Golem@3d8</entry>
   </collection>
   <collection>
     <name>Storm Giant</name>
-    <entry>Land@50</entry>
-    <entry>Swim@40</entry>
+	  <entry>Female@280</entry>
+	  <entry>Male@312</entry>
+	  <entry>Storm Giant@4d10</entry>
   </collection>
   <collection>
     <name>Succubus</name>
-    <entry>Land@30</entry>
-    <entry>Fly@50</entry>
+	  <entry>Female@61</entry>
+	  <entry>Male@61</entry>
+	  <entry>Succubus@3d6</entry>
   </collection>
   <collection>
     <name>Svirfneblin</name>
-    <entry>Land@20</entry>
+	  <entry>Female@2*12+10</entry>
+	  <entry>Male@3*12+0</entry>
+	  <entry>Svirfneblin@2d4</entry>
   </collection>
   <collection>
     <name>Tallfellow Halfling</name>
-    <entry>Land@20</entry>
+	  <entry>Female@3*12+6</entry>
+	  <entry>Male@3*12+8</entry>
+	  <entry>Tallfellow Halfling@2d4</entry>
   </collection>
   <collection>
     <name>Tarrasque</name>
-    <entry>Land@20</entry>
+	  <entry>Agender@516</entry>
+	  <entry>Tarrasque@24d6</entry>
   </collection>
   <collection>
     <name>Ten-Headed Cryohydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Female@100</entry>
+	  <entry>Male@100</entry>
+	  <entry>Ten-Headed Cryohydra@8d4</entry>
   </collection>
   <collection>
     <name>Ten-Headed Hydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Female@100</entry>
+	  <entry>Male@100</entry>
+	  <entry>Ten-Headed Hydra@8d4</entry>
   </collection>
   <collection>
     <name>Ten-Headed Pyrohydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Female@100</entry>
+	  <entry>Male@100</entry>
+	  <entry>Ten-Headed Pyrohydra@8d4</entry>
   </collection>
   <collection>
     <name>Tendriculos</name>
-    <entry>Land@20</entry>
+	  <entry>Agender@158</entry>
+	  <entry>Tendriculos@4d10</entry>
   </collection>
   <collection>
     <name>Thoqqua</name>
-    <entry>Land@30</entry>
-    <entry>Burrow@20</entry>
+    <entry>Agender@9</entry>
+    <entry>Thoqqua@1d4</entry>
   </collection>
   <collection>
     <name>Tiefling</name>
-    <entry>Land@30</entry>
+	  <entry>Female@57</entry>
+	  <entry>Male@59</entry>
+	  <entry>Tiefling@2d10</entry>
   </collection>
   <collection>
     <name>Tiger</name>
-    <entry>Land@40</entry>
+	  <entry>Female@33</entry>
+	  <entry>Male@33</entry>
+	  <entry>Tiger@1d12</entry>
   </collection>
   <collection>
     <name>Titan</name>
-    <entry>Land@60</entry>
+	  <entry>Female@258</entry>
+	  <entry>Male@258</entry>
+	  <entry>Titan@12d6</entry>
   </collection>
   <collection>
     <name>Toad</name>
-    <entry>Land@5</entry>
+	  <entry>Female@1</entry>
+	  <entry>Male@1</entry>
+	  <entry>Toad@1d2</entry>
   </collection>
   <collection>
     <name>Treant</name>
-    <entry>Land@30</entry>
+	  <entry>Female@316</entry>
+	  <entry>Male@316</entry>
+	  <entry>Treant@8d10</entry>
   </collection>
   <collection>
     <name>Triceratops</name>
-    <entry>Land@30</entry>
+	  <entry>Female@110</entry>
+	  <entry>Male@110</entry>
+	  <entry>Triceratops@31d2</entry>
   </collection>
   <collection>
     <name>Triton</name>
-    <entry>Land@5</entry>
-    <entry>Swim@40</entry>
+	  <entry>Female@4*12+5</entry>
+	  <entry>Male@4*12+10</entry>
+	  <entry>Triton@2d10</entry>
   </collection>
   <collection>
     <name>Troglodyte</name>
-    <entry>Land@30</entry>
+	  <entry>Female@56</entry>
+	  <entry>Male@56</entry>
+	  <entry>Troglodyte@4d4</entry>
   </collection>
   <collection>
     <name>Troll</name>
-    <entry>Land@30</entry>
+	  <entry>Female@84</entry>
+	  <entry>Male@94</entry>
+	  <entry>Troll@3d8</entry>
   </collection>
   <collection>
     <name>Truly Horrid Umber Hulk</name>
-    <entry>Land@20</entry>
-    <entry>Burrow@20</entry>
+	  <entry>Female@104</entry>
+	  <entry>Male@104</entry>
+	  <entry>Truly Horrid Umber Hulk@4d4</entry>
   </collection>
   <collection>
     <name>Trumpet Archon</name>
-    <entry>Land@40</entry>
-    <entry>Fly@90</entry>
+	  <entry>Female@70</entry>
+	  <entry>Male@75</entry>
+	  <entry>Trumpet Archon@3d6</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Cryohydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Female@100</entry>
+	  <entry>Male@100</entry>
+	  <entry>Twelve-Headed Cryohydra@8d4</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Hydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Female@100</entry>
+	  <entry>Male@100</entry>
+	  <entry>Twelve-Headed Hydra@8d4</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Pyrohydra</name>
-    <entry>Land@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Female@100</entry>
+	  <entry>Male@100</entry>
+	  <entry>Twelve-Headed Pyrohydra@8d4</entry>
   </collection>
   <collection>
     <name>Tyrannosaurus</name>
-    <entry>Land@40</entry>
+	  <entry>Female@161</entry>
+	  <entry>Male@161</entry>
+	  <entry>Tyrannosaurus@47d2</entry>
   </collection>
   <collection>
     <name>Umber Hulk</name>
-    <entry>Land@20</entry>
-    <entry>Burrow@20</entry>
+	  <entry>Female@52</entry>
+	  <entry>Male@52</entry>
+	  <entry>Umber Hulk@2d4</entry>
   </collection>
   <collection>
     <name>Unicorn</name>
-    <entry>Land@60</entry>
+	  <entry>Female@47</entry>
+	  <entry>Male@50</entry>
+	  <entry>Unicorn@4d4</entry>
   </collection>
   <collection>
     <name>Vampire Spawn</name>
-    <entry>Land@30</entry>
+	  <entry>Female@4*12+5</entry>
+	  <entry>Male@4*12+10</entry>
+	  <entry>Vampire Spawn@2d10</entry>
   </collection>
   <collection>
     <name>Vargouille</name>
-    <entry>Fly@30</entry>
+	  <entry>Agender@15</entry>
+	  <entry>Vargouille@1d4</entry>
   </collection>
   <collection>
     <name>Violet Fungus</name>
-    <entry>Land@10</entry>
+	  <entry>Agender@44</entry>
+	  <entry>Violet Fungus@4d10</entry>
   </collection>
   <collection>
     <name>Viper Snake, Huge</name>
-    <entry>Land@20</entry>
-    <entry>Climb@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Female@2</entry>
+	  <entry>Male@2</entry>
+	  <entry>Viper Snake, Huge@1d4</entry>
   </collection>
   <collection>
     <name>Viper Snake, Large</name>
-    <entry>Land@20</entry>
-    <entry>Climb@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Female@1</entry>
+	  <entry>Male@1</entry>
+	  <entry>Viper Snake, Large@1d3</entry>
   </collection>
   <collection>
     <name>Viper Snake, Medium</name>
-    <entry>Land@20</entry>
-    <entry>Climb@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Female@0</entry>
+	  <entry>Male@0</entry>
+	  <entry>Viper Snake, Medium@1d3</entry>
   </collection>
   <collection>
     <name>Viper Snake, Small</name>
-    <entry>Land@20</entry>
-    <entry>Climb@20</entry>
-    <entry>Swim@20</entry>
+	  <entry>Female@0</entry>
+	  <entry>Male@0</entry>
+	  <entry>Viper Snake, Small@1d2</entry>
   </collection>
   <collection>
     <name>Viper Snake, Tiny</name>
-    <entry>Land@15</entry>
-    <entry>Climb@15</entry>
-    <entry>Swim@15</entry>
+	  <entry>Female@0</entry>
+	  <entry>Male@0</entry>
+	  <entry>Viper Snake, Tiny@1</entry>
   </collection>
   <collection>
     <name>Vrock</name>
-    <entry>Land@30</entry>
-    <entry>Fly@50</entry>
+	  <entry>Agender@85</entry>
+	  <entry>Vrock@1d20</entry>
   </collection>
   <collection>
     <name>Warpony</name>
-    <entry>Land@40</entry>
+	  <entry>Female@20</entry>
+	  <entry>Male@20</entry>
+	  <entry>Warpony@8d3</entry>
   </collection>
   <collection>
     <name>Water Elemental, Elder</name>
-    <entry>Land@30</entry>
-    <entry>Swim@120</entry>
+    <entry>Agender@400</entry>
+    <entry>Water Elemental, Elder@32d4</entry>
   </collection>
   <collection>
     <name>Water Elemental, Greater</name>
-    <entry>Land@30</entry>
-    <entry>Swim@120</entry>
+	  <entry>Agender@359</entry>
+	  <entry>Water Elemental, Greater@29d4</entry>
   </collection>
   <collection>
     <name>Water Elemental, Huge</name>
-    <entry>Land@30</entry>
-    <entry>Swim@120</entry>
+	  <entry>Agender@338</entry>
+	  <entry>Water Elemental, Huge@7d12</entry>
   </collection>
   <collection>
     <name>Water Elemental, Large</name>
-    <entry>Land@20</entry>
-    <entry>Swim@90</entry>
+	  <entry>Agender@159</entry>
+	  <entry>Water Elemental, Large@13d4</entry>
   </collection>
   <collection>
-    <name>Water Elemental, Medium</name>
-    <entry>Land@20</entry>
-    <entry>Swim@90</entry>
+	  <name>Water Elemental, Medium</name>
+	  <entry>Agender@85</entry>
+	  <entry>Water Elemental, Medium@1d20</entry>
   </collection>
   <collection>
-    <name>Water Elemental, Small</name>
-    <entry>Land@20</entry>
-    <entry>Swim@90</entry>
+	  <name>Water Elemental, Small</name>
+	  <entry>Agender@42</entry>
+	  <entry>Water Elemental, Small@1d10</entry>
   </collection>
   <collection>
     <name>Water Mephit</name>
@@ -3461,190 +3516,199 @@
   </collection>
   <collection>
     <name>Water Naga</name>
-    <entry>Land@30</entry>
-    <entry>Swim@50</entry>
+    <entry>Hermaphrodite@0</entry>
+    <entry>Water Naga@0</entry>
   </collection>
   <collection>
     <name>Weasel</name>
-    <entry>Land@20</entry>
-    <entry>Climb@20</entry>
+	  <entry>Male@1</entry>
+	  <entry>Female@1</entry>
+	  <entry>Weasel@1d2</entry>
   </collection>
   <collection>
     <name>White Dragon, Adult</name>
-    <entry>Land@60</entry>
-    <entry>Burrow@30</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@60</entry>
+	  <entry>Female@58</entry>
+	  <entry>Male@58</entry>
+	  <entry>White Dragon, Adult@17d2</entry>
   </collection>
   <collection>
     <name>White Dragon, Ancient</name>
-    <entry>Land@60</entry>
-    <entry>Burrow@30</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@60</entry>
+	  <entry>Female@100</entry>
+	  <entry>Male@100</entry>
+	  <entry>White Dragon, Ancient@29d2</entry>
   </collection>
   <collection>
     <name>White Dragon, Great Wyrm</name>
-    <entry>Land@60</entry>
-    <entry>Burrow@30</entry>
-    <entry>Fly@250</entry>
-    <entry>Swim@60</entry>
+	  <entry>Female@159</entry>
+	  <entry>Male@159</entry>
+	  <entry>White Dragon, Great Wyrm@13d4</entry>
   </collection>
   <collection>
     <name>White Dragon, Juvenile</name>
-    <entry>Land@60</entry>
-    <entry>Burrow@30</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@60</entry>
+	  <entry>Female@42</entry>
+	  <entry>Male@42</entry>
+	  <entry>White Dragon, Juvenile@1d10</entry>
   </collection>
   <collection>
     <name>White Dragon, Mature Adult</name>
-    <entry>Land@60</entry>
-    <entry>Burrow@30</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@60</entry>
+	  <entry>Female@100</entry>
+	  <entry>Male@100</entry>
+	  <entry>White Dragon, Mature Adult@29d2</entry>
   </collection>
   <collection>
     <name>White Dragon, Old</name>
-    <entry>Land@60</entry>
-    <entry>Burrow@30</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@60</entry>
+	  <entry>Female@100</entry>
+	  <entry>Male@100</entry>
+	  <entry>White Dragon, Old@29d2</entry>
   </collection>
   <collection>
     <name>White Dragon, Very Old</name>
-    <entry>Land@60</entry>
-    <entry>Burrow@30</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@60</entry>
+	  <entry>Female@100</entry>
+	  <entry>Male@100</entry>
+	  <entry>White Dragon, Very Old@29d2</entry>
   </collection>
   <collection>
     <name>White Dragon, Very Young</name>
-    <entry>Land@60</entry>
-    <entry>Burrow@30</entry>
-    <entry>Fly@150</entry>
-    <entry>Swim@60</entry>
+	  <entry>Female@20</entry>
+	  <entry>Male@20</entry>
+	  <entry>White Dragon, Very Young@1d6</entry>
   </collection>
   <collection>
     <name>White Dragon, Wyrm</name>
-    <entry>Land@60</entry>
-    <entry>Burrow@30</entry>
-    <entry>Fly@250</entry>
-    <entry>Swim@60</entry>
+	  <entry>Female@159</entry>
+	  <entry>Male@159</entry>
+	  <entry>White Dragon, Wyrm@13d4</entry>
   </collection>
   <collection>
     <name>White Dragon, Wyrmling</name>
-    <entry>Land@60</entry>
-    <entry>Burrow@30</entry>
-    <entry>Fly@150</entry>
-    <entry>Swim@60</entry>
+	  <entry>Female@9</entry>
+	  <entry>Male@9</entry>
+	  <entry>White Dragon, Wyrmling@1d4</entry>
   </collection>
   <collection>
     <name>White Dragon, Young Adult</name>
-    <entry>Land@60</entry>
-    <entry>Burrow@30</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@60</entry>
+	  <entry>Female@58</entry>
+	  <entry>Male@58</entry>
+	  <entry>White Dragon, Young Adult@17d2</entry>
   </collection>
   <collection>
     <name>White Dragon, Young</name>
-    <entry>Land@60</entry>
-    <entry>Burrow@30</entry>
-    <entry>Fly@200</entry>
-    <entry>Swim@60</entry>
+	  <entry>Female@42</entry>
+	  <entry>Male@42</entry>
+	  <entry>White Dragon, Young@1d10</entry>
   </collection>
   <collection>
     <name>Wight</name>
-    <entry>Land@30</entry>
+	  <entry>Female@4*12+5</entry>
+	  <entry>Male@4*12+10</entry>
+	  <entry>Wight@2d10</entry>
   </collection>
   <collection>
     <name>Wild Elf</name>
-    <entry>Land@30</entry>
+	  <entry>Female@4*12+5</entry>
+	  <entry>Male@4*12+5</entry>
+	  <entry>Wild Elf@2d6</entry>
   </collection>
   <collection>
     <name>Will-O'-Wisp</name>
-    <entry>Fly@50</entry>
+	  <entry>Agender@9</entry>
+	  <entry>Will-O'-Wisp@1d4</entry>
   </collection>
   <collection>
     <name>Winter Wolf</name>
-    <entry>Land@50</entry>
+	  <entry>Female@47</entry>
+	  <entry>Male@47</entry>
+	  <entry>Winter Wolf@1d12</entry>
   </collection>
   <collection>
     <name>Wolf</name>
-    <entry>Land@50</entry>
+	  <entry>Female@25</entry>
+	  <entry>Male@25</entry>
+	  <entry>Wolf@1d8</entry>
   </collection>
   <collection>
     <name>Wolverine</name>
-    <entry>Land@30</entry>
-    <entry>Burrow@10</entry>
-    <entry>Climb@10</entry>
+	  <entry>Female@13</entry>
+	  <entry>Male@13</entry>
+	  <entry>Wolverine@1d8</entry>
   </collection>
   <collection>
     <name>Wood Elf</name>
-    <entry>Land@30</entry>
+	  <entry>Female@4*12+5</entry>
+	  <entry>Male@4*12+5</entry>
+	  <entry>Wood Elf@2d6</entry>
   </collection>
   <collection>
     <name>Worg</name>
-    <entry>Land@50</entry>
+	  <entry>Female@31</entry>
+	  <entry>Male@31</entry>
+	  <entry>Worg@1d8</entry>
   </collection>
   <collection>
     <name>Wraith</name>
-    <entry>Fly@60</entry>
+	  <entry>Agender@4*12+10</entry>
+	  <entry>Wraith@2d10</entry>
   </collection>
   <collection>
     <name>Wyvern</name>
-    <entry>Land@20</entry>
-    <entry>Fly@60</entry>
+	  <entry>Female@0</entry>
+	  <entry>Male@0</entry>
+	  <entry>Wyvern@0</entry>
   </collection>
   <collection>
     <name>Xill</name>
-    <entry>Land@40</entry>
+	  <entry>Agender@44</entry>
+	  <entry>Xill@4d4</entry>
   </collection>
   <collection>
     <name>Yeth Hound</name>
-    <entry>Land@40</entry>
-    <entry>Fly@60</entry>
+	  <entry>Agender@44</entry>
+	  <entry>Yeth Hound@4d4</entry>
   </collection>
   <collection>
     <name>Yrthak</name>
-    <entry>Land@20</entry>
-    <entry>Fly@60</entry>
+	  <entry>Agender@0</entry>
+	  <entry>Yrthak@0</entry>
   </collection>
   <collection>
     <name>Yuan-ti Abomination</name>
-    <entry>Land@30</entry>
-    <entry>Swim@20</entry>
+	  <entry>Female@32</entry>
+	  <entry>Male@32</entry>
+	  <entry>Yuan-ti Abomination@23d2</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head)</name>
-    <entry>Land@30</entry>
+	  <entry>Female@32</entry>
+	  <entry>Male@32</entry>
+	  <entry>Yuan-ti Halfblood (Snake Head)@23d2</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)</name>
-    <entry>Land@30</entry>
+	  <entry>Female@32</entry>
+	  <entry>Male@32</entry>
+	  <entry>Yuan-ti Halfblood (Human Head, Arms are Snakes)@23d2</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</name>
-    <entry>Land@30</entry>
-    <entry>Swim@15</entry>
+	  <entry>Female@32</entry>
+	  <entry>Male@32</entry>
+	  <entry>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)@23d2</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)</name>
-    <entry>Land@20</entry>
-    <entry>Climb@15</entry>
-    <entry>Swim@15</entry>
+	  <entry>Female@32</entry>
+	  <entry>Male@32</entry>
+	  <entry>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)@23d2</entry>
   </collection>
   <collection>
     <name>Yuan-ti Pureblood</name>
-    <entry>Land@30</entry>
+	  <entry>Female@32</entry>
+	  <entry>Male@32</entry>
+	  <entry>Yuan-ti Pureblood@23d2</entry>
   </collection>
   <collection>
     <name>Zelekhut</name>
-    <entry>Land@50</entry>
-    <entry>Fly@60</entry>
-  </collection>
-  <collection>
-    <name>Ghost</name>
-    <entry>Fly@30</entry>
+	  <entry>Agender@84</entry>
+	  <entry>Zelekhut@3d12</entry>
   </collection>
 </collections>

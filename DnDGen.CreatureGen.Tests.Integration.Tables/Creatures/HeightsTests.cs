@@ -3,6 +3,7 @@ using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using NUnit.Framework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -229,7 +230,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //https://www.dimensions.com/element/black-garden-ant-lasius-niger - scale up, [.035,.05]*9*12/[.31,.35] = [12,16]
             heights[CreatureConstants.Ant_Giant_Queen][GenderConstants.Female] = GetBaseFromRange(12, 16);
             heights[CreatureConstants.Ant_Giant_Queen][CreatureConstants.Ant_Giant_Queen] = GetMultiplierFromRange(12, 16);
-            //Source: https://www.dimensions.com/element/eastern-lowland-gorilla-gorilla-beringei-graueri
+            //Source: https://www.dimensions.com/element/eastern-lowland-gorilla-gorilla-beringei-graueri (using for female)
             //https://www.d20srd.org/srd/monsters/ape.htm (male)
             heights[CreatureConstants.Ape][GenderConstants.Female] = GetBaseFromRange(63, 72);
             heights[CreatureConstants.Ape][GenderConstants.Male] = GetBaseFromRange(5 * 12 + 6, 6 * 12);
@@ -315,11 +316,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Bat_Swarm][GenderConstants.Agender] = GetBaseFromAverage(10 * 12);
             heights[CreatureConstants.Bat_Swarm][CreatureConstants.Bat_Swarm] = GetMultiplierFromAverage(10 * 12);
             //Source: https://www.dimensions.com/element/american-black-bear shoulder height
-            heights[CreatureConstants.Bear_Black][GenderConstants.Female] = GetBaseFromRange(2 * 12 + 6, 3 * 12 + 1);
+            //Adjusting upper female -1" to match range
+            heights[CreatureConstants.Bear_Black][GenderConstants.Female] = GetBaseFromRange(2 * 12 + 6, 3 * 12 + 1 - 1);
             heights[CreatureConstants.Bear_Black][GenderConstants.Male] = GetBaseFromRange(2 * 12 + 11, 3 * 12 + 5);
             heights[CreatureConstants.Bear_Black][CreatureConstants.Bear_Black] = GetMultiplierFromRange(2 * 12 + 11, 3 * 12 + 5);
             //Source: https://www.dimensions.com/element/grizzly-bear shoulder height
-            heights[CreatureConstants.Bear_Brown][GenderConstants.Female] = GetBaseFromRange(3 * 12, 3 * 12 + 8);
+            //Adjusting upper female +4" to match range
+            heights[CreatureConstants.Bear_Brown][GenderConstants.Female] = GetBaseFromRange(3 * 12, 3 * 12 + 8 + 4);
             heights[CreatureConstants.Bear_Brown][GenderConstants.Male] = GetBaseFromRange(3 * 12 + 6, 4 * 12 + 6);
             heights[CreatureConstants.Bear_Brown][CreatureConstants.Bear_Brown] = GetMultiplierFromRange(3 * 12 + 6, 4 * 12 + 6);
             //Source: Scaled up from grizzly, x1.5
@@ -389,10 +392,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Bralani][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
             heights[CreatureConstants.Bralani][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
             heights[CreatureConstants.Bralani][CreatureConstants.Bralani] = GetMultiplierFromAverage(5 * 12);
-            //Source: http://people.wku.edu/charles.plemons/ad&d/races/height.html
-            heights[CreatureConstants.Bugbear][GenderConstants.Female] = "68";
-            heights[CreatureConstants.Bugbear][GenderConstants.Male] = "72";
-            heights[CreatureConstants.Bugbear][CreatureConstants.Bugbear] = "2d10";
+            //Source: https://forgottenrealms.fandom.com/wiki/Bugbear
+            heights[CreatureConstants.Bugbear][GenderConstants.Female] = GetBaseFromRange(6 * 12, 8 * 12);
+            heights[CreatureConstants.Bugbear][GenderConstants.Male] = GetBaseFromRange(6 * 12, 8 * 12);
+            heights[CreatureConstants.Bugbear][CreatureConstants.Bugbear] = GetMultiplierFromRange(6 * 12, 8 * 12);
             //Source: https://forgottenrealms.fandom.com/wiki/Bulette
             heights[CreatureConstants.Bulette][GenderConstants.Female] = GetBaseFromAverage(9 * 12);
             heights[CreatureConstants.Bulette][GenderConstants.Male] = GetBaseFromAverage(9 * 12);
@@ -413,10 +416,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Cat][GenderConstants.Female] = GetBaseFromRange(8, 10);
             heights[CreatureConstants.Cat][GenderConstants.Male] = GetBaseFromRange(8, 10);
             heights[CreatureConstants.Cat][CreatureConstants.Cat] = GetMultiplierFromRange(8, 10);
-            //Source: http://people.wku.edu/charles.plemons/ad&d/races/height.html
-            heights[CreatureConstants.Centaur][GenderConstants.Female] = "80";
-            heights[CreatureConstants.Centaur][GenderConstants.Male] = "84";
-            heights[CreatureConstants.Centaur][CreatureConstants.Centaur] = "3d12";
+            //Source: https://forgottenrealms.fandom.com/wiki/Centaur
+            heights[CreatureConstants.Centaur][GenderConstants.Female] = GetBaseFromRange(7 * 12, 9 * 12);
+            heights[CreatureConstants.Centaur][GenderConstants.Male] = GetBaseFromRange(7 * 12, 9 * 12);
+            heights[CreatureConstants.Centaur][CreatureConstants.Centaur] = GetMultiplierFromRange(7 * 12, 9 * 12);
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Tiny
             heights[CreatureConstants.Centipede_Monstrous_Tiny][GenderConstants.Female] = GetBaseFromRange(1, 2);
             heights[CreatureConstants.Centipede_Monstrous_Tiny][GenderConstants.Male] = GetBaseFromRange(1, 2);
@@ -530,7 +533,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Cryohydra_11Heads][CreatureConstants.Cryohydra_11Heads] = GetMultiplierFromAverage(20 * 12 / 2);
             heights[CreatureConstants.Cryohydra_12Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
             heights[CreatureConstants.Cryohydra_12Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
-            heights[CreatureConstants.Cryohydra_12Heads][CreatureConstants.Cryohydra_5Heads] = GetMultiplierFromAverage(20 * 12 / 2);
+            heights[CreatureConstants.Cryohydra_12Heads][CreatureConstants.Cryohydra_12Heads] = GetMultiplierFromAverage(20 * 12 / 2);
             //Source: https://forgottenrealms.fandom.com/wiki/Darkmantle
             heights[CreatureConstants.Darkmantle][GenderConstants.Hermaphrodite] = "0";
             heights[CreatureConstants.Darkmantle][CreatureConstants.Darkmantle] = "0";
@@ -1145,7 +1148,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Giant_Cloud][GenderConstants.Male] = GetBaseFromRange(24 * 12 + 4, 26 * 12 + 8);
             heights[CreatureConstants.Giant_Cloud][CreatureConstants.Giant_Cloud] = GetMultiplierFromRange(22 * 12 + 8, 25 * 12);
             //Source: https://forgottenrealms.fandom.com/wiki/Fire_giant
-            heights[CreatureConstants.Giant_Fire][GenderConstants.Female] = GetBaseFromRange(17 * 12 + 5, 19 * 12);
+            //Adjusting female max -1" to match range
+            heights[CreatureConstants.Giant_Fire][GenderConstants.Female] = GetBaseFromRange(17 * 12 + 5, 19 * 12 - 1);
             heights[CreatureConstants.Giant_Fire][GenderConstants.Male] = GetBaseFromRange(18 * 12 + 2, 19 * 12 + 8);
             heights[CreatureConstants.Giant_Fire][CreatureConstants.Giant_Fire] = GetMultiplierFromRange(18 * 12 + 2, 19 * 12 + 8);
             //Source: https://forgottenrealms.fandom.com/wiki/Frost_giant
@@ -1156,6 +1160,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Giant_Hill][GenderConstants.Female] = GetBaseFromRange(15 * 12 + 5, 16 * 12 + 4);
             heights[CreatureConstants.Giant_Hill][GenderConstants.Male] = GetBaseFromRange(16 * 12 + 1, 17 * 12);
             heights[CreatureConstants.Giant_Hill][CreatureConstants.Giant_Hill] = GetMultiplierFromRange(15 * 12 + 5, 16 * 12 + 4);
+            //Source: https://forgottenrealms.fandom.com/wiki/Stone_giant
+            heights[CreatureConstants.Giant_Stone][GenderConstants.Female] = GetBaseFromRange(17 * 12 + 5, 19 * 12);
+            heights[CreatureConstants.Giant_Stone][GenderConstants.Male] = GetBaseFromRange(18 * 12 + 2, 19 * 12 + 8);
+            heights[CreatureConstants.Giant_Stone][CreatureConstants.Giant_Stone] = GetMultiplierFromRange(18 * 12 + 2, 19 * 12 + 8);
+            heights[CreatureConstants.Giant_Stone_Elder][GenderConstants.Female] = GetBaseFromRange(17 * 12 + 5, 19 * 12);
+            heights[CreatureConstants.Giant_Stone_Elder][GenderConstants.Male] = GetBaseFromRange(18 * 12 + 2, 19 * 12 + 8);
+            heights[CreatureConstants.Giant_Stone_Elder][CreatureConstants.Giant_Stone_Elder] = GetMultiplierFromRange(18 * 12 + 2, 19 * 12 + 8);
+            //Source: https://forgottenrealms.fandom.com/wiki/Storm_giant
+            heights[CreatureConstants.Giant_Storm][GenderConstants.Female] = GetBaseFromRange(23 * 12 + 8, 26 * 12 + 8);
+            heights[CreatureConstants.Giant_Storm][GenderConstants.Male] = GetBaseFromRange(26 * 12 + 4, 29 * 12 + 4);
+            heights[CreatureConstants.Giant_Storm][CreatureConstants.Giant_Storm] = GetMultiplierFromRange(26 * 12 + 4, 29 * 12 + 4);
             //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/gibbering-mouther-species
             heights[CreatureConstants.GibberingMouther][GenderConstants.Agender] = GetBaseFromRange(3 * 12, 7 * 12);
             heights[CreatureConstants.GibberingMouther][CreatureConstants.GibberingMouther] = GetMultiplierFromRange(3 * 12, 7 * 12);
@@ -1413,7 +1428,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Lillend][GenderConstants.Male] = "4*12+10";
             heights[CreatureConstants.Lillend][CreatureConstants.Lillend] = "2d10";
             //Source: https://www.dimensions.com/element/african-lion
-            heights[CreatureConstants.Lion][GenderConstants.Female] = GetBaseFromAverage(2 * 12 + 10);
+            heights[CreatureConstants.Lion][GenderConstants.Female] = GetBaseFromAverage(2 * 12 + 10, 3 * 12 + 4);
             heights[CreatureConstants.Lion][GenderConstants.Male] = GetBaseFromAverage(3 * 12 + 4);
             heights[CreatureConstants.Lion][CreatureConstants.Lion] = GetMultiplierFromAverage(3 * 12 + 4);
             //Scaling up from lion, x3 based on length
@@ -1447,7 +1462,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.MantaRay][GenderConstants.Male] = "0";
             heights[CreatureConstants.MantaRay][CreatureConstants.MantaRay] = "0";
             //Source: https://forgottenrealms.fandom.com/wiki/Manticore Using Lion for height
-            heights[CreatureConstants.Manticore][GenderConstants.Female] = GetBaseFromAverage(2 * 12 + 10);
+            heights[CreatureConstants.Manticore][GenderConstants.Female] = GetBaseFromAverage(2 * 12 + 10, 3 * 12 + 4);
             heights[CreatureConstants.Manticore][GenderConstants.Male] = GetBaseFromAverage(3 * 12 + 4);
             heights[CreatureConstants.Manticore][CreatureConstants.Manticore] = GetMultiplierFromAverage(3 * 12 + 4);
             //Source: https://forgottenrealms.fandom.com/wiki/Marilith
@@ -1515,10 +1530,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Mind_flayer
             heights[CreatureConstants.MindFlayer][GenderConstants.Agender] = GetBaseFromAverage(6 * 12);
             heights[CreatureConstants.MindFlayer][CreatureConstants.MindFlayer] = GetMultiplierFromAverage(6 * 12);
-            //Source: http://people.wku.edu/charles.plemons/ad&d/races/height.html
-            heights[CreatureConstants.Minotaur][GenderConstants.Female] = "84";
-            heights[CreatureConstants.Minotaur][GenderConstants.Male] = "80";
-            heights[CreatureConstants.Minotaur][CreatureConstants.Minotaur] = "2d6";
+            //Source: https://forgottenrealms.fandom.com/wiki/Minotaur
+            heights[CreatureConstants.Minotaur][GenderConstants.Female] = GetBaseFromAverage(7 * 12, 9 * 12);
+            heights[CreatureConstants.Minotaur][GenderConstants.Male] = GetBaseFromAverage(9 * 12);
+            heights[CreatureConstants.Minotaur][CreatureConstants.Minotaur] = GetMultiplierFromAverage(9 * 12);
             //Source: https://www.d20srd.org/srd/monsters/mohrg.htm
             heights[CreatureConstants.Mohrg][GenderConstants.Agender] = GetBaseFromRange(5 * 12, 6 * 12);
             heights[CreatureConstants.Mohrg][CreatureConstants.Mohrg] = GetMultiplierFromRange(5 * 12, 6 * 12);
@@ -1872,6 +1887,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Snake_Constrictor_Giant][GenderConstants.Female] = GetBaseFromRange(3, 9);
             heights[CreatureConstants.Snake_Constrictor_Giant][GenderConstants.Male] = GetBaseFromRange(3, 9);
             heights[CreatureConstants.Snake_Constrictor_Giant][CreatureConstants.Snake_Constrictor_Giant] = GetMultiplierFromRange(3, 9);
+            //Source: https://www.dimensions.com/element/ribbon-snake-thamnophis-saurita 
+            heights[CreatureConstants.Snake_Viper_Tiny][GenderConstants.Female] = GetBaseFromAverage(1);
+            heights[CreatureConstants.Snake_Viper_Tiny][GenderConstants.Male] = GetBaseFromAverage(1);
+            heights[CreatureConstants.Snake_Viper_Tiny][CreatureConstants.Snake_Viper_Tiny] = GetMultiplierFromAverage(1);
+            //Source: https://www.dimensions.com/element/copperhead-agkistrodon-contortrix 
+            heights[CreatureConstants.Snake_Viper_Small][GenderConstants.Female] = GetBaseFromRange(1, 2);
+            heights[CreatureConstants.Snake_Viper_Small][GenderConstants.Male] = GetBaseFromRange(1, 2);
+            heights[CreatureConstants.Snake_Viper_Small][CreatureConstants.Snake_Viper_Small] = GetMultiplierFromRange(1, 2);
+            //Source: https://www.dimensions.com/element/western-diamondback-rattlesnake-crotalus-atrox 
+            heights[CreatureConstants.Snake_Viper_Medium][GenderConstants.Female] = GetBaseFromRange(1, 3);
+            heights[CreatureConstants.Snake_Viper_Medium][GenderConstants.Male] = GetBaseFromRange(1, 3);
+            heights[CreatureConstants.Snake_Viper_Medium][CreatureConstants.Snake_Viper_Medium] = GetMultiplierFromRange(1, 3);
+            //Source: https://www.dimensions.com/element/black-mamba-dendroaspis-polylepis 
+            heights[CreatureConstants.Snake_Viper_Large][GenderConstants.Female] = GetBaseFromRange(2, 4);
+            heights[CreatureConstants.Snake_Viper_Large][GenderConstants.Male] = GetBaseFromRange(2, 4);
+            heights[CreatureConstants.Snake_Viper_Large][CreatureConstants.Snake_Viper_Large] = GetMultiplierFromRange(2, 4);
+            //Source: https://www.dimensions.com/element/king-cobra-ophiophagus-hannah 
+            heights[CreatureConstants.Snake_Viper_Huge][GenderConstants.Female] = GetBaseFromRange(3, 6);
+            heights[CreatureConstants.Snake_Viper_Huge][GenderConstants.Male] = GetBaseFromRange(3, 6);
+            heights[CreatureConstants.Snake_Viper_Huge][CreatureConstants.Snake_Viper_Huge] = GetMultiplierFromRange(3, 6);
             //Source: https://www.d20srd.org/srd/monsters/spectre.htm Copying from Human
             heights[CreatureConstants.Spectre][GenderConstants.Female] = "4*12+5";
             heights[CreatureConstants.Spectre][GenderConstants.Male] = "4*12+10";
@@ -1942,7 +1977,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.dimensions.com/element/humboldt-squid-dosidicus-gigas (mantle length)
             heights[CreatureConstants.Squid][GenderConstants.Female] = GetBaseFromRange(29, 79);
             heights[CreatureConstants.Squid][GenderConstants.Male] = GetBaseFromRange(29, 79);
-            heights[CreatureConstants.Squid][CreatureConstants.Squid] = GetBaseFromRange(29, 79);
+            heights[CreatureConstants.Squid][CreatureConstants.Squid] = GetMultiplierFromRange(29, 79);
             heights[CreatureConstants.Squid_Giant][GenderConstants.Female] = "0";
             heights[CreatureConstants.Squid_Giant][GenderConstants.Male] = "0";
             heights[CreatureConstants.Squid_Giant][CreatureConstants.Squid_Giant] = "0";
@@ -1958,6 +1993,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Succubus][GenderConstants.Female] = GetBaseFromAverage(6 * 12);
             heights[CreatureConstants.Succubus][GenderConstants.Male] = GetBaseFromAverage(6 * 12);
             heights[CreatureConstants.Succubus][CreatureConstants.Succubus] = GetMultiplierFromAverage(6 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/tarrasque.htm
+            heights[CreatureConstants.Tarrasque][GenderConstants.Agender] = GetBaseFromAverage(50 * 12);
+            heights[CreatureConstants.Tarrasque][CreatureConstants.Tarrasque] = GetMultiplierFromAverage(50 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/tendriculos.htm
+            heights[CreatureConstants.Tendriculos][GenderConstants.Agender] = GetBaseFromAverage(15 * 12);
+            heights[CreatureConstants.Tendriculos][CreatureConstants.Tendriculos] = GetMultiplierFromAverage(15 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/thoqqua.htm
+            heights[CreatureConstants.Thoqqua][GenderConstants.Agender] = GetBaseFromAverage(12);
+            heights[CreatureConstants.Thoqqua][CreatureConstants.Thoqqua] = GetMultiplierFromAverage(12);
             //Source: http://people.wku.edu/charles.plemons/ad&d/races/height.html
             heights[CreatureConstants.Tiefling][GenderConstants.Female] = "57";
             heights[CreatureConstants.Tiefling][GenderConstants.Male] = "59";
@@ -1966,23 +2010,74 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Tiger][GenderConstants.Female] = GetBaseFromRange(34, 45);
             heights[CreatureConstants.Tiger][GenderConstants.Male] = GetBaseFromRange(34, 45);
             heights[CreatureConstants.Tiger][CreatureConstants.Tiger] = GetMultiplierFromRange(34, 45);
-            //Scaled up from Tiger, x2 bsed on length
+            //Scaled up from Tiger, x2 based on length
             heights[CreatureConstants.Tiger_Dire][GenderConstants.Female] = GetBaseFromRange(34 * 2, 45 * 2);
             heights[CreatureConstants.Tiger_Dire][GenderConstants.Male] = GetBaseFromRange(34 * 2, 45 * 2);
             heights[CreatureConstants.Tiger_Dire][CreatureConstants.Tiger_Dire] = GetMultiplierFromRange(34 * 2, 45 * 2);
+            //Source: https://www.d20srd.org/srd/monsters/titan.htm
+            heights[CreatureConstants.Titan][GenderConstants.Female] = GetBaseFromAverage(25 * 12);
+            heights[CreatureConstants.Titan][GenderConstants.Male] = GetBaseFromAverage(25 * 12);
+            heights[CreatureConstants.Titan][CreatureConstants.Titan] = GetMultiplierFromAverage(25 * 12);
+            //Source: https://www.dimensions.com/element/common-toad-bufo-bufo
+            heights[CreatureConstants.Toad][GenderConstants.Female] = GetBaseFromRange(2, 3);
+            heights[CreatureConstants.Toad][GenderConstants.Male] = GetBaseFromRange(2, 3);
+            heights[CreatureConstants.Toad][CreatureConstants.Toad] = GetMultiplierFromRange(2, 3);
             heights[CreatureConstants.Tojanida_Juvenile][GenderConstants.Agender] = "0";
             heights[CreatureConstants.Tojanida_Juvenile][CreatureConstants.Tojanida_Juvenile] = "0";
             heights[CreatureConstants.Tojanida_Adult][GenderConstants.Agender] = "0";
             heights[CreatureConstants.Tojanida_Adult][CreatureConstants.Tojanida_Adult] = "0";
             heights[CreatureConstants.Tojanida_Elder][GenderConstants.Agender] = "0";
             heights[CreatureConstants.Tojanida_Elder][CreatureConstants.Tojanida_Elder] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/treant.htm
+            heights[CreatureConstants.Treant][GenderConstants.Female] = GetBaseFromAverage(30 * 12);
+            heights[CreatureConstants.Treant][GenderConstants.Male] = GetBaseFromAverage(30 * 12);
+            heights[CreatureConstants.Treant][CreatureConstants.Treant] = GetMultiplierFromAverage(30 * 12);
+            //Source: https://jurassicworld-evolution.fandom.com/wiki/Triceratops
+            heights[CreatureConstants.Triceratops][GenderConstants.Female] = GetBaseFromAverage(157);
+            heights[CreatureConstants.Triceratops][GenderConstants.Male] = GetBaseFromAverage(157);
+            heights[CreatureConstants.Triceratops][CreatureConstants.Triceratops] = GetMultiplierFromAverage(157);
+            //Source: https://www.d20srd.org/srd/monsters/triton.htm Copying from Human
+            heights[CreatureConstants.Triton][GenderConstants.Female] = "4*12+5";
+            heights[CreatureConstants.Triton][GenderConstants.Male] = "4*12+10";
+            heights[CreatureConstants.Triton][CreatureConstants.Triton] = "2d10";
+            //Source: https://forgottenrealms.fandom.com/wiki/Troglodyte
+            heights[CreatureConstants.Troglodyte][GenderConstants.Female] = GetBaseFromRange(5 * 12, 6 * 12);
+            heights[CreatureConstants.Troglodyte][GenderConstants.Male] = GetBaseFromRange(5 * 12, 6 * 12);
+            heights[CreatureConstants.Troglodyte][CreatureConstants.Troglodyte] = GetMultiplierFromRange(5 * 12, 6 * 12);
             //Source: https://www.d20srd.org/srd/monsters/troll.htm Female "slightly larger than males", so 110%
             heights[CreatureConstants.Troll][GenderConstants.Male] = GetBaseFromAverage(9 * 12);
-            heights[CreatureConstants.Troll][GenderConstants.Female] = GetBaseFromAverage(119);
+            heights[CreatureConstants.Troll][GenderConstants.Female] = GetBaseFromAverage(119, 9 * 12);
             heights[CreatureConstants.Troll][CreatureConstants.Troll] = GetMultiplierFromAverage(9 * 12);
             heights[CreatureConstants.Troll_Scrag][GenderConstants.Male] = GetBaseFromAverage(9 * 12);
-            heights[CreatureConstants.Troll_Scrag][GenderConstants.Female] = GetBaseFromAverage(119);
+            heights[CreatureConstants.Troll_Scrag][GenderConstants.Female] = GetBaseFromAverage(119, 9 * 12);
             heights[CreatureConstants.Troll_Scrag][CreatureConstants.Troll_Scrag] = GetMultiplierFromAverage(9 * 12);
+            //Source: https://forgottenrealms.fandom.com/wiki/Trumpet_archon
+            heights[CreatureConstants.TrumpetArchon][GenderConstants.Female] = GetBaseFromRange(6 * 12 + 1, 7 * 12 + 4);
+            heights[CreatureConstants.TrumpetArchon][GenderConstants.Male] = GetBaseFromRange(6 * 12 + 6, 7 * 12 + 9);
+            heights[CreatureConstants.TrumpetArchon][CreatureConstants.TrumpetArchon] = GetMultiplierFromRange(6 * 12 + 6, 7 * 12 + 9);
+            //Source: https://jurassicworld-evolution.fandom.com/wiki/Tyrannosaurus
+            heights[CreatureConstants.Tyrannosaurus][GenderConstants.Male] = GetBaseFromAverage(232);
+            heights[CreatureConstants.Tyrannosaurus][GenderConstants.Female] = GetBaseFromAverage(232);
+            heights[CreatureConstants.Tyrannosaurus][CreatureConstants.Tyrannosaurus] = GetMultiplierFromAverage(232);
+            //Source: https://forgottenrealms.fandom.com/wiki/Umber_hulk
+            heights[CreatureConstants.UmberHulk][GenderConstants.Female] = GetBaseFromRange(4 * 12 + 6, 5 * 12);
+            heights[CreatureConstants.UmberHulk][GenderConstants.Male] = GetBaseFromRange(4 * 12 + 6, 5 * 12);
+            heights[CreatureConstants.UmberHulk][CreatureConstants.UmberHulk] = GetMultiplierFromRange(4 * 12 + 6, 5 * 12);
+            //Scale up based on length, X2
+            heights[CreatureConstants.UmberHulk_TrulyHorrid][GenderConstants.Female] = GetBaseFromRange(9 * 12, 10 * 12);
+            heights[CreatureConstants.UmberHulk_TrulyHorrid][GenderConstants.Male] = GetBaseFromRange(9 * 12, 10 * 12);
+            heights[CreatureConstants.UmberHulk_TrulyHorrid][CreatureConstants.UmberHulk_TrulyHorrid] = GetMultiplierFromRange(9 * 12, 10 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/unicorn.htm Females "slightly smaller", so 90%
+            heights[CreatureConstants.Unicorn][GenderConstants.Female] = GetBaseFromAverage(54, 5 * 12);
+            heights[CreatureConstants.Unicorn][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
+            heights[CreatureConstants.Unicorn][CreatureConstants.Unicorn] = GetMultiplierFromAverage(5 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/vampire.htm#vampireSpawn Copying from Human
+            heights[CreatureConstants.VampireSpawn][GenderConstants.Female] = "4*12+5";
+            heights[CreatureConstants.VampireSpawn][GenderConstants.Male] = "4*12+10";
+            heights[CreatureConstants.VampireSpawn][CreatureConstants.VampireSpawn] = "2d10";
+            //Source: https://www.d20srd.org/srd/monsters/vargouille.htm
+            heights[CreatureConstants.Vargouille][GenderConstants.Agender] = GetBaseFromAverage(18);
+            heights[CreatureConstants.Vargouille][CreatureConstants.Vargouille] = GetMultiplierFromAverage(18);
             //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/violet-fungus-species
             heights[CreatureConstants.VioletFungus][GenderConstants.Agender] = GetBaseFromRange(4 * 12, 7 * 12);
             heights[CreatureConstants.VioletFungus][CreatureConstants.VioletFungus] = GetMultiplierFromRange(4 * 12, 7 * 12);
@@ -2013,6 +2108,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Whale_Orca][GenderConstants.Female] = GetBaseFromRange(5 * 12 + 3, 7 * 12 + 6);
             heights[CreatureConstants.Whale_Orca][GenderConstants.Male] = GetBaseFromRange(5 * 12 + 3, 7 * 12 + 6);
             heights[CreatureConstants.Whale_Orca][CreatureConstants.Whale_Orca] = GetMultiplierFromRange(5 * 12 + 3, 7 * 12 + 6);
+            //Source: https://www.d20srd.org/srd/monsters/wight.htm Copy from Human
+            heights[CreatureConstants.Wight][GenderConstants.Female] = "4*12+5";
+            heights[CreatureConstants.Wight][GenderConstants.Male] = "4*12+10";
+            heights[CreatureConstants.Wight][CreatureConstants.Wight] = "2d10";
+            //Source: https://www.d20srd.org/srd/monsters/willOWisp.htm
+            heights[CreatureConstants.WillOWisp][GenderConstants.Agender] = GetBaseFromAverage(12);
+            heights[CreatureConstants.WillOWisp][CreatureConstants.WillOWisp] = GetMultiplierFromAverage(12);
+            //Source: https://www.d20srd.org/srd/monsters/winterWolf.htm
+            heights[CreatureConstants.WinterWolf][GenderConstants.Female] = GetBaseFromAverage(4 * 12 + 6);
+            heights[CreatureConstants.WinterWolf][GenderConstants.Male] = GetBaseFromAverage(4 * 12 + 6);
+            heights[CreatureConstants.WinterWolf][CreatureConstants.WinterWolf] = GetMultiplierFromAverage(4 * 12 + 6);
             //Source: https://www.dimensions.com/element/gray-wolf
             heights[CreatureConstants.Wolf][GenderConstants.Female] = GetBaseFromRange(26, 33);
             heights[CreatureConstants.Wolf][GenderConstants.Male] = GetBaseFromRange(26, 33);
@@ -2029,11 +2135,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Wolverine_Dire][GenderConstants.Female] = GetBaseFromRange(14 * 4, 21 * 4);
             heights[CreatureConstants.Wolverine_Dire][GenderConstants.Male] = GetBaseFromRange(14 * 4, 21 * 4);
             heights[CreatureConstants.Wolverine_Dire][CreatureConstants.Wolverine_Dire] = GetMultiplierFromRange(14 * 4, 21 * 4);
+            //Source: https://www.d20srd.org/srd/monsters/worg.htm
+            heights[CreatureConstants.Worg][GenderConstants.Female] = GetBaseFromAverage(3 * 12);
+            heights[CreatureConstants.Worg][GenderConstants.Male] = GetBaseFromAverage(3 * 12);
+            heights[CreatureConstants.Worg][CreatureConstants.Worg] = GetMultiplierFromAverage(3 * 12);
             //Source: https://www.d20srd.org/srd/monsters/wraith.htm W:Human, DW:Ogre
             heights[CreatureConstants.Wraith][GenderConstants.Agender] = "4*12+10";
             heights[CreatureConstants.Wraith][CreatureConstants.Wraith] = "2d10";
             heights[CreatureConstants.Wraith_Dread][GenderConstants.Agender] = "96";
             heights[CreatureConstants.Wraith_Dread][CreatureConstants.Wraith_Dread] = "2d12";
+            //Source: https://forgottenrealms.fandom.com/wiki/Wyvern
+            heights[CreatureConstants.Wyvern][GenderConstants.Female] = "0";
+            heights[CreatureConstants.Wyvern][GenderConstants.Male] = "0";
+            heights[CreatureConstants.Wyvern][CreatureConstants.Wyvern] = "0";
+            //Source: https://www.d20srd.org/srd/monsters/xill.htm
+            heights[CreatureConstants.Xill][GenderConstants.Agender] = GetBaseFromRange(4 * 12, 5 * 12);
+            heights[CreatureConstants.Xill][CreatureConstants.Xill] = GetMultiplierFromRange(4 * 12, 5 * 12);
             //Source: https://forgottenrealms.fandom.com/wiki/Xorn
             heights[CreatureConstants.Xorn_Minor][GenderConstants.Agender] = GetBaseFromAverage(3 * 12);
             heights[CreatureConstants.Xorn_Minor][CreatureConstants.Xorn_Minor] = GetMultiplierFromAverage(3 * 12);
@@ -2041,9 +2158,37 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Xorn_Average][CreatureConstants.Xorn_Average] = GetMultiplierFromAverage(5 * 12);
             heights[CreatureConstants.Xorn_Elder][GenderConstants.Agender] = GetBaseFromAverage(8 * 12);
             heights[CreatureConstants.Xorn_Elder][CreatureConstants.Xorn_Elder] = GetMultiplierFromAverage(8 * 12);
+            //Source: https://forgottenrealms.fandom.com/wiki/Yeth_hound
+            heights[CreatureConstants.YethHound][GenderConstants.Agender] = GetBaseFromRange(4 * 12, 5 * 12);
+            heights[CreatureConstants.YethHound][CreatureConstants.YethHound] = GetMultiplierFromRange(4 * 12, 5 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/yrthak.htm
+            heights[CreatureConstants.Yrthak][GenderConstants.Agender] = "0";
+            heights[CreatureConstants.Yrthak][CreatureConstants.Yrthak] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Yuan-ti_pureblood
+            heights[CreatureConstants.YuanTi_Pureblood][GenderConstants.Female] = GetBaseFromRange(4 * 12 + 7, 6 * 12 + 6);
+            heights[CreatureConstants.YuanTi_Pureblood][GenderConstants.Male] = GetBaseFromRange(4 * 12 + 7, 6 * 12 + 6);
+            heights[CreatureConstants.YuanTi_Pureblood][CreatureConstants.YuanTi_Pureblood] = GetMultiplierFromRange(4 * 12 + 7, 6 * 12 + 6);
+            //Source: https://forgottenrealms.fandom.com/wiki/Yuan-ti_malison
+            heights[CreatureConstants.YuanTi_Halfblood_SnakeArms][GenderConstants.Female] = GetBaseFromRange(4 * 12 + 7, 6 * 12 + 6);
+            heights[CreatureConstants.YuanTi_Halfblood_SnakeArms][GenderConstants.Male] = GetBaseFromRange(4 * 12 + 7, 6 * 12 + 6);
+            heights[CreatureConstants.YuanTi_Halfblood_SnakeArms][CreatureConstants.YuanTi_Halfblood_SnakeArms] = GetMultiplierFromRange(4 * 12 + 7, 6 * 12 + 6);
+            heights[CreatureConstants.YuanTi_Halfblood_SnakeHead][GenderConstants.Female] = GetBaseFromRange(4 * 12 + 7, 6 * 12 + 6);
+            heights[CreatureConstants.YuanTi_Halfblood_SnakeHead][GenderConstants.Male] = GetBaseFromRange(4 * 12 + 7, 6 * 12 + 6);
+            heights[CreatureConstants.YuanTi_Halfblood_SnakeHead][CreatureConstants.YuanTi_Halfblood_SnakeHead] = GetMultiplierFromRange(4 * 12 + 7, 6 * 12 + 6);
+            heights[CreatureConstants.YuanTi_Halfblood_SnakeTail][GenderConstants.Female] = GetBaseFromRange(4 * 12 + 7, 6 * 12 + 6);
+            heights[CreatureConstants.YuanTi_Halfblood_SnakeTail][GenderConstants.Male] = GetBaseFromRange(4 * 12 + 7, 6 * 12 + 6);
+            heights[CreatureConstants.YuanTi_Halfblood_SnakeTail][CreatureConstants.YuanTi_Halfblood_SnakeTail] = GetMultiplierFromRange(4 * 12 + 7, 6 * 12 + 6);
+            heights[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs][GenderConstants.Female] = GetBaseFromRange(4 * 12 + 7, 6 * 12 + 6);
+            heights[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs][GenderConstants.Male] = GetBaseFromRange(4 * 12 + 7, 6 * 12 + 6);
+            heights[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs][CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs] =
+                GetMultiplierFromRange(4 * 12 + 7, 6 * 12 + 6);
+            //Source: https://forgottenrealms.fandom.com/wiki/Yuan-ti_abomination (assuming height based on other yuan-ti)
+            heights[CreatureConstants.YuanTi_Abomination][GenderConstants.Female] = GetBaseFromRange(4 * 12 + 7, 6 * 12 + 6);
+            heights[CreatureConstants.YuanTi_Abomination][GenderConstants.Male] = GetBaseFromRange(4 * 12 + 7, 6 * 12 + 6);
+            heights[CreatureConstants.YuanTi_Abomination][CreatureConstants.YuanTi_Abomination] = GetMultiplierFromRange(4 * 12 + 7, 6 * 12 + 6);
             //Source: https://forgottenrealms.fandom.com/wiki/Zelekhut using centaur stats
-            heights[CreatureConstants.Zelekhut][GenderConstants.Agender] = "84";
-            heights[CreatureConstants.Zelekhut][CreatureConstants.Zelekhut] = "3d12";
+            heights[CreatureConstants.Zelekhut][GenderConstants.Agender] = GetBaseFromRange(7 * 12, 9 * 12);
+            heights[CreatureConstants.Zelekhut][CreatureConstants.Zelekhut] = GetMultiplierFromRange(7 * 12, 9 * 12);
 
             return heights;
         }
@@ -2051,12 +2196,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public static IEnumerable CreatureHeightsData => GetCreatureHeights().Select(t => new TestCaseData(t.Key, t.Value));
 
         private static string GetBaseFromAverage(int average) => GetBaseFromRange(average * 9 / 10, average * 11 / 10);
-        private static string GetBaseFromUpTo(int upTo) => GetBaseFromRange(upTo * 9 / 11, upTo);
-        private static string GetBaseFromAtLeast(int atLeast) => GetBaseFromRange(atLeast, atLeast * 11 / 9);
+        private static string GetBaseFromAverage(int average, int altAverage) => GetBaseFromRange(average - altAverage / 10, average + altAverage / 10);
 
         private static string GetMultiplierFromAverage(int average) => GetMultiplierFromRange(average * 9 / 10, average * 11 / 10);
-        private static string GetMultiplierFromUpTo(int upTo) => GetMultiplierFromRange(upTo * 9 / 11, upTo);
-        private static string GetMultiplierFromAtLeast(int atLeast) => GetMultiplierFromRange(atLeast, atLeast * 11 / 9);
 
         private static string GetBaseFromRange(int lower, int upper) => GetFromRange(lower, upper, 1);
 
@@ -2064,6 +2206,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
         private static string GetFromRange(int lower, int upper, int index)
         {
+            lower = Math.Max(1, lower);
+
             var roll = RollHelper.GetRollWithFewestDice(lower, upper);
             var sections = roll.Split('+');
             if (sections.Length - 1 < index)
@@ -2072,32 +2216,24 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return sections[index];
         }
 
-        [TestCase(CreatureConstants.Aboleth, GenderConstants.Hermaphrodite, 20 * 12)]
-        [TestCase(CreatureConstants.Achaierai, GenderConstants.Male, 15 * 12)]
-        [TestCase(CreatureConstants.Achaierai, GenderConstants.Female, 15 * 12)]
-        [TestCase(CreatureConstants.Ape_Dire, GenderConstants.Male, 9 * 12)]
-        [TestCase(CreatureConstants.Ape_Dire, GenderConstants.Female, 6 * 12 + 9)]
-        [TestCase(CreatureConstants.Androsphinx, GenderConstants.Male, 10 * 12)]
-        [TestCase(CreatureConstants.Balor, GenderConstants.Agender, 12 * 12)]
-        [TestCase(CreatureConstants.Baboon, GenderConstants.Female, 24)]
-        [TestCase(CreatureConstants.Baboon, GenderConstants.Male, 28)]
-        [TestCase(CreatureConstants.Horse_Heavy, GenderConstants.Male, 6 * 12)]
-        [TestCase(CreatureConstants.Horse_Heavy, GenderConstants.Female, 6 * 12)]
         [TestCase(CreatureConstants.Lion, GenderConstants.Male, 3 * 12 + 4)]
-        [TestCase(CreatureConstants.Lion, GenderConstants.Female, 2 * 12 + 10)]
-        [TestCase(CreatureConstants.Locathah, GenderConstants.Male, 5 * 12)]
-        [TestCase(CreatureConstants.Locathah, GenderConstants.Female, 5 * 12)]
+        [TestCase(CreatureConstants.Lion, GenderConstants.Female, 2 * 12 + 10, 3 * 12 + 4)]
         //Based off of Lion
         [TestCase(CreatureConstants.Manticore, GenderConstants.Male, 3 * 12 + 4)]
-        [TestCase(CreatureConstants.Manticore, GenderConstants.Female, 2 * 12 + 10)]
+        [TestCase(CreatureConstants.Manticore, GenderConstants.Female, 2 * 12 + 10, 3 * 12 + 4)]
         //https://forgottenrealms.fandom.com/wiki/Minotaur
         [TestCase(CreatureConstants.Minotaur, GenderConstants.Male, 9 * 12)]
-        [TestCase(CreatureConstants.Minotaur, GenderConstants.Female, 7 * 12)]
-        [TestCase(CreatureConstants.Owlbear, GenderConstants.Male, 8 * 12)]
-        [TestCase(CreatureConstants.Owlbear, GenderConstants.Female, 91)]
+        [TestCase(CreatureConstants.Minotaur, GenderConstants.Female, 7 * 12, 9 * 12)]
+        [TestCase(CreatureConstants.Salamander_Noble, GenderConstants.Agender, 20 * 12)]
+        [TestCase(CreatureConstants.Salamander_Average, GenderConstants.Agender, 10 * 12)]
+        [TestCase(CreatureConstants.Salamander_Flamebrother, GenderConstants.Agender, 5 * 12)]
         [TestCase(CreatureConstants.Troll, GenderConstants.Male, 9 * 12)]
-        [TestCase(CreatureConstants.Troll, GenderConstants.Female, 119)]
-        public void RollCalculationsAreAccurate_FromAverage(string creature, string gender, int average)
+        [TestCase(CreatureConstants.Troll, GenderConstants.Female, 119, 9 * 12)]
+        [TestCase(CreatureConstants.Troll_Scrag, GenderConstants.Male, 9 * 12)]
+        [TestCase(CreatureConstants.Troll_Scrag, GenderConstants.Female, 119, 9 * 12)]
+        [TestCase(CreatureConstants.Unicorn, GenderConstants.Male, 5 * 12)]
+        [TestCase(CreatureConstants.Unicorn, GenderConstants.Female, 54, 5 * 12)]
+        public void RollCalculationsAreAccurate_FromAverage(string creature, string gender, int average, int? altAverage = null)
         {
             var heights = GetCreatureHeights();
 
@@ -2108,44 +2244,32 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var multiplierMin = dice.Roll(heights[creature][creature]).AsPotentialMinimum();
             var multiplierAvg = dice.Roll(heights[creature][creature]).AsPotentialAverage();
             var multiplierMax = dice.Roll(heights[creature][creature]).AsPotentialMaximum();
-            var theoreticalRoll = RollHelper.GetRollWithFewestDice(average * 9 / 10, average * 11 / 10);
 
-            Assert.That(baseHeight + multiplierMin, Is.EqualTo(average * 0.9).Within(1), $"Min (-10%); Theoretical: {theoreticalRoll}");
+            var lower = average * 9 / 10;
+            var upper = average * 11 / 10;
+
+            if (altAverage.HasValue)
+            {
+                lower = average - altAverage.Value / 10;
+                upper = average + altAverage.Value / 10;
+            }
+
+            var theoreticalRoll = RollHelper.GetRollWithFewestDice(lower, upper);
+
+            Assert.That(baseHeight + multiplierMin, Is.EqualTo(lower).Within(1), $"Min (-10%); Theoretical: {theoreticalRoll}");
             Assert.That(baseHeight + multiplierAvg, Is.EqualTo(average).Within(1), $"Average; Theoretical: {theoreticalRoll}");
-            Assert.That(baseHeight + multiplierMax, Is.EqualTo(average * 1.1).Within(1), $"Max (+10%); Theoretical: {theoreticalRoll}");
+            Assert.That(baseHeight + multiplierMax, Is.EqualTo(upper).Within(1), $"Max (+10%); Theoretical: {theoreticalRoll}");
         }
 
-        [TestCase(CreatureConstants.Angel_AstralDeva, GenderConstants.Male, 7 * 12, 7 * 12 + 6)]
-        [TestCase(CreatureConstants.Angel_AstralDeva, GenderConstants.Female, 7 * 12, 7 * 12 + 6)]
-        [TestCase(CreatureConstants.Angel_Planetar, GenderConstants.Male, 8 * 12, 9 * 12)]
-        [TestCase(CreatureConstants.Angel_Planetar, GenderConstants.Female, 8 * 12, 9 * 12)]
-        [TestCase(CreatureConstants.Angel_Solar, GenderConstants.Male, 9 * 12, 10 * 12)]
-        [TestCase(CreatureConstants.Angel_Solar, GenderConstants.Female, 9 * 12, 10 * 12)]
-        [TestCase(CreatureConstants.AnimatedObject_Tiny, GenderConstants.Agender, 12, 24)]
-        [TestCase(CreatureConstants.AnimatedObject_Small, GenderConstants.Agender, 24, 48)]
-        [TestCase(CreatureConstants.AnimatedObject_Medium, GenderConstants.Agender, 48, 96)]
-        [TestCase(CreatureConstants.AnimatedObject_Large, GenderConstants.Agender, 8 * 12, 16 * 12)]
-        [TestCase(CreatureConstants.AnimatedObject_Huge, GenderConstants.Agender, 16 * 12, 32 * 12)]
-        [TestCase(CreatureConstants.AnimatedObject_Gargantuan, GenderConstants.Agender, 32 * 12, 64 * 12)]
-        [TestCase(CreatureConstants.AnimatedObject_Colossal, GenderConstants.Agender, 64 * 12, 128 * 12)]
         [TestCase(CreatureConstants.Ape, GenderConstants.Male, 5 * 12 + 6, 6 * 12)]
-        [TestCase(CreatureConstants.Ape, GenderConstants.Female, 4 * 12, 4 * 12 + 6)]
-        [TestCase(CreatureConstants.Azer, GenderConstants.Agender, 4 * 12 + 5, 4 * 12 + 9)]
+        [TestCase(CreatureConstants.Ape, GenderConstants.Female, 63, 72)]
         [TestCase(CreatureConstants.Babau, GenderConstants.Agender, 6 * 12, 7 * 12)]
-        [TestCase(CreatureConstants.Badger, GenderConstants.Male, 24, 36)]
-        [TestCase(CreatureConstants.Badger, GenderConstants.Female, 24, 36)]
-        [TestCase(CreatureConstants.Badger_Dire, GenderConstants.Male, 5 * 12, 7 * 12)]
-        [TestCase(CreatureConstants.Badger_Dire, GenderConstants.Female, 5 * 12, 7 * 12)]
         [TestCase(CreatureConstants.Bear_Black, GenderConstants.Male, 2 * 12 + 11, 3 * 12 + 5)]
-        [TestCase(CreatureConstants.Bear_Black, GenderConstants.Female, 2 * 12 + 6, 3 * 12 + 1)]
+        [TestCase(CreatureConstants.Bear_Black, GenderConstants.Female, 2 * 12 + 6, 3 * 12)]
         [TestCase(CreatureConstants.Bear_Brown, GenderConstants.Male, 3 * 12 + 6, 4 * 12 + 6)]
-        [TestCase(CreatureConstants.Bear_Brown, GenderConstants.Female, 3 * 12, 3 * 12 + 8)]
+        [TestCase(CreatureConstants.Bear_Brown, GenderConstants.Female, 3 * 12, 4 * 12)]
         [TestCase(CreatureConstants.Bear_Polar, GenderConstants.Male, 3 * 12 + 7, 5 * 12 + 3)]
         [TestCase(CreatureConstants.Bear_Polar, GenderConstants.Female, 2 * 12 + 8, 3 * 12 + 11)]
-        [TestCase(CreatureConstants.Bugbear, GenderConstants.Male, 6 * 12, 8 * 12)]
-        [TestCase(CreatureConstants.Bugbear, GenderConstants.Female, 6 * 12, 8 * 12)]
-        [TestCase(CreatureConstants.Centaur, GenderConstants.Male, 7 * 12, 9 * 12)]
-        [TestCase(CreatureConstants.Centaur, GenderConstants.Female, 7 * 12, 9 * 12)]
         [TestCase(CreatureConstants.Dog_Riding, GenderConstants.Male, 22, 30)]
         [TestCase(CreatureConstants.Dog_Riding, GenderConstants.Female, 20, 28)]
         [TestCase(CreatureConstants.Ettin, GenderConstants.Male, 13 * 12, 13 * 12 + 10)]
@@ -2155,11 +2279,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Giant_Cloud, GenderConstants.Male, 24 * 12 + 4, 26 * 12 + 8)]
         [TestCase(CreatureConstants.Giant_Cloud, GenderConstants.Female, 22 * 12 + 8, 25 * 12)]
         [TestCase(CreatureConstants.Giant_Fire, GenderConstants.Male, 18 * 12 + 2, 19 * 12 + 8)]
-        [TestCase(CreatureConstants.Giant_Fire, GenderConstants.Female, 17 * 12 + 5, 19 * 12)]
+        [TestCase(CreatureConstants.Giant_Fire, GenderConstants.Female, 17 * 12 + 5, 18 * 12 + 11)]
         [TestCase(CreatureConstants.Giant_Frost, GenderConstants.Male, 21 * 12 + 3, 23 * 12 + 6)]
         [TestCase(CreatureConstants.Giant_Frost, GenderConstants.Female, 20 * 12 + 1, 22 * 12 + 4)]
         [TestCase(CreatureConstants.Giant_Hill, GenderConstants.Male, 16 * 12 + 1, 17 * 12)]
         [TestCase(CreatureConstants.Giant_Hill, GenderConstants.Female, 15 * 12 + 5, 16 * 12 + 4)]
+        [TestCase(CreatureConstants.Giant_Stone, GenderConstants.Male, 18 * 12 + 2, 19 * 12 + 8)]
+        [TestCase(CreatureConstants.Giant_Stone, GenderConstants.Female, 17 * 12 + 5, 19 * 12)]
+        [TestCase(CreatureConstants.Giant_Stone_Elder, GenderConstants.Male, 18 * 12 + 2, 19 * 12 + 8)]
+        [TestCase(CreatureConstants.Giant_Stone_Elder, GenderConstants.Female, 17 * 12 + 5, 19 * 12)]
         [TestCase(CreatureConstants.Gnoll, GenderConstants.Male, 7 * 12, 7 * 12 + 6)]
         [TestCase(CreatureConstants.Gnoll, GenderConstants.Female, 7 * 12, 7 * 12 + 6)]
         [TestCase(CreatureConstants.Horse_Heavy, GenderConstants.Male, 64, 72)]
@@ -2176,13 +2304,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Pixie, GenderConstants.Male, 12, 30)]
         [TestCase(CreatureConstants.Pixie, GenderConstants.Female, 12, 30)]
         [TestCase(CreatureConstants.Quasit, GenderConstants.Agender, 1 * 12, 2 * 12)]
-        [TestCase(CreatureConstants.Salamander_Noble, GenderConstants.Agender, 8 * 12, 16 * 12)]
-        [TestCase(CreatureConstants.Salamander_Average, GenderConstants.Agender, 4 * 12, 8 * 12)]
-        [TestCase(CreatureConstants.Salamander_Flamebrother, GenderConstants.Agender, 2 * 12, 4 * 12)]
+        [TestCase(CreatureConstants.TrumpetArchon, GenderConstants.Male, 6 * 12 + 6, 7 * 12 + 9)]
+        [TestCase(CreatureConstants.TrumpetArchon, GenderConstants.Female, 6 * 12 + 1, 7 * 12 + 4)]
         [TestCase(CreatureConstants.Wolf, GenderConstants.Male, 41, 63)]
         [TestCase(CreatureConstants.Wolf, GenderConstants.Female, 41, 63)]
-        [TestCase(CreatureConstants.Whale_Baleen, GenderConstants.Male, 30 * 12, 60 * 12)]
-        [TestCase(CreatureConstants.Whale_Baleen, GenderConstants.Female, 30 * 12, 60 * 12)]
         public void RollCalculationsAreAccurate_FromRange(string creature, string gender, int min, int max)
         {
             var heights = GetCreatureHeights();
@@ -2194,9 +2319,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var multiplierMin = dice.Roll(heights[creature][creature]).AsPotentialMinimum();
             var multiplierMax = dice.Roll(heights[creature][creature]).AsPotentialMaximum();
             var theoreticalRoll = RollHelper.GetRollWithFewestDice(min, max);
+            var actualRoll = $"{heights[creature][creature]}+{heights[creature][gender]}";
 
-            Assert.That(baseHeight + multiplierMin, Is.EqualTo(min), $"Min; Theoretical: {theoreticalRoll}");
-            Assert.That(baseHeight + multiplierMax, Is.EqualTo(max), $"Max; Theoretical: {theoreticalRoll}");
+            Assert.That(baseHeight + multiplierMin, Is.EqualTo(min), $"Min; Theoretical: {theoreticalRoll}; Actual: {actualRoll}");
+            Assert.That(baseHeight + multiplierMax, Is.EqualTo(max), $"Max; Theoretical: {theoreticalRoll}; Actual: {actualRoll}");
         }
 
         [Test]
