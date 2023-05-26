@@ -4,8 +4,8 @@
   <collection>
     <name>Aasimar</name>
 	  <entry>Aasimar@2d10</entry>
-	  <entry>Male@61</entry>
-	  <entry>Female@60</entry>
+	  <entry>Male@58</entry>
+	  <entry>Female@53</entry>
   </collection>
   <collection>
     <name>Aboleth</name>
@@ -430,7 +430,7 @@
   <collection>
     <name>Ape</name>
 	  <entry>Male@64</entry>
-	  <entry>Female@62</entry>
+	  <entry>Female@61</entry>
 	  <entry>Ape@2d4</entry>
   </collection>
   <collection>
@@ -571,7 +571,7 @@
   <collection>
     <name>Black Bear</name>
 	  <entry>Male@33</entry>
-	  <entry>Female@29</entry>
+	  <entry>Female@28</entry>
 	  <entry>Black Bear@2d4</entry>
   </collection>
   <collection>
@@ -909,9 +909,9 @@
   </collection>
   <collection>
     <name>Bugbear</name>
-	  <entry>Male@72</entry>
-	  <entry>Female@68</entry>
-	  <entry>Bugbear@2d10</entry>
+	  <entry>Male@64</entry>
+	  <entry>Female@64</entry>
+	  <entry>Bugbear@8d4</entry>
   </collection>
   <collection>
     <name>Bulette</name>
@@ -951,9 +951,9 @@
   </collection>
   <collection>
     <name>Centaur</name>
-	  <entry>Male@84</entry>
-	  <entry>Female@80</entry>
-	  <entry>Centaur@3d12</entry>
+	  <entry>Male@76</entry>
+	  <entry>Female@76</entry>
+	  <entry>Centaur@8d4</entry>
   </collection>
   <collection>
     <name>Centipede Swarm</name>
@@ -1553,7 +1553,7 @@
   <collection>
     <name>Fire Giant</name>
 	  <entry>Male@216</entry>
-	  <entry>Female@208</entry>
+	  <entry>Female@207</entry>
 	  <entry>Fire Giant@2d10</entry>
   </collection>
   <collection>
@@ -1652,7 +1652,7 @@
   <collection>
     <name>Ghaele</name>
 	  <entry>Male@60</entry>
-	  <entry>Female@47</entry>
+	  <entry>Female@53</entry>
 	  <entry>Ghaele@2d12</entry>
   </collection>
   <collection>
@@ -1765,15 +1765,15 @@
   </collection>
   <collection>
     <name>Githyanki</name>
-	  <entry>Female@60</entry>
-	  <entry>Male@62</entry>
+	  <entry>Female@62</entry>
+	  <entry>Male@63</entry>
 	  <entry>Githyanki@2d10</entry>
   </collection>
   <collection>
     <name>Githzerai</name>
-	  <entry>Female@60</entry>
-	  <entry>Male@62</entry>
-	  <entry>Githzerai@2d10</entry>
+	  <entry>Female@38</entry>
+	  <entry>Male@38</entry>
+	  <entry>Githzerai@23d2</entry>
   </collection>
   <collection>
     <name>Glabrezu</name>
@@ -1782,15 +1782,15 @@
   </collection>
   <collection>
     <name>Gnoll</name>
-	  <entry>Female@80</entry>
-	  <entry>Male@84</entry>
-	  <entry>Gnoll@1d12</entry>
+	  <entry>Female@82</entry>
+	  <entry>Male@82</entry>
+	  <entry>Gnoll@2d4</entry>
   </collection>
   <collection>
     <name>Goblin</name>
-	  <entry>Female@41</entry>
-	  <entry>Male@43</entry>
-	  <entry>Goblin@1d10</entry>
+	  <entry>Female@38</entry>
+	  <entry>Male@38</entry>
+	  <entry>Goblin@2d3</entry>
   </collection>
   <collection>
     <name>Gold Dragon, Adult</name>
@@ -2118,9 +2118,9 @@
   </collection>
   <collection>
     <name>Hobgoblin</name>
-	  <entry>Male@72</entry>
-	  <entry>Female@68</entry>
-	  <entry>Hobgoblin@1d8</entry>
+	  <entry>Male@56</entry>
+	  <entry>Female@56</entry>
+	  <entry>Hobgoblin@4d4</entry>
   </collection>
   <collection>
     <name>Homunculus</name>
@@ -2208,9 +2208,9 @@
   </collection>
   <collection>
     <name>Kobold</name>
-	  <entry>Male@32</entry>
-	  <entry>Female@30</entry>
-	  <entry>Kobold@3d4</entry>
+	  <entry>Male@22</entry>
+	  <entry>Female@22</entry>
+	  <entry>Kobold@2d4</entry>
   </collection>
   <collection>
     <name>Kolyarut</name>
@@ -2302,7 +2302,7 @@
   <collection>
     <name>Lion</name>
 	  <entry>Male@32</entry>
-	  <entry>Female@29</entry>
+	  <entry>Female@26</entry>
 	  <entry>Lion@4d3</entry>
   </collection>
   <collection>
@@ -2313,15 +2313,15 @@
   </collection>
   <collection>
     <name>Lizardfolk</name>
-	  <entry>Male@60</entry>
-	  <entry>Female@60</entry>
-	  <entry>Lizardfolk@2d12</entry>
+	  <entry>Male@68</entry>
+	  <entry>Female@68</entry>
+	  <entry>Lizardfolk@4d4</entry>
   </collection>
   <collection>
     <name>Locathah</name>
-	  <entry>Male@60</entry>
-	  <entry>Female@60</entry>
-	  <entry>Locathah@1d12</entry>
+	  <entry>Male@50</entry>
+	  <entry>Female@50</entry>
+	  <entry>Locathah@4d4</entry>
   </collection>
   <collection>
     <name>Locust Swarm</name>
@@ -2349,7 +2349,7 @@
   <collection>
     <name>Manticore</name>
 	  <entry>Male@32</entry>
-	  <entry>Female@29</entry>
+	  <entry>Female@26</entry>
 	  <entry>Manticore@4d3</entry>
   </collection>
   <collection>
@@ -2376,15 +2376,15 @@
   </collection>
   <collection>
     <name>Merfolk</name>
-	  <entry>Male@60</entry>
-	  <entry>Female@54</entry>
-	  <entry>Merfolk@1d12</entry>
+	  <entry>Male@0</entry>
+	  <entry>Female@0</entry>
+	  <entry>Merfolk@0</entry>
   </collection>
   <collection>
     <name>Merrow</name>
-	  <entry>Male@96</entry>
-	  <entry>Female@93</entry>
-	  <entry>Merrow@2d12</entry>
+	  <entry>Male@120</entry>
+	  <entry>Female@110</entry>
+	  <entry>Merrow@1d10</entry>
   </collection>
   <collection>
     <name>Mimic</name>
@@ -2403,9 +2403,9 @@
   </collection>
   <collection>
     <name>Minotaur</name>
-	  <entry>Male@80</entry>
-	  <entry>Female@84</entry>
-	  <entry>Minotaur@2d6</entry>
+	  <entry>Male@94</entry>
+	  <entry>Female@70</entry>
+	  <entry>Minotaur@3d8</entry>
   </collection>
   <collection>
     <name>Mohrg</name>
@@ -2705,15 +2705,15 @@
   </collection>
   <collection>
     <name>Ogre Mage</name>
-	  <entry>Female@96</entry>
-	  <entry>Male@114</entry>
-	  <entry>Ogre Mage@2d6</entry>
+	  <entry>Female@100</entry>
+	  <entry>Male@100</entry>
+	  <entry>Ogre Mage@8d4</entry>
   </collection>
   <collection>
     <name>Ogre</name>
-	  <entry>Female@93</entry>
-	  <entry>Male@96</entry>
-	  <entry>Ogre@2d12</entry>
+	  <entry>Male@120</entry>
+	  <entry>Female@110</entry>
+	  <entry>Ogre@1d10</entry>
   </collection>
   <collection>
     <name>Ooze Mephit</name>
@@ -2724,9 +2724,9 @@
   </collection>
   <collection>
     <name>Orc</name>
-	  <entry>Female@56</entry>
-	  <entry>Male@58</entry>
-	  <entry>Orc@1d12</entry>
+	  <entry>Female@64</entry>
+	  <entry>Male@64</entry>
+	  <entry>Orc@8d3</entry>
   </collection>
   <collection>
     <name>Orca Whale</name>
@@ -2747,7 +2747,7 @@
   </collection>
   <collection>
     <name>Owlbear</name>
-	  <entry>Female@29</entry>
+	  <entry>Female@28</entry>
 	  <entry>Male@39</entry>
 	  <entry>Owlbear@4d6</entry>
   </collection>
@@ -2780,19 +2780,19 @@
   </collection>
   <collection>
     <name>Pixie</name>
-	  <entry>Female@23</entry>
-	  <entry>Male@24</entry>
-	  <entry>Pixie@3d6</entry>
+	  <entry>Female@10</entry>
+	  <entry>Male@10</entry>
+	  <entry>Pixie@2d10</entry>
   </collection>
   <collection>
     <name>Pixie with Irresistible dance</name>
-	  <entry>Female@23</entry>
-	  <entry>Male@24</entry>
-	  <entry>Pixie with Irresistible dance@3d6</entry>
+	  <entry>Female@10</entry>
+	  <entry>Male@10</entry>
+	  <entry>Pixie with Irresistible dance@2d10</entry>
   </collection>
   <collection>
     <name>Polar Bear</name>
-	  <entry>Female@29</entry>
+	  <entry>Female@28</entry>
 	  <entry>Male@39</entry>
 	  <entry>Polar Bear@4d6</entry>
   </collection>
@@ -2983,21 +2983,21 @@
   </collection>
   <collection>
     <name>Sahuagin</name>
-	  <entry>Female@50</entry>
-	  <entry>Male@50</entry>
-	  <entry>Sahuagin@1d8</entry>
+	  <entry>Female@68</entry>
+	  <entry>Male@68</entry>
+	  <entry>Sahuagin@4d10</entry>
   </collection>
   <collection>
     <name>Sahuagin Mutant</name>
-	  <entry>Female@50</entry>
-	  <entry>Male@50</entry>
-	  <entry>Sahuagin Mutant@1d8</entry>
+	  <entry>Female@68</entry>
+	  <entry>Male@68</entry>
+	  <entry>Sahuagin Mutant@4d10</entry>
   </collection>
   <collection>
     <name>Malenti</name>
-    <entry>Female@50</entry>
-	  <entry>Male@50</entry>
-	  <entry>Malenti@1d8</entry>
+    <entry>Female@68</entry>
+	  <entry>Male@68</entry>
+	  <entry>Malenti@4d10</entry>
   </collection>
   <collection>
     <name>Salt Mephit</name>
@@ -3024,7 +3024,7 @@
   </collection>
   <collection>
     <name>Scrag</name>
-	  <entry>Female@84</entry>
+	  <entry>Female@105</entry>
 	  <entry>Male@94</entry>
 	  <entry>Scrag@3d8</entry>
   </collection>
@@ -3246,13 +3246,13 @@
   </collection>
   <collection>
     <name>Stone Giant</name>
-	  <entry>Female@208</entry>
+	  <entry>Female@207</entry>
 	  <entry>Male@216</entry>
 	  <entry>Stone Giant@2d10</entry>
   </collection>
   <collection>
     <name>Stone Giant Elder</name>
-	  <entry>Female@208</entry>
+	  <entry>Female@207</entry>
 	  <entry>Male@216</entry>
 	  <entry>Stone Giant Elder@2d10</entry>
   </collection>
@@ -3320,9 +3320,9 @@
   </collection>
   <collection>
     <name>Tiefling</name>
-	  <entry>Female@57</entry>
-	  <entry>Male@59</entry>
-	  <entry>Tiefling@2d10</entry>
+	  <entry>Female@46</entry>
+	  <entry>Male@46</entry>
+	  <entry>Tiefling@13d2</entry>
   </collection>
   <collection>
     <name>Tiger</name>
@@ -3368,7 +3368,7 @@
   </collection>
   <collection>
     <name>Troll</name>
-	  <entry>Female@84</entry>
+	  <entry>Female@105</entry>
 	  <entry>Male@94</entry>
 	  <entry>Troll@3d8</entry>
   </collection>
@@ -3416,7 +3416,7 @@
   </collection>
   <collection>
     <name>Unicorn</name>
-	  <entry>Female@47</entry>
+	  <entry>Female@44</entry>
 	  <entry>Male@50</entry>
 	  <entry>Unicorn@4d4</entry>
   </collection>
@@ -3708,7 +3708,7 @@
   </collection>
   <collection>
     <name>Zelekhut</name>
-	  <entry>Agender@84</entry>
-	  <entry>Zelekhut@3d12</entry>
+	  <entry>Agender@76</entry>
+	  <entry>Zelekhut@8d4</entry>
   </collection>
 </collections>

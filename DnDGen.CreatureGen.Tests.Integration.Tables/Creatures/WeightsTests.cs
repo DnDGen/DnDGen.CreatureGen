@@ -18,8 +18,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
         protected override string tableName => TableNameConstants.TypeAndAmount.Weights;
 
+        //INFO: Must be static for the test cases
         private static readonly Dictionary<string, Dictionary<string, string>> heights = HeightsTests.GetCreatureHeights();
         private static readonly Dictionary<string, Dictionary<string, string>> lengths = LengthsTests.GetCreatureLengths();
+        private Dictionary<string, Dictionary<string, string>> creatureWeights;
+
+        [OneTimeSetUp]
+        public void OneTimeSetup()
+        {
+            creatureWeights = GetCreatureWeights();
+        }
 
         [SetUp]
         public void Setup()
@@ -2545,10 +2553,38 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
         private static string GetTheoreticalWeightRoll(string creature, int lower, int upper)
         {
+            var heightLength = GetMaxOfHeightLength(creature);
+            if (!heightLength.Any())
+            {
+                return string.Empty;
+            }
+
+            var sections = heightLength[creature].Split('d');
+            var q = Convert.ToInt32(sections[0]);
+            var d = 1;
+            if (sections.Length > 1)
+                d = Convert.ToInt32(sections[1]);
+
+            var minMultiplier = q;
+            var maxMultiplier = q * d;
+
+            var range = upper / maxMultiplier - lower / minMultiplier + 1;
+            var adjustedUpper = range + lower - 1;
+            lower = Math.Max(1, lower);
+
+            if (adjustedUpper < lower)
+                return $"[{lower},{adjustedUpper}] IS NOT A VALID RANGE";
+
+            var roll = RollHelper.GetRollWithFewestDice(lower, adjustedUpper);
+            return roll;
+        }
+
+        private static Dictionary<string, string> GetMaxOfHeightLength(string creature)
+        {
             if (!heights.ContainsKey(creature) || !heights[creature].ContainsKey(creature)
                 || !lengths.ContainsKey(creature) || !lengths[creature].ContainsKey(creature))
             {
-                return string.Empty;
+                return new Dictionary<string, string>();
             }
 
             var sectionsH = heights[creature][creature].Split('d');
@@ -2563,23 +2599,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             if (sectionsL.Length > 1)
                 dL = Convert.ToInt32(sectionsL[1]);
 
-            var minMultiplier = qH;
-            var maxMultiplier = qH * dH;
             if (qL * dL > qH * dH)
             {
-                minMultiplier = qL;
-                maxMultiplier = qL * dL;
+                return lengths[creature];
             }
 
-            var range = upper / maxMultiplier - lower / minMultiplier + 1;
-            var adjustedUpper = range + lower - 1;
-            lower = Math.Max(1, lower);
-
-            if (adjustedUpper < lower)
-                return $"[{lower},{adjustedUpper}] IS NOT A VALID RANGE";
-
-            var roll = RollHelper.GetRollWithFewestDice(lower, adjustedUpper);
-            return roll;
+            return heights[creature];
         }
 
         [TestCase(CreatureConstants.Aboleth, GenderConstants.Hermaphrodite, 6500)]
@@ -2633,6 +2658,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         //Source: https://forgottenrealms.fandom.com/wiki/Sahuagin
         [TestCase(CreatureConstants.Sahuagin, GenderConstants.Male, 200)]
         [TestCase(CreatureConstants.Sahuagin, GenderConstants.Female, 200)]
+        [TestCase(CreatureConstants.Sahuagin_Malenti, GenderConstants.Male, 200)]
+        [TestCase(CreatureConstants.Sahuagin_Malenti, GenderConstants.Female, 200)]
+        [TestCase(CreatureConstants.Sahuagin_Mutant, GenderConstants.Male, 200)]
+        [TestCase(CreatureConstants.Sahuagin_Mutant, GenderConstants.Female, 200)]
         [TestCase(CreatureConstants.Troll, GenderConstants.Male, 500)]
         [TestCase(CreatureConstants.Troll, GenderConstants.Female, 550)]
         [TestCase(CreatureConstants.Unicorn, GenderConstants.Male, 1200)]
@@ -2648,24 +2677,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Xorn_Elder, GenderConstants.Agender, 9000)]
         public void RollCalculationsAreAccurate(string creature, string gender, int average)
         {
-            var heights = HeightsTests.GetCreatureHeights();
+            var heightLength = GetMaxOfHeightLength(creature);
+            Assert.That(heightLength, Is.Not.Empty.And.ContainKey(creature).And.ContainKey(gender));
 
-            Assert.That(heights, Contains.Key(creature));
-            Assert.That(heights[creature], Contains.Key(creature).And.ContainKey(gender));
+            var heightMultiplierMin = dice.Roll(heightLength[creature]).AsPotentialMinimum();
+            var heightMultiplierAvg = dice.Roll(heightLength[creature]).AsPotentialAverage();
+            var heightMultiplierMax = dice.Roll(heightLength[creature]).AsPotentialMaximum();
 
-            var heightMultiplierMin = dice.Roll(heights[creature][creature]).AsPotentialMinimum();
-            var heightMultiplierAvg = dice.Roll(heights[creature][creature]).AsPotentialAverage();
-            var heightMultiplierMax = dice.Roll(heights[creature][creature]).AsPotentialMaximum();
+            Assert.That(creatureWeights, Contains.Key(creature));
+            Assert.That(creatureWeights[creature], Contains.Key(creature).And.ContainKey(gender));
 
-            var weights = GetCreatureWeights();
-
-            Assert.That(weights, Contains.Key(creature));
-            Assert.That(weights[creature], Contains.Key(creature).And.ContainKey(gender));
-
-            var baseWeight = dice.Roll(weights[creature][gender]).AsSum();
-            var weightMultiplierMin = dice.Roll(weights[creature][creature]).AsPotentialMinimum();
-            var weightMultiplierAvg = dice.Roll(weights[creature][creature]).AsPotentialAverage();
-            var weightMultiplierMax = dice.Roll(weights[creature][creature]).AsPotentialMaximum();
+            var baseWeight = dice.Roll(creatureWeights[creature][gender]).AsSum();
+            var weightMultiplierMin = dice.Roll(creatureWeights[creature][creature]).AsPotentialMinimum();
+            var weightMultiplierAvg = dice.Roll(creatureWeights[creature][creature]).AsPotentialAverage();
+            var weightMultiplierMax = dice.Roll(creatureWeights[creature][creature]).AsPotentialMaximum();
             var sigma = Math.Max(1, average * 0.05);
 
             var theoreticalRoll = RollHelper.GetRollWithFewestDice(average * 9 / 10, average * 11 / 10);
@@ -2732,6 +2757,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         //https://forgottenrealms.fandom.com/wiki/Gnoll
         [TestCase(CreatureConstants.Gnoll, GenderConstants.Male, 280, 320)]
         [TestCase(CreatureConstants.Gnoll, GenderConstants.Female, 280, 320)]
+        //https://forgottenrealms.fandom.com/wiki/Goblin
+        [TestCase(CreatureConstants.Goblin, GenderConstants.Male, 40, 55)]
+        [TestCase(CreatureConstants.Goblin, GenderConstants.Female, 40, 55)]
         //https://forgottenrealms.fandom.com/wiki/Hobgoblin
         [TestCase(CreatureConstants.Hobgoblin, GenderConstants.Male, 150, 200)]
         [TestCase(CreatureConstants.Hobgoblin, GenderConstants.Female, 150, 200)]
@@ -2744,6 +2772,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         //https://forgottenrealms.fandom.com/wiki/Ogre
         [TestCase(CreatureConstants.Ogre, GenderConstants.Male, 600, 690)]
         [TestCase(CreatureConstants.Ogre, GenderConstants.Female, 555, 645)]
+        [TestCase(CreatureConstants.Ogre_Merrow, GenderConstants.Male, 600, 690)]
+        [TestCase(CreatureConstants.Ogre_Merrow, GenderConstants.Female, 555, 645)]
         //https://forgottenrealms.fandom.com/wiki/Orc
         [TestCase(CreatureConstants.Orc, GenderConstants.Male, 230, 280)]
         [TestCase(CreatureConstants.Orc, GenderConstants.Female, 230, 280)]
@@ -2761,22 +2791,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Wolf, GenderConstants.Female, 55, 85)]
         public void RollCalculationsAreAccurate(string creature, string gender, int min, int max)
         {
-            var heights = HeightsTests.GetCreatureHeights();
+            var heightLength = GetMaxOfHeightLength(creature);
+            Assert.That(heightLength, Is.Not.Empty.And.ContainKey(creature).And.ContainKey(gender));
 
-            Assert.That(heights, Contains.Key(creature));
-            Assert.That(heights[creature], Contains.Key(creature).And.ContainKey(gender));
+            var heightMultiplierMin = dice.Roll(heightLength[creature]).AsPotentialMinimum();
+            var heightMultiplierMax = dice.Roll(heightLength[creature]).AsPotentialMaximum();
 
-            var heightMultiplierMin = dice.Roll(heights[creature][creature]).AsPotentialMinimum();
-            var heightMultiplierMax = dice.Roll(heights[creature][creature]).AsPotentialMaximum();
+            Assert.That(creatureWeights, Contains.Key(creature));
+            Assert.That(creatureWeights[creature], Contains.Key(creature).And.ContainKey(gender));
 
-            var weights = GetCreatureWeights();
-
-            Assert.That(weights, Contains.Key(creature));
-            Assert.That(weights[creature], Contains.Key(creature).And.ContainKey(gender));
-
-            var baseWeight = dice.Roll(weights[creature][gender]).AsSum();
-            var weightMultiplierMin = dice.Roll(weights[creature][creature]).AsPotentialMinimum();
-            var weightMultiplierMax = dice.Roll(weights[creature][creature]).AsPotentialMaximum();
+            var baseWeight = dice.Roll(creatureWeights[creature][gender]).AsSum();
+            var weightMultiplierMin = dice.Roll(creatureWeights[creature][creature]).AsPotentialMinimum();
+            var weightMultiplierMax = dice.Roll(creatureWeights[creature][creature]).AsPotentialMaximum();
 
             var theoreticalRoll = RollHelper.GetRollWithFewestDice(min, max);
 

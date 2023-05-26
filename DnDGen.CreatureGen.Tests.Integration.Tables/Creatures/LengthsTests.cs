@@ -17,6 +17,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         private Dice dice;
 
         protected override string tableName => TableNameConstants.TypeAndAmount.Lengths;
+        private Dictionary<string, Dictionary<string, string>> creatureLengths;
+
+        [OneTimeSetUp]
+        public void OneTimeSetup()
+        {
+            creatureLengths = GetCreatureLengths();
+        }
 
         [SetUp]
         public void Setup()
@@ -283,9 +290,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.BarbedDevil_Hamatula][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.BarbedDevil_Hamatula][CreatureConstants.BarbedDevil_Hamatula] = "0";
             //Source: https://forgottenrealms.fandom.com/wiki/Barghest
-            lengths[CreatureConstants.Barghest][GenderConstants.Agender] = GetBaseFromAverage(6 * 12);
+            lengths[CreatureConstants.Barghest][GenderConstants.Female] = GetBaseFromAverage(6 * 12);
+            lengths[CreatureConstants.Barghest][GenderConstants.Male] = GetBaseFromAverage(6 * 12);
             lengths[CreatureConstants.Barghest][CreatureConstants.Barghest] = GetMultiplierFromAverage(6 * 12);
-            lengths[CreatureConstants.Barghest_Greater][GenderConstants.Agender] = GetBaseFromAverage(6 * 12);
+            lengths[CreatureConstants.Barghest_Greater][GenderConstants.Female] = GetBaseFromAverage(6 * 12);
+            lengths[CreatureConstants.Barghest_Greater][GenderConstants.Male] = GetBaseFromAverage(6 * 12);
             lengths[CreatureConstants.Barghest_Greater][CreatureConstants.Barghest_Greater] = GetMultiplierFromAverage(6 * 12);
             //Source: https://forgottenrealms.fandom.com/wiki/Basilisk
             lengths[CreatureConstants.Basilisk][GenderConstants.Female] = GetBaseFromRange(11 * 12, 13 * 12);
@@ -1356,9 +1365,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Lizard_Monitor][GenderConstants.Female] = GetBaseFromRange(3 * 12, 5 * 12);
             lengths[CreatureConstants.Lizard_Monitor][GenderConstants.Male] = GetBaseFromRange(3 * 12, 5 * 12);
             lengths[CreatureConstants.Lizard_Monitor][CreatureConstants.Lizard_Monitor] = GetMultiplierFromRange(3 * 12, 5 * 12);
-            lengths[CreatureConstants.Lizardfolk][GenderConstants.Female] = "0";
-            lengths[CreatureConstants.Lizardfolk][GenderConstants.Male] = "0";
-            lengths[CreatureConstants.Lizardfolk][CreatureConstants.Lizardfolk] = "0";
+            //https://forgottenrealms.fandom.com/wiki/Lizardfolk (tail length)
+            lengths[CreatureConstants.Lizardfolk][GenderConstants.Female] = GetBaseFromRange(36, 48);
+            lengths[CreatureConstants.Lizardfolk][GenderConstants.Male] = GetBaseFromRange(36, 48);
+            lengths[CreatureConstants.Lizardfolk][CreatureConstants.Lizardfolk] = GetMultiplierFromRange(36, 48);
             lengths[CreatureConstants.Locathah][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Locathah][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Locathah][CreatureConstants.Locathah] = "0";
@@ -1427,8 +1437,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Mephit_Water][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Mephit_Water][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Mephit_Water][CreatureConstants.Mephit_Water] = "0";
-            //Source: https://forgottenrealms.fandom.com/wiki/Merfolk
-            lengths[CreatureConstants.Merfolk][GenderConstants.Female] = GetBaseFromAverage(8 * 12);
+            //Source: https://forgottenrealms.fandom.com/wiki/Merfolk Mermaids "slightly shorter" than males, so 90%
+            lengths[CreatureConstants.Merfolk][GenderConstants.Female] = GetBaseFromAverage(86, 8 * 12);
             lengths[CreatureConstants.Merfolk][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
             lengths[CreatureConstants.Merfolk][CreatureConstants.Merfolk] = GetMultiplierFromAverage(8 * 12);
             //Source: https://www.d20srd.org/srd/monsters/mimic.htm
@@ -2068,6 +2078,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public static IEnumerable CreatureLengthsData => GetCreatureLengths().Select(t => new TestCaseData(t.Key, t.Value));
 
         private static string GetBaseFromAverage(int average) => GetBaseFromRange(average * 9 / 10, average * 11 / 10);
+        private static string GetBaseFromAverage(int average, int altAverage) => GetBaseFromRange(average - altAverage / 10, average + altAverage / 10);
         private static string GetBaseFromUpTo(int upTo) => GetBaseFromRange(upTo * 9 / 11, upTo);
         private static string GetBaseFromAtLeast(int atLeast) => GetBaseFromRange(atLeast, atLeast * 11 / 9);
 
@@ -2105,28 +2116,38 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Lion, GenderConstants.Female, 4 * 12 + 6)]
         [TestCase(CreatureConstants.Locathah, GenderConstants.Male, 5 * 12)]
         [TestCase(CreatureConstants.Locathah, GenderConstants.Female, 5 * 12)]
+        [TestCase(CreatureConstants.Merfolk, GenderConstants.Male, 8 * 12)]
+        [TestCase(CreatureConstants.Merfolk, GenderConstants.Female, 8 * 12 * 9 / 10, 8 * 12)]
         [TestCase(CreatureConstants.Minotaur, GenderConstants.Male, 9 * 12)]
         [TestCase(CreatureConstants.Minotaur, GenderConstants.Female, 7 * 12)]
         [TestCase(CreatureConstants.Owlbear, GenderConstants.Male, 8 * 12)]
         [TestCase(CreatureConstants.Owlbear, GenderConstants.Female, 86)]
         [TestCase(CreatureConstants.Unicorn, GenderConstants.Male, 8 * 12)]
         [TestCase(CreatureConstants.Unicorn, GenderConstants.Female, 86)]
-        public void RollCalculationsAreAccurate_FromAverage(string creature, string gender, int average)
+        public void RollCalculationsAreAccurate_FromAverage(string creature, string gender, int average, int? altAverage = null)
         {
-            var lengths = GetCreatureLengths();
+            Assert.That(creatureLengths, Contains.Key(creature));
+            Assert.That(creatureLengths[creature], Contains.Key(creature).And.ContainKey(gender));
 
-            Assert.That(lengths, Contains.Key(creature));
-            Assert.That(lengths[creature], Contains.Key(creature).And.ContainKey(gender));
+            var baseLength = dice.Roll(creatureLengths[creature][gender]).AsSum();
+            var multiplierMin = dice.Roll(creatureLengths[creature][creature]).AsPotentialMinimum();
+            var multiplierAvg = dice.Roll(creatureLengths[creature][creature]).AsPotentialAverage();
+            var multiplierMax = dice.Roll(creatureLengths[creature][creature]).AsPotentialMaximum();
 
-            var baseLength = dice.Roll(lengths[creature][gender]).AsSum();
-            var multiplierMin = dice.Roll(lengths[creature][creature]).AsPotentialMinimum();
-            var multiplierAvg = dice.Roll(lengths[creature][creature]).AsPotentialAverage();
-            var multiplierMax = dice.Roll(lengths[creature][creature]).AsPotentialMaximum();
-            var theoreticalRoll = RollHelper.GetRollWithFewestDice(average * 9 / 10, average * 11 / 10);
+            var lower = average * 9 / 10;
+            var upper = average * 11 / 10;
 
-            Assert.That(baseLength + multiplierMin, Is.EqualTo(average * 0.9).Within(1), $"Min (-10%); Theoretical: {theoreticalRoll}");
+            if (altAverage.HasValue)
+            {
+                lower = average - altAverage.Value / 10;
+                upper = average + altAverage.Value / 10;
+            }
+
+            var theoreticalRoll = RollHelper.GetRollWithFewestDice(lower, upper);
+
+            Assert.That(baseLength + multiplierMin, Is.EqualTo(lower).Within(1), $"Min (-10%); Theoretical: {theoreticalRoll}");
             Assert.That(baseLength + multiplierAvg, Is.EqualTo(average).Within(1), $"Average; Theoretical: {theoreticalRoll}");
-            Assert.That(baseLength + multiplierMax, Is.EqualTo(average * 1.1).Within(1), $"Max (+10%); Theoretical: {theoreticalRoll}");
+            Assert.That(baseLength + multiplierMax, Is.EqualTo(upper).Within(1), $"Max (+10%); Theoretical: {theoreticalRoll}");
         }
 
         [TestCase(CreatureConstants.Angel_AstralDeva, GenderConstants.Male, 7 * 12, 7 * 12 + 6)]
@@ -2181,6 +2202,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Horse_Light, GenderConstants.Male, 57, 61)]
         [TestCase(CreatureConstants.Horse_Light, GenderConstants.Female, 57, 61)]
         [TestCase(CreatureConstants.Lion, GenderConstants.Male, 4 * 12 + 6, 6 * 12 + 6)]
+        [TestCase(CreatureConstants.Lizardfolk, GenderConstants.Female, 3 * 12, 4 * 12)]
+        [TestCase(CreatureConstants.Lizardfolk, GenderConstants.Male, 3 * 12, 4 * 12)]
         [TestCase(CreatureConstants.Nalfeshnee, GenderConstants.Agender, 10 * 12, 20 * 12)]
         [TestCase(CreatureConstants.Ogre, GenderConstants.Male, 10 * 12 + 1, 10 * 12 + 10)]
         [TestCase(CreatureConstants.Ogre, GenderConstants.Female, 9 * 12 + 3, 10 * 12)]
@@ -2200,14 +2223,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Whale_Baleen, GenderConstants.Female, 30 * 12, 60 * 12)]
         public void RollCalculationsAreAccurate_FromRange(string creature, string gender, int min, int max)
         {
-            var lengths = GetCreatureLengths();
+            Assert.That(creatureLengths, Contains.Key(creature));
+            Assert.That(creatureLengths[creature], Contains.Key(creature).And.ContainKey(gender));
 
-            Assert.That(lengths, Contains.Key(creature));
-            Assert.That(lengths[creature], Contains.Key(creature).And.ContainKey(gender));
-
-            var baseLength = dice.Roll(lengths[creature][gender]).AsSum();
-            var multiplierMin = dice.Roll(lengths[creature][creature]).AsPotentialMinimum();
-            var multiplierMax = dice.Roll(lengths[creature][creature]).AsPotentialMaximum();
+            var baseLength = dice.Roll(creatureLengths[creature][gender]).AsSum();
+            var multiplierMin = dice.Roll(creatureLengths[creature][creature]).AsPotentialMinimum();
+            var multiplierMax = dice.Roll(creatureLengths[creature][creature]).AsPotentialMaximum();
             var theoreticalRoll = RollHelper.GetRollWithFewestDice(min, max);
 
             Assert.That(baseLength + multiplierMin, Is.EqualTo(min), $"Min; Theoretical: {theoreticalRoll}");
@@ -2218,20 +2239,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void IfCreatureHasNoLength_HasHeight()
         {
             var heights = HeightsTests.GetCreatureHeights();
-            var lengths = GetCreatureLengths();
             var creatures = CreatureConstants.GetAll();
 
             foreach (var creature in creatures)
             {
-                Assert.That(lengths, Contains.Key(creature), "Lengths");
-                Assert.That(lengths[creature], Contains.Key(creature), $"Lengths[{creature}]");
+                Assert.That(creatureLengths, Contains.Key(creature), "Lengths");
+                Assert.That(creatureLengths[creature], Contains.Key(creature), $"Lengths[{creature}]");
                 Assert.That(heights, Contains.Key(creature), "Heights");
                 Assert.That(heights[creature], Contains.Key(creature), $"Heights[{creature}]");
 
-                Assert.That(lengths[creature][creature], Is.Not.Empty, $"Lengths[{creature}][{creature}]");
+                Assert.That(creatureLengths[creature][creature], Is.Not.Empty, $"Lengths[{creature}][{creature}]");
                 Assert.That(heights[creature][creature], Is.Not.Empty, $"Heights[{creature}][{creature}]");
 
-                if (lengths[creature][creature] == "0")
+                if (creatureLengths[creature][creature] == "0")
                     Assert.That(heights[creature][creature], Is.Not.EqualTo("0"), creature);
             }
         }
