@@ -372,7 +372,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Dire_boar
             lengths[CreatureConstants.Boar_Dire][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
             lengths[CreatureConstants.Boar_Dire][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            lengths[CreatureConstants.Boar_Dire][CreatureConstants.Boar] = GetMultiplierFromAverage(12 * 12);
+            lengths[CreatureConstants.Boar_Dire][CreatureConstants.Boar_Dire] = GetMultiplierFromAverage(12 * 12);
             lengths[CreatureConstants.Bodak][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Bodak][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Bodak][CreatureConstants.Bodak] = "0";
@@ -444,6 +444,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Centipede_Swarm][GenderConstants.Agender] = GetBaseFromAverage(10 * 12);
             lengths[CreatureConstants.Centipede_Swarm][CreatureConstants.Centipede_Swarm] = GetMultiplierFromAverage(10 * 12);
             lengths[CreatureConstants.ChainDevil_Kyton][GenderConstants.Agender] = "0";
+            lengths[CreatureConstants.ChainDevil_Kyton][GenderConstants.Male] = "0";
+            lengths[CreatureConstants.ChainDevil_Kyton][GenderConstants.Female] = "0";
             lengths[CreatureConstants.ChainDevil_Kyton][CreatureConstants.ChainDevil_Kyton] = "0";
             //Source: https://forgottenrealms.fandom.com/wiki/Chaos_beast
             lengths[CreatureConstants.ChaosBeast][GenderConstants.Agender] = GetBaseFromRange(3 * 12, 9 * 12);
@@ -486,7 +488,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Couatl
             lengths[CreatureConstants.Couatl][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
             lengths[CreatureConstants.Couatl][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            lengths[CreatureConstants.Couatl][CreatureConstants.Couatl] = GetBaseFromAverage(12 * 12);
+            lengths[CreatureConstants.Couatl][CreatureConstants.Couatl] = GetMultiplierFromAverage(12 * 12);
             //Source: https://www.d20srd.org/srd/monsters/sphinx.htm
             lengths[CreatureConstants.Criosphinx][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
             lengths[CreatureConstants.Criosphinx][CreatureConstants.Criosphinx] = GetMultiplierFromAverage(10 * 12);
@@ -1073,7 +1075,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://syrikdarkenedskies.obsidianportal.com/wikis/ettercap-race
             lengths[CreatureConstants.Ettercap][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Ettercap][GenderConstants.Male] = "0";
-            lengths[CreatureConstants.Ettercap][CreatureConstants.Ettin] = "0";
+            lengths[CreatureConstants.Ettercap][CreatureConstants.Ettercap] = "0";
             lengths[CreatureConstants.Ettin][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Ettin][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Ettin][CreatureConstants.Ettin] = "0";
@@ -1142,6 +1144,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths[CreatureConstants.Girallon][GenderConstants.Female] = "0";
             lengths[CreatureConstants.Girallon][GenderConstants.Male] = "0";
             lengths[CreatureConstants.Girallon][CreatureConstants.Girallon] = "0";
+            lengths[CreatureConstants.Githyanki][GenderConstants.Female] = "0";
+            lengths[CreatureConstants.Githyanki][GenderConstants.Male] = "0";
+            lengths[CreatureConstants.Githyanki][CreatureConstants.Githyanki] = "0";
+            lengths[CreatureConstants.Githzerai][GenderConstants.Female] = "0";
+            lengths[CreatureConstants.Githzerai][GenderConstants.Male] = "0";
+            lengths[CreatureConstants.Githzerai][CreatureConstants.Githzerai] = "0";
             lengths[CreatureConstants.Glabrezu][GenderConstants.Agender] = "0";
             lengths[CreatureConstants.Glabrezu][CreatureConstants.Glabrezu] = "0";
             lengths[CreatureConstants.Gnoll][GenderConstants.Female] = "0";
