@@ -488,7 +488,7 @@
 	<collection>
 		<name>Baboon</name>
 		<entry>Male@16</entry>
-		<entry>Female@4</entry>
+		<entry>Female@10</entry>
 		<entry>Baboon@8d4</entry>
 	</collection>
 	<collection>
@@ -1281,7 +1281,7 @@
 		<name>Displacer Beast</name>
 		<entry>Male@104</entry>
 		<entry>Female@92</entry>
-		<entry>Displacer Beast@4d10</entry>
+		<entry>Displacer Beast@4d4</entry>
 	</collection>
 	<collection>
 		<name>Displacer Beast Pack Lord</name>
@@ -2067,15 +2067,15 @@
 	</collection>
 	<collection>
 		<name>Hell Hound</name>
-		<entry>Male@18</entry>
-		<entry>Female@18</entry>
-		<entry>Hell Hound@6d6</entry>
+		<entry>Male@32</entry>
+		<entry>Female@32</entry>
+		<entry>Hell Hound@4d10</entry>
 	</collection>
 	<collection>
 		<name>Hellcat (Bezekira)</name>
-		<entry>Male@0</entry>
-		<entry>Female@0</entry>
-		<entry>Hellcat (Bezekira)@0</entry>
+		<entry>Male@68</entry>
+		<entry>Female@68</entry>
+		<entry>Hellcat (Bezekira)@4d10</entry>
 	</collection>
 	<collection>
 		<name>Hellwasp Swarm</name>
@@ -2084,58 +2084,58 @@
 	</collection>
 	<collection>
 		<name>Hezrou</name>
-		<entry>Agender@85</entry>
-		<entry>Hezrou@1d20</entry>
+		<entry>Agender@0</entry>
+		<entry>Hezrou@0</entry>
 	</collection>
 	<collection>
 		<name>Hieracosphinx</name>
-		<entry>Male@58</entry>
-		<entry>Hieracosphinx@17d2</entry>
+		<entry>Male@100</entry>
+		<entry>Hieracosphinx@8d4</entry>
 	</collection>
 	<collection>
 		<name>High Elf</name>
-		<entry>Male@4*12+5</entry>
-		<entry>Female@4*12+5</entry>
-		<entry>High Elf@2d6</entry>
+		<entry>Male@0</entry>
+		<entry>Female@0</entry>
+		<entry>High Elf@0</entry>
 	</collection>
 	<collection>
 		<name>Hill Dwarf</name>
-		<entry>Male@3*12+9</entry>
-		<entry>Female@3*12+7</entry>
-		<entry>Hill Dwarf@2d4</entry>
+		<entry>Male@0</entry>
+		<entry>Female@0</entry>
+		<entry>Hill Dwarf@0</entry>
 	</collection>
 	<collection>
 		<name>Hill Giant</name>
-		<entry>Male@192</entry>
-		<entry>Female@184</entry>
-		<entry>Hill Giant@1d12</entry>
+		<entry>Male@0</entry>
+		<entry>Female@0</entry>
+		<entry>Hill Giant@0</entry>
 	</collection>
 	<collection>
 		<name>Hippogriff</name>
-		<entry>Male@0</entry>
-		<entry>Female@0</entry>
-		<entry>Hippogriff@0</entry>
+		<entry>Male@94</entry>
+		<entry>Female@94</entry>
+		<entry>Hippogriff@3d8</entry>
 	</collection>
 	<collection>
 		<name>Hobgoblin</name>
-		<entry>Male@56</entry>
-		<entry>Female@56</entry>
-		<entry>Hobgoblin@4d4</entry>
+		<entry>Male@0</entry>
+		<entry>Female@0</entry>
+		<entry>Hobgoblin@0</entry>
 	</collection>
 	<collection>
 		<name>Homunculus</name>
-		<entry>Agender@3</entry>
-		<entry>Homunculus@1d3</entry>
+		<entry>Agender@7</entry>
+		<entry>Homunculus@1d4</entry>
 	</collection>
 	<collection>
 		<name>Horned Devil (Cornugon)</name>
-		<entry>Agender@94</entry>
-		<entry>Horned Devil (Cornugon)@3d8</entry>
+		<entry>Agender@0</entry>
+		<entry>Horned Devil (Cornugon)@0</entry>
 	</collection>
 	<collection>
 		<name>Hound Archon</name>
-		<entry>Agender@61</entry>
-		<entry>Hound Archon@3d6</entry>
+		<entry>Agender@0</entry>
+		<entry>Hound Archon@0</entry>
 	</collection>
 	<collection>
 		<name>Howler</name>
@@ -2144,20 +2144,20 @@
 	</collection>
 	<collection>
 		<name>Human</name>
-		<entry>Male@4*12+10</entry>
-		<entry>Female@4*12+5</entry>
-		<entry>Human@2d10</entry>
+		<entry>Male@0</entry>
+		<entry>Female@0</entry>
+		<entry>Human@0</entry>
 	</collection>
 	<collection>
 		<name>Hyena</name>
-		<entry>Male@24</entry>
-		<entry>Female@24</entry>
-		<entry>Hyena@1d6</entry>
+		<entry>Male@31</entry>
+		<entry>Female@31</entry>
+		<entry>Hyena@1d8</entry>
 	</collection>
 	<collection>
 		<name>Ice Devil (Gelugon)</name>
-		<entry>Agender@124</entry>
-		<entry>Ice Devil (Gelugon)@2d10</entry>
+		<entry>Agender@0</entry>
+		<entry>Ice Devil (Gelugon)@0</entry>
 	</collection>
 	<collection>
 		<name>Ice Mephit</name>
@@ -2168,10 +2168,10 @@
 	</collection>
 	<collection>
 		<name>Imp</name>
-		<entry>Agender@20</entry>
-		<entry>Male@20</entry>
-		<entry>Female@20</entry>
-		<entry>Imp@1d6</entry>
+		<entry>Agender@0</entry>
+		<entry>Male@0</entry>
+		<entry>Female@0</entry>
+		<entry>Imp@0</entry>
 	</collection>
 	<collection>
 		<name>Invisible Stalker</name>
@@ -2180,78 +2180,78 @@
 	</collection>
 	<collection>
 		<name>Iron Golem</name>
-		<entry>Agender@100</entry>
-		<entry>Iron Golem@29d2</entry>
+		<entry>Agender@0</entry>
+		<entry>Iron Golem@0</entry>
 	</collection>
 	<collection>
 		<name>Janni</name>
-		<entry>Agender@68</entry>
-		<entry>Male@68</entry>
-		<entry>Female@68</entry>
-		<entry>Janni@4d4</entry>
+		<entry>Agender@0</entry>
+		<entry>Male@0</entry>
+		<entry>Female@0</entry>
+		<entry>Janni@0</entry>
 	</collection>
 	<collection>
 		<name>Juvenile Arrowhawk</name>
-		<entry>Male@0</entry>
-		<entry>Female@0</entry>
-		<entry>Juvenile Arrowhawk@0</entry>
+		<entry>Male@50</entry>
+		<entry>Female@50</entry>
+		<entry>Juvenile Arrowhawk@4d4</entry>
 	</collection>
 	<collection>
 		<name>Juvenile Tojanida</name>
-		<entry>Agender@0</entry>
-		<entry>Juvenile Tojanida@0</entry>
+		<entry>Agender@31</entry>
+		<entry>Juvenile Tojanida@1d8</entry>
 	</collection>
 	<collection>
 		<name>Kapoacinth</name>
-		<entry>Agender@5*12</entry>
-		<entry>Kapoacinth@2d10</entry>
+		<entry>Agender@0</entry>
+		<entry>Kapoacinth@0</entry>
 	</collection>
 	<collection>
 		<name>Kobold</name>
-		<entry>Male@22</entry>
-		<entry>Female@22</entry>
-		<entry>Kobold@2d4</entry>
+		<entry>Male@0</entry>
+		<entry>Female@0</entry>
+		<entry>Kobold@0</entry>
 	</collection>
 	<collection>
 		<name>Kolyarut</name>
-		<entry>Agender@5*12</entry>
-		<entry>Kolyarut@2d12</entry>
+		<entry>Agender@0</entry>
+		<entry>Kolyarut@0</entry>
 	</collection>
 	<collection>
 		<name>Kraken</name>
-		<entry>Male@316</entry>
-		<entry>Female@316</entry>
-		<entry>Kraken@8d10</entry>
+		<entry>Male@680</entry>
+		<entry>Female@680</entry>
+		<entry>Kraken@40d10</entry>
 	</collection>
 	<collection>
 		<name>Krenshar</name>
-		<entry>Male@0</entry>
-		<entry>Female@0</entry>
-		<entry>Krenshar@0</entry>
+		<entry>Male@44</entry>
+		<entry>Female@44</entry>
+		<entry>Krenshar@4d4</entry>
 	</collection>
 	<collection>
 		<name>Kuo-toa</name>
-		<entry>Male@50</entry>
-		<entry>Female@50</entry>
-		<entry>Kuo-toa@4d4</entry>
+		<entry>Male@0</entry>
+		<entry>Female@0</entry>
+		<entry>Kuo-toa@0</entry>
 	</collection>
 	<collection>
 		<name>Lacedon</name>
-		<entry>Female@4*12</entry>
-		<entry>Male@4*12</entry>
-		<entry>Lacedon@2d12</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Lacedon@0</entry>
 	</collection>
 	<collection>
 		<name>Lamia</name>
-		<entry>Male@61</entry>
-		<entry>Female@61</entry>
-		<entry>Lamia@3d6</entry>
+		<entry>Male@85</entry>
+		<entry>Female@85</entry>
+		<entry>Lamia@1d20</entry>
 	</collection>
 	<collection>
 		<name>Lammasu</name>
-		<entry>Male@54</entry>
-		<entry>Female@54</entry>
-		<entry>Lammasu@8d3</entry>
+		<entry>Male@85</entry>
+		<entry>Female@85</entry>
+		<entry>Lammasu@1d20</entry>
 	</collection>
 	<collection>
 		<name>Lantern Archon</name>
@@ -2260,68 +2260,68 @@
 	</collection>
 	<collection>
 		<name>Lemure</name>
-		<entry>Agender@50</entry>
-		<entry>Lemure@4d4</entry>
+		<entry>Agender@0</entry>
+		<entry>Lemure@0</entry>
 	</collection>
 	<collection>
 		<name>Leonal</name>
-		<entry>Male@61</entry>
-		<entry>Female@61</entry>
-		<entry>Leonal@3d6</entry>
+		<entry>Male@0</entry>
+		<entry>Female@0</entry>
+		<entry>Leonal@0</entry>
 	</collection>
 	<collection>
 		<name>Leopard</name>
-		<entry>Male@20</entry>
-		<entry>Female@20</entry>
-		<entry>Leopard@1d8</entry>
+		<entry>Male@42</entry>
+		<entry>Female@42</entry>
+		<entry>Leopard@1d10</entry>
 	</collection>
 	<collection>
 		<name>Light Horse</name>
-		<entry>Male@55</entry>
-		<entry>Female@55</entry>
-		<entry>Light Horse@2d3</entry>
+		<entry>Male@85</entry>
+		<entry>Female@85</entry>
+		<entry>Light Horse@1d20</entry>
 	</collection>
 	<collection>
 		<name>Light Warhorse</name>
-		<entry>Male@55</entry>
-		<entry>Female@55</entry>
-		<entry>Light Warhorse@2d3</entry>
+		<entry>Male@85</entry>
+		<entry>Female@85</entry>
+		<entry>Light Warhorse@1d20</entry>
 	</collection>
 	<collection>
 		<name>Lightfoot Halfling</name>
-		<entry>Male@2*12+8</entry>
-		<entry>Female@2*12+6</entry>
-		<entry>Lightfoot Halfling@2d4</entry>
+		<entry>Male@0</entry>
+		<entry>Female@0</entry>
+		<entry>Lightfoot Halfling@0</entry>
 	</collection>
 	<collection>
 		<name>Lillend</name>
-		<entry>Male@4*12+10</entry>
-		<entry>Female@4*12+5</entry>
-		<entry>Lillend@2d10</entry>
+		<entry>Male@200</entry>
+		<entry>Female@200</entry>
+		<entry>Lillend@16d4</entry>
 	</collection>
 	<collection>
 		<name>Lion</name>
-		<entry>Male@32</entry>
-		<entry>Female@26</entry>
-		<entry>Lion@4d3</entry>
+		<entry>Male@46</entry>
+		<entry>Female@34</entry>
+		<entry>Lion@8d4</entry>
 	</collection>
 	<collection>
 		<name>Lizard</name>
-		<entry>Male@0</entry>
-		<entry>Female@0</entry>
-		<entry>Lizard@1d2</entry>
+		<entry>Male@8</entry>
+		<entry>Female@8</entry>
+		<entry>Lizard@4d4</entry>
 	</collection>
 	<collection>
 		<name>Lizardfolk</name>
-		<entry>Male@68</entry>
-		<entry>Female@68</entry>
+		<entry>Male@32</entry>
+		<entry>Female@32</entry>
 		<entry>Lizardfolk@4d4</entry>
 	</collection>
 	<collection>
 		<name>Locathah</name>
-		<entry>Male@50</entry>
-		<entry>Female@50</entry>
-		<entry>Locathah@4d4</entry>
+		<entry>Male@0</entry>
+		<entry>Female@0</entry>
+		<entry>Locathah@0</entry>
 	</collection>
 	<collection>
 		<name>Locust Swarm</name>
@@ -2337,54 +2337,54 @@
 	</collection>
 	<collection>
 		<name>Magmin</name>
-		<entry>Agender@32</entry>
-		<entry>Magmin@4d4</entry>
+		<entry>Agender@0</entry>
+		<entry>Magmin@0</entry>
 	</collection>
 	<collection>
 		<name>Manta Ray</name>
-		<entry>Male@0</entry>
-		<entry>Female@0</entry>
-		<entry>Manta Ray@0</entry>
+		<entry>Male@59</entry>
+		<entry>Female@59</entry>
+		<entry>Manta Ray@1d10</entry>
 	</collection>
 	<collection>
 		<name>Manticore</name>
-		<entry>Male@32</entry>
-		<entry>Female@26</entry>
-		<entry>Manticore@4d3</entry>
+		<entry>Male@100</entry>
+		<entry>Female@100</entry>
+		<entry>Manticore@8d4</entry>
 	</collection>
 	<collection>
 		<name>Marilith</name>
-		<entry>Female@76</entry>
-		<entry>Marilith@8d4</entry>
+		<entry>Female@200</entry>
+		<entry>Marilith@16d4</entry>
 	</collection>
 	<collection>
 		<name>Marut</name>
-		<entry>Agender@100</entry>
-		<entry>Marut@29d2</entry>
+		<entry>Agender@0</entry>
+		<entry>Marut@0</entry>
 	</collection>
 	<collection>
 		<name>Medusa</name>
-		<entry>Male@56</entry>
-		<entry>Female@56</entry>
-		<entry>Medusa@4d4</entry>
+		<entry>Male@0</entry>
+		<entry>Female@0</entry>
+		<entry>Medusa@0</entry>
 	</collection>
 	<collection>
 		<name>Megaraptor</name>
-		<entry>Male@47</entry>
-		<entry>Female@47</entry>
-		<entry>Megaraptor@13d2</entry>
+		<entry>Male@107</entry>
+		<entry>Female@107</entry>
+		<entry>Megaraptor@31d2</entry>
 	</collection>
 	<collection>
 		<name>Merfolk</name>
-		<entry>Male@0</entry>
-		<entry>Female@0</entry>
-		<entry>Merfolk@0</entry>
+		<entry>Male@85</entry>
+		<entry>Female@75</entry>
+		<entry>Merfolk@1d20</entry>
 	</collection>
 	<collection>
 		<name>Merrow</name>
-		<entry>Male@120</entry>
-		<entry>Female@110</entry>
-		<entry>Merrow@1d10</entry>
+		<entry>Male@0</entry>
+		<entry>Female@0</entry>
+		<entry>Merrow@0</entry>
 	</collection>
 	<collection>
 		<name>Mimic</name>
@@ -2393,8 +2393,8 @@
 	</collection>
 	<collection>
 		<name>Mind Flayer (Illithid)</name>
-		<entry>Agender@61</entry>
-		<entry>Mind Flayer (Illithid)@3d6</entry>
+		<entry>Agender@0</entry>
+		<entry>Mind Flayer (Illithid)@0</entry>
 	</collection>
 	<collection>
 		<name>Minor Xorn</name>
@@ -2403,317 +2403,317 @@
 	</collection>
 	<collection>
 		<name>Minotaur</name>
-		<entry>Male@94</entry>
-		<entry>Female@70</entry>
-		<entry>Minotaur@3d8</entry>
+		<entry>Male@0</entry>
+		<entry>Female@0</entry>
+		<entry>Minotaur@0</entry>
 	</collection>
 	<collection>
 		<name>Mohrg</name>
-		<entry>Agender@56</entry>
-		<entry>Mohrg@4d4</entry>
+		<entry>Agender@0</entry>
+		<entry>Mohrg@0</entry>
 	</collection>
 	<collection>
 		<name>Monitor Lizard</name>
-		<entry>Male@6</entry>
-		<entry>Female@6</entry>
-		<entry>Monitor Lizard@1d2</entry>
+		<entry>Male@28</entry>
+		<entry>Female@28</entry>
+		<entry>Monitor Lizard@8d4</entry>
 	</collection>
 	<collection>
 		<name>Monkey</name>
-		<entry>Male@8</entry>
-		<entry>Female@8</entry>
-		<entry>Monkey@2d4</entry>
+		<entry>Male@12</entry>
+		<entry>Female@12</entry>
+		<entry>Monkey@1d10</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Centipede, Colossal</name>
-		<entry>Male@85</entry>
-		<entry>Female@85</entry>
-		<entry>Monstrous Centipede, Colossal@1d20</entry>
+		<entry>Male@1264</entry>
+		<entry>Female@1264</entry>
+		<entry>Monstrous Centipede, Colossal@32d10</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Centipede, Gargantuan</name>
-		<entry>Male@42</entry>
-		<entry>Female@42</entry>
-		<entry>Monstrous Centipede, Gargantuan@1d10</entry>
+		<entry>Male@632</entry>
+		<entry>Female@632</entry>
+		<entry>Monstrous Centipede, Gargantuan@16d10</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Centipede, Huge</name>
-		<entry>Male@20</entry>
-		<entry>Female@20</entry>
-		<entry>Monstrous Centipede, Huge@1d6</entry>
+		<entry>Male@316</entry>
+		<entry>Female@316</entry>
+		<entry>Monstrous Centipede, Huge@8d10</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Centipede, Large</name>
-		<entry>Male@9</entry>
-		<entry>Female@9</entry>
-		<entry>Monstrous Centipede, Large@1d4</entry>
+		<entry>Male@158</entry>
+		<entry>Female@158</entry>
+		<entry>Monstrous Centipede, Large@4d10</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Centipede, Medium</name>
-		<entry>Male@4</entry>
-		<entry>Female@4</entry>
-		<entry>Monstrous Centipede, Medium@1d2</entry>
+		<entry>Male@85</entry>
+		<entry>Female@85</entry>
+		<entry>Monstrous Centipede, Medium@1d20</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Centipede, Small</name>
-		<entry>Male@1</entry>
-		<entry>Female@1</entry>
-		<entry>Monstrous Centipede, Small@1d2</entry>
+		<entry>Male@42</entry>
+		<entry>Female@42</entry>
+		<entry>Monstrous Centipede, Small@1d10</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Centipede, Tiny</name>
-		<entry>Male@0</entry>
-		<entry>Female@0</entry>
-		<entry>Monstrous Centipede, Tiny@1d2</entry>
+		<entry>Male@20</entry>
+		<entry>Female@20</entry>
+		<entry>Monstrous Centipede, Tiny@1d6</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Scorpion, Colossal</name>
-		<entry>Male@100</entry>
-		<entry>Female@100</entry>
-		<entry>Monstrous Scorpion, Colossal@8d4</entry>
+		<entry>Male@800</entry>
+		<entry>Female@800</entry>
+		<entry>Monstrous Scorpion, Colossal@64d4</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Scorpion, Gargantuan</name>
-		<entry>Male@50</entry>
-		<entry>Female@50</entry>
-		<entry>Monstrous Scorpion, Gargantuan@4d4</entry>
+		<entry>Male@400</entry>
+		<entry>Female@400</entry>
+		<entry>Monstrous Scorpion, Gargantuan@32d4</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Scorpion, Huge</name>
-		<entry>Male@25</entry>
-		<entry>Female@25</entry>
-		<entry>Monstrous Scorpion, Huge@2d4</entry>
+		<entry>Male@200</entry>
+		<entry>Female@200</entry>
+		<entry>Monstrous Scorpion, Huge@16d4</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Scorpion, Large</name>
-		<entry>Male@15</entry>
-		<entry>Female@15</entry>
-		<entry>Monstrous Scorpion, Large@1d4</entry>
+		<entry>Male@100</entry>
+		<entry>Female@100</entry>
+		<entry>Monstrous Scorpion, Large@8d4</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Scorpion, Medium</name>
-		<entry>Male@4</entry>
-		<entry>Female@4</entry>
-		<entry>Monstrous Scorpion, Medium@1d2</entry>
+		<entry>Male@61</entry>
+		<entry>Female@61</entry>
+		<entry>Monstrous Scorpion, Medium@3d6</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Scorpion, Small</name>
-		<entry>Male@1</entry>
-		<entry>Female@1</entry>
-		<entry>Monstrous Scorpion, Small@1d2</entry>
+		<entry>Male@42</entry>
+		<entry>Female@42</entry>
+		<entry>Monstrous Scorpion, Small@1d10</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Scorpion, Tiny</name>
-		<entry>Male@0</entry>
-		<entry>Female@0</entry>
-		<entry>Monstrous Scorpion, Tiny@1d2</entry>
+		<entry>Male@20</entry>
+		<entry>Female@20</entry>
+		<entry>Monstrous Scorpion, Tiny@1d6</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Hunter, Colossal</name>
-		<entry>Male@100</entry>
-		<entry>Female@100</entry>
-		<entry>Monstrous Spider, Hunter, Colossal@8d4</entry>
+		<entry>Male@400</entry>
+		<entry>Female@400</entry>
+		<entry>Monstrous Spider, Hunter, Colossal@32d4</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Hunter, Gargantuan</name>
-		<entry>Male@50</entry>
-		<entry>Female@50</entry>
-		<entry>Monstrous Spider, Hunter, Gargantuan@4d4</entry>
+		<entry>Male@200</entry>
+		<entry>Female@200</entry>
+		<entry>Monstrous Spider, Hunter, Gargantuan@16d4</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Hunter, Huge</name>
-		<entry>Male@25</entry>
-		<entry>Female@25</entry>
-		<entry>Monstrous Spider, Hunter, Huge@2d4</entry>
+		<entry>Male@158</entry>
+		<entry>Female@158</entry>
+		<entry>Monstrous Spider, Hunter, Huge@4d10</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Hunter, Large</name>
-		<entry>Male@15</entry>
-		<entry>Female@15</entry>
-		<entry>Monstrous Spider, Hunter, Large@1d4</entry>
+		<entry>Male@100</entry>
+		<entry>Female@100</entry>
+		<entry>Monstrous Spider, Hunter, Large@8d4</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Hunter, Medium</name>
-		<entry>Male@4</entry>
-		<entry>Female@4</entry>
-		<entry>Monstrous Spider, Hunter, Medium@1d2</entry>
+		<entry>Male@50</entry>
+		<entry>Female@50</entry>
+		<entry>Monstrous Spider, Hunter, Medium@4d4</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Hunter, Small</name>
-		<entry>Male@1</entry>
-		<entry>Female@1</entry>
-		<entry>Monstrous Spider, Hunter, Small@1d2</entry>
+		<entry>Male@31</entry>
+		<entry>Female@31</entry>
+		<entry>Monstrous Spider, Hunter, Small@1d8</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Hunter, Tiny</name>
-		<entry>Male@0</entry>
-		<entry>Female@0</entry>
-		<entry>Monstrous Spider, Hunter, Tiny@1d2</entry>
+		<entry>Male@20</entry>
+		<entry>Female@20</entry>
+		<entry>Monstrous Spider, Hunter, Tiny@1d6</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Web-Spinner, Colossal</name>
-		<entry>Male@100</entry>
-		<entry>Female@100</entry>
-		<entry>Monstrous Spider, Web-Spinner, Colossal@8d4</entry>
+		<entry>Male@400</entry>
+		<entry>Female@400</entry>
+		<entry>Monstrous Spider, Web-Spinner, Colossal@32d4</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Web-Spinner, Gargantuan</name>
-		<entry>Male@50</entry>
-		<entry>Female@50</entry>
-		<entry>Monstrous Spider, Web-Spinner, Gargantuan@4d4</entry>
+		<entry>Male@200</entry>
+		<entry>Female@200</entry>
+		<entry>Monstrous Spider, Web-Spinner, Gargantuan@16d4</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Web-Spinner, Huge</name>
-		<entry>Male@25</entry>
-		<entry>Female@25</entry>
-		<entry>Monstrous Spider, Web-Spinner, Huge@2d4</entry>
+		<entry>Male@158</entry>
+		<entry>Female@158</entry>
+		<entry>Monstrous Spider, Web-Spinner, Huge@4d10</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Web-Spinner, Large</name>
-		<entry>Male@15</entry>
-		<entry>Female@15</entry>
-		<entry>Monstrous Spider, Web-Spinner, Large@1d4</entry>
+		<entry>Male@100</entry>
+		<entry>Female@100</entry>
+		<entry>Monstrous Spider, Web-Spinner, Large@8d4</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Web-Spinner, Medium</name>
-		<entry>Male@4</entry>
-		<entry>Female@4</entry>
-		<entry>Monstrous Spider, Web-Spinner, Medium@1d2</entry>
+		<entry>Male@50</entry>
+		<entry>Female@50</entry>
+		<entry>Monstrous Spider, Web-Spinner, Medium@4d4</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Web-Spinner, Small</name>
-		<entry>Male@1</entry>
-		<entry>Female@1</entry>
-		<entry>Monstrous Spider, Web-Spinner, Small@1d2</entry>
+		<entry>Male@31</entry>
+		<entry>Female@31</entry>
+		<entry>Monstrous Spider, Web-Spinner, Small@1d8</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Web-Spinner, Tiny</name>
-		<entry>Male@0</entry>
-		<entry>Female@0</entry>
-		<entry>Monstrous Spider, Web-Spinner, Tiny@1d2</entry>
+		<entry>Male@20</entry>
+		<entry>Female@20</entry>
+		<entry>Monstrous Spider, Web-Spinner, Tiny@1d6</entry>
 	</collection>
 	<collection>
 		<name>Mountain Dwarf</name>
-		<entry>Male@3*12+9</entry>
-		<entry>Female@3*12+7</entry>
-		<entry>Mountain Dwarf@2d4</entry>
+		<entry>Male@0</entry>
+		<entry>Female@0</entry>
+		<entry>Mountain Dwarf@0</entry>
 	</collection>
 	<collection>
 		<name>Mule</name>
-		<entry>Male@52</entry>
-		<entry>Female@52</entry>
-		<entry>Mule@4d4</entry>
+		<entry>Male@63</entry>
+		<entry>Female@63</entry>
+		<entry>Mule@8d3</entry>
 	</collection>
 	<collection>
 		<name>Mummy</name>
-		<entry>Female@56</entry>
-		<entry>Male@56</entry>
-		<entry>Mummy@4d4</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Mummy@0</entry>
 	</collection>
 	<collection>
 		<name>Nalfeshnee</name>
-		<entry>Agender@96</entry>
-		<entry>Nalfeshnee@24d6</entry>
+		<entry>Agender@0</entry>
+		<entry>Nalfeshnee@0</entry>
 	</collection>
 	<collection>
 		<name>Nessian Warhound</name>
-		<entry>Male@60</entry>
-		<entry>Female@60</entry>
-		<entry>Nessian Warhound@4d3</entry>
+		<entry>Male@85</entry>
+		<entry>Female@85</entry>
+		<entry>Nessian Warhound@1d20</entry>
 	</collection>
 	<collection>
 		<name>Night Hag</name>
-		<entry>Female@4*12+5</entry>
-		<entry>Night Hag@2d10</entry>
+		<entry>Female@0</entry>
+		<entry>Night Hag@0</entry>
 	</collection>
 	<collection>
 		<name>Nightcrawler</name>
-		<entry>Agender@58</entry>
-		<entry>Nightcrawler@17d2</entry>
+		<entry>Agender@1032</entry>
+		<entry>Nightcrawler@48d6</entry>
 	</collection>
 	<collection>
 		<name>Nightmare</name>
-		<entry>Agender@55</entry>
-		<entry>Nightmare@2d3</entry>
+		<entry>Agender@85</entry>
+		<entry>Nightmare@1d20</entry>
 	</collection>
 	<collection>
 		<name>Nightmare, Cauchemar</name>
-		<entry>Agender@110</entry>
-		<entry>Nightmare, Cauchemar@4d3</entry>
+		<entry>Agender@159</entry>
+		<entry>Nightmare, Cauchemar@13d4</entry>
 	</collection>
 	<collection>
 		<name>Nightwalker</name>
-		<entry>Agender@200</entry>
-		<entry>Nightwalker@16d4</entry>
+		<entry>Agender@0</entry>
+		<entry>Nightwalker@0</entry>
 	</collection>
 	<collection>
 		<name>Nightwing</name>
-		<entry>Agender@142</entry>
-		<entry>Nightwing@4d4</entry>
+		<entry>Agender@76</entry>
+		<entry>Nightwing@13d3</entry>
 	</collection>
 	<collection>
 		<name>Nine-Headed Cryohydra</name>
-		<entry>Female@100</entry>
-		<entry>Male@100</entry>
-		<entry>Nine-Headed Cryohydra@8d4</entry>
+		<entry>Female@200</entry>
+		<entry>Male@200</entry>
+		<entry>Nine-Headed Cryohydra@16d4</entry>
 	</collection>
 	<collection>
 		<name>Nine-Headed Hydra</name>
-		<entry>Female@100</entry>
-		<entry>Male@100</entry>
-		<entry>Nine-Headed Hydra@8d4</entry>
+		<entry>Female@200</entry>
+		<entry>Male@200</entry>
+		<entry>Nine-Headed Hydra@16d4</entry>
 	</collection>
 	<collection>
 		<name>Nine-Headed Pyrohydra</name>
-		<entry>Female@100</entry>
-		<entry>Male@100</entry>
-		<entry>Nine-Headed Pyrohydra@8d4</entry>
+		<entry>Female@200</entry>
+		<entry>Male@200</entry>
+		<entry>Nine-Headed Pyrohydra@16d4</entry>
 	</collection>
 	<collection>
 		<name>Nixie</name>
-		<entry>Female@42</entry>
-		<entry>Male@42</entry>
-		<entry>Nixie@1d10</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Nixie@0</entry>
 	</collection>
 	<collection>
 		<name>Noble Djinni</name>
-		<entry>Agender@100</entry>
-		<entry>Female@100</entry>
-		<entry>Male@100</entry>
-		<entry>Noble Djinni@29d2</entry>
+		<entry>Agender@0</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Noble Djinni@0</entry>
 	</collection>
 	<collection>
 		<name>Noble Salamander</name>
-		<entry>Agender@200</entry>
-		<entry>Noble Salamander@16d4</entry>
+		<entry>Agender@400</entry>
+		<entry>Noble Salamander@32d4</entry>
 	</collection>
 	<collection>
 		<name>Nymph</name>
-		<entry>Female@4*12+5</entry>
-		<entry>Nymph@2d6</entry>
+		<entry>Female@0</entry>
+		<entry>Nymph@0</entry>
 	</collection>
 	<collection>
 		<name>Ochre Jelly</name>
-		<entry>Agender@4</entry>
-		<entry>Ochre Jelly@1d2</entry>
+		<entry>Agender@158</entry>
+		<entry>Ochre Jelly@4d10</entry>
 	</collection>
 	<collection>
 		<name>Octopus</name>
-		<entry>Female@4</entry>
-		<entry>Male@4</entry>
-		<entry>Octopus@2d3</entry>
+		<entry>Female@29</entry>
+		<entry>Male@29</entry>
+		<entry>Octopus@1d10</entry>
 	</collection>
 	<collection>
 		<name>Ogre Mage</name>
-		<entry>Female@100</entry>
-		<entry>Male@100</entry>
-		<entry>Ogre Mage@8d4</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Ogre Mage@0</entry>
 	</collection>
 	<collection>
 		<name>Ogre</name>
-		<entry>Male@120</entry>
-		<entry>Female@110</entry>
-		<entry>Ogre@1d10</entry>
+		<entry>Male@0</entry>
+		<entry>Female@0</entry>
+		<entry>Ogre@0</entry>
 	</collection>
 	<collection>
 		<name>Ooze Mephit</name>
@@ -2724,38 +2724,38 @@
 	</collection>
 	<collection>
 		<name>Orc</name>
-		<entry>Female@64</entry>
-		<entry>Male@64</entry>
-		<entry>Orc@8d3</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Orc@0</entry>
 	</collection>
 	<collection>
 		<name>Orca Whale</name>
-		<entry>Female@60</entry>
-		<entry>Male@60</entry>
-		<entry>Orca Whale@3d10</entry>
+		<entry>Female@316</entry>
+		<entry>Male@316</entry>
+		<entry>Orca Whale@8d10</entry>
 	</collection>
 	<collection>
 		<name>Otyugh</name>
-		<entry>Hermaphrodite@158</entry>
-		<entry>Otyugh@4d10</entry>
+		<entry>Hermaphrodite@85</entry>
+		<entry>Otyugh@1d20</entry>
 	</collection>
 	<collection>
 		<name>Owl</name>
 		<entry>Female@8</entry>
 		<entry>Male@8</entry>
-		<entry>Owl@1d6</entry>
+		<entry>Owl@4d4</entry>
 	</collection>
 	<collection>
 		<name>Owlbear</name>
-		<entry>Female@28</entry>
-		<entry>Male@39</entry>
-		<entry>Owlbear@4d6</entry>
+		<entry>Female@75</entry>
+		<entry>Male@85</entry>
+		<entry>Owlbear@1d20</entry>
 	</collection>
 	<collection>
 		<name>Pegasus</name>
-		<entry>Female@61</entry>
-		<entry>Male@61</entry>
-		<entry>Pegasus@3d6</entry>
+		<entry>Female@85</entry>
+		<entry>Male@85</entry>
+		<entry>Pegasus@1d20</entry>
 	</collection>
 	<collection>
 		<name>Phantom Fungus</name>
@@ -2764,240 +2764,240 @@
 	</collection>
 	<collection>
 		<name>Phase Spider</name>
-		<entry>Female@9</entry>
-		<entry>Male@9</entry>
-		<entry>Phase Spider@1d4</entry>
+		<entry>Female@85</entry>
+		<entry>Male@85</entry>
+		<entry>Phase Spider@1d20</entry>
 	</collection>
 	<collection>
 		<name>Phasm</name>
-		<entry>Agender@20</entry>
-		<entry>Phasm@1d6</entry>
+		<entry>Agender@50</entry>
+		<entry>Phasm@4d4</entry>
 	</collection>
 	<collection>
 		<name>Pit Fiend</name>
-		<entry>Agender@100</entry>
-		<entry>Pit Fiend@29d2</entry>
+		<entry>Agender@0</entry>
+		<entry>Pit Fiend@0</entry>
 	</collection>
 	<collection>
 		<name>Pixie</name>
-		<entry>Female@10</entry>
-		<entry>Male@10</entry>
-		<entry>Pixie@2d10</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Pixie@0</entry>
 	</collection>
 	<collection>
 		<name>Pixie with Irresistible dance</name>
-		<entry>Female@10</entry>
-		<entry>Male@10</entry>
-		<entry>Pixie with Irresistible dance@2d10</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Pixie with Irresistible dance@0</entry>
 	</collection>
 	<collection>
 		<name>Polar Bear</name>
-		<entry>Female@28</entry>
-		<entry>Male@39</entry>
-		<entry>Polar Bear@4d6</entry>
+		<entry>Female@86</entry>
+		<entry>Male@94</entry>
+		<entry>Polar Bear@8d3</entry>
 	</collection>
 	<collection>
 		<name>Pony</name>
-		<entry>Female@20</entry>
-		<entry>Male@20</entry>
-		<entry>Pony@8d3</entry>
+		<entry>Female@45</entry>
+		<entry>Male@45</entry>
+		<entry>Pony@2d12</entry>
 	</collection>
 	<collection>
 		<name>Porpoise</name>
-		<entry>Female@13</entry>
-		<entry>Male@13</entry>
-		<entry>Porpoise@1d3</entry>
+		<entry>Female@40</entry>
+		<entry>Male@40</entry>
+		<entry>Porpoise@8d4</entry>
 	</collection>
 	<collection>
 		<name>Pseudodragon</name>
-		<entry>Female@7</entry>
-		<entry>Male@7</entry>
-		<entry>Pseudodragon@1d2</entry>
+		<entry>Female@31</entry>
+		<entry>Male@31</entry>
+		<entry>Pseudodragon@1d8</entry>
 	</collection>
 	<collection>
 		<name>Purple Worm</name>
-		<entry>Female@50</entry>
-		<entry>Male@50</entry>
-		<entry>Purple Worm@4d4</entry>
+		<entry>Female@800</entry>
+		<entry>Male@800</entry>
+		<entry>Purple Worm@64d4</entry>
 	</collection>
 	<collection>
 		<name>Quasit</name>
-		<entry>Agender@8</entry>
-		<entry>Quasit@4d4</entry>
+		<entry>Agender@0</entry>
+		<entry>Quasit@0</entry>
 	</collection>
 	<collection>
 		<name>Rakshasa</name>
-		<entry>Female@4*12+5</entry>
-		<entry>Male@4*12+10</entry>
-		<entry>Rakshasa@2d10</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Rakshasa@0</entry>
 	</collection>
 	<collection>
 		<name>Rast</name>
-		<entry>Agender@36</entry>
-		<entry>Rast@8d3</entry>
+		<entry>Agender@29</entry>
+		<entry>Rast@3d6</entry>
 	</collection>
 	<collection>
 		<name>Rat</name>
-		<entry>Female@1</entry>
-		<entry>Male@1</entry>
-		<entry>Rat@1d3</entry>
+		<entry>Female@4</entry>
+		<entry>Male@4</entry>
+		<entry>Rat@2d3</entry>
 	</collection>
 	<collection>
 		<name>Rat Swarm</name>
-		<entry>Agender@0</entry>
-		<entry>Rat Swarm@0</entry>
+		<entry>Agender@100</entry>
+		<entry>Rat Swarm@8d4</entry>
 	</collection>
 	<collection>
 		<name>Raven</name>
-		<entry>Female@10</entry>
-		<entry>Male@10</entry>
-		<entry>Raven@2d3</entry>
+		<entry>Female@20</entry>
+		<entry>Male@20</entry>
+		<entry>Raven@1d6</entry>
 	</collection>
 	<collection>
 		<name>Ravid</name>
-		<entry>Agender@0</entry>
-		<entry>Ravid@0</entry>
+		<entry>Agender@58</entry>
+		<entry>Ravid@17d2</entry>
 	</collection>
 	<collection>
 		<name>Razor Boar</name>
-		<entry>Female@61</entry>
-		<entry>Male@61</entry>
-		<entry>Razor Boar@3d6</entry>
+		<entry>Female@158</entry>
+		<entry>Male@158</entry>
+		<entry>Razor Boar@4d10</entry>
 	</collection>
 	<collection>
 		<name>Red Dragon, Adult</name>
-		<entry>Female@100</entry>
-		<entry>Male@100</entry>
-		<entry>Red Dragon, Adult@29d2</entry>
+		<entry>Female@582</entry>
+		<entry>Male@582</entry>
+		<entry>Red Dragon, Adult@12d12</entry>
 	</collection>
 	<collection>
 		<name>Red Dragon, Ancient</name>
-		<entry>Female@159</entry>
-		<entry>Male@159</entry>
-		<entry>Red Dragon, Ancient@13d4</entry>
+		<entry>Female@850</entry>
+		<entry>Male@850</entry>
+		<entry>Red Dragon, Ancient@68d4</entry>
 	</collection>
 	<collection>
 		<name>Red Dragon, Great Wyrm</name>
-		<entry>Female@184</entry>
-		<entry>Male@184</entry>
-		<entry>Red Dragon, Great Wyrm@53d2</entry>
+		<entry>Female@1264</entry>
+		<entry>Male@1264</entry>
+		<entry>Red Dragon, Great Wyrm@32d10</entry>
 	</collection>
 	<collection>
 		<name>Red Dragon, Juvenile</name>
-		<entry>Female@58</entry>
-		<entry>Male@58</entry>
-		<entry>Red Dragon, Juvenile@17d2</entry>
+		<entry>Female@319</entry>
+		<entry>Male@319</entry>
+		<entry>Red Dragon, Juvenile@15d6</entry>
 	</collection>
 	<collection>
 		<name>Red Dragon, Mature Adult</name>
-		<entry>Female@100</entry>
-		<entry>Male@100</entry>
-		<entry>Red Dragon, Mature Adult@29d2</entry>
+		<entry>Female@582</entry>
+		<entry>Male@582</entry>
+		<entry>Red Dragon, Mature Adult@12d12</entry>
 	</collection>
 	<collection>
 		<name>Red Dragon, Old</name>
-		<entry>Female@159</entry>
-		<entry>Male@159</entry>
-		<entry>Red Dragon, Old@13d4</entry>
+		<entry>Female@850</entry>
+		<entry>Male@850</entry>
+		<entry>Red Dragon, Old@68d4</entry>
 	</collection>
 	<collection>
 		<name>Red Dragon, Very Old</name>
-		<entry>Female@159</entry>
-		<entry>Male@159</entry>
-		<entry>Red Dragon, Very Old@13d4</entry>
+		<entry>Female@850</entry>
+		<entry>Male@850</entry>
+		<entry>Red Dragon, Very Old@68d4</entry>
 	</collection>
 	<collection>
 		<name>Red Dragon, Very Young</name>
-		<entry>Female@58</entry>
-		<entry>Male@58</entry>
-		<entry>Red Dragon, Very Young@17d2</entry>
+		<entry>Female@319</entry>
+		<entry>Male@319</entry>
+		<entry>Red Dragon, Very Young@15d6</entry>
 	</collection>
 	<collection>
 		<name>Red Dragon, Wyrm</name>
-		<entry>Female@159</entry>
-		<entry>Male@159</entry>
-		<entry>Red Dragon, Wyrm@13d4</entry>
+		<entry>Female@850</entry>
+		<entry>Male@850</entry>
+		<entry>Red Dragon, Wyrm@68d4</entry>
 	</collection>
 	<collection>
 		<name>Red Dragon, Wyrmling</name>
-		<entry>Female@42</entry>
-		<entry>Male@42</entry>
-		<entry>Red Dragon, Wyrmling@1d10</entry>
+		<entry>Female@159</entry>
+		<entry>Male@159</entry>
+		<entry>Red Dragon, Wyrmling@13d4</entry>
 	</collection>
 	<collection>
 		<name>Red Dragon, Young Adult</name>
-		<entry>Female@100</entry>
-		<entry>Male@100</entry>
-		<entry>Red Dragon, Young Adult@29d2</entry>
+		<entry>Female@582</entry>
+		<entry>Male@582</entry>
+		<entry>Red Dragon, Young Adult@12d12</entry>
 	</collection>
 	<collection>
 		<name>Red Dragon, Young</name>
-		<entry>Female@58</entry>
-		<entry>Male@58</entry>
-		<entry>Red Dragon, Young@17d2</entry>
+		<entry>Female@319</entry>
+		<entry>Male@319</entry>
+		<entry>Red Dragon, Young@15d6</entry>
 	</collection>
 	<collection>
 		<name>Red Slaad</name>
-		<entry>Agender@85</entry>
-		<entry>Red Slaad@1d20</entry>
+		<entry>Agender@0</entry>
+		<entry>Red Slaad@0</entry>
 	</collection>
 	<collection>
 		<name>Remorhaz</name>
-		<entry>Female@50</entry>
-		<entry>Male@50</entry>
-		<entry>Remorhaz@4d4</entry>
+		<entry>Female@224</entry>
+		<entry>Male@224</entry>
+		<entry>Remorhaz@28d10</entry>
 	</collection>
 	<collection>
 		<name>Retriever</name>
-		<entry>Agender@100</entry>
-		<entry>Retriever@29d2</entry>
+		<entry>Agender@148</entry>
+		<entry>Retriever@3d12</entry>
 	</collection>
 	<collection>
 		<name>Rhinoceras</name>
-		<entry>Female@32</entry>
-		<entry>Male@32</entry>
-		<entry>Rhinoceras@4d10</entry>
+		<entry>Female@40</entry>
+		<entry>Male@40</entry>
+		<entry>Rhinoceras@32d4</entry>
 	</collection>
 	<collection>
 		<name>Roc</name>
-		<entry>Female@0</entry>
-		<entry>Male@0</entry>
-		<entry>Roc@0</entry>
+		<entry>Female@320</entry>
+		<entry>Male@320</entry>
+		<entry>Roc@40d10</entry>
 	</collection>
 	<collection>
 		<name>Rock Gnome</name>
-		<entry>Female@2*12+10</entry>
-		<entry>Male@3*12+0</entry>
-		<entry>Rock Gnome@2d4</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Rock Gnome@0</entry>
 	</collection>
 	<collection>
 		<name>Roper</name>
-		<entry>Hermaphrodite@94</entry>
-		<entry>Roper@3d8</entry>
+		<entry>Hermaphrodite@32</entry>
+		<entry>Roper@4d4</entry>
 	</collection>
 	<collection>
 		<name>Rust Monster</name>
-		<entry>Female@31</entry>
-		<entry>Male@31</entry>
-		<entry>Rust Monster@1d8</entry>
+		<entry>Female@50</entry>
+		<entry>Male@50</entry>
+		<entry>Rust Monster@4d4</entry>
 	</collection>
 	<collection>
 		<name>Sahuagin</name>
-		<entry>Female@68</entry>
-		<entry>Male@68</entry>
-		<entry>Sahuagin@4d10</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Sahuagin@0</entry>
 	</collection>
 	<collection>
 		<name>Sahuagin Mutant</name>
-		<entry>Female@68</entry>
-		<entry>Male@68</entry>
-		<entry>Sahuagin Mutant@4d10</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Sahuagin Mutant@0</entry>
 	</collection>
 	<collection>
 		<name>Malenti</name>
-		<entry>Female@68</entry>
-		<entry>Male@68</entry>
-		<entry>Malenti@4d10</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Malenti@0</entry>
 	</collection>
 	<collection>
 		<name>Salt Mephit</name>
@@ -3008,228 +3008,228 @@
 	</collection>
 	<collection>
 		<name>Satyr</name>
-		<entry>Male@4*12+7</entry>
-		<entry>Satyr@2d8</entry>
+		<entry>Male@0</entry>
+		<entry>Satyr@0</entry>
 	</collection>
 	<collection>
 		<name>Satyr with pipes</name>
-		<entry>Male@4*12+7</entry>
-		<entry>Satyr with pipes@2d8</entry>
+		<entry>Male@0</entry>
+		<entry>Satyr with pipes@0</entry>
 	</collection>
 	<collection>
 		<name>Scorpionfolk</name>
-		<entry>Female@61</entry>
-		<entry>Male@61</entry>
-		<entry>Scorpionfolk@3d6</entry>
+		<entry>Female@148</entry>
+		<entry>Male@148</entry>
+		<entry>Scorpionfolk@3d12</entry>
 	</collection>
 	<collection>
 		<name>Scrag</name>
-		<entry>Female@105</entry>
-		<entry>Male@94</entry>
-		<entry>Scrag@3d8</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Scrag@0</entry>
 	</collection>
 	<collection>
 		<name>Sea Cat</name>
-		<entry>Female@0</entry>
-		<entry>Male@0</entry>
-		<entry>Sea Cat@0</entry>
+		<entry>Female@140</entry>
+		<entry>Male@140</entry>
+		<entry>Sea Cat@4d10</entry>
 	</collection>
 	<collection>
 		<name>Sea Hag</name>
-		<entry>Female@4*12+5</entry>
-		<entry>Sea Hag@2d10</entry>
+		<entry>Female@0</entry>
+		<entry>Sea Hag@0</entry>
 	</collection>
 	<collection>
 		<name>Seven-Headed Cryohydra</name>
-		<entry>Male@100</entry>
-		<entry>Female@100</entry>
-		<entry>Seven-Headed Cryohydra@8d4</entry>
+		<entry>Male@200</entry>
+		<entry>Female@200</entry>
+		<entry>Seven-Headed Cryohydra@16d4</entry>
 	</collection>
 	<collection>
 		<name>Seven-Headed Hydra</name>
-		<entry>Male@100</entry>
-		<entry>Female@100</entry>
-		<entry>Seven-Headed Hydra@8d4</entry>
+		<entry>Male@200</entry>
+		<entry>Female@200</entry>
+		<entry>Seven-Headed Hydra@16d4</entry>
 	</collection>
 	<collection>
 		<name>Seven-Headed Pyrohydra</name>
-		<entry>Male@100</entry>
-		<entry>Female@100</entry>
-		<entry>Seven-Headed Pyrohydra@8d4</entry>
+		<entry>Male@200</entry>
+		<entry>Female@200</entry>
+		<entry>Seven-Headed Pyrohydra@16d4</entry>
 	</collection>
 	<collection>
 		<name>Shadow</name>
-		<entry>Agender@56</entry>
-		<entry>Shadow@4d4</entry>
+		<entry>Agender@0</entry>
+		<entry>Shadow@0</entry>
 	</collection>
 	<collection>
 		<name>Shadow Mastiff</name>
-		<entry>Female@20</entry>
-		<entry>Male@20</entry>
-		<entry>Shadow Mastiff@1d6</entry>
+		<entry>Female@26</entry>
+		<entry>Male@29</entry>
+		<entry>Shadow Mastiff@3d6</entry>
 	</collection>
 	<collection>
 		<name>Shambling Mound</name>
-		<entry>Agender@61</entry>
-		<entry>Shambling Mound@3d6</entry>
+		<entry>Agender@85</entry>
+		<entry>Shambling Mound@1d20</entry>
 	</collection>
 	<collection>
 		<name>Shark, Huge</name>
-		<entry>Female@0</entry>
-		<entry>Male@0</entry>
-		<entry>Shark, Huge@0</entry>
+		<entry>Female@172</entry>
+		<entry>Male@124</entry>
+		<entry>Shark, Huge@8d10</entry>
 	</collection>
 	<collection>
 		<name>Shark, Large</name>
-		<entry>Female@0</entry>
-		<entry>Male@0</entry>
-		<entry>Shark, Large@0</entry>
+		<entry>Female@120</entry>
+		<entry>Male@120</entry>
+		<entry>Shark, Large@6d20</entry>
 	</collection>
 	<collection>
 		<name>Shark, Medium</name>
-		<entry>Female@0</entry>
-		<entry>Male@0</entry>
-		<entry>Shark, Medium@0</entry>
+		<entry>Female@22</entry>
+		<entry>Male@22</entry>
+		<entry>Shark, Medium@37d2</entry>
 	</collection>
 	<collection>
 		<name>Shield Guardian</name>
-		<entry>Agender@94</entry>
-		<entry>Shield Guardian@3d8</entry>
+		<entry>Agender@0</entry>
+		<entry>Shield Guardian@0</entry>
 	</collection>
 	<collection>
 		<name>Shocker Lizard</name>
-		<entry>Female@9</entry>
-		<entry>Male@9</entry>
-		<entry>Shocker Lizard@1d4</entry>
+		<entry>Female@31</entry>
+		<entry>Male@31</entry>
+		<entry>Shocker Lizard@1d8</entry>
 	</collection>
 	<collection>
 		<name>Shrieker</name>
-		<entry>Agender@31</entry>
-		<entry>Shrieker@1d8</entry>
+		<entry>Agender@0</entry>
+		<entry>Shrieker@0</entry>
 	</collection>
 	<collection>
 		<name>Silver Dragon, Adult</name>
-		<entry>Female@100</entry>
-		<entry>Male@100</entry>
-		<entry>Silver Dragon, Adult@29d2</entry>
+		<entry>Female@582</entry>
+		<entry>Male@582</entry>
+		<entry>Silver Dragon, Adult@12d12</entry>
 	</collection>
 	<collection>
 		<name>Silver Dragon, Ancient</name>
-		<entry>Female@159</entry>
-		<entry>Male@159</entry>
-		<entry>Silver Dragon, Ancient@13d4</entry>
+		<entry>Female@850</entry>
+		<entry>Male@850</entry>
+		<entry>Silver Dragon, Ancient@68d4</entry>
 	</collection>
 	<collection>
 		<name>Silver Dragon, Great Wyrm</name>
-		<entry>Female@184</entry>
-		<entry>Male@184</entry>
-		<entry>Silver Dragon, Great Wyrm@53d2</entry>
+		<entry>Female@1264</entry>
+		<entry>Male@1264</entry>
+		<entry>Silver Dragon, Great Wyrm@32d10</entry>
 	</collection>
 	<collection>
 		<name>Silver Dragon, Juvenile</name>
-		<entry>Female@58</entry>
-		<entry>Male@58</entry>
-		<entry>Silver Dragon, Juvenile@17d2</entry>
+		<entry>Female@319</entry>
+		<entry>Male@319</entry>
+		<entry>Silver Dragon, Juvenile@15d6</entry>
 	</collection>
 	<collection>
 		<name>Silver Dragon, Mature Adult</name>
-		<entry>Female@100</entry>
-		<entry>Male@100</entry>
-		<entry>Silver Dragon, Mature Adult@29d2</entry>
+		<entry>Female@582</entry>
+		<entry>Male@582</entry>
+		<entry>Silver Dragon, Mature Adult@12d12</entry>
 	</collection>
 	<collection>
 		<name>Silver Dragon, Old</name>
-		<entry>Female@100</entry>
-		<entry>Male@100</entry>
-		<entry>Silver Dragon, Old@29d2</entry>
+		<entry>Female@582</entry>
+		<entry>Male@582</entry>
+		<entry>Silver Dragon, Old@12d12</entry>
 	</collection>
 	<collection>
 		<name>Silver Dragon, Very Old</name>
-		<entry>Female@100</entry>
-		<entry>Male@100</entry>
-		<entry>Silver Dragon, Very Old@29d2</entry>
+		<entry>Female@582</entry>
+		<entry>Male@582</entry>
+		<entry>Silver Dragon, Very Old@12d12</entry>
 	</collection>
 	<collection>
 		<name>Silver Dragon, Very Young</name>
-		<entry>Female@42</entry>
-		<entry>Male@42</entry>
-		<entry>Silver Dragon, Very Young@1d10</entry>
+		<entry>Female@159</entry>
+		<entry>Male@159</entry>
+		<entry>Silver Dragon, Very Young@13d4</entry>
 	</collection>
 	<collection>
 		<name>Silver Dragon, Wyrm</name>
-		<entry>Female@159</entry>
-		<entry>Male@159</entry>
-		<entry>Silver Dragon, Wyrm@13d4</entry>
+		<entry>Female@850</entry>
+		<entry>Male@850</entry>
+		<entry>Silver Dragon, Wyrm@68d4</entry>
 	</collection>
 	<collection>
 		<name>Silver Dragon, Wyrmling</name>
-		<entry>Female@20</entry>
-		<entry>Male@20</entry>
-		<entry>Silver Dragon, Wyrmling@1d6</entry>
+		<entry>Female@85</entry>
+		<entry>Male@85</entry>
+		<entry>Silver Dragon, Wyrmling@1d20</entry>
 	</collection>
 	<collection>
 		<name>Silver Dragon, Young Adult</name>
-		<entry>Female@58</entry>
-		<entry>Male@58</entry>
-		<entry>Silver Dragon, Young Adult@17d2</entry>
+		<entry>Female@319</entry>
+		<entry>Male@319</entry>
+		<entry>Silver Dragon, Young Adult@15d6</entry>
 	</collection>
 	<collection>
 		<name>Silver Dragon, Young</name>
-		<entry>Female@58</entry>
-		<entry>Male@58</entry>
-		<entry>Silver Dragon, Young@17d2</entry>
+		<entry>Female@159</entry>
+		<entry>Male@159</entry>
+		<entry>Silver Dragon, Young@13d4</entry>
 	</collection>
 	<collection>
 		<name>Six-Headed Cryohydra</name>
-		<entry>Male@100</entry>
-		<entry>Female@100</entry>
-		<entry>Six-Headed Cryohydra@8d4</entry>
+		<entry>Male@200</entry>
+		<entry>Female@200</entry>
+		<entry>Six-Headed Cryohydra@16d4</entry>
 	</collection>
 	<collection>
 		<name>Six-Headed Hydra</name>
-		<entry>Male@100</entry>
-		<entry>Female@100</entry>
-		<entry>Six-Headed Hydra@8d4</entry>
+		<entry>Male@200</entry>
+		<entry>Female@200</entry>
+		<entry>Six-Headed Hydra@16d4</entry>
 	</collection>
 	<collection>
 		<name>Six-Headed Pyrohydra</name>
-		<entry>Male@100</entry>
-		<entry>Female@100</entry>
-		<entry>Six-Headed Pyrohydra@8d4</entry>
+		<entry>Male@200</entry>
+		<entry>Female@200</entry>
+		<entry>Six-Headed Pyrohydra@16d4</entry>
 	</collection>
 	<collection>
 		<name>Skum</name>
-		<entry>Female@4*12+5</entry>
-		<entry>Male@4*12+10</entry>
-		<entry>Skum@2d10</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Skum@0</entry>
 	</collection>
 	<collection>
 		<name>Spectre</name>
-		<entry>Female@4*12+5</entry>
-		<entry>Male@4*12+10</entry>
-		<entry>Spectre@2d10</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Spectre@0</entry>
 	</collection>
 	<collection>
 		<name>Spider Eater</name>
-		<entry>Female@42</entry>
-		<entry>Male@42</entry>
-		<entry>Spider Eater@1d10</entry>
+		<entry>Female@100</entry>
+		<entry>Male@100</entry>
+		<entry>Spider Eater@8d4</entry>
 	</collection>
 	<collection>
 		<name>Spider Swarm</name>
-		<entry>Agender@0</entry>
-		<entry>Spider Swarm@0</entry>
+		<entry>Agender@100</entry>
+		<entry>Spider Swarm@8d4</entry>
 	</collection>
 	<collection>
 		<name>Spirit Naga</name>
-		<entry>Hermaphrodite@0</entry>
-		<entry>Spirit Naga@0</entry>
+		<entry>Hermaphrodite@158</entry>
+		<entry>Spirit Naga@4d10</entry>
 	</collection>
 	<collection>
 		<name>Squid</name>
-		<entry>Female@19</entry>
-		<entry>Male@19</entry>
-		<entry>Squid@10d6</entry>
+		<entry>Female@46</entry>
+		<entry>Male@46</entry>
+		<entry>Squid@13d4</entry>
 	</collection>
 	<collection>
 		<name>Steam Mephit</name>
@@ -3240,242 +3240,242 @@
 	</collection>
 	<collection>
 		<name>Stirge</name>
-		<entry>Female@0</entry>
-		<entry>Male@0</entry>
-		<entry>Stirge@0</entry>
+		<entry>Female@9</entry>
+		<entry>Male@9</entry>
+		<entry>Stirge@1d4</entry>
 	</collection>
 	<collection>
 		<name>Stone Giant</name>
-		<entry>Female@207</entry>
-		<entry>Male@216</entry>
-		<entry>Stone Giant@2d10</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Stone Giant@0</entry>
 	</collection>
 	<collection>
 		<name>Stone Giant Elder</name>
-		<entry>Female@207</entry>
-		<entry>Male@216</entry>
-		<entry>Stone Giant Elder@2d10</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Stone Giant Elder@0</entry>
 	</collection>
 	<collection>
 		<name>Stone Golem</name>
-		<entry>Agender@94</entry>
-		<entry>Stone Golem@3d8</entry>
+		<entry>Agender@0</entry>
+		<entry>Stone Golem@0</entry>
 	</collection>
 	<collection>
 		<name>Storm Giant</name>
-		<entry>Female@280</entry>
-		<entry>Male@312</entry>
-		<entry>Storm Giant@4d10</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Storm Giant@0</entry>
 	</collection>
 	<collection>
 		<name>Succubus</name>
-		<entry>Female@61</entry>
-		<entry>Male@61</entry>
-		<entry>Succubus@3d6</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Succubus@0</entry>
 	</collection>
 	<collection>
 		<name>Svirfneblin</name>
-		<entry>Female@2*12+10</entry>
-		<entry>Male@3*12+0</entry>
-		<entry>Svirfneblin@2d4</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Svirfneblin@0</entry>
 	</collection>
 	<collection>
 		<name>Tallfellow Halfling</name>
-		<entry>Female@3*12+6</entry>
-		<entry>Male@3*12+8</entry>
-		<entry>Tallfellow Halfling@2d4</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Tallfellow Halfling@0</entry>
 	</collection>
 	<collection>
 		<name>Tarrasque</name>
-		<entry>Agender@516</entry>
-		<entry>Tarrasque@24d6</entry>
+		<entry>Agender@732</entry>
+		<entry>Tarrasque@24d8</entry>
 	</collection>
 	<collection>
 		<name>Ten-Headed Cryohydra</name>
-		<entry>Female@100</entry>
-		<entry>Male@100</entry>
-		<entry>Ten-Headed Cryohydra@8d4</entry>
+		<entry>Female@200</entry>
+		<entry>Male@200</entry>
+		<entry>Ten-Headed Cryohydra@16d4</entry>
 	</collection>
 	<collection>
 		<name>Ten-Headed Hydra</name>
-		<entry>Female@100</entry>
-		<entry>Male@100</entry>
-		<entry>Ten-Headed Hydra@8d4</entry>
+		<entry>Female@200</entry>
+		<entry>Male@200</entry>
+		<entry>Ten-Headed Hydra@16d4</entry>
 	</collection>
 	<collection>
 		<name>Ten-Headed Pyrohydra</name>
-		<entry>Female@100</entry>
-		<entry>Male@100</entry>
-		<entry>Ten-Headed Pyrohydra@8d4</entry>
+		<entry>Female@200</entry>
+		<entry>Male@200</entry>
+		<entry>Ten-Headed Pyrohydra@16d4</entry>
 	</collection>
 	<collection>
 		<name>Tendriculos</name>
-		<entry>Agender@158</entry>
-		<entry>Tendriculos@4d10</entry>
+		<entry>Agender@0</entry>
+		<entry>Tendriculos@0</entry>
 	</collection>
 	<collection>
 		<name>Thoqqua</name>
-		<entry>Agender@9</entry>
-		<entry>Thoqqua@1d4</entry>
+		<entry>Agender@44</entry>
+		<entry>Thoqqua@4d4</entry>
 	</collection>
 	<collection>
 		<name>Tiefling</name>
-		<entry>Female@46</entry>
-		<entry>Male@46</entry>
-		<entry>Tiefling@13d2</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Tiefling@0</entry>
 	</collection>
 	<collection>
 		<name>Tiger</name>
-		<entry>Female@33</entry>
-		<entry>Male@33</entry>
-		<entry>Tiger@1d12</entry>
+		<entry>Female@61</entry>
+		<entry>Male@61</entry>
+		<entry>Tiger@2d8</entry>
 	</collection>
 	<collection>
 		<name>Titan</name>
-		<entry>Female@258</entry>
-		<entry>Male@258</entry>
-		<entry>Titan@12d6</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Titan@0</entry>
 	</collection>
 	<collection>
 		<name>Toad</name>
-		<entry>Female@1</entry>
-		<entry>Male@1</entry>
-		<entry>Toad@1d2</entry>
+		<entry>Female@2</entry>
+		<entry>Male@2</entry>
+		<entry>Toad@1d3</entry>
 	</collection>
 	<collection>
 		<name>Treant</name>
-		<entry>Female@316</entry>
-		<entry>Male@316</entry>
-		<entry>Treant@8d10</entry>
+		<entry>Female@20</entry>
+		<entry>Male@20</entry>
+		<entry>Treant@1d6</entry>
 	</collection>
 	<collection>
 		<name>Triceratops</name>
-		<entry>Female@110</entry>
-		<entry>Male@110</entry>
-		<entry>Triceratops@31d2</entry>
+		<entry>Female@321</entry>
+		<entry>Male@321</entry>
+		<entry>Triceratops@15d6</entry>
 	</collection>
 	<collection>
 		<name>Triton</name>
-		<entry>Female@4*12+5</entry>
-		<entry>Male@4*12+10</entry>
-		<entry>Triton@2d10</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Triton@0</entry>
 	</collection>
 	<collection>
 		<name>Troglodyte</name>
-		<entry>Female@56</entry>
-		<entry>Male@56</entry>
-		<entry>Troglodyte@4d4</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Troglodyte@0</entry>
 	</collection>
 	<collection>
 		<name>Troll</name>
-		<entry>Female@105</entry>
-		<entry>Male@94</entry>
-		<entry>Troll@3d8</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Troll@0</entry>
 	</collection>
 	<collection>
 		<name>Truly Horrid Umber Hulk</name>
-		<entry>Female@104</entry>
-		<entry>Male@104</entry>
-		<entry>Truly Horrid Umber Hulk@4d4</entry>
+		<entry>Female@159</entry>
+		<entry>Male@159</entry>
+		<entry>Truly Horrid Umber Hulk@13d4</entry>
 	</collection>
 	<collection>
 		<name>Trumpet Archon</name>
-		<entry>Female@70</entry>
-		<entry>Male@75</entry>
-		<entry>Trumpet Archon@3d6</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Trumpet Archon@0</entry>
 	</collection>
 	<collection>
 		<name>Twelve-Headed Cryohydra</name>
-		<entry>Female@100</entry>
-		<entry>Male@100</entry>
-		<entry>Twelve-Headed Cryohydra@8d4</entry>
+		<entry>Female@200</entry>
+		<entry>Male@200</entry>
+		<entry>Twelve-Headed Cryohydra@16d4</entry>
 	</collection>
 	<collection>
 		<name>Twelve-Headed Hydra</name>
-		<entry>Female@100</entry>
-		<entry>Male@100</entry>
-		<entry>Twelve-Headed Hydra@8d4</entry>
+		<entry>Female@200</entry>
+		<entry>Male@200</entry>
+		<entry>Twelve-Headed Hydra@16d4</entry>
 	</collection>
 	<collection>
 		<name>Twelve-Headed Pyrohydra</name>
-		<entry>Female@100</entry>
-		<entry>Male@100</entry>
-		<entry>Twelve-Headed Pyrohydra@8d4</entry>
+		<entry>Female@200</entry>
+		<entry>Male@200</entry>
+		<entry>Twelve-Headed Pyrohydra@16d4</entry>
 	</collection>
 	<collection>
 		<name>Tyrannosaurus</name>
-		<entry>Female@161</entry>
-		<entry>Male@161</entry>
-		<entry>Tyrannosaurus@47d2</entry>
+		<entry>Female@490</entry>
+		<entry>Male@490</entry>
+		<entry>Tyrannosaurus@23d6</entry>
 	</collection>
 	<collection>
 		<name>Umber Hulk</name>
-		<entry>Female@52</entry>
-		<entry>Male@52</entry>
-		<entry>Umber Hulk@2d4</entry>
+		<entry>Female@92</entry>
+		<entry>Male@92</entry>
+		<entry>Umber Hulk@4d4</entry>
 	</collection>
 	<collection>
 		<name>Unicorn</name>
-		<entry>Female@44</entry>
-		<entry>Male@50</entry>
-		<entry>Unicorn@4d4</entry>
+		<entry>Female@75</entry>
+		<entry>Male@85</entry>
+		<entry>Unicorn@1d20</entry>
 	</collection>
 	<collection>
 		<name>Vampire Spawn</name>
-		<entry>Female@4*12+5</entry>
-		<entry>Male@4*12+10</entry>
-		<entry>Vampire Spawn@2d10</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Vampire Spawn@0</entry>
 	</collection>
 	<collection>
 		<name>Vargouille</name>
-		<entry>Agender@15</entry>
-		<entry>Vargouille@1d4</entry>
+		<entry>Agender@0</entry>
+		<entry>Vargouille@0</entry>
 	</collection>
 	<collection>
 		<name>Violet Fungus</name>
-		<entry>Agender@44</entry>
-		<entry>Violet Fungus@4d10</entry>
+		<entry>Agender@0</entry>
+		<entry>Violet Fungus@0</entry>
 	</collection>
 	<collection>
 		<name>Viper Snake, Huge</name>
-		<entry>Female@2</entry>
-		<entry>Male@2</entry>
-		<entry>Viper Snake, Huge@1d4</entry>
+		<entry>Female@88</entry>
+		<entry>Male@88</entry>
+		<entry>Viper Snake, Huge@32d4</entry>
 	</collection>
 	<collection>
 		<name>Viper Snake, Large</name>
-		<entry>Female@1</entry>
-		<entry>Male@1</entry>
-		<entry>Viper Snake, Large@1d3</entry>
+		<entry>Female@68</entry>
+		<entry>Male@68</entry>
+		<entry>Viper Snake, Large@10d10</entry>
 	</collection>
 	<collection>
 		<name>Viper Snake, Medium</name>
-		<entry>Female@0</entry>
-		<entry>Male@0</entry>
-		<entry>Viper Snake, Medium@1d3</entry>
+		<entry>Female@20</entry>
+		<entry>Male@20</entry>
+		<entry>Viper Snake, Medium@16d4</entry>
 	</collection>
 	<collection>
 		<name>Viper Snake, Small</name>
-		<entry>Female@0</entry>
-		<entry>Male@0</entry>
-		<entry>Viper Snake, Small@1d2</entry>
+		<entry>Female@16</entry>
+		<entry>Male@16</entry>
+		<entry>Viper Snake, Small@8d3</entry>
 	</collection>
 	<collection>
 		<name>Viper Snake, Tiny</name>
-		<entry>Female@0</entry>
-		<entry>Male@0</entry>
-		<entry>Viper Snake, Tiny@1</entry>
+		<entry>Female@14</entry>
+		<entry>Male@14</entry>
+		<entry>Viper Snake, Tiny@2d12</entry>
 	</collection>
 	<collection>
 		<name>Vrock</name>
-		<entry>Agender@85</entry>
-		<entry>Vrock@1d20</entry>
+		<entry>Agender@0</entry>
+		<entry>Vrock@0</entry>
 	</collection>
 	<collection>
 		<name>Warpony</name>
-		<entry>Female@20</entry>
-		<entry>Male@20</entry>
-		<entry>Warpony@8d3</entry>
+		<entry>Female@45</entry>
+		<entry>Male@45</entry>
+		<entry>Warpony@2d12</entry>
 	</collection>
 	<collection>
 		<name>Water Elemental, Elder</name>
@@ -3516,98 +3516,98 @@
 	</collection>
 	<collection>
 		<name>Water Naga</name>
-		<entry>Hermaphrodite@0</entry>
-		<entry>Water Naga@0</entry>
+		<entry>Hermaphrodite@96</entry>
+		<entry>Water Naga@24d6</entry>
 	</collection>
 	<collection>
 		<name>Weasel</name>
-		<entry>Male@1</entry>
-		<entry>Female@1</entry>
-		<entry>Weasel@1d2</entry>
+		<entry>Male@4</entry>
+		<entry>Female@4</entry>
+		<entry>Weasel@2d3</entry>
 	</collection>
 	<collection>
 		<name>White Dragon, Adult</name>
-		<entry>Female@58</entry>
-		<entry>Male@58</entry>
-		<entry>White Dragon, Adult@17d2</entry>
+		<entry>Female@319</entry>
+		<entry>Male@319</entry>
+		<entry>White Dragon, Adult@15d6</entry>
 	</collection>
 	<collection>
 		<name>White Dragon, Ancient</name>
-		<entry>Female@100</entry>
-		<entry>Male@100</entry>
-		<entry>White Dragon, Ancient@29d2</entry>
+		<entry>Female@582</entry>
+		<entry>Male@582</entry>
+		<entry>White Dragon, Ancient@12d12</entry>
 	</collection>
 	<collection>
 		<name>White Dragon, Great Wyrm</name>
-		<entry>Female@159</entry>
-		<entry>Male@159</entry>
-		<entry>White Dragon, Great Wyrm@13d4</entry>
+		<entry>Female@850</entry>
+		<entry>Male@850</entry>
+		<entry>White Dragon, Great Wyrm@68d4</entry>
 	</collection>
 	<collection>
 		<name>White Dragon, Juvenile</name>
-		<entry>Female@42</entry>
-		<entry>Male@42</entry>
-		<entry>White Dragon, Juvenile@1d10</entry>
+		<entry>Female@159</entry>
+		<entry>Male@159</entry>
+		<entry>White Dragon, Juvenile@13d4</entry>
 	</collection>
 	<collection>
 		<name>White Dragon, Mature Adult</name>
-		<entry>Female@100</entry>
-		<entry>Male@100</entry>
-		<entry>White Dragon, Mature Adult@29d2</entry>
+		<entry>Female@582</entry>
+		<entry>Male@582</entry>
+		<entry>White Dragon, Mature Adult@12d12</entry>
 	</collection>
 	<collection>
 		<name>White Dragon, Old</name>
-		<entry>Female@100</entry>
-		<entry>Male@100</entry>
-		<entry>White Dragon, Old@29d2</entry>
+		<entry>Female@582</entry>
+		<entry>Male@582</entry>
+		<entry>White Dragon, Old@12d12</entry>
 	</collection>
 	<collection>
 		<name>White Dragon, Very Old</name>
-		<entry>Female@100</entry>
-		<entry>Male@100</entry>
-		<entry>White Dragon, Very Old@29d2</entry>
+		<entry>Female@582</entry>
+		<entry>Male@582</entry>
+		<entry>White Dragon, Very Old@12d12</entry>
 	</collection>
 	<collection>
 		<name>White Dragon, Very Young</name>
-		<entry>Female@20</entry>
-		<entry>Male@20</entry>
-		<entry>White Dragon, Very Young@1d6</entry>
+		<entry>Female@85</entry>
+		<entry>Male@85</entry>
+		<entry>White Dragon, Very Young@1d20</entry>
 	</collection>
 	<collection>
 		<name>White Dragon, Wyrm</name>
-		<entry>Female@159</entry>
-		<entry>Male@159</entry>
-		<entry>White Dragon, Wyrm@13d4</entry>
+		<entry>Female@850</entry>
+		<entry>Male@850</entry>
+		<entry>White Dragon, Wyrm@68d4</entry>
 	</collection>
 	<collection>
 		<name>White Dragon, Wyrmling</name>
-		<entry>Female@9</entry>
-		<entry>Male@9</entry>
-		<entry>White Dragon, Wyrmling@1d4</entry>
+		<entry>Female@42</entry>
+		<entry>Male@42</entry>
+		<entry>White Dragon, Wyrmling@1d10</entry>
 	</collection>
 	<collection>
 		<name>White Dragon, Young Adult</name>
-		<entry>Female@58</entry>
-		<entry>Male@58</entry>
-		<entry>White Dragon, Young Adult@17d2</entry>
+		<entry>Female@319</entry>
+		<entry>Male@319</entry>
+		<entry>White Dragon, Young Adult@15d6</entry>
 	</collection>
 	<collection>
 		<name>White Dragon, Young</name>
-		<entry>Female@42</entry>
-		<entry>Male@42</entry>
-		<entry>White Dragon, Young@1d10</entry>
+		<entry>Female@159</entry>
+		<entry>Male@159</entry>
+		<entry>White Dragon, Young@13d4</entry>
 	</collection>
 	<collection>
 		<name>Wight</name>
-		<entry>Female@4*12+5</entry>
-		<entry>Male@4*12+10</entry>
-		<entry>Wight@2d10</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Wight@0</entry>
 	</collection>
 	<collection>
 		<name>Wild Elf</name>
-		<entry>Female@4*12+5</entry>
-		<entry>Male@4*12+5</entry>
-		<entry>Wild Elf@2d6</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Wild Elf@0</entry>
 	</collection>
 	<collection>
 		<name>Will-O'-Wisp</name>
@@ -3616,99 +3616,99 @@
 	</collection>
 	<collection>
 		<name>Winter Wolf</name>
-		<entry>Female@47</entry>
-		<entry>Male@47</entry>
-		<entry>Winter Wolf@1d12</entry>
+		<entry>Female@85</entry>
+		<entry>Male@85</entry>
+		<entry>Winter Wolf@1d20</entry>
 	</collection>
 	<collection>
 		<name>Wolf</name>
-		<entry>Female@25</entry>
-		<entry>Male@25</entry>
-		<entry>Wolf@1d8</entry>
+		<entry>Female@24</entry>
+		<entry>Male@24</entry>
+		<entry>Wolf@16d3</entry>
 	</collection>
 	<collection>
 		<name>Wolverine</name>
-		<entry>Female@13</entry>
-		<entry>Male@13</entry>
-		<entry>Wolverine@1d8</entry>
+		<entry>Female@17</entry>
+		<entry>Male@17</entry>
+		<entry>Wolverine@8d3</entry>
 	</collection>
 	<collection>
 		<name>Wood Elf</name>
-		<entry>Female@4*12+5</entry>
-		<entry>Male@4*12+5</entry>
-		<entry>Wood Elf@2d6</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Wood Elf@0</entry>
 	</collection>
 	<collection>
 		<name>Worg</name>
-		<entry>Female@31</entry>
-		<entry>Male@31</entry>
-		<entry>Worg@1d8</entry>
+		<entry>Female@50</entry>
+		<entry>Male@50</entry>
+		<entry>Worg@4d4</entry>
 	</collection>
 	<collection>
 		<name>Wraith</name>
-		<entry>Agender@4*12+10</entry>
-		<entry>Wraith@2d10</entry>
+		<entry>Agender@0</entry>
+		<entry>Wraith@0</entry>
 	</collection>
 	<collection>
 		<name>Wyvern</name>
-		<entry>Female@0</entry>
-		<entry>Male@0</entry>
-		<entry>Wyvern@0</entry>
+		<entry>Female@132</entry>
+		<entry>Male@132</entry>
+		<entry>Wyvern@48d6</entry>
 	</collection>
 	<collection>
 		<name>Xill</name>
-		<entry>Agender@44</entry>
-		<entry>Xill@4d4</entry>
+		<entry>Agender@0</entry>
+		<entry>Xill@0</entry>
 	</collection>
 	<collection>
 		<name>Yeth Hound</name>
-		<entry>Agender@44</entry>
-		<entry>Yeth Hound@4d4</entry>
+		<entry>Agender@62</entry>
+		<entry>Yeth Hound@8d4</entry>
 	</collection>
 	<collection>
 		<name>Yrthak</name>
-		<entry>Agender@0</entry>
-		<entry>Yrthak@0</entry>
+		<entry>Agender@200</entry>
+		<entry>Yrthak@16d4</entry>
 	</collection>
 	<collection>
 		<name>Yuan-ti Abomination</name>
-		<entry>Female@32</entry>
-		<entry>Male@32</entry>
-		<entry>Yuan-ti Abomination@23d2</entry>
+		<entry>Female@80</entry>
+		<entry>Male@80</entry>
+		<entry>Yuan-ti Abomination@16d4</entry>
 	</collection>
 	<collection>
 		<name>Yuan-ti Halfblood (Snake Head)</name>
-		<entry>Female@32</entry>
-		<entry>Male@32</entry>
-		<entry>Yuan-ti Halfblood (Snake Head)@23d2</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Yuan-ti Halfblood (Snake Head)@0</entry>
 	</collection>
 	<collection>
 		<name>Yuan-ti Halfblood (Human Head, Arms are Snakes)</name>
-		<entry>Female@32</entry>
-		<entry>Male@32</entry>
-		<entry>Yuan-ti Halfblood (Human Head, Arms are Snakes)@23d2</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Yuan-ti Halfblood (Human Head, Arms are Snakes)@0</entry>
 	</collection>
 	<collection>
 		<name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</name>
-		<entry>Female@32</entry>
-		<entry>Male@32</entry>
-		<entry>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)@23d2</entry>
+		<entry>Female@40</entry>
+		<entry>Male@40</entry>
+		<entry>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)@8d4</entry>
 	</collection>
 	<collection>
 		<name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)</name>
-		<entry>Female@32</entry>
-		<entry>Male@32</entry>
-		<entry>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)@23d2</entry>
+		<entry>Female@40</entry>
+		<entry>Male@40</entry>
+		<entry>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)@8d4</entry>
 	</collection>
 	<collection>
 		<name>Yuan-ti Pureblood</name>
-		<entry>Female@32</entry>
-		<entry>Male@32</entry>
-		<entry>Yuan-ti Pureblood@23d2</entry>
+		<entry>Female@0</entry>
+		<entry>Male@0</entry>
+		<entry>Yuan-ti Pureblood@0</entry>
 	</collection>
 	<collection>
 		<name>Zelekhut</name>
-		<entry>Agender@76</entry>
-		<entry>Zelekhut@8d4</entry>
+		<entry>Agender@85</entry>
+		<entry>Zelekhut@1d20</entry>
 	</collection>
 </collections>

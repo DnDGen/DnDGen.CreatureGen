@@ -3,7 +3,9 @@
 <collections>
   <collection>
     <name>Aasimar</name>
-    <entry>Land@30</entry>
+	  <entry>Aasimar@2d10</entry>
+	  <entry>Male@58</entry>
+	  <entry>Female@53</entry>
   </collection>
   <collection>
     <name>Aboleth</name>

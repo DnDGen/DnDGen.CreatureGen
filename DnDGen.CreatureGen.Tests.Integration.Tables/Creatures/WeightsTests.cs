@@ -2568,14 +2568,34 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var minMultiplier = q;
             var maxMultiplier = q * d;
 
-            var range = upper / maxMultiplier - lower / minMultiplier + 1;
-            var adjustedUpper = range + lower - 1;
-            lower = Math.Max(1, lower);
+            //var weightRange = upper - lower + 1;
+            //var newUpperWeight = weightRange / maxMultiplier;
+            //var newLowerWeight = weightRange / minMultiplier;
+            //var newWeightRange = newUpperWeight - newLowerWeight + 1;
 
-            if (adjustedUpper < lower)
-                return $"[{lower},{adjustedUpper}] IS NOT A VALID RANGE";
+            //var upperRange = upper / maxMultiplier;
+            //var lowerRange = lower / minMultiplier;
 
-            var roll = RollHelper.GetRollWithFewestDice(lower, adjustedUpper);
+            //var range = upperRange - lowerRange + 1;
+            //var adjustedUpper = range + lower - 1;
+            //lower = Math.Max(1, lower);
+
+            //if (adjustedUpper < lower)
+            //    return $"[{lower},{adjustedUpper}] IS NOT A VALID RANGE";
+
+            //For Human, Input = 124, Adjusted = 122, Min(H) = 2, Diff = 2
+            //For Human, Input = 280, Adjusted = 128, Max(H) = 20, Diff = 152
+            //Weight Range = 280 - 124 = 156
+            //Try: Adjusted(L) = I(L) - Min(H), Adjusted(U) = I(U) - (I(U)-I(L)) + Min(H)*Min(W) = I(L) + Min(H)*Min(W)
+
+            //For Human, Input = 134, Adjusted = 132, Min(H) = 2, Diff = 2
+            //For Human, Input = 226, Adjusted = 142, Max(H) = 8, Diff = 84
+            //Weight Range = 226 - 134 = 92
+            //Try: Adjusted(L) = I(L) - Min(H), Adjusted(U) = I(U) - (I(U)-I(L)) + Min(H)*Min(W) = I(L) + Min(H)*Min(W)
+
+            //var roll = RollHelper.GetRollWithFewestDice(lower, adjustedUpper);
+            //var roll = RollHelper.GetRollWithFewestDice(lower - minMultiplier, lower + minMultiplier * 2);
+            var roll = RollHelper.GetRollWithFewestDice(lower - minMultiplier, lower + maxMultiplier);
             return roll;
         }
 
@@ -2605,6 +2625,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
 
             return heights[creature];
+        }
+
+        [TestCase(CreatureConstants.Human, 124, 280, "2d4+120")]
+        [TestCase(CreatureConstants.Dwarf_Hill, 134, 226, "2d6+130")]
+        public void ReverseEngineerWeightRoll(string creature, int lower, int upper, string expectedRoll)
+        {
+            var roll = GetTheoreticalWeightRoll(creature, lower, upper);
+            Assert.That(roll, Is.EqualTo(expectedRoll));
         }
 
         [TestCase(CreatureConstants.Aboleth, GenderConstants.Hermaphrodite, 6500)]
