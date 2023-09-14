@@ -73,8 +73,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            SetUpMinMaxRolls("raw 783", 773, 793);
-
             var lengthRolls = new List<TypeAndAmountSelection>();
             lengthRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" });
             lengthRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" });
@@ -83,8 +81,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
-
-            SetUpMinMaxRolls("raw 227", 217, 237);
 
             var weightRolls = new List<TypeAndAmountSelection>();
             weightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" });
@@ -95,8 +91,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            SetUpMinMaxRolls("raw 420", 410, 430);
-
             var wingspanRolls = new List<TypeAndAmountSelection>();
             wingspanRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" });
             wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" });
@@ -105,8 +99,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
-
-            SetUpMinMaxRolls("raw 345", 335, 355);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my creature"))
@@ -140,15 +132,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(demographics.Weight.Value, Is.EqualTo(8245 + 783 * 420));
             Assert.That(demographics.Weight.Description, Is.EqualTo("Average"));
             Assert.That(demographics.Appearance, Is.EqualTo("my random appearance"));
-        }
-
-        private void SetUpMinMaxRolls(string roll, int min, int max)
-        {
-            var mockRoll = new Mock<PartialRoll>();
-            mockDice.Setup(d => d.Roll(roll)).Returns(mockRoll.Object);
-
-            mockRoll.Setup(d => d.AsPotentialMinimum<int>()).Returns(min);
-            mockRoll.Setup(d => d.AsPotentialMaximum<int>(true)).Returns(max);
         }
 
         [Test]
@@ -187,8 +170,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            SetUpMinMaxRolls("raw 783", 773, 793);
-
             var lengthRolls = new List<TypeAndAmountSelection>();
             lengthRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" });
             lengthRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" });
@@ -197,8 +178,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
-
-            SetUpMinMaxRolls("raw 227", 217, 237);
 
             var weightRolls = new List<TypeAndAmountSelection>();
             weightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" });
@@ -209,8 +188,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            SetUpMinMaxRolls("raw 420", 410, 430);
-
             var wingspanRolls = new List<TypeAndAmountSelection>();
             wingspanRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" });
             wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" });
@@ -219,8 +196,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
-
-            SetUpMinMaxRolls("raw 345", 335, 355);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my creature"))
@@ -295,8 +270,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            SetUpMinMaxRolls("raw 783", 773, 793);
-
             var lengthRolls = new List<TypeAndAmountSelection>();
             lengthRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" });
             lengthRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" });
@@ -305,8 +278,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
-
-            SetUpMinMaxRolls("raw 227", 217, 237);
 
             var weightRolls = new List<TypeAndAmountSelection>();
             weightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" });
@@ -317,8 +288,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            SetUpMinMaxRolls("raw 420", 410, 430);
-
             var wingspanRolls = new List<TypeAndAmountSelection>();
             wingspanRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" });
             wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" });
@@ -327,8 +296,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
-
-            SetUpMinMaxRolls("raw 345", 335, 355);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my creature"))
@@ -406,8 +373,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            SetUpMinMaxRolls("raw 783", 773, 793);
-
             var lengthRolls = new List<TypeAndAmountSelection>();
             lengthRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" });
             lengthRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" });
@@ -416,8 +381,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
-
-            SetUpMinMaxRolls("raw 227", 217, 237);
 
             var weightRolls = new List<TypeAndAmountSelection>();
             weightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" });
@@ -428,8 +391,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            SetUpMinMaxRolls("raw 420", 410, 430);
-
             var wingspanRolls = new List<TypeAndAmountSelection>();
             wingspanRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" });
             wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" });
@@ -438,8 +399,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
-
-            SetUpMinMaxRolls("raw 345", 335, 355);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my creature"))
@@ -514,8 +473,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            SetUpMinMaxRolls("raw 783", 773, 793);
-
             var lengthRolls = new List<TypeAndAmountSelection>();
             lengthRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" });
             lengthRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" });
@@ -524,8 +481,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
-
-            SetUpMinMaxRolls("raw 227", 217, 237);
 
             var weightRolls = new List<TypeAndAmountSelection>();
             weightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" });
@@ -536,8 +491,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            SetUpMinMaxRolls("raw 420", 410, 430);
-
             var wingspanRolls = new List<TypeAndAmountSelection>();
             wingspanRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" });
             wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" });
@@ -546,8 +499,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
-
-            SetUpMinMaxRolls("raw 345", 335, 355);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my creature"))
@@ -632,8 +583,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            SetUpMinMaxRolls("raw 783", 773, 793);
-
             mockDice
                 .Setup(d => d.Describe("raw 783", roll, It.IsAny<string[]>()))
                 .Returns((string r, int v, string[] descriptions) => descriptions[index]);
@@ -647,8 +596,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
 
-            SetUpMinMaxRolls("raw 227", 217, 237);
-
             var weightRolls = new List<TypeAndAmountSelection>();
             weightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" });
             weightRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 69, RawAmount = "raw 69" });
@@ -658,8 +605,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            SetUpMinMaxRolls("raw 420", 410, 430);
-
             var wingspanRolls = new List<TypeAndAmountSelection>();
             wingspanRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" });
             wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" });
@@ -668,8 +613,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
-
-            SetUpMinMaxRolls("raw 345", 335, 355);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my creature"))
@@ -754,8 +697,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            SetUpMinMaxRolls("raw 783", 773, 793);
-
             var lengthRolls = new List<TypeAndAmountSelection>();
             lengthRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" });
             lengthRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" });
@@ -764,8 +705,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
-
-            SetUpMinMaxRolls("raw 227", 217, 237);
 
             mockDice
                 .Setup(d => d.Describe("raw 227", roll, It.IsAny<string[]>()))
@@ -780,8 +719,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            SetUpMinMaxRolls("raw 420", 410, 430);
-
             var wingspanRolls = new List<TypeAndAmountSelection>();
             wingspanRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" });
             wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" });
@@ -790,8 +727,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
-
-            SetUpMinMaxRolls("raw 345", 335, 355);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my creature"))
@@ -876,8 +811,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            SetUpMinMaxRolls("raw 783", 773, 793);
-
             var lengthRolls = new List<TypeAndAmountSelection>();
             lengthRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" });
             lengthRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" });
@@ -886,8 +819,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
-
-            SetUpMinMaxRolls("raw 227", 217, 237);
 
             var weightRolls = new List<TypeAndAmountSelection>();
             weightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" });
@@ -898,10 +829,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            SetUpMinMaxRolls("raw 420", 410, 430);
-
             mockDice
-                .Setup(d => d.Describe("raw 420", roll, It.IsAny<string[]>()))
+                .Setup(d => d.Describe("raw 8245+783*raw 420", 8245 + 783 * roll, It.IsAny<string[]>()))
                 .Returns((string r, int v, string[] descriptions) => descriptions[index]);
 
             var wingspanRolls = new List<TypeAndAmountSelection>();
@@ -912,8 +841,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
-
-            SetUpMinMaxRolls("raw 345", 335, 355);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my creature"))
@@ -988,8 +915,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            SetUpMinMaxRolls("raw 783", 773, 793);
-
             var lengthRolls = new List<TypeAndAmountSelection>();
             lengthRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 0, RawAmount = "raw 0" });
             lengthRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 0, RawAmount = "raw 0" });
@@ -998,8 +923,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
-
-            SetUpMinMaxRolls("raw 0", 0, 0);
 
             var weightRolls = new List<TypeAndAmountSelection>();
             weightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" });
@@ -1010,8 +933,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            SetUpMinMaxRolls("raw 420", 410, 430);
-
             var wingspanRolls = new List<TypeAndAmountSelection>();
             wingspanRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" });
             wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" });
@@ -1020,8 +941,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
-
-            SetUpMinMaxRolls("raw 345", 335, 355);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my creature"))
@@ -1096,8 +1015,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            SetUpMinMaxRolls("raw 0", 0, 0);
-
             var lengthRolls = new List<TypeAndAmountSelection>();
             lengthRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" });
             lengthRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" });
@@ -1106,8 +1023,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
-
-            SetUpMinMaxRolls("raw 227", 217, 237);
 
             var weightRolls = new List<TypeAndAmountSelection>();
             weightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" });
@@ -1118,8 +1033,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            SetUpMinMaxRolls("raw 420", 410, 430);
-
             var wingspanRolls = new List<TypeAndAmountSelection>();
             wingspanRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" });
             wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" });
@@ -1128,8 +1041,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
-
-            SetUpMinMaxRolls("raw 345", 335, 355);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my creature"))
@@ -1204,8 +1115,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            SetUpMinMaxRolls("raw 783", 773, 793);
-
             var lengthRolls = new List<TypeAndAmountSelection>();
             lengthRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" });
             lengthRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" });
@@ -1214,8 +1123,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
-
-            SetUpMinMaxRolls("raw 2277", 2267, 2287);
 
             var weightRolls = new List<TypeAndAmountSelection>();
             weightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" });
@@ -1226,8 +1133,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            SetUpMinMaxRolls("raw 420", 410, 430);
-
             var wingspanRolls = new List<TypeAndAmountSelection>();
             wingspanRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" });
             wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" });
@@ -1236,8 +1141,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
-
-            SetUpMinMaxRolls("raw 345", 335, 355);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my creature"))
@@ -1322,8 +1225,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            SetUpMinMaxRolls("raw 783", 773, 793);
-
             var lengthRolls = new List<TypeAndAmountSelection>();
             lengthRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" });
             lengthRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" });
@@ -1332,8 +1233,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
-
-            SetUpMinMaxRolls("raw 227", 217, 237);
 
             var weightRolls = new List<TypeAndAmountSelection>();
             weightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" });
@@ -1344,8 +1243,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            SetUpMinMaxRolls("raw 420", 410, 430);
-
             var wingspanRolls = new List<TypeAndAmountSelection>();
             wingspanRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 123, RawAmount = "raw 123" });
             wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 234, RawAmount = "raw 234" });
@@ -1354,8 +1251,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
-
-            SetUpMinMaxRolls("raw 345", 335, 355);
 
             mockDice
                 .Setup(d => d.Describe("raw 345", roll, It.IsAny<string[]>()))
@@ -1434,8 +1329,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Heights, "my creature"))
                 .Returns(heightRolls);
 
-            SetUpMinMaxRolls("raw 783", 773, 793);
-
             var lengthRolls = new List<TypeAndAmountSelection>();
             lengthRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 922, RawAmount = "raw 922" });
             lengthRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 2022, RawAmount = "raw 2022" });
@@ -1444,8 +1337,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Lengths, "my creature"))
                 .Returns(lengthRolls);
-
-            SetUpMinMaxRolls("raw 227", 217, 237);
 
             var weightRolls = new List<TypeAndAmountSelection>();
             weightRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 8245, RawAmount = "raw 8245" });
@@ -1456,8 +1347,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Weights, "my creature"))
                 .Returns(weightRolls);
 
-            SetUpMinMaxRolls("raw 420", 410, 430);
-
             var wingspanRolls = new List<TypeAndAmountSelection>();
             wingspanRolls.Add(new TypeAndAmountSelection { Type = "my gender", Amount = 0, RawAmount = "raw 0" });
             wingspanRolls.Add(new TypeAndAmountSelection { Type = "my other gender", Amount = 0, RawAmount = "raw 0" });
@@ -1466,8 +1355,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
-
-            SetUpMinMaxRolls("raw 0", 0, 0);
 
             mockCollectionsSelector
                 .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my creature"))
@@ -1515,8 +1402,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
-            SetUpMinMaxRolls("raw 345", 335, 355);
-
             var wingspan = generator.GenerateWingspan("my creature", "my base key");
             Assert.That(wingspan, Is.Not.Null);
             Assert.That(wingspan.Value, Is.EqualTo(123 + 345));
@@ -1546,8 +1431,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
-            SetUpMinMaxRolls("raw 345", 335, 355);
-
             mockDice
                 .Setup(d => d.Describe("raw 345", roll, It.IsAny<string[]>()))
                 .Returns((string r, int v, string[] descriptions) => descriptions[index]);
@@ -1570,8 +1453,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockTypeAndAmountSelector
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
-
-            SetUpMinMaxRolls("raw 0", 0, 0);
 
             var wingspan = generator.GenerateWingspan("my creature", "my base key");
             Assert.That(wingspan, Is.Not.Null);

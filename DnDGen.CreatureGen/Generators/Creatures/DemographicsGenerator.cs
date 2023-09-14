@@ -59,7 +59,10 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var multiplier = Math.Max(heightModifier.Amount, lengthModifier.Amount);
 
             demographics.Weight.Value = baseWeight.Amount + multiplier * weightModifier.Amount;
-            demographics.Weight.Description = dice.Describe(weightModifier.RawAmount, weightModifier.Amount, weightDescriptions);
+            //INFO: Building the description this way, as sometimes the multiplier/modifer is 0, and the "base" is the actual random roll
+            //This is true for lightweight creatures such as air elementals
+            var rawWeightRoll = $"{baseWeight.RawAmount}+{multiplier}*{weightModifier.RawAmount}";
+            demographics.Weight.Description = dice.Describe(rawWeightRoll, (int)demographics.Weight.Value, weightDescriptions);
 
             demographics.Wingspan = GenerateWingspan(creatureName, demographics.Gender);
             demographics.Appearance = collectionsSelector.SelectRandomFrom(TableNameConstants.Collection.Appearances, creatureName);
