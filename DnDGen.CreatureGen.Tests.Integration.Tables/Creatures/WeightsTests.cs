@@ -15,6 +15,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     {
         private ICollectionSelector collectionSelector;
         private Dice dice;
+        private const int BASE_INDEX = 1;
+        private const int MULTIPLIER_INDEX = 0;
 
         protected override string tableName => TableNameConstants.TypeAndAmount.Weights;
 
@@ -531,6 +533,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Osyluth
             weights[CreatureConstants.BoneDevil_Osyluth][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.BoneDevil_Osyluth, 500);
             weights[CreatureConstants.BoneDevil_Osyluth][CreatureConstants.BoneDevil_Osyluth] = GetMultiplierFromAverage(CreatureConstants.BoneDevil_Osyluth, 500);
+            //Source: https://forgottenrealms.fandom.com/wiki/Bralani
+            weights[CreatureConstants.Bralani][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Bralani, 113, 140);
+            weights[CreatureConstants.Bralani][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Bralani, 128, 155);
+            weights[CreatureConstants.Bralani][CreatureConstants.Bralani] = GetMultiplierFromRange(CreatureConstants.Bralani, 128, 155);
             //Source: https://forgottenrealms.fandom.com/wiki/Bugbear
             weights[CreatureConstants.Bugbear][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Bugbear, 250, 350);
             weights[CreatureConstants.Bugbear][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Bugbear, 250, 350);
@@ -618,6 +624,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Centipede_Swarm][CreatureConstants.Centipede_Swarm] = GetMultiplierFromRange(CreatureConstants.Centipede_Swarm, 11, 17);
             //Source: https://www.d20srd.org/srd/monsters/devil.htm#chainDevilKyton
             weights[CreatureConstants.ChainDevil_Kyton][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.ChainDevil_Kyton, 300);
+            weights[CreatureConstants.ChainDevil_Kyton][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.ChainDevil_Kyton, 300);
+            weights[CreatureConstants.ChainDevil_Kyton][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.ChainDevil_Kyton, 300);
             weights[CreatureConstants.ChainDevil_Kyton][CreatureConstants.ChainDevil_Kyton] = GetMultiplierFromAverage(CreatureConstants.ChainDevil_Kyton, 300);
             //Source: https://forgottenrealms.fandom.com/wiki/Chaos_beast
             weights[CreatureConstants.ChaosBeast][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.ChaosBeast, 200);
@@ -1214,9 +1222,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Dragonne][CreatureConstants.Dragonne] = GetMultiplierFromAverage(CreatureConstants.Dragonne, 700);
             //Source: https://forgottenrealms.fandom.com/wiki/Dretch
             weights[CreatureConstants.Dretch][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Dretch, 60);
+            weights[CreatureConstants.Dretch][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dretch, 60);
+            weights[CreatureConstants.Dretch][GenderConstants.Male] = GetBaseFromAverage(CreatureConstants.Dretch, 60);
             weights[CreatureConstants.Dretch][CreatureConstants.Dretch] = GetMultiplierFromAverage(CreatureConstants.Dretch, 60);
+            //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/drider-species
+            weights[CreatureConstants.Drider][GenderConstants.Agender] = GetBaseFromRange(CreatureConstants.Drider, 230, 270);
+            weights[CreatureConstants.Drider][CreatureConstants.Drider] = GetMultiplierFromRange(CreatureConstants.Drider, 230, 270);
             //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/dryad-species
-            weights[CreatureConstants.Dryad][GenderConstants.Agender] = GetBaseFromAverage(CreatureConstants.Dryad, 150);
+            weights[CreatureConstants.Dryad][GenderConstants.Female] = GetBaseFromAverage(CreatureConstants.Dryad, 150);
             weights[CreatureConstants.Dryad][CreatureConstants.Dryad] = GetMultiplierFromAverage(CreatureConstants.Dryad, 150);
             //Source: https://www.d20srd.org/srd/description.htm#vitalStatistics
             weights[CreatureConstants.Dwarf_Deep][GenderConstants.Female] = "100";
@@ -1352,7 +1365,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://syrikdarkenedskies.obsidianportal.com/wikis/ettercap-race
             weights[CreatureConstants.Ettercap][GenderConstants.Female] = "150";
             weights[CreatureConstants.Ettercap][GenderConstants.Male] = "130";
-            weights[CreatureConstants.Ettercap][CreatureConstants.Ettin] = "2d4";
+            weights[CreatureConstants.Ettercap][CreatureConstants.Ettercap] = "2d4";
             //Source: https://forgottenrealms.fandom.com/wiki/Ettin
             weights[CreatureConstants.Ettin][GenderConstants.Female] = GetBaseFromRange(CreatureConstants.Ettin, 930, 5200);
             weights[CreatureConstants.Ettin][GenderConstants.Male] = GetBaseFromRange(CreatureConstants.Ettin, 930, 5200);
@@ -2534,9 +2547,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         private static string GetMultiplierFromUpTo(string creature, int upTo) => GetMultiplierFromRange(creature, upTo * 9 / 11, upTo);
         private static string GetMultiplierFromAtLeast(string creature, int atLeast) => GetMultiplierFromRange(creature, atLeast, atLeast * 11 / 9);
 
-        private static string GetBaseFromRange(string creature, int lower, int upper) => GetFromRange(creature, lower, upper, 1);
+        private static string GetBaseFromRange(string creature, int lower, int upper) => GetFromRange(creature, lower, upper, BASE_INDEX);
 
-        private static string GetMultiplierFromRange(string creature, int lower, int upper) => GetFromRange(creature, lower, upper, 0);
+        private static string GetMultiplierFromRange(string creature, int lower, int upper) => GetFromRange(creature, lower, upper, MULTIPLIER_INDEX);
 
         private static string GetFromRange(string creature, int lower, int upper, int index)
         {
@@ -2544,6 +2557,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             if (string.IsNullOrEmpty(roll))
                 return string.Empty;
 
+            return GetFromRoll(roll, index);
+        }
+
+        private static string GetFromRoll(string roll, int index)
+        {
             var plusIndex = roll.IndexOf('+');
             if (plusIndex == -1)
             {
@@ -2577,9 +2595,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             if (sections.Length > 1)
                 d = Convert.ToInt32(sections[1]);
 
-            var multiplierRange = q * d - q + 1;
+            var maxMultiplier = q * d;
+            var multiplierRange = maxMultiplier - q + 1;
             var weightRange = upper - lower + 1;
-            var weightRollLower = lower - q;
+            var weightRollLower = Math.Max(lower - q, 1);
 
             if (multiplierRange > upper)
             {
@@ -2588,6 +2607,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
             else if (multiplierRange >= weightRange)
             {
+                //INFO: We want the average to still land in the same place
+                weightRollLower -= (multiplierRange - weightRange) / 2;
                 return $"1+{weightRollLower}";
             }
 
@@ -2603,26 +2624,36 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             //Angel, Astral Deva: W=[225,275]; H=2d4; R(m)=7; R(W)=51; R(wr)=7.28;
 
-            var weightRollRange = weightRange / multiplierRange;
-            if (weightRollRange <= 3)
+            //var weightRollRange = weightRange / multiplierRange;
+            //if (weightRollRange <= 3)
+            //{
+            //    //Do nothing
+            //}
+            //else if (weightRollRange <= 5)
+            //{
+            //    weightRollLower -= weightRollRange % 2;
+            //    weightRollRange += 2;
+            //}
+            //else if (weightRollRange <= 7)
+            //{
+            //    weightRollLower += 1;
+            //}
+            //else if (weightRollRange <= 9)
+            //{
+            //    weightRollRange -= 1;
+            //}
+            //else
+            //{
+            //    weightRollRange -= 1 + weightRollRange % 2;
+            //}
+
+            var weightRollRange = weightRange;
+            while (weightRollLower + maxMultiplier * weightRollRange > upper + maxMultiplier && weightRollRange > 0)
             {
-                weightRollLower += 2;
-            }
-            else if (weightRollRange <= 7)
-            {
-                weightRollRange -= 1;
-                weightRollLower++;
-            }
-            else if (weightRollRange <= 9)
-            {
-                weightRollRange -= 2;
-            }
-            else
-            {
-                weightRollRange -= 2 + weightRollRange % 2;
+                weightRollRange--;
             }
 
-            var weightRollUpper = weightRollLower + Math.Max(weightRollRange, 0);
+            var weightRollUpper = weightRollLower + Math.Max(weightRollRange - 1, 0);
 
             var roll = RollHelper.GetRollWithFewestDice(weightRollLower, weightRollUpper);
             return roll;
@@ -2656,7 +2687,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return heights[creature];
         }
 
-        [TestCase(CreatureConstants.Arrowhawk_Adult, 90, 110, "1+82")] //L: 8d4
+        [TestCase(CreatureConstants.Ant_Giant_Worker, 206, 300, "1d6+201", false)] //L: 3d6
+        [TestCase(CreatureConstants.Ant_Giant_Soldier, 206, 300, "1d6+201", false)] //L: 3d6
+        [TestCase(CreatureConstants.Ant_Giant_Queen, 648, 932, "2d6+643", false)] //L: 3d8
+        [TestCase(CreatureConstants.AnimatedObject_Small_Flexible, 8, 60, "1d2", false)] //L: 8d4
+        [TestCase(CreatureConstants.Arrowhawk_Adult, 90, 110, "1+80", false)] //L: 8d4
         [TestCase(CreatureConstants.Human, 85 + 2 * 2, 85 + 2 * 4 * 2 * 10, "2d4+85")] //H: 2d10
         [TestCase(CreatureConstants.Human, 120 + 2 * 2, 120 + 2 * 4 * 2 * 10, "2d4+120")] //H: 2d10
         [TestCase(CreatureConstants.Dwarf_Hill, 100 + 2 * 2, 100 + 2 * 6 * 2 * 4, "2d6+100")] //H: 2d4
@@ -2669,20 +2704,43 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Gnome_Rock, 40 + 1 * 2, 40 + 1 * 1 * 2 * 4, "1+40")] //H: 2d4
         [TestCase(CreatureConstants.Halfling_Lightfoot, 25 + 1 * 2, 25 + 1 * 1 * 2 * 4, "1+25")] //H: 2d4
         [TestCase(CreatureConstants.Halfling_Lightfoot, 30 + 1 * 2, 30 + 1 * 1 * 2 * 4, "1+30")] //H: 2d4
-        [TestCase(CreatureConstants.Mephit_Air, 1, 1, "0+1")] //H: 1d10
+        [TestCase(CreatureConstants.Mephit_Air, 1, 1, "0+1", false)] //H: 1d10
         [TestCase(CreatureConstants.Orc_Half, 110 + 2 * 2, 110 + 2 * 6 * 2 * 12, "2d6+110")] //H: 2d12
         [TestCase(CreatureConstants.Orc_Half, 150 + 2 * 2, 150 + 2 * 6 * 2 * 12, "2d6+150")] //H: 2d12
-        public void ValidateWeightRoll(string creature, int lower, int upper, string expectedRoll)
+        public void ValidateWeightRoll(string creature, int lower, int upper, string expectedRoll, bool exact = true)
         {
             var roll = GetTheoreticalWeightRoll(creature, lower, upper);
             Assert.That(roll, Is.EqualTo(expectedRoll));
+
+            var minimum = dice.Roll(roll).AsPotentialMinimum();
+            Assert.That(minimum, Is.Positive);
+
+            var heightLength = GetMaxOfHeightLength(creature);
+            Assert.That(heightLength, Is.Not.Empty.And.ContainKey(creature));
+
+            var heightMultiplierMin = dice.Roll(heightLength[creature]).AsPotentialMinimum();
+            var heightMultiplierMax = dice.Roll(heightLength[creature]).AsPotentialMaximum();
+
+            var rawBase = GetFromRoll(roll, BASE_INDEX);
+            var rawMultiplier = GetFromRoll(roll, MULTIPLIER_INDEX);
+            var weightBaseMin = dice.Roll(rawBase).AsPotentialMinimum();
+            var weightBaseMax = dice.Roll(rawBase).AsPotentialMaximum();
+            var weightMultiplierMin = dice.Roll(rawMultiplier).AsPotentialMinimum();
+            var weightMultiplierMax = dice.Roll(rawMultiplier).AsPotentialMaximum();
+            var sigma = exact ? 0 : Math.Ceiling((upper + lower) * .05);
+
+            Assert.That(weightBaseMin + heightMultiplierMin * weightMultiplierMin, Is.Positive.And.EqualTo(lower).Within(sigma),
+                $"Min; Base: {weightBaseMin}; Hm: {heightMultiplierMin}; Wm: {weightMultiplierMin}");
+            Assert.That(weightBaseMax + heightMultiplierMax * weightMultiplierMax, Is.Positive.And.EqualTo(upper).Within(sigma),
+                $"Max; Base: {weightBaseMax}; Hm: {heightMultiplierMax}; Wm: {weightMultiplierMax}");
         }
 
+        [TestCase(CreatureConstants.Achaierai, 750, "1d4+670")] //H: 8d4
         [TestCase(CreatureConstants.Androsphinx, 800, "1d6+712")] //H: 8d4
         [TestCase(CreatureConstants.Angel_AstralDeva, 250, "2d4+222")] //H: 2d4
         [TestCase(CreatureConstants.Angel_Planetar, 500, "2d4+445")] //H: 4d4
         [TestCase(CreatureConstants.Angel_Solar, 500, "2d4+445")] //H: 4d4
-        [TestCase(CreatureConstants.Aranea, 150, "1d3+134")] //H: 2d8
+        [TestCase(CreatureConstants.Aranea, 150, "1d2+132")] //H: 2d8
         [TestCase(CreatureConstants.Mephit_Air, 1, "0+1")] //H: 1d10
         [TestCase(CreatureConstants.Elemental_Air_Elder, 12, "0+1d4+9")] //H: 32d4
         [TestCase(CreatureConstants.Elemental_Air_Greater, 10, "0+1d3+8")] //H: 29d4
@@ -2691,7 +2749,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Elemental_Air_Medium, 2, "0+1d2")] //H: 1d20
         [TestCase(CreatureConstants.Elemental_Air_Small, 1, "0+1")] //H: 1d10
         public void ValidateWeightRangeFromAverage(string creature, int average, string expectedRoll)
-            => ValidateWeightRoll(creature, average * 9 / 10, average * 11 / 10, expectedRoll);
+            => ValidateWeightRoll(creature, average * 9 / 10, average * 11 / 10, expectedRoll, false);
 
         [TestCase(CreatureConstants.Aboleth, GenderConstants.Hermaphrodite, 6500)]
         [TestCase(CreatureConstants.Achaierai, GenderConstants.Male, 750)]
@@ -2779,7 +2837,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(creatureWeights, Contains.Key(creature));
             Assert.That(creatureWeights[creature], Contains.Key(creature).And.ContainKey(gender));
 
-            var baseWeight = dice.Roll(creatureWeights[creature][gender]).AsSum();
+            var weightBaseMin = dice.Roll(creatureWeights[creature][gender]).AsPotentialMinimum();
+            var weightBaseAvg = dice.Roll(creatureWeights[creature][gender]).AsPotentialAverage();
+            var weightBaseMax = dice.Roll(creatureWeights[creature][gender]).AsPotentialMaximum();
             var weightMultiplierMin = dice.Roll(creatureWeights[creature][creature]).AsPotentialMinimum();
             var weightMultiplierAvg = dice.Roll(creatureWeights[creature][creature]).AsPotentialAverage();
             var weightMultiplierMax = dice.Roll(creatureWeights[creature][creature]).AsPotentialMaximum();
@@ -2787,9 +2847,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             var theoreticalRoll = RollHelper.GetRollWithFewestDice(average * 9 / 10, average * 11 / 10);
 
-            Assert.That(baseWeight + heightMultiplierMin * weightMultiplierMin, Is.Positive.And.EqualTo(average * 0.9).Within(sigma), $"Min (90%); Theoretical: {theoreticalRoll}");
-            Assert.That(baseWeight + heightMultiplierAvg * weightMultiplierAvg, Is.Positive.And.EqualTo(average).Within(sigma), $"Average; Theoretical: {theoreticalRoll}");
-            Assert.That(baseWeight + heightMultiplierMax * weightMultiplierMax, Is.Positive.And.EqualTo(average * 1.1).Within(sigma), $"Max (110%); Theoretical: {theoreticalRoll}");
+            Assert.That(weightBaseMin + heightMultiplierMin * weightMultiplierMin, Is.Positive.And.EqualTo(average * 0.9).Within(sigma),
+                $"Min (90%); Theoretical: {theoreticalRoll}");
+            Assert.That(weightBaseAvg + heightMultiplierAvg * weightMultiplierAvg, Is.Positive.And.EqualTo(average).Within(sigma),
+                $"Average; Theoretical: {theoreticalRoll}");
+            Assert.That(weightBaseMax + heightMultiplierMax * weightMultiplierMax, Is.Positive.And.EqualTo(average * 1.1).Within(sigma),
+                $"Max (110%); Theoretical: {theoreticalRoll}");
         }
 
         //https://forgottenrealms.fandom.com/wiki/Aasimar
@@ -2809,9 +2872,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.AnimatedObject_Gargantuan_Flexible, GenderConstants.Agender, 16 * 2000, 125 * 2000)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal, GenderConstants.Agender, 125 * 2000, 1000 * 2000)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal_Flexible, GenderConstants.Agender, 125 * 2000, 1000 * 2000)]
-        [TestCase(CreatureConstants.Ant_Giant_Worker, GenderConstants.Male, 0, 0)]
-        [TestCase(CreatureConstants.Ant_Giant_Soldier, GenderConstants.Male, 0, 0)]
-        [TestCase(CreatureConstants.Ant_Giant_Queen, GenderConstants.Female, 0, 0)]
+        [TestCase(CreatureConstants.Ant_Giant_Worker, GenderConstants.Male, 206, 300)]
+        [TestCase(CreatureConstants.Ant_Giant_Soldier, GenderConstants.Male, 206, 300)]
+        [TestCase(CreatureConstants.Ant_Giant_Queen, GenderConstants.Female, 648, 932)]
         [TestCase(CreatureConstants.Ape, GenderConstants.Male, 300, 400)]
         [TestCase(CreatureConstants.Ape, GenderConstants.Female, 220, 460)]
         [TestCase(CreatureConstants.Ape_Dire, GenderConstants.Male, 800, 1200)]
@@ -2825,6 +2888,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Bear_Black, GenderConstants.Female, 200, 450)]
         [TestCase(CreatureConstants.Bear_Polar, GenderConstants.Male, 775, 1500)]
         [TestCase(CreatureConstants.Bear_Polar, GenderConstants.Female, 330, 650)]
+        [TestCase(CreatureConstants.Bralani, GenderConstants.Male, 128, 155)]
+        [TestCase(CreatureConstants.Bralani, GenderConstants.Female, 113, 140)]
         //https://forgottenrealms.fandom.com/wiki/Bugbear
         [TestCase(CreatureConstants.Bugbear, GenderConstants.Male, 250, 350)]
         [TestCase(CreatureConstants.Bugbear, GenderConstants.Female, 250, 350)]
@@ -2892,14 +2957,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(creatureWeights, Contains.Key(creature));
             Assert.That(creatureWeights[creature], Contains.Key(creature).And.ContainKey(gender));
 
-            var baseWeight = dice.Roll(creatureWeights[creature][gender]).AsSum();
+            var weightBaseMin = dice.Roll(creatureWeights[creature][gender]).AsPotentialMinimum();
+            var weightBaseMax = dice.Roll(creatureWeights[creature][gender]).AsPotentialMaximum();
             var weightMultiplierMin = dice.Roll(creatureWeights[creature][creature]).AsPotentialMinimum();
             var weightMultiplierMax = dice.Roll(creatureWeights[creature][creature]).AsPotentialMaximum();
 
             var theoreticalRoll = RollHelper.GetRollWithFewestDice(min, max);
 
-            Assert.That(baseWeight + heightMultiplierMin * weightMultiplierMin, Is.Positive.And.EqualTo(min), $"Min; Theoretical: {theoreticalRoll}; Height: {heights[creature][creature]}");
-            Assert.That(baseWeight + heightMultiplierMax * weightMultiplierMax, Is.Positive.And.EqualTo(max), $"Max; Theoretical: {theoreticalRoll}; Height: {heights[creature][creature]}");
+            Assert.That(weightBaseMin + heightMultiplierMin * weightMultiplierMin, Is.Positive.And.EqualTo(min),
+                $"Min; Theoretical: {theoreticalRoll}; Height: {heights[creature][creature]}");
+            Assert.That(weightBaseMax + heightMultiplierMax * weightMultiplierMax, Is.Positive.And.EqualTo(max),
+                $"Max; Theoretical: {theoreticalRoll}; Height: {heights[creature][creature]}");
         }
     }
 }

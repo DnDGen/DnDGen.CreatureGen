@@ -44,14 +44,16 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var heightModifier = heights.First(h => h.Type == creatureName);
 
             demographics.Height.Value = baseHeight.Amount + heightModifier.Amount;
-            demographics.Height.Description = dice.Describe(heightModifier.RawAmount, heightModifier.Amount, heightDescriptions);
+            var rawHeightRoll = $"{baseHeight.RawAmount}+{heightModifier.RawAmount}";
+            demographics.Height.Description = dice.Describe(rawHeightRoll, (int)demographics.Height.Value, heightDescriptions);
 
             var lengths = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Lengths, creatureName);
             var baseLength = lengths.First(h => h.Type == demographics.Gender);
             var lengthModifier = lengths.First(h => h.Type == creatureName);
 
             demographics.Length.Value = baseLength.Amount + lengthModifier.Amount;
-            demographics.Length.Description = dice.Describe(lengthModifier.RawAmount, lengthModifier.Amount, lengthDescriptions);
+            var rawLengthRoll = $"{baseLength.RawAmount}+{lengthModifier.RawAmount}";
+            demographics.Length.Description = dice.Describe(rawLengthRoll, (int)demographics.Length.Value, lengthDescriptions);
 
             var weights = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Weights, creatureName);
             var baseWeight = weights.First(h => h.Type == demographics.Gender);
@@ -59,8 +61,6 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var multiplier = Math.Max(heightModifier.Amount, lengthModifier.Amount);
 
             demographics.Weight.Value = baseWeight.Amount + multiplier * weightModifier.Amount;
-            //INFO: Building the description this way, as sometimes the multiplier/modifer is 0, and the "base" is the actual random roll
-            //This is true for lightweight creatures such as air elementals
             var rawWeightRoll = $"{baseWeight.RawAmount}+{multiplier}*{weightModifier.RawAmount}";
             demographics.Weight.Description = dice.Describe(rawWeightRoll, (int)demographics.Weight.Value, weightDescriptions);
 
@@ -133,7 +133,8 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             var wingspan = new Measurement("inches");
             wingspan.Value = baseWingspan.Amount + wingspanModifier.Amount;
-            wingspan.Description = dice.Describe(wingspanModifier.RawAmount, wingspanModifier.Amount, wingspanDescriptions);
+            var rawWingspanRoll = $"{baseWingspan.RawAmount}+{wingspanModifier.RawAmount}";
+            wingspan.Description = dice.Describe(rawWingspanRoll, (int)wingspan.Value, wingspanDescriptions);
 
             return wingspan;
         }

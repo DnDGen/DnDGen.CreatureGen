@@ -584,7 +584,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(heightRolls);
 
             mockDice
-                .Setup(d => d.Describe("raw 783", roll, It.IsAny<string[]>()))
+                .Setup(d => d.Describe("raw 42+raw 783", 42 + roll, It.IsAny<string[]>()))
                 .Returns((string r, int v, string[] descriptions) => descriptions[index]);
 
             var lengthRolls = new List<TypeAndAmountSelection>();
@@ -707,7 +707,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(lengthRolls);
 
             mockDice
-                .Setup(d => d.Describe("raw 227", roll, It.IsAny<string[]>()))
+                .Setup(d => d.Describe("raw 922+raw 227", 922 + roll, It.IsAny<string[]>()))
                 .Returns((string r, int v, string[] descriptions) => descriptions[index]);
 
             var weightRolls = new List<TypeAndAmountSelection>();
@@ -1253,7 +1253,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(wingspanRolls);
 
             mockDice
-                .Setup(d => d.Describe("raw 345", roll, It.IsAny<string[]>()))
+                .Setup(d => d.Describe("raw 123+raw 345", 123 + roll, It.IsAny<string[]>()))
                 .Returns((string r, int v, string[] descriptions) => descriptions[index]);
 
             mockCollectionsSelector
@@ -1432,7 +1432,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(wingspanRolls);
 
             mockDice
-                .Setup(d => d.Describe("raw 345", roll, It.IsAny<string[]>()))
+                .Setup(d => d.Describe("raw 123+raw 345", 123 + roll, It.IsAny<string[]>()))
                 .Returns((string r, int v, string[] descriptions) => descriptions[index]);
 
             var wingspan = generator.GenerateWingspan("my creature", "my base key");
