@@ -2589,35 +2589,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 return string.Empty;
             }
 
-            var sections = heightLength[creature].Split('d');
-            var q = Convert.ToInt32(sections[0]);
-            var d = 1;
-            if (sections.Length > 1)
-                d = Convert.ToInt32(sections[1]);
-
-            var maxMultiplier = q * d;
-            var multiplierRange = maxMultiplier - q + 1;
+            var multiplierRoll = ParseRoll(heightLength[creature]);
+            var maxMultiplier = multiplierRoll.Quantity * multiplierRoll.Die;
+            var multiplierRange = maxMultiplier - multiplierRoll.Quantity + 1;
             var weightRange = upper - lower + 1;
-            var weightRollLower = Math.Max(lower - q, 1);
+            var weightRollLower = Math.Max(lower - multiplierRoll.Quantity, 1);
 
             if (multiplierRange > upper)
             {
                 var lightweightRoll = RollHelper.GetRollWithFewestDice(lower, upper);
                 return $"0+{lightweightRoll}";
             }
-            else if (multiplierRange >= weightRange)
+
+            if (multiplierRange >= weightRange)
             {
                 //INFO: We want the average to still land in the same place
                 weightRollLower -= (multiplierRange - weightRange) / 2;
                 return $"1+{weightRollLower}";
             }
 
-            var weightRollRange = 1;
-            while (weightRollLower + maxMultiplier * weightRollRange < upper - maxMultiplier)
-            {
-                weightRollRange++;
-            }
-
+            var weightRollRange = Math.Max(1, (upper - weightRollLower) / maxMultiplier);
             if (weightRollRange <= 3)
             {
                 weightRollRange += weightRollRange % 2;
@@ -2626,6 +2617,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             {
                 weightRollLower += weightRollRange % 2;
                 weightRollRange += weightRollRange % 2;
+            }
+            else if (weightRollRange == 6)
+            {
+                weightRollLower += 1;
+            }
+            else if (weightRollRange > 11)
+            {
+                var rangeRoll = RollHelper.GetRollWithFewestDice(1, weightRollRange);
+                var parsedRangeRoll = ParseRoll(rangeRoll);
+                weightRollLower -= (multiplierRoll.Quantity - 1) * parsedRangeRoll.Quantity;
             }
 
             var weightRollUpper = weightRollLower + weightRollRange - 1;
@@ -2642,19 +2643,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 return new Dictionary<string, string>();
             }
 
-            var sectionsH = heights[creature][creature].Split('d');
-            var qH = Convert.ToInt32(sectionsH[0]);
-            var dH = 1;
-            if (sectionsH.Length > 1)
-                dH = Convert.ToInt32(sectionsH[1]);
+            var heightRoll = ParseRoll(heights[creature][creature]);
+            var lengthRoll = ParseRoll(lengths[creature][creature]);
 
-            var sectionsL = lengths[creature][creature].Split('d');
-            var qL = Convert.ToInt32(sectionsL[0]);
-            var dL = 1;
-            if (sectionsL.Length > 1)
-                dL = Convert.ToInt32(sectionsL[1]);
-
-            if (qL * dL > qH * dH)
+            if (lengthRoll.Quantity * lengthRoll.Die > heightRoll.Quantity * heightRoll.Die)
             {
                 return lengths[creature];
             }
@@ -2662,10 +2654,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return heights[creature];
         }
 
+        private static (int Quantity, int Die) ParseRoll(string roll)
+        {
+            var sections = roll.Split('d', '+', '-');
+            var q = Convert.ToInt32(sections[0]);
+            var d = 1;
+            if (sections.Length > 1)
+                d = Convert.ToInt32(sections[1]);
+
+            return (q, d);
+        }
+
         [TestCase(CreatureConstants.Ant_Giant_Worker, 206, 300, "1d6+203", false)] //L: 3d6
         [TestCase(CreatureConstants.Ant_Giant_Soldier, 206, 300, "1d6+203", false)] //L: 3d6
         [TestCase(CreatureConstants.Ant_Giant_Queen, 648, 932, "2d6+643", false)] //L: 3d8
-        [TestCase(CreatureConstants.AnimatedObject_Colossal_Flexible, 125 * 2000, 1000 * 2000, "244d8+249500", false)] //L: 256d4
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_Flexible, 125 * 2000, 1000 * 2000, "244d8+187280", false)] //L: 256d4
         [TestCase(CreatureConstants.AnimatedObject_Small_Flexible, 8, 60, "1d2", false)] //L: 8d4
         [TestCase(CreatureConstants.Arrowhawk_Adult, 90, 110, "1+80", false)] //L: 8d4
         [TestCase(CreatureConstants.Human, 85 + 2 * 2, 85 + 2 * 4 * 2 * 10, "2d4+85")] //H: 2d10
@@ -2703,8 +2706,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var weightBaseMax = dice.Roll(rawBase).AsPotentialMaximum();
             var weightMultiplierMin = dice.Roll(rawMultiplier).AsPotentialMinimum();
             var weightMultiplierMax = dice.Roll(rawMultiplier).AsPotentialMaximum();
-            var minSigma = exact ? 0 : Math.Max(1, heightMultiplierMin * weightMultiplierMin - 1);
-            var maxSigma = exact ? 0 : Math.Max(1, heightMultiplierMax * weightMultiplierMax - 1);
+            var minSigma = exact ? 0 : Math.Max(1, heightMultiplierMin * weightMultiplierMin / 2);
+            var maxSigma = exact ? 0 : Math.Max(1, heightMultiplierMax * weightMultiplierMax / 2);
 
             Assert.That(weightBaseMin + heightMultiplierMin * weightMultiplierMin, Is.Positive.And.EqualTo(lower).Within(minSigma),
                 $"Min; Base: {weightBaseMin}; Hm: {heightMultiplierMin}; Wm: {weightMultiplierMin}");
@@ -2714,9 +2717,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
         [TestCase(CreatureConstants.Achaierai, 750, "1d4+670")] //H: 8d4
         [TestCase(CreatureConstants.Androsphinx, 800, "1d6+712")] //H: 8d4
-        [TestCase(CreatureConstants.Angel_AstralDeva, 250, "1d6+222")] //H: 2d4
-        [TestCase(CreatureConstants.Angel_Planetar, 500, "1d6+445")] //H: 4d4
-        [TestCase(CreatureConstants.Angel_Solar, 500, "1d6+445")] //H: 4d4
+        [TestCase(CreatureConstants.Angel_AstralDeva, 250, "1d6+223")] //H: 2d4
+        [TestCase(CreatureConstants.Angel_Planetar, 500, "1d6+446")] //H: 4d4
+        [TestCase(CreatureConstants.Angel_Solar, 500, "1d6+446")] //H: 4d4
         [TestCase(CreatureConstants.Aranea, 150, "1d2+132")] //H: 2d8
         [TestCase(CreatureConstants.Mephit_Air, 1, "0+1")] //H: 1d10
         [TestCase(CreatureConstants.Elemental_Air_Elder, 12, "0+1d4+9")] //H: 32d4
@@ -2755,6 +2758,30 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         //https://forgottenrealms.fandom.com/wiki/Centaur
         [TestCase(CreatureConstants.Centaur, GenderConstants.Male, 2100)]
         [TestCase(CreatureConstants.Centaur, GenderConstants.Female, 2100)]
+        [TestCase(CreatureConstants.Dragon_Red_Wyrmling, GenderConstants.Male, 320)]
+        [TestCase(CreatureConstants.Dragon_Red_Wyrmling, GenderConstants.Female, 320)]
+        [TestCase(CreatureConstants.Dragon_Red_VeryYoung, GenderConstants.Male, 2500)]
+        [TestCase(CreatureConstants.Dragon_Red_VeryYoung, GenderConstants.Female, 2500)]
+        [TestCase(CreatureConstants.Dragon_Red_Young, GenderConstants.Male, 2500)]
+        [TestCase(CreatureConstants.Dragon_Red_Young, GenderConstants.Female, 2500)]
+        [TestCase(CreatureConstants.Dragon_Red_Juvenile, GenderConstants.Male, 2500)]
+        [TestCase(CreatureConstants.Dragon_Red_Juvenile, GenderConstants.Female, 2500)]
+        [TestCase(CreatureConstants.Dragon_Red_YoungAdult, GenderConstants.Male, 20_000)]
+        [TestCase(CreatureConstants.Dragon_Red_YoungAdult, GenderConstants.Female, 20_000)]
+        [TestCase(CreatureConstants.Dragon_Red_Adult, GenderConstants.Male, 20_000)]
+        [TestCase(CreatureConstants.Dragon_Red_Adult, GenderConstants.Female, 20_000)]
+        [TestCase(CreatureConstants.Dragon_Red_MatureAdult, GenderConstants.Male, 20_000)]
+        [TestCase(CreatureConstants.Dragon_Red_MatureAdult, GenderConstants.Female, 20_000)]
+        [TestCase(CreatureConstants.Dragon_Red_Old, GenderConstants.Male, 160_000)]
+        [TestCase(CreatureConstants.Dragon_Red_Old, GenderConstants.Female, 160_000)]
+        [TestCase(CreatureConstants.Dragon_Red_VeryOld, GenderConstants.Male, 160_000)]
+        [TestCase(CreatureConstants.Dragon_Red_VeryOld, GenderConstants.Female, 160_000)]
+        [TestCase(CreatureConstants.Dragon_Red_Ancient, GenderConstants.Male, 160_000)]
+        [TestCase(CreatureConstants.Dragon_Red_Ancient, GenderConstants.Female, 160_000)]
+        [TestCase(CreatureConstants.Dragon_Red_Wyrm, GenderConstants.Male, 160_000)]
+        [TestCase(CreatureConstants.Dragon_Red_Wyrm, GenderConstants.Female, 160_000)]
+        [TestCase(CreatureConstants.Dragon_Red_GreatWyrm, GenderConstants.Male, 1_280_000)]
+        [TestCase(CreatureConstants.Dragon_Red_GreatWyrm, GenderConstants.Female, 1_280_000)]
         [TestCase(CreatureConstants.Giant_Cloud, GenderConstants.Male, 5000)]
         [TestCase(CreatureConstants.Giant_Cloud, GenderConstants.Female, 5000)]
         [TestCase(CreatureConstants.Giant_Fire, GenderConstants.Male, 7500)]
