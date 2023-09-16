@@ -2612,48 +2612,23 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 return $"1+{weightRollLower}";
             }
 
-            //HACK: Keep until all weight rolls are validated, as reference
-            //High Elf: W=[87,157]; H=2d6; R(m)=11; R(W)=71; R(wr)=6.45; 
-            //Androsphinx: W=[720,880]; L=8d4; R(m)=25; R(W)=161; R(wr)=6.44; 
-
-            //Human: W=[124,260]; H=2d10; R(m)=19; R(W)=137; R(wr)=7.2; 
-            //Half-Elf: W=[104,228]; H=2d8; R(m)=15; R(W)=125; R(wr)=8.33; 
-
-            //Hill Dwarf: W=[134,226]; H=2d4; R(m)=7; R(W)=93; R(wr)=13.28; 
-            //Half-Orc: W=[154,438]; H=2d12; R(m)=23; R(W)=285; R(wr)=12.39; 
-
-            //Angel, Astral Deva: W=[225,275]; H=2d4; R(m)=7; R(W)=51; R(wr)=7.28;
-
-            //var weightRollRange = weightRange / multiplierRange;
-            //if (weightRollRange <= 3)
-            //{
-            //    //Do nothing
-            //}
-            //else if (weightRollRange <= 5)
-            //{
-            //    weightRollLower -= weightRollRange % 2;
-            //    weightRollRange += 2;
-            //}
-            //else if (weightRollRange <= 7)
-            //{
-            //    weightRollLower += 1;
-            //}
-            //else if (weightRollRange <= 9)
-            //{
-            //    weightRollRange -= 1;
-            //}
-            //else
-            //{
-            //    weightRollRange -= 1 + weightRollRange % 2;
-            //}
-
-            var weightRollRange = weightRange;
-            while (weightRollLower + maxMultiplier * weightRollRange > upper + maxMultiplier && weightRollRange > 0)
+            var weightRollRange = 1;
+            while (weightRollLower + maxMultiplier * weightRollRange < upper - maxMultiplier)
             {
-                weightRollRange--;
+                weightRollRange++;
             }
 
-            var weightRollUpper = weightRollLower + Math.Max(weightRollRange - 1, 0);
+            if (weightRollRange <= 3)
+            {
+                weightRollRange += weightRollRange % 2;
+            }
+            else if (weightRollRange <= 5)
+            {
+                weightRollLower += weightRollRange % 2;
+                weightRollRange += weightRollRange % 2;
+            }
+
+            var weightRollUpper = weightRollLower + weightRollRange - 1;
 
             var roll = RollHelper.GetRollWithFewestDice(weightRollLower, weightRollUpper);
             return roll;
@@ -2687,9 +2662,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return heights[creature];
         }
 
-        [TestCase(CreatureConstants.Ant_Giant_Worker, 206, 300, "1d6+201", false)] //L: 3d6
-        [TestCase(CreatureConstants.Ant_Giant_Soldier, 206, 300, "1d6+201", false)] //L: 3d6
+        [TestCase(CreatureConstants.Ant_Giant_Worker, 206, 300, "1d6+203", false)] //L: 3d6
+        [TestCase(CreatureConstants.Ant_Giant_Soldier, 206, 300, "1d6+203", false)] //L: 3d6
         [TestCase(CreatureConstants.Ant_Giant_Queen, 648, 932, "2d6+643", false)] //L: 3d8
+        [TestCase(CreatureConstants.AnimatedObject_Colossal_Flexible, 125 * 2000, 1000 * 2000, "244d8+249500", false)] //L: 256d4
         [TestCase(CreatureConstants.AnimatedObject_Small_Flexible, 8, 60, "1d2", false)] //L: 8d4
         [TestCase(CreatureConstants.Arrowhawk_Adult, 90, 110, "1+80", false)] //L: 8d4
         [TestCase(CreatureConstants.Human, 85 + 2 * 2, 85 + 2 * 4 * 2 * 10, "2d4+85")] //H: 2d10
@@ -2727,19 +2703,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var weightBaseMax = dice.Roll(rawBase).AsPotentialMaximum();
             var weightMultiplierMin = dice.Roll(rawMultiplier).AsPotentialMinimum();
             var weightMultiplierMax = dice.Roll(rawMultiplier).AsPotentialMaximum();
-            var sigma = exact ? 0 : Math.Ceiling((upper + lower) * .05);
+            var minSigma = exact ? 0 : Math.Max(1, heightMultiplierMin * weightMultiplierMin - 1);
+            var maxSigma = exact ? 0 : Math.Max(1, heightMultiplierMax * weightMultiplierMax - 1);
 
-            Assert.That(weightBaseMin + heightMultiplierMin * weightMultiplierMin, Is.Positive.And.EqualTo(lower).Within(sigma),
+            Assert.That(weightBaseMin + heightMultiplierMin * weightMultiplierMin, Is.Positive.And.EqualTo(lower).Within(minSigma),
                 $"Min; Base: {weightBaseMin}; Hm: {heightMultiplierMin}; Wm: {weightMultiplierMin}");
-            Assert.That(weightBaseMax + heightMultiplierMax * weightMultiplierMax, Is.Positive.And.EqualTo(upper).Within(sigma),
+            Assert.That(weightBaseMax + heightMultiplierMax * weightMultiplierMax, Is.Positive.And.EqualTo(upper).Within(maxSigma),
                 $"Max; Base: {weightBaseMax}; Hm: {heightMultiplierMax}; Wm: {weightMultiplierMax}");
         }
 
         [TestCase(CreatureConstants.Achaierai, 750, "1d4+670")] //H: 8d4
         [TestCase(CreatureConstants.Androsphinx, 800, "1d6+712")] //H: 8d4
-        [TestCase(CreatureConstants.Angel_AstralDeva, 250, "2d4+222")] //H: 2d4
-        [TestCase(CreatureConstants.Angel_Planetar, 500, "2d4+445")] //H: 4d4
-        [TestCase(CreatureConstants.Angel_Solar, 500, "2d4+445")] //H: 4d4
+        [TestCase(CreatureConstants.Angel_AstralDeva, 250, "1d6+222")] //H: 2d4
+        [TestCase(CreatureConstants.Angel_Planetar, 500, "1d6+445")] //H: 4d4
+        [TestCase(CreatureConstants.Angel_Solar, 500, "1d6+445")] //H: 4d4
         [TestCase(CreatureConstants.Aranea, 150, "1d2+132")] //H: 2d8
         [TestCase(CreatureConstants.Mephit_Air, 1, "0+1")] //H: 1d10
         [TestCase(CreatureConstants.Elemental_Air_Elder, 12, "0+1d4+9")] //H: 32d4
