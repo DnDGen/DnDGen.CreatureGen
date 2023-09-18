@@ -10,7 +10,7 @@
   <collection>
     <name>Aboleth</name>
 	  <entry>Aboleth@1d20</entry>
-	  <entry>Hermaphrodite@5818</entry>
+	  <entry>Hermaphrodite@5833</entry>
   </collection>
   <collection>
     <name>Greater Basilisk</name>
@@ -101,182 +101,182 @@
   </collection>
 	<collection>
 		<name>Animated Object, Colossal (Flexible)</name>
-		<entry>Agender@187280</entry>
+		<entry>Agender@187292</entry>
 		<entry>Animated Object, Colossal (Flexible)@244d8</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (More Than Two Legs)</name>
-		<entry>Agender@187280</entry>
+		<entry>Agender@187292</entry>
 		<entry>Animated Object, Colossal (More Than Two Legs)@244d8</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (More Than Two Legs, Wooden)</name>
-		<entry>Agender@187280</entry>
+		<entry>Agender@187292</entry>
 		<entry>Animated Object, Colossal (More Than Two Legs, Wooden)@244d8</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Two Legs)</name>
-		<entry>Agender@187280</entry>
+		<entry>Agender@187292</entry>
 		<entry>Animated Object, Colossal (Two Legs)@244d8</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Two Legs, Wooden)</name>
-		<entry>Agender@187280</entry>
+		<entry>Agender@187292</entry>
 		<entry>Animated Object, Colossal (Two Legs, Wooden)@244d8</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Sheetlike)</name>
-		<entry>Agender@187280</entry>
+		<entry>Agender@187292</entry>
 		<entry>Animated Object, Colossal (Sheetlike)@244d8</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Wheels, Wooden)</name>
-		<entry>Agender@187280</entry>
+		<entry>Agender@187292</entry>
 		<entry>Animated Object, Colossal (Wheels, Wooden)@244d8</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Wooden)</name>
-		<entry>Agender@187280</entry>
+		<entry>Agender@187292</entry>
 		<entry>Animated Object, Colossal (Wooden)@244d8</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal</name>
-		<entry>Agender@187280</entry>
+		<entry>Agender@187292</entry>
 		<entry>Animated Object, Colossal@244d8</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Flexible)</name>
-		<entry>Agender@20992</entry>
+		<entry>Agender@21035</entry>
 		<entry>Animated Object, Gargantuan (Flexible)@85d6</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (More Than Two Legs)</name>
-		<entry>Agender@20992</entry>
+		<entry>Agender@21035</entry>
 		<entry>Animated Object, Gargantuan (More Than Two Legs)@85d6</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (More Than Two Legs, Wooden)</name>
-		<entry>Agender@20992</entry>
+		<entry>Agender@21035</entry>
 		<entry>Animated Object, Gargantuan (More Than Two Legs, Wooden)@85d6</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Two Legs)</name>
-		<entry>Agender@20992</entry>
+		<entry>Agender@21035</entry>
 		<entry>Animated Object, Gargantuan (Two Legs)@85d6</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Two Legs, Wooden)</name>
-		<entry>Agender@20992</entry>
+		<entry>Agender@21035</entry>
 		<entry>Animated Object, Gargantuan (Two Legs, Wooden)@85d6</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Sheetlike)</name>
-		<entry>Agender@20992</entry>
+		<entry>Agender@21035</entry>
 		<entry>Animated Object, Gargantuan (Sheetlike)@85d6</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Wheels, Wooden)</name>
-		<entry>Agender@20992</entry>
+		<entry>Agender@21035</entry>
 		<entry>Animated Object, Gargantuan (Wheels, Wooden)@85d6</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Wooden)</name>
-		<entry>Agender@20992</entry>
+		<entry>Agender@21035</entry>
 		<entry>Animated Object, Gargantuan (Wooden)@85d6</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan</name>
-		<entry>Agender@20992</entry>
+		<entry>Agender@21035</entry>
 		<entry>Animated Object, Gargantuan@85d6</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Flexible)</name>
-		<entry>Agender@3168</entry>
+		<entry>Agender@3220</entry>
 		<entry>Animated Object, Huge (Flexible)@12d10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (More Than Two Legs)</name>
-		<entry>Agender@3168</entry>
+		<entry>Agender@3220</entry>
 		<entry>Animated Object, Huge (More Than Two Legs)@12d10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (More Than Two Legs, Wooden)</name>
-		<entry>Agender@3168</entry>
+		<entry>Agender@3220</entry>
 		<entry>Animated Object, Huge (More Than Two Legs, Wooden)@12d10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Two Legs)</name>
-		<entry>Agender@3168</entry>
+		<entry>Agender@3220</entry>
 		<entry>Animated Object, Huge (Two Legs)@12d10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Two Legs, Wooden)</name>
-		<entry>Agender@3168</entry>
+		<entry>Agender@3220</entry>
 		<entry>Animated Object, Huge (Two Legs, Wooden)@12d10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Sheetlike)</name>
-		<entry>Agender@3168</entry>
+		<entry>Agender@3220</entry>
 		<entry>Animated Object, Huge (Sheetlike)@12d10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Wheels, Wooden)</name>
-		<entry>Agender@3168</entry>
+		<entry>Agender@3220</entry>
 		<entry>Animated Object, Huge (Wheels, Wooden)@12d10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Wooden)</name>
-		<entry>Agender@3168</entry>
+		<entry>Agender@3220</entry>
 		<entry>Animated Object, Huge (Wooden)@12d10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge</name>
-		<entry>Agender@3168</entry>
+		<entry>Agender@3220</entry>
 		<entry>Animated Object, Huge@12d10</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Flexible)</name>
-		<entry>Agender@52</entry>
+		<entry>Agender@71</entry>
 		<entry>Animated Object, Large (Flexible)@13d3</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (More Than Two Legs)</name>
-		<entry>Agender@52</entry>
+		<entry>Agender@71</entry>
 		<entry>Animated Object, Large (More Than Two Legs)@13d3</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (More Than Two Legs, Wooden)</name>
-		<entry>Agender@52</entry>
+		<entry>Agender@71</entry>
 		<entry>Animated Object, Large (More Than Two Legs, Wooden)@13d3</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Two Legs)</name>
-		<entry>Agender@52</entry>
+		<entry>Agender@71</entry>
 		<entry>Animated Object, Large (Two Legs)@13d3</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Two Legs, Wooden)</name>
-		<entry>Agender@52</entry>
+		<entry>Agender@71</entry>
 		<entry>Animated Object, Large (Two Legs, Wooden)@13d3</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Sheetlike)</name>
-		<entry>Agender@52</entry>
+		<entry>Agender@71</entry>
 		<entry>Animated Object, Large (Sheetlike)@13d3</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Wheels, Wooden)</name>
-		<entry>Agender@52</entry>
+		<entry>Agender@71</entry>
 		<entry>Animated Object, Large (Wheels, Wooden)@13d3</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Wooden)</name>
-		<entry>Agender@52</entry>
+		<entry>Agender@71</entry>
 		<entry>Animated Object, Large (Wooden)@13d3</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large</name>
-		<entry>Agender@52</entry>
+		<entry>Agender@71</entry>
 		<entry>Animated Object, Large@13d3</entry>
 	</collection>
 	<collection>
@@ -427,8 +427,8 @@
 	</collection>
 	<collection>
 		<name>Ape</name>
-		<entry>Male@296</entry>
-		<entry>Female@160</entry>
+		<entry>Male@297</entry>
+		<entry>Female@133</entry>
 		<entry>Ape@29d2</entry>
 	</collection>
 	<collection>
