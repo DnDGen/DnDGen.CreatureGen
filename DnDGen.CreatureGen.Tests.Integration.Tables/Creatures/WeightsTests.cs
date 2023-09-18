@@ -64,7 +64,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
                 var ranges = kvp.Value.ToDictionary(g => g.Key, g => g.Value.Upper - g.Value.Lower);
                 var formattedRanges = string.Join("; ", ranges.Select(r => $"{r.Key}: {r.Value}"));
-                Assert.That(ranges.Values, Is.All.EqualTo(ranges.Values.First()), $"{creature} Dimorphic ranges unequal. {formattedRanges}");
+                Assert.That(ranges.Values, Is.All.EqualTo(ranges.Values.First()), $"{creature} dimorphic ranges unequal. {formattedRanges}");
 
                 foreach (var genderKvp in kvp.Value)
                 {
@@ -223,9 +223,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //https://www.dimensions.com/element/black-garden-ant-lasius-niger - scale up, up to 10mg*(9*12/[.31,.35])^3 = [932,648]
             //https://www.retirefearless.com/post/how-much-does-an-ant-weigh#spanblack-garden-antspan
             weights[CreatureConstants.Ant_Giant_Queen][GenderConstants.Female] = (648, 932);
-            //Source: https://www.dimensions.com/element/eastern-lowland-gorilla-gorilla-beringei-graueri
+            //Source: https://www.dimensions.com/element/eastern-lowland-gorilla-gorilla-beringei-graueri (using for female with male range)
             //https://www.d20srd.org/srd/monsters/ape.htm (male)
-            weights[CreatureConstants.Ape][GenderConstants.Female] = (220, 460);
+            weights[CreatureConstants.Ape][GenderConstants.Female] = (220, 320);
             weights[CreatureConstants.Ape][GenderConstants.Male] = (300, 400);
             //Source: https://www.d20srd.org/srd/monsters/direApe.htm
             weights[CreatureConstants.Ape_Dire][GenderConstants.Female] = (800, 1200);
@@ -1842,7 +1842,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         private static (int Lower, int Upper) GetRangeFromAtLeast(int atLeast) => (Math.Max(1, atLeast), Math.Max(1, atLeast * 11 / 9));
 
         private static string GetBaseFromRange(string creature, int lower, int upper) => GetFromRange(creature, lower, upper, BASE_INDEX);
-
         private static string GetMultiplierFromRange(string creature, int lower, int upper) => GetFromRange(creature, lower, upper, MULTIPLIER_INDEX);
 
         private static string GetFromRange(string creature, int lower, int upper, int index)
@@ -2022,6 +2021,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 var range = genderKvp.Value;
 
                 AssertRollRange(creature, gender, range.Lower, range.Upper, true);
+            }
+        }
+
+        [TestCase(CreatureConstants.Arrowhawk_Juvenile)]
+        public void DEBUG_ValidateWeightRoll(string creature)
+        {
+            foreach (var genderKvp in creatureWeightRanges[creature])
+            {
+                var gender = genderKvp.Key;
+                var range = genderKvp.Value;
+
+                var roll = GetTheoreticalWeightRoll(creature, range.Lower, range.Upper);
+                Assert.That(roll, Is.Not.Empty);
+                Assert.That(dice.Roll(roll).IsValid(), Is.True);
+
+                AssertRollRange(creature, gender, range.Lower, range.Upper, false);
             }
         }
 

@@ -428,8 +428,8 @@
 	<collection>
 		<name>Ape</name>
 		<entry>Male@297</entry>
-		<entry>Female@133</entry>
-		<entry>Ape@29d2</entry>
+		<entry>Female@217</entry>
+		<entry>Ape@1d12</entry>
 	</collection>
 	<collection>
 		<name>Aquatic Elf</name>
@@ -487,7 +487,7 @@
 		<name>Baboon</name>
 		<entry>Male@62</entry>
 		<entry>Female@17</entry>
-		<entry>Baboon@1</entry>
+		<entry>Baboon@1d2</entry>
 	</collection>
 	<collection>
 		<name>Badger</name>
@@ -497,13 +497,13 @@
 	</collection>
 	<collection>
 		<name>Baleen Whale</name>
-		<entry>Male@54440</entry>
-		<entry>Female@54440</entry>
+		<entry>Male@54467</entry>
+		<entry>Female@54467</entry>
 		<entry>Baleen Whale@13d3</entry>
 	</collection>
 	<collection>
 		<name>Balor</name>
-		<entry>Agender@3934</entry>
+		<entry>Agender@3960</entry>
 		<entry>Balor@3d6</entry>
 	</collection>
 	<collection>
@@ -531,7 +531,7 @@
 	</collection>
 	<collection>
 		<name>Bat Swarm</name>
-		<entry>Agender@548</entry>
+		<entry>Agender@513</entry>
 		<entry>Bat Swarm@43d2</entry>
 	</collection>
 	<collection>
@@ -541,7 +541,7 @@
 	</collection>
 	<collection>
 		<name>Bebilith</name>
-		<entry>Agender@3928</entry>
+		<entry>Agender@3908</entry>
 		<entry>Bebilith@23d2</entry>
 	</collection>
 	<collection>
@@ -552,7 +552,7 @@
 	</collection>
 	<collection>
 		<name>Beholder</name>
-		<entry>Agender@4045</entry>
+		<entry>Agender@4042</entry>
 		<entry>Beholder@4d12</entry>
 	</collection>
 	<collection>
@@ -562,15 +562,15 @@
 	</collection>
 	<collection>
 		<name>Bison</name>
-		<entry>Male@1728</entry>
-		<entry>Female@1728</entry>
+		<entry>Male@1715</entry>
+		<entry>Female@1715</entry>
 		<entry>Bison@17d2</entry>
 	</collection>
 	<collection>
 		<name>Black Bear</name>
-		<entry>Male@357</entry>
+		<entry>Male@341</entry>
 		<entry>Female@198</entry>
-		<entry>Black Bear@17d2</entry>
+		<entry>Black Bear@1d20</entry>
 	</collection>
 	<collection>
 		<name>Black Dragon, Adult</name>
@@ -580,14 +580,14 @@
 	</collection>
 	<collection>
 		<name>Black Dragon, Ancient</name>
-		<entry>Male@17832</entry>
-		<entry>Female@17832</entry>
+		<entry>Male@17831</entry>
+		<entry>Female@17831</entry>
 		<entry>Black Dragon, Ancient@13d3</entry>
 	</collection>
 	<collection>
 		<name>Black Dragon, Great Wyrm</name>
-		<entry>Male@139988</entry>
-		<entry>Female@139988</entry>
+		<entry>Male@139998</entry>
+		<entry>Female@139998</entry>
 		<entry>Black Dragon, Great Wyrm@58d3</entry>
 	</collection>
 	<collection>
@@ -598,20 +598,20 @@
 	</collection>
 	<collection>
 		<name>Black Dragon, Mature Adult</name>
-		<entry>Male@17832</entry>
-		<entry>Female@17832</entry>
+		<entry>Male@17831</entry>
+		<entry>Female@17831</entry>
 		<entry>Black Dragon, Mature Adult@13d3</entry>
 	</collection>
 	<collection>
 		<name>Black Dragon, Old</name>
-		<entry>Male@17832</entry>
-		<entry>Female@17832</entry>
+		<entry>Male@17831</entry>
+		<entry>Female@17831</entry>
 		<entry>Black Dragon, Old@13d3</entry>
 	</collection>
 	<collection>
 		<name>Black Dragon, Very Old</name>
-		<entry>Male@17832</entry>
-		<entry>Female@17832</entry>
+		<entry>Male@17831</entry>
+		<entry>Female@17831</entry>
 		<entry>Black Dragon, Very Old@13d3</entry>
 	</collection>
 	<collection>
@@ -622,8 +622,8 @@
 	</collection>
 	<collection>
 		<name>Black Dragon, Wyrm</name>
-		<entry>Male@139988</entry>
-		<entry>Female@139988</entry>
+		<entry>Male@139998</entry>
+		<entry>Female@139998</entry>
 		<entry>Black Dragon, Wyrm@58d3</entry>
 	</collection>
 	<collection>
@@ -646,7 +646,7 @@
 	</collection>
 	<collection>
 		<name>Black Pudding</name>
-		<entry>Agender@15840</entry>
+		<entry>Agender@15755</entry>
 		<entry>Black Pudding@89d2</entry>
 	</collection>
 	<collection>
@@ -657,20 +657,20 @@
 	</collection>
 	<collection>
 		<name>Blue Dragon, Adult</name>
-		<entry>Male@17832</entry>
-		<entry>Female@17832</entry>
+		<entry>Male@17831</entry>
+		<entry>Female@17831</entry>
 		<entry>Blue Dragon, Adult@13d3</entry>
 	</collection>
 	<collection>
 		<name>Blue Dragon, Ancient</name>
-		<entry>Male@139988</entry>
-		<entry>Female@139988</entry>
+		<entry>Male@139998</entry>
+		<entry>Female@139998</entry>
 		<entry>Blue Dragon, Ancient@58d3</entry>
 	</collection>
 	<collection>
 		<name>Blue Dragon, Great Wyrm</name>
-		<entry>Male@139988</entry>
-		<entry>Female@139988</entry>
+		<entry>Male@139998</entry>
+		<entry>Female@139998</entry>
 		<entry>Blue Dragon, Great Wyrm@58d3</entry>
 	</collection>
 	<collection>
@@ -681,20 +681,20 @@
 	</collection>
 	<collection>
 		<name>Blue Dragon, Mature Adult</name>
-		<entry>Male@17832</entry>
-		<entry>Female@17832</entry>
+		<entry>Male@17831</entry>
+		<entry>Female@17831</entry>
 		<entry>Blue Dragon, Mature Adult@13d3</entry>
 	</collection>
 	<collection>
 		<name>Blue Dragon, Old</name>
-		<entry>Male@17832</entry>
-		<entry>Female@17832</entry>
+		<entry>Male@17831</entry>
+		<entry>Female@17831</entry>
 		<entry>Blue Dragon, Old@13d3</entry>
 	</collection>
 	<collection>
 		<name>Blue Dragon, Very Old</name>
-		<entry>Male@17832</entry>
-		<entry>Female@17832</entry>
+		<entry>Male@17831</entry>
+		<entry>Female@17831</entry>
 		<entry>Blue Dragon, Very Old@13d3</entry>
 	</collection>
 	<collection>
@@ -705,8 +705,8 @@
 	</collection>
 	<collection>
 		<name>Blue Dragon, Wyrm</name>
-		<entry>Male@139988</entry>
-		<entry>Female@139988</entry>
+		<entry>Male@139998</entry>
+		<entry>Female@139998</entry>
 		<entry>Blue Dragon, Wyrm@58d3</entry>
 	</collection>
 	<collection>
@@ -746,7 +746,7 @@
 	</collection>
 	<collection>
 		<name>Bone Devil (Osyluth)</name>
-		<entry>Agender@446</entry>
+		<entry>Agender@447</entry>
 		<entry>Bone Devil (Osyluth)@1d12</entry>
 	</collection>
 	<collection>
@@ -763,14 +763,14 @@
 	</collection>
 	<collection>
 		<name>Brass Dragon, Ancient</name>
-		<entry>Male@17832</entry>
-		<entry>Female@17832</entry>
+		<entry>Male@17831</entry>
+		<entry>Female@17831</entry>
 		<entry>Brass Dragon, Ancient@13d3</entry>
 	</collection>
 	<collection>
 		<name>Brass Dragon, Great Wyrm</name>
-		<entry>Male@139988</entry>
-		<entry>Female@139988</entry>
+		<entry>Male@139998</entry>
+		<entry>Female@139998</entry>
 		<entry>Brass Dragon, Great Wyrm@58d3</entry>
 	</collection>
 	<collection>
@@ -781,20 +781,20 @@
 	</collection>
 	<collection>
 		<name>Brass Dragon, Mature Adult</name>
-		<entry>Male@17832</entry>
-		<entry>Female@17832</entry>
+		<entry>Male@17831</entry>
+		<entry>Female@17831</entry>
 		<entry>Brass Dragon, Mature Adult@13d3</entry>
 	</collection>
 	<collection>
 		<name>Brass Dragon, Old</name>
-		<entry>Male@17832</entry>
-		<entry>Female@17832</entry>
+		<entry>Male@17831</entry>
+		<entry>Female@17831</entry>
 		<entry>Brass Dragon, Old@13d3</entry>
 	</collection>
 	<collection>
 		<name>Brass Dragon, Very Old</name>
-		<entry>Male@17832</entry>
-		<entry>Female@17832</entry>
+		<entry>Male@17831</entry>
+		<entry>Female@17831</entry>
 		<entry>Brass Dragon, Very Old@13d3</entry>
 	</collection>
 	<collection>
@@ -805,8 +805,8 @@
 	</collection>
 	<collection>
 		<name>Brass Dragon, Wyrm</name>
-		<entry>Male@139988</entry>
-		<entry>Female@139988</entry>
+		<entry>Male@139998</entry>
+		<entry>Female@139998</entry>
 		<entry>Brass Dragon, Wyrm@58d3</entry>
 	</collection>
 	<collection>
@@ -829,20 +829,20 @@
 	</collection>
 	<collection>
 		<name>Bronze Dragon, Adult</name>
-		<entry>Male@17832</entry>
-		<entry>Female@17832</entry>
+		<entry>Male@17831</entry>
+		<entry>Female@17831</entry>
 		<entry>Bronze Dragon, Adult@13d3</entry>
 	</collection>
 	<collection>
 		<name>Bronze Dragon, Ancient</name>
-		<entry>Male@139988</entry>
-		<entry>Female@139988</entry>
+		<entry>Male@139998</entry>
+		<entry>Female@139998</entry>
 		<entry>Bronze Dragon, Ancient@58d3</entry>
 	</collection>
 	<collection>
 		<name>Bronze Dragon, Great Wyrm</name>
-		<entry>Male@139988</entry>
-		<entry>Female@139988</entry>
+		<entry>Male@139998</entry>
+		<entry>Female@139998</entry>
 		<entry>Bronze Dragon, Great Wyrm@58d3</entry>
 	</collection>
 	<collection>
@@ -853,20 +853,20 @@
 	</collection>
 	<collection>
 		<name>Bronze Dragon, Mature Adult</name>
-		<entry>Male@17832</entry>
-		<entry>Female@17832</entry>
+		<entry>Male@17831</entry>
+		<entry>Female@17831</entry>
 		<entry>Bronze Dragon, Mature Adult@13d3</entry>
 	</collection>
 	<collection>
 		<name>Bronze Dragon, Old</name>
-		<entry>Male@17832</entry>
-		<entry>Female@17832</entry>
+		<entry>Male@17831</entry>
+		<entry>Female@17831</entry>
 		<entry>Bronze Dragon, Old@13d3</entry>
 	</collection>
 	<collection>
 		<name>Bronze Dragon, Very Old</name>
-		<entry>Male@17832</entry>
-		<entry>Female@17832</entry>
+		<entry>Male@17831</entry>
+		<entry>Female@17831</entry>
 		<entry>Bronze Dragon, Very Old@13d3</entry>
 	</collection>
 	<collection>
@@ -877,8 +877,8 @@
 	</collection>
 	<collection>
 		<name>Bronze Dragon, Wyrm</name>
-		<entry>Male@139988</entry>
-		<entry>Female@139988</entry>
+		<entry>Male@139998</entry>
+		<entry>Female@139998</entry>
 		<entry>Bronze Dragon, Wyrm@58d3</entry>
 	</collection>
 	<collection>
@@ -901,8 +901,8 @@
 	</collection>
 	<collection>
 		<name>Brown Bear</name>
-		<entry>Male@1764</entry>
-		<entry>Female@1764</entry>
+		<entry>Male@1760</entry>
+		<entry>Female@1760</entry>
 		<entry>Brown Bear@8d4</entry>
 	</collection>
 	<collection>
@@ -919,8 +919,8 @@
 	</collection>
 	<collection>
 		<name>Cachalot Whale</name>
-		<entry>Male@77408</entry>
-		<entry>Female@77408</entry>
+		<entry>Male@77388</entry>
+		<entry>Female@77388</entry>
 		<entry>Cachalot Whale@36d10</entry>
 	</collection>
 	<collection>
@@ -949,8 +949,8 @@
 	</collection>
 	<collection>
 		<name>Centaur</name>
-		<entry>Male@1850</entry>
-		<entry>Female@1850</entry>
+		<entry>Male@1854</entry>
+		<entry>Female@1854</entry>
 		<entry>Centaur@4d4</entry>
 	</collection>
 	<collection>
@@ -1030,8 +1030,8 @@
 	</collection>
 	<collection>
 		<name>Cloud Giant</name>
-		<entry>Male@10062</entry>
-		<entry>Female@10062</entry>
+		<entry>Male@9995</entry>
+		<entry>Female@9995</entry>
 		<entry>Cloud Giant@71d2</entry>
 	</collection>
 	<collection>
@@ -1054,14 +1054,14 @@
 	</collection>
 	<collection>
 		<name>Copper Dragon, Ancient</name>
-		<entry>Male@17832</entry>
-		<entry>Female@17832</entry>
+		<entry>Male@17831</entry>
+		<entry>Female@17831</entry>
 		<entry>Copper Dragon, Ancient@13d3</entry>
 	</collection>
 	<collection>
 		<name>Copper Dragon, Great Wyrm</name>
-		<entry>Male@139988</entry>
-		<entry>Female@139988</entry>
+		<entry>Male@139998</entry>
+		<entry>Female@139998</entry>
 		<entry>Copper Dragon, Great Wyrm@58d3</entry>
 	</collection>
 	<collection>
@@ -1072,32 +1072,32 @@
 	</collection>
 	<collection>
 		<name>Copper Dragon, Mature Adult</name>
-		<entry>Male@17832</entry>
-		<entry>Female@17832</entry>
+		<entry>Male@17831</entry>
+		<entry>Female@17831</entry>
 		<entry>Copper Dragon, Mature Adult@13d3</entry>
 	</collection>
 	<collection>
 		<name>Copper Dragon, Old</name>
-		<entry>Male@17832</entry>
-		<entry>Female@17832</entry>
+		<entry>Male@17831</entry>
+		<entry>Female@17831</entry>
 		<entry>Copper Dragon, Old@13d3</entry>
 	</collection>
 	<collection>
 		<name>Copper Dragon, Very Old</name>
-		<entry>Male@17832</entry>
-		<entry>Female@17832</entry>
+		<entry>Male@17831</entry>
+		<entry>Female@17831</entry>
 		<entry>Copper Dragon, Very Old@13d3</entry>
 	</collection>
 	<collection>
 		<name>Copper Dragon, Very Young</name>
-		<entry>Male@35</entry>
-		<entry>Female@35</entry>
+		<entry>Male@30</entry>
+		<entry>Female@30</entry>
 		<entry>Copper Dragon, Very Young@1</entry>
 	</collection>
 	<collection>
 		<name>Copper Dragon, Wyrm</name>
-		<entry>Male@139988</entry>
-		<entry>Female@139988</entry>
+		<entry>Male@139998</entry>
+		<entry>Female@139998</entry>
 		<entry>Copper Dragon, Wyrm@58d3</entry>
 	</collection>
 	<collection>
@@ -1120,9 +1120,9 @@
 	</collection>
 	<collection>
 		<name>Couatl</name>
-		<entry>Male@1589</entry>
-		<entry>Female@1589</entry>
-		<entry>Couatl@2d6</entry>
+		<entry>Male@1591</entry>
+		<entry>Female@1591</entry>
+		<entry>Couatl@1d6</entry>
 	</collection>
 	<collection>
 		<name>Criosphinx</name>
@@ -1131,18 +1131,18 @@
 	</collection>
 	<collection>
 		<name>Crocodile</name>
-		<entry>Male@488</entry>
-		<entry>Female@488</entry>
-		<entry>Crocodile@4d12</entry>
+		<entry>Male@311</entry>
+		<entry>Female@311</entry>
+		<entry>Crocodile@37d2</entry>
 	</collection>
 	<collection>
 		<name>Dark Naga</name>
 		<entry>Hermaphrodite@167</entry>
-		<entry>Dark Naga@4d3</entry>
+		<entry>Dark Naga@1d6</entry>
 	</collection>
 	<collection>
 		<name>Darkmantle</name>
-		<entry>Hermaphrodite@26</entry>
+		<entry>Hermaphrodite@25</entry>
 		<entry>Darkmantle@1</entry>
 	</collection>
 	<collection>
@@ -1164,32 +1164,32 @@
 	</collection>
 	<collection>
 		<name>Deinonychus</name>
-		<entry>Male@148</entry>
-		<entry>Female@148</entry>
+		<entry>Male@136</entry>
+		<entry>Female@136</entry>
 		<entry>Deinonychus@1</entry>
 	</collection>
 	<collection>
 		<name>Delver</name>
-		<entry>Male@5369</entry>
-		<entry>Female@5369</entry>
-		<entry>Delver@2d20</entry>
+		<entry>Male@5280</entry>
+		<entry>Female@5280</entry>
+		<entry>Delver@4d6</entry>
 	</collection>
 	<collection>
 		<name>Derro</name>
-		<entry>Male@28</entry>
-		<entry>Female@28</entry>
+		<entry>Male@26</entry>
+		<entry>Female@26</entry>
 		<entry>Derro@1</entry>
 	</collection>
 	<collection>
 		<name>Derro (Sane)</name>
-		<entry>Male@28</entry>
-		<entry>Female@28</entry>
+		<entry>Male@26</entry>
+		<entry>Female@26</entry>
 		<entry>Derro (Sane)@1</entry>
 	</collection>
 	<collection>
 		<name>Destrachan</name>
-		<entry>Male@3563</entry>
-		<entry>Female@3563</entry>
+		<entry>Male@3528</entry>
+		<entry>Female@3528</entry>
 		<entry>Destrachan@8d4</entry>
 	</collection>
 	<collection>
