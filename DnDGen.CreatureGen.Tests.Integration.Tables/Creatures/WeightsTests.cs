@@ -839,8 +839,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.EtherealMarauder][GenderConstants.Female] = GetRangeFromAverage(200);
             weights[CreatureConstants.EtherealMarauder][GenderConstants.Male] = GetRangeFromAverage(200);
             //Source: https://syrikdarkenedskies.obsidianportal.com/wikis/ettercap-race
-            weights[CreatureConstants.Ettercap][GenderConstants.Female] = (150 + 2 * 2, 150 + 2 * 10 * 2 * 12);
-            weights[CreatureConstants.Ettercap][GenderConstants.Male] = (130 + 2 * 2, 130 + 2 * 10 * 2 * 12);
+            weights[CreatureConstants.Ettercap][GenderConstants.Female] = (160, 270);
+            weights[CreatureConstants.Ettercap][GenderConstants.Male] = (140, 250);
             //Source: https://forgottenrealms.fandom.com/wiki/Ettin
             weights[CreatureConstants.Ettin][GenderConstants.Female] = (930, 5200);
             weights[CreatureConstants.Ettin][GenderConstants.Male] = (930, 5200);
@@ -857,9 +857,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Frost_worm
             weights[CreatureConstants.FrostWorm][GenderConstants.Female] = GetRangeFromAverage(8000);
             weights[CreatureConstants.FrostWorm][GenderConstants.Male] = GetRangeFromAverage(8000);
-            //Source: https://dnd-wiki.org/wiki/Gargoyle_(3.5e_Race)
-            weights[CreatureConstants.Gargoyle][GenderConstants.Agender] = (300 + 2 * 2, 300 + 2 * 12 * 2 * 6);
-            weights[CreatureConstants.Gargoyle_Kapoacinth][GenderConstants.Agender] = (300 + 2 * 2, 300 + 2 * 12 * 2 * 6);
+            //Source: https://dnd-wiki.org/wiki/Gargoyle_(3.5e_Race) using 2d10 for heights
+            weights[CreatureConstants.Gargoyle][GenderConstants.Agender] = (300 + 2 * 2, 300 + 2 * 10 * 2 * 6);
+            weights[CreatureConstants.Gargoyle_Kapoacinth][GenderConstants.Agender] = (300 + 2 * 2, 300 + 2 * 10 * 2 * 6);
             //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/gelatinous-cube-species
             weights[CreatureConstants.GelatinousCube][GenderConstants.Agender] = GetRangeFromAverage(15_000);
             //Source: https://forgottenrealms.fandom.com/wiki/Ghaele
@@ -1721,18 +1721,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Elf_Wood][GenderConstants.Female] = "80";
             weights[CreatureConstants.Elf_Wood][GenderConstants.Male] = "85";
             weights[CreatureConstants.Elf_Wood][CreatureConstants.Elf_Wood] = "1d6";
-            //Can't find any source on weight. So, using human
-            weights[CreatureConstants.EtherealFilcher][GenderConstants.Agender] = "85";
-            weights[CreatureConstants.EtherealFilcher][CreatureConstants.EtherealFilcher] = "2d4";
-            //Source: https://syrikdarkenedskies.obsidianportal.com/wikis/ettercap-race
-            weights[CreatureConstants.Ettercap][GenderConstants.Female] = "150";
-            weights[CreatureConstants.Ettercap][GenderConstants.Male] = "130";
-            weights[CreatureConstants.Ettercap][CreatureConstants.Ettercap] = "2d4";
-            //Source: https://dnd-wiki.org/wiki/Gargoyle_(3.5e_Race)
-            weights[CreatureConstants.Gargoyle][GenderConstants.Agender] = "300";
-            weights[CreatureConstants.Gargoyle][CreatureConstants.Gargoyle] = "2d6";
-            weights[CreatureConstants.Gargoyle_Kapoacinth][GenderConstants.Agender] = "300";
-            weights[CreatureConstants.Gargoyle_Kapoacinth][CreatureConstants.Gargoyle_Kapoacinth] = "2d6";
             //Source: https://www.dandwiki.com/wiki/Ghoul_(5e_Race)
             weights[CreatureConstants.Ghoul][GenderConstants.Female] = "110";
             weights[CreatureConstants.Ghoul][GenderConstants.Male] = "110";
@@ -1750,8 +1738,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Gnome_Rock][GenderConstants.Female] = "35";
             weights[CreatureConstants.Gnome_Rock][GenderConstants.Male] = "40";
             weights[CreatureConstants.Gnome_Rock][CreatureConstants.Gnome_Rock] = "1";
-            weights[CreatureConstants.Gnome_Svirfneblin][GenderConstants.Female] = "1";
-            weights[CreatureConstants.Gnome_Svirfneblin][GenderConstants.Male] = "1";
+            weights[CreatureConstants.Gnome_Svirfneblin][GenderConstants.Female] = "35";
+            weights[CreatureConstants.Gnome_Svirfneblin][GenderConstants.Male] = "40";
             weights[CreatureConstants.Gnome_Svirfneblin][CreatureConstants.Gnome_Svirfneblin] = "1";
             //Source: https://www.d20srd.org/srd/monsters/hag.htm#greenHag Female human
             weights[CreatureConstants.GreenHag][GenderConstants.Female] = "85";
@@ -1769,13 +1757,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Since they float and are just balls of light, say weight is 0
             weights[CreatureConstants.LanternArchon][GenderConstants.Agender] = "0";
             weights[CreatureConstants.LanternArchon][CreatureConstants.LanternArchon] = "0";
-            //Source: https://www.d20srd.org/srd/monsters/medusa.htm Using Human
-            weights[CreatureConstants.Medusa][GenderConstants.Female] = "85";
-            weights[CreatureConstants.Medusa][GenderConstants.Male] = "120";
-            weights[CreatureConstants.Medusa][CreatureConstants.Medusa] = "2d4";
-            //Source: https://forgottenrealms.fandom.com/wiki/Mind_flayer Using Human
-            weights[CreatureConstants.MindFlayer][GenderConstants.Agender] = "120";
-            weights[CreatureConstants.MindFlayer][CreatureConstants.MindFlayer] = "2d4";
             //Source: https://www.d20srd.org/srd/monsters/nightHag.htm
             weights[CreatureConstants.NightHag][GenderConstants.Female] = "85";
             weights[CreatureConstants.NightHag][CreatureConstants.NightHag] = "2d4";
@@ -1795,10 +1776,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Satyr][CreatureConstants.Satyr] = "2d4";
             weights[CreatureConstants.Satyr_WithPipes][GenderConstants.Male] = "100";
             weights[CreatureConstants.Satyr_WithPipes][CreatureConstants.Satyr_WithPipes] = "2d4";
-            //Source: https://www.dandwiki.com/wiki/Tlincalli_(5e_Race)
-            weights[CreatureConstants.Scorpionfolk][GenderConstants.Female] = "450";
-            weights[CreatureConstants.Scorpionfolk][GenderConstants.Male] = "450";
-            weights[CreatureConstants.Scorpionfolk][CreatureConstants.Scorpionfolk] = "1d4";
             //Source: https://www.d20srd.org/srd/monsters/hag.htm - copy from Human
             weights[CreatureConstants.SeaHag][GenderConstants.Female] = "85";
             weights[CreatureConstants.SeaHag][CreatureConstants.SeaHag] = "2d4";
@@ -1978,8 +1955,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Elf_High)]
         [TestCase(CreatureConstants.Elf_Wild)]
         [TestCase(CreatureConstants.Elf_Wood)]
-        [TestCase(CreatureConstants.EtherealFilcher)]
-        [TestCase(CreatureConstants.Ettercap)]
         [TestCase(CreatureConstants.Gargoyle)]
         [TestCase(CreatureConstants.Gargoyle_Kapoacinth)]
         [TestCase(CreatureConstants.Ghoul)]
@@ -1994,15 +1969,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Halfling_Tallfellow)]
         [TestCase(CreatureConstants.Human)]
         [TestCase(CreatureConstants.LanternArchon)]
-        [TestCase(CreatureConstants.Medusa)]
-        [TestCase(CreatureConstants.MindFlayer)]
         [TestCase(CreatureConstants.NightHag)]
         [TestCase(CreatureConstants.Nymph)]
         [TestCase(CreatureConstants.Orc_Half)]
         [TestCase(CreatureConstants.Rakshasa)]
         [TestCase(CreatureConstants.Satyr)]
         [TestCase(CreatureConstants.Satyr_WithPipes)]
-        [TestCase(CreatureConstants.Scorpionfolk)]
         [TestCase(CreatureConstants.SeaHag)]
         [TestCase(CreatureConstants.Shadow)]
         [TestCase(CreatureConstants.Shadow_Greater)]
