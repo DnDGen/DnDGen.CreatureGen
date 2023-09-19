@@ -1894,7 +1894,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var weightRange = upper - lower + 1;
             var weightRollLower = Math.Max(lower - multiplierRoll.Quantity, 1);
 
-            if (multiplierRange > upper)
+            if (multiplierRange >= weightRange + multiplierRoll.Quantity)
             {
                 var lightweightRoll = RollHelper.GetRollWithFewestDice(lower, upper);
                 return $"0+{lightweightRoll}";
