@@ -64,6 +64,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
                 var ranges = kvp.Value.ToDictionary(g => g.Key, g => g.Value.Upper - g.Value.Lower);
                 var formattedRanges = string.Join("; ", ranges.Select(r => $"{r.Key}: {r.Value}"));
+                Assert.That(ranges.Values, Is.Not.Empty, $"{creature} has no genders");
                 Assert.That(ranges.Values, Is.All.EqualTo(ranges.Values.First()), $"{creature} dimorphic ranges unequal. {formattedRanges}");
 
                 foreach (var genderKvp in kvp.Value)
@@ -256,9 +257,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Babau
             weights[CreatureConstants.Babau][GenderConstants.Agender] = GetRangeFromAverage(140);
             //Source: https://www.dimensions.com/element/mandrill-mandrillus-sphinx
-            //https://www.d20srd.org/srd/monsters/baboon.htm (male)
+            //https://www.d20srd.org/srd/monsters/baboon.htm (male) (use range from female)
             weights[CreatureConstants.Baboon][GenderConstants.Female] = (26, 82);
-            weights[CreatureConstants.Baboon][GenderConstants.Male] = GetRangeFromUpTo(90);
+            weights[CreatureConstants.Baboon][GenderConstants.Male] = (34, 90);
             //Source: https://www.d20srd.org/srd/monsters/badger.htm
             weights[CreatureConstants.Badger][GenderConstants.Female] = (25, 35);
             weights[CreatureConstants.Badger][GenderConstants.Male] = (25, 35);
@@ -288,17 +289,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Bat_Dire][GenderConstants.Male] = GetRangeFromAverage(200);
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm Bats are Diminutive, so (.18-.46)x5000
             weights[CreatureConstants.Bat_Swarm][GenderConstants.Agender] = (900, 2300);
-            //Source: https://www.dimensions.com/element/american-black-bear
+            //Source: https://www.dimensions.com/element/american-black-bear Using female range, adjusting male lower
             weights[CreatureConstants.Bear_Black][GenderConstants.Female] = (200, 450);
-            weights[CreatureConstants.Bear_Black][GenderConstants.Male] = (375, 600);
+            weights[CreatureConstants.Bear_Black][GenderConstants.Male] = (350, 600);
             //Source: https://www.d20srd.org/srd/monsters/bearBrown.htm
             weights[CreatureConstants.Bear_Brown][GenderConstants.Female] = GetRangeFromAtLeast(1800);
             weights[CreatureConstants.Bear_Brown][GenderConstants.Male] = GetRangeFromAtLeast(1800);
             //Source: https://forgottenrealms.fandom.com/wiki/Dire_bear
             weights[CreatureConstants.Bear_Dire][GenderConstants.Female] = GetRangeFromAverage(8000);
             weights[CreatureConstants.Bear_Dire][GenderConstants.Male] = GetRangeFromAverage(8000);
-            //Source: https://www.dimensions.com/element/polar-bears
-            weights[CreatureConstants.Bear_Polar][GenderConstants.Female] = (330, 650);
+            //Source: https://www.dimensions.com/element/polar-bears Using male range, adjusting female upper
+            weights[CreatureConstants.Bear_Polar][GenderConstants.Female] = (330, 1055);
             weights[CreatureConstants.Bear_Polar][GenderConstants.Male] = (775, 1500);
             //Source: https://forgottenrealms.fandom.com/wiki/Barbazu
             weights[CreatureConstants.BeardedDevil_Barbazu][GenderConstants.Agender] = GetRangeFromAverage(225);
@@ -442,8 +443,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.dimensions.com/element/nile-crocodile-crocodylus-niloticus
             weights[CreatureConstants.Crocodile][GenderConstants.Female] = (496, 1102);
             weights[CreatureConstants.Crocodile][GenderConstants.Male] = (496, 1102);
-            //Source: https://www.dimensions.com/element/saltwater-crocodile-crocodylus-porosus
-            weights[CreatureConstants.Crocodile_Giant][GenderConstants.Female] = (180, 220);
+            //Source: https://www.dimensions.com/element/saltwater-crocodile-crocodylus-porosus Using male range, adjusting female upper
+            weights[CreatureConstants.Crocodile_Giant][GenderConstants.Female] = (180, 1500);
             weights[CreatureConstants.Crocodile_Giant][GenderConstants.Male] = (880, 2200);
             //Source: https://forgottenrealms.fandom.com/wiki/Hydra
             weights[CreatureConstants.Cryohydra_5Heads][GenderConstants.Female] = GetRangeFromAverage(4000);
@@ -484,11 +485,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Digester][GenderConstants.Female] = GetRangeFromAverage(350);
             weights[CreatureConstants.Digester][GenderConstants.Male] = GetRangeFromAverage(350);
             //Source: https://forgottenrealms.fandom.com/wiki/Displacer_beast
-            weights[CreatureConstants.DisplacerBeast][GenderConstants.Female] = (450, 450 * 2);
-            weights[CreatureConstants.DisplacerBeast][GenderConstants.Male] = (500, 500 * 2);
+            weights[CreatureConstants.DisplacerBeast][GenderConstants.Female] = (450, 950);
+            weights[CreatureConstants.DisplacerBeast][GenderConstants.Male] = (500, 1000);
             //Source: scale up from normal, x8
-            weights[CreatureConstants.DisplacerBeast_PackLord][GenderConstants.Female] = (450 * 8, 450 * 16);
-            weights[CreatureConstants.DisplacerBeast_PackLord][GenderConstants.Male] = (500 * 8, 500 * 16);
+            weights[CreatureConstants.DisplacerBeast_PackLord][GenderConstants.Female] = (3600, 7600);
+            weights[CreatureConstants.DisplacerBeast_PackLord][GenderConstants.Male] = (4000, 8000);
             //Source: https://forgottenrealms.fandom.com/wiki/Djinni
             weights[CreatureConstants.Djinni][GenderConstants.Agender] = GetRangeFromAverage(1000);
             weights[CreatureConstants.Djinni][GenderConstants.Female] = GetRangeFromAverage(1000);
@@ -502,9 +503,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Dog][GenderConstants.Male] = (20, 50);
             //Source: https://www.dimensions.com/element/saint-bernard-dog M:140-180,F:120-140
             //https://www.dimensions.com/element/siberian-husky 35-65
-            //https://www.dimensions.com/element/dogs-collie M:45-65,F:40-55
+            //https://www.dimensions.com/element/dogs-collie M:45-65,F:40-55 Using female range, adjusting male lower
             weights[CreatureConstants.Dog_Riding][GenderConstants.Female] = (35, 140);
-            weights[CreatureConstants.Dog_Riding][GenderConstants.Male] = (35, 180);
+            weights[CreatureConstants.Dog_Riding][GenderConstants.Male] = (75, 180);
             //Source: https://www.dimensions.com/element/donkey-equus-africanus-asinus
             weights[CreatureConstants.Donkey][GenderConstants.Female] = (400, 500);
             weights[CreatureConstants.Donkey][GenderConstants.Male] = (400, 500);
@@ -951,6 +952,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Grimlock
             weights[CreatureConstants.Grimlock][GenderConstants.Female] = GetRangeFromAverage(180);
             weights[CreatureConstants.Grimlock][GenderConstants.Male] = GetRangeFromAverage(180);
+            //Source: https://www.d20srd.org/srd/monsters/sphinx.htm
+            weights[CreatureConstants.Gynosphinx][GenderConstants.Female] = GetRangeFromAverage(800);
             //Source: https://www.d20srd.org/srd/description.htm#vitalStatistics
             weights[CreatureConstants.Halfling_Deep][GenderConstants.Female] = (25 + 2 * 1, 25 + 2 * 4 * 1);
             weights[CreatureConstants.Halfling_Deep][GenderConstants.Male] = (30 + 2 * 1, 30 + 2 * 4 * 1);
@@ -973,6 +976,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Hellcat
             weights[CreatureConstants.Hellcat_Bezekira][GenderConstants.Female] = GetRangeFromAverage(900);
             weights[CreatureConstants.Hellcat_Bezekira][GenderConstants.Male] = GetRangeFromAverage(900);
+            //Source: https://www.d20srd.org/srd/monsters/swarm.htm Diminutive flying = 5000 creatures, so 5000x(.5 oz) = 156.25 pounds
+            //https://www.dnr.sc.gov/magazine/articles/mayjune2015/FWW-PaperWasp.html
+            weights[CreatureConstants.Hellwasp_Swarm][GenderConstants.Agender] = GetRangeFromUpTo(156);
             //Source: https://www.d20srd.org/srd/monsters/demon.htm#hezrou
             weights[CreatureConstants.Hezrou][GenderConstants.Agender] = GetRangeFromAverage(750);
             //Source: https://www.d20srd.org/srd/monsters/sphinx.htm
@@ -1898,13 +1904,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             {
                 weightRollLower += 1;
             }
-            else if (weightRollRange > 11)
+            if (weightRollRange >= 9 && multiplierRoll.Quantity > 2)
             {
                 var rangeRoll = RollHelper.GetRollWithFewestDice(1, weightRollRange);
                 var parsedRangeRoll = ParseRoll(rangeRoll);
 
                 weightRollLower += multiplierRoll.Quantity - multiplierRoll.Quantity * parsedRangeRoll.Quantity;
             }
+            //else if (weightRollRange > 11 && multiplierRoll.Quantity > 1)
+            //{
+            //    var rangeRoll = RollHelper.GetRollWithFewestDice(1, weightRollRange);
+            //    var parsedRangeRoll = ParseRoll(rangeRoll);
+
+            //    weightRollLower += multiplierRoll.Quantity - multiplierRoll.Quantity * parsedRangeRoll.Quantity;
+            //}
 
             var weightRollUpper = weightRollLower + weightRollRange - 1;
 
@@ -1997,6 +2010,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         }
 
         [TestCase(CreatureConstants.Arrowhawk_Juvenile)]
+        [TestCase(CreatureConstants.Beholder)]
+        [TestCase(CreatureConstants.Dragon_Silver_Young)]
         public void DEBUG_ValidateWeightRoll(string creature)
         {
             foreach (var genderKvp in creatureWeightRanges[creature])
@@ -2021,7 +2036,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             foreach (var creature in creatureWeightRanges.Keys)
             {
-                if (incorporealCreatures.Contains(creature))
+                if (incorporealCreatures.Contains(creature) || creature == CreatureConstants.LanternArchon)
                 {
                     foreach (var genderKvp in creatureWeightRanges[creature])
                     {
