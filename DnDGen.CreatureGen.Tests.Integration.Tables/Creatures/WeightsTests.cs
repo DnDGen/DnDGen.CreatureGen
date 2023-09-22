@@ -226,7 +226,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //https://www.dimensions.com/element/black-garden-ant-lasius-niger - scale up, up to 10mg
             //https://www.retirefearless.com/post/how-much-does-an-ant-weigh#spanblack-garden-antspan
             weights[CreatureConstants.Ant_Giant_Queen][GenderConstants.Female] =
-                GetScaledUpRangeFromAverage(GetMilligramToPound(10 * 9 / 11d), GetMilligramToPound(10), .31, .35, 9 * 12); //(648, 932);
+                GetScaledUpRangeFromAverage(GetMilligramToPound(10) * 9 / 11, GetMilligramToPound(10), .31, .35, 9 * 12); //(648, 932);
             //Source: https://www.dimensions.com/element/eastern-lowland-gorilla-gorilla-beringei-graueri (using for female with male range)
             //https://www.d20srd.org/srd/monsters/ape.htm (male)
             weights[CreatureConstants.Ape][GenderConstants.Female] = (220, 320);
@@ -291,7 +291,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Bat_Dire][GenderConstants.Female] = GetRangeFromAverage(200);
             weights[CreatureConstants.Bat_Dire][GenderConstants.Male] = GetRangeFromAverage(200);
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm Bats are Diminutive, so (.18oz-.46oz)x5000
-            weights[CreatureConstants.Bat_Swarm][GenderConstants.Agender] = ((int)(GetOunceToPound(18) * 5000), (int)(GetOunceToPound(46) * 5000));
+            weights[CreatureConstants.Bat_Swarm][GenderConstants.Agender] = ((int)(GetOunceToPound(.18) * 5000), (int)(GetOunceToPound(.46) * 5000));
             //Source: https://www.dimensions.com/element/american-black-bear Using female range, adjusting male lower
             weights[CreatureConstants.Bear_Black][GenderConstants.Female] = (200, 450);
             weights[CreatureConstants.Bear_Black][GenderConstants.Male] = (350, 600);
@@ -309,8 +309,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Bebilith
             weights[CreatureConstants.Bebilith][GenderConstants.Agender] = GetRangeFromAtLeast(4000);
             //Source: https://www.d20srd.org/srd/monsters/giantBee.htm
-            //https://www.dimensions.com/element/western-honey-bee-apis-mellifera scale up, [115mg,128mg]*(5*12/[.39,.59])^3 = [923,297]
-            weights[CreatureConstants.Bee_Giant][GenderConstants.Male] = GetScaledUpRangeFromAverage(2.54 * .0001, 2.82 * .0001, .39, .59, 5 * 12); //(297, 923);
+            //https://www.dimensions.com/element/western-honey-bee-apis-mellifera scale up
+            weights[CreatureConstants.Bee_Giant][GenderConstants.Male] =
+                GetScaledUpRangeFromAverage(GetMilligramToPound(115), GetMilligramToPound(128), .39, .59, 5 * 12); //(297, 923);
             //Source: https://forgottenrealms.fandom.com/wiki/Behir
             weights[CreatureConstants.Behir][GenderConstants.Female] = GetRangeFromAverage(4000);
             weights[CreatureConstants.Behir][GenderConstants.Male] = GetRangeFromAverage(4000);
@@ -339,10 +340,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //INFO: Basing off of humans
             weights[CreatureConstants.Bodak][GenderConstants.Female] = weights[CreatureConstants.Human][GenderConstants.Female];
             weights[CreatureConstants.Bodak][GenderConstants.Male] = weights[CreatureConstants.Human][GenderConstants.Male];
-            //Source: https://factanimal.com/bombardier-beetle/
-            //https://www.d20srd.org/srd/monsters/giantBombardierBeetle.htm scale up: 1g*(6*12/1)^3 = 823 pounds
-            weights[CreatureConstants.BombardierBeetle_Giant][GenderConstants.Female] = GetScaledUpRangeFromAverage(2.2 * .001 * .9, 2.2 * .001 * 1.1, .9, 1.1, 6 * 12);
-            weights[CreatureConstants.BombardierBeetle_Giant][GenderConstants.Male] = GetScaledUpRangeFromAverage(2.2 * .001 * .9, 2.2 * .001 * 1.1, .9, 1.1, 6 * 12);
+            //Source: https://factanimal.com/bombardier-beetle/ up to 1g.
+            //https://www.d20srd.org/srd/monsters/giantBombardierBeetle.htm scale up
+            weights[CreatureConstants.BombardierBeetle_Giant][GenderConstants.Female] =
+                GetScaledUpRangeFromAverage(GetGramToPound(1) * 9 / 11, GetGramToPound(1), .9, 1.1, 6 * 12);
+            weights[CreatureConstants.BombardierBeetle_Giant][GenderConstants.Male] =
+                GetScaledUpRangeFromAverage(GetGramToPound(1) * 9 / 11, GetGramToPound(1), .9, 1.1, 6 * 12);
             //Source: https://forgottenrealms.fandom.com/wiki/Osyluth
             weights[CreatureConstants.BoneDevil_Osyluth][GenderConstants.Agender] = GetRangeFromAverage(500);
             //Source: https://forgottenrealms.fandom.com/wiki/Bralani
@@ -371,42 +374,52 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Centaur][GenderConstants.Male] = GetRangeFromAverage(2100);
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Tiny
             //https://www.dimensions.com/element/tiger-centipede-scolopendra-polymorpha
-            //https://alexaanswers.amazon.com/question/3zw2aivt2nsallUz6Ylyut Scale up: [1-1.5 grams]*(24/[4,7])^3 = [1, 1]
-            weights[CreatureConstants.Centipede_Monstrous_Tiny][GenderConstants.Female] = GetScaledUpRangeFromAverage(2.2 * .001, 3.3 * .001, 4, 7, 24);
-            weights[CreatureConstants.Centipede_Monstrous_Tiny][GenderConstants.Male] = GetScaledUpRangeFromAverage(2.2 * .001, 3.3 * .001, 4, 7, 24);
+            //https://alexaanswers.amazon.com/question/3zw2aivt2nsallUz6Ylyut Scale up
+            weights[CreatureConstants.Centipede_Monstrous_Tiny][GenderConstants.Female] = GetScaledUpRangeFromAverage(GetGramToPound(1), GetGramToPound(1.5), 4, 7, 24);
+            weights[CreatureConstants.Centipede_Monstrous_Tiny][GenderConstants.Male] = GetScaledUpRangeFromAverage(GetGramToPound(1), GetGramToPound(1.5), 4, 7, 24);
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Small
             //https://www.dimensions.com/element/tiger-centipede-scolopendra-polymorpha
-            //https://alexaanswers.amazon.com/question/3zw2aivt2nsallUz6Ylyut Scale up: [1-1.5 grams]*(48/[4,7])^3 = [4, 1]
-            weights[CreatureConstants.Centipede_Monstrous_Small][GenderConstants.Female] = GetScaledUpRangeFromAverage(2.2 * .001, 3.3 * .001, 4, 7, 48);
-            weights[CreatureConstants.Centipede_Monstrous_Small][GenderConstants.Male] = GetScaledUpRangeFromAverage(2.2 * .001, 3.3 * .001, 4, 7, 48);
+            //https://alexaanswers.amazon.com/question/3zw2aivt2nsallUz6Ylyut Scale up
+            weights[CreatureConstants.Centipede_Monstrous_Small][GenderConstants.Female] = GetScaledUpRangeFromAverage(GetGramToPound(1), GetGramToPound(1.5), 4, 7, 48);
+            weights[CreatureConstants.Centipede_Monstrous_Small][GenderConstants.Male] = GetScaledUpRangeFromAverage(GetGramToPound(1), GetGramToPound(1.5), 4, 7, 48);
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Medium
             //https://www.dimensions.com/element/tiger-centipede-scolopendra-polymorpha
-            //https://alexaanswers.amazon.com/question/3zw2aivt2nsallUz6Ylyut Scale up: [1-1.5 grams]*(8*12/[4,7])^3 = [30, 9]
-            weights[CreatureConstants.Centipede_Monstrous_Medium][GenderConstants.Female] = GetScaledUpRangeFromAverage(2.2 * .001, 3.3 * .001, 4, 7, 8 * 12);
-            weights[CreatureConstants.Centipede_Monstrous_Medium][GenderConstants.Male] = GetScaledUpRangeFromAverage(2.2 * .001, 3.3 * .001, 4, 7, 8 * 12);
+            //https://alexaanswers.amazon.com/question/3zw2aivt2nsallUz6Ylyut Scale up
+            weights[CreatureConstants.Centipede_Monstrous_Medium][GenderConstants.Female] =
+                GetScaledUpRangeFromAverage(GetGramToPound(1), GetGramToPound(1.5), 4, 7, 8 * 12);
+            weights[CreatureConstants.Centipede_Monstrous_Medium][GenderConstants.Male] =
+                GetScaledUpRangeFromAverage(GetGramToPound(1), GetGramToPound(1.5), 4, 7, 8 * 12);
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Large
             //https://www.dimensions.com/element/tiger-centipede-scolopendra-polymorpha
-            //https://alexaanswers.amazon.com/question/3zw2aivt2nsallUz6Ylyut Scale up: [1-1.5 grams]*(15*12/[4,7])^3 = [200, 56]
-            weights[CreatureConstants.Centipede_Monstrous_Large][GenderConstants.Female] = GetScaledUpRangeFromAverage(2.2 * .001, 3.3 * .001, 4, 7, 15 * 12);//(56, 200);
-            weights[CreatureConstants.Centipede_Monstrous_Large][GenderConstants.Male] = GetScaledUpRangeFromAverage(2.2 * .001, 3.3 * .001, 4, 7, 15 * 12);
+            //https://alexaanswers.amazon.com/question/3zw2aivt2nsallUz6Ylyut Scale up
+            weights[CreatureConstants.Centipede_Monstrous_Large][GenderConstants.Female] =
+                GetScaledUpRangeFromAverage(GetGramToPound(1), GetGramToPound(1.5), 4, 7, 15 * 12);//(56, 200);
+            weights[CreatureConstants.Centipede_Monstrous_Large][GenderConstants.Male] =
+                GetScaledUpRangeFromAverage(GetGramToPound(1), GetGramToPound(1.5), 4, 7, 15 * 12);
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Huge
             //https://www.dimensions.com/element/tiger-centipede-scolopendra-polymorpha
-            //https://alexaanswers.amazon.com/question/3zw2aivt2nsallUz6Ylyut Scale up: [1-1.5 grams]*(30*12/[4,7])^3 = [1607, 450]
-            weights[CreatureConstants.Centipede_Monstrous_Huge][GenderConstants.Female] = GetScaledUpRangeFromAverage(2.2 * .001, 3.3 * .001, 4, 7, 30 * 12);//(450, 1607);
-            weights[CreatureConstants.Centipede_Monstrous_Huge][GenderConstants.Male] = GetScaledUpRangeFromAverage(2.2 * .001, 3.3 * .001, 4, 7, 30 * 12);
+            //https://alexaanswers.amazon.com/question/3zw2aivt2nsallUz6Ylyut Scale up
+            weights[CreatureConstants.Centipede_Monstrous_Huge][GenderConstants.Female] =
+                GetScaledUpRangeFromAverage(GetGramToPound(1), GetGramToPound(1.5), 4, 7, 30 * 12);//(450, 1607);
+            weights[CreatureConstants.Centipede_Monstrous_Huge][GenderConstants.Male] =
+                GetScaledUpRangeFromAverage(GetGramToPound(1), GetGramToPound(1.5), 4, 7, 30 * 12);
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Gargantuan
             //https://www.dimensions.com/element/tiger-centipede-scolopendra-polymorpha
-            //https://alexaanswers.amazon.com/question/3zw2aivt2nsallUz6Ylyut Scale up: [1-1.5 grams]*(60*12/[4,7])^3 = [12857, 3599]
-            weights[CreatureConstants.Centipede_Monstrous_Gargantuan][GenderConstants.Female] = GetScaledUpRangeFromAverage(2.2 * .001, 3.3 * .001, 4, 7, 60 * 12);//(3599, 12_857);
-            weights[CreatureConstants.Centipede_Monstrous_Gargantuan][GenderConstants.Male] = GetScaledUpRangeFromAverage(2.2 * .001, 3.3 * .001, 4, 7, 60 * 12);
+            //https://alexaanswers.amazon.com/question/3zw2aivt2nsallUz6Ylyut Scale up
+            weights[CreatureConstants.Centipede_Monstrous_Gargantuan][GenderConstants.Female] =
+                GetScaledUpRangeFromAverage(GetGramToPound(1), GetGramToPound(1.5), 4, 7, 60 * 12);//(3599, 12_857);
+            weights[CreatureConstants.Centipede_Monstrous_Gargantuan][GenderConstants.Male] =
+                GetScaledUpRangeFromAverage(GetGramToPound(1), GetGramToPound(1.5), 4, 7, 60 * 12);
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Colossal
             //https://www.dimensions.com/element/tiger-centipede-scolopendra-polymorpha
-            //https://alexaanswers.amazon.com/question/3zw2aivt2nsallUz6Ylyut Scale up: [1-1.5 grams]*(120*12/[4,7])^3 = [102859, 28788]
-            weights[CreatureConstants.Centipede_Monstrous_Colossal][GenderConstants.Female] = GetScaledUpRangeFromAverage(2.2 * .001, 3.3 * .001, 4, 7, 120 * 12);//(28_788, 102_859);
-            weights[CreatureConstants.Centipede_Monstrous_Colossal][GenderConstants.Male] = GetScaledUpRangeFromAverage(2.2 * .001, 3.3 * .001, 4, 7, 120 * 12);
-            //Source: https://www.d20srd.org/srd/monsters/swarm.htm Centipedes are Diminutive, so x5000
-            //https://alexaanswers.amazon.com/question/3zw2aivt2nsallUz6Ylyut [1-1.5 grams]x5000 = [11, 17]
-            weights[CreatureConstants.Centipede_Swarm][GenderConstants.Agender] = (5000 * 22 / 1000, 5000 * 33 / 1000);
+            //https://alexaanswers.amazon.com/question/3zw2aivt2nsallUz6Ylyut Scale up
+            weights[CreatureConstants.Centipede_Monstrous_Colossal][GenderConstants.Female] =
+                GetScaledUpRangeFromAverage(GetGramToPound(1), GetGramToPound(1.5), 4, 7, 120 * 12);//(28_788, 102_859);
+            weights[CreatureConstants.Centipede_Monstrous_Colossal][GenderConstants.Male] =
+                GetScaledUpRangeFromAverage(GetGramToPound(1), GetGramToPound(1.5), 4, 7, 120 * 12);
+            //Source: https://www.d20srd.org/srd/monsters/swarm.htm Centipedes are Diminutive, so x1500
+            //https://alexaanswers.amazon.com/question/3zw2aivt2nsallUz6Ylyut [1-1.5 grams]x1500 = [3,5]
+            weights[CreatureConstants.Centipede_Swarm][GenderConstants.Agender] = ((int)(GetGramToPound(1) * 1500), (int)(GetGramToPound(1.5) * 1500));
             //Source: https://www.d20srd.org/srd/monsters/devil.htm#chainDevilKyton
             weights[CreatureConstants.ChainDevil_Kyton][GenderConstants.Agender] = GetRangeFromAverage(300);
             weights[CreatureConstants.ChainDevil_Kyton][GenderConstants.Female] = GetRangeFromAverage(300);
@@ -497,10 +510,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Djinni][GenderConstants.Agender] = GetRangeFromAverage(1000);
             weights[CreatureConstants.Djinni][GenderConstants.Female] = GetRangeFromAverage(1000);
             weights[CreatureConstants.Djinni][GenderConstants.Male] = GetRangeFromAverage(1000);
-            //Source: https://forgottenrealms.fandom.com/wiki/Noble_djinni height increase by x1.14, so weight increase by x1.5
-            weights[CreatureConstants.Djinni_Noble][GenderConstants.Agender] = GetRangeFromAverage(1500);
-            weights[CreatureConstants.Djinni_Noble][GenderConstants.Female] = GetRangeFromAverage(1500);
-            weights[CreatureConstants.Djinni_Noble][GenderConstants.Male] = GetRangeFromAverage(1500);
+            //Source: https://forgottenrealms.fandom.com/wiki/Noble_djinni Scale up from normal djinn
+            weights[CreatureConstants.Djinni_Noble][GenderConstants.Agender] = GetScaledUpRangeFromAverage(900, 1100, 126 * .9, 126 * 1.1, 12 * 12);
+            weights[CreatureConstants.Djinni_Noble][GenderConstants.Female] = GetScaledUpRangeFromAverage(900, 1100, 126 * .9, 126 * 1.1, 12 * 12);
+            weights[CreatureConstants.Djinni_Noble][GenderConstants.Male] = GetScaledUpRangeFromAverage(900, 1100, 126 * .9, 126 * 1.1, 12 * 12);
             //Source: https://www.d20srd.org/srd/monsters/dog.htm
             weights[CreatureConstants.Dog][GenderConstants.Female] = (20, 50);
             weights[CreatureConstants.Dog][GenderConstants.Male] = (20, 50);
@@ -849,9 +862,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Ettin][GenderConstants.Female] = (930, 5200);
             weights[CreatureConstants.Ettin][GenderConstants.Male] = (930, 5200);
             //Source: https://www.d20srd.org/srd/monsters/giantFireBeetle.htm
-            //https://www.guinnessworldrecords.com/world-records/most-bioluminescent-insect scale up: .3g*(2*12/[.39,.55])^3 = [154,55]
-            weights[CreatureConstants.FireBeetle_Giant][GenderConstants.Female] = (55, 154);
-            weights[CreatureConstants.FireBeetle_Giant][GenderConstants.Male] = (55, 154);
+            //https://www.guinnessworldrecords.com/world-records/most-bioluminescent-insect scale up
+            weights[CreatureConstants.FireBeetle_Giant][GenderConstants.Female] =
+                GetScaledUpRangeFromAverage(GetGramToPound(.3) * .9, GetGramToPound(.3) * 1.1, .39, .55, 2 * 12); //(55, 154);
+            weights[CreatureConstants.FireBeetle_Giant][GenderConstants.Male] =
+                GetScaledUpRangeFromAverage(GetGramToPound(.3) * .9, GetGramToPound(.3) * 1.1, .39, .55, 2 * 12);
             //Source: https://www.d20srd.org/srd/monsters/formian.htm
             weights[CreatureConstants.FormianWorker][GenderConstants.Male] = GetRangeFromAverage(60);
             weights[CreatureConstants.FormianWarrior][GenderConstants.Male] = GetRangeFromAverage(180);
