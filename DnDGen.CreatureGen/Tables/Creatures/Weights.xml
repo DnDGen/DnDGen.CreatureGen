@@ -445,8 +445,8 @@
 	</collection>
 	<collection>
 		<name>Assassin Vine</name>
-		<entry>Agender@10</entry>
-		<entry>Assassin Vine@1</entry>
+		<entry>Agender@2d6+43</entry>
+		<entry>Assassin Vine@0</entry>
 	</collection>
 	<collection>
 		<name>Athach</name>
@@ -456,8 +456,8 @@
 	</collection>
 	<collection>
 		<name>Average Salamander</name>
-		<entry>Agender@85</entry>
-		<entry>Average Salamander@1</entry>
+		<entry>Agender@2d6+118</entry>
+		<entry>Average Salamander@0</entry>
 	</collection>
 	<collection>
 		<name>Average Xorn</name>
@@ -485,7 +485,7 @@
 	</collection>
 	<collection>
 		<name>Baboon</name>
-		<entry>Male@62</entry>
+		<entry>Male@25</entry>
 		<entry>Female@17</entry>
 		<entry>Baboon@1d2</entry>
 	</collection>
@@ -531,8 +531,8 @@
 	</collection>
 	<collection>
 		<name>Bat Swarm</name>
-		<entry>Agender@513</entry>
-		<entry>Bat Swarm@43d2</entry>
+		<entry>Agender@47</entry>
+		<entry>Bat Swarm@1d2</entry>
 	</collection>
 	<collection>
 		<name>Bearded Devil (Barbazu)</name>
@@ -552,7 +552,7 @@
 	</collection>
 	<collection>
 		<name>Beholder</name>
-		<entry>Agender@4042</entry>
+		<entry>Agender@4045</entry>
 		<entry>Beholder@4d12</entry>
 	</collection>
 	<collection>
@@ -568,7 +568,7 @@
 	</collection>
 	<collection>
 		<name>Black Bear</name>
-		<entry>Male@341</entry>
+		<entry>Male@348</entry>
 		<entry>Female@198</entry>
 		<entry>Black Bear@1d20</entry>
 	</collection>
@@ -616,9 +616,9 @@
 	</collection>
 	<collection>
 		<name>Black Dragon, Very Young</name>
-		<entry>Male@30</entry>
-		<entry>Female@30</entry>
-		<entry>Black Dragon, Very Young@1</entry>
+		<entry>Male@4d3+32</entry>
+		<entry>Female@4d3+32</entry>
+		<entry>Black Dragon, Very Young@0</entry>
 	</collection>
 	<collection>
 		<name>Black Dragon, Wyrm</name>

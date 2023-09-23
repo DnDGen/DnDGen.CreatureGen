@@ -88,10 +88,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(creatureWeightRolls, Contains.Key(creature));
             Assert.That(creatureWeightRolls[creature], Contains.Key(creature).And.ContainKey(gender));
 
-            var weightBaseMin = dice.Roll(creatureWeightRolls[creature][gender]).AsPotentialMinimum();
-            var weightBaseMax = dice.Roll(creatureWeightRolls[creature][gender]).AsPotentialMaximum();
-            var modifierMin = dice.Roll(creatureWeightRolls[creature][creature]).AsPotentialMinimum();
-            var modifierMax = dice.Roll(creatureWeightRolls[creature][creature]).AsPotentialMaximum();
+            var baseRoll = creatureWeightRolls[creature][gender];
+            var modifierRoll = creatureWeightRolls[creature][creature];
+            var weightBaseMin = dice.Roll(baseRoll).AsPotentialMinimum();
+            var weightBaseMax = dice.Roll(baseRoll).AsPotentialMaximum();
+            var modifierMin = dice.Roll(modifierRoll).AsPotentialMinimum();
+            var modifierMax = dice.Roll(modifierRoll).AsPotentialMaximum();
             var minSigma = exact ? 0 : Math.Max(1, multiplierMin * modifierMin / 2);
             var maxSigma = exact ? 0 : Math.Max(1, multiplierMax * modifierMax / 2);
 
@@ -1623,9 +1625,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Troglodyte][GenderConstants.Male] = GetRangeFromAverage(150);
             //Source: https://www.d20srd.org/srd/monsters/troll.htm Female "slightly larger than males", so 110%
             weights[CreatureConstants.Troll][GenderConstants.Male] = GetRangeFromAverage(500);
-            weights[CreatureConstants.Troll][GenderConstants.Female] = GetRangeFromAverage(550);
+            weights[CreatureConstants.Troll][GenderConstants.Female] = GetRangeFromAverage(550, 500);
             weights[CreatureConstants.Troll_Scrag][GenderConstants.Male] = GetRangeFromAverage(500);
-            weights[CreatureConstants.Troll_Scrag][GenderConstants.Female] = GetRangeFromAverage(550);
+            weights[CreatureConstants.Troll_Scrag][GenderConstants.Female] = GetRangeFromAverage(550, 500);
             //Source: https://forgottenrealms.fandom.com/wiki/Trumpet_archon
             weights[CreatureConstants.TrumpetArchon][GenderConstants.Female] = (165, 210);
             weights[CreatureConstants.TrumpetArchon][GenderConstants.Male] = (185, 230);
@@ -1638,7 +1640,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.UmberHulk_TrulyHorrid][GenderConstants.Female] = GetRangeFromAverage(8000);
             weights[CreatureConstants.UmberHulk_TrulyHorrid][GenderConstants.Male] = GetRangeFromAverage(8000);
             //Source: https://www.d20srd.org/srd/monsters/unicorn.htm Females "slightly smaller", so 90%
-            weights[CreatureConstants.Unicorn][GenderConstants.Female] = GetRangeFromAverage(1080);
+            weights[CreatureConstants.Unicorn][GenderConstants.Female] = GetRangeFromAverage(1080, 1200);
             weights[CreatureConstants.Unicorn][GenderConstants.Male] = GetRangeFromAverage(1200);
             //Source: https://www.d20srd.org/srd/monsters/vampire.htm#vampireSpawn Copying from Human
             weights[CreatureConstants.VampireSpawn][GenderConstants.Female] = weights[CreatureConstants.Human][GenderConstants.Female];
@@ -1899,6 +1901,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public static IEnumerable CreatureWeightRollsData => creatureWeightRolls.Select(t => new TestCaseData(t.Key, t.Value));
 
         private static (int Lower, int Upper) GetRangeFromAverage(int average) => (Math.Max(1, average * 9 / 10), Math.Max(1, average * 11 / 10));
+        private static (int Lower, int Upper) GetRangeFromAverage(int average, int altAverage) => (average - altAverage / 10, average + altAverage / 10);
         private static (int Lower, int Upper) GetRangeFromUpTo(int upTo) => (Math.Max(1, upTo * 9 / 11), Math.Max(1, upTo));
         private static (int Lower, int Upper) GetRangeFromAtLeast(int atLeast) => (Math.Max(1, atLeast), Math.Max(1, atLeast * 11 / 9));
 
@@ -1955,20 +1958,29 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         private static string GetFromRoll(string roll, int index)
         {
             var plusIndex = roll.IndexOf('+');
-            if (plusIndex == -1)
+            var minusIndex = roll.IndexOf('-');
+
+            if (plusIndex == -1 && minusIndex == -1)
             {
-                if (index > 0)
+                if (index == BASE_INDEX)
                     return "0";
 
                 return roll;
             }
 
-            if (index > 0)
+            var adjustmentIndex = new[] { plusIndex, minusIndex }.Where(i => i > -1).Min();
+
+            if (index == MULTIPLIER_INDEX)
             {
-                return roll[(plusIndex + 1)..];
+                return roll[..adjustmentIndex];
             }
 
-            return roll[..plusIndex];
+            if (plusIndex > -1)
+            {
+                return roll[(adjustmentIndex + 1)..];
+            }
+
+            return roll[adjustmentIndex..];
         }
 
         private static string GetTheoreticalWeightRoll(string creature, int lower, int upper)
@@ -2002,7 +2014,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             if (multiplierRange >= weightRange)
             {
                 //INFO: We want the average to still land in the same place
-                weightRollLower -= (multiplierRange - weightRange) / 2;
+                weightRollLower -= Math.Max((multiplierRange - weightRange) / 2, 1);
                 return $"1+{weightRollLower}";
             }
 
@@ -2020,12 +2032,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             {
                 weightRollLower += 1;
             }
-            if (weightRollRange >= 9 && multiplierRoll.Quantity > 2)
+            else if (weightRollRange >= 9 && multiplierRoll.Quantity > 2)
             {
                 var rangeRoll = RollHelper.GetRollWithFewestDice(1, weightRollRange);
                 var parsedRangeRoll = ParseRoll(rangeRoll);
 
-                weightRollLower += multiplierRoll.Quantity - multiplierRoll.Quantity * parsedRangeRoll.Quantity;
+                weightRollLower = lower - multiplierRoll.Quantity * parsedRangeRoll.Quantity;
             }
 
             var weightRollUpper = weightRollLower + weightRollRange - 1;
@@ -2053,15 +2065,23 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return heights[creature];
         }
 
-        private static (int Quantity, int Die) ParseRoll(string roll)
+        private static (int Quantity, int Die, int Adjustment) ParseRoll(string roll)
         {
             var sections = roll.Split('d', '+', '-');
             var q = Convert.ToInt32(sections[0]);
             var d = 1;
+            var a = 0;
+
             if (sections.Length > 1)
                 d = Convert.ToInt32(sections[1]);
 
-            return (q, d);
+            if (sections.Length > 2)
+                a = Convert.ToInt32(sections[2]);
+
+            if (roll.Contains('-'))
+                a *= -1;
+
+            return (q, d, a);
         }
 
         [TestCase(CreatureConstants.Allip)]
@@ -2077,8 +2097,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Elf_High)]
         [TestCase(CreatureConstants.Elf_Wild)]
         [TestCase(CreatureConstants.Elf_Wood)]
-        [TestCase(CreatureConstants.Gargoyle)]
-        [TestCase(CreatureConstants.Gargoyle_Kapoacinth)]
         [TestCase(CreatureConstants.Ghoul)]
         [TestCase(CreatureConstants.Ghoul_Ghast)]
         [TestCase(CreatureConstants.Ghoul_Lacedon)]
@@ -2118,10 +2136,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
         }
 
+        [TestCase(CreatureConstants.AnimatedObject_Small)]
         [TestCase(CreatureConstants.Arrowhawk_Juvenile)]
         [TestCase(CreatureConstants.Beholder)]
         [TestCase(CreatureConstants.Dragon_Silver_Young)]
+        [TestCase(CreatureConstants.Gargoyle)]
         [TestCase(CreatureConstants.Raven)]
+        [TestCase(CreatureConstants.Snake_Constrictor_Giant)]
+        [TestCase(CreatureConstants.StagBeetle_Giant)]
         public void DEBUG_ValidateWeightRoll(string creature)
         {
             foreach (var genderKvp in creatureWeightRanges[creature])
@@ -2168,9 +2190,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     Assert.That(genderKvp.Value.Upper, Is.Positive.And.AtLeast(genderKvp.Value.Lower), $"Upper; {genderKvp.Key} {creature}");
                 }
 
+                var multiplier = GetMaxOfHeightLength(creature);
+
                 foreach (var genderKvp in creatureWeightRolls[creature].Where(kvp => kvp.Key != creature))
                 {
-                    var roll = dice.Roll($"{genderKvp.Value}+{creatureWeightRolls[creature][creature]}").AsPotentialMinimum();
+                    var roll = dice.Roll($"{genderKvp.Value}+{multiplier[creature]}*{creatureWeightRolls[creature][creature]}").AsPotentialMinimum();
                     Assert.That(roll, Is.Positive);
                 }
             }
