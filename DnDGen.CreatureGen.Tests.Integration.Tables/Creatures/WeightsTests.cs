@@ -1,10 +1,10 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using NUnit.Framework;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,10 +21,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         protected override string tableName => TableNameConstants.TypeAndAmount.Weights;
 
         //INFO: Must be static for the test cases
-        private static readonly Dictionary<string, Dictionary<string, string>> heights = HeightsTests.GetCreatureHeights();
-        private static readonly Dictionary<string, Dictionary<string, string>> lengths = LengthsTests.GetCreatureLengths();
-        private static readonly Dictionary<string, Dictionary<string, (int Lower, int Upper)>> creatureWeightRanges = GetCreatureWeightRanges();
-        private static readonly Dictionary<string, Dictionary<string, string>> creatureWeightRolls = GetCreatureWeightRolls();
+        private Dictionary<string, Dictionary<string, string>> heights;
+        private Dictionary<string, Dictionary<string, string>> lengths;
+        private Dictionary<string, Dictionary<string, (int Lower, int Upper)>> creatureWeightRanges;
+        private Dictionary<string, Dictionary<string, string>> creatureWeightRolls;
+
+        [OneTimeSetUp]
+        public void OneTimeSetup()
+        {
+            heights = HeightsTests.GetCreatureHeights();
+            lengths = LengthsTests.GetCreatureLengths();
+            creatureWeightRanges = GetCreatureWeightRanges();
+            creatureWeightRolls = GetCreatureWeightRolls();
+        }
 
         [SetUp]
         public void Setup()
@@ -40,19 +49,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertCollectionNames(creatures);
         }
 
-        [TestCaseSource(nameof(CreatureWeightRollsData))]
-        public void CreatureWeights(string name, Dictionary<string, string> typesAndRolls)
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
+        public void CreatureWeights(string name)
         {
-            var genders = collectionSelector.SelectFrom(TableNameConstants.Collection.Genders, name);
-            Assert.That(typesAndRolls.Keys, Is.EquivalentTo(genders.Union(new[] { name })).And.Not.Empty, $"TEST DATA: {name}");
+            Assert.That(creatureWeightRolls, Contains.Key(name));
 
-            foreach (var roll in typesAndRolls.Values)
+            var rolls = creatureWeightRolls[name];
+            var genders = collectionSelector.SelectFrom(TableNameConstants.Collection.Genders, name);
+            Assert.That(rolls.Keys, Is.EquivalentTo(genders.Union(new[] { name })).And.Not.Empty, $"TEST DATA: {name}");
+
+            foreach (var roll in rolls.Values)
             {
                 var isValid = dice.Roll(roll).IsValid();
                 Assert.That(isValid, Is.True, roll);
             }
 
-            AssertTypesAndAmounts(name, typesAndRolls);
+            AssertTypesAndAmounts(name, rolls);
         }
 
         [Test]
@@ -112,7 +124,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 $"Max; {gender} {creature}; Base: {weightBaseMax}; Mult: {multiplierMax}; Wm: {modifierMax}");
         }
 
-        private static Dictionary<string, Dictionary<string, (int Lower, int Upper)>> GetCreatureWeightRanges()
+        private Dictionary<string, Dictionary<string, (int Lower, int Upper)>> GetCreatureWeightRanges()
         {
             var creatures = CreatureConstants.GetAll();
             var weights = new Dictionary<string, Dictionary<string, (int Lower, int Upper)>>();
@@ -1730,7 +1742,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return weights;
         }
 
-        public static Dictionary<string, Dictionary<string, string>> GetCreatureWeightRolls()
+        public Dictionary<string, Dictionary<string, string>> GetCreatureWeightRolls()
         {
             var weights = new Dictionary<string, Dictionary<string, string>>();
 
@@ -1898,23 +1910,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return weights;
         }
 
-        public static IEnumerable CreatureWeightRollsData => creatureWeightRolls.Select(t => new TestCaseData(t.Key, t.Value));
+        private (int Lower, int Upper) GetRangeFromAverage(int average) => (Math.Max(1, average * 9 / 10), Math.Max(1, average * 11 / 10));
+        private (int Lower, int Upper) GetRangeFromAverage(int average, int altAverage) => (average - altAverage / 10, average + altAverage / 10);
+        private (int Lower, int Upper) GetRangeFromUpTo(int upTo) => (Math.Max(1, upTo * 9 / 11), Math.Max(1, upTo));
+        private (int Lower, int Upper) GetRangeFromAtLeast(int atLeast) => (Math.Max(1, atLeast), Math.Max(1, atLeast * 11 / 9));
 
-        private static (int Lower, int Upper) GetRangeFromAverage(int average) => (Math.Max(1, average * 9 / 10), Math.Max(1, average * 11 / 10));
-        private static (int Lower, int Upper) GetRangeFromAverage(int average, int altAverage) => (average - altAverage / 10, average + altAverage / 10);
-        private static (int Lower, int Upper) GetRangeFromUpTo(int upTo) => (Math.Max(1, upTo * 9 / 11), Math.Max(1, upTo));
-        private static (int Lower, int Upper) GetRangeFromAtLeast(int atLeast) => (Math.Max(1, atLeast), Math.Max(1, atLeast * 11 / 9));
-
-        private static (int Lower, int Upper) GetScaledUpRange(int sourceWeightAverage, int sourceAverage, double targetLower, double targetUpper)
+        private (int Lower, int Upper) GetScaledUpRange(int sourceWeightAverage, int sourceAverage, double targetLower, double targetUpper)
         {
             var sourceWeightRange = GetRangeFromAverage(sourceWeightAverage);
             var sourceRange = GetRangeFromAverage(sourceAverage);
             return GetScaledUpRange(sourceWeightRange, sourceRange.Lower, sourceRange.Upper, targetLower, targetUpper);
         }
 
-        private static (int Lower, int Upper) GetScaledUpRange((int Lower, int Upper) sourceWeightRange, double sourceLower, double sourceUpper, double targetLower, double targetUpper)
+        private (int Lower, int Upper) GetScaledUpRange((int Lower, int Upper) sourceWeightRange, double sourceLower, double sourceUpper, double targetLower, double targetUpper)
             => GetScaledUpRange(sourceWeightRange.Lower, sourceWeightRange.Upper, sourceLower, sourceUpper, targetLower, targetUpper);
-        private static (int Lower, int Upper) GetScaledUpRange(double sourceWeightLower, double sourceWeightUpper, double sourceLower, double sourceUpper, double targetLower, double targetUpper)
+        private (int Lower, int Upper) GetScaledUpRange(double sourceWeightLower, double sourceWeightUpper, double sourceLower, double sourceUpper, double targetLower, double targetUpper)
         {
             var target1 = sourceWeightLower * Math.Pow(targetLower / sourceLower, 3);
             var target2 = sourceWeightUpper * Math.Pow(targetUpper / sourceUpper, 3);
@@ -1925,28 +1935,28 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return (Math.Max(1, targetWeightLower), Math.Max(1, targetWeightUpper));
         }
 
-        private static double GetOunceToPound(double oz) => oz / 16;
-        private static double GetGramToPound(double grams) => grams / 453.6;
-        private static double GetMilligramToPound(double mg) => GetGramToPound(mg / 1000);
+        private double GetOunceToPound(double oz) => oz / 16;
+        private double GetGramToPound(double grams) => grams / 453.6;
+        private double GetMilligramToPound(double mg) => GetGramToPound(mg / 1000);
 
-        private static (int Lower, int Upper) GetScaledUpRangeFromAverage((int Lower, int Upper) sourceWeightRange, int sourceAverage, int average)
+        private (int Lower, int Upper) GetScaledUpRangeFromAverage((int Lower, int Upper) sourceWeightRange, int sourceAverage, int average)
         {
             var sourceRange = GetRangeFromAverage(sourceAverage);
             return GetScaledUpRangeFromAverage(sourceWeightRange, sourceRange.Lower, sourceRange.Upper, average);
         }
 
-        private static (int Lower, int Upper) GetScaledUpRangeFromAverage((int Lower, int Upper) sourceWeightRange, double sourceLower, double sourceUpper, int average)
+        private (int Lower, int Upper) GetScaledUpRangeFromAverage((int Lower, int Upper) sourceWeightRange, double sourceLower, double sourceUpper, int average)
             => GetScaledUpRangeFromAverage(sourceWeightRange.Lower, sourceWeightRange.Upper, sourceLower, sourceUpper, average);
-        private static (int Lower, int Upper) GetScaledUpRangeFromAverage(double sourceWeightLower, double sourceWeightUpper, double sourceLower, double sourceUpper, int average)
+        private (int Lower, int Upper) GetScaledUpRangeFromAverage(double sourceWeightLower, double sourceWeightUpper, double sourceLower, double sourceUpper, int average)
         {
             var range = GetRangeFromAverage(average);
             return GetScaledUpRange(sourceWeightLower, sourceWeightUpper, sourceLower, sourceUpper, range.Lower, range.Upper);
         }
 
-        private static string GetBaseFromRange(string creature, int lower, int upper) => GetFromRange(creature, lower, upper, BASE_INDEX);
-        private static string GetMultiplierFromRange(string creature, int lower, int upper) => GetFromRange(creature, lower, upper, MULTIPLIER_INDEX);
+        private string GetBaseFromRange(string creature, int lower, int upper) => GetFromRange(creature, lower, upper, BASE_INDEX);
+        private string GetMultiplierFromRange(string creature, int lower, int upper) => GetFromRange(creature, lower, upper, MULTIPLIER_INDEX);
 
-        private static string GetFromRange(string creature, int lower, int upper, int index)
+        private string GetFromRange(string creature, int lower, int upper, int index)
         {
             var roll = GetTheoreticalWeightRoll(creature, lower, upper);
             if (string.IsNullOrEmpty(roll))
@@ -1955,7 +1965,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return GetFromRoll(roll, index);
         }
 
-        private static string GetFromRoll(string roll, int index)
+        private string GetFromRoll(string roll, int index)
         {
             var plusIndex = roll.IndexOf('+');
             var minusIndex = roll.IndexOf('-');
@@ -1983,7 +1993,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return roll[adjustmentIndex..];
         }
 
-        private static string GetTheoreticalWeightRoll(string creature, int lower, int upper)
+        private string GetTheoreticalWeightRoll(string creature, int lower, int upper)
         {
             if (upper - lower == 0)
             {
@@ -2046,7 +2056,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return roll;
         }
 
-        private static Dictionary<string, string> GetMaxOfHeightLength(string creature)
+        private Dictionary<string, string> GetMaxOfHeightLength(string creature)
         {
             if (!heights.ContainsKey(creature) || !heights[creature].ContainsKey(creature)
                 || !lengths.ContainsKey(creature) || !lengths[creature].ContainsKey(creature))
@@ -2065,7 +2075,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return heights[creature];
         }
 
-        private static (int Quantity, int Die, int Adjustment) ParseRoll(string roll)
+        private (int Quantity, int Die, int Adjustment) ParseRoll(string roll)
         {
             var sections = roll.Split('d', '+', '-');
             var q = Convert.ToInt32(sections[0]);

@@ -1699,7 +1699,7 @@
 	</collection>
 	<collection>
 		<name>Giant Crocodile</name>
-		<entry>Male@126</entry>
+		<entry>Male@826</entry>
 		<entry>Female@126</entry>
 		<entry>Giant Crocodile@1d12</entry>
 	</collection>
@@ -1717,95 +1717,95 @@
 	</collection>
 	<collection>
 		<name>Giant Octopus</name>
-		<entry>Male@18</entry>
-		<entry>Female@18</entry>
-		<entry>Giant Octopus@2d3</entry>
+		<entry>Male@8</entry>
+		<entry>Female@8</entry>
+		<entry>Giant Octopus@1d2</entry>
 	</collection>
 	<collection>
 		<name>Giant Owl</name>
-		<entry>Male@94</entry>
-		<entry>Female@94</entry>
-		<entry>Giant Owl@3d8</entry>
+		<entry>Male@2487</entry>
+		<entry>Female@2487</entry>
+		<entry>Giant Owl@4d12</entry>
 	</collection>
 	<collection>
 		<name>Giant Praying Mantis</name>
-		<entry>Male@20</entry>
-		<entry>Female@20</entry>
-		<entry>Giant Praying Mantis@4d10</entry>
+		<entry>Male@1d3+9</entry>
+		<entry>Female@1d3+9</entry>
+		<entry>Giant Praying Mantis@0</entry>
 	</collection>
 	<collection>
 		<name>Giant Squid</name>
-		<entry>Male@0</entry>
-		<entry>Female@0</entry>
-		<entry>Giant Squid@0</entry>
+		<entry>Male@292</entry>
+		<entry>Female@292</entry>
+		<entry>Giant Squid@2d6</entry>
 	</collection>
 	<collection>
 		<name>Giant Stag Beetle</name>
-		<entry>Male@20</entry>
-		<entry>Female@20</entry>
+		<entry>Male@-884</entry>
+		<entry>Female@-884</entry>
 		<entry>Giant Stag Beetle@1d6</entry>
 	</collection>
 	<collection>
 		<name>Giant Wasp</name>
-		<entry>Male@13</entry>
-		<entry>Giant Wasp@1d3</entry>
+		<entry>Male@1d3+12</entry>
+		<entry>Giant Wasp@0</entry>
 	</collection>
 	<collection>
 		<name>Gibbering Mouther</name>
-		<entry>Agender@20</entry>
+		<entry>Agender@160</entry>
 		<entry>Gibbering Mouther@16d4</entry>
 	</collection>
 	<collection>
 		<name>Girallon</name>
 		<entry>Male@85</entry>
-		<entry>Female@85</entry>
-		<entry>Girallon@1d20</entry>
+		<entry>Female@718</entry>
+		<entry>Girallon@1d8</entry>
 	</collection>
 	<collection>
 		<name>Githyanki</name>
-		<entry>Female@62</entry>
-		<entry>Male@63</entry>
-		<entry>Githyanki@2d10</entry>
+		<entry>Female@85</entry>
+		<entry>Male@85</entry>
+		<entry>Githyanki@2d4</entry>
 	</collection>
 	<collection>
 		<name>Githzerai</name>
-		<entry>Female@38</entry>
-		<entry>Male@38</entry>
-		<entry>Githzerai@23d2</entry>
+		<entry>Female@68</entry>
+		<entry>Male@68</entry>
+		<entry>Githzerai@1d2</entry>
 	</collection>
 	<collection>
 		<name>Glabrezu</name>
-		<entry>Agender@100</entry>
-		<entry>Glabrezu@8d10</entry>
+		<entry>Agender@4914</entry>
+		<entry>Glabrezu@4d4</entry>
 	</collection>
 	<collection>
 		<name>Gnoll</name>
-		<entry>Female@82</entry>
-		<entry>Male@82</entry>
-		<entry>Gnoll@2d4</entry>
+		<entry>Female@278</entry>
+		<entry>Male@278</entry>
+		<entry>Gnoll@1d6</entry>
 	</collection>
 	<collection>
 		<name>Goblin</name>
-		<entry>Female@38</entry>
-		<entry>Male@38</entry>
-		<entry>Goblin@2d3</entry>
+		<entry>Female@37</entry>
+		<entry>Male@37</entry>
+		<entry>Goblin@1d2</entry>
 	</collection>
 	<collection>
 		<name>Gold Dragon, Adult</name>
-		<entry>Male@100</entry>
-		<entry>Female@100</entry>
+		<entry>Male@17831</entry>
+		<entry>Female@17831</entry>
 		<entry>Gold Dragon, Adult@29d2</entry>
 	</collection>
 	<collection>
 		<name>Gold Dragon, Ancient</name>
-		<entry>Male@159</entry>
-		<entry>Female@159</entry>
+		<entry>Male@139998</entry>
+		<entry>Female@139998</entry>
 		<entry>Gold Dragon, Ancient@13d4</entry>
 	</collection>
 	<collection>
 		<name>Gold Dragon, Great Wyrm</name>
-		<entry>Male@184</entry>
-		<entry>Female@184</entry>
+		<entry>Male@1125633</entry>
+		<entry>Female@1125633</entry>
 		<entry>Gold Dragon, Great Wyrm@53d2</entry>
 	</collection>
 	<collection>
@@ -1816,20 +1816,20 @@
 	</collection>
 	<collection>
 		<name>Gold Dragon, Mature Adult</name>
-		<entry>Male@100</entry>
-		<entry>Female@100</entry>
+		<entry>Male@17831</entry>
+		<entry>Female@17831</entry>
 		<entry>Gold Dragon, Mature Adult@29d2</entry>
 	</collection>
 	<collection>
 		<name>Gold Dragon, Old</name>
-		<entry>Male@159</entry>
-		<entry>Female@159</entry>
+		<entry>Male@139998</entry>
+		<entry>Female@139998</entry>
 		<entry>Gold Dragon, Old@13d4</entry>
 	</collection>
 	<collection>
 		<name>Gold Dragon, Very Old</name>
-		<entry>Male@159</entry>
-		<entry>Female@159</entry>
+		<entry>Male@139998</entry>
+		<entry>Female@139998</entry>
 		<entry>Gold Dragon, Very Old@13d4</entry>
 	</collection>
 	<collection>
@@ -1840,8 +1840,8 @@
 	</collection>
 	<collection>
 		<name>Gold Dragon, Wyrm</name>
-		<entry>Male@184</entry>
-		<entry>Female@184</entry>
+		<entry>Male@1125633</entry>
+		<entry>Female@1125633</entry>
 		<entry>Gold Dragon, Wyrm@53d2</entry>
 	</collection>
 	<collection>
@@ -1852,8 +1852,8 @@
 	</collection>
 	<collection>
 		<name>Gold Dragon, Young Adult</name>
-		<entry>Male@100</entry>
-		<entry>Female@100</entry>
+		<entry>Male@17831</entry>
+		<entry>Female@17831</entry>
 		<entry>Gold Dragon, Young Adult@29d2</entry>
 	</collection>
 	<collection>
