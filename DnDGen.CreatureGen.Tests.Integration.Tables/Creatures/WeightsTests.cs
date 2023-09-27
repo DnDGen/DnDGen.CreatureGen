@@ -60,6 +60,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             foreach (var roll in rolls.Values)
             {
+                Assert.That(roll, Is.Not.Empty.And.Not.Contain("NO VALID WEIGHT ROLL"));
+
                 var isValid = dice.Roll(roll).IsValid();
                 Assert.That(isValid, Is.True, roll);
             }
@@ -102,14 +104,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             var baseRoll = creatureWeightRolls[creature][gender];
             var modifierRoll = creatureWeightRolls[creature][creature];
+            Assert.That(baseRoll, Is.Not.Empty.And.Not.Contain("NO VALID WEIGHT ROLL"), $"Base; {gender} {creature}");
+            Assert.That(modifierRoll, Is.Not.Empty.And.Not.Contain("NO VALID WEIGHT ROLL"), $"Modifier; {gender} {creature}");
+
             var weightBaseMin = dice.Roll(baseRoll).AsPotentialMinimum();
             var weightBaseMax = dice.Roll(baseRoll).AsPotentialMaximum();
             var modifierMin = dice.Roll(modifierRoll).AsPotentialMinimum();
             var modifierMax = dice.Roll(modifierRoll).AsPotentialMaximum();
-            //var minSigma = exact ? 0 : Math.Max(1, multiplierMin / 2);
-            var minSigma = exact ? 0 : Math.Max(1, multiplierMin - 1);
-            //var maxSigma = exact ? 0 : Math.Max(1, multiplierMax / 2);
-            var maxSigma = exact ? 0 : Math.Max(1, multiplierMax - 1);
+            var minSigma = exact ? 0 : new[] { 1d, (upper + lower) * 0.025, multiplierMin / 2d }.Max();
+            var maxSigma = exact ? 0 : new[] { 1d, (upper + lower) * 0.025, multiplierMax / 2d }.Max();
 
             if (lower == 0 && upper == 0)
             {
@@ -121,9 +124,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
 
             Assert.That(weightBaseMin + multiplierMin * modifierMin, Is.Positive.And.EqualTo(lower).Within(minSigma),
-                $"Min; {gender} {creature}; Base: {weightBaseMin}; Mult: {multiplierMin}; Wm: {modifierMin}");
+                $"Min; {gender} {creature}; Base: {weightBaseMin}; rollM: {heightLength[creature]}; rollW: {modifierRoll}");
             Assert.That(weightBaseMax + multiplierMax * modifierMax, Is.Positive.And.EqualTo(upper).Within(maxSigma),
-                $"Max; {gender} {creature}; Base: {weightBaseMax}; Mult: {multiplierMax}; Wm: {modifierMax}");
+                $"Max; {gender} {creature}; Base: {weightBaseMax}; rollM: {heightLength[creature]}; rollW: {modifierRoll}");
         }
 
         private Dictionary<string, Dictionary<string, (int Lower, int Upper)>> GetCreatureWeightRanges()
@@ -144,7 +147,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Aasimar][GenderConstants.Female] = (89, 245);
             weights[CreatureConstants.Aasimar][GenderConstants.Male] = (124, 280);
             //Source: https://forgottenrealms.fandom.com/wiki/Aboleth
-            weights[CreatureConstants.Aboleth][GenderConstants.Hermaphrodite] = GetRangeFromAverage(6500);
+            weights[CreatureConstants.Aboleth][GenderConstants.Hermaphrodite] = GetRangeFromUpTo(6500);
             //Source: https://www.d20srd.org/srd/monsters/achaierai.htm
             weights[CreatureConstants.Achaierai][GenderConstants.Female] = GetRangeFromAverage(750);
             weights[CreatureConstants.Achaierai][GenderConstants.Male] = GetRangeFromAverage(750);
@@ -290,8 +293,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.d20srd.org/srd/monsters/devil.htm#barbedDevilHamatula
             weights[CreatureConstants.BarbedDevil_Hamatula][GenderConstants.Agender] = GetRangeFromAverage(300);
             //Source: https://www.d20srd.org/srd/monsters/barghest.htm
+            //Average from 180 doesn't have nice rolls, so using alternate average
             weights[CreatureConstants.Barghest][GenderConstants.Female] = GetRangeFromAverage(180);
+            //weights[CreatureConstants.Barghest][GenderConstants.Female] = GetRangeFromAverage(180, 200);
             weights[CreatureConstants.Barghest][GenderConstants.Male] = GetRangeFromAverage(180);
+            //weights[CreatureConstants.Barghest][GenderConstants.Male] = GetRangeFromAverage(180, 200);
             weights[CreatureConstants.Barghest_Greater][GenderConstants.Female] = GetRangeFromAverage(400);
             weights[CreatureConstants.Barghest_Greater][GenderConstants.Male] = GetRangeFromAverage(400);
             //Source: https://forgottenrealms.fandom.com/wiki/Basilisk
@@ -1589,11 +1595,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Squid_Giant][GenderConstants.Female] = (440, 2000);
             weights[CreatureConstants.Squid_Giant][GenderConstants.Male] = (440, 2000);
             //Source: https://www.d20srd.org/srd/monsters/giantStagBeetle.htm
-            //https://en.wikipedia.org/wiki/Hercules_beetle scale up
-            weights[CreatureConstants.StagBeetle_Giant][GenderConstants.Female] =
-                GetScaledUpRangeFromAverage(GetGramToPound(100) * .9, GetGramToPound(100) * 1.1, 2.36, 7.09, 10 * 12);
+            //https://www.theanimalfacts.com/insects-spiders/hercules-beetle/ scale up
             weights[CreatureConstants.StagBeetle_Giant][GenderConstants.Male] =
-                GetScaledUpRangeFromAverage(GetGramToPound(100) * .9, GetGramToPound(100) * 1.1, 2.36, 7.09, 10 * 12);
+                GetScaledUpRangeFromAverage(GetGramToPound(34) * .9, GetGramToPound(34) * 1.1, 2.36, 7.09, 10 * 12);
+
+            var femaleStagBeetle = GetScaledUpRangeFromAverage(GetGramToPound(16.3) * .9, GetGramToPound(16.3) * 1.1, 2.36, 7.09, 10 * 12);
+            var maleStagBeetle = weights[CreatureConstants.StagBeetle_Giant][GenderConstants.Male];
+            var maleRange = maleStagBeetle.Upper - maleStagBeetle.Lower;
+            weights[CreatureConstants.StagBeetle_Giant][GenderConstants.Female] = (femaleStagBeetle.Lower, femaleStagBeetle.Lower + maleRange);
             //Source: https://www.d20srd.org/srd/monsters/stirge.htm
             weights[CreatureConstants.Stirge][GenderConstants.Female] = GetRangeFromAverage(1);
             weights[CreatureConstants.Stirge][GenderConstants.Male] = GetRangeFromAverage(1);
@@ -1963,6 +1972,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var roll = GetTheoreticalWeightRoll(creature, lower, upper);
             if (string.IsNullOrEmpty(roll))
                 return string.Empty;
+            else if (roll.Contains("NO VALID WEIGHT ROLL"))
+                return roll;
 
             return GetFromRoll(roll, index);
         }
@@ -1999,8 +2010,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         {
             if (upper - lower == 0)
             {
-                var lightweightRoll = RollHelper.GetRollWithFewestDice(lower, upper);
-                return $"0+{lightweightRoll}";
+                return $"0+{lower}";
             }
 
             lower = Math.Max(lower, 1);
@@ -2023,101 +2033,100 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 return $"0+{lightweightRoll}";
             }
 
-            if (multiplierRange >= weightRange)
+            if (multiplierRange >= weightRange - multiplierRoll.Quantity)
             {
                 //INFO: We want the average to still land in the same place
                 weightRollLower -= Math.Max((multiplierRange - weightRange) / 2, 1);
                 return $"1+{weightRollLower}";
             }
 
-            var weightRollRange = Math.Max(1, (upper - weightRollLower) / maxMultiplier);
-            if (weightRollRange <= 3)
-            {
-                weightRollRange += weightRollRange % 2;
-            }
-            else if (weightRollRange <= 5)
-            {
-                weightRollLower += weightRollRange % 2;
-                weightRollRange += weightRollRange % 2;
-            }
-            else if (weightRollRange == 6)
-            {
-                weightRollLower += 1;
-            }
-            else if (weightRollRange >= 9 && multiplierRoll.Quantity > 2)
-            {
-                var rangeRoll = RollHelper.GetRollWithFewestDice(1, weightRollRange);
-                var parsedRangeRoll = ParseRoll(rangeRoll);
+            var dice = new[] { 100, 20, 12, 10, 8, 6, 4, 3, 2 };
+            var lowerMultiplier = multiplierRoll.Quantity;
+            var upperMultiplier = multiplierRoll.Quantity * multiplierRoll.Die;
+            var sigmaMin = new[] { 1d, (upper + lower) * 0.025, lowerMultiplier / 2d }.Max();
+            var sigmaMax = new[] { 1d, (upper + lower) * 0.025, upperMultiplier / 2d }.Max();
 
-                //Aboleth MAX: 5833 + (16d4) * (1d20) = 7113, but want 7150 +/- 32
-                //* if lower was 16 more (min mult), we would be good
-                //Beholder MIN: 4042 + (1d20) * (4d12) = 4046, but want 4050 +/- 1
-                //* if lower was 4 more (min mult), we would be good
-                //Beholder MAX: 4045 + (1d20) * (4d12) = 5005, but want 4950 +/- 10
-                //* if lower was 48 LESS (weight mult), we would be good
-                //Gargoyle MIN: 298 + (2d10) * (2d6) = 302, but want 304 +/- 1
-                //* if lower was 2 more (min mult / 2), we would be good
-                //Giant Stag Beetle MIN: -884 + (8d4) * (272d3) = 1292, but want 1564 +/- 4
-                //Silver Dragon, Young MAX: 2194 + (13d4) * (3d4?) = 2818, but want 2750 +/- 26
+            var bestPrototype = new WeightRollPrototype(lower, upper, lowerMultiplier, upperMultiplier);
+            bestPrototype.Die = dice[0];
+            bestPrototype.ComputeQuantityFloor();
+            bestPrototype.ComputeBase();
 
-                weightRollLower = lower - multiplierRoll.Quantity * parsedRangeRoll.Quantity;
-            }
+            if (bestPrototype.IsPerfectMatch())
+                return bestPrototype.Roll;
 
-            var weightRollUpper = weightRollLower + weightRollRange - 1;
-
-            var roll = RollHelper.GetRollWithFewestDice(weightRollLower, weightRollUpper);
-            var rollRange = GetRollRange(roll, heightLength[creature]);
-            //var minSigma = multiplierRoll.Quantity / 2;
-            var minSigma = multiplierRoll.Quantity - 1;
-            //var maxSigma = maxMultiplier / 2;
-            var maxSigma = maxMultiplier - 1;
-            var abortCount = 30;
-
-            while (abortCount > 0 && weightRollUpper > weightRollLower &&
-                (Math.Abs(rollRange.Lower - lower) > minSigma || Math.Abs(rollRange.Upper - upper) > maxSigma))
+            foreach (var die in dice)
             {
-                if (Math.Abs(rollRange.Lower - lower) > minSigma)
+                for (var quantityAdjust = 0; quantityAdjust <= 1; quantityAdjust++)
                 {
-                    if (rollRange.Lower < lower)
-                        weightRollLower++;
-                    else
-                        weightRollLower--;
+                    for (var baseAdjust = (int)sigmaMin * -1; baseAdjust <= sigmaMin; baseAdjust++)
+                    {
+                        var candidate = new WeightRollPrototype(lower, upper, lowerMultiplier, upperMultiplier);
+                        candidate.Die = die;
 
-                    if (weightRollLower > weightRollUpper)
-                        weightRollLower = weightRollUpper;
+                        candidate.ComputeQuantityFloor();
+                        candidate.Quantity += quantityAdjust;
+
+                        candidate.ComputeBase();
+                        candidate.Base += baseAdjust;
+
+                        if (candidate.IsPerfectMatch())
+                            return candidate.Roll;
+
+                        if (candidate.UpperDiff == bestPrototype.UpperDiff && candidate.LowerDiff < bestPrototype.LowerDiff)
+                            bestPrototype = candidate;
+                        else if (candidate.UpperDiff < bestPrototype.UpperDiff && candidate.LowerDiff <= sigmaMin)
+                            bestPrototype = candidate;
+                    }
                 }
-
-                if (Math.Abs(rollRange.Upper - upper) > maxSigma)
-                {
-                    if (rollRange.Upper < upper)
-                        weightRollUpper++;
-                    else
-                        weightRollUpper--;
-
-                    if (weightRollLower > weightRollUpper)
-                        weightRollLower = weightRollUpper;
-                }
-
-                roll = RollHelper.GetRollWithFewestDice(weightRollLower, weightRollUpper);
-                rollRange = GetRollRange(roll, heightLength[creature]);
-                abortCount--;
             }
 
-            return roll;
+            if (bestPrototype.LowerDiff > sigmaMin || bestPrototype.UpperDiff > sigmaMax)
+            {
+                return $"NO VALID WEIGHT ROLL FOR [{lower},{upper}]. MULTIPLIER ROLL: {heightLength[creature]}; BEST GUESS: {bestPrototype.Roll}; LOWER DIFF: {bestPrototype.LowerDiff}; UPPER DIFF: {bestPrototype.UpperDiff}";
+            }
+
+            return bestPrototype.Roll;
         }
 
-        private (int Lower, int Upper) GetRollRange(string weightRoll, string multiplierRoll)
+        private class WeightRollPrototype
         {
-            var parsedWeightRoll = ParseRoll(weightRoll);
-            var parsedMultiplierRoll = ParseRoll(multiplierRoll);
+            public readonly int LowerMultiplier;
+            public readonly int UpperMultiplier;
+            public readonly int Lower;
+            public readonly int Upper;
 
-            var b = parsedWeightRoll.Adjustment;
-            var qM = parsedMultiplierRoll.Quantity;
-            var dM = parsedMultiplierRoll.Die;
-            var qW = parsedWeightRoll.Quantity;
-            var dW = parsedWeightRoll.Die;
+            public int Quantity { get; set; }
+            public int Die { get; set; }
+            public int Base { get; set; }
+            public string Roll => $"{Quantity}d{Die}+{Base}";
 
-            return (b + qM * qW, b + qM * dM * qW * dW);
+            public int LowerWeight => Base + LowerMultiplier * Quantity;
+            public int UpperWeight => Base + UpperMultiplier * Quantity * Die;
+
+            public int LowerDiff => Math.Abs(LowerWeight - Lower);
+            public int UpperDiff => Math.Abs(UpperWeight - Upper);
+
+            public WeightRollPrototype(int lower, int upper, int lowerMultiplier, int upperMultiplier)
+            {
+                Lower = lower;
+                Upper = upper;
+                LowerMultiplier = lowerMultiplier;
+                UpperMultiplier = upperMultiplier;
+            }
+
+            public void ComputeQuantityFloor()
+            {
+                Quantity = (int)Math.Floor((Upper - Lower) / (double)(UpperMultiplier * Die - LowerMultiplier));
+            }
+
+            public void ComputeBase()
+            {
+                Base = Lower - LowerMultiplier * Quantity;
+            }
+
+            public bool IsPerfectMatch() => LowerDiff == 0 && UpperDiff == 0;
+
+            public override string ToString() => Roll;
         }
 
         private Dictionary<string, string> GetMaxOfHeightLength(string creature)
@@ -2214,8 +2223,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         }
 
         [TestCase(CreatureConstants.Aboleth)]
+        [TestCase(CreatureConstants.AnimatedObject_Colossal)]
+        [TestCase(CreatureConstants.AnimatedObject_Medium)]
         [TestCase(CreatureConstants.AnimatedObject_Small)]
+        [TestCase(CreatureConstants.Arrowhawk_Elder)]
         [TestCase(CreatureConstants.Arrowhawk_Juvenile)]
+        [TestCase(CreatureConstants.Barghest)]
         [TestCase(CreatureConstants.Beholder)]
         [TestCase(CreatureConstants.Dragon_Silver_Young)]
         [TestCase(CreatureConstants.Gargoyle)]
@@ -2230,7 +2243,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 var range = genderKvp.Value;
 
                 var roll = GetTheoreticalWeightRoll(creature, range.Lower, range.Upper);
-                Assert.That(roll, Is.Not.Empty);
+                Assert.That(roll, Is.Not.Empty.And.Not.Contain("NO VALID WEIGHT ROLL"));
                 Assert.That(dice.Roll(roll).IsValid(), Is.True);
 
                 AssertRollRange(creature, gender, range.Lower, range.Upper, false);
@@ -2272,6 +2285,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
                 foreach (var genderKvp in creatureWeightRolls[creature].Where(kvp => kvp.Key != creature))
                 {
+                    Assert.That(genderKvp.Value, Is.Not.Empty.And.Not.Contain("NO VALID WEIGHT ROLL"), $"Base; {genderKvp.Key} {creature}");
+                    Assert.That(creatureWeightRolls[creature][creature], Is.Not.Empty.And.Not.Contain("NO VALID WEIGHT ROLL"), $"Base; {genderKvp.Key} {creature}");
+
                     var roll = dice.Roll($"{genderKvp.Value}+{multiplier[creature]}*{creatureWeightRolls[creature][creature]}").AsPotentialMinimum();
                     Assert.That(roll, Is.Positive);
                 }
