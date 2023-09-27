@@ -106,8 +106,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var weightBaseMax = dice.Roll(baseRoll).AsPotentialMaximum();
             var modifierMin = dice.Roll(modifierRoll).AsPotentialMinimum();
             var modifierMax = dice.Roll(modifierRoll).AsPotentialMaximum();
-            var minSigma = exact ? 0 : Math.Max(1, multiplierMin * modifierMin / 2);
-            var maxSigma = exact ? 0 : Math.Max(1, multiplierMax * modifierMax / 2);
+            //var minSigma = exact ? 0 : Math.Max(1, multiplierMin / 2);
+            var minSigma = exact ? 0 : Math.Max(1, multiplierMin - 1);
+            //var maxSigma = exact ? 0 : Math.Max(1, multiplierMax / 2);
+            var maxSigma = exact ? 0 : Math.Max(1, multiplierMax - 1);
 
             if (lower == 0 && upper == 0)
             {
@@ -2047,13 +2049,75 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 var rangeRoll = RollHelper.GetRollWithFewestDice(1, weightRollRange);
                 var parsedRangeRoll = ParseRoll(rangeRoll);
 
+                //Aboleth MAX: 5833 + (16d4) * (1d20) = 7113, but want 7150 +/- 32
+                //* if lower was 16 more (min mult), we would be good
+                //Beholder MIN: 4042 + (1d20) * (4d12) = 4046, but want 4050 +/- 1
+                //* if lower was 4 more (min mult), we would be good
+                //Beholder MAX: 4045 + (1d20) * (4d12) = 5005, but want 4950 +/- 10
+                //* if lower was 48 LESS (weight mult), we would be good
+                //Gargoyle MIN: 298 + (2d10) * (2d6) = 302, but want 304 +/- 1
+                //* if lower was 2 more (min mult / 2), we would be good
+                //Giant Stag Beetle MIN: -884 + (8d4) * (272d3) = 1292, but want 1564 +/- 4
+                //Silver Dragon, Young MAX: 2194 + (13d4) * (3d4?) = 2818, but want 2750 +/- 26
+
                 weightRollLower = lower - multiplierRoll.Quantity * parsedRangeRoll.Quantity;
             }
 
             var weightRollUpper = weightRollLower + weightRollRange - 1;
 
             var roll = RollHelper.GetRollWithFewestDice(weightRollLower, weightRollUpper);
+            var rollRange = GetRollRange(roll, heightLength[creature]);
+            //var minSigma = multiplierRoll.Quantity / 2;
+            var minSigma = multiplierRoll.Quantity - 1;
+            //var maxSigma = maxMultiplier / 2;
+            var maxSigma = maxMultiplier - 1;
+            var abortCount = 30;
+
+            while (abortCount > 0 && weightRollUpper > weightRollLower &&
+                (Math.Abs(rollRange.Lower - lower) > minSigma || Math.Abs(rollRange.Upper - upper) > maxSigma))
+            {
+                if (Math.Abs(rollRange.Lower - lower) > minSigma)
+                {
+                    if (rollRange.Lower < lower)
+                        weightRollLower++;
+                    else
+                        weightRollLower--;
+
+                    if (weightRollLower > weightRollUpper)
+                        weightRollLower = weightRollUpper;
+                }
+
+                if (Math.Abs(rollRange.Upper - upper) > maxSigma)
+                {
+                    if (rollRange.Upper < upper)
+                        weightRollUpper++;
+                    else
+                        weightRollUpper--;
+
+                    if (weightRollLower > weightRollUpper)
+                        weightRollLower = weightRollUpper;
+                }
+
+                roll = RollHelper.GetRollWithFewestDice(weightRollLower, weightRollUpper);
+                rollRange = GetRollRange(roll, heightLength[creature]);
+                abortCount--;
+            }
+
             return roll;
+        }
+
+        private (int Lower, int Upper) GetRollRange(string weightRoll, string multiplierRoll)
+        {
+            var parsedWeightRoll = ParseRoll(weightRoll);
+            var parsedMultiplierRoll = ParseRoll(multiplierRoll);
+
+            var b = parsedWeightRoll.Adjustment;
+            var qM = parsedMultiplierRoll.Quantity;
+            var dM = parsedMultiplierRoll.Die;
+            var qW = parsedWeightRoll.Quantity;
+            var dW = parsedWeightRoll.Die;
+
+            return (b + qM * qW, b + qM * dM * qW * dW);
         }
 
         private Dictionary<string, string> GetMaxOfHeightLength(string creature)
@@ -2077,6 +2141,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
         private (int Quantity, int Die, int Adjustment) ParseRoll(string roll)
         {
+            if (!roll.Contains('d'))
+                return (0, 0, Convert.ToInt32(roll));
+
             var sections = roll.Split('d', '+', '-');
             var q = Convert.ToInt32(sections[0]);
             var d = 1;
@@ -2146,6 +2213,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
         }
 
+        [TestCase(CreatureConstants.Aboleth)]
         [TestCase(CreatureConstants.AnimatedObject_Small)]
         [TestCase(CreatureConstants.Arrowhawk_Juvenile)]
         [TestCase(CreatureConstants.Beholder)]
