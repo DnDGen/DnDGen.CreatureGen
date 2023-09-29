@@ -2022,27 +2022,24 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
 
             var multiplierRoll = ParseRoll(heightLength[creature]);
-            var maxMultiplier = multiplierRoll.Quantity * multiplierRoll.Die;
-            var multiplierRange = maxMultiplier - multiplierRoll.Quantity + 1;
-            var weightRange = upper - lower + 1;
-            var weightRollLower = Math.Max(lower - multiplierRoll.Quantity, 1);
-
-            if (multiplierRange >= weightRange + multiplierRoll.Quantity)
-            {
-                var lightweightRoll = RollHelper.GetRollWithFewestDice(lower, upper);
-                return $"0+{lightweightRoll}";
-            }
-
-            if (multiplierRange >= weightRange - multiplierRoll.Quantity)
-            {
-                //INFO: We want the average to still land in the same place
-                weightRollLower -= Math.Max((multiplierRange - weightRange) / 2, 1);
-                return $"1+{weightRollLower}";
-            }
-
-            var dice = new[] { 100, 20, 12, 10, 8, 6, 4, 3, 2 };
             var lowerMultiplier = multiplierRoll.Quantity;
             var upperMultiplier = multiplierRoll.Quantity * multiplierRoll.Die;
+            var multiplierRange = upperMultiplier - lowerMultiplier;
+            var weightRange = upper - lower;
+
+            //if (multiplierRange >= weightRange + lowerMultiplier)
+            //{
+            //    var lightweightRoll = RollHelper.GetRollWithFewestDice(lower, upper);
+            //    return $"0+{lightweightRoll}";
+            //}
+
+            //if (multiplierRange >= weightRange - lowerMultiplier)
+            //{
+            //    var baseWeight = Math.Max(1, lower - Math.Max((multiplierRange - weightRange) / 2, 1));
+            //    return $"1+{baseWeight}";
+            //}
+
+            var dice = new[] { 100, 20, 12, 10, 8, 6, 4, 3, 2, 1 };
             var sigmaMin = new[] { 1d, (upper + lower) * 0.025, lowerMultiplier / 2d }.Max();
             var sigmaMax = new[] { 1d, (upper + lower) * 0.025, upperMultiplier / 2d }.Max();
 
@@ -2058,6 +2055,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             {
                 for (var quantityAdjust = 0; quantityAdjust <= 1; quantityAdjust++)
                 {
+                    //TODO: Do some shortcut to see if any level of base adj is valid.
+                    //Maybe -sigma, 0, +sigma
+
                     for (var baseAdjust = (int)sigmaMin * -1; baseAdjust <= sigmaMin; baseAdjust++)
                     {
                         var candidate = new WeightRollPrototype(lower, upper, lowerMultiplier, upperMultiplier);
@@ -2080,6 +2080,23 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 }
             }
 
+            if (bestPrototype.LowerDiff <= sigmaMin && bestPrototype.UpperDiff <= sigmaMax)
+                return bestPrototype.Roll;
+
+            var lastCandidate = new WeightRollPrototype(lower, upper, lowerMultiplier, upperMultiplier);
+            lastCandidate.Die = 0;
+
+            lastCandidate.ComputeQuantityFloor();
+            lastCandidate.ComputeBase();
+
+            if (lastCandidate.IsPerfectMatch())
+                return lastCandidate.Roll;
+
+            if (lastCandidate.UpperDiff == bestPrototype.UpperDiff && lastCandidate.LowerDiff < bestPrototype.LowerDiff)
+                bestPrototype = lastCandidate;
+            else if (lastCandidate.UpperDiff < bestPrototype.UpperDiff && lastCandidate.LowerDiff <= sigmaMin)
+                bestPrototype = lastCandidate;
+
             if (bestPrototype.LowerDiff > sigmaMin || bestPrototype.UpperDiff > sigmaMax)
             {
                 return $"NO VALID WEIGHT ROLL FOR [{lower},{upper}]. MULTIPLIER ROLL: {heightLength[creature]}; BEST GUESS: {bestPrototype.Roll}; LOWER DIFF: {bestPrototype.LowerDiff}; UPPER DIFF: {bestPrototype.UpperDiff}";
@@ -2098,10 +2115,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             public int Quantity { get; set; }
             public int Die { get; set; }
             public int Base { get; set; }
-            public string Roll => $"{Quantity}d{Die}+{Base}";
 
-            public int LowerWeight => Base + LowerMultiplier * Quantity;
-            public int UpperWeight => Base + UpperMultiplier * Quantity * Die;
+            private int MultiplierRange => UpperMultiplier - LowerMultiplier;
+            private int WeightRange => Upper - Lower;
+            public string Roll => Die == 0 ? $"0+{RollHelper.GetRollWithFewestDice(Lower, Upper)}"
+                : Die == 1 ? $"1+{Base}"
+                : $"{Quantity}d{Die}+{Base}";
+
+            private int EffectiveLowerBase => Die == 0 ? Lower : Base;
+            private int EffectiveUpperBase => Die == 0 ? Upper : Base;
+
+            public int LowerWeight => EffectiveLowerBase + LowerMultiplier * Quantity;
+            public int UpperWeight => EffectiveUpperBase + UpperMultiplier * Quantity * Die;
 
             public int LowerDiff => Math.Abs(LowerWeight - Lower);
             public int UpperDiff => Math.Abs(UpperWeight - Upper);
@@ -2116,11 +2141,29 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             public void ComputeQuantityFloor()
             {
-                Quantity = (int)Math.Floor((Upper - Lower) / (double)(UpperMultiplier * Die - LowerMultiplier));
+                if (Die == 0)
+                {
+                    Quantity = 0;
+                    return;
+                }
+
+                if (Die == 1)
+                {
+                    Quantity = 1;
+                    return;
+                }
+
+                Quantity = Math.Max(1, (int)Math.Floor((Upper - Lower) / (double)(UpperMultiplier * Die - LowerMultiplier)));
             }
 
             public void ComputeBase()
             {
+                //if (Die == 1)
+                //{
+                //    Base = Math.Max(1, Lower - Math.Max((MultiplierRange - WeightRange) / 2, 1));
+                //    return;
+                //}
+
                 Base = Lower - LowerMultiplier * Quantity;
             }
 
@@ -2222,14 +2265,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
         }
 
+        [TestCase(CreatureConstants.Aasimar)]
         [TestCase(CreatureConstants.Aboleth)]
         [TestCase(CreatureConstants.AnimatedObject_Colossal)]
         [TestCase(CreatureConstants.AnimatedObject_Medium)]
         [TestCase(CreatureConstants.AnimatedObject_Small)]
+        [TestCase(CreatureConstants.Arrowhawk_Adult)]
         [TestCase(CreatureConstants.Arrowhawk_Elder)]
         [TestCase(CreatureConstants.Arrowhawk_Juvenile)]
         [TestCase(CreatureConstants.Barghest)]
         [TestCase(CreatureConstants.Beholder)]
+        [TestCase(CreatureConstants.ChainDevil_Kyton)]
         [TestCase(CreatureConstants.Dragon_Silver_Young)]
         [TestCase(CreatureConstants.Gargoyle)]
         [TestCase(CreatureConstants.Raven)]
