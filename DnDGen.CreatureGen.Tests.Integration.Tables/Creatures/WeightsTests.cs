@@ -481,8 +481,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.dimensions.com/element/nile-crocodile-crocodylus-niloticus
             weights[CreatureConstants.Crocodile][GenderConstants.Female] = (496, 1102);
             weights[CreatureConstants.Crocodile][GenderConstants.Male] = (496, 1102);
-            //Source: https://www.dimensions.com/element/saltwater-crocodile-crocodylus-porosus Using male range, adjusting female upper
-            weights[CreatureConstants.Crocodile_Giant][GenderConstants.Female] = (180, 1500);
+            //Source: https://www.dimensions.com/element/saltwater-crocodile-crocodylus-porosus Using male for both, as female is so low that is causes problems
+            weights[CreatureConstants.Crocodile_Giant][GenderConstants.Female] = (880, 2200);
             weights[CreatureConstants.Crocodile_Giant][GenderConstants.Male] = (880, 2200);
             //Source: https://forgottenrealms.fandom.com/wiki/Hydra
             weights[CreatureConstants.Cryohydra_5Heads][GenderConstants.Female] = GetRangeFromAverage(4000);
@@ -2022,154 +2022,61 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
 
             var multiplierRoll = ParseRoll(heightLength[creature]);
-            var lowerMultiplier = multiplierRoll.Quantity;
-            var upperMultiplier = multiplierRoll.Quantity * multiplierRoll.Die;
-            var multiplierRange = upperMultiplier - lowerMultiplier;
-            var weightRange = upper - lower;
+            var dice = new[] { 100, 20, 12, 10, 8, 6, 4, 3, 2 };
 
-            //if (multiplierRange >= weightRange + lowerMultiplier)
-            //{
-            //    var lightweightRoll = RollHelper.GetRollWithFewestDice(lower, upper);
-            //    return $"0+{lightweightRoll}";
-            //}
-
-            //if (multiplierRange >= weightRange - lowerMultiplier)
-            //{
-            //    var baseWeight = Math.Max(1, lower - Math.Max((multiplierRange - weightRange) / 2, 1));
-            //    return $"1+{baseWeight}";
-            //}
-
-            var dice = new[] { 100, 20, 12, 10, 8, 6, 4, 3, 2, 1 };
-            var sigmaMin = new[] { 1d, (upper + lower) * 0.025, lowerMultiplier / 2d }.Max();
-            var sigmaMax = new[] { 1d, (upper + lower) * 0.025, upperMultiplier / 2d }.Max();
-
-            var bestPrototype = new WeightRollPrototype(lower, upper, lowerMultiplier, upperMultiplier);
+            var bestPrototype = new WeightRollPrototype(lower, upper, multiplierRoll.Quantity, multiplierRoll.Quantity * multiplierRoll.Die);
             bestPrototype.Die = dice[0];
-            bestPrototype.ComputeQuantityFloor();
-            bestPrototype.ComputeBase();
+            bestPrototype.SetQuantityFloor(0);
+            bestPrototype.SetBase(0);
 
             if (bestPrototype.IsPerfectMatch())
                 return bestPrototype.Roll;
 
             foreach (var die in dice)
             {
+                if (!bestPrototype.CouldBeValid(die))
+                    continue;
+
                 for (var quantityAdjust = 0; quantityAdjust <= 1; quantityAdjust++)
                 {
-                    //TODO: Do some shortcut to see if any level of base adj is valid.
-                    //Maybe -sigma, 0, +sigma
+                    if (!bestPrototype.CouldBeValid(die, quantityAdjust))
+                        continue;
 
-                    for (var baseAdjust = (int)sigmaMin * -1; baseAdjust <= sigmaMin; baseAdjust++)
+                    for (var baseAdjust = (int)bestPrototype.SigmaMin * -1; baseAdjust <= bestPrototype.SigmaMin; baseAdjust++)
                     {
-                        var candidate = new WeightRollPrototype(lower, upper, lowerMultiplier, upperMultiplier);
-                        candidate.Die = die;
+                        bestPrototype = bestPrototype.GetBest(die, quantityAdjust, baseAdjust);
 
-                        candidate.ComputeQuantityFloor();
-                        candidate.Quantity += quantityAdjust;
-
-                        candidate.ComputeBase();
-                        candidate.Base += baseAdjust;
-
-                        if (candidate.IsPerfectMatch())
-                            return candidate.Roll;
-
-                        if (candidate.UpperDiff == bestPrototype.UpperDiff && candidate.LowerDiff < bestPrototype.LowerDiff)
-                            bestPrototype = candidate;
-                        else if (candidate.UpperDiff < bestPrototype.UpperDiff && candidate.LowerDiff <= sigmaMin)
-                            bestPrototype = candidate;
+                        if (bestPrototype.IsPerfectMatch())
+                            return bestPrototype.Roll;
                     }
                 }
             }
 
-            if (bestPrototype.LowerDiff <= sigmaMin && bestPrototype.UpperDiff <= sigmaMax)
+            if (bestPrototype.IsValid)
                 return bestPrototype.Roll;
 
-            var lastCandidate = new WeightRollPrototype(lower, upper, lowerMultiplier, upperMultiplier);
-            lastCandidate.Die = 0;
+            if (bestPrototype.CouldBeValid(1, 0))
+            {
+                for (var baseAdjust = (int)bestPrototype.SigmaMin * -1; baseAdjust <= bestPrototype.SigmaMin; baseAdjust++)
+                {
+                    bestPrototype = bestPrototype.GetBest(1, 0, baseAdjust);
 
-            lastCandidate.ComputeQuantityFloor();
-            lastCandidate.ComputeBase();
+                    if (bestPrototype.IsPerfectMatch())
+                        return bestPrototype.Roll;
+                }
+            }
 
-            if (lastCandidate.IsPerfectMatch())
-                return lastCandidate.Roll;
+            if (bestPrototype.IsValid)
+                return bestPrototype.Roll;
 
-            if (lastCandidate.UpperDiff == bestPrototype.UpperDiff && lastCandidate.LowerDiff < bestPrototype.LowerDiff)
-                bestPrototype = lastCandidate;
-            else if (lastCandidate.UpperDiff < bestPrototype.UpperDiff && lastCandidate.LowerDiff <= sigmaMin)
-                bestPrototype = lastCandidate;
+            bestPrototype = bestPrototype.GetBest(0, 0, 0);
 
-            if (bestPrototype.LowerDiff > sigmaMin || bestPrototype.UpperDiff > sigmaMax)
+            if (!bestPrototype.IsValid)
             {
                 return $"NO VALID WEIGHT ROLL FOR [{lower},{upper}]. MULTIPLIER ROLL: {heightLength[creature]}; BEST GUESS: {bestPrototype.Roll}; LOWER DIFF: {bestPrototype.LowerDiff}; UPPER DIFF: {bestPrototype.UpperDiff}";
             }
 
             return bestPrototype.Roll;
-        }
-
-        private class WeightRollPrototype
-        {
-            public readonly int LowerMultiplier;
-            public readonly int UpperMultiplier;
-            public readonly int Lower;
-            public readonly int Upper;
-
-            public int Quantity { get; set; }
-            public int Die { get; set; }
-            public int Base { get; set; }
-
-            private int MultiplierRange => UpperMultiplier - LowerMultiplier;
-            private int WeightRange => Upper - Lower;
-            public string Roll => Die == 0 ? $"0+{RollHelper.GetRollWithFewestDice(Lower, Upper)}"
-                : Die == 1 ? $"1+{Base}"
-                : $"{Quantity}d{Die}+{Base}";
-
-            private int EffectiveLowerBase => Die == 0 ? Lower : Base;
-            private int EffectiveUpperBase => Die == 0 ? Upper : Base;
-
-            public int LowerWeight => EffectiveLowerBase + LowerMultiplier * Quantity;
-            public int UpperWeight => EffectiveUpperBase + UpperMultiplier * Quantity * Die;
-
-            public int LowerDiff => Math.Abs(LowerWeight - Lower);
-            public int UpperDiff => Math.Abs(UpperWeight - Upper);
-
-            public WeightRollPrototype(int lower, int upper, int lowerMultiplier, int upperMultiplier)
-            {
-                Lower = lower;
-                Upper = upper;
-                LowerMultiplier = lowerMultiplier;
-                UpperMultiplier = upperMultiplier;
-            }
-
-            public void ComputeQuantityFloor()
-            {
-                if (Die == 0)
-                {
-                    Quantity = 0;
-                    return;
-                }
-
-                if (Die == 1)
-                {
-                    Quantity = 1;
-                    return;
-                }
-
-                Quantity = Math.Max(1, (int)Math.Floor((Upper - Lower) / (double)(UpperMultiplier * Die - LowerMultiplier)));
-            }
-
-            public void ComputeBase()
-            {
-                //if (Die == 1)
-                //{
-                //    Base = Math.Max(1, Lower - Math.Max((MultiplierRange - WeightRange) / 2, 1));
-                //    return;
-                //}
-
-                Base = Lower - LowerMultiplier * Quantity;
-            }
-
-            public bool IsPerfectMatch() => LowerDiff == 0 && UpperDiff == 0;
-
-            public override string ToString() => Roll;
         }
 
         private Dictionary<string, string> GetMaxOfHeightLength(string creature)
@@ -2270,12 +2177,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.AnimatedObject_Colossal)]
         [TestCase(CreatureConstants.AnimatedObject_Medium)]
         [TestCase(CreatureConstants.AnimatedObject_Small)]
+        [TestCase(CreatureConstants.AnimatedObject_Tiny)]
         [TestCase(CreatureConstants.Arrowhawk_Adult)]
         [TestCase(CreatureConstants.Arrowhawk_Elder)]
         [TestCase(CreatureConstants.Arrowhawk_Juvenile)]
         [TestCase(CreatureConstants.Barghest)]
         [TestCase(CreatureConstants.Beholder)]
+        [TestCase(CreatureConstants.Cat)]
         [TestCase(CreatureConstants.ChainDevil_Kyton)]
+        [TestCase(CreatureConstants.Crocodile_Giant)]
         [TestCase(CreatureConstants.Dragon_Silver_Young)]
         [TestCase(CreatureConstants.Gargoyle)]
         [TestCase(CreatureConstants.Raven)]
