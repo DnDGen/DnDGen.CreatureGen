@@ -24,8 +24,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public int LowerWeight => ComputeLowerWeight(Die == 0 ? Lower : Base, Quantity);
         public int UpperWeight => ComputeUpperWeight(Die == 0 ? Upper : Base, Quantity, Die);
 
-        public int LowerDiff => Math.Abs(LowerWeight - Lower);
-        public int UpperDiff => Math.Abs(UpperWeight - Upper);
+        public int LowerDiff => ComputeDiff(LowerWeight, Lower);
+        public int UpperDiff => ComputeDiff(UpperWeight, Upper);
 
         public bool IsValid => UpperDiff <= SigmaMax && LowerDiff <= SigmaMin && LowerWeight > 0;
 
@@ -42,12 +42,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
         public void SetQuantityFloor(int adjust)
         {
-            Quantity = ComputeQuantityFloor(adjust);
+            Quantity = ComputeQuantityFloor(adjust, Die);
         }
 
         public void SetBase(int adjust)
         {
-            Base = ComputeBase(adjust);
+            Base = ComputeBase(adjust, Quantity);
         }
 
         public bool IsPerfectMatch() => LowerDiff == 0 && UpperDiff == 0;
@@ -77,58 +77,59 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return this;
         }
 
-        public int ComputeQuantityFloor(int adjust)
+        private int ComputeQuantityFloor(int adjust, int die)
         {
-            if (Die == 0)
+            if (die == 0)
             {
                 return adjust;
             }
 
-            if (Die == 1)
+            if (die == 1)
             {
                 return 1 + adjust;
             }
 
-            return Math.Max(1, (int)Math.Floor((Upper - Lower) / (double)(UpperMultiplier * Die - LowerMultiplier))) + adjust;
+            return Math.Max(1, (int)Math.Floor((Upper - Lower) / (double)(UpperMultiplier * die - LowerMultiplier))) + adjust;
         }
-        private int ComputeBase(int adjust) => Lower - LowerMultiplier * Quantity + adjust;
+
+        private int ComputeBase(int adjust, int quantity) => Lower - LowerMultiplier * quantity + adjust;
         private int ComputeLowerWeight(int baseWeight, int quantity) => baseWeight + LowerMultiplier * quantity;
         private int ComputeUpperWeight(int baseWeight, int quantity, int die) => baseWeight + UpperMultiplier * quantity * die;
+        private int ComputeDiff(int weight, int target) => Math.Abs(weight - target);
 
-        public bool CouldBeValid(int die)
+        public bool CouldBeBetter(int die, int quantityAdjust)
         {
-            //If lowest base has upper still too high, no
-            var lowerBase = ComputeBase((int)SigmaMin * -1);
-            var lowerQuantity = ComputeQuantityFloor(0);
-            var lowerHigh = ComputeUpperWeight(lowerBase, lowerQuantity, die);
-
-            if (lowerHigh > Upper + SigmaMax)
+            if (!CouldBeValid(die, quantityAdjust))
                 return false;
 
-            //If highest base has upper still too low, no
-            var upperBase = ComputeBase((int)SigmaMin);
-            var upperQuantity = ComputeQuantityFloor(1);
+            var lowerQuantity = ComputeQuantityFloor(quantityAdjust, die);
+            var lowerBase = ComputeBase((int)SigmaMin * -1, lowerQuantity);
+            var lowerHigh = ComputeUpperWeight(lowerBase, lowerQuantity, die);
+
+            var upperQuantity = ComputeQuantityFloor(quantityAdjust, die);
+            var upperBase = ComputeBase((int)SigmaMin, upperQuantity);
             var upperHigh = ComputeUpperWeight(upperBase, upperQuantity, die);
 
-            if (upperHigh < Upper - SigmaMax)
-                return false;
+            if (lowerHigh <= Upper && upperHigh >= Upper)
+                return true;
 
-            return true;
+            return ComputeDiff(lowerHigh, Upper) <= UpperDiff
+                || ComputeDiff(upperHigh, Upper) <= UpperDiff;
         }
 
-        public bool CouldBeValid(int die, int quantityAdjust)
+        public bool CouldBeValid(int die, int quantityAdjust = -666)
         {
             //If lowest base has upper still too high, no
-            var lowerBase = ComputeBase((int)SigmaMin * -1);
-            var lowerQuantity = ComputeQuantityFloor(quantityAdjust);
+            var lowerQuantity = ComputeQuantityFloor(quantityAdjust == -666 ? 0 : quantityAdjust, die);
+            var lowerBase = ComputeBase((int)SigmaMin * -1, lowerQuantity);
             var lowerHigh = ComputeUpperWeight(lowerBase, lowerQuantity, die);
 
             if (lowerHigh > Upper + SigmaMax)
                 return false;
 
             //If highest base has upper still too low, no
-            var upperBase = ComputeBase((int)SigmaMin);
-            var upperQuantity = ComputeQuantityFloor(quantityAdjust);
+            var upperQuantity = ComputeQuantityFloor(quantityAdjust == -666 ? 1 : quantityAdjust, die);
+            var upperBase = ComputeBase((int)SigmaMin, upperQuantity);
             var upperHigh = ComputeUpperWeight(upperBase, upperQuantity, die);
 
             if (upperHigh < Upper - SigmaMax)

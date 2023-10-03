@@ -25,6 +25,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         private Dictionary<string, Dictionary<string, string>> lengths;
         private Dictionary<string, Dictionary<string, (int Lower, int Upper)>> creatureWeightRanges;
         private Dictionary<string, Dictionary<string, string>> creatureWeightRolls;
+        private Dictionary<string, string> rollCache;
 
         [OneTimeSetUp]
         public void OneTimeSetup()
@@ -33,6 +34,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths = LengthsTests.GetCreatureLengths();
             creatureWeightRanges = GetCreatureWeightRanges();
             creatureWeightRolls = GetCreatureWeightRolls();
+            rollCache = new Dictionary<string, string>();
         }
 
         [SetUp]
@@ -54,6 +56,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         {
             Assert.That(creatureWeightRolls, Contains.Key(name));
 
+            if (!creatureWeightRolls[name].Any())
+            {
+                AddWeightRoll(name);
+            }
+
             var rolls = creatureWeightRolls[name];
             var genders = collectionSelector.SelectFrom(TableNameConstants.Collection.Genders, name);
             Assert.That(rolls.Keys, Is.EquivalentTo(genders.Union(new[] { name })).And.Not.Empty, $"TEST DATA: {name}");
@@ -69,6 +76,31 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertTypesAndAmounts(name, rolls);
         }
 
+        private void AddWeightRoll(string creature)
+        {
+            if (!creatureWeightRanges[creature].Values.Any())
+            {
+                creatureWeightRolls[creature][creature] = "NOT A VALID ROLL: NO GENDERS";
+                return;
+            }
+
+            var genders = creatureWeightRanges[creature].Keys;
+            var range = creatureWeightRanges[creature].Values.First();
+
+            if (range.Upper < range.Lower)
+                throw new Exception($"{creature} has an invalid range of weights: [{range.Lower},{range.Upper}]");
+
+            creatureWeightRolls[creature][creature] = GetMultiplierFromRange(creature, range.Lower, range.Upper);
+
+            foreach (var gender in genders)
+            {
+                creatureWeightRolls[creature][gender] = GetBaseFromRange(
+                    creature,
+                    creatureWeightRanges[creature][gender].Lower,
+                    creatureWeightRanges[creature][gender].Upper);
+            }
+        }
+
         [Test]
         public void CreatureWeightRollsAreValidForRanges()
         {
@@ -80,6 +112,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 var formattedRanges = string.Join("; ", ranges.Select(r => $"{r.Key}: {r.Value}"));
                 Assert.That(ranges.Values, Is.Not.Empty, $"{creature} has no genders");
                 Assert.That(ranges.Values, Is.All.EqualTo(ranges.Values.First()), $"{creature} dimorphic ranges unequal. {formattedRanges}");
+
+                var modifierRolls = kvp.Value.ToDictionary(g => g.Key, g => GetMultiplierFromRange(creature, g.Value.Lower, g.Value.Upper));
+                var formattedModifierRolls = string.Join("; ", modifierRolls.Select(r => $"{r.Key}: {r.Value}"));
+                Assert.That(modifierRolls.Values, Is.Not.Empty, $"{creature} has no genders");
+                Assert.That(modifierRolls.Values, Is.All.EqualTo(modifierRolls.Values.First()), $"{creature} dimorphic modifier rolls unequal. {formattedModifierRolls}");
 
                 foreach (var genderKvp in kvp.Value)
                 {
@@ -100,6 +137,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var multiplierMax = dice.Roll(heightLength[creature]).AsPotentialMaximum();
 
             Assert.That(creatureWeightRolls, Contains.Key(creature));
+
+            if (!creatureWeightRolls[creature].Any())
+            {
+                AddWeightRoll(creature);
+            }
+
             Assert.That(creatureWeightRolls[creature], Contains.Key(creature).And.ContainKey(gender));
 
             var baseRoll = creatureWeightRolls[creature][gender];
@@ -481,8 +524,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.dimensions.com/element/nile-crocodile-crocodylus-niloticus
             weights[CreatureConstants.Crocodile][GenderConstants.Female] = (496, 1102);
             weights[CreatureConstants.Crocodile][GenderConstants.Male] = (496, 1102);
-            //Source: https://www.dimensions.com/element/saltwater-crocodile-crocodylus-porosus Using male for both, as female is so low that is causes problems
-            weights[CreatureConstants.Crocodile_Giant][GenderConstants.Female] = (880, 2200);
+            //Source: https://www.dimensions.com/element/saltwater-crocodile-crocodylus-porosus Using male range, adjust female upper
+            weights[CreatureConstants.Crocodile_Giant][GenderConstants.Female] = (180, 1500);
             weights[CreatureConstants.Crocodile_Giant][GenderConstants.Male] = (880, 2200);
             //Source: https://forgottenrealms.fandom.com/wiki/Hydra
             weights[CreatureConstants.Cryohydra_5Heads][GenderConstants.Female] = GetRangeFromAverage(4000);
@@ -1762,39 +1805,30 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 var creature = kvp.Key;
                 weights[creature] = new Dictionary<string, string>();
 
-                if (!kvp.Value.Values.Any())
-                {
-                    weights[creature][creature] = "NOT A VALID ROLL: NO GENDERS";
-                    continue;
-                }
+                //if (!kvp.Value.Values.Any())
+                //{
+                //    weights[creature][creature] = "NOT A VALID ROLL: NO GENDERS";
+                //    continue;
+                //}
 
-                var genders = kvp.Value.Keys;
-                var range = kvp.Value.Values.First();
+                //var genders = kvp.Value.Keys;
+                //var range = kvp.Value.Values.First();
 
-                if (range.Upper < range.Lower)
-                    throw new Exception($"{creature} has an invalid range of weights: [{range.Lower},{range.Upper}]");
+                //if (range.Upper < range.Lower)
+                //    throw new Exception($"{creature} has an invalid range of weights: [{range.Lower},{range.Upper}]");
 
-                weights[creature][creature] = GetMultiplierFromRange(creature, range.Lower, range.Upper);
+                //weights[creature][creature] = GetMultiplierFromRange(creature, range.Lower, range.Upper);
 
-                foreach (var gender in genders)
-                {
-                    weights[creature][gender] = GetBaseFromRange(creature, kvp.Value[gender].Lower, kvp.Value[gender].Upper);
-                }
+                //foreach (var gender in genders)
+                //{
+                //    weights[creature][gender] = GetBaseFromRange(creature, kvp.Value[gender].Lower, kvp.Value[gender].Upper);
+                //}
             }
-
-            //Source: https://www.d20srd.org/srd/description.htm#vitalStatistics
-            weights[CreatureConstants.Human][GenderConstants.Female] = "85";
-            weights[CreatureConstants.Human][GenderConstants.Male] = "120";
-            weights[CreatureConstants.Human][CreatureConstants.Human] = "2d4";
 
             //Incorporeal, so weight is 0
             weights[CreatureConstants.Allip][GenderConstants.Female] = "0";
             weights[CreatureConstants.Allip][GenderConstants.Male] = "0";
             weights[CreatureConstants.Allip][CreatureConstants.Allip] = "0";
-            //INFO: Basing off of humans
-            weights[CreatureConstants.Bodak][GenderConstants.Female] = weights[CreatureConstants.Human][GenderConstants.Female];
-            weights[CreatureConstants.Bodak][GenderConstants.Male] = weights[CreatureConstants.Human][GenderConstants.Male];
-            weights[CreatureConstants.Bodak][CreatureConstants.Bodak] = weights[CreatureConstants.Human][CreatureConstants.Human];
             //Source: https://www.d20srd.org/srd/description.htm#vitalStatistics
             weights[CreatureConstants.Dwarf_Deep][GenderConstants.Female] = "100";
             weights[CreatureConstants.Dwarf_Deep][GenderConstants.Male] = "130";
@@ -1850,9 +1884,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Gnome_Svirfneblin][GenderConstants.Female] = "35";
             weights[CreatureConstants.Gnome_Svirfneblin][GenderConstants.Male] = "40";
             weights[CreatureConstants.Gnome_Svirfneblin][CreatureConstants.Gnome_Svirfneblin] = "1";
-            //Source: https://www.d20srd.org/srd/monsters/hag.htm#greenHag Female human
-            weights[CreatureConstants.GreenHag][GenderConstants.Female] = "85";
-            weights[CreatureConstants.GreenHag][CreatureConstants.GreenHag] = "2d4";
             //Source: https://www.d20srd.org/srd/description.htm#vitalStatistics
             weights[CreatureConstants.Halfling_Deep][GenderConstants.Female] = "25";
             weights[CreatureConstants.Halfling_Deep][GenderConstants.Male] = "30";
@@ -1863,55 +1894,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Halfling_Tallfellow][GenderConstants.Female] = "25";
             weights[CreatureConstants.Halfling_Tallfellow][GenderConstants.Male] = "30";
             weights[CreatureConstants.Halfling_Tallfellow][CreatureConstants.Halfling_Tallfellow] = "1";
+            //Source: https://www.d20srd.org/srd/description.htm#vitalStatistics
+            weights[CreatureConstants.Human][GenderConstants.Female] = "85";
+            weights[CreatureConstants.Human][GenderConstants.Male] = "120";
+            weights[CreatureConstants.Human][CreatureConstants.Human] = "2d4";
             //Since they float and are just balls of light, say weight is 0
             weights[CreatureConstants.LanternArchon][GenderConstants.Agender] = "0";
             weights[CreatureConstants.LanternArchon][CreatureConstants.LanternArchon] = "0";
-            //Source: https://www.d20srd.org/srd/monsters/nightHag.htm
-            weights[CreatureConstants.NightHag][GenderConstants.Female] = "85";
-            weights[CreatureConstants.NightHag][CreatureConstants.NightHag] = "2d4";
-            //Source: https://www.d20srd.org/srd/monsters/nymph.htm
-            weights[CreatureConstants.Nymph][GenderConstants.Female] = "80";
-            weights[CreatureConstants.Nymph][CreatureConstants.Nymph] = "1d6";
             //Source: https://www.d20srd.org/srd/description.htm#vitalStatistics
             weights[CreatureConstants.Orc_Half][GenderConstants.Female] = "110";
             weights[CreatureConstants.Orc_Half][GenderConstants.Male] = "150";
             weights[CreatureConstants.Orc_Half][CreatureConstants.Orc_Half] = "2d6";
-            //Source: https://www.d20srd.org/srd/monsters/rakshasa.htm
-            weights[CreatureConstants.Rakshasa][GenderConstants.Female] = "85";
-            weights[CreatureConstants.Rakshasa][GenderConstants.Male] = "120";
-            weights[CreatureConstants.Rakshasa][CreatureConstants.Rakshasa] = "2d4";
-            //Source: https://www.d20srd.org/srd/monsters/satyr.htm - copy from Half-Elf
-            weights[CreatureConstants.Satyr][GenderConstants.Male] = "100";
-            weights[CreatureConstants.Satyr][CreatureConstants.Satyr] = "2d4";
-            weights[CreatureConstants.Satyr_WithPipes][GenderConstants.Male] = "100";
-            weights[CreatureConstants.Satyr_WithPipes][CreatureConstants.Satyr_WithPipes] = "2d4";
-            //Source: https://www.d20srd.org/srd/monsters/hag.htm - copy from Human
-            weights[CreatureConstants.SeaHag][GenderConstants.Female] = "85";
-            weights[CreatureConstants.SeaHag][CreatureConstants.SeaHag] = "2d4";
             //Source: https://www.d20srd.org/srd/monsters/shadow.htm
             weights[CreatureConstants.Shadow][GenderConstants.Agender] = "0";
             weights[CreatureConstants.Shadow][CreatureConstants.Shadow] = "0";
             weights[CreatureConstants.Shadow_Greater][GenderConstants.Agender] = "0";
             weights[CreatureConstants.Shadow_Greater][CreatureConstants.Shadow_Greater] = "0";
-            //Source: https://www.d20srd.org/srd/monsters/skum.htm Copying from Human
-            weights[CreatureConstants.Skum][GenderConstants.Female] = "85";
-            weights[CreatureConstants.Skum][GenderConstants.Male] = "120";
-            weights[CreatureConstants.Skum][CreatureConstants.Skum] = "2d4";
             weights[CreatureConstants.Spectre][GenderConstants.Female] = "0";
             weights[CreatureConstants.Spectre][GenderConstants.Male] = "0";
             weights[CreatureConstants.Spectre][CreatureConstants.Spectre] = "0";
-            //Source: https://www.d20srd.org/srd/monsters/triton.htm Copying from Human
-            weights[CreatureConstants.Triton][GenderConstants.Female] = "85";
-            weights[CreatureConstants.Triton][GenderConstants.Male] = "120";
-            weights[CreatureConstants.Triton][CreatureConstants.Triton] = "2d4";
-            //Source: https://www.d20srd.org/srd/monsters/vampire.htm#vampireSpawn Copying from Human
-            weights[CreatureConstants.VampireSpawn][GenderConstants.Female] = "85";
-            weights[CreatureConstants.VampireSpawn][GenderConstants.Male] = "120";
-            weights[CreatureConstants.VampireSpawn][CreatureConstants.VampireSpawn] = "2d4";
-            //Source: https://www.d20srd.org/srd/monsters/wight.htm Copy from Human
-            weights[CreatureConstants.Wight][GenderConstants.Female] = "85";
-            weights[CreatureConstants.Wight][GenderConstants.Male] = "120";
-            weights[CreatureConstants.Wight][CreatureConstants.Wight] = "2d4";
             //Source: https://www.d20srd.org/srd/monsters/wraith.htm
             weights[CreatureConstants.Wraith][GenderConstants.Agender] = "0";
             weights[CreatureConstants.Wraith][CreatureConstants.Wraith] = "0";
@@ -1969,13 +1970,37 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
         private string GetFromRange(string creature, int lower, int upper, int index)
         {
-            var roll = GetTheoreticalWeightRoll(creature, lower, upper);
+            var roll = string.Empty;
+            var cacheKey = GetCacheKey(creature, lower, upper);
+
+            if (rollCache.ContainsKey(cacheKey))
+            {
+                roll = rollCache[cacheKey];
+            }
+            else
+            {
+                roll = GetTheoreticalWeightRoll(creature, lower, upper);
+            }
+
             if (string.IsNullOrEmpty(roll))
                 return string.Empty;
             else if (roll.Contains("NO VALID WEIGHT ROLL"))
                 return roll;
 
             return GetFromRoll(roll, index);
+        }
+
+        private string GetCacheKey(string creature, int lower, int upper)
+        {
+            var heightLength = GetMaxOfHeightLength(creature);
+            if (!heightLength.Any())
+            {
+                return string.Empty;
+            }
+
+            var multiplierRoll = ParseRoll(heightLength[creature]);
+
+            return $"{lower};{upper};{multiplierRoll.Quantity};{multiplierRoll.Quantity * multiplierRoll.Die}";
         }
 
         private string GetFromRoll(string roll, int index)
@@ -2039,7 +2064,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
                 for (var quantityAdjust = 0; quantityAdjust <= 1; quantityAdjust++)
                 {
-                    if (!bestPrototype.CouldBeValid(die, quantityAdjust))
+                    if (!bestPrototype.CouldBeBetter(die, quantityAdjust))
                         continue;
 
                     for (var baseAdjust = (int)bestPrototype.SigmaMin * -1; baseAdjust <= bestPrototype.SigmaMin; baseAdjust++)
@@ -2055,7 +2080,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             if (bestPrototype.IsValid)
                 return bestPrototype.Roll;
 
-            if (bestPrototype.CouldBeValid(1, 0))
+            if (bestPrototype.CouldBeBetter(1, 0))
             {
                 for (var baseAdjust = (int)bestPrototype.SigmaMin * -1; baseAdjust <= bestPrototype.SigmaMin; baseAdjust++)
                 {
@@ -2101,7 +2126,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         private (int Quantity, int Die, int Adjustment) ParseRoll(string roll)
         {
             if (!roll.Contains('d'))
-                return (0, 0, Convert.ToInt32(roll));
+            {
+                if (!roll.Contains('+'))
+                    return (0, 0, Convert.ToInt32(roll));
+
+                var subsections = roll.Split('+', '-');
+                var subq = Convert.ToInt32(subsections[0]);
+                var suba = 0;
+
+                if (subsections.Length > 1)
+                    suba = Convert.ToInt32(subsections[1]);
+
+                if (roll.Contains('-'))
+                    suba *= -1;
+
+                return (subq, 1, suba);
+            }
 
             var sections = roll.Split('d', '+', '-');
             var q = Convert.ToInt32(sections[0]);
@@ -2121,7 +2161,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         }
 
         [TestCase(CreatureConstants.Allip)]
-        [TestCase(CreatureConstants.Bodak)]
         [TestCase(CreatureConstants.Dwarf_Deep)]
         [TestCase(CreatureConstants.Dwarf_Duergar)]
         [TestCase(CreatureConstants.Dwarf_Hill)]
@@ -2139,36 +2178,59 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Gnome_Forest)]
         [TestCase(CreatureConstants.Gnome_Rock)]
         [TestCase(CreatureConstants.Gnome_Svirfneblin)]
-        [TestCase(CreatureConstants.GreenHag)]
         [TestCase(CreatureConstants.Halfling_Deep)]
         [TestCase(CreatureConstants.Halfling_Lightfoot)]
         [TestCase(CreatureConstants.Halfling_Tallfellow)]
         [TestCase(CreatureConstants.Human)]
         [TestCase(CreatureConstants.LanternArchon)]
-        [TestCase(CreatureConstants.NightHag)]
-        [TestCase(CreatureConstants.Nymph)]
         [TestCase(CreatureConstants.Orc_Half)]
-        [TestCase(CreatureConstants.Rakshasa)]
-        [TestCase(CreatureConstants.Satyr)]
-        [TestCase(CreatureConstants.Satyr_WithPipes)]
-        [TestCase(CreatureConstants.SeaHag)]
         [TestCase(CreatureConstants.Shadow)]
         [TestCase(CreatureConstants.Shadow_Greater)]
-        [TestCase(CreatureConstants.Skum)]
         [TestCase(CreatureConstants.Spectre)]
-        [TestCase(CreatureConstants.Triton)]
-        [TestCase(CreatureConstants.VampireSpawn)]
-        [TestCase(CreatureConstants.Wight)]
         [TestCase(CreatureConstants.Wraith)]
         [TestCase(CreatureConstants.Wraith_Dread)]
         public void HardCodedWeightRollMatchesRange(string creature)
         {
+            if (!creatureWeightRolls[creature].Any())
+            {
+                AddWeightRoll(creature);
+            }
+
             foreach (var genderKvp in creatureWeightRanges[creature])
             {
                 var gender = genderKvp.Key;
                 var range = genderKvp.Value;
 
                 AssertRollRange(creature, gender, range.Lower, range.Upper, true);
+
+                if (range.Lower > 0)
+                {
+                    var roll = string.Empty;
+                    var cacheKey = GetCacheKey(creature, range.Lower, range.Upper);
+
+                    if (rollCache.ContainsKey(cacheKey))
+                    {
+                        roll = rollCache[cacheKey];
+                    }
+                    else
+                    {
+                        roll = GetTheoreticalWeightRoll(creature, range.Lower, range.Upper);
+                    }
+
+                    var parsedRoll = ParseRoll(roll);
+
+                    if (parsedRoll.Die > 1)
+                        Assert.That($"{parsedRoll.Quantity}d{parsedRoll.Die}", Is.EqualTo(creatureWeightRolls[creature][creature]));
+                    else
+                        Assert.That(parsedRoll.Quantity.ToString(), Is.EqualTo(creatureWeightRolls[creature][creature]));
+
+                    Assert.That(parsedRoll.Adjustment.ToString(), Is.EqualTo(creatureWeightRolls[creature][gender]));
+                }
+                else
+                {
+                    Assert.That(creatureWeightRolls[creature][creature], Is.EqualTo("0"));
+                    Assert.That(creatureWeightRolls[creature][gender], Is.EqualTo("0"));
+                }
             }
         }
 
@@ -2198,7 +2260,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 var gender = genderKvp.Key;
                 var range = genderKvp.Value;
 
-                var roll = GetTheoreticalWeightRoll(creature, range.Lower, range.Upper);
+                var roll = string.Empty;
+                var cacheKey = GetCacheKey(creature, range.Lower, range.Upper);
+
+                if (rollCache.ContainsKey(cacheKey))
+                {
+                    roll = rollCache[cacheKey];
+                }
+                else
+                {
+                    roll = GetTheoreticalWeightRoll(creature, range.Lower, range.Upper);
+                }
+
                 Assert.That(roll, Is.Not.Empty.And.Not.Contain("NO VALID WEIGHT ROLL"));
                 Assert.That(dice.Roll(roll).IsValid(), Is.True);
 
@@ -2215,6 +2288,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             foreach (var creature in creatureWeightRanges.Keys)
             {
+                if (!creatureWeightRolls[creature].Any())
+                {
+                    AddWeightRoll(creature);
+                }
+
                 if (incorporealCreatures.Contains(creature) || creature == CreatureConstants.LanternArchon)
                 {
                     foreach (var genderKvp in creatureWeightRanges[creature])
