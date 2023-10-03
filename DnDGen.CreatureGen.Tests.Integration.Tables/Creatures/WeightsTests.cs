@@ -25,7 +25,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         private Dictionary<string, Dictionary<string, string>> lengths;
         private Dictionary<string, Dictionary<string, (int Lower, int Upper)>> creatureWeightRanges;
         private Dictionary<string, Dictionary<string, string>> creatureWeightRolls;
-        private Dictionary<string, string> rollCache;
 
         [OneTimeSetUp]
         public void OneTimeSetup()
@@ -34,7 +33,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             lengths = LengthsTests.GetCreatureLengths();
             creatureWeightRanges = GetCreatureWeightRanges();
             creatureWeightRolls = GetCreatureWeightRolls();
-            rollCache = new Dictionary<string, string>();
         }
 
         [SetUp]
@@ -1805,24 +1803,24 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 var creature = kvp.Key;
                 weights[creature] = new Dictionary<string, string>();
 
-                //if (!kvp.Value.Values.Any())
-                //{
-                //    weights[creature][creature] = "NOT A VALID ROLL: NO GENDERS";
-                //    continue;
-                //}
+                if (!kvp.Value.Values.Any())
+                {
+                    weights[creature][creature] = "NOT A VALID ROLL: NO GENDERS";
+                    continue;
+                }
 
-                //var genders = kvp.Value.Keys;
-                //var range = kvp.Value.Values.First();
+                var genders = kvp.Value.Keys;
+                var range = kvp.Value.Values.First();
 
-                //if (range.Upper < range.Lower)
-                //    throw new Exception($"{creature} has an invalid range of weights: [{range.Lower},{range.Upper}]");
+                if (range.Upper < range.Lower)
+                    throw new Exception($"{creature} has an invalid range of weights: [{range.Lower},{range.Upper}]");
 
-                //weights[creature][creature] = GetMultiplierFromRange(creature, range.Lower, range.Upper);
+                weights[creature][creature] = GetMultiplierFromRange(creature, range.Lower, range.Upper);
 
-                //foreach (var gender in genders)
-                //{
-                //    weights[creature][gender] = GetBaseFromRange(creature, kvp.Value[gender].Lower, kvp.Value[gender].Upper);
-                //}
+                foreach (var gender in genders)
+                {
+                    weights[creature][gender] = GetBaseFromRange(creature, kvp.Value[gender].Lower, kvp.Value[gender].Upper);
+                }
             }
 
             //Incorporeal, so weight is 0
@@ -1970,37 +1968,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
         private string GetFromRange(string creature, int lower, int upper, int index)
         {
-            var roll = string.Empty;
-            var cacheKey = GetCacheKey(creature, lower, upper);
-
-            if (rollCache.ContainsKey(cacheKey))
-            {
-                roll = rollCache[cacheKey];
-            }
-            else
-            {
-                roll = GetTheoreticalWeightRoll(creature, lower, upper);
-            }
-
+            var roll = GetTheoreticalWeightRoll(creature, lower, upper);
             if (string.IsNullOrEmpty(roll))
                 return string.Empty;
             else if (roll.Contains("NO VALID WEIGHT ROLL"))
                 return roll;
 
             return GetFromRoll(roll, index);
-        }
-
-        private string GetCacheKey(string creature, int lower, int upper)
-        {
-            var heightLength = GetMaxOfHeightLength(creature);
-            if (!heightLength.Any())
-            {
-                return string.Empty;
-            }
-
-            var multiplierRoll = ParseRoll(heightLength[creature]);
-
-            return $"{lower};{upper};{multiplierRoll.Quantity};{multiplierRoll.Quantity * multiplierRoll.Die}";
         }
 
         private string GetFromRoll(string roll, int index)
@@ -2047,54 +2021,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
 
             var multiplierRoll = ParseRoll(heightLength[creature]);
-            var dice = new[] { 100, 20, 12, 10, 8, 6, 4, 3, 2 };
-
-            var bestPrototype = new WeightRollPrototype(lower, upper, multiplierRoll.Quantity, multiplierRoll.Quantity * multiplierRoll.Die);
-            bestPrototype.Die = dice[0];
-            bestPrototype.SetQuantityFloor(0);
-            bestPrototype.SetBase(0);
-
-            if (bestPrototype.IsPerfectMatch())
-                return bestPrototype.Roll;
-
-            foreach (var die in dice)
-            {
-                if (!bestPrototype.CouldBeValid(die))
-                    continue;
-
-                for (var quantityAdjust = 0; quantityAdjust <= 1; quantityAdjust++)
-                {
-                    if (!bestPrototype.CouldBeBetter(die, quantityAdjust))
-                        continue;
-
-                    for (var baseAdjust = (int)bestPrototype.SigmaMin * -1; baseAdjust <= bestPrototype.SigmaMin; baseAdjust++)
-                    {
-                        bestPrototype = bestPrototype.GetBest(die, quantityAdjust, baseAdjust);
-
-                        if (bestPrototype.IsPerfectMatch())
-                            return bestPrototype.Roll;
-                    }
-                }
-            }
-
-            if (bestPrototype.IsValid)
-                return bestPrototype.Roll;
-
-            if (bestPrototype.CouldBeBetter(1, 0))
-            {
-                for (var baseAdjust = (int)bestPrototype.SigmaMin * -1; baseAdjust <= bestPrototype.SigmaMin; baseAdjust++)
-                {
-                    bestPrototype = bestPrototype.GetBest(1, 0, baseAdjust);
-
-                    if (bestPrototype.IsPerfectMatch())
-                        return bestPrototype.Roll;
-                }
-            }
-
-            if (bestPrototype.IsValid)
-                return bestPrototype.Roll;
-
-            bestPrototype = bestPrototype.GetBest(0, 0, 0);
+            var bestPrototype = WeightRollPrototype.GetBest(lower, upper, multiplierRoll.Quantity, multiplierRoll.Quantity * multiplierRoll.Die);
 
             if (!bestPrototype.IsValid)
             {
@@ -2205,18 +2132,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
                 if (range.Lower > 0)
                 {
-                    var roll = string.Empty;
-                    var cacheKey = GetCacheKey(creature, range.Lower, range.Upper);
-
-                    if (rollCache.ContainsKey(cacheKey))
-                    {
-                        roll = rollCache[cacheKey];
-                    }
-                    else
-                    {
-                        roll = GetTheoreticalWeightRoll(creature, range.Lower, range.Upper);
-                    }
-
+                    var roll = GetTheoreticalWeightRoll(creature, range.Lower, range.Upper);
                     var parsedRoll = ParseRoll(roll);
 
                     if (parsedRoll.Die > 1)
@@ -2259,18 +2175,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             {
                 var gender = genderKvp.Key;
                 var range = genderKvp.Value;
-
-                var roll = string.Empty;
-                var cacheKey = GetCacheKey(creature, range.Lower, range.Upper);
-
-                if (rollCache.ContainsKey(cacheKey))
-                {
-                    roll = rollCache[cacheKey];
-                }
-                else
-                {
-                    roll = GetTheoreticalWeightRoll(creature, range.Lower, range.Upper);
-                }
+                var roll = GetTheoreticalWeightRoll(creature, range.Lower, range.Upper);
 
                 Assert.That(roll, Is.Not.Empty.And.Not.Contain("NO VALID WEIGHT ROLL"));
                 Assert.That(dice.Roll(roll).IsValid(), Is.True);
