@@ -1,10 +1,10 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using NUnit.Framework;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,6 +17,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         private Dice dice;
 
         protected override string tableName => TableNameConstants.TypeAndAmount.Wingspans;
+
+        private Dictionary<string, Dictionary<string, string>> wingspanRolls;
+
+        [OneTimeSetUp]
+        public void OneTimeSetup()
+        {
+            wingspanRolls = GetCreatureWingspans();
+        }
 
         [SetUp]
         public void Setup()
@@ -32,22 +40,24 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertCollectionNames(creatures);
         }
 
-        [TestCaseSource(nameof(CreatureWingspansData))]
-        public void CreatureWingspans(string name, Dictionary<string, string> typesAndRolls)
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
+        public void CreatureWingspans(string name)
         {
-            var genders = collectionSelector.SelectFrom(TableNameConstants.Collection.Genders, name);
-            Assert.That(typesAndRolls.Keys, Is.EquivalentTo(genders.Union(new[] { name })).And.Not.Empty, $"TEST DATA: {name}");
+            Assert.That(wingspanRolls, Contains.Key(name));
 
-            foreach (var roll in typesAndRolls.Values)
+            var genders = collectionSelector.SelectFrom(TableNameConstants.Collection.Genders, name);
+            Assert.That(wingspanRolls[name].Keys, Is.EquivalentTo(genders.Union(new[] { name })).And.Not.Empty, $"TEST DATA: {name}");
+
+            foreach (var roll in wingspanRolls[name].Values)
             {
                 var isValid = dice.Roll(roll).IsValid();
                 Assert.That(isValid, Is.True, roll);
             }
 
-            AssertTypesAndAmounts(name, typesAndRolls);
+            AssertTypesAndAmounts(name, wingspanRolls[name]);
         }
 
-        public static Dictionary<string, Dictionary<string, string>> GetCreatureWingspans()
+        public Dictionary<string, Dictionary<string, string>> GetCreatureWingspans()
         {
             var creatures = CreatureConstants.GetAll();
             var wingspans = new Dictionary<string, Dictionary<string, string>>();
@@ -274,9 +284,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Balor][CreatureConstants.Balor] = GetMultiplierFromAverage(12 * 12);
             wingspans[CreatureConstants.BarbedDevil_Hamatula][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.BarbedDevil_Hamatula][CreatureConstants.BarbedDevil_Hamatula] = "0";
-            wingspans[CreatureConstants.Barghest][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Barghest][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Barghest][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Barghest][CreatureConstants.Barghest] = "0";
-            wingspans[CreatureConstants.Barghest_Greater][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Barghest_Greater][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Barghest_Greater][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Barghest_Greater][CreatureConstants.Barghest_Greater] = "0";
             wingspans[CreatureConstants.Basilisk][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Basilisk][GenderConstants.Male] = "0";
@@ -396,6 +408,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Centipede_Swarm][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.Centipede_Swarm][CreatureConstants.Centipede_Swarm] = "0";
             wingspans[CreatureConstants.ChainDevil_Kyton][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.ChainDevil_Kyton][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.ChainDevil_Kyton][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.ChainDevil_Kyton][CreatureConstants.ChainDevil_Kyton] = "0";
             wingspans[CreatureConstants.ChaosBeast][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.ChaosBeast][CreatureConstants.ChaosBeast] = "0";
@@ -422,6 +436,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Choker][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Choker][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Choker][CreatureConstants.Choker] = "0";
+            wingspans[CreatureConstants.Chuul][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Chuul][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Chuul][CreatureConstants.Chuul] = "0";
             //Source: https://forgottenrealms.fandom.com/wiki/Cloaker and https://www.mojobob.com/roleplay/monstrousmanual/c/cloaker.html
             wingspans[CreatureConstants.Cloaker][GenderConstants.Agender] = GetBaseFromAverage(8 * 12);
             wingspans[CreatureConstants.Cloaker][CreatureConstants.Cloaker] = GetMultiplierFromAverage(8 * 12);
@@ -432,7 +449,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Couatl
             wingspans[CreatureConstants.Couatl][GenderConstants.Female] = GetBaseFromAverage(15 * 12);
             wingspans[CreatureConstants.Couatl][GenderConstants.Male] = GetBaseFromAverage(15 * 12);
-            wingspans[CreatureConstants.Couatl][CreatureConstants.Couatl] = GetBaseFromAverage(15 * 12);
+            wingspans[CreatureConstants.Couatl][CreatureConstants.Couatl] = GetMultiplierFromAverage(15 * 12);
             wingspans[CreatureConstants.Criosphinx][GenderConstants.Male] = GetBaseFromAverage(120);
             wingspans[CreatureConstants.Criosphinx][CreatureConstants.Criosphinx] = GetMultiplierFromAverage(120);
             wingspans[CreatureConstants.Crocodile][GenderConstants.Female] = "0";
@@ -488,6 +505,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Digester][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Digester][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Digester][CreatureConstants.Digester] = "0";
+            wingspans[CreatureConstants.DisplacerBeast][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.DisplacerBeast][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.DisplacerBeast][CreatureConstants.DisplacerBeast] = "0";
+            wingspans[CreatureConstants.DisplacerBeast_PackLord][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.DisplacerBeast_PackLord][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.DisplacerBeast_PackLord][CreatureConstants.DisplacerBeast_PackLord] = "0";
             wingspans[CreatureConstants.Djinni][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.Djinni][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Djinni][GenderConstants.Male] = "0";
@@ -994,7 +1017,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://syrikdarkenedskies.obsidianportal.com/wikis/ettercap-race
             wingspans[CreatureConstants.Ettercap][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Ettercap][GenderConstants.Male] = "0";
-            wingspans[CreatureConstants.Ettercap][CreatureConstants.Ettin] = "0";
+            wingspans[CreatureConstants.Ettercap][CreatureConstants.Ettercap] = "0";
             wingspans[CreatureConstants.Ettin][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Ettin][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Ettin][CreatureConstants.Ettin] = "0";
@@ -1060,6 +1083,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Girallon][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Girallon][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Girallon][CreatureConstants.Girallon] = "0";
+            wingspans[CreatureConstants.Githyanki][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Githyanki][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Githyanki][CreatureConstants.Githyanki] = "0";
+            wingspans[CreatureConstants.Githzerai][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Githzerai][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Githzerai][CreatureConstants.Githzerai] = "0";
             wingspans[CreatureConstants.Glabrezu][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.Glabrezu][CreatureConstants.Glabrezu] = "0";
             wingspans[CreatureConstants.Gnoll][GenderConstants.Female] = "0";
@@ -1217,6 +1246,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Imp][CreatureConstants.Imp] = GetMultiplierFromAverage(2 * 12);
             wingspans[CreatureConstants.InvisibleStalker][GenderConstants.Agender] = "0";
             wingspans[CreatureConstants.InvisibleStalker][CreatureConstants.InvisibleStalker] = "0";
+            wingspans[CreatureConstants.Janni][GenderConstants.Agender] = "0";
+            wingspans[CreatureConstants.Janni][GenderConstants.Female] = "0";
+            wingspans[CreatureConstants.Janni][GenderConstants.Male] = "0";
+            wingspans[CreatureConstants.Janni][CreatureConstants.Janni] = "0";
             wingspans[CreatureConstants.Kobold][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Kobold][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Kobold][CreatureConstants.Kobold] = "0";
@@ -1399,7 +1432,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Ogre][CreatureConstants.Ogre] = "0";
             wingspans[CreatureConstants.Ogre_Merrow][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Ogre_Merrow][GenderConstants.Male] = "0";
-            wingspans[CreatureConstants.Ogre_Merrow][CreatureConstants.Ogre] = "0";
+            wingspans[CreatureConstants.Ogre_Merrow][CreatureConstants.Ogre_Merrow] = "0";
             wingspans[CreatureConstants.OgreMage][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.OgreMage][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.OgreMage][CreatureConstants.OgreMage] = "0";
@@ -1548,7 +1581,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             wingspans[CreatureConstants.Satyr][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Satyr][CreatureConstants.Satyr] = "0";
             wingspans[CreatureConstants.Satyr_WithPipes][GenderConstants.Male] = "0";
-            wingspans[CreatureConstants.Satyr_WithPipes][CreatureConstants.Satyr] = "0";
+            wingspans[CreatureConstants.Satyr_WithPipes][CreatureConstants.Satyr_WithPipes] = "0";
             wingspans[CreatureConstants.Scorpion_Monstrous_Tiny][GenderConstants.Female] = "0";
             wingspans[CreatureConstants.Scorpion_Monstrous_Tiny][GenderConstants.Male] = "0";
             wingspans[CreatureConstants.Scorpion_Monstrous_Tiny][CreatureConstants.Scorpion_Monstrous_Tiny] = "0";
@@ -1874,8 +1907,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             return wingspans;
         }
-
-        public static IEnumerable CreatureWingspansData => GetCreatureWingspans().Select(t => new TestCaseData(t.Key, t.Value));
 
         private static string GetBaseFromAverage(int average) => GetBaseFromRange(average * 9 / 10, average * 11 / 10);
         private static string GetBaseFromUpTo(int upTo) => GetBaseFromRange(upTo * 9 / 11, upTo);

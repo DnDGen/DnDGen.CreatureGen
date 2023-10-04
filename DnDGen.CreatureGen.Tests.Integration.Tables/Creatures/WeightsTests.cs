@@ -20,7 +20,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
         protected override string tableName => TableNameConstants.TypeAndAmount.Weights;
 
-        //INFO: Must be static for the test cases
         private Dictionary<string, Dictionary<string, string>> heights;
         private Dictionary<string, Dictionary<string, string>> lengths;
         private Dictionary<string, Dictionary<string, (int Lower, int Upper)>> creatureWeightRanges;
@@ -54,11 +53,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         {
             Assert.That(creatureWeightRolls, Contains.Key(name));
 
-            if (!creatureWeightRolls[name].Any())
-            {
-                AddWeightRoll(name);
-            }
-
             var rolls = creatureWeightRolls[name];
             var genders = collectionSelector.SelectFrom(TableNameConstants.Collection.Genders, name);
             Assert.That(rolls.Keys, Is.EquivalentTo(genders.Union(new[] { name })).And.Not.Empty, $"TEST DATA: {name}");
@@ -72,31 +66,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
 
             AssertTypesAndAmounts(name, rolls);
-        }
-
-        private void AddWeightRoll(string creature)
-        {
-            if (!creatureWeightRanges[creature].Values.Any())
-            {
-                creatureWeightRolls[creature][creature] = "NOT A VALID ROLL: NO GENDERS";
-                return;
-            }
-
-            var genders = creatureWeightRanges[creature].Keys;
-            var range = creatureWeightRanges[creature].Values.First();
-
-            if (range.Upper < range.Lower)
-                throw new Exception($"{creature} has an invalid range of weights: [{range.Lower},{range.Upper}]");
-
-            creatureWeightRolls[creature][creature] = GetMultiplierFromRange(creature, range.Lower, range.Upper);
-
-            foreach (var gender in genders)
-            {
-                creatureWeightRolls[creature][gender] = GetBaseFromRange(
-                    creature,
-                    creatureWeightRanges[creature][gender].Lower,
-                    creatureWeightRanges[creature][gender].Upper);
-            }
         }
 
         [Test]
@@ -135,12 +104,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var multiplierMax = dice.Roll(heightLength[creature]).AsPotentialMaximum();
 
             Assert.That(creatureWeightRolls, Contains.Key(creature));
-
-            if (!creatureWeightRolls[creature].Any())
-            {
-                AddWeightRoll(creature);
-            }
-
             Assert.That(creatureWeightRolls[creature], Contains.Key(creature).And.ContainKey(gender));
 
             var baseRoll = creatureWeightRolls[creature][gender];
@@ -790,8 +753,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Dragon_Silver_Wyrmling][GenderConstants.Male] = GetRangeFromAverage(40);
             weights[CreatureConstants.Dragon_Silver_VeryYoung][GenderConstants.Female] = GetRangeFromAverage(320);
             weights[CreatureConstants.Dragon_Silver_VeryYoung][GenderConstants.Male] = GetRangeFromAverage(320);
-            weights[CreatureConstants.Dragon_Silver_Young][GenderConstants.Female] = GetRangeFromAverage(2500);
-            weights[CreatureConstants.Dragon_Silver_Young][GenderConstants.Male] = GetRangeFromAverage(2500);
+            weights[CreatureConstants.Dragon_Silver_Young][GenderConstants.Female] = GetRangeFromAverage(320);
+            weights[CreatureConstants.Dragon_Silver_Young][GenderConstants.Male] = GetRangeFromAverage(320);
             weights[CreatureConstants.Dragon_Silver_Juvenile][GenderConstants.Female] = GetRangeFromAverage(2500);
             weights[CreatureConstants.Dragon_Silver_Juvenile][GenderConstants.Male] = GetRangeFromAverage(2500);
             weights[CreatureConstants.Dragon_Silver_YoungAdult][GenderConstants.Female] = GetRangeFromAverage(2500);
@@ -2118,11 +2081,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Wraith_Dread)]
         public void HardCodedWeightRollMatchesRange(string creature)
         {
-            if (!creatureWeightRolls[creature].Any())
-            {
-                AddWeightRoll(creature);
-            }
-
             foreach (var genderKvp in creatureWeightRanges[creature])
             {
                 var gender = genderKvp.Key;
@@ -2193,11 +2151,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             foreach (var creature in creatureWeightRanges.Keys)
             {
-                if (!creatureWeightRolls[creature].Any())
-                {
-                    AddWeightRoll(creature);
-                }
-
                 if (incorporealCreatures.Contains(creature) || creature == CreatureConstants.LanternArchon)
                 {
                     foreach (var genderKvp in creatureWeightRanges[creature])

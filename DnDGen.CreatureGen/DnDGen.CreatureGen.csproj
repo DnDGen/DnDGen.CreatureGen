@@ -43,6 +43,7 @@
     <None Remove="Tables\Creatures\Genders.xml" />
     <None Remove="Tables\Creatures\Heights.xml" />
     <None Remove="Tables\Creatures\Lengths.xml" />
+    <None Remove="Tables\Creatures\MaxAgeDescriptions.xml" />
     <None Remove="Tables\Creatures\Speeds.xml" />
     <None Remove="Tables\Creatures\Weights.xml" />
     <None Remove="Tables\Creatures\Wingspans.xml" />
@@ -97,6 +98,7 @@
     <EmbeddedResource Include="Tables\Creatures\Advancements.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Creatures\MaxAgeDescriptions.xml" />
     <EmbeddedResource Include="Tables\Creatures\AerialManeuverability.xml" />
     <EmbeddedResource Include="Tables\Creatures\Genders.xml">
       <SubType>Designer</SubType>

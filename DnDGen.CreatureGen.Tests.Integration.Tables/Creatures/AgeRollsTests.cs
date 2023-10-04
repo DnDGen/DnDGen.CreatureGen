@@ -442,7 +442,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Beholder_Gauth][AgeConstants.Categories.Old] = GetRoll(105, 119);
                 testCases[CreatureConstants.Beholder_Gauth][AgeConstants.Categories.Venerable] = GetVenerableRoll(120, 150);
                 testCases[CreatureConstants.Beholder_Gauth][AgeConstants.Categories.Maximum] = GetMaximumRoll(120, 150);
-                testCases[CreatureConstants.Belker][AgeConstants.Categories.Adulthood] = undeadAgeRoll;
+                testCases[CreatureConstants.Belker][AgeConstants.Categories.Adulthood] = outsiderAgeRoll;
                 testCases[CreatureConstants.Belker][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
                 //Source: https://www.dimensions.com/element/american-bison-bison-bison (maximum)
                 //https://ielc.libguides.com/sdzg/factsheets/americanbison/reproduction (adulthood)
