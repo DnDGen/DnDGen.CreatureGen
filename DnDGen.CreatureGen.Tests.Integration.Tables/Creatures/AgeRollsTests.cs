@@ -2457,6 +2457,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Whale_Orca][AgeConstants.Categories.Maximum] = GetMaximumRoll(51, 70);
                 testCases[CreatureConstants.Wight][AgeConstants.Categories.Undead] = undeadAgeRoll;
                 testCases[CreatureConstants.Wight][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
+                //Source: https://www.reddit.com/r/DnDBehindTheScreen/comments/3pxkr2/ecology_of_the_willowisp/
                 testCases[CreatureConstants.WillOWisp][AgeConstants.Categories.Adulthood] = tenKRoll;
                 testCases[CreatureConstants.WillOWisp][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
                 //Source: https://pathfinderwiki.com/wiki/Winter_wolf A:3,M:25,V:u50
