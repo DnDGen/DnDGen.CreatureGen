@@ -37,6 +37,7 @@
     <None Remove="Tables\Creatures\Advancements.xml" />
     <None Remove="Tables\Creatures\AerialManeuverability.xml" />
     <None Remove="Tables\Creatures\AgeRolls.xml" />
+    <None Remove="Tables\Creatures\Appearances.xml" />
     <None Remove="Tables\Creatures\CreatureData.xml" />
     <None Remove="Tables\Creatures\CreatureGroups.xml" />
     <None Remove="Tables\Creatures\CreatureTypes.xml" />
@@ -96,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Attacks\GrappleBonuses.xml" />
     <EmbeddedResource Include="Tables\Creatures\Advancements.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Creatures\Appearances.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Creatures\MaxAgeDescriptions.xml" />

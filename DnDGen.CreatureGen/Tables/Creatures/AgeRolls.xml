@@ -587,7 +587,7 @@
   </collection>
   <collection>
     <name>Belker</name>
-	  <entry>Adulthood@(1d100-1)*100+1d100</entry>
+	  <entry>Adulthood@(1d100-1)*10000+(1d100-1)*100+1d100</entry>
 	  <entry>Maximum@-1</entry>
   </collection>
   <collection>

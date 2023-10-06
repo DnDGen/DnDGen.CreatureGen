@@ -1887,6 +1887,7 @@
   </collection>
   <collection>
     <name>Nixie</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Noble Djinni</name>
@@ -1894,12 +1895,15 @@
   </collection>
   <collection>
     <name>Noble Salamander</name>
+	  <entry>Outsider</entry>
   </collection>
   <collection>
     <name>Nymph</name>
+	  <entry>Fey</entry>
   </collection>
   <collection>
     <name>Ochre Jelly</name>
+	  <entry>Immortal</entry>
   </collection>
   <collection>
     <name>Octopus</name>
@@ -1939,16 +1943,19 @@
   </collection>
   <collection>
     <name>Pegasus</name>
-    <entry>Average Maneuverability (Wings)</entry>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Phantom Fungus</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Phase Spider</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Phasm</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Pit Fiend</name>
@@ -1956,11 +1963,11 @@
   </collection>
   <collection>
     <name>Pixie</name>
-    <entry>Good Maneuverability (Wings)</entry>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Pixie with Irresistible dance</name>
-    <entry>Good Maneuverability (Wings)</entry>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Polar Bear</name>
@@ -1980,6 +1987,7 @@
   </collection>
   <collection>
     <name>Purple Worm</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Quasit</name>
@@ -1991,7 +1999,7 @@
   </collection>
   <collection>
     <name>Rast</name>
-    <entry>Good Maneuverability (Magic)</entry>
+    <entry>Outsider</entry>
   </collection>
   <collection>
     <name>Rat</name>
@@ -2063,9 +2071,11 @@
   </collection>
   <collection>
     <name>Red Slaad</name>
+	  <entry>Become Green</entry>
   </collection>
   <collection>
     <name>Remorhaz</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Retriever</name>
@@ -2085,9 +2095,11 @@
   </collection>
   <collection>
     <name>Roper</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Rust Monster</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Sahuagin</name>
@@ -2103,13 +2115,15 @@
   </collection>
   <collection>
     <name>Salt Mephit</name>
-    <entry>Average Maneuverability (Wings)</entry>
+    <entry>Outsider</entry>
   </collection>
   <collection>
     <name>Satyr</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Satyr with pipes</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Scorpionfolk</name>
@@ -2117,12 +2131,15 @@
   </collection>
   <collection>
     <name>Scrag</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Sea Cat</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Sea Hag</name>
+	  <entry>No known limit to lifespan</entry>
   </collection>
   <collection>
     <name>Seven-Headed Cryohydra</name>
@@ -2138,31 +2155,39 @@
   </collection>
   <collection>
     <name>Shadow</name>
-    <entry>Good Maneuverability (Magic)</entry>
+    <entry>Undead</entry>
   </collection>
   <collection>
     <name>Shadow Mastiff</name>
+	  <entry>Outsider</entry>
   </collection>
   <collection>
     <name>Shambling Mound</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Shark, Huge</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Shark, Large</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Shark, Medium</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Shield Guardian</name>
+	  <entry>Construct</entry>
   </collection>
   <collection>
     <name>Shocker Lizard</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Shrieker</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Silver Dragon, Adult</name>
@@ -2226,14 +2251,15 @@
   </collection>
   <collection>
     <name>Skum</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Spectre</name>
-    <entry>Perfect Maneuverability (Magic)</entry>
+    <entry>Undead</entry>
   </collection>
   <collection>
     <name>Spider Eater</name>
-    <entry>Good Maneuverability (Wings)</entry>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Spider Swarm</name>
@@ -2241,42 +2267,51 @@
   </collection>
   <collection>
     <name>Spirit Naga</name>
+	  <entry>Immortal</entry>
   </collection>
   <collection>
     <name>Squid</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Steam Mephit</name>
-    <entry>Average Maneuverability (Wings)</entry>
+    <entry>Outsider</entry>
   </collection>
   <collection>
     <name>Stirge</name>
-    <entry>Average Maneuverability (Wings)</entry>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Stone Giant</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Stone Giant Elder</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Stone Golem</name>
+	  <entry>Construct</entry>
   </collection>
   <collection>
     <name>Storm Giant</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Succubus</name>
-    <entry>Average Maneuverability (Wings)</entry>
+    <entry>Outsider</entry>
   </collection>
   <collection>
     <name>Svirfneblin</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Tallfellow Halfling</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Tarrasque</name>
+	  <entry>Immortal</entry>
   </collection>
   <collection>
     <name>Ten-Headed Cryohydra</name>
@@ -2292,43 +2327,55 @@
   </collection>
   <collection>
     <name>Tendriculos</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Thoqqua</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Tiefling</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Tiger</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Titan</name>
+	  <entry>Outsider</entry>
   </collection>
   <collection>
     <name>Toad</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Treant</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Triceratops</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Triton</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Troglodyte</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Troll</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Truly Horrid Umber Hulk</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Trumpet Archon</name>
-    <entry>Good Maneuverability (Wings)</entry>
+    <entry>Outsider</entry>
   </collection>
   <collection>
     <name>Twelve-Headed Cryohydra</name>
@@ -2344,72 +2391,91 @@
   </collection>
   <collection>
     <name>Tyrannosaurus</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Umber Hulk</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Unicorn</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Vampire Spawn</name>
+	  <entry>Undead</entry>
   </collection>
   <collection>
     <name>Vargouille</name>
-    <entry>Good Maneuverability (Wings)</entry>
+    <entry>Outsider</entry>
   </collection>
   <collection>
     <name>Violet Fungus</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Viper Snake, Huge</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Viper Snake, Large</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Viper Snake, Medium</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Viper Snake, Small</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Viper Snake, Tiny</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Vrock</name>
-    <entry>Average Maneuverability (Wings)</entry>
+    <entry>Outsider</entry>
   </collection>
   <collection>
     <name>Warpony</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Water Elemental, Elder</name>
+    <entry>Outsider</entry>
   </collection>
   <collection>
     <name>Water Elemental, Greater</name>
+    <entry>Outsider</entry>
   </collection>
   <collection>
     <name>Water Elemental, Huge</name>
+    <entry>Outsider</entry>
   </collection>
   <collection>
     <name>Water Elemental, Large</name>
+    <entry>Outsider</entry>
   </collection>
   <collection>
     <name>Water Elemental, Medium</name>
+    <entry>Outsider</entry>
   </collection>
   <collection>
     <name>Water Elemental, Small</name>
+    <entry>Outsider</entry>
   </collection>
   <collection>
     <name>Water Mephit</name>
-    <entry>Average Maneuverability (Wings)</entry>
+    <entry>Outsider</entry>
   </collection>
   <collection>
     <name>Water Naga</name>
+	  <entry>Immortal</entry>
   </collection>
   <collection>
     <name>Weasel</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>White Dragon, Adult</name>
@@ -2461,68 +2527,82 @@
   </collection>
   <collection>
     <name>Wight</name>
+	  <entry>Undead</entry>
   </collection>
   <collection>
     <name>Wild Elf</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Will-O'-Wisp</name>
-    <entry>Perfect Maneuverability (Magic)</entry>
+    <entry>Immortal</entry>
   </collection>
   <collection>
     <name>Winter Wolf</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Wolf</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Wolverine</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Worg</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Wood Elf</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Wraith</name>
-    <entry>Good Maneuverability (Magic)</entry>
+    <entry>Undead</entry>
   </collection>
   <collection>
     <name>Wyvern</name>
-    <entry>Poor Maneuverability (Wings)</entry>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Xill</name>
+	  <entry>Outsider</entry>
   </collection>
   <collection>
     <name>Yeth Hound</name>
-    <entry>Good Maneuverability (Wings)</entry>
+	  <entry>Outsider</entry>
   </collection>
   <collection>
     <name>Yrthak</name>
-    <entry>Average Maneuverability (Wings)</entry>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Yuan-ti Abomination</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head)</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Human Head, Arms are Snakes)</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail and Human Legs)</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Yuan-ti Halfblood (Snake Head, Snake Tail instead of Human Legs)</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Yuan-ti Pureblood</name>
+	  <entry>Will die of natural causes</entry>
   </collection>
   <collection>
     <name>Zelekhut</name>
-    <entry>Average Maneuverability (Wings)</entry>
+    <entry>Construct</entry>
   </collection>
 </collections>

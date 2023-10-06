@@ -667,7 +667,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Xill, Outsider)]
         [TestCase(CreatureConstants.Xorn_Average, "Become Elder")]
         [TestCase(CreatureConstants.Xorn_Elder, "Disintegrates into dust")]
-        [TestCase(CreatureConstants.Xorn_Minor, "Becomes Average")]
+        [TestCase(CreatureConstants.Xorn_Minor, "Become Average")]
         [TestCase(CreatureConstants.YethHound, Outsider)]
         [TestCase(CreatureConstants.Yrthak, NaturalCauses)]
         [TestCase(CreatureConstants.YuanTi_Abomination, NaturalCauses)]
