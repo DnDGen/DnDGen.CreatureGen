@@ -5,6 +5,7 @@ using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 {
@@ -53,35 +54,50 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
 
             //Source: https://forgottenrealms.fandom.com/wiki/Aasimar
-            var common = new[] { "Pupil-less pale white eyes and silver hair" };
-            var uncommon = new[] { };
-            appearances[CreatureConstants.Aasimar] = collectionSelector.CreateWeighted(common: common, uncommon: uncommon);
+            appearances[CreatureConstants.Aasimar] = GetWeightedAppearances(
+                commonSkin: new[] { "Black", "Brown", "Beige", "White", "Pink",
+                    "Deep Black", "Deep Brown", "Deep Beige", "Deep White", "Deep Pink",
+                    "Pale Black", "Pale Brown", "Pale Beige", "Pale White", "Pale Pink" },
+                commonHair: new[] { "Straight Red", "Straight Blond", "Straight Brown", "Straight Black", "Straight Silver",
+                    "Curly Red", "Curly Blond", "Curly Brown", "Curly Black", "Curly Silver",
+                    "Kinky Red", "Kinky Blond", "Kinky Brown", "Kinky Black", "Kinky Silver" },
+                commonEyes: new[] { "Pupil-less pale white", "Pupil-less golden", "Pupil-less gray" },
+                uncommonSkin: new[] { "Emerald", "Gold", "Silver",
+                    "Black with small iridescent scales", "Brown with small iridescent scales", "Beige with small iridescent scales", "White with small iridescent scales",
+                        "Pink with small iridescent scales",
+                    "Deep Black with small iridescent scales", "Deep Brown with small iridescent scales", "Deep Beige with small iridescent scales",
+                        "Deep White with small iridescent scales", "Deep Pink with small iridescent scales",
+                    "Pale Black with small iridescent scales", "Pale Brown with small iridescent scales", "Pale Beige with small iridescent scales",
+                        "Pale White with small iridescent scales", "Pale Pink with small iridescent scales" },
+                uncommonEyes: new[] { "Pupil-less topaz", "Pupil-less pearly opalescent" },
+                uncommonHair: new[] { "Straight Red with feathers mixed in", "Straight Blond with feathers mixed in", "Straight Brown with feathers mixed in",
+                        "Straight Black with feathers mixed in", "Straight Silver with feathers mixed in",
+                    "Curly Red with feathers mixed in", "Curly Blond with feathers mixed in", "Curly Brown with feathers mixed in", "Curly Black with feathers mixed in",
+                        "Curly Silver with feathers mixed in",
+                    "Kinky Red with feathers mixed in", "Kinky Blond with feathers mixed in", "Kinky Brown with feathers mixed in", "Kinky Black with feathers mixed in",
+                        "Kinky Silver with feathers mixed in" },
+                rareSkin: new[] { "Emerald with small iridescent scales", "Gold with small iridescent scales", "Silver with small iridescent scales" },
+                uncommonOther: new[] { "A light covering of feathers on the shoulders, where an angel's wings might sprout" });
             //Source: https://forgottenrealms.fandom.com/wiki/Aboleth
-            appearances[CreatureConstants.Aboleth][GenderConstants.Hermaphrodite] = "0";
-            appearances[CreatureConstants.Aboleth][CreatureConstants.Aboleth] = "0";
-            //Source: https://www.d20srd.org/srd/monsters/achaierai.htm
+            appearances[CreatureConstants.Aboleth] = GetWeightedAppearances(
+                commonEyes: new[] { "Red" },
+                commonSkin: new[] { "Orange-pink underbelly, sea-green topside" },
+                uncommonSkin: new[] { "Orange underbelly, sea-green topside", "Pink underbelly, sea-green topside",
+                    "Orange-pink underbelly, green topside", "Orange-pink underbelly, blue topside" },
+                rareSkin: new[] { "Orange underbelly, green topside", "Pink underbelly, green topside",
+                    "Orange underbelly, blue topside", "Pink underbelly, blue topside" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Achaierai
             appearances[CreatureConstants.Achaierai][GenderConstants.Female] = GetBaseFromAverage(15 * 12);
-            appearances[CreatureConstants.Achaierai][GenderConstants.Male] = GetBaseFromAverage(15 * 12);
-            appearances[CreatureConstants.Achaierai][CreatureConstants.Achaierai] = GetMultiplierFromAverage(15 * 12);
             //Basing off humans
             appearances[CreatureConstants.Allip][GenderConstants.Female] = "4*12+5";
-            appearances[CreatureConstants.Allip][GenderConstants.Male] = "4*12+10";
-            appearances[CreatureConstants.Allip][CreatureConstants.Allip] = "2d10";
             //Source: https://www.mojobob.com/roleplay/monstrousmanual/s/sphinx.html
             appearances[CreatureConstants.Androsphinx][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
-            appearances[CreatureConstants.Androsphinx][CreatureConstants.Androsphinx] = GetMultiplierFromAverage(8 * 12);
             //Source: https://forgottenrealms.fandom.com/wiki/Astral_deva
             appearances[CreatureConstants.Angel_AstralDeva][GenderConstants.Female] = GetBaseFromRange(7 * 12, 7 * 12 + 6);
-            appearances[CreatureConstants.Angel_AstralDeva][GenderConstants.Male] = GetBaseFromRange(7 * 12, 7 * 12 + 6);
-            appearances[CreatureConstants.Angel_AstralDeva][CreatureConstants.Angel_AstralDeva] = GetMultiplierFromRange(7 * 12, 7 * 12 + 6);
             //Source: https://forgottenrealms.fandom.com/wiki/Planetar
             appearances[CreatureConstants.Angel_Planetar][GenderConstants.Female] = GetBaseFromRange(8 * 12, 9 * 12);
-            appearances[CreatureConstants.Angel_Planetar][GenderConstants.Male] = GetBaseFromRange(8 * 12, 9 * 12);
-            appearances[CreatureConstants.Angel_Planetar][CreatureConstants.Angel_Planetar] = GetMultiplierFromRange(8 * 12, 9 * 12);
             //Source: https://forgottenrealms.fandom.com/wiki/Solar
             appearances[CreatureConstants.Angel_Solar][GenderConstants.Female] = GetBaseFromRange(9 * 12, 10 * 12);
-            appearances[CreatureConstants.Angel_Solar][GenderConstants.Male] = GetBaseFromRange(9 * 12, 10 * 12);
-            appearances[CreatureConstants.Angel_Solar][CreatureConstants.Angel_Solar] = GetMultiplierFromRange(9 * 12, 10 * 12);
             //Source: https://www.d20srd.org/srd/combat/movementPositionAndDistance.htm
             appearances[CreatureConstants.AnimatedObject_Colossal][GenderConstants.Agender] = GetBaseFromRange(64 * 12, 128 * 12);
             appearances[CreatureConstants.AnimatedObject_Colossal][CreatureConstants.AnimatedObject_Colossal] = GetMultiplierFromRange(64 * 12, 128 * 12);
@@ -1329,10 +1345,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Howler
             appearances[CreatureConstants.Howler][GenderConstants.Agender] = GetBaseFromAverage(8 * 12);
             appearances[CreatureConstants.Howler][CreatureConstants.Howler] = GetMultiplierFromAverage(8 * 12);
-            //Source: https://www.d20srd.org/srd/description.htm#vitalStatistics
-            appearances[CreatureConstants.Human][GenderConstants.Female] = "4*12+5";
-            appearances[CreatureConstants.Human][GenderConstants.Male] = "4*12+10";
-            appearances[CreatureConstants.Human][CreatureConstants.Human] = "2d10";
+            //Source: https://forgottenrealms.fandom.com/wiki/Human
+            appearances[CreatureConstants.Human] = GetWeightedAppearances(
+                commonSkin: new[] { "Black", "Brown", "Beige", "White", "Pink",
+                    "Deep Black", "Deep Brown", "Deep Beige", "Deep White", "Deep Pink",
+                    "Pale Black", "Pale Brown", "Pale Beige", "Pale White", "Pale Pink" },
+                commonHair: new[] { "Straight Red", "Straight Blond", "Straight Brown", "Straight Black",
+                    "Curly Red", "Curly Blond", "Curly Brown", "Curly Black",
+                    "Kinky Red", "Kinky Blond", "Kinky Brown", "Kinky Black" },
+                commonEyes: new[] { "Blue", "Brown", "Gray", "Green", "Hazel" });
             //Source: https://forgottenrealms.fandom.com/wiki/Hydra half of length for height
             appearances[CreatureConstants.Hydra_5Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
             appearances[CreatureConstants.Hydra_5Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
@@ -2191,6 +2212,372 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.Zelekhut][CreatureConstants.Zelekhut] = GetMultiplierFromRange(7 * 12, 9 * 12);
 
             return appearances;
+        }
+
+        private IEnumerable<string> GetWeightedAppearances(
+            IEnumerable<string> commonSkin = null, IEnumerable<string> uncommonSkin = null, IEnumerable<string> rareSkin = null,
+            IEnumerable<string> commonHair = null, IEnumerable<string> uncommonHair = null, IEnumerable<string> rareHair = null,
+            IEnumerable<string> commonEyes = null, IEnumerable<string> uncommonEyes = null, IEnumerable<string> rareEyes = null,
+            IEnumerable<string> commonOther = null, IEnumerable<string> uncommonOther = null, IEnumerable<string> rareOther = null)
+        {
+            var commonAppearances = new List<string>();
+            var uncommonAppearances = new List<string>();
+            var rareAppearances = new List<string>();
+            var veryRareAppearances = new List<string>();
+
+            BuildAppearances(commonSkin, commonHair, commonEyes, commonOther, commonAppearances);
+
+            if (uncommonOther?.Any() == true)
+                BuildAppearances(commonSkin, commonHair, commonEyes, uncommonOther, uncommonAppearances);
+
+            if (rareOther?.Any() == true)
+                BuildAppearances(commonSkin, commonHair, commonEyes, rareOther, rareAppearances);
+
+            if (uncommonEyes?.Any() == true)
+            {
+                BuildAppearances(commonSkin, commonHair, uncommonEyes, commonOther, uncommonAppearances);
+
+                if (uncommonOther?.Any() == true)
+                    BuildAppearances(commonSkin, commonHair, uncommonEyes, uncommonOther, rareAppearances);
+
+                if (rareOther?.Any() == true)
+                    BuildAppearances(commonSkin, commonHair, uncommonEyes, rareOther, rareAppearances);
+            }
+
+            if (rareEyes?.Any() == true)
+            {
+                BuildAppearances(commonSkin, commonHair, rareEyes, commonOther, rareAppearances);
+
+                if (uncommonOther?.Any() == true)
+                    BuildAppearances(commonSkin, commonHair, rareEyes, uncommonOther, rareAppearances);
+
+                if (rareOther?.Any() == true)
+                    BuildAppearances(commonSkin, commonHair, rareEyes, rareOther, veryRareAppearances);
+            }
+
+            if (uncommonHair?.Any() == true)
+            {
+                BuildAppearances(commonSkin, uncommonHair, commonEyes, commonOther, uncommonAppearances);
+
+                if (uncommonOther?.Any() == true)
+                    BuildAppearances(commonSkin, uncommonHair, commonEyes, uncommonOther, rareAppearances);
+
+                if (rareOther?.Any() == true)
+                    BuildAppearances(commonSkin, uncommonHair, commonEyes, rareOther, rareAppearances);
+
+                if (uncommonEyes?.Any() == true)
+                {
+                    BuildAppearances(commonSkin, uncommonHair, uncommonEyes, commonOther, rareAppearances);
+
+                    if (uncommonOther?.Any() == true)
+                        BuildAppearances(commonSkin, uncommonHair, uncommonEyes, uncommonOther, rareAppearances);
+
+                    if (rareOther?.Any() == true)
+                        BuildAppearances(commonSkin, uncommonHair, uncommonEyes, rareOther, veryRareAppearances);
+                }
+
+                if (rareEyes?.Any() == true)
+                {
+                    BuildAppearances(commonSkin, uncommonHair, rareEyes, commonOther, rareAppearances);
+
+                    if (uncommonOther?.Any() == true)
+                        BuildAppearances(commonSkin, uncommonHair, rareEyes, uncommonOther, veryRareAppearances);
+
+                    if (rareOther?.Any() == true)
+                        BuildAppearances(commonSkin, uncommonHair, rareEyes, rareOther, veryRareAppearances);
+                }
+            }
+
+            if (rareHair?.Any() == true)
+            {
+                BuildAppearances(commonSkin, rareHair, commonEyes, commonOther, rareAppearances);
+
+                if (uncommonOther?.Any() == true)
+                    BuildAppearances(commonSkin, rareHair, commonEyes, uncommonOther, rareAppearances);
+
+                if (rareOther?.Any() == true)
+                    BuildAppearances(commonSkin, rareHair, commonEyes, rareOther, veryRareAppearances);
+
+                if (uncommonEyes?.Any() == true)
+                {
+                    BuildAppearances(commonSkin, rareHair, uncommonEyes, commonOther, rareAppearances);
+
+                    if (uncommonOther?.Any() == true)
+                        BuildAppearances(commonSkin, rareHair, uncommonEyes, uncommonOther, veryRareAppearances);
+
+                    if (rareOther?.Any() == true)
+                        BuildAppearances(commonSkin, rareHair, uncommonEyes, rareOther, veryRareAppearances);
+                }
+
+                if (rareEyes?.Any() == true)
+                {
+                    BuildAppearances(commonSkin, rareHair, rareEyes, commonOther, veryRareAppearances);
+
+                    if (uncommonOther?.Any() == true)
+                        BuildAppearances(commonSkin, rareHair, rareEyes, uncommonOther, veryRareAppearances);
+
+                    if (rareOther?.Any() == true)
+                        BuildAppearances(commonSkin, rareHair, rareEyes, rareOther, veryRareAppearances);
+                }
+            }
+
+            if (uncommonSkin?.Any() == true)
+            {
+                BuildAppearances(uncommonSkin, commonHair, commonEyes, commonOther, uncommonAppearances);
+
+                if (uncommonOther?.Any() == true)
+                    BuildAppearances(uncommonSkin, commonHair, commonEyes, uncommonOther, rareAppearances);
+
+                if (rareOther?.Any() == true)
+                    BuildAppearances(uncommonSkin, commonHair, commonEyes, rareOther, rareAppearances);
+
+                if (uncommonEyes?.Any() == true)
+                {
+                    BuildAppearances(uncommonSkin, commonHair, uncommonEyes, commonOther, rareAppearances);
+
+                    if (uncommonOther?.Any() == true)
+                        BuildAppearances(uncommonSkin, commonHair, uncommonEyes, uncommonOther, rareAppearances);
+
+                    if (rareOther?.Any() == true)
+                        BuildAppearances(uncommonSkin, commonHair, uncommonEyes, rareOther, veryRareAppearances);
+                }
+
+                if (rareEyes?.Any() == true)
+                {
+                    BuildAppearances(uncommonSkin, commonHair, rareEyes, commonOther, rareAppearances);
+
+                    if (uncommonOther?.Any() == true)
+                        BuildAppearances(uncommonSkin, commonHair, rareEyes, uncommonOther, veryRareAppearances);
+
+                    if (rareOther?.Any() == true)
+                        BuildAppearances(uncommonSkin, commonHair, rareEyes, rareOther, veryRareAppearances);
+                }
+
+                if (uncommonHair?.Any() == true)
+                {
+                    BuildAppearances(uncommonSkin, uncommonHair, commonEyes, commonOther, rareAppearances);
+
+                    if (uncommonOther?.Any() == true)
+                        BuildAppearances(uncommonSkin, uncommonHair, commonEyes, uncommonOther, rareAppearances);
+
+                    if (rareOther?.Any() == true)
+                        BuildAppearances(uncommonSkin, uncommonHair, commonEyes, rareOther, veryRareAppearances);
+
+                    if (uncommonEyes?.Any() == true)
+                    {
+                        BuildAppearances(uncommonSkin, uncommonHair, uncommonEyes, commonOther, rareAppearances);
+
+                        if (uncommonOther?.Any() == true)
+                            BuildAppearances(uncommonSkin, uncommonHair, uncommonEyes, uncommonOther, rareAppearances);
+
+                        if (rareOther?.Any() == true)
+                            BuildAppearances(uncommonSkin, uncommonHair, uncommonEyes, rareOther, veryRareAppearances);
+                    }
+
+                    if (rareEyes?.Any() == true)
+                    {
+                        BuildAppearances(uncommonSkin, uncommonHair, rareEyes, commonOther, veryRareAppearances);
+
+                        if (uncommonOther?.Any() == true)
+                            BuildAppearances(uncommonSkin, uncommonHair, rareEyes, uncommonOther, veryRareAppearances);
+
+                        if (rareOther?.Any() == true)
+                            BuildAppearances(uncommonSkin, uncommonHair, rareEyes, rareOther, veryRareAppearances);
+                    }
+                }
+
+                if (rareHair?.Any() == true)
+                {
+                    BuildAppearances(uncommonSkin, rareHair, commonEyes, commonOther, rareAppearances);
+
+                    if (uncommonOther?.Any() == true)
+                        BuildAppearances(uncommonSkin, rareHair, commonEyes, uncommonOther, veryRareAppearances);
+
+                    if (rareOther?.Any() == true)
+                        BuildAppearances(uncommonSkin, rareHair, commonEyes, rareOther, veryRareAppearances);
+
+                    if (uncommonEyes?.Any() == true)
+                    {
+                        BuildAppearances(uncommonSkin, rareHair, uncommonEyes, commonOther, veryRareAppearances);
+
+                        if (uncommonOther?.Any() == true)
+                            BuildAppearances(uncommonSkin, rareHair, uncommonEyes, uncommonOther, veryRareAppearances);
+
+                        if (rareOther?.Any() == true)
+                            BuildAppearances(uncommonSkin, rareHair, uncommonEyes, rareOther, veryRareAppearances);
+                    }
+
+                    if (rareEyes?.Any() == true)
+                    {
+                        BuildAppearances(uncommonSkin, rareHair, rareEyes, commonOther, veryRareAppearances);
+
+                        if (uncommonOther?.Any() == true)
+                            BuildAppearances(uncommonSkin, rareHair, rareEyes, uncommonOther, veryRareAppearances);
+
+                        if (rareOther?.Any() == true)
+                            BuildAppearances(uncommonSkin, rareHair, rareEyes, rareOther, veryRareAppearances);
+                    }
+                }
+            }
+
+            if (rareSkin?.Any() == true)
+            {
+                BuildAppearances(rareSkin, commonHair, commonEyes, commonOther, rareAppearances);
+
+                if (uncommonOther?.Any() == true)
+                    BuildAppearances(rareSkin, commonHair, commonEyes, uncommonOther, rareAppearances);
+
+                if (rareOther?.Any() == true)
+                    BuildAppearances(rareSkin, commonHair, commonEyes, rareOther, veryRareAppearances);
+
+                if (uncommonEyes?.Any() == true)
+                {
+                    BuildAppearances(rareSkin, commonHair, uncommonEyes, commonOther, rareAppearances);
+
+                    if (uncommonOther?.Any() == true)
+                        BuildAppearances(rareSkin, commonHair, uncommonEyes, uncommonOther, veryRareAppearances);
+
+                    if (rareOther?.Any() == true)
+                        BuildAppearances(rareSkin, commonHair, uncommonEyes, rareOther, veryRareAppearances);
+                }
+
+                if (rareEyes?.Any() == true)
+                {
+                    BuildAppearances(rareSkin, commonHair, rareEyes, commonOther, veryRareAppearances);
+
+                    if (uncommonOther?.Any() == true)
+                        BuildAppearances(rareSkin, commonHair, rareEyes, uncommonOther, veryRareAppearances);
+
+                    if (rareOther?.Any() == true)
+                        BuildAppearances(rareSkin, commonHair, rareEyes, rareOther, veryRareAppearances);
+                }
+
+                if (uncommonHair?.Any() == true)
+                {
+                    BuildAppearances(rareSkin, uncommonHair, commonEyes, commonOther, rareAppearances);
+
+                    if (uncommonOther?.Any() == true)
+                        BuildAppearances(rareSkin, uncommonHair, commonEyes, uncommonOther, veryRareAppearances);
+
+                    if (rareOther?.Any() == true)
+                        BuildAppearances(rareSkin, uncommonHair, commonEyes, rareOther, veryRareAppearances);
+
+                    if (uncommonEyes?.Any() == true)
+                    {
+                        BuildAppearances(rareSkin, uncommonHair, uncommonEyes, commonOther, veryRareAppearances);
+
+                        if (uncommonOther?.Any() == true)
+                            BuildAppearances(rareSkin, uncommonHair, uncommonEyes, uncommonOther, veryRareAppearances);
+
+                        if (rareOther?.Any() == true)
+                            BuildAppearances(rareSkin, uncommonHair, uncommonEyes, rareOther, veryRareAppearances);
+                    }
+
+                    if (rareEyes?.Any() == true)
+                    {
+                        BuildAppearances(rareSkin, uncommonHair, rareEyes, commonOther, veryRareAppearances);
+
+                        if (uncommonOther?.Any() == true)
+                            BuildAppearances(rareSkin, uncommonHair, rareEyes, uncommonOther, veryRareAppearances);
+
+                        if (rareOther?.Any() == true)
+                            BuildAppearances(rareSkin, uncommonHair, rareEyes, rareOther, veryRareAppearances);
+                    }
+                }
+
+                if (rareHair?.Any() == true)
+                {
+                    BuildAppearances(rareSkin, rareHair, commonEyes, commonOther, veryRareAppearances);
+
+                    if (uncommonOther?.Any() == true)
+                        BuildAppearances(rareSkin, rareHair, commonEyes, uncommonOther, veryRareAppearances);
+
+                    if (rareOther?.Any() == true)
+                        BuildAppearances(rareSkin, rareHair, commonEyes, rareOther, veryRareAppearances);
+
+                    if (uncommonEyes?.Any() == true)
+                    {
+                        BuildAppearances(rareSkin, rareHair, uncommonEyes, commonOther, veryRareAppearances);
+
+                        if (uncommonOther?.Any() == true)
+                            BuildAppearances(rareSkin, rareHair, uncommonEyes, uncommonOther, veryRareAppearances);
+
+                        if (rareOther?.Any() == true)
+                            BuildAppearances(rareSkin, rareHair, uncommonEyes, rareOther, veryRareAppearances);
+                    }
+
+                    if (rareEyes?.Any() == true)
+                    {
+                        BuildAppearances(rareSkin, rareHair, rareEyes, commonOther, veryRareAppearances);
+
+                        if (uncommonOther?.Any() == true)
+                            BuildAppearances(rareSkin, rareHair, rareEyes, uncommonOther, veryRareAppearances);
+
+                        if (rareOther?.Any() == true)
+                            BuildAppearances(rareSkin, rareHair, rareEyes, rareOther, veryRareAppearances);
+                    }
+                }
+            }
+
+            return collectionSelector.CreateWeighted(commonAppearances, uncommonAppearances, rareAppearances, veryRareAppearances);
+        }
+
+        private void BuildAppearances(IEnumerable<string> skins, IEnumerable<string> hairs, IEnumerable<string> eyes, IEnumerable<string> others, List<string> appearances)
+        {
+            skins ??= new[] { string.Empty };
+            hairs ??= new[] { string.Empty };
+            eyes ??= new[] { string.Empty };
+            others ??= new[] { string.Empty };
+
+            foreach (var skin in skins)
+            {
+                foreach (var hair in hairs)
+                {
+                    foreach (var eye in eyes)
+                    {
+                        foreach (var other in others)
+                        {
+                            var appearance = BuildAppearance(skin, hair, eye, other);
+                            if (appearance.Any())
+                                appearances.Add(appearance);
+                        }
+                    }
+                }
+            }
+        }
+
+        private string BuildAppearance(string skin, string hair, string eyes, string other)
+        {
+            var appearance = new StringBuilder();
+
+            if (!string.IsNullOrEmpty(skin))
+                appearance.Append($"Skin: {skin}");
+
+            if (!string.IsNullOrEmpty(hair))
+            {
+                if (appearance.Length > 0)
+                    appearance.Append("; ");
+
+                appearance.Append($"Hair: {hair}");
+            }
+
+            if (!string.IsNullOrEmpty(eyes))
+            {
+                if (appearance.Length > 0)
+                    appearance.Append("; ");
+
+                appearance.Append($"Eyes: {eyes}");
+            }
+
+            if (!string.IsNullOrEmpty(other))
+            {
+                if (appearance.Length > 0)
+                    appearance.Append("; ");
+
+                appearance.Append(other);
+            }
+
+            return appearance.ToString();
         }
     }
 }
