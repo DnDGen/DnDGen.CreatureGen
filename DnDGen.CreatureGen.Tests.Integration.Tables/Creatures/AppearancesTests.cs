@@ -96,14 +96,32 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allOther: new[] { "Resembles a plump quail. A quadruped with stilt-like legs that emerge from its underside, ending in wicked talons. Withered, rudimentary wings rest either side of the spherical, pony-sized head that make up its main body. Legs are a metallic blue-gray, and along with its claws and beak, shine like burnished metal." });
             //Source: https://forgottenrealms.fandom.com/wiki/Allip
             appearances[CreatureConstants.Allip] = new[] { "Spectral variations of the person it once was, with nightmarish, warped features befitting of the madness that possessed it. Its lower portions trail away into a dark fog." };
-            //Source: https://www.mojobob.com/roleplay/monstrousmanual/s/sphinx.html
-            appearances[CreatureConstants.Androsphinx][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
+            //Source: https://forgottenrealms.fandom.com/wiki/Androsphinx
+            appearances[CreatureConstants.Androsphinx] = new[] { "Tawny hair/fur. Lion body, falcon wings." };
             //Source: https://forgottenrealms.fandom.com/wiki/Astral_deva
-            appearances[CreatureConstants.Angel_AstralDeva][GenderConstants.Female] = GetBaseFromRange(7 * 12, 7 * 12 + 6);
+            appearances[CreatureConstants.Angel_AstralDeva] = GetWeightedAppearances(
+                allSkin: new[] { "Golden skin" },
+                allHair: new[] { "Fair hair", "Golden hair" },
+                allEyes: new[] { "Amber eyes" },
+                allOther: new[] { "White wings tinted with gold" });
             //Source: https://forgottenrealms.fandom.com/wiki/Planetar
-            appearances[CreatureConstants.Angel_Planetar][GenderConstants.Female] = GetBaseFromRange(8 * 12, 9 * 12);
+            appearances[CreatureConstants.Angel_Planetar] = GetWeightedAppearances(
+                commonSkin: new[] { "Opalescent emerald skin" },
+                commonHair: new[] { "Bald; Opalescent white feathers", "Bald; White feathers" },
+                uncommonSkin: new[] { "Pearly white skin" },
+                uncommonHair: new[] { "Long, flowing blue hair" },
+                allEyes: new[] { "Glowing blue eyes" },
+                allOther: new[] { "White wings tinted with gold" });
             //Source: https://forgottenrealms.fandom.com/wiki/Solar
-            appearances[CreatureConstants.Angel_Solar][GenderConstants.Female] = GetBaseFromRange(9 * 12, 10 * 12);
+            appearances[CreatureConstants.Angel_Solar] = GetWeightedAppearances(
+                commonSkin: new[] { "Copper skin", "Silver skin", "Golden skin" },
+                commonHair: new[] { "Bronze hair; White-feathered wings", "Bronze hair; Coppery-golden-feathered wings" },
+                uncommonSkin: new[] { "Bronze skin", "Brass skin" },
+                uncommonHair: new[] { "Copper hair; White-feathered wings", "Copper hair; Coppery-golden-feathered wings",
+                    "Silver hair; White-feathered wings", "Silver hair; Coppery-golden-feathered wings",
+                    "Golden hair; White-feathered wings", "Golden hair; Coppery-golden-feathered wings",
+                    "Brass hair; White-feathered wings", "Brass hair; Coppery-golden-feathered wings" },
+                allEyes: new[] { "Radiant topaz eyes" });
             //Source: https://www.d20srd.org/srd/combat/movementPositionAndDistance.htm
             appearances[CreatureConstants.AnimatedObject_Colossal][GenderConstants.Agender] = GetBaseFromRange(64 * 12, 128 * 12);
             appearances[CreatureConstants.AnimatedObject_Colossal][CreatureConstants.AnimatedObject_Colossal] = GetMultiplierFromRange(64 * 12, 128 * 12);
