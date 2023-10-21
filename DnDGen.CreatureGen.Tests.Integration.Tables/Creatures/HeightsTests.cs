@@ -261,9 +261,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Arrowhawk_Elder][GenderConstants.Female] = "0";
             heights[CreatureConstants.Arrowhawk_Elder][GenderConstants.Male] = "0";
             heights[CreatureConstants.Arrowhawk_Elder][CreatureConstants.Arrowhawk_Elder] = "0";
-            //Source: https://forgottenrealms.fandom.com/wiki/Assassin_vine
-            heights[CreatureConstants.AssassinVine][GenderConstants.Agender] = "0";
-            heights[CreatureConstants.AssassinVine][CreatureConstants.AssassinVine] = "0";
+            //Source: https://forgottenrealms.fandom.com/wiki/Assassin_vine "thick as a human forearm" = guessing to be 4"
+            heights[CreatureConstants.AssassinVine][GenderConstants.Agender] = GetBaseFromAverage(4);
+            heights[CreatureConstants.AssassinVine][CreatureConstants.AssassinVine] = GetMultiplierFromAverage(4);
             //Source: https://www.d20srd.org/srd/monsters/athach.htm
             heights[CreatureConstants.Athach][GenderConstants.Female] = GetBaseFromAverage(18 * 12);
             heights[CreatureConstants.Athach][GenderConstants.Male] = GetBaseFromAverage(18 * 12);

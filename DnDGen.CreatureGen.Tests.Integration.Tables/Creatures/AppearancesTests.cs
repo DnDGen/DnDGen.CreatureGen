@@ -38,6 +38,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             Assert.That(creatureAppearances, Contains.Key(creature));
             Assert.That(creatureAppearances[creature], Is.Not.Empty);
+            Assert.That(creatureAppearances[creature].Where(a => a.Contains("TODO")), Is.Empty);
 
             AssertCollection(creature, creatureAppearances[creature].ToArray());
         }
@@ -124,17 +125,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allEyes: new[] { "Radiant topaz eyes" });
             //Source: https://www.d20srd.org/srd/monsters/animatedObject.htm
             //https://forgottenrealms.fandom.com/wiki/Animated_object
-            appearances[CreatureConstants.AnimatedObject_Colossal][GenderConstants.Agender] = GetBaseFromRange(64 * 12, 128 * 12);
-            appearances[CreatureConstants.AnimatedObject_Colossal][CreatureConstants.AnimatedObject_Colossal] = GetMultiplierFromRange(64 * 12, 128 * 12);
+            appearances[CreatureConstants.AnimatedObject_Colossal] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub", "Iron Maiden" };
             appearances[CreatureConstants.AnimatedObject_Colossal_Flexible] = new[] { "Rope", "Vine", "Chain" };
-            appearances[CreatureConstants.AnimatedObject_Colossal_MultipleLegs][GenderConstants.Agender] = GetBaseFromRange(64 * 12, 128 * 12);
-            appearances[CreatureConstants.AnimatedObject_Colossal_MultipleLegs][CreatureConstants.AnimatedObject_Colossal_MultipleLegs] = GetMultiplierFromRange(64 * 12, 128 * 12);
-            appearances[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden][GenderConstants.Agender] = GetBaseFromRange(64 * 12, 128 * 12);
-            appearances[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden][CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden] = GetMultiplierFromRange(64 * 12, 128 * 12);
+            appearances[CreatureConstants.AnimatedObject_Colossal_MultipleLegs] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
+            appearances[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden] = new[] { "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
+                "Wooden Stool" };
             appearances[CreatureConstants.AnimatedObject_Colossal_Sheetlike] = new[] { "Carpet", "Tapestry", "Rug", "Blanket" };
             appearances[CreatureConstants.AnimatedObject_Colossal_TwoLegs] = GetWeightedAppearances(
                 commonOther: new[] { "Human statue", "High Elf statue", "Lightfoot Halfling statue", "Hill Dwarf statue", "Rock Gnome statue", "Half-Elf statue",
-                    "Half-Orc statue" },
+                    "Half-Orc statue", "Suit of plate armor" },
                 uncommonOther: new[] { "Wood Elf statue", "Wild Elf statue", "Gray Elf statue", "Aquatic Elf statue", "Drow statue",
                     "Tallfellow Halfling statue", "Deep Halfling statue",
                     "Mountain Dwarf statue", "Deep Dwarf statue", "Duergar statue",
@@ -143,204 +142,253 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 rareOther: new[] { "Orc statue", "Goblin statue", "Hobgoblin statue", "Kobold statue", "Troll statue", "Ogre statue", "Mind Flayer statue",
                     "Hill Giant statue", "Frost Giant statue", "Fire Giant statue", "Stone Giant statue", "Cloud Giant statue", "Storm Giant statue",
                     "Half-Celestial statue", "Half-Fiend statue", "Half-Dragon statue" });
-            appearances[CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden] = new[] { "Ladder" };
-            appearances[CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden][GenderConstants.Agender] = GetBaseFromRange(64 * 12, 128 * 12);
-            appearances[CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden][CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden] = GetMultiplierFromRange(64 * 12, 128 * 12);
-            appearances[CreatureConstants.AnimatedObject_Colossal_Wooden][GenderConstants.Agender] = GetBaseFromRange(64 * 12, 128 * 12);
-            appearances[CreatureConstants.AnimatedObject_Colossal_Wooden][CreatureConstants.AnimatedObject_Colossal_Wooden] = GetMultiplierFromRange(64 * 12, 128 * 12);
-            appearances[CreatureConstants.AnimatedObject_Gargantuan][GenderConstants.Agender] = GetBaseFromRange(32 * 12, 64 * 12);
-            appearances[CreatureConstants.AnimatedObject_Gargantuan][CreatureConstants.AnimatedObject_Gargantuan] = GetMultiplierFromRange(32 * 12, 64 * 12);
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_Flexible][GenderConstants.Agender] = "0";
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_Flexible][CreatureConstants.AnimatedObject_Gargantuan_Flexible] = "0";
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs][GenderConstants.Agender] = GetBaseFromRange(32 * 12, 64 * 12);
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs][CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs] = GetMultiplierFromRange(32 * 12, 64 * 12);
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden][GenderConstants.Agender] = GetBaseFromRange(32 * 12, 64 * 12);
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden][CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden] = GetMultiplierFromRange(32 * 12, 64 * 12);
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_Sheetlike] = new[] { "Carpet", "Tapestry", "Rug" };
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs][GenderConstants.Agender] = GetBaseFromRange(32 * 12, 64 * 12);
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs][CreatureConstants.AnimatedObject_Gargantuan_TwoLegs] = GetMultiplierFromRange(32 * 12, 64 * 12);
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden][GenderConstants.Agender] = GetBaseFromRange(32 * 12, 64 * 12);
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden][CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden] = GetMultiplierFromRange(32 * 12, 64 * 12);
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden][GenderConstants.Agender] = GetBaseFromRange(32 * 12, 64 * 12);
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden][CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden] = GetMultiplierFromRange(32 * 12, 64 * 12);
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_Wooden][GenderConstants.Agender] = GetBaseFromRange(32 * 12, 64 * 12);
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_Wooden][CreatureConstants.AnimatedObject_Gargantuan_Wooden] = GetMultiplierFromRange(32 * 12, 64 * 12);
-            appearances[CreatureConstants.AnimatedObject_Huge][GenderConstants.Agender] = GetBaseFromRange(16 * 12, 32 * 12);
-            appearances[CreatureConstants.AnimatedObject_Huge][CreatureConstants.AnimatedObject_Huge] = GetMultiplierFromRange(16 * 12, 32 * 12);
-            appearances[CreatureConstants.AnimatedObject_Huge_Flexible][GenderConstants.Agender] = "0";
-            appearances[CreatureConstants.AnimatedObject_Huge_Flexible][CreatureConstants.AnimatedObject_Huge_Flexible] = "0";
-            appearances[CreatureConstants.AnimatedObject_Huge_MultipleLegs][GenderConstants.Agender] = GetBaseFromRange(16 * 12, 32 * 12);
-            appearances[CreatureConstants.AnimatedObject_Huge_MultipleLegs][CreatureConstants.AnimatedObject_Huge_MultipleLegs] = GetMultiplierFromRange(16 * 12, 32 * 12);
-            appearances[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden][GenderConstants.Agender] = GetBaseFromRange(16 * 12, 32 * 12);
-            appearances[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden][CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden] = GetMultiplierFromRange(16 * 12, 32 * 12);
-            appearances[CreatureConstants.AnimatedObject_Huge_Sheetlike] = new[] { "Carpet", "Tapestry", "Rug" };
-            appearances[CreatureConstants.AnimatedObject_Huge_TwoLegs][GenderConstants.Agender] = GetBaseFromRange(16 * 12, 32 * 12);
-            appearances[CreatureConstants.AnimatedObject_Huge_TwoLegs][CreatureConstants.AnimatedObject_Huge_TwoLegs] = GetMultiplierFromRange(16 * 12, 32 * 12);
-            appearances[CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden][GenderConstants.Agender] = GetBaseFromRange(16 * 12, 32 * 12);
-            appearances[CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden][CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden] = GetMultiplierFromRange(16 * 12, 32 * 12);
-            appearances[CreatureConstants.AnimatedObject_Huge_Wheels_Wooden][GenderConstants.Agender] = GetBaseFromRange(16 * 12, 32 * 12);
-            appearances[CreatureConstants.AnimatedObject_Huge_Wheels_Wooden][CreatureConstants.AnimatedObject_Huge_Wheels_Wooden] = GetMultiplierFromRange(16 * 12, 32 * 12);
-            appearances[CreatureConstants.AnimatedObject_Huge_Wooden][GenderConstants.Agender] = GetBaseFromRange(16 * 12, 32 * 12);
-            appearances[CreatureConstants.AnimatedObject_Huge_Wooden][CreatureConstants.AnimatedObject_Huge_Wooden] = GetMultiplierFromRange(16 * 12, 32 * 12);
-            appearances[CreatureConstants.AnimatedObject_Large][GenderConstants.Agender] = GetBaseFromRange(8 * 12, 16 * 12);
-            appearances[CreatureConstants.AnimatedObject_Large][CreatureConstants.AnimatedObject_Large] = GetMultiplierFromRange(8 * 12, 16 * 12);
-            appearances[CreatureConstants.AnimatedObject_Large_Flexible][GenderConstants.Agender] = "0";
-            appearances[CreatureConstants.AnimatedObject_Large_Flexible][CreatureConstants.AnimatedObject_Large_Flexible] = "0";
-            appearances[CreatureConstants.AnimatedObject_Large_MultipleLegs][GenderConstants.Agender] = GetBaseFromRange(8 * 12, 16 * 12);
-            appearances[CreatureConstants.AnimatedObject_Large_MultipleLegs][CreatureConstants.AnimatedObject_Large_MultipleLegs] = GetMultiplierFromRange(8 * 12, 16 * 12);
-            appearances[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden][GenderConstants.Agender] = GetBaseFromRange(8 * 12, 16 * 12);
-            appearances[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden][CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden] = GetMultiplierFromRange(8 * 12, 16 * 12);
-            appearances[CreatureConstants.AnimatedObject_Large_Sheetlike] = new[] { "Carpet", "Tapestry", "Rug" };
-            appearances[CreatureConstants.AnimatedObject_Large_TwoLegs][GenderConstants.Agender] = GetBaseFromRange(8 * 12, 16 * 12);
-            appearances[CreatureConstants.AnimatedObject_Large_TwoLegs][CreatureConstants.AnimatedObject_Large_TwoLegs] = GetMultiplierFromRange(8 * 12, 16 * 12);
-            appearances[CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden][GenderConstants.Agender] = GetBaseFromRange(8 * 12, 16 * 12);
-            appearances[CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden][CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden] = GetMultiplierFromRange(8 * 12, 16 * 12);
-            appearances[CreatureConstants.AnimatedObject_Large_Wheels_Wooden][GenderConstants.Agender] = GetBaseFromRange(8 * 12, 16 * 12);
-            appearances[CreatureConstants.AnimatedObject_Large_Wheels_Wooden][CreatureConstants.AnimatedObject_Large_Wheels_Wooden] = GetMultiplierFromRange(8 * 12, 16 * 12);
-            appearances[CreatureConstants.AnimatedObject_Large_Wooden][GenderConstants.Agender] = GetBaseFromRange(8 * 12, 16 * 12);
-            appearances[CreatureConstants.AnimatedObject_Large_Wooden][CreatureConstants.AnimatedObject_Large_Wooden] = GetMultiplierFromRange(8 * 12, 16 * 12);
-            appearances[CreatureConstants.AnimatedObject_Medium][GenderConstants.Agender] = GetBaseFromRange(4 * 12, 8 * 12);
-            appearances[CreatureConstants.AnimatedObject_Medium][CreatureConstants.AnimatedObject_Medium] = GetMultiplierFromRange(4 * 12, 8 * 12);
-            appearances[CreatureConstants.AnimatedObject_Medium_Flexible][GenderConstants.Agender] = "0";
-            appearances[CreatureConstants.AnimatedObject_Medium_Flexible][CreatureConstants.AnimatedObject_Medium_Flexible] = "0";
-            appearances[CreatureConstants.AnimatedObject_Medium_MultipleLegs][GenderConstants.Agender] = GetBaseFromRange(4 * 12, 8 * 12);
-            appearances[CreatureConstants.AnimatedObject_Medium_MultipleLegs][CreatureConstants.AnimatedObject_Medium_MultipleLegs] = GetMultiplierFromRange(4 * 12, 8 * 12);
-            appearances[CreatureConstants.AnimatedObject_Medium_MultipleLegs_Wooden][GenderConstants.Agender] = GetBaseFromRange(4 * 12, 8 * 12);
-            appearances[CreatureConstants.AnimatedObject_Medium_MultipleLegs_Wooden][CreatureConstants.AnimatedObject_Medium_MultipleLegs_Wooden] = GetMultiplierFromRange(4 * 12, 8 * 12);
-            appearances[CreatureConstants.AnimatedObject_Medium_Sheetlike] = new[] { "Carpet", "Tapestry", "Rug" };
-            appearances[CreatureConstants.AnimatedObject_Medium_TwoLegs][GenderConstants.Agender] = GetBaseFromRange(4 * 12, 8 * 12);
-            appearances[CreatureConstants.AnimatedObject_Medium_TwoLegs][CreatureConstants.AnimatedObject_Medium_TwoLegs] = GetMultiplierFromRange(4 * 12, 8 * 12);
-            appearances[CreatureConstants.AnimatedObject_Medium_TwoLegs_Wooden][GenderConstants.Agender] = GetBaseFromRange(4 * 12, 8 * 12);
-            appearances[CreatureConstants.AnimatedObject_Medium_TwoLegs_Wooden][CreatureConstants.AnimatedObject_Medium_TwoLegs_Wooden] = GetMultiplierFromRange(4 * 12, 8 * 12);
-            appearances[CreatureConstants.AnimatedObject_Medium_Wheels_Wooden][GenderConstants.Agender] = GetBaseFromRange(4 * 12, 8 * 12);
-            appearances[CreatureConstants.AnimatedObject_Medium_Wheels_Wooden][CreatureConstants.AnimatedObject_Medium_Wheels_Wooden] = GetMultiplierFromRange(4 * 12, 8 * 12);
-            appearances[CreatureConstants.AnimatedObject_Medium_Wooden][GenderConstants.Agender] = GetBaseFromRange(4 * 12, 8 * 12);
-            appearances[CreatureConstants.AnimatedObject_Medium_Wooden][CreatureConstants.AnimatedObject_Medium_Wooden] = GetMultiplierFromRange(4 * 12, 8 * 12);
-            appearances[CreatureConstants.AnimatedObject_Small][GenderConstants.Agender] = GetBaseFromRange(2 * 12, 4 * 12);
-            appearances[CreatureConstants.AnimatedObject_Small][CreatureConstants.AnimatedObject_Small] = GetMultiplierFromRange(2 * 12, 4 * 12);
-            appearances[CreatureConstants.AnimatedObject_Small_Flexible][GenderConstants.Agender] = "0";
-            appearances[CreatureConstants.AnimatedObject_Small_Flexible][CreatureConstants.AnimatedObject_Small_Flexible] = "0";
-            appearances[CreatureConstants.AnimatedObject_Small_MultipleLegs][GenderConstants.Agender] = GetBaseFromRange(2 * 12, 4 * 12);
-            appearances[CreatureConstants.AnimatedObject_Small_MultipleLegs][CreatureConstants.AnimatedObject_Small_MultipleLegs] = GetMultiplierFromRange(2 * 12, 4 * 12);
-            appearances[CreatureConstants.AnimatedObject_Small_MultipleLegs_Wooden][GenderConstants.Agender] = GetBaseFromRange(2 * 12, 4 * 12);
-            appearances[CreatureConstants.AnimatedObject_Small_MultipleLegs_Wooden][CreatureConstants.AnimatedObject_Small_MultipleLegs_Wooden] = GetMultiplierFromRange(2 * 12, 4 * 12);
-            appearances[CreatureConstants.AnimatedObject_Small_Sheetlike] = new[] { "Carpet", "Tapestry", "Rug" };
-            appearances[CreatureConstants.AnimatedObject_Small_TwoLegs][GenderConstants.Agender] = GetBaseFromRange(2 * 12, 4 * 12);
-            appearances[CreatureConstants.AnimatedObject_Small_TwoLegs][CreatureConstants.AnimatedObject_Small_TwoLegs] = GetMultiplierFromRange(2 * 12, 4 * 12);
-            appearances[CreatureConstants.AnimatedObject_Small_TwoLegs_Wooden][GenderConstants.Agender] = GetBaseFromRange(2 * 12, 4 * 12);
-            appearances[CreatureConstants.AnimatedObject_Small_TwoLegs_Wooden][CreatureConstants.AnimatedObject_Small_TwoLegs_Wooden] = GetMultiplierFromRange(2 * 12, 4 * 12);
-            appearances[CreatureConstants.AnimatedObject_Small_Wheels_Wooden][GenderConstants.Agender] = GetBaseFromRange(2 * 12, 4 * 12);
-            appearances[CreatureConstants.AnimatedObject_Small_Wheels_Wooden][CreatureConstants.AnimatedObject_Small_Wheels_Wooden] = GetMultiplierFromRange(2 * 12, 4 * 12);
-            appearances[CreatureConstants.AnimatedObject_Small_Wooden][GenderConstants.Agender] = GetBaseFromRange(2 * 12, 4 * 12);
-            appearances[CreatureConstants.AnimatedObject_Small_Wooden][CreatureConstants.AnimatedObject_Small_Wooden] = GetMultiplierFromRange(2 * 12, 4 * 12);
-            appearances[CreatureConstants.AnimatedObject_Tiny][GenderConstants.Agender] = GetBaseFromRange(12, 24);
-            appearances[CreatureConstants.AnimatedObject_Tiny][CreatureConstants.AnimatedObject_Tiny] = GetMultiplierFromRange(12, 24);
-            appearances[CreatureConstants.AnimatedObject_Tiny_Flexible][GenderConstants.Agender] = "0";
-            appearances[CreatureConstants.AnimatedObject_Tiny_Flexible][CreatureConstants.AnimatedObject_Tiny_Flexible] = "0";
-            appearances[CreatureConstants.AnimatedObject_Tiny_MultipleLegs][GenderConstants.Agender] = GetBaseFromRange(12, 24);
-            appearances[CreatureConstants.AnimatedObject_Tiny_MultipleLegs][CreatureConstants.AnimatedObject_Tiny_MultipleLegs] = GetMultiplierFromRange(12, 24);
-            appearances[CreatureConstants.AnimatedObject_Tiny_MultipleLegs_Wooden][GenderConstants.Agender] = GetBaseFromRange(12, 24);
-            appearances[CreatureConstants.AnimatedObject_Tiny_MultipleLegs_Wooden][CreatureConstants.AnimatedObject_Tiny_MultipleLegs_Wooden] = GetMultiplierFromRange(12, 24);
-            appearances[CreatureConstants.AnimatedObject_Tiny_Sheetlike] = new[] { "Carpet", "Tapestry", "Rug" };
-            appearances[CreatureConstants.AnimatedObject_Tiny_TwoLegs][GenderConstants.Agender] = GetBaseFromRange(12, 24);
-            appearances[CreatureConstants.AnimatedObject_Tiny_TwoLegs][CreatureConstants.AnimatedObject_Tiny_TwoLegs] = GetMultiplierFromRange(12, 24);
-            appearances[CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden][GenderConstants.Agender] = GetBaseFromRange(12, 24);
-            appearances[CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden][CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden] = GetMultiplierFromRange(12, 24);
-            appearances[CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden][GenderConstants.Agender] = GetBaseFromRange(12, 24);
-            appearances[CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden][CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden] = GetMultiplierFromRange(12, 24);
-            appearances[CreatureConstants.AnimatedObject_Tiny_Wooden][GenderConstants.Agender] = GetBaseFromRange(12, 24);
-            appearances[CreatureConstants.AnimatedObject_Tiny_Wooden][CreatureConstants.AnimatedObject_Tiny_Wooden] = GetMultiplierFromRange(12, 24);
-            //Source: https://www.d20srd.org/srd/monsters/ankheg.htm
-            appearances[CreatureConstants.Ankheg][GenderConstants.Female] = "0";
-            appearances[CreatureConstants.Ankheg][GenderConstants.Male] = "0";
-            appearances[CreatureConstants.Ankheg][CreatureConstants.Ankheg] = "0";
+            appearances[CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden] = new[] { "Ladder",
+                "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine", "Rock Gnome wooden figurine",
+                    "Half-Elf wooden figurine", "Half-Orc wooden figurine" };
+            appearances[CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden] = new[] { "Cart", "Carriage" };
+            appearances[CreatureConstants.AnimatedObject_Colossal_Wooden] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
+            appearances[CreatureConstants.AnimatedObject_Gargantuan] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_Flexible] = new[] { "Rope", "Vine", "Chain" };
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden] = new[] { "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
+                "Wooden Stool" };
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_Sheetlike] = new[] { "Carpet", "Tapestry", "Rug", "Blanket" };
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs] = GetWeightedAppearances(
+                commonOther: new[] { "Human statue", "High Elf statue", "Lightfoot Halfling statue", "Hill Dwarf statue", "Rock Gnome statue", "Half-Elf statue",
+                    "Half-Orc statue", "Suit of plate armor" },
+                uncommonOther: new[] { "Wood Elf statue", "Wild Elf statue", "Gray Elf statue", "Aquatic Elf statue", "Drow statue",
+                    "Tallfellow Halfling statue", "Deep Halfling statue",
+                    "Mountain Dwarf statue", "Deep Dwarf statue", "Duergar statue",
+                    "Forest Gnome statue", "Svirfneblin statue",
+                    "Aasimar statue", "Tiefling statue" },
+                rareOther: new[] { "Orc statue", "Goblin statue", "Hobgoblin statue", "Kobold statue", "Troll statue", "Ogre statue", "Mind Flayer statue",
+                    "Hill Giant statue", "Frost Giant statue", "Fire Giant statue", "Stone Giant statue", "Cloud Giant statue", "Storm Giant statue",
+                    "Half-Celestial statue", "Half-Fiend statue", "Half-Dragon statue" });
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden] = new[] { "Ladder",
+                "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine", "Rock Gnome wooden figurine",
+                    "Half-Elf wooden figurine", "Half-Orc wooden figurine" };
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden] = new[] { "Cart", "Carriage" };
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_Wooden] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
+            appearances[CreatureConstants.AnimatedObject_Huge] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
+            appearances[CreatureConstants.AnimatedObject_Huge_Flexible] = new[] { "Rope", "Vine", "Chain" };
+            appearances[CreatureConstants.AnimatedObject_Huge_MultipleLegs] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
+            appearances[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden] = new[] { "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
+                "Wooden Stool" };
+            appearances[CreatureConstants.AnimatedObject_Huge_Sheetlike] = new[] { "Carpet", "Tapestry", "Rug", "Blanket" };
+            appearances[CreatureConstants.AnimatedObject_Huge_TwoLegs] = GetWeightedAppearances(
+                commonOther: new[] { "Human statue", "High Elf statue", "Lightfoot Halfling statue", "Hill Dwarf statue", "Rock Gnome statue", "Half-Elf statue",
+                    "Half-Orc statue", "Suit of plate armor" },
+                uncommonOther: new[] { "Wood Elf statue", "Wild Elf statue", "Gray Elf statue", "Aquatic Elf statue", "Drow statue",
+                    "Tallfellow Halfling statue", "Deep Halfling statue",
+                    "Mountain Dwarf statue", "Deep Dwarf statue", "Duergar statue",
+                    "Forest Gnome statue", "Svirfneblin statue",
+                    "Aasimar statue", "Tiefling statue" },
+                rareOther: new[] { "Orc statue", "Goblin statue", "Hobgoblin statue", "Kobold statue", "Troll statue", "Ogre statue", "Mind Flayer statue",
+                    "Hill Giant statue", "Frost Giant statue", "Fire Giant statue", "Stone Giant statue", "Cloud Giant statue", "Storm Giant statue",
+                    "Half-Celestial statue", "Half-Fiend statue", "Half-Dragon statue" });
+            appearances[CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden] = new[] { "Ladder",
+                "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine", "Rock Gnome wooden figurine",
+                    "Half-Elf wooden figurine", "Half-Orc wooden figurine" };
+            appearances[CreatureConstants.AnimatedObject_Huge_Wheels_Wooden] = new[] { "Cart", "Carriage" };
+            appearances[CreatureConstants.AnimatedObject_Huge_Wooden] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
+            appearances[CreatureConstants.AnimatedObject_Large] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
+            appearances[CreatureConstants.AnimatedObject_Large_Flexible] = new[] { "Rope", "Vine", "Chain" };
+            appearances[CreatureConstants.AnimatedObject_Large_MultipleLegs] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
+            appearances[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden] = new[] { "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
+                "Wooden Stool" };
+            appearances[CreatureConstants.AnimatedObject_Large_Sheetlike] = new[] { "Carpet", "Tapestry", "Rug", "Blanket" };
+            appearances[CreatureConstants.AnimatedObject_Large_TwoLegs] = GetWeightedAppearances(
+                commonOther: new[] { "Human statue", "High Elf statue", "Lightfoot Halfling statue", "Hill Dwarf statue", "Rock Gnome statue", "Half-Elf statue",
+                    "Half-Orc statue", "Suit of plate armor" },
+                uncommonOther: new[] { "Wood Elf statue", "Wild Elf statue", "Gray Elf statue", "Aquatic Elf statue", "Drow statue",
+                    "Tallfellow Halfling statue", "Deep Halfling statue",
+                    "Mountain Dwarf statue", "Deep Dwarf statue", "Duergar statue",
+                    "Forest Gnome statue", "Svirfneblin statue",
+                    "Aasimar statue", "Tiefling statue" },
+                rareOther: new[] { "Orc statue", "Goblin statue", "Hobgoblin statue", "Kobold statue", "Troll statue", "Ogre statue", "Mind Flayer statue",
+                    "Hill Giant statue", "Frost Giant statue", "Fire Giant statue", "Stone Giant statue", "Cloud Giant statue", "Storm Giant statue",
+                    "Half-Celestial statue", "Half-Fiend statue", "Half-Dragon statue" });
+            appearances[CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden] = new[] { "Ladder",
+                "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine", "Rock Gnome wooden figurine",
+                    "Half-Elf wooden figurine", "Half-Orc wooden figurine" };
+            appearances[CreatureConstants.AnimatedObject_Large_Wheels_Wooden] = new[] { "Cart", "Carriage" };
+            appearances[CreatureConstants.AnimatedObject_Large_Wooden] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
+            appearances[CreatureConstants.AnimatedObject_Medium] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
+            appearances[CreatureConstants.AnimatedObject_Medium_Flexible] = new[] { "Rope", "Vine", "Chain" };
+            appearances[CreatureConstants.AnimatedObject_Medium_MultipleLegs] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
+            appearances[CreatureConstants.AnimatedObject_Medium_MultipleLegs_Wooden] = new[] { "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
+                "Wooden Stool" };
+            appearances[CreatureConstants.AnimatedObject_Medium_Sheetlike] = new[] { "Carpet", "Tapestry", "Rug", "Blanket" };
+            appearances[CreatureConstants.AnimatedObject_Medium_TwoLegs] = GetWeightedAppearances(
+                commonOther: new[] { "Human statue", "High Elf statue", "Lightfoot Halfling statue", "Hill Dwarf statue", "Rock Gnome statue", "Half-Elf statue",
+                    "Half-Orc statue", "Suit of plate armor" },
+                uncommonOther: new[] { "Wood Elf statue", "Wild Elf statue", "Gray Elf statue", "Aquatic Elf statue", "Drow statue",
+                    "Tallfellow Halfling statue", "Deep Halfling statue",
+                    "Mountain Dwarf statue", "Deep Dwarf statue", "Duergar statue",
+                    "Forest Gnome statue", "Svirfneblin statue",
+                    "Aasimar statue", "Tiefling statue" },
+                rareOther: new[] { "Orc statue", "Goblin statue", "Hobgoblin statue", "Kobold statue", "Troll statue", "Ogre statue", "Mind Flayer statue",
+                    "Hill Giant statue", "Frost Giant statue", "Fire Giant statue", "Stone Giant statue", "Cloud Giant statue", "Storm Giant statue",
+                    "Half-Celestial statue", "Half-Fiend statue", "Half-Dragon statue" });
+            appearances[CreatureConstants.AnimatedObject_Medium_TwoLegs_Wooden] = new[] { "Ladder",
+                "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine", "Rock Gnome wooden figurine",
+                    "Half-Elf wooden figurine", "Half-Orc wooden figurine" };
+            appearances[CreatureConstants.AnimatedObject_Medium_Wheels_Wooden] = new[] { "Cart", "Carriage" };
+            appearances[CreatureConstants.AnimatedObject_Medium_Wooden] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
+            appearances[CreatureConstants.AnimatedObject_Small] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
+            appearances[CreatureConstants.AnimatedObject_Small_Flexible] = new[] { "Rope", "Vine", "Chain" };
+            appearances[CreatureConstants.AnimatedObject_Small_MultipleLegs] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
+            appearances[CreatureConstants.AnimatedObject_Small_MultipleLegs_Wooden] = new[] { "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
+                "Wooden Stool" };
+            appearances[CreatureConstants.AnimatedObject_Small_Sheetlike] = new[] { "Carpet", "Tapestry", "Rug", "Blanket" };
+            appearances[CreatureConstants.AnimatedObject_Small_TwoLegs] = GetWeightedAppearances(
+                commonOther: new[] { "Human statue", "High Elf statue", "Lightfoot Halfling statue", "Hill Dwarf statue", "Rock Gnome statue", "Half-Elf statue",
+                    "Half-Orc statue", "Suit of plate armor" },
+                uncommonOther: new[] { "Wood Elf statue", "Wild Elf statue", "Gray Elf statue", "Aquatic Elf statue", "Drow statue",
+                    "Tallfellow Halfling statue", "Deep Halfling statue",
+                    "Mountain Dwarf statue", "Deep Dwarf statue", "Duergar statue",
+                    "Forest Gnome statue", "Svirfneblin statue",
+                    "Aasimar statue", "Tiefling statue" },
+                rareOther: new[] { "Orc statue", "Goblin statue", "Hobgoblin statue", "Kobold statue", "Troll statue", "Ogre statue", "Mind Flayer statue",
+                    "Hill Giant statue", "Frost Giant statue", "Fire Giant statue", "Stone Giant statue", "Cloud Giant statue", "Storm Giant statue",
+                    "Half-Celestial statue", "Half-Fiend statue", "Half-Dragon statue" });
+            appearances[CreatureConstants.AnimatedObject_Small_TwoLegs_Wooden] = new[] { "Ladder",
+                "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine", "Rock Gnome wooden figurine",
+                    "Half-Elf wooden figurine", "Half-Orc wooden figurine" };
+            appearances[CreatureConstants.AnimatedObject_Small_Wheels_Wooden] = new[] { "Cart", "Carriage" };
+            appearances[CreatureConstants.AnimatedObject_Small_Wooden] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
+            appearances[CreatureConstants.AnimatedObject_Tiny] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
+            appearances[CreatureConstants.AnimatedObject_Tiny_Flexible] = new[] { "Rope", "Vine", "Chain" };
+            appearances[CreatureConstants.AnimatedObject_Tiny_MultipleLegs] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
+            appearances[CreatureConstants.AnimatedObject_Tiny_MultipleLegs_Wooden] = new[] { "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
+                "Wooden Stool" };
+            appearances[CreatureConstants.AnimatedObject_Tiny_Sheetlike] = new[] { "Carpet", "Tapestry", "Rug", "Blanket" };
+            appearances[CreatureConstants.AnimatedObject_Tiny_TwoLegs] = GetWeightedAppearances(
+                commonOther: new[] { "Human statue", "High Elf statue", "Lightfoot Halfling statue", "Hill Dwarf statue", "Rock Gnome statue", "Half-Elf statue",
+                    "Half-Orc statue", "Suit of plate armor" },
+                uncommonOther: new[] { "Wood Elf statue", "Wild Elf statue", "Gray Elf statue", "Aquatic Elf statue", "Drow statue",
+                    "Tallfellow Halfling statue", "Deep Halfling statue",
+                    "Mountain Dwarf statue", "Deep Dwarf statue", "Duergar statue",
+                    "Forest Gnome statue", "Svirfneblin statue",
+                    "Aasimar statue", "Tiefling statue" },
+                rareOther: new[] { "Orc statue", "Goblin statue", "Hobgoblin statue", "Kobold statue", "Troll statue", "Ogre statue", "Mind Flayer statue",
+                    "Hill Giant statue", "Frost Giant statue", "Fire Giant statue", "Stone Giant statue", "Cloud Giant statue", "Storm Giant statue",
+                    "Half-Celestial statue", "Half-Fiend statue", "Half-Dragon statue" });
+            appearances[CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden] = new[] { "Ladder",
+                "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine", "Rock Gnome wooden figurine",
+                    "Half-Elf wooden figurine", "Half-Orc wooden figurine" };
+            appearances[CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden] = new[] { "Cart", "Carriage" };
+            appearances[CreatureConstants.AnimatedObject_Tiny_Wooden] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
+            //Source: https://forgottenrealms.fandom.com/wiki/Ankheg
+            appearances[CreatureConstants.Ankheg] = GetWeightedAppearances(
+                allSkin: new[] { "Brown skin", "Yellow skin", "Green skin" },
+                allEyes: new[] { "Black eyes" });
             //Source: https://www.d20srd.org/srd/monsters/hag.htm#annis
-            appearances[CreatureConstants.Annis][GenderConstants.Female] = GetBaseFromAverage(8 * 12);
-            appearances[CreatureConstants.Annis][CreatureConstants.Annis] = GetMultiplierFromAverage(8 * 12);
-            //Source: https://www.d20srd.org/srd/monsters/giantAnt.htm
-            //https://www.dimensions.com/element/black-garden-ant-lasius-niger - scale up, [.035,.05]*6*12/[.14,.2] = [18,18]
-            appearances[CreatureConstants.Ant_Giant_Worker][GenderConstants.Male] = GetBaseFromAverage(18);
-            appearances[CreatureConstants.Ant_Giant_Worker][CreatureConstants.Ant_Giant_Worker] = GetMultiplierFromAverage(18);
-            appearances[CreatureConstants.Ant_Giant_Soldier][GenderConstants.Male] = GetBaseFromAverage(18);
-            appearances[CreatureConstants.Ant_Giant_Soldier][CreatureConstants.Ant_Giant_Soldier] = GetMultiplierFromAverage(18);
-            //https://www.dimensions.com/element/black-garden-ant-lasius-niger - scale up, [.035,.05]*9*12/[.31,.35] = [12,16]
-            appearances[CreatureConstants.Ant_Giant_Queen][GenderConstants.Female] = GetBaseFromRange(12, 16);
-            appearances[CreatureConstants.Ant_Giant_Queen][CreatureConstants.Ant_Giant_Queen] = GetMultiplierFromRange(12, 16);
-            //Source: https://www.dimensions.com/element/eastern-lowland-gorilla-gorilla-beringei-graueri (using for female)
-            //https://www.d20srd.org/srd/monsters/ape.htm (male)
-            //Adjusting female max -3" to match range
-            appearances[CreatureConstants.Ape][GenderConstants.Female] = GetBaseFromRange(63, 72 - 3);
-            appearances[CreatureConstants.Ape][GenderConstants.Male] = GetBaseFromRange(5 * 12 + 6, 6 * 12);
-            appearances[CreatureConstants.Ape][CreatureConstants.Ape] = GetMultiplierFromRange(5 * 12 + 6, 6 * 12);
-            //Source: https://www.d20srd.org/srd/monsters/direApe.htm
-            appearances[CreatureConstants.Ape_Dire][GenderConstants.Female] = GetBaseFromAverage(9 * 12);
-            appearances[CreatureConstants.Ape_Dire][GenderConstants.Male] = GetBaseFromAverage(9 * 12);
-            appearances[CreatureConstants.Ape_Dire][CreatureConstants.Ape_Dire] = GetMultiplierFromAverage(9 * 12);
-            //INFO: Based on Half-Elf, since could be Human, Half-Elf, or Drow
-            appearances[CreatureConstants.Aranea][GenderConstants.Female] = "4*12+5";
-            appearances[CreatureConstants.Aranea][GenderConstants.Male] = "4*12+7";
-            appearances[CreatureConstants.Aranea][CreatureConstants.Aranea] = "2d8";
+            appearances[CreatureConstants.Annis] = GetWeightedAppearances(
+                allSkin: new[] { "Blue-black skin, as if deeply bruised, covered in scars and blemishes" },
+                allHair: new[] { "Black hair" },
+                allEyes: new[] { "Dull, greenish-yellow eyes" },
+                commonOther: new[] { "Lean with long, lanky limbs. Long, spiraling, stylized, black nails",
+                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized black nails",
+                    "Lean with long, lanky limbs. Long, spiraling, stylized, rust-colored nails",
+                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized rust-colored nails" },
+                uncommonOther: new[] { "Lean with long, lanky limbs. Long, spiraling, stylized, black nails. Chewed-through cheeks, etching a gangrenous grin",
+                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized black nails. Chewed-through cheeks, etching a gangrenous grin",
+                    "Lean with long, lanky limbs. Long, spiraling, stylized, rust-colored nails. Chewed-through cheeks, etching a gangrenous grin",
+                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized rust-colored nails. Chewed-through cheeks, etching a gangrenous grin",
+                    "Lean with long, lanky limbs. Long, spiraling, stylized, black nails. Corpses stitched to her back",
+                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized black nails. Corpses stitched to her back",
+                    "Lean with long, lanky limbs. Long, spiraling, stylized, rust-colored nails. Corpses stitched to her back",
+                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized rust-colored nails. Corpses stitched to her back",
+                    "Lean with long, lanky limbs. Long, spiraling, stylized, black nails. Right hand is a grafted Troll hand",
+                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized black nails. Right hand is a grafted Troll hand",
+                    "Lean with long, lanky limbs. Long, spiraling, stylized, rust-colored nails. Right hand is a grafted Troll hand",
+                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized rust-colored nails. Right hand is a grafted Troll hand",
+                    "Lean with long, lanky limbs. Long, spiraling, stylized, black nails. Left hand is a grafted Troll hand",
+                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized black nails. Left hand is a grafted Troll hand",
+                    "Lean with long, lanky limbs. Long, spiraling, stylized, rust-colored nails. Left hand is a grafted Troll hand",
+                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized rust-colored nails. Left hand is a grafted Troll hand"  });
+            //Source: https://forgottenrealms.fandom.com/wiki/Giant_ant
+            appearances[CreatureConstants.Ant_Giant_Worker] = new[] { "Black skin", "Red skin", "Brown skin" };
+            appearances[CreatureConstants.Ant_Giant_Soldier] = new[] { "Black skin", "Red skin", "Brown skin" };
+            appearances[CreatureConstants.Ant_Giant_Queen] = new[] { "Black skin", "Red skin", "Brown skin" };
+            //Source: https://www.dimensions.com/element/eastern-lowland-gorilla-gorilla-beringei-graueri
+            appearances[CreatureConstants.Ape] = GetWeightedAppearances(
+                commonHair: new[] { "Jet-black fur" },
+                uncommonHair: new[] { "Grey fur", "Silver fur" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Dire_ape
+            appearances[CreatureConstants.Ape_Dire] = GetWeightedAppearances(
+                commonHair: new[] { "Jet-black fur" },
+                uncommonHair: new[] { "Grey fur", "Silver fur" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Aranea
+            //TODO: Include half-elf (uncommon) and drow (as rare)
+            appearances[CreatureConstants.Aranea] = GetWeightedAppearances(
+                commonSkin: new[] { "Black skin TODO", "Brown skin", "Olive skin", "White skin", "Pink skin",
+                    "Deep Black skin", "Deep Brown skin", "Deep Olive skin", "Deep White skin", "Deep Pink skin",
+                    "Pale Black skin", "Pale Brown skin", "Pale Olive skin", "Pale White skin", "Pale Pink skin" },
+                commonHair: new[] { "Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair",
+                    "Curly Red hair", "Curly Blond hair", "Curly Brown hair", "Curly Black hair",
+                    "Kinky Red hair", "Kinky Blond hair", "Kinky Brown hair", "Kinky Black hair" },
+                commonEyes: new[] { "Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes" });
             //Source: https://www.d20srd.org/srd/monsters/arrowhawk.htm
-            appearances[CreatureConstants.Arrowhawk_Juvenile][GenderConstants.Female] = "0";
-            appearances[CreatureConstants.Arrowhawk_Juvenile][GenderConstants.Male] = "0";
-            appearances[CreatureConstants.Arrowhawk_Juvenile][CreatureConstants.Arrowhawk_Juvenile] = "0";
-            appearances[CreatureConstants.Arrowhawk_Adult][GenderConstants.Female] = "0";
-            appearances[CreatureConstants.Arrowhawk_Adult][GenderConstants.Male] = "0";
-            appearances[CreatureConstants.Arrowhawk_Adult][CreatureConstants.Arrowhawk_Adult] = "0";
-            appearances[CreatureConstants.Arrowhawk_Elder][GenderConstants.Female] = "0";
-            appearances[CreatureConstants.Arrowhawk_Elder][GenderConstants.Male] = "0";
-            appearances[CreatureConstants.Arrowhawk_Elder][CreatureConstants.Arrowhawk_Elder] = "0";
+            appearances[CreatureConstants.Arrowhawk_Juvenile] = new[] { "Covered in blue scales with occasional tufts of yellow feathers" };
+            appearances[CreatureConstants.Arrowhawk_Adult] = new[] { "Covered in blue scales with occasional tufts of yellow feathers" };
+            appearances[CreatureConstants.Arrowhawk_Elder] = new[] { "Covered in blue scales with occasional tufts of yellow feathers" };
             //Source: https://forgottenrealms.fandom.com/wiki/Assassin_vine
-            appearances[CreatureConstants.AssassinVine][GenderConstants.Agender] = "0";
-            appearances[CreatureConstants.AssassinVine][CreatureConstants.AssassinVine] = "0";
+            appearances[CreatureConstants.AssassinVine] = new[] { "Smaller vines extend from the main branch and bear clusters of grape-like berries. Stringy bark. Hand-shaped leaves" };
             //Source: https://www.d20srd.org/srd/monsters/athach.htm
-            appearances[CreatureConstants.Athach][GenderConstants.Female] = GetBaseFromAverage(18 * 12);
-            appearances[CreatureConstants.Athach][GenderConstants.Male] = GetBaseFromAverage(18 * 12);
-            appearances[CreatureConstants.Athach][CreatureConstants.Athach] = GetMultiplierFromAverage(18 * 12);
+            appearances[CreatureConstants.Athach] = new[] { "Extra arm growing out of chest. Large, curved tusks on either side of a wide mouth. Relatively small eyes and nose for the size of the head. One ear significantly bigger than the other. Quite strong stench." };
             //Source: https://forgottenrealms.fandom.com/wiki/Avoral
-            appearances[CreatureConstants.Avoral][GenderConstants.Female] = GetBaseFromRange(6 * 12 + 6, 7 * 12);
-            appearances[CreatureConstants.Avoral][GenderConstants.Male] = GetBaseFromRange(6 * 12 + 6, 7 * 12);
-            appearances[CreatureConstants.Avoral][GenderConstants.Agender] = GetBaseFromRange(6 * 12 + 6, 7 * 12);
-            appearances[CreatureConstants.Avoral][CreatureConstants.Avoral] = GetMultiplierFromRange(6 * 12 + 6, 7 * 12);
+            appearances[CreatureConstants.Avoral] = GetWeightedAppearances(
+                allSkin: new[] { "Black skin", "Brown skin", "Olive skin", "White skin", "Pink skin",
+                    "Deep Black skin", "Deep Brown skin", "Deep Olive skin", "Deep White skin", "Deep Pink skin",
+                    "Pale Black skin", "Pale Brown skin", "Pale Olive skin", "Pale White skin", "Pale Pink skin" },
+                allHair: new[] { "Red feathers", "Blue feathers", "Brown feathers", "Black feathers", "White feathers" },
+                allEyes: new[] { "Bright golden eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Azer
-            appearances[CreatureConstants.Azer][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Azer][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Azer][GenderConstants.Agender] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Azer][CreatureConstants.Azer] = GetMultiplierFromAverage(5 * 12);
+            appearances[CreatureConstants.Azer] = GetWeightedAppearances(
+                allSkin: new[] { "Brass-colored skin" },
+                allHair: new[] { "Brass-colored hair, brass-colored beard", "Brass-colored hair, fiery-colored beard", "Brass-colored hair, literal fire for beard",
+                    "Fiery-colored hair, brass-colored beard", "Fiery-colored hair, fiery-colored beard", "Fiery-colored hair, literal fire for beard",
+                    "Literal fire for hair, brass-colored beard", "Literal fire for hair, fiery-colored beard", "Literal fire for hair, literal fire for beard" },
+                allEyes: new[] { "TODO Dwarven eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Babau
-            appearances[CreatureConstants.Babau][GenderConstants.Agender] = GetBaseFromRange(6 * 12, 7 * 12);
-            appearances[CreatureConstants.Babau][CreatureConstants.Babau] = GetMultiplierFromRange(6 * 12, 7 * 12);
-            //Source: https://www.dimensions.com/element/mandrill-mandrillus-sphinx
-            appearances[CreatureConstants.Baboon][GenderConstants.Female] = GetBaseFromRange(20, 36);
-            appearances[CreatureConstants.Baboon][GenderConstants.Male] = GetBaseFromRange(20, 36);
-            appearances[CreatureConstants.Baboon][CreatureConstants.Baboon] = GetMultiplierFromRange(20, 36);
-            //Source: https://www.dimensions.com/element/honey-badger-mellivora-capensis
-            appearances[CreatureConstants.Badger][GenderConstants.Female] = GetBaseFromRange(11, 16);
-            appearances[CreatureConstants.Badger][GenderConstants.Male] = GetBaseFromRange(11, 16);
-            appearances[CreatureConstants.Badger][CreatureConstants.Badger] = GetMultiplierFromRange(11, 16);
+            appearances[CreatureConstants.Babau] = new[] { "Black, leathery skin tight to a gaunt, skeletal frame. Terrible stench. Skull is tall and long with pointed ears and jaws filled with jagged teeth. A single long horn juts from the back of the skull, curving forward and downward. White eyes that glow red when glaring." };
+            //Source: https://www.dimensions.com/element/rhesus-macaque-macaca-mulatta
+            appearances[CreatureConstants.Baboon] = new[] { "Brown hair, red face" };
+            //Source: https://animals.sandiegozoo.org/animals/honey-badger-ratel
+            appearances[CreatureConstants.Badger] = new[] { "Thick, coarse, black fur, with a wide gray-white stripe that stretches across the back, from the top of the head to the tip of the tail" };
             //Multiplying up from normal badger. Length is about x2 from normal low, 2.5x for high
-            appearances[CreatureConstants.Badger_Dire][GenderConstants.Female] = GetBaseFromRange(22, 40);
-            appearances[CreatureConstants.Badger_Dire][GenderConstants.Male] = GetBaseFromRange(22, 40);
-            appearances[CreatureConstants.Badger_Dire][CreatureConstants.Badger_Dire] = GetMultiplierFromRange(22, 40);
+            appearances[CreatureConstants.Badger_Dire] = GetWeightedAppearances(
+                commonHair: new[] { "Thick brown fur" },
+                uncommonHair: new[] { "Thick grey fur", "Thick tan fur" });
             //Source: https://forgottenrealms.fandom.com/wiki/Balor
-            appearances[CreatureConstants.Balor][GenderConstants.Agender] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Balor][CreatureConstants.Balor] = GetMultiplierFromAverage(12 * 12);
+            appearances[CreatureConstants.Balor] = new[] { "Dark red skin wrapped in glaring flames. Venom-dripping fangs. Fearsome claws." };
             //Source: https://forgottenrealms.fandom.com/wiki/Hamatula
-            appearances[CreatureConstants.BarbedDevil_Hamatula][GenderConstants.Agender] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.BarbedDevil_Hamatula][CreatureConstants.BarbedDevil_Hamatula] = GetMultiplierFromAverage(7 * 12);
+            appearances[CreatureConstants.BarbedDevil_Hamatula] = new[] { "Body completely covered in barbs. Horned hands ending in strange, lengthy claws. Long, burly tails coated in spines. Gleaming, vigilant eyes constantly shifting, making it seem anxious" };
             //Source: https://forgottenrealms.fandom.com/wiki/Barghest
-            appearances[CreatureConstants.Barghest][GenderConstants.Female] = GetBaseFromRange(5 * 12, 7 * 12);
-            appearances[CreatureConstants.Barghest][GenderConstants.Male] = GetBaseFromRange(5 * 12, 7 * 12);
-            appearances[CreatureConstants.Barghest][CreatureConstants.Barghest] = GetMultiplierFromRange(5 * 12, 7 * 12);
-            appearances[CreatureConstants.Barghest_Greater][GenderConstants.Female] = GetBaseFromRange(7 * 12, 9 * 12);
-            appearances[CreatureConstants.Barghest_Greater][GenderConstants.Male] = GetBaseFromRange(7 * 12, 9 * 12);
-            appearances[CreatureConstants.Barghest_Greater][CreatureConstants.Barghest_Greater] = GetMultiplierFromRange(7 * 12, 9 * 12);
-            appearances[CreatureConstants.Basilisk][GenderConstants.Female] = "0";
-            appearances[CreatureConstants.Basilisk][GenderConstants.Male] = "0";
-            appearances[CreatureConstants.Basilisk][CreatureConstants.Basilisk] = "0";
-            appearances[CreatureConstants.Basilisk_Greater][GenderConstants.Female] = "0";
-            appearances[CreatureConstants.Basilisk_Greater][GenderConstants.Male] = "0";
-            appearances[CreatureConstants.Basilisk_Greater][CreatureConstants.Basilisk_Greater] = "0";
+            appearances[CreatureConstants.Barghest] = GetWeightedAppearances(
+                commonHair: new[] { "Bluish-red fur", "Blue fur" },
+                commonEyes: new[] { "TODO Dog eyes, goblin eyes. Glowing orange when excited" },
+                uncommonHair: new[] { "Bluish-red fur, shock of white hair along the back", "Blue fur, shock of white hair along the back" },
+                uncommonEyes: new[] { "TODO Dog eyes, goblin eyes. Glowing orange when excited. One eye discolored (TODO: mix-match?)" });
+            appearances[CreatureConstants.Barghest_Greater] = GetWeightedAppearances(
+                commonHair: new[] { "Bluish-red fur", "Blue fur" },
+                commonEyes: new[] { "TODO Dog eyes, goblin eyes. Glowing orange when excited" },
+                uncommonHair: new[] { "Bluish-red fur, shock of white hair along the back", "Blue fur, shock of white hair along the back" },
+                uncommonEyes: new[] { "TODO Dog eyes, goblin eyes. Glowing orange when excited. One eye discolored (TODO: mix-match?)" });
+            appearances[CreatureConstants.Basilisk] = GetWeightedAppearances(
+                commonSkin: new[] { "Dull brown skin, yellowish underbelly" },
+                allEyes: new[] { "Glowing pale green eyes" },
+                uncommonSkin: new[] { "Dark gray skin, yellowish underbelly", "Dark yellow skin, yellowish underbelly", "Dark orange skin, yellowish underbelly" },
+                commonOther: new[] { "Single row of bony spikes lining the back" },
+                rareOther: new[] { "Single row of bony spikes lining the back. Curved horn atop the nose" });
+            appearances[CreatureConstants.Basilisk_Greater] = GetWeightedAppearances(
+                commonSkin: new[] { "Dull brown skin, yellowish underbelly" },
+                allEyes: new[] { "Glowing pale green eyes" },
+                uncommonSkin: new[] { "Dark gray skin, yellowish underbelly", "Dark yellow skin, yellowish underbelly", "Dark orange skin, yellowish underbelly" },
+                commonOther: new[] { "Single row of bony spikes lining the back" },
+                rareOther: new[] { "Single row of bony spikes lining the back. Curved horn atop the nose" });
             //Source: https://www.dimensions.com/element/little-brown-bat-myotis-lucifugus hanging height
             appearances[CreatureConstants.Bat][GenderConstants.Female] = GetBaseFromRange(4, 5);
             appearances[CreatureConstants.Bat][GenderConstants.Male] = GetBaseFromRange(4, 5);
@@ -1110,9 +1158,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.Elf_Gray][GenderConstants.Female] = "4*12+5";
             appearances[CreatureConstants.Elf_Gray][GenderConstants.Male] = "4*12+5";
             appearances[CreatureConstants.Elf_Gray][CreatureConstants.Elf_Gray] = "2d6";
-            appearances[CreatureConstants.Elf_Half][GenderConstants.Female] = "4*12+5";
-            appearances[CreatureConstants.Elf_Half][GenderConstants.Male] = "4*12+7";
-            appearances[CreatureConstants.Elf_Half][CreatureConstants.Elf_Half] = "2d8";
+            //TODO: Combine various elves and human. Human already there
+            appearances[CreatureConstants.Elf_Half] = GetWeightedAppearances(
+                commonSkin: new[] { "Black skin TODO", "Brown skin", "Olive skin", "White skin", "Pink skin",
+                    "Deep Black skin", "Deep Brown skin", "Deep Olive skin", "Deep White skin", "Deep Pink skin",
+                    "Pale Black skin", "Pale Brown skin", "Pale Olive skin", "Pale White skin", "Pale Pink skin" },
+                commonHair: new[] { "Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair",
+                    "Curly Red hair", "Curly Blond hair", "Curly Brown hair", "Curly Black hair",
+                    "Kinky Red hair", "Kinky Blond hair", "Kinky Brown hair", "Kinky Black hair" },
+                commonEyes: new[] { "Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes" });
             appearances[CreatureConstants.Elf_High][GenderConstants.Female] = "4*12+5";
             appearances[CreatureConstants.Elf_High][GenderConstants.Male] = "4*12+5";
             appearances[CreatureConstants.Elf_High][CreatureConstants.Elf_High] = "2d6";
