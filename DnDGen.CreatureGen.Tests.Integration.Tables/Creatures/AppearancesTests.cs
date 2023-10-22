@@ -81,12 +81,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 uncommonOther: new[] { "A light covering of feathers on the shoulders, where an angel's wings might sprout" });
             //Source: https://forgottenrealms.fandom.com/wiki/Aboleth
             appearances[CreatureConstants.Aboleth] = GetWeightedAppearances(
-                allEyes: new[] { "Red" },
-                commonSkin: new[] { "Orange-pink underbelly, sea-green topside" },
-                uncommonSkin: new[] { "Orange underbelly, sea-green topside", "Pink underbelly, sea-green topside",
-                    "Orange-pink underbelly, green topside", "Orange-pink underbelly, blue topside" },
-                rareSkin: new[] { "Orange underbelly, green topside", "Pink underbelly, green topside",
-                    "Orange underbelly, blue topside", "Pink underbelly, blue topside" },
+                allEyes: new[] { "Red eyes" },
+                commonSkin: new[] { "Orange-pink underbelly, sea-green skin topside" },
+                uncommonSkin: new[] { "Orange underbelly, sea-green skin topside", "Pink underbelly, sea-green skin topside",
+                    "Orange-pink underbelly, green skin topside", "Orange-pink underbelly, blue skin topside" },
+                rareSkin: new[] { "Orange underbelly, green skin topside", "Pink underbelly, green skin topside",
+                    "Orange underbelly, blue skin topside", "Pink underbelly, blue skin topside" },
                 allOther: new[] { "Resembles a bizarre eel, with a long, tubular body, as well as a tail at one end and two fins near the head and another along the back. Its mouth is lamprey-like, filled with serrated, jawless teeth. A little bit back from the head is four long tentacles, two sprouting from across each other on the top, and two more of the same on the underbelly. Its head is roughly triangular-shaped, with a spherical, somewhat beak-like nose. Above the nose is its three eyes, each one set atop the other. Tendrils and a few shorter tentacles dangle from the bottom of the head. Four blue-black slime-secreting orifices line the bottom of its body." });
             //Source: https://forgottenrealms.fandom.com/wiki/Achaierai
             appearances[CreatureConstants.Achaierai] = GetWeightedAppearances(
@@ -397,54 +397,68 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonOther: new[] { "Single row of bony spikes lining the back" },
                 rareOther: new[] { "Single row of bony spikes lining the back. Curved horn atop the nose" });
             //Source: https://www.dimensions.com/element/little-brown-bat-myotis-lucifugus hanging height
-            appearances[CreatureConstants.Bat][GenderConstants.Female] = GetBaseFromRange(4, 5);
-            appearances[CreatureConstants.Bat][GenderConstants.Male] = GetBaseFromRange(4, 5);
-            appearances[CreatureConstants.Bat][CreatureConstants.Bat] = GetMultiplierFromRange(4, 5);
+            appearances[CreatureConstants.Bat] = GetWeightedAppearances(
+                commonSkin: new[] { "Pale red fur", "Pale tan fur", "Red fur", "Tan fur", "Brown fur", "Dark brown fur" },
+                allOther: new[] { "Has a short snout and sloped forehead" });
             //Scaled up from bat, x15 based on wingspan
-            appearances[CreatureConstants.Bat_Dire][GenderConstants.Female] = GetBaseFromRange(60, 75);
-            appearances[CreatureConstants.Bat_Dire][GenderConstants.Male] = GetBaseFromRange(60, 75);
-            appearances[CreatureConstants.Bat_Dire][CreatureConstants.Bat_Dire] = GetMultiplierFromRange(60, 75);
+            appearances[CreatureConstants.Bat_Dire] = new[] { "Shaggy, pale red fur", "Shaggy, pale tan fur", "Shaggy, red fur", "Shaggy, tan fur", "Shaggy, brown fur",
+                "Shaggy, dark brown fur" };
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
-            appearances[CreatureConstants.Bat_Swarm][GenderConstants.Agender] = GetBaseFromAverage(10 * 12);
-            appearances[CreatureConstants.Bat_Swarm][CreatureConstants.Bat_Swarm] = GetMultiplierFromAverage(10 * 12);
-            //Source: https://www.dimensions.com/element/american-black-bear shoulder height
-            //Adjusting upper female -1" to match range
-            appearances[CreatureConstants.Bear_Black][GenderConstants.Female] = GetBaseFromRange(2 * 12 + 6, 3 * 12 + 1 - 1);
-            appearances[CreatureConstants.Bear_Black][GenderConstants.Male] = GetBaseFromRange(2 * 12 + 11, 3 * 12 + 5);
-            appearances[CreatureConstants.Bear_Black][CreatureConstants.Bear_Black] = GetMultiplierFromRange(2 * 12 + 11, 3 * 12 + 5);
-            //Source: https://www.dimensions.com/element/grizzly-bear shoulder height
-            //Adjusting upper female +4" to match range
-            appearances[CreatureConstants.Bear_Brown][GenderConstants.Female] = GetBaseFromRange(3 * 12, 3 * 12 + 8 + 4);
-            appearances[CreatureConstants.Bear_Brown][GenderConstants.Male] = GetBaseFromRange(3 * 12 + 6, 4 * 12 + 6);
-            appearances[CreatureConstants.Bear_Brown][CreatureConstants.Bear_Brown] = GetMultiplierFromRange(3 * 12 + 6, 4 * 12 + 6);
-            //Source: Scaled up from grizzly, x1.5
-            appearances[CreatureConstants.Bear_Dire][GenderConstants.Female] = GetBaseFromRange(63, 81);
-            appearances[CreatureConstants.Bear_Dire][GenderConstants.Male] = GetBaseFromRange(63, 81);
-            appearances[CreatureConstants.Bear_Dire][CreatureConstants.Bear_Dire] = GetMultiplierFromRange(63, 81);
-            //Source: https://www.dimensions.com/element/polar-bears shoulder height
-            //Adjusting female max +5" to match range
-            appearances[CreatureConstants.Bear_Polar][GenderConstants.Female] = GetBaseFromRange(2 * 12 + 8, 3 * 12 + 11 + 5);
-            appearances[CreatureConstants.Bear_Polar][GenderConstants.Male] = GetBaseFromRange(3 * 12 + 7, 5 * 12 + 3);
-            appearances[CreatureConstants.Bear_Polar][CreatureConstants.Bear_Polar] = GetMultiplierFromRange(3 * 12 + 7, 5 * 12 + 3);
+            appearances[CreatureConstants.Bat_Swarm] = new[] { "5,000 bats" };
+            //Source: https://forgottenrealms.fandom.com/wiki/Black_bear
+            appearances[CreatureConstants.Bear_Black] = new[] { "Black fur", "Blond fur", "Cinnamon fur" };
+            //Source: https://forgottenrealms.fandom.com/wiki/Brown_bear
+            appearances[CreatureConstants.Bear_Brown] = new[] { "Brown fur" };
+            //Source: https://forgottenrealms.fandom.com/wiki/Dire_bear
+            appearances[CreatureConstants.Bear_Dire] = new[] { "Brown fur. Bony brow ridges and extra-long claws. A feral face with cold, piecing eyes." };
+            //Source: https://forgottenrealms.fandom.com/wiki/Polar_bear
+            appearances[CreatureConstants.Bear_Polar] = new[] { "White fur" };
             //Source: https://forgottenrealms.fandom.com/wiki/Barbazu
-            appearances[CreatureConstants.BeardedDevil_Barbazu][GenderConstants.Agender] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.BeardedDevil_Barbazu][CreatureConstants.BeardedDevil_Barbazu] = GetMultiplierFromAverage(6 * 12);
-            appearances[CreatureConstants.Bebilith][GenderConstants.Agender] = "0";
-            appearances[CreatureConstants.Bebilith][CreatureConstants.Bebilith] = "0";
+            appearances[CreatureConstants.BeardedDevil_Barbazu] = GetWeightedAppearances(
+                commonSkin: new[] { "Green skin covered in scales" },
+                uncommonSkin: new[] { "Red skin covered in scales", "Purple skin covered in scales" },
+                commonOther: new[] { "Disgusting, wiry beard. Pointed ears and long tail. Clawed hands and feet." },
+                uncommonOther: new[] { "Disgusting, wiry beard infested with maggots. Pointed ears and long tail. Clawed hands and feet." });
+            appearances[CreatureConstants.Bebilith] = new[] { "Like a massive, misshapen spider. Tough, chitinous, mottled exoskeleton. Two forelegs end in razor-sharp barbs. Fangs drip globs of odorous liquid." };
             //Source: https://www.d20srd.org/srd/monsters/giantBee.htm
             //https://www.dimensions.com/element/western-honey-bee-apis-mellifera scale up, [.12,.2]*5*12/[.39,.59] = [18,21]
-            appearances[CreatureConstants.Bee_Giant][GenderConstants.Male] = GetBaseFromRange(18, 21);
-            appearances[CreatureConstants.Bee_Giant][CreatureConstants.Bee_Giant] = GetMultiplierFromRange(18, 21);
+            appearances[CreatureConstants.Bee_Giant] = new[] { "Alternating black and yellow stripes" };
             //Source: https://forgottenrealms.fandom.com/wiki/Behir
-            appearances[CreatureConstants.Behir][GenderConstants.Female] = "0";
-            appearances[CreatureConstants.Behir][GenderConstants.Male] = "0";
-            appearances[CreatureConstants.Behir][CreatureConstants.Behir] = "0";
+            appearances[CreatureConstants.Behir] = new[] { "Deep blue scales, lighter on the underside", "Dark blue scales, lighter on the underside",
+                    "Ultramarine scales, lighter on the underside",
+                "Deep blue scales with gray-brown bands, lighter on the underside", "Dark blue scales with gray-brown bands, lighter on the underside",
+                    "Ultramarine scales with gray-brown bands, lighter on the underside",
+                "Deep blue scales with brown bands, lighter on the underside", "Dark blue scales with brown bands, lighter on the underside",
+                    "Ultramarine scales with brown bands, lighter on the underside",
+                "Deep blue scales with gray bands, lighter on the underside", "Dark blue scales with gray bands, lighter on the underside",
+                    "Ultramarine scales with gray bands, lighter on the underside" };
             //Source: https://forgottenrealms.fandom.com/wiki/Beholder
-            appearances[CreatureConstants.Beholder][GenderConstants.Agender] = GetBaseFromAverage(8 * 12);
-            appearances[CreatureConstants.Beholder][CreatureConstants.Beholder] = GetMultiplierFromAverage(8 * 12);
+            appearances[CreatureConstants.Beholder] = GetWeightedAppearances(
+                commonSkin: new[] { "Purple, pebbly-textured skin on top graduating to earth tones further down",
+                    "Blue, pebbly-textured skin on top graduating to earth tones further down",
+                    "Brown, pebbly-textured skin on top graduating to earth tones further down",
+                    "Blue-purple, pebbly-textured skin on top graduating to earth tones further down" },
+                uncommonSkin: new[] { "White, pebbly-textured skin on top graduating to earth tones further down",
+                    "Red, pebbly-textured skin on top graduating to earth tones further down",
+                    "Grey, pebbly-textured skin on top graduating to earth tones further down",
+                    "Green, pebbly-textured skin on top graduating to earth tones further down" },
+                commonOther: new[] { "A giant eye surrounded by smaller eye stalks. Has a massive, gaping maw." },
+                uncommonOther: new[] { "A giant eye surrounded by smaller eye stalks. Has a massive, gaping maw. Nostrils and jointed, articulated eyestalks." });
             //Source: https://forgottenrealms.fandom.com/wiki/Gauth
-            appearances[CreatureConstants.Beholder_Gauth][GenderConstants.Agender] = GetBaseFromRange(4 * 12, 6 * 12);
-            appearances[CreatureConstants.Beholder_Gauth][CreatureConstants.Beholder_Gauth] = GetMultiplierFromRange(4 * 12, 6 * 12);
+            appearances[CreatureConstants.Beholder_Gauth] = GetWeightedAppearances(
+                commonSkin: new[] { "Brown skin, mottled with purple and gray", "Brown skin, mottled with purple", "Brown skin, mottled with gray",
+                    "Purple skin, mottled with brown and gray", "Purple skin, mottled with brown", "Purple skin, mottled with gray",
+                    "Gray skin, mottled with purple and brown", "Gray skin, mottled with purple", "Gray skin, mottled with brown" },
+                uncommonSkin: new[] { "Purple, pebbly-textured skin on top graduating to earth tones further down",
+                    "Blue, pebbly-textured skin on top graduating to earth tones further down",
+                    "Brown, pebbly-textured skin on top graduating to earth tones further down",
+                    "Blue-purple, pebbly-textured skin on top graduating to earth tones further down" },
+                rareSkin: new[] { "White, pebbly-textured skin on top graduating to earth tones further down",
+                    "Red, pebbly-textured skin on top graduating to earth tones further down",
+                    "Grey, pebbly-textured skin on top graduating to earth tones further down",
+                    "Green, pebbly-textured skin on top graduating to earth tones further down" },
+                commonOther: new[] { "A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw." },
+                uncommonOther: new[] { "A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw. Nostrils and jointed, articulated eyestalks." });
             //Source: https://forgottenrealms.fandom.com/wiki/Belker
             appearances[CreatureConstants.Belker][GenderConstants.Agender] = GetBaseFromRange(7 * 12, 9 * 12);
             appearances[CreatureConstants.Belker][CreatureConstants.Belker] = GetMultiplierFromRange(7 * 12, 9 * 12);
@@ -542,8 +556,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.Centipede_Monstrous_Colossal][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
             appearances[CreatureConstants.Centipede_Monstrous_Colossal][CreatureConstants.Centipede_Monstrous_Colossal] = GetMultiplierFromAverage(8 * 12);
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
-            appearances[CreatureConstants.Centipede_Swarm][GenderConstants.Agender] = "0";
-            appearances[CreatureConstants.Centipede_Swarm][CreatureConstants.Centipede_Swarm] = "0";
+            appearances[CreatureConstants.Centipede_Swarm] = new[] { "1,500 centipedes" };
             //Source: https://www.d20srd.org/srd/monsters/devil.htm#chainDevilKyton
             appearances[CreatureConstants.ChainDevil_Kyton][GenderConstants.Agender] = GetBaseFromAverage(6 * 12);
             appearances[CreatureConstants.ChainDevil_Kyton][GenderConstants.Female] = GetBaseFromAverage(6 * 12);
@@ -1401,8 +1414,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.HellHound_NessianWarhound][GenderConstants.Male] = GetBaseFromRange(64, 72);
             appearances[CreatureConstants.HellHound_NessianWarhound][CreatureConstants.HellHound_NessianWarhound] = GetMultiplierFromRange(64, 72);
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
-            appearances[CreatureConstants.Hellwasp_Swarm][GenderConstants.Agender] = GetBaseFromAverage(10 * 12);
-            appearances[CreatureConstants.Hellwasp_Swarm][CreatureConstants.Hellwasp_Swarm] = GetMultiplierFromAverage(10 * 12);
+            appearances[CreatureConstants.Hellwasp_Swarm] = new[] { "5,000 Hellwasps" };
             //Source: https://www.d20srd.org/srd/monsters/demon.htm#hezrou
             appearances[CreatureConstants.Hezrou][GenderConstants.Agender] = GetBaseFromAverage(8 * 12);
             appearances[CreatureConstants.Hezrou][CreatureConstants.Hezrou] = GetMultiplierFromAverage(8 * 12);
@@ -1572,8 +1584,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.Locathah][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
             appearances[CreatureConstants.Locathah][CreatureConstants.Locathah] = GetMultiplierFromAverage(5 * 12);
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
-            appearances[CreatureConstants.Locust_Swarm][GenderConstants.Agender] = GetBaseFromAverage(10 * 12);
-            appearances[CreatureConstants.Locust_Swarm][CreatureConstants.Locust_Swarm] = GetMultiplierFromAverage(10 * 12);
+            appearances[CreatureConstants.Locust_Swarm] = new[] { "5,000 locusts" };
             //Source: https://forgottenrealms.fandom.com/wiki/Magmin
             appearances[CreatureConstants.Magmin][GenderConstants.Agender] = GetBaseFromRange(3 * 12, 4 * 12);
             appearances[CreatureConstants.Magmin][CreatureConstants.Magmin] = GetMultiplierFromRange(3 * 12, 4 * 12);
@@ -1847,8 +1858,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.Rat_Dire][GenderConstants.Male] = GetBaseFromRange(12, 24);
             appearances[CreatureConstants.Rat_Dire][CreatureConstants.Rat_Dire] = GetMultiplierFromRange(12, 24);
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
-            appearances[CreatureConstants.Rat_Swarm][GenderConstants.Agender] = "0";
-            appearances[CreatureConstants.Rat_Swarm][CreatureConstants.Rat_Swarm] = "0";
+            appearances[CreatureConstants.Rat_Swarm] = new[] { "300 rats" };
             //Source: https://www.dimensions.com/element/common-raven-corvus-corax
             appearances[CreatureConstants.Raven][GenderConstants.Female] = GetBaseFromRange(12, 16);
             appearances[CreatureConstants.Raven][GenderConstants.Male] = GetBaseFromRange(12, 16);
@@ -2089,8 +2099,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Colossal][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
             appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Colossal][CreatureConstants.Spider_Monstrous_WebSpinner_Colossal] = GetMultiplierFromAverage(10 * 12);
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
-            appearances[CreatureConstants.Spider_Swarm][GenderConstants.Agender] = "0";
-            appearances[CreatureConstants.Spider_Swarm][CreatureConstants.Spider_Swarm] = "0";
+            appearances[CreatureConstants.Spider_Swarm] = new[] { "1,500 spiders" };
             //Source: https://www.d20srd.org/srd/monsters/spiderEater.htm
             appearances[CreatureConstants.SpiderEater][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
             appearances[CreatureConstants.SpiderEater][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
