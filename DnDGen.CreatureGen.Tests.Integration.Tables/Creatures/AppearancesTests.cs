@@ -321,15 +321,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonHair: new[] { "Jet-black fur" },
                 uncommonHair: new[] { "Grey fur", "Silver fur" });
             //Source: https://forgottenrealms.fandom.com/wiki/Aranea
-            //TODO: Include half-elf (uncommon) and drow (as rare)
             appearances[CreatureConstants.Aranea] = GetWeightedAppearances(
-                commonSkin: new[] { "Black skin TODO", "Brown skin", "Olive skin", "White skin", "Pink skin",
+                commonSkin: new[] { "Black skin", "Brown skin", "Olive skin", "White skin", "Pink skin",
                     "Deep Black skin", "Deep Brown skin", "Deep Olive skin", "Deep White skin", "Deep Pink skin",
                     "Pale Black skin", "Pale Brown skin", "Pale Olive skin", "Pale White skin", "Pale Pink skin" },
                 commonHair: new[] { "Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair",
                     "Curly Red hair", "Curly Blond hair", "Curly Brown hair", "Curly Black hair",
                     "Kinky Red hair", "Kinky Blond hair", "Kinky Brown hair", "Kinky Black hair" },
-                commonEyes: new[] { "Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes" });
+                commonEyes: new[] { "Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes" },
+                uncommonSkin: new[] { "TODO Half-Elf skin" },
+                uncommonHair: new[] { "TODO Half-Elf hair" },
+                uncommonEyes: new[] { "TODO Half-Elf eyes" },
+                rareSkin: new[] { "TODO Drow skin" },
+                rareHair: new[] { "TODO Drow hair" },
+                rareEyes: new[] { "TODO Drow eyes" });
             //Source: https://www.d20srd.org/srd/monsters/arrowhawk.htm
             appearances[CreatureConstants.Arrowhawk_Juvenile] = new[] { "Covered in blue scales with occasional tufts of yellow feathers" };
             appearances[CreatureConstants.Arrowhawk_Adult] = new[] { "Covered in blue scales with occasional tufts of yellow feathers" };
@@ -369,14 +374,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Barghest
             appearances[CreatureConstants.Barghest] = GetWeightedAppearances(
                 commonHair: new[] { "Bluish-red fur", "Blue fur" },
-                commonEyes: new[] { "TODO Dog eyes, goblin eyes. Glowing orange when excited" },
+                commonEyes: new[] { "TODO Dog eyes. Glowing orange when excited",
+                    "TODO Goblin eyes. Glowing orange when excited" },
                 uncommonHair: new[] { "Bluish-red fur, shock of white hair along the back", "Blue fur, shock of white hair along the back" },
-                uncommonEyes: new[] { "TODO Dog eyes, goblin eyes. Glowing orange when excited. One eye discolored (TODO: mix-match?)" });
+                uncommonEyes: new[] { "TODO Dog eyes/Goblin eyes mix-match (one eye discolored). Glowing orange when excited." });
             appearances[CreatureConstants.Barghest_Greater] = GetWeightedAppearances(
                 commonHair: new[] { "Bluish-red fur", "Blue fur" },
-                commonEyes: new[] { "TODO Dog eyes, goblin eyes. Glowing orange when excited" },
+                commonEyes: new[] { "TODO Dog eyes. Glowing orange when excited",
+                    "TODO Goblin eyes. Glowing orange when excited" },
                 uncommonHair: new[] { "Bluish-red fur, shock of white hair along the back", "Blue fur, shock of white hair along the back" },
-                uncommonEyes: new[] { "TODO Dog eyes, goblin eyes. Glowing orange when excited. One eye discolored (TODO: mix-match?)" });
+                uncommonEyes: new[] { "TODO Dog eyes/Goblin eyes mix-match (one eye discolored). Glowing orange when excited." });
             appearances[CreatureConstants.Basilisk] = GetWeightedAppearances(
                 commonSkin: new[] { "Dull brown skin, yellowish underbelly" },
                 allEyes: new[] { "Glowing pale green eyes" },
@@ -1158,15 +1165,29 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.Elf_Gray][GenderConstants.Female] = "4*12+5";
             appearances[CreatureConstants.Elf_Gray][GenderConstants.Male] = "4*12+5";
             appearances[CreatureConstants.Elf_Gray][CreatureConstants.Elf_Gray] = "2d6";
-            //TODO: Combine various elves and human. Human already there
             appearances[CreatureConstants.Elf_Half] = GetWeightedAppearances(
-                commonSkin: new[] { "Black skin TODO", "Brown skin", "Olive skin", "White skin", "Pink skin",
+                commonSkin: new[] { "Black skin", "Brown skin", "Olive skin", "White skin", "Pink skin",
                     "Deep Black skin", "Deep Brown skin", "Deep Olive skin", "Deep White skin", "Deep Pink skin",
-                    "Pale Black skin", "Pale Brown skin", "Pale Olive skin", "Pale White skin", "Pale Pink skin" },
+                    "Pale Black skin", "Pale Brown skin", "Pale Olive skin", "Pale White skin", "Pale Pink skin",
+                    "TODO High Elf Skin" },
                 commonHair: new[] { "Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair",
                     "Curly Red hair", "Curly Blond hair", "Curly Brown hair", "Curly Black hair",
-                    "Kinky Red hair", "Kinky Blond hair", "Kinky Brown hair", "Kinky Black hair" },
-                commonEyes: new[] { "Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes" });
+                    "Kinky Red hair", "Kinky Blond hair", "Kinky Brown hair", "Kinky Black hair",
+                    "TODO High Elf Hair" },
+                commonEyes: new[] { "Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes",
+                    "TODO High Elf Eyes" },
+                uncommonSkin: new[] { "TODO Grey Elf Skin",
+                    "TODO Wood Elf Skin",
+                    "TODO Wild Elf Skin",
+                    "TODO Drow Skin" },
+                uncommonHair: new[] { "TODO Grey Elf Hair",
+                    "TODO Wood Elf Hair",
+                    "TODO Wild Elf Hair",
+                    "TODO Drow Hair" },
+                uncommonEyes: new[] { "TODO Grey Elf Eyes",
+                    "TODO Wood Elf Eyes",
+                    "TODO Wild Elf Eyes",
+                    "TODO Drow Eyes" });
             appearances[CreatureConstants.Elf_High][GenderConstants.Female] = "4*12+5";
             appearances[CreatureConstants.Elf_High][GenderConstants.Male] = "4*12+5";
             appearances[CreatureConstants.Elf_High][CreatureConstants.Elf_High] = "2d6";
