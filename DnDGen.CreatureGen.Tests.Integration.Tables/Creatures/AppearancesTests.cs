@@ -460,45 +460,47 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonOther: new[] { "A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw." },
                 uncommonOther: new[] { "A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw. Nostrils and jointed, articulated eyestalks." });
             //Source: https://forgottenrealms.fandom.com/wiki/Belker
-            appearances[CreatureConstants.Belker][GenderConstants.Agender] = GetBaseFromRange(7 * 12, 9 * 12);
-            appearances[CreatureConstants.Belker][CreatureConstants.Belker] = GetMultiplierFromRange(7 * 12, 9 * 12);
-            //Source: https://www.dimensions.com/element/american-bison-bison-bison, withers height
-            appearances[CreatureConstants.Bison][GenderConstants.Female] = GetBaseFromRange(60, 78);
-            appearances[CreatureConstants.Bison][GenderConstants.Male] = GetBaseFromRange(60, 78);
-            appearances[CreatureConstants.Bison][CreatureConstants.Bison] = GetMultiplierFromRange(60, 78);
+            appearances[CreatureConstants.Belker] = new[] { "Primarily composed of smoke, has large, black, bat-like wings, clawed tendrils, and a biting maw. Base form was sort of deomonic, but continually shifts and changes shape due to its semi-gaseous nature." };
+            //Source: https://forgottenrealms.fandom.com/wiki/Bison
+            appearances[CreatureConstants.Bison] = new[] { "Distinctive broad head that connects to large, humped shoulders with a thick neck. Short, curved, hollow horns growing from the sides of its head. Body covered in fur. Head covered in a mantle of thick fur. Short legs. Small tail ending in a tassel of fur." };
             //Source: https://forgottenrealms.fandom.com/wiki/Black_pudding
-            appearances[CreatureConstants.BlackPudding][GenderConstants.Agender] = GetBaseFromAverage(2 * 12);
-            appearances[CreatureConstants.BlackPudding][CreatureConstants.BlackPudding] = GetMultiplierFromAverage(2 * 12);
-            //Elder is a size category up, so double dimensions
-            appearances[CreatureConstants.BlackPudding_Elder][GenderConstants.Agender] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.BlackPudding_Elder][CreatureConstants.BlackPudding_Elder] = GetMultiplierFromAverage(4 * 12);
+            appearances[CreatureConstants.BlackPudding] = GetWeightedAppearances(
+                commonSkin: new[] { "Inky black skin" },
+                uncommonSkin: new[] { "Brown skin", "Grey skin", "White skin" });
+            appearances[CreatureConstants.BlackPudding_Elder] = GetWeightedAppearances(
+                commonSkin: new[] { "Inky black skin" },
+                uncommonSkin: new[] { "Brown skin", "Grey skin", "White skin" });
             //Source: https://www.d20pfsrd.com/bestiary/monster-listings/magical-beasts/blink-dog
-            appearances[CreatureConstants.BlinkDog][GenderConstants.Female] = GetBaseFromAverage(3 * 12);
-            appearances[CreatureConstants.BlinkDog][GenderConstants.Male] = GetBaseFromAverage(3 * 12);
-            appearances[CreatureConstants.BlinkDog][CreatureConstants.BlinkDog] = GetMultiplierFromAverage(3 * 12);
-            //Source: https://www.dimensions.com/element/wild-boar
-            appearances[CreatureConstants.Boar][GenderConstants.Female] = GetBaseFromRange(2 * 12 + 6, 3 * 12);
-            appearances[CreatureConstants.Boar][GenderConstants.Male] = GetBaseFromRange(2 * 12 + 6, 3 * 12);
-            appearances[CreatureConstants.Boar][CreatureConstants.Boar] = GetMultiplierFromRange(2 * 12 + 6, 3 * 12);
+            appearances[CreatureConstants.BlinkDog] = GetWeightedAppearances(
+                commonHair: new[] { "Yellow-brown fur" },
+                uncommonHair: new[] { "Yellow fur", "Brown fur" },
+                allOther: new[] { "Large ears" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Boar
+            appearances[CreatureConstants.Boar] = GetWeightedAppearances(
+                allHair: new[] { "Thick brown fur", "Thick gray fur" },
+                allOther: new[] { "Sharp tusks jutting out from beneath the snout" });
             //Source: https://forgottenrealms.fandom.com/wiki/Dire_boar
-            appearances[CreatureConstants.Boar_Dire][GenderConstants.Female] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.Boar_Dire][GenderConstants.Male] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.Boar_Dire][CreatureConstants.Boar_Dire] = GetMultiplierFromAverage(6 * 12);
-            //INFO: Basing off of humans
-            appearances[CreatureConstants.Bodak][GenderConstants.Female] = "4*12+5";
-            appearances[CreatureConstants.Bodak][GenderConstants.Male] = "4*12+10";
-            appearances[CreatureConstants.Bodak][CreatureConstants.Bodak] = "2d10";
+            appearances[CreatureConstants.Boar_Dire] = GetWeightedAppearances(
+                commonHair: new[] { "Thick brown fur", "Thick gray fur" },
+                uncommonHair: new[] { "Thick black fur" },
+                allOther: new[] { "Sharp tusks jutting out from beneath the snout" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Bodak
+            appearances[CreatureConstants.Bodak] = GetWeightedAppearances(
+                allSkin: new[] { "Deathly pale white skin", "Deathly gray skin", "Deathly pale gray skin" },
+                allHair: new[] { "No hair of any kind" },
+                allEyes: new[] { "Empty, milky-white eyes outstretched into vertical ovals" },
+                allOther: new[] { "Face twisted into an inhuman visage of sheer madness and horror" });
             //Source: https://web.stanford.edu/~cbross/bombbeetle.html
-            appearances[CreatureConstants.BombardierBeetle_Giant][GenderConstants.Female] = "0";
-            appearances[CreatureConstants.BombardierBeetle_Giant][GenderConstants.Male] = "0";
-            appearances[CreatureConstants.BombardierBeetle_Giant][CreatureConstants.BombardierBeetle_Giant] = "0";
+            appearances[CreatureConstants.BombardierBeetle_Giant] = new[] { "Body is dull blue-gray. Head and chest is brownish-orange." };
             //Source: https://forgottenrealms.fandom.com/wiki/Osyluth
-            appearances[CreatureConstants.BoneDevil_Osyluth][GenderConstants.Agender] = GetBaseFromRange(9 * 12, 9 * 12 + 6);
-            appearances[CreatureConstants.BoneDevil_Osyluth][CreatureConstants.BoneDevil_Osyluth] = GetMultiplierFromRange(9 * 12, 9 * 12 + 6);
+            appearances[CreatureConstants.BoneDevil_Osyluth] = new[] { "Dry, sickly skin that seems tautly stretched over every bone in its body. Incredibly gaunt husk of a frame so emaciated that it seems skeletal. Tail of a giant scorpion while head looks like menacing skulls. The putrid stench of rot surrounds it." };
             //Source: https://forgottenrealms.fandom.com/wiki/Bralani
-            appearances[CreatureConstants.Bralani][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Bralani][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Bralani][CreatureConstants.Bralani] = GetMultiplierFromAverage(5 * 12);
+            appearances[CreatureConstants.Bralani] = GetWeightedAppearances(
+                commonSkin: new[] { "TODO High elf skin" },
+                uncommonSkin: new[] { "TODO Grey elf skin", "TODO Wild elf skin", "TODO Wood elf skin" },
+                allHair: new[] { "Silvery-white hair" },
+                allEyes: new[] { "Eyes are an ever-changing rainbow of colors, depending on its mood" },
+                allOther: new[] { "Broad and stocky" });
             //Source: https://forgottenrealms.fandom.com/wiki/Bugbear
             appearances[CreatureConstants.Bugbear][GenderConstants.Female] = GetBaseFromRange(6 * 12, 8 * 12);
             appearances[CreatureConstants.Bugbear][GenderConstants.Male] = GetBaseFromRange(6 * 12, 8 * 12);
