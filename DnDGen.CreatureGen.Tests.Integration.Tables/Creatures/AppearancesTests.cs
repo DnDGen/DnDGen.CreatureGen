@@ -384,6 +384,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "TODO Goblin eyes. Glowing orange when excited" },
                 uncommonHair: new[] { "Bluish-red fur, shock of white hair along the back", "Blue fur, shock of white hair along the back" },
                 uncommonEyes: new[] { "TODO Dog eyes/Goblin eyes mix-match (one eye discolored). Glowing orange when excited." });
+            //Source: https://forgottenrealms.fandom.com/wiki/Basilisk
             appearances[CreatureConstants.Basilisk] = GetWeightedAppearances(
                 commonSkin: new[] { "Dull brown skin, yellowish underbelly" },
                 allEyes: new[] { "Glowing pale green eyes" },
@@ -462,7 +463,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Belker
             appearances[CreatureConstants.Belker] = new[] { "Primarily composed of smoke, has large, black, bat-like wings, clawed tendrils, and a biting maw. Base form was sort of deomonic, but continually shifts and changes shape due to its semi-gaseous nature." };
             //Source: https://forgottenrealms.fandom.com/wiki/Bison
-            appearances[CreatureConstants.Bison] = new[] { "Distinctive broad head that connects to large, humped shoulders with a thick neck. Short, curved, hollow horns growing from the sides of its head. Body covered in fur. Head covered in a mantle of thick fur. Short legs. Small tail ending in a tassel of fur." };
+            appearances[CreatureConstants.Bison] = new[] { "Distinctive broad head that connects to large, humped shoulders with a thick neck. Short, curved, hollow horns growing from the sides of its head. Body covered in fur. Head covered in a mantle of thick fur. Short legs. Small tail ending in a tassel of fur.",
+                "TODO: Gender-specific appearance" };
             //Source: https://forgottenrealms.fandom.com/wiki/Black_pudding
             appearances[CreatureConstants.BlackPudding] = GetWeightedAppearances(
                 commonSkin: new[] { "Inky black skin" },
@@ -502,171 +504,198 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allEyes: new[] { "Eyes are an ever-changing rainbow of colors, depending on its mood" },
                 allOther: new[] { "Broad and stocky" });
             //Source: https://forgottenrealms.fandom.com/wiki/Bugbear
-            appearances[CreatureConstants.Bugbear][GenderConstants.Female] = GetBaseFromRange(6 * 12, 8 * 12);
-            appearances[CreatureConstants.Bugbear][GenderConstants.Male] = GetBaseFromRange(6 * 12, 8 * 12);
-            appearances[CreatureConstants.Bugbear][CreatureConstants.Bugbear] = GetMultiplierFromRange(6 * 12, 8 * 12);
+            appearances[CreatureConstants.Bugbear] = GetWeightedAppearances(
+                commonSkin: new[] { "Yellow skin", "Reddish-yellow skin", "Yellowish-brown skin", "Reddish-brown skin" },
+                uncommonSkin: new[] { "Red skin", "Brown skin" },
+                allHair: new[] { "Brown hair", "Red hair" },
+                allEyes: new[] { "Yellow eyes", "Orange eyes", "Red eyes", "Brown eyes", "Greenish-white eyes" },
+                allOther: new[] { "Large, hairy, wedge-shaped ears; tough hide; claws" });
             //Source: https://forgottenrealms.fandom.com/wiki/Bulette
-            appearances[CreatureConstants.Bulette][GenderConstants.Female] = GetBaseFromAverage(9 * 12);
-            appearances[CreatureConstants.Bulette][GenderConstants.Male] = GetBaseFromAverage(9 * 12);
-            appearances[CreatureConstants.Bulette][CreatureConstants.Bulette] = GetMultiplierFromAverage(9 * 12);
-            //Source: https://www.dimensions.com/element/bactrian-camel
-            appearances[CreatureConstants.Camel_Bactrian][GenderConstants.Female] = GetBaseFromRange(62, 71);
-            appearances[CreatureConstants.Camel_Bactrian][GenderConstants.Male] = GetBaseFromRange(62, 71);
-            appearances[CreatureConstants.Camel_Bactrian][CreatureConstants.Camel_Bactrian] = GetMultiplierFromRange(62, 71);
-            //Source: https://www.dimensions.com/element/dromedary-camel
-            appearances[CreatureConstants.Camel_Dromedary][GenderConstants.Female] = GetBaseFromRange(71, 78);
-            appearances[CreatureConstants.Camel_Dromedary][GenderConstants.Male] = GetBaseFromRange(71, 78);
-            appearances[CreatureConstants.Camel_Dromedary][CreatureConstants.Camel_Dromedary] = GetMultiplierFromRange(71, 78);
+            appearances[CreatureConstants.Bulette] = GetWeightedAppearances(
+                allSkin: new[] { "Around the head and rear, the armor is blue-brown. In between, it is gray-blue. Slightly darker skin around the eyes",
+                    "Around the head and rear, the armor is blue-brown. In between, it is blue. Slightly darker skin around the eyes",
+                    "Around the head and rear, the armor is blue-brown. In between, it is blue-green. Slightly darker skin around the eyes" },
+                allEyes: new[] { "Yellow eyes with blue-green pupils" },
+                allOther: new[] { "Covered in thick, layered plates. Hea dis bullet-shaped, similar to a shark's, with a massive mouth. Stumpy but powerful legs." });
+            //Source: https://forgottenrealms.fandom.com/wiki/Camel
+            appearances[CreatureConstants.Camel_Bactrian] = GetWeightedAppearances(
+                allHair: new[] { "White fur", "Pale tan fur", "Deep brown fur", "Tan fur", "Brown fur" },
+                allOther: new[] { "Two humps. Broad feet" });
+            appearances[CreatureConstants.Camel_Dromedary] = GetWeightedAppearances(
+                allHair: new[] { "White fur", "Pale tan fur", "Deep brown fur", "Tan fur", "Brown fur" },
+                allOther: new[] { "One hump. Broad feet" });
             //Source: https://forgottenrealms.fandom.com/wiki/Carrion_crawler
-            appearances[CreatureConstants.CarrionCrawler][GenderConstants.Female] = "0";
-            appearances[CreatureConstants.CarrionCrawler][GenderConstants.Male] = "0";
-            appearances[CreatureConstants.CarrionCrawler][CreatureConstants.CarrionCrawler] = "0";
-            //Source: https://www.dimensions.com/element/american-shorthair-cat
-            appearances[CreatureConstants.Cat][GenderConstants.Female] = GetBaseFromRange(8, 10);
-            appearances[CreatureConstants.Cat][GenderConstants.Male] = GetBaseFromRange(8, 10);
-            appearances[CreatureConstants.Cat][CreatureConstants.Cat] = GetMultiplierFromRange(8, 10);
+            appearances[CreatureConstants.CarrionCrawler] = GetWeightedAppearances(
+                allSkin: new[] { "Pale yellow skin", "Green skin, pale yellow underbelly", "Green skin" },
+                allEyes: new[] { "Two eye stalks" },
+                allOther: new[] { "Eight long tentacles protruding from the side of the head" });
+            //Source: https://g.co/kgs/eqa8L1
+            appearances[CreatureConstants.Cat] = new[] { "Siamese", "British Shorthair", "Maine Coon", "Persian", "Ragdoll", "Sphynx", "American Shorthair", "Abyssinian",
+                "Exotic Shorthair", "Scottish Fold", "Burmese", "Birman", "Bombay", "Siberian", "Norwegian Forest", "Russian Blue", "American Curl", "Munchkin",
+                "American Bobtail", "Devon Rex", "Balinese", "Oriental Shorthair", "Chartreux", "Turkish Angora", "Manx", "Japanese Bobtail", "American Wirehair",
+                "Ragamuffin", "Egyptian Mau", "Cornish Rex", "Somali", "Himalayan", "Selkirk Rex", "Korat", "Singapura", "Ocicat", "Tonkinese", "Turkish Van",
+                "British Longhair", "LaPerm", "Havana Brown", "Chausie", "Burmilla", "Toyger", "Sokoke", "Colorpoint Shorthair", "Javanese", "Snowshoe", "Australian Mist",
+                "Lykoi", "Khao Manee" };
             //Source: https://forgottenrealms.fandom.com/wiki/Centaur
-            appearances[CreatureConstants.Centaur][GenderConstants.Female] = GetBaseFromRange(7 * 12, 9 * 12);
-            appearances[CreatureConstants.Centaur][GenderConstants.Male] = GetBaseFromRange(7 * 12, 9 * 12);
-            appearances[CreatureConstants.Centaur][CreatureConstants.Centaur] = GetMultiplierFromRange(7 * 12, 9 * 12);
+            appearances[CreatureConstants.Centaur] = GetWeightedAppearances(
+                allSkin: new[] { "TODO Human skin", "TODO Light Horse skin", "TODO Heavy Horse skin" },
+                allHair: new[] { "TODO Human hair", "TODO Light Horse hair", "TODO Heavy Horse hair" },
+                allEyes: new[] { "TODO Human eyes" });
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Tiny
-            appearances[CreatureConstants.Centipede_Monstrous_Tiny][GenderConstants.Female] = GetBaseFromRange(1, 2);
-            appearances[CreatureConstants.Centipede_Monstrous_Tiny][GenderConstants.Male] = GetBaseFromRange(1, 2);
-            appearances[CreatureConstants.Centipede_Monstrous_Tiny][CreatureConstants.Centipede_Monstrous_Tiny] = GetMultiplierFromRange(1, 2);
+            appearances[CreatureConstants.Centipede_Monstrous_Tiny] = new[] { "Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin" };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Small
-            appearances[CreatureConstants.Centipede_Monstrous_Small][GenderConstants.Female] = GetBaseFromAverage(3);
-            appearances[CreatureConstants.Centipede_Monstrous_Small][GenderConstants.Male] = GetBaseFromAverage(3);
-            appearances[CreatureConstants.Centipede_Monstrous_Small][CreatureConstants.Centipede_Monstrous_Small] = GetMultiplierFromAverage(3);
+            appearances[CreatureConstants.Centipede_Monstrous_Small] = new[] { "Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin" };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Medium
-            appearances[CreatureConstants.Centipede_Monstrous_Medium][GenderConstants.Female] = GetBaseFromAverage(6);
-            appearances[CreatureConstants.Centipede_Monstrous_Medium][GenderConstants.Male] = GetBaseFromAverage(6);
-            appearances[CreatureConstants.Centipede_Monstrous_Medium][CreatureConstants.Centipede_Monstrous_Medium] = GetMultiplierFromAverage(6);
+            appearances[CreatureConstants.Centipede_Monstrous_Medium] = new[] { "Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin" };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Large
-            appearances[CreatureConstants.Centipede_Monstrous_Large][GenderConstants.Female] = GetBaseFromAverage(12);
-            appearances[CreatureConstants.Centipede_Monstrous_Large][GenderConstants.Male] = GetBaseFromAverage(12);
-            appearances[CreatureConstants.Centipede_Monstrous_Large][CreatureConstants.Centipede_Monstrous_Large] = GetMultiplierFromAverage(12);
+            appearances[CreatureConstants.Centipede_Monstrous_Large] = new[] { "Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin" };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Huge
-            appearances[CreatureConstants.Centipede_Monstrous_Huge][GenderConstants.Female] = GetBaseFromAverage(2 * 12);
-            appearances[CreatureConstants.Centipede_Monstrous_Huge][GenderConstants.Male] = GetBaseFromAverage(2 * 12);
-            appearances[CreatureConstants.Centipede_Monstrous_Huge][CreatureConstants.Centipede_Monstrous_Huge] = GetMultiplierFromAverage(2 * 12);
+            appearances[CreatureConstants.Centipede_Monstrous_Huge] = new[] { "Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin" };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Gargantuan
-            appearances[CreatureConstants.Centipede_Monstrous_Gargantuan][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Centipede_Monstrous_Gargantuan][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Centipede_Monstrous_Gargantuan][CreatureConstants.Centipede_Monstrous_Gargantuan] = GetMultiplierFromAverage(4 * 12);
+            appearances[CreatureConstants.Centipede_Monstrous_Gargantuan] = new[] { "Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin" };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Colossal
-            appearances[CreatureConstants.Centipede_Monstrous_Colossal][GenderConstants.Female] = GetBaseFromAverage(8 * 12);
-            appearances[CreatureConstants.Centipede_Monstrous_Colossal][GenderConstants.Male] = GetBaseFromAverage(8 * 12);
-            appearances[CreatureConstants.Centipede_Monstrous_Colossal][CreatureConstants.Centipede_Monstrous_Colossal] = GetMultiplierFromAverage(8 * 12);
+            appearances[CreatureConstants.Centipede_Monstrous_Colossal] = new[] { "Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin" };
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
             appearances[CreatureConstants.Centipede_Swarm] = new[] { "1,500 centipedes" };
             //Source: https://www.d20srd.org/srd/monsters/devil.htm#chainDevilKyton
-            appearances[CreatureConstants.ChainDevil_Kyton][GenderConstants.Agender] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.ChainDevil_Kyton][GenderConstants.Female] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.ChainDevil_Kyton][GenderConstants.Male] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.ChainDevil_Kyton][CreatureConstants.ChainDevil_Kyton] = GetMultiplierFromAverage(6 * 12);
+            appearances[CreatureConstants.ChainDevil_Kyton] = new[] { "Red skin", "Grey skin", "Grey skin with red tattoos" };
             //Source: https://forgottenrealms.fandom.com/wiki/Chaos_beast
-            appearances[CreatureConstants.ChaosBeast][GenderConstants.Agender] = GetBaseFromRange(5 * 12, 7 * 12);
-            appearances[CreatureConstants.ChaosBeast][CreatureConstants.ChaosBeast] = GetMultiplierFromRange(5 * 12, 7 * 12);
+            appearances[CreatureConstants.ChaosBeast] = new[] {
+                "A towering thing of pulpy flesh and exposed veins, covered in fangs and hooks. Three legs upon which it walks with unsteady and lurching steps. Face is fractured, with bent eyes and nose hooked three times.",
+                "A filmy mass of rope-like tentacles with vermilion tips that slither along. Bulbous body ringed by gnashing mouths and topped by a viscous sac holding ten bobbing eyes. Dozens of vestigial wings that flap too feebly to give it flight.",
+                "A powerful and muscular beast, armed with claws and alligator jaws.",
+                "A graceful six-legged creature with delicate arms and shining skin. Maned head with three flashing eyes. Walks with a smooth gait and noble bearing.",
+                "A man-sized creature with stumpy feet - can only shuffle. Hands like crab's claws. Body like dough falling from broken bones. Head is balding and pitted with empty eye sockets.",
+                "A slender raptor-like creature with large talons underneath its body and broad wings, all covered with dark fur. Two hateful, coldly-gleaming eyes.",
+                "A sac of intestines, warm and wet and steaming. Both deaf and blind. To move, it rolls and flops like limp sausages falling down stairs, becoming looped and draped around all obstacles and lying as a tangled sprawl.",
+                "A hollowed-out carcass, swelling with gases into a balloon-like husk, bobbing along in the air with the ends of its body trailing about it and tangling others.",
+                "A plump moth with brilliantly colored wings like the stained glass of temples and compound eyes that sparkle like a myriad of jewels.",
+                "The person one least suspects.",
+                "A writhing mass of teeth and barbed tentacles, grey and rotting. Random clawed hands hide under some of the tentacles." };
             //Source: https://www.dimensions.com/element/cheetahs
-            appearances[CreatureConstants.Cheetah][GenderConstants.Female] = GetBaseFromRange(28, 35);
-            appearances[CreatureConstants.Cheetah][GenderConstants.Male] = GetBaseFromRange(28, 35);
-            appearances[CreatureConstants.Cheetah][CreatureConstants.Cheetah] = GetMultiplierFromRange(28, 35);
+            //https://forgottenrealms.fandom.com/wiki/Cheetah
+            appearances[CreatureConstants.Cheetah] = new[] { "Slender body, yellow coat with black spots, long thin legs, deep chest, small head",
+                "Slender body, sand-colored coat with black spots, long thin legs, deep chest, small head",
+                "Slender body, yellow coat with brown spots, long thin legs, deep chest, small head",
+                "Slender body, sand-colored coat with brown spots, long thin legs, deep chest, small head" };
             //Source: https://forgottenrealms.fandom.com/wiki/Chimera
-            appearances[CreatureConstants.Chimera_Black][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Chimera_Black][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Chimera_Black][CreatureConstants.Chimera_Black] = GetMultiplierFromAverage(5 * 12);
-            appearances[CreatureConstants.Chimera_Blue][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Chimera_Blue][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Chimera_Blue][CreatureConstants.Chimera_Blue] = GetMultiplierFromAverage(5 * 12);
-            appearances[CreatureConstants.Chimera_Green][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Chimera_Green][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Chimera_Green][CreatureConstants.Chimera_Green] = GetMultiplierFromAverage(5 * 12);
-            appearances[CreatureConstants.Chimera_Red][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Chimera_Red][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Chimera_Red][CreatureConstants.Chimera_Red] = GetMultiplierFromAverage(5 * 12);
-            appearances[CreatureConstants.Chimera_White][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Chimera_White][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Chimera_White][CreatureConstants.Chimera_White] = GetMultiplierFromAverage(5 * 12);
+            appearances[CreatureConstants.Chimera_Black] = new[] { "Hindquarters of a goat, the forequarters of a lion, and a set of Black Dragon wings. Three heads: that of a horned goat, a lion, and a Black Dragon." };
+            appearances[CreatureConstants.Chimera_Blue] = new[] { "Hindquarters of a goat, the forequarters of a lion, and a set of Blue Dragon wings. Three heads: that of a horned goat, a lion, and a Blue Dragon." };
+            appearances[CreatureConstants.Chimera_Green] = new[] { "Hindquarters of a goat, the forequarters of a lion, and a set of Green Dragon wings. Three heads: that of a horned goat, a lion, and a Green Dragon." };
+            appearances[CreatureConstants.Chimera_Red] = new[] { "Hindquarters of a goat, the forequarters of a lion, and a set of Red Dragon wings. Three heads: that of a horned goat, a lion, and a Red Dragon." };
+            appearances[CreatureConstants.Chimera_White] = new[] { "Hindquarters of a goat, the forequarters of a lion, and a set of White Dragon wings. Three heads: that of a horned goat, a lion, and a White Dragon." };
             //Source: https://forgottenrealms.fandom.com/wiki/Choker
-            appearances[CreatureConstants.Choker][GenderConstants.Female] = GetBaseFromAverage(3 * 12 + 6);
-            appearances[CreatureConstants.Choker][GenderConstants.Male] = GetBaseFromAverage(3 * 12 + 6);
-            appearances[CreatureConstants.Choker][CreatureConstants.Choker] = GetMultiplierFromAverage(3 * 12 + 6);
+            appearances[CreatureConstants.Choker] = GetWeightedAppearances(
+                allSkin: new[] { "Gray, rubbery skin", "Spotted gray, rubbery skin", "Earthy-brown, rubbery skin", "Spotted earthy-brown, rubbery skin" },
+                allOther: new[] { "Roughly humanoid, with a small torso and head. Arms and legs are long and thin, more like tentacles. Hands are shaped somewhat like a starfish, with a spiny surface—stiff cartilage jutting through the skin. Fingers are enormously long. Limbs move with the fluidity of tentacles." });
             //Source: https://forgottenrealms.fandom.com/wiki/Chuul
-            appearances[CreatureConstants.Chuul][GenderConstants.Female] = "0";
-            appearances[CreatureConstants.Chuul][GenderConstants.Male] = "0";
-            appearances[CreatureConstants.Chuul][CreatureConstants.Chuul] = "0";
-            //Source: https://forgottenrealms.fandom.com/wiki/Cloaker and https://www.mojobob.com/roleplay/monstrousmanual/c/cloaker.html
-            appearances[CreatureConstants.Cloaker][GenderConstants.Agender] = "0";
-            appearances[CreatureConstants.Cloaker][CreatureConstants.Cloaker] = "0";
+            appearances[CreatureConstants.Chuul] = GetWeightedAppearances(
+                allSkin: new[] { "Dark yellow-green exoskeleton" },
+                allEyes: new[] { "Black eyes" },
+                allOther: new[] { "Four long legs and two large crustacean-like claws. Fan-like tail. Mass of tentacles around the mouth." });
+            //Source: https://forgottenrealms.fandom.com/wiki/Cloaker
+            appearances[CreatureConstants.Cloaker] = GetWeightedAppearances(
+                allSkin: new[] { "Black skin, pale belly" },
+                allEyes: new[] { "Red eyes" },
+                commonOther: new[] { "Long, whiplike tail. Head set within the \"cowl\" of the cloak-like body. Toothy maw. Bony claws adjacent to the head look almost like clasps for the cloak." },
+                uncommonOther: new[] { "Long, whiplike tail. Head set within the \"cowl\" of the cloak-like body. Toothy maw. Bony claws adjacent to the head look almost like clasps for the cloak. A series of spots run in two parallel lines down the backs, giving the appearance of buttons." });
             //Source: https://forgottenrealms.fandom.com/wiki/Cockatrice
-            appearances[CreatureConstants.Cockatrice][GenderConstants.Female] = GetBaseFromAverage(3 * 12);
-            appearances[CreatureConstants.Cockatrice][GenderConstants.Male] = GetBaseFromAverage(3 * 12);
-            appearances[CreatureConstants.Cockatrice][CreatureConstants.Cockatrice] = GetMultiplierFromAverage(3 * 12);
+            appearances[CreatureConstants.Cockatrice] = GetWeightedAppearances(
+                allSkin: new[] { "Yellow-green scales on the tail. Grey skin on the wings. Yellow beak and feet." },
+                allHair: new[] { "Golden brown feathers" },
+                allEyes: new[] { "Glowing crimson eyes" },
+                allOther: new[] { "Lizard-like tail. Wings of a bat.", "TODO gender-specific appearance" });
             //Source: https://forgottenrealms.fandom.com/wiki/Couatl
-            appearances[CreatureConstants.Couatl][GenderConstants.Female] = "0";
-            appearances[CreatureConstants.Couatl][GenderConstants.Male] = "0";
-            appearances[CreatureConstants.Couatl][CreatureConstants.Couatl] = "0";
+            appearances[CreatureConstants.Couatl] = new[] { "Long feathered serpent with a pair of rainbow-feathered wings." };
             //Source: https://www.mojobob.com/roleplay/monstrousmanual/s/sphinx.html
-            appearances[CreatureConstants.Criosphinx][GenderConstants.Male] = GetBaseFromAverage(7 * 12 + 6);
-            appearances[CreatureConstants.Criosphinx][CreatureConstants.Criosphinx] = GetMultiplierFromAverage(7 * 12 + 6);
-            //Source: https://www.dimensions.com/element/nile-crocodile-crocodylus-niloticus
-            appearances[CreatureConstants.Crocodile][GenderConstants.Female] = GetBaseFromRange(12, 19);
-            appearances[CreatureConstants.Crocodile][GenderConstants.Male] = GetBaseFromRange(12, 19);
-            appearances[CreatureConstants.Crocodile][CreatureConstants.Crocodile] = GetMultiplierFromRange(12, 19);
-            //Source: https://www.dimensions.com/element/saltwater-crocodile-crocodylus-porosus
-            appearances[CreatureConstants.Crocodile_Giant][GenderConstants.Female] = GetBaseFromRange(10, 30);
-            appearances[CreatureConstants.Crocodile_Giant][GenderConstants.Male] = GetBaseFromRange(10, 30);
-            appearances[CreatureConstants.Crocodile_Giant][CreatureConstants.Crocodile_Giant] = GetMultiplierFromRange(10, 30);
-            //Source: https://forgottenrealms.fandom.com/wiki/Hydra half of length for height
-            appearances[CreatureConstants.Cryohydra_5Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Cryohydra_5Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Cryohydra_5Heads][CreatureConstants.Cryohydra_5Heads] = GetMultiplierFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Cryohydra_6Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Cryohydra_6Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Cryohydra_6Heads][CreatureConstants.Cryohydra_6Heads] = GetMultiplierFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Cryohydra_7Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Cryohydra_7Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Cryohydra_7Heads][CreatureConstants.Cryohydra_7Heads] = GetMultiplierFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Cryohydra_8Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Cryohydra_8Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Cryohydra_8Heads][CreatureConstants.Cryohydra_8Heads] = GetMultiplierFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Cryohydra_9Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Cryohydra_9Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Cryohydra_9Heads][CreatureConstants.Cryohydra_9Heads] = GetMultiplierFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Cryohydra_10Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Cryohydra_10Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Cryohydra_10Heads][CreatureConstants.Cryohydra_10Heads] = GetMultiplierFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Cryohydra_11Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Cryohydra_11Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Cryohydra_11Heads][CreatureConstants.Cryohydra_11Heads] = GetMultiplierFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Cryohydra_12Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Cryohydra_12Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Cryohydra_12Heads][CreatureConstants.Cryohydra_12Heads] = GetMultiplierFromAverage(20 * 12 / 2);
+            appearances[CreatureConstants.Criosphinx] = new[] { "Falcon-like wings, ram-like head. Tawny lion body. Mouth full of sharp teeth." };
+            //Source: https://en.wikipedia.org/wiki/Nile_crocodile#Characteristics_and_physiology
+            appearances[CreatureConstants.Crocodile] = new[] { "Dark bronze colouration above, with faded blackish spots and stripes variably appearing across the back and a dingy off-yellow on the belly, although mud can often obscure the crocodile's actual colour.[19] The flanks, which are yellowish-green in colour, have dark patches arranged in oblique stripes in highly variable patterns. Some variation occurs relative to environment; specimens from swift-flowing waters tend to be lighter in colour than those dwelling in murkier lakes or swamps, which provides camouflage that suits their environment, an example of clinal variation. Nile crocodiles have green eyes" };
+            //Source: https://en.wikipedia.org/wiki/Saltwater_crocodile#Description
+            appearances[CreatureConstants.Crocodile_Giant] = GetWeightedAppearances(
+                commonSkin: new[] {
+                    "Darker greenish-drab skin. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
+                    "Darker greenish-drab skin. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
+                },
+                uncommonSkin: new[] {
+                    "Darker greenish-drab skin, with a few lighter tan areas. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
+                    "Darker greenish-drab skin, with a few lighter tan areas. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
+                    "Darker greenish-drab skin, with a few lighter grey areas. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
+                    "Darker greenish-drab skin, with a few lighter grey areas. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
+                    "Pale greenish-drab skin. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
+                    "Pale greenish-drab skin. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
+                    "Dark black-green skin. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
+                    "Dark black-green skin. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
+                    "Dark blackish skin. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
+                    "Dark blackish skin. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
+                },
+                rareSkin: new[] {
+                    "Pale greenish-drab skin, with a few lighter tan areas. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
+                    "Pale greenish-drab skin, with a few lighter tan areas. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
+                    "Pale greenish-drab skin, with a few lighter grey areas. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
+                    "Pale greenish-drab skin, with a few lighter grey areas. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
+                    "Dark black-green skin, with a few lighter tan areas. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
+                    "Dark black-green skin, with a few lighter tan areas. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
+                    "Dark black-green skin, with a few lighter grey areas. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
+                    "Dark black-green skin, with a few lighter grey areas. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
+                    "Dark blackish skin, with a few lighter tan areas. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
+                    "Dark blackish skin, with a few lighter tan areas. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
+                    "Dark blackish skin, with a few lighter grey areas. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
+                    "Dark blackish skin, with a few lighter grey areas. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
+                });
+            //Source: https://forgottenrealms.fandom.com/wiki/Cryohydra
+            appearances[CreatureConstants.Cryohydra_5Heads] = GetWeightedAppearances(
+                allSkin: new[] { "Purplish-brown skin", "Brown skin", "Dark brown skin", "Dark purplish-brown skin" },
+                allEyes: new[] { "Amber eyes" });
+            appearances[CreatureConstants.Cryohydra_6Heads] = GetWeightedAppearances(
+                allSkin: new[] { "Purplish-brown skin", "Brown skin", "Dark brown skin", "Dark purplish-brown skin" },
+                allEyes: new[] { "Amber eyes" });
+            appearances[CreatureConstants.Cryohydra_7Heads] = GetWeightedAppearances(
+                allSkin: new[] { "Purplish-brown skin", "Brown skin", "Dark brown skin", "Dark purplish-brown skin" },
+                allEyes: new[] { "Amber eyes" });
+            appearances[CreatureConstants.Cryohydra_8Heads] = GetWeightedAppearances(
+                allSkin: new[] { "Purplish-brown skin", "Brown skin", "Dark brown skin", "Dark purplish-brown skin" },
+                allEyes: new[] { "Amber eyes" });
+            appearances[CreatureConstants.Cryohydra_9Heads] = GetWeightedAppearances(
+                allSkin: new[] { "Purplish-brown skin", "Brown skin", "Dark brown skin", "Dark purplish-brown skin" },
+                allEyes: new[] { "Amber eyes" });
+            appearances[CreatureConstants.Cryohydra_10Heads] = GetWeightedAppearances(
+                allSkin: new[] { "Purplish-brown skin", "Brown skin", "Dark brown skin", "Dark purplish-brown skin" },
+                allEyes: new[] { "Amber eyes" });
+            appearances[CreatureConstants.Cryohydra_11Heads] = GetWeightedAppearances(
+                allSkin: new[] { "Purplish-brown skin", "Brown skin", "Dark brown skin", "Dark purplish-brown skin" },
+                allEyes: new[] { "Amber eyes" });
+            appearances[CreatureConstants.Cryohydra_12Heads] = GetWeightedAppearances(
+                allSkin: new[] { "Purplish-brown skin", "Brown skin", "Dark brown skin", "Dark purplish-brown skin" },
+                allEyes: new[] { "Amber eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Darkmantle
-            appearances[CreatureConstants.Darkmantle][GenderConstants.Hermaphrodite] = "0";
-            appearances[CreatureConstants.Darkmantle][CreatureConstants.Darkmantle] = "0";
+            appearances[CreatureConstants.Darkmantle] = GetWeightedAppearances(
+                commonSkin: new[] { "Limestone-colored skin" },
+                uncommonSkin: new[] { "Dolomite-colored skin", "Gypsum-colored skin", "Marble-colored skin", "Anhydrite-colored skin", "Halite-colored skin" },
+                allEyes: new[] { "Eight eyespots, but not actual eyes" });
             //Source: https://www.dimensions.com/element/deinonychus-deinonychus-antirrhopus
-            appearances[CreatureConstants.Deinonychus][GenderConstants.Female] = GetBaseFromRange(34, 57);
-            appearances[CreatureConstants.Deinonychus][GenderConstants.Male] = GetBaseFromRange(34, 57);
-            appearances[CreatureConstants.Deinonychus][CreatureConstants.Deinonychus] = GetMultiplierFromRange(34, 57);
-            //Source: https://dungeonsdragons.fandom.com/wiki/Delver
-            appearances[CreatureConstants.Delver][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Delver][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Delver][CreatureConstants.Delver] = GetMultiplierFromAverage(12 * 12);
-            //Source: https://monster.fandom.com/wiki/Derro
-            appearances[CreatureConstants.Derro][GenderConstants.Female] = GetBaseFromRange(3 * 12, 4 * 12);
-            appearances[CreatureConstants.Derro][GenderConstants.Male] = GetBaseFromRange(3 * 12, 4 * 12);
-            appearances[CreatureConstants.Derro][CreatureConstants.Derro] = GetMultiplierFromRange(3 * 12, 4 * 12);
-            appearances[CreatureConstants.Derro_Sane][GenderConstants.Female] = GetBaseFromRange(3 * 12, 4 * 12);
-            appearances[CreatureConstants.Derro_Sane][GenderConstants.Male] = GetBaseFromRange(3 * 12, 4 * 12);
-            appearances[CreatureConstants.Derro_Sane][CreatureConstants.Derro_Sane] = GetMultiplierFromRange(3 * 12, 4 * 12);
+            //https://jurassicworld-evolution.fandom.com/wiki/Deinonychus#Skins
+            appearances[CreatureConstants.Deinonychus] = GetWeightedAppearances(
+                allSkin: new[] { "Red skin, tan underbelly", "Gray skin, tan underbelly", "Orange skin, mottled yellow-orange underbelly",
+                    "Turquoise skin, gray underbelly", "Green skin, yellow underbelly", "Purple skin with pink accents, gray underbelly" },
+                allOther: new[] { "Small body, sleek horizontal posture, ratite-like spine, and enlarged raptorial claws on the feet. A large, sickle-shaped talon is on the second toe of each hind foot." });
+            //Source: https://forgottenrealms.fandom.com/wiki/Delver
+            appearances[CreatureConstants.Delver] = new[] { "Huge teardrop-shaped body with rock-like skin, always covered in a mucus-like slime. Almost the entire underside of the body consists of their mouth. Only two flipper-like appendages at the front of the body ending in blunt claws" };
+            //Source: https://forgottenrealms.fandom.com/wiki/Derro
+            appearances[CreatureConstants.Derro] = GetWeightedAppearances(
+                commonSkin: new[] { "Pale blue-white skin", "Blue-gray skin" },
+                uncommonSkin: new[] { "Pale blue-gray skin", "Blue-white skin" },
+                allHair: new[] { "White hair", "Yellow hair", "Pale tan hair" },
+                allEyes: new[] { "Uniformly pale eyes lacking irisies and pupils" });
+            appearances[CreatureConstants.Derro_Sane] = GetWeightedAppearances(
+                commonSkin: new[] { "Pale blue-white skin", "Blue-gray skin" },
+                uncommonSkin: new[] { "Pale blue-gray skin", "Blue-white skin" },
+                allHair: new[] { "White hair", "Yellow hair", "Pale tan hair" },
+                allEyes: new[] { "Uniformly pale eyes lacking irisies and pupils" });
             //Source: https://forgottenrealms.fandom.com/wiki/Destrachan
-            appearances[CreatureConstants.Destrachan][GenderConstants.Female] = "0";
-            appearances[CreatureConstants.Destrachan][GenderConstants.Male] = "0";
-            appearances[CreatureConstants.Destrachan][CreatureConstants.Destrachan] = "0";
-            //Source: https://www.d20srd.org/srd/monsters/devourer.htm
-            appearances[CreatureConstants.Devourer][GenderConstants.Agender] = GetBaseFromAverage(9 * 12);
-            appearances[CreatureConstants.Devourer][CreatureConstants.Devourer] = GetMultiplierFromAverage(9 * 12);
+            appearances[CreatureConstants.Destrachan] = new[] { "Bipedal, vaguely reptilian. Head is largely featureless except for the circular mouth and the large ear structures." };
+            //Source: https://forgottenrealms.fandom.com/wiki/Devourer
+            appearances[CreatureConstants.Devourer] = new[] { "Tall, gaunt skeletal figure with a smaller figure trapped within its rib cage" };
             //Source: https://forgottenrealms.fandom.com/wiki/Digester
             appearances[CreatureConstants.Digester][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
             appearances[CreatureConstants.Digester][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
@@ -1468,31 +1497,39 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Curly Red hair", "Curly Blond hair", "Curly Brown hair", "Curly Black hair",
                     "Kinky Red hair", "Kinky Blond hair", "Kinky Brown hair", "Kinky Black hair" },
                 allEyes: new[] { "Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes" });
-            //Source: https://forgottenrealms.fandom.com/wiki/Hydra half of length for height
-            appearances[CreatureConstants.Hydra_5Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Hydra_5Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Hydra_5Heads][CreatureConstants.Hydra_5Heads] = GetMultiplierFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Hydra_6Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Hydra_6Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Hydra_6Heads][CreatureConstants.Hydra_6Heads] = GetMultiplierFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Hydra_7Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Hydra_7Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Hydra_7Heads][CreatureConstants.Hydra_7Heads] = GetMultiplierFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Hydra_8Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Hydra_8Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Hydra_8Heads][CreatureConstants.Hydra_8Heads] = GetMultiplierFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Hydra_9Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Hydra_9Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Hydra_9Heads][CreatureConstants.Hydra_9Heads] = GetMultiplierFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Hydra_10Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Hydra_10Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Hydra_10Heads][CreatureConstants.Hydra_10Heads] = GetMultiplierFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Hydra_11Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Hydra_11Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Hydra_11Heads][CreatureConstants.Hydra_11Heads] = GetMultiplierFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Hydra_12Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Hydra_12Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Hydra_12Heads][CreatureConstants.Hydra_12Heads] = GetMultiplierFromAverage(20 * 12 / 2);
+            //Source: https://forgottenrealms.fandom.com/wiki/Hydra
+            appearances[CreatureConstants.Hydra_5Heads] = GetWeightedAppearances(
+                allSkin: new[] { "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
+                    "Yellow-green skin", "Green skin, yellow underbelly", "Tan skin" },
+                allEyes: new[] { "Amber eyes" });
+            appearances[CreatureConstants.Hydra_6Heads] = GetWeightedAppearances(
+                allSkin: new[] { "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
+                    "Yellow-green skin", "Green skin, yellow underbelly", "Tan skin" },
+                allEyes: new[] { "Amber eyes" });
+            appearances[CreatureConstants.Hydra_7Heads] = GetWeightedAppearances(
+                allSkin: new[] { "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
+                    "Yellow-green skin", "Green skin, yellow underbelly", "Tan skin" },
+                allEyes: new[] { "Amber eyes" });
+            appearances[CreatureConstants.Hydra_8Heads] = GetWeightedAppearances(
+                allSkin: new[] { "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
+                    "Yellow-green skin", "Green skin, yellow underbelly", "Tan skin" },
+                allEyes: new[] { "Amber eyes" });
+            appearances[CreatureConstants.Hydra_9Heads] = GetWeightedAppearances(
+                allSkin: new[] { "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
+                    "Yellow-green skin", "Green skin, yellow underbelly", "Tan skin" },
+                allEyes: new[] { "Amber eyes" });
+            appearances[CreatureConstants.Hydra_10Heads] = GetWeightedAppearances(
+                allSkin: new[] { "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
+                    "Yellow-green skin", "Green skin, yellow underbelly", "Tan skin" },
+                allEyes: new[] { "Amber eyes" });
+            appearances[CreatureConstants.Hydra_11Heads] = GetWeightedAppearances(
+                allSkin: new[] { "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
+                    "Yellow-green skin", "Green skin, yellow underbelly", "Tan skin" },
+                allEyes: new[] { "Amber eyes" });
+            appearances[CreatureConstants.Hydra_12Heads] = GetWeightedAppearances(
+                allSkin: new[] { "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
+                    "Yellow-green skin", "Green skin, yellow underbelly", "Tan skin" },
+                allEyes: new[] { "Amber eyes" });
             //Source: https://www.dimensions.com/element/striped-hyena-hyaena-hyaena
             appearances[CreatureConstants.Hyena][GenderConstants.Female] = GetBaseFromRange(25, 30);
             appearances[CreatureConstants.Hyena][GenderConstants.Male] = GetBaseFromRange(25, 30);
@@ -1816,31 +1853,31 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.PurpleWorm][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
             appearances[CreatureConstants.PurpleWorm][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
             appearances[CreatureConstants.PurpleWorm][CreatureConstants.PurpleWorm] = GetMultiplierFromAverage(5 * 12);
-            //Source: https://forgottenrealms.fandom.com/wiki/Hydra half of length for height
-            appearances[CreatureConstants.Pyrohydra_5Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Pyrohydra_5Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Pyrohydra_5Heads][CreatureConstants.Pyrohydra_5Heads] = GetMultiplierFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Pyrohydra_6Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Pyrohydra_6Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Pyrohydra_6Heads][CreatureConstants.Pyrohydra_6Heads] = GetMultiplierFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Pyrohydra_7Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Pyrohydra_7Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Pyrohydra_7Heads][CreatureConstants.Pyrohydra_7Heads] = GetMultiplierFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Pyrohydra_8Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Pyrohydra_8Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Pyrohydra_8Heads][CreatureConstants.Pyrohydra_8Heads] = GetMultiplierFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Pyrohydra_9Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Pyrohydra_9Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Pyrohydra_9Heads][CreatureConstants.Pyrohydra_9Heads] = GetMultiplierFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Pyrohydra_10Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Pyrohydra_10Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Pyrohydra_10Heads][CreatureConstants.Pyrohydra_10Heads] = GetMultiplierFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Pyrohydra_11Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Pyrohydra_11Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Pyrohydra_11Heads][CreatureConstants.Pyrohydra_11Heads] = GetMultiplierFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Pyrohydra_12Heads][GenderConstants.Female] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Pyrohydra_12Heads][GenderConstants.Male] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Pyrohydra_12Heads][CreatureConstants.Pyrohydra_12Heads] = GetMultiplierFromAverage(20 * 12 / 2);
+            //Source: https://forgottenrealms.fandom.com/wiki/Pyrohydra
+            appearances[CreatureConstants.Pyrohydra_5Heads] = GetWeightedAppearances(
+                allSkin: new[] { "Reddish skin, yellow underbelly" },
+                allEyes: new[] { "Amber eyes" });
+            appearances[CreatureConstants.Pyrohydra_6Heads] = GetWeightedAppearances(
+                allSkin: new[] { "Reddish skin, yellow underbelly" },
+                allEyes: new[] { "Amber eyes" });
+            appearances[CreatureConstants.Pyrohydra_7Heads] = GetWeightedAppearances(
+                allSkin: new[] { "Reddish skin, yellow underbelly" },
+                allEyes: new[] { "Amber eyes" });
+            appearances[CreatureConstants.Pyrohydra_8Heads] = GetWeightedAppearances(
+                allSkin: new[] { "Reddish skin, yellow underbelly" },
+                allEyes: new[] { "Amber eyes" });
+            appearances[CreatureConstants.Pyrohydra_9Heads] = GetWeightedAppearances(
+                allSkin: new[] { "Reddish skin, yellow underbelly" },
+                allEyes: new[] { "Amber eyes" });
+            appearances[CreatureConstants.Pyrohydra_10Heads] = GetWeightedAppearances(
+                allSkin: new[] { "Reddish skin, yellow underbelly" },
+                allEyes: new[] { "Amber eyes" });
+            appearances[CreatureConstants.Pyrohydra_11Heads] = GetWeightedAppearances(
+                allSkin: new[] { "Reddish skin, yellow underbelly" },
+                allEyes: new[] { "Amber eyes" });
+            appearances[CreatureConstants.Pyrohydra_12Heads] = GetWeightedAppearances(
+                allSkin: new[] { "Reddish skin, yellow underbelly" },
+                allEyes: new[] { "Amber eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Quasit
             appearances[CreatureConstants.Quasit][GenderConstants.Agender] = GetBaseFromRange(12, 24);
             appearances[CreatureConstants.Quasit][CreatureConstants.Quasit] = GetMultiplierFromRange(12, 24);
@@ -2358,7 +2395,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             (string Appearance, Rarity Rarity) prototype)
         {
             if (all?.Any() == true)
-                return all.Select(a => (string.IsNullOrEmpty(prototype.Appearance) ? a : $"{prototype.Appearance}; {a}", prototype.Rarity));
+                return all.Select(a =>
+                    (GetAppearancePrototype(prototype.Appearance, a),
+                    GetRarity(prototype.Rarity, Rarity.Common)));
 
             common ??= new[] { string.Empty };
             uncommon ??= new[] { string.Empty };
