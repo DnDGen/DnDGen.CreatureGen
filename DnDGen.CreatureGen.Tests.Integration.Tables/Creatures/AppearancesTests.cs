@@ -752,389 +752,666 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Black fur with gray stripe from mane to tail and a crosswise stripe on the shoulders" },
                 allOther: new[] { "Long ears, surefooted" });
             //Source: https://forgottenrealms.fandom.com/wiki/Doppelganger
-            appearances[CreatureConstants.Doppelganger][GenderConstants.Agender] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Doppelganger][CreatureConstants.Doppelganger] = GetMultiplierFromAverage(5 * 12);
+            appearances[CreatureConstants.Doppelganger] = GetWeightedAppearances(
+                allSkin: new[] { "Gray skin" },
+                allHair: new[] { "Hairless" },
+                commonEyes: new[] { "Bulging, pale yellow eyes lacking visible pupils", "Bulging, yellow eyes lacking visible pupils" },
+                rareEyes: new[] { "Bulging, green eyes lacking visible pupils", "Bulging, white eyes lacking visible pupils" },
+                allOther: new[] { "Elven ears. Bulbous head with formless face." });
             //Source: Draconomicon
-            appearances[CreatureConstants.Dragon_Black_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(12);
-            appearances[CreatureConstants.Dragon_Black_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(12);
-            appearances[CreatureConstants.Dragon_Black_Wyrmling][CreatureConstants.Dragon_Black_Wyrmling] = GetMultiplierFromAverage(12);
-            appearances[CreatureConstants.Dragon_Black_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(24);
-            appearances[CreatureConstants.Dragon_Black_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(24);
-            appearances[CreatureConstants.Dragon_Black_VeryYoung][CreatureConstants.Dragon_Black_VeryYoung] = GetMultiplierFromAverage(24);
-            appearances[CreatureConstants.Dragon_Black_Young][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Black_Young][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Black_Young][CreatureConstants.Dragon_Black_Young] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Black_Juvenile][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Black_Juvenile][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Black_Juvenile][CreatureConstants.Dragon_Black_Juvenile] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Black_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Black_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Black_YoungAdult][CreatureConstants.Dragon_Black_YoungAdult] = GetMultiplierFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Black_Adult][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Black_Adult][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Black_Adult][CreatureConstants.Dragon_Black_Adult] = GetMultiplierFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Black_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Black_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Black_MatureAdult][CreatureConstants.Dragon_Black_MatureAdult] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Black_Old][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Black_Old][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Black_Old][CreatureConstants.Dragon_Black_Old] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Black_VeryOld][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Black_VeryOld][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Black_VeryOld][CreatureConstants.Dragon_Black_VeryOld] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Black_Ancient][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Black_Ancient][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Black_Ancient][CreatureConstants.Dragon_Black_Ancient] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Black_Wyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Black_Wyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Black_Wyrm][CreatureConstants.Dragon_Black_Wyrm] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Black_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Black_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Black_GreatWyrm][CreatureConstants.Dragon_Black_GreatWyrm] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Blue_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(24);
-            appearances[CreatureConstants.Dragon_Blue_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(24);
-            appearances[CreatureConstants.Dragon_Blue_Wyrmling][CreatureConstants.Dragon_Blue_Wyrmling] = GetMultiplierFromAverage(24);
-            appearances[CreatureConstants.Dragon_Blue_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Blue_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Blue_VeryYoung][CreatureConstants.Dragon_Blue_VeryYoung] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Blue_Young][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Blue_Young][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Blue_Young][CreatureConstants.Dragon_Blue_Young] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Blue_Juvenile][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Blue_Juvenile][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Blue_Juvenile][CreatureConstants.Dragon_Blue_Juvenile] = GetMultiplierFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Blue_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Blue_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Blue_YoungAdult][CreatureConstants.Dragon_Blue_YoungAdult] = GetMultiplierFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Blue_Adult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Blue_Adult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Blue_Adult][CreatureConstants.Dragon_Blue_Adult] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Blue_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Blue_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Blue_MatureAdult][CreatureConstants.Dragon_Blue_MatureAdult] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Blue_Old][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Blue_Old][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Blue_Old][CreatureConstants.Dragon_Blue_Old] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Blue_VeryOld][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Blue_VeryOld][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Blue_VeryOld][CreatureConstants.Dragon_Blue_VeryOld] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Blue_Ancient][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Blue_Ancient][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Blue_Ancient][CreatureConstants.Dragon_Blue_Ancient] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Blue_Wyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Blue_Wyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Blue_Wyrm][CreatureConstants.Dragon_Blue_Wyrm] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Blue_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Blue_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Blue_GreatWyrm][CreatureConstants.Dragon_Blue_GreatWyrm] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Brass_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(12);
-            appearances[CreatureConstants.Dragon_Brass_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(12);
-            appearances[CreatureConstants.Dragon_Brass_Wyrmling][CreatureConstants.Dragon_Brass_Wyrmling] = GetMultiplierFromAverage(12);
-            appearances[CreatureConstants.Dragon_Brass_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(24);
-            appearances[CreatureConstants.Dragon_Brass_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(24);
-            appearances[CreatureConstants.Dragon_Brass_VeryYoung][CreatureConstants.Dragon_Brass_VeryYoung] = GetMultiplierFromAverage(24);
-            appearances[CreatureConstants.Dragon_Brass_Young][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Brass_Young][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Brass_Young][CreatureConstants.Dragon_Brass_Young] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Brass_Juvenile][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Brass_Juvenile][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Brass_Juvenile][CreatureConstants.Dragon_Brass_Juvenile] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Brass_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Brass_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Brass_YoungAdult][CreatureConstants.Dragon_Brass_YoungAdult] = GetMultiplierFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Brass_Adult][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Brass_Adult][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Brass_Adult][CreatureConstants.Dragon_Brass_Adult] = GetMultiplierFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Brass_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Brass_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Brass_MatureAdult][CreatureConstants.Dragon_Brass_MatureAdult] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Brass_Old][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Brass_Old][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Brass_Old][CreatureConstants.Dragon_Brass_Old] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Brass_VeryOld][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Brass_VeryOld][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Brass_VeryOld][CreatureConstants.Dragon_Brass_VeryOld] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Brass_Ancient][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Brass_Ancient][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Brass_Ancient][CreatureConstants.Dragon_Brass_Ancient] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Brass_Wyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Brass_Wyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Brass_Wyrm][CreatureConstants.Dragon_Brass_Wyrm] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Brass_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Brass_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Brass_GreatWyrm][CreatureConstants.Dragon_Brass_GreatWyrm] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(24);
-            appearances[CreatureConstants.Dragon_Bronze_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(24);
-            appearances[CreatureConstants.Dragon_Bronze_Wyrmling][CreatureConstants.Dragon_Bronze_Wyrmling] = GetMultiplierFromAverage(24);
-            appearances[CreatureConstants.Dragon_Bronze_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_VeryYoung][CreatureConstants.Dragon_Bronze_VeryYoung] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_Young][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_Young][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_Young][CreatureConstants.Dragon_Bronze_Young] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_Juvenile][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_Juvenile][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_Juvenile][CreatureConstants.Dragon_Bronze_Juvenile] = GetMultiplierFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_YoungAdult][CreatureConstants.Dragon_Bronze_YoungAdult] = GetMultiplierFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_Adult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_Adult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_Adult][CreatureConstants.Dragon_Bronze_Adult] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_MatureAdult][CreatureConstants.Dragon_Bronze_MatureAdult] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_Old][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_Old][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_Old][CreatureConstants.Dragon_Bronze_Old] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_VeryOld][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_VeryOld][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_VeryOld][CreatureConstants.Dragon_Bronze_VeryOld] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_Ancient][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_Ancient][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_Ancient][CreatureConstants.Dragon_Bronze_Ancient] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_Wyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_Wyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_Wyrm][CreatureConstants.Dragon_Bronze_Wyrm] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Bronze_GreatWyrm][CreatureConstants.Dragon_Bronze_GreatWyrm] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Copper_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(12);
-            appearances[CreatureConstants.Dragon_Copper_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(12);
-            appearances[CreatureConstants.Dragon_Copper_Wyrmling][CreatureConstants.Dragon_Copper_Wyrmling] = GetMultiplierFromAverage(12);
-            appearances[CreatureConstants.Dragon_Copper_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(24);
-            appearances[CreatureConstants.Dragon_Copper_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(24);
-            appearances[CreatureConstants.Dragon_Copper_VeryYoung][CreatureConstants.Dragon_Copper_VeryYoung] = GetMultiplierFromAverage(24);
-            appearances[CreatureConstants.Dragon_Copper_Young][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Copper_Young][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Copper_Young][CreatureConstants.Dragon_Copper_Young] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Copper_Juvenile][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Copper_Juvenile][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Copper_Juvenile][CreatureConstants.Dragon_Copper_Juvenile] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Copper_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Copper_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Copper_YoungAdult][CreatureConstants.Dragon_Copper_YoungAdult] = GetMultiplierFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Copper_Adult][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Copper_Adult][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Copper_Adult][CreatureConstants.Dragon_Copper_Adult] = GetMultiplierFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Copper_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Copper_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Copper_MatureAdult][CreatureConstants.Dragon_Copper_MatureAdult] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Copper_Old][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Copper_Old][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Copper_Old][CreatureConstants.Dragon_Copper_Old] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Copper_VeryOld][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Copper_VeryOld][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Copper_VeryOld][CreatureConstants.Dragon_Copper_VeryOld] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Copper_Ancient][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Copper_Ancient][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Copper_Ancient][CreatureConstants.Dragon_Copper_Ancient] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Copper_Wyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Copper_Wyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Copper_Wyrm][CreatureConstants.Dragon_Copper_Wyrm] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Copper_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Copper_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Copper_GreatWyrm][CreatureConstants.Dragon_Copper_GreatWyrm] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Gold_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Gold_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Gold_Wyrmling][CreatureConstants.Dragon_Gold_Wyrmling] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Gold_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Gold_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Gold_VeryYoung][CreatureConstants.Dragon_Gold_VeryYoung] = GetMultiplierFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Gold_Young][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Gold_Young][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Gold_Young][CreatureConstants.Dragon_Gold_Young] = GetMultiplierFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Gold_Juvenile][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Gold_Juvenile][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Gold_Juvenile][CreatureConstants.Dragon_Gold_Juvenile] = GetMultiplierFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Gold_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Gold_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Gold_YoungAdult][CreatureConstants.Dragon_Gold_YoungAdult] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Gold_Adult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Gold_Adult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Gold_Adult][CreatureConstants.Dragon_Gold_Adult] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Gold_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Gold_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Gold_MatureAdult][CreatureConstants.Dragon_Gold_MatureAdult] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Gold_Old][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Gold_Old][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Gold_Old][CreatureConstants.Dragon_Gold_Old] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Gold_VeryOld][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Gold_VeryOld][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Gold_VeryOld][CreatureConstants.Dragon_Gold_VeryOld] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Gold_Ancient][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Gold_Ancient][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Gold_Ancient][CreatureConstants.Dragon_Gold_Ancient] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Gold_Wyrm][GenderConstants.Female] = GetBaseFromAverage(22 * 12);
-            appearances[CreatureConstants.Dragon_Gold_Wyrm][GenderConstants.Male] = GetBaseFromAverage(22 * 12);
-            appearances[CreatureConstants.Dragon_Gold_Wyrm][CreatureConstants.Dragon_Gold_Wyrm] = GetMultiplierFromAverage(22 * 12);
-            appearances[CreatureConstants.Dragon_Gold_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(22 * 12);
-            appearances[CreatureConstants.Dragon_Gold_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(22 * 12);
-            appearances[CreatureConstants.Dragon_Gold_GreatWyrm][CreatureConstants.Dragon_Gold_GreatWyrm] = GetMultiplierFromAverage(22 * 12);
-            appearances[CreatureConstants.Dragon_Green_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(30);
-            appearances[CreatureConstants.Dragon_Green_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(30);
-            appearances[CreatureConstants.Dragon_Green_Wyrmling][CreatureConstants.Dragon_Green_Wyrmling] = GetMultiplierFromAverage(30);
-            appearances[CreatureConstants.Dragon_Green_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Dragon_Green_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Dragon_Green_VeryYoung][CreatureConstants.Dragon_Green_VeryYoung] = GetMultiplierFromAverage(5 * 12);
-            appearances[CreatureConstants.Dragon_Green_Young][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Dragon_Green_Young][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Dragon_Green_Young][CreatureConstants.Dragon_Green_Young] = GetMultiplierFromAverage(5 * 12);
-            appearances[CreatureConstants.Dragon_Green_Juvenile][GenderConstants.Female] = GetBaseFromAverage(9 * 12);
-            appearances[CreatureConstants.Dragon_Green_Juvenile][GenderConstants.Male] = GetBaseFromAverage(9 * 12);
-            appearances[CreatureConstants.Dragon_Green_Juvenile][CreatureConstants.Dragon_Green_Juvenile] = GetMultiplierFromAverage(9 * 12);
-            appearances[CreatureConstants.Dragon_Green_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(9 * 12);
-            appearances[CreatureConstants.Dragon_Green_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(9 * 12);
-            appearances[CreatureConstants.Dragon_Green_YoungAdult][CreatureConstants.Dragon_Green_YoungAdult] = GetMultiplierFromAverage(9 * 12);
-            appearances[CreatureConstants.Dragon_Green_Adult][GenderConstants.Female] = GetBaseFromAverage(15 * 12);
-            appearances[CreatureConstants.Dragon_Green_Adult][GenderConstants.Male] = GetBaseFromAverage(15 * 12);
-            appearances[CreatureConstants.Dragon_Green_Adult][CreatureConstants.Dragon_Green_Adult] = GetMultiplierFromAverage(15 * 12);
-            appearances[CreatureConstants.Dragon_Green_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(15 * 12);
-            appearances[CreatureConstants.Dragon_Green_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(15 * 12);
-            appearances[CreatureConstants.Dragon_Green_MatureAdult][CreatureConstants.Dragon_Green_MatureAdult] = GetMultiplierFromAverage(15 * 12);
-            appearances[CreatureConstants.Dragon_Green_Old][GenderConstants.Female] = GetBaseFromAverage(15 * 12);
-            appearances[CreatureConstants.Dragon_Green_Old][GenderConstants.Male] = GetBaseFromAverage(15 * 12);
-            appearances[CreatureConstants.Dragon_Green_Old][CreatureConstants.Dragon_Green_Old] = GetMultiplierFromAverage(15 * 12);
-            appearances[CreatureConstants.Dragon_Green_VeryOld][GenderConstants.Female] = GetBaseFromAverage(15 * 12);
-            appearances[CreatureConstants.Dragon_Green_VeryOld][GenderConstants.Male] = GetBaseFromAverage(15 * 12);
-            appearances[CreatureConstants.Dragon_Green_VeryOld][CreatureConstants.Dragon_Green_VeryOld] = GetMultiplierFromAverage(15 * 12);
-            appearances[CreatureConstants.Dragon_Green_Ancient][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
-            appearances[CreatureConstants.Dragon_Green_Ancient][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
-            appearances[CreatureConstants.Dragon_Green_Ancient][CreatureConstants.Dragon_Green_Ancient] = GetMultiplierFromAverage(20 * 12);
-            appearances[CreatureConstants.Dragon_Green_Wyrm][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
-            appearances[CreatureConstants.Dragon_Green_Wyrm][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
-            appearances[CreatureConstants.Dragon_Green_Wyrm][CreatureConstants.Dragon_Green_Wyrm] = GetMultiplierFromAverage(20 * 12);
-            appearances[CreatureConstants.Dragon_Green_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(20 * 12);
-            appearances[CreatureConstants.Dragon_Green_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(20 * 12);
-            appearances[CreatureConstants.Dragon_Green_GreatWyrm][CreatureConstants.Dragon_Green_GreatWyrm] = GetMultiplierFromAverage(20 * 12);
-            appearances[CreatureConstants.Dragon_Red_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Red_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Red_Wyrmling][CreatureConstants.Dragon_Red_Wyrmling] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Red_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Red_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Red_VeryYoung][CreatureConstants.Dragon_Red_VeryYoung] = GetMultiplierFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Red_Young][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Red_Young][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Red_Young][CreatureConstants.Dragon_Red_Young] = GetMultiplierFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Red_Juvenile][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Red_Juvenile][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Red_Juvenile][CreatureConstants.Dragon_Red_Juvenile] = GetMultiplierFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Red_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Red_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Red_YoungAdult][CreatureConstants.Dragon_Red_YoungAdult] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Red_Adult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Red_Adult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Red_Adult][CreatureConstants.Dragon_Red_Adult] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Red_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Red_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Red_MatureAdult][CreatureConstants.Dragon_Red_MatureAdult] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Red_Old][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Red_Old][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Red_Old][CreatureConstants.Dragon_Red_Old] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Red_VeryOld][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Red_VeryOld][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Red_VeryOld][CreatureConstants.Dragon_Red_VeryOld] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Red_Ancient][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Red_Ancient][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Red_Ancient][CreatureConstants.Dragon_Red_Ancient] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Red_Wyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Red_Wyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Red_Wyrm][CreatureConstants.Dragon_Red_Wyrm] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Red_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(22 * 12);
-            appearances[CreatureConstants.Dragon_Red_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(22 * 12);
-            appearances[CreatureConstants.Dragon_Red_GreatWyrm][CreatureConstants.Dragon_Red_GreatWyrm] = GetMultiplierFromAverage(22 * 12);
-            appearances[CreatureConstants.Dragon_Silver_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(2 * 12);
-            appearances[CreatureConstants.Dragon_Silver_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(2 * 12);
-            appearances[CreatureConstants.Dragon_Silver_Wyrmling][CreatureConstants.Dragon_Silver_Wyrmling] = GetMultiplierFromAverage(2 * 12);
-            appearances[CreatureConstants.Dragon_Silver_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Silver_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Silver_VeryYoung][CreatureConstants.Dragon_Silver_VeryYoung] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_Silver_Young][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Silver_Young][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Silver_Young][CreatureConstants.Dragon_Silver_Young] = GetMultiplierFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Silver_Juvenile][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Silver_Juvenile][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Silver_Juvenile][CreatureConstants.Dragon_Silver_Juvenile] = GetMultiplierFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Silver_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Silver_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Silver_YoungAdult][CreatureConstants.Dragon_Silver_YoungAdult] = GetMultiplierFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_Silver_Adult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Silver_Adult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Silver_Adult][CreatureConstants.Dragon_Silver_Adult] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Silver_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Silver_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Silver_MatureAdult][CreatureConstants.Dragon_Silver_MatureAdult] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Silver_Old][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Silver_Old][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Silver_Old][CreatureConstants.Dragon_Silver_Old] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Silver_VeryOld][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Silver_VeryOld][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Silver_VeryOld][CreatureConstants.Dragon_Silver_VeryOld] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_Silver_Ancient][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Silver_Ancient][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Silver_Ancient][CreatureConstants.Dragon_Silver_Ancient] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Silver_Wyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Silver_Wyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Silver_Wyrm][CreatureConstants.Dragon_Silver_Wyrm] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_Silver_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(22 * 12);
-            appearances[CreatureConstants.Dragon_Silver_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(22 * 12);
-            appearances[CreatureConstants.Dragon_Silver_GreatWyrm][CreatureConstants.Dragon_Silver_GreatWyrm] = GetMultiplierFromAverage(22 * 12);
-            appearances[CreatureConstants.Dragon_White_Wyrmling][GenderConstants.Female] = GetBaseFromAverage(12);
-            appearances[CreatureConstants.Dragon_White_Wyrmling][GenderConstants.Male] = GetBaseFromAverage(12);
-            appearances[CreatureConstants.Dragon_White_Wyrmling][CreatureConstants.Dragon_White_Wyrmling] = GetMultiplierFromAverage(12);
-            appearances[CreatureConstants.Dragon_White_VeryYoung][GenderConstants.Female] = GetBaseFromAverage(24);
-            appearances[CreatureConstants.Dragon_White_VeryYoung][GenderConstants.Male] = GetBaseFromAverage(24);
-            appearances[CreatureConstants.Dragon_White_VeryYoung][CreatureConstants.Dragon_White_VeryYoung] = GetMultiplierFromAverage(24);
-            appearances[CreatureConstants.Dragon_White_Young][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_White_Young][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_White_Young][CreatureConstants.Dragon_White_Young] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_White_Juvenile][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_White_Juvenile][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_White_Juvenile][CreatureConstants.Dragon_White_Juvenile] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Dragon_White_YoungAdult][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_White_YoungAdult][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_White_YoungAdult][CreatureConstants.Dragon_White_YoungAdult] = GetMultiplierFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_White_Adult][GenderConstants.Female] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_White_Adult][GenderConstants.Male] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_White_Adult][CreatureConstants.Dragon_White_Adult] = GetMultiplierFromAverage(7 * 12);
-            appearances[CreatureConstants.Dragon_White_MatureAdult][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_White_MatureAdult][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_White_MatureAdult][CreatureConstants.Dragon_White_MatureAdult] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_White_Old][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_White_Old][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_White_Old][CreatureConstants.Dragon_White_Old] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_White_VeryOld][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_White_VeryOld][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_White_VeryOld][CreatureConstants.Dragon_White_VeryOld] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_White_Ancient][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_White_Ancient][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_White_Ancient][CreatureConstants.Dragon_White_Ancient] = GetMultiplierFromAverage(12 * 12);
-            appearances[CreatureConstants.Dragon_White_Wyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_White_Wyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_White_Wyrm][CreatureConstants.Dragon_White_Wyrm] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_White_GreatWyrm][GenderConstants.Female] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_White_GreatWyrm][GenderConstants.Male] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Dragon_White_GreatWyrm][CreatureConstants.Dragon_White_GreatWyrm] = GetMultiplierFromAverage(16 * 12);
+            appearances[CreatureConstants.Dragon_Black_Wyrmling] = GetWeightedAppearances(
+                allSkin: new[] { "Thin, glossy black one-inch scales" },
+                allEyes: new[] { "Deep-socketed eyes" },
+                allOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. One inch of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
+            appearances[CreatureConstants.Dragon_Black_VeryYoung] = GetWeightedAppearances(
+                allSkin: new[] { "Thin, glossy black two-inch scales" },
+                allEyes: new[] { "Deep-socketed eyes" },
+                allOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Two inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
+            appearances[CreatureConstants.Dragon_Black_Young] = GetWeightedAppearances(
+                allSkin: new[] { "Thin, glossy black three-inch scales" },
+                allEyes: new[] { "Deep-socketed eyes" },
+                allOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Three inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
+            appearances[CreatureConstants.Dragon_Black_Juvenile] = GetWeightedAppearances(
+                allSkin: new[] { "Thin, glossy black four-inch scales" },
+                allEyes: new[] { "Deep-socketed eyes" },
+                allOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Four inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
+            appearances[CreatureConstants.Dragon_Black_YoungAdult] = GetWeightedAppearances(
+                allSkin: new[] { "Matte black five-inch scales" },
+                allEyes: new[] { "Deep-socketed eyes" },
+                allOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Five inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
+            appearances[CreatureConstants.Dragon_Black_Adult] = GetWeightedAppearances(
+                allSkin: new[] { "Matte black six-inch scales" },
+                allEyes: new[] { "Deep-socketed eyes" },
+                allOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Six inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
+            appearances[CreatureConstants.Dragon_Black_MatureAdult] = GetWeightedAppearances(
+                allSkin: new[] { "Matte black seven-inch scales" },
+                allEyes: new[] { "Deep-socketed eyes" },
+                allOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Seven inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
+            appearances[CreatureConstants.Dragon_Black_Old] = GetWeightedAppearances(
+                allSkin: new[] { "Matte black eight-inch scales" },
+                allEyes: new[] { "Deep-socketed eyes" },
+                allOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Eight inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
+            appearances[CreatureConstants.Dragon_Black_VeryOld] = GetWeightedAppearances(
+                allSkin: new[] { "Thick, dull black nine-inch scales" },
+                allEyes: new[] { "Deep-socketed eyes" },
+                allOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Nine inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
+            appearances[CreatureConstants.Dragon_Black_Ancient] = GetWeightedAppearances(
+                allSkin: new[] { "Thick, dull black ten-inch scales" },
+                allEyes: new[] { "Deep-socketed eyes" },
+                allOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Ten inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
+            appearances[CreatureConstants.Dragon_Black_Wyrm] = GetWeightedAppearances(
+                allSkin: new[] { "Thick, dull black eleven-inch scales" },
+                allEyes: new[] { "Deep-socketed eyes" },
+                allOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Eleven inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
+            appearances[CreatureConstants.Dragon_Black_GreatWyrm] = GetWeightedAppearances(
+                allSkin: new[] { "Thick, dull black twelve-inch scales" },
+                allEyes: new[] { "Deep-socketed eyes" },
+                allOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Twelve inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
+            appearances[CreatureConstants.Dragon_Blue_Wyrmling] = GetWeightedAppearances(
+                allSkin: new[] { "Thin, iridescent azure scales", "Thin, glossy, deep indigo scales" },
+                commonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has two points, with the primary slightly curved and reaching well forward, with the smaller secondary point behind. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed." },
+                uncommonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has one point, slightly curved and reaching well forward. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed.",
+                    "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has three points, with the primary slightly curved and reaching well forward, with the smaller second and third points behind in a line. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed."});
+            appearances[CreatureConstants.Dragon_Blue_VeryYoung] = GetWeightedAppearances(
+                allSkin: new[] { "Thin, iridescent azure scales", "Thin, glossy, deep indigo scales" },
+                commonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has two points, with the primary slightly curved and reaching well forward, with the smaller secondary point behind. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed." },
+                uncommonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has one point, slightly curved and reaching well forward. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed.",
+                    "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has three points, with the primary slightly curved and reaching well forward, with the smaller second and third points behind in a line. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed."});
+            appearances[CreatureConstants.Dragon_Blue_Young] = GetWeightedAppearances(
+                allSkin: new[] { "Thin, iridescent azure scales", "Thin, glossy, deep indigo scales" },
+                commonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has two points, with the primary slightly curved and reaching well forward, with the smaller secondary point behind. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed." },
+                uncommonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has one point, slightly curved and reaching well forward. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed.",
+                    "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has three points, with the primary slightly curved and reaching well forward, with the smaller second and third points behind in a line. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed."});
+            appearances[CreatureConstants.Dragon_Blue_Juvenile] = GetWeightedAppearances(
+                allSkin: new[] { "Thin, iridescent azure scales", "Thin, glossy, deep indigo scales" },
+                commonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has two points, with the primary slightly curved and reaching well forward, with the smaller secondary point behind. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed." },
+                uncommonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has one point, slightly curved and reaching well forward. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed.",
+                    "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has three points, with the primary slightly curved and reaching well forward, with the smaller second and third points behind in a line. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed."});
+            appearances[CreatureConstants.Dragon_Blue_YoungAdult] = GetWeightedAppearances(
+                allSkin: new[] { "Iridescent azure scales", "Glossy, deep indigo scales" },
+                commonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has two points, with the primary slightly curved and reaching well forward, with the smaller secondary point behind. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed." },
+                uncommonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has one point, slightly curved and reaching well forward. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed.",
+                    "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has three points, with the primary slightly curved and reaching well forward, with the smaller second and third points behind in a line. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed."});
+            appearances[CreatureConstants.Dragon_Blue_Adult] = GetWeightedAppearances(
+                allSkin: new[] { "Iridescent azure scales", "Glossy, deep indigo scales" },
+                commonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has two points, with the primary slightly curved and reaching well forward, with the smaller secondary point behind. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed." },
+                uncommonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has one point, slightly curved and reaching well forward. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed.",
+                    "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has three points, with the primary slightly curved and reaching well forward, with the smaller second and third points behind in a line. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed."});
+            appearances[CreatureConstants.Dragon_Blue_MatureAdult] = GetWeightedAppearances(
+                allSkin: new[] { "Iridescent azure scales", "Glossy, deep indigo scales" },
+                commonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has two points, with the primary slightly curved and reaching well forward, with the smaller secondary point behind. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed." },
+                uncommonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has one point, slightly curved and reaching well forward. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed.",
+                    "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has three points, with the primary slightly curved and reaching well forward, with the smaller second and third points behind in a line. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed."});
+            appearances[CreatureConstants.Dragon_Blue_Old] = GetWeightedAppearances(
+                allSkin: new[] { "Iridescent azure scales", "Glossy, deep indigo scales" },
+                commonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has two points, with the primary slightly curved and reaching well forward, with the smaller secondary point behind. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed." },
+                uncommonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has one point, slightly curved and reaching well forward. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed.",
+                    "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has three points, with the primary slightly curved and reaching well forward, with the smaller second and third points behind in a line. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed."});
+            appearances[CreatureConstants.Dragon_Blue_VeryOld] = GetWeightedAppearances(
+                allSkin: new[] { "Thick, iridescent azure scales", "Thick, glossy, deep indigo scales" },
+                commonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has two points, with the primary slightly curved and reaching well forward, with the smaller secondary point behind. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed." },
+                uncommonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has one point, slightly curved and reaching well forward. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed.",
+                    "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has three points, with the primary slightly curved and reaching well forward, with the smaller second and third points behind in a line. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed."});
+            appearances[CreatureConstants.Dragon_Blue_Ancient] = GetWeightedAppearances(
+                allSkin: new[] { "Thick, iridescent azure scales", "Thick, glossy, deep indigo scales" },
+                commonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has two points, with the primary slightly curved and reaching well forward, with the smaller secondary point behind. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed." },
+                uncommonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has one point, slightly curved and reaching well forward. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed.",
+                    "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has three points, with the primary slightly curved and reaching well forward, with the smaller second and third points behind in a line. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed."});
+            appearances[CreatureConstants.Dragon_Blue_Wyrm] = GetWeightedAppearances(
+                allSkin: new[] { "Thick, iridescent azure scales", "Thick, glossy, deep indigo scales" },
+                commonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has two points, with the primary slightly curved and reaching well forward, with the smaller secondary point behind. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed." },
+                uncommonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has one point, slightly curved and reaching well forward. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed.",
+                    "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has three points, with the primary slightly curved and reaching well forward, with the smaller second and third points behind in a line. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed."});
+            appearances[CreatureConstants.Dragon_Blue_GreatWyrm] = GetWeightedAppearances(
+                allSkin: new[] { "Thick, iridescent azure scales", "Thick, glossy, deep indigo scales" },
+                commonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has two points, with the primary slightly curved and reaching well forward, with the smaller secondary point behind. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed." },
+                uncommonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has one point, slightly curved and reaching well forward. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed.",
+                    "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has three points, with the primary slightly curved and reaching well forward, with the smaller second and third points behind in a line. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed."});
+            appearances[CreatureConstants.Dragon_Brass_Wyrmling] = GetWeightedAppearances(
+                allSkin: new[] { "Dull, mottled brown scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
+                allEyes: new[] { "Brass-colored eyes" },
+                allOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Sharp, bladed chin horns. Supple, expressive lips." });
+            appearances[CreatureConstants.Dragon_Brass_VeryYoung] = GetWeightedAppearances(
+                allSkin: new[] { "Dull, mottled brown scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
+                allEyes: new[] { "Brass-colored eyes" },
+                allOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Sharp, bladed chin horns. Supple, expressive lips." });
+            appearances[CreatureConstants.Dragon_Brass_Young] = GetWeightedAppearances(
+                allSkin: new[] { "Dull brown scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
+                allEyes: new[] { "Brass-colored eyes" },
+                allOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Sharp, bladed chin horns. Supple, expressive lips." });
+            appearances[CreatureConstants.Dragon_Brass_Juvenile] = GetWeightedAppearances(
+                allSkin: new[] { "Dull brown scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
+                allEyes: new[] { "Brass-colored eyes" },
+                allOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Sharp, bladed chin horns. Supple, expressive lips." });
+            appearances[CreatureConstants.Dragon_Brass_YoungAdult] = GetWeightedAppearances(
+                allSkin: new[] { "Brown scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
+                allEyes: new[] { "Brass-colored eyes with small pupils" },
+                allOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Very sharp, bladed chin horns. Supple, expressive lips." });
+            appearances[CreatureConstants.Dragon_Brass_Adult] = GetWeightedAppearances(
+                allSkin: new[] { "Brown scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
+                allEyes: new[] { "Brass-colored eyes with small pupils" },
+                allOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Very sharp, bladed chin horns. Supple, expressive lips." });
+            appearances[CreatureConstants.Dragon_Brass_MatureAdult] = GetWeightedAppearances(
+                allSkin: new[] { "Brass-colored scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
+                allEyes: new[] { "Brass-colored eyes with small pupils" },
+                allOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Very sharp, bladed chin horns. Supple, expressive lips." });
+            appearances[CreatureConstants.Dragon_Brass_Old] = GetWeightedAppearances(
+                allSkin: new[] { "Brass-colored scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
+                allEyes: new[] { "Brass-colored eyes with very small pupils" },
+                allOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Very sharp, bladed chin horns. Supple, expressive lips." });
+            appearances[CreatureConstants.Dragon_Brass_VeryOld] = GetWeightedAppearances(
+                allSkin: new[] { "Warm, brass-colored scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
+                allEyes: new[] { "Brass-colored eyes with very small pupils" },
+                allOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Extremely sharp, bladed chin horns. Supple, expressive lips." });
+            appearances[CreatureConstants.Dragon_Brass_Ancient] = GetWeightedAppearances(
+                allSkin: new[] { "Warm, brass-colored scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
+                allEyes: new[] { "Brass-colored eyes with very small pupils" },
+                allOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Extremely sharp, bladed chin horns. Supple, expressive lips." });
+            appearances[CreatureConstants.Dragon_Brass_Wyrm] = GetWeightedAppearances(
+                allSkin: new[] { "Brass-colored scales with a warm, burnished appearance. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
+                allEyes: new[] { "Eyes look like pupil-less, molten metal orbs" },
+                allOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Extremely sharp, bladed chin horns. Supple, expressive lips." });
+            appearances[CreatureConstants.Dragon_Brass_GreatWyrm] = GetWeightedAppearances(
+                allSkin: new[] { "Brass-colored scales with a warm, burnished appearance. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
+                allEyes: new[] { "Eyes look like pupil-less, molten metal orbs" },
+                allOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Extremely sharp, bladed chin horns. Supple, expressive lips." });
+            appearances[CreatureConstants.Dragon_Bronze_Wyrmling] = GetWeightedAppearances(
+                allSkin: new[] { "Smooth, flat, yellow scales tinged with green, showing only a hint of bronze" },
+                allEyes: new[] { "Green eyes" },
+                allOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
+            appearances[CreatureConstants.Dragon_Bronze_VeryYoung] = GetWeightedAppearances(
+                allSkin: new[] { "Smooth, flat, yellow scales tinged with green and bronze" },
+                allEyes: new[] { "Green eyes" },
+                allOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
+            appearances[CreatureConstants.Dragon_Bronze_Young] = GetWeightedAppearances(
+                allSkin: new[] { "Smooth, flat, yellow scales tinged with bronze" },
+                allEyes: new[] { "Green eyes" },
+                allOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
+            appearances[CreatureConstants.Dragon_Bronze_Juvenile] = GetWeightedAppearances(
+                allSkin: new[] { "Smooth, flat, yellow scales mottled with bronze" },
+                allEyes: new[] { "Green eyes with somewhat-faded pupils" },
+                allOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
+            appearances[CreatureConstants.Dragon_Bronze_YoungAdult] = GetWeightedAppearances(
+                allSkin: new[] { "Rich, bronze scales" },
+                allEyes: new[] { "Green eyes with somewhat-faded pupils" },
+                allOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
+            appearances[CreatureConstants.Dragon_Bronze_Adult] = GetWeightedAppearances(
+                allSkin: new[] { "Rich, bronze scales" },
+                allEyes: new[] { "Green eyes with somewhat-faded pupils" },
+                allOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
+            appearances[CreatureConstants.Dragon_Bronze_MatureAdult] = GetWeightedAppearances(
+                allSkin: new[] { "Rich, bronze scales" },
+                allEyes: new[] { "Green eyes with faded pupils" },
+                allOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Smaller horns have a secondary point. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
+            appearances[CreatureConstants.Dragon_Bronze_Old] = GetWeightedAppearances(
+                allSkin: new[] { "Rich, bronze scales" },
+                allEyes: new[] { "Green eyes with faded pupils" },
+                allOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Smaller horns have a secondary point. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
+            appearances[CreatureConstants.Dragon_Bronze_VeryOld] = GetWeightedAppearances(
+                allSkin: new[] { "Rich, bronze scales with a blue-black tint to the edges" },
+                allEyes: new[] { "Green eyes with faded pupils" },
+                allOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Smaller horns have a secondary point. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
+            appearances[CreatureConstants.Dragon_Bronze_Ancient] = GetWeightedAppearances(
+                allSkin: new[] { "Rich, bronze scales with a blue-black tint to the edges" },
+                allEyes: new[] { "Eyes have no pupils, and resemble glowing green orbs" },
+                allOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Smaller horns have a secondary point. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
+            appearances[CreatureConstants.Dragon_Bronze_Wyrm] = GetWeightedAppearances(
+                allSkin: new[] { "Rich, bronze scales with a blue-black tint to the edges" },
+                allEyes: new[] { "Eyes have no pupils, and resemble glowing green orbs" },
+                allOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Smaller horns have a secondary point. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
+            appearances[CreatureConstants.Dragon_Bronze_GreatWyrm] = GetWeightedAppearances(
+                allSkin: new[] { "Rich, bronze scales with a blue-black tint to the edges" },
+                allEyes: new[] { "Eyes have no pupils, and resemble glowing green orbs" },
+                allOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Smaller horns have a secondary point. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
+            appearances[CreatureConstants.Dragon_Copper_Wyrmling] = GetWeightedAppearances(
+                allSkin: new[] { "Ruddy brown scales with a metallic tint. Green and red mottling along the trailing edges of the wings." },
+                allEyes: new[] { "Turquoise eyes" },
+                allOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. One layer of triangular blades point down from the chin." });
+            appearances[CreatureConstants.Dragon_Copper_VeryYoung] = GetWeightedAppearances(
+                allSkin: new[] { "Ruddy brown scales with a metallic tint. Green and red mottling along the trailing edges of the wings." },
+                allEyes: new[] { "Turquoise eyes" },
+                allOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. One layer of triangular blades point down from the chin." });
+            appearances[CreatureConstants.Dragon_Copper_Young] = GetWeightedAppearances(
+                allSkin: new[] { "Ruddy brown scales with a metallic tint. Green and red mottling along the trailing edges of the wings." },
+                allEyes: new[] { "Turquoise eyes" },
+                allOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. One layer of triangular blades point down from the chin." });
+            appearances[CreatureConstants.Dragon_Copper_Juvenile] = GetWeightedAppearances(
+                allSkin: new[] { "Ruddy brown scales with a metallic tint. Green and red mottling along the trailing edges of the wings." },
+                allEyes: new[] { "Turquoise eyes with somewhat-faded pupils" },
+                allOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. One layer of triangular blades point down from the chin." });
+            appearances[CreatureConstants.Dragon_Copper_YoungAdult] = GetWeightedAppearances(
+                allSkin: new[] { "Coppery scales with a soft, warm gloss. Green and red mottling along the trailing edges of the wings." },
+                allEyes: new[] { "Turquoise eyes with somewhat-faded pupils" },
+                allOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Two layers of large, triangular blades point down from the chin." });
+            appearances[CreatureConstants.Dragon_Copper_Adult] = GetWeightedAppearances(
+                allSkin: new[] { "Coppery scales with a soft, warm gloss. Green and red mottling along the trailing edges of the wings." },
+                allEyes: new[] { "Turquoise eyes with somewhat-faded pupils" },
+                allOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Two layers of large, triangular blades point down from the chin." });
+            appearances[CreatureConstants.Dragon_Copper_MatureAdult] = GetWeightedAppearances(
+                allSkin: new[] { "Coppery scales with a soft, warm gloss. Green and red mottling along the trailing edges of the wings." },
+                allEyes: new[] { "Turquoise eyes with faded pupils" },
+                allOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Two layers of large, triangular blades point down from the chin." });
+            appearances[CreatureConstants.Dragon_Copper_Old] = GetWeightedAppearances(
+                allSkin: new[] { "Coppery scales with a soft, warm gloss. Green and red mottling along the trailing edges of the wings." },
+                allEyes: new[] { "Turquoise eyes with faded pupils" },
+                allOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Two layers of large, triangular blades point down from the chin." });
+            appearances[CreatureConstants.Dragon_Copper_VeryOld] = GetWeightedAppearances(
+                allSkin: new[] { "Coppery scales with a soft, warm gloss and a green tint. Green and red mottling along the trailing edges of the wings." },
+                allEyes: new[] { "Turquoise eyes with faded pupils" },
+                allOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Three layers of huge, triangular blades point down from the chin." });
+            appearances[CreatureConstants.Dragon_Copper_Ancient] = GetWeightedAppearances(
+                allSkin: new[] { "Coppery scales with a soft, warm gloss and a green tint. Green and red mottling along the trailing edges of the wings." },
+                allEyes: new[] { "Turquoise eyes with very faded pupils" },
+                allOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Three layers of huge, triangular blades point down from the chin." });
+            appearances[CreatureConstants.Dragon_Copper_Wyrm] = GetWeightedAppearances(
+                allSkin: new[] { "Coppery scales with a soft, warm gloss and a green tint. Green and red mottling along the trailing edges of the wings." },
+                allEyes: new[] { "Turquoise eyes with very faded pupils" },
+                allOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Three layers of huge, triangular blades point down from the chin." });
+            appearances[CreatureConstants.Dragon_Copper_GreatWyrm] = GetWeightedAppearances(
+                allSkin: new[] { "Coppery scales with a soft, warm gloss and a green tint. Green and red mottling along the trailing edges of the wings." },
+                allEyes: new[] { "Eyes have no pupils, and resemble glowing turquoise orbs" },
+                allOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Three layers of huge, triangular blades point down from the chin." });
+            appearances[CreatureConstants.Dragon_Gold_Wyrmling] = GetWeightedAppearances(
+                allSkin: new[] { "Dark yellow scales with golden metallic flecks" },
+                allEyes: new[] { "Slanted, very narrow golden eyes" },
+                allOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills." });
+            appearances[CreatureConstants.Dragon_Gold_VeryYoung] = GetWeightedAppearances(
+                allSkin: new[] { "Dark yellow scales with large golden metallic flecks" },
+                allEyes: new[] { "Slanted, very narrow golden eyes" },
+                allOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Eight whiskers, four on upper jaw and four below, around the mouth that look like the barbels of a catfish." });
+            appearances[CreatureConstants.Dragon_Gold_Young] = GetWeightedAppearances(
+                allSkin: new[] { "Dark yellow scales mottled with metallic gold" },
+                allEyes: new[] { "Slanted, very narrow golden eyes" },
+                allOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Eight whiskers, four on upper jaw and four below, around the mouth that look like the barbels of a catfish." });
+            appearances[CreatureConstants.Dragon_Gold_Juvenile] = GetWeightedAppearances(
+                allSkin: new[] { "Metallic golden scales with large dark yellow flecks" },
+                allEyes: new[] { "Slanted, very narrow golden eyes with somewhat-faded pupils" },
+                allOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Eight whiskers, four on upper jaw and four below, around the mouth that look like the barbels of a catfish." });
+            appearances[CreatureConstants.Dragon_Gold_YoungAdult] = GetWeightedAppearances(
+                allSkin: new[] { "Metallic golden scales with dark yellow flecks" },
+                allEyes: new[] { "Slanted, very narrow golden eyes with somewhat-faded pupils" },
+                allOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Eight whiskers, four on upper jaw and four below, around the mouth that look like the barbels of a catfish." });
+            appearances[CreatureConstants.Dragon_Gold_Adult] = GetWeightedAppearances(
+                allSkin: new[] { "Golden metallic scales" },
+                allEyes: new[] { "Slanted, very narrow golden eyes with somewhat-faded pupils" },
+                allOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Ten whiskers, five on upper jaw and five below, around the mouth that look like the barbels of a catfish." });
+            appearances[CreatureConstants.Dragon_Gold_MatureAdult] = GetWeightedAppearances(
+                allSkin: new[] { "Golden metallic scales" },
+                allEyes: new[] { "Slanted, very narrow golden eyes with faded pupils" },
+                allOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Ten whiskers, five on upper jaw and five below, around the mouth that look like the barbels of a catfish." });
+            appearances[CreatureConstants.Dragon_Gold_Old] = GetWeightedAppearances(
+                allSkin: new[] { "Golden metallic scales" },
+                allEyes: new[] { "Slanted, very narrow golden eyes with faded pupils" },
+                allOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Ten whiskers, five on upper jaw and five below, around the mouth that look like the barbels of a catfish." });
+            appearances[CreatureConstants.Dragon_Gold_VeryOld] = GetWeightedAppearances(
+                allSkin: new[] { "Golden metallic scales" },
+                allEyes: new[] { "Slanted, very narrow golden eyes with faded pupils" },
+                allOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Ten whiskers, five on upper jaw and five below, around the mouth that look like the barbels of a catfish." });
+            appearances[CreatureConstants.Dragon_Gold_Ancient] = GetWeightedAppearances(
+                allSkin: new[] { "Golden metallic scales" },
+                allEyes: new[] { "Slanted, very narrow eyes that lack pupils, resembling pools of molten gold." },
+                allOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Twelve whiskers, six on upper jaw and six below, around the mouth that look like the barbels of a catfish." });
+            appearances[CreatureConstants.Dragon_Gold_Wyrm] = GetWeightedAppearances(
+                allSkin: new[] { "Golden metallic scales" },
+                allEyes: new[] { "Slanted, very narrow eyes that lack pupils, resembling pools of molten gold." },
+                allOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Twelve whiskers, six on upper jaw and six below, around the mouth that look like the barbels of a catfish." });
+            appearances[CreatureConstants.Dragon_Gold_GreatWyrm] = GetWeightedAppearances(
+                allSkin: new[] { "Golden metallic scales" },
+                allEyes: new[] { "Slanted, very narrow eyes that lack pupils, resembling pools of molten gold." },
+                allOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Twelve whiskers, six on upper jaw and six below, around the mouth that look like the barbels of a catfish." });
+            appearances[CreatureConstants.Dragon_Green_Wyrmling] = GetWeightedAppearances(
+                allSkin: new[] { "Thin, very small, deep black-green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
+                allEyes: new[] { "Green eyes" },
+                allOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
+            appearances[CreatureConstants.Dragon_Green_VeryYoung] = GetWeightedAppearances(
+                allSkin: new[] { "Thin, very small, black-green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
+                allEyes: new[] { "Green eyes" },
+                allOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
+            appearances[CreatureConstants.Dragon_Green_Young] = GetWeightedAppearances(
+                allSkin: new[] { "Thin, small, forest green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
+                allEyes: new[] { "Green eyes" },
+                allOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
+            appearances[CreatureConstants.Dragon_Green_Juvenile] = GetWeightedAppearances(
+                allSkin: new[] { "Thin, small, forest green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
+                allEyes: new[] { "Green eyes" },
+                allOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
+            appearances[CreatureConstants.Dragon_Green_YoungAdult] = GetWeightedAppearances(
+                allSkin: new[] { "Forest green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
+                allEyes: new[] { "Green eyes" },
+                allOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
+            appearances[CreatureConstants.Dragon_Green_Adult] = GetWeightedAppearances(
+                allSkin: new[] { "Forest green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
+                allEyes: new[] { "Green eyes" },
+                allOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
+            appearances[CreatureConstants.Dragon_Green_MatureAdult] = GetWeightedAppearances(
+                allSkin: new[] { "Large, emerald scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
+                allEyes: new[] { "Green eyes" },
+                allOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
+            appearances[CreatureConstants.Dragon_Green_Old] = GetWeightedAppearances(
+                allSkin: new[] { "Large, emerald scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
+                allEyes: new[] { "Green eyes" },
+                allOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
+            appearances[CreatureConstants.Dragon_Green_VeryOld] = GetWeightedAppearances(
+                allSkin: new[] { "Thick, large, emerald scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
+                allEyes: new[] { "Green eyes" },
+                allOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
+            appearances[CreatureConstants.Dragon_Green_Ancient] = GetWeightedAppearances(
+                allSkin: new[] { "Thick, huge, olive-green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
+                allEyes: new[] { "Green eyes" },
+                allOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
+            appearances[CreatureConstants.Dragon_Green_Wyrm] = GetWeightedAppearances(
+                allSkin: new[] { "Thick, huge, olive-green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
+                allEyes: new[] { "Green eyes" },
+                allOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
+            appearances[CreatureConstants.Dragon_Green_GreatWyrm] = GetWeightedAppearances(
+                allSkin: new[] { "Thick, huge, olive-green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
+                allEyes: new[] { "Green eyes" },
+                allOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
+            appearances[CreatureConstants.Dragon_Red_Wyrmling] = GetWeightedAppearances(
+                allSkin: new[] { "Small, bright, glossy, scarlet scales" },
+                allEyes: new[] { "Red eyes" },
+                allOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, faded black sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears." });
+            appearances[CreatureConstants.Dragon_Red_VeryYoung] = GetWeightedAppearances(
+                allSkin: new[] { "Small, glossy, scarlet scales" },
+                allEyes: new[] { "Red eyes" },
+                allOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, faded black sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears." });
+            appearances[CreatureConstants.Dragon_Red_Young] = GetWeightedAppearances(
+                allSkin: new[] { "Small scarlet scales" },
+                allEyes: new[] { "Red eyes" },
+                allOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, faded black sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears." });
+            appearances[CreatureConstants.Dragon_Red_Juvenile] = GetWeightedAppearances(
+                allSkin: new[] { "Smooth, dull, deep red scales" },
+                allEyes: new[] { "Red eyes with somewhat-faded pupils" },
+                allOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, faded black sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears." });
+            appearances[CreatureConstants.Dragon_Red_YoungAdult] = GetWeightedAppearances(
+                allSkin: new[] { "Smooth, dull, deep red scales" },
+                allEyes: new[] { "Red eyes with somewhat-faded pupils" },
+                allOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, faded black sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears." });
+            appearances[CreatureConstants.Dragon_Red_Adult] = GetWeightedAppearances(
+                allSkin: new[] { "Smooth, dull, deep red scales" },
+                allEyes: new[] { "Red eyes with somewhat-faded pupils" },
+                allOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, faded black sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                    "Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears." });
+            appearances[CreatureConstants.Dragon_Red_MatureAdult] = GetWeightedAppearances(
+                allSkin: new[] { "Smooth, dull, deep red scales" },
+                allEyes: new[] { "Red eyes with faded pupils" },
+                allOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, faded black sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns." });
+            appearances[CreatureConstants.Dragon_Red_Old] = GetWeightedAppearances(
+                allSkin: new[] { "Large, thick red scales" },
+                allEyes: new[] { "Red eyes with faded pupils" },
+                allOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, faded black sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns." });
+            appearances[CreatureConstants.Dragon_Red_VeryOld] = GetWeightedAppearances(
+                allSkin: new[] { "Large, thick red scales" },
+                allEyes: new[] { "Red eyes with faded pupils" },
+                allOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, faded black sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns." });
+            appearances[CreatureConstants.Dragon_Red_Ancient] = GetWeightedAppearances(
+                allSkin: new[] { "Large, thick red scales" },
+                allEyes: new[] { "Red eyes with heavily-faded pupils" },
+                allOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, faded black sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns." });
+            appearances[CreatureConstants.Dragon_Red_Wyrm] = GetWeightedAppearances(
+                allSkin: new[] { "Large, thick red scales" },
+                allEyes: new[] { "Red eyes with heavily-faded pupils" },
+                allOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, faded black sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns." });
+            appearances[CreatureConstants.Dragon_Red_GreatWyrm] = GetWeightedAppearances(
+                allSkin: new[] { "Large, thick red scales" },
+                allEyes: new[] { "Eyes with no pupils, resembling molten lava orbs" },
+                allOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, faded black sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                    "Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns." });
+            appearances[CreatureConstants.Dragon_Silver_Wyrmling] = GetWeightedAppearances(
+                allSkin: new[] { "Blue-gray scales with silver highlights" },
+                allEyes: new[] { "Silver eyes" },
+                allOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
+            appearances[CreatureConstants.Dragon_Silver_VeryYoung] = GetWeightedAppearances(
+                allSkin: new[] { "Blue-gray scales with silver highlights" },
+                allEyes: new[] { "Silver eyes" },
+                allOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
+            appearances[CreatureConstants.Dragon_Silver_Young] = GetWeightedAppearances(
+                allSkin: new[] { "Gray scales with silver highlights" },
+                allEyes: new[] { "Silver eyes" },
+                allOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
+            appearances[CreatureConstants.Dragon_Silver_Juvenile] = GetWeightedAppearances(
+                allSkin: new[] { "Gray scales mottled with metallic silver" },
+                allEyes: new[] { "Silver eyes with somewhat-faded pupils" },
+                allOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
+            appearances[CreatureConstants.Dragon_Silver_YoungAdult] = GetWeightedAppearances(
+                allSkin: new[] { "Silver scales" },
+                allEyes: new[] { "Silver eyes with somewhat-faded pupils" },
+                allOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
+            appearances[CreatureConstants.Dragon_Silver_Adult] = GetWeightedAppearances(
+                allSkin: new[] { "Silver scales" },
+                allEyes: new[] { "Silver eyes with somewhat-faded pupils" },
+                allOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
+            appearances[CreatureConstants.Dragon_Silver_MatureAdult] = GetWeightedAppearances(
+                allSkin: new[] { "Silver scales" },
+                allEyes: new[] { "Silver eyes with faded pupils" },
+                allOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
+            appearances[CreatureConstants.Dragon_Silver_Old] = GetWeightedAppearances(
+                allSkin: new[] { "Bright silver scales" },
+                allEyes: new[] { "Silver eyes with faded pupils" },
+                allOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
+            appearances[CreatureConstants.Dragon_Silver_VeryOld] = GetWeightedAppearances(
+                allSkin: new[] { "Bright silver scales" },
+                allEyes: new[] { "Silver eyes with faded pupils" },
+                allOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
+            appearances[CreatureConstants.Dragon_Silver_Ancient] = GetWeightedAppearances(
+                allSkin: new[] { "Bright silver scales" },
+                allEyes: new[] { "Silver eyes with heavily-faded pupils" },
+                allOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
+            appearances[CreatureConstants.Dragon_Silver_Wyrm] = GetWeightedAppearances(
+                allSkin: new[] { "Bright silver scales" },
+                allEyes: new[] { "Silver eyes with heavily-faded pupils" },
+                allOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
+            appearances[CreatureConstants.Dragon_Silver_GreatWyrm] = GetWeightedAppearances(
+                allSkin: new[] { "Bright silver scales" },
+                allEyes: new[] { "Eyes without pupils, resembling orbs of mercury" },
+                allOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
+            appearances[CreatureConstants.Dragon_White_Wyrmling] = GetWeightedAppearances(
+                allSkin: new[] { "Glistening pure-white scales. Trailing edge of the wings show a pink tinge",
+                    "Glistening pure-white scales. Trailing edge of the wings show a blue tinge" },
+                allEyes: new[] { "Gray eyes" },
+                allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
+            appearances[CreatureConstants.Dragon_White_VeryYoung] = GetWeightedAppearances(
+                allSkin: new[] { "Glistening pure-white scales. Trailing edge of the wings show a pink tinge",
+                    "Glistening pure-white scales. Trailing edge of the wings show a blue tinge" },
+                allEyes: new[] { "Gray eyes" },
+                allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
+            appearances[CreatureConstants.Dragon_White_Young] = GetWeightedAppearances(
+                allSkin: new[] { "Glistening pure-white scales. Trailing edge of the wings show a pink tinge",
+                    "Glistening pure-white scales. Trailing edge of the wings show a blue tinge" },
+                allEyes: new[] { "Gray eyes" },
+                allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
+            appearances[CreatureConstants.Dragon_White_Juvenile] = GetWeightedAppearances(
+                allSkin: new[] { "Glistening pure-white scales. Trailing edge of the wings show a pink tinge",
+                    "Glistening pure-white scales. Trailing edge of the wings show a blue tinge" },
+                allEyes: new[] { "Gray eyes" },
+                allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
+            appearances[CreatureConstants.Dragon_White_YoungAdult] = GetWeightedAppearances(
+                allSkin: new[] { "Glistening pure-white scales. Trailing edge of the wings show a pink tinge",
+                    "Glistening pure-white scales. Trailing edge of the wings show a blue tinge" },
+                allEyes: new[] { "Gray eyes" },
+                allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
+            appearances[CreatureConstants.Dragon_White_Adult] = GetWeightedAppearances(
+                allSkin: new[] { "Pure-white scales. Trailing edge of the wings show a pink tinge",
+                    "Pure-white scales. Trailing edge of the wings show a blue tinge" },
+                allEyes: new[] { "Gray eyes" },
+                allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
+            appearances[CreatureConstants.Dragon_White_MatureAdult] = GetWeightedAppearances(
+                allSkin: new[] { "Pure-white scales. Trailing edge of the wings show a pink tinge",
+                    "Pure-white scales. Trailing edge of the wings show a blue tinge" },
+                allEyes: new[] { "Gray eyes" },
+                allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
+            appearances[CreatureConstants.Dragon_White_Old] = GetWeightedAppearances(
+                allSkin: new[] { "Pure-white scales. Trailing edge of the wings show a pink tinge",
+                    "Pure-white scales. Trailing edge of the wings show a blue tinge" },
+                allEyes: new[] { "Gray eyes" },
+                allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
+            appearances[CreatureConstants.Dragon_White_VeryOld] = GetWeightedAppearances(
+                allSkin: new[] { "White scales with scales of pale blue and light gray mixed in. Trailing edge of the wings show a pink tinge",
+                    "White scales with scales of pale blue and light gray mixed in. Trailing edge of the wings show a blue tinge" },
+                allEyes: new[] { "Gray eyes" },
+                allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
+            appearances[CreatureConstants.Dragon_White_Ancient] = GetWeightedAppearances(
+                allSkin: new[] { "White scales with scales of pale blue and light gray mixed in. Trailing edge of the wings show a pink tinge",
+                    "White scales with scales of pale blue and light gray mixed in. Trailing edge of the wings show a blue tinge" },
+                allEyes: new[] { "Gray eyes" },
+                allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
+            appearances[CreatureConstants.Dragon_White_Wyrm] = GetWeightedAppearances(
+                allSkin: new[] { "White scales with scales of pale blue and light gray mixed in. Trailing edge of the wings show a pink tinge",
+                    "White scales with scales of pale blue and light gray mixed in. Trailing edge of the wings show a blue tinge" },
+                allEyes: new[] { "Gray eyes" },
+                allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
+            appearances[CreatureConstants.Dragon_White_GreatWyrm] = GetWeightedAppearances(
+                allSkin: new[] { "White scales with scales of pale blue and light gray mixed in. Trailing edge of the wings show a pink tinge",
+                    "White scales with scales of pale blue and light gray mixed in. Trailing edge of the wings show a blue tinge" },
+                allEyes: new[] { "Gray eyes" },
+                allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
             //Source: https://forgottenrealms.fandom.com/wiki/Dragon_turtle
-            appearances[CreatureConstants.DragonTurtle][GenderConstants.Female] = "0";
-            appearances[CreatureConstants.DragonTurtle][GenderConstants.Male] = "0";
-            appearances[CreatureConstants.DragonTurtle][CreatureConstants.DragonTurtle] = "0";
+            appearances[CreatureConstants.DragonTurtle] = new[] { "Green skin, with a golden crest down the center of the head." };
             //Source: https://forgottenrealms.fandom.com/wiki/Dragonne
-            appearances[CreatureConstants.Dragonne][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Dragonne][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Dragonne][CreatureConstants.Dragonne] = GetMultiplierFromAverage(5 * 12);
+            appearances[CreatureConstants.Dragonne] = GetWeightedAppearances(
+                allSkin: new[] { "Brassy scales" },
+                allHair: new[] { "Thick, coarse mane encircling the face. Large feathery eyebrows" },
+                commonEyes: new[] { "Big brass-colored eyes" },
+                uncommonEyes: new[] { "Big bronze-colored eyes", "Big copper-colored eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Dretch
-            appearances[CreatureConstants.Dretch][GenderConstants.Agender] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dretch][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dretch][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Dretch][CreatureConstants.Dretch] = GetMultiplierFromAverage(4 * 12);
-            //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/drider-species
-            //https://www.5esrd.com/database/race/drider/ (for height)
-            appearances[CreatureConstants.Drider][GenderConstants.Agender] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Drider][CreatureConstants.Drider] = GetMultiplierFromAverage(7 * 12);
+            appearances[CreatureConstants.Dretch] = new[] { "Pale, rubbery, white skin", "Pale, rubbery, beige skin", "Pale, rubbery, blue skin" };
+            //Source: https://forgottenrealms.fandom.com/wiki/Drider
+            appearances[CreatureConstants.Drider] = GetWeightedAppearances(
+                allSkin: new[] { "TODO Drow" },
+                allHair: new[] { "TODO Drow" },
+                allEyes: new[] { "TODO Drow" });
             //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/dryad-species
-            appearances[CreatureConstants.Dryad][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Dryad][CreatureConstants.Dryad] = GetMultiplierFromAverage(5 * 12);
+            appearances[CreatureConstants.Dryad] = new[] { "Delicate features seemingly made from soft wood. Hair looks as if made of leaves and foliage that changes color with the seasons." };
             //Source: https://www.d20srd.org/srd/description.htm#vitalStatistics
             appearances[CreatureConstants.Dwarf_Deep][GenderConstants.Female] = "3*12+7";
             appearances[CreatureConstants.Dwarf_Deep][GenderConstants.Male] = "3*12+9";
