@@ -697,41 +697,60 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Devourer
             appearances[CreatureConstants.Devourer] = new[] { "Tall, gaunt skeletal figure with a smaller figure trapped within its rib cage" };
             //Source: https://forgottenrealms.fandom.com/wiki/Digester
-            appearances[CreatureConstants.Digester][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Digester][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Digester][CreatureConstants.Digester] = GetMultiplierFromAverage(5 * 12);
-            //Scaled down from Pack Lord, x2 based on length
-            appearances[CreatureConstants.DisplacerBeast][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.DisplacerBeast][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.DisplacerBeast][CreatureConstants.DisplacerBeast] = GetMultiplierFromAverage(5 * 12);
+            appearances[CreatureConstants.Digester] = new[] { "Gray, pebbly skin with dagger-like markings. Two powerful hind legs. Long tail. Head is narrow with a sucking mouth, sporting a tube-like orifice on the forehead." };
             //Source: https://forgottenrealms.fandom.com/wiki/Displacer_beast
-            appearances[CreatureConstants.DisplacerBeast_PackLord][GenderConstants.Female] = GetBaseFromAverage(10 * 12);
-            appearances[CreatureConstants.DisplacerBeast_PackLord][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
-            appearances[CreatureConstants.DisplacerBeast_PackLord][CreatureConstants.DisplacerBeast_PackLord] = GetMultiplierFromAverage(10 * 12);
+            appearances[CreatureConstants.DisplacerBeast] = GetWeightedAppearances(
+                commonHair: new[] { "Blue fur", "Blue-black fur", "Black fur" },
+                uncommonHair: new[] { "Dark blue fur", "Purple fur" },
+                allEyes: new[] { "Striking, glowing emerald-green eyes" },
+                commonOther: new[] { "Panther-like with six legs and a pair of tentacles sprouting from their shoulders. Tentacles end in pads with sharp, horny, brownish-yellow edges" },
+                uncommonOther: new[] { "Panther-like with six legs and a pair of tentacles sprouting from their shoulders. Tentacles end in pads with sharp, horny, brownish-yellow edges. Emaciated-looking." });
+            appearances[CreatureConstants.DisplacerBeast_PackLord] = GetWeightedAppearances(
+                commonHair: new[] { "Black fur", "Ebony fur" },
+                uncommonHair: new[] { "Dark blue fur", "Purple fur", "Blue fur", "Blue-black fur" },
+                allEyes: new[] { "Striking, glowing emerald-green eyes" },
+                commonOther: new[] { "Panther-like with six legs and a pair of tentacles sprouting from their shoulders. Tentacles end in pads with sharp, horny, brownish-yellow edges" },
+                uncommonOther: new[] { "Panther-like with six legs and a pair of tentacles sprouting from their shoulders. Tentacles end in pads with sharp, horny, brownish-yellow edges. Emaciated-looking." });
             //Source: https://forgottenrealms.fandom.com/wiki/Djinni
-            appearances[CreatureConstants.Djinni][GenderConstants.Agender] = GetBaseFromAverage(10 * 12 + 6);
-            appearances[CreatureConstants.Djinni][GenderConstants.Female] = GetBaseFromAverage(10 * 12 + 6);
-            appearances[CreatureConstants.Djinni][GenderConstants.Male] = GetBaseFromAverage(10 * 12 + 6);
-            appearances[CreatureConstants.Djinni][CreatureConstants.Djinni] = GetMultiplierFromAverage(10 * 12 + 6);
+            appearances[CreatureConstants.Djinni] = GetWeightedAppearances(
+                commonSkin: new[] { "Pale blue skin", "Olive-brown skin", "Blue skin", "Dark blue skin" },
+                uncommonSkin: new[] { "Dark tan skin" },
+                rareSkin: new[] { "Purple skin", "Dark purple skin", "Beige skin", "Dark red skin" },
+                allHair: new[] { "Bald", "Black hair", "TODO Human hair" },
+                commonEyes: new[] { "Brown eyes" },
+                rareEyes: new[] { "Blue eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Noble_djinni
-            appearances[CreatureConstants.Djinni_Noble][GenderConstants.Agender] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Djinni_Noble][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Djinni_Noble][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Djinni_Noble][CreatureConstants.Djinni_Noble] = GetMultiplierFromAverage(12 * 12);
-            //Source: https://www.dimensions.com/search?query=dog average of various dogs in the 20-50 pound weight range, including coyote
-            appearances[CreatureConstants.Dog][GenderConstants.Female] = GetBaseFromRange(16, 25);
-            appearances[CreatureConstants.Dog][GenderConstants.Male] = GetBaseFromRange(16, 25);
-            appearances[CreatureConstants.Dog][CreatureConstants.Dog] = GetMultiplierFromRange(16, 25);
-            //Source: https://www.dimensions.com/element/saint-bernard-dog M:28-30,F:26-28
-            //https://www.dimensions.com/element/siberian-husky 20-24
-            //https://www.dimensions.com/element/dogs-collie M:22-24,F:20-22
-            appearances[CreatureConstants.Dog_Riding][GenderConstants.Female] = GetBaseFromRange(20, 28);
-            appearances[CreatureConstants.Dog_Riding][GenderConstants.Male] = GetBaseFromRange(22, 30);
-            appearances[CreatureConstants.Dog_Riding][CreatureConstants.Dog_Riding] = GetMultiplierFromRange(22, 30);
-            //Source: https://www.dimensions.com/element/donkey-equus-africanus-asinus
-            appearances[CreatureConstants.Donkey][GenderConstants.Female] = GetBaseFromRange(36, 48);
-            appearances[CreatureConstants.Donkey][GenderConstants.Male] = GetBaseFromRange(36, 48);
-            appearances[CreatureConstants.Donkey][CreatureConstants.Donkey] = GetMultiplierFromRange(36, 48);
+            appearances[CreatureConstants.Djinni_Noble] = GetWeightedAppearances(
+                commonSkin: new[] { "Pale blue skin", "Fair brown skin", "Fair Blue skin" },
+                uncommonSkin: new[] { "Fair tan skin" },
+                rareSkin: new[] { "Fair purple skin", "FAir beige skin", "Fair red skin" },
+                allHair: new[] { "Bald", "Black hair", "TODO Human hair" },
+                commonEyes: new[] { "Brown eyes" },
+                rareEyes: new[] { "Blue eyes" });
+            //Source: https://g.co/kgs/q7esXM
+            appearances[CreatureConstants.Dog] = new[] { "Bulldog", "French Bulldog", "Beagle", "Standard Poodle", "Chihuahua", "Dachsund", "Bichon Frise", "Maltese",
+                "Chow Chow", "English Cocker Spaniel" , "Pomeranian", "Yorkshire Terrier", "Cavalier King Charles Spaniel", "Pembroke Welsh Corgi", "Basenji", "Havanese",
+                "Boston Terrier", "Cairn Terrier", "Brittany", "Sheltie", "Shiba Inu", "Jack Russell Terrier", "Borzoi", "Maltipoo", "Papillon", "Pikanese",
+                "Miniature Poodle", "Pikapoo", "Coyote", "Dingo", "Miniature Schnauzer", "Mutt" };
+            //Source: https://www.google.com/search?q=dog+working+breeds
+            appearances[CreatureConstants.Dog_Riding] = new[] { "German Shepherd", "Labrador Retriever", "Golden Retriever", "Siberian Husky", "Beagle", "Alaskan Malamute",
+                "Border Collie", "Rottweiler", "Australian Shepherd", "Airedale Terrier", "Affenpinscher", "Afghan Hound", "American Eskimo", "Anatolian Shepherd",
+                "Basset Hound", "Belgian Malinois", "Boston Terrier", "Bullmastiff", "Black Russian Terrier", "Bedlington Terrier", "American Pit Bull Terrier", "Dobermann",
+                "Sarabi", "Samoyed", "American Bully", "Borzoi", "Goldendoodle", "Dalmation", "Labradoodle", "Bernese Mountain Dog", "Greater Swiss Mountain Dog",
+                "Newfoundland", "Boxer", "Cane Corso", "Boerboel", "Chinook", "Dogue de Bordeaux", "Giant Schnauzer", "Neopolitan Mastiff", "Dogo Argentino",
+                "Great Pyrenees", "Great Dane", "Tibetan Mastiff", "Kuvasz", "Komondor", "German Pinscher", "Leonberger", "St. Bernard", "Portugese Water Dog",
+                "Standard Schnauzer", "English Mastiff", "Karelian Bear Dog", "American Bulldog", "Hovawart", "Bloodhound", "Entlebucher Mountain Dog", "Eurasier",
+                "Greenland", "Canadian Eskimo", "Canaan", "Caucasian Shepherd", "Blue Lacy", "American Akita", "Akbash", "Central Asian Shepherd", "Australian Cattle",
+                "Yakutian Laika", "Mutt"
+            };
+            //Source: https://www.britannica.com/animal/donkey
+            appearances[CreatureConstants.Donkey] = GetWeightedAppearances(
+                allHair: new[] { "White fur with dark stripe from mane to tail and a crosswise stripe on the shoulders",
+                    "Light gray fur with dark stripe from mane to tail and a crosswise stripe on the shoulders",
+                    "Gray fur with dark stripe from mane to tail and a crosswise stripe on the shoulders",
+                    "Dark gray fur with darker stripe from mane to tail and a crosswise stripe on the shoulders",
+                    "Black fur with gray stripe from mane to tail and a crosswise stripe on the shoulders" },
+                allOther: new[] { "Long ears, surefooted" });
             //Source: https://forgottenrealms.fandom.com/wiki/Doppelganger
             appearances[CreatureConstants.Doppelganger][GenderConstants.Agender] = GetBaseFromAverage(5 * 12);
             appearances[CreatureConstants.Doppelganger][CreatureConstants.Doppelganger] = GetMultiplierFromAverage(5 * 12);
