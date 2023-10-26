@@ -812,8 +812,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/dryad-species
             weights[CreatureConstants.Dryad][GenderConstants.Female] = GetRangeFromAverage(150);
             //Source: https://www.d20srd.org/srd/description.htm#vitalStatistics
-            weights[CreatureConstants.Dwarf_Deep][GenderConstants.Female] = (100 + 2 * 2, 100 + 2 * 4 * 2 * 6);
-            weights[CreatureConstants.Dwarf_Deep][GenderConstants.Male] = (130 + 2 * 2, 130 + 2 * 4 * 2 * 6);
+            //https://www.d20srd.org/srd/monsters/dwarf.htm
+            //"Leaner" than Hill Dwarves, so 90%
+            weights[CreatureConstants.Dwarf_Deep][GenderConstants.Female] = (93, 176);
+            weights[CreatureConstants.Dwarf_Deep][GenderConstants.Male] = (93, 176);
             weights[CreatureConstants.Dwarf_Duergar][GenderConstants.Female] = (100 + 2 * 2, 100 + 2 * 4 * 2 * 6);
             weights[CreatureConstants.Dwarf_Duergar][GenderConstants.Male] = (130 + 2 * 2, 130 + 2 * 4 * 2 * 6);
             weights[CreatureConstants.Dwarf_Hill][GenderConstants.Female] = (100 + 2 * 2, 100 + 2 * 4 * 2 * 6);

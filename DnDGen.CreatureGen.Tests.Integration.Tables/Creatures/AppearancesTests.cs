@@ -1410,38 +1410,49 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allSkin: new[] { "TODO Drow" },
                 allHair: new[] { "TODO Drow" },
                 allEyes: new[] { "TODO Drow" });
-            //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/dryad-species
+            //Source: https://forgottenrealms.fandom.com/wiki/Dryad
             appearances[CreatureConstants.Dryad] = new[] { "Delicate features seemingly made from soft wood. Hair looks as if made of leaves and foliage that changes color with the seasons." };
-            //Source: https://www.d20srd.org/srd/description.htm#vitalStatistics
-            appearances[CreatureConstants.Dwarf_Deep][GenderConstants.Female] = "3*12+7";
-            appearances[CreatureConstants.Dwarf_Deep][GenderConstants.Male] = "3*12+9";
-            appearances[CreatureConstants.Dwarf_Deep][CreatureConstants.Dwarf_Deep] = "2d4";
-            appearances[CreatureConstants.Dwarf_Duergar][GenderConstants.Female] = "3*12+7";
-            appearances[CreatureConstants.Dwarf_Duergar][GenderConstants.Male] = "3*12+9";
-            appearances[CreatureConstants.Dwarf_Duergar][CreatureConstants.Dwarf_Duergar] = "2d4";
-            appearances[CreatureConstants.Dwarf_Hill][GenderConstants.Female] = "3*12+7";
-            appearances[CreatureConstants.Dwarf_Hill][GenderConstants.Male] = "3*12+9";
-            appearances[CreatureConstants.Dwarf_Hill][CreatureConstants.Dwarf_Hill] = "2d4";
-            appearances[CreatureConstants.Dwarf_Mountain][GenderConstants.Female] = "3*12+7";
-            appearances[CreatureConstants.Dwarf_Mountain][GenderConstants.Male] = "3*12+9";
-            appearances[CreatureConstants.Dwarf_Mountain][CreatureConstants.Dwarf_Mountain] = "2d4";
-            //Source: https://www.dimensions.com/element/bald-eagle-haliaeetus-leucocephalus
-            appearances[CreatureConstants.Eagle][GenderConstants.Female] = GetBaseFromRange(17, 24);
-            appearances[CreatureConstants.Eagle][GenderConstants.Male] = GetBaseFromRange(17, 24);
-            appearances[CreatureConstants.Eagle][CreatureConstants.Eagle] = GetMultiplierFromRange(17, 24);
+            //Source: https://www.d20srd.org/srd/monsters/dwarf.htm
+            appearances[CreatureConstants.Dwarf_Deep] = GetWeightedAppearances(
+                commonSkin: new[] { "Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin", "Very dark tan skin", "Very dark brown skin" },
+                uncommonSkin: new[] { "Tan skin with a reddish tinge", "Brown skin with a reddish tinge", "Dark tan skin with a reddish tinge",
+                    "Dark brown skin with a reddish tinge", "Very dark tan skin with a reddish tinge", "Very dark brown skin with a reddish tinge" },
+                allHair: new[] { "Bright red hair", "Straw blond hair", "Muted red hair", "Yellow hair", "Bright yellow hair", "Muted yellow hair", "Brown hair" },
+                commonEyes: new[] { "Washed-out blue eyes" },
+                uncommonEyes: new[] { "TODO Human eyes (Washed-out)" });
+            appearances[CreatureConstants.Dwarf_Duergar] = GetWeightedAppearances(
+                allSkin: new[] { "Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin", "Very dark tan skin", "Very dark brown skin" },
+                commonHair: new[] { "Bald" },
+                uncommonHair: new[] { "Black hair", "Gray hair", "Brown hair" },
+                allEyes: new[] { "TODO Human eyes (Bright)" });
+            appearances[CreatureConstants.Dwarf_Hill] = GetWeightedAppearances(
+                allSkin: new[] { "Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin", "Very dark tan skin", "Very dark brown skin" },
+                allHair: new[] { "Black hair", "Gray hair", "Brown hair" },
+                allEyes: new[] { "TODO Human eyes (Bright)" });
+            appearances[CreatureConstants.Dwarf_Mountain] = GetWeightedAppearances(
+                allSkin: new[] { "Lightly tan skin", "Light Brown skin", "Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin" },
+                allHair: new[] { "Dark gray hair", "Light gray hair", "Light brown hair" },
+                allEyes: new[] { "TODO Human eyes (Bright)" });
+            //Source: https://www.google.com/search?q=species+of+eagle
+            appearances[CreatureConstants.Eagle] = new[] { "Golden eagle", "Bald eagle", "Harpy eagle", "White-tailed eagle", "Black kite", "Steller's sea eagle",
+                "Philippine eagle", "Haast's eagle", "Wedge-tailed eagle", "Common buzzard", "Black eagle", "Crowned eagle", "Javan hawk-eagle", "Eastern imperial eagle",
+                "Indian spotted eagle", "African fish eagle", "Spanish imperial eagle", "Bonelli's eagle", "Bearded vulture", "Black-and-chestnut eagle", "Martial eagle",
+                "Black-chested buzzard-eagle", "Eurasian griffon vulture", "Red kite", "Verreaux's eagle", "Crested serpent eagle", "Steppe eagle", "Cinereous vulture",
+                "White-bellied sea eagle", "Booted eagle", "Short-toed snake eagle", "Tawny eagle", "Egyptian vulture", "Lesser spotted eagle", "Mountain hawk-eagle",
+                "Greater spotted eagle", "Little eagle", "Brahminy kite", "Ornate hawk-eagle", "Black-and-white hawk-eagle", "Changeable hawk-eagle", "Crested eagle",
+                "Rough-legged buzzard", "Hen harrier" };
             //Source: https://www.d20srd.org/srd/monsters/eagleGiant.htm
-            appearances[CreatureConstants.Eagle_Giant][GenderConstants.Female] = GetBaseFromAverage(10 * 12);
-            appearances[CreatureConstants.Eagle_Giant][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
-            appearances[CreatureConstants.Eagle_Giant][CreatureConstants.Eagle_Giant] = GetMultiplierFromAverage(10 * 12);
+            appearances[CreatureConstants.Eagle_Giant] = new[] { "Golden eagle", "Bald eagle", "Harpy eagle", "White-tailed eagle", "Black kite", "Steller's sea eagle",
+                "Philippine eagle", "Haast's eagle", "Wedge-tailed eagle", "Common buzzard", "Black eagle", "Crowned eagle", "Javan hawk-eagle", "Eastern imperial eagle",
+                "Indian spotted eagle", "African fish eagle", "Spanish imperial eagle", "Bonelli's eagle", "Bearded vulture", "Black-and-chestnut eagle", "Martial eagle",
+                "Black-chested buzzard-eagle", "Eurasian griffon vulture", "Red kite", "Verreaux's eagle", "Crested serpent eagle", "Steppe eagle", "Cinereous vulture",
+                "White-bellied sea eagle", "Booted eagle", "Short-toed snake eagle", "Tawny eagle", "Egyptian vulture", "Lesser spotted eagle", "Mountain hawk-eagle",
+                "Greater spotted eagle", "Little eagle", "Brahminy kite", "Ornate hawk-eagle", "Black-and-white hawk-eagle", "Changeable hawk-eagle", "Crested eagle",
+                "Rough-legged buzzard", "Hen harrier" };
             //Source: https://forgottenrealms.fandom.com/wiki/Efreeti
-            appearances[CreatureConstants.Efreeti][GenderConstants.Agender] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Efreeti][GenderConstants.Female] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Efreeti][GenderConstants.Male] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Efreeti][CreatureConstants.Efreeti] = GetMultiplierFromAverage(12 * 12);
+            appearances[CreatureConstants.Efreeti] = new[] { "Red, burning skin", "Black, burning skin" };
             //Source: https://jurassicworld-evolution.fandom.com/wiki/Elasmosaurus
-            appearances[CreatureConstants.Elasmosaurus][GenderConstants.Female] = GetBaseFromAverage(40);
-            appearances[CreatureConstants.Elasmosaurus][GenderConstants.Male] = GetBaseFromAverage(40);
-            appearances[CreatureConstants.Elasmosaurus][CreatureConstants.Elasmosaurus] = GetMultiplierFromAverage(40);
+            appearances[CreatureConstants.Elasmosaurus] = new[] { "Beige skin" };
             //Source: https://www.d20srd.org/srd/monsters/elemental.htm
             appearances[CreatureConstants.Elemental_Air_Small][GenderConstants.Agender] = GetBaseFromAverage(4 * 12);
             appearances[CreatureConstants.Elemental_Air_Small][CreatureConstants.Elemental_Air_Small] = GetMultiplierFromAverage(4 * 12);

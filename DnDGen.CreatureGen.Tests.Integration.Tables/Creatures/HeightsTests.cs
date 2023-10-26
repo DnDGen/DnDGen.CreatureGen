@@ -998,8 +998,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Dwarf_Hill][GenderConstants.Female] = "3*12+7";
             heights[CreatureConstants.Dwarf_Hill][GenderConstants.Male] = "3*12+9";
             heights[CreatureConstants.Dwarf_Hill][CreatureConstants.Dwarf_Hill] = "2d4";
-            heights[CreatureConstants.Dwarf_Mountain][GenderConstants.Female] = "3*12+7";
-            heights[CreatureConstants.Dwarf_Mountain][GenderConstants.Male] = "3*12+9";
+            //https://www.d20srd.org/srd/monsters/dwarf.htm On average 6" taller than Hill dwarves
+            heights[CreatureConstants.Dwarf_Mountain][GenderConstants.Female] = "3*12+7+6";
+            heights[CreatureConstants.Dwarf_Mountain][GenderConstants.Male] = "3*12+9+6";
             heights[CreatureConstants.Dwarf_Mountain][CreatureConstants.Dwarf_Mountain] = "2d4";
             //Source: https://www.dimensions.com/element/bald-eagle-haliaeetus-leucocephalus
             heights[CreatureConstants.Eagle][GenderConstants.Female] = GetBaseFromRange(17, 24);
