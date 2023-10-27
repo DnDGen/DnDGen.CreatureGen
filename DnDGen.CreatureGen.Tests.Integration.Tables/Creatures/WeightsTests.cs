@@ -864,18 +864,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Elephant][GenderConstants.Female] = (5500, 15_400);
             weights[CreatureConstants.Elephant][GenderConstants.Male] = (5500, 15_400);
             //Source: https://www.d20srd.org/srd/description.htm#vitalStatistics
-            weights[CreatureConstants.Elf_Aquatic][GenderConstants.Female] = (80 + 2 * 1, 80 + 2 * 6 * 1 * 6);
-            weights[CreatureConstants.Elf_Aquatic][GenderConstants.Male] = (85 + 2 * 1, 85 + 2 * 6 * 1 * 6);
-            weights[CreatureConstants.Elf_Drow][GenderConstants.Female] = (80 + 2 * 1, 80 + 2 * 6 * 1 * 6);
-            weights[CreatureConstants.Elf_Drow][GenderConstants.Male] = (85 + 2 * 1, 85 + 2 * 6 * 1 * 6);
+            //https://forgottenrealms.fandom.com/wiki/Aquatic_elf - larger and heavier, so 110%
+            weights[CreatureConstants.Elf_Aquatic][GenderConstants.Female] = (80 + 2 * 1 + 8, 80 + 2 * 6 * 1 * 6 + 8);
+            weights[CreatureConstants.Elf_Aquatic][GenderConstants.Male] = (85 + 2 * 1 + 8, 85 + 2 * 6 * 1 * 6 + 8);
+            //Source: https://forgottenrealms.fandom.com/wiki/Drow
+            weights[CreatureConstants.Elf_Drow][GenderConstants.Female] = (82, 152);
+            weights[CreatureConstants.Elf_Drow][GenderConstants.Male] = (87, 157);
             weights[CreatureConstants.Elf_Gray][GenderConstants.Female] = (80 + 2 * 1, 80 + 2 * 6 * 1 * 6);
             weights[CreatureConstants.Elf_Gray][GenderConstants.Male] = (85 + 2 * 1, 85 + 2 * 6 * 1 * 6);
             weights[CreatureConstants.Elf_Half][GenderConstants.Female] = (80 + 2 * 2, 80 + 2 * 8 * 2 * 4);
             weights[CreatureConstants.Elf_Half][GenderConstants.Male] = (100 + 2 * 2, 100 + 2 * 8 * 2 * 4);
             weights[CreatureConstants.Elf_High][GenderConstants.Female] = (80 + 2 * 1, 80 + 2 * 6 * 1 * 6);
             weights[CreatureConstants.Elf_High][GenderConstants.Male] = (85 + 2 * 1, 85 + 2 * 6 * 1 * 6);
+            //https://forgottenrealms.fandom.com/wiki/Wild_elf Males 20 pounds heavier
             weights[CreatureConstants.Elf_Wild][GenderConstants.Female] = (80 + 2 * 1, 80 + 2 * 6 * 1 * 6);
-            weights[CreatureConstants.Elf_Wild][GenderConstants.Male] = (85 + 2 * 1, 85 + 2 * 6 * 1 * 6);
+            weights[CreatureConstants.Elf_Wild][GenderConstants.Male] = (100 + 2 * 1, 100 + 2 * 6 * 1 * 6);
             weights[CreatureConstants.Elf_Wood][GenderConstants.Female] = (80 + 2 * 1, 80 + 2 * 6 * 1 * 6);
             weights[CreatureConstants.Elf_Wood][GenderConstants.Male] = (85 + 2 * 1, 85 + 2 * 6 * 1 * 6);
             //Source: https://www.d20srd.org/srd/monsters/devil.htm#erinyes
@@ -889,9 +892,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://syrikdarkenedskies.obsidianportal.com/wikis/ettercap-race
             weights[CreatureConstants.Ettercap][GenderConstants.Female] = (160, 270);
             weights[CreatureConstants.Ettercap][GenderConstants.Male] = (140, 250);
-            //Source: https://forgottenrealms.fandom.com/wiki/Ettin
-            weights[CreatureConstants.Ettin][GenderConstants.Female] = (930, 5200);
-            weights[CreatureConstants.Ettin][GenderConstants.Male] = (930, 5200);
+            //Source: https://forgottenrealms.fandom.com/wiki/Ettin Males are heavier, so +10%
+            weights[CreatureConstants.Ettin][GenderConstants.Female] = (930, 5200 - 90);
+            weights[CreatureConstants.Ettin][GenderConstants.Male] = (930 + 90, 5200);
             //Source: https://www.d20srd.org/srd/monsters/giantFireBeetle.htm
             //https://www.guinnessworldrecords.com/world-records/most-bioluminescent-insect scale up
             weights[CreatureConstants.FireBeetle_Giant][GenderConstants.Female] =

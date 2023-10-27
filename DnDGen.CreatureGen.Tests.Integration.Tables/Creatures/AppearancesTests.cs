@@ -56,28 +56,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             //Source: https://forgottenrealms.fandom.com/wiki/Aasimar
             appearances[CreatureConstants.Aasimar] = GetWeightedAppearances(
-                commonSkin: new[] { "Black skin", "Brown skin", "Olive skin", "White skin", "Pink skin",
-                    "Deep Black skin", "Deep Brown skin", "Deep Olive skin", "Deep White skin", "Deep Pink skin",
-                    "Pale Black skin", "Pale Brown skin", "Pale Olive skin", "Pale White skin", "Pale Pink skin" },
-                commonHair: new[] { "Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair", "Straight Silver hair",
-                    "Curly Red hair", "Curly Blond hair", "Curly Brown hair", "Curly Black hair", "Curly Silver hair",
-                    "Kinky Red hair", "Kinky Blond hair", "Kinky Brown hair", "Kinky Black hair", "Kinky Silver hair" },
-                commonEyes: new[] { "Pupil-less pale white eyes", "Pupil-less golden eyes", "Pupil-less gray eyes" },
+                commonSkin: new[] { "TODO Human skin" },
                 uncommonSkin: new[] { "Emerald skin", "Gold skin", "Silver skin",
-                    "Black skin with small iridescent scales", "Brown skin with small iridescent scales", "Olive skin with small iridescent scales",
-                        "White skin with small iridescent scales", "Pink skin with small iridescent scales",
-                    "Deep Black skin with small iridescent scales", "Deep Brown skin with small iridescent scales", "Deep Olive skin with small iridescent scales",
-                        "Deep White skin with small iridescent scales", "Deep Pink skin with small iridescent scales",
-                    "Pale Black skin with small iridescent scales", "Pale Brown skin with small iridescent scales", "Pale Olive skin with small iridescent scales",
-                        "Pale White skin with small iridescent scales", "Pale Pink skin with small iridescent scales" },
-                uncommonEyes: new[] { "Pupil-less topaz eyes", "Pupil-less pearly opalescent eyes" },
-                uncommonHair: new[] { "Straight Red hair with feathers mixed in", "Straight Blond hair with feathers mixed in",
-                        "Straight Brown hair with feathers mixed in", "Straight Black hair with feathers mixed in", "Straight Silver hair with feathers mixed in",
-                    "Curly Red hair with feathers mixed in", "Curly Blond hair with feathers mixed in", "Curly Brown hair with feathers mixed in",
-                        "Curly Black hair with feathers mixed in", "Curly Silver hair with feathers mixed in",
-                    "Kinky Red hair with feathers mixed in", "Kinky Blond hair with feathers mixed in", "Kinky Brown hair with feathers mixed in",
-                        "Kinky Black hair with feathers mixed in", "Kinky Silver hair with feathers mixed in" },
+                    "TODO Human skin with small iridescent scales" },
                 rareSkin: new[] { "Emerald skin with small iridescent scales", "Gold skin with small iridescent scales", "Silver skin with small iridescent scales" },
+                commonHair: new[] { "TODO Human hair",
+                    "Straight Silver hair", "Wavy Silver hair", "Curly Silver hair", "Kinky Silver hair" },
+                uncommonHair: new[] { "TODO Human hair with feathers mixed in",
+                    "Straight Silver hair with feathers mixed in", "Wavy Silver hair with feathers mixed in", "Curly Silver hair with feathers mixed in",
+                        "Kinky Silver hair with feathers mixed in" },
+                commonEyes: new[] { "Pupil-less pale white eyes", "Pupil-less golden eyes", "Pupil-less gray eyes" },
+                uncommonEyes: new[] { "Pupil-less topaz eyes", "Pupil-less pearly opalescent eyes" },
                 uncommonOther: new[] { "A light covering of feathers on the shoulders, where an angel's wings might sprout" });
             //Source: https://forgottenrealms.fandom.com/wiki/Aboleth
             appearances[CreatureConstants.Aboleth] = GetWeightedAppearances(
@@ -322,18 +311,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 uncommonHair: new[] { "Grey fur", "Silver fur" });
             //Source: https://forgottenrealms.fandom.com/wiki/Aranea
             appearances[CreatureConstants.Aranea] = GetWeightedAppearances(
-                commonSkin: new[] { "Black skin", "Brown skin", "Olive skin", "White skin", "Pink skin",
-                    "Deep Black skin", "Deep Brown skin", "Deep Olive skin", "Deep White skin", "Deep Pink skin",
-                    "Pale Black skin", "Pale Brown skin", "Pale Olive skin", "Pale White skin", "Pale Pink skin" },
-                commonHair: new[] { "Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair",
-                    "Curly Red hair", "Curly Blond hair", "Curly Brown hair", "Curly Black hair",
-                    "Kinky Red hair", "Kinky Blond hair", "Kinky Brown hair", "Kinky Black hair" },
-                commonEyes: new[] { "Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes" },
+                commonSkin: new[] { "TODO Human skin" },
                 uncommonSkin: new[] { "TODO Half-Elf skin" },
-                uncommonHair: new[] { "TODO Half-Elf hair" },
-                uncommonEyes: new[] { "TODO Half-Elf eyes" },
                 rareSkin: new[] { "TODO Drow skin" },
+                commonHair: new[] { "TODO Human hair" },
+                uncommonHair: new[] { "TODO Half-Elf hair" },
                 rareHair: new[] { "TODO Drow hair" },
+                commonEyes: new[] { "TODO Human eyes" },
+                uncommonEyes: new[] { "TODO Half-Elf eyes" },
                 rareEyes: new[] { "TODO Drow eyes" });
             //Source: https://www.d20srd.org/srd/monsters/arrowhawk.htm
             appearances[CreatureConstants.Arrowhawk_Juvenile] = new[] { "Covered in blue scales with occasional tufts of yellow feathers" };
@@ -345,9 +330,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.Athach] = new[] { "Extra arm growing out of chest. Large, curved tusks on either side of a wide mouth. Relatively small eyes and nose for the size of the head. One ear significantly bigger than the other. Quite strong stench." };
             //Source: https://forgottenrealms.fandom.com/wiki/Avoral
             appearances[CreatureConstants.Avoral] = GetWeightedAppearances(
-                allSkin: new[] { "Black skin", "Brown skin", "Olive skin", "White skin", "Pink skin",
-                    "Deep Black skin", "Deep Brown skin", "Deep Olive skin", "Deep White skin", "Deep Pink skin",
-                    "Pale Black skin", "Pale Brown skin", "Pale Olive skin", "Pale White skin", "Pale Pink skin" },
+                allSkin: new[] { "TODO Human skin" },
                 allHair: new[] { "Red feathers", "Blue feathers", "Brown feathers", "Black feathers", "White feathers" },
                 allEyes: new[] { "Bright golden eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Azer
@@ -530,12 +513,49 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allEyes: new[] { "Two eye stalks" },
                 allOther: new[] { "Eight long tentacles protruding from the side of the head" });
             //Source: https://g.co/kgs/eqa8L1
+            //https://www.omlet.us/guide/cats/choosing_the_right_cat_for_you/cat_coat_colors_and_patterns/
             appearances[CreatureConstants.Cat] = new[] { "Siamese", "British Shorthair", "Maine Coon", "Persian", "Ragdoll", "Sphynx", "American Shorthair", "Abyssinian",
                 "Exotic Shorthair", "Scottish Fold", "Burmese", "Birman", "Bombay", "Siberian", "Norwegian Forest", "Russian Blue", "American Curl", "Munchkin",
                 "American Bobtail", "Devon Rex", "Balinese", "Oriental Shorthair", "Chartreux", "Turkish Angora", "Manx", "Japanese Bobtail", "American Wirehair",
                 "Ragamuffin", "Egyptian Mau", "Cornish Rex", "Somali", "Himalayan", "Selkirk Rex", "Korat", "Singapura", "Ocicat", "Tonkinese", "Turkish Van",
                 "British Longhair", "LaPerm", "Havana Brown", "Chausie", "Burmilla", "Toyger", "Sokoke", "Colorpoint Shorthair", "Javanese", "Snowshoe", "Australian Mist",
-                "Lykoi", "Khao Manee" };
+                "Lykoi", "Khao Manee",
+                "Solid Black", "Solid White", "Solid Ginger", "Solid Blue/Gray", "Solid Cream", "Solid Brown", "Solid Cinnamon", "Solid Fawn",
+                "Black/White Tuxedo", "Black/Gray Tuxedo", "Black/Cream Tuxedo", "Black/Fawn Tuxedo",
+                    "Brown/White Tuxedo", "Brown/Gray Tuxedo", "Brown/Cream Tuxedo", "Brown/Fawn Tuxedo",
+                    "Cinnamon/White Tuxedo", "Cinnamon/Gray Tuxedo", "Cinnamon/Cream Tuxedo", "Cinnamon/Fawn Tuxedo",
+                    "Ginger/White Tuxedo", "Ginger/Gray Tuxedo", "Ginger/Cream Tuxedo", "Ginger/Fawn Tuxedo",
+                "Black/White Magpie Bi-color", "Black/Gray Magpie Bi-color", "Black/Cream Magpie Bi-color", "Black/Fawn Magpie Bi-color",
+                    "Brown/White Magpie Bi-color", "Brown/Gray Magpie Bi-color", "Brown/Cream Magpie Bi-color", "Brown/Fawn Magpie Bi-color",
+                    "Cinnamon/White Magpie Bi-color", "Cinnamon/Gray Magpie Bi-color", "Cinnamon/Cream Magpie Bi-color", "Cinnamon/Fawn Magpie Bi-color",
+                    "Ginger/White Magpie Bi-color", "Ginger/Gray Magpie Bi-color", "Ginger/Cream Magpie Bi-color", "Ginger/Fawn Magpie Bi-color",
+                "Black/White Harlequin Bi-color", "Black/Gray Harlequin Bi-color", "Black/Cream Harlequin Bi-color", "Black/Fawn Harlequin Bi-color",
+                    "Brown/White Harlequin Bi-color", "Brown/Gray Harlequin Bi-color", "Brown/Cream Harlequin Bi-color", "Brown/Fawn Harlequin Bi-color",
+                    "Cinnamon/White Harlequin Bi-color", "Cinnamon/Gray Harlequin Bi-color", "Cinnamon/Cream Harlequin Bi-color", "Cinnamon/Fawn Harlequin Bi-color",
+                    "Ginger/White Harlequin Bi-color", "Ginger/Gray Harlequin Bi-color", "Ginger/Cream Harlequin Bi-color", "Ginger/Fawn Harlequin Bi-color",
+                "Black/White Cap-And-Saddle Bi-color", "Black/Gray Cap-And-Saddle Bi-color", "Black/Cream Cap-And-Saddle Bi-color", "Black/Fawn Cap-And-Saddle Bi-color",
+                    "Brown/White Cap-And-Saddle Bi-color", "Brown/Gray Cap-And-Saddle Bi-color", "Brown/Cream Cap-And-Saddle Bi-color", "Brown/Fawn Cap-And-Saddle Bi-color",
+                    "Cinnamon/White Cap-And-Saddle Bi-color", "Cinnamon/Gray Cap-And-Saddle Bi-color", "Cinnamon/Cream Cap-And-Saddle Bi-color", "Cinnamon/Fawn Cap-And-Saddle Bi-color",
+                    "Ginger/White Cap-And-Saddle Bi-color", "Ginger/Gray Cap-And-Saddle Bi-color", "Ginger/Cream Cap-And-Saddle Bi-color", "Ginger/Fawn Cap-And-Saddle Bi-color",
+                "Black/White Van Bi-color", "Black/Gray Van Bi-color", "Black/Cream Van Bi-color", "Black/Fawn Van Bi-color",
+                    "Brown/White Van Bi-color", "Brown/Gray Van Bi-color", "Brown/Cream Van Bi-color", "Brown/Fawn Van Bi-color",
+                    "Cinnamon/White Van Bi-color", "Cinnamon/Gray Van Bi-color", "Cinnamon/Cream Van Bi-color", "Cinnamon/Fawn Van Bi-color",
+                    "Ginger/White Van Bi-color", "Ginger/Gray Van Bi-color", "Ginger/Cream Van Bi-color", "Ginger/Fawn Van Bi-color",
+                "Black Striped Tabby", "White Striped Tabby", "Ginger Striped Tabby", "Blue/Gray Striped Tabby", "Cream Striped Tabby", "Brown Striped Tabby",
+                    "Cinnamon Striped Tabby", "Fawn Striped Tabby",
+                "Black Blotched Tabby", "White Blotched Tabby", "Ginger Blotched Tabby", "Blue/Gray Blotched Tabby", "Cream Blotched Tabby", "Brown Blotched Tabby",
+                    "Cinnamon Blotched Tabby", "Fawn Blotched Tabby",
+                "Black Spotted Tabby", "White Spotted Tabby", "Ginger Spotted Tabby", "Blue/Gray Spotted Tabby", "Cream Spotted Tabby", "Brown Spotted Tabby",
+                    "Cinnamon Spotted Tabby", "Fawn Spotted Tabby",
+                "Black Ticked Tabby", "White Ticked Tabby", "Ginger Ticked Tabby", "Blue/Gray Ticked Tabby", "Cream Ticked Tabby", "Brown Ticked Tabby",
+                    "Cinnamon Ticked Tabby", "Fawn Ticked Tabby",
+                "Black/Ginger Brindled Tortoiseshell", "Blue/Ginger Brindled Tortoiseshell", "Cream/Ginger Brindled Tortoiseshell",
+                "Black/Ginger Patchy Tortoiseshell", "Blue/Ginger Patchy Tortoiseshell", "Cream/Ginger Patchy Tortoiseshell",
+                "Black/Ginger Brindled Torbie", "Blue/Ginger Brindled Torbie", "Cream/Ginger Brindled Torbie",
+                "Black/Ginger Patchy Torbie", "Blue/Ginger Patchy Torbie", "Cream/Ginger Patchy Torbie",
+                "Ginger/Black/White Callico", "Ginger/Gray/White Callico", "Ginger/Cream/White Callico",
+                "Black Colorpoint", "White Colorpoint", "Ginger Colorpoint", "Blue/Gray Colorpoint", "Cream Colorpoint", "Brown Colorpoint", "Cinnamon Colorpoint",
+                    "Fawn Colorpoint" };
             //Source: https://forgottenrealms.fandom.com/wiki/Centaur
             appearances[CreatureConstants.Centaur] = GetWeightedAppearances(
                 allSkin: new[] { "TODO Human skin", "TODO Light Horse skin", "TODO Heavy Horse skin" },
@@ -571,7 +591,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "A hollowed-out carcass, swelling with gases into a balloon-like husk, bobbing along in the air with the ends of its body trailing about it and tangling others.",
                 "A plump moth with brilliantly colored wings like the stained glass of temples and compound eyes that sparkle like a myriad of jewels.",
                 "The person one least suspects.",
-                "A writhing mass of teeth and barbed tentacles, grey and rotting. Random clawed hands hide under some of the tentacles." };
+                "A writhing mass of teeth and barbed tentacles, grey and rotting. Random clawed hands hide under some of the tentacles.",
+                "DM Discretion - come up with something particularly chaotic" };
             //Source: https://www.dimensions.com/element/cheetahs
             //https://forgottenrealms.fandom.com/wiki/Cheetah
             appearances[CreatureConstants.Cheetah] = new[] { "Slender body, yellow coat with black spots, long thin legs, deep chest, small head",
@@ -723,7 +744,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.Djinni_Noble] = GetWeightedAppearances(
                 commonSkin: new[] { "Pale blue skin", "Fair brown skin", "Fair Blue skin" },
                 uncommonSkin: new[] { "Fair tan skin" },
-                rareSkin: new[] { "Fair purple skin", "FAir beige skin", "Fair red skin" },
+                rareSkin: new[] { "Fair purple skin", "Fair beige skin", "Fair red skin" },
                 allHair: new[] { "Bald", "Black hair", "TODO Human hair" },
                 commonEyes: new[] { "Brown eyes" },
                 rareEyes: new[] { "Blue eyes" });
@@ -1407,9 +1428,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.Dretch] = new[] { "Pale, rubbery, white skin", "Pale, rubbery, beige skin", "Pale, rubbery, blue skin" };
             //Source: https://forgottenrealms.fandom.com/wiki/Drider
             appearances[CreatureConstants.Drider] = GetWeightedAppearances(
-                allSkin: new[] { "TODO Drow" },
-                allHair: new[] { "TODO Drow" },
-                allEyes: new[] { "TODO Drow" });
+                allSkin: new[] { "TODO Drow skin. Bottom half is TODO Spider skin" },
+                allHair: new[] { "TODO Drow hair" },
+                allEyes: new[] { "TODO Drow eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Dryad
             appearances[CreatureConstants.Dryad] = new[] { "Delicate features seemingly made from soft wood. Hair looks as if made of leaves and foliage that changes color with the seasons." };
             //Source: https://www.d20srd.org/srd/monsters/dwarf.htm
@@ -1453,151 +1474,275 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.Efreeti] = new[] { "Red, burning skin", "Black, burning skin" };
             //Source: https://jurassicworld-evolution.fandom.com/wiki/Elasmosaurus
             appearances[CreatureConstants.Elasmosaurus] = new[] { "Beige skin" };
-            //Source: https://www.d20srd.org/srd/monsters/elemental.htm
-            appearances[CreatureConstants.Elemental_Air_Small][GenderConstants.Agender] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Elemental_Air_Small][CreatureConstants.Elemental_Air_Small] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Elemental_Air_Medium][GenderConstants.Agender] = GetBaseFromAverage(8 * 12);
-            appearances[CreatureConstants.Elemental_Air_Medium][CreatureConstants.Elemental_Air_Medium] = GetMultiplierFromAverage(8 * 12);
-            appearances[CreatureConstants.Elemental_Air_Large][GenderConstants.Agender] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Elemental_Air_Large][CreatureConstants.Elemental_Air_Large] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Elemental_Air_Huge][GenderConstants.Agender] = GetBaseFromAverage(32 * 12);
-            appearances[CreatureConstants.Elemental_Air_Huge][CreatureConstants.Elemental_Air_Huge] = GetMultiplierFromAverage(32 * 12);
-            appearances[CreatureConstants.Elemental_Air_Greater][GenderConstants.Agender] = GetBaseFromAverage(36 * 12);
-            appearances[CreatureConstants.Elemental_Air_Greater][CreatureConstants.Elemental_Air_Greater] = GetMultiplierFromAverage(36 * 12);
-            appearances[CreatureConstants.Elemental_Air_Elder][GenderConstants.Agender] = GetBaseFromAverage(40 * 12);
-            appearances[CreatureConstants.Elemental_Air_Elder][CreatureConstants.Elemental_Air_Elder] = GetMultiplierFromAverage(40 * 12);
-            appearances[CreatureConstants.Elemental_Earth_Small][GenderConstants.Agender] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Elemental_Earth_Small][CreatureConstants.Elemental_Earth_Small] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Elemental_Earth_Medium][GenderConstants.Agender] = GetBaseFromAverage(8 * 12);
-            appearances[CreatureConstants.Elemental_Earth_Medium][CreatureConstants.Elemental_Earth_Medium] = GetMultiplierFromAverage(8 * 12);
-            appearances[CreatureConstants.Elemental_Earth_Large][GenderConstants.Agender] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Elemental_Earth_Large][CreatureConstants.Elemental_Earth_Large] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Elemental_Earth_Huge][GenderConstants.Agender] = GetBaseFromAverage(32 * 12);
-            appearances[CreatureConstants.Elemental_Earth_Huge][CreatureConstants.Elemental_Earth_Huge] = GetMultiplierFromAverage(32 * 12);
-            appearances[CreatureConstants.Elemental_Earth_Greater][GenderConstants.Agender] = GetBaseFromAverage(36 * 12);
-            appearances[CreatureConstants.Elemental_Earth_Greater][CreatureConstants.Elemental_Earth_Greater] = GetMultiplierFromAverage(36 * 12);
-            appearances[CreatureConstants.Elemental_Earth_Elder][GenderConstants.Agender] = GetBaseFromAverage(40 * 12);
-            appearances[CreatureConstants.Elemental_Earth_Elder][CreatureConstants.Elemental_Earth_Elder] = GetMultiplierFromAverage(40 * 12);
-            appearances[CreatureConstants.Elemental_Fire_Small][GenderConstants.Agender] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Elemental_Fire_Small][CreatureConstants.Elemental_Fire_Small] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Elemental_Fire_Medium][GenderConstants.Agender] = GetBaseFromAverage(8 * 12);
-            appearances[CreatureConstants.Elemental_Fire_Medium][CreatureConstants.Elemental_Fire_Medium] = GetMultiplierFromAverage(8 * 12);
-            appearances[CreatureConstants.Elemental_Fire_Large][GenderConstants.Agender] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Elemental_Fire_Large][CreatureConstants.Elemental_Fire_Large] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Elemental_Fire_Huge][GenderConstants.Agender] = GetBaseFromAverage(32 * 12);
-            appearances[CreatureConstants.Elemental_Fire_Huge][CreatureConstants.Elemental_Fire_Huge] = GetMultiplierFromAverage(32 * 12);
-            appearances[CreatureConstants.Elemental_Fire_Greater][GenderConstants.Agender] = GetBaseFromAverage(36 * 12);
-            appearances[CreatureConstants.Elemental_Fire_Greater][CreatureConstants.Elemental_Fire_Greater] = GetMultiplierFromAverage(36 * 12);
-            appearances[CreatureConstants.Elemental_Fire_Elder][GenderConstants.Agender] = GetBaseFromAverage(40 * 12);
-            appearances[CreatureConstants.Elemental_Fire_Elder][CreatureConstants.Elemental_Fire_Elder] = GetMultiplierFromAverage(40 * 12);
-            appearances[CreatureConstants.Elemental_Water_Small][GenderConstants.Agender] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Elemental_Water_Small][CreatureConstants.Elemental_Water_Small] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Elemental_Water_Medium][GenderConstants.Agender] = GetBaseFromAverage(8 * 12);
-            appearances[CreatureConstants.Elemental_Water_Medium][CreatureConstants.Elemental_Water_Medium] = GetMultiplierFromAverage(8 * 12);
-            appearances[CreatureConstants.Elemental_Water_Large][GenderConstants.Agender] = GetBaseFromAverage(16 * 12);
-            appearances[CreatureConstants.Elemental_Water_Large][CreatureConstants.Elemental_Water_Large] = GetMultiplierFromAverage(16 * 12);
-            appearances[CreatureConstants.Elemental_Water_Huge][GenderConstants.Agender] = GetBaseFromAverage(32 * 12);
-            appearances[CreatureConstants.Elemental_Water_Huge][CreatureConstants.Elemental_Water_Huge] = GetMultiplierFromAverage(32 * 12);
-            appearances[CreatureConstants.Elemental_Water_Greater][GenderConstants.Agender] = GetBaseFromAverage(36 * 12);
-            appearances[CreatureConstants.Elemental_Water_Greater][CreatureConstants.Elemental_Water_Greater] = GetMultiplierFromAverage(36 * 12);
-            appearances[CreatureConstants.Elemental_Water_Elder][GenderConstants.Agender] = GetBaseFromAverage(40 * 12);
-            appearances[CreatureConstants.Elemental_Water_Elder][CreatureConstants.Elemental_Water_Elder] = GetMultiplierFromAverage(40 * 12);
-            //Source: https://www.dimensions.com/element/african-bush-elephant-loxodonta-africana
-            appearances[CreatureConstants.Elephant][GenderConstants.Female] = GetBaseFromRange(8 * 12 + 6, 13 * 12);
-            appearances[CreatureConstants.Elephant][GenderConstants.Male] = GetBaseFromRange(8 * 12 + 6, 13 * 12);
-            appearances[CreatureConstants.Elephant][CreatureConstants.Elephant] = GetMultiplierFromRange(8 * 12 + 6, 13 * 12);
-            //Source: https://www.d20srd.org/srd/description.htm#vitalStatistics
-            appearances[CreatureConstants.Elf_Aquatic][GenderConstants.Female] = "4*12+5";
-            appearances[CreatureConstants.Elf_Aquatic][GenderConstants.Male] = "4*12+5";
-            appearances[CreatureConstants.Elf_Aquatic][CreatureConstants.Elf_Aquatic] = "2d6";
-            appearances[CreatureConstants.Elf_Drow][GenderConstants.Female] = "4*12+5";
-            appearances[CreatureConstants.Elf_Drow][GenderConstants.Male] = "4*12+5";
-            appearances[CreatureConstants.Elf_Drow][CreatureConstants.Elf_Drow] = "2d6";
-            appearances[CreatureConstants.Elf_Gray][GenderConstants.Female] = "4*12+5";
-            appearances[CreatureConstants.Elf_Gray][GenderConstants.Male] = "4*12+5";
-            appearances[CreatureConstants.Elf_Gray][CreatureConstants.Elf_Gray] = "2d6";
+            //Source: https://forgottenrealms.fandom.com/wiki/Air_elemental
+            appearances[CreatureConstants.Elemental_Air_Small] = new[] { "An amorphous, ever-shifting cloud" };
+            appearances[CreatureConstants.Elemental_Air_Medium] = new[] { "An amorphous, ever-shifting cloud" };
+            appearances[CreatureConstants.Elemental_Air_Large] = new[] { "An amorphous, ever-shifting cloud" };
+            appearances[CreatureConstants.Elemental_Air_Huge] = new[] { "An amorphous, ever-shifting cloud" };
+            appearances[CreatureConstants.Elemental_Air_Greater] = new[] { "An amorphous, ever-shifting cloud" };
+            appearances[CreatureConstants.Elemental_Air_Elder] = new[] { "An amorphous, ever-shifting cloud" };
+            //Source: https://forgottenrealms.fandom.com/wiki/Earth_elemental
+            appearances[CreatureConstants.Elemental_Earth_Small] = GetWeightedAppearances(
+                allSkin: new[] { "Vaguely humanoid with club-like arms made of jagged stone and a head made of both dirt and stone" },
+                uncommonOther: new[] { "Chunks of minerals set within the stony body", "Chunks of gems set within the stony body",
+                    "Chunks of metals set within the stony body" },
+                rareOther: new[] { "Chunks of minerals and gems set within the stony body", "Chunks of gems and metals set within the stony body",
+                    "Chunks of metals and minerals set within the stony body", "Chunks of minerals, gems, and metals set within the stony body" });
+            appearances[CreatureConstants.Elemental_Earth_Medium] = GetWeightedAppearances(
+                allSkin: new[] { "Vaguely humanoid with club-like arms made of jagged stone and a head made of both dirt and stone" },
+                uncommonOther: new[] { "Chunks of minerals set within the stony body", "Chunks of gems set within the stony body",
+                    "Chunks of metals set within the stony body" },
+                rareOther: new[] { "Chunks of minerals and gems set within the stony body", "Chunks of gems and metals set within the stony body",
+                    "Chunks of metals and minerals set within the stony body", "Chunks of minerals, gems, and metals set within the stony body" });
+            appearances[CreatureConstants.Elemental_Earth_Large] = GetWeightedAppearances(
+                allSkin: new[] { "Vaguely humanoid with club-like arms made of jagged stone and a head made of both dirt and stone" },
+                uncommonOther: new[] { "Chunks of minerals set within the stony body", "Chunks of gems set within the stony body",
+                    "Chunks of metals set within the stony body" },
+                rareOther: new[] { "Chunks of minerals and gems set within the stony body", "Chunks of gems and metals set within the stony body",
+                    "Chunks of metals and minerals set within the stony body", "Chunks of minerals, gems, and metals set within the stony body" });
+            appearances[CreatureConstants.Elemental_Earth_Huge] = GetWeightedAppearances(
+                allSkin: new[] { "Vaguely humanoid with club-like arms made of jagged stone and a head made of both dirt and stone" },
+                uncommonOther: new[] { "Chunks of minerals set within the stony body", "Chunks of gems set within the stony body",
+                    "Chunks of metals set within the stony body" },
+                rareOther: new[] { "Chunks of minerals and gems set within the stony body", "Chunks of gems and metals set within the stony body",
+                    "Chunks of metals and minerals set within the stony body", "Chunks of minerals, gems, and metals set within the stony body" });
+            appearances[CreatureConstants.Elemental_Earth_Greater] = GetWeightedAppearances(
+                allSkin: new[] { "Vaguely humanoid with club-like arms made of jagged stone and a head made of both dirt and stone" },
+                uncommonOther: new[] { "Chunks of minerals set within the stony body", "Chunks of gems set within the stony body",
+                    "Chunks of metals set within the stony body" },
+                rareOther: new[] { "Chunks of minerals and gems set within the stony body", "Chunks of gems and metals set within the stony body",
+                    "Chunks of metals and minerals set within the stony body", "Chunks of minerals, gems, and metals set within the stony body" });
+            appearances[CreatureConstants.Elemental_Earth_Elder] = GetWeightedAppearances(
+                allSkin: new[] { "Vaguely humanoid with club-like arms made of jagged stone and a head made of both dirt and stone" },
+                uncommonOther: new[] { "Chunks of minerals set within the stony body", "Chunks of gems set within the stony body",
+                    "Chunks of metals set within the stony body" },
+                rareOther: new[] { "Chunks of minerals and gems set within the stony body", "Chunks of gems and metals set within the stony body",
+                    "Chunks of metals and minerals set within the stony body", "Chunks of minerals, gems, and metals set within the stony body" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Fire_elemental
+            appearances[CreatureConstants.Elemental_Fire_Small] = new[] { "A column of red flames", "A column of yellow flames", "A column of orange flames",
+                "A column of red/yellow flames", "A column of yellow/orange flames", "A column of orange/red flames", "A column of red/yellow/orange flames" };
+            appearances[CreatureConstants.Elemental_Fire_Medium] = new[] { "A column of red flames", "A column of yellow flames", "A column of orange flames",
+                "A column of red/yellow flames", "A column of yellow/orange flames", "A column of orange/red flames", "A column of red/yellow/orange flames" };
+            appearances[CreatureConstants.Elemental_Fire_Large] = new[] { "A column of red flames", "A column of yellow flames", "A column of orange flames",
+                "A column of red/yellow flames", "A column of yellow/orange flames", "A column of orange/red flames", "A column of red/yellow/orange flames" };
+            appearances[CreatureConstants.Elemental_Fire_Huge] = new[] { "A column of red flames", "A column of yellow flames", "A column of orange flames",
+                "A column of red/yellow flames", "A column of yellow/orange flames", "A column of orange/red flames", "A column of red/yellow/orange flames" };
+            appearances[CreatureConstants.Elemental_Fire_Greater] = new[] { "A column of red flames", "A column of yellow flames", "A column of orange flames",
+                "A column of red/yellow flames", "A column of yellow/orange flames", "A column of orange/red flames", "A column of red/yellow/orange flames" };
+            appearances[CreatureConstants.Elemental_Fire_Elder] = new[] { "A column of red flames", "A column of yellow flames", "A column of orange flames",
+                "A column of red/yellow flames", "A column of yellow/orange flames", "A column of orange/red flames", "A column of red/yellow/orange flames" };
+            //Source: https://forgottenrealms.fandom.com/wiki/Water_elemental
+            appearances[CreatureConstants.Elemental_Water_Small] = new[] { "A cresting wave of water" };
+            appearances[CreatureConstants.Elemental_Water_Medium] = new[] { "A cresting wave of water" };
+            appearances[CreatureConstants.Elemental_Water_Large] = new[] { "A cresting wave of water" };
+            appearances[CreatureConstants.Elemental_Water_Huge] = new[] { "A cresting wave of water" };
+            appearances[CreatureConstants.Elemental_Water_Greater] = new[] { "A cresting wave of water" };
+            appearances[CreatureConstants.Elemental_Water_Elder] = new[] { "A cresting wave of water" };
+            //Source: https://en.wikipedia.org/wiki/African_bush_elephant#Description
+            appearances[CreatureConstants.Elephant] = new[] { "Gray skin with scanty hairs. Large, pointed, triangular ears cover the whole shoulder." };
+            //Source: https://forgottenrealms.fandom.com/wiki/Aquatic_elf
+            appearances[CreatureConstants.Elf_Aquatic] = GetWeightedAppearances(
+                commonSkin: new[] { "Deep green skin, mottled and striped with brown", "Blue skin with white stripes and patches",
+                    "Deep blue skin with white stripes and patches", "Light blue skin with white stripes and patches",
+                    "Pale silver-green skin" },
+                uncommonSkin: new[] { "Pale silver-green skin" },
+                commonEyes: new[] { "Turquoise eyes", "White eyes", "Black eyes", "Blue eyes", "Green eyes" },
+                rareEyes: new[] { "Silver eyes" },
+                commonHair: new[] { "Thick, somewhat-stringy black hair", "Thick, somewhat-stringy blue hair", "Thick, somewhat-stringy silver-white hair",
+                        "Thick, somewhat-stringy blue-green hair", "Thick, somewhat-stringy emerald green hair" },
+                uncommonHair: new[] { "Thick, somewhat-stringy red hair",
+                    "Thick, somewhat-stringy, rough black hair", "Thick, somewhat-stringy, rough blue hair", "Thick, somewhat-stringy, rough silver-white hair",
+                        "Thick, somewhat-stringy, rough blue-green hair", "Thick, somewhat-stringy, rough emerald green hair" },
+                rareHair: new[] { "Thick, somewhat-stringy, rough red hair" },
+                allOther: new[] { "Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Drow
+            //https://www.d20srd.org/srd/monsters/elf.htm
+            appearances[CreatureConstants.Elf_Drow] = GetWeightedAppearances(
+                commonSkin: new[] { "Black skin", "Dark blue skin", "Gray skin", "Dark gray skin", "Jet-black skin", "Obsidian-colored skin", "Blue skin",
+                    "Gray-blue skin", "Black-blue skin" },
+                rareSkin: new[] { "White (albino) skin" },
+                commonEyes: new[] { "Bright red eyes", "Vivid red eyes" },
+                uncommonEyes: new[] { "Pale white-blue eyes", "Pale white-lilac eyes", "Pale white-pink eyes", "Pale white-silver eyes", "Purple eyes", "Blue eyes" },
+                rareEyes: new[] { "Green eyes", "Brown eyes", "Black eyes", "Amber eyes", "Rose-hued eyes" },
+                commonHair: new[] { "Straight Stark white hair", "Wavy Stark white hair", "Curly Stark white hair", "Kinky Stark white hair",
+                    "Straight Pale yellow hair", "Wavy Pale yellow hair", "Curly Pale yellow hair", "Kinky Pale yellow hair" },
+                uncommonHair: new[] { "Straight Gray hair", "Wavy Gray hair", "Curly Gray hair", "Kinky Gray hair",
+                    "Straight Pale Yellow hair", "Wavy Pale Yellow hair", "Curly Pale Yellow hair", "Kinky Pale Yellow hair",
+                    "Straight Silver hair", "Wavy Silver hair", "Curly Silver hair", "Kinky Silver hair",
+                    "Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair",
+                    "Pale TODO Human hair",
+                    "Pale TODO High Elf hair" },
+                allOther: new[] { "Pointed ears" });
+            //Source: https://www.d20srd.org/srd/monsters/elf.htm
+            //https://forgottenrealms.fandom.com/wiki/Grey_elf
+            appearances[CreatureConstants.Elf_Gray] = GetWeightedAppearances(
+                commonSkin: new[] { "Pale grey skin" },
+                commonHair: new[] { "Straight Silver hair", "Wavy Silver hair", "Curly Silver hair", "Kinky Silver hair" },
+                uncommonHair: new[] { "Straight pale-golden hair", "Wavy pale-golden hair", "Curly pale-golden hair", "Kinky pale-golden hair" },
+                commonEyes: new[] { "Amber eyes" },
+                uncommonEyes: new[] { "Violet eyes" },
+                allOther: new[] { "Pointed ears" });
+            //Source: https://www.d20srd.org/srd/monsters/elf.htm
             appearances[CreatureConstants.Elf_Half] = GetWeightedAppearances(
-                commonSkin: new[] { "Black skin", "Brown skin", "Olive skin", "White skin", "Pink skin",
-                    "Deep Black skin", "Deep Brown skin", "Deep Olive skin", "Deep White skin", "Deep Pink skin",
-                    "Pale Black skin", "Pale Brown skin", "Pale Olive skin", "Pale White skin", "Pale Pink skin",
+                commonSkin: new[] { "TODO Human skin",
                     "TODO High Elf Skin" },
-                commonHair: new[] { "Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair",
-                    "Curly Red hair", "Curly Blond hair", "Curly Brown hair", "Curly Black hair",
-                    "Kinky Red hair", "Kinky Blond hair", "Kinky Brown hair", "Kinky Black hair",
-                    "TODO High Elf Hair" },
-                commonEyes: new[] { "Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes",
-                    "TODO High Elf Eyes" },
                 uncommonSkin: new[] { "TODO Grey Elf Skin",
                     "TODO Wood Elf Skin",
                     "TODO Wild Elf Skin",
                     "TODO Drow Skin" },
+                commonHair: new[] { "TODO Human hair",
+                    "TODO High Elf Hair" },
                 uncommonHair: new[] { "TODO Grey Elf Hair",
                     "TODO Wood Elf Hair",
                     "TODO Wild Elf Hair",
                     "TODO Drow Hair" },
+                commonEyes: new[] { "TODO Human eyes",
+                    "TODO High Elf eyes" },
                 uncommonEyes: new[] { "TODO Grey Elf Eyes",
                     "TODO Wood Elf Eyes",
                     "TODO Wild Elf Eyes",
-                    "TODO Drow Eyes" });
-            appearances[CreatureConstants.Elf_High][GenderConstants.Female] = "4*12+5";
-            appearances[CreatureConstants.Elf_High][GenderConstants.Male] = "4*12+5";
-            appearances[CreatureConstants.Elf_High][CreatureConstants.Elf_High] = "2d6";
-            appearances[CreatureConstants.Elf_Wild][GenderConstants.Female] = "4*12+5";
-            appearances[CreatureConstants.Elf_Wild][GenderConstants.Male] = "4*12+5";
-            appearances[CreatureConstants.Elf_Wild][CreatureConstants.Elf_Wild] = "2d6";
-            appearances[CreatureConstants.Elf_Wood][GenderConstants.Female] = "4*12+5";
-            appearances[CreatureConstants.Elf_Wood][GenderConstants.Male] = "4*12+5";
-            appearances[CreatureConstants.Elf_Wood][CreatureConstants.Elf_Wood] = "2d6";
+                    "TODO Drow Eyes" },
+                allOther: new[] { "Pointed ears" });
+            //Source: https://forgottenrealms.fandom.com/wiki/High_elf
+            appearances[CreatureConstants.Elf_High] = GetWeightedAppearances(
+                commonSkin: new[] { "Brown skin", "Olive skin", "White skin", "Pink skin",
+                    "Pale Brown skin", "Pale Olive skin", "Pale White skin", "Pale Pink skin" },
+                uncommonSkin: new[] { "Dark brown skin", "Dark Olive skin", "Dark Pink skin" },
+                commonHair: new[] { "Straight Black hair", "Wavy Black hair", "Curly Black hair", "Kinky Black hair",
+                    "Straight White hair", "Wavy White hair", "Curly White hair", "Kinky White hair",
+                    "Straight Silver hair", "Wavy Silver hair", "Curly Silver hair", "Kinky Silver hair",
+                    "Straight Pale Gold hair", "Wavy Pale Gold hair", "Curly Pale Gold hair", "Kinky Pale Gold hair" },
+                uncommonHair: new[] { "Straight Black hair with silvery hues", "Wavy Black hair with silvery hues",
+                        "Curly Black hair with silvery hues", "Kinky Black hair with silvery hues",
+                    "Straight Black hair with blond hues", "Wavy Black hair with blond hues", "Curly Black hair with blond hues", "Kinky Black hair with blond hues",
+                    "Straight Black hair with copper hues", "Wavy Black hair with copper hues", "Curly Black hair with copper hues", "Kinky Black hair with copper hues",
+                    "Straight White hair with silvery hues", "Wavy White hair with silvery hues", "Curly White hair with silvery hues",
+                        "Kinky White hair with silvery hues",
+                    "Straight White hair with blond hues", "Wavy White hair with blond hues", "Curly White hair with blond hues", "Kinky White hair with blond hues",
+                    "Straight White hair with copper hues", "Wavy White hair with copper hues", "Curly White hair with copper hues", "Kinky White hair with copper hues",
+                    "Straight Silver hair with silvery hues", "Wavy Silver hair with silvery hues", "Curly Silver hair with silvery hues",
+                        "Kinky Silver hair with silvery hues",
+                    "Straight Silver hair with blond hues", "Wavy Silver hair with blond hues", "Curly Silver hair with blond hues", "Kinky Silver hair with blond hues",
+                    "Straight Silver hair with copper hues", "Wavy Silver hair with copper hues", "Curly Silver hair with copper hues",
+                        "Kinky Silver hair with copper hues",
+                    "Straight Pale Gold hair with silvery hues", "Wavy Pale Gold hair with silvery hues", "Curly Pale Gold hair with silvery hues",
+                        "Kinky Pale Gold hair with silvery hues",
+                    "Straight Pale Gold hair with blond hues", "Wavy Pale Gold hair with blond hues", "Curly Pale Gold hair with blond hues",
+                        "Kinky Pale Gold hair with blond hues",
+                    "Straight Pale Gold hair with copper hues", "Wavy Pale Gold hair with copper hues", "Curly Pale Gold hair with copper hues",
+                        "Kinky Pale Gold hair with copper hues" },
+                commonEyes: new[] { "Green eyes" },
+                uncommonEyes: new[] { "Golden eyes", "Blue eyes", "Light Blue eyes", "Green eyes speckled with gold" },
+                rareEyes: new[] { "Violet eyes", "Blue eyes speckled with gold", "Light Blue eyes speckled with gold", "Violet eyes speckled with gold",
+                    "Solid green eyes, lacking pupils", "Solid golden eyes, lacking pupils", "Solid blue eyes, lacking pupils", "Solid light blue eyes, lacking pupils",
+                    "Solid violet eyes, lacking pupils", "Solid green eyes speckled with gold, lacking pupils", "Solid golden eyes speckled with gold, lacking pupils",
+                    "Solid blue eyes speckled with gold, lacking pupils", "Solid light blue eyes speckled with gold, lacking pupils",
+                    "Solid violet eyes speckled with gold, lacking pupils" },
+                allOther: new[] { "Pointed ears" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Wild_elf
+            //https://www.d20srd.org/srd/monsters/elf.htm
+            appearances[CreatureConstants.Elf_Wild] = GetWeightedAppearances(
+                allSkin: new[] { "Light brown skin", "Brown skin", "Dark brown skin" },
+                commonHair: new[] { "Straight Black hair", "Wavy Black hair", "Curly Black hair", "Kinky Black hair",
+                    "Straight Dark Brown hair", "Wavy Dark Brown hair", "Curly Dark Brown hair", "Kinky Dark Brown hair",
+                    "Straight Brown hair", "Wavy Brown hair", "Curly Brown hair", "Kinky Brown hair",
+                    "Straight Light Brown hair", "Curly Light Brown hair", "Wavy Light Brown hair", "Kinky Light Brown hair" },
+                uncommonHair: new[] { "Straight Silver hair", "Wavy Silver hair", "Curly Silver hair", "Kinky Silver hair",
+                    "Straight Silvery-White hair", "Wavy Silvery-White hair", "Curly Silvery-White hair", "Kinky Silvery-White hair",
+                    "Straight Gray hair", "Wavy Gray hair", "Curly Gray hair", "Kinky Gray hair",
+                    "Straight White hair", "Wavy White hair", "Curly White hair", "Kinky White hair" },
+                allEyes: new[] { "TODO High Elf eyes" },
+                allOther: new[] { "Pointed ears" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Wood_elf
+            //https://www.d20srd.org/srd/monsters/elf.htm
+            appearances[CreatureConstants.Elf_Wood] = GetWeightedAppearances(
+                allSkin: new[] { "Copper skin", "Tan skin" },
+                commonHair: new[] { "Straight Black hair", "Straight Light Brown hair", "Straight Brown hair",
+                    "Wavy Black hair", "Wavy Light Brown hair", "Wavy Brown hair",
+                    "Curly Black hair", "Curly Light Brown hair", "Curly Brown hair",
+                    "Kinky Black hair", "Kinky Light Brown hair", "Kinky Brown hair", },
+                uncommonHair: new[] { "Straight Yellow hair", "Straight Blond hair", "Straight Copper-Red hair",
+                    "Wavy Yellow hair", "Wavy Blond hair", "Wavy Copper-Red hair",
+                    "Curly Yellow hair", "Curly Blond hair", "Curly Copper-Red hair",
+                    "Kinky Yellow hair", "Kinky Blond hair", "Kinky Copper-Red hair" },
+                allEyes: new[] { "Green eyes", "Brown eyes", "Hazel eyes" },
+                allOther: new[] { "Pointed ears" });
             //Source: https://www.d20srd.org/srd/monsters/devil.htm#erinyes
-            appearances[CreatureConstants.Erinyes][GenderConstants.Female] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.Erinyes][GenderConstants.Male] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.Erinyes][CreatureConstants.Erinyes] = GetMultiplierFromAverage(6 * 12);
-            //Source: https://aminoapps.com/c/officialdd/page/item/ethereal-filcher/5B63_a5vi5Ia7NM1djj0V1QYVoxpXweGW1z
-            appearances[CreatureConstants.EtherealFilcher][GenderConstants.Agender] = GetBaseFromAverage(4 * 12 + 6);
-            appearances[CreatureConstants.EtherealFilcher][CreatureConstants.EtherealFilcher] = GetMultiplierFromAverage(4 * 12 + 6);
+            //https://forgottenrealms.fandom.com/wiki/Erinyes
+            appearances[CreatureConstants.Erinyes] = GetWeightedAppearances(
+                allSkin: new[] { "TODO Human skin" },
+                allHair: new[] { "TODO Human hair" },
+                allEyes: new[] { "Red eyes" });
+            //Source: https://www.5esrd.com/database/creature/ethereal-filcher/
+            appearances[CreatureConstants.EtherealFilcher] = new[] { "One foot. Four arms ending in hands with long, spindly fingers. Looks as if it has two heads, one on a long stalk of a neck and another on its abdomen." };
             //Source: https://www.d20srd.org/srd/monsters/etherealMarauder.htm
-            appearances[CreatureConstants.EtherealMarauder][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.EtherealMarauder][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.EtherealMarauder][CreatureConstants.EtherealMarauder] = GetMultiplierFromAverage(4 * 12);
-            //Source: https://syrikdarkenedskies.obsidianportal.com/wikis/ettercap-race
-            appearances[CreatureConstants.Ettercap][GenderConstants.Female] = "5*12+7";
-            appearances[CreatureConstants.Ettercap][GenderConstants.Male] = "5*12+2";
-            appearances[CreatureConstants.Ettercap][CreatureConstants.Ettercap] = "2d10";
+            appearances[CreatureConstants.EtherealMarauder] = new[] { "Bright blue skin", "Blue skin", "Deep blue skin",
+                "Bright violet skin", "Violet skin", "Deep violet skin",
+                "Bright blue-violet skin", "Blue-violet skin", "Deep blue-violet skin" };
+            //Source: https://forgottenrealms.fandom.com/wiki/Ettercap
+            appearances[CreatureConstants.Ettercap] = new[] { "Grey-purplish skin. Distended underbelly. Spider-like face, with fangs and multiple eyes. Two sharp, black, chitinous claws instead of hands and feet." };
             //Source: https://forgottenrealms.fandom.com/wiki/Ettin
-            appearances[CreatureConstants.Ettin][GenderConstants.Female] = "12*12+2";
-            appearances[CreatureConstants.Ettin][GenderConstants.Male] = "12*12+10";
-            appearances[CreatureConstants.Ettin][CreatureConstants.Ettin] = "2d6";
-            appearances[CreatureConstants.FireBeetle_Giant][GenderConstants.Female] = "0";
-            appearances[CreatureConstants.FireBeetle_Giant][GenderConstants.Male] = "0";
-            appearances[CreatureConstants.FireBeetle_Giant][CreatureConstants.FireBeetle_Giant] = "0";
+            appearances[CreatureConstants.Ettin] = GetWeightedAppearances(
+                allSkin: new[] { "Brown skin, crusted over with a thick layer of grime", "Olive skin, crusted over with a thick layer of grime",
+                        "Pink skin, crusted over with a thick layer of grime", "Gray skin, crusted over with a thick layer of grime",
+                    "Deep Brown skin, crusted over with a thick layer of grime", "Deep Olive skin, crusted over with a thick layer of grime",
+                        "Deep Pink skin, crusted over with a thick layer of grime", "Deep Gray skin, crusted over with a thick layer of grime",
+                    "Pale Brown skin, crusted over with a thick layer of grime", "Pale Olive skin, crusted over with a thick layer of grime",
+                        "Pale Pink skin, crusted over with a thick layer of grime", "Pale Gray skin, crusted over with a thick layer of grime" },
+                allHair: new[] { "Long, stringy TODO HILL GIANT hair",
+                    "Long, stringy TODO STONE GIANT hair" },
+                allEyes: new[] { "Large, watery TODO ORC eyes" },
+                allOther: new[] { "Two heads. Horrid stench. Shovel jaws with lower canine teeth that protrude out like boar tusks." });
+            //Source: https://beetleidentifications.com/fire-beetle/
+            //https://forgottenrealms.fandom.com/wiki/Giant_fire_beetle
+            appearances[CreatureConstants.FireBeetle_Giant] = GetWeightedAppearances(
+                commonSkin: new[] { "Brown color" },
+                uncommonSkin: new[] { "Shimmering green color", "Black color with red markings", "Red color", "Orange color",
+                    "Orange color with brown flame-like markings", "Purple color with red markings" },
+                allOther: new[] { "Red bioluminescent glands above each eye and near the abdomen" });
             //Source: https://www.d20srd.org/srd/monsters/formian.htm
-            appearances[CreatureConstants.FormianWorker][GenderConstants.Male] = GetBaseFromAverage(2 * 12 + 6);
-            appearances[CreatureConstants.FormianWorker][CreatureConstants.FormianWorker] = GetMultiplierFromAverage(2 * 12 + 6);
-            appearances[CreatureConstants.FormianWarrior][GenderConstants.Male] = GetBaseFromAverage(4 * 12 + 6);
-            appearances[CreatureConstants.FormianWarrior][CreatureConstants.FormianWarrior] = GetMultiplierFromAverage(4 * 12 + 6);
-            appearances[CreatureConstants.FormianTaskmaster][GenderConstants.Male] = GetBaseFromAverage(4 * 12 + 6);
-            appearances[CreatureConstants.FormianTaskmaster][CreatureConstants.FormianTaskmaster] = GetMultiplierFromAverage(4 * 12 + 6);
-            appearances[CreatureConstants.FormianMyrmarch][GenderConstants.Male] = GetBaseFromAverage(5 * 12 + 6);
-            appearances[CreatureConstants.FormianMyrmarch][CreatureConstants.FormianMyrmarch] = GetMultiplierFromAverage(5 * 12 + 6);
-            appearances[CreatureConstants.FormianQueen][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.FormianQueen][CreatureConstants.FormianQueen] = GetMultiplierFromAverage(4 * 12);
+            appearances[CreatureConstants.FormianWorker] = GetWeightedAppearances(
+                allSkin: new[] { "Brownish-red carapace" },
+                allOther: new[] { "Hands only suitable for manual labor" });
+            appearances[CreatureConstants.FormianWarrior] = GetWeightedAppearances(
+                allSkin: new[] { "Brownish-red carapace" },
+                allOther: new[] { "Sharp mandibles and poison stingers" });
+            appearances[CreatureConstants.FormianTaskmaster] = GetWeightedAppearances(
+                allSkin: new[] { "Brownish-red carapace" },
+                allOther: new[] { "Neither mandible nor mouth" });
+            appearances[CreatureConstants.FormianMyrmarch] = GetWeightedAppearances(
+                allSkin: new[] { "Brownish-red carapace" },
+                allOther: new[] { "Claws capable of fine manipulation, like human hands" });
+            appearances[CreatureConstants.FormianQueen] = GetWeightedAppearances(
+                allSkin: new[] { "Brownish-red carapace" },
+                allOther: new[] { "Body too large to allow for movement on her weak, atrophied legs" });
             //Source: https://forgottenrealms.fandom.com/wiki/Frost_worm
-            appearances[CreatureConstants.FrostWorm][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.FrostWorm][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.FrostWorm][CreatureConstants.FrostWorm] = GetMultiplierFromAverage(5 * 12);
-            //Source: https://dungeonsdragons.fandom.com/wiki/Gargoyle
-            appearances[CreatureConstants.Gargoyle][GenderConstants.Agender] = "5*12";
-            appearances[CreatureConstants.Gargoyle][CreatureConstants.Gargoyle] = "2d10";
-            appearances[CreatureConstants.Gargoyle_Kapoacinth][GenderConstants.Agender] = "5*12";
-            appearances[CreatureConstants.Gargoyle_Kapoacinth][CreatureConstants.Gargoyle_Kapoacinth] = "2d10";
-            //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/gelatinous-cube-species
-            appearances[CreatureConstants.GelatinousCube][GenderConstants.Agender] = GetBaseFromAverage(10 * 12);
-            appearances[CreatureConstants.GelatinousCube][CreatureConstants.GelatinousCube] = GetMultiplierFromAverage(10 * 12);
+            appearances[CreatureConstants.FrostWorm] = GetWeightedAppearances(
+                commonSkin: new[] { "Blue-white skin", "Very pale blue skin" },
+                uncommonSkin: new[] { "Blue-white skin with a purple underbelly", "Very pale blue skin with a purple underbelly" },
+                allOther: new[] { "Huge mandibles. Nodule from which it emits a trilling noise." });
+            //Source: https://forgottenrealms.fandom.com/wiki/Gargoyle - adding my own info for skin tones
+            appearances[CreatureConstants.Gargoyle] = GetWeightedAppearances(
+                allSkin: new[] { "Brown stone skin", "Dark Brown stone skin", "Light Brown stone skin",
+                    "Gray stone skin", "Dark Gray stone skin","Light Gray stone skin",
+                    "White stone skin", "Marble stone skin", "Black stone skin" },
+                allOther: new[] { "Demon-like humanoid" });
+            appearances[CreatureConstants.Gargoyle_Kapoacinth] = GetWeightedAppearances(
+                allSkin: new[] { "Brown stone skin", "Dark Brown stone skin", "Light Brown stone skin",
+                    "Gray stone skin", "Dark Gray stone skin","Light Gray stone skin",
+                    "White stone skin", "Marble stone skin", "Black stone skin" },
+                allOther: new[] { "Demon-like humanoid" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Gelatinous_cube
+            appearances[CreatureConstants.GelatinousCube] = GetWeightedAppearances(
+                allSkin: new[] { "Completely transparent cube, with only a glint on the surface to give away its position",
+                    "Completely transparent rhombohedron, with only a glint on the surface to give away its position" },
+                uncommonOther: new[] { "An object floats within the cube's body", "Two objects float within the cube's body",
+                    "Three objects float within the cube's body" });
             //Source: https://forgottenrealms.fandom.com/wiki/Ghaele
-            //Adjusting female -2" to match range
-            appearances[CreatureConstants.Ghaele][GenderConstants.Female] = GetBaseFromRange(4 * 12 + 7, 6 * 12 + 7 - 2);
-            appearances[CreatureConstants.Ghaele][GenderConstants.Male] = GetBaseFromRange(5 * 12 + 2, 7 * 12);
-            appearances[CreatureConstants.Ghaele][CreatureConstants.Ghaele] = GetMultiplierFromRange(5 * 12 + 2, 7 * 12);
+            appearances[CreatureConstants.Ghaele] = GetWeightedAppearances(
+                allSkin: new[] { "TODO High Elf skin" },
+                allHair: new[] { "TODO High Elf hair" },
+                allEyes: new[] { "Opalescent pearl eyes" });
             //Source: https://www.dandwiki.com/wiki/Ghoul_(5e_Race)
             appearances[CreatureConstants.Ghoul][GenderConstants.Female] = "4*12";
             appearances[CreatureConstants.Ghoul][GenderConstants.Male] = "4*12";
@@ -1801,6 +1946,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Deep Black skin", "Deep Brown skin", "Deep Olive skin", "Deep White skin", "Deep Pink skin",
                     "Pale Black skin", "Pale Brown skin", "Pale Olive skin", "Pale White skin", "Pale Pink skin" },
                 allHair: new[] { "Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair",
+                    "Wavy Red hair", "Wavy Blond hair", "Wavy Brown hair", "Wavy Black hair",
                     "Curly Red hair", "Curly Blond hair", "Curly Brown hair", "Curly Black hair",
                     "Kinky Red hair", "Kinky Blond hair", "Kinky Brown hair", "Kinky Black hair" },
                 allEyes: new[] { "Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes" });

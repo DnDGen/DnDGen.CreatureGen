@@ -1073,14 +1073,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Elephant][GenderConstants.Male] = GetBaseFromRange(8 * 12 + 6, 13 * 12);
             heights[CreatureConstants.Elephant][CreatureConstants.Elephant] = GetMultiplierFromRange(8 * 12 + 6, 13 * 12);
             //Source: https://www.d20srd.org/srd/description.htm#vitalStatistics
-            heights[CreatureConstants.Elf_Aquatic][GenderConstants.Female] = "4*12+5";
-            heights[CreatureConstants.Elf_Aquatic][GenderConstants.Male] = "4*12+5";
+            //https://forgottenrealms.fandom.com/wiki/Aquatic_elf - larger and heavier, so 110%
+            heights[CreatureConstants.Elf_Aquatic][GenderConstants.Female] = "(4*12+5)*1.1";
+            heights[CreatureConstants.Elf_Aquatic][GenderConstants.Male] = "(4*12+5)*1.1";
             heights[CreatureConstants.Elf_Aquatic][CreatureConstants.Elf_Aquatic] = "2d6";
-            heights[CreatureConstants.Elf_Drow][GenderConstants.Female] = "4*12+5";
-            heights[CreatureConstants.Elf_Drow][GenderConstants.Male] = "4*12+5";
-            heights[CreatureConstants.Elf_Drow][CreatureConstants.Elf_Drow] = "2d6";
-            heights[CreatureConstants.Elf_Gray][GenderConstants.Female] = "4*12+5";
-            heights[CreatureConstants.Elf_Gray][GenderConstants.Male] = "4*12+5";
+            //Source: https://forgottenrealms.fandom.com/wiki/Drow
+            heights[CreatureConstants.Elf_Drow][GenderConstants.Female] = GetBaseFromRange(4 * 12 + 7, 5 * 12 + 5);
+            heights[CreatureConstants.Elf_Drow][GenderConstants.Male] = GetBaseFromRange(4 * 12 + 7, 5 * 12 + 5);
+            heights[CreatureConstants.Elf_Drow][CreatureConstants.Elf_Drow] = GetMultiplierFromRange(4 * 12 + 7, 5 * 12 + 5);
+            //Source: https://www.d20srd.org/srd/monsters/elf.htm taller, so 110%
+            heights[CreatureConstants.Elf_Gray][GenderConstants.Female] = "(4*12+5)*1.1";
+            heights[CreatureConstants.Elf_Gray][GenderConstants.Male] = "(4*12+5)*1.1";
             heights[CreatureConstants.Elf_Gray][CreatureConstants.Elf_Gray] = "2d6";
             heights[CreatureConstants.Elf_Half][GenderConstants.Female] = "4*12+5";
             heights[CreatureConstants.Elf_Half][GenderConstants.Male] = "4*12+7";
@@ -1088,8 +1091,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Elf_High][GenderConstants.Female] = "4*12+5";
             heights[CreatureConstants.Elf_High][GenderConstants.Male] = "4*12+5";
             heights[CreatureConstants.Elf_High][CreatureConstants.Elf_High] = "2d6";
+            //https://forgottenrealms.fandom.com/wiki/Wild_elf Males 5 inches taller
             heights[CreatureConstants.Elf_Wild][GenderConstants.Female] = "4*12+5";
-            heights[CreatureConstants.Elf_Wild][GenderConstants.Male] = "4*12+5";
+            heights[CreatureConstants.Elf_Wild][GenderConstants.Male] = "4*12+10";
             heights[CreatureConstants.Elf_Wild][CreatureConstants.Elf_Wild] = "2d6";
             heights[CreatureConstants.Elf_Wood][GenderConstants.Female] = "4*12+5";
             heights[CreatureConstants.Elf_Wood][GenderConstants.Male] = "4*12+5";
@@ -1110,9 +1114,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             heights[CreatureConstants.Ettercap][GenderConstants.Male] = "5*12+2";
             heights[CreatureConstants.Ettercap][CreatureConstants.Ettercap] = "2d10";
             //Source: https://forgottenrealms.fandom.com/wiki/Ettin
-            heights[CreatureConstants.Ettin][GenderConstants.Female] = "12*12+2";
-            heights[CreatureConstants.Ettin][GenderConstants.Male] = "12*12+10";
-            heights[CreatureConstants.Ettin][CreatureConstants.Ettin] = "2d6";
+            heights[CreatureConstants.Ettin][GenderConstants.Female] = GetBaseFromRange(12 * 12 + 4, 13 * 12 + 2);
+            heights[CreatureConstants.Ettin][GenderConstants.Male] = GetBaseFromRange(13 * 12, 13 * 12 + 10);
+            heights[CreatureConstants.Ettin][CreatureConstants.Ettin] = GetMultiplierFromRange(13 * 12, 13 * 12 + 10);
             heights[CreatureConstants.FireBeetle_Giant][GenderConstants.Female] = "0";
             heights[CreatureConstants.FireBeetle_Giant][GenderConstants.Male] = "0";
             heights[CreatureConstants.FireBeetle_Giant][CreatureConstants.FireBeetle_Giant] = "0";
