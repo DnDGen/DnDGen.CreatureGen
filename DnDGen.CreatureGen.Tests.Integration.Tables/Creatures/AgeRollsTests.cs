@@ -1532,8 +1532,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Imp][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
                 testCases[CreatureConstants.InvisibleStalker][AgeConstants.Categories.Adulthood] = outsiderAgeRoll;
                 testCases[CreatureConstants.InvisibleStalker][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
-                testCases[CreatureConstants.Janni][AgeConstants.Categories.Adulthood] = outsiderAgeRoll;
-                testCases[CreatureConstants.Janni][AgeConstants.Categories.Maximum] = AgeConstants.Ageless.ToString();
+                //Source: https://forgottenrealms.fandom.com/wiki/Janni
+                testCases[CreatureConstants.Janni][AgeConstants.Categories.Adulthood] = GetAdulthoodRollFromUpTo(300);
+                testCases[CreatureConstants.Janni][AgeConstants.Categories.MiddleAge] = GetMiddleAgeRollFromUpTo(300);
+                testCases[CreatureConstants.Janni][AgeConstants.Categories.Old] = GetOldRollFromUpTo(300);
+                testCases[CreatureConstants.Janni][AgeConstants.Categories.Venerable] = GetVenerableRollFromUpTo(300);
+                testCases[CreatureConstants.Janni][AgeConstants.Categories.Maximum] = GetMaximumRollFromUpTo(300);
                 //Source: http://people.wku.edu/charles.plemons/ad&d/races/age.html
                 testCases[CreatureConstants.Kobold][AgeConstants.Categories.Adulthood] = GetRoll(12, 47);
                 testCases[CreatureConstants.Kobold][AgeConstants.Categories.MiddleAge] = GetRoll(48, 61);

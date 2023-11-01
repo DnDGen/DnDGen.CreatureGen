@@ -2094,6 +2094,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allEyes: new[] { "Yellow eyes", "Green eyes", "Blue eyes", "Blue-green eyes", "Red eyes", "Black eyes" },
                 allOther: new[] { "Sweeping horns, wings, prehensile, serpentine tail" });
             //Source: https://www.google.com/search?q=draft+horse+breeds
+            //https://equineworld.co.uk/about-horses/horse-colours-and-markings/horse-coat-colours-and-patterns
             appearances[CreatureConstants.Horse_Heavy] = new[] { "Belgian Draught", "Shire horse", "Clydesdale horse", "Percheron", "Suffolk Punch",
                 "American Cream Draft", "Ardennais", "Haflinger", "Irish Draught", "Dutch Draft", "Friesian horse", "Fjord horse", "Russian Heavy Draft",
                 "Boulonnais horse", "Galineers Cob", "Australian Draught", "North Swedish Horse", "Noriker", "American Belgian Draft", "Breton horse", "Jutland",
@@ -2101,14 +2102,142 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "North American Spotted Draft Horse", "Bashkir horse", "Soviet Heavy Draft", "Italian Heavy Draft", "South German Coldblood", "Hackney horse",
                 "Polish Draft", "Dole Gudbrandsdal", "Spotted Draft", "Groninger", "Orlov Trotter", "Gelderlander", "Kabardian", "Karabair", "Kazakh horse",
                 "Camargue horse", "Losino horse", "American Quarter Horse", "Zemaitukas", "Vyatka horse", "Estonian Native", "Kisber Felver", "Shagya Arabian",
-                "Byelorussian Harness Horse" };
+                "Byelorussian Harness Horse",
+                "Spotted (White coat with black spots; Black/white mane and tail)", "Spotted (White coat with brown spots; Brown/white mane and tail)",
+                    "Spotted (White coat with gray spots; Gray/white mane and tail)", "Spotted (White coat with ginger spots; Ginger/white mane and tail)",
+                    "Spotted (White coat with golden spots; Golden/white mane and tail)", "Spotted (White coat with cream spots; Cream/white mane and tail)",
+                    "Spotted (White coat with light gray spots; Light gray/white mane and tail)",
+                    "Spotted (White coat with dark gray spots; Dark gray/white mane and tail)",
+                    "Spotted (White coat with creamy golden spots; Creamy golden/white mane and tail)",
+                    "Spotted (White coat with light ginger spots; Light ginger/white mane and tail)",
+                    "Spotted (White coat with dark ginger spots; Dark ginger/white mane and tail)",
+                    "Spotted (Black coat with white spots; White/black mane and tail)",
+                    "Spotted (Black coat with brown spots; Brown/black mane and tail)",
+                    "Spotted (Black coat with gray spots; Gray/black mane and tail)",
+                    "Spotted (Black coat with ginger spots; Ginger/black mane and tail)",
+                    "Spotted (Black coat with golden spots; Golden/black mane and tail)",
+                    "Spotted (Black coat with cream spots; Cream/black mane and tail)",
+                    "Spotted (Black coat with light gray spots; Light gray/black mane and tail)",
+                    "Spotted (Black coat with dark gray spots; Dark gray/black mane and tail)",
+                    "Spotted (Black coat with creamy golden spots; Creamy golden/black mane and tail)",
+                    "Spotted (Black coat with light ginger spots; Light ginger/black mane and tail)",
+                    "Spotted (Black coat with dark ginger spots; Dark ginger/black mane and tail)",
+                    "Spotted (Brown coat with white spots; White/brown mane and tail)",
+                    "Spotted (Brown coat with black spots; Black/brown mane and tail)",
+                    "Spotted (Brown coat with gray spots; Gray/brown mane and tail)",
+                    "Spotted (Brown coat with ginger spots; Ginger/brown mane and tail)",
+                    "Spotted (Brown coat with golden spots; Golden/brown mane and tail)",
+                    "Spotted (Brown coat with cream spots; Cream/brown mane and tail)",
+                    "Spotted (Brown coat with light gray spots; Light gray/brown mane and tail)",
+                    "Spotted (Brown coat with dark gray spots; Dark gray/brown mane and tail)",
+                    "Spotted (Brown coat with creamy golden spots; Creamy golden/brown mane and tail)",
+                    "Spotted (Brown coat with light ginger spots; Light ginger/brown mane and tail)",
+                    "Spotted (Brown coat with dark ginger spots; Dark ginger/brown mane and tail)",
+                "Bay (Brown coat; Black legs; Black mane and tail)", "Solid black coat; Black mane and tail",
+                "Brown coat; Black lower legs; Light brown mane, tail, and muzzle",
+                "Buckskin (Creamy-golden coat with black points; Black mane and tail)", "Buckskin (Rich golden coat with black points; Black mane and tail)",
+                "Chestnut (Ginger coat; Ginger mane and tail)", "Chestnut (Ginger coat; Light ginger mane and tail)",
+                    "Chestnut (Ginger coat; Dark ginger mane and tail)",
+                "Chestnut (Light ginger coat; Ginger mane and tail)", "Chestnut (Light ginger coat; Light ginger mane and tail)",
+                    "Chestnut (Light ginger coat; Dark ginger mane and tail)",
+                "Chestnut (Dark ginger coat; Ginger mane and tail)", "Chestnut (Dark ginger coat; Light ginger mane and tail)",
+                    "Chestnut (Dark ginger coat; Dark ginger mane and tail)",
+                "Cremello (Extremely pale white coat, mane, and tail; Blue eyes)", "Cremello (Extremely pale white coat, mane, and tail; Amber eyes)",
+                    "Cremello (Extremely pale cream coat, mane, and tail; Blue eyes)", "Cremello (Extremely pale cream coat, mane, and tail; Amber eyes)",
+                "Dun (Creamy-golden coat; Black mane and tail; Dark dorsal strip)",
+                "Solid white-gray coat, mane, and tail", "Solid light gray coat, mane, and tail", "Solid gray coat, mane, and tail",
+                    "Solid dark gray coat, mane, and tail",
+                "Overo (Black/white cow-patterned coat; Black mane and tail)", "Overo (Black/brown cow-patterned coat; Black mane and tail)",
+                    "Overo (Black/gray cow-patterned coat; Black mane and tail)", "Overo (Black/light gray cow-patterned coat; Black mane and tail)",
+                    "Overo (Black/dark gray cow-patterned coat; Black mane and tail)", "Overo (Black/creamy golden cow-patterned coat; Black mane and tail)",
+                    "Overo (Black/rich golden cow-patterned coat; Black mane and tail)", "Overo (Black/ginger cow-patterned coat; Black mane and tail)",
+                    "Overo (Black/light ginger cow-patterned coat; Black mane and tail)", "Overo (Black/dark ginger cow-patterned coat; Black mane and tail)",
+                    "Overo (Black/golden cow-patterned coat; Black mane and tail)", "Overo (Black/dark ginger cow-patterned coat; Black mane and tail)",
+                "Palomino (Golden coat; White mane and tail)",
+                "Roan (White-brown coat; Brown mane, tail, and legs)", "Roan (White-black coat; Black mane, tail, and legs)",
+                    "Roan (White-golden coat; Golden mane, tail, and legs)", "Roan (White-ginger coat; Ginger mane, tail, and legs)",
+                    "Roan (White-light-ginger coat; Light ginger mane, tail, and legs)", "Roan (White-dark-ginger coat; Dark ginger mane, tail, and legs)",
+                    "Roan (White-creamy-golden coat; Creamy golden mane, tail, and legs)", "Roan (White-rich-golden coat; Rich golden mane, tail, and legs)",
+                    "Roan (White-gray coat; Creamy golden mane, tail, and legs)", "Roan (White-light-gray coat; Rich golden mane, tail, and legs)",
+                    "Roan (White-dark-gray coat; Creamy golden mane, tail, and legs)",
+                "Tobiano (White/black cow-patterned coat; White mane and tail)", "Tobiano (White/brown cow-patterned coat; White mane and tail)",
+                    "Tobiano (White/gray cow-patterned coat; White mane and tail)", "Tobiano (White/light gray cow-patterned coat; White mane and tail)",
+                    "Tobiano (White/dark gray cow-patterned coat; White mane and tail)", "Tobiano (White/creamy golden cow-patterned coat; White mane and tail)",
+                    "Tobiano (White/rich golden cow-patterned coat; White mane and tail)", "Tobiano (White/ginger cow-patterned coat; White mane and tail)",
+                    "Tobiano (White/light ginger cow-patterned coat; White mane and tail)", "Tobiano (White/dark ginger cow-patterned coat; White mane and tail)",
+                    "Tobiano (White/golden cow-patterned coat; White mane and tail)", "Tobiano (White/dark ginger cow-patterned coat; White mane and tail)" };
             //Source: https://www.google.com/search?q=horse+breeds
+            //https://equineworld.co.uk/about-horses/horse-colours-and-markings/horse-coat-colours-and-patterns
             appearances[CreatureConstants.Horse_Light] = new[] { "Arabian", "Friesian", "Mustang", "Thoroughbread", "Appaloosa", "American Quarter Horse",
                 "Dutch Warmblood", "American Paint Horse", "Akhal-Teke", "Turkoman horse", "Mangalarga Marchador", "Percheron", "Criollo",
                 "Rahvan", "Kandachime", "Morgan horse", "Icelandic horse", "Cob", "Hanoverian", "Andalusian", "Lipizzan", "Lusitano", "Standardbred", "Falabella",
                 "Pure Spanish Breed", "Mongolian", "Trakehner", "Knabstupper", "Konik", "Ferghana", "Marwari", "American Saddlebred", "Missouri Fox Trotter",
-                "Belgian Warmblood", "Peruvian paso", "Brumby", "Holsteiner", "Welsh Cob", "Black Forest Horse", "Irish Sport Horse" };
+                "Belgian Warmblood", "Peruvian paso", "Brumby", "Holsteiner", "Welsh Cob", "Black Forest Horse", "Irish Sport Horse",
+                "Spotted (White coat with black spots; Black/white mane and tail)", "Spotted (White coat with brown spots; Brown/white mane and tail)",
+                    "Spotted (White coat with gray spots; Gray/white mane and tail)", "Spotted (White coat with ginger spots; Ginger/white mane and tail)",
+                    "Spotted (White coat with golden spots; Golden/white mane and tail)", "Spotted (White coat with cream spots; Cream/white mane and tail)",
+                    "Spotted (White coat with light gray spots; Light gray/white mane and tail)",
+                    "Spotted (White coat with dark gray spots; Dark gray/white mane and tail)",
+                    "Spotted (White coat with creamy golden spots; Creamy golden/white mane and tail)",
+                    "Spotted (White coat with light ginger spots; Light ginger/white mane and tail)",
+                    "Spotted (White coat with dark ginger spots; Dark ginger/white mane and tail)",
+                    "Spotted (Black coat with white spots; White/black mane and tail)",
+                    "Spotted (Black coat with brown spots; Brown/black mane and tail)",
+                    "Spotted (Black coat with gray spots; Gray/black mane and tail)",
+                    "Spotted (Black coat with ginger spots; Ginger/black mane and tail)",
+                    "Spotted (Black coat with golden spots; Golden/black mane and tail)",
+                    "Spotted (Black coat with cream spots; Cream/black mane and tail)",
+                    "Spotted (Black coat with light gray spots; Light gray/black mane and tail)",
+                    "Spotted (Black coat with dark gray spots; Dark gray/black mane and tail)",
+                    "Spotted (Black coat with creamy golden spots; Creamy golden/black mane and tail)",
+                    "Spotted (Black coat with light ginger spots; Light ginger/black mane and tail)",
+                    "Spotted (Black coat with dark ginger spots; Dark ginger/black mane and tail)",
+                    "Spotted (Brown coat with white spots; White/brown mane and tail)",
+                    "Spotted (Brown coat with black spots; Black/brown mane and tail)",
+                    "Spotted (Brown coat with gray spots; Gray/brown mane and tail)",
+                    "Spotted (Brown coat with ginger spots; Ginger/brown mane and tail)",
+                    "Spotted (Brown coat with golden spots; Golden/brown mane and tail)",
+                    "Spotted (Brown coat with cream spots; Cream/brown mane and tail)",
+                    "Spotted (Brown coat with light gray spots; Light gray/brown mane and tail)",
+                    "Spotted (Brown coat with dark gray spots; Dark gray/brown mane and tail)",
+                    "Spotted (Brown coat with creamy golden spots; Creamy golden/brown mane and tail)",
+                    "Spotted (Brown coat with light ginger spots; Light ginger/brown mane and tail)",
+                    "Spotted (Brown coat with dark ginger spots; Dark ginger/brown mane and tail)",
+                "Bay (Brown coat; Black legs; Black mane and tail)", "Solid black coat; Black mane and tail",
+                "Brown coat; Black lower legs; Light brown mane, tail, and muzzle",
+                "Buckskin (Creamy-golden coat with black points; Black mane and tail)", "Buckskin (Rich golden coat with black points; Black mane and tail)",
+                "Chestnut (Ginger coat; Ginger mane and tail)", "Chestnut (Ginger coat; Light ginger mane and tail)",
+                    "Chestnut (Ginger coat; Dark ginger mane and tail)",
+                "Chestnut (Light ginger coat; Ginger mane and tail)", "Chestnut (Light ginger coat; Light ginger mane and tail)",
+                    "Chestnut (Light ginger coat; Dark ginger mane and tail)",
+                "Chestnut (Dark ginger coat; Ginger mane and tail)", "Chestnut (Dark ginger coat; Light ginger mane and tail)",
+                    "Chestnut (Dark ginger coat; Dark ginger mane and tail)",
+                "Cremello (Extremely pale white coat, mane, and tail; Blue eyes)", "Cremello (Extremely pale white coat, mane, and tail; Amber eyes)",
+                    "Cremello (Extremely pale cream coat, mane, and tail; Blue eyes)", "Cremello (Extremely pale cream coat, mane, and tail; Amber eyes)",
+                "Dun (Creamy-golden coat; Black mane and tail; Dark dorsal strip)",
+                "Solid white-gray coat, mane, and tail", "Solid light gray coat, mane, and tail", "Solid gray coat, mane, and tail",
+                    "Solid dark gray coat, mane, and tail",
+                "Overo (Black/white cow-patterned coat; Black mane and tail)", "Overo (Black/brown cow-patterned coat; Black mane and tail)",
+                    "Overo (Black/gray cow-patterned coat; Black mane and tail)", "Overo (Black/light gray cow-patterned coat; Black mane and tail)",
+                    "Overo (Black/dark gray cow-patterned coat; Black mane and tail)", "Overo (Black/creamy golden cow-patterned coat; Black mane and tail)",
+                    "Overo (Black/rich golden cow-patterned coat; Black mane and tail)", "Overo (Black/ginger cow-patterned coat; Black mane and tail)",
+                    "Overo (Black/light ginger cow-patterned coat; Black mane and tail)", "Overo (Black/dark ginger cow-patterned coat; Black mane and tail)",
+                    "Overo (Black/golden cow-patterned coat; Black mane and tail)", "Overo (Black/dark ginger cow-patterned coat; Black mane and tail)",
+                "Palomino (Golden coat; White mane and tail)",
+                "Roan (White-brown coat; Brown mane, tail, and legs)", "Roan (White-black coat; Black mane, tail, and legs)",
+                    "Roan (White-golden coat; Golden mane, tail, and legs)", "Roan (White-ginger coat; Ginger mane, tail, and legs)",
+                    "Roan (White-light-ginger coat; Light ginger mane, tail, and legs)", "Roan (White-dark-ginger coat; Dark ginger mane, tail, and legs)",
+                    "Roan (White-creamy-golden coat; Creamy golden mane, tail, and legs)", "Roan (White-rich-golden coat; Rich golden mane, tail, and legs)",
+                    "Roan (White-gray coat; Creamy golden mane, tail, and legs)", "Roan (White-light-gray coat; Rich golden mane, tail, and legs)",
+                    "Roan (White-dark-gray coat; Creamy golden mane, tail, and legs)",
+                "Tobiano (White/black cow-patterned coat; White mane and tail)", "Tobiano (White/brown cow-patterned coat; White mane and tail)",
+                    "Tobiano (White/gray cow-patterned coat; White mane and tail)", "Tobiano (White/light gray cow-patterned coat; White mane and tail)",
+                    "Tobiano (White/dark gray cow-patterned coat; White mane and tail)", "Tobiano (White/creamy golden cow-patterned coat; White mane and tail)",
+                    "Tobiano (White/rich golden cow-patterned coat; White mane and tail)", "Tobiano (White/ginger cow-patterned coat; White mane and tail)",
+                    "Tobiano (White/light ginger cow-patterned coat; White mane and tail)", "Tobiano (White/dark ginger cow-patterned coat; White mane and tail)",
+                    "Tobiano (White/golden cow-patterned coat; White mane and tail)", "Tobiano (White/dark ginger cow-patterned coat; White mane and tail)" };
             //Source: https://www.google.com/search?q=draft+horse+breeds
+            //https://equineworld.co.uk/about-horses/horse-colours-and-markings/horse-coat-colours-and-patterns
             appearances[CreatureConstants.Horse_Heavy_War] = new[] { "Belgian Draught", "Shire horse", "Clydesdale horse", "Percheron", "Suffolk Punch",
                 "American Cream Draft", "Ardennais", "Haflinger", "Irish Draught", "Dutch Draft", "Friesian horse", "Fjord horse", "Russian Heavy Draft",
                 "Boulonnais horse", "Galineers Cob", "Australian Draught", "North Swedish Horse", "Noriker", "American Belgian Draft", "Breton horse", "Jutland",
@@ -2116,19 +2245,151 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "North American Spotted Draft Horse", "Bashkir horse", "Soviet Heavy Draft", "Italian Heavy Draft", "South German Coldblood", "Hackney horse",
                 "Polish Draft", "Dole Gudbrandsdal", "Spotted Draft", "Groninger", "Orlov Trotter", "Gelderlander", "Kabardian", "Karabair", "Kazakh horse",
                 "Camargue horse", "Losino horse", "American Quarter Horse", "Zemaitukas", "Vyatka horse", "Estonian Native", "Kisber Felver", "Shagya Arabian",
-                "Byelorussian Harness Horse" };
+                "Byelorussian Harness Horse",
+                "Spotted (White coat with black spots; Black/white mane and tail)", "Spotted (White coat with brown spots; Brown/white mane and tail)",
+                    "Spotted (White coat with gray spots; Gray/white mane and tail)", "Spotted (White coat with ginger spots; Ginger/white mane and tail)",
+                    "Spotted (White coat with golden spots; Golden/white mane and tail)", "Spotted (White coat with cream spots; Cream/white mane and tail)",
+                    "Spotted (White coat with light gray spots; Light gray/white mane and tail)",
+                    "Spotted (White coat with dark gray spots; Dark gray/white mane and tail)",
+                    "Spotted (White coat with creamy golden spots; Creamy golden/white mane and tail)",
+                    "Spotted (White coat with light ginger spots; Light ginger/white mane and tail)",
+                    "Spotted (White coat with dark ginger spots; Dark ginger/white mane and tail)",
+                    "Spotted (Black coat with white spots; White/black mane and tail)",
+                    "Spotted (Black coat with brown spots; Brown/black mane and tail)",
+                    "Spotted (Black coat with gray spots; Gray/black mane and tail)",
+                    "Spotted (Black coat with ginger spots; Ginger/black mane and tail)",
+                    "Spotted (Black coat with golden spots; Golden/black mane and tail)",
+                    "Spotted (Black coat with cream spots; Cream/black mane and tail)",
+                    "Spotted (Black coat with light gray spots; Light gray/black mane and tail)",
+                    "Spotted (Black coat with dark gray spots; Dark gray/black mane and tail)",
+                    "Spotted (Black coat with creamy golden spots; Creamy golden/black mane and tail)",
+                    "Spotted (Black coat with light ginger spots; Light ginger/black mane and tail)",
+                    "Spotted (Black coat with dark ginger spots; Dark ginger/black mane and tail)",
+                    "Spotted (Brown coat with white spots; White/brown mane and tail)",
+                    "Spotted (Brown coat with black spots; Black/brown mane and tail)",
+                    "Spotted (Brown coat with gray spots; Gray/brown mane and tail)",
+                    "Spotted (Brown coat with ginger spots; Ginger/brown mane and tail)",
+                    "Spotted (Brown coat with golden spots; Golden/brown mane and tail)",
+                    "Spotted (Brown coat with cream spots; Cream/brown mane and tail)",
+                    "Spotted (Brown coat with light gray spots; Light gray/brown mane and tail)",
+                    "Spotted (Brown coat with dark gray spots; Dark gray/brown mane and tail)",
+                    "Spotted (Brown coat with creamy golden spots; Creamy golden/brown mane and tail)",
+                    "Spotted (Brown coat with light ginger spots; Light ginger/brown mane and tail)",
+                    "Spotted (Brown coat with dark ginger spots; Dark ginger/brown mane and tail)",
+                "Bay (Brown coat; Black legs; Black mane and tail)", "Solid black coat; Black mane and tail",
+                "Brown coat; Black lower legs; Light brown mane, tail, and muzzle",
+                "Buckskin (Creamy-golden coat with black points; Black mane and tail)", "Buckskin (Rich golden coat with black points; Black mane and tail)",
+                "Chestnut (Ginger coat; Ginger mane and tail)", "Chestnut (Ginger coat; Light ginger mane and tail)",
+                    "Chestnut (Ginger coat; Dark ginger mane and tail)",
+                "Chestnut (Light ginger coat; Ginger mane and tail)", "Chestnut (Light ginger coat; Light ginger mane and tail)",
+                    "Chestnut (Light ginger coat; Dark ginger mane and tail)",
+                "Chestnut (Dark ginger coat; Ginger mane and tail)", "Chestnut (Dark ginger coat; Light ginger mane and tail)",
+                    "Chestnut (Dark ginger coat; Dark ginger mane and tail)",
+                "Cremello (Extremely pale white coat, mane, and tail; Blue eyes)", "Cremello (Extremely pale white coat, mane, and tail; Amber eyes)",
+                    "Cremello (Extremely pale cream coat, mane, and tail; Blue eyes)", "Cremello (Extremely pale cream coat, mane, and tail; Amber eyes)",
+                "Dun (Creamy-golden coat; Black mane and tail; Dark dorsal strip)",
+                "Solid white-gray coat, mane, and tail", "Solid light gray coat, mane, and tail", "Solid gray coat, mane, and tail",
+                    "Solid dark gray coat, mane, and tail",
+                "Overo (Black/white cow-patterned coat; Black mane and tail)", "Overo (Black/brown cow-patterned coat; Black mane and tail)",
+                    "Overo (Black/gray cow-patterned coat; Black mane and tail)", "Overo (Black/light gray cow-patterned coat; Black mane and tail)",
+                    "Overo (Black/dark gray cow-patterned coat; Black mane and tail)", "Overo (Black/creamy golden cow-patterned coat; Black mane and tail)",
+                    "Overo (Black/rich golden cow-patterned coat; Black mane and tail)", "Overo (Black/ginger cow-patterned coat; Black mane and tail)",
+                    "Overo (Black/light ginger cow-patterned coat; Black mane and tail)", "Overo (Black/dark ginger cow-patterned coat; Black mane and tail)",
+                    "Overo (Black/golden cow-patterned coat; Black mane and tail)", "Overo (Black/dark ginger cow-patterned coat; Black mane and tail)",
+                "Palomino (Golden coat; White mane and tail)",
+                "Roan (White-brown coat; Brown mane, tail, and legs)", "Roan (White-black coat; Black mane, tail, and legs)",
+                    "Roan (White-golden coat; Golden mane, tail, and legs)", "Roan (White-ginger coat; Ginger mane, tail, and legs)",
+                    "Roan (White-light-ginger coat; Light ginger mane, tail, and legs)", "Roan (White-dark-ginger coat; Dark ginger mane, tail, and legs)",
+                    "Roan (White-creamy-golden coat; Creamy golden mane, tail, and legs)", "Roan (White-rich-golden coat; Rich golden mane, tail, and legs)",
+                    "Roan (White-gray coat; Creamy golden mane, tail, and legs)", "Roan (White-light-gray coat; Rich golden mane, tail, and legs)",
+                    "Roan (White-dark-gray coat; Creamy golden mane, tail, and legs)",
+                "Tobiano (White/black cow-patterned coat; White mane and tail)", "Tobiano (White/brown cow-patterned coat; White mane and tail)",
+                    "Tobiano (White/gray cow-patterned coat; White mane and tail)", "Tobiano (White/light gray cow-patterned coat; White mane and tail)",
+                    "Tobiano (White/dark gray cow-patterned coat; White mane and tail)", "Tobiano (White/creamy golden cow-patterned coat; White mane and tail)",
+                    "Tobiano (White/rich golden cow-patterned coat; White mane and tail)", "Tobiano (White/ginger cow-patterned coat; White mane and tail)",
+                    "Tobiano (White/light ginger cow-patterned coat; White mane and tail)", "Tobiano (White/dark ginger cow-patterned coat; White mane and tail)",
+                    "Tobiano (White/golden cow-patterned coat; White mane and tail)", "Tobiano (White/dark ginger cow-patterned coat; White mane and tail)" };
             //Source: https://www.google.com/search?q=horse+breeds
+            //https://equineworld.co.uk/about-horses/horse-colours-and-markings/horse-coat-colours-and-patterns
             appearances[CreatureConstants.Horse_Light_War] = new[] { "Arabian", "Friesian", "Mustang", "Thoroughbread", "Appaloosa", "American Quarter Horse",
                 "Dutch Warmblood", "American Paint Horse", "Akhal-Teke", "Turkoman horse", "Mangalarga Marchador", "Percheron", "Criollo",
                 "Rahvan", "Kandachime", "Morgan horse", "Icelandic horse", "Cob", "Hanoverian", "Andalusian", "Lipizzan", "Lusitano", "Standardbred", "Falabella",
                 "Pure Spanish Breed", "Mongolian", "Trakehner", "Knabstupper", "Konik", "Ferghana", "Marwari", "American Saddlebred", "Missouri Fox Trotter",
-                "Belgian Warmblood", "Peruvian paso", "Brumby", "Holsteiner", "Welsh Cob", "Black Forest Horse", "Irish Sport Horse" };
+                "Belgian Warmblood", "Peruvian paso", "Brumby", "Holsteiner", "Welsh Cob", "Black Forest Horse", "Irish Sport Horse",
+                "Spotted (White coat with black spots; Black/white mane and tail)", "Spotted (White coat with brown spots; Brown/white mane and tail)",
+                    "Spotted (White coat with gray spots; Gray/white mane and tail)", "Spotted (White coat with ginger spots; Ginger/white mane and tail)",
+                    "Spotted (White coat with golden spots; Golden/white mane and tail)", "Spotted (White coat with cream spots; Cream/white mane and tail)",
+                    "Spotted (White coat with light gray spots; Light gray/white mane and tail)",
+                    "Spotted (White coat with dark gray spots; Dark gray/white mane and tail)",
+                    "Spotted (White coat with creamy golden spots; Creamy golden/white mane and tail)",
+                    "Spotted (White coat with light ginger spots; Light ginger/white mane and tail)",
+                    "Spotted (White coat with dark ginger spots; Dark ginger/white mane and tail)",
+                    "Spotted (Black coat with white spots; White/black mane and tail)",
+                    "Spotted (Black coat with brown spots; Brown/black mane and tail)",
+                    "Spotted (Black coat with gray spots; Gray/black mane and tail)",
+                    "Spotted (Black coat with ginger spots; Ginger/black mane and tail)",
+                    "Spotted (Black coat with golden spots; Golden/black mane and tail)",
+                    "Spotted (Black coat with cream spots; Cream/black mane and tail)",
+                    "Spotted (Black coat with light gray spots; Light gray/black mane and tail)",
+                    "Spotted (Black coat with dark gray spots; Dark gray/black mane and tail)",
+                    "Spotted (Black coat with creamy golden spots; Creamy golden/black mane and tail)",
+                    "Spotted (Black coat with light ginger spots; Light ginger/black mane and tail)",
+                    "Spotted (Black coat with dark ginger spots; Dark ginger/black mane and tail)",
+                    "Spotted (Brown coat with white spots; White/brown mane and tail)",
+                    "Spotted (Brown coat with black spots; Black/brown mane and tail)",
+                    "Spotted (Brown coat with gray spots; Gray/brown mane and tail)",
+                    "Spotted (Brown coat with ginger spots; Ginger/brown mane and tail)",
+                    "Spotted (Brown coat with golden spots; Golden/brown mane and tail)",
+                    "Spotted (Brown coat with cream spots; Cream/brown mane and tail)",
+                    "Spotted (Brown coat with light gray spots; Light gray/brown mane and tail)",
+                    "Spotted (Brown coat with dark gray spots; Dark gray/brown mane and tail)",
+                    "Spotted (Brown coat with creamy golden spots; Creamy golden/brown mane and tail)",
+                    "Spotted (Brown coat with light ginger spots; Light ginger/brown mane and tail)",
+                    "Spotted (Brown coat with dark ginger spots; Dark ginger/brown mane and tail)",
+                "Bay (Brown coat; Black legs; Black mane and tail)", "Solid black coat; Black mane and tail",
+                "Brown coat; Black lower legs; Light brown mane, tail, and muzzle",
+                "Buckskin (Creamy-golden coat with black points; Black mane and tail)", "Buckskin (Rich golden coat with black points; Black mane and tail)",
+                "Chestnut (Ginger coat; Ginger mane and tail)", "Chestnut (Ginger coat; Light ginger mane and tail)",
+                    "Chestnut (Ginger coat; Dark ginger mane and tail)",
+                "Chestnut (Light ginger coat; Ginger mane and tail)", "Chestnut (Light ginger coat; Light ginger mane and tail)",
+                    "Chestnut (Light ginger coat; Dark ginger mane and tail)",
+                "Chestnut (Dark ginger coat; Ginger mane and tail)", "Chestnut (Dark ginger coat; Light ginger mane and tail)",
+                    "Chestnut (Dark ginger coat; Dark ginger mane and tail)",
+                "Cremello (Extremely pale white coat, mane, and tail; Blue eyes)", "Cremello (Extremely pale white coat, mane, and tail; Amber eyes)",
+                    "Cremello (Extremely pale cream coat, mane, and tail; Blue eyes)", "Cremello (Extremely pale cream coat, mane, and tail; Amber eyes)",
+                "Dun (Creamy-golden coat; Black mane and tail; Dark dorsal strip)",
+                "Solid white-gray coat, mane, and tail", "Solid light gray coat, mane, and tail", "Solid gray coat, mane, and tail",
+                    "Solid dark gray coat, mane, and tail",
+                "Overo (Black/white cow-patterned coat; Black mane and tail)", "Overo (Black/brown cow-patterned coat; Black mane and tail)",
+                    "Overo (Black/gray cow-patterned coat; Black mane and tail)", "Overo (Black/light gray cow-patterned coat; Black mane and tail)",
+                    "Overo (Black/dark gray cow-patterned coat; Black mane and tail)", "Overo (Black/creamy golden cow-patterned coat; Black mane and tail)",
+                    "Overo (Black/rich golden cow-patterned coat; Black mane and tail)", "Overo (Black/ginger cow-patterned coat; Black mane and tail)",
+                    "Overo (Black/light ginger cow-patterned coat; Black mane and tail)", "Overo (Black/dark ginger cow-patterned coat; Black mane and tail)",
+                    "Overo (Black/golden cow-patterned coat; Black mane and tail)", "Overo (Black/dark ginger cow-patterned coat; Black mane and tail)",
+                "Palomino (Golden coat; White mane and tail)",
+                "Roan (White-brown coat; Brown mane, tail, and legs)", "Roan (White-black coat; Black mane, tail, and legs)",
+                    "Roan (White-golden coat; Golden mane, tail, and legs)", "Roan (White-ginger coat; Ginger mane, tail, and legs)",
+                    "Roan (White-light-ginger coat; Light ginger mane, tail, and legs)", "Roan (White-dark-ginger coat; Dark ginger mane, tail, and legs)",
+                    "Roan (White-creamy-golden coat; Creamy golden mane, tail, and legs)", "Roan (White-rich-golden coat; Rich golden mane, tail, and legs)",
+                    "Roan (White-gray coat; Creamy golden mane, tail, and legs)", "Roan (White-light-gray coat; Rich golden mane, tail, and legs)",
+                    "Roan (White-dark-gray coat; Creamy golden mane, tail, and legs)",
+                "Tobiano (White/black cow-patterned coat; White mane and tail)", "Tobiano (White/brown cow-patterned coat; White mane and tail)",
+                    "Tobiano (White/gray cow-patterned coat; White mane and tail)", "Tobiano (White/light gray cow-patterned coat; White mane and tail)",
+                    "Tobiano (White/dark gray cow-patterned coat; White mane and tail)", "Tobiano (White/creamy golden cow-patterned coat; White mane and tail)",
+                    "Tobiano (White/rich golden cow-patterned coat; White mane and tail)", "Tobiano (White/ginger cow-patterned coat; White mane and tail)",
+                    "Tobiano (White/light ginger cow-patterned coat; White mane and tail)", "Tobiano (White/dark ginger cow-patterned coat; White mane and tail)",
+                    "Tobiano (White/golden cow-patterned coat; White mane and tail)", "Tobiano (White/dark ginger cow-patterned coat; White mane and tail)" };
             //Source: https://forgottenrealms.fandom.com/wiki/Hound_archon
-            appearances[CreatureConstants.HoundArchon][GenderConstants.Agender] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.HoundArchon][CreatureConstants.HoundArchon] = GetMultiplierFromAverage(6 * 12);
+            appearances[CreatureConstants.HoundArchon] = GetWeightedAppearances(
+                allSkin: new[] { "Red skin", "Brown skin", "Light brown skin", "Tan skin", "Cream-colored skin" },
+                allEyes: new[] { "Black eyes", "Yellow eyes" },
+                allOther: new[] { "Humanoid body; head of a dog" });
             //Source: https://forgottenrealms.fandom.com/wiki/Howler
-            appearances[CreatureConstants.Howler][GenderConstants.Agender] = GetBaseFromAverage(8 * 12);
-            appearances[CreatureConstants.Howler][CreatureConstants.Howler] = GetMultiplierFromAverage(8 * 12);
+            appearances[CreatureConstants.Howler] = GetWeightedAppearances(
+                allSkin: new[] { "Light brown scales", "Tan scales" },
+                allHair: new[] { "Tangled, red fur, spreading into mane of trembling quills on the back of the neck and surrounding the face" },
+                allEyes: new[] { "Black eyes", "Yellow eyes" },
+                allOther: new[] { "Bruised, crushed digits ending in claws on the front legs. Back legs end in hooves. Back like an ox. Muzzled, simian face." });
             //Source: https://forgottenrealms.fandom.com/wiki/Human
             appearances[CreatureConstants.Human] = GetWeightedAppearances(
                 allSkin: new[] { "Brown skin", "Olive skin", "White skin", "Pink skin",
@@ -2182,50 +2443,89 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Yellow-green skin", "Green skin, yellow underbelly", "Tan skin" },
                 allEyes: new[] { "Amber eyes" });
             //Source: https://www.dimensions.com/element/striped-hyena-hyaena-hyaena
-            appearances[CreatureConstants.Hyena][GenderConstants.Female] = GetBaseFromRange(25, 30);
-            appearances[CreatureConstants.Hyena][GenderConstants.Male] = GetBaseFromRange(25, 30);
-            appearances[CreatureConstants.Hyena][CreatureConstants.Hyena] = GetMultiplierFromRange(25, 30);
+            //https://en.wikipedia.org/wiki/Striped_hyena#Description
+            appearances[CreatureConstants.Hyena] = GetWeightedAppearances(
+                allHair: new[] { "Coarse, bristly, light brown fur with darker brown striping. Mane hair is light gray at the base and black at the tips. Muzzle is dark, grayish brown",
+                    "Coarse, bristly, light brown fur with darker brown striping. Mane hair is light gray at the base and dark brown at the tips. Muzzle is dark, grayish brown",
+                    "Coarse, bristly, light brown fur with darker brown striping. Mane hair is white at the base and black at the tips. Muzzle is dark, grayish brown",
+                    "Coarse, bristly, light brown fur with darker brown striping. Mane hair is white at the base and dark brown at the tips. Muzzle is dark, grayish brown",
+                    "Coarse, bristly, light brown fur with darker brown striping. Mane hair is light gray at the base and black at the tips. Muzzle is brownish-gray",
+                    "Coarse, bristly, light brown fur with darker brown striping. Mane hair is light gray at the base and dark brown at the tips. Muzzle is brownish-gray",
+                    "Coarse, bristly, light brown fur with darker brown striping. Mane hair is white at the base and black at the tips. Muzzle is brownish-gray",
+                    "Coarse, bristly, light brown fur with darker brown striping. Mane hair is white at the base and dark brown at the tips. Muzzle is brownish-gray",
+                    "Coarse, bristly, light brown fur with darker brown striping. Mane hair is light gray at the base and black at the tips. Muzzle is black",
+                    "Coarse, bristly, light brown fur with darker brown striping. Mane hair is light gray at the base and dark brown at the tips. Muzzle is black",
+                    "Coarse, bristly, light brown fur with darker brown striping. Mane hair is white at the base and black at the tips. Muzzle is black",
+                    "Coarse, bristly, light brown fur with darker brown striping. Mane hair is white at the base and dark brown at the tips. Muzzle is black",
+                    "Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is light gray at the base and black at the tips. Muzzle is dark, grayish brown",
+                    "Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is light gray at the base and dark brown at the tips. Muzzle is dark, grayish brown",
+                    "Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is white at the base and black at the tips. Muzzle is dark, grayish brown",
+                    "Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is white at the base and dark brown at the tips. Muzzle is dark, grayish brown",
+                    "Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is light gray at the base and black at the tips. Muzzle is brownish-gray",
+                    "Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is light gray at the base and dark brown at the tips. Muzzle is brownish-gray",
+                    "Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is white at the base and black at the tips. Muzzle is brownish-gray",
+                    "Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is white at the base and dark brown at the tips. Muzzle is brownish-gray",
+                    "Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is light gray at the base and black at the tips. Muzzle is black",
+                    "Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is light gray at the base and dark brown at the tips. Muzzle is black",
+                    "Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is white at the base and black at the tips. Muzzle is black",
+                    "Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is white at the base and dark brown at the tips. Muzzle is black" },
+                allEyes: new[] { "Small eyes" },
+                allOther: new[] { "Short torso, long legs, thick and elongated neck, large and high-set ears" });
             //Source: https://forgottenrealms.fandom.com/wiki/Gelugon
-            appearances[CreatureConstants.IceDevil_Gelugon][GenderConstants.Agender] = GetBaseFromRange(10 * 12 + 6, 12 * 12);
-            appearances[CreatureConstants.IceDevil_Gelugon][CreatureConstants.IceDevil_Gelugon] = GetMultiplierFromRange(10 * 12 + 6, 12 * 12);
+            appearances[CreatureConstants.IceDevil_Gelugon] = GetWeightedAppearances(
+                allSkin: new[] { "Blue and white skin", "Blue skin", "White skin" },
+                allEyes: new[] { "Multifaceted yellow eyes", "Multifaceted green eyes" },
+                allOther: new[] { "Insectoid. Hands and feet end in claws. Long thick tail surrounded in spikes. Set of antennae on the head. Sharp mandibles" });
             //Source: https://forgottenrealms.fandom.com/wiki/Imp
-            appearances[CreatureConstants.Imp][GenderConstants.Agender] = GetBaseFromAverage(2 * 12);
-            appearances[CreatureConstants.Imp][GenderConstants.Female] = GetBaseFromAverage(2 * 12);
-            appearances[CreatureConstants.Imp][GenderConstants.Male] = GetBaseFromAverage(2 * 12);
-            appearances[CreatureConstants.Imp][CreatureConstants.Imp] = GetMultiplierFromAverage(2 * 12);
+            appearances[CreatureConstants.Imp] = GetWeightedAppearances(
+                commonSkin: new[] { "Dark red skin" },
+                uncommonSkin: new[] { "Red skin", "Light red skin", "Orange skin", "Blue skin", "Brown skin", "Green skin", "Purple skin", "White skin", "Gray skin",
+                    "Black skin", "Yellow skin" },
+                allEyes: new[] { "Yellow eyes", "White eyes", "Green eyes" },
+                allOther: new[] { "Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs." });
             //Source: https://www.d20srd.org/srd/monsters/invisibleStalker.htm
-            //https://www.d20srd.org/srd/combat/movementPositionAndDistance.htm using generic Large, since actual form is unknown
-            appearances[CreatureConstants.InvisibleStalker][GenderConstants.Agender] = GetBaseFromRange(8 * 12, 16 * 12);
-            appearances[CreatureConstants.InvisibleStalker][CreatureConstants.InvisibleStalker] = GetMultiplierFromRange(8 * 12, 16 * 12);
+            appearances[CreatureConstants.InvisibleStalker] = new[] { "Amorphous form. See Invisibility reveals a dim outline of a cloud. True Seeing reveals a roiling cloud of vapor" };
             //Source: https://forgottenrealms.fandom.com/wiki/Janni
-            appearances[CreatureConstants.Janni][GenderConstants.Agender] = GetBaseFromRange(6 * 12, 7 * 12);
-            appearances[CreatureConstants.Janni][GenderConstants.Female] = GetBaseFromRange(6 * 12, 7 * 12);
-            appearances[CreatureConstants.Janni][GenderConstants.Male] = GetBaseFromRange(6 * 12, 7 * 12);
-            appearances[CreatureConstants.Janni][CreatureConstants.Janni] = GetMultiplierFromRange(6 * 12, 7 * 12);
+            appearances[CreatureConstants.Janni] = GetWeightedAppearances(
+                allSkin: new[] { "Skin the color of golden sand", "Earth-colored skin" },
+                allHair: new[] { "TODO HUMAN hair", "TODO HALF-ELF hair" },
+                allEyes: new[] { "TODO HUMAN eyes with supernatural intensity", "TODO HALF-ELF eyes with supernatural intensity" });
             //Source: https://forgottenrealms.fandom.com/wiki/Kobold
-            appearances[CreatureConstants.Kobold][GenderConstants.Female] = GetBaseFromRange(2 * 12, 2 * 12 + 6);
-            appearances[CreatureConstants.Kobold][GenderConstants.Male] = GetBaseFromRange(2 * 12, 2 * 12 + 6);
-            appearances[CreatureConstants.Kobold][CreatureConstants.Kobold] = GetMultiplierFromRange(2 * 12, 2 * 12 + 6);
-            //Source: https://pathfinderwiki.com/wiki/Kolyarut
-            //Can't find definitive height, but "size of a tall humanoid", so using human + some
-            appearances[CreatureConstants.Kolyarut][GenderConstants.Agender] = "5*12";
-            appearances[CreatureConstants.Kolyarut][CreatureConstants.Kolyarut] = "2d12";
+            appearances[CreatureConstants.Kobold] = GetWeightedAppearances(
+                allSkin: new[] { "Reddish-brown scaled skin", "Rusty black scaled skin", "Rusty brown scaled skin", "Reddish-black scaled skin",
+                    "Brown-black scaled skin", "Black scaled skin" },
+                allEyes: new[] { "Red eyes", "Burnt orange eyes", "Orange-red eyes", "Burnt red eyes" },
+                allOther: new[] { "Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail",
+                    "Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Kolyarut
+            appearances[CreatureConstants.Kolyarut] = new[] { "Red skin. Golden-hued banded-mail armor. Flowing red robe.",
+                "Black skin. Golden-hued banded-mail armor. Flowing red robe." };
             //Source: https://forgottenrealms.fandom.com/wiki/Kraken
-            appearances[CreatureConstants.Kraken][GenderConstants.Female] = GetBaseFromAverage(30 * 12);
-            appearances[CreatureConstants.Kraken][GenderConstants.Male] = GetBaseFromAverage(30 * 12);
-            appearances[CreatureConstants.Kraken][CreatureConstants.Kraken] = GetMultiplierFromAverage(30 * 12);
-            //Source: https://www.d20srd.org/srd/monsters/krenshar.htm
-            appearances[CreatureConstants.Krenshar][GenderConstants.Female] = "0";
-            appearances[CreatureConstants.Krenshar][GenderConstants.Male] = "0";
-            appearances[CreatureConstants.Krenshar][CreatureConstants.Krenshar] = "0";
+            appearances[CreatureConstants.Kraken] = GetWeightedAppearances(
+                allSkin: new[] { "Brown skin", "Light brown skin", "Reddish-brown skin", "Blue skin", "Purple skin", "Yellow-green skin",
+                    "Yellow-green skin with a black head, black tips on tentacles"},
+                allEyes: new[] { "Large yellow eyes", "Large red eyes", "Large blue eyes", "Large green eyes" },
+                allOther: new[] { "Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Krenshar
+            appearances[CreatureConstants.Krenshar] = GetWeightedAppearances(
+                allHair: new[] { "Light brown shaggy fur with dark brown spots, dark-red spiky mane", "Light brown shaggy fur with dark brown spots, dark-brown spiky mane",
+                    "Light gray shaggy fur with dark brown spots, brown spiky mane", "Light gray shaggy fur with dark brown spots, dark-brown spiky mane",
+                    "Light gray shaggy fur with dark gray spots, brown spiky mane", "Light gray shaggy fur with dark gray spots, dark-brown spiky mane" },
+                allOther: new[] { "Long, bushy tail. Skin over the skull is a sheath that can be pulled back to reveal the underlyring muscles and bones" });
             //Source: https://forgottenrealms.fandom.com/wiki/Kuo-toa
-            appearances[CreatureConstants.KuoToa][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.KuoToa][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.KuoToa][CreatureConstants.KuoToa] = GetMultiplierFromAverage(5 * 12);
+            appearances[CreatureConstants.KuoToa] = GetWeightedAppearances(
+                allSkin: new[] { "Silver-gray scales", "Gray scales", "Gray scales with yellow undertones", "Gray scales with dark red undertones",
+                    "Gray scales with ghostly white undertones" },
+                allEyes: new[] { "Bulging silver-black eyes" },
+                allOther: new[] { "Broad, distended, partially-webbed hands and feet. Four digits per hand and feet. Bullet-shapred, piscine head. Sharp teeth." });
             //Source: https://forgottenrealms.fandom.com/wiki/Lamia
-            appearances[CreatureConstants.Lamia][GenderConstants.Female] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.Lamia][GenderConstants.Male] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.Lamia][CreatureConstants.Lamia] = GetMultiplierFromAverage(6 * 12);
+            appearances[CreatureConstants.Lamia] = GetWeightedAppearances(
+                allSkin: new[] { "TODO HUMAN skin" },
+                commonHair: new[] { "TODO LION fur" },
+                uncommonHair: new[] { "TODO GOAT fur", "TODO DEER fur" },
+                allEyes: new[] { "TODO HUMAN eyes" },
+                commonOther: new[] { "Human from the waist-up, lion from the waist-down" },
+                uncommonOther: new[] { "Human from the waist-up, goat from the waist-down", "Human from the waist-up, deer from the waist-down" });
             //Source: https://www.d20srd.org/srd/monsters/lammasu.htm
             //https://www.dimensions.com/element/african-lion scale up from lion: [44,50]*8*12/[54,78] = [78,62]
             appearances[CreatureConstants.Lammasu][GenderConstants.Female] = GetBaseFromRange(62, 78);
