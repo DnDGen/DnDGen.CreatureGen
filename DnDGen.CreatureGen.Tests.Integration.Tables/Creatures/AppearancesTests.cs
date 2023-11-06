@@ -2526,53 +2526,79 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allEyes: new[] { "TODO HUMAN eyes" },
                 commonOther: new[] { "Human from the waist-up, lion from the waist-down" },
                 uncommonOther: new[] { "Human from the waist-up, goat from the waist-down", "Human from the waist-up, deer from the waist-down" });
-            //Source: https://www.d20srd.org/srd/monsters/lammasu.htm
-            //https://www.dimensions.com/element/african-lion scale up from lion: [44,50]*8*12/[54,78] = [78,62]
-            appearances[CreatureConstants.Lammasu][GenderConstants.Female] = GetBaseFromRange(62, 78);
-            appearances[CreatureConstants.Lammasu][GenderConstants.Male] = GetBaseFromRange(62, 78);
-            appearances[CreatureConstants.Lammasu][CreatureConstants.Lammasu] = GetMultiplierFromRange(62, 78);
+            //Source: https://forgottenrealms.fandom.com/wiki/Lammasu
+            appearances[CreatureConstants.Lammasu] = GetWeightedAppearances(
+                allSkin: new[] { "TODO HUMAN skin" },
+                allHair: new[] { "TODO LION fur", "TODO EAGLE feathers" },
+                allEyes: new[] { "TODO HUMAN eyes" },
+                allOther: new[] { "Human from the waist-up, lion from the waist-down, pair of wings on the back" });
             //Source: https://forgottenrealms.fandom.com/wiki/Lantern_archon
-            appearances[CreatureConstants.LanternArchon][GenderConstants.Agender] = GetBaseFromRange(12, 36);
-            appearances[CreatureConstants.LanternArchon][CreatureConstants.LanternArchon] = GetMultiplierFromRange(12, 36);
+            appearances[CreatureConstants.LanternArchon] = new[] { "Sphere of soft, glowing light" };
             //Source: https://forgottenrealms.fandom.com/wiki/Lemure
-            appearances[CreatureConstants.Lemure][GenderConstants.Agender] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Lemure][CreatureConstants.Lemure] = GetMultiplierFromAverage(5 * 12);
+            appearances[CreatureConstants.Lemure] = GetWeightedAppearances(
+                allSkin: new[] { "Orange skin", "Pink skin" },
+                allOther: new[] { "Blob of molten, stinking flesh. Formless, shivering mass below the waist. Head and torso is vaguely humanoid." });
             //Source: https://forgottenrealms.fandom.com/wiki/Leonal
-            appearances[CreatureConstants.Leonal][GenderConstants.Female] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.Leonal][GenderConstants.Male] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.Leonal][CreatureConstants.Leonal] = GetMultiplierFromAverage(6 * 12);
-            //Source: https://www.dimensions.com/element/cougar
-            appearances[CreatureConstants.Leopard][GenderConstants.Female] = GetBaseFromRange(21, 28);
-            appearances[CreatureConstants.Leopard][GenderConstants.Male] = GetBaseFromRange(21, 28);
-            appearances[CreatureConstants.Leopard][CreatureConstants.Leopard] = GetMultiplierFromRange(21, 28);
-            //Using Human
-            appearances[CreatureConstants.Lillend][GenderConstants.Female] = "4*12+5";
-            appearances[CreatureConstants.Lillend][GenderConstants.Male] = "4*12+10";
-            appearances[CreatureConstants.Lillend][CreatureConstants.Lillend] = "2d10";
-            //Source: https://www.dimensions.com/element/african-lion
-            appearances[CreatureConstants.Lion][GenderConstants.Female] = GetBaseFromAverage(2 * 12 + 10, 3 * 12 + 4);
-            appearances[CreatureConstants.Lion][GenderConstants.Male] = GetBaseFromAverage(3 * 12 + 4);
-            appearances[CreatureConstants.Lion][CreatureConstants.Lion] = GetMultiplierFromAverage(3 * 12 + 4);
-            //Scaling up from lion, x3 based on length. Since length doesn't differ for male/female, only use male
-            appearances[CreatureConstants.Lion_Dire][GenderConstants.Female] = GetBaseFromAverage((3 * 12 + 4) * 3);
-            appearances[CreatureConstants.Lion_Dire][GenderConstants.Male] = GetBaseFromAverage((3 * 12 + 4) * 3);
-            appearances[CreatureConstants.Lion_Dire][CreatureConstants.Lion_Dire] = GetMultiplierFromAverage((3 * 12 + 4) * 3);
-            //Source: https://www.dimensions.com/element/green-iguana-iguana-iguana
-            appearances[CreatureConstants.Lizard][GenderConstants.Female] = GetBaseFromRange(1, 2);
-            appearances[CreatureConstants.Lizard][GenderConstants.Male] = GetBaseFromRange(1, 2);
-            appearances[CreatureConstants.Lizard][CreatureConstants.Lizard] = GetMultiplierFromRange(1, 2);
-            //Source: https://www.dimensions.com/element/savannah-monitor-varanus-exanthematicus
-            appearances[CreatureConstants.Lizard_Monitor][GenderConstants.Female] = GetBaseFromRange(7, 8);
-            appearances[CreatureConstants.Lizard_Monitor][GenderConstants.Male] = GetBaseFromRange(7, 8);
-            appearances[CreatureConstants.Lizard_Monitor][CreatureConstants.Lizard_Monitor] = GetMultiplierFromRange(7, 8);
+            appearances[CreatureConstants.Leonal] = GetWeightedAppearances(
+                allSkin: new[] { "TODO HUMAN skin" },
+                allHair: new[] { "TODO LION fur" },
+                allEyes: new[] { "TODO HUMAN eyes", "TODO LION eyes" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Leopard
+            appearances[CreatureConstants.Leopard] = new[] { "Yellow fur with rosette-shaped spots" };
+            //Source: https://forgottenrealms.fandom.com/wiki/Lillend
+            appearances[CreatureConstants.Lillend] = GetWeightedAppearances(
+                allSkin: new[] { "TODO HUMAN skin",
+                    "Bright blue scales", "Bright purple scales", "Bright red scales", "Bright orange scales", "Bright yellow scales", "Bright green scales" },
+                allHair: new[] { "Bright blue hair, bright blue feathers", "Bright blue hair, bright purple feathers", "Bright blue hair, bright red feathers",
+                        "Bright blue hair, bright orange feathers", "Bright blue hair, bright yellow feathers", "Bright blue hair, bright green feathers",
+                    "Bright purple hair, bright blue feathers", "Bright purple hair, bright purple feathers", "Bright purple hair, bright red feathers",
+                        "Bright purple hair, bright orange feathers", "Bright purple hair, bright yellow feathers", "Bright purple hair, bright green feathers",
+                    "Bright red hair, bright blue feathers", "Bright red hair, bright purple feathers", "Bright red hair, bright red feathers",
+                        "Bright red hair, bright orange feathers", "Bright red hair, bright yellow feathers", "Bright red hair, bright green feathers",
+                    "Bright orange hair, bright blue feathers", "Bright orange hair, bright purple feathers", "Bright orange hair, bright red feathers",
+                        "Bright orange hair, bright orange feathers", "Bright orange hair, bright yellow feathers", "Bright orange hair, bright green feathers",
+                    "Bright yellow hair, bright blue feathers", "Bright yellow hair, bright purple feathers", "Bright yellow hair, bright red feathers",
+                        "Bright yellow hair, bright orange feathers", "Bright yellow hair, bright yellow feathers", "Bright yellow hair, bright green feathers",
+                    "Bright green hair, bright blue feathers", "Bright green hair, bright purple feathers", "Bright green hair, bright red feathers",
+                        "Bright green hair, bright orange feathers", "Bright green hair, bright yellow feathers", "Bright green hair, bright green feathers" },
+                allEyes: new[] { "TODO HUMAN eyes" },
+                allOther: new[] { "Torso is humanoid, waist-down is serpentine" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Lion
+            appearances[CreatureConstants.Lion] = GetWeightedAppearances(
+                allHair: new[] { "Golden fur", "Tawny fur", "TODO MALE Brown mane" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Dire_lion
+            appearances[CreatureConstants.Lion_Dire] = GetWeightedAppearances(
+                allHair: new[] { "Golden fur", "Tawny fur", "TODO MALE Brown mane" },
+                allOther: new[] { "Bony spine and brow ridges" });
+            //Source: https://www.d20srd.org/srd/monsters/lizard.htm
+            //https://www.petcoach.co/article/green-iguana-color-change-causes/
+            appearances[CreatureConstants.Lizard] = GetWeightedAppearances(
+                commonSkin: new[] { "Green skin" },
+                uncommonSkin: new[] { "Turquoise skin", "Brown skin", "Reddish-green skin" },
+                rareSkin: new[] { "White skin (Albino)" });
+            //Source: https://azeah.com/lizards/basic-care-tree-monitors
+            appearances[CreatureConstants.Lizard_Monitor] = GetWeightedAppearances(
+                commonSkin: new[] { "Blue skin", "Black skin", "Green skin", "Yellow skin" });
             //Source: https://forgottenrealms.fandom.com/wiki/Lizardfolk
-            appearances[CreatureConstants.Lizardfolk][GenderConstants.Female] = GetBaseFromRange(6 * 12, 7 * 12);
-            appearances[CreatureConstants.Lizardfolk][GenderConstants.Male] = GetBaseFromRange(6 * 12, 7 * 12);
-            appearances[CreatureConstants.Lizardfolk][CreatureConstants.Lizardfolk] = GetMultiplierFromRange(6 * 12, 7 * 12);
+            appearances[CreatureConstants.Lizardfolk] = GetWeightedAppearances(
+                allSkin: new[] { "Green scales", "Black scales", "Gray scales", "Brown scales", "Dark green scales", "Dark brown scales", "Dark gray scales",
+                    "Green-brown scales", "Green-gray scales" },
+                allEyes: new[] { "Yellow eyes" },
+                allOther: new[] { "Tail, sharp claws and teeth" });
             //Source: https://forgottenrealms.fandom.com/wiki/Locathah
-            appearances[CreatureConstants.Locathah][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Locathah][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Locathah][CreatureConstants.Locathah] = GetMultiplierFromAverage(5 * 12);
+            appearances[CreatureConstants.Locathah] = GetWeightedAppearances(
+                allSkin: new[] { "Fine yellow-green scales with sea-green scales on the stomach", "Fine ochre scales with sea-green scales on the stomach",
+                        "Fine yellow scales with sea-green scales on the stomach", "Fine olive-green scales with sea-green scales on the stomach",
+                    "Fine yellow-green scales with pale-yellow scales on the stomach", "Fine ochre scales with pale-yellow scales on the stomach",
+                        "Fine yellow scales with pale-yellow scales on the stomach", "Fine olive-green scales with pale-yellow scales on the stomach",
+                    "Fine yellow-green scales with yellow-green scales on the stomach", "Fine ochre scales with yellow-green scales on the stomach",
+                        "Fine yellow scales with yellow-green scales on the stomach", "Fine olive-green scales with yellow-green scales on the stomach",
+                    "Fine yellow-green scales with yellow scales on the stomach", "Fine ochre scales with yellow scales on the stomach",
+                        "Fine yellow scales with yellow scales on the stomach", "Fine olive-green scales with yellow scales on the stomach",
+                    "Fine yellow-green scales with green scales on the stomach", "Fine ochre scales with green scales on the stomach",
+                        "Fine yellow scales with green scales on the stomach", "Fine olive-green scales with green scales on the stomach" },
+                allEyes: new[] { "All-black eyes", "All-white eyes" },
+                allOther: new[] { "slender, large fins on arms and legs. Toothless mouth" });
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
             appearances[CreatureConstants.Locust_Swarm] = new[] { "5,000 locusts" };
             //Source: https://forgottenrealms.fandom.com/wiki/Magmin
