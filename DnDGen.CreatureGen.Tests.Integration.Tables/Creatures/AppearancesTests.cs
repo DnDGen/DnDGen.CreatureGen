@@ -2602,39 +2602,40 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
             appearances[CreatureConstants.Locust_Swarm] = new[] { "5,000 locusts" };
             //Source: https://forgottenrealms.fandom.com/wiki/Magmin
-            appearances[CreatureConstants.Magmin][GenderConstants.Agender] = GetBaseFromRange(3 * 12, 4 * 12);
-            appearances[CreatureConstants.Magmin][CreatureConstants.Magmin] = GetMultiplierFromRange(3 * 12, 4 * 12);
-            //Source: https://www.dimensions.com/element/reef-manta-ray-mobula-alfredi
-            appearances[CreatureConstants.MantaRay][GenderConstants.Female] = "0";
-            appearances[CreatureConstants.MantaRay][GenderConstants.Male] = "0";
-            appearances[CreatureConstants.MantaRay][CreatureConstants.MantaRay] = "0";
-            //Source: https://forgottenrealms.fandom.com/wiki/Manticore Using Lion for height
-            appearances[CreatureConstants.Manticore][GenderConstants.Female] = GetBaseFromAverage(2 * 12 + 10, 3 * 12 + 4);
-            appearances[CreatureConstants.Manticore][GenderConstants.Male] = GetBaseFromAverage(3 * 12 + 4);
-            appearances[CreatureConstants.Manticore][CreatureConstants.Manticore] = GetMultiplierFromAverage(3 * 12 + 4);
+            appearances[CreatureConstants.Magmin] = new[] { "Seemingly sculpted from hardened magma. Small bursts of flame constantly erupt from its skin" };
+            //Source: https://www.scubalibre-adventures.com/giant-manta-ray-vs-reef-manta/
+            appearances[CreatureConstants.MantaRay] = new[] { "Black top with white underbelly" };
+            //Source: https://forgottenrealms.fandom.com/wiki/Manticore
+            appearances[CreatureConstants.Manticore] = GetWeightedAppearances(
+                allSkin: new[] { "TODO HUMAN skin", "TODO DRAGON wings" },
+                allHair: new[] { "TODO LION fur", "TODO HUMAN hair" },
+                allEyes: new[] { "Yellow eyes" },
+                allOther: new[] { "Tail ends in a mass of deadly spikes. Mouth full of rows and rows of razor-sharp teeth, similar to that of a great white shark" });
             //Source: https://forgottenrealms.fandom.com/wiki/Marilith
-            appearances[CreatureConstants.Marilith][GenderConstants.Female] = GetBaseFromRange(7 * 12, 9 * 12);
-            appearances[CreatureConstants.Marilith][CreatureConstants.Marilith] = GetMultiplierFromRange(7 * 12, 9 * 12);
+            appearances[CreatureConstants.Marilith] = GetWeightedAppearances(
+                allSkin: new[] { "TODO HUMAN skin, lower half has green scales" },
+                allHair: new[] { "TODO HUMAN hair" },
+                allEyes: new[] { "TODO HUMAN eyes" },
+                allOther: new[] { "Top half is human, bottom half is a serpent" });
             //Source: https://forgottenrealms.fandom.com/wiki/Marut
-            appearances[CreatureConstants.Marut][GenderConstants.Agender] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Marut][CreatureConstants.Marut] = GetMultiplierFromAverage(12 * 12);
+            appearances[CreatureConstants.Marut] = new[] { "Resembles a massive statue made entirely of onyx, humanoid in form but composed of mechanical components. Clad in golden armor." };
             //Source: https://www.d20srd.org/srd/monsters/medusa.htm
-            appearances[CreatureConstants.Medusa][GenderConstants.Female] = GetBaseFromRange(5 * 12, 6 * 12);
-            appearances[CreatureConstants.Medusa][GenderConstants.Male] = GetBaseFromRange(5 * 12, 6 * 12);
-            appearances[CreatureConstants.Medusa][CreatureConstants.Medusa] = GetMultiplierFromRange(5 * 12, 6 * 12);
+            appearances[CreatureConstants.Medusa] = GetWeightedAppearances(
+                allSkin: new[] { "Pale gray, scaly skin", "Earthy-brown, scaly skin", "Pale-green, scaly skin" },
+                allHair: new[] { "Hair is mass of 1‑foot-long living venomous serpents" },
+                allEyes: new[] { "Intense red eyes" });
             //Source: https://jurassicworld-evolution.fandom.com/wiki/Velociraptor
-            appearances[CreatureConstants.Megaraptor][GenderConstants.Female] = GetBaseFromAverage(67);
-            appearances[CreatureConstants.Megaraptor][GenderConstants.Male] = GetBaseFromAverage(67);
-            appearances[CreatureConstants.Megaraptor][CreatureConstants.Megaraptor] = GetMultiplierFromAverage(67);
-            //Source: https://forgottenrealms.fandom.com/wiki/Mephit
-            appearances[CreatureConstants.Mephit_Air][GenderConstants.Agender] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Air][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Air][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Air][CreatureConstants.Mephit_Air] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Dust][GenderConstants.Agender] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Dust][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Dust][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Dust][CreatureConstants.Mephit_Dust] = GetMultiplierFromAverage(4 * 12);
+            appearances[CreatureConstants.Megaraptor] = GetWeightedAppearances(
+                allSkin: new[] { "Dull pale green skin", "Ashy gray skin", "Yellow skin", "Orange skin", "Beige skin", "Stone gray skin", "Dark gray skin" },
+                allOther: new[] { "Large sickle claw on its foot. Large, sharp teeth." });
+            //Source: https://forgottenrealms.fandom.com/wiki/Air_mephit
+            appearances[CreatureConstants.Mephit_Air] = GetWeightedAppearances(
+                allSkin: new[] { "Pale white skin" },
+                allOther: new[] { "Wings, whirlwinds instead of wings" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Dust_mephit
+            appearances[CreatureConstants.Mephit_Dust] = GetWeightedAppearances(
+                allSkin: new[] { "Rough gray skin", "Flaky gray skin" },
+                allOther: new[] { "Emits dust and grit" });
             appearances[CreatureConstants.Mephit_Earth][GenderConstants.Agender] = GetBaseFromAverage(4 * 12);
             appearances[CreatureConstants.Mephit_Earth][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
             appearances[CreatureConstants.Mephit_Earth][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
