@@ -2878,18 +2878,28 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allOther: new[] { "Fiery red and orange spines" });
             //Source: https://forgottenrealms.fandom.com/wiki/Nalfeshnee
             appearances[CreatureConstants.Nalfeshnee] = new[] { "Corpulent, combining the most abysmal features of a boar and ape into a bipedal monstrosity. Small, feathered wings." };
-            //Source: https://www.d20srd.org/srd/monsters/nightHag.htm Copy from Human
-            appearances[CreatureConstants.NightHag][GenderConstants.Female] = "4*12+5";
-            appearances[CreatureConstants.NightHag][CreatureConstants.NightHag] = "2d10";
+            //Source: https://forgottenrealms.fandom.com/wiki/Night_hag
+            appearances[CreatureConstants.NightHag] = GetWeightedAppearances(
+                allSkin: new[] { "Blue-violet skin", "Light blue-violet skin", "Dark blue-violet skin", "Blue-black skin", "Purple-black skin" },
+                allHair: new[] { "Jet-black hair", "Pitch-black hair" },
+                allEyes: new[] { "Red eyes" },
+                commonOther: new[] { "Long, night-black nails. Tattoo-like scars. Grotesque warts, open sores, diseased blisters" },
+                uncommonOther: new[] { "Long, night-black nails. Tattoo-like scars" });
             //Source: https://www.d20srd.org/srd/monsters/nightshade.htm
-            appearances[CreatureConstants.Nightcrawler][GenderConstants.Agender] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Nightcrawler][CreatureConstants.Nightcrawler] = GetMultiplierFromAverage(7 * 12);
+            appearances[CreatureConstants.Nightcrawler] = GetWeightedAppearances(
+                allSkin: new[] { "Solid black skin" },
+                allOther: new[] { "Black teeth" });
             //Source: https://www.d20srd.org/srd/monsters/nightmare.htm
-            appearances[CreatureConstants.Nightmare][GenderConstants.Agender] = GetBaseFromRange(57, 61);
-            appearances[CreatureConstants.Nightmare][CreatureConstants.Nightmare] = GetMultiplierFromRange(57, 61);
-            //Scale up x2
-            appearances[CreatureConstants.Nightmare_Cauchemar][GenderConstants.Agender] = GetBaseFromRange(57 * 2, 61 * 2);
-            appearances[CreatureConstants.Nightmare_Cauchemar][CreatureConstants.Nightmare_Cauchemar] = GetMultiplierFromRange(57 * 2, 61 * 2);
+            appearances[CreatureConstants.Nightmare] = GetWeightedAppearances(
+                allSkin: new[] { "Night-black coat" },
+                allHair: new[] { "Red and orange flames for mane and tail" },
+                allEyes: new[] { "Glowing red eyes", "Dark eyes illuminated with flames" },
+                allOther: new[] { "Viper fangs" });
+            appearances[CreatureConstants.Nightmare_Cauchemar] = GetWeightedAppearances(
+                allSkin: new[] { "Night-black coat" },
+                allHair: new[] { "Red and orange flames for mane and tail" },
+                allEyes: new[] { "Glowing red eyes", "Dark eyes illuminated with flames" },
+                allOther: new[] { "Viper fangs" });
             //Source: https://www.d20srd.org/srd/monsters/nightshade.htm
             appearances[CreatureConstants.Nightwalker][GenderConstants.Agender] = GetBaseFromAverage(20 * 12);
             appearances[CreatureConstants.Nightwalker][CreatureConstants.Nightwalker] = GetMultiplierFromAverage(20 * 12);
