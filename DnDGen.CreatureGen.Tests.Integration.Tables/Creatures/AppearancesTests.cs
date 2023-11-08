@@ -2635,79 +2635,249 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Dust_mephit
             appearances[CreatureConstants.Mephit_Dust] = GetWeightedAppearances(
                 allSkin: new[] { "Rough gray skin", "Flaky gray skin" },
-                allOther: new[] { "Emits dust and grit" });
-            appearances[CreatureConstants.Mephit_Earth][GenderConstants.Agender] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Earth][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Earth][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Earth][CreatureConstants.Mephit_Earth] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Fire][GenderConstants.Agender] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Fire][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Fire][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Fire][CreatureConstants.Mephit_Fire] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Ice][GenderConstants.Agender] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Ice][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Ice][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Ice][CreatureConstants.Mephit_Ice] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Magma][GenderConstants.Agender] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Magma][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Magma][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Magma][CreatureConstants.Mephit_Magma] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Ooze][GenderConstants.Agender] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Ooze][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Ooze][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Ooze][CreatureConstants.Mephit_Ooze] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Salt][GenderConstants.Agender] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Salt][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Salt][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Salt][CreatureConstants.Mephit_Salt] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Steam][GenderConstants.Agender] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Steam][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Steam][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Steam][CreatureConstants.Mephit_Steam] = GetMultiplierFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Water][GenderConstants.Agender] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Water][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Water][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Mephit_Water][CreatureConstants.Mephit_Water] = GetMultiplierFromAverage(4 * 12);
+                allOther: new[] { "Wings, emits dust and grit" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Earth_mephit
+            appearances[CreatureConstants.Mephit_Earth] = GetWeightedAppearances(
+                allSkin: new[] { "Bumpy, rough, earthy skin", "Bumpy, rough, rocky skin", "Bumpy, rough, stony skin" },
+                allOther: new[] { "Wings" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Fire_mephit
+            appearances[CreatureConstants.Mephit_Fire] = GetWeightedAppearances(
+                allSkin: new[] { "Red skin", "Red skin streaked with black" },
+                uncommonHair: new[] { "Flaming mustache", "Flaming goatee" },
+                commonOther: new[] { "Imp-like wings covered in a halo of fire, body covered in flames" },
+                uncommonOther: new[] { "Bat-like wings covered in a halo of fire, body covered in flames" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Ice_mephit
+            appearances[CreatureConstants.Mephit_Ice] = GetWeightedAppearances(
+                allSkin: new[] { "Blue skin", "Blue-white skin", "White skin" },
+                allOther: new[] { "Wings, body seemingly composed of ice" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Magma_mephit
+            appearances[CreatureConstants.Mephit_Magma] = GetWeightedAppearances(
+                allSkin: new[] { "Dull red skin" },
+                allOther: new[] { "Wings, body oozes molten lava (like sweat)" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Ooze_mephit
+            appearances[CreatureConstants.Mephit_Ooze] = GetWeightedAppearances(
+                allSkin: new[] { "Ochre skin", "Green skin" },
+                allEyes: new[] { "Dark green eyes", "Red eyes" },
+                allOther: new[] { "Wings are green bubble membranes, body is mucky and filthy, dripping in slime" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Salt_mephit
+            appearances[CreatureConstants.Mephit_Salt] = GetWeightedAppearances(
+                allSkin: new[] { "Pale beige crystalline skin", "White, grainy, crystalline skin" },
+                allEyes: new[] { "Red eyes" },
+                allOther: new[] { "Wings composed of small cubic crystals" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Steam_mephit
+            appearances[CreatureConstants.Mephit_Steam] = GetWeightedAppearances(
+                allSkin: new[] { "Transluscent white skin", "Billowing steamy skin" },
+                uncommonHair: new[] { "Flames like hair on the head", "Flames engulfing the head" },
+                allEyes: new[] { "White eyes", "Yellow eyes" },
+                allOther: new[] { "Wings composed of steam, body dripping with steamy moisture",
+                    "Wings composed of steam, body is billowing steam, a flame roars in the stomach", "Wings composed of flames, body dripping with steamy moisture" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Water_mephit
+            appearances[CreatureConstants.Mephit_Water] = GetWeightedAppearances(
+                allSkin: new[] { "Blue scaly skin", "Sea-green scaly skin", "Light-blue scaly skin" },
+                allEyes: new[] { "Large, bulbous, black eyes", "Large, bulbous, sea-green eyes", "Large, bulbous, red eyes" },
+                allOther: new[] { "Fin-like wings, body dripping with salt water" });
             //Source: https://forgottenrealms.fandom.com/wiki/Merfolk
-            appearances[CreatureConstants.Merfolk][GenderConstants.Female] = "0";
-            appearances[CreatureConstants.Merfolk][GenderConstants.Male] = "0";
-            appearances[CreatureConstants.Merfolk][CreatureConstants.Merfolk] = "0";
+            appearances[CreatureConstants.Merfolk] = GetWeightedAppearances(
+                commonSkin: new[] { "Pale pink skin, deep kelly-green scales", "Pale pink skin, brilliant silver scales", "Pale pink skin, kelly-green scales",
+                        "Pale pink skin, dark silver scales", "Pale pink skin, green-silver scales", "Pale pink skin, pale green scales",
+                        "Pale pink skin, brilliant green scales",
+                    "Pale tan skin, deep kelly-green scales", "Pale tan skin, brilliant silver scales", "Pale tan skin, kelly-green scales",
+                        "Pale tan skin, dark silver scales", "Pale tan skin, green-silver scales", "Pale tan skin, pale green scales",
+                        "Pale tan skin, brilliant green scales",
+                    "Tan skin, deep kelly-green scales", "Tan skin, brilliant silver scales", "Tan skin, kelly-green scales",
+                        "Tan skin, dark silver scales", "Tan skin, green-silver scales", "Tan skin, pale green scales",
+                        "Tan skin, brilliant green scales" },
+                uncommonSkin: new[] { "TODO HUMAN skin",
+                    "... deep kelly-green scales", "... brilliant silver scales", "... kelly-green scales",
+                        "... dark silver scales", "... green-silver scales", "... pale green scales",
+                        "... brilliant green scales",
+                    "Pale pink skin, orange scales", "Pale pink skin, yellow scales", "Pale pink skin, red scales",
+                        "Pale pink skin, blue scales", "Pale pink skin, purple scales",
+                    "Pale tan skin, orange scales", "Pale tan skin, yellow scales", "Pale tan skin, red scales",
+                        "Pale tan skin, blue scales", "Pale tan skin, purple scales",
+                    "Tan skin, orange scales", "Tan skin, yellow scales", "Tan skin, red scales",
+                        "Tan skin, blue scales", "Tan skin, purple scales",
+                    "Pale pink skin, deep kelly-green scales with darker stripes", "Pale pink skin, brilliant silver scales with darker stripes",
+                        "Pale pink skin, kelly-green scales with darker stripes", "Pale pink skin, dark silver scales with darker stripes",
+                        "Pale pink skin, green-silver scales with darker stripes", "Pale pink skin, pale green scales with darker stripes",
+                        "Pale pink skin, brilliant green scales with darker stripes",
+                    "Pale pink skin, deep kelly-green scales with lighter stripes", "Pale pink skin, brilliant silver scales with lighter stripes",
+                        "Pale pink skin, kelly-green scales with lighter stripes", "Pale pink skin, dark silver scales with lighter stripes",
+                        "Pale pink skin, green-silver scales with lighter stripes", "Pale pink skin, pale green scales with lighter stripes",
+                        "Pale pink skin, brilliant green scales with lighter stripes",
+                    "Pale pink skin, deep kelly-green scales with darker speckles", "Pale pink skin, brilliant silver scales with darker speckles",
+                        "Pale pink skin, kelly-green scales with darker speckles", "Pale pink skin, dark silver scales with darker speckles",
+                        "Pale pink skin, green-silver scales with darker speckles", "Pale pink skin, pale green scales with darker speckles",
+                        "Pale pink skin, brilliant green scales with darker speckles",
+                    "Pale pink skin, deep kelly-green scales with lighter speckles", "Pale pink skin, brilliant silver scales with lighter speckles",
+                        "Pale pink skin, kelly-green scales with lighter speckles", "Pale pink skin, dark silver scales with lighter speckles",
+                        "Pale pink skin, green-silver scales with lighter speckles", "Pale pink skin, pale green scales with lighter speckles",
+                        "Pale pink skin, brilliant green scales with lighter speckles",
+                    "Pale tan skin, deep kelly-green scales with darker stripes", "Pale tan skin, brilliant silver scales with darker stripes",
+                        "Pale tan skin, kelly-green scales with darker stripes", "Pale tan skin, dark silver scales with darker stripes",
+                        "Pale tan skin, green-silver scales with darker stripes", "Pale tan skin, pale green scales with darker stripes",
+                        "Pale tan skin, brilliant green scales with darker stripes",
+                    "Pale tan skin, deep kelly-green scales with lighter stripes", "Pale tan skin, brilliant silver scales with lighter stripes",
+                        "Pale tan skin, kelly-green scales with lighter stripes", "Pale tan skin, dark silver scales with lighter stripes",
+                        "Pale tan skin, green-silver scales with lighter stripes", "Pale tan skin, pale green scales with lighter stripes",
+                        "Pale tan skin, brilliant green scales with lighter stripes",
+                    "Pale tan skin, deep kelly-green scales with darker speckles", "Pale tan skin, brilliant silver scales with darker speckles",
+                        "Pale tan skin, kelly-green scales with darker speckles", "Pale tan skin, dark silver scales with darker speckles",
+                        "Pale tan skin, green-silver scales with darker speckles", "Pale tan skin, pale green scales with darker speckles",
+                        "Pale tan skin, brilliant green scales with darker speckles",
+                    "Pale tan skin, deep kelly-green scales with lighter speckles", "Pale tan skin, brilliant silver scales with lighter speckles",
+                        "Pale tan skin, kelly-green scales with lighter speckles", "Pale tan skin, dark silver scales with lighter speckles",
+                        "Pale tan skin, green-silver scales with lighter speckles", "Pale tan skin, pale green scales with lighter speckles",
+                        "Pale tan skin, brilliant green scales with lighter speckles",
+                    "Tan skin, deep kelly-green scales with darker stripes", "Tan skin, brilliant silver scales with darker stripes",
+                        "tan skin, kelly-green scales with darker stripes", "Tan skin, dark silver scales with darker stripes",
+                        "tan skin, green-silver scales with darker stripes", "Tan skin, pale green scales with darker stripes",
+                        "tan skin, brilliant green scales with darker stripes",
+                    "Tan skin, deep kelly-green scales with lighter stripes", "Tan skin, brilliant silver scales with lighter stripes",
+                        "Tan skin, kelly-green scales with lighter stripes", "Tan skin, dark silver scales with lighter stripes",
+                        "Tan skin, green-silver scales with lighter stripes", "Tan skin, pale green scales with lighter stripes",
+                        "Tan skin, brilliant green scales with lighter stripes",
+                    "Tan skin, deep kelly-green scales with darker speckles", "Tan skin, brilliant silver scales with darker speckles",
+                        "Tan skin, kelly-green scales with darker speckles", "Tan skin, dark silver scales with darker speckles",
+                        "Tan skin, green-silver scales with darker speckles", "Tan skin, pale green scales with darker speckles",
+                        "Tan skin, brilliant green scales with darker speckles",
+                    "Tan skin, deep kelly-green scales with lighter speckles", "Tan skin, brilliant silver scales with lighter speckles",
+                        "Tan skin, kelly-green scales with lighter speckles", "Tan skin, dark silver scales with lighter speckles",
+                        "Tan skin, green-silver scales with lighter speckles", "Tan skin, pale green scales with lighter speckles",
+                        "Tan skin, brilliant green scales with lighter speckles",
+                    "Pale pink skin, copper scales", "Pale pink skin, bronze scales", "Pale pink skin, golden scales",
+                    "Pale tan skin, copper scales", "Pale tan skin, bronze scales", "Pale tan skin, golden scales",
+                    "Tan skin, copper scales", "Tan skin, bronze scales", "Tan skin, golden scales", },
+                rareSkin: new[] { "TODO HUMAN skin",
+                    "... orange scales", "... yellow scales", "... red scales",
+                        "... blue scales", "... purple scales",
+                        "... copper scales", "... bronze scales", "... golden scales",
+                    "... orange scales with darker stripes", "... yellow scales with darker stripes", "... red scales with darker stripes",
+                        "... blue scales with darker stripes", "... purple scales with darker stripes",
+                        "... copper scales with darker stripes", "... bronze scales with darker stripes", "... golden scales with darker stripes",
+                    "... orange scales with lighter stripes", "... yellow scales with lighter stripes", "... red scales with lighter stripes",
+                        "... blue scales with lighter stripes", "... purple scales with lighter stripes",
+                        "... copper scales with lighter stripes", "... bronze scales with lighter stripes", "... golden scales with lighter stripes",
+                    "... orange scales with darker speckles", "... yellow scales with darker speckles", "... red scales with darker speckles",
+                        "... blue scales with darker speckles", "... purple scales with darker speckles",
+                        "... copper scales with darker speckles", "... bronze scales with darker speckles", "... golden scales with darker speckles",
+                    "... orange scales with lighter speckles", "... yellow scales with lighter speckles", "... red scales with lighter speckles",
+                        "... blue scales with lighter speckles", "... purple scales with lighter speckles",
+                        "... copper scales with lighter speckles", "... bronze scales with lighter speckles", "... golden scales with lighter speckles", },
+                commonHair: new[] { "Light brown hair", "Blond hair" },
+                uncommonHair: new[] { "TODO HUMAN hair" },
+                rareHair: new[] { "Blue hair", "Silver hair" },
+                allEyes: new[] { "TODO HUMAN eyes with ice-blue pupils",
+                    "TODO HUMAN eyes with pale-silver pupils" },
+                commonOther: new[] { "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers" },
+                uncommonOther: new[] { "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers, tattoos on the arms",
+                    "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers, tattoos on the chest",
+                    "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers, tattoos on the back",
+                    "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers, tattoos on the face",
+                    "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers, tattoos on the arms and chest",
+                    "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers, tattoos on the arms and back",
+                    "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers, tattoos on the arms and face",
+                    "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers, tattoos on the chest and back",
+                    "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers, tattoos on the chest and face",
+                    "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers, tattoos on the back and face",
+                    "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers, covered in tattoos" });
             //Source: https://www.d20srd.org/srd/monsters/mimic.htm
-            appearances[CreatureConstants.Mimic][GenderConstants.Agender] = GetBaseFromRange(3 * 12, 10 * 12);
-            appearances[CreatureConstants.Mimic][CreatureConstants.Mimic] = GetMultiplierFromRange(3 * 12, 10 * 12);
+            //https://forgottenrealms.fandom.com/wiki/Mimic
+            appearances[CreatureConstants.Mimic] = new[] { "Shaped like a door", "Shaped like a treasure chest, closed and locked", "Shaped like a rug",
+                "Shaped like a bookshelf filled with books", "Shaped like a treasure chest, cracked open and glistening with gold",
+                "Shaped like a bed", "Shaped like a wooden chair", "Shaped like a table", "Shaped like a trap door in the floor", "Shaped like a raised stone platform",
+                "Shaped like a stone pedestal with a glass orb on top", "Shaped like an altar", "Shaped like a barrel filled with gold",
+                "Shaped like a barrel filled with gleaming swords", "Shaped like an empty barrel", "Shaped like a bench", "Shaped like a brazier, unlit",
+                "Shaped like a candelabra, unlit", "Shaped like a cauldron", "Shaped like a gate with a solid lock", "Shaped like a chest of drawers",
+                "Shaped like a storage chest", "Shaped like a coat rack", "Shaped like a cupboard", "Shaped like a crate", "Shaped like a sofa", "Shaped like a divan",
+                "Shaped like a wingback, cushioned chair", "Shaped like a fountain without running water, with a long lever on the side", "Shaped like an iron maiden",
+                "Shaped like a ladder", "Shaped like a loom", "Shaped like a stove", "Shaped like an oven", "Shaped like a small set of stairs", "Shaped like a ramp",
+                "Shaped like a throne", "Shaped like a washbasin", "Shaped like a bathtub", "Shaped like a wardrobe",
+                "Shaped like a weapon rack, filled with gleaming blades", "Shaped like a weapon rack, filled with finely-carved staffs and mallets",
+                "Shaped like a gleaming suit of armor (full plate)", "Shaped like a gleaming suit of armor (half plate)", "Shaped like a workbench" };
             //Source: https://forgottenrealms.fandom.com/wiki/Mind_flayer
-            appearances[CreatureConstants.MindFlayer][GenderConstants.Agender] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.MindFlayer][CreatureConstants.MindFlayer] = GetMultiplierFromAverage(6 * 12);
+            appearances[CreatureConstants.MindFlayer] = GetWeightedAppearances(
+                allSkin: new[] { "Soft, supple, moist, rubbery, mauve skin", "Soft, supple, moist, rubbery, greenish-violet skin",
+                    "Soft, supple, moist, rubbery, pale purple skin", "Soft, supple, moist, rubbery, pale violet skin", "Soft, supple, moist, rubbery, violet skin",
+                    "Soft, supple, moist, rubbery, purple skin", "Soft, supple, moist, rubbery, greenish-purple skin",
+                    "Soft, supple, moist, rubbery, pale greenish-purple skin" },
+                allEyes: new[] { "Solid white eyes" },
+                allOther: new[] { "Four purplish-black facial tentacles" });
             //Source: https://forgottenrealms.fandom.com/wiki/Minotaur
-            appearances[CreatureConstants.Minotaur][GenderConstants.Female] = GetBaseFromAverage(7 * 12, 9 * 12);
-            appearances[CreatureConstants.Minotaur][GenderConstants.Male] = GetBaseFromAverage(9 * 12);
-            appearances[CreatureConstants.Minotaur][CreatureConstants.Minotaur] = GetMultiplierFromAverage(9 * 12);
-            //Source: https://www.d20srd.org/srd/monsters/mohrg.htm
-            appearances[CreatureConstants.Mohrg][GenderConstants.Agender] = GetBaseFromRange(5 * 12, 6 * 12);
-            appearances[CreatureConstants.Mohrg][CreatureConstants.Mohrg] = GetMultiplierFromRange(5 * 12, 6 * 12);
-            //Source: https://www.dimensions.com/element/tufted-capuchin-sapajus-apella
-            appearances[CreatureConstants.Monkey][GenderConstants.Female] = GetBaseFromRange(10, 16);
-            appearances[CreatureConstants.Monkey][GenderConstants.Male] = GetBaseFromRange(10, 16);
-            appearances[CreatureConstants.Monkey][CreatureConstants.Monkey] = GetMultiplierFromRange(10, 16);
-            //Source: https://www.dimensions.com/element/mule-equus-asinus-x-equus-caballus
-            appearances[CreatureConstants.Mule][GenderConstants.Female] = GetBaseFromRange(56, 68);
-            appearances[CreatureConstants.Mule][GenderConstants.Male] = GetBaseFromRange(56, 68);
-            appearances[CreatureConstants.Mule][CreatureConstants.Mule] = GetMultiplierFromRange(56, 68);
+            appearances[CreatureConstants.Minotaur] = GetWeightedAppearances(
+                allSkin: new[] { "Black skin", "Brown skin", "Fair skin", "Pale skin" },
+                allHair: new[] { "Black hair and fur", "Brown hair and fur", "Dark brown hair and fur" },
+                commonOther: new[] { "Hooves on legs, dark yellow horns", "Hooves on legs, brown horns", "Hooves on legs, yellow horns",
+                    "Hooves on legs, yellow-brown horns", "Hooves on legs, black horns", "Hooves on legs, dark brown horns", "Hooves on legs, white horns",
+                    "Hooves on legs, beige horns" },
+                uncommonOther: new[] { "Hooves on legs, dark yellow horns, cow-like tail", "Hooves on legs, brown horns, cow-like tail",
+                    "Hooves on legs, yellow horns, cow-like tail", "Hooves on legs, yellow-brown horns, cow-like tail", "Hooves on legs, black horns, cow-like tail",
+                    "Hooves on legs, dark brown horns, cow-like tail", "Hooves on legs, white horns, cow-like tail", "Hooves on legs, beige horns, cow-like tail" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Mohrg
+            appearances[CreatureConstants.Mohrg] = new[] { "Skeletal corpse filled with writhing organs" };
+            //Source: https://www.d20srd.org/srd/monsters/monkey.htm
+            //https://www.google.com/search?q=colobus+monkey+species
+            //https://www.google.com/search?q=capuchin+monkey+species
+            appearances[CreatureConstants.Monkey] = new[] { "Tufted capuchin", "Panamanian white-faced capuchin", "Black-and-white colobus", "Black colobus",
+                "Mantled guereza", "Red colobus", "Colombian white-faced capuchin", "White-fronted capuchin", "Black capuchin", "Wedge-capped capuchin",
+                "Golden-bellied capuchin", "Kaapori capuchin", "Blond capuchin", "Crested capuchin", "Black-striped capuchin", "Marañón white-fronted capuchin",
+                "Azara's capuchin", "Varied white-fronted capuchin", "Spix's white-fronted capuchin", "Santa Marta white-fronted capuchin", "Killikaike", "Acrecebus" };
+            //Source: https://www.newworldencyclopedia.org/entry/Mule
+            appearances[CreatureConstants.Mule] = GetWeightedAppearances(
+                commonHair: new[] { "Bay coloration", "Sorrel coloration", "Black fur", "Gray fur" },
+                uncommonHair: new[] { "White fur", "Blue roan coloration", "Red roan coloration", "Palomino coloration", "Dun coloration", "Buckskin coloration" },
+                rareHair: new[] { "Paint coloration", "Tobiano coloration" });
             //Source: https://www.d20srd.org/srd/monsters/mummy.htm
-            appearances[CreatureConstants.Mummy][GenderConstants.Female] = GetBaseFromRange(5 * 12, 6 * 12);
-            appearances[CreatureConstants.Mummy][GenderConstants.Male] = GetBaseFromRange(5 * 12, 6 * 12);
-            appearances[CreatureConstants.Mummy][CreatureConstants.Mummy] = GetMultiplierFromRange(5 * 12, 6 * 12);
-            appearances[CreatureConstants.Naga_Dark][GenderConstants.Hermaphrodite] = "0";
-            appearances[CreatureConstants.Naga_Dark][CreatureConstants.Naga_Dark] = "0";
-            appearances[CreatureConstants.Naga_Guardian][GenderConstants.Hermaphrodite] = "0";
-            appearances[CreatureConstants.Naga_Guardian][CreatureConstants.Naga_Guardian] = "0";
-            appearances[CreatureConstants.Naga_Spirit][GenderConstants.Hermaphrodite] = "0";
-            appearances[CreatureConstants.Naga_Spirit][CreatureConstants.Naga_Spirit] = "0";
-            appearances[CreatureConstants.Naga_Water][GenderConstants.Hermaphrodite] = "0";
-            appearances[CreatureConstants.Naga_Water][CreatureConstants.Naga_Water] = "0";
+            appearances[CreatureConstants.Mummy] = GetWeightedAppearances(
+                commonOther: new[] { "Desiccated husk wrapped in linen burial wraps, pungent cinnamon smell",
+                    "Desiccated husk wrapped in linen burial wraps, pungent ginger smell",
+                    "Desiccated husk wrapped in linen burial wraps, pungent saltpeter smell",
+                    "Desiccated husk wrapped in linen burial wraps, pungent roses smell",
+                    "Desiccated husk wrapped in linen burial wraps, pungent myrrh smell",
+                    "Desiccated husk wrapped in linen burial wraps, pungent frankincense smell",
+                    "Desiccated husk wrapped in linen burial wraps, pungent lye smell",
+                    "Desiccated husk wrapped in linen burial wraps, pungent wormwood smell",
+                    "Desiccated husk wrapped in linen burial wraps, pungent pomegranate smell" },
+                uncommonOther: new[] { "Desiccated husk wrapped in linen burial wraps, pungent upturned-earth smell",
+                    "Desiccated husk wrapped in linen burial wraps, pungent decay smell",
+                    "Desiccated husk wrapped in linen burial wraps, pungent vegetable rot smell" },
+                rareOther: new[] { "Desiccated husk wrapped in linen burial wraps, pungent bread smell",
+                    "Desiccated husk wrapped in linen burial wraps, pungent yeast smell",
+                    "Desiccated husk wrapped in linen burial wraps, pungent wine smell",
+                    "Desiccated husk wrapped in linen burial wraps, pungent vinegar smell",
+                    "Desiccated husk wrapped in linen burial wraps, pungent roasted meats smell" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Dark_naga
+            appearances[CreatureConstants.Naga_Dark] = GetWeightedAppearances(
+                commonSkin: new[] { "Dark blue scales with black frills", "Dark blue patterned scales", "Dark blue patterned scales with black frills",
+                    "Purple scales with black frills", "Purple patterned scales", "Purple patterned scales with black frills" },
+                uncommonSkin: new[] { "Dark blue scales", "Purple scales" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Guardian_naga
+            appearances[CreatureConstants.Naga_Guardian] = GetWeightedAppearances(
+                commonSkin: new[] { "Green-gold scales with silvery triangles down the spine" },
+                uncommonSkin: new[] { "Green-gold scales with silvery triangles down the spine, golden frill runs down the length of the spine" },
+                allEyes: new[] { "Bright golden eyes" },
+                uncommonOther: new[] { "Smells of flowers" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Spirit_naga
+            appearances[CreatureConstants.Naga_Spirit] = GetWeightedAppearances(
+                allSkin: new[] { "Black scales with red bands" },
+                allHair: new[] { "Stringy black hair" },
+                allOther: new[] { "Emits the stench of carrion" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Water_naga
+            appearances[CreatureConstants.Naga_Water] = GetWeightedAppearances(
+                allSkin: new[] { "Emerald-green skin, with reticulated rings of light olive and dark emerald green",
+                    "Turquoise skin, with reticulated rings of light olive and dark emerald green",
+                    "Blue-green skin, with reticulated rings of light olive and dark emerald green",
+                    "Green skin, with reticulated rings of light olive and dark emerald green",
+                    "Blue skin, with reticulated rings of light olive and dark emerald green",
+                    "Emerald-green skin, with reticulated rings of dark brown and gray",
+                    "Turquoise skin, with reticulated rings of dark brown and gray",
+                    "Blue-green skin, with reticulated rings of dark brown and gray",
+                    "Green skin, with reticulated rings of dark brown and gray",
+                    "Blue skin, with reticulated rings of dark brown and gray"},
+                allEyes: new[] { "Pale green eyes", "Bright amber eyes" },
+                allOther: new[] { "Fiery red and orange spines" });
             //Source: https://forgottenrealms.fandom.com/wiki/Nalfeshnee
-            appearances[CreatureConstants.Nalfeshnee][GenderConstants.Agender] = GetBaseFromRange(10 * 12, 20 * 12);
-            appearances[CreatureConstants.Nalfeshnee][CreatureConstants.Nalfeshnee] = GetMultiplierFromRange(10 * 12, 20 * 12);
+            appearances[CreatureConstants.Nalfeshnee] = new[] { "Corpulent, combining the most abysmal features of a boar and ape into a bipedal monstrosity. Small, feathered wings." };
             //Source: https://www.d20srd.org/srd/monsters/nightHag.htm Copy from Human
             appearances[CreatureConstants.NightHag][GenderConstants.Female] = "4*12+5";
             appearances[CreatureConstants.NightHag][CreatureConstants.NightHag] = "2d10";
