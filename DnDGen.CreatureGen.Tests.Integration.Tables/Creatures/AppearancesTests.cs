@@ -2885,11 +2885,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allEyes: new[] { "Red eyes" },
                 commonOther: new[] { "Long, night-black nails. Tattoo-like scars. Grotesque warts, open sores, diseased blisters" },
                 uncommonOther: new[] { "Long, night-black nails. Tattoo-like scars" });
-            //Source: https://www.d20srd.org/srd/monsters/nightshade.htm
+            //Source: https://forgottenrealms.fandom.com/wiki/Nightcrawler
             appearances[CreatureConstants.Nightcrawler] = GetWeightedAppearances(
                 allSkin: new[] { "Solid black skin" },
                 allOther: new[] { "Black teeth" });
-            //Source: https://www.d20srd.org/srd/monsters/nightmare.htm
+            //Source: https://forgottenrealms.fandom.com/wiki/Nightmare_(creature)
             appearances[CreatureConstants.Nightmare] = GetWeightedAppearances(
                 allSkin: new[] { "Night-black coat" },
                 allHair: new[] { "Red and orange flames for mane and tail" },
@@ -2900,53 +2900,73 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allHair: new[] { "Red and orange flames for mane and tail" },
                 allEyes: new[] { "Glowing red eyes", "Dark eyes illuminated with flames" },
                 allOther: new[] { "Viper fangs" });
-            //Source: https://www.d20srd.org/srd/monsters/nightshade.htm
-            appearances[CreatureConstants.Nightwalker][GenderConstants.Agender] = GetBaseFromAverage(20 * 12);
-            appearances[CreatureConstants.Nightwalker][CreatureConstants.Nightwalker] = GetMultiplierFromAverage(20 * 12);
-            //Source: https://www.d20srd.org/srd/monsters/nightshade.htm
-            //https://www.dimensions.com/element/giant-golden-crowned-flying-fox-acerodon-jubatus scaled up: [18,22]*40*12/[59,67] = [146,158]
-            appearances[CreatureConstants.Nightwing][GenderConstants.Agender] = GetBaseFromRange(146, 158);
-            appearances[CreatureConstants.Nightwing][CreatureConstants.Nightwing] = GetMultiplierFromRange(146, 158);
-            //Source: https://www.d20srd.org/srd/monsters/sprite.htm#nixie
-            appearances[CreatureConstants.Nixie][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Nixie][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.Nixie][CreatureConstants.Nixie] = GetMultiplierFromAverage(4 * 12);
-            //Source: https://www.d20srd.org/srd/monsters/nymph.htm Copy from High Elf
-            appearances[CreatureConstants.Nymph][GenderConstants.Female] = "4*12+5";
-            appearances[CreatureConstants.Nymph][CreatureConstants.Nymph] = "2d6";
-            //Source: https://www.d20srd.org/srd/monsters/ooze.htm#ochreJelly
-            appearances[CreatureConstants.OchreJelly][GenderConstants.Agender] = GetBaseFromAverage(6);
-            appearances[CreatureConstants.OchreJelly][CreatureConstants.OchreJelly] = GetMultiplierFromAverage(6);
-            //Source: https://www.dimensions.com/element/common-octopus-octopus-vulgaris (mantle length)
-            appearances[CreatureConstants.Octopus][GenderConstants.Female] = GetBaseFromRange(6, 10);
-            appearances[CreatureConstants.Octopus][GenderConstants.Male] = GetBaseFromRange(6, 10);
-            appearances[CreatureConstants.Octopus][CreatureConstants.Octopus] = GetMultiplierFromRange(6, 10);
-            //Source: https://www.dimensions.com/element/giant-pacific-octopus-enteroctopus-dofleini (mantle length)
-            appearances[CreatureConstants.Octopus_Giant][GenderConstants.Female] = GetBaseFromRange(20, 24);
-            appearances[CreatureConstants.Octopus_Giant][GenderConstants.Male] = GetBaseFromRange(20, 24);
-            appearances[CreatureConstants.Octopus_Giant][CreatureConstants.Octopus_Giant] = GetMultiplierFromRange(20, 24);
+            //Source: https://forgottenrealms.fandom.com/wiki/Nightwalker
+            appearances[CreatureConstants.Nightwalker] = new[] { "Body looks as if it is made of shadow-stuff, with a vaguely humanoid form. Smooth and hairless." };
+            //Source: https://forgottenrealms.fandom.com/wiki/Nightwing
+            appearances[CreatureConstants.Nightwing] = new[] { "Bat-shaped darkness" };
+            //Source: https://forgottenrealms.fandom.com/wiki/Nixie
+            appearances[CreatureConstants.Nixie] = GetWeightedAppearances(
+                allSkin: new[] { "Pale green skin" },
+                allHair: new[] { "Dark green hair" },
+                allEyes: new[] { "Wide, silver eyes" },
+                allOther: new[] { "Webbed fingers and toes, pointed ears" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Nymph
+            appearances[CreatureConstants.Nymph] = GetWeightedAppearances(
+                allSkin: new[] { "Vibrant green skin", "Autumnal orange skin", "Autumnal red skin", "Brown skin", "Yellow skin",
+                    "TODO HIGH ELF skin" },
+                allHair: new[] { "Green hair" , "Orange hair", "Red hair", "Orange-brown hair", "Red-brown hair",
+                    "TODO HIGH ELF hair" },
+                allEyes: new[] { "Yellow eyes", "Green eyes",
+                    "TODO HIGH ELF eyes" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Ochre_jelly
+            appearances[CreatureConstants.OchreJelly] = GetWeightedAppearances(
+                allSkin: new[] { "Dark yellow skin" },
+                allOther: new[] { "Resembles giant amoeba" });
+            //Source: https://kids.nationalgeographic.com/animals/invertebrates/facts/octopus
+            appearances[CreatureConstants.Octopus] = GetWeightedAppearances(
+                allSkin: new[] { "Gray skin", "Brown skin", "Pink skin", "Blue skin", "Green skin", "Reddish-brown skin" });
+            //Source: https://www.nationalgeographic.com/animals/invertebrates/facts/giant-pacific-octopus
+            appearances[CreatureConstants.Octopus_Giant] = GetWeightedAppearances(
+                allSkin: new[] { "Gray skin", "Brown skin", "Pink skin", "Blue skin", "Green skin", "Reddish-brown skin" });
             //Source: https://forgottenrealms.fandom.com/wiki/Ogre
-            appearances[CreatureConstants.Ogre][GenderConstants.Female] = GetBaseFromRange(9 * 12 + 3, 10 * 12);
-            appearances[CreatureConstants.Ogre][GenderConstants.Male] = GetBaseFromRange(10 * 12 + 1, 10 * 12 + 10);
-            appearances[CreatureConstants.Ogre][CreatureConstants.Ogre] = GetMultiplierFromRange(10 * 12 + 1, 10 * 12 + 10);
-            appearances[CreatureConstants.Ogre_Merrow][GenderConstants.Female] = GetBaseFromRange(9 * 12 + 3, 10 * 12);
-            appearances[CreatureConstants.Ogre_Merrow][GenderConstants.Male] = GetBaseFromRange(10 * 12 + 1, 10 * 12 + 10);
-            appearances[CreatureConstants.Ogre_Merrow][CreatureConstants.Ogre_Merrow] = GetMultiplierFromRange(10 * 12 + 1, 10 * 12 + 10);
+            appearances[CreatureConstants.Ogre] = GetWeightedAppearances(
+                allSkin: new[] { "Beige skin", "Pale beige skin", "White skin", "Pale gray skin", "Pale pink skin", "Pink skin", "Red-brown skin" },
+                allEyes: new[] { "Yellow eyes", "Green eyes" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Merrow_(ogre)
+            appearances[CreatureConstants.Ogre_Merrow] = GetWeightedAppearances(
+                allSkin: new[] { "Green scales" },
+                allHair: new[] { "Seaweed-green, slimy hair" },
+                allEyes: new[] { "Dark green eyes", "Green eyes" },
+                commonOther: new[] { "Black teeth and nails, webbed hands and feet, underbite, sloping shoulders, covered in tattoos" },
+                rareOther: new[] { "Black teeth and nails, webbed hands and feet, underbite, sloping shoulders, ivory horns, covered in tattoos" });
             //Source: https://forgottenrealms.fandom.com/wiki/Oni_mage
-            appearances[CreatureConstants.OgreMage][GenderConstants.Female] = GetBaseFromAverage(10 * 12);
-            appearances[CreatureConstants.OgreMage][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
-            appearances[CreatureConstants.OgreMage][CreatureConstants.OgreMage] = GetMultiplierFromAverage(10 * 12);
+            appearances[CreatureConstants.OgreMage] = GetWeightedAppearances(
+                allSkin: new[] { "Turquoise skin", "Pale turquoise skin" },
+                allHair: new[] { "White hair", "Light gray hair", "Black hair", "Blue-black hair" },
+                allEyes: new[] { "Yellow eyes", "Green eyes" },
+                allOther: new[] { "Black nails", "Black nails, white horns", "Black nails, black horns" });
             //Source: https://forgottenrealms.fandom.com/wiki/Orc
-            appearances[CreatureConstants.Orc][GenderConstants.Female] = GetBaseFromAtLeast(6 * 12);
-            appearances[CreatureConstants.Orc][GenderConstants.Male] = GetBaseFromAtLeast(6 * 12);
-            appearances[CreatureConstants.Orc][CreatureConstants.Orc] = GetMultiplierFromAtLeast(6 * 12);
-            //Source: https://www.d20srd.org/srd/description.htm#vitalStatistics
-            appearances[CreatureConstants.Orc_Half][GenderConstants.Female] = "4*12+5";
-            appearances[CreatureConstants.Orc_Half][GenderConstants.Male] = "4*12+10";
-            appearances[CreatureConstants.Orc_Half][CreatureConstants.Orc_Half] = "2d12";
-            //Source: https://criticalrole.fandom.com/wiki/Otyugh
-            appearances[CreatureConstants.Otyugh][GenderConstants.Hermaphrodite] = GetBaseFromAverage(15 * 12);
-            appearances[CreatureConstants.Otyugh][CreatureConstants.Otyugh] = GetMultiplierFromAverage(15 * 12);
+            appearances[CreatureConstants.Orc] = GetWeightedAppearances(
+                allSkin: new[] { "Gray skin" },
+                allHair: new[] { "Coarse black hair" },
+                allEyes: new[] { "Reddish eyes" },
+                allOther: new[] { "Low forehead, tusks" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Half-orc
+            appearances[CreatureConstants.Orc_Half] = GetWeightedAppearances(
+                commonSkin: new[] { "Grayish skin" },
+                uncommonSkin: new[] { "TODO HUMAN skin" },
+                commonHair: new[] { "Coarse black hair on head and body" },
+                uncommonHair: new[] { "Coarse dark gray hair on head and body", "Coarse gray hair on head and body", "TODO HUMAN hair" },
+                allEyes: new[] { "TODO HUMAN eyes", "TODO ORC eyes" },
+                allOther: new[] { "Jutting jaw, sloping forehead, small tusks" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Otyugh
+            appearances[CreatureConstants.Otyugh] = GetWeightedAppearances(
+                commonSkin: new[] { "Grayish skin" },
+                uncommonSkin: new[] { "TODO HUMAN skin" },
+                commonHair: new[] { "Coarse black hair on head and body" },
+                uncommonHair: new[] { "Coarse dark gray hair on head and body", "Coarse gray hair on head and body", "TODO HUMAN hair" },
+                allEyes: new[] { "TODO HUMAN eyes", "TODO ORC eyes" },
+                allOther: new[] { "Jutting jaw, sloping forehead, small tusks" });
             //Source: https://www.dimensions.com/element/great-horned-owl-bubo-virginianus
             appearances[CreatureConstants.Owl][GenderConstants.Female] = GetBaseFromRange(9, 14);
             appearances[CreatureConstants.Owl][GenderConstants.Male] = GetBaseFromRange(9, 14);
