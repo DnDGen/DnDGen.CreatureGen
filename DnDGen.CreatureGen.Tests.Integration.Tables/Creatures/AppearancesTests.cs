@@ -2961,12 +2961,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allOther: new[] { "Jutting jaw, sloping forehead, small tusks" });
             //Source: https://forgottenrealms.fandom.com/wiki/Otyugh
             appearances[CreatureConstants.Otyugh] = GetWeightedAppearances(
-                commonSkin: new[] { "Grayish skin" },
-                uncommonSkin: new[] { "TODO HUMAN skin" },
-                commonHair: new[] { "Coarse black hair on head and body" },
-                uncommonHair: new[] { "Coarse dark gray hair on head and body", "Coarse gray hair on head and body", "TODO HUMAN hair" },
-                allEyes: new[] { "TODO HUMAN eyes", "TODO ORC eyes" },
-                allOther: new[] { "Jutting jaw, sloping forehead, small tusks" });
+                allSkin: new[] { "Disgusting light brown rock-like hide", "Disgusting green rock-like hide", "Disgusting brown rock-like hide" },
+                allOther: new[] { "Bloated, oval-shaped body. Three shuffling elephantine legs. Long tentacles bedecked in rough thorny growths ending in leaf-shaped pads with rows of more sharp spikes. Third tentacle sprouts from the top of the body, forming a vine-like stalk, ending in pair of eyes and olfactory organ. Fang-filled mouth." });
             //Source: https://www.dimensions.com/element/great-horned-owl-bubo-virginianus
             appearances[CreatureConstants.Owl][GenderConstants.Female] = GetBaseFromRange(9, 14);
             appearances[CreatureConstants.Owl][GenderConstants.Male] = GetBaseFromRange(9, 14);
