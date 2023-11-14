@@ -2964,23 +2964,24 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allSkin: new[] { "Disgusting light brown rock-like hide", "Disgusting green rock-like hide", "Disgusting brown rock-like hide" },
                 allOther: new[] { "Bloated, oval-shaped body. Three shuffling elephantine legs. Long tentacles bedecked in rough thorny growths ending in leaf-shaped pads with rows of more sharp spikes. Third tentacle sprouts from the top of the body, forming a vine-like stalk, ending in pair of eyes and olfactory organ. Fang-filled mouth." });
             //Source: https://www.dimensions.com/element/great-horned-owl-bubo-virginianus
-            appearances[CreatureConstants.Owl][GenderConstants.Female] = GetBaseFromRange(9, 14);
-            appearances[CreatureConstants.Owl][GenderConstants.Male] = GetBaseFromRange(9, 14);
-            appearances[CreatureConstants.Owl][CreatureConstants.Owl] = GetMultiplierFromRange(9, 14);
+            //https://www.allaboutbirds.org/guide/Great_Horned_Owl/species-compare/
+            //https://carnivora.net/great-horned-owl-v-powerful-owl-t7257.html
+            //https://www.allaboutbirds.org/guide/Long-eared_Owl/species-compare/
+            appearances[CreatureConstants.Owl] = new[] { "Barn Owl", "Great Horned Owl", "Snowy Owl", "Barred Owl", "Great Gray Owl", "Long-Eared Owl", "Powerful Owl" };
             //Source: https://www.d20srd.org/srd/monsters/owlGiant.htm 
-            appearances[CreatureConstants.Owl_Giant][GenderConstants.Female] = GetBaseFromAverage(9 * 12);
-            appearances[CreatureConstants.Owl_Giant][GenderConstants.Male] = GetBaseFromAverage(9 * 12);
-            appearances[CreatureConstants.Owl_Giant][CreatureConstants.Owl_Giant] = GetMultiplierFromAverage(9 * 12);
+            appearances[CreatureConstants.Owl_Giant] = new[] { "Resembles a Barn Owl", "Resembles a Great Horned Owl", "Resembles a Snowy Owl", "Resembles a Barred Owl",
+                "Resembles a Great Gray Owl", "Resembles a Long-Eared Owl", "Resembles a Powerful Owl" };
             //Source: https://forgottenrealms.fandom.com/wiki/Owlbear
-            //https://www.dimensions.com/element/polar-bears polar bears are similar length, so using for height
-            //Adjusting female max +5" to match range
-            appearances[CreatureConstants.Owlbear][GenderConstants.Female] = GetBaseFromRange(2 * 12 + 8, 3 * 12 + 11 + 5);
-            appearances[CreatureConstants.Owlbear][GenderConstants.Male] = GetBaseFromRange(3 * 12 + 7, 5 * 12 + 3);
-            appearances[CreatureConstants.Owlbear][CreatureConstants.Owlbear] = GetMultiplierFromRange(3 * 12 + 7, 5 * 12 + 3);
+            appearances[CreatureConstants.Owlbear] = GetWeightedAppearances(
+                allHair: new[] { "Brown-black feathers and fur", "Yellow-brown feathers and fur", "Brown feathers and fur", "Dark brown feathers and fur" },
+                allEyes: new[] { "Eyes rimmed in red with limpid pupils" },
+                allOther: new[] { "Bear-like body, avian head, hooked yellow beak", "Bear-like body, avian head, serrated yellow beak",
+                    "Bear-like body, avian head, hooked yellow-white beak", "Bear-like body, avian head, serrated yellow-white beak",
+                    "Bear-like body, avian head, hooked dull ivory beak", "Bear-like body, avian head, serrated dull ivory beak" });
             //Source: https://www.d20srd.org/srd/monsters/pegasus.htm
-            appearances[CreatureConstants.Pegasus][GenderConstants.Female] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.Pegasus][GenderConstants.Male] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.Pegasus][CreatureConstants.Pegasus] = GetMultiplierFromAverage(6 * 12);
+            appearances[CreatureConstants.Pegasus] = GetWeightedAppearances(
+                allHair: new[] { "White hair on the body, white feathers for mane and tail, white feathered legs" },
+                allOther: new[] { "Resembles horse with bird-like wings" });
             //Source: https://www.d20pfsrd.com/bestiary/monster-listings/plants/fungus-phantom/
             appearances[CreatureConstants.PhantomFungus][GenderConstants.Agender] = GetBaseFromAverage(6 * 12);
             appearances[CreatureConstants.PhantomFungus][CreatureConstants.PhantomFungus] = GetMultiplierFromAverage(6 * 12);
