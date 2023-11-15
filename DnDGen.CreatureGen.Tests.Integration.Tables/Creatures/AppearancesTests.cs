@@ -2978,43 +2978,43 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allOther: new[] { "Bear-like body, avian head, hooked yellow beak", "Bear-like body, avian head, serrated yellow beak",
                     "Bear-like body, avian head, hooked yellow-white beak", "Bear-like body, avian head, serrated yellow-white beak",
                     "Bear-like body, avian head, hooked dull ivory beak", "Bear-like body, avian head, serrated dull ivory beak" });
-            //Source: https://www.d20srd.org/srd/monsters/pegasus.htm
+            //Source: https://forgottenrealms.fandom.com/wiki/Pegasus
             appearances[CreatureConstants.Pegasus] = GetWeightedAppearances(
                 allHair: new[] { "White hair on the body, white feathers for mane and tail, white feathered legs" },
                 allOther: new[] { "Resembles horse with bird-like wings" });
-            //Source: https://www.d20pfsrd.com/bestiary/monster-listings/plants/fungus-phantom/
-            appearances[CreatureConstants.PhantomFungus][GenderConstants.Agender] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.PhantomFungus][CreatureConstants.PhantomFungus] = GetMultiplierFromAverage(6 * 12);
-            //Source: https://www.d20srd.org/srd/monsters/phaseSpider.htm
-            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Medium
-            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Large - going between, so 12 inches
-            appearances[CreatureConstants.PhaseSpider][GenderConstants.Female] = GetBaseFromAverage(12);
-            appearances[CreatureConstants.PhaseSpider][GenderConstants.Male] = GetBaseFromAverage(12);
-            appearances[CreatureConstants.PhaseSpider][CreatureConstants.PhaseSpider] = GetMultiplierFromAverage(12);
-            //Source: https://www.d20srd.org/srd/monsters/phasm.htm
-            appearances[CreatureConstants.Phasm][GenderConstants.Agender] = GetBaseFromAverage(2 * 12);
-            appearances[CreatureConstants.Phasm][CreatureConstants.Phasm] = GetMultiplierFromAverage(2 * 12);
+            //Source: https://forgottenrealms.fandom.com/wiki/Phantom_fungus
+            appearances[CreatureConstants.PhantomFungus] = GetWeightedAppearances(
+                allSkin: new[] { "Brown skin", "Greenish-brown skin" },
+                allOther: new[] { "Fungal mass supported by four stumpy legs. Cluster of nodules atop the body. Gaping maw lined with row of teeth." });
+            //Source: https://forgottenrealms.fandom.com/wiki/Phase_spider
+            appearances[CreatureConstants.PhaseSpider] = GetWeightedAppearances(
+                allSkin: new[] { "Dark green/white skin", "Green/white skin", "Blue-green/white skin" },
+                allOther: new[] { "Spindly-legged spider" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Phasm
+            appearances[CreatureConstants.Phasm] = new[] { "In its true form, resembles an amorphous, colorful ooze. However, they were natural shapechangers that could take the form of almost any creature or object." };
             //Source: https://forgottenrealms.fandom.com/wiki/Pit_fiend
-            appearances[CreatureConstants.PitFiend][GenderConstants.Agender] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.PitFiend][CreatureConstants.PitFiend] = GetMultiplierFromAverage(12 * 12);
+            appearances[CreatureConstants.PitFiend] = GetWeightedAppearances(
+                allSkin: new[] { "Red scales" },
+                allOther: new[] { "Massive bat-like wings. Huge fangs drop with green venom. Prehensile tail." });
             //Source: https://forgottenrealms.fandom.com/wiki/Pixie
-            appearances[CreatureConstants.Pixie][GenderConstants.Female] = GetBaseFromRange(12, 30);
-            appearances[CreatureConstants.Pixie][GenderConstants.Male] = GetBaseFromRange(12, 30);
-            appearances[CreatureConstants.Pixie][CreatureConstants.Pixie] = GetMultiplierFromRange(12, 30);
-            appearances[CreatureConstants.Pixie_WithIrresistibleDance][GenderConstants.Female] = GetBaseFromRange(12, 30);
-            appearances[CreatureConstants.Pixie_WithIrresistibleDance][GenderConstants.Male] = GetBaseFromRange(12, 30);
-            appearances[CreatureConstants.Pixie_WithIrresistibleDance][CreatureConstants.Pixie_WithIrresistibleDance] = GetMultiplierFromRange(12, 30);
-            //Source: https://www.dimensions.com/element/shetland-pony
-            appearances[CreatureConstants.Pony][GenderConstants.Female] = GetBaseFromRange(28, 44);
-            appearances[CreatureConstants.Pony][GenderConstants.Male] = GetBaseFromRange(28, 44);
-            appearances[CreatureConstants.Pony][CreatureConstants.Pony] = GetMultiplierFromRange(28, 44);
-            appearances[CreatureConstants.Pony_War][GenderConstants.Female] = GetBaseFromRange(28, 44);
-            appearances[CreatureConstants.Pony_War][GenderConstants.Male] = GetBaseFromRange(28, 44);
-            appearances[CreatureConstants.Pony_War][CreatureConstants.Pony_War] = GetMultiplierFromRange(28, 44);
-            //Source: https://www.dimensions.com/element/harbour-porpoise-phocoena-phocoena
-            appearances[CreatureConstants.Porpoise][GenderConstants.Female] = GetBaseFromRange(14, 16);
-            appearances[CreatureConstants.Porpoise][GenderConstants.Male] = GetBaseFromRange(14, 16);
-            appearances[CreatureConstants.Porpoise][CreatureConstants.Porpoise] = GetMultiplierFromRange(14, 16);
+            appearances[CreatureConstants.Pixie] = GetWeightedAppearances(
+                allSkin: new[] { "TODO HIGH ELF skin", "Green skin" },
+                allHair: new[] { "TODO HIGH ELF hair", "Green hair", "Red hair" },
+                allEyes: new[] { "TODO HIGH ELF eyes" },
+                allOther: new[] { "Silvery, moth-like wings" });
+            appearances[CreatureConstants.Pixie_WithIrresistibleDance] = GetWeightedAppearances(
+                allSkin: new[] { "TODO HIGH ELF skin", "Green skin" },
+                allHair: new[] { "TODO HIGH ELF hair", "Green hair", "Red hair" },
+                allEyes: new[] { "TODO HIGH ELF eyes" },
+                allOther: new[] { "Silvery, moth-like wings" });
+            //Source: https://www.google.com/search?q=breeds+of+pony
+            appearances[CreatureConstants.Pony] = new[] { "Shetland Pony", "Connemara Pony", "Pony of the Americas", "New Forest Pony", "Dartmoor Pony", "Exmoor Pony",
+                "Fell Pony", "Asturcon", "Burmese Pony" };
+            appearances[CreatureConstants.Pony_War] = new[] { "Shetland Pony", "Connemara Pony", "Pony of the Americas", "New Forest Pony", "Dartmoor Pony", "Exmoor Pony",
+                "Fell Pony", "Asturcon", "Burmese Pony" };
+            //Source: https://www.google.com/search?q=species+of+porpoise
+            appearances[CreatureConstants.Porpoise] = new[] { "Harbour porpoise", "Vaquita", "Dall's porpoise", "Spectacles porpoise", "Burmeister's porpoise",
+                "Indo-Pacific finless porpoise", "Narrow-ridged finless porpoise" };
             //Source: https://forgottenrealms.fandom.com/wiki/Giant_praying_mantis
             appearances[CreatureConstants.PrayingMantis_Giant][GenderConstants.Female] = GetBaseFromRange(2 * 12, 5 * 12);
             appearances[CreatureConstants.PrayingMantis_Giant][GenderConstants.Male] = GetBaseFromRange(2 * 12, 5 * 12);
