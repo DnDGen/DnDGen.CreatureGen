@@ -3016,18 +3016,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.Porpoise] = new[] { "Harbour porpoise", "Vaquita", "Dall's porpoise", "Spectacles porpoise", "Burmeister's porpoise",
                 "Indo-Pacific finless porpoise", "Narrow-ridged finless porpoise" };
             //Source: https://forgottenrealms.fandom.com/wiki/Giant_praying_mantis
-            appearances[CreatureConstants.PrayingMantis_Giant][GenderConstants.Female] = GetBaseFromRange(2 * 12, 5 * 12);
-            appearances[CreatureConstants.PrayingMantis_Giant][GenderConstants.Male] = GetBaseFromRange(2 * 12, 5 * 12);
-            appearances[CreatureConstants.PrayingMantis_Giant][CreatureConstants.PrayingMantis_Giant] = GetMultiplierFromRange(2 * 12, 5 * 12);
-            //Source: https://www.d20srd.org/srd/monsters/pseudodragon.htm
-            //Scale from Red Dragon Wyrmling: 48*3/16 = 9
-            appearances[CreatureConstants.Pseudodragon][GenderConstants.Female] = GetBaseFromAverage(9);
-            appearances[CreatureConstants.Pseudodragon][GenderConstants.Male] = GetBaseFromAverage(9);
-            appearances[CreatureConstants.Pseudodragon][CreatureConstants.Pseudodragon] = GetMultiplierFromAverage(9);
-            //Source: https://www.d20srd.org/srd/monsters/purpleWorm.htm
-            appearances[CreatureConstants.PurpleWorm][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.PurpleWorm][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.PurpleWorm][CreatureConstants.PurpleWorm] = GetMultiplierFromAverage(5 * 12);
+            appearances[CreatureConstants.PrayingMantis_Giant] = GetWeightedAppearances(
+                allSkin: new[] { "Brown coloration", "Green coloration", "Yellow coloration", "Yellow-brown coloration", "Yellow-green coloration",
+                    "Brown-green coloration" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Pseudodragon
+            appearances[CreatureConstants.Pseudodragon] = GetWeightedAppearances(
+                allSkin: new[] { "Brownish-red skin" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Purple_worm
+            appearances[CreatureConstants.PurpleWorm] = GetWeightedAppearances(
+                allSkin: new[] { "Deep purple skin" });
             //Source: https://forgottenrealms.fandom.com/wiki/Pyrohydra
             appearances[CreatureConstants.Pyrohydra_5Heads] = GetWeightedAppearances(
                 allSkin: new[] { "Reddish skin, yellow underbelly" },
@@ -3054,13 +3051,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allSkin: new[] { "Reddish skin, yellow underbelly" },
                 allEyes: new[] { "Amber eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Quasit
-            appearances[CreatureConstants.Quasit][GenderConstants.Agender] = GetBaseFromRange(12, 24);
-            appearances[CreatureConstants.Quasit][CreatureConstants.Quasit] = GetMultiplierFromRange(12, 24);
-            //Source: https://www.d20srd.org/srd/monsters/rakshasa.htm Copy from Human
-            appearances[CreatureConstants.Rakshasa][GenderConstants.Female] = "4*12+5";
-            appearances[CreatureConstants.Rakshasa][GenderConstants.Male] = "4*12+10";
-            appearances[CreatureConstants.Rakshasa][CreatureConstants.Rakshasa] = "2d10";
-            //Source: https://www.d20srd.org/srd/monsters/rast.htm - body size of "large dog", head almost as large as body, so Riding Dog height x2
+            appearances[CreatureConstants.Quasit] = GetWeightedAppearances(
+                allSkin: new[] { "Green skin covered in warts and postules" },
+                commonOther: new[] { "Tail covered in barbs, spiky horns" },
+                uncommonOther: new[] { "Tail covered in barbs, spiky horns, bat-like wings" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Rakshasa
+            appearances[CreatureConstants.Rakshasa] = GetWeightedAppearances(
+                uncommonSkin: new[] { "TODO CROCODILE skin", "TODO MANTIS skin" },
+                commonHair: new[] { "TODO TIGER fur" },
+                uncommonHair: new[] { "TODO APE fur" },
+                commonOther: new[] { "Reversed hands, tiger head" },
+                uncommonOther: new[] { "Reversed hands, ape head", "Reversed hands, crocodile head", "Reversed hands, mantis head" });
+            //Source: https://dungeonsdragons.fandom.com/wiki/Rast
             appearances[CreatureConstants.Rast][GenderConstants.Agender] = GetBaseFromRange(22 * 2, 30 * 2);
             appearances[CreatureConstants.Rast][CreatureConstants.Rast] = GetMultiplierFromRange(22 * 2, 30 * 2);
             //Source: https://www.dimensions.com/element/common-rat
