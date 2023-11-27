@@ -3063,125 +3063,204 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonOther: new[] { "Reversed hands, tiger head" },
                 uncommonOther: new[] { "Reversed hands, ape head", "Reversed hands, crocodile head", "Reversed hands, mantis head" });
             //Source: https://dungeonsdragons.fandom.com/wiki/Rast
-            appearances[CreatureConstants.Rast][GenderConstants.Agender] = GetBaseFromRange(22 * 2, 30 * 2);
-            appearances[CreatureConstants.Rast][CreatureConstants.Rast] = GetMultiplierFromRange(22 * 2, 30 * 2);
-            //Source: https://www.dimensions.com/element/common-rat
-            appearances[CreatureConstants.Rat][GenderConstants.Female] = GetBaseFromRange(2, 4);
-            appearances[CreatureConstants.Rat][GenderConstants.Male] = GetBaseFromRange(2, 4);
-            appearances[CreatureConstants.Rat][CreatureConstants.Rat] = GetMultiplierFromRange(2, 4);
-            //Scaled up from Rat, x6 based on length
-            appearances[CreatureConstants.Rat_Dire][GenderConstants.Female] = GetBaseFromRange(12, 24);
-            appearances[CreatureConstants.Rat_Dire][GenderConstants.Male] = GetBaseFromRange(12, 24);
-            appearances[CreatureConstants.Rat_Dire][CreatureConstants.Rat_Dire] = GetMultiplierFromRange(12, 24);
+            appearances[CreatureConstants.Rast] = new[]
+            {
+                "Central body about the size of a large dog, with 10 spindly spider's legs coming out of it. Each of these legs is tipped with a claw. The head is almost exactly the same size as the central body, and resembles a cross between a snake, a vulture and a goblin (some would say it is almost monkey-like). The central body and legs of the Rast are brown, while the head and claws are rust red.",
+                "Central body about the size of a large dog, with 11 spindly spider's legs coming out of it. Each of these legs is tipped with a claw. The head is almost exactly the same size as the central body, and resembles a cross between a snake, a vulture and a goblin (some would say it is almost monkey-like). The central body and legs of the Rast are brown, while the head and claws are rust red.",
+                "Central body about the size of a large dog, with 12 spindly spider's legs coming out of it. Each of these legs is tipped with a claw. The head is almost exactly the same size as the central body, and resembles a cross between a snake, a vulture and a goblin (some would say it is almost monkey-like). The central body and legs of the Rast are brown, while the head and claws are rust red.",
+                "Central body about the size of a large dog, with 13 spindly spider's legs coming out of it. Each of these legs is tipped with a claw. The head is almost exactly the same size as the central body, and resembles a cross between a snake, a vulture and a goblin (some would say it is almost monkey-like). The central body and legs of the Rast are brown, while the head and claws are rust red.",
+                "Central body about the size of a large dog, with 14 spindly spider's legs coming out of it. Each of these legs is tipped with a claw. The head is almost exactly the same size as the central body, and resembles a cross between a snake, a vulture and a goblin (some would say it is almost monkey-like). The central body and legs of the Rast are brown, while the head and claws are rust red.",
+                "Central body about the size of a large dog, with 15 spindly spider's legs coming out of it. Each of these legs is tipped with a claw. The head is almost exactly the same size as the central body, and resembles a cross between a snake, a vulture and a goblin (some would say it is almost monkey-like). The central body and legs of the Rast are brown, while the head and claws are rust red.",
+            };
+            //Source: https://rockypointrattery.com/rat-colors-%26-markings
+            appearances[CreatureConstants.Rat] = new[] { "Standard coat: short, smooth, and glossy black fur",
+                "Rex coat: evenly curled black fur, slightly curled white belly", "Rex coat: evenly curled black fur, slightly curled white belly, curled whiskers",
+                "Double rex coat: Very short curly white coat", "Double rex coat: peach fuzz white fur", "Double rex coat: mostly hairless, white fur",
+                "Silvermane coat: Soft, silvered fur",
+                "Velveteen coat: thick, soft black/brown coat, wavy whiskers",
+                "Hairless: thin, bright, almost-transluscent skin, very short curly whiskers", "Hairless: thin, bright, almost-transluscent skin, no whiskers",
+                "Agouti: rich chestnut fur with dark slate at the base of the hair, silver-gray belly, black eyes",
+                "Silver fawn: rich orange fur, white belly, red eyes",
+                "Fawn: rich, deep golden orange fur, slightly-lighter belly, dark ruby eyes",
+                "American Blue Agouti: Medium-slate fur with a yellow-tan line on top, silver-blue belly, black eyes",
+                "Russian Blue Agouti: Dark steel blue fur with a fawn band on top, silver-blue belly, black eyes",
+                "Cinnamon: warm russet brown fur with medium slate at the base of the hair, silver-gray belly, black eyes",
+                    "Cinnamon: warm russet brown fur with medium slate at the base of the hair, silver-gray belly, ruby eyes",
+                "Apricot Agouti: pale apricot fur with dark slate at the base of the hair, pale cream belly, red eyes",
+                "Albino: pure clean white fur, red eyes",
+                "Cinnamon Red-eyed Marten: warm russet brown fur, light heathering, red eyes",
+                "Agouti Silvermane: rich chestnut, soft, silky, sheened fur with silver-white tips, appearing heavily silvered, darker fur around the muzzle and eyes, black eyes",
+                "Black: solid black fur, black eyes",
+                "Beige: warm grayish-tan fur, dark ruby eyes",
+                "Champagne: evenly warm beige fur, red eyes",
+                "American Blue: slate blue fur, dark ruby eyes", "American Blue: slate blue fur, black eyes",
+                "Russian Blue: dark slate blue fur, black eyes",
+                "Mink: even mid gray-brown fur with bluish sheen, ruby eyes", "Mink: even mid gray-brown fur with bluish sheen, black eyes",
+                "Silver: off-white fur with a cool ice-blue cast, red eyes",
+                "Pink-eyed White: pure clean white fur, red eyes",
+                "Himalayan: white fur, red eyes",
+                "Black Silvermane: solid black, soft, silky, sheened fur with silver-white tips, looking heavily silvered, darker fur around the muzzle and eyes",
+                "Russian Blue Silvermane: Dark steel blue, soft, silky, sheened fur with silver-white tips, looking heavily silvered. Darker fur around the muzzle and eyes.",
+                "Black Red-eyed Marten: light gray fur with light heathering, lighter fur around the muzzle and eyes, red eyes",
+                "Berkshire: solid black fur on top, completely white belly, white feet and tail",
+                "Hooded: solid black fur on head, neck, shoulders, and extending down the spine; white fur on sides, legs, and feet",
+                "Bareback: solid cream-colored fur on head, neck, and shoulders; white fur on spine, sides, legs, and feet",
+                "Mismarked Bareback: solid cream-colored fur on head, neck, and shoulders; small cream spot on the spine; white fur on sides, legs, and feet",
+                "Variegated: solid gray fur on head, neck, shoulders; patvhes and flecks of gray fur on the back side; white fur on sides, legs, and feet; white spot on forehead",
+                    "Variegated: solid gray fur on head, neck, shoulders; patvhes and flecks of gray fur on the back side; white fur on sides, legs, and feet; white star on forehead",
+                "Blaze: solid gray fur on head and neck; white fur on body; white markings from nose to forehead",
+                "English Irish: solid black fur; white equilateral triangle on chest; front feet white; back feet white on lower half",
+                "Irish: solid black fur; white marking on belly; white feet; white-tipped tail",
+                "English Irish/Irish: solid black fur; white equilateral triangle on chest; white marking on belly; front feet white; back feet white on lower half; white-tipped tail",
+                "Spotted Tabby: light black fur with darker dorsal stripe and spots on sides and face",
+                    "Spotted Tabby: light brown fur with darker dorsal stripe and spots on sides and face",
+                    "Spotted Tabby: light gray fur with darker dorsal stripe and spots on sides and face",
+                "Siamese: medium beige fur; darker points on nose, ears, feet, tail, and tail root; red eyes",
+                    "Siamese: medium beige fur; darker points on nose, ears, feet, tail, and tail root; black eyes",
+                "Himalayan: white fur; rich dark sepia points on nose, ears, feet, tail, and tail root; red eyes",
+                "Dalmation: white fur with numerous ragged black splotches",
+            };
+            //Source: https://forgottenrealms.fandom.com/wiki/Giant_rat
+            appearances[CreatureConstants.Rat_Dire] = new[] { "Coarse brown-black fur" };
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
             appearances[CreatureConstants.Rat_Swarm] = new[] { "300 rats" };
-            //Source: https://www.dimensions.com/element/common-raven-corvus-corax
-            appearances[CreatureConstants.Raven][GenderConstants.Female] = GetBaseFromRange(12, 16);
-            appearances[CreatureConstants.Raven][GenderConstants.Male] = GetBaseFromRange(12, 16);
-            appearances[CreatureConstants.Raven][CreatureConstants.Raven] = GetMultiplierFromRange(12, 16);
-            //Source: https://www.d20srd.org/srd/monsters/ravid.htm
-            appearances[CreatureConstants.Ravid][GenderConstants.Agender] = "0";
-            appearances[CreatureConstants.Ravid][CreatureConstants.Ravid] = "0";
-            //Source: https://www.d20srd.org/srd/monsters/razorBoar.htm Copying from Dire Boar
-            appearances[CreatureConstants.RazorBoar][GenderConstants.Female] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.RazorBoar][GenderConstants.Male] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.RazorBoar][CreatureConstants.RazorBoar] = GetMultiplierFromAverage(6 * 12);
-            //Source: https://www.d20srd.org/srd/monsters/remorhaz.htm
-            appearances[CreatureConstants.Remorhaz][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Remorhaz][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Remorhaz][CreatureConstants.Remorhaz] = GetMultiplierFromAverage(5 * 12);
+            //Source: https://forgottenrealms.fandom.com/wiki/Raven
+            appearances[CreatureConstants.Raven] = new[] { "Glossy black feathers" };
+            //Source: https://eberron.fandom.com/wiki/Ravid
+            appearances[CreatureConstants.Ravid] = new[] { "Long and serpentine, floating above the ground. One single claw juts out of its body just beneath its head. Pale white, scaley skin." };
+            //Source: https://www.d20srd.org/srd/monsters/razorBoar.htm 
+            appearances[CreatureConstants.RazorBoar] = new[] { "Black-bristled hide marked by hundreds of old scars. Its eyes are wild and bloodshot, and its tusks are more than three feet long, gleaming like polished ivory and sharper than many swords." };
+            //Source: https://forgottenrealms.fandom.com/wiki/Remorhaz
+            appearances[CreatureConstants.Remorhaz] = GetWeightedAppearances(
+                allSkin: new[] { "Ice-blue scales" },
+                allEyes: new[] { "White eyes" },
+                allOther: new[] { "Tough leathery wings, insect-like head, dozens of legs, back glows red, horns along its body, dagger-like teeth" });
             //Source: https://forgottenrealms.fandom.com/wiki/Retriever
-            appearances[CreatureConstants.Retriever][GenderConstants.Agender] = GetBaseFromAverage(12 * 12);
-            appearances[CreatureConstants.Retriever][CreatureConstants.Retriever] = GetMultiplierFromAverage(12 * 12);
+            appearances[CreatureConstants.Retriever] = new[] { "Resembles a giant spider with four forelegs ending in large cleaver-like blades, and four rear limbs for walking and carrying most of the weight. Two primary eyes and four smaller eyes that gleam malevolently as they peak out from the carapace." };
             //Source: https://www.d20srd.org/srd/monsters/rhinoceros.htm
-            appearances[CreatureConstants.Rhinoceras][GenderConstants.Female] = GetBaseFromRange(3 * 12, 6 * 12);
-            appearances[CreatureConstants.Rhinoceras][GenderConstants.Male] = GetBaseFromRange(3 * 12, 6 * 12);
-            appearances[CreatureConstants.Rhinoceras][CreatureConstants.Rhinoceras] = GetMultiplierFromRange(3 * 12, 6 * 12);
+            //https://denverzoo.org/animals/black-rhinoceros/
+            appearances[CreatureConstants.Rhinoceras] = GetWeightedAppearances(
+                allSkin: new[] { "Dark gray skin", "Dark brown skin" },
+                allOther: new[] { "Two horns on the nose, with the anterior horn being larger" });
             //Source: https://forgottenrealms.fandom.com/wiki/Roc
-            appearances[CreatureConstants.Roc][GenderConstants.Female] = "0";
-            appearances[CreatureConstants.Roc][GenderConstants.Male] = "0";
-            appearances[CreatureConstants.Roc][CreatureConstants.Roc] = "0";
-            //Source: https://www.d20srd.org/srd/monsters/roper.htm
-            appearances[CreatureConstants.Roper][GenderConstants.Hermaphrodite] = GetBaseFromAverage(9 * 12);
-            appearances[CreatureConstants.Roper][CreatureConstants.Roper] = GetMultiplierFromAverage(9 * 12);
-            //Source: https://www.d20srd.org/srd/monsters/rustMonster.htm
-            appearances[CreatureConstants.RustMonster][GenderConstants.Female] = GetBaseFromAverage(3 * 12);
-            appearances[CreatureConstants.RustMonster][GenderConstants.Male] = GetBaseFromAverage(3 * 12);
-            appearances[CreatureConstants.RustMonster][CreatureConstants.RustMonster] = GetMultiplierFromAverage(3 * 12);
+            appearances[CreatureConstants.Roc] = GetWeightedAppearances(
+                commonHair: new[] { "Dark brown feathers", "Golden feathers", "Golden-brown feathers", "Dark golden-brown feathers", "Dark golden feathers" },
+                rareHair: new[] { "Black feathers", "Red feathers", "White feathers" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Roper
+            appearances[CreatureConstants.Roper] = new[] { "Earthy brown skin, resembling a stalagmite" };
+            //Source: https://forgottenrealms.fandom.com/wiki/Rust_monster
+            appearances[CreatureConstants.RustMonster] = new[] { "Four insectlike legs and a squat, humped body. Thick, lumpy hide is yellowish-tan on the belly and rust-red on the back. Tail ends in what looks like a double-ended paddle. Two long antennae come out of its head, one under each eye" };
             //Source: https://forgottenrealms.fandom.com/wiki/Sahuagin
-            appearances[CreatureConstants.Sahuagin][GenderConstants.Female] = GetBaseFromRange(6 * 12, 9 * 12);
-            appearances[CreatureConstants.Sahuagin][GenderConstants.Male] = GetBaseFromRange(6 * 12, 9 * 12);
-            appearances[CreatureConstants.Sahuagin][CreatureConstants.Sahuagin] = GetMultiplierFromRange(6 * 12, 9 * 12);
-            appearances[CreatureConstants.Sahuagin_Malenti][GenderConstants.Female] = GetBaseFromRange(6 * 12, 9 * 12);
-            appearances[CreatureConstants.Sahuagin_Malenti][GenderConstants.Male] = GetBaseFromRange(6 * 12, 9 * 12);
-            appearances[CreatureConstants.Sahuagin_Malenti][CreatureConstants.Sahuagin_Malenti] = GetMultiplierFromRange(6 * 12, 9 * 12);
-            appearances[CreatureConstants.Sahuagin_Mutant][GenderConstants.Female] = GetBaseFromRange(6 * 12, 9 * 12);
-            appearances[CreatureConstants.Sahuagin_Mutant][GenderConstants.Male] = GetBaseFromRange(6 * 12, 9 * 12);
-            appearances[CreatureConstants.Sahuagin_Mutant][CreatureConstants.Sahuagin_Mutant] = GetMultiplierFromRange(6 * 12, 9 * 12);
-            //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/salamander-article (average)
-            //Scaling down by half for flamebrother, Scaling up x2 for noble. Assuming height is half of length
-            appearances[CreatureConstants.Salamander_Flamebrother][GenderConstants.Agender] = GetBaseFromAverage(20 * 12 / 4);
-            appearances[CreatureConstants.Salamander_Flamebrother][CreatureConstants.Salamander_Flamebrother] = GetMultiplierFromAverage(20 * 12 / 4);
-            appearances[CreatureConstants.Salamander_Average][GenderConstants.Agender] = GetBaseFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Salamander_Average][CreatureConstants.Salamander_Average] = GetMultiplierFromAverage(20 * 12 / 2);
-            appearances[CreatureConstants.Salamander_Noble][GenderConstants.Agender] = GetBaseFromAverage(20 * 12);
-            appearances[CreatureConstants.Salamander_Noble][CreatureConstants.Salamander_Noble] = GetMultiplierFromAverage(20 * 12);
-            //Source: https://www.d20srd.org/srd/monsters/satyr.htm - copy from Half-Elf
-            appearances[CreatureConstants.Satyr][GenderConstants.Male] = "4*12+7";
-            appearances[CreatureConstants.Satyr][CreatureConstants.Satyr] = "2d8";
-            appearances[CreatureConstants.Satyr_WithPipes][GenderConstants.Male] = "4*12+7";
-            appearances[CreatureConstants.Satyr_WithPipes][CreatureConstants.Satyr_WithPipes] = "2d8";
-            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Scorpion,_Tiny
-            appearances[CreatureConstants.Scorpion_Monstrous_Tiny][GenderConstants.Female] = GetBaseFromRange(1, 2);
-            appearances[CreatureConstants.Scorpion_Monstrous_Tiny][GenderConstants.Male] = GetBaseFromRange(1, 2);
-            appearances[CreatureConstants.Scorpion_Monstrous_Tiny][CreatureConstants.Scorpion_Monstrous_Tiny] = GetMultiplierFromRange(1, 2);
-            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Scorpion,_Small
-            appearances[CreatureConstants.Scorpion_Monstrous_Small][GenderConstants.Female] = GetBaseFromAverage(3);
-            appearances[CreatureConstants.Scorpion_Monstrous_Small][GenderConstants.Male] = GetBaseFromAverage(3);
-            appearances[CreatureConstants.Scorpion_Monstrous_Small][CreatureConstants.Scorpion_Monstrous_Small] = GetMultiplierFromAverage(3);
-            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Scorpion,_Medium
-            appearances[CreatureConstants.Scorpion_Monstrous_Medium][GenderConstants.Female] = GetBaseFromAverage(6);
-            appearances[CreatureConstants.Scorpion_Monstrous_Medium][GenderConstants.Male] = GetBaseFromAverage(6);
-            appearances[CreatureConstants.Scorpion_Monstrous_Medium][CreatureConstants.Scorpion_Monstrous_Medium] = GetMultiplierFromAverage(6);
-            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Scorpion,_Large
-            appearances[CreatureConstants.Scorpion_Monstrous_Large][GenderConstants.Female] = GetBaseFromAverage(18);
-            appearances[CreatureConstants.Scorpion_Monstrous_Large][GenderConstants.Male] = GetBaseFromAverage(18);
-            appearances[CreatureConstants.Scorpion_Monstrous_Large][CreatureConstants.Scorpion_Monstrous_Large] = GetMultiplierFromAverage(18);
-            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Scorpion,_Huge
-            appearances[CreatureConstants.Scorpion_Monstrous_Huge][GenderConstants.Female] = GetBaseFromAverage(2 * 12 + 6);
-            appearances[CreatureConstants.Scorpion_Monstrous_Huge][GenderConstants.Male] = GetBaseFromAverage(2 * 12 + 6);
-            appearances[CreatureConstants.Scorpion_Monstrous_Huge][CreatureConstants.Scorpion_Monstrous_Huge] = GetMultiplierFromAverage(2 * 12 + 6);
-            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Scorpion,_Gargantuan
-            appearances[CreatureConstants.Scorpion_Monstrous_Gargantuan][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Scorpion_Monstrous_Gargantuan][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Scorpion_Monstrous_Gargantuan][CreatureConstants.Scorpion_Monstrous_Gargantuan] = GetMultiplierFromAverage(5 * 12);
-            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Scorpion,_Colossal
-            appearances[CreatureConstants.Scorpion_Monstrous_Colossal][GenderConstants.Female] = GetBaseFromAverage(10 * 12);
-            appearances[CreatureConstants.Scorpion_Monstrous_Colossal][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
-            appearances[CreatureConstants.Scorpion_Monstrous_Colossal][CreatureConstants.Scorpion_Monstrous_Colossal] = GetMultiplierFromAverage(10 * 12);
+            appearances[CreatureConstants.Sahuagin] = GetWeightedAppearances(
+                allSkin: new[] { "Green skin, darker on the back and lighter in the front", "Green skin, darker on the back and lighter in the front, with dark stripes",
+                    "Green skin, darker on the back and lighter in the front, with dark bands",
+                    "Green skin, darker on the back and lighter in the front, with dark spots",
+                    "TODO FEMALE speckled yellow tail",
+                    "TODO FEMALE spotted yellow tail",
+                    "TODO FEMALE mottled yellow tail",
+                    "TODO FEMALE mostly yellow tail",
+                    "TODO FEMALE fully yellow tail",
+                },
+                allEyes: new[] { "Silvery-black eyes" },
+                allOther: new[] { "Webbed feet and hands; gills; finned tail; additional webbing down the back, on elbows, and where ears would be" });
+            appearances[CreatureConstants.Sahuagin_Malenti] = GetWeightedAppearances(
+                allSkin: new[] { "Greenish-silver skin" },
+                allHair: new[] { "Green hair", "Blue hair" },
+                allEyes: new[] { "Silvery-black eyes" },
+                allOther: new[] { "Resembles an Aquatic Elf" });
+            appearances[CreatureConstants.Sahuagin_Mutant] = GetWeightedAppearances(
+                allSkin: new[] { "Black skin on the back and gray in the front", "Black skin on the back and gray in the front, with dark stripes",
+                    "Black skin on the back and gray in the front, with dark bands",
+                    "Black skin on the back and gray in the front, with dark spots",
+                    "TODO FEMALE speckled yellow tail",
+                    "TODO FEMALE spotted yellow tail",
+                    "TODO FEMALE mottled yellow tail",
+                    "TODO FEMALE mostly yellow tail",
+                    "TODO FEMALE fully yellow tail",
+                },
+                allEyes: new[] { "Silvery-black eyes" },
+                allOther: new[] { "Webbed feet and hands; gills; finned tail; additional webbing down the back, on elbows, and where ears would be; four arms" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Salamander
+            appearances[CreatureConstants.Salamander_Flamebrother] = new[] { "Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. Red fiery skin" };
+            appearances[CreatureConstants.Salamander_Average] = new[] { "Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. Red fiery skin" };
+            appearances[CreatureConstants.Salamander_Noble] = new[] { "Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. Red fiery skin" };
+            //Source: https://forgottenrealms.fandom.com/wiki/Satyr
+            appearances[CreatureConstants.Satyr] = GetWeightedAppearances(
+                allSkin: new[] { "Tan skin", "Light brown skin", "Brown skin", "Lightly tan skin", "TODO GOAT fur" },
+                allHair: new[] { "Red hair", "Chestnut brown hair" },
+                allOther: new[] { "Small nubs for horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
+                    "Large curling ram horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
+                    "Small curling ram horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
+                    "Small straight horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
+                    "Large straight horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
+                });
+            appearances[CreatureConstants.Satyr_WithPipes] = GetWeightedAppearances(
+                allSkin: new[] { "Tan skin", "Light brown skin", "Brown skin", "Lightly tan skin", "TODO GOAT fur" },
+                allHair: new[] { "Red hair", "Chestnut brown hair" },
+                allOther: new[] { "Small nubs for horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
+                    "Large curling ram horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
+                    "Small curling ram horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
+                    "Small straight horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
+                    "Large straight horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
+                });
+            //Source: https://a-z-animals.com/animals/scorpion/
+            appearances[CreatureConstants.Scorpion_Monstrous_Tiny] = GetWeightedAppearances(
+                commonSkin: new[] { "Yellow exoskeleton", "Black exoskeleton" },
+                uncommonSkin: new[] { "Brown exoskeleton", "Red exoskeleton", "White exoskeleton", "Orange exoskeleton" },
+                allOther: new[] { "Front pincers and the tail with a stinger" });
+            appearances[CreatureConstants.Scorpion_Monstrous_Small] = GetWeightedAppearances(
+                commonSkin: new[] { "Yellow exoskeleton", "Black exoskeleton" },
+                uncommonSkin: new[] { "Brown exoskeleton", "Red exoskeleton", "White exoskeleton", "Orange exoskeleton" },
+                allOther: new[] { "Front pincers and the tail with a stinger" });
+            appearances[CreatureConstants.Scorpion_Monstrous_Medium] = GetWeightedAppearances(
+                commonSkin: new[] { "Yellow exoskeleton", "Black exoskeleton" },
+                uncommonSkin: new[] { "Brown exoskeleton", "Red exoskeleton", "White exoskeleton", "Orange exoskeleton" },
+                allOther: new[] { "Front pincers and the tail with a stinger" });
+            appearances[CreatureConstants.Scorpion_Monstrous_Large] = GetWeightedAppearances(
+                commonSkin: new[] { "Yellow exoskeleton", "Black exoskeleton" },
+                uncommonSkin: new[] { "Brown exoskeleton", "Red exoskeleton", "White exoskeleton", "Orange exoskeleton" },
+                allOther: new[] { "Front pincers and the tail with a stinger" });
+            appearances[CreatureConstants.Scorpion_Monstrous_Huge] = GetWeightedAppearances(
+                commonSkin: new[] { "Yellow exoskeleton", "Black exoskeleton" },
+                uncommonSkin: new[] { "Brown exoskeleton", "Red exoskeleton", "White exoskeleton", "Orange exoskeleton" },
+                allOther: new[] { "Front pincers and the tail with a stinger" });
+            appearances[CreatureConstants.Scorpion_Monstrous_Gargantuan] = GetWeightedAppearances(
+                commonSkin: new[] { "Yellow exoskeleton", "Black exoskeleton" },
+                uncommonSkin: new[] { "Brown exoskeleton", "Red exoskeleton", "White exoskeleton", "Orange exoskeleton" },
+                allOther: new[] { "Front pincers and the tail with a stinger" });
+            appearances[CreatureConstants.Scorpion_Monstrous_Colossal] = GetWeightedAppearances(
+                commonSkin: new[] { "Yellow exoskeleton", "Black exoskeleton" },
+                uncommonSkin: new[] { "Brown exoskeleton", "Red exoskeleton", "White exoskeleton", "Orange exoskeleton" },
+                allOther: new[] { "Front pincers and the tail with a stinger" });
             //Source: https://forgottenrealms.fandom.com/wiki/Tlincalli
-            appearances[CreatureConstants.Scorpionfolk][GenderConstants.Female] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.Scorpionfolk][GenderConstants.Male] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.Scorpionfolk][CreatureConstants.Scorpionfolk] = GetMultiplierFromAverage(6 * 12);
+            appearances[CreatureConstants.Scorpionfolk] = GetWeightedAppearances(
+                allSkin: new[] { "... red skin on the scorpion half", "TODO HUMAN skin" },
+                allHair: new[] { "Completely hairless" },
+                allEyes: new[] { "Red eyes" },
+                allOther: new[] { "Upper body of a human, lower body of a six-legged giant scorpion; Plates of armor made from bone cover the body from the upper abdomen down. Two large fingers and a thumb for hands. Human-like facial features except for segmented, insect-like eyes." });
             //Source: https://forgottenrealms.fandom.com/wiki/Sea_cat
-            appearances[CreatureConstants.SeaCat][GenderConstants.Female] = "0";
-            appearances[CreatureConstants.SeaCat][GenderConstants.Male] = "0";
-            appearances[CreatureConstants.SeaCat][CreatureConstants.SeaCat] = "0";
-            //Source: https://www.d20srd.org/srd/monsters/hag.htm - copy from Human
-            appearances[CreatureConstants.SeaHag][GenderConstants.Female] = "4*12+5";
-            appearances[CreatureConstants.SeaHag][CreatureConstants.SeaHag] = "2d10";
-            //Source: https://www.d20srd.org/srd/monsters/shadow.htm
-            appearances[CreatureConstants.Shadow][GenderConstants.Agender] = GetBaseFromRange(5 * 12, 6 * 12);
-            appearances[CreatureConstants.Shadow][CreatureConstants.Shadow] = GetMultiplierFromRange(5 * 12, 6 * 12);
-            appearances[CreatureConstants.Shadow_Greater][GenderConstants.Agender] = GetBaseFromRange(5 * 12, 6 * 12);
-            appearances[CreatureConstants.Shadow_Greater][CreatureConstants.Shadow_Greater] = GetMultiplierFromRange(5 * 12, 6 * 12);
-            //Source: https://www.d20srd.org/srd/monsters/shadowMastiff.htm
-            appearances[CreatureConstants.ShadowMastiff][GenderConstants.Female] = GetBaseFromAverage(2 * 12);
-            appearances[CreatureConstants.ShadowMastiff][GenderConstants.Male] = GetBaseFromAverage(2 * 12);
-            appearances[CreatureConstants.ShadowMastiff][CreatureConstants.ShadowMastiff] = GetMultiplierFromAverage(2 * 12);
-            //Source: https://www.d20srd.org/srd/monsters/shamblingMound.htm
-            appearances[CreatureConstants.ShamblingMound][GenderConstants.Agender] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.ShamblingMound][CreatureConstants.ShamblingMound] = GetMultiplierFromAverage(6 * 12);
+            appearances[CreatureConstants.SeaCat] = GetWeightedAppearances(
+                allSkin: new[] { "Tan fur and fish-like scales", "Green skin and reptilian scales" },
+                allHair: new[] { "Mane of silky hair running from the top of its head and down its back to its tail flukes" },
+                allOther: new[]
+                {
+                    "Head and forepaws of a lion, but a body and tail similar to those of a fish",
+                    "Head and forepaws of a lion, but a body and tail similar to those of a porpoise",
+                    "Head and forepaws of a lion, but a body and tail similar to those of a small whale",
+                });
+            //Source: https://forgottenrealms.fandom.com/wiki/Sea_hag
+            appearances[CreatureConstants.SeaHag] = GetWeightedAppearances(
+                allSkin: new[] { "Complexion of a rotting fish: pallid yellow skin with patches of green, slimy scales and bony protrusions" },
+                allHair: new[] { "Long, limp, hair that resembles rancid seaweed" },
+                allEyes: new[] { "Piscine eyes, devoid of life, with deep black pupils surrounded by red" },
+                allOther: new[] { "Emaciated appearance, flesh was rife with warts and oozing cankers" });
+            //Source: https://forgottenrealms.fandom.com/wiki/Shadow
+            appearances[CreatureConstants.Shadow] = new[] { "A sentient shadow" };
+            appearances[CreatureConstants.Shadow_Greater] = new[] { "A sentient shadow" };
+            //Source: https://forgottenrealms.fandom.com/wiki/Shadow_mastiff
+            appearances[CreatureConstants.ShadowMastiff] = new[] { "Body of a large dog, head more humanoid in shape but monstrous, with mouth full of vicious teeth, coat is smooth and all black" };
+            //Source: https://forgottenrealms.fandom.com/wiki/Shambling_mound
+            appearances[CreatureConstants.ShamblingMound] = new[] { "Vaguely man-shaped mound of rotting vegetation" };
             //Source: https://www.dimensions.com/element/blacktip-shark-carcharhinus-limbatus
             appearances[CreatureConstants.Shark_Medium][GenderConstants.Female] = "0";
             appearances[CreatureConstants.Shark_Medium][GenderConstants.Male] = "0";
