@@ -3262,57 +3262,42 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Shambling_mound
             appearances[CreatureConstants.ShamblingMound] = new[] { "Vaguely man-shaped mound of rotting vegetation" };
             //Source: https://www.dimensions.com/element/blacktip-shark-carcharhinus-limbatus
-            appearances[CreatureConstants.Shark_Medium][GenderConstants.Female] = "0";
-            appearances[CreatureConstants.Shark_Medium][GenderConstants.Male] = "0";
-            appearances[CreatureConstants.Shark_Medium][CreatureConstants.Shark_Medium] = "0";
+            //https://www.enchantedlearning.com/subjects/sharks/anatomy/Size.shtml
+            appearances[CreatureConstants.Shark_Medium] = new[] { "Blacktip reef shark", "Mako shark", "Pacific Angelshark", "Whitetip reef shark" };
             //Source: https://www.dimensions.com/element/thresher-shark
-            appearances[CreatureConstants.Shark_Large][GenderConstants.Female] = "0";
-            appearances[CreatureConstants.Shark_Large][GenderConstants.Male] = "0";
-            appearances[CreatureConstants.Shark_Large][CreatureConstants.Shark_Large] = "0";
+            appearances[CreatureConstants.Shark_Large] = new[] { "Thresher shark", "Blue shark", "Bull shark", "Galapagos shark", "Goblin shark", "Lemon shark",
+                "Nurse shark", "Short-finned mako shark", "Tiger shark" };
             //Source: https://www.dimensions.com/element/great-white-shark
-            appearances[CreatureConstants.Shark_Huge][GenderConstants.Female] = "0";
-            appearances[CreatureConstants.Shark_Huge][GenderConstants.Male] = "0";
-            appearances[CreatureConstants.Shark_Huge][CreatureConstants.Shark_Huge] = "0";
-            appearances[CreatureConstants.Shark_Dire][GenderConstants.Female] = "0";
-            appearances[CreatureConstants.Shark_Dire][GenderConstants.Male] = "0";
-            appearances[CreatureConstants.Shark_Dire][CreatureConstants.Shark_Dire] = "0";
-            //Source: https://www.d20srd.org/srd/monsters/shieldGuardian.htm
-            appearances[CreatureConstants.ShieldGuardian][GenderConstants.Agender] = GetBaseFromAverage(9 * 12);
-            appearances[CreatureConstants.ShieldGuardian][CreatureConstants.ShieldGuardian] = GetMultiplierFromAverage(9 * 12);
-            //Source: https://www.d20srd.org/srd/monsters/shockerLizard.htm
-            appearances[CreatureConstants.ShockerLizard][GenderConstants.Female] = GetBaseFromAverage(12);
-            appearances[CreatureConstants.ShockerLizard][GenderConstants.Male] = GetBaseFromAverage(12);
-            appearances[CreatureConstants.ShockerLizard][CreatureConstants.ShockerLizard] = GetMultiplierFromAverage(12);
-            //Source: https://www.worldanvil.com/w/faerun-tatortotzke/a/shrieker-species
-            appearances[CreatureConstants.Shrieker][GenderConstants.Agender] = GetBaseFromAverage(3 * 12);
-            appearances[CreatureConstants.Shrieker][CreatureConstants.Shrieker] = GetMultiplierFromAverage(3 * 12);
-            //Source: https://www.d20srd.org/srd/monsters/skum.htm Copying from Human
-            appearances[CreatureConstants.Skum][GenderConstants.Female] = "4*12+5";
-            appearances[CreatureConstants.Skum][GenderConstants.Male] = "4*12+10";
-            appearances[CreatureConstants.Skum][CreatureConstants.Skum] = "2d10";
+            appearances[CreatureConstants.Shark_Huge] = new[] { "Great white shark", "Great Hammerhead shark" };
+            appearances[CreatureConstants.Shark_Dire] = new[] { "Megalodon" };
+            //Source: https://forgottenrealms.fandom.com/wiki/Shield_guardian
+            appearances[CreatureConstants.ShieldGuardian] = new[] { "Like a large stick figure made of wood with rocky appendages and metal parts" };
+            //Source: https://forgottenrealms.fandom.com/wiki/Shocker_lizard
+            appearances[CreatureConstants.ShockerLizard] = new[] { "Blue skin, with light blue belly" };
+            //Source: https://forgottenrealms.fandom.com/wiki/Shrieker
+            appearances[CreatureConstants.Shrieker] = new[] { "TODO VIOLET FUNGI, but did not have tentacles with which to poison prey" };
+            //Source: https://forgottenrealms.fandom.com/wiki/Skum
+            appearances[CreatureConstants.Skum] = new[] { "Resembles horrific hybrid of human and fish. Spiny frill on the back, bulbous eyes, and a tail." };
             //Source: https://forgottenrealms.fandom.com/wiki/Blue_slaad
-            appearances[CreatureConstants.Slaad_Blue][GenderConstants.Agender] = GetBaseFromAverage(10 * 12);
-            appearances[CreatureConstants.Slaad_Blue][CreatureConstants.Slaad_Blue] = GetMultiplierFromAverage(10 * 12);
+            appearances[CreatureConstants.Slaad_Blue] = new[] { "Bipedal, roughly-humanoid toad with light, electric blue skin marked by grey streaks. Long snout. Two long, scimitar-like hooks of bone protruding from the back of both hands." };
             //Source: https://forgottenrealms.fandom.com/wiki/Red_slaad
-            appearances[CreatureConstants.Slaad_Red][GenderConstants.Agender] = GetBaseFromAverage(8 * 12);
-            appearances[CreatureConstants.Slaad_Red][CreatureConstants.Slaad_Red] = GetMultiplierFromAverage(8 * 12);
+            appearances[CreatureConstants.Slaad_Red] = new[] { "Bipedal, roughly-humanoid, almost neckless toad with huge, flat head. Skin is mostly dull red with specks of gray, lighter around the underside and darker along the back. Fingers and hands are strangely large and, like the feet, end in claws." };
             //Source: https://forgottenrealms.fandom.com/wiki/Green_slaad
-            appearances[CreatureConstants.Slaad_Green][GenderConstants.Agender] = GetBaseFromAverage(7 * 12);
-            appearances[CreatureConstants.Slaad_Green][CreatureConstants.Slaad_Green] = GetMultiplierFromAverage(7 * 12);
+            appearances[CreatureConstants.Slaad_Green] = new[] { "Bipedal, roughly-humanoid, gangly toad. Skin is mostly a pale, mottled green marked with grey streaks. High forehead, wide mouth, and long claws." };
             //Source: https://forgottenrealms.fandom.com/wiki/Gray_slaad
-            appearances[CreatureConstants.Slaad_Gray][GenderConstants.Agender] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.Slaad_Gray][CreatureConstants.Slaad_Gray] = GetMultiplierFromAverage(6 * 12);
-            //Source: https://forgottenrealms.fandom.com/wiki/Gray_slaad
-            appearances[CreatureConstants.Slaad_Death][GenderConstants.Agender] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.Slaad_Death][CreatureConstants.Slaad_Death] = GetMultiplierFromAverage(6 * 12);
+            appearances[CreatureConstants.Slaad_Gray] = new[] {
+                "Frog-like humanoid. Long, clawed fingers. Gray skin is spotted.",
+                "Frog-like humanoid. Long, clawed fingers. Evenly light-gray skin.",
+            };
+            //Source: https://forgottenrealms.fandom.com/wiki/Death_slaad
+            appearances[CreatureConstants.Slaad_Death] = new[] {
+                "Frog-like humanoid. Long, clawed fingers. Gray skin is spotted.",
+                "Frog-like humanoid. Long, clawed fingers. Evenly light-gray skin.",
+            };
             //Source: https://www.dimensions.com/element/green-tree-python-morelia-viridis
-            appearances[CreatureConstants.Snake_Constrictor][GenderConstants.Female] = GetBaseFromRange(1, 2);
-            appearances[CreatureConstants.Snake_Constrictor][GenderConstants.Male] = GetBaseFromRange(1, 2);
-            appearances[CreatureConstants.Snake_Constrictor][CreatureConstants.Snake_Constrictor] = GetMultiplierFromRange(1, 2);
+            appearances[CreatureConstants.Snake_Constrictor] = new[] { "TODO Green tree python", "TODO Boa constrictor" };
             //Source: https://www.dimensions.com/element/burmese-python-python-bivittatus
-            appearances[CreatureConstants.Snake_Constrictor_Giant][GenderConstants.Female] = GetBaseFromRange(3, 9);
-            appearances[CreatureConstants.Snake_Constrictor_Giant][GenderConstants.Male] = GetBaseFromRange(3, 9);
-            appearances[CreatureConstants.Snake_Constrictor_Giant][CreatureConstants.Snake_Constrictor_Giant] = GetMultiplierFromRange(3, 9);
+            appearances[CreatureConstants.Snake_Constrictor_Giant] = new[] { "TODO Burmese python", "TODO Anaconda", "TODO Boa constrictor" };
             //Source: https://www.dimensions.com/element/ribbon-snake-thamnophis-saurita 
             appearances[CreatureConstants.Snake_Viper_Tiny][GenderConstants.Female] = GetBaseFromAverage(1);
             appearances[CreatureConstants.Snake_Viper_Tiny][GenderConstants.Male] = GetBaseFromAverage(1);
