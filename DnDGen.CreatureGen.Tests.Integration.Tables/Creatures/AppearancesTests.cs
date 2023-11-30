@@ -3641,83 +3641,103 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "Humanoid, with a mostly transparent and faintly luminous form.",
                 "Humanoid, with a mostly transparent and faintly luminous form. The injuries that caused its violent death are visible.",
             };
-            //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Tiny
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Tiny][GenderConstants.Female] = GetBaseFromAverage(2);
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Tiny][GenderConstants.Male] = GetBaseFromAverage(2);
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Tiny][CreatureConstants.Spider_Monstrous_Hunter_Tiny] = GetMultiplierFromAverage(2);
+            //Source: http://www.wlgf.org/hunting_spiders.html
+            appearances[CreatureConstants.Spider_Monstrous_Hunter_Tiny] = new[] { "Common house spider", "Brown recluse spider", "Southern black widow",
+                "Hobo spider", "Forked pirate spider", "Black house spider", "Western black widow", "Black-footed yellow sac spider",
+                "Brown widow", "Woodlouse spider", "Redback spider", "False widow", "Giant house spider", "Rabid wolf spider", "Goliath birdeater", "Noble false widow",
+                "Bold jumper"
+            };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Small
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Small][GenderConstants.Female] = GetBaseFromAverage(3);
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Small][GenderConstants.Male] = GetBaseFromAverage(3);
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Small][CreatureConstants.Spider_Monstrous_Hunter_Small] = GetMultiplierFromAverage(3);
+            appearances[CreatureConstants.Spider_Monstrous_Hunter_Small] = new[] { "Common house spider", "Brown recluse spider", "Southern black widow",
+                "Hobo spider", "Forked pirate spider", "Black house spider", "Western black widow", "Black-footed yellow sac spider",
+                "Brown widow", "Woodlouse spider", "Redback spider", "False widow", "Giant house spider", "Rabid wolf spider", "Goliath birdeater", "Noble false widow",
+                "Bold jumper"
+            };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Medium
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Medium][GenderConstants.Female] = GetBaseFromAverage(6);
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Medium][GenderConstants.Male] = GetBaseFromAverage(6);
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Medium][CreatureConstants.Spider_Monstrous_Hunter_Medium] = GetMultiplierFromAverage(6);
+            appearances[CreatureConstants.Spider_Monstrous_Hunter_Medium] = new[] { "Common house spider", "Brown recluse spider", "Southern black widow",
+                "Hobo spider", "Forked pirate spider", "Black house spider", "Western black widow", "Black-footed yellow sac spider",
+                "Brown widow", "Woodlouse spider", "Redback spider", "False widow", "Giant house spider", "Rabid wolf spider", "Goliath birdeater", "Noble false widow",
+                "Bold jumper"
+            };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Large
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Large][GenderConstants.Female] = GetBaseFromAverage(18);
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Large][GenderConstants.Male] = GetBaseFromAverage(18);
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Large][CreatureConstants.Spider_Monstrous_Hunter_Large] = GetMultiplierFromAverage(18);
+            appearances[CreatureConstants.Spider_Monstrous_Hunter_Large] = new[] { "Common house spider", "Brown recluse spider", "Southern black widow",
+                "Hobo spider", "Forked pirate spider", "Black house spider", "Western black widow", "Black-footed yellow sac spider",
+                "Brown widow", "Woodlouse spider", "Redback spider", "False widow", "Giant house spider", "Rabid wolf spider", "Goliath birdeater", "Noble false widow",
+                "Bold jumper"
+            };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Huge
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Huge][GenderConstants.Female] = GetBaseFromAverage(2 * 12 + 6);
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Huge][GenderConstants.Male] = GetBaseFromAverage(2 * 12 + 6);
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Huge][CreatureConstants.Spider_Monstrous_Hunter_Huge] = GetMultiplierFromAverage(2 * 12 + 6);
+            appearances[CreatureConstants.Spider_Monstrous_Hunter_Huge] = new[] { "Common house spider", "Brown recluse spider", "Southern black widow",
+                "Hobo spider", "Forked pirate spider", "Black house spider", "Western black widow", "Black-footed yellow sac spider",
+                "Brown widow", "Woodlouse spider", "Redback spider", "False widow", "Giant house spider", "Rabid wolf spider", "Goliath birdeater", "Noble false widow",
+                "Bold jumper"
+            };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Gargantuan
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Gargantuan][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Gargantuan][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Gargantuan][CreatureConstants.Spider_Monstrous_Hunter_Gargantuan] = GetMultiplierFromAverage(5 * 12);
+            appearances[CreatureConstants.Spider_Monstrous_Hunter_Gargantuan] = new[] { "Common house spider", "Brown recluse spider", "Southern black widow",
+                "Hobo spider", "Forked pirate spider", "Black house spider", "Western black widow", "Black-footed yellow sac spider",
+                "Brown widow", "Woodlouse spider", "Redback spider", "False widow", "Giant house spider", "Rabid wolf spider", "Goliath birdeater", "Noble false widow",
+                "Bold jumper"
+            };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Colossal
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Colossal][GenderConstants.Female] = GetBaseFromAverage(10 * 12);
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Colossal][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Colossal][CreatureConstants.Spider_Monstrous_Hunter_Colossal] = GetMultiplierFromAverage(10 * 12);
+            appearances[CreatureConstants.Spider_Monstrous_Hunter_Colossal] = new[] { "Common house spider", "Brown recluse spider", "Southern black widow",
+                "Hobo spider", "Forked pirate spider", "Black house spider", "Western black widow", "Black-footed yellow sac spider",
+                "Brown widow", "Woodlouse spider", "Redback spider", "False widow", "Giant house spider", "Rabid wolf spider", "Goliath birdeater", "Noble false widow",
+                "Bold jumper"
+            };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Tiny
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Tiny][GenderConstants.Female] = GetBaseFromAverage(2);
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Tiny][GenderConstants.Male] = GetBaseFromAverage(2);
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Tiny][CreatureConstants.Spider_Monstrous_WebSpinner_Tiny] = GetMultiplierFromAverage(2);
+            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Tiny] = new[] { "European garden spider", "Yellow garden spider", "Golden silk orb-weaver",
+                "Sydney funnel-web spider", "Filmy dome spider", "Diving bell spider", "Wheel spider", "Wasp spider", "Barn spider", "Cat-faced spider" };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Small
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Small][GenderConstants.Female] = GetBaseFromAverage(3);
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Small][GenderConstants.Male] = GetBaseFromAverage(3);
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Small][CreatureConstants.Spider_Monstrous_WebSpinner_Small] = GetMultiplierFromAverage(3);
+            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Small] = new[] { "European garden spider", "Yellow garden spider", "Golden silk orb-weaver",
+                "Sydney funnel-web spider", "Filmy dome spider", "Diving bell spider", "Wheel spider", "Wasp spider", "Barn spider", "Cat-faced spider" };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Medium
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Medium][GenderConstants.Female] = GetBaseFromAverage(6);
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Medium][GenderConstants.Male] = GetBaseFromAverage(6);
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Medium][CreatureConstants.Spider_Monstrous_WebSpinner_Medium] = GetMultiplierFromAverage(6);
+            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Medium] = new[] { "European garden spider", "Yellow garden spider", "Golden silk orb-weaver",
+                "Sydney funnel-web spider", "Filmy dome spider", "Diving bell spider", "Wheel spider", "Wasp spider", "Barn spider", "Cat-faced spider" };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Large
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Large][GenderConstants.Female] = GetBaseFromAverage(18);
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Large][GenderConstants.Male] = GetBaseFromAverage(18);
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Large][CreatureConstants.Spider_Monstrous_WebSpinner_Large] = GetMultiplierFromAverage(18);
+            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Large] = new[] { "European garden spider", "Yellow garden spider", "Golden silk orb-weaver",
+                "Sydney funnel-web spider", "Filmy dome spider", "Diving bell spider", "Wheel spider", "Wasp spider", "Barn spider", "Cat-faced spider" };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Huge
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Huge][GenderConstants.Female] = GetBaseFromAverage(2 * 12 + 6);
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Huge][GenderConstants.Male] = GetBaseFromAverage(2 * 12 + 6);
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Huge][CreatureConstants.Spider_Monstrous_WebSpinner_Huge] = GetMultiplierFromAverage(2 * 12 + 6);
+            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Huge] = new[] { "European garden spider", "Yellow garden spider", "Golden silk orb-weaver",
+                "Sydney funnel-web spider", "Filmy dome spider", "Diving bell spider", "Wheel spider", "Wasp spider", "Barn spider", "Cat-faced spider" };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Gargantuan
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan][GenderConstants.Female] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan][GenderConstants.Male] = GetBaseFromAverage(5 * 12);
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan][CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan] = GetMultiplierFromAverage(5 * 12);
+            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan] = new[] { "European garden spider", "Yellow garden spider", "Golden silk orb-weaver",
+                "Sydney funnel-web spider", "Filmy dome spider", "Diving bell spider", "Wheel spider", "Wasp spider", "Barn spider", "Cat-faced spider" };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Colossal
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Colossal][GenderConstants.Female] = GetBaseFromAverage(10 * 12);
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Colossal][GenderConstants.Male] = GetBaseFromAverage(10 * 12);
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Colossal][CreatureConstants.Spider_Monstrous_WebSpinner_Colossal] = GetMultiplierFromAverage(10 * 12);
+            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Colossal] = new[] { "European garden spider", "Yellow garden spider", "Golden silk orb-weaver",
+                "Sydney funnel-web spider", "Filmy dome spider", "Diving bell spider", "Wheel spider", "Wasp spider", "Barn spider", "Cat-faced spider" };
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
             appearances[CreatureConstants.Spider_Swarm] = new[] { "1,500 spiders" };
             //Source: https://www.d20srd.org/srd/monsters/spiderEater.htm
-            appearances[CreatureConstants.SpiderEater][GenderConstants.Female] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.SpiderEater][GenderConstants.Male] = GetBaseFromAverage(4 * 12);
-            appearances[CreatureConstants.SpiderEater][CreatureConstants.SpiderEater] = GetMultiplierFromAverage(4 * 12);
-            //Source: https://www.dimensions.com/element/humboldt-squid-dosidicus-gigas (mantle length)
-            appearances[CreatureConstants.Squid][GenderConstants.Female] = GetBaseFromRange(29, 79);
-            appearances[CreatureConstants.Squid][GenderConstants.Male] = GetBaseFromRange(29, 79);
-            appearances[CreatureConstants.Squid][CreatureConstants.Squid] = GetMultiplierFromRange(29, 79);
-            appearances[CreatureConstants.Squid_Giant][GenderConstants.Female] = "0";
-            appearances[CreatureConstants.Squid_Giant][GenderConstants.Male] = "0";
-            appearances[CreatureConstants.Squid_Giant][CreatureConstants.Squid_Giant] = "0";
-            //Source: https://www.d20srd.org/srd/monsters/giantStagBeetle.htm
-            //https://www.dimensions.com/element/hercules-beetle-dynastes-hercules scale up: [.47,1.42]*10*12/[2.36,7.09] = [24,24]
-            appearances[CreatureConstants.StagBeetle_Giant][GenderConstants.Female] = GetBaseFromAverage(24);
-            appearances[CreatureConstants.StagBeetle_Giant][GenderConstants.Male] = GetBaseFromAverage(24);
-            appearances[CreatureConstants.StagBeetle_Giant][CreatureConstants.StagBeetle_Giant] = GetMultiplierFromAverage(24);
-            appearances[CreatureConstants.Stirge][GenderConstants.Female] = "0";
-            appearances[CreatureConstants.Stirge][GenderConstants.Male] = "0";
-            appearances[CreatureConstants.Stirge][CreatureConstants.Stirge] = "0";
+            appearances[CreatureConstants.SpiderEater] = new[] { "Resembles a wasp the size of a horse, but with the head of a spider and two long appendages ending in pincers." };
+            //Source: https://www.google.com/search?q=squid+species
+            appearances[CreatureConstants.Squid] = new[] { "Humboldt squid", "European squid", "Japanese flying squid", "Caribbean reef squid", "Bigfin reef squid",
+                "Vampire squid", "Longfin inshore squid", "Neon flying squid", "Robust clubhook squid", "Angel clubhook squid", "European flying squid"
+            };
+            appearances[CreatureConstants.Squid_Giant] = new[] { "Colossal squid" };
+            //Source: https://www.uky.edu/Ag/CritterFiles/casefile/insects/beetles/hercules/hercules.htm
+            appearances[CreatureConstants.StagBeetle_Giant] = GetWeightedAppearances(
+                commonSkin: new[] { "Green exoskeleton mottled with black spots", "Gray exoskeleton mottled with black spots",
+                    "Tan exoskeleton mottled with black spots", "Black exoskeleton", "Black iridescent exoskeleton" },
+                rareSkin: new[] { "Green exoskeleton", "Gray exoskeleton", "Tan exoskeleton" }
+            );
+            //Source: https://forgottenrealms.fandom.com/wiki/Stirge
+            appearances[CreatureConstants.Stirge] = new[] {
+                "Resembles a monstrous cross between a large bat and an oversized mosquito. Short and furry body in shades of rusty red. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.",
+                "Resembles a monstrous cross between a large bat and an oversized mosquito. Short and furry body in shades of reddish brown. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.",
+                "Resembles a monstrous cross between a large bat and an oversized mosquito. Short body covered in feathers in shades of rusty red. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.",
+                "Resembles a monstrous cross between a large bat and an oversized mosquito. Short body covered in feathers in shades of reddish brown. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.",
+                "Resembles a monstrous cross between an oversized mosquito and a bird. Short and furry body in shades of rusty red. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.",
+                "Resembles a monstrous cross between an oversized mosquito and a bird. Short and furry body in shades of reddish brown. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.",
+                "Resembles a monstrous cross between an oversized mosquito and a bird. Short body covered in feathers in shades of rusty red. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.",
+                "Resembles a monstrous cross between an oversized mosquito and a bird. Short body covered in feathers in shades of reddish brown. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.",
+                "Resembles a monstrous cross between a large bat and an oversized mosquito. Short and furry body in shades of rusty red. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers of a similar yellowish hue to the eyes. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.",
+                "Resembles a monstrous cross between a large bat and an oversized mosquito. Short and furry body in shades of reddish brown. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers of a similar yellowish hue to the eyes. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.",
+                "Resembles a monstrous cross between a large bat and an oversized mosquito. Short body covered in feathers in shades of rusty red. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers of a similar yellowish hue to the eyes. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.",
+                "Resembles a monstrous cross between a large bat and an oversized mosquito. Short body covered in feathers in shades of reddish brown. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers of a similar yellowish hue to the eyes. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.",
+                "Resembles a monstrous cross between an oversized mosquito and a bird. Short and furry body in shades of rusty red. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers of a similar yellowish hue to the eyes. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.",
+                "Resembles a monstrous cross between an oversized mosquito and a bird. Short and furry body in shades of reddish brown. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers of a similar yellowish hue to the eyes. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.",
+                "Resembles a monstrous cross between an oversized mosquito and a bird. Short body covered in feathers in shades of rusty red. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers of a similar yellowish hue to the eyes. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.",
+                "Resembles a monstrous cross between an oversized mosquito and a bird. Short body covered in feathers in shades of reddish brown. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers of a similar yellowish hue to the eyes. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.",
+            };
             //Source: https://forgottenrealms.fandom.com/wiki/Succubus
             appearances[CreatureConstants.Succubus][GenderConstants.Female] = GetBaseFromAverage(6 * 12);
             appearances[CreatureConstants.Succubus][GenderConstants.Male] = GetBaseFromAverage(6 * 12);
