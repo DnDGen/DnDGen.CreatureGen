@@ -3739,22 +3739,89 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "Resembles a monstrous cross between an oversized mosquito and a bird. Short body covered in feathers in shades of reddish brown. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers of a similar yellowish hue to the eyes. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.",
             };
             //Source: https://forgottenrealms.fandom.com/wiki/Succubus
-            appearances[CreatureConstants.Succubus][GenderConstants.Female] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.Succubus][GenderConstants.Male] = GetBaseFromAverage(6 * 12);
-            appearances[CreatureConstants.Succubus][CreatureConstants.Succubus] = GetMultiplierFromAverage(6 * 12);
-            //Source: https://www.d20srd.org/srd/monsters/tarrasque.htm
-            appearances[CreatureConstants.Tarrasque][GenderConstants.Agender] = GetBaseFromAverage(50 * 12);
-            appearances[CreatureConstants.Tarrasque][CreatureConstants.Tarrasque] = GetMultiplierFromAverage(50 * 12);
-            //Source: https://www.d20srd.org/srd/monsters/tendriculos.htm
-            appearances[CreatureConstants.Tendriculos][GenderConstants.Agender] = GetBaseFromAverage(15 * 12);
-            appearances[CreatureConstants.Tendriculos][CreatureConstants.Tendriculos] = GetMultiplierFromAverage(15 * 12);
-            //Source: https://www.d20srd.org/srd/monsters/thoqqua.htm
-            appearances[CreatureConstants.Thoqqua][GenderConstants.Agender] = GetBaseFromAverage(12);
-            appearances[CreatureConstants.Thoqqua][CreatureConstants.Thoqqua] = GetMultiplierFromAverage(12);
+            appearances[CreatureConstants.Succubus] = GetWeightedAppearances(
+                allSkin: new[] { "TODO HUMAN flawless skin" },
+                allHair: new[] { "Red hair", "Raven-black hair" },
+                allEyes: new[] { "TODO HUMAN smoldering eyes" },
+                commonOther: new[] { "Clawed fingers, large black bat-like wings", "Clawed fingers, large dark red bat-like wings",
+                    "Clawed fingers, large dark gray bat-like wings", "Clawed fingers, large dark green bat-like wings", "Clawed fingers, large dark blue bat-like wings",
+                    "Clawed fingers, large dark purple bat-like wings", "Clawed fingers, large reddish bat-like wings"
+                },
+                uncommonOther: new[] { "Clawed fingers, large black bat-like wings, small horns", "Clawed fingers, large dark red bat-like wings, small horns",
+                    "Clawed fingers, large dark gray bat-like wings, small horns", "Clawed fingers, large dark green bat-like wings, small horns",
+                    "Clawed fingers, large dark blue bat-like wings, small horns",
+                    "Clawed fingers, large dark purple bat-like wings, small horns", "Clawed fingers, large reddish bat-like wings, small horns",
+                    "Clawed fingers, large black bat-like wings, tail", "Clawed fingers, large dark red bat-like wings, tail",
+                    "Clawed fingers, large dark gray bat-like wings, tail", "Clawed fingers, large dark green bat-like wings, tail",
+                    "Clawed fingers, large dark blue bat-like wings, tail",
+                    "Clawed fingers, large dark purple bat-like wings, tail", "Clawed fingers, large reddish bat-like wings, tail",
+                    "Clawed fingers, large black bat-like wings, small horns, tail", "Clawed fingers, large dark red bat-like wings, small horns, tail",
+                    "Clawed fingers, large dark gray bat-like wings, small horns, tail", "Clawed fingers, large dark green bat-like wings, small horns, tail",
+                    "Clawed fingers, large dark blue bat-like wings, small horns, tail",
+                    "Clawed fingers, large dark purple bat-like wings, small horns, tail", "Clawed fingers, large reddish bat-like wings, small horns, tail"
+                }
+            );
+            //Source: https://forgottenrealms.fandom.com/wiki/Tarrasque
+            appearances[CreatureConstants.Tarrasque] = new[] { "Two long horns extend from its forehead; thick carapace; mighty tail; many spikes cover its large body; wide, toothy maw. Two small eyes." };
+            //Source: https://forgottenrealms.fandom.com/wiki/Tendriculos
+            appearances[CreatureConstants.Tendriculos] = new[] { "Mound of vegetation, supported by various branches and vines. Large opening filled with sharp branches and horns, acting sort of like teeth." };
+            //Source: https://forgottenrealms.fandom.com/wiki/Thoqqua
+            appearances[CreatureConstants.Thoqqua] = new[] { "Worm-like, made of earth and fire. Brown and red skin. Glowing, molten-hot beak." };
             //Source: https://forgottenrealms.fandom.com/wiki/Tiefling
-            appearances[CreatureConstants.Tiefling][GenderConstants.Female] = GetBaseFromRange(4 * 12 + 11, 6 * 12);
-            appearances[CreatureConstants.Tiefling][GenderConstants.Male] = GetBaseFromRange(4 * 12 + 11, 6 * 12);
-            appearances[CreatureConstants.Tiefling][CreatureConstants.Tiefling] = GetMultiplierFromRange(4 * 12 + 11, 6 * 12);
+            appearances[CreatureConstants.Tiefling] = GetWeightedAppearances(
+                commonSkin: new[] { "TODO HUMAN skin" },
+                uncommonSkin: new[] { "Light red skin", "Red skin", "Dark red skin",
+                    "TODO HUMAN furred skin",
+                    "TODO HUMAN leathery skin",
+                    "TODO HUMAN scaly skin",
+                    "TODO HUMAN skin, unusually warm",
+                },
+                rareSkin: new[] { "Light red skin, unusually warm", "Red skin, unusually warm", "Dark red skin, unusually warm",
+                    "TODO HUMAN furred skin, unusually warm",
+                    "TODO HUMAN leathery skin, unusually warm",
+                    "TODO HUMAN scaly skin, unusually warm",
+                },
+                commonHair: new[] { "Red hair", "Brown hair", "Black hair", "Dark blue hair", "Purple hair" },
+                uncommonHair: new[] { "Pale white hair" },
+                commonEyes: new[] { "TODO HUMAN eyes" },
+                uncommonEyes: new[] { "Solid black eyes with no pupils", "Solid gold eyes with no pupils", "Solid red eyes with no pupils",
+                    "Solid silver eyes with no pupils", "Solid white eyes with no pupils",
+                    "TODO HUMAN feline eyes" },
+                commonOther: new[] { "Horns", "Prehensile tail", "Non-prehensile tail", "Pointed teeth" },
+                uncommonOther: new[] { "No other demonic qualities",
+                    "Sulfurous odor", "Cloven feet",
+                    "Horns and prehensile tail", "Horns and non-prehensile tail", "Horns and pointed teeth",
+                    "Prehensile tail and pointed teeth", "Non-prehensile tail and pointed teeth",
+                    "Forked tongue", "Odor of brimstone", "Goat-like legs", "Hooves",
+                    "Antlers",
+                },
+                rareOther: new[] { "Horns, prehensile tail, and pointed teeth", "Horns, non-prehensile tail, and pointed teeth",
+                    "Horns and sulfurous odor", "Horns and cloven feet", "Horns, sulfurous odor, and cloven feet",
+                    "Prehensile tail and sulfurous odor", "Prehensile tail and cloven feet", "Prehensile tail, sulfurous odor, and cloven feet",
+                    "Non-prehensile tail and sulfurous odor", "Non-prehensile tail and cloven feet", "Non-prehensile tail, sulfurous odor, and cloven feet",
+                    "Pointed teeth and sulfurous odor", "Pointed teeth and cloven feet", "Pointed teeth, sulfurous odor, and cloven feet",
+                    "Sulfurous oder and cloven feet",
+                    "Horns, prehensile tail, and sulfurous odor", "Horns, prehensile tail, and cloven feet", "Horns, prehensile tail, sulfurous odor, and cloven feet",
+                    "Horns, non-prehensile tail, and sulfurous odor", "Horns, non-prehensile tail, and cloven feet",
+                        "Horns, non-prehensile tail, sulfurous odor, and cloven feet",
+                    "Horns, pointed teeth, and sulfurous odor", "Horns, pointed teeth, and cloven feet", "Horns, pointed teeth, sulfurous odor, and cloven feet",
+                    "Prehensile tail, pointed teeth, and sulfurous odor", "Prehensile tail, pointed teeth, and cloven feet",
+                        "Prehensile tail, pointed teeth, sulfurous odor, and cloven feet",
+                    "Non-prehensile tail, pointed teeth, and sulfurous odor", "Non-prehensile tail, pointed teeth, and cloven feet",
+                        "Non-prehensile tail, pointed teeth, sulfurous odor, and cloven feet",
+                    "Forked tongue and odor of brimstone", "Forked tongue and goat-like legs", "Forked tongue and hooves",
+                    "Odor of brimstone and goat-like legs", "Odor of brimstone and hooves",
+                    "Forked tongue, odor of brimstone, and goat-like legs", "Forked tongue, odor of brimstone, and hooves",
+                    "Antlers and prehensile tail", "Antlers and non-prehensile tail", "Antlers and pointed teeth",
+                    "Antlers, prehensile tail, and pointed teeth", "Antlers, non-prehensile tail, and pointed teeth",
+                    "Antlers and sulfurous odor", "Antlers and cloven feet", "Antlers, sulfurous odor, and cloven feet",
+                    "Antlers, prehensile tail, and sulfurous odor", "Antlers, prehensile tail, and cloven feet",
+                        "Antlers, prehensile tail, sulfurous odor, and cloven feet",
+                    "Antlers, non-prehensile tail, and sulfurous odor", "Antlers, non-prehensile tail, and cloven feet",
+                        "Antlers, non-prehensile tail, sulfurous odor, and cloven feet",
+                    "Antlers, pointed teeth, and sulfurous odor", "Antlers, pointed teeth, and cloven feet", "Antlers, pointed teeth, sulfurous odor, and cloven feet",
+                }
+            );
             //Source: https://www.dimensions.com/element/bengal-tiger
             appearances[CreatureConstants.Tiger][GenderConstants.Female] = GetBaseFromRange(34, 45);
             appearances[CreatureConstants.Tiger][GenderConstants.Male] = GetBaseFromRange(34, 45);
