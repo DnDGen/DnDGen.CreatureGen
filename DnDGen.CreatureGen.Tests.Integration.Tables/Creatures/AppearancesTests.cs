@@ -3822,32 +3822,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Antlers, pointed teeth, and sulfurous odor", "Antlers, pointed teeth, and cloven feet", "Antlers, pointed teeth, sulfurous odor, and cloven feet",
                 }
             );
-            //Source: https://www.dimensions.com/element/bengal-tiger
-            appearances[CreatureConstants.Tiger][GenderConstants.Female] = GetBaseFromRange(34, 45);
-            appearances[CreatureConstants.Tiger][GenderConstants.Male] = GetBaseFromRange(34, 45);
-            appearances[CreatureConstants.Tiger][CreatureConstants.Tiger] = GetMultiplierFromRange(34, 45);
-            //Scaled up from Tiger, x2 based on length
-            appearances[CreatureConstants.Tiger_Dire][GenderConstants.Female] = GetBaseFromRange(34 * 2, 45 * 2);
-            appearances[CreatureConstants.Tiger_Dire][GenderConstants.Male] = GetBaseFromRange(34 * 2, 45 * 2);
-            appearances[CreatureConstants.Tiger_Dire][CreatureConstants.Tiger_Dire] = GetMultiplierFromRange(34 * 2, 45 * 2);
-            //Source: https://www.d20srd.org/srd/monsters/titan.htm
-            appearances[CreatureConstants.Titan][GenderConstants.Female] = GetBaseFromAverage(25 * 12);
-            appearances[CreatureConstants.Titan][GenderConstants.Male] = GetBaseFromAverage(25 * 12);
-            appearances[CreatureConstants.Titan][CreatureConstants.Titan] = GetMultiplierFromAverage(25 * 12);
-            //Source: https://www.dimensions.com/element/common-toad-bufo-bufo
-            appearances[CreatureConstants.Toad][GenderConstants.Female] = GetBaseFromRange(2, 3);
-            appearances[CreatureConstants.Toad][GenderConstants.Male] = GetBaseFromRange(2, 3);
-            appearances[CreatureConstants.Toad][CreatureConstants.Toad] = GetMultiplierFromRange(2, 3);
-            appearances[CreatureConstants.Tojanida_Juvenile][GenderConstants.Agender] = "0";
-            appearances[CreatureConstants.Tojanida_Juvenile][CreatureConstants.Tojanida_Juvenile] = "0";
-            appearances[CreatureConstants.Tojanida_Adult][GenderConstants.Agender] = "0";
-            appearances[CreatureConstants.Tojanida_Adult][CreatureConstants.Tojanida_Adult] = "0";
-            appearances[CreatureConstants.Tojanida_Elder][GenderConstants.Agender] = "0";
-            appearances[CreatureConstants.Tojanida_Elder][CreatureConstants.Tojanida_Elder] = "0";
+            //Source: https://nationalzoo.si.edu/animals/tiger
+            appearances[CreatureConstants.Tiger] = new[] { "Reddish-orange coat with prominent black stripes, white bellies and white spots on the ears." };
+            //https://forgottenrealms.fandom.com/wiki/Dire_tiger
+            appearances[CreatureConstants.Tiger_Dire] = new[] { "Reddish-orange coat with prominent black stripes, white bellies and white spots on the ears, pair of huge fangs jutting from powerful jaws" };
+            //Source: https://forgottenrealms.fandom.com/wiki/Titan
+            appearances[CreatureConstants.Titan] = new[] { "TODO HUMAN all appearances" };
+            //Source: https://www.woodlandtrust.org.uk/trees-woods-and-wildlife/animals/reptiles-and-amphibians/common-toad/
+            appearances[CreatureConstants.Toad] = GetWeightedAppearances(
+                commonSkin: new[] { "Olive brown, dry, warty skin", "Green skin", "Dark brown, dry, warty skin", "Gray, dry, warty skin" },
+                uncommonSkin: new[] { "Olive brown, dry, warty skin with dark markings", "Green, dry, warty skin with dark markings",
+                    "Dark brown, dry, warty skinn with dark markings", "Gray, dry, warty skin with dark markings" },
+                allEyes: new[] { "Copper-colored eyes with horizontal pupils" }
+            );
+            //Source: https://forgottenrealms.fandom.com/wiki/Tojanida
+            //https://www.d20pfsrd.com/bestiary/monster-listings/outsiders/tojanida/
+            appearances[CreatureConstants.Tojanida_Juvenile] = new[] { "Resemble a cross between a monstrous crab and an enormous snapping turtles. Light green shell, sea-green skin" };
+            appearances[CreatureConstants.Tojanida_Adult] = new[] { "Resemble a cross between a monstrous crab and an enormous snapping turtles. Light green shell, sea-green skin" };
+            appearances[CreatureConstants.Tojanida_Elder] = new[] { "Resemble a cross between a monstrous crab and an enormous snapping turtles. Light green shell, sea-green skin" };
             //Source: https://www.d20srd.org/srd/monsters/treant.htm
-            appearances[CreatureConstants.Treant][GenderConstants.Female] = GetBaseFromAverage(30 * 12);
-            appearances[CreatureConstants.Treant][GenderConstants.Male] = GetBaseFromAverage(30 * 12);
-            appearances[CreatureConstants.Treant][CreatureConstants.Treant] = GetMultiplierFromAverage(30 * 12);
+            appearances[CreatureConstants.Treant] = new[] { "Face-like features on their bark, a division between the trunk that forms legs, and long branches that serve as arms; brown bark-like skin" };
             //Source: https://jurassicworld-evolution.fandom.com/wiki/Triceratops
             appearances[CreatureConstants.Triceratops][GenderConstants.Female] = GetBaseFromAverage(157);
             appearances[CreatureConstants.Triceratops][GenderConstants.Male] = GetBaseFromAverage(157);
