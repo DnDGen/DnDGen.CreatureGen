@@ -3830,7 +3830,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.Titan] = new[] { "TODO HUMAN all appearances" };
             //Source: https://www.woodlandtrust.org.uk/trees-woods-and-wildlife/animals/reptiles-and-amphibians/common-toad/
             appearances[CreatureConstants.Toad] = GetWeightedAppearances(
-                commonSkin: new[] { "Olive brown, dry, warty skin", "Green skin", "Dark brown, dry, warty skin", "Gray, dry, warty skin" },
+                commonSkin: new[] { "Olive brown, dry, warty skin", "Green, dry, warty skin", "Dark brown, dry, warty skin", "Gray, dry, warty skin" },
                 uncommonSkin: new[] { "Olive brown, dry, warty skin with dark markings", "Green, dry, warty skin with dark markings",
                     "Dark brown, dry, warty skinn with dark markings", "Gray, dry, warty skin with dark markings" },
                 allEyes: new[] { "Copper-colored eyes with horizontal pupils" }
