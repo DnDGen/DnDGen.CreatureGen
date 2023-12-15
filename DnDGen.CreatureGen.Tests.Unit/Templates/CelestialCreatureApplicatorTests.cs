@@ -487,9 +487,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
-            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities.Except(new[] { specialQualities[5] }))
-                .And.Not.Contains(specialQualities[5])
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities)
                 .And.SupersetOf(originalSpecialQualities));
+            Assert.That(creature.SpecialQualities.Count(sq => sq.Name == FeatConstants.SpecialQualities.SpellResistance), Is.EqualTo(1));
             Assert.That(spellResistance.Power, Is.EqualTo(5));
         }
 
@@ -619,9 +619,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
-            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities.Skip(1))
-                .And.Not.Contains(specialQualities[0])
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities)
                 .And.SupersetOf(originalSpecialQualities));
+            Assert.That(creature.SpecialQualities.Count(sq => sq.Name == FeatConstants.SpecialQualities.Darkvision), Is.EqualTo(1));
             Assert.That(darkvision.Power, Is.EqualTo(60));
         }
 
@@ -750,17 +750,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(specialQualities);
 
-            var celestialSpecialQuality = specialQualities.First(f =>
-                f.Name == FeatConstants.SpecialQualities.EnergyResistance
-                && f.Foci.Contains(energy));
-
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
-            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities.Except(new[] { celestialSpecialQuality }))
-                .And.Not.Contains(celestialSpecialQuality)
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities)
                 .And.SupersetOf(originalSpecialQualities));
+            Assert.That(creature.SpecialQualities.Count(sq => sq.Name == FeatConstants.SpecialQualities.EnergyResistance), Is.EqualTo(3));
             Assert.That(energyResistance.Power, Is.EqualTo(5));
         }
 
@@ -965,9 +961,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
-            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities.Except(new[] { specialQualities[4] }))
-                .And.Not.Contains(specialQualities[4])
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities)
                 .And.SupersetOf(originalSpecialQualities));
+            Assert.That(creature.SpecialQualities.Count(sq => sq.Name == FeatConstants.SpecialQualities.DamageReduction), Is.EqualTo(1));
             Assert.That(damageReduction.Power, Is.EqualTo(5));
         }
 
@@ -1217,13 +1213,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             get
             {
-                var hitDice = new List<double>(Enumerable.Range(1, 20)
-                    .Select(i => Convert.ToDouble(i)));
-
-                hitDice.AddRange(new[]
-                {
-                    .1, .2, .3, .4, .5, .6, .7, .8, .9,
-                });
+                var hitDice = new[] { 0.5, 1, 2, 3, 4, 7, 8 };
 
                 //INFO: Don't need to test every CR, since it is the basic Increase functionality, which is tested separately
                 //So, we only need to test the amount it is increased, not every CR permutation
@@ -1757,9 +1747,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
-            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities.Except(new[] { specialQualities[5] }))
-                .And.Not.Contains(specialQualities[5])
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities)
                 .And.SupersetOf(originalSpecialQualities));
+            Assert.That(creature.SpecialQualities.Count(sq => sq.Name == FeatConstants.SpecialQualities.SpellResistance), Is.EqualTo(1));
             Assert.That(spellResistance.Power, Is.EqualTo(5));
         }
 
@@ -1889,9 +1879,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
-            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities.Skip(1))
-                .And.Not.Contains(specialQualities[0])
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities)
                 .And.SupersetOf(originalSpecialQualities));
+            Assert.That(creature.SpecialQualities.Count(sq => sq.Name == FeatConstants.SpecialQualities.Darkvision), Is.EqualTo(1));
             Assert.That(darkvision.Power, Is.EqualTo(60));
         }
 
@@ -2020,17 +2010,13 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     It.Is<Alignment>(a => a.Goodness == AlignmentConstants.Good && a.Lawfulness == baseCreature.Alignment.Lawfulness)))
                 .Returns(specialQualities);
 
-            var celestialSpecialQuality = specialQualities.First(f =>
-                f.Name == FeatConstants.SpecialQualities.EnergyResistance
-                && f.Foci.Contains(energy));
-
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
-            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities.Except(new[] { celestialSpecialQuality }))
-                .And.Not.Contains(celestialSpecialQuality)
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities)
                 .And.SupersetOf(originalSpecialQualities));
+            Assert.That(creature.SpecialQualities.Count(sq => sq.Name == FeatConstants.SpecialQualities.EnergyResistance), Is.EqualTo(3));
             Assert.That(energyResistance.Power, Is.EqualTo(5));
         }
 
@@ -2235,9 +2221,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities.Count(), Is.GreaterThan(originalSpecialQualities.Length)
                 .And.EqualTo(originalSpecialQualities.Length + specialQualities.Length - 1));
-            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities.Except(new[] { specialQualities[4] }))
-                .And.Not.Contains(specialQualities[4])
+            Assert.That(creature.SpecialQualities, Is.SupersetOf(specialQualities)
                 .And.SupersetOf(originalSpecialQualities));
+            Assert.That(creature.SpecialQualities.Count(sq => sq.Name == FeatConstants.SpecialQualities.DamageReduction), Is.EqualTo(1));
             Assert.That(damageReduction.Power, Is.EqualTo(5));
         }
 

@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DnDGen.RollGen" Version="15.5.3" />
-    <PackageReference Include="DnDGen.TreasureGen" Version="10.5.2" />
+    <PackageReference Include="DnDGen.RollGen" Version="15.5.4" />
+    <PackageReference Include="DnDGen.TreasureGen" Version="10.5.3" />
     <PackageReference Include="Moq" Version="4.20.70" />
     <PackageReference Include="nunit" Version="4.0.1" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.5.0">

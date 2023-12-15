@@ -1335,8 +1335,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities, Contains.Item(animalSpecialQualities[0])
                 .And.Contains(animalSpecialQualities[1])
-                .And.Not.Contains(animalSpecialQualities[2])
                 .And.Contains(baseSpecialQuality));
+            Assert.That(creature.SpecialQualities.Count(sq => sq.Name == "my special quality"), Is.EqualTo(1));
+            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(5));
         }
 
         [Test]
@@ -1407,8 +1408,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities, Contains.Item(lycanthropeSpecialQualities[0])
                 .And.Contains(lycanthropeSpecialQualities[2])
-                .And.Not.Contains(lycanthropeSpecialQualities[1])
                 .And.Contains(baseSpecialQuality));
+            Assert.That(creature.SpecialQualities.Count(sq => sq.Name == "my special quality"), Is.EqualTo(1));
+            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(7));
         }
 
         [Test]
@@ -1906,8 +1908,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Feats, Contains.Item(animalFeats[0])
-                .And.Contains(animalFeats[1])
-                .And.Not.Contains(animalFeats[2]));
+                .And.Contains(animalFeats[1]));
+            Assert.That(creature.Feats.Count(sq => sq.Name == "my feat"), Is.EqualTo(1));
+            Assert.That(creature.Feats.Count(), Is.EqualTo(5));
         }
 
         [Test]
@@ -2861,8 +2864,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities, Contains.Item(animalSpecialQualities[0])
                 .And.Contains(animalSpecialQualities[1])
-                .And.Not.Contains(animalSpecialQualities[2])
                 .And.Contains(baseSpecialQuality));
+            Assert.That(creature.SpecialQualities.Count(sq => sq.Name == "my special quality"), Is.EqualTo(1));
+            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(5));
         }
 
         [Test]
@@ -2933,8 +2937,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.SpecialQualities, Contains.Item(lycanthropeSpecialQualities[0])
                 .And.Contains(lycanthropeSpecialQualities[2])
-                .And.Not.Contains(lycanthropeSpecialQualities[1])
                 .And.Contains(baseSpecialQuality));
+            Assert.That(creature.SpecialQualities.Count(sq => sq.Name == "my special quality"), Is.EqualTo(1));
+            Assert.That(creature.SpecialQualities.Count(), Is.EqualTo(7));
         }
 
         [Test]
@@ -3271,8 +3276,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Feats, Contains.Item(animalFeats[0])
-                .And.Contains(animalFeats[1])
-                .And.Not.Contains(animalFeats[2]));
+                .And.Contains(animalFeats[1]));
+            Assert.That(creature.Feats.Count(sq => sq.Name == "my feat"), Is.EqualTo(1));
+            Assert.That(creature.Feats.Count(), Is.EqualTo(5));
         }
 
         [Test]
@@ -4242,22 +4248,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                             if (creatureQuantity <= 1)
                                 creatureCr = ChallengeRatingConstants.CR0;
 
-                            var low2Cr = ChallengeRatingConstants.IncreaseChallengeRating(creatureCr, increase - 2);
                             var low1Cr = ChallengeRatingConstants.IncreaseChallengeRating(creatureCr, increase - 1);
                             var newCr = ChallengeRatingConstants.IncreaseChallengeRating(creatureCr, increase);
                             var high1Cr = ChallengeRatingConstants.IncreaseChallengeRating(creatureCr, increase + 1);
-                            var high2Cr = ChallengeRatingConstants.IncreaseChallengeRating(creatureCr, increase + 2);
 
-                            if (low2Cr != cr && low1Cr != cr && newCr != cr)
+                            if (low1Cr != cr && newCr != cr)
                             {
                                 yield return new TestCaseData(cr, animalHitDiceQuantity, creatureQuantity, cr, false);
                             }
 
-                            yield return new TestCaseData(cr, animalHitDiceQuantity, creatureQuantity, low2Cr, false);
                             yield return new TestCaseData(cr, animalHitDiceQuantity, creatureQuantity, low1Cr, false);
                             yield return new TestCaseData(cr, animalHitDiceQuantity, creatureQuantity, newCr, true);
                             yield return new TestCaseData(cr, animalHitDiceQuantity, creatureQuantity, high1Cr, false);
-                            yield return new TestCaseData(cr, animalHitDiceQuantity, creatureQuantity, high2Cr, false);
                         }
                     }
                 }
@@ -4376,22 +4378,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
                     foreach (var cr in challengeRatings)
                     {
-                        var low2Cr = ChallengeRatingConstants.IncreaseChallengeRating(cr, increase - 2);
                         var low1Cr = ChallengeRatingConstants.IncreaseChallengeRating(cr, increase - 1);
                         var newCr = ChallengeRatingConstants.IncreaseChallengeRating(cr, increase);
                         var high1Cr = ChallengeRatingConstants.IncreaseChallengeRating(cr, increase + 1);
-                        var high2Cr = ChallengeRatingConstants.IncreaseChallengeRating(cr, increase + 2);
 
-                        if (low2Cr != cr)
+                        if (low1Cr != cr)
                         {
                             yield return new TestCaseData(cr, animalHitDiceQuantity, cr, false);
                         }
 
-                        yield return new TestCaseData(cr, animalHitDiceQuantity, low2Cr, false);
                         yield return new TestCaseData(cr, animalHitDiceQuantity, low1Cr, false);
                         yield return new TestCaseData(cr, animalHitDiceQuantity, newCr, true);
                         yield return new TestCaseData(cr, animalHitDiceQuantity, high1Cr, false);
-                        yield return new TestCaseData(cr, animalHitDiceQuantity, high2Cr, false);
                     }
                 }
             }

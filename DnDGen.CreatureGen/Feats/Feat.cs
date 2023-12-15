@@ -32,5 +32,20 @@ namespace DnDGen.CreatureGen.Feats
 
             return clone;
         }
+
+        public string GetSummary()
+        {
+            var summary = Name;
+
+            if (Foci.Any())
+                summary += $" ({string.Join("/", Foci)})";
+
+            if (Power > 0)
+                summary += $", Power {Power}";
+
+            return summary;
+        }
+
+        public override string ToString() => GetSummary();
     }
 }
