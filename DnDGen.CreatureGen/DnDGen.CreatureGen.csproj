@@ -13,8 +13,12 @@
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/DnDGen/CreatureGen</RepositoryUrl>
     <PackageTags>creature generator dice dungeons dragons d20 dnd 3.5 gen</PackageTags>
-    <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
-    <Version>0.2.0</Version>
+    <PackageReleaseNotes>
+      0.1.0: Initial Release
+      0.2.0: Issue #35 - Creatures as characters
+      0.3.0: Random creatures, ability randomizer, livestock, multiple templates, .Net 6
+    </PackageReleaseNotes>
+    <Version>0.3.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
