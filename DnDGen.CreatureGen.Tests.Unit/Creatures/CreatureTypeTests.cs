@@ -22,6 +22,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
             Assert.That(creatureType.SubTypes, Is.Empty);
         }
 
+        [TestCase("my type")]
+        [TestCase("my type", "subtype 1")]
+        [TestCase("my type", "subtype 1", "subtype 2")]
+        public void CreatureTypeInitialized_FromArray(params string[] types)
+        {
+            creatureType = new CreatureType(types);
+            Assert.That(creatureType.Name, Is.Not.Empty.And.EqualTo(types[0]));
+            Assert.That(creatureType.SubTypes, Is.EqualTo(types.Skip(1)));
+        }
+
         [Test]
         public void CreateSubtype()
         {

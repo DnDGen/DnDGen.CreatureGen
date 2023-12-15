@@ -4,6 +4,7 @@ using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.Infrastructure.Selectors.Percentiles;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Selectors.Collections
@@ -13,25 +14,57 @@ namespace DnDGen.CreatureGen.Selectors.Collections
         private readonly ITypeAndAmountSelector typeAndAmountSelector;
         private readonly IPercentileSelector percentileSelector;
         private readonly ICollectionSelector collectionSelector;
+        private readonly IAdjustmentsSelector adjustmentsSelector;
 
-        public AdvancementSelector(ITypeAndAmountSelector typeAndAmountSelector, IPercentileSelector percentileSelector, ICollectionSelector collectionSelector)
+        public AdvancementSelector(
+            ITypeAndAmountSelector typeAndAmountSelector,
+            IPercentileSelector percentileSelector,
+            ICollectionSelector collectionSelector,
+            IAdjustmentsSelector adjustmentsSelector)
         {
             this.typeAndAmountSelector = typeAndAmountSelector;
             this.percentileSelector = percentileSelector;
             this.collectionSelector = collectionSelector;
+            this.adjustmentsSelector = adjustmentsSelector;
         }
 
-        public bool IsAdvanced(string creature)
+        public bool IsAdvanced(string creature, string challengeRatingFilter)
         {
-            var advancements = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Advancements, creature);
+            if (challengeRatingFilter != null)
+                return false;
 
-            return percentileSelector.SelectFrom(.9) && advancements.Any();
+            var advancements = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Advancements, creature);
+            if (!advancements.Any())
+                return false;
+
+            var isAdvanced = percentileSelector.SelectFrom(.9);
+            return isAdvanced;
         }
 
-        public AdvancementSelection SelectRandomFor(string creature, CreatureType creatureType, string originalSize, string originalChallengeRating)
+        public AdvancementSelection SelectRandomFor(string creature, IEnumerable<string> templates, CreatureType creatureType, string originalSize, string originalChallengeRating)
         {
             var advancements = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Advancements, creature);
-            var randomAdvancement = collectionSelector.SelectRandomFrom(advancements);
+            var creatureHitDice = adjustmentsSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, creature);
+            var maxHitDice = int.MaxValue;
+            templates ??= Enumerable.Empty<string>();
+
+            foreach (var template in templates)
+            {
+                var templateMaxHitDice = adjustmentsSelector.SelectFrom<int>(TableNameConstants.Adjustments.HitDice, template);
+                maxHitDice = Math.Min(templateMaxHitDice, maxHitDice);
+            }
+
+            var validAdvancements = advancements.Where(a => creatureHitDice + a.Amount <= maxHitDice);
+            if (!validAdvancements.Any())
+            {
+                var minimumAdvancement = advancements.OrderBy(a => a.Amount).First();
+                var newAdvancementAmount = maxHitDice - (int)Math.Max(creatureHitDice, 1);
+                minimumAdvancement.Amount = Math.Min(newAdvancementAmount, minimumAdvancement.Amount);
+
+                validAdvancements = new[] { minimumAdvancement };
+            }
+
+            var randomAdvancement = collectionSelector.SelectRandomFrom(validAdvancements);
             var selection = GetAdvancementSelection(creature, creatureType, originalSize, originalChallengeRating, randomAdvancement);
 
             return selection;

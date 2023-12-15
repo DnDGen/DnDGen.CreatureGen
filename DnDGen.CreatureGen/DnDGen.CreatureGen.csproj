@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.1;netstandard2.1</TargetFrameworks>
+	  <TargetFrameworks>net6.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Karl M. Speer</Authors>
     <Company>DnDGen</Company>
@@ -13,8 +13,12 @@
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/DnDGen/CreatureGen</RepositoryUrl>
     <PackageTags>creature generator dice dungeons dragons d20 dnd 3.5 gen</PackageTags>
-    <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
-    <Version>0.2.0</Version>
+    <PackageReleaseNotes>
+      0.1.0: Initial Release
+      0.2.0: Issue #35 - Creatures as characters
+      0.3.0: Random creatures, ability randomizer, livestock, multiple templates, .Net 6
+    </PackageReleaseNotes>
+    <Version>0.3.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -38,6 +42,7 @@
     <None Remove="Tables\Defenses\ArmorClassBonuses.xml" />
     <None Remove="Tables\Defenses\HitDice.xml" />
     <None Remove="Tables\Defenses\SaveBonuses.xml" />
+    <None Remove="Tables\Defenses\SaveGroups.xml" />
     <None Remove="Tables\Defenses\SizeModifiers.xml" />
     <None Remove="Tables\Equipment\ArcaneSpellFailures.xml" />
     <None Remove="Tables\Equipment\PredeterminedItems.xml" />
@@ -96,6 +101,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Creatures\Speeds.xml" />
+    <EmbeddedResource Include="Tables\Defenses\SaveGroups.xml" />
     <EmbeddedResource Include="Tables\Defenses\ArmorClassBonuses.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -160,9 +166,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DnDGen.Infrastructure" Version="4.2.2" />
-    <PackageReference Include="DnDGen.RollGen" Version="15.2.2" />
-    <PackageReference Include="DnDGen.TreasureGen" Version="10.3.2" />
+    <PackageReference Include="DnDGen.Infrastructure" Version="4.2.4" />
+    <PackageReference Include="DnDGen.RollGen" Version="15.3.0" />
+    <PackageReference Include="DnDGen.TreasureGen" Version="10.3.4" />
   </ItemGroup>
 
 </Project>

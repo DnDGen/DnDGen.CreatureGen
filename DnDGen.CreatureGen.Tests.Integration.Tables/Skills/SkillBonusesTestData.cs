@@ -412,6 +412,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
 
                 testCases[CreatureConstants.Bison][None] = 0;
 
+                testCases[CreatureConstants.Bison_Goat][None] = 0;
+
+                testCases[CreatureConstants.Bison_Sheep][None] = 0;
+
+                testCases[CreatureConstants.Bison_Llama][None] = 0;
+
+                testCases[CreatureConstants.Bison_MilkCow][None] = 0;
+
+                testCases[CreatureConstants.Bison_Ox][None] = 0;
+
                 testCases[CreatureConstants.BlackPudding][GetData(SkillConstants.Climb)] = 8;
                 testCases[CreatureConstants.BlackPudding][GetData(SkillConstants.Climb, condition: "can always take 10")] = 10;
 
@@ -421,6 +431,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.BlinkDog][None] = 0;
 
                 testCases[CreatureConstants.Boar][None] = 0;
+
+                testCases[CreatureConstants.Boar_Pig][None] = 0;
 
                 testCases[CreatureConstants.Boar_Dire][None] = 0;
 
@@ -1517,6 +1529,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
                 testCases[CreatureConstants.Rat_Swarm][GetData(SkillConstants.Swim, condition: "can always take 10")] = 10;
 
                 testCases[CreatureConstants.Raven][None] = 0;
+
+                testCases[CreatureConstants.Raven_Chicken][None] = 0;
+
+                testCases[CreatureConstants.Raven_Turkey][None] = 0;
+
+                testCases[CreatureConstants.Raven_Peacock][None] = 0;
+
+                testCases[CreatureConstants.Raven_Pheasant][None] = 0;
 
                 testCases[CreatureConstants.Ravid][None] = 0;
 

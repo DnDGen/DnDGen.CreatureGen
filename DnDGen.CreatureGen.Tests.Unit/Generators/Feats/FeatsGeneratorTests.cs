@@ -803,8 +803,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Feats
             Assert.That(specialQualities.Last().Name, Is.EqualTo("special quality 2"));
         }
 
-        [TestCase(FeatConstants.SpecialQualities.Blindsight)]
-        [TestCase(FeatConstants.SpecialQualities.Blindsense)]
+        [TestCase(FeatConstants.SpecialQualities.Blind)]
         public void BUG_IfBlind_RemoveSightFeats(string blindFeatName)
         {
             var feat1 = new SpecialQualitySelection();

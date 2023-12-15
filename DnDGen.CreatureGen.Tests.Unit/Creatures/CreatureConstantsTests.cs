@@ -45,10 +45,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Beholder_Gauth, "Gauth (Lesser Beholder)")]
         [TestCase(CreatureConstants.Belker, "Belker")]
         [TestCase(CreatureConstants.Bison, "Bison")]
+        [TestCase(CreatureConstants.Bison_Goat, "Goat")]
+        [TestCase(CreatureConstants.Bison_MilkCow, "Milk Cow")]
+        [TestCase(CreatureConstants.Bison_Ox, "Ox")]
+        [TestCase(CreatureConstants.Bison_Sheep, "Sheep")]
+        [TestCase(CreatureConstants.Bison_Llama, "Llama")]
         [TestCase(CreatureConstants.BlackPudding, "Black Pudding")]
         [TestCase(CreatureConstants.BlinkDog, "Blink Dog")]
         [TestCase(CreatureConstants.Boar, "Boar")]
         [TestCase(CreatureConstants.Boar_Dire, "Dire Boar")]
+        [TestCase(CreatureConstants.Boar_Pig, "Pig")]
         [TestCase(CreatureConstants.Bodak, "Bodak")]
         [TestCase(CreatureConstants.BombardierBeetle_Giant, "Giant Bombardier Beetle")]
         [TestCase(CreatureConstants.Bralani, "Bralani")]
@@ -241,6 +247,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Rat_Dire, "Dire Rat")]
         [TestCase(CreatureConstants.Rat_Swarm, "Rat Swarm")]
         [TestCase(CreatureConstants.Raven, "Raven")]
+        [TestCase(CreatureConstants.Raven_Chicken, "Chicken")]
+        [TestCase(CreatureConstants.Raven_Turkey, "Turkey")]
+        [TestCase(CreatureConstants.Raven_Peacock, "Peacock")]
         [TestCase(CreatureConstants.Ravid, "Ravid")]
         [TestCase(CreatureConstants.RazorBoar, "Razor Boar")]
         [TestCase(CreatureConstants.Remorhaz, "Remorhaz")]
@@ -745,7 +754,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Templates.HalfDragon_Silver, "Half-Dragon (Silver)")]
         [TestCase(CreatureConstants.Templates.HalfFiend, "Half-Fiend")]
         [TestCase(CreatureConstants.Templates.Lich, "Lich")]
-        [TestCase(CreatureConstants.Templates.None, "")]
+        [TestCase(CreatureConstants.Templates.None, "None")]
         [TestCase(CreatureConstants.Templates.Skeleton, "Skeleton")]
         [TestCase(CreatureConstants.Templates.Vampire, "Vampire")]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted, "Lycanthrope, Brown Bear (Werebear, Afflicted)")]
@@ -775,6 +784,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
         [TestCase(CreatureConstants.Groups.Arrowhawk, "Arrowhawk")]
         [TestCase(CreatureConstants.Groups.Bear, "Bear")]
         [TestCase(CreatureConstants.Groups.Centipede_Monstrous, "Monstrous Centipede")]
+        [TestCase(CreatureConstants.Groups.Chimera, "Chimera")]
         [TestCase(CreatureConstants.Groups.Cryohydra, "Cryohydra")]
         [TestCase(CreatureConstants.Groups.Demon, "Demon")]
         [TestCase(CreatureConstants.Groups.Devil, "Devil")]
@@ -886,7 +896,12 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
             var constantFields = fields.Where(f => f.IsLiteral && !f.IsInitOnly);
             var constants = constantFields.Select(f => f.GetValue(null) as string);
 
-            Assert.That(creatures, Is.EquivalentTo(constants));
+            //HACK: The failure message for Is.Equivalent is truncated because of the size of the collection
+            //So, we will alter the assertions
+            Assert.That(creatures, Is.Unique, "From GetAll");
+            Assert.That(constants, Is.Unique, "From Reflection");
+            Assert.That(creatures.Except(constants), Is.Empty, "From GetAll");
+            Assert.That(constants.Except(creatures), Is.Empty, "From Reflection");
         }
 
         [Test]
@@ -1124,6 +1139,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
                 CreatureConstants.YuanTi_Pureblood,
                 CreatureConstants.Zelekhut,
             }));
+        }
+
+        [Test]
+        public void GetAllNonCharacters_ReturnsNonCharacters()
+        {
+            var nonCharacters = CreatureConstants.GetAllNonCharacters();
+            var creatures = CreatureConstants.GetAll();
+            var characters = CreatureConstants.GetAllCharacters();
+
+            Assert.That(nonCharacters, Is.EqualTo(creatures.Except(characters)));
         }
     }
 }

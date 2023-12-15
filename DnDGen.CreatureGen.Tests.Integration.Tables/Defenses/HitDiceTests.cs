@@ -1,6 +1,5 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.CreatureGen.Tests.Integration.TestData;
 using NUnit.Framework;
 using System.Linq;
 
@@ -15,9 +14,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         public void HitDiceNames()
         {
             var creatures = CreatureConstants.GetAll();
+            var templates = CreatureConstants.Templates.GetAll();
             var types = CreatureConstants.Types.GetAll();
 
-            var names = creatures.Union(types);
+            var names = creatures.Union(types).Union(templates);
 
             AssertCollectionNames(names);
         }
@@ -203,10 +203,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         [TestCase(CreatureConstants.Beholder_Gauth, 6)]
         [TestCase(CreatureConstants.Belker, 7)]
         [TestCase(CreatureConstants.Bison, 5)]
+        [TestCase(CreatureConstants.Bison_Goat, 5)]
+        [TestCase(CreatureConstants.Bison_Llama, 5)]
+        [TestCase(CreatureConstants.Bison_MilkCow, 5)]
+        [TestCase(CreatureConstants.Bison_Ox, 5)]
+        [TestCase(CreatureConstants.Bison_Sheep, 5)]
         [TestCase(CreatureConstants.BlackPudding, 10)]
         [TestCase(CreatureConstants.BlackPudding_Elder, 20)]
         [TestCase(CreatureConstants.BlinkDog, 4)]
         [TestCase(CreatureConstants.Boar, 3)]
+        [TestCase(CreatureConstants.Boar_Pig, 3)]
         [TestCase(CreatureConstants.Boar_Dire, 7)]
         [TestCase(CreatureConstants.Bodak, 9)]
         [TestCase(CreatureConstants.BombardierBeetle_Giant, 2)]
@@ -615,6 +621,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         [TestCase(CreatureConstants.Rat_Dire, 1)]
         [TestCase(CreatureConstants.Rat_Swarm, 4)]
         [TestCase(CreatureConstants.Raven, .25)]
+        [TestCase(CreatureConstants.Raven_Chicken, .25)]
+        [TestCase(CreatureConstants.Raven_Turkey, .25)]
+        [TestCase(CreatureConstants.Raven_Peacock, .25)]
+        [TestCase(CreatureConstants.Raven_Pheasant, .25)]
         [TestCase(CreatureConstants.Ravid, 3)]
         [TestCase(CreatureConstants.RazorBoar, 15)]
         [TestCase(CreatureConstants.Remorhaz, 7)]
@@ -746,6 +756,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         public void HitDiceQuantity(string creature, double quantity)
         {
             AssertAdjustment(creature, quantity);
+            Assert.That(quantity, Is.Positive);
         }
 
         [TestCase(CreatureConstants.Types.Aberration, 8)]
@@ -766,37 +777,50 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Defenses
         public void HitDie(string creatureType, int quantity)
         {
             AssertAdjustment(creatureType, quantity);
-        }
+            Assert.That(quantity, Is.Positive);
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void PositiveHitDiceQuantity(string creature)
-        {
-            var hitDiceQuantity = GetAdjustment(creature);
-            Assert.That(hitDiceQuantity, Is.Positive);
-        }
-
-        [TestCase(CreatureConstants.Types.Aberration)]
-        [TestCase(CreatureConstants.Types.Animal)]
-        [TestCase(CreatureConstants.Types.Construct)]
-        [TestCase(CreatureConstants.Types.Dragon)]
-        [TestCase(CreatureConstants.Types.Elemental)]
-        [TestCase(CreatureConstants.Types.Fey)]
-        [TestCase(CreatureConstants.Types.Giant)]
-        [TestCase(CreatureConstants.Types.Humanoid)]
-        [TestCase(CreatureConstants.Types.MagicalBeast)]
-        [TestCase(CreatureConstants.Types.MonstrousHumanoid)]
-        [TestCase(CreatureConstants.Types.Ooze)]
-        [TestCase(CreatureConstants.Types.Outsider)]
-        [TestCase(CreatureConstants.Types.Plant)]
-        [TestCase(CreatureConstants.Types.Undead)]
-        [TestCase(CreatureConstants.Types.Vermin)]
-        public void CreatureTypeHasValidHitDie(string creatureType)
-        {
             var validDie = new[] { 2, 3, 4, 6, 8, 10, 12, 20, 100 };
+            Assert.That(validDie, Contains.Item(quantity));
+        }
 
-            var hitDie = GetAdjustment(creatureType);
-            Assert.That(hitDie, Is.Positive);
-            Assert.That(validDie, Contains.Item(hitDie));
+        [TestCase(CreatureConstants.Templates.CelestialCreature, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.FiendishCreature, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.Ghost, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.HalfCelestial, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Black, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Blue, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Brass, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Bronze, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Copper, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Gold, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Green, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Red, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Silver, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_White, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.HalfFiend, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.Lich, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.None, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.Skeleton, 20)]
+        [TestCase(CreatureConstants.Templates.Vampire, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Afflicted, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Natural, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Natural, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Natural, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural, int.MaxValue)]
+        [TestCase(CreatureConstants.Templates.Zombie, 10)]
+        public void MaxHitDice(string template, double quantity)
+        {
+            AssertAdjustment(template, quantity);
+            Assert.That(quantity, Is.Positive);
         }
     }
 }

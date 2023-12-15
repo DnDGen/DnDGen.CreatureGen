@@ -43,6 +43,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             return this;
         }
 
+        public CreatureBuilder WithLevelAdjustment(int? levelAdjustment)
+        {
+            creature.LevelAdjustment = levelAdjustment;
+
+            return this;
+        }
+
+        public CreatureBuilder WithMinimumAbility(string ability, int minValue)
+        {
+            while (creature.Abilities[ability].FullScore < minValue)
+            {
+                creature.Abilities[ability].BaseScore += minValue;
+            }
+
+            return this;
+        }
+
         public CreatureBuilder Clone(Creature source)
         {
             creature.Abilities = new Dictionary<string, Ability>();
@@ -177,10 +194,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 creature.Speeds[kvp.Key].Value = kvp.Value.Value;
             }
 
-            creature.Template = source.Template;
+            creature.Templates.AddRange(source.Templates);
             creature.Type = new CreatureType();
             creature.Type.Name = source.Type.Name;
             creature.Type.SubTypes = source.Type.SubTypes.ToArray();
+
+            return this;
+        }
+
+        public CreatureBuilder WithHitDiceQuantityNoMoreThan(int quantity)
+        {
+            creature.HitPoints.HitDice[0].Quantity = random.Next(quantity) + 1;
+            creature.HitPoints.DefaultTotal = creature.HitPoints.RoundedHitDiceQuantity * creature.HitPoints.HitDice[0].HitDie / 2;
+            creature.HitPoints.Total = random.Next(creature.HitPoints.RoundedHitDiceQuantity * creature.HitPoints.HitDice[0].HitDie) + creature.HitPoints.HitDice[0].RoundedQuantity;
 
             return this;
         }
@@ -251,7 +277,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             creature.Speeds[SpeedConstants.Land].Value = (random.Next(5) + 1) * 10;
             creature.Speeds[SpeedConstants.Land].Description = $"speed description {Guid.NewGuid()}";
 
-            creature.Template = CreatureConstants.Templates.None;
             creature.Type = new CreatureType();
             creature.Type.Name = $"creature type {Guid.NewGuid()}";
             creature.Type.SubTypes = new[]
@@ -305,6 +330,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             };
 
             creature.Languages = new[] { "English", "Deutsch" };
+
+            return this;
+        }
+
+        public CreatureBuilder AddSubtype(string subtype)
+        {
+            creature.Type.SubTypes = creature.Type.SubTypes.Union(new[] { subtype });
+
+            return this;
+        }
+
+        public CreatureBuilder WithChallengeRating(string cr)
+        {
+            creature.ChallengeRating = cr;
+
+            return this;
+        }
+
+        public CreatureBuilder WithAlignment(string alignment)
+        {
+            creature.Alignment = new Alignment(alignment);
 
             return this;
         }

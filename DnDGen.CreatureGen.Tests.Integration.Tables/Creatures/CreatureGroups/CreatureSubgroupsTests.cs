@@ -1,4 +1,6 @@
 ﻿using DnDGen.CreatureGen.Creatures;
+using DnDGen.CreatureGen.Tables;
+using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 using System.Linq;
 
@@ -7,6 +9,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
     [TestFixture]
     public class CreatureSubgroupsTests : CreatureGroupsTableTests
     {
+        private ICollectionSelector collectionSelector;
+
+        [SetUp]
+        public void Setup()
+        {
+            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
+        }
+
         [Test]
         public void CreatureGroupNames()
         {
@@ -42,6 +52,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
             CreatureConstants.Centipede_Monstrous_Medium,
             CreatureConstants.Centipede_Monstrous_Small,
             CreatureConstants.Centipede_Monstrous_Tiny)]
+        [TestCase(CreatureConstants.Groups.Chimera,
+            CreatureConstants.Chimera_Black,
+            CreatureConstants.Chimera_Blue,
+            CreatureConstants.Chimera_Green,
+            CreatureConstants.Chimera_Red,
+            CreatureConstants.Chimera_White)]
         [TestCase(CreatureConstants.Groups.Cryohydra,
             CreatureConstants.Cryohydra_10Heads,
             CreatureConstants.Cryohydra_11Heads,
@@ -446,6 +462,288 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         }
 
         [Test]
+        public void AllCreatureGroup()
+        {
+            var entries = new[]
+            {
+                CreatureConstants.Types.Aberration,
+                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Construct,
+                CreatureConstants.Types.Elemental,
+                CreatureConstants.Types.Fey,
+                CreatureConstants.Types.MagicalBeast,
+                CreatureConstants.Types.MonstrousHumanoid,
+                CreatureConstants.Types.Ooze,
+                CreatureConstants.Types.Plant,
+                CreatureConstants.Types.Vermin,
+                CreatureConstants.Types.Subtypes.Air,
+                CreatureConstants.Types.Subtypes.Aquatic,
+                CreatureConstants.Types.Subtypes.Chaotic,
+                CreatureConstants.Types.Subtypes.Cold,
+                CreatureConstants.Types.Subtypes.Earth,
+                CreatureConstants.Types.Subtypes.Fire,
+                CreatureConstants.Types.Subtypes.Goblinoid,
+                CreatureConstants.Types.Subtypes.Lawful,
+                CreatureConstants.Types.Subtypes.Reptilian,
+                CreatureConstants.Types.Subtypes.Swarm,
+                CreatureConstants.Types.Subtypes.Water,
+                CreatureConstants.Groups.Angel,
+                CreatureConstants.Groups.Archon,
+                CreatureConstants.Groups.Arrowhawk,
+                CreatureConstants.Groups.Demon,
+                CreatureConstants.Groups.Devil,
+                CreatureConstants.Groups.Dragon_Black,
+                CreatureConstants.Groups.Dragon_Blue,
+                CreatureConstants.Groups.Dragon_Brass,
+                CreatureConstants.Groups.Dragon_Bronze,
+                CreatureConstants.Groups.Dragon_Copper,
+                CreatureConstants.Groups.Dragon_Gold,
+                CreatureConstants.Groups.Dragon_Green,
+                CreatureConstants.Groups.Dragon_Red,
+                CreatureConstants.Groups.Dragon_Silver,
+                CreatureConstants.Groups.Dragon_White,
+                CreatureConstants.Groups.Dwarf,
+                CreatureConstants.Groups.Elf,
+                CreatureConstants.Groups.Genie,
+                CreatureConstants.Groups.Gnome,
+                CreatureConstants.Groups.Halfling,
+                CreatureConstants.Groups.Nightshade,
+                CreatureConstants.Groups.Orc,
+                CreatureConstants.Groups.Planetouched,
+                CreatureConstants.Groups.Salamander,
+                CreatureConstants.Groups.Tojanida,
+                CreatureConstants.Groups.Xorn,
+                CreatureConstants.Achaierai,
+                CreatureConstants.Allip,
+                CreatureConstants.Avoral,
+                CreatureConstants.Azer,
+                CreatureConstants.Barghest,
+                CreatureConstants.Barghest_Greater,
+                CreatureConstants.Bodak,
+                CreatureConstants.Bralani,
+                CreatureConstants.Bugbear,
+                CreatureConstants.ChaosBeast,
+                CreatureConstants.Couatl,
+                CreatureConstants.Devourer,
+                CreatureConstants.Gnoll,
+                CreatureConstants.Human,
+                CreatureConstants.Giant_Cloud,
+                CreatureConstants.Giant_Fire,
+                CreatureConstants.Giant_Frost,
+                CreatureConstants.Giant_Hill,
+                CreatureConstants.Giant_Stone,
+                CreatureConstants.Giant_Stone_Elder,
+                CreatureConstants.Giant_Storm,
+                CreatureConstants.Wraith,
+                CreatureConstants.Wraith_Dread,
+                CreatureConstants.Ettin,
+                CreatureConstants.Ghoul_Ghast,
+                CreatureConstants.Ghoul,
+                CreatureConstants.Ghoul_Lacedon,
+                CreatureConstants.Githyanki,
+                CreatureConstants.Githzerai,
+                CreatureConstants.Shadow,
+                CreatureConstants.Shadow_Greater,
+                CreatureConstants.Leonal,
+                CreatureConstants.Mohrg,
+                CreatureConstants.Mummy,
+                CreatureConstants.NightHag,
+                CreatureConstants.Nightmare,
+                CreatureConstants.Nightmare_Cauchemar,
+                CreatureConstants.Ogre,
+                CreatureConstants.OgreMage,
+                CreatureConstants.Pseudodragon,
+                CreatureConstants.Rakshasa,
+                CreatureConstants.Ravid,
+                CreatureConstants.ShadowMastiff,
+                CreatureConstants.Spectre,
+                CreatureConstants.Troll,
+                CreatureConstants.VampireSpawn,
+                CreatureConstants.Vargouille,
+                CreatureConstants.Wight,
+                CreatureConstants.Wyvern,
+                CreatureConstants.Xill,
+                CreatureConstants.YethHound,
+            };
+
+            AssertDistinctCollection(GroupConstants.All, entries);
+        }
+
+        [Test]
+        public void CharacterGroup()
+        {
+            var entries = new[]
+            {
+                CreatureConstants.Types.Fey,
+                CreatureConstants.Types.Subtypes.Goblinoid,
+                CreatureConstants.Types.Subtypes.Reptilian,
+                CreatureConstants.Groups.Dwarf,
+                CreatureConstants.Groups.Elf,
+                CreatureConstants.Groups.Gnome,
+                CreatureConstants.Groups.Halfling,
+                CreatureConstants.Groups.Orc,
+                CreatureConstants.Groups.Planetouched,
+                CreatureConstants.Groups.YuanTi,
+                CreatureConstants.Groups.Chimera,
+                CreatureConstants.Groups.Mephit,
+                CreatureConstants.Groups.Hag,
+                CreatureConstants.Groups.Sphinx,
+                CreatureConstants.Aboleth,
+                CreatureConstants.Angel_AstralDeva,
+                CreatureConstants.Aranea,
+                CreatureConstants.Athach,
+                CreatureConstants.Salamander_Average,
+                CreatureConstants.Salamander_Flamebrother,
+                CreatureConstants.Azer,
+                CreatureConstants.BeardedDevil_Barbazu,
+                CreatureConstants.Dragon_Black_Wyrmling,
+                CreatureConstants.Dragon_Black_VeryYoung,
+                CreatureConstants.Dragon_Black_Young,
+                CreatureConstants.Dragon_Black_Juvenile,
+                CreatureConstants.Dragon_Blue_Wyrmling,
+                CreatureConstants.Dragon_Blue_VeryYoung,
+                CreatureConstants.Dragon_Blue_Young,
+                CreatureConstants.Dragon_Brass_Wyrmling,
+                CreatureConstants.Dragon_Brass_VeryYoung,
+                CreatureConstants.Dragon_Brass_Young,
+                CreatureConstants.Dragon_Brass_Juvenile,
+                CreatureConstants.Dragon_Bronze_Wyrmling,
+                CreatureConstants.Dragon_Bronze_VeryYoung,
+                CreatureConstants.Dragon_Bronze_Young,
+                CreatureConstants.Dragon_Copper_Wyrmling,
+                CreatureConstants.Dragon_Copper_VeryYoung,
+                CreatureConstants.Dragon_Copper_Juvenile,
+                CreatureConstants.Dragon_Copper_Young,
+                CreatureConstants.Dragon_Green_Wyrmling,
+                CreatureConstants.Dragon_Green_VeryYoung,
+                CreatureConstants.Dragon_Green_Young,
+                CreatureConstants.Dragon_Green_Juvenile,
+                CreatureConstants.Dragon_Gold_Wyrmling,
+                CreatureConstants.Dragon_Gold_VeryYoung,
+                CreatureConstants.Dragon_Gold_Young,
+                CreatureConstants.Dragon_Red_Wyrmling,
+                CreatureConstants.Dragon_Red_VeryYoung,
+                CreatureConstants.Dragon_Red_Young,
+                CreatureConstants.Dragon_Silver_Wyrmling,
+                CreatureConstants.Dragon_Silver_VeryYoung,
+                CreatureConstants.Dragon_Silver_Young,
+                CreatureConstants.Dragon_White_Wyrmling,
+                CreatureConstants.Dragon_White_VeryYoung,
+                CreatureConstants.Dragon_White_Young,
+                CreatureConstants.Dragon_White_Juvenile,
+                CreatureConstants.BlinkDog,
+                CreatureConstants.Slaad_Blue,
+                CreatureConstants.Slaad_Gray,
+                CreatureConstants.Slaad_Green,
+                CreatureConstants.Slaad_Red,
+                CreatureConstants.Bralani,
+                CreatureConstants.Bugbear,
+                CreatureConstants.Centaur,
+                CreatureConstants.ChainDevil_Kyton,
+                CreatureConstants.Giant_Cloud,
+                CreatureConstants.Giant_Fire,
+                CreatureConstants.Giant_Frost,
+                CreatureConstants.Giant_Hill,
+                CreatureConstants.Giant_Stone,
+                CreatureConstants.Giant_Stone_Elder,
+                CreatureConstants.Giant_Storm,
+                CreatureConstants.Couatl,
+                CreatureConstants.Derro,
+                CreatureConstants.Derro_Sane,
+                CreatureConstants.DisplacerBeast,
+                CreatureConstants.Djinni,
+                CreatureConstants.Doppelganger,
+                CreatureConstants.Dragonne,
+                CreatureConstants.Dretch,
+                CreatureConstants.Drider,
+                CreatureConstants.Eagle_Giant,
+                CreatureConstants.Erinyes,
+                CreatureConstants.Ettercap,
+                CreatureConstants.Gargoyle,
+                CreatureConstants.Gargoyle_Kapoacinth,
+                CreatureConstants.Githyanki,
+                CreatureConstants.Githzerai,
+                CreatureConstants.GrayRender,
+                CreatureConstants.Griffon,
+                CreatureConstants.Grimlock,
+                CreatureConstants.Harpy,
+                CreatureConstants.HellHound,
+                CreatureConstants.HellHound_NessianWarhound,
+                CreatureConstants.Hezrou,
+                CreatureConstants.HoundArchon,
+                CreatureConstants.Howler,
+                CreatureConstants.Janni,
+                CreatureConstants.Krenshar,
+                CreatureConstants.KuoToa,
+                CreatureConstants.Lamia,
+                CreatureConstants.Lammasu,
+                CreatureConstants.Lillend,
+                CreatureConstants.Locathah,
+                CreatureConstants.Manticore,
+                CreatureConstants.Medusa,
+                CreatureConstants.Merfolk,
+                CreatureConstants.MindFlayer,
+                CreatureConstants.Minotaur,
+                CreatureConstants.Mummy,
+                CreatureConstants.Nightmare,
+                CreatureConstants.Nightmare_Cauchemar,
+                CreatureConstants.Ogre_Merrow,
+                CreatureConstants.Owl_Giant,
+                CreatureConstants.Pegasus,
+                CreatureConstants.Pseudodragon,
+                CreatureConstants.Rakshasa,
+                CreatureConstants.Sahuagin,
+                CreatureConstants.Sahuagin_Malenti,
+                CreatureConstants.Sahuagin_Mutant,
+                CreatureConstants.Scorpionfolk,
+                CreatureConstants.ShadowMastiff,
+                CreatureConstants.ShamblingMound,
+                CreatureConstants.Skum,
+                CreatureConstants.Succubus,
+                CreatureConstants.Treant,
+                CreatureConstants.Triton,
+                CreatureConstants.Troll_Scrag,
+                CreatureConstants.TrumpetArchon,
+                CreatureConstants.Unicorn,
+                CreatureConstants.Vrock,
+                CreatureConstants.WinterWolf,
+                CreatureConstants.Worg,
+                CreatureConstants.Xill,
+                CreatureConstants.YethHound,
+                CreatureConstants.Zelekhut,
+                CreatureConstants.Ettin,
+                CreatureConstants.Gnoll,
+                CreatureConstants.Human,
+                CreatureConstants.Ogre,
+                CreatureConstants.OgreMage,
+                CreatureConstants.Troll,
+            };
+
+            AssertDistinctCollection(GroupConstants.Characters, entries);
+        }
+
+        [Test]
+        public void TemplateGroup()
+        {
+            var entries = new[]
+            {
+                CreatureConstants.Groups.Lycanthrope,
+                CreatureConstants.Groups.HalfDragon,
+                CreatureConstants.Templates.Skeleton,
+                CreatureConstants.Templates.Zombie,
+                CreatureConstants.Templates.CelestialCreature,
+                CreatureConstants.Templates.FiendishCreature,
+                CreatureConstants.Templates.Ghost,
+                CreatureConstants.Templates.Vampire,
+                CreatureConstants.Templates.Lich,
+                CreatureConstants.Templates.HalfCelestial,
+                CreatureConstants.Templates.HalfFiend,
+            };
+
+            AssertDistinctCollection(GroupConstants.Templates, entries);
+        }
+
+        [Test]
         public void AnimatedObjectGroup()
         {
             var entries = new[]
@@ -683,11 +981,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Behir,
                 CreatureConstants.BlinkDog,
                 CreatureConstants.Bulette,
-                CreatureConstants.Chimera_Black,
-                CreatureConstants.Chimera_Blue,
-                CreatureConstants.Chimera_Green,
-                CreatureConstants.Chimera_Red,
-                CreatureConstants.Chimera_White,
+                CreatureConstants.Groups.Chimera,
                 CreatureConstants.Cockatrice,
                 CreatureConstants.Darkmantle,
                 CreatureConstants.Digester,
@@ -758,6 +1052,36 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 AssertGroupDoesNotContain(subgroupName, forbiddenEntry);
                 AssertGroupDoesNotContain(subgroupName, subgroupName);
             }
+        }
+
+        [Test]
+        public void All_Exploded_ContainsAllCreatures()
+        {
+            var creatures = CreatureConstants.GetAll();
+            var allCreatures = collectionSelector.Explode(tableName, GroupConstants.All);
+
+            //HACK: The failure message for Is.Equivalent is truncated because of the size of the collection
+            //So, we will alter the assertions
+            Assert.That(creatures, Is.Unique, "From GetAll");
+            Assert.That(allCreatures, Is.Unique, "From Explode");
+            Assert.That(creatures.Except(allCreatures), Is.Empty, "From GetAll");
+            Assert.That(allCreatures.Except(creatures), Is.Empty, "From Explode");
+        }
+
+        [Test]
+        public void Characters_Exploded_ContainsAllCharacterCreatures()
+        {
+            var characters = CreatureConstants.GetAllCharacters();
+            var allCharacters = collectionSelector.Explode(tableName, GroupConstants.Characters);
+            Assert.That(allCharacters, Is.EquivalentTo(characters));
+        }
+
+        [Test]
+        public void Templates_Exploded_ContainsAllTemplates()
+        {
+            var templates = CreatureConstants.Templates.GetAll().Except(new[] { CreatureConstants.Templates.None });
+            var allTemplates = collectionSelector.Explode(tableName, GroupConstants.Templates);
+            Assert.That(allTemplates, Is.EquivalentTo(templates));
         }
     }
 }

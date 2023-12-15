@@ -1417,7 +1417,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Belker].Add(attackHelper.BuildData("Smoke Claw", damageHelper.BuildEntries("3d4", clawDamageType), string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true));
 
                 testCases[CreatureConstants.Bison].Add(attackHelper.BuildData("Gore", damageHelper.BuildEntries("1d8", goreDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
-                testCases[CreatureConstants.Bison].Add(attackHelper.BuildData("Stampede", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, SaveConstants.Reflex, AbilityConstants.Strength));
+                testCases[CreatureConstants.Bison].Add(attackHelper.BuildData("Stampede", string.Empty, "1d12 per 5 bison in herd", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, SaveConstants.Reflex, AbilityConstants.Strength));
+
+                testCases[CreatureConstants.Bison_Goat].Add(attackHelper.BuildData("Ram", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Bison_Goat].Add(attackHelper.BuildData("Stampede", string.Empty, "1d8 per 5 goats in herd", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, SaveConstants.Reflex, AbilityConstants.Strength));
+
+                testCases[CreatureConstants.Bison_Llama].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d3", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Bison_Llama].Add(attackHelper.BuildData("Stampede", string.Empty, "1d12 per 5 llamas in herd", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, SaveConstants.Reflex, AbilityConstants.Strength));
+
+                testCases[CreatureConstants.Bison_MilkCow].Add(attackHelper.BuildData("Gore", damageHelper.BuildEntries("1d8", goreDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Bison_MilkCow].Add(attackHelper.BuildData("Stampede", string.Empty, "1d12 per 5 milk cows in herd", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, SaveConstants.Reflex, AbilityConstants.Strength));
+
+                testCases[CreatureConstants.Bison_Ox].Add(attackHelper.BuildData("Gore", damageHelper.BuildEntries("1d8", goreDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Bison_Ox].Add(attackHelper.BuildData("Stampede", string.Empty, "1d12 per 5 oxen in herd", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, SaveConstants.Reflex, AbilityConstants.Strength));
+
+                testCases[CreatureConstants.Bison_Sheep].Add(attackHelper.BuildData("Ram", damageHelper.BuildEntries("1d6", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Bison_Sheep].Add(attackHelper.BuildData("Stampede", string.Empty, "1d8 per 5 sheep in herd", 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, true, true, SaveConstants.Reflex, AbilityConstants.Strength));
 
                 testCases[CreatureConstants.BlackPudding].Add(attackHelper.BuildData("Slam",
                     damageHelper.BuildEntries(
@@ -1448,11 +1463,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.BlinkDog].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d6", biteDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.BlinkDog].Add(attackHelper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, string.Empty, string.Empty, 0, "spell-like ability", 1, FeatConstants.Frequencies.Round, false, true, true, true));
 
-                testCases[CreatureConstants.Boar].Add(attackHelper.BuildData("Gore", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Boar].Add(attackHelper.BuildData("Gore", damageHelper.BuildEntries("1d8", goreDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Boar].Add(attackHelper.BuildData("Ferocity", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
-                testCases[CreatureConstants.Boar_Dire].Add(attackHelper.BuildData("Gore", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Piercing), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+                testCases[CreatureConstants.Boar_Dire].Add(attackHelper.BuildData("Gore", damageHelper.BuildEntries("1d8", goreDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Boar_Dire].Add(attackHelper.BuildData("Ferocity", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
+
+                testCases[CreatureConstants.Boar_Pig].Add(attackHelper.BuildData("Bite", damageHelper.BuildEntries("1d2", biteDamageType), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+                testCases[CreatureConstants.Boar_Pig].Add(attackHelper.BuildData("Ferocity", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Round, true, true, false, true));
 
                 testCases[CreatureConstants.Bodak].Add(attackHelper.BuildData("Slam", damageHelper.BuildEntries("1d8", AttributeConstants.DamageTypes.Bludgeoning), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Bodak].Add(attackHelper.BuildData("Death Gaze", string.Empty, "Death", 1.5, "melee", 1, FeatConstants.Frequencies.Round, false, true, true, true, SaveConstants.Fortitude, AbilityConstants.Charisma));
@@ -4409,6 +4427,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 testCases[CreatureConstants.Rat_Swarm].Add(attackHelper.BuildData("Distraction", string.Empty, string.Empty, 0, "extraordinary ability", 1, FeatConstants.Frequencies.Minute, true, true, true, true, SaveConstants.Fortitude, AbilityConstants.Constitution));
 
                 testCases[CreatureConstants.Raven].Add(attackHelper.BuildData("Claws", damageHelper.BuildEntries("1d2", clawDamageType), string.Empty, 1.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
+
+                testCases[CreatureConstants.Raven_Chicken].Add(attackHelper.BuildData("Peck", damageHelper.BuildEntries("1d2", AttributeConstants.DamageTypes.Piercing), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+
+                testCases[CreatureConstants.Raven_Turkey].Add(attackHelper.BuildData("Peck", damageHelper.BuildEntries("1d2", AttributeConstants.DamageTypes.Piercing), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+
+                testCases[CreatureConstants.Raven_Peacock].Add(attackHelper.BuildData("Peck", damageHelper.BuildEntries("1d2", AttributeConstants.DamageTypes.Piercing), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
+
+                testCases[CreatureConstants.Raven_Pheasant].Add(attackHelper.BuildData("Peck", damageHelper.BuildEntries("1d2", AttributeConstants.DamageTypes.Piercing), string.Empty, 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));
 
                 testCases[CreatureConstants.Ravid].Add(attackHelper.BuildData("Tail Slap", damageHelper.BuildEntries("1d6", slapSlamDamageType), "Positive Energy", 1, "melee", 1, FeatConstants.Frequencies.Round, true, true, true, false));
                 testCases[CreatureConstants.Ravid].Add(attackHelper.BuildData("Claw", damageHelper.BuildEntries("1d4", clawDamageType), "Positive Energy", 0.5, "melee", 1, FeatConstants.Frequencies.Round, true, true, false, false));

@@ -140,9 +140,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
         [TestCase(CreatureConstants.Templates.HalfDragon_White)]
         [TestCase(CreatureConstants.Templates.HalfFiend)]
         [TestCase(CreatureConstants.Templates.Lich)]
-        [TestCase(CreatureConstants.Templates.None)]
-        [TestCase(CreatureConstants.Templates.Skeleton)]
-        [TestCase(CreatureConstants.Templates.Vampire)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Afflicted)]
@@ -157,6 +154,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Natural)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted)]
         [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural)]
+        [TestCase(CreatureConstants.Templates.None)]
+        [TestCase(CreatureConstants.Templates.Skeleton)]
+        [TestCase(CreatureConstants.Templates.Vampire)]
         [TestCase(CreatureConstants.Templates.Zombie)]
         public void TemplateApplicatorIsInjected(string name)
         {
@@ -365,6 +365,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.IoC.Modules
         public void ZombieApplicatorIsInjected()
         {
             AssertNamedIsInstanceOf<TemplateApplicator, ZombieApplicator>(CreatureConstants.Templates.Zombie);
+        }
+
+        [Test]
+        public void CreaturePrototypeFactoryIsInjected()
+        {
+            AssertNotSingleton<ICreaturePrototypeFactory>();
         }
     }
 }

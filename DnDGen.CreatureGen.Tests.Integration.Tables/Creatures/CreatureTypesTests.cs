@@ -279,11 +279,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             CreatureConstants.Types.Subtypes.Air,
             CreatureConstants.Types.Subtypes.Extraplanar)]
         [TestCase(CreatureConstants.Bison, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Bison_Goat, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Bison_MilkCow, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Bison_Ox, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Bison_Sheep, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Bison_Llama, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.BlackPudding, CreatureConstants.Types.Ooze)]
         [TestCase(CreatureConstants.BlackPudding_Elder, CreatureConstants.Types.Ooze)]
         [TestCase(CreatureConstants.BlinkDog, CreatureConstants.Types.MagicalBeast)]
         [TestCase(CreatureConstants.Boar, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Boar_Dire, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Boar_Pig, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Bodak, CreatureConstants.Types.Undead,
             CreatureConstants.Types.Subtypes.Extraplanar)]
         [TestCase(CreatureConstants.BombardierBeetle_Giant, CreatureConstants.Types.Vermin)]
@@ -1070,6 +1076,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Rat_Swarm, CreatureConstants.Types.Animal,
             CreatureConstants.Types.Subtypes.Swarm)]
         [TestCase(CreatureConstants.Raven, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Raven_Chicken, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Raven_Turkey, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Raven_Peacock, CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Raven_Pheasant, CreatureConstants.Types.Animal)]
         [TestCase(CreatureConstants.Ravid, CreatureConstants.Types.Outsider,
             CreatureConstants.Types.Subtypes.Extraplanar)]
         [TestCase(CreatureConstants.RazorBoar, CreatureConstants.Types.MagicalBeast)]
@@ -1271,10 +1281,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, CreatureConstants.Types.MonstrousHumanoid)]
         [TestCase(CreatureConstants.YuanTi_Pureblood, CreatureConstants.Types.MonstrousHumanoid)]
         [TestCase(CreatureConstants.Templates.None)]
-        [TestCase(CreatureConstants.Templates.CelestialCreature, CreatureConstants.Types.Outsider,
+        [TestCase(CreatureConstants.Templates.CelestialCreature, "",
             CreatureConstants.Types.Subtypes.Extraplanar,
             CreatureConstants.Types.Subtypes.Augmented)]
-        [TestCase(CreatureConstants.Templates.FiendishCreature, CreatureConstants.Types.Outsider,
+        [TestCase(CreatureConstants.Templates.FiendishCreature, "",
             CreatureConstants.Types.Subtypes.Extraplanar,
             CreatureConstants.Types.Subtypes.Augmented)]
         [TestCase(CreatureConstants.Templates.Ghost, CreatureConstants.Types.Undead,
@@ -1312,53 +1322,62 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             CreatureConstants.Types.Subtypes.Augmented)]
         [TestCase(CreatureConstants.Templates.HalfDragon_Silver, CreatureConstants.Types.Dragon,
             CreatureConstants.Types.Subtypes.Augmented)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted, CreatureConstants.Types.Humanoid,
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted, "",
             CreatureConstants.Types.Subtypes.Shapechanger)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Afflicted, CreatureConstants.Types.Humanoid,
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Afflicted, "",
             CreatureConstants.Types.Subtypes.Shapechanger)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted, CreatureConstants.Types.Humanoid,
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted, "",
             CreatureConstants.Types.Subtypes.Shapechanger)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted, CreatureConstants.Types.Humanoid,
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted, "",
             CreatureConstants.Types.Subtypes.Shapechanger)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted, CreatureConstants.Types.Humanoid,
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted, "",
             CreatureConstants.Types.Subtypes.Shapechanger)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted, CreatureConstants.Types.Humanoid,
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted, "",
             CreatureConstants.Types.Subtypes.Shapechanger)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural, CreatureConstants.Types.Humanoid,
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural, "",
             CreatureConstants.Types.Subtypes.Shapechanger)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Natural, CreatureConstants.Types.Humanoid,
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Natural, "",
             CreatureConstants.Types.Subtypes.Shapechanger)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural, CreatureConstants.Types.Humanoid,
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural, "",
             CreatureConstants.Types.Subtypes.Shapechanger)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural, CreatureConstants.Types.Humanoid,
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural, "",
             CreatureConstants.Types.Subtypes.Shapechanger)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Natural, CreatureConstants.Types.Humanoid,
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Natural, "",
             CreatureConstants.Types.Subtypes.Shapechanger)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Natural, CreatureConstants.Types.Humanoid,
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Natural, "",
             CreatureConstants.Types.Subtypes.Shapechanger)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted, CreatureConstants.Types.Humanoid,
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted, "",
             CreatureConstants.Types.Subtypes.Shapechanger)]
-        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural, CreatureConstants.Types.Humanoid,
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural, "",
             CreatureConstants.Types.Subtypes.Shapechanger)]
         public void CreatureTypes(string creature, params string[] types)
         {
             AssertOrderedCollection(creature, types);
             AssertDistinctCollection(creature, types);
-        }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void CreaturesHasACreatureType(string creature)
-        {
             var allTypes = CreatureConstants.Types.GetAll();
             var allSubTypes = CreatureConstants.Types.Subtypes.GetAll();
             var allTypesAndSubtypes = allTypes.Union(allSubTypes);
+            var lycanthropes = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.Lycanthrope);
+            var goodnessCreatures = new[] { CreatureConstants.Templates.CelestialCreature, CreatureConstants.Templates.FiendishCreature };
 
-            Assert.That(table.Keys, Contains.Item(creature), "Table keys");
-
-            var types = table[creature];
-
-            if (creature != CreatureConstants.Templates.None)
+            if (lycanthropes.Contains(creature))
+            {
+                //INFO: Lycanthropes do not change the base creature's type, so they do not have a type on their own
+                Assert.That(types, Is.Not.Empty);
+                Assert.That(types.Count(), Is.EqualTo(2));
+                Assert.That(types.First(), Is.Empty);
+                Assert.That(types.Last(), Is.EqualTo(CreatureConstants.Types.Subtypes.Shapechanger));
+            }
+            else if (goodnessCreatures.Contains(creature))
+            {
+                //INFO: Celestial and Fiendish Creatures do not change the base creature's type (in most cases), so they do not have a type on their own
+                Assert.That(types, Is.Not.Empty.And.Length.EqualTo(3));
+                Assert.That(types[0], Is.Empty);
+                Assert.That(types[1], Is.EqualTo(CreatureConstants.Types.Subtypes.Extraplanar));
+                Assert.That(types[2], Is.EqualTo(CreatureConstants.Types.Subtypes.Augmented));
+            }
+            else if (creature != CreatureConstants.Templates.None)
             {
                 Assert.That(types, Is.Not.Empty, creature);
                 Assert.That(types.Take(1), Is.SubsetOf(allTypes), creature);
@@ -1373,58 +1392,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void CreatureTypeMatchesCreatureGroupType(string creature)
         {
-            var allTypes = CreatureConstants.Types.GetAll();
-
             Assert.That(table.Keys, Contains.Item(creature), "Table keys");
 
-            var types = table[creature];
+            var types = table[creature].ToArray();
+            Assert.That(types, Is.Not.Empty, creature);
 
-            if (creature != CreatureConstants.Templates.None)
+            foreach (var type in types)
             {
-                Assert.That(types, Is.Not.Empty, creature);
-                Assert.That(types.Take(1), Is.SubsetOf(allTypes), creature);
-
-                var type = types.First();
                 var creaturesOfType = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, type);
                 Assert.That(creaturesOfType, Contains.Item(creature), type);
-            }
-            else
-            {
-                Assert.That(types, Is.Empty, creature);
-            }
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
-        public void CreatureSubtypesMatchCreatureGroupSubtypes(string creature)
-        {
-            var allTypes = CreatureConstants.Types.GetAll();
-            var allSubTypes = CreatureConstants.Types.Subtypes.GetAll();
-
-            Assert.That(table.Keys, Contains.Item(creature), "Table keys");
-
-            var types = table[creature];
-
-            if (creature != CreatureConstants.Templates.None)
-            {
-                Assert.That(types, Is.Not.Empty, creature);
-
-                //INFO: We include types as subtypes, because the Augmented subtype includes the original type
-                var subtypes = types.Skip(1).Except(allTypes);
-                Assert.That(subtypes, Is.SubsetOf(allSubTypes), creature);
-
-                foreach (var subtype in subtypes)
-                {
-                    var creaturesOfType = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, subtype);
-                    Assert.That(creaturesOfType, Contains.Item(creature), subtype);
-                }
-            }
-            else
-            {
-                Assert.That(types, Is.Empty, creature);
             }
         }
     }

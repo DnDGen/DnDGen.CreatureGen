@@ -1292,6 +1292,24 @@
   <collection>
     <name>BisonScent0</name>
   </collection>
+	<collection>
+		<name>SheepScent0</name>
+	</collection>
+	<collection>
+		<name>GoatScent0</name>
+	</collection>
+	<collection>
+		<name>PigScent0</name>
+	</collection>
+	<collection>
+		<name>LlamaScent0</name>
+	</collection>
+	<collection>
+		<name>Milk CowScent0</name>
+	</collection>
+	<collection>
+		<name>OxScent0</name>
+	</collection>
   <collection>
     <name>Black BearScent0</name>
   </collection>
@@ -7890,6 +7908,18 @@
   <collection>
     <name>RavenWeapon Finesse0</name>
   </collection>
+	<collection>
+		<name>ChickenWeapon Finesse0</name>
+	</collection>
+	<collection>
+		<name>TurkeyWeapon Finesse0</name>
+	</collection>
+	<collection>
+		<name>PeacockWeapon Finesse0</name>
+	</collection>
+	<collection>
+		<name>PheasantWeapon Finesse0</name>
+	</collection>
   <collection>
     <name>RavidFlight0</name>
   </collection>
@@ -11185,5 +11215,20 @@
   </collection>
   <collection>
     <name>ZombieToughness3</name>
+  </collection>
+  <collection>
+    <name>DarkmantleBlind0</name>
+  </collection>
+  <collection>
+    <name>DestrachanBlind0</name>
+  </collection>
+  <collection>
+    <name>GrimlockBlind0</name>
+  </collection>
+  <collection>
+    <name>OozeBlind0</name>
+  </collection>
+  <collection>
+    <name>YrthakBlind0</name>
   </collection>
 </collections>

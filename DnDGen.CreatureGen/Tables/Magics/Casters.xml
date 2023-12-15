@@ -583,6 +583,21 @@
   <collection>
     <name>Bison</name>
   </collection>
+	<collection>
+		<name>Goat</name>
+	</collection>
+	<collection>
+		<name>Llama</name>
+	</collection>
+	<collection>
+		<name>Milk Cow</name>
+	</collection>
+	<collection>
+		<name>Ox</name>
+	</collection>
+	<collection>
+		<name>Sheep</name>
+	</collection>
   <collection>
     <name>Black Bear</name>
   </collection>
@@ -711,6 +726,9 @@
   <collection>
     <name>Boar</name>
   </collection>
+	<collection>
+		<name>Pig</name>
+	</collection>
   <collection>
     <name>Bodak</name>
   </collection>
@@ -1971,14 +1989,12 @@
   </collection>
   <collection>
     <name>Pseudodragon</name>
-    
   </collection>
   <collection>
     <name>Purple Worm</name>
   </collection>
   <collection>
     <name>Quasit</name>
-    
   </collection>
   <collection>
     <name>Rakshasa</name>
@@ -1986,7 +2002,6 @@
   </collection>
   <collection>
     <name>Rast</name>
-    
   </collection>
   <collection>
     <name>Rat</name>
@@ -1996,11 +2011,21 @@
   </collection>
   <collection>
     <name>Raven</name>
-    
   </collection>
+	<collection>
+		<name>Chicken</name>
+	</collection>
+	<collection>
+		<name>Turkey</name>
+	</collection>
+	<collection>
+		<name>Peacock</name>
+	</collection>
+	<collection>
+		<name>Pheasant</name>
+	</collection>
   <collection>
     <name>Ravid</name>
-    
   </collection>
   <collection>
     <name>Razor Boar</name>
@@ -2008,27 +2033,22 @@
   <collection>
     <name>Red Dragon, Adult</name>
     <entry>Sorcerer@7</entry>
-    
   </collection>
   <collection>
     <name>Red Dragon, Ancient</name>
     <entry>Sorcerer@15</entry>
-    
   </collection>
   <collection>
     <name>Red Dragon, Great Wyrm</name>
     <entry>Sorcerer@19</entry>
-    
   </collection>
   <collection>
     <name>Red Dragon, Juvenile</name>
     <entry>Sorcerer@3</entry>
-    
   </collection>
   <collection>
     <name>Red Dragon, Mature Adult</name>
     <entry>Sorcerer@9</entry>
-    
   </collection>
   <collection>
     <name>Red Dragon, Old</name>

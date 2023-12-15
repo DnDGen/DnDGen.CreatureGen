@@ -5,6 +5,7 @@ using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Generators.Feats;
 using DnDGen.CreatureGen.Generators.Magics;
 using DnDGen.CreatureGen.Generators.Skills;
+using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 
@@ -20,8 +21,22 @@ namespace DnDGen.CreatureGen.Templates.HalfDragons
                 ISkillsGenerator skillsGenerator,
                 IAlignmentGenerator alignmentGenerator,
                 Dice dice,
-                IMagicGenerator magicGenerator)
-            : base(collectionSelector, speedsGenerator, attacksGenerator, featsGenerator, skillsGenerator, alignmentGenerator, dice, magicGenerator)
+                IMagicGenerator magicGenerator,
+                ICreatureDataSelector creatureDataSelector,
+                IAdjustmentsSelector adjustmentSelector,
+                ICreaturePrototypeFactory prototypeFactory)
+            : base(
+                  collectionSelector,
+                  speedsGenerator,
+                  attacksGenerator,
+                  featsGenerator,
+                  skillsGenerator,
+                  alignmentGenerator,
+                  dice,
+                  magicGenerator,
+                  creatureDataSelector,
+                  adjustmentSelector,
+                  prototypeFactory)
         {
         }
 

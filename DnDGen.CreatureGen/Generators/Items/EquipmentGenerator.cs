@@ -187,11 +187,11 @@ namespace DnDGen.CreatureGen.Generators.Items
         public Equipment Generate(string creatureName, bool canUseEquipment, IEnumerable<Feat> feats, int level, IEnumerable<Attack> attacks, Dictionary<string, Ability> abilities, string size)
         {
             var equipment = new Equipment();
-
             var weaponSize = GetWeaponSize(feats, size);
 
             //Get predetermined items
             var allPredeterminedItems = GetPredeterminedItems(creatureName, size, weaponSize);
+
             var predeterminedWeapons = allPredeterminedItems
                 .Where(i => i is Weapon)
                 .Select(i => i as Weapon)
@@ -215,7 +215,6 @@ namespace DnDGen.CreatureGen.Generators.Items
 
             //Generate weapons and attacks
             var unnaturalAttacks = attacks.Where(a => !a.IsNatural);
-
             var weaponProficiencyFeatNames = collectionSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency);
             var weaponProficiencyFeats = feats.Where(f => weaponProficiencyFeatNames.Contains(f.Name));
 
@@ -267,6 +266,7 @@ namespace DnDGen.CreatureGen.Generators.Items
                                 proficientMeleeWeaponNames.Uncommon,
                                 null,
                                 nonProficientMeleeWeaponNames);
+
                             weapon = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Weapon, weaponName, weaponSize) as Weapon;
                         }
 
@@ -363,6 +363,7 @@ namespace DnDGen.CreatureGen.Generators.Items
                                 proficientRangedWeaponNames.Uncommon,
                                 null,
                                 nonProficientRangedWeaponNames);
+
                             weapon = itemGenerator.GenerateAtLevel(level, ItemTypeConstants.Weapon, weaponName, weaponSize) as Weapon;
                         }
 

@@ -30,6 +30,7 @@
             public const string RequiredAlignments = "RequiredAlignments";
             public const string RequiredFeats = "RequiredFeats";
             public const string RequiredSizes = "RequiredSizes";
+            public const string SaveGroups = "SaveGroups";
             public const string SkillData = "SkillData";
             public const string SkillGroups = "SkillGroups";
             public const string Speeds = "Speeds";

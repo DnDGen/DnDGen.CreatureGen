@@ -1,4 +1,5 @@
-﻿using DnDGen.CreatureGen.Creatures;
+﻿using DnDGen.CreatureGen.Alignments;
+using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Tables;
 using NUnit.Framework;
@@ -15,6 +16,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         {
             var types = CreatureConstants.Types.GetAll();
             var subtypes = CreatureConstants.Types.Subtypes.GetAll();
+            var challengeRatings = ChallengeRatingConstants.GetOrdered();
 
             var entries = new[]
             {
@@ -25,6 +27,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 CreatureConstants.Groups.Arrowhawk,
                 CreatureConstants.Groups.Bear,
                 CreatureConstants.Groups.Centipede_Monstrous,
+                CreatureConstants.Groups.Chimera,
                 CreatureConstants.Groups.Cryohydra,
                 CreatureConstants.Groups.Demon,
                 CreatureConstants.Groups.Devil,
@@ -81,9 +84,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
                 GroupConstants.GoodBaseAttack,
                 GroupConstants.AverageBaseAttack,
                 GroupConstants.PoorBaseAttack,
+                GroupConstants.All,
+                GroupConstants.Characters,
+                GroupConstants.Templates,
             };
 
-            var names = entries.Union(types).Union(subtypes);
+            var alignments = new[]
+            {
+                AlignmentConstants.LawfulGood,
+                AlignmentConstants.LawfulNeutral,
+                AlignmentConstants.LawfulEvil,
+                AlignmentConstants.NeutralGood,
+                AlignmentConstants.TrueNeutral,
+                AlignmentConstants.NeutralEvil,
+                AlignmentConstants.ChaoticGood,
+                AlignmentConstants.ChaoticNeutral,
+                AlignmentConstants.ChaoticEvil,
+            };
+
+            var names = entries.Union(types).Union(subtypes).Union(challengeRatings).Union(alignments);
 
             AssertCollectionNames(names);
         }

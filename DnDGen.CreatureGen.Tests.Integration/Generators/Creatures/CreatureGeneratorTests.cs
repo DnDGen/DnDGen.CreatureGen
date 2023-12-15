@@ -1,5 +1,7 @@
-﻿using DnDGen.CreatureGen.Creatures;
+﻿using DnDGen.CreatureGen.Abilities;
+using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Feats;
+using DnDGen.CreatureGen.Generators.Abilities;
 using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
@@ -18,47 +20,57 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [SetUp]
         public void Setup()
         {
-            creatureAsserter = new CreatureAsserter();
+            creatureAsserter = GetNewInstanceOf<CreatureAsserter>();
             creatureGenerator = GetNewInstanceOf<ICreatureGenerator>();
         }
 
+        [TestCase(CreatureConstants.Androsphinx)]
         [TestCase(CreatureConstants.Angel_Planetar)]
         [TestCase(CreatureConstants.Angel_Solar)]
         [TestCase(CreatureConstants.Aranea)]
+        [TestCase(CreatureConstants.Couatl)]
         [TestCase(CreatureConstants.Dragon_Black_GreatWyrm)]
         [TestCase(CreatureConstants.Dragon_Blue_GreatWyrm)]
         [TestCase(CreatureConstants.Dragon_Green_GreatWyrm)]
         [TestCase(CreatureConstants.Dragon_Red_GreatWyrm)]
+        [TestCase(CreatureConstants.Dragon_White_Old)]
+        [TestCase(CreatureConstants.Dragon_White_VeryOld)]
+        [TestCase(CreatureConstants.Dragon_White_Ancient)]
+        [TestCase(CreatureConstants.Dragon_White_Wyrm)]
         [TestCase(CreatureConstants.Dragon_White_GreatWyrm)]
+        [TestCase(CreatureConstants.Dragon_Brass_Young)]
+        [TestCase(CreatureConstants.Dragon_Brass_Juvenile)]
+        [TestCase(CreatureConstants.Dragon_Brass_YoungAdult)]
+        [TestCase(CreatureConstants.Dragon_Brass_Adult)]
+        [TestCase(CreatureConstants.Dragon_Brass_MatureAdult)]
+        [TestCase(CreatureConstants.Dragon_Brass_Old)]
+        [TestCase(CreatureConstants.Dragon_Brass_VeryOld)]
+        [TestCase(CreatureConstants.Dragon_Brass_Ancient)]
+        [TestCase(CreatureConstants.Dragon_Brass_Wyrm)]
         [TestCase(CreatureConstants.Dragon_Brass_GreatWyrm)]
         [TestCase(CreatureConstants.Dragon_Bronze_GreatWyrm)]
         [TestCase(CreatureConstants.Dragon_Copper_GreatWyrm)]
         [TestCase(CreatureConstants.Dragon_Gold_GreatWyrm)]
         [TestCase(CreatureConstants.Dragon_Silver_GreatWyrm)]
+        [TestCase(CreatureConstants.Drider)]
+        [TestCase(CreatureConstants.FormianQueen)]
+        [TestCase(CreatureConstants.Lammasu)]
+        [TestCase(CreatureConstants.Lillend)]
+        [TestCase(CreatureConstants.Naga_Dark)]
+        [TestCase(CreatureConstants.Naga_Guardian)]
+        [TestCase(CreatureConstants.Naga_Spirit)]
+        [TestCase(CreatureConstants.Naga_Water)]
+        [TestCase(CreatureConstants.Nymph)]
         [TestCase(CreatureConstants.Rakshasa)]
+        [TestCase(CreatureConstants.TrumpetArchon)]
         public void CanGenerateSpellsForThoseWhoCastAsSpellcaster(string creatureName)
         {
-            var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);
+            var creature = creatureGenerator.Generate(false, creatureName);
             creatureAsserter.AssertCreature(creature);
 
             Assert.That(creature.Magic, Is.Not.Null);
             Assert.That(creature.Magic.Caster, Is.Not.Empty);
-            Assert.That(creature.Magic.CasterLevel, Is.Positive);
-            Assert.That(creature.Magic.CastingAbility, Is.Not.Null);
-            Assert.That(creature.Abilities.Values, Contains.Item(creature.Magic.CastingAbility), creature.Magic.CastingAbility.Name);
-            Assert.That(creature.Magic.ArcaneSpellFailure, Is.InRange(0, 100));
-            Assert.That(creature.Magic.Domains, Is.Not.Null);
-
-            if (creature.Magic.CastingAbility.FullScore > 10)
-            {
-                Assert.That(creature.Magic.KnownSpells, Is.Not.Empty.And.All.Not.Null, $"{creature.Magic.CastingAbility.Name}: {creature.Magic.CastingAbility.FullScore}");
-                Assert.That(creature.Magic.SpellsPerDay, Is.Not.Empty.And.All.Not.Null, $"{creature.Magic.CastingAbility.Name}: {creature.Magic.CastingAbility.FullScore}");
-            }
-            else
-            {
-                Assert.That(creature.Magic.KnownSpells, Is.Empty, $"{creature.Magic.CastingAbility.Name}: {creature.Magic.CastingAbility.FullScore}");
-                Assert.That(creature.Magic.SpellsPerDay, Is.Empty, $"{creature.Magic.CastingAbility.Name}: {creature.Magic.CastingAbility.FullScore}");
-            }
+            creatureAsserter.VerifyMagic(creature, creature.Summary);
         }
 
         [TestCase(CreatureConstants.Human)]
@@ -76,7 +88,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Giant_Cloud)]
         public void CanGenerateWeapons(string creatureName)
         {
-            var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);
+            var creature = creatureGenerator.Generate(false, creatureName);
             creatureAsserter.AssertCreature(creature);
             Assert.That(creature.Equipment, Is.Not.Null);
             Assert.That(creature.Equipment.Weapons, Is.Not.Empty.And.All.Not.Null);
@@ -85,7 +97,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Titan)]
         public void BUG_OversizedWeaponHasCorrectAttackDamage(string creatureName)
         {
-            var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);
+            var creature = creatureGenerator.Generate(false, creatureName);
             creatureAsserter.AssertCreature(creature);
             Assert.That(creature.Equipment, Is.Not.Null);
             Assert.That(creature.Equipment.Weapons, Is.Not.Empty.And.All.Not.Null);
@@ -146,7 +158,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Ogre)]
         public void CanGenerateArmor(string creatureName)
         {
-            var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);
+            var creature = creatureGenerator.Generate(false, creatureName);
             creatureAsserter.AssertCreature(creature);
             Assert.That(creature.Equipment, Is.Not.Null);
             Assert.That(creature.Equipment.Armor, Is.Not.Null);
@@ -155,318 +167,340 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void CanGenerateCreature(string creatureName)
         {
-            var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);
+            var creature = creatureGenerator.Generate(false, creatureName);
             creatureAsserter.AssertCreature(creature);
         }
 
-        [TestCase(CreatureConstants.Aasimar)]
-        [TestCase(CreatureConstants.Azer)]
-        [TestCase(CreatureConstants.Bugbear)]
-        [TestCase(CreatureConstants.Centaur)]
-        [TestCase(CreatureConstants.Derro)]
-        [TestCase(CreatureConstants.Derro_Sane)]
-        [TestCase(CreatureConstants.Doppelganger)]
-        [TestCase(CreatureConstants.Dwarf_Deep)]
-        [TestCase(CreatureConstants.Dwarf_Duergar)]
-        [TestCase(CreatureConstants.Dwarf_Hill)]
-        [TestCase(CreatureConstants.Dwarf_Mountain)]
-        [TestCase(CreatureConstants.Eagle_Giant)]
-        [TestCase(CreatureConstants.Elf_Aquatic)]
-        [TestCase(CreatureConstants.Elf_Drow)]
-        [TestCase(CreatureConstants.Elf_Gray)]
-        [TestCase(CreatureConstants.Elf_Half)]
-        [TestCase(CreatureConstants.Elf_High)]
-        [TestCase(CreatureConstants.Elf_Wild)]
-        [TestCase(CreatureConstants.Elf_Wood)]
-        [TestCase(CreatureConstants.Gargoyle)]
-        [TestCase(CreatureConstants.Gargoyle_Kapoacinth)]
-        [TestCase(CreatureConstants.Giant_Cloud)]
-        [TestCase(CreatureConstants.Giant_Fire)]
-        [TestCase(CreatureConstants.Giant_Frost)]
-        [TestCase(CreatureConstants.Giant_Hill)]
-        [TestCase(CreatureConstants.Giant_Stone)]
-        [TestCase(CreatureConstants.Giant_Stone_Elder)]
-        [TestCase(CreatureConstants.Giant_Storm)]
-        [TestCase(CreatureConstants.Githyanki)]
-        [TestCase(CreatureConstants.Githzerai)]
-        [TestCase(CreatureConstants.Gnoll)]
-        [TestCase(CreatureConstants.Gnome_Forest)]
-        [TestCase(CreatureConstants.Gnome_Rock)]
-        [TestCase(CreatureConstants.Gnome_Svirfneblin)]
-        [TestCase(CreatureConstants.Goblin)]
-        [TestCase(CreatureConstants.Grimlock)]
-        [TestCase(CreatureConstants.Halfling_Deep)]
-        [TestCase(CreatureConstants.Halfling_Lightfoot)]
-        [TestCase(CreatureConstants.Halfling_Tallfellow)]
-        [TestCase(CreatureConstants.Harpy)]
-        [TestCase(CreatureConstants.Hobgoblin)]
-        [TestCase(CreatureConstants.HoundArchon)]
-        [TestCase(CreatureConstants.Human)]
-        [TestCase(CreatureConstants.Janni)]
-        [TestCase(CreatureConstants.Kobold)]
-        [TestCase(CreatureConstants.KuoToa)]
-        [TestCase(CreatureConstants.Lizardfolk)]
-        [TestCase(CreatureConstants.Locathah)]
-        [TestCase(CreatureConstants.Mephit_Air)]
-        [TestCase(CreatureConstants.Mephit_Dust)]
-        [TestCase(CreatureConstants.Mephit_Earth)]
-        [TestCase(CreatureConstants.Mephit_Fire)]
-        [TestCase(CreatureConstants.Mephit_Ice)]
-        [TestCase(CreatureConstants.Mephit_Magma)]
-        [TestCase(CreatureConstants.Mephit_Ooze)]
-        [TestCase(CreatureConstants.Mephit_Salt)]
-        [TestCase(CreatureConstants.Mephit_Steam)]
-        [TestCase(CreatureConstants.Mephit_Water)]
-        [TestCase(CreatureConstants.Merfolk)]
-        [TestCase(CreatureConstants.MindFlayer)]
-        [TestCase(CreatureConstants.Minotaur)]
-        [TestCase(CreatureConstants.Mummy)]
-        [TestCase(CreatureConstants.Ogre)]
-        [TestCase(CreatureConstants.OgreMage)]
-        [TestCase(CreatureConstants.Ogre_Merrow)]
-        [TestCase(CreatureConstants.Orc)]
-        [TestCase(CreatureConstants.Orc_Half)]
-        [TestCase(CreatureConstants.Owl_Giant)]
-        [TestCase(CreatureConstants.Pixie)]
-        [TestCase(CreatureConstants.Pixie_WithIrresistibleDance)]
-        [TestCase(CreatureConstants.Pseudodragon)]
-        [TestCase(CreatureConstants.Rakshasa)]
-        [TestCase(CreatureConstants.Sahuagin)]
-        [TestCase(CreatureConstants.Sahuagin_Malenti)]
-        [TestCase(CreatureConstants.Sahuagin_Mutant)]
-        [TestCase(CreatureConstants.Satyr)]
-        [TestCase(CreatureConstants.Satyr_WithPipes)]
-        [TestCase(CreatureConstants.Slaad_Blue)]
-        [TestCase(CreatureConstants.Slaad_Gray)]
-        [TestCase(CreatureConstants.Slaad_Green)]
-        [TestCase(CreatureConstants.Slaad_Red)]
-        [TestCase(CreatureConstants.Tiefling)]
-        [TestCase(CreatureConstants.Troglodyte)]
-        [TestCase(CreatureConstants.Troll)]
-        [TestCase(CreatureConstants.Troll_Scrag)]
-        [TestCase(CreatureConstants.Unicorn)]
-        [TestCase(CreatureConstants.YuanTi_Abomination)]
-        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeArms)]
-        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeHead)]
-        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTail)]
-        [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs)]
-        [TestCase(CreatureConstants.YuanTi_Pureblood)]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Characters))]
         public void CanGenerateCreatureAsCharacter(string creatureName)
         {
-            var creature = creatureGenerator.GenerateAsCharacter(creatureName, CreatureConstants.Templates.None);
+            var creature = creatureGenerator.Generate(true, creatureName);
             creatureAsserter.AssertCreatureAsCharacter(creature);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void CanGenerateHumanTemplate(string template)
         {
-            var creature = creatureGenerator.Generate(CreatureConstants.Human, template);
+            var creature = creatureGenerator.Generate(false, CreatureConstants.Human, null, template);
             creatureAsserter.AssertCreature(creature);
-            Assert.That(creature.Template, Is.EqualTo(template));
+
+            if (template != CreatureConstants.Templates.None)
+                Assert.That(creature.Templates, Has.Count.EqualTo(1).And.Contains(template));
+            else
+                Assert.That(creature.Templates, Is.Empty);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void CanGenerateHumanTemplateAsCharacter(string template)
         {
-            var creature = creatureGenerator.GenerateAsCharacter(CreatureConstants.Human, template);
+            if (template == CreatureConstants.Templates.Skeleton || template == CreatureConstants.Templates.Zombie)
+            {
+                Assert.Pass($"Template {template} cannot be a character");
+            }
+
+            var creature = creatureGenerator.Generate(true, CreatureConstants.Human, null, template);
             creatureAsserter.AssertCreatureAsCharacter(creature);
-            Assert.That(creature.Template, Is.EqualTo(template));
+
+            if (template != CreatureConstants.Templates.None)
+                Assert.That(creature.Templates, Has.Count.EqualTo(1).And.Contains(template));
+            else
+                Assert.That(creature.Templates, Is.Empty);
         }
 
-        [TestCase(CreatureConstants.Ape, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Ape_Dire, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Badger, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Badger_Dire, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Basilisk, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Basilisk_Greater, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Bat, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Bat, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Bat_Dire, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Bat_Dire, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Bat_Swarm, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Bat_Swarm, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Bear_Black, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Bear_Brown, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Bear_Polar, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Bear_Dire, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Bee_Giant, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Bison, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Boar, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Boar_Dire, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.BombardierBeetle_Giant, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Bugbear, CreatureConstants.Templates.Zombie)]
-        [TestCase(CreatureConstants.Cat, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Cat, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Centipede_Monstrous_Medium, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Centipede_Monstrous_Large, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Centipede_Monstrous_Huge, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Centipede_Monstrous_Gargantuan, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Centipede_Monstrous_Colossal, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Chimera_Black, CreatureConstants.Templates.Skeleton)]
-        [TestCase(CreatureConstants.Chimera_Blue, CreatureConstants.Templates.Skeleton)]
-        [TestCase(CreatureConstants.Chimera_Green, CreatureConstants.Templates.Skeleton)]
-        [TestCase(CreatureConstants.Chimera_Red, CreatureConstants.Templates.Skeleton)]
-        [TestCase(CreatureConstants.Chimera_White, CreatureConstants.Templates.Skeleton)]
-        [TestCase(CreatureConstants.Crocodile, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Crocodile_Giant, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Deinonychus, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Dog, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Dog_Riding, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.Ghost)]
-        [TestCase(CreatureConstants.Dragon_Red_Wyrmling, CreatureConstants.Templates.Skeleton)]
-        [TestCase(CreatureConstants.Dragon_Red_VeryYoung, CreatureConstants.Templates.Skeleton)]
-        [TestCase(CreatureConstants.Dragon_Red_Young, CreatureConstants.Templates.Skeleton)]
-        [TestCase(CreatureConstants.Dragon_Red_Juvenile, CreatureConstants.Templates.Skeleton)]
-        [TestCase(CreatureConstants.Dragon_Red_YoungAdult, CreatureConstants.Templates.Skeleton)]
-        [TestCase(CreatureConstants.Eagle, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Eagle_Giant, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Elasmosaurus, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Elephant, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Elf_Half, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Elf_Half, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Elf_Half, CreatureConstants.Templates.HalfCelestial)]
-        [TestCase(CreatureConstants.Elf_Half, CreatureConstants.Templates.HalfFiend)]
-        [TestCase(CreatureConstants.Elf_Half, CreatureConstants.Templates.Vampire)]
-        [TestCase(CreatureConstants.Ettin, CreatureConstants.Templates.Skeleton)]
-        [TestCase(CreatureConstants.FireBeetle_Giant, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Giant_Cloud, CreatureConstants.Templates.Skeleton)]
-        [TestCase(CreatureConstants.Giant_Hill, CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted)]
-        [TestCase(CreatureConstants.Giant_Hill, CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural)]
-        [TestCase(CreatureConstants.Girallon, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.GrayRender, CreatureConstants.Templates.Zombie)]
-        [TestCase(CreatureConstants.Griffon, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Grig, CreatureConstants.Templates.HalfCelestial)]
-        [TestCase(CreatureConstants.Grig_WithFiddle, CreatureConstants.Templates.HalfCelestial)]
-        [TestCase(CreatureConstants.Hawk, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Hawk, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Hippogriff, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Horse_Heavy, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Horse_Heavy_War, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Horse_Light, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Horse_Light_War, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Ghost)]
-        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.HalfCelestial)]
-        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.HalfDragon_Black)]
-        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.HalfFiend)]
-        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lich)]
-        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted)]
-        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural)]
-        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Boar_Afflicted)]
-        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Boar_Natural)]
-        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted)]
-        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural)]
-        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted)]
-        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Tiger_Natural)]
-        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted)]
-        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Wolf_Natural)]
-        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted)]
-        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural)]
-        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Skeleton)]
-        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Vampire)]
-        [TestCase(CreatureConstants.Human, CreatureConstants.Templates.Zombie)]
-        [TestCase(CreatureConstants.Kobold, CreatureConstants.Templates.Zombie)]
-        [TestCase(CreatureConstants.Lammasu, CreatureConstants.Templates.HalfDragon_Gold)]
-        [TestCase(CreatureConstants.Lammasu, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Lion, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Lion_Dire, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Lizard, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Lizard, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Megaraptor, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Megaraptor, CreatureConstants.Templates.Skeleton)]
-        [TestCase(CreatureConstants.Minotaur, CreatureConstants.Templates.Zombie)]
-        [TestCase(CreatureConstants.Monkey, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Octopus, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Octopus_Giant, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Ogre, CreatureConstants.Templates.Zombie)]
-        [TestCase(CreatureConstants.Orc_Half, CreatureConstants.Templates.HalfCelestial)]
-        [TestCase(CreatureConstants.Orc_Half, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Orc_Half, CreatureConstants.Templates.HalfFiend)]
-        [TestCase(CreatureConstants.Orc_Half, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Owl, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Owl, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Owl_Giant, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Owlbear, CreatureConstants.Templates.Skeleton)]
-        [TestCase(CreatureConstants.Pony, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Pony_War, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Porpoise, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.PrayingMantis_Giant, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Rat, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Rat, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Rat_Dire, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Raven, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Raven, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Rhinoceras, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Roc, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Scorpion_Monstrous_Small, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Scorpion_Monstrous_Medium, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Scorpion_Monstrous_Large, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Scorpion_Monstrous_Huge, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Scorpion_Monstrous_Gargantuan, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.SeaCat, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Shark_Dire, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Shark_Huge, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Shark_Large, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Shark_Large, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Shark_Medium, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Shrieker, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Snake_Constrictor, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Snake_Constrictor, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Snake_Constrictor_Giant, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Snake_Constrictor_Giant, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Snake_Viper_Tiny, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Snake_Viper_Tiny, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Snake_Viper_Small, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Snake_Viper_Small, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Snake_Viper_Medium, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Snake_Viper_Medium, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Snake_Viper_Large, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Snake_Viper_Large, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Snake_Viper_Huge, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Snake_Viper_Huge, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Small, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Small, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Medium, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Medium, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Large, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Large, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Huge, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Huge, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Gargantuan, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Spider_Monstrous_Hunter_Colossal, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Spider_Monstrous_WebSpinner_Colossal, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Squid, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Squid_Giant, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Squid_Giant, CreatureConstants.Templates.HalfDragon_Blue)]
-        [TestCase(CreatureConstants.Squid_Giant, CreatureConstants.Templates.HalfDragon_Green)]
-        [TestCase(CreatureConstants.StagBeetle_Giant, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Tiger, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Tiger_Dire, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Toad, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Toad, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Triceratops, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Troglodyte, CreatureConstants.Templates.Zombie)]
-        [TestCase(CreatureConstants.Troll, CreatureConstants.Templates.Skeleton)]
-        [TestCase(CreatureConstants.Tyrannosaurus, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Unicorn, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Wasp_Giant, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Weasel, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Weasel, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Weasel_Dire, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Whale_Baleen, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Whale_Cachalot, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Whale_Orca, CreatureConstants.Templates.CelestialCreature)]
-        [TestCase(CreatureConstants.Wolf, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Wolf, CreatureConstants.Templates.Skeleton)]
-        [TestCase(CreatureConstants.Wolf_Dire, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Wolverine, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Wolverine_Dire, CreatureConstants.Templates.FiendishCreature)]
-        [TestCase(CreatureConstants.Wyvern, CreatureConstants.Templates.Zombie)]
-        public void CanGenerateTemplate(string creatureName, string template)
+        [TestCase(false, CreatureConstants.Aboleth)]
+        [TestCase(true, CreatureConstants.Aboleth)]
+        [TestCase(false, CreatureConstants.Ape, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Ape_Dire, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Badger, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Badger_Dire, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Basilisk, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Basilisk_Greater, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Bat, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Bat, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Bat_Dire, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Bat_Dire, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Bat_Swarm, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Bat_Swarm, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Bear_Black, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Bear_Brown, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Bear_Polar, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Bear_Dire, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Bee_Giant, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Bison, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Boar, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Boar_Dire, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.BombardierBeetle_Giant, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(true, CreatureConstants.Bugbear)]
+        [TestCase(false, CreatureConstants.Bugbear, CreatureConstants.Templates.Zombie)]
+        [TestCase(false, CreatureConstants.Cat, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Cat, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Centipede_Monstrous_Medium, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Centipede_Monstrous_Large, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Centipede_Monstrous_Huge, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Centipede_Monstrous_Gargantuan, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Centipede_Monstrous_Colossal, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Chimera_Black, CreatureConstants.Templates.Skeleton)]
+        [TestCase(false, CreatureConstants.Chimera_Blue, CreatureConstants.Templates.Skeleton)]
+        [TestCase(false, CreatureConstants.Chimera_Green, CreatureConstants.Templates.Skeleton)]
+        [TestCase(false, CreatureConstants.Chimera_Red, CreatureConstants.Templates.Skeleton)]
+        [TestCase(false, CreatureConstants.Chimera_White, CreatureConstants.Templates.Skeleton)]
+        [TestCase(false, CreatureConstants.Crocodile, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Crocodile_Giant, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Deinonychus, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Dog, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Dog_Riding, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Dragon_Black_Young, CreatureConstants.Templates.Zombie)]
+        [TestCase(false, CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.Ghost)]
+        [TestCase(false, CreatureConstants.Dragon_Brass_Young, CreatureConstants.Templates.HalfCelestial)]
+        [TestCase(false, CreatureConstants.Dragon_Red_Wyrmling, CreatureConstants.Templates.Skeleton)]
+        [TestCase(false, CreatureConstants.Dragon_Red_VeryYoung, CreatureConstants.Templates.Skeleton)]
+        [TestCase(false, CreatureConstants.Dragon_Red_Young, CreatureConstants.Templates.Skeleton)]
+        [TestCase(false, CreatureConstants.Dragon_Red_Juvenile, CreatureConstants.Templates.Skeleton)]
+        [TestCase(false, CreatureConstants.Dragon_Red_YoungAdult, CreatureConstants.Templates.Skeleton)]
+        [TestCase(false, CreatureConstants.Dragon_White_Old, CreatureConstants.Templates.HalfFiend)]
+        [TestCase(false, CreatureConstants.Eagle, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Eagle_Giant, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Elasmosaurus, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Elephant, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Elf_Half)]
+        [TestCase(true, CreatureConstants.Elf_Half)]
+        [TestCase(false, CreatureConstants.Elf_Half, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(true, CreatureConstants.Elf_Half, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Elf_Half, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(true, CreatureConstants.Elf_Half, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Elf_Half, CreatureConstants.Templates.HalfCelestial)]
+        [TestCase(true, CreatureConstants.Elf_Half, CreatureConstants.Templates.HalfCelestial)]
+        [TestCase(false, CreatureConstants.Elf_Half, CreatureConstants.Templates.HalfFiend)]
+        [TestCase(true, CreatureConstants.Elf_Half, CreatureConstants.Templates.HalfFiend)]
+        [TestCase(false, CreatureConstants.Elf_Half, CreatureConstants.Templates.Lich)]
+        [TestCase(true, CreatureConstants.Elf_Half, CreatureConstants.Templates.Lich)]
+        [TestCase(false, CreatureConstants.Elf_Half, CreatureConstants.Templates.Vampire)]
+        [TestCase(true, CreatureConstants.Elf_Half, CreatureConstants.Templates.Vampire)]
+        [TestCase(false, CreatureConstants.Elf_High, CreatureConstants.Templates.Lich)]
+        [TestCase(true, CreatureConstants.Elf_High, CreatureConstants.Templates.Lich)]
+        [TestCase(false, CreatureConstants.Elf_High, CreatureConstants.Templates.Vampire)]
+        [TestCase(true, CreatureConstants.Elf_High, CreatureConstants.Templates.Vampire)]
+        [TestCase(false, CreatureConstants.Ettin, CreatureConstants.Templates.Skeleton)]
+        [TestCase(false, CreatureConstants.FireBeetle_Giant, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Gargoyle)]
+        [TestCase(true, CreatureConstants.Gargoyle)]
+        [TestCase(false, CreatureConstants.Gargoyle, CreatureConstants.Templates.Ghost)]
+        [TestCase(false, CreatureConstants.Gargoyle_Kapoacinth, CreatureConstants.Templates.Ghost)]
+        [TestCase(false, CreatureConstants.Giant_Cloud, CreatureConstants.Templates.Skeleton)]
+        [TestCase(false, CreatureConstants.Giant_Frost)]
+        [TestCase(true, CreatureConstants.Giant_Frost)]
+        [TestCase(false, CreatureConstants.Giant_Hill, CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted)]
+        [TestCase(false, CreatureConstants.Giant_Hill, CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural)]
+        [TestCase(false, CreatureConstants.Girallon, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.GrayRender, CreatureConstants.Templates.Zombie)]
+        [TestCase(false, CreatureConstants.Griffon, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Grig, CreatureConstants.Templates.HalfCelestial)]
+        [TestCase(false, CreatureConstants.Grig_WithFiddle, CreatureConstants.Templates.HalfCelestial)]
+        [TestCase(false, CreatureConstants.Harpy)]
+        [TestCase(true, CreatureConstants.Harpy)]
+        [TestCase(false, CreatureConstants.Hawk, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Hawk, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Hieracosphinx, CreatureConstants.Templates.Skeleton)]
+        [TestCase(false, CreatureConstants.Hippogriff, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Horse_Heavy, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Horse_Heavy_War, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Horse_Light, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Horse_Light_War, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Human)]
+        [TestCase(true, CreatureConstants.Human)]
+        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Ghost)]
+        [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.Ghost)]
+        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.HalfCelestial)]
+        [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.HalfCelestial)]
+        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.HalfDragon_Black)]
+        [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.HalfDragon_Black)]
+        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.HalfFiend)]
+        [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.HalfFiend)]
+        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.HalfDragon_Black, CreatureConstants.Templates.HalfFiend)]
+        [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.HalfDragon_Black, CreatureConstants.Templates.HalfFiend)]
+        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Lich)]
+        [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.Lich)]
+        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted)]
+        [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted)]
+        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural)]
+        [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural)]
+        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Boar_Afflicted)]
+        [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Boar_Afflicted)]
+        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Boar_Natural)]
+        [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Boar_Natural)]
+        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted)]
+        [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted)]
+        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural)]
+        [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural)]
+        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted)]
+        [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted)]
+        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Tiger_Natural)]
+        [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Tiger_Natural)]
+        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted)]
+        [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted)]
+        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted, CreatureConstants.Templates.HalfDragon_White)]
+        [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted, CreatureConstants.Templates.HalfDragon_White)]
+        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Wolf_Natural)]
+        [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Wolf_Natural)]
+        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted)]
+        [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted)]
+        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural)]
+        [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural)]
+        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Skeleton)]
+        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Vampire)]
+        [TestCase(true, CreatureConstants.Human, CreatureConstants.Templates.Vampire)]
+        [TestCase(false, CreatureConstants.Human,
+            CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted,
+            CreatureConstants.Templates.HalfDragon_Blue,
+            CreatureConstants.Templates.Ghost)]
+        [TestCase(true, CreatureConstants.Human,
+            CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted,
+            CreatureConstants.Templates.HalfDragon_Blue,
+            CreatureConstants.Templates.Ghost)]
+        [TestCase(false, CreatureConstants.Human, CreatureConstants.Templates.Zombie)]
+        [TestCase(false, CreatureConstants.Kobold)]
+        [TestCase(true, CreatureConstants.Kobold)]
+        [TestCase(false, CreatureConstants.Kobold, CreatureConstants.Templates.Zombie)]
+        [TestCase(true, CreatureConstants.Lammasu)]
+        [TestCase(false, CreatureConstants.Lammasu)]
+        [TestCase(false, CreatureConstants.Lammasu, CreatureConstants.Templates.HalfDragon_Gold)]
+        [TestCase(false, CreatureConstants.Lammasu, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(true, CreatureConstants.Lammasu, CreatureConstants.Templates.CelestialCreature, CreatureConstants.Templates.HalfDragon_Gold)]
+        [TestCase(false, CreatureConstants.Lammasu, CreatureConstants.Templates.CelestialCreature, CreatureConstants.Templates.HalfDragon_Gold)]
+        [TestCase(true, CreatureConstants.Lammasu, CreatureConstants.Templates.HalfDragon_Gold, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Lammasu, CreatureConstants.Templates.HalfDragon_Gold, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Lion, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Lion_Dire, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Lizard, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Lizard, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(true, CreatureConstants.Medusa, CreatureConstants.Templates.HalfDragon_Red)]
+        [TestCase(false, CreatureConstants.Megaraptor, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Megaraptor, CreatureConstants.Templates.Skeleton)]
+        [TestCase(false, CreatureConstants.Minotaur)]
+        [TestCase(true, CreatureConstants.Minotaur)]
+        [TestCase(false, CreatureConstants.Minotaur, CreatureConstants.Templates.Zombie)]
+        [TestCase(false, CreatureConstants.Monkey, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Mummy)]
+        [TestCase(true, CreatureConstants.Mummy)]
+        [TestCase(false, CreatureConstants.Octopus, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Octopus_Giant, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Ogre)]
+        [TestCase(true, CreatureConstants.Ogre)]
+        [TestCase(false, CreatureConstants.Ogre, CreatureConstants.Templates.Zombie)]
+        [TestCase(false, CreatureConstants.Orc_Half)]
+        [TestCase(true, CreatureConstants.Orc_Half)]
+        [TestCase(false, CreatureConstants.Orc_Half, CreatureConstants.Templates.HalfCelestial)]
+        [TestCase(true, CreatureConstants.Orc_Half, CreatureConstants.Templates.HalfCelestial)]
+        [TestCase(false, CreatureConstants.Orc_Half, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(true, CreatureConstants.Orc_Half, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Orc_Half, CreatureConstants.Templates.HalfFiend)]
+        [TestCase(true, CreatureConstants.Orc_Half, CreatureConstants.Templates.HalfFiend)]
+        [TestCase(false, CreatureConstants.Orc_Half, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(true, CreatureConstants.Orc_Half, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Otyugh, CreatureConstants.Templates.Ghost)]
+        [TestCase(false, CreatureConstants.Otyugh, CreatureConstants.Templates.Zombie)]
+        [TestCase(false, CreatureConstants.Owl, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Owl, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Owl_Giant, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Owlbear, CreatureConstants.Templates.Skeleton)]
+        [TestCase(false, CreatureConstants.Pony, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Pony_War, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Porpoise, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.PrayingMantis_Giant, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Rakshasa)]
+        [TestCase(true, CreatureConstants.Rakshasa)]
+        [TestCase(false, CreatureConstants.Rat, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Rat, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Rat_Dire, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Raven, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Raven, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.RazorBoar, CreatureConstants.Templates.Ghost)]
+        [TestCase(false, CreatureConstants.Rhinoceras, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Roc, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Scorpion_Monstrous_Small, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Scorpion_Monstrous_Medium, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Scorpion_Monstrous_Large, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Scorpion_Monstrous_Huge, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Scorpion_Monstrous_Gargantuan, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.SeaCat, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.ShamblingMound)]
+        [TestCase(true, CreatureConstants.ShamblingMound)]
+        [TestCase(false, CreatureConstants.ShamblingMound, CreatureConstants.Templates.HalfFiend)]
+        [TestCase(true, CreatureConstants.ShamblingMound, CreatureConstants.Templates.HalfFiend)]
+        [TestCase(false, CreatureConstants.Shark_Dire, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Shark_Huge, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Shark_Large, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Shark_Large, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Shark_Medium, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Shrieker, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Skum)]
+        [TestCase(true, CreatureConstants.Skum)]
+        [TestCase(false, CreatureConstants.Skum, CreatureConstants.Templates.Ghost)]
+        [TestCase(true, CreatureConstants.Skum, CreatureConstants.Templates.Ghost)]
+        [TestCase(false, CreatureConstants.Snake_Constrictor, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Snake_Constrictor, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Snake_Constrictor_Giant, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Snake_Constrictor_Giant, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Snake_Viper_Tiny, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Snake_Viper_Tiny, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Snake_Viper_Small, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Snake_Viper_Small, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Snake_Viper_Medium, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Snake_Viper_Medium, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Snake_Viper_Large, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Snake_Viper_Large, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Snake_Viper_Huge, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Snake_Viper_Huge, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Spider_Monstrous_Hunter_Small, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Spider_Monstrous_WebSpinner_Small, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Spider_Monstrous_Hunter_Medium, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Spider_Monstrous_WebSpinner_Medium, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Spider_Monstrous_Hunter_Large, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Spider_Monstrous_WebSpinner_Large, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Spider_Monstrous_Hunter_Huge, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Spider_Monstrous_WebSpinner_Huge, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Spider_Monstrous_Hunter_Gargantuan, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Spider_Monstrous_Hunter_Colossal, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Spider_Monstrous_WebSpinner_Colossal, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Squid, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Squid_Giant, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Squid_Giant, CreatureConstants.Templates.HalfDragon_Blue)]
+        [TestCase(false, CreatureConstants.Squid_Giant, CreatureConstants.Templates.HalfDragon_Green)]
+        [TestCase(false, CreatureConstants.StagBeetle_Giant, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Tiger, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Tiger_Dire, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Toad, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Toad, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Triceratops, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Troglodyte, CreatureConstants.Templates.HalfCelestial)]
+        [TestCase(false, CreatureConstants.Troglodyte, CreatureConstants.Templates.Zombie)]
+        [TestCase(false, CreatureConstants.Troll)]
+        [TestCase(true, CreatureConstants.Troll)]
+        [TestCase(false, CreatureConstants.Troll, CreatureConstants.Templates.Skeleton)]
+        [TestCase(false, CreatureConstants.Tyrannosaurus, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Unicorn, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Wasp_Giant, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Weasel, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Weasel, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Weasel_Dire, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Whale_Baleen, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Whale_Cachalot, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Whale_Orca, CreatureConstants.Templates.CelestialCreature)]
+        [TestCase(false, CreatureConstants.Wolf, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Wolf, CreatureConstants.Templates.Skeleton)]
+        [TestCase(false, CreatureConstants.Wolf_Dire, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Wolverine, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Wolverine_Dire, CreatureConstants.Templates.FiendishCreature)]
+        [TestCase(false, CreatureConstants.Wyvern, CreatureConstants.Templates.Zombie)]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.ProblematicCreaturesTestCases))]
+        public void CanGenerateTemplate(bool asCharacter, string creatureName, params string[] templates)
         {
-            var creature = creatureGenerator.Generate(creatureName, template);
+            var creature = creatureGenerator.Generate(asCharacter, creatureName, null, templates);
+            Assert.That(creature.Name, Is.EqualTo(creatureName));
+            Assert.That(creature.Templates, Is.EqualTo(templates));
+
             creatureAsserter.AssertCreature(creature);
-            Assert.That(creature.Template, Is.EqualTo(template));
         }
 
         [TestCase(CreatureConstants.Destrachan)]
@@ -474,12 +508,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Yrthak)]
         public void BUG_DoesNotHaveSight(string creatureName)
         {
-            var creature = creatureGenerator.Generate(creatureName, CreatureConstants.Templates.None);
+            var creature = creatureGenerator.Generate(false, creatureName);
             creatureAsserter.AssertCreature(creature);
 
             Assert.That(creature.SpecialQualities, Is.Not.Empty);
 
             var specialQualityNames = creature.SpecialQualities.Select(q => q.Name);
+            Assert.That(specialQualityNames, Contains.Item(FeatConstants.SpecialQualities.Blind));
             Assert.That(specialQualityNames, Contains.Item(FeatConstants.SpecialQualities.Blindsight));
             Assert.That(specialQualityNames, Does.Not.Contain(FeatConstants.SpecialQualities.AllAroundVision)
                 .And.Not.Contain(FeatConstants.SpecialQualities.Darkvision)
@@ -496,7 +531,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [TestCase(CreatureConstants.Elf_Wood)]
         public void BUG_ElfCanUseShield(string elfName)
         {
-            var elf = creatureGenerator.Generate(elfName, CreatureConstants.Templates.None);
+            var elf = creatureGenerator.Generate(false, elfName);
             creatureAsserter.AssertCreature(elf);
 
             Assert.That(elf.SpecialQualities, Is.Not.Empty);
@@ -508,7 +543,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [Test]
         public void BUG_HalfOrcIsNotSensitiveToLight()
         {
-            var halfOrc = creatureGenerator.Generate(CreatureConstants.Orc_Half, CreatureConstants.Templates.None);
+            var halfOrc = creatureGenerator.Generate(false, CreatureConstants.Orc_Half);
             creatureAsserter.AssertCreature(halfOrc);
 
             Assert.That(halfOrc.SpecialQualities, Is.Not.Empty);
@@ -520,13 +555,91 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
         [Test]
         public void BUG_NightcrawlerHasConcentration()
         {
-            var nightcrawler = creatureGenerator.Generate(CreatureConstants.Nightcrawler, CreatureConstants.Templates.None);
+            var nightcrawler = creatureGenerator.Generate(false, CreatureConstants.Nightcrawler);
             creatureAsserter.AssertCreature(nightcrawler);
 
             Assert.That(nightcrawler.Skills, Is.Not.Empty);
 
             var skillNames = nightcrawler.Skills.Select(q => q.Name);
             Assert.That(skillNames, Contains.Item(SkillConstants.Concentration));
+        }
+
+        [TestCase(AbilityConstants.RandomizerRolls.Best, 16, 18)]
+        [TestCase(AbilityConstants.RandomizerRolls.BestOfFour, 3, 18)]
+        [TestCase(AbilityConstants.RandomizerRolls.Default, 10, 11)]
+        [TestCase(AbilityConstants.RandomizerRolls.Good, 12, 15)]
+        [TestCase(AbilityConstants.RandomizerRolls.OnesAsSixes, 6, 18)]
+        [TestCase(AbilityConstants.RandomizerRolls.Poor, 4, 9)]
+        [TestCase(AbilityConstants.RandomizerRolls.Raw, 3, 18)]
+        [TestCase(AbilityConstants.RandomizerRolls.Wild, 2, 20)]
+        [TestCase("42d600+9266", 42 + 9266, 42 * 600 + 9266)]
+        public void Generate_HumanWithAbilityRandomizer(string roll, int lower, int upper)
+        {
+            var randomizer = new AbilityRandomizer();
+            randomizer.Roll = roll;
+
+            var creature = creatureGenerator.Generate(false, CreatureConstants.Human, randomizer);
+            creatureAsserter.AssertCreature(creature);
+            Assert.That(creature.Abilities.Values.Select(v => v.BaseScore), Is.All.InRange(lower, upper));
+        }
+
+        [Test]
+        public void Generate_HumanWithSetRolls()
+        {
+            var randomizer = new AbilityRandomizer();
+            randomizer.SetRolls[AbilityConstants.Charisma] = 9266;
+            randomizer.SetRolls[AbilityConstants.Constitution] = 90210;
+            randomizer.SetRolls[AbilityConstants.Dexterity] = 42;
+            randomizer.SetRolls[AbilityConstants.Intelligence] = 600;
+            randomizer.SetRolls[AbilityConstants.Strength] = 1337;
+            randomizer.SetRolls[AbilityConstants.Wisdom] = 1336;
+
+            var creature = creatureGenerator.Generate(false, CreatureConstants.Human, randomizer);
+            creatureAsserter.AssertCreature(creature);
+            Assert.That(creature.Abilities[AbilityConstants.Charisma].FullScore, Is.EqualTo(9266));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].FullScore, Is.EqualTo(90210));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].FullScore, Is.EqualTo(42));
+            Assert.That(creature.Abilities[AbilityConstants.Intelligence].FullScore, Is.EqualTo(600));
+            Assert.That(creature.Abilities[AbilityConstants.Strength].FullScore, Is.EqualTo(1337));
+            Assert.That(creature.Abilities[AbilityConstants.Wisdom].FullScore, Is.EqualTo(1336));
+        }
+
+        [Test]
+        public void Generate_HumanWithAdvancementBonuses()
+        {
+            var randomizer = new AbilityRandomizer();
+            randomizer.AbilityAdvancements[AbilityConstants.Charisma] = 9266;
+            randomizer.AbilityAdvancements[AbilityConstants.Constitution] = 90210;
+            randomizer.AbilityAdvancements[AbilityConstants.Dexterity] = 42;
+            randomizer.AbilityAdvancements[AbilityConstants.Intelligence] = 600;
+            randomizer.AbilityAdvancements[AbilityConstants.Strength] = 1337;
+            randomizer.AbilityAdvancements[AbilityConstants.Wisdom] = 1336;
+
+            var creature = creatureGenerator.Generate(false, CreatureConstants.Human, randomizer);
+            creatureAsserter.AssertCreature(creature);
+            Assert.That(creature.Abilities[AbilityConstants.Charisma].AdvancementAdjustment, Is.EqualTo(9266));
+            Assert.That(creature.Abilities[AbilityConstants.Constitution].AdvancementAdjustment, Is.EqualTo(90210));
+            Assert.That(creature.Abilities[AbilityConstants.Dexterity].AdvancementAdjustment, Is.EqualTo(42));
+            Assert.That(creature.Abilities[AbilityConstants.Intelligence].AdvancementAdjustment, Is.EqualTo(600));
+            Assert.That(creature.Abilities[AbilityConstants.Strength].AdvancementAdjustment, Is.EqualTo(1337));
+            Assert.That(creature.Abilities[AbilityConstants.Wisdom].AdvancementAdjustment, Is.EqualTo(1336));
+        }
+
+        [TestCase(AbilityConstants.Charisma)]
+        [TestCase(AbilityConstants.Constitution)]
+        [TestCase(AbilityConstants.Dexterity)]
+        [TestCase(AbilityConstants.Intelligence)]
+        [TestCase(AbilityConstants.Strength)]
+        [TestCase(AbilityConstants.Wisdom)]
+        public void Generate_HumanWithPriorityAbility(string ability)
+        {
+            var randomizer = new AbilityRandomizer();
+            randomizer.PriorityAbility = ability;
+            randomizer.Roll = AbilityConstants.RandomizerRolls.Wild;
+
+            var creature = creatureGenerator.Generate(false, CreatureConstants.Human, randomizer);
+            creatureAsserter.AssertCreature(creature);
+            Assert.That(creature.Abilities.Values.Max(v => v.BaseScore), Is.EqualTo(creature.Abilities[ability].BaseScore));
         }
     }
 }

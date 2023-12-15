@@ -80,7 +80,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
                 GroupConstants.All,
             };
 
-            names = names.Union(creatures).Union(templates).ToArray();
+            names = names
+                .Union(creatures)
+                .Union(templates)
+                .Union(creatures.Select(c => c + GroupConstants.Exploded))
+                .Union(templates.Select(c => c + GroupConstants.Exploded))
+                .Union(templates.Select(c => c + GroupConstants.AllowedInput))
+                .ToArray();
 
             AssertCollectionNames(names);
         }
@@ -1049,6 +1055,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.YuanTi_Pureblood, AlignmentConstants.Modifiers.Usually + AlignmentConstants.ChaoticEvil)]
         [TestCase(CreatureConstants.Zelekhut, AlignmentConstants.Modifiers.Always + AlignmentConstants.LawfulNeutral)]
+        [TestCase(CreatureConstants.Bison_Goat, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Bison_MilkCow, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Bison_Ox, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Bison_Sheep, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Bison_Llama, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Raven_Chicken, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Raven_Turkey, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Raven_Peacock, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Raven_Pheasant, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
+        [TestCase(CreatureConstants.Boar_Pig, AlignmentConstants.Modifiers.Always + AlignmentConstants.TrueNeutral)]
         [TestCase(CreatureConstants.Templates.CelestialCreature, AlignmentConstants.Modifiers.Any + AlignmentConstants.Good)]
         [TestCase(CreatureConstants.Templates.FiendishCreature, AlignmentConstants.Modifiers.Any + AlignmentConstants.Evil)]
         [TestCase(CreatureConstants.Templates.Ghost, AlignmentConstants.Modifiers.Any)]
@@ -1148,13 +1164,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
             Assert.That(mode, Is.EqualTo(alignment));
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void AllCreaturesOfTypeAreTrueNeutral(string creature)
+        [TestCase(CreatureConstants.Types.Animal)]
+        [TestCase(CreatureConstants.Types.Vermin)]
+        public void AllCreaturesOfTypeAreTrueNeutral(string creatureType)
         {
-            var neutralTypes = new[] { CreatureConstants.Types.Animal, CreatureConstants.Types.Vermin };
-            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
+            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
 
-            if (neutralTypes.Contains(types.First()))
+            foreach (var creature in creatures)
             {
                 var alignments = collectionSelector.ExplodeAndPreserveDuplicates(tableName, creature);
                 Assert.That(alignments, Has.Count.EqualTo(1).And.Contains(AlignmentConstants.TrueNeutral), creature);
@@ -1162,21 +1178,349 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void AllCreaturesHaveAlignment(string creature)
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
+        public void AllCreaturesHaveValidExplodedAlignment(string creature)
         {
-            var alignments = collectionSelector.ExplodeAndPreserveDuplicates(tableName, creature);
+            var alignments = collectionSelector.Explode(tableName, creature);
             Assert.That(alignments, Is.Not.Empty, creature);
+            Assert.That(alignments, Is.SubsetOf(table[GroupConstants.All]), creature);
+
+            Assert.That(table.Keys, Contains.Item(creature + GroupConstants.Exploded));
+            Assert.That(table[creature + GroupConstants.Exploded], Is.EquivalentTo(alignments));
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void CreatureAlignmentGroupsBoilDownToSetAlignments(string creature)
+        [TestCase(CreatureConstants.Templates.CelestialCreature,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral)]
+        [TestCase(CreatureConstants.Templates.FiendishCreature,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Ghost,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.HalfCelestial,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Black,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Blue,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Brass,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Bronze,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Copper,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Gold,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Green,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Red,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_Silver,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.HalfDragon_White,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.HalfFiend,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lich,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Afflicted,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Bear_Brown_Natural,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Afflicted,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Afflicted,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Dire_Natural,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Boar_Natural,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Afflicted,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Rat_Dire_Natural,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Afflicted,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Tiger_Natural,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Afflicted,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Afflicted,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Dire_Natural,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Lycanthrope_Wolf_Natural,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.None,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Skeleton,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Vampire,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        [TestCase(CreatureConstants.Templates.Zombie,
+            AlignmentConstants.LawfulGood,
+            AlignmentConstants.NeutralGood,
+            AlignmentConstants.ChaoticGood,
+            AlignmentConstants.LawfulNeutral,
+            AlignmentConstants.TrueNeutral,
+            AlignmentConstants.ChaoticNeutral,
+            AlignmentConstants.LawfulEvil,
+            AlignmentConstants.NeutralEvil,
+            AlignmentConstants.ChaoticEvil)]
+        public void TemplateAllowedAlignmentInputs(string template, params string[] alignments)
         {
-            var allAlignments = table[GroupConstants.All];
-
-            Assert.That(table.Keys, Contains.Item(creature));
-
-            var creatureAlignments = collectionSelector.Explode(tableName, creature);
-            Assert.That(creatureAlignments, Is.SubsetOf(allAlignments), creature);
+            Assert.That(table.Keys, Contains.Item(template + GroupConstants.AllowedInput));
+            Assert.That(table[template + GroupConstants.AllowedInput], Is.EquivalentTo(alignments));
         }
     }
 }

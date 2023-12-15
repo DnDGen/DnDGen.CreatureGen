@@ -4,7 +4,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
 {
     internal interface IAdjustmentsSelector
     {
-        Dictionary<string, int> SelectAllFrom(string tableName);
+        Dictionary<string, T> SelectAllFrom<T>(string tableName);
         T SelectFrom<T>(string tableName, string name);
     }
 }

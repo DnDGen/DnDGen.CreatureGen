@@ -40,6 +40,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         {
             Assert.That(typesAndAmounts, Is.Not.Empty, $"{name}'s test was not set up");
             AssertTypesAndAmounts(name, typesAndAmounts);
+
+            //Correct format
+            var allAbilities = new[]
+            {
+                AbilityConstants.Charisma,
+                AbilityConstants.Constitution,
+                AbilityConstants.Dexterity,
+                AbilityConstants.Intelligence,
+                AbilityConstants.Strength,
+                AbilityConstants.Wisdom,
+            };
+
+            Assert.That(typesAndAmounts, Is.Not.Empty);
+            Assert.That(typesAndAmounts.Keys, Is.Unique.And.SubsetOf(allAbilities));
+
+            foreach (var kvp in typesAndAmounts)
+            {
+                Assert.That(kvp.Value % 2, Is.Zero, $"{name} {kvp.Key} {kvp.Value}");
+            }
         }
 
         public static IEnumerable AbilityAdjustmentsTestData
@@ -875,6 +894,36 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
                 testCases[CreatureConstants.Bison][AbilityConstants.Intelligence] = -8;
                 testCases[CreatureConstants.Bison][AbilityConstants.Strength] = 12;
                 testCases[CreatureConstants.Bison][AbilityConstants.Wisdom] = 0;
+                testCases[CreatureConstants.Bison_Goat][AbilityConstants.Charisma] = -6;
+                testCases[CreatureConstants.Bison_Goat][AbilityConstants.Constitution] = 2;
+                testCases[CreatureConstants.Bison_Goat][AbilityConstants.Dexterity] = 2;
+                testCases[CreatureConstants.Bison_Goat][AbilityConstants.Intelligence] = -8;
+                testCases[CreatureConstants.Bison_Goat][AbilityConstants.Strength] = 4;
+                testCases[CreatureConstants.Bison_Goat][AbilityConstants.Wisdom] = 0;
+                testCases[CreatureConstants.Bison_Llama][AbilityConstants.Charisma] = -6;
+                testCases[CreatureConstants.Bison_Llama][AbilityConstants.Constitution] = 6;
+                testCases[CreatureConstants.Bison_Llama][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.Bison_Llama][AbilityConstants.Intelligence] = -8;
+                testCases[CreatureConstants.Bison_Llama][AbilityConstants.Strength] = 12;
+                testCases[CreatureConstants.Bison_Llama][AbilityConstants.Wisdom] = 0;
+                testCases[CreatureConstants.Bison_MilkCow][AbilityConstants.Charisma] = -6;
+                testCases[CreatureConstants.Bison_MilkCow][AbilityConstants.Constitution] = 6;
+                testCases[CreatureConstants.Bison_MilkCow][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.Bison_MilkCow][AbilityConstants.Intelligence] = -8;
+                testCases[CreatureConstants.Bison_MilkCow][AbilityConstants.Strength] = 12;
+                testCases[CreatureConstants.Bison_MilkCow][AbilityConstants.Wisdom] = 0;
+                testCases[CreatureConstants.Bison_Ox][AbilityConstants.Charisma] = -6;
+                testCases[CreatureConstants.Bison_Ox][AbilityConstants.Constitution] = 6;
+                testCases[CreatureConstants.Bison_Ox][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.Bison_Ox][AbilityConstants.Intelligence] = -8;
+                testCases[CreatureConstants.Bison_Ox][AbilityConstants.Strength] = 12;
+                testCases[CreatureConstants.Bison_Ox][AbilityConstants.Wisdom] = 0;
+                testCases[CreatureConstants.Bison_Sheep][AbilityConstants.Charisma] = -6;
+                testCases[CreatureConstants.Bison_Sheep][AbilityConstants.Constitution] = 2;
+                testCases[CreatureConstants.Bison_Sheep][AbilityConstants.Dexterity] = 2;
+                testCases[CreatureConstants.Bison_Sheep][AbilityConstants.Intelligence] = -8;
+                testCases[CreatureConstants.Bison_Sheep][AbilityConstants.Strength] = 4;
+                testCases[CreatureConstants.Bison_Sheep][AbilityConstants.Wisdom] = 0;
                 testCases[CreatureConstants.BlackPudding][AbilityConstants.Charisma] = -10;
                 testCases[CreatureConstants.BlackPudding][AbilityConstants.Constitution] = 12;
                 testCases[CreatureConstants.BlackPudding][AbilityConstants.Dexterity] = -10;
@@ -897,6 +946,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
                 testCases[CreatureConstants.Boar][AbilityConstants.Intelligence] = -8;
                 testCases[CreatureConstants.Boar][AbilityConstants.Strength] = 4;
                 testCases[CreatureConstants.Boar][AbilityConstants.Wisdom] = 2;
+                testCases[CreatureConstants.Boar_Pig][AbilityConstants.Charisma] = -6;
+                testCases[CreatureConstants.Boar_Pig][AbilityConstants.Constitution] = 6;
+                testCases[CreatureConstants.Boar_Pig][AbilityConstants.Dexterity] = 0;
+                testCases[CreatureConstants.Boar_Pig][AbilityConstants.Intelligence] = -8;
+                testCases[CreatureConstants.Boar_Pig][AbilityConstants.Strength] = 4;
+                testCases[CreatureConstants.Boar_Pig][AbilityConstants.Wisdom] = 2;
                 testCases[CreatureConstants.Boar_Dire][AbilityConstants.Charisma] = -2;
                 testCases[CreatureConstants.Boar_Dire][AbilityConstants.Constitution] = 6;
                 testCases[CreatureConstants.Boar_Dire][AbilityConstants.Dexterity] = 0;
@@ -3319,6 +3374,30 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
                 testCases[CreatureConstants.Raven][AbilityConstants.Intelligence] = -8;
                 testCases[CreatureConstants.Raven][AbilityConstants.Strength] = -10;
                 testCases[CreatureConstants.Raven][AbilityConstants.Wisdom] = 4;
+                testCases[CreatureConstants.Raven_Chicken][AbilityConstants.Charisma] = -4;
+                testCases[CreatureConstants.Raven_Chicken][AbilityConstants.Constitution] = 0;
+                testCases[CreatureConstants.Raven_Chicken][AbilityConstants.Dexterity] = 4;
+                testCases[CreatureConstants.Raven_Chicken][AbilityConstants.Intelligence] = -8;
+                testCases[CreatureConstants.Raven_Chicken][AbilityConstants.Strength] = -10;
+                testCases[CreatureConstants.Raven_Chicken][AbilityConstants.Wisdom] = 4;
+                testCases[CreatureConstants.Raven_Turkey][AbilityConstants.Charisma] = -4;
+                testCases[CreatureConstants.Raven_Turkey][AbilityConstants.Constitution] = 0;
+                testCases[CreatureConstants.Raven_Turkey][AbilityConstants.Dexterity] = 4;
+                testCases[CreatureConstants.Raven_Turkey][AbilityConstants.Intelligence] = -8;
+                testCases[CreatureConstants.Raven_Turkey][AbilityConstants.Strength] = -10;
+                testCases[CreatureConstants.Raven_Turkey][AbilityConstants.Wisdom] = 4;
+                testCases[CreatureConstants.Raven_Peacock][AbilityConstants.Charisma] = -4;
+                testCases[CreatureConstants.Raven_Peacock][AbilityConstants.Constitution] = 0;
+                testCases[CreatureConstants.Raven_Peacock][AbilityConstants.Dexterity] = 4;
+                testCases[CreatureConstants.Raven_Peacock][AbilityConstants.Intelligence] = -8;
+                testCases[CreatureConstants.Raven_Peacock][AbilityConstants.Strength] = -10;
+                testCases[CreatureConstants.Raven_Peacock][AbilityConstants.Wisdom] = 4;
+                testCases[CreatureConstants.Raven_Pheasant][AbilityConstants.Charisma] = -4;
+                testCases[CreatureConstants.Raven_Pheasant][AbilityConstants.Constitution] = 0;
+                testCases[CreatureConstants.Raven_Pheasant][AbilityConstants.Dexterity] = 4;
+                testCases[CreatureConstants.Raven_Pheasant][AbilityConstants.Intelligence] = -8;
+                testCases[CreatureConstants.Raven_Pheasant][AbilityConstants.Strength] = -10;
+                testCases[CreatureConstants.Raven_Pheasant][AbilityConstants.Wisdom] = 4;
                 testCases[CreatureConstants.Ravid][AbilityConstants.Charisma] = 4;
                 testCases[CreatureConstants.Ravid][AbilityConstants.Constitution] = 2;
                 testCases[CreatureConstants.Ravid][AbilityConstants.Dexterity] = 0;
@@ -4051,100 +4130,49 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void HaveAtLeast1Ability(string creature)
-        {
-            Assert.That(table.Keys, Contains.Item(creature));
-
-            var abilities = GetCollection(creature);
-            Assert.That(abilities, Is.Not.Empty, creature);
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void HaveUniqueAbilities(string creature)
-        {
-            Assert.That(table.Keys, Contains.Item(creature));
-
-            var abilities = typesAndAmountsSelector.Select(tableName, creature);
-            Assert.That(abilities, Is.Not.Empty, creature);
-
-            var abilityNames = abilities.Select(a => a.Type);
-            Assert.That(abilityNames, Is.Unique);
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void AllAbilityAdjustmentsAreMultiplesOf2(string creature)
-        {
-            Assert.That(table.Keys, Contains.Item(creature));
-
-            var abilities = typesAndAmountsSelector.Select(tableName, creature);
-            Assert.That(abilities, Is.Not.Empty, creature);
-
-            foreach (var ability in abilities)
-            {
-                Assert.That(ability.Amount % 2, Is.Zero, $"{creature} {ability.Type} {ability.Amount}");
-            }
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void AllAbilityAdjustmentsAreRealAbilities(string creature)
-        {
-            var allAbilities = new[]
-            {
-                AbilityConstants.Charisma,
-                AbilityConstants.Constitution,
-                AbilityConstants.Dexterity,
-                AbilityConstants.Intelligence,
-                AbilityConstants.Strength,
-                AbilityConstants.Wisdom,
-            };
-
-            Assert.That(table.Keys, Contains.Item(creature));
-
-            var abilities = typesAndAmountsSelector.Select(tableName, creature);
-            Assert.That(abilities, Is.Not.Empty, creature);
-
-            var abilityNames = abilities.Select(a => a.Type);
-            Assert.That(abilityNames, Is.SubsetOf(allAbilities), creature);
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void DoNotHaveConstitution(string creature)
+        public void Type_DoesNotHaveAbility(string creature)
         {
             var typesWithoutConstitution = new[] { CreatureConstants.Types.Construct, CreatureConstants.Types.Undead };
-            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
-
-            if (typesWithoutConstitution.Contains(types.First()))
+            var typesWithoutStrength = new[] { CreatureConstants.Types.Subtypes.Incorporeal };
+            var typesWithoutIntelligence = new[] { CreatureConstants.Types.Ooze, CreatureConstants.Types.Vermin };
+            var typesWithAllAbilities = new[]
             {
-                var abilities = typesAndAmountsSelector.Select(tableName, creature);
-                var abilityNames = abilities.Select(a => a.Type);
+                CreatureConstants.Types.Aberration,
+                CreatureConstants.Types.Animal,
+                CreatureConstants.Types.Dragon,
+                CreatureConstants.Types.Elemental,
+                CreatureConstants.Types.Fey,
+                CreatureConstants.Types.Giant,
+                CreatureConstants.Types.Humanoid,
+                CreatureConstants.Types.MagicalBeast,
+                CreatureConstants.Types.MonstrousHumanoid,
+            };
+
+            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
+            var abilities = typesAndAmountsSelector.Select(tableName, creature);
+            var abilityNames = abilities.Select(a => a.Type);
+
+            if (typesWithoutConstitution.Intersect(types).Any())
+            {
                 Assert.That(abilityNames, Does.Not.Contains(AbilityConstants.Constitution), creature);
             }
-        }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void DoNotHaveStrength(string creature)
-        {
-            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
-
-            if (types.Contains(CreatureConstants.Types.Subtypes.Incorporeal))
+            if (typesWithoutStrength.Intersect(types).Any())
             {
-                var abilities = typesAndAmountsSelector.Select(tableName, creature);
-                var abilityNames = abilities.Select(a => a.Type);
                 Assert.That(abilityNames, Does.Not.Contains(AbilityConstants.Strength), creature);
             }
-        }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void DoNotHaveIntelligence(string creature)
-        {
-            var typesWithoutIntelligence = new[] { CreatureConstants.Types.Ooze, CreatureConstants.Types.Vermin };
-            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
-
-            if (typesWithoutIntelligence.Contains(types.First()))
+            if (typesWithoutIntelligence.Intersect(types).Any())
             {
-                var abilities = typesAndAmountsSelector.Select(tableName, creature);
-                var abilityNames = abilities.Select(a => a.Type);
                 Assert.That(abilityNames, Does.Not.Contains(AbilityConstants.Intelligence), creature);
+            }
+
+            if (typesWithAllAbilities.Intersect(types).Any())
+            {
+                var allAbilities = typesAndAmountsSelector.Select(tableName, GroupConstants.All);
+                var allAbilitiesNames = allAbilities.Select(a => a.Type);
+
+                Assert.That(abilityNames, Is.EquivalentTo(allAbilitiesNames), creature);
             }
         }
 
@@ -4162,34 +4190,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
                 var intelligence = abilities.Single(a => a.Type == AbilityConstants.Intelligence);
                 Assert.That(intelligence.Amount, Is.EqualTo(-8).Or.EqualTo(-10), creature);
             }
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void HaveAllAbilities(string creature)
-        {
-            var typesWithAllAbilities = new[]
+            else
             {
-                CreatureConstants.Types.Aberration,
-                CreatureConstants.Types.Animal,
-                CreatureConstants.Types.Dragon,
-                CreatureConstants.Types.Elemental,
-                CreatureConstants.Types.Fey,
-                CreatureConstants.Types.Giant,
-                CreatureConstants.Types.Humanoid,
-                CreatureConstants.Types.MagicalBeast,
-                CreatureConstants.Types.MonstrousHumanoid,
-            };
-
-            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
-
-            var allAbilities = typesAndAmountsSelector.Select(tableName, GroupConstants.All);
-            var allAbilitiesNames = allAbilities.Select(a => a.Type);
-
-            if (typesWithAllAbilities.Contains(types.First()))
-            {
-                var abilities = typesAndAmountsSelector.Select(tableName, creature);
-                var abilityNames = abilities.Select(a => a.Type);
-                Assert.That(allAbilitiesNames, Is.EquivalentTo(abilityNames), creature);
+                Assert.Pass($"{creature} is not an Animal");
             }
         }
     }

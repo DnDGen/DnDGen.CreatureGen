@@ -44,5 +44,13 @@ namespace DnDGen.CreatureGen.Selectors.Collections
 
             return selection;
         }
+
+        public Dictionary<string, CreatureDataSelection> SelectAll()
+        {
+            var data = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureData);
+            var selections = data.ToDictionary(kvp => kvp.Key, kvp => Parse(kvp.Value));
+
+            return selections;
+        }
     }
 }

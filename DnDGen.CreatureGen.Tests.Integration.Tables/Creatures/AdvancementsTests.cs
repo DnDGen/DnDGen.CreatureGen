@@ -2,7 +2,6 @@
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Helpers;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.RollGen;
 using NUnit.Framework;
 using System;
@@ -54,6 +53,68 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
 
             AssertTypesAndAmounts(creature, typesAndAmounts);
+
+            //Hit Dice Only Increases
+            if (!table[creature].Any())
+                Assert.Pass($"No advancements to test for {creature}");
+
+            var rolls = table[creature].Select(a => TypeAndAmountHelper.Parse(a)[1]);
+
+            foreach (var roll in rolls)
+            {
+                var minimum = dice.Roll(roll).AsPotentialMinimum();
+                Assert.That(minimum, Is.Positive);
+
+                var maximum = dice.Roll(roll).AsPotentialMaximum();
+                var range = Enumerable.Range(minimum, maximum - minimum + 1);
+
+                foreach (var otherRoll in rolls.Except(new[] { roll }))
+                {
+                    var otherMinimum = dice.Roll(otherRoll).AsPotentialMinimum();
+                    var otherMaximum = dice.Roll(otherRoll).AsPotentialMaximum();
+                    var otherRange = Enumerable.Range(otherMinimum, otherMaximum - otherMinimum + 1);
+
+                    Assert.That(range.Intersect(otherRange), Is.Empty, $"{roll} vs {otherRoll}");
+                }
+            }
+
+            //Size Only Increases, Are Distinct, Minimum Increases
+            var sizes = table[creature].Select(a => TypeAndAmountHelper.Parse(a)[0].Split(',')[0]);
+            Assert.That(sizes, Is.Unique);
+
+            var creatureData = creatureDataSelector.SelectFor(creature);
+
+            var orderedSizes = SizeConstants.GetOrdered();
+            var originalSizeIndex = Array.IndexOf(orderedSizes, creatureData.Size);
+
+            foreach (var size in sizes)
+            {
+                var sizeIndex = Array.IndexOf(orderedSizes, size);
+                Assert.That(sizeIndex, Is.AtLeast(originalSizeIndex), $"{size} >= {creatureData.Size}");
+            }
+
+            foreach (var advancement in table[creature])
+            {
+                var size = TypeAndAmountHelper.Parse(advancement)[0].Split(',')[0];
+                var sizeIndex = Array.IndexOf(orderedSizes, size);
+
+                var roll = TypeAndAmountHelper.Parse(advancement)[1];
+                var minimum = dice.Roll(roll).AsPotentialMinimum();
+
+                foreach (var otherAdvancement in table[creature].Except(new[] { advancement }))
+                {
+                    var otherSize = TypeAndAmountHelper.Parse(otherAdvancement)[0].Split(',')[0];
+                    var otherSizeIndex = Array.IndexOf(orderedSizes, otherSize);
+
+                    var otherRoll = TypeAndAmountHelper.Parse(otherAdvancement)[1];
+                    var otherMinimum = dice.Roll(otherRoll).AsPotentialMinimum();
+
+                    if (minimum < otherMinimum)
+                        Assert.That(sizeIndex, Is.LessThan(otherSizeIndex), $"{size} < {otherSize}");
+                    else
+                        Assert.That(sizeIndex, Is.GreaterThan(otherSizeIndex), $"{size} > {otherSize}");
+                }
+            }
         }
 
         private const string None = "NONE";
@@ -276,11 +337,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Belker][RollHelper.GetRollWithMostEvenDistribution(7, 8, 10)] = GetData(SizeConstants.Large, 10, 10);
                 testCases[CreatureConstants.Belker][RollHelper.GetRollWithMostEvenDistribution(7, 11, 21)] = GetData(SizeConstants.Huge, 15, 15);
                 testCases[CreatureConstants.Bison][RollHelper.GetRollWithMostEvenDistribution(5, 6, 7)] = GetData(SizeConstants.Large, 10, 5);
+                testCases[CreatureConstants.Bison_Goat][RollHelper.GetRollWithMostEvenDistribution(5, 6, 7)] = GetData(SizeConstants.Medium, 5, 5);
+                testCases[CreatureConstants.Bison_Llama][RollHelper.GetRollWithMostEvenDistribution(5, 6, 7)] = GetData(SizeConstants.Large, 10, 5);
+                testCases[CreatureConstants.Bison_MilkCow][RollHelper.GetRollWithMostEvenDistribution(5, 6, 7)] = GetData(SizeConstants.Large, 10, 5);
+                testCases[CreatureConstants.Bison_Ox][RollHelper.GetRollWithMostEvenDistribution(5, 6, 7)] = GetData(SizeConstants.Large, 10, 5);
+                testCases[CreatureConstants.Bison_Sheep][RollHelper.GetRollWithMostEvenDistribution(5, 6, 7)] = GetData(SizeConstants.Medium, 5, 5);
                 testCases[CreatureConstants.BlackPudding][RollHelper.GetRollWithMostEvenDistribution(10, 11, 15)] = GetData(SizeConstants.Huge, 15, 10);
                 testCases[CreatureConstants.BlackPudding_Elder][None] = new string[0];
                 testCases[CreatureConstants.BlinkDog][RollHelper.GetRollWithMostEvenDistribution(4, 5, 7)] = GetData(SizeConstants.Medium, 5, 5);
                 testCases[CreatureConstants.BlinkDog][RollHelper.GetRollWithMostEvenDistribution(4, 8, 12)] = GetData(SizeConstants.Large, 10, 5);
                 testCases[CreatureConstants.Boar][RollHelper.GetRollWithMostEvenDistribution(3, 4, 5)] = GetData(SizeConstants.Medium, 5, 5);
+                testCases[CreatureConstants.Boar_Pig][RollHelper.GetRollWithMostEvenDistribution(3, 4, 5)] = GetData(SizeConstants.Medium, 5, 5);
                 testCases[CreatureConstants.Boar_Dire][RollHelper.GetRollWithMostEvenDistribution(7, 8, 16)] = GetData(SizeConstants.Large, 10, 5);
                 testCases[CreatureConstants.Boar_Dire][RollHelper.GetRollWithMostEvenDistribution(7, 17, 21)] = GetData(SizeConstants.Huge, 15, 10);
                 testCases[CreatureConstants.Bodak][RollHelper.GetRollWithMostEvenDistribution(9, 10, 13)] = GetData(SizeConstants.Medium, 5, 5);
@@ -805,6 +872,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Rat_Dire][RollHelper.GetRollWithMostEvenDistribution(1, 4, 6)] = GetData(SizeConstants.Medium, 5, 5);
                 testCases[CreatureConstants.Rat_Swarm][None] = new string[0];
                 testCases[CreatureConstants.Raven][None] = new string[0];
+                testCases[CreatureConstants.Raven_Chicken][None] = new string[0];
+                testCases[CreatureConstants.Raven_Turkey][None] = new string[0];
+                testCases[CreatureConstants.Raven_Peacock][None] = new string[0];
+                testCases[CreatureConstants.Raven_Pheasant][None] = new string[0];
                 testCases[CreatureConstants.Ravid][RollHelper.GetRollWithMostEvenDistribution(3, 4, 4)] = GetData(SizeConstants.Medium, 5, 5);
                 testCases[CreatureConstants.Ravid][RollHelper.GetRollWithMostEvenDistribution(3, 5, 9)] = GetData(SizeConstants.Large, 10, 5);
                 testCases[CreatureConstants.RazorBoar][RollHelper.GetRollWithMostEvenDistribution(15, 16, 30)] = GetData(SizeConstants.Large, 10, 5);
@@ -1008,6 +1079,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             return data;
         }
+
         [TestCase(CreatureConstants.Types.Aberration, 4)]
         [TestCase(CreatureConstants.Types.Animal, 3)]
         [TestCase(CreatureConstants.Types.Construct, 4)]
@@ -1029,102 +1101,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             typesAndAmounts[creatureType] = divisor;
 
             AssertTypesAndAmounts(creatureType, typesAndAmounts);
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void AdvancementOnlyIncreasesHitDice(string creature)
-        {
-            Assert.That(table.Keys, Contains.Item(creature));
-
-            if (!table[creature].Any())
-                Assert.Pass($"No advancements to test for {creature}");
-
-            var rolls = table[creature].Select(a => TypeAndAmountHelper.Parse(a)[1]);
-
-            foreach (var roll in rolls)
-            {
-                var minimum = dice.Roll(roll).AsPotentialMinimum();
-                Assert.That(minimum, Is.Positive);
-
-                var maximum = dice.Roll(roll).AsPotentialMaximum();
-                var range = Enumerable.Range(minimum, maximum - minimum + 1);
-
-                foreach (var otherRoll in rolls.Except(new[] { roll }))
-                {
-                    var otherMinimum = dice.Roll(otherRoll).AsPotentialMinimum();
-                    var otherMaximum = dice.Roll(otherRoll).AsPotentialMaximum();
-                    var otherRange = Enumerable.Range(otherMinimum, otherMaximum - otherMinimum + 1);
-
-                    Assert.That(range.Intersect(otherRange), Is.Empty, $"{roll} vs {otherRoll}");
-                }
-            }
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void AdvancementOnlyIncreasesSize(string creature)
-        {
-            Assert.That(table.Keys, Contains.Item(creature));
-
-            if (!table[creature].Any())
-                Assert.Pass($"No advancements to test for {creature}");
-
-            var sizes = table[creature].Select(a => TypeAndAmountHelper.Parse(a)[0].Split(',')[0]);
-            var data = creatureDataSelector.SelectFor(creature);
-
-            var orderedSizes = SizeConstants.GetOrdered();
-            var originalSizeIndex = Array.IndexOf(orderedSizes, data.Size);
-
-            foreach (var size in sizes)
-            {
-                var sizeIndex = Array.IndexOf(orderedSizes, size);
-                Assert.That(sizeIndex, Is.AtLeast(originalSizeIndex), $"{size} >= {data.Size}");
-            }
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void AdvancementHasDistinctSizes(string creature)
-        {
-            Assert.That(table.Keys, Contains.Item(creature));
-
-            if (!table[creature].Any())
-                Assert.Pass($"No advancements to test for {creature}");
-
-            var sizes = table[creature].Select(a => TypeAndAmountHelper.Parse(a)[0].Split(',')[0]);
-            Assert.That(sizes, Is.Unique);
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void AdvancementHasIncreasedSizeForIncreasedMinimum(string creature)
-        {
-            Assert.That(table.Keys, Contains.Item(creature));
-
-            if (!table[creature].Any())
-                Assert.Pass($"No advancements to test for {creature}");
-
-            var orderedSizes = SizeConstants.GetOrdered();
-
-            foreach (var advancement in table[creature])
-            {
-                var size = TypeAndAmountHelper.Parse(advancement)[0].Split(',')[0];
-                var sizeIndex = Array.IndexOf(orderedSizes, size);
-
-                var roll = TypeAndAmountHelper.Parse(advancement)[1];
-                var minimum = dice.Roll(roll).AsPotentialMinimum();
-
-                foreach (var otherAdvancement in table[creature].Except(new[] { advancement }))
-                {
-                    var otherSize = TypeAndAmountHelper.Parse(otherAdvancement)[0].Split(',')[0];
-                    var otherSizeIndex = Array.IndexOf(orderedSizes, otherSize);
-
-                    var otherRoll = TypeAndAmountHelper.Parse(otherAdvancement)[1];
-                    var otherMinimum = dice.Roll(otherRoll).AsPotentialMinimum();
-
-                    if (minimum < otherMinimum)
-                        Assert.That(sizeIndex, Is.LessThan(otherSizeIndex), $"{size} < {otherSize}");
-                    else
-                        Assert.That(sizeIndex, Is.GreaterThan(otherSizeIndex), $"{size} > {otherSize}");
-                }
-            }
         }
     }
 }

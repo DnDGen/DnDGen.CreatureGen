@@ -5,6 +5,7 @@ using DnDGen.CreatureGen.Feats;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.Infrastructure.Selectors.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -61,6 +62,7 @@ namespace DnDGen.CreatureGen.Generators.Defenses
         private Save GetWillSave(string creatureName, CreatureType creatureType, HitPoints hitPoints, IEnumerable<Feat> feats, Dictionary<string, Ability> abilities)
         {
             var save = new Save();
+
             save.BaseValue = GetSaveBaseValue(creatureName, hitPoints, SaveConstants.Will);
 
             if (feats.Any(f => f.Name == FeatConstants.SpecialQualities.Madness))
@@ -79,9 +81,8 @@ namespace DnDGen.CreatureGen.Generators.Defenses
             if (hitPoints.RoundedHitDiceQuantity == 0)
                 return 0;
 
-            var strongSaves = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, saveName);
-
-            if (strongSaves.Contains(creatureName))
+            var strongSaves = collectionsSelector.SelectFrom(TableNameConstants.Collection.SaveGroups, creatureName);
+            if (strongSaves.Contains(saveName))
                 return hitPoints.RoundedHitDiceQuantity / 2 + 2;
 
             return hitPoints.RoundedHitDiceQuantity / 3;

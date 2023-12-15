@@ -27,9 +27,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
         private List<string> reflexSaveFeats;
         private List<string> fortitudeSaveFeats;
         private List<string> willSaveFeats;
-        private List<string> strongReflex;
-        private List<string> strongFortitude;
-        private List<string> strongWill;
+        private List<string> strongSaves;
         private HitPoints hitPoints;
         private CreatureType creatureType;
         private Dictionary<string, List<BonusSelection>> racialBonuses;
@@ -45,9 +43,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             reflexSaveFeats = new List<string>();
             fortitudeSaveFeats = new List<string>();
             willSaveFeats = new List<string>();
-            strongFortitude = new List<string>();
-            strongReflex = new List<string>();
-            strongWill = new List<string>();
+            strongSaves = new List<string>();
             hitPoints = new HitPoints();
             creatureType = new CreatureType();
             racialBonuses = new Dictionary<string, List<BonusSelection>>();
@@ -65,18 +61,18 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             fortitudeSaveFeats.Add("other feat");
             willSaveFeats.Add("other feat");
 
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, SaveConstants.Fortitude))
+            mockCollectionsSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, SaveConstants.Fortitude))
                 .Returns(fortitudeSaveFeats);
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, SaveConstants.Reflex))
+            mockCollectionsSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, SaveConstants.Reflex))
                 .Returns(reflexSaveFeats);
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, SaveConstants.Will))
+            mockCollectionsSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, SaveConstants.Will))
                 .Returns(willSaveFeats);
-            mockCollectionsSelector.Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, SaveConstants.Fortitude))
-                .Returns(strongFortitude);
-            mockCollectionsSelector.Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, SaveConstants.Reflex))
-                .Returns(strongReflex);
-            mockCollectionsSelector.Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, SaveConstants.Will))
-                .Returns(strongWill);
+            mockCollectionsSelector
+                .Setup(s => s.SelectFrom(TableNameConstants.Collection.SaveGroups, "creature"))
+                .Returns(strongSaves);
 
             mockBonusSelector.Setup(s => s.SelectFor(TableNameConstants.TypeAndAmount.SaveBonuses, It.IsAny<string>())).Returns((string t, string s) => racialBonuses[s]);
         }
@@ -139,19 +135,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
 
             if (isStrongFortitude)
             {
-                strongFortitude.Add("creature");
+                strongSaves.Add(SaveConstants.Fortitude);
                 expectedFortitude = strongSaveBonus;
             }
 
             if (isStrongReflex)
             {
-                strongReflex.Add("creature");
+                strongSaves.Add(SaveConstants.Reflex);
                 expectedReflex = strongSaveBonus;
             }
 
             if (isStrongWill)
             {
-                strongWill.Add("creature");
+                strongSaves.Add(SaveConstants.Will);
                 expectedWill = strongSaveBonus;
             }
 
@@ -183,19 +179,19 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
 
             if (isStrongFortitude)
             {
-                strongFortitude.Add("creature");
+                strongSaves.Add(SaveConstants.Fortitude);
                 expectedFortitude = strongSaveBonus;
             }
 
             if (isStrongReflex)
             {
-                strongReflex.Add("creature");
+                strongSaves.Add(SaveConstants.Reflex);
                 expectedReflex = strongSaveBonus;
             }
 
             if (isStrongWill)
             {
-                strongWill.Add("creature");
+                strongSaves.Add(SaveConstants.Will);
                 expectedWill = strongSaveBonus;
             }
 

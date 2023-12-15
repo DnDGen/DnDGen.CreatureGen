@@ -101,7 +101,9 @@ namespace DnDGen.CreatureGen.Generators.Magics
 
             var classesThatPrepareSpells = collectionsSelector.SelectFrom(TableNameConstants.Collection.CasterGroups, GroupConstants.PreparesSpells);
             if (classesThatPrepareSpells.Contains(magic.Caster))
+            {
                 magic.PreparedSpells = spellsGenerator.GeneratePrepared(magic.KnownSpells, magic.SpellsPerDay, magic.Domains.ToArray());
+            }
 
             return magic;
         }

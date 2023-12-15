@@ -1054,6 +1054,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
 
             testCases[CreatureConstants.Bison].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
 
+            testCases[CreatureConstants.Bison_Goat].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+
+            testCases[CreatureConstants.Bison_Llama].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+
+            testCases[CreatureConstants.Bison_MilkCow].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+
+            testCases[CreatureConstants.Bison_Ox].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+
+            testCases[CreatureConstants.Bison_Sheep].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+
             testCases[CreatureConstants.BlackPudding].Add(helper.BuildData(FeatConstants.SpecialQualities.Split));
 
             testCases[CreatureConstants.BlackPudding_Elder].Add(helper.BuildData(FeatConstants.SpecialQualities.Split));
@@ -1064,6 +1074,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             testCases[CreatureConstants.BlinkDog].Add(helper.BuildData(FeatConstants.Track));
 
             testCases[CreatureConstants.Boar].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
+
+            testCases[CreatureConstants.Boar_Pig].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
 
             testCases[CreatureConstants.Boar_Dire].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
 
@@ -1232,6 +1244,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             testCases[CreatureConstants.Cryohydra_12Heads].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
             testCases[CreatureConstants.Cryohydra_12Heads].Add(helper.BuildData(FeatConstants.CombatReflexes, focus: "Can use all of its heads for Attacks of Opportunity"));
 
+            testCases[CreatureConstants.Darkmantle].Add(helper.BuildData(FeatConstants.SpecialQualities.Blind));
             testCases[CreatureConstants.Darkmantle].Add(helper.BuildData(FeatConstants.SpecialQualities.Blindsight, power: 90));
             testCases[CreatureConstants.Darkmantle].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.Darkness, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Day));
 
@@ -1262,6 +1275,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             testCases[CreatureConstants.Derro_Sane].Add(helper.BuildData(FeatConstants.WeaponProficiency_Exotic, focus: WeaponConstants.LightRepeatingCrossbow, requiresEquipment: true));
             testCases[CreatureConstants.Derro_Sane].Add(helper.BuildData(FeatConstants.ArmorProficiency_Light, requiresEquipment: true));
 
+            testCases[CreatureConstants.Destrachan].Add(helper.BuildData(FeatConstants.SpecialQualities.Blind));
             testCases[CreatureConstants.Destrachan].Add(helper.BuildData(FeatConstants.SpecialQualities.Blindsight, power: 100));
             testCases[CreatureConstants.Destrachan].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Gaze attacks"));
             testCases[CreatureConstants.Destrachan].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Visual effects"));
@@ -2990,6 +3004,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             testCases[CreatureConstants.Grig_WithFiddle].Add(helper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.ShortSword, requiresEquipment: true));
             testCases[CreatureConstants.Grig_WithFiddle].Add(helper.BuildData(FeatConstants.WeaponProficiency_Martial, focus: WeaponConstants.Longbow, requiresEquipment: true));
 
+            testCases[CreatureConstants.Grimlock].Add(helper.BuildData(FeatConstants.SpecialQualities.Blind));
             testCases[CreatureConstants.Grimlock].Add(helper.BuildData(FeatConstants.SpecialQualities.Blindsight, power: 40));
             testCases[CreatureConstants.Grimlock].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Gaze attacks"));
             testCases[CreatureConstants.Grimlock].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Visual effects"));
@@ -3778,6 +3793,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
 
             testCases[CreatureConstants.Raven].Add(helper.BuildData(FeatConstants.WeaponFinesse));
 
+            testCases[CreatureConstants.Raven_Chicken].Add(helper.BuildData(FeatConstants.WeaponFinesse));
+
+            testCases[CreatureConstants.Raven_Turkey].Add(helper.BuildData(FeatConstants.WeaponFinesse));
+
+            testCases[CreatureConstants.Raven_Peacock].Add(helper.BuildData(FeatConstants.WeaponFinesse));
+
+            testCases[CreatureConstants.Raven_Pheasant].Add(helper.BuildData(FeatConstants.WeaponFinesse));
+
             testCases[CreatureConstants.Ravid].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: FeatConstants.Foci.Elements.Fire));
             testCases[CreatureConstants.Ravid].Add(helper.BuildData(FeatConstants.SpecialQualities.Flight));
             testCases[CreatureConstants.Ravid].Add(helper.BuildData(FeatConstants.SpecialQualities.SpellLikeAbility, focus: SpellConstants.AnimateObjects, frequencyQuantity: 1, frequencyTimePeriod: FeatConstants.Frequencies.Round));
@@ -4351,6 +4374,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             testCases[CreatureConstants.YethHound].Add(helper.BuildData(FeatConstants.SpecialQualities.Flight));
             testCases[CreatureConstants.YethHound].Add(helper.BuildData(FeatConstants.SpecialQualities.Scent));
 
+            testCases[CreatureConstants.Yrthak].Add(helper.BuildData(FeatConstants.SpecialQualities.Blind));
             testCases[CreatureConstants.Yrthak].Add(helper.BuildData(FeatConstants.SpecialQualities.Blindsight, power: 120));
             testCases[CreatureConstants.Yrthak].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Gaze attacks"));
             testCases[CreatureConstants.Yrthak].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Visual effects"));
@@ -4576,6 +4600,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
             testCases[CreatureConstants.Types.MonstrousHumanoid].Add(helper.BuildData(FeatConstants.ShieldProficiency, requiresEquipment: true));
 
             testCases[CreatureConstants.Types.Ooze].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Mind-Affecting Effects"));
+            testCases[CreatureConstants.Types.Ooze].Add(helper.BuildData(FeatConstants.SpecialQualities.Blind));
             testCases[CreatureConstants.Types.Ooze].Add(helper.BuildData(FeatConstants.SpecialQualities.Blindsight, power: 60));
             testCases[CreatureConstants.Types.Ooze].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Gaze attacks, visual effects, illusions, and other attack forms that rely on sight"));
             testCases[CreatureConstants.Types.Ooze].Add(helper.BuildData(FeatConstants.SpecialQualities.Immunity, focus: "Poison"));

@@ -35,9 +35,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             collections["first"] = new[] { "9266" };
             collections["second"] = new[] { "42" };
 
-            var adjustments = adjustmentsSelector.SelectAllFrom(TableName);
+            var adjustments = adjustmentsSelector.SelectAllFrom<int>(TableName);
             Assert.That(adjustments["first"], Is.EqualTo(9266));
             Assert.That(adjustments["second"], Is.EqualTo(42));
+        }
+
+        [Test]
+        public void SelectAllAdjustments_Double()
+        {
+            collections["first"] = new[] { "92.66" };
+            collections["second"] = new[] { "4.2" };
+
+            var adjustments = adjustmentsSelector.SelectAllFrom<double>(TableName);
+            Assert.That(adjustments["first"], Is.EqualTo(92.66));
+            Assert.That(adjustments["second"], Is.EqualTo(4.2));
         }
 
         [Test]
@@ -46,7 +57,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             collections["first"] = Enumerable.Empty<string>();
             collections["second"] = new[] { "42" };
 
-            Assert.That(() => adjustmentsSelector.SelectAllFrom(TableName), Throws.InstanceOf<InvalidOperationException>());
+            Assert.That(() => adjustmentsSelector.SelectAllFrom<int>(TableName), Throws.InstanceOf<InvalidOperationException>());
         }
 
         [Test]

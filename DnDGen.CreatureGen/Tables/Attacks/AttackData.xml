@@ -1017,8 +1017,33 @@
   <collection>
     <name>Bison</name>
     <entry>Gore@1d8#Piercing#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
-    <entry>Stampede@@True@True@True@True@1@Round (6 seconds)@Strength@Reflex@extraordinary ability@@0@0</entry>
+    <entry>Stampede@@True@True@True@True@1@Round (6 seconds)@Strength@Reflex@extraordinary ability@1d12 per 5 bison in herd@0@0</entry>
   </collection>
+	<collection>
+		<name>Goat</name>
+		<entry>Ram@1d6#Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+		<entry>Stampede@@True@True@True@True@1@Round (6 seconds)@Strength@Reflex@extraordinary ability@1d8 per 5 goats in herd@0@0</entry>
+	</collection>
+	<collection>
+		<name>Llama</name>
+		<entry>Bite@1d3#Piercing/Slashing/Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+		<entry>Stampede@@True@True@True@True@1@Round (6 seconds)@Strength@Reflex@extraordinary ability@1d12 per 5 llamas in herd@0@0</entry>
+	</collection>
+	<collection>
+		<name>Milk Cow</name>
+		<entry>Gore@1d8#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+		<entry>Stampede@@True@True@True@True@1@Round (6 seconds)@Strength@Reflex@extraordinary ability@1d12 per 5 milk cows in herd@0@0</entry>
+	</collection>
+	<collection>
+		<name>Ox</name>
+		<entry>Gore@1d8#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+		<entry>Stampede@@True@True@True@True@1@Round (6 seconds)@Strength@Reflex@extraordinary ability@1d12 per 5 oxen in herd@0@0</entry>
+	</collection>
+	<collection>
+		<name>Sheep</name>
+		<entry>Ram@1d6#Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+		<entry>Stampede@@True@True@True@True@1@Round (6 seconds)@Strength@Reflex@extraordinary ability@1d8 per 5 sheep in herd@0@0</entry>
+	</collection>
   <collection>
     <name>Black Pudding</name>
     <entry>Slam@2d6#Bludgeoning#,2d6#Acid#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
@@ -1052,6 +1077,11 @@
     <entry>Gore@1d8#Piercing#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
     <entry>Ferocity@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
   </collection>
+	<collection>
+		<name>Pig</name>
+		<entry>Bite@1d2#Piercing/Slashing/Bludgeoning#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+		<entry>Ferocity@@True@True@False@True@1@Round (6 seconds)@@@extraordinary ability@@0@0</entry>
+	</collection>
   <collection>
     <name>Dire Boar</name>
     <entry>Gore@1d8#Piercing#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
@@ -4408,6 +4438,22 @@
     <name>Raven</name>
     <entry>Claws@1d2#Piercing/Slashing#@True@True@True@False@1@Round (6 seconds)@@@melee@@1.5@0</entry>
   </collection>
+	<collection>
+		<name>Chicken</name>
+		<entry>Peck@1d2#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+	</collection>
+	<collection>
+		<name>Turkey</name>
+		<entry>Peck@1d2#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+	</collection>
+	<collection>
+		<name>Peacock</name>
+		<entry>Peck@1d2#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+	</collection>
+	<collection>
+		<name>Pheasant</name>
+		<entry>Peck@1d2#Piercing#@True@True@False@False@1@Round (6 seconds)@@@melee@@0.5@0</entry>
+	</collection>
   <collection>
     <name>Ravid</name>
     <entry>Tail Slap@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@Positive Energy@1@0</entry>
@@ -5219,6 +5265,6 @@
     <entry>Slam@1d6#Bludgeoning#@True@True@True@False@1@Round (6 seconds)@@@melee@@1@0</entry>
   </collection>
   <collection>
-    <name></name>
+    <name>None</name>
   </collection>
 </collections>

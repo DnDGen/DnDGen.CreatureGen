@@ -27,6 +27,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         [TestCase(TableNameConstants.Collection.RequiredAlignments, "RequiredAlignments")]
         [TestCase(TableNameConstants.Collection.RequiredFeats, "RequiredFeats")]
         [TestCase(TableNameConstants.Collection.RequiredSizes, "RequiredSizes")]
+        [TestCase(TableNameConstants.Collection.SaveGroups, "SaveGroups")]
         [TestCase(TableNameConstants.Collection.SkillData, "SkillData")]
         [TestCase(TableNameConstants.Collection.SkillGroups, "SkillGroups")]
         [TestCase(TableNameConstants.Collection.SpecialQualityData, "SpecialQualityData")]

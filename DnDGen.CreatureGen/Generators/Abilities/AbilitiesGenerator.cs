@@ -3,7 +3,6 @@ using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.RollGen;
-using DnDGen.TreasureGen.Items;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,7 +19,7 @@ namespace DnDGen.CreatureGen.Generators.Abilities
             this.dice = dice;
         }
 
-        public Dictionary<string, Ability> GenerateFor(string creatureName)
+        public Dictionary<string, Ability> GenerateFor(string creatureName, AbilityRandomizer randomizer)
         {
             var abilitySelections = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, creatureName);
             var allAbilities = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, GroupConstants.All);
@@ -34,7 +33,30 @@ namespace DnDGen.CreatureGen.Generators.Abilities
             foreach (var selection in abilitySelections)
             {
                 abilities[selection.Type].RacialAdjustment = selection.Amount;
-                abilities[selection.Type].BaseScore = dice.Roll(3).d6().AsSum();
+
+                if (randomizer.AbilityAdvancements.ContainsKey(selection.Type))
+                {
+                    abilities[selection.Type].AdvancementAdjustment = randomizer.AbilityAdvancements[selection.Type];
+                }
+
+                if (randomizer.SetRolls.ContainsKey(selection.Type))
+                {
+                    abilities[selection.Type].BaseScore = randomizer.SetRolls[selection.Type];
+                }
+                else
+                {
+                    abilities[selection.Type].BaseScore = dice.Roll(randomizer.Roll).AsSum();
+                }
+            }
+
+            if (randomizer.PriorityAbility != null && abilities.ContainsKey(randomizer.PriorityAbility))
+            {
+                var maxAbilityScore = abilities.Values.Max(a => a.BaseScore);
+                var maxAbility = abilities.Values.First(a => a.BaseScore == maxAbilityScore);
+                var originalAbilityScore = abilities[randomizer.PriorityAbility].BaseScore;
+
+                abilities[randomizer.PriorityAbility].BaseScore = maxAbilityScore;
+                maxAbility.BaseScore = originalAbilityScore;
             }
 
             var missingAbilities = allAbilities.Select(a => a.Type).Except(abilitySelections.Select(a => a.Type));
@@ -51,17 +73,14 @@ namespace DnDGen.CreatureGen.Generators.Abilities
         {
             if (equipment.Armor != null)
             {
-                var armor = equipment.Armor as Armor;
-                abilities[AbilityConstants.Dexterity].MaxModifier = armor.MaxDexterityBonus;
+                abilities[AbilityConstants.Dexterity].MaxModifier = equipment.Armor.MaxDexterityBonus;
             }
 
             if (equipment.Shield != null)
             {
-                var shield = equipment.Shield as Armor;
-
-                if (shield.MaxDexterityBonus < abilities[AbilityConstants.Dexterity].MaxModifier)
+                if (equipment.Shield.MaxDexterityBonus < abilities[AbilityConstants.Dexterity].MaxModifier)
                 {
-                    abilities[AbilityConstants.Dexterity].MaxModifier = shield.MaxDexterityBonus;
+                    abilities[AbilityConstants.Dexterity].MaxModifier = equipment.Shield.MaxDexterityBonus;
                 }
             }
 

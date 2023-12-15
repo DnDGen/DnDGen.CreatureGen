@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace DnDGen.CreatureGen.Creatures
 {
@@ -142,7 +143,7 @@ namespace DnDGen.CreatureGen.Creatures
             public const string Lycanthrope_Wolf_Natural = "Lycanthrope, Wolf (Werewolf, Natural)";
             public const string Lycanthrope_Wolf_Dire_Afflicted = "Lycanthrope, Dire Wolf (Dire Werewolf, Afflicted)";
             public const string Lycanthrope_Wolf_Dire_Natural = "Lycanthrope, Dire Wolf (Dire Werewolf, Natural)";
-            public const string None = "";
+            public const string None = "None";
             public const string Skeleton = "Skeleton";
             public const string Vampire = "Vampire";
             public const string Zombie = "Zombie";
@@ -198,6 +199,7 @@ namespace DnDGen.CreatureGen.Creatures
             public const string Arrowhawk = "Arrowhawk";
             public const string Bear = "Bear";
             public const string Centipede_Monstrous = "Monstrous Centipede";
+            public const string Chimera = "Chimera";
             public const string Cryohydra = "Cryohydra";
             public const string Demon = "Demon";
             public const string Devil = "Devil";
@@ -431,11 +433,17 @@ namespace DnDGen.CreatureGen.Creatures
         public const string Beholder_Gauth = "Gauth (Lesser Beholder)";
         public const string Belker = "Belker";
         public const string Bison = "Bison";
+        public const string Bison_Goat = "Goat";
+        public const string Bison_MilkCow = "Milk Cow";
+        public const string Bison_Ox = "Ox";
+        public const string Bison_Sheep = "Sheep";
+        public const string Bison_Llama = "Llama";
         public const string BlackPudding = "Black Pudding";
         public const string BlackPudding_Elder = "Elder Black Pudding";
         public const string BlinkDog = "Blink Dog";
         public const string Boar = "Boar";
         public const string Boar_Dire = "Dire Boar";
+        public const string Boar_Pig = "Pig";
         public const string Bodak = "Bodak";
         public const string BombardierBeetle_Giant = "Giant Bombardier Beetle";
         public const string BoneDevil_Osyluth = "Bone Devil (Osyluth)";
@@ -844,6 +852,10 @@ namespace DnDGen.CreatureGen.Creatures
         public const string Rat_Dire = "Dire Rat";
         public const string Rat_Swarm = "Rat Swarm";
         public const string Raven = "Raven";
+        public const string Raven_Chicken = "Chicken";
+        public const string Raven_Turkey = "Turkey";
+        public const string Raven_Peacock = "Peacock";
+        public const string Raven_Pheasant = "Pheasant";
         public const string Ravid = "Ravid";
         public const string RazorBoar = "Razor Boar";
         public const string Remorhaz = "Remorhaz";
@@ -1157,11 +1169,17 @@ namespace DnDGen.CreatureGen.Creatures
                 Beholder_Gauth,
                 Belker,
                 Bison,
+                Bison_Goat,
+                Bison_MilkCow,
+                Bison_Ox,
+                Bison_Sheep,
+                Bison_Llama,
                 BlackPudding,
                 BlackPudding_Elder,
                 BlinkDog,
                 Boar,
                 Boar_Dire,
+                Boar_Pig,
                 Bodak,
                 BombardierBeetle_Giant,
                 BoneDevil_Osyluth,
@@ -1570,6 +1588,10 @@ namespace DnDGen.CreatureGen.Creatures
                 Rat_Dire,
                 Rat_Swarm,
                 Raven,
+                Raven_Chicken,
+                Raven_Turkey,
+                Raven_Peacock,
+                Raven_Pheasant,
                 Ravid,
                 RazorBoar,
                 Remorhaz,
@@ -1701,6 +1723,8 @@ namespace DnDGen.CreatureGen.Creatures
                 YuanTi_Pureblood,
             };
         }
+
+        public static IEnumerable<string> GetAllNonCharacters() => GetAll().Except(GetAllCharacters());
 
         public static IEnumerable<string> GetAllCharacters()
         {

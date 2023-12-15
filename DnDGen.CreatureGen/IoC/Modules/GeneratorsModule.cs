@@ -22,6 +22,7 @@ namespace DnDGen.CreatureGen.IoC.Modules
         public override void Load()
         {
             Bind<ICreatureVerifier>().To<CreatureVerifier>();
+            Bind<ICreaturePrototypeFactory>().To<CreaturePrototypeFactory>();
 
             Bind<IHitPointsGenerator>().To<HitPointsGenerator>();
             Bind<IArmorClassGenerator>().To<ArmorClassGenerator>();

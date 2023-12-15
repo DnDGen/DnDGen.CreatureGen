@@ -12,6 +12,7 @@ using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Selectors.Selections;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Verifiers.Exceptions;
 using DnDGen.Infrastructure.Selectors.Collections;
 using DnDGen.RollGen;
 using System;
@@ -37,6 +38,8 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
         private readonly ISkillsGenerator skillsGenerator;
         private readonly ISpeedsGenerator speedsGenerator;
         private readonly IEnumerable<string> creatureTypes;
+        private readonly IAdjustmentsSelector adjustmentSelector;
+        private readonly ICreaturePrototypeFactory prototypeFactory;
 
         public LycanthropeApplicator(
             ICollectionSelector collectionSelector,
@@ -48,7 +51,9 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             IAttacksGenerator attacksGenerator,
             ISavesGenerator savesGenerator,
             ISkillsGenerator skillsGenerator,
-            ISpeedsGenerator speedsGenerator)
+            ISpeedsGenerator speedsGenerator,
+            IAdjustmentsSelector adjustmentSelector,
+            ICreaturePrototypeFactory prototypeFactory)
         {
             this.collectionSelector = collectionSelector;
             this.creatureDataSelector = creatureDataSelector;
@@ -60,6 +65,8 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             this.savesGenerator = savesGenerator;
             this.skillsGenerator = skillsGenerator;
             this.speedsGenerator = speedsGenerator;
+            this.adjustmentSelector = adjustmentSelector;
+            this.prototypeFactory = prototypeFactory;
 
             creatureTypes = new[]
             {
@@ -68,28 +75,31 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             };
         }
 
-        public bool IsCompatible(string creature)
-        {
-            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
-            if (!creatureTypes.Contains(types.First()))
-                return false;
-
-            var creatureData = creatureDataSelector.SelectFor(creature);
-            var animalData = creatureDataSelector.SelectFor(AnimalSpecies);
-            var sizes = SizeConstants.GetOrdered();
-            var creatureIndex = Array.IndexOf(sizes, creatureData.Size);
-            var animalIndex = Array.IndexOf(sizes, animalData.Size);
-
-            if (Math.Abs(creatureIndex - animalIndex) > 1)
-                return false;
-
-            return true;
-        }
-
-        public Creature ApplyTo(Creature creature)
+        public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
             var animalCreatureType = new CreatureType { Name = CreatureConstants.Types.Animal };
             var animalData = creatureDataSelector.SelectFor(AnimalSpecies);
+            var animalHitDice = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, AnimalSpecies);
+            var compatibility = IsCompatible(
+                creature.Type.AllTypes,
+                new[] { creature.Alignment.Full },
+                creature.Size,
+                creature.ChallengeRating,
+                animalData.Size,
+                animalHitDice,
+                filters);
+
+            if (!compatibility.Compatible)
+            {
+                throw new InvalidCreatureException(
+                    compatibility.Reason,
+                    asCharacter,
+                    creature.Name,
+                    filters?.Type,
+                    filters?.ChallengeRating,
+                    filters?.Alignment,
+                    creature.Templates.Union(new[] { LycanthropeSpecies }).ToArray());
+            }
 
             // Template
             UpdateCreatureTemplate(creature);
@@ -153,23 +163,44 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
 
         private void UpdateCreatureType(Creature creature)
         {
-            creature.Type.SubTypes = creature.Type.SubTypes.Union(new[]
-            {
-                CreatureConstants.Types.Subtypes.Shapechanger,
-            });
+            var adjustedTypes = UpdateCreatureType(creature.Type.Name, creature.Type.SubTypes);
+            creature.Type = new CreatureType(adjustedTypes);
+        }
+
+        private void UpdateCreatureType(CreaturePrototype creature)
+        {
+            var adjustedTypes = UpdateCreatureType(creature.Type.Name, creature.Type.SubTypes);
+            creature.Type = new CreatureType(adjustedTypes);
+        }
+
+        private IEnumerable<string> UpdateCreatureType(string creatureType, IEnumerable<string> subtypes)
+        {
+            return new[] { creatureType }
+                .Union(subtypes)
+                .Union(new[] { CreatureConstants.Types.Subtypes.Shapechanger });
         }
 
         private void UpdateCreatureAbilities(Creature creature)
         {
-            if (creature.Abilities[AbilityConstants.Wisdom].HasScore)
-                creature.Abilities[AbilityConstants.Wisdom].TemplateAdjustment = 2;
-
             var animalAbilityAdjustments = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, AnimalSpecies);
+            UpdateCreatureAbilities(creature.Abilities, animalAbilityAdjustments);
+        }
+
+        private void UpdateCreatureAbilities(CreaturePrototype creature, IEnumerable<TypeAndAmountSelection> animalAbilityAdjustments)
+        {
+            UpdateCreatureAbilities(creature.Abilities, animalAbilityAdjustments);
+        }
+
+        private void UpdateCreatureAbilities(Dictionary<string, Ability> abilities, IEnumerable<TypeAndAmountSelection> animalAbilityAdjustments)
+        {
+            if (abilities[AbilityConstants.Wisdom].HasScore)
+                abilities[AbilityConstants.Wisdom].TemplateAdjustment += 2;
+
             var physicalAbilities = new[] { AbilityConstants.Strength, AbilityConstants.Constitution, AbilityConstants.Dexterity };
 
             foreach (var adjustment in animalAbilityAdjustments.Where(a => physicalAbilities.Contains(a.Type)))
             {
-                creature.Abilities[adjustment.Type].Bonuses.Add(new Bonus
+                abilities[adjustment.Type].Bonuses.Add(new Bonus
                 {
                     Value = adjustment.Amount,
                     Condition = "In Animal or Hybrid form",
@@ -190,29 +221,59 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
 
         private void UpdateCreatureChallengeRating(Creature creature, HitPoints animalHitPoints)
         {
+            creature.ChallengeRating = UpdateCreatureChallengeRating(creature.ChallengeRating, animalHitPoints.HitDice[0].Quantity);
+        }
+
+        private void UpdateCreatureChallengeRating(CreaturePrototype creature, double animalHitDiceQuantity)
+        {
+            creature.ChallengeRating = UpdateCreatureChallengeRating(creature.ChallengeRating, animalHitDiceQuantity);
+        }
+
+        private string UpdateCreatureChallengeRating(string challengeRating, double animalHitDiceQuantity)
+        {
             var increase = 2;
 
-            if (animalHitPoints.HitDice[0].Quantity > 20)
+            if (animalHitDiceQuantity > 20)
             {
                 increase = 6;
             }
-            else if (animalHitPoints.HitDice[0].Quantity > 10)
+            else if (animalHitDiceQuantity > 10)
             {
                 increase = 5;
             }
-            else if (animalHitPoints.HitDice[0].Quantity > 5)
+            else if (animalHitDiceQuantity > 5)
             {
                 increase = 4;
             }
-            else if (animalHitPoints.HitDice[0].Quantity > 2)
+            else if (animalHitDiceQuantity > 2)
             {
                 increase = 3;
             }
 
-            creature.ChallengeRating = ChallengeRatingConstants.IncreaseChallengeRating(creature.ChallengeRating, increase);
+            return ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, increase);
         }
 
+        private IEnumerable<string> GetChallengeRatings(string challengeRating) => new[]
+        {
+            ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 2),
+            ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 3),
+            ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 4),
+            ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 5),
+            ChallengeRatingConstants.IncreaseChallengeRating(challengeRating, 6),
+        };
+
         private void UpdateCreatureLevelAdjustment(Creature creature)
+        {
+            if (creature.LevelAdjustment.HasValue)
+            {
+                if (LycanthropeSpecies.Contains("Afflicted"))
+                    creature.LevelAdjustment += 2;
+                else if (LycanthropeSpecies.Contains("Natural"))
+                    creature.LevelAdjustment += 3;
+            }
+        }
+
+        private void UpdateCreatureLevelAdjustment(CreaturePrototype creature)
         {
             if (creature.LevelAdjustment.HasValue)
             {
@@ -544,13 +605,35 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
 
         private void UpdateCreatureTemplate(Creature creature)
         {
-            creature.Template = LycanthropeSpecies;
+            creature.Templates.Add(LycanthropeSpecies);
         }
 
-        public async Task<Creature> ApplyToAsync(Creature creature)
+        public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, Filters filters = null)
         {
             var animalCreatureType = new CreatureType { Name = CreatureConstants.Types.Animal };
             var animalData = creatureDataSelector.SelectFor(AnimalSpecies);
+            var animalHitDice = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, AnimalSpecies);
+            var compatibility = IsCompatible(
+                creature.Type.AllTypes,
+                new[] { creature.Alignment.Full },
+                creature.Size,
+                creature.ChallengeRating,
+                animalData.Size,
+                animalHitDice,
+                filters);
+
+            if (!compatibility.Compatible)
+            {
+                throw new InvalidCreatureException(
+                    compatibility.Reason,
+                    asCharacter,
+                    creature.Name,
+                    filters?.Type,
+                    filters?.ChallengeRating,
+                    filters?.Alignment,
+                    creature.Templates.Union(new[] { LycanthropeSpecies }).ToArray());
+            }
+
             var tasks = new List<Task>();
 
             // Template
@@ -656,6 +739,210 @@ namespace DnDGen.CreatureGen.Templates.Lycanthropes
             tasks.Clear();
 
             return creature;
+        }
+
+        public IEnumerable<string> GetCompatibleCreatures(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
+        {
+            var filteredBaseCreatures = sourceCreatures;
+            var allData = creatureDataSelector.SelectAll();
+            var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
+            var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
+            var allAlignments = collectionSelector.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups);
+
+            if (!string.IsNullOrEmpty(filters?.ChallengeRating))
+            {
+                filteredBaseCreatures = filteredBaseCreatures
+                    .Where(c => CreatureInRange(allData[c].ChallengeRating, filters.ChallengeRating, asCharacter, allHitDice[c], allTypes[c]));
+            }
+
+            if (!string.IsNullOrEmpty(filters?.Type))
+            {
+                //INFO: Unless this type is added by a template, it must already exist on the base creature
+                //So first, we check to see if the template could return this type for a human
+                //If not, then we can filter the base creatures down to ones that already have this type
+                var templateTypes = GetPotentialTypes(allTypes[CreatureConstants.Human]).Except(allTypes[CreatureConstants.Human]);
+                if (!templateTypes.Contains(filters.Type))
+                {
+                    filteredBaseCreatures = filteredBaseCreatures.Where(c => allTypes[c].Contains(filters.Type));
+                }
+            }
+
+            if (!string.IsNullOrEmpty(filters?.Alignment))
+            {
+                //INFO: Lycanthropes do not change the base creature's alignment
+                //So as long as the base creature's alignment fits, we are good
+                var alignmentCreatures = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureGroups, filters.Alignment);
+                filteredBaseCreatures = filteredBaseCreatures.Intersect(alignmentCreatures);
+            }
+
+            var templateCreatures = filteredBaseCreatures
+                .Where(c => IsCompatible(
+                    allTypes[c],
+                    allAlignments[c + GroupConstants.Exploded],
+                    allData[c].Size,
+                    allData[c].ChallengeRating,
+                    allData[AnimalSpecies].Size,
+                    allHitDice[c],
+                    allHitDice[AnimalSpecies],
+                    asCharacter,
+                    filters));
+
+            return templateCreatures;
+        }
+
+        private IEnumerable<string> GetPotentialTypes(IEnumerable<string> types)
+        {
+            var creatureType = types.First();
+            var subtypes = types.Skip(1);
+
+            var adjustedTypes = UpdateCreatureType(creatureType, subtypes);
+
+            return adjustedTypes;
+        }
+
+        private bool IsCompatible(
+            IEnumerable<string> types,
+            IEnumerable<string> alignments,
+            string creatureSize,
+            string creatureChallengeRating,
+            string animalSize,
+            double creatureHitDiceQuantity,
+            double animalHitDiceQuantity,
+            bool asCharacter,
+            Filters filters)
+        {
+            var creatureType = types.First();
+
+            if (asCharacter && creatureHitDiceQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
+            {
+                creatureChallengeRating = ChallengeRatingConstants.CR0;
+            }
+
+            var compatibility = IsCompatible(types, alignments, creatureSize, creatureChallengeRating, animalSize, animalHitDiceQuantity, filters);
+            return compatibility.Compatible;
+        }
+
+        private (bool Compatible, string Reason) IsCompatible(
+            IEnumerable<string> types,
+            IEnumerable<string> alignments,
+            string creatureSize,
+            string creatureChallengeRating,
+            string animalSize,
+            double animalHitDiceQuantity,
+            Filters filters)
+        {
+            var compatibility = IsCompatible(types, creatureSize, animalSize);
+            if (!compatibility.Compatible)
+                return (false, compatibility.Reason);
+
+            if (!string.IsNullOrEmpty(filters?.Type))
+            {
+                var updatedTypes = GetPotentialTypes(types);
+                if (!updatedTypes.Contains(filters.Type))
+                    return (false, $"Type filter '{filters.Type}' is not valid");
+            }
+
+            if (!string.IsNullOrEmpty(filters?.ChallengeRating))
+            {
+                var cr = UpdateCreatureChallengeRating(creatureChallengeRating, animalHitDiceQuantity);
+                if (cr != filters.ChallengeRating)
+                    return (false, $"CR filter {filters.ChallengeRating} does not match updated creature CR {cr} (from CR {creatureChallengeRating})");
+            }
+
+            if (!string.IsNullOrEmpty(filters?.Alignment))
+            {
+                if (!alignments.Contains(filters.Alignment))
+                    return (false, $"Alignment filter '{filters.Alignment}' is not valid");
+            }
+
+            return (true, null);
+        }
+
+        private (bool Compatible, string Reason) IsCompatible(IEnumerable<string> types, string creatureSize, string animalSize)
+        {
+            if (!creatureTypes.Contains(types.First()))
+                return (false, $"Type '{types.First()}' is not valid");
+
+            var sizes = SizeConstants.GetOrdered();
+            var creatureIndex = Array.IndexOf(sizes, creatureSize);
+            var animalIndex = Array.IndexOf(sizes, animalSize);
+
+            if (Math.Abs(creatureIndex - animalIndex) > 1)
+                return (false, $"Sizes {creatureSize} (creature) and {animalSize} (animal) are too far apart");
+
+            return (true, null);
+        }
+
+        private bool CreatureInRange(
+            string creatureChallengeRating,
+            string filterChallengeRating,
+            bool asCharacter,
+            double creatureHitDiceQuantity,
+            IEnumerable<string> creatureTypes)
+        {
+            var creatureType = creatureTypes.First();
+
+            if (asCharacter && creatureHitDiceQuantity <= 1 && creatureType == CreatureConstants.Types.Humanoid)
+            {
+                creatureChallengeRating = ChallengeRatingConstants.CR0;
+            }
+
+            var templateChallengeRatings = GetChallengeRatings(creatureChallengeRating);
+            return templateChallengeRatings.Contains(filterChallengeRating);
+        }
+
+        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<string> sourceCreatures, bool asCharacter, Filters filters = null)
+        {
+            var compatibleCreatures = GetCompatibleCreatures(sourceCreatures, asCharacter, filters);
+            if (!compatibleCreatures.Any())
+                return Enumerable.Empty<CreaturePrototype>();
+
+            var animalAbilityAdjustments = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, AnimalSpecies);
+            var animalHitDice = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, AnimalSpecies);
+
+            var prototypes = prototypeFactory.Build(compatibleCreatures, asCharacter);
+            var updatedPrototypes = prototypes.Select(p => ApplyToPrototype(p, filters?.Alignment, animalAbilityAdjustments, animalHitDice));
+
+            return updatedPrototypes;
+        }
+
+        private CreaturePrototype ApplyToPrototype(
+            CreaturePrototype prototype,
+            string presetAlignment,
+            IEnumerable<TypeAndAmountSelection> animalAbilityAdjustments,
+            double animalHitDiceQuantity)
+        {
+            UpdateCreatureAbilities(prototype, animalAbilityAdjustments);
+            UpdateCreatureChallengeRating(prototype, animalHitDiceQuantity);
+            UpdateCreatureLevelAdjustment(prototype);
+            UpdateCreatureType(prototype);
+
+            if (!string.IsNullOrEmpty(presetAlignment))
+            {
+                prototype.Alignments = prototype.Alignments.Where(adjustmentSelector => adjustmentSelector.Full == presetAlignment).ToList();
+            }
+
+            return prototype;
+        }
+
+        public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, bool asCharacter, Filters filters = null)
+        {
+            var animalData = creatureDataSelector.SelectFor(AnimalSpecies);
+            var animalHitDice = adjustmentSelector.SelectFrom<double>(TableNameConstants.Adjustments.HitDice, AnimalSpecies);
+            var animalAbilityAdjustments = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AbilityAdjustments, AnimalSpecies);
+
+            var compatiblePrototypes = sourceCreatures
+                .Where(p => IsCompatible(
+                    p.Type.AllTypes,
+                    p.Alignments.Select(a => a.Full),
+                    p.Size,
+                    p.ChallengeRating,
+                    animalData.Size,
+                    animalHitDice,
+                    filters).Compatible);
+            var updatedPrototypes = compatiblePrototypes.Select(p => ApplyToPrototype(p, filters?.Alignment, animalAbilityAdjustments, animalHitDice));
+
+            return updatedPrototypes;
         }
     }
 }

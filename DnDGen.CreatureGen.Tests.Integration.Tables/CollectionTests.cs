@@ -14,8 +14,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
         protected Dictionary<string, IEnumerable<string>> table;
         protected Dictionary<int, string> indices;
 
-        private const int EquivalentBatchSize = 100;
-
         [SetUp]
         public void CollectionSetup()
         {
@@ -38,10 +36,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
 
         protected void AssertUniqueCollection(IEnumerable<string> collection)
         {
-            var duplicateItems = collection.Where(s => collection.Count(c => c == s) > 1);
-            var duplicates = string.Join(", ", duplicateItems.Distinct());
-
-            Assert.That(collection, Is.Unique, $"Collection is not distinct: {duplicates}");
+            Assert.That(collection, Is.Unique);
         }
 
         protected virtual void PopulateIndices(IEnumerable<string> collection)
@@ -58,37 +53,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
 
         private void AssertCollection(IEnumerable<string> source, IEnumerable<string> expected)
         {
-            //INFO: This is faster than Is.EquivalentTo() for large collections
-            var sourceBatches = source
-                .OrderBy(e => e)
-                .Batch(EquivalentBatchSize)
-                .ToArray();
-            var expectedBatches = expected
-                .OrderBy(e => e)
-                .Batch(EquivalentBatchSize)
-                .ToArray();
-
-            for (var i = 0; i < expectedBatches.Length && i < sourceBatches.Length; i++)
-            {
-                Assert.That(sourceBatches[i], Is.EquivalentTo(expectedBatches[i]), $"Batch {i + 1} of {expectedBatches.Length}");
-            }
-
-            if (sourceBatches.Length == expectedBatches.Length)
-            {
-                Assert.That(source.Count(), Is.EqualTo(expected.Count()));
-            }
-            else if (sourceBatches.Length < expectedBatches.Length)
-            {
-                var i = sourceBatches.Length;
-                var missingSet = Enumerable.Empty<string>();
-                Assert.That(missingSet, Is.EquivalentTo(expectedBatches[i]), $"Batch {i + 1} of {expectedBatches.Length} (Missing)");
-            }
-            else if (sourceBatches.Length > expectedBatches.Length)
-            {
-                var i = expectedBatches.Length;
-                var extraSet = Enumerable.Empty<string>();
-                Assert.That(sourceBatches[i], Is.EquivalentTo(extraSet), $"Batch {i + 1} of {expectedBatches.Length} (Extra)");
-            }
+            Assert.That(source.OrderBy(s => s), Is.EquivalentTo(expected.OrderBy(e => e)));
         }
 
         public void AssertOrderedCollection(string name, params string[] collection)

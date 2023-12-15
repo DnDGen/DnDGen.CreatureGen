@@ -1,7 +1,6 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Selectors.Collections;
 using DnDGen.CreatureGen.Tables;
-using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 using System.Collections;
@@ -40,6 +39,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void CreatureSpeeds(string name, Dictionary<string, int> typesAndAmounts)
         {
             Assert.That(typesAndAmounts, Is.Not.Empty, name);
+            Assert.That(typesAndAmounts.Values, Is.All.Not.Negative, name);
+            Assert.That(typesAndAmounts.Values.Select(v => v % 5), Is.All.EqualTo(0), name);
             AssertTypesAndAmounts(name, typesAndAmounts);
         }
 
@@ -399,12 +400,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Belker][SpeedConstants.Land] = 30;
                 testCases[CreatureConstants.Belker][SpeedConstants.Fly] = 50;
                 testCases[CreatureConstants.Bison][SpeedConstants.Land] = 40;
+                testCases[CreatureConstants.Bison_Goat][SpeedConstants.Land] = 40;
+                testCases[CreatureConstants.Bison_Llama][SpeedConstants.Land] = 40;
+                testCases[CreatureConstants.Bison_MilkCow][SpeedConstants.Land] = 40;
+                testCases[CreatureConstants.Bison_Ox][SpeedConstants.Land] = 40;
+                testCases[CreatureConstants.Bison_Sheep][SpeedConstants.Land] = 40;
                 testCases[CreatureConstants.BlackPudding][SpeedConstants.Land] = 20;
                 testCases[CreatureConstants.BlackPudding][SpeedConstants.Climb] = 20;
                 testCases[CreatureConstants.BlackPudding_Elder][SpeedConstants.Land] = 20;
                 testCases[CreatureConstants.BlackPudding_Elder][SpeedConstants.Climb] = 20;
                 testCases[CreatureConstants.BlinkDog][SpeedConstants.Land] = 40;
                 testCases[CreatureConstants.Boar][SpeedConstants.Land] = 40;
+                testCases[CreatureConstants.Boar_Pig][SpeedConstants.Land] = 40;
                 testCases[CreatureConstants.Boar_Dire][SpeedConstants.Land] = 40;
                 testCases[CreatureConstants.Bodak][SpeedConstants.Land] = 20;
                 testCases[CreatureConstants.BombardierBeetle_Giant][SpeedConstants.Land] = 30;
@@ -1209,6 +1216,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 testCases[CreatureConstants.Rat_Swarm][SpeedConstants.Climb] = 15;
                 testCases[CreatureConstants.Raven][SpeedConstants.Land] = 10;
                 testCases[CreatureConstants.Raven][SpeedConstants.Fly] = 40;
+                testCases[CreatureConstants.Raven_Chicken][SpeedConstants.Land] = 10;
+                testCases[CreatureConstants.Raven_Chicken][SpeedConstants.Fly] = 10;
+                testCases[CreatureConstants.Raven_Pheasant][SpeedConstants.Land] = 10;
+                testCases[CreatureConstants.Raven_Pheasant][SpeedConstants.Fly] = 40;
+                testCases[CreatureConstants.Raven_Turkey][SpeedConstants.Land] = 10;
+                testCases[CreatureConstants.Raven_Turkey][SpeedConstants.Fly] = 10;
+                testCases[CreatureConstants.Raven_Peacock][SpeedConstants.Land] = 10;
+                testCases[CreatureConstants.Raven_Peacock][SpeedConstants.Fly] = 10;
                 testCases[CreatureConstants.Ravid][SpeedConstants.Land] = 20;
                 testCases[CreatureConstants.Ravid][SpeedConstants.Fly] = 60;
                 testCases[CreatureConstants.RazorBoar][SpeedConstants.Land] = 50;
@@ -1416,47 +1431,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
         }
 
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void CreatureHasAtLeast1Speed(string creature)
+        [TestCase(CreatureConstants.Types.Subtypes.Aquatic)]
+        [TestCase(CreatureConstants.Types.Subtypes.Water)]
+        public void AllCreaturesOfSubtypeHaveSwimSpeeds(string subtype)
         {
-            Assert.That(table.Keys, Contains.Item(creature));
-
-            var speeds = GetCollection(creature);
-            Assert.That(speeds, Is.Not.Empty, creature);
-        }
-
-        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
-        public void CreatureHasNonNegativeSpeedsAsMultiplesOf5(string creature)
-        {
-            Assert.That(table.Keys, Contains.Item(creature));
-
-            var speeds = typesAndAmountsSelector.Select(tableName, creature);
-            Assert.That(speeds.Select(s => s.Amount), Is.All.Not.Negative, creature);
-            Assert.That(speeds.Select(s => s.Amount % 5), Is.All.EqualTo(0), creature);
-        }
-
-        [Test]
-        public void AllAquaticCreaturesHaveSwimSpeeds()
-        {
-            var aquaticCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Aquatic);
-
-            Assert.That(table.Keys, Is.SupersetOf(aquaticCreatures));
-
-            foreach (var creature in aquaticCreatures)
-            {
-                var speeds = typesAndAmountsSelector.Select(tableName, creature);
-                var aquaticSpeed = speeds.FirstOrDefault(s => s.Type == SpeedConstants.Swim);
-
-                Assert.That(aquaticSpeed, Is.Not.Null, creature);
-                Assert.That(aquaticSpeed.Type, Is.EqualTo(SpeedConstants.Swim), creature);
-                Assert.That(aquaticSpeed.Amount, Is.Positive, creature);
-            }
-        }
-
-        [Test]
-        public void AllWaterCreaturesHaveSwimSpeeds()
-        {
-            var aquaticCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Water);
+            var aquaticCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, subtype);
 
             Assert.That(table.Keys, Is.SupersetOf(aquaticCreatures));
 
