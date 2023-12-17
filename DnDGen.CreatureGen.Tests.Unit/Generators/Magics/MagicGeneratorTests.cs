@@ -13,7 +13,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CharacterGen.Tests.Unit.Generators.Magics
+namespace DnDGen.CreatureGen.Tests.Unit.Generators.Magics
 {
     [TestFixture]
     public class MagicGeneratorTests
