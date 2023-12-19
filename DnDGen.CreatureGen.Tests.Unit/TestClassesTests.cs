@@ -33,10 +33,41 @@ namespace DnDGen.CreatureGen.Tests.Unit
                 var testsTotal = testsCount + testCasesCount + testCaseSourcesCount;
 
                 if (testsTotal > TestLimit)
-                    classesOverLimit.Add($"{testClass.FullName}: {testsTotal}");
+                    classesOverLimit.Add($"{testClass.Name}: {testsTotal}");
             }
 
             Assert.That(classesOverLimit, Is.Empty);
+        }
+
+        [Test]
+        public void TestCaseSourcesDoNotHaveTooManyTestCases()
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var classes = assembly.GetTypes();
+            var sourcesOverLimit = new Dictionary<string, int>();
+
+            foreach (var testClass in classes)
+            {
+                var methods = testClass.GetMethods();
+                var activeTests = methods.Where(m => IsActiveTest(m, testClass));
+
+                if (!activeTests.Any())
+                    continue;
+
+                var testCaseSources = activeTests.SelectMany(m => m.GetCustomAttributes<TestCaseSourceAttribute>());
+                foreach (var testCaseSource in testCaseSources)
+                {
+                    var key = $"{testCaseSource.SourceType?.Name ?? testClass.Name}:{testCaseSource.SourceName}";
+                    if (sourcesOverLimit.ContainsKey(key))
+                        continue;
+
+                    var count = GetTestCaseSourceCount(testCaseSource, testClass);
+                    if (count > TestLimit)
+                        sourcesOverLimit[key] = count;
+                }
+            }
+
+            Assert.That(sourcesOverLimit, Is.Empty);
         }
 
         private static bool IsActiveTest(MethodInfo method, Type testClass)
@@ -83,14 +114,18 @@ namespace DnDGen.CreatureGen.Tests.Unit
                 sourceClass = testCaseSource.SourceType;
             }
 
-            var method = sourceClass.GetMethod(testCaseSource.SourceName, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+            var flags = BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public;
+            var method = sourceClass.GetMethod(testCaseSource.SourceName, flags);
             if (method == null)
             {
-                var property = sourceClass.GetProperty(testCaseSource.SourceName, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
-                method = property.GetGetMethod();
+                var property = sourceClass.GetProperty(testCaseSource.SourceName, flags);
+                method = property?.GetMethod;
             }
 
-            var instance = Activator.CreateInstance(testClass);
+            if (method == null)
+                throw new InvalidOperationException($"Type '{sourceClass}' lacks a method or property '{testCaseSource.SourceName}'");
+
+            var instance = Activator.CreateInstance(sourceClass);
             var testCases = (IEnumerable)method.Invoke(instance, new object[0]);
 
             return testCases;

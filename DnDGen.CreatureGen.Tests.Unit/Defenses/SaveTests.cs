@@ -188,6 +188,35 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(bonus.Value, Is.EqualTo(value2));
         }
 
+        [TestCase(1, -5)]
+        [TestCase(2, -4)]
+        [TestCase(3, -4)]
+        [TestCase(4, -3)]
+        [TestCase(5, -3)]
+        [TestCase(6, -2)]
+        [TestCase(7, -2)]
+        [TestCase(8, -1)]
+        [TestCase(9, -1)]
+        [TestCase(10, 0)]
+        [TestCase(11, 0)]
+        [TestCase(12, 1)]
+        [TestCase(13, 1)]
+        [TestCase(14, 2)]
+        [TestCase(15, 2)]
+        [TestCase(16, 3)]
+        [TestCase(17, 3)]
+        [TestCase(18, 4)]
+        [TestCase(19, 4)]
+        [TestCase(20, 5)]
+        [TestCase(42, 16)]
+        public void TotalBonus_BasedOnAbilityBaseScore(int abilityBaseScore, int expectedBonus)
+        {
+            save.BaseAbility = new Ability(AbilityConstants.Charisma);
+            save.BaseAbility.BaseScore = abilityBaseScore;
+
+            Assert.That(save.TotalBonus, Is.EqualTo(expectedBonus));
+        }
+
         [TestCaseSource(typeof(SaveTestData), nameof(SaveTestData.TotalBonus))]
         public void TotalBonus(int abilityScore, int baseValue, IEnumerable<int> bonuses)
         {
@@ -232,9 +261,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             {
                 get
                 {
-                    foreach (var value1 in NumericTestData.AllTestValues)
+                    foreach (var value1 in NumericTestData.AllValues)
                     {
-                        foreach (var value2 in NumericTestData.AllTestValues)
+                        foreach (var value2 in NumericTestData.AllValues)
                         {
                             yield return new TestCaseData(value1, value2);
                         }
