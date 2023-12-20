@@ -56,6 +56,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
             Assert.That(source.OrderBy(s => s), Is.EquivalentTo(expected.OrderBy(e => e)), message);
         }
 
+        public void AssertWeightedCollection(string name, params string[] collection)
+        {
+            Assert.That(table, Contains.Key(name));
+            AssertWeightedCollection(table[name], collection, name);
+        }
+
+        private void AssertWeightedCollection(IEnumerable<string> source, IEnumerable<string> expected, string message)
+        {
+            var distinctSource = source.Distinct();
+            var distinctExpected = expected.Distinct();
+            AssertCollection(distinctSource, distinctExpected, message);
+
+            foreach (var sourceItem in distinctSource)
+            {
+                var sourceCount = source.Count(s => s == sourceItem);
+                var expectedCount = expected.Count(s => s == sourceItem);
+                Assert.That(sourceCount, Is.EqualTo(expectedCount));
+            }
+        }
+
         public void AssertOrderedCollection(string name, params string[] collection)
         {
             Assert.That(table.Keys, Contains.Item(name));

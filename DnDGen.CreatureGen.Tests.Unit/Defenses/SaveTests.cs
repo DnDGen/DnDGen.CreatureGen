@@ -3,7 +3,6 @@ using DnDGen.CreatureGen.Defenses;
 using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using NUnit.Framework;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Unit.Defenses
@@ -64,7 +63,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(save.IsConditional, Is.False);
         }
 
-        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.AllValues))]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.AllValuesTestCases))]
         public void OneBonus(int value)
         {
             save.AddBonus(value);
@@ -81,7 +80,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(save.IsConditional, Is.False);
         }
 
-        [TestCaseSource(typeof(SaveTestData), nameof(SaveTestData.Bonuses))]
+        [TestCaseSource(nameof(Bonuses))]
         public void TwoBonuses(int value1, int value2)
         {
             save.AddBonus(value1);
@@ -104,7 +103,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(save.IsConditional, Is.False);
         }
 
-        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.AllValues))]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.AllValuesTestCases))]
         public void ConditionalBonus(int value)
         {
             save.AddBonus(value, "condition");
@@ -121,7 +120,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(save.IsConditional, Is.True);
         }
 
-        [TestCaseSource(typeof(SaveTestData), nameof(SaveTestData.Bonuses))]
+        [TestCaseSource(nameof(Bonuses))]
         public void ConditionalBonuses(int value1, int value2)
         {
             save.AddBonus(value1, "condition 1");
@@ -144,7 +143,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(save.IsConditional, Is.True);
         }
 
-        [TestCaseSource(typeof(SaveTestData), nameof(SaveTestData.Bonuses))]
+        [TestCaseSource(nameof(Bonuses))]
         public void BonusAndConditionalBonus(int value1, int value2)
         {
             save.AddBonus(value1);
@@ -166,7 +165,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(bonus.Value, Is.EqualTo(value2));
         }
 
-        [TestCaseSource(typeof(SaveTestData), nameof(SaveTestData.Bonuses))]
+        [TestCaseSource(nameof(Bonuses))]
         public void ConditionalBonusAndBonus(int value1, int value2)
         {
             save.AddBonus(value1, "condition 1");
@@ -217,90 +216,115 @@ namespace DnDGen.CreatureGen.Tests.Unit.Defenses
             Assert.That(save.TotalBonus, Is.EqualTo(expectedBonus));
         }
 
-        [TestCaseSource(typeof(SaveTestData), nameof(SaveTestData.TotalBonus))]
-        public void TotalBonus(int abilityScore, int baseValue, IEnumerable<int> bonuses)
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.AllValuesTestCases))]
+        public void TotalBonus_BasedOnBaseValue(int baseValue)
         {
             save.BaseAbility = new Ability(AbilityConstants.Charisma);
-            save.BaseAbility.BaseScore = abilityScore;
             save.BaseValue = baseValue;
 
-            foreach (var bonus in bonuses)
-                save.AddBonus(bonus);
-
-            var expectedTotal = save.BaseAbility.Modifier + baseValue + bonuses.Sum();
-            Assert.That(save.TotalBonus, Is.EqualTo(expectedTotal));
+            Assert.That(save.TotalBonus, Is.EqualTo(baseValue));
         }
 
-        public class SaveTestData
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.AllValuesTestCases))]
+        public void TotalBonus_BasedOnBonus(int bonus)
         {
-            public static IEnumerable TotalBonus
+            save.BaseAbility = new Ability(AbilityConstants.Charisma);
+            save.AddBonus(bonus);
+
+            Assert.That(save.TotalBonus, Is.EqualTo(bonus));
+            Assert.That(save.IsConditional, Is.False);
+        }
+
+        [Test]
+        public void TotalBonus_BasedOnBonus_Conditional()
+        {
+            save.BaseAbility = new Ability(AbilityConstants.Charisma);
+            save.AddBonus(666, "my condition");
+
+            Assert.That(save.TotalBonus, Is.Zero);
+            Assert.That(save.IsConditional, Is.True);
+        }
+
+        [Test]
+        public void TotalBonus_BasedOnBonus_MultipleConditional()
+        {
+            save.BaseAbility = new Ability(AbilityConstants.Charisma);
+            save.AddBonus(666, "my condition");
+            save.AddBonus(6666, "my other condition");
+
+            Assert.That(save.TotalBonus, Is.Zero);
+            Assert.That(save.IsConditional, Is.True);
+        }
+
+        [TestCase(9266, 90210)]
+        [TestCase(42, -600)]
+        [TestCase(-1337, 1336)]
+        [TestCase(-96, -783)]
+        public void TotalBonus_BasedOnBonuses(int bonus1, int bonus2)
+        {
+            save.BaseAbility = new Ability(AbilityConstants.Charisma);
+            save.AddBonus(bonus1);
+            save.AddBonus(bonus2);
+
+            Assert.That(save.TotalBonus, Is.EqualTo(bonus1 + bonus2));
+            Assert.That(save.IsConditional, Is.False);
+        }
+
+        [Test]
+        public void TotalBonus_BasedOnBonuses_WithConditions()
+        {
+            save.BaseAbility = new Ability(AbilityConstants.Charisma);
+            save.AddBonus(9266);
+            save.AddBonus(90210);
+            save.AddBonus(666, "my condition");
+            save.AddBonus(6666, "my other condition");
+
+            Assert.That(save.TotalBonus, Is.EqualTo(9266 + 90210));
+            Assert.That(save.IsConditional, Is.True);
+        }
+
+        [Test]
+        public void TotalBonus_AllFactors()
+        {
+            save.BaseAbility = new Ability(AbilityConstants.Charisma);
+            save.BaseAbility.BaseScore = 9266;
+            save.BaseValue = 90210;
+            save.AddBonus(42);
+            save.AddBonus(-600);
+
+            var expectedTotal = save.BaseAbility.Modifier + 90210 + 42 - 600;
+            Assert.That(save.TotalBonus, Is.EqualTo(expectedTotal));
+            Assert.That(save.IsConditional, Is.False);
+        }
+
+        [Test]
+        public void TotalBonus_AllFactors_WithConditions()
+        {
+            save.BaseAbility = new Ability(AbilityConstants.Charisma);
+            save.BaseAbility.BaseScore = 9266;
+            save.BaseValue = 90210;
+            save.AddBonus(42);
+            save.AddBonus(1336, "my other condition");
+            save.AddBonus(-600);
+            save.AddBonus(-1337, "my condition");
+
+            var expectedTotal = save.BaseAbility.Modifier + 90210 + 42 - 600;
+            Assert.That(save.TotalBonus, Is.EqualTo(expectedTotal));
+            Assert.That(save.IsConditional, Is.True);
+        }
+
+        public static IEnumerable Bonuses
+        {
+            get
             {
-                get
+                foreach (var value1 in NumericTestData.AllTestValues)
                 {
-                    foreach (var abilityScore in NumericTestData.BaseAbilityTestNumbers)
+                    foreach (var value2 in NumericTestData.AllTestValues)
                     {
-                        foreach (var baseValue in NumericTestData.BaseTestNumbers)
-                        {
-                            yield return new TestCaseData(abilityScore, baseValue, Enumerable.Empty<int>());
-
-                            foreach (var bonus1 in NumericTestData.AllBaseTestValues)
-                            {
-                                yield return new TestCaseData(abilityScore, baseValue, new[] { bonus1 });
-
-                                foreach (var bonus2 in NumericTestData.AllBaseTestValues)
-                                {
-                                    yield return new TestCaseData(abilityScore, baseValue, new[] { bonus1, bonus2 });
-                                }
-                            }
-                        }
+                        yield return new TestCaseData(value1, value2);
                     }
                 }
             }
-
-            public static IEnumerable Bonuses
-            {
-                get
-                {
-                    foreach (var value1 in NumericTestData.AllValues)
-                    {
-                        foreach (var value2 in NumericTestData.AllValues)
-                        {
-                            yield return new TestCaseData(value1, value2);
-                        }
-                    }
-                }
-            }
-        }
-
-        [TestCaseSource(typeof(SaveTestData), nameof(SaveTestData.TotalBonus))]
-        public void TotalBonusWithOneConditional(int abilityScore, int baseValue, IEnumerable<int> bonuses)
-        {
-            save.BaseAbility = new Ability(AbilityConstants.Charisma);
-            save.BaseAbility.BaseScore = abilityScore;
-            save.BaseValue = baseValue;
-
-            foreach (var bonus in bonuses)
-                save.AddBonus(bonus);
-
-            if (save.Bonuses.Any())
-                save.Bonuses.First().Condition = "condition";
-
-            var expectedTotal = save.BaseAbility.Modifier + baseValue + bonuses.Skip(1).Sum();
-            Assert.That(save.TotalBonus, Is.EqualTo(expectedTotal));
-        }
-
-        [TestCaseSource(typeof(SaveTestData), nameof(SaveTestData.TotalBonus))]
-        public void TotalBonusWithAllConditional(int abilityScore, int baseValue, IEnumerable<int> bonuses)
-        {
-            save.BaseAbility = new Ability(AbilityConstants.Charisma);
-            save.BaseAbility.BaseScore = abilityScore;
-            save.BaseValue = baseValue;
-
-            foreach (var bonus in bonuses)
-                save.AddBonus(bonus, "condition");
-
-            var expectedTotal = save.BaseAbility.Modifier + baseValue;
-            Assert.That(save.TotalBonus, Is.EqualTo(expectedTotal));
         }
     }
 }

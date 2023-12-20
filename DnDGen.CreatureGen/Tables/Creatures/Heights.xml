@@ -435,8 +435,8 @@
   </collection>
   <collection>
     <name>Aquatic Elf</name>
-	  <entry>Male@4*12+5</entry>
-	  <entry>Female@4*12+5</entry>
+	  <entry>Male@(4*12+5)*1.1</entry>
+	  <entry>Female@(4*12+5)*1.1</entry>
 	  <entry>Aquatic Elf@2d6</entry>
   </collection>
   <collection>
@@ -447,8 +447,8 @@
   </collection>
   <collection>
     <name>Assassin Vine</name>
-	  <entry>Agender@0</entry>
-	  <entry>Assassin Vine@0</entry>
+	  <entry>Agender@2</entry>
+	  <entry>Assassin Vine@1d2</entry>
   </collection>
   <collection>
     <name>Athach</name>
@@ -1350,8 +1350,8 @@
   </collection>
   <collection>
     <name>Drow</name>
-	  <entry>Male@4*12+5</entry>
-	  <entry>Female@4*12+5</entry>
+	  <entry>Male@53</entry>
+	  <entry>Female@53</entry>
 	  <entry>Drow@2d6</entry>
   </collection>
   <collection>
@@ -1516,8 +1516,8 @@
   </collection>
   <collection>
     <name>Ettin</name>
-	  <entry>Male@12*12+10</entry>
-	  <entry>Female@12*12+2</entry>
+	  <entry>Male@154</entry>
+	  <entry>Female@146</entry>
 	  <entry>Ettin@2d6</entry>
   </collection>
   <collection>
@@ -1872,8 +1872,8 @@
   </collection>
   <collection>
     <name>Gray Elf</name>
-	  <entry>Male@4*12+5</entry>
-	  <entry>Female@4*12+5</entry>
+	  <entry>Male@(4*12+5)*1.1</entry>
+	  <entry>Female@(4*12+5)*1.1</entry>
 	  <entry>Gray Elf@2d6</entry>
   </collection>
   <collection>
@@ -2594,8 +2594,8 @@
   </collection>
   <collection>
     <name>Mountain Dwarf</name>
-	  <entry>Male@3*12+9</entry>
-	  <entry>Female@3*12+7</entry>
+	  <entry>Male@3*12+9+6</entry>
+	  <entry>Female@3*12+7+6</entry>
 	  <entry>Mountain Dwarf@2d4</entry>
   </collection>
   <collection>
@@ -3606,7 +3606,7 @@
   <collection>
     <name>Wild Elf</name>
 	  <entry>Female@4*12+5</entry>
-	  <entry>Male@4*12+5</entry>
+	  <entry>Male@4*12+10</entry>
 	  <entry>Wild Elf@2d6</entry>
   </collection>
   <collection>

@@ -3,102 +3,463 @@
 <collections>
   <collection>
     <name>Aasimar</name>
-	  <entry>Female</entry>
-	  <entry>Male</entry>
+	  <entry>Brown skin with small iridescent scales; Bald; Pupil-less golden eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Bald; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Bald; Pupil-less gray eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Bald; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Bald; Pupil-less pale white eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Bald; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Bald; Pupil-less pearly opalescent eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Bald; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Bald; Pupil-less topaz eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Bald; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Black hair with feathers mixed in; Pupil-less golden eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Black hair with feathers mixed in; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Black hair with feathers mixed in; Pupil-less gray eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Black hair with feathers mixed in; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Black hair with feathers mixed in; Pupil-less pale white eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Black hair with feathers mixed in; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Black hair with feathers mixed in; Pupil-less pearly opalescent eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Black hair with feathers mixed in; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Black hair with feathers mixed in; Pupil-less topaz eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Black hair with feathers mixed in; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Black hair with feathers mixed in; Pupil-less golden eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Black hair with feathers mixed in; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Black hair with feathers mixed in; Pupil-less gray eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Black hair with feathers mixed in; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Black hair with feathers mixed in; Pupil-less pale white eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Black hair with feathers mixed in; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Black hair with feathers mixed in; Pupil-less pearly opalescent eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Black hair with feathers mixed in; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Black hair with feathers mixed in; Pupil-less topaz eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Black hair with feathers mixed in; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Black hair with feathers mixed in; Pupil-less golden eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Black hair with feathers mixed in; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Black hair with feathers mixed in; Pupil-less gray eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Black hair with feathers mixed in; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Black hair with feathers mixed in; Pupil-less pale white eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Black hair with feathers mixed in; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Black hair with feathers mixed in; Pupil-less pearly opalescent eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Black hair with feathers mixed in; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Black hair with feathers mixed in; Pupil-less topaz eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Black hair with feathers mixed in; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Brown hair with feathers mixed in; Pupil-less golden eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Brown hair with feathers mixed in; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Brown hair with feathers mixed in; Pupil-less gray eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Brown hair with feathers mixed in; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Brown hair with feathers mixed in; Pupil-less pale white eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Brown hair with feathers mixed in; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Brown hair with feathers mixed in; Pupil-less pearly opalescent eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Brown hair with feathers mixed in; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Brown hair with feathers mixed in; Pupil-less topaz eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Brown hair with feathers mixed in; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Brown hair with feathers mixed in; Pupil-less golden eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Brown hair with feathers mixed in; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Brown hair with feathers mixed in; Pupil-less gray eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Brown hair with feathers mixed in; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Brown hair with feathers mixed in; Pupil-less pale white eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Brown hair with feathers mixed in; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Brown hair with feathers mixed in; Pupil-less pearly opalescent eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Brown hair with feathers mixed in; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Brown hair with feathers mixed in; Pupil-less topaz eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Brown hair with feathers mixed in; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Brown hair with feathers mixed in; Pupil-less golden eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Brown hair with feathers mixed in; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Brown hair with feathers mixed in; Pupil-less gray eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Brown hair with feathers mixed in; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Brown hair with feathers mixed in; Pupil-less pale white eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Brown hair with feathers mixed in; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Brown hair with feathers mixed in; Pupil-less pearly opalescent eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Brown hair with feathers mixed in; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Brown hair with feathers mixed in; Pupil-less topaz eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Brown hair with feathers mixed in; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Blonde hair with feathers mixed in; Pupil-less golden eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Blonde hair with feathers mixed in; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Blonde hair with feathers mixed in; Pupil-less gray eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Blonde hair with feathers mixed in; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Blonde hair with feathers mixed in; Pupil-less pale white eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Blonde hair with feathers mixed in; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Blonde hair with feathers mixed in; Pupil-less pearly opalescent eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Blonde hair with feathers mixed in; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Blonde hair with feathers mixed in; Pupil-less topaz eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Curly Blonde hair with feathers mixed in; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Blonde hair with feathers mixed in; Pupil-less golden eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Blonde hair with feathers mixed in; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Blonde hair with feathers mixed in; Pupil-less gray eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Blonde hair with feathers mixed in; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Blonde hair with feathers mixed in; Pupil-less pale white eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Blonde hair with feathers mixed in; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Blonde hair with feathers mixed in; Pupil-less pearly opalescent eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Blonde hair with feathers mixed in; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Blonde hair with feathers mixed in; Pupil-less topaz eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Kinky Blonde hair with feathers mixed in; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Blonde hair with feathers mixed in; Pupil-less golden eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Blonde hair with feathers mixed in; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Blonde hair with feathers mixed in; Pupil-less gray eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Blonde hair with feathers mixed in; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Blonde hair with feathers mixed in; Pupil-less pale white eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Blonde hair with feathers mixed in; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Blonde hair with feathers mixed in; Pupil-less pearly opalescent eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Blonde hair with feathers mixed in; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Blonde hair with feathers mixed in; Pupil-less topaz eyes</entry>
+	  <entry>Brown skin with small iridescent scales; Straight Blonde hair with feathers mixed in; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
   </collection>
   <collection>
     <name>Aboleth</name>
-    <entry>Hermaphrodite</entry>
+	  <entry>Orange underbelly, blue skin topside; Three red eyes; Resembles a bizarre eel</entry>
+	  <entry>Orange underbelly, sea-green skin topside; Three red eyes; Resembles a bizarre eel</entry>
+	  <entry>Orange underbelly, sea-green skin topside; Three red eyes; Resembles a bizarre eel</entry>
+	  <entry>Orange underbelly, sea-green skin topside; Three red eyes; Resembles a bizarre eel</entry>
+	  <entry>Orange underbelly, green skin topside; Three red eyes; Resembles a bizarre eel</entry>
+	  <entry>Orange-pink underbelly, blue skin topside; Three red eyes; Resembles a bizarre eel</entry>
+	  <entry>Orange-pink underbelly, sea-green skin topside; Three red eyes; Resembles a bizarre eel</entry>
+	  <entry>Orange-pink underbelly, sea-green skin topside; Three red eyes; Resembles a bizarre eel</entry>
+	  <entry>Orange-pink underbelly, sea-green skin topside; Three red eyes; Resembles a bizarre eel</entry>
+	  <entry>Orange-pink underbelly, green skin topside; Three red eyes; Resembles a bizarre eel</entry>
+	  <entry>Pink underbelly, blue skin topside; Three red eyes; Resembles a bizarre eel</entry>
+	  <entry>Pink underbelly, sea-green skin topside; Three red eyes; Resembles a bizarre eel</entry>
+	  <entry>Pink underbelly, sea-green skin topside; Three red eyes; Resembles a bizarre eel</entry>
+	  <entry>Pink underbelly, sea-green skin topside; Three red eyes; Resembles a bizarre eel</entry>
+	  <entry>Pink underbelly, green skin topside; Three red eyes; Resembles a bizarre eel</entry>
   </collection>
   <collection>
     <name>Achaierai</name>
-	  <entry>Female</entry>
-	  <entry>Male</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Bright red, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Burnt russet, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Dim teal, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
+	  <entry>Shining metallic blue-gray legs, claws, and beak; Shadowed gold, soft feathers on its crest, brown soft feathers on its body; Resembles a quadruped, plump quail</entry>
   </collection>
   <collection>
     <name>Adult Arrowhawk</name>
-	  <entry>Female</entry>
-	  <entry>Male</entry>
+	  <entry>Covered in blue scales with occasional tufts of yellow feathers</entry>
   </collection>
   <collection>
     <name>Allip</name>
-	  <entry>Female</entry>
-	  <entry>Male</entry>
+	  <entry>Spectral variations of the person it once was, with nightmarish, warped features befitting of the madness that possessed it. Its lower portions trail away into a dark fog.</entry>
   </collection>
   <collection>
     <name>Androsphinx</name>
-	  <entry>Male</entry>
+	  <entry>Tawny hair/fur. Lion body, falcon wings.</entry>
   </collection>
   <collection>
     <name>Angel, Astral Deva</name>
-	  <entry>Female</entry>
-	  <entry>Male</entry>
+	  <entry>Golden skin; Fair hair; Amber eyes; White wings tinted with gold</entry>
+	  <entry>Golden skin; Golden hair; Amber eyes; White wings tinted with gold</entry>
   </collection>
   <collection>
     <name>Angel, Planetar</name>
-	  <entry>Female</entry>
-	  <entry>Male</entry>
+	  <entry>Opalescent emerald skin; Bald; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Opalescent emerald skin; Bald; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Opalescent emerald skin; Bald; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Opalescent emerald skin; Bald; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Opalescent emerald skin; Bald; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Opalescent emerald skin; Bald; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Opalescent emerald skin; Bald; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Opalescent emerald skin; Bald; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Opalescent emerald skin; Bald; White feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Opalescent emerald skin; Bald; White feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Opalescent emerald skin; Bald; White feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Opalescent emerald skin; Bald; White feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Opalescent emerald skin; Bald; White feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Opalescent emerald skin; Bald; White feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Opalescent emerald skin; Bald; White feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Opalescent emerald skin; Bald; White feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Opalescent emerald skin; Long, flowing blue hair; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Opalescent emerald skin; Long, flowing blue hair; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Opalescent emerald skin; Long, flowing blue hair; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Opalescent emerald skin; Long, flowing blue hair; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Opalescent emerald skin; Long, flowing blue hair; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Opalescent emerald skin; Long, flowing blue hair; White feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Opalescent emerald skin; Long, flowing blue hair; White feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Opalescent emerald skin; Long, flowing blue hair; White feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Opalescent emerald skin; Long, flowing blue hair; White feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Opalescent emerald skin; Long, flowing blue hair; White feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Bald; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Bald; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Bald; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Bald; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Bald; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Bald; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Bald; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Bald; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Bald; White feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Bald; White feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Bald; White feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Bald; White feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Bald; White feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Bald; White feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Bald; White feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Bald; White feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Long, flowing blue hair; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Long, flowing blue hair; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Long, flowing blue hair; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Long, flowing blue hair; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Long, flowing blue hair; Opalescent white feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Long, flowing blue hair; White feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Long, flowing blue hair; White feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Long, flowing blue hair; White feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Long, flowing blue hair; White feathers tinted with gold on wings; Glowing blue eyes</entry>
+	  <entry>Pearly white skin; Long, flowing blue hair; White feathers tinted with gold on wings; Glowing blue eyes</entry>
   </collection>
   <collection>
     <name>Angel, Solar</name>
-	  <entry>Female</entry>
-	  <entry>Male</entry>
+	  <entry>Brass skin; Brass hair; Coppery-golden-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Brass skin; Brass hair; White-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Brass skin; Bronze hair; Coppery-golden-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Brass skin; Bronze hair; White-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Brass skin; Bronze hair; Coppery-golden-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Brass skin; Bronze hair; White-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Brass skin; Copper hair; Coppery-golden-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Brass skin; Copper hair; White-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Brass skin; Golden hair; Coppery-golden-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Brass skin; Golden hair; White-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Brass skin; Silver hair; Coppery-golden-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Brass skin; Silver hair; White-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Bronze skin; Brass hair; Coppery-golden-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Bronze skin; Brass hair; White-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Bronze skin; Bronze hair; Coppery-golden-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Bronze skin; Bronze hair; White-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Bronze skin; Bronze hair; Coppery-golden-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Bronze skin; Bronze hair; White-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Bronze skin; Copper hair; Coppery-golden-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Bronze skin; Copper hair; White-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Bronze skin; Golden hair; Coppery-golden-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Bronze skin; Golden hair; White-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Bronze skin; Silver hair; Coppery-golden-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Bronze skin; Silver hair; White-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Copper skin; Brass hair; Coppery-golden-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Copper skin; Brass hair; White-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Copper skin; Bronze hair; Coppery-golden-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Copper skin; Bronze hair; White-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Copper skin; Bronze hair; Coppery-golden-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Copper skin; Bronze hair; White-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Copper skin; Copper hair; Coppery-golden-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Copper skin; Copper hair; White-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Copper skin; Golden hair; Coppery-golden-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Copper skin; Golden hair; White-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Copper skin; Silver hair; Coppery-golden-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Copper skin; Silver hair; White-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Golden skin; Brass hair; Coppery-golden-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Golden skin; Brass hair; White-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Golden skin; Bronze hair; Coppery-golden-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Golden skin; Bronze hair; White-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Golden skin; Bronze hair; Coppery-golden-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Golden skin; Bronze hair; White-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Golden skin; Copper hair; Coppery-golden-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Golden skin; Copper hair; White-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Golden skin; Golden hair; Coppery-golden-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Golden skin; Golden hair; White-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Golden skin; Silver hair; Coppery-golden-feathered wings; Radiant topaz eyes</entry>
+	  <entry>Golden skin; Silver hair; White-feathered wings; Radiant topaz eyes</entry>
   </collection>
 	<collection>
 		<name>Animated Object, Colossal</name>
-		<entry>Agender</entry>
+		<entry>Bath Tub</entry>
+		<entry>Candelabra</entry>
+		<entry>Candlestick</entry>
+		<entry>Cup</entry>
+		<entry>Plate</entry>
+		<entry>Tea Pot</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Flexible)</name>
-		<entry>Agender</entry>
+		<entry>Chain</entry>
+		<entry>Rope</entry>
+		<entry>Vine</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (More Than Two Legs)</name>
-		<entry>Agender</entry>
+		<entry>Stone Chair</entry>
+		<entry>Stone Dresser</entry>
+		<entry>Stone Table</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (More Than Two Legs, Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Wooden Chair</entry>
+		<entry>Wooden Dresser</entry>
+		<entry>Wooden Ottoman</entry>
+		<entry>Wooden Stool</entry>
+		<entry>Wooden Table</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Sheetlike)</name>
-		<entry>Agender</entry>
+		<entry>Blanket</entry>
+		<entry>Carpet</entry>
+		<entry>Rug</entry>
+		<entry>Tapestry</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Two Legs)</name>
-		<entry>Agender</entry>
+		<entry>Aasimar statue</entry>
+		<entry>Aasimar statue</entry>
+		<entry>Aasimar statue</entry>
+		<entry>Aasimar statue</entry>
+		<entry>Aquatic Elf statue</entry>
+		<entry>Aquatic Elf statue</entry>
+		<entry>Aquatic Elf statue</entry>
+		<entry>Aquatic Elf statue</entry>
+		<entry>Cloud Giant statue</entry>
+		<entry>Deep Dwarf statue</entry>
+		<entry>Deep Dwarf statue</entry>
+		<entry>Deep Dwarf statue</entry>
+		<entry>Deep Dwarf statue</entry>
+		<entry>Tiefling statue</entry>
+		<entry>Tiefling statue</entry>
+		<entry>Tiefling statue</entry>
+		<entry>Tiefling statue</entry>
+		<entry>Deep Halfling statue</entry>
+		<entry>Deep Halfling statue</entry>
+		<entry>Deep Halfling statue</entry>
+		<entry>Deep Halfling statue</entry>
+		<entry>Drow statue</entry>
+		<entry>Drow statue</entry>
+		<entry>Drow statue</entry>
+		<entry>Drow statue</entry>
+		<entry>Duergar statue</entry>
+		<entry>Duergar statue</entry>
+		<entry>Duergar statue</entry>
+		<entry>Duergar statue</entry>
+		<entry>Tallfellow Halfling statue</entry>
+		<entry>Tallfellow Halfling statue</entry>
+		<entry>Tallfellow Halfling statue</entry>
+		<entry>Tallfellow Halfling statue</entry>
+		<entry>Mountain Dwarf statue</entry>
+		<entry>Mountain Dwarf statue</entry>
+		<entry>Mountain Dwarf statue</entry>
+		<entry>Mountain Dwarf statue</entry>
+		<entry>Wild Elf statue</entry>
+		<entry>Wild Elf statue</entry>
+		<entry>Wild Elf statue</entry>
+		<entry>Wild Elf statue</entry>
+		<entry>Wood Elf statue</entry>
+		<entry>Wood Elf statue</entry>
+		<entry>Wood Elf statue</entry>
+		<entry>Wood Elf statue</entry>
+		<entry>Gray Elf statue</entry>
+		<entry>Gray Elf statue</entry>
+		<entry>Gray Elf statue</entry>
+		<entry>Gray Elf statue</entry>
+		<entry>Svirfneblin statue</entry>
+		<entry>Svirfneblin statue</entry>
+		<entry>Svirfneblin statue</entry>
+		<entry>Svirfneblin statue</entry>
+		<entry>Forest Gnome statue</entry>
+		<entry>Forest Gnome statue</entry>
+		<entry>Forest Gnome statue</entry>
+		<entry>Forest Gnome statue</entry>
+		<entry>Storm Giant statue</entry>
+		<entry>Fire Giant statue</entry>
+		<entry>Frost Giant statue</entry>
+		<entry>Stone Giant statue</entry>
+		<entry>Hill Giant statue</entry>
+		<entry>Goblin statue</entry>
+		<entry>Half-Celestial statue</entry>
+		<entry>Half-Fiend statue</entry>
+		<entry>Half-Dragon statue</entry>
+		<entry>Half-Elf statue</entry>
+		<entry>Half-Elf statue</entry>
+		<entry>Half-Elf statue</entry>
+		<entry>Half-Elf statue</entry>
+		<entry>Half-Elf statue</entry>
+		<entry>Half-Elf statue</entry>
+		<entry>Half-Elf statue</entry>
+		<entry>Half-Orc statue</entry>
+		<entry>High Elf statue</entry>
+		<entry>Hill Dwarf statue</entry>
+		<entry>Hobgoblin statue</entry>
+		<entry>Human statue</entry>
+		<entry>Kobold statue</entry>
+		<entry>Lightfoot Halfling statue</entry>
+		<entry>Mind Flayer statue</entry>
+		<entry>Ogre statue</entry>
+		<entry>Orc statue</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Two Legs, Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Half-Elf wooden figurine</entry>
+		<entry>Half-Orc wooden figurine</entry>
+		<entry>High Elf wooden figurine</entry>
+		<entry>Hill Dwarf wooden figurine</entry>
+		<entry>Human wooden figurine</entry>
+		<entry>Lightfoot Halfling wooden figurine</entry>
+		<entry>Rock Gnome wooden figurine</entry>
+		<entry>Ladder</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Wheels, Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Carriage</entry>
+		<entry>Cart</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Barrel</entry>
+		<entry>Broom</entry>
+		<entry>Bucket</entry>
+		<entry>Clock</entry>
+		<entry>Feather Duster</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan</name>
-		<entry>Agender</entry>
+		<entry>Bath Tub</entry>
+		<entry>Candelabra</entry>
+		<entry>Candlestick</entry>
+		<entry>Cup</entry>
+		<entry>Plate</entry>
+		<entry>Tea Pot</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Flexible)</name>
-		<entry>Agender</entry>
+		<entry>Chain</entry>
+		<entry>Rope</entry>
+		<entry>Vine</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (More Than Two Legs)</name>
-		<entry>Agender</entry>
+		<entry>Stone Chair</entry>
+		<entry>Stone Dresser</entry>
+		<entry>Stone Table</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (More Than Two Legs, Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Wooden Chair</entry>
+		<entry>Wooden Dresser</entry>
+		<entry>Wooden Ottoman</entry>
+		<entry>Wooden Stool</entry>
+		<entry>Wooden Table</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Sheetlike)</name>
-		<entry>Agender</entry>
+		<entry>Blanket</entry>
+		<entry>Carpet</entry>
+		<entry>Rug</entry>
+		<entry>Tapestry</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Two Legs)</name>
@@ -106,35 +467,63 @@
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Two Legs, Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Half-Elf wooden figurine</entry>
+		<entry>Half-Orc wooden figurine</entry>
+		<entry>High Elf wooden figurine</entry>
+		<entry>Hill Dwarf wooden figurine</entry>
+		<entry>Human wooden figurine</entry>
+		<entry>Lightfoot Halfling wooden figurine</entry>
+		<entry>Rock Gnome wooden figurine</entry>
+		<entry>Ladder</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Wheels, Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Carriage</entry>
+		<entry>Cart</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Barrel</entry>
+		<entry>Broom</entry>
+		<entry>Bucket</entry>
+		<entry>Clock</entry>
+		<entry>Feather Duster</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge</name>
-		<entry>Agender</entry>
+		<entry>Bath Tub</entry>
+		<entry>Candelabra</entry>
+		<entry>Candlestick</entry>
+		<entry>Cup</entry>
+		<entry>Plate</entry>
+		<entry>Tea Pot</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Flexible)</name>
-		<entry>Agender</entry>
+		<entry>Chain</entry>
+		<entry>Rope</entry>
+		<entry>Vine</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (More Than Two Legs)</name>
-		<entry>Agender</entry>
+		<entry>Stone Chair</entry>
+		<entry>Stone Dresser</entry>
+		<entry>Stone Table</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (More Than Two Legs, Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Wooden Chair</entry>
+		<entry>Wooden Dresser</entry>
+		<entry>Wooden Ottoman</entry>
+		<entry>Wooden Stool</entry>
+		<entry>Wooden Table</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Sheetlike)</name>
-	  <entry>Agender</entry>
+		<entry>Blanket</entry>
+		<entry>Carpet</entry>
+		<entry>Rug</entry>
+		<entry>Tapestry</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Two Legs)</name>
@@ -142,35 +531,63 @@
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Two Legs, Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Half-Elf wooden figurine</entry>
+		<entry>Half-Orc wooden figurine</entry>
+		<entry>High Elf wooden figurine</entry>
+		<entry>Hill Dwarf wooden figurine</entry>
+		<entry>Human wooden figurine</entry>
+		<entry>Lightfoot Halfling wooden figurine</entry>
+		<entry>Rock Gnome wooden figurine</entry>
+		<entry>Ladder</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Wheels, Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Carriage</entry>
+		<entry>Cart</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Barrel</entry>
+		<entry>Broom</entry>
+		<entry>Bucket</entry>
+		<entry>Clock</entry>
+		<entry>Feather Duster</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large</name>
-		<entry>Agender</entry>
+		<entry>Bath Tub</entry>
+		<entry>Candelabra</entry>
+		<entry>Candlestick</entry>
+		<entry>Cup</entry>
+		<entry>Plate</entry>
+		<entry>Tea Pot</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Flexible)</name>
-		<entry>Agender</entry>
+		<entry>Chain</entry>
+		<entry>Rope</entry>
+		<entry>Vine</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (More Than Two Legs)</name>
-		<entry>Agender</entry>
+		<entry>Stone Chair</entry>
+		<entry>Stone Dresser</entry>
+		<entry>Stone Table</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (More Than Two Legs, Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Wooden Chair</entry>
+		<entry>Wooden Dresser</entry>
+		<entry>Wooden Ottoman</entry>
+		<entry>Wooden Stool</entry>
+		<entry>Wooden Table</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Sheetlike)</name>
-		<entry>Agender</entry>
+		<entry>Blanket</entry>
+		<entry>Carpet</entry>
+		<entry>Rug</entry>
+		<entry>Tapestry</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Two Legs)</name>
@@ -178,35 +595,63 @@
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Two Legs, Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Half-Elf wooden figurine</entry>
+		<entry>Half-Orc wooden figurine</entry>
+		<entry>High Elf wooden figurine</entry>
+		<entry>Hill Dwarf wooden figurine</entry>
+		<entry>Human wooden figurine</entry>
+		<entry>Lightfoot Halfling wooden figurine</entry>
+		<entry>Rock Gnome wooden figurine</entry>
+		<entry>Ladder</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Wheels, Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Carriage</entry>
+		<entry>Cart</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Barrel</entry>
+		<entry>Broom</entry>
+		<entry>Bucket</entry>
+		<entry>Clock</entry>
+		<entry>Feather Duster</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium</name>
-		<entry>Agender</entry>
+		<entry>Bath Tub</entry>
+		<entry>Candelabra</entry>
+		<entry>Candlestick</entry>
+		<entry>Cup</entry>
+		<entry>Plate</entry>
+		<entry>Tea Pot</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Flexible)</name>
-		<entry>Agender</entry>
+		<entry>Chain</entry>
+		<entry>Rope</entry>
+		<entry>Vine</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (More Than Two Legs)</name>
-		<entry>Agender</entry>
+		<entry>Stone Chair</entry>
+		<entry>Stone Dresser</entry>
+		<entry>Stone Table</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (More Than Two Legs, Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Wooden Chair</entry>
+		<entry>Wooden Dresser</entry>
+		<entry>Wooden Ottoman</entry>
+		<entry>Wooden Stool</entry>
+		<entry>Wooden Table</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Sheetlike)</name>
-		<entry>Agender</entry>
+		<entry>Blanket</entry>
+		<entry>Carpet</entry>
+		<entry>Rug</entry>
+		<entry>Tapestry</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Two Legs)</name>
@@ -214,35 +659,63 @@
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Two Legs, Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Half-Elf wooden figurine</entry>
+		<entry>Half-Orc wooden figurine</entry>
+		<entry>High Elf wooden figurine</entry>
+		<entry>Hill Dwarf wooden figurine</entry>
+		<entry>Human wooden figurine</entry>
+		<entry>Lightfoot Halfling wooden figurine</entry>
+		<entry>Rock Gnome wooden figurine</entry>
+		<entry>Ladder</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Wheels, Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Carriage</entry>
+		<entry>Cart</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Barrel</entry>
+		<entry>Broom</entry>
+		<entry>Bucket</entry>
+		<entry>Clock</entry>
+		<entry>Feather Duster</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small</name>
-		<entry>Agender</entry>
+		<entry>Bath Tub</entry>
+		<entry>Candelabra</entry>
+		<entry>Candlestick</entry>
+		<entry>Cup</entry>
+		<entry>Plate</entry>
+		<entry>Tea Pot</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Flexible)</name>
-		<entry>Agender</entry>
+		<entry>Chain</entry>
+		<entry>Rope</entry>
+		<entry>Vine</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (More Than Two Legs)</name>
-		<entry>Agender</entry>
+		<entry>Stone Chair</entry>
+		<entry>Stone Dresser</entry>
+		<entry>Stone Table</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (More Than Two Legs, Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Wooden Chair</entry>
+		<entry>Wooden Dresser</entry>
+		<entry>Wooden Ottoman</entry>
+		<entry>Wooden Stool</entry>
+		<entry>Wooden Table</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Sheetlike)</name>
-		<entry>Agender</entry>
+		<entry>Blanket</entry>
+		<entry>Carpet</entry>
+		<entry>Rug</entry>
+		<entry>Tapestry</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Two Legs)</name>
@@ -250,35 +723,63 @@
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Two Legs, Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Half-Elf wooden figurine</entry>
+		<entry>Half-Orc wooden figurine</entry>
+		<entry>High Elf wooden figurine</entry>
+		<entry>Hill Dwarf wooden figurine</entry>
+		<entry>Human wooden figurine</entry>
+		<entry>Lightfoot Halfling wooden figurine</entry>
+		<entry>Rock Gnome wooden figurine</entry>
+		<entry>Ladder</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Wheels, Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Carriage</entry>
+		<entry>Cart</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Barrel</entry>
+		<entry>Broom</entry>
+		<entry>Bucket</entry>
+		<entry>Clock</entry>
+		<entry>Feather Duster</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny</name>
-		<entry>Agender</entry>
+		<entry>Bath Tub</entry>
+		<entry>Candelabra</entry>
+		<entry>Candlestick</entry>
+		<entry>Cup</entry>
+		<entry>Plate</entry>
+		<entry>Tea Pot</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Flexible)</name>
-		<entry>Agender</entry>
+		<entry>Chain</entry>
+		<entry>Rope</entry>
+		<entry>Vine</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (More Than Two Legs)</name>
-		<entry>Agender</entry>
+		<entry>Stone Chair</entry>
+		<entry>Stone Dresser</entry>
+		<entry>Stone Table</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (More Than Two Legs, Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Wooden Chair</entry>
+		<entry>Wooden Dresser</entry>
+		<entry>Wooden Ottoman</entry>
+		<entry>Wooden Stool</entry>
+		<entry>Wooden Table</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Sheetlike)</name>
-		<entry>Agender</entry>
+		<entry>Blanket</entry>
+		<entry>Carpet</entry>
+		<entry>Rug</entry>
+		<entry>Tapestry</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Two Legs)</name>
@@ -286,24 +787,38 @@
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Two Legs, Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Half-Elf wooden figurine</entry>
+		<entry>Half-Orc wooden figurine</entry>
+		<entry>High Elf wooden figurine</entry>
+		<entry>Hill Dwarf wooden figurine</entry>
+		<entry>Human wooden figurine</entry>
+		<entry>Lightfoot Halfling wooden figurine</entry>
+		<entry>Rock Gnome wooden figurine</entry>
+		<entry>Ladder</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Wheels, Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Carriage</entry>
+		<entry>Cart</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Wooden)</name>
-		<entry>Agender</entry>
+		<entry>Barrel</entry>
+		<entry>Broom</entry>
+		<entry>Bucket</entry>
+		<entry>Clock</entry>
+		<entry>Feather Duster</entry>
 	</collection>
   <collection>
     <name>Ankheg</name>
-	  <entry>Female</entry>
-	  <entry>Male</entry>
+	  <entry>Brown skin; Black eyes</entry>
+	  <entry>Green skin; Black eyes</entry>
+	  <entry>Yellow skin; Black eyes</entry>
   </collection>
   <collection>
     <name>Annis</name>
-	  <entry>Female</entry>
+	  <entry>Blue-black skin, as if deeply bruised, covered in scars and blemishes; Black hair; Dull, greenish-yellow eyes; Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized black nails</entry>
+	  <entry>Blue-black skin, as if deeply bruised, covered in scars and blemishes; Black hair; Dull, greenish-yellow eyes; Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized black nails. Chewed-through cheeks, etching a gangrenous grin</entry>
   </collection>
   <collection>
     <name>Ape</name>
@@ -1383,32 +1898,31 @@
   </collection>
   <collection>
     <name>Elder Arrowhawk</name>
-	  <entry>Female</entry>
-	  <entry>Male</entry>
+	  <entry>Covered in blue scales with occasional tufts of yellow feathers</entry>
   </collection>
   <collection>
     <name>Air Elemental, Elder</name>
-	  <entry>Agender</entry>
+	  <entry>An amorphous, ever-shifting cloud</entry>
   </collection>
   <collection>
     <name>Air Elemental, Greater</name>
-	  <entry>Agender</entry>
+	  <entry>An amorphous, ever-shifting cloud</entry>
   </collection>
   <collection>
     <name>Air Elemental, Huge</name>
-	  <entry>Agender</entry>
+	  <entry>An amorphous, ever-shifting cloud</entry>
   </collection>
   <collection>
     <name>Air Elemental, Large</name>
-	  <entry>Agender</entry>
+	  <entry>An amorphous, ever-shifting cloud</entry>
   </collection>
   <collection>
     <name>Air Elemental, Medium</name>
-	  <entry>Agender</entry>
+	  <entry>An amorphous, ever-shifting cloud</entry>
   </collection>
   <collection>
     <name>Air Elemental, Small</name>
-	  <entry>Agender</entry>
+	  <entry>An amorphous, ever-shifting cloud</entry>
   </collection>
   <collection>
     <name>Earth Elemental, Elder</name>
@@ -2074,8 +2588,7 @@
   </collection>
   <collection>
     <name>Juvenile Arrowhawk</name>
-	  <entry>Female</entry>
-	  <entry>Male</entry>
+	  <entry>Covered in blue scales with occasional tufts of yellow feathers</entry>
   </collection>
   <collection>
     <name>Kobold</name>
@@ -2306,9 +2819,7 @@
   </collection>
   <collection>
     <name>Air Mephit</name>
-    <entry>Agender</entry>
-	  <entry>Female</entry>
-	  <entry>Male</entry>
+    <entry>Pale white skin; Wings, whirlwinds instead of wings</entry>
   </collection>
   <collection>
     <name>Dust Mephit</name>
@@ -2958,15 +3469,15 @@
   </collection>
   <collection>
     <name>Adult Tojanida</name>
-    <entry>Agender</entry>
+    <entry>Resemble a cross between a monstrous crab and an enormous snapping turtles. Light green shell, sea-green skin</entry>
   </collection>
   <collection>
     <name>Elder Tojanida</name>
-	  <entry>Agender</entry>
+	  <entry>Resemble a cross between a monstrous crab and an enormous snapping turtles. Light green shell, sea-green skin</entry>
   </collection>
   <collection>
-    <name>Juvenile Tojanida</name>
-	  <entry>Agender</entry>
+	  <name>Juvenile Tojanida</name>
+	  <entry>Resemble a cross between a monstrous crab and an enormous snapping turtles. Light green shell, sea-green skin</entry>
   </collection>
   <collection>
     <name>Treant</name>

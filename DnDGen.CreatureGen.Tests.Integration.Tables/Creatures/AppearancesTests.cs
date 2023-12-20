@@ -38,7 +38,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(creatureAppearances[creature], Is.Not.Empty);
             Assert.That(creatureAppearances[creature].Where(a => a.Contains("TODO")), Is.Empty);
 
-            AssertCollection(creature, creatureAppearances[creature].ToArray());
+            AssertWeightedCollection(creature, creatureAppearances[creature].ToArray());
         }
 
         private Dictionary<string, IEnumerable<string>> GetCreatureAppearances()
@@ -51,36 +51,60 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 appearances[creature] = new string[0];
             }
 
+            //Human:
+            //allSkin: new[] { "Dark Brown skin", "Brown skin", "Light brown skin",
+            //    "Dark tan skin", "Tan skin", "Light tan skin",
+            //    "Pink skin", "White skin", "Pale white skin" },
+            //commonHair: new[] { "Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair",
+            //    "Curly Red hair", "Curly Blond hair", "Curly Brown hair", "Curly Black hair",
+            //    "Kinky Red hair", "Kinky Blond hair", "Kinky Brown hair", "Kinky Black hair" },
+            //uncommonHair: new[] { "Bald" },
+            //allEyes: new[] { "Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes" }
+
             //Source: https://forgottenrealms.fandom.com/wiki/Aasimar
             appearances[CreatureConstants.Aasimar] = GetWeightedAppearances(
-                commonSkin: new[] { "TODO Human skin" },
+                commonSkin: new[] { "Dark Brown skin", "Brown skin", "Light brown skin",
+                    "Dark tan skin", "Tan skin", "Light tan skin",
+                    "Pink skin", "White skin", "Pale white skin" },
                 uncommonSkin: new[] { "Emerald skin", "Gold skin", "Silver skin",
-                    "TODO Human skin with small iridescent scales" },
+                    "Dark Brown skin with small iridescent scales", "Brown skin with small iridescent scales", "Light brown skin with small iridescent scales",
+                        "Dark tan skin with small iridescent scales", "Tan skin with small iridescent scales", "Light tan skin with small iridescent scales",
+                        "Pink skin with small iridescent scales", "White skin with small iridescent scales", "Pale white skin with small iridescent scales",
+                },
                 rareSkin: new[] { "Emerald skin with small iridescent scales", "Gold skin with small iridescent scales", "Silver skin with small iridescent scales" },
-                commonHair: new[] { "TODO Human hair",
-                    "Straight Silver hair", "Wavy Silver hair", "Curly Silver hair", "Kinky Silver hair" },
-                uncommonHair: new[] { "TODO Human hair with feathers mixed in",
-                    "Straight Silver hair with feathers mixed in", "Wavy Silver hair with feathers mixed in", "Curly Silver hair with feathers mixed in",
-                        "Kinky Silver hair with feathers mixed in" },
+                commonHair: new[] { "Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair",
+                    "Curly Red hair", "Curly Blond hair", "Curly Brown hair", "Curly Black hair",
+                    "Kinky Red hair", "Kinky Blond hair", "Kinky Brown hair", "Kinky Black hair",
+                    "Straight Silver hair", "Curly Silver hair", "Kinky Silver hair" },
+                uncommonHair: new[] {
+                    "Bald",
+                    "Straight Red hair with feathers mixed in", "Straight Blond hair with feathers mixed in", "Straight Brown hair with feathers mixed in",
+                        "Straight Black hair with feathers mixed in",
+                    "Curly Red hair with feathers mixed in", "Curly Blond hair with feathers mixed in", "Curly Brown hair with feathers mixed in",
+                        "Curly Black hair with feathers mixed in",
+                    "Kinky Red hair with feathers mixed in", "Kinky Blond hair with feathers mixed in", "Kinky Brown hair with feathers mixed in",
+                        "Kinky Black hair with feathers mixed in",
+                    "Straight Silver hair with feathers mixed in", "Curly Silver hair with feathers mixed in", "Kinky Silver hair with feathers mixed in" },
                 commonEyes: new[] { "Pupil-less pale white eyes", "Pupil-less golden eyes", "Pupil-less gray eyes" },
                 uncommonEyes: new[] { "Pupil-less topaz eyes", "Pupil-less pearly opalescent eyes" },
                 uncommonOther: new[] { "A light covering of feathers on the shoulders, where an angel's wings might sprout" });
             //Source: https://forgottenrealms.fandom.com/wiki/Aboleth
             appearances[CreatureConstants.Aboleth] = GetWeightedAppearances(
-                allEyes: new[] { "Red eyes" },
+                allEyes: new[] { "Three red eyes" },
                 commonSkin: new[] { "Orange-pink underbelly, sea-green skin topside" },
                 uncommonSkin: new[] { "Orange underbelly, sea-green skin topside", "Pink underbelly, sea-green skin topside",
                     "Orange-pink underbelly, green skin topside", "Orange-pink underbelly, blue skin topside" },
                 rareSkin: new[] { "Orange underbelly, green skin topside", "Pink underbelly, green skin topside",
                     "Orange underbelly, blue skin topside", "Pink underbelly, blue skin topside" },
-                allOther: new[] { "Resembles a bizarre eel, with a long, tubular body, as well as a tail at one end and two fins near the head and another along the back. Its mouth is lamprey-like, filled with serrated, jawless teeth. A little bit back from the head is four long tentacles, two sprouting from across each other on the top, and two more of the same on the underbelly. Its head is roughly triangular-shaped, with a spherical, somewhat beak-like nose. Above the nose is its three eyes, each one set atop the other. Tendrils and a few shorter tentacles dangle from the bottom of the head. Four blue-black slime-secreting orifices line the bottom of its body." });
+                allOther: new[] { "Resembles a bizarre eel" });
             //Source: https://forgottenrealms.fandom.com/wiki/Achaierai
             appearances[CreatureConstants.Achaierai] = GetWeightedAppearances(
+                allSkin: new[] { "Shining metallic blue-gray legs, claws, and beak" },
                 commonHair: new[] { "Bright red, soft feathers on its crest, brown soft feathers on its body" },
                 rareHair: new[] { "Dim teal, soft feathers on its crest, brown soft feathers on its body",
                     "Shadowed gold, soft feathers on its crest, brown soft feathers on its body",
                     "Burnt russet, soft feathers on its crest, brown soft feathers on its body" },
-                allOther: new[] { "Resembles a plump quail. A quadruped with stilt-like legs that emerge from its underside, ending in wicked talons. Withered, rudimentary wings rest either side of the spherical, pony-sized head that make up its main body. Legs are a metallic blue-gray, and along with its claws and beak, shine like burnished metal." });
+                allOther: new[] { "Resembles a quadruped, plump quail" });
             //Source: https://forgottenrealms.fandom.com/wiki/Allip
             appearances[CreatureConstants.Allip] = new[] { "Spectral variations of the person it once was, with nightmarish, warped features befitting of the madness that possessed it. Its lower portions trail away into a dark fog." };
             //Source: https://forgottenrealms.fandom.com/wiki/Androsphinx
@@ -94,16 +118,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Planetar
             appearances[CreatureConstants.Angel_Planetar] = GetWeightedAppearances(
                 commonSkin: new[] { "Opalescent emerald skin" },
-                commonHair: new[] { "Bald; Opalescent white feathers", "Bald; White feathers" },
                 uncommonSkin: new[] { "Pearly white skin" },
-                uncommonHair: new[] { "Long, flowing blue hair" },
-                allEyes: new[] { "Glowing blue eyes" },
-                allOther: new[] { "White wings tinted with gold" });
+                commonHair: new[] { "Bald; Opalescent white feathers tinted with gold on wings", "Bald; White feathers tinted with gold on wings" },
+                uncommonHair: new[] { "Long, flowing blue hair; Opalescent white feathers tinted with gold on wings",
+                    "Long, flowing blue hair; White feathers tinted with gold on wings" },
+                allEyes: new[] { "Glowing blue eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Solar
             appearances[CreatureConstants.Angel_Solar] = GetWeightedAppearances(
                 commonSkin: new[] { "Copper skin", "Silver skin", "Golden skin" },
-                commonHair: new[] { "Bronze hair; White-feathered wings", "Bronze hair; Coppery-golden-feathered wings" },
                 uncommonSkin: new[] { "Bronze skin", "Brass skin" },
+                commonHair: new[] { "Bronze hair; White-feathered wings", "Bronze hair; Coppery-golden-feathered wings" },
                 uncommonHair: new[] { "Copper hair; White-feathered wings", "Copper hair; Coppery-golden-feathered wings",
                     "Silver hair; White-feathered wings", "Silver hair; Coppery-golden-feathered wings",
                     "Golden hair; White-feathered wings", "Golden hair; Coppery-golden-feathered wings",
@@ -111,7 +135,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allEyes: new[] { "Radiant topaz eyes" });
             //Source: https://www.d20srd.org/srd/monsters/animatedObject.htm
             //https://forgottenrealms.fandom.com/wiki/Animated_object
-            appearances[CreatureConstants.AnimatedObject_Colossal] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub", "Iron Maiden" };
+            appearances[CreatureConstants.AnimatedObject_Colossal] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
             appearances[CreatureConstants.AnimatedObject_Colossal_Flexible] = new[] { "Rope", "Vine", "Chain" };
             appearances[CreatureConstants.AnimatedObject_Colossal_MultipleLegs] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
             appearances[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden] = new[] { "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
@@ -2389,22 +2413,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allOther: new[] { "Bruised, crushed digits ending in claws on the front legs. Back legs end in hooves. Back like an ox. Muzzled, simian face." });
             //Source: https://forgottenrealms.fandom.com/wiki/Human
             appearances[CreatureConstants.Human] = GetWeightedAppearances(
-                allSkin: new[] { "Brown skin", "Olive skin", "White skin", "Pink skin",
-                    "Dark Brown skin", "Dark Olive skin", "Dark White skin", "Dark Pink skin",
-                    "Pale Brown skin", "Pale Olive skin", "Pale White skin", "Pale Pink skin" },
-                allHair: new[] { "Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair",
-                    "Wavy Red hair", "Wavy Blond hair", "Wavy Brown hair", "Wavy Black hair",
+                allSkin: new[] { "Dark Brown skin", "Brown skin", "Light brown skin",
+                    "Dark tan skin", "Tan skin", "Light tan skin",
+                    "Pink skin", "White skin", "Pale white skin" },
+                commonHair: new[] { "Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair",
                     "Curly Red hair", "Curly Blond hair", "Curly Brown hair", "Curly Black hair",
-                    "Kinky Red hair", "Kinky Blond hair", "Kinky Brown hair", "Kinky Black hair",
-                    "Thick, straight, Red hair", "Thick, straight, Blond hair", "Thick, straight, Brown hair", "Thick, straight, Black hair",
-                    "Thick, wavy, Red hair", "Thick, wavy, Blond hair", "Thick, wavy, Brown hair", "Thick, wavy, Black hair",
-                    "Thick, curly, Red hair", "Thick, curly, Blond hair", "Thick, curly, Brown hair", "Thick, curly, Black hair",
-                    "Thick, kinky, Red hair", "Thick, kinky, Blond hair", "Thick, kinky, Brown hair", "Thick, kinky, Black hair",
-                    "Thin, straight, Red hair", "Thin, straight, Blond hair", "Thin, straight, Brown hair", "Thin, straight, Black hair",
-                    "Thin, wavy, Red hair", "Thin, wavy, Blond hair", "Thin, wavy, Brown hair", "Thin, wavy, Black hair",
-                    "Thin, curly, Red hair", "Thin, curly, Blond hair", "Thin, curly, Brown hair", "Thin, curly, Black hair",
-                    "Thin, kinky, Red hair", "Thin, kinky, Blond hair", "Thin, kinky, Brown hair", "Thin, kinky, Black hair",
-                    "Bald" },
+                    "Kinky Red hair", "Kinky Blond hair", "Kinky Brown hair", "Kinky Black hair" },
+                uncommonHair: new[] { "Bald" },
                 allEyes: new[] { "Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Hydra
             appearances[CreatureConstants.Hydra_5Heads] = GetWeightedAppearances(
@@ -4155,17 +4170,31 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             if (common.Concat(uncommon).Concat(rare).Any(a => !string.IsNullOrEmpty(a)) == false)
                 return new[] { prototype };
 
+            //Whether it is specified or not, common should always be here (even if empty)
             var builtCommon = common.Select(a =>
                 (GetAppearancePrototype(prototype.Appearance, a),
                 GetRarity(prototype.Rarity, Rarity.Common)));
-            var builtUncommon = uncommon.Select(a =>
-                (GetAppearancePrototype(prototype.Appearance, a),
-                GetRarity(prototype.Rarity, Rarity.Uncommon)));
-            var builtRare = rare.Select(a =>
-                (GetAppearancePrototype(prototype.Appearance, a),
-                GetRarity(prototype.Rarity, Rarity.Rare)));
+            var appearances = builtCommon;
 
-            return builtCommon.Concat(builtUncommon).Concat(builtRare);
+            //If we didn't specify uncommon, we should not add it as empty
+            if (uncommon.Any(a => !string.IsNullOrEmpty(a)))
+            {
+                var builtUncommon = uncommon.Select(a =>
+                    (GetAppearancePrototype(prototype.Appearance, a),
+                    GetRarity(prototype.Rarity, Rarity.Uncommon)));
+                appearances = appearances.Concat(builtUncommon);
+            }
+
+            //If we didn't specify rare, we should not add it as empty
+            if (rare.Any(a => !string.IsNullOrEmpty(a)))
+            {
+                var builtRare = rare.Select(a =>
+                    (GetAppearancePrototype(prototype.Appearance, a),
+                    GetRarity(prototype.Rarity, Rarity.Rare)));
+                appearances = appearances.Concat(builtRare);
+            }
+
+            return appearances;
         }
 
         private string GetAppearancePrototype(string source, string additional)

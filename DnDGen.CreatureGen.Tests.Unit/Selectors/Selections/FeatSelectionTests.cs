@@ -591,7 +591,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(met, Is.True);
         }
 
-        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.AllNonPositiveValues))]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.AllNonPositiveValuesTestCases))]
         public void NotMetIfNoNaturalArmor(int naturalArmor)
         {
             selection.RequiresNaturalArmor = true;
@@ -600,7 +600,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Selections
             Assert.That(met, Is.False);
         }
 
-        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.AllPositiveValues))]
+        [TestCaseSource(typeof(NumericTestData), nameof(NumericTestData.AllPositiveValuesTestCases))]
         public void MetIfNaturalArmor(int naturalArmor)
         {
             selection.RequiresNaturalArmor = true;

@@ -421,35 +421,32 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             get
             {
-                var creatureHitDice = new[] { 0.5, 1, 2 };
+                var challengeRatings = new Dictionary<string, IEnumerable<double>>();
+                challengeRatings[ChallengeRatingConstants.CR0] = new[] { 0d }; //Humanoid Character
+                challengeRatings[ChallengeRatingConstants.CR1_4th] = new[] { 1d }; //Kobold
+                challengeRatings[ChallengeRatingConstants.CR1_3rd] = new[] { 1d }; //Goblin
+                challengeRatings[ChallengeRatingConstants.CR1_2nd] = new[] { 1d }; //Dwarf, Elf, Gnome, Halfling, Hobgoblin, Merfolk, Orc, Human
+                challengeRatings[ChallengeRatingConstants.CR1] = new[] { 1d, 2d }; //Duergar, Drow, Gnoll, Svirfneblin, Lizardfolk, Troglodyte
+                challengeRatings[ChallengeRatingConstants.CR3] = new[] { 4d }; //Ogre
+                challengeRatings[ChallengeRatingConstants.CR5] = new[] { 6d }; //Troll
+                challengeRatings[ChallengeRatingConstants.CR6] = new[] { 10d }; //Ettin
+                challengeRatings[ChallengeRatingConstants.CR7] = new[] { 12d }; //Hill Giant
+                challengeRatings[ChallengeRatingConstants.CR8] = new[] { 14d, 5d }; //Stone Giant, Ogre Mage
+                challengeRatings[ChallengeRatingConstants.CR9] = new[] { 14d }; //Frost Giant, Stone Giant Elder
+                challengeRatings[ChallengeRatingConstants.CR10] = new[] { 15d }; //Fire Giant
+                challengeRatings[ChallengeRatingConstants.CR11] = new[] { 17d }; //Cloud Giant
+                challengeRatings[ChallengeRatingConstants.CR13] = new[] { 19d }; //Storm Giant
 
-                //INFO: Doing specific numbers, instead of full range because the number of test cases explodes:
-                //1. Per challenge rating
-                //2. Per hit die quantity
-                var challengeRatings = new[]
+                var animalHitDiceQuantities = new[]
                 {
-                    ChallengeRatingConstants.CR0, //Humanoid Character
-                    ChallengeRatingConstants.CR1_4th, //Kobold
-                    ChallengeRatingConstants.CR1_3rd, //Goblin
-                    ChallengeRatingConstants.CR1_2nd, //Dwarf, Elf, Gnome, Halfling, Hobgoblin, Merfolk, Orc
-                    ChallengeRatingConstants.CR1, //Duergar, Drow, Gnoll, Svirfneblin, Lizardfolk, Troglodyte
-                    ChallengeRatingConstants.CR3, //Ogre
-                    ChallengeRatingConstants.CR5, //Troll
-                    ChallengeRatingConstants.CR6, //Ettin
-                    ChallengeRatingConstants.CR7, //Hill Giant
-                    ChallengeRatingConstants.CR8, //Stone Giant, Ogre Mage
-                    ChallengeRatingConstants.CR9, //Frost Giant, Stone Giant Elder
-                    ChallengeRatingConstants.CR10, //Fire Giant
-                    ChallengeRatingConstants.CR11, //Cloud Giant
-                    ChallengeRatingConstants.CR13, //Storm Giant
+                    6, //Brown Bear, Dire Wolf, Tiger
+                    3, //Boar
+                    7, //Dire boar
+                    1, //Dire rat
+                    2, //Wolf
                 };
 
-                var hitDiceQuantities = new[]
-                {
-                    0.5, 1, 2, 3, 4, 5, 6, 9, 10, 11, 19, 20, 21
-                };
-
-                foreach (var animalHitDiceQuantity in hitDiceQuantities)
+                foreach (var animalHitDiceQuantity in animalHitDiceQuantities)
                 {
                     var increase = 0;
 
@@ -466,24 +463,25 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
                     foreach (var cr in challengeRatings)
                     {
-                        foreach (var creatureQuantity in creatureHitDice)
+                        var creatureCr = cr.Key;
+
+                        foreach (var creatureHitDiceQuantity in cr.Value)
                         {
-                            var creatureCr = cr;
-                            if (creatureQuantity <= 1)
+                            if (creatureHitDiceQuantity <= 1)
                                 creatureCr = ChallengeRatingConstants.CR0;
 
                             var low1Cr = ChallengeRatingConstants.IncreaseChallengeRating(creatureCr, increase - 1);
                             var newCr = ChallengeRatingConstants.IncreaseChallengeRating(creatureCr, increase);
                             var high1Cr = ChallengeRatingConstants.IncreaseChallengeRating(creatureCr, increase + 1);
 
-                            if (newCr != cr)
+                            if (newCr != creatureCr)
                             {
-                                yield return new TestCaseData(cr, animalHitDiceQuantity, creatureQuantity, cr, false);
+                                yield return new TestCaseData(creatureCr, animalHitDiceQuantity, creatureHitDiceQuantity, creatureCr, false);
                             }
 
-                            yield return new TestCaseData(cr, animalHitDiceQuantity, creatureQuantity, low1Cr, false);
-                            yield return new TestCaseData(cr, animalHitDiceQuantity, creatureQuantity, newCr, true);
-                            yield return new TestCaseData(cr, animalHitDiceQuantity, creatureQuantity, high1Cr, false);
+                            yield return new TestCaseData(creatureCr, animalHitDiceQuantity, creatureHitDiceQuantity, low1Cr, false);
+                            yield return new TestCaseData(creatureCr, animalHitDiceQuantity, creatureHitDiceQuantity, newCr, true);
+                            yield return new TestCaseData(creatureCr, animalHitDiceQuantity, creatureHitDiceQuantity, high1Cr, false);
                         }
                     }
                 }

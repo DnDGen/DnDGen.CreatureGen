@@ -814,8 +814,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.d20srd.org/srd/description.htm#vitalStatistics
             //https://www.d20srd.org/srd/monsters/dwarf.htm
             //"Leaner" than Hill Dwarves, so 90%
-            weights[CreatureConstants.Dwarf_Deep][GenderConstants.Female] = (93, 176);
-            weights[CreatureConstants.Dwarf_Deep][GenderConstants.Male] = (93, 176);
+            weights[CreatureConstants.Dwarf_Deep][GenderConstants.Female] = (90 + 2 * 2, 90 + 2 * 4 * 2 * 6);
+            weights[CreatureConstants.Dwarf_Deep][GenderConstants.Male] = (130 - 13 + 2 * 2, 130 - 13 + 2 * 4 * 2 * 6);
             weights[CreatureConstants.Dwarf_Duergar][GenderConstants.Female] = (100 + 2 * 2, 100 + 2 * 4 * 2 * 6);
             weights[CreatureConstants.Dwarf_Duergar][GenderConstants.Male] = (130 + 2 * 2, 130 + 2 * 4 * 2 * 6);
             weights[CreatureConstants.Dwarf_Hill][GenderConstants.Female] = (100 + 2 * 2, 100 + 2 * 4 * 2 * 6);
@@ -876,7 +876,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Elf_Half][GenderConstants.Male] = (100 + 2 * 2, 100 + 2 * 8 * 2 * 4);
             weights[CreatureConstants.Elf_High][GenderConstants.Female] = (80 + 2 * 1, 80 + 2 * 6 * 1 * 6);
             weights[CreatureConstants.Elf_High][GenderConstants.Male] = (85 + 2 * 1, 85 + 2 * 6 * 1 * 6);
-            //https://forgottenrealms.fandom.com/wiki/Wild_elf Males 20 pounds heavier
+            //https://forgottenrealms.fandom.com/wiki/Wild_elf Males 20 pounds heavier than females
             weights[CreatureConstants.Elf_Wild][GenderConstants.Female] = (80 + 2 * 1, 80 + 2 * 6 * 1 * 6);
             weights[CreatureConstants.Elf_Wild][GenderConstants.Male] = (100 + 2 * 1, 100 + 2 * 6 * 1 * 6);
             weights[CreatureConstants.Elf_Wood][GenderConstants.Female] = (80 + 2 * 1, 80 + 2 * 6 * 1 * 6);
@@ -1796,9 +1796,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Allip][GenderConstants.Male] = "0";
             weights[CreatureConstants.Allip][CreatureConstants.Allip] = "0";
             //Source: https://www.d20srd.org/srd/description.htm#vitalStatistics
-            weights[CreatureConstants.Dwarf_Deep][GenderConstants.Female] = "100";
-            weights[CreatureConstants.Dwarf_Deep][GenderConstants.Male] = "130";
-            weights[CreatureConstants.Dwarf_Deep][CreatureConstants.Dwarf_Deep] = "2d6";
             weights[CreatureConstants.Dwarf_Duergar][GenderConstants.Female] = "100";
             weights[CreatureConstants.Dwarf_Duergar][GenderConstants.Male] = "130";
             weights[CreatureConstants.Dwarf_Duergar][CreatureConstants.Dwarf_Duergar] = "2d6";
@@ -1809,9 +1806,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Dwarf_Mountain][GenderConstants.Male] = "130";
             weights[CreatureConstants.Dwarf_Mountain][CreatureConstants.Dwarf_Mountain] = "2d6";
             //Source: https://www.d20srd.org/srd/description.htm#vitalStatistics
-            weights[CreatureConstants.Elf_Aquatic][GenderConstants.Female] = "80";
-            weights[CreatureConstants.Elf_Aquatic][GenderConstants.Male] = "85";
-            weights[CreatureConstants.Elf_Aquatic][CreatureConstants.Elf_Aquatic] = "1d6";
             weights[CreatureConstants.Elf_Drow][GenderConstants.Female] = "80";
             weights[CreatureConstants.Elf_Drow][GenderConstants.Male] = "85";
             weights[CreatureConstants.Elf_Drow][CreatureConstants.Elf_Drow] = "1d6";
@@ -1824,9 +1818,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             weights[CreatureConstants.Elf_High][GenderConstants.Female] = "80";
             weights[CreatureConstants.Elf_High][GenderConstants.Male] = "85";
             weights[CreatureConstants.Elf_High][CreatureConstants.Elf_High] = "1d6";
-            weights[CreatureConstants.Elf_Wild][GenderConstants.Female] = "80";
-            weights[CreatureConstants.Elf_Wild][GenderConstants.Male] = "85";
-            weights[CreatureConstants.Elf_Wild][CreatureConstants.Elf_Wild] = "1d6";
             weights[CreatureConstants.Elf_Wood][GenderConstants.Female] = "80";
             weights[CreatureConstants.Elf_Wood][GenderConstants.Male] = "85";
             weights[CreatureConstants.Elf_Wood][CreatureConstants.Elf_Wood] = "1d6";
@@ -2056,16 +2047,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         }
 
         [TestCase(CreatureConstants.Allip)]
-        [TestCase(CreatureConstants.Dwarf_Deep)]
         [TestCase(CreatureConstants.Dwarf_Duergar)]
         [TestCase(CreatureConstants.Dwarf_Hill)]
         [TestCase(CreatureConstants.Dwarf_Mountain)]
-        [TestCase(CreatureConstants.Elf_Aquatic)]
         [TestCase(CreatureConstants.Elf_Drow)]
         [TestCase(CreatureConstants.Elf_Gray)]
         [TestCase(CreatureConstants.Elf_Half)]
         [TestCase(CreatureConstants.Elf_High)]
-        [TestCase(CreatureConstants.Elf_Wild)]
         [TestCase(CreatureConstants.Elf_Wood)]
         [TestCase(CreatureConstants.Ghoul)]
         [TestCase(CreatureConstants.Ghoul_Ghast)]

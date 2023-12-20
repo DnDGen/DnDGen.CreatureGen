@@ -2349,8 +2349,11 @@
   </collection>
   <collection>
     <name>Janni</name>
-	  <entry>Adulthood@(1d100-1)*10000+(1d100-1)*100+1d100</entry>
-	  <entry>Maximum@-1</entry>
+	  <entry>Adulthood@(1d20-1)*3+1d3+39</entry>
+	  <entry>Middle Age@(1d10-1)*5+1d4+1d2+98</entry>
+	  <entry>Old@(1d10-1)*5+1d4+1d2+148</entry>
+	  <entry>Venerable@1d100+1d2+198</entry>
+	  <entry>Maximum@1d100+200</entry>
   </collection>
   <collection>
     <name>Juvenile Arrowhawk</name>

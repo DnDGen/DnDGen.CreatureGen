@@ -435,8 +435,8 @@
 	</collection>
 	<collection>
 		<name>Aquatic Elf</name>
-		<entry>Male@85</entry>
-		<entry>Female@80</entry>
+		<entry>Male@93</entry>
+		<entry>Female@88</entry>
 		<entry>Aquatic Elf@1d6</entry>
 	</collection>
 	<collection>
@@ -1160,8 +1160,8 @@
 	</collection>
 	<collection>
 		<name>Deep Dwarf</name>
-		<entry>Male@130</entry>
-		<entry>Female@100</entry>
+		<entry>Male@117</entry>
+		<entry>Female@90</entry>
 		<entry>Deep Dwarf@2d6</entry>
 	</collection>
 	<collection>
@@ -1516,9 +1516,9 @@
 	</collection>
 	<collection>
 		<name>Ettin</name>
-		<entry>Male@808</entry>
-		<entry>Female@808</entry>
-		<entry>Ettin@61d6</entry>
+		<entry>Male@640</entry>
+		<entry>Female@550</entry>
+		<entry>Ettin@190d2</entry>
 	</collection>
 	<collection>
 		<name>Fire Elemental, Elder</name>
@@ -3606,7 +3606,7 @@
 	<collection>
 		<name>Wild Elf</name>
 		<entry>Female@80</entry>
-		<entry>Male@85</entry>
+		<entry>Male@100</entry>
 		<entry>Wild Elf@1d6</entry>
 	</collection>
 	<collection>

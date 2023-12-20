@@ -26,9 +26,9 @@ namespace DnDGen.CreatureGen.Tests.Unit.TestCaseSources
         public static IEnumerable<int> PositiveValues => NonNegativeValues.Where(v => v > 0);
         public static IEnumerable<int> NonPositiveValues => NonNegativeValues.Select(n => n * -1);
 
-        public static IEnumerable AllValues => AllTestValues.Select(v => new TestCaseData(v));
-        public static IEnumerable AllPositiveValues => PositiveValues.Select(v => new TestCaseData(v));
-        public static IEnumerable AllNonPositiveValues => NonPositiveValues.Select(v => new TestCaseData(v));
+        public static IEnumerable AllValuesTestCases => AllTestValues.Select(v => new TestCaseData(v));
+        public static IEnumerable AllPositiveValuesTestCases => PositiveValues.Select(v => new TestCaseData(v));
+        public static IEnumerable AllNonPositiveValuesTestCases => NonPositiveValues.Select(v => new TestCaseData(v));
 
         public static IEnumerable ValueLessThanPositiveRequirement
         {
