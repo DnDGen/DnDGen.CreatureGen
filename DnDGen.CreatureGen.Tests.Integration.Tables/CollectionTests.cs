@@ -66,13 +66,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
         {
             var distinctSource = source.Distinct();
             var distinctExpected = expected.Distinct();
-            AssertCollection(distinctSource, distinctExpected, message);
+            AssertCollection(distinctSource, distinctExpected, $"{message}: Distinct appearances");
 
             foreach (var sourceItem in distinctSource)
             {
                 var sourceCount = source.Count(s => s == sourceItem);
                 var expectedCount = expected.Count(s => s == sourceItem);
-                Assert.That(sourceCount, Is.EqualTo(expectedCount));
+                Assert.That(sourceCount, Is.EqualTo(expectedCount), $"{message}: {sourceItem}");
             }
         }
 
