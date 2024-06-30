@@ -183,8 +183,8 @@
     <EmbeddedResource Include="Tables\Skills\SkillPoints.xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DnDGen.Infrastructure" Version="4.4.2" />
-    <PackageReference Include="DnDGen.RollGen" Version="15.5.4" />
-    <PackageReference Include="DnDGen.TreasureGen" Version="10.5.3" />
+    <PackageReference Include="DnDGen.Infrastructure" Version="4.4.3" />
+    <PackageReference Include="DnDGen.RollGen" Version="15.5.7" />
+    <PackageReference Include="DnDGen.TreasureGen" Version="10.5.5" />
   </ItemGroup>
 </Project>

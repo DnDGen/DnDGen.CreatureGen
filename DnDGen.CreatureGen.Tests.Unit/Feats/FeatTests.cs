@@ -30,7 +30,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Feats
         public void CloneFeat()
         {
             feat.CanBeTakenMultipleTimes = Convert.ToBoolean(random.Next(2));
-            feat.Foci = new[] { Guid.NewGuid().ToString(), Guid.NewGuid().ToString() };
+            feat.Foci = [Guid.NewGuid().ToString(), Guid.NewGuid().ToString()];
             feat.Frequency.Quantity = random.Next();
             feat.Frequency.TimePeriod = Guid.NewGuid().ToString();
             feat.Name = Guid.NewGuid().ToString();

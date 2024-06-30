@@ -2109,11 +2109,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var damageReduction = new Feat
             {
                 Name = FeatConstants.SpecialQualities.DamageReduction,
-                Foci = new[] { "Vulnerable to magic" },
+                Foci = ["Vulnerable to magic"],
                 Power = 2
             };
             baseCreature.SpecialQualities = baseCreature.SpecialQualities
-                .Union(new[] { damageReduction });
+                .Union([damageReduction]);
 
             var smiteGood = new Attack
             {
@@ -2128,7 +2128,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteGood });
+                .Returns([smiteGood]);
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
             var originalSubtypes = baseCreature.Type.SubTypes.ToArray();

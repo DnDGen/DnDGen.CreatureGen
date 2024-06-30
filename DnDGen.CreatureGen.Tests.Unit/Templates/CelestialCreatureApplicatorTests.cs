@@ -2166,11 +2166,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var damageReduction = new Feat
             {
                 Name = FeatConstants.SpecialQualities.DamageReduction,
-                Foci = new[] { "Vulnerable to magic" },
+                Foci = ["Vulnerable to magic"],
                 Power = 2
             };
             baseCreature.SpecialQualities = baseCreature.SpecialQualities
-                .Union(new[] { damageReduction });
+                .Union([damageReduction]);
 
             var smiteEvil = new Attack
             {
@@ -2185,7 +2185,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                     baseCreature.BaseAttackBonus,
                     baseCreature.Abilities,
                     baseCreature.HitPoints.RoundedHitDiceQuantity))
-                .Returns(new[] { smiteEvil });
+                .Returns([smiteEvil]);
 
             var originalSpecialQualities = baseCreature.SpecialQualities.ToArray();
             var originalSubtypes = baseCreature.Type.SubTypes.ToArray();
@@ -2193,10 +2193,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             var specialQualities = new[]
             {
                 new Feat { Name = FeatConstants.SpecialQualities.Darkvision, Power = 60 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Acid }, Power = 5 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Cold }, Power = 5 },
-                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = new[] { FeatConstants.Foci.Elements.Electricity }, Power = 5 },
-                new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = new[] { "Vulnerable to magic" }, Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = [FeatConstants.Foci.Elements.Acid], Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = [FeatConstants.Foci.Elements.Cold], Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.EnergyResistance, Foci = [FeatConstants.Foci.Elements.Electricity], Power = 5 },
+                new Feat { Name = FeatConstants.SpecialQualities.DamageReduction, Foci = ["Vulnerable to magic"], Power = 5 },
                 new Feat { Name = FeatConstants.SpecialQualities.SpellResistance, Power = 5 },
             };
 

@@ -48,35 +48,35 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             foreach (var creature in creatures)
             {
-                appearances[creature] = new string[0];
+                appearances[creature] = [];
             }
 
             //Human:
-            //allSkin: new[] { "Dark Brown skin", "Brown skin", "Light brown skin",
+            //allSkin: [ "Dark brown skin", "Brown skin", "Light brown skin",
             //    "Dark tan skin", "Tan skin", "Light tan skin",
-            //    "Pink skin", "White skin", "Pale white skin" },
-            //commonHair: new[] { "Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair",
+            //    "Pink skin", "White skin", "Pale white skin" ],
+            //commonHair: [ "Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair",
             //    "Curly Red hair", "Curly Blond hair", "Curly Brown hair", "Curly Black hair",
-            //    "Kinky Red hair", "Kinky Blond hair", "Kinky Brown hair", "Kinky Black hair" },
-            //uncommonHair: new[] { "Bald" },
-            //allEyes: new[] { "Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes" }
+            //    "Kinky Red hair", "Kinky Blond hair", "Kinky Brown hair", "Kinky Black hair" ],
+            //uncommonHair: ["Bald"],
+            //allEyes: ["Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes"]
 
             //Source: https://forgottenrealms.fandom.com/wiki/Aasimar
             appearances[CreatureConstants.Aasimar] = GetWeightedAppearances(
-                commonSkin: new[] { "Dark Brown skin", "Brown skin", "Light brown skin",
+                commonSkin: [ "Dark brown skin", "Brown skin", "Light brown skin",
                     "Dark tan skin", "Tan skin", "Light tan skin",
-                    "Pink skin", "White skin", "Pale white skin" },
-                uncommonSkin: new[] { "Emerald skin", "Gold skin", "Silver skin",
+                    "Pink skin", "White skin", "Pale white skin" ],
+                uncommonSkin: [ "Emerald skin", "Gold skin", "Silver skin",
                     "Dark Brown skin with small iridescent scales", "Brown skin with small iridescent scales", "Light brown skin with small iridescent scales",
                         "Dark tan skin with small iridescent scales", "Tan skin with small iridescent scales", "Light tan skin with small iridescent scales",
                         "Pink skin with small iridescent scales", "White skin with small iridescent scales", "Pale white skin with small iridescent scales",
-                },
-                rareSkin: new[] { "Emerald skin with small iridescent scales", "Gold skin with small iridescent scales", "Silver skin with small iridescent scales" },
-                commonHair: new[] { "Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair",
+                ],
+                rareSkin: ["Emerald skin with small iridescent scales", "Gold skin with small iridescent scales", "Silver skin with small iridescent scales"],
+                commonHair: [ "Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair",
                     "Curly Red hair", "Curly Blond hair", "Curly Brown hair", "Curly Black hair",
                     "Kinky Red hair", "Kinky Blond hair", "Kinky Brown hair", "Kinky Black hair",
-                    "Straight Silver hair", "Curly Silver hair", "Kinky Silver hair" },
-                uncommonHair: new[] {
+                    "Straight Silver hair", "Curly Silver hair", "Kinky Silver hair" ],
+                uncommonHair: [
                     "Bald",
                     "Straight Red hair with feathers mixed in", "Straight Blond hair with feathers mixed in", "Straight Brown hair with feathers mixed in",
                         "Straight Black hair with feathers mixed in",
@@ -84,10 +84,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                         "Curly Black hair with feathers mixed in",
                     "Kinky Red hair with feathers mixed in", "Kinky Blond hair with feathers mixed in", "Kinky Brown hair with feathers mixed in",
                         "Kinky Black hair with feathers mixed in",
-                    "Straight Silver hair with feathers mixed in", "Curly Silver hair with feathers mixed in", "Kinky Silver hair with feathers mixed in" },
-                commonEyes: new[] { "Pupil-less pale white eyes", "Pupil-less golden eyes", "Pupil-less gray eyes" },
-                uncommonEyes: new[] { "Pupil-less topaz eyes", "Pupil-less pearly opalescent eyes" },
-                uncommonOther: new[] { "A light covering of feathers on the shoulders, where an angel's wings might sprout" });
+                    "Straight Silver hair with feathers mixed in", "Curly Silver hair with feathers mixed in", "Kinky Silver hair with feathers mixed in" ],
+                commonEyes: ["Pupil-less pale white eyes", "Pupil-less golden eyes", "Pupil-less gray eyes"],
+                uncommonEyes: ["Pupil-less topaz eyes", "Pupil-less pearly opalescent eyes"],
+                uncommonOther: ["A light covering of feathers on the shoulders, where an angel's wings might sprout"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Aboleth
             appearances[CreatureConstants.Aboleth] = GetWeightedAppearances(
                 allEyes: new[] { "Three red eyes" },
@@ -269,40 +269,40 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.AnimatedObject_Small_Wooden] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
             appearances[CreatureConstants.AnimatedObject_Tiny] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
             appearances[CreatureConstants.AnimatedObject_Tiny_Flexible] = new[] { "Rope", "Vine", "Chain" };
-            appearances[CreatureConstants.AnimatedObject_Tiny_MultipleLegs] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
-            appearances[CreatureConstants.AnimatedObject_Tiny_MultipleLegs_Wooden] = new[] { "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
-                "Wooden Stool" };
-            appearances[CreatureConstants.AnimatedObject_Tiny_Sheetlike] = new[] { "Carpet", "Tapestry", "Rug", "Blanket" };
+            appearances[CreatureConstants.AnimatedObject_Tiny_MultipleLegs] = ["Stone Table", "Stone Chair", "Stone Dresser"];
+            appearances[CreatureConstants.AnimatedObject_Tiny_MultipleLegs_Wooden] = [ "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
+                "Wooden Stool" ];
+            appearances[CreatureConstants.AnimatedObject_Tiny_Sheetlike] = ["Carpet", "Tapestry", "Rug", "Blanket"];
             appearances[CreatureConstants.AnimatedObject_Tiny_TwoLegs] = GetWeightedAppearances(
-                commonOther: new[] { "Human statue", "High Elf statue", "Lightfoot Halfling statue", "Hill Dwarf statue", "Rock Gnome statue", "Half-Elf statue",
-                    "Half-Orc statue", "Suit of plate armor" },
-                uncommonOther: new[] { "Wood Elf statue", "Wild Elf statue", "Gray Elf statue", "Aquatic Elf statue", "Drow statue",
+                commonOther: [ "Human statue", "High Elf statue", "Lightfoot Halfling statue", "Hill Dwarf statue", "Rock Gnome statue", "Half-Elf statue",
+                    "Half-Orc statue", "Suit of plate armor" ],
+                uncommonOther: [ "Wood Elf statue", "Wild Elf statue", "Gray Elf statue", "Aquatic Elf statue", "Drow statue",
                     "Tallfellow Halfling statue", "Deep Halfling statue",
                     "Mountain Dwarf statue", "Deep Dwarf statue", "Duergar statue",
                     "Forest Gnome statue", "Svirfneblin statue",
-                    "Aasimar statue", "Tiefling statue" },
-                rareOther: new[] { "Orc statue", "Goblin statue", "Hobgoblin statue", "Kobold statue", "Troll statue", "Ogre statue", "Mind Flayer statue",
+                    "Aasimar statue", "Tiefling statue" ],
+                rareOther: [ "Orc statue", "Goblin statue", "Hobgoblin statue", "Kobold statue", "Troll statue", "Ogre statue", "Mind Flayer statue",
                     "Hill Giant statue", "Frost Giant statue", "Fire Giant statue", "Stone Giant statue", "Cloud Giant statue", "Storm Giant statue",
-                    "Half-Celestial statue", "Half-Fiend statue", "Half-Dragon statue" });
-            appearances[CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden] = new[] { "Ladder",
+                    "Half-Celestial statue", "Half-Fiend statue", "Half-Dragon statue" ]);
+            appearances[CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden] = [ "Ladder",
                 "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine", "Rock Gnome wooden figurine",
-                    "Half-Elf wooden figurine", "Half-Orc wooden figurine" };
-            appearances[CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden] = new[] { "Cart", "Carriage" };
-            appearances[CreatureConstants.AnimatedObject_Tiny_Wooden] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
+                    "Half-Elf wooden figurine", "Half-Orc wooden figurine" ];
+            appearances[CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden] = ["Cart", "Carriage"];
+            appearances[CreatureConstants.AnimatedObject_Tiny_Wooden] = ["Clock", "Feather Duster", "Broom", "Bucket", "Barrel"];
             //Source: https://forgottenrealms.fandom.com/wiki/Ankheg
             appearances[CreatureConstants.Ankheg] = GetWeightedAppearances(
-                allSkin: new[] { "Brown skin", "Yellow skin", "Green skin" },
-                allEyes: new[] { "Black eyes" });
+                allSkin: ["Brown skin", "Yellow skin", "Green skin"],
+                allEyes: ["Black eyes"]);
             //Source: https://www.d20srd.org/srd/monsters/hag.htm#annis
             appearances[CreatureConstants.Annis] = GetWeightedAppearances(
-                allSkin: new[] { "Blue-black skin, as if deeply bruised, covered in scars and blemishes" },
-                allHair: new[] { "Black hair" },
-                allEyes: new[] { "Dull, greenish-yellow eyes" },
-                commonOther: new[] { "Lean with long, lanky limbs. Long, spiraling, stylized, black nails",
+                allSkin: ["Blue-black skin, as if deeply bruised, covered in scars and blemishes"],
+                allHair: ["Black hair"],
+                allEyes: ["Dull, greenish-yellow eyes"],
+                commonOther: [ "Lean with long, lanky limbs. Long, spiraling, stylized, black nails",
                     "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized black nails",
                     "Lean with long, lanky limbs. Long, spiraling, stylized, rust-colored nails",
-                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized rust-colored nails" },
-                uncommonOther: new[] { "Lean with long, lanky limbs. Long, spiraling, stylized, black nails. Chewed-through cheeks, etching a gangrenous grin",
+                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized rust-colored nails" ],
+                uncommonOther: [ "Lean with long, lanky limbs. Long, spiraling, stylized, black nails. Chewed-through cheeks, etching a gangrenous grin",
                     "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized black nails. Chewed-through cheeks, etching a gangrenous grin",
                     "Lean with long, lanky limbs. Long, spiraling, stylized, rust-colored nails. Chewed-through cheeks, etching a gangrenous grin",
                     "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized rust-colored nails. Chewed-through cheeks, etching a gangrenous grin",
@@ -317,43 +317,48 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Lean with long, lanky limbs. Long, spiraling, stylized, black nails. Left hand is a grafted Troll hand",
                     "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized black nails. Left hand is a grafted Troll hand",
                     "Lean with long, lanky limbs. Long, spiraling, stylized, rust-colored nails. Left hand is a grafted Troll hand",
-                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized rust-colored nails. Left hand is a grafted Troll hand"  });
+                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized rust-colored nails. Left hand is a grafted Troll hand"  ]);
             //Source: https://forgottenrealms.fandom.com/wiki/Giant_ant
-            appearances[CreatureConstants.Ant_Giant_Worker] = new[] { "Black skin", "Red skin", "Brown skin" };
-            appearances[CreatureConstants.Ant_Giant_Soldier] = new[] { "Black skin", "Red skin", "Brown skin" };
-            appearances[CreatureConstants.Ant_Giant_Queen] = new[] { "Black skin", "Red skin", "Brown skin" };
+            appearances[CreatureConstants.Ant_Giant_Worker] = ["Black skin", "Red skin", "Brown skin"];
+            appearances[CreatureConstants.Ant_Giant_Soldier] = ["Black skin", "Red skin", "Brown skin"];
+            appearances[CreatureConstants.Ant_Giant_Queen] = ["Black skin", "Red skin", "Brown skin"];
             //Source: https://www.dimensions.com/element/eastern-lowland-gorilla-gorilla-beringei-graueri
             appearances[CreatureConstants.Ape] = GetWeightedAppearances(
-                commonHair: new[] { "Jet-black fur" },
-                uncommonHair: new[] { "Grey fur", "Silver fur" });
+                commonHair: ["Jet-black fur"],
+                uncommonHair: ["Grey fur", "Silver fur"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Dire_ape
             appearances[CreatureConstants.Ape_Dire] = GetWeightedAppearances(
-                commonHair: new[] { "Jet-black fur" },
-                uncommonHair: new[] { "Grey fur", "Silver fur" });
+                commonHair: ["Jet-black fur"],
+                uncommonHair: ["Grey fur", "Silver fur"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Aranea
             appearances[CreatureConstants.Aranea] = GetWeightedAppearances(
-                commonSkin: new[] { "TODO Human skin" },
-                uncommonSkin: new[] { "TODO Half-Elf skin" },
-                rareSkin: new[] { "TODO Drow skin" },
-                commonHair: new[] { "TODO Human hair" },
-                uncommonHair: new[] { "TODO Half-Elf hair" },
-                rareHair: new[] { "TODO Drow hair" },
-                commonEyes: new[] { "TODO Human eyes" },
-                uncommonEyes: new[] { "TODO Half-Elf eyes" },
-                rareEyes: new[] { "TODO Drow eyes" });
+                commonSkin: [ "Dark brown skin", "Brown skin", "Light brown skin",
+                    "Dark tan skin", "Tan skin", "Light tan skin",
+                    "Pink skin", "White skin", "Pale white skin" ],
+                uncommonSkin: ["TODO Half-Elf skin"],
+                rareSkin: ["TODO Drow skin"],
+                commonHair: ["Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair",
+                    "Curly Red hair", "Curly Blond hair", "Curly Brown hair", "Curly Black hair",
+                    "Kinky Red hair", "Kinky Blond hair", "Kinky Brown hair", "Kinky Black hair"],
+                uncommonHair: [ "Bald",
+                    "TODO Half-Elf hair"],
+                rareHair: ["TODO Drow hair"],
+                commonEyes: ["Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes"],
+                uncommonEyes: ["TODO Half-Elf eyes"],
+                rareEyes: ["TODO Drow eyes"]);
             //Source: https://www.d20srd.org/srd/monsters/arrowhawk.htm
-            appearances[CreatureConstants.Arrowhawk_Juvenile] = new[] { "Covered in blue scales with occasional tufts of yellow feathers" };
-            appearances[CreatureConstants.Arrowhawk_Adult] = new[] { "Covered in blue scales with occasional tufts of yellow feathers" };
-            appearances[CreatureConstants.Arrowhawk_Elder] = new[] { "Covered in blue scales with occasional tufts of yellow feathers" };
+            appearances[CreatureConstants.Arrowhawk_Juvenile] = ["Covered in blue scales with occasional tufts of yellow feathers"];
+            appearances[CreatureConstants.Arrowhawk_Adult] = ["Covered in blue scales with occasional tufts of yellow feathers"];
+            appearances[CreatureConstants.Arrowhawk_Elder] = ["Covered in blue scales with occasional tufts of yellow feathers"];
             //Source: https://forgottenrealms.fandom.com/wiki/Assassin_vine
-            appearances[CreatureConstants.AssassinVine] = new[] { "Smaller vines extend from the main branch and bear clusters of grape-like berries. Stringy bark. Hand-shaped leaves" };
+            appearances[CreatureConstants.AssassinVine] = ["Smaller vines extend from the main branch and bear clusters of grape-like berries. Stringy bark. Hand-shaped leaves"];
             //Source: https://www.d20srd.org/srd/monsters/athach.htm
-            appearances[CreatureConstants.Athach] = new[] { "Extra arm growing out of chest. Large, curved tusks on either side of a wide mouth. Relatively small eyes and nose for the size of the head. One ear significantly bigger than the other. Quite strong stench." };
+            appearances[CreatureConstants.Athach] = ["Extra arm growing out of chest. Large, curved tusks on either side of a wide mouth. Relatively small eyes and nose for the size of the head. One ear significantly bigger than the other. Quite strong stench."];
             //Source: https://forgottenrealms.fandom.com/wiki/Avoral
             appearances[CreatureConstants.Avoral] = GetWeightedAppearances(
-                allSkin: new[] { "TODO Human skin" },
-                allHair: new[] { "Red feathers", "Blue feathers", "Brown feathers", "Black feathers", "White feathers" },
-                allEyes: new[] { "Bright golden eyes" });
+                allSkin: ["TODO Human skin"],
+                allHair: ["Red feathers", "Blue feathers", "Brown feathers", "Black feathers", "White feathers"],
+                allEyes: ["Bright golden eyes"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Azer
             appearances[CreatureConstants.Azer] = GetWeightedAppearances(
                 allSkin: new[] { "Brass-colored skin" },
@@ -1548,52 +1553,52 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "A column of red/yellow flames", "A column of yellow/orange flames", "A column of orange/red flames", "A column of red/yellow/orange flames" };
             appearances[CreatureConstants.Elemental_Fire_Huge] = new[] { "A column of red flames", "A column of yellow flames", "A column of orange flames",
                 "A column of red/yellow flames", "A column of yellow/orange flames", "A column of orange/red flames", "A column of red/yellow/orange flames" };
-            appearances[CreatureConstants.Elemental_Fire_Greater] = new[] { "A column of red flames", "A column of yellow flames", "A column of orange flames",
-                "A column of red/yellow flames", "A column of yellow/orange flames", "A column of orange/red flames", "A column of red/yellow/orange flames" };
-            appearances[CreatureConstants.Elemental_Fire_Elder] = new[] { "A column of red flames", "A column of yellow flames", "A column of orange flames",
-                "A column of red/yellow flames", "A column of yellow/orange flames", "A column of orange/red flames", "A column of red/yellow/orange flames" };
+            appearances[CreatureConstants.Elemental_Fire_Greater] = [ "A column of red flames", "A column of yellow flames", "A column of orange flames",
+                "A column of red/yellow flames", "A column of yellow/orange flames", "A column of orange/red flames", "A column of red/yellow/orange flames" ];
+            appearances[CreatureConstants.Elemental_Fire_Elder] = [ "A column of red flames", "A column of yellow flames", "A column of orange flames",
+                "A column of red/yellow flames", "A column of yellow/orange flames", "A column of orange/red flames", "A column of red/yellow/orange flames" ];
             //Source: https://forgottenrealms.fandom.com/wiki/Water_elemental
-            appearances[CreatureConstants.Elemental_Water_Small] = new[] { "A cresting wave of water" };
-            appearances[CreatureConstants.Elemental_Water_Medium] = new[] { "A cresting wave of water" };
-            appearances[CreatureConstants.Elemental_Water_Large] = new[] { "A cresting wave of water" };
-            appearances[CreatureConstants.Elemental_Water_Huge] = new[] { "A cresting wave of water" };
-            appearances[CreatureConstants.Elemental_Water_Greater] = new[] { "A cresting wave of water" };
-            appearances[CreatureConstants.Elemental_Water_Elder] = new[] { "A cresting wave of water" };
+            appearances[CreatureConstants.Elemental_Water_Small] = ["A cresting wave of water"];
+            appearances[CreatureConstants.Elemental_Water_Medium] = ["A cresting wave of water"];
+            appearances[CreatureConstants.Elemental_Water_Large] = ["A cresting wave of water"];
+            appearances[CreatureConstants.Elemental_Water_Huge] = ["A cresting wave of water"];
+            appearances[CreatureConstants.Elemental_Water_Greater] = ["A cresting wave of water"];
+            appearances[CreatureConstants.Elemental_Water_Elder] = ["A cresting wave of water"];
             //Source: https://en.wikipedia.org/wiki/African_bush_elephant#Description
-            appearances[CreatureConstants.Elephant] = new[] { "Gray skin with scanty hairs. Large, pointed, triangular ears cover the whole shoulder." };
+            appearances[CreatureConstants.Elephant] = ["Gray skin with scanty hairs. Large, pointed, triangular ears cover the whole shoulder."];
             //Source: https://forgottenrealms.fandom.com/wiki/Aquatic_elf
             appearances[CreatureConstants.Elf_Aquatic] = GetWeightedAppearances(
-                commonSkin: new[] { "Deep green skin, mottled and striped with brown", "Blue skin with white stripes and patches",
+                commonSkin: [ "Deep green skin, mottled and striped with brown", "Blue skin with white stripes and patches",
                     "Deep blue skin with white stripes and patches", "Light blue skin with white stripes and patches",
-                    "Pale silver-green skin" },
-                uncommonSkin: new[] { "Pale silver-green skin" },
-                commonEyes: new[] { "Turquoise eyes", "White eyes", "Black eyes", "Blue eyes", "Green eyes" },
-                rareEyes: new[] { "Silver eyes" },
-                commonHair: new[] { "Thick, somewhat-stringy black hair", "Thick, somewhat-stringy blue hair", "Thick, somewhat-stringy silver-white hair",
-                        "Thick, somewhat-stringy blue-green hair", "Thick, somewhat-stringy emerald green hair" },
-                uncommonHair: new[] { "Thick, somewhat-stringy red hair",
+                    "Pale silver-green skin" ],
+                uncommonSkin: ["Pale silver-green skin"],
+                commonEyes: ["Turquoise eyes", "White eyes", "Black eyes", "Blue eyes", "Green eyes"],
+                rareEyes: ["Silver eyes"],
+                commonHair: [ "Thick, somewhat-stringy black hair", "Thick, somewhat-stringy blue hair", "Thick, somewhat-stringy silver-white hair",
+                        "Thick, somewhat-stringy blue-green hair", "Thick, somewhat-stringy emerald green hair" ],
+                uncommonHair: [ "Thick, somewhat-stringy red hair",
                     "Thick, somewhat-stringy, rough black hair", "Thick, somewhat-stringy, rough blue hair", "Thick, somewhat-stringy, rough silver-white hair",
-                        "Thick, somewhat-stringy, rough blue-green hair", "Thick, somewhat-stringy, rough emerald green hair" },
-                rareHair: new[] { "Thick, somewhat-stringy, rough red hair" },
-                allOther: new[] { "Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs" });
+                        "Thick, somewhat-stringy, rough blue-green hair", "Thick, somewhat-stringy, rough emerald green hair" ],
+                rareHair: ["Thick, somewhat-stringy, rough red hair"],
+                allOther: ["Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Drow
             //https://www.d20srd.org/srd/monsters/elf.htm
             appearances[CreatureConstants.Elf_Drow] = GetWeightedAppearances(
-                commonSkin: new[] { "Black skin", "Dark blue skin", "Gray skin", "Dark gray skin", "Jet-black skin", "Obsidian-colored skin", "Blue skin",
-                    "Gray-blue skin", "Black-blue skin" },
-                rareSkin: new[] { "White (albino) skin" },
-                commonEyes: new[] { "Bright red eyes", "Vivid red eyes" },
-                uncommonEyes: new[] { "Pale white-blue eyes", "Pale white-lilac eyes", "Pale white-pink eyes", "Pale white-silver eyes", "Purple eyes", "Blue eyes" },
-                rareEyes: new[] { "Green eyes", "Brown eyes", "Black eyes", "Amber eyes", "Rose-hued eyes" },
-                commonHair: new[] { "Straight Stark white hair", "Wavy Stark white hair", "Curly Stark white hair", "Kinky Stark white hair",
-                    "Straight Pale yellow hair", "Wavy Pale yellow hair", "Curly Pale yellow hair", "Kinky Pale yellow hair" },
-                uncommonHair: new[] { "Straight Gray hair", "Wavy Gray hair", "Curly Gray hair", "Kinky Gray hair",
+                commonSkin: [ "Black skin", "Dark blue skin", "Gray skin", "Dark gray skin", "Jet-black skin", "Obsidian-colored skin", "Blue skin",
+                    "Gray-blue skin", "Black-blue skin" ],
+                rareSkin: ["White (albino) skin"],
+                commonEyes: ["Bright red eyes", "Vivid red eyes"],
+                uncommonEyes: ["Pale white-blue eyes", "Pale white-lilac eyes", "Pale white-pink eyes", "Pale white-silver eyes", "Purple eyes", "Blue eyes"],
+                rareEyes: ["Green eyes", "Brown eyes", "Black eyes", "Amber eyes", "Rose-hued eyes"],
+                commonHair: [ "Straight Stark white hair", "Wavy Stark white hair", "Curly Stark white hair", "Kinky Stark white hair",
+                    "Straight Pale yellow hair", "Wavy Pale yellow hair", "Curly Pale yellow hair", "Kinky Pale yellow hair" ],
+                uncommonHair: [ "Straight Gray hair", "Wavy Gray hair", "Curly Gray hair", "Kinky Gray hair",
                     "Straight Pale Yellow hair", "Wavy Pale Yellow hair", "Curly Pale Yellow hair", "Kinky Pale Yellow hair",
                     "Straight Silver hair", "Wavy Silver hair", "Curly Silver hair", "Kinky Silver hair",
                     "Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair",
                     "Pale TODO Human hair",
-                    "Pale TODO High Elf hair" },
-                allOther: new[] { "Pointed ears" });
+                    "Pale TODO High Elf hair" ],
+                allOther: ["Pointed ears"]);
             //Source: https://www.d20srd.org/srd/monsters/elf.htm
             //https://forgottenrealms.fandom.com/wiki/Grey_elf
             appearances[CreatureConstants.Elf_Gray] = GetWeightedAppearances(
@@ -2402,41 +2407,41 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Tobiano (White/golden cow-patterned coat; White mane and tail)", "Tobiano (White/dark ginger cow-patterned coat; White mane and tail)" };
             //Source: https://forgottenrealms.fandom.com/wiki/Hound_archon
             appearances[CreatureConstants.HoundArchon] = GetWeightedAppearances(
-                allSkin: new[] { "Red skin", "Brown skin", "Light brown skin", "Tan skin", "Cream-colored skin" },
-                allEyes: new[] { "Black eyes", "Yellow eyes" },
-                allOther: new[] { "Humanoid body; head of a dog" });
+                allSkin: ["Red skin", "Brown skin", "Light brown skin", "Tan skin", "Cream-colored skin"],
+                allEyes: ["Black eyes", "Yellow eyes"],
+                allOther: ["Humanoid body; head of a dog"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Howler
             appearances[CreatureConstants.Howler] = GetWeightedAppearances(
-                allSkin: new[] { "Light brown scales", "Tan scales" },
-                allHair: new[] { "Tangled, red fur, spreading into mane of trembling quills on the back of the neck and surrounding the face" },
-                allEyes: new[] { "Black eyes", "Yellow eyes" },
-                allOther: new[] { "Bruised, crushed digits ending in claws on the front legs. Back legs end in hooves. Back like an ox. Muzzled, simian face." });
+                allSkin: ["Light brown scales", "Tan scales"],
+                allHair: ["Tangled, red fur, spreading into mane of trembling quills on the back of the neck and surrounding the face"],
+                allEyes: ["Black eyes", "Yellow eyes"],
+                allOther: ["Bruised, crushed digits ending in claws on the front legs. Back legs end in hooves. Back like an ox. Muzzled, simian face."]);
             //Source: https://forgottenrealms.fandom.com/wiki/Human
             appearances[CreatureConstants.Human] = GetWeightedAppearances(
-                allSkin: new[] { "Dark Brown skin", "Brown skin", "Light brown skin",
+                allSkin: [ "Dark brown skin", "Brown skin", "Light brown skin",
                     "Dark tan skin", "Tan skin", "Light tan skin",
-                    "Pink skin", "White skin", "Pale white skin" },
-                commonHair: new[] { "Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair",
+                    "Pink skin", "White skin", "Pale white skin" ],
+                commonHair: [ "Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair",
                     "Curly Red hair", "Curly Blond hair", "Curly Brown hair", "Curly Black hair",
-                    "Kinky Red hair", "Kinky Blond hair", "Kinky Brown hair", "Kinky Black hair" },
-                uncommonHair: new[] { "Bald" },
-                allEyes: new[] { "Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes" });
+                    "Kinky Red hair", "Kinky Blond hair", "Kinky Brown hair", "Kinky Black hair" ],
+                uncommonHair: ["Bald"],
+                allEyes: ["Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Hydra
             appearances[CreatureConstants.Hydra_5Heads] = GetWeightedAppearances(
-                allSkin: new[] { "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
-                    "Yellow-green skin", "Green skin, yellow underbelly", "Tan skin" },
-                allEyes: new[] { "Amber eyes" });
+                allSkin: [ "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
+                    "Yellow-green skin", "Green skin, yellow underbelly", "Tan skin" ],
+                allEyes: ["Amber eyes"]);
             appearances[CreatureConstants.Hydra_6Heads] = GetWeightedAppearances(
-                allSkin: new[] { "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
-                    "Yellow-green skin", "Green skin, yellow underbelly", "Tan skin" },
-                allEyes: new[] { "Amber eyes" });
+                allSkin: [ "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
+                    "Yellow-green skin", "Green skin, yellow underbelly", "Tan skin" ],
+                allEyes: ["Amber eyes"]);
             appearances[CreatureConstants.Hydra_7Heads] = GetWeightedAppearances(
-                allSkin: new[] { "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
-                    "Yellow-green skin", "Green skin, yellow underbelly", "Tan skin" },
-                allEyes: new[] { "Amber eyes" });
+                allSkin: [ "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
+                    "Yellow-green skin", "Green skin, yellow underbelly", "Tan skin" ],
+                allEyes: ["Amber eyes"]);
             appearances[CreatureConstants.Hydra_8Heads] = GetWeightedAppearances(
-                allSkin: new[] { "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
-                    "Yellow-green skin", "Green skin, yellow underbelly", "Tan skin" },
+                allSkin: [ "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
+                    "Yellow-green skin", "Green skin, yellow underbelly", "Tan skin" ],
                 allEyes: new[] { "Amber eyes" });
             appearances[CreatureConstants.Hydra_9Heads] = GetWeightedAppearances(
                 allSkin: new[] { "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
@@ -4112,16 +4117,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             );
             //Source: https://forgottenrealms.fandom.com/wiki/Yuan-ti_abomination
             appearances[CreatureConstants.YuanTi_Abomination] = GetWeightedAppearances(
-                allSkin: new[] { "Turquoise scales with pale yellow underbelly", "Bright green scales with yellow underbelly", "Yellow-green scales",
-                    "Gray scales with black-outlined red diamonds along the back" },
-                allEyes: new[] { "Yellow snake-like eyes", "Red snake-like eyes", "Green snake-like eyes" },
-                allOther: new[] { "Resembles massive snake with scale-covered humanoid arms, wedge-shaped head, fangs, forked tongue" }
+                allSkin: [ "Turquoise scales with pale yellow underbelly", "Bright green scales with yellow underbelly", "Yellow-green scales",
+                    "Gray scales with black-outlined red diamonds along the back" ],
+                allEyes: ["Yellow snake-like eyes", "Red snake-like eyes", "Green snake-like eyes"],
+                allOther: ["Resembles massive snake with scale-covered humanoid arms, wedge-shaped head, fangs, forked tongue"]
             );
             //Source: https://forgottenrealms.fandom.com/wiki/Zelekhut
-            appearances[CreatureConstants.Zelekhut] = new[] {
+            appearances[CreatureConstants.Zelekhut] = [
                 "Looks like a mechanical centaur, with skin as white as alabaster and clad in golden plate armor. A pair of golden metallic wings unfold from its back when needed.",
                 "Looks like a clockwork centaur, with skin as white as alabaster and clad in golden plate armor. A pair of golden metallic wings unfold from its back when needed.",
-            };
+            ];
 
             return appearances;
         }

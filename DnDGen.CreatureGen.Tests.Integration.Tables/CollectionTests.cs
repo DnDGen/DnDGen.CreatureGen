@@ -20,7 +20,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
             collectionMapper = GetNewInstanceOf<CollectionMapper>();
 
             table = collectionMapper.Map(tableName);
-            indices = new Dictionary<int, string>();
+            indices = [];
         }
 
         protected void AssertCollectionNames(IEnumerable<string> names)
