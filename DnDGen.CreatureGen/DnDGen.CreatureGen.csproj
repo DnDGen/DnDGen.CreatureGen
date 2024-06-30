@@ -1,8 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-	  <TargetFrameworks>net6.0</TargetFrameworks>
     <TargetFrameworks>net6.0</TargetFrameworks>
+    <TargetFrameworks>net8.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Karl M. Speer</Authors>
     <Company>DnDGen</Company>
@@ -21,13 +20,11 @@
     </PackageReleaseNotes>
     <Version>0.3.0</Version>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Remove="Generators\Magic\**" />
     <EmbeddedResource Remove="Generators\Magic\**" />
     <None Remove="Generators\Magic\**" />
   </ItemGroup>
-
   <ItemGroup>
     <None Remove="Tables\Abilities\AbilityAdjustments.xml" />
     <None Remove="Tables\Abilities\AbilityGroups.xml" />
@@ -80,10 +77,10 @@
     <None Remove="Tables\Skills\SkillPoints.xml" />
     <None Include="18531-twenty-sided-dice-vector-thumb.png">
       <Pack>True</Pack>
-      <PackagePath></PackagePath>
+      <PackagePath>
+      </PackagePath>
     </None>
   </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Include="Tables\Abilities\AbilityGroups.xml">
       <SubType>Designer</SubType>
@@ -185,11 +182,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Skills\SkillPoints.xml" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="DnDGen.Infrastructure" Version="4.4.2" />
     <PackageReference Include="DnDGen.RollGen" Version="15.5.4" />
     <PackageReference Include="DnDGen.TreasureGen" Version="10.5.3" />
   </ItemGroup>
-
 </Project>

@@ -1,19 +1,19 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnDGen.CreatureGen", "DnDGen.CreatureGen\DnDGen.CreatureGen.csproj", "{592FFFA1-257C-40B4-A14D-E3D553EE490D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DnDGen.CreatureGen", "DnDGen.CreatureGen\DnDGen.CreatureGen.csproj", "{592FFFA1-257C-40B4-A14D-E3D553EE490D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnDGen.CreatureGen.Tests.Unit", "DnDGen.CreatureGen.Tests.Unit\DnDGen.CreatureGen.Tests.Unit.csproj", "{4870EA7F-5405-4B42-852F-76D8BF9255C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DnDGen.CreatureGen.Tests.Unit", "DnDGen.CreatureGen.Tests.Unit\DnDGen.CreatureGen.Tests.Unit.csproj", "{4870EA7F-5405-4B42-852F-76D8BF9255C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnDGen.CreatureGen.Tests.Integration", "DnDGen.CreatureGen.Tests.Integration\DnDGen.CreatureGen.Tests.Integration.csproj", "{4AA96410-82C0-432E-A77F-C549B38ACD4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DnDGen.CreatureGen.Tests.Integration", "DnDGen.CreatureGen.Tests.Integration\DnDGen.CreatureGen.Tests.Integration.csproj", "{4AA96410-82C0-432E-A77F-C549B38ACD4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnDGen.CreatureGen.Tests.Integration.IoC", "DnDGen.CreatureGen.Tests.Integration.IoC\DnDGen.CreatureGen.Tests.Integration.IoC.csproj", "{0AF1B3F6-685C-49BB-B236-BA8F3F978C39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DnDGen.CreatureGen.Tests.Integration.IoC", "DnDGen.CreatureGen.Tests.Integration.IoC\DnDGen.CreatureGen.Tests.Integration.IoC.csproj", "{0AF1B3F6-685C-49BB-B236-BA8F3F978C39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnDGen.CreatureGen.Tests.Integration.Tables", "DnDGen.CreatureGen.Tests.Integration.Tables\DnDGen.CreatureGen.Tests.Integration.Tables.csproj", "{9FB2AAB8-7DCE-4C4A-ADDB-8621861C9E4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DnDGen.CreatureGen.Tests.Integration.Tables", "DnDGen.CreatureGen.Tests.Integration.Tables\DnDGen.CreatureGen.Tests.Integration.Tables.csproj", "{9FB2AAB8-7DCE-4C4A-ADDB-8621861C9E4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnDGen.CreatureGen.Tests.Integration.Stress", "DnDGen.CreatureGen.Tests.Integration.Stress\DnDGen.CreatureGen.Tests.Integration.Stress.csproj", "{5C023710-6D0B-4FDA-A13B-2B328075A22C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DnDGen.CreatureGen.Tests.Integration.Stress", "DnDGen.CreatureGen.Tests.Integration.Stress\DnDGen.CreatureGen.Tests.Integration.Stress.csproj", "{5C023710-6D0B-4FDA-A13B-2B328075A22C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
