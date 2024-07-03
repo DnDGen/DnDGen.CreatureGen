@@ -36,7 +36,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         {
             Assert.That(creatureAppearances, Contains.Key(creature));
             Assert.That(creatureAppearances[creature], Is.Not.Empty);
-            Assert.That(creatureAppearances[creature].Where(a => a.Contains("TODO")), Is.Empty);
+            Assert.That(creatureAppearances[creature].Where(a => a.Contains("TODO")), Is.Empty, "APPEARANCES TODO");
 
             AssertWeightedCollection(creature, creatureAppearances[creature].ToArray());
         }
@@ -55,9 +55,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //allSkin: [ "Dark brown skin", "Brown skin", "Light brown skin",
             //    "Dark tan skin", "Tan skin", "Light tan skin",
             //    "Pink skin", "White skin", "Pale white skin" ],
-            //commonHair: [ "Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair",
-            //    "Curly Red hair", "Curly Blond hair", "Curly Brown hair", "Curly Black hair",
-            //    "Kinky Red hair", "Kinky Blond hair", "Kinky Brown hair", "Kinky Black hair" ],
+            //commonHair: [ "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
+            //    "Curly red hair", "Curly blond hair", "Curly brown hair", "Curly black hair",
+            //    "Kinky red hair", "Kinky blond hair", "Kinky brown hair", "Kinky black hair" ],
             //uncommonHair: ["Bald"],
             //allEyes: ["Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes"]
 
@@ -67,24 +67,24 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Dark tan skin", "Tan skin", "Light tan skin",
                     "Pink skin", "White skin", "Pale white skin" ],
                 uncommonSkin: [ "Emerald skin", "Gold skin", "Silver skin",
-                    "Dark Brown skin with small iridescent scales", "Brown skin with small iridescent scales", "Light brown skin with small iridescent scales",
+                    "Dark brown skin with small iridescent scales", "Brown skin with small iridescent scales", "Light brown skin with small iridescent scales",
                         "Dark tan skin with small iridescent scales", "Tan skin with small iridescent scales", "Light tan skin with small iridescent scales",
                         "Pink skin with small iridescent scales", "White skin with small iridescent scales", "Pale white skin with small iridescent scales",
                 ],
                 rareSkin: ["Emerald skin with small iridescent scales", "Gold skin with small iridescent scales", "Silver skin with small iridescent scales"],
-                commonHair: [ "Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair",
-                    "Curly Red hair", "Curly Blond hair", "Curly Brown hair", "Curly Black hair",
-                    "Kinky Red hair", "Kinky Blond hair", "Kinky Brown hair", "Kinky Black hair",
-                    "Straight Silver hair", "Curly Silver hair", "Kinky Silver hair" ],
+                commonHair: [ "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
+                    "Curly red hair", "Curly blond hair", "Curly brown hair", "Curly black hair",
+                    "Kinky red hair", "Kinky blond hair", "Kinky brown hair", "Kinky black hair",
+                    "Straight silver hair", "Curly silver hair", "Kinky silver hair" ],
                 uncommonHair: [
                     "Bald",
-                    "Straight Red hair with feathers mixed in", "Straight Blond hair with feathers mixed in", "Straight Brown hair with feathers mixed in",
-                        "Straight Black hair with feathers mixed in",
-                    "Curly Red hair with feathers mixed in", "Curly Blond hair with feathers mixed in", "Curly Brown hair with feathers mixed in",
-                        "Curly Black hair with feathers mixed in",
-                    "Kinky Red hair with feathers mixed in", "Kinky Blond hair with feathers mixed in", "Kinky Brown hair with feathers mixed in",
-                        "Kinky Black hair with feathers mixed in",
-                    "Straight Silver hair with feathers mixed in", "Curly Silver hair with feathers mixed in", "Kinky Silver hair with feathers mixed in" ],
+                    "Straight red hair with feathers mixed in", "Straight blond hair with feathers mixed in", "Straight brown hair with feathers mixed in",
+                        "Straight black hair with feathers mixed in",
+                    "Curly red hair with feathers mixed in", "Curly blond hair with feathers mixed in", "Curly brown hair with feathers mixed in",
+                        "Curly black hair with feathers mixed in",
+                    "Kinky red hair with feathers mixed in", "Kinky blond hair with feathers mixed in", "Kinky brown hair with feathers mixed in",
+                        "Kinky black hair with feathers mixed in",
+                    "Straight silver hair with feathers mixed in", "Curly silver hair with feathers mixed in", "Kinky silver hair with feathers mixed in" ],
                 commonEyes: ["Pupil-less pale white eyes", "Pupil-less golden eyes", "Pupil-less gray eyes"],
                 uncommonEyes: ["Pupil-less topaz eyes", "Pupil-less pearly opalescent eyes"],
                 uncommonOther: ["A light covering of feathers on the shoulders, where an angel's wings might sprout"]);
@@ -337,9 +337,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Pink skin", "White skin", "Pale white skin" ],
                 uncommonSkin: ["TODO Half-Elf skin"],
                 rareSkin: ["TODO Drow skin"],
-                commonHair: ["Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair",
-                    "Curly Red hair", "Curly Blond hair", "Curly Brown hair", "Curly Black hair",
-                    "Kinky Red hair", "Kinky Blond hair", "Kinky Brown hair", "Kinky Black hair"],
+                commonHair: ["Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
+                    "Curly red hair", "Curly blond hair", "Curly brown hair", "Curly black hair",
+                    "Kinky red hair", "Kinky blond hair", "Kinky brown hair", "Kinky black hair"],
                 uncommonHair: [ "Bald",
                     "TODO Half-Elf hair"],
                 rareHair: ["TODO Drow hair"],
@@ -448,53 +448,53 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Blue, pebbly-textured skin on top graduating to earth tones further down",
                     "Brown, pebbly-textured skin on top graduating to earth tones further down",
                     "Blue-purple, pebbly-textured skin on top graduating to earth tones further down" },
-                uncommonSkin: new[] { "White, pebbly-textured skin on top graduating to earth tones further down",
+                uncommonSkin: [ "White, pebbly-textured skin on top graduating to earth tones further down",
                     "Red, pebbly-textured skin on top graduating to earth tones further down",
                     "Grey, pebbly-textured skin on top graduating to earth tones further down",
-                    "Green, pebbly-textured skin on top graduating to earth tones further down" },
-                commonOther: new[] { "A giant eye surrounded by smaller eye stalks. Has a massive, gaping maw." },
-                uncommonOther: new[] { "A giant eye surrounded by smaller eye stalks. Has a massive, gaping maw. Nostrils and jointed, articulated eyestalks." });
+                    "Green, pebbly-textured skin on top graduating to earth tones further down" ],
+                commonOther: ["A giant eye surrounded by smaller eye stalks. Has a massive, gaping maw."],
+                uncommonOther: ["A giant eye surrounded by smaller eye stalks. Has a massive, gaping maw. Nostrils and jointed, articulated eyestalks."]);
             //Source: https://forgottenrealms.fandom.com/wiki/Gauth
             appearances[CreatureConstants.Beholder_Gauth] = GetWeightedAppearances(
-                commonSkin: new[] { "Brown skin, mottled with purple and gray", "Brown skin, mottled with purple", "Brown skin, mottled with gray",
+                commonSkin: [ "Brown skin, mottled with purple and gray", "Brown skin, mottled with purple", "Brown skin, mottled with gray",
                     "Purple skin, mottled with brown and gray", "Purple skin, mottled with brown", "Purple skin, mottled with gray",
-                    "Gray skin, mottled with purple and brown", "Gray skin, mottled with purple", "Gray skin, mottled with brown" },
-                uncommonSkin: new[] { "Purple, pebbly-textured skin on top graduating to earth tones further down",
+                    "Gray skin, mottled with purple and brown", "Gray skin, mottled with purple", "Gray skin, mottled with brown" ],
+                uncommonSkin: [ "Purple, pebbly-textured skin on top graduating to earth tones further down",
                     "Blue, pebbly-textured skin on top graduating to earth tones further down",
                     "Brown, pebbly-textured skin on top graduating to earth tones further down",
-                    "Blue-purple, pebbly-textured skin on top graduating to earth tones further down" },
-                rareSkin: new[] { "White, pebbly-textured skin on top graduating to earth tones further down",
+                    "Blue-purple, pebbly-textured skin on top graduating to earth tones further down" ],
+                rareSkin: [ "White, pebbly-textured skin on top graduating to earth tones further down",
                     "Red, pebbly-textured skin on top graduating to earth tones further down",
                     "Grey, pebbly-textured skin on top graduating to earth tones further down",
-                    "Green, pebbly-textured skin on top graduating to earth tones further down" },
-                commonOther: new[] { "A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw." },
-                uncommonOther: new[] { "A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw. Nostrils and jointed, articulated eyestalks." });
+                    "Green, pebbly-textured skin on top graduating to earth tones further down" ],
+                commonOther: ["A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw."],
+                uncommonOther: ["A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw. Nostrils and jointed, articulated eyestalks."]);
             //Source: https://forgottenrealms.fandom.com/wiki/Belker
-            appearances[CreatureConstants.Belker] = new[] { "Primarily composed of smoke, has large, black, bat-like wings, clawed tendrils, and a biting maw. Base form was sort of deomonic, but continually shifts and changes shape due to its semi-gaseous nature." };
+            appearances[CreatureConstants.Belker] = ["Primarily composed of smoke, has large, black, bat-like wings, clawed tendrils, and a biting maw. Base form was sort of demonic, but continually shifts and changes shape due to its semi-gaseous nature."];
             //Source: https://forgottenrealms.fandom.com/wiki/Bison
-            appearances[CreatureConstants.Bison] = new[] { "Distinctive broad head that connects to large, humped shoulders with a thick neck. Short, curved, hollow horns growing from the sides of its head. Body covered in fur. Head covered in a mantle of thick fur. Short legs. Small tail ending in a tassel of fur.",
-                "TODO: Gender-specific appearance" };
+            appearances[CreatureConstants.Bison] = [ "Distinctive broad head that connects to large, humped shoulders with a thick neck. Short, curved, hollow horns growing from the sides of its head. Body covered in fur. Head covered in a mantle of thick fur. Short legs. Small tail ending in a tassel of fur.",
+                "TODO: Gender-specific appearance" ];
             //Source: https://forgottenrealms.fandom.com/wiki/Black_pudding
             appearances[CreatureConstants.BlackPudding] = GetWeightedAppearances(
-                commonSkin: new[] { "Inky black skin" },
-                uncommonSkin: new[] { "Brown skin", "Grey skin", "White skin" });
+                commonSkin: ["Inky black skin"],
+                uncommonSkin: ["Brown skin", "Grey skin", "White skin"]);
             appearances[CreatureConstants.BlackPudding_Elder] = GetWeightedAppearances(
-                commonSkin: new[] { "Inky black skin" },
-                uncommonSkin: new[] { "Brown skin", "Grey skin", "White skin" });
+                commonSkin: ["Inky black skin"],
+                uncommonSkin: ["Brown skin", "Grey skin", "White skin"]);
             //Source: https://www.d20pfsrd.com/bestiary/monster-listings/magical-beasts/blink-dog
             appearances[CreatureConstants.BlinkDog] = GetWeightedAppearances(
-                commonHair: new[] { "Yellow-brown fur" },
-                uncommonHair: new[] { "Yellow fur", "Brown fur" },
-                allOther: new[] { "Large ears" });
+                commonHair: ["Yellow-brown fur"],
+                uncommonHair: ["Yellow fur", "Brown fur"],
+                allOther: ["Large ears"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Boar
             appearances[CreatureConstants.Boar] = GetWeightedAppearances(
-                allHair: new[] { "Thick brown fur", "Thick gray fur" },
-                allOther: new[] { "Sharp tusks jutting out from beneath the snout" });
+                allHair: ["Thick brown fur", "Thick gray fur"],
+                allOther: ["Sharp tusks jutting out from beneath the snout"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Dire_boar
             appearances[CreatureConstants.Boar_Dire] = GetWeightedAppearances(
-                commonHair: new[] { "Thick brown fur", "Thick gray fur" },
-                uncommonHair: new[] { "Thick black fur" },
-                allOther: new[] { "Sharp tusks jutting out from beneath the snout" });
+                commonHair: ["Thick brown fur", "Thick gray fur"],
+                uncommonHair: ["Thick black fur"],
+                allOther: ["Sharp tusks jutting out from beneath the snout"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Bodak
             appearances[CreatureConstants.Bodak] = GetWeightedAppearances(
                 allSkin: new[] { "Deathly pale white skin", "Deathly gray skin", "Deathly pale gray skin" },
@@ -544,9 +544,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "Exotic Shorthair", "Scottish Fold", "Burmese", "Birman", "Bombay", "Siberian", "Norwegian Forest", "Russian Blue", "American Curl", "Munchkin",
                 "American Bobtail", "Devon Rex", "Balinese", "Oriental Shorthair", "Chartreux", "Turkish Angora", "Manx", "Japanese Bobtail", "American Wirehair",
                 "Ragamuffin", "Egyptian Mau", "Cornish Rex", "Somali", "Himalayan", "Selkirk Rex", "Korat", "Singapura", "Ocicat", "Tonkinese", "Turkish Van",
-                "British Longhair", "LaPerm", "Havana Brown", "Chausie", "Burmilla", "Toyger", "Sokoke", "Colorpoint Shorthair", "Javanese", "Snowshoe", "Australian Mist",
+                "British Longhair", "LaPerm", "Havana brown", "Chausie", "Burmilla", "Toyger", "Sokoke", "Colorpoint Shorthair", "Javanese", "Snowshoe", "Australian Mist",
                 "Lykoi", "Khao Manee",
-                "Solid Black", "Solid White", "Solid Ginger", "Solid Blue/Gray", "Solid Cream", "Solid Brown", "Solid Cinnamon", "Solid Fawn",
+                "Solid black", "Solid White", "Solid Ginger", "Solid Blue/Gray", "Solid Cream", "Solid brown", "Solid Cinnamon", "Solid Fawn",
                 "Black/White Tuxedo", "Black/Gray Tuxedo", "Black/Cream Tuxedo", "Black/Fawn Tuxedo",
                     "Brown/White Tuxedo", "Brown/Gray Tuxedo", "Brown/Cream Tuxedo", "Brown/Fawn Tuxedo",
                     "Cinnamon/White Tuxedo", "Cinnamon/Gray Tuxedo", "Cinnamon/Cream Tuxedo", "Cinnamon/Fawn Tuxedo",
@@ -626,10 +626,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "Slender body, yellow coat with brown spots, long thin legs, deep chest, small head",
                 "Slender body, sand-colored coat with brown spots, long thin legs, deep chest, small head" };
             //Source: https://forgottenrealms.fandom.com/wiki/Chimera
-            appearances[CreatureConstants.Chimera_Black] = new[] { "Hindquarters of a goat, the forequarters of a lion, and a set of Black Dragon wings. Three heads: that of a horned goat, a lion, and a Black Dragon." };
+            appearances[CreatureConstants.Chimera_Black] = new[] { "Hindquarters of a goat, the forequarters of a lion, and a set of black Dragon wings. Three heads: that of a horned goat, a lion, and a black Dragon." };
             appearances[CreatureConstants.Chimera_Blue] = new[] { "Hindquarters of a goat, the forequarters of a lion, and a set of Blue Dragon wings. Three heads: that of a horned goat, a lion, and a Blue Dragon." };
             appearances[CreatureConstants.Chimera_Green] = new[] { "Hindquarters of a goat, the forequarters of a lion, and a set of Green Dragon wings. Three heads: that of a horned goat, a lion, and a Green Dragon." };
-            appearances[CreatureConstants.Chimera_Red] = new[] { "Hindquarters of a goat, the forequarters of a lion, and a set of Red Dragon wings. Three heads: that of a horned goat, a lion, and a Red Dragon." };
+            appearances[CreatureConstants.Chimera_Red] = new[] { "Hindquarters of a goat, the forequarters of a lion, and a set of red Dragon wings. Three heads: that of a horned goat, a lion, and a red Dragon." };
             appearances[CreatureConstants.Chimera_White] = new[] { "Hindquarters of a goat, the forequarters of a lion, and a set of White Dragon wings. Three heads: that of a horned goat, a lion, and a White Dragon." };
             //Source: https://forgottenrealms.fandom.com/wiki/Choker
             appearances[CreatureConstants.Choker] = GetWeightedAppearances(
@@ -1477,7 +1477,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allHair: new[] { "Black hair", "Gray hair", "Brown hair" },
                 allEyes: new[] { "TODO Human eyes (Bright)" });
             appearances[CreatureConstants.Dwarf_Mountain] = GetWeightedAppearances(
-                allSkin: new[] { "Lightly tan skin", "Light Brown skin", "Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin" },
+                allSkin: new[] { "Lightly tan skin", "Light brown skin", "Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin" },
                 allHair: new[] { "Dark gray hair", "Light gray hair", "Light brown hair" },
                 allEyes: new[] { "TODO Human eyes (Bright)" });
             //Source: https://www.google.com/search?q=species+of+eagle
@@ -1594,8 +1594,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Straight Pale yellow hair", "Wavy Pale yellow hair", "Curly Pale yellow hair", "Kinky Pale yellow hair" ],
                 uncommonHair: [ "Straight Gray hair", "Wavy Gray hair", "Curly Gray hair", "Kinky Gray hair",
                     "Straight Pale Yellow hair", "Wavy Pale Yellow hair", "Curly Pale Yellow hair", "Kinky Pale Yellow hair",
-                    "Straight Silver hair", "Wavy Silver hair", "Curly Silver hair", "Kinky Silver hair",
-                    "Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair",
+                    "Straight silver hair", "Wavy silver hair", "Curly silver hair", "Kinky silver hair",
+                    "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
                     "Pale TODO Human hair",
                     "Pale TODO High Elf hair" ],
                 allOther: ["Pointed ears"]);
@@ -1603,7 +1603,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //https://forgottenrealms.fandom.com/wiki/Grey_elf
             appearances[CreatureConstants.Elf_Gray] = GetWeightedAppearances(
                 commonSkin: new[] { "Pale grey skin" },
-                commonHair: new[] { "Straight Silver hair", "Wavy Silver hair", "Curly Silver hair", "Kinky Silver hair" },
+                commonHair: new[] { "Straight silver hair", "Wavy silver hair", "Curly silver hair", "Kinky silver hair" },
                 uncommonHair: new[] { "Straight pale-golden hair", "Wavy pale-golden hair", "Curly pale-golden hair", "Kinky pale-golden hair" },
                 commonEyes: new[] { "Amber eyes" },
                 uncommonEyes: new[] { "Violet eyes" },
@@ -1632,25 +1632,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/High_elf
             appearances[CreatureConstants.Elf_High] = GetWeightedAppearances(
                 commonSkin: new[] { "Brown skin", "Olive skin", "White skin", "Pink skin",
-                    "Pale Brown skin", "Pale Olive skin", "Pale White skin", "Pale Pink skin" },
+                    "Pale brown skin", "Pale Olive skin", "Pale White skin", "Pale Pink skin" },
                 uncommonSkin: new[] { "Dark brown skin", "Dark Olive skin", "Dark Pink skin" },
-                commonHair: new[] { "Straight Black hair", "Wavy Black hair", "Curly Black hair", "Kinky Black hair",
+                commonHair: new[] { "Straight black hair", "Wavy black hair", "Curly black hair", "Kinky black hair",
                     "Straight White hair", "Wavy White hair", "Curly White hair", "Kinky White hair",
-                    "Straight Silver hair", "Wavy Silver hair", "Curly Silver hair", "Kinky Silver hair",
+                    "Straight silver hair", "Wavy silver hair", "Curly silver hair", "Kinky silver hair",
                     "Straight Pale Gold hair", "Wavy Pale Gold hair", "Curly Pale Gold hair", "Kinky Pale Gold hair" },
-                uncommonHair: new[] { "Straight Black hair with silvery hues", "Wavy Black hair with silvery hues",
-                        "Curly Black hair with silvery hues", "Kinky Black hair with silvery hues",
-                    "Straight Black hair with blond hues", "Wavy Black hair with blond hues", "Curly Black hair with blond hues", "Kinky Black hair with blond hues",
-                    "Straight Black hair with copper hues", "Wavy Black hair with copper hues", "Curly Black hair with copper hues", "Kinky Black hair with copper hues",
+                uncommonHair: new[] { "Straight black hair with silvery hues", "Wavy black hair with silvery hues",
+                        "Curly black hair with silvery hues", "Kinky black hair with silvery hues",
+                    "Straight black hair with blond hues", "Wavy black hair with blond hues", "Curly black hair with blond hues", "Kinky black hair with blond hues",
+                    "Straight black hair with copper hues", "Wavy black hair with copper hues", "Curly black hair with copper hues", "Kinky black hair with copper hues",
                     "Straight White hair with silvery hues", "Wavy White hair with silvery hues", "Curly White hair with silvery hues",
                         "Kinky White hair with silvery hues",
                     "Straight White hair with blond hues", "Wavy White hair with blond hues", "Curly White hair with blond hues", "Kinky White hair with blond hues",
                     "Straight White hair with copper hues", "Wavy White hair with copper hues", "Curly White hair with copper hues", "Kinky White hair with copper hues",
-                    "Straight Silver hair with silvery hues", "Wavy Silver hair with silvery hues", "Curly Silver hair with silvery hues",
-                        "Kinky Silver hair with silvery hues",
-                    "Straight Silver hair with blond hues", "Wavy Silver hair with blond hues", "Curly Silver hair with blond hues", "Kinky Silver hair with blond hues",
-                    "Straight Silver hair with copper hues", "Wavy Silver hair with copper hues", "Curly Silver hair with copper hues",
-                        "Kinky Silver hair with copper hues",
+                    "Straight silver hair with silvery hues", "Wavy silver hair with silvery hues", "Curly silver hair with silvery hues",
+                        "Kinky silver hair with silvery hues",
+                    "Straight silver hair with blond hues", "Wavy silver hair with blond hues", "Curly silver hair with blond hues", "Kinky silver hair with blond hues",
+                    "Straight silver hair with copper hues", "Wavy silver hair with copper hues", "Curly silver hair with copper hues",
+                        "Kinky silver hair with copper hues",
                     "Straight Pale Gold hair with silvery hues", "Wavy Pale Gold hair with silvery hues", "Curly Pale Gold hair with silvery hues",
                         "Kinky Pale Gold hair with silvery hues",
                     "Straight Pale Gold hair with blond hues", "Wavy Pale Gold hair with blond hues", "Curly Pale Gold hair with blond hues",
@@ -1669,11 +1669,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //https://www.d20srd.org/srd/monsters/elf.htm
             appearances[CreatureConstants.Elf_Wild] = GetWeightedAppearances(
                 allSkin: new[] { "Light brown skin", "Brown skin", "Dark brown skin" },
-                commonHair: new[] { "Straight Black hair", "Wavy Black hair", "Curly Black hair", "Kinky Black hair",
-                    "Straight Dark Brown hair", "Wavy Dark Brown hair", "Curly Dark Brown hair", "Kinky Dark Brown hair",
-                    "Straight Brown hair", "Wavy Brown hair", "Curly Brown hair", "Kinky Brown hair",
-                    "Straight Light Brown hair", "Curly Light Brown hair", "Wavy Light Brown hair", "Kinky Light Brown hair" },
-                uncommonHair: new[] { "Straight Silver hair", "Wavy Silver hair", "Curly Silver hair", "Kinky Silver hair",
+                commonHair: new[] { "Straight black hair", "Wavy black hair", "Curly black hair", "Kinky black hair",
+                    "Straight Dark brown hair", "Wavy Dark brown hair", "Curly Dark brown hair", "Kinky Dark brown hair",
+                    "Straight brown hair", "Wavy brown hair", "Curly brown hair", "Kinky brown hair",
+                    "Straight Light brown hair", "Curly Light brown hair", "Wavy Light brown hair", "Kinky Light brown hair" },
+                uncommonHair: new[] { "Straight silver hair", "Wavy silver hair", "Curly silver hair", "Kinky silver hair",
                     "Straight Silvery-White hair", "Wavy Silvery-White hair", "Curly Silvery-White hair", "Kinky Silvery-White hair",
                     "Straight Gray hair", "Wavy Gray hair", "Curly Gray hair", "Kinky Gray hair",
                     "Straight White hair", "Wavy White hair", "Curly White hair", "Kinky White hair" },
@@ -1683,14 +1683,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //https://www.d20srd.org/srd/monsters/elf.htm
             appearances[CreatureConstants.Elf_Wood] = GetWeightedAppearances(
                 allSkin: new[] { "Copper skin", "Tan skin" },
-                commonHair: new[] { "Straight Black hair", "Straight Light Brown hair", "Straight Brown hair",
-                    "Wavy Black hair", "Wavy Light Brown hair", "Wavy Brown hair",
-                    "Curly Black hair", "Curly Light Brown hair", "Curly Brown hair",
-                    "Kinky Black hair", "Kinky Light Brown hair", "Kinky Brown hair", },
-                uncommonHair: new[] { "Straight Yellow hair", "Straight Blond hair", "Straight Copper-Red hair",
-                    "Wavy Yellow hair", "Wavy Blond hair", "Wavy Copper-Red hair",
-                    "Curly Yellow hair", "Curly Blond hair", "Curly Copper-Red hair",
-                    "Kinky Yellow hair", "Kinky Blond hair", "Kinky Copper-Red hair" },
+                commonHair: new[] { "Straight black hair", "Straight Light brown hair", "Straight brown hair",
+                    "Wavy black hair", "Wavy Light brown hair", "Wavy brown hair",
+                    "Curly black hair", "Curly Light brown hair", "Curly brown hair",
+                    "Kinky black hair", "Kinky Light brown hair", "Kinky brown hair", },
+                uncommonHair: new[] { "Straight Yellow hair", "Straight blond hair", "Straight Copper-Red hair",
+                    "Wavy Yellow hair", "Wavy blond hair", "Wavy Copper-Red hair",
+                    "Curly Yellow hair", "Curly blond hair", "Curly Copper-Red hair",
+                    "Kinky Yellow hair", "Kinky blond hair", "Kinky Copper-Red hair" },
                 allEyes: new[] { "Green eyes", "Brown eyes", "Hazel eyes" },
                 allOther: new[] { "Pointed ears" });
             //Source: https://www.d20srd.org/srd/monsters/devil.htm#erinyes
@@ -1711,9 +1711,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.Ettin] = GetWeightedAppearances(
                 allSkin: new[] { "Brown skin, crusted over with a thick layer of grime", "Olive skin, crusted over with a thick layer of grime",
                         "Pink skin, crusted over with a thick layer of grime", "Gray skin, crusted over with a thick layer of grime",
-                    "Deep Brown skin, crusted over with a thick layer of grime", "Deep Olive skin, crusted over with a thick layer of grime",
+                    "Deep brown skin, crusted over with a thick layer of grime", "Deep Olive skin, crusted over with a thick layer of grime",
                         "Deep Pink skin, crusted over with a thick layer of grime", "Deep Gray skin, crusted over with a thick layer of grime",
-                    "Pale Brown skin, crusted over with a thick layer of grime", "Pale Olive skin, crusted over with a thick layer of grime",
+                    "Pale brown skin, crusted over with a thick layer of grime", "Pale Olive skin, crusted over with a thick layer of grime",
                         "Pale Pink skin, crusted over with a thick layer of grime", "Pale Gray skin, crusted over with a thick layer of grime" },
                 allHair: new[] { "Long, stringy TODO HILL GIANT hair",
                     "Long, stringy TODO STONE GIANT hair" },
@@ -1749,12 +1749,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allOther: new[] { "Huge mandibles. Nodule from which it emits a trilling noise." });
             //Source: https://forgottenrealms.fandom.com/wiki/Gargoyle - adding my own info for skin tones
             appearances[CreatureConstants.Gargoyle] = GetWeightedAppearances(
-                allSkin: new[] { "Brown stone skin", "Dark Brown stone skin", "Light Brown stone skin",
+                allSkin: new[] { "Brown stone skin", "Dark brown stone skin", "Light brown stone skin",
                     "Gray stone skin", "Dark Gray stone skin","Light Gray stone skin",
                     "White stone skin", "Marble stone skin", "Black stone skin" },
                 allOther: new[] { "Demon-like humanoid" });
             appearances[CreatureConstants.Gargoyle_Kapoacinth] = GetWeightedAppearances(
-                allSkin: new[] { "Brown stone skin", "Dark Brown stone skin", "Light Brown stone skin",
+                allSkin: new[] { "Brown stone skin", "Dark brown stone skin", "Light brown stone skin",
                     "Gray stone skin", "Dark Gray stone skin","Light Gray stone skin",
                     "White stone skin", "Marble stone skin", "Black stone skin" },
                 allOther: new[] { "Demon-like humanoid" });
@@ -2105,7 +2105,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //https://www.d20srd.org/srd/monsters/hobgoblin.htm
             appearances[CreatureConstants.Hobgoblin] = GetWeightedAppearances(
                 allSkin: new[] { "Orange skin", "Reddish-brown skin", "Orange-brown skin", "Orange-red skin", "Dark orange skin", "Red-orange skin",
-                    "TODO MALE Blue nose", "TODO MALE Red nose" },
+                    "TODO MALE Blue nose", "TODO MALE red nose" },
                 allHair: new[] { "Dark brown hair", "Dark gray hair", "Orange hair", "Red hair", "Dark reddish-brown hair", "Reddish-brown hair" },
                 allEyes: new[] { "Yellow eyes", "Dark brown eyes" },
                 allOther: new[] { "Yellow teeth" });
@@ -2129,7 +2129,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "Polish Draft", "Dole Gudbrandsdal", "Spotted Draft", "Groninger", "Orlov Trotter", "Gelderlander", "Kabardian", "Karabair", "Kazakh horse",
                 "Camargue horse", "Losino horse", "American Quarter Horse", "Zemaitukas", "Vyatka horse", "Estonian Native", "Kisber Felver", "Shagya Arabian",
                 "Byelorussian Harness Horse",
-                "Spotted (White coat with black spots; Black/white mane and tail)", "Spotted (White coat with brown spots; Brown/white mane and tail)",
+                "Spotted (White coat with black spots; black/white mane and tail)", "Spotted (White coat with brown spots; brown/white mane and tail)",
                     "Spotted (White coat with gray spots; Gray/white mane and tail)", "Spotted (White coat with ginger spots; Ginger/white mane and tail)",
                     "Spotted (White coat with golden spots; Golden/white mane and tail)", "Spotted (White coat with cream spots; Cream/white mane and tail)",
                     "Spotted (White coat with light gray spots; Light gray/white mane and tail)",
@@ -2138,7 +2138,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Spotted (White coat with light ginger spots; Light ginger/white mane and tail)",
                     "Spotted (White coat with dark ginger spots; Dark ginger/white mane and tail)",
                     "Spotted (Black coat with white spots; White/black mane and tail)",
-                    "Spotted (Black coat with brown spots; Brown/black mane and tail)",
+                    "Spotted (Black coat with brown spots; brown/black mane and tail)",
                     "Spotted (Black coat with gray spots; Gray/black mane and tail)",
                     "Spotted (Black coat with ginger spots; Ginger/black mane and tail)",
                     "Spotted (Black coat with golden spots; Golden/black mane and tail)",
@@ -2149,7 +2149,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Spotted (Black coat with light ginger spots; Light ginger/black mane and tail)",
                     "Spotted (Black coat with dark ginger spots; Dark ginger/black mane and tail)",
                     "Spotted (Brown coat with white spots; White/brown mane and tail)",
-                    "Spotted (Brown coat with black spots; Black/brown mane and tail)",
+                    "Spotted (Brown coat with black spots; black/brown mane and tail)",
                     "Spotted (Brown coat with gray spots; Gray/brown mane and tail)",
                     "Spotted (Brown coat with ginger spots; Ginger/brown mane and tail)",
                     "Spotted (Brown coat with golden spots; Golden/brown mane and tail)",
@@ -2159,9 +2159,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Spotted (Brown coat with creamy golden spots; Creamy golden/brown mane and tail)",
                     "Spotted (Brown coat with light ginger spots; Light ginger/brown mane and tail)",
                     "Spotted (Brown coat with dark ginger spots; Dark ginger/brown mane and tail)",
-                "Bay (Brown coat; Black legs; Black mane and tail)", "Solid black coat; Black mane and tail",
-                "Brown coat; Black lower legs; Light brown mane, tail, and muzzle",
-                "Buckskin (Creamy-golden coat with black points; Black mane and tail)", "Buckskin (Rich golden coat with black points; Black mane and tail)",
+                "Bay (Brown coat; black legs; black mane and tail)", "Solid black coat; black mane and tail",
+                "Brown coat; black lower legs; Light brown mane, tail, and muzzle",
+                "Buckskin (Creamy-golden coat with black points; black mane and tail)", "Buckskin (Rich golden coat with black points; black mane and tail)",
                 "Chestnut (Ginger coat; Ginger mane and tail)", "Chestnut (Ginger coat; Light ginger mane and tail)",
                     "Chestnut (Ginger coat; Dark ginger mane and tail)",
                 "Chestnut (Light ginger coat; Ginger mane and tail)", "Chestnut (Light ginger coat; Light ginger mane and tail)",
@@ -2170,17 +2170,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Chestnut (Dark ginger coat; Dark ginger mane and tail)",
                 "Cremello (Extremely pale white coat, mane, and tail; Blue eyes)", "Cremello (Extremely pale white coat, mane, and tail; Amber eyes)",
                     "Cremello (Extremely pale cream coat, mane, and tail; Blue eyes)", "Cremello (Extremely pale cream coat, mane, and tail; Amber eyes)",
-                "Dun (Creamy-golden coat; Black mane and tail; Dark dorsal strip)",
+                "Dun (Creamy-golden coat; black mane and tail; Dark dorsal strip)",
                 "Solid white-gray coat, mane, and tail", "Solid light gray coat, mane, and tail", "Solid gray coat, mane, and tail",
                     "Solid dark gray coat, mane, and tail",
-                "Overo (Black/white cow-patterned coat; Black mane and tail)", "Overo (Black/brown cow-patterned coat; Black mane and tail)",
-                    "Overo (Black/gray cow-patterned coat; Black mane and tail)", "Overo (Black/light gray cow-patterned coat; Black mane and tail)",
-                    "Overo (Black/dark gray cow-patterned coat; Black mane and tail)", "Overo (Black/creamy golden cow-patterned coat; Black mane and tail)",
-                    "Overo (Black/rich golden cow-patterned coat; Black mane and tail)", "Overo (Black/ginger cow-patterned coat; Black mane and tail)",
-                    "Overo (Black/light ginger cow-patterned coat; Black mane and tail)", "Overo (Black/dark ginger cow-patterned coat; Black mane and tail)",
-                    "Overo (Black/golden cow-patterned coat; Black mane and tail)", "Overo (Black/dark ginger cow-patterned coat; Black mane and tail)",
+                "Overo (Black/white cow-patterned coat; black mane and tail)", "Overo (Black/brown cow-patterned coat; black mane and tail)",
+                    "Overo (Black/gray cow-patterned coat; black mane and tail)", "Overo (Black/light gray cow-patterned coat; black mane and tail)",
+                    "Overo (Black/dark gray cow-patterned coat; black mane and tail)", "Overo (Black/creamy golden cow-patterned coat; black mane and tail)",
+                    "Overo (Black/rich golden cow-patterned coat; black mane and tail)", "Overo (Black/ginger cow-patterned coat; black mane and tail)",
+                    "Overo (Black/light ginger cow-patterned coat; black mane and tail)", "Overo (Black/dark ginger cow-patterned coat; black mane and tail)",
+                    "Overo (Black/golden cow-patterned coat; black mane and tail)", "Overo (Black/dark ginger cow-patterned coat; black mane and tail)",
                 "Palomino (Golden coat; White mane and tail)",
-                "Roan (White-brown coat; Brown mane, tail, and legs)", "Roan (White-black coat; Black mane, tail, and legs)",
+                "Roan (White-brown coat; brown mane, tail, and legs)", "Roan (White-black coat; black mane, tail, and legs)",
                     "Roan (White-golden coat; Golden mane, tail, and legs)", "Roan (White-ginger coat; Ginger mane, tail, and legs)",
                     "Roan (White-light-ginger coat; Light ginger mane, tail, and legs)", "Roan (White-dark-ginger coat; Dark ginger mane, tail, and legs)",
                     "Roan (White-creamy-golden coat; Creamy golden mane, tail, and legs)", "Roan (White-rich-golden coat; Rich golden mane, tail, and legs)",
@@ -2199,7 +2199,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "Rahvan", "Kandachime", "Morgan horse", "Icelandic horse", "Cob", "Hanoverian", "Andalusian", "Lipizzan", "Lusitano", "Standardbred", "Falabella",
                 "Pure Spanish Breed", "Mongolian", "Trakehner", "Knabstupper", "Konik", "Ferghana", "Marwari", "American Saddlebred", "Missouri Fox Trotter",
                 "Belgian Warmblood", "Peruvian paso", "Brumby", "Holsteiner", "Welsh Cob", "Black Forest Horse", "Irish Sport Horse",
-                "Spotted (White coat with black spots; Black/white mane and tail)", "Spotted (White coat with brown spots; Brown/white mane and tail)",
+                "Spotted (White coat with black spots; black/white mane and tail)", "Spotted (White coat with brown spots; brown/white mane and tail)",
                     "Spotted (White coat with gray spots; Gray/white mane and tail)", "Spotted (White coat with ginger spots; Ginger/white mane and tail)",
                     "Spotted (White coat with golden spots; Golden/white mane and tail)", "Spotted (White coat with cream spots; Cream/white mane and tail)",
                     "Spotted (White coat with light gray spots; Light gray/white mane and tail)",
@@ -2208,7 +2208,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Spotted (White coat with light ginger spots; Light ginger/white mane and tail)",
                     "Spotted (White coat with dark ginger spots; Dark ginger/white mane and tail)",
                     "Spotted (Black coat with white spots; White/black mane and tail)",
-                    "Spotted (Black coat with brown spots; Brown/black mane and tail)",
+                    "Spotted (Black coat with brown spots; brown/black mane and tail)",
                     "Spotted (Black coat with gray spots; Gray/black mane and tail)",
                     "Spotted (Black coat with ginger spots; Ginger/black mane and tail)",
                     "Spotted (Black coat with golden spots; Golden/black mane and tail)",
@@ -2219,7 +2219,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Spotted (Black coat with light ginger spots; Light ginger/black mane and tail)",
                     "Spotted (Black coat with dark ginger spots; Dark ginger/black mane and tail)",
                     "Spotted (Brown coat with white spots; White/brown mane and tail)",
-                    "Spotted (Brown coat with black spots; Black/brown mane and tail)",
+                    "Spotted (Brown coat with black spots; black/brown mane and tail)",
                     "Spotted (Brown coat with gray spots; Gray/brown mane and tail)",
                     "Spotted (Brown coat with ginger spots; Ginger/brown mane and tail)",
                     "Spotted (Brown coat with golden spots; Golden/brown mane and tail)",
@@ -2229,9 +2229,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Spotted (Brown coat with creamy golden spots; Creamy golden/brown mane and tail)",
                     "Spotted (Brown coat with light ginger spots; Light ginger/brown mane and tail)",
                     "Spotted (Brown coat with dark ginger spots; Dark ginger/brown mane and tail)",
-                "Bay (Brown coat; Black legs; Black mane and tail)", "Solid black coat; Black mane and tail",
-                "Brown coat; Black lower legs; Light brown mane, tail, and muzzle",
-                "Buckskin (Creamy-golden coat with black points; Black mane and tail)", "Buckskin (Rich golden coat with black points; Black mane and tail)",
+                "Bay (Brown coat; black legs; black mane and tail)", "Solid black coat; black mane and tail",
+                "Brown coat; black lower legs; Light brown mane, tail, and muzzle",
+                "Buckskin (Creamy-golden coat with black points; black mane and tail)", "Buckskin (Rich golden coat with black points; black mane and tail)",
                 "Chestnut (Ginger coat; Ginger mane and tail)", "Chestnut (Ginger coat; Light ginger mane and tail)",
                     "Chestnut (Ginger coat; Dark ginger mane and tail)",
                 "Chestnut (Light ginger coat; Ginger mane and tail)", "Chestnut (Light ginger coat; Light ginger mane and tail)",
@@ -2240,17 +2240,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Chestnut (Dark ginger coat; Dark ginger mane and tail)",
                 "Cremello (Extremely pale white coat, mane, and tail; Blue eyes)", "Cremello (Extremely pale white coat, mane, and tail; Amber eyes)",
                     "Cremello (Extremely pale cream coat, mane, and tail; Blue eyes)", "Cremello (Extremely pale cream coat, mane, and tail; Amber eyes)",
-                "Dun (Creamy-golden coat; Black mane and tail; Dark dorsal strip)",
+                "Dun (Creamy-golden coat; black mane and tail; Dark dorsal strip)",
                 "Solid white-gray coat, mane, and tail", "Solid light gray coat, mane, and tail", "Solid gray coat, mane, and tail",
                     "Solid dark gray coat, mane, and tail",
-                "Overo (Black/white cow-patterned coat; Black mane and tail)", "Overo (Black/brown cow-patterned coat; Black mane and tail)",
-                    "Overo (Black/gray cow-patterned coat; Black mane and tail)", "Overo (Black/light gray cow-patterned coat; Black mane and tail)",
-                    "Overo (Black/dark gray cow-patterned coat; Black mane and tail)", "Overo (Black/creamy golden cow-patterned coat; Black mane and tail)",
-                    "Overo (Black/rich golden cow-patterned coat; Black mane and tail)", "Overo (Black/ginger cow-patterned coat; Black mane and tail)",
-                    "Overo (Black/light ginger cow-patterned coat; Black mane and tail)", "Overo (Black/dark ginger cow-patterned coat; Black mane and tail)",
-                    "Overo (Black/golden cow-patterned coat; Black mane and tail)", "Overo (Black/dark ginger cow-patterned coat; Black mane and tail)",
+                "Overo (Black/white cow-patterned coat; black mane and tail)", "Overo (Black/brown cow-patterned coat; black mane and tail)",
+                    "Overo (Black/gray cow-patterned coat; black mane and tail)", "Overo (Black/light gray cow-patterned coat; black mane and tail)",
+                    "Overo (Black/dark gray cow-patterned coat; black mane and tail)", "Overo (Black/creamy golden cow-patterned coat; black mane and tail)",
+                    "Overo (Black/rich golden cow-patterned coat; black mane and tail)", "Overo (Black/ginger cow-patterned coat; black mane and tail)",
+                    "Overo (Black/light ginger cow-patterned coat; black mane and tail)", "Overo (Black/dark ginger cow-patterned coat; black mane and tail)",
+                    "Overo (Black/golden cow-patterned coat; black mane and tail)", "Overo (Black/dark ginger cow-patterned coat; black mane and tail)",
                 "Palomino (Golden coat; White mane and tail)",
-                "Roan (White-brown coat; Brown mane, tail, and legs)", "Roan (White-black coat; Black mane, tail, and legs)",
+                "Roan (White-brown coat; brown mane, tail, and legs)", "Roan (White-black coat; black mane, tail, and legs)",
                     "Roan (White-golden coat; Golden mane, tail, and legs)", "Roan (White-ginger coat; Ginger mane, tail, and legs)",
                     "Roan (White-light-ginger coat; Light ginger mane, tail, and legs)", "Roan (White-dark-ginger coat; Dark ginger mane, tail, and legs)",
                     "Roan (White-creamy-golden coat; Creamy golden mane, tail, and legs)", "Roan (White-rich-golden coat; Rich golden mane, tail, and legs)",
@@ -2272,7 +2272,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "Polish Draft", "Dole Gudbrandsdal", "Spotted Draft", "Groninger", "Orlov Trotter", "Gelderlander", "Kabardian", "Karabair", "Kazakh horse",
                 "Camargue horse", "Losino horse", "American Quarter Horse", "Zemaitukas", "Vyatka horse", "Estonian Native", "Kisber Felver", "Shagya Arabian",
                 "Byelorussian Harness Horse",
-                "Spotted (White coat with black spots; Black/white mane and tail)", "Spotted (White coat with brown spots; Brown/white mane and tail)",
+                "Spotted (White coat with black spots; black/white mane and tail)", "Spotted (White coat with brown spots; brown/white mane and tail)",
                     "Spotted (White coat with gray spots; Gray/white mane and tail)", "Spotted (White coat with ginger spots; Ginger/white mane and tail)",
                     "Spotted (White coat with golden spots; Golden/white mane and tail)", "Spotted (White coat with cream spots; Cream/white mane and tail)",
                     "Spotted (White coat with light gray spots; Light gray/white mane and tail)",
@@ -2281,7 +2281,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Spotted (White coat with light ginger spots; Light ginger/white mane and tail)",
                     "Spotted (White coat with dark ginger spots; Dark ginger/white mane and tail)",
                     "Spotted (Black coat with white spots; White/black mane and tail)",
-                    "Spotted (Black coat with brown spots; Brown/black mane and tail)",
+                    "Spotted (Black coat with brown spots; brown/black mane and tail)",
                     "Spotted (Black coat with gray spots; Gray/black mane and tail)",
                     "Spotted (Black coat with ginger spots; Ginger/black mane and tail)",
                     "Spotted (Black coat with golden spots; Golden/black mane and tail)",
@@ -2292,7 +2292,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Spotted (Black coat with light ginger spots; Light ginger/black mane and tail)",
                     "Spotted (Black coat with dark ginger spots; Dark ginger/black mane and tail)",
                     "Spotted (Brown coat with white spots; White/brown mane and tail)",
-                    "Spotted (Brown coat with black spots; Black/brown mane and tail)",
+                    "Spotted (Brown coat with black spots; black/brown mane and tail)",
                     "Spotted (Brown coat with gray spots; Gray/brown mane and tail)",
                     "Spotted (Brown coat with ginger spots; Ginger/brown mane and tail)",
                     "Spotted (Brown coat with golden spots; Golden/brown mane and tail)",
@@ -2302,9 +2302,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Spotted (Brown coat with creamy golden spots; Creamy golden/brown mane and tail)",
                     "Spotted (Brown coat with light ginger spots; Light ginger/brown mane and tail)",
                     "Spotted (Brown coat with dark ginger spots; Dark ginger/brown mane and tail)",
-                "Bay (Brown coat; Black legs; Black mane and tail)", "Solid black coat; Black mane and tail",
-                "Brown coat; Black lower legs; Light brown mane, tail, and muzzle",
-                "Buckskin (Creamy-golden coat with black points; Black mane and tail)", "Buckskin (Rich golden coat with black points; Black mane and tail)",
+                "Bay (Brown coat; black legs; black mane and tail)", "Solid black coat; black mane and tail",
+                "Brown coat; black lower legs; Light brown mane, tail, and muzzle",
+                "Buckskin (Creamy-golden coat with black points; black mane and tail)", "Buckskin (Rich golden coat with black points; black mane and tail)",
                 "Chestnut (Ginger coat; Ginger mane and tail)", "Chestnut (Ginger coat; Light ginger mane and tail)",
                     "Chestnut (Ginger coat; Dark ginger mane and tail)",
                 "Chestnut (Light ginger coat; Ginger mane and tail)", "Chestnut (Light ginger coat; Light ginger mane and tail)",
@@ -2313,17 +2313,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Chestnut (Dark ginger coat; Dark ginger mane and tail)",
                 "Cremello (Extremely pale white coat, mane, and tail; Blue eyes)", "Cremello (Extremely pale white coat, mane, and tail; Amber eyes)",
                     "Cremello (Extremely pale cream coat, mane, and tail; Blue eyes)", "Cremello (Extremely pale cream coat, mane, and tail; Amber eyes)",
-                "Dun (Creamy-golden coat; Black mane and tail; Dark dorsal strip)",
+                "Dun (Creamy-golden coat; black mane and tail; Dark dorsal strip)",
                 "Solid white-gray coat, mane, and tail", "Solid light gray coat, mane, and tail", "Solid gray coat, mane, and tail",
                     "Solid dark gray coat, mane, and tail",
-                "Overo (Black/white cow-patterned coat; Black mane and tail)", "Overo (Black/brown cow-patterned coat; Black mane and tail)",
-                    "Overo (Black/gray cow-patterned coat; Black mane and tail)", "Overo (Black/light gray cow-patterned coat; Black mane and tail)",
-                    "Overo (Black/dark gray cow-patterned coat; Black mane and tail)", "Overo (Black/creamy golden cow-patterned coat; Black mane and tail)",
-                    "Overo (Black/rich golden cow-patterned coat; Black mane and tail)", "Overo (Black/ginger cow-patterned coat; Black mane and tail)",
-                    "Overo (Black/light ginger cow-patterned coat; Black mane and tail)", "Overo (Black/dark ginger cow-patterned coat; Black mane and tail)",
-                    "Overo (Black/golden cow-patterned coat; Black mane and tail)", "Overo (Black/dark ginger cow-patterned coat; Black mane and tail)",
+                "Overo (Black/white cow-patterned coat; black mane and tail)", "Overo (Black/brown cow-patterned coat; black mane and tail)",
+                    "Overo (Black/gray cow-patterned coat; black mane and tail)", "Overo (Black/light gray cow-patterned coat; black mane and tail)",
+                    "Overo (Black/dark gray cow-patterned coat; black mane and tail)", "Overo (Black/creamy golden cow-patterned coat; black mane and tail)",
+                    "Overo (Black/rich golden cow-patterned coat; black mane and tail)", "Overo (Black/ginger cow-patterned coat; black mane and tail)",
+                    "Overo (Black/light ginger cow-patterned coat; black mane and tail)", "Overo (Black/dark ginger cow-patterned coat; black mane and tail)",
+                    "Overo (Black/golden cow-patterned coat; black mane and tail)", "Overo (Black/dark ginger cow-patterned coat; black mane and tail)",
                 "Palomino (Golden coat; White mane and tail)",
-                "Roan (White-brown coat; Brown mane, tail, and legs)", "Roan (White-black coat; Black mane, tail, and legs)",
+                "Roan (White-brown coat; brown mane, tail, and legs)", "Roan (White-black coat; black mane, tail, and legs)",
                     "Roan (White-golden coat; Golden mane, tail, and legs)", "Roan (White-ginger coat; Ginger mane, tail, and legs)",
                     "Roan (White-light-ginger coat; Light ginger mane, tail, and legs)", "Roan (White-dark-ginger coat; Dark ginger mane, tail, and legs)",
                     "Roan (White-creamy-golden coat; Creamy golden mane, tail, and legs)", "Roan (White-rich-golden coat; Rich golden mane, tail, and legs)",
@@ -2342,7 +2342,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "Rahvan", "Kandachime", "Morgan horse", "Icelandic horse", "Cob", "Hanoverian", "Andalusian", "Lipizzan", "Lusitano", "Standardbred", "Falabella",
                 "Pure Spanish Breed", "Mongolian", "Trakehner", "Knabstupper", "Konik", "Ferghana", "Marwari", "American Saddlebred", "Missouri Fox Trotter",
                 "Belgian Warmblood", "Peruvian paso", "Brumby", "Holsteiner", "Welsh Cob", "Black Forest Horse", "Irish Sport Horse",
-                "Spotted (White coat with black spots; Black/white mane and tail)", "Spotted (White coat with brown spots; Brown/white mane and tail)",
+                "Spotted (White coat with black spots; black/white mane and tail)", "Spotted (White coat with brown spots; brown/white mane and tail)",
                     "Spotted (White coat with gray spots; Gray/white mane and tail)", "Spotted (White coat with ginger spots; Ginger/white mane and tail)",
                     "Spotted (White coat with golden spots; Golden/white mane and tail)", "Spotted (White coat with cream spots; Cream/white mane and tail)",
                     "Spotted (White coat with light gray spots; Light gray/white mane and tail)",
@@ -2351,7 +2351,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Spotted (White coat with light ginger spots; Light ginger/white mane and tail)",
                     "Spotted (White coat with dark ginger spots; Dark ginger/white mane and tail)",
                     "Spotted (Black coat with white spots; White/black mane and tail)",
-                    "Spotted (Black coat with brown spots; Brown/black mane and tail)",
+                    "Spotted (Black coat with brown spots; brown/black mane and tail)",
                     "Spotted (Black coat with gray spots; Gray/black mane and tail)",
                     "Spotted (Black coat with ginger spots; Ginger/black mane and tail)",
                     "Spotted (Black coat with golden spots; Golden/black mane and tail)",
@@ -2362,7 +2362,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Spotted (Black coat with light ginger spots; Light ginger/black mane and tail)",
                     "Spotted (Black coat with dark ginger spots; Dark ginger/black mane and tail)",
                     "Spotted (Brown coat with white spots; White/brown mane and tail)",
-                    "Spotted (Brown coat with black spots; Black/brown mane and tail)",
+                    "Spotted (Brown coat with black spots; black/brown mane and tail)",
                     "Spotted (Brown coat with gray spots; Gray/brown mane and tail)",
                     "Spotted (Brown coat with ginger spots; Ginger/brown mane and tail)",
                     "Spotted (Brown coat with golden spots; Golden/brown mane and tail)",
@@ -2372,9 +2372,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Spotted (Brown coat with creamy golden spots; Creamy golden/brown mane and tail)",
                     "Spotted (Brown coat with light ginger spots; Light ginger/brown mane and tail)",
                     "Spotted (Brown coat with dark ginger spots; Dark ginger/brown mane and tail)",
-                "Bay (Brown coat; Black legs; Black mane and tail)", "Solid black coat; Black mane and tail",
-                "Brown coat; Black lower legs; Light brown mane, tail, and muzzle",
-                "Buckskin (Creamy-golden coat with black points; Black mane and tail)", "Buckskin (Rich golden coat with black points; Black mane and tail)",
+                "Bay (Brown coat; black legs; black mane and tail)", "Solid black coat; black mane and tail",
+                "Brown coat; black lower legs; Light brown mane, tail, and muzzle",
+                "Buckskin (Creamy-golden coat with black points; black mane and tail)", "Buckskin (Rich golden coat with black points; black mane and tail)",
                 "Chestnut (Ginger coat; Ginger mane and tail)", "Chestnut (Ginger coat; Light ginger mane and tail)",
                     "Chestnut (Ginger coat; Dark ginger mane and tail)",
                 "Chestnut (Light ginger coat; Ginger mane and tail)", "Chestnut (Light ginger coat; Light ginger mane and tail)",
@@ -2383,17 +2383,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Chestnut (Dark ginger coat; Dark ginger mane and tail)",
                 "Cremello (Extremely pale white coat, mane, and tail; Blue eyes)", "Cremello (Extremely pale white coat, mane, and tail; Amber eyes)",
                     "Cremello (Extremely pale cream coat, mane, and tail; Blue eyes)", "Cremello (Extremely pale cream coat, mane, and tail; Amber eyes)",
-                "Dun (Creamy-golden coat; Black mane and tail; Dark dorsal strip)",
+                "Dun (Creamy-golden coat; black mane and tail; Dark dorsal strip)",
                 "Solid white-gray coat, mane, and tail", "Solid light gray coat, mane, and tail", "Solid gray coat, mane, and tail",
                     "Solid dark gray coat, mane, and tail",
-                "Overo (Black/white cow-patterned coat; Black mane and tail)", "Overo (Black/brown cow-patterned coat; Black mane and tail)",
-                    "Overo (Black/gray cow-patterned coat; Black mane and tail)", "Overo (Black/light gray cow-patterned coat; Black mane and tail)",
-                    "Overo (Black/dark gray cow-patterned coat; Black mane and tail)", "Overo (Black/creamy golden cow-patterned coat; Black mane and tail)",
-                    "Overo (Black/rich golden cow-patterned coat; Black mane and tail)", "Overo (Black/ginger cow-patterned coat; Black mane and tail)",
-                    "Overo (Black/light ginger cow-patterned coat; Black mane and tail)", "Overo (Black/dark ginger cow-patterned coat; Black mane and tail)",
-                    "Overo (Black/golden cow-patterned coat; Black mane and tail)", "Overo (Black/dark ginger cow-patterned coat; Black mane and tail)",
+                "Overo (Black/white cow-patterned coat; black mane and tail)", "Overo (Black/brown cow-patterned coat; black mane and tail)",
+                    "Overo (Black/gray cow-patterned coat; black mane and tail)", "Overo (Black/light gray cow-patterned coat; black mane and tail)",
+                    "Overo (Black/dark gray cow-patterned coat; black mane and tail)", "Overo (Black/creamy golden cow-patterned coat; black mane and tail)",
+                    "Overo (Black/rich golden cow-patterned coat; black mane and tail)", "Overo (Black/ginger cow-patterned coat; black mane and tail)",
+                    "Overo (Black/light ginger cow-patterned coat; black mane and tail)", "Overo (Black/dark ginger cow-patterned coat; black mane and tail)",
+                    "Overo (Black/golden cow-patterned coat; black mane and tail)", "Overo (Black/dark ginger cow-patterned coat; black mane and tail)",
                 "Palomino (Golden coat; White mane and tail)",
-                "Roan (White-brown coat; Brown mane, tail, and legs)", "Roan (White-black coat; Black mane, tail, and legs)",
+                "Roan (White-brown coat; brown mane, tail, and legs)", "Roan (White-black coat; black mane, tail, and legs)",
                     "Roan (White-golden coat; Golden mane, tail, and legs)", "Roan (White-ginger coat; Ginger mane, tail, and legs)",
                     "Roan (White-light-ginger coat; Light ginger mane, tail, and legs)", "Roan (White-dark-ginger coat; Dark ginger mane, tail, and legs)",
                     "Roan (White-creamy-golden coat; Creamy golden mane, tail, and legs)", "Roan (White-rich-golden coat; Rich golden mane, tail, and legs)",
@@ -2421,9 +2421,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allSkin: [ "Dark brown skin", "Brown skin", "Light brown skin",
                     "Dark tan skin", "Tan skin", "Light tan skin",
                     "Pink skin", "White skin", "Pale white skin" ],
-                commonHair: [ "Straight Red hair", "Straight Blond hair", "Straight Brown hair", "Straight Black hair",
-                    "Curly Red hair", "Curly Blond hair", "Curly Brown hair", "Curly Black hair",
-                    "Kinky Red hair", "Kinky Blond hair", "Kinky Brown hair", "Kinky Black hair" ],
+                commonHair: [ "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
+                    "Curly red hair", "Curly blond hair", "Curly brown hair", "Curly black hair",
+                    "Kinky red hair", "Kinky blond hair", "Kinky brown hair", "Kinky black hair" ],
                 uncommonHair: ["Bald"],
                 allEyes: ["Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Hydra
@@ -2582,10 +2582,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allOther: new[] { "Torso is humanoid, waist-down is serpentine" });
             //Source: https://forgottenrealms.fandom.com/wiki/Lion
             appearances[CreatureConstants.Lion] = GetWeightedAppearances(
-                allHair: new[] { "Golden fur", "Tawny fur", "TODO MALE Brown mane" });
+                allHair: new[] { "Golden fur", "Tawny fur", "TODO MALE brown mane" });
             //Source: https://forgottenrealms.fandom.com/wiki/Dire_lion
             appearances[CreatureConstants.Lion_Dire] = GetWeightedAppearances(
-                allHair: new[] { "Golden fur", "Tawny fur", "TODO MALE Brown mane" },
+                allHair: new[] { "Golden fur", "Tawny fur", "TODO MALE brown mane" },
                 allOther: new[] { "Bony spine and brow ridges" });
             //Source: https://www.d20srd.org/srd/monsters/lizard.htm
             //https://www.petcoach.co/article/green-iguana-color-change-causes/
@@ -3111,7 +3111,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Cinnamon: warm russet brown fur with medium slate at the base of the hair, silver-gray belly, ruby eyes",
                 "Apricot Agouti: pale apricot fur with dark slate at the base of the hair, pale cream belly, red eyes",
                 "Albino: pure clean white fur, red eyes",
-                "Cinnamon Red-eyed Marten: warm russet brown fur, light heathering, red eyes",
+                "Cinnamon red-eyed Marten: warm russet brown fur, light heathering, red eyes",
                 "Agouti Silvermane: rich chestnut, soft, silky, sheened fur with silver-white tips, appearing heavily silvered, darker fur around the muzzle and eyes, black eyes",
                 "Black: solid black fur, black eyes",
                 "Beige: warm grayish-tan fur, dark ruby eyes",
@@ -3124,7 +3124,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "Himalayan: white fur, red eyes",
                 "Black Silvermane: solid black, soft, silky, sheened fur with silver-white tips, looking heavily silvered, darker fur around the muzzle and eyes",
                 "Russian Blue Silvermane: Dark steel blue, soft, silky, sheened fur with silver-white tips, looking heavily silvered. Darker fur around the muzzle and eyes.",
-                "Black Red-eyed Marten: light gray fur with light heathering, lighter fur around the muzzle and eyes, red eyes",
+                "Black red-eyed Marten: light gray fur with light heathering, lighter fur around the muzzle and eyes, red eyes",
                 "Berkshire: solid black fur on top, completely white belly, white feet and tail",
                 "Hooded: solid black fur on head, neck, shoulders, and extending down the spine; white fur on sides, legs, and feet",
                 "Bareback: solid cream-colored fur on head, neck, and shoulders; white fur on spine, sides, legs, and feet",
@@ -3204,9 +3204,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allEyes: new[] { "Silvery-black eyes" },
                 allOther: new[] { "Webbed feet and hands; gills; finned tail; additional webbing down the back, on elbows, and where ears would be; four arms" });
             //Source: https://forgottenrealms.fandom.com/wiki/Salamander
-            appearances[CreatureConstants.Salamander_Flamebrother] = new[] { "Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. Red fiery skin" };
-            appearances[CreatureConstants.Salamander_Average] = new[] { "Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. Red fiery skin" };
-            appearances[CreatureConstants.Salamander_Noble] = new[] { "Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. Red fiery skin" };
+            appearances[CreatureConstants.Salamander_Flamebrother] = new[] { "Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. red fiery skin" };
+            appearances[CreatureConstants.Salamander_Average] = new[] { "Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. red fiery skin" };
+            appearances[CreatureConstants.Salamander_Noble] = new[] { "Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. red fiery skin" };
             //Source: https://forgottenrealms.fandom.com/wiki/Satyr
             appearances[CreatureConstants.Satyr] = GetWeightedAppearances(
                 allSkin: new[] { "Tan skin", "Light brown skin", "Brown skin", "Lightly tan skin", "TODO GOAT fur" },
@@ -3577,14 +3577,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "King Cobra: Green scales. The belly is ornamented with bars. The throat is light yellow.",
                 "King Cobra: Green scales. The belly is uniform in color. The throat is cream-colored.",
                 "King Cobra: Green scales. The belly is ornamented with bars. The throat is cream-colored.",
-                "King Cobra: Brown scales. The belly is uniform in color. The throat is light yellow.",
-                "King Cobra: Brown scales. The belly is ornamented with bars. The throat is light yellow.",
-                "King Cobra: Brown scales. The belly is uniform in color. The throat is cream-colored.",
-                "King Cobra: Brown scales. The belly is ornamented with bars. The throat is cream-colored.",
-                "King Cobra: Black scales. The belly is uniform in color. The throat is light yellow.",
-                "King Cobra: Black scales. The belly is ornamented with bars. The throat is light yellow.",
-                "King Cobra: Black scales. The belly is uniform in color. The throat is cream-colored.",
-                "King Cobra: Black scales. The belly is ornamented with bars. The throat is cream-colored.",
+                "King Cobra: brown scales. The belly is uniform in color. The throat is light yellow.",
+                "King Cobra: brown scales. The belly is ornamented with bars. The throat is light yellow.",
+                "King Cobra: brown scales. The belly is uniform in color. The throat is cream-colored.",
+                "King Cobra: brown scales. The belly is ornamented with bars. The throat is cream-colored.",
+                "King Cobra: black scales. The belly is uniform in color. The throat is light yellow.",
+                "King Cobra: black scales. The belly is ornamented with bars. The throat is light yellow.",
+                "King Cobra: black scales. The belly is uniform in color. The throat is cream-colored.",
+                "King Cobra: black scales. The belly is ornamented with bars. The throat is cream-colored.",
                 "King Cobra: Yellow scales with darker yellowish crossbars. The belly is uniform in color. The throat is light yellow.",
                 "King Cobra: Yellow scales with darker yellowish crossbars. The belly is uniform in color. The throat is cream-colored.",
                 "King Cobra: Yellow scales with darker yellowish crossbars. The belly is ornamented with bars. The throat is light yellow.",
@@ -3625,38 +3625,38 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "King Cobra: Green scales with white chevrons. The belly is uniform in color. The throat is cream-colored.",
                 "King Cobra: Green scales with white chevrons. The belly is ornamented with bars. The throat is light yellow.",
                 "King Cobra: Green scales with white chevrons. The belly is ornamented with bars. The throat is cream-colored.",
-                "King Cobra: Brown scales with yellowish crossbars. The belly is uniform in color. The throat is light yellow.",
-                "King Cobra: Brown scales with yellowish crossbars. The belly is uniform in color. The throat is cream-colored.",
-                "King Cobra: Brown scales with yellowish crossbars. The belly is ornamented with bars. The throat is light yellow.",
-                "King Cobra: Brown scales with yellowish crossbars. The belly is ornamented with bars. The throat is cream-colored.",
-                "King Cobra: Brown scales with yellowish chevrons. The belly is uniform in color. The throat is light yellow.",
-                "King Cobra: Brown scales with yellowish chevrons. The belly is uniform in color. The throat is cream-colored.",
-                "King Cobra: Brown scales with yellowish chevrons. The belly is ornamented with bars. The throat is light yellow.",
-                "King Cobra: Brown scales with yellowish chevrons. The belly is ornamented with bars. The throat is cream-colored.",
-                "King Cobra: Brown scales with white crossbars. The belly is uniform in color. The throat is light yellow.",
-                "King Cobra: Brown scales with white crossbars. The belly is uniform in color. The throat is cream-colored.",
-                "King Cobra: Brown scales with white crossbars. The belly is ornamented with bars. The throat is light yellow.",
-                "King Cobra: Brown scales with white crossbars. The belly is ornamented with bars. The throat is cream-colored.",
-                "King Cobra: Brown scales with white chevrons. The belly is uniform in color. The throat is light yellow.",
-                "King Cobra: Brown scales with white chevrons. The belly is uniform in color. The throat is cream-colored.",
-                "King Cobra: Brown scales with white chevrons. The belly is ornamented with bars. The throat is light yellow.",
-                "King Cobra: Brown scales with white chevrons. The belly is ornamented with bars. The throat is cream-colored.",
-                "King Cobra: Black scales with yellowish crossbars. The belly is uniform in color. The throat is light yellow.",
-                "King Cobra: Black scales with yellowish crossbars. The belly is uniform in color. The throat is cream-colored.",
-                "King Cobra: Black scales with yellowish crossbars. The belly is ornamented with bars. The throat is light yellow.",
-                "King Cobra: Black scales with yellowish crossbars. The belly is ornamented with bars. The throat is cream-colored.",
-                "King Cobra: Black scales with yellowish chevrons. The belly is uniform in color. The throat is light yellow.",
-                "King Cobra: Black scales with yellowish chevrons. The belly is uniform in color. The throat is cream-colored.",
-                "King Cobra: Black scales with yellowish chevrons. The belly is ornamented with bars. The throat is light yellow.",
-                "King Cobra: Black scales with yellowish chevrons. The belly is ornamented with bars. The throat is cream-colored.",
-                "King Cobra: Black scales with white crossbars. The belly is uniform in color. The throat is light yellow.",
-                "King Cobra: Black scales with white crossbars. The belly is uniform in color. The throat is cream-colored.",
-                "King Cobra: Black scales with white crossbars. The belly is ornamented with bars. The throat is light yellow.",
-                "King Cobra: Black scales with white crossbars. The belly is ornamented with bars. The throat is cream-colored.",
-                "King Cobra: Black scales with white chevrons. The belly is uniform in color. The throat is light yellow.",
-                "King Cobra: Black scales with white chevrons. The belly is uniform in color. The throat is cream-colored.",
-                "King Cobra: Black scales with white chevrons. The belly is ornamented with bars. The throat is light yellow.",
-                "King Cobra: Black scales with white chevrons. The belly is ornamented with bars. The throat is cream-colored.",
+                "King Cobra: brown scales with yellowish crossbars. The belly is uniform in color. The throat is light yellow.",
+                "King Cobra: brown scales with yellowish crossbars. The belly is uniform in color. The throat is cream-colored.",
+                "King Cobra: brown scales with yellowish crossbars. The belly is ornamented with bars. The throat is light yellow.",
+                "King Cobra: brown scales with yellowish crossbars. The belly is ornamented with bars. The throat is cream-colored.",
+                "King Cobra: brown scales with yellowish chevrons. The belly is uniform in color. The throat is light yellow.",
+                "King Cobra: brown scales with yellowish chevrons. The belly is uniform in color. The throat is cream-colored.",
+                "King Cobra: brown scales with yellowish chevrons. The belly is ornamented with bars. The throat is light yellow.",
+                "King Cobra: brown scales with yellowish chevrons. The belly is ornamented with bars. The throat is cream-colored.",
+                "King Cobra: brown scales with white crossbars. The belly is uniform in color. The throat is light yellow.",
+                "King Cobra: brown scales with white crossbars. The belly is uniform in color. The throat is cream-colored.",
+                "King Cobra: brown scales with white crossbars. The belly is ornamented with bars. The throat is light yellow.",
+                "King Cobra: brown scales with white crossbars. The belly is ornamented with bars. The throat is cream-colored.",
+                "King Cobra: brown scales with white chevrons. The belly is uniform in color. The throat is light yellow.",
+                "King Cobra: brown scales with white chevrons. The belly is uniform in color. The throat is cream-colored.",
+                "King Cobra: brown scales with white chevrons. The belly is ornamented with bars. The throat is light yellow.",
+                "King Cobra: brown scales with white chevrons. The belly is ornamented with bars. The throat is cream-colored.",
+                "King Cobra: black scales with yellowish crossbars. The belly is uniform in color. The throat is light yellow.",
+                "King Cobra: black scales with yellowish crossbars. The belly is uniform in color. The throat is cream-colored.",
+                "King Cobra: black scales with yellowish crossbars. The belly is ornamented with bars. The throat is light yellow.",
+                "King Cobra: black scales with yellowish crossbars. The belly is ornamented with bars. The throat is cream-colored.",
+                "King Cobra: black scales with yellowish chevrons. The belly is uniform in color. The throat is light yellow.",
+                "King Cobra: black scales with yellowish chevrons. The belly is uniform in color. The throat is cream-colored.",
+                "King Cobra: black scales with yellowish chevrons. The belly is ornamented with bars. The throat is light yellow.",
+                "King Cobra: black scales with yellowish chevrons. The belly is ornamented with bars. The throat is cream-colored.",
+                "King Cobra: black scales with white crossbars. The belly is uniform in color. The throat is light yellow.",
+                "King Cobra: black scales with white crossbars. The belly is uniform in color. The throat is cream-colored.",
+                "King Cobra: black scales with white crossbars. The belly is ornamented with bars. The throat is light yellow.",
+                "King Cobra: black scales with white crossbars. The belly is ornamented with bars. The throat is cream-colored.",
+                "King Cobra: black scales with white chevrons. The belly is uniform in color. The throat is light yellow.",
+                "King Cobra: black scales with white chevrons. The belly is uniform in color. The throat is cream-colored.",
+                "King Cobra: black scales with white chevrons. The belly is ornamented with bars. The throat is light yellow.",
+                "King Cobra: black scales with white chevrons. The belly is ornamented with bars. The throat is cream-colored.",
             };
             //Source: https://forgottenrealms.fandom.com/wiki/Specter
             appearances[CreatureConstants.Spectre] = new[]
@@ -3789,7 +3789,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Tendriculos
             appearances[CreatureConstants.Tendriculos] = new[] { "Mound of vegetation, supported by various branches and vines. Large opening filled with sharp branches and horns, acting sort of like teeth." };
             //Source: https://forgottenrealms.fandom.com/wiki/Thoqqua
-            appearances[CreatureConstants.Thoqqua] = new[] { "Worm-like, made of earth and fire. Brown and red skin. Glowing, molten-hot beak." };
+            appearances[CreatureConstants.Thoqqua] = new[] { "Worm-like, made of earth and fire. brown and red skin. Glowing, molten-hot beak." };
             //Source: https://forgottenrealms.fandom.com/wiki/Tiefling
             appearances[CreatureConstants.Tiefling] = GetWeightedAppearances(
                 commonSkin: new[] { "TODO HUMAN skin" },
@@ -3970,12 +3970,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //https://www.fisheries.noaa.gov/species/north-atlantic-right-whale
             appearances[CreatureConstants.Whale_Baleen] = GetWeightedAppearances(
                 commonSkin: new[] {
-                    "Humpback Whale: Black skin with white on the underside of the pectoral fins, belly, and underside of the tail",
+                    "Humpback Whale: black skin with white on the underside of the pectoral fins, belly, and underside of the tail",
                     "Gray Whale: Mottled gray skin with small eyes located just above the corners of the mouth. Broad paddle-shaped pectoral flippers, pointed at the tips. Dorsal hump.",
                     "Right Whale: Stocky black body, V-shaped blow spout, broad and deeply-notched tail, all-black belly",
                     "Right Whale: Stocky black body, V-shaped blow spout, broad and deeply-notched tail, black belly with irregularly-shaped white patches",
                 },
-                uncommonSkin: new[] { "Humpback Whale: Black skin with white on the underside of the pectoral fins, flanks, belly, and underside of the tail" });
+                uncommonSkin: new[] { "Humpback Whale: black skin with white on the underside of the pectoral fins, flanks, belly, and underside of the tail" });
             //Source: https://www.fisheries.noaa.gov/species/sperm-whale
             appearances[CreatureConstants.Whale_Cachalot] = GetWeightedAppearances(
                 commonSkin: new[] { "Sperm Whale: Dark grey skin" },
