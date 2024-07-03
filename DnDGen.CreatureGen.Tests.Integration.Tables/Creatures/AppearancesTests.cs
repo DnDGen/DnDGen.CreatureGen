@@ -590,23 +590,23 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Tiny
             appearances[CreatureConstants.Centipede_Monstrous_Tiny] = new[] { "Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin" };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Small
-            appearances[CreatureConstants.Centipede_Monstrous_Small] = new[] { "Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin" };
+            appearances[CreatureConstants.Centipede_Monstrous_Small] = ["Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin"];
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Medium
-            appearances[CreatureConstants.Centipede_Monstrous_Medium] = new[] { "Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin" };
+            appearances[CreatureConstants.Centipede_Monstrous_Medium] = ["Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin"];
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Large
-            appearances[CreatureConstants.Centipede_Monstrous_Large] = new[] { "Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin" };
+            appearances[CreatureConstants.Centipede_Monstrous_Large] = ["Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin"];
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Huge
-            appearances[CreatureConstants.Centipede_Monstrous_Huge] = new[] { "Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin" };
+            appearances[CreatureConstants.Centipede_Monstrous_Huge] = ["Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin"];
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Gargantuan
-            appearances[CreatureConstants.Centipede_Monstrous_Gargantuan] = new[] { "Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin" };
+            appearances[CreatureConstants.Centipede_Monstrous_Gargantuan] = ["Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin"];
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Colossal
-            appearances[CreatureConstants.Centipede_Monstrous_Colossal] = new[] { "Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin" };
+            appearances[CreatureConstants.Centipede_Monstrous_Colossal] = ["Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin"];
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
-            appearances[CreatureConstants.Centipede_Swarm] = new[] { "1,500 centipedes" };
+            appearances[CreatureConstants.Centipede_Swarm] = ["1,500 centipedes"];
             //Source: https://www.d20srd.org/srd/monsters/devil.htm#chainDevilKyton
-            appearances[CreatureConstants.ChainDevil_Kyton] = new[] { "Red skin", "Grey skin", "Grey skin with red tattoos" };
+            appearances[CreatureConstants.ChainDevil_Kyton] = ["Red skin", "Grey skin", "Grey skin with red tattoos"];
             //Source: https://forgottenrealms.fandom.com/wiki/Chaos_beast
-            appearances[CreatureConstants.ChaosBeast] = new[] {
+            appearances[CreatureConstants.ChaosBeast] = [
                 "A towering thing of pulpy flesh and exposed veins, covered in fangs and hooks. Three legs upon which it walks with unsteady and lurching steps. Face is fractured, with bent eyes and nose hooked three times.",
                 "A filmy mass of rope-like tentacles with vermilion tips that slither along. Bulbous body ringed by gnashing mouths and topped by a viscous sac holding ten bobbing eyes. Dozens of vestigial wings that flap too feebly to give it flight.",
                 "A powerful and muscular beast, armed with claws and alligator jaws.",
@@ -618,38 +618,38 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "A plump moth with brilliantly colored wings like the stained glass of temples and compound eyes that sparkle like a myriad of jewels.",
                 "The person one least suspects.",
                 "A writhing mass of teeth and barbed tentacles, grey and rotting. Random clawed hands hide under some of the tentacles.",
-                "DM Discretion - come up with something particularly chaotic" };
+                "DM Discretion - come up with something particularly chaotic" ];
             //Source: https://www.dimensions.com/element/cheetahs
             //https://forgottenrealms.fandom.com/wiki/Cheetah
-            appearances[CreatureConstants.Cheetah] = new[] { "Slender body, yellow coat with black spots, long thin legs, deep chest, small head",
+            appearances[CreatureConstants.Cheetah] = [ "Slender body, yellow coat with black spots, long thin legs, deep chest, small head",
                 "Slender body, sand-colored coat with black spots, long thin legs, deep chest, small head",
                 "Slender body, yellow coat with brown spots, long thin legs, deep chest, small head",
-                "Slender body, sand-colored coat with brown spots, long thin legs, deep chest, small head" };
+                "Slender body, sand-colored coat with brown spots, long thin legs, deep chest, small head" ];
             //Source: https://forgottenrealms.fandom.com/wiki/Chimera
-            appearances[CreatureConstants.Chimera_Black] = new[] { "Hindquarters of a goat, the forequarters of a lion, and a set of black Dragon wings. Three heads: that of a horned goat, a lion, and a black Dragon." };
-            appearances[CreatureConstants.Chimera_Blue] = new[] { "Hindquarters of a goat, the forequarters of a lion, and a set of Blue Dragon wings. Three heads: that of a horned goat, a lion, and a Blue Dragon." };
-            appearances[CreatureConstants.Chimera_Green] = new[] { "Hindquarters of a goat, the forequarters of a lion, and a set of Green Dragon wings. Three heads: that of a horned goat, a lion, and a Green Dragon." };
-            appearances[CreatureConstants.Chimera_Red] = new[] { "Hindquarters of a goat, the forequarters of a lion, and a set of red Dragon wings. Three heads: that of a horned goat, a lion, and a red Dragon." };
-            appearances[CreatureConstants.Chimera_White] = new[] { "Hindquarters of a goat, the forequarters of a lion, and a set of White Dragon wings. Three heads: that of a horned goat, a lion, and a White Dragon." };
+            appearances[CreatureConstants.Chimera_Black] = ["Hindquarters of a goat, the forequarters of a lion, and a set of Black Dragon wings. Three heads: that of a horned goat, a lion, and a Black Dragon."];
+            appearances[CreatureConstants.Chimera_Blue] = ["Hindquarters of a goat, the forequarters of a lion, and a set of Blue Dragon wings. Three heads: that of a horned goat, a lion, and a Blue Dragon."];
+            appearances[CreatureConstants.Chimera_Green] = ["Hindquarters of a goat, the forequarters of a lion, and a set of Green Dragon wings. Three heads: that of a horned goat, a lion, and a Green Dragon."];
+            appearances[CreatureConstants.Chimera_Red] = ["Hindquarters of a goat, the forequarters of a lion, and a set of Red Dragon wings. Three heads: that of a horned goat, a lion, and a Red Dragon."];
+            appearances[CreatureConstants.Chimera_White] = ["Hindquarters of a goat, the forequarters of a lion, and a set of White Dragon wings. Three heads: that of a horned goat, a lion, and a White Dragon."];
             //Source: https://forgottenrealms.fandom.com/wiki/Choker
             appearances[CreatureConstants.Choker] = GetWeightedAppearances(
-                allSkin: new[] { "Gray, rubbery skin", "Spotted gray, rubbery skin", "Earthy-brown, rubbery skin", "Spotted earthy-brown, rubbery skin" },
-                allOther: new[] { "Roughly humanoid, with a small torso and head. Arms and legs are long and thin, more like tentacles. Hands are shaped somewhat like a starfish, with a spiny surface—stiff cartilage jutting through the skin. Fingers are enormously long. Limbs move with the fluidity of tentacles." });
+                allSkin: ["Gray, rubbery skin", "Spotted gray, rubbery skin", "Earthy-brown, rubbery skin", "Spotted earthy-brown, rubbery skin"],
+                allOther: ["Roughly humanoid, with a small torso and head. Arms and legs are long and thin, more like tentacles. Hands are shaped somewhat like a starfish, with a spiny surface—stiff cartilage jutting through the skin. Fingers are enormously long. Limbs move with the fluidity of tentacles."]);
             //Source: https://forgottenrealms.fandom.com/wiki/Chuul
             appearances[CreatureConstants.Chuul] = GetWeightedAppearances(
-                allSkin: new[] { "Dark yellow-green exoskeleton" },
-                allEyes: new[] { "Black eyes" },
-                allOther: new[] { "Four long legs and two large crustacean-like claws. Fan-like tail. Mass of tentacles around the mouth." });
+                allSkin: ["Dark yellow-green exoskeleton"],
+                allEyes: ["Black eyes"],
+                allOther: ["Four long legs and two large crustacean-like claws. Fan-like tail. Mass of tentacles around the mouth."]);
             //Source: https://forgottenrealms.fandom.com/wiki/Cloaker
             appearances[CreatureConstants.Cloaker] = GetWeightedAppearances(
-                allSkin: new[] { "Black skin, pale belly" },
-                allEyes: new[] { "Red eyes" },
-                commonOther: new[] { "Long, whiplike tail. Head set within the \"cowl\" of the cloak-like body. Toothy maw. Bony claws adjacent to the head look almost like clasps for the cloak." },
-                uncommonOther: new[] { "Long, whiplike tail. Head set within the \"cowl\" of the cloak-like body. Toothy maw. Bony claws adjacent to the head look almost like clasps for the cloak. A series of spots run in two parallel lines down the backs, giving the appearance of buttons." });
+                allSkin: ["Black skin, pale belly"],
+                allEyes: ["Red eyes"],
+                commonOther: ["Long, whiplike tail. Head set within the \"cowl\" of the cloak-like body. Toothy maw. Bony claws adjacent to the head look almost like clasps for the cloak."],
+                uncommonOther: ["Long, whiplike tail. Head set within the \"cowl\" of the cloak-like body. Toothy maw. Bony claws adjacent to the head look almost like clasps for the cloak. A series of spots run in two parallel lines down the backs, giving the appearance of buttons."]);
             //Source: https://forgottenrealms.fandom.com/wiki/Cockatrice
             appearances[CreatureConstants.Cockatrice] = GetWeightedAppearances(
-                allSkin: new[] { "Yellow-green scales on the tail. Grey skin on the wings. Yellow beak and feet." },
-                allHair: new[] { "Golden brown feathers" },
+                allSkin: ["Yellow-green scales on the tail. Grey skin on the wings. Yellow beak and feet."],
+                allHair: ["Golden brown feathers"],
                 allEyes: new[] { "Glowing crimson eyes" },
                 allOther: new[] { "Lizard-like tail. Wings of a bat.", "TODO gender-specific appearance" });
             //Source: https://forgottenrealms.fandom.com/wiki/Couatl
@@ -1590,11 +1590,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonEyes: ["Bright red eyes", "Vivid red eyes"],
                 uncommonEyes: ["Pale white-blue eyes", "Pale white-lilac eyes", "Pale white-pink eyes", "Pale white-silver eyes", "Purple eyes", "Blue eyes"],
                 rareEyes: ["Green eyes", "Brown eyes", "Black eyes", "Amber eyes", "Rose-hued eyes"],
-                commonHair: [ "Straight Stark white hair", "Wavy Stark white hair", "Curly Stark white hair", "Kinky Stark white hair",
-                    "Straight Pale yellow hair", "Wavy Pale yellow hair", "Curly Pale yellow hair", "Kinky Pale yellow hair" ],
-                uncommonHair: [ "Straight Gray hair", "Wavy Gray hair", "Curly Gray hair", "Kinky Gray hair",
-                    "Straight Pale Yellow hair", "Wavy Pale Yellow hair", "Curly Pale Yellow hair", "Kinky Pale Yellow hair",
-                    "Straight silver hair", "Wavy silver hair", "Curly silver hair", "Kinky silver hair",
+                commonHair: [ "Straight Stark white hair", "Curly Stark white hair", "Kinky Stark white hair",
+                    "Straight Pale yellow hair", "Curly Pale yellow hair", "Kinky Pale yellow hair" ],
+                uncommonHair: [ "Straight Gray hair", "Curly Gray hair", "Kinky Gray hair",
+                    "Straight Pale Yellow hair", "Curly Pale Yellow hair", "Kinky Pale Yellow hair",
+                    "Straight silver hair", "Curly silver hair", "Kinky silver hair",
                     "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
                     "Pale TODO Human hair",
                     "Pale TODO High Elf hair" ],
@@ -1603,8 +1603,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //https://forgottenrealms.fandom.com/wiki/Grey_elf
             appearances[CreatureConstants.Elf_Gray] = GetWeightedAppearances(
                 commonSkin: new[] { "Pale grey skin" },
-                commonHair: new[] { "Straight silver hair", "Wavy silver hair", "Curly silver hair", "Kinky silver hair" },
-                uncommonHair: new[] { "Straight pale-golden hair", "Wavy pale-golden hair", "Curly pale-golden hair", "Kinky pale-golden hair" },
+                commonHair: new[] { "Straight silver hair", "Curly silver hair", "Kinky silver hair" },
+                uncommonHair: new[] { "Straight pale-golden hair", "Curly pale-golden hair", "Kinky pale-golden hair" },
                 commonEyes: new[] { "Amber eyes" },
                 uncommonEyes: new[] { "Violet eyes" },
                 allOther: new[] { "Pointed ears" });
@@ -1634,28 +1634,28 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonSkin: new[] { "Brown skin", "Olive skin", "White skin", "Pink skin",
                     "Pale brown skin", "Pale Olive skin", "Pale White skin", "Pale Pink skin" },
                 uncommonSkin: new[] { "Dark brown skin", "Dark Olive skin", "Dark Pink skin" },
-                commonHair: new[] { "Straight black hair", "Wavy black hair", "Curly black hair", "Kinky black hair",
-                    "Straight White hair", "Wavy White hair", "Curly White hair", "Kinky White hair",
-                    "Straight silver hair", "Wavy silver hair", "Curly silver hair", "Kinky silver hair",
-                    "Straight Pale Gold hair", "Wavy Pale Gold hair", "Curly Pale Gold hair", "Kinky Pale Gold hair" },
-                uncommonHair: new[] { "Straight black hair with silvery hues", "Wavy black hair with silvery hues",
+                commonHair: new[] { "Straight black hair", "Curly black hair", "Kinky black hair",
+                    "Straight White hair", "Curly White hair", "Kinky White hair",
+                    "Straight silver hair", "Curly silver hair", "Kinky silver hair",
+                    "Straight Pale Gold hair", "Curly Pale Gold hair", "Kinky Pale Gold hair" },
+                uncommonHair: new[] { "Straight black hair with silvery hues",
                         "Curly black hair with silvery hues", "Kinky black hair with silvery hues",
-                    "Straight black hair with blond hues", "Wavy black hair with blond hues", "Curly black hair with blond hues", "Kinky black hair with blond hues",
-                    "Straight black hair with copper hues", "Wavy black hair with copper hues", "Curly black hair with copper hues", "Kinky black hair with copper hues",
-                    "Straight White hair with silvery hues", "Wavy White hair with silvery hues", "Curly White hair with silvery hues",
+                    "Straight black hair with blond hues", "Curly black hair with blond hues", "Kinky black hair with blond hues",
+                    "Straight black hair with copper hues", "Curly black hair with copper hues", "Kinky black hair with copper hues",
+                    "Straight White hair with silvery hues", "Curly White hair with silvery hues",
                         "Kinky White hair with silvery hues",
-                    "Straight White hair with blond hues", "Wavy White hair with blond hues", "Curly White hair with blond hues", "Kinky White hair with blond hues",
-                    "Straight White hair with copper hues", "Wavy White hair with copper hues", "Curly White hair with copper hues", "Kinky White hair with copper hues",
-                    "Straight silver hair with silvery hues", "Wavy silver hair with silvery hues", "Curly silver hair with silvery hues",
+                    "Straight White hair with blond hues", "Curly White hair with blond hues", "Kinky White hair with blond hues",
+                    "Straight White hair with copper hues", "Curly White hair with copper hues", "Kinky White hair with copper hues",
+                    "Straight silver hair with silvery hues", "Curly silver hair with silvery hues",
                         "Kinky silver hair with silvery hues",
-                    "Straight silver hair with blond hues", "Wavy silver hair with blond hues", "Curly silver hair with blond hues", "Kinky silver hair with blond hues",
-                    "Straight silver hair with copper hues", "Wavy silver hair with copper hues", "Curly silver hair with copper hues",
+                    "Straight silver hair with blond hues", "Curly silver hair with blond hues", "Kinky silver hair with blond hues",
+                    "Straight silver hair with copper hues", "Curly silver hair with copper hues",
                         "Kinky silver hair with copper hues",
-                    "Straight Pale Gold hair with silvery hues", "Wavy Pale Gold hair with silvery hues", "Curly Pale Gold hair with silvery hues",
+                    "Straight Pale Gold hair with silvery hues", "Curly Pale Gold hair with silvery hues",
                         "Kinky Pale Gold hair with silvery hues",
-                    "Straight Pale Gold hair with blond hues", "Wavy Pale Gold hair with blond hues", "Curly Pale Gold hair with blond hues",
+                    "Straight Pale Gold hair with blond hues",  "Curly Pale Gold hair with blond hues",
                         "Kinky Pale Gold hair with blond hues",
-                    "Straight Pale Gold hair with copper hues", "Wavy Pale Gold hair with copper hues", "Curly Pale Gold hair with copper hues",
+                    "Straight Pale Gold hair with copper hues", "Curly Pale Gold hair with copper hues",
                         "Kinky Pale Gold hair with copper hues" },
                 commonEyes: new[] { "Green eyes" },
                 uncommonEyes: new[] { "Golden eyes", "Blue eyes", "Light Blue eyes", "Green eyes speckled with gold" },
@@ -1669,14 +1669,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //https://www.d20srd.org/srd/monsters/elf.htm
             appearances[CreatureConstants.Elf_Wild] = GetWeightedAppearances(
                 allSkin: new[] { "Light brown skin", "Brown skin", "Dark brown skin" },
-                commonHair: new[] { "Straight black hair", "Wavy black hair", "Curly black hair", "Kinky black hair",
-                    "Straight Dark brown hair", "Wavy Dark brown hair", "Curly Dark brown hair", "Kinky Dark brown hair",
-                    "Straight brown hair", "Wavy brown hair", "Curly brown hair", "Kinky brown hair",
-                    "Straight Light brown hair", "Curly Light brown hair", "Wavy Light brown hair", "Kinky Light brown hair" },
-                uncommonHair: new[] { "Straight silver hair", "Wavy silver hair", "Curly silver hair", "Kinky silver hair",
-                    "Straight Silvery-White hair", "Wavy Silvery-White hair", "Curly Silvery-White hair", "Kinky Silvery-White hair",
-                    "Straight Gray hair", "Wavy Gray hair", "Curly Gray hair", "Kinky Gray hair",
-                    "Straight White hair", "Wavy White hair", "Curly White hair", "Kinky White hair" },
+                commonHair: new[] { "Straight black hair", "Curly black hair", "Kinky black hair",
+                    "Straight Dark brown hair", "Curly Dark brown hair", "Kinky Dark brown hair",
+                    "Straight brown hair", "Curly brown hair", "Kinky brown hair",
+                    "Straight Light brown hair", "Curly Light brown hair", "Kinky Light brown hair" },
+                uncommonHair: new[] { "Straight silver hair", "Curly silver hair", "Kinky silver hair",
+                    "Straight Silvery-White hair", "Curly Silvery-White hair", "Kinky Silvery-White hair",
+                    "Straight Gray hair", "Curly Gray hair", "Kinky Gray hair",
+                    "Straight White hair", "Curly White hair", "Kinky White hair" },
                 allEyes: new[] { "TODO High Elf eyes" },
                 allOther: new[] { "Pointed ears" });
             //Source: https://forgottenrealms.fandom.com/wiki/Wood_elf
@@ -1684,11 +1684,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.Elf_Wood] = GetWeightedAppearances(
                 allSkin: new[] { "Copper skin", "Tan skin" },
                 commonHair: new[] { "Straight black hair", "Straight Light brown hair", "Straight brown hair",
-                    "Wavy black hair", "Wavy Light brown hair", "Wavy brown hair",
                     "Curly black hair", "Curly Light brown hair", "Curly brown hair",
                     "Kinky black hair", "Kinky Light brown hair", "Kinky brown hair", },
                 uncommonHair: new[] { "Straight Yellow hair", "Straight blond hair", "Straight Copper-Red hair",
-                    "Wavy Yellow hair", "Wavy blond hair", "Wavy Copper-Red hair",
                     "Curly Yellow hair", "Curly blond hair", "Curly Copper-Red hair",
                     "Kinky Yellow hair", "Kinky blond hair", "Kinky Copper-Red hair" },
                 allEyes: new[] { "Green eyes", "Brown eyes", "Hazel eyes" },
@@ -1793,9 +1791,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Cloud_giant
             appearances[CreatureConstants.Giant_Cloud] = GetWeightedAppearances(
                 allSkin: new[] { "Milky white skin", "Light sky-blue skin" },
-                commonHair: new[] { "Straight silvery-white hair", "Wavy silvery-white hair", "Curly silvery-white hair", "Kinky silvery-white hair",
-                    "Straight brass hair", "Wavy brass hair", "Curly brass hair", "Kinky brass hair"},
-                uncommonHair: new[] { "Straight sky-blue hair", "Wavy sky-blue hair", "Curly sky-blue hair", "Kinky sky-blue hair" },
+                commonHair: new[] { "Straight silvery-white hair", "Curly silvery-white hair", "Kinky silvery-white hair",
+                    "Straight brass hair", "Curly brass hair", "Kinky brass hair"},
+                uncommonHair: new[] { "Straight sky-blue hair", "Curly sky-blue hair", "Kinky sky-blue hair" },
                 allEyes: new[] { "Iridescent blue eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Fire_giant
             appearances[CreatureConstants.Giant_Fire] = GetWeightedAppearances(
