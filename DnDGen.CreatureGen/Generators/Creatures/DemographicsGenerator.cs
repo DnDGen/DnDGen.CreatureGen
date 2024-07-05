@@ -25,10 +25,10 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             this.dice = dice;
             this.typeAndAmountSelector = typeAndAmountSelector;
 
-            heightDescriptions = new[] { "Very Short", "Short", "Average", "Tall", "Very Tall" };
-            lengthDescriptions = new[] { "Very Short", "Short", "Average", "Long", "Very Long" };
-            wingspanDescriptions = new[] { "Very Narrow", "Narrow", "Average", "Broad", "Very Broad" };
-            weightDescriptions = new[] { "Very Light", "Light", "Average", "Heavy", "Very Heavy" };
+            heightDescriptions = ["Very Short", "Short", "Average", "Tall", "Very Tall"];
+            lengthDescriptions = ["Very Short", "Short", "Average", "Long", "Very Long"];
+            wingspanDescriptions = ["Very Narrow", "Narrow", "Average", "Broad", "Very Broad"];
+            weightDescriptions = ["Very Light", "Light", "Average", "Heavy", "Very Heavy"];
         }
 
         public Demographics Generate(string creatureName)
