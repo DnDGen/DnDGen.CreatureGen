@@ -1061,7 +1061,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         public void UsuallyAlignmentHasMajority(string alignment)
         {
             var group = AlignmentConstants.Modifiers.Usually + alignment;
-            var weightedAlignments = collectionSelector.ExplodeAndPreserveDuplicates(tableName, group);
+            var weightedAlignments = collectionSelector.ExplodeAndPreserveDuplicates(Config.Name, tableName, group);
 
             var alignmentCount = weightedAlignments.Count(a => a == alignment);
             var halfCount = weightedAlignments.Count() / 2;
@@ -1080,7 +1080,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         public void OftenAlignmentIsMode(string alignment)
         {
             var group = AlignmentConstants.Modifiers.Often + alignment;
-            var weightedAlignments = collectionSelector.ExplodeAndPreserveDuplicates(tableName, group);
+            var weightedAlignments = collectionSelector.ExplodeAndPreserveDuplicates(Config.Name, tableName, group);
 
             var modeCount = weightedAlignments
                 .GroupBy(a => a)
@@ -1098,11 +1098,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         [TestCase(CreatureConstants.Types.Vermin)]
         public void AllCreaturesOfTypeAreTrueNeutral(string creatureType)
         {
-            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var creatures = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, creatureType);
 
             foreach (var creature in creatures)
             {
-                var alignments = collectionSelector.ExplodeAndPreserveDuplicates(tableName, creature);
+                var alignments = collectionSelector.ExplodeAndPreserveDuplicates(Config.Name, tableName, creature);
                 Assert.That(alignments, Has.Count.EqualTo(1).And.Contains(AlignmentConstants.TrueNeutral), creature);
             }
         }
@@ -1111,7 +1111,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Alignments
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Templates))]
         public void AllCreaturesHaveValidExplodedAlignment(string creature)
         {
-            var alignments = collectionSelector.Explode(tableName, creature);
+            var alignments = collectionSelector.Explode(Config.Name, tableName, creature);
             Assert.That(alignments, Is.Not.Empty, creature);
             Assert.That(alignments, Is.SubsetOf(table[GroupConstants.All]), creature);
 

@@ -55,7 +55,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             };
 
             mockTypeAndAmountSelector.Setup(s => s.Select(TableNameConstants.Collection.Speeds, "creature")).Returns(speedSelections);
-            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AerialManeuverability, "creature")).Returns(new[] { "maneuverability" });
+            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AerialManeuverability, "creature")).Returns(new[] { "maneuverability" });
 
             var speeds = speedsGenerator.Generate("creature");
             Assert.That(speeds["on foot"].Unit, Is.EqualTo("feet per round"));

@@ -25,12 +25,12 @@ namespace DnDGen.CreatureGen.Verifiers
             IEnumerable<string> baseCreatures = new[] { creature };
             if (string.IsNullOrEmpty(creature))
             {
-                baseCreatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.All);
+                baseCreatures = collectionsSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.All);
             }
 
             if (asCharacter)
             {
-                var characters = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters);
+                var characters = collectionsSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Characters);
                 baseCreatures = baseCreatures.Intersect(characters);
             }
 
@@ -74,7 +74,7 @@ namespace DnDGen.CreatureGen.Verifiers
             if (nonTemplateCreatures.Any())
                 return true;
 
-            var templates = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
+            var templates = collectionsSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
 
             foreach (var otherTemplate in templates)
             {

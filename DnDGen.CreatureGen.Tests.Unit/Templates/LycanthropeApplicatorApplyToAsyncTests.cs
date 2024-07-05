@@ -638,7 +638,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Demographics.Appearance = "I look like a potato.";
 
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my lycanthrope"))
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, "my lycanthrope"))
                 .Returns("I am the furriest boi.");
 
             SetUpAnimal("my animal");

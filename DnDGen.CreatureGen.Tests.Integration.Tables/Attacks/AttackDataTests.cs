@@ -301,7 +301,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
 
         private CreatureType GetCreatureType(string creatureName)
         {
-            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creatureName);
+            var types = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, creatureName);
             return new CreatureType(types);
         }
 
@@ -356,7 +356,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Attacks
                 .Select(helper.ParseEntry)
                 .Any(d => d[DataIndexConstants.AttackData.NameIndex] == "Spells");
 
-            var caster = collectionSelector.SelectFrom(TableNameConstants.TypeAndAmount.Casters, creature);
+            var caster = collectionSelector.SelectFrom(Config.Name, TableNameConstants.TypeAndAmount.Casters, creature);
 
             if (hasSpellsAttack)
             {

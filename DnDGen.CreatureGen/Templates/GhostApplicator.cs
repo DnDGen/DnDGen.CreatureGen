@@ -152,7 +152,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            var appearance = collectionSelector.SelectRandomFrom(TableNameConstants.Collection.Appearances, CreatureConstants.Templates.Ghost);
+            var appearance = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, CreatureConstants.Templates.Ghost);
             creature.Demographics.Appearance += " " + appearance;
 
             var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.Ghost);
@@ -462,8 +462,8 @@ namespace DnDGen.CreatureGen.Templates
 
             var allData = creatureDataSelector.SelectAll();
             var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
-            var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
-            var allAlignments = collectionSelector.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups);
+            var allTypes = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes);
+            var allAlignments = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups);
 
             if (!string.IsNullOrEmpty(filters?.ChallengeRating))
             {
@@ -487,7 +487,7 @@ namespace DnDGen.CreatureGen.Templates
             {
                 //INFO: Ghosts do not change the base creature's alignment
                 //So as long as the base creature's alignment fits, we are good
-                var alignmentCreatures = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureGroups, filters.Alignment);
+                var alignmentCreatures = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, filters.Alignment);
                 filteredBaseCreatures = filteredBaseCreatures.Intersect(alignmentCreatures);
             }
 

@@ -35,14 +35,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
             var creatureSubtypes = CreatureConstants.Types.Subtypes.GetAll();
 
             //INFO: Skills are here for groups of foci - therefore skills with explicit foci are not needed as names
-            var featFoci = collectionMapper.Map(TableNameConstants.Collection.FeatFoci);
-            var skillKeys = featFoci[GroupConstants.Skills].Where(s => !s.Contains("/")).Union(new[]
-            {
+            var featFoci = collectionMapper.Map(Config.Name, TableNameConstants.Collection.FeatFoci);
+            var skillKeys = featFoci[GroupConstants.Skills].Where(s => !s.Contains("/")).Union(
+            [
                 SkillConstants.Craft,
                 SkillConstants.Knowledge,
                 SkillConstants.Perform,
                 SkillConstants.Profession,
-            });
+            ]);
 
             var feats = FeatConstants.All()
                 .Union(FeatConstants.Metamagic.All())
@@ -4624,7 +4624,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void NoDuplicationOfSkillsBetweenTypeAndCreature(string creature)
         {
-            var creatureTypes = collectionSelector.Explode(TableNameConstants.Collection.CreatureTypes, creature);
+            var creatureTypes = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureTypes, creature);
             creatureTypes = creatureTypes.Except(new[] { creature });
 
             Assert.That(table.Keys, Contains.Item(creature)
@@ -4643,7 +4643,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Skills
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Subtypes))]
         public void CreatureTypeSkillsContainSkillsCommonToAllCreatures(string creatureType)
         {
-            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var creatures = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, creatureType);
 
             //INFO: Excluding templates, since they have special rules
             var templates = CreatureConstants.Templates.GetAll();

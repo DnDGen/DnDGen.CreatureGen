@@ -42,8 +42,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCaseSource(nameof(CreatureLengthsData))]
         public void CreatureLengths(string name, Dictionary<string, string> typesAndRolls)
         {
-            var genders = collectionSelector.SelectFrom(TableNameConstants.Collection.Genders, name);
-            Assert.That(typesAndRolls.Keys, Is.EquivalentTo(genders.Union(new[] { name })).And.Not.Empty, $"TEST DATA: {name}");
+            var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, name);
+            Assert.That(typesAndRolls.Keys, Is.EquivalentTo(genders.Union([name])).And.Not.Empty, $"TEST DATA: {name}");
 
             foreach (var roll in typesAndRolls.Values)
             {

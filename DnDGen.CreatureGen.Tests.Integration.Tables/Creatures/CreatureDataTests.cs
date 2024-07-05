@@ -811,7 +811,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Types.Vermin, false)]
         public void CreaturesOfTypeCanUseEquipment(string creatureType, bool useEquipment)
         {
-            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, creatureType);
+            var creatures = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, creatureType);
             var templates = CreatureConstants.Templates.GetAll();
 
             foreach (var creature in creatures.Except(templates))

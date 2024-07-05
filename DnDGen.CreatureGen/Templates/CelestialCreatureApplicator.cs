@@ -140,11 +140,11 @@ namespace DnDGen.CreatureGen.Templates
 
         private IEnumerable<string> UpdateCreatureType(string creatureType, IEnumerable<string> subtypes)
         {
-            var adjustedSubtypes = subtypes.Union(new[]
-            {
+            var adjustedSubtypes = subtypes.Union(
+            [
                 CreatureConstants.Types.Subtypes.Extraplanar,
                 CreatureConstants.Types.Subtypes.Augmented,
-            });
+            ]);
 
             if (creatureType == CreatureConstants.Types.Animal
                 || creatureType == CreatureConstants.Types.Vermin)
@@ -157,7 +157,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            var appearance = collectionSelector.SelectRandomFrom(TableNameConstants.Collection.Appearances, CreatureConstants.Templates.CelestialCreature);
+            var appearance = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, CreatureConstants.Templates.CelestialCreature);
             creature.Demographics.Appearance += " " + appearance;
         }
 
@@ -311,17 +311,18 @@ namespace DnDGen.CreatureGen.Templates
             }
 
             var language = collectionSelector.SelectRandomFrom(
+                Config.Name,
                 TableNameConstants.Collection.LanguageGroups,
                 CreatureConstants.Templates.CelestialCreature + LanguageConstants.Groups.Automatic);
 
-            creature.Languages = creature.Languages.Union(new[] { language });
+            creature.Languages = creature.Languages.Union([language]);
         }
 
         public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, Filters filters = null)
         {
             var compatibility = IsCompatible(
                 creature.Type.AllTypes,
-                new[] { creature.Alignment.Full },
+                [creature.Alignment.Full],
                 creature.ChallengeRating,
                 creature.HitPoints.RoundedHitDiceQuantity,
                 filters);
@@ -400,8 +401,8 @@ namespace DnDGen.CreatureGen.Templates
             var filteredBaseCreatures = sourceCreatures;
             var allData = creatureDataSelector.SelectAll();
             var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
-            var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
-            var allAlignments = collectionSelector.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups);
+            var allTypes = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes);
+            var allAlignments = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups);
 
             if (!string.IsNullOrEmpty(filters?.ChallengeRating))
             {

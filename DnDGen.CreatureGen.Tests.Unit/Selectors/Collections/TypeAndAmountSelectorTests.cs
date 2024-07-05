@@ -46,7 +46,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 TypeAndAmountHelper.Build("other type", "90210"),
             };
 
-            mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
+            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, "table name", "name")).Returns(entries);
 
             SetUpRoll("9266", 9266);
 
@@ -68,7 +68,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 TypeAndAmountHelper.Build(skillString, "9266"),
             };
 
-            mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
+            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, "table name", "name")).Returns(entries);
 
             SetUpRoll("9266", 9266);
 
@@ -87,7 +87,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 TypeAndAmountHelper.Build("other type", "other amount"),
             };
 
-            mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
+            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, "table name", "name")).Returns(entries);
 
             SetUpRoll("amount", 42);
 
@@ -106,7 +106,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 TypeAndAmountHelper.Build("other type", "other amount"),
             };
 
-            mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
+            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, "table name", "name")).Returns(entries);
 
             SetUpRoll("amount", 42);
 
@@ -129,7 +129,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 TypeAndAmountHelper.Build("other type", "90210"),
             };
 
-            mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
+            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, "table name", "name")).Returns(entries);
 
             SetUpRoll("9266", 9266);
             SetUpRoll("90210", 90210);
@@ -157,7 +157,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 TypeAndAmountHelper.Build("other type", "other amount"),
             };
 
-            mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
+            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, "table name", "name")).Returns(entries);
 
             SetUpRoll("amount", 42);
             SetUpRoll("other amount", 600);
@@ -185,7 +185,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
                 TypeAndAmountHelper.Build("other type", "other amount"),
             };
 
-            mockCollectionSelector.Setup(s => s.SelectFrom("table name", "name")).Returns(entries);
+            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, "table name", "name")).Returns(entries);
 
             SetUpRoll("amount", 42);
             SetUpRoll("other amount", 600);
@@ -212,7 +212,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         public void SelectAllTypesAndAmounts()
         {
             var table = new Dictionary<string, IEnumerable<string>>();
-            mockCollectionSelector.Setup(s => s.SelectAllFrom("table name")).Returns(table);
+            mockCollectionSelector.Setup(s => s.SelectAllFrom(Config.Name, "table name")).Returns(table);
 
             table["name"] = new[]
             {
@@ -252,7 +252,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         public void SelectAllTypesAndRandomAmounts()
         {
             var table = new Dictionary<string, IEnumerable<string>>();
-            mockCollectionSelector.Setup(s => s.SelectAllFrom("table name")).Returns(table);
+            mockCollectionSelector.Setup(s => s.SelectAllFrom(Config.Name, "table name")).Returns(table);
 
             table["name"] = new[]
             {
@@ -293,7 +293,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         public void SelectAllTypesAndConsistentRandomAmounts()
         {
             var table = new Dictionary<string, IEnumerable<string>>();
-            mockCollectionSelector.Setup(s => s.SelectAllFrom("table name")).Returns(table);
+            mockCollectionSelector.Setup(s => s.SelectAllFrom(Config.Name, "table name")).Returns(table);
 
             table["name"] = new[]
             {

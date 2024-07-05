@@ -1298,7 +1298,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             var allTypes = CreatureConstants.Types.GetAll();
             var allSubTypes = CreatureConstants.Types.Subtypes.GetAll();
             var allTypesAndSubtypes = allTypes.Union(allSubTypes);
-            var lycanthropes = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.Lycanthrope);
+            var lycanthropes = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.Lycanthrope);
             var goodnessCreatures = new[] { CreatureConstants.Templates.CelestialCreature, CreatureConstants.Templates.FiendishCreature };
 
             if (lycanthropes.Contains(creature))
@@ -1341,7 +1341,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             foreach (var type in types)
             {
-                var creaturesOfType = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, type);
+                var creaturesOfType = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, type);
                 Assert.That(creaturesOfType, Contains.Item(creature), type);
             }
         }

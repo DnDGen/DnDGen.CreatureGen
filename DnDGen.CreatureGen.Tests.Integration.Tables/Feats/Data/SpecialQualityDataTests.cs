@@ -105,7 +105,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
                 var featName = data[DataIndexConstants.SpecialQualityData.FeatNameIndex];
                 var focus = data[DataIndexConstants.SpecialQualityData.FocusIndex];
 
-                var featFoci = collectionMapper.Map(TableNameConstants.Collection.FeatFoci);
+                var featFoci = collectionMapper.Map(Config.Name, TableNameConstants.Collection.FeatFoci);
                 var proficiencyFoci = featFoci[featName];
 
                 if (weaponFamiliarityFoci.Contains(focus) && featName == FeatConstants.WeaponProficiency_Martial)
@@ -321,7 +321,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Feats.Data
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void NoOverlapBetweenCreatureAndCreatureTypes(string creature)
         {
-            var types = collectionMapper.Map(TableNameConstants.Collection.CreatureTypes);
+            var types = collectionMapper.Map(Config.Name, TableNameConstants.Collection.CreatureTypes);
             var creatureTypes = types[creature].Except(new[] { creature }); //INFO: In case creature name duplicates as type, such as Gnoll
 
             Assert.That(table.Keys, Is.SupersetOf(creatureTypes));

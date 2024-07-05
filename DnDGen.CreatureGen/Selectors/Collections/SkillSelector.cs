@@ -20,7 +20,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
 
         public SkillSelection SelectFor(string skill)
         {
-            var data = collectionSelector.SelectFrom(TableNameConstants.Collection.SkillData, skill).ToArray();
+            var data = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SkillData, skill).ToArray();
 
             var selection = new SkillSelection();
             selection.BaseAbilityName = data[DataIndexConstants.SkillSelectionData.BaseAbilityNameIndex];

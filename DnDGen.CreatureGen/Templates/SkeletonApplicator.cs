@@ -90,7 +90,7 @@ namespace DnDGen.CreatureGen.Templates
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
-            var hasSkeleton = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton);
+            var hasSkeleton = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton);
             var compatibility = IsCompatible(
                 creature.Type.AllTypes,
                 hasSkeleton,
@@ -189,7 +189,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            var appearance = collectionSelector.SelectRandomFrom(TableNameConstants.Collection.Appearances, CreatureConstants.Templates.Skeleton);
+            var appearance = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, CreatureConstants.Templates.Skeleton);
             creature.Demographics.Appearance = appearance;
 
             var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.Skeleton);
@@ -451,10 +451,10 @@ namespace DnDGen.CreatureGen.Templates
             var featNamesToKeep = new List<string>();
             featNamesToKeep.Add(FeatConstants.SpecialQualities.AttackBonus);
 
-            var weaponProficiencies = collectionSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency);
+            var weaponProficiencies = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency);
             featNamesToKeep.AddRange(weaponProficiencies);
 
-            var armorProficiencies = collectionSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.ArmorProficiency);
+            var armorProficiencies = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, GroupConstants.ArmorProficiency);
             featNamesToKeep.AddRange(armorProficiencies);
 
             var skeletonQualities = featsGenerator.GenerateSpecialQualities(
@@ -481,7 +481,7 @@ namespace DnDGen.CreatureGen.Templates
 
         public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, Filters filters = null)
         {
-            var hasSkeleton = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton);
+            var hasSkeleton = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton);
             var compatibility = IsCompatible(
                 creature.Type.AllTypes,
                 hasSkeleton,
@@ -599,8 +599,8 @@ namespace DnDGen.CreatureGen.Templates
 
             var filteredBaseCreatures = sourceCreatures;
             var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
-            var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
-            var hasSkeleton = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton);
+            var allTypes = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes);
+            var hasSkeleton = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton);
 
             if (!string.IsNullOrEmpty(filters?.ChallengeRating))
             {
@@ -741,7 +741,7 @@ namespace DnDGen.CreatureGen.Templates
 
         public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, bool asCharacter, Filters filters = null)
         {
-            var hasSkeleton = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton);
+            var hasSkeleton = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Groups.HasSkeleton);
             var compatiblePrototypes = sourceCreatures
                 .Where(p => IsCompatible(
                     p.Type.AllTypes,

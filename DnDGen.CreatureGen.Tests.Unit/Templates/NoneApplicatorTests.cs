@@ -604,11 +604,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             types["my other creature"] = new[] { CreatureConstants.Types.Giant, "subtype 2" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string t, string c) => types[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
@@ -619,11 +619,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => alignments[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => alignments[c]);
 
             var compatibleCreatures = templateApplicator.GetCompatibleCreatures(creatures, false);
             Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature", "my other creature" }));
@@ -641,11 +641,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             types["wrong creature 2"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string t, string c) => types[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["my creature" + GroupConstants.Exploded] = new[] { "preset alignment", "other alignment" };
@@ -654,14 +654,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "wrong alignment" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => alignments[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => alignments[c]);
 
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureGroups, "preset alignment"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, "preset alignment"))
                 .Returns(new[] { "wrong creature 3", "my other creature", "wrong creature 4", "my creature", "wrong creature 5" });
 
             var data = new Dictionary<string, CreatureDataSelection>();
@@ -734,11 +734,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             types["wrong creature 2"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 3" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string t, string c) => types[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
@@ -749,11 +749,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => alignments[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => alignments[c]);
 
             var filters = new Filters { ChallengeRating = challengeRating };
 
@@ -775,14 +775,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             types["wrong creature 2"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 3" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string t, string c) => types[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types[c]);
             mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
+                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var hitDice = new Dictionary<string, double>();
             hitDice["my creature"] = 4;
@@ -819,11 +819,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => alignments[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => alignments[c]);
 
             var filters = new Filters { Type = "subtype 2" };
 
@@ -875,14 +875,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             types["wrong creature 4"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 3" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string t, string c) => types[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types[c]);
             mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
+                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
@@ -893,11 +893,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => alignments[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => alignments[c]);
 
             var filters = new Filters { Type = "subtype 2", ChallengeRating = ChallengeRatingConstants.CR1 };
 
@@ -933,24 +933,24 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string t, string c) => types[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types[c]);
             mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
+                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => alignments[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => alignments[c]);
 
             var compatibleCreatures = templateApplicator.GetCompatibleCreatures(new[] { "my creature" }, isCharacter);
             Assert.That(compatibleCreatures, Is.EqualTo(new[] { "my creature" }));
@@ -974,14 +974,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string t, string c) => types[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types[c]);
             mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
+                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var hitDice = new Dictionary<string, double>();
             hitDice["my creature"] = 4;
@@ -1007,11 +1007,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => alignments[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => alignments[c]);
 
             var filters = new Filters { Type = type };
 
@@ -1064,21 +1064,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string t, string c) => types[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => alignments[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => alignments[c]);
 
             var filters = new Filters { ChallengeRating = challengeRating };
 
@@ -1169,21 +1169,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string t, string c) => types[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => alignments[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => alignments[c]);
 
             var filters = new Filters { ChallengeRating = challengeRating };
 
@@ -1274,21 +1274,21 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             types["my creature"] = new[] { CreatureConstants.Types.Giant, "subtype 1", "subtype 2" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string t, string c) => types[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => alignments[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => alignments[c]);
 
             var filters = new Filters { ChallengeRating = challengeRating };
 
@@ -1306,30 +1306,30 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             types[CreatureConstants.Rat] = new[] { CreatureConstants.Types.Vermin };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string t, string c) => types[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types[c]);
             mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
+                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => alignments[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => alignments[c]);
 
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureGroups, "my alignment"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, "my alignment"))
                 .Returns(new[] { "my other creature", "my creature", "wrong creature" });
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureGroups, "wrong alignment"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, "wrong alignment"))
                 .Returns(new[] { "my other creature", "wrong creature" });
 
             var data = new Dictionary<string, CreatureDataSelection>();
@@ -1392,30 +1392,30 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             types["my creature"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string t, string c) => types[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types[c]);
             mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
+                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => alignments[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => alignments[c]);
 
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureGroups, "my alignment"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, "my alignment"))
                 .Returns(new[] { "my other creature", "my creature", "wrong creature" });
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureGroups, "wrong alignment"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, "wrong alignment"))
                 .Returns(new[] { "my other creature", "wrong creature" });
 
             var filters = new Filters { Alignment = alignment, Type = type, ChallengeRating = challengeRating };
@@ -1456,11 +1456,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             types["my other creature"] = new[] { CreatureConstants.Types.Giant, "subtype 2" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string t, string c) => types[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
@@ -1471,11 +1471,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => alignments[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => alignments[c]);
 
             var prototypes = new[]
             {
@@ -1593,11 +1593,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             types["wrong creature 2"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 2" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string t, string c) => types[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["my creature" + GroupConstants.Exploded] = new[] { "preset alignment", "other alignment" };
@@ -1606,14 +1606,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             alignments["wrong creature 2" + GroupConstants.Exploded] = new[] { "wrong alignment" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => alignments[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => alignments[c]);
 
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureGroups, "preset alignment"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureGroups, "preset alignment"))
                 .Returns(new[] { "wrong creature 3", "my other creature", "wrong creature 4", "my creature", "wrong creature 5" });
 
             var data = new Dictionary<string, CreatureDataSelection>();
@@ -1784,11 +1784,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             types["wrong creature 2"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 3" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string t, string c) => types[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types[c]);
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
@@ -1799,11 +1799,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => alignments[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => alignments[c]);
 
             var prototypes = new[]
             {
@@ -1923,14 +1923,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             types["wrong creature 2"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 3" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string t, string c) => types[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types[c]);
             mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
+                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var hitDice = new Dictionary<string, double>();
             hitDice["my creature"] = 4;
@@ -1967,11 +1967,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => alignments[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => alignments[c]);
 
             var prototypes = new[]
             {
@@ -2123,14 +2123,14 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             types["wrong creature 4"] = new[] { CreatureConstants.Types.Humanoid, "subtype 1", "subtype 3" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.CreatureTypes))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes))
                 .Returns(types);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
-                .Returns((string t, string c) => types[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types[c]);
             mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
+                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => types.Where(kvp => kvp.Value.Contains(c)).Select(kvp => kvp.Key));
 
             var alignments = new Dictionary<string, IEnumerable<string>>();
             alignments["my creature" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
@@ -2141,11 +2141,11 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             alignments["wrong creature 4" + GroupConstants.Exploded] = new[] { "other alignment", "my alignment" };
 
             mockCollectionSelector
-                .Setup(s => s.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups))
+                .Setup(s => s.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups))
                 .Returns(alignments);
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
-                .Returns((string t, string c) => alignments[c]);
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, It.IsAny<string>()))
+                .Returns((string a, string t, string c) => alignments[c]);
 
             var prototypes = new[]
             {

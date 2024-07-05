@@ -559,7 +559,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Types.Subtypes.Swarm)]
         public void CreaturesOfTypeAreAgender(string type)
         {
-            var creatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, type);
+            var creatures = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, type);
             Assert.That(table.Keys, Is.SupersetOf(creatures));
 
             foreach (var creature in creatures)
@@ -571,8 +571,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [Test]
         public void AnimalsAreMaleAndFemale()
         {
-            var animals = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal);
-            var swarms = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Swarm);
+            var animals = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Animal);
+            var swarms = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Swarm);
             Assert.That(table.Keys, Is.SupersetOf(animals));
 
             foreach (var creature in animals.Except(swarms))

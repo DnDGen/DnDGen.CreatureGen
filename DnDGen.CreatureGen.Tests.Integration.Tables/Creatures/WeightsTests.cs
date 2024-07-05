@@ -54,8 +54,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             Assert.That(creatureWeightRolls, Contains.Key(name));
 
             var rolls = creatureWeightRolls[name];
-            var genders = collectionSelector.SelectFrom(TableNameConstants.Collection.Genders, name);
-            Assert.That(rolls.Keys, Is.EquivalentTo(genders.Union(new[] { name })).And.Not.Empty, $"TEST DATA: {name}");
+            var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, name);
+            Assert.That(rolls.Keys, Is.EquivalentTo(genders.Union([name])).And.Not.Empty, $"TEST DATA: {name}");
 
             foreach (var roll in rolls.Values)
             {
@@ -2138,7 +2138,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [Test]
         public void IncorporealCreaturesAreWeightless()
         {
-            var incorporealCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
+            var incorporealCreatures = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, CreatureConstants.Types.Subtypes.Incorporeal);
 
             Assert.That(table.Keys, Is.SupersetOf(incorporealCreatures));
 

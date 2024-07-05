@@ -61,16 +61,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Defenses
             willSaveFeats.Add("other feat");
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, SaveConstants.Fortitude))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, SaveConstants.Fortitude))
                 .Returns(fortitudeSaveFeats);
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, SaveConstants.Reflex))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, SaveConstants.Reflex))
                 .Returns(reflexSaveFeats);
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, SaveConstants.Will))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, SaveConstants.Will))
                 .Returns(willSaveFeats);
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.SaveGroups, "creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.SaveGroups, "creature"))
                 .Returns(strongSaves);
 
             mockBonusSelector.Setup(s => s.SelectFor(TableNameConstants.TypeAndAmount.SaveBonuses, It.IsAny<string>())).Returns((string t, string s) => racialBonuses[s]);

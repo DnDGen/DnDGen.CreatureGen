@@ -1303,7 +1303,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCase(CreatureConstants.Types.Subtypes.Water)]
         public void AllCreaturesOfSubtypeHaveSwimSpeeds(string subtype)
         {
-            var aquaticCreatures = collectionSelector.Explode(TableNameConstants.Collection.CreatureGroups, subtype);
+            var aquaticCreatures = collectionSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, subtype);
 
             Assert.That(table.Keys, Is.SupersetOf(aquaticCreatures));
 

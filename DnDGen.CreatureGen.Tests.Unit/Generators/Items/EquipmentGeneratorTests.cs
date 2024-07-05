@@ -64,7 +64,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             attacks.Add(new Attack { Name = "special attack", IsNatural = false, IsMelee = true, IsSpecial = true });
 
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency))
                 .Returns(new[]
                 {
                     FeatConstants.WeaponProficiency_Exotic,
@@ -73,7 +73,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
                 });
 
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.ArmorProficiency))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, GroupConstants.ArmorProficiency))
                 .Returns(new[]
                 {
                     FeatConstants.ArmorProficiency_Light,
@@ -712,7 +712,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             feats.Add(new Feat { Name = FeatConstants.WeaponProficiency_Martial, Foci = new[] { GroupConstants.All } });
 
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.PredeterminedItems, "creature"))
                 .Returns(new[] { "my weapon template" });
 
             var template = new Item
@@ -968,7 +968,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         public void GenerateMeleeWeapon_Predetermined_Mundane_WithSize()
         {
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.PredeterminedItems, "creature"))
                 .Returns(new[] { "my weapon template" });
 
             var template = new Item
@@ -1029,7 +1029,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         public void GenerateMeleeWeapon_Predetermined_Mundane_WithoutSize()
         {
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.PredeterminedItems, "creature"))
                 .Returns(new[] { "my weapon template" });
 
             var template = new Item
@@ -1091,7 +1091,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         public void GenerateMeleeWeapon_Predetermined_Mundane_WithoutSize_Oversized()
         {
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.PredeterminedItems, "creature"))
                 .Returns(new[] { "my weapon template" });
 
             feats.Add(new Feat { Name = FeatConstants.SpecialQualities.OversizedWeapon, Foci = new[] { "oversized" } });
@@ -1155,7 +1155,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         public void GenerateMeleeWeapon_Predetermined_Magic_WithSize()
         {
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.PredeterminedItems, "creature"))
                 .Returns(new[] { "my weapon template" });
 
             var template = new Item
@@ -1217,7 +1217,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         public void GenerateMeleeWeapon_Predetermined_Magic_WithoutSize()
         {
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.PredeterminedItems, "creature"))
                 .Returns(new[] { "my weapon template" });
 
             var template = new Item
@@ -1280,7 +1280,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         public void GenerateMeleeWeapon_Predetermined_Magic_WithoutSize_Oversized()
         {
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.PredeterminedItems, "creature"))
                 .Returns(new[] { "my weapon template" });
 
             var template = new Item
@@ -2763,7 +2763,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         public void GenerateRangedWeapon_Predetermined_Mundane_WithSize()
         {
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.PredeterminedItems, "creature"))
                 .Returns(new[] { "my weapon template" });
 
             var template = new Item
@@ -2824,7 +2824,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         public void GenerateRangedWeapon_Predetermined_Mundane_WithoutSize()
         {
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.PredeterminedItems, "creature"))
                 .Returns(new[] { "my weapon template" });
 
             var template = new Item
@@ -2886,7 +2886,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         public void GenerateRangedWeapon_Predetermined_Mundane_WithoutSize_Oversized()
         {
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.PredeterminedItems, "creature"))
                 .Returns(new[] { "my weapon template" });
 
             feats.Add(new Feat { Name = FeatConstants.SpecialQualities.OversizedWeapon, Foci = new[] { "oversized" } });
@@ -2950,7 +2950,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         public void GenerateRangedWeapon_Predetermined_WithAmmunition()
         {
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.PredeterminedItems, "creature"))
                 .Returns(new[] { "my weapon template" });
 
             var template = new Item
@@ -3010,7 +3010,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         public void GenerateRangedWeapon_Predetermined_WithPredeterminedAmmunition()
         {
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.PredeterminedItems, "creature"))
                 .Returns(new[] { "my weapon template", "my ammo template" });
 
             var weaponTemplate = new Item
@@ -3079,7 +3079,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         public void GenerateRangedWeapon_Predetermined_Magical_WithSize()
         {
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.PredeterminedItems, "creature"))
                 .Returns(new[] { "my weapon template" });
 
             var template = new Item
@@ -3141,7 +3141,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         public void GenerateRangedWeapon_Predetermined_Magical_WithoutSize()
         {
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.PredeterminedItems, "creature"))
                 .Returns(new[] { "my weapon template" });
 
             var template = new Item
@@ -4211,7 +4211,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             feats.Add(new Feat { Name = FeatConstants.ArmorProficiency_Light });
 
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.PredeterminedItems, "creature"))
                 .Returns(new[] { "my armor template" });
 
             var template = new Item
@@ -4244,7 +4244,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             feats.Add(new Feat { Name = FeatConstants.ArmorProficiency_Light });
 
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.PredeterminedItems, "creature"))
                 .Returns(new[] { "my armor template" });
 
             var template = new Item
@@ -4278,7 +4278,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             feats.Add(new Feat { Name = FeatConstants.ArmorProficiency_Light });
 
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.PredeterminedItems, "creature"))
                 .Returns(new[] { "my armor template" });
 
             var template = new Item
@@ -4312,7 +4312,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
             feats.Add(new Feat { Name = FeatConstants.ArmorProficiency_Light });
 
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.PredeterminedItems, "creature"))
                 .Returns(new[] { "my armor template" });
 
             var template = new Item
@@ -4346,7 +4346,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         public void GenerateArmor_Predetermined_EvenIfCannotUseEquipment()
         {
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.PredeterminedItems, "creature"))
                 .Returns(new[] { "my armor template" });
 
             var template = new Item
@@ -4437,7 +4437,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         public void GenerateItem_Predetermined_Mundane()
         {
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.PredeterminedItems, "creature"))
                 .Returns(new[] { "my item template" });
 
             var template = new Item
@@ -4468,7 +4468,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         public void GenerateItem_Predetermined_Magical()
         {
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.PredeterminedItems, "creature"))
                 .Returns(new[] { "my item template" });
 
             var template = new Item
@@ -4500,7 +4500,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
         public void GenerateMultipleItems_Predetermined()
         {
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.PredeterminedItems, "creature"))
                 .Returns(new[] { "my mundane item template", "my magical item template" });
 
             var mundaneTemplate = new Item
@@ -4634,7 +4634,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Items
                 .Returns(shield);
 
             mockCollectionSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.PredeterminedItems, "creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.PredeterminedItems, "creature"))
                 .Returns(new[] { "my item template" });
 
             var template = new Item

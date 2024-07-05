@@ -1,7 +1,6 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
-using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -14,13 +13,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
     {
         protected override string tableName => TableNameConstants.Collection.Appearances;
 
-        private Dictionary<string, IEnumerable<string>> creatureAppearances;
-        private ICollectionSelector collectionSelector;
+        private Dictionary<string, Dictionary<Rarity, IEnumerable<string>>> creatureAppearances;
 
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
-            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
             creatureAppearances = GetCreatureAppearances();
         }
 
@@ -28,27 +25,54 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         public void AppearancesNames()
         {
             var creatures = CreatureConstants.GetAll();
-            AssertCollectionNames(creatures);
+            var names = new List<string>();
+
+            foreach (var creature in creatures)
+            {
+                names.Add(creature + Rarity.Common.ToString());
+                names.Add(creature + Rarity.Uncommon.ToString());
+                names.Add(creature + Rarity.Rare.ToString());
+                names.Add(creature + Rarity.VeryRare.ToString());
+            }
+
+            AssertCollectionNames(names);
         }
 
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void Appearances(string creature)
         {
             Assert.That(creatureAppearances, Contains.Key(creature));
-            Assert.That(creatureAppearances[creature], Is.Not.Empty);
-            Assert.That(creatureAppearances[creature].Where(a => a.Contains("TODO")), Is.Empty, "APPEARANCES TODO");
+            Assert.That(creatureAppearances[creature], Is.Not.Empty
+                .And.ContainKey(Rarity.Common)
+                .And.ContainKey(Rarity.Uncommon)
+                .And.ContainKey(Rarity.Rare)
+                .And.ContainKey(Rarity.VeryRare)
+                .And.Count.EqualTo(4));
+            Assert.That(creatureAppearances[creature][Rarity.Common].Where(a => a.Contains("TODO")), Is.Empty, "COMMON APPEARANCES TODO");
+            Assert.That(creatureAppearances[creature][Rarity.Uncommon].Where(a => a.Contains("TODO")), Is.Empty, "UNCOMMON APPEARANCES TODO");
+            Assert.That(creatureAppearances[creature][Rarity.Rare].Where(a => a.Contains("TODO")), Is.Empty, "RARE APPEARANCES TODO");
+            Assert.That(creatureAppearances[creature][Rarity.VeryRare].Where(a => a.Contains("TODO")), Is.Empty, "VERY RARE APPEARANCES TODO");
 
-            AssertWeightedCollection(creature, creatureAppearances[creature].ToArray());
+            AssertDistinctCollection(creature + Rarity.Common.ToString(), creatureAppearances[creature][Rarity.Common].ToArray());
+            AssertDistinctCollection(creature + Rarity.Uncommon.ToString(), creatureAppearances[creature][Rarity.Uncommon].ToArray());
+            AssertDistinctCollection(creature + Rarity.Rare.ToString(), creatureAppearances[creature][Rarity.Rare].ToArray());
+            AssertDistinctCollection(creature + Rarity.VeryRare.ToString(), creatureAppearances[creature][Rarity.VeryRare].ToArray());
         }
 
-        private Dictionary<string, IEnumerable<string>> GetCreatureAppearances()
+        private Dictionary<string, Dictionary<Rarity, IEnumerable<string>>> GetCreatureAppearances()
         {
             var creatures = CreatureConstants.GetAll();
-            var appearances = new Dictionary<string, IEnumerable<string>>();
+            var appearances = new Dictionary<string, Dictionary<Rarity, IEnumerable<string>>>();
 
             foreach (var creature in creatures)
             {
-                appearances[creature] = [];
+                appearances[creature] = new Dictionary<Rarity, IEnumerable<string>>
+                {
+                    [Rarity.Common] = [],
+                    [Rarity.Uncommon] = [],
+                    [Rarity.Rare] = [],
+                    [Rarity.VeryRare] = []
+                };
             }
 
             //Human:
@@ -106,9 +130,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Burnt russet, soft feathers on its crest, brown soft feathers on its body" },
                 allOther: new[] { "Resembles a quadruped, plump quail" });
             //Source: https://forgottenrealms.fandom.com/wiki/Allip
-            appearances[CreatureConstants.Allip] = new[] { "Spectral variations of the person it once was, with nightmarish, warped features befitting of the madness that possessed it. Its lower portions trail away into a dark fog." };
+            appearances[CreatureConstants.Allip][Rarity.Common] =
+                ["Spectral variations of the person it once was, with nightmarish, warped features befitting of the madness that possessed it. Its lower portions trail away into a dark fog."];
             //Source: https://forgottenrealms.fandom.com/wiki/Androsphinx
-            appearances[CreatureConstants.Androsphinx] = new[] { "Tawny hair/fur. Lion body, falcon wings." };
+            appearances[CreatureConstants.Androsphinx][Rarity.Common] =
+                ["Tawny hair/fur. Lion body, falcon wings."];
             //Source: https://forgottenrealms.fandom.com/wiki/Astral_deva
             appearances[CreatureConstants.Angel_AstralDeva] = GetWeightedAppearances(
                 allSkin: new[] { "Golden skin" },
@@ -135,12 +161,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allEyes: new[] { "Radiant topaz eyes" });
             //Source: https://www.d20srd.org/srd/monsters/animatedObject.htm
             //https://forgottenrealms.fandom.com/wiki/Animated_object
-            appearances[CreatureConstants.AnimatedObject_Colossal] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
-            appearances[CreatureConstants.AnimatedObject_Colossal_Flexible] = new[] { "Rope", "Vine", "Chain" };
-            appearances[CreatureConstants.AnimatedObject_Colossal_MultipleLegs] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
-            appearances[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden] = new[] { "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
+            appearances[CreatureConstants.AnimatedObject_Colossal][Rarity.Common] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
+            appearances[CreatureConstants.AnimatedObject_Colossal_Flexible][Rarity.Common] = new[] { "Rope", "Vine", "Chain" };
+            appearances[CreatureConstants.AnimatedObject_Colossal_MultipleLegs][Rarity.Common] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
+            appearances[CreatureConstants.AnimatedObject_Colossal_MultipleLegs_Wooden][Rarity.Common] = new[] { "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
                 "Wooden Stool" };
-            appearances[CreatureConstants.AnimatedObject_Colossal_Sheetlike] = new[] { "Carpet", "Tapestry", "Rug", "Blanket" };
+            appearances[CreatureConstants.AnimatedObject_Colossal_Sheetlike][Rarity.Common] = new[] { "Carpet", "Tapestry", "Rug", "Blanket" };
             appearances[CreatureConstants.AnimatedObject_Colossal_TwoLegs] = GetWeightedAppearances(
                 commonOther: new[] { "Human statue", "High Elf statue", "Lightfoot Halfling statue", "Hill Dwarf statue", "Rock Gnome statue", "Half-Elf statue",
                     "Half-Orc statue", "Suit of plate armor" },
@@ -152,17 +178,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 rareOther: new[] { "Orc statue", "Goblin statue", "Hobgoblin statue", "Kobold statue", "Troll statue", "Ogre statue", "Mind Flayer statue",
                     "Hill Giant statue", "Frost Giant statue", "Fire Giant statue", "Stone Giant statue", "Cloud Giant statue", "Storm Giant statue",
                     "Half-Celestial statue", "Half-Fiend statue", "Half-Dragon statue" });
-            appearances[CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden] = new[] { "Ladder",
+            appearances[CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden][Rarity.Common] = [ "Ladder",
                 "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine", "Rock Gnome wooden figurine",
-                    "Half-Elf wooden figurine", "Half-Orc wooden figurine" };
-            appearances[CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden] = new[] { "Cart", "Carriage" };
-            appearances[CreatureConstants.AnimatedObject_Colossal_Wooden] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
-            appearances[CreatureConstants.AnimatedObject_Gargantuan] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_Flexible] = new[] { "Rope", "Vine", "Chain" };
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden] = new[] { "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
+                    "Half-Elf wooden figurine", "Half-Orc wooden figurine" ];
+            appearances[CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden][Rarity.Common] = ["Cart", "Carriage"];
+            appearances[CreatureConstants.AnimatedObject_Colossal_Wooden][Rarity.Common] = ["Clock", "Feather Duster", "Broom", "Bucket", "Barrel"];
+            appearances[CreatureConstants.AnimatedObject_Gargantuan][Rarity.Common] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_Flexible][Rarity.Common] = new[] { "Rope", "Vine", "Chain" };
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs][Rarity.Common] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden][Rarity.Common] = new[] { "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
                 "Wooden Stool" };
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_Sheetlike] = new[] { "Carpet", "Tapestry", "Rug", "Blanket" };
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_Sheetlike][Rarity.Common] = new[] { "Carpet", "Tapestry", "Rug", "Blanket" };
             appearances[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs] = GetWeightedAppearances(
                 commonOther: new[] { "Human statue", "High Elf statue", "Lightfoot Halfling statue", "Hill Dwarf statue", "Rock Gnome statue", "Half-Elf statue",
                     "Half-Orc statue", "Suit of plate armor" },
@@ -174,17 +200,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 rareOther: new[] { "Orc statue", "Goblin statue", "Hobgoblin statue", "Kobold statue", "Troll statue", "Ogre statue", "Mind Flayer statue",
                     "Hill Giant statue", "Frost Giant statue", "Fire Giant statue", "Stone Giant statue", "Cloud Giant statue", "Storm Giant statue",
                     "Half-Celestial statue", "Half-Fiend statue", "Half-Dragon statue" });
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden] = new[] { "Ladder",
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden][Rarity.Common] = new[] { "Ladder",
                 "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine", "Rock Gnome wooden figurine",
                     "Half-Elf wooden figurine", "Half-Orc wooden figurine" };
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden] = new[] { "Cart", "Carriage" };
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_Wooden] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
-            appearances[CreatureConstants.AnimatedObject_Huge] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
-            appearances[CreatureConstants.AnimatedObject_Huge_Flexible] = new[] { "Rope", "Vine", "Chain" };
-            appearances[CreatureConstants.AnimatedObject_Huge_MultipleLegs] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
-            appearances[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden] = new[] { "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden][Rarity.Common] = new[] { "Cart", "Carriage" };
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_Wooden][Rarity.Common] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
+            appearances[CreatureConstants.AnimatedObject_Huge][Rarity.Common] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
+            appearances[CreatureConstants.AnimatedObject_Huge_Flexible][Rarity.Common] = new[] { "Rope", "Vine", "Chain" };
+            appearances[CreatureConstants.AnimatedObject_Huge_MultipleLegs][Rarity.Common] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
+            appearances[CreatureConstants.AnimatedObject_Huge_MultipleLegs_Wooden][Rarity.Common] = new[] { "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
                 "Wooden Stool" };
-            appearances[CreatureConstants.AnimatedObject_Huge_Sheetlike] = new[] { "Carpet", "Tapestry", "Rug", "Blanket" };
+            appearances[CreatureConstants.AnimatedObject_Huge_Sheetlike][Rarity.Common] = new[] { "Carpet", "Tapestry", "Rug", "Blanket" };
             appearances[CreatureConstants.AnimatedObject_Huge_TwoLegs] = GetWeightedAppearances(
                 commonOther: new[] { "Human statue", "High Elf statue", "Lightfoot Halfling statue", "Hill Dwarf statue", "Rock Gnome statue", "Half-Elf statue",
                     "Half-Orc statue", "Suit of plate armor" },
@@ -196,17 +222,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 rareOther: new[] { "Orc statue", "Goblin statue", "Hobgoblin statue", "Kobold statue", "Troll statue", "Ogre statue", "Mind Flayer statue",
                     "Hill Giant statue", "Frost Giant statue", "Fire Giant statue", "Stone Giant statue", "Cloud Giant statue", "Storm Giant statue",
                     "Half-Celestial statue", "Half-Fiend statue", "Half-Dragon statue" });
-            appearances[CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden] = new[] { "Ladder",
+            appearances[CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden][Rarity.Common] = new[] { "Ladder",
                 "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine", "Rock Gnome wooden figurine",
                     "Half-Elf wooden figurine", "Half-Orc wooden figurine" };
-            appearances[CreatureConstants.AnimatedObject_Huge_Wheels_Wooden] = new[] { "Cart", "Carriage" };
-            appearances[CreatureConstants.AnimatedObject_Huge_Wooden] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
-            appearances[CreatureConstants.AnimatedObject_Large] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
-            appearances[CreatureConstants.AnimatedObject_Large_Flexible] = new[] { "Rope", "Vine", "Chain" };
-            appearances[CreatureConstants.AnimatedObject_Large_MultipleLegs] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
-            appearances[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden] = new[] { "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
+            appearances[CreatureConstants.AnimatedObject_Huge_Wheels_Wooden][Rarity.Common] = new[] { "Cart", "Carriage" };
+            appearances[CreatureConstants.AnimatedObject_Huge_Wooden][Rarity.Common] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
+            appearances[CreatureConstants.AnimatedObject_Large][Rarity.Common] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
+            appearances[CreatureConstants.AnimatedObject_Large_Flexible][Rarity.Common] = new[] { "Rope", "Vine", "Chain" };
+            appearances[CreatureConstants.AnimatedObject_Large_MultipleLegs][Rarity.Common] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
+            appearances[CreatureConstants.AnimatedObject_Large_MultipleLegs_Wooden][Rarity.Common] = new[] { "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
                 "Wooden Stool" };
-            appearances[CreatureConstants.AnimatedObject_Large_Sheetlike] = new[] { "Carpet", "Tapestry", "Rug", "Blanket" };
+            appearances[CreatureConstants.AnimatedObject_Large_Sheetlike][Rarity.Common] = new[] { "Carpet", "Tapestry", "Rug", "Blanket" };
             appearances[CreatureConstants.AnimatedObject_Large_TwoLegs] = GetWeightedAppearances(
                 commonOther: new[] { "Human statue", "High Elf statue", "Lightfoot Halfling statue", "Hill Dwarf statue", "Rock Gnome statue", "Half-Elf statue",
                     "Half-Orc statue", "Suit of plate armor" },
@@ -218,17 +244,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 rareOther: new[] { "Orc statue", "Goblin statue", "Hobgoblin statue", "Kobold statue", "Troll statue", "Ogre statue", "Mind Flayer statue",
                     "Hill Giant statue", "Frost Giant statue", "Fire Giant statue", "Stone Giant statue", "Cloud Giant statue", "Storm Giant statue",
                     "Half-Celestial statue", "Half-Fiend statue", "Half-Dragon statue" });
-            appearances[CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden] = new[] { "Ladder",
+            appearances[CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden][Rarity.Common] = new[] { "Ladder",
                 "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine", "Rock Gnome wooden figurine",
                     "Half-Elf wooden figurine", "Half-Orc wooden figurine" };
-            appearances[CreatureConstants.AnimatedObject_Large_Wheels_Wooden] = new[] { "Cart", "Carriage" };
-            appearances[CreatureConstants.AnimatedObject_Large_Wooden] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
-            appearances[CreatureConstants.AnimatedObject_Medium] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
-            appearances[CreatureConstants.AnimatedObject_Medium_Flexible] = new[] { "Rope", "Vine", "Chain" };
-            appearances[CreatureConstants.AnimatedObject_Medium_MultipleLegs] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
-            appearances[CreatureConstants.AnimatedObject_Medium_MultipleLegs_Wooden] = new[] { "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
+            appearances[CreatureConstants.AnimatedObject_Large_Wheels_Wooden][Rarity.Common] = new[] { "Cart", "Carriage" };
+            appearances[CreatureConstants.AnimatedObject_Large_Wooden][Rarity.Common] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
+            appearances[CreatureConstants.AnimatedObject_Medium][Rarity.Common] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
+            appearances[CreatureConstants.AnimatedObject_Medium_Flexible][Rarity.Common] = new[] { "Rope", "Vine", "Chain" };
+            appearances[CreatureConstants.AnimatedObject_Medium_MultipleLegs][Rarity.Common] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
+            appearances[CreatureConstants.AnimatedObject_Medium_MultipleLegs_Wooden][Rarity.Common] = new[] { "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
                 "Wooden Stool" };
-            appearances[CreatureConstants.AnimatedObject_Medium_Sheetlike] = new[] { "Carpet", "Tapestry", "Rug", "Blanket" };
+            appearances[CreatureConstants.AnimatedObject_Medium_Sheetlike][Rarity.Common] = new[] { "Carpet", "Tapestry", "Rug", "Blanket" };
             appearances[CreatureConstants.AnimatedObject_Medium_TwoLegs] = GetWeightedAppearances(
                 commonOther: new[] { "Human statue", "High Elf statue", "Lightfoot Halfling statue", "Hill Dwarf statue", "Rock Gnome statue", "Half-Elf statue",
                     "Half-Orc statue", "Suit of plate armor" },
@@ -240,17 +266,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 rareOther: new[] { "Orc statue", "Goblin statue", "Hobgoblin statue", "Kobold statue", "Troll statue", "Ogre statue", "Mind Flayer statue",
                     "Hill Giant statue", "Frost Giant statue", "Fire Giant statue", "Stone Giant statue", "Cloud Giant statue", "Storm Giant statue",
                     "Half-Celestial statue", "Half-Fiend statue", "Half-Dragon statue" });
-            appearances[CreatureConstants.AnimatedObject_Medium_TwoLegs_Wooden] = new[] { "Ladder",
+            appearances[CreatureConstants.AnimatedObject_Medium_TwoLegs_Wooden][Rarity.Common] = new[] { "Ladder",
                 "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine", "Rock Gnome wooden figurine",
                     "Half-Elf wooden figurine", "Half-Orc wooden figurine" };
-            appearances[CreatureConstants.AnimatedObject_Medium_Wheels_Wooden] = new[] { "Cart", "Carriage" };
-            appearances[CreatureConstants.AnimatedObject_Medium_Wooden] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
-            appearances[CreatureConstants.AnimatedObject_Small] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
-            appearances[CreatureConstants.AnimatedObject_Small_Flexible] = new[] { "Rope", "Vine", "Chain" };
-            appearances[CreatureConstants.AnimatedObject_Small_MultipleLegs] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
-            appearances[CreatureConstants.AnimatedObject_Small_MultipleLegs_Wooden] = new[] { "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
+            appearances[CreatureConstants.AnimatedObject_Medium_Wheels_Wooden][Rarity.Common] = new[] { "Cart", "Carriage" };
+            appearances[CreatureConstants.AnimatedObject_Medium_Wooden][Rarity.Common] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
+            appearances[CreatureConstants.AnimatedObject_Small][Rarity.Common] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
+            appearances[CreatureConstants.AnimatedObject_Small_Flexible][Rarity.Common] = new[] { "Rope", "Vine", "Chain" };
+            appearances[CreatureConstants.AnimatedObject_Small_MultipleLegs][Rarity.Common] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
+            appearances[CreatureConstants.AnimatedObject_Small_MultipleLegs_Wooden][Rarity.Common] = new[] { "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
                 "Wooden Stool" };
-            appearances[CreatureConstants.AnimatedObject_Small_Sheetlike] = new[] { "Carpet", "Tapestry", "Rug", "Blanket" };
+            appearances[CreatureConstants.AnimatedObject_Small_Sheetlike][Rarity.Common] = new[] { "Carpet", "Tapestry", "Rug", "Blanket" };
             appearances[CreatureConstants.AnimatedObject_Small_TwoLegs] = GetWeightedAppearances(
                 commonOther: new[] { "Human statue", "High Elf statue", "Lightfoot Halfling statue", "Hill Dwarf statue", "Rock Gnome statue", "Half-Elf statue",
                     "Half-Orc statue", "Suit of plate armor" },
@@ -262,17 +288,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 rareOther: new[] { "Orc statue", "Goblin statue", "Hobgoblin statue", "Kobold statue", "Troll statue", "Ogre statue", "Mind Flayer statue",
                     "Hill Giant statue", "Frost Giant statue", "Fire Giant statue", "Stone Giant statue", "Cloud Giant statue", "Storm Giant statue",
                     "Half-Celestial statue", "Half-Fiend statue", "Half-Dragon statue" });
-            appearances[CreatureConstants.AnimatedObject_Small_TwoLegs_Wooden] = new[] { "Ladder",
+            appearances[CreatureConstants.AnimatedObject_Small_TwoLegs_Wooden][Rarity.Common] = new[] { "Ladder",
                 "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine", "Rock Gnome wooden figurine",
                     "Half-Elf wooden figurine", "Half-Orc wooden figurine" };
-            appearances[CreatureConstants.AnimatedObject_Small_Wheels_Wooden] = new[] { "Cart", "Carriage" };
-            appearances[CreatureConstants.AnimatedObject_Small_Wooden] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
-            appearances[CreatureConstants.AnimatedObject_Tiny] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
-            appearances[CreatureConstants.AnimatedObject_Tiny_Flexible] = new[] { "Rope", "Vine", "Chain" };
-            appearances[CreatureConstants.AnimatedObject_Tiny_MultipleLegs] = ["Stone Table", "Stone Chair", "Stone Dresser"];
-            appearances[CreatureConstants.AnimatedObject_Tiny_MultipleLegs_Wooden] = [ "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
+            appearances[CreatureConstants.AnimatedObject_Small_Wheels_Wooden][Rarity.Common] = new[] { "Cart", "Carriage" };
+            appearances[CreatureConstants.AnimatedObject_Small_Wooden][Rarity.Common] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
+            appearances[CreatureConstants.AnimatedObject_Tiny][Rarity.Common] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
+            appearances[CreatureConstants.AnimatedObject_Tiny_Flexible][Rarity.Common] = new[] { "Rope", "Vine", "Chain" };
+            appearances[CreatureConstants.AnimatedObject_Tiny_MultipleLegs][Rarity.Common] = ["Stone Table", "Stone Chair", "Stone Dresser"];
+            appearances[CreatureConstants.AnimatedObject_Tiny_MultipleLegs_Wooden][Rarity.Common] = [ "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
                 "Wooden Stool" ];
-            appearances[CreatureConstants.AnimatedObject_Tiny_Sheetlike] = ["Carpet", "Tapestry", "Rug", "Blanket"];
+            appearances[CreatureConstants.AnimatedObject_Tiny_Sheetlike][Rarity.Common] = ["Carpet", "Tapestry", "Rug", "Blanket"];
             appearances[CreatureConstants.AnimatedObject_Tiny_TwoLegs] = GetWeightedAppearances(
                 commonOther: [ "Human statue", "High Elf statue", "Lightfoot Halfling statue", "Hill Dwarf statue", "Rock Gnome statue", "Half-Elf statue",
                     "Half-Orc statue", "Suit of plate armor" ],
@@ -284,11 +310,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 rareOther: [ "Orc statue", "Goblin statue", "Hobgoblin statue", "Kobold statue", "Troll statue", "Ogre statue", "Mind Flayer statue",
                     "Hill Giant statue", "Frost Giant statue", "Fire Giant statue", "Stone Giant statue", "Cloud Giant statue", "Storm Giant statue",
                     "Half-Celestial statue", "Half-Fiend statue", "Half-Dragon statue" ]);
-            appearances[CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden] = [ "Ladder",
+            appearances[CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden][Rarity.Common] = [ "Ladder",
                 "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine", "Rock Gnome wooden figurine",
                     "Half-Elf wooden figurine", "Half-Orc wooden figurine" ];
-            appearances[CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden] = ["Cart", "Carriage"];
-            appearances[CreatureConstants.AnimatedObject_Tiny_Wooden] = ["Clock", "Feather Duster", "Broom", "Bucket", "Barrel"];
+            appearances[CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden][Rarity.Common] = ["Cart", "Carriage"];
+            appearances[CreatureConstants.AnimatedObject_Tiny_Wooden][Rarity.Common] = ["Clock", "Feather Duster", "Broom", "Bucket", "Barrel"];
             //Source: https://forgottenrealms.fandom.com/wiki/Ankheg
             appearances[CreatureConstants.Ankheg] = GetWeightedAppearances(
                 allSkin: ["Brown skin", "Yellow skin", "Green skin"],
@@ -319,9 +345,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Lean with long, lanky limbs. Long, spiraling, stylized, rust-colored nails. Left hand is a grafted Troll hand",
                     "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized rust-colored nails. Left hand is a grafted Troll hand"  ]);
             //Source: https://forgottenrealms.fandom.com/wiki/Giant_ant
-            appearances[CreatureConstants.Ant_Giant_Worker] = ["Black skin", "Red skin", "Brown skin"];
-            appearances[CreatureConstants.Ant_Giant_Soldier] = ["Black skin", "Red skin", "Brown skin"];
-            appearances[CreatureConstants.Ant_Giant_Queen] = ["Black skin", "Red skin", "Brown skin"];
+            appearances[CreatureConstants.Ant_Giant_Worker][Rarity.Common] = ["Black skin", "Red skin", "Brown skin"];
+            appearances[CreatureConstants.Ant_Giant_Soldier][Rarity.Common] = ["Black skin", "Red skin", "Brown skin"];
+            appearances[CreatureConstants.Ant_Giant_Queen][Rarity.Common] = ["Black skin", "Red skin", "Brown skin"];
             //Source: https://www.dimensions.com/element/eastern-lowland-gorilla-gorilla-beringei-graueri
             appearances[CreatureConstants.Ape] = GetWeightedAppearances(
                 commonHair: ["Jet-black fur"],
@@ -347,13 +373,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 uncommonEyes: ["TODO Half-Elf eyes"],
                 rareEyes: ["TODO Drow eyes"]);
             //Source: https://www.d20srd.org/srd/monsters/arrowhawk.htm
-            appearances[CreatureConstants.Arrowhawk_Juvenile] = ["Covered in blue scales with occasional tufts of yellow feathers"];
-            appearances[CreatureConstants.Arrowhawk_Adult] = ["Covered in blue scales with occasional tufts of yellow feathers"];
-            appearances[CreatureConstants.Arrowhawk_Elder] = ["Covered in blue scales with occasional tufts of yellow feathers"];
+            appearances[CreatureConstants.Arrowhawk_Juvenile][Rarity.Common] = ["Covered in blue scales with occasional tufts of yellow feathers"];
+            appearances[CreatureConstants.Arrowhawk_Adult][Rarity.Common] = ["Covered in blue scales with occasional tufts of yellow feathers"];
+            appearances[CreatureConstants.Arrowhawk_Elder][Rarity.Common] = ["Covered in blue scales with occasional tufts of yellow feathers"];
             //Source: https://forgottenrealms.fandom.com/wiki/Assassin_vine
-            appearances[CreatureConstants.AssassinVine] = ["Smaller vines extend from the main branch and bear clusters of grape-like berries. Stringy bark. Hand-shaped leaves"];
+            appearances[CreatureConstants.AssassinVine][Rarity.Common] =
+                ["Smaller vines extend from the main branch and bear clusters of grape-like berries. Stringy bark. Hand-shaped leaves"];
             //Source: https://www.d20srd.org/srd/monsters/athach.htm
-            appearances[CreatureConstants.Athach] = ["Extra arm growing out of chest. Large, curved tusks on either side of a wide mouth. Relatively small eyes and nose for the size of the head. One ear significantly bigger than the other. Quite strong stench."];
+            appearances[CreatureConstants.Athach][Rarity.Common] =
+                ["Extra arm growing out of chest. Large, curved tusks on either side of a wide mouth. Relatively small eyes and nose for the size of the head. One ear significantly bigger than the other. Quite strong stench."];
             //Source: https://forgottenrealms.fandom.com/wiki/Avoral
             appearances[CreatureConstants.Avoral] = GetWeightedAppearances(
                 allSkin: ["TODO Human skin"],
@@ -367,19 +395,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Literal fire for hair, brass-colored beard", "Literal fire for hair, fiery-colored beard", "Literal fire for hair, literal fire for beard" },
                 allEyes: new[] { "TODO Dwarven eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Babau
-            appearances[CreatureConstants.Babau] = new[] { "Black, leathery skin tight to a gaunt, skeletal frame. Terrible stench. Skull is tall and long with pointed ears and jaws filled with jagged teeth. A single long horn juts from the back of the skull, curving forward and downward. White eyes that glow red when glaring." };
+            appearances[CreatureConstants.Babau][Rarity.Common] = new[] { "Black, leathery skin tight to a gaunt, skeletal frame. Terrible stench. Skull is tall and long with pointed ears and jaws filled with jagged teeth. A single long horn juts from the back of the skull, curving forward and downward. White eyes that glow red when glaring." };
             //Source: https://www.dimensions.com/element/rhesus-macaque-macaca-mulatta
-            appearances[CreatureConstants.Baboon] = new[] { "Brown hair, red face" };
+            appearances[CreatureConstants.Baboon][Rarity.Common] = new[] { "Brown hair, red face" };
             //Source: https://animals.sandiegozoo.org/animals/honey-badger-ratel
-            appearances[CreatureConstants.Badger] = new[] { "Thick, coarse, black fur, with a wide gray-white stripe that stretches across the back, from the top of the head to the tip of the tail" };
+            appearances[CreatureConstants.Badger][Rarity.Common] = new[] { "Thick, coarse, black fur, with a wide gray-white stripe that stretches across the back, from the top of the head to the tip of the tail" };
             //Multiplying up from normal badger. Length is about x2 from normal low, 2.5x for high
             appearances[CreatureConstants.Badger_Dire] = GetWeightedAppearances(
                 commonHair: new[] { "Thick brown fur" },
                 uncommonHair: new[] { "Thick grey fur", "Thick tan fur" });
             //Source: https://forgottenrealms.fandom.com/wiki/Balor
-            appearances[CreatureConstants.Balor] = new[] { "Dark red skin wrapped in glaring flames. Venom-dripping fangs. Fearsome claws." };
+            appearances[CreatureConstants.Balor][Rarity.Common] = new[] { "Dark red skin wrapped in glaring flames. Venom-dripping fangs. Fearsome claws." };
             //Source: https://forgottenrealms.fandom.com/wiki/Hamatula
-            appearances[CreatureConstants.BarbedDevil_Hamatula] = new[] { "Body completely covered in barbs. Horned hands ending in strange, lengthy claws. Long, burly tails coated in spines. Gleaming, vigilant eyes constantly shifting, making it seem anxious" };
+            appearances[CreatureConstants.BarbedDevil_Hamatula][Rarity.Common] = new[] { "Body completely covered in barbs. Horned hands ending in strange, lengthy claws. Long, burly tails coated in spines. Gleaming, vigilant eyes constantly shifting, making it seem anxious" };
             //Source: https://forgottenrealms.fandom.com/wiki/Barghest
             appearances[CreatureConstants.Barghest] = GetWeightedAppearances(
                 commonHair: new[] { "Bluish-red fur", "Blue fur" },
@@ -411,30 +439,30 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonSkin: new[] { "Pale red fur", "Pale tan fur", "Red fur", "Tan fur", "Brown fur", "Dark brown fur" },
                 allOther: new[] { "Has a short snout and sloped forehead" });
             //Scaled up from bat, x15 based on wingspan
-            appearances[CreatureConstants.Bat_Dire] = new[] { "Shaggy, pale red fur", "Shaggy, pale tan fur", "Shaggy, red fur", "Shaggy, tan fur", "Shaggy, brown fur",
+            appearances[CreatureConstants.Bat_Dire][Rarity.Common] = new[] { "Shaggy, pale red fur", "Shaggy, pale tan fur", "Shaggy, red fur", "Shaggy, tan fur", "Shaggy, brown fur",
                 "Shaggy, dark brown fur" };
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
-            appearances[CreatureConstants.Bat_Swarm] = new[] { "5,000 bats" };
+            appearances[CreatureConstants.Bat_Swarm][Rarity.Common] = new[] { "5,000 bats" };
             //Source: https://forgottenrealms.fandom.com/wiki/Black_bear
-            appearances[CreatureConstants.Bear_Black] = new[] { "Black fur", "Blond fur", "Cinnamon fur" };
+            appearances[CreatureConstants.Bear_Black][Rarity.Common] = new[] { "Black fur", "Blond fur", "Cinnamon fur" };
             //Source: https://forgottenrealms.fandom.com/wiki/Brown_bear
-            appearances[CreatureConstants.Bear_Brown] = new[] { "Brown fur" };
+            appearances[CreatureConstants.Bear_Brown][Rarity.Common] = new[] { "Brown fur" };
             //Source: https://forgottenrealms.fandom.com/wiki/Dire_bear
-            appearances[CreatureConstants.Bear_Dire] = new[] { "Brown fur. Bony brow ridges and extra-long claws. A feral face with cold, piecing eyes." };
+            appearances[CreatureConstants.Bear_Dire][Rarity.Common] = new[] { "Brown fur. Bony brow ridges and extra-long claws. A feral face with cold, piecing eyes." };
             //Source: https://forgottenrealms.fandom.com/wiki/Polar_bear
-            appearances[CreatureConstants.Bear_Polar] = new[] { "White fur" };
+            appearances[CreatureConstants.Bear_Polar][Rarity.Common] = new[] { "White fur" };
             //Source: https://forgottenrealms.fandom.com/wiki/Barbazu
             appearances[CreatureConstants.BeardedDevil_Barbazu] = GetWeightedAppearances(
                 commonSkin: new[] { "Green skin covered in scales" },
                 uncommonSkin: new[] { "Red skin covered in scales", "Purple skin covered in scales" },
                 commonOther: new[] { "Disgusting, wiry beard. Pointed ears and long tail. Clawed hands and feet." },
                 uncommonOther: new[] { "Disgusting, wiry beard infested with maggots. Pointed ears and long tail. Clawed hands and feet." });
-            appearances[CreatureConstants.Bebilith] = new[] { "Like a massive, misshapen spider. Tough, chitinous, mottled exoskeleton. Two forelegs end in razor-sharp barbs. Fangs drip globs of odorous liquid." };
+            appearances[CreatureConstants.Bebilith][Rarity.Common] = new[] { "Like a massive, misshapen spider. Tough, chitinous, mottled exoskeleton. Two forelegs end in razor-sharp barbs. Fangs drip globs of odorous liquid." };
             //Source: https://www.d20srd.org/srd/monsters/giantBee.htm
             //https://www.dimensions.com/element/western-honey-bee-apis-mellifera scale up, [.12,.2]*5*12/[.39,.59] = [18,21]
-            appearances[CreatureConstants.Bee_Giant] = new[] { "Alternating black and yellow stripes" };
+            appearances[CreatureConstants.Bee_Giant][Rarity.Common] = new[] { "Alternating black and yellow stripes" };
             //Source: https://forgottenrealms.fandom.com/wiki/Behir
-            appearances[CreatureConstants.Behir] = new[] { "Deep blue scales, lighter on the underside", "Dark blue scales, lighter on the underside",
+            appearances[CreatureConstants.Behir][Rarity.Common] = new[] { "Deep blue scales, lighter on the underside", "Dark blue scales, lighter on the underside",
                     "Ultramarine scales, lighter on the underside",
                 "Deep blue scales with gray-brown bands, lighter on the underside", "Dark blue scales with gray-brown bands, lighter on the underside",
                     "Ultramarine scales with gray-brown bands, lighter on the underside",
@@ -470,9 +498,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonOther: ["A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw."],
                 uncommonOther: ["A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw. Nostrils and jointed, articulated eyestalks."]);
             //Source: https://forgottenrealms.fandom.com/wiki/Belker
-            appearances[CreatureConstants.Belker] = ["Primarily composed of smoke, has large, black, bat-like wings, clawed tendrils, and a biting maw. Base form was sort of demonic, but continually shifts and changes shape due to its semi-gaseous nature."];
+            appearances[CreatureConstants.Belker][Rarity.Common] =
+                ["Primarily composed of smoke, has large, black, bat-like wings, clawed tendrils, and a biting maw. Base form was sort of demonic, but continually shifts and changes shape due to its semi-gaseous nature."];
             //Source: https://forgottenrealms.fandom.com/wiki/Bison
-            appearances[CreatureConstants.Bison] = [ "Distinctive broad head that connects to large, humped shoulders with a thick neck. Short, curved, hollow horns growing from the sides of its head. Body covered in fur. Head covered in a mantle of thick fur. Short legs. Small tail ending in a tassel of fur.",
+            appearances[CreatureConstants.Bison][Rarity.Common] =
+                [ "Distinctive broad head that connects to large, humped shoulders with a thick neck. Short, curved, hollow horns growing from the sides of its head. Body covered in fur. Head covered in a mantle of thick fur. Short legs. Small tail ending in a tassel of fur.",
                 "TODO: Gender-specific appearance" ];
             //Source: https://forgottenrealms.fandom.com/wiki/Black_pudding
             appearances[CreatureConstants.BlackPudding] = GetWeightedAppearances(
@@ -502,9 +532,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allEyes: new[] { "Empty, milky-white eyes outstretched into vertical ovals" },
                 allOther: new[] { "Face twisted into an inhuman visage of sheer madness and horror" });
             //Source: https://web.stanford.edu/~cbross/bombbeetle.html
-            appearances[CreatureConstants.BombardierBeetle_Giant] = new[] { "Body is dull blue-gray. Head and chest is brownish-orange." };
+            appearances[CreatureConstants.BombardierBeetle_Giant][Rarity.Common] = new[] { "Body is dull blue-gray. Head and chest is brownish-orange." };
             //Source: https://forgottenrealms.fandom.com/wiki/Osyluth
-            appearances[CreatureConstants.BoneDevil_Osyluth] = new[] { "Dry, sickly skin that seems tautly stretched over every bone in its body. Incredibly gaunt husk of a frame so emaciated that it seems skeletal. Tail of a giant scorpion while head looks like menacing skulls. The putrid stench of rot surrounds it." };
+            appearances[CreatureConstants.BoneDevil_Osyluth][Rarity.Common] = new[] { "Dry, sickly skin that seems tautly stretched over every bone in its body. Incredibly gaunt husk of a frame so emaciated that it seems skeletal. Tail of a giant scorpion while head looks like menacing skulls. The putrid stench of rot surrounds it." };
             //Source: https://forgottenrealms.fandom.com/wiki/Bralani
             appearances[CreatureConstants.Bralani] = GetWeightedAppearances(
                 commonSkin: new[] { "TODO High elf skin" },
@@ -540,7 +570,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allOther: new[] { "Eight long tentacles protruding from the side of the head" });
             //Source: https://g.co/kgs/eqa8L1
             //https://www.omlet.us/guide/cats/choosing_the_right_cat_for_you/cat_coat_colors_and_patterns/
-            appearances[CreatureConstants.Cat] = new[] { "Siamese", "British Shorthair", "Maine Coon", "Persian", "Ragdoll", "Sphynx", "American Shorthair", "Abyssinian",
+            appearances[CreatureConstants.Cat][Rarity.Common] = new[] { "Siamese", "British Shorthair", "Maine Coon", "Persian", "Ragdoll", "Sphynx", "American Shorthair", "Abyssinian",
                 "Exotic Shorthair", "Scottish Fold", "Burmese", "Birman", "Bombay", "Siberian", "Norwegian Forest", "Russian Blue", "American Curl", "Munchkin",
                 "American Bobtail", "Devon Rex", "Balinese", "Oriental Shorthair", "Chartreux", "Turkish Angora", "Manx", "Japanese Bobtail", "American Wirehair",
                 "Ragamuffin", "Egyptian Mau", "Cornish Rex", "Somali", "Himalayan", "Selkirk Rex", "Korat", "Singapura", "Ocicat", "Tonkinese", "Turkish Van",
@@ -588,25 +618,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allHair: new[] { "TODO Human hair", "TODO Light Horse hair", "TODO Heavy Horse hair" },
                 allEyes: new[] { "TODO Human eyes" });
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Tiny
-            appearances[CreatureConstants.Centipede_Monstrous_Tiny] = new[] { "Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin" };
+            appearances[CreatureConstants.Centipede_Monstrous_Tiny][Rarity.Common] = new[] { "Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin" };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Small
-            appearances[CreatureConstants.Centipede_Monstrous_Small] = ["Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin"];
+            appearances[CreatureConstants.Centipede_Monstrous_Small][Rarity.Common] = ["Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin"];
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Medium
-            appearances[CreatureConstants.Centipede_Monstrous_Medium] = ["Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin"];
+            appearances[CreatureConstants.Centipede_Monstrous_Medium][Rarity.Common] = ["Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin"];
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Large
-            appearances[CreatureConstants.Centipede_Monstrous_Large] = ["Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin"];
+            appearances[CreatureConstants.Centipede_Monstrous_Large][Rarity.Common] = ["Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin"];
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Huge
-            appearances[CreatureConstants.Centipede_Monstrous_Huge] = ["Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin"];
+            appearances[CreatureConstants.Centipede_Monstrous_Huge][Rarity.Common] = ["Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin"];
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Gargantuan
-            appearances[CreatureConstants.Centipede_Monstrous_Gargantuan] = ["Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin"];
+            appearances[CreatureConstants.Centipede_Monstrous_Gargantuan][Rarity.Common] = ["Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin"];
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Colossal
-            appearances[CreatureConstants.Centipede_Monstrous_Colossal] = ["Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin"];
+            appearances[CreatureConstants.Centipede_Monstrous_Colossal][Rarity.Common] = ["Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin"];
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
-            appearances[CreatureConstants.Centipede_Swarm] = ["1,500 centipedes"];
+            appearances[CreatureConstants.Centipede_Swarm][Rarity.Common] = ["1,500 centipedes"];
             //Source: https://www.d20srd.org/srd/monsters/devil.htm#chainDevilKyton
-            appearances[CreatureConstants.ChainDevil_Kyton] = ["Red skin", "Grey skin", "Grey skin with red tattoos"];
+            appearances[CreatureConstants.ChainDevil_Kyton][Rarity.Common] = ["Red skin", "Grey skin", "Grey skin with red tattoos"];
             //Source: https://forgottenrealms.fandom.com/wiki/Chaos_beast
-            appearances[CreatureConstants.ChaosBeast] = [
+            appearances[CreatureConstants.ChaosBeast][Rarity.Common] = [
                 "A towering thing of pulpy flesh and exposed veins, covered in fangs and hooks. Three legs upon which it walks with unsteady and lurching steps. Face is fractured, with bent eyes and nose hooked three times.",
                 "A filmy mass of rope-like tentacles with vermilion tips that slither along. Bulbous body ringed by gnashing mouths and topped by a viscous sac holding ten bobbing eyes. Dozens of vestigial wings that flap too feebly to give it flight.",
                 "A powerful and muscular beast, armed with claws and alligator jaws.",
@@ -621,16 +651,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "DM Discretion - come up with something particularly chaotic" ];
             //Source: https://www.dimensions.com/element/cheetahs
             //https://forgottenrealms.fandom.com/wiki/Cheetah
-            appearances[CreatureConstants.Cheetah] = [ "Slender body, yellow coat with black spots, long thin legs, deep chest, small head",
+            appearances[CreatureConstants.Cheetah][Rarity.Common] = [ "Slender body, yellow coat with black spots, long thin legs, deep chest, small head",
                 "Slender body, sand-colored coat with black spots, long thin legs, deep chest, small head",
                 "Slender body, yellow coat with brown spots, long thin legs, deep chest, small head",
                 "Slender body, sand-colored coat with brown spots, long thin legs, deep chest, small head" ];
             //Source: https://forgottenrealms.fandom.com/wiki/Chimera
-            appearances[CreatureConstants.Chimera_Black] = ["Hindquarters of a goat, the forequarters of a lion, and a set of Black Dragon wings. Three heads: that of a horned goat, a lion, and a Black Dragon."];
-            appearances[CreatureConstants.Chimera_Blue] = ["Hindquarters of a goat, the forequarters of a lion, and a set of Blue Dragon wings. Three heads: that of a horned goat, a lion, and a Blue Dragon."];
-            appearances[CreatureConstants.Chimera_Green] = ["Hindquarters of a goat, the forequarters of a lion, and a set of Green Dragon wings. Three heads: that of a horned goat, a lion, and a Green Dragon."];
-            appearances[CreatureConstants.Chimera_Red] = ["Hindquarters of a goat, the forequarters of a lion, and a set of Red Dragon wings. Three heads: that of a horned goat, a lion, and a Red Dragon."];
-            appearances[CreatureConstants.Chimera_White] = ["Hindquarters of a goat, the forequarters of a lion, and a set of White Dragon wings. Three heads: that of a horned goat, a lion, and a White Dragon."];
+            appearances[CreatureConstants.Chimera_Black][Rarity.Common] = ["Hindquarters of a goat, the forequarters of a lion, and a set of Black Dragon wings. Three heads: that of a horned goat, a lion, and a Black Dragon."];
+            appearances[CreatureConstants.Chimera_Blue][Rarity.Common] = ["Hindquarters of a goat, the forequarters of a lion, and a set of Blue Dragon wings. Three heads: that of a horned goat, a lion, and a Blue Dragon."];
+            appearances[CreatureConstants.Chimera_Green][Rarity.Common] = ["Hindquarters of a goat, the forequarters of a lion, and a set of Green Dragon wings. Three heads: that of a horned goat, a lion, and a Green Dragon."];
+            appearances[CreatureConstants.Chimera_Red][Rarity.Common] = ["Hindquarters of a goat, the forequarters of a lion, and a set of Red Dragon wings. Three heads: that of a horned goat, a lion, and a Red Dragon."];
+            appearances[CreatureConstants.Chimera_White][Rarity.Common] = ["Hindquarters of a goat, the forequarters of a lion, and a set of White Dragon wings. Three heads: that of a horned goat, a lion, and a White Dragon."];
             //Source: https://forgottenrealms.fandom.com/wiki/Choker
             appearances[CreatureConstants.Choker] = GetWeightedAppearances(
                 allSkin: ["Gray, rubbery skin", "Spotted gray, rubbery skin", "Earthy-brown, rubbery skin", "Spotted earthy-brown, rubbery skin"],
@@ -653,11 +683,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allEyes: new[] { "Glowing crimson eyes" },
                 allOther: new[] { "Lizard-like tail. Wings of a bat.", "TODO gender-specific appearance" });
             //Source: https://forgottenrealms.fandom.com/wiki/Couatl
-            appearances[CreatureConstants.Couatl] = new[] { "Long feathered serpent with a pair of rainbow-feathered wings." };
+            appearances[CreatureConstants.Couatl][Rarity.Common] = new[] { "Long feathered serpent with a pair of rainbow-feathered wings." };
             //Source: https://www.mojobob.com/roleplay/monstrousmanual/s/sphinx.html
-            appearances[CreatureConstants.Criosphinx] = new[] { "Falcon-like wings, ram-like head. Tawny lion body. Mouth full of sharp teeth." };
+            appearances[CreatureConstants.Criosphinx][Rarity.Common] = new[] { "Falcon-like wings, ram-like head. Tawny lion body. Mouth full of sharp teeth." };
             //Source: https://en.wikipedia.org/wiki/Nile_crocodile#Characteristics_and_physiology
-            appearances[CreatureConstants.Crocodile] = new[] { "Dark bronze colouration above, with faded blackish spots and stripes variably appearing across the back and a dingy off-yellow on the belly, although mud can often obscure the crocodile's actual colour.[19] The flanks, which are yellowish-green in colour, have dark patches arranged in oblique stripes in highly variable patterns. Some variation occurs relative to environment; specimens from swift-flowing waters tend to be lighter in colour than those dwelling in murkier lakes or swamps, which provides camouflage that suits their environment, an example of clinal variation. Nile crocodiles have green eyes" };
+            appearances[CreatureConstants.Crocodile][Rarity.Common] = new[] { "Dark bronze colouration above, with faded blackish spots and stripes variably appearing across the back and a dingy off-yellow on the belly, although mud can often obscure the crocodile's actual colour.[19] The flanks, which are yellowish-green in colour, have dark patches arranged in oblique stripes in highly variable patterns. Some variation occurs relative to environment; specimens from swift-flowing waters tend to be lighter in colour than those dwelling in murkier lakes or swamps, which provides camouflage that suits their environment, an example of clinal variation. Nile crocodiles have green eyes" };
             //Source: https://en.wikipedia.org/wiki/Saltwater_crocodile#Description
             appearances[CreatureConstants.Crocodile_Giant] = GetWeightedAppearances(
                 commonSkin: new[] {
@@ -727,7 +757,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Turquoise skin, gray underbelly", "Green skin, yellow underbelly", "Purple skin with pink accents, gray underbelly" },
                 allOther: new[] { "Small body, sleek horizontal posture, ratite-like spine, and enlarged raptorial claws on the feet. A large, sickle-shaped talon is on the second toe of each hind foot." });
             //Source: https://forgottenrealms.fandom.com/wiki/Delver
-            appearances[CreatureConstants.Delver] = new[] { "Huge teardrop-shaped body with rock-like skin, always covered in a mucus-like slime. Almost the entire underside of the body consists of their mouth. Only two flipper-like appendages at the front of the body ending in blunt claws" };
+            appearances[CreatureConstants.Delver][Rarity.Common] = new[] { "Huge teardrop-shaped body with rock-like skin, always covered in a mucus-like slime. Almost the entire underside of the body consists of their mouth. Only two flipper-like appendages at the front of the body ending in blunt claws" };
             //Source: https://forgottenrealms.fandom.com/wiki/Derro
             appearances[CreatureConstants.Derro] = GetWeightedAppearances(
                 commonSkin: new[] { "Pale blue-white skin", "Blue-gray skin" },
@@ -740,11 +770,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allHair: new[] { "White hair", "Yellow hair", "Pale tan hair" },
                 allEyes: new[] { "Uniformly pale eyes lacking irisies and pupils" });
             //Source: https://forgottenrealms.fandom.com/wiki/Destrachan
-            appearances[CreatureConstants.Destrachan] = new[] { "Bipedal, vaguely reptilian. Head is largely featureless except for the circular mouth and the large ear structures." };
+            appearances[CreatureConstants.Destrachan][Rarity.Common] = new[] { "Bipedal, vaguely reptilian. Head is largely featureless except for the circular mouth and the large ear structures." };
             //Source: https://forgottenrealms.fandom.com/wiki/Devourer
-            appearances[CreatureConstants.Devourer] = new[] { "Tall, gaunt skeletal figure with a smaller figure trapped within its rib cage" };
+            appearances[CreatureConstants.Devourer][Rarity.Common] = new[] { "Tall, gaunt skeletal figure with a smaller figure trapped within its rib cage" };
             //Source: https://forgottenrealms.fandom.com/wiki/Digester
-            appearances[CreatureConstants.Digester] = new[] { "Gray, pebbly skin with dagger-like markings. Two powerful hind legs. Long tail. Head is narrow with a sucking mouth, sporting a tube-like orifice on the forehead." };
+            appearances[CreatureConstants.Digester][Rarity.Common] = new[] { "Gray, pebbly skin with dagger-like markings. Two powerful hind legs. Long tail. Head is narrow with a sucking mouth, sporting a tube-like orifice on the forehead." };
             //Source: https://forgottenrealms.fandom.com/wiki/Displacer_beast
             appearances[CreatureConstants.DisplacerBeast] = GetWeightedAppearances(
                 commonHair: new[] { "Blue fur", "Blue-black fur", "Black fur" },
@@ -775,12 +805,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonEyes: new[] { "Brown eyes" },
                 rareEyes: new[] { "Blue eyes" });
             //Source: https://g.co/kgs/q7esXM
-            appearances[CreatureConstants.Dog] = new[] { "Bulldog", "French Bulldog", "Beagle", "Standard Poodle", "Chihuahua", "Dachsund", "Bichon Frise", "Maltese",
+            appearances[CreatureConstants.Dog][Rarity.Common] = new[] { "Bulldog", "French Bulldog", "Beagle", "Standard Poodle", "Chihuahua", "Dachsund", "Bichon Frise", "Maltese",
                 "Chow Chow", "English Cocker Spaniel" , "Pomeranian", "Yorkshire Terrier", "Cavalier King Charles Spaniel", "Pembroke Welsh Corgi", "Basenji", "Havanese",
                 "Boston Terrier", "Cairn Terrier", "Brittany", "Sheltie", "Shiba Inu", "Jack Russell Terrier", "Borzoi", "Maltipoo", "Papillon", "Pikanese",
                 "Miniature Poodle", "Pikapoo", "Coyote", "Dingo", "Miniature Schnauzer", "Mutt" };
             //Source: https://www.google.com/search?q=dog+working+breeds
-            appearances[CreatureConstants.Dog_Riding] = new[] { "German Shepherd", "Labrador Retriever", "Golden Retriever", "Siberian Husky", "Beagle", "Alaskan Malamute",
+            appearances[CreatureConstants.Dog_Riding][Rarity.Common] = new[] { "German Shepherd", "Labrador Retriever", "Golden Retriever", "Siberian Husky", "Beagle", "Alaskan Malamute",
                 "Border Collie", "Rottweiler", "Australian Shepherd", "Airedale Terrier", "Affenpinscher", "Afghan Hound", "American Eskimo", "Anatolian Shepherd",
                 "Basset Hound", "Belgian Malinois", "Boston Terrier", "Bullmastiff", "Black Russian Terrier", "Bedlington Terrier", "American Pit Bull Terrier", "Dobermann",
                 "Sarabi", "Samoyed", "American Bully", "Borzoi", "Goldendoodle", "Dalmation", "Labradoodle", "Bernese Mountain Dog", "Greater Swiss Mountain Dog",
@@ -1443,7 +1473,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allEyes: new[] { "Gray eyes" },
                 allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
             //Source: https://forgottenrealms.fandom.com/wiki/Dragon_turtle
-            appearances[CreatureConstants.DragonTurtle] = new[] { "Green skin, with a golden crest down the center of the head." };
+            appearances[CreatureConstants.DragonTurtle][Rarity.Common] = new[] { "Green skin, with a golden crest down the center of the head." };
             //Source: https://forgottenrealms.fandom.com/wiki/Dragonne
             appearances[CreatureConstants.Dragonne] = GetWeightedAppearances(
                 allSkin: new[] { "Brassy scales" },
@@ -1451,14 +1481,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonEyes: new[] { "Big brass-colored eyes" },
                 uncommonEyes: new[] { "Big bronze-colored eyes", "Big copper-colored eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Dretch
-            appearances[CreatureConstants.Dretch] = new[] { "Pale, rubbery, white skin", "Pale, rubbery, beige skin", "Pale, rubbery, blue skin" };
+            appearances[CreatureConstants.Dretch][Rarity.Common] = new[] { "Pale, rubbery, white skin", "Pale, rubbery, beige skin", "Pale, rubbery, blue skin" };
             //Source: https://forgottenrealms.fandom.com/wiki/Drider
             appearances[CreatureConstants.Drider] = GetWeightedAppearances(
                 allSkin: new[] { "TODO Drow skin. Bottom half is TODO Spider skin" },
                 allHair: new[] { "TODO Drow hair" },
                 allEyes: new[] { "TODO Drow eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Dryad
-            appearances[CreatureConstants.Dryad] = new[] { "Delicate features seemingly made from soft wood. Hair looks as if made of leaves and foliage that changes color with the seasons." };
+            appearances[CreatureConstants.Dryad][Rarity.Common] = new[] { "Delicate features seemingly made from soft wood. Hair looks as if made of leaves and foliage that changes color with the seasons." };
             //Source: https://www.d20srd.org/srd/monsters/dwarf.htm
             appearances[CreatureConstants.Dwarf_Deep] = GetWeightedAppearances(
                 commonSkin: new[] { "Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin", "Very dark tan skin", "Very dark brown skin" },
@@ -1481,7 +1511,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allHair: new[] { "Dark gray hair", "Light gray hair", "Light brown hair" },
                 allEyes: new[] { "TODO Human eyes (Bright)" });
             //Source: https://www.google.com/search?q=species+of+eagle
-            appearances[CreatureConstants.Eagle] = new[] { "Golden eagle", "Bald eagle", "Harpy eagle", "White-tailed eagle", "Black kite", "Steller's sea eagle",
+            appearances[CreatureConstants.Eagle][Rarity.Common] = new[] { "Golden eagle", "Bald eagle", "Harpy eagle", "White-tailed eagle", "Black kite", "Steller's sea eagle",
                 "Philippine eagle", "Haast's eagle", "Wedge-tailed eagle", "Common buzzard", "Black eagle", "Crowned eagle", "Javan hawk-eagle", "Eastern imperial eagle",
                 "Indian spotted eagle", "African fish eagle", "Spanish imperial eagle", "Bonelli's eagle", "Bearded vulture", "Black-and-chestnut eagle", "Martial eagle",
                 "Black-chested buzzard-eagle", "Eurasian griffon vulture", "Red kite", "Verreaux's eagle", "Crested serpent eagle", "Steppe eagle", "Cinereous vulture",
@@ -1489,7 +1519,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "Greater spotted eagle", "Little eagle", "Brahminy kite", "Ornate hawk-eagle", "Black-and-white hawk-eagle", "Changeable hawk-eagle", "Crested eagle",
                 "Rough-legged buzzard", "Hen harrier" };
             //Source: https://www.d20srd.org/srd/monsters/eagleGiant.htm
-            appearances[CreatureConstants.Eagle_Giant] = new[] { "Golden eagle", "Bald eagle", "Harpy eagle", "White-tailed eagle", "Black kite", "Steller's sea eagle",
+            appearances[CreatureConstants.Eagle_Giant][Rarity.Common] = new[] { "Golden eagle", "Bald eagle", "Harpy eagle", "White-tailed eagle", "Black kite", "Steller's sea eagle",
                 "Philippine eagle", "Haast's eagle", "Wedge-tailed eagle", "Common buzzard", "Black eagle", "Crowned eagle", "Javan hawk-eagle", "Eastern imperial eagle",
                 "Indian spotted eagle", "African fish eagle", "Spanish imperial eagle", "Bonelli's eagle", "Bearded vulture", "Black-and-chestnut eagle", "Martial eagle",
                 "Black-chested buzzard-eagle", "Eurasian griffon vulture", "Red kite", "Verreaux's eagle", "Crested serpent eagle", "Steppe eagle", "Cinereous vulture",
@@ -1497,16 +1527,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "Greater spotted eagle", "Little eagle", "Brahminy kite", "Ornate hawk-eagle", "Black-and-white hawk-eagle", "Changeable hawk-eagle", "Crested eagle",
                 "Rough-legged buzzard", "Hen harrier" };
             //Source: https://forgottenrealms.fandom.com/wiki/Efreeti
-            appearances[CreatureConstants.Efreeti] = new[] { "Red, burning skin", "Black, burning skin" };
+            appearances[CreatureConstants.Efreeti][Rarity.Common] = new[] { "Red, burning skin", "Black, burning skin" };
             //Source: https://jurassicworld-evolution.fandom.com/wiki/Elasmosaurus
-            appearances[CreatureConstants.Elasmosaurus] = new[] { "Beige skin" };
+            appearances[CreatureConstants.Elasmosaurus][Rarity.Common] = new[] { "Beige skin" };
             //Source: https://forgottenrealms.fandom.com/wiki/Air_elemental
-            appearances[CreatureConstants.Elemental_Air_Small] = new[] { "An amorphous, ever-shifting cloud" };
-            appearances[CreatureConstants.Elemental_Air_Medium] = new[] { "An amorphous, ever-shifting cloud" };
-            appearances[CreatureConstants.Elemental_Air_Large] = new[] { "An amorphous, ever-shifting cloud" };
-            appearances[CreatureConstants.Elemental_Air_Huge] = new[] { "An amorphous, ever-shifting cloud" };
-            appearances[CreatureConstants.Elemental_Air_Greater] = new[] { "An amorphous, ever-shifting cloud" };
-            appearances[CreatureConstants.Elemental_Air_Elder] = new[] { "An amorphous, ever-shifting cloud" };
+            appearances[CreatureConstants.Elemental_Air_Small][Rarity.Common] = new[] { "An amorphous, ever-shifting cloud" };
+            appearances[CreatureConstants.Elemental_Air_Medium][Rarity.Common] = new[] { "An amorphous, ever-shifting cloud" };
+            appearances[CreatureConstants.Elemental_Air_Large][Rarity.Common] = new[] { "An amorphous, ever-shifting cloud" };
+            appearances[CreatureConstants.Elemental_Air_Huge][Rarity.Common] = new[] { "An amorphous, ever-shifting cloud" };
+            appearances[CreatureConstants.Elemental_Air_Greater][Rarity.Common] = new[] { "An amorphous, ever-shifting cloud" };
+            appearances[CreatureConstants.Elemental_Air_Elder][Rarity.Common] = new[] { "An amorphous, ever-shifting cloud" };
             //Source: https://forgottenrealms.fandom.com/wiki/Earth_elemental
             appearances[CreatureConstants.Elemental_Earth_Small] = GetWeightedAppearances(
                 allSkin: new[] { "Vaguely humanoid with club-like arms made of jagged stone and a head made of both dirt and stone" },
@@ -1534,38 +1564,38 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Chunks of metals and minerals set within the stony body", "Chunks of minerals, gems, and metals set within the stony body" });
             appearances[CreatureConstants.Elemental_Earth_Greater] = GetWeightedAppearances(
                 allSkin: new[] { "Vaguely humanoid with club-like arms made of jagged stone and a head made of both dirt and stone" },
-                uncommonOther: new[] { "Chunks of minerals set within the stony body", "Chunks of gems set within the stony body",
-                    "Chunks of metals set within the stony body" },
-                rareOther: new[] { "Chunks of minerals and gems set within the stony body", "Chunks of gems and metals set within the stony body",
-                    "Chunks of metals and minerals set within the stony body", "Chunks of minerals, gems, and metals set within the stony body" });
+                uncommonOther: [ "Chunks of minerals set within the stony body", "Chunks of gems set within the stony body",
+                    "Chunks of metals set within the stony body" ],
+                rareOther: [ "Chunks of minerals and gems set within the stony body", "Chunks of gems and metals set within the stony body",
+                    "Chunks of metals and minerals set within the stony body", "Chunks of minerals, gems, and metals set within the stony body" ]);
             appearances[CreatureConstants.Elemental_Earth_Elder] = GetWeightedAppearances(
-                allSkin: new[] { "Vaguely humanoid with club-like arms made of jagged stone and a head made of both dirt and stone" },
-                uncommonOther: new[] { "Chunks of minerals set within the stony body", "Chunks of gems set within the stony body",
-                    "Chunks of metals set within the stony body" },
-                rareOther: new[] { "Chunks of minerals and gems set within the stony body", "Chunks of gems and metals set within the stony body",
-                    "Chunks of metals and minerals set within the stony body", "Chunks of minerals, gems, and metals set within the stony body" });
+                allSkin: ["Vaguely humanoid with club-like arms made of jagged stone and a head made of both dirt and stone"],
+                uncommonOther: [ "Chunks of minerals set within the stony body", "Chunks of gems set within the stony body",
+                    "Chunks of metals set within the stony body" ],
+                rareOther: [ "Chunks of minerals and gems set within the stony body", "Chunks of gems and metals set within the stony body",
+                    "Chunks of metals and minerals set within the stony body", "Chunks of minerals, gems, and metals set within the stony body" ]);
             //Source: https://forgottenrealms.fandom.com/wiki/Fire_elemental
-            appearances[CreatureConstants.Elemental_Fire_Small] = new[] { "A column of red flames", "A column of yellow flames", "A column of orange flames",
-                "A column of red/yellow flames", "A column of yellow/orange flames", "A column of orange/red flames", "A column of red/yellow/orange flames" };
-            appearances[CreatureConstants.Elemental_Fire_Medium] = new[] { "A column of red flames", "A column of yellow flames", "A column of orange flames",
-                "A column of red/yellow flames", "A column of yellow/orange flames", "A column of orange/red flames", "A column of red/yellow/orange flames" };
-            appearances[CreatureConstants.Elemental_Fire_Large] = new[] { "A column of red flames", "A column of yellow flames", "A column of orange flames",
-                "A column of red/yellow flames", "A column of yellow/orange flames", "A column of orange/red flames", "A column of red/yellow/orange flames" };
-            appearances[CreatureConstants.Elemental_Fire_Huge] = new[] { "A column of red flames", "A column of yellow flames", "A column of orange flames",
-                "A column of red/yellow flames", "A column of yellow/orange flames", "A column of orange/red flames", "A column of red/yellow/orange flames" };
-            appearances[CreatureConstants.Elemental_Fire_Greater] = [ "A column of red flames", "A column of yellow flames", "A column of orange flames",
+            appearances[CreatureConstants.Elemental_Fire_Small][Rarity.Common] = [ "A column of red flames", "A column of yellow flames", "A column of orange flames",
                 "A column of red/yellow flames", "A column of yellow/orange flames", "A column of orange/red flames", "A column of red/yellow/orange flames" ];
-            appearances[CreatureConstants.Elemental_Fire_Elder] = [ "A column of red flames", "A column of yellow flames", "A column of orange flames",
+            appearances[CreatureConstants.Elemental_Fire_Medium][Rarity.Common] = [ "A column of red flames", "A column of yellow flames", "A column of orange flames",
+                "A column of red/yellow flames", "A column of yellow/orange flames", "A column of orange/red flames", "A column of red/yellow/orange flames" ];
+            appearances[CreatureConstants.Elemental_Fire_Large][Rarity.Common] = [ "A column of red flames", "A column of yellow flames", "A column of orange flames",
+                "A column of red/yellow flames", "A column of yellow/orange flames", "A column of orange/red flames", "A column of red/yellow/orange flames" ];
+            appearances[CreatureConstants.Elemental_Fire_Huge][Rarity.Common] = [ "A column of red flames", "A column of yellow flames", "A column of orange flames",
+                "A column of red/yellow flames", "A column of yellow/orange flames", "A column of orange/red flames", "A column of red/yellow/orange flames" ];
+            appearances[CreatureConstants.Elemental_Fire_Greater][Rarity.Common] = [ "A column of red flames", "A column of yellow flames", "A column of orange flames",
+                "A column of red/yellow flames", "A column of yellow/orange flames", "A column of orange/red flames", "A column of red/yellow/orange flames" ];
+            appearances[CreatureConstants.Elemental_Fire_Elder][Rarity.Common] = [ "A column of red flames", "A column of yellow flames", "A column of orange flames",
                 "A column of red/yellow flames", "A column of yellow/orange flames", "A column of orange/red flames", "A column of red/yellow/orange flames" ];
             //Source: https://forgottenrealms.fandom.com/wiki/Water_elemental
-            appearances[CreatureConstants.Elemental_Water_Small] = ["A cresting wave of water"];
-            appearances[CreatureConstants.Elemental_Water_Medium] = ["A cresting wave of water"];
-            appearances[CreatureConstants.Elemental_Water_Large] = ["A cresting wave of water"];
-            appearances[CreatureConstants.Elemental_Water_Huge] = ["A cresting wave of water"];
-            appearances[CreatureConstants.Elemental_Water_Greater] = ["A cresting wave of water"];
-            appearances[CreatureConstants.Elemental_Water_Elder] = ["A cresting wave of water"];
+            appearances[CreatureConstants.Elemental_Water_Small][Rarity.Common] = ["A cresting wave of water"];
+            appearances[CreatureConstants.Elemental_Water_Medium][Rarity.Common] = ["A cresting wave of water"];
+            appearances[CreatureConstants.Elemental_Water_Large][Rarity.Common] = ["A cresting wave of water"];
+            appearances[CreatureConstants.Elemental_Water_Huge][Rarity.Common] = ["A cresting wave of water"];
+            appearances[CreatureConstants.Elemental_Water_Greater][Rarity.Common] = ["A cresting wave of water"];
+            appearances[CreatureConstants.Elemental_Water_Elder][Rarity.Common] = ["A cresting wave of water"];
             //Source: https://en.wikipedia.org/wiki/African_bush_elephant#Description
-            appearances[CreatureConstants.Elephant] = ["Gray skin with scanty hairs. Large, pointed, triangular ears cover the whole shoulder."];
+            appearances[CreatureConstants.Elephant][Rarity.Common] = ["Gray skin with scanty hairs. Large, pointed, triangular ears cover the whole shoulder."];
             //Source: https://forgottenrealms.fandom.com/wiki/Aquatic_elf
             appearances[CreatureConstants.Elf_Aquatic] = GetWeightedAppearances(
                 commonSkin: [ "Deep green skin, mottled and striped with brown", "Blue skin with white stripes and patches",
@@ -1698,13 +1728,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allHair: new[] { "TODO Human hair" },
                 allEyes: new[] { "Red eyes" });
             //Source: https://www.5esrd.com/database/creature/ethereal-filcher/
-            appearances[CreatureConstants.EtherealFilcher] = new[] { "One foot. Four arms ending in hands with long, spindly fingers. Looks as if it has two heads, one on a long stalk of a neck and another on its abdomen." };
+            appearances[CreatureConstants.EtherealFilcher][Rarity.Common] = new[] { "One foot. Four arms ending in hands with long, spindly fingers. Looks as if it has two heads, one on a long stalk of a neck and another on its abdomen." };
             //Source: https://www.d20srd.org/srd/monsters/etherealMarauder.htm
-            appearances[CreatureConstants.EtherealMarauder] = new[] { "Bright blue skin", "Blue skin", "Deep blue skin",
+            appearances[CreatureConstants.EtherealMarauder][Rarity.Common] = new[] { "Bright blue skin", "Blue skin", "Deep blue skin",
                 "Bright violet skin", "Violet skin", "Deep violet skin",
                 "Bright blue-violet skin", "Blue-violet skin", "Deep blue-violet skin" };
             //Source: https://forgottenrealms.fandom.com/wiki/Ettercap
-            appearances[CreatureConstants.Ettercap] = new[] { "Grey-purplish skin. Distended underbelly. Spider-like face, with fangs and multiple eyes. Two sharp, black, chitinous claws instead of hands and feet." };
+            appearances[CreatureConstants.Ettercap][Rarity.Common] = new[] { "Grey-purplish skin. Distended underbelly. Spider-like face, with fangs and multiple eyes. Two sharp, black, chitinous claws instead of hands and feet." };
             //Source: https://forgottenrealms.fandom.com/wiki/Ettin
             appearances[CreatureConstants.Ettin] = GetWeightedAppearances(
                 allSkin: new[] { "Brown skin, crusted over with a thick layer of grime", "Olive skin, crusted over with a thick layer of grime",
@@ -1936,10 +1966,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allOther: new[] { "Flat face, small fangs, pointed ears, sloped-back forehead, broad noses" });
             //Source: https://pathfinderwiki.com/wiki/Clay_golem
             //https://forgottenrealms.fandom.com/wiki/Clay_golem
-            appearances[CreatureConstants.Golem_Clay] = new[] { "Humanoid body madde from clay" };
+            appearances[CreatureConstants.Golem_Clay][Rarity.Common] = new[] { "Humanoid body madde from clay" };
             //Source: https://www.d20srd.org/srd/monsters/golem.htm
             //https://forgottenrealms.fandom.com/wiki/Flesh_golem
-            appearances[CreatureConstants.Golem_Flesh] = new[] { "Various decaying humanoid body parts stitched and bolted together" };
+            appearances[CreatureConstants.Golem_Flesh][Rarity.Common] = new[] { "Various decaying humanoid body parts stitched and bolted together" };
             //Source: https://www.d20srd.org/srd/monsters/golem.htm
             //https://forgottenrealms.fandom.com/wiki/Iron_golem
             appearances[CreatureConstants.Golem_Iron] = GetWeightedAppearances(
@@ -1966,10 +1996,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allSkin: new[] { "Dusky metallic scales" },
                 allOther: new[] { "Resembles a bull" });
             //Source: https://www.d20srd.org/srd/monsters/ooze.htm#grayOoze
-            appearances[CreatureConstants.GrayOoze] = new[] { "A thick puddle of gray sludge resembling wet stone",
+            appearances[CreatureConstants.GrayOoze][Rarity.Common] = new[] { "A thick puddle of gray sludge resembling wet stone",
                 "A thick puddle of gray sludge resembling an amorphous rock formation" };
             //Source: https://forgottenrealms.fandom.com/wiki/Gray_render
-            appearances[CreatureConstants.GrayRender] = new[] { "Gray hairless skin. Six yellow eyes in two rows along the sloped forehead. Extra long arms drag on the ground." };
+            appearances[CreatureConstants.GrayRender][Rarity.Common] = new[] { "Gray hairless skin. Six yellow eyes in two rows along the sloped forehead. Extra long arms drag on the ground." };
             //Source: https://forgottenrealms.fandom.com/wiki/Green_hag
             appearances[CreatureConstants.GreenHag] = GetWeightedAppearances(
                 commonSkin: new[] { "Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face and exaggerated facial features" },
@@ -2060,7 +2090,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allOther: new[] { "Scaly legs, clawed feet, and clawed hands with knotty fingers. Leathery wings. Breasts",
                     "Scaly legs, clawed feet, and clawed hands with knotty fingers. Feathery wings. Breasts" });
             //Source: https://www.dimensions.com/element/osprey-pandion-haliaetus
-            appearances[CreatureConstants.Hawk] = new[] { "Red-tailed hawk", "Eurasian sparrowhawk", "Sharp-shinned hawk", "Osprey", "Harris' hawk", "Eurasian goshawk",
+            appearances[CreatureConstants.Hawk][Rarity.Common] = new[] { "Red-tailed hawk", "Eurasian sparrowhawk", "Sharp-shinned hawk", "Osprey", "Harris' hawk", "Eurasian goshawk",
                 "Black kite", "Red-shouldered hawk", "Cooper's hawk", "Broad-winged hawk", "Ferruginous hawk", "Swainson's hawk", "Tiny hawk", "White-tailed hawk",
                 "Northern harrier", "Roadside hawk", "Great black hawk", "Common black hawk", "Crested goshawk", "Red kite", "Shikra", "Collared sparrowhawk",
                 "Japanese sparrowhawk", "Chinese sparrowhawk", "Hen harrier", "Black-winged kite", "White-tailed kite", "Zone-tailed hawk", "Brahminy kite", "Besra",
@@ -2081,7 +2111,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allEyes: new[] { "Glowing red eyes" },
                 allOther: new[] { "Resembles monstrous dog. Soot-colored fangs and tongues. Reek of sulfurous smoke." });
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
-            appearances[CreatureConstants.Hellwasp_Swarm] = new[] { "5,000 Hellwasps" };
+            appearances[CreatureConstants.Hellwasp_Swarm][Rarity.Common] = new[] { "5,000 Hellwasps" };
             //Source: https://forgottenrealms.fandom.com/wiki/Hezrou
             appearances[CreatureConstants.Hezrou] = GetWeightedAppearances(
                 allSkin: new[] { "Orange skin", "Yellow-green skin", "Mottled brown skin" },
@@ -2119,7 +2149,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allOther: new[] { "Sweeping horns, wings, prehensile, serpentine tail" });
             //Source: https://www.google.com/search?q=draft+horse+breeds
             //https://equineworld.co.uk/about-horses/horse-colours-and-markings/horse-coat-colours-and-patterns
-            appearances[CreatureConstants.Horse_Heavy] = new[] { "Belgian Draught", "Shire horse", "Clydesdale horse", "Percheron", "Suffolk Punch",
+            appearances[CreatureConstants.Horse_Heavy][Rarity.Common] = new[] { "Belgian Draught", "Shire horse", "Clydesdale horse", "Percheron", "Suffolk Punch",
                 "American Cream Draft", "Ardennais", "Haflinger", "Irish Draught", "Dutch Draft", "Friesian horse", "Fjord horse", "Russian Heavy Draft",
                 "Boulonnais horse", "Galineers Cob", "Australian Draught", "North Swedish Horse", "Noriker", "American Belgian Draft", "Breton horse", "Jutland",
                 "Comtois horse", "Vladimir Heavy Draft", "Rhenish German Coldblood", "Auxois", "Cleveland Bay", "Lithuanian heavy draft",
@@ -2192,7 +2222,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Tobiano (White/golden cow-patterned coat; White mane and tail)", "Tobiano (White/dark ginger cow-patterned coat; White mane and tail)" };
             //Source: https://www.google.com/search?q=horse+breeds
             //https://equineworld.co.uk/about-horses/horse-colours-and-markings/horse-coat-colours-and-patterns
-            appearances[CreatureConstants.Horse_Light] = new[] { "Arabian", "Friesian", "Mustang", "Thoroughbread", "Appaloosa", "American Quarter Horse",
+            appearances[CreatureConstants.Horse_Light][Rarity.Common] = new[] { "Arabian", "Friesian", "Mustang", "Thoroughbread", "Appaloosa", "American Quarter Horse",
                 "Dutch Warmblood", "American Paint Horse", "Akhal-Teke", "Turkoman horse", "Mangalarga Marchador", "Percheron", "Criollo",
                 "Rahvan", "Kandachime", "Morgan horse", "Icelandic horse", "Cob", "Hanoverian", "Andalusian", "Lipizzan", "Lusitano", "Standardbred", "Falabella",
                 "Pure Spanish Breed", "Mongolian", "Trakehner", "Knabstupper", "Konik", "Ferghana", "Marwari", "American Saddlebred", "Missouri Fox Trotter",
@@ -2262,7 +2292,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Tobiano (White/golden cow-patterned coat; White mane and tail)", "Tobiano (White/dark ginger cow-patterned coat; White mane and tail)" };
             //Source: https://www.google.com/search?q=draft+horse+breeds
             //https://equineworld.co.uk/about-horses/horse-colours-and-markings/horse-coat-colours-and-patterns
-            appearances[CreatureConstants.Horse_Heavy_War] = new[] { "Belgian Draught", "Shire horse", "Clydesdale horse", "Percheron", "Suffolk Punch",
+            appearances[CreatureConstants.Horse_Heavy_War][Rarity.Common] = new[] { "Belgian Draught", "Shire horse", "Clydesdale horse", "Percheron", "Suffolk Punch",
                 "American Cream Draft", "Ardennais", "Haflinger", "Irish Draught", "Dutch Draft", "Friesian horse", "Fjord horse", "Russian Heavy Draft",
                 "Boulonnais horse", "Galineers Cob", "Australian Draught", "North Swedish Horse", "Noriker", "American Belgian Draft", "Breton horse", "Jutland",
                 "Comtois horse", "Vladimir Heavy Draft", "Rhenish German Coldblood", "Auxois", "Cleveland Bay", "Lithuanian heavy draft",
@@ -2335,7 +2365,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Tobiano (White/golden cow-patterned coat; White mane and tail)", "Tobiano (White/dark ginger cow-patterned coat; White mane and tail)" };
             //Source: https://www.google.com/search?q=horse+breeds
             //https://equineworld.co.uk/about-horses/horse-colours-and-markings/horse-coat-colours-and-patterns
-            appearances[CreatureConstants.Horse_Light_War] = new[] { "Arabian", "Friesian", "Mustang", "Thoroughbread", "Appaloosa", "American Quarter Horse",
+            appearances[CreatureConstants.Horse_Light_War][Rarity.Common] = new[] { "Arabian", "Friesian", "Mustang", "Thoroughbread", "Appaloosa", "American Quarter Horse",
                 "Dutch Warmblood", "American Paint Horse", "Akhal-Teke", "Turkoman horse", "Mangalarga Marchador", "Percheron", "Criollo",
                 "Rahvan", "Kandachime", "Morgan horse", "Icelandic horse", "Cob", "Hanoverian", "Andalusian", "Lipizzan", "Lusitano", "Standardbred", "Falabella",
                 "Pure Spanish Breed", "Mongolian", "Trakehner", "Knabstupper", "Konik", "Ferghana", "Marwari", "American Saddlebred", "Missouri Fox Trotter",
@@ -2499,7 +2529,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allEyes: new[] { "Yellow eyes", "White eyes", "Green eyes" },
                 allOther: new[] { "Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs." });
             //Source: https://www.d20srd.org/srd/monsters/invisibleStalker.htm
-            appearances[CreatureConstants.InvisibleStalker] = new[] { "Amorphous form. See Invisibility reveals a dim outline of a cloud. True Seeing reveals a roiling cloud of vapor" };
+            appearances[CreatureConstants.InvisibleStalker][Rarity.Common] = new[] { "Amorphous form. See Invisibility reveals a dim outline of a cloud. True Seeing reveals a roiling cloud of vapor" };
             //Source: https://forgottenrealms.fandom.com/wiki/Janni
             appearances[CreatureConstants.Janni] = GetWeightedAppearances(
                 allSkin: new[] { "Skin the color of golden sand", "Earth-colored skin" },
@@ -2513,7 +2543,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allOther: new[] { "Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail",
                     "Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail" });
             //Source: https://forgottenrealms.fandom.com/wiki/Kolyarut
-            appearances[CreatureConstants.Kolyarut] = new[] { "Red skin. Golden-hued banded-mail armor. Flowing red robe.",
+            appearances[CreatureConstants.Kolyarut][Rarity.Common] = new[] { "Red skin. Golden-hued banded-mail armor. Flowing red robe.",
                 "Black skin. Golden-hued banded-mail armor. Flowing red robe." };
             //Source: https://forgottenrealms.fandom.com/wiki/Kraken
             appearances[CreatureConstants.Kraken] = GetWeightedAppearances(
@@ -2548,7 +2578,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allEyes: new[] { "TODO HUMAN eyes" },
                 allOther: new[] { "Human from the waist-up, lion from the waist-down, pair of wings on the back" });
             //Source: https://forgottenrealms.fandom.com/wiki/Lantern_archon
-            appearances[CreatureConstants.LanternArchon] = new[] { "Sphere of soft, glowing light" };
+            appearances[CreatureConstants.LanternArchon][Rarity.Common] = new[] { "Sphere of soft, glowing light" };
             //Source: https://forgottenrealms.fandom.com/wiki/Lemure
             appearances[CreatureConstants.Lemure] = GetWeightedAppearances(
                 allSkin: new[] { "Orange skin", "Pink skin" },
@@ -2559,7 +2589,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allHair: new[] { "TODO LION fur" },
                 allEyes: new[] { "TODO HUMAN eyes", "TODO LION eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Leopard
-            appearances[CreatureConstants.Leopard] = new[] { "Yellow fur with rosette-shaped spots" };
+            appearances[CreatureConstants.Leopard][Rarity.Common] = new[] { "Yellow fur with rosette-shaped spots" };
             //Source: https://forgottenrealms.fandom.com/wiki/Lillend
             appearances[CreatureConstants.Lillend] = GetWeightedAppearances(
                 allSkin: new[] { "TODO HUMAN skin",
@@ -2615,11 +2645,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allEyes: new[] { "All-black eyes", "All-white eyes" },
                 allOther: new[] { "slender, large fins on arms and legs. Toothless mouth" });
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
-            appearances[CreatureConstants.Locust_Swarm] = new[] { "5,000 locusts" };
+            appearances[CreatureConstants.Locust_Swarm][Rarity.Common] = new[] { "5,000 locusts" };
             //Source: https://forgottenrealms.fandom.com/wiki/Magmin
-            appearances[CreatureConstants.Magmin] = new[] { "Seemingly sculpted from hardened magma. Small bursts of flame constantly erupt from its skin" };
+            appearances[CreatureConstants.Magmin][Rarity.Common] = new[] { "Seemingly sculpted from hardened magma. Small bursts of flame constantly erupt from its skin" };
             //Source: https://www.scubalibre-adventures.com/giant-manta-ray-vs-reef-manta/
-            appearances[CreatureConstants.MantaRay] = new[] { "Black top with white underbelly" };
+            appearances[CreatureConstants.MantaRay][Rarity.Common] = new[] { "Black top with white underbelly" };
             //Source: https://forgottenrealms.fandom.com/wiki/Manticore
             appearances[CreatureConstants.Manticore] = GetWeightedAppearances(
                 allSkin: new[] { "TODO HUMAN skin", "TODO DRAGON wings" },
@@ -2633,7 +2663,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allEyes: new[] { "TODO HUMAN eyes" },
                 allOther: new[] { "Top half is human, bottom half is a serpent" });
             //Source: https://forgottenrealms.fandom.com/wiki/Marut
-            appearances[CreatureConstants.Marut] = new[] { "Resembles a massive statue made entirely of onyx, humanoid in form but composed of mechanical components. Clad in golden armor." };
+            appearances[CreatureConstants.Marut][Rarity.Common] = new[] { "Resembles a massive statue made entirely of onyx, humanoid in form but composed of mechanical components. Clad in golden armor." };
             //Source: https://www.d20srd.org/srd/monsters/medusa.htm
             appearances[CreatureConstants.Medusa] = GetWeightedAppearances(
                 allSkin: new[] { "Pale gray, scaly skin", "Earthy-brown, scaly skin", "Pale-green, scaly skin" },
@@ -2804,7 +2834,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers, covered in tattoos" });
             //Source: https://www.d20srd.org/srd/monsters/mimic.htm
             //https://forgottenrealms.fandom.com/wiki/Mimic
-            appearances[CreatureConstants.Mimic] = new[] { "Shaped like a door", "Shaped like a treasure chest, closed and locked", "Shaped like a rug",
+            appearances[CreatureConstants.Mimic][Rarity.Common] = new[] { "Shaped like a door", "Shaped like a treasure chest, closed and locked", "Shaped like a rug",
                 "Shaped like a bookshelf filled with books", "Shaped like a treasure chest, cracked open and glistening with gold",
                 "Shaped like a bed", "Shaped like a wooden chair", "Shaped like a table", "Shaped like a trap door in the floor", "Shaped like a raised stone platform",
                 "Shaped like a stone pedestal with a glass orb on top", "Shaped like an altar", "Shaped like a barrel filled with gold",
@@ -2835,11 +2865,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Hooves on legs, yellow horns, cow-like tail", "Hooves on legs, yellow-brown horns, cow-like tail", "Hooves on legs, black horns, cow-like tail",
                     "Hooves on legs, dark brown horns, cow-like tail", "Hooves on legs, white horns, cow-like tail", "Hooves on legs, beige horns, cow-like tail" });
             //Source: https://forgottenrealms.fandom.com/wiki/Mohrg
-            appearances[CreatureConstants.Mohrg] = new[] { "Skeletal corpse filled with writhing organs" };
+            appearances[CreatureConstants.Mohrg][Rarity.Common] = new[] { "Skeletal corpse filled with writhing organs" };
             //Source: https://www.d20srd.org/srd/monsters/monkey.htm
             //https://www.google.com/search?q=colobus+monkey+species
             //https://www.google.com/search?q=capuchin+monkey+species
-            appearances[CreatureConstants.Monkey] = new[] { "Tufted capuchin", "Panamanian white-faced capuchin", "Black-and-white colobus", "Black colobus",
+            appearances[CreatureConstants.Monkey][Rarity.Common] = new[] { "Tufted capuchin", "Panamanian white-faced capuchin", "Black-and-white colobus", "Black colobus",
                 "Mantled guereza", "Red colobus", "Colombian white-faced capuchin", "White-fronted capuchin", "Black capuchin", "Wedge-capped capuchin",
                 "Golden-bellied capuchin", "Kaapori capuchin", "Blond capuchin", "Crested capuchin", "Black-striped capuchin", "Marañón white-fronted capuchin",
                 "Azara's capuchin", "Varied white-fronted capuchin", "Spix's white-fronted capuchin", "Santa Marta white-fronted capuchin", "Killikaike", "Acrecebus" };
@@ -2898,7 +2928,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allEyes: new[] { "Pale green eyes", "Bright amber eyes" },
                 allOther: new[] { "Fiery red and orange spines" });
             //Source: https://forgottenrealms.fandom.com/wiki/Nalfeshnee
-            appearances[CreatureConstants.Nalfeshnee] = new[] { "Corpulent, combining the most abysmal features of a boar and ape into a bipedal monstrosity. Small, feathered wings." };
+            appearances[CreatureConstants.Nalfeshnee][Rarity.Common] = new[] { "Corpulent, combining the most abysmal features of a boar and ape into a bipedal monstrosity. Small, feathered wings." };
             //Source: https://forgottenrealms.fandom.com/wiki/Night_hag
             appearances[CreatureConstants.NightHag] = GetWeightedAppearances(
                 allSkin: new[] { "Blue-violet skin", "Light blue-violet skin", "Dark blue-violet skin", "Blue-black skin", "Purple-black skin" },
@@ -2922,9 +2952,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allEyes: new[] { "Glowing red eyes", "Dark eyes illuminated with flames" },
                 allOther: new[] { "Viper fangs" });
             //Source: https://forgottenrealms.fandom.com/wiki/Nightwalker
-            appearances[CreatureConstants.Nightwalker] = new[] { "Body looks as if it is made of shadow-stuff, with a vaguely humanoid form. Smooth and hairless." };
+            appearances[CreatureConstants.Nightwalker][Rarity.Common] = new[] { "Body looks as if it is made of shadow-stuff, with a vaguely humanoid form. Smooth and hairless." };
             //Source: https://forgottenrealms.fandom.com/wiki/Nightwing
-            appearances[CreatureConstants.Nightwing] = new[] { "Bat-shaped darkness" };
+            appearances[CreatureConstants.Nightwing][Rarity.Common] = new[] { "Bat-shaped darkness" };
             //Source: https://forgottenrealms.fandom.com/wiki/Nixie
             appearances[CreatureConstants.Nixie] = GetWeightedAppearances(
                 allSkin: new[] { "Pale green skin" },
@@ -2988,9 +3018,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //https://www.allaboutbirds.org/guide/Great_Horned_Owl/species-compare/
             //https://carnivora.net/great-horned-owl-v-powerful-owl-t7257.html
             //https://www.allaboutbirds.org/guide/Long-eared_Owl/species-compare/
-            appearances[CreatureConstants.Owl] = new[] { "Barn Owl", "Great Horned Owl", "Snowy Owl", "Barred Owl", "Great Gray Owl", "Long-Eared Owl", "Powerful Owl" };
+            appearances[CreatureConstants.Owl][Rarity.Common] = new[] { "Barn Owl", "Great Horned Owl", "Snowy Owl", "Barred Owl", "Great Gray Owl", "Long-Eared Owl", "Powerful Owl" };
             //Source: https://www.d20srd.org/srd/monsters/owlGiant.htm 
-            appearances[CreatureConstants.Owl_Giant] = new[] { "Resembles a Barn Owl", "Resembles a Great Horned Owl", "Resembles a Snowy Owl", "Resembles a Barred Owl",
+            appearances[CreatureConstants.Owl_Giant][Rarity.Common] = new[] { "Resembles a Barn Owl", "Resembles a Great Horned Owl", "Resembles a Snowy Owl", "Resembles a Barred Owl",
                 "Resembles a Great Gray Owl", "Resembles a Long-Eared Owl", "Resembles a Powerful Owl" };
             //Source: https://forgottenrealms.fandom.com/wiki/Owlbear
             appearances[CreatureConstants.Owlbear] = GetWeightedAppearances(
@@ -3012,7 +3042,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allSkin: new[] { "Dark green/white skin", "Green/white skin", "Blue-green/white skin" },
                 allOther: new[] { "Spindly-legged spider" });
             //Source: https://forgottenrealms.fandom.com/wiki/Phasm
-            appearances[CreatureConstants.Phasm] = new[] { "In its true form, resembles an amorphous, colorful ooze. However, they were natural shapechangers that could take the form of almost any creature or object." };
+            appearances[CreatureConstants.Phasm][Rarity.Common] = new[] { "In its true form, resembles an amorphous, colorful ooze. However, they were natural shapechangers that could take the form of almost any creature or object." };
             //Source: https://forgottenrealms.fandom.com/wiki/Pit_fiend
             appearances[CreatureConstants.PitFiend] = GetWeightedAppearances(
                 allSkin: new[] { "Red scales" },
@@ -3029,12 +3059,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allEyes: new[] { "TODO HIGH ELF eyes" },
                 allOther: new[] { "Silvery, moth-like wings" });
             //Source: https://www.google.com/search?q=breeds+of+pony
-            appearances[CreatureConstants.Pony] = new[] { "Shetland Pony", "Connemara Pony", "Pony of the Americas", "New Forest Pony", "Dartmoor Pony", "Exmoor Pony",
+            appearances[CreatureConstants.Pony][Rarity.Common] = new[] { "Shetland Pony", "Connemara Pony", "Pony of the Americas", "New Forest Pony", "Dartmoor Pony", "Exmoor Pony",
                 "Fell Pony", "Asturcon", "Burmese Pony" };
-            appearances[CreatureConstants.Pony_War] = new[] { "Shetland Pony", "Connemara Pony", "Pony of the Americas", "New Forest Pony", "Dartmoor Pony", "Exmoor Pony",
+            appearances[CreatureConstants.Pony_War][Rarity.Common] = new[] { "Shetland Pony", "Connemara Pony", "Pony of the Americas", "New Forest Pony", "Dartmoor Pony", "Exmoor Pony",
                 "Fell Pony", "Asturcon", "Burmese Pony" };
             //Source: https://www.google.com/search?q=species+of+porpoise
-            appearances[CreatureConstants.Porpoise] = new[] { "Harbour porpoise", "Vaquita", "Dall's porpoise", "Spectacles porpoise", "Burmeister's porpoise",
+            appearances[CreatureConstants.Porpoise][Rarity.Common] = new[] { "Harbour porpoise", "Vaquita", "Dall's porpoise", "Spectacles porpoise", "Burmeister's porpoise",
                 "Indo-Pacific finless porpoise", "Narrow-ridged finless porpoise" };
             //Source: https://forgottenrealms.fandom.com/wiki/Giant_praying_mantis
             appearances[CreatureConstants.PrayingMantis_Giant] = GetWeightedAppearances(
@@ -3084,7 +3114,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonOther: new[] { "Reversed hands, tiger head" },
                 uncommonOther: new[] { "Reversed hands, ape head", "Reversed hands, crocodile head", "Reversed hands, mantis head" });
             //Source: https://dungeonsdragons.fandom.com/wiki/Rast
-            appearances[CreatureConstants.Rast] = new[]
+            appearances[CreatureConstants.Rast][Rarity.Common] = new[]
             {
                 "Central body about the size of a large dog, with 10 spindly spider's legs coming out of it. Each of these legs is tipped with a claw. The head is almost exactly the same size as the central body, and resembles a cross between a snake, a vulture and a goblin (some would say it is almost monkey-like). The central body and legs of the Rast are brown, while the head and claws are rust red.",
                 "Central body about the size of a large dog, with 11 spindly spider's legs coming out of it. Each of these legs is tipped with a claw. The head is almost exactly the same size as the central body, and resembles a cross between a snake, a vulture and a goblin (some would say it is almost monkey-like). The central body and legs of the Rast are brown, while the head and claws are rust red.",
@@ -3094,7 +3124,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "Central body about the size of a large dog, with 15 spindly spider's legs coming out of it. Each of these legs is tipped with a claw. The head is almost exactly the same size as the central body, and resembles a cross between a snake, a vulture and a goblin (some would say it is almost monkey-like). The central body and legs of the Rast are brown, while the head and claws are rust red.",
             };
             //Source: https://rockypointrattery.com/rat-colors-%26-markings
-            appearances[CreatureConstants.Rat] = new[] { "Standard coat: short, smooth, and glossy black fur",
+            appearances[CreatureConstants.Rat][Rarity.Common] = new[] { "Standard coat: short, smooth, and glossy black fur",
                 "Rex coat: evenly curled black fur, slightly curled white belly", "Rex coat: evenly curled black fur, slightly curled white belly, curled whiskers",
                 "Double rex coat: Very short curly white coat", "Double rex coat: peach fuzz white fur", "Double rex coat: mostly hairless, white fur",
                 "Silvermane coat: Soft, silvered fur",
@@ -3142,22 +3172,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "Dalmation: white fur with numerous ragged black splotches",
             };
             //Source: https://forgottenrealms.fandom.com/wiki/Giant_rat
-            appearances[CreatureConstants.Rat_Dire] = new[] { "Coarse brown-black fur" };
+            appearances[CreatureConstants.Rat_Dire][Rarity.Common] = new[] { "Coarse brown-black fur" };
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
-            appearances[CreatureConstants.Rat_Swarm] = new[] { "300 rats" };
+            appearances[CreatureConstants.Rat_Swarm][Rarity.Common] = new[] { "300 rats" };
             //Source: https://forgottenrealms.fandom.com/wiki/Raven
-            appearances[CreatureConstants.Raven] = new[] { "Glossy black feathers" };
+            appearances[CreatureConstants.Raven][Rarity.Common] = new[] { "Glossy black feathers" };
             //Source: https://eberron.fandom.com/wiki/Ravid
-            appearances[CreatureConstants.Ravid] = new[] { "Long and serpentine, floating above the ground. One single claw juts out of its body just beneath its head. Pale white, scaley skin." };
+            appearances[CreatureConstants.Ravid][Rarity.Common] = new[] { "Long and serpentine, floating above the ground. One single claw juts out of its body just beneath its head. Pale white, scaley skin." };
             //Source: https://www.d20srd.org/srd/monsters/razorBoar.htm 
-            appearances[CreatureConstants.RazorBoar] = new[] { "Black-bristled hide marked by hundreds of old scars. Its eyes are wild and bloodshot, and its tusks are more than three feet long, gleaming like polished ivory and sharper than many swords." };
+            appearances[CreatureConstants.RazorBoar][Rarity.Common] = new[] { "Black-bristled hide marked by hundreds of old scars. Its eyes are wild and bloodshot, and its tusks are more than three feet long, gleaming like polished ivory and sharper than many swords." };
             //Source: https://forgottenrealms.fandom.com/wiki/Remorhaz
             appearances[CreatureConstants.Remorhaz] = GetWeightedAppearances(
                 allSkin: new[] { "Ice-blue scales" },
                 allEyes: new[] { "White eyes" },
                 allOther: new[] { "Tough leathery wings, insect-like head, dozens of legs, back glows red, horns along its body, dagger-like teeth" });
             //Source: https://forgottenrealms.fandom.com/wiki/Retriever
-            appearances[CreatureConstants.Retriever] = new[] { "Resembles a giant spider with four forelegs ending in large cleaver-like blades, and four rear limbs for walking and carrying most of the weight. Two primary eyes and four smaller eyes that gleam malevolently as they peak out from the carapace." };
+            appearances[CreatureConstants.Retriever][Rarity.Common] = new[] { "Resembles a giant spider with four forelegs ending in large cleaver-like blades, and four rear limbs for walking and carrying most of the weight. Two primary eyes and four smaller eyes that gleam malevolently as they peak out from the carapace." };
             //Source: https://www.d20srd.org/srd/monsters/rhinoceros.htm
             //https://denverzoo.org/animals/black-rhinoceros/
             appearances[CreatureConstants.Rhinoceras] = GetWeightedAppearances(
@@ -3168,9 +3198,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonHair: new[] { "Dark brown feathers", "Golden feathers", "Golden-brown feathers", "Dark golden-brown feathers", "Dark golden feathers" },
                 rareHair: new[] { "Black feathers", "Red feathers", "White feathers" });
             //Source: https://forgottenrealms.fandom.com/wiki/Roper
-            appearances[CreatureConstants.Roper] = new[] { "Earthy brown skin, resembling a stalagmite" };
+            appearances[CreatureConstants.Roper][Rarity.Common] = new[] { "Earthy brown skin, resembling a stalagmite" };
             //Source: https://forgottenrealms.fandom.com/wiki/Rust_monster
-            appearances[CreatureConstants.RustMonster] = new[] { "Four insectlike legs and a squat, humped body. Thick, lumpy hide is yellowish-tan on the belly and rust-red on the back. Tail ends in what looks like a double-ended paddle. Two long antennae come out of its head, one under each eye" };
+            appearances[CreatureConstants.RustMonster][Rarity.Common] = new[] { "Four insectlike legs and a squat, humped body. Thick, lumpy hide is yellowish-tan on the belly and rust-red on the back. Tail ends in what looks like a double-ended paddle. Two long antennae come out of its head, one under each eye" };
             //Source: https://forgottenrealms.fandom.com/wiki/Sahuagin
             appearances[CreatureConstants.Sahuagin] = GetWeightedAppearances(
                 allSkin: new[] { "Green skin, darker on the back and lighter in the front", "Green skin, darker on the back and lighter in the front, with dark stripes",
@@ -3202,9 +3232,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allEyes: new[] { "Silvery-black eyes" },
                 allOther: new[] { "Webbed feet and hands; gills; finned tail; additional webbing down the back, on elbows, and where ears would be; four arms" });
             //Source: https://forgottenrealms.fandom.com/wiki/Salamander
-            appearances[CreatureConstants.Salamander_Flamebrother] = new[] { "Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. red fiery skin" };
-            appearances[CreatureConstants.Salamander_Average] = new[] { "Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. red fiery skin" };
-            appearances[CreatureConstants.Salamander_Noble] = new[] { "Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. red fiery skin" };
+            appearances[CreatureConstants.Salamander_Flamebrother][Rarity.Common] = new[] { "Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. red fiery skin" };
+            appearances[CreatureConstants.Salamander_Average][Rarity.Common] = new[] { "Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. red fiery skin" };
+            appearances[CreatureConstants.Salamander_Noble][Rarity.Common] = new[] { "Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. red fiery skin" };
             //Source: https://forgottenrealms.fandom.com/wiki/Satyr
             appearances[CreatureConstants.Satyr] = GetWeightedAppearances(
                 allSkin: new[] { "Tan skin", "Light brown skin", "Brown skin", "Lightly tan skin", "TODO GOAT fur" },
@@ -3276,48 +3306,48 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allEyes: new[] { "Piscine eyes, devoid of life, with deep black pupils surrounded by red" },
                 allOther: new[] { "Emaciated appearance, flesh was rife with warts and oozing cankers" });
             //Source: https://forgottenrealms.fandom.com/wiki/Shadow
-            appearances[CreatureConstants.Shadow] = new[] { "A sentient shadow" };
-            appearances[CreatureConstants.Shadow_Greater] = new[] { "A sentient shadow" };
+            appearances[CreatureConstants.Shadow][Rarity.Common] = new[] { "A sentient shadow" };
+            appearances[CreatureConstants.Shadow_Greater][Rarity.Common] = new[] { "A sentient shadow" };
             //Source: https://forgottenrealms.fandom.com/wiki/Shadow_mastiff
-            appearances[CreatureConstants.ShadowMastiff] = new[] { "Body of a large dog, head more humanoid in shape but monstrous, with mouth full of vicious teeth, coat is smooth and all black" };
+            appearances[CreatureConstants.ShadowMastiff][Rarity.Common] = new[] { "Body of a large dog, head more humanoid in shape but monstrous, with mouth full of vicious teeth, coat is smooth and all black" };
             //Source: https://forgottenrealms.fandom.com/wiki/Shambling_mound
-            appearances[CreatureConstants.ShamblingMound] = new[] { "Vaguely man-shaped mound of rotting vegetation" };
+            appearances[CreatureConstants.ShamblingMound][Rarity.Common] = new[] { "Vaguely man-shaped mound of rotting vegetation" };
             //Source: https://www.dimensions.com/element/blacktip-shark-carcharhinus-limbatus
             //https://www.enchantedlearning.com/subjects/sharks/anatomy/Size.shtml
-            appearances[CreatureConstants.Shark_Medium] = new[] { "Blacktip reef shark", "Mako shark", "Pacific Angelshark", "Whitetip reef shark" };
+            appearances[CreatureConstants.Shark_Medium][Rarity.Common] = new[] { "Blacktip reef shark", "Mako shark", "Pacific Angelshark", "Whitetip reef shark" };
             //Source: https://www.dimensions.com/element/thresher-shark
-            appearances[CreatureConstants.Shark_Large] = new[] { "Thresher shark", "Blue shark", "Bull shark", "Galapagos shark", "Goblin shark", "Lemon shark",
+            appearances[CreatureConstants.Shark_Large][Rarity.Common] = new[] { "Thresher shark", "Blue shark", "Bull shark", "Galapagos shark", "Goblin shark", "Lemon shark",
                 "Nurse shark", "Short-finned mako shark", "Tiger shark" };
             //Source: https://www.dimensions.com/element/great-white-shark
-            appearances[CreatureConstants.Shark_Huge] = new[] { "Great white shark", "Great Hammerhead shark" };
-            appearances[CreatureConstants.Shark_Dire] = new[] { "Megalodon" };
+            appearances[CreatureConstants.Shark_Huge][Rarity.Common] = new[] { "Great white shark", "Great Hammerhead shark" };
+            appearances[CreatureConstants.Shark_Dire][Rarity.Common] = new[] { "Megalodon" };
             //Source: https://forgottenrealms.fandom.com/wiki/Shield_guardian
-            appearances[CreatureConstants.ShieldGuardian] = new[] { "Like a large stick figure made of wood with rocky appendages and metal parts" };
+            appearances[CreatureConstants.ShieldGuardian][Rarity.Common] = new[] { "Like a large stick figure made of wood with rocky appendages and metal parts" };
             //Source: https://forgottenrealms.fandom.com/wiki/Shocker_lizard
-            appearances[CreatureConstants.ShockerLizard] = new[] { "Blue skin, with light blue belly" };
+            appearances[CreatureConstants.ShockerLizard][Rarity.Common] = new[] { "Blue skin, with light blue belly" };
             //Source: https://forgottenrealms.fandom.com/wiki/Shrieker
-            appearances[CreatureConstants.Shrieker] = new[] { "TODO VIOLET FUNGI, but did not have tentacles with which to poison prey" };
+            appearances[CreatureConstants.Shrieker][Rarity.Common] = new[] { "TODO VIOLET FUNGI, but did not have tentacles with which to poison prey" };
             //Source: https://forgottenrealms.fandom.com/wiki/Skum
-            appearances[CreatureConstants.Skum] = new[] { "Resembles horrific hybrid of human and fish. Spiny frill on the back, bulbous eyes, and a tail." };
+            appearances[CreatureConstants.Skum][Rarity.Common] = new[] { "Resembles horrific hybrid of human and fish. Spiny frill on the back, bulbous eyes, and a tail." };
             //Source: https://forgottenrealms.fandom.com/wiki/Blue_slaad
-            appearances[CreatureConstants.Slaad_Blue] = new[] { "Bipedal, roughly-humanoid toad with light, electric blue skin marked by grey streaks. Long snout. Two long, scimitar-like hooks of bone protruding from the back of both hands." };
+            appearances[CreatureConstants.Slaad_Blue][Rarity.Common] = new[] { "Bipedal, roughly-humanoid toad with light, electric blue skin marked by grey streaks. Long snout. Two long, scimitar-like hooks of bone protruding from the back of both hands." };
             //Source: https://forgottenrealms.fandom.com/wiki/Red_slaad
-            appearances[CreatureConstants.Slaad_Red] = new[] { "Bipedal, roughly-humanoid, almost neckless toad with huge, flat head. Skin is mostly dull red with specks of gray, lighter around the underside and darker along the back. Fingers and hands are strangely large and, like the feet, end in claws." };
+            appearances[CreatureConstants.Slaad_Red][Rarity.Common] = new[] { "Bipedal, roughly-humanoid, almost neckless toad with huge, flat head. Skin is mostly dull red with specks of gray, lighter around the underside and darker along the back. Fingers and hands are strangely large and, like the feet, end in claws." };
             //Source: https://forgottenrealms.fandom.com/wiki/Green_slaad
-            appearances[CreatureConstants.Slaad_Green] = new[] { "Bipedal, roughly-humanoid, gangly toad. Skin is mostly a pale, mottled green marked with grey streaks. High forehead, wide mouth, and long claws." };
+            appearances[CreatureConstants.Slaad_Green][Rarity.Common] = new[] { "Bipedal, roughly-humanoid, gangly toad. Skin is mostly a pale, mottled green marked with grey streaks. High forehead, wide mouth, and long claws." };
             //Source: https://forgottenrealms.fandom.com/wiki/Gray_slaad
-            appearances[CreatureConstants.Slaad_Gray] = new[] {
+            appearances[CreatureConstants.Slaad_Gray][Rarity.Common] = new[] {
                 "Frog-like humanoid. Long, clawed fingers. Gray skin is spotted.",
                 "Frog-like humanoid. Long, clawed fingers. Evenly light-gray skin.",
             };
             //Source: https://forgottenrealms.fandom.com/wiki/Death_slaad
-            appearances[CreatureConstants.Slaad_Death] = new[] {
+            appearances[CreatureConstants.Slaad_Death][Rarity.Common] = new[] {
                 "Frog-like humanoid. Long, clawed fingers. Gray skin is spotted.",
                 "Frog-like humanoid. Long, clawed fingers. Evenly light-gray skin.",
             };
             //Source: https://nationalzoo.si.edu/animals/green-tree-python
             //https://www.britannica.com/animal/boa-constrictor
-            appearances[CreatureConstants.Snake_Constrictor] = new[] { "Diamond shaped heads, irregular scales, vibrant green color",
+            appearances[CreatureConstants.Snake_Constrictor][Rarity.Common] = new[] { "Diamond shaped heads, irregular scales, vibrant green color",
                 "Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of triangles, ovals, and joined ovals, against a pale brown-and-gray background.",
                 "Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of triangles, ovals, and joined ovals, against a pale brown background.",
                 "Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of triangles, ovals, and joined ovals, against a pale gray background.",
@@ -3407,7 +3437,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //https://myfwc.com/wildlifehabitats/nonnatives/python/identification/
             //https://nationalzoo.si.edu/animals/green-anaconda
             //https://wwf.panda.org/discover/our_focus/wildlife_practice/profiles/reptiles/anaconda/
-            appearances[CreatureConstants.Snake_Constrictor_Giant] = new[] {
+            appearances[CreatureConstants.Snake_Constrictor_Giant][Rarity.Common] = new[] {
                 "Tan scales with dark blotches along the back and sides. Dark brown blotches are irregularly shaped, fitting together like a puzzle. Dark wedges on top of head, below head, and behind the eye ",
                 "Tan scales with dark blotches along the back and sides. Dark brown blotches are irregularly shaped, fitting together like a giraffe pattern. Dark wedges on top of head, below head, and behind the eye ",
                 "Olive-green scales with dark oval spots along the spine and similar spots with yellow centers along the sides. The scales on the belly are yellow and black. Two dark stripes stretch from the eyes angling toward the jaw.",
@@ -3498,7 +3528,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of joined ovals, against a silvery-gray background.", };
             //Source: https://www.dimensions.com/element/ribbon-snake-thamnophis-saurita
             //https://portal.ct.gov/-/media/DEEP/wildlife/pdf_files/outreach/fact_sheets/ribbonsnakepdf.pdf
-            appearances[CreatureConstants.Snake_Viper_Tiny] = new[] {
+            appearances[CreatureConstants.Snake_Viper_Tiny][Rarity.Common] = new[] {
                 "Ribbonsnake: Boldly patterned with three yellow stripes on a reddish-brown background. A distinct dark band separates each side stripe from the belly. One stripe is centered on the body, while the other 2 stripes run down scale rows 3 and 4.",
                 "Ribbonsnake: Boldly patterned with three yellow stripes on a dark reddish-brown background. A distinct dark band separates each side stripe from the belly. One stripe is centered on the body, while the other 2 stripes run down scale rows 3 and 4.",
                 "Ribbonsnake: Boldly patterned with three yellow stripes on a reddish-black background. A distinct dark band separates each side stripe from the belly. One stripe is centered on the body, while the other 2 stripes run down scale rows 3 and 4.",
@@ -3507,12 +3537,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             };
             //Source: https://www.dimensions.com/element/copperhead-agkistrodon-contortrix
             //https://www.chesapeakebay.net/discover/field-guide/entry/copperheads
-            appearances[CreatureConstants.Snake_Viper_Small] = new[] {
+            appearances[CreatureConstants.Snake_Viper_Small][Rarity.Common] = new[] {
                 "Copperhead: Broad, unmarked, copper-colored head and a reddish-tan colored body. Hourglass-shaped darker marks on its back. Underside is a pinkish color."
             };
             //Source: https://www.dimensions.com/element/western-diamondback-rattlesnake-crotalus-atrox 
             //https://www.desertmuseum.org/kids/oz/long-fact-sheets/Diamondback%20Rattlesnake.php
-            appearances[CreatureConstants.Snake_Viper_Medium] = new[] {
+            appearances[CreatureConstants.Snake_Viper_Medium][Rarity.Common] = new[] {
                 "Diamondback Rattlesnake: Triangular shaped head. Two dark diagonal lines on each side of its face run from the eyes to its jaws. Dark diamond-shaped pattern along its back. The tail has black and white bands just above the rattles."
             };
             //Source: https://www.dimensions.com/element/black-mamba-dendroaspis-polylepis 
@@ -3565,7 +3595,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             );
             //Source: https://www.dimensions.com/element/king-cobra-ophiophagus-hannah
             //https://nationalzoo.si.edu/animals/king-cobra
-            appearances[CreatureConstants.Snake_Viper_Huge] = new[]
+            appearances[CreatureConstants.Snake_Viper_Huge][Rarity.Common] = new[]
             {
                 "King Cobra: Yellow scales. The belly is uniform in color. The throat is light yellow.",
                 "King Cobra: Yellow scales. The belly is ornamented with bars. The throat is light yellow.",
@@ -3657,83 +3687,83 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "King Cobra: black scales with white chevrons. The belly is ornamented with bars. The throat is cream-colored.",
             };
             //Source: https://forgottenrealms.fandom.com/wiki/Specter
-            appearances[CreatureConstants.Spectre] = new[]
+            appearances[CreatureConstants.Spectre][Rarity.Common] = new[]
             {
                 "Humanoid, with a mostly transparent and faintly luminous form.",
                 "Humanoid, with a mostly transparent and faintly luminous form. The injuries that caused its violent death are visible.",
             };
             //Source: http://www.wlgf.org/hunting_spiders.html
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Tiny] = new[] { "Common house spider", "Brown recluse spider", "Southern black widow",
+            appearances[CreatureConstants.Spider_Monstrous_Hunter_Tiny][Rarity.Common] = new[] { "Common house spider", "Brown recluse spider", "Southern black widow",
                 "Hobo spider", "Forked pirate spider", "Black house spider", "Western black widow", "Black-footed yellow sac spider",
                 "Brown widow", "Woodlouse spider", "Redback spider", "False widow", "Giant house spider", "Rabid wolf spider", "Goliath birdeater", "Noble false widow",
                 "Bold jumper"
             };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Small
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Small] = new[] { "Common house spider", "Brown recluse spider", "Southern black widow",
+            appearances[CreatureConstants.Spider_Monstrous_Hunter_Small][Rarity.Common] = new[] { "Common house spider", "Brown recluse spider", "Southern black widow",
                 "Hobo spider", "Forked pirate spider", "Black house spider", "Western black widow", "Black-footed yellow sac spider",
                 "Brown widow", "Woodlouse spider", "Redback spider", "False widow", "Giant house spider", "Rabid wolf spider", "Goliath birdeater", "Noble false widow",
                 "Bold jumper"
             };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Medium
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Medium] = new[] { "Common house spider", "Brown recluse spider", "Southern black widow",
+            appearances[CreatureConstants.Spider_Monstrous_Hunter_Medium][Rarity.Common] = new[] { "Common house spider", "Brown recluse spider", "Southern black widow",
                 "Hobo spider", "Forked pirate spider", "Black house spider", "Western black widow", "Black-footed yellow sac spider",
                 "Brown widow", "Woodlouse spider", "Redback spider", "False widow", "Giant house spider", "Rabid wolf spider", "Goliath birdeater", "Noble false widow",
                 "Bold jumper"
             };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Large
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Large] = new[] { "Common house spider", "Brown recluse spider", "Southern black widow",
+            appearances[CreatureConstants.Spider_Monstrous_Hunter_Large][Rarity.Common] = new[] { "Common house spider", "Brown recluse spider", "Southern black widow",
                 "Hobo spider", "Forked pirate spider", "Black house spider", "Western black widow", "Black-footed yellow sac spider",
                 "Brown widow", "Woodlouse spider", "Redback spider", "False widow", "Giant house spider", "Rabid wolf spider", "Goliath birdeater", "Noble false widow",
                 "Bold jumper"
             };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Huge
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Huge] = new[] { "Common house spider", "Brown recluse spider", "Southern black widow",
+            appearances[CreatureConstants.Spider_Monstrous_Hunter_Huge][Rarity.Common] = new[] { "Common house spider", "Brown recluse spider", "Southern black widow",
                 "Hobo spider", "Forked pirate spider", "Black house spider", "Western black widow", "Black-footed yellow sac spider",
                 "Brown widow", "Woodlouse spider", "Redback spider", "False widow", "Giant house spider", "Rabid wolf spider", "Goliath birdeater", "Noble false widow",
                 "Bold jumper"
             };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Gargantuan
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Gargantuan] = new[] { "Common house spider", "Brown recluse spider", "Southern black widow",
+            appearances[CreatureConstants.Spider_Monstrous_Hunter_Gargantuan][Rarity.Common] = new[] { "Common house spider", "Brown recluse spider", "Southern black widow",
                 "Hobo spider", "Forked pirate spider", "Black house spider", "Western black widow", "Black-footed yellow sac spider",
                 "Brown widow", "Woodlouse spider", "Redback spider", "False widow", "Giant house spider", "Rabid wolf spider", "Goliath birdeater", "Noble false widow",
                 "Bold jumper"
             };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Colossal
-            appearances[CreatureConstants.Spider_Monstrous_Hunter_Colossal] = new[] { "Common house spider", "Brown recluse spider", "Southern black widow",
+            appearances[CreatureConstants.Spider_Monstrous_Hunter_Colossal][Rarity.Common] = new[] { "Common house spider", "Brown recluse spider", "Southern black widow",
                 "Hobo spider", "Forked pirate spider", "Black house spider", "Western black widow", "Black-footed yellow sac spider",
                 "Brown widow", "Woodlouse spider", "Redback spider", "False widow", "Giant house spider", "Rabid wolf spider", "Goliath birdeater", "Noble false widow",
                 "Bold jumper"
             };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Tiny
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Tiny] = new[] { "European garden spider", "Yellow garden spider", "Golden silk orb-weaver",
+            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Tiny][Rarity.Common] = new[] { "European garden spider", "Yellow garden spider", "Golden silk orb-weaver",
                 "Sydney funnel-web spider", "Filmy dome spider", "Diving bell spider", "Wheel spider", "Wasp spider", "Barn spider", "Cat-faced spider" };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Small
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Small] = new[] { "European garden spider", "Yellow garden spider", "Golden silk orb-weaver",
+            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Small][Rarity.Common] = new[] { "European garden spider", "Yellow garden spider", "Golden silk orb-weaver",
                 "Sydney funnel-web spider", "Filmy dome spider", "Diving bell spider", "Wheel spider", "Wasp spider", "Barn spider", "Cat-faced spider" };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Medium
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Medium] = new[] { "European garden spider", "Yellow garden spider", "Golden silk orb-weaver",
+            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Medium][Rarity.Common] = new[] { "European garden spider", "Yellow garden spider", "Golden silk orb-weaver",
                 "Sydney funnel-web spider", "Filmy dome spider", "Diving bell spider", "Wheel spider", "Wasp spider", "Barn spider", "Cat-faced spider" };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Large
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Large] = new[] { "European garden spider", "Yellow garden spider", "Golden silk orb-weaver",
+            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Large][Rarity.Common] = new[] { "European garden spider", "Yellow garden spider", "Golden silk orb-weaver",
                 "Sydney funnel-web spider", "Filmy dome spider", "Diving bell spider", "Wheel spider", "Wasp spider", "Barn spider", "Cat-faced spider" };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Huge
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Huge] = new[] { "European garden spider", "Yellow garden spider", "Golden silk orb-weaver",
+            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Huge][Rarity.Common] = new[] { "European garden spider", "Yellow garden spider", "Golden silk orb-weaver",
                 "Sydney funnel-web spider", "Filmy dome spider", "Diving bell spider", "Wheel spider", "Wasp spider", "Barn spider", "Cat-faced spider" };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Gargantuan
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan] = new[] { "European garden spider", "Yellow garden spider", "Golden silk orb-weaver",
+            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Gargantuan][Rarity.Common] = new[] { "European garden spider", "Yellow garden spider", "Golden silk orb-weaver",
                 "Sydney funnel-web spider", "Filmy dome spider", "Diving bell spider", "Wheel spider", "Wasp spider", "Barn spider", "Cat-faced spider" };
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Spider,_Colossal
-            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Colossal] = new[] { "European garden spider", "Yellow garden spider", "Golden silk orb-weaver",
+            appearances[CreatureConstants.Spider_Monstrous_WebSpinner_Colossal][Rarity.Common] = new[] { "European garden spider", "Yellow garden spider", "Golden silk orb-weaver",
                 "Sydney funnel-web spider", "Filmy dome spider", "Diving bell spider", "Wheel spider", "Wasp spider", "Barn spider", "Cat-faced spider" };
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
-            appearances[CreatureConstants.Spider_Swarm] = new[] { "1,500 spiders" };
+            appearances[CreatureConstants.Spider_Swarm][Rarity.Common] = new[] { "1,500 spiders" };
             //Source: https://www.d20srd.org/srd/monsters/spiderEater.htm
-            appearances[CreatureConstants.SpiderEater] = new[] { "Resembles a wasp the size of a horse, but with the head of a spider and two long appendages ending in pincers." };
+            appearances[CreatureConstants.SpiderEater][Rarity.Common] = new[] { "Resembles a wasp the size of a horse, but with the head of a spider and two long appendages ending in pincers." };
             //Source: https://www.google.com/search?q=squid+species
-            appearances[CreatureConstants.Squid] = new[] { "Humboldt squid", "European squid", "Japanese flying squid", "Caribbean reef squid", "Bigfin reef squid",
+            appearances[CreatureConstants.Squid][Rarity.Common] = new[] { "Humboldt squid", "European squid", "Japanese flying squid", "Caribbean reef squid", "Bigfin reef squid",
                 "Vampire squid", "Longfin inshore squid", "Neon flying squid", "Robust clubhook squid", "Angel clubhook squid", "European flying squid"
             };
-            appearances[CreatureConstants.Squid_Giant] = new[] { "Colossal squid" };
+            appearances[CreatureConstants.Squid_Giant][Rarity.Common] = new[] { "Colossal squid" };
             //Source: https://www.uky.edu/Ag/CritterFiles/casefile/insects/beetles/hercules/hercules.htm
             appearances[CreatureConstants.StagBeetle_Giant] = GetWeightedAppearances(
                 commonSkin: new[] { "Green exoskeleton mottled with black spots", "Gray exoskeleton mottled with black spots",
@@ -3741,7 +3771,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 rareSkin: new[] { "Green exoskeleton", "Gray exoskeleton", "Tan exoskeleton" }
             );
             //Source: https://forgottenrealms.fandom.com/wiki/Stirge
-            appearances[CreatureConstants.Stirge] = new[] {
+            appearances[CreatureConstants.Stirge][Rarity.Common] = new[] {
                 "Resembles a monstrous cross between a large bat and an oversized mosquito. Short and furry body in shades of rusty red. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.",
                 "Resembles a monstrous cross between a large bat and an oversized mosquito. Short and furry body in shades of reddish brown. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.",
                 "Resembles a monstrous cross between a large bat and an oversized mosquito. Short body covered in feathers in shades of rusty red. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.",
@@ -3783,11 +3813,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 }
             );
             //Source: https://forgottenrealms.fandom.com/wiki/Tarrasque
-            appearances[CreatureConstants.Tarrasque] = new[] { "Two long horns extend from its forehead; thick carapace; mighty tail; many spikes cover its large body; wide, toothy maw. Two small eyes." };
+            appearances[CreatureConstants.Tarrasque][Rarity.Common] = new[] { "Two long horns extend from its forehead; thick carapace; mighty tail; many spikes cover its large body; wide, toothy maw. Two small eyes." };
             //Source: https://forgottenrealms.fandom.com/wiki/Tendriculos
-            appearances[CreatureConstants.Tendriculos] = new[] { "Mound of vegetation, supported by various branches and vines. Large opening filled with sharp branches and horns, acting sort of like teeth." };
+            appearances[CreatureConstants.Tendriculos][Rarity.Common] = new[] { "Mound of vegetation, supported by various branches and vines. Large opening filled with sharp branches and horns, acting sort of like teeth." };
             //Source: https://forgottenrealms.fandom.com/wiki/Thoqqua
-            appearances[CreatureConstants.Thoqqua] = new[] { "Worm-like, made of earth and fire. brown and red skin. Glowing, molten-hot beak." };
+            appearances[CreatureConstants.Thoqqua][Rarity.Common] = new[] { "Worm-like, made of earth and fire. brown and red skin. Glowing, molten-hot beak." };
             //Source: https://forgottenrealms.fandom.com/wiki/Tiefling
             appearances[CreatureConstants.Tiefling] = GetWeightedAppearances(
                 commonSkin: new[] { "TODO HUMAN skin" },
@@ -3844,11 +3874,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 }
             );
             //Source: https://nationalzoo.si.edu/animals/tiger
-            appearances[CreatureConstants.Tiger] = new[] { "Reddish-orange coat with prominent black stripes, white bellies and white spots on the ears." };
+            appearances[CreatureConstants.Tiger][Rarity.Common] = new[] { "Reddish-orange coat with prominent black stripes, white bellies and white spots on the ears." };
             //https://forgottenrealms.fandom.com/wiki/Dire_tiger
-            appearances[CreatureConstants.Tiger_Dire] = new[] { "Reddish-orange coat with prominent black stripes, white bellies and white spots on the ears, pair of huge fangs jutting from powerful jaws" };
+            appearances[CreatureConstants.Tiger_Dire][Rarity.Common] = new[] { "Reddish-orange coat with prominent black stripes, white bellies and white spots on the ears, pair of huge fangs jutting from powerful jaws" };
             //Source: https://forgottenrealms.fandom.com/wiki/Titan
-            appearances[CreatureConstants.Titan] = new[] { "TODO HUMAN all appearances" };
+            appearances[CreatureConstants.Titan][Rarity.Common] = new[] { "TODO HUMAN all appearances" };
             //Source: https://www.woodlandtrust.org.uk/trees-woods-and-wildlife/animals/reptiles-and-amphibians/common-toad/
             appearances[CreatureConstants.Toad] = GetWeightedAppearances(
                 commonSkin: new[] { "Olive brown, dry, warty skin", "Green, dry, warty skin", "Dark brown, dry, warty skin", "Gray, dry, warty skin" },
@@ -3858,11 +3888,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             );
             //Source: https://forgottenrealms.fandom.com/wiki/Tojanida
             //https://www.d20pfsrd.com/bestiary/monster-listings/outsiders/tojanida/
-            appearances[CreatureConstants.Tojanida_Juvenile] = new[] { "Resemble a cross between a monstrous crab and an enormous snapping turtles. Light green shell, sea-green skin" };
-            appearances[CreatureConstants.Tojanida_Adult] = new[] { "Resemble a cross between a monstrous crab and an enormous snapping turtles. Light green shell, sea-green skin" };
-            appearances[CreatureConstants.Tojanida_Elder] = new[] { "Resemble a cross between a monstrous crab and an enormous snapping turtles. Light green shell, sea-green skin" };
+            appearances[CreatureConstants.Tojanida_Juvenile][Rarity.Common] = new[] { "Resemble a cross between a monstrous crab and an enormous snapping turtles. Light green shell, sea-green skin" };
+            appearances[CreatureConstants.Tojanida_Adult][Rarity.Common] = new[] { "Resemble a cross between a monstrous crab and an enormous snapping turtles. Light green shell, sea-green skin" };
+            appearances[CreatureConstants.Tojanida_Elder][Rarity.Common] = new[] { "Resemble a cross between a monstrous crab and an enormous snapping turtles. Light green shell, sea-green skin" };
             //Source: https://www.d20srd.org/srd/monsters/treant.htm
-            appearances[CreatureConstants.Treant] = new[] { "Face-like features on their bark, a division between the trunk that forms legs, and long branches that serve as arms; brown bark-like skin" };
+            appearances[CreatureConstants.Treant][Rarity.Common] = new[] { "Face-like features on their bark, a division between the trunk that forms legs, and long branches that serve as arms; brown bark-like skin" };
             //Source: https://jurassicworld-evolution.fandom.com/wiki/Triceratops
             appearances[CreatureConstants.Triceratops] = GetWeightedAppearances(
                 commonSkin: new[] { "Dark beige skin", "Pale gray skin with slightly-darker stripes across the back",
@@ -3950,12 +3980,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allSkin: new[] { "Deep purple coloration", "Dull gray coloration", "Violet coloration and covered in purple spots" },
                 allOther: new[] { "Mass of root-like feelers, four leafy tendrils" });
             //Source: https://forgottenrealms.fandom.com/wiki/Vrock
-            appearances[CreatureConstants.Vrock] = new[] { "A cross between a vulture and a human. Twisted and gnarled with a long neck and limbs covered in sinew. Covered in small gray feathers. Stinks of offal and carrion. Long talons and vulture head." };
+            appearances[CreatureConstants.Vrock][Rarity.Common] = new[] { "A cross between a vulture and a human. Twisted and gnarled with a long neck and limbs covered in sinew. Covered in small gray feathers. Stinks of offal and carrion. Long talons and vulture head." };
             //Source: https://activepestcontrol.com/pest-info/bees-and-hornets/red-paper-wasp/
             //https://forgottenrealms.fandom.com/wiki/Giant_wasp 
-            appearances[CreatureConstants.Wasp_Giant] = new[] { "Dull tan body with yellow stripes", "Pinched waist, nearly black wings, red coloring, yellow face" };
+            appearances[CreatureConstants.Wasp_Giant][Rarity.Common] = new[] { "Dull tan body with yellow stripes", "Pinched waist, nearly black wings, red coloring, yellow face" };
             //Source: https://www.woodlandtrust.org.uk/trees-woods-and-wildlife/animals/mammals/weasel/
-            appearances[CreatureConstants.Weasel] = new[] { "Chestnut-brown fur with white-cream underparts and a long, slim body that ends in a short tail." };
+            appearances[CreatureConstants.Weasel][Rarity.Common] = new[] { "Chestnut-brown fur with white-cream underparts and a long, slim body that ends in a short tail." };
             //https://forgottenrealms.fandom.com/wiki/Giant_weasel
             appearances[CreatureConstants.Weasel_Dire] = GetWeightedAppearances(
                 commonHair: new[] { "Chestnut-brown fur with white-cream underparts" },
@@ -3979,7 +4009,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonSkin: new[] { "Sperm Whale: Dark grey skin" },
                 uncommonSkin: new[] { "Sperm Whale: Dark grey skin with white patches on the belly" });
             //Source: https://www.fisheries.noaa.gov/species/killer-whale
-            appearances[CreatureConstants.Whale_Orca] = new[] {
+            appearances[CreatureConstants.Whale_Orca][Rarity.Common] = new[] {
                 "Mostly black on top with white underside and white patches near the eyes. Gray saddle patch behind the dorsal fin.",
                 "Mostly black on top with white underside and white patches near the eyes. White saddle patch behind the dorsal fin.",
             };
@@ -4046,15 +4076,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 uncommonHair: new[] { "Gray, particularly-glossy fur", "Black, particularly-glossy fur" },
                 allOther: new[] { "High body, long legs, broad skull tapering to a narrow muzzle, bushy tail" });
             //Source: https://forgottenrealms.fandom.com/wiki/Wraith
-            appearances[CreatureConstants.Wraith] = new[] { "A sinister, spectral figure robed in darkness, no visual features or appendages, except for their glowing red eyes" };
-            appearances[CreatureConstants.Wraith_Dread] = new[] { "A sinister, spectral figure robed in darkness, no visual features or appendages, except for their glowing red eyes" };
+            appearances[CreatureConstants.Wraith][Rarity.Common] = new[] { "A sinister, spectral figure robed in darkness, no visual features or appendages, except for their glowing red eyes" };
+            appearances[CreatureConstants.Wraith_Dread][Rarity.Common] = new[] { "A sinister, spectral figure robed in darkness, no visual features or appendages, except for their glowing red eyes" };
             //Source: https://forgottenrealms.fandom.com/wiki/Wyvern
             appearances[CreatureConstants.Wyvern] = GetWeightedAppearances(
                 allSkin: new[] { "Dark brown scales", "Gray scales", "Dark gray scales", "Gray-brown scales" },
                 allEyes: new[] { "Orange eyes", "Red eyes" },
                 allOther: new[] { "Jaw filled with long, sharp teeth" });
             //Source: https://forgottenrealms.fandom.com/wiki/Xill
-            appearances[CreatureConstants.Xill] = new[] { "Vaguely reptilian with flame-red, leathery skin and solid black eyes. Roughly humanoid body with four clawed arms." };
+            appearances[CreatureConstants.Xill][Rarity.Common] = new[] { "Vaguely reptilian with flame-red, leathery skin and solid black eyes. Roughly humanoid body with four clawed arms." };
             //Source: https://forgottenrealms.fandom.com/wiki/Xorn
             appearances[CreatureConstants.Xorn_Minor] = GetWeightedAppearances(
                 commonSkin: new[] { "Brown stonelike skin", "Brown pebbly, rocky skin", "Gray stonelike skin", "Gray pebbly, rocky skin" },
@@ -4121,7 +4151,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allOther: ["Resembles massive snake with scale-covered humanoid arms, wedge-shaped head, fangs, forked tongue"]
             );
             //Source: https://forgottenrealms.fandom.com/wiki/Zelekhut
-            appearances[CreatureConstants.Zelekhut] = [
+            appearances[CreatureConstants.Zelekhut][Rarity.Common] = [
                 "Looks like a mechanical centaur, with skin as white as alabaster and clad in golden plate armor. A pair of golden metallic wings unfold from its back when needed.",
                 "Looks like a clockwork centaur, with skin as white as alabaster and clad in golden plate armor. A pair of golden metallic wings unfold from its back when needed.",
             ];
@@ -4129,15 +4159,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return appearances;
         }
 
-        private enum Rarity
-        {
-            Common,
-            Uncommon,
-            Rare,
-            VeryRare
-        }
-
-        private IEnumerable<string> GetWeightedAppearances(
+        private Dictionary<Rarity, IEnumerable<string>> GetWeightedAppearances(
             IEnumerable<string> allSkin = null, IEnumerable<string> commonSkin = null, IEnumerable<string> uncommonSkin = null, IEnumerable<string> rareSkin = null,
             IEnumerable<string> allHair = null, IEnumerable<string> commonHair = null, IEnumerable<string> uncommonHair = null, IEnumerable<string> rareHair = null,
             IEnumerable<string> allEyes = null, IEnumerable<string> commonEyes = null, IEnumerable<string> uncommonEyes = null, IEnumerable<string> rareEyes = null,
@@ -4149,12 +4171,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 .SelectMany(a => Build(allOther, commonOther, uncommonOther, rareOther, a))
                 .Where(a => !string.IsNullOrEmpty(a.Appearance));
 
-            var commonAppearances = appearances.Where(a => a.Rarity == Rarity.Common).Select(a => a.Appearance);
-            var uncommonAppearances = appearances.Where(a => a.Rarity == Rarity.Uncommon).Select(a => a.Appearance);
-            var rareAppearances = appearances.Where(a => a.Rarity == Rarity.Rare).Select(a => a.Appearance);
-            var veryRareAppearances = appearances.Where(a => a.Rarity == Rarity.VeryRare).Select(a => a.Appearance);
+            var weightedAppearances = new Dictionary<Rarity, IEnumerable<string>>
+            {
+                [Rarity.Common] = appearances.Where(a => a.Rarity == Rarity.Common).Select(a => a.Appearance),
+                [Rarity.Uncommon] = appearances.Where(a => a.Rarity == Rarity.Uncommon).Select(a => a.Appearance),
+                [Rarity.Rare] = appearances.Where(a => a.Rarity == Rarity.Rare).Select(a => a.Appearance),
+                [Rarity.VeryRare] = appearances.Where(a => a.Rarity == Rarity.VeryRare).Select(a => a.Appearance)
+            };
 
-            return collectionSelector.CreateWeighted(commonAppearances, uncommonAppearances, rareAppearances, veryRareAppearances);
+            return weightedAppearances;
         }
 
         private IEnumerable<(string Appearance, Rarity Rarity)> Build(
@@ -4166,12 +4191,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     (GetAppearancePrototype(prototype.Appearance, a),
                     GetRarity(prototype.Rarity, Rarity.Common)));
 
-            common ??= new[] { string.Empty };
-            uncommon ??= new[] { string.Empty };
-            rare ??= new[] { string.Empty };
+            common ??= [string.Empty];
+            uncommon ??= [string.Empty];
+            rare ??= [string.Empty];
 
             if (common.Concat(uncommon).Concat(rare).Any(a => !string.IsNullOrEmpty(a)) == false)
-                return new[] { prototype };
+                return [prototype];
 
             //Whether it is specified or not, common should always be here (even if empty)
             var builtCommon = common.Select(a =>

@@ -53,7 +53,7 @@ namespace DnDGen.CreatureGen.Generators.Feats
 
         private string SelectRandomAndIncludeSkills(IEnumerable<string> foci, IEnumerable<Skill> skills)
         {
-            var skillFoci = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatFoci, GroupConstants.Skills);
+            var skillFoci = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.FeatFoci, GroupConstants.Skills);
             var applicableSkillFoci = skillFoci.Intersect(foci);
 
             if (applicableSkillFoci.Any())
@@ -70,7 +70,7 @@ namespace DnDGen.CreatureGen.Generators.Feats
 
         public bool FocusTypeIsPreset(string focusType)
         {
-            var isCollection = collectionsSelector.IsCollection(TableNameConstants.Collection.FeatFoci, focusType);
+            var isCollection = collectionsSelector.IsCollection(Config.Name, TableNameConstants.Collection.FeatFoci, focusType);
             return !string.IsNullOrEmpty(focusType)
                 && focusType != GroupConstants.All
                 && !isCollection;
@@ -80,11 +80,11 @@ namespace DnDGen.CreatureGen.Generators.Feats
         {
             if (focusType != GroupConstants.All)
             {
-                var foci = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatFoci, focusType);
+                var foci = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.FeatFoci, focusType);
                 return foci;
             }
 
-            var featFoci = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatFoci, feat);
+            var featFoci = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.FeatFoci, feat);
 
             if (feat != FeatConstants.WeaponProficiency_Martial && feat != FeatConstants.WeaponProficiency_Exotic)
                 return featFoci;
@@ -154,7 +154,7 @@ namespace DnDGen.CreatureGen.Generators.Feats
         //INFO: Automatic Proficiencies include things such as Unarmed Strike, Grapple, and Ray
         private IEnumerable<string> GetProficiencies(string focusType, IEnumerable<Feat> otherFeats, RequiredFeatSelection weaponProficiencyRequirement, IEnumerable<Attack> attacks)
         {
-            var proficiencyFeatNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency);
+            var proficiencyFeatNames = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.FeatGroups, GroupConstants.WeaponProficiency);
             var proficiencyFeats = otherFeats.Where(f => proficiencyFeatNames.Contains(f.Name));
             var proficiencyFoci = new List<string>();
 
@@ -174,8 +174,8 @@ namespace DnDGen.CreatureGen.Generators.Feats
                 }
             }
 
-            var foci = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatFoci, focusType);
-            var weaponFoci = collectionsSelector.SelectFrom(TableNameConstants.Collection.FeatFoci, FeatConstants.Foci.Weapon);
+            var foci = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.FeatFoci, focusType);
+            var weaponFoci = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.FeatFoci, FeatConstants.Foci.Weapon);
             var automaticFoci = foci.Except(weaponFoci);
 
             proficiencyFoci.AddRange(automaticFoci);

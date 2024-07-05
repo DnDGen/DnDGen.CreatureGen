@@ -908,7 +908,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Equipment
             }
 
             var creatureType = new CreatureType();
-            var types = collectionSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creature);
+            var types = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, creature);
 
             creatureType.Name = types.First();
             creatureType.SubTypes = types.Skip(1);

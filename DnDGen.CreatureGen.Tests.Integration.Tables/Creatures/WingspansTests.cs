@@ -45,7 +45,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         {
             Assert.That(wingspanRolls, Contains.Key(name));
 
-            var genders = collectionSelector.SelectFrom(TableNameConstants.Collection.Genders, name);
+            var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, name);
             Assert.That(wingspanRolls[name].Keys, Is.EquivalentTo(genders.Union(new[] { name })).And.Not.Empty, $"TEST DATA: {name}");
 
             foreach (var roll in wingspanRolls[name].Values)

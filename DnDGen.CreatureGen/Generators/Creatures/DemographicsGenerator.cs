@@ -35,7 +35,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         {
             var demographics = new Demographics();
 
-            demographics.Gender = collectionsSelector.SelectRandomFrom(TableNameConstants.Collection.Genders, creatureName);
+            demographics.Gender = collectionsSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, creatureName);
             demographics.Age = DetermineAge(creatureName);
             demographics.MaximumAge = DetermineMaximumAge(creatureName, demographics.Age);
 
@@ -65,9 +65,20 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             demographics.Weight.Description = dice.Describe(rawWeightRoll, (int)demographics.Weight.Value, weightDescriptions);
 
             demographics.Wingspan = GenerateWingspan(creatureName, demographics.Gender);
-            demographics.Appearance = collectionsSelector.SelectRandomFrom(TableNameConstants.Collection.Appearances, creatureName);
+            demographics.Appearance = GetRandomAppearance(creatureName);
 
             return demographics;
+        }
+
+        private string GetRandomAppearance(string creatureName)
+        {
+            var common = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Appearances, creatureName + Rarity.Common.ToString());
+            var uncommon = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Appearances, creatureName + Rarity.Uncommon.ToString());
+            var rare = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Appearances, creatureName + Rarity.Rare.ToString());
+            var veryRare = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Appearances, creatureName + Rarity.VeryRare.ToString());
+
+            var appearance = collectionsSelector.SelectRandomFrom(common, uncommon, rare, veryRare);
+            return appearance;
         }
 
         private Measurement DetermineAge(string creatureName)
@@ -108,7 +119,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             if (age.Value > maxAge.Value)
                 maxAge.Value = age.Value;
 
-            var descriptions = collectionsSelector.SelectFrom(TableNameConstants.Collection.MaxAgeDescriptions, creatureName);
+            var descriptions = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, creatureName);
             maxAge.Description = descriptions.Single();
 
             return maxAge;

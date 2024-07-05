@@ -20,7 +20,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
 
         public IEnumerable<TypeAndAmountSelection> Select(string tableName, string name)
         {
-            var collection = collectionSelector.SelectFrom(tableName, name);
+            var collection = collectionSelector.SelectFrom(Config.Name, tableName, name);
             var typesAndAmounts = collection.Select(Parse).ToArray(); //INFO: We want to execute this immediately, so random rolls are not re-iterated and re-rolled
 
             return typesAndAmounts;
@@ -40,7 +40,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
 
         public Dictionary<string, IEnumerable<TypeAndAmountSelection>> SelectAll(string tableName)
         {
-            var table = collectionSelector.SelectAllFrom(tableName);
+            var table = collectionSelector.SelectAllFrom(Config.Name, tableName);
             var typesAndAmounts = new Dictionary<string, IEnumerable<TypeAndAmountSelection>>();
 
             foreach (var kvp in table)
@@ -51,7 +51,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
 
         public TypeAndAmountSelection SelectOne(string tableName, string name)
         {
-            var collection = collectionSelector.SelectFrom(tableName, name);
+            var collection = collectionSelector.SelectFrom(Config.Name, tableName, name);
             var first = collection.First();
             var selection = Parse(first);
 

@@ -1,5 +1,4 @@
-﻿using DnDGen.Infrastructure.IoC;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables
 {
@@ -7,12 +6,5 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
     public abstract class TableTests : IntegrationTests
     {
         protected abstract string tableName { get; }
-
-        [OneTimeSetUp]
-        public void TableOneTimeSetup()
-        {
-            var infrastructureLoader = new InfrastructureModuleLoader();
-            infrastructureLoader.ReplaceAssemblyLoaderWith<CreatureGenAssemblyLoader>(kernel);
-        }
     }
 }

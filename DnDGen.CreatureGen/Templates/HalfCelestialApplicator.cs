@@ -177,7 +177,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            var appearance = collectionSelector.SelectRandomFrom(TableNameConstants.Collection.Appearances, CreatureConstants.Templates.HalfCelestial);
+            var appearance = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, CreatureConstants.Templates.HalfCelestial);
             creature.Demographics.Appearance += " " + appearance;
 
             var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.HalfCelestial);
@@ -388,12 +388,14 @@ namespace DnDGen.CreatureGen.Templates
 
             var languages = new List<string>(creature.Languages);
             var automaticLanguage = collectionSelector.SelectRandomFrom(
+                Config.Name,
                 TableNameConstants.Collection.LanguageGroups,
                 CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Automatic);
 
             languages.Add(automaticLanguage);
 
             var bonusLanguages = collectionSelector.SelectFrom(
+                Config.Name,
                 TableNameConstants.Collection.LanguageGroups,
                 CreatureConstants.Templates.HalfCelestial + LanguageConstants.Groups.Bonus);
             var quantity = Math.Min(1, creature.Abilities[AbilityConstants.Intelligence].Modifier);
@@ -524,8 +526,8 @@ namespace DnDGen.CreatureGen.Templates
 
             var allData = creatureDataSelector.SelectAll();
             var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
-            var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
-            var allAlignments = collectionSelector.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups);
+            var allTypes = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes);
+            var allAlignments = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups);
 
             if (!string.IsNullOrEmpty(filters?.ChallengeRating))
             {

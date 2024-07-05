@@ -179,7 +179,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             var creatures = new[] { creatureName, "other creature name", "wrong creature name" };
             var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
             mockCollectionSelector
-                .Setup(s => s.Explode(TableNameConstants.Collection.CreatureGroups, group))
+                .Setup(s => s.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, group))
                 .Returns(creatures);
 
             mockAlignmentGenerator.Setup(g => g.Generate(creatureName, templateNames, alignmentFilter)).Returns(alignment);
@@ -378,8 +378,8 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                     asCharacter))
                 .Returns(hitPoints);
 
-            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.CreatureTypes, creatureName)).Returns(types);
-            mockCollectionSelector.Setup(s => s.SelectFrom(TableNameConstants.Collection.AerialManeuverability, creatureName)).Returns(new[] { string.Empty });
+            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, creatureName)).Returns(types);
+            mockCollectionSelector.Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.AerialManeuverability, creatureName)).Returns(new[] { string.Empty });
             mockArmorClassGenerator
                 .Setup(g => g.GenerateWith(
                     abilities,

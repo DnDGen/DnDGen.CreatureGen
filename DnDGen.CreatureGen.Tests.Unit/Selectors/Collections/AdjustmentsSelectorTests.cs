@@ -24,16 +24,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
             adjustmentsSelector = new AdjustmentsSelector(mockCollectionsSelector.Object);
             collections = new Dictionary<string, IEnumerable<string>>();
 
-            mockCollectionsSelector.Setup(m => m.SelectAllFrom(TableName)).Returns(collections);
-            mockCollectionsSelector.Setup(s => s.SelectFrom(TableName, It.IsAny<string>()))
-                .Returns((string table, string name) => collections[name]);
+            mockCollectionsSelector.Setup(m => m.SelectAllFrom(Config.Name, TableName)).Returns(collections);
+            mockCollectionsSelector.Setup(s => s.SelectFrom(Config.Name, TableName, It.IsAny<string>()))
+                .Returns((string assembly, string table, string name) => collections[name]);
         }
 
         [Test]
         public void SelectAllAdjustments()
         {
-            collections["first"] = new[] { "9266" };
-            collections["second"] = new[] { "42" };
+            collections["first"] = ["9266"];
+            collections["second"] = ["42"];
 
             var adjustments = adjustmentsSelector.SelectAllFrom<int>(TableName);
             Assert.That(adjustments["first"], Is.EqualTo(9266));
@@ -43,7 +43,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Selectors.Collections
         [Test]
         public void SelectAllAdjustments_Double()
         {
-            collections["first"] = new[] { "92.66" };
+            collections["first"] = ["92.66"];
             collections["second"] = new[] { "4.2" };
 
             var adjustments = adjustmentsSelector.SelectAllFrom<double>(TableName);

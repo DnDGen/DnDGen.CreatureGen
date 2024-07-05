@@ -29,7 +29,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
                 measurement.Value = speedTypeAndAmount.Amount;
 
                 if (speedTypeAndAmount.Type == SpeedConstants.Fly)
-                    measurement.Description = collectionSelector.SelectFrom(TableNameConstants.Collection.AerialManeuverability, creatureName).Single();
+                    measurement.Description = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AerialManeuverability, creatureName).Single();
 
                 speeds[speedTypeAndAmount.Type] = measurement;
             }

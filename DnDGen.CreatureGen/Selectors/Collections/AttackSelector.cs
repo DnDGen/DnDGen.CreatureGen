@@ -29,7 +29,7 @@ namespace DnDGen.CreatureGen.Selectors.Collections
 
         public IEnumerable<AttackSelection> Select(string creatureName, string originalSize, string advancedSize)
         {
-            var attackData = collectionSelector.SelectFrom(TableNameConstants.Collection.AttackData, creatureName);
+            var attackData = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AttackData, creatureName);
             var selections = new List<AttackSelection>();
 
             foreach (var data in attackData)

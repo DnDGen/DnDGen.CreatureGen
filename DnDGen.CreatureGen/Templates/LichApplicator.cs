@@ -132,12 +132,12 @@ namespace DnDGen.CreatureGen.Templates
         {
             return new[] { CreatureConstants.Types.Undead }
                 .Union(subtypes)
-                .Union(new[] { CreatureConstants.Types.Subtypes.Augmented, creatureType });
+                .Union([CreatureConstants.Types.Subtypes.Augmented, creatureType]);
         }
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            var appearance = collectionSelector.SelectRandomFrom(TableNameConstants.Collection.Appearances, CreatureConstants.Templates.Lich);
+            var appearance = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, CreatureConstants.Templates.Lich);
             creature.Demographics.Appearance += " " + appearance;
 
             var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.Lich);
@@ -167,10 +167,11 @@ namespace DnDGen.CreatureGen.Templates
             }
 
             var automaticLanguage = collectionSelector.SelectRandomFrom(
+                Config.Name,
                 TableNameConstants.Collection.LanguageGroups,
                 CreatureConstants.Templates.Lich + LanguageConstants.Groups.Automatic);
 
-            creature.Languages = creature.Languages.Union(new[] { automaticLanguage });
+            creature.Languages = creature.Languages.Union([automaticLanguage]);
         }
 
         private void UpdateCreatureLevelAdjustment(Creature creature)
@@ -409,9 +410,9 @@ namespace DnDGen.CreatureGen.Templates
             var filteredBaseCreatures = sourceCreatures;
             var allData = creatureDataSelector.SelectAll();
             var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
-            var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
+            var allTypes = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes);
             var allSpellcasters = typeAndAmountSelector.SelectAll(TableNameConstants.TypeAndAmount.Casters);
-            var allAlignments = collectionSelector.SelectAllFrom(TableNameConstants.Collection.AlignmentGroups);
+            var allAlignments = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups);
 
             if (!string.IsNullOrEmpty(filters?.ChallengeRating))
             {

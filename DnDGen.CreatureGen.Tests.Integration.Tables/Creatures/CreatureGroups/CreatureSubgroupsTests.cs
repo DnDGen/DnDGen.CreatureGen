@@ -998,7 +998,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         public void All_Exploded_ContainsAllCreatures()
         {
             var creatures = CreatureConstants.GetAll();
-            var allCreatures = collectionSelector.Explode(tableName, GroupConstants.All);
+            var allCreatures = collectionSelector.Explode(Config.Name, tableName, GroupConstants.All);
 
             //HACK: The failure message for Is.Equivalent is truncated because of the size of the collection
             //So, we will alter the assertions
@@ -1012,7 +1012,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         public void Characters_Exploded_ContainsAllCharacterCreatures()
         {
             var characters = CreatureConstants.GetAllCharacters();
-            var allCharacters = collectionSelector.Explode(tableName, GroupConstants.Characters);
+            var allCharacters = collectionSelector.Explode(Config.Name, tableName, GroupConstants.Characters);
             Assert.That(allCharacters, Is.EquivalentTo(characters));
         }
 
@@ -1020,7 +1020,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         public void Templates_Exploded_ContainsAllTemplates()
         {
             var templates = CreatureConstants.Templates.GetAll().Except(new[] { CreatureConstants.Templates.None });
-            var allTemplates = collectionSelector.Explode(tableName, GroupConstants.Templates);
+            var allTemplates = collectionSelector.Explode(Config.Name, tableName, GroupConstants.Templates);
             Assert.That(allTemplates, Is.EquivalentTo(templates));
         }
     }

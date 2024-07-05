@@ -23,7 +23,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Magics
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void CreaturesWithoutCasterDoNotHaveDomains(string creature)
         {
-            var casterTable = collectionMapper.Map(TableNameConstants.TypeAndAmount.Casters);
+            var casterTable = collectionMapper.Map(Config.Name, TableNameConstants.TypeAndAmount.Casters);
 
             if (!casterTable[creature].Any())
                 Assert.That(table[creature], Is.Empty);

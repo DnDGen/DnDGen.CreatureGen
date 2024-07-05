@@ -38,7 +38,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void Generate_ReturnsDemographics()
         {
             mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Genders, "my creature"))
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
             var ageRolls = new List<TypeAndAmountSelection>();
@@ -61,7 +61,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(new[] { "This is how I die" });
 
             var heightRolls = new List<TypeAndAmountSelection>();
@@ -100,9 +100,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
-            mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my creature"))
-                .Returns("my random appearance");
+            SetupAppearance("my creature", "my random appearance");
 
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
@@ -138,7 +136,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void Generate_ReturnsDemographics_WithSingleAgeCategory()
         {
             mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Genders, "my creature"))
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
             var ageRolls = new List<TypeAndAmountSelection>();
@@ -158,7 +156,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(new[] { "This is how I die" });
 
             var heightRolls = new List<TypeAndAmountSelection>();
@@ -197,9 +195,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
-            mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my creature"))
-                .Returns("my random appearance");
+            SetupAppearance("my creature", "my random appearance");
 
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
@@ -237,7 +233,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void Generate_ReturnsDemographics_WithScatteredAgeCategories(int index)
         {
             mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Genders, "my creature"))
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
             var ageRolls = new List<TypeAndAmountSelection>();
@@ -258,7 +254,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(ageRolls[index]);
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(new[] { "This is how I die" });
 
             var heightRolls = new List<TypeAndAmountSelection>();
@@ -297,9 +293,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
-            mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my creature"))
-                .Returns("my random appearance");
+            SetupAppearance("my creature", "my random appearance");
 
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
@@ -338,7 +332,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void Generate_ReturnsDemographics_WithAgeCategory(int index)
         {
             mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Genders, "my creature"))
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
             var ageRolls = new List<TypeAndAmountSelection>();
@@ -361,7 +355,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(ageRolls[index]);
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(new[] { "This is how I die" });
 
             var heightRolls = new List<TypeAndAmountSelection>();
@@ -400,9 +394,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
-            mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my creature"))
-                .Returns("my random appearance");
+            SetupAppearance("my creature", "my random appearance");
 
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
@@ -434,11 +426,35 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(demographics.Appearance, Is.EqualTo("my random appearance"));
         }
 
+        private void SetupAppearance(string creature, string appearance)
+        {
+            var common = new[] { "common appearance", "other common appearance" };
+            var uncommon = new[] { "uncommon appearance", "other uncommon appearance" };
+            var rare = new[] { "rare appearance", "other rare appearance" };
+            var veryRare = new[] { "very rare appearance", "other very rare appearance" };
+
+            mockCollectionsSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.Appearances, creature + Rarity.Common.ToString()))
+                .Returns(common);
+            mockCollectionsSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.Appearances, creature + Rarity.Uncommon.ToString()))
+                .Returns(uncommon);
+            mockCollectionsSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.Appearances, creature + Rarity.Rare.ToString()))
+                .Returns(rare);
+            mockCollectionsSelector
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.Appearances, creature + Rarity.VeryRare.ToString()))
+                .Returns(veryRare);
+            mockCollectionsSelector
+                .Setup(s => s.SelectRandomFrom(common, uncommon, rare, veryRare))
+                .Returns(appearance);
+        }
+
         [Test]
         public void Generate_ReturnsDemographics_WhenAgeIsGreaterThanMaximumAge()
         {
             mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Genders, "my creature"))
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
             var ageRolls = new List<TypeAndAmountSelection>();
@@ -461,7 +477,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(new[] { "This is how I die" });
 
             var heightRolls = new List<TypeAndAmountSelection>();
@@ -500,9 +516,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
-            mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my creature"))
-                .Returns("my random appearance");
+            SetupAppearance("my creature", "my random appearance");
 
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
@@ -548,7 +562,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void Generate_ReturnsDemographics_WithHeightDescription(int roll, string description, int index)
         {
             mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Genders, "my creature"))
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
             var ageRolls = new List<TypeAndAmountSelection>();
@@ -571,7 +585,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(new[] { "This is how I die" });
 
             var heightRolls = new List<TypeAndAmountSelection>();
@@ -614,9 +628,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
-            mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my creature"))
-                .Returns("my random appearance");
+            SetupAppearance("my creature", "my random appearance");
 
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
@@ -662,7 +674,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void Generate_ReturnsDemographics_WithLengthDescription(int roll, string description, int index)
         {
             mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Genders, "my creature"))
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
             var ageRolls = new List<TypeAndAmountSelection>();
@@ -685,7 +697,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(new[] { "This is how I die" });
 
             var heightRolls = new List<TypeAndAmountSelection>();
@@ -728,9 +740,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
-            mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my creature"))
-                .Returns("my random appearance");
+            SetupAppearance("my creature", "my random appearance");
 
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
@@ -776,7 +786,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void Generate_ReturnsDemographics_WithWeightDescription(int roll, string description, int index)
         {
             mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Genders, "my creature"))
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
             var ageRolls = new List<TypeAndAmountSelection>();
@@ -799,7 +809,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(new[] { "This is how I die" });
 
             var heightRolls = new List<TypeAndAmountSelection>();
@@ -842,9 +852,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
-            mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my creature"))
-                .Returns("my random appearance");
+            SetupAppearance("my creature", "my random appearance");
 
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
@@ -880,7 +888,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void Generate_ReturnsDemographics_WithNoLength()
         {
             mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Genders, "my creature"))
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
             var ageRolls = new List<TypeAndAmountSelection>();
@@ -903,7 +911,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(new[] { "This is how I die" });
 
             var heightRolls = new List<TypeAndAmountSelection>();
@@ -942,9 +950,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
-            mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my creature"))
-                .Returns("my random appearance");
+            SetupAppearance("my creature", "my random appearance");
 
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
@@ -980,7 +986,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void Generate_ReturnsDemographics_WithNoHeight()
         {
             mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Genders, "my creature"))
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
             var ageRolls = new List<TypeAndAmountSelection>();
@@ -1003,7 +1009,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(new[] { "This is how I die" });
 
             var heightRolls = new List<TypeAndAmountSelection>();
@@ -1042,9 +1048,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
-            mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my creature"))
-                .Returns("my random appearance");
+            SetupAppearance("my creature", "my random appearance");
 
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
@@ -1080,7 +1084,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void Generate_ReturnsDemographics_UseLengthForWeightMultiplier()
         {
             mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Genders, "my creature"))
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
             var ageRolls = new List<TypeAndAmountSelection>();
@@ -1103,7 +1107,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(new[] { "This is how I die" });
 
             var heightRolls = new List<TypeAndAmountSelection>();
@@ -1142,9 +1146,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
-            mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my creature"))
-                .Returns("my random appearance");
+            SetupAppearance("my creature", "my random appearance");
 
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
@@ -1190,7 +1192,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void Generate_ReturnsDemographics_WithWingspanDescription(int roll, string description, int index)
         {
             mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Genders, "my creature"))
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
             var ageRolls = new List<TypeAndAmountSelection>();
@@ -1213,7 +1215,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(new[] { "This is how I die" });
 
             var heightRolls = new List<TypeAndAmountSelection>();
@@ -1256,9 +1258,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(d => d.Describe("raw 123+raw 345", 123 + roll, It.IsAny<string[]>()))
                 .Returns((string r, int v, string[] descriptions) => descriptions[index]);
 
-            mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my creature"))
-                .Returns("my random appearance");
+            SetupAppearance("my creature", "my random appearance");
 
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);
@@ -1294,7 +1294,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
         public void Generate_ReturnsDemographics_WithNoWingspan()
         {
             mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Genders, "my creature"))
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, "my creature"))
                 .Returns("my gender");
 
             var ageRolls = new List<TypeAndAmountSelection>();
@@ -1317,7 +1317,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Returns(ageRolls[0]);
 
             mockCollectionsSelector
-                .Setup(s => s.SelectFrom(TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
+                .Setup(s => s.SelectFrom(Config.Name, TableNameConstants.Collection.MaxAgeDescriptions, "my creature"))
                 .Returns(new[] { "This is how I die" });
 
             var heightRolls = new List<TypeAndAmountSelection>();
@@ -1356,9 +1356,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
                 .Setup(s => s.Select(TableNameConstants.TypeAndAmount.Wingspans, "my creature"))
                 .Returns(wingspanRolls);
 
-            mockCollectionsSelector
-                .Setup(s => s.SelectRandomFrom(TableNameConstants.Collection.Appearances, "my creature"))
-                .Returns("my random appearance");
+            SetupAppearance("my creature", "my random appearance");
 
             var demographics = generator.Generate("my creature");
             Assert.That(demographics, Is.Not.Null);

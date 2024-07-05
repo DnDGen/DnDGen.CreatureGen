@@ -60,7 +60,7 @@ namespace DnDGen.CreatureGen.Generators.Magics
             var spellNames = GetSpellNames(creature, caster, alignment, domains);
             var casterSpellLevels = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.SpellLevels, caster);
 
-            var divineCasters = collectionsSelector.SelectFrom(TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Divine);
+            var divineCasters = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CasterGroups, SpellConstants.Sources.Divine);
             if (divineCasters.Contains(caster))
                 return GetAllKnownSpells(caster, casterLevel, castingAbility, domains, casterSpellLevels, spellNames);
 
@@ -111,26 +111,26 @@ namespace DnDGen.CreatureGen.Generators.Magics
         {
             var spellNames = new List<string>();
 
-            var casterSpellNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.SpellGroups, caster);
+            var casterSpellNames = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, caster);
             spellNames.AddRange(casterSpellNames);
 
             var prohibited = new List<string>();
 
-            var creatureProhibited = collectionsSelector.SelectFrom(TableNameConstants.Collection.SpellGroups, $"{creature}:Prohibited");
+            var creatureProhibited = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, $"{creature}:Prohibited");
             prohibited.AddRange(creatureProhibited);
 
-            var prohibitedByGoodness = collectionsSelector.SelectFrom(TableNameConstants.Collection.SpellGroups, $"{alignment.Goodness}:Prohibited");
-            var prohibitedByLawfulness = collectionsSelector.SelectFrom(TableNameConstants.Collection.SpellGroups, $"{alignment.Lawfulness}:Prohibited");
+            var prohibitedByGoodness = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, $"{alignment.Goodness}:Prohibited");
+            var prohibitedByLawfulness = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, $"{alignment.Lawfulness}:Prohibited");
 
             prohibited.AddRange(prohibitedByGoodness);
             prohibited.AddRange(prohibitedByLawfulness);
 
             foreach (var domain in domains)
             {
-                var domainSpellNames = collectionsSelector.SelectFrom(TableNameConstants.Collection.SpellGroups, domain);
+                var domainSpellNames = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, domain);
                 spellNames.AddRange(domainSpellNames);
 
-                var prohibitedByDomain = collectionsSelector.SelectFrom(TableNameConstants.Collection.SpellGroups, $"{domain}:Prohibited");
+                var prohibitedByDomain = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, $"{domain}:Prohibited");
                 prohibited.AddRange(prohibitedByDomain);
             }
 
@@ -276,7 +276,7 @@ namespace DnDGen.CreatureGen.Generators.Magics
 
             foreach (var field in fields)
             {
-                var fieldSpells = collectionsSelector.SelectFrom(TableNameConstants.Collection.SpellGroups, field);
+                var fieldSpells = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, field);
                 fieldSpellNames.AddRange(fieldSpells);
             }
 
@@ -295,7 +295,7 @@ namespace DnDGen.CreatureGen.Generators.Magics
                     .Where(s => s.Amount == spellLevel)
                     .Select(s => s.Type);
 
-                var fieldSpells = collectionsSelector.SelectFrom(TableNameConstants.Collection.SpellGroups, field);
+                var fieldSpells = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.SpellGroups, field);
                 fieldSpells = fieldSpells.Intersect(spellNamesOfLevel);
 
                 fieldSpellNames.AddRange(fieldSpells);

@@ -19,7 +19,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
         {
             collectionMapper = GetNewInstanceOf<CollectionMapper>();
 
-            table = collectionMapper.Map(tableName);
+            table = collectionMapper.Map(Config.Name, tableName);
             indices = [];
         }
 

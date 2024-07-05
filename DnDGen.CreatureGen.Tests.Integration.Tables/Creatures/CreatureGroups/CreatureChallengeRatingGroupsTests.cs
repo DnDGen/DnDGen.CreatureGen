@@ -704,13 +704,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.CreatureGroups
         public void CreatureChallengeRatingGroupMatchesCreatureData(string creature)
         {
             var data = creatureDataSelector.SelectFor(creature);
-            var ofChallengeRating = collectionSelector.Explode(tableName, data.ChallengeRating);
+            var ofChallengeRating = collectionSelector.Explode(Config.Name, tableName, data.ChallengeRating);
             Assert.That(ofChallengeRating, Contains.Item(creature), $"Should be: {data.ChallengeRating}");
 
-            var challengeRatings = ChallengeRatingConstants.GetOrdered().Except(new[] { data.ChallengeRating });
+            var challengeRatings = ChallengeRatingConstants.GetOrdered().Except([data.ChallengeRating]);
             foreach (var challengeRating in challengeRatings)
             {
-                ofChallengeRating = collectionSelector.Explode(tableName, challengeRating);
+                ofChallengeRating = collectionSelector.Explode(Config.Name, tableName, challengeRating);
                 Assert.That(ofChallengeRating, Does.Not.Contain(creature), $"Should NOT be: {challengeRating}");
             }
         }

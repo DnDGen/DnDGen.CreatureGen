@@ -96,7 +96,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             }
 
             var group = asCharacter ? GroupConstants.Characters : GroupConstants.All;
-            var validCreatures = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, group);
+            var validCreatures = collectionsSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, group);
 
             if (filters?.CleanTemplates?.Any() != true)
             {
@@ -182,7 +182,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var compatibleCreatures = GetCreaturesOfTemplate(CreatureConstants.Templates.None, creatureGroup, asCharacter, filters);
             validCreatures.AddRange(compatibleCreatures);
 
-            var templates = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
+            var templates = collectionsSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
 
             //This will weight things in favor of non-templated creatures
             //INFO: Using this instead of the creature verifier, so that we can ensure compatiblity with the specified creature group
@@ -206,7 +206,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
             var randomCreature = collectionsSelector.SelectRandomFrom(validCreatures);
 
-            var templates = collectionsSelector.Explode(TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
+            var templates = collectionsSelector.Explode(Config.Name, TableNameConstants.Collection.CreatureGroups, GroupConstants.Templates);
             if (!templates.Contains(randomCreature))
                 return (randomCreature, CreatureConstants.Templates.None);
 
@@ -432,7 +432,7 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         private CreatureType GetCreatureType(string creatureName)
         {
             var creatureType = new CreatureType();
-            var types = collectionsSelector.SelectFrom(TableNameConstants.Collection.CreatureTypes, creatureName);
+            var types = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.CreatureTypes, creatureName);
 
             creatureType.Name = types.First();
             creatureType.SubTypes = types.Skip(1);

@@ -86,7 +86,7 @@ namespace DnDGen.CreatureGen.Templates
 
         public Creature ApplyTo(Creature creature, bool asCharacter, Filters filters = null)
         {
-            var dragonAlignments = collectionSelector.SelectFrom(TableNameConstants.Collection.AlignmentGroups, DragonSpecies + GroupConstants.Exploded);
+            var dragonAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, DragonSpecies + GroupConstants.Exploded);
             var compatibility = IsCompatible(creature.Type.AllTypes, dragonAlignments, creature.ChallengeRating, filters);
 
             if (!compatibility.Compatible)
@@ -162,7 +162,7 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            var appearance = collectionSelector.SelectRandomFrom(TableNameConstants.Collection.Appearances, DragonSpecies);
+            var appearance = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, DragonSpecies);
             creature.Demographics.Appearance += " " + appearance;
 
             var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, DragonSpecies);
@@ -225,12 +225,14 @@ namespace DnDGen.CreatureGen.Templates
 
             var languages = new List<string>(creature.Languages);
             var automaticLanguage = collectionSelector.SelectRandomFrom(
+                Config.Name,
                 TableNameConstants.Collection.LanguageGroups,
                 DragonSpecies + LanguageConstants.Groups.Automatic);
 
             languages.Add(automaticLanguage);
 
             var bonusLanguages = collectionSelector.SelectFrom(
+                Config.Name,
                 TableNameConstants.Collection.LanguageGroups,
                 DragonSpecies + LanguageConstants.Groups.Bonus);
             var quantity = Math.Min(1, creature.Abilities[AbilityConstants.Intelligence].Modifier);
@@ -450,7 +452,7 @@ namespace DnDGen.CreatureGen.Templates
 
         public async Task<Creature> ApplyToAsync(Creature creature, bool asCharacter, Filters filters = null)
         {
-            var dragonAlignments = collectionSelector.SelectFrom(TableNameConstants.Collection.AlignmentGroups, DragonSpecies + GroupConstants.Exploded);
+            var dragonAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, DragonSpecies + GroupConstants.Exploded);
             var compatibility = IsCompatible(creature.Type.AllTypes, dragonAlignments, creature.ChallengeRating, filters);
 
             if (!compatibility.Compatible)
@@ -556,8 +558,8 @@ namespace DnDGen.CreatureGen.Templates
             var filteredBaseCreatures = sourceCreatures;
             var allData = creatureDataSelector.SelectAll();
             var allHitDice = adjustmentSelector.SelectAllFrom<double>(TableNameConstants.Adjustments.HitDice);
-            var allTypes = collectionSelector.SelectAllFrom(TableNameConstants.Collection.CreatureTypes);
-            var dragonAlignments = collectionSelector.SelectFrom(TableNameConstants.Collection.AlignmentGroups, DragonSpecies + GroupConstants.Exploded);
+            var allTypes = collectionSelector.SelectAllFrom(Config.Name, TableNameConstants.Collection.CreatureTypes);
+            var dragonAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, DragonSpecies + GroupConstants.Exploded);
 
             if (!string.IsNullOrEmpty(filters?.ChallengeRating))
             {
@@ -688,7 +690,7 @@ namespace DnDGen.CreatureGen.Templates
             if (!compatibleCreatures.Any())
                 return Enumerable.Empty<CreaturePrototype>();
 
-            var dragonAlignments = collectionSelector.SelectFrom(TableNameConstants.Collection.AlignmentGroups, DragonSpecies + GroupConstants.Exploded);
+            var dragonAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, DragonSpecies + GroupConstants.Exploded);
             var prototypes = prototypeFactory.Build(compatibleCreatures, asCharacter);
             var updatedPrototypes = prototypes.Select(p => ApplyToPrototype(p, filters?.Alignment, dragonAlignments));
 
@@ -708,7 +710,7 @@ namespace DnDGen.CreatureGen.Templates
 
         public IEnumerable<CreaturePrototype> GetCompatiblePrototypes(IEnumerable<CreaturePrototype> sourceCreatures, bool asCharacter, Filters filters = null)
         {
-            var dragonAlignments = collectionSelector.SelectFrom(TableNameConstants.Collection.AlignmentGroups, DragonSpecies + GroupConstants.Exploded);
+            var dragonAlignments = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.AlignmentGroups, DragonSpecies + GroupConstants.Exploded);
             var compatiblePrototypes = sourceCreatures
                 .Where(p => IsCompatible(
                     p.Type.AllTypes,
