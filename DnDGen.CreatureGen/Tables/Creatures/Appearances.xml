@@ -450,7 +450,12 @@
 	</collection>
 	<collection>
 		<name>Animated Object, ColossalCommon</name>
-		<entry>Agender</entry>
+		<entry>Bath Tub</entry>
+		<entry>Candelabra</entry>
+		<entry>Candlestick</entry>
+		<entry>Cup</entry>
+		<entry>Plate</entry>
+		<entry>Tea Pot</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Flexible)Common</name>
@@ -481,23 +486,47 @@
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Two Legs)Common</name>
-		<entry>Agender</entry>
+		<entry>Half-Elf statue</entry>
+		<entry>Half-Orc statue</entry>
+		<entry>High Elf statue</entry>
+		<entry>Hill Dwarf statue</entry>
+		<entry>Human statue</entry>
+		<entry>Lightfoot Halfling statue</entry>
+		<entry>Rock Gnome statue</entry>
+		<entry>Suit of plate armor</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Two Legs, Wooden)Common</name>
-		<entry>Agender</entry>
+		<entry>Half-Elf wooden figurine</entry>
+		<entry>Half-Orc wooden figurine</entry>
+		<entry>High Elf wooden figurine</entry>
+		<entry>Hill Dwarf wooden figurine</entry>
+		<entry>Human wooden figurine</entry>
+		<entry>Lightfoot Halfling wooden figurine</entry>
+		<entry>Rock Gnome wooden figurine</entry>
+		<entry>Ladder</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Wheels, Wooden)Common</name>
-		<entry>Agender</entry>
+		<entry>Carriage</entry>
+		<entry>Cart</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Wooden)Common</name>
-		<entry>Agender</entry>
+		<entry>Barrel</entry>
+		<entry>Broom</entry>
+		<entry>Bucket</entry>
+		<entry>Clock</entry>
+		<entry>Feather Duster</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, GargantuanCommon</name>
-		<entry>Agender</entry>
+		<entry>Bath Tub</entry>
+		<entry>Candelabra</entry>
+		<entry>Candlestick</entry>
+		<entry>Cup</entry>
+		<entry>Plate</entry>
+		<entry>Tea Pot</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Flexible)Common</name>
@@ -528,23 +557,47 @@
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Two Legs)Common</name>
-		<entry>Agender</entry>
+		<entry>Half-Elf statue</entry>
+		<entry>Half-Orc statue</entry>
+		<entry>High Elf statue</entry>
+		<entry>Hill Dwarf statue</entry>
+		<entry>Human statue</entry>
+		<entry>Lightfoot Halfling statue</entry>
+		<entry>Rock Gnome statue</entry>
+		<entry>Suit of plate armor</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Two Legs, Wooden)Common</name>
-		<entry>Agender</entry>
+		<entry>Half-Elf wooden figurine</entry>
+		<entry>Half-Orc wooden figurine</entry>
+		<entry>High Elf wooden figurine</entry>
+		<entry>Hill Dwarf wooden figurine</entry>
+		<entry>Human wooden figurine</entry>
+		<entry>Lightfoot Halfling wooden figurine</entry>
+		<entry>Rock Gnome wooden figurine</entry>
+		<entry>Ladder</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Wheels, Wooden)Common</name>
-		<entry>Agender</entry>
+		<entry>Carriage</entry>
+		<entry>Cart</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Wooden)Common</name>
-		<entry>Agender</entry>
+		<entry>Barrel</entry>
+		<entry>Broom</entry>
+		<entry>Bucket</entry>
+		<entry>Clock</entry>
+		<entry>Feather Duster</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, HugeCommon</name>
-		<entry>Agender</entry>
+		<entry>Bath Tub</entry>
+		<entry>Candelabra</entry>
+		<entry>Candlestick</entry>
+		<entry>Cup</entry>
+		<entry>Plate</entry>
+		<entry>Tea Pot</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Flexible)Common</name>
@@ -575,23 +628,47 @@
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Two Legs)Common</name>
-		<entry>Agender</entry>
+		<entry>Half-Elf statue</entry>
+		<entry>Half-Orc statue</entry>
+		<entry>High Elf statue</entry>
+		<entry>Hill Dwarf statue</entry>
+		<entry>Human statue</entry>
+		<entry>Lightfoot Halfling statue</entry>
+		<entry>Rock Gnome statue</entry>
+		<entry>Suit of plate armor</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Two Legs, Wooden)Common</name>
-		<entry>Agender</entry>
+		<entry>Half-Elf wooden figurine</entry>
+		<entry>Half-Orc wooden figurine</entry>
+		<entry>High Elf wooden figurine</entry>
+		<entry>Hill Dwarf wooden figurine</entry>
+		<entry>Human wooden figurine</entry>
+		<entry>Lightfoot Halfling wooden figurine</entry>
+		<entry>Rock Gnome wooden figurine</entry>
+		<entry>Ladder</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Wheels, Wooden)Common</name>
-		<entry>Agender</entry>
+		<entry>Carriage</entry>
+		<entry>Cart</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Wooden)Common</name>
-		<entry>Agender</entry>
+		<entry>Barrel</entry>
+		<entry>Broom</entry>
+		<entry>Bucket</entry>
+		<entry>Clock</entry>
+		<entry>Feather Duster</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, LargeCommon</name>
-		<entry>Agender</entry>
+		<entry>Bath Tub</entry>
+		<entry>Candelabra</entry>
+		<entry>Candlestick</entry>
+		<entry>Cup</entry>
+		<entry>Plate</entry>
+		<entry>Tea Pot</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Flexible)Common</name>
@@ -622,23 +699,47 @@
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Two Legs)Common</name>
-		<entry>Agender</entry>
+		<entry>Half-Elf statue</entry>
+		<entry>Half-Orc statue</entry>
+		<entry>High Elf statue</entry>
+		<entry>Hill Dwarf statue</entry>
+		<entry>Human statue</entry>
+		<entry>Lightfoot Halfling statue</entry>
+		<entry>Rock Gnome statue</entry>
+		<entry>Suit of plate armor</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Two Legs, Wooden)Common</name>
-		<entry>Agender</entry>
+		<entry>Half-Elf wooden figurine</entry>
+		<entry>Half-Orc wooden figurine</entry>
+		<entry>High Elf wooden figurine</entry>
+		<entry>Hill Dwarf wooden figurine</entry>
+		<entry>Human wooden figurine</entry>
+		<entry>Lightfoot Halfling wooden figurine</entry>
+		<entry>Rock Gnome wooden figurine</entry>
+		<entry>Ladder</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Wheels, Wooden)Common</name>
-		<entry>Agender</entry>
+		<entry>Carriage</entry>
+		<entry>Cart</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Wooden)Common</name>
-		<entry>Agender</entry>
+		<entry>Barrel</entry>
+		<entry>Broom</entry>
+		<entry>Bucket</entry>
+		<entry>Clock</entry>
+		<entry>Feather Duster</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, MediumCommon</name>
-		<entry>Agender</entry>
+		<entry>Bath Tub</entry>
+		<entry>Candelabra</entry>
+		<entry>Candlestick</entry>
+		<entry>Cup</entry>
+		<entry>Plate</entry>
+		<entry>Tea Pot</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Flexible)Common</name>
@@ -669,23 +770,47 @@
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Two Legs)Common</name>
-		<entry>Agender</entry>
+		<entry>Half-Elf statue</entry>
+		<entry>Half-Orc statue</entry>
+		<entry>High Elf statue</entry>
+		<entry>Hill Dwarf statue</entry>
+		<entry>Human statue</entry>
+		<entry>Lightfoot Halfling statue</entry>
+		<entry>Rock Gnome statue</entry>
+		<entry>Suit of plate armor</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Two Legs, Wooden)Common</name>
-		<entry>Agender</entry>
+		<entry>Half-Elf wooden figurine</entry>
+		<entry>Half-Orc wooden figurine</entry>
+		<entry>High Elf wooden figurine</entry>
+		<entry>Hill Dwarf wooden figurine</entry>
+		<entry>Human wooden figurine</entry>
+		<entry>Lightfoot Halfling wooden figurine</entry>
+		<entry>Rock Gnome wooden figurine</entry>
+		<entry>Ladder</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Wheels, Wooden)Common</name>
-		<entry>Agender</entry>
+		<entry>Carriage</entry>
+		<entry>Cart</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Wooden)Common</name>
-		<entry>Agender</entry>
+		<entry>Barrel</entry>
+		<entry>Broom</entry>
+		<entry>Bucket</entry>
+		<entry>Clock</entry>
+		<entry>Feather Duster</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, SmallCommon</name>
-		<entry>Agender</entry>
+		<entry>Bath Tub</entry>
+		<entry>Candelabra</entry>
+		<entry>Candlestick</entry>
+		<entry>Cup</entry>
+		<entry>Plate</entry>
+		<entry>Tea Pot</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Flexible)Common</name>
@@ -716,23 +841,47 @@
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Two Legs)Common</name>
-		<entry>Agender</entry>
+		<entry>Half-Elf statue</entry>
+		<entry>Half-Orc statue</entry>
+		<entry>High Elf statue</entry>
+		<entry>Hill Dwarf statue</entry>
+		<entry>Human statue</entry>
+		<entry>Lightfoot Halfling statue</entry>
+		<entry>Rock Gnome statue</entry>
+		<entry>Suit of plate armor</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Two Legs, Wooden)Common</name>
-		<entry>Agender</entry>
+		<entry>Half-Elf wooden figurine</entry>
+		<entry>Half-Orc wooden figurine</entry>
+		<entry>High Elf wooden figurine</entry>
+		<entry>Hill Dwarf wooden figurine</entry>
+		<entry>Human wooden figurine</entry>
+		<entry>Lightfoot Halfling wooden figurine</entry>
+		<entry>Rock Gnome wooden figurine</entry>
+		<entry>Ladder</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Wheels, Wooden)Common</name>
-		<entry>Agender</entry>
+		<entry>Carriage</entry>
+		<entry>Cart</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Wooden)Common</name>
-		<entry>Agender</entry>
+		<entry>Barrel</entry>
+		<entry>Broom</entry>
+		<entry>Bucket</entry>
+		<entry>Clock</entry>
+		<entry>Feather Duster</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, TinyCommon</name>
-		<entry>Agender</entry>
+		<entry>Bath Tub</entry>
+		<entry>Candelabra</entry>
+		<entry>Candlestick</entry>
+		<entry>Cup</entry>
+		<entry>Plate</entry>
+		<entry>Tea Pot</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Flexible)Common</name>
@@ -763,33 +912,55 @@
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Two Legs)Common</name>
-		<entry>Agender</entry>
+		<entry>Half-Elf statue</entry>
+		<entry>Half-Orc statue</entry>
+		<entry>High Elf statue</entry>
+		<entry>Hill Dwarf statue</entry>
+		<entry>Human statue</entry>
+		<entry>Lightfoot Halfling statue</entry>
+		<entry>Rock Gnome statue</entry>
+		<entry>Suit of plate armor</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Two Legs, Wooden)Common</name>
-		<entry>Agender</entry>
+		<entry>Half-Elf wooden figurine</entry>
+		<entry>Half-Orc wooden figurine</entry>
+		<entry>High Elf wooden figurine</entry>
+		<entry>Hill Dwarf wooden figurine</entry>
+		<entry>Human wooden figurine</entry>
+		<entry>Lightfoot Halfling wooden figurine</entry>
+		<entry>Rock Gnome wooden figurine</entry>
+		<entry>Ladder</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Wheels, Wooden)Common</name>
-		<entry>Agender</entry>
+		<entry>Carriage</entry>
+		<entry>Cart</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Wooden)Common</name>
-		<entry>Agender</entry>
+		<entry>Barrel</entry>
+		<entry>Broom</entry>
+		<entry>Bucket</entry>
+		<entry>Clock</entry>
+		<entry>Feather Duster</entry>
 	</collection>
 	<collection>
 		<name>AnkhegCommon</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
+		<entry>Brown skin; Black eyes</entry>
+		<entry>Green skin; Black eyes</entry>
+		<entry>Yellow skin; Black eyes</entry>
 	</collection>
 	<collection>
 		<name>AnnisCommon</name>
-		<entry>Female</entry>
+		<entry>Blue-black skin, as if deeply bruised, covered in scars and blemishes; Black hair; Dull, greenish-yellow eyes; Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized, black nails</entry>
+		<entry>Blue-black skin, as if deeply bruised, covered in scars and blemishes; Black hair; Dull, greenish-yellow eyes; Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized, rust-colored nails</entry>
+		<entry>Blue-black skin, as if deeply bruised, covered in scars and blemishes; Black hair; Dull, greenish-yellow eyes; Lean with long, lanky limbs. Long, spiraling, stylized, black nails</entry>
+		<entry>Blue-black skin, as if deeply bruised, covered in scars and blemishes; Black hair; Dull, greenish-yellow eyes; Lean with long, lanky limbs. Long, spiraling, stylized, rust-colored nails</entry>
 	</collection>
 	<collection>
 		<name>ApeCommon</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
+		<entry>Jet-black fur</entry>
 	</collection>
 	<collection>
 		<name>Dire ApeCommon</name>
@@ -803,12 +974,11 @@
 	</collection>
 	<collection>
 		<name>Assassin VineCommon</name>
-		<entry>Agender</entry>
+		<entry>Smaller vines extend from the main branch and bear clusters of grape-like berries. Stringy bark. Hand-shaped leaves</entry>
 	</collection>
 	<collection>
 		<name>AthachCommon</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
+		<entry>Extra arm growing out of chest. Large, curved tusks on either side of a wide mouth. Relatively small eyes and nose for the size of the head. One ear significantly bigger than the other. Quite strong stench.</entry>
 	</collection>
 	<collection>
 		<name>AvoralCommon</name>
@@ -1975,8 +2145,16 @@
 	</collection>
 	<collection>
 		<name>Aquatic ElfCommon</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
+		<entry>Blue skin with white stripes and patches; Thick, somewhat-stringy black hair; Black eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy black hair; Blue eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy black hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy black hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy black hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Black eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Blue eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
+		<entry>Blue skin with white stripes and patches; Thick, somewhat-stringy black hair; Blue eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy black hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy black hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy black hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Black eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Blue eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
+		<entry>Blue skin with white stripes and patches; Thick, somewhat-stringy black hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy black hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy black hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Black eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Blue eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
+		<entry>Blue skin with white stripes and patches; Thick, somewhat-stringy black hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy black hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Black eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Blue eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
+		<entry>Blue skin with white stripes and patches; Thick, somewhat-stringy black hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Black eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Blue eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
+		<entry>Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Black eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Blue eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
+		<entry>Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Blue eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Blue eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
+		<entry>Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Blue eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
+		<entry>Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Blue eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
+		<entry>Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Blue eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs", "Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
 	</collection>
 	<collection>
 		<name>Gray ElfCommon</name>
@@ -4906,6 +5084,411 @@
 		<entry>Pale white skin; Straight silver hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
 		<entry>Pale white skin; Straight silver hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
 		<entry>Pale white skin; Straight silver hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Brown skin; Curly black hair; Pupil-less topaz eyes</entry>
+		<entry>Brown skin; Curly blond hair; Pupil-less topaz eyes</entry>
+		<entry>Brown skin; Curly brown hair; Pupil-less topaz eyes</entry>
+		<entry>Brown skin; Curly red hair; Pupil-less topaz eyes</entry>
+		<entry>Brown skin; Kinky black hair; Pupil-less topaz eyes</entry>
+		<entry>Brown skin; Kinky blond hair; Pupil-less topaz eyes</entry>
+		<entry>Brown skin; Kinky brown hair; Pupil-less topaz eyes</entry>
+		<entry>Brown skin; Kinky red hair; Pupil-less topaz eyes</entry>
+		<entry>Brown skin; Straight black hair; Pupil-less topaz eyes</entry>
+		<entry>Brown skin; Straight blond hair; Pupil-less topaz eyes</entry>
+		<entry>Brown skin; Straight brown hair; Pupil-less topaz eyes</entry>
+		<entry>Brown skin; Straight red hair; Pupil-less topaz eyes</entry>
+		<entry>Brown skin; Curly silver hair; Pupil-less topaz eyes</entry>
+		<entry>Brown skin; Kinky silver hair; Pupil-less topaz eyes</entry>
+		<entry>Brown skin; Straight silver hair; Pupil-less topaz eyes</entry>
+		<entry>Brown skin; Curly black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Brown skin; Curly blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Brown skin; Curly brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Brown skin; Curly red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Brown skin; Kinky black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Brown skin; Kinky blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Brown skin; Kinky brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Brown skin; Kinky red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Brown skin; Straight black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Brown skin; Straight blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Brown skin; Straight brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Brown skin; Straight red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Brown skin; Curly silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Brown skin; Kinky silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Brown skin; Straight silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark brown skin; Curly black hair; Pupil-less topaz eyes</entry>
+		<entry>Dark brown skin; Curly blond hair; Pupil-less topaz eyes</entry>
+		<entry>Dark brown skin; Curly brown hair; Pupil-less topaz eyes</entry>
+		<entry>Dark brown skin; Curly red hair; Pupil-less topaz eyes</entry>
+		<entry>Dark brown skin; Kinky black hair; Pupil-less topaz eyes</entry>
+		<entry>Dark brown skin; Kinky blond hair; Pupil-less topaz eyes</entry>
+		<entry>Dark brown skin; Kinky brown hair; Pupil-less topaz eyes</entry>
+		<entry>Dark brown skin; Kinky red hair; Pupil-less topaz eyes</entry>
+		<entry>Dark brown skin; Straight black hair; Pupil-less topaz eyes</entry>
+		<entry>Dark brown skin; Straight blond hair; Pupil-less topaz eyes</entry>
+		<entry>Dark brown skin; Straight brown hair; Pupil-less topaz eyes</entry>
+		<entry>Dark brown skin; Straight red hair; Pupil-less topaz eyes</entry>
+		<entry>Dark brown skin; Curly silver hair; Pupil-less topaz eyes</entry>
+		<entry>Dark brown skin; Kinky silver hair; Pupil-less topaz eyes</entry>
+		<entry>Dark brown skin; Straight silver hair; Pupil-less topaz eyes</entry>
+		<entry>Dark brown skin; Curly black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark brown skin; Curly blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark brown skin; Curly brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark brown skin; Curly red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark brown skin; Kinky black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark brown skin; Kinky blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark brown skin; Kinky brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark brown skin; Kinky red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark brown skin; Straight black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark brown skin; Straight blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark brown skin; Straight brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark brown skin; Straight red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark brown skin; Curly silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark brown skin; Kinky silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark brown skin; Straight silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light brown skin; Curly black hair; Pupil-less topaz eyes</entry>
+		<entry>Light brown skin; Curly blond hair; Pupil-less topaz eyes</entry>
+		<entry>Light brown skin; Curly brown hair; Pupil-less topaz eyes</entry>
+		<entry>Light brown skin; Curly red hair; Pupil-less topaz eyes</entry>
+		<entry>Light brown skin; Kinky black hair; Pupil-less topaz eyes</entry>
+		<entry>Light brown skin; Kinky blond hair; Pupil-less topaz eyes</entry>
+		<entry>Light brown skin; Kinky brown hair; Pupil-less topaz eyes</entry>
+		<entry>Light brown skin; Kinky red hair; Pupil-less topaz eyes</entry>
+		<entry>Light brown skin; Straight black hair; Pupil-less topaz eyes</entry>
+		<entry>Light brown skin; Straight blond hair; Pupil-less topaz eyes</entry>
+		<entry>Light brown skin; Straight brown hair; Pupil-less topaz eyes</entry>
+		<entry>Light brown skin; Straight red hair; Pupil-less topaz eyes</entry>
+		<entry>Light brown skin; Curly silver hair; Pupil-less topaz eyes</entry>
+		<entry>Light brown skin; Kinky silver hair; Pupil-less topaz eyes</entry>
+		<entry>Light brown skin; Straight silver hair; Pupil-less topaz eyes</entry>
+		<entry>Light brown skin; Curly black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light brown skin; Curly blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light brown skin; Curly brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light brown skin; Curly red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light brown skin; Kinky black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light brown skin; Kinky blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light brown skin; Kinky brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light brown skin; Kinky red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light brown skin; Straight black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light brown skin; Straight blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light brown skin; Straight brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light brown skin; Straight red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light brown skin; Curly silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light brown skin; Kinky silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light brown skin; Straight silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Tan skin; Curly black hair; Pupil-less topaz eyes</entry>
+		<entry>Tan skin; Curly blond hair; Pupil-less topaz eyes</entry>
+		<entry>Tan skin; Curly brown hair; Pupil-less topaz eyes</entry>
+		<entry>Tan skin; Curly red hair; Pupil-less topaz eyes</entry>
+		<entry>Tan skin; Kinky black hair; Pupil-less topaz eyes</entry>
+		<entry>Tan skin; Kinky blond hair; Pupil-less topaz eyes</entry>
+		<entry>Tan skin; Kinky brown hair; Pupil-less topaz eyes</entry>
+		<entry>Tan skin; Kinky red hair; Pupil-less topaz eyes</entry>
+		<entry>Tan skin; Straight black hair; Pupil-less topaz eyes</entry>
+		<entry>Tan skin; Straight blond hair; Pupil-less topaz eyes</entry>
+		<entry>Tan skin; Straight brown hair; Pupil-less topaz eyes</entry>
+		<entry>Tan skin; Straight red hair; Pupil-less topaz eyes</entry>
+		<entry>Tan skin; Curly silver hair; Pupil-less topaz eyes</entry>
+		<entry>Tan skin; Kinky silver hair; Pupil-less topaz eyes</entry>
+		<entry>Tan skin; Straight silver hair; Pupil-less topaz eyes</entry>
+		<entry>Tan skin; Curly black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Tan skin; Curly blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Tan skin; Curly brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Tan skin; Curly red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Tan skin; Kinky black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Tan skin; Kinky blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Tan skin; Kinky brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Tan skin; Kinky red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Tan skin; Straight black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Tan skin; Straight blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Tan skin; Straight brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Tan skin; Straight red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Tan skin; Curly silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Tan skin; Kinky silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Tan skin; Straight silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark tan skin; Curly black hair; Pupil-less topaz eyes</entry>
+		<entry>Dark tan skin; Curly blond hair; Pupil-less topaz eyes</entry>
+		<entry>Dark tan skin; Curly brown hair; Pupil-less topaz eyes</entry>
+		<entry>Dark tan skin; Curly red hair; Pupil-less topaz eyes</entry>
+		<entry>Dark tan skin; Kinky black hair; Pupil-less topaz eyes</entry>
+		<entry>Dark tan skin; Kinky blond hair; Pupil-less topaz eyes</entry>
+		<entry>Dark tan skin; Kinky brown hair; Pupil-less topaz eyes</entry>
+		<entry>Dark tan skin; Kinky red hair; Pupil-less topaz eyes</entry>
+		<entry>Dark tan skin; Straight black hair; Pupil-less topaz eyes</entry>
+		<entry>Dark tan skin; Straight blond hair; Pupil-less topaz eyes</entry>
+		<entry>Dark tan skin; Straight brown hair; Pupil-less topaz eyes</entry>
+		<entry>Dark tan skin; Straight red hair; Pupil-less topaz eyes</entry>
+		<entry>Dark tan skin; Curly silver hair; Pupil-less topaz eyes</entry>
+		<entry>Dark tan skin; Kinky silver hair; Pupil-less topaz eyes</entry>
+		<entry>Dark tan skin; Straight silver hair; Pupil-less topaz eyes</entry>
+		<entry>Dark tan skin; Curly black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark tan skin; Curly blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark tan skin; Curly brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark tan skin; Curly red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark tan skin; Kinky black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark tan skin; Kinky blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark tan skin; Kinky brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark tan skin; Kinky red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark tan skin; Straight black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark tan skin; Straight blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark tan skin; Straight brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark tan skin; Straight red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark tan skin; Curly silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark tan skin; Kinky silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Dark tan skin; Straight silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light tan skin; Curly black hair; Pupil-less topaz eyes</entry>
+		<entry>Light tan skin; Curly blond hair; Pupil-less topaz eyes</entry>
+		<entry>Light tan skin; Curly brown hair; Pupil-less topaz eyes</entry>
+		<entry>Light tan skin; Curly red hair; Pupil-less topaz eyes</entry>
+		<entry>Light tan skin; Kinky black hair; Pupil-less topaz eyes</entry>
+		<entry>Light tan skin; Kinky blond hair; Pupil-less topaz eyes</entry>
+		<entry>Light tan skin; Kinky brown hair; Pupil-less topaz eyes</entry>
+		<entry>Light tan skin; Kinky red hair; Pupil-less topaz eyes</entry>
+		<entry>Light tan skin; Straight black hair; Pupil-less topaz eyes</entry>
+		<entry>Light tan skin; Straight blond hair; Pupil-less topaz eyes</entry>
+		<entry>Light tan skin; Straight brown hair; Pupil-less topaz eyes</entry>
+		<entry>Light tan skin; Straight red hair; Pupil-less topaz eyes</entry>
+		<entry>Light tan skin; Curly silver hair; Pupil-less topaz eyes</entry>
+		<entry>Light tan skin; Kinky silver hair; Pupil-less topaz eyes</entry>
+		<entry>Light tan skin; Straight silver hair; Pupil-less topaz eyes</entry>
+		<entry>Light tan skin; Curly black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light tan skin; Curly blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light tan skin; Curly brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light tan skin; Curly red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light tan skin; Kinky black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light tan skin; Kinky blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light tan skin; Kinky brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light tan skin; Kinky red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light tan skin; Straight black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light tan skin; Straight blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light tan skin; Straight brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light tan skin; Straight red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light tan skin; Curly silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light tan skin; Kinky silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Light tan skin; Straight silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pink skin; Curly black hair; Pupil-less topaz eyes</entry>
+		<entry>Pink skin; Curly blond hair; Pupil-less topaz eyes</entry>
+		<entry>Pink skin; Curly brown hair; Pupil-less topaz eyes</entry>
+		<entry>Pink skin; Curly red hair; Pupil-less topaz eyes</entry>
+		<entry>Pink skin; Kinky black hair; Pupil-less topaz eyes</entry>
+		<entry>Pink skin; Kinky blond hair; Pupil-less topaz eyes</entry>
+		<entry>Pink skin; Kinky brown hair; Pupil-less topaz eyes</entry>
+		<entry>Pink skin; Kinky red hair; Pupil-less topaz eyes</entry>
+		<entry>Pink skin; Straight black hair; Pupil-less topaz eyes</entry>
+		<entry>Pink skin; Straight blond hair; Pupil-less topaz eyes</entry>
+		<entry>Pink skin; Straight brown hair; Pupil-less topaz eyes</entry>
+		<entry>Pink skin; Straight red hair; Pupil-less topaz eyes</entry>
+		<entry>Pink skin; Curly silver hair; Pupil-less topaz eyes</entry>
+		<entry>Pink skin; Kinky silver hair; Pupil-less topaz eyes</entry>
+		<entry>Pink skin; Straight silver hair; Pupil-less topaz eyes</entry>
+		<entry>Pink skin; Curly black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pink skin; Curly blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pink skin; Curly brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pink skin; Curly red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pink skin; Kinky black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pink skin; Kinky blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pink skin; Kinky brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pink skin; Kinky red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pink skin; Straight black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pink skin; Straight blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pink skin; Straight brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pink skin; Straight red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pink skin; Curly silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pink skin; Kinky silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pink skin; Straight silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>White skin; Curly black hair; Pupil-less topaz eyes</entry>
+		<entry>White skin; Curly blond hair; Pupil-less topaz eyes</entry>
+		<entry>White skin; Curly brown hair; Pupil-less topaz eyes</entry>
+		<entry>White skin; Curly red hair; Pupil-less topaz eyes</entry>
+		<entry>White skin; Kinky black hair; Pupil-less topaz eyes</entry>
+		<entry>White skin; Kinky blond hair; Pupil-less topaz eyes</entry>
+		<entry>White skin; Kinky brown hair; Pupil-less topaz eyes</entry>
+		<entry>White skin; Kinky red hair; Pupil-less topaz eyes</entry>
+		<entry>White skin; Straight black hair; Pupil-less topaz eyes</entry>
+		<entry>White skin; Straight blond hair; Pupil-less topaz eyes</entry>
+		<entry>White skin; Straight brown hair; Pupil-less topaz eyes</entry>
+		<entry>White skin; Straight red hair; Pupil-less topaz eyes</entry>
+		<entry>White skin; Curly silver hair; Pupil-less topaz eyes</entry>
+		<entry>White skin; Kinky silver hair; Pupil-less topaz eyes</entry>
+		<entry>White skin; Straight silver hair; Pupil-less topaz eyes</entry>
+		<entry>White skin; Curly black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>White skin; Curly blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>White skin; Curly brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>White skin; Curly red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>White skin; Kinky black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>White skin; Kinky blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>White skin; Kinky brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>White skin; Kinky red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>White skin; Straight black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>White skin; Straight blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>White skin; Straight brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>White skin; Straight red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>White skin; Curly silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>White skin; Kinky silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>White skin; Straight silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pale white skin; Curly black hair; Pupil-less topaz eyes</entry>
+		<entry>Pale white skin; Curly blond hair; Pupil-less topaz eyes</entry>
+		<entry>Pale white skin; Curly brown hair; Pupil-less topaz eyes</entry>
+		<entry>Pale white skin; Curly red hair; Pupil-less topaz eyes</entry>
+		<entry>Pale white skin; Kinky black hair; Pupil-less topaz eyes</entry>
+		<entry>Pale white skin; Kinky blond hair; Pupil-less topaz eyes</entry>
+		<entry>Pale white skin; Kinky brown hair; Pupil-less topaz eyes</entry>
+		<entry>Pale white skin; Kinky red hair; Pupil-less topaz eyes</entry>
+		<entry>Pale white skin; Straight black hair; Pupil-less topaz eyes</entry>
+		<entry>Pale white skin; Straight blond hair; Pupil-less topaz eyes</entry>
+		<entry>Pale white skin; Straight brown hair; Pupil-less topaz eyes</entry>
+		<entry>Pale white skin; Straight red hair; Pupil-less topaz eyes</entry>
+		<entry>Pale white skin; Curly silver hair; Pupil-less topaz eyes</entry>
+		<entry>Pale white skin; Kinky silver hair; Pupil-less topaz eyes</entry>
+		<entry>Pale white skin; Straight silver hair; Pupil-less topaz eyes</entry>
+		<entry>Pale white skin; Curly black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pale white skin; Curly blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pale white skin; Curly brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pale white skin; Curly red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pale white skin; Kinky black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pale white skin; Kinky blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pale white skin; Kinky brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pale white skin; Kinky red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pale white skin; Straight black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pale white skin; Straight blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pale white skin; Straight brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pale white skin; Straight red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pale white skin; Curly silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pale white skin; Kinky silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Pale white skin; Straight silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Curly black hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Curly black hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Curly black hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Curly blond hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Curly blond hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Curly blond hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Curly brown hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Curly brown hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Curly brown hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Curly red hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Curly red hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Curly red hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Kinky black hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Kinky black hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Kinky black hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Kinky blond hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Kinky blond hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Kinky blond hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Kinky brown hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Kinky brown hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Kinky brown hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Kinky red hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Kinky red hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Kinky red hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Straight black hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Straight black hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Straight black hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Straight blond hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Straight blond hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Straight blond hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Straight brown hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Straight brown hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Straight brown hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Straight red hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Straight red hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Straight red hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Curly silver hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Curly silver hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Curly silver hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Kinky silver hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Kinky silver hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Kinky silver hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Straight silver hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Straight silver hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Straight silver hair; Pupil-less pale white eyes</entry>
+		<entry>Gold skin; Curly black hair; Pupil-less golden eyes</entry>
+		<entry>Gold skin; Curly black hair; Pupil-less gray eyes</entry>
+		<entry>Gold skin; Curly black hair; Pupil-less pale white eyes</entry>
+		<entry>Gold skin; Curly blond hair; Pupil-less golden eyes</entry>
+		<entry>Gold skin; Curly blond hair; Pupil-less gray eyes</entry>
+		<entry>Gold skin; Curly blond hair; Pupil-less pale white eyes</entry>
+		<entry>Gold skin; Curly brown hair; Pupil-less golden eyes</entry>
+		<entry>Gold skin; Curly brown hair; Pupil-less gray eyes</entry>
+		<entry>Gold skin; Curly brown hair; Pupil-less pale white eyes</entry>
+		<entry>Gold skin; Curly red hair; Pupil-less golden eyes</entry>
+		<entry>Gold skin; Curly red hair; Pupil-less gray eyes</entry>
+		<entry>Gold skin; Curly red hair; Pupil-less pale white eyes</entry>
+		<entry>Gold skin; Kinky black hair; Pupil-less golden eyes</entry>
+		<entry>Gold skin; Kinky black hair; Pupil-less gray eyes</entry>
+		<entry>Gold skin; Kinky black hair; Pupil-less pale white eyes</entry>
+		<entry>Gold skin; Kinky blond hair; Pupil-less golden eyes</entry>
+		<entry>Gold skin; Kinky blond hair; Pupil-less gray eyes</entry>
+		<entry>Gold skin; Kinky blond hair; Pupil-less pale white eyes</entry>
+		<entry>Gold skin; Kinky brown hair; Pupil-less golden eyes</entry>
+		<entry>Gold skin; Kinky brown hair; Pupil-less gray eyes</entry>
+		<entry>Gold skin; Kinky brown hair; Pupil-less pale white eyes</entry>
+		<entry>Gold skin; Kinky red hair; Pupil-less golden eyes</entry>
+		<entry>Gold skin; Kinky red hair; Pupil-less gray eyes</entry>
+		<entry>Gold skin; Kinky red hair; Pupil-less pale white eyes</entry>
+		<entry>Gold skin; Straight black hair; Pupil-less golden eyes</entry>
+		<entry>Gold skin; Straight black hair; Pupil-less gray eyes</entry>
+		<entry>Gold skin; Straight black hair; Pupil-less pale white eyes</entry>
+		<entry>Gold skin; Straight blond hair; Pupil-less golden eyes</entry>
+		<entry>Gold skin; Straight blond hair; Pupil-less gray eyes</entry>
+		<entry>Gold skin; Straight blond hair; Pupil-less pale white eyes</entry>
+		<entry>Gold skin; Straight brown hair; Pupil-less golden eyes</entry>
+		<entry>Gold skin; Straight brown hair; Pupil-less gray eyes</entry>
+		<entry>Gold skin; Straight brown hair; Pupil-less pale white eyes</entry>
+		<entry>Gold skin; Straight red hair; Pupil-less golden eyes</entry>
+		<entry>Gold skin; Straight red hair; Pupil-less gray eyes</entry>
+		<entry>Gold skin; Straight red hair; Pupil-less pale white eyes</entry>
+		<entry>Gold skin; Curly silver hair; Pupil-less golden eyes</entry>
+		<entry>Gold skin; Curly silver hair; Pupil-less gray eyes</entry>
+		<entry>Gold skin; Curly silver hair; Pupil-less pale white eyes</entry>
+		<entry>Gold skin; Kinky silver hair; Pupil-less golden eyes</entry>
+		<entry>Gold skin; Kinky silver hair; Pupil-less gray eyes</entry>
+		<entry>Gold skin; Kinky silver hair; Pupil-less pale white eyes</entry>
+		<entry>Gold skin; Straight silver hair; Pupil-less golden eyes</entry>
+		<entry>Gold skin; Straight silver hair; Pupil-less gray eyes</entry>
+		<entry>Gold skin; Straight silver hair; Pupil-less pale white eyes</entry>
+		<entry>Silver skin; Curly black hair; Pupil-less golden eyes</entry>
+		<entry>Silver skin; Curly black hair; Pupil-less gray eyes</entry>
+		<entry>Silver skin; Curly black hair; Pupil-less pale white eyes</entry>
+		<entry>Silver skin; Curly blond hair; Pupil-less golden eyes</entry>
+		<entry>Silver skin; Curly blond hair; Pupil-less gray eyes</entry>
+		<entry>Silver skin; Curly blond hair; Pupil-less pale white eyes</entry>
+		<entry>Silver skin; Curly brown hair; Pupil-less golden eyes</entry>
+		<entry>Silver skin; Curly brown hair; Pupil-less gray eyes</entry>
+		<entry>Silver skin; Curly brown hair; Pupil-less pale white eyes</entry>
+		<entry>Silver skin; Curly red hair; Pupil-less golden eyes</entry>
+		<entry>Silver skin; Curly red hair; Pupil-less gray eyes</entry>
+		<entry>Silver skin; Curly red hair; Pupil-less pale white eyes</entry>
+		<entry>Silver skin; Kinky black hair; Pupil-less golden eyes</entry>
+		<entry>Silver skin; Kinky black hair; Pupil-less gray eyes</entry>
+		<entry>Silver skin; Kinky black hair; Pupil-less pale white eyes</entry>
+		<entry>Silver skin; Kinky blond hair; Pupil-less golden eyes</entry>
+		<entry>Silver skin; Kinky blond hair; Pupil-less gray eyes</entry>
+		<entry>Silver skin; Kinky blond hair; Pupil-less pale white eyes</entry>
+		<entry>Silver skin; Kinky brown hair; Pupil-less golden eyes</entry>
+		<entry>Silver skin; Kinky brown hair; Pupil-less gray eyes</entry>
+		<entry>Silver skin; Kinky brown hair; Pupil-less pale white eyes</entry>
+		<entry>Silver skin; Kinky red hair; Pupil-less golden eyes</entry>
+		<entry>Silver skin; Kinky red hair; Pupil-less gray eyes</entry>
+		<entry>Silver skin; Kinky red hair; Pupil-less pale white eyes</entry>
+		<entry>Silver skin; Straight black hair; Pupil-less golden eyes</entry>
+		<entry>Silver skin; Straight black hair; Pupil-less gray eyes</entry>
+		<entry>Silver skin; Straight black hair; Pupil-less pale white eyes</entry>
+		<entry>Silver skin; Straight blond hair; Pupil-less golden eyes</entry>
+		<entry>Silver skin; Straight blond hair; Pupil-less gray eyes</entry>
+		<entry>Silver skin; Straight blond hair; Pupil-less pale white eyes</entry>
+		<entry>Silver skin; Straight brown hair; Pupil-less golden eyes</entry>
+		<entry>Silver skin; Straight brown hair; Pupil-less gray eyes</entry>
+		<entry>Silver skin; Straight brown hair; Pupil-less pale white eyes</entry>
+		<entry>Silver skin; Straight red hair; Pupil-less golden eyes</entry>
+		<entry>Silver skin; Straight red hair; Pupil-less gray eyes</entry>
+		<entry>Silver skin; Straight red hair; Pupil-less pale white eyes</entry>
+		<entry>Silver skin; Curly silver hair; Pupil-less golden eyes</entry>
+		<entry>Silver skin; Curly silver hair; Pupil-less gray eyes</entry>
+		<entry>Silver skin; Curly silver hair; Pupil-less pale white eyes</entry>
+		<entry>Silver skin; Kinky silver hair; Pupil-less golden eyes</entry>
+		<entry>Silver skin; Kinky silver hair; Pupil-less gray eyes</entry>
+		<entry>Silver skin; Kinky silver hair; Pupil-less pale white eyes</entry>
+		<entry>Silver skin; Straight silver hair; Pupil-less golden eyes</entry>
+		<entry>Silver skin; Straight silver hair; Pupil-less gray eyes</entry>
+		<entry>Silver skin; Straight silver hair; Pupil-less pale white eyes</entry>
 	</collection>
 	<collection>
 		<name>AbolethUncommon</name>
@@ -4969,248 +5552,388 @@
 	</collection>
 	<collection>
 		<name>Animated Object, ColossalUncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Flexible)Uncommon</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (More Than Two Legs)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (More Than Two Legs, Wooden)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Sheetlike)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Two Legs)Uncommon</name>
-		<entry>Agender</entry>
+		<entry>Aasimar statue</entry>
+		<entry>Aquatic Elf statue</entry>
+		<entry>Deep Dwarf statue</entry>
+		<entry>Deep Halfling statue</entry>
+		<entry>Drow statue</entry>
+		<entry>Duergar statue</entry>
+		<entry>Forest Gnome statue</entry>
+		<entry>Gray Elf statue</entry>
+		<entry>Mountain Dwarf statue</entry>
+		<entry>Svirfneblin statue</entry>
+		<entry>Tallfellow Halfling statue</entry>
+		<entry>Tiefling statue</entry>
+		<entry>Wild Elf statue</entry>
+		<entry>Wood Elf statue</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Two Legs, Wooden)Uncommon</name>
-		<entry>Agender</entry>
+		<entry>Aasimar wooden figurine</entry>
+		<entry>Aquatic Elf wooden figurine</entry>
+		<entry>Deep Dwarf wooden figurine</entry>
+		<entry>Deep Halfling wooden figurine</entry>
+		<entry>Drow wooden figurine</entry>
+		<entry>Duergar wooden figurine</entry>
+		<entry>Forest Gnome wooden figurine</entry>
+		<entry>Gray Elf wooden figurine</entry>
+		<entry>Mountain Dwarf wooden figurine</entry>
+		<entry>Svirfneblin wooden figurine</entry>
+		<entry>Tallfellow Halfling wooden figurine</entry>
+		<entry>Tiefling wooden figurine</entry>
+		<entry>Wild Elf wooden figurine</entry>
+		<entry>Wood Elf wooden figurine</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Wheels, Wooden)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Wooden)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, GargantuanUncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Flexible)Uncommon</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (More Than Two Legs)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (More Than Two Legs, Wooden)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Sheetlike)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Two Legs)Uncommon</name>
-		<entry>Agender</entry>
+		<entry>Aasimar statue</entry>
+		<entry>Aquatic Elf statue</entry>
+		<entry>Deep Dwarf statue</entry>
+		<entry>Deep Halfling statue</entry>
+		<entry>Drow statue</entry>
+		<entry>Duergar statue</entry>
+		<entry>Forest Gnome statue</entry>
+		<entry>Gray Elf statue</entry>
+		<entry>Mountain Dwarf statue</entry>
+		<entry>Svirfneblin statue</entry>
+		<entry>Tallfellow Halfling statue</entry>
+		<entry>Tiefling statue</entry>
+		<entry>Wild Elf statue</entry>
+		<entry>Wood Elf statue</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Two Legs, Wooden)Uncommon</name>
-		<entry>Agender</entry>
+		<entry>Aasimar wooden figurine</entry>
+		<entry>Aquatic Elf wooden figurine</entry>
+		<entry>Deep Dwarf wooden figurine</entry>
+		<entry>Deep Halfling wooden figurine</entry>
+		<entry>Drow wooden figurine</entry>
+		<entry>Duergar wooden figurine</entry>
+		<entry>Forest Gnome wooden figurine</entry>
+		<entry>Gray Elf wooden figurine</entry>
+		<entry>Mountain Dwarf wooden figurine</entry>
+		<entry>Svirfneblin wooden figurine</entry>
+		<entry>Tallfellow Halfling wooden figurine</entry>
+		<entry>Tiefling wooden figurine</entry>
+		<entry>Wild Elf wooden figurine</entry>
+		<entry>Wood Elf wooden figurine</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Wheels, Wooden)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Wooden)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, HugeUncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Flexible)Uncommon</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (More Than Two Legs)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (More Than Two Legs, Wooden)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Sheetlike)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Two Legs)Uncommon</name>
-		<entry>Agender</entry>
+		<entry>Aasimar statue</entry>
+		<entry>Aquatic Elf statue</entry>
+		<entry>Deep Dwarf statue</entry>
+		<entry>Deep Halfling statue</entry>
+		<entry>Drow statue</entry>
+		<entry>Duergar statue</entry>
+		<entry>Forest Gnome statue</entry>
+		<entry>Gray Elf statue</entry>
+		<entry>Mountain Dwarf statue</entry>
+		<entry>Svirfneblin statue</entry>
+		<entry>Tallfellow Halfling statue</entry>
+		<entry>Tiefling statue</entry>
+		<entry>Wild Elf statue</entry>
+		<entry>Wood Elf statue</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Two Legs, Wooden)Uncommon</name>
-		<entry>Agender</entry>
+		<entry>Aasimar wooden figurine</entry>
+		<entry>Aquatic Elf wooden figurine</entry>
+		<entry>Deep Dwarf wooden figurine</entry>
+		<entry>Deep Halfling wooden figurine</entry>
+		<entry>Drow wooden figurine</entry>
+		<entry>Duergar wooden figurine</entry>
+		<entry>Forest Gnome wooden figurine</entry>
+		<entry>Gray Elf wooden figurine</entry>
+		<entry>Mountain Dwarf wooden figurine</entry>
+		<entry>Svirfneblin wooden figurine</entry>
+		<entry>Tallfellow Halfling wooden figurine</entry>
+		<entry>Tiefling wooden figurine</entry>
+		<entry>Wild Elf wooden figurine</entry>
+		<entry>Wood Elf wooden figurine</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Wheels, Wooden)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Wooden)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, LargeUncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Flexible)Uncommon</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (More Than Two Legs)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (More Than Two Legs, Wooden)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Sheetlike)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Two Legs)Uncommon</name>
-		<entry>Agender</entry>
+		<entry>Aasimar statue</entry>
+		<entry>Aquatic Elf statue</entry>
+		<entry>Deep Dwarf statue</entry>
+		<entry>Deep Halfling statue</entry>
+		<entry>Drow statue</entry>
+		<entry>Duergar statue</entry>
+		<entry>Forest Gnome statue</entry>
+		<entry>Gray Elf statue</entry>
+		<entry>Mountain Dwarf statue</entry>
+		<entry>Svirfneblin statue</entry>
+		<entry>Tallfellow Halfling statue</entry>
+		<entry>Tiefling statue</entry>
+		<entry>Wild Elf statue</entry>
+		<entry>Wood Elf statue</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Two Legs, Wooden)Uncommon</name>
-		<entry>Agender</entry>
+		<entry>Aasimar wooden figurine</entry>
+		<entry>Aquatic Elf wooden figurine</entry>
+		<entry>Deep Dwarf wooden figurine</entry>
+		<entry>Deep Halfling wooden figurine</entry>
+		<entry>Drow wooden figurine</entry>
+		<entry>Duergar wooden figurine</entry>
+		<entry>Forest Gnome wooden figurine</entry>
+		<entry>Gray Elf wooden figurine</entry>
+		<entry>Mountain Dwarf wooden figurine</entry>
+		<entry>Svirfneblin wooden figurine</entry>
+		<entry>Tallfellow Halfling wooden figurine</entry>
+		<entry>Tiefling wooden figurine</entry>
+		<entry>Wild Elf wooden figurine</entry>
+		<entry>Wood Elf wooden figurine</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Wheels, Wooden)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Wooden)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, MediumUncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Flexible)Uncommon</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (More Than Two Legs)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (More Than Two Legs, Wooden)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Sheetlike)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Two Legs)Uncommon</name>
-		<entry>Agender</entry>
+		<entry>Aasimar statue</entry>
+		<entry>Aquatic Elf statue</entry>
+		<entry>Deep Dwarf statue</entry>
+		<entry>Deep Halfling statue</entry>
+		<entry>Drow statue</entry>
+		<entry>Duergar statue</entry>
+		<entry>Forest Gnome statue</entry>
+		<entry>Gray Elf statue</entry>
+		<entry>Mountain Dwarf statue</entry>
+		<entry>Svirfneblin statue</entry>
+		<entry>Tallfellow Halfling statue</entry>
+		<entry>Tiefling statue</entry>
+		<entry>Wild Elf statue</entry>
+		<entry>Wood Elf statue</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Two Legs, Wooden)Uncommon</name>
-		<entry>Agender</entry>
+		<entry>Aasimar wooden figurine</entry>
+		<entry>Aquatic Elf wooden figurine</entry>
+		<entry>Deep Dwarf wooden figurine</entry>
+		<entry>Deep Halfling wooden figurine</entry>
+		<entry>Drow wooden figurine</entry>
+		<entry>Duergar wooden figurine</entry>
+		<entry>Forest Gnome wooden figurine</entry>
+		<entry>Gray Elf wooden figurine</entry>
+		<entry>Mountain Dwarf wooden figurine</entry>
+		<entry>Svirfneblin wooden figurine</entry>
+		<entry>Tallfellow Halfling wooden figurine</entry>
+		<entry>Tiefling wooden figurine</entry>
+		<entry>Wild Elf wooden figurine</entry>
+		<entry>Wood Elf wooden figurine</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Wheels, Wooden)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Wooden)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, SmallUncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Flexible)Uncommon</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (More Than Two Legs)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (More Than Two Legs, Wooden)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Sheetlike)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Two Legs)Uncommon</name>
-		<entry>Agender</entry>
+		<entry>Aasimar statue</entry>
+		<entry>Aquatic Elf statue</entry>
+		<entry>Deep Dwarf statue</entry>
+		<entry>Deep Halfling statue</entry>
+		<entry>Drow statue</entry>
+		<entry>Duergar statue</entry>
+		<entry>Forest Gnome statue</entry>
+		<entry>Gray Elf statue</entry>
+		<entry>Mountain Dwarf statue</entry>
+		<entry>Svirfneblin statue</entry>
+		<entry>Tallfellow Halfling statue</entry>
+		<entry>Tiefling statue</entry>
+		<entry>Wild Elf statue</entry>
+		<entry>Wood Elf statue</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Two Legs, Wooden)Uncommon</name>
-		<entry>Agender</entry>
+		<entry>Aasimar wooden figurine</entry>
+		<entry>Aquatic Elf wooden figurine</entry>
+		<entry>Deep Dwarf wooden figurine</entry>
+		<entry>Deep Halfling wooden figurine</entry>
+		<entry>Drow wooden figurine</entry>
+		<entry>Duergar wooden figurine</entry>
+		<entry>Forest Gnome wooden figurine</entry>
+		<entry>Gray Elf wooden figurine</entry>
+		<entry>Mountain Dwarf wooden figurine</entry>
+		<entry>Svirfneblin wooden figurine</entry>
+		<entry>Tallfellow Halfling wooden figurine</entry>
+		<entry>Tiefling wooden figurine</entry>
+		<entry>Wild Elf wooden figurine</entry>
+		<entry>Wood Elf wooden figurine</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Wheels, Wooden)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Wooden)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, TinyUncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Flexible)Uncommon</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (More Than Two Legs)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (More Than Two Legs, Wooden)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Sheetlike)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Two Legs)Uncommon</name>
-		<entry>Agender</entry>
+		<entry>Aasimar statue</entry>
+		<entry>Aquatic Elf statue</entry>
+		<entry>Deep Dwarf statue</entry>
+		<entry>Deep Halfling statue</entry>
+		<entry>Drow statue</entry>
+		<entry>Duergar statue</entry>
+		<entry>Forest Gnome statue</entry>
+		<entry>Gray Elf statue</entry>
+		<entry>Mountain Dwarf statue</entry>
+		<entry>Svirfneblin statue</entry>
+		<entry>Tallfellow Halfling statue</entry>
+		<entry>Tiefling statue</entry>
+		<entry>Wild Elf statue</entry>
+		<entry>Wood Elf statue</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Two Legs, Wooden)Uncommon</name>
-		<entry>Agender</entry>
+		<entry>Aasimar wooden figurine</entry>
+		<entry>Aquatic Elf wooden figurine</entry>
+		<entry>Deep Dwarf wooden figurine</entry>
+		<entry>Deep Halfling wooden figurine</entry>
+		<entry>Drow wooden figurine</entry>
+		<entry>Duergar wooden figurine</entry>
+		<entry>Forest Gnome wooden figurine</entry>
+		<entry>Gray Elf wooden figurine</entry>
+		<entry>Mountain Dwarf wooden figurine</entry>
+		<entry>Svirfneblin wooden figurine</entry>
+		<entry>Tallfellow Halfling wooden figurine</entry>
+		<entry>Tiefling wooden figurine</entry>
+		<entry>Wild Elf wooden figurine</entry>
+		<entry>Wood Elf wooden figurine</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Wheels, Wooden)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Wooden)Uncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>AnkhegUncommon</name>
@@ -8091,8 +8814,33 @@
 	</collection>
 	<collection>
 		<name>AasimarRare</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
+		<entry>Brown skin with small iridescent scales; Bald; Pupil-less golden eyes</entry>
+		<entry>Brown skin with small iridescent scales; Bald; Pupil-less gray eyes</entry>
+		<entry>Brown skin with small iridescent scales; Bald; Pupil-less pale white eyes</entry>
+		<entry>Dark brown skin with small iridescent scales; Bald; Pupil-less golden eyes</entry>
+		<entry>Dark brown skin with small iridescent scales; Bald; Pupil-less gray eyes</entry>
+		<entry>Dark brown skin with small iridescent scales; Bald; Pupil-less pale white eyes</entry>
+		<entry>Light brown skin with small iridescent scales; Bald; Pupil-less golden eyes</entry>
+		<entry>Light brown skin with small iridescent scales; Bald; Pupil-less gray eyes</entry>
+		<entry>Light brown skin with small iridescent scales; Bald; Pupil-less pale white eyes</entry>
+		<entry>Tan skin; Bald with small iridescent scales; Pupil-less golden eyes</entry>
+		<entry>Tan skin; Bald with small iridescent scales; Pupil-less gray eyes</entry>
+		<entry>Tan skin; Bald with small iridescent scales; Pupil-less pale white eyes</entry>
+		<entry>Dark tan skin with small iridescent scales; Bald; Pupil-less golden eyes</entry>
+		<entry>Dark tan skin with small iridescent scales; Bald; Pupil-less gray eyes</entry>
+		<entry>Dark tan skin with small iridescent scales; Bald; Pupil-less pale white eyes</entry>
+		<entry>Light tan skin with small iridescent scales; Bald; Pupil-less golden eyes</entry>
+		<entry>Light tan skin with small iridescent scales; Bald; Pupil-less gray eyes</entry>
+		<entry>Light tan skin with small iridescent scales; Bald; Pupil-less pale white eyes</entry>
+		<entry>Pink skin with small iridescent scales; Bald; Pupil-less golden eyes</entry>
+		<entry>Pink skin with small iridescent scales; Bald; Pupil-less gray eyes</entry>
+		<entry>Pink skin with small iridescent scales; Bald; Pupil-less pale white eyes</entry>
+		<entry>White skin with small iridescent scales; Bald; Pupil-less golden eyes</entry>
+		<entry>White skin with small iridescent scales; Bald; Pupil-less gray eyes</entry>
+		<entry>White skin with small iridescent scales; Bald; Pupil-less pale white eyes</entry>
+		<entry>Pale white skin with small iridescent scales; Bald; Pupil-less golden eyes</entry>
+		<entry>Pale white skin with small iridescent scales; Bald; Pupil-less gray eyes</entry>
+		<entry>Pale white skin with small iridescent scales; Bald; Pupil-less pale white eyes</entry>
 	</collection>
 	<collection>
 		<name>AbolethRare</name>
@@ -8145,254 +8893,416 @@
 	</collection>
 	<collection>
 		<name>Animated Object, ColossalRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Flexible)Rare</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (More Than Two Legs)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (More Than Two Legs, Wooden)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Sheetlike)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Two Legs)Rare</name>
-		<entry>Agender</entry>
+		<entry>Cloud Giant statue</entry>
+		<entry>Fire Giant statue</entry>
+		<entry>Frost Giant statue</entry>
+		<entry>Goblin statue</entry>
+		<entry>Half-Celestial statue</entry>
+		<entry>Half-Dragon statue</entry>
+		<entry>Half-Fiend statue</entry>
+		<entry>Hill Giant statue</entry>
+		<entry>Hobgoblin statue</entry>
+		<entry>Kobold statue</entry>
+		<entry>Orc statue</entry>
+		<entry>Mind Flayer statue</entry>
+		<entry>Ogre statue</entry>
+		<entry>Troll statue</entry>
+		<entry>Stone Giant statue</entry>
+		<entry>Storm Giant statue</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Two Legs, Wooden)Rare</name>
-		<entry>Agender</entry>
+		<entry>Cloud Giant wooden figurine</entry>
+		<entry>Fire Giant wooden figurine</entry>
+		<entry>Frost Giant wooden figurine</entry>
+		<entry>Goblin wooden figurine</entry>
+		<entry>Half-Celestial wooden figurine</entry>
+		<entry>Half-Dragon wooden figurine</entry>
+		<entry>Half-Fiend wooden figurine</entry>
+		<entry>Hill Giant wooden figurine</entry>
+		<entry>Hobgoblin wooden figurine</entry>
+		<entry>Kobold wooden figurine</entry>
+		<entry>Orc wooden figurine</entry>
+		<entry>Stone Giant wooden figurine</entry>
+		<entry>Storm Giant wooden figurine</entry>
+		<entry>Mind Flayer wooden figurine</entry>
+		<entry>Ogre wooden figurine</entry>
+		<entry>Troll wooden figurine</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Wheels, Wooden)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Wooden)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, GargantuanRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Flexible)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (More Than Two Legs)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (More Than Two Legs, Wooden)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Sheetlike)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Two Legs)Rare</name>
-		<entry>Agender</entry>
+		<entry>Cloud Giant statue</entry>
+		<entry>Fire Giant statue</entry>
+		<entry>Frost Giant statue</entry>
+		<entry>Goblin statue</entry>
+		<entry>Half-Celestial statue</entry>
+		<entry>Half-Dragon statue</entry>
+		<entry>Half-Fiend statue</entry>
+		<entry>Hill Giant statue</entry>
+		<entry>Hobgoblin statue</entry>
+		<entry>Kobold statue</entry>
+		<entry>Orc statue</entry>
+		<entry>Stone Giant statue</entry>
+		<entry>Storm Giant statue</entry>
+		<entry>Mind Flayer statue</entry>
+		<entry>Ogre statue</entry>
+		<entry>Troll statue</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Two Legs, Wooden)Rare</name>
-		<entry>Agender</entry>
+		<entry>Cloud Giant wooden figurine</entry>
+		<entry>Fire Giant wooden figurine</entry>
+		<entry>Frost Giant wooden figurine</entry>
+		<entry>Goblin wooden figurine</entry>
+		<entry>Half-Celestial wooden figurine</entry>
+		<entry>Half-Dragon wooden figurine</entry>
+		<entry>Half-Fiend wooden figurine</entry>
+		<entry>Hill Giant wooden figurine</entry>
+		<entry>Hobgoblin wooden figurine</entry>
+		<entry>Kobold wooden figurine</entry>
+		<entry>Orc wooden figurine</entry>
+		<entry>Stone Giant wooden figurine</entry>
+		<entry>Storm Giant wooden figurine</entry>
+		<entry>Mind Flayer wooden figurine</entry>
+		<entry>Ogre wooden figurine</entry>
+		<entry>Troll wooden figurine</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Wheels, Wooden)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Wooden)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, HugeRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Flexible)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (More Than Two Legs)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (More Than Two Legs, Wooden)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Sheetlike)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Two Legs)Rare</name>
-		<entry>Agender</entry>
+		<entry>Cloud Giant statue</entry>
+		<entry>Fire Giant statue</entry>
+		<entry>Frost Giant statue</entry>
+		<entry>Goblin statue</entry>
+		<entry>Half-Celestial statue</entry>
+		<entry>Half-Dragon statue</entry>
+		<entry>Half-Fiend statue</entry>
+		<entry>Hill Giant statue</entry>
+		<entry>Hobgoblin statue</entry>
+		<entry>Kobold statue</entry>
+		<entry>Orc statue</entry>
+		<entry>Stone Giant statue</entry>
+		<entry>Storm Giant statue</entry>
+		<entry>Mind Flayer statue</entry>
+		<entry>Ogre statue</entry>
+		<entry>Troll statue</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Two Legs, Wooden)Rare</name>
-		<entry>Agender</entry>
+		<entry>Cloud Giant wooden figurine</entry>
+		<entry>Fire Giant wooden figurine</entry>
+		<entry>Frost Giant wooden figurine</entry>
+		<entry>Goblin wooden figurine</entry>
+		<entry>Half-Celestial wooden figurine</entry>
+		<entry>Half-Dragon wooden figurine</entry>
+		<entry>Half-Fiend wooden figurine</entry>
+		<entry>Hill Giant wooden figurine</entry>
+		<entry>Hobgoblin wooden figurine</entry>
+		<entry>Kobold wooden figurine</entry>
+		<entry>Orc wooden figurine</entry>
+		<entry>Stone Giant wooden figurine</entry>
+		<entry>Storm Giant wooden figurine</entry>
+		<entry>Mind Flayer wooden figurine</entry>
+		<entry>Ogre wooden figurine</entry>
+		<entry>Troll wooden figurine</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Wheels, Wooden)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Wooden)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, LargeRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Flexible)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (More Than Two Legs)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (More Than Two Legs, Wooden)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Sheetlike)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Two Legs)Rare</name>
-		<entry>Agender</entry>
+		<entry>Cloud Giant statue</entry>
+		<entry>Fire Giant statue</entry>
+		<entry>Frost Giant statue</entry>
+		<entry>Goblin statue</entry>
+		<entry>Half-Celestial statue</entry>
+		<entry>Half-Dragon statue</entry>
+		<entry>Half-Fiend statue</entry>
+		<entry>Hill Giant statue</entry>
+		<entry>Hobgoblin statue</entry>
+		<entry>Kobold statue</entry>
+		<entry>Orc statue</entry>
+		<entry>Stone Giant statue</entry>
+		<entry>Storm Giant statue</entry>
+		<entry>Mind Flayer statue</entry>
+		<entry>Ogre statue</entry>
+		<entry>Troll statue</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Two Legs, Wooden)Rare</name>
-		<entry>Agender</entry>
+		<entry>Cloud Giant wooden figurine</entry>
+		<entry>Fire Giant wooden figurine</entry>
+		<entry>Frost Giant wooden figurine</entry>
+		<entry>Goblin wooden figurine</entry>
+		<entry>Half-Celestial wooden figurine</entry>
+		<entry>Half-Dragon wooden figurine</entry>
+		<entry>Half-Fiend wooden figurine</entry>
+		<entry>Hill Giant wooden figurine</entry>
+		<entry>Hobgoblin wooden figurine</entry>
+		<entry>Kobold wooden figurine</entry>
+		<entry>Orc wooden figurine</entry>
+		<entry>Stone Giant wooden figurine</entry>
+		<entry>Storm Giant wooden figurine</entry>
+		<entry>Mind Flayer wooden figurine</entry>
+		<entry>Ogre wooden figurine</entry>
+		<entry>Troll wooden figurine</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Wheels, Wooden)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Wooden)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, MediumRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Flexible)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (More Than Two Legs)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (More Than Two Legs, Wooden)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Sheetlike)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Two Legs)Rare</name>
-		<entry>Agender</entry>
+		<entry>Cloud Giant statue</entry>
+		<entry>Fire Giant statue</entry>
+		<entry>Frost Giant statue</entry>
+		<entry>Goblin statue</entry>
+		<entry>Half-Celestial statue</entry>
+		<entry>Half-Dragon statue</entry>
+		<entry>Half-Fiend statue</entry>
+		<entry>Hill Giant statue</entry>
+		<entry>Hobgoblin statue</entry>
+		<entry>Kobold statue</entry>
+		<entry>Orc statue</entry>
+		<entry>Stone Giant statue</entry>
+		<entry>Storm Giant statue</entry>
+		<entry>Mind Flayer statue</entry>
+		<entry>Ogre statue</entry>
+		<entry>Troll statue</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Two Legs, Wooden)Rare</name>
-		<entry>Agender</entry>
+		<entry>Cloud Giant wooden figurine</entry>
+		<entry>Fire Giant wooden figurine</entry>
+		<entry>Frost Giant wooden figurine</entry>
+		<entry>Goblin wooden figurine</entry>
+		<entry>Half-Celestial wooden figurine</entry>
+		<entry>Half-Dragon wooden figurine</entry>
+		<entry>Half-Fiend wooden figurine</entry>
+		<entry>Hill Giant wooden figurine</entry>
+		<entry>Hobgoblin wooden figurine</entry>
+		<entry>Kobold wooden figurine</entry>
+		<entry>Orc wooden figurine</entry>
+		<entry>Stone Giant wooden figurine</entry>
+		<entry>Storm Giant wooden figurine</entry>
+		<entry>Mind Flayer wooden figurine</entry>
+		<entry>Ogre wooden figurine</entry>
+		<entry>Troll wooden figurine</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Wheels, Wooden)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Wooden)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, SmallRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Flexible)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (More Than Two Legs)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (More Than Two Legs, Wooden)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Sheetlike)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Two Legs)Rare</name>
-		<entry>Agender</entry>
+		<entry>Cloud Giant statue</entry>
+		<entry>Fire Giant statue</entry>
+		<entry>Frost Giant statue</entry>
+		<entry>Goblin statue</entry>
+		<entry>Half-Celestial statue</entry>
+		<entry>Half-Dragon statue</entry>
+		<entry>Half-Fiend statue</entry>
+		<entry>Hill Giant statue</entry>
+		<entry>Hobgoblin statue</entry>
+		<entry>Kobold statue</entry>
+		<entry>Orc statue</entry>
+		<entry>Stone Giant statue</entry>
+		<entry>Storm Giant statue</entry>
+		<entry>Mind Flayer statue</entry>
+		<entry>Ogre statue</entry>
+		<entry>Troll statue</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Two Legs, Wooden)Rare</name>
-		<entry>Agender</entry>
+		<entry>Cloud Giant wooden figurine</entry>
+		<entry>Fire Giant wooden figurine</entry>
+		<entry>Frost Giant wooden figurine</entry>
+		<entry>Goblin wooden figurine</entry>
+		<entry>Half-Celestial wooden figurine</entry>
+		<entry>Half-Dragon wooden figurine</entry>
+		<entry>Half-Fiend wooden figurine</entry>
+		<entry>Hill Giant wooden figurine</entry>
+		<entry>Hobgoblin wooden figurine</entry>
+		<entry>Kobold wooden figurine</entry>
+		<entry>Orc wooden figurine</entry>
+		<entry>Stone Giant wooden figurine</entry>
+		<entry>Storm Giant wooden figurine</entry>
+		<entry>Mind Flayer wooden figurine</entry>
+		<entry>Ogre wooden figurine</entry>
+		<entry>Troll wooden figurine</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Wheels, Wooden)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Wooden)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, TinyRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Flexible)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (More Than Two Legs)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (More Than Two Legs, Wooden)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Sheetlike)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Two Legs)Rare</name>
-		<entry>Agender</entry>
+		<entry>Cloud Giant statue</entry>
+		<entry>Fire Giant statue</entry>
+		<entry>Frost Giant statue</entry>
+		<entry>Goblin statue</entry>
+		<entry>Half-Celestial statue</entry>
+		<entry>Half-Dragon statue</entry>
+		<entry>Half-Fiend statue</entry>
+		<entry>Hill Giant statue</entry>
+		<entry>Hobgoblin statue</entry>
+		<entry>Kobold statue</entry>
+		<entry>Orc statue</entry>
+		<entry>Stone Giant statue</entry>
+		<entry>Storm Giant statue</entry>
+		<entry>Mind Flayer statue</entry>
+		<entry>Ogre statue</entry>
+		<entry>Troll statue</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Two Legs, Wooden)Rare</name>
-		<entry>Agender</entry>
+		<entry>Cloud Giant wooden figurine</entry>
+		<entry>Fire Giant wooden figurine</entry>
+		<entry>Frost Giant wooden figurine</entry>
+		<entry>Goblin wooden figurine</entry>
+		<entry>Half-Celestial wooden figurine</entry>
+		<entry>Half-Dragon wooden figurine</entry>
+		<entry>Half-Fiend wooden figurine</entry>
+		<entry>Hill Giant wooden figurine</entry>
+		<entry>Hobgoblin wooden figurine</entry>
+		<entry>Kobold wooden figurine</entry>
+		<entry>Orc wooden figurine</entry>
+		<entry>Stone Giant wooden figurine</entry>
+		<entry>Storm Giant wooden figurine</entry>
+		<entry>Mind Flayer wooden figurine</entry>
+		<entry>Ogre wooden figurine</entry>
+		<entry>Troll wooden figurine</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Wheels, Wooden)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Wooden)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>AnkhegRare</name>
@@ -11299,253 +12209,195 @@
 	</collection>
 	<collection>
 		<name>Angel, SolarVeryRare</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, ColossalVeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Flexible)VeryRare</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (More Than Two Legs)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (More Than Two Legs, Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Sheetlike)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Two Legs)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Two Legs, Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Wheels, Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Colossal (Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, GargantuanVeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Flexible)VeryRare</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (More Than Two Legs)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (More Than Two Legs, Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Sheetlike)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Two Legs)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Two Legs, Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Wheels, Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Gargantuan (Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, HugeVeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Flexible)VeryRare</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (More Than Two Legs)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (More Than Two Legs, Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Sheetlike)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Two Legs)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Two Legs, Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Wheels, Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Huge (Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, LargeVeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Flexible)VeryRare</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (More Than Two Legs)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (More Than Two Legs, Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Sheetlike)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Two Legs)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Two Legs, Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Wheels, Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Large (Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, MediumVeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Flexible)VeryRare</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (More Than Two Legs)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (More Than Two Legs, Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Sheetlike)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Two Legs)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Two Legs, Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Wheels, Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Medium (Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, SmallVeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Flexible)VeryRare</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (More Than Two Legs)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (More Than Two Legs, Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Sheetlike)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Two Legs)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Two Legs, Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Wheels, Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Small (Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, TinyVeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Flexible)VeryRare</name>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (More Than Two Legs)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (More Than Two Legs, Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Sheetlike)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Two Legs)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Two Legs, Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Wheels, Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Animated Object, Tiny (Wooden)VeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>AnkhegVeryRare</name>

@@ -168,43 +168,65 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "Wooden Stool" };
             appearances[CreatureConstants.AnimatedObject_Colossal_Sheetlike][Rarity.Common] = new[] { "Carpet", "Tapestry", "Rug", "Blanket" };
             appearances[CreatureConstants.AnimatedObject_Colossal_TwoLegs] = GetWeightedAppearances(
-                commonOther: new[] { "Human statue", "High Elf statue", "Lightfoot Halfling statue", "Hill Dwarf statue", "Rock Gnome statue", "Half-Elf statue",
-                    "Half-Orc statue", "Suit of plate armor" },
-                uncommonOther: new[] { "Wood Elf statue", "Wild Elf statue", "Gray Elf statue", "Aquatic Elf statue", "Drow statue",
+                commonOther: [ "Human statue", "High Elf statue", "Lightfoot Halfling statue", "Hill Dwarf statue", "Rock Gnome statue", "Half-Elf statue",
+                    "Half-Orc statue", "Suit of plate armor" ],
+                uncommonOther: [ "Wood Elf statue", "Wild Elf statue", "Gray Elf statue", "Aquatic Elf statue", "Drow statue",
                     "Tallfellow Halfling statue", "Deep Halfling statue",
                     "Mountain Dwarf statue", "Deep Dwarf statue", "Duergar statue",
                     "Forest Gnome statue", "Svirfneblin statue",
-                    "Aasimar statue", "Tiefling statue" },
-                rareOther: new[] { "Orc statue", "Goblin statue", "Hobgoblin statue", "Kobold statue", "Troll statue", "Ogre statue", "Mind Flayer statue",
+                    "Aasimar statue", "Tiefling statue" ],
+                rareOther: [ "Orc statue", "Goblin statue", "Hobgoblin statue", "Kobold statue", "Troll statue", "Ogre statue", "Mind Flayer statue",
                     "Hill Giant statue", "Frost Giant statue", "Fire Giant statue", "Stone Giant statue", "Cloud Giant statue", "Storm Giant statue",
-                    "Half-Celestial statue", "Half-Fiend statue", "Half-Dragon statue" });
-            appearances[CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden][Rarity.Common] = [ "Ladder",
-                "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine", "Rock Gnome wooden figurine",
-                    "Half-Elf wooden figurine", "Half-Orc wooden figurine" ];
+                    "Half-Celestial statue", "Half-Fiend statue", "Half-Dragon statue" ]);
+            appearances[CreatureConstants.AnimatedObject_Colossal_TwoLegs_Wooden] = GetWeightedAppearances(
+                commonOther: [ "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine",
+                    "Rock Gnome wooden figurine", "Half-Elf wooden figurine",
+                    "Half-Orc wooden figurine", "Ladder" ],
+                uncommonOther: [ "Wood Elf wooden figurine", "Wild Elf wooden figurine", "Gray Elf wooden figurine", "Aquatic Elf wooden figurine", "Drow wooden figurine",
+                    "Tallfellow Halfling wooden figurine", "Deep Halfling wooden figurine",
+                    "Mountain Dwarf wooden figurine", "Deep Dwarf wooden figurine", "Duergar wooden figurine",
+                    "Forest Gnome wooden figurine", "Svirfneblin wooden figurine",
+                    "Aasimar wooden figurine", "Tiefling wooden figurine" ],
+                rareOther: [ "Orc wooden figurine", "Goblin wooden figurine", "Hobgoblin wooden figurine", "Kobold wooden figurine", "Troll wooden figurine",
+                    "Ogre wooden figurine", "Mind Flayer wooden figurine",
+                    "Hill Giant wooden figurine", "Frost Giant wooden figurine", "Fire Giant wooden figurine", "Stone Giant wooden figurine", "Cloud Giant wooden figurine",
+                    "Storm Giant wooden figurine",
+                    "Half-Celestial wooden figurine", "Half-Fiend wooden figurine", "Half-Dragon wooden figurine" ]);
             appearances[CreatureConstants.AnimatedObject_Colossal_Wheels_Wooden][Rarity.Common] = ["Cart", "Carriage"];
             appearances[CreatureConstants.AnimatedObject_Colossal_Wooden][Rarity.Common] = ["Clock", "Feather Duster", "Broom", "Bucket", "Barrel"];
-            appearances[CreatureConstants.AnimatedObject_Gargantuan][Rarity.Common] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_Flexible][Rarity.Common] = new[] { "Rope", "Vine", "Chain" };
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs][Rarity.Common] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden][Rarity.Common] = new[] { "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
-                "Wooden Stool" };
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_Sheetlike][Rarity.Common] = new[] { "Carpet", "Tapestry", "Rug", "Blanket" };
+            appearances[CreatureConstants.AnimatedObject_Gargantuan][Rarity.Common] = ["Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub"];
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_Flexible][Rarity.Common] = ["Rope", "Vine", "Chain"];
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs][Rarity.Common] = ["Stone Table", "Stone Chair", "Stone Dresser"];
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_MultipleLegs_Wooden][Rarity.Common] = [ "Wooden Table", "Wooden Chair", "Wooden Dresser", "Wooden Ottoman",
+                "Wooden Stool" ];
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_Sheetlike][Rarity.Common] = ["Carpet", "Tapestry", "Rug", "Blanket"];
             appearances[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs] = GetWeightedAppearances(
-                commonOther: new[] { "Human statue", "High Elf statue", "Lightfoot Halfling statue", "Hill Dwarf statue", "Rock Gnome statue", "Half-Elf statue",
-                    "Half-Orc statue", "Suit of plate armor" },
-                uncommonOther: new[] { "Wood Elf statue", "Wild Elf statue", "Gray Elf statue", "Aquatic Elf statue", "Drow statue",
+                commonOther: [ "Human statue", "High Elf statue", "Lightfoot Halfling statue", "Hill Dwarf statue", "Rock Gnome statue", "Half-Elf statue",
+                    "Half-Orc statue", "Suit of plate armor" ],
+                uncommonOther: [ "Wood Elf statue", "Wild Elf statue", "Gray Elf statue", "Aquatic Elf statue", "Drow statue",
                     "Tallfellow Halfling statue", "Deep Halfling statue",
                     "Mountain Dwarf statue", "Deep Dwarf statue", "Duergar statue",
                     "Forest Gnome statue", "Svirfneblin statue",
-                    "Aasimar statue", "Tiefling statue" },
-                rareOther: new[] { "Orc statue", "Goblin statue", "Hobgoblin statue", "Kobold statue", "Troll statue", "Ogre statue", "Mind Flayer statue",
+                    "Aasimar statue", "Tiefling statue" ],
+                rareOther: [ "Orc statue", "Goblin statue", "Hobgoblin statue", "Kobold statue", "Troll statue", "Ogre statue", "Mind Flayer statue",
                     "Hill Giant statue", "Frost Giant statue", "Fire Giant statue", "Stone Giant statue", "Cloud Giant statue", "Storm Giant statue",
-                    "Half-Celestial statue", "Half-Fiend statue", "Half-Dragon statue" });
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden][Rarity.Common] = new[] { "Ladder",
-                "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine", "Rock Gnome wooden figurine",
-                    "Half-Elf wooden figurine", "Half-Orc wooden figurine" };
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden][Rarity.Common] = new[] { "Cart", "Carriage" };
-            appearances[CreatureConstants.AnimatedObject_Gargantuan_Wooden][Rarity.Common] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
+                    "Half-Celestial statue", "Half-Fiend statue", "Half-Dragon statue" ]);
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_TwoLegs_Wooden] = GetWeightedAppearances(
+                commonOther: [ "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine",
+                    "Rock Gnome wooden figurine", "Half-Elf wooden figurine",
+                    "Half-Orc wooden figurine", "Ladder" ],
+                uncommonOther: [ "Wood Elf wooden figurine", "Wild Elf wooden figurine", "Gray Elf wooden figurine", "Aquatic Elf wooden figurine", "Drow wooden figurine",
+                    "Tallfellow Halfling wooden figurine", "Deep Halfling wooden figurine",
+                    "Mountain Dwarf wooden figurine", "Deep Dwarf wooden figurine", "Duergar wooden figurine",
+                    "Forest Gnome wooden figurine", "Svirfneblin wooden figurine",
+                    "Aasimar wooden figurine", "Tiefling wooden figurine" ],
+                rareOther: [ "Orc wooden figurine", "Goblin wooden figurine", "Hobgoblin wooden figurine", "Kobold wooden figurine", "Troll wooden figurine",
+                    "Ogre wooden figurine", "Mind Flayer wooden figurine",
+                    "Hill Giant wooden figurine", "Frost Giant wooden figurine", "Fire Giant wooden figurine", "Stone Giant wooden figurine", "Cloud Giant wooden figurine",
+                    "Storm Giant wooden figurine",
+                    "Half-Celestial wooden figurine", "Half-Fiend wooden figurine", "Half-Dragon wooden figurine" ]);
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_Wheels_Wooden][Rarity.Common] = ["Cart", "Carriage"];
+            appearances[CreatureConstants.AnimatedObject_Gargantuan_Wooden][Rarity.Common] = ["Clock", "Feather Duster", "Broom", "Bucket", "Barrel"];
             appearances[CreatureConstants.AnimatedObject_Huge][Rarity.Common] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
             appearances[CreatureConstants.AnimatedObject_Huge_Flexible][Rarity.Common] = new[] { "Rope", "Vine", "Chain" };
             appearances[CreatureConstants.AnimatedObject_Huge_MultipleLegs][Rarity.Common] = new[] { "Stone Table", "Stone Chair", "Stone Dresser" };
@@ -222,9 +244,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 rareOther: new[] { "Orc statue", "Goblin statue", "Hobgoblin statue", "Kobold statue", "Troll statue", "Ogre statue", "Mind Flayer statue",
                     "Hill Giant statue", "Frost Giant statue", "Fire Giant statue", "Stone Giant statue", "Cloud Giant statue", "Storm Giant statue",
                     "Half-Celestial statue", "Half-Fiend statue", "Half-Dragon statue" });
-            appearances[CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden][Rarity.Common] = new[] { "Ladder",
-                "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine", "Rock Gnome wooden figurine",
-                    "Half-Elf wooden figurine", "Half-Orc wooden figurine" };
+            appearances[CreatureConstants.AnimatedObject_Huge_TwoLegs_Wooden] = GetWeightedAppearances(
+                commonOther: [ "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine",
+                    "Rock Gnome wooden figurine", "Half-Elf wooden figurine",
+                    "Half-Orc wooden figurine", "Ladder" ],
+                uncommonOther: [ "Wood Elf wooden figurine", "Wild Elf wooden figurine", "Gray Elf wooden figurine", "Aquatic Elf wooden figurine", "Drow wooden figurine",
+                    "Tallfellow Halfling wooden figurine", "Deep Halfling wooden figurine",
+                    "Mountain Dwarf wooden figurine", "Deep Dwarf wooden figurine", "Duergar wooden figurine",
+                    "Forest Gnome wooden figurine", "Svirfneblin wooden figurine",
+                    "Aasimar wooden figurine", "Tiefling wooden figurine" ],
+                rareOther: [ "Orc wooden figurine", "Goblin wooden figurine", "Hobgoblin wooden figurine", "Kobold wooden figurine", "Troll wooden figurine",
+                    "Ogre wooden figurine", "Mind Flayer wooden figurine",
+                    "Hill Giant wooden figurine", "Frost Giant wooden figurine", "Fire Giant wooden figurine", "Stone Giant wooden figurine", "Cloud Giant wooden figurine",
+                    "Storm Giant wooden figurine",
+                    "Half-Celestial wooden figurine", "Half-Fiend wooden figurine", "Half-Dragon wooden figurine" ]);
             appearances[CreatureConstants.AnimatedObject_Huge_Wheels_Wooden][Rarity.Common] = new[] { "Cart", "Carriage" };
             appearances[CreatureConstants.AnimatedObject_Huge_Wooden][Rarity.Common] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
             appearances[CreatureConstants.AnimatedObject_Large][Rarity.Common] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
@@ -244,9 +277,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 rareOther: new[] { "Orc statue", "Goblin statue", "Hobgoblin statue", "Kobold statue", "Troll statue", "Ogre statue", "Mind Flayer statue",
                     "Hill Giant statue", "Frost Giant statue", "Fire Giant statue", "Stone Giant statue", "Cloud Giant statue", "Storm Giant statue",
                     "Half-Celestial statue", "Half-Fiend statue", "Half-Dragon statue" });
-            appearances[CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden][Rarity.Common] = new[] { "Ladder",
-                "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine", "Rock Gnome wooden figurine",
-                    "Half-Elf wooden figurine", "Half-Orc wooden figurine" };
+            appearances[CreatureConstants.AnimatedObject_Large_TwoLegs_Wooden] = GetWeightedAppearances(
+                commonOther: [ "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine",
+                    "Rock Gnome wooden figurine", "Half-Elf wooden figurine",
+                    "Half-Orc wooden figurine", "Ladder" ],
+                uncommonOther: [ "Wood Elf wooden figurine", "Wild Elf wooden figurine", "Gray Elf wooden figurine", "Aquatic Elf wooden figurine", "Drow wooden figurine",
+                    "Tallfellow Halfling wooden figurine", "Deep Halfling wooden figurine",
+                    "Mountain Dwarf wooden figurine", "Deep Dwarf wooden figurine", "Duergar wooden figurine",
+                    "Forest Gnome wooden figurine", "Svirfneblin wooden figurine",
+                    "Aasimar wooden figurine", "Tiefling wooden figurine" ],
+                rareOther: [ "Orc wooden figurine", "Goblin wooden figurine", "Hobgoblin wooden figurine", "Kobold wooden figurine", "Troll wooden figurine",
+                    "Ogre wooden figurine", "Mind Flayer wooden figurine",
+                    "Hill Giant wooden figurine", "Frost Giant wooden figurine", "Fire Giant wooden figurine", "Stone Giant wooden figurine", "Cloud Giant wooden figurine",
+                    "Storm Giant wooden figurine",
+                    "Half-Celestial wooden figurine", "Half-Fiend wooden figurine", "Half-Dragon wooden figurine" ]);
             appearances[CreatureConstants.AnimatedObject_Large_Wheels_Wooden][Rarity.Common] = new[] { "Cart", "Carriage" };
             appearances[CreatureConstants.AnimatedObject_Large_Wooden][Rarity.Common] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
             appearances[CreatureConstants.AnimatedObject_Medium][Rarity.Common] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
@@ -266,9 +310,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 rareOther: new[] { "Orc statue", "Goblin statue", "Hobgoblin statue", "Kobold statue", "Troll statue", "Ogre statue", "Mind Flayer statue",
                     "Hill Giant statue", "Frost Giant statue", "Fire Giant statue", "Stone Giant statue", "Cloud Giant statue", "Storm Giant statue",
                     "Half-Celestial statue", "Half-Fiend statue", "Half-Dragon statue" });
-            appearances[CreatureConstants.AnimatedObject_Medium_TwoLegs_Wooden][Rarity.Common] = new[] { "Ladder",
-                "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine", "Rock Gnome wooden figurine",
-                    "Half-Elf wooden figurine", "Half-Orc wooden figurine" };
+            appearances[CreatureConstants.AnimatedObject_Medium_TwoLegs_Wooden] = GetWeightedAppearances(
+                commonOther: [ "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine",
+                    "Rock Gnome wooden figurine", "Half-Elf wooden figurine",
+                    "Half-Orc wooden figurine", "Ladder" ],
+                uncommonOther: [ "Wood Elf wooden figurine", "Wild Elf wooden figurine", "Gray Elf wooden figurine", "Aquatic Elf wooden figurine", "Drow wooden figurine",
+                    "Tallfellow Halfling wooden figurine", "Deep Halfling wooden figurine",
+                    "Mountain Dwarf wooden figurine", "Deep Dwarf wooden figurine", "Duergar wooden figurine",
+                    "Forest Gnome wooden figurine", "Svirfneblin wooden figurine",
+                    "Aasimar wooden figurine", "Tiefling wooden figurine" ],
+                rareOther: [ "Orc wooden figurine", "Goblin wooden figurine", "Hobgoblin wooden figurine", "Kobold wooden figurine", "Troll wooden figurine",
+                    "Ogre wooden figurine", "Mind Flayer wooden figurine",
+                    "Hill Giant wooden figurine", "Frost Giant wooden figurine", "Fire Giant wooden figurine", "Stone Giant wooden figurine", "Cloud Giant wooden figurine",
+                    "Storm Giant wooden figurine",
+                    "Half-Celestial wooden figurine", "Half-Fiend wooden figurine", "Half-Dragon wooden figurine" ]);
             appearances[CreatureConstants.AnimatedObject_Medium_Wheels_Wooden][Rarity.Common] = new[] { "Cart", "Carriage" };
             appearances[CreatureConstants.AnimatedObject_Medium_Wooden][Rarity.Common] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
             appearances[CreatureConstants.AnimatedObject_Small][Rarity.Common] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
@@ -288,9 +343,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 rareOther: new[] { "Orc statue", "Goblin statue", "Hobgoblin statue", "Kobold statue", "Troll statue", "Ogre statue", "Mind Flayer statue",
                     "Hill Giant statue", "Frost Giant statue", "Fire Giant statue", "Stone Giant statue", "Cloud Giant statue", "Storm Giant statue",
                     "Half-Celestial statue", "Half-Fiend statue", "Half-Dragon statue" });
-            appearances[CreatureConstants.AnimatedObject_Small_TwoLegs_Wooden][Rarity.Common] = new[] { "Ladder",
-                "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine", "Rock Gnome wooden figurine",
-                    "Half-Elf wooden figurine", "Half-Orc wooden figurine" };
+            appearances[CreatureConstants.AnimatedObject_Small_TwoLegs_Wooden] = GetWeightedAppearances(
+                commonOther: [ "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine",
+                    "Rock Gnome wooden figurine", "Half-Elf wooden figurine",
+                    "Half-Orc wooden figurine", "Ladder" ],
+                uncommonOther: [ "Wood Elf wooden figurine", "Wild Elf wooden figurine", "Gray Elf wooden figurine", "Aquatic Elf wooden figurine", "Drow wooden figurine",
+                    "Tallfellow Halfling wooden figurine", "Deep Halfling wooden figurine",
+                    "Mountain Dwarf wooden figurine", "Deep Dwarf wooden figurine", "Duergar wooden figurine",
+                    "Forest Gnome wooden figurine", "Svirfneblin wooden figurine",
+                    "Aasimar wooden figurine", "Tiefling wooden figurine" ],
+                rareOther: [ "Orc wooden figurine", "Goblin wooden figurine", "Hobgoblin wooden figurine", "Kobold wooden figurine", "Troll wooden figurine",
+                    "Ogre wooden figurine", "Mind Flayer wooden figurine",
+                    "Hill Giant wooden figurine", "Frost Giant wooden figurine", "Fire Giant wooden figurine", "Stone Giant wooden figurine", "Cloud Giant wooden figurine",
+                    "Storm Giant wooden figurine",
+                    "Half-Celestial wooden figurine", "Half-Fiend wooden figurine", "Half-Dragon wooden figurine" ]);
             appearances[CreatureConstants.AnimatedObject_Small_Wheels_Wooden][Rarity.Common] = new[] { "Cart", "Carriage" };
             appearances[CreatureConstants.AnimatedObject_Small_Wooden][Rarity.Common] = new[] { "Clock", "Feather Duster", "Broom", "Bucket", "Barrel" };
             appearances[CreatureConstants.AnimatedObject_Tiny][Rarity.Common] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
@@ -310,9 +376,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 rareOther: [ "Orc statue", "Goblin statue", "Hobgoblin statue", "Kobold statue", "Troll statue", "Ogre statue", "Mind Flayer statue",
                     "Hill Giant statue", "Frost Giant statue", "Fire Giant statue", "Stone Giant statue", "Cloud Giant statue", "Storm Giant statue",
                     "Half-Celestial statue", "Half-Fiend statue", "Half-Dragon statue" ]);
-            appearances[CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden][Rarity.Common] = [ "Ladder",
-                "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine", "Rock Gnome wooden figurine",
-                    "Half-Elf wooden figurine", "Half-Orc wooden figurine" ];
+            appearances[CreatureConstants.AnimatedObject_Tiny_TwoLegs_Wooden] = GetWeightedAppearances(
+                commonOther: [ "Human wooden figurine", "High Elf wooden figurine", "Lightfoot Halfling wooden figurine", "Hill Dwarf wooden figurine",
+                    "Rock Gnome wooden figurine", "Half-Elf wooden figurine",
+                    "Half-Orc wooden figurine", "Ladder" ],
+                uncommonOther: [ "Wood Elf wooden figurine", "Wild Elf wooden figurine", "Gray Elf wooden figurine", "Aquatic Elf wooden figurine", "Drow wooden figurine",
+                    "Tallfellow Halfling wooden figurine", "Deep Halfling wooden figurine",
+                    "Mountain Dwarf wooden figurine", "Deep Dwarf wooden figurine", "Duergar wooden figurine",
+                    "Forest Gnome wooden figurine", "Svirfneblin wooden figurine",
+                    "Aasimar wooden figurine", "Tiefling wooden figurine" ],
+                rareOther: [ "Orc wooden figurine", "Goblin wooden figurine", "Hobgoblin wooden figurine", "Kobold wooden figurine", "Troll wooden figurine",
+                    "Ogre wooden figurine", "Mind Flayer wooden figurine",
+                    "Hill Giant wooden figurine", "Frost Giant wooden figurine", "Fire Giant wooden figurine", "Stone Giant wooden figurine", "Cloud Giant wooden figurine",
+                    "Storm Giant wooden figurine",
+                    "Half-Celestial wooden figurine", "Half-Fiend wooden figurine", "Half-Dragon wooden figurine" ]);
             appearances[CreatureConstants.AnimatedObject_Tiny_Wheels_Wooden][Rarity.Common] = ["Cart", "Carriage"];
             appearances[CreatureConstants.AnimatedObject_Tiny_Wooden][Rarity.Common] = ["Clock", "Feather Duster", "Broom", "Bucket", "Barrel"];
             //Source: https://forgottenrealms.fandom.com/wiki/Ankheg
@@ -325,25 +402,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allHair: ["Black hair"],
                 allEyes: ["Dull, greenish-yellow eyes"],
                 commonOther: [ "Lean with long, lanky limbs. Long, spiraling, stylized, black nails",
-                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized black nails",
+                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized, black nails",
                     "Lean with long, lanky limbs. Long, spiraling, stylized, rust-colored nails",
-                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized rust-colored nails" ],
+                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized, rust-colored nails" ],
                 uncommonOther: [ "Lean with long, lanky limbs. Long, spiraling, stylized, black nails. Chewed-through cheeks, etching a gangrenous grin",
-                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized black nails. Chewed-through cheeks, etching a gangrenous grin",
+                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized, black nails. Chewed-through cheeks, etching a gangrenous grin",
                     "Lean with long, lanky limbs. Long, spiraling, stylized, rust-colored nails. Chewed-through cheeks, etching a gangrenous grin",
-                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized rust-colored nails. Chewed-through cheeks, etching a gangrenous grin",
+                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized, rust-colored nails. Chewed-through cheeks, etching a gangrenous grin",
                     "Lean with long, lanky limbs. Long, spiraling, stylized, black nails. Corpses stitched to her back",
-                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized black nails. Corpses stitched to her back",
+                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized, black nails. Corpses stitched to her back",
                     "Lean with long, lanky limbs. Long, spiraling, stylized, rust-colored nails. Corpses stitched to her back",
-                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized rust-colored nails. Corpses stitched to her back",
+                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized, rust-colored nails. Corpses stitched to her back",
                     "Lean with long, lanky limbs. Long, spiraling, stylized, black nails. Right hand is a grafted Troll hand",
-                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized black nails. Right hand is a grafted Troll hand",
+                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized, black nails. Right hand is a grafted Troll hand",
                     "Lean with long, lanky limbs. Long, spiraling, stylized, rust-colored nails. Right hand is a grafted Troll hand",
-                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized rust-colored nails. Right hand is a grafted Troll hand",
+                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized, rust-colored nails. Right hand is a grafted Troll hand",
                     "Lean with long, lanky limbs. Long, spiraling, stylized, black nails. Left hand is a grafted Troll hand",
-                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized black nails. Left hand is a grafted Troll hand",
+                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized, black nails. Left hand is a grafted Troll hand",
                     "Lean with long, lanky limbs. Long, spiraling, stylized, rust-colored nails. Left hand is a grafted Troll hand",
-                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized rust-colored nails. Left hand is a grafted Troll hand"  ]);
+                    "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized, rust-colored nails. Left hand is a grafted Troll hand"  ]);
             //Source: https://forgottenrealms.fandom.com/wiki/Giant_ant
             appearances[CreatureConstants.Ant_Giant_Worker][Rarity.Common] = ["Black skin", "Red skin", "Brown skin"];
             appearances[CreatureConstants.Ant_Giant_Soldier][Rarity.Common] = ["Black skin", "Red skin", "Brown skin"];
@@ -1632,33 +1709,35 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.d20srd.org/srd/monsters/elf.htm
             //https://forgottenrealms.fandom.com/wiki/Grey_elf
             appearances[CreatureConstants.Elf_Gray] = GetWeightedAppearances(
-                commonSkin: new[] { "Pale grey skin" },
-                commonHair: new[] { "Straight silver hair", "Curly silver hair", "Kinky silver hair" },
-                uncommonHair: new[] { "Straight pale-golden hair", "Curly pale-golden hair", "Kinky pale-golden hair" },
-                commonEyes: new[] { "Amber eyes" },
-                uncommonEyes: new[] { "Violet eyes" },
-                allOther: new[] { "Pointed ears" });
+                commonSkin: ["Pale grey skin"],
+                commonHair: ["Straight silver hair", "Curly silver hair", "Kinky silver hair"],
+                uncommonHair: ["Straight pale-golden hair", "Curly pale-golden hair", "Kinky pale-golden hair"],
+                commonEyes: ["Amber eyes"],
+                uncommonEyes: ["Violet eyes"],
+                allOther: ["Pointed ears"]);
             //Source: https://www.d20srd.org/srd/monsters/elf.htm
             appearances[CreatureConstants.Elf_Half] = GetWeightedAppearances(
-                commonSkin: new[] { "TODO Human skin",
-                    "TODO High Elf Skin" },
-                uncommonSkin: new[] { "TODO Grey Elf Skin",
+                commonSkin: [ "TODO Human skin",
+                    "TODO High Elf Skin" ],
+                uncommonSkin: [ "Pale grey skin",
                     "TODO Wood Elf Skin",
                     "TODO Wild Elf Skin",
-                    "TODO Drow Skin" },
-                commonHair: new[] { "TODO Human hair",
-                    "TODO High Elf Hair" },
-                uncommonHair: new[] { "TODO Grey Elf Hair",
+                    "TODO Drow Skin" ],
+                commonHair: [ "TODO Human hair",
+                    "TODO High Elf Hair" ],
+                uncommonHair: [ "Straight silver hair", "Curly silver hair", "Kinky silver hair",
                     "TODO Wood Elf Hair",
                     "TODO Wild Elf Hair",
-                    "TODO Drow Hair" },
-                commonEyes: new[] { "TODO Human eyes",
-                    "TODO High Elf eyes" },
-                uncommonEyes: new[] { "TODO Grey Elf Eyes",
+                    "TODO Drow Hair" ],
+                rareHair: ["Straight pale-golden hair", "Curly pale-golden hair", "Kinky pale-golden hair"],
+                commonEyes: [ "TODO Human eyes",
+                    "TODO High Elf eyes" ],
+                uncommonEyes: [ "Amber eyes",
                     "TODO Wood Elf Eyes",
                     "TODO Wild Elf Eyes",
-                    "TODO Drow Eyes" },
-                allOther: new[] { "Pointed ears" });
+                    "TODO Drow Eyes" ],
+                rareEyes: ["Violet eyes"],
+                allOther: ["Pointed ears"]);
             //Source: https://forgottenrealms.fandom.com/wiki/High_elf
             appearances[CreatureConstants.Elf_High] = GetWeightedAppearances(
                 commonSkin: new[] { "Brown skin", "Olive skin", "White skin", "Pink skin",
@@ -4248,6 +4327,28 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 return (Rarity)((int)source + 1);
 
             return (Rarity)Math.Max((int)source, (int)additional);
+        }
+
+        [TestCase(Rarity.Common, Rarity.Common, Rarity.Common)]
+        [TestCase(Rarity.Common, Rarity.Uncommon, Rarity.Uncommon)]
+        [TestCase(Rarity.Common, Rarity.Rare, Rarity.Rare)]
+        [TestCase(Rarity.Common, Rarity.VeryRare, Rarity.VeryRare)]
+        [TestCase(Rarity.Uncommon, Rarity.Common, Rarity.Uncommon)]
+        [TestCase(Rarity.Uncommon, Rarity.Uncommon, Rarity.Rare)]
+        [TestCase(Rarity.Uncommon, Rarity.Rare, Rarity.Rare)]
+        [TestCase(Rarity.Uncommon, Rarity.VeryRare, Rarity.VeryRare)]
+        [TestCase(Rarity.Rare, Rarity.Common, Rarity.Rare)]
+        [TestCase(Rarity.Rare, Rarity.Uncommon, Rarity.Rare)]
+        [TestCase(Rarity.Rare, Rarity.Rare, Rarity.VeryRare)]
+        [TestCase(Rarity.Rare, Rarity.VeryRare, Rarity.VeryRare)]
+        [TestCase(Rarity.VeryRare, Rarity.Common, Rarity.VeryRare)]
+        [TestCase(Rarity.VeryRare, Rarity.Uncommon, Rarity.VeryRare)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.VeryRare)]
+        [TestCase(Rarity.VeryRare, Rarity.VeryRare, Rarity.VeryRare)]
+        public void RarityComputesCorrectly(Rarity source, Rarity additional, Rarity expected)
+        {
+            var result = GetRarity(source, additional);
+            Assert.That(result, Is.EqualTo(expected));
         }
     }
 }
