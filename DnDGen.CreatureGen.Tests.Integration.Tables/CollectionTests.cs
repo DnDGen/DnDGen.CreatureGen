@@ -53,7 +53,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
 
         private void AssertCollection(IEnumerable<string> source, IEnumerable<string> expected, string message)
         {
-            Assert.That(source.OrderBy(s => s), Is.EquivalentTo(expected.OrderBy(e => e)), message);
+            //If descriptions are longer than this, there is a chance that the test failure message will be truncated
+            //When the test failure message is truncated, we might not be able to assess what to fix
+            if (!expected.Any(e => e.Length > 100))
+            {
+                Assert.That(source.OrderBy(s => s), Is.EquivalentTo(expected.OrderBy(e => e)), message);
+                return;
+            }
+
+            AssertOrderedCollection(source.OrderBy(s => s), expected.OrderBy(e => e), message);
         }
 
         public void AssertWeightedCollection(string name, params string[] collection)

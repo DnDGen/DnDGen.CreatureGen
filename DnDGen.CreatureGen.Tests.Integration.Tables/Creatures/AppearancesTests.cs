@@ -461,22 +461,24 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 ["Extra arm growing out of chest. Large, curved tusks on either side of a wide mouth. Relatively small eyes and nose for the size of the head. One ear significantly bigger than the other. Quite strong stench."];
             //Source: https://forgottenrealms.fandom.com/wiki/Avoral
             appearances[CreatureConstants.Avoral] = GetWeightedAppearances(
-                allSkin: ["TODO Human skin"],
+                allSkin: ["Dark brown skin", "Brown skin", "Light brown skin",
+                    "Dark tan skin", "Tan skin", "Light tan skin",
+                    "Pink skin", "White skin", "Pale white skin"],
                 allHair: ["Red feathers", "Blue feathers", "Brown feathers", "Black feathers", "White feathers"],
                 allEyes: ["Bright golden eyes"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Azer
             appearances[CreatureConstants.Azer] = GetWeightedAppearances(
-                allSkin: new[] { "Brass-colored skin" },
-                allHair: new[] { "Brass-colored hair, brass-colored beard", "Brass-colored hair, fiery-colored beard", "Brass-colored hair, literal fire for beard",
+                allSkin: ["Brass-colored skin"],
+                allHair: [ "Brass-colored hair, brass-colored beard", "Brass-colored hair, fiery-colored beard", "Brass-colored hair, literal fire for beard",
                     "Fiery-colored hair, brass-colored beard", "Fiery-colored hair, fiery-colored beard", "Fiery-colored hair, literal fire for beard",
-                    "Literal fire for hair, brass-colored beard", "Literal fire for hair, fiery-colored beard", "Literal fire for hair, literal fire for beard" },
-                allEyes: new[] { "TODO Dwarven eyes" });
+                    "Literal fire for hair, brass-colored beard", "Literal fire for hair, fiery-colored beard", "Literal fire for hair, literal fire for beard" ],
+                allEyes: ["TODO Dwarven eyes"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Babau
-            appearances[CreatureConstants.Babau][Rarity.Common] = new[] { "Black, leathery skin tight to a gaunt, skeletal frame. Terrible stench. Skull is tall and long with pointed ears and jaws filled with jagged teeth. A single long horn juts from the back of the skull, curving forward and downward. White eyes that glow red when glaring." };
+            appearances[CreatureConstants.Babau][Rarity.Common] = ["Black, leathery skin tight to a gaunt, skeletal frame. Terrible stench. Skull is tall and long with pointed ears and jaws filled with jagged teeth. A single long horn juts from the back of the skull, curving forward and downward. White eyes that glow red when glaring."];
             //Source: https://www.dimensions.com/element/rhesus-macaque-macaca-mulatta
-            appearances[CreatureConstants.Baboon][Rarity.Common] = new[] { "Brown hair, red face" };
+            appearances[CreatureConstants.Baboon][Rarity.Common] = ["Brown hair, red face"];
             //Source: https://animals.sandiegozoo.org/animals/honey-badger-ratel
-            appearances[CreatureConstants.Badger][Rarity.Common] = new[] { "Thick, coarse, black fur, with a wide gray-white stripe that stretches across the back, from the top of the head to the tip of the tail" };
+            appearances[CreatureConstants.Badger][Rarity.Common] = ["Thick, coarse, black fur, with a wide gray-white stripe that stretches across the back, from the top of the head to the tip of the tail"];
             //Multiplying up from normal badger. Length is about x2 from normal low, 2.5x for high
             appearances[CreatureConstants.Badger_Dire] = GetWeightedAppearances(
                 commonHair: new[] { "Thick brown fur" },
@@ -3291,15 +3293,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "TODO FEMALE mostly yellow tail",
                     "TODO FEMALE fully yellow tail",
                 },
-                allEyes: new[] { "Silvery-black eyes" },
-                allOther: new[] { "Webbed feet and hands; gills; finned tail; additional webbing down the back, on elbows, and where ears would be" });
+                allEyes: ["Silvery-black eyes"],
+                allOther: ["Webbed feet and hands; gills; finned tail; additional webbing down the back, on elbows, and where ears would be"]);
             appearances[CreatureConstants.Sahuagin_Malenti] = GetWeightedAppearances(
-                allSkin: new[] { "Greenish-silver skin" },
-                allHair: new[] { "Green hair", "Blue hair" },
-                allEyes: new[] { "Silvery-black eyes" },
-                allOther: new[] { "Resembles an Aquatic Elf" });
+                allSkin: ["Greenish-silver skin"],
+                allHair: ["Green hair", "Blue hair"],
+                allEyes: ["Silvery-black eyes"],
+                allOther: ["Resembles an Aquatic Elf"]);
             appearances[CreatureConstants.Sahuagin_Mutant] = GetWeightedAppearances(
-                allSkin: new[] { "Black skin on the back and gray in the front", "Black skin on the back and gray in the front, with dark stripes",
+                allSkin: [ "Black skin on the back and gray in the front", "Black skin on the back and gray in the front, with dark stripes",
                     "Black skin on the back and gray in the front, with dark bands",
                     "Black skin on the back and gray in the front, with dark spots",
                     "TODO FEMALE speckled yellow tail",
@@ -3307,32 +3309,32 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "TODO FEMALE mottled yellow tail",
                     "TODO FEMALE mostly yellow tail",
                     "TODO FEMALE fully yellow tail",
-                },
-                allEyes: new[] { "Silvery-black eyes" },
-                allOther: new[] { "Webbed feet and hands; gills; finned tail; additional webbing down the back, on elbows, and where ears would be; four arms" });
+                ],
+                allEyes: ["Silvery-black eyes"],
+                allOther: ["Webbed feet and hands; gills; finned tail; additional webbing down the back, on elbows, and where ears would be; four arms"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Salamander
-            appearances[CreatureConstants.Salamander_Flamebrother][Rarity.Common] = new[] { "Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. red fiery skin" };
-            appearances[CreatureConstants.Salamander_Average][Rarity.Common] = new[] { "Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. red fiery skin" };
-            appearances[CreatureConstants.Salamander_Noble][Rarity.Common] = new[] { "Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. red fiery skin" };
+            appearances[CreatureConstants.Salamander_Flamebrother][Rarity.Common] = ["Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. Red fiery skin"];
+            appearances[CreatureConstants.Salamander_Average][Rarity.Common] = ["Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. Red fiery skin"];
+            appearances[CreatureConstants.Salamander_Noble][Rarity.Common] = ["Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. Red fiery skin"];
             //Source: https://forgottenrealms.fandom.com/wiki/Satyr
             appearances[CreatureConstants.Satyr] = GetWeightedAppearances(
-                allSkin: new[] { "Tan skin", "Light brown skin", "Brown skin", "Lightly tan skin", "TODO GOAT fur" },
-                allHair: new[] { "Red hair", "Chestnut brown hair" },
-                allOther: new[] { "Small nubs for horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
+                allSkin: ["Tan skin", "Light brown skin", "Brown skin", "Lightly tan skin", "TODO GOAT fur"],
+                allHair: ["Red hair", "Chestnut brown hair"],
+                allOther: [ "Small nubs for horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
                     "Large curling ram horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
                     "Small curling ram horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
                     "Small straight horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
                     "Large straight horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
-                });
+                ]);
             appearances[CreatureConstants.Satyr_WithPipes] = GetWeightedAppearances(
-                allSkin: new[] { "Tan skin", "Light brown skin", "Brown skin", "Lightly tan skin", "TODO GOAT fur" },
-                allHair: new[] { "Red hair", "Chestnut brown hair" },
-                allOther: new[] { "Small nubs for horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
+                allSkin: ["Tan skin", "Light brown skin", "Brown skin", "Lightly tan skin", "TODO GOAT fur"],
+                allHair: ["Red hair", "Chestnut brown hair"],
+                allOther: [ "Small nubs for horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
                     "Large curling ram horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
                     "Small curling ram horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
                     "Small straight horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
                     "Large straight horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
-                });
+                ]);
             //Source: https://a-z-animals.com/animals/scorpion/
             appearances[CreatureConstants.Scorpion_Monstrous_Tiny] = GetWeightedAppearances(
                 commonSkin: new[] { "Yellow exoskeleton", "Black exoskeleton" },

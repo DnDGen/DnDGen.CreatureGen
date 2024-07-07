@@ -994,17 +994,15 @@
 	</collection>
 	<collection>
 		<name>BabauCommon</name>
-		<entry>Agender</entry>
+		<entry>Black, leathery skin tight to a gaunt, skeletal frame. Terrible stench. Skull is tall and long with pointed ears and jaws filled with jagged teeth. A single long horn juts from the back of the skull, curving forward and downward. White eyes that glow red when glaring.</entry>
 	</collection>
 	<collection>
 		<name>BaboonCommon</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
+		<entry>Brown hair, red face</entry>
 	</collection>
 	<collection>
 		<name>BadgerCommon</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
+		<entry>Thick, coarse, black fur, with a wide gray-white stripe that stretches across the back, from the top of the head to the tip of the tail</entry>
 	</collection>
 	<collection>
 		<name>Dire BadgerCommon</name>
@@ -1013,16 +1011,18 @@
 	</collection>
 	<collection>
 		<name>Baleen WhaleCommon</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
+		<entry>Gray Whale: Mottled gray skin with small eyes located just above the corners of the mouth. Broad paddle-shaped pectoral flippers, pointed at the tips. Dorsal hump.</entry>
+		<entry>Humpback Whale: black skin with white on the underside of the pectoral fins, belly, and underside of the tail</entry>
+		<entry>Right Whale: Stocky black body, V-shaped blow spout, broad and deeply-notched tail, all-black belly</entry>
+		<entry>Right Whale: Stocky black body, V-shaped blow spout, broad and deeply-notched tail, black belly with irregularly-shaped white patches</entry>
 	</collection>
 	<collection>
 		<name>BalorCommon</name>
-		<entry>Agender</entry>
+		<entry>Dark red skin wrapped in glaring flames. Venom-dripping fangs. Fearsome claws.</entry>
 	</collection>
 	<collection>
 		<name>Barbed Devil (Hamatula)Common</name>
-		<entry>Agender</entry>
+		<entry>Body completely covered in barbs. Horned hands ending in strange, lengthy claws. Long, burly tails coated in spines. Gleaming, vigilant eyes constantly shifting, making it seem anxious</entry>
 	</collection>
 	<collection>
 		<name>BarghestCommon</name>
@@ -3417,15 +3417,15 @@
 	</collection>
 	<collection>
 		<name>Average SalamanderCommon</name>
-		<entry>Agender</entry>
+		<entry>Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. Red fiery skin</entry>
 	</collection>
 	<collection>
 		<name>Flamebrother SalamanderCommon</name>
-		<entry>Agender</entry>
+		<entry>Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. Red fiery skin</entry>
 	</collection>
 	<collection>
 		<name>Noble SalamanderCommon</name>
-		<entry>Agender</entry>
+		<entry>Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. Red fiery skin</entry>
 	</collection>
 	<collection>
 		<name>Shark, HugeCommon</name>
@@ -3792,7 +3792,10 @@
 	</collection>
 	<collection>
 		<name>Average XornCommon</name>
-		<entry>Agender</entry>
+		<entry>Brown pebbly, rocky skin; Large mouth on top of head, radially-symmetric body, three arms with talons at the end, three eyes, three legs</entry>
+		<entry>Brown stonelike skin; Large mouth on top of head, radially-symmetric body, three arms with talons at the end, three eyes, three legs</entry>
+		<entry>Gray pebbly, rocky skin; Large mouth on top of head, radially-symmetric body, three arms with talons at the end, three eyes, three legs</entry>
+		<entry>Gray stonelike skin; Large mouth on top of head, radially-symmetric body, three arms with talons at the end, three eyes, three legs</entry>
 	</collection>
 	<collection>
 		<name>Minor XornCommon</name>
@@ -5937,17 +5940,30 @@
 	</collection>
 	<collection>
 		<name>AnkhegUncommon</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
 	</collection>
 	<collection>
 		<name>AnnisUncommon</name>
-		<entry>Female</entry>
+		<entry>Blue-black skin, as if deeply bruised, covered in scars and blemishes; Black hair; Dull, greenish-yellow eyes; Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized, black nails. Chewed-through cheeks, etching a gangrenous grin</entry>
+		<entry>Blue-black skin, as if deeply bruised, covered in scars and blemishes; Black hair; Dull, greenish-yellow eyes; Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized, black nails. Corpses stitched to her back</entry>
+		<entry>Blue-black skin, as if deeply bruised, covered in scars and blemishes; Black hair; Dull, greenish-yellow eyes; Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized, black nails. Left hand is a grafted Troll hand</entry>
+		<entry>Blue-black skin, as if deeply bruised, covered in scars and blemishes; Black hair; Dull, greenish-yellow eyes; Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized, black nails. Right hand is a grafted Troll hand</entry>
+		<entry>Blue-black skin, as if deeply bruised, covered in scars and blemishes; Black hair; Dull, greenish-yellow eyes; Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized, rust-colored nails. Chewed-through cheeks, etching a gangrenous grin</entry>
+		<entry>Blue-black skin, as if deeply bruised, covered in scars and blemishes; Black hair; Dull, greenish-yellow eyes; Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized, rust-colored nails. Corpses stitched to her back</entry>
+		<entry>Blue-black skin, as if deeply bruised, covered in scars and blemishes; Black hair; Dull, greenish-yellow eyes; Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized, rust-colored nails. Left hand is a grafted Troll hand</entry>
+		<entry>Blue-black skin, as if deeply bruised, covered in scars and blemishes; Black hair; Dull, greenish-yellow eyes; Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized, rust-colored nails. Right hand is a grafted Troll hand</entry>
+		<entry>Blue-black skin, as if deeply bruised, covered in scars and blemishes; Black hair; Dull, greenish-yellow eyes; Lean with long, lanky limbs. Long, spiraling, stylized, black nails. Chewed-through cheeks, etching a gangrenous grin</entry>
+		<entry>Blue-black skin, as if deeply bruised, covered in scars and blemishes; Black hair; Dull, greenish-yellow eyes; Lean with long, lanky limbs. Long, spiraling, stylized, black nails. Corpses stitched to her back</entry>
+		<entry>Blue-black skin, as if deeply bruised, covered in scars and blemishes; Black hair; Dull, greenish-yellow eyes; Lean with long, lanky limbs. Long, spiraling, stylized, black nails. Left hand is a grafted Troll hand</entry>
+		<entry>Blue-black skin, as if deeply bruised, covered in scars and blemishes; Black hair; Dull, greenish-yellow eyes; Lean with long, lanky limbs. Long, spiraling, stylized, black nails. Right hand is a grafted Troll hand</entry>
+		<entry>Blue-black skin, as if deeply bruised, covered in scars and blemishes; Black hair; Dull, greenish-yellow eyes; Lean with long, lanky limbs. Long, spiraling, stylized, rust-colored nails. Chewed-through cheeks, etching a gangrenous grin</entry>
+		<entry>Blue-black skin, as if deeply bruised, covered in scars and blemishes; Black hair; Dull, greenish-yellow eyes; Lean with long, lanky limbs. Long, spiraling, stylized, rust-colored nails. Corpses stitched to her back</entry>
+		<entry>Blue-black skin, as if deeply bruised, covered in scars and blemishes; Black hair; Dull, greenish-yellow eyes; Lean with long, lanky limbs. Long, spiraling, stylized, rust-colored nails. Left hand is a grafted Troll hand</entry>
+		<entry>Blue-black skin, as if deeply bruised, covered in scars and blemishes; Black hair; Dull, greenish-yellow eyes; Lean with long, lanky limbs. Long, spiraling, stylized, rust-colored nails. Right hand is a grafted Troll hand</entry>
 	</collection>
 	<collection>
 		<name>ApeUncommon</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
+		<entry>Grey fur</entry>
+		<entry>Silver fur</entry>
 	</collection>
 	<collection>
 		<name>Dire ApeUncommon</name>
@@ -5961,12 +5977,9 @@
 	</collection>
 	<collection>
 		<name>Assassin VineUncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>AthachUncommon</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
 	</collection>
 	<collection>
 		<name>AvoralUncommon</name>
@@ -8390,15 +8403,12 @@
 	</collection>
 	<collection>
 		<name>Average SalamanderUncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Flamebrother SalamanderUncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Noble SalamanderUncommon</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Shark, HugeUncommon</name>
@@ -8823,9 +8833,9 @@
 		<entry>Light brown skin with small iridescent scales; Bald; Pupil-less golden eyes</entry>
 		<entry>Light brown skin with small iridescent scales; Bald; Pupil-less gray eyes</entry>
 		<entry>Light brown skin with small iridescent scales; Bald; Pupil-less pale white eyes</entry>
-		<entry>Tan skin; Bald with small iridescent scales; Pupil-less golden eyes</entry>
-		<entry>Tan skin; Bald with small iridescent scales; Pupil-less gray eyes</entry>
-		<entry>Tan skin; Bald with small iridescent scales; Pupil-less pale white eyes</entry>
+		<entry>Tan skin with small iridescent scales; Bald; Pupil-less golden eyes</entry>
+		<entry>Tan skin with small iridescent scales; Bald; Pupil-less gray eyes</entry>
+		<entry>Tan skin with small iridescent scales; Bald; Pupil-less pale white eyes</entry>
 		<entry>Dark tan skin with small iridescent scales; Bald; Pupil-less golden eyes</entry>
 		<entry>Dark tan skin with small iridescent scales; Bald; Pupil-less gray eyes</entry>
 		<entry>Dark tan skin with small iridescent scales; Bald; Pupil-less pale white eyes</entry>
@@ -8841,6 +8851,33 @@
 		<entry>Pale white skin with small iridescent scales; Bald; Pupil-less golden eyes</entry>
 		<entry>Pale white skin with small iridescent scales; Bald; Pupil-less gray eyes</entry>
 		<entry>Pale white skin with small iridescent scales; Bald; Pupil-less pale white eyes</entry>
+		<entry>Brown skin with small iridescent scales; Bald; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Brown skin with small iridescent scales; Bald; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Brown skin with small iridescent scales; Bald; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Dark brown skin with small iridescent scales; Bald; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Dark brown skin with small iridescent scales; Bald; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Dark brown skin with small iridescent scales; Bald; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Light brown skin with small iridescent scales; Bald; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Light brown skin with small iridescent scales; Bald; Pupil-less gray eye; A light covering of feathers on the shoulders, where an angel's wings might sprouts</entry>
+		<entry>Light brown skin with small iridescent scales; Bald; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Tan skin with small iridescent scales; Bald; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Tan skin with small iridescent scales; Bald; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Tan skin with small iridescent scales; Bald; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Dark tan skin with small iridescent scales; Bald; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Dark tan skin with small iridescent scales; Bald; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Dark tan skin with small iridescent scales; Bald; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Light tan skin with small iridescent scales; Bald; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Light tan skin with small iridescent scales; Bald; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Light tan skin with small iridescent scales; Bald; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Pink skin with small iridescent scales; Bald; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Pink skin with small iridescent scales; Bald; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Pink skin with small iridescent scales; Bald; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>White skin with small iridescent scales; Bald; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>White skin with small iridescent scales; Bald; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>White skin with small iridescent scales; Bald; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Pale white skin with small iridescent scales; Bald; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Pale white skin with small iridescent scales; Bald; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Pale white skin with small iridescent scales; Bald; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
 	</collection>
 	<collection>
 		<name>AbolethRare</name>
@@ -11759,15 +11796,12 @@
 	</collection>
 	<collection>
 		<name>Average SalamanderRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Flamebrother SalamanderRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Noble SalamanderRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Shark, HugeRare</name>
@@ -14854,15 +14888,12 @@
 	</collection>
 	<collection>
 		<name>Average SalamanderVeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Flamebrother SalamanderVeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Noble SalamanderVeryRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Shark, HugeVeryRare</name>
