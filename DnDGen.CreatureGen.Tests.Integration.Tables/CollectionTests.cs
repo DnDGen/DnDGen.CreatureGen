@@ -41,6 +41,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
 
         protected virtual void PopulateIndices(IEnumerable<string> collection)
         {
+            indices = [];
+
             for (var i = 0; i < collection.Count(); i++)
                 indices[i] = string.Empty;
         }
@@ -55,7 +57,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
         {
             //If descriptions are longer than this, there is a chance that the test failure message will be truncated
             //When the test failure message is truncated, we might not be able to assess what to fix
-            if (!expected.Any(e => e.Length > 100))
+            if (!expected.Any(e => e.Length > 200))
             {
                 Assert.That(source.OrderBy(s => s), Is.EquivalentTo(expected.OrderBy(e => e)), message);
                 return;
@@ -92,12 +94,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
 
         protected void AssertOrderedCollection(IEnumerable<string> actual, IEnumerable<string> expected, string metaKey = "")
         {
-            PopulateIndices(actual);
             var expectedArray = expected.ToArray();
             var actualArray = actual.ToArray();
 
-            Assert.That(actualArray, Has.Length.EqualTo(expectedArray.Length)
-                .And.Length.EqualTo(indices.Count));
+            var shorter = actualArray.Length < expectedArray.Length ? actual : expected;
+            PopulateIndices(shorter);
 
             foreach (var index in indices.Keys.OrderBy(k => k))
             {
@@ -114,6 +115,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
 
                 Assert.That(actualItem, Is.EqualTo(expectedItem), message);
             }
+
+            Assert.That(actualArray, Has.Length.EqualTo(expectedArray.Length)
+                .And.Length.EqualTo(indices.Count), $"Key {metaKey}");
         }
 
         public virtual void AssertDistinctCollection(string name, params string[] collection)
