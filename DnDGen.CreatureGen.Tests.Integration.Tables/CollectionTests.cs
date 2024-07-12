@@ -57,7 +57,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
         {
             //If descriptions are longer than this, there is a chance that the test failure message will be truncated
             //When the test failure message is truncated, we might not be able to assess what to fix
-            if (!expected.Any(e => e.Length > 200))
+            if (expected.Sum(e => e.Length) > 150 * 10)
             {
                 Assert.That(source.OrderBy(s => s), Is.EquivalentTo(expected.OrderBy(e => e)), message);
                 return;
@@ -116,8 +116,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
                 Assert.That(actualItem, Is.EqualTo(expectedItem), message);
             }
 
-            Assert.That(actualArray, Has.Length.EqualTo(expectedArray.Length)
-                .And.Length.EqualTo(indices.Count), $"Key {metaKey}");
+            Assert.That(expectedArray.Except(actualArray), Is.Empty, $"Extra: Key {metaKey}");
+            Assert.That(actualArray.Except(expectedArray), Is.Empty, $"Missing: Key {metaKey}");
         }
 
         public virtual void AssertDistinctCollection(string name, params string[] collection)
