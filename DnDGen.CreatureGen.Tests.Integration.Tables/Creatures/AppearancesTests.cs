@@ -1,6 +1,7 @@
 ﻿using DnDGen.CreatureGen.Creatures;
 using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
+using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -14,17 +15,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         protected override string tableName => TableNameConstants.Collection.Appearances;
 
         private Dictionary<string, Dictionary<Rarity, IEnumerable<string>>> creatureAppearances;
+        private ICollectionSelector collectionSelector;
 
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
             creatureAppearances = GetCreatureAppearances();
+            collectionSelector = GetNewInstanceOf<ICollectionSelector>();
         }
 
         [Test]
         public void AppearancesNames()
         {
-            var creatures = CreatureConstants.GetAll();
+            var creatures = GetCollectionNames();
             var names = new List<string>();
 
             foreach (var creature in creatures)
@@ -38,30 +41,53 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             AssertCollectionNames(names);
         }
 
+        private IEnumerable<string> GetCollectionNames()
+        {
+            return CreatureConstants.GetAll()
+                .Union(
+                [
+                    CreatureConstants.Bison + GenderConstants.Male,
+                ]);
+        }
+
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void Appearances(string creature)
         {
-            Assert.That(creatureAppearances, Contains.Key(creature));
-            Assert.That(creatureAppearances[creature], Is.Not.Empty
+            AssertKey(creature);
+
+            var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, creature);
+            var collectionNames = GetCollectionNames();
+            var additionalKeys = genders.Select(g => creature + g).Intersect(collectionNames);
+
+            foreach (var key in additionalKeys)
+            {
+                AssertKey(key);
+            }
+        }
+
+        private void AssertKey(string key)
+        {
+            Assert.That(creatureAppearances, Contains.Key(key));
+            Assert.That(creatureAppearances[key], Is.Not.Empty
                 .And.ContainKey(Rarity.Common)
                 .And.ContainKey(Rarity.Uncommon)
                 .And.ContainKey(Rarity.Rare)
                 .And.ContainKey(Rarity.VeryRare)
                 .And.Count.EqualTo(4));
-            Assert.That(creatureAppearances[creature][Rarity.Common].Where(a => a.Contains("TODO")), Is.Empty, "COMMON APPEARANCES TODO");
-            Assert.That(creatureAppearances[creature][Rarity.Uncommon].Where(a => a.Contains("TODO")), Is.Empty, "UNCOMMON APPEARANCES TODO");
-            Assert.That(creatureAppearances[creature][Rarity.Rare].Where(a => a.Contains("TODO")), Is.Empty, "RARE APPEARANCES TODO");
-            Assert.That(creatureAppearances[creature][Rarity.VeryRare].Where(a => a.Contains("TODO")), Is.Empty, "VERY RARE APPEARANCES TODO");
+            Assert.That(creatureAppearances[key][Rarity.Common].Where(a => a.Contains("TODO")), Is.Empty, "COMMON APPEARANCES TODO");
+            Assert.That(creatureAppearances[key][Rarity.Uncommon].Where(a => a.Contains("TODO")), Is.Empty, "UNCOMMON APPEARANCES TODO");
+            Assert.That(creatureAppearances[key][Rarity.Rare].Where(a => a.Contains("TODO")), Is.Empty, "RARE APPEARANCES TODO");
+            Assert.That(creatureAppearances[key][Rarity.VeryRare].Where(a => a.Contains("TODO")), Is.Empty, "VERY RARE APPEARANCES TODO");
 
-            AssertDistinctCollection(creature + Rarity.Common.ToString(), creatureAppearances[creature][Rarity.Common].ToArray());
-            AssertDistinctCollection(creature + Rarity.Uncommon.ToString(), creatureAppearances[creature][Rarity.Uncommon].ToArray());
-            AssertDistinctCollection(creature + Rarity.Rare.ToString(), creatureAppearances[creature][Rarity.Rare].ToArray());
-            AssertDistinctCollection(creature + Rarity.VeryRare.ToString(), creatureAppearances[creature][Rarity.VeryRare].ToArray());
+            AssertDistinctCollection(key + Rarity.Common.ToString(), creatureAppearances[key][Rarity.Common].ToArray());
+            AssertDistinctCollection(key + Rarity.Uncommon.ToString(), creatureAppearances[key][Rarity.Uncommon].ToArray());
+            AssertDistinctCollection(key + Rarity.Rare.ToString(), creatureAppearances[key][Rarity.Rare].ToArray());
+            AssertDistinctCollection(key + Rarity.VeryRare.ToString(), creatureAppearances[key][Rarity.VeryRare].ToArray());
         }
 
         private Dictionary<string, Dictionary<Rarity, IEnumerable<string>>> GetCreatureAppearances()
         {
-            var creatures = CreatureConstants.GetAll();
+            var creatures = GetCollectionNames();
             var appearances = new Dictionary<string, Dictionary<Rarity, IEnumerable<string>>>();
 
             foreach (var creature in creatures)
@@ -581,8 +607,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 ["Primarily composed of smoke, has large, black, bat-like wings, clawed tendrils, and a biting maw. Base form was sort of demonic, but continually shifts and changes shape due to its semi-gaseous nature."];
             //Source: https://forgottenrealms.fandom.com/wiki/Bison
             appearances[CreatureConstants.Bison][Rarity.Common] =
-                [ "Distinctive broad head that connects to large, humped shoulders with a thick neck. Short, curved, hollow horns growing from the sides of its head. Body covered in fur. Head covered in a mantle of thick fur. Short legs. Small tail ending in a tassel of fur.",
-                "TODO: Gender-specific appearance" ];
+                ["Distinctive broad head that connects to large, humped shoulders with a thick neck. Short, curved, hollow horns growing from the sides of its head. Body covered in fur. Head covered in a mantle of thick fur. Short legs. Small tail ending in a tassel of fur."];
+            appearances[CreatureConstants.Bison + GenderConstants.Male][Rarity.Common] =
+                ["Distinctive broad head that connects to large, humped shoulders with a thick neck. Short, curved, hollow horns growing from the sides of its head. Body covered in fur. Head covered in a mantle of thick fur, chin with a black beard-like growth. Short legs. Small tail ending in a tassel of fur."];
             //Source: https://forgottenrealms.fandom.com/wiki/Black_pudding
             appearances[CreatureConstants.BlackPudding] = GetWeightedAppearances(
                 commonSkin: ["Inky black skin"],
@@ -1719,103 +1746,141 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allOther: ["Pointed ears"]);
             //Source: https://www.d20srd.org/srd/monsters/elf.htm
             appearances[CreatureConstants.Elf_Half] = GetWeightedAppearances(
-                commonSkin: [ "TODO Human skin",
-                    "TODO High Elf Skin" ],
+                commonSkin: [ "Dark brown skin", "Brown skin", "Light brown skin",
+                    "Dark tan skin", "Tan skin", "Light tan skin",
+                    "Pink skin", "White skin", "Pale white skin",
+                    "Brown skin", "Tan skin", "White skin", "Pink skin",
+                    "Light brown skin", "Light tan skin", "Pale white skin" ],
                 uncommonSkin: [ "Pale grey skin",
-                    "TODO Wood Elf Skin",
-                    "TODO Wild Elf Skin",
+                    "Dark brown skin", "Dark tan skin",
+                    "Copper skin", "Tan skin",
+                    "Light brown skin", "Brown skin", "Dark brown skin",
                     "TODO Drow Skin" ],
-                commonHair: [ "TODO Human hair",
-                    "TODO High Elf Hair" ],
-                uncommonHair: [ "Straight silver hair", "Curly silver hair", "Kinky silver hair",
-                    "TODO Wood Elf Hair",
-                    "TODO Wild Elf Hair",
-                    "TODO Drow Hair" ],
-                rareHair: ["Straight pale-golden hair", "Curly pale-golden hair", "Kinky pale-golden hair"],
-                commonEyes: [ "TODO Human eyes",
-                    "TODO High Elf eyes" ],
-                uncommonEyes: [ "Amber eyes",
-                    "TODO Wood Elf Eyes",
-                    "TODO Wild Elf Eyes",
-                    "TODO Drow Eyes" ],
-                rareEyes: ["Violet eyes"],
-                allOther: ["Pointed ears"]);
-            //Source: https://forgottenrealms.fandom.com/wiki/High_elf
-            appearances[CreatureConstants.Elf_High] = GetWeightedAppearances(
-                commonSkin: new[] { "Brown skin", "Olive skin", "White skin", "Pink skin",
-                    "Pale brown skin", "Pale Olive skin", "Pale White skin", "Pale Pink skin" },
-                uncommonSkin: new[] { "Dark brown skin", "Dark Olive skin", "Dark Pink skin" },
-                commonHair: new[] { "Straight black hair", "Curly black hair", "Kinky black hair",
-                    "Straight White hair", "Curly White hair", "Kinky White hair",
+                commonHair: [ "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
+                    "Curly red hair", "Curly blond hair", "Curly brown hair", "Curly black hair",
+                    "Kinky red hair", "Kinky blond hair", "Kinky brown hair", "Kinky black hair",
+                    "Straight white hair", "Curly white hair", "Kinky white hair",
                     "Straight silver hair", "Curly silver hair", "Kinky silver hair",
-                    "Straight Pale Gold hair", "Curly Pale Gold hair", "Kinky Pale Gold hair" },
-                uncommonHair: new[] { "Straight black hair with silvery hues",
+                    "Straight pale gold hair", "Curly pale gold hair", "Kinky pale gold hair" ],
+                uncommonHair: [ "Straight silver hair", "Curly silver hair", "Kinky silver hair",
+                    "Bald",
+                    "Straight black hair with silvery hues",
                         "Curly black hair with silvery hues", "Kinky black hair with silvery hues",
                     "Straight black hair with blond hues", "Curly black hair with blond hues", "Kinky black hair with blond hues",
                     "Straight black hair with copper hues", "Curly black hair with copper hues", "Kinky black hair with copper hues",
-                    "Straight White hair with silvery hues", "Curly White hair with silvery hues",
-                        "Kinky White hair with silvery hues",
-                    "Straight White hair with blond hues", "Curly White hair with blond hues", "Kinky White hair with blond hues",
-                    "Straight White hair with copper hues", "Curly White hair with copper hues", "Kinky White hair with copper hues",
+                    "Straight white hair with silvery hues", "Curly white hair with silvery hues",
+                        "Kinky white hair with silvery hues",
+                    "Straight white hair with blond hues", "Curly white hair with blond hues", "Kinky white hair with blond hues",
+                    "Straight white hair with copper hues", "Curly white hair with copper hues", "Kinky white hair with copper hues",
                     "Straight silver hair with silvery hues", "Curly silver hair with silvery hues",
                         "Kinky silver hair with silvery hues",
                     "Straight silver hair with blond hues", "Curly silver hair with blond hues", "Kinky silver hair with blond hues",
                     "Straight silver hair with copper hues", "Curly silver hair with copper hues",
                         "Kinky silver hair with copper hues",
-                    "Straight Pale Gold hair with silvery hues", "Curly Pale Gold hair with silvery hues",
-                        "Kinky Pale Gold hair with silvery hues",
-                    "Straight Pale Gold hair with blond hues",  "Curly Pale Gold hair with blond hues",
-                        "Kinky Pale Gold hair with blond hues",
-                    "Straight Pale Gold hair with copper hues", "Curly Pale Gold hair with copper hues",
-                        "Kinky Pale Gold hair with copper hues" },
-                commonEyes: new[] { "Green eyes" },
-                uncommonEyes: new[] { "Golden eyes", "Blue eyes", "Light Blue eyes", "Green eyes speckled with gold" },
-                rareEyes: new[] { "Violet eyes", "Blue eyes speckled with gold", "Light Blue eyes speckled with gold", "Violet eyes speckled with gold",
+                    "Straight pale gold hair with silvery hues", "Curly pale gold hair with silvery hues",
+                        "Kinky pale gold hair with silvery hues",
+                    "Straight pale gold hair with blond hues",  "Curly pale gold hair with blond hues",
+                        "Kinky pale gold hair with blond hues",
+                    "Straight pale gold hair with copper hues", "Curly pale gold hair with copper hues",
+                        "Kinky pale gold hair with copper hues",
+                    "Straight black hair", "Straight light brown hair", "Straight brown hair",
+                    "Curly black hair", "Curly light brown hair", "Curly brown hair",
+                    "Kinky black hair", "Kinky light brown hair", "Kinky brown hair",
+                    "TODO Wild Elf Hair",
+                    "TODO Drow Hair" ],
+                rareHair: ["Straight pale-golden hair", "Curly pale-golden hair", "Kinky pale-golden hair",
+                    "Straight yellow hair", "Straight blond hair", "Straight copper-red hair",
+                    "Curly yellow hair", "Curly blond hair", "Curly copper-red hair",
+                    "Kinky yellow hair", "Kinky blond hair", "Kinky copper-red hair"],
+                commonEyes: ["Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes"],
+                uncommonEyes: [ "Amber eyes",
+                    "Golden eyes", "Blue eyes", "Light Blue eyes", "Green eyes speckled with gold",
+                    "Green eyes", "Brown eyes", "Hazel eyes",
+                    "TODO Wild Elf Eyes",
+                    "TODO Drow Eyes" ],
+                rareEyes: ["Violet eyes",
+                    "Violet eyes", "Blue eyes speckled with gold", "Light Blue eyes speckled with gold", "Violet eyes speckled with gold",
                     "Solid green eyes, lacking pupils", "Solid golden eyes, lacking pupils", "Solid blue eyes, lacking pupils", "Solid light blue eyes, lacking pupils",
                     "Solid violet eyes, lacking pupils", "Solid green eyes speckled with gold, lacking pupils", "Solid golden eyes speckled with gold, lacking pupils",
                     "Solid blue eyes speckled with gold, lacking pupils", "Solid light blue eyes speckled with gold, lacking pupils",
-                    "Solid violet eyes speckled with gold, lacking pupils" },
-                allOther: new[] { "Pointed ears" });
+                    "Solid violet eyes speckled with gold, lacking pupils"],
+                allOther: ["Pointed ears"]);
+            //Source: https://forgottenrealms.fandom.com/wiki/High_elf
+            appearances[CreatureConstants.Elf_High] = GetWeightedAppearances(
+                commonSkin: [ "Brown skin", "Tan skin", "White skin", "Pink skin",
+                    "Light brown skin", "Light tan skin", "Pale white skin" ],
+                uncommonSkin: ["Dark brown skin", "Dark tan skin"],
+                commonHair: [ "Straight black hair", "Curly black hair", "Kinky black hair",
+                    "Straight white hair", "Curly white hair", "Kinky white hair",
+                    "Straight silver hair", "Curly silver hair", "Kinky silver hair",
+                    "Straight pale gold hair", "Curly pale gold hair", "Kinky pale gold hair" ],
+                uncommonHair: [ "Straight black hair with silvery hues",
+                        "Curly black hair with silvery hues", "Kinky black hair with silvery hues",
+                    "Straight black hair with blond hues", "Curly black hair with blond hues", "Kinky black hair with blond hues",
+                    "Straight black hair with copper hues", "Curly black hair with copper hues", "Kinky black hair with copper hues",
+                    "Straight white hair with silvery hues", "Curly white hair with silvery hues",
+                        "Kinky white hair with silvery hues",
+                    "Straight white hair with blond hues", "Curly white hair with blond hues", "Kinky white hair with blond hues",
+                    "Straight white hair with copper hues", "Curly white hair with copper hues", "Kinky white hair with copper hues",
+                    "Straight silver hair with silvery hues", "Curly silver hair with silvery hues",
+                        "Kinky silver hair with silvery hues",
+                    "Straight silver hair with blond hues", "Curly silver hair with blond hues", "Kinky silver hair with blond hues",
+                    "Straight silver hair with copper hues", "Curly silver hair with copper hues",
+                        "Kinky silver hair with copper hues",
+                    "Straight pale gold hair with silvery hues", "Curly pale gold hair with silvery hues",
+                        "Kinky pale gold hair with silvery hues",
+                    "Straight pale gold hair with blond hues",  "Curly pale gold hair with blond hues",
+                        "Kinky pale gold hair with blond hues",
+                    "Straight pale gold hair with copper hues", "Curly pale gold hair with copper hues",
+                        "Kinky pale gold hair with copper hues" ],
+                commonEyes: ["Green eyes"],
+                uncommonEyes: ["Golden eyes", "Blue eyes", "Light Blue eyes", "Green eyes speckled with gold"],
+                rareEyes: [ "Violet eyes", "Blue eyes speckled with gold", "Light Blue eyes speckled with gold", "Violet eyes speckled with gold",
+                    "Solid green eyes, lacking pupils", "Solid golden eyes, lacking pupils", "Solid blue eyes, lacking pupils", "Solid light blue eyes, lacking pupils",
+                    "Solid violet eyes, lacking pupils", "Solid green eyes speckled with gold, lacking pupils", "Solid golden eyes speckled with gold, lacking pupils",
+                    "Solid blue eyes speckled with gold, lacking pupils", "Solid light blue eyes speckled with gold, lacking pupils",
+                    "Solid violet eyes speckled with gold, lacking pupils" ],
+                allOther: ["Pointed ears"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Wild_elf
             //https://www.d20srd.org/srd/monsters/elf.htm
             appearances[CreatureConstants.Elf_Wild] = GetWeightedAppearances(
-                allSkin: new[] { "Light brown skin", "Brown skin", "Dark brown skin" },
-                commonHair: new[] { "Straight black hair", "Curly black hair", "Kinky black hair",
-                    "Straight Dark brown hair", "Curly Dark brown hair", "Kinky Dark brown hair",
+                allSkin: ["Light brown skin", "Brown skin", "Dark brown skin"],
+                commonHair: [ "Straight black hair", "Curly black hair", "Kinky black hair",
+                    "Straight dark brown hair", "Curly dark brown hair", "Kinky dark brown hair",
                     "Straight brown hair", "Curly brown hair", "Kinky brown hair",
-                    "Straight Light brown hair", "Curly Light brown hair", "Kinky Light brown hair" },
-                uncommonHair: new[] { "Straight silver hair", "Curly silver hair", "Kinky silver hair",
+                    "Straight light brown hair", "Curly light brown hair", "Kinky light brown hair" ],
+                uncommonHair: [ "Straight silver hair", "Curly silver hair", "Kinky silver hair",
                     "Straight Silvery-White hair", "Curly Silvery-White hair", "Kinky Silvery-White hair",
                     "Straight Gray hair", "Curly Gray hair", "Kinky Gray hair",
-                    "Straight White hair", "Curly White hair", "Kinky White hair" },
-                allEyes: new[] { "TODO High Elf eyes" },
-                allOther: new[] { "Pointed ears" });
+                    "Straight White hair", "Curly White hair", "Kinky White hair" ],
+                allEyes: ["TODO High Elf eyes"],
+                allOther: ["Pointed ears"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Wood_elf
             //https://www.d20srd.org/srd/monsters/elf.htm
             appearances[CreatureConstants.Elf_Wood] = GetWeightedAppearances(
-                allSkin: new[] { "Copper skin", "Tan skin" },
-                commonHair: new[] { "Straight black hair", "Straight Light brown hair", "Straight brown hair",
-                    "Curly black hair", "Curly Light brown hair", "Curly brown hair",
-                    "Kinky black hair", "Kinky Light brown hair", "Kinky brown hair", },
-                uncommonHair: new[] { "Straight Yellow hair", "Straight blond hair", "Straight Copper-Red hair",
-                    "Curly Yellow hair", "Curly blond hair", "Curly Copper-Red hair",
-                    "Kinky Yellow hair", "Kinky blond hair", "Kinky Copper-Red hair" },
-                allEyes: new[] { "Green eyes", "Brown eyes", "Hazel eyes" },
-                allOther: new[] { "Pointed ears" });
+                allSkin: ["Copper skin", "Tan skin"],
+                commonHair: [ "Straight black hair", "Straight light brown hair", "Straight brown hair",
+                    "Curly black hair", "Curly light brown hair", "Curly brown hair",
+                    "Kinky black hair", "Kinky light brown hair", "Kinky brown hair", ],
+                uncommonHair: [ "Straight yellow hair", "Straight blond hair", "Straight copper-red hair",
+                    "Curly yellow hair", "Curly blond hair", "Curly copper-red hair",
+                    "Kinky yellow hair", "Kinky blond hair", "Kinky copper-red hair" ],
+                allEyes: ["Green eyes", "Brown eyes", "Hazel eyes"],
+                allOther: ["Pointed ears"]);
             //Source: https://www.d20srd.org/srd/monsters/devil.htm#erinyes
             //https://forgottenrealms.fandom.com/wiki/Erinyes
             appearances[CreatureConstants.Erinyes] = GetWeightedAppearances(
-                allSkin: new[] { "TODO Human skin" },
-                allHair: new[] { "TODO Human hair" },
-                allEyes: new[] { "Red eyes" });
+                allSkin: ["TODO Human skin"],
+                allHair: ["TODO Human hair"],
+                allEyes: ["Red eyes"]);
             //Source: https://www.5esrd.com/database/creature/ethereal-filcher/
-            appearances[CreatureConstants.EtherealFilcher][Rarity.Common] = new[] { "One foot. Four arms ending in hands with long, spindly fingers. Looks as if it has two heads, one on a long stalk of a neck and another on its abdomen." };
+            appearances[CreatureConstants.EtherealFilcher][Rarity.Common] = ["One foot. Four arms ending in hands with long, spindly fingers. Looks as if it has two heads, one on a long stalk of a neck and another on its abdomen."];
             //Source: https://www.d20srd.org/srd/monsters/etherealMarauder.htm
-            appearances[CreatureConstants.EtherealMarauder][Rarity.Common] = new[] { "Bright blue skin", "Blue skin", "Deep blue skin",
+            appearances[CreatureConstants.EtherealMarauder][Rarity.Common] = [ "Bright blue skin", "Blue skin", "Deep blue skin",
                 "Bright violet skin", "Violet skin", "Deep violet skin",
-                "Bright blue-violet skin", "Blue-violet skin", "Deep blue-violet skin" };
+                "Bright blue-violet skin", "Blue-violet skin", "Deep blue-violet skin" ];
             //Source: https://forgottenrealms.fandom.com/wiki/Ettercap
-            appearances[CreatureConstants.Ettercap][Rarity.Common] = new[] { "Grey-purplish skin. Distended underbelly. Spider-like face, with fangs and multiple eyes. Two sharp, black, chitinous claws instead of hands and feet." };
+            appearances[CreatureConstants.Ettercap][Rarity.Common] = ["Grey-purplish skin. Distended underbelly. Spider-like face, with fangs and multiple eyes. Two sharp, black, chitinous claws instead of hands and feet."];
             //Source: https://forgottenrealms.fandom.com/wiki/Ettin
             appearances[CreatureConstants.Ettin] = GetWeightedAppearances(
                 allSkin: new[] { "Brown skin, crusted over with a thick layer of grime", "Olive skin, crusted over with a thick layer of grime",

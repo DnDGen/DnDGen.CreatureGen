@@ -65,17 +65,22 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             demographics.Weight.Description = dice.Describe(rawWeightRoll, (int)demographics.Weight.Value, weightDescriptions);
 
             demographics.Wingspan = GenerateWingspan(creatureName, demographics.Gender);
-            demographics.Appearance = GetRandomAppearance(creatureName);
+            demographics.Appearance = GetRandomAppearance(creatureName, demographics.Gender);
 
             return demographics;
         }
 
-        private string GetRandomAppearance(string creatureName)
+        private string GetRandomAppearance(string creatureName, string gender)
         {
-            var common = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Appearances, creatureName + Rarity.Common.ToString());
-            var uncommon = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Appearances, creatureName + Rarity.Uncommon.ToString());
-            var rare = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Appearances, creatureName + Rarity.Rare.ToString());
-            var veryRare = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Appearances, creatureName + Rarity.VeryRare.ToString());
+            var collectionName = creatureName;
+
+            if (collectionsSelector.IsCollection(Config.Name, TableNameConstants.Collection.Appearances, creatureName + gender + Rarity.Common.ToString()))
+                collectionName += gender;
+
+            var common = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Appearances, collectionName + Rarity.Common.ToString());
+            var uncommon = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Appearances, collectionName + Rarity.Uncommon.ToString());
+            var rare = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Appearances, collectionName + Rarity.Rare.ToString());
+            var veryRare = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Appearances, collectionName + Rarity.VeryRare.ToString());
 
             var appearance = collectionsSelector.SelectRandomFrom(common, uncommon, rare, veryRare);
             return appearance;
