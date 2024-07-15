@@ -6222,6 +6222,9 @@
 		<name>BisonUncommon</name>
 	</collection>
 	<collection>
+		<name>BisonMaleUncommon</name>
+	</collection>
+	<collection>
 		<name>Black PuddingUncommon</name>
 	</collection>
 	<collection>
@@ -8963,6 +8966,24 @@
 		<entry>White skin; Bald; Pupil-less pearly opalescent eyes</entry>
 		<entry>Pale white skin; Bald; Pupil-less topaz eyes</entry>
 		<entry>Pale white skin; Bald; Pupil-less pearly opalescent eyes</entry>
+		<entry>Brown skin; Bald; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Brown skin; Bald; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Dark brown skin; Bald; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Dark brown skin; Bald; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Light brown skin; Bald; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Light brown skin; Bald; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Tan skin; Bald; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Tan skin; Bald; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Dark tan skin; Bald; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Dark tan skin; Bald; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Light tan skin; Bald; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Light tan skin; Bald; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Pink skin; Bald; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Pink skin; Bald; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>White skin; Bald; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>White skin; Bald; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Pale white skin; Bald; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Pale white skin; Bald; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
 		<entry>Brown skin with small iridescent scales; Bald; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
 		<entry>Brown skin with small iridescent scales; Bald; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
 		<entry>Dark brown skin with small iridescent scales; Bald; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
@@ -12375,25 +12396,21 @@
 	</collection>
 	<collection>
 		<name>BehirRare</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
 	</collection>
 	<collection>
 		<name>BeholderRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Gauth (Lesser Beholder)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>BelkerRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>BisonRare</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
+	</collection>
+	<collection>
+		<name>BisonMaleRare</name>
 	</collection>
 	<collection>
 		<name>Black PuddingRare</name>
@@ -12401,40 +12418,27 @@
 	</collection>
 	<collection>
 		<name>Elder Black PuddingRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>Blink DogRare</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
 	</collection>
 	<collection>
 		<name>Blue SlaadRare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>BoarRare</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
 	</collection>
 	<collection>
 		<name>Dire BoarRare</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
 	</collection>
 	<collection>
 		<name>BodakRare</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
 	</collection>
 	<collection>
 		<name>Bone Devil (Osyluth)Rare</name>
-		<entry>Agender</entry>
 	</collection>
 	<collection>
 		<name>BralaniRare</name>
-		<entry>Female</entry>
-		<entry>Male</entry>
 	</collection>
 	<collection>
 		<name>BugbearRare</name>
@@ -15433,6 +15437,9 @@
 	</collection>
 	<collection>
 		<name>BisonVeryRare</name>
+	</collection>
+	<collection>
+		<name>BisonMaleVeryRare</name>
 	</collection>
 	<collection>
 		<name>Black PuddingVeryRare</name>

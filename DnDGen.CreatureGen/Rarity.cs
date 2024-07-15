@@ -5,6 +5,6 @@
         Common,
         Uncommon,
         Rare,
-        VeryRare
+        VeryRare = 4
     }
 }

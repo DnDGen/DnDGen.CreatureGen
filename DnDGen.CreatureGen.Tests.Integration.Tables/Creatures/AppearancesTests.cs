@@ -3,7 +3,6 @@ using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -4311,10 +4310,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             IEnumerable<string> allEyes = null, IEnumerable<string> commonEyes = null, IEnumerable<string> uncommonEyes = null, IEnumerable<string> rareEyes = null,
             IEnumerable<string> allOther = null, IEnumerable<string> commonOther = null, IEnumerable<string> uncommonOther = null, IEnumerable<string> rareOther = null)
         {
-            var appearances = Build(allSkin, commonSkin, uncommonSkin, rareSkin, (string.Empty, Rarity.Common))
+            var prototype = new List<(string Appearance, Rarity Rarity)>();
+            var appearances = Build(allSkin, commonSkin, uncommonSkin, rareSkin, prototype)
                 .SelectMany(a => Build(allHair, commonHair, uncommonHair, rareHair, a))
                 .SelectMany(a => Build(allEyes, commonEyes, uncommonEyes, rareEyes, a))
                 .SelectMany(a => Build(allOther, commonOther, uncommonOther, rareOther, a))
+                .Select(Collapse)
                 .Where(a => !string.IsNullOrEmpty(a.Appearance));
 
             var weightedAppearances = new Dictionary<Rarity, IEnumerable<string>>
@@ -4328,14 +4329,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return weightedAppearances;
         }
 
-        private IEnumerable<(string Appearance, Rarity Rarity)> Build(
+        private IEnumerable<List<(string Appearance, Rarity Rarity)>> Build(
             IEnumerable<string> all, IEnumerable<string> common, IEnumerable<string> uncommon, IEnumerable<string> rare,
-            (string Appearance, Rarity Rarity) prototype)
+            List<(string Appearance, Rarity Rarity)> prototype)
         {
             if (all?.Any() == true)
-                return all.Select(a =>
-                    (GetAppearancePrototype(prototype.Appearance, a),
-                    GetRarity(prototype.Rarity, Rarity.Common)));
+                return all.Select(a => AddToPrototype(a, Rarity.Common, prototype));
 
             common ??= [string.Empty];
             uncommon ??= [string.Empty];
@@ -4345,76 +4344,163 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 return [prototype];
 
             //Whether it is specified or not, common should always be here (even if empty)
-            var builtCommon = common.Select(a =>
-                (GetAppearancePrototype(prototype.Appearance, a),
-                GetRarity(prototype.Rarity, Rarity.Common)));
+            var builtCommon = common.Select(a => AddToPrototype(a, Rarity.Common, prototype));
             var appearances = builtCommon;
 
             //If we didn't specify uncommon, we should not add it as empty
             if (uncommon.Any(a => !string.IsNullOrEmpty(a)))
             {
-                var builtUncommon = uncommon.Select(a =>
-                    (GetAppearancePrototype(prototype.Appearance, a),
-                    GetRarity(prototype.Rarity, Rarity.Uncommon)));
+                var builtUncommon = uncommon.Select(a => AddToPrototype(a, Rarity.Uncommon, prototype));
                 appearances = appearances.Concat(builtUncommon);
             }
 
             //If we didn't specify rare, we should not add it as empty
             if (rare.Any(a => !string.IsNullOrEmpty(a)))
             {
-                var builtRare = rare.Select(a =>
-                    (GetAppearancePrototype(prototype.Appearance, a),
-                    GetRarity(prototype.Rarity, Rarity.Rare)));
+                var builtRare = rare.Select(a => AddToPrototype(a, Rarity.Rare, prototype));
                 appearances = appearances.Concat(builtRare);
             }
 
             return appearances;
         }
 
-        private string GetAppearancePrototype(string source, string additional)
+        private List<(string Appearance, Rarity Rarity)> AddToPrototype(string appearance, Rarity rarity, List<(string Appearance, Rarity Rarity)> prototype)
+            => new List<(string Appearance, Rarity Rarity)>(prototype)
+            {
+                (appearance, rarity)
+            };
+
+        private (string Appearance, Rarity Rarity) Collapse(List<(string Appearance, Rarity Rarity)> appearances)
         {
-            if (string.IsNullOrEmpty(source) && string.IsNullOrEmpty(additional))
-                return string.Empty;
+            var nonEmptyAppearances = appearances.Where(a => !string.IsNullOrEmpty(a.Appearance));
+            var appearance = string.Join("; ", nonEmptyAppearances.Select(a => a.Appearance));
+            var rarity = GetRarity(nonEmptyAppearances.Select(a => a.Rarity));
 
-            if (string.IsNullOrEmpty(source))
-                return additional;
-
-            if (string.IsNullOrEmpty(additional))
-                return source;
-
-            return $"{source}; {additional}";
+            return (appearance, rarity);
         }
 
-        private Rarity GetRarity(Rarity source, Rarity additional)
+        private Rarity GetRarity(IEnumerable<Rarity> rarities)
         {
-            if (source == Rarity.VeryRare || additional == Rarity.VeryRare)
+            var sum = rarities.Sum(r => (int)r);
+            if (sum >= (int)Rarity.VeryRare)
                 return Rarity.VeryRare;
 
-            if (source != Rarity.Common && source == additional)
-                return (Rarity)((int)source + 1);
+            if (sum >= (int)Rarity.Rare)
+                return Rarity.Rare;
 
-            return (Rarity)Math.Max((int)source, (int)additional);
+            if (sum >= (int)Rarity.Uncommon)
+                return Rarity.Uncommon;
+
+            return Rarity.Common;
         }
 
+        [TestCase(Rarity.Common)]
+        [TestCase(Rarity.Common, Rarity.Common)]
         [TestCase(Rarity.Common, Rarity.Common, Rarity.Common)]
-        [TestCase(Rarity.Common, Rarity.Uncommon, Rarity.Uncommon)]
-        [TestCase(Rarity.Common, Rarity.Rare, Rarity.Rare)]
-        [TestCase(Rarity.Common, Rarity.VeryRare, Rarity.VeryRare)]
+        [TestCase(Rarity.Common, Rarity.Common, Rarity.Common, Rarity.Common)]
+        [TestCase(Rarity.Common, Rarity.Common, Rarity.Common, Rarity.Common, Rarity.Common)]
+        [TestCase(Rarity.Uncommon, Rarity.Uncommon)]
+        [TestCase(Rarity.Uncommon, Rarity.Uncommon, Rarity.Common)]
         [TestCase(Rarity.Uncommon, Rarity.Common, Rarity.Uncommon)]
-        [TestCase(Rarity.Uncommon, Rarity.Uncommon, Rarity.Rare)]
-        [TestCase(Rarity.Uncommon, Rarity.Rare, Rarity.Rare)]
-        [TestCase(Rarity.Uncommon, Rarity.VeryRare, Rarity.VeryRare)]
-        [TestCase(Rarity.Rare, Rarity.Common, Rarity.Rare)]
-        [TestCase(Rarity.Rare, Rarity.Uncommon, Rarity.Rare)]
-        [TestCase(Rarity.Rare, Rarity.Rare, Rarity.VeryRare)]
-        [TestCase(Rarity.Rare, Rarity.VeryRare, Rarity.VeryRare)]
-        [TestCase(Rarity.VeryRare, Rarity.Common, Rarity.VeryRare)]
-        [TestCase(Rarity.VeryRare, Rarity.Uncommon, Rarity.VeryRare)]
-        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.VeryRare)]
-        [TestCase(Rarity.VeryRare, Rarity.VeryRare, Rarity.VeryRare)]
-        public void RarityComputesCorrectly(Rarity source, Rarity additional, Rarity expected)
+        [TestCase(Rarity.Uncommon, Rarity.Uncommon, Rarity.Common, Rarity.Common)]
+        [TestCase(Rarity.Uncommon, Rarity.Common, Rarity.Uncommon, Rarity.Common)]
+        [TestCase(Rarity.Uncommon, Rarity.Common, Rarity.Common, Rarity.Uncommon)]
+        [TestCase(Rarity.Uncommon, Rarity.Uncommon, Rarity.Common, Rarity.Common, Rarity.Common)]
+        [TestCase(Rarity.Uncommon, Rarity.Common, Rarity.Uncommon, Rarity.Common, Rarity.Common)]
+        [TestCase(Rarity.Uncommon, Rarity.Common, Rarity.Common, Rarity.Uncommon, Rarity.Common)]
+        [TestCase(Rarity.Uncommon, Rarity.Common, Rarity.Common, Rarity.Common, Rarity.Uncommon)]
+        [TestCase(Rarity.Rare, Rarity.Rare)]
+        [TestCase(Rarity.Rare, Rarity.Rare, Rarity.Common)]
+        [TestCase(Rarity.Rare, Rarity.Rare, Rarity.Uncommon)]
+        [TestCase(Rarity.Rare, Rarity.Uncommon, Rarity.Uncommon)]
+        [TestCase(Rarity.Rare, Rarity.Rare, Rarity.Uncommon, Rarity.Common)]
+        [TestCase(Rarity.Rare, Rarity.Rare, Rarity.Common, Rarity.Uncommon)]
+        [TestCase(Rarity.Rare, Rarity.Rare, Rarity.Common, Rarity.Common)]
+        [TestCase(Rarity.Rare, Rarity.Uncommon, Rarity.Rare, Rarity.Common)]
+        [TestCase(Rarity.Rare, Rarity.Uncommon, Rarity.Common, Rarity.Rare)]
+        [TestCase(Rarity.Rare, Rarity.Common, Rarity.Rare, Rarity.Uncommon)]
+        [TestCase(Rarity.Rare, Rarity.Common, Rarity.Rare, Rarity.Common)]
+        [TestCase(Rarity.Rare, Rarity.Common, Rarity.Uncommon, Rarity.Rare)]
+        [TestCase(Rarity.Rare, Rarity.Common, Rarity.Common, Rarity.Rare)]
+        [TestCase(Rarity.Rare, Rarity.Rare, Rarity.Uncommon, Rarity.Common, Rarity.Common)]
+        [TestCase(Rarity.Rare, Rarity.Rare, Rarity.Common, Rarity.Uncommon, Rarity.Common)]
+        [TestCase(Rarity.Rare, Rarity.Rare, Rarity.Common, Rarity.Common, Rarity.Uncommon)]
+        [TestCase(Rarity.Rare, Rarity.Rare, Rarity.Common, Rarity.Common, Rarity.Common)]
+        [TestCase(Rarity.Rare, Rarity.Uncommon, Rarity.Rare, Rarity.Common, Rarity.Common)]
+        [TestCase(Rarity.Rare, Rarity.Uncommon, Rarity.Common, Rarity.Rare, Rarity.Common)]
+        [TestCase(Rarity.Rare, Rarity.Uncommon, Rarity.Common, Rarity.Common, Rarity.Rare)]
+        [TestCase(Rarity.Rare, Rarity.Common, Rarity.Rare, Rarity.Uncommon, Rarity.Common)]
+        [TestCase(Rarity.Rare, Rarity.Common, Rarity.Rare, Rarity.Common, Rarity.Uncommon)]
+        [TestCase(Rarity.Rare, Rarity.Common, Rarity.Rare, Rarity.Common, Rarity.Common)]
+        [TestCase(Rarity.Rare, Rarity.Common, Rarity.Uncommon, Rarity.Rare, Rarity.Common)]
+        [TestCase(Rarity.Rare, Rarity.Common, Rarity.Uncommon, Rarity.Common, Rarity.Rare)]
+        [TestCase(Rarity.Rare, Rarity.Common, Rarity.Common, Rarity.Rare, Rarity.Uncommon)]
+        [TestCase(Rarity.Rare, Rarity.Common, Rarity.Common, Rarity.Rare, Rarity.Common)]
+        [TestCase(Rarity.Rare, Rarity.Common, Rarity.Common, Rarity.Uncommon, Rarity.Rare)]
+        [TestCase(Rarity.Rare, Rarity.Common, Rarity.Common, Rarity.Common, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Rare, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Rare, Rarity.Uncommon)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Rare, Rarity.Common)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Uncommon, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Uncommon, Rarity.Uncommon)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Common, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Uncommon, Rarity.Rare, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Uncommon, Rarity.Rare, Rarity.Uncommon)]
+        [TestCase(Rarity.VeryRare, Rarity.Uncommon, Rarity.Uncommon, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Common, Rarity.Rare, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Rare, Rarity.Rare, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Rare, Rarity.Rare, Rarity.Uncommon)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Rare, Rarity.Rare, Rarity.Common)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Rare, Rarity.Uncommon, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Rare, Rarity.Uncommon, Rarity.Uncommon)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Rare, Rarity.Uncommon, Rarity.Common)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Rare, Rarity.Common, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Rare, Rarity.Common, Rarity.Uncommon)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Rare, Rarity.Common, Rarity.Common)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Uncommon, Rarity.Rare, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Uncommon, Rarity.Rare, Rarity.Uncommon)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Uncommon, Rarity.Rare, Rarity.Common)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Uncommon, Rarity.Uncommon, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Uncommon, Rarity.Uncommon, Rarity.Uncommon)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Uncommon, Rarity.Uncommon, Rarity.Common)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Uncommon, Rarity.Common, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Uncommon, Rarity.Common, Rarity.Uncommon)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Common, Rarity.Rare, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Common, Rarity.Rare, Rarity.Uncommon)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Common, Rarity.Rare, Rarity.Common)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Common, Rarity.Uncommon, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Common, Rarity.Uncommon, Rarity.Uncommon)]
+        [TestCase(Rarity.VeryRare, Rarity.Rare, Rarity.Common, Rarity.Common, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Uncommon, Rarity.Rare, Rarity.Rare, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Uncommon, Rarity.Rare, Rarity.Rare, Rarity.Uncommon)]
+        [TestCase(Rarity.VeryRare, Rarity.Uncommon, Rarity.Rare, Rarity.Rare, Rarity.Common)]
+        [TestCase(Rarity.VeryRare, Rarity.Uncommon, Rarity.Rare, Rarity.Uncommon, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Uncommon, Rarity.Rare, Rarity.Uncommon, Rarity.Uncommon)]
+        [TestCase(Rarity.VeryRare, Rarity.Uncommon, Rarity.Rare, Rarity.Uncommon, Rarity.Common)]
+        [TestCase(Rarity.VeryRare, Rarity.Uncommon, Rarity.Rare, Rarity.Common, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Uncommon, Rarity.Rare, Rarity.Common, Rarity.Uncommon)]
+        [TestCase(Rarity.VeryRare, Rarity.Uncommon, Rarity.Uncommon, Rarity.Rare, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Uncommon, Rarity.Uncommon, Rarity.Rare, Rarity.Uncommon)]
+        [TestCase(Rarity.VeryRare, Rarity.Uncommon, Rarity.Uncommon, Rarity.Rare, Rarity.Common)]
+        [TestCase(Rarity.VeryRare, Rarity.Uncommon, Rarity.Uncommon, Rarity.Uncommon, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Uncommon, Rarity.Uncommon, Rarity.Uncommon, Rarity.Uncommon)]
+        [TestCase(Rarity.VeryRare, Rarity.Uncommon, Rarity.Uncommon, Rarity.Common, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Uncommon, Rarity.Common, Rarity.Rare, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Uncommon, Rarity.Common, Rarity.Rare, Rarity.Uncommon)]
+        [TestCase(Rarity.VeryRare, Rarity.Uncommon, Rarity.Common, Rarity.Uncommon, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Common, Rarity.Rare, Rarity.Rare, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Common, Rarity.Rare, Rarity.Rare, Rarity.Uncommon)]
+        [TestCase(Rarity.VeryRare, Rarity.Common, Rarity.Rare, Rarity.Rare, Rarity.Common)]
+        [TestCase(Rarity.VeryRare, Rarity.Common, Rarity.Rare, Rarity.Uncommon, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Common, Rarity.Rare, Rarity.Uncommon, Rarity.Uncommon)]
+        [TestCase(Rarity.VeryRare, Rarity.Common, Rarity.Rare, Rarity.Common, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Common, Rarity.Uncommon, Rarity.Rare, Rarity.Rare)]
+        [TestCase(Rarity.VeryRare, Rarity.Common, Rarity.Uncommon, Rarity.Rare, Rarity.Uncommon)]
+        [TestCase(Rarity.VeryRare, Rarity.Common, Rarity.Common, Rarity.Rare, Rarity.Rare)]
+        public void RarityComputesCorrectly(Rarity expected, params Rarity[] rarities)
         {
-            var result = GetRarity(source, additional);
+            var result = GetRarity(rarities);
             Assert.That(result, Is.EqualTo(expected));
         }
     }
