@@ -55,22 +55,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
 
         private void AssertCollection(IEnumerable<string> source, IEnumerable<string> expected, string message)
         {
-            var orderedExpected = expected.OrderBy(e => e);
-
-            //If descriptions are longer than this, there is a chance that the test failure message will be truncated
-            //When the test failure message is truncated, we might not be able to assess what to fix
-            var lengthCap = 150 * 10;
-            var largeBatches = orderedExpected.Batch(10).Where(b => b.Sum(a => a.Length) > lengthCap);
-
-            foreach (var batch in largeBatches)
-            {
-                foreach (var expectedItem in batch)
-                {
-                    Assert.That(source, Contains.Item(expectedItem), message);
-                }
-            }
-
-            Assert.That(source.OrderBy(s => s), Is.EquivalentTo(orderedExpected), message);
+            Assert.That(source.OrderBy(s => s), Is.EquivalentTo(expected.OrderBy(e => e)), message);
         }
 
         public void AssertWeightedCollection(string name, params string[] collection)

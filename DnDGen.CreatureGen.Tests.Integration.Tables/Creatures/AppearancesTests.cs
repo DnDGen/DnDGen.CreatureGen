@@ -4323,7 +4323,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 [Rarity.Common] = appearances.Where(a => a.Rarity == Rarity.Common).Select(a => a.Appearance),
                 [Rarity.Uncommon] = appearances.Where(a => a.Rarity == Rarity.Uncommon).Select(a => a.Appearance),
                 [Rarity.Rare] = appearances.Where(a => a.Rarity == Rarity.Rare).Select(a => a.Appearance),
-                [Rarity.VeryRare] = appearances.Where(a => a.Rarity == Rarity.VeryRare).Select(a => a.Appearance)
+                [Rarity.VeryRare] = appearances.Where(a => a.Rarity == Rarity.VeryRare).Select(a => a.Appearance),
             };
 
             return weightedAppearances;
@@ -4333,28 +4333,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             IEnumerable<string> all, IEnumerable<string> common, IEnumerable<string> uncommon, IEnumerable<string> rare,
             List<(string Appearance, Rarity Rarity)> prototype)
         {
-            if (all?.Any() == true)
-                return all.Select(a => AddToPrototype(a, Rarity.Common, prototype));
-
+            all ??= [string.Empty];
             common ??= [string.Empty];
             uncommon ??= [string.Empty];
             rare ??= [string.Empty];
 
-            if (common.Concat(uncommon).Concat(rare).Any(a => !string.IsNullOrEmpty(a)) == false)
+            if (all.Any(a => !string.IsNullOrEmpty(a)))
+                return all.Select(a => AddToPrototype(a, Rarity.Common, prototype));
+
+            if (common.Concat(uncommon).Concat(rare).Any() == false)
                 return [prototype];
 
-            //Whether it is specified or not, common should always be here (even if empty)
             var builtCommon = common.Select(a => AddToPrototype(a, Rarity.Common, prototype));
             var appearances = builtCommon;
 
-            //If we didn't specify uncommon, we should not add it as empty
             if (uncommon.Any(a => !string.IsNullOrEmpty(a)))
             {
                 var builtUncommon = uncommon.Select(a => AddToPrototype(a, Rarity.Uncommon, prototype));
                 appearances = appearances.Concat(builtUncommon);
             }
 
-            //If we didn't specify rare, we should not add it as empty
             if (rare.Any(a => !string.IsNullOrEmpty(a)))
             {
                 var builtRare = rare.Select(a => AddToPrototype(a, Rarity.Rare, prototype));
@@ -4365,7 +4363,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         }
 
         private List<(string Appearance, Rarity Rarity)> AddToPrototype(string appearance, Rarity rarity, List<(string Appearance, Rarity Rarity)> prototype)
-            => new List<(string Appearance, Rarity Rarity)>(prototype)
+            => new(prototype)
             {
                 (appearance, rarity)
             };
@@ -4388,10 +4386,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             if (sum >= (int)Rarity.Rare)
                 return Rarity.Rare;
 
-            if (sum >= (int)Rarity.Uncommon)
-                return Rarity.Uncommon;
-
-            return Rarity.Common;
+            return (Rarity)sum;
         }
 
         [TestCase(Rarity.Common)]
@@ -4502,6 +4497,118 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         {
             var result = GetRarity(rarities);
             Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [TestCase("", "", "", "", "")]
+        [TestCase("", "", "", "My other", "My other")]
+        [TestCase("", "", "My eyes", "", "My eyes")]
+        [TestCase("", "", "My eyes", "My other", "My eyes; My other")]
+        [TestCase("", "My hair", "", "", "My hair")]
+        [TestCase("", "My hair", "", "My other", "My hair; My other")]
+        [TestCase("", "My hair", "My eyes", "", "My hair; My eyes")]
+        [TestCase("", "My hair", "My eyes", "My other", "My hair; My eyes; My other")]
+        [TestCase("My skin", "", "", "", "My skin")]
+        [TestCase("My skin", "", "", "My other", "My skin; My other")]
+        [TestCase("My skin", "", "My eyes", "", "My skin; My eyes")]
+        [TestCase("My skin", "", "My eyes", "My other", "My skin; My eyes; My other")]
+        [TestCase("My skin", "My hair", "", "", "My skin; My hair")]
+        [TestCase("My skin", "My hair", "", "My other", "My skin; My hair; My other")]
+        [TestCase("My skin", "My hair", "My eyes", "", "My skin; My hair; My eyes")]
+        [TestCase("My skin", "My hair", "My eyes", "My other", "My skin; My hair; My eyes; My other")]
+        public void Collapse_HandlesAppearancesCorrectly(string skin, string hair, string eyes, string other, string expected)
+        {
+            var appearance = Collapse([
+                (skin, Rarity.Common),
+                (hair, Rarity.Common),
+                (eyes, Rarity.Common),
+                (other, Rarity.Common),
+            ]);
+
+            Assert.That(appearance.Appearance, Is.EqualTo(expected));
+        }
+
+        [TestCase("", "", "", "", "")]
+        [TestCase("", "", "", "My other", "My other")]
+        [TestCase("", "", "My eyes", "", "My eyes")]
+        [TestCase("", "", "My eyes", "My other", "My eyes; My other")]
+        [TestCase("", "My hair", "", "", "My hair")]
+        [TestCase("", "My hair", "", "My other", "My hair; My other")]
+        [TestCase("", "My hair", "My eyes", "", "My hair; My eyes")]
+        [TestCase("", "My hair", "My eyes", "My other", "My hair; My eyes; My other")]
+        [TestCase("My skin", "", "", "", "My skin")]
+        [TestCase("My skin", "", "", "My other", "My skin; My other")]
+        [TestCase("My skin", "", "My eyes", "", "My skin; My eyes")]
+        [TestCase("My skin", "", "My eyes", "My other", "My skin; My eyes; My other")]
+        [TestCase("My skin", "My hair", "", "", "My skin; My hair")]
+        [TestCase("My skin", "My hair", "", "My other", "My skin; My hair; My other")]
+        [TestCase("My skin", "My hair", "My eyes", "", "My skin; My hair; My eyes")]
+        [TestCase("My skin", "My hair", "My eyes", "My other", "My skin; My hair; My eyes; My other")]
+        public void Collapse_HandlesAppearancesCorrectly_NoEmpty(string skin, string hair, string eyes, string other, string expected)
+        {
+            var appearancePrototypes = new[]
+            {
+                (skin, Rarity.Common),
+                (hair, Rarity.Common),
+                (eyes, Rarity.Common),
+                (other, Rarity.Common),
+            }.Where(a => !string.IsNullOrEmpty(a.Item1)).ToList();
+
+            var appearance = Collapse(appearancePrototypes);
+
+            Assert.That(appearance.Appearance, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void BUG_GetWeightedAppearances_BasedOnAasimar_ReturnsCorrectCollections()
+        {
+            var appearances = GetWeightedAppearances(
+                commonSkin: ["My common skin"],
+                uncommonSkin: ["My uncommon skin"],
+                rareSkin: ["My rare skin"],
+                commonHair: ["My common hair"],
+                uncommonHair: ["My uncommon hair"],
+                commonEyes: ["My common eyes"],
+                uncommonEyes: ["My uncommon eyes"],
+                uncommonOther: ["My uncommon other"]);
+
+            Assert.That(appearances, Is.Not.Empty
+                .And.ContainKey(Rarity.Common)
+                .And.ContainKey(Rarity.Uncommon)
+                .And.ContainKey(Rarity.Rare)
+                .And.ContainKey(Rarity.VeryRare)
+                .And.Count.EqualTo(4));
+            Assert.That(appearances[Rarity.Common], Is.Unique.And.EquivalentTo(new[] {
+                "My common skin; My common hair; My common eyes",
+            }));
+            Assert.That(appearances[Rarity.Uncommon], Is.Unique.And.EquivalentTo(new[] {
+                "My uncommon skin; My common hair; My common eyes",
+                "My common skin; My uncommon hair; My common eyes",
+                "My common skin; My common hair; My uncommon eyes",
+                "My common skin; My common hair; My common eyes; My uncommon other",
+            }));
+            Assert.That(appearances[Rarity.Rare], Is.Unique.And.EquivalentTo(new[] {
+                "My rare skin; My uncommon hair; My common eyes",
+                "My rare skin; My common hair; My uncommon eyes",
+                "My rare skin; My common hair; My common eyes; My uncommon other",
+                "My rare skin; My common hair; My common eyes",
+                "My uncommon skin; My uncommon hair; My uncommon eyes",
+                "My uncommon skin; My uncommon hair; My common eyes; My uncommon other",
+                "My uncommon skin; My uncommon hair; My common eyes",
+                "My uncommon skin; My common hair; My uncommon eyes; My uncommon other",
+                "My uncommon skin; My common hair; My uncommon eyes",
+                "My uncommon skin; My common hair; My common eyes; My uncommon other",
+                "My common skin; My uncommon hair; My uncommon eyes; My uncommon other",
+                "My common skin; My uncommon hair; My uncommon eyes",
+                "My common skin; My uncommon hair; My common eyes; My uncommon other",
+                "My common skin; My common hair; My uncommon eyes; My uncommon other",
+            }));
+            Assert.That(appearances[Rarity.VeryRare], Is.Unique.And.EquivalentTo(new[] {
+                "My rare skin; My uncommon hair; My uncommon eyes; My uncommon other",
+                "My rare skin; My uncommon hair; My uncommon eyes",
+                "My rare skin; My uncommon hair; My common eyes; My uncommon other",
+                "My rare skin; My common hair; My uncommon eyes; My uncommon other",
+                "My uncommon skin; My uncommon hair; My uncommon eyes; My uncommon other",
+            }));
         }
     }
 }
