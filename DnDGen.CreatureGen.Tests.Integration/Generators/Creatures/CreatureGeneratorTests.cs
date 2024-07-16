@@ -650,6 +650,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             creatureAsserter.AssertCreature(spiderEater);
 
             Assert.That(spiderEater.Attacks, Is.Not.Empty);
+            Assert.That(spiderEater.Demographics.Gender, Is.EqualTo(GenderConstants.Male).Or.EqualTo(GenderConstants.Female));
+
             var attackNames = spiderEater.Attacks.Select(q => q.Name);
 
             if (spiderEater.Demographics.Gender == GenderConstants.Male)
@@ -659,6 +661,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             else if (spiderEater.Demographics.Gender == GenderConstants.Female)
             {
                 Assert.That(attackNames, Contains.Item("Implant"));
+            }
+        }
+
+        [Test]
+        [Repeat(10)] //INFO: We have to repeat to ensure we get males, since gender is random
+        public void GenderSpecificAppearancesAreGenerated()
+        {
+            var bison = creatureGenerator.Generate(false, CreatureConstants.Bison);
+            creatureAsserter.AssertCreature(bison);
+
+            Assert.That(bison.Demographics.Appearance, Is.Not.Empty);
+            Assert.That(bison.Demographics.Gender, Is.EqualTo(GenderConstants.Male).Or.EqualTo(GenderConstants.Female));
+
+            if (bison.Demographics.Gender == GenderConstants.Male)
+            {
+                Assert.That(bison.Demographics.Appearance, Contains.Substring("chin with a black beard-like growth"));
+            }
+            else if (bison.Demographics.Gender == GenderConstants.Female)
+            {
+                Assert.That(bison.Demographics.Appearance, Does.Not.Contain("chin with a black beard-like growth"));
             }
         }
 
