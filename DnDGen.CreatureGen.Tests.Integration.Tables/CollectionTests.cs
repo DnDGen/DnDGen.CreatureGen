@@ -25,7 +25,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
 
         protected void AssertCollectionNames(IEnumerable<string> names)
         {
-            AssertUniqueCollection(names);
+            AssertUniqueCollection(names, "Collection Names");
             AssertCollection(table.Keys, names, "Table Keys");
         }
 
@@ -34,9 +34,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
             return table[name];
         }
 
-        protected void AssertUniqueCollection(IEnumerable<string> collection)
+        protected void AssertUniqueCollection(IEnumerable<string> collection, string message)
         {
-            Assert.That(collection, Is.Unique);
+            Assert.That(collection, Is.Unique, message);
         }
 
         protected virtual void PopulateIndices(IEnumerable<string> collection)
@@ -114,9 +114,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables
 
         public virtual void AssertDistinctCollection(string name, params string[] collection)
         {
-            AssertUniqueCollection(collection);
+            AssertUniqueCollection(collection, $"{name}: Expected");
             AssertCollection(name, collection);
-            AssertUniqueCollection(table[name]);
+            AssertUniqueCollection(table[name], $"{name}: Actual");
         }
     }
 }

@@ -52,7 +52,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
         public void Appearances(string creature)
         {
-            AssertKey(creature);
+            AssertCreatureAppearance(creature);
 
             var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, creature);
             var collectionNames = GetCollectionNames();
@@ -60,11 +60,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             foreach (var key in additionalKeys)
             {
-                AssertKey(key);
+                AssertCreatureAppearance(key);
             }
         }
 
-        private void AssertKey(string key)
+        private void AssertCreatureAppearance(string key)
         {
             Assert.That(creatureAppearances, Contains.Key(key));
             Assert.That(creatureAppearances[key], Is.Not.Empty
@@ -73,6 +73,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 .And.ContainKey(Rarity.Rare)
                 .And.ContainKey(Rarity.VeryRare)
                 .And.Count.EqualTo(4));
+            Assert.That(creatureAppearances.Values.SelectMany(kvp => kvp.Values).SelectMany(a => a), Is.Not.Empty);
             Assert.That(creatureAppearances[key][Rarity.Common].Where(a => a.Contains("TODO")), Is.Empty, "COMMON APPEARANCES TODO");
             Assert.That(creatureAppearances[key][Rarity.Uncommon].Where(a => a.Contains("TODO")), Is.Empty, "UNCOMMON APPEARANCES TODO");
             Assert.That(creatureAppearances[key][Rarity.Rare].Where(a => a.Contains("TODO")), Is.Empty, "RARE APPEARANCES TODO");
@@ -1704,8 +1705,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Aquatic_elf
             appearances[CreatureConstants.Elf_Aquatic] = GetWeightedAppearances(
                 commonSkin: [ "Deep green skin, mottled and striped with brown", "Blue skin with white stripes and patches",
-                    "Deep blue skin with white stripes and patches", "Light blue skin with white stripes and patches",
-                    "Pale silver-green skin" ],
+                    "Deep blue skin with white stripes and patches", "Light blue skin with white stripes and patches" ],
                 uncommonSkin: ["Pale silver-green skin"],
                 commonEyes: ["Turquoise eyes", "White eyes", "Black eyes", "Blue eyes", "Green eyes"],
                 rareEyes: ["Silver eyes"],
