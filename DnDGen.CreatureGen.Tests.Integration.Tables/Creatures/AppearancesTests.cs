@@ -64,6 +64,27 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             }
         }
 
+        [Test]
+        public void NoAppearancesIncludeTODO()
+        {
+            var collectionNames = GetCollectionNames();
+            foreach (var name in collectionNames)
+            {
+                Assert.That(creatureAppearances, Contains.Key(name));
+                Assert.That(creatureAppearances[name], Is.Not.Empty
+                    .And.ContainKey(Rarity.Common)
+                    .And.ContainKey(Rarity.Uncommon)
+                    .And.ContainKey(Rarity.Rare)
+                    .And.ContainKey(Rarity.VeryRare)
+                    .And.Count.EqualTo(4));
+
+                Assert.That(creatureAppearances[name][Rarity.Common].Where(a => a.Contains("TODO")), Is.Empty, $"{name}: COMMON APPEARANCES TODO");
+                Assert.That(creatureAppearances[name][Rarity.Uncommon].Where(a => a.Contains("TODO")), Is.Empty, $"{name}: UNCOMMON APPEARANCES TODO");
+                Assert.That(creatureAppearances[name][Rarity.Rare].Where(a => a.Contains("TODO")), Is.Empty, $"{name}: RARE APPEARANCES TODO");
+                Assert.That(creatureAppearances[name][Rarity.VeryRare].Where(a => a.Contains("TODO")), Is.Empty, $"{name}: VERY RARE APPEARANCES TODO");
+            }
+        }
+
         private void AssertCreatureAppearance(string key)
         {
             Assert.That(creatureAppearances, Contains.Key(key));
@@ -73,11 +94,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 .And.ContainKey(Rarity.Rare)
                 .And.ContainKey(Rarity.VeryRare)
                 .And.Count.EqualTo(4));
-            Assert.That(creatureAppearances.Values.SelectMany(kvp => kvp.Values).SelectMany(a => a), Is.Not.Empty);
-            Assert.That(creatureAppearances[key][Rarity.Common].Where(a => a.Contains("TODO")), Is.Empty, "COMMON APPEARANCES TODO");
-            Assert.That(creatureAppearances[key][Rarity.Uncommon].Where(a => a.Contains("TODO")), Is.Empty, "UNCOMMON APPEARANCES TODO");
-            Assert.That(creatureAppearances[key][Rarity.Rare].Where(a => a.Contains("TODO")), Is.Empty, "RARE APPEARANCES TODO");
-            Assert.That(creatureAppearances[key][Rarity.VeryRare].Where(a => a.Contains("TODO")), Is.Empty, "VERY RARE APPEARANCES TODO");
+
+            var allValues = creatureAppearances[key].SelectMany(kvp => kvp.Value);
+            Assert.That(allValues, Is.Not.Empty);
+
+            if (allValues.Any(a => a.Contains("TODO")))
+            {
+                Assert.Warn($"{key} appearance contains a TODO");
+                return;
+            }
 
             AssertDistinctCollection(key + Rarity.Common.ToString(), creatureAppearances[key][Rarity.Common].ToArray());
             AssertDistinctCollection(key + Rarity.Uncommon.ToString(), creatureAppearances[key][Rarity.Uncommon].ToArray());
@@ -4128,72 +4153,73 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.Vrock][Rarity.Common] = new[] { "A cross between a vulture and a human. Twisted and gnarled with a long neck and limbs covered in sinew. Covered in small gray feathers. Stinks of offal and carrion. Long talons and vulture head." };
             //Source: https://activepestcontrol.com/pest-info/bees-and-hornets/red-paper-wasp/
             //https://forgottenrealms.fandom.com/wiki/Giant_wasp 
-            appearances[CreatureConstants.Wasp_Giant][Rarity.Common] = new[] { "Dull tan body with yellow stripes", "Pinched waist, nearly black wings, red coloring, yellow face" };
+            appearances[CreatureConstants.Wasp_Giant][Rarity.Common] = ["Dull tan body with yellow stripes", "Pinched waist, nearly black wings, red coloring, yellow face"];
             //Source: https://www.woodlandtrust.org.uk/trees-woods-and-wildlife/animals/mammals/weasel/
-            appearances[CreatureConstants.Weasel][Rarity.Common] = new[] { "Chestnut-brown fur with white-cream underparts and a long, slim body that ends in a short tail." };
+            appearances[CreatureConstants.Weasel][Rarity.Common] = ["Chestnut-brown fur with white-cream underparts and a long, slim body that ends in a short tail."];
             //https://forgottenrealms.fandom.com/wiki/Giant_weasel
             appearances[CreatureConstants.Weasel_Dire] = GetWeightedAppearances(
-                commonHair: new[] { "Chestnut-brown fur with white-cream underparts" },
-                uncommonHair: new[] { "White fur with white-cream underparts" },
-                rareHair: new[] { "Black fur with black underparts" },
-                allOther: new[] { "Long, slim body ending in a short tail" });
+                commonHair: ["Chestnut-brown fur with white-cream underparts"],
+                uncommonHair: ["White fur with white-cream underparts"],
+                rareHair: ["Black fur with black underparts"],
+                allOther: ["Long, slim body ending in a short tail"]);
             //Source: https://www.d20srd.org/srd/monsters/whale.htm
             //https://www.fisheries.noaa.gov/species/humpback-whale
             //https://www.fisheries.noaa.gov/species/gray-whale
             //https://www.fisheries.noaa.gov/species/north-atlantic-right-whale
             appearances[CreatureConstants.Whale_Baleen] = GetWeightedAppearances(
-                commonSkin: new[] {
+                commonSkin: [
                     "Humpback Whale: black skin with white on the underside of the pectoral fins, belly, and underside of the tail",
                     "Gray Whale: Mottled gray skin with small eyes located just above the corners of the mouth. Broad paddle-shaped pectoral flippers, pointed at the tips. Dorsal hump.",
                     "Right Whale: Stocky black body, V-shaped blow spout, broad and deeply-notched tail, all-black belly",
                     "Right Whale: Stocky black body, V-shaped blow spout, broad and deeply-notched tail, black belly with irregularly-shaped white patches",
-                },
-                uncommonSkin: new[] { "Humpback Whale: black skin with white on the underside of the pectoral fins, flanks, belly, and underside of the tail" });
+                ],
+                uncommonSkin: ["Humpback Whale: black skin with white on the underside of the pectoral fins, flanks, belly, and underside of the tail"]);
             //Source: https://www.fisheries.noaa.gov/species/sperm-whale
             appearances[CreatureConstants.Whale_Cachalot] = GetWeightedAppearances(
-                commonSkin: new[] { "Sperm Whale: Dark grey skin" },
-                uncommonSkin: new[] { "Sperm Whale: Dark grey skin with white patches on the belly" });
+                commonSkin: ["Sperm Whale: Dark grey skin"],
+                uncommonSkin: ["Sperm Whale: Dark grey skin with white patches on the belly"],
+                rareSkin: ["Sperm Whale (Moby Dick): White (albino) skin"]);
             //Source: https://www.fisheries.noaa.gov/species/killer-whale
-            appearances[CreatureConstants.Whale_Orca][Rarity.Common] = new[] {
+            appearances[CreatureConstants.Whale_Orca][Rarity.Common] = [
                 "Mostly black on top with white underside and white patches near the eyes. Gray saddle patch behind the dorsal fin.",
                 "Mostly black on top with white underside and white patches near the eyes. White saddle patch behind the dorsal fin.",
-            };
+            ];
             //Source: https://forgottenrealms.fandom.com/wiki/Wight
             appearances[CreatureConstants.Wight] = GetWeightedAppearances(
-                allSkin: new[] { "TODO HUMAN mummified skin" },
-                allHair: new[] { "TODO HUMAN hair" },
-                allEyes: new[] { "Calcified, all-white eyes" },
-                allOther: new[] { "Hands end in claws, teeth are sharp and jagged like needles" });
+                allSkin: ["TODO HUMAN mummified skin"],
+                allHair: ["TODO HUMAN hair"],
+                allEyes: ["Calcified, all-white eyes"],
+                allOther: ["Hands end in claws, teeth are sharp and jagged like needles"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Will-o'-wisp
             appearances[CreatureConstants.WillOWisp] = GetWeightedAppearances(
-                allSkin: new[] { "Hazy ball of white light", "Hazy ball of blue light", "Hazy ball of violet light", "Hazy ball of green light",
-                    "Hazy ball of yellow light" });
+                allSkin: [ "Hazy ball of white light", "Hazy ball of blue light", "Hazy ball of violet light", "Hazy ball of green light",
+                    "Hazy ball of yellow light" ]);
             //Source: https://forgottenrealms.fandom.com/wiki/Winter_wolf
             appearances[CreatureConstants.WinterWolf] = GetWeightedAppearances(
-                allHair: new[] { "Glistening white fur", "Glistening silvery fur" },
-                commonEyes: new[] { "Blue eyes", "Very pale blue eyes" },
-                uncommonEyes: new[] { "Silvery eyes" });
+                allHair: ["Glistening white fur", "Glistening silvery fur"],
+                commonEyes: ["Blue eyes", "Very pale blue eyes"],
+                uncommonEyes: ["Silvery eyes"]);
             //Source: https://seaworld.org/animals/facts/mammals/gray-wolf/
             appearances[CreatureConstants.Wolf] = GetWeightedAppearances(
-                commonHair: new[] { "Light gray fur with a thick, dense underfur", "Gray fur with a thick, dense underfur", "Dark gray fur with a thick, dense underfur",
+                commonHair: [ "Light gray fur with a thick, dense underfur", "Gray fur with a thick, dense underfur", "Dark gray fur with a thick, dense underfur",
                     "Light gray fur interspersed with black and white with a thick, dense underfur",
                     "Gray fur interspersed with black and white with a thick, dense underfur",
                     "Dark gray fur interspersed with black and white with a thick, dense underfur"
-                },
-                uncommonHair: new[] { "Solid black fur with a thick, dense underfur", "Solid white fur with a thick, dense underfur" },
-                allOther: new[] { "High body, long legs, broad skull tapering to a narrow muzzle, bushy tail" });
+                ],
+                uncommonHair: ["Solid black fur with a thick, dense underfur", "Solid white fur with a thick, dense underfur"],
+                allOther: ["High body, long legs, broad skull tapering to a narrow muzzle, bushy tail"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Dire_wolf
             appearances[CreatureConstants.Wolf_Dire] = GetWeightedAppearances(
-                allHair: new[] { "Thick mottled gray fur", "Thick black fur", "Thick mottled black fur", "Thick gray fur" },
-                allEyes: new[] { "Eyes like fire" });
+                allHair: ["Thick mottled gray fur", "Thick black fur", "Thick mottled black fur", "Thick gray fur"],
+                allEyes: ["Eyes like fire"]);
             //Source: https://www.adfg.alaska.gov/index.cfm?adfg=wolverine.printerfriendly
             appearances[CreatureConstants.Wolverine] = GetWeightedAppearances(
-                commonHair: new[] {
+                commonHair: [
                     "Long, dense, dark brown fur with a creamy white stripe running from each shoulder along the flanks to the base of the tail, with a white hair patch on the neck and chest",
                     "Long, dense, dark brown fur with a gold stripe running from each shoulder along the flanks to the base of the tail, with a white hair patch on the neck and chest",
                     "Long, dense, black fur with a creamy white stripe running from each shoulder along the flanks to the base of the tail, with a white hair patch on the neck and chest",
                     "Long, dense, black fur with a gold stripe running from each shoulder along the flanks to the base of the tail, with a white hair patch on the neck and chest",
-                },
+                ],
                 uncommonHair: new[] {
                     "Long, dense, dark brown fur with a creamy white stripe running from each shoulder along the flanks to the base of the tail",
                     "Long, dense, dark brown fur with a gold stripe running from each shoulder along the flanks to the base of the tail",

@@ -1213,6 +1213,36 @@
 		<entry>Reddish-brown skin; Red hair; Orange eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
 		<entry>Reddish-brown skin; Red hair; Red eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
 		<entry>Reddish-brown skin; Red hair; Yellow eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Reddish-yellow skin; Brown hair; Brown eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Reddish-yellow skin; Brown hair; Greenish-white eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Reddish-yellow skin; Brown hair; Orange eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Reddish-yellow skin; Brown hair; Red eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Reddish-yellow skin; Brown hair; Yellow eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Reddish-yellow skin; Red hair; Brown eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Reddish-yellow skin; Red hair; Greenish-white eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Reddish-yellow skin; Red hair; Orange eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Reddish-yellow skin; Red hair; Red eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Reddish-yellow skin; Red hair; Yellow eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Yellow skin; Brown hair; Brown eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Yellow skin; Brown hair; Greenish-white eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Yellow skin; Brown hair; Orange eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Yellow skin; Brown hair; Red eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Yellow skin; Brown hair; Yellow eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Yellow skin; Red hair; Brown eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Yellow skin; Red hair; Greenish-white eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Yellow skin; Red hair; Orange eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Yellow skin; Red hair; Red eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Yellow skin; Red hair; Yellow eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Yellowish-brown skin; Brown hair; Brown eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Yellowish-brown skin; Brown hair; Greenish-white eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Yellowish-brown skin; Brown hair; Orange eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Yellowish-brown skin; Brown hair; Red eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Yellowish-brown skin; Brown hair; Yellow eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Yellowish-brown skin; Red hair; Brown eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Yellowish-brown skin; Red hair; Greenish-white eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Yellowish-brown skin; Red hair; Orange eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Yellowish-brown skin; Red hair; Red eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
+		<entry>Yellowish-brown skin; Red hair; Yellow eyes; Large, hairy, wedge-shaped ears; tough hide; claws</entry>
 	</collection>
 	<collection>
 		<name>BuletteCommon</name>
@@ -1242,13 +1272,49 @@
 	</collection>
 	<collection>
 		<name>Carrion CrawlerCommon</name>
-		
-		
+		<entry>Green skin, pale yellow underbelly; Two eye stalks; Eight long tentacles protruding from the side of the head</entry>
+		<entry>Green skin; Two eye stalks; Eight long tentacles protruding from the side of the head</entry>
+		<entry>Pale yellow skin; Two eye stalks; Eight long tentacles protruding from the side of the head</entry>
 	</collection>
 	<collection>
 		<name>CatCommon</name>
-		
-		
+		<entry>Abyssinian</entry>
+		<entry>American Bobtail</entry>
+		<entry>American Curl</entry>
+		<entry>American Shorthair</entry>
+		<entry>American Wirehair</entry>
+		<entry>Australian Mist</entry>
+		<entry>Balinese</entry>
+		<entry>Birman</entry>
+		<entry>Black Blotched Tabby</entry>
+		<entry>Black Colorpoint</entry>
+		<entry>Black Spotted Tabby</entry>
+		<entry>Black Striped Tabby</entry>
+		<entry>Black Ticked Tabby</entry>
+		<entry>Black/Cream Cap-And-Saddle Bi-color</entry>
+		<entry>Black/Cream Harlequin Bi-color</entry>
+		<entry>Black/Cream Magpie Bi-color</entry>
+		<entry>Black/Cream Tuxedo</entry>
+		<entry>Black/Cream Van Bi-color</entry>
+		<entry>Black/Fawn Cap-And-Saddle Bi-color</entry>
+		<entry>Black/Fawn Harlequin Bi-color</entry>
+		<entry>Black/Fawn Magpie Bi-color</entry>
+		<entry>Black/Fawn Tuxedo</entry>
+		<entry>Black/Fawn Van Bi-color</entry>
+		<entry>Black/Ginger Brindled Torbie</entry>
+		<entry>Black/Ginger Brindled Tortoiseshell</entry>
+		<entry>Black/Ginger Patchy Torbie</entry>
+		<entry>Black/Ginger Patchy Tortoiseshell</entry>
+		<entry>Black/Gray Cap-And-Saddle Bi-color</entry>
+		<entry>Black/Gray Harlequin Bi-color</entry>
+		<entry>Black/Gray Magpie Bi-color</entry>
+		<entry>Black/Gray Tuxedo</entry>
+		<entry>Black/Gray Van Bi-color</entry>
+		<entry>Black/White Cap-And-Saddle Bi-color</entry>
+		<entry>Black/White Harlequin Bi-color</entry>
+		<entry>Black/White Magpie Bi-color</entry>
+		<entry>Black/White Tuxedo</entry>
+		<entry>Black/White Van Bi-color</entry>
 	</collection>
 	<collection>
 		<name>CentaurCommon</name>
@@ -1257,61 +1323,70 @@
 	</collection>
 	<collection>
 		<name>Centipede SwarmCommon</name>
-		
+		<entry>1,500 centipedes</entry>
 	</collection>
 	<collection>
 		<name>Chain Devil (Kyton)Common</name>
-		
-		
-		
+		<entry>Grey skin</entry>
+		<entry>Grey skin with red tattoos</entry>
+		<entry>Red skin</entry>
 	</collection>
 	<collection>
 		<name>Chaos BeastCommon</name>
-		
+		<entry>A filmy mass of rope-like tentacles with vermilion tips that slither along. Bulbous body ringed by gnashing mouths and topped by a viscous sac holding ten bobbing eyes. Dozens of vestigial wings that flap too feebly to give it flight.</entry>
+		<entry>A graceful six-legged creature with delicate arms and shining skin. Maned head with three flashing eyes. Walks with a smooth gait and noble bearing.</entry>
+		<entry>A hollowed-out carcass, swelling with gases into a balloon-like husk, bobbing along in the air with the ends of its body trailing about it and tangling others.</entry>
+		<entry>A man-sized creature with stumpy feet - can only shuffle. Hands like crab's claws. Body like dough falling from broken bones. Head is balding and pitted with empty eye sockets.</entry>
+		<entry>A plump moth with brilliantly colored wings like the stained glass of temples and compound eyes that sparkle like a myriad of jewels.</entry>
+		<entry>A powerful and muscular beast, armed with claws and alligator jaws.</entry>
+		<entry>A sac of intestines, warm and wet and steaming. Both deaf and blind. To move, it rolls and flops like limp sausages falling down stairs, becoming looped and draped around all obstacles and lying as a tangled sprawl.</entry>
+		<entry>A slender raptor-like creature with large talons underneath its body and broad wings, all covered with dark fur. Two hateful, coldly-gleaming eyes.</entry>
+		<entry>A towering thing of pulpy flesh and exposed veins, covered in fangs and hooks. Three legs upon which it walks with unsteady and lurching steps. Face is fractured, with bent eyes and nose hooked three times.</entry>
+		<entry>A writhing mass of teeth and barbed tentacles, grey and rotting. Random clawed hands hide under some of the tentacles.</entry>
+		<entry>DM Discretion - come up with something particularly chaotic</entry>
+		<entry>The person one least suspects.</entry>
 	</collection>
 	<collection>
 		<name>CheetahCommon</name>
-		
-		
+		<entry>Slender body, sand-colored coat with black spots, long thin legs, deep chest, small head</entry>
+		<entry>Slender body, sand-colored coat with brown spots, long thin legs, deep chest, small head</entry>
+		<entry>Slender body, yellow coat with black spots, long thin legs, deep chest, small head</entry>
+		<entry>Slender body, yellow coat with brown spots, long thin legs, deep chest, small head</entry>
 	</collection>
 	<collection>
 		<name>Chimera (Black Dragon head)Common</name>
-		
-		
+		<entry>Hindquarters of a goat, the forequarters of a lion, and a set of Black Dragon wings. Three heads: that of a horned goat, a lion, and a Black Dragon.</entry>
 	</collection>
 	<collection>
 		<name>Chimera (Blue Dragon head)Common</name>
-		
-		
+		<entry>Hindquarters of a goat, the forequarters of a lion, and a set of Blue Dragon wings. Three heads: that of a horned goat, a lion, and a Blue Dragon.</entry>
 	</collection>
 	<collection>
 		<name>Chimera (Green Dragon head)Common</name>
-		
-		
+		<entry>Hindquarters of a goat, the forequarters of a lion, and a set of Green Dragon wings. Three heads: that of a horned goat, a lion, and a Green Dragon.</entry>
 	</collection>
 	<collection>
 		<name>Chimera (Red Dragon head)Common</name>
-		
-		
+		<entry>Hindquarters of a goat, the forequarters of a lion, and a set of Red Dragon wings. Three heads: that of a horned goat, a lion, and a Red Dragon.</entry>
 	</collection>
 	<collection>
 		<name>Chimera (White Dragon head)Common</name>
-		
-		
+		<entry>Hindquarters of a goat, the forequarters of a lion, and a set of White Dragon wings. Three heads: that of a horned goat, a lion, and a White Dragon.</entry>
 	</collection>
 	<collection>
 		<name>ChokerCommon</name>
-		
-		
+		<entry>Earthy-brown, rubbery skin; Roughly humanoid, with a small torso and head. Arms and legs are long and thin, more like tentacles. Hands are shaped somewhat like a starfish, with a spiny surface—stiff cartilage jutting through the skin. Fingers are enormously long. Limbs move with the fluidity of tentacles.</entry>
+		<entry>Gray, rubbery skin; Roughly humanoid, with a small torso and head. Arms and legs are long and thin, more like tentacles. Hands are shaped somewhat like a starfish, with a spiny surface—stiff cartilage jutting through the skin. Fingers are enormously long. Limbs move with the fluidity of tentacles.</entry>
+		<entry>Spotted earthy-brown, rubbery skin; Roughly humanoid, with a small torso and head. Arms and legs are long and thin, more like tentacles. Hands are shaped somewhat like a starfish, with a spiny surface—stiff cartilage jutting through the skin. Fingers are enormously long. Limbs move with the fluidity of tentacles.</entry>
+		<entry>Spotted gray, rubbery skin; Roughly humanoid, with a small torso and head. Arms and legs are long and thin, more like tentacles. Hands are shaped somewhat like a starfish, with a spiny surface—stiff cartilage jutting through the skin. Fingers are enormously long. Limbs move with the fluidity of tentacles.</entry>
 	</collection>
 	<collection>
 		<name>ChuulCommon</name>
-		
-		
+		<entry>Dark yellow-green exoskeleton; Black eyes; Four long legs and two large crustacean-like claws. Fan-like tail. Mass of tentacles around the mouth.</entry>
 	</collection>
 	<collection>
 		<name>CloakerCommon</name>
-		
+		<entry>Black skin, pale belly; Red eyes; Long, whiplike tail. Head set within the "cowl" of the cloak-like body. Toothy maw. Bony claws adjacent to the head look almost like clasps for the cloak.</entry>
 	</collection>
 	<collection>
 		<name>CockatriceCommon</name>
@@ -1328,8 +1403,21 @@
 	</collection>
 	<collection>
 		<name>Constrictor SnakeCommon</name>
-		
-		
+		<entry>Diamond shaped heads, irregular scales, vibrant green color</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of joined ovals, against a pale brown background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of joined ovals, against a pale brown background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of joined ovals, against a pale brown-and-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of joined ovals, against a pale brown-and-gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of joined ovals, against a pale gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of joined ovals, against a pale gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of joined ovals, against a silvery-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of ovals, against a pale brown background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of ovals, against a pale brown background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of ovals, against a pale brown-and-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of ovals, against a pale brown-and-gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of ovals, against a pale gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of ovals, against a pale gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of ovals, against a silvery-gray background.</entry>
 	</collection>
 	<collection>
 		<name>CouatlCommon</name>
@@ -1814,38 +1902,31 @@
 	</collection>
 	<collection>
 		<name>Copper Dragon, AdultCommon</name>
-		
-		
+		<entry>Coppery scales with a soft, warm gloss. Green and red mottling along the trailing edges of the wings.; Turquoise eyes with somewhat-faded pupils; Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Two layers of large, triangular blades point down from the chin.</entry>
 	</collection>
 	<collection>
 		<name>Copper Dragon, AncientCommon</name>
-		
-		
+		<entry>Coppery scales with a soft, warm gloss and a green tint. Green and red mottling along the trailing edges of the wings.; Turquoise eyes with very faded pupils; Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Three layers of huge, triangular blades point down from the chin.</entry>
 	</collection>
 	<collection>
 		<name>Copper Dragon, Great WyrmCommon</name>
-		
-		
+		<entry>Coppery scales with a soft, warm gloss and a green tint. Green and red mottling along the trailing edges of the wings.; Eyes have no pupils, and resemble glowing turquoise orbs; Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Three layers of huge, triangular blades point down from the chin.</entry>
 	</collection>
 	<collection>
 		<name>Copper Dragon, JuvenileCommon</name>
-		
-		
+		<entry>Ruddy brown scales with a metallic tint. Green and red mottling along the trailing edges of the wings.; Turquoise eyes with somewhat-faded pupils; Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. One layer of triangular blades point down from the chin.</entry>
 	</collection>
 	<collection>
 		<name>Copper Dragon, Mature AdultCommon</name>
-		
-		
+		<entry>Coppery scales with a soft, warm gloss. Green and red mottling along the trailing edges of the wings.; Turquoise eyes with faded pupils; Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Two layers of large, triangular blades point down from the chin.</entry>
 	</collection>
 	<collection>
 		<name>Copper Dragon, OldCommon</name>
-		
-		
+		<entry>Coppery scales with a soft, warm gloss. Green and red mottling along the trailing edges of the wings.; Turquoise eyes with faded pupils; Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Two layers of large, triangular blades point down from the chin.</entry>
 	</collection>
 	<collection>
 		<name>Copper Dragon, Very OldCommon</name>
-		
-		
+		<entry>Coppery scales with a soft, warm gloss and a green tint. Green and red mottling along the trailing edges of the wings.; Turquoise eyes with faded pupils; Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Three layers of huge, triangular blades point down from the chin.</entry>
 	</collection>
 	<collection>
 		<name>Copper Dragon, Very YoungCommon</name>
@@ -2270,31 +2351,6 @@
 		<entry>Light blue skin with white stripes and patches; Thick, somewhat-stringy silver-white hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
 		<entry>Light blue skin with white stripes and patches; Thick, somewhat-stringy silver-white hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
 		<entry>Light blue skin with white stripes and patches; Thick, somewhat-stringy silver-white hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy black hair; Black eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy black hair; Blue eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy black hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy black hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy black hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy blue hair; Black eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy blue hair; Blue eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy blue hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy blue hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy blue hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy blue-green hair; Black eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy blue-green hair; Blue eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy blue-green hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy blue-green hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy blue-green hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy emerald green hair; Black eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy emerald green hair; Blue eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy emerald green hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy emerald green hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy emerald green hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy silver-white hair; Black eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy silver-white hair; Blue eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy silver-white hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy silver-white hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy silver-white hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
 	</collection>
 	<collection>
 		<name>Gray ElfCommon</name>
@@ -2409,8 +2465,18 @@
 	</collection>
 	<collection>
 		<name>Cloud GiantCommon</name>
-		
-		
+		<entry>Light sky-blue skin; Curly brass hair; Iridescent blue eyes</entry>
+		<entry>Light sky-blue skin; Curly silvery-white hair; Iridescent blue eyes</entry>
+		<entry>Light sky-blue skin; Kinky brass hair; Iridescent blue eyes</entry>
+		<entry>Light sky-blue skin; Kinky silvery-white hair; Iridescent blue eyes</entry>
+		<entry>Light sky-blue skin; Straight brass hair; Iridescent blue eyes</entry>
+		<entry>Light sky-blue skin; Straight silvery-white hair; Iridescent blue eyes</entry>
+		<entry>Milky white skin; Curly brass hair; Iridescent blue eyes</entry>
+		<entry>Milky white skin; Curly silvery-white hair; Iridescent blue eyes</entry>
+		<entry>Milky white skin; Kinky brass hair; Iridescent blue eyes</entry>
+		<entry>Milky white skin; Kinky silvery-white hair; Iridescent blue eyes</entry>
+		<entry>Milky white skin; Straight brass hair; Iridescent blue eyes</entry>
+		<entry>Milky white skin; Straight silvery-white hair; Iridescent blue eyes</entry>
 	</collection>
 	<collection>
 		<name>Fire GiantCommon</name>
@@ -2532,7 +2598,7 @@
 	</collection>
 	<collection>
 		<name>Clay GolemCommon</name>
-		
+		<entry>Humanoid body madde from clay</entry>
 	</collection>
 	<collection>
 		<name>Flesh GolemCommon</name>
@@ -6279,8 +6345,7 @@
 	</collection>
 	<collection>
 		<name>Cachalot WhaleUncommon</name>
-		
-		
+		<entry>Sperm Whale: Dark grey skin with white patches on the belly</entry>
 	</collection>
 	<collection>
 		<name>Camel, Bactrian (Two-Humped)Uncommon</name>
@@ -6363,7 +6428,7 @@
 	</collection>
 	<collection>
 		<name>CloakerUncommon</name>
-		
+		<entry>Black skin, pale belly; Red eyes; Long, whiplike tail. Head set within the "cowl" of the cloak-like body. Toothy maw. Bony claws adjacent to the head look almost like clasps for the cloak. A series of spots run in two parallel lines down the backs, giving the appearance of buttons.</entry>
 	</collection>
 	<collection>
 		<name>CockatriceUncommon</name>
@@ -7335,36 +7400,6 @@
 		<entry>Light blue skin with white stripes and patches; Thick, somewhat-stringy, rough silver-white hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
 		<entry>Light blue skin with white stripes and patches; Thick, somewhat-stringy, rough silver-white hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
 		<entry>Light blue skin with white stripes and patches; Thick, somewhat-stringy, rough silver-white hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy red hair; Black eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy red hair; Blue eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy red hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy red hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy red hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy, rough black hair; Black eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy, rough black hair; Blue eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy, rough black hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy, rough black hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy, rough black hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy, rough blue hair; Black eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy, rough blue hair; Blue eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy, rough blue hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy, rough blue hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy, rough blue hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy, rough blue-green hair; Black eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy, rough blue-green hair; Blue eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy, rough blue-green hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy, rough blue-green hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy, rough blue-green hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy, rough emerald green hair; Black eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy, rough emerald green hair; Blue eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy, rough emerald green hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy, rough emerald green hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy, rough emerald green hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy, rough silver-white hair; Black eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy, rough silver-white hair; Blue eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy, rough silver-white hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy, rough silver-white hair; Turquoise eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
-		<entry>Pale silver-green skin; Thick, somewhat-stringy, rough silver-white hair; White eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
 		<entry>Pale silver-green skin; Thick, somewhat-stringy black hair; Black eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
 		<entry>Pale silver-green skin; Thick, somewhat-stringy black hair; Blue eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
 		<entry>Pale silver-green skin; Thick, somewhat-stringy black hair; Green eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
@@ -12470,6 +12505,395 @@
 		<entry>Emerald skin with small iridescent scales; Curly black hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
 		<entry>Emerald skin with small iridescent scales; Curly black hair; Pupil-less pale white eyes</entry>
 		<entry>Emerald skin with small iridescent scales; Curly black hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Curly black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly black hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly blond hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly blond hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly blond hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly blond hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly blond hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Curly blond hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly blond hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Curly blond hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly blond hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Curly blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly blond hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly brown hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly brown hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly brown hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly brown hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly brown hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Curly brown hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly brown hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Curly brown hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly brown hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Curly brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly brown hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly red hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly red hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly red hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly red hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly red hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Curly red hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly red hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Curly red hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly red hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Curly red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly red hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly silver hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly silver hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly silver hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly silver hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly silver hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Curly silver hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly silver hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Curly silver hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly silver hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Curly silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Curly silver hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky black hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky black hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky black hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky black hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky black hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky black hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky black hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky black hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky black hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky black hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky blond hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky blond hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky blond hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky blond hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky blond hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky blond hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky blond hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky blond hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky blond hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky blond hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky brown hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky brown hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky brown hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky brown hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky brown hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky brown hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky brown hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky brown hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky brown hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky brown hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky red hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky red hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky red hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky red hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky red hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky red hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky red hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky red hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky red hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky red hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky silver hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky silver hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky silver hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky silver hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky silver hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky silver hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky silver hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky silver hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky silver hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Kinky silver hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight black hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight black hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight black hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight black hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight black hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Straight black hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight black hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Straight black hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight black hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Straight black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight black hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight blond hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight blond hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight blond hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight blond hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight blond hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Straight blond hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight blond hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Straight blond hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight blond hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Straight blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight blond hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight brown hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight brown hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight brown hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight brown hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight brown hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Straight brown hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight brown hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Straight brown hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight brown hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Straight brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight brown hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight red hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight red hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight red hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight red hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight red hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Straight red hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight red hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Straight red hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight red hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Straight red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight red hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight silver hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight silver hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight silver hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight silver hair; Pupil-less golden eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight silver hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Straight silver hair; Pupil-less gray eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight silver hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Straight silver hair; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight silver hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin with small iridescent scales; Straight silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin with small iridescent scales; Straight silver hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Bald; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Bald; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Bald; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Bald; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Bald; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Bald; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Bald; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Bald; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Curly black hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Curly black hair with feathers mixed in; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly black hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Curly black hair with feathers mixed in; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly black hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Curly black hair with feathers mixed in; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly black hair with feathers mixed in; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Curly black hair with feathers mixed in; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Curly black hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly black hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly black hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Curly black hair; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly black hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Curly black hair; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly blond hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Curly blond hair with feathers mixed in; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly blond hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Curly blond hair with feathers mixed in; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly blond hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Curly blond hair with feathers mixed in; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly blond hair with feathers mixed in; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Curly blond hair with feathers mixed in; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Curly blond hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly blond hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly blond hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Curly blond hair; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly blond hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Curly blond hair; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly brown hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Curly brown hair with feathers mixed in; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly brown hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Curly brown hair with feathers mixed in; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly brown hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Curly brown hair with feathers mixed in; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly brown hair with feathers mixed in; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Curly brown hair with feathers mixed in; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Curly brown hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly brown hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly brown hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Curly brown hair; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly brown hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Curly brown hair; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly red hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Curly red hair with feathers mixed in; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly red hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Curly red hair with feathers mixed in; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly red hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Curly red hair with feathers mixed in; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly red hair with feathers mixed in; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Curly red hair with feathers mixed in; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Curly red hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly red hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly red hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Curly red hair; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly red hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Curly red hair; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly silver hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Curly silver hair with feathers mixed in; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly silver hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Curly silver hair with feathers mixed in; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly silver hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Curly silver hair with feathers mixed in; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly silver hair with feathers mixed in; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Curly silver hair with feathers mixed in; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Curly silver hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly silver hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly silver hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Curly silver hair; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Curly silver hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Curly silver hair; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky black hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Kinky black hair with feathers mixed in; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky black hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Kinky black hair with feathers mixed in; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky black hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Kinky black hair with feathers mixed in; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky black hair with feathers mixed in; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Kinky black hair with feathers mixed in; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Kinky black hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky black hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky black hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Kinky black hair; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky black hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Kinky black hair; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky blond hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Kinky blond hair with feathers mixed in; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky blond hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Kinky blond hair with feathers mixed in; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky blond hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Kinky blond hair with feathers mixed in; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky blond hair with feathers mixed in; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Kinky blond hair with feathers mixed in; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Kinky blond hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky blond hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky blond hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Kinky blond hair; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky blond hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Kinky blond hair; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky brown hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Kinky brown hair with feathers mixed in; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky brown hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Kinky brown hair with feathers mixed in; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky brown hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Kinky brown hair with feathers mixed in; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky brown hair with feathers mixed in; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Kinky brown hair with feathers mixed in; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Kinky brown hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky brown hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky brown hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Kinky brown hair; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky brown hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Kinky brown hair; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky red hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Kinky red hair with feathers mixed in; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky red hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Kinky red hair with feathers mixed in; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky red hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Kinky red hair with feathers mixed in; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky red hair with feathers mixed in; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Kinky red hair with feathers mixed in; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Kinky red hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky red hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky red hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Kinky red hair; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky red hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Kinky red hair; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky silver hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Kinky silver hair with feathers mixed in; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky silver hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Kinky silver hair with feathers mixed in; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky silver hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Kinky silver hair with feathers mixed in; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky silver hair with feathers mixed in; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Kinky silver hair with feathers mixed in; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Kinky silver hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky silver hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky silver hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Kinky silver hair; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Kinky silver hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Kinky silver hair; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight black hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Straight black hair with feathers mixed in; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight black hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Straight black hair with feathers mixed in; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight black hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Straight black hair with feathers mixed in; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight black hair with feathers mixed in; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Straight black hair with feathers mixed in; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Straight black hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight black hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight black hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight black hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Straight black hair; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight black hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Straight black hair; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight blond hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Straight blond hair with feathers mixed in; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight blond hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Straight blond hair with feathers mixed in; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight blond hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Straight blond hair with feathers mixed in; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight blond hair with feathers mixed in; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Straight blond hair with feathers mixed in; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Straight blond hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight blond hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight blond hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight blond hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Straight blond hair; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight blond hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Straight blond hair; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight brown hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Straight brown hair with feathers mixed in; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight brown hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Straight brown hair with feathers mixed in; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight brown hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Straight brown hair with feathers mixed in; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight brown hair with feathers mixed in; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Straight brown hair with feathers mixed in; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Straight brown hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight brown hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight brown hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight brown hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Straight brown hair; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight brown hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Straight brown hair; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight red hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Straight red hair with feathers mixed in; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight red hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Straight red hair with feathers mixed in; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight red hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Straight red hair with feathers mixed in; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight red hair with feathers mixed in; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Straight red hair with feathers mixed in; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Straight red hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight red hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight red hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight red hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Straight red hair; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight red hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Straight red hair; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight silver hair with feathers mixed in; Pupil-less golden eyes</entry>
+		<entry>Emerald skin; Straight silver hair with feathers mixed in; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight silver hair with feathers mixed in; Pupil-less gray eyes</entry>
+		<entry>Emerald skin; Straight silver hair with feathers mixed in; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight silver hair with feathers mixed in; Pupil-less pale white eyes</entry>
+		<entry>Emerald skin; Straight silver hair with feathers mixed in; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight silver hair with feathers mixed in; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Straight silver hair with feathers mixed in; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Straight silver hair; Pupil-less golden eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight silver hair; Pupil-less gray eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight silver hair; Pupil-less pale white eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight silver hair; Pupil-less pearly opalescent eyes</entry>
+		<entry>Emerald skin; Straight silver hair; Pupil-less pearly opalescent eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
+		<entry>Emerald skin; Straight silver hair; Pupil-less topaz eyes</entry>
+		<entry>Emerald skin; Straight silver hair; Pupil-less topaz eyes; A light covering of feathers on the shoulders, where an angel's wings might sprout</entry>
 	</collection>
 	<collection>
 		<name>AbolethRare</name>
@@ -13092,8 +13516,7 @@
 	</collection>
 	<collection>
 		<name>Cachalot WhaleRare</name>
-		
-		
+		<entry>Sperm Whale (Moby Dick): White (albino) skin</entry>
 	</collection>
 	<collection>
 		<name>Camel, Bactrian (Two-Humped)Rare</name>
@@ -14041,8 +14464,16 @@
 	</collection>
 	<collection>
 		<name>Aquatic ElfRare</name>
-		
-		
+		<entry>Blue skin with white stripes and patches; Thick, somewhat-stringy black hair; Silver eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
+		<entry>Blue skin with white stripes and patches; Thick, somewhat-stringy blue hair; Silver eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
+		<entry>Blue skin with white stripes and patches; Thick, somewhat-stringy blue-green hair; Silver eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
+		<entry>Blue skin with white stripes and patches; Thick, somewhat-stringy emerald green hair; Silver eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
+		<entry>Blue skin with white stripes and patches; Thick, somewhat-stringy red hair; Silver eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
+		<entry>Blue skin with white stripes and patches; Thick, somewhat-stringy silver-white hair; Silver eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
+		<entry>Blue skin with white stripes and patches; Thick, somewhat-stringy, rough black hair; Silver eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
+		<entry>Blue skin with white stripes and patches; Thick, somewhat-stringy, rough blue hair; Silver eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
+		<entry>Blue skin with white stripes and patches; Thick, somewhat-stringy, rough blue-green hair; Silver eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
+		<entry>Blue skin with white stripes and patches; Thick, somewhat-stringy, rough emerald green hair; Silver eyes; Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs</entry>
 	</collection>
 	<collection>
 		<name>Gray ElfRare</name>
