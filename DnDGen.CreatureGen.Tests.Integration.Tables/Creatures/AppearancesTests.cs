@@ -3,6 +3,7 @@ using DnDGen.CreatureGen.Tables;
 using DnDGen.CreatureGen.Tests.Integration.TestData;
 using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -811,21 +812,30 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.Cockatrice] = GetWeightedAppearances(
                 allSkin: ["Yellow-green scales on the tail. Grey skin on the wings. Yellow beak and feet."],
                 allHair: ["Golden brown feathers"],
-                allEyes: new[] { "Glowing crimson eyes" },
-                allOther: new[] { "Lizard-like tail. Wings of a bat.", "TODO gender-specific appearance" });
+                allEyes: ["Glowing crimson eyes"],
+                allOther: ["Lizard-like tail. Wings of a bat.", "TODO gender-specific appearance"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Couatl
-            appearances[CreatureConstants.Couatl][Rarity.Common] = new[] { "Long feathered serpent with a pair of rainbow-feathered wings." };
+            appearances[CreatureConstants.Couatl][Rarity.Common] = ["Long feathered serpent with a pair of rainbow-feathered wings."];
             //Source: https://www.mojobob.com/roleplay/monstrousmanual/s/sphinx.html
-            appearances[CreatureConstants.Criosphinx][Rarity.Common] = new[] { "Falcon-like wings, ram-like head. Tawny lion body. Mouth full of sharp teeth." };
+            appearances[CreatureConstants.Criosphinx][Rarity.Common] = ["Falcon-like wings, ram-like head. Tawny lion body. Mouth full of sharp teeth."];
             //Source: https://en.wikipedia.org/wiki/Nile_crocodile#Characteristics_and_physiology
-            appearances[CreatureConstants.Crocodile][Rarity.Common] = new[] { "Dark bronze colouration above, with faded blackish spots and stripes variably appearing across the back and a dingy off-yellow on the belly, although mud can often obscure the crocodile's actual colour.[19] The flanks, which are yellowish-green in colour, have dark patches arranged in oblique stripes in highly variable patterns. Some variation occurs relative to environment; specimens from swift-flowing waters tend to be lighter in colour than those dwelling in murkier lakes or swamps, which provides camouflage that suits their environment, an example of clinal variation. Nile crocodiles have green eyes" };
+            appearances[CreatureConstants.Crocodile] = GetWeightedAppearances(
+                commonSkin: [
+                    "Dark bronze colouration above, with faded blackish spots and stripes variably appearing across the back and a dingy off-yellow on the belly. The flanks, which are yellowish-green in colour, have dark patches arranged in oblique stripes",
+                    "Dark bronze colouration above, with faded blackish spots and stripes variably appearing across the back and a dingy off-yellow on the belly, but mud obscures its actual colour. The flanks, which are yellowish-green in colour, have dark patches arranged in oblique stripes"],
+                uncommonSkin: [
+                    "Bronze colouration above, with faded grayish spots and stripes variably appearing across the back and a dingy, light off-yellow on the belly. The flanks, which are light yellowish-green in colour, have semi-dark patches arranged in oblique stripes",
+                    "Bronze colouration above, with faded grayish spots and stripes variably appearing across the back and a dingy, light off-yellow on the belly, but mud obscures its actual colour. The flanks, which are light yellowish-green in colour, have semi-dark patches arranged in oblique stripes",
+                    "Very dark bronze colouration above, with blackish spots and stripes variably appearing across the back and a dingy, dark off-yellow on the belly. The flanks, which are dark yellowish-green in colour, have very dark patches arranged in oblique stripes",
+                    "Very dark bronze colouration above, with blackish spots and stripes variably appearing across the back and a dingy, dark off-yellow on the belly, but mud obscures its actual colour. The flanks, which are dark yellowish-green in colour, have very dark patches arranged in oblique stripes"],
+                allEyes: ["Green eyes"]);
             //Source: https://en.wikipedia.org/wiki/Saltwater_crocodile#Description
             appearances[CreatureConstants.Crocodile_Giant] = GetWeightedAppearances(
-                commonSkin: new[] {
+                commonSkin: [
                     "Darker greenish-drab skin. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
                     "Darker greenish-drab skin. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
-                },
-                uncommonSkin: new[] {
+                ],
+                uncommonSkin: [
                     "Darker greenish-drab skin, with a few lighter tan areas. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
                     "Darker greenish-drab skin, with a few lighter tan areas. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
                     "Darker greenish-drab skin, with a few lighter grey areas. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
@@ -836,8 +846,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Dark black-green skin. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
                     "Dark blackish skin. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
                     "Dark blackish skin. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
-                },
-                rareSkin: new[] {
+                ],
+                rareSkin: [
                     "Pale greenish-drab skin, with a few lighter tan areas. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
                     "Pale greenish-drab skin, with a few lighter tan areas. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
                     "Pale greenish-drab skin, with a few lighter grey areas. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
@@ -850,7 +860,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Dark blackish skin, with a few lighter tan areas. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
                     "Dark blackish skin, with a few lighter grey areas. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
                     "Dark blackish skin, with a few lighter grey areas. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.",
-                });
+                ]);
             //Source: https://forgottenrealms.fandom.com/wiki/Cryohydra
             appearances[CreatureConstants.Cryohydra_5Heads] = GetWeightedAppearances(
                 allSkin: new[] { "Purplish-brown skin", "Brown skin", "Dark brown skin", "Dark purplish-brown skin" },
@@ -4406,13 +4416,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         private Rarity GetRarity(IEnumerable<Rarity> rarities)
         {
             var sum = rarities.Sum(r => (int)r);
-            if (sum >= (int)Rarity.VeryRare)
-                return Rarity.VeryRare;
-
-            if (sum >= (int)Rarity.Rare)
-                return Rarity.Rare;
-
-            return (Rarity)sum;
+            return Enum.GetValues<Rarity>()
+                .Where(r => sum >= (int)r)
+                .OrderByDescending(r => (int)r)
+                .First();
         }
 
         [TestCase(Rarity.Common)]
