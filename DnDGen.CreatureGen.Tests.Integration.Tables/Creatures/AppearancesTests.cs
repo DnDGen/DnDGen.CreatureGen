@@ -127,16 +127,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 };
             }
 
-            //Human:
-            //allSkin: [ "Dark brown skin", "Brown skin", "Light brown skin",
-            //    "Dark tan skin", "Tan skin", "Light tan skin",
-            //    "Pink skin", "White skin", "Pale white skin" ],
-            //commonHair: [ "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
-            //    "Curly red hair", "Curly blond hair", "Curly brown hair", "Curly black hair",
-            //    "Kinky red hair", "Kinky blond hair", "Kinky brown hair", "Kinky black hair" ],
-            //uncommonHair: ["Bald"],
-            //allEyes: ["Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes"]
-
             //Source: https://forgottenrealms.fandom.com/wiki/Aasimar
             appearances[CreatureConstants.Aasimar] = GetWeightedAppearances(
                 commonSkin: [ "Dark brown skin", "Brown skin", "Light brown skin",
@@ -1931,57 +1921,57 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //https://forgottenrealms.fandom.com/wiki/Giant_fire_beetle
             appearances[CreatureConstants.FireBeetle_Giant] = GetWeightedAppearances(
                 commonSkin: new[] { "Brown color" },
-                uncommonSkin: new[] { "Shimmering green color", "Black color with red markings", "Red color", "Orange color",
-                    "Orange color with brown flame-like markings", "Purple color with red markings" },
-                allOther: new[] { "Red bioluminescent glands above each eye and near the abdomen" });
+                uncommonSkin: [ "Shimmering green color", "Black color with red markings", "Red color", "Orange color",
+                    "Orange color with brown flame-like markings", "Purple color with red markings" ],
+                allOther: ["Red bioluminescent glands above each eye and near the abdomen"]);
             //Source: https://www.d20srd.org/srd/monsters/formian.htm
             appearances[CreatureConstants.FormianWorker] = GetWeightedAppearances(
-                allSkin: new[] { "Brownish-red carapace" },
-                allOther: new[] { "Hands only suitable for manual labor" });
+                allSkin: ["Brownish-red carapace"],
+                allOther: ["Hands only suitable for manual labor"]);
             appearances[CreatureConstants.FormianWarrior] = GetWeightedAppearances(
-                allSkin: new[] { "Brownish-red carapace" },
-                allOther: new[] { "Sharp mandibles and poison stingers" });
+                allSkin: ["Brownish-red carapace"],
+                allOther: ["Sharp mandibles and poison stingers"]);
             appearances[CreatureConstants.FormianTaskmaster] = GetWeightedAppearances(
-                allSkin: new[] { "Brownish-red carapace" },
-                allOther: new[] { "Neither mandible nor mouth" });
+                allSkin: ["Brownish-red carapace"],
+                allOther: ["Neither mandible nor mouth"]);
             appearances[CreatureConstants.FormianMyrmarch] = GetWeightedAppearances(
-                allSkin: new[] { "Brownish-red carapace" },
-                allOther: new[] { "Claws capable of fine manipulation, like human hands" });
+                allSkin: ["Brownish-red carapace"],
+                allOther: ["Claws capable of fine manipulation, like human hands"]);
             appearances[CreatureConstants.FormianQueen] = GetWeightedAppearances(
-                allSkin: new[] { "Brownish-red carapace" },
-                allOther: new[] { "Body too large to allow for movement on her weak, atrophied legs" });
+                allSkin: ["Brownish-red carapace"],
+                allOther: ["Body too large to allow for movement on her weak, atrophied legs"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Frost_worm
             appearances[CreatureConstants.FrostWorm] = GetWeightedAppearances(
-                commonSkin: new[] { "Blue-white skin", "Very pale blue skin" },
-                uncommonSkin: new[] { "Blue-white skin with a purple underbelly", "Very pale blue skin with a purple underbelly" },
-                allOther: new[] { "Huge mandibles. Nodule from which it emits a trilling noise." });
+                commonSkin: ["Blue-white skin", "Very pale blue skin"],
+                uncommonSkin: ["Blue-white skin with a purple underbelly", "Very pale blue skin with a purple underbelly"],
+                allOther: ["Huge mandibles. Nodule from which it emits a trilling noise."]);
             //Source: https://forgottenrealms.fandom.com/wiki/Gargoyle - adding my own info for skin tones
             appearances[CreatureConstants.Gargoyle] = GetWeightedAppearances(
-                allSkin: new[] { "Brown stone skin", "Dark brown stone skin", "Light brown stone skin",
-                    "Gray stone skin", "Dark Gray stone skin","Light Gray stone skin",
-                    "White stone skin", "Marble stone skin", "Black stone skin" },
-                allOther: new[] { "Demon-like humanoid" });
+                allSkin: [ "Brown stone skin", "Dark brown stone skin", "Light brown stone skin",
+                    "Gray stone skin", "Dark gray stone skin","Light gray stone skin",
+                    "White stone skin", "Marble stone skin", "Black stone skin" ],
+                allOther: ["Demon-like humanoid"]);
             appearances[CreatureConstants.Gargoyle_Kapoacinth] = GetWeightedAppearances(
-                allSkin: new[] { "Brown stone skin", "Dark brown stone skin", "Light brown stone skin",
-                    "Gray stone skin", "Dark Gray stone skin","Light Gray stone skin",
-                    "White stone skin", "Marble stone skin", "Black stone skin" },
-                allOther: new[] { "Demon-like humanoid" });
+                allSkin: [ "Brown stone skin", "Dark brown stone skin", "Light brown stone skin",
+                    "Gray stone skin", "Dark gray stone skin","Light gray stone skin",
+                    "White stone skin", "Marble stone skin", "Black stone skin" ],
+                allOther: ["Demon-like humanoid"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Gelatinous_cube
             appearances[CreatureConstants.GelatinousCube] = GetWeightedAppearances(
-                allSkin: new[] { "Completely transparent cube, with only a glint on the surface to give away its position",
-                    "Completely transparent rhombohedron, with only a glint on the surface to give away its position" },
-                uncommonOther: new[] { "An object floats within the cube's body", "Two objects float within the cube's body",
-                    "Three objects float within the cube's body" });
+                allSkin: [ "Completely transparent cube, with only a glint on the surface to give away its position",
+                    "Completely transparent rhombohedron, with only a glint on the surface to give away its position" ],
+                uncommonOther: [ "An object floats within the cube's body", "Two objects float within the cube's body",
+                    "Three objects float within the cube's body" ]);
             //Source: https://forgottenrealms.fandom.com/wiki/Ghaele
             appearances[CreatureConstants.Ghaele] = GetWeightedAppearances(
-                allSkin: new[] { "TODO High Elf skin" },
-                allHair: new[] { "TODO High Elf hair" },
-                allEyes: new[] { "Opalescent pearl eyes" });
+                allSkin: ["TODO High Elf skin"],
+                allHair: ["TODO High Elf hair"],
+                allEyes: ["Opalescent pearl eyes"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Ghoul
             appearances[CreatureConstants.Ghoul] = GetWeightedAppearances(
-                allSkin: new[] { "Mottled, decaying, gray hide stretched tight over its emaciated body",
+                allSkin: [ "Mottled, decaying, gray hide stretched tight over its emaciated body",
                     "Mottled, decaying, purple hide stretched tight over its emaciated body",
-                    "Mottled, decaying, pink hide stretched tight over its emaciated body" },
+                    "Mottled, decaying, pink hide stretched tight over its emaciated body" ],
                 allHair: new[] { "Almost hairless", "Hairless" },
                 allEyes: new[] { "Sunken eyes, burning like hot coals" });
             appearances[CreatureConstants.Ghoul_Ghast] = GetWeightedAppearances(
