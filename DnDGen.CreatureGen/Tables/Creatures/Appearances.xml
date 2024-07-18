@@ -1075,8 +1075,7 @@
 	</collection>
 	<collection>
 		<name>Greater BasiliskCommon</name>
-		
-		
+		<entry>Dull brown skin, yellowish underbelly; Glowing pale green eyes; Single row of bony spikes lining the back</entry>
 	</collection>
 	<collection>
 		<name>BatCommon</name>
@@ -1151,6 +1150,15 @@
 	</collection>
 	<collection>
 		<name>Gauth (Lesser Beholder)Common</name>
+		<entry>Brown skin, mottled with gray; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
+		<entry>Brown skin, mottled with purple and gray; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
+		<entry>Brown skin, mottled with purple; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
+		<entry>Gray skin, mottled with brown; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
+		<entry>Gray skin, mottled with purple and brown; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
+		<entry>Gray skin, mottled with purple; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
+		<entry>Purple skin, mottled with brown and gray; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
+		<entry>Purple skin, mottled with brown; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
+		<entry>Purple skin, mottled with gray; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
 	</collection>
 	<collection>
 		<name>BelkerCommon</name>
@@ -1432,7 +1440,7 @@
 		<entry>Ginger/White Tuxedo</entry>
 		<entry>Ginger/White Van Bi-color</entry>
 		<entry>Ginger/Gray/White Callico</entry>
-		<entry>Havana brown</entry>
+		<entry>Havana Brown</entry>
 		<entry>Himalayan</entry>
 		<entry>Japanese Bobtail</entry>
 		<entry>Javanese</entry>
@@ -1457,9 +1465,25 @@
 		<entry>Singapura</entry>
 		<entry>Snowshoe</entry>
 		<entry>Sokoke</entry>
-		<entry>Solid black</entry>
+		<entry>Solid Black</entry>
 		<entry>Solid Blue/Gray</entry>
-		<entry>Solid brown</entry>
+		<entry>Solid Brown</entry>
+		<entry>Solid Cinnamon</entry>
+		<entry>Solid Cream</entry>
+		<entry>Solid Fawn</entry>
+		<entry>Solid Ginger</entry>
+		<entry>Solid White</entry>
+		<entry>Somali</entry>
+		<entry>Sphynx</entry>
+		<entry>Tonkinese</entry>
+		<entry>Toyger</entry>
+		<entry>Turkish Angora</entry>
+		<entry>Turkish Van</entry>
+		<entry>White Blotched Tabby</entry>
+		<entry>White Colorpoint</entry>
+		<entry>White Spotted Tabby</entry>
+		<entry>White Striped Tabby</entry>
+		<entry>White Ticked Tabby</entry>
 	</collection>
 	<collection>
 		<name>CentaurCommon</name>
@@ -1649,8 +1673,8 @@
 	</collection>
 	<collection>
 		<name>Giant CrocodileCommon</name>
-		
-		
+		<entry>Darker greenish-drab skin. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.</entry>
+		<entry>Darker greenish-drab skin. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.</entry>
 	</collection>
 	<collection>
 		<name>DarkmantleCommon</name>
@@ -1958,63 +1982,51 @@
 	</collection>
 	<collection>
 		<name>Green Dragon, AdultCommon</name>
-		
-		
+		<entry>Forest green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges.; Green eyes; Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings.</entry>
 	</collection>
 	<collection>
 		<name>Green Dragon, AncientCommon</name>
-		
-		
+		<entry>Thick, huge, olive-green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges.; Green eyes; Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings.</entry>
 	</collection>
 	<collection>
 		<name>Green Dragon, Great WyrmCommon</name>
-		
-		
+		<entry>Thick, huge, olive-green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges.; Green eyes; Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings.</entry>
 	</collection>
 	<collection>
 		<name>Green Dragon, JuvenileCommon</name>
-		
-		
+		<entry>Thin, small, forest green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges.; Green eyes; Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings.</entry>
 	</collection>
 	<collection>
 		<name>Green Dragon, Mature AdultCommon</name>
-		
-		
+		<entry>Large, emerald scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges.; Green eyes; Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings.</entry>
 	</collection>
 	<collection>
 		<name>Green Dragon, OldCommon</name>
-		
-		
+		<entry>Large, emerald scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges.; Green eyes; Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings.</entry>
 	</collection>
 	<collection>
 		<name>Green Dragon, Very OldCommon</name>
-		
-		
+		<entry>Thick, large, emerald scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges.; Green eyes; Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings.</entry>
 	</collection>
 	<collection>
 		<name>Green Dragon, Very YoungCommon</name>
-		
-		
+		<entry>Thin, very small, black-green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges.; Green eyes; Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings.</entry>
 	</collection>
 	<collection>
 		<name>Green Dragon, WyrmCommon</name>
-		
-		
+		<entry>Thick, huge, olive-green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges.; Green eyes; Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings.</entry>
 	</collection>
 	<collection>
 		<name>Green Dragon, WyrmlingCommon</name>
-		
-		
+		<entry>Thin, very small, deep black-green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges.; Green eyes; Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings.</entry>
 	</collection>
 	<collection>
 		<name>Green Dragon, YoungCommon</name>
-		
-		
+		<entry>Thin, small, forest green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges.; Green eyes; Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings.</entry>
 	</collection>
 	<collection>
 		<name>Green Dragon, Young AdultCommon</name>
-		
-		
+		<entry>Forest green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges.; Green eyes; Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings.</entry>
 	</collection>
 	<collection>
 		<name>Red Dragon, AdultCommon</name>
@@ -2282,63 +2294,51 @@
 	</collection>
 	<collection>
 		<name>Gold Dragon, AdultCommon</name>
-		
-		
+		<entry>Golden metallic scales; Slanted, very narrow golden eyes with somewhat-faded pupils; Twin horns, smooth and metallic, coming off the head. Twin neck frills. Ten whiskers, five on upper jaw and five below, around the mouth that look like the barbels of a catfish.</entry>
 	</collection>
 	<collection>
 		<name>Gold Dragon, AncientCommon</name>
-		
-		
+		<entry>Golden metallic scales; Slanted, very narrow eyes that lack pupils, resembling pools of molten gold.; Twin horns, smooth and metallic, coming off the head. Twin neck frills. Twelve whiskers, six on upper jaw and six below, around the mouth that look like the barbels of a catfish.</entry>
 	</collection>
 	<collection>
 		<name>Gold Dragon, Great WyrmCommon</name>
-		
-		
+		<entry>Golden metallic scales; Slanted, very narrow eyes that lack pupils, resembling pools of molten gold.; Twin horns, smooth and metallic, coming off the head. Twin neck frills. Twelve whiskers, six on upper jaw and six below, around the mouth that look like the barbels of a catfish.</entry>
 	</collection>
 	<collection>
 		<name>Gold Dragon, JuvenileCommon</name>
-		
-		
+		<entry>Metallic golden scales with large dark yellow flecks; Slanted, very narrow golden eyes with somewhat-faded pupils; Twin horns, smooth and metallic, coming off the head. Twin neck frills. Eight whiskers, four on upper jaw and four below, around the mouth that look like the barbels of a catfish.</entry>
 	</collection>
 	<collection>
 		<name>Gold Dragon, Mature AdultCommon</name>
-		
-		
+		<entry>Golden metallic scales; Slanted, very narrow golden eyes with faded pupils; Twin horns, smooth and metallic, coming off the head. Twin neck frills. Ten whiskers, five on upper jaw and five below, around the mouth that look like the barbels of a catfish.</entry>
 	</collection>
 	<collection>
 		<name>Gold Dragon, OldCommon</name>
-		
-		
+		<entry>Golden metallic scales; Slanted, very narrow golden eyes with faded pupils; Twin horns, smooth and metallic, coming off the head. Twin neck frills. Ten whiskers, five on upper jaw and five below, around the mouth that look like the barbels of a catfish.</entry>
 	</collection>
 	<collection>
 		<name>Gold Dragon, Very OldCommon</name>
-		
-		
+		<entry>Golden metallic scales; Slanted, very narrow golden eyes with faded pupils; Twin horns, smooth and metallic, coming off the head. Twin neck frills. Ten whiskers, five on upper jaw and five below, around the mouth that look like the barbels of a catfish.</entry>
 	</collection>
 	<collection>
 		<name>Gold Dragon, Very YoungCommon</name>
-		
-		
+		<entry>Dark yellow scales with large golden metallic flecks; Slanted, very narrow golden eyes; Twin horns, smooth and metallic, coming off the head. Twin neck frills. Eight whiskers, four on upper jaw and four below, around the mouth that look like the barbels of a catfish.</entry>
 	</collection>
 	<collection>
 		<name>Gold Dragon, WyrmCommon</name>
-		
-		
+		<entry>Golden metallic scales; Slanted, very narrow eyes that lack pupils, resembling pools of molten gold.; Twin horns, smooth and metallic, coming off the head. Twin neck frills. Twelve whiskers, six on upper jaw and six below, around the mouth that look like the barbels of a catfish.</entry>
 	</collection>
 	<collection>
 		<name>Gold Dragon, WyrmlingCommon</name>
-		
-		
+		<entry>Dark yellow scales with golden metallic flecks; Slanted, very narrow golden eyes; Twin horns, smooth and metallic, coming off the head. Twin neck frills.</entry>
 	</collection>
 	<collection>
 		<name>Gold Dragon, YoungCommon</name>
-		
-		
+		<entry>Dark yellow scales mottled with metallic gold; Slanted, very narrow golden eyes; Twin horns, smooth and metallic, coming off the head. Twin neck frills. Eight whiskers, four on upper jaw and four below, around the mouth that look like the barbels of a catfish.</entry>
 	</collection>
 	<collection>
 		<name>Gold Dragon, Young AdultCommon</name>
-		
-		
+		<entry>Metallic golden scales with dark yellow flecks; Slanted, very narrow golden eyes with somewhat-faded pupils; Twin horns, smooth and metallic, coming off the head. Twin neck frills. Eight whiskers, four on upper jaw and four below, around the mouth that look like the barbels of a catfish.</entry>
 	</collection>
 	<collection>
 		<name>Silver Dragon, AdultCommon</name>
@@ -2491,8 +2491,50 @@
 	</collection>
 	<collection>
 		<name>Giant EagleCommon</name>
-		
-		
+		<entry>African fish eagle</entry>
+		<entry>Bald eagle</entry>
+		<entry>Bearded vulture</entry>
+		<entry>Black eagle</entry>
+		<entry>Black kite</entry>
+		<entry>Black-and-chestnut eagle</entry>
+		<entry>Black-and-white hawk-eagle</entry>
+		<entry>Black-chested buzzard-eagle</entry>
+		<entry>Bonelli's eagle</entry>
+		<entry>Booted eagle</entry>
+		<entry>Brahminy kite</entry>
+		<entry>Changeable hawk-eagle</entry>
+		<entry>Cinereous vulture</entry>
+		<entry>Common buzzard</entry>
+		<entry>Crested eagle</entry>
+		<entry>Crested serpent eagle</entry>
+		<entry>Crowned eagle</entry>
+		<entry>Eastern imperial eagle</entry>
+		<entry>Egyptian vulture</entry>
+		<entry>Eurasian griffon vulture</entry>
+		<entry>Golden eagle</entry>
+		<entry>Greater spotted eagle</entry>
+		<entry>Haast's eagle</entry>
+		<entry>Harpy eagle</entry>
+		<entry>Hen harrier</entry>
+		<entry>Indian spotted eagle</entry>
+		<entry>Javan hawk-eagle</entry>
+		<entry>Lesser spotted eagle</entry>
+		<entry>Little eagle</entry>
+		<entry>Martial eagle</entry>
+		<entry>Mountain hawk-eagle</entry>
+		<entry>Ornate hawk-eagle</entry>
+		<entry>Philippine eagle</entry>
+		<entry>Red kite</entry>
+		<entry>Rough-legged buzzard</entry>
+		<entry>Short-toed snake eagle</entry>
+		<entry>Spanish imperial eagle</entry>
+		<entry>Steller's sea eagle</entry>
+		<entry>Steppe eagle</entry>
+		<entry>Tawny eagle</entry>
+		<entry>Verreaux's eagle</entry>
+		<entry>Wedge-tailed eagle</entry>
+		<entry>White-bellied sea eagle</entry>
+		<entry>White-tailed eagle</entry>
 	</collection>
 	<collection>
 		<name>EfreetiCommon</name>
@@ -2753,8 +2795,9 @@
 	</collection>
 	<collection>
 		<name>Gray ElfCommon</name>
-		
-		
+		<entry>Pale grey skin; Curly silver hair; Amber eyes; Pointed ears</entry>
+		<entry>Pale grey skin; Kinky silver hair; Amber eyes; Pointed ears</entry>
+		<entry>Pale grey skin; Straight silver hair; Amber eyes; Pointed ears</entry>
 	</collection>
 	<collection>
 		<name>Half-ElfCommon</name>
@@ -2763,8 +2806,42 @@
 	</collection>
 	<collection>
 		<name>High ElfCommon</name>
-		
-		
+		<entry>Brown skin; Curly black hair; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly silver hair; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly white hair; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky black hair; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky silver hair; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky white hair; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight black hair; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight silver hair; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight white hair; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly black hair; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly silver hair; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly white hair; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky black hair; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky silver hair; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky white hair; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight black hair; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight silver hair; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight white hair; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly black hair; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly silver hair; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly white hair; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky black hair; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky silver hair; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky white hair; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight black hair; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight silver hair; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight white hair; Green eyes; Pointed ears</entry>
 	</collection>
 	<collection>
 		<name>Wild ElfCommon</name>
@@ -2862,7 +2939,8 @@
 	</collection>
 	<collection>
 		<name>Gelatinous CubeCommon</name>
-		
+		<entry>Completely transparent cube, with only a glint on the surface to give away its position</entry>
+		<entry>Completely transparent rhombohedron, with only a glint on the surface to give away its position</entry>
 	</collection>
 	<collection>
 		<name>GhaeleCommon</name>
@@ -2871,13 +2949,23 @@
 	</collection>
 	<collection>
 		<name>GhoulCommon</name>
-		
-		
+		<entry>Mottled, decaying, gray hide stretched tight over its emaciated body; Almost hairless; Sunken eyes, burning like hot coals</entry>
+		<entry>Mottled, decaying, gray hide stretched tight over its emaciated body; Hairless; Sunken eyes, burning like hot coals</entry>
+		<entry>Mottled, decaying, pink hide stretched tight over its emaciated body; Almost hairless; Sunken eyes, burning like hot coals</entry>
+		<entry>Mottled, decaying, pink hide stretched tight over its emaciated body; Hairless; Sunken eyes, burning like hot coals</entry>
+		<entry>Mottled, decaying, purple hide stretched tight over its emaciated body; Almost hairless; Sunken eyes, burning like hot coals</entry>
+		<entry>Mottled, decaying, purple hide stretched tight over its emaciated body; Hairless; Sunken eyes, burning like hot coals</entry>
 	</collection>
 	<collection>
 		<name>GhastCommon</name>
-		
-		
+		<entry>Mottled, decaying, gray hide stretched tight over its emaciated body; Almost hairless; Sunken eyes, burning like hot coals</entry>
+		<entry>Mottled, decaying, gray hide stretched tight over its emaciated body; Hairless; Sunken eyes, burning like hot coals</entry>
+		<entry>Mottled, decaying, pink hide stretched tight over its emaciated body; Almost hairless; Sunken eyes, burning like hot coals</entry>
+		<entry>Mottled, decaying, pink hide stretched tight over its emaciated body; Hairless; Sunken eyes, burning like hot coals</entry>
+		<entry>Mottled, decaying, purple hide stretched tight over its emaciated body; Almost hairless; Sunken eyes, burning like hot coals</entry>
+		<entry>Mottled, decaying, purple hide stretched tight over its emaciated body; Hairless; Sunken eyes, burning like hot coals</entry>
+		<entry>Mottled, decaying, white hide stretched tight over its emaciated body; Almost hairless; Sunken eyes, burning like hot coals</entry>
+		<entry>Mottled, decaying, white hide stretched tight over its emaciated body; Hairless; Sunken eyes, burning like hot coals</entry>
 	</collection>
 	<collection>
 		<name>LacedonCommon</name>
@@ -2941,8 +3029,60 @@
 	</collection>
 	<collection>
 		<name>Hill GiantCommon</name>
-		
-		
+		<entry>Brown skin; Black hair; Black, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Brown skin; Black hair; Brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Brown skin; Black hair; Dark brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Brown skin; Brown hair; Black, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Brown skin; Brown hair; Brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Brown skin; Brown hair; Dark brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Brown skin; Dark brown hair; Black, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Brown skin; Dark brown hair; Brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Brown skin; Dark brown hair; Dark brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Dark tan skin; Black hair; Black, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Dark tan skin; Black hair; Brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Dark tan skin; Black hair; Dark brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Dark tan skin; Brown hair; Black, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Dark tan skin; Brown hair; Brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Dark tan skin; Brown hair; Dark brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Dark tan skin; Dark brown hair; Black, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Dark tan skin; Dark brown hair; Brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Dark tan skin; Dark brown hair; Dark brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Deep ruddy-brown skin; Black hair; Black, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Deep ruddy-brown skin; Black hair; Brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Deep ruddy-brown skin; Black hair; Dark brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Deep ruddy-brown skin; Brown hair; Black, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Deep ruddy-brown skin; Brown hair; Brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Deep ruddy-brown skin; Brown hair; Dark brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Deep ruddy-brown skin; Dark brown hair; Black, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Deep ruddy-brown skin; Dark brown hair; Brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Deep ruddy-brown skin; Dark brown hair; Dark brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Light tan skin; Black hair; Black, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Light tan skin; Black hair; Brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Light tan skin; Black hair; Dark brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Light tan skin; Brown hair; Black, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Light tan skin; Brown hair; Brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Light tan skin; Brown hair; Dark brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Light tan skin; Dark brown hair; Black, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Light tan skin; Dark brown hair; Brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Light tan skin; Dark brown hair; Dark brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Reddish-brown skin; Black hair; Black, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Reddish-brown skin; Black hair; Brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Reddish-brown skin; Black hair; Dark brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Reddish-brown skin; Brown hair; Black, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Reddish-brown skin; Brown hair; Brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Reddish-brown skin; Brown hair; Dark brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Reddish-brown skin; Dark brown hair; Black, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Reddish-brown skin; Dark brown hair; Brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Reddish-brown skin; Dark brown hair; Dark brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Tan skin; Black hair; Black, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Tan skin; Black hair; Brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Tan skin; Black hair; Dark brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Tan skin; Brown hair; Black, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Tan skin; Brown hair; Brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Tan skin; Brown hair; Dark brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Tan skin; Dark brown hair; Black, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Tan skin; Dark brown hair; Brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
+		<entry>Tan skin; Dark brown hair; Dark brown, red-rimmed eyes; Long arms, stooped shoulders, low forehead</entry>
 	</collection>
 	<collection>
 		<name>Stone GiantCommon</name>
@@ -2961,72 +3101,179 @@
 	</collection>
 	<collection>
 		<name>Giant Ant, QueenCommon</name>
-		
+		<entry>Black skin</entry>
+		<entry>Brown skin</entry>
+		<entry>Red skin</entry>
 	</collection>
 	<collection>
 		<name>Giant Ant, SoldierCommon</name>
-		
+		<entry>Black skin</entry>
+		<entry>Brown skin</entry>
+		<entry>Red skin</entry>
 	</collection>
 	<collection>
 		<name>Giant Ant, WorkerCommon</name>
-		
+		<entry>Black skin</entry>
+		<entry>Brown skin</entry>
+		<entry>Red skin</entry>
 	</collection>
 	<collection>
 		<name>Giant BeeCommon</name>
-		
+		<entry>Alternating black and yellow stripes</entry>
 	</collection>
 	<collection>
 		<name>Giant Bombardier BeetleCommon</name>
-		
-		
+		<entry>Body is dull blue-gray. Head and chest is brownish-orange.</entry>
 	</collection>
 	<collection>
 		<name>Giant Constrictor SnakeCommon</name>
-		
-		
+		<entry>Dark green scales with alternating oval black spots. Similar spots with yellow-ochre centres are along the sides of its body. It has a large narrow head. The eyes and nostrils are set on the top of its head.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of joined ovals, against a pale brown background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of joined ovals, against a pale brown background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of joined ovals, against a pale brown-and-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of joined ovals, against a pale brown-and-gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of joined ovals, against a pale gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of joined ovals, against a pale gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of joined ovals, against a silvery-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of ovals, against a pale brown background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of ovals, against a pale brown background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of ovals, against a pale brown-and-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of ovals, against a pale brown-and-gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of ovals, against a pale gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of ovals, against a pale gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of ovals, against a silvery-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of triangles, against a pale brown background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of triangles, against a pale brown background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of triangles, against a pale brown-and-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of triangles, against a pale brown-and-gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of triangles, against a pale gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of triangles, against a pale gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of triangles, against a silvery-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of triangles, ovals, and joined ovals, against a pale brown background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of triangles, ovals, and joined ovals, against a pale brown background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of triangles, ovals, and joined ovals, against a pale brown-and-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of triangles, ovals, and joined ovals, against a pale brown-and-gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of triangles, ovals, and joined ovals, against a pale gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of triangles, ovals, and joined ovals, against a pale gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep black markings in the shape of triangles, ovals, and joined ovals, against a silvery-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of joined ovals, against a pale brown background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of joined ovals, against a pale brown background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of joined ovals, against a pale brown-and-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of joined ovals, against a pale brown-and-gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of joined ovals, against a pale gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of joined ovals, against a pale gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of joined ovals, against a silvery-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of ovals, against a pale brown background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of ovals, against a pale brown background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of ovals, against a pale brown-and-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of ovals, against a pale brown-and-gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of ovals, against a pale gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of ovals, against a pale gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of ovals, against a silvery-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of triangles, against a pale brown background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of triangles, against a pale brown background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of triangles, against a pale brown-and-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of triangles, against a pale brown-and-gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of triangles, against a pale gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of triangles, against a pale gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of triangles, against a silvery-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of triangles, ovals, and joined ovals, against a pale brown background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of triangles, ovals, and joined ovals, against a pale brown background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of triangles, ovals, and joined ovals, against a pale brown-and-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of triangles, ovals, and joined ovals, against a pale brown-and-gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of triangles, ovals, and joined ovals, against a pale gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of triangles, ovals, and joined ovals, against a pale gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown markings in the shape of triangles, ovals, and joined ovals, against a silvery-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of joined ovals, against a pale brown background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of joined ovals, against a pale brown background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of joined ovals, against a pale brown-and-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of joined ovals, against a pale brown-and-gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of joined ovals, against a pale gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of joined ovals, against a pale gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of joined ovals, against a silvery-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of ovals, against a pale brown background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of ovals, against a pale brown background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of ovals, against a pale brown-and-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of ovals, against a pale brown-and-gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of ovals, against a pale gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of ovals, against a pale gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of ovals, against a silvery-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of triangles, against a pale brown background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of triangles, against a pale brown background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of triangles, against a pale brown-and-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of triangles, against a pale brown-and-gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of triangles, against a pale gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of triangles, against a pale gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of triangles, against a silvery-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of triangles, ovals, and joined ovals, against a pale brown background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of triangles, ovals, and joined ovals, against a pale brown background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of triangles, ovals, and joined ovals, against a pale brown-and-gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of triangles, ovals, and joined ovals, against a pale brown-and-gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of triangles, ovals, and joined ovals, against a pale gray background.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of triangles, ovals, and joined ovals, against a pale gray background. Markings on the tail are red.</entry>
+		<entry>Long triangular head, with dark streaks from the eyes to the back of the jaw and another dark streak along the top. Deep brown-and-black markings in the shape of triangles, ovals, and joined ovals, against a silvery-gray background.</entry>
+		<entry>Olive-green scales with dark oval spots along the spine and similar spots with yellow centers along the sides. The scales on the belly are yellow and black. Two dark stripes stretch from the eyes angling toward the jaw.</entry>
+		<entry>Tan scales with dark blotches along the back and sides. Dark brown blotches are irregularly shaped, fitting together like a giraffe pattern. Dark wedges on top of head, below head, and behind the eye.</entry>
+		<entry>Tan scales with dark blotches along the back and sides. Dark brown blotches are irregularly shaped, fitting together like a puzzle. Dark wedges on top of head, below head, and behind the eye.</entry>
 	</collection>
 	<collection>
 		<name>Giant Fire BeetleCommon</name>
-		
-		
+		<entry>Brown color; Red bioluminescent glands above each eye and near the abdomen</entry>
 	</collection>
 	<collection>
 		<name>Giant OctopusCommon</name>
-		
-		
+		<entry>Blue skin</entry>
+		<entry>Brown skin</entry>
+		<entry>Gray skin</entry>
+		<entry>Green skin</entry>
+		<entry>Pink skin</entry>
+		<entry>Reddish-brown skin</entry>
 	</collection>
 	<collection>
 		<name>Giant Praying MantisCommon</name>
-		
-		
+		<entry>Brown coloration</entry>
+		<entry>Brown-green coloration</entry>
+		<entry>Green coloration</entry>
+		<entry>Yellow coloration</entry>
+		<entry>Yellow-brown coloration</entry>
+		<entry>Yellow-green coloration</entry>
 	</collection>
 	<collection>
 		<name>Giant SquidCommon</name>
-		
-		
+		<entry>Colossal squid</entry>
 	</collection>
 	<collection>
 		<name>Giant Stag BeetleCommon</name>
-		
-		
+		<entry>Black exoskeleton</entry>
+		<entry>Black iridescent exoskeleton</entry>
+		<entry>Gray exoskeleton mottled with black spots</entry>
+		<entry>Green exoskeleton mottled with black spots</entry>
+		<entry>Tan exoskeleton mottled with black spots</entry>
 	</collection>
 	<collection>
 		<name>Giant WaspCommon</name>
-		
+		<entry>Dull tan body with yellow stripes</entry>
+		<entry>Pinched waist, nearly black wings, red coloring, yellow face</entry>
 	</collection>
 	<collection>
 		<name>Gibbering MoutherCommon</name>
-		
+		<entry>Bright red skin; Large blob of mouth and eyes</entry>
+		<entry>Brown skin; Large blob of mouth and eyes</entry>
+		<entry>Brown-green skin; Large blob of mouth and eyes</entry>
+		<entry>Pink skin; Large blob of mouth and eyes</entry>
+		<entry>White-red skin; Large blob of mouth and eyes</entry>
 	</collection>
 	<collection>
 		<name>GirallonCommon</name>
-		
-		
+		<entry>Beige skin; Thick white fur; Four arms. Curved tusks in its mouth.</entry>
+		<entry>Light brown skin; Thick white fur; Four arms. Curved tusks in its mouth.</entry>
+		<entry>Pink skin; Thick white fur; Four arms. Curved tusks in its mouth.</entry>
 	</collection>
 	<collection>
 		<name>GithyankiCommon</name>
-		
-		
+		<entry>Rough, leathery yellow skin; Black hair in a topknot; Bright black eyes sunk deep in the orbits; Pointed ears, serrated in the back. Long angular skull, with a small and highly-placed flat nose. Pointed teeth.</entry>
+		<entry>Rough, leathery yellow skin; Red hair in a topknot; Bright black eyes sunk deep in the orbits; Pointed ears, serrated in the back. Long angular skull, with a small and highly-placed flat nose. Pointed teeth.</entry>
+		<entry>Rough, leathery yellow skin; Russet hair in a topknot; Bright black eyes sunk deep in the orbits; Pointed ears, serrated in the back. Long angular skull, with a small and highly-placed flat nose. Pointed teeth.</entry>
 	</collection>
 	<collection>
 		<name>GithzeraiCommon</name>
@@ -3035,17 +3282,58 @@
 	</collection>
 	<collection>
 		<name>GlabrezuCommon</name>
-		
+		<entry>Wrinkly, black skin; Cold, purple, piercing eyes; Two pairs of arms: main arms (from the shoulders) are larger and end in pincers, smaller pair (from the stomach) is humanoid with clawed fingers. Goat horns atop the canine head. Numerous fangs in the muzzle.</entry>
+		<entry>Wrinkly, deep russet skin; Cold, purple, piercing eyes; Two pairs of arms: main arms (from the shoulders) are larger and end in pincers, smaller pair (from the stomach) is humanoid with clawed fingers. Goat horns atop the canine head. Numerous fangs in the muzzle.</entry>
+		<entry>Wrinkly, pitch-black skin; Cold, purple, piercing eyes; Two pairs of arms: main arms (from the shoulders) are larger and end in pincers, smaller pair (from the stomach) is humanoid with clawed fingers. Goat horns atop the canine head. Numerous fangs in the muzzle.</entry>
+		<entry>Wrinkly, russet-black skin; Cold, purple, piercing eyes; Two pairs of arms: main arms (from the shoulders) are larger and end in pincers, smaller pair (from the stomach) is humanoid with clawed fingers. Goat horns atop the canine head. Numerous fangs in the muzzle.</entry>
 	</collection>
 	<collection>
 		<name>GnollCommon</name>
-		
-		
+		<entry>Greenish-gray skin; Dark brown fur, dirty yellow crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, dirty yellow crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, dirty yellow-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, dirty yellow-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, dirty yellow-red crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, dirty yellow-red crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, reddish-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, reddish-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, yellow-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, yellow-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, yellow-red crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, yellow-red crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur, dirty yellow crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur, dirty yellow crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur, dirty yellow-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur, dirty yellow-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur, dirty yellow-red crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur, dirty yellow-red crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur, reddish-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur, reddish-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur, yellow-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur, yellow-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur, yellow-red crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur, yellow-red crest-like mane; Green eyes; Hyena-like appearance</entry>
 	</collection>
 	<collection>
 		<name>GoblinCommon</name>
-		
-		
+		<entry>Dark orange skin; Dull, glazed, orange eyes; Flat face, small fangs, pointed ears, sloped-back forehead, broad noses</entry>
+		<entry>Dark orange skin; Dull, glazed, red eyes; Flat face, small fangs, pointed ears, sloped-back forehead, broad noses</entry>
+		<entry>Dark orange skin; Dull, glazed, yellow eyes; Flat face, small fangs, pointed ears, sloped-back forehead, broad noses</entry>
+		<entry>Deep red skin; Dull, glazed, orange eyes; Flat face, small fangs, pointed ears, sloped-back forehead, broad noses</entry>
+		<entry>Deep red skin; Dull, glazed, red eyes; Flat face, small fangs, pointed ears, sloped-back forehead, broad noses</entry>
+		<entry>Deep red skin; Dull, glazed, yellow eyes; Flat face, small fangs, pointed ears, sloped-back forehead, broad noses</entry>
+		<entry>Light orange skin; Dull, glazed, orange eyes; Flat face, small fangs, pointed ears, sloped-back forehead, broad noses</entry>
+		<entry>Light orange skin; Dull, glazed, red eyes; Flat face, small fangs, pointed ears, sloped-back forehead, broad noses</entry>
+		<entry>Light orange skin; Dull, glazed, yellow eyes; Flat face, small fangs, pointed ears, sloped-back forehead, broad noses</entry>
+		<entry>Orange skin; Dull, glazed, orange eyes; Flat face, small fangs, pointed ears, sloped-back forehead, broad noses</entry>
+		<entry>Orange skin; Dull, glazed, red eyes; Flat face, small fangs, pointed ears, sloped-back forehead, broad noses</entry>
+		<entry>Orange skin; Dull, glazed, yellow eyes; Flat face, small fangs, pointed ears, sloped-back forehead, broad noses</entry>
+		<entry>Red skin; Dull, glazed, orange eyes; Flat face, small fangs, pointed ears, sloped-back forehead, broad noses</entry>
+		<entry>Red skin; Dull, glazed, red eyes; Flat face, small fangs, pointed ears, sloped-back forehead, broad noses</entry>
+		<entry>Red skin; Dull, glazed, yellow eyes; Flat face, small fangs, pointed ears, sloped-back forehead, broad noses</entry>
+		<entry>Yellow skin; Dull, glazed, orange eyes; Flat face, small fangs, pointed ears, sloped-back forehead, broad noses</entry>
+		<entry>Yellow skin; Dull, glazed, red eyes; Flat face, small fangs, pointed ears, sloped-back forehead, broad noses</entry>
+		<entry>Yellow skin; Dull, glazed, yellow eyes; Flat face, small fangs, pointed ears, sloped-back forehead, broad noses</entry>
 	</collection>
 	<collection>
 		<name>Clay GolemCommon</name>
@@ -3057,60 +3345,90 @@
 	</collection>
 	<collection>
 		<name>Iron GolemCommon</name>
-		
+		<entry>Black color with golden markings; Resembles a suit of armor, smooth features</entry>
+		<entry>Black color with golden markings; Resembles a suit of armor, smooth features, designs carved into the limbs</entry>
+		<entry>Black color with golden markings; Resembles a suit of armor, smooth features, symbol carved in the chest</entry>
+		<entry>Black color; Resembles a suit of armor, smooth features</entry>
+		<entry>Black color; Resembles a suit of armor, smooth features, designs carved into the limbs</entry>
+		<entry>Black color; Resembles a suit of armor, smooth features, symbol carved in the chest</entry>
+		<entry>Reddish-brown color; Resembles a suit of armor, smooth features</entry>
+		<entry>Reddish-brown color; Resembles a suit of armor, smooth features, designs carved into the limbs</entry>
+		<entry>Reddish-brown color; Resembles a suit of armor, smooth features, symbol carved in the chest</entry>
+		<entry>Rusted red color; Resembles a suit of armor, smooth features</entry>
+		<entry>Rusted red color; Resembles a suit of armor, smooth features, designs carved into the limbs</entry>
+		<entry>Rusted red color; Resembles a suit of armor, smooth features, symbol carved in the chest</entry>
 	</collection>
 	<collection>
 		<name>Stone GolemCommon</name>
-		
+		<entry>Sandy brown color; Looks like a carved statue</entry>
+		<entry>Sandy brown color; Looks like a carved statue, stylized by its creator</entry>
+		<entry>Stone gray color; Looks like a carved statue</entry>
+		<entry>Stone gray color; Looks like a carved statue, stylized by its creator</entry>
 	</collection>
 	<collection>
 		<name>Greater Stone GolemCommon</name>
-		
+		<entry>Sandy brown color; Looks like a carved statue</entry>
+		<entry>Sandy brown color; Looks like a carved statue, stylized by its creator</entry>
+		<entry>Stone gray color; Looks like a carved statue</entry>
+		<entry>Stone gray color; Looks like a carved statue, stylized by its creator</entry>
 	</collection>
 	<collection>
 		<name>GorgonCommon</name>
-		
-		
+		<entry>Dusky metallic scales; Resembles a bull</entry>
 	</collection>
 	<collection>
 		<name>Gray OozeCommon</name>
-		
+		<entry>A thick puddle of gray sludge resembling an amorphous rock formation</entry>
+		<entry>A thick puddle of gray sludge resembling wet stone</entry>
 	</collection>
 	<collection>
 		<name>Gray RenderCommon</name>
-		
+		<entry>Gray hairless skin. Six yellow eyes in two rows along the sloped forehead. Extra long arms drag on the ground.</entry>
 	</collection>
 	<collection>
 		<name>Gray SlaadCommon</name>
-		
+		<entry>Frog-like humanoid. Long, clawed fingers. Evenly light-gray skin.</entry>
+		<entry>Frog-like humanoid. Long, clawed fingers. Gray skin is spotted.</entry>
 	</collection>
 	<collection>
 		<name>Greater BarghestCommon</name>
-		
-		
 	</collection>
 	<collection>
 		<name>Green HagCommon</name>
-		
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face and exaggerated facial features; Tangled, vine-like, black hair; Amber eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face and exaggerated facial features; Tangled, vine-like, black hair; Amber eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face and exaggerated facial features; Tangled, vine-like, black hair; Orange eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face and exaggerated facial features; Tangled, vine-like, black hair; Orange eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face and exaggerated facial features; Tangled, vine-like, gray hair; Amber eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face and exaggerated facial features; Tangled, vine-like, gray hair; Amber eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face and exaggerated facial features; Tangled, vine-like, gray hair; Orange eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face and exaggerated facial features; Tangled, vine-like, gray hair; Orange eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face and exaggerated facial features; Tangled, vine-like, moldy-olive-green hair; Amber eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face and exaggerated facial features; Tangled, vine-like, moldy-olive-green hair; Amber eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face and exaggerated facial features; Tangled, vine-like, moldy-olive-green hair; Orange eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face and exaggerated facial features; Tangled, vine-like, moldy-olive-green hair; Orange eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face and exaggerated facial features; Tangled, vine-like, white hair; Amber eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face and exaggerated facial features; Tangled, vine-like, white hair; Amber eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face and exaggerated facial features; Tangled, vine-like, white hair; Orange eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face and exaggerated facial features; Tangled, vine-like, white hair; Orange eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
 	</collection>
 	<collection>
 		<name>Green SlaadCommon</name>
-		
+		<entry>Bipedal, roughly-humanoid, gangly toad. Skin is mostly a pale, mottled green marked with grey streaks. High forehead, wide mouth, and long claws.</entry>
 	</collection>
 	<collection>
 		<name>GrickCommon</name>
-		
-		
+		<entry>Rubbery, uniform, blue skin with a pale underbelly; Snapping beak surrounded by large barbed tentacles</entry>
+		<entry>Rubbery, uniform, dark blue skin with a pale underbelly; Snapping beak surrounded by large barbed tentacles</entry>
+		<entry>Rubbery, uniform, dark green skin with a pale underbelly; Snapping beak surrounded by large barbed tentacles</entry>
 	</collection>
 	<collection>
 		<name>GrigCommon</name>
-		
-		
+		<entry>Light blue skin on the torso, brown cricket-like body from the waist-down; Forest green hair; Gossamer wings, hairy legs</entry>
 	</collection>
 	<collection>
 		<name>Grig with fiddleCommon</name>
-		
-		
+		<entry>Light blue skin on the torso, brown cricket-like body from the waist-down; Forest green hair; Gossamer wings, hairy legs</entry>
 	</collection>
 	<collection>
 		<name>NixieCommon</name>
@@ -3134,12 +3452,12 @@
 	</collection>
 	<collection>
 		<name>GrimlockCommon</name>
-		
-		
+		<entry>Slightly-scaled, thick, scarred, gray skin; Black hair, long and unkempt; Completely white eyes; Sharp teeth</entry>
+		<entry>Slightly-scaled, thick, scarred, gray skin; Black hair, long and unkempt; Face devoid of eyes, skin stretching across where its eye sockets should be; Sharp teeth</entry>
 	</collection>
 	<collection>
 		<name>GynosphinxCommon</name>
-		
+		<entry>Tawny fur; Lion body, falcon wings</entry>
 	</collection>
 	<collection>
 		<name>Half-OrcCommon</name>
@@ -3153,13 +3471,41 @@
 	</collection>
 	<collection>
 		<name>HawkCommon</name>
-		
-		
+		<entry>Besra</entry>
+		<entry>Black kite</entry>
+		<entry>Black-winged kite</entry>
+		<entry>Brahminy kite</entry>
+		<entry>Broad-winged hawk</entry>
+		<entry>Chinese sparrowhawk</entry>
+		<entry>Collared sparrowhawk</entry>
+		<entry>Common black hawk</entry>
+		<entry>Cooper's hawk</entry>
+		<entry>Crested goshawk</entry>
+		<entry>Eurasian goshawk</entry>
+		<entry>Eurasian sparrowhawk</entry>
+		<entry>Ferruginous hawk</entry>
+		<entry>Great black hawk</entry>
+		<entry>Harris' hawk</entry>
+		<entry>Hen harrier</entry>
+		<entry>Japanese sparrowhawk</entry>
+		<entry>Montagu's harrier</entry>
+		<entry>Northern harrier</entry>
+		<entry>Osprey</entry>
+		<entry>Red kite</entry>
+		<entry>Red-backed hawk</entry>
+		<entry>Red-shouldered hawk</entry>
+		<entry>Red-tailed hawk</entry>
+		<entry>Roadside hawk</entry>
+		<entry>Sharp-shinned hawk</entry>
+		<entry>Shikra</entry>
+		<entry>Swainson's hawk</entry>
+		<entry>Swamp harrier</entry>
+		<entry>Tiny hawk</entry>
 	</collection>
 	<collection>
 		<name>Hell HoundCommon</name>
-		
-		
+		<entry>Red-brown fur with soot-colored markings; Glowing red eyes; Resembles monstrous dog. Soot-colored fangs and tongues. Reek of sulfurous smoke.</entry>
+		<entry>Rust-red fur with soot-colored markings; Glowing red eyes; Resembles monstrous dog. Soot-colored fangs and tongues. Reek of sulfurous smoke.</entry>
 	</collection>
 	<collection>
 		<name>Nessian WarhoundCommon</name>
@@ -3168,16 +3514,23 @@
 	</collection>
 	<collection>
 		<name>Hellcat (Bezekira)Common</name>
-		
-		
+		<entry>Form of a lion; Crimson eyes, backed by the literal fires of Hell; Faint, wraith-like outlines with bodies composed of bright light and flickers of fire - only visible in total darkness</entry>
+		<entry>Form of a lion; Crimson eyes; Faint, wraith-like outlines with bodies composed of bright light and flickers of fire - only visible in total darkness</entry>
+		<entry>Form of a tiger-sized domestic cat; Crimson eyes, backed by the literal fires of Hell; Faint, wraith-like outlines with bodies composed of bright light and flickers of fire - only visible in total darkness</entry>
+		<entry>Form of a tiger-sized domestic cat; Crimson eyes; Faint, wraith-like outlines with bodies composed of bright light and flickers of fire - only visible in total darkness</entry>
 	</collection>
 	<collection>
 		<name>Hellwasp SwarmCommon</name>
-		
+		<entry>5,000 Hellwasps</entry>
 	</collection>
 	<collection>
 		<name>HezrouCommon</name>
-		
+		<entry>Mottled brown skin; Glowing red eyes; Resemble a humanoid toad, wide maw with rows of blunt teeth, long spikes running down the back</entry>
+		<entry>Mottled brown skin; Glowing yellow eyes; Resemble a humanoid toad, wide maw with rows of blunt teeth, long spikes running down the back</entry>
+		<entry>Orange skin; Glowing red eyes; Resemble a humanoid toad, wide maw with rows of blunt teeth, long spikes running down the back</entry>
+		<entry>Orange skin; Glowing yellow eyes; Resemble a humanoid toad, wide maw with rows of blunt teeth, long spikes running down the back</entry>
+		<entry>Yellow-green skin; Glowing red eyes; Resemble a humanoid toad, wide maw with rows of blunt teeth, long spikes running down the back</entry>
+		<entry>Yellow-green skin; Glowing yellow eyes; Resemble a humanoid toad, wide maw with rows of blunt teeth, long spikes running down the back</entry>
 	</collection>
 	<collection>
 		<name>HieracosphinxCommon</name>
@@ -3185,8 +3538,42 @@
 	</collection>
 	<collection>
 		<name>HippogriffCommon</name>
-		
-		
+		<entry>Golden yellow beak; Brown fur, brown feathers; Body of a horse, wings and head of a eagle, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Golden yellow beak; Brown fur, brown feathers; Body of a horse, wings and head of a hawk, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Golden yellow beak; Brown fur, golden tan feathers; Body of a horse, wings and head of a eagle, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Golden yellow beak; Brown fur, golden tan feathers; Body of a horse, wings and head of a hawk, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Golden yellow beak; Brown fur, russet feathers; Body of a horse, wings and head of a eagle, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Golden yellow beak; Brown fur, russet feathers; Body of a horse, wings and head of a hawk, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Golden yellow beak; Golden tan fur, brown feathers; Body of a horse, wings and head of a eagle, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Golden yellow beak; Golden tan fur, brown feathers; Body of a horse, wings and head of a hawk, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Golden yellow beak; Golden tan fur, golden tan feathers; Body of a horse, wings and head of a eagle, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Golden yellow beak; Golden tan fur, golden tan feathers; Body of a horse, wings and head of a hawk, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Golden yellow beak; Golden tan fur, russet feathers; Body of a horse, wings and head of a eagle, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Golden yellow beak; Golden tan fur, russet feathers; Body of a horse, wings and head of a hawk, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Golden yellow beak; Russet fur, brown feathers; Body of a horse, wings and head of a eagle, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Golden yellow beak; Russet fur, brown feathers; Body of a horse, wings and head of a hawk, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Golden yellow beak; Russet fur, golden tan feathers; Body of a horse, wings and head of a eagle, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Golden yellow beak; Russet fur, golden tan feathers; Body of a horse, wings and head of a hawk, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Golden yellow beak; Russet fur, russet feathers; Body of a horse, wings and head of a eagle, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Golden yellow beak; Russet fur, russet feathers; Body of a horse, wings and head of a hawk, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Ivory beak; Brown fur, brown feathers; Body of a horse, wings and head of a eagle, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Ivory beak; Brown fur, brown feathers; Body of a horse, wings and head of a hawk, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Ivory beak; Brown fur, golden tan feathers; Body of a horse, wings and head of a eagle, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Ivory beak; Brown fur, golden tan feathers; Body of a horse, wings and head of a hawk, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Ivory beak; Brown fur, russet feathers; Body of a horse, wings and head of a eagle, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Ivory beak; Brown fur, russet feathers; Body of a horse, wings and head of a hawk, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Ivory beak; Golden tan fur, brown feathers; Body of a horse, wings and head of a eagle, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Ivory beak; Golden tan fur, brown feathers; Body of a horse, wings and head of a hawk, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Ivory beak; Golden tan fur, golden tan feathers; Body of a horse, wings and head of a eagle, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Ivory beak; Golden tan fur, golden tan feathers; Body of a horse, wings and head of a hawk, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Ivory beak; Golden tan fur, russet feathers; Body of a horse, wings and head of a eagle, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Ivory beak; Golden tan fur, russet feathers; Body of a horse, wings and head of a hawk, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Ivory beak; Russet fur, brown feathers; Body of a horse, wings and head of a eagle, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Ivory beak; Russet fur, brown feathers; Body of a horse, wings and head of a hawk, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Ivory beak; Russet fur, golden tan feathers; Body of a horse, wings and head of a eagle, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Ivory beak; Russet fur, golden tan feathers; Body of a horse, wings and head of a hawk, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Ivory beak; Russet fur, russet feathers; Body of a horse, wings and head of a eagle, forelegs ending in sharp talons, hind legs end in hooves</entry>
+		<entry>Ivory beak; Russet fur, russet feathers; Body of a horse, wings and head of a hawk, forelegs ending in sharp talons, hind legs end in hooves</entry>
 	</collection>
 	<collection>
 		<name>HobgoblinCommon</name>
@@ -3195,35 +3582,138 @@
 	</collection>
 	<collection>
 		<name>HomunculusCommon</name>
-		
+		<entry>Beige skin; Black eyes; Leathery wings, large bat-like ears</entry>
+		<entry>Beige skin; Blue eyes; Leathery wings, large bat-like ears</entry>
+		<entry>Beige skin; Blue-green eyes; Leathery wings, large bat-like ears</entry>
+		<entry>Beige skin; Green eyes; Leathery wings, large bat-like ears</entry>
+		<entry>Beige skin; Red eyes; Leathery wings, large bat-like ears</entry>
+		<entry>Beige skin; Yellow eyes; Leathery wings, large bat-like ears</entry>
+		<entry>Dark gray skin; Black eyes; Leathery wings, large bat-like ears</entry>
+		<entry>Dark gray skin; Blue eyes; Leathery wings, large bat-like ears</entry>
+		<entry>Dark gray skin; Blue-green eyes; Leathery wings, large bat-like ears</entry>
+		<entry>Dark gray skin; Green eyes; Leathery wings, large bat-like ears</entry>
+		<entry>Dark gray skin; Red eyes; Leathery wings, large bat-like ears</entry>
+		<entry>Dark gray skin; Yellow eyes; Leathery wings, large bat-like ears</entry>
+		<entry>Pale green skin; Black eyes; Leathery wings, large bat-like ears</entry>
+		<entry>Pale green skin; Blue eyes; Leathery wings, large bat-like ears</entry>
+		<entry>Pale green skin; Blue-green eyes; Leathery wings, large bat-like ears</entry>
+		<entry>Pale green skin; Green eyes; Leathery wings, large bat-like ears</entry>
+		<entry>Pale green skin; Red eyes; Leathery wings, large bat-like ears</entry>
+		<entry>Pale green skin; Yellow eyes; Leathery wings, large bat-like ears</entry>
+		<entry>Yellow-green skin; Black eyes; Leathery wings, large bat-like ears</entry>
+		<entry>Yellow-green skin; Blue eyes; Leathery wings, large bat-like ears</entry>
+		<entry>Yellow-green skin; Blue-green eyes; Leathery wings, large bat-like ears</entry>
+		<entry>Yellow-green skin; Green eyes; Leathery wings, large bat-like ears</entry>
+		<entry>Yellow-green skin; Red eyes; Leathery wings, large bat-like ears</entry>
+		<entry>Yellow-green skin; Yellow eyes; Leathery wings, large bat-like ears</entry>
 	</collection>
 	<collection>
 		<name>Horned Devil (Cornugon)Common</name>
-		
+		<entry>Repulsive black scales; Black eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive black scales; Blue eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive black scales; Blue-green eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive black scales; Green eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive black scales; Red eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive black scales; Yellow eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive blue scales; Black eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive blue scales; Blue eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive blue scales; Blue-green eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive blue scales; Green eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive blue scales; Red eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive blue scales; Yellow eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive orange scales; Black eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive orange scales; Blue eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive orange scales; Blue-green eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive orange scales; Green eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive orange scales; Red eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive orange scales; Yellow eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive red scales; Black eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive red scales; Blue eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive red scales; Blue-green eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive red scales; Green eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive red scales; Red eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive red scales; Yellow eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive yellow scales; Black eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive yellow scales; Blue eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive yellow scales; Blue-green eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive yellow scales; Green eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive yellow scales; Red eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
+		<entry>Repulsive yellow scales; Yellow eyes; Sweeping horns, wings, prehensile, serpentine tail</entry>
 	</collection>
 	<collection>
 		<name>Heavy HorseCommon</name>
-		
-		
+		<entry>American Belgian Draft</entry>
+		<entry>American Cream Draft</entry>
+		<entry>American Quarter Horse</entry>
+		<entry>Ardennais</entry>
+		<entry>Australian Draught</entry>
+		<entry>Auxois</entry>
+		<entry>Bashkir horse</entry>
+		<entry>Bay (Brown coat; black legs; black mane and tail)</entry>
+		<entry>Belgian Draught</entry>
+		<entry>Boulonnais horse</entry>
+		<entry>Breton horse</entry>
+		<entry>Brown coat; black lower legs; Light brown mane, tail, and muzzle</entry>
+		<entry>Buckskin (Creamy-golden coat with black points; black mane and tail)</entry>
+		<entry>Buckskin (Rich golden coat with black points; black mane and tail)</entry>
+		<entry>Byelorussian Harness Horse</entry>
+		<entry>Camargue horse</entry>
+		<entry>Chestnut (Dark ginger coat; Dark ginger mane and tail)</entry>
+		<entry>Chestnut (Dark ginger coat; Ginger mane and tail)</entry>
+		<entry>Chestnut (Dark ginger coat; Light ginger mane and tail)</entry>
+		<entry>Chestnut (Ginger coat; Dark ginger mane and tail)</entry>
 	</collection>
 	<collection>
 		<name>Heavy WarhorseCommon</name>
-		
-		
+		<entry>American Belgian Draft</entry>
+		<entry>American Cream Draft</entry>
+		<entry>American Quarter Horse</entry>
+		<entry>Ardennais</entry>
+		<entry>Australian Draught</entry>
+		<entry>Auxois</entry>
+		<entry>Bashkir horse</entry>
+		<entry>Bay (Brown coat; black legs; black mane and tail)</entry>
+		<entry>Belgian Draught</entry>
+		<entry>Boulonnais horse</entry>
 	</collection>
 	<collection>
 		<name>Light HorseCommon</name>
-		
-		
+		<entry>American Belgian Draft</entry>
+		<entry>American Cream Draft</entry>
+		<entry>American Quarter Horse</entry>
+		<entry>Ardennais</entry>
+		<entry>Australian Draught</entry>
+		<entry>Auxois</entry>
+		<entry>Bashkir horse</entry>
+		<entry>Bay (Brown coat; black legs; black mane and tail)</entry>
+		<entry>Belgian Draught</entry>
+		<entry>Boulonnais horse</entry>
 	</collection>
 	<collection>
 		<name>Light WarhorseCommon</name>
-		
-		
+		<entry>American Belgian Draft</entry>
+		<entry>American Cream Draft</entry>
+		<entry>American Quarter Horse</entry>
+		<entry>Ardennais</entry>
+		<entry>Australian Draught</entry>
+		<entry>Auxois</entry>
+		<entry>Bashkir horse</entry>
+		<entry>Bay (Brown coat; black legs; black mane and tail)</entry>
+		<entry>Belgian Draught</entry>
+		<entry>Boulonnais horse</entry>
 	</collection>
 	<collection>
 		<name>Hound ArchonCommon</name>
-		
+		<entry>Brown skin; Black eyes; Humanoid body; head of a dog</entry>
+		<entry>Brown skin; Yellow eyes; Humanoid body; head of a dog</entry>
+		<entry>Cream-colored skin; Black eyes; Humanoid body; head of a dog</entry>
+		<entry>Cream-colored skin; Yellow eyes; Humanoid body; head of a dog</entry>
+		<entry>Light brown skin; Black eyes; Humanoid body; head of a dog</entry>
+		<entry>Light brown skin; Yellow eyes; Humanoid body; head of a dog</entry>
+		<entry>Red skin; Black eyes; Humanoid body; head of a dog</entry>
+		<entry>Red skin; Yellow eyes; Humanoid body; head of a dog</entry>
+		<entry>Tan skin; Black eyes; Humanoid body; head of a dog</entry>
+		<entry>Tan skin; Yellow eyes; Humanoid body; head of a dog</entry>
 	</collection>
 	<collection>
 		<name>Lantern ArchonCommon</name>
@@ -3236,12 +3726,553 @@
 	</collection>
 	<collection>
 		<name>HowlerCommon</name>
-		
+		<entry>Light brown scales; Tangled, red fur, spreading into mane of trembling quills on the back of the neck and surrounding the face; Black eyes; Bruised, crushed digits ending in claws on the front legs. Back legs end in hooves. Back like an ox. Muzzled, simian face.</entry>
+		<entry>Light brown scales; Tangled, red fur, spreading into mane of trembling quills on the back of the neck and surrounding the face; Yellow eyes; Bruised, crushed digits ending in claws on the front legs. Back legs end in hooves. Back like an ox. Muzzled, simian face.</entry>
+		<entry>Tan scales; Tangled, red fur, spreading into mane of trembling quills on the back of the neck and surrounding the face; Black eyes; Bruised, crushed digits ending in claws on the front legs. Back legs end in hooves. Back like an ox. Muzzled, simian face.</entry>
+		<entry>Tan scales; Tangled, red fur, spreading into mane of trembling quills on the back of the neck and surrounding the face; Yellow eyes; Bruised, crushed digits ending in claws on the front legs. Back legs end in hooves. Back like an ox. Muzzled, simian face.</entry>
 	</collection>
 	<collection>
 		<name>HumanCommon</name>
-		
-		
+		<entry>Brown skin; Curly black hair; Blue eyes</entry>
+		<entry>Brown skin; Curly black hair; Brown eyes</entry>
+		<entry>Brown skin; Curly black hair; Gray eyes</entry>
+		<entry>Brown skin; Curly black hair; Green eyes</entry>
+		<entry>Brown skin; Curly black hair; Hazel eyes</entry>
+		<entry>Brown skin; Curly blond hair; Blue eyes</entry>
+		<entry>Brown skin; Curly blond hair; Brown eyes</entry>
+		<entry>Brown skin; Curly blond hair; Gray eyes</entry>
+		<entry>Brown skin; Curly blond hair; Green eyes</entry>
+		<entry>Brown skin; Curly blond hair; Hazel eyes</entry>
+		<entry>Brown skin; Curly brown hair; Blue eyes</entry>
+		<entry>Brown skin; Curly brown hair; Brown eyes</entry>
+		<entry>Brown skin; Curly brown hair; Gray eyes</entry>
+		<entry>Brown skin; Curly brown hair; Green eyes</entry>
+		<entry>Brown skin; Curly brown hair; Hazel eyes</entry>
+		<entry>Brown skin; Curly red hair; Blue eyes</entry>
+		<entry>Brown skin; Curly red hair; Brown eyes</entry>
+		<entry>Brown skin; Curly red hair; Gray eyes</entry>
+		<entry>Brown skin; Curly red hair; Green eyes</entry>
+		<entry>Brown skin; Curly red hair; Hazel eyes</entry>
+		<entry>Brown skin; Kinky black hair; Blue eyes</entry>
+		<entry>Brown skin; Kinky black hair; Brown eyes</entry>
+		<entry>Brown skin; Kinky black hair; Gray eyes</entry>
+		<entry>Brown skin; Kinky black hair; Green eyes</entry>
+		<entry>Brown skin; Kinky black hair; Hazel eyes</entry>
+		<entry>Brown skin; Kinky blond hair; Blue eyes</entry>
+		<entry>Brown skin; Kinky blond hair; Brown eyes</entry>
+		<entry>Brown skin; Kinky blond hair; Gray eyes</entry>
+		<entry>Brown skin; Kinky blond hair; Green eyes</entry>
+		<entry>Brown skin; Kinky blond hair; Hazel eyes</entry>
+		<entry>Brown skin; Kinky brown hair; Blue eyes</entry>
+		<entry>Brown skin; Kinky brown hair; Brown eyes</entry>
+		<entry>Brown skin; Kinky brown hair; Gray eyes</entry>
+		<entry>Brown skin; Kinky brown hair; Green eyes</entry>
+		<entry>Brown skin; Kinky brown hair; Hazel eyes</entry>
+		<entry>Brown skin; Kinky red hair; Blue eyes</entry>
+		<entry>Brown skin; Kinky red hair; Brown eyes</entry>
+		<entry>Brown skin; Kinky red hair; Gray eyes</entry>
+		<entry>Brown skin; Kinky red hair; Green eyes</entry>
+		<entry>Brown skin; Kinky red hair; Hazel eyes</entry>
+		<entry>Brown skin; Straight black hair; Blue eyes</entry>
+		<entry>Brown skin; Straight black hair; Brown eyes</entry>
+		<entry>Brown skin; Straight black hair; Gray eyes</entry>
+		<entry>Brown skin; Straight black hair; Green eyes</entry>
+		<entry>Brown skin; Straight black hair; Hazel eyes</entry>
+		<entry>Brown skin; Straight blond hair; Blue eyes</entry>
+		<entry>Brown skin; Straight blond hair; Brown eyes</entry>
+		<entry>Brown skin; Straight blond hair; Gray eyes</entry>
+		<entry>Brown skin; Straight blond hair; Green eyes</entry>
+		<entry>Brown skin; Straight blond hair; Hazel eyes</entry>
+		<entry>Brown skin; Straight brown hair; Blue eyes</entry>
+		<entry>Brown skin; Straight brown hair; Brown eyes</entry>
+		<entry>Brown skin; Straight brown hair; Gray eyes</entry>
+		<entry>Brown skin; Straight brown hair; Green eyes</entry>
+		<entry>Brown skin; Straight brown hair; Hazel eyes</entry>
+		<entry>Brown skin; Straight red hair; Blue eyes</entry>
+		<entry>Brown skin; Straight red hair; Brown eyes</entry>
+		<entry>Brown skin; Straight red hair; Gray eyes</entry>
+		<entry>Brown skin; Straight red hair; Green eyes</entry>
+		<entry>Brown skin; Straight red hair; Hazel eyes</entry>
+		<entry>Dark brown skin; Curly black hair; Blue eyes</entry>
+		<entry>Dark brown skin; Curly black hair; Brown eyes</entry>
+		<entry>Dark brown skin; Curly black hair; Gray eyes</entry>
+		<entry>Dark brown skin; Curly black hair; Green eyes</entry>
+		<entry>Dark brown skin; Curly black hair; Hazel eyes</entry>
+		<entry>Dark brown skin; Curly blond hair; Blue eyes</entry>
+		<entry>Dark brown skin; Curly blond hair; Brown eyes</entry>
+		<entry>Dark brown skin; Curly blond hair; Gray eyes</entry>
+		<entry>Dark brown skin; Curly blond hair; Green eyes</entry>
+		<entry>Dark brown skin; Curly blond hair; Hazel eyes</entry>
+		<entry>Dark brown skin; Curly brown hair; Blue eyes</entry>
+		<entry>Dark brown skin; Curly brown hair; Brown eyes</entry>
+		<entry>Dark brown skin; Curly brown hair; Gray eyes</entry>
+		<entry>Dark brown skin; Curly brown hair; Green eyes</entry>
+		<entry>Dark brown skin; Curly brown hair; Hazel eyes</entry>
+		<entry>Dark brown skin; Curly red hair; Blue eyes</entry>
+		<entry>Dark brown skin; Curly red hair; Brown eyes</entry>
+		<entry>Dark brown skin; Curly red hair; Gray eyes</entry>
+		<entry>Dark brown skin; Curly red hair; Green eyes</entry>
+		<entry>Dark brown skin; Curly red hair; Hazel eyes</entry>
+		<entry>Dark brown skin; Kinky black hair; Blue eyes</entry>
+		<entry>Dark brown skin; Kinky black hair; Brown eyes</entry>
+		<entry>Dark brown skin; Kinky black hair; Gray eyes</entry>
+		<entry>Dark brown skin; Kinky black hair; Green eyes</entry>
+		<entry>Dark brown skin; Kinky black hair; Hazel eyes</entry>
+		<entry>Dark brown skin; Kinky blond hair; Blue eyes</entry>
+		<entry>Dark brown skin; Kinky blond hair; Brown eyes</entry>
+		<entry>Dark brown skin; Kinky blond hair; Gray eyes</entry>
+		<entry>Dark brown skin; Kinky blond hair; Green eyes</entry>
+		<entry>Dark brown skin; Kinky blond hair; Hazel eyes</entry>
+		<entry>Dark brown skin; Kinky brown hair; Blue eyes</entry>
+		<entry>Dark brown skin; Kinky brown hair; Brown eyes</entry>
+		<entry>Dark brown skin; Kinky brown hair; Gray eyes</entry>
+		<entry>Dark brown skin; Kinky brown hair; Green eyes</entry>
+		<entry>Dark brown skin; Kinky brown hair; Hazel eyes</entry>
+		<entry>Dark brown skin; Kinky red hair; Blue eyes</entry>
+		<entry>Dark brown skin; Kinky red hair; Brown eyes</entry>
+		<entry>Dark brown skin; Kinky red hair; Gray eyes</entry>
+		<entry>Dark brown skin; Kinky red hair; Green eyes</entry>
+		<entry>Dark brown skin; Kinky red hair; Hazel eyes</entry>
+		<entry>Dark brown skin; Straight black hair; Blue eyes</entry>
+		<entry>Dark brown skin; Straight black hair; Brown eyes</entry>
+		<entry>Dark brown skin; Straight black hair; Gray eyes</entry>
+		<entry>Dark brown skin; Straight black hair; Green eyes</entry>
+		<entry>Dark brown skin; Straight black hair; Hazel eyes</entry>
+		<entry>Dark brown skin; Straight blond hair; Blue eyes</entry>
+		<entry>Dark brown skin; Straight blond hair; Brown eyes</entry>
+		<entry>Dark brown skin; Straight blond hair; Gray eyes</entry>
+		<entry>Dark brown skin; Straight blond hair; Green eyes</entry>
+		<entry>Dark brown skin; Straight blond hair; Hazel eyes</entry>
+		<entry>Dark brown skin; Straight brown hair; Blue eyes</entry>
+		<entry>Dark brown skin; Straight brown hair; Brown eyes</entry>
+		<entry>Dark brown skin; Straight brown hair; Gray eyes</entry>
+		<entry>Dark brown skin; Straight brown hair; Green eyes</entry>
+		<entry>Dark brown skin; Straight brown hair; Hazel eyes</entry>
+		<entry>Dark brown skin; Straight red hair; Blue eyes</entry>
+		<entry>Dark brown skin; Straight red hair; Brown eyes</entry>
+		<entry>Dark brown skin; Straight red hair; Gray eyes</entry>
+		<entry>Dark brown skin; Straight red hair; Green eyes</entry>
+		<entry>Dark brown skin; Straight red hair; Hazel eyes</entry>
+		<entry>Light brown skin; Curly black hair; Blue eyes</entry>
+		<entry>Light brown skin; Curly black hair; Brown eyes</entry>
+		<entry>Light brown skin; Curly black hair; Gray eyes</entry>
+		<entry>Light brown skin; Curly black hair; Green eyes</entry>
+		<entry>Light brown skin; Curly black hair; Hazel eyes</entry>
+		<entry>Light brown skin; Curly blond hair; Blue eyes</entry>
+		<entry>Light brown skin; Curly blond hair; Brown eyes</entry>
+		<entry>Light brown skin; Curly blond hair; Gray eyes</entry>
+		<entry>Light brown skin; Curly blond hair; Green eyes</entry>
+		<entry>Light brown skin; Curly blond hair; Hazel eyes</entry>
+		<entry>Light brown skin; Curly brown hair; Blue eyes</entry>
+		<entry>Light brown skin; Curly brown hair; Brown eyes</entry>
+		<entry>Light brown skin; Curly brown hair; Gray eyes</entry>
+		<entry>Light brown skin; Curly brown hair; Green eyes</entry>
+		<entry>Light brown skin; Curly brown hair; Hazel eyes</entry>
+		<entry>Light brown skin; Curly red hair; Blue eyes</entry>
+		<entry>Light brown skin; Curly red hair; Brown eyes</entry>
+		<entry>Light brown skin; Curly red hair; Gray eyes</entry>
+		<entry>Light brown skin; Curly red hair; Green eyes</entry>
+		<entry>Light brown skin; Curly red hair; Hazel eyes</entry>
+		<entry>Light brown skin; Kinky black hair; Blue eyes</entry>
+		<entry>Light brown skin; Kinky black hair; Brown eyes</entry>
+		<entry>Light brown skin; Kinky black hair; Gray eyes</entry>
+		<entry>Light brown skin; Kinky black hair; Green eyes</entry>
+		<entry>Light brown skin; Kinky black hair; Hazel eyes</entry>
+		<entry>Light brown skin; Kinky blond hair; Blue eyes</entry>
+		<entry>Light brown skin; Kinky blond hair; Brown eyes</entry>
+		<entry>Light brown skin; Kinky blond hair; Gray eyes</entry>
+		<entry>Light brown skin; Kinky blond hair; Green eyes</entry>
+		<entry>Light brown skin; Kinky blond hair; Hazel eyes</entry>
+		<entry>Light brown skin; Kinky brown hair; Blue eyes</entry>
+		<entry>Light brown skin; Kinky brown hair; Brown eyes</entry>
+		<entry>Light brown skin; Kinky brown hair; Gray eyes</entry>
+		<entry>Light brown skin; Kinky brown hair; Green eyes</entry>
+		<entry>Light brown skin; Kinky brown hair; Hazel eyes</entry>
+		<entry>Light brown skin; Kinky red hair; Blue eyes</entry>
+		<entry>Light brown skin; Kinky red hair; Brown eyes</entry>
+		<entry>Light brown skin; Kinky red hair; Gray eyes</entry>
+		<entry>Light brown skin; Kinky red hair; Green eyes</entry>
+		<entry>Light brown skin; Kinky red hair; Hazel eyes</entry>
+		<entry>Light brown skin; Straight black hair; Blue eyes</entry>
+		<entry>Light brown skin; Straight black hair; Brown eyes</entry>
+		<entry>Light brown skin; Straight black hair; Gray eyes</entry>
+		<entry>Light brown skin; Straight black hair; Green eyes</entry>
+		<entry>Light brown skin; Straight black hair; Hazel eyes</entry>
+		<entry>Light brown skin; Straight blond hair; Blue eyes</entry>
+		<entry>Light brown skin; Straight blond hair; Brown eyes</entry>
+		<entry>Light brown skin; Straight blond hair; Gray eyes</entry>
+		<entry>Light brown skin; Straight blond hair; Green eyes</entry>
+		<entry>Light brown skin; Straight blond hair; Hazel eyes</entry>
+		<entry>Light brown skin; Straight brown hair; Blue eyes</entry>
+		<entry>Light brown skin; Straight brown hair; Brown eyes</entry>
+		<entry>Light brown skin; Straight brown hair; Gray eyes</entry>
+		<entry>Light brown skin; Straight brown hair; Green eyes</entry>
+		<entry>Light brown skin; Straight brown hair; Hazel eyes</entry>
+		<entry>Light brown skin; Straight red hair; Blue eyes</entry>
+		<entry>Light brown skin; Straight red hair; Brown eyes</entry>
+		<entry>Light brown skin; Straight red hair; Gray eyes</entry>
+		<entry>Light brown skin; Straight red hair; Green eyes</entry>
+		<entry>Light brown skin; Straight red hair; Hazel eyes</entry>
+		<entry>Tan skin; Curly black hair; Blue eyes</entry>
+		<entry>Tan skin; Curly black hair; Brown eyes</entry>
+		<entry>Tan skin; Curly black hair; Gray eyes</entry>
+		<entry>Tan skin; Curly black hair; Green eyes</entry>
+		<entry>Tan skin; Curly black hair; Hazel eyes</entry>
+		<entry>Tan skin; Curly blond hair; Blue eyes</entry>
+		<entry>Tan skin; Curly blond hair; Brown eyes</entry>
+		<entry>Tan skin; Curly blond hair; Gray eyes</entry>
+		<entry>Tan skin; Curly blond hair; Green eyes</entry>
+		<entry>Tan skin; Curly blond hair; Hazel eyes</entry>
+		<entry>Tan skin; Curly brown hair; Blue eyes</entry>
+		<entry>Tan skin; Curly brown hair; Brown eyes</entry>
+		<entry>Tan skin; Curly brown hair; Gray eyes</entry>
+		<entry>Tan skin; Curly brown hair; Green eyes</entry>
+		<entry>Tan skin; Curly brown hair; Hazel eyes</entry>
+		<entry>Tan skin; Curly red hair; Blue eyes</entry>
+		<entry>Tan skin; Curly red hair; Brown eyes</entry>
+		<entry>Tan skin; Curly red hair; Gray eyes</entry>
+		<entry>Tan skin; Curly red hair; Green eyes</entry>
+		<entry>Tan skin; Curly red hair; Hazel eyes</entry>
+		<entry>Tan skin; Kinky black hair; Blue eyes</entry>
+		<entry>Tan skin; Kinky black hair; Brown eyes</entry>
+		<entry>Tan skin; Kinky black hair; Gray eyes</entry>
+		<entry>Tan skin; Kinky black hair; Green eyes</entry>
+		<entry>Tan skin; Kinky black hair; Hazel eyes</entry>
+		<entry>Tan skin; Kinky blond hair; Blue eyes</entry>
+		<entry>Tan skin; Kinky blond hair; Brown eyes</entry>
+		<entry>Tan skin; Kinky blond hair; Gray eyes</entry>
+		<entry>Tan skin; Kinky blond hair; Green eyes</entry>
+		<entry>Tan skin; Kinky blond hair; Hazel eyes</entry>
+		<entry>Tan skin; Kinky brown hair; Blue eyes</entry>
+		<entry>Tan skin; Kinky brown hair; Brown eyes</entry>
+		<entry>Tan skin; Kinky brown hair; Gray eyes</entry>
+		<entry>Tan skin; Kinky brown hair; Green eyes</entry>
+		<entry>Tan skin; Kinky brown hair; Hazel eyes</entry>
+		<entry>Tan skin; Kinky red hair; Blue eyes</entry>
+		<entry>Tan skin; Kinky red hair; Brown eyes</entry>
+		<entry>Tan skin; Kinky red hair; Gray eyes</entry>
+		<entry>Tan skin; Kinky red hair; Green eyes</entry>
+		<entry>Tan skin; Kinky red hair; Hazel eyes</entry>
+		<entry>Tan skin; Straight black hair; Blue eyes</entry>
+		<entry>Tan skin; Straight black hair; Brown eyes</entry>
+		<entry>Tan skin; Straight black hair; Gray eyes</entry>
+		<entry>Tan skin; Straight black hair; Green eyes</entry>
+		<entry>Tan skin; Straight black hair; Hazel eyes</entry>
+		<entry>Tan skin; Straight blond hair; Blue eyes</entry>
+		<entry>Tan skin; Straight blond hair; Brown eyes</entry>
+		<entry>Tan skin; Straight blond hair; Gray eyes</entry>
+		<entry>Tan skin; Straight blond hair; Green eyes</entry>
+		<entry>Tan skin; Straight blond hair; Hazel eyes</entry>
+		<entry>Tan skin; Straight brown hair; Blue eyes</entry>
+		<entry>Tan skin; Straight brown hair; Brown eyes</entry>
+		<entry>Tan skin; Straight brown hair; Gray eyes</entry>
+		<entry>Tan skin; Straight brown hair; Green eyes</entry>
+		<entry>Tan skin; Straight brown hair; Hazel eyes</entry>
+		<entry>Tan skin; Straight red hair; Blue eyes</entry>
+		<entry>Tan skin; Straight red hair; Brown eyes</entry>
+		<entry>Tan skin; Straight red hair; Gray eyes</entry>
+		<entry>Tan skin; Straight red hair; Green eyes</entry>
+		<entry>Tan skin; Straight red hair; Hazel eyes</entry>
+		<entry>Dark tan skin; Curly black hair; Blue eyes</entry>
+		<entry>Dark tan skin; Curly black hair; Brown eyes</entry>
+		<entry>Dark tan skin; Curly black hair; Gray eyes</entry>
+		<entry>Dark tan skin; Curly black hair; Green eyes</entry>
+		<entry>Dark tan skin; Curly black hair; Hazel eyes</entry>
+		<entry>Dark tan skin; Curly blond hair; Blue eyes</entry>
+		<entry>Dark tan skin; Curly blond hair; Brown eyes</entry>
+		<entry>Dark tan skin; Curly blond hair; Gray eyes</entry>
+		<entry>Dark tan skin; Curly blond hair; Green eyes</entry>
+		<entry>Dark tan skin; Curly blond hair; Hazel eyes</entry>
+		<entry>Dark tan skin; Curly brown hair; Blue eyes</entry>
+		<entry>Dark tan skin; Curly brown hair; Brown eyes</entry>
+		<entry>Dark tan skin; Curly brown hair; Gray eyes</entry>
+		<entry>Dark tan skin; Curly brown hair; Green eyes</entry>
+		<entry>Dark tan skin; Curly brown hair; Hazel eyes</entry>
+		<entry>Dark tan skin; Curly red hair; Blue eyes</entry>
+		<entry>Dark tan skin; Curly red hair; Brown eyes</entry>
+		<entry>Dark tan skin; Curly red hair; Gray eyes</entry>
+		<entry>Dark tan skin; Curly red hair; Green eyes</entry>
+		<entry>Dark tan skin; Curly red hair; Hazel eyes</entry>
+		<entry>Dark tan skin; Kinky black hair; Blue eyes</entry>
+		<entry>Dark tan skin; Kinky black hair; Brown eyes</entry>
+		<entry>Dark tan skin; Kinky black hair; Gray eyes</entry>
+		<entry>Dark tan skin; Kinky black hair; Green eyes</entry>
+		<entry>Dark tan skin; Kinky black hair; Hazel eyes</entry>
+		<entry>Dark tan skin; Kinky blond hair; Blue eyes</entry>
+		<entry>Dark tan skin; Kinky blond hair; Brown eyes</entry>
+		<entry>Dark tan skin; Kinky blond hair; Gray eyes</entry>
+		<entry>Dark tan skin; Kinky blond hair; Green eyes</entry>
+		<entry>Dark tan skin; Kinky blond hair; Hazel eyes</entry>
+		<entry>Dark tan skin; Kinky brown hair; Blue eyes</entry>
+		<entry>Dark tan skin; Kinky brown hair; Brown eyes</entry>
+		<entry>Dark tan skin; Kinky brown hair; Gray eyes</entry>
+		<entry>Dark tan skin; Kinky brown hair; Green eyes</entry>
+		<entry>Dark tan skin; Kinky brown hair; Hazel eyes</entry>
+		<entry>Dark tan skin; Kinky red hair; Blue eyes</entry>
+		<entry>Dark tan skin; Kinky red hair; Brown eyes</entry>
+		<entry>Dark tan skin; Kinky red hair; Gray eyes</entry>
+		<entry>Dark tan skin; Kinky red hair; Green eyes</entry>
+		<entry>Dark tan skin; Kinky red hair; Hazel eyes</entry>
+		<entry>Dark tan skin; Straight black hair; Blue eyes</entry>
+		<entry>Dark tan skin; Straight black hair; Brown eyes</entry>
+		<entry>Dark tan skin; Straight black hair; Gray eyes</entry>
+		<entry>Dark tan skin; Straight black hair; Green eyes</entry>
+		<entry>Dark tan skin; Straight black hair; Hazel eyes</entry>
+		<entry>Dark tan skin; Straight blond hair; Blue eyes</entry>
+		<entry>Dark tan skin; Straight blond hair; Brown eyes</entry>
+		<entry>Dark tan skin; Straight blond hair; Gray eyes</entry>
+		<entry>Dark tan skin; Straight blond hair; Green eyes</entry>
+		<entry>Dark tan skin; Straight blond hair; Hazel eyes</entry>
+		<entry>Dark tan skin; Straight brown hair; Blue eyes</entry>
+		<entry>Dark tan skin; Straight brown hair; Brown eyes</entry>
+		<entry>Dark tan skin; Straight brown hair; Gray eyes</entry>
+		<entry>Dark tan skin; Straight brown hair; Green eyes</entry>
+		<entry>Dark tan skin; Straight brown hair; Hazel eyes</entry>
+		<entry>Dark tan skin; Straight red hair; Blue eyes</entry>
+		<entry>Dark tan skin; Straight red hair; Brown eyes</entry>
+		<entry>Dark tan skin; Straight red hair; Gray eyes</entry>
+		<entry>Dark tan skin; Straight red hair; Green eyes</entry>
+		<entry>Dark tan skin; Straight red hair; Hazel eyes</entry>
+		<entry>Light tan skin; Curly black hair; Blue eyes</entry>
+		<entry>Light tan skin; Curly black hair; Brown eyes</entry>
+		<entry>Light tan skin; Curly black hair; Gray eyes</entry>
+		<entry>Light tan skin; Curly black hair; Green eyes</entry>
+		<entry>Light tan skin; Curly black hair; Hazel eyes</entry>
+		<entry>Light tan skin; Curly blond hair; Blue eyes</entry>
+		<entry>Light tan skin; Curly blond hair; Brown eyes</entry>
+		<entry>Light tan skin; Curly blond hair; Gray eyes</entry>
+		<entry>Light tan skin; Curly blond hair; Green eyes</entry>
+		<entry>Light tan skin; Curly blond hair; Hazel eyes</entry>
+		<entry>Light tan skin; Curly brown hair; Blue eyes</entry>
+		<entry>Light tan skin; Curly brown hair; Brown eyes</entry>
+		<entry>Light tan skin; Curly brown hair; Gray eyes</entry>
+		<entry>Light tan skin; Curly brown hair; Green eyes</entry>
+		<entry>Light tan skin; Curly brown hair; Hazel eyes</entry>
+		<entry>Light tan skin; Curly red hair; Blue eyes</entry>
+		<entry>Light tan skin; Curly red hair; Brown eyes</entry>
+		<entry>Light tan skin; Curly red hair; Gray eyes</entry>
+		<entry>Light tan skin; Curly red hair; Green eyes</entry>
+		<entry>Light tan skin; Curly red hair; Hazel eyes</entry>
+		<entry>Light tan skin; Kinky black hair; Blue eyes</entry>
+		<entry>Light tan skin; Kinky black hair; Brown eyes</entry>
+		<entry>Light tan skin; Kinky black hair; Gray eyes</entry>
+		<entry>Light tan skin; Kinky black hair; Green eyes</entry>
+		<entry>Light tan skin; Kinky black hair; Hazel eyes</entry>
+		<entry>Light tan skin; Kinky blond hair; Blue eyes</entry>
+		<entry>Light tan skin; Kinky blond hair; Brown eyes</entry>
+		<entry>Light tan skin; Kinky blond hair; Gray eyes</entry>
+		<entry>Light tan skin; Kinky blond hair; Green eyes</entry>
+		<entry>Light tan skin; Kinky blond hair; Hazel eyes</entry>
+		<entry>Light tan skin; Kinky brown hair; Blue eyes</entry>
+		<entry>Light tan skin; Kinky brown hair; Brown eyes</entry>
+		<entry>Light tan skin; Kinky brown hair; Gray eyes</entry>
+		<entry>Light tan skin; Kinky brown hair; Green eyes</entry>
+		<entry>Light tan skin; Kinky brown hair; Hazel eyes</entry>
+		<entry>Light tan skin; Kinky red hair; Blue eyes</entry>
+		<entry>Light tan skin; Kinky red hair; Brown eyes</entry>
+		<entry>Light tan skin; Kinky red hair; Gray eyes</entry>
+		<entry>Light tan skin; Kinky red hair; Green eyes</entry>
+		<entry>Light tan skin; Kinky red hair; Hazel eyes</entry>
+		<entry>Light tan skin; Straight black hair; Blue eyes</entry>
+		<entry>Light tan skin; Straight black hair; Brown eyes</entry>
+		<entry>Light tan skin; Straight black hair; Gray eyes</entry>
+		<entry>Light tan skin; Straight black hair; Green eyes</entry>
+		<entry>Light tan skin; Straight black hair; Hazel eyes</entry>
+		<entry>Light tan skin; Straight blond hair; Blue eyes</entry>
+		<entry>Light tan skin; Straight blond hair; Brown eyes</entry>
+		<entry>Light tan skin; Straight blond hair; Gray eyes</entry>
+		<entry>Light tan skin; Straight blond hair; Green eyes</entry>
+		<entry>Light tan skin; Straight blond hair; Hazel eyes</entry>
+		<entry>Light tan skin; Straight brown hair; Blue eyes</entry>
+		<entry>Light tan skin; Straight brown hair; Brown eyes</entry>
+		<entry>Light tan skin; Straight brown hair; Gray eyes</entry>
+		<entry>Light tan skin; Straight brown hair; Green eyes</entry>
+		<entry>Light tan skin; Straight brown hair; Hazel eyes</entry>
+		<entry>Light tan skin; Straight red hair; Blue eyes</entry>
+		<entry>Light tan skin; Straight red hair; Brown eyes</entry>
+		<entry>Light tan skin; Straight red hair; Gray eyes</entry>
+		<entry>Light tan skin; Straight red hair; Green eyes</entry>
+		<entry>Light tan skin; Straight red hair; Hazel eyes</entry>
+		<entry>Pink skin; Curly black hair; Blue eyes</entry>
+		<entry>Pink skin; Curly black hair; Brown eyes</entry>
+		<entry>Pink skin; Curly black hair; Gray eyes</entry>
+		<entry>Pink skin; Curly black hair; Green eyes</entry>
+		<entry>Pink skin; Curly black hair; Hazel eyes</entry>
+		<entry>Pink skin; Curly blond hair; Blue eyes</entry>
+		<entry>Pink skin; Curly blond hair; Brown eyes</entry>
+		<entry>Pink skin; Curly blond hair; Gray eyes</entry>
+		<entry>Pink skin; Curly blond hair; Green eyes</entry>
+		<entry>Pink skin; Curly blond hair; Hazel eyes</entry>
+		<entry>Pink skin; Curly brown hair; Blue eyes</entry>
+		<entry>Pink skin; Curly brown hair; Brown eyes</entry>
+		<entry>Pink skin; Curly brown hair; Gray eyes</entry>
+		<entry>Pink skin; Curly brown hair; Green eyes</entry>
+		<entry>Pink skin; Curly brown hair; Hazel eyes</entry>
+		<entry>Pink skin; Curly red hair; Blue eyes</entry>
+		<entry>Pink skin; Curly red hair; Brown eyes</entry>
+		<entry>Pink skin; Curly red hair; Gray eyes</entry>
+		<entry>Pink skin; Curly red hair; Green eyes</entry>
+		<entry>Pink skin; Curly red hair; Hazel eyes</entry>
+		<entry>Pink skin; Kinky black hair; Blue eyes</entry>
+		<entry>Pink skin; Kinky black hair; Brown eyes</entry>
+		<entry>Pink skin; Kinky black hair; Gray eyes</entry>
+		<entry>Pink skin; Kinky black hair; Green eyes</entry>
+		<entry>Pink skin; Kinky black hair; Hazel eyes</entry>
+		<entry>Pink skin; Kinky blond hair; Blue eyes</entry>
+		<entry>Pink skin; Kinky blond hair; Brown eyes</entry>
+		<entry>Pink skin; Kinky blond hair; Gray eyes</entry>
+		<entry>Pink skin; Kinky blond hair; Green eyes</entry>
+		<entry>Pink skin; Kinky blond hair; Hazel eyes</entry>
+		<entry>Pink skin; Kinky brown hair; Blue eyes</entry>
+		<entry>Pink skin; Kinky brown hair; Brown eyes</entry>
+		<entry>Pink skin; Kinky brown hair; Gray eyes</entry>
+		<entry>Pink skin; Kinky brown hair; Green eyes</entry>
+		<entry>Pink skin; Kinky brown hair; Hazel eyes</entry>
+		<entry>Pink skin; Kinky red hair; Blue eyes</entry>
+		<entry>Pink skin; Kinky red hair; Brown eyes</entry>
+		<entry>Pink skin; Kinky red hair; Gray eyes</entry>
+		<entry>Pink skin; Kinky red hair; Green eyes</entry>
+		<entry>Pink skin; Kinky red hair; Hazel eyes</entry>
+		<entry>Pink skin; Straight black hair; Blue eyes</entry>
+		<entry>Pink skin; Straight black hair; Brown eyes</entry>
+		<entry>Pink skin; Straight black hair; Gray eyes</entry>
+		<entry>Pink skin; Straight black hair; Green eyes</entry>
+		<entry>Pink skin; Straight black hair; Hazel eyes</entry>
+		<entry>Pink skin; Straight blond hair; Blue eyes</entry>
+		<entry>Pink skin; Straight blond hair; Brown eyes</entry>
+		<entry>Pink skin; Straight blond hair; Gray eyes</entry>
+		<entry>Pink skin; Straight blond hair; Green eyes</entry>
+		<entry>Pink skin; Straight blond hair; Hazel eyes</entry>
+		<entry>Pink skin; Straight brown hair; Blue eyes</entry>
+		<entry>Pink skin; Straight brown hair; Brown eyes</entry>
+		<entry>Pink skin; Straight brown hair; Gray eyes</entry>
+		<entry>Pink skin; Straight brown hair; Green eyes</entry>
+		<entry>Pink skin; Straight brown hair; Hazel eyes</entry>
+		<entry>Pink skin; Straight red hair; Blue eyes</entry>
+		<entry>Pink skin; Straight red hair; Brown eyes</entry>
+		<entry>Pink skin; Straight red hair; Gray eyes</entry>
+		<entry>Pink skin; Straight red hair; Green eyes</entry>
+		<entry>Pink skin; Straight red hair; Hazel eyes</entry>
+		<entry>White skin; Curly black hair; Blue eyes</entry>
+		<entry>White skin; Curly black hair; Brown eyes</entry>
+		<entry>White skin; Curly black hair; Gray eyes</entry>
+		<entry>White skin; Curly black hair; Green eyes</entry>
+		<entry>White skin; Curly black hair; Hazel eyes</entry>
+		<entry>White skin; Curly blond hair; Blue eyes</entry>
+		<entry>White skin; Curly blond hair; Brown eyes</entry>
+		<entry>White skin; Curly blond hair; Gray eyes</entry>
+		<entry>White skin; Curly blond hair; Green eyes</entry>
+		<entry>White skin; Curly blond hair; Hazel eyes</entry>
+		<entry>White skin; Curly brown hair; Blue eyes</entry>
+		<entry>White skin; Curly brown hair; Brown eyes</entry>
+		<entry>White skin; Curly brown hair; Gray eyes</entry>
+		<entry>White skin; Curly brown hair; Green eyes</entry>
+		<entry>White skin; Curly brown hair; Hazel eyes</entry>
+		<entry>White skin; Curly red hair; Blue eyes</entry>
+		<entry>White skin; Curly red hair; Brown eyes</entry>
+		<entry>White skin; Curly red hair; Gray eyes</entry>
+		<entry>White skin; Curly red hair; Green eyes</entry>
+		<entry>White skin; Curly red hair; Hazel eyes</entry>
+		<entry>White skin; Kinky black hair; Blue eyes</entry>
+		<entry>White skin; Kinky black hair; Brown eyes</entry>
+		<entry>White skin; Kinky black hair; Gray eyes</entry>
+		<entry>White skin; Kinky black hair; Green eyes</entry>
+		<entry>White skin; Kinky black hair; Hazel eyes</entry>
+		<entry>White skin; Kinky blond hair; Blue eyes</entry>
+		<entry>White skin; Kinky blond hair; Brown eyes</entry>
+		<entry>White skin; Kinky blond hair; Gray eyes</entry>
+		<entry>White skin; Kinky blond hair; Green eyes</entry>
+		<entry>White skin; Kinky blond hair; Hazel eyes</entry>
+		<entry>White skin; Kinky brown hair; Blue eyes</entry>
+		<entry>White skin; Kinky brown hair; Brown eyes</entry>
+		<entry>White skin; Kinky brown hair; Gray eyes</entry>
+		<entry>White skin; Kinky brown hair; Green eyes</entry>
+		<entry>White skin; Kinky brown hair; Hazel eyes</entry>
+		<entry>White skin; Kinky red hair; Blue eyes</entry>
+		<entry>White skin; Kinky red hair; Brown eyes</entry>
+		<entry>White skin; Kinky red hair; Gray eyes</entry>
+		<entry>White skin; Kinky red hair; Green eyes</entry>
+		<entry>White skin; Kinky red hair; Hazel eyes</entry>
+		<entry>White skin; Straight black hair; Blue eyes</entry>
+		<entry>White skin; Straight black hair; Brown eyes</entry>
+		<entry>White skin; Straight black hair; Gray eyes</entry>
+		<entry>White skin; Straight black hair; Green eyes</entry>
+		<entry>White skin; Straight black hair; Hazel eyes</entry>
+		<entry>White skin; Straight blond hair; Blue eyes</entry>
+		<entry>White skin; Straight blond hair; Brown eyes</entry>
+		<entry>White skin; Straight blond hair; Gray eyes</entry>
+		<entry>White skin; Straight blond hair; Green eyes</entry>
+		<entry>White skin; Straight blond hair; Hazel eyes</entry>
+		<entry>White skin; Straight brown hair; Blue eyes</entry>
+		<entry>White skin; Straight brown hair; Brown eyes</entry>
+		<entry>White skin; Straight brown hair; Gray eyes</entry>
+		<entry>White skin; Straight brown hair; Green eyes</entry>
+		<entry>White skin; Straight brown hair; Hazel eyes</entry>
+		<entry>White skin; Straight red hair; Blue eyes</entry>
+		<entry>White skin; Straight red hair; Brown eyes</entry>
+		<entry>White skin; Straight red hair; Gray eyes</entry>
+		<entry>White skin; Straight red hair; Green eyes</entry>
+		<entry>White skin; Straight red hair; Hazel eyes</entry>
+		<entry>Pale white skin; Curly black hair; Blue eyes</entry>
+		<entry>Pale white skin; Curly black hair; Brown eyes</entry>
+		<entry>Pale white skin; Curly black hair; Gray eyes</entry>
+		<entry>Pale white skin; Curly black hair; Green eyes</entry>
+		<entry>Pale white skin; Curly black hair; Hazel eyes</entry>
+		<entry>Pale white skin; Curly blond hair; Blue eyes</entry>
+		<entry>Pale white skin; Curly blond hair; Brown eyes</entry>
+		<entry>Pale white skin; Curly blond hair; Gray eyes</entry>
+		<entry>Pale white skin; Curly blond hair; Green eyes</entry>
+		<entry>Pale white skin; Curly blond hair; Hazel eyes</entry>
+		<entry>Pale white skin; Curly brown hair; Blue eyes</entry>
+		<entry>Pale white skin; Curly brown hair; Brown eyes</entry>
+		<entry>Pale white skin; Curly brown hair; Gray eyes</entry>
+		<entry>Pale white skin; Curly brown hair; Green eyes</entry>
+		<entry>Pale white skin; Curly brown hair; Hazel eyes</entry>
+		<entry>Pale white skin; Curly red hair; Blue eyes</entry>
+		<entry>Pale white skin; Curly red hair; Brown eyes</entry>
+		<entry>Pale white skin; Curly red hair; Gray eyes</entry>
+		<entry>Pale white skin; Curly red hair; Green eyes</entry>
+		<entry>Pale white skin; Curly red hair; Hazel eyes</entry>
+		<entry>Pale white skin; Kinky black hair; Blue eyes</entry>
+		<entry>Pale white skin; Kinky black hair; Brown eyes</entry>
+		<entry>Pale white skin; Kinky black hair; Gray eyes</entry>
+		<entry>Pale white skin; Kinky black hair; Green eyes</entry>
+		<entry>Pale white skin; Kinky black hair; Hazel eyes</entry>
+		<entry>Pale white skin; Kinky blond hair; Blue eyes</entry>
+		<entry>Pale white skin; Kinky blond hair; Brown eyes</entry>
+		<entry>Pale white skin; Kinky blond hair; Gray eyes</entry>
+		<entry>Pale white skin; Kinky blond hair; Green eyes</entry>
+		<entry>Pale white skin; Kinky blond hair; Hazel eyes</entry>
+		<entry>Pale white skin; Kinky brown hair; Blue eyes</entry>
+		<entry>Pale white skin; Kinky brown hair; Brown eyes</entry>
+		<entry>Pale white skin; Kinky brown hair; Gray eyes</entry>
+		<entry>Pale white skin; Kinky brown hair; Green eyes</entry>
+		<entry>Pale white skin; Kinky brown hair; Hazel eyes</entry>
+		<entry>Pale white skin; Kinky red hair; Blue eyes</entry>
+		<entry>Pale white skin; Kinky red hair; Brown eyes</entry>
+		<entry>Pale white skin; Kinky red hair; Gray eyes</entry>
+		<entry>Pale white skin; Kinky red hair; Green eyes</entry>
+		<entry>Pale white skin; Kinky red hair; Hazel eyes</entry>
+		<entry>Pale white skin; Straight black hair; Blue eyes</entry>
+		<entry>Pale white skin; Straight black hair; Brown eyes</entry>
+		<entry>Pale white skin; Straight black hair; Gray eyes</entry>
+		<entry>Pale white skin; Straight black hair; Green eyes</entry>
+		<entry>Pale white skin; Straight black hair; Hazel eyes</entry>
+		<entry>Pale white skin; Straight blond hair; Blue eyes</entry>
+		<entry>Pale white skin; Straight blond hair; Brown eyes</entry>
+		<entry>Pale white skin; Straight blond hair; Gray eyes</entry>
+		<entry>Pale white skin; Straight blond hair; Green eyes</entry>
+		<entry>Pale white skin; Straight blond hair; Hazel eyes</entry>
+		<entry>Pale white skin; Straight brown hair; Blue eyes</entry>
+		<entry>Pale white skin; Straight brown hair; Brown eyes</entry>
+		<entry>Pale white skin; Straight brown hair; Gray eyes</entry>
+		<entry>Pale white skin; Straight brown hair; Green eyes</entry>
+		<entry>Pale white skin; Straight brown hair; Hazel eyes</entry>
+		<entry>Pale white skin; Straight red hair; Blue eyes</entry>
+		<entry>Pale white skin; Straight red hair; Brown eyes</entry>
+		<entry>Pale white skin; Straight red hair; Gray eyes</entry>
+		<entry>Pale white skin; Straight red hair; Green eyes</entry>
+		<entry>Pale white skin; Straight red hair; Hazel eyes</entry>
 	</collection>
 	<collection>
 		<name>Five-Headed HydraCommon</name>
@@ -3413,22 +4444,49 @@
 	</collection>
 	<collection>
 		<name>HyenaCommon</name>
-		
-		
+		<entry>Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is light gray at the base and black at the tips. Muzzle is black; Small eyes; Short torso, long legs, thick and elongated neck, large and high-set ears</entry>
+		<entry>Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is light gray at the base and black at the tips. Muzzle is brownish-gray; Small eyes; Short torso, long legs, thick and elongated neck, large and high-set ears</entry>
+		<entry>Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is light gray at the base and black at the tips. Muzzle is dark, grayish brown; Small eyes; Short torso, long legs, thick and elongated neck, large and high-set ears</entry>
+		<entry>Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is light gray at the base and dark brown at the tips. Muzzle is black; Small eyes; Short torso, long legs, thick and elongated neck, large and high-set ears</entry>
+		<entry>Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is light gray at the base and dark brown at the tips. Muzzle is brownish-gray; Small eyes; Short torso, long legs, thick and elongated neck, large and high-set ears</entry>
+		<entry>Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is light gray at the base and dark brown at the tips. Muzzle is dark, grayish brown; Small eyes; Short torso, long legs, thick and elongated neck, large and high-set ears</entry>
+		<entry>Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is white at the base and black at the tips. Muzzle is black; Small eyes; Short torso, long legs, thick and elongated neck, large and high-set ears</entry>
+		<entry>Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is white at the base and black at the tips. Muzzle is brownish-gray; Small eyes; Short torso, long legs, thick and elongated neck, large and high-set ears</entry>
+		<entry>Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is white at the base and black at the tips. Muzzle is dark, grayish brown; Small eyes; Short torso, long legs, thick and elongated neck, large and high-set ears</entry>
+		<entry>Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is white at the base and dark brown at the tips. Muzzle is black; Small eyes; Short torso, long legs, thick and elongated neck, large and high-set ears</entry>
+		<entry>Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is white at the base and dark brown at the tips. Muzzle is brownish-gray; Small eyes; Short torso, long legs, thick and elongated neck, large and high-set ears</entry>
+		<entry>Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is white at the base and dark brown at the tips. Muzzle is dark, grayish brown; Small eyes; Short torso, long legs, thick and elongated neck, large and high-set ears</entry>
+		<entry>Coarse, bristly, light brown fur with darker brown striping. Mane hair is light gray at the base and black at the tips. Muzzle is black; Small eyes; Short torso, long legs, thick and elongated neck, large and high-set ears</entry>
+		<entry>Coarse, bristly, light brown fur with darker brown striping. Mane hair is light gray at the base and black at the tips. Muzzle is brownish-gray; Small eyes; Short torso, long legs, thick and elongated neck, large and high-set ears</entry>
+		<entry>Coarse, bristly, light brown fur with darker brown striping. Mane hair is light gray at the base and black at the tips. Muzzle is dark, grayish brown; Small eyes; Short torso, long legs, thick and elongated neck, large and high-set ears</entry>
+		<entry>Coarse, bristly, light brown fur with darker brown striping. Mane hair is light gray at the base and dark brown at the tips. Muzzle is black; Small eyes; Short torso, long legs, thick and elongated neck, large and high-set ears</entry>
+		<entry>Coarse, bristly, light brown fur with darker brown striping. Mane hair is light gray at the base and dark brown at the tips. Muzzle is brownish-gray; Small eyes; Short torso, long legs, thick and elongated neck, large and high-set ears</entry>
+		<entry>Coarse, bristly, light brown fur with darker brown striping. Mane hair is light gray at the base and dark brown at the tips. Muzzle is dark, grayish brown; Small eyes; Short torso, long legs, thick and elongated neck, large and high-set ears</entry>
+		<entry>Coarse, bristly, light brown fur with darker brown striping. Mane hair is white at the base and black at the tips. Muzzle is black; Small eyes; Short torso, long legs, thick and elongated neck, large and high-set ears</entry>
+		<entry>Coarse, bristly, light brown fur with darker brown striping. Mane hair is white at the base and black at the tips. Muzzle is brownish-gray; Small eyes; Short torso, long legs, thick and elongated neck, large and high-set ears</entry>
+		<entry>Coarse, bristly, light brown fur with darker brown striping. Mane hair is white at the base and black at the tips. Muzzle is dark, grayish brown; Small eyes; Short torso, long legs, thick and elongated neck, large and high-set ears</entry>
+		<entry>Coarse, bristly, light brown fur with darker brown striping. Mane hair is white at the base and dark brown at the tips. Muzzle is black; Small eyes; Short torso, long legs, thick and elongated neck, large and high-set ears</entry>
+		<entry>Coarse, bristly, light brown fur with darker brown striping. Mane hair is white at the base and dark brown at the tips. Muzzle is brownish-gray; Small eyes; Short torso, long legs, thick and elongated neck, large and high-set ears</entry>
+		<entry>Coarse, bristly, light brown fur with darker brown striping. Mane hair is white at the base and dark brown at the tips. Muzzle is dark, grayish brown; Small eyes; Short torso, long legs, thick and elongated neck, large and high-set ears</entry>
 	</collection>
 	<collection>
 		<name>Ice Devil (Gelugon)Common</name>
-		
+		<entry>Blue and white skin; Multifaceted green eyes; Insectoid. Hands and feet end in claws. Long thick tail surrounded in spikes. Set of antennae on the head. Sharp mandibles</entry>
+		<entry>Blue and white skin; Multifaceted yellow eyes; Insectoid. Hands and feet end in claws. Long thick tail surrounded in spikes. Set of antennae on the head. Sharp mandibles</entry>
+		<entry>Blue skin; Multifaceted green eyes; Insectoid. Hands and feet end in claws. Long thick tail surrounded in spikes. Set of antennae on the head. Sharp mandibles</entry>
+		<entry>Blue skin; Multifaceted yellow eyes; Insectoid. Hands and feet end in claws. Long thick tail surrounded in spikes. Set of antennae on the head. Sharp mandibles</entry>
+		<entry>White skin; Multifaceted green eyes; Insectoid. Hands and feet end in claws. Long thick tail surrounded in spikes. Set of antennae on the head. Sharp mandibles</entry>
+		<entry>White skin; Multifaceted yellow eyes; Insectoid. Hands and feet end in claws. Long thick tail surrounded in spikes. Set of antennae on the head. Sharp mandibles</entry>
 	</collection>
 	<collection>
 		<name>ImpCommon</name>
-		
-		
-		
+		<entry>Dark red skin; Green eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Dark red skin; White eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Dark red skin; Yellow eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
 	</collection>
 	<collection>
 		<name>Invisible StalkerCommon</name>
-		
+		<entry>Amorphous form. See Invisibility reveals a dim outline of a cloud. True Seeing reveals a roiling cloud of vapor</entry>
 	</collection>
 	<collection>
 		<name>JanniCommon</name>
@@ -3438,17 +4496,31 @@
 	</collection>
 	<collection>
 		<name>Juvenile ArrowhawkCommon</name>
-		
-		
+		<entry>Covered in blue scales with occasional tufts of yellow feathers</entry>
 	</collection>
 	<collection>
 		<name>KoboldCommon</name>
-		
-		
+		<entry>Black scaled skin; Burnt orange eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
+		<entry>Black scaled skin; Burnt orange eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
+		<entry>Black scaled skin; Burnt red eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
+		<entry>Black scaled skin; Burnt red eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
+		<entry>Black scaled skin; Orange-red eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
+		<entry>Black scaled skin; Orange-red eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
+		<entry>Black scaled skin; Red eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
+		<entry>Black scaled skin; Red eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
+		<entry>Brown-black scaled skin; Burnt orange eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
+		<entry>Brown-black scaled skin; Burnt orange eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
+		<entry>Brown-black scaled skin; Burnt red eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
+		<entry>Brown-black scaled skin; Burnt red eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
+		<entry>Brown-black scaled skin; Orange-red eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
+		<entry>Brown-black scaled skin; Orange-red eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
+		<entry>Brown-black scaled skin; Red eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
+		<entry>Brown-black scaled skin; Red eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
 	</collection>
 	<collection>
 		<name>KolyarutCommon</name>
-		
+		<entry>Black skin. Golden-hued banded-mail armor. Flowing red robe.</entry>
+		<entry>Red skin. Golden-hued banded-mail armor. Flowing red robe.</entry>
 	</collection>
 	<collection>
 		<name>MarutCommon</name>
@@ -3460,8 +4532,18 @@
 	</collection>
 	<collection>
 		<name>KrakenCommon</name>
-		
-		
+		<entry>Blue skin; Large blue eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Blue skin; Large green eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Blue skin; Large red eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Blue skin; Large yellow eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Brown skin; Large blue eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Brown skin; Large green eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Brown skin; Large red eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Brown skin; Large yellow eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Light brown skin; Large blue eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Light brown skin; Large green eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Light brown skin; Large red eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Light brown skin; Large yellow eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
 	</collection>
 	<collection>
 		<name>KrensharCommon</name>
@@ -3690,9 +4772,9 @@
 	</collection>
 	<collection>
 		<name>Ice MephitCommon</name>
-		
-		
-		
+		<entry>Blue skin; Wings, body seemingly composed of ice</entry>
+		<entry>Blue-white skin; Wings, body seemingly composed of ice</entry>
+		<entry>White skin; Wings, body seemingly composed of ice</entry>
 	</collection>
 	<collection>
 		<name>Magma MephitCommon</name>
@@ -3917,7 +4999,7 @@
 	</collection>
 	<collection>
 		<name>Guardian NagaCommon</name>
-		
+		<entry>Green-gold scales with silvery triangles down the spine; Bright golden eyes</entry>
 	</collection>
 	<collection>
 		<name>Spirit NagaCommon</name>
@@ -3994,13 +5076,23 @@
 	</collection>
 	<collection>
 		<name>OwlCommon</name>
-		
-		
+		<entry>Barn Owl</entry>
+		<entry>Barred Owl</entry>
+		<entry>Great Gray Owl</entry>
+		<entry>Great Horned Owl</entry>
+		<entry>Long-Eared Owl</entry>
+		<entry>Powerful Owl</entry>
+		<entry>Snowy Owl</entry>
 	</collection>
 	<collection>
 		<name>Giant OwlCommon</name>
-		
-		
+		<entry>Resembles a Barn Owl</entry>
+		<entry>Resembles a Barred Owl</entry>
+		<entry>Resembles a Great Gray Owl</entry>
+		<entry>Resembles a Great Horned Owl</entry>
+		<entry>Resembles a Long-Eared Owl</entry>
+		<entry>Resembles a Powerful Owl</entry>
+		<entry>Resembles a Snowy Owl</entry>
 	</collection>
 	<collection>
 		<name>OwlbearCommon</name>
@@ -4206,11 +5298,11 @@
 	</collection>
 	<collection>
 		<name>ShadowCommon</name>
-		
+		<entry>A sentient shadow</entry>
 	</collection>
 	<collection>
 		<name>Greater ShadowCommon</name>
-		
+		<entry>A sentient shadow</entry>
 	</collection>
 	<collection>
 		<name>Shadow MastiffCommon</name>
@@ -6741,8 +7833,9 @@
 	</collection>
 	<collection>
 		<name>Greater BasiliskUncommon</name>
-		
-		
+		<entry>Dark gray skin, yellowish underbelly; Glowing pale green eyes; Single row of bony spikes lining the back</entry>
+		<entry>Dark orange skin, yellowish underbelly; Glowing pale green eyes; Single row of bony spikes lining the back</entry>
+		<entry>Dark yellow skin, yellowish underbelly; Glowing pale green eyes; Single row of bony spikes lining the back</entry>
 	</collection>
 	<collection>
 		<name>BatUncommon</name>
@@ -6792,15 +7885,19 @@
 	</collection>
 	<collection>
 		<name>Gauth (Lesser Beholder)Uncommon</name>
-		<entry>Brown skin, mottled with gray; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
-		<entry>Brown skin, mottled with purple and gray; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
-		<entry>Brown skin, mottled with purple; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
-		<entry>Gray skin, mottled with brown; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
-		<entry>Gray skin, mottled with purple and brown; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
-		<entry>Gray skin, mottled with purple; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
-		<entry>Purple skin, mottled with brown and gray; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
-		<entry>Purple skin, mottled with brown; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
-		<entry>Purple skin, mottled with gray; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
+		<entry>Blue-purple, pebbly-textured skin on top graduating to earth tones further down; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
+		<entry>Blue, pebbly-textured skin on top graduating to earth tones further down; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
+		<entry>Brown skin, mottled with gray; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw. Nostrils and jointed, articulated eyestalks.</entry>
+		<entry>Brown skin, mottled with purple and gray; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw. Nostrils and jointed, articulated eyestalks.</entry>
+		<entry>Brown skin, mottled with purple; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw. Nostrils and jointed, articulated eyestalks.</entry>
+		<entry>Brown, pebbly-textured skin on top graduating to earth tones further down; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
+		<entry>Gray skin, mottled with brown; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw. Nostrils and jointed, articulated eyestalks.</entry>
+		<entry>Gray skin, mottled with purple and brown; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw. Nostrils and jointed, articulated eyestalks.</entry>
+		<entry>Gray skin, mottled with purple; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw. Nostrils and jointed, articulated eyestalks.</entry>
+		<entry>Purple skin, mottled with brown and gray; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw. Nostrils and jointed, articulated eyestalks.</entry>
+		<entry>Purple skin, mottled with brown; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw. Nostrils and jointed, articulated eyestalks.</entry>
+		<entry>Purple skin, mottled with gray; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw. Nostrils and jointed, articulated eyestalks.</entry>
+		<entry>Purple, pebbly-textured skin on top graduating to earth tones further down; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
 	</collection>
 	<collection>
 		<name>BelkerUncommon</name>
@@ -7003,8 +8100,16 @@
 	</collection>
 	<collection>
 		<name>Giant CrocodileUncommon</name>
-		
-		
+		<entry>Dark black-green skin. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.</entry>
+		<entry>Dark black-green skin. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.</entry>
+		<entry>Dark blackish skin. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.</entry>
+		<entry>Dark blackish skin. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.</entry>
+		<entry>Darker greenish-drab skin, with a few lighter grey areas. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.</entry>
+		<entry>Darker greenish-drab skin, with a few lighter grey areas. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.</entry>
+		<entry>Darker greenish-drab skin, with a few lighter tan areas. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.</entry>
+		<entry>Darker greenish-drab skin, with a few lighter tan areas. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.</entry>
+		<entry>Pale greenish-drab skin. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.</entry>
+		<entry>Pale greenish-drab skin. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.</entry>
 	</collection>
 	<collection>
 		<name>DarkmantleUncommon</name>
@@ -8028,6 +9133,12 @@
 	</collection>
 	<collection>
 		<name>Gray ElfUncommon</name>
+		<entry>Pale grey skin; Curly pale-golden hair; Amber eyes; Pointed ears</entry>
+		<entry>Pale grey skin; Curly silver hair; Violet eyes; Pointed ears</entry>
+		<entry>Pale grey skin; Kinky pale-golden hair; Amber eyes; Pointed ears</entry>
+		<entry>Pale grey skin; Kinky silver hair; Violet eyes; Pointed ears</entry>
+		<entry>Pale grey skin; Straight pale-golden hair; Amber eyes; Pointed ears</entry>
+		<entry>Pale grey skin; Straight silver hair; Violet eyes; Pointed ears</entry>
 	</collection>
 	<collection>
 		<name>Half-ElfUncommon</name>
@@ -8091,7 +9202,12 @@
 	</collection>
 	<collection>
 		<name>Gelatinous CubeUncommon</name>
-		
+		<entry>Completely transparent cube, with only a glint on the surface to give away its position; An object floats within the cube's body</entry>
+		<entry>Completely transparent cube, with only a glint on the surface to give away its position; Three objects float within the cube's body</entry>
+		<entry>Completely transparent cube, with only a glint on the surface to give away its position; Two objects float within the cube's body</entry>
+		<entry>Completely transparent rhombohedron, with only a glint on the surface to give away its position; An object floats within the cube's body</entry>
+		<entry>Completely transparent rhombohedron, with only a glint on the surface to give away its position; Three objects float within the cube's body</entry>
+		<entry>Completely transparent rhombohedron, with only a glint on the surface to give away its position; Two objects float within the cube's body</entry>
 	</collection>
 	<collection>
 		<name>GhaeleUncommon</name>
@@ -8180,8 +9296,12 @@
 	</collection>
 	<collection>
 		<name>Giant Fire BeetleUncommon</name>
-		
-		
+		<entry>Black color with red markings; Red bioluminescent glands above each eye and near the abdomen</entry>
+		<entry>Orange color with brown flame-like markings; Red bioluminescent glands above each eye and near the abdomen</entry>
+		<entry>Orange color; Red bioluminescent glands above each eye and near the abdomen</entry>
+		<entry>Purple color with red markings; Red bioluminescent glands above each eye and near the abdomen</entry>
+		<entry>Red color; Red bioluminescent glands above each eye and near the abdomen</entry>
+		<entry>Shimmering green color; Red bioluminescent glands above each eye and near the abdomen</entry>
 	</collection>
 	<collection>
 		<name>Giant OctopusUncommon</name>
@@ -8232,13 +9352,36 @@
 	</collection>
 	<collection>
 		<name>GnollUncommon</name>
-		
-		
+		<entry>Greenish-gray skin; Dark brown fur marked with spots and stripes, dirty yellow crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with spots and stripes, dirty yellow crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with spots and stripes, dirty yellow-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with spots and stripes, dirty yellow-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with spots and stripes, dirty yellow-red crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with spots and stripes, dirty yellow-red crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with spots and stripes, reddish-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with spots and stripes, reddish-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with spots and stripes, yellow-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with spots and stripes, yellow-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with spots and stripes, yellow-red crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with spots and stripes, yellow-red crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur marked with spots and stripes, dirty yellow crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur marked with spots and stripes, dirty yellow crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur marked with spots and stripes, dirty yellow-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur marked with spots and stripes, dirty yellow-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur marked with spots and stripes, dirty yellow-red crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur marked with spots and stripes, dirty yellow-red crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur marked with spots and stripes, reddish-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur marked with spots and stripes, reddish-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur marked with spots and stripes, yellow-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur marked with spots and stripes, yellow-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur marked with spots and stripes, yellow-red crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur marked with spots and stripes, yellow-red crest-like mane; Green eyes; Hyena-like appearance</entry>
 	</collection>
 	<collection>
 		<name>GoblinUncommon</name>
-		
-		
+		<entry>Green skin; Dull, glazed, orange eyes; Flat face, small fangs, pointed ears, sloped-back forehead, broad noses</entry>
+		<entry>Green skin; Dull, glazed, red eyes; Flat face, small fangs, pointed ears, sloped-back forehead, broad noses</entry>
+		<entry>Green skin; Dull, glazed, yellow eyes; Flat face, small fangs, pointed ears, sloped-back forehead, broad noses</entry>
 	</collection>
 	<collection>
 		<name>Clay GolemUncommon</name>
@@ -8284,7 +9427,38 @@
 	</collection>
 	<collection>
 		<name>Green HagUncommon</name>
-		
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions; Tangled, vine-like, black hair; Amber eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions; Tangled, vine-like, black hair; Amber eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions; Tangled, vine-like, black hair; Orange eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions; Tangled, vine-like, black hair; Orange eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions; Tangled, vine-like, gray hair; Amber eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions; Tangled, vine-like, gray hair; Amber eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions; Tangled, vine-like, gray hair; Orange eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions; Tangled, vine-like, gray hair; Orange eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions; Tangled, vine-like, moldy-olive-green hair; Amber eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions; Tangled, vine-like, moldy-olive-green hair; Amber eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions; Tangled, vine-like, moldy-olive-green hair; Orange eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions; Tangled, vine-like, moldy-olive-green hair; Orange eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions; Tangled, vine-like, white hair; Amber eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions; Tangled, vine-like, white hair; Amber eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions; Tangled, vine-like, white hair; Orange eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions; Tangled, vine-like, white hair; Orange eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Exaggerated facial features; Tangled, vine-like, black hair; Amber eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Exaggerated facial features; Tangled, vine-like, black hair; Amber eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Exaggerated facial features; Tangled, vine-like, black hair; Orange eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Exaggerated facial features; Tangled, vine-like, black hair; Orange eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Exaggerated facial features; Tangled, vine-like, gray hair; Amber eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Exaggerated facial features; Tangled, vine-like, gray hair; Amber eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Exaggerated facial features; Tangled, vine-like, gray hair; Orange eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Exaggerated facial features; Tangled, vine-like, gray hair; Orange eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Exaggerated facial features; Tangled, vine-like, moldy-olive-green hair; Amber eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Exaggerated facial features; Tangled, vine-like, moldy-olive-green hair; Amber eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Exaggerated facial features; Tangled, vine-like, moldy-olive-green hair; Orange eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Exaggerated facial features; Tangled, vine-like, moldy-olive-green hair; Orange eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Exaggerated facial features; Tangled, vine-like, white hair; Amber eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Exaggerated facial features; Tangled, vine-like, white hair; Amber eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Exaggerated facial features; Tangled, vine-like, white hair; Orange eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Exaggerated facial features; Tangled, vine-like, white hair; Orange eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
 	</collection>
 	<collection>
 		<name>Green SlaadUncommon</name>
@@ -8327,8 +9501,10 @@
 	</collection>
 	<collection>
 		<name>GrimlockUncommon</name>
-		
-		
+		<entry>Slightly-scaled, thick gray skin with decorative designs scarred into the skin; Black hair, long and unkempt; Completely white eyes; Sharp teeth</entry>
+		<entry>Slightly-scaled, thick gray skin with decorative designs scarred into the skin; Black hair, long and unkempt; Face devoid of eyes, skin stretching across where its eye sockets should be; Sharp teeth</entry>
+		<entry>Slightly-scaled, thick gray skin; Black hair, long and unkempt; Completely white eyes; Sharp teeth</entry>
+		<entry>Slightly-scaled, thick gray skin; Black hair, long and unkempt; Face devoid of eyes, skin stretching across where its eye sockets should be; Sharp teeth</entry>
 	</collection>
 	<collection>
 		<name>GynosphinxUncommon</name>
@@ -8433,8 +9609,51 @@
 	</collection>
 	<collection>
 		<name>HumanUncommon</name>
-		
-		
+		<entry>Brown skin; Bald; Blue eyes</entry>
+		<entry>Brown skin; Bald; Brown eyes</entry>
+		<entry>Brown skin; Bald; Gray eyes</entry>
+		<entry>Brown skin; Bald; Green eyes</entry>
+		<entry>Brown skin; Bald; Hazel eyes</entry>
+		<entry>Dark brown skin; Bald; Blue eyes</entry>
+		<entry>Dark brown skin; Bald; Brown eyes</entry>
+		<entry>Dark brown skin; Bald; Gray eyes</entry>
+		<entry>Dark brown skin; Bald; Green eyes</entry>
+		<entry>Dark brown skin; Bald; Hazel eyes</entry>
+		<entry>Light brown skin; Bald; Blue eyes</entry>
+		<entry>Light brown skin; Bald; Brown eyes</entry>
+		<entry>Light brown skin; Bald; Gray eyes</entry>
+		<entry>Light brown skin; Bald; Green eyes</entry>
+		<entry>Light brown skin; Bald; Hazel eyes</entry>
+		<entry>Tan skin; Bald; Blue eyes</entry>
+		<entry>Tan skin; Bald; Brown eyes</entry>
+		<entry>Tan skin; Bald; Gray eyes</entry>
+		<entry>Tan skin; Bald; Green eyes</entry>
+		<entry>Tan skin; Bald; Hazel eyes</entry>
+		<entry>Dark tan skin; Bald; Blue eyes</entry>
+		<entry>Dark tan skin; Bald; Brown eyes</entry>
+		<entry>Dark tan skin; Bald; Gray eyes</entry>
+		<entry>Dark tan skin; Bald; Green eyes</entry>
+		<entry>Dark tan skin; Bald; Hazel eyes</entry>
+		<entry>Light tan skin; Bald; Blue eyes</entry>
+		<entry>Light tan skin; Bald; Brown eyes</entry>
+		<entry>Light tan skin; Bald; Gray eyes</entry>
+		<entry>Light tan skin; Bald; Green eyes</entry>
+		<entry>Light tan skin; Bald; Hazel eyes</entry>
+		<entry>Pink skin; Bald; Blue eyes</entry>
+		<entry>Pink skin; Bald; Brown eyes</entry>
+		<entry>Pink skin; Bald; Gray eyes</entry>
+		<entry>Pink skin; Bald; Green eyes</entry>
+		<entry>Pink skin; Bald; Hazel eyes</entry>
+		<entry>White skin; Bald; Blue eyes</entry>
+		<entry>White skin; Bald; Brown eyes</entry>
+		<entry>White skin; Bald; Gray eyes</entry>
+		<entry>White skin; Bald; Green eyes</entry>
+		<entry>White skin; Bald; Hazel eyes</entry>
+		<entry>Pale white skin; Bald; Blue eyes</entry>
+		<entry>Pale white skin; Bald; Brown eyes</entry>
+		<entry>Pale white skin; Bald; Gray eyes</entry>
+		<entry>Pale white skin; Bald; Green eyes</entry>
+		<entry>Pale white skin; Bald; Hazel eyes</entry>
 	</collection>
 	<collection>
 		<name>Five-Headed HydraUncommon</name>
@@ -9062,7 +10281,8 @@
 	</collection>
 	<collection>
 		<name>Guardian NagaUncommon</name>
-		
+		<entry>Green-gold scales with silvery triangles down the spine, golden frill runs down the length of the spine; Bright golden eyes</entry>
+		<entry>Green-gold scales with silvery triangles down the spine; Bright golden eyes; Smells of flowers</entry>
 	</collection>
 	<collection>
 		<name>Spirit NagaUncommon</name>
@@ -14798,6 +16018,10 @@
 	</collection>
 	<collection>
 		<name>Greater BasiliskRare</name>
+		<entry>Dark gray skin, yellowish underbelly; Glowing pale green eyes; Single row of bony spikes lining the back. Curved horn atop the nose</entry>
+		<entry>Dark orange skin, yellowish underbelly; Glowing pale green eyes; Single row of bony spikes lining the back. Curved horn atop the nose</entry>
+		<entry>Dark yellow skin, yellowish underbelly; Glowing pale green eyes; Single row of bony spikes lining the back. Curved horn atop the nose</entry>
+		<entry>Dull brown skin, yellowish underbelly; Glowing pale green eyes; Single row of bony spikes lining the back. Curved horn atop the nose</entry>
 	</collection>
 	<collection>
 		<name>BatRare</name>
@@ -14840,6 +16064,18 @@
 	</collection>
 	<collection>
 		<name>Gauth (Lesser Beholder)Rare</name>
+		<entry>Blue-purple, pebbly-textured skin on top graduating to earth tones further down; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw. Nostrils and jointed, articulated eyestalks.</entry>
+		<entry>Blue, pebbly-textured skin on top graduating to earth tones further down; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw. Nostrils and jointed, articulated eyestalks.</entry>
+		<entry>Brown, pebbly-textured skin on top graduating to earth tones further down; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw. Nostrils and jointed, articulated eyestalks.</entry>
+		<entry>Green, pebbly-textured skin on top graduating to earth tones further down; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
+		<entry>Green, pebbly-textured skin on top graduating to earth tones further down; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw. Nostrils and jointed, articulated eyestalks.</entry>
+		<entry>Grey, pebbly-textured skin on top graduating to earth tones further down; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
+		<entry>Grey, pebbly-textured skin on top graduating to earth tones further down; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw. Nostrils and jointed, articulated eyestalks.</entry>
+		<entry>Purple, pebbly-textured skin on top graduating to earth tones further down; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw. Nostrils and jointed, articulated eyestalks.</entry>
+		<entry>Red, pebbly-textured skin on top graduating to earth tones further down; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
+		<entry>Red, pebbly-textured skin on top graduating to earth tones further down; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw. Nostrils and jointed, articulated eyestalks.</entry>
+		<entry>White, pebbly-textured skin on top graduating to earth tones further down; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw.</entry>
+		<entry>White, pebbly-textured skin on top graduating to earth tones further down; A giant eye surrounded by smaller eye stalks, along with feeding tendrils and sprout from the lower half of its body. The central eye is surrounded by a ridge of flesh and smaller eyes used for sight. Has a massive, gaping maw. Nostrils and jointed, articulated eyestalks.</entry>
 	</collection>
 	<collection>
 		<name>BelkerRare</name>
@@ -15004,13 +16240,21 @@
 	</collection>
 	<collection>
 		<name>CrocodileRare</name>
-		
-		
 	</collection>
 	<collection>
 		<name>Giant CrocodileRare</name>
-		
-		
+		<entry>Dark black-green skin, with a few lighter grey areas. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.</entry>
+		<entry>Dark black-green skin, with a few lighter grey areas. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.</entry>
+		<entry>Dark black-green skin, with a few lighter tan areas. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.</entry>
+		<entry>Dark black-green skin, with a few lighter tan areas. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.</entry>
+		<entry>Dark blackish skin, with a few lighter grey areas. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.</entry>
+		<entry>Dark blackish skin, with a few lighter grey areas. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.</entry>
+		<entry>Dark blackish skin, with a few lighter tan areas. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.</entry>
+		<entry>Dark blackish skin, with a few lighter tan areas. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.</entry>
+		<entry>Pale greenish-drab skin, with a few lighter grey areas. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.</entry>
+		<entry>Pale greenish-drab skin, with a few lighter grey areas. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.</entry>
+		<entry>Pale greenish-drab skin, with a few lighter tan areas. The ventral surface is white. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.</entry>
+		<entry>Pale greenish-drab skin, with a few lighter tan areas. The ventral surface is yellow. Stripes are present on the lower sides of the body, but do not extend onto the belly. Tail is grey with dark bands.</entry>
 	</collection>
 	<collection>
 		<name>DarkmantleRare</name>
@@ -15967,8 +17211,9 @@
 	</collection>
 	<collection>
 		<name>Gray ElfRare</name>
-		
-		
+		<entry>Pale grey skin; Curly pale-golden hair; Violet eyes; Pointed ears</entry>
+		<entry>Pale grey skin; Kinky pale-golden hair; Violet eyes; Pointed ears</entry>
+		<entry>Pale grey skin; Straight pale-golden hair; Violet eyes; Pointed ears</entry>
 	</collection>
 	<collection>
 		<name>Half-ElfRare</name>
@@ -16159,8 +17404,9 @@
 	</collection>
 	<collection>
 		<name>Giant Stag BeetleRare</name>
-		
-		
+		<entry>Gray exoskeleton</entry>
+		<entry>Green exoskeleton</entry>
+		<entry>Tan exoskeleton</entry>
 	</collection>
 	<collection>
 		<name>Giant WaspRare</name>
@@ -16191,8 +17437,30 @@
 	</collection>
 	<collection>
 		<name>GnollRare</name>
-		
-		
+		<entry>Greenish-gray skin; Black fur marked with fiery orange spots and stripes, dirty yellow crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur marked with fiery orange spots and stripes, dirty yellow crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur marked with fiery orange spots and stripes, dirty yellow-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur marked with fiery orange spots and stripes, dirty yellow-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur marked with fiery orange spots and stripes, dirty yellow-red crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur marked with fiery orange spots and stripes, dirty yellow-red crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur marked with fiery orange spots and stripes, reddish-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur marked with fiery orange spots and stripes, reddish-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur marked with fiery orange spots and stripes, yellow-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur marked with fiery orange spots and stripes, yellow-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur marked with fiery orange spots and stripes, yellow-red crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur marked with fiery orange spots and stripes, yellow-red crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur, dirty yellow crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur, dirty yellow crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur, dirty yellow-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur, dirty yellow-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur, dirty yellow-red crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur, dirty yellow-red crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur, reddish-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur, reddish-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur, yellow-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur, yellow-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur, yellow-red crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur, yellow-red crest-like mane; Green eyes; Hyena-like appearance</entry>
 	</collection>
 	<collection>
 		<name>GoblinRare</name>
@@ -16777,21 +18045,16 @@
 	</collection>
 	<collection>
 		<name>Dust MephitRare</name>
-		
-		
-		
 	</collection>
 	<collection>
 		<name>Earth MephitRare</name>
-		
-		
-		
 	</collection>
 	<collection>
 		<name>Fire MephitRare</name>
-		
-		
-		
+		<entry>Red skin streaked with black; Flaming goatee; Bat-like wings covered in a halo of fire, body covered in flames</entry>
+		<entry>Red skin streaked with black; Flaming mustache; Bat-like wings covered in a halo of fire, body covered in flames</entry>
+		<entry>Red skin; Flaming goatee; Bat-like wings covered in a halo of fire, body covered in flames</entry>
+		<entry>Red skin; Flaming mustache; Bat-like wings covered in a halo of fire, body covered in flames</entry>
 	</collection>
 	<collection>
 		<name>Ice MephitRare</name>
@@ -17017,7 +18280,7 @@
 	</collection>
 	<collection>
 		<name>Guardian NagaRare</name>
-		
+		<entry>Green-gold scales with silvery triangles down the spine, golden frill runs down the length of the spine; Bright golden eyes; Smells of flowers</entry>
 	</collection>
 	<collection>
 		<name>Spirit NagaRare</name>
