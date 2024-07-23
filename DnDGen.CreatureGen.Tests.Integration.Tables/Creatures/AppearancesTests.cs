@@ -2086,7 +2086,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Dark brown fur marked with spots and stripes, yellow-gray crest-like mane",
                     "Dark brown fur marked with spots and stripes, yellow-red crest-like mane" ],
                 rareHair: [ "Black fur, dirty yellow crest-like mane", "Black fur, reddish-gray crest-like mane",
-                    "Black fur, dirty yellow-gray crest-like mane", "Black, dirty yellow-red crest-like mane",
+                    "Black fur, dirty yellow-gray crest-like mane", "Black fur, dirty yellow-red crest-like mane",
                     "Black fur, yellow-gray crest-like mane", "Black fur, yellow-red crest-like mane",
                     "Black fur marked with fiery orange spots and stripes, dirty yellow crest-like mane",
                     "Black fur marked with fiery orange spots and stripes, reddish-gray crest-like mane",
@@ -2707,53 +2707,53 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.InvisibleStalker][Rarity.Common] = new[] { "Amorphous form. See Invisibility reveals a dim outline of a cloud. True Seeing reveals a roiling cloud of vapor" };
             //Source: https://forgottenrealms.fandom.com/wiki/Janni
             appearances[CreatureConstants.Janni] = GetWeightedAppearances(
-                allSkin: new[] { "Skin the color of golden sand", "Earth-colored skin" },
-                allHair: new[] { "TODO HUMAN hair", "TODO HALF-ELF hair" },
-                allEyes: new[] { "TODO HUMAN eyes with supernatural intensity", "TODO HALF-ELF eyes with supernatural intensity" });
+                allSkin: ["Skin the color of golden sand", "Earth-colored skin"],
+                allHair: ["TODO HUMAN hair", "TODO HALF-ELF hair"],
+                allEyes: ["TODO HUMAN eyes with supernatural intensity", "TODO HALF-ELF eyes with supernatural intensity"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Kobold
             appearances[CreatureConstants.Kobold] = GetWeightedAppearances(
-                allSkin: new[] { "Reddish-brown scaled skin", "Rusty black scaled skin", "Rusty brown scaled skin", "Reddish-black scaled skin",
-                    "Brown-black scaled skin", "Black scaled skin" },
-                allEyes: new[] { "Red eyes", "Burnt orange eyes", "Orange-red eyes", "Burnt red eyes" },
-                allOther: new[] { "Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail",
-                    "Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail" });
+                allSkin: [ "Reddish-brown scaled skin", "Rusty black scaled skin", "Rusty brown scaled skin", "Reddish-black scaled skin",
+                    "Brown-black scaled skin", "Black scaled skin" ],
+                allEyes: ["Red eyes", "Burnt orange eyes", "Orange-red eyes", "Burnt red eyes"],
+                allOther: [ "Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail",
+                    "Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail" ]);
             //Source: https://forgottenrealms.fandom.com/wiki/Kolyarut
-            appearances[CreatureConstants.Kolyarut][Rarity.Common] = new[] { "Red skin. Golden-hued banded-mail armor. Flowing red robe.",
-                "Black skin. Golden-hued banded-mail armor. Flowing red robe." };
+            appearances[CreatureConstants.Kolyarut][Rarity.Common] = [ "Red skin. Golden-hued banded-mail armor. Flowing red robe.",
+                "Black skin. Golden-hued banded-mail armor. Flowing red robe." ];
             //Source: https://forgottenrealms.fandom.com/wiki/Kraken
             appearances[CreatureConstants.Kraken] = GetWeightedAppearances(
-                allSkin: new[] { "Brown skin", "Light brown skin", "Reddish-brown skin", "Blue skin", "Purple skin", "Yellow-green skin",
-                    "Yellow-green skin with a black head, black tips on tentacles"},
-                allEyes: new[] { "Large yellow eyes", "Large red eyes", "Large blue eyes", "Large green eyes" },
-                allOther: new[] { "Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body" });
+                allSkin: [ "Brown skin", "Light brown skin", "Reddish-brown skin", "Blue skin", "Purple skin", "Yellow-green skin",
+                    "Yellow-green skin with a black head, black tips on tentacles"],
+                allEyes: ["Large yellow eyes", "Large red eyes", "Large blue eyes", "Large green eyes"],
+                allOther: ["Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Krenshar
             appearances[CreatureConstants.Krenshar] = GetWeightedAppearances(
-                allHair: new[] { "Light brown shaggy fur with dark brown spots, dark-red spiky mane", "Light brown shaggy fur with dark brown spots, dark-brown spiky mane",
+                allHair: [ "Light brown shaggy fur with dark brown spots, dark-red spiky mane", "Light brown shaggy fur with dark brown spots, dark-brown spiky mane",
                     "Light gray shaggy fur with dark brown spots, brown spiky mane", "Light gray shaggy fur with dark brown spots, dark-brown spiky mane",
-                    "Light gray shaggy fur with dark gray spots, brown spiky mane", "Light gray shaggy fur with dark gray spots, dark-brown spiky mane" },
-                allOther: new[] { "Long, bushy tail. Skin over the skull is a sheath that can be pulled back to reveal the underlyring muscles and bones" });
+                    "Light gray shaggy fur with dark gray spots, brown spiky mane", "Light gray shaggy fur with dark gray spots, dark-brown spiky mane" ],
+                allOther: ["Long, bushy tail. Skin over the skull is a sheath that can be pulled back to reveal the underlying muscles and bones"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Kuo-toa
             appearances[CreatureConstants.KuoToa] = GetWeightedAppearances(
-                allSkin: new[] { "Silver-gray scales", "Gray scales", "Gray scales with yellow undertones", "Gray scales with dark red undertones",
-                    "Gray scales with ghostly white undertones" },
-                allEyes: new[] { "Bulging silver-black eyes" },
-                allOther: new[] { "Broad, distended, partially-webbed hands and feet. Four digits per hand and feet. Bullet-shapred, piscine head. Sharp teeth." });
+                allSkin: [ "Silver-gray scales", "Gray scales", "Gray scales with yellow undertones", "Gray scales with dark red undertones",
+                    "Gray scales with ghostly white undertones" ],
+                allEyes: ["Bulging silver-black eyes"],
+                allOther: ["Broad, distended, partially-webbed hands and feet. Four digits per hand and feet. Bullet-shaped, piscine head. Sharp teeth."]);
             //Source: https://forgottenrealms.fandom.com/wiki/Lamia
             appearances[CreatureConstants.Lamia] = GetWeightedAppearances(
-                allSkin: new[] { "TODO HUMAN skin" },
-                commonHair: new[] { "TODO LION fur" },
-                uncommonHair: new[] { "TODO GOAT fur", "TODO DEER fur" },
-                allEyes: new[] { "TODO HUMAN eyes" },
-                commonOther: new[] { "Human from the waist-up, lion from the waist-down" },
-                uncommonOther: new[] { "Human from the waist-up, goat from the waist-down", "Human from the waist-up, deer from the waist-down" });
+                allSkin: ["TODO HUMAN skin"],
+                commonHair: ["TODO LION fur"],
+                uncommonHair: ["TODO GOAT fur", "TODO DEER fur"],
+                allEyes: ["TODO HUMAN eyes"],
+                commonOther: ["Human from the waist-up, lion from the waist-down"],
+                uncommonOther: ["Human from the waist-up, goat from the waist-down", "Human from the waist-up, deer from the waist-down"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Lammasu
             appearances[CreatureConstants.Lammasu] = GetWeightedAppearances(
-                allSkin: new[] { "TODO HUMAN skin" },
-                allHair: new[] { "TODO LION fur", "TODO EAGLE feathers" },
-                allEyes: new[] { "TODO HUMAN eyes" },
-                allOther: new[] { "Human from the waist-up, lion from the waist-down, pair of wings on the back" });
+                allSkin: ["TODO HUMAN skin"],
+                allHair: ["TODO LION fur", "TODO EAGLE feathers"],
+                allEyes: ["TODO HUMAN eyes"],
+                allOther: ["Human from the waist-up, lion from the waist-down, pair of wings on the back"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Lantern_archon
-            appearances[CreatureConstants.LanternArchon][Rarity.Common] = new[] { "Sphere of soft, glowing light" };
+            appearances[CreatureConstants.LanternArchon][Rarity.Common] = ["Sphere of soft, glowing light"];
             //Source: https://forgottenrealms.fandom.com/wiki/Lemure
             appearances[CreatureConstants.Lemure] = GetWeightedAppearances(
                 allSkin: new[] { "Orange skin", "Pink skin" },

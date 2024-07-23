@@ -2842,6 +2842,18 @@
 		<entry>Light tan skin; Straight pale gold hair; Green eyes; Pointed ears</entry>
 		<entry>Light tan skin; Straight silver hair; Green eyes; Pointed ears</entry>
 		<entry>Light tan skin; Straight white hair; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly black hair; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly silver hair; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly white hair; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky black hair; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky silver hair; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky white hair; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight black hair; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight silver hair; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight white hair; Green eyes; Pointed ears</entry>
 	</collection>
 	<collection>
 		<name>Wild ElfCommon</name>
@@ -3501,6 +3513,10 @@
 		<entry>Swainson's hawk</entry>
 		<entry>Swamp harrier</entry>
 		<entry>Tiny hawk</entry>
+		<entry>Western marsh harrier</entry>
+		<entry>White-tailed hawk</entry>
+		<entry>White-tailed kite</entry>
+		<entry>Zone-tailed hawk</entry>
 	</collection>
 	<collection>
 		<name>Hell HoundCommon</name>
@@ -3649,19 +3665,25 @@
 		<entry>Australian Draught</entry>
 		<entry>Auxois</entry>
 		<entry>Bashkir horse</entry>
-		<entry>Bay (Brown coat; black legs; black mane and tail)</entry>
+		<entry>Bay (Brown coat; Black legs; Black mane and tail)</entry>
 		<entry>Belgian Draught</entry>
 		<entry>Boulonnais horse</entry>
 		<entry>Breton horse</entry>
-		<entry>Brown coat; black lower legs; Light brown mane, tail, and muzzle</entry>
-		<entry>Buckskin (Creamy-golden coat with black points; black mane and tail)</entry>
-		<entry>Buckskin (Rich golden coat with black points; black mane and tail)</entry>
+		<entry>Brown coat; Black lower legs; Light brown mane, tail, and muzzle</entry>
+		<entry>Buckskin (Creamy-golden coat with black points; Black mane and tail)</entry>
+		<entry>Buckskin (Rich golden coat with black points; Black mane and tail)</entry>
 		<entry>Byelorussian Harness Horse</entry>
 		<entry>Camargue horse</entry>
 		<entry>Chestnut (Dark ginger coat; Dark ginger mane and tail)</entry>
 		<entry>Chestnut (Dark ginger coat; Ginger mane and tail)</entry>
 		<entry>Chestnut (Dark ginger coat; Light ginger mane and tail)</entry>
 		<entry>Chestnut (Ginger coat; Dark ginger mane and tail)</entry>
+		<entry>Chestnut (Ginger coat; Ginger mane and tail)</entry>
+		<entry>Chestnut (Ginger coat; Light ginger mane and tail)</entry>
+		<entry>Chestnut (Light ginger coat; Dark ginger mane and tail)</entry>
+		<entry>Chestnut (Light ginger coat; Ginger mane and tail)</entry>
+		<entry>Chestnut (Light ginger coat; Light ginger mane and tail)</entry>
+		<entry>Cleveland Bay</entry>
 	</collection>
 	<collection>
 		<name>Heavy WarhorseCommon</name>
@@ -3672,35 +3694,31 @@
 		<entry>Australian Draught</entry>
 		<entry>Auxois</entry>
 		<entry>Bashkir horse</entry>
-		<entry>Bay (Brown coat; black legs; black mane and tail)</entry>
+		<entry>Bay (Brown coat; Black legs; Black mane and tail)</entry>
 		<entry>Belgian Draught</entry>
 		<entry>Boulonnais horse</entry>
+		<entry>Breton horse</entry>
+		<entry>Brown coat; Black lower legs; Light brown mane, tail, and muzzle</entry>
+		<entry>Buckskin (Creamy-golden coat with black points; Black mane and tail)</entry>
+		<entry>Buckskin (Rich golden coat with black points; Black mane and tail)</entry>
+		<entry>Byelorussian Harness Horse</entry>
+		<entry>Camargue horse</entry>
+		<entry>Chestnut (Dark ginger coat; Dark ginger mane and tail)</entry>
+		<entry>Chestnut (Dark ginger coat; Ginger mane and tail)</entry>
+		<entry>Chestnut (Dark ginger coat; Light ginger mane and tail)</entry>
+		<entry>Chestnut (Ginger coat; Dark ginger mane and tail)</entry>
+		<entry>Chestnut (Ginger coat; Ginger mane and tail)</entry>
+		<entry>Chestnut (Ginger coat; Light ginger mane and tail)</entry>
+		<entry>Chestnut (Light ginger coat; Dark ginger mane and tail)</entry>
+		<entry>Chestnut (Light ginger coat; Ginger mane and tail)</entry>
+		<entry>Chestnut (Light ginger coat; Light ginger mane and tail)</entry>
+		<entry>Cleveland Bay</entry>
 	</collection>
 	<collection>
 		<name>Light HorseCommon</name>
-		<entry>American Belgian Draft</entry>
-		<entry>American Cream Draft</entry>
-		<entry>American Quarter Horse</entry>
-		<entry>Ardennais</entry>
-		<entry>Australian Draught</entry>
-		<entry>Auxois</entry>
-		<entry>Bashkir horse</entry>
-		<entry>Bay (Brown coat; black legs; black mane and tail)</entry>
-		<entry>Belgian Draught</entry>
-		<entry>Boulonnais horse</entry>
 	</collection>
 	<collection>
 		<name>Light WarhorseCommon</name>
-		<entry>American Belgian Draft</entry>
-		<entry>American Cream Draft</entry>
-		<entry>American Quarter Horse</entry>
-		<entry>Ardennais</entry>
-		<entry>Australian Draught</entry>
-		<entry>Auxois</entry>
-		<entry>Bashkir horse</entry>
-		<entry>Bay (Brown coat; black legs; black mane and tail)</entry>
-		<entry>Belgian Draught</entry>
-		<entry>Boulonnais horse</entry>
 	</collection>
 	<collection>
 		<name>Hound ArchonCommon</name>
@@ -4516,6 +4534,22 @@
 		<entry>Brown-black scaled skin; Orange-red eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
 		<entry>Brown-black scaled skin; Red eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
 		<entry>Brown-black scaled skin; Red eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
+		<entry>Reddish-black scaled skin; Burnt orange eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
+		<entry>Reddish-black scaled skin; Burnt orange eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
+		<entry>Reddish-black scaled skin; Burnt red eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
+		<entry>Reddish-black scaled skin; Burnt red eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
+		<entry>Reddish-black scaled skin; Orange-red eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
+		<entry>Reddish-black scaled skin; Orange-red eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
+		<entry>Reddish-black scaled skin; Red eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
+		<entry>Reddish-black scaled skin; Red eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
+		<entry>Reddish-brown scaled skin; Burnt orange eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
+		<entry>Reddish-brown scaled skin; Burnt orange eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
+		<entry>Reddish-brown scaled skin; Burnt red eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
+		<entry>Reddish-brown scaled skin; Burnt red eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
+		<entry>Reddish-brown scaled skin; Orange-red eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
+		<entry>Reddish-brown scaled skin; Orange-red eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
+		<entry>Reddish-brown scaled skin; Red eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
+		<entry>Reddish-brown scaled skin; Red eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
 	</collection>
 	<collection>
 		<name>KolyarutCommon</name>
@@ -4544,16 +4578,35 @@
 		<entry>Light brown skin; Large green eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
 		<entry>Light brown skin; Large red eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
 		<entry>Light brown skin; Large yellow eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Purple skin; Large blue eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Purple skin; Large green eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Purple skin; Large red eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Purple skin; Large yellow eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Reddish-brown skin; Large blue eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Reddish-brown skin; Large green eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Reddish-brown skin; Large red eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Reddish-brown skin; Large yellow eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Yellow-green skin with a black head, black tips on tentacles; Large blue eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Yellow-green skin with a black head, black tips on tentacles; Large green eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Yellow-green skin with a black head, black tips on tentacles; Large red eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Yellow-green skin with a black head, black tips on tentacles; Large yellow eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
 	</collection>
 	<collection>
 		<name>KrensharCommon</name>
-		
-		
+		<entry>Light brown shaggy fur with dark brown spots, dark-brown spiky mane; Long, bushy tail. Skin over the skull is a sheath that can be pulled back to reveal the underlying muscles and bones</entry>
+		<entry>Light brown shaggy fur with dark brown spots, dark-red spiky mane; Long, bushy tail. Skin over the skull is a sheath that can be pulled back to reveal the underlying muscles and bones</entry>
+		<entry>Light gray shaggy fur with dark brown spots, brown spiky mane; Long, bushy tail. Skin over the skull is a sheath that can be pulled back to reveal the underlying muscles and bones</entry>
+		<entry>Light gray shaggy fur with dark brown spots, dark-brown spiky mane; Long, bushy tail. Skin over the skull is a sheath that can be pulled back to reveal the underlying muscles and bones</entry>
+		<entry>Light gray shaggy fur with dark gray spots, brown spiky mane; Long, bushy tail. Skin over the skull is a sheath that can be pulled back to reveal the underlying muscles and bones</entry>
+		<entry>Light gray shaggy fur with dark gray spots, dark-brown spiky mane; Long, bushy tail. Skin over the skull is a sheath that can be pulled back to reveal the underlying muscles and bones</entry>
 	</collection>
 	<collection>
 		<name>Kuo-toaCommon</name>
-		
-		
+		<entry>Gray scales with dark red undertones; Bulging silver-black eyes; Broad, distended, partially-webbed hands and feet. Four digits per hand and feet. Bullet-shaped, piscine head. Sharp teeth.</entry>
+		<entry>Gray scales with ghostly white undertones; Bulging silver-black eyes; Broad, distended, partially-webbed hands and feet. Four digits per hand and feet. Bullet-shaped, piscine head. Sharp teeth.</entry>
+		<entry>Gray scales with yellow undertones; Bulging silver-black eyes; Broad, distended, partially-webbed hands and feet. Four digits per hand and feet. Bullet-shaped, piscine head. Sharp teeth.</entry>
+		<entry>Gray scales; Bulging silver-black eyes; Broad, distended, partially-webbed hands and feet. Four digits per hand and feet. Bullet-shaped, piscine head. Sharp teeth.</entry>
+		<entry>Silver-gray scales; Bulging silver-black eyes; Broad, distended, partially-webbed hands and feet. Four digits per hand and feet. Bullet-shaped, piscine head. Sharp teeth.</entry>
 	</collection>
 	<collection>
 		<name>LamiaCommon</name>
@@ -9459,6 +9512,22 @@
 		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Exaggerated facial features; Tangled, vine-like, white hair; Amber eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
 		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Exaggerated facial features; Tangled, vine-like, white hair; Orange eyes; Needle-sharp fangs, black talons covered in filth</entry>
 		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Exaggerated facial features; Tangled, vine-like, white hair; Orange eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face; Tangled, vine-like, black hair; Amber eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face; Tangled, vine-like, black hair; Amber eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face; Tangled, vine-like, black hair; Orange eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face; Tangled, vine-like, black hair; Orange eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face; Tangled, vine-like, gray hair; Amber eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face; Tangled, vine-like, gray hair; Amber eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face; Tangled, vine-like, gray hair; Orange eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face; Tangled, vine-like, gray hair; Orange eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face; Tangled, vine-like, moldy-olive-green hair; Amber eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face; Tangled, vine-like, moldy-olive-green hair; Amber eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face; Tangled, vine-like, moldy-olive-green hair; Orange eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face; Tangled, vine-like, moldy-olive-green hair; Orange eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face; Tangled, vine-like, white hair; Amber eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face; Tangled, vine-like, white hair; Amber eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face; Tangled, vine-like, white hair; Orange eyes; Needle-sharp fangs, black talons covered in filth</entry>
+		<entry>Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face; Tangled, vine-like, white hair; Orange eyes; Needle-sharp fangs, yellow talons covered in filth</entry>
 	</collection>
 	<collection>
 		<name>Green SlaadUncommon</name>
@@ -9786,9 +9855,18 @@
 	</collection>
 	<collection>
 		<name>ImpUncommon</name>
-		
-		
-		
+		<entry>Black skin; Green eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Black skin; White eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Black skin; Yellow eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Blue skin; Green eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Blue skin; White eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Blue skin; Yellow eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Brown skin; Green eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Brown skin; White eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Brown skin; Yellow eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Gray skin; Green eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Gray skin; White eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Gray skin; Yellow eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
 	</collection>
 	<collection>
 		<name>Invisible StalkerUncommon</name>
@@ -17461,6 +17539,30 @@
 		<entry>Greenish-gray skin; Black fur, yellow-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
 		<entry>Greenish-gray skin; Black fur, yellow-red crest-like mane; Brown eyes; Hyena-like appearance</entry>
 		<entry>Greenish-gray skin; Black fur, yellow-red crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with fiery orange spots and stripes, dirty yellow crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with fiery orange spots and stripes, dirty yellow crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with fiery orange spots and stripes, dirty yellow-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with fiery orange spots and stripes, dirty yellow-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with fiery orange spots and stripes, dirty yellow-red crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with fiery orange spots and stripes, dirty yellow-red crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with fiery orange spots and stripes, reddish-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with fiery orange spots and stripes, reddish-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with fiery orange spots and stripes, yellow-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with fiery orange spots and stripes, yellow-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with fiery orange spots and stripes, yellow-red crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with fiery orange spots and stripes, yellow-red crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, dirty yellow crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, dirty yellow crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, dirty yellow-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, dirty yellow-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, dirty yellow-red crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, dirty yellow-red crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, reddish-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, reddish-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, yellow-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, yellow-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, yellow-red crest-like mane; Brown eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, yellow-red crest-like mane; Green eyes; Hyena-like appearance</entry>
 	</collection>
 	<collection>
 		<name>GoblinRare</name>
