@@ -913,56 +913,62 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 uncommonHair: new[] { "Dark blue fur", "Purple fur" },
                 allEyes: new[] { "Striking, glowing emerald-green eyes" },
                 commonOther: new[] { "Panther-like with six legs and a pair of tentacles sprouting from their shoulders. Tentacles end in pads with sharp, horny, brownish-yellow edges" },
-                uncommonOther: new[] { "Panther-like with six legs and a pair of tentacles sprouting from their shoulders. Tentacles end in pads with sharp, horny, brownish-yellow edges. Emaciated-looking." });
+                uncommonOther: ["Panther-like with six legs and a pair of tentacles sprouting from their shoulders. Tentacles end in pads with sharp, horny, brownish-yellow edges. Emaciated-looking."]);
             appearances[CreatureConstants.DisplacerBeast_PackLord] = GetWeightedAppearances(
-                commonHair: new[] { "Black fur", "Ebony fur" },
-                uncommonHair: new[] { "Dark blue fur", "Purple fur", "Blue fur", "Blue-black fur" },
-                allEyes: new[] { "Striking, glowing emerald-green eyes" },
-                commonOther: new[] { "Panther-like with six legs and a pair of tentacles sprouting from their shoulders. Tentacles end in pads with sharp, horny, brownish-yellow edges" },
-                uncommonOther: new[] { "Panther-like with six legs and a pair of tentacles sprouting from their shoulders. Tentacles end in pads with sharp, horny, brownish-yellow edges. Emaciated-looking." });
+                commonHair: ["Black fur", "Ebony fur"],
+                uncommonHair: ["Dark blue fur", "Purple fur", "Blue fur", "Blue-black fur"],
+                allEyes: ["Striking, glowing emerald-green eyes"],
+                commonOther: ["Panther-like with six legs and a pair of tentacles sprouting from their shoulders. Tentacles end in pads with sharp, horny, brownish-yellow edges"],
+                uncommonOther: ["Panther-like with six legs and a pair of tentacles sprouting from their shoulders. Tentacles end in pads with sharp, horny, brownish-yellow edges. Emaciated-looking."]);
             //Source: https://forgottenrealms.fandom.com/wiki/Djinni
             appearances[CreatureConstants.Djinni] = GetWeightedAppearances(
-                commonSkin: new[] { "Pale blue skin", "Olive-brown skin", "Blue skin", "Dark blue skin" },
-                uncommonSkin: new[] { "Dark tan skin" },
-                rareSkin: new[] { "Purple skin", "Dark purple skin", "Beige skin", "Dark red skin" },
-                allHair: new[] { "Bald", "Black hair", "TODO Human hair" },
-                commonEyes: new[] { "Brown eyes" },
-                rareEyes: new[] { "Blue eyes" });
+                commonSkin: ["Pale blue skin", "Olive-brown skin", "Blue skin", "Dark blue skin"],
+                uncommonSkin: ["Dark tan skin"],
+                rareSkin: ["Purple skin", "Dark purple skin", "Beige skin", "Dark red skin"],
+                allHair: ["Bald", "Black hair", "TODO Human hair"],
+                commonEyes: ["Brown eyes"],
+                rareEyes: ["Blue eyes"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Noble_djinni
             appearances[CreatureConstants.Djinni_Noble] = GetWeightedAppearances(
-                commonSkin: new[] { "Pale blue skin", "Fair brown skin", "Fair Blue skin" },
-                uncommonSkin: new[] { "Fair tan skin" },
-                rareSkin: new[] { "Fair purple skin", "Fair beige skin", "Fair red skin" },
-                allHair: new[] { "Bald", "Black hair", "TODO Human hair" },
-                commonEyes: new[] { "Brown eyes" },
-                rareEyes: new[] { "Blue eyes" });
+                commonSkin: ["Pale blue skin", "Fair brown skin", "Fair Blue skin"],
+                uncommonSkin: ["Fair tan skin"],
+                rareSkin: ["Fair purple skin", "Fair beige skin", "Fair red skin"],
+                allHair: ["Bald", "Black hair", "TODO Human hair"],
+                commonEyes: ["Brown eyes"],
+                rareEyes: ["Blue eyes"]);
             //Source: https://g.co/kgs/q7esXM
-            appearances[CreatureConstants.Dog][Rarity.Common] = new[] { "Bulldog", "French Bulldog", "Beagle", "Standard Poodle", "Chihuahua", "Dachsund", "Bichon Frise", "Maltese",
+            //https://i.redd.it/3lbyepoqhnlb1.jpg
+            appearances[CreatureConstants.Dog][Rarity.Common] = [ "Bulldog", "French Bulldog", "Beagle", "Standard Poodle", "Chihuahua", "Dachsund", "Bichon Frise",
+                "Maltese",
                 "Chow Chow", "English Cocker Spaniel" , "Pomeranian", "Yorkshire Terrier", "Cavalier King Charles Spaniel", "Pembroke Welsh Corgi", "Basenji", "Havanese",
                 "Boston Terrier", "Cairn Terrier", "Brittany", "Sheltie", "Shiba Inu", "Jack Russell Terrier", "Borzoi", "Maltipoo", "Papillon", "Pikanese",
-                "Miniature Poodle", "Pikapoo", "Coyote", "Dingo", "Miniature Schnauzer", "Mutt" };
+                "Miniature Poodle", "Pikapoo", "Coyote", "Dingo", "Miniature Schnauzer", "Mutt", "English Bulldog", "Cavapoo", "Red Kelpie", "American Foxhound",
+                "Brussels Griffon", "Aussie Terrier", "German Spitz", "Pug", "Teacup Pomeranian", "Saluki", "Schnauzer Terrier", "Presa Canario" ];
             //Source: https://www.google.com/search?q=dog+working+breeds
-            appearances[CreatureConstants.Dog_Riding][Rarity.Common] = new[] { "German Shepherd", "Labrador Retriever", "Golden Retriever", "Siberian Husky", "Beagle", "Alaskan Malamute",
+            //https://i.redd.it/3lbyepoqhnlb1.jpg
+            appearances[CreatureConstants.Dog_Riding][Rarity.Common] = [ "German Shepherd", "Labrador Retriever", "Golden Retriever", "Siberian Husky", "Beagle",
+                "Alaskan Malamute",
                 "Border Collie", "Rottweiler", "Australian Shepherd", "Airedale Terrier", "Affenpinscher", "Afghan Hound", "American Eskimo", "Anatolian Shepherd",
-                "Basset Hound", "Belgian Malinois", "Boston Terrier", "Bullmastiff", "Black Russian Terrier", "Bedlington Terrier", "American Pit Bull Terrier", "Dobermann",
+                "Basset Hound", "Belgian Malinois", "Boston Terrier", "Bullmastiff", "Black Russian Terrier", "Bedlington Terrier", "American Pit Bull Terrier", "Doberman",
                 "Sarabi", "Samoyed", "American Bully", "Borzoi", "Goldendoodle", "Dalmation", "Labradoodle", "Bernese Mountain Dog", "Greater Swiss Mountain Dog",
                 "Newfoundland", "Boxer", "Cane Corso", "Boerboel", "Chinook", "Dogue de Bordeaux", "Giant Schnauzer", "Neopolitan Mastiff", "Dogo Argentino",
-                "Great Pyrenees", "Great Dane", "Tibetan Mastiff", "Kuvasz", "Komondor", "German Pinscher", "Leonberger", "St. Bernard", "Portugese Water Dog",
+                "Great Pyrenees", "Great Dane", "Tibetan Mastiff", "Kuvasz", "Komondor", "German Pinscher", "Leonberger", "Saint Bernard", "Portugese Water Dog",
                 "Standard Schnauzer", "English Mastiff", "Karelian Bear Dog", "American Bulldog", "Hovawart", "Bloodhound", "Entlebucher Mountain Dog", "Eurasier",
                 "Greenland", "Canadian Eskimo", "Canaan", "Caucasian Shepherd", "Blue Lacy", "American Akita", "Akbash", "Central Asian Shepherd", "Australian Cattle",
-                "Yakutian Laika", "Mutt"
-            };
+                "Yakutian Laika", "Mutt", "Blue Heeler", "Red Heeler", "Labrador", "Japanese Akita", "Red/Blue Heeler Mix", "Chocolate Labrador", "Chow Chow", "English Setter",
+                "Irish Wolfhound", "Irish Setter", "Mastiff", "Greyhound", "Chocolate Labrador/Rottweiler Mix", "Maremma Sheepdog", "Catahoula Leopard Dog", "Rough Collie"
+            ];
             //Source: https://www.britannica.com/animal/donkey
             appearances[CreatureConstants.Donkey] = GetWeightedAppearances(
-                allHair: new[] { "White fur with dark stripe from mane to tail and a crosswise stripe on the shoulders",
+                allHair: [ "White fur with dark stripe from mane to tail and a crosswise stripe on the shoulders",
                     "Light gray fur with dark stripe from mane to tail and a crosswise stripe on the shoulders",
                     "Gray fur with dark stripe from mane to tail and a crosswise stripe on the shoulders",
                     "Dark gray fur with darker stripe from mane to tail and a crosswise stripe on the shoulders",
-                    "Black fur with gray stripe from mane to tail and a crosswise stripe on the shoulders" },
-                allOther: new[] { "Long ears, surefooted" });
+                    "Black fur with gray stripe from mane to tail and a crosswise stripe on the shoulders" ],
+                allOther: ["Long ears, surefooted"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Doppelganger
             appearances[CreatureConstants.Doppelganger] = GetWeightedAppearances(
-                allSkin: new[] { "Gray skin" },
+                allSkin: ["Gray skin"],
                 allHair: new[] { "Hairless" },
                 commonEyes: new[] { "Bulging, pale yellow eyes lacking visible pupils", "Bulging, yellow eyes lacking visible pupils" },
                 rareEyes: new[] { "Bulging, green eyes lacking visible pupils", "Bulging, white eyes lacking visible pupils" },
