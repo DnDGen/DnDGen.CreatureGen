@@ -2854,6 +2854,30 @@
 		<entry>Pale white skin; Straight pale gold hair; Green eyes; Pointed ears</entry>
 		<entry>Pale white skin; Straight silver hair; Green eyes; Pointed ears</entry>
 		<entry>Pale white skin; Straight white hair; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly black hair; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly silver hair; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly white hair; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky black hair; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky silver hair; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky white hair; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight black hair; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight silver hair; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight white hair; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly black hair; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly silver hair; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly white hair; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky black hair; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky silver hair; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky white hair; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight black hair; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight silver hair; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight white hair; Green eyes; Pointed ears</entry>
 	</collection>
 	<collection>
 		<name>Wild ElfCommon</name>
@@ -2981,8 +3005,14 @@
 	</collection>
 	<collection>
 		<name>LacedonCommon</name>
-		
-		
+		<entry>Mottled, decaying, gray hide stretched tight over its emaciated body; Almost hairless; Sunken eyes, burning like hot coals</entry>
+		<entry>Mottled, decaying, gray hide stretched tight over its emaciated body; Hairless; Sunken eyes, burning like hot coals</entry>
+		<entry>Mottled, decaying, green hide stretched tight over its emaciated body; Almost hairless; Sunken eyes, burning like hot coals</entry>
+		<entry>Mottled, decaying, green hide stretched tight over its emaciated body; Hairless; Sunken eyes, burning like hot coals</entry>
+		<entry>Mottled, decaying, pink hide stretched tight over its emaciated body; Almost hairless; Sunken eyes, burning like hot coals</entry>
+		<entry>Mottled, decaying, pink hide stretched tight over its emaciated body; Hairless; Sunken eyes, burning like hot coals</entry>
+		<entry>Mottled, decaying, purple hide stretched tight over its emaciated body; Almost hairless; Sunken eyes, burning like hot coals</entry>
+		<entry>Mottled, decaying, purple hide stretched tight over its emaciated body; Hairless; Sunken eyes, burning like hot coals</entry>
 	</collection>
 	<collection>
 		<name>Cloud GiantCommon</name>
@@ -3369,6 +3399,9 @@
 		<entry>Rusted red color; Resembles a suit of armor, smooth features</entry>
 		<entry>Rusted red color; Resembles a suit of armor, smooth features, designs carved into the limbs</entry>
 		<entry>Rusted red color; Resembles a suit of armor, smooth features, symbol carved in the chest</entry>
+		<entry>Shining steel color; Resembles a suit of armor, smooth features</entry>
+		<entry>Shining steel color; Resembles a suit of armor, smooth features, designs carved into the limbs</entry>
+		<entry>Shining steel color; Resembles a suit of armor, smooth features, symbol carved in the chest</entry>
 	</collection>
 	<collection>
 		<name>Stone GolemCommon</name>
@@ -3684,6 +3717,26 @@
 		<entry>Chestnut (Light ginger coat; Ginger mane and tail)</entry>
 		<entry>Chestnut (Light ginger coat; Light ginger mane and tail)</entry>
 		<entry>Cleveland Bay</entry>
+		<entry>Clydesdale horse</entry>
+		<entry>Comtois horse</entry>
+		<entry>Cremello (Extremely pale cream coat, mane, and tail; Amber eyes)</entry>
+		<entry>Cremello (Extremely pale cream coat, mane, and tail; Blue eyes)</entry>
+		<entry>Cremello (Extremely pale white coat, mane, and tail; Amber eyes)</entry>
+		<entry>Cremello (Extremely pale white coat, mane, and tail; Blue eyes)</entry>
+		<entry>Dole Gudbrandsdal</entry>
+		<entry>Dun (Creamy-golden coat; Black mane and tail; Dark dorsal strip)</entry>
+		<entry>Dutch Draft</entry>
+		<entry>Estonian Native</entry>
+		<entry>Fjord horse</entry>
+		<entry>Friesian horse</entry>
+		<entry>Galineers Cob</entry>
+		<entry>Gelderlander</entry>
+		<entry>Groninger</entry>
+		<entry>Hackney horse</entry>
+		<entry>Haflinger</entry>
+		<entry>Irish Draught</entry>
+		<entry>Italian Heavy Draft</entry>
+		<entry>Jutland</entry>
 	</collection>
 	<collection>
 		<name>Heavy WarhorseCommon</name>
@@ -3713,12 +3766,106 @@
 		<entry>Chestnut (Light ginger coat; Ginger mane and tail)</entry>
 		<entry>Chestnut (Light ginger coat; Light ginger mane and tail)</entry>
 		<entry>Cleveland Bay</entry>
+		<entry>Clydesdale horse</entry>
+		<entry>Comtois horse</entry>
+		<entry>Cremello (Extremely pale cream coat, mane, and tail; Amber eyes)</entry>
+		<entry>Cremello (Extremely pale cream coat, mane, and tail; Blue eyes)</entry>
+		<entry>Cremello (Extremely pale white coat, mane, and tail; Amber eyes)</entry>
+		<entry>Cremello (Extremely pale white coat, mane, and tail; Blue eyes)</entry>
+		<entry>Dole Gudbrandsdal</entry>
+		<entry>Dun (Creamy-golden coat; Black mane and tail; Dark dorsal strip)</entry>
+		<entry>Dutch Draft</entry>
+		<entry>Estonian Native</entry>
+		<entry>Fjord horse</entry>
+		<entry>Friesian horse</entry>
+		<entry>Galineers Cob</entry>
+		<entry>Gelderlander</entry>
+		<entry>Groninger</entry>
+		<entry>Hackney horse</entry>
+		<entry>Haflinger</entry>
+		<entry>Irish Draught</entry>
+		<entry>Italian Heavy Draft</entry>
+		<entry>Jutland</entry>
 	</collection>
 	<collection>
 		<name>Light HorseCommon</name>
+		<entry>Akhal-Teke</entry>
+		<entry>American Paint Horse</entry>
+		<entry>American Saddlebred</entry>
+		<entry>Andalusian</entry>
+		<entry>Appaloosa</entry>
+		<entry>Arabian</entry>
+		<entry>Belgian Warmblood</entry>
+		<entry>Black Forest Horse</entry>
+		<entry>American Quarter Horse</entry>
+		<entry>Bay (Brown coat; Black legs; Black mane and tail)</entry>
+		<entry>Brown coat; Black lower legs; Light brown mane, tail, and muzzle</entry>
+		<entry>Buckskin (Creamy-golden coat with black points; Black mane and tail)</entry>
+		<entry>Buckskin (Rich golden coat with black points; Black mane and tail)</entry>
+		<entry>Chestnut (Dark ginger coat; Dark ginger mane and tail)</entry>
+		<entry>Chestnut (Dark ginger coat; Ginger mane and tail)</entry>
+		<entry>Chestnut (Dark ginger coat; Light ginger mane and tail)</entry>
+		<entry>Chestnut (Ginger coat; Dark ginger mane and tail)</entry>
+		<entry>Chestnut (Ginger coat; Ginger mane and tail)</entry>
+		<entry>Chestnut (Ginger coat; Light ginger mane and tail)</entry>
+		<entry>Chestnut (Light ginger coat; Dark ginger mane and tail)</entry>
+		<entry>Chestnut (Light ginger coat; Ginger mane and tail)</entry>
+		<entry>Chestnut (Light ginger coat; Light ginger mane and tail)</entry>
+		<entry>Cremello (Extremely pale cream coat, mane, and tail; Amber eyes)</entry>
+		<entry>Cremello (Extremely pale cream coat, mane, and tail; Blue eyes)</entry>
+		<entry>Cremello (Extremely pale white coat, mane, and tail; Amber eyes)</entry>
+		<entry>Cremello (Extremely pale white coat, mane, and tail; Blue eyes)</entry>
+		<entry>Dun (Creamy-golden coat; Black mane and tail; Dark dorsal strip)</entry>
+		<entry>Brumby</entry>
+		<entry>Cob</entry>
+		<entry>Criollo</entry>
+		<entry>Dutch Warmblood</entry>
+		<entry>Falabella</entry>
+		<entry>Ferghana</entry>
+		<entry>Friesian</entry>
+		<entry>Hanoverian</entry>
+		<entry>Holsteiner</entry>
+		<entry>Icelandic horse</entry>
 	</collection>
 	<collection>
 		<name>Light WarhorseCommon</name>
+		<entry>Akhal-Teke</entry>
+		<entry>American Paint Horse</entry>
+		<entry>American Saddlebred</entry>
+		<entry>Andalusian</entry>
+		<entry>Appaloosa</entry>
+		<entry>Arabian</entry>
+		<entry>Belgian Warmblood</entry>
+		<entry>Black Forest Horse</entry>
+		<entry>American Quarter Horse</entry>
+		<entry>Bay (Brown coat; Black legs; Black mane and tail)</entry>
+		<entry>Brown coat; Black lower legs; Light brown mane, tail, and muzzle</entry>
+		<entry>Buckskin (Creamy-golden coat with black points; Black mane and tail)</entry>
+		<entry>Buckskin (Rich golden coat with black points; Black mane and tail)</entry>
+		<entry>Chestnut (Dark ginger coat; Dark ginger mane and tail)</entry>
+		<entry>Chestnut (Dark ginger coat; Ginger mane and tail)</entry>
+		<entry>Chestnut (Dark ginger coat; Light ginger mane and tail)</entry>
+		<entry>Chestnut (Ginger coat; Dark ginger mane and tail)</entry>
+		<entry>Chestnut (Ginger coat; Ginger mane and tail)</entry>
+		<entry>Chestnut (Ginger coat; Light ginger mane and tail)</entry>
+		<entry>Chestnut (Light ginger coat; Dark ginger mane and tail)</entry>
+		<entry>Chestnut (Light ginger coat; Ginger mane and tail)</entry>
+		<entry>Chestnut (Light ginger coat; Light ginger mane and tail)</entry>
+		<entry>Cremello (Extremely pale cream coat, mane, and tail; Amber eyes)</entry>
+		<entry>Cremello (Extremely pale cream coat, mane, and tail; Blue eyes)</entry>
+		<entry>Cremello (Extremely pale white coat, mane, and tail; Amber eyes)</entry>
+		<entry>Cremello (Extremely pale white coat, mane, and tail; Blue eyes)</entry>
+		<entry>Dun (Creamy-golden coat; Black mane and tail; Dark dorsal strip)</entry>
+		<entry>Brumby</entry>
+		<entry>Cob</entry>
+		<entry>Criollo</entry>
+		<entry>Dutch Warmblood</entry>
+		<entry>Falabella</entry>
+		<entry>Ferghana</entry>
+		<entry>Friesian</entry>
+		<entry>Hanoverian</entry>
+		<entry>Holsteiner</entry>
+		<entry>Icelandic horse</entry>
 	</collection>
 	<collection>
 		<name>Hound ArchonCommon</name>
@@ -3735,7 +3882,7 @@
 	</collection>
 	<collection>
 		<name>Lantern ArchonCommon</name>
-		
+		<entry>Sphere of soft, glowing light</entry>
 	</collection>
 	<collection>
 		<name>Trumpet ArchonCommon</name>
@@ -4550,6 +4697,22 @@
 		<entry>Reddish-brown scaled skin; Orange-red eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
 		<entry>Reddish-brown scaled skin; Red eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
 		<entry>Reddish-brown scaled skin; Red eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
+		<entry>Rusty black scaled skin; Burnt orange eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
+		<entry>Rusty black scaled skin; Burnt orange eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
+		<entry>Rusty black scaled skin; Burnt red eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
+		<entry>Rusty black scaled skin; Burnt red eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
+		<entry>Rusty black scaled skin; Orange-red eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
+		<entry>Rusty black scaled skin; Orange-red eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
+		<entry>Rusty black scaled skin; Red eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
+		<entry>Rusty black scaled skin; Red eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
+		<entry>Rusty brown scaled skin; Burnt orange eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
+		<entry>Rusty brown scaled skin; Burnt orange eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
+		<entry>Rusty brown scaled skin; Burnt red eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
+		<entry>Rusty brown scaled skin; Burnt red eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
+		<entry>Rusty brown scaled skin; Orange-red eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
+		<entry>Rusty brown scaled skin; Orange-red eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
+		<entry>Rusty brown scaled skin; Red eyes; Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail</entry>
+		<entry>Rusty brown scaled skin; Red eyes; Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail</entry>
 	</collection>
 	<collection>
 		<name>KolyarutCommon</name>
@@ -4558,7 +4721,7 @@
 	</collection>
 	<collection>
 		<name>MarutCommon</name>
-		
+		<entry>Resembles a massive statue made entirely of onyx, humanoid in form but composed of mechanical components. Clad in golden armor.</entry>
 	</collection>
 	<collection>
 		<name>ZelekhutCommon</name>
@@ -4590,6 +4753,10 @@
 		<entry>Yellow-green skin with a black head, black tips on tentacles; Large green eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
 		<entry>Yellow-green skin with a black head, black tips on tentacles; Large red eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
 		<entry>Yellow-green skin with a black head, black tips on tentacles; Large yellow eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Yellow-green skin; Large blue eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Yellow-green skin; Large green eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Yellow-green skin; Large red eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
+		<entry>Yellow-green skin; Large yellow eyes; Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body</entry>
 	</collection>
 	<collection>
 		<name>KrensharCommon</name>
@@ -4620,7 +4787,8 @@
 	</collection>
 	<collection>
 		<name>LemureCommon</name>
-		
+		<entry>Orange skin; Blob of molten, stinking flesh. Formless, shivering mass below the waist. Head and torso is vaguely humanoid.</entry>
+		<entry>Pink skin; Blob of molten, stinking flesh. Formless, shivering mass below the waist. Head and torso is vaguely humanoid.</entry>
 	</collection>
 	<collection>
 		<name>LeonalCommon</name>
@@ -4629,8 +4797,7 @@
 	</collection>
 	<collection>
 		<name>LeopardCommon</name>
-		
-		
+		<entry>Yellow fur with rosette-shaped spots</entry>
 	</collection>
 	<collection>
 		<name>Lightfoot HalflingCommon</name>
@@ -4655,8 +4822,7 @@
 	</collection>
 	<collection>
 		<name>LizardCommon</name>
-		
-		
+		<entry>Green skin</entry>
 	</collection>
 	<collection>
 		<name>Monitor LizardCommon</name>
@@ -4665,26 +4831,50 @@
 	</collection>
 	<collection>
 		<name>LizardfolkCommon</name>
-		
-		
+		<entry>Black scales; Yellow eyes; Tail, sharp claws and teeth</entry>
+		<entry>Brown scales; Yellow eyes; Tail, sharp claws and teeth</entry>
+		<entry>Dark brown scales; Yellow eyes; Tail, sharp claws and teeth</entry>
+		<entry>Dark gray scales; Yellow eyes; Tail, sharp claws and teeth</entry>
+		<entry>Dark green scales; Yellow eyes; Tail, sharp claws and teeth</entry>
+		<entry>Gray scales; Yellow eyes; Tail, sharp claws and teeth</entry>
+		<entry>Green scales; Yellow eyes; Tail, sharp claws and teeth</entry>
+		<entry>Green-brown scales; Yellow eyes; Tail, sharp claws and teeth</entry>
+		<entry>Green-gray scales; Yellow eyes; Tail, sharp claws and teeth</entry>
 	</collection>
 	<collection>
 		<name>LocathahCommon</name>
-		
-		
+		<entry>Fine ochre scales with green scales on the stomach; All-black eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine ochre scales with green scales on the stomach; All-white eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine ochre scales with pale-yellow scales on the stomach; All-black eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine ochre scales with pale-yellow scales on the stomach; All-white eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine ochre scales with sea-green scales on the stomach; All-black eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine ochre scales with sea-green scales on the stomach; All-white eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine ochre scales with yellow scales on the stomach; All-black eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine ochre scales with yellow scales on the stomach; All-white eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine ochre scales with yellow-green scales on the stomach; All-black eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine ochre scales with yellow-green scales on the stomach; All-white eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine olive-green scales with green scales on the stomach; All-black eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine olive-green scales with green scales on the stomach; All-white eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine olive-green scales with pale-yellow scales on the stomach; All-black eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine olive-green scales with pale-yellow scales on the stomach; All-white eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine olive-green scales with sea-green scales on the stomach; All-black eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine olive-green scales with sea-green scales on the stomach; All-white eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine olive-green scales with yellow scales on the stomach; All-black eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine olive-green scales with yellow scales on the stomach; All-white eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine olive-green scales with yellow-green scales on the stomach; All-black eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine olive-green scales with yellow-green scales on the stomach; All-white eyes; slender, large fins on arms and legs. Toothless mouth</entry>
 	</collection>
 	<collection>
 		<name>Locust SwarmCommon</name>
-		
+		<entry>5,000 locusts</entry>
 	</collection>
 	<collection>
 		<name>MagminCommon</name>
-		
+		<entry>Seemingly sculpted from hardened magma. Small bursts of flame constantly erupt from its skin</entry>
 	</collection>
 	<collection>
 		<name>Manta RayCommon</name>
-		
-		
+		<entry>Black top with white underbelly</entry>
 	</collection>
 	<collection>
 		<name>ManticoreCommon</name>
@@ -4697,106 +4887,9 @@
 	</collection>
 	<collection>
 		<name>MedusaCommon</name>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		<entry>Earthy-brown, scaly skin; Hair is mass of 1‑foot-long living venomous serpents; Intense red eyes</entry>
+		<entry>Pale gray, scaly skin; Hair is mass of 1‑foot-long living venomous serpents; Intense red eyes</entry>
+		<entry>Pale-green, scaly skin; Hair is mass of 1‑foot-long living venomous serpents; Intense red eyes</entry>
 	</collection>
 	<collection>
 		<name>MegaraptorCommon</name>
@@ -4831,9 +4924,7 @@
 	</collection>
 	<collection>
 		<name>Magma MephitCommon</name>
-		
-		
-		
+		<entry>Dull red skin; Wings, body oozes molten lava (like sweat)</entry>
 	</collection>
 	<collection>
 		<name>Ooze MephitCommon</name>
@@ -5319,8 +5410,8 @@
 	</collection>
 	<collection>
 		<name>MalentiCommon</name>
-		
-		
+		<entry>Greenish-silver skin; Blue hair; Silvery-black eyes; Resembles an Aquatic Elf</entry>
+		<entry>Greenish-silver skin; Green hair; Silvery-black eyes; Resembles an Aquatic Elf</entry>
 	</collection>
 	<collection>
 		<name>SatyrCommon</name>
@@ -9867,6 +9958,27 @@
 		<entry>Gray skin; Green eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
 		<entry>Gray skin; White eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
 		<entry>Gray skin; Yellow eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Green skin; Green eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Green skin; White eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Green skin; Yellow eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Light red skin; Green eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Light red skin; White eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Light red skin; Yellow eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Orange skin; Green eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Orange skin; White eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Orange skin; Yellow eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Purple skin; Green eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Purple skin; White eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Purple skin; Yellow eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Red skin; Green eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Red skin; White eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Red skin; Yellow eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>White skin; Green eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>White skin; White eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>White skin; Yellow eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Yellow skin; Green eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Yellow skin; White eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
+		<entry>Yellow skin; Yellow eyes; Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs.</entry>
 	</collection>
 	<collection>
 		<name>Invisible StalkerUncommon</name>
@@ -9962,8 +10074,9 @@
 	</collection>
 	<collection>
 		<name>LizardUncommon</name>
-		
-		
+		<entry>Brown skin</entry>
+		<entry>Reddish-green skin</entry>
+		<entry>Turquoise skin</entry>
 	</collection>
 	<collection>
 		<name>Monitor LizardUncommon</name>
