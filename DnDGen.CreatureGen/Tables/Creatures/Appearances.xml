@@ -1787,6 +1787,18 @@
 		<entry>Shiba Inu</entry>
 		<entry>Standard Poodle</entry>
 		<entry>Yorkshire Terrier</entry>
+		<entry>American Foxhound</entry>
+		<entry>Aussie Terrier</entry>
+		<entry>Brussels Griffon</entry>
+		<entry>Cavapoo</entry>
+		<entry>English Bulldog</entry>
+		<entry>German Spitz</entry>
+		<entry>Presa Canario</entry>
+		<entry>Pug</entry>
+		<entry>Red Kelpie</entry>
+		<entry>Saluki</entry>
+		<entry>Schnauzer Terrier</entry>
+		<entry>Teacup Pomeranian</entry>
 	</collection>
 	<collection>
 		<name>Dog, RidingCommon</name>
@@ -1824,7 +1836,6 @@
 		<entry>Central Asian Shepherd</entry>
 		<entry>Chinook</entry>
 		<entry>Dalmation</entry>
-		<entry>Dobermann</entry>
 		<entry>Dogo Argentino</entry>
 		<entry>Dogue de Bordeaux</entry>
 		<entry>English Mastiff</entry>
@@ -1854,10 +1865,27 @@
 		<entry>Samoyed</entry>
 		<entry>Sarabi</entry>
 		<entry>Siberian Husky</entry>
-		<entry>St. Bernard</entry>
 		<entry>Standard Schnauzer</entry>
 		<entry>Tibetan Mastiff</entry>
 		<entry>Yakutian Laika</entry>
+		<entry>Blue Heeler</entry>
+		<entry>Catahoula Leopard Dog</entry>
+		<entry>Chocolate Labrador</entry>
+		<entry>Chocolate Labrador/Rottweiler Mix</entry>
+		<entry>Chow Chow</entry>
+		<entry>Doberman</entry>
+		<entry>English Setter</entry>
+		<entry>Greyhound</entry>
+		<entry>Irish Setter</entry>
+		<entry>Irish Wolfhound</entry>
+		<entry>Japanese Akita</entry>
+		<entry>Labrador</entry>
+		<entry>Maremma Sheepdog</entry>
+		<entry>Mastiff</entry>
+		<entry>Red Heeler</entry>
+		<entry>Red/Blue Heeler Mix</entry>
+		<entry>Rough Collie</entry>
+		<entry>Saint Bernard</entry>
 	</collection>
 	<collection>
 		<name>DonkeyCommon</name>
@@ -2878,6 +2906,18 @@
 		<entry>Tan skin; Straight pale gold hair; Green eyes; Pointed ears</entry>
 		<entry>Tan skin; Straight silver hair; Green eyes; Pointed ears</entry>
 		<entry>Tan skin; Straight white hair; Green eyes; Pointed ears</entry>
+		<entry>White skin; Curly black hair; Green eyes; Pointed ears</entry>
+		<entry>White skin; Curly pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>White skin; Curly silver hair; Green eyes; Pointed ears</entry>
+		<entry>White skin; Curly white hair; Green eyes; Pointed ears</entry>
+		<entry>White skin; Kinky black hair; Green eyes; Pointed ears</entry>
+		<entry>White skin; Kinky pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>White skin; Kinky silver hair; Green eyes; Pointed ears</entry>
+		<entry>White skin; Kinky white hair; Green eyes; Pointed ears</entry>
+		<entry>White skin; Straight black hair; Green eyes; Pointed ears</entry>
+		<entry>White skin; Straight pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>White skin; Straight silver hair; Green eyes; Pointed ears</entry>
+		<entry>White skin; Straight white hair; Green eyes; Pointed ears</entry>
 	</collection>
 	<collection>
 		<name>Wild ElfCommon</name>
@@ -3477,8 +3517,7 @@
 	</collection>
 	<collection>
 		<name>NixieCommon</name>
-		
-		
+		<entry>Pale green skin; Dark green hair; Wide, silver eyes; Webbed fingers and toes, pointed ears</entry>
 	</collection>
 	<collection>
 		<name>PixieCommon</name>
@@ -3558,8 +3597,7 @@
 	</collection>
 	<collection>
 		<name>Nessian WarhoundCommon</name>
-		
-		
+		<entry>Coal-black fur with soot-colored markings; Glowing red eyes; Resembles monstrous dog. Soot-colored fangs and tongues. Reek of sulfurous smoke.</entry>
 	</collection>
 	<collection>
 		<name>Hellcat (Bezekira)Common</name>
@@ -3737,6 +3775,76 @@
 		<entry>Irish Draught</entry>
 		<entry>Italian Heavy Draft</entry>
 		<entry>Jutland</entry>
+		<entry>Kabardian</entry>
+		<entry>Karabair</entry>
+		<entry>Kazakh horse</entry>
+		<entry>Kisber Felver</entry>
+		<entry>Lithuanian heavy draft</entry>
+		<entry>Losino horse</entry>
+		<entry>Noriker</entry>
+		<entry>North American Spotted Draft Horse</entry>
+		<entry>North Swedish Horse</entry>
+		<entry>Orlov Trotter</entry>
+		<entry>Overo (Black/brown cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/creamy golden cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/dark ginger cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/dark gray cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/ginger cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/golden cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/gray cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/light ginger cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/light gray cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/rich golden cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/white cow-patterned coat; Black mane and tail)</entry>
+		<entry>Palomino (Golden coat; White mane and tail)</entry>
+		<entry>Percheron</entry>
+		<entry>Polish Draft</entry>
+		<entry>Rhenish German Coldblood</entry>
+		<entry>Roan (White-black coat; Black mane, tail, and legs)</entry>
+		<entry>Roan (White-brown coat; Brown mane, tail, and legs)</entry>
+		<entry>Roan (White-creamy-golden coat; Creamy golden mane, tail, and legs)</entry>
+		<entry>Roan (White-dark-ginger coat; Dark ginger mane, tail, and legs)</entry>
+		<entry>Roan (White-dark-gray coat; Creamy golden mane, tail, and legs)</entry>
+		<entry>Roan (White-ginger coat; Ginger mane, tail, and legs)</entry>
+		<entry>Roan (White-golden coat; Golden mane, tail, and legs)</entry>
+		<entry>Roan (White-gray coat; Creamy golden mane, tail, and legs)</entry>
+		<entry>Roan (White-light-ginger coat; Light ginger mane, tail, and legs)</entry>
+		<entry>Roan (White-light-gray coat; Rich golden mane, tail, and legs)</entry>
+		<entry>Roan (White-rich-golden coat; Rich golden mane, tail, and legs)</entry>
+		<entry>Russian Heavy Draft</entry>
+		<entry>Shagya Arabian</entry>
+		<entry>Shire horse</entry>
+		<entry>Solid black coat; Black mane and tail</entry>
+		<entry>Solid dark gray coat, mane, and tail</entry>
+		<entry>Solid gray coat, mane, and tail</entry>
+		<entry>Solid light gray coat, mane, and tail</entry>
+		<entry>Solid white-gray coat, mane, and tail</entry>
+		<entry>South German Coldblood</entry>
+		<entry>Soviet Heavy Draft</entry>
+		<entry>Spotted (Black coat with brown spots; Brown/black mane and tail)</entry>
+		<entry>Spotted (Black coat with cream spots; Cream/black mane and tail)</entry>
+		<entry>Spotted (Black coat with creamy golden spots; Creamy golden/black mane and tail)</entry>
+		<entry>Spotted (Black coat with dark ginger spots; Dark ginger/black mane and tail)</entry>
+		<entry>Spotted (Black coat with dark gray spots; Dark gray/black mane and tail)</entry>
+		<entry>Spotted (Black coat with ginger spots; Ginger/black mane and tail)</entry>
+		<entry>Spotted (Black coat with golden spots; Golden/black mane and tail)</entry>
+		<entry>Spotted (Black coat with gray spots; Gray/black mane and tail)</entry>
+		<entry>Spotted (Black coat with light ginger spots; Light ginger/black mane and tail)</entry>
+		<entry>Spotted (Black coat with light gray spots; Light gray/black mane and tail)</entry>
+		<entry>Spotted (Black coat with white spots; White/black mane and tail)</entry>
+		<entry>Spotted (Brown coat with black spots; Black/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with cream spots; Cream/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with creamy golden spots; Creamy golden/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with dark ginger spots; Dark ginger/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with dark gray spots; Dark gray/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with ginger spots; Ginger/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with golden spots; Golden/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with gray spots; Gray/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with light ginger spots; Light ginger/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with light gray spots; Light gray/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with white spots; White/brown mane and tail)</entry>
+		<entry>Spotted (White coat with black spots; black/white mane and tail)</entry>
+		<entry>Spotted (White coat with brown spots; brown/white mane and tail)</entry>
 	</collection>
 	<collection>
 		<name>Heavy WarhorseCommon</name>
@@ -3786,6 +3894,76 @@
 		<entry>Irish Draught</entry>
 		<entry>Italian Heavy Draft</entry>
 		<entry>Jutland</entry>
+		<entry>Kabardian</entry>
+		<entry>Karabair</entry>
+		<entry>Kazakh horse</entry>
+		<entry>Kisber Felver</entry>
+		<entry>Lithuanian heavy draft</entry>
+		<entry>Losino horse</entry>
+		<entry>Noriker</entry>
+		<entry>North American Spotted Draft Horse</entry>
+		<entry>North Swedish Horse</entry>
+		<entry>Orlov Trotter</entry>
+		<entry>Overo (Black/brown cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/creamy golden cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/dark ginger cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/dark gray cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/ginger cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/golden cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/gray cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/light ginger cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/light gray cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/rich golden cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/white cow-patterned coat; Black mane and tail)</entry>
+		<entry>Palomino (Golden coat; White mane and tail)</entry>
+		<entry>Percheron</entry>
+		<entry>Polish Draft</entry>
+		<entry>Rhenish German Coldblood</entry>
+		<entry>Roan (White-black coat; Black mane, tail, and legs)</entry>
+		<entry>Roan (White-brown coat; Brown mane, tail, and legs)</entry>
+		<entry>Roan (White-creamy-golden coat; Creamy golden mane, tail, and legs)</entry>
+		<entry>Roan (White-dark-ginger coat; Dark ginger mane, tail, and legs)</entry>
+		<entry>Roan (White-dark-gray coat; Creamy golden mane, tail, and legs)</entry>
+		<entry>Roan (White-ginger coat; Ginger mane, tail, and legs)</entry>
+		<entry>Roan (White-golden coat; Golden mane, tail, and legs)</entry>
+		<entry>Roan (White-gray coat; Creamy golden mane, tail, and legs)</entry>
+		<entry>Roan (White-light-ginger coat; Light ginger mane, tail, and legs)</entry>
+		<entry>Roan (White-light-gray coat; Rich golden mane, tail, and legs)</entry>
+		<entry>Roan (White-rich-golden coat; Rich golden mane, tail, and legs)</entry>
+		<entry>Russian Heavy Draft</entry>
+		<entry>Shagya Arabian</entry>
+		<entry>Shire horse</entry>
+		<entry>Solid black coat; Black mane and tail</entry>
+		<entry>Solid dark gray coat, mane, and tail</entry>
+		<entry>Solid gray coat, mane, and tail</entry>
+		<entry>Solid light gray coat, mane, and tail</entry>
+		<entry>Solid white-gray coat, mane, and tail</entry>
+		<entry>South German Coldblood</entry>
+		<entry>Soviet Heavy Draft</entry>
+		<entry>Spotted (Black coat with brown spots; Brown/black mane and tail)</entry>
+		<entry>Spotted (Black coat with cream spots; Cream/black mane and tail)</entry>
+		<entry>Spotted (Black coat with creamy golden spots; Creamy golden/black mane and tail)</entry>
+		<entry>Spotted (Black coat with dark ginger spots; Dark ginger/black mane and tail)</entry>
+		<entry>Spotted (Black coat with dark gray spots; Dark gray/black mane and tail)</entry>
+		<entry>Spotted (Black coat with ginger spots; Ginger/black mane and tail)</entry>
+		<entry>Spotted (Black coat with golden spots; Golden/black mane and tail)</entry>
+		<entry>Spotted (Black coat with gray spots; Gray/black mane and tail)</entry>
+		<entry>Spotted (Black coat with light ginger spots; Light ginger/black mane and tail)</entry>
+		<entry>Spotted (Black coat with light gray spots; Light gray/black mane and tail)</entry>
+		<entry>Spotted (Black coat with white spots; White/black mane and tail)</entry>
+		<entry>Spotted (Brown coat with black spots; Black/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with cream spots; Cream/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with creamy golden spots; Creamy golden/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with dark ginger spots; Dark ginger/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with dark gray spots; Dark gray/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with ginger spots; Ginger/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with golden spots; Golden/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with gray spots; Gray/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with light ginger spots; Light ginger/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with light gray spots; Light gray/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with white spots; White/brown mane and tail)</entry>
+		<entry>Spotted (White coat with black spots; black/white mane and tail)</entry>
+		<entry>Spotted (White coat with brown spots; brown/white mane and tail)</entry>
 	</collection>
 	<collection>
 		<name>Light HorseCommon</name>
@@ -3826,6 +4004,76 @@
 		<entry>Hanoverian</entry>
 		<entry>Holsteiner</entry>
 		<entry>Icelandic horse</entry>
+		<entry>Irish Sport Horse</entry>
+		<entry>Kandachime</entry>
+		<entry>Knabstupper</entry>
+		<entry>Konik</entry>
+		<entry>Lipizzan</entry>
+		<entry>Lusitano</entry>
+		<entry>Mangalarga Marchador</entry>
+		<entry>Marwari</entry>
+		<entry>Missouri Fox Trotter</entry>
+		<entry>Mongolian</entry>
+		<entry>Morgan horse</entry>
+		<entry>Mustang</entry>
+		<entry>Overo (Black/brown cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/creamy golden cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/dark ginger cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/dark gray cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/ginger cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/golden cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/gray cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/light ginger cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/light gray cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/rich golden cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/white cow-patterned coat; Black mane and tail)</entry>
+		<entry>Palomino (Golden coat; White mane and tail)</entry>
+		<entry>Percheron</entry>
+		<entry>Peruvian paso</entry>
+		<entry>Pure Spanish Breed</entry>
+		<entry>Rahvan</entry>
+		<entry>Roan (White-black coat; Black mane, tail, and legs)</entry>
+		<entry>Roan (White-brown coat; Brown mane, tail, and legs)</entry>
+		<entry>Roan (White-creamy-golden coat; Creamy golden mane, tail, and legs)</entry>
+		<entry>Roan (White-dark-ginger coat; Dark ginger mane, tail, and legs)</entry>
+		<entry>Roan (White-dark-gray coat; Creamy golden mane, tail, and legs)</entry>
+		<entry>Roan (White-ginger coat; Ginger mane, tail, and legs)</entry>
+		<entry>Roan (White-golden coat; Golden mane, tail, and legs)</entry>
+		<entry>Roan (White-gray coat; Creamy golden mane, tail, and legs)</entry>
+		<entry>Roan (White-light-ginger coat; Light ginger mane, tail, and legs)</entry>
+		<entry>Roan (White-light-gray coat; Rich golden mane, tail, and legs)</entry>
+		<entry>Roan (White-rich-golden coat; Rich golden mane, tail, and legs)</entry>
+		<entry>Solid black coat; Black mane and tail</entry>
+		<entry>Solid dark gray coat, mane, and tail</entry>
+		<entry>Solid gray coat, mane, and tail</entry>
+		<entry>Solid light gray coat, mane, and tail</entry>
+		<entry>Solid white-gray coat, mane, and tail</entry>
+		<entry>Spotted (Black coat with brown spots; Brown/black mane and tail)</entry>
+		<entry>Spotted (Black coat with cream spots; Cream/black mane and tail)</entry>
+		<entry>Spotted (Black coat with creamy golden spots; Creamy golden/black mane and tail)</entry>
+		<entry>Spotted (Black coat with dark ginger spots; Dark ginger/black mane and tail)</entry>
+		<entry>Spotted (Black coat with dark gray spots; Dark gray/black mane and tail)</entry>
+		<entry>Spotted (Black coat with ginger spots; Ginger/black mane and tail)</entry>
+		<entry>Spotted (Black coat with golden spots; Golden/black mane and tail)</entry>
+		<entry>Spotted (Black coat with gray spots; Gray/black mane and tail)</entry>
+		<entry>Spotted (Black coat with light ginger spots; Light ginger/black mane and tail)</entry>
+		<entry>Spotted (Black coat with light gray spots; Light gray/black mane and tail)</entry>
+		<entry>Spotted (Black coat with white spots; White/black mane and tail)</entry>
+		<entry>Spotted (Brown coat with black spots; Black/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with cream spots; Cream/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with creamy golden spots; Creamy golden/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with dark ginger spots; Dark ginger/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with dark gray spots; Dark gray/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with ginger spots; Ginger/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with golden spots; Golden/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with gray spots; Gray/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with light ginger spots; Light ginger/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with light gray spots; Light gray/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with white spots; White/brown mane and tail)</entry>
+		<entry>Spotted (White coat with black spots; black/white mane and tail)</entry>
+		<entry>Spotted (White coat with brown spots; brown/white mane and tail)</entry>
+		<entry>Spotted (White coat with cream spots; Cream/white mane and tail)</entry>
+		<entry>Spotted (White coat with creamy golden spots; Creamy golden/white mane and tail)</entry>
 	</collection>
 	<collection>
 		<name>Light WarhorseCommon</name>
@@ -3866,6 +4114,76 @@
 		<entry>Hanoverian</entry>
 		<entry>Holsteiner</entry>
 		<entry>Icelandic horse</entry>
+		<entry>Irish Sport Horse</entry>
+		<entry>Kandachime</entry>
+		<entry>Knabstupper</entry>
+		<entry>Konik</entry>
+		<entry>Lipizzan</entry>
+		<entry>Lusitano</entry>
+		<entry>Mangalarga Marchador</entry>
+		<entry>Marwari</entry>
+		<entry>Missouri Fox Trotter</entry>
+		<entry>Mongolian</entry>
+		<entry>Morgan horse</entry>
+		<entry>Mustang</entry>
+		<entry>Overo (Black/brown cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/creamy golden cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/dark ginger cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/dark gray cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/ginger cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/golden cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/gray cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/light ginger cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/light gray cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/rich golden cow-patterned coat; Black mane and tail)</entry>
+		<entry>Overo (Black/white cow-patterned coat; Black mane and tail)</entry>
+		<entry>Palomino (Golden coat; White mane and tail)</entry>
+		<entry>Percheron</entry>
+		<entry>Peruvian paso</entry>
+		<entry>Pure Spanish Breed</entry>
+		<entry>Rahvan</entry>
+		<entry>Roan (White-black coat; Black mane, tail, and legs)</entry>
+		<entry>Roan (White-brown coat; Brown mane, tail, and legs)</entry>
+		<entry>Roan (White-creamy-golden coat; Creamy golden mane, tail, and legs)</entry>
+		<entry>Roan (White-dark-ginger coat; Dark ginger mane, tail, and legs)</entry>
+		<entry>Roan (White-dark-gray coat; Creamy golden mane, tail, and legs)</entry>
+		<entry>Roan (White-ginger coat; Ginger mane, tail, and legs)</entry>
+		<entry>Roan (White-golden coat; Golden mane, tail, and legs)</entry>
+		<entry>Roan (White-gray coat; Creamy golden mane, tail, and legs)</entry>
+		<entry>Roan (White-light-ginger coat; Light ginger mane, tail, and legs)</entry>
+		<entry>Roan (White-light-gray coat; Rich golden mane, tail, and legs)</entry>
+		<entry>Roan (White-rich-golden coat; Rich golden mane, tail, and legs)</entry>
+		<entry>Solid black coat; Black mane and tail</entry>
+		<entry>Solid dark gray coat, mane, and tail</entry>
+		<entry>Solid gray coat, mane, and tail</entry>
+		<entry>Solid light gray coat, mane, and tail</entry>
+		<entry>Solid white-gray coat, mane, and tail</entry>
+		<entry>Spotted (Black coat with brown spots; Brown/black mane and tail)</entry>
+		<entry>Spotted (Black coat with cream spots; Cream/black mane and tail)</entry>
+		<entry>Spotted (Black coat with creamy golden spots; Creamy golden/black mane and tail)</entry>
+		<entry>Spotted (Black coat with dark ginger spots; Dark ginger/black mane and tail)</entry>
+		<entry>Spotted (Black coat with dark gray spots; Dark gray/black mane and tail)</entry>
+		<entry>Spotted (Black coat with ginger spots; Ginger/black mane and tail)</entry>
+		<entry>Spotted (Black coat with golden spots; Golden/black mane and tail)</entry>
+		<entry>Spotted (Black coat with gray spots; Gray/black mane and tail)</entry>
+		<entry>Spotted (Black coat with light ginger spots; Light ginger/black mane and tail)</entry>
+		<entry>Spotted (Black coat with light gray spots; Light gray/black mane and tail)</entry>
+		<entry>Spotted (Black coat with white spots; White/black mane and tail)</entry>
+		<entry>Spotted (Brown coat with black spots; Black/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with cream spots; Cream/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with creamy golden spots; Creamy golden/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with dark ginger spots; Dark ginger/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with dark gray spots; Dark gray/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with ginger spots; Ginger/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with golden spots; Golden/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with gray spots; Gray/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with light ginger spots; Light ginger/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with light gray spots; Light gray/brown mane and tail)</entry>
+		<entry>Spotted (Brown coat with white spots; White/brown mane and tail)</entry>
+		<entry>Spotted (White coat with black spots; black/white mane and tail)</entry>
+		<entry>Spotted (White coat with brown spots; brown/white mane and tail)</entry>
+		<entry>Spotted (White coat with cream spots; Cream/white mane and tail)</entry>
+		<entry>Spotted (White coat with creamy golden spots; Creamy golden/white mane and tail)</entry>
 	</collection>
 	<collection>
 		<name>Hound ArchonCommon</name>
@@ -4826,8 +5144,10 @@
 	</collection>
 	<collection>
 		<name>Monitor LizardCommon</name>
-		
-		
+		<entry>Black skin</entry>
+		<entry>Blue skin</entry>
+		<entry>Green skin</entry>
+		<entry>Yellow skin</entry>
 	</collection>
 	<collection>
 		<name>LizardfolkCommon</name>
@@ -4863,6 +5183,26 @@
 		<entry>Fine olive-green scales with yellow scales on the stomach; All-white eyes; slender, large fins on arms and legs. Toothless mouth</entry>
 		<entry>Fine olive-green scales with yellow-green scales on the stomach; All-black eyes; slender, large fins on arms and legs. Toothless mouth</entry>
 		<entry>Fine olive-green scales with yellow-green scales on the stomach; All-white eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine yellow scales with green scales on the stomach; All-black eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine yellow scales with green scales on the stomach; All-white eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine yellow scales with pale-yellow scales on the stomach; All-black eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine yellow scales with pale-yellow scales on the stomach; All-white eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine yellow scales with sea-green scales on the stomach; All-black eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine yellow scales with sea-green scales on the stomach; All-white eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine yellow scales with yellow scales on the stomach; All-black eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine yellow scales with yellow scales on the stomach; All-white eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine yellow scales with yellow-green scales on the stomach; All-black eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine yellow scales with yellow-green scales on the stomach; All-white eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine yellow-green scales with green scales on the stomach; All-black eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine yellow-green scales with green scales on the stomach; All-white eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine yellow-green scales with pale-yellow scales on the stomach; All-black eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine yellow-green scales with pale-yellow scales on the stomach; All-white eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine yellow-green scales with sea-green scales on the stomach; All-black eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine yellow-green scales with sea-green scales on the stomach; All-white eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine yellow-green scales with yellow scales on the stomach; All-black eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine yellow-green scales with yellow scales on the stomach; All-white eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine yellow-green scales with yellow-green scales on the stomach; All-black eyes; slender, large fins on arms and legs. Toothless mouth</entry>
+		<entry>Fine yellow-green scales with yellow-green scales on the stomach; All-white eyes; slender, large fins on arms and legs. Toothless mouth</entry>
 	</collection>
 	<collection>
 		<name>Locust SwarmCommon</name>
@@ -4893,8 +5233,13 @@
 	</collection>
 	<collection>
 		<name>MegaraptorCommon</name>
-		
-		
+		<entry>Ashy gray skin; Large sickle claw on its foot. Large, sharp teeth.</entry>
+		<entry>Beige skin; Large sickle claw on its foot. Large, sharp teeth.</entry>
+		<entry>Dark gray skin; Large sickle claw on its foot. Large, sharp teeth.</entry>
+		<entry>Dull pale green skin; Large sickle claw on its foot. Large, sharp teeth.</entry>
+		<entry>Orange skin; Large sickle claw on its foot. Large, sharp teeth.</entry>
+		<entry>Stone gray skin; Large sickle claw on its foot. Large, sharp teeth.</entry>
+		<entry>Yellow skin; Large sickle claw on its foot. Large, sharp teeth.</entry>
 	</collection>
 	<collection>
 		<name>Air MephitCommon</name>
@@ -4957,180 +5302,536 @@
 	</collection>
 	<collection>
 		<name>MerrowCommon</name>
-		
-		
+		<entry>Green scales; Seaweed-green, slimy hair; Dark green eyes; Black teeth and nails, webbed hands and feet, underbite, sloping shoulders, covered in tattoos</entry>
+		<entry>Green scales; Seaweed-green, slimy hair; Green eyes; Black teeth and nails, webbed hands and feet, underbite, sloping shoulders, covered in tattoos</entry>
 	</collection>
 	<collection>
 		<name>MimicCommon</name>
-		
+		<entry>Shaped like a barrel filled with gleaming swords</entry>
+		<entry>Shaped like a barrel filled with gold</entry>
+		<entry>Shaped like a bathtub</entry>
+		<entry>Shaped like a bed</entry>
+		<entry>Shaped like a bench</entry>
+		<entry>Shaped like a bookshelf filled with books</entry>
+		<entry>Shaped like a brazier, unlit</entry>
+		<entry>Shaped like a candelabra, unlit</entry>
+		<entry>Shaped like a cauldron</entry>
+		<entry>Shaped like a chest of drawers</entry>
+		<entry>Shaped like a coat rack</entry>
+		<entry>Shaped like a crate</entry>
+		<entry>Shaped like a cupboard</entry>
+		<entry>Shaped like a divan</entry>
+		<entry>Shaped like a door</entry>
+		<entry>Shaped like a fountain without running water, with a long lever on the side</entry>
+		<entry>Shaped like a gate with a solid lock</entry>
+		<entry>Shaped like a gleaming suit of armor (full plate)</entry>
+		<entry>Shaped like a gleaming suit of armor (half plate)</entry>
+		<entry>Shaped like a ladder</entry>
+		<entry>Shaped like a loom</entry>
+		<entry>Shaped like a raised stone platform</entry>
+		<entry>Shaped like a ramp</entry>
+		<entry>Shaped like a rug</entry>
+		<entry>Shaped like a small set of stairs</entry>
+		<entry>Shaped like a sofa</entry>
+		<entry>Shaped like a stone pedestal with a glass orb on top</entry>
+		<entry>Shaped like a storage chest</entry>
+		<entry>Shaped like a stove</entry>
+		<entry>Shaped like a table</entry>
+		<entry>Shaped like a throne</entry>
+		<entry>Shaped like a trap door in the floor</entry>
+		<entry>Shaped like a treasure chest, closed and locked</entry>
+		<entry>Shaped like a treasure chest, cracked open and glistening with gold</entry>
+		<entry>Shaped like a wardrobe</entry>
+		<entry>Shaped like a washbasin</entry>
+		<entry>Shaped like a weapon rack, filled with finely-carved staffs and mallets</entry>
+		<entry>Shaped like a weapon rack, filled with gleaming blades</entry>
+		<entry>Shaped like a wingback, cushioned chair</entry>
+		<entry>Shaped like a wooden chair</entry>
+		<entry>Shaped like a workbench</entry>
+		<entry>Shaped like an altar</entry>
+		<entry>Shaped like an empty barrel</entry>
+		<entry>Shaped like an iron maiden</entry>
+		<entry>Shaped like an oven</entry>
 	</collection>
 	<collection>
 		<name>Mind Flayer (Illithid)Common</name>
-		
+		<entry>Soft, supple, moist, rubbery, greenish-purple skin; Solid white eyes; Four purplish-black facial tentacles</entry>
+		<entry>Soft, supple, moist, rubbery, greenish-violet skin; Solid white eyes; Four purplish-black facial tentacles</entry>
+		<entry>Soft, supple, moist, rubbery, mauve skin; Solid white eyes; Four purplish-black facial tentacles</entry>
+		<entry>Soft, supple, moist, rubbery, pale greenish-purple skin; Solid white eyes; Four purplish-black facial tentacles</entry>
+		<entry>Soft, supple, moist, rubbery, pale purple skin; Solid white eyes; Four purplish-black facial tentacles</entry>
+		<entry>Soft, supple, moist, rubbery, pale violet skin; Solid white eyes; Four purplish-black facial tentacles</entry>
+		<entry>Soft, supple, moist, rubbery, purple skin; Solid white eyes; Four purplish-black facial tentacles</entry>
+		<entry>Soft, supple, moist, rubbery, violet skin; Solid white eyes; Four purplish-black facial tentacles</entry>
 	</collection>
 	<collection>
 		<name>MinotaurCommon</name>
-		
-		
+		<entry>Black skin; Black hair and fur; Hooves on legs, beige horns</entry>
+		<entry>Black skin; Black hair and fur; Hooves on legs, black horns</entry>
+		<entry>Black skin; Black hair and fur; Hooves on legs, brown horns</entry>
+		<entry>Black skin; Black hair and fur; Hooves on legs, dark brown horns</entry>
+		<entry>Black skin; Black hair and fur; Hooves on legs, dark yellow horns</entry>
+		<entry>Black skin; Black hair and fur; Hooves on legs, white horns</entry>
+		<entry>Black skin; Black hair and fur; Hooves on legs, yellow horns</entry>
+		<entry>Black skin; Black hair and fur; Hooves on legs, yellow-brown horns</entry>
+		<entry>Black skin; Brown hair and fur; Hooves on legs, beige horns</entry>
+		<entry>Black skin; Brown hair and fur; Hooves on legs, black horns</entry>
+		<entry>Black skin; Brown hair and fur; Hooves on legs, brown horns</entry>
+		<entry>Black skin; Brown hair and fur; Hooves on legs, dark brown horns</entry>
+		<entry>Black skin; Brown hair and fur; Hooves on legs, dark yellow horns</entry>
+		<entry>Black skin; Brown hair and fur; Hooves on legs, white horns</entry>
+		<entry>Black skin; Brown hair and fur; Hooves on legs, yellow horns</entry>
+		<entry>Black skin; Brown hair and fur; Hooves on legs, yellow-brown horns</entry>
+		<entry>Black skin; Dark brown hair and fur; Hooves on legs, beige horns</entry>
+		<entry>Black skin; Dark brown hair and fur; Hooves on legs, black horns</entry>
+		<entry>Black skin; Dark brown hair and fur; Hooves on legs, brown horns</entry>
+		<entry>Black skin; Dark brown hair and fur; Hooves on legs, dark brown horns</entry>
+		<entry>Black skin; Dark brown hair and fur; Hooves on legs, dark yellow horns</entry>
+		<entry>Black skin; Dark brown hair and fur; Hooves on legs, white horns</entry>
+		<entry>Black skin; Dark brown hair and fur; Hooves on legs, yellow horns</entry>
+		<entry>Black skin; Dark brown hair and fur; Hooves on legs, yellow-brown horns</entry>
+		<entry>Brown skin; Black hair and fur; Hooves on legs, beige horns</entry>
+		<entry>Brown skin; Black hair and fur; Hooves on legs, black horns</entry>
+		<entry>Brown skin; Black hair and fur; Hooves on legs, brown horns</entry>
+		<entry>Brown skin; Black hair and fur; Hooves on legs, dark brown horns</entry>
+		<entry>Brown skin; Black hair and fur; Hooves on legs, dark yellow horns</entry>
+		<entry>Brown skin; Black hair and fur; Hooves on legs, white horns</entry>
+		<entry>Brown skin; Black hair and fur; Hooves on legs, yellow horns</entry>
+		<entry>Brown skin; Black hair and fur; Hooves on legs, yellow-brown horns</entry>
+		<entry>Brown skin; Brown hair and fur; Hooves on legs, beige horns</entry>
+		<entry>Brown skin; Brown hair and fur; Hooves on legs, black horns</entry>
+		<entry>Brown skin; Brown hair and fur; Hooves on legs, brown horns</entry>
+		<entry>Brown skin; Brown hair and fur; Hooves on legs, dark brown horns</entry>
+		<entry>Brown skin; Brown hair and fur; Hooves on legs, dark yellow horns</entry>
+		<entry>Brown skin; Brown hair and fur; Hooves on legs, white horns</entry>
+		<entry>Brown skin; Brown hair and fur; Hooves on legs, yellow horns</entry>
+		<entry>Brown skin; Brown hair and fur; Hooves on legs, yellow-brown horns</entry>
+		<entry>Brown skin; Dark brown hair and fur; Hooves on legs, beige horns</entry>
+		<entry>Brown skin; Dark brown hair and fur; Hooves on legs, black horns</entry>
+		<entry>Brown skin; Dark brown hair and fur; Hooves on legs, brown horns</entry>
+		<entry>Brown skin; Dark brown hair and fur; Hooves on legs, dark brown horns</entry>
+		<entry>Brown skin; Dark brown hair and fur; Hooves on legs, dark yellow horns</entry>
+		<entry>Brown skin; Dark brown hair and fur; Hooves on legs, white horns</entry>
+		<entry>Brown skin; Dark brown hair and fur; Hooves on legs, yellow horns</entry>
+		<entry>Brown skin; Dark brown hair and fur; Hooves on legs, yellow-brown horns</entry>
+		<entry>Fair skin; Black hair and fur; Hooves on legs, beige horns</entry>
+		<entry>Fair skin; Black hair and fur; Hooves on legs, black horns</entry>
+		<entry>Fair skin; Black hair and fur; Hooves on legs, brown horns</entry>
+		<entry>Fair skin; Black hair and fur; Hooves on legs, dark brown horns</entry>
+		<entry>Fair skin; Black hair and fur; Hooves on legs, dark yellow horns</entry>
+		<entry>Fair skin; Black hair and fur; Hooves on legs, white horns</entry>
+		<entry>Fair skin; Black hair and fur; Hooves on legs, yellow horns</entry>
+		<entry>Fair skin; Black hair and fur; Hooves on legs, yellow-brown horns</entry>
+		<entry>Fair skin; Brown hair and fur; Hooves on legs, beige horns</entry>
+		<entry>Fair skin; Brown hair and fur; Hooves on legs, black horns</entry>
+		<entry>Fair skin; Brown hair and fur; Hooves on legs, brown horns</entry>
+		<entry>Fair skin; Brown hair and fur; Hooves on legs, dark brown horns</entry>
+		<entry>Fair skin; Brown hair and fur; Hooves on legs, dark yellow horns</entry>
+		<entry>Fair skin; Brown hair and fur; Hooves on legs, white horns</entry>
+		<entry>Fair skin; Brown hair and fur; Hooves on legs, yellow horns</entry>
+		<entry>Fair skin; Brown hair and fur; Hooves on legs, yellow-brown horns</entry>
+		<entry>Fair skin; Dark brown hair and fur; Hooves on legs, beige horns</entry>
+		<entry>Fair skin; Dark brown hair and fur; Hooves on legs, black horns</entry>
+		<entry>Fair skin; Dark brown hair and fur; Hooves on legs, brown horns</entry>
+		<entry>Fair skin; Dark brown hair and fur; Hooves on legs, dark brown horns</entry>
+		<entry>Fair skin; Dark brown hair and fur; Hooves on legs, dark yellow horns</entry>
+		<entry>Fair skin; Dark brown hair and fur; Hooves on legs, white horns</entry>
+		<entry>Fair skin; Dark brown hair and fur; Hooves on legs, yellow horns</entry>
+		<entry>Fair skin; Dark brown hair and fur; Hooves on legs, yellow-brown horns</entry>
+		<entry>Pale skin; Black hair and fur; Hooves on legs, beige horns</entry>
+		<entry>Pale skin; Black hair and fur; Hooves on legs, black horns</entry>
+		<entry>Pale skin; Black hair and fur; Hooves on legs, brown horns</entry>
+		<entry>Pale skin; Black hair and fur; Hooves on legs, dark brown horns</entry>
+		<entry>Pale skin; Black hair and fur; Hooves on legs, dark yellow horns</entry>
+		<entry>Pale skin; Black hair and fur; Hooves on legs, white horns</entry>
+		<entry>Pale skin; Black hair and fur; Hooves on legs, yellow horns</entry>
+		<entry>Pale skin; Black hair and fur; Hooves on legs, yellow-brown horns</entry>
+		<entry>Pale skin; Brown hair and fur; Hooves on legs, beige horns</entry>
+		<entry>Pale skin; Brown hair and fur; Hooves on legs, black horns</entry>
+		<entry>Pale skin; Brown hair and fur; Hooves on legs, brown horns</entry>
+		<entry>Pale skin; Brown hair and fur; Hooves on legs, dark brown horns</entry>
+		<entry>Pale skin; Brown hair and fur; Hooves on legs, dark yellow horns</entry>
+		<entry>Pale skin; Brown hair and fur; Hooves on legs, white horns</entry>
+		<entry>Pale skin; Brown hair and fur; Hooves on legs, yellow horns</entry>
+		<entry>Pale skin; Brown hair and fur; Hooves on legs, yellow-brown horns</entry>
+		<entry>Pale skin; Dark brown hair and fur; Hooves on legs, beige horns</entry>
+		<entry>Pale skin; Dark brown hair and fur; Hooves on legs, black horns</entry>
+		<entry>Pale skin; Dark brown hair and fur; Hooves on legs, brown horns</entry>
+		<entry>Pale skin; Dark brown hair and fur; Hooves on legs, dark brown horns</entry>
+		<entry>Pale skin; Dark brown hair and fur; Hooves on legs, dark yellow horns</entry>
+		<entry>Pale skin; Dark brown hair and fur; Hooves on legs, white horns</entry>
+		<entry>Pale skin; Dark brown hair and fur; Hooves on legs, yellow horns</entry>
+		<entry>Pale skin; Dark brown hair and fur; Hooves on legs, yellow-brown horns</entry>
 	</collection>
 	<collection>
 		<name>MohrgCommon</name>
-		
+		<entry>Skeletal corpse filled with writhing organs</entry>
 	</collection>
 	<collection>
 		<name>MonkeyCommon</name>
-		
-		
+		<entry>Acrecebus</entry>
+		<entry>Azara's capuchin</entry>
+		<entry>Black capuchin</entry>
+		<entry>Black colobus</entry>
+		<entry>Black-and-white colobus</entry>
+		<entry>Black-striped capuchin</entry>
+		<entry>Blond capuchin</entry>
+		<entry>Colombian white-faced capuchin</entry>
+		<entry>Crested capuchin</entry>
+		<entry>Golden-bellied capuchin</entry>
+		<entry>Kaapori capuchin</entry>
+		<entry>Killikaike</entry>
+		<entry>Mantled guereza</entry>
+		<entry>Marañón white-fronted capuchin</entry>
+		<entry>Panamanian white-faced capuchin</entry>
+		<entry>Red colobus</entry>
+		<entry>Santa Marta white-fronted capuchin</entry>
+		<entry>Spix's white-fronted capuchin</entry>
+		<entry>Tufted capuchin</entry>
+		<entry>Varied white-fronted capuchin</entry>
+		<entry>Wedge-capped capuchin</entry>
+		<entry>White-fronted capuchin</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Centipede, ColossalCommon</name>
-		
-		
+		<entry>Black skin</entry>
+		<entry>Brown skin</entry>
+		<entry>Grey skin</entry>
+		<entry>Pale grey skin</entry>
+		<entry>Red skin</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Centipede, GargantuanCommon</name>
-		
-		
+		<entry>Black skin</entry>
+		<entry>Brown skin</entry>
+		<entry>Grey skin</entry>
+		<entry>Pale grey skin</entry>
+		<entry>Red skin</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Centipede, HugeCommon</name>
-		
-		
+		<entry>Black skin</entry>
+		<entry>Brown skin</entry>
+		<entry>Grey skin</entry>
+		<entry>Pale grey skin</entry>
+		<entry>Red skin</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Centipede, LargeCommon</name>
-		
-		
+		<entry>Black skin</entry>
+		<entry>Brown skin</entry>
+		<entry>Grey skin</entry>
+		<entry>Pale grey skin</entry>
+		<entry>Red skin</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Centipede, MediumCommon</name>
-		
-		
+		<entry>Black skin</entry>
+		<entry>Brown skin</entry>
+		<entry>Grey skin</entry>
+		<entry>Pale grey skin</entry>
+		<entry>Red skin</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Centipede, SmallCommon</name>
-		
-		
+		<entry>Black skin</entry>
+		<entry>Brown skin</entry>
+		<entry>Grey skin</entry>
+		<entry>Pale grey skin</entry>
+		<entry>Red skin</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Centipede, TinyCommon</name>
-		
-		
+		<entry>Black skin</entry>
+		<entry>Brown skin</entry>
+		<entry>Grey skin</entry>
+		<entry>Pale grey skin</entry>
+		<entry>Red skin</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Scorpion, ColossalCommon</name>
-		
-		
+		<entry>Black exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>Yellow exoskeleton; Front pincers and the tail with a stinger</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Scorpion, GargantuanCommon</name>
-		
-		
+		<entry>Black exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>Yellow exoskeleton; Front pincers and the tail with a stinger</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Scorpion, HugeCommon</name>
-		
-		
+		<entry>Black exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>Yellow exoskeleton; Front pincers and the tail with a stinger</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Scorpion, LargeCommon</name>
-		
-		
+		<entry>Black exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>Yellow exoskeleton; Front pincers and the tail with a stinger</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Scorpion, MediumCommon</name>
-		
-		
+		<entry>Black exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>Yellow exoskeleton; Front pincers and the tail with a stinger</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Scorpion, SmallCommon</name>
-		
-		
+		<entry>Black exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>Yellow exoskeleton; Front pincers and the tail with a stinger</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Scorpion, TinyCommon</name>
-		
-		
+		<entry>Black exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>Yellow exoskeleton; Front pincers and the tail with a stinger</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Hunter, ColossalCommon</name>
-		
-		
+		<entry>Black house spider</entry>
+		<entry>Black-footed yellow sac spider</entry>
+		<entry>Bold jumper</entry>
+		<entry>Brown recluse spider</entry>
+		<entry>Brown widow</entry>
+		<entry>Common house spider</entry>
+		<entry>False widow</entry>
+		<entry>Forked pirate spider</entry>
+		<entry>Giant house spider</entry>
+		<entry>Goliath birdeater</entry>
+		<entry>Hobo spider</entry>
+		<entry>Noble false widow</entry>
+		<entry>Rabid wolf spider</entry>
+		<entry>Redback spider</entry>
+		<entry>Southern black widow</entry>
+		<entry>Western black widow</entry>
+		<entry>Woodlouse spider</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Hunter, GargantuanCommon</name>
-		
-		
+		<entry>Black house spider</entry>
+		<entry>Black-footed yellow sac spider</entry>
+		<entry>Bold jumper</entry>
+		<entry>Brown recluse spider</entry>
+		<entry>Brown widow</entry>
+		<entry>Common house spider</entry>
+		<entry>False widow</entry>
+		<entry>Forked pirate spider</entry>
+		<entry>Giant house spider</entry>
+		<entry>Goliath birdeater</entry>
+		<entry>Hobo spider</entry>
+		<entry>Noble false widow</entry>
+		<entry>Rabid wolf spider</entry>
+		<entry>Redback spider</entry>
+		<entry>Southern black widow</entry>
+		<entry>Western black widow</entry>
+		<entry>Woodlouse spider</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Hunter, HugeCommon</name>
-		
-		
+		<entry>Black house spider</entry>
+		<entry>Black-footed yellow sac spider</entry>
+		<entry>Bold jumper</entry>
+		<entry>Brown recluse spider</entry>
+		<entry>Brown widow</entry>
+		<entry>Common house spider</entry>
+		<entry>False widow</entry>
+		<entry>Forked pirate spider</entry>
+		<entry>Giant house spider</entry>
+		<entry>Goliath birdeater</entry>
+		<entry>Hobo spider</entry>
+		<entry>Noble false widow</entry>
+		<entry>Rabid wolf spider</entry>
+		<entry>Redback spider</entry>
+		<entry>Southern black widow</entry>
+		<entry>Western black widow</entry>
+		<entry>Woodlouse spider</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Hunter, LargeCommon</name>
-		
-		
+		<entry>Black house spider</entry>
+		<entry>Black-footed yellow sac spider</entry>
+		<entry>Bold jumper</entry>
+		<entry>Brown recluse spider</entry>
+		<entry>Brown widow</entry>
+		<entry>Common house spider</entry>
+		<entry>False widow</entry>
+		<entry>Forked pirate spider</entry>
+		<entry>Giant house spider</entry>
+		<entry>Goliath birdeater</entry>
+		<entry>Hobo spider</entry>
+		<entry>Noble false widow</entry>
+		<entry>Rabid wolf spider</entry>
+		<entry>Redback spider</entry>
+		<entry>Southern black widow</entry>
+		<entry>Western black widow</entry>
+		<entry>Woodlouse spider</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Hunter, MediumCommon</name>
-		
-		
+		<entry>Black house spider</entry>
+		<entry>Black-footed yellow sac spider</entry>
+		<entry>Bold jumper</entry>
+		<entry>Brown recluse spider</entry>
+		<entry>Brown widow</entry>
+		<entry>Common house spider</entry>
+		<entry>False widow</entry>
+		<entry>Forked pirate spider</entry>
+		<entry>Giant house spider</entry>
+		<entry>Goliath birdeater</entry>
+		<entry>Hobo spider</entry>
+		<entry>Noble false widow</entry>
+		<entry>Rabid wolf spider</entry>
+		<entry>Redback spider</entry>
+		<entry>Southern black widow</entry>
+		<entry>Western black widow</entry>
+		<entry>Woodlouse spider</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Hunter, SmallCommon</name>
-		
-		
+		<entry>Black house spider</entry>
+		<entry>Black-footed yellow sac spider</entry>
+		<entry>Bold jumper</entry>
+		<entry>Brown recluse spider</entry>
+		<entry>Brown widow</entry>
+		<entry>Common house spider</entry>
+		<entry>False widow</entry>
+		<entry>Forked pirate spider</entry>
+		<entry>Giant house spider</entry>
+		<entry>Goliath birdeater</entry>
+		<entry>Hobo spider</entry>
+		<entry>Noble false widow</entry>
+		<entry>Rabid wolf spider</entry>
+		<entry>Redback spider</entry>
+		<entry>Southern black widow</entry>
+		<entry>Western black widow</entry>
+		<entry>Woodlouse spider</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Hunter, TinyCommon</name>
-		
-		
+		<entry>Black house spider</entry>
+		<entry>Black-footed yellow sac spider</entry>
+		<entry>Bold jumper</entry>
+		<entry>Brown recluse spider</entry>
+		<entry>Brown widow</entry>
+		<entry>Common house spider</entry>
+		<entry>False widow</entry>
+		<entry>Forked pirate spider</entry>
+		<entry>Giant house spider</entry>
+		<entry>Goliath birdeater</entry>
+		<entry>Hobo spider</entry>
+		<entry>Noble false widow</entry>
+		<entry>Rabid wolf spider</entry>
+		<entry>Redback spider</entry>
+		<entry>Southern black widow</entry>
+		<entry>Western black widow</entry>
+		<entry>Woodlouse spider</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Web-Spinner, ColossalCommon</name>
-		
-		
+		<entry>Barn spider</entry>
+		<entry>Cat-faced spider</entry>
+		<entry>Diving bell spider</entry>
+		<entry>European garden spider</entry>
+		<entry>Filmy dome spider</entry>
+		<entry>Golden silk orb-weaver</entry>
+		<entry>Sydney funnel-web spider</entry>
+		<entry>Wasp spider</entry>
+		<entry>Wheel spider</entry>
+		<entry>Yellow garden spider</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Web-Spinner, GargantuanCommon</name>
-		
-		
+		<entry>Barn spider</entry>
+		<entry>Cat-faced spider</entry>
+		<entry>Diving bell spider</entry>
+		<entry>European garden spider</entry>
+		<entry>Filmy dome spider</entry>
+		<entry>Golden silk orb-weaver</entry>
+		<entry>Sydney funnel-web spider</entry>
+		<entry>Wasp spider</entry>
+		<entry>Wheel spider</entry>
+		<entry>Yellow garden spider</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Web-Spinner, HugeCommon</name>
-		
-		
+		<entry>Barn spider</entry>
+		<entry>Cat-faced spider</entry>
+		<entry>Diving bell spider</entry>
+		<entry>European garden spider</entry>
+		<entry>Filmy dome spider</entry>
+		<entry>Golden silk orb-weaver</entry>
+		<entry>Sydney funnel-web spider</entry>
+		<entry>Wasp spider</entry>
+		<entry>Wheel spider</entry>
+		<entry>Yellow garden spider</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Web-Spinner, LargeCommon</name>
-		
-		
+		<entry>Barn spider</entry>
+		<entry>Cat-faced spider</entry>
+		<entry>Diving bell spider</entry>
+		<entry>European garden spider</entry>
+		<entry>Filmy dome spider</entry>
+		<entry>Golden silk orb-weaver</entry>
+		<entry>Sydney funnel-web spider</entry>
+		<entry>Wasp spider</entry>
+		<entry>Wheel spider</entry>
+		<entry>Yellow garden spider</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Web-Spinner, MediumCommon</name>
-		
-		
+		<entry>Barn spider</entry>
+		<entry>Cat-faced spider</entry>
+		<entry>Diving bell spider</entry>
+		<entry>European garden spider</entry>
+		<entry>Filmy dome spider</entry>
+		<entry>Golden silk orb-weaver</entry>
+		<entry>Sydney funnel-web spider</entry>
+		<entry>Wasp spider</entry>
+		<entry>Wheel spider</entry>
+		<entry>Yellow garden spider</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Web-Spinner, SmallCommon</name>
-		
-		
+		<entry>Barn spider</entry>
+		<entry>Cat-faced spider</entry>
+		<entry>Diving bell spider</entry>
+		<entry>European garden spider</entry>
+		<entry>Filmy dome spider</entry>
+		<entry>Golden silk orb-weaver</entry>
+		<entry>Sydney funnel-web spider</entry>
+		<entry>Wasp spider</entry>
+		<entry>Wheel spider</entry>
+		<entry>Yellow garden spider</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Web-Spinner, TinyCommon</name>
-		
-		
+		<entry>Barn spider</entry>
+		<entry>Cat-faced spider</entry>
+		<entry>Diving bell spider</entry>
+		<entry>European garden spider</entry>
+		<entry>Filmy dome spider</entry>
+		<entry>Golden silk orb-weaver</entry>
+		<entry>Sydney funnel-web spider</entry>
+		<entry>Wasp spider</entry>
+		<entry>Wheel spider</entry>
+		<entry>Yellow garden spider</entry>
 	</collection>
 	<collection>
 		<name>MuleCommon</name>
-		
-		
+		<entry>Bay coloration</entry>
+		<entry>Black fur</entry>
+		<entry>Gray fur</entry>
+		<entry>Sorrel coloration</entry>
 	</collection>
 	<collection>
 		<name>MummyCommon</name>
-		
-		
+		<entry>Desiccated husk wrapped in linen burial wraps, pungent cinnamon smell</entry>
+		<entry>Desiccated husk wrapped in linen burial wraps, pungent frankincense smell</entry>
+		<entry>Desiccated husk wrapped in linen burial wraps, pungent ginger smell</entry>
+		<entry>Desiccated husk wrapped in linen burial wraps, pungent lye smell</entry>
+		<entry>Desiccated husk wrapped in linen burial wraps, pungent myrrh smell</entry>
+		<entry>Desiccated husk wrapped in linen burial wraps, pungent pomegranate smell</entry>
+		<entry>Desiccated husk wrapped in linen burial wraps, pungent roses smell</entry>
+		<entry>Desiccated husk wrapped in linen burial wraps, pungent saltpeter smell</entry>
+		<entry>Desiccated husk wrapped in linen burial wraps, pungent wormwood smell</entry>
 	</collection>
 	<collection>
 		<name>Dark NagaCommon</name>
@@ -5155,31 +5856,42 @@
 	</collection>
 	<collection>
 		<name>NalfeshneeCommon</name>
-		
+		<entry>Corpulent, combining the most abysmal features of a boar and ape into a bipedal monstrosity. Small, feathered wings.</entry>
 	</collection>
 	<collection>
 		<name>Night HagCommon</name>
-		
+		<entry>Blue-black skin; Jet-black hair; Red eyes; Long, night-black nails. Tattoo-like scars. Grotesque warts, open sores, diseased blisters</entry>
+		<entry>Blue-black skin; Pitch-black hair; Red eyes; Long, night-black nails. Tattoo-like scars. Grotesque warts, open sores, diseased blisters</entry>
+		<entry>Blue-violet skin; Jet-black hair; Red eyes; Long, night-black nails. Tattoo-like scars. Grotesque warts, open sores, diseased blisters</entry>
+		<entry>Blue-violet skin; Pitch-black hair; Red eyes; Long, night-black nails. Tattoo-like scars. Grotesque warts, open sores, diseased blisters</entry>
+		<entry>Dark blue-violet skin; Jet-black hair; Red eyes; Long, night-black nails. Tattoo-like scars. Grotesque warts, open sores, diseased blisters</entry>
+		<entry>Dark blue-violet skin; Pitch-black hair; Red eyes; Long, night-black nails. Tattoo-like scars. Grotesque warts, open sores, diseased blisters</entry>
+		<entry>Light blue-violet skin; Jet-black hair; Red eyes; Long, night-black nails. Tattoo-like scars. Grotesque warts, open sores, diseased blisters</entry>
+		<entry>Light blue-violet skin; Pitch-black hair; Red eyes; Long, night-black nails. Tattoo-like scars. Grotesque warts, open sores, diseased blisters</entry>
+		<entry>Purple-black skin; Jet-black hair; Red eyes; Long, night-black nails. Tattoo-like scars. Grotesque warts, open sores, diseased blisters</entry>
+		<entry>Purple-black skin; Pitch-black hair; Red eyes; Long, night-black nails. Tattoo-like scars. Grotesque warts, open sores, diseased blisters</entry>
 	</collection>
 	<collection>
 		<name>NightmareCommon</name>
-		
+		<entry>Night-black coat; Red and orange flames for mane and tail; Dark eyes illuminated with flames; Viper fangs</entry>
+		<entry>Night-black coat; Red and orange flames for mane and tail; Glowing red eyes; Viper fangs</entry>
 	</collection>
 	<collection>
 		<name>Nightmare, CauchemarCommon</name>
-		
+		<entry>Night-black coat; Red and orange flames for mane and tail; Dark eyes illuminated with flames; Viper fangs</entry>
+		<entry>Night-black coat; Red and orange flames for mane and tail; Glowing red eyes; Viper fangs</entry>
 	</collection>
 	<collection>
 		<name>NightcrawlerCommon</name>
-		
+		<entry>Solid black skin; Black teeth</entry>
 	</collection>
 	<collection>
 		<name>NightwalkerCommon</name>
-		
+		<entry>Body looks as if it is made of shadow-stuff, with a vaguely humanoid form. Smooth and hairless.</entry>
 	</collection>
 	<collection>
 		<name>NightwingCommon</name>
-		
+		<entry>Bat-shaped darkness</entry>
 	</collection>
 	<collection>
 		<name>NymphCommon</name>
@@ -5187,17 +5899,31 @@
 	</collection>
 	<collection>
 		<name>Ochre JellyCommon</name>
-		
+		<entry>Dark yellow skin; Resembles giant amoeba</entry>
 	</collection>
 	<collection>
 		<name>OctopusCommon</name>
-		
-		
+		<entry>Blue skin</entry>
+		<entry>Brown skin</entry>
+		<entry>Gray skin</entry>
+		<entry>Green skin</entry>
+		<entry>Pink skinn</entry>
+		<entry>Reddish-brown skin</entry>
 	</collection>
 	<collection>
 		<name>Ogre MageCommon</name>
-		
-		
+		<entry>Pale turquoise skin; Black hair; Green eyes; Black nails</entry>
+		<entry>Pale turquoise skin; Black hair; Green eyes; Black nails, black horns</entry>
+		<entry>Pale turquoise skin; Black hair; Green eyes; Black nails, white horns</entry>
+		<entry>Pale turquoise skin; Black hair; Yellow eyes; Black nails</entry>
+		<entry>Pale turquoise skin; Black hair; Yellow eyes; Black nails, black horns</entry>
+		<entry>Pale turquoise skin; Black hair; Yellow eyes; Black nails, white horns</entry>
+		<entry>Pale turquoise skin; Blue-black hair; Green eyes; Black nails</entry>
+		<entry>Pale turquoise skin; Blue-black hair; Green eyes; Black nails, black horns</entry>
+		<entry>Pale turquoise skin; Blue-black hair; Green eyes; Black nails, white horns</entry>
+		<entry>Pale turquoise skin; Blue-black hair; Yellow eyes; Black nails</entry>
+		<entry>Pale turquoise skin; Blue-black hair; Yellow eyes; Black nails, black horns</entry>
+		<entry>Pale turquoise skin; Blue-black hair; Yellow eyes; Black nails, white horns</entry>
 	</collection>
 	<collection>
 		<name>OgreCommon</name>
@@ -9289,6 +10015,114 @@
 	</collection>
 	<collection>
 		<name>High ElfUncommon</name>
+		<entry>Brown skin; Curly black hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair; Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair; Golden eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly pale gold hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly pale gold hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly pale gold hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly pale gold hair; Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly pale gold hair; Golden eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly pale gold hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Curly pale gold hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly silver hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly silver hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly silver hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly silver hair; Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly silver hair; Golden eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly silver hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Curly silver hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly white hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly white hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly white hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly white hair; Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly white hair; Golden eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly white hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Curly white hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky black hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky black hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky black hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky black hair; Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky black hair; Golden eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky black hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Kinky black hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky pale gold hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky pale gold hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky pale gold hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky pale gold hair; Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky pale gold hair; Golden eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky pale gold hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Kinky pale gold hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky silver hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky silver hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky silver hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky silver hair; Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky silver hair; Golden eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky silver hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Kinky silver hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky white hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky white hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky white hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky white hair; Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky white hair; Golden eyes; Pointed ears</entry>
+		<entry>Brown skin; Kinky white hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Kinky white hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight black hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight black hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight black hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight black hair; Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight black hair; Golden eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight black hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Straight black hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight pale gold hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight pale gold hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight pale gold hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight pale gold hair; Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight pale gold hair; Golden eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight pale gold hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Straight pale gold hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight silver hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight silver hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight silver hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight silver hair; Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight silver hair; Golden eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight silver hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Straight silver hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight white hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight white hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight white hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight white hair; Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight white hair; Golden eyes; Pointed ears</entry>
+		<entry>Brown skin; Straight white hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Straight white hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Dark brown skin; Curly black hair; Green eyes; Pointed ears</entry>
+		<entry>Dark brown skin; Curly pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>Dark brown skin; Curly silver hair; Green eyes; Pointed ears</entry>
+		<entry>Dark brown skin; Curly white hair; Green eyes; Pointed ears</entry>
+		<entry>Dark brown skin; Kinky black hair; Green eyes; Pointed ears</entry>
+		<entry>Dark brown skin; Kinky pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>Dark brown skin; Kinky silver hair; Green eyes; Pointed ears</entry>
+		<entry>Dark brown skin; Kinky white hair; Green eyes; Pointed ears</entry>
+		<entry>Dark brown skin; Straight black hair; Green eyes; Pointed ears</entry>
+		<entry>Dark brown skin; Straight pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>Dark brown skin; Straight silver hair; Green eyes; Pointed ears</entry>
+		<entry>Dark brown skin; Straight white hair; Green eyes; Pointed ears</entry>
+		<entry>Dark tan skin; Curly black hair; Green eyes; Pointed ears</entry>
+		<entry>Dark tan skin; Curly pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>Dark tan skin; Curly silver hair; Green eyes; Pointed ears</entry>
+		<entry>Dark tan skin; Curly white hair; Green eyes; Pointed ears</entry>
+		<entry>Dark tan skin; Kinky black hair; Green eyes; Pointed ears</entry>
+		<entry>Dark tan skin; Kinky pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>Dark tan skin; Kinky silver hair; Green eyes; Pointed ears</entry>
+		<entry>Dark tan skin; Kinky white hair; Green eyes; Pointed ears</entry>
+		<entry>Dark tan skin; Straight black hair; Green eyes; Pointed ears</entry>
+		<entry>Dark tan skin; Straight pale gold hair; Green eyes; Pointed ears</entry>
+		<entry>Dark tan skin; Straight silver hair; Green eyes; Pointed ears</entry>
+		<entry>Dark tan skin; Straight white hair; Green eyes; Pointed ears</entry>
 	</collection>
 	<collection>
 		<name>Wild ElfUncommon</name>
@@ -10220,8 +11054,11 @@
 	</collection>
 	<collection>
 		<name>MegaraptorUncommon</name>
-		
-		
+		<entry>Dark gray skin with a white stripe running the length of the body, yellow underbelly; Large sickle claw on its foot. Large, sharp teeth.</entry>
+		<entry>Earth-brown green skin; Large sickle claw on its foot. Large, sharp teeth.</entry>
+		<entry>Orange skin with dark orange stripes across the back, yellow underbelly; Large sickle claw on its foot. Large, sharp teeth.</entry>
+		<entry>Sandy-yellow skin; Large sickle claw on its foot. Large, sharp teeth.</entry>
+		<entry>White skin with dark gray stripes runnings the length of the body, dark gray hands and feet, dark gray circles around the eyes; Large sickle claw on its foot. Large, sharp teeth.</entry>
 	</collection>
 	<collection>
 		<name>Air MephitUncommon</name>
@@ -10303,8 +11140,54 @@
 	</collection>
 	<collection>
 		<name>MinotaurUncommon</name>
-		
-		
+		<entry>Black skin; Black hair and fur; Hooves on legs, beige horns, cow-like tail</entry>
+		<entry>Black skin; Black hair and fur; Hooves on legs, black horns, cow-like tail</entry>
+		<entry>Black skin; Black hair and fur; Hooves on legs, brown horns, cow-like tail</entry>
+		<entry>Black skin; Black hair and fur; Hooves on legs, dark brown horns, cow-like tail</entry>
+		<entry>Black skin; Black hair and fur; Hooves on legs, dark yellow horns, cow-like tail</entry>
+		<entry>Black skin; Black hair and fur; Hooves on legs, white horns, cow-like tail</entry>
+		<entry>Black skin; Black hair and fur; Hooves on legs, yellow horns, cow-like tail</entry>
+		<entry>Black skin; Black hair and fur; Hooves on legs, yellow-brown horns, cow-like tail</entry>
+		<entry>Black skin; Brown hair and fur; Hooves on legs, beige horns, cow-like tail</entry>
+		<entry>Black skin; Brown hair and fur; Hooves on legs, black horns, cow-like tail</entry>
+		<entry>Black skin; Brown hair and fur; Hooves on legs, brown horns, cow-like tail</entry>
+		<entry>Black skin; Brown hair and fur; Hooves on legs, dark brown horns, cow-like tail</entry>
+		<entry>Black skin; Brown hair and fur; Hooves on legs, dark yellow horns, cow-like tail</entry>
+		<entry>Black skin; Brown hair and fur; Hooves on legs, white horns, cow-like tail</entry>
+		<entry>Black skin; Brown hair and fur; Hooves on legs, yellow horns, cow-like tail</entry>
+		<entry>Black skin; Brown hair and fur; Hooves on legs, yellow-brown horns, cow-like tail</entry>
+		<entry>Black skin; Dark brown hair and fur; Hooves on legs, beige horns, cow-like tail</entry>
+		<entry>Black skin; Dark brown hair and fur; Hooves on legs, black horns, cow-like tail</entry>
+		<entry>Black skin; Dark brown hair and fur; Hooves on legs, brown horns, cow-like tail</entry>
+		<entry>Black skin; Dark brown hair and fur; Hooves on legs, dark brown horns, cow-like tail</entry>
+		<entry>Black skin; Dark brown hair and fur; Hooves on legs, dark yellow horns, cow-like tail</entry>
+		<entry>Black skin; Dark brown hair and fur; Hooves on legs, white horns, cow-like tail</entry>
+		<entry>Black skin; Dark brown hair and fur; Hooves on legs, yellow horns, cow-like tail</entry>
+		<entry>Black skin; Dark brown hair and fur; Hooves on legs, yellow-brown horns, cow-like tail</entry>
+		<entry>Brown skin; Black hair and fur; Hooves on legs, beige horns, cow-like tail</entry>
+		<entry>Brown skin; Black hair and fur; Hooves on legs, black horns, cow-like tail</entry>
+		<entry>Brown skin; Black hair and fur; Hooves on legs, brown horns, cow-like tail</entry>
+		<entry>Brown skin; Black hair and fur; Hooves on legs, dark brown horns, cow-like tail</entry>
+		<entry>Brown skin; Black hair and fur; Hooves on legs, dark yellow horns, cow-like tail</entry>
+		<entry>Brown skin; Black hair and fur; Hooves on legs, white horns, cow-like tail</entry>
+		<entry>Brown skin; Black hair and fur; Hooves on legs, yellow horns, cow-like tail</entry>
+		<entry>Brown skin; Black hair and fur; Hooves on legs, yellow-brown horns, cow-like tail</entry>
+		<entry>Brown skin; Brown hair and fur; Hooves on legs, beige horns, cow-like tail</entry>
+		<entry>Brown skin; Brown hair and fur; Hooves on legs, black horns, cow-like tail</entry>
+		<entry>Brown skin; Brown hair and fur; Hooves on legs, brown horns, cow-like tail</entry>
+		<entry>Brown skin; Brown hair and fur; Hooves on legs, dark brown horns, cow-like tail</entry>
+		<entry>Brown skin; Brown hair and fur; Hooves on legs, dark yellow horns, cow-like tail</entry>
+		<entry>Brown skin; Brown hair and fur; Hooves on legs, white horns, cow-like tail</entry>
+		<entry>Brown skin; Brown hair and fur; Hooves on legs, yellow horns, cow-like tail</entry>
+		<entry>Brown skin; Brown hair and fur; Hooves on legs, yellow-brown horns, cow-like tail</entry>
+		<entry>Brown skin; Dark brown hair and fur; Hooves on legs, beige horns, cow-like tail</entry>
+		<entry>Brown skin; Dark brown hair and fur; Hooves on legs, black horns, cow-like tail</entry>
+		<entry>Brown skin; Dark brown hair and fur; Hooves on legs, brown horns, cow-like tail</entry>
+		<entry>Brown skin; Dark brown hair and fur; Hooves on legs, dark brown horns, cow-like tail</entry>
+		<entry>Brown skin; Dark brown hair and fur; Hooves on legs, dark yellow horns, cow-like tail</entry>
+		<entry>Brown skin; Dark brown hair and fur; Hooves on legs, white horns, cow-like tail</entry>
+		<entry>Brown skin; Dark brown hair and fur; Hooves on legs, yellow horns, cow-like tail</entry>
+		<entry>Brown skin; Dark brown hair and fur; Hooves on legs, yellow-brown horns, cow-like tail</entry>
 	</collection>
 	<collection>
 		<name>MohrgUncommon</name>
@@ -10352,38 +11235,52 @@
 	</collection>
 	<collection>
 		<name>Monstrous Scorpion, ColossalUncommon</name>
-		
-		
+		<entry>Brown exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>Orange exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>Red exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>White exoskeleton; Front pincers and the tail with a stinger</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Scorpion, GargantuanUncommon</name>
-		
-		
+		<entry>Brown exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>Orange exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>Red exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>White exoskeleton; Front pincers and the tail with a stinger</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Scorpion, HugeUncommon</name>
-		
-		
+		<entry>Brown exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>Orange exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>Red exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>White exoskeleton; Front pincers and the tail with a stinger</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Scorpion, LargeUncommon</name>
-		
-		
+		<entry>Brown exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>Orange exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>Red exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>White exoskeleton; Front pincers and the tail with a stinger</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Scorpion, MediumUncommon</name>
-		
-		
+		<entry>Brown exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>Orange exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>Red exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>White exoskeleton; Front pincers and the tail with a stinger</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Scorpion, SmallUncommon</name>
-		
-		
+		<entry>Brown exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>Orange exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>Red exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>White exoskeleton; Front pincers and the tail with a stinger</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Scorpion, TinyUncommon</name>
-		
-		
+		<entry>Brown exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>Orange exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>Red exoskeleton; Front pincers and the tail with a stinger</entry>
+		<entry>White exoskeleton; Front pincers and the tail with a stinger</entry>
 	</collection>
 	<collection>
 		<name>Monstrous Spider, Hunter, ColossalUncommon</name>
@@ -10457,13 +11354,18 @@
 	</collection>
 	<collection>
 		<name>MuleUncommon</name>
-		
-		
+		<entry>Blue roan coloration</entry>
+		<entry>Buckskin coloration</entry>
+		<entry>Dun coloration</entry>
+		<entry>Palomino coloration</entry>
+		<entry>Red roan coloration</entry>
+		<entry>White fur</entry>
 	</collection>
 	<collection>
 		<name>MummyUncommon</name>
-		
-		
+		<entry>Desiccated husk wrapped in linen burial wraps, pungent decay smell</entry>
+		<entry>Desiccated husk wrapped in linen burial wraps, pungent upturned-earth smell</entry>
+		<entry>Desiccated husk wrapped in linen burial wraps, pungent vegetable rot smell</entry>
 	</collection>
 	<collection>
 		<name>Dark NagaUncommon</name>
@@ -10489,7 +11391,16 @@
 	</collection>
 	<collection>
 		<name>Night HagUncommon</name>
-		
+		<entry>Blue-black skin; Jet-black hair; Red eyes; Long, night-black nails. Tattoo-like scars</entry>
+		<entry>Blue-black skin; Pitch-black hair; Red eyes; Long, night-black nails. Tattoo-like scars</entry>
+		<entry>Blue-violet skin; Jet-black hair; Red eyes; Long, night-black nails. Tattoo-like scars</entry>
+		<entry>Blue-violet skin; Pitch-black hair; Red eyes; Long, night-black nails. Tattoo-like scars</entry>
+		<entry>Dark blue-violet skin; Jet-black hair; Red eyes; Long, night-black nails. Tattoo-like scars</entry>
+		<entry>Dark blue-violet skin; Pitch-black hair; Red eyes; Long, night-black nails. Tattoo-like scars</entry>
+		<entry>Light blue-violet skin; Jet-black hair; Red eyes; Long, night-black nails. Tattoo-like scars</entry>
+		<entry>Light blue-violet skin; Pitch-black hair; Red eyes; Long, night-black nails. Tattoo-like scars</entry>
+		<entry>Purple-black skin; Jet-black hair; Red eyes; Long, night-black nails. Tattoo-like scars</entry>
+		<entry>Purple-black skin; Pitch-black hair; Red eyes; Long, night-black nails. Tattoo-like scars</entry>
 	</collection>
 	<collection>
 		<name>NightmareUncommon</name>
@@ -17652,30 +18563,30 @@
 		<entry>Greenish-gray skin; Black fur, yellow-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
 		<entry>Greenish-gray skin; Black fur, yellow-red crest-like mane; Brown eyes; Hyena-like appearance</entry>
 		<entry>Greenish-gray skin; Black fur, yellow-red crest-like mane; Green eyes; Hyena-like appearance</entry>
-		<entry>Greenish-gray skin; Dark brown fur marked with fiery orange spots and stripes, dirty yellow crest-like mane; Brown eyes; Hyena-like appearance</entry>
-		<entry>Greenish-gray skin; Dark brown fur marked with fiery orange spots and stripes, dirty yellow crest-like mane; Green eyes; Hyena-like appearance</entry>
-		<entry>Greenish-gray skin; Dark brown fur marked with fiery orange spots and stripes, dirty yellow-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
-		<entry>Greenish-gray skin; Dark brown fur marked with fiery orange spots and stripes, dirty yellow-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
-		<entry>Greenish-gray skin; Dark brown fur marked with fiery orange spots and stripes, dirty yellow-red crest-like mane; Brown eyes; Hyena-like appearance</entry>
-		<entry>Greenish-gray skin; Dark brown fur marked with fiery orange spots and stripes, dirty yellow-red crest-like mane; Green eyes; Hyena-like appearance</entry>
-		<entry>Greenish-gray skin; Dark brown fur marked with fiery orange spots and stripes, reddish-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
-		<entry>Greenish-gray skin; Dark brown fur marked with fiery orange spots and stripes, reddish-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
-		<entry>Greenish-gray skin; Dark brown fur marked with fiery orange spots and stripes, yellow-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
-		<entry>Greenish-gray skin; Dark brown fur marked with fiery orange spots and stripes, yellow-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
-		<entry>Greenish-gray skin; Dark brown fur marked with fiery orange spots and stripes, yellow-red crest-like mane; Brown eyes; Hyena-like appearance</entry>
-		<entry>Greenish-gray skin; Dark brown fur marked with fiery orange spots and stripes, yellow-red crest-like mane; Green eyes; Hyena-like appearance</entry>
-		<entry>Greenish-gray skin; Dark brown fur, dirty yellow crest-like mane; Brown eyes; Hyena-like appearance</entry>
-		<entry>Greenish-gray skin; Dark brown fur, dirty yellow crest-like mane; Green eyes; Hyena-like appearance</entry>
-		<entry>Greenish-gray skin; Dark brown fur, dirty yellow-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
-		<entry>Greenish-gray skin; Dark brown fur, dirty yellow-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
-		<entry>Greenish-gray skin; Dark brown fur, dirty yellow-red crest-like mane; Brown eyes; Hyena-like appearance</entry>
-		<entry>Greenish-gray skin; Dark brown fur, dirty yellow-red crest-like mane; Green eyes; Hyena-like appearance</entry>
-		<entry>Greenish-gray skin; Dark brown fur, reddish-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
-		<entry>Greenish-gray skin; Dark brown fur, reddish-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
-		<entry>Greenish-gray skin; Dark brown fur, yellow-gray crest-like mane; Brown eyes; Hyena-like appearance</entry>
-		<entry>Greenish-gray skin; Dark brown fur, yellow-gray crest-like mane; Green eyes; Hyena-like appearance</entry>
-		<entry>Greenish-gray skin; Dark brown fur, yellow-red crest-like mane; Brown eyes; Hyena-like appearance</entry>
-		<entry>Greenish-gray skin; Dark brown fur, yellow-red crest-like mane; Green eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with spots and stripes, dirty yellow crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with spots and stripes, dirty yellow-gray crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with spots and stripes, dirty yellow-red crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with spots and stripes, reddish-gray crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with spots and stripes, yellow-gray crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur marked with spots and stripes, yellow-red crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, dirty yellow crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, dirty yellow-gray crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, dirty yellow-red crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, reddish-gray crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, yellow-gray crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Dark brown fur, yellow-red crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur marked with spots and stripes, dirty yellow crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur marked with spots and stripes, dirty yellow-gray crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur marked with spots and stripes, dirty yellow-red crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur marked with spots and stripes, reddish-gray crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur marked with spots and stripes, yellow-gray crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur marked with spots and stripes, yellow-red crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur, dirty yellow crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur, dirty yellow-gray crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur, dirty yellow-red crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur, reddish-gray crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur, yellow-gray crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Light brown fur, yellow-red crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
 	</collection>
 	<collection>
 		<name>GoblinRare</name>
@@ -18107,8 +19018,7 @@
 	</collection>
 	<collection>
 		<name>LizardRare</name>
-		
-		
+		<entry>White skin (Albino)</entry>
 	</collection>
 	<collection>
 		<name>Monitor LizardRare</name>
@@ -18252,8 +19162,10 @@
 	</collection>
 	<collection>
 		<name>MegaraptorRare</name>
-		
-		
+		<entry>Ashy-gray skin with a blue stripe running the length of the back and down the tail; Large sickle claw on its foot. Large, sharp teeth.</entry>
+		<entry>Ashy-gray skin; Large sickle claw on its foot. Large, sharp teeth.</entry>
+		<entry>Forest-green skin with dark green stripes across the back; Large sickle claw on its foot. Large, sharp teeth.</entry>
+		<entry>Sandy-brown skin with turquoise markings; Large sickle claw on its foot. Large, sharp teeth.</entry>
 	</collection>
 	<collection>
 		<name>Air MephitRare</name>
@@ -18314,8 +19226,8 @@
 	</collection>
 	<collection>
 		<name>MerrowRare</name>
-		
-		
+		<entry>Green scales; Seaweed-green, slimy hair; Dark green eyes; Black teeth and nails, webbed hands and feet, underbite, sloping shoulders, ivory horns, covered in tattoos</entry>
+		<entry>Green scales; Seaweed-green, slimy hair; Green eyes; Black teeth and nails, webbed hands and feet, underbite, sloping shoulders, ivory horns, covered in tattoos</entry>
 	</collection>
 	<collection>
 		<name>MimicRare</name>
@@ -21491,8 +22403,18 @@
 	</collection>
 	<collection>
 		<name>GnollVeryRare</name>
-		
-		
+		<entry>Greenish-gray skin; Black fur marked with fiery orange spots and stripes, dirty yellow crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur marked with fiery orange spots and stripes, dirty yellow-gray crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur marked with fiery orange spots and stripes, dirty yellow-red crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur marked with fiery orange spots and stripes, reddish-gray crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur marked with fiery orange spots and stripes, yellow-gray crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur marked with fiery orange spots and stripes, yellow-red crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur, dirty yellow crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur, dirty yellow-gray crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur, dirty yellow-red crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur, reddish-gray crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur, yellow-gray crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
+		<entry>Greenish-gray skin; Black fur, yellow-red crest-like mane; Gleaming red eyes; Hyena-like appearance</entry>
 	</collection>
 	<collection>
 		<name>GoblinVeryRare</name>
