@@ -1111,8 +1111,7 @@
 	</collection>
 	<collection>
 		<name>Polar BearCommon</name>
-		
-		
+		<entry>White fur</entry>
 	</collection>
 	<collection>
 		<name>Dire BearCommon</name>
@@ -2058,63 +2057,183 @@
 	</collection>
 	<collection>
 		<name>Red Dragon, AdultCommon</name>
-		
-		
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two straight, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two straight, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two straight, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two twisted, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two twisted, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two twisted, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
 	</collection>
 	<collection>
 		<name>Red Dragon, AncientCommon</name>
-		
-		
+		<entry>Large, thick red scales; Red eyes with heavily-faded pupils; Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with heavily-faded pupils; Two straight, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with heavily-faded pupils; Two straight, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with heavily-faded pupils; Two straight, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with heavily-faded pupils; Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with heavily-faded pupils; Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with heavily-faded pupils; Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with heavily-faded pupils; Two twisted, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with heavily-faded pupils; Two twisted, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with heavily-faded pupils; Two twisted, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with heavily-faded pupils; Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with heavily-faded pupils; Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
 	</collection>
 	<collection>
 		<name>Red Dragon, Great WyrmCommon</name>
-		
-		
+		<entry>Large, thick red scales; Eyes with no pupils, resembling molten lava orbs; Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Eyes with no pupils, resembling molten lava orbs; Two straight, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Eyes with no pupils, resembling molten lava orbs; Two straight, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Eyes with no pupils, resembling molten lava orbs; Two straight, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Eyes with no pupils, resembling molten lava orbs; Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Eyes with no pupils, resembling molten lava orbs; Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Eyes with no pupils, resembling molten lava orbs; Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Eyes with no pupils, resembling molten lava orbs; Two twisted, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Eyes with no pupils, resembling molten lava orbs; Two twisted, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Eyes with no pupils, resembling molten lava orbs; Two twisted, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Eyes with no pupils, resembling molten lava orbs; Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Eyes with no pupils, resembling molten lava orbs; Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
 	</collection>
 	<collection>
 		<name>Red Dragon, JuvenileCommon</name>
-		
-		
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two straight, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two straight, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two straight, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two twisted, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two twisted, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two twisted, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
 	</collection>
 	<collection>
 		<name>Red Dragon, Mature AdultCommon</name>
-		
-		
+		<entry>Smooth, dull, deep red scales; Red eyes with faded pupils; Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with faded pupils; Two straight, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with faded pupils; Two straight, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with faded pupils; Two straight, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with faded pupils; Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with faded pupils; Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with faded pupils; Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with faded pupils; Two twisted, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with faded pupils; Two twisted, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with faded pupils; Two twisted, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with faded pupils; Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with faded pupils; Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
 	</collection>
 	<collection>
 		<name>Red Dragon, OldCommon</name>
-		
-		
+		<entry>Large, thick red scales; Red eyes with faded pupils; Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with faded pupils; Two straight, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with faded pupils; Two straight, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with faded pupils; Two straight, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with faded pupils; Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with faded pupils; Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with faded pupils; Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with faded pupils; Two twisted, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with faded pupils; Two twisted, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with faded pupils; Two twisted, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with faded pupils; Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with faded pupils; Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
 	</collection>
 	<collection>
 		<name>Red Dragon, Very OldCommon</name>
-		
-		
+		<entry>Large, thick red scales; Red eyes with faded pupils; Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with faded pupils; Two straight, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with faded pupils; Two straight, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with faded pupils; Two straight, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with faded pupils; Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with faded pupils; Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with faded pupils; Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with faded pupils; Two twisted, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with faded pupils; Two twisted, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with faded pupils; Two twisted, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with faded pupils; Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with faded pupils; Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
 	</collection>
 	<collection>
 		<name>Red Dragon, Very YoungCommon</name>
-		
-		
+		<entry>Small, glossy, scarlet scales; Red eyes; Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small, glossy, scarlet scales; Red eyes; Two straight, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small, glossy, scarlet scales; Red eyes; Two straight, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small, glossy, scarlet scales; Red eyes; Two straight, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small, glossy, scarlet scales; Red eyes; Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small, glossy, scarlet scales; Red eyes; Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small, glossy, scarlet scales; Red eyes; Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small, glossy, scarlet scales; Red eyes; Two twisted, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small, glossy, scarlet scales; Red eyes; Two twisted, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small, glossy, scarlet scales; Red eyes; Two twisted, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small, glossy, scarlet scales; Red eyes; Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small, glossy, scarlet scales; Red eyes; Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
 	</collection>
 	<collection>
 		<name>Red Dragon, WyrmCommon</name>
-		
-		
+		<entry>Large, thick red scales; Red eyes with heavily-faded pupils; Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with heavily-faded pupils; Two straight, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with heavily-faded pupils; Two straight, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with heavily-faded pupils; Two straight, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with heavily-faded pupils; Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with heavily-faded pupils; Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with heavily-faded pupils; Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with heavily-faded pupils; Two twisted, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with heavily-faded pupils; Two twisted, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with heavily-faded pupils; Two twisted, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with heavily-faded pupils; Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
+		<entry>Large, thick red scales; Red eyes with heavily-faded pupils; Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.</entry>
 	</collection>
 	<collection>
 		<name>Red Dragon, WyrmlingCommon</name>
-		
-		
+		<entry>Small, bright, glossy, scarlet scales; Red eyes; Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small, bright, glossy, scarlet scales; Red eyes; Two straight, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small, bright, glossy, scarlet scales; Red eyes; Two straight, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small, bright, glossy, scarlet scales; Red eyes; Two straight, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small, bright, glossy, scarlet scales; Red eyes; Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small, bright, glossy, scarlet scales; Red eyes; Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small, bright, glossy, scarlet scales; Red eyes; Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small, bright, glossy, scarlet scales; Red eyes; Two twisted, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small, bright, glossy, scarlet scales; Red eyes; Two twisted, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small, bright, glossy, scarlet scales; Red eyes; Two twisted, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small, bright, glossy, scarlet scales; Red eyes; Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small, bright, glossy, scarlet scales; Red eyes; Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
 	</collection>
 	<collection>
 		<name>Red Dragon, YoungCommon</name>
-		
-		
+		<entry>Small scarlet scales; Red eyes; Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small scarlet scales; Red eyes; Two straight, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small scarlet scales; Red eyes; Two straight, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small scarlet scales; Red eyes; Two straight, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small scarlet scales; Red eyes; Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small scarlet scales; Red eyes; Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small scarlet scales; Red eyes; Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small scarlet scales; Red eyes; Two twisted, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small scarlet scales; Red eyes; Two twisted, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small scarlet scales; Red eyes; Two twisted, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small scarlet scales; Red eyes; Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Small scarlet scales; Red eyes; Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
 	</collection>
 	<collection>
 		<name>Red Dragon, Young AdultCommon</name>
-		
-		
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two straight, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two straight, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two straight, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two twisted, dark gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two twisted, faded black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two twisted, gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
+		<entry>Smooth, dull, deep red scales; Red eyes with somewhat-faded pupils; Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.</entry>
 	</collection>
 	<collection>
 		<name>White Dragon, AdultCommon</name>
@@ -2370,63 +2489,51 @@
 	</collection>
 	<collection>
 		<name>Silver Dragon, AdultCommon</name>
-		
-		
+		<entry>Silver scales; Silver eyes with somewhat-faded pupils; Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips.</entry>
 	</collection>
 	<collection>
 		<name>Silver Dragon, AncientCommon</name>
-		
-		
+		<entry>Bright silver scales; Silver eyes with heavily-faded pupils; Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips.</entry>
 	</collection>
 	<collection>
 		<name>Silver Dragon, Great WyrmCommon</name>
-		
-		
+		<entry>Bright silver scales; Eyes without pupils, resembling orbs of mercury; Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips.</entry>
 	</collection>
 	<collection>
 		<name>Silver Dragon, JuvenileCommon</name>
-		
-		
+		<entry>Gray scales mottled with metallic silver; Silver eyes with somewhat-faded pupils; Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips.</entry>
 	</collection>
 	<collection>
 		<name>Silver Dragon, Mature AdultCommon</name>
-		
-		
+		<entry>Silver scales; Silver eyes with faded pupils; Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips.</entry>
 	</collection>
 	<collection>
 		<name>Silver Dragon, OldCommon</name>
-		
-		
+		<entry>Bright silver scales; Silver eyes with faded pupils; Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips.</entry>
 	</collection>
 	<collection>
 		<name>Silver Dragon, Very OldCommon</name>
-		
-		
+		<entry>Bright silver scales; Silver eyes with faded pupils; Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips.</entry>
 	</collection>
 	<collection>
 		<name>Silver Dragon, Very YoungCommon</name>
-		
-		
+		<entry>Blue-gray scales with silver highlights; Silver eyes; Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips.</entry>
 	</collection>
 	<collection>
 		<name>Silver Dragon, WyrmCommon</name>
-		
-		
+		<entry>Bright silver scales; Silver eyes with heavily-faded pupils; Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips.</entry>
 	</collection>
 	<collection>
 		<name>Silver Dragon, WyrmlingCommon</name>
-		
-		
+		<entry>Blue-gray scales with silver highlights; Silver eyes; Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips.</entry>
 	</collection>
 	<collection>
 		<name>Silver Dragon, YoungCommon</name>
-		
-		
+		<entry>Gray scales with silver highlights; Silver eyes; Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips.</entry>
 	</collection>
 	<collection>
 		<name>Silver Dragon, Young AdultCommon</name>
-		
-		
+		<entry>Silver scales; Silver eyes with somewhat-faded pupils; Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips.</entry>
 	</collection>
 	<collection>
 		<name>Dragon TurtleCommon</name>
@@ -3168,18 +3275,46 @@
 	</collection>
 	<collection>
 		<name>Stone GiantCommon</name>
-		
-		
+		<entry>Gray skin; Bald; Silver eyes</entry>
+		<entry>Gray skin; Bald; Steel-colored eyes</entry>
+		<entry>Gray skin; Bluish-gray hair; Silver eyes</entry>
+		<entry>Gray skin; Bluish-gray hair; Steel-colored eyes</entry>
+		<entry>Gray skin; Dark gray hair; Silver eyes</entry>
+		<entry>Gray skin; Dark gray hair; Steel-colored eyes</entry>
+		<entry>Gray skin; Gray hair; Silver eyes</entry>
+		<entry>Gray skin; Gray hair; Steel-colored eyes</entry>
+		<entry>Grayish-brown skin; Bald; Silver eyes</entry>
+		<entry>Grayish-brown skin; Bald; Steel-colored eyes</entry>
+		<entry>Grayish-brown skin; Bluish-gray hair; Silver eyes</entry>
+		<entry>Grayish-brown skin; Bluish-gray hair; Steel-colored eyes</entry>
+		<entry>Grayish-brown skin; Dark gray hair; Silver eyes</entry>
+		<entry>Grayish-brown skin; Dark gray hair; Steel-colored eyes</entry>
+		<entry>Grayish-brown skin; Gray hair; Silver eyes</entry>
+		<entry>Grayish-brown skin; Gray hair; Steel-colored eyes</entry>
 	</collection>
 	<collection>
 		<name>Stone Giant ElderCommon</name>
-		
-		
+		<entry>Gray skin; Bald; Silver eyes</entry>
+		<entry>Gray skin; Bald; Steel-colored eyes</entry>
+		<entry>Gray skin; Bluish-gray hair; Silver eyes</entry>
+		<entry>Gray skin; Bluish-gray hair; Steel-colored eyes</entry>
+		<entry>Gray skin; Dark gray hair; Silver eyes</entry>
+		<entry>Gray skin; Dark gray hair; Steel-colored eyes</entry>
+		<entry>Gray skin; Gray hair; Silver eyes</entry>
+		<entry>Gray skin; Gray hair; Steel-colored eyes</entry>
+		<entry>Grayish-brown skin; Bald; Silver eyes</entry>
+		<entry>Grayish-brown skin; Bald; Steel-colored eyes</entry>
+		<entry>Grayish-brown skin; Bluish-gray hair; Silver eyes</entry>
+		<entry>Grayish-brown skin; Bluish-gray hair; Steel-colored eyes</entry>
+		<entry>Grayish-brown skin; Dark gray hair; Silver eyes</entry>
+		<entry>Grayish-brown skin; Dark gray hair; Steel-colored eyes</entry>
+		<entry>Grayish-brown skin; Gray hair; Silver eyes</entry>
+		<entry>Grayish-brown skin; Gray hair; Steel-colored eyes</entry>
 	</collection>
 	<collection>
 		<name>Storm GiantCommon</name>
-		
-		
+		<entry>Pale light-green skin skin; Dark green hair; Dark green eyes</entry>
+		<entry>Pale light-green skin skin; Dark green hair; Emerald eyes</entry>
 	</collection>
 	<collection>
 		<name>Giant Ant, QueenCommon</name>
@@ -3446,9 +3581,15 @@
 	<collection>
 		<name>Stone GolemCommon</name>
 		<entry>Sandy brown color; Looks like a carved statue</entry>
-		<entry>Sandy brown color; Looks like a carved statue, stylized by its creator</entry>
+		<entry>Sandy brown color; Looks like a carved statue, appears as if wearing armor</entry>
+		<entry>Sandy brown color; Looks like a carved statue, appears as if wearing armor and has a symbol carved on the breastplate</entry>
+		<entry>Sandy brown color; Looks like a carved statue, designs carved into the limbs</entry>
+		<entry>Sandy brown color; Looks like a carved statue, symbol carved in the chest</entry>
 		<entry>Stone gray color; Looks like a carved statue</entry>
-		<entry>Stone gray color; Looks like a carved statue, stylized by its creator</entry>
+		<entry>Stone gray color; Looks like a carved statue, appears as if wearing armor</entry>
+		<entry>Stone gray color; Looks like a carved statue, appears as if wearing armor and has a symbol carved on the breastplate</entry>
+		<entry>Stone gray color; Looks like a carved statue, designs carved into the limbs</entry>
+		<entry>Stone gray color; Looks like a carved statue, symbol carved in the chest</entry>
 	</collection>
 	<collection>
 		<name>Greater Stone GolemCommon</name>
@@ -3855,6 +3996,21 @@
 		<entry>Spotted (White coat with light ginger spots; Light ginger/white mane and tail)</entry>
 		<entry>Spotted (White coat with light gray spots; Light gray/white mane and tail)</entry>
 		<entry>Spotted Draft</entry>
+		<entry>Suffolk Punch</entry>
+		<entry>Tobiano (White/black cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/brown cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/creamy golden cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/dark ginger cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/dark gray cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/ginger cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/golden cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/gray cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/light ginger cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/light gray cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/rich golden cow-patterned coat; White mane and tail)</entry>
+		<entry>Vladimir Heavy Draft</entry>
+		<entry>Vyatka horse</entry>
+		<entry>Zemaitukas</entry>
 	</collection>
 	<collection>
 		<name>Heavy WarhorseCommon</name>
@@ -3984,6 +4140,21 @@
 		<entry>Spotted (White coat with light ginger spots; Light ginger/white mane and tail)</entry>
 		<entry>Spotted (White coat with light gray spots; Light gray/white mane and tail)</entry>
 		<entry>Spotted Draft</entry>
+		<entry>Suffolk Punch</entry>
+		<entry>Tobiano (White/black cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/brown cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/creamy golden cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/dark ginger cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/dark gray cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/ginger cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/golden cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/gray cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/light ginger cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/light gray cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/rich golden cow-patterned coat; White mane and tail)</entry>
+		<entry>Vladimir Heavy Draft</entry>
+		<entry>Vyatka horse</entry>
+		<entry>Zemaitukas</entry>
 	</collection>
 	<collection>
 		<name>Light HorseCommon</name>
@@ -4104,6 +4275,19 @@
 		<entry>Standardbred</entry>
 		<entry>Thoroughbread</entry>
 		<entry>Tobiano (White/black cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/brown cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/creamy golden cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/dark ginger cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/dark gray cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/ginger cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/golden cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/gray cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/light ginger cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/light gray cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/rich golden cow-patterned coat; White mane and tail)</entry>
+		<entry>Trakehner</entry>
+		<entry>Turkoman horse</entry>
+		<entry>Welsh Cob</entry>
 	</collection>
 	<collection>
 		<name>Light WarhorseCommon</name>
@@ -4224,6 +4408,19 @@
 		<entry>Standardbred</entry>
 		<entry>Thoroughbread</entry>
 		<entry>Tobiano (White/black cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/brown cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/creamy golden cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/dark ginger cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/dark gray cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/ginger cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/golden cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/gray cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/light ginger cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/light gray cow-patterned coat; White mane and tail)</entry>
+		<entry>Tobiano (White/rich golden cow-patterned coat; White mane and tail)</entry>
+		<entry>Trakehner</entry>
+		<entry>Turkoman horse</entry>
+		<entry>Welsh Cob</entry>
 	</collection>
 	<collection>
 		<name>Hound ArchonCommon</name>
@@ -5320,15 +5517,23 @@
 	</collection>
 	<collection>
 		<name>Salt MephitCommon</name>
-		
-		
-		
+		<entry>Pale beige crystalline skin; Red eyes; Wings composed of small cubic crystals</entry>
+		<entry>White, grainy, crystalline skin; Red eyes; Wings composed of small cubic crystals</entry>
 	</collection>
 	<collection>
 		<name>Steam MephitCommon</name>
-		
-		
-		
+		<entry>Billowing steamy skin; White eyes; Wings composed of flames, body dripping with steamy moisture</entry>
+		<entry>Billowing steamy skin; White eyes; Wings composed of steam, body dripping with steamy moisture</entry>
+		<entry>Billowing steamy skin; White eyes; Wings composed of steam, body is billowing steam, a flame roars in the stomach</entry>
+		<entry>Billowing steamy skin; Yellow eyes; Wings composed of flames, body dripping with steamy moisture</entry>
+		<entry>Billowing steamy skin; Yellow eyes; Wings composed of steam, body dripping with steamy moisture</entry>
+		<entry>Billowing steamy skin; Yellow eyes; Wings composed of steam, body is billowing steam, a flame roars in the stomach</entry>
+		<entry>Transluscent white skin; White eyes; Wings composed of flames, body dripping with steamy moisture</entry>
+		<entry>Transluscent white skin; White eyes; Wings composed of steam, body dripping with steamy moisture</entry>
+		<entry>Transluscent white skin; White eyes; Wings composed of steam, body is billowing steam, a flame roars in the stomach</entry>
+		<entry>Transluscent white skin; Yellow eyes; Wings composed of flames, body dripping with steamy moisture</entry>
+		<entry>Transluscent white skin; Yellow eyes; Wings composed of steam, body dripping with steamy moisture</entry>
+		<entry>Transluscent white skin; Yellow eyes; Wings composed of steam, body is billowing steam, a flame roars in the stomach</entry>
 	</collection>
 	<collection>
 		<name>Water MephitCommon</name>
@@ -5889,7 +6094,7 @@
 	</collection>
 	<collection>
 		<name>Spirit NagaCommon</name>
-		
+		<entry>Black scales with red bands; Stringy black hair; Emits the stench of carrion</entry>
 	</collection>
 	<collection>
 		<name>Water NagaCommon</name>
@@ -5977,6 +6182,30 @@
 		<entry>Pale turquoise skin; White hair; Yellow eyes; Black nails</entry>
 		<entry>Pale turquoise skin; White hair; Yellow eyes; Black nails, black horns</entry>
 		<entry>Pale turquoise skin; White hair; Yellow eyes; Black nails, white horns</entry>
+		<entry>Turquoise skin; Black hair; Green eyes; Black nails</entry>
+		<entry>Turquoise skin; Black hair; Green eyes; Black nails, black horns</entry>
+		<entry>Turquoise skin; Black hair; Green eyes; Black nails, white horns</entry>
+		<entry>Turquoise skin; Black hair; Yellow eyes; Black nails</entry>
+		<entry>Turquoise skin; Black hair; Yellow eyes; Black nails, black horns</entry>
+		<entry>Turquoise skin; Black hair; Yellow eyes; Black nails, white horns</entry>
+		<entry>Turquoise skin; Blue-black hair; Green eyes; Black nails</entry>
+		<entry>Turquoise skin; Blue-black hair; Green eyes; Black nails, black horns</entry>
+		<entry>Turquoise skin; Blue-black hair; Green eyes; Black nails, white horns</entry>
+		<entry>Turquoise skin; Blue-black hair; Yellow eyes; Black nails</entry>
+		<entry>Turquoise skin; Blue-black hair; Yellow eyes; Black nails, black horns</entry>
+		<entry>Turquoise skin; Blue-black hair; Yellow eyes; Black nails, white horns</entry>
+		<entry>Turquoise skin; Light gray hair; Green eyes; Black nails</entry>
+		<entry>Turquoise skin; Light gray hair; Green eyes; Black nails, black horns</entry>
+		<entry>Turquoise skin; Light gray hair; Green eyes; Black nails, white horns</entry>
+		<entry>Turquoise skin; Light gray hair; Yellow eyes; Black nails</entry>
+		<entry>Turquoise skin; Light gray hair; Yellow eyes; Black nails, black horns</entry>
+		<entry>Turquoise skin; Light gray hair; Yellow eyes; Black nails, white horns</entry>
+		<entry>Turquoise skin; White hair; Green eyes; Black nails</entry>
+		<entry>Turquoise skin; White hair; Green eyes; Black nails, black horns</entry>
+		<entry>Turquoise skin; White hair; Green eyes; Black nails, white horns</entry>
+		<entry>Turquoise skin; White hair; Yellow eyes; Black nails</entry>
+		<entry>Turquoise skin; White hair; Yellow eyes; Black nails, black horns</entry>
+		<entry>Turquoise skin; White hair; Yellow eyes; Black nails, white horns</entry>
 	</collection>
 	<collection>
 		<name>OgreCommon</name>
@@ -5990,20 +6219,25 @@
 		<entry>Pale pink skin; Yellow eyes</entry>
 		<entry>Pink skin; Green eyes</entry>
 		<entry>Pink skin; Yellow eyes</entry>
+		<entry>Red-brown skin; Green eyes</entry>
+		<entry>Red-brown skin; Yellow eyes</entry>
+		<entry>White skin; Green eyes</entry>
+		<entry>White skin; Yellow eyes</entry>
 	</collection>
 	<collection>
 		<name>OrcCommon</name>
-		
-		
+		<entry>Gray skin; Coarse black hair; Reddish eyes; Low forehead, tusks</entry>
 	</collection>
 	<collection>
 		<name>Orca WhaleCommon</name>
-		
-		
+		<entry>Mostly black on top with white underside and white patches near the eyes. Gray saddle patch behind the dorsal fin.</entry>
+		<entry>Mostly black on top with white underside and white patches near the eyes. White saddle patch behind the dorsal fin.</entry>
 	</collection>
 	<collection>
 		<name>OtyughCommon</name>
-		
+		<entry>Disgusting brown rock-like hide; Bloated, oval-shaped body. Three shuffling elephantine legs. Long tentacles bedecked in rough thorny growths ending in leaf-shaped pads with rows of more sharp spikes. Third tentacle sprouts from the top of the body, forming a vine-like stalk, ending in pair of eyes and olfactory organ. Fang-filled mouth.</entry>
+		<entry>Disgusting green rock-like hide; Bloated, oval-shaped body. Three shuffling elephantine legs. Long tentacles bedecked in rough thorny growths ending in leaf-shaped pads with rows of more sharp spikes. Third tentacle sprouts from the top of the body, forming a vine-like stalk, ending in pair of eyes and olfactory organ. Fang-filled mouth.</entry>
+		<entry>Disgusting light brown rock-like hide; Bloated, oval-shaped body. Three shuffling elephantine legs. Long tentacles bedecked in rough thorny growths ending in leaf-shaped pads with rows of more sharp spikes. Third tentacle sprouts from the top of the body, forming a vine-like stalk, ending in pair of eyes and olfactory organ. Fang-filled mouth.</entry>
 	</collection>
 	<collection>
 		<name>OwlCommon</name>
@@ -6027,59 +6261,99 @@
 	</collection>
 	<collection>
 		<name>OwlbearCommon</name>
-		
-		
+		<entry>Brown feathers and fur; Eyes rimmed in red with limpid pupils; Bear-like body, avian head, hooked dull ivory beak</entry>
+		<entry>Brown feathers and fur; Eyes rimmed in red with limpid pupils; Bear-like body, avian head, hooked yellow beak</entry>
+		<entry>Brown feathers and fur; Eyes rimmed in red with limpid pupils; Bear-like body, avian head, hooked yellow-white beak</entry>
+		<entry>Brown feathers and fur; Eyes rimmed in red with limpid pupils; Bear-like body, avian head, serrated dull ivory beak</entry>
+		<entry>Brown feathers and fur; Eyes rimmed in red with limpid pupils; Bear-like body, avian head, serrated yellow beak</entry>
+		<entry>Brown feathers and fur; Eyes rimmed in red with limpid pupils; Bear-like body, avian head, serrated yellow-white beak</entry>
+		<entry>Brown-black feathers and fur; Eyes rimmed in red with limpid pupils; Bear-like body, avian head, hooked dull ivory beak</entry>
+		<entry>Brown-black feathers and fur; Eyes rimmed in red with limpid pupils; Bear-like body, avian head, hooked yellow beak</entry>
+		<entry>Brown-black feathers and fur; Eyes rimmed in red with limpid pupils; Bear-like body, avian head, hooked yellow-white beak</entry>
+		<entry>Brown-black feathers and fur; Eyes rimmed in red with limpid pupils; Bear-like body, avian head, serrated dull ivory beak</entry>
+		<entry>Brown-black feathers and fur; Eyes rimmed in red with limpid pupils; Bear-like body, avian head, serrated yellow beak</entry>
+		<entry>Brown-black feathers and fur; Eyes rimmed in red with limpid pupils; Bear-like body, avian head, serrated yellow-white beak</entry>
+		<entry>Dark brown feathers and fur; Eyes rimmed in red with limpid pupils; Bear-like body, avian head, hooked dull ivory beak</entry>
+		<entry>Dark brown feathers and fur; Eyes rimmed in red with limpid pupils; Bear-like body, avian head, hooked yellow beak</entry>
+		<entry>Dark brown feathers and fur; Eyes rimmed in red with limpid pupils; Bear-like body, avian head, hooked yellow-white beak</entry>
+		<entry>Dark brown feathers and fur; Eyes rimmed in red with limpid pupils; Bear-like body, avian head, serrated dull ivory beak</entry>
+		<entry>Dark brown feathers and fur; Eyes rimmed in red with limpid pupils; Bear-like body, avian head, serrated yellow beak</entry>
+		<entry>Dark brown feathers and fur; Eyes rimmed in red with limpid pupils; Bear-like body, avian head, serrated yellow-white beak</entry>
+		<entry>Yellow-brown feathers and fur; Eyes rimmed in red with limpid pupils; Bear-like body, avian head, hooked dull ivory beak</entry>
+		<entry>Yellow-brown feathers and fur; Eyes rimmed in red with limpid pupils; Bear-like body, avian head, hooked yellow beak</entry>
+		<entry>Yellow-brown feathers and fur; Eyes rimmed in red with limpid pupils; Bear-like body, avian head, hooked yellow-white beak</entry>
+		<entry>Yellow-brown feathers and fur; Eyes rimmed in red with limpid pupils; Bear-like body, avian head, serrated dull ivory beak</entry>
+		<entry>Yellow-brown feathers and fur; Eyes rimmed in red with limpid pupils; Bear-like body, avian head, serrated yellow beak</entry>
+		<entry>Yellow-brown feathers and fur; Eyes rimmed in red with limpid pupils; Bear-like body, avian head, serrated yellow-white beak</entry>
 	</collection>
 	<collection>
 		<name>PegasusCommon</name>
-		
-		
+		<entry>White hair on the body, white feathers for mane and tail, white feathered legs; Resembles horse with bird-like wings</entry>
 	</collection>
 	<collection>
 		<name>Phantom FungusCommon</name>
-		
+		<entry>Brown skin; Fungal mass supported by four stumpy legs. Cluster of nodules atop the body. Gaping maw lined with row of teeth.</entry>
+		<entry>Greenish-brown skin; Fungal mass supported by four stumpy legs. Cluster of nodules atop the body. Gaping maw lined with row of teeth.</entry>
 	</collection>
 	<collection>
 		<name>Phase SpiderCommon</name>
-		
-		
+		<entry>Blue-green/white skin; Spindly-legged spider</entry>
+		<entry>Dark green/white skin; Spindly-legged spider</entry>
+		<entry>Green/white skin; Spindly-legged spider</entry>
 	</collection>
 	<collection>
 		<name>PhasmCommon</name>
-		
+		<entry>In its true form, resembles an amorphous, colorful ooze. However, is a natural shapechanger that can take the form of almost any creature or object.</entry>
 	</collection>
 	<collection>
 		<name>Pit FiendCommon</name>
-		
+		<entry>Red scales; Massive bat-like wings. Huge fangs drop with green venom. Prehensile tail.</entry>
 	</collection>
 	<collection>
 		<name>PonyCommon</name>
-		
-		
+		<entry>Asturcon</entry>
+		<entry>Burmese Pony</entry>
+		<entry>Connemara Pony</entry>
+		<entry>Dartmoor Pony</entry>
+		<entry>Exmoor Pony</entry>
+		<entry>Fell Pony</entry>
+		<entry>New Forest Pony</entry>
+		<entry>Pony of the Americas</entry>
+		<entry>Shetland Pony</entry>
 	</collection>
 	<collection>
 		<name>WarponyCommon</name>
-		
-		
+		<entry>Asturcon</entry>
+		<entry>Burmese Pony</entry>
+		<entry>Connemara Pony</entry>
+		<entry>Dartmoor Pony</entry>
+		<entry>Exmoor Pony</entry>
+		<entry>Fell Pony</entry>
+		<entry>New Forest Pony</entry>
+		<entry>Pony of the Americas</entry>
+		<entry>Shetland Pony</entry>
 	</collection>
 	<collection>
 		<name>PorpoiseCommon</name>
-		
-		
+		<entry>Burmeister's porpoise</entry>
+		<entry>Dall's porpoise</entry>
+		<entry>Harbour porpoise</entry>
+		<entry>Indo-Pacific finless porpoise</entry>
+		<entry>Narrow-ridged finless porpoise</entry>
+		<entry>Spectacles porpoise</entry>
+		<entry>Vaquita</entry>
 	</collection>
 	<collection>
 		<name>PseudodragonCommon</name>
-		
-		
+		<entry>Brownish-red skin</entry>
 	</collection>
 	<collection>
 		<name>Purple WormCommon</name>
-		
-		
+		<entry>Deep purple skin</entry>
 	</collection>
 	<collection>
 		<name>QuasitCommon</name>
-		
+		<entry>Green skin covered in warts and postules; Tail covered in barbs, spiky horns</entry>
 	</collection>
 	<collection>
 		<name>RakshasaCommon</name>
@@ -6088,12 +6362,67 @@
 	</collection>
 	<collection>
 		<name>RastCommon</name>
-		
+		<entry>Central body about the size of a large dog, with 10 spindly spider's legs coming out of it. Each of these legs is tipped with a claw. The head is almost exactly the same size as the central body, and resembles a cross between a snake, a vulture and a goblin (some would say it is almost monkey-like). The central body and legs of the Rast are brown, while the head and claws are rust red.</entry>
+		<entry>Central body about the size of a large dog, with 11 spindly spider's legs coming out of it. Each of these legs is tipped with a claw. The head is almost exactly the same size as the central body, and resembles a cross between a snake, a vulture and a goblin (some would say it is almost monkey-like). The central body and legs of the Rast are brown, while the head and claws are rust red.</entry>
+		<entry>Central body about the size of a large dog, with 12 spindly spider's legs coming out of it. Each of these legs is tipped with a claw. The head is almost exactly the same size as the central body, and resembles a cross between a snake, a vulture and a goblin (some would say it is almost monkey-like). The central body and legs of the Rast are brown, while the head and claws are rust red.</entry>
+		<entry>Central body about the size of a large dog, with 13 spindly spider's legs coming out of it. Each of these legs is tipped with a claw. The head is almost exactly the same size as the central body, and resembles a cross between a snake, a vulture and a goblin (some would say it is almost monkey-like). The central body and legs of the Rast are brown, while the head and claws are rust red.</entry>
+		<entry>Central body about the size of a large dog, with 14 spindly spider's legs coming out of it. Each of these legs is tipped with a claw. The head is almost exactly the same size as the central body, and resembles a cross between a snake, a vulture and a goblin (some would say it is almost monkey-like). The central body and legs of the Rast are brown, while the head and claws are rust red.</entry>
+		<entry>Central body about the size of a large dog, with 15 spindly spider's legs coming out of it. Each of these legs is tipped with a claw. The head is almost exactly the same size as the central body, and resembles a cross between a snake, a vulture and a goblin (some would say it is almost monkey-like). The central body and legs of the Rast are brown, while the head and claws are rust red.</entry>
 	</collection>
 	<collection>
 		<name>RatCommon</name>
-		
-		
+		<entry>Agouti Silvermane: rich chestnut, soft, silky, sheened fur with silver-white tips, appearing heavily silvered, darker fur around the muzzle and eyes, black eyes</entry>
+		<entry>Agouti: rich chestnut fur with dark slate at the base of the hair, silver-gray belly, black eyes</entry>
+		<entry>Albino: pure clean white fur, red eyes</entry>
+		<entry>American Blue Agouti: Medium-slate fur with a yellow-tan line on top, silver-blue belly, black eyes</entry>
+		<entry>American Blue: slate blue fur, black eyes</entry>
+		<entry>American Blue: slate blue fur, dark ruby eyes</entry>
+		<entry>Apricot Agouti: pale apricot fur with dark slate at the base of the hair, pale cream belly, red eyes</entry>
+		<entry>Bareback: solid cream-colored fur on head, neck, and shoulders; white fur on spine, sides, legs, and feet</entry>
+		<entry>Beige: warm grayish-tan fur, dark ruby eyes</entry>
+		<entry>Berkshire: solid black fur on top, completely white belly, white feet and tail</entry>
+		<entry>Black red-eyed Marten: light gray fur with light heathering, lighter fur around the muzzle and eyes, red eyes</entry>
+		<entry>Black Silvermane: solid black, soft, silky, sheened fur with silver-white tips, looking heavily silvered, darker fur around the muzzle and eyes</entry>
+		<entry>Black: solid black fur, black eyes</entry>
+		<entry>Blaze: solid gray fur on head and neck; white fur on body; white markings from nose to forehead</entry>
+		<entry>Champagne: evenly warm beige fur, red eyes</entry>
+		<entry>Cinnamon red-eyed Marten: warm russet brown fur, light heathering, red eyes</entry>
+		<entry>Cinnamon: warm russet brown fur with medium slate at the base of the hair, silver-gray belly, black eyes</entry>
+		<entry>Cinnamon: warm russet brown fur with medium slate at the base of the hair, silver-gray belly, ruby eyes</entry>
+		<entry>Dalmation: white fur with numerous ragged black splotches</entry>
+		<entry>Double rex coat: mostly hairless, white fur</entry>
+		<entry>Double rex coat: peach fuzz white fur</entry>
+		<entry>Double rex coat: Very short curly white coat</entry>
+		<entry>English Irish: solid black fur; white equilateral triangle on chest; front feet white; back feet white on lower half</entry>
+		<entry>English Irish/Irish: solid black fur; white equilateral triangle on chest; white marking on belly; front feet white; back feet white on lower half; white-tipped tail</entry>
+		<entry>Fawn: rich, deep golden orange fur, slightly-lighter belly, dark ruby eyes</entry>
+		<entry>Hairless: thin, bright, almost-transluscent skin, no whiskers</entry>
+		<entry>Hairless: thin, bright, almost-transluscent skin, very short curly whiskers</entry>
+		<entry>Himalayan: white fur, red eyes</entry>
+		<entry>Himalayan: white fur; rich dark sepia points on nose, ears, feet, tail, and tail root; red eyes</entry>
+		<entry>Hooded: solid black fur on head, neck, shoulders, and extending down the spine; white fur on sides, legs, and feet</entry>
+		<entry>Irish: solid black fur; white marking on belly; white feet; white-tipped tail</entry>
+		<entry>Mink: even mid gray-brown fur with bluish sheen, black eyes</entry>
+		<entry>Mink: even mid gray-brown fur with bluish sheen, ruby eyes</entry>
+		<entry>Mismarked Bareback: solid cream-colored fur on head, neck, and shoulders; small cream spot on the spine; white fur on sides, legs, and feet</entry>
+		<entry>Pink-eyed White: pure clean white fur, red eyes</entry>
+		<entry>Rex coat: evenly curled black fur, slightly curled white belly</entry>
+		<entry>Rex coat: evenly curled black fur, slightly curled white belly, curled whiskers</entry>
+		<entry>Russian Blue Agouti: Dark steel blue fur with a fawn band on top, silver-blue belly, black eyes</entry>
+		<entry>Russian Blue Silvermane: Dark steel blue, soft, silky, sheened fur with silver-white tips, looking heavily silvered. Darker fur around the muzzle and eyes.</entry>
+		<entry>Russian Blue: dark slate blue fur, black eyes</entry>
+		<entry>Siamese: medium beige fur; darker points on nose, ears, feet, tail, and tail root; black eyes</entry>
+		<entry>Siamese: medium beige fur; darker points on nose, ears, feet, tail, and tail root; red eyes</entry>
+		<entry>Silver fawn: rich orange fur, white belly, red eyes</entry>
+		<entry>Silver: off-white fur with a cool ice-blue cast, red eyes</entry>
+		<entry>Silvermane coat: Soft, silvered fur</entry>
+		<entry>Spotted Tabby: light black fur with darker dorsal stripe and spots on sides and face</entry>
+		<entry>Spotted Tabby: light brown fur with darker dorsal stripe and spots on sides and face</entry>
+		<entry>Spotted Tabby: light gray fur with darker dorsal stripe and spots on sides and face</entry>
+		<entry>Standard coat: short, smooth, and glossy black fur</entry>
+		<entry>Variegated: solid gray fur on head, neck, shoulders; patches and flecks of gray fur on the back side; white fur on sides, legs, and feet; white spot on forehead</entry>
+		<entry>Variegated: solid gray fur on head, neck, shoulders; patches and flecks of gray fur on the back side; white fur on sides, legs, and feet; white star on forehead</entry>
+		<entry>Velveteen coat: thick, soft black/brown coat, wavy whiskers</entry>
 	</collection>
 	<collection>
 		<name>Dire RatCommon</name>
@@ -6101,49 +6430,48 @@
 	</collection>
 	<collection>
 		<name>Rat SwarmCommon</name>
-		
+		<entry>300 rats</entry>
 	</collection>
 	<collection>
 		<name>RavenCommon</name>
-		
-		
+		<entry>Glossy black feathers</entry>
 	</collection>
 	<collection>
 		<name>RavidCommon</name>
-		
+		<entry>Long and serpentine, floating above the ground. One single claw juts out of its body just beneath its head. Pale white, scaley skin.</entry>
 	</collection>
 	<collection>
 		<name>Razor BoarCommon</name>
-		
-		
+		<entry>Black-bristled hide marked by hundreds of old scars. Its eyes are wild and bloodshot, and its tusks are more than three feet long, gleaming like polished ivory and sharper than many swords.</entry>
 	</collection>
 	<collection>
 		<name>RemorhazCommon</name>
-		
-		
+		<entry>Ice-blue scales; White eyes; Tough leathery wings, insect-like head, dozens of legs, back glows red, horns along its body, dagger-like teeth</entry>
 	</collection>
 	<collection>
 		<name>RetrieverCommon</name>
-		
+		<entry>Resembles a giant spider with four forelegs ending in large cleaver-like blades, and four rear limbs for walking and carrying most of the weight. Two primary eyes and four smaller eyes that gleam malevolently as they peak out from the carapace.</entry>
 	</collection>
 	<collection>
 		<name>RhinocerasCommon</name>
-		
-		
+		<entry>Dark brown skin; Two horns on the nose, with the anterior horn being larger</entry>
+		<entry>Dark gray skin; Two horns on the nose, with the anterior horn being larger</entry>
 	</collection>
 	<collection>
 		<name>RocCommon</name>
-		
-		
+		<entry>Dark brown feathers</entry>
+		<entry>Dark golden feathers</entry>
+		<entry>Dark golden-brown feathers</entry>
+		<entry>Golden feathers</entry>
+		<entry>Golden-brown feathers</entry>
 	</collection>
 	<collection>
 		<name>RoperCommon</name>
-		
+		<entry>Earthy brown skin, resembling a stalagmite</entry>
 	</collection>
 	<collection>
 		<name>Rust MonsterCommon</name>
-		
-		
+		<entry>Four insectlike legs and a squat, humped body. Thick, lumpy hide is yellowish-tan on the belly and rust-red on the back. Tail ends in what looks like a double-ended paddle. Two long antennae come out of its head, one under each eye</entry>
 	</collection>
 	<collection>
 		<name>Average SalamanderCommon</name>
@@ -6159,18 +6487,27 @@
 	</collection>
 	<collection>
 		<name>Shark, HugeCommon</name>
-		
-		
+		<entry>Great Hammerhead shark</entry>
+		<entry>Great white shark</entry>
 	</collection>
 	<collection>
 		<name>Shark, LargeCommon</name>
-		
-		
+		<entry>Blue shark</entry>
+		<entry>Bull shark</entry>
+		<entry>Galapagos shark</entry>
+		<entry>Goblin shark</entry>
+		<entry>Lemon shark</entry>
+		<entry>Nurse shark</entry>
+		<entry>Short-finned mako shark</entry>
+		<entry>Thresher shark</entry>
+		<entry>Tiger shark</entry>
 	</collection>
 	<collection>
 		<name>Shark, MediumCommon</name>
-		
-		
+		<entry>Blacktip reef shark</entry>
+		<entry>Mako shark</entry>
+		<entry>Pacific Angelshark</entry>
+		<entry>Whitetip reef shark</entry>
 	</collection>
 	<collection>
 		<name>Dire SharkCommon</name>
@@ -6178,7 +6515,7 @@
 	</collection>
 	<collection>
 		<name>Red SlaadCommon</name>
-		
+		<entry>Bipedal, roughly-humanoid, almost neckless toad with huge, flat head. Skin is mostly dull red with specks of gray, lighter around the underside and darker along the back. Fingers and hands are strangely large and, like the feet, end in claws.</entry>
 	</collection>
 	<collection>
 		<name>Rock GnomeCommon</name>
@@ -6215,17 +6552,27 @@
 	</collection>
 	<collection>
 		<name>ScragCommon</name>
-		
-		
+		<entry>Blue-green scales; Black hair; Severe hunch, backs of the hands dragging on the ground, gills</entry>
+		<entry>Blue-green scales; Greenish-black hair; Severe hunch, backs of the hands dragging on the ground, gills</entry>
+		<entry>Blue-green scales; Iron-gray hair; Severe hunch, backs of the hands dragging on the ground, gills</entry>
+		<entry>Blue-green scales; Steel gray hair; Severe hunch, backs of the hands dragging on the ground, gills</entry>
+		<entry>Olive-green scales; Black hair; Severe hunch, backs of the hands dragging on the ground, gills</entry>
+		<entry>Olive-green scales; Greenish-black hair; Severe hunch, backs of the hands dragging on the ground, gills</entry>
+		<entry>Olive-green scales; Iron-gray hair; Severe hunch, backs of the hands dragging on the ground, gills</entry>
+		<entry>Olive-green scales; Steel gray hair; Severe hunch, backs of the hands dragging on the ground, gills</entry>
 	</collection>
 	<collection>
 		<name>Sea CatCommon</name>
-		
-		
+		<entry>Green skin and reptilian scales; Mane of silky hair running from the top of its head and down its back to its tail flukes; Head and forepaws of a lion, but a body and tail similar to those of a fish</entry>
+		<entry>Green skin and reptilian scales; Mane of silky hair running from the top of its head and down its back to its tail flukes; Head and forepaws of a lion, but a body and tail similar to those of a porpoise</entry>
+		<entry>Green skin and reptilian scales; Mane of silky hair running from the top of its head and down its back to its tail flukes; Head and forepaws of a lion, but a body and tail similar to those of a small whale</entry>
+		<entry>Tan fur and fish-like scales; Mane of silky hair running from the top of its head and down its back to its tail flukes; Head and forepaws of a lion, but a body and tail similar to those of a fish</entry>
+		<entry>Tan fur and fish-like scales; Mane of silky hair running from the top of its head and down its back to its tail flukes; Head and forepaws of a lion, but a body and tail similar to those of a porpoise</entry>
+		<entry>Tan fur and fish-like scales; Mane of silky hair running from the top of its head and down its back to its tail flukes; Head and forepaws of a lion, but a body and tail similar to those of a small whale</entry>
 	</collection>
 	<collection>
 		<name>Sea HagCommon</name>
-		
+		<entry>Complexion of a rotting fish: pallid yellow skin with patches of green, slimy scales and bony protrusions; Long, limp, hair that resembles rancid seaweed; Piscine eyes, devoid of life, with deep black pupils surrounded by red; Emaciated appearance, flesh was rife with warts and oozing cankers</entry>
 	</collection>
 	<collection>
 		<name>ShadowCommon</name>
@@ -6237,21 +6584,19 @@
 	</collection>
 	<collection>
 		<name>Shadow MastiffCommon</name>
-		
-		
+		<entry>Body of a large dog, head more humanoid in shape but monstrous, with mouth full of vicious teeth, coat is smooth and all black</entry>
 	</collection>
 	<collection>
 		<name>Shambling MoundCommon</name>
-		
+		<entry>Vaguely man-shaped mound of rotting vegetation</entry>
 	</collection>
 	<collection>
 		<name>Shield GuardianCommon</name>
-		
+		<entry>Like a large stick figure made of wood with rocky appendages and metal parts</entry>
 	</collection>
 	<collection>
 		<name>Shocker LizardCommon</name>
-		
-		
+		<entry>Blue skin, with light blue belly</entry>
 	</collection>
 	<collection>
 		<name>ShriekerCommon</name>
@@ -6263,32 +6608,53 @@
 	</collection>
 	<collection>
 		<name>SkumCommon</name>
-		
-		
+		<entry>Resembles horrific hybrid of human and fish. Spiny frill on the back, bulbous eyes, and a tail.</entry>
 	</collection>
 	<collection>
 		<name>SpectreCommon</name>
-		
-		
+		<entry>Humanoid, with a mostly transparent and faintly luminous form.</entry>
+		<entry>Humanoid, with a mostly transparent and faintly luminous form. The injuries that caused its violent death are visible.</entry>
 	</collection>
 	<collection>
 		<name>Spider EaterCommon</name>
-		
-		
+		<entry>Resembles a wasp the size of a horse, but with the head of a spider and two long appendages ending in pincers.</entry>
 	</collection>
 	<collection>
 		<name>Spider SwarmCommon</name>
-		
+		<entry>1,500 spiders</entry>
 	</collection>
 	<collection>
 		<name>SquidCommon</name>
-		
-		
+		<entry>Angel clubhook squid</entry>
+		<entry>Bigfin reef squid</entry>
+		<entry>Caribbean reef squid</entry>
+		<entry>European flying squid</entry>
+		<entry>European squid</entry>
+		<entry>Humboldt squid</entry>
+		<entry>Japanese flying squid</entry>
+		<entry>Longfin inshore squid</entry>
+		<entry>Neon flying squid</entry>
+		<entry>Robust clubhook squid</entry>
+		<entry>Vampire squid</entry>
 	</collection>
 	<collection>
 		<name>StirgeCommon</name>
-		
-		
+		<entry>Resembles a monstrous cross between a large bat and an oversized mosquito. Short and furry body in shades of reddish brown. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers of a similar yellowish hue to the eyes. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base..</entry>
+		<entry>Resembles a monstrous cross between a large bat and an oversized mosquito. Short and furry body in shades of reddish brown. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.</entry>
+		<entry>Resembles a monstrous cross between a large bat and an oversized mosquito. Short and furry body in shades of rusty red. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers of a similar yellowish hue to the eyes. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.</entry>
+		<entry>Resembles a monstrous cross between a large bat and an oversized mosquito. Short and furry body in shades of rusty red. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.</entry>
+		<entry>Resembles a monstrous cross between a large bat and an oversized mosquito. Short body covered in feathers in shades of reddish brown. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers of a similar yellowish hue to the eyes. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.</entry>
+		<entry>Resembles a monstrous cross between a large bat and an oversized mosquito. Short body covered in feathers in shades of reddish brown. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.</entry>
+		<entry>Resembles a monstrous cross between a large bat and an oversized mosquito. Short body covered in feathers in shades of rusty red. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers of a similar yellowish hue to the eyes. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.</entry>
+		<entry>Resembles a monstrous cross between a large bat and an oversized mosquito. Short body covered in feathers in shades of rusty red. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.</entry>
+		<entry>Resembles a monstrous cross between an oversized mosquito and a bird. Short and furry body in shades of reddish brown. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers of a similar yellowish hue to the eyes. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base..</entry>
+		<entry>Resembles a monstrous cross between an oversized mosquito and a bird. Short and furry body in shades of reddish brown. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.</entry>
+		<entry>Resembles a monstrous cross between an oversized mosquito and a bird. Short and furry body in shades of rusty red. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers of a similar yellowish hue to the eyes. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.</entry>
+		<entry>Resembles a monstrous cross between an oversized mosquito and a bird. Short and furry body in shades of rusty red. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.</entry>
+		<entry>Resembles a monstrous cross between an oversized mosquito and a bird. Short body covered in feathers in shades of reddish brown. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers of a similar yellowish hue to the eyes. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.</entry>
+		<entry>Resembles a monstrous cross between an oversized mosquito and a bird. Short body covered in feathers in shades of reddish brown. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.</entry>
+		<entry>Resembles a monstrous cross between an oversized mosquito and a bird. Short body covered in feathers in shades of rusty red. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers of a similar yellowish hue to the eyes. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.</entry>
+		<entry>Resembles a monstrous cross between an oversized mosquito and a bird. Short body covered in feathers in shades of rusty red. Yellowish eyes. Wings are membranous and bat-like, interlaced with thin-walled blood vessels. Four eight-jointed legs ending in sharp pincers. Long, sharp needle-like proboscis, pink at the tip and fades to grey at the base.</entry>
 	</collection>
 	<collection>
 		<name>SuccubusCommon</name>
@@ -6307,15 +6673,15 @@
 	</collection>
 	<collection>
 		<name>TarrasqueCommon</name>
-		
+		<entry>Two long horns extend from its forehead; thick carapace; mighty tail; many spikes cover its large body; wide, toothy maw. Two small eyes.</entry>
 	</collection>
 	<collection>
 		<name>TendriculosCommon</name>
-		
+		<entry>Mound of vegetation, supported by various branches and vines. Large opening filled with sharp branches and horns, acting sort of like teeth.</entry>
 	</collection>
 	<collection>
 		<name>ThoqquaCommon</name>
-		
+		<entry>Worm-like, made of earth and fire. brown and red skin. Glowing, molten-hot beak.</entry>
 	</collection>
 	<collection>
 		<name>TieflingCommon</name>
@@ -6324,8 +6690,7 @@
 	</collection>
 	<collection>
 		<name>TigerCommon</name>
-		
-		
+		<entry>Reddish-orange coat with prominent black stripes, white bellies and white spots on the ears.</entry>
 	</collection>
 	<collection>
 		<name>Dire TigerCommon</name>
@@ -6338,8 +6703,10 @@
 	</collection>
 	<collection>
 		<name>ToadCommon</name>
-		
-		
+		<entry>Dark brown, dry, warty skin; Copper-colored eyes with horizontal pupils</entry>
+		<entry>Gray, dry, warty skin; Copper-colored eyes with horizontal pupils</entry>
+		<entry>Green, dry, warty skin; Copper-colored eyes with horizontal pupils</entry>
+		<entry>Olive brown, dry, warty skin; Copper-colored eyes with horizontal pupils</entry>
 	</collection>
 	<collection>
 		<name>Adult TojanidaCommon</name>
@@ -6355,13 +6722,16 @@
 	</collection>
 	<collection>
 		<name>TreantCommon</name>
-		
-		
+		<entry>Face-like features on their bark, a division between the trunk that forms legs, and long branches that serve as arms; brown bark-like skin</entry>
 	</collection>
 	<collection>
 		<name>TriceratopsCommon</name>
-		
-		
+		<entry>Dark beige skin; Large bony neck frill and three horns on its head</entry>
+		<entry>Dark gray skin with slightly-lighter stripes across the back, slightly-lighter underbelly; Large bony neck frill and three horns on its head</entry>
+		<entry>Earthy, mud-colored skin with slightly-lighter stripes across the back, slightly-lighter underbelly; Large bony neck frill and three horns on its head</entry>
+		<entry>Green-brown skin with slightly-lighter stripes across the back, slightly-lighter underbelly; Large bony neck frill and three horns on its head</entry>
+		<entry>Pale gray skin with slightly-darker stripes across the back; Large bony neck frill and three horns on its head</entry>
+		<entry>Sandy-brown skin with slightly-darker stripes across the back; Large bony neck frill and three horns on its head</entry>
 	</collection>
 	<collection>
 		<name>TritonCommon</name>
@@ -9321,13 +9691,9 @@
 	</collection>
 	<collection>
 		<name>Red Dragon, AdultUncommon</name>
-		
-		
 	</collection>
 	<collection>
 		<name>Red Dragon, AncientUncommon</name>
-		
-		
 	</collection>
 	<collection>
 		<name>Red Dragon, Great WyrmUncommon</name>
@@ -10268,6 +10634,426 @@
 		<entry>Light brown skin; Straight white hair; Golden eyes; Pointed ears</entry>
 		<entry>Light brown skin; Straight white hair; Green eyes speckled with gold; Pointed ears</entry>
 		<entry>Light brown skin; Straight white hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly black hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly black hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly black hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly black hair; Blue eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly black hair; Golden eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly black hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Light tan skin; Curly black hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly pale gold hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly pale gold hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly pale gold hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly pale gold hair; Blue eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly pale gold hair; Golden eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly pale gold hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Light tan skin; Curly pale gold hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly silver hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly silver hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly silver hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly silver hair; Blue eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly silver hair; Golden eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly silver hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Light tan skin; Curly silver hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly white hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly white hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly white hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly white hair; Blue eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly white hair; Golden eyes; Pointed ears</entry>
+		<entry>Light tan skin; Curly white hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Light tan skin; Curly white hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky black hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky black hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky black hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky black hair; Blue eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky black hair; Golden eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky black hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Light tan skin; Kinky black hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky pale gold hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky pale gold hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky pale gold hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky pale gold hair; Blue eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky pale gold hair; Golden eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky pale gold hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Light tan skin; Kinky pale gold hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky silver hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky silver hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky silver hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky silver hair; Blue eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky silver hair; Golden eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky silver hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Light tan skin; Kinky silver hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky white hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky white hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky white hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky white hair; Blue eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky white hair; Golden eyes; Pointed ears</entry>
+		<entry>Light tan skin; Kinky white hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Light tan skin; Kinky white hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight black hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight black hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight black hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight black hair; Blue eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight black hair; Golden eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight black hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Light tan skin; Straight black hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight pale gold hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight pale gold hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight pale gold hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight pale gold hair; Blue eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight pale gold hair; Golden eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight pale gold hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Light tan skin; Straight pale gold hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight silver hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight silver hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight silver hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight silver hair; Blue eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight silver hair; Golden eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight silver hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Light tan skin; Straight silver hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight white hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight white hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight white hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight white hair; Blue eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight white hair; Golden eyes; Pointed ears</entry>
+		<entry>Light tan skin; Straight white hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Light tan skin; Straight white hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly black hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly black hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly black hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly black hair; Blue eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly black hair; Golden eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly black hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Pale white skin; Curly black hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly pale gold hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly pale gold hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly pale gold hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly pale gold hair; Blue eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly pale gold hair; Golden eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly pale gold hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Pale white skin; Curly pale gold hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly silver hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly silver hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly silver hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly silver hair; Blue eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly silver hair; Golden eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly silver hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Pale white skin; Curly silver hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly white hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly white hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly white hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly white hair; Blue eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly white hair; Golden eyes; Pointed ears</entry>
+		<entry>Pale white skin; Curly white hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Pale white skin; Curly white hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky black hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky black hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky black hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky black hair; Blue eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky black hair; Golden eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky black hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Pale white skin; Kinky black hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky pale gold hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky pale gold hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky pale gold hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky pale gold hair; Blue eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky pale gold hair; Golden eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky pale gold hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Pale white skin; Kinky pale gold hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky silver hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky silver hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky silver hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky silver hair; Blue eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky silver hair; Golden eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky silver hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Pale white skin; Kinky silver hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky white hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky white hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky white hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky white hair; Blue eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky white hair; Golden eyes; Pointed ears</entry>
+		<entry>Pale white skin; Kinky white hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Pale white skin; Kinky white hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight black hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight black hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight black hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight black hair; Blue eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight black hair; Golden eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight black hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Pale white skin; Straight black hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight pale gold hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight pale gold hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight pale gold hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight pale gold hair; Blue eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight pale gold hair; Golden eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight pale gold hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Pale white skin; Straight pale gold hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight silver hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight silver hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight silver hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight silver hair; Blue eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight silver hair; Golden eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight silver hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Pale white skin; Straight silver hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight white hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight white hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight white hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight white hair; Blue eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight white hair; Golden eyes; Pointed ears</entry>
+		<entry>Pale white skin; Straight white hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Pale white skin; Straight white hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly black hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly black hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly black hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly black hair; Blue eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly black hair; Golden eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly black hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Pink skin; Curly black hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly pale gold hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly pale gold hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly pale gold hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly pale gold hair; Blue eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly pale gold hair; Golden eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly pale gold hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Pink skin; Curly pale gold hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly silver hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly silver hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly silver hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly silver hair; Blue eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly silver hair; Golden eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly silver hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Pink skin; Curly silver hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly white hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly white hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly white hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly white hair; Blue eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly white hair; Golden eyes; Pointed ears</entry>
+		<entry>Pink skin; Curly white hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Pink skin; Curly white hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky black hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky black hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky black hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky black hair; Blue eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky black hair; Golden eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky black hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Pink skin; Kinky black hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky pale gold hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky pale gold hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky pale gold hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky pale gold hair; Blue eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky pale gold hair; Golden eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky pale gold hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Pink skin; Kinky pale gold hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky silver hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky silver hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky silver hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky silver hair; Blue eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky silver hair; Golden eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky silver hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Pink skin; Kinky silver hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky white hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky white hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky white hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky white hair; Blue eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky white hair; Golden eyes; Pointed ears</entry>
+		<entry>Pink skin; Kinky white hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Pink skin; Kinky white hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight black hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight black hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight black hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight black hair; Blue eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight black hair; Golden eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight black hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Pink skin; Straight black hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight pale gold hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight pale gold hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight pale gold hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight pale gold hair; Blue eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight pale gold hair; Golden eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight pale gold hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Pink skin; Straight pale gold hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight silver hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight silver hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight silver hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight silver hair; Blue eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight silver hair; Golden eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight silver hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Pink skin; Straight silver hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight white hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight white hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight white hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight white hair; Blue eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight white hair; Golden eyes; Pointed ears</entry>
+		<entry>Pink skin; Straight white hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Pink skin; Straight white hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly black hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly black hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly black hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly black hair; Blue eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly black hair; Golden eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly black hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Tan skin; Curly black hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly pale gold hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly pale gold hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly pale gold hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly pale gold hair; Blue eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly pale gold hair; Golden eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly pale gold hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Tan skin; Curly pale gold hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly silver hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly silver hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly silver hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly silver hair; Blue eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly silver hair; Golden eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly silver hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Tan skin; Curly silver hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly white hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly white hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly white hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly white hair; Blue eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly white hair; Golden eyes; Pointed ears</entry>
+		<entry>Tan skin; Curly white hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Tan skin; Curly white hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky black hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky black hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky black hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky black hair; Blue eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky black hair; Golden eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky black hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Tan skin; Kinky black hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky pale gold hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky pale gold hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky pale gold hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky pale gold hair; Blue eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky pale gold hair; Golden eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky pale gold hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Tan skin; Kinky pale gold hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky silver hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky silver hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky silver hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky silver hair; Blue eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky silver hair; Golden eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky silver hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Tan skin; Kinky silver hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky white hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky white hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky white hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky white hair; Blue eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky white hair; Golden eyes; Pointed ears</entry>
+		<entry>Tan skin; Kinky white hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Tan skin; Kinky white hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight black hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight black hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight black hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight black hair; Blue eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight black hair; Golden eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight black hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Tan skin; Straight black hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight pale gold hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight pale gold hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight pale gold hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight pale gold hair; Blue eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight pale gold hair; Golden eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight pale gold hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Tan skin; Straight pale gold hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight silver hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight silver hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight silver hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight silver hair; Blue eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight silver hair; Golden eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight silver hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Tan skin; Straight silver hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight white hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight white hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight white hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight white hair; Blue eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight white hair; Golden eyes; Pointed ears</entry>
+		<entry>Tan skin; Straight white hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Tan skin; Straight white hair; Light Blue eyes; Pointed ears</entry>
+		<entry>White skin; Curly black hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Curly black hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Curly black hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Curly black hair; Blue eyes; Pointed ears</entry>
+		<entry>White skin; Curly black hair; Golden eyes; Pointed ears</entry>
+		<entry>White skin; Curly black hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>White skin; Curly black hair; Light Blue eyes; Pointed ears</entry>
+		<entry>White skin; Curly pale gold hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Curly pale gold hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Curly pale gold hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Curly pale gold hair; Blue eyes; Pointed ears</entry>
+		<entry>White skin; Curly pale gold hair; Golden eyes; Pointed ears</entry>
+		<entry>White skin; Curly pale gold hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>White skin; Curly pale gold hair; Light Blue eyes; Pointed ears</entry>
+		<entry>White skin; Curly silver hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Curly silver hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Curly silver hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Curly silver hair; Blue eyes; Pointed ears</entry>
+		<entry>White skin; Curly silver hair; Golden eyes; Pointed ears</entry>
+		<entry>White skin; Curly silver hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>White skin; Curly silver hair; Light Blue eyes; Pointed ears</entry>
+		<entry>White skin; Curly white hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Curly white hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Curly white hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Curly white hair; Blue eyes; Pointed ears</entry>
+		<entry>White skin; Curly white hair; Golden eyes; Pointed ears</entry>
+		<entry>White skin; Curly white hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>White skin; Curly white hair; Light Blue eyes; Pointed ears</entry>
+		<entry>White skin; Kinky black hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Kinky black hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Kinky black hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Kinky black hair; Blue eyes; Pointed ears</entry>
+		<entry>White skin; Kinky black hair; Golden eyes; Pointed ears</entry>
+		<entry>White skin; Kinky black hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>White skin; Kinky black hair; Light Blue eyes; Pointed ears</entry>
+		<entry>White skin; Kinky pale gold hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Kinky pale gold hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Kinky pale gold hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Kinky pale gold hair; Blue eyes; Pointed ears</entry>
+		<entry>White skin; Kinky pale gold hair; Golden eyes; Pointed ears</entry>
+		<entry>White skin; Kinky pale gold hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>White skin; Kinky pale gold hair; Light Blue eyes; Pointed ears</entry>
+		<entry>White skin; Kinky silver hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Kinky silver hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Kinky silver hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Kinky silver hair; Blue eyes; Pointed ears</entry>
+		<entry>White skin; Kinky silver hair; Golden eyes; Pointed ears</entry>
+		<entry>White skin; Kinky silver hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>White skin; Kinky silver hair; Light Blue eyes; Pointed ears</entry>
+		<entry>White skin; Kinky white hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Kinky white hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Kinky white hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Kinky white hair; Blue eyes; Pointed ears</entry>
+		<entry>White skin; Kinky white hair; Golden eyes; Pointed ears</entry>
+		<entry>White skin; Kinky white hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>White skin; Kinky white hair; Light Blue eyes; Pointed ears</entry>
+		<entry>White skin; Straight black hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Straight black hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Straight black hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Straight black hair; Blue eyes; Pointed ears</entry>
+		<entry>White skin; Straight black hair; Golden eyes; Pointed ears</entry>
+		<entry>White skin; Straight black hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>White skin; Straight black hair; Light Blue eyes; Pointed ears</entry>
+		<entry>White skin; Straight pale gold hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Straight pale gold hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Straight pale gold hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Straight pale gold hair; Blue eyes; Pointed ears</entry>
+		<entry>White skin; Straight pale gold hair; Golden eyes; Pointed ears</entry>
+		<entry>White skin; Straight pale gold hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>White skin; Straight pale gold hair; Light Blue eyes; Pointed ears</entry>
+		<entry>White skin; Straight silver hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Straight silver hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Straight silver hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Straight silver hair; Blue eyes; Pointed ears</entry>
+		<entry>White skin; Straight silver hair; Golden eyes; Pointed ears</entry>
+		<entry>White skin; Straight silver hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>White skin; Straight silver hair; Light Blue eyes; Pointed ears</entry>
+		<entry>White skin; Straight white hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Straight white hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Straight white hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>White skin; Straight white hair; Blue eyes; Pointed ears</entry>
+		<entry>White skin; Straight white hair; Golden eyes; Pointed ears</entry>
+		<entry>White skin; Straight white hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>White skin; Straight white hair; Light Blue eyes; Pointed ears</entry>
 	</collection>
 	<collection>
 		<name>Wild ElfUncommon</name>
@@ -11255,9 +12041,18 @@
 	</collection>
 	<collection>
 		<name>Steam MephitUncommon</name>
-		
-		
-		
+		<entry>Billowing steamy skin; Flames engulfing the head; White eyes; Wings composed of flames, body dripping with steamy moisture</entry>
+		<entry>Billowing steamy skin; Flames engulfing the head; White eyes; Wings composed of steam, body dripping with steamy moisture</entry>
+		<entry>Billowing steamy skin; Flames engulfing the head; White eyes; Wings composed of steam, body is billowing steam, a flame roars in the stomach</entry>
+		<entry>Billowing steamy skin; Flames engulfing the head; Yellow eyes; Wings composed of flames, body dripping with steamy moisture</entry>
+		<entry>Billowing steamy skin; Flames engulfing the head; Yellow eyes; Wings composed of steam, body dripping with steamy moisture</entry>
+		<entry>Billowing steamy skin; Flames engulfing the head; Yellow eyes; Wings composed of steam, body is billowing steam, a flame roars in the stomach</entry>
+		<entry>Billowing steamy skin; Flames like hair on the head; White eyes; Wings composed of flames, body dripping with steamy moisture</entry>
+		<entry>Billowing steamy skin; Flames like hair on the head; White eyes; Wings composed of steam, body dripping with steamy moisture</entry>
+		<entry>Billowing steamy skin; Flames like hair on the head; White eyes; Wings composed of steam, body is billowing steam, a flame roars in the stomach</entry>
+		<entry>Billowing steamy skin; Flames like hair on the head; Yellow eyes; Wings composed of flames, body dripping with steamy moisture</entry>
+		<entry>Billowing steamy skin; Flames like hair on the head; Yellow eyes; Wings composed of steam, body dripping with steamy moisture</entry>
+		<entry>Billowing steamy skin; Flames like hair on the head; Yellow eyes; Wings composed of steam, body is billowing steam, a flame roars in the stomach</entry>
 	</collection>
 	<collection>
 		<name>Water MephitUncommon</name>
@@ -11357,6 +12152,30 @@
 		<entry>Fair skin; Dark brown hair and fur; Hooves on legs, white horns, cow-like tail</entry>
 		<entry>Fair skin; Dark brown hair and fur; Hooves on legs, yellow horns, cow-like tail</entry>
 		<entry>Fair skin; Dark brown hair and fur; Hooves on legs, yellow-brown horns, cow-like tail</entry>
+		<entry>Pale skin; Black hair and fur; Hooves on legs, beige horns, cow-like tail</entry>
+		<entry>Pale skin; Black hair and fur; Hooves on legs, black horns, cow-like tail</entry>
+		<entry>Pale skin; Black hair and fur; Hooves on legs, brown horns, cow-like tail</entry>
+		<entry>Pale skin; Black hair and fur; Hooves on legs, dark brown horns, cow-like tail</entry>
+		<entry>Pale skin; Black hair and fur; Hooves on legs, dark yellow horns, cow-like tail</entry>
+		<entry>Pale skin; Black hair and fur; Hooves on legs, white horns, cow-like tail</entry>
+		<entry>Pale skin; Black hair and fur; Hooves on legs, yellow horns, cow-like tail</entry>
+		<entry>Pale skin; Black hair and fur; Hooves on legs, yellow-brown horns, cow-like tail</entry>
+		<entry>Pale skin; Brown hair and fur; Hooves on legs, beige horns, cow-like tail</entry>
+		<entry>Pale skin; Brown hair and fur; Hooves on legs, black horns, cow-like tail</entry>
+		<entry>Pale skin; Brown hair and fur; Hooves on legs, brown horns, cow-like tail</entry>
+		<entry>Pale skin; Brown hair and fur; Hooves on legs, dark brown horns, cow-like tail</entry>
+		<entry>Pale skin; Brown hair and fur; Hooves on legs, dark yellow horns, cow-like tail</entry>
+		<entry>Pale skin; Brown hair and fur; Hooves on legs, white horns, cow-like tail</entry>
+		<entry>Pale skin; Brown hair and fur; Hooves on legs, yellow horns, cow-like tail</entry>
+		<entry>Pale skin; Brown hair and fur; Hooves on legs, yellow-brown horns, cow-like tail</entry>
+		<entry>Pale skin; Dark brown hair and fur; Hooves on legs, beige horns, cow-like tail</entry>
+		<entry>Pale skin; Dark brown hair and fur; Hooves on legs, black horns, cow-like tail</entry>
+		<entry>Pale skin; Dark brown hair and fur; Hooves on legs, brown horns, cow-like tail</entry>
+		<entry>Pale skin; Dark brown hair and fur; Hooves on legs, dark brown horns, cow-like tail</entry>
+		<entry>Pale skin; Dark brown hair and fur; Hooves on legs, dark yellow horns, cow-like tail</entry>
+		<entry>Pale skin; Dark brown hair and fur; Hooves on legs, white horns, cow-like tail</entry>
+		<entry>Pale skin; Dark brown hair and fur; Hooves on legs, yellow horns, cow-like tail</entry>
+		<entry>Pale skin; Dark brown hair and fur; Hooves on legs, yellow-brown horns, cow-like tail</entry>
 	</collection>
 	<collection>
 		<name>MohrgUncommon</name>
@@ -11692,7 +12511,7 @@
 	</collection>
 	<collection>
 		<name>QuasitUncommon</name>
-		
+		<entry>Green skin covered in warts and postules; Tail covered in barbs, spiky horns, bat-like wings</entry>
 	</collection>
 	<collection>
 		<name>RakshasaUncommon</name>
@@ -18493,8 +19312,74 @@
 	</collection>
 	<collection>
 		<name>High ElfRare</name>
-		
-		
+		<entry>Brown skin; Curly black hair with blond hues; Blue eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with blond hues; Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with blond hues; Golden eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with blond hues; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with blond hues; Light Blue eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with blond hues; Light Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with blond hues; Solid blue eyes speckled with gold, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with blond hues; Solid blue eyes, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with blond hues; Solid golden eyes speckled with gold, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with blond hues; Solid golden eyes, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with blond hues; Solid green eyes speckled with gold, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with blond hues; Solid green eyes, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with blond hues; Solid light blue eyes speckled with gold, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with blond hues; Solid light blue eyes, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with blond hues; Solid violet eyes speckled with gold, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with blond hues; Solid violet eyes, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with blond hues; Violet eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with blond hues; Violet eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with copper hues; Blue eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with copper hues; Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with copper hues; Golden eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with copper hues; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with copper hues; Light Blue eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with copper hues; Light Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with copper hues; Solid blue eyes speckled with gold, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with copper hues; Solid blue eyes, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with copper hues; Solid golden eyes speckled with gold, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with copper hues; Solid golden eyes, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with copper hues; Solid green eyes speckled with gold, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with copper hues; Solid green eyes, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with copper hues; Solid light blue eyes speckled with gold, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with copper hues; Solid light blue eyes, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with copper hues; Solid violet eyes speckled with gold, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with copper hues; Solid violet eyes, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with copper hues; Violet eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with copper hues; Violet eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with silvery hues; Blue eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with silvery hues; Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with silvery hues; Golden eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with silvery hues; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with silvery hues; Light Blue eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with silvery hues; Light Blue eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with silvery hues; Solid blue eyes speckled with gold, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with silvery hues; Solid blue eyes, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with silvery hues; Solid golden eyes speckled with gold, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with silvery hues; Solid golden eyes, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with silvery hues; Solid green eyes speckled with gold, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with silvery hues; Solid green eyes, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with silvery hues; Solid light blue eyes speckled with gold, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with silvery hues; Solid light blue eyes, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with silvery hues; Solid violet eyes speckled with gold, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with silvery hues; Solid violet eyes, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with silvery hues; Violet eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair with silvery hues; Violet eyes; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair; Blue eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair; Light Blue eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair; Solid blue eyes speckled with gold, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair; Solid blue eyes, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair; Solid golden eyes speckled with gold, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair; Solid golden eyes, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair; Solid green eyes speckled with gold, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair; Solid green eyes, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair; Solid light blue eyes speckled with gold, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair; Solid light blue eyes, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair; Solid violet eyes speckled with gold, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair; Solid violet eyes, lacking pupils; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair; Violet eyes speckled with gold; Pointed ears</entry>
+		<entry>Brown skin; Curly black hair; Violet eyes; Pointed ears</entry>
 	</collection>
 	<collection>
 		<name>Wild ElfRare</name>
@@ -19773,8 +20658,9 @@
 	</collection>
 	<collection>
 		<name>RocRare</name>
-		
-		
+		<entry>Black feathers</entry>
+		<entry>Red feathers</entry>
+		<entry>White feathers</entry>
 	</collection>
 	<collection>
 		<name>RoperRare</name>
