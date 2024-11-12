@@ -3845,6 +3845,16 @@
 		<entry>Spotted (Brown coat with white spots; White/brown mane and tail)</entry>
 		<entry>Spotted (White coat with black spots; black/white mane and tail)</entry>
 		<entry>Spotted (White coat with brown spots; brown/white mane and tail)</entry>
+		<entry>Spotted (White coat with cream spots; Cream/white mane and tail)</entry>
+		<entry>Spotted (White coat with creamy golden spots; Creamy golden/white mane and tail)</entry>
+		<entry>Spotted (White coat with dark ginger spots; Dark ginger/white mane and tail)</entry>
+		<entry>Spotted (White coat with dark gray spots; Dark gray/white mane and tail)</entry>
+		<entry>Spotted (White coat with ginger spots; Ginger/white mane and tail)</entry>
+		<entry>Spotted (White coat with golden spots; Golden/white mane and tail)</entry>
+		<entry>Spotted (White coat with gray spots; Gray/white mane and tail)</entry>
+		<entry>Spotted (White coat with light ginger spots; Light ginger/white mane and tail)</entry>
+		<entry>Spotted (White coat with light gray spots; Light gray/white mane and tail)</entry>
+		<entry>Spotted Draft</entry>
 	</collection>
 	<collection>
 		<name>Heavy WarhorseCommon</name>
@@ -3964,6 +3974,16 @@
 		<entry>Spotted (Brown coat with white spots; White/brown mane and tail)</entry>
 		<entry>Spotted (White coat with black spots; black/white mane and tail)</entry>
 		<entry>Spotted (White coat with brown spots; brown/white mane and tail)</entry>
+		<entry>Spotted (White coat with cream spots; Cream/white mane and tail)</entry>
+		<entry>Spotted (White coat with creamy golden spots; Creamy golden/white mane and tail)</entry>
+		<entry>Spotted (White coat with dark ginger spots; Dark ginger/white mane and tail)</entry>
+		<entry>Spotted (White coat with dark gray spots; Dark gray/white mane and tail)</entry>
+		<entry>Spotted (White coat with ginger spots; Ginger/white mane and tail)</entry>
+		<entry>Spotted (White coat with golden spots; Golden/white mane and tail)</entry>
+		<entry>Spotted (White coat with gray spots; Gray/white mane and tail)</entry>
+		<entry>Spotted (White coat with light ginger spots; Light ginger/white mane and tail)</entry>
+		<entry>Spotted (White coat with light gray spots; Light gray/white mane and tail)</entry>
+		<entry>Spotted Draft</entry>
 	</collection>
 	<collection>
 		<name>Light HorseCommon</name>
@@ -4074,6 +4094,16 @@
 		<entry>Spotted (White coat with brown spots; brown/white mane and tail)</entry>
 		<entry>Spotted (White coat with cream spots; Cream/white mane and tail)</entry>
 		<entry>Spotted (White coat with creamy golden spots; Creamy golden/white mane and tail)</entry>
+		<entry>Spotted (White coat with dark ginger spots; Dark ginger/white mane and tail)</entry>
+		<entry>Spotted (White coat with dark gray spots; Dark gray/white mane and tail)</entry>
+		<entry>Spotted (White coat with ginger spots; Ginger/white mane and tail)</entry>
+		<entry>Spotted (White coat with golden spots; Golden/white mane and tail)</entry>
+		<entry>Spotted (White coat with gray spots; Gray/white mane and tail)</entry>
+		<entry>Spotted (White coat with light ginger spots; Light ginger/white mane and tail)</entry>
+		<entry>Spotted (White coat with light gray spots; Light gray/white mane and tail)</entry>
+		<entry>Standardbred</entry>
+		<entry>Thoroughbread</entry>
+		<entry>Tobiano (White/black cow-patterned coat; White mane and tail)</entry>
 	</collection>
 	<collection>
 		<name>Light WarhorseCommon</name>
@@ -4184,6 +4214,16 @@
 		<entry>Spotted (White coat with brown spots; brown/white mane and tail)</entry>
 		<entry>Spotted (White coat with cream spots; Cream/white mane and tail)</entry>
 		<entry>Spotted (White coat with creamy golden spots; Creamy golden/white mane and tail)</entry>
+		<entry>Spotted (White coat with dark ginger spots; Dark ginger/white mane and tail)</entry>
+		<entry>Spotted (White coat with dark gray spots; Dark gray/white mane and tail)</entry>
+		<entry>Spotted (White coat with ginger spots; Ginger/white mane and tail)</entry>
+		<entry>Spotted (White coat with golden spots; Golden/white mane and tail)</entry>
+		<entry>Spotted (White coat with gray spots; Gray/white mane and tail)</entry>
+		<entry>Spotted (White coat with light ginger spots; Light ginger/white mane and tail)</entry>
+		<entry>Spotted (White coat with light gray spots; Light gray/white mane and tail)</entry>
+		<entry>Standardbred</entry>
+		<entry>Thoroughbread</entry>
+		<entry>Tobiano (White/black cow-patterned coat; White mane and tail)</entry>
 	</collection>
 	<collection>
 		<name>Hound ArchonCommon</name>
@@ -5273,9 +5313,10 @@
 	</collection>
 	<collection>
 		<name>Ooze MephitCommon</name>
-		
-		
-		
+		<entry>Green skin; Dark green eyes; Wings are green bubble membranes, body is mucky and filthy, dripping in slime</entry>
+		<entry>Green skin; Red eyes; Wings are green bubble membranes, body is mucky and filthy, dripping in slime</entry>
+		<entry>Ochre skin; Dark green eyes; Wings are green bubble membranes, body is mucky and filthy, dripping in slime</entry>
+		<entry>Ochre skin; Red eyes; Wings are green bubble membranes, body is mucky and filthy, dripping in slime</entry>
 	</collection>
 	<collection>
 		<name>Salt MephitCommon</name>
@@ -5907,7 +5948,7 @@
 		<entry>Brown skin</entry>
 		<entry>Gray skin</entry>
 		<entry>Green skin</entry>
-		<entry>Pink skinn</entry>
+		<entry>Pink skin</entry>
 		<entry>Reddish-brown skin</entry>
 	</collection>
 	<collection>
@@ -5924,11 +5965,31 @@
 		<entry>Pale turquoise skin; Blue-black hair; Yellow eyes; Black nails</entry>
 		<entry>Pale turquoise skin; Blue-black hair; Yellow eyes; Black nails, black horns</entry>
 		<entry>Pale turquoise skin; Blue-black hair; Yellow eyes; Black nails, white horns</entry>
+		<entry>Pale turquoise skin; Light gray hair; Green eyes; Black nails</entry>
+		<entry>Pale turquoise skin; Light gray hair; Green eyes; Black nails, black horns</entry>
+		<entry>Pale turquoise skin; Light gray hair; Green eyes; Black nails, white horns</entry>
+		<entry>Pale turquoise skin; Light gray hair; Yellow eyes; Black nails</entry>
+		<entry>Pale turquoise skin; Light gray hair; Yellow eyes; Black nails, black horns</entry>
+		<entry>Pale turquoise skin; Light gray hair; Yellow eyes; Black nails, white horns</entry>
+		<entry>Pale turquoise skin; White hair; Green eyes; Black nails</entry>
+		<entry>Pale turquoise skin; White hair; Green eyes; Black nails, black horns</entry>
+		<entry>Pale turquoise skin; White hair; Green eyes; Black nails, white horns</entry>
+		<entry>Pale turquoise skin; White hair; Yellow eyes; Black nails</entry>
+		<entry>Pale turquoise skin; White hair; Yellow eyes; Black nails, black horns</entry>
+		<entry>Pale turquoise skin; White hair; Yellow eyes; Black nails, white horns</entry>
 	</collection>
 	<collection>
 		<name>OgreCommon</name>
-		
-		
+		<entry>Beige skin; Green eyes</entry>
+		<entry>Beige skin; Yellow eyes</entry>
+		<entry>Pale beige skin; Green eyes</entry>
+		<entry>Pale beige skin; Yellow eyes</entry>
+		<entry>Pale gray skin; Green eyes</entry>
+		<entry>Pale gray skin; Yellow eyes</entry>
+		<entry>Pale pink skin; Green eyes</entry>
+		<entry>Pale pink skin; Yellow eyes</entry>
+		<entry>Pink skin; Green eyes</entry>
+		<entry>Pink skin; Yellow eyes</entry>
 	</collection>
 	<collection>
 		<name>OrcCommon</name>
@@ -10123,6 +10184,90 @@
 		<entry>Dark tan skin; Straight pale gold hair; Green eyes; Pointed ears</entry>
 		<entry>Dark tan skin; Straight silver hair; Green eyes; Pointed ears</entry>
 		<entry>Dark tan skin; Straight white hair; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly black hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly black hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly black hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly black hair; Blue eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly black hair; Golden eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly black hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Light brown skin; Curly black hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly pale gold hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly pale gold hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly pale gold hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly pale gold hair; Blue eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly pale gold hair; Golden eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly pale gold hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Light brown skin; Curly pale gold hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly silver hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly silver hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly silver hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly silver hair; Blue eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly silver hair; Golden eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly silver hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Light brown skin; Curly silver hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly white hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly white hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly white hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly white hair; Blue eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly white hair; Golden eyes; Pointed ears</entry>
+		<entry>Light brown skin; Curly white hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Light brown skin; Curly white hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky black hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky black hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky black hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky black hair; Blue eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky black hair; Golden eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky black hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Light brown skin; Kinky black hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky pale gold hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky pale gold hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky pale gold hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky pale gold hair; Blue eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky pale gold hair; Golden eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky pale gold hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Light brown skin; Kinky pale gold hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky silver hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky silver hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky silver hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky silver hair; Blue eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky silver hair; Golden eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky silver hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Light brown skin; Kinky silver hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky white hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky white hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky white hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky white hair; Blue eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky white hair; Golden eyes; Pointed ears</entry>
+		<entry>Light brown skin; Kinky white hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Light brown skin; Kinky white hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight black hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight black hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight black hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight black hair; Blue eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight black hair; Golden eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight black hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Light brown skin; Straight black hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight pale gold hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight pale gold hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight pale gold hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight pale gold hair; Blue eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight pale gold hair; Golden eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight pale gold hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Light brown skin; Straight pale gold hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight silver hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight silver hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight silver hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight silver hair; Blue eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight silver hair; Golden eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight silver hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Light brown skin; Straight silver hair; Light Blue eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight white hair with blond hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight white hair with copper hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight white hair with silvery hues; Green eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight white hair; Blue eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight white hair; Golden eyes; Pointed ears</entry>
+		<entry>Light brown skin; Straight white hair; Green eyes speckled with gold; Pointed ears</entry>
+		<entry>Light brown skin; Straight white hair; Light Blue eyes; Pointed ears</entry>
 	</collection>
 	<collection>
 		<name>Wild ElfUncommon</name>
@@ -11188,6 +11333,30 @@
 		<entry>Brown skin; Dark brown hair and fur; Hooves on legs, white horns, cow-like tail</entry>
 		<entry>Brown skin; Dark brown hair and fur; Hooves on legs, yellow horns, cow-like tail</entry>
 		<entry>Brown skin; Dark brown hair and fur; Hooves on legs, yellow-brown horns, cow-like tail</entry>
+		<entry>Fair skin; Black hair and fur; Hooves on legs, beige horns, cow-like tail</entry>
+		<entry>Fair skin; Black hair and fur; Hooves on legs, black horns, cow-like tail</entry>
+		<entry>Fair skin; Black hair and fur; Hooves on legs, brown horns, cow-like tail</entry>
+		<entry>Fair skin; Black hair and fur; Hooves on legs, dark brown horns, cow-like tail</entry>
+		<entry>Fair skin; Black hair and fur; Hooves on legs, dark yellow horns, cow-like tail</entry>
+		<entry>Fair skin; Black hair and fur; Hooves on legs, white horns, cow-like tail</entry>
+		<entry>Fair skin; Black hair and fur; Hooves on legs, yellow horns, cow-like tail</entry>
+		<entry>Fair skin; Black hair and fur; Hooves on legs, yellow-brown horns, cow-like tail</entry>
+		<entry>Fair skin; Brown hair and fur; Hooves on legs, beige horns, cow-like tail</entry>
+		<entry>Fair skin; Brown hair and fur; Hooves on legs, black horns, cow-like tail</entry>
+		<entry>Fair skin; Brown hair and fur; Hooves on legs, brown horns, cow-like tail</entry>
+		<entry>Fair skin; Brown hair and fur; Hooves on legs, dark brown horns, cow-like tail</entry>
+		<entry>Fair skin; Brown hair and fur; Hooves on legs, dark yellow horns, cow-like tail</entry>
+		<entry>Fair skin; Brown hair and fur; Hooves on legs, white horns, cow-like tail</entry>
+		<entry>Fair skin; Brown hair and fur; Hooves on legs, yellow horns, cow-like tail</entry>
+		<entry>Fair skin; Brown hair and fur; Hooves on legs, yellow-brown horns, cow-like tail</entry>
+		<entry>Fair skin; Dark brown hair and fur; Hooves on legs, beige horns, cow-like tail</entry>
+		<entry>Fair skin; Dark brown hair and fur; Hooves on legs, black horns, cow-like tail</entry>
+		<entry>Fair skin; Dark brown hair and fur; Hooves on legs, brown horns, cow-like tail</entry>
+		<entry>Fair skin; Dark brown hair and fur; Hooves on legs, dark brown horns, cow-like tail</entry>
+		<entry>Fair skin; Dark brown hair and fur; Hooves on legs, dark yellow horns, cow-like tail</entry>
+		<entry>Fair skin; Dark brown hair and fur; Hooves on legs, white horns, cow-like tail</entry>
+		<entry>Fair skin; Dark brown hair and fur; Hooves on legs, yellow horns, cow-like tail</entry>
+		<entry>Fair skin; Dark brown hair and fur; Hooves on legs, yellow-brown horns, cow-like tail</entry>
 	</collection>
 	<collection>
 		<name>MohrgUncommon</name>
@@ -19393,13 +19562,16 @@
 	</collection>
 	<collection>
 		<name>MuleRare</name>
-		
-		
+		<entry>Paint coloration</entry>
+		<entry>Tobiano coloration</entry>
 	</collection>
 	<collection>
 		<name>MummyRare</name>
-		
-		
+		<entry>Desiccated husk wrapped in linen burial wraps, pungent bread smell</entry>
+		<entry>Desiccated husk wrapped in linen burial wraps, pungent roasted meats smell</entry>
+		<entry>Desiccated husk wrapped in linen burial wraps, pungent vinegar smell</entry>
+		<entry>Desiccated husk wrapped in linen burial wraps, pungent wine smell</entry>
+		<entry>Desiccated husk wrapped in linen burial wraps, pungent yeast smell</entry>
 	</collection>
 	<collection>
 		<name>Dark NagaRare</name>
