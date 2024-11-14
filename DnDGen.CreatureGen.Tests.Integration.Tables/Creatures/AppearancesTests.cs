@@ -5,7 +5,9 @@ using DnDGen.Infrastructure.Selectors.Collections;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 {
@@ -47,6 +49,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 .Union(
                 [
                     CreatureConstants.Bison + GenderConstants.Male,
+                    CreatureConstants.Cockatrice + GenderConstants.Male,
                 ]);
         }
 
@@ -63,6 +66,51 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             {
                 AssertCreatureAppearance(key);
             }
+        }
+
+        [Test]
+        [Ignore("Don't run this unless you need to bulk update the appearances file")]
+        public void DEBUG_WriteXml()
+        {
+            var collections = new XElement("collections");
+            var rarities = new[] { Rarity.Common, Rarity.Uncommon, Rarity.Rare, Rarity.VeryRare };
+
+            foreach (var creature in CreatureConstants.GetAll())
+            {
+                foreach (var rarity in rarities)
+                {
+                    var collection = new XElement("collection", new XElement("name", creature + rarity.ToString()));
+
+                    foreach (var appearance in creatureAppearances[creature][rarity])
+                    {
+                        collection.Add(new XElement("entry", appearance));
+                    }
+
+                    collections.Add(collection);
+                }
+
+                var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, creature);
+                var creatureKeys = GetCollectionCreatureKeys();
+                var additionalKeys = genders.Select(g => creature + g).Intersect(creatureKeys);
+
+                foreach (var key in additionalKeys)
+                {
+                    foreach (var rarity in rarities)
+                    {
+                        var collection = new XElement("collection", new XElement("name", key + rarity.ToString()));
+
+                        foreach (var appearance in creatureAppearances[key][rarity])
+                        {
+                            collection.Add(new XElement("entry", appearance));
+                        }
+
+                        collections.Add(collection);
+                    }
+                }
+            }
+
+            var path = Path.Combine(Environment.CurrentDirectory, $"appearances-{Guid.NewGuid()}.xml");
+            collections.Save(path);
         }
 
         [Test]
@@ -481,17 +529,184 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonSkin: [ "Dark brown skin", "Brown skin", "Light brown skin",
                     "Dark tan skin", "Tan skin", "Light tan skin",
                     "Pink skin", "White skin", "Pale white skin" ],
-                uncommonSkin: ["TODO Half-Elf skin"],
-                rareSkin: ["TODO Drow skin"],
+                uncommonSkin: [
+                    //Common Half-Elf skin
+                    "Dark brown skin", "Brown skin", "Light brown skin",
+                    "Dark tan skin", "Tan skin", "Light tan skin",
+                    "Pink skin", "White skin", "Pale white skin",
+                    "Brown skin", "Tan skin", "White skin", "Pink skin",
+                    "Light brown skin", "Light tan skin", "Pale white skin"
+                ],
+                rareSkin: [
+                    //Uncommon Half-Elf skin
+                    "Pale grey skin",
+                    "Dark brown skin", "Dark tan skin",
+                    "Copper skin", "Tan skin",
+                    "Light brown skin", "Brown skin", "Dark brown skin",
+                    "Black skin", "Dark blue skin", "Gray skin", "Dark gray skin", "Jet-black skin", "Obsidian-colored skin", "Blue skin",
+                        "Gray-blue skin", "Black-blue skin",
+                    //Rare Half-Elf skin
+                    "White (albino) skin",
+                    //Common Drow skin
+                    "Black skin", "Dark blue skin", "Gray skin", "Dark gray skin", "Jet-black skin", "Obsidian-colored skin", "Blue skin",
+                    "Gray-blue skin", "Black-blue skin",
+                    //Rare Drow skin
+                    "White (albino) skin"
+                ],
                 commonHair: ["Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
                     "Curly red hair", "Curly blond hair", "Curly brown hair", "Curly black hair",
                     "Kinky red hair", "Kinky blond hair", "Kinky brown hair", "Kinky black hair"],
                 uncommonHair: [ "Bald",
-                    "TODO Half-Elf hair"],
-                rareHair: ["TODO Drow hair"],
+                    //Common Half-Elf hair
+                    "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
+                    "Curly red hair", "Curly blond hair", "Curly brown hair", "Curly black hair",
+                    "Kinky red hair", "Kinky blond hair", "Kinky brown hair", "Kinky black hair",
+                    "Straight white hair", "Curly white hair", "Kinky white hair",
+                    "Straight silver hair", "Curly silver hair", "Kinky silver hair",
+                    "Straight pale gold hair", "Curly pale gold hair", "Kinky pale gold hair"
+                ],
+                rareHair: [
+                    //Uncommon Half-Elf hair
+                    "Straight silver hair", "Curly silver hair", "Kinky silver hair",
+                    "Bald",
+                    "Straight black hair with silvery hues",
+                        "Curly black hair with silvery hues", "Kinky black hair with silvery hues",
+                    "Straight black hair with blond hues", "Curly black hair with blond hues", "Kinky black hair with blond hues",
+                    "Straight black hair with copper hues", "Curly black hair with copper hues", "Kinky black hair with copper hues",
+                    "Straight white hair with silvery hues", "Curly white hair with silvery hues",
+                        "Kinky white hair with silvery hues",
+                    "Straight white hair with blond hues", "Curly white hair with blond hues", "Kinky white hair with blond hues",
+                    "Straight white hair with copper hues", "Curly white hair with copper hues", "Kinky white hair with copper hues",
+                    "Straight silver hair with silvery hues", "Curly silver hair with silvery hues",
+                        "Kinky silver hair with silvery hues",
+                    "Straight silver hair with blond hues", "Curly silver hair with blond hues", "Kinky silver hair with blond hues",
+                    "Straight silver hair with copper hues", "Curly silver hair with copper hues",
+                        "Kinky silver hair with copper hues",
+                    "Straight pale gold hair with silvery hues", "Curly pale gold hair with silvery hues",
+                        "Kinky pale gold hair with silvery hues",
+                    "Straight pale gold hair with blond hues",  "Curly pale gold hair with blond hues",
+                        "Kinky pale gold hair with blond hues",
+                    "Straight pale gold hair with copper hues", "Curly pale gold hair with copper hues",
+                        "Kinky pale gold hair with copper hues",
+                    "Straight black hair", "Straight light brown hair", "Straight brown hair",
+                    "Curly black hair", "Curly light brown hair", "Curly brown hair",
+                    "Kinky black hair", "Kinky light brown hair", "Kinky brown hair",
+                    "Straight black hair", "Curly black hair", "Kinky black hair",
+                    "Straight dark brown hair", "Curly dark brown hair", "Kinky dark brown hair",
+                    "Straight brown hair", "Curly brown hair", "Kinky brown hair",
+                    "Straight light brown hair", "Curly light brown hair", "Kinky light brown hair",
+                    "Straight stark white hair", "Curly stark white hair", "Kinky stark white hair",
+                        "Straight pale yellow hair", "Curly pale yellow hair", "Kinky pale yellow hair",
+                    //Rare Half-Elf hair
+                    "Straight pale-golden hair", "Curly pale-golden hair", "Kinky pale-golden hair",
+                    "Straight yellow hair", "Straight blond hair", "Straight copper-red hair",
+                    "Curly yellow hair", "Curly blond hair", "Curly copper-red hair",
+                    "Kinky yellow hair", "Kinky blond hair", "Kinky copper-red hair",
+                    "Straight silver hair", "Curly silver hair", "Kinky silver hair",
+                    "Straight silvery-white hair", "Curly silvery-white hair", "Kinky silvery-white hair",
+                    "Straight gray hair", "Curly gray hair", "Kinky gray hair",
+                    "Straight white hair", "Curly white hair", "Kinky white hair",
+                    "Straight gray hair", "Curly gray hair", "Kinky gray hair",
+                    "Straight pale yellow hair", "Curly pale yellow hair", "Kinky pale yellow hair",
+                    "Straight silver hair", "Curly silver hair", "Kinky silver hair",
+                    "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
+                    "Straight pale red hair", "Straight pale blond hair", "Straight pale brown hair", "Straight pale black hair",
+                    "Curly pale red hair", "Curly pale blond hair", "Curly pale brown hair", "Curly pale black hair",
+                    "Kinky pale red hair", "Kinky pale blond hair", "Kinky pale brown hair", "Kinky pale black hair",
+                    "Straight pale black hair", "Curly pale black hair", "Kinky pale black hair",
+                    "Straight pale white hair", "Curly pale white hair", "Kinky pale white hair",
+                    "Straight pale silver hair", "Curly pale silver hair", "Kinky pale silver hair",
+                    "Straight very pale gold hair", "Curly very pale gold hair", "Kinky very pale gold hair",
+                    "Bald",
+                    "Straight pale black hair with silvery hues",
+                        "Curly pale black hair with silvery hues", "Kinky pale black hair with silvery hues",
+                    "Straight pale black hair with blond hues", "Curly pale black hair with blond hues", "Kinky pale black hair with blond hues",
+                    "Straight pale black hair with copper hues", "Curly pale black hair with copper hues", "Kinky pale black hair with copper hues",
+                    "Straight pale white hair with silvery hues", "Curly pale white hair with silvery hues",
+                        "Kinky pale white hair with silvery hues",
+                    "Straight pale white hair with blond hues", "Curly pale white hair with blond hues", "Kinky pale white hair with blond hues",
+                    "Straight pale white hair with copper hues", "Curly pale white hair with copper hues", "Kinky pale white hair with copper hues",
+                    "Straight pale silver hair with silvery hues", "Curly pale silver hair with silvery hues",
+                        "Kinky pale silver hair with silvery hues",
+                    "Straight pale silver hair with blond hues", "Curly pale silver hair with blond hues", "Kinky pale silver hair with blond hues",
+                    "Straight pale silver hair with copper hues", "Curly pale silver hair with copper hues",
+                        "Kinky pale silver hair with copper hues",
+                    "Straight very pale gold hair with silvery hues", "Curly very pale gold hair with silvery hues",
+                        "Kinky very pale gold hair with silvery hues",
+                    "Straight very pale gold hair with blond hues",  "Curly very pale gold hair with blond hues",
+                        "Kinky very pale gold hair with blond hues",
+                    "Straight very pale gold hair with copper hues", "Curly very pale gold hair with copper hues",
+                        "Kinky very pale gold hair with copper hues",
+                    //Common Drow hair
+                    "Straight stark white hair", "Curly stark white hair", "Kinky stark white hair",
+                    "Straight pale yellow hair", "Curly pale yellow hair", "Kinky pale yellow hair",
+                    //Uncommon Drow hair
+                    "Straight gray hair", "Curly gray hair", "Kinky gray hair",
+                    "Straight pale yellow hair", "Curly pale yellow hair", "Kinky pale yellow hair",
+                    "Straight silver hair", "Curly silver hair", "Kinky silver hair",
+                    "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
+                    "Straight pale red hair", "Straight pale blond hair", "Straight pale brown hair", "Straight pale black hair",
+                    "Curly pale red hair", "Curly pale blond hair", "Curly pale brown hair", "Curly pale black hair",
+                    "Kinky pale red hair", "Kinky pale blond hair", "Kinky pale brown hair", "Kinky pale black hair",
+                    "Straight pale black hair", "Curly pale black hair", "Kinky pale black hair",
+                    "Straight pale white hair", "Curly pale white hair", "Kinky pale white hair",
+                    "Straight pale silver hair", "Curly pale silver hair", "Kinky pale silver hair",
+                    "Straight very pale gold hair", "Curly very pale gold hair", "Kinky very pale gold hair",
+                    //Rare Drow hair
+                    "Bald",
+                    "Straight pale black hair with silvery hues",
+                        "Curly pale black hair with silvery hues", "Kinky pale black hair with silvery hues",
+                    "Straight pale black hair with blond hues", "Curly pale black hair with blond hues", "Kinky pale black hair with blond hues",
+                    "Straight pale black hair with copper hues", "Curly pale black hair with copper hues", "Kinky pale black hair with copper hues",
+                    "Straight pale white hair with silvery hues", "Curly pale white hair with silvery hues",
+                        "Kinky pale white hair with silvery hues",
+                    "Straight pale white hair with blond hues", "Curly pale white hair with blond hues", "Kinky pale white hair with blond hues",
+                    "Straight pale white hair with copper hues", "Curly pale white hair with copper hues", "Kinky pale white hair with copper hues",
+                    "Straight pale silver hair with silvery hues", "Curly pale silver hair with silvery hues",
+                        "Kinky pale silver hair with silvery hues",
+                    "Straight pale silver hair with blond hues", "Curly pale silver hair with blond hues", "Kinky pale silver hair with blond hues",
+                    "Straight pale silver hair with copper hues", "Curly pale silver hair with copper hues",
+                        "Kinky pale silver hair with copper hues",
+                    "Straight very pale gold hair with silvery hues", "Curly very pale gold hair with silvery hues",
+                        "Kinky very pale gold hair with silvery hues",
+                    "Straight very pale gold hair with blond hues",  "Curly very pale gold hair with blond hues",
+                        "Kinky very pale gold hair with blond hues",
+                    "Straight very pale gold hair with copper hues", "Curly very pale gold hair with copper hues",
+                        "Kinky very pale gold hair with copper hues"
+                ],
                 commonEyes: ["Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes"],
-                uncommonEyes: ["TODO Half-Elf eyes"],
-                rareEyes: ["TODO Drow eyes"]);
+                uncommonEyes: [
+                    //Common Half-Elf eyes
+                    "Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes",
+                ],
+                rareEyes: [
+                    //Uncommon Half-Elf eyes
+                    "Amber eyes",
+                    "Golden eyes", "Blue eyes", "Light blue eyes", "Green eyes speckled with gold",
+                    "Green eyes", "Brown eyes", "Hazel eyes",
+                    "Green eyes",
+                    "Bright red eyes", "Vivid red eyes",
+                    "Violet eyes",
+                    "Violet eyes", "Blue eyes speckled with gold", "Light blue eyes speckled with gold", "Violet eyes speckled with gold",
+                    "Solid green eyes, lacking pupils", "Solid golden eyes, lacking pupils", "Solid blue eyes, lacking pupils", "Solid light blue eyes, lacking pupils",
+                    "Solid violet eyes, lacking pupils", "Solid green eyes speckled with gold, lacking pupils", "Solid golden eyes speckled with gold, lacking pupils",
+                    "Solid blue eyes speckled with gold, lacking pupils", "Solid light blue eyes speckled with gold, lacking pupils",
+                    "Solid violet eyes speckled with gold, lacking pupils",
+                    "Golden eyes", "Blue eyes", "Light blue eyes", "Green eyes speckled with gold",
+                    "Violet eyes", "Blue eyes speckled with gold", "Light Blue eyes speckled with gold", "Violet eyes speckled with gold",
+                    "Solid green eyes, lacking pupils", "Solid golden eyes, lacking pupils", "Solid blue eyes, lacking pupils", "Solid light blue eyes, lacking pupils",
+                    "Solid violet eyes, lacking pupils", "Solid green eyes speckled with gold, lacking pupils", "Solid golden eyes speckled with gold, lacking pupils",
+                    "Solid blue eyes speckled with gold, lacking pupils", "Solid light blue eyes speckled with gold, lacking pupils",
+                    "Solid violet eyes speckled with gold, lacking pupils",
+                    "Pale white-blue eyes", "Pale white-lilac eyes", "Pale white-pink eyes", "Pale white-silver eyes", "Purple eyes", "Blue eyes",
+                    "Green eyes", "Brown eyes", "Black eyes", "Amber eyes", "Rose-hued eyes",
+                    //Common Drow eyes
+                    "Bright red eyes", "Vivid red eyes",
+                    //Uncommon Drow eyes
+                    "Pale white-blue eyes", "Pale white-lilac eyes", "Pale white-pink eyes", "Pale white-silver eyes", "Purple eyes", "Blue eyes",
+                    //Rare Drow eyes
+                    "Green eyes", "Brown eyes", "Black eyes", "Amber eyes", "Rose-hued eyes",
+                ]);
             //Source: https://www.d20srd.org/srd/monsters/arrowhawk.htm
             appearances[CreatureConstants.Arrowhawk_Juvenile][Rarity.Common] = ["Covered in blue scales with occasional tufts of yellow feathers"];
             appearances[CreatureConstants.Arrowhawk_Adult][Rarity.Common] = ["Covered in blue scales with occasional tufts of yellow feathers"];
@@ -515,47 +730,116 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allHair: [ "Brass-colored hair, brass-colored beard", "Brass-colored hair, fiery-colored beard", "Brass-colored hair, literal fire for beard",
                     "Fiery-colored hair, brass-colored beard", "Fiery-colored hair, fiery-colored beard", "Fiery-colored hair, literal fire for beard",
                     "Literal fire for hair, brass-colored beard", "Literal fire for hair, fiery-colored beard", "Literal fire for hair, literal fire for beard" ],
-                allEyes: ["TODO Dwarven eyes"]);
+                commonEyes: [
+                    //Hill Dwarf eyes, Mountain Dwarf eyes, Duergar eyes
+                    "Bright blue eyes", "Bright brown eyes", "Bright gray eyes", "Bright green eyes", "Bright hazel eyes",
+                ],
+                uncommonEyes: [
+                    //Common Deep Dwarf eyes
+                    "Washed-out blue eyes",
+                ],
+                rareEyes: [
+                    //Uncommon Deep Dwarf eyes
+                    "Washed-out blue eyes", "Washed-out brown eyes", "Washed-out gray eyes", "Washed-out green eyes", "Washed-out hazel eyes",
+                ]
+            );
             //Source: https://forgottenrealms.fandom.com/wiki/Babau
             appearances[CreatureConstants.Babau][Rarity.Common] = ["Black, leathery skin tight to a gaunt, skeletal frame. Terrible stench. Skull is tall and long with pointed ears and jaws filled with jagged teeth. A single long horn juts from the back of the skull, curving forward and downward. White eyes that glow red when glaring."];
             //Source: https://www.dimensions.com/element/rhesus-macaque-macaca-mulatta
             appearances[CreatureConstants.Baboon][Rarity.Common] = ["Brown hair, red face"];
             //Source: https://animals.sandiegozoo.org/animals/honey-badger-ratel
             appearances[CreatureConstants.Badger][Rarity.Common] = ["Thick, coarse, black fur, with a wide gray-white stripe that stretches across the back, from the top of the head to the tip of the tail"];
-            //Multiplying up from normal badger. Length is about x2 from normal low, 2.5x for high
+            //Source: https://forgottenrealms.fandom.com/wiki/Dire_badger
             appearances[CreatureConstants.Badger_Dire] = GetWeightedAppearances(
-                commonHair: new[] { "Thick brown fur" },
-                uncommonHair: new[] { "Thick grey fur", "Thick tan fur" });
+                commonHair: ["Thick brown fur"],
+                uncommonHair: ["Thick grey fur", "Thick tan fur"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Balor
-            appearances[CreatureConstants.Balor][Rarity.Common] = new[] { "Dark red skin wrapped in glaring flames. Venom-dripping fangs. Fearsome claws." };
+            appearances[CreatureConstants.Balor][Rarity.Common] = ["Dark red skin wrapped in glaring flames. Venom-dripping fangs. Fearsome claws."];
             //Source: https://forgottenrealms.fandom.com/wiki/Hamatula
-            appearances[CreatureConstants.BarbedDevil_Hamatula][Rarity.Common] = new[] { "Body completely covered in barbs. Horned hands ending in strange, lengthy claws. Long, burly tails coated in spines. Gleaming, vigilant eyes constantly shifting, making it seem anxious" };
+            appearances[CreatureConstants.BarbedDevil_Hamatula][Rarity.Common] = ["Body completely covered in barbs. Horned hands ending in strange, lengthy claws. Long, burly tails coated in spines. Gleaming, vigilant eyes constantly shifting, making it seem anxious"];
             //Source: https://forgottenrealms.fandom.com/wiki/Barghest
+            //appearances[CreatureConstants.Dog] = GetWeightedAppearances(
+            //    allEyes: ["Brown eyes", "Hazel eyes", "Amber eyes", "Yellow eyes", "Blue eyes", "Green eyes"]
+            //);
+            //appearances[CreatureConstants.Goblin] = GetWeightedAppearances(
+            //    allEyes: ["Dull, glazed, yellow eyes", "Dull, glazed, orange eyes", "Dull, glazed, red eyes"],
             appearances[CreatureConstants.Barghest] = GetWeightedAppearances(
-                commonHair: new[] { "Bluish-red fur", "Blue fur" },
-                commonEyes: new[] { "TODO Dog eyes. Glowing orange when excited",
-                    "TODO Goblin eyes. Glowing orange when excited" },
-                uncommonHair: new[] { "Bluish-red fur, shock of white hair along the back", "Blue fur, shock of white hair along the back" },
-                uncommonEyes: new[] { "TODO Dog eyes/Goblin eyes mix-match (one eye discolored). Glowing orange when excited." });
+                commonHair: ["Bluish-red fur", "Blue fur"],
+                commonEyes: [ 
+                    //Dog eyes
+                    "Brown eyes, glowing orange when excited", "Hazel eyes, glowing orange when excited", "Amber eyes, glowing orange when excited",
+                        "Yellow eyes, glowing orange when excited", "Blue eyes, glowing orange when excited", "Green eyes, glowing orange when excited",
+                    //Goblin eyes
+                    "Dull, glazed, yellow eyes, glowing orange when excited", "Dull, glazed, orange eyes, glowing orange when excited",
+                        "Dull, glazed, red eyes, glowing orange when excited"
+                    ],
+                uncommonHair: ["Bluish-red fur, shock of white hair along the back", "Blue fur, shock of white hair along the back"],
+                uncommonEyes: [
+                    //Dog & Goblin eyes
+                    "One brown eye and one dull, glazed, yellow eye, both glowing orange when excited",
+                        "One brown eye and one dull, glazed, orange eye, both glowing orange when excited",
+                        "One brown eye and one dull, glazed, red eye, both glowing orange when excited",
+                    "One hazel eye and one dull, glazed, yellow eye, both glowing orange when excited",
+                        "One hazel eye and one dull, glazed, orange eye, both glowing orange when excited",
+                        "One hazel eye and one dull, glazed, red eye, both glowing orange when excited",
+                    "One amber eye and one dull, glazed, yellow eye, both glowing orange when excited",
+                        "One amber eye and one dull, glazed, orange eye, both glowing orange when excited",
+                        "One amber eye and one dull, glazed, red eye, both glowing orange when excited",
+                    "One yellow eye and one dull, glazed, yellow eye, both glowing orange when excited",
+                        "One yellow eye and one dull, glazed, orange eye, both glowing orange when excited",
+                        "One yellow eye and one dull, glazed, red eye, both glowing orange when excited",
+                    "One blue eye and one dull, glazed, yellow eye, both glowing orange when excited",
+                        "One blue eye and one dull, glazed, orange eye, both glowing orange when excited",
+                        "One blue eye and one dull, glazed, red eye, both glowing orange when excited",
+                    "One green eye and one dull, glazed, yellow eye, both glowing orange when excited",
+                        "One green eye and one dull, glazed, orange eye, both glowing orange when excited",
+                        "One green eye and one dull, glazed, red eye, both glowing orange when excited",
+                ]);
             appearances[CreatureConstants.Barghest_Greater] = GetWeightedAppearances(
-                commonHair: new[] { "Bluish-red fur", "Blue fur" },
-                commonEyes: new[] { "TODO Dog eyes. Glowing orange when excited",
-                    "TODO Goblin eyes. Glowing orange when excited" },
-                uncommonHair: new[] { "Bluish-red fur, shock of white hair along the back", "Blue fur, shock of white hair along the back" },
-                uncommonEyes: new[] { "TODO Dog eyes/Goblin eyes mix-match (one eye discolored). Glowing orange when excited." });
+                commonHair: ["Bluish-red fur", "Blue fur"],
+                commonEyes: [
+                    //Dog eyes
+                    "Brown eyes, glowing orange when excited", "Hazel eyes, glowing orange when excited", "Amber eyes, glowing orange when excited",
+                        "Yellow eyes, glowing orange when excited", "Blue eyes, glowing orange when excited", "Green eyes, glowing orange when excited",
+                    //Goblin eyes
+                    "Dull, glazed, yellow eyes, glowing orange when excited", "Dull, glazed, orange eyes, glowing orange when excited",
+                        "Dull, glazed, red eyes, glowing orange when excited"
+                ],
+                uncommonHair: ["Bluish-red fur, shock of white hair along the back", "Blue fur, shock of white hair along the back"],
+                uncommonEyes: [
+                    //Dog & Goblin eyes
+                    "One brown eye and one dull, glazed, yellow eye, both glowing orange when excited",
+                        "One brown eye and one dull, glazed, orange eye, both glowing orange when excited",
+                        "One brown eye and one dull, glazed, red eye, both glowing orange when excited",
+                    "One hazel eye and one dull, glazed, yellow eye, both glowing orange when excited",
+                        "One hazel eye and one dull, glazed, orange eye, both glowing orange when excited",
+                        "One hazel eye and one dull, glazed, red eye, both glowing orange when excited",
+                    "One amber eye and one dull, glazed, yellow eye, both glowing orange when excited",
+                        "One amber eye and one dull, glazed, orange eye, both glowing orange when excited",
+                        "One amber eye and one dull, glazed, red eye, both glowing orange when excited",
+                    "One yellow eye and one dull, glazed, yellow eye, both glowing orange when excited",
+                        "One yellow eye and one dull, glazed, orange eye, both glowing orange when excited",
+                        "One yellow eye and one dull, glazed, red eye, both glowing orange when excited",
+                    "One blue eye and one dull, glazed, yellow eye, both glowing orange when excited",
+                        "One blue eye and one dull, glazed, orange eye, both glowing orange when excited",
+                        "One blue eye and one dull, glazed, red eye, both glowing orange when excited",
+                    "One green eye and one dull, glazed, yellow eye, both glowing orange when excited",
+                        "One green eye and one dull, glazed, orange eye, both glowing orange when excited",
+                        "One green eye and one dull, glazed, red eye, both glowing orange when excited",
+                ]);
             //Source: https://forgottenrealms.fandom.com/wiki/Basilisk
             appearances[CreatureConstants.Basilisk] = GetWeightedAppearances(
-                commonSkin: new[] { "Dull brown skin, yellowish underbelly" },
-                allEyes: new[] { "Glowing pale green eyes" },
-                uncommonSkin: new[] { "Dark gray skin, yellowish underbelly", "Dark yellow skin, yellowish underbelly", "Dark orange skin, yellowish underbelly" },
-                commonOther: new[] { "Single row of bony spikes lining the back" },
-                rareOther: new[] { "Single row of bony spikes lining the back. Curved horn atop the nose" });
+                commonSkin: ["Dull brown skin, yellowish underbelly"],
+                allEyes: ["Glowing pale green eyes"],
+                uncommonSkin: ["Dark gray skin, yellowish underbelly", "Dark yellow skin, yellowish underbelly", "Dark orange skin, yellowish underbelly"],
+                commonOther: ["Single row of bony spikes lining the back"],
+                rareOther: ["Single row of bony spikes lining the back. Curved horn atop the nose"]);
             appearances[CreatureConstants.Basilisk_Greater] = GetWeightedAppearances(
-                commonSkin: new[] { "Dull brown skin, yellowish underbelly" },
-                allEyes: new[] { "Glowing pale green eyes" },
-                uncommonSkin: new[] { "Dark gray skin, yellowish underbelly", "Dark yellow skin, yellowish underbelly", "Dark orange skin, yellowish underbelly" },
-                commonOther: new[] { "Single row of bony spikes lining the back" },
-                rareOther: new[] { "Single row of bony spikes lining the back. Curved horn atop the nose" });
+                commonSkin: ["Dull brown skin, yellowish underbelly"],
+                allEyes: ["Glowing pale green eyes"],
+                uncommonSkin: ["Dark gray skin, yellowish underbelly", "Dark yellow skin, yellowish underbelly", "Dark orange skin, yellowish underbelly"],
+                commonOther: ["Single row of bony spikes lining the back"],
+                rareOther: ["Single row of bony spikes lining the back. Curved horn atop the nose"]);
             //Source: https://www.dimensions.com/element/little-brown-bat-myotis-lucifugus hanging height
             appearances[CreatureConstants.Bat] = GetWeightedAppearances(
                 commonSkin: new[] { "Pale red fur", "Pale tan fur", "Red fur", "Tan fur", "Brown fur", "Dark brown fur" },
@@ -650,24 +934,37 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allOther: ["Sharp tusks jutting out from beneath the snout"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Bodak
             appearances[CreatureConstants.Bodak] = GetWeightedAppearances(
-                allSkin: new[] { "Deathly pale white skin", "Deathly gray skin", "Deathly pale gray skin" },
-                allHair: new[] { "No hair of any kind" },
-                allEyes: new[] { "Empty, milky-white eyes outstretched into vertical ovals" },
-                allOther: new[] { "Face twisted into an inhuman visage of sheer madness and horror" });
+                allSkin: ["Deathly pale white skin", "Deathly gray skin", "Deathly pale gray skin"],
+                allHair: ["No hair of any kind"],
+                allEyes: ["Empty, milky-white eyes outstretched into vertical ovals"],
+                allOther: ["Face twisted into an inhuman visage of sheer madness and horror"]);
             //Source: https://web.stanford.edu/~cbross/bombbeetle.html
-            appearances[CreatureConstants.BombardierBeetle_Giant][Rarity.Common] = new[] { "Body is dull blue-gray. Head and chest is brownish-orange." };
+            appearances[CreatureConstants.BombardierBeetle_Giant][Rarity.Common] = ["Body is dull blue-gray. Head and chest is brownish-orange."];
             //Source: https://forgottenrealms.fandom.com/wiki/Osyluth
-            appearances[CreatureConstants.BoneDevil_Osyluth][Rarity.Common] = new[] { "Dry, sickly skin that seems tautly stretched over every bone in its body. Incredibly gaunt husk of a frame so emaciated that it seems skeletal. Tail of a giant scorpion while head looks like menacing skulls. The putrid stench of rot surrounds it." };
+            appearances[CreatureConstants.BoneDevil_Osyluth][Rarity.Common] = ["Dry, sickly skin that seems tautly stretched over every bone in its body. Incredibly gaunt husk of a frame so emaciated that it seems skeletal. Tail of a giant scorpion while head looks like menacing skulls. The putrid stench of rot surrounds it."];
             //Source: https://forgottenrealms.fandom.com/wiki/Bralani
             appearances[CreatureConstants.Bralani] = GetWeightedAppearances(
-                commonSkin: new[] { "TODO High elf skin" },
-                uncommonSkin: new[] { "TODO Grey elf skin", "TODO Wild elf skin", "TODO Wood elf skin" },
-                allHair: new[] { "Silvery-white hair" },
-                allEyes: new[] { "Eyes are an ever-changing rainbow of colors, depending on its mood" },
-                allOther: new[] { "Broad and stocky" });
+                commonSkin: [
+                    //Common High Elf skin
+                    "Brown skin", "Tan skin", "White skin", "Pink skin",
+                    "Light brown skin", "Light tan skin", "Pale white skin",
+                ],
+                uncommonSkin: [
+                    //Uncommon High Elf skin
+                    "Dark brown skin", "Dark tan skin",
+                    //Grey Elf skin
+                    "Pale grey skin",
+                    //Wild Elf skin
+                    "Light brown skin", "Brown skin", "Dark brown skin",
+                    //Wood Elf skin
+                    "Copper skin", "Tan skin",
+                ],
+                allHair: ["Silvery-white hair"],
+                allEyes: ["Eyes are an ever-changing rainbow of colors, depending on its mood"],
+                allOther: ["Broad and stocky"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Bugbear
             appearances[CreatureConstants.Bugbear] = GetWeightedAppearances(
-                commonSkin: new[] { "Yellow skin", "Reddish-yellow skin", "Yellowish-brown skin", "Reddish-brown skin" },
+                commonSkin: ["Yellow skin", "Reddish-yellow skin", "Yellowish-brown skin", "Reddish-brown skin"],
                 uncommonSkin: ["Red skin", "Brown skin"],
                 allHair: ["Brown hair", "Red hair"],
                 allEyes: ["Yellow eyes", "Orange eyes", "Red eyes", "Brown eyes", "Greenish-white eyes"],
@@ -737,11 +1034,843 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Fawn Colorpoint" ];
             //Source: https://forgottenrealms.fandom.com/wiki/Centaur
             appearances[CreatureConstants.Centaur] = GetWeightedAppearances(
-                allSkin: new[] { "TODO Human skin", "TODO Light Horse skin", "TODO Heavy Horse skin" },
-                allHair: new[] { "TODO Human hair", "TODO Light Horse hair", "TODO Heavy Horse hair" },
-                allEyes: new[] { "TODO Human eyes" });
+                allSkin: [
+                    //Human skin + Horse coloration
+                    "Dark brown humanoid skin, spotted horse coloration (White coat with black spots; black/white tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (White coat with brown spots; brown/white tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (White coat with gray spots; Gray/white tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (White coat with ginger spots; Ginger/white tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (White coat with golden spots; Golden/white tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (White coat with cream spots; Cream/white tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (White coat with light gray spots; Light gray/white tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (White coat with dark gray spots; Dark gray/white tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (White coat with creamy golden spots; Creamy golden/white tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (White coat with light ginger spots; Light ginger/white tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (White coat with dark ginger spots; Dark ginger/white tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (Black coat with white spots; White/black tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (Black coat with brown spots; Brown/black tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (Black coat with gray spots; Gray/black tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (Black coat with ginger spots; Ginger/black tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (Black coat with golden spots; Golden/black tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (Black coat with cream spots; Cream/black tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (Black coat with light gray spots; Light gray/black tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (Black coat with dark gray spots; Dark gray/black tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (Black coat with creamy golden spots; Creamy golden/black tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (Black coat with light ginger spots; Light ginger/black tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (Black coat with dark ginger spots; Dark ginger/black tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (Brown coat with white spots; White/brown tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (Brown coat with black spots; Black/brown tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (Brown coat with gray spots; Gray/brown tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (Brown coat with ginger spots; Ginger/brown tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (Brown coat with golden spots; Golden/brown tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (Brown coat with cream spots; Cream/brown tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (Brown coat with light gray spots; Light gray/brown tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (Brown coat with dark gray spots; Dark gray/brown tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (Brown coat with creamy golden spots; Creamy golden/brown tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (Brown coat with light ginger spots; Light ginger/brown tail)",
+                        "Dark brown humanoid skin, spotted horse coloration (Brown coat with dark ginger spots; Dark ginger/brown tail)",
+                    "Dark brown humanoid skin, bay horse coloration (Brown coat; Black legs; Black tail)",
+                    "Dark brown humanoid skin, solid black coat; Black tail",
+                    "Dark brown humanoid skin, brown coat; Black lower legs; Light brown tail",
+                    "Dark brown humanoid skin, buckskin horse coloration (Creamy-golden coat with black points; Black tail)",
+                    "Dark brown humanoid skin, buckskin horse coloration (Rich golden coat with black points; Black tail)",
+                    "Dark brown humanoid skin, chestnut horse coloration (Ginger coat; Ginger tail)",
+                        "Dark brown humanoid skin, chestnut horse coloration (Ginger coat; Light ginger tail)",
+                        "Dark brown humanoid skin, chestnut horse coloration (Ginger coat; Dark ginger tail)",
+                        "Dark brown humanoid skin, chestnut horse coloration (Light ginger coat; Ginger tail)",
+                        "Dark brown humanoid skin, chestnut horse coloration (Light ginger coat; Light ginger tail)",
+                        "Dark brown humanoid skin, chestnut horse coloration (Light ginger coat; Dark ginger tail)",
+                        "Dark brown humanoid skin, chestnut horse coloration (Dark ginger coat; Ginger tail)",
+                        "Dark brown humanoid skin, chestnut horse coloration (Dark ginger coat; Light ginger tail)",
+                        "Dark brown humanoid skin, chestnut horse coloration (Dark ginger coat; Dark ginger tail)",
+                    "Dark brown humanoid skin, cremello horse coloration (Extremely pale white coat and tail; Blue eyes)",
+                        "Dark brown humanoid skin, cremello horse coloration (Extremely pale white coat and tail; Amber eyes)",
+                        "Dark brown humanoid skin, cremello horse coloration (Extremely pale cream coat and tail; Blue eyes)",
+                        "Dark brown humanoid skin, cremello horse coloration (Extremely pale cream coat and tail; Amber eyes)",
+                    "Dark brown humanoid skin, dun horse coloration (Creamy-golden coat; Black tail; Dark dorsal strip)",
+                    "Dark brown humanoid skin, solid white-gray coat and tail",
+                        "Dark brown humanoid skin, solid light gray coat and tail",
+                        "Dark brown humanoid skin, solid gray coat and tail",
+                        "Dark brown humanoid skin, solid dark gray coat and tail",
+                    "Dark brown humanoid skin, overo horse coloration (Black/white cow-patterned coat; Black tail)",
+                        "Dark brown humanoid skin, overo horse coloration (Black/brown cow-patterned coat; Black tail)",
+                        "Dark brown humanoid skin, overo horse coloration (Black/gray cow-patterned coat; Black tail)",
+                        "Dark brown humanoid skin, overo horse coloration (Black/light gray cow-patterned coat; Black tail)",
+                        "Dark brown humanoid skin, overo horse coloration (Black/dark gray cow-patterned coat; Black tail)",
+                        "Dark brown humanoid skin, overo horse coloration (Black/creamy golden cow-patterned coat; Black tail)",
+                        "Dark brown humanoid skin, overo horse coloration (Black/rich golden cow-patterned coat; Black tail)",
+                        "Dark brown humanoid skin, overo horse coloration (Black/ginger cow-patterned coat; Black tail)",
+                        "Dark brown humanoid skin, overo horse coloration (Black/light ginger cow-patterned coat; Black tail)",
+                        "Dark brown humanoid skin, overo horse coloration (Black/dark ginger cow-patterned coat; Black tail)",
+                        "Dark brown humanoid skin, overo horse coloration (Black/golden cow-patterned coat; Black tail)",
+                    "Dark brown humanoid skin, palomino horse coloration (Golden coat; White tail)",
+                    "Dark brown humanoid skin, roan horse coloration (White-brown coat; Brown tail and legs)",
+                        "Dark brown humanoid skin, roan horse coloration (White-black coat; Black tail and legs)",
+                        "Dark brown humanoid skin, roan horse coloration (White-golden coat; Golden tail and legs)",
+                        "Dark brown humanoid skin, roan horse coloration (White-ginger coat; Ginger tail and legs)",
+                        "Dark brown humanoid skin, roan horse coloration (White-light-ginger coat; Light ginger tail and legs)",
+                        "Dark brown humanoid skin, roan horse coloration (White-dark-ginger coat; Dark ginger tail and legs)",
+                        "Dark brown humanoid skin, roan horse coloration (White-creamy-golden coat; Creamy golden tail and legs)",
+                        "Dark brown humanoid skin, roan horse coloration (White-rich-golden coat; Rich golden tail and legs)",
+                        "Dark brown humanoid skin, roan horse coloration (White-gray coat; Creamy golden tail and legs)",
+                        "Dark brown humanoid skin, roan horse coloration (White-light-gray coat; Rich golden tail and legs)",
+                        "Dark brown humanoid skin, roan horse coloration (White-dark-gray coat; Creamy golden tail and legs)",
+                    "Dark brown humanoid skin, tobiano horse coloration (White/black cow-patterned coat; White tail)",
+                        "Dark brown humanoid skin, tobiano horse coloration (White/brown cow-patterned coat; White tail)",
+                        "Dark brown humanoid skin, tobiano horse coloration (White/gray cow-patterned coat; White tail)",
+                        "Dark brown humanoid skin, tobiano horse coloration (White/light gray cow-patterned coat; White tail)",
+                        "Dark brown humanoid skin, tobiano horse coloration (White/dark gray cow-patterned coat; White tail)",
+                        "Dark brown humanoid skin, tobiano horse coloration (White/creamy golden cow-patterned coat; White tail)",
+                        "Dark brown humanoid skin, tobiano horse coloration (White/rich golden cow-patterned coat; White tail)",
+                        "Dark brown humanoid skin, tobiano horse coloration (White/ginger cow-patterned coat; White tail)",
+                        "Dark brown humanoid skin, tobiano horse coloration (White/light ginger cow-patterned coat; White tail)",
+                        "Dark brown humanoid skin, tobiano horse coloration (White/dark ginger cow-patterned coat; White tail)",
+                        "Dark brown humanoid skin, tobiano horse coloration (White/golden cow-patterned coat; White tail)",
+
+                    "Brown humanoid skin, spotted horse coloration (White coat with black spots; black/white tail)",
+                        "Brown humanoid skin, spotted horse coloration (White coat with brown spots; brown/white tail)",
+                        "Brown humanoid skin, spotted horse coloration (White coat with gray spots; Gray/white tail)",
+                        "Brown humanoid skin, spotted horse coloration (White coat with ginger spots; Ginger/white tail)",
+                        "Brown humanoid skin, spotted horse coloration (White coat with golden spots; Golden/white tail)",
+                        "Brown humanoid skin, spotted horse coloration (White coat with cream spots; Cream/white tail)",
+                        "Brown humanoid skin, spotted horse coloration (White coat with light gray spots; Light gray/white tail)",
+                        "Brown humanoid skin, spotted horse coloration (White coat with dark gray spots; Dark gray/white tail)",
+                        "Brown humanoid skin, spotted horse coloration (White coat with creamy golden spots; Creamy golden/white tail)",
+                        "Brown humanoid skin, spotted horse coloration (White coat with light ginger spots; Light ginger/white tail)",
+                        "Brown humanoid skin, spotted horse coloration (White coat with dark ginger spots; Dark ginger/white tail)",
+                        "Brown humanoid skin, spotted horse coloration (Black coat with white spots; White/black tail)",
+                        "Brown humanoid skin, spotted horse coloration (Black coat with brown spots; Brown/black tail)",
+                        "Brown humanoid skin, spotted horse coloration (Black coat with gray spots; Gray/black tail)",
+                        "Brown humanoid skin, spotted horse coloration (Black coat with ginger spots; Ginger/black tail)",
+                        "Brown humanoid skin, spotted horse coloration (Black coat with golden spots; Golden/black tail)",
+                        "Brown humanoid skin, spotted horse coloration (Black coat with cream spots; Cream/black tail)",
+                        "Brown humanoid skin, spotted horse coloration (Black coat with light gray spots; Light gray/black tail)",
+                        "Brown humanoid skin, spotted horse coloration (Black coat with dark gray spots; Dark gray/black tail)",
+                        "Brown humanoid skin, spotted horse coloration (Black coat with creamy golden spots; Creamy golden/black tail)",
+                        "Brown humanoid skin, spotted horse coloration (Black coat with light ginger spots; Light ginger/black tail)",
+                        "Brown humanoid skin, spotted horse coloration (Black coat with dark ginger spots; Dark ginger/black tail)",
+                        "Brown humanoid skin, spotted horse coloration (Brown coat with white spots; White/brown tail)",
+                        "Brown humanoid skin, spotted horse coloration (Brown coat with black spots; Black/brown tail)",
+                        "Brown humanoid skin, spotted horse coloration (Brown coat with gray spots; Gray/brown tail)",
+                        "Brown humanoid skin, spotted horse coloration (Brown coat with ginger spots; Ginger/brown tail)",
+                        "Brown humanoid skin, spotted horse coloration (Brown coat with golden spots; Golden/brown tail)",
+                        "Brown humanoid skin, spotted horse coloration (Brown coat with cream spots; Cream/brown tail)",
+                        "Brown humanoid skin, spotted horse coloration (Brown coat with light gray spots; Light gray/brown tail)",
+                        "Brown humanoid skin, spotted horse coloration (Brown coat with dark gray spots; Dark gray/brown tail)",
+                        "Brown humanoid skin, spotted horse coloration (Brown coat with creamy golden spots; Creamy golden/brown tail)",
+                        "Brown humanoid skin, spotted horse coloration (Brown coat with light ginger spots; Light ginger/brown tail)",
+                        "Brown humanoid skin, spotted horse coloration (Brown coat with dark ginger spots; Dark ginger/brown tail)",
+                    "Brown humanoid skin, bay horse coloration (Brown coat; Black legs; Black tail)",
+                    "Brown humanoid skin, solid black coat; Black tail",
+                    "Brown humanoid skin, brown coat; Black lower legs; Light brown tail",
+                    "Brown humanoid skin, buckskin horse coloration (Creamy-golden coat with black points; Black tail)",
+                    "Brown humanoid skin, buckskin horse coloration (Rich golden coat with black points; Black tail)",
+                    "Brown humanoid skin, chestnut horse coloration (Ginger coat; Ginger tail)",
+                        "Brown humanoid skin, chestnut horse coloration (Ginger coat; Light ginger tail)",
+                        "Brown humanoid skin, chestnut horse coloration (Ginger coat; Dark ginger tail)",
+                        "Brown humanoid skin, chestnut horse coloration (Light ginger coat; Ginger tail)",
+                        "Brown humanoid skin, chestnut horse coloration (Light ginger coat; Light ginger tail)",
+                        "Brown humanoid skin, chestnut horse coloration (Light ginger coat; Dark ginger tail)",
+                        "Brown humanoid skin, chestnut horse coloration (Dark ginger coat; Ginger tail)",
+                        "Brown humanoid skin, chestnut horse coloration (Dark ginger coat; Light ginger tail)",
+                        "Brown humanoid skin, chestnut horse coloration (Dark ginger coat; Dark ginger tail)",
+                    "Brown humanoid skin, cremello horse coloration (Extremely pale white coat and tail; Blue eyes)",
+                        "Brown humanoid skin, cremello horse coloration (Extremely pale white coat and tail; Amber eyes)",
+                        "Brown humanoid skin, cremello horse coloration (Extremely pale cream coat and tail; Blue eyes)",
+                        "Brown humanoid skin, cremello horse coloration (Extremely pale cream coat and tail; Amber eyes)",
+                    "Brown humanoid skin, dun horse coloration (Creamy-golden coat; Black tail; Dark dorsal strip)",
+                    "Brown humanoid skin, solid white-gray coat and tail",
+                        "Brown humanoid skin, solid light gray coat and tail",
+                        "Brown humanoid skin, solid gray coat and tail",
+                        "Brown humanoid skin, solid dark gray coat and tail",
+                    "Brown humanoid skin, overo horse coloration (Black/white cow-patterned coat; Black tail)",
+                        "Brown humanoid skin, overo horse coloration (Black/brown cow-patterned coat; Black tail)",
+                        "Brown humanoid skin, overo horse coloration (Black/gray cow-patterned coat; Black tail)",
+                        "Brown humanoid skin, overo horse coloration (Black/light gray cow-patterned coat; Black tail)",
+                        "Brown humanoid skin, overo horse coloration (Black/dark gray cow-patterned coat; Black tail)",
+                        "Brown humanoid skin, overo horse coloration (Black/creamy golden cow-patterned coat; Black tail)",
+                        "Brown humanoid skin, overo horse coloration (Black/rich golden cow-patterned coat; Black tail)",
+                        "Brown humanoid skin, overo horse coloration (Black/ginger cow-patterned coat; Black tail)",
+                        "Brown humanoid skin, overo horse coloration (Black/light ginger cow-patterned coat; Black tail)",
+                        "Brown humanoid skin, overo horse coloration (Black/dark ginger cow-patterned coat; Black tail)",
+                        "Brown humanoid skin, overo horse coloration (Black/golden cow-patterned coat; Black tail)",
+                    "Brown humanoid skin, palomino horse coloration (Golden coat; White tail)",
+                    "Brown humanoid skin, roan horse coloration (White-brown coat; Brown tail and legs)",
+                        "Brown humanoid skin, roan horse coloration (White-black coat; Black tail and legs)",
+                        "Brown humanoid skin, roan horse coloration (White-golden coat; Golden tail and legs)",
+                        "Brown humanoid skin, roan horse coloration (White-ginger coat; Ginger tail and legs)",
+                        "Brown humanoid skin, roan horse coloration (White-light-ginger coat; Light ginger tail and legs)",
+                        "Brown humanoid skin, roan horse coloration (White-dark-ginger coat; Dark ginger tail and legs)",
+                        "Brown humanoid skin, roan horse coloration (White-creamy-golden coat; Creamy golden tail and legs)",
+                        "Brown humanoid skin, roan horse coloration (White-rich-golden coat; Rich golden tail and legs)",
+                        "Brown humanoid skin, roan horse coloration (White-gray coat; Creamy golden tail and legs)",
+                        "Brown humanoid skin, roan horse coloration (White-light-gray coat; Rich golden tail and legs)",
+                        "Brown humanoid skin, roan horse coloration (White-dark-gray coat; Creamy golden tail and legs)",
+                    "Brown humanoid skin, tobiano horse coloration (White/black cow-patterned coat; White tail)",
+                        "Brown humanoid skin, tobiano horse coloration (White/brown cow-patterned coat; White tail)",
+                        "Brown humanoid skin, tobiano horse coloration (White/gray cow-patterned coat; White tail)",
+                        "Brown humanoid skin, tobiano horse coloration (White/light gray cow-patterned coat; White tail)",
+                        "Brown humanoid skin, tobiano horse coloration (White/dark gray cow-patterned coat; White tail)",
+                        "Brown humanoid skin, tobiano horse coloration (White/creamy golden cow-patterned coat; White tail)",
+                        "Brown humanoid skin, tobiano horse coloration (White/rich golden cow-patterned coat; White tail)",
+                        "Brown humanoid skin, tobiano horse coloration (White/ginger cow-patterned coat; White tail)",
+                        "Brown humanoid skin, tobiano horse coloration (White/light ginger cow-patterned coat; White tail)",
+                        "Brown humanoid skin, tobiano horse coloration (White/dark ginger cow-patterned coat; White tail)",
+                        "Brown humanoid skin, tobiano horse coloration (White/golden cow-patterned coat; White tail)",
+
+                    "Light brown humanoid skin, spotted horse coloration (White coat with black spots; black/white tail)",
+                        "Light brown humanoid skin, spotted horse coloration (White coat with brown spots; brown/white tail)",
+                        "Light brown humanoid skin, spotted horse coloration (White coat with gray spots; Gray/white tail)",
+                        "Light brown humanoid skin, spotted horse coloration (White coat with ginger spots; Ginger/white tail)",
+                        "Light brown humanoid skin, spotted horse coloration (White coat with golden spots; Golden/white tail)",
+                        "Light brown humanoid skin, spotted horse coloration (White coat with cream spots; Cream/white tail)",
+                        "Light brown humanoid skin, spotted horse coloration (White coat with light gray spots; Light gray/white tail)",
+                        "Light brown humanoid skin, spotted horse coloration (White coat with dark gray spots; Dark gray/white tail)",
+                        "Light brown humanoid skin, spotted horse coloration (White coat with creamy golden spots; Creamy golden/white tail)",
+                        "Light brown humanoid skin, spotted horse coloration (White coat with light ginger spots; Light ginger/white tail)",
+                        "Light brown humanoid skin, spotted horse coloration (White coat with dark ginger spots; Dark ginger/white tail)",
+                        "Light brown humanoid skin, spotted horse coloration (Black coat with white spots; White/black tail)",
+                        "Light brown humanoid skin, spotted horse coloration (Black coat with brown spots; Brown/black tail)",
+                        "Light brown humanoid skin, spotted horse coloration (Black coat with gray spots; Gray/black tail)",
+                        "Light brown humanoid skin, spotted horse coloration (Black coat with ginger spots; Ginger/black tail)",
+                        "Light brown humanoid skin, spotted horse coloration (Black coat with golden spots; Golden/black tail)",
+                        "Light brown humanoid skin, spotted horse coloration (Black coat with cream spots; Cream/black tail)",
+                        "Light brown humanoid skin, spotted horse coloration (Black coat with light gray spots; Light gray/black tail)",
+                        "Light brown humanoid skin, spotted horse coloration (Black coat with dark gray spots; Dark gray/black tail)",
+                        "Light brown humanoid skin, spotted horse coloration (Black coat with creamy golden spots; Creamy golden/black tail)",
+                        "Light brown humanoid skin, spotted horse coloration (Black coat with light ginger spots; Light ginger/black tail)",
+                        "Light brown humanoid skin, spotted horse coloration (Black coat with dark ginger spots; Dark ginger/black tail)",
+                        "Light brown humanoid skin, spotted horse coloration (Brown coat with white spots; White/brown tail)",
+                        "Light brown humanoid skin, spotted horse coloration (Brown coat with black spots; Black/brown tail)",
+                        "Light brown humanoid skin, spotted horse coloration (Brown coat with gray spots; Gray/brown tail)",
+                        "Light brown humanoid skin, spotted horse coloration (Brown coat with ginger spots; Ginger/brown tail)",
+                        "Light brown humanoid skin, spotted horse coloration (Brown coat with golden spots; Golden/brown tail)",
+                        "Light brown humanoid skin, spotted horse coloration (Brown coat with cream spots; Cream/brown tail)",
+                        "Light brown humanoid skin, spotted horse coloration (Brown coat with light gray spots; Light gray/brown tail)",
+                        "Light brown humanoid skin, spotted horse coloration (Brown coat with dark gray spots; Dark gray/brown tail)",
+                        "Light brown humanoid skin, spotted horse coloration (Brown coat with creamy golden spots; Creamy golden/brown tail)",
+                        "Light brown humanoid skin, spotted horse coloration (Brown coat with light ginger spots; Light ginger/brown tail)",
+                        "Light brown humanoid skin, spotted horse coloration (Brown coat with dark ginger spots; Dark ginger/brown tail)",
+                    "Light brown humanoid skin, bay horse coloration (Brown coat; Black legs; Black tail)",
+                    "Light brown humanoid skin, solid black coat; Black tail",
+                    "Light brown humanoid skin, brown coat; Black lower legs; Light brown tail",
+                    "Light brown humanoid skin, buckskin horse coloration (Creamy-golden coat with black points; Black tail)",
+                    "Light brown humanoid skin, buckskin horse coloration (Rich golden coat with black points; Black tail)",
+                    "Light brown humanoid skin, chestnut horse coloration (Ginger coat; Ginger tail)",
+                        "Light brown humanoid skin, chestnut horse coloration (Ginger coat; Light ginger tail)",
+                        "Light brown humanoid skin, chestnut horse coloration (Ginger coat; Dark ginger tail)",
+                        "Light brown humanoid skin, chestnut horse coloration (Light ginger coat; Ginger tail)",
+                        "Light brown humanoid skin, chestnut horse coloration (Light ginger coat; Light ginger tail)",
+                        "Light brown humanoid skin, chestnut horse coloration (Light ginger coat; Dark ginger tail)",
+                        "Light brown humanoid skin, chestnut horse coloration (Dark ginger coat; Ginger tail)",
+                        "Light brown humanoid skin, chestnut horse coloration (Dark ginger coat; Light ginger tail)",
+                        "Light brown humanoid skin, chestnut horse coloration (Dark ginger coat; Dark ginger tail)",
+                    "Light brown humanoid skin, cremello horse coloration (Extremely pale white coat and tail; Blue eyes)",
+                        "Light brown humanoid skin, cremello horse coloration (Extremely pale white coat and tail; Amber eyes)",
+                        "Light brown humanoid skin, cremello horse coloration (Extremely pale cream coat and tail; Blue eyes)",
+                        "Light brown humanoid skin, cremello horse coloration (Extremely pale cream coat and tail; Amber eyes)",
+                    "Light brown humanoid skin, dun horse coloration (Creamy-golden coat; Black tail; Dark dorsal strip)",
+                    "Light brown humanoid skin, solid white-gray coat and tail",
+                        "Light brown humanoid skin, solid light gray coat and tail",
+                        "Light brown humanoid skin, solid gray coat and tail",
+                        "Light brown humanoid skin, solid dark gray coat and tail",
+                    "Light brown humanoid skin, overo horse coloration (Black/white cow-patterned coat; Black tail)",
+                        "Light brown humanoid skin, overo horse coloration (Black/brown cow-patterned coat; Black tail)",
+                        "Light brown humanoid skin, overo horse coloration (Black/gray cow-patterned coat; Black tail)",
+                        "Light brown humanoid skin, overo horse coloration (Black/light gray cow-patterned coat; Black tail)",
+                        "Light brown humanoid skin, overo horse coloration (Black/dark gray cow-patterned coat; Black tail)",
+                        "Light brown humanoid skin, overo horse coloration (Black/creamy golden cow-patterned coat; Black tail)",
+                        "Light brown humanoid skin, overo horse coloration (Black/rich golden cow-patterned coat; Black tail)",
+                        "Light brown humanoid skin, overo horse coloration (Black/ginger cow-patterned coat; Black tail)",
+                        "Light brown humanoid skin, overo horse coloration (Black/light ginger cow-patterned coat; Black tail)",
+                        "Light brown humanoid skin, overo horse coloration (Black/dark ginger cow-patterned coat; Black tail)",
+                        "Light brown humanoid skin, overo horse coloration (Black/golden cow-patterned coat; Black tail)",
+                    "Light brown humanoid skin, palomino horse coloration (Golden coat; White tail)",
+                    "Light brown humanoid skin, roan horse coloration (White-brown coat; Brown tail and legs)",
+                        "Light brown humanoid skin, roan horse coloration (White-black coat; Black tail and legs)",
+                        "Light brown humanoid skin, roan horse coloration (White-golden coat; Golden tail and legs)",
+                        "Light brown humanoid skin, roan horse coloration (White-ginger coat; Ginger tail and legs)",
+                        "Light brown humanoid skin, roan horse coloration (White-light-ginger coat; Light ginger tail and legs)",
+                        "Light brown humanoid skin, roan horse coloration (White-dark-ginger coat; Dark ginger tail and legs)",
+                        "Light brown humanoid skin, roan horse coloration (White-creamy-golden coat; Creamy golden tail and legs)",
+                        "Light brown humanoid skin, roan horse coloration (White-rich-golden coat; Rich golden tail and legs)",
+                        "Light brown humanoid skin, roan horse coloration (White-gray coat; Creamy golden tail and legs)",
+                        "Light brown humanoid skin, roan horse coloration (White-light-gray coat; Rich golden tail and legs)",
+                        "Light brown humanoid skin, roan horse coloration (White-dark-gray coat; Creamy golden tail and legs)",
+                    "Light brown humanoid skin, tobiano horse coloration (White/black cow-patterned coat; White tail)",
+                        "Light brown humanoid skin, tobiano horse coloration (White/brown cow-patterned coat; White tail)",
+                        "Light brown humanoid skin, tobiano horse coloration (White/gray cow-patterned coat; White tail)",
+                        "Light brown humanoid skin, tobiano horse coloration (White/light gray cow-patterned coat; White tail)",
+                        "Light brown humanoid skin, tobiano horse coloration (White/dark gray cow-patterned coat; White tail)",
+                        "Light brown humanoid skin, tobiano horse coloration (White/creamy golden cow-patterned coat; White tail)",
+                        "Light brown humanoid skin, tobiano horse coloration (White/rich golden cow-patterned coat; White tail)",
+                        "Light brown humanoid skin, tobiano horse coloration (White/ginger cow-patterned coat; White tail)",
+                        "Light brown humanoid skin, tobiano horse coloration (White/light ginger cow-patterned coat; White tail)",
+                        "Light brown humanoid skin, tobiano horse coloration (White/dark ginger cow-patterned coat; White tail)",
+                        "Light brown humanoid skin, tobiano horse coloration (White/golden cow-patterned coat; White tail)",
+
+                    "Dark tan humanoid skin, spotted horse coloration (White coat with black spots; black/white tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (White coat with brown spots; brown/white tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (White coat with gray spots; Gray/white tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (White coat with ginger spots; Ginger/white tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (White coat with golden spots; Golden/white tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (White coat with cream spots; Cream/white tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (White coat with light gray spots; Light gray/white tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (White coat with dark gray spots; Dark gray/white tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (White coat with creamy golden spots; Creamy golden/white tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (White coat with light ginger spots; Light ginger/white tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (White coat with dark ginger spots; Dark ginger/white tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (Black coat with white spots; White/black tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (Black coat with brown spots; Brown/black tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (Black coat with gray spots; Gray/black tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (Black coat with ginger spots; Ginger/black tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (Black coat with golden spots; Golden/black tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (Black coat with cream spots; Cream/black tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (Black coat with light gray spots; Light gray/black tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (Black coat with dark gray spots; Dark gray/black tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (Black coat with creamy golden spots; Creamy golden/black tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (Black coat with light ginger spots; Light ginger/black tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (Black coat with dark ginger spots; Dark ginger/black tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (Brown coat with white spots; White/brown tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (Brown coat with black spots; Black/brown tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (Brown coat with gray spots; Gray/brown tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (Brown coat with ginger spots; Ginger/brown tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (Brown coat with golden spots; Golden/brown tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (Brown coat with cream spots; Cream/brown tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (Brown coat with light gray spots; Light gray/brown tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (Brown coat with dark gray spots; Dark gray/brown tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (Brown coat with creamy golden spots; Creamy golden/brown tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (Brown coat with light ginger spots; Light ginger/brown tail)",
+                        "Dark tan humanoid skin, spotted horse coloration (Brown coat with dark ginger spots; Dark ginger/brown tail)",
+                    "Dark tan humanoid skin, bay horse coloration (Brown coat; Black legs; Black tail)",
+                    "Dark tan humanoid skin, solid black coat; Black tail",
+                    "Dark tan humanoid skin, brown coat; Black lower legs; Light brown tail",
+                    "Dark tan humanoid skin, buckskin horse coloration (Creamy-golden coat with black points; Black tail)",
+                    "Dark tan humanoid skin, buckskin horse coloration (Rich golden coat with black points; Black tail)",
+                    "Dark tan humanoid skin, chestnut horse coloration (Ginger coat; Ginger tail)",
+                        "Dark tan humanoid skin, chestnut horse coloration (Ginger coat; Light ginger tail)",
+                        "Dark tan humanoid skin, chestnut horse coloration (Ginger coat; Dark ginger tail)",
+                        "Dark tan humanoid skin, chestnut horse coloration (Light ginger coat; Ginger tail)",
+                        "Dark tan humanoid skin, chestnut horse coloration (Light ginger coat; Light ginger tail)",
+                        "Dark tan humanoid skin, chestnut horse coloration (Light ginger coat; Dark ginger tail)",
+                        "Dark tan humanoid skin, chestnut horse coloration (Dark ginger coat; Ginger tail)",
+                        "Dark tan humanoid skin, chestnut horse coloration (Dark ginger coat; Light ginger tail)",
+                        "Dark tan humanoid skin, chestnut horse coloration (Dark ginger coat; Dark ginger tail)",
+                    "Dark tan humanoid skin, cremello horse coloration (Extremely pale white coat and tail; Blue eyes)",
+                        "Dark tan humanoid skin, cremello horse coloration (Extremely pale white coat and tail; Amber eyes)",
+                        "Dark tan humanoid skin, cremello horse coloration (Extremely pale cream coat and tail; Blue eyes)",
+                        "Dark tan humanoid skin, cremello horse coloration (Extremely pale cream coat and tail; Amber eyes)",
+                    "Dark tan humanoid skin, dun horse coloration (Creamy-golden coat; Black tail; Dark dorsal strip)",
+                    "Dark tan humanoid skin, solid white-gray coat and tail",
+                        "Dark tan humanoid skin, solid light gray coat and tail",
+                        "Dark tan humanoid skin, solid gray coat and tail",
+                        "Dark tan humanoid skin, solid dark gray coat and tail",
+                    "Dark tan humanoid skin, overo horse coloration (Black/white cow-patterned coat; Black tail)",
+                        "Dark tan humanoid skin, overo horse coloration (Black/brown cow-patterned coat; Black tail)",
+                        "Dark tan humanoid skin, overo horse coloration (Black/gray cow-patterned coat; Black tail)",
+                        "Dark tan humanoid skin, overo horse coloration (Black/light gray cow-patterned coat; Black tail)",
+                        "Dark tan humanoid skin, overo horse coloration (Black/dark gray cow-patterned coat; Black tail)",
+                        "Dark tan humanoid skin, overo horse coloration (Black/creamy golden cow-patterned coat; Black tail)",
+                        "Dark tan humanoid skin, overo horse coloration (Black/rich golden cow-patterned coat; Black tail)",
+                        "Dark tan humanoid skin, overo horse coloration (Black/ginger cow-patterned coat; Black tail)",
+                        "Dark tan humanoid skin, overo horse coloration (Black/light ginger cow-patterned coat; Black tail)",
+                        "Dark tan humanoid skin, overo horse coloration (Black/dark ginger cow-patterned coat; Black tail)",
+                        "Dark tan humanoid skin, overo horse coloration (Black/golden cow-patterned coat; Black tail)",
+                    "Dark tan humanoid skin, palomino horse coloration (Golden coat; White tail)",
+                    "Dark tan humanoid skin, roan horse coloration (White-brown coat; Brown tail and legs)",
+                        "Dark tan humanoid skin, roan horse coloration (White-black coat; Black tail and legs)",
+                        "Dark tan humanoid skin, roan horse coloration (White-golden coat; Golden tail and legs)",
+                        "Dark tan humanoid skin, roan horse coloration (White-ginger coat; Ginger tail and legs)",
+                        "Dark tan humanoid skin, roan horse coloration (White-light-ginger coat; Light ginger tail and legs)",
+                        "Dark tan humanoid skin, roan horse coloration (White-dark-ginger coat; Dark ginger tail and legs)",
+                        "Dark tan humanoid skin, roan horse coloration (White-creamy-golden coat; Creamy golden tail and legs)",
+                        "Dark tan humanoid skin, roan horse coloration (White-rich-golden coat; Rich golden tail and legs)",
+                        "Dark tan humanoid skin, roan horse coloration (White-gray coat; Creamy golden tail and legs)",
+                        "Dark tan humanoid skin, roan horse coloration (White-light-gray coat; Rich golden tail and legs)",
+                        "Dark tan humanoid skin, roan horse coloration (White-dark-gray coat; Creamy golden tail and legs)",
+                    "Dark tan humanoid skin, tobiano horse coloration (White/black cow-patterned coat; White tail)",
+                        "Dark tan humanoid skin, tobiano horse coloration (White/brown cow-patterned coat; White tail)",
+                        "Dark tan humanoid skin, tobiano horse coloration (White/gray cow-patterned coat; White tail)",
+                        "Dark tan humanoid skin, tobiano horse coloration (White/light gray cow-patterned coat; White tail)",
+                        "Dark tan humanoid skin, tobiano horse coloration (White/dark gray cow-patterned coat; White tail)",
+                        "Dark tan humanoid skin, tobiano horse coloration (White/creamy golden cow-patterned coat; White tail)",
+                        "Dark tan humanoid skin, tobiano horse coloration (White/rich golden cow-patterned coat; White tail)",
+                        "Dark tan humanoid skin, tobiano horse coloration (White/ginger cow-patterned coat; White tail)",
+                        "Dark tan humanoid skin, tobiano horse coloration (White/light ginger cow-patterned coat; White tail)",
+                        "Dark tan humanoid skin, tobiano horse coloration (White/dark ginger cow-patterned coat; White tail)",
+                        "Dark tan humanoid skin, tobiano horse coloration (White/golden cow-patterned coat; White tail)",
+
+                    "Tan humanoid skin, spotted horse coloration (White coat with black spots; black/white tail)",
+                        "Tan humanoid skin, spotted horse coloration (White coat with brown spots; brown/white tail)",
+                        "Tan humanoid skin, spotted horse coloration (White coat with gray spots; Gray/white tail)",
+                        "Tan humanoid skin, spotted horse coloration (White coat with ginger spots; Ginger/white tail)",
+                        "Tan humanoid skin, spotted horse coloration (White coat with golden spots; Golden/white tail)",
+                        "Tan humanoid skin, spotted horse coloration (White coat with cream spots; Cream/white tail)",
+                        "Tan humanoid skin, spotted horse coloration (White coat with light gray spots; Light gray/white tail)",
+                        "Tan humanoid skin, spotted horse coloration (White coat with dark gray spots; Dark gray/white tail)",
+                        "Tan humanoid skin, spotted horse coloration (White coat with creamy golden spots; Creamy golden/white tail)",
+                        "Tan humanoid skin, spotted horse coloration (White coat with light ginger spots; Light ginger/white tail)",
+                        "Tan humanoid skin, spotted horse coloration (White coat with dark ginger spots; Dark ginger/white tail)",
+                        "Tan humanoid skin, spotted horse coloration (Black coat with white spots; White/black tail)",
+                        "Tan humanoid skin, spotted horse coloration (Black coat with brown spots; Brown/black tail)",
+                        "Tan humanoid skin, spotted horse coloration (Black coat with gray spots; Gray/black tail)",
+                        "Tan humanoid skin, spotted horse coloration (Black coat with ginger spots; Ginger/black tail)",
+                        "Tan humanoid skin, spotted horse coloration (Black coat with golden spots; Golden/black tail)",
+                        "Tan humanoid skin, spotted horse coloration (Black coat with cream spots; Cream/black tail)",
+                        "Tan humanoid skin, spotted horse coloration (Black coat with light gray spots; Light gray/black tail)",
+                        "Tan humanoid skin, spotted horse coloration (Black coat with dark gray spots; Dark gray/black tail)",
+                        "Tan humanoid skin, spotted horse coloration (Black coat with creamy golden spots; Creamy golden/black tail)",
+                        "Tan humanoid skin, spotted horse coloration (Black coat with light ginger spots; Light ginger/black tail)",
+                        "Tan humanoid skin, spotted horse coloration (Black coat with dark ginger spots; Dark ginger/black tail)",
+                        "Tan humanoid skin, spotted horse coloration (Brown coat with white spots; White/brown tail)",
+                        "Tan humanoid skin, spotted horse coloration (Brown coat with black spots; Black/brown tail)",
+                        "Tan humanoid skin, spotted horse coloration (Brown coat with gray spots; Gray/brown tail)",
+                        "Tan humanoid skin, spotted horse coloration (Brown coat with ginger spots; Ginger/brown tail)",
+                        "Tan humanoid skin, spotted horse coloration (Brown coat with golden spots; Golden/brown tail)",
+                        "Tan humanoid skin, spotted horse coloration (Brown coat with cream spots; Cream/brown tail)",
+                        "Tan humanoid skin, spotted horse coloration (Brown coat with light gray spots; Light gray/brown tail)",
+                        "Tan humanoid skin, spotted horse coloration (Brown coat with dark gray spots; Dark gray/brown tail)",
+                        "Tan humanoid skin, spotted horse coloration (Brown coat with creamy golden spots; Creamy golden/brown tail)",
+                        "Tan humanoid skin, spotted horse coloration (Brown coat with light ginger spots; Light ginger/brown tail)",
+                        "Tan humanoid skin, spotted horse coloration (Brown coat with dark ginger spots; Dark ginger/brown tail)",
+                    "Tan humanoid skin, bay horse coloration (Brown coat; Black legs; Black tail)",
+                    "Tan humanoid skin, solid black coat; Black tail",
+                    "Tan humanoid skin, brown coat; Black lower legs; Light brown tail",
+                    "Tan humanoid skin, buckskin horse coloration (Creamy-golden coat with black points; Black tail)",
+                    "Tan humanoid skin, buckskin horse coloration (Rich golden coat with black points; Black tail)",
+                    "Tan humanoid skin, chestnut horse coloration (Ginger coat; Ginger tail)",
+                        "Tan humanoid skin, chestnut horse coloration (Ginger coat; Light ginger tail)",
+                        "Tan humanoid skin, chestnut horse coloration (Ginger coat; Dark ginger tail)",
+                        "Tan humanoid skin, chestnut horse coloration (Light ginger coat; Ginger tail)",
+                        "Tan humanoid skin, chestnut horse coloration (Light ginger coat; Light ginger tail)",
+                        "Tan humanoid skin, chestnut horse coloration (Light ginger coat; Dark ginger tail)",
+                        "Tan humanoid skin, chestnut horse coloration (Dark ginger coat; Ginger tail)",
+                        "Tan humanoid skin, chestnut horse coloration (Dark ginger coat; Light ginger tail)",
+                        "Tan humanoid skin, chestnut horse coloration (Dark ginger coat; Dark ginger tail)",
+                    "Tan humanoid skin, cremello horse coloration (Extremely pale white coat and tail; Blue eyes)",
+                        "Tan humanoid skin, cremello horse coloration (Extremely pale white coat and tail; Amber eyes)",
+                        "Tan humanoid skin, cremello horse coloration (Extremely pale cream coat and tail; Blue eyes)",
+                        "Tan humanoid skin, cremello horse coloration (Extremely pale cream coat and tail; Amber eyes)",
+                    "Tan humanoid skin, dun horse coloration (Creamy-golden coat; Black tail; Dark dorsal strip)",
+                    "Tan humanoid skin, solid white-gray coat and tail",
+                        "Tan humanoid skin, solid light gray coat and tail",
+                        "Tan humanoid skin, solid gray coat and tail",
+                        "Tan humanoid skin, solid dark gray coat and tail",
+                    "Tan humanoid skin, overo horse coloration (Black/white cow-patterned coat; Black tail)",
+                        "Tan humanoid skin, overo horse coloration (Black/brown cow-patterned coat; Black tail)",
+                        "Tan humanoid skin, overo horse coloration (Black/gray cow-patterned coat; Black tail)",
+                        "Tan humanoid skin, overo horse coloration (Black/light gray cow-patterned coat; Black tail)",
+                        "Tan humanoid skin, overo horse coloration (Black/dark gray cow-patterned coat; Black tail)",
+                        "Tan humanoid skin, overo horse coloration (Black/creamy golden cow-patterned coat; Black tail)",
+                        "Tan humanoid skin, overo horse coloration (Black/rich golden cow-patterned coat; Black tail)",
+                        "Tan humanoid skin, overo horse coloration (Black/ginger cow-patterned coat; Black tail)",
+                        "Tan humanoid skin, overo horse coloration (Black/light ginger cow-patterned coat; Black tail)",
+                        "Tan humanoid skin, overo horse coloration (Black/dark ginger cow-patterned coat; Black tail)",
+                        "Tan humanoid skin, overo horse coloration (Black/golden cow-patterned coat; Black tail)",
+                    "Tan humanoid skin, palomino horse coloration (Golden coat; White tail)",
+                    "Tan humanoid skin, roan horse coloration (White-brown coat; Brown tail and legs)",
+                        "Tan humanoid skin, roan horse coloration (White-black coat; Black tail and legs)",
+                        "Tan humanoid skin, roan horse coloration (White-golden coat; Golden tail and legs)",
+                        "Tan humanoid skin, roan horse coloration (White-ginger coat; Ginger tail and legs)",
+                        "Tan humanoid skin, roan horse coloration (White-light-ginger coat; Light ginger tail and legs)",
+                        "Tan humanoid skin, roan horse coloration (White-dark-ginger coat; Dark ginger tail and legs)",
+                        "Tan humanoid skin, roan horse coloration (White-creamy-golden coat; Creamy golden tail and legs)",
+                        "Tan humanoid skin, roan horse coloration (White-rich-golden coat; Rich golden tail and legs)",
+                        "Tan humanoid skin, roan horse coloration (White-gray coat; Creamy golden tail and legs)",
+                        "Tan humanoid skin, roan horse coloration (White-light-gray coat; Rich golden tail and legs)",
+                        "Tan humanoid skin, roan horse coloration (White-dark-gray coat; Creamy golden tail and legs)",
+                    "Tan humanoid skin, tobiano horse coloration (White/black cow-patterned coat; White tail)",
+                        "Tan humanoid skin, tobiano horse coloration (White/brown cow-patterned coat; White tail)",
+                        "Tan humanoid skin, tobiano horse coloration (White/gray cow-patterned coat; White tail)",
+                        "Tan humanoid skin, tobiano horse coloration (White/light gray cow-patterned coat; White tail)",
+                        "Tan humanoid skin, tobiano horse coloration (White/dark gray cow-patterned coat; White tail)",
+                        "Tan humanoid skin, tobiano horse coloration (White/creamy golden cow-patterned coat; White tail)",
+                        "Tan humanoid skin, tobiano horse coloration (White/rich golden cow-patterned coat; White tail)",
+                        "Tan humanoid skin, tobiano horse coloration (White/ginger cow-patterned coat; White tail)",
+                        "Tan humanoid skin, tobiano horse coloration (White/light ginger cow-patterned coat; White tail)",
+                        "Tan humanoid skin, tobiano horse coloration (White/dark ginger cow-patterned coat; White tail)",
+                        "Tan humanoid skin, tobiano horse coloration (White/golden cow-patterned coat; White tail)",
+
+                    "Light tan humanoid skin, spotted horse coloration (White coat with black spots; black/white tail)",
+                        "Light tan humanoid skin, spotted horse coloration (White coat with brown spots; brown/white tail)",
+                        "Light tan humanoid skin, spotted horse coloration (White coat with gray spots; Gray/white tail)",
+                        "Light tan humanoid skin, spotted horse coloration (White coat with ginger spots; Ginger/white tail)",
+                        "Light tan humanoid skin, spotted horse coloration (White coat with golden spots; Golden/white tail)",
+                        "Light tan humanoid skin, spotted horse coloration (White coat with cream spots; Cream/white tail)",
+                        "Light tan humanoid skin, spotted horse coloration (White coat with light gray spots; Light gray/white tail)",
+                        "Light tan humanoid skin, spotted horse coloration (White coat with dark gray spots; Dark gray/white tail)",
+                        "Light tan humanoid skin, spotted horse coloration (White coat with creamy golden spots; Creamy golden/white tail)",
+                        "Light tan humanoid skin, spotted horse coloration (White coat with light ginger spots; Light ginger/white tail)",
+                        "Light tan humanoid skin, spotted horse coloration (White coat with dark ginger spots; Dark ginger/white tail)",
+                        "Light tan humanoid skin, spotted horse coloration (Black coat with white spots; White/black tail)",
+                        "Light tan humanoid skin, spotted horse coloration (Black coat with brown spots; Brown/black tail)",
+                        "Light tan humanoid skin, spotted horse coloration (Black coat with gray spots; Gray/black tail)",
+                        "Light tan humanoid skin, spotted horse coloration (Black coat with ginger spots; Ginger/black tail)",
+                        "Light tan humanoid skin, spotted horse coloration (Black coat with golden spots; Golden/black tail)",
+                        "Light tan humanoid skin, spotted horse coloration (Black coat with cream spots; Cream/black tail)",
+                        "Light tan humanoid skin, spotted horse coloration (Black coat with light gray spots; Light gray/black tail)",
+                        "Light tan humanoid skin, spotted horse coloration (Black coat with dark gray spots; Dark gray/black tail)",
+                        "Light tan humanoid skin, spotted horse coloration (Black coat with creamy golden spots; Creamy golden/black tail)",
+                        "Light tan humanoid skin, spotted horse coloration (Black coat with light ginger spots; Light ginger/black tail)",
+                        "Light tan humanoid skin, spotted horse coloration (Black coat with dark ginger spots; Dark ginger/black tail)",
+                        "Light tan humanoid skin, spotted horse coloration (Brown coat with white spots; White/brown tail)",
+                        "Light tan humanoid skin, spotted horse coloration (Brown coat with black spots; Black/brown tail)",
+                        "Light tan humanoid skin, spotted horse coloration (Brown coat with gray spots; Gray/brown tail)",
+                        "Light tan humanoid skin, spotted horse coloration (Brown coat with ginger spots; Ginger/brown tail)",
+                        "Light tan humanoid skin, spotted horse coloration (Brown coat with golden spots; Golden/brown tail)",
+                        "Light tan humanoid skin, spotted horse coloration (Brown coat with cream spots; Cream/brown tail)",
+                        "Light tan humanoid skin, spotted horse coloration (Brown coat with light gray spots; Light gray/brown tail)",
+                        "Light tan humanoid skin, spotted horse coloration (Brown coat with dark gray spots; Dark gray/brown tail)",
+                        "Light tan humanoid skin, spotted horse coloration (Brown coat with creamy golden spots; Creamy golden/brown tail)",
+                        "Light tan humanoid skin, spotted horse coloration (Brown coat with light ginger spots; Light ginger/brown tail)",
+                        "Light tan humanoid skin, spotted horse coloration (Brown coat with dark ginger spots; Dark ginger/brown tail)",
+                    "Light tan humanoid skin, bay horse coloration (Brown coat; Black legs; Black tail)",
+                    "Light tan humanoid skin, solid black coat; Black tail",
+                    "Light tan humanoid skin, brown coat; Black lower legs; Light brown tail",
+                    "Light tan humanoid skin, buckskin horse coloration (Creamy-golden coat with black points; Black tail)",
+                    "Light tan humanoid skin, buckskin horse coloration (Rich golden coat with black points; Black tail)",
+                    "Light tan humanoid skin, chestnut horse coloration (Ginger coat; Ginger tail)",
+                        "Light tan humanoid skin, chestnut horse coloration (Ginger coat; Light ginger tail)",
+                        "Light tan humanoid skin, chestnut horse coloration (Ginger coat; Dark ginger tail)",
+                        "Light tan humanoid skin, chestnut horse coloration (Light ginger coat; Ginger tail)",
+                        "Light tan humanoid skin, chestnut horse coloration (Light ginger coat; Light ginger tail)",
+                        "Light tan humanoid skin, chestnut horse coloration (Light ginger coat; Dark ginger tail)",
+                        "Light tan humanoid skin, chestnut horse coloration (Dark ginger coat; Ginger tail)",
+                        "Light tan humanoid skin, chestnut horse coloration (Dark ginger coat; Light ginger tail)",
+                        "Light tan humanoid skin, chestnut horse coloration (Dark ginger coat; Dark ginger tail)",
+                    "Light tan humanoid skin, cremello horse coloration (Extremely pale white coat and tail; Blue eyes)",
+                        "Light tan humanoid skin, cremello horse coloration (Extremely pale white coat and tail; Amber eyes)",
+                        "Light tan humanoid skin, cremello horse coloration (Extremely pale cream coat and tail; Blue eyes)",
+                        "Light tan humanoid skin, cremello horse coloration (Extremely pale cream coat and tail; Amber eyes)",
+                    "Light tan humanoid skin, dun horse coloration (Creamy-golden coat; Black tail; Dark dorsal strip)",
+                    "Light tan humanoid skin, solid white-gray coat and tail",
+                        "Light tan humanoid skin, solid light gray coat and tail",
+                        "Light tan humanoid skin, solid gray coat and tail",
+                        "Light tan humanoid skin, solid dark gray coat and tail",
+                    "Light tan humanoid skin, overo horse coloration (Black/white cow-patterned coat; Black tail)",
+                        "Light tan humanoid skin, overo horse coloration (Black/brown cow-patterned coat; Black tail)",
+                        "Light tan humanoid skin, overo horse coloration (Black/gray cow-patterned coat; Black tail)",
+                        "Light tan humanoid skin, overo horse coloration (Black/light gray cow-patterned coat; Black tail)",
+                        "Light tan humanoid skin, overo horse coloration (Black/dark gray cow-patterned coat; Black tail)",
+                        "Light tan humanoid skin, overo horse coloration (Black/creamy golden cow-patterned coat; Black tail)",
+                        "Light tan humanoid skin, overo horse coloration (Black/rich golden cow-patterned coat; Black tail)",
+                        "Light tan humanoid skin, overo horse coloration (Black/ginger cow-patterned coat; Black tail)",
+                        "Light tan humanoid skin, overo horse coloration (Black/light ginger cow-patterned coat; Black tail)",
+                        "Light tan humanoid skin, overo horse coloration (Black/dark ginger cow-patterned coat; Black tail)",
+                        "Light tan humanoid skin, overo horse coloration (Black/golden cow-patterned coat; Black tail)",
+                    "Light tan humanoid skin, palomino horse coloration (Golden coat; White tail)",
+                    "Light tan humanoid skin, roan horse coloration (White-brown coat; Brown tail and legs)",
+                        "Light tan humanoid skin, roan horse coloration (White-black coat; Black tail and legs)",
+                        "Light tan humanoid skin, roan horse coloration (White-golden coat; Golden tail and legs)",
+                        "Light tan humanoid skin, roan horse coloration (White-ginger coat; Ginger tail and legs)",
+                        "Light tan humanoid skin, roan horse coloration (White-light-ginger coat; Light ginger tail and legs)",
+                        "Light tan humanoid skin, roan horse coloration (White-dark-ginger coat; Dark ginger tail and legs)",
+                        "Light tan humanoid skin, roan horse coloration (White-creamy-golden coat; Creamy golden tail and legs)",
+                        "Light tan humanoid skin, roan horse coloration (White-rich-golden coat; Rich golden tail and legs)",
+                        "Light tan humanoid skin, roan horse coloration (White-gray coat; Creamy golden tail and legs)",
+                        "Light tan humanoid skin, roan horse coloration (White-light-gray coat; Rich golden tail and legs)",
+                        "Light tan humanoid skin, roan horse coloration (White-dark-gray coat; Creamy golden tail and legs)",
+                    "Light tan humanoid skin, tobiano horse coloration (White/black cow-patterned coat; White tail)",
+                        "Light tan humanoid skin, tobiano horse coloration (White/brown cow-patterned coat; White tail)",
+                        "Light tan humanoid skin, tobiano horse coloration (White/gray cow-patterned coat; White tail)",
+                        "Light tan humanoid skin, tobiano horse coloration (White/light gray cow-patterned coat; White tail)",
+                        "Light tan humanoid skin, tobiano horse coloration (White/dark gray cow-patterned coat; White tail)",
+                        "Light tan humanoid skin, tobiano horse coloration (White/creamy golden cow-patterned coat; White tail)",
+                        "Light tan humanoid skin, tobiano horse coloration (White/rich golden cow-patterned coat; White tail)",
+                        "Light tan humanoid skin, tobiano horse coloration (White/ginger cow-patterned coat; White tail)",
+                        "Light tan humanoid skin, tobiano horse coloration (White/light ginger cow-patterned coat; White tail)",
+                        "Light tan humanoid skin, tobiano horse coloration (White/dark ginger cow-patterned coat; White tail)",
+                        "Light tan humanoid skin, tobiano horse coloration (White/golden cow-patterned coat; White tail)",
+
+                    "Pink humanoid skin, spotted horse coloration (White coat with black spots; black/white tail)",
+                        "Pink humanoid skin, spotted horse coloration (White coat with brown spots; brown/white tail)",
+                        "Pink humanoid skin, spotted horse coloration (White coat with gray spots; Gray/white tail)",
+                        "Pink humanoid skin, spotted horse coloration (White coat with ginger spots; Ginger/white tail)",
+                        "Pink humanoid skin, spotted horse coloration (White coat with golden spots; Golden/white tail)",
+                        "Pink humanoid skin, spotted horse coloration (White coat with cream spots; Cream/white tail)",
+                        "Pink humanoid skin, spotted horse coloration (White coat with light gray spots; Light gray/white tail)",
+                        "Pink humanoid skin, spotted horse coloration (White coat with dark gray spots; Dark gray/white tail)",
+                        "Pink humanoid skin, spotted horse coloration (White coat with creamy golden spots; Creamy golden/white tail)",
+                        "Pink humanoid skin, spotted horse coloration (White coat with light ginger spots; Light ginger/white tail)",
+                        "Pink humanoid skin, spotted horse coloration (White coat with dark ginger spots; Dark ginger/white tail)",
+                        "Pink humanoid skin, spotted horse coloration (Black coat with white spots; White/black tail)",
+                        "Pink humanoid skin, spotted horse coloration (Black coat with brown spots; Brown/black tail)",
+                        "Pink humanoid skin, spotted horse coloration (Black coat with gray spots; Gray/black tail)",
+                        "Pink humanoid skin, spotted horse coloration (Black coat with ginger spots; Ginger/black tail)",
+                        "Pink humanoid skin, spotted horse coloration (Black coat with golden spots; Golden/black tail)",
+                        "Pink humanoid skin, spotted horse coloration (Black coat with cream spots; Cream/black tail)",
+                        "Pink humanoid skin, spotted horse coloration (Black coat with light gray spots; Light gray/black tail)",
+                        "Pink humanoid skin, spotted horse coloration (Black coat with dark gray spots; Dark gray/black tail)",
+                        "Pink humanoid skin, spotted horse coloration (Black coat with creamy golden spots; Creamy golden/black tail)",
+                        "Pink humanoid skin, spotted horse coloration (Black coat with light ginger spots; Light ginger/black tail)",
+                        "Pink humanoid skin, spotted horse coloration (Black coat with dark ginger spots; Dark ginger/black tail)",
+                        "Pink humanoid skin, spotted horse coloration (Brown coat with white spots; White/brown tail)",
+                        "Pink humanoid skin, spotted horse coloration (Brown coat with black spots; Black/brown tail)",
+                        "Pink humanoid skin, spotted horse coloration (Brown coat with gray spots; Gray/brown tail)",
+                        "Pink humanoid skin, spotted horse coloration (Brown coat with ginger spots; Ginger/brown tail)",
+                        "Pink humanoid skin, spotted horse coloration (Brown coat with golden spots; Golden/brown tail)",
+                        "Pink humanoid skin, spotted horse coloration (Brown coat with cream spots; Cream/brown tail)",
+                        "Pink humanoid skin, spotted horse coloration (Brown coat with light gray spots; Light gray/brown tail)",
+                        "Pink humanoid skin, spotted horse coloration (Brown coat with dark gray spots; Dark gray/brown tail)",
+                        "Pink humanoid skin, spotted horse coloration (Brown coat with creamy golden spots; Creamy golden/brown tail)",
+                        "Pink humanoid skin, spotted horse coloration (Brown coat with light ginger spots; Light ginger/brown tail)",
+                        "Pink humanoid skin, spotted horse coloration (Brown coat with dark ginger spots; Dark ginger/brown tail)",
+                    "Pink humanoid skin, bay horse coloration (Brown coat; Black legs; Black tail)",
+                    "Pink humanoid skin, solid black coat; Black tail",
+                    "Pink humanoid skin, brown coat; Black lower legs; Light brown tail",
+                    "Pink humanoid skin, buckskin horse coloration (Creamy-golden coat with black points; Black tail)",
+                    "Pink humanoid skin, buckskin horse coloration (Rich golden coat with black points; Black tail)",
+                    "Pink humanoid skin, chestnut horse coloration (Ginger coat; Ginger tail)",
+                        "Pink humanoid skin, chestnut horse coloration (Ginger coat; Light ginger tail)",
+                        "Pink humanoid skin, chestnut horse coloration (Ginger coat; Dark ginger tail)",
+                        "Pink humanoid skin, chestnut horse coloration (Light ginger coat; Ginger tail)",
+                        "Pink humanoid skin, chestnut horse coloration (Light ginger coat; Light ginger tail)",
+                        "Pink humanoid skin, chestnut horse coloration (Light ginger coat; Dark ginger tail)",
+                        "Pink humanoid skin, chestnut horse coloration (Dark ginger coat; Ginger tail)",
+                        "Pink humanoid skin, chestnut horse coloration (Dark ginger coat; Light ginger tail)",
+                        "Pink humanoid skin, chestnut horse coloration (Dark ginger coat; Dark ginger tail)",
+                    "Pink humanoid skin, cremello horse coloration (Extremely pale white coat and tail; Blue eyes)",
+                        "Pink humanoid skin, cremello horse coloration (Extremely pale white coat and tail; Amber eyes)",
+                        "Pink humanoid skin, cremello horse coloration (Extremely pale cream coat and tail; Blue eyes)",
+                        "Pink humanoid skin, cremello horse coloration (Extremely pale cream coat and tail; Amber eyes)",
+                    "Pink humanoid skin, dun horse coloration (Creamy-golden coat; Black tail; Dark dorsal strip)",
+                    "Pink humanoid skin, solid white-gray coat and tail",
+                        "Pink humanoid skin, solid light gray coat and tail",
+                        "Pink humanoid skin, solid gray coat and tail",
+                        "Pink humanoid skin, solid dark gray coat and tail",
+                    "Pink humanoid skin, overo horse coloration (Black/white cow-patterned coat; Black tail)",
+                        "Pink humanoid skin, overo horse coloration (Black/brown cow-patterned coat; Black tail)",
+                        "Pink humanoid skin, overo horse coloration (Black/gray cow-patterned coat; Black tail)",
+                        "Pink humanoid skin, overo horse coloration (Black/light gray cow-patterned coat; Black tail)",
+                        "Pink humanoid skin, overo horse coloration (Black/dark gray cow-patterned coat; Black tail)",
+                        "Pink humanoid skin, overo horse coloration (Black/creamy golden cow-patterned coat; Black tail)",
+                        "Pink humanoid skin, overo horse coloration (Black/rich golden cow-patterned coat; Black tail)",
+                        "Pink humanoid skin, overo horse coloration (Black/ginger cow-patterned coat; Black tail)",
+                        "Pink humanoid skin, overo horse coloration (Black/light ginger cow-patterned coat; Black tail)",
+                        "Pink humanoid skin, overo horse coloration (Black/dark ginger cow-patterned coat; Black tail)",
+                        "Pink humanoid skin, overo horse coloration (Black/golden cow-patterned coat; Black tail)",
+                    "Pink humanoid skin, palomino horse coloration (Golden coat; White tail)",
+                    "Pink humanoid skin, roan horse coloration (White-brown coat; Brown tail and legs)",
+                        "Pink humanoid skin, roan horse coloration (White-black coat; Black tail and legs)",
+                        "Pink humanoid skin, roan horse coloration (White-golden coat; Golden tail and legs)",
+                        "Pink humanoid skin, roan horse coloration (White-ginger coat; Ginger tail and legs)",
+                        "Pink humanoid skin, roan horse coloration (White-light-ginger coat; Light ginger tail and legs)",
+                        "Pink humanoid skin, roan horse coloration (White-dark-ginger coat; Dark ginger tail and legs)",
+                        "Pink humanoid skin, roan horse coloration (White-creamy-golden coat; Creamy golden tail and legs)",
+                        "Pink humanoid skin, roan horse coloration (White-rich-golden coat; Rich golden tail and legs)",
+                        "Pink humanoid skin, roan horse coloration (White-gray coat; Creamy golden tail and legs)",
+                        "Pink humanoid skin, roan horse coloration (White-light-gray coat; Rich golden tail and legs)",
+                        "Pink humanoid skin, roan horse coloration (White-dark-gray coat; Creamy golden tail and legs)",
+                    "Pink humanoid skin, tobiano horse coloration (White/black cow-patterned coat; White tail)",
+                        "Pink humanoid skin, tobiano horse coloration (White/brown cow-patterned coat; White tail)",
+                        "Pink humanoid skin, tobiano horse coloration (White/gray cow-patterned coat; White tail)",
+                        "Pink humanoid skin, tobiano horse coloration (White/light gray cow-patterned coat; White tail)",
+                        "Pink humanoid skin, tobiano horse coloration (White/dark gray cow-patterned coat; White tail)",
+                        "Pink humanoid skin, tobiano horse coloration (White/creamy golden cow-patterned coat; White tail)",
+                        "Pink humanoid skin, tobiano horse coloration (White/rich golden cow-patterned coat; White tail)",
+                        "Pink humanoid skin, tobiano horse coloration (White/ginger cow-patterned coat; White tail)",
+                        "Pink humanoid skin, tobiano horse coloration (White/light ginger cow-patterned coat; White tail)",
+                        "Pink humanoid skin, tobiano horse coloration (White/dark ginger cow-patterned coat; White tail)",
+                        "Pink humanoid skin, tobiano horse coloration (White/golden cow-patterned coat; White tail)",
+
+                    "White humanoid skin, spotted horse coloration (White coat with black spots; black/white tail)",
+                        "White humanoid skin, spotted horse coloration (White coat with brown spots; brown/white tail)",
+                        "White humanoid skin, spotted horse coloration (White coat with gray spots; Gray/white tail)",
+                        "White humanoid skin, spotted horse coloration (White coat with ginger spots; Ginger/white tail)",
+                        "White humanoid skin, spotted horse coloration (White coat with golden spots; Golden/white tail)",
+                        "White humanoid skin, spotted horse coloration (White coat with cream spots; Cream/white tail)",
+                        "White humanoid skin, spotted horse coloration (White coat with light gray spots; Light gray/white tail)",
+                        "White humanoid skin, spotted horse coloration (White coat with dark gray spots; Dark gray/white tail)",
+                        "White humanoid skin, spotted horse coloration (White coat with creamy golden spots; Creamy golden/white tail)",
+                        "White humanoid skin, spotted horse coloration (White coat with light ginger spots; Light ginger/white tail)",
+                        "White humanoid skin, spotted horse coloration (White coat with dark ginger spots; Dark ginger/white tail)",
+                        "White humanoid skin, spotted horse coloration (Black coat with white spots; White/black tail)",
+                        "White humanoid skin, spotted horse coloration (Black coat with brown spots; Brown/black tail)",
+                        "White humanoid skin, spotted horse coloration (Black coat with gray spots; Gray/black tail)",
+                        "White humanoid skin, spotted horse coloration (Black coat with ginger spots; Ginger/black tail)",
+                        "White humanoid skin, spotted horse coloration (Black coat with golden spots; Golden/black tail)",
+                        "White humanoid skin, spotted horse coloration (Black coat with cream spots; Cream/black tail)",
+                        "White humanoid skin, spotted horse coloration (Black coat with light gray spots; Light gray/black tail)",
+                        "White humanoid skin, spotted horse coloration (Black coat with dark gray spots; Dark gray/black tail)",
+                        "White humanoid skin, spotted horse coloration (Black coat with creamy golden spots; Creamy golden/black tail)",
+                        "White humanoid skin, spotted horse coloration (Black coat with light ginger spots; Light ginger/black tail)",
+                        "White humanoid skin, spotted horse coloration (Black coat with dark ginger spots; Dark ginger/black tail)",
+                        "White humanoid skin, spotted horse coloration (Brown coat with white spots; White/brown tail)",
+                        "White humanoid skin, spotted horse coloration (Brown coat with black spots; Black/brown tail)",
+                        "White humanoid skin, spotted horse coloration (Brown coat with gray spots; Gray/brown tail)",
+                        "White humanoid skin, spotted horse coloration (Brown coat with ginger spots; Ginger/brown tail)",
+                        "White humanoid skin, spotted horse coloration (Brown coat with golden spots; Golden/brown tail)",
+                        "White humanoid skin, spotted horse coloration (Brown coat with cream spots; Cream/brown tail)",
+                        "White humanoid skin, spotted horse coloration (Brown coat with light gray spots; Light gray/brown tail)",
+                        "White humanoid skin, spotted horse coloration (Brown coat with dark gray spots; Dark gray/brown tail)",
+                        "White humanoid skin, spotted horse coloration (Brown coat with creamy golden spots; Creamy golden/brown tail)",
+                        "White humanoid skin, spotted horse coloration (Brown coat with light ginger spots; Light ginger/brown tail)",
+                        "White humanoid skin, spotted horse coloration (Brown coat with dark ginger spots; Dark ginger/brown tail)",
+                    "White humanoid skin, bay horse coloration (Brown coat; Black legs; Black tail)",
+                    "White humanoid skin, solid black coat; Black tail",
+                    "White humanoid skin, brown coat; Black lower legs; Light brown tail",
+                    "White humanoid skin, buckskin horse coloration (Creamy-golden coat with black points; Black tail)",
+                    "White humanoid skin, buckskin horse coloration (Rich golden coat with black points; Black tail)",
+                    "White humanoid skin, chestnut horse coloration (Ginger coat; Ginger tail)",
+                        "White humanoid skin, chestnut horse coloration (Ginger coat; Light ginger tail)",
+                        "White humanoid skin, chestnut horse coloration (Ginger coat; Dark ginger tail)",
+                        "White humanoid skin, chestnut horse coloration (Light ginger coat; Ginger tail)",
+                        "White humanoid skin, chestnut horse coloration (Light ginger coat; Light ginger tail)",
+                        "White humanoid skin, chestnut horse coloration (Light ginger coat; Dark ginger tail)",
+                        "White humanoid skin, chestnut horse coloration (Dark ginger coat; Ginger tail)",
+                        "White humanoid skin, chestnut horse coloration (Dark ginger coat; Light ginger tail)",
+                        "White humanoid skin, chestnut horse coloration (Dark ginger coat; Dark ginger tail)",
+                    "White humanoid skin, cremello horse coloration (Extremely pale white coat and tail; Blue eyes)",
+                        "White humanoid skin, cremello horse coloration (Extremely pale white coat and tail; Amber eyes)",
+                        "White humanoid skin, cremello horse coloration (Extremely pale cream coat and tail; Blue eyes)",
+                        "White humanoid skin, cremello horse coloration (Extremely pale cream coat and tail; Amber eyes)",
+                    "White humanoid skin, dun horse coloration (Creamy-golden coat; Black tail; Dark dorsal strip)",
+                    "White humanoid skin, solid white-gray coat and tail",
+                        "White humanoid skin, solid light gray coat and tail",
+                        "White humanoid skin, solid gray coat and tail",
+                        "White humanoid skin, solid dark gray coat and tail",
+                    "White humanoid skin, overo horse coloration (Black/white cow-patterned coat; Black tail)",
+                        "White humanoid skin, overo horse coloration (Black/brown cow-patterned coat; Black tail)",
+                        "White humanoid skin, overo horse coloration (Black/gray cow-patterned coat; Black tail)",
+                        "White humanoid skin, overo horse coloration (Black/light gray cow-patterned coat; Black tail)",
+                        "White humanoid skin, overo horse coloration (Black/dark gray cow-patterned coat; Black tail)",
+                        "White humanoid skin, overo horse coloration (Black/creamy golden cow-patterned coat; Black tail)",
+                        "White humanoid skin, overo horse coloration (Black/rich golden cow-patterned coat; Black tail)",
+                        "White humanoid skin, overo horse coloration (Black/ginger cow-patterned coat; Black tail)",
+                        "White humanoid skin, overo horse coloration (Black/light ginger cow-patterned coat; Black tail)",
+                        "White humanoid skin, overo horse coloration (Black/dark ginger cow-patterned coat; Black tail)",
+                        "White humanoid skin, overo horse coloration (Black/golden cow-patterned coat; Black tail)",
+                    "White humanoid skin, palomino horse coloration (Golden coat; White tail)",
+                    "White humanoid skin, roan horse coloration (White-brown coat; Brown tail and legs)",
+                        "White humanoid skin, roan horse coloration (White-black coat; Black tail and legs)",
+                        "White humanoid skin, roan horse coloration (White-golden coat; Golden tail and legs)",
+                        "White humanoid skin, roan horse coloration (White-ginger coat; Ginger tail and legs)",
+                        "White humanoid skin, roan horse coloration (White-light-ginger coat; Light ginger tail and legs)",
+                        "White humanoid skin, roan horse coloration (White-dark-ginger coat; Dark ginger tail and legs)",
+                        "White humanoid skin, roan horse coloration (White-creamy-golden coat; Creamy golden tail and legs)",
+                        "White humanoid skin, roan horse coloration (White-rich-golden coat; Rich golden tail and legs)",
+                        "White humanoid skin, roan horse coloration (White-gray coat; Creamy golden tail and legs)",
+                        "White humanoid skin, roan horse coloration (White-light-gray coat; Rich golden tail and legs)",
+                        "White humanoid skin, roan horse coloration (White-dark-gray coat; Creamy golden tail and legs)",
+                    "White humanoid skin, tobiano horse coloration (White/black cow-patterned coat; White tail)",
+                        "White humanoid skin, tobiano horse coloration (White/brown cow-patterned coat; White tail)",
+                        "White humanoid skin, tobiano horse coloration (White/gray cow-patterned coat; White tail)",
+                        "White humanoid skin, tobiano horse coloration (White/light gray cow-patterned coat; White tail)",
+                        "White humanoid skin, tobiano horse coloration (White/dark gray cow-patterned coat; White tail)",
+                        "White humanoid skin, tobiano horse coloration (White/creamy golden cow-patterned coat; White tail)",
+                        "White humanoid skin, tobiano horse coloration (White/rich golden cow-patterned coat; White tail)",
+                        "White humanoid skin, tobiano horse coloration (White/ginger cow-patterned coat; White tail)",
+                        "White humanoid skin, tobiano horse coloration (White/light ginger cow-patterned coat; White tail)",
+                        "White humanoid skin, tobiano horse coloration (White/dark ginger cow-patterned coat; White tail)",
+                        "White humanoid skin, tobiano horse coloration (White/golden cow-patterned coat; White tail)",
+
+                    "Pale white humanoid skin, spotted horse coloration (White coat with black spots; black/white tail)",
+                        "Pale white humanoid skin, spotted horse coloration (White coat with brown spots; brown/white tail)",
+                        "Pale white humanoid skin, spotted horse coloration (White coat with gray spots; Gray/white tail)",
+                        "Pale white humanoid skin, spotted horse coloration (White coat with ginger spots; Ginger/white tail)",
+                        "Pale white humanoid skin, spotted horse coloration (White coat with golden spots; Golden/white tail)",
+                        "Pale white humanoid skin, spotted horse coloration (White coat with cream spots; Cream/white tail)",
+                        "Pale white humanoid skin, spotted horse coloration (White coat with light gray spots; Light gray/white tail)",
+                        "Pale white humanoid skin, spotted horse coloration (White coat with dark gray spots; Dark gray/white tail)",
+                        "Pale white humanoid skin, spotted horse coloration (White coat with creamy golden spots; Creamy golden/white tail)",
+                        "Pale white humanoid skin, spotted horse coloration (White coat with light ginger spots; Light ginger/white tail)",
+                        "Pale white humanoid skin, spotted horse coloration (White coat with dark ginger spots; Dark ginger/white tail)",
+                        "Pale white humanoid skin, spotted horse coloration (Black coat with white spots; White/black tail)",
+                        "Pale white humanoid skin, spotted horse coloration (Black coat with brown spots; Brown/black tail)",
+                        "Pale white humanoid skin, spotted horse coloration (Black coat with gray spots; Gray/black tail)",
+                        "Pale white humanoid skin, spotted horse coloration (Black coat with ginger spots; Ginger/black tail)",
+                        "Pale white humanoid skin, spotted horse coloration (Black coat with golden spots; Golden/black tail)",
+                        "Pale white humanoid skin, spotted horse coloration (Black coat with cream spots; Cream/black tail)",
+                        "Pale white humanoid skin, spotted horse coloration (Black coat with light gray spots; Light gray/black tail)",
+                        "Pale white humanoid skin, spotted horse coloration (Black coat with dark gray spots; Dark gray/black tail)",
+                        "Pale white humanoid skin, spotted horse coloration (Black coat with creamy golden spots; Creamy golden/black tail)",
+                        "Pale white humanoid skin, spotted horse coloration (Black coat with light ginger spots; Light ginger/black tail)",
+                        "Pale white humanoid skin, spotted horse coloration (Black coat with dark ginger spots; Dark ginger/black tail)",
+                        "Pale white humanoid skin, spotted horse coloration (Brown coat with white spots; White/brown tail)",
+                        "Pale white humanoid skin, spotted horse coloration (Brown coat with black spots; Black/brown tail)",
+                        "Pale white humanoid skin, spotted horse coloration (Brown coat with gray spots; Gray/brown tail)",
+                        "Pale white humanoid skin, spotted horse coloration (Brown coat with ginger spots; Ginger/brown tail)",
+                        "Pale white humanoid skin, spotted horse coloration (Brown coat with golden spots; Golden/brown tail)",
+                        "Pale white humanoid skin, spotted horse coloration (Brown coat with cream spots; Cream/brown tail)",
+                        "Pale white humanoid skin, spotted horse coloration (Brown coat with light gray spots; Light gray/brown tail)",
+                        "Pale white humanoid skin, spotted horse coloration (Brown coat with dark gray spots; Dark gray/brown tail)",
+                        "Pale white humanoid skin, spotted horse coloration (Brown coat with creamy golden spots; Creamy golden/brown tail)",
+                        "Pale white humanoid skin, spotted horse coloration (Brown coat with light ginger spots; Light ginger/brown tail)",
+                        "Pale white humanoid skin, spotted horse coloration (Brown coat with dark ginger spots; Dark ginger/brown tail)",
+                    "Pale white humanoid skin, bay horse coloration (Brown coat; Black legs; Black tail)",
+                    "Pale white humanoid skin, solid black coat; Black tail",
+                    "Pale white humanoid skin, brown coat; Black lower legs; Light brown tail",
+                    "Pale white humanoid skin, buckskin horse coloration (Creamy-golden coat with black points; Black tail)",
+                    "Pale white humanoid skin, buckskin horse coloration (Rich golden coat with black points; Black tail)",
+                    "Pale white humanoid skin, chestnut horse coloration (Ginger coat; Ginger tail)",
+                        "Pale white humanoid skin, chestnut horse coloration (Ginger coat; Light ginger tail)",
+                        "Pale white humanoid skin, chestnut horse coloration (Ginger coat; Dark ginger tail)",
+                        "Pale white humanoid skin, chestnut horse coloration (Light ginger coat; Ginger tail)",
+                        "Pale white humanoid skin, chestnut horse coloration (Light ginger coat; Light ginger tail)",
+                        "Pale white humanoid skin, chestnut horse coloration (Light ginger coat; Dark ginger tail)",
+                        "Pale white humanoid skin, chestnut horse coloration (Dark ginger coat; Ginger tail)",
+                        "Pale white humanoid skin, chestnut horse coloration (Dark ginger coat; Light ginger tail)",
+                        "Pale white humanoid skin, chestnut horse coloration (Dark ginger coat; Dark ginger tail)",
+                    "Pale white humanoid skin, cremello horse coloration (Extremely pale white coat and tail; Blue eyes)",
+                        "Pale white humanoid skin, cremello horse coloration (Extremely pale white coat and tail; Amber eyes)",
+                        "Pale white humanoid skin, cremello horse coloration (Extremely pale cream coat and tail; Blue eyes)",
+                        "Pale white humanoid skin, cremello horse coloration (Extremely pale cream coat and tail; Amber eyes)",
+                    "Pale white humanoid skin, dun horse coloration (Creamy-golden coat; Black tail; Dark dorsal strip)",
+                    "Pale white humanoid skin, solid white-gray coat and tail",
+                        "Pale white humanoid skin, solid light gray coat and tail",
+                        "Pale white humanoid skin, solid gray coat and tail",
+                        "Pale white humanoid skin, solid dark gray coat and tail",
+                    "Pale white humanoid skin, overo horse coloration (Black/white cow-patterned coat; Black tail)",
+                        "Pale white humanoid skin, overo horse coloration (Black/brown cow-patterned coat; Black tail)",
+                        "Pale white humanoid skin, overo horse coloration (Black/gray cow-patterned coat; Black tail)",
+                        "Pale white humanoid skin, overo horse coloration (Black/light gray cow-patterned coat; Black tail)",
+                        "Pale white humanoid skin, overo horse coloration (Black/dark gray cow-patterned coat; Black tail)",
+                        "Pale white humanoid skin, overo horse coloration (Black/creamy golden cow-patterned coat; Black tail)",
+                        "Pale white humanoid skin, overo horse coloration (Black/rich golden cow-patterned coat; Black tail)",
+                        "Pale white humanoid skin, overo horse coloration (Black/ginger cow-patterned coat; Black tail)",
+                        "Pale white humanoid skin, overo horse coloration (Black/light ginger cow-patterned coat; Black tail)",
+                        "Pale white humanoid skin, overo horse coloration (Black/dark ginger cow-patterned coat; Black tail)",
+                        "Pale white humanoid skin, overo horse coloration (Black/golden cow-patterned coat; Black tail)",
+                    "Pale white humanoid skin, palomino horse coloration (Golden coat; White tail)",
+                    "Pale white humanoid skin, roan horse coloration (White-brown coat; Brown tail and legs)",
+                        "Pale white humanoid skin, roan horse coloration (White-black coat; Black tail and legs)",
+                        "Pale white humanoid skin, roan horse coloration (White-golden coat; Golden tail and legs)",
+                        "Pale white humanoid skin, roan horse coloration (White-ginger coat; Ginger tail and legs)",
+                        "Pale white humanoid skin, roan horse coloration (White-light-ginger coat; Light ginger tail and legs)",
+                        "Pale white humanoid skin, roan horse coloration (White-dark-ginger coat; Dark ginger tail and legs)",
+                        "Pale white humanoid skin, roan horse coloration (White-creamy-golden coat; Creamy golden tail and legs)",
+                        "Pale white humanoid skin, roan horse coloration (White-rich-golden coat; Rich golden tail and legs)",
+                        "Pale white humanoid skin, roan horse coloration (White-gray coat; Creamy golden tail and legs)",
+                        "Pale white humanoid skin, roan horse coloration (White-light-gray coat; Rich golden tail and legs)",
+                        "Pale white humanoid skin, roan horse coloration (White-dark-gray coat; Creamy golden tail and legs)",
+                    "Pale white humanoid skin, tobiano horse coloration (White/black cow-patterned coat; White tail)",
+                        "Pale white humanoid skin, tobiano horse coloration (White/brown cow-patterned coat; White tail)",
+                        "Pale white humanoid skin, tobiano horse coloration (White/gray cow-patterned coat; White tail)",
+                        "Pale white humanoid skin, tobiano horse coloration (White/light gray cow-patterned coat; White tail)",
+                        "Pale white humanoid skin, tobiano horse coloration (White/dark gray cow-patterned coat; White tail)",
+                        "Pale white humanoid skin, tobiano horse coloration (White/creamy golden cow-patterned coat; White tail)",
+                        "Pale white humanoid skin, tobiano horse coloration (White/rich golden cow-patterned coat; White tail)",
+                        "Pale white humanoid skin, tobiano horse coloration (White/ginger cow-patterned coat; White tail)",
+                        "Pale white humanoid skin, tobiano horse coloration (White/light ginger cow-patterned coat; White tail)",
+                        "Pale white humanoid skin, tobiano horse coloration (White/dark ginger cow-patterned coat; White tail)",
+                        "Pale white humanoid skin, tobiano horse coloration (White/golden cow-patterned coat; White tail)",
+                ],
+                commonHair: [
+                    //Common Human hair
+                    "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
+                    "Curly red hair", "Curly blond hair", "Curly brown hair", "Curly black hair",
+                    "Kinky red hair", "Kinky blond hair", "Kinky brown hair", "Kinky black hair",
+                ],
+                uncommonHair: [
+                    //Uncommon Human hair
+                    "Bald"
+                ],
+                allEyes: [
+                    //Human eyes
+                    "Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes",
+                ]);
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Tiny
-            appearances[CreatureConstants.Centipede_Monstrous_Tiny][Rarity.Common] = new[] { "Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin" };
+            appearances[CreatureConstants.Centipede_Monstrous_Tiny][Rarity.Common] = ["Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin"];
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Small
             appearances[CreatureConstants.Centipede_Monstrous_Small][Rarity.Common] = ["Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin"];
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Medium
@@ -801,10 +1930,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 uncommonOther: ["Long, whiplike tail. Head set within the \"cowl\" of the cloak-like body. Toothy maw. Bony claws adjacent to the head look almost like clasps for the cloak. A series of spots run in two parallel lines down the backs, giving the appearance of buttons."]);
             //Source: https://forgottenrealms.fandom.com/wiki/Cockatrice
             appearances[CreatureConstants.Cockatrice] = GetWeightedAppearances(
-                allSkin: ["Yellow-green scales on the tail. Grey skin on the wings. Yellow beak and feet."],
+                allSkin: ["Yellow-green scales on the tail, grey skin on the wings, yellow beak and feet"],
                 allHair: ["Golden brown feathers"],
                 allEyes: ["Glowing crimson eyes"],
-                allOther: ["Lizard-like tail. Wings of a bat.", "TODO gender-specific appearance"]);
+                allOther: ["Lizard-like tail, wings of a bat"]);
+            appearances[CreatureConstants.Cockatrice + GenderConstants.Male] = GetWeightedAppearances(
+                allSkin: ["Yellow-green scales on the tail, grey skin on the wings, yellow beak and feet"],
+                allHair: ["Golden brown feathers"],
+                allEyes: ["Glowing crimson eyes"],
+                allOther: ["Lizard-like tail, wings of a bat, rooster's red wattle and comb"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Couatl
             appearances[CreatureConstants.Couatl][Rarity.Common] = ["Long feathered serpent with a pair of rainbow-feathered wings."];
             //Source: https://www.mojobob.com/roleplay/monstrousmanual/s/sphinx.html
@@ -897,22 +2031,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allHair: new[] { "White hair", "Yellow hair", "Pale tan hair" },
                 allEyes: new[] { "Uniformly pale eyes lacking irisies and pupils" });
             appearances[CreatureConstants.Derro_Sane] = GetWeightedAppearances(
-                commonSkin: new[] { "Pale blue-white skin", "Blue-gray skin" },
-                uncommonSkin: new[] { "Pale blue-gray skin", "Blue-white skin" },
-                allHair: new[] { "White hair", "Yellow hair", "Pale tan hair" },
-                allEyes: new[] { "Uniformly pale eyes lacking irisies and pupils" });
+                commonSkin: ["Pale blue-white skin", "Blue-gray skin"],
+                uncommonSkin: ["Pale blue-gray skin", "Blue-white skin"],
+                allHair: ["White hair", "Yellow hair", "Pale tan hair"],
+                allEyes: ["Uniformly pale eyes lacking irisies and pupils"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Destrachan
-            appearances[CreatureConstants.Destrachan][Rarity.Common] = new[] { "Bipedal, vaguely reptilian. Head is largely featureless except for the circular mouth and the large ear structures." };
+            appearances[CreatureConstants.Destrachan][Rarity.Common] = ["Bipedal, vaguely reptilian. Head is largely featureless except for the circular mouth and the large ear structures."];
             //Source: https://forgottenrealms.fandom.com/wiki/Devourer
-            appearances[CreatureConstants.Devourer][Rarity.Common] = new[] { "Tall, gaunt skeletal figure with a smaller figure trapped within its rib cage" };
+            appearances[CreatureConstants.Devourer][Rarity.Common] = ["Tall, gaunt skeletal figure with a smaller figure trapped within its rib cage"];
             //Source: https://forgottenrealms.fandom.com/wiki/Digester
-            appearances[CreatureConstants.Digester][Rarity.Common] = new[] { "Gray, pebbly skin with dagger-like markings. Two powerful hind legs. Long tail. Head is narrow with a sucking mouth, sporting a tube-like orifice on the forehead." };
+            appearances[CreatureConstants.Digester][Rarity.Common] = ["Gray, pebbly skin with dagger-like markings. Two powerful hind legs. Long tail. Head is narrow with a sucking mouth, sporting a tube-like orifice on the forehead."];
             //Source: https://forgottenrealms.fandom.com/wiki/Displacer_beast
             appearances[CreatureConstants.DisplacerBeast] = GetWeightedAppearances(
-                commonHair: new[] { "Blue fur", "Blue-black fur", "Black fur" },
-                uncommonHair: new[] { "Dark blue fur", "Purple fur" },
-                allEyes: new[] { "Striking, glowing emerald-green eyes" },
-                commonOther: new[] { "Panther-like with six legs and a pair of tentacles sprouting from their shoulders. Tentacles end in pads with sharp, horny, brownish-yellow edges" },
+                commonHair: ["Blue fur", "Blue-black fur", "Black fur"],
+                uncommonHair: ["Dark blue fur", "Purple fur"],
+                allEyes: ["Striking, glowing emerald-green eyes"],
+                commonOther: ["Panther-like with six legs and a pair of tentacles sprouting from their shoulders. Tentacles end in pads with sharp, horny, brownish-yellow edges"],
                 uncommonOther: ["Panther-like with six legs and a pair of tentacles sprouting from their shoulders. Tentacles end in pads with sharp, horny, brownish-yellow edges. Emaciated-looking."]);
             appearances[CreatureConstants.DisplacerBeast_PackLord] = GetWeightedAppearances(
                 commonHair: ["Black fur", "Ebony fur"],
@@ -925,7 +2059,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonSkin: ["Pale blue skin", "Olive-brown skin", "Blue skin", "Dark blue skin"],
                 uncommonSkin: ["Dark tan skin"],
                 rareSkin: ["Purple skin", "Dark purple skin", "Beige skin", "Dark red skin"],
-                allHair: ["Bald", "Black hair", "TODO Human hair"],
+                commonHair: [
+                    "Bald", "Black hair",
+                    //Common Human hair
+                    "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
+                    "Curly red hair", "Curly blond hair", "Curly brown hair", "Curly black hair",
+                    "Kinky red hair", "Kinky blond hair", "Kinky brown hair", "Kinky black hair"
+                ],
+                uncommonHair: [
+                    //Uncommon Human hair
+                    "Bald",
+                ],
                 commonEyes: ["Brown eyes"],
                 rareEyes: ["Blue eyes"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Noble_djinni
@@ -933,20 +2077,36 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonSkin: ["Pale blue skin", "Fair brown skin", "Fair Blue skin"],
                 uncommonSkin: ["Fair tan skin"],
                 rareSkin: ["Fair purple skin", "Fair beige skin", "Fair red skin"],
-                allHair: ["Bald", "Black hair", "TODO Human hair"],
+                commonHair: [
+                    "Bald", "Black hair",
+                    //Common Human hair
+                    "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
+                    "Curly red hair", "Curly blond hair", "Curly brown hair", "Curly black hair",
+                    "Kinky red hair", "Kinky blond hair", "Kinky brown hair", "Kinky black hair"
+                ],
+                uncommonHair: [
+                    //Uncommon Human hair
+                    "Bald",
+                ],
                 commonEyes: ["Brown eyes"],
                 rareEyes: ["Blue eyes"]);
             //Source: https://g.co/kgs/q7esXM
             //https://i.redd.it/3lbyepoqhnlb1.jpg
-            appearances[CreatureConstants.Dog][Rarity.Common] = [ "Bulldog", "French Bulldog", "Beagle", "Standard Poodle", "Chihuahua", "Dachsund", "Bichon Frise",
+            //https://coatsandcolors.com/dog-eye-colors/
+            appearances[CreatureConstants.Dog] = GetWeightedAppearances(
+                allSkin: ["Bulldog", "French Bulldog", "Beagle", "Standard Poodle", "Chihuahua", "Dachsund", "Bichon Frise",
                 "Maltese",
                 "Chow Chow", "English Cocker Spaniel" , "Pomeranian", "Yorkshire Terrier", "Cavalier King Charles Spaniel", "Pembroke Welsh Corgi", "Basenji", "Havanese",
                 "Boston Terrier", "Cairn Terrier", "Brittany", "Sheltie", "Shiba Inu", "Jack Russell Terrier", "Borzoi", "Maltipoo", "Papillon", "Pikanese",
                 "Miniature Poodle", "Pikapoo", "Coyote", "Dingo", "Miniature Schnauzer", "Mutt", "English Bulldog", "Cavapoo", "Red Kelpie", "American Foxhound",
-                "Brussels Griffon", "Aussie Terrier", "German Spitz", "Pug", "Teacup Pomeranian", "Saluki", "Schnauzer Terrier", "Presa Canario" ];
+                "Brussels Griffon", "Aussie Terrier", "German Spitz", "Pug", "Teacup Pomeranian", "Saluki", "Schnauzer Terrier", "Presa Canario"],
+                allEyes: ["Brown eyes", "Hazel eyes", "Amber eyes", "Yellow eyes", "Blue eyes", "Green eyes"]
+            );
             //Source: https://www.google.com/search?q=dog+working+breeds
             //https://i.redd.it/3lbyepoqhnlb1.jpg
-            appearances[CreatureConstants.Dog_Riding][Rarity.Common] = [ "German Shepherd", "Labrador Retriever", "Golden Retriever", "Siberian Husky", "Beagle",
+            //https://coatsandcolors.com/dog-eye-colors/
+            appearances[CreatureConstants.Dog_Riding] = GetWeightedAppearances(
+                allSkin: ["German Shepherd", "Labrador Retriever", "Golden Retriever", "Siberian Husky", "Beagle",
                 "Alaskan Malamute",
                 "Border Collie", "Rottweiler", "Australian Shepherd", "Airedale Terrier", "Affenpinscher", "Afghan Hound", "American Eskimo", "Anatolian Shepherd",
                 "Basset Hound", "Belgian Malinois", "Boston Terrier", "Bullmastiff", "Black Russian Terrier", "Bedlington Terrier", "American Pit Bull Terrier", "Doberman",
@@ -956,8 +2116,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "Standard Schnauzer", "English Mastiff", "Karelian Bear Dog", "American Bulldog", "Hovawart", "Bloodhound", "Entlebucher Mountain Dog", "Eurasier",
                 "Greenland", "Canadian Eskimo", "Canaan", "Caucasian Shepherd", "Blue Lacy", "American Akita", "Akbash", "Central Asian Shepherd", "Australian Cattle",
                 "Yakutian Laika", "Mutt", "Blue Heeler", "Red Heeler", "Labrador", "Japanese Akita", "Red/Blue Heeler Mix", "Chocolate Labrador", "Chow Chow", "English Setter",
-                "Irish Wolfhound", "Irish Setter", "Mastiff", "Greyhound", "Chocolate Labrador/Rottweiler Mix", "Maremma Sheepdog", "Catahoula Leopard Dog", "Rough Collie"
-            ];
+                "Irish Wolfhound", "Irish Setter", "Mastiff", "Greyhound", "Chocolate Labrador/Rottweiler Mix", "Maremma Sheepdog", "Catahoula Leopard Dog", "Rough Collie"],
+                allEyes: ["Brown eyes", "Hazel eyes", "Amber eyes", "Yellow eyes", "Blue eyes", "Green eyes"]
+            );
             //Source: https://www.britannica.com/animal/donkey
             appearances[CreatureConstants.Donkey] = GetWeightedAppearances(
                 allHair: [ "White fur with dark stripe from mane to tail and a crosswise stripe on the shoulders",
@@ -969,14 +2130,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Doppelganger
             appearances[CreatureConstants.Doppelganger] = GetWeightedAppearances(
                 allSkin: ["Gray skin"],
-                allHair: new[] { "Hairless" },
-                commonEyes: new[] { "Bulging, pale yellow eyes lacking visible pupils", "Bulging, yellow eyes lacking visible pupils" },
-                rareEyes: new[] { "Bulging, green eyes lacking visible pupils", "Bulging, white eyes lacking visible pupils" },
-                allOther: new[] { "Elven ears. Bulbous head with formless face." });
+                allHair: ["Hairless"],
+                commonEyes: ["Bulging, pale yellow eyes lacking visible pupils", "Bulging, yellow eyes lacking visible pupils"],
+                rareEyes: ["Bulging, green eyes lacking visible pupils", "Bulging, white eyes lacking visible pupils"],
+                allOther: ["Elven ears. Bulbous head with formless face."]);
             //Source: Draconomicon
             appearances[CreatureConstants.Dragon_Black_Wyrmling] = GetWeightedAppearances(
-                allSkin: new[] { "Thin, glossy black one-inch scales" },
-                allEyes: new[] { "Deep-socketed eyes" },
+                allSkin: ["Thin, glossy black one-inch scales"],
+                allEyes: ["Deep-socketed eyes"],
                 allOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. One inch of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
             appearances[CreatureConstants.Dragon_Black_VeryYoung] = GetWeightedAppearances(
                 allSkin: new[] { "Thin, glossy black two-inch scales" },
@@ -1606,64 +2767,140 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allEyes: new[] { "Gray eyes" },
                 allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
             appearances[CreatureConstants.Dragon_White_GreatWyrm] = GetWeightedAppearances(
-                allSkin: new[] { "White scales with scales of pale blue and light gray mixed in. Trailing edge of the wings show a pink tinge",
-                    "White scales with scales of pale blue and light gray mixed in. Trailing edge of the wings show a blue tinge" },
-                allEyes: new[] { "Gray eyes" },
-                allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
+                allSkin: [ "White scales with scales of pale blue and light gray mixed in. Trailing edge of the wings show a pink tinge",
+                    "White scales with scales of pale blue and light gray mixed in. Trailing edge of the wings show a blue tinge" ],
+                allEyes: ["Gray eyes"],
+                allOther: ["Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed."]);
             //Source: https://forgottenrealms.fandom.com/wiki/Dragon_turtle
-            appearances[CreatureConstants.DragonTurtle][Rarity.Common] = new[] { "Green skin, with a golden crest down the center of the head." };
+            appearances[CreatureConstants.DragonTurtle][Rarity.Common] = ["Green skin, with a golden crest down the center of the head."];
             //Source: https://forgottenrealms.fandom.com/wiki/Dragonne
             appearances[CreatureConstants.Dragonne] = GetWeightedAppearances(
-                allSkin: new[] { "Brassy scales" },
-                allHair: new[] { "Thick, coarse mane encircling the face. Large feathery eyebrows" },
-                commonEyes: new[] { "Big brass-colored eyes" },
-                uncommonEyes: new[] { "Big bronze-colored eyes", "Big copper-colored eyes" });
+                allSkin: ["Brassy scales"],
+                allHair: ["Thick, coarse mane encircling the face. Large feathery eyebrows"],
+                commonEyes: ["Big brass-colored eyes"],
+                uncommonEyes: ["Big bronze-colored eyes", "Big copper-colored eyes"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Dretch
-            appearances[CreatureConstants.Dretch][Rarity.Common] = new[] { "Pale, rubbery, white skin", "Pale, rubbery, beige skin", "Pale, rubbery, blue skin" };
+            appearances[CreatureConstants.Dretch][Rarity.Common] = ["Pale, rubbery, white skin", "Pale, rubbery, beige skin", "Pale, rubbery, blue skin"];
             //Source: https://forgottenrealms.fandom.com/wiki/Drider
             appearances[CreatureConstants.Drider] = GetWeightedAppearances(
-                allSkin: new[] { "TODO Drow skin. Bottom half is TODO Spider skin" },
-                allHair: new[] { "TODO Drow hair" },
-                allEyes: new[] { "TODO Drow eyes" });
+                commonSkin: Combine(" on top half, bottom half is ",
+                    //Common Drow skin
+                    ["Black skin", "Dark blue skin", "Gray skin", "Dark gray skin", "Jet-black skin", "Obsidian-colored skin", "Blue skin",
+                        "Gray-blue skin", "Black-blue skin"],
+                    ["common house spider", "brown recluse spider", "southern black widow",
+                        "hobo spider", "forked pirate spider", "black house spider", "western black widow", "black-footed yellow sac spider",
+                        "brown widow", "woodlouse spider", "redback spider", "false widow", "giant house spider", "rabid wolf spider", "goliath birdeater", "noble false widow",
+                        "bold jumper"]),
+                rareSkin: Combine(", bottom half is ",
+                    //Rare Drow skin
+                    ["White (albino) skin"],
+                    ["common house spider", "brown recluse spider", "southern black widow",
+                        "hobo spider", "forked pirate spider", "black house spider", "western black widow", "black-footed yellow sac spider",
+                        "brown widow", "woodlouse spider", "redback spider", "false widow", "giant house spider", "rabid wolf spider", "goliath birdeater", "noble false widow",
+                        "bold jumper"]),
+                commonHair: [ 
+                    //Common Drow hair
+                    "Straight stark white hair", "Curly stark white hair", "Kinky stark white hair",
+                    "Straight pale yellow hair", "Curly pale yellow hair", "Kinky pale yellow hair" ],
+                uncommonHair: [ 
+                    //Uncommon Drow hair
+                    "Straight gray hair", "Curly gray hair", "Kinky gray hair",
+                    "Straight pale yellow hair", "Curly pale yellow hair", "Kinky pale yellow hair",
+                    "Straight silver hair", "Curly silver hair", "Kinky silver hair",
+                    "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
+                    "Straight pale red hair", "Straight pale blond hair", "Straight pale brown hair", "Straight pale black hair",
+                    "Curly pale red hair", "Curly pale blond hair", "Curly pale brown hair", "Curly pale black hair",
+                    "Kinky pale red hair", "Kinky pale blond hair", "Kinky pale brown hair", "Kinky pale black hair",
+                    "Straight pale black hair", "Curly pale black hair", "Kinky pale black hair",
+                    "Straight pale white hair", "Curly pale white hair", "Kinky pale white hair",
+                    "Straight pale silver hair", "Curly pale silver hair", "Kinky pale silver hair",
+                    "Straight very pale gold hair", "Curly very pale gold hair", "Kinky very pale gold hair" ],
+                rareHair: [
+                    //Rare Drow hair
+                    "Bald",
+                    "Straight pale black hair with silvery hues",
+                        "Curly pale black hair with silvery hues", "Kinky pale black hair with silvery hues",
+                    "Straight pale black hair with blond hues", "Curly pale black hair with blond hues", "Kinky pale black hair with blond hues",
+                    "Straight pale black hair with copper hues", "Curly pale black hair with copper hues", "Kinky pale black hair with copper hues",
+                    "Straight pale white hair with silvery hues", "Curly pale white hair with silvery hues",
+                        "Kinky pale white hair with silvery hues",
+                    "Straight pale white hair with blond hues", "Curly pale white hair with blond hues", "Kinky pale white hair with blond hues",
+                    "Straight pale white hair with copper hues", "Curly pale white hair with copper hues", "Kinky pale white hair with copper hues",
+                    "Straight pale silver hair with silvery hues", "Curly pale silver hair with silvery hues",
+                        "Kinky pale silver hair with silvery hues",
+                    "Straight pale silver hair with blond hues", "Curly pale silver hair with blond hues", "Kinky pale silver hair with blond hues",
+                    "Straight pale silver hair with copper hues", "Curly pale silver hair with copper hues",
+                        "Kinky pale silver hair with copper hues",
+                    "Straight very pale gold hair with silvery hues", "Curly very pale gold hair with silvery hues",
+                        "Kinky very pale gold hair with silvery hues",
+                    "Straight very pale gold hair with blond hues",  "Curly very pale gold hair with blond hues",
+                        "Kinky very pale gold hair with blond hues",
+                    "Straight very pale gold hair with copper hues", "Curly very pale gold hair with copper hues",
+                        "Kinky very pale gold hair with copper hues" ],
+                commonEyes: [
+                    //Common Drow eyes
+                    "Bright red eyes", "Vivid red eyes"
+                ],
+                uncommonEyes: [
+                    //Uncommon Drow eyes
+                    "Pale white-blue eyes", "Pale white-lilac eyes", "Pale white-pink eyes", "Pale white-silver eyes", "Purple eyes", "Blue eyes"
+                ],
+                rareEyes: [
+                    //Rare Drow eyes
+                    "Green eyes", "Brown eyes", "Black eyes", "Amber eyes", "Rose-hued eyes"
+                ]
+            );
             //Source: https://forgottenrealms.fandom.com/wiki/Dryad
-            appearances[CreatureConstants.Dryad][Rarity.Common] = new[] { "Delicate features seemingly made from soft wood. Hair looks as if made of leaves and foliage that changes color with the seasons." };
+            appearances[CreatureConstants.Dryad][Rarity.Common] = ["Delicate features seemingly made from soft wood. Hair looks as if made of leaves and foliage that changes color with the seasons."];
             //Source: https://www.d20srd.org/srd/monsters/dwarf.htm
             appearances[CreatureConstants.Dwarf_Deep] = GetWeightedAppearances(
-                commonSkin: new[] { "Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin", "Very dark tan skin", "Very dark brown skin" },
-                uncommonSkin: new[] { "Tan skin with a reddish tinge", "Brown skin with a reddish tinge", "Dark tan skin with a reddish tinge",
-                    "Dark brown skin with a reddish tinge", "Very dark tan skin with a reddish tinge", "Very dark brown skin with a reddish tinge" },
-                allHair: new[] { "Bright red hair", "Straw blond hair", "Muted red hair", "Yellow hair", "Bright yellow hair", "Muted yellow hair", "Brown hair" },
-                commonEyes: new[] { "Washed-out blue eyes" },
-                uncommonEyes: new[] { "TODO Human eyes (Washed-out)" });
+                commonSkin: ["Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin", "Very dark tan skin", "Very dark brown skin"],
+                uncommonSkin: [ "Tan skin with a reddish tinge", "Brown skin with a reddish tinge", "Dark tan skin with a reddish tinge",
+                    "Dark brown skin with a reddish tinge", "Very dark tan skin with a reddish tinge", "Very dark brown skin with a reddish tinge" ],
+                allHair: ["Bright red hair", "Straw blond hair", "Muted red hair", "Yellow hair", "Bright yellow hair", "Muted yellow hair", "Brown hair"],
+                commonEyes: ["Washed-out blue eyes"],
+                uncommonEyes: [
+                    //Human eyes
+                    "Washed-out blue eyes", "Washed-out brown eyes", "Washed-out gray eyes", "Washed-out green eyes", "Washed-out hazel eyes",
+                ]);
             appearances[CreatureConstants.Dwarf_Duergar] = GetWeightedAppearances(
-                allSkin: new[] { "Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin", "Very dark tan skin", "Very dark brown skin" },
-                commonHair: new[] { "Bald" },
-                uncommonHair: new[] { "Black hair", "Gray hair", "Brown hair" },
-                allEyes: new[] { "TODO Human eyes (Bright)" });
+                allSkin: ["Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin", "Very dark tan skin", "Very dark brown skin"],
+                commonHair: ["Bald"],
+                uncommonHair: ["Black hair", "Gray hair", "Brown hair"],
+                allEyes: [
+                    //Human eyes
+                    "Bright blue eyes", "Bright brown eyes", "Bright gray eyes", "Bright green eyes", "Bright hazel eyes",
+                ]);
             appearances[CreatureConstants.Dwarf_Hill] = GetWeightedAppearances(
-                allSkin: new[] { "Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin", "Very dark tan skin", "Very dark brown skin" },
-                allHair: new[] { "Black hair", "Gray hair", "Brown hair" },
-                allEyes: new[] { "TODO Human eyes (Bright)" });
+                allSkin: ["Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin", "Very dark tan skin", "Very dark brown skin"],
+                allHair: ["Black hair", "Gray hair", "Brown hair"],
+                allEyes: [
+                    //Human eyes
+                    "Bright blue eyes", "Bright brown eyes", "Bright gray eyes", "Bright green eyes", "Bright hazel eyes",
+                ]);
             appearances[CreatureConstants.Dwarf_Mountain] = GetWeightedAppearances(
-                allSkin: new[] { "Lightly tan skin", "Light brown skin", "Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin" },
-                allHair: new[] { "Dark gray hair", "Light gray hair", "Light brown hair" },
-                allEyes: new[] { "TODO Human eyes (Bright)" });
+                allSkin: ["Lightly tan skin", "Light brown skin", "Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin"],
+                allHair: ["Dark gray hair", "Light gray hair", "Light brown hair"],
+                allEyes: [
+                    //Human eyes
+                    "Bright blue eyes", "Bright brown eyes", "Bright gray eyes", "Bright green eyes", "Bright hazel eyes",
+                ]);
             //Source: https://www.google.com/search?q=species+of+eagle
-            appearances[CreatureConstants.Eagle][Rarity.Common] = new[] { "Golden eagle", "Bald eagle", "Harpy eagle", "White-tailed eagle", "Black kite", "Steller's sea eagle",
+            appearances[CreatureConstants.Eagle][Rarity.Common] = [ "Golden eagle", "Bald eagle", "Harpy eagle", "White-tailed eagle", "Black kite", "Steller's sea eagle",
                 "Philippine eagle", "Haast's eagle", "Wedge-tailed eagle", "Common buzzard", "Black eagle", "Crowned eagle", "Javan hawk-eagle", "Eastern imperial eagle",
                 "Indian spotted eagle", "African fish eagle", "Spanish imperial eagle", "Bonelli's eagle", "Bearded vulture", "Black-and-chestnut eagle", "Martial eagle",
                 "Black-chested buzzard-eagle", "Eurasian griffon vulture", "Red kite", "Verreaux's eagle", "Crested serpent eagle", "Steppe eagle", "Cinereous vulture",
                 "White-bellied sea eagle", "Booted eagle", "Short-toed snake eagle", "Tawny eagle", "Egyptian vulture", "Lesser spotted eagle", "Mountain hawk-eagle",
                 "Greater spotted eagle", "Little eagle", "Brahminy kite", "Ornate hawk-eagle", "Black-and-white hawk-eagle", "Changeable hawk-eagle", "Crested eagle",
-                "Rough-legged buzzard", "Hen harrier" };
+                "Rough-legged buzzard", "Hen harrier" ];
             //Source: https://www.d20srd.org/srd/monsters/eagleGiant.htm
-            appearances[CreatureConstants.Eagle_Giant][Rarity.Common] = new[] { "Golden eagle", "Bald eagle", "Harpy eagle", "White-tailed eagle", "Black kite", "Steller's sea eagle",
+            appearances[CreatureConstants.Eagle_Giant][Rarity.Common] = [ "Golden eagle", "Bald eagle", "Harpy eagle", "White-tailed eagle", "Black kite", "Steller's sea eagle",
                 "Philippine eagle", "Haast's eagle", "Wedge-tailed eagle", "Common buzzard", "Black eagle", "Crowned eagle", "Javan hawk-eagle", "Eastern imperial eagle",
                 "Indian spotted eagle", "African fish eagle", "Spanish imperial eagle", "Bonelli's eagle", "Bearded vulture", "Black-and-chestnut eagle", "Martial eagle",
                 "Black-chested buzzard-eagle", "Eurasian griffon vulture", "Red kite", "Verreaux's eagle", "Crested serpent eagle", "Steppe eagle", "Cinereous vulture",
                 "White-bellied sea eagle", "Booted eagle", "Short-toed snake eagle", "Tawny eagle", "Egyptian vulture", "Lesser spotted eagle", "Mountain hawk-eagle",
                 "Greater spotted eagle", "Little eagle", "Brahminy kite", "Ornate hawk-eagle", "Black-and-white hawk-eagle", "Changeable hawk-eagle", "Crested eagle",
-                "Rough-legged buzzard", "Hen harrier" };
+                "Rough-legged buzzard", "Hen harrier" ];
             //Source: https://forgottenrealms.fandom.com/wiki/Efreeti
             appearances[CreatureConstants.Efreeti][Rarity.Common] = new[] { "Red, burning skin", "Black, burning skin" };
             //Source: https://jurassicworld-evolution.fandom.com/wiki/Elasmosaurus
@@ -1757,14 +2994,44 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonEyes: ["Bright red eyes", "Vivid red eyes"],
                 uncommonEyes: ["Pale white-blue eyes", "Pale white-lilac eyes", "Pale white-pink eyes", "Pale white-silver eyes", "Purple eyes", "Blue eyes"],
                 rareEyes: ["Green eyes", "Brown eyes", "Black eyes", "Amber eyes", "Rose-hued eyes"],
-                commonHair: [ "Straight Stark white hair", "Curly Stark white hair", "Kinky Stark white hair",
-                    "Straight Pale yellow hair", "Curly Pale yellow hair", "Kinky Pale yellow hair" ],
-                uncommonHair: [ "Straight Gray hair", "Curly Gray hair", "Kinky Gray hair",
-                    "Straight Pale Yellow hair", "Curly Pale Yellow hair", "Kinky Pale Yellow hair",
+                commonHair: [ "Straight stark white hair", "Curly stark white hair", "Kinky stark white hair",
+                    "Straight pale yellow hair", "Curly pale yellow hair", "Kinky pale yellow hair" ],
+                uncommonHair: [ "Straight gray hair", "Curly gray hair", "Kinky gray hair",
+                    "Straight pale yellow hair", "Curly pale yellow hair", "Kinky pale yellow hair",
                     "Straight silver hair", "Curly silver hair", "Kinky silver hair",
                     "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
-                    "Pale TODO Human hair",
-                    "Pale TODO High Elf hair" ],
+                    //Common Human hair
+                    "Straight pale red hair", "Straight pale blond hair", "Straight pale brown hair", "Straight pale black hair",
+                    "Curly pale red hair", "Curly pale blond hair", "Curly pale brown hair", "Curly pale black hair",
+                    "Kinky pale red hair", "Kinky pale blond hair", "Kinky pale brown hair", "Kinky pale black hair",
+                    //Common High Elf hair
+                    "Straight pale black hair", "Curly pale black hair", "Kinky pale black hair",
+                    "Straight pale white hair", "Curly pale white hair", "Kinky pale white hair",
+                    "Straight pale silver hair", "Curly pale silver hair", "Kinky pale silver hair",
+                    "Straight very pale gold hair", "Curly very pale gold hair", "Kinky very pale gold hair" ],
+                rareHair: [
+                    //Uncommon Human hair
+                    "Bald",
+                    //Uncommon High Elf hair
+                    "Straight pale black hair with silvery hues",
+                        "Curly pale black hair with silvery hues", "Kinky pale black hair with silvery hues",
+                    "Straight pale black hair with blond hues", "Curly pale black hair with blond hues", "Kinky pale black hair with blond hues",
+                    "Straight pale black hair with copper hues", "Curly pale black hair with copper hues", "Kinky pale black hair with copper hues",
+                    "Straight pale white hair with silvery hues", "Curly pale white hair with silvery hues",
+                        "Kinky pale white hair with silvery hues",
+                    "Straight pale white hair with blond hues", "Curly pale white hair with blond hues", "Kinky pale white hair with blond hues",
+                    "Straight pale white hair with copper hues", "Curly pale white hair with copper hues", "Kinky pale white hair with copper hues",
+                    "Straight pale silver hair with silvery hues", "Curly pale silver hair with silvery hues",
+                        "Kinky pale silver hair with silvery hues",
+                    "Straight pale silver hair with blond hues", "Curly pale silver hair with blond hues", "Kinky pale silver hair with blond hues",
+                    "Straight pale silver hair with copper hues", "Curly pale silver hair with copper hues",
+                        "Kinky pale silver hair with copper hues",
+                    "Straight very pale gold hair with silvery hues", "Curly very pale gold hair with silvery hues",
+                        "Kinky very pale gold hair with silvery hues",
+                    "Straight very pale gold hair with blond hues",  "Curly very pale gold hair with blond hues",
+                        "Kinky very pale gold hair with blond hues",
+                    "Straight very pale gold hair with copper hues", "Curly very pale gold hair with copper hues",
+                        "Kinky very pale gold hair with copper hues" ],
                 allOther: ["Pointed ears"]);
             //Source: https://www.d20srd.org/srd/monsters/elf.htm
             //https://forgottenrealms.fandom.com/wiki/Grey_elf
@@ -1786,7 +3053,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Dark brown skin", "Dark tan skin",
                     "Copper skin", "Tan skin",
                     "Light brown skin", "Brown skin", "Dark brown skin",
-                    "TODO Drow Skin" ],
+                    //Common Drow skin
+                    "Black skin", "Dark blue skin", "Gray skin", "Dark gray skin", "Jet-black skin", "Obsidian-colored skin", "Blue skin",
+                        "Gray-blue skin", "Black-blue skin"
+                ],
+                rareSkin: [
+                    //Rare Drow skin
+                    "White (albino) skin"
+                ],
                 commonHair: [ "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
                     "Curly red hair", "Curly blond hair", "Curly brown hair", "Curly black hair",
                     "Kinky red hair", "Kinky blond hair", "Kinky brown hair", "Kinky black hair",
@@ -1817,24 +3091,87 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Straight black hair", "Straight light brown hair", "Straight brown hair",
                     "Curly black hair", "Curly light brown hair", "Curly brown hair",
                     "Kinky black hair", "Kinky light brown hair", "Kinky brown hair",
-                    "TODO Wild Elf Hair",
-                    "TODO Drow Hair" ],
+                    //Common Wild Elf hair
+                    "Straight black hair", "Curly black hair", "Kinky black hair",
+                    "Straight dark brown hair", "Curly dark brown hair", "Kinky dark brown hair",
+                    "Straight brown hair", "Curly brown hair", "Kinky brown hair",
+                    "Straight light brown hair", "Curly light brown hair", "Kinky light brown hair",
+                    //Common Drow hair
+                    "Straight stark white hair", "Curly stark white hair", "Kinky stark white hair",
+                        "Straight pale yellow hair", "Curly pale yellow hair", "Kinky pale yellow hair"
+                ],
                 rareHair: ["Straight pale-golden hair", "Curly pale-golden hair", "Kinky pale-golden hair",
                     "Straight yellow hair", "Straight blond hair", "Straight copper-red hair",
                     "Curly yellow hair", "Curly blond hair", "Curly copper-red hair",
-                    "Kinky yellow hair", "Kinky blond hair", "Kinky copper-red hair"],
+                    "Kinky yellow hair", "Kinky blond hair", "Kinky copper-red hair",
+                    //Uncommon Wild Elf hair
+                    "Straight silver hair", "Curly silver hair", "Kinky silver hair",
+                    "Straight silvery-white hair", "Curly silvery-white hair", "Kinky silvery-white hair",
+                    "Straight gray hair", "Curly gray hair", "Kinky gray hair",
+                    "Straight white hair", "Curly white hair", "Kinky white hair",
+                    //Uncommon Drow hair
+                    "Straight gray hair", "Curly gray hair", "Kinky gray hair",
+                    "Straight pale yellow hair", "Curly pale yellow hair", "Kinky pale yellow hair",
+                    "Straight silver hair", "Curly silver hair", "Kinky silver hair",
+                    "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
+                    "Straight pale red hair", "Straight pale blond hair", "Straight pale brown hair", "Straight pale black hair",
+                    "Curly pale red hair", "Curly pale blond hair", "Curly pale brown hair", "Curly pale black hair",
+                    "Kinky pale red hair", "Kinky pale blond hair", "Kinky pale brown hair", "Kinky pale black hair",
+                    "Straight pale black hair", "Curly pale black hair", "Kinky pale black hair",
+                    "Straight pale white hair", "Curly pale white hair", "Kinky pale white hair",
+                    "Straight pale silver hair", "Curly pale silver hair", "Kinky pale silver hair",
+                    "Straight very pale gold hair", "Curly very pale gold hair", "Kinky very pale gold hair",
+                    //Rare Drow hair
+                    "Bald",
+                    "Straight pale black hair with silvery hues",
+                        "Curly pale black hair with silvery hues", "Kinky pale black hair with silvery hues",
+                    "Straight pale black hair with blond hues", "Curly pale black hair with blond hues", "Kinky pale black hair with blond hues",
+                    "Straight pale black hair with copper hues", "Curly pale black hair with copper hues", "Kinky pale black hair with copper hues",
+                    "Straight pale white hair with silvery hues", "Curly pale white hair with silvery hues",
+                        "Kinky pale white hair with silvery hues",
+                    "Straight pale white hair with blond hues", "Curly pale white hair with blond hues", "Kinky pale white hair with blond hues",
+                    "Straight pale white hair with copper hues", "Curly pale white hair with copper hues", "Kinky pale white hair with copper hues",
+                    "Straight pale silver hair with silvery hues", "Curly pale silver hair with silvery hues",
+                        "Kinky pale silver hair with silvery hues",
+                    "Straight pale silver hair with blond hues", "Curly pale silver hair with blond hues", "Kinky pale silver hair with blond hues",
+                    "Straight pale silver hair with copper hues", "Curly pale silver hair with copper hues",
+                        "Kinky pale silver hair with copper hues",
+                    "Straight very pale gold hair with silvery hues", "Curly very pale gold hair with silvery hues",
+                        "Kinky very pale gold hair with silvery hues",
+                    "Straight very pale gold hair with blond hues",  "Curly very pale gold hair with blond hues",
+                        "Kinky very pale gold hair with blond hues",
+                    "Straight very pale gold hair with copper hues", "Curly very pale gold hair with copper hues",
+                        "Kinky very pale gold hair with copper hues"
+                ],
                 commonEyes: ["Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes"],
                 uncommonEyes: [ "Amber eyes",
-                    "Golden eyes", "Blue eyes", "Light Blue eyes", "Green eyes speckled with gold",
+                    "Golden eyes", "Blue eyes", "Light blue eyes", "Green eyes speckled with gold",
                     "Green eyes", "Brown eyes", "Hazel eyes",
-                    "TODO Wild Elf Eyes",
-                    "TODO Drow Eyes" ],
+                    //Common Wild Elf eyes
+                    "Green eyes",
+                    //Common Drow eyes
+                    "Bright red eyes", "Vivid red eyes"
+                ],
                 rareEyes: ["Violet eyes",
+                    //Rare High Elf eyes
+                    "Violet eyes", "Blue eyes speckled with gold", "Light blue eyes speckled with gold", "Violet eyes speckled with gold",
+                    "Solid green eyes, lacking pupils", "Solid golden eyes, lacking pupils", "Solid blue eyes, lacking pupils", "Solid light blue eyes, lacking pupils",
+                    "Solid violet eyes, lacking pupils", "Solid green eyes speckled with gold, lacking pupils", "Solid golden eyes speckled with gold, lacking pupils",
+                    "Solid blue eyes speckled with gold, lacking pupils", "Solid light blue eyes speckled with gold, lacking pupils",
+                    "Solid violet eyes speckled with gold, lacking pupils",
+                    //Uncommon Wild Elf eyes
+                    "Golden eyes", "Blue eyes", "Light blue eyes", "Green eyes speckled with gold",
+                    //Rare Wild Elf eyes
                     "Violet eyes", "Blue eyes speckled with gold", "Light Blue eyes speckled with gold", "Violet eyes speckled with gold",
                     "Solid green eyes, lacking pupils", "Solid golden eyes, lacking pupils", "Solid blue eyes, lacking pupils", "Solid light blue eyes, lacking pupils",
                     "Solid violet eyes, lacking pupils", "Solid green eyes speckled with gold, lacking pupils", "Solid golden eyes speckled with gold, lacking pupils",
                     "Solid blue eyes speckled with gold, lacking pupils", "Solid light blue eyes speckled with gold, lacking pupils",
-                    "Solid violet eyes speckled with gold, lacking pupils"],
+                    "Solid violet eyes speckled with gold, lacking pupils",
+                    //Uncommon Drow eyes
+                    "Pale white-blue eyes", "Pale white-lilac eyes", "Pale white-pink eyes", "Pale white-silver eyes", "Purple eyes", "Blue eyes",
+                    //Rare Drow eyes
+                    "Green eyes", "Brown eyes", "Black eyes", "Amber eyes", "Rose-hued eyes",
+                ],
                 allOther: ["Pointed ears"]);
             //Source: https://forgottenrealms.fandom.com/wiki/High_elf
             appearances[CreatureConstants.Elf_High] = GetWeightedAppearances(
@@ -1881,10 +3218,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Straight brown hair", "Curly brown hair", "Kinky brown hair",
                     "Straight light brown hair", "Curly light brown hair", "Kinky light brown hair" ],
                 uncommonHair: [ "Straight silver hair", "Curly silver hair", "Kinky silver hair",
-                    "Straight Silvery-White hair", "Curly Silvery-White hair", "Kinky Silvery-White hair",
-                    "Straight Gray hair", "Curly Gray hair", "Kinky Gray hair",
-                    "Straight White hair", "Curly White hair", "Kinky White hair" ],
-                allEyes: ["TODO High Elf eyes"],
+                    "Straight silvery-white hair", "Curly silvery-white hair", "Kinky silvery-white hair",
+                    "Straight gray hair", "Curly gray hair", "Kinky gray hair",
+                    "Straight white hair", "Curly white hair", "Kinky white hair" ],
+                commonEyes: [
+                    //Common High Elf eyes
+                    "Green eyes"
+                ],
+                uncommonEyes: [
+                    //Uncommon High Elf eyes
+                    "Golden eyes", "Blue eyes", "Light Blue eyes", "Green eyes speckled with gold"
+                ],
+                rareEyes: [
+                    //Rare High Elf eyes
+                    "Violet eyes", "Blue eyes speckled with gold", "Light Blue eyes speckled with gold", "Violet eyes speckled with gold",
+                    "Solid green eyes, lacking pupils", "Solid golden eyes, lacking pupils", "Solid blue eyes, lacking pupils", "Solid light blue eyes, lacking pupils",
+                    "Solid violet eyes, lacking pupils", "Solid green eyes speckled with gold, lacking pupils", "Solid golden eyes speckled with gold, lacking pupils",
+                    "Solid blue eyes speckled with gold, lacking pupils", "Solid light blue eyes speckled with gold, lacking pupils",
+                    "Solid violet eyes speckled with gold, lacking pupils"
+                ],
                 allOther: ["Pointed ears"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Wood_elf
             //https://www.d20srd.org/srd/monsters/elf.htm
@@ -2115,53 +3467,53 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Long, free brown-gray hair",
                     "Long, free brown-gray hair TODO MALE beard trimmed to fine point",
                     "Long, free brown-gray hair TODO MALE beard trimmed into hornlike spikes" },
-                rareHair: new[] { "Long, free white hair",
+                rareHair: [ "Long, free white hair",
                     "Long, free white hair TODO MALE beard trimmed to fine point",
-                    "Long, free white hair TODO MALE beard trimmed into hornlike spikes" },
-                allEyes: new[] { "Blue eyes", "Brown eyes" });
+                    "Long, free white hair TODO MALE beard trimmed into hornlike spikes" ],
+                allEyes: ["Blue eyes", "Brown eyes"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Rock_gnome
             //https://forgottenrealms.fandom.com/wiki/Gnome
             appearances[CreatureConstants.Gnome_Rock] = GetWeightedAppearances(
-                allSkin: new[] { "Light tan skin", "Tan skin", "Light brown skin", "Brown skin" },
-                allHair: new[] { "TODO Human style gray hair", "TODO Human style white hair",
-                    "TODO Human style gray hair TODO MALE Neatly-trimmed beard", "TODO Human style white hair TODO MALE Neatly-trimmed beard"},
-                commonEyes: new[] { "Glitering opaque orbs of black", "Glitering opaque orbs of blue" },
-                uncommonEyes: new[] { "TODO Human eyes" });
+                allSkin: ["Light tan skin", "Tan skin", "Light brown skin", "Brown skin"],
+                allHair: [ "TODO Human style gray hair", "TODO Human style white hair",
+                    "TODO Human style gray hair TODO MALE Neatly-trimmed beard", "TODO Human style white hair TODO MALE Neatly-trimmed beard"],
+                commonEyes: ["Glittering opaque orbs of black", "Glitering opaque orbs of blue"],
+                uncommonEyes: ["TODO Human eyes"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Deep_gnome
             //https://www.d20srd.org/srd/monsters/gnome.htm
             appearances[CreatureConstants.Gnome_Svirfneblin] = GetWeightedAppearances(
-                allSkin: new[] { "Rocky brown skin", "Rocky brownish-gray skin", "Rocky gray skin" },
-                allHair: new[] { "TODO MALE bald", "TODO FEMALE Stringy gray hair" },
-                allEyes: new[] { "Dark gray eyes", "Black eyes" },
-                allOther: new[] { "Gnarled and wiry" });
+                allSkin: ["Rocky brown skin", "Rocky brownish-gray skin", "Rocky gray skin"],
+                allHair: ["TODO MALE bald", "TODO FEMALE Stringy gray hair"],
+                allEyes: ["Dark gray eyes", "Black eyes"],
+                allOther: ["Gnarled and wiry"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Goblin
             //https://www.d20srd.org/srd/monsters/goblin.htm
             appearances[CreatureConstants.Goblin] = GetWeightedAppearances(
-                commonSkin: new[] { "Yellow skin", "Red skin", "Orange skin", "Light orange skin", "Dark orange skin", "Deep red skin" },
-                uncommonSkin: new[] { "Green skin" },
-                allEyes: new[] { "Dull, glazed, yellow eyes", "Dull, glazed, orange eyes", "Dull, glazed, red eyes" },
-                allOther: new[] { "Flat face, small fangs, pointed ears, sloped-back forehead, broad noses" });
+                commonSkin: ["Yellow skin", "Red skin", "Orange skin", "Light orange skin", "Dark orange skin", "Deep red skin"],
+                uncommonSkin: ["Green skin"],
+                allEyes: ["Dull, glazed, yellow eyes", "Dull, glazed, orange eyes", "Dull, glazed, red eyes"],
+                allOther: ["Flat face, small fangs, pointed ears, sloped-back forehead, broad noses"]);
             //Source: https://pathfinderwiki.com/wiki/Clay_golem
             //https://forgottenrealms.fandom.com/wiki/Clay_golem
-            appearances[CreatureConstants.Golem_Clay][Rarity.Common] = new[] { "Humanoid body madde from clay" };
+            appearances[CreatureConstants.Golem_Clay][Rarity.Common] = ["Humanoid body made from clay"];
             //Source: https://www.d20srd.org/srd/monsters/golem.htm
             //https://forgottenrealms.fandom.com/wiki/Flesh_golem
-            appearances[CreatureConstants.Golem_Flesh][Rarity.Common] = new[] { "Various decaying humanoid body parts stitched and bolted together" };
+            appearances[CreatureConstants.Golem_Flesh][Rarity.Common] = ["Various decaying humanoid body parts stitched and bolted together"];
             //Source: https://www.d20srd.org/srd/monsters/golem.htm
             //https://forgottenrealms.fandom.com/wiki/Iron_golem
             appearances[CreatureConstants.Golem_Iron] = GetWeightedAppearances(
-                allSkin: new[] { "Reddish-brown color", "Black color", "Black color with golden markings", "Rusted red color", "Shining steel color" },
-                allOther: new[] { "Resembles a suit of armor, smooth features",
+                allSkin: ["Reddish-brown color", "Black color", "Black color with golden markings", "Rusted red color", "Shining steel color"],
+                allOther: [ "Resembles a suit of armor, smooth features",
                     "Resembles a suit of armor, smooth features, symbol carved in the chest",
-                    "Resembles a suit of armor, smooth features, designs carved into the limbs" });
+                    "Resembles a suit of armor, smooth features, designs carved into the limbs" ]);
             //Source: https://www.d20srd.org/srd/monsters/golem.htm
             //https://forgottenrealms.fandom.com/wiki/Stone_golem
             appearances[CreatureConstants.Golem_Stone] = GetWeightedAppearances(
-                allSkin: new[] { "Stone gray color", "Sandy brown color" },
-                allOther: new[] { "Looks like a carved statue", "Looks like a carved statue, appears as if wearing armor",
+                allSkin: ["Stone gray color", "Sandy brown color"],
+                allOther: [ "Looks like a carved statue", "Looks like a carved statue, appears as if wearing armor",
                     "Looks like a carved statue, appears as if wearing armor and has a symbol carved on the breastplate",
                     "Looks like a carved statue, symbol carved in the chest",
-                    "Looks like a carved statue, designs carved into the limbs" });
+                    "Looks like a carved statue, designs carved into the limbs" ]);
             //Source: https://www.d20srd.org/srd/monsters/golem.htm
             //https://forgottenrealms.fandom.com/wiki/Stone_golem
             appearances[CreatureConstants.Golem_Stone_Greater] = GetWeightedAppearances(
@@ -4366,6 +5718,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             return weightedAppearances;
         }
 
+        private IEnumerable<string> Combine(string joiner, IEnumerable<string> starts, IEnumerable<string> ends)
+        {
+            foreach (var start in starts)
+            {
+                foreach (var end in ends)
+                {
+                    yield return start + joiner + end;
+                }
+            }
+        }
+
         private IEnumerable<List<(string Appearance, Rarity Rarity)>> Build(
             IEnumerable<string> all, IEnumerable<string> common, IEnumerable<string> uncommon, IEnumerable<string> rare,
             List<(string Appearance, Rarity Rarity)> prototype)
@@ -4643,6 +6006,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "My rare skin; My common hair; My uncommon eyes; My uncommon other",
                 "My uncommon skin; My uncommon hair; My uncommon eyes; My uncommon other",
             }));
+        }
+
+        [Test]
+        public void Combine_CreatesCombinations()
+        {
+            Assert.Fail("not yet written");
         }
     }
 }

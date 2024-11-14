@@ -34,7 +34,6 @@
     <None Remove="Tables\Creatures\Advancements.xml" />
     <None Remove="Tables\Creatures\AerialManeuverability.xml" />
     <None Remove="Tables\Creatures\AgeRolls.xml" />
-    <None Remove="Tables\Creatures\Appearances.xml" />
     <None Remove="Tables\Creatures\CreatureData.xml" />
     <None Remove="Tables\Creatures\CreatureGroups.xml" />
     <None Remove="Tables\Creatures\CreatureTypes.xml" />
