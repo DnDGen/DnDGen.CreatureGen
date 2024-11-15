@@ -32,8 +32,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         {
             var appearances = new Dictionary<string, Dictionary<Rarity, Dictionary<AppearanceCategory, IEnumerable<string>>>>
             {
-                [CreatureConstants.Human] = InitializeReusableAppearance(),
+                [CreatureConstants.Elf_High] = InitializeReusableAppearance(),
                 [CreatureConstants.Horse_Heavy] = InitializeReusableAppearance(),
+                [CreatureConstants.Human] = InitializeReusableAppearance(),
             };
 
             appearances[CreatureConstants.Human][Rarity.Common][AppearanceCategory.Skin] = [
@@ -122,6 +123,44 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Tobiano (White/light ginger cow-patterned coat; White mane and tail)", "Tobiano (White/dark ginger cow-patterned coat; White mane and tail)",
                     "Tobiano (White/golden cow-patterned coat; White mane and tail)"
             ];
+
+            reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Skin] = [
+                "Brown skin", "Tan skin", "White skin", "Pink skin",
+                "Light brown skin", "Light tan skin", "Pale white skin"
+            ];
+            reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Skin] = [
+                "Dark brown skin", "Dark tan skin"
+            ];
+            reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Hair] = [
+                "Straight black hair", "Curly black hair", "Kinky black hair",
+                "Straight white hair", "Curly white hair", "Kinky white hair",
+                "Straight silver hair", "Curly silver hair", "Kinky silver hair",
+                "Straight pale gold hair", "Curly pale gold hair", "Kinky pale gold hair"
+            ];
+            reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Hair] = Combine(" ",
+                reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Hair],
+                ["with silvery hues", "with blond hues", "with copper hues"]);
+            reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Eyes] = ["Green eyes"];
+            reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Eyes] = new[] { "Golden eyes", "Blue eyes", "Light Blue eyes" }
+                .Concat(reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Eyes]
+                    .Select(e => $"{e} speckled with gold"));
+            reusableAppearances[CreatureConstants.Elf_High][Rarity.Rare][AppearanceCategory.Eyes] = new[]
+            {
+                "Violet eyes",
+                "Violet eyes speckled with gold",
+                "Solid violet eyes, lacking puils",
+                "Solid violet eyes speckled with gold, lacking puils",
+            }
+                .Concat(reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Eyes]
+                    .Where(e => !e.Contains("speckled"))
+                    .Select(e => $"{e} speckled with gold"))
+                .Concat(reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Eyes]
+                    .Select(LowercaseFirstCharacter)
+                    .Select(e => $"Solid {e}, lacking pupils"))
+                .Concat(reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Eyes]
+                    .Select(LowercaseFirstCharacter)
+                    .Select(e => $"Solid {e}, lacking pupils"));
+
             return appearances;
         }
 
@@ -2313,42 +2352,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 rareEyes: ["Green eyes", "Brown eyes", "Black eyes", "Amber eyes", "Rose-hued eyes"],
                 commonHair: [ "Straight stark white hair", "Curly stark white hair", "Kinky stark white hair",
                     "Straight pale yellow hair", "Curly pale yellow hair", "Kinky pale yellow hair" ],
-                uncommonHair: [ "Straight gray hair", "Curly gray hair", "Kinky gray hair",
-                    "Straight pale yellow hair", "Curly pale yellow hair", "Kinky pale yellow hair",
-                    "Straight silver hair", "Curly silver hair", "Kinky silver hair",
-                    "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
-                    //Common Human hair
-                    "Straight pale red hair", "Straight pale blond hair", "Straight pale brown hair", "Straight pale black hair",
-                    "Curly pale red hair", "Curly pale blond hair", "Curly pale brown hair", "Curly pale black hair",
-                    "Kinky pale red hair", "Kinky pale blond hair", "Kinky pale brown hair", "Kinky pale black hair",
-                    //Common High Elf hair
-                    "Straight pale black hair", "Curly pale black hair", "Kinky pale black hair",
-                    "Straight pale white hair", "Curly pale white hair", "Kinky pale white hair",
-                    "Straight pale silver hair", "Curly pale silver hair", "Kinky pale silver hair",
-                    "Straight very pale gold hair", "Curly very pale gold hair", "Kinky very pale gold hair" ],
-                rareHair: [
-                    //Uncommon Human hair
-                    "Bald",
-                    //Uncommon High Elf hair
-                    "Straight pale black hair with silvery hues",
-                        "Curly pale black hair with silvery hues", "Kinky pale black hair with silvery hues",
-                    "Straight pale black hair with blond hues", "Curly pale black hair with blond hues", "Kinky pale black hair with blond hues",
-                    "Straight pale black hair with copper hues", "Curly pale black hair with copper hues", "Kinky pale black hair with copper hues",
-                    "Straight pale white hair with silvery hues", "Curly pale white hair with silvery hues",
-                        "Kinky pale white hair with silvery hues",
-                    "Straight pale white hair with blond hues", "Curly pale white hair with blond hues", "Kinky pale white hair with blond hues",
-                    "Straight pale white hair with copper hues", "Curly pale white hair with copper hues", "Kinky pale white hair with copper hues",
-                    "Straight pale silver hair with silvery hues", "Curly pale silver hair with silvery hues",
-                        "Kinky pale silver hair with silvery hues",
-                    "Straight pale silver hair with blond hues", "Curly pale silver hair with blond hues", "Kinky pale silver hair with blond hues",
-                    "Straight pale silver hair with copper hues", "Curly pale silver hair with copper hues",
-                        "Kinky pale silver hair with copper hues",
-                    "Straight very pale gold hair with silvery hues", "Curly very pale gold hair with silvery hues",
-                        "Kinky very pale gold hair with silvery hues",
-                    "Straight very pale gold hair with blond hues",  "Curly very pale gold hair with blond hues",
-                        "Kinky very pale gold hair with blond hues",
-                    "Straight very pale gold hair with copper hues", "Curly very pale gold hair with copper hues",
-                        "Kinky very pale gold hair with copper hues" ],
+                uncommonHair: new[] { "Straight gray hair", "Curly gray hair", "Kinky gray hair",
+                        "Straight pale yellow hair", "Curly pale yellow hair", "Kinky pale yellow hair",
+                        "Straight silver hair", "Curly silver hair", "Kinky silver hair",
+                        "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair", }
+                    .Concat(reusableAppearances[CreatureConstants.Human][Rarity.Common][AppearanceCategory.Hair])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Hair]),
+                rareHair: reusableAppearances[CreatureConstants.Human][Rarity.Uncommon][AppearanceCategory.Hair]
+                    .Concat(reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Hair])
+                    .Concat(reusableAppearances[CreatureConstants.Human][Rarity.Rare][AppearanceCategory.Hair])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_High][Rarity.Rare][AppearanceCategory.Hair]),
                 allOther: ["Pointed ears"]);
             //Source: https://www.d20srd.org/srd/monsters/elf.htm
             //https://forgottenrealms.fandom.com/wiki/Grey_elf
@@ -2361,28 +2374,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allOther: ["Pointed ears"]);
             //Source: https://www.d20srd.org/srd/monsters/elf.htm
             appearances[CreatureConstants.Elf_Half] = GetWeightedAppearances(
-                commonSkin: [ 
-                    //Common High Elf skin
-                    //Common Human skin
-                    "Dark brown skin", "Brown skin", "Light brown skin",
-                    "Dark tan skin", "Tan skin", "Light tan skin",
-                    "Pink skin", "White skin", "Pale white skin",
-                    "Brown skin", "Tan skin", "White skin", "Pink skin",
-                    "Light brown skin", "Light tan skin", "Pale white skin" ],
-                uncommonSkin: [ 
-                    //Uncommon High Elf skin
-                    //Uncommon Human skin
-                    //Common Drow skin
-                    //Common Grey Elf skin
-                    //Common Wild Elf skin
-                    //Common Wood Elf skin
-                    "Pale grey skin",
-                    "Dark brown skin", "Dark tan skin",
-                    "Copper skin", "Tan skin",
-                    "Light brown skin", "Brown skin", "Dark brown skin",
-                    "Black skin", "Dark blue skin", "Gray skin", "Dark gray skin", "Jet-black skin", "Obsidian-colored skin", "Blue skin",
-                        "Gray-blue skin", "Black-blue skin"
-                ],
+                commonSkin: reusableAppearances[CreatureConstants.Human][Rarity.Common][AppearanceCategory.Skin]
+                    .Concat(reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Skin]),
+                uncommonSkin: reusableAppearances[CreatureConstants.Human][Rarity.Uncommon][AppearanceCategory.Skin]
+                    .Concat(reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Skin])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Drow][Rarity.Common][AppearanceCategory.Skin])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Gray][Rarity.Common][AppearanceCategory.Skin])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Wild][Rarity.Common][AppearanceCategory.Skin])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Wood][Rarity.Common][AppearanceCategory.Skin]),
                 rareSkin: [
                     //Rare High Elf skin
                     //Rare Human skin
@@ -2552,39 +2551,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 allOther: ["Pointed ears"]);
             //Source: https://forgottenrealms.fandom.com/wiki/High_elf
             appearances[CreatureConstants.Elf_High] = GetWeightedAppearances(
-                commonSkin: [ "Brown skin", "Tan skin", "White skin", "Pink skin",
-                    "Light brown skin", "Light tan skin", "Pale white skin" ],
-                uncommonSkin: ["Dark brown skin", "Dark tan skin"],
-                commonHair: [ "Straight black hair", "Curly black hair", "Kinky black hair",
-                    "Straight white hair", "Curly white hair", "Kinky white hair",
-                    "Straight silver hair", "Curly silver hair", "Kinky silver hair",
-                    "Straight pale gold hair", "Curly pale gold hair", "Kinky pale gold hair" ],
-                uncommonHair: [ "Straight black hair with silvery hues",
-                        "Curly black hair with silvery hues", "Kinky black hair with silvery hues",
-                    "Straight black hair with blond hues", "Curly black hair with blond hues", "Kinky black hair with blond hues",
-                    "Straight black hair with copper hues", "Curly black hair with copper hues", "Kinky black hair with copper hues",
-                    "Straight white hair with silvery hues", "Curly white hair with silvery hues",
-                        "Kinky white hair with silvery hues",
-                    "Straight white hair with blond hues", "Curly white hair with blond hues", "Kinky white hair with blond hues",
-                    "Straight white hair with copper hues", "Curly white hair with copper hues", "Kinky white hair with copper hues",
-                    "Straight silver hair with silvery hues", "Curly silver hair with silvery hues",
-                        "Kinky silver hair with silvery hues",
-                    "Straight silver hair with blond hues", "Curly silver hair with blond hues", "Kinky silver hair with blond hues",
-                    "Straight silver hair with copper hues", "Curly silver hair with copper hues",
-                        "Kinky silver hair with copper hues",
-                    "Straight pale gold hair with silvery hues", "Curly pale gold hair with silvery hues",
-                        "Kinky pale gold hair with silvery hues",
-                    "Straight pale gold hair with blond hues",  "Curly pale gold hair with blond hues",
-                        "Kinky pale gold hair with blond hues",
-                    "Straight pale gold hair with copper hues", "Curly pale gold hair with copper hues",
-                        "Kinky pale gold hair with copper hues" ],
-                commonEyes: ["Green eyes"],
-                uncommonEyes: ["Golden eyes", "Blue eyes", "Light Blue eyes", "Green eyes speckled with gold"],
-                rareEyes: [ "Violet eyes", "Blue eyes speckled with gold", "Light Blue eyes speckled with gold", "Violet eyes speckled with gold",
-                    "Solid green eyes, lacking pupils", "Solid golden eyes, lacking pupils", "Solid blue eyes, lacking pupils", "Solid light blue eyes, lacking pupils",
-                    "Solid violet eyes, lacking pupils", "Solid green eyes speckled with gold, lacking pupils", "Solid golden eyes speckled with gold, lacking pupils",
-                    "Solid blue eyes speckled with gold, lacking pupils", "Solid light blue eyes speckled with gold, lacking pupils",
-                    "Solid violet eyes speckled with gold, lacking pupils" ],
+                commonSkin: reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Skin],
+                uncommonSkin: reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Skin],
+                rareSkin: reusableAppearances[CreatureConstants.Elf_High][Rarity.Rare][AppearanceCategory.Skin],
+                commonHair: reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Hair],
+                uncommonHair: reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Hair],
+                rareHair: reusableAppearances[CreatureConstants.Elf_High][Rarity.Rare][AppearanceCategory.Hair],
+                commonEyes: reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Eyes],
+                uncommonEyes: reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Eyes],
+                rareEyes: reusableAppearances[CreatureConstants.Elf_High][Rarity.Rare][AppearanceCategory.Eyes],
                 allOther: ["Pointed ears"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Wild_elf
             //https://www.d20srd.org/srd/monsters/elf.htm
@@ -2598,22 +2573,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Straight silvery-white hair", "Curly silvery-white hair", "Kinky silvery-white hair",
                     "Straight gray hair", "Curly gray hair", "Kinky gray hair",
                     "Straight white hair", "Curly white hair", "Kinky white hair" ],
-                commonEyes: [
-                    //Common High Elf eyes
-                    "Green eyes"
-                ],
-                uncommonEyes: [
-                    //Uncommon High Elf eyes
-                    "Golden eyes", "Blue eyes", "Light Blue eyes", "Green eyes speckled with gold"
-                ],
-                rareEyes: [
-                    //Rare High Elf eyes
-                    "Violet eyes", "Blue eyes speckled with gold", "Light Blue eyes speckled with gold", "Violet eyes speckled with gold",
-                    "Solid green eyes, lacking pupils", "Solid golden eyes, lacking pupils", "Solid blue eyes, lacking pupils", "Solid light blue eyes, lacking pupils",
-                    "Solid violet eyes, lacking pupils", "Solid green eyes speckled with gold, lacking pupils", "Solid golden eyes speckled with gold, lacking pupils",
-                    "Solid blue eyes speckled with gold, lacking pupils", "Solid light blue eyes speckled with gold, lacking pupils",
-                    "Solid violet eyes speckled with gold, lacking pupils"
-                ],
+                commonEyes: reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Eyes],
+                uncommonEyes: reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Eyes],
+                rareEyes: reusableAppearances[CreatureConstants.Elf_High][Rarity.Rare][AppearanceCategory.Eyes],
                 allOther: ["Pointed ears"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Wood_elf
             //https://www.d20srd.org/srd/monsters/elf.htm
@@ -5403,6 +5365,51 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "start 2 and end 1",
                 "start 2 and end 2",
             }));
+        }
+
+        [Test]
+        public void ReusableAppearnces_CombinedMatch_HighElf()
+        {
+            Assert.That(reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Skin],
+                Is.EquivalentTo(new[] { "Brown skin", "Tan skin", "White skin", "Pink skin",
+                    "Light brown skin", "Light tan skin", "Pale white skin" }));
+            Assert.That(reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Skin],
+                Is.EquivalentTo(new[] { "Dark brown skin", "Dark tan skin" }));
+            Assert.That(reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Hair],
+                Is.EquivalentTo(new[] { "Straight black hair", "Curly black hair", "Kinky black hair",
+                    "Straight white hair", "Curly white hair", "Kinky white hair",
+                    "Straight silver hair", "Curly silver hair", "Kinky silver hair",
+                    "Straight pale gold hair", "Curly pale gold hair", "Kinky pale gold hair" }));
+            Assert.That(reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Hair],
+                Is.EquivalentTo(new[] { "Straight black hair with silvery hues",
+                        "Curly black hair with silvery hues", "Kinky black hair with silvery hues",
+                    "Straight black hair with blond hues", "Curly black hair with blond hues", "Kinky black hair with blond hues",
+                    "Straight black hair with copper hues", "Curly black hair with copper hues", "Kinky black hair with copper hues",
+                    "Straight white hair with silvery hues", "Curly white hair with silvery hues",
+                        "Kinky white hair with silvery hues",
+                    "Straight white hair with blond hues", "Curly white hair with blond hues", "Kinky white hair with blond hues",
+                    "Straight white hair with copper hues", "Curly white hair with copper hues", "Kinky white hair with copper hues",
+                    "Straight silver hair with silvery hues", "Curly silver hair with silvery hues",
+                        "Kinky silver hair with silvery hues",
+                    "Straight silver hair with blond hues", "Curly silver hair with blond hues", "Kinky silver hair with blond hues",
+                    "Straight silver hair with copper hues", "Curly silver hair with copper hues",
+                        "Kinky silver hair with copper hues",
+                    "Straight pale gold hair with silvery hues", "Curly pale gold hair with silvery hues",
+                        "Kinky pale gold hair with silvery hues",
+                    "Straight pale gold hair with blond hues",  "Curly pale gold hair with blond hues",
+                        "Kinky pale gold hair with blond hues",
+                    "Straight pale gold hair with copper hues", "Curly pale gold hair with copper hues",
+                        "Kinky pale gold hair with copper hues" }));
+            Assert.That(reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Eyes],
+                Is.EquivalentTo(new[] { "Green eyes" }));
+            Assert.That(reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Eyes],
+                Is.EquivalentTo(new[] { "Golden eyes", "Blue eyes", "Light Blue eyes", "Green eyes speckled with gold" }));
+            Assert.That(reusableAppearances[CreatureConstants.Elf_High][Rarity.Rare][AppearanceCategory.Eyes],
+                Is.EquivalentTo(new[] { "Violet eyes", "Blue eyes speckled with gold", "Light Blue eyes speckled with gold", "Violet eyes speckled with gold",
+                    "Solid green eyes, lacking pupils", "Solid golden eyes, lacking pupils", "Solid blue eyes, lacking pupils", "Solid light blue eyes, lacking pupils",
+                    "Solid violet eyes, lacking pupils", "Solid green eyes speckled with gold, lacking pupils", "Solid golden eyes speckled with gold, lacking pupils",
+                    "Solid blue eyes speckled with gold, lacking pupils", "Solid light blue eyes speckled with gold, lacking pupils",
+                    "Solid violet eyes speckled with gold, lacking pupils" }));
         }
     }
 }
