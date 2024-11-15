@@ -2382,19 +2382,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     .Concat(reusableAppearances[CreatureConstants.Elf_Gray][Rarity.Common][AppearanceCategory.Skin])
                     .Concat(reusableAppearances[CreatureConstants.Elf_Wild][Rarity.Common][AppearanceCategory.Skin])
                     .Concat(reusableAppearances[CreatureConstants.Elf_Wood][Rarity.Common][AppearanceCategory.Skin]),
-                rareSkin: [
-                    //Rare High Elf skin
-                    //Rare Human skin
-                    //Uncommon Drow skin
-                    //Uncommon Grey Elf skin
-                    //Uncommon Wild Elf skin
-                    //Uncommon Wood Elf skin
-                    //Rare Drow skin
-                    //Rare Grey Elf skin
-                    //Rare Wild Elf skin
-                    //Rare Wood Elf skin
-                    "White (albino) skin"
-                ],
+                rareSkin: reusableAppearances[CreatureConstants.Human][Rarity.Rare][AppearanceCategory.Skin]
+                    .Concat(reusableAppearances[CreatureConstants.Elf_High][Rarity.Rare][AppearanceCategory.Skin])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Drow][Rarity.Uncommon][AppearanceCategory.Skin])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Gray][Rarity.Uncommon][AppearanceCategory.Skin])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Wild][Rarity.Uncommon][AppearanceCategory.Skin])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Wood][Rarity.Uncommon][AppearanceCategory.Skin])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Drow][Rarity.Rare][AppearanceCategory.Skin])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Gray][Rarity.Rare][AppearanceCategory.Skin])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Wild][Rarity.Rare][AppearanceCategory.Skin])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Wood][Rarity.Rare][AppearanceCategory.Skin]),
                 commonHair: [ 
                     //Common High Elf hair
                     //Common Human hair
