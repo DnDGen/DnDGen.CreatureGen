@@ -17,40 +17,41 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         protected override string tableName => TableNameConstants.Collection.Appearances;
 
         private Dictionary<string, Dictionary<Rarity, IEnumerable<string>>> creatureAppearances;
-        private Dictionary<string, Dictionary<Rarity, Dictionary<AppearanceCategory, IEnumerable<string>>>> reusableAppearances;
+        private Dictionary<string, Dictionary<AppearanceCategory, Dictionary<Rarity, IEnumerable<string>>>> reusableAppearances;
         private ICollectionSelector collectionSelector;
 
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
-            creatureAppearances = GetCreatureAppearances();
-            reusableAppearances = GetReusableCreatureAppearances();
             collectionSelector = GetNewInstanceOf<ICollectionSelector>();
+
+            reusableAppearances = GetReusableCreatureAppearances();
+            creatureAppearances = GetCreatureAppearances();
         }
 
-        private Dictionary<string, Dictionary<Rarity, Dictionary<AppearanceCategory, IEnumerable<string>>>> GetReusableCreatureAppearances()
+        private Dictionary<string, Dictionary<AppearanceCategory, Dictionary<Rarity, IEnumerable<string>>>> GetReusableCreatureAppearances()
         {
-            var appearances = new Dictionary<string, Dictionary<Rarity, Dictionary<AppearanceCategory, IEnumerable<string>>>>
+            var appearances = new Dictionary<string, Dictionary<AppearanceCategory, Dictionary<Rarity, IEnumerable<string>>>>
             {
                 [CreatureConstants.Elf_High] = InitializeReusableAppearance(),
                 [CreatureConstants.Horse_Heavy] = InitializeReusableAppearance(),
                 [CreatureConstants.Human] = InitializeReusableAppearance(),
             };
 
-            appearances[CreatureConstants.Human][Rarity.Common][AppearanceCategory.Skin] = [
+            appearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common] = [
                 "Dark brown skin", "Brown skin", "Light brown skin",
                 "Dark tan skin", "Tan skin", "Light tan skin",
                 "Pink skin", "White skin", "Pale white skin"
             ];
-            appearances[CreatureConstants.Human][Rarity.Common][AppearanceCategory.Hair] = [
+            appearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Common] = [
                 "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
                 "Curly red hair", "Curly blond hair", "Curly brown hair", "Curly black hair",
                 "Kinky red hair", "Kinky blond hair", "Kinky brown hair", "Kinky black hair"
             ];
-            appearances[CreatureConstants.Human][Rarity.Common][AppearanceCategory.Eyes] = ["Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes"];
-            appearances[CreatureConstants.Human][Rarity.Uncommon][AppearanceCategory.Hair] = ["Bald"];
+            appearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Common] = ["Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes"];
+            appearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Uncommon] = ["Bald"];
 
-            appearances[CreatureConstants.Horse_Heavy][Rarity.Common][AppearanceCategory.Skin] = [
+            appearances[CreatureConstants.Horse_Heavy][AppearanceCategory.Skin][Rarity.Common] = [
                 "Belgian Draught", "Shire horse", "Clydesdale horse", "Percheron", "Suffolk Punch",
                 "American Cream Draft", "Ardennais", "Haflinger", "Irish Draught", "Dutch Draft", "Friesian horse", "Fjord horse", "Russian Heavy Draft",
                 "Boulonnais horse", "Galineers Cob", "Australian Draught", "North Swedish Horse", "Noriker", "American Belgian Draft", "Breton horse", "Jutland",
@@ -124,70 +125,168 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Tobiano (White/golden cow-patterned coat; White mane and tail)"
             ];
 
-            reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Skin] = [
+            reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Skin][Rarity.Common] = [
                 "Brown skin", "Tan skin", "White skin", "Pink skin",
                 "Light brown skin", "Light tan skin", "Pale white skin"
             ];
-            reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Skin] = [
+            reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Skin][Rarity.Uncommon] = [
                 "Dark brown skin", "Dark tan skin"
             ];
-            reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Hair] = [
+            reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Hair][Rarity.Common] = [
                 "Straight black hair", "Curly black hair", "Kinky black hair",
                 "Straight white hair", "Curly white hair", "Kinky white hair",
                 "Straight silver hair", "Curly silver hair", "Kinky silver hair",
                 "Straight pale gold hair", "Curly pale gold hair", "Kinky pale gold hair"
             ];
-            reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Hair] = Combine(" ",
-                reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Hair],
+            reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Hair][Rarity.Uncommon] = Combine(" ",
+                reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Hair][Rarity.Common],
                 ["with silvery hues", "with blond hues", "with copper hues"]);
-            reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Eyes] = ["Green eyes"];
-            reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Eyes] = new[] { "Golden eyes", "Blue eyes", "Light Blue eyes" }
-                .Concat(reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Eyes]
+            reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Eyes][Rarity.Common] = ["Green eyes"];
+            reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Eyes][Rarity.Uncommon] = new[] { "Golden eyes", "Blue eyes", "Light Blue eyes" }
+                .Concat(reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Eyes][Rarity.Common]
                     .Select(e => $"{e} speckled with gold"));
-            reusableAppearances[CreatureConstants.Elf_High][Rarity.Rare][AppearanceCategory.Eyes] = new[]
+            reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Eyes][Rarity.Rare] = new[]
             {
                 "Violet eyes",
                 "Violet eyes speckled with gold",
                 "Solid violet eyes, lacking puils",
                 "Solid violet eyes speckled with gold, lacking puils",
             }
-                .Concat(reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Eyes]
+                .Concat(reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Eyes][Rarity.Uncommon]
                     .Where(e => !e.Contains("speckled"))
                     .Select(e => $"{e} speckled with gold"))
-                .Concat(reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Eyes]
+                .Concat(reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Eyes][Rarity.Common]
                     .Select(LowercaseFirstCharacter)
                     .Select(e => $"Solid {e}, lacking pupils"))
-                .Concat(reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Eyes]
+                .Concat(reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Eyes][Rarity.Uncommon]
                     .Select(LowercaseFirstCharacter)
                     .Select(e => $"Solid {e}, lacking pupils"));
+
+            reusableAppearances[CreatureConstants.Elf_Gray][AppearanceCategory.Skin][Rarity.Common] = ["Pale grey skin"];
+            reusableAppearances[CreatureConstants.Elf_Gray][AppearanceCategory.Hair][Rarity.Common] = ["Straight silver hair", "Curly silver hair", "Kinky silver hair"];
+            reusableAppearances[CreatureConstants.Elf_Gray][AppearanceCategory.Hair][Rarity.Uncommon] =
+                ["Straight pale-golden hair", "Curly pale-golden hair", "Kinky pale-golden hair"];
+            reusableAppearances[CreatureConstants.Elf_Gray][AppearanceCategory.Eyes][Rarity.Common] = ["Amber eyes"];
+            reusableAppearances[CreatureConstants.Elf_Gray][AppearanceCategory.Eyes][Rarity.Uncommon] = ["Violet eyes"];
+
+            reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Skin][Rarity.Common] = [
+                "Black skin", "Dark blue skin", "Gray skin", "Dark gray skin", "Jet-black skin", "Obsidian-colored skin", "Blue skin",
+                "Gray-blue skin", "Black-blue skin" ];
+            reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Skin][Rarity.Rare] = ["White (albino) skin"];
+            reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Hair][Rarity.Common] = [
+                "Straight stark white hair", "Curly stark white hair", "Kinky stark white hair",
+                "Straight pale yellow hair", "Curly pale yellow hair", "Kinky pale yellow hair" ];
+            reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Hair][Rarity.Uncommon] = new[] {
+                    "Straight gray hair", "Curly gray hair", "Kinky gray hair",
+                    "Straight pale yellow hair", "Curly pale yellow hair", "Kinky pale yellow hair",
+                    "Straight silver hair", "Curly silver hair", "Kinky silver hair",
+                    "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair", }
+                .Concat(reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Common])
+                .Concat(reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Hair][Rarity.Common]);
+            reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Hair][Rarity.Rare] =
+                reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Uncommon]
+                    .Concat(reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Hair][Rarity.Uncommon])
+                    .Concat(reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Rare])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Hair][Rarity.Rare]);
+            reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Eyes][Rarity.Common] = ["Bright red eyes", "Vivid red eyes"];
+            reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Eyes][Rarity.Uncommon] = [
+                "Pale white-blue eyes", "Pale white-lilac eyes", "Pale white-pink eyes", "Pale white-silver eyes", "Purple eyes", "Blue eyes"];
+            reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Eyes][Rarity.Rare] = [
+                "Green eyes", "Brown eyes", "Black eyes", "Amber eyes", "Rose-hued eyes"];
+
+            reusableAppearances[CreatureConstants.Elf_Wild][AppearanceCategory.Skin][Rarity.Common] = ["Light brown skin", "Brown skin", "Dark brown skin"];
+            reusableAppearances[CreatureConstants.Elf_Wild][AppearanceCategory.Hair][Rarity.Common] = [
+                "Straight black hair", "Curly black hair", "Kinky black hair",
+                "Straight dark brown hair", "Curly dark brown hair", "Kinky dark brown hair",
+                "Straight brown hair", "Curly brown hair", "Kinky brown hair",
+                "Straight light brown hair", "Curly light brown hair", "Kinky light brown hair"
+            ];
+            reusableAppearances[CreatureConstants.Elf_Wild][AppearanceCategory.Hair][Rarity.Uncommon] = [
+                "Straight silver hair", "Curly silver hair", "Kinky silver hair",
+                "Straight silvery-white hair", "Curly silvery-white hair", "Kinky silvery-white hair",
+                "Straight gray hair", "Curly gray hair", "Kinky gray hair",
+                "Straight white hair", "Curly white hair", "Kinky white hair"];
+            reusableAppearances[CreatureConstants.Elf_Wild][AppearanceCategory.Eyes] = reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Eyes];
+
+            reusableAppearances[CreatureConstants.Elf_Wood][AppearanceCategory.Skin][Rarity.Common] = ["Copper skin", "Tan skin"];
+            reusableAppearances[CreatureConstants.Elf_Wood][AppearanceCategory.Hair][Rarity.Common] = [
+                "Straight black hair", "Straight light brown hair", "Straight brown hair",
+                "Curly black hair", "Curly light brown hair", "Curly brown hair",
+                "Kinky black hair", "Kinky light brown hair", "Kinky brown hair"
+            ];
+            reusableAppearances[CreatureConstants.Elf_Wood][AppearanceCategory.Hair][Rarity.Uncommon] = [
+                "Straight yellow hair", "Straight blond hair", "Straight copper-red hair",
+                "Curly yellow hair", "Curly blond hair", "Curly copper-red hair",
+                "Kinky yellow hair", "Kinky blond hair", "Kinky copper-red hair"];
+            reusableAppearances[CreatureConstants.Elf_Wood][AppearanceCategory.Eyes][Rarity.Common] = ["Green eyes", "Brown eyes", "Hazel eyes"];
+
+            reusableAppearances[CreatureConstants.Dwarf_Deep][AppearanceCategory.Skin][Rarity.Common] = [
+                "Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin", "Very dark tan skin", "Very dark brown skin"];
+            reusableAppearances[CreatureConstants.Dwarf_Deep][AppearanceCategory.Skin][Rarity.Uncommon] = [
+                "Tan skin with a reddish tinge", "Brown skin with a reddish tinge", "Dark tan skin with a reddish tinge",
+                "Dark brown skin with a reddish tinge", "Very dark tan skin with a reddish tinge", "Very dark brown skin with a reddish tinge"];
+            reusableAppearances[CreatureConstants.Dwarf_Deep][AppearanceCategory.Hair][Rarity.Common] = [
+                "Bright red hair", "Straw blond hair", "Muted red hair", "Yellow hair", "Bright yellow hair", "Muted yellow hair", "Brown hair"
+            ];
+            reusableAppearances[CreatureConstants.Dwarf_Deep][AppearanceCategory.Eyes][Rarity.Common] = ["Washed-out blue eyes"];
+            reusableAppearances[CreatureConstants.Dwarf_Deep][AppearanceCategory.Eyes][Rarity.Uncommon] =
+                reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Common]
+                    .Select(LowercaseFirstCharacter)
+                    .Select(e => $"Washed-out {e}");
+            reusableAppearances[CreatureConstants.Dwarf_Deep][AppearanceCategory.Eyes][Rarity.Rare] =
+                reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Uncommon]
+                        .Select(LowercaseFirstCharacter)
+                        .Select(e => $"Washed-out {e}")
+                    .Concat(reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Rare]
+                        .Select(LowercaseFirstCharacter)
+                        .Select(e => $"Washed-out {e}"));
+
+            reusableAppearances[CreatureConstants.Dwarf_Duergar][AppearanceCategory.Skin][Rarity.Common] = [
+                "Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin", "Very dark tan skin", "Very dark brown skin"];
+            reusableAppearances[CreatureConstants.Dwarf_Duergar][AppearanceCategory.Hair][Rarity.Common] = ["Bald"];
+            reusableAppearances[CreatureConstants.Dwarf_Duergar][AppearanceCategory.Hair][Rarity.Uncommon] = ["Black hair", "Gray hair", "Brown hair"];
+            reusableAppearances[CreatureConstants.Dwarf_Duergar][AppearanceCategory.Eyes] = reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes];
+
+            reusableAppearances[CreatureConstants.Dwarf_Hill][AppearanceCategory.Skin][Rarity.Common] = [
+                "Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin", "Very dark tan skin", "Very dark brown skin"];
+            reusableAppearances[CreatureConstants.Dwarf_Hill][AppearanceCategory.Hair][Rarity.Common] = ["Black hair", "Gray hair", "Brown hair"];
+            reusableAppearances[CreatureConstants.Dwarf_Hill][AppearanceCategory.Eyes] = reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes];
+
+            reusableAppearances[CreatureConstants.Dwarf_Hill][AppearanceCategory.Skin][Rarity.Common] = [
+                "Lightly tan skin", "Light brown skin", "Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin"];
+            reusableAppearances[CreatureConstants.Dwarf_Hill][AppearanceCategory.Hair][Rarity.Common] = ["Dark gray hair", "Light gray hair", "Light brown hair"];
+            reusableAppearances[CreatureConstants.Dwarf_Hill][AppearanceCategory.Eyes] = reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes];
 
             return appearances;
         }
 
-        private Dictionary<Rarity, Dictionary<AppearanceCategory, IEnumerable<string>>> InitializeReusableAppearance()
+        private Dictionary<AppearanceCategory, Dictionary<Rarity, IEnumerable<string>>> InitializeReusableAppearance()
         {
-            return new Dictionary<Rarity, Dictionary<AppearanceCategory, IEnumerable<string>>>
+            return new Dictionary<AppearanceCategory, Dictionary<Rarity, IEnumerable<string>>>
             {
-                [Rarity.Common] = new Dictionary<AppearanceCategory, IEnumerable<string>>
+                [AppearanceCategory.Skin] = new Dictionary<Rarity, IEnumerable<string>>
                 {
-                    [AppearanceCategory.Skin] = [],
-                    [AppearanceCategory.Hair] = [],
-                    [AppearanceCategory.Eyes] = [],
-                    [AppearanceCategory.Other] = [],
+                    [Rarity.Common] = [],
+                    [Rarity.Uncommon] = [],
+                    [Rarity.Rare] = [],
                 },
-                [Rarity.Uncommon] = new Dictionary<AppearanceCategory, IEnumerable<string>>
+                [AppearanceCategory.Hair] = new Dictionary<Rarity, IEnumerable<string>>
                 {
-                    [AppearanceCategory.Skin] = [],
-                    [AppearanceCategory.Hair] = [],
-                    [AppearanceCategory.Eyes] = [],
-                    [AppearanceCategory.Other] = [],
+                    [Rarity.Common] = [],
+                    [Rarity.Uncommon] = [],
+                    [Rarity.Rare] = [],
                 },
-                [Rarity.Rare] = new Dictionary<AppearanceCategory, IEnumerable<string>>
+                [AppearanceCategory.Eyes] = new Dictionary<Rarity, IEnumerable<string>>
                 {
-                    [AppearanceCategory.Skin] = [],
-                    [AppearanceCategory.Hair] = [],
-                    [AppearanceCategory.Eyes] = [],
-                    [AppearanceCategory.Other] = [],
+                    [Rarity.Common] = [],
+                    [Rarity.Uncommon] = [],
+                    [Rarity.Rare] = [],
+                },
+                [AppearanceCategory.Other] = new Dictionary<Rarity, IEnumerable<string>>
+                {
+                    [Rarity.Common] = [],
+                    [Rarity.Uncommon] = [],
+                    [Rarity.Rare] = [],
                 },
             };
         }
@@ -371,21 +470,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 uncommonOther: ["A light covering of feathers on the shoulders, where an angel's wings might sprout"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Aboleth
             appearances[CreatureConstants.Aboleth] = GetWeightedAppearances(
-                allEyes: new[] { "Three red eyes" },
+                commonEyes: new[] { "Three red eyes" },
                 commonSkin: new[] { "Orange-pink underbelly, sea-green skin topside" },
                 uncommonSkin: new[] { "Orange underbelly, sea-green skin topside", "Pink underbelly, sea-green skin topside",
                     "Orange-pink underbelly, green skin topside", "Orange-pink underbelly, blue skin topside" },
                 rareSkin: new[] { "Orange underbelly, green skin topside", "Pink underbelly, green skin topside",
                     "Orange underbelly, blue skin topside", "Pink underbelly, blue skin topside" },
-                allOther: new[] { "Resembles a bizarre eel" });
+                commonOther: new[] { "Resembles a bizarre eel" });
             //Source: https://forgottenrealms.fandom.com/wiki/Achaierai
             appearances[CreatureConstants.Achaierai] = GetWeightedAppearances(
-                allSkin: new[] { "Shining metallic blue-gray legs, claws, and beak" },
+                commonSkin: new[] { "Shining metallic blue-gray legs, claws, and beak" },
                 commonHair: new[] { "Bright red, soft feathers on its crest, brown soft feathers on its body" },
                 rareHair: new[] { "Dim teal, soft feathers on its crest, brown soft feathers on its body",
                     "Shadowed gold, soft feathers on its crest, brown soft feathers on its body",
                     "Burnt russet, soft feathers on its crest, brown soft feathers on its body" },
-                allOther: new[] { "Resembles a quadruped, plump quail" });
+                commonOther: new[] { "Resembles a quadruped, plump quail" });
             //Source: https://forgottenrealms.fandom.com/wiki/Allip
             appearances[CreatureConstants.Allip][Rarity.Common] =
                 ["Spectral variations of the person it once was, with nightmarish, warped features befitting of the madness that possessed it. Its lower portions trail away into a dark fog."];
@@ -394,10 +493,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 ["Tawny hair/fur. Lion body, falcon wings."];
             //Source: https://forgottenrealms.fandom.com/wiki/Astral_deva
             appearances[CreatureConstants.Angel_AstralDeva] = GetWeightedAppearances(
-                allSkin: new[] { "Golden skin" },
-                allHair: new[] { "Fair hair", "Golden hair" },
-                allEyes: new[] { "Amber eyes" },
-                allOther: new[] { "White wings tinted with gold" });
+                commonSkin: new[] { "Golden skin" },
+                commonHair: new[] { "Fair hair", "Golden hair" },
+                commonEyes: new[] { "Amber eyes" },
+                commonOther: new[] { "White wings tinted with gold" });
             //Source: https://forgottenrealms.fandom.com/wiki/Planetar
             appearances[CreatureConstants.Angel_Planetar] = GetWeightedAppearances(
                 commonSkin: new[] { "Opalescent emerald skin" },
@@ -405,7 +504,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonHair: new[] { "Bald; Opalescent white feathers tinted with gold on wings", "Bald; White feathers tinted with gold on wings" },
                 uncommonHair: new[] { "Long, flowing blue hair; Opalescent white feathers tinted with gold on wings",
                     "Long, flowing blue hair; White feathers tinted with gold on wings" },
-                allEyes: new[] { "Glowing blue eyes" });
+                commonEyes: new[] { "Glowing blue eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Solar
             appearances[CreatureConstants.Angel_Solar] = GetWeightedAppearances(
                 commonSkin: new[] { "Copper skin", "Silver skin", "Golden skin" },
@@ -415,7 +514,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Silver hair; White-feathered wings", "Silver hair; Coppery-golden-feathered wings",
                     "Golden hair; White-feathered wings", "Golden hair; Coppery-golden-feathered wings",
                     "Brass hair; White-feathered wings", "Brass hair; Coppery-golden-feathered wings" },
-                allEyes: new[] { "Radiant topaz eyes" });
+                commonEyes: new[] { "Radiant topaz eyes" });
             //Source: https://www.d20srd.org/srd/monsters/animatedObject.htm
             //https://forgottenrealms.fandom.com/wiki/Animated_object
             appearances[CreatureConstants.AnimatedObject_Colossal][Rarity.Common] = new[] { "Candlestick", "Candelabra", "Plate", "Cup", "Tea Pot", "Bath Tub" };
@@ -651,13 +750,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.AnimatedObject_Tiny_Wooden][Rarity.Common] = ["Clock", "Feather Duster", "Broom", "Bucket", "Barrel"];
             //Source: https://forgottenrealms.fandom.com/wiki/Ankheg
             appearances[CreatureConstants.Ankheg] = GetWeightedAppearances(
-                allSkin: ["Brown skin", "Yellow skin", "Green skin"],
-                allEyes: ["Black eyes"]);
+                commonSkin: ["Brown skin", "Yellow skin", "Green skin"],
+                commonEyes: ["Black eyes"]);
             //Source: https://www.d20srd.org/srd/monsters/hag.htm#annis
             appearances[CreatureConstants.Annis] = GetWeightedAppearances(
-                allSkin: ["Blue-black skin, as if deeply bruised, covered in scars and blemishes"],
-                allHair: ["Black hair"],
-                allEyes: ["Dull, greenish-yellow eyes"],
+                commonSkin: ["Blue-black skin, as if deeply bruised, covered in scars and blemishes"],
+                commonHair: ["Black hair"],
+                commonEyes: ["Dull, greenish-yellow eyes"],
                 commonOther: [ "Lean with long, lanky limbs. Long, spiraling, stylized, black nails",
                     "Gnarled muscles, jutting bones, humped back, hunched shoulders. Long, spiraling, stylized, black nails",
                     "Lean with long, lanky limbs. Long, spiraling, stylized, rust-colored nails",
@@ -692,187 +791,33 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 uncommonHair: ["Grey fur", "Silver fur"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Aranea
             appearances[CreatureConstants.Aranea] = GetWeightedAppearances(
-                commonSkin: [ "Dark brown skin", "Brown skin", "Light brown skin",
-                    "Dark tan skin", "Tan skin", "Light tan skin",
-                    "Pink skin", "White skin", "Pale white skin" ],
-                uncommonSkin: [
-                    //Common Half-Elf skin
-                    "Dark brown skin", "Brown skin", "Light brown skin",
-                    "Dark tan skin", "Tan skin", "Light tan skin",
-                    "Pink skin", "White skin", "Pale white skin",
-                    "Brown skin", "Tan skin", "White skin", "Pink skin",
-                    "Light brown skin", "Light tan skin", "Pale white skin"
-                ],
-                rareSkin: [
-                    //Uncommon Half-Elf skin
-                    "Pale grey skin",
-                    "Dark brown skin", "Dark tan skin",
-                    "Copper skin", "Tan skin",
-                    "Light brown skin", "Brown skin", "Dark brown skin",
-                    "Black skin", "Dark blue skin", "Gray skin", "Dark gray skin", "Jet-black skin", "Obsidian-colored skin", "Blue skin",
-                        "Gray-blue skin", "Black-blue skin",
-                    //Rare Half-Elf skin
-                    "White (albino) skin",
-                    //Common Drow skin
-                    "Black skin", "Dark blue skin", "Gray skin", "Dark gray skin", "Jet-black skin", "Obsidian-colored skin", "Blue skin",
-                    "Gray-blue skin", "Black-blue skin",
-                    //Rare Drow skin
-                    "White (albino) skin"
-                ],
-                commonHair: ["Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
-                    "Curly red hair", "Curly blond hair", "Curly brown hair", "Curly black hair",
-                    "Kinky red hair", "Kinky blond hair", "Kinky brown hair", "Kinky black hair"],
-                uncommonHair: [ "Bald",
-                    //Common Half-Elf hair
-                    "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
-                    "Curly red hair", "Curly blond hair", "Curly brown hair", "Curly black hair",
-                    "Kinky red hair", "Kinky blond hair", "Kinky brown hair", "Kinky black hair",
-                    "Straight white hair", "Curly white hair", "Kinky white hair",
-                    "Straight silver hair", "Curly silver hair", "Kinky silver hair",
-                    "Straight pale gold hair", "Curly pale gold hair", "Kinky pale gold hair"
-                ],
-                rareHair: [
-                    //Uncommon Half-Elf hair
-                    "Straight silver hair", "Curly silver hair", "Kinky silver hair",
-                    "Bald",
-                    "Straight black hair with silvery hues",
-                        "Curly black hair with silvery hues", "Kinky black hair with silvery hues",
-                    "Straight black hair with blond hues", "Curly black hair with blond hues", "Kinky black hair with blond hues",
-                    "Straight black hair with copper hues", "Curly black hair with copper hues", "Kinky black hair with copper hues",
-                    "Straight white hair with silvery hues", "Curly white hair with silvery hues",
-                        "Kinky white hair with silvery hues",
-                    "Straight white hair with blond hues", "Curly white hair with blond hues", "Kinky white hair with blond hues",
-                    "Straight white hair with copper hues", "Curly white hair with copper hues", "Kinky white hair with copper hues",
-                    "Straight silver hair with silvery hues", "Curly silver hair with silvery hues",
-                        "Kinky silver hair with silvery hues",
-                    "Straight silver hair with blond hues", "Curly silver hair with blond hues", "Kinky silver hair with blond hues",
-                    "Straight silver hair with copper hues", "Curly silver hair with copper hues",
-                        "Kinky silver hair with copper hues",
-                    "Straight pale gold hair with silvery hues", "Curly pale gold hair with silvery hues",
-                        "Kinky pale gold hair with silvery hues",
-                    "Straight pale gold hair with blond hues",  "Curly pale gold hair with blond hues",
-                        "Kinky pale gold hair with blond hues",
-                    "Straight pale gold hair with copper hues", "Curly pale gold hair with copper hues",
-                        "Kinky pale gold hair with copper hues",
-                    "Straight black hair", "Straight light brown hair", "Straight brown hair",
-                    "Curly black hair", "Curly light brown hair", "Curly brown hair",
-                    "Kinky black hair", "Kinky light brown hair", "Kinky brown hair",
-                    "Straight black hair", "Curly black hair", "Kinky black hair",
-                    "Straight dark brown hair", "Curly dark brown hair", "Kinky dark brown hair",
-                    "Straight brown hair", "Curly brown hair", "Kinky brown hair",
-                    "Straight light brown hair", "Curly light brown hair", "Kinky light brown hair",
-                    "Straight stark white hair", "Curly stark white hair", "Kinky stark white hair",
-                        "Straight pale yellow hair", "Curly pale yellow hair", "Kinky pale yellow hair",
-                    //Rare Half-Elf hair
-                    "Straight pale-golden hair", "Curly pale-golden hair", "Kinky pale-golden hair",
-                    "Straight yellow hair", "Straight blond hair", "Straight copper-red hair",
-                    "Curly yellow hair", "Curly blond hair", "Curly copper-red hair",
-                    "Kinky yellow hair", "Kinky blond hair", "Kinky copper-red hair",
-                    "Straight silver hair", "Curly silver hair", "Kinky silver hair",
-                    "Straight silvery-white hair", "Curly silvery-white hair", "Kinky silvery-white hair",
-                    "Straight gray hair", "Curly gray hair", "Kinky gray hair",
-                    "Straight white hair", "Curly white hair", "Kinky white hair",
-                    "Straight gray hair", "Curly gray hair", "Kinky gray hair",
-                    "Straight pale yellow hair", "Curly pale yellow hair", "Kinky pale yellow hair",
-                    "Straight silver hair", "Curly silver hair", "Kinky silver hair",
-                    "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
-                    "Straight pale red hair", "Straight pale blond hair", "Straight pale brown hair", "Straight pale black hair",
-                    "Curly pale red hair", "Curly pale blond hair", "Curly pale brown hair", "Curly pale black hair",
-                    "Kinky pale red hair", "Kinky pale blond hair", "Kinky pale brown hair", "Kinky pale black hair",
-                    "Straight pale black hair", "Curly pale black hair", "Kinky pale black hair",
-                    "Straight pale white hair", "Curly pale white hair", "Kinky pale white hair",
-                    "Straight pale silver hair", "Curly pale silver hair", "Kinky pale silver hair",
-                    "Straight very pale gold hair", "Curly very pale gold hair", "Kinky very pale gold hair",
-                    "Bald",
-                    "Straight pale black hair with silvery hues",
-                        "Curly pale black hair with silvery hues", "Kinky pale black hair with silvery hues",
-                    "Straight pale black hair with blond hues", "Curly pale black hair with blond hues", "Kinky pale black hair with blond hues",
-                    "Straight pale black hair with copper hues", "Curly pale black hair with copper hues", "Kinky pale black hair with copper hues",
-                    "Straight pale white hair with silvery hues", "Curly pale white hair with silvery hues",
-                        "Kinky pale white hair with silvery hues",
-                    "Straight pale white hair with blond hues", "Curly pale white hair with blond hues", "Kinky pale white hair with blond hues",
-                    "Straight pale white hair with copper hues", "Curly pale white hair with copper hues", "Kinky pale white hair with copper hues",
-                    "Straight pale silver hair with silvery hues", "Curly pale silver hair with silvery hues",
-                        "Kinky pale silver hair with silvery hues",
-                    "Straight pale silver hair with blond hues", "Curly pale silver hair with blond hues", "Kinky pale silver hair with blond hues",
-                    "Straight pale silver hair with copper hues", "Curly pale silver hair with copper hues",
-                        "Kinky pale silver hair with copper hues",
-                    "Straight very pale gold hair with silvery hues", "Curly very pale gold hair with silvery hues",
-                        "Kinky very pale gold hair with silvery hues",
-                    "Straight very pale gold hair with blond hues",  "Curly very pale gold hair with blond hues",
-                        "Kinky very pale gold hair with blond hues",
-                    "Straight very pale gold hair with copper hues", "Curly very pale gold hair with copper hues",
-                        "Kinky very pale gold hair with copper hues",
-                    //Common Drow hair
-                    "Straight stark white hair", "Curly stark white hair", "Kinky stark white hair",
-                    "Straight pale yellow hair", "Curly pale yellow hair", "Kinky pale yellow hair",
-                    //Uncommon Drow hair
-                    "Straight gray hair", "Curly gray hair", "Kinky gray hair",
-                    "Straight pale yellow hair", "Curly pale yellow hair", "Kinky pale yellow hair",
-                    "Straight silver hair", "Curly silver hair", "Kinky silver hair",
-                    "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
-                    "Straight pale red hair", "Straight pale blond hair", "Straight pale brown hair", "Straight pale black hair",
-                    "Curly pale red hair", "Curly pale blond hair", "Curly pale brown hair", "Curly pale black hair",
-                    "Kinky pale red hair", "Kinky pale blond hair", "Kinky pale brown hair", "Kinky pale black hair",
-                    "Straight pale black hair", "Curly pale black hair", "Kinky pale black hair",
-                    "Straight pale white hair", "Curly pale white hair", "Kinky pale white hair",
-                    "Straight pale silver hair", "Curly pale silver hair", "Kinky pale silver hair",
-                    "Straight very pale gold hair", "Curly very pale gold hair", "Kinky very pale gold hair",
-                    //Rare Drow hair
-                    "Bald",
-                    "Straight pale black hair with silvery hues",
-                        "Curly pale black hair with silvery hues", "Kinky pale black hair with silvery hues",
-                    "Straight pale black hair with blond hues", "Curly pale black hair with blond hues", "Kinky pale black hair with blond hues",
-                    "Straight pale black hair with copper hues", "Curly pale black hair with copper hues", "Kinky pale black hair with copper hues",
-                    "Straight pale white hair with silvery hues", "Curly pale white hair with silvery hues",
-                        "Kinky pale white hair with silvery hues",
-                    "Straight pale white hair with blond hues", "Curly pale white hair with blond hues", "Kinky pale white hair with blond hues",
-                    "Straight pale white hair with copper hues", "Curly pale white hair with copper hues", "Kinky pale white hair with copper hues",
-                    "Straight pale silver hair with silvery hues", "Curly pale silver hair with silvery hues",
-                        "Kinky pale silver hair with silvery hues",
-                    "Straight pale silver hair with blond hues", "Curly pale silver hair with blond hues", "Kinky pale silver hair with blond hues",
-                    "Straight pale silver hair with copper hues", "Curly pale silver hair with copper hues",
-                        "Kinky pale silver hair with copper hues",
-                    "Straight very pale gold hair with silvery hues", "Curly very pale gold hair with silvery hues",
-                        "Kinky very pale gold hair with silvery hues",
-                    "Straight very pale gold hair with blond hues",  "Curly very pale gold hair with blond hues",
-                        "Kinky very pale gold hair with blond hues",
-                    "Straight very pale gold hair with copper hues", "Curly very pale gold hair with copper hues",
-                        "Kinky very pale gold hair with copper hues"
-                ],
-                commonEyes: ["Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes"],
-                uncommonEyes: [
-                    //Common Half-Elf eyes
-                    "Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes",
-                ],
-                rareEyes: [
-                    //Uncommon Half-Elf eyes
-                    "Amber eyes",
-                    "Golden eyes", "Blue eyes", "Light blue eyes", "Green eyes speckled with gold",
-                    "Green eyes", "Brown eyes", "Hazel eyes",
-                    "Green eyes",
-                    "Bright red eyes", "Vivid red eyes",
-                    "Violet eyes",
-                    "Violet eyes", "Blue eyes speckled with gold", "Light blue eyes speckled with gold", "Violet eyes speckled with gold",
-                    "Solid green eyes, lacking pupils", "Solid golden eyes, lacking pupils", "Solid blue eyes, lacking pupils", "Solid light blue eyes, lacking pupils",
-                    "Solid violet eyes, lacking pupils", "Solid green eyes speckled with gold, lacking pupils", "Solid golden eyes speckled with gold, lacking pupils",
-                    "Solid blue eyes speckled with gold, lacking pupils", "Solid light blue eyes speckled with gold, lacking pupils",
-                    "Solid violet eyes speckled with gold, lacking pupils",
-                    "Golden eyes", "Blue eyes", "Light blue eyes", "Green eyes speckled with gold",
-                    "Violet eyes", "Blue eyes speckled with gold", "Light Blue eyes speckled with gold", "Violet eyes speckled with gold",
-                    "Solid green eyes, lacking pupils", "Solid golden eyes, lacking pupils", "Solid blue eyes, lacking pupils", "Solid light blue eyes, lacking pupils",
-                    "Solid violet eyes, lacking pupils", "Solid green eyes speckled with gold, lacking pupils", "Solid golden eyes speckled with gold, lacking pupils",
-                    "Solid blue eyes speckled with gold, lacking pupils", "Solid light blue eyes speckled with gold, lacking pupils",
-                    "Solid violet eyes speckled with gold, lacking pupils",
-                    "Pale white-blue eyes", "Pale white-lilac eyes", "Pale white-pink eyes", "Pale white-silver eyes", "Purple eyes", "Blue eyes",
-                    "Green eyes", "Brown eyes", "Black eyes", "Amber eyes", "Rose-hued eyes",
-                    //Common Drow eyes
-                    "Bright red eyes", "Vivid red eyes",
-                    //Uncommon Drow eyes
-                    "Pale white-blue eyes", "Pale white-lilac eyes", "Pale white-pink eyes", "Pale white-silver eyes", "Purple eyes", "Blue eyes",
-                    //Rare Drow eyes
-                    "Green eyes", "Brown eyes", "Black eyes", "Amber eyes", "Rose-hued eyes",
-                ]);
+                commonSkin: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common],
+                uncommonSkin: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Uncommon]
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Half][AppearanceCategory.Skin][Rarity.Common]),
+                rareSkin: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Rare]
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Half][AppearanceCategory.Skin][Rarity.Uncommon])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Half][AppearanceCategory.Skin][Rarity.Rare])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Skin][Rarity.Common])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Skin][Rarity.Uncommon])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Skin][Rarity.Rare]),
+                commonHair: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Common],
+                uncommonHair: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Uncommon]
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Half][AppearanceCategory.Hair][Rarity.Common]),
+                rareHair: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Rare]
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Half][AppearanceCategory.Hair][Rarity.Uncommon])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Half][AppearanceCategory.Hair][Rarity.Rare])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Hair][Rarity.Common])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Hair][Rarity.Uncommon])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Hair][Rarity.Rare]),
+                commonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Common],
+                uncommonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Uncommon]
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Half][AppearanceCategory.Eyes][Rarity.Common]),
+                rareEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Rare]
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Half][AppearanceCategory.Eyes][Rarity.Uncommon])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Half][AppearanceCategory.Eyes][Rarity.Rare])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Eyes][Rarity.Common])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Eyes][Rarity.Uncommon])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Eyes][Rarity.Rare]));
             //Source: https://www.d20srd.org/srd/monsters/arrowhawk.htm
             appearances[CreatureConstants.Arrowhawk_Juvenile][Rarity.Common] = ["Covered in blue scales with occasional tufts of yellow feathers"];
             appearances[CreatureConstants.Arrowhawk_Adult][Rarity.Common] = ["Covered in blue scales with occasional tufts of yellow feathers"];
@@ -885,15 +830,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 ["Extra arm growing out of chest. Large, curved tusks on either side of a wide mouth. Relatively small eyes and nose for the size of the head. One ear significantly bigger than the other. Quite strong stench."];
             //Source: https://forgottenrealms.fandom.com/wiki/Avoral
             appearances[CreatureConstants.Avoral] = GetWeightedAppearances(
-                allSkin: ["Dark brown skin", "Brown skin", "Light brown skin",
+                commonSkin: ["Dark brown skin", "Brown skin", "Light brown skin",
                     "Dark tan skin", "Tan skin", "Light tan skin",
                     "Pink skin", "White skin", "Pale white skin"],
-                allHair: ["Red feathers", "Blue feathers", "Brown feathers", "Black feathers", "White feathers"],
-                allEyes: ["Bright golden eyes"]);
+                commonHair: ["Red feathers", "Blue feathers", "Brown feathers", "Black feathers", "White feathers"],
+                commonEyes: ["Bright golden eyes"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Azer
             appearances[CreatureConstants.Azer] = GetWeightedAppearances(
-                allSkin: ["Brass-colored skin"],
-                allHair: [ "Brass-colored hair, brass-colored beard", "Brass-colored hair, fiery-colored beard", "Brass-colored hair, literal fire for beard",
+                commonSkin: ["Brass-colored skin"],
+                commonHair: [ "Brass-colored hair, brass-colored beard", "Brass-colored hair, fiery-colored beard", "Brass-colored hair, literal fire for beard",
                     "Fiery-colored hair, brass-colored beard", "Fiery-colored hair, fiery-colored beard", "Fiery-colored hair, literal fire for beard",
                     "Literal fire for hair, brass-colored beard", "Literal fire for hair, fiery-colored beard", "Literal fire for hair, literal fire for beard" ],
                 commonEyes: [
@@ -925,10 +870,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.BarbedDevil_Hamatula][Rarity.Common] = ["Body completely covered in barbs. Horned hands ending in strange, lengthy claws. Long, burly tails coated in spines. Gleaming, vigilant eyes constantly shifting, making it seem anxious"];
             //Source: https://forgottenrealms.fandom.com/wiki/Barghest
             //appearances[CreatureConstants.Dog] = GetWeightedAppearances(
-            //    allEyes: ["Brown eyes", "Hazel eyes", "Amber eyes", "Yellow eyes", "Blue eyes", "Green eyes"]
+            //    commonEyes: ["Brown eyes", "Hazel eyes", "Amber eyes", "Yellow eyes", "Blue eyes", "Green eyes"]
             //);
             //appearances[CreatureConstants.Goblin] = GetWeightedAppearances(
-            //    allEyes: ["Dull, glazed, yellow eyes", "Dull, glazed, orange eyes", "Dull, glazed, red eyes"],
+            //    commonEyes: ["Dull, glazed, yellow eyes", "Dull, glazed, orange eyes", "Dull, glazed, red eyes"],
             appearances[CreatureConstants.Barghest] = GetWeightedAppearances(
                 commonHair: ["Bluish-red fur", "Blue fur"],
                 commonEyes: [ 
@@ -996,20 +941,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Basilisk
             appearances[CreatureConstants.Basilisk] = GetWeightedAppearances(
                 commonSkin: ["Dull brown skin, yellowish underbelly"],
-                allEyes: ["Glowing pale green eyes"],
+                commonEyes: ["Glowing pale green eyes"],
                 uncommonSkin: ["Dark gray skin, yellowish underbelly", "Dark yellow skin, yellowish underbelly", "Dark orange skin, yellowish underbelly"],
                 commonOther: ["Single row of bony spikes lining the back"],
                 rareOther: ["Single row of bony spikes lining the back. Curved horn atop the nose"]);
             appearances[CreatureConstants.Basilisk_Greater] = GetWeightedAppearances(
                 commonSkin: ["Dull brown skin, yellowish underbelly"],
-                allEyes: ["Glowing pale green eyes"],
+                commonEyes: ["Glowing pale green eyes"],
                 uncommonSkin: ["Dark gray skin, yellowish underbelly", "Dark yellow skin, yellowish underbelly", "Dark orange skin, yellowish underbelly"],
                 commonOther: ["Single row of bony spikes lining the back"],
                 rareOther: ["Single row of bony spikes lining the back. Curved horn atop the nose"]);
             //Source: https://www.dimensions.com/element/little-brown-bat-myotis-lucifugus hanging height
             appearances[CreatureConstants.Bat] = GetWeightedAppearances(
                 commonSkin: new[] { "Pale red fur", "Pale tan fur", "Red fur", "Tan fur", "Brown fur", "Dark brown fur" },
-                allOther: new[] { "Has a short snout and sloped forehead" });
+                commonOther: new[] { "Has a short snout and sloped forehead" });
             //Scaled up from bat, x15 based on wingspan
             appearances[CreatureConstants.Bat_Dire][Rarity.Common] = new[] { "Shaggy, pale red fur", "Shaggy, pale tan fur", "Shaggy, red fur", "Shaggy, tan fur", "Shaggy, brown fur",
                 "Shaggy, dark brown fur" };
@@ -1088,22 +1033,22 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.BlinkDog] = GetWeightedAppearances(
                 commonHair: ["Yellow-brown fur"],
                 uncommonHair: ["Yellow fur", "Brown fur"],
-                allOther: ["Large ears"]);
+                commonOther: ["Large ears"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Boar
             appearances[CreatureConstants.Boar] = GetWeightedAppearances(
-                allHair: ["Thick brown fur", "Thick gray fur"],
-                allOther: ["Sharp tusks jutting out from beneath the snout"]);
+                commonHair: ["Thick brown fur", "Thick gray fur"],
+                commonOther: ["Sharp tusks jutting out from beneath the snout"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Dire_boar
             appearances[CreatureConstants.Boar_Dire] = GetWeightedAppearances(
                 commonHair: ["Thick brown fur", "Thick gray fur"],
                 uncommonHair: ["Thick black fur"],
-                allOther: ["Sharp tusks jutting out from beneath the snout"]);
+                commonOther: ["Sharp tusks jutting out from beneath the snout"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Bodak
             appearances[CreatureConstants.Bodak] = GetWeightedAppearances(
-                allSkin: ["Deathly pale white skin", "Deathly gray skin", "Deathly pale gray skin"],
-                allHair: ["No hair of any kind"],
-                allEyes: ["Empty, milky-white eyes outstretched into vertical ovals"],
-                allOther: ["Face twisted into an inhuman visage of sheer madness and horror"]);
+                commonSkin: ["Deathly pale white skin", "Deathly gray skin", "Deathly pale gray skin"],
+                commonHair: ["No hair of any kind"],
+                commonEyes: ["Empty, milky-white eyes outstretched into vertical ovals"],
+                commonOther: ["Face twisted into an inhuman visage of sheer madness and horror"]);
             //Source: https://web.stanford.edu/~cbross/bombbeetle.html
             appearances[CreatureConstants.BombardierBeetle_Giant][Rarity.Common] = ["Body is dull blue-gray. Head and chest is brownish-orange."];
             //Source: https://forgottenrealms.fandom.com/wiki/Osyluth
@@ -1125,35 +1070,35 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     //Wood Elf skin
                     "Copper skin", "Tan skin",
                 ],
-                allHair: ["Silvery-white hair"],
-                allEyes: ["Eyes are an ever-changing rainbow of colors, depending on its mood"],
-                allOther: ["Broad and stocky"]);
+                commonHair: ["Silvery-white hair"],
+                commonEyes: ["Eyes are an ever-changing rainbow of colors, depending on its mood"],
+                commonOther: ["Broad and stocky"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Bugbear
             appearances[CreatureConstants.Bugbear] = GetWeightedAppearances(
                 commonSkin: ["Yellow skin", "Reddish-yellow skin", "Yellowish-brown skin", "Reddish-brown skin"],
                 uncommonSkin: ["Red skin", "Brown skin"],
-                allHair: ["Brown hair", "Red hair"],
-                allEyes: ["Yellow eyes", "Orange eyes", "Red eyes", "Brown eyes", "Greenish-white eyes"],
-                allOther: ["Large, hairy, wedge-shaped ears; tough hide; claws"]);
+                commonHair: ["Brown hair", "Red hair"],
+                commonEyes: ["Yellow eyes", "Orange eyes", "Red eyes", "Brown eyes", "Greenish-white eyes"],
+                commonOther: ["Large, hairy, wedge-shaped ears; tough hide; claws"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Bulette
             appearances[CreatureConstants.Bulette] = GetWeightedAppearances(
-                allSkin: [ "Around the head and rear, the armor is blue-brown. In between, it is gray-blue. Slightly darker skin around the eyes",
+                commonSkin: [ "Around the head and rear, the armor is blue-brown. In between, it is gray-blue. Slightly darker skin around the eyes",
                     "Around the head and rear, the armor is blue-brown. In between, it is blue. Slightly darker skin around the eyes",
                     "Around the head and rear, the armor is blue-brown. In between, it is blue-green. Slightly darker skin around the eyes" ],
-                allEyes: ["Yellow eyes with blue-green pupils"],
-                allOther: ["Covered in thick, layered plates. Hea dis bullet-shaped, similar to a shark's, with a massive mouth. Stumpy but powerful legs."]);
+                commonEyes: ["Yellow eyes with blue-green pupils"],
+                commonOther: ["Covered in thick, layered plates. Hea dis bullet-shaped, similar to a shark's, with a massive mouth. Stumpy but powerful legs."]);
             //Source: https://forgottenrealms.fandom.com/wiki/Camel
             appearances[CreatureConstants.Camel_Bactrian] = GetWeightedAppearances(
-                allHair: ["White fur", "Pale tan fur", "Deep brown fur", "Tan fur", "Brown fur"],
-                allOther: ["Two humps. Broad feet"]);
+                commonHair: ["White fur", "Pale tan fur", "Deep brown fur", "Tan fur", "Brown fur"],
+                commonOther: ["Two humps. Broad feet"]);
             appearances[CreatureConstants.Camel_Dromedary] = GetWeightedAppearances(
-                allHair: ["White fur", "Pale tan fur", "Deep brown fur", "Tan fur", "Brown fur"],
-                allOther: ["One hump. Broad feet"]);
+                commonHair: ["White fur", "Pale tan fur", "Deep brown fur", "Tan fur", "Brown fur"],
+                commonOther: ["One hump. Broad feet"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Carrion_crawler
             appearances[CreatureConstants.CarrionCrawler] = GetWeightedAppearances(
-                allSkin: ["Pale yellow skin", "Green skin, pale yellow underbelly", "Green skin"],
-                allEyes: ["Two eye stalks"],
-                allOther: ["Eight long tentacles protruding from the side of the head"]);
+                commonSkin: ["Pale yellow skin", "Green skin, pale yellow underbelly", "Green skin"],
+                commonEyes: ["Two eye stalks"],
+                commonOther: ["Eight long tentacles protruding from the side of the head"]);
             //Source: https://g.co/kgs/eqa8L1
             //https://www.omlet.us/guide/cats/choosing_the_right_cat_for_you/cat_coat_colors_and_patterns/
             appearances[CreatureConstants.Cat][Rarity.Common] = [ "Siamese", "British Shorthair", "Maine Coon", "Persian", "Ragdoll", "Sphynx", "American Shorthair", "Abyssinian",
@@ -1201,23 +1146,23 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Centaur
             appearances[CreatureConstants.Centaur] = GetWeightedAppearances(
                 commonSkin: Combine(" on top half, bottom half is ",
-                    reusableAppearances[CreatureConstants.Human][Rarity.Common][AppearanceCategory.Skin],
-                    reusableAppearances[CreatureConstants.Horse_Heavy][Rarity.Common][AppearanceCategory.Skin]
+                    reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common],
+                    reusableAppearances[CreatureConstants.Horse_Heavy][AppearanceCategory.Skin][Rarity.Common]
                 ),
                 uncommonSkin: Combine(" on top half, bottom half is ",
-                    reusableAppearances[CreatureConstants.Human][Rarity.Uncommon][AppearanceCategory.Skin],
-                    reusableAppearances[CreatureConstants.Horse_Heavy][Rarity.Uncommon][AppearanceCategory.Skin]
+                    reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Uncommon],
+                    reusableAppearances[CreatureConstants.Horse_Heavy][AppearanceCategory.Skin][Rarity.Uncommon]
                 ),
                 rareSkin: Combine(" on top half, bottom half is ",
-                    reusableAppearances[CreatureConstants.Human][Rarity.Rare][AppearanceCategory.Skin],
-                    reusableAppearances[CreatureConstants.Horse_Heavy][Rarity.Rare][AppearanceCategory.Skin]
+                    reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Rare],
+                    reusableAppearances[CreatureConstants.Horse_Heavy][AppearanceCategory.Skin][Rarity.Rare]
                 ),
-                commonHair: reusableAppearances[CreatureConstants.Human][Rarity.Common][AppearanceCategory.Hair],
-                uncommonHair: reusableAppearances[CreatureConstants.Human][Rarity.Uncommon][AppearanceCategory.Hair],
-                rareHair: reusableAppearances[CreatureConstants.Human][Rarity.Rare][AppearanceCategory.Hair],
-                commonEyes: reusableAppearances[CreatureConstants.Human][Rarity.Common][AppearanceCategory.Eyes],
-                uncommonEyes: reusableAppearances[CreatureConstants.Human][Rarity.Uncommon][AppearanceCategory.Eyes],
-                rareEyes: reusableAppearances[CreatureConstants.Human][Rarity.Rare][AppearanceCategory.Eyes]
+                commonHair: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Common],
+                uncommonHair: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Uncommon],
+                rareHair: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Rare],
+                commonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Common],
+                uncommonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Uncommon],
+                rareEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Rare]
             );
             //Source: https://www.realmshelps.net/monsters/block/Monstrous_Centipede,_Tiny
             appearances[CreatureConstants.Centipede_Monstrous_Tiny][Rarity.Common] = ["Black skin", "Brown skin", "Grey skin", "Red skin", "Pale grey skin"];
@@ -1265,30 +1210,30 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.Chimera_White][Rarity.Common] = ["Hindquarters of a goat, the forequarters of a lion, and a set of White Dragon wings. Three heads: that of a horned goat, a lion, and a White Dragon."];
             //Source: https://forgottenrealms.fandom.com/wiki/Choker
             appearances[CreatureConstants.Choker] = GetWeightedAppearances(
-                allSkin: ["Gray, rubbery skin", "Spotted gray, rubbery skin", "Earthy-brown, rubbery skin", "Spotted earthy-brown, rubbery skin"],
-                allOther: ["Roughly humanoid, with a small torso and head. Arms and legs are long and thin, more like tentacles. Hands are shaped somewhat like a starfish, with a spiny surface—stiff cartilage jutting through the skin. Fingers are enormously long. Limbs move with the fluidity of tentacles."]);
+                commonSkin: ["Gray, rubbery skin", "Spotted gray, rubbery skin", "Earthy-brown, rubbery skin", "Spotted earthy-brown, rubbery skin"],
+                commonOther: ["Roughly humanoid, with a small torso and head. Arms and legs are long and thin, more like tentacles. Hands are shaped somewhat like a starfish, with a spiny surface—stiff cartilage jutting through the skin. Fingers are enormously long. Limbs move with the fluidity of tentacles."]);
             //Source: https://forgottenrealms.fandom.com/wiki/Chuul
             appearances[CreatureConstants.Chuul] = GetWeightedAppearances(
-                allSkin: ["Dark yellow-green exoskeleton"],
-                allEyes: ["Black eyes"],
-                allOther: ["Four long legs and two large crustacean-like claws. Fan-like tail. Mass of tentacles around the mouth."]);
+                commonSkin: ["Dark yellow-green exoskeleton"],
+                commonEyes: ["Black eyes"],
+                commonOther: ["Four long legs and two large crustacean-like claws. Fan-like tail. Mass of tentacles around the mouth."]);
             //Source: https://forgottenrealms.fandom.com/wiki/Cloaker
             appearances[CreatureConstants.Cloaker] = GetWeightedAppearances(
-                allSkin: ["Black skin, pale belly"],
-                allEyes: ["Red eyes"],
+                commonSkin: ["Black skin, pale belly"],
+                commonEyes: ["Red eyes"],
                 commonOther: ["Long, whiplike tail. Head set within the \"cowl\" of the cloak-like body. Toothy maw. Bony claws adjacent to the head look almost like clasps for the cloak."],
                 uncommonOther: ["Long, whiplike tail. Head set within the \"cowl\" of the cloak-like body. Toothy maw. Bony claws adjacent to the head look almost like clasps for the cloak. A series of spots run in two parallel lines down the backs, giving the appearance of buttons."]);
             //Source: https://forgottenrealms.fandom.com/wiki/Cockatrice
             appearances[CreatureConstants.Cockatrice] = GetWeightedAppearances(
-                allSkin: ["Yellow-green scales on the tail, grey skin on the wings, yellow beak and feet"],
-                allHair: ["Golden brown feathers"],
-                allEyes: ["Glowing crimson eyes"],
-                allOther: ["Lizard-like tail, wings of a bat"]);
+                commonSkin: ["Yellow-green scales on the tail, grey skin on the wings, yellow beak and feet"],
+                commonHair: ["Golden brown feathers"],
+                commonEyes: ["Glowing crimson eyes"],
+                commonOther: ["Lizard-like tail, wings of a bat"]);
             appearances[CreatureConstants.Cockatrice + GenderConstants.Male] = GetWeightedAppearances(
-                allSkin: ["Yellow-green scales on the tail, grey skin on the wings, yellow beak and feet"],
-                allHair: ["Golden brown feathers"],
-                allEyes: ["Glowing crimson eyes"],
-                allOther: ["Lizard-like tail, wings of a bat, rooster's red wattle and comb"]);
+                commonSkin: ["Yellow-green scales on the tail, grey skin on the wings, yellow beak and feet"],
+                commonHair: ["Golden brown feathers"],
+                commonEyes: ["Glowing crimson eyes"],
+                commonOther: ["Lizard-like tail, wings of a bat, rooster's red wattle and comb"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Couatl
             appearances[CreatureConstants.Couatl][Rarity.Common] = ["Long feathered serpent with a pair of rainbow-feathered wings."];
             //Source: https://www.mojobob.com/roleplay/monstrousmanual/s/sphinx.html
@@ -1303,7 +1248,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Bronze colouration above, with faded grayish spots and stripes variably appearing across the back and a dingy, light off-yellow on the belly, but mud obscures its actual colour. The flanks, which are light yellowish-green in colour, have semi-dark patches arranged in oblique stripes",
                     "Very dark bronze colouration above, with blackish spots and stripes variably appearing across the back and a dingy, dark off-yellow on the belly. The flanks, which are dark yellowish-green in colour, have very dark patches arranged in oblique stripes",
                     "Very dark bronze colouration above, with blackish spots and stripes variably appearing across the back and a dingy, dark off-yellow on the belly, but mud obscures its actual colour. The flanks, which are dark yellowish-green in colour, have very dark patches arranged in oblique stripes"],
-                allEyes: ["Green eyes"]);
+                commonEyes: ["Green eyes"]);
             //Source: https://en.wikipedia.org/wiki/Saltwater_crocodile#Description
             appearances[CreatureConstants.Crocodile_Giant] = GetWeightedAppearances(
                 commonSkin: [
@@ -1338,53 +1283,53 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 ]);
             //Source: https://forgottenrealms.fandom.com/wiki/Cryohydra
             appearances[CreatureConstants.Cryohydra_5Heads] = GetWeightedAppearances(
-                allSkin: new[] { "Purplish-brown skin", "Brown skin", "Dark brown skin", "Dark purplish-brown skin" },
-                allEyes: new[] { "Amber eyes" });
+                commonSkin: new[] { "Purplish-brown skin", "Brown skin", "Dark brown skin", "Dark purplish-brown skin" },
+                commonEyes: new[] { "Amber eyes" });
             appearances[CreatureConstants.Cryohydra_6Heads] = GetWeightedAppearances(
-                allSkin: new[] { "Purplish-brown skin", "Brown skin", "Dark brown skin", "Dark purplish-brown skin" },
-                allEyes: new[] { "Amber eyes" });
+                commonSkin: new[] { "Purplish-brown skin", "Brown skin", "Dark brown skin", "Dark purplish-brown skin" },
+                commonEyes: new[] { "Amber eyes" });
             appearances[CreatureConstants.Cryohydra_7Heads] = GetWeightedAppearances(
-                allSkin: new[] { "Purplish-brown skin", "Brown skin", "Dark brown skin", "Dark purplish-brown skin" },
-                allEyes: new[] { "Amber eyes" });
+                commonSkin: new[] { "Purplish-brown skin", "Brown skin", "Dark brown skin", "Dark purplish-brown skin" },
+                commonEyes: new[] { "Amber eyes" });
             appearances[CreatureConstants.Cryohydra_8Heads] = GetWeightedAppearances(
-                allSkin: new[] { "Purplish-brown skin", "Brown skin", "Dark brown skin", "Dark purplish-brown skin" },
-                allEyes: new[] { "Amber eyes" });
+                commonSkin: new[] { "Purplish-brown skin", "Brown skin", "Dark brown skin", "Dark purplish-brown skin" },
+                commonEyes: new[] { "Amber eyes" });
             appearances[CreatureConstants.Cryohydra_9Heads] = GetWeightedAppearances(
-                allSkin: new[] { "Purplish-brown skin", "Brown skin", "Dark brown skin", "Dark purplish-brown skin" },
-                allEyes: new[] { "Amber eyes" });
+                commonSkin: new[] { "Purplish-brown skin", "Brown skin", "Dark brown skin", "Dark purplish-brown skin" },
+                commonEyes: new[] { "Amber eyes" });
             appearances[CreatureConstants.Cryohydra_10Heads] = GetWeightedAppearances(
-                allSkin: new[] { "Purplish-brown skin", "Brown skin", "Dark brown skin", "Dark purplish-brown skin" },
-                allEyes: new[] { "Amber eyes" });
+                commonSkin: new[] { "Purplish-brown skin", "Brown skin", "Dark brown skin", "Dark purplish-brown skin" },
+                commonEyes: new[] { "Amber eyes" });
             appearances[CreatureConstants.Cryohydra_11Heads] = GetWeightedAppearances(
-                allSkin: new[] { "Purplish-brown skin", "Brown skin", "Dark brown skin", "Dark purplish-brown skin" },
-                allEyes: new[] { "Amber eyes" });
+                commonSkin: new[] { "Purplish-brown skin", "Brown skin", "Dark brown skin", "Dark purplish-brown skin" },
+                commonEyes: new[] { "Amber eyes" });
             appearances[CreatureConstants.Cryohydra_12Heads] = GetWeightedAppearances(
-                allSkin: new[] { "Purplish-brown skin", "Brown skin", "Dark brown skin", "Dark purplish-brown skin" },
-                allEyes: new[] { "Amber eyes" });
+                commonSkin: new[] { "Purplish-brown skin", "Brown skin", "Dark brown skin", "Dark purplish-brown skin" },
+                commonEyes: new[] { "Amber eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Darkmantle
             appearances[CreatureConstants.Darkmantle] = GetWeightedAppearances(
                 commonSkin: new[] { "Limestone-colored skin" },
                 uncommonSkin: new[] { "Dolomite-colored skin", "Gypsum-colored skin", "Marble-colored skin", "Anhydrite-colored skin", "Halite-colored skin" },
-                allEyes: new[] { "Eight eyespots, but not actual eyes" });
+                commonEyes: new[] { "Eight eyespots, but not actual eyes" });
             //Source: https://www.dimensions.com/element/deinonychus-deinonychus-antirrhopus
             //https://jurassicworld-evolution.fandom.com/wiki/Deinonychus#Skins
             appearances[CreatureConstants.Deinonychus] = GetWeightedAppearances(
-                allSkin: new[] { "Red skin, tan underbelly", "Gray skin, tan underbelly", "Orange skin, mottled yellow-orange underbelly",
+                commonSkin: new[] { "Red skin, tan underbelly", "Gray skin, tan underbelly", "Orange skin, mottled yellow-orange underbelly",
                     "Turquoise skin, gray underbelly", "Green skin, yellow underbelly", "Purple skin with pink accents, gray underbelly" },
-                allOther: new[] { "Small body, sleek horizontal posture, ratite-like spine, and enlarged raptorial claws on the feet. A large, sickle-shaped talon is on the second toe of each hind foot." });
+                commonOther: new[] { "Small body, sleek horizontal posture, ratite-like spine, and enlarged raptorial claws on the feet. A large, sickle-shaped talon is on the second toe of each hind foot." });
             //Source: https://forgottenrealms.fandom.com/wiki/Delver
             appearances[CreatureConstants.Delver][Rarity.Common] = new[] { "Huge teardrop-shaped body with rock-like skin, always covered in a mucus-like slime. Almost the entire underside of the body consists of their mouth. Only two flipper-like appendages at the front of the body ending in blunt claws" };
             //Source: https://forgottenrealms.fandom.com/wiki/Derro
             appearances[CreatureConstants.Derro] = GetWeightedAppearances(
                 commonSkin: new[] { "Pale blue-white skin", "Blue-gray skin" },
                 uncommonSkin: new[] { "Pale blue-gray skin", "Blue-white skin" },
-                allHair: new[] { "White hair", "Yellow hair", "Pale tan hair" },
-                allEyes: new[] { "Uniformly pale eyes lacking irisies and pupils" });
+                commonHair: new[] { "White hair", "Yellow hair", "Pale tan hair" },
+                commonEyes: new[] { "Uniformly pale eyes lacking irisies and pupils" });
             appearances[CreatureConstants.Derro_Sane] = GetWeightedAppearances(
                 commonSkin: ["Pale blue-white skin", "Blue-gray skin"],
                 uncommonSkin: ["Pale blue-gray skin", "Blue-white skin"],
-                allHair: ["White hair", "Yellow hair", "Pale tan hair"],
-                allEyes: ["Uniformly pale eyes lacking irisies and pupils"]);
+                commonHair: ["White hair", "Yellow hair", "Pale tan hair"],
+                commonEyes: ["Uniformly pale eyes lacking irisies and pupils"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Destrachan
             appearances[CreatureConstants.Destrachan][Rarity.Common] = ["Bipedal, vaguely reptilian. Head is largely featureless except for the circular mouth and the large ear structures."];
             //Source: https://forgottenrealms.fandom.com/wiki/Devourer
@@ -1395,13 +1340,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.DisplacerBeast] = GetWeightedAppearances(
                 commonHair: ["Blue fur", "Blue-black fur", "Black fur"],
                 uncommonHair: ["Dark blue fur", "Purple fur"],
-                allEyes: ["Striking, glowing emerald-green eyes"],
+                commonEyes: ["Striking, glowing emerald-green eyes"],
                 commonOther: ["Panther-like with six legs and a pair of tentacles sprouting from their shoulders. Tentacles end in pads with sharp, horny, brownish-yellow edges"],
                 uncommonOther: ["Panther-like with six legs and a pair of tentacles sprouting from their shoulders. Tentacles end in pads with sharp, horny, brownish-yellow edges. Emaciated-looking."]);
             appearances[CreatureConstants.DisplacerBeast_PackLord] = GetWeightedAppearances(
                 commonHair: ["Black fur", "Ebony fur"],
                 uncommonHair: ["Dark blue fur", "Purple fur", "Blue fur", "Blue-black fur"],
-                allEyes: ["Striking, glowing emerald-green eyes"],
+                commonEyes: ["Striking, glowing emerald-green eyes"],
                 commonOther: ["Panther-like with six legs and a pair of tentacles sprouting from their shoulders. Tentacles end in pads with sharp, horny, brownish-yellow edges"],
                 uncommonOther: ["Panther-like with six legs and a pair of tentacles sprouting from their shoulders. Tentacles end in pads with sharp, horny, brownish-yellow edges. Emaciated-looking."]);
             //Source: https://forgottenrealms.fandom.com/wiki/Djinni
@@ -1444,19 +1389,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //https://i.redd.it/3lbyepoqhnlb1.jpg
             //https://coatsandcolors.com/dog-eye-colors/
             appearances[CreatureConstants.Dog] = GetWeightedAppearances(
-                allSkin: ["Bulldog", "French Bulldog", "Beagle", "Standard Poodle", "Chihuahua", "Dachsund", "Bichon Frise",
+                commonSkin: ["Bulldog", "French Bulldog", "Beagle", "Standard Poodle", "Chihuahua", "Dachsund", "Bichon Frise",
                 "Maltese",
                 "Chow Chow", "English Cocker Spaniel" , "Pomeranian", "Yorkshire Terrier", "Cavalier King Charles Spaniel", "Pembroke Welsh Corgi", "Basenji", "Havanese",
                 "Boston Terrier", "Cairn Terrier", "Brittany", "Sheltie", "Shiba Inu", "Jack Russell Terrier", "Borzoi", "Maltipoo", "Papillon", "Pikanese",
                 "Miniature Poodle", "Pikapoo", "Coyote", "Dingo", "Miniature Schnauzer", "Mutt", "English Bulldog", "Cavapoo", "Red Kelpie", "American Foxhound",
                 "Brussels Griffon", "Aussie Terrier", "German Spitz", "Pug", "Teacup Pomeranian", "Saluki", "Schnauzer Terrier", "Presa Canario"],
-                allEyes: ["Brown eyes", "Hazel eyes", "Amber eyes", "Yellow eyes", "Blue eyes", "Green eyes"]
+                commonEyes: ["Brown eyes", "Hazel eyes", "Amber eyes", "Yellow eyes", "Blue eyes", "Green eyes"]
             );
             //Source: https://www.google.com/search?q=dog+working+breeds
             //https://i.redd.it/3lbyepoqhnlb1.jpg
             //https://coatsandcolors.com/dog-eye-colors/
             appearances[CreatureConstants.Dog_Riding] = GetWeightedAppearances(
-                allSkin: ["German Shepherd", "Labrador Retriever", "Golden Retriever", "Siberian Husky", "Beagle",
+                commonSkin: ["German Shepherd", "Labrador Retriever", "Golden Retriever", "Siberian Husky", "Beagle",
                 "Alaskan Malamute",
                 "Border Collie", "Rottweiler", "Australian Shepherd", "Airedale Terrier", "Affenpinscher", "Afghan Hound", "American Eskimo", "Anatolian Shepherd",
                 "Basset Hound", "Belgian Malinois", "Boston Terrier", "Bullmastiff", "Black Russian Terrier", "Bedlington Terrier", "American Pit Bull Terrier", "Doberman",
@@ -1467,376 +1412,376 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "Greenland", "Canadian Eskimo", "Canaan", "Caucasian Shepherd", "Blue Lacy", "American Akita", "Akbash", "Central Asian Shepherd", "Australian Cattle",
                 "Yakutian Laika", "Mutt", "Blue Heeler", "Red Heeler", "Labrador", "Japanese Akita", "Red/Blue Heeler Mix", "Chocolate Labrador", "Chow Chow", "English Setter",
                 "Irish Wolfhound", "Irish Setter", "Mastiff", "Greyhound", "Chocolate Labrador/Rottweiler Mix", "Maremma Sheepdog", "Catahoula Leopard Dog", "Rough Collie"],
-                allEyes: ["Brown eyes", "Hazel eyes", "Amber eyes", "Yellow eyes", "Blue eyes", "Green eyes"]
+                commonEyes: ["Brown eyes", "Hazel eyes", "Amber eyes", "Yellow eyes", "Blue eyes", "Green eyes"]
             );
             //Source: https://www.britannica.com/animal/donkey
             appearances[CreatureConstants.Donkey] = GetWeightedAppearances(
-                allHair: [ "White fur with dark stripe from mane to tail and a crosswise stripe on the shoulders",
+                commonHair: [ "White fur with dark stripe from mane to tail and a crosswise stripe on the shoulders",
                     "Light gray fur with dark stripe from mane to tail and a crosswise stripe on the shoulders",
                     "Gray fur with dark stripe from mane to tail and a crosswise stripe on the shoulders",
                     "Dark gray fur with darker stripe from mane to tail and a crosswise stripe on the shoulders",
                     "Black fur with gray stripe from mane to tail and a crosswise stripe on the shoulders" ],
-                allOther: ["Long ears, surefooted"]);
+                commonOther: ["Long ears, surefooted"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Doppelganger
             appearances[CreatureConstants.Doppelganger] = GetWeightedAppearances(
-                allSkin: ["Gray skin"],
-                allHair: ["Hairless"],
+                commonSkin: ["Gray skin"],
+                commonHair: ["Hairless"],
                 commonEyes: ["Bulging, pale yellow eyes lacking visible pupils", "Bulging, yellow eyes lacking visible pupils"],
                 rareEyes: ["Bulging, green eyes lacking visible pupils", "Bulging, white eyes lacking visible pupils"],
-                allOther: ["Elven ears. Bulbous head with formless face."]);
+                commonOther: ["Elven ears. Bulbous head with formless face."]);
             //Source: Draconomicon
             appearances[CreatureConstants.Dragon_Black_Wyrmling] = GetWeightedAppearances(
-                allSkin: ["Thin, glossy black one-inch scales"],
-                allEyes: ["Deep-socketed eyes"],
-                allOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. One inch of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
+                commonSkin: ["Thin, glossy black one-inch scales"],
+                commonEyes: ["Deep-socketed eyes"],
+                commonOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. One inch of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
             appearances[CreatureConstants.Dragon_Black_VeryYoung] = GetWeightedAppearances(
-                allSkin: new[] { "Thin, glossy black two-inch scales" },
-                allEyes: new[] { "Deep-socketed eyes" },
-                allOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Two inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
+                commonSkin: new[] { "Thin, glossy black two-inch scales" },
+                commonEyes: new[] { "Deep-socketed eyes" },
+                commonOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Two inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
             appearances[CreatureConstants.Dragon_Black_Young] = GetWeightedAppearances(
-                allSkin: new[] { "Thin, glossy black three-inch scales" },
-                allEyes: new[] { "Deep-socketed eyes" },
-                allOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Three inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
+                commonSkin: new[] { "Thin, glossy black three-inch scales" },
+                commonEyes: new[] { "Deep-socketed eyes" },
+                commonOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Three inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
             appearances[CreatureConstants.Dragon_Black_Juvenile] = GetWeightedAppearances(
-                allSkin: new[] { "Thin, glossy black four-inch scales" },
-                allEyes: new[] { "Deep-socketed eyes" },
-                allOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Four inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
+                commonSkin: new[] { "Thin, glossy black four-inch scales" },
+                commonEyes: new[] { "Deep-socketed eyes" },
+                commonOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Four inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
             appearances[CreatureConstants.Dragon_Black_YoungAdult] = GetWeightedAppearances(
-                allSkin: new[] { "Matte black five-inch scales" },
-                allEyes: new[] { "Deep-socketed eyes" },
-                allOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Five inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
+                commonSkin: new[] { "Matte black five-inch scales" },
+                commonEyes: new[] { "Deep-socketed eyes" },
+                commonOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Five inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
             appearances[CreatureConstants.Dragon_Black_Adult] = GetWeightedAppearances(
-                allSkin: new[] { "Matte black six-inch scales" },
-                allEyes: new[] { "Deep-socketed eyes" },
-                allOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Six inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
+                commonSkin: new[] { "Matte black six-inch scales" },
+                commonEyes: new[] { "Deep-socketed eyes" },
+                commonOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Six inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
             appearances[CreatureConstants.Dragon_Black_MatureAdult] = GetWeightedAppearances(
-                allSkin: new[] { "Matte black seven-inch scales" },
-                allEyes: new[] { "Deep-socketed eyes" },
-                allOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Seven inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
+                commonSkin: new[] { "Matte black seven-inch scales" },
+                commonEyes: new[] { "Deep-socketed eyes" },
+                commonOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Seven inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
             appearances[CreatureConstants.Dragon_Black_Old] = GetWeightedAppearances(
-                allSkin: new[] { "Matte black eight-inch scales" },
-                allEyes: new[] { "Deep-socketed eyes" },
-                allOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Eight inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
+                commonSkin: new[] { "Matte black eight-inch scales" },
+                commonEyes: new[] { "Deep-socketed eyes" },
+                commonOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Eight inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
             appearances[CreatureConstants.Dragon_Black_VeryOld] = GetWeightedAppearances(
-                allSkin: new[] { "Thick, dull black nine-inch scales" },
-                allEyes: new[] { "Deep-socketed eyes" },
-                allOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Nine inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
+                commonSkin: new[] { "Thick, dull black nine-inch scales" },
+                commonEyes: new[] { "Deep-socketed eyes" },
+                commonOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Nine inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
             appearances[CreatureConstants.Dragon_Black_Ancient] = GetWeightedAppearances(
-                allSkin: new[] { "Thick, dull black ten-inch scales" },
-                allEyes: new[] { "Deep-socketed eyes" },
-                allOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Ten inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
+                commonSkin: new[] { "Thick, dull black ten-inch scales" },
+                commonEyes: new[] { "Deep-socketed eyes" },
+                commonOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Ten inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
             appearances[CreatureConstants.Dragon_Black_Wyrm] = GetWeightedAppearances(
-                allSkin: new[] { "Thick, dull black eleven-inch scales" },
-                allEyes: new[] { "Deep-socketed eyes" },
-                allOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Eleven inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
+                commonSkin: new[] { "Thick, dull black eleven-inch scales" },
+                commonEyes: new[] { "Deep-socketed eyes" },
+                commonOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Eleven inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
             appearances[CreatureConstants.Dragon_Black_GreatWyrm] = GetWeightedAppearances(
-                allSkin: new[] { "Thick, dull black twelve-inch scales" },
-                allEyes: new[] { "Deep-socketed eyes" },
-                allOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Twelve inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
+                commonSkin: new[] { "Thick, dull black twelve-inch scales" },
+                commonEyes: new[] { "Deep-socketed eyes" },
+                commonOther: new[] { "Broad nasal openings, making its face look like a skull. Segmented horns the curve forward and down, somewhat like a ram's horns, but not as curly. These horns are bone-colored near their bases, but darken to dead black at the tips. Twelve inches of deteriorated flesh around the horns and cheekbones, as though eaten by acid, leaving only thin layers of hide covering the skull. Most teeth protrude when the mouth is closed. Big spikes stud the lower jaw. Small horns jut from the chin, and a row of hornlets crown the head." });
             appearances[CreatureConstants.Dragon_Blue_Wyrmling] = GetWeightedAppearances(
-                allSkin: new[] { "Thin, iridescent azure scales", "Thin, glossy, deep indigo scales" },
+                commonSkin: new[] { "Thin, iridescent azure scales", "Thin, glossy, deep indigo scales" },
                 commonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has two points, with the primary slightly curved and reaching well forward, with the smaller secondary point behind. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed." },
                 uncommonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has one point, slightly curved and reaching well forward. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed.",
                     "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has three points, with the primary slightly curved and reaching well forward, with the smaller second and third points behind in a line. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed."});
             appearances[CreatureConstants.Dragon_Blue_VeryYoung] = GetWeightedAppearances(
-                allSkin: new[] { "Thin, iridescent azure scales", "Thin, glossy, deep indigo scales" },
+                commonSkin: new[] { "Thin, iridescent azure scales", "Thin, glossy, deep indigo scales" },
                 commonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has two points, with the primary slightly curved and reaching well forward, with the smaller secondary point behind. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed." },
                 uncommonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has one point, slightly curved and reaching well forward. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed.",
                     "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has three points, with the primary slightly curved and reaching well forward, with the smaller second and third points behind in a line. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed."});
             appearances[CreatureConstants.Dragon_Blue_Young] = GetWeightedAppearances(
-                allSkin: new[] { "Thin, iridescent azure scales", "Thin, glossy, deep indigo scales" },
+                commonSkin: new[] { "Thin, iridescent azure scales", "Thin, glossy, deep indigo scales" },
                 commonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has two points, with the primary slightly curved and reaching well forward, with the smaller secondary point behind. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed." },
                 uncommonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has one point, slightly curved and reaching well forward. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed.",
                     "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has three points, with the primary slightly curved and reaching well forward, with the smaller second and third points behind in a line. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed."});
             appearances[CreatureConstants.Dragon_Blue_Juvenile] = GetWeightedAppearances(
-                allSkin: new[] { "Thin, iridescent azure scales", "Thin, glossy, deep indigo scales" },
+                commonSkin: new[] { "Thin, iridescent azure scales", "Thin, glossy, deep indigo scales" },
                 commonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has two points, with the primary slightly curved and reaching well forward, with the smaller secondary point behind. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed." },
                 uncommonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has one point, slightly curved and reaching well forward. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed.",
                     "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has three points, with the primary slightly curved and reaching well forward, with the smaller second and third points behind in a line. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed."});
             appearances[CreatureConstants.Dragon_Blue_YoungAdult] = GetWeightedAppearances(
-                allSkin: new[] { "Iridescent azure scales", "Glossy, deep indigo scales" },
+                commonSkin: new[] { "Iridescent azure scales", "Glossy, deep indigo scales" },
                 commonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has two points, with the primary slightly curved and reaching well forward, with the smaller secondary point behind. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed." },
                 uncommonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has one point, slightly curved and reaching well forward. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed.",
                     "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has three points, with the primary slightly curved and reaching well forward, with the smaller second and third points behind in a line. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed."});
             appearances[CreatureConstants.Dragon_Blue_Adult] = GetWeightedAppearances(
-                allSkin: new[] { "Iridescent azure scales", "Glossy, deep indigo scales" },
+                commonSkin: new[] { "Iridescent azure scales", "Glossy, deep indigo scales" },
                 commonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has two points, with the primary slightly curved and reaching well forward, with the smaller secondary point behind. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed." },
                 uncommonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has one point, slightly curved and reaching well forward. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed.",
                     "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has three points, with the primary slightly curved and reaching well forward, with the smaller second and third points behind in a line. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed."});
             appearances[CreatureConstants.Dragon_Blue_MatureAdult] = GetWeightedAppearances(
-                allSkin: new[] { "Iridescent azure scales", "Glossy, deep indigo scales" },
+                commonSkin: new[] { "Iridescent azure scales", "Glossy, deep indigo scales" },
                 commonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has two points, with the primary slightly curved and reaching well forward, with the smaller secondary point behind. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed." },
                 uncommonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has one point, slightly curved and reaching well forward. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed.",
                     "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has three points, with the primary slightly curved and reaching well forward, with the smaller second and third points behind in a line. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed."});
             appearances[CreatureConstants.Dragon_Blue_Old] = GetWeightedAppearances(
-                allSkin: new[] { "Iridescent azure scales", "Glossy, deep indigo scales" },
+                commonSkin: new[] { "Iridescent azure scales", "Glossy, deep indigo scales" },
                 commonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has two points, with the primary slightly curved and reaching well forward, with the smaller secondary point behind. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed." },
                 uncommonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has one point, slightly curved and reaching well forward. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed.",
                     "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has three points, with the primary slightly curved and reaching well forward, with the smaller second and third points behind in a line. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed."});
             appearances[CreatureConstants.Dragon_Blue_VeryOld] = GetWeightedAppearances(
-                allSkin: new[] { "Thick, iridescent azure scales", "Thick, glossy, deep indigo scales" },
+                commonSkin: new[] { "Thick, iridescent azure scales", "Thick, glossy, deep indigo scales" },
                 commonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has two points, with the primary slightly curved and reaching well forward, with the smaller secondary point behind. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed." },
                 uncommonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has one point, slightly curved and reaching well forward. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed.",
                     "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has three points, with the primary slightly curved and reaching well forward, with the smaller second and third points behind in a line. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed."});
             appearances[CreatureConstants.Dragon_Blue_Ancient] = GetWeightedAppearances(
-                allSkin: new[] { "Thick, iridescent azure scales", "Thick, glossy, deep indigo scales" },
+                commonSkin: new[] { "Thick, iridescent azure scales", "Thick, glossy, deep indigo scales" },
                 commonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has two points, with the primary slightly curved and reaching well forward, with the smaller secondary point behind. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed." },
                 uncommonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has one point, slightly curved and reaching well forward. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed.",
                     "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has three points, with the primary slightly curved and reaching well forward, with the smaller second and third points behind in a line. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed."});
             appearances[CreatureConstants.Dragon_Blue_Wyrm] = GetWeightedAppearances(
-                allSkin: new[] { "Thick, iridescent azure scales", "Thick, glossy, deep indigo scales" },
+                commonSkin: new[] { "Thick, iridescent azure scales", "Thick, glossy, deep indigo scales" },
                 commonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has two points, with the primary slightly curved and reaching well forward, with the smaller secondary point behind. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed." },
                 uncommonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has one point, slightly curved and reaching well forward. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed.",
                     "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has three points, with the primary slightly curved and reaching well forward, with the smaller second and third points behind in a line. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed."});
             appearances[CreatureConstants.Dragon_Blue_GreatWyrm] = GetWeightedAppearances(
-                allSkin: new[] { "Thick, iridescent azure scales", "Thick, glossy, deep indigo scales" },
+                commonSkin: new[] { "Thick, iridescent azure scales", "Thick, glossy, deep indigo scales" },
                 commonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has two points, with the primary slightly curved and reaching well forward, with the smaller secondary point behind. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed." },
                 uncommonOther: new[] { "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has one point, slightly curved and reaching well forward. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed.",
                     "Dramatic frilled ears. A single horn atop its short, blunt head. The horn juts forward from a base that takes up most of the top of the head. The horn has three points, with the primary slightly curved and reaching well forward, with the smaller second and third points behind in a line. Rows of hornlets line the brow ridges and run back from the nostrils along the entire length of the head. Short snout with underslung lower jaw. Cluster of bladelike scales under its chin and hornlets on its cheeks. Most teeth protrude when its mouth is closed."});
             appearances[CreatureConstants.Dragon_Brass_Wyrmling] = GetWeightedAppearances(
-                allSkin: new[] { "Dull, mottled brown scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
-                allEyes: new[] { "Brass-colored eyes" },
-                allOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Sharp, bladed chin horns. Supple, expressive lips." });
+                commonSkin: new[] { "Dull, mottled brown scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
+                commonEyes: new[] { "Brass-colored eyes" },
+                commonOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Sharp, bladed chin horns. Supple, expressive lips." });
             appearances[CreatureConstants.Dragon_Brass_VeryYoung] = GetWeightedAppearances(
-                allSkin: new[] { "Dull, mottled brown scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
-                allEyes: new[] { "Brass-colored eyes" },
-                allOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Sharp, bladed chin horns. Supple, expressive lips." });
+                commonSkin: new[] { "Dull, mottled brown scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
+                commonEyes: new[] { "Brass-colored eyes" },
+                commonOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Sharp, bladed chin horns. Supple, expressive lips." });
             appearances[CreatureConstants.Dragon_Brass_Young] = GetWeightedAppearances(
-                allSkin: new[] { "Dull brown scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
-                allEyes: new[] { "Brass-colored eyes" },
-                allOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Sharp, bladed chin horns. Supple, expressive lips." });
+                commonSkin: new[] { "Dull brown scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
+                commonEyes: new[] { "Brass-colored eyes" },
+                commonOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Sharp, bladed chin horns. Supple, expressive lips." });
             appearances[CreatureConstants.Dragon_Brass_Juvenile] = GetWeightedAppearances(
-                allSkin: new[] { "Dull brown scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
-                allEyes: new[] { "Brass-colored eyes" },
-                allOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Sharp, bladed chin horns. Supple, expressive lips." });
+                commonSkin: new[] { "Dull brown scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
+                commonEyes: new[] { "Brass-colored eyes" },
+                commonOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Sharp, bladed chin horns. Supple, expressive lips." });
             appearances[CreatureConstants.Dragon_Brass_YoungAdult] = GetWeightedAppearances(
-                allSkin: new[] { "Brown scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
-                allEyes: new[] { "Brass-colored eyes with small pupils" },
-                allOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Very sharp, bladed chin horns. Supple, expressive lips." });
+                commonSkin: new[] { "Brown scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
+                commonEyes: new[] { "Brass-colored eyes with small pupils" },
+                commonOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Very sharp, bladed chin horns. Supple, expressive lips." });
             appearances[CreatureConstants.Dragon_Brass_Adult] = GetWeightedAppearances(
-                allSkin: new[] { "Brown scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
-                allEyes: new[] { "Brass-colored eyes with small pupils" },
-                allOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Very sharp, bladed chin horns. Supple, expressive lips." });
+                commonSkin: new[] { "Brown scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
+                commonEyes: new[] { "Brass-colored eyes with small pupils" },
+                commonOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Very sharp, bladed chin horns. Supple, expressive lips." });
             appearances[CreatureConstants.Dragon_Brass_MatureAdult] = GetWeightedAppearances(
-                allSkin: new[] { "Brass-colored scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
-                allEyes: new[] { "Brass-colored eyes with small pupils" },
-                allOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Very sharp, bladed chin horns. Supple, expressive lips." });
+                commonSkin: new[] { "Brass-colored scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
+                commonEyes: new[] { "Brass-colored eyes with small pupils" },
+                commonOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Very sharp, bladed chin horns. Supple, expressive lips." });
             appearances[CreatureConstants.Dragon_Brass_Old] = GetWeightedAppearances(
-                allSkin: new[] { "Brass-colored scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
-                allEyes: new[] { "Brass-colored eyes with very small pupils" },
-                allOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Very sharp, bladed chin horns. Supple, expressive lips." });
+                commonSkin: new[] { "Brass-colored scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
+                commonEyes: new[] { "Brass-colored eyes with very small pupils" },
+                commonOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Very sharp, bladed chin horns. Supple, expressive lips." });
             appearances[CreatureConstants.Dragon_Brass_VeryOld] = GetWeightedAppearances(
-                allSkin: new[] { "Warm, brass-colored scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
-                allEyes: new[] { "Brass-colored eyes with very small pupils" },
-                allOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Extremely sharp, bladed chin horns. Supple, expressive lips." });
+                commonSkin: new[] { "Warm, brass-colored scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
+                commonEyes: new[] { "Brass-colored eyes with very small pupils" },
+                commonOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Extremely sharp, bladed chin horns. Supple, expressive lips." });
             appearances[CreatureConstants.Dragon_Brass_Ancient] = GetWeightedAppearances(
-                allSkin: new[] { "Warm, brass-colored scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
-                allEyes: new[] { "Brass-colored eyes with very small pupils" },
-                allOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Extremely sharp, bladed chin horns. Supple, expressive lips." });
+                commonSkin: new[] { "Warm, brass-colored scales. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
+                commonEyes: new[] { "Brass-colored eyes with very small pupils" },
+                commonOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Extremely sharp, bladed chin horns. Supple, expressive lips." });
             appearances[CreatureConstants.Dragon_Brass_Wyrm] = GetWeightedAppearances(
-                allSkin: new[] { "Brass-colored scales with a warm, burnished appearance. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
-                allEyes: new[] { "Eyes look like pupil-less, molten metal orbs" },
-                allOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Extremely sharp, bladed chin horns. Supple, expressive lips." });
+                commonSkin: new[] { "Brass-colored scales with a warm, burnished appearance. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
+                commonEyes: new[] { "Eyes look like pupil-less, molten metal orbs" },
+                commonOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Extremely sharp, bladed chin horns. Supple, expressive lips." });
             appearances[CreatureConstants.Dragon_Brass_GreatWyrm] = GetWeightedAppearances(
-                allSkin: new[] { "Brass-colored scales with a warm, burnished appearance. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
-                allEyes: new[] { "Eyes look like pupil-less, molten metal orbs" },
-                allOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Extremely sharp, bladed chin horns. Supple, expressive lips." });
+                commonSkin: new[] { "Brass-colored scales with a warm, burnished appearance. Wings and frills are mottled green where they join the body, and have reddish tints at the outer edges." },
+                commonEyes: new[] { "Eyes look like pupil-less, molten metal orbs" },
+                commonOther: new[] { "Fluted plate sweeping back from its eye sockets, forehead, and cheeks. The plate is dished like a plowshare. Extremely sharp, bladed chin horns. Supple, expressive lips." });
             appearances[CreatureConstants.Dragon_Bronze_Wyrmling] = GetWeightedAppearances(
-                allSkin: new[] { "Smooth, flat, yellow scales tinged with green, showing only a hint of bronze" },
-                allEyes: new[] { "Green eyes" },
-                allOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
+                commonSkin: new[] { "Smooth, flat, yellow scales tinged with green, showing only a hint of bronze" },
+                commonEyes: new[] { "Green eyes" },
+                commonOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
             appearances[CreatureConstants.Dragon_Bronze_VeryYoung] = GetWeightedAppearances(
-                allSkin: new[] { "Smooth, flat, yellow scales tinged with green and bronze" },
-                allEyes: new[] { "Green eyes" },
-                allOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
+                commonSkin: new[] { "Smooth, flat, yellow scales tinged with green and bronze" },
+                commonEyes: new[] { "Green eyes" },
+                commonOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
             appearances[CreatureConstants.Dragon_Bronze_Young] = GetWeightedAppearances(
-                allSkin: new[] { "Smooth, flat, yellow scales tinged with bronze" },
-                allEyes: new[] { "Green eyes" },
-                allOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
+                commonSkin: new[] { "Smooth, flat, yellow scales tinged with bronze" },
+                commonEyes: new[] { "Green eyes" },
+                commonOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
             appearances[CreatureConstants.Dragon_Bronze_Juvenile] = GetWeightedAppearances(
-                allSkin: new[] { "Smooth, flat, yellow scales mottled with bronze" },
-                allEyes: new[] { "Green eyes with somewhat-faded pupils" },
-                allOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
+                commonSkin: new[] { "Smooth, flat, yellow scales mottled with bronze" },
+                commonEyes: new[] { "Green eyes with somewhat-faded pupils" },
+                commonOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
             appearances[CreatureConstants.Dragon_Bronze_YoungAdult] = GetWeightedAppearances(
-                allSkin: new[] { "Rich, bronze scales" },
-                allEyes: new[] { "Green eyes with somewhat-faded pupils" },
-                allOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
+                commonSkin: new[] { "Rich, bronze scales" },
+                commonEyes: new[] { "Green eyes with somewhat-faded pupils" },
+                commonOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
             appearances[CreatureConstants.Dragon_Bronze_Adult] = GetWeightedAppearances(
-                allSkin: new[] { "Rich, bronze scales" },
-                allEyes: new[] { "Green eyes with somewhat-faded pupils" },
-                allOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
+                commonSkin: new[] { "Rich, bronze scales" },
+                commonEyes: new[] { "Green eyes with somewhat-faded pupils" },
+                commonOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
             appearances[CreatureConstants.Dragon_Bronze_MatureAdult] = GetWeightedAppearances(
-                allSkin: new[] { "Rich, bronze scales" },
-                allEyes: new[] { "Green eyes with faded pupils" },
-                allOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Smaller horns have a secondary point. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
+                commonSkin: new[] { "Rich, bronze scales" },
+                commonEyes: new[] { "Green eyes with faded pupils" },
+                commonOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Smaller horns have a secondary point. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
             appearances[CreatureConstants.Dragon_Bronze_Old] = GetWeightedAppearances(
-                allSkin: new[] { "Rich, bronze scales" },
-                allEyes: new[] { "Green eyes with faded pupils" },
-                allOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Smaller horns have a secondary point. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
+                commonSkin: new[] { "Rich, bronze scales" },
+                commonEyes: new[] { "Green eyes with faded pupils" },
+                commonOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Smaller horns have a secondary point. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
             appearances[CreatureConstants.Dragon_Bronze_VeryOld] = GetWeightedAppearances(
-                allSkin: new[] { "Rich, bronze scales with a blue-black tint to the edges" },
-                allEyes: new[] { "Green eyes with faded pupils" },
-                allOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Smaller horns have a secondary point. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
+                commonSkin: new[] { "Rich, bronze scales with a blue-black tint to the edges" },
+                commonEyes: new[] { "Green eyes with faded pupils" },
+                commonOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Smaller horns have a secondary point. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
             appearances[CreatureConstants.Dragon_Bronze_Ancient] = GetWeightedAppearances(
-                allSkin: new[] { "Rich, bronze scales with a blue-black tint to the edges" },
-                allEyes: new[] { "Eyes have no pupils, and resemble glowing green orbs" },
-                allOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Smaller horns have a secondary point. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
+                commonSkin: new[] { "Rich, bronze scales with a blue-black tint to the edges" },
+                commonEyes: new[] { "Eyes have no pupils, and resemble glowing green orbs" },
+                commonOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Smaller horns have a secondary point. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
             appearances[CreatureConstants.Dragon_Bronze_Wyrm] = GetWeightedAppearances(
-                allSkin: new[] { "Rich, bronze scales with a blue-black tint to the edges" },
-                allEyes: new[] { "Eyes have no pupils, and resemble glowing green orbs" },
-                allOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Smaller horns have a secondary point. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
+                commonSkin: new[] { "Rich, bronze scales with a blue-black tint to the edges" },
+                commonEyes: new[] { "Eyes have no pupils, and resemble glowing green orbs" },
+                commonOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Smaller horns have a secondary point. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
             appearances[CreatureConstants.Dragon_Bronze_GreatWyrm] = GetWeightedAppearances(
-                allSkin: new[] { "Rich, bronze scales with a blue-black tint to the edges" },
-                allEyes: new[] { "Eyes have no pupils, and resemble glowing green orbs" },
-                allOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Smaller horns have a secondary point. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
+                commonSkin: new[] { "Rich, bronze scales with a blue-black tint to the edges" },
+                commonEyes: new[] { "Eyes have no pupils, and resemble glowing green orbs" },
+                commonOther: new[] { "Ribbed and fluted crest sweeping back from the cheeks and eyes. Ribs in the crest end in curving horns. The horns are smooth, dark, and oval in cross-section, curving slightly inward toward the spine. Large horns on the top of the head. Smaller horns have a secondary point. Beaklike snout. Small head frill and tall neck frill. Webbed feet and webbing behind the forelimbs." });
             appearances[CreatureConstants.Dragon_Copper_Wyrmling] = GetWeightedAppearances(
-                allSkin: new[] { "Ruddy brown scales with a metallic tint. Green and red mottling along the trailing edges of the wings." },
-                allEyes: new[] { "Turquoise eyes" },
-                allOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. One layer of triangular blades point down from the chin." });
+                commonSkin: new[] { "Ruddy brown scales with a metallic tint. Green and red mottling along the trailing edges of the wings." },
+                commonEyes: new[] { "Turquoise eyes" },
+                commonOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. One layer of triangular blades point down from the chin." });
             appearances[CreatureConstants.Dragon_Copper_VeryYoung] = GetWeightedAppearances(
-                allSkin: new[] { "Ruddy brown scales with a metallic tint. Green and red mottling along the trailing edges of the wings." },
-                allEyes: new[] { "Turquoise eyes" },
-                allOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. One layer of triangular blades point down from the chin." });
+                commonSkin: new[] { "Ruddy brown scales with a metallic tint. Green and red mottling along the trailing edges of the wings." },
+                commonEyes: new[] { "Turquoise eyes" },
+                commonOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. One layer of triangular blades point down from the chin." });
             appearances[CreatureConstants.Dragon_Copper_Young] = GetWeightedAppearances(
-                allSkin: new[] { "Ruddy brown scales with a metallic tint. Green and red mottling along the trailing edges of the wings." },
-                allEyes: new[] { "Turquoise eyes" },
-                allOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. One layer of triangular blades point down from the chin." });
+                commonSkin: new[] { "Ruddy brown scales with a metallic tint. Green and red mottling along the trailing edges of the wings." },
+                commonEyes: new[] { "Turquoise eyes" },
+                commonOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. One layer of triangular blades point down from the chin." });
             appearances[CreatureConstants.Dragon_Copper_Juvenile] = GetWeightedAppearances(
-                allSkin: new[] { "Ruddy brown scales with a metallic tint. Green and red mottling along the trailing edges of the wings." },
-                allEyes: new[] { "Turquoise eyes with somewhat-faded pupils" },
-                allOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. One layer of triangular blades point down from the chin." });
+                commonSkin: new[] { "Ruddy brown scales with a metallic tint. Green and red mottling along the trailing edges of the wings." },
+                commonEyes: new[] { "Turquoise eyes with somewhat-faded pupils" },
+                commonOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. One layer of triangular blades point down from the chin." });
             appearances[CreatureConstants.Dragon_Copper_YoungAdult] = GetWeightedAppearances(
-                allSkin: new[] { "Coppery scales with a soft, warm gloss. Green and red mottling along the trailing edges of the wings." },
-                allEyes: new[] { "Turquoise eyes with somewhat-faded pupils" },
-                allOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Two layers of large, triangular blades point down from the chin." });
+                commonSkin: new[] { "Coppery scales with a soft, warm gloss. Green and red mottling along the trailing edges of the wings." },
+                commonEyes: new[] { "Turquoise eyes with somewhat-faded pupils" },
+                commonOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Two layers of large, triangular blades point down from the chin." });
             appearances[CreatureConstants.Dragon_Copper_Adult] = GetWeightedAppearances(
-                allSkin: new[] { "Coppery scales with a soft, warm gloss. Green and red mottling along the trailing edges of the wings." },
-                allEyes: new[] { "Turquoise eyes with somewhat-faded pupils" },
-                allOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Two layers of large, triangular blades point down from the chin." });
+                commonSkin: new[] { "Coppery scales with a soft, warm gloss. Green and red mottling along the trailing edges of the wings." },
+                commonEyes: new[] { "Turquoise eyes with somewhat-faded pupils" },
+                commonOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Two layers of large, triangular blades point down from the chin." });
             appearances[CreatureConstants.Dragon_Copper_MatureAdult] = GetWeightedAppearances(
-                allSkin: new[] { "Coppery scales with a soft, warm gloss. Green and red mottling along the trailing edges of the wings." },
-                allEyes: new[] { "Turquoise eyes with faded pupils" },
-                allOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Two layers of large, triangular blades point down from the chin." });
+                commonSkin: new[] { "Coppery scales with a soft, warm gloss. Green and red mottling along the trailing edges of the wings." },
+                commonEyes: new[] { "Turquoise eyes with faded pupils" },
+                commonOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Two layers of large, triangular blades point down from the chin." });
             appearances[CreatureConstants.Dragon_Copper_Old] = GetWeightedAppearances(
-                allSkin: new[] { "Coppery scales with a soft, warm gloss. Green and red mottling along the trailing edges of the wings." },
-                allEyes: new[] { "Turquoise eyes with faded pupils" },
-                allOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Two layers of large, triangular blades point down from the chin." });
+                commonSkin: new[] { "Coppery scales with a soft, warm gloss. Green and red mottling along the trailing edges of the wings." },
+                commonEyes: new[] { "Turquoise eyes with faded pupils" },
+                commonOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Two layers of large, triangular blades point down from the chin." });
             appearances[CreatureConstants.Dragon_Copper_VeryOld] = GetWeightedAppearances(
-                allSkin: new[] { "Coppery scales with a soft, warm gloss and a green tint. Green and red mottling along the trailing edges of the wings." },
-                allEyes: new[] { "Turquoise eyes with faded pupils" },
-                allOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Three layers of huge, triangular blades point down from the chin." });
+                commonSkin: new[] { "Coppery scales with a soft, warm gloss and a green tint. Green and red mottling along the trailing edges of the wings." },
+                commonEyes: new[] { "Turquoise eyes with faded pupils" },
+                commonOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Three layers of huge, triangular blades point down from the chin." });
             appearances[CreatureConstants.Dragon_Copper_Ancient] = GetWeightedAppearances(
-                allSkin: new[] { "Coppery scales with a soft, warm gloss and a green tint. Green and red mottling along the trailing edges of the wings." },
-                allEyes: new[] { "Turquoise eyes with very faded pupils" },
-                allOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Three layers of huge, triangular blades point down from the chin." });
+                commonSkin: new[] { "Coppery scales with a soft, warm gloss and a green tint. Green and red mottling along the trailing edges of the wings." },
+                commonEyes: new[] { "Turquoise eyes with very faded pupils" },
+                commonOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Three layers of huge, triangular blades point down from the chin." });
             appearances[CreatureConstants.Dragon_Copper_Wyrm] = GetWeightedAppearances(
-                allSkin: new[] { "Coppery scales with a soft, warm gloss and a green tint. Green and red mottling along the trailing edges of the wings." },
-                allEyes: new[] { "Turquoise eyes with very faded pupils" },
-                allOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Three layers of huge, triangular blades point down from the chin." });
+                commonSkin: new[] { "Coppery scales with a soft, warm gloss and a green tint. Green and red mottling along the trailing edges of the wings." },
+                commonEyes: new[] { "Turquoise eyes with very faded pupils" },
+                commonOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Three layers of huge, triangular blades point down from the chin." });
             appearances[CreatureConstants.Dragon_Copper_GreatWyrm] = GetWeightedAppearances(
-                allSkin: new[] { "Coppery scales with a soft, warm gloss and a green tint. Green and red mottling along the trailing edges of the wings." },
-                allEyes: new[] { "Eyes have no pupils, and resemble glowing turquoise orbs" },
-                allOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Three layers of huge, triangular blades point down from the chin." });
+                commonSkin: new[] { "Coppery scales with a soft, warm gloss and a green tint. Green and red mottling along the trailing edges of the wings." },
+                commonEyes: new[] { "Eyes have no pupils, and resemble glowing turquoise orbs" },
+                commonOther: new[] { "Thick thighs and shoulders. Short face, no beak. Broad, smooth browplates jut over the eyes. Long, flat, coppery horns extend back from the browplates in a series of segments. Backswept cheek ridges and frills on the back of the lower jaw that sweep forward slightly. Three layers of huge, triangular blades point down from the chin." });
             appearances[CreatureConstants.Dragon_Gold_Wyrmling] = GetWeightedAppearances(
-                allSkin: new[] { "Dark yellow scales with golden metallic flecks" },
-                allEyes: new[] { "Slanted, very narrow golden eyes" },
-                allOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills." });
+                commonSkin: new[] { "Dark yellow scales with golden metallic flecks" },
+                commonEyes: new[] { "Slanted, very narrow golden eyes" },
+                commonOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills." });
             appearances[CreatureConstants.Dragon_Gold_VeryYoung] = GetWeightedAppearances(
-                allSkin: new[] { "Dark yellow scales with large golden metallic flecks" },
-                allEyes: new[] { "Slanted, very narrow golden eyes" },
-                allOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Eight whiskers, four on upper jaw and four below, around the mouth that look like the barbels of a catfish." });
+                commonSkin: new[] { "Dark yellow scales with large golden metallic flecks" },
+                commonEyes: new[] { "Slanted, very narrow golden eyes" },
+                commonOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Eight whiskers, four on upper jaw and four below, around the mouth that look like the barbels of a catfish." });
             appearances[CreatureConstants.Dragon_Gold_Young] = GetWeightedAppearances(
-                allSkin: new[] { "Dark yellow scales mottled with metallic gold" },
-                allEyes: new[] { "Slanted, very narrow golden eyes" },
-                allOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Eight whiskers, four on upper jaw and four below, around the mouth that look like the barbels of a catfish." });
+                commonSkin: new[] { "Dark yellow scales mottled with metallic gold" },
+                commonEyes: new[] { "Slanted, very narrow golden eyes" },
+                commonOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Eight whiskers, four on upper jaw and four below, around the mouth that look like the barbels of a catfish." });
             appearances[CreatureConstants.Dragon_Gold_Juvenile] = GetWeightedAppearances(
-                allSkin: new[] { "Metallic golden scales with large dark yellow flecks" },
-                allEyes: new[] { "Slanted, very narrow golden eyes with somewhat-faded pupils" },
-                allOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Eight whiskers, four on upper jaw and four below, around the mouth that look like the barbels of a catfish." });
+                commonSkin: new[] { "Metallic golden scales with large dark yellow flecks" },
+                commonEyes: new[] { "Slanted, very narrow golden eyes with somewhat-faded pupils" },
+                commonOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Eight whiskers, four on upper jaw and four below, around the mouth that look like the barbels of a catfish." });
             appearances[CreatureConstants.Dragon_Gold_YoungAdult] = GetWeightedAppearances(
-                allSkin: new[] { "Metallic golden scales with dark yellow flecks" },
-                allEyes: new[] { "Slanted, very narrow golden eyes with somewhat-faded pupils" },
-                allOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Eight whiskers, four on upper jaw and four below, around the mouth that look like the barbels of a catfish." });
+                commonSkin: new[] { "Metallic golden scales with dark yellow flecks" },
+                commonEyes: new[] { "Slanted, very narrow golden eyes with somewhat-faded pupils" },
+                commonOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Eight whiskers, four on upper jaw and four below, around the mouth that look like the barbels of a catfish." });
             appearances[CreatureConstants.Dragon_Gold_Adult] = GetWeightedAppearances(
-                allSkin: new[] { "Golden metallic scales" },
-                allEyes: new[] { "Slanted, very narrow golden eyes with somewhat-faded pupils" },
-                allOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Ten whiskers, five on upper jaw and five below, around the mouth that look like the barbels of a catfish." });
+                commonSkin: new[] { "Golden metallic scales" },
+                commonEyes: new[] { "Slanted, very narrow golden eyes with somewhat-faded pupils" },
+                commonOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Ten whiskers, five on upper jaw and five below, around the mouth that look like the barbels of a catfish." });
             appearances[CreatureConstants.Dragon_Gold_MatureAdult] = GetWeightedAppearances(
-                allSkin: new[] { "Golden metallic scales" },
-                allEyes: new[] { "Slanted, very narrow golden eyes with faded pupils" },
-                allOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Ten whiskers, five on upper jaw and five below, around the mouth that look like the barbels of a catfish." });
+                commonSkin: new[] { "Golden metallic scales" },
+                commonEyes: new[] { "Slanted, very narrow golden eyes with faded pupils" },
+                commonOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Ten whiskers, five on upper jaw and five below, around the mouth that look like the barbels of a catfish." });
             appearances[CreatureConstants.Dragon_Gold_Old] = GetWeightedAppearances(
-                allSkin: new[] { "Golden metallic scales" },
-                allEyes: new[] { "Slanted, very narrow golden eyes with faded pupils" },
-                allOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Ten whiskers, five on upper jaw and five below, around the mouth that look like the barbels of a catfish." });
+                commonSkin: new[] { "Golden metallic scales" },
+                commonEyes: new[] { "Slanted, very narrow golden eyes with faded pupils" },
+                commonOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Ten whiskers, five on upper jaw and five below, around the mouth that look like the barbels of a catfish." });
             appearances[CreatureConstants.Dragon_Gold_VeryOld] = GetWeightedAppearances(
-                allSkin: new[] { "Golden metallic scales" },
-                allEyes: new[] { "Slanted, very narrow golden eyes with faded pupils" },
-                allOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Ten whiskers, five on upper jaw and five below, around the mouth that look like the barbels of a catfish." });
+                commonSkin: new[] { "Golden metallic scales" },
+                commonEyes: new[] { "Slanted, very narrow golden eyes with faded pupils" },
+                commonOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Ten whiskers, five on upper jaw and five below, around the mouth that look like the barbels of a catfish." });
             appearances[CreatureConstants.Dragon_Gold_Ancient] = GetWeightedAppearances(
-                allSkin: new[] { "Golden metallic scales" },
-                allEyes: new[] { "Slanted, very narrow eyes that lack pupils, resembling pools of molten gold." },
-                allOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Twelve whiskers, six on upper jaw and six below, around the mouth that look like the barbels of a catfish." });
+                commonSkin: new[] { "Golden metallic scales" },
+                commonEyes: new[] { "Slanted, very narrow eyes that lack pupils, resembling pools of molten gold." },
+                commonOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Twelve whiskers, six on upper jaw and six below, around the mouth that look like the barbels of a catfish." });
             appearances[CreatureConstants.Dragon_Gold_Wyrm] = GetWeightedAppearances(
-                allSkin: new[] { "Golden metallic scales" },
-                allEyes: new[] { "Slanted, very narrow eyes that lack pupils, resembling pools of molten gold." },
-                allOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Twelve whiskers, six on upper jaw and six below, around the mouth that look like the barbels of a catfish." });
+                commonSkin: new[] { "Golden metallic scales" },
+                commonEyes: new[] { "Slanted, very narrow eyes that lack pupils, resembling pools of molten gold." },
+                commonOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Twelve whiskers, six on upper jaw and six below, around the mouth that look like the barbels of a catfish." });
             appearances[CreatureConstants.Dragon_Gold_GreatWyrm] = GetWeightedAppearances(
-                allSkin: new[] { "Golden metallic scales" },
-                allEyes: new[] { "Slanted, very narrow eyes that lack pupils, resembling pools of molten gold." },
-                allOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Twelve whiskers, six on upper jaw and six below, around the mouth that look like the barbels of a catfish." });
+                commonSkin: new[] { "Golden metallic scales" },
+                commonEyes: new[] { "Slanted, very narrow eyes that lack pupils, resembling pools of molten gold." },
+                commonOther: new[] { "Twin horns, smooth and metallic, coming off the head. Twin neck frills. Twelve whiskers, six on upper jaw and six below, around the mouth that look like the barbels of a catfish." });
             appearances[CreatureConstants.Dragon_Green_Wyrmling] = GetWeightedAppearances(
-                allSkin: new[] { "Thin, very small, deep black-green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
-                allEyes: new[] { "Green eyes" },
-                allOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
+                commonSkin: new[] { "Thin, very small, deep black-green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
+                commonEyes: new[] { "Green eyes" },
+                commonOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
             appearances[CreatureConstants.Dragon_Green_VeryYoung] = GetWeightedAppearances(
-                allSkin: new[] { "Thin, very small, black-green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
-                allEyes: new[] { "Green eyes" },
-                allOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
+                commonSkin: new[] { "Thin, very small, black-green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
+                commonEyes: new[] { "Green eyes" },
+                commonOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
             appearances[CreatureConstants.Dragon_Green_Young] = GetWeightedAppearances(
-                allSkin: new[] { "Thin, small, forest green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
-                allEyes: new[] { "Green eyes" },
-                allOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
+                commonSkin: new[] { "Thin, small, forest green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
+                commonEyes: new[] { "Green eyes" },
+                commonOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
             appearances[CreatureConstants.Dragon_Green_Juvenile] = GetWeightedAppearances(
-                allSkin: new[] { "Thin, small, forest green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
-                allEyes: new[] { "Green eyes" },
-                allOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
+                commonSkin: new[] { "Thin, small, forest green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
+                commonEyes: new[] { "Green eyes" },
+                commonOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
             appearances[CreatureConstants.Dragon_Green_YoungAdult] = GetWeightedAppearances(
-                allSkin: new[] { "Forest green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
-                allEyes: new[] { "Green eyes" },
-                allOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
+                commonSkin: new[] { "Forest green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
+                commonEyes: new[] { "Green eyes" },
+                commonOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
             appearances[CreatureConstants.Dragon_Green_Adult] = GetWeightedAppearances(
-                allSkin: new[] { "Forest green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
-                allEyes: new[] { "Green eyes" },
-                allOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
+                commonSkin: new[] { "Forest green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
+                commonEyes: new[] { "Green eyes" },
+                commonOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
             appearances[CreatureConstants.Dragon_Green_MatureAdult] = GetWeightedAppearances(
-                allSkin: new[] { "Large, emerald scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
-                allEyes: new[] { "Green eyes" },
-                allOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
+                commonSkin: new[] { "Large, emerald scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
+                commonEyes: new[] { "Green eyes" },
+                commonOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
             appearances[CreatureConstants.Dragon_Green_Old] = GetWeightedAppearances(
-                allSkin: new[] { "Large, emerald scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
-                allEyes: new[] { "Green eyes" },
-                allOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
+                commonSkin: new[] { "Large, emerald scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
+                commonEyes: new[] { "Green eyes" },
+                commonOther: new[] { "Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings." });
             appearances[CreatureConstants.Dragon_Green_VeryOld] = GetWeightedAppearances(
-                allSkin: new[] { "Thick, large, emerald scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
-                allEyes: new[] { "Green eyes" },
-                allOther: ["Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings."]);
+                commonSkin: new[] { "Thick, large, emerald scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges." },
+                commonEyes: new[] { "Green eyes" },
+                commonOther: ["Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings."]);
             appearances[CreatureConstants.Dragon_Green_Ancient] = GetWeightedAppearances(
-                allSkin: ["Thick, huge, olive-green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges."],
-                allEyes: ["Green eyes"],
-                allOther: ["Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings."]);
+                commonSkin: ["Thick, huge, olive-green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges."],
+                commonEyes: ["Green eyes"],
+                commonOther: ["Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings."]);
             appearances[CreatureConstants.Dragon_Green_Wyrm] = GetWeightedAppearances(
-                allSkin: ["Thick, huge, olive-green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges."],
-                allEyes: ["Green eyes"],
-                allOther: ["Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings."]);
+                commonSkin: ["Thick, huge, olive-green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges."],
+                commonEyes: ["Green eyes"],
+                commonOther: ["Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings."]);
             appearances[CreatureConstants.Dragon_Green_GreatWyrm] = GetWeightedAppearances(
-                allSkin: ["Thick, huge, olive-green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges."],
-                allEyes: ["Green eyes"],
-                allOther: ["Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings."]);
+                commonSkin: ["Thick, huge, olive-green scales. Wings have a dappled pattern, darker near the leading edges and lighter toward the trailing edges."],
+                commonEyes: ["Green eyes"],
+                commonOther: ["Heavily curved jawline and a crest that begins near the eyes and continues down most of the spine. The crest reaches its full height just behind the skull. No external ears, just ear openings."]);
             appearances[CreatureConstants.Dragon_Red_Wyrmling] = GetWeightedAppearances(
-                allSkin: ["Small, bright, glossy, scarlet scales"],
-                allEyes: ["Red eyes"],
-                allOther: [ "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                commonSkin: ["Small, bright, glossy, scarlet scales"],
+                commonEyes: ["Red eyes"],
+                commonOther: [ "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
                     "Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
                     "Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
                     "Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
@@ -1849,9 +1794,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
                     "Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears." ]);
             appearances[CreatureConstants.Dragon_Red_VeryYoung] = GetWeightedAppearances(
-                allSkin: ["Small, glossy, scarlet scales"],
-                allEyes: ["Red eyes"],
-                allOther: [ "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                commonSkin: ["Small, glossy, scarlet scales"],
+                commonEyes: ["Red eyes"],
+                commonOther: [ "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
                     "Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
                     "Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
                     "Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
@@ -1864,9 +1809,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
                     "Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears." ]);
             appearances[CreatureConstants.Dragon_Red_Young] = GetWeightedAppearances(
-                allSkin: ["Small scarlet scales"],
-                allEyes: ["Red eyes"],
-                allOther: [ "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                commonSkin: ["Small scarlet scales"],
+                commonEyes: ["Red eyes"],
+                commonOther: [ "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
                     "Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
                     "Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
                     "Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
@@ -1879,9 +1824,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
                     "Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears." ]);
             appearances[CreatureConstants.Dragon_Red_Juvenile] = GetWeightedAppearances(
-                allSkin: new[] { "Smooth, dull, deep red scales" },
-                allEyes: new[] { "Red eyes with somewhat-faded pupils" },
-                allOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                commonSkin: new[] { "Smooth, dull, deep red scales" },
+                commonEyes: new[] { "Red eyes with somewhat-faded pupils" },
+                commonOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
                     "Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
                     "Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
                     "Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
@@ -1894,9 +1839,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
                     "Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears." });
             appearances[CreatureConstants.Dragon_Red_YoungAdult] = GetWeightedAppearances(
-                allSkin: new[] { "Smooth, dull, deep red scales" },
-                allEyes: new[] { "Red eyes with somewhat-faded pupils" },
-                allOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                commonSkin: new[] { "Smooth, dull, deep red scales" },
+                commonEyes: new[] { "Red eyes with somewhat-faded pupils" },
+                commonOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
                     "Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
                     "Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
                     "Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
@@ -1909,9 +1854,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
                     "Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears." });
             appearances[CreatureConstants.Dragon_Red_Adult] = GetWeightedAppearances(
-                allSkin: new[] { "Smooth, dull, deep red scales" },
-                allEyes: new[] { "Red eyes with somewhat-faded pupils" },
-                allOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
+                commonSkin: new[] { "Smooth, dull, deep red scales" },
+                commonEyes: new[] { "Red eyes with somewhat-faded pupils" },
+                commonOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
                     "Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
                     "Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
                     "Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
@@ -1924,9 +1869,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears.",
                     "Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears." });
             appearances[CreatureConstants.Dragon_Red_MatureAdult] = GetWeightedAppearances(
-                allSkin: new[] { "Smooth, dull, deep red scales" },
-                allEyes: new[] { "Red eyes with faded pupils" },
-                allOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                commonSkin: new[] { "Smooth, dull, deep red scales" },
+                commonEyes: new[] { "Red eyes with faded pupils" },
+                commonOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
                     "Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
                     "Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
                     "Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
@@ -1939,9 +1884,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
                     "Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns." });
             appearances[CreatureConstants.Dragon_Red_Old] = GetWeightedAppearances(
-                allSkin: new[] { "Large, thick red scales" },
-                allEyes: new[] { "Red eyes with faded pupils" },
-                allOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                commonSkin: new[] { "Large, thick red scales" },
+                commonEyes: new[] { "Red eyes with faded pupils" },
+                commonOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
                     "Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
                     "Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
                     "Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
@@ -1954,9 +1899,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
                     "Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns." });
             appearances[CreatureConstants.Dragon_Red_VeryOld] = GetWeightedAppearances(
-                allSkin: new[] { "Large, thick red scales" },
-                allEyes: new[] { "Red eyes with faded pupils" },
-                allOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                commonSkin: new[] { "Large, thick red scales" },
+                commonEyes: new[] { "Red eyes with faded pupils" },
+                commonOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
                     "Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
                     "Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
                     "Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
@@ -1969,9 +1914,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
                     "Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns." });
             appearances[CreatureConstants.Dragon_Red_Ancient] = GetWeightedAppearances(
-                allSkin: new[] { "Large, thick red scales" },
-                allEyes: new[] { "Red eyes with heavily-faded pupils" },
-                allOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                commonSkin: new[] { "Large, thick red scales" },
+                commonEyes: new[] { "Red eyes with heavily-faded pupils" },
+                commonOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
                     "Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
                     "Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
                     "Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
@@ -1984,9 +1929,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
                     "Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns." });
             appearances[CreatureConstants.Dragon_Red_Wyrm] = GetWeightedAppearances(
-                allSkin: new[] { "Large, thick red scales" },
-                allEyes: new[] { "Red eyes with heavily-faded pupils" },
-                allOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                commonSkin: new[] { "Large, thick red scales" },
+                commonEyes: new[] { "Red eyes with heavily-faded pupils" },
+                commonOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
                     "Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
                     "Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
                     "Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
@@ -1999,9 +1944,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
                     "Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns." });
             appearances[CreatureConstants.Dragon_Red_GreatWyrm] = GetWeightedAppearances(
-                allSkin: new[] { "Large, thick red scales" },
-                allEyes: new[] { "Eyes with no pupils, resembling molten lava orbs" },
-                allOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
+                commonSkin: new[] { "Large, thick red scales" },
+                commonEyes: new[] { "Eyes with no pupils, resembling molten lava orbs" },
+                commonOther: new[] { "Two straight, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
                     "Two twisted, bone-white horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
                     "Two straight, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
                     "Two twisted, light gray horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
@@ -2014,119 +1959,119 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Two straight, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns.",
                     "Two twisted, night-black horns sweep back atop the head. Rows of small horns run along the top of the head. Small horns on the cheeks and lower jaw as well. Fringed ears that merge with the cheek horns." });
             appearances[CreatureConstants.Dragon_Silver_Wyrmling] = GetWeightedAppearances(
-                allSkin: new[] { "Blue-gray scales with silver highlights" },
-                allEyes: new[] { "Silver eyes" },
-                allOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
+                commonSkin: new[] { "Blue-gray scales with silver highlights" },
+                commonEyes: new[] { "Silver eyes" },
+                commonOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
             appearances[CreatureConstants.Dragon_Silver_VeryYoung] = GetWeightedAppearances(
-                allSkin: new[] { "Blue-gray scales with silver highlights" },
-                allEyes: new[] { "Silver eyes" },
-                allOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
+                commonSkin: new[] { "Blue-gray scales with silver highlights" },
+                commonEyes: new[] { "Silver eyes" },
+                commonOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
             appearances[CreatureConstants.Dragon_Silver_Young] = GetWeightedAppearances(
-                allSkin: new[] { "Gray scales with silver highlights" },
-                allEyes: new[] { "Silver eyes" },
-                allOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
+                commonSkin: new[] { "Gray scales with silver highlights" },
+                commonEyes: new[] { "Silver eyes" },
+                commonOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
             appearances[CreatureConstants.Dragon_Silver_Juvenile] = GetWeightedAppearances(
-                allSkin: new[] { "Gray scales mottled with metallic silver" },
-                allEyes: new[] { "Silver eyes with somewhat-faded pupils" },
-                allOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
+                commonSkin: new[] { "Gray scales mottled with metallic silver" },
+                commonEyes: new[] { "Silver eyes with somewhat-faded pupils" },
+                commonOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
             appearances[CreatureConstants.Dragon_Silver_YoungAdult] = GetWeightedAppearances(
-                allSkin: new[] { "Silver scales" },
-                allEyes: new[] { "Silver eyes with somewhat-faded pupils" },
-                allOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
+                commonSkin: new[] { "Silver scales" },
+                commonEyes: new[] { "Silver eyes with somewhat-faded pupils" },
+                commonOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
             appearances[CreatureConstants.Dragon_Silver_Adult] = GetWeightedAppearances(
-                allSkin: new[] { "Silver scales" },
-                allEyes: new[] { "Silver eyes with somewhat-faded pupils" },
-                allOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
+                commonSkin: new[] { "Silver scales" },
+                commonEyes: new[] { "Silver eyes with somewhat-faded pupils" },
+                commonOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
             appearances[CreatureConstants.Dragon_Silver_MatureAdult] = GetWeightedAppearances(
-                allSkin: new[] { "Silver scales" },
-                allEyes: new[] { "Silver eyes with faded pupils" },
-                allOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
+                commonSkin: new[] { "Silver scales" },
+                commonEyes: new[] { "Silver eyes with faded pupils" },
+                commonOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
             appearances[CreatureConstants.Dragon_Silver_Old] = GetWeightedAppearances(
-                allSkin: new[] { "Bright silver scales" },
-                allEyes: new[] { "Silver eyes with faded pupils" },
-                allOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
+                commonSkin: new[] { "Bright silver scales" },
+                commonEyes: new[] { "Silver eyes with faded pupils" },
+                commonOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
             appearances[CreatureConstants.Dragon_Silver_VeryOld] = GetWeightedAppearances(
-                allSkin: new[] { "Bright silver scales" },
-                allEyes: new[] { "Silver eyes with faded pupils" },
-                allOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
+                commonSkin: new[] { "Bright silver scales" },
+                commonEyes: new[] { "Silver eyes with faded pupils" },
+                commonOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
             appearances[CreatureConstants.Dragon_Silver_Ancient] = GetWeightedAppearances(
-                allSkin: new[] { "Bright silver scales" },
-                allEyes: new[] { "Silver eyes with heavily-faded pupils" },
-                allOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
+                commonSkin: new[] { "Bright silver scales" },
+                commonEyes: new[] { "Silver eyes with heavily-faded pupils" },
+                commonOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
             appearances[CreatureConstants.Dragon_Silver_Wyrm] = GetWeightedAppearances(
-                allSkin: new[] { "Bright silver scales" },
-                allEyes: new[] { "Silver eyes with heavily-faded pupils" },
-                allOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
+                commonSkin: new[] { "Bright silver scales" },
+                commonEyes: new[] { "Silver eyes with heavily-faded pupils" },
+                commonOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
             appearances[CreatureConstants.Dragon_Silver_GreatWyrm] = GetWeightedAppearances(
-                allSkin: new[] { "Bright silver scales" },
-                allEyes: new[] { "Eyes without pupils, resembling orbs of mercury" },
-                allOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
+                commonSkin: new[] { "Bright silver scales" },
+                commonEyes: new[] { "Eyes without pupils, resembling orbs of mercury" },
+                commonOther: new[] { "Smooth, shiny plate for a face. A frill rises high over its head and continues down the neck and back to the tip of the tail. The frill is supported by long spines with dark tips. Two smooth, shiny horns with dark tips." });
             appearances[CreatureConstants.Dragon_White_Wyrmling] = GetWeightedAppearances(
-                allSkin: new[] { "Glistening pure-white scales. Trailing edge of the wings show a pink tinge",
+                commonSkin: new[] { "Glistening pure-white scales. Trailing edge of the wings show a pink tinge",
                     "Glistening pure-white scales. Trailing edge of the wings show a blue tinge" },
-                allEyes: new[] { "Gray eyes" },
-                allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
+                commonEyes: new[] { "Gray eyes" },
+                commonOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
             appearances[CreatureConstants.Dragon_White_VeryYoung] = GetWeightedAppearances(
-                allSkin: new[] { "Glistening pure-white scales. Trailing edge of the wings show a pink tinge",
+                commonSkin: new[] { "Glistening pure-white scales. Trailing edge of the wings show a pink tinge",
                     "Glistening pure-white scales. Trailing edge of the wings show a blue tinge" },
-                allEyes: new[] { "Gray eyes" },
-                allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
+                commonEyes: new[] { "Gray eyes" },
+                commonOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
             appearances[CreatureConstants.Dragon_White_Young] = GetWeightedAppearances(
-                allSkin: new[] { "Glistening pure-white scales. Trailing edge of the wings show a pink tinge",
+                commonSkin: new[] { "Glistening pure-white scales. Trailing edge of the wings show a pink tinge",
                     "Glistening pure-white scales. Trailing edge of the wings show a blue tinge" },
-                allEyes: new[] { "Gray eyes" },
-                allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
+                commonEyes: new[] { "Gray eyes" },
+                commonOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
             appearances[CreatureConstants.Dragon_White_Juvenile] = GetWeightedAppearances(
-                allSkin: new[] { "Glistening pure-white scales. Trailing edge of the wings show a pink tinge",
+                commonSkin: new[] { "Glistening pure-white scales. Trailing edge of the wings show a pink tinge",
                     "Glistening pure-white scales. Trailing edge of the wings show a blue tinge" },
-                allEyes: new[] { "Gray eyes" },
-                allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
+                commonEyes: new[] { "Gray eyes" },
+                commonOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
             appearances[CreatureConstants.Dragon_White_YoungAdult] = GetWeightedAppearances(
-                allSkin: new[] { "Glistening pure-white scales. Trailing edge of the wings show a pink tinge",
+                commonSkin: new[] { "Glistening pure-white scales. Trailing edge of the wings show a pink tinge",
                     "Glistening pure-white scales. Trailing edge of the wings show a blue tinge" },
-                allEyes: new[] { "Gray eyes" },
-                allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
+                commonEyes: new[] { "Gray eyes" },
+                commonOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
             appearances[CreatureConstants.Dragon_White_Adult] = GetWeightedAppearances(
-                allSkin: new[] { "Pure-white scales. Trailing edge of the wings show a pink tinge",
+                commonSkin: new[] { "Pure-white scales. Trailing edge of the wings show a pink tinge",
                     "Pure-white scales. Trailing edge of the wings show a blue tinge" },
-                allEyes: new[] { "Gray eyes" },
-                allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
+                commonEyes: new[] { "Gray eyes" },
+                commonOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
             appearances[CreatureConstants.Dragon_White_MatureAdult] = GetWeightedAppearances(
-                allSkin: new[] { "Pure-white scales. Trailing edge of the wings show a pink tinge",
+                commonSkin: new[] { "Pure-white scales. Trailing edge of the wings show a pink tinge",
                     "Pure-white scales. Trailing edge of the wings show a blue tinge" },
-                allEyes: new[] { "Gray eyes" },
-                allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
+                commonEyes: new[] { "Gray eyes" },
+                commonOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
             appearances[CreatureConstants.Dragon_White_Old] = GetWeightedAppearances(
-                allSkin: new[] { "Pure-white scales. Trailing edge of the wings show a pink tinge",
+                commonSkin: new[] { "Pure-white scales. Trailing edge of the wings show a pink tinge",
                     "Pure-white scales. Trailing edge of the wings show a blue tinge" },
-                allEyes: new[] { "Gray eyes" },
-                allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
+                commonEyes: new[] { "Gray eyes" },
+                commonOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
             appearances[CreatureConstants.Dragon_White_VeryOld] = GetWeightedAppearances(
-                allSkin: new[] { "White scales with scales of pale blue and light gray mixed in. Trailing edge of the wings show a pink tinge",
+                commonSkin: new[] { "White scales with scales of pale blue and light gray mixed in. Trailing edge of the wings show a pink tinge",
                     "White scales with scales of pale blue and light gray mixed in. Trailing edge of the wings show a blue tinge" },
-                allEyes: new[] { "Gray eyes" },
-                allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
+                commonEyes: new[] { "Gray eyes" },
+                commonOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
             appearances[CreatureConstants.Dragon_White_Ancient] = GetWeightedAppearances(
-                allSkin: new[] { "White scales with scales of pale blue and light gray mixed in. Trailing edge of the wings show a pink tinge",
+                commonSkin: new[] { "White scales with scales of pale blue and light gray mixed in. Trailing edge of the wings show a pink tinge",
                     "White scales with scales of pale blue and light gray mixed in. Trailing edge of the wings show a blue tinge" },
-                allEyes: new[] { "Gray eyes" },
-                allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
+                commonEyes: new[] { "Gray eyes" },
+                commonOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
             appearances[CreatureConstants.Dragon_White_Wyrm] = GetWeightedAppearances(
-                allSkin: new[] { "White scales with scales of pale blue and light gray mixed in. Trailing edge of the wings show a pink tinge",
+                commonSkin: new[] { "White scales with scales of pale blue and light gray mixed in. Trailing edge of the wings show a pink tinge",
                     "White scales with scales of pale blue and light gray mixed in. Trailing edge of the wings show a blue tinge" },
-                allEyes: new[] { "Gray eyes" },
-                allOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
+                commonEyes: new[] { "Gray eyes" },
+                commonOther: new[] { "Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed." });
             appearances[CreatureConstants.Dragon_White_GreatWyrm] = GetWeightedAppearances(
-                allSkin: [ "White scales with scales of pale blue and light gray mixed in. Trailing edge of the wings show a pink tinge",
+                commonSkin: [ "White scales with scales of pale blue and light gray mixed in. Trailing edge of the wings show a pink tinge",
                     "White scales with scales of pale blue and light gray mixed in. Trailing edge of the wings show a blue tinge" ],
-                allEyes: ["Gray eyes"],
-                allOther: ["Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed."]);
+                commonEyes: ["Gray eyes"],
+                commonOther: ["Small, sharp beak at the nose and a pointed chin. A crest supported by a single backward-curving spine tops the head. Scaled cheeks, spiny dewlaps, and a few protruding teeth when its mouth is closed."]);
             //Source: https://forgottenrealms.fandom.com/wiki/Dragon_turtle
             appearances[CreatureConstants.DragonTurtle][Rarity.Common] = ["Green skin, with a golden crest down the center of the head."];
             //Source: https://forgottenrealms.fandom.com/wiki/Dragonne
             appearances[CreatureConstants.Dragonne] = GetWeightedAppearances(
-                allSkin: ["Brassy scales"],
-                allHair: ["Thick, coarse mane encircling the face. Large feathery eyebrows"],
+                commonSkin: ["Brassy scales"],
+                commonHair: ["Thick, coarse mane encircling the face. Large feathery eyebrows"],
                 commonEyes: ["Big brass-colored eyes"],
                 uncommonEyes: ["Big bronze-colored eyes", "Big copper-colored eyes"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Dretch
@@ -2207,39 +2152,39 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonSkin: ["Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin", "Very dark tan skin", "Very dark brown skin"],
                 uncommonSkin: [ "Tan skin with a reddish tinge", "Brown skin with a reddish tinge", "Dark tan skin with a reddish tinge",
                     "Dark brown skin with a reddish tinge", "Very dark tan skin with a reddish tinge", "Very dark brown skin with a reddish tinge" ],
-                allHair: ["Bright red hair", "Straw blond hair", "Muted red hair", "Yellow hair", "Bright yellow hair", "Muted yellow hair", "Brown hair"],
+                commonHair: ["Bright red hair", "Straw blond hair", "Muted red hair", "Yellow hair", "Bright yellow hair", "Muted yellow hair", "Brown hair"],
                 commonEyes: ["Washed-out blue eyes"],
-                uncommonEyes: reusableAppearances[CreatureConstants.Human][Rarity.Common][AppearanceCategory.Eyes]
+                uncommonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Common]
                     .Select(LowercaseFirstCharacter)
                     .Select(e => $"Washed-out {e}"),
-                rareEyes: reusableAppearances[CreatureConstants.Human][Rarity.Uncommon][AppearanceCategory.Eyes]
+                rareEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Uncommon]
                         .Select(LowercaseFirstCharacter)
                         .Select(e => $"Washed-out {e}")
-                    .Concat(reusableAppearances[CreatureConstants.Human][Rarity.Rare][AppearanceCategory.Eyes]
+                    .Concat(reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Rare]
                         .Select(LowercaseFirstCharacter)
                         .Select(e => $"Washed-out {e}"))
             );
             appearances[CreatureConstants.Dwarf_Duergar] = GetWeightedAppearances(
-                allSkin: ["Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin", "Very dark tan skin", "Very dark brown skin"],
+                commonSkin: ["Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin", "Very dark tan skin", "Very dark brown skin"],
                 commonHair: ["Bald"],
                 uncommonHair: ["Black hair", "Gray hair", "Brown hair"],
-                commonEyes: reusableAppearances[CreatureConstants.Human][Rarity.Common][AppearanceCategory.Eyes],
-                uncommonEyes: reusableAppearances[CreatureConstants.Human][Rarity.Uncommon][AppearanceCategory.Eyes],
-                rareEyes: reusableAppearances[CreatureConstants.Human][Rarity.Rare][AppearanceCategory.Eyes]
+                commonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Common],
+                uncommonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Uncommon],
+                rareEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Rare]
             );
             appearances[CreatureConstants.Dwarf_Hill] = GetWeightedAppearances(
-                allSkin: ["Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin", "Very dark tan skin", "Very dark brown skin"],
-                allHair: ["Black hair", "Gray hair", "Brown hair"],
-                commonEyes: reusableAppearances[CreatureConstants.Human][Rarity.Common][AppearanceCategory.Eyes],
-                uncommonEyes: reusableAppearances[CreatureConstants.Human][Rarity.Uncommon][AppearanceCategory.Eyes],
-                rareEyes: reusableAppearances[CreatureConstants.Human][Rarity.Rare][AppearanceCategory.Eyes]
+                commonSkin: ["Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin", "Very dark tan skin", "Very dark brown skin"],
+                commonHair: ["Black hair", "Gray hair", "Brown hair"],
+                commonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Common],
+                uncommonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Uncommon],
+                rareEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Rare]
             );
             appearances[CreatureConstants.Dwarf_Mountain] = GetWeightedAppearances(
-                allSkin: ["Lightly tan skin", "Light brown skin", "Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin"],
-                allHair: ["Dark gray hair", "Light gray hair", "Light brown hair"],
-                commonEyes: reusableAppearances[CreatureConstants.Human][Rarity.Common][AppearanceCategory.Eyes],
-                uncommonEyes: reusableAppearances[CreatureConstants.Human][Rarity.Uncommon][AppearanceCategory.Eyes],
-                rareEyes: reusableAppearances[CreatureConstants.Human][Rarity.Rare][AppearanceCategory.Eyes]
+                commonSkin: ["Lightly tan skin", "Light brown skin", "Tan skin", "Brown skin", "Dark tan skin", "Dark brown skin"],
+                commonHair: ["Dark gray hair", "Light gray hair", "Light brown hair"],
+                commonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Common],
+                uncommonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Uncommon],
+                rareEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Rare]
             );
             //Source: https://www.google.com/search?q=species+of+eagle
             appearances[CreatureConstants.Eagle][Rarity.Common] = [ "Golden eagle", "Bald eagle", "Harpy eagle", "White-tailed eagle", "Black kite", "Steller's sea eagle",
@@ -2270,37 +2215,37 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.Elemental_Air_Elder][Rarity.Common] = new[] { "An amorphous, ever-shifting cloud" };
             //Source: https://forgottenrealms.fandom.com/wiki/Earth_elemental
             appearances[CreatureConstants.Elemental_Earth_Small] = GetWeightedAppearances(
-                allSkin: new[] { "Vaguely humanoid with club-like arms made of jagged stone and a head made of both dirt and stone" },
+                commonSkin: new[] { "Vaguely humanoid with club-like arms made of jagged stone and a head made of both dirt and stone" },
                 uncommonOther: new[] { "Chunks of minerals set within the stony body", "Chunks of gems set within the stony body",
                     "Chunks of metals set within the stony body" },
                 rareOther: new[] { "Chunks of minerals and gems set within the stony body", "Chunks of gems and metals set within the stony body",
                     "Chunks of metals and minerals set within the stony body", "Chunks of minerals, gems, and metals set within the stony body" });
             appearances[CreatureConstants.Elemental_Earth_Medium] = GetWeightedAppearances(
-                allSkin: new[] { "Vaguely humanoid with club-like arms made of jagged stone and a head made of both dirt and stone" },
+                commonSkin: new[] { "Vaguely humanoid with club-like arms made of jagged stone and a head made of both dirt and stone" },
                 uncommonOther: new[] { "Chunks of minerals set within the stony body", "Chunks of gems set within the stony body",
                     "Chunks of metals set within the stony body" },
                 rareOther: new[] { "Chunks of minerals and gems set within the stony body", "Chunks of gems and metals set within the stony body",
                     "Chunks of metals and minerals set within the stony body", "Chunks of minerals, gems, and metals set within the stony body" });
             appearances[CreatureConstants.Elemental_Earth_Large] = GetWeightedAppearances(
-                allSkin: new[] { "Vaguely humanoid with club-like arms made of jagged stone and a head made of both dirt and stone" },
+                commonSkin: new[] { "Vaguely humanoid with club-like arms made of jagged stone and a head made of both dirt and stone" },
                 uncommonOther: new[] { "Chunks of minerals set within the stony body", "Chunks of gems set within the stony body",
                     "Chunks of metals set within the stony body" },
                 rareOther: new[] { "Chunks of minerals and gems set within the stony body", "Chunks of gems and metals set within the stony body",
                     "Chunks of metals and minerals set within the stony body", "Chunks of minerals, gems, and metals set within the stony body" });
             appearances[CreatureConstants.Elemental_Earth_Huge] = GetWeightedAppearances(
-                allSkin: new[] { "Vaguely humanoid with club-like arms made of jagged stone and a head made of both dirt and stone" },
+                commonSkin: new[] { "Vaguely humanoid with club-like arms made of jagged stone and a head made of both dirt and stone" },
                 uncommonOther: new[] { "Chunks of minerals set within the stony body", "Chunks of gems set within the stony body",
                     "Chunks of metals set within the stony body" },
                 rareOther: new[] { "Chunks of minerals and gems set within the stony body", "Chunks of gems and metals set within the stony body",
                     "Chunks of metals and minerals set within the stony body", "Chunks of minerals, gems, and metals set within the stony body" });
             appearances[CreatureConstants.Elemental_Earth_Greater] = GetWeightedAppearances(
-                allSkin: new[] { "Vaguely humanoid with club-like arms made of jagged stone and a head made of both dirt and stone" },
+                commonSkin: new[] { "Vaguely humanoid with club-like arms made of jagged stone and a head made of both dirt and stone" },
                 uncommonOther: [ "Chunks of minerals set within the stony body", "Chunks of gems set within the stony body",
                     "Chunks of metals set within the stony body" ],
                 rareOther: [ "Chunks of minerals and gems set within the stony body", "Chunks of gems and metals set within the stony body",
                     "Chunks of metals and minerals set within the stony body", "Chunks of minerals, gems, and metals set within the stony body" ]);
             appearances[CreatureConstants.Elemental_Earth_Elder] = GetWeightedAppearances(
-                allSkin: ["Vaguely humanoid with club-like arms made of jagged stone and a head made of both dirt and stone"],
+                commonSkin: ["Vaguely humanoid with club-like arms made of jagged stone and a head made of both dirt and stone"],
                 uncommonOther: [ "Chunks of minerals set within the stony body", "Chunks of gems set within the stony body",
                     "Chunks of metals set within the stony body" ],
                 rareOther: [ "Chunks of minerals and gems set within the stony body", "Chunks of gems and metals set within the stony body",
@@ -2340,228 +2285,106 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Thick, somewhat-stringy, rough black hair", "Thick, somewhat-stringy, rough blue hair", "Thick, somewhat-stringy, rough silver-white hair",
                         "Thick, somewhat-stringy, rough blue-green hair", "Thick, somewhat-stringy, rough emerald green hair" ],
                 rareHair: ["Thick, somewhat-stringy, rough red hair"],
-                allOther: ["Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs"]);
+                commonOther: ["Pointed ears. Long fingers and toes with thick webbing. Gills visible on the neck and ribs"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Drow
             //https://www.d20srd.org/srd/monsters/elf.htm
             appearances[CreatureConstants.Elf_Drow] = GetWeightedAppearances(
-                commonSkin: [ "Black skin", "Dark blue skin", "Gray skin", "Dark gray skin", "Jet-black skin", "Obsidian-colored skin", "Blue skin",
-                    "Gray-blue skin", "Black-blue skin" ],
-                rareSkin: ["White (albino) skin"],
-                commonEyes: ["Bright red eyes", "Vivid red eyes"],
-                uncommonEyes: ["Pale white-blue eyes", "Pale white-lilac eyes", "Pale white-pink eyes", "Pale white-silver eyes", "Purple eyes", "Blue eyes"],
-                rareEyes: ["Green eyes", "Brown eyes", "Black eyes", "Amber eyes", "Rose-hued eyes"],
-                commonHair: [ "Straight stark white hair", "Curly stark white hair", "Kinky stark white hair",
-                    "Straight pale yellow hair", "Curly pale yellow hair", "Kinky pale yellow hair" ],
-                uncommonHair: new[] { "Straight gray hair", "Curly gray hair", "Kinky gray hair",
-                        "Straight pale yellow hair", "Curly pale yellow hair", "Kinky pale yellow hair",
-                        "Straight silver hair", "Curly silver hair", "Kinky silver hair",
-                        "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair", }
-                    .Concat(reusableAppearances[CreatureConstants.Human][Rarity.Common][AppearanceCategory.Hair])
-                    .Concat(reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Hair]),
-                rareHair: reusableAppearances[CreatureConstants.Human][Rarity.Uncommon][AppearanceCategory.Hair]
-                    .Concat(reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Hair])
-                    .Concat(reusableAppearances[CreatureConstants.Human][Rarity.Rare][AppearanceCategory.Hair])
-                    .Concat(reusableAppearances[CreatureConstants.Elf_High][Rarity.Rare][AppearanceCategory.Hair]),
-                allOther: ["Pointed ears"]);
+                commonSkin: reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Skin][Rarity.Common],
+                uncommonSkin: reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Skin][Rarity.Uncommon],
+                rareSkin: reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Skin][Rarity.Rare],
+                commonHair: reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Hair][Rarity.Common],
+                uncommonHair: reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Hair][Rarity.Uncommon],
+                rareHair: reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Hair][Rarity.Rare],
+                commonEyes: reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Eyes][Rarity.Common],
+                uncommonEyes: reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Eyes][Rarity.Uncommon],
+                rareEyes: reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Eyes][Rarity.Rare],
+                commonOther: ["Pointed ears"]);
             //Source: https://www.d20srd.org/srd/monsters/elf.htm
             //https://forgottenrealms.fandom.com/wiki/Grey_elf
             appearances[CreatureConstants.Elf_Gray] = GetWeightedAppearances(
-                commonSkin: ["Pale grey skin"],
-                commonHair: ["Straight silver hair", "Curly silver hair", "Kinky silver hair"],
-                uncommonHair: ["Straight pale-golden hair", "Curly pale-golden hair", "Kinky pale-golden hair"],
-                commonEyes: ["Amber eyes"],
-                uncommonEyes: ["Violet eyes"],
-                allOther: ["Pointed ears"]);
+                commonSkin: reusableAppearances[CreatureConstants.Elf_Gray][AppearanceCategory.Skin][Rarity.Common],
+                uncommonSkin: reusableAppearances[CreatureConstants.Elf_Gray][AppearanceCategory.Skin][Rarity.Uncommon],
+                rareSkin: reusableAppearances[CreatureConstants.Elf_Gray][AppearanceCategory.Skin][Rarity.Rare],
+                commonHair: reusableAppearances[CreatureConstants.Elf_Gray][AppearanceCategory.Hair][Rarity.Common],
+                uncommonHair: reusableAppearances[CreatureConstants.Elf_Gray][AppearanceCategory.Hair][Rarity.Uncommon],
+                rareHair: reusableAppearances[CreatureConstants.Elf_Gray][AppearanceCategory.Hair][Rarity.Rare],
+                commonEyes: reusableAppearances[CreatureConstants.Elf_Gray][AppearanceCategory.Eyes][Rarity.Common],
+                uncommonEyes: reusableAppearances[CreatureConstants.Elf_Gray][AppearanceCategory.Eyes][Rarity.Uncommon],
+                rareEyes: reusableAppearances[CreatureConstants.Elf_Gray][AppearanceCategory.Eyes][Rarity.Rare],
+                commonOther: ["Pointed ears"]);
             //Source: https://www.d20srd.org/srd/monsters/elf.htm
             appearances[CreatureConstants.Elf_Half] = GetWeightedAppearances(
-                commonSkin: reusableAppearances[CreatureConstants.Human][Rarity.Common][AppearanceCategory.Skin]
-                    .Concat(reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Skin]),
-                uncommonSkin: reusableAppearances[CreatureConstants.Human][Rarity.Uncommon][AppearanceCategory.Skin]
-                    .Concat(reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Skin])
-                    .Concat(reusableAppearances[CreatureConstants.Elf_Drow][Rarity.Common][AppearanceCategory.Skin])
-                    .Concat(reusableAppearances[CreatureConstants.Elf_Gray][Rarity.Common][AppearanceCategory.Skin])
-                    .Concat(reusableAppearances[CreatureConstants.Elf_Wild][Rarity.Common][AppearanceCategory.Skin])
-                    .Concat(reusableAppearances[CreatureConstants.Elf_Wood][Rarity.Common][AppearanceCategory.Skin]),
-                rareSkin: reusableAppearances[CreatureConstants.Human][Rarity.Rare][AppearanceCategory.Skin]
-                    .Concat(reusableAppearances[CreatureConstants.Elf_High][Rarity.Rare][AppearanceCategory.Skin])
-                    .Concat(reusableAppearances[CreatureConstants.Elf_Drow][Rarity.Uncommon][AppearanceCategory.Skin])
-                    .Concat(reusableAppearances[CreatureConstants.Elf_Gray][Rarity.Uncommon][AppearanceCategory.Skin])
-                    .Concat(reusableAppearances[CreatureConstants.Elf_Wild][Rarity.Uncommon][AppearanceCategory.Skin])
-                    .Concat(reusableAppearances[CreatureConstants.Elf_Wood][Rarity.Uncommon][AppearanceCategory.Skin])
-                    .Concat(reusableAppearances[CreatureConstants.Elf_Drow][Rarity.Rare][AppearanceCategory.Skin])
-                    .Concat(reusableAppearances[CreatureConstants.Elf_Gray][Rarity.Rare][AppearanceCategory.Skin])
-                    .Concat(reusableAppearances[CreatureConstants.Elf_Wild][Rarity.Rare][AppearanceCategory.Skin])
-                    .Concat(reusableAppearances[CreatureConstants.Elf_Wood][Rarity.Rare][AppearanceCategory.Skin]),
-                commonHair: [ 
-                    //Common High Elf hair
-                    //Common Human hair
-                    "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
-                    "Curly red hair", "Curly blond hair", "Curly brown hair", "Curly black hair",
-                    "Kinky red hair", "Kinky blond hair", "Kinky brown hair", "Kinky black hair",
-                    "Straight white hair", "Curly white hair", "Kinky white hair",
-                    "Straight silver hair", "Curly silver hair", "Kinky silver hair",
-                    "Straight pale gold hair", "Curly pale gold hair", "Kinky pale gold hair" ],
-                uncommonHair: [ 
-                    //Uncommon High Elf hair
-                    //Uncommon Human hair
-                    //Common Drow hair
-                    //Common Grey Elf hair
-                    //Common Wild Elf hair
-                    //Common Wood Elf hair
-                    "Straight silver hair", "Curly silver hair", "Kinky silver hair",
-                    "Bald",
-                    "Straight black hair with silvery hues",
-                        "Curly black hair with silvery hues", "Kinky black hair with silvery hues",
-                    "Straight black hair with blond hues", "Curly black hair with blond hues", "Kinky black hair with blond hues",
-                    "Straight black hair with copper hues", "Curly black hair with copper hues", "Kinky black hair with copper hues",
-                    "Straight white hair with silvery hues", "Curly white hair with silvery hues",
-                        "Kinky white hair with silvery hues",
-                    "Straight white hair with blond hues", "Curly white hair with blond hues", "Kinky white hair with blond hues",
-                    "Straight white hair with copper hues", "Curly white hair with copper hues", "Kinky white hair with copper hues",
-                    "Straight silver hair with silvery hues", "Curly silver hair with silvery hues",
-                        "Kinky silver hair with silvery hues",
-                    "Straight silver hair with blond hues", "Curly silver hair with blond hues", "Kinky silver hair with blond hues",
-                    "Straight silver hair with copper hues", "Curly silver hair with copper hues",
-                        "Kinky silver hair with copper hues",
-                    "Straight pale gold hair with silvery hues", "Curly pale gold hair with silvery hues",
-                        "Kinky pale gold hair with silvery hues",
-                    "Straight pale gold hair with blond hues",  "Curly pale gold hair with blond hues",
-                        "Kinky pale gold hair with blond hues",
-                    "Straight pale gold hair with copper hues", "Curly pale gold hair with copper hues",
-                        "Kinky pale gold hair with copper hues",
-                    "Straight black hair", "Straight light brown hair", "Straight brown hair",
-                    "Curly black hair", "Curly light brown hair", "Curly brown hair",
-                    "Kinky black hair", "Kinky light brown hair", "Kinky brown hair",
-                    //Common Wild Elf hair
-                    "Straight black hair", "Curly black hair", "Kinky black hair",
-                    "Straight dark brown hair", "Curly dark brown hair", "Kinky dark brown hair",
-                    "Straight brown hair", "Curly brown hair", "Kinky brown hair",
-                    "Straight light brown hair", "Curly light brown hair", "Kinky light brown hair",
-                    //Common Drow hair
-                    "Straight stark white hair", "Curly stark white hair", "Kinky stark white hair",
-                        "Straight pale yellow hair", "Curly pale yellow hair", "Kinky pale yellow hair"
-                ],
-                rareHair: [
-                    //Rare High Elf hair
-                    //Rare Human hair
-                    //Uncommon Drow hair
-                    //Uncommon Grey Elf hair
-                    //Uncommon Wild Elf hair
-                    //Uncommon Wood Elf hair
-                    //Rare Drow hair
-                    //Rare Grey Elf hair
-                    //Rare Wild Elf hair
-                    //Rare Wood Elf hair
-                    "Straight pale-golden hair", "Curly pale-golden hair", "Kinky pale-golden hair",
-                    "Straight yellow hair", "Straight blond hair", "Straight copper-red hair",
-                    "Curly yellow hair", "Curly blond hair", "Curly copper-red hair",
-                    "Kinky yellow hair", "Kinky blond hair", "Kinky copper-red hair",
-                    //Uncommon Wild Elf hair
-                    "Straight silver hair", "Curly silver hair", "Kinky silver hair",
-                    "Straight silvery-white hair", "Curly silvery-white hair", "Kinky silvery-white hair",
-                    "Straight gray hair", "Curly gray hair", "Kinky gray hair",
-                    "Straight white hair", "Curly white hair", "Kinky white hair",
-                    //Uncommon Drow hair
-                    "Straight gray hair", "Curly gray hair", "Kinky gray hair",
-                    "Straight pale yellow hair", "Curly pale yellow hair", "Kinky pale yellow hair",
-                    "Straight silver hair", "Curly silver hair", "Kinky silver hair",
-                    "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
-                    "Straight pale red hair", "Straight pale blond hair", "Straight pale brown hair", "Straight pale black hair",
-                    "Curly pale red hair", "Curly pale blond hair", "Curly pale brown hair", "Curly pale black hair",
-                    "Kinky pale red hair", "Kinky pale blond hair", "Kinky pale brown hair", "Kinky pale black hair",
-                    "Straight pale black hair", "Curly pale black hair", "Kinky pale black hair",
-                    "Straight pale white hair", "Curly pale white hair", "Kinky pale white hair",
-                    "Straight pale silver hair", "Curly pale silver hair", "Kinky pale silver hair",
-                    "Straight very pale gold hair", "Curly very pale gold hair", "Kinky very pale gold hair",
-                    //Rare Drow hair
-                    "Bald",
-                    "Straight pale black hair with silvery hues",
-                        "Curly pale black hair with silvery hues", "Kinky pale black hair with silvery hues",
-                    "Straight pale black hair with blond hues", "Curly pale black hair with blond hues", "Kinky pale black hair with blond hues",
-                    "Straight pale black hair with copper hues", "Curly pale black hair with copper hues", "Kinky pale black hair with copper hues",
-                    "Straight pale white hair with silvery hues", "Curly pale white hair with silvery hues",
-                        "Kinky pale white hair with silvery hues",
-                    "Straight pale white hair with blond hues", "Curly pale white hair with blond hues", "Kinky pale white hair with blond hues",
-                    "Straight pale white hair with copper hues", "Curly pale white hair with copper hues", "Kinky pale white hair with copper hues",
-                    "Straight pale silver hair with silvery hues", "Curly pale silver hair with silvery hues",
-                        "Kinky pale silver hair with silvery hues",
-                    "Straight pale silver hair with blond hues", "Curly pale silver hair with blond hues", "Kinky pale silver hair with blond hues",
-                    "Straight pale silver hair with copper hues", "Curly pale silver hair with copper hues",
-                        "Kinky pale silver hair with copper hues",
-                    "Straight very pale gold hair with silvery hues", "Curly very pale gold hair with silvery hues",
-                        "Kinky very pale gold hair with silvery hues",
-                    "Straight very pale gold hair with blond hues",  "Curly very pale gold hair with blond hues",
-                        "Kinky very pale gold hair with blond hues",
-                    "Straight very pale gold hair with copper hues", "Curly very pale gold hair with copper hues",
-                        "Kinky very pale gold hair with copper hues"
-                ],
-                commonEyes: [
-                    //Common High Elf eyes
-                    //Common Human eyes
-                    "Blue eyes", "Brown eyes", "Gray eyes", "Green eyes", "Hazel eyes"],
-                uncommonEyes: [ 
-                    //Uncommon High Elf eyes
-                    //Uncommon Human eyes
-                    //Common Drow eyes
-                    //Common Grey Elf eyes
-                    //Common Wild Elf eyes
-                    //Common Wood Elf eyes
-                    "Amber eyes",
-                    "Golden eyes", "Blue eyes", "Light blue eyes", "Green eyes speckled with gold",
-                    "Green eyes", "Brown eyes", "Hazel eyes",
-                    //Common Wild Elf eyes
-                    "Green eyes",
-                    //Common Drow eyes
-                    "Bright red eyes", "Vivid red eyes"
-                ],
-                rareEyes: [
-                    //Rare High Elf eyes
-                    //Rare Human eyes
-                    //Uncommon Drow eyes
-                    //Uncommon Grey Elf eyes
-                    //Uncommon Wild Elf eyes
-                    //Uncommon Wood Elf eyes
-                    //Rare Drow eyes
-                    //Rare Grey Elf eyes
-                    //Rare Wild Elf eyes
-                    //Rare Wood Elf eyes
-                    "Violet eyes",
-                    //Rare High Elf eyes
-                    "Violet eyes", "Blue eyes speckled with gold", "Light blue eyes speckled with gold", "Violet eyes speckled with gold",
-                    "Solid green eyes, lacking pupils", "Solid golden eyes, lacking pupils", "Solid blue eyes, lacking pupils", "Solid light blue eyes, lacking pupils",
-                    "Solid violet eyes, lacking pupils", "Solid green eyes speckled with gold, lacking pupils", "Solid golden eyes speckled with gold, lacking pupils",
-                    "Solid blue eyes speckled with gold, lacking pupils", "Solid light blue eyes speckled with gold, lacking pupils",
-                    "Solid violet eyes speckled with gold, lacking pupils",
-                    //Uncommon Wild Elf eyes
-                    "Golden eyes", "Blue eyes", "Light blue eyes", "Green eyes speckled with gold",
-                    //Rare Wild Elf eyes
-                    "Violet eyes", "Blue eyes speckled with gold", "Light Blue eyes speckled with gold", "Violet eyes speckled with gold",
-                    "Solid green eyes, lacking pupils", "Solid golden eyes, lacking pupils", "Solid blue eyes, lacking pupils", "Solid light blue eyes, lacking pupils",
-                    "Solid violet eyes, lacking pupils", "Solid green eyes speckled with gold, lacking pupils", "Solid golden eyes speckled with gold, lacking pupils",
-                    "Solid blue eyes speckled with gold, lacking pupils", "Solid light blue eyes speckled with gold, lacking pupils",
-                    "Solid violet eyes speckled with gold, lacking pupils",
-                    //Uncommon Drow eyes
-                    "Pale white-blue eyes", "Pale white-lilac eyes", "Pale white-pink eyes", "Pale white-silver eyes", "Purple eyes", "Blue eyes",
-                    //Rare Drow eyes
-                    "Green eyes", "Brown eyes", "Black eyes", "Amber eyes", "Rose-hued eyes",
-                ],
-                allOther: ["Pointed ears"]);
+                commonSkin: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common]
+                    .Concat(reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Skin][Rarity.Common]),
+                uncommonSkin: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Uncommon]
+                    .Concat(reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Skin][Rarity.Uncommon])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Skin][Rarity.Common])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Gray][AppearanceCategory.Skin][Rarity.Common])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Wild][AppearanceCategory.Skin][Rarity.Common])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Wood][AppearanceCategory.Skin][Rarity.Common]),
+                rareSkin: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Rare]
+                    .Concat(reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Skin][Rarity.Rare])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Skin][Rarity.Uncommon])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Gray][AppearanceCategory.Skin][Rarity.Uncommon])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Wild][AppearanceCategory.Skin][Rarity.Uncommon])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Wood][AppearanceCategory.Skin][Rarity.Uncommon])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Skin][Rarity.Rare])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Gray][AppearanceCategory.Skin][Rarity.Rare])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Wild][AppearanceCategory.Skin][Rarity.Rare])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Wood][AppearanceCategory.Skin][Rarity.Rare]),
+                commonHair: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Common]
+                    .Concat(reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Hair][Rarity.Common]),
+                uncommonHair: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Uncommon]
+                    .Concat(reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Hair][Rarity.Uncommon])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Hair][Rarity.Common])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Gray][AppearanceCategory.Hair][Rarity.Common])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Wild][AppearanceCategory.Hair][Rarity.Common])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Wood][AppearanceCategory.Hair][Rarity.Common]),
+                rareHair: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Rare]
+                    .Concat(reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Hair][Rarity.Rare])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Hair][Rarity.Uncommon])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Gray][AppearanceCategory.Hair][Rarity.Uncommon])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Wild][AppearanceCategory.Hair][Rarity.Uncommon])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Wood][AppearanceCategory.Hair][Rarity.Uncommon])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Hair][Rarity.Rare])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Gray][AppearanceCategory.Hair][Rarity.Rare])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Wild][AppearanceCategory.Hair][Rarity.Rare])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Wood][AppearanceCategory.Hair][Rarity.Rare]),
+                commonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Common]
+                    .Concat(reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Eyes][Rarity.Common]),
+                uncommonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Uncommon]
+                    .Concat(reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Eyes][Rarity.Uncommon])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Eyes][Rarity.Common])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Gray][AppearanceCategory.Eyes][Rarity.Common])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Wild][AppearanceCategory.Eyes][Rarity.Common])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Wood][AppearanceCategory.Eyes][Rarity.Common]),
+                rareEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Rare]
+                    .Concat(reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Eyes][Rarity.Rare])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Eyes][Rarity.Uncommon])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Gray][AppearanceCategory.Eyes][Rarity.Uncommon])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Wild][AppearanceCategory.Eyes][Rarity.Uncommon])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Wood][AppearanceCategory.Eyes][Rarity.Uncommon])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Drow][AppearanceCategory.Eyes][Rarity.Rare])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Gray][AppearanceCategory.Eyes][Rarity.Rare])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Wild][AppearanceCategory.Eyes][Rarity.Rare])
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Wood][AppearanceCategory.Eyes][Rarity.Rare]),
+                commonOther: ["Pointed ears"]);
             //Source: https://forgottenrealms.fandom.com/wiki/High_elf
             appearances[CreatureConstants.Elf_High] = GetWeightedAppearances(
-                commonSkin: reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Skin],
-                uncommonSkin: reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Skin],
-                rareSkin: reusableAppearances[CreatureConstants.Elf_High][Rarity.Rare][AppearanceCategory.Skin],
-                commonHair: reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Hair],
-                uncommonHair: reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Hair],
-                rareHair: reusableAppearances[CreatureConstants.Elf_High][Rarity.Rare][AppearanceCategory.Hair],
-                commonEyes: reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Eyes],
-                uncommonEyes: reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Eyes],
-                rareEyes: reusableAppearances[CreatureConstants.Elf_High][Rarity.Rare][AppearanceCategory.Eyes],
-                allOther: ["Pointed ears"]);
+                commonSkin: reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Skin][Rarity.Common],
+                uncommonSkin: reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Skin][Rarity.Uncommon],
+                rareSkin: reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Skin][Rarity.Rare],
+                commonHair: reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Hair][Rarity.Common],
+                uncommonHair: reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Hair][Rarity.Uncommon],
+                rareHair: reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Hair][Rarity.Rare],
+                commonEyes: reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Eyes][Rarity.Common],
+                uncommonEyes: reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Eyes][Rarity.Uncommon],
+                rareEyes: reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Eyes][Rarity.Rare],
+                commonOther: ["Pointed ears"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Wild_elf
             //https://www.d20srd.org/srd/monsters/elf.htm
             appearances[CreatureConstants.Elf_Wild] = GetWeightedAppearances(
-                allSkin: ["Light brown skin", "Brown skin", "Dark brown skin"],
+                commonSkin: ["Light brown skin", "Brown skin", "Dark brown skin"],
                 commonHair: [ "Straight black hair", "Curly black hair", "Kinky black hair",
                     "Straight dark brown hair", "Curly dark brown hair", "Kinky dark brown hair",
                     "Straight brown hair", "Curly brown hair", "Kinky brown hair",
@@ -2570,28 +2393,28 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Straight silvery-white hair", "Curly silvery-white hair", "Kinky silvery-white hair",
                     "Straight gray hair", "Curly gray hair", "Kinky gray hair",
                     "Straight white hair", "Curly white hair", "Kinky white hair" ],
-                commonEyes: reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Eyes],
-                uncommonEyes: reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Eyes],
-                rareEyes: reusableAppearances[CreatureConstants.Elf_High][Rarity.Rare][AppearanceCategory.Eyes],
-                allOther: ["Pointed ears"]);
+                commonEyes: reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Eyes][Rarity.Common],
+                uncommonEyes: reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Eyes][Rarity.Uncommon],
+                rareEyes: reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Eyes][Rarity.Rare],
+                commonOther: ["Pointed ears"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Wood_elf
             //https://www.d20srd.org/srd/monsters/elf.htm
             appearances[CreatureConstants.Elf_Wood] = GetWeightedAppearances(
-                allSkin: ["Copper skin", "Tan skin"],
+                commonSkin: ["Copper skin", "Tan skin"],
                 commonHair: [ "Straight black hair", "Straight light brown hair", "Straight brown hair",
                     "Curly black hair", "Curly light brown hair", "Curly brown hair",
                     "Kinky black hair", "Kinky light brown hair", "Kinky brown hair", ],
                 uncommonHair: [ "Straight yellow hair", "Straight blond hair", "Straight copper-red hair",
                     "Curly yellow hair", "Curly blond hair", "Curly copper-red hair",
                     "Kinky yellow hair", "Kinky blond hair", "Kinky copper-red hair" ],
-                allEyes: ["Green eyes", "Brown eyes", "Hazel eyes"],
-                allOther: ["Pointed ears"]);
+                commonEyes: ["Green eyes", "Brown eyes", "Hazel eyes"],
+                commonOther: ["Pointed ears"]);
             //Source: https://www.d20srd.org/srd/monsters/devil.htm#erinyes
             //https://forgottenrealms.fandom.com/wiki/Erinyes
             appearances[CreatureConstants.Erinyes] = GetWeightedAppearances(
-                allSkin: ["TODO Human skin"],
-                allHair: ["TODO Human hair"],
-                allEyes: ["Red eyes"]);
+                commonSkin: ["TODO Human skin"],
+                commonHair: ["TODO Human hair"],
+                commonEyes: ["Red eyes"]);
             //Source: https://www.5esrd.com/database/creature/ethereal-filcher/
             appearances[CreatureConstants.EtherealFilcher][Rarity.Common] = ["One foot. Four arms ending in hands with long, spindly fingers. Looks as if it has two heads, one on a long stalk of a neck and another on its abdomen."];
             //Source: https://www.d20srd.org/srd/monsters/etherealMarauder.htm
@@ -2602,120 +2425,120 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.Ettercap][Rarity.Common] = ["Grey-purplish skin. Distended underbelly. Spider-like face, with fangs and multiple eyes. Two sharp, black, chitinous claws instead of hands and feet."];
             //Source: https://forgottenrealms.fandom.com/wiki/Ettin
             appearances[CreatureConstants.Ettin] = GetWeightedAppearances(
-                allSkin: new[] { "Brown skin, crusted over with a thick layer of grime", "Olive skin, crusted over with a thick layer of grime",
+                commonSkin: new[] { "Brown skin, crusted over with a thick layer of grime", "Olive skin, crusted over with a thick layer of grime",
                         "Pink skin, crusted over with a thick layer of grime", "Gray skin, crusted over with a thick layer of grime",
                     "Deep brown skin, crusted over with a thick layer of grime", "Deep Olive skin, crusted over with a thick layer of grime",
                         "Deep Pink skin, crusted over with a thick layer of grime", "Deep Gray skin, crusted over with a thick layer of grime",
                     "Pale brown skin, crusted over with a thick layer of grime", "Pale Olive skin, crusted over with a thick layer of grime",
                         "Pale Pink skin, crusted over with a thick layer of grime", "Pale Gray skin, crusted over with a thick layer of grime" },
-                allHair: new[] { "Long, stringy TODO HILL GIANT hair",
+                commonHair: new[] { "Long, stringy TODO HILL GIANT hair",
                     "Long, stringy TODO STONE GIANT hair" },
-                allEyes: new[] { "Large, watery TODO ORC eyes" },
-                allOther: new[] { "Two heads. Horrid stench. Shovel jaws with lower canine teeth that protrude out like boar tusks." });
+                commonEyes: new[] { "Large, watery TODO ORC eyes" },
+                commonOther: new[] { "Two heads. Horrid stench. Shovel jaws with lower canine teeth that protrude out like boar tusks." });
             //Source: https://beetleidentifications.com/fire-beetle/
             //https://forgottenrealms.fandom.com/wiki/Giant_fire_beetle
             appearances[CreatureConstants.FireBeetle_Giant] = GetWeightedAppearances(
                 commonSkin: new[] { "Brown color" },
                 uncommonSkin: [ "Shimmering green color", "Black color with red markings", "Red color", "Orange color",
                     "Orange color with brown flame-like markings", "Purple color with red markings" ],
-                allOther: ["Red bioluminescent glands above each eye and near the abdomen"]);
+                commonOther: ["Red bioluminescent glands above each eye and near the abdomen"]);
             //Source: https://www.d20srd.org/srd/monsters/formian.htm
             appearances[CreatureConstants.FormianWorker] = GetWeightedAppearances(
-                allSkin: ["Brownish-red carapace"],
-                allOther: ["Hands only suitable for manual labor"]);
+                commonSkin: ["Brownish-red carapace"],
+                commonOther: ["Hands only suitable for manual labor"]);
             appearances[CreatureConstants.FormianWarrior] = GetWeightedAppearances(
-                allSkin: ["Brownish-red carapace"],
-                allOther: ["Sharp mandibles and poison stingers"]);
+                commonSkin: ["Brownish-red carapace"],
+                commonOther: ["Sharp mandibles and poison stingers"]);
             appearances[CreatureConstants.FormianTaskmaster] = GetWeightedAppearances(
-                allSkin: ["Brownish-red carapace"],
-                allOther: ["Neither mandible nor mouth"]);
+                commonSkin: ["Brownish-red carapace"],
+                commonOther: ["Neither mandible nor mouth"]);
             appearances[CreatureConstants.FormianMyrmarch] = GetWeightedAppearances(
-                allSkin: ["Brownish-red carapace"],
-                allOther: ["Claws capable of fine manipulation, like human hands"]);
+                commonSkin: ["Brownish-red carapace"],
+                commonOther: ["Claws capable of fine manipulation, like human hands"]);
             appearances[CreatureConstants.FormianQueen] = GetWeightedAppearances(
-                allSkin: ["Brownish-red carapace"],
-                allOther: ["Body too large to allow for movement on her weak, atrophied legs"]);
+                commonSkin: ["Brownish-red carapace"],
+                commonOther: ["Body too large to allow for movement on her weak, atrophied legs"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Frost_worm
             appearances[CreatureConstants.FrostWorm] = GetWeightedAppearances(
                 commonSkin: ["Blue-white skin", "Very pale blue skin"],
                 uncommonSkin: ["Blue-white skin with a purple underbelly", "Very pale blue skin with a purple underbelly"],
-                allOther: ["Huge mandibles. Nodule from which it emits a trilling noise."]);
+                commonOther: ["Huge mandibles. Nodule from which it emits a trilling noise."]);
             //Source: https://forgottenrealms.fandom.com/wiki/Gargoyle - adding my own info for skin tones
             appearances[CreatureConstants.Gargoyle] = GetWeightedAppearances(
-                allSkin: [ "Brown stone skin", "Dark brown stone skin", "Light brown stone skin",
+                commonSkin: [ "Brown stone skin", "Dark brown stone skin", "Light brown stone skin",
                     "Gray stone skin", "Dark gray stone skin","Light gray stone skin",
                     "White stone skin", "Marble stone skin", "Black stone skin" ],
-                allOther: ["Demon-like humanoid"]);
+                commonOther: ["Demon-like humanoid"]);
             appearances[CreatureConstants.Gargoyle_Kapoacinth] = GetWeightedAppearances(
-                allSkin: [ "Brown stone skin", "Dark brown stone skin", "Light brown stone skin",
+                commonSkin: [ "Brown stone skin", "Dark brown stone skin", "Light brown stone skin",
                     "Gray stone skin", "Dark gray stone skin","Light gray stone skin",
                     "White stone skin", "Marble stone skin", "Black stone skin" ],
-                allOther: ["Demon-like humanoid"]);
+                commonOther: ["Demon-like humanoid"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Gelatinous_cube
             appearances[CreatureConstants.GelatinousCube] = GetWeightedAppearances(
-                allSkin: [ "Completely transparent cube, with only a glint on the surface to give away its position",
+                commonSkin: [ "Completely transparent cube, with only a glint on the surface to give away its position",
                     "Completely transparent rhombohedron, with only a glint on the surface to give away its position" ],
                 uncommonOther: [ "An object floats within the cube's body", "Two objects float within the cube's body",
                     "Three objects float within the cube's body" ]);
             //Source: https://forgottenrealms.fandom.com/wiki/Ghaele
             appearances[CreatureConstants.Ghaele] = GetWeightedAppearances(
-                allSkin: ["TODO High Elf skin"],
-                allHair: ["TODO High Elf hair"],
-                allEyes: ["Opalescent pearl eyes"]);
+                commonSkin: ["TODO High Elf skin"],
+                commonHair: ["TODO High Elf hair"],
+                commonEyes: ["Opalescent pearl eyes"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Ghoul
             appearances[CreatureConstants.Ghoul] = GetWeightedAppearances(
-                allSkin: [ "Mottled, decaying, gray hide stretched tight over its emaciated body",
+                commonSkin: [ "Mottled, decaying, gray hide stretched tight over its emaciated body",
                     "Mottled, decaying, purple hide stretched tight over its emaciated body",
                     "Mottled, decaying, pink hide stretched tight over its emaciated body" ],
-                allHair: new[] { "Almost hairless", "Hairless" },
-                allEyes: new[] { "Sunken eyes, burning like hot coals" });
+                commonHair: new[] { "Almost hairless", "Hairless" },
+                commonEyes: new[] { "Sunken eyes, burning like hot coals" });
             appearances[CreatureConstants.Ghoul_Ghast] = GetWeightedAppearances(
-                allSkin: new[] { "Mottled, decaying, gray hide stretched tight over its emaciated body",
+                commonSkin: new[] { "Mottled, decaying, gray hide stretched tight over its emaciated body",
                     "Mottled, decaying, purple hide stretched tight over its emaciated body",
                     "Mottled, decaying, pink hide stretched tight over its emaciated body",
                     "Mottled, decaying, white hide stretched tight over its emaciated body" },
-                allHair: new[] { "Almost hairless", "Hairless" },
-                allEyes: new[] { "Sunken eyes, burning like hot coals" });
+                commonHair: new[] { "Almost hairless", "Hairless" },
+                commonEyes: new[] { "Sunken eyes, burning like hot coals" });
             appearances[CreatureConstants.Ghoul_Lacedon] = GetWeightedAppearances(
-                allSkin: new[] { "Mottled, decaying, gray hide stretched tight over its emaciated body",
+                commonSkin: new[] { "Mottled, decaying, gray hide stretched tight over its emaciated body",
                     "Mottled, decaying, purple hide stretched tight over its emaciated body",
                     "Mottled, decaying, pink hide stretched tight over its emaciated body",
                     "Mottled, decaying, green hide stretched tight over its emaciated body" },
-                allHair: new[] { "Almost hairless", "Hairless" },
-                allEyes: new[] { "Sunken eyes, burning like hot coals" });
+                commonHair: new[] { "Almost hairless", "Hairless" },
+                commonEyes: new[] { "Sunken eyes, burning like hot coals" });
             //Source: https://forgottenrealms.fandom.com/wiki/Cloud_giant
             appearances[CreatureConstants.Giant_Cloud] = GetWeightedAppearances(
-                allSkin: new[] { "Milky white skin", "Light sky-blue skin" },
+                commonSkin: new[] { "Milky white skin", "Light sky-blue skin" },
                 commonHair: new[] { "Straight silvery-white hair", "Curly silvery-white hair", "Kinky silvery-white hair",
                     "Straight brass hair", "Curly brass hair", "Kinky brass hair"},
                 uncommonHair: new[] { "Straight sky-blue hair", "Curly sky-blue hair", "Kinky sky-blue hair" },
-                allEyes: new[] { "Iridescent blue eyes" });
+                commonEyes: new[] { "Iridescent blue eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Fire_giant
             appearances[CreatureConstants.Giant_Fire] = GetWeightedAppearances(
-                allSkin: new[] { "Coal-black skin", "Coal-gray skin" },
-                allHair: new[] { "Bright orange hair", "Bright red hair", "Flaming orange hair", "Flaming red hair" },
-                allEyes: new[] { "Red eyes", "Orange eyes", "Fiery red eyes", "Fiery orange eyes" });
+                commonSkin: new[] { "Coal-black skin", "Coal-gray skin" },
+                commonHair: new[] { "Bright orange hair", "Bright red hair", "Flaming orange hair", "Flaming red hair" },
+                commonEyes: new[] { "Red eyes", "Orange eyes", "Fiery red eyes", "Fiery orange eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Frost_giant
             appearances[CreatureConstants.Giant_Frost] = GetWeightedAppearances(
-                allSkin: new[] { "Ivory-white skin", "Glacial-blue skin" },
-                allHair: new[] { "Blue-white hair", "Light blue hair", "Pale white hair", "Dirty yellow hair", "TODO Males grow beards" },
-                allEyes: new[] { "Pale blue eyes", "Yellow eyes" });
+                commonSkin: new[] { "Ivory-white skin", "Glacial-blue skin" },
+                commonHair: new[] { "Blue-white hair", "Light blue hair", "Pale white hair", "Dirty yellow hair", "TODO Males grow beards" },
+                commonEyes: new[] { "Pale blue eyes", "Yellow eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Hill_giant
             appearances[CreatureConstants.Giant_Hill] = GetWeightedAppearances(
-                allSkin: new[] { "Tan skin", "Reddish-brown skin", "Brown skin", "Dark tan skin",
+                commonSkin: new[] { "Tan skin", "Reddish-brown skin", "Brown skin", "Dark tan skin",
                     "Deep ruddy-brown skin", "Light tan skin" },
-                allHair: new[] { "Brown hair", "Dark brown hair", "Black hair" },
-                allEyes: new[] { "Black, red-rimmed eyes", "Dark brown, red-rimmed eyes", "Brown, red-rimmed eyes" },
-                allOther: new[] { "Long arms, stooped shoulders, low forehead" });
+                commonHair: new[] { "Brown hair", "Dark brown hair", "Black hair" },
+                commonEyes: new[] { "Black, red-rimmed eyes", "Dark brown, red-rimmed eyes", "Brown, red-rimmed eyes" },
+                commonOther: new[] { "Long arms, stooped shoulders, low forehead" });
             //Source: https://forgottenrealms.fandom.com/wiki/Stone_giant
             appearances[CreatureConstants.Giant_Stone] = GetWeightedAppearances(
-                allSkin: new[] { "Gray skin", "Grayish-brown skin" },
-                allHair: new[] { "Dark gray hair", "Gray hair", "Bluish-gray hair", "Bald" },
-                allEyes: new[] { "Silver eyes", "Steel-colored eyes" });
+                commonSkin: new[] { "Gray skin", "Grayish-brown skin" },
+                commonHair: new[] { "Dark gray hair", "Gray hair", "Bluish-gray hair", "Bald" },
+                commonEyes: new[] { "Silver eyes", "Steel-colored eyes" });
             appearances[CreatureConstants.Giant_Stone_Elder] = GetWeightedAppearances(
-                allSkin: new[] { "Gray skin", "Grayish-brown skin" },
-                allHair: new[] { "Dark gray hair", "Gray hair", "Bluish-gray hair", "Bald" },
-                allEyes: new[] { "Silver eyes", "Steel-colored eyes" });
+                commonSkin: new[] { "Gray skin", "Grayish-brown skin" },
+                commonHair: new[] { "Dark gray hair", "Gray hair", "Bluish-gray hair", "Bald" },
+                commonEyes: new[] { "Silver eyes", "Steel-colored eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Storm_giant
             appearances[CreatureConstants.Giant_Storm] = GetWeightedAppearances(
                 commonSkin: new[] { "Pale light-green skin skin" },
@@ -2729,19 +2552,19 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 rareEyes: new[] { "Silvery-gray eyes", "Silver eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Gibbering_mouther
             appearances[CreatureConstants.GibberingMouther] = GetWeightedAppearances(
-                allSkin: new[] { "Bright red skin", "Pink skin", "White-red skin", "Brown skin", "Brown-green skin" },
-                allOther: new[] { "Large blob of mouth and eyes" });
+                commonSkin: new[] { "Bright red skin", "Pink skin", "White-red skin", "Brown skin", "Brown-green skin" },
+                commonOther: new[] { "Large blob of mouth and eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Girallon
             appearances[CreatureConstants.Girallon] = GetWeightedAppearances(
-                allSkin: new[] { "Beige skin", "Light brown skin", "Pink skin" },
-                allHair: new[] { "Thick white fur" },
-                allOther: new[] { "Four arms. Curved tusks in its mouth." });
+                commonSkin: new[] { "Beige skin", "Light brown skin", "Pink skin" },
+                commonHair: new[] { "Thick white fur" },
+                commonOther: new[] { "Four arms. Curved tusks in its mouth." });
             //Source: https://forgottenrealms.fandom.com/wiki/Githyanki
             appearances[CreatureConstants.Githyanki] = GetWeightedAppearances(
-                allSkin: new[] { "Rough, leathery yellow skin" },
-                allHair: new[] { "Russet hair in a topknot", "Black hair in a topknot", "Red hair in a topknot" },
-                allEyes: new[] { "Bright black eyes sunk deep in the orbits" },
-                allOther: new[] { "Pointed ears, serrated in the back. Long angular skull, with a small and highly-placed flat nose. Pointed teeth." });
+                commonSkin: new[] { "Rough, leathery yellow skin" },
+                commonHair: new[] { "Russet hair in a topknot", "Black hair in a topknot", "Red hair in a topknot" },
+                commonEyes: new[] { "Bright black eyes sunk deep in the orbits" },
+                commonOther: new[] { "Pointed ears, serrated in the back. Long angular skull, with a small and highly-placed flat nose. Pointed teeth." });
             //Source: https://forgottenrealms.fandom.com/wiki/Githzerai
             appearances[CreatureConstants.Githzerai] = GetWeightedAppearances(
                 commonSkin: ["Fair yellow skin", "Pale yellow skin"],
@@ -2751,16 +2574,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "TODO Female buns", "TODO Female braids" ],
                 uncommonHair: [ "Gray hair",
                     "TODO Female (but Male styles)" ],
-                allEyes: ["Deep-set yellow eyes"],
-                allOther: ["Long angular skull, flattened nose, long pointed ears"]);
+                commonEyes: ["Deep-set yellow eyes"],
+                commonOther: ["Long angular skull, flattened nose, long pointed ears"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Glabrezu
             appearances[CreatureConstants.Glabrezu] = GetWeightedAppearances(
-                allSkin: ["Wrinkly, deep russet skin", "Wrinkly, russet-black skin", "Wrinkly, black skin", "Wrinkly, pitch-black skin"],
-                allEyes: ["Cold, purple, piercing eyes"],
-                allOther: ["Two pairs of arms: main arms (from the shoulders) are larger and end in pincers, smaller pair (from the stomach) is humanoid with clawed fingers. Goat horns atop the canine head. Numerous fangs in the muzzle."]);
+                commonSkin: ["Wrinkly, deep russet skin", "Wrinkly, russet-black skin", "Wrinkly, black skin", "Wrinkly, pitch-black skin"],
+                commonEyes: ["Cold, purple, piercing eyes"],
+                commonOther: ["Two pairs of arms: main arms (from the shoulders) are larger and end in pincers, smaller pair (from the stomach) is humanoid with clawed fingers. Goat horns atop the canine head. Numerous fangs in the muzzle."]);
             //Source: https://forgottenrealms.fandom.com/wiki/Gnoll
             appearances[CreatureConstants.Gnoll] = GetWeightedAppearances(
-                allSkin: ["Greenish-gray skin"],
+                commonSkin: ["Greenish-gray skin"],
                 commonHair: [ "Light brown fur, dirty yellow crest-like mane", "Light brown fur, reddish-gray crest-like mane",
                     "Light brown fur, dirty yellow-gray crest-like mane", "Light brown fur, dirty yellow-red crest-like mane",
                     "Light brown fur, yellow-gray crest-like mane", "Light brown fur, yellow-red crest-like mane",
@@ -2790,10 +2613,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Black fur marked with fiery orange spots and stripes, yellow-red crest-like mane" ],
                 commonEyes: ["Green eyes", "Brown eyes"],
                 rareEyes: ["Gleaming red eyes"],
-                allOther: ["Hyena-like appearance"]);
+                commonOther: ["Hyena-like appearance"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Forest_gnome
             appearances[CreatureConstants.Gnome_Forest] = GetWeightedAppearances(
-                allSkin: new[] { "Bark-colored skin", "Earthy brown skin" },
+                commonSkin: new[] { "Bark-colored skin", "Earthy brown skin" },
                 commonHair: new[] { "Long, free black hair", "Long, free brown hair",
                     "Long, free black hair TODO MALE beard trimmed to fine point", "Long, free brown hair TODO MALE beard trimmed to fine point",
                     "Long, free black hair TODO MALE beard trimmed into hornlike spikes", "Long, free brown hair TODO MALE beard trimmed into hornlike spikes"  },
@@ -2806,29 +2629,29 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 rareHair: [ "Long, free white hair",
                     "Long, free white hair TODO MALE beard trimmed to fine point",
                     "Long, free white hair TODO MALE beard trimmed into hornlike spikes" ],
-                allEyes: ["Blue eyes", "Brown eyes"]);
+                commonEyes: ["Blue eyes", "Brown eyes"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Rock_gnome
             //https://forgottenrealms.fandom.com/wiki/Gnome
             appearances[CreatureConstants.Gnome_Rock] = GetWeightedAppearances(
-                allSkin: ["Light tan skin", "Tan skin", "Light brown skin", "Brown skin"],
-                allHair: [ "TODO Human style gray hair", "TODO Human style white hair",
+                commonSkin: ["Light tan skin", "Tan skin", "Light brown skin", "Brown skin"],
+                commonHair: [ "TODO Human style gray hair", "TODO Human style white hair",
                     "TODO Human style gray hair TODO MALE Neatly-trimmed beard", "TODO Human style white hair TODO MALE Neatly-trimmed beard"],
                 commonEyes: ["Glittering opaque orbs of black", "Glitering opaque orbs of blue"],
                 uncommonEyes: ["TODO Human eyes"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Deep_gnome
             //https://www.d20srd.org/srd/monsters/gnome.htm
             appearances[CreatureConstants.Gnome_Svirfneblin] = GetWeightedAppearances(
-                allSkin: ["Rocky brown skin", "Rocky brownish-gray skin", "Rocky gray skin"],
-                allHair: ["TODO MALE bald", "TODO FEMALE Stringy gray hair"],
-                allEyes: ["Dark gray eyes", "Black eyes"],
-                allOther: ["Gnarled and wiry"]);
+                commonSkin: ["Rocky brown skin", "Rocky brownish-gray skin", "Rocky gray skin"],
+                commonHair: ["TODO MALE bald", "TODO FEMALE Stringy gray hair"],
+                commonEyes: ["Dark gray eyes", "Black eyes"],
+                commonOther: ["Gnarled and wiry"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Goblin
             //https://www.d20srd.org/srd/monsters/goblin.htm
             appearances[CreatureConstants.Goblin] = GetWeightedAppearances(
                 commonSkin: ["Yellow skin", "Red skin", "Orange skin", "Light orange skin", "Dark orange skin", "Deep red skin"],
                 uncommonSkin: ["Green skin"],
-                allEyes: ["Dull, glazed, yellow eyes", "Dull, glazed, orange eyes", "Dull, glazed, red eyes"],
-                allOther: ["Flat face, small fangs, pointed ears, sloped-back forehead, broad noses"]);
+                commonEyes: ["Dull, glazed, yellow eyes", "Dull, glazed, orange eyes", "Dull, glazed, red eyes"],
+                commonOther: ["Flat face, small fangs, pointed ears, sloped-back forehead, broad noses"]);
             //Source: https://pathfinderwiki.com/wiki/Clay_golem
             //https://forgottenrealms.fandom.com/wiki/Clay_golem
             appearances[CreatureConstants.Golem_Clay][Rarity.Common] = ["Humanoid body made from clay"];
@@ -2838,28 +2661,28 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://www.d20srd.org/srd/monsters/golem.htm
             //https://forgottenrealms.fandom.com/wiki/Iron_golem
             appearances[CreatureConstants.Golem_Iron] = GetWeightedAppearances(
-                allSkin: ["Reddish-brown color", "Black color", "Black color with golden markings", "Rusted red color", "Shining steel color"],
-                allOther: [ "Resembles a suit of armor, smooth features",
+                commonSkin: ["Reddish-brown color", "Black color", "Black color with golden markings", "Rusted red color", "Shining steel color"],
+                commonOther: [ "Resembles a suit of armor, smooth features",
                     "Resembles a suit of armor, smooth features, symbol carved in the chest",
                     "Resembles a suit of armor, smooth features, designs carved into the limbs" ]);
             //Source: https://www.d20srd.org/srd/monsters/golem.htm
             //https://forgottenrealms.fandom.com/wiki/Stone_golem
             appearances[CreatureConstants.Golem_Stone] = GetWeightedAppearances(
-                allSkin: ["Stone gray color", "Sandy brown color"],
-                allOther: [ "Looks like a carved statue", "Looks like a carved statue, appears as if wearing armor",
+                commonSkin: ["Stone gray color", "Sandy brown color"],
+                commonOther: [ "Looks like a carved statue", "Looks like a carved statue, appears as if wearing armor",
                     "Looks like a carved statue, appears as if wearing armor and has a symbol carved on the breastplate",
                     "Looks like a carved statue, symbol carved in the chest",
                     "Looks like a carved statue, designs carved into the limbs" ]);
             //Source: https://www.d20srd.org/srd/monsters/golem.htm
             //https://forgottenrealms.fandom.com/wiki/Stone_golem
             appearances[CreatureConstants.Golem_Stone_Greater] = GetWeightedAppearances(
-                allSkin: new[] { "Stone gray color", "Sandy brown color" },
-                allOther: new[] { "Looks like a carved statue", "Looks like a carved statue, stylized by its creator" });
+                commonSkin: new[] { "Stone gray color", "Sandy brown color" },
+                commonOther: new[] { "Looks like a carved statue", "Looks like a carved statue, stylized by its creator" });
             //Source: https://www.d20srd.org/srd/monsters/gorgon.htm
             //https://forgottenrealms.fandom.com/wiki/Gorgon
             appearances[CreatureConstants.Gorgon] = GetWeightedAppearances(
-                allSkin: new[] { "Dusky metallic scales" },
-                allOther: new[] { "Resembles a bull" });
+                commonSkin: new[] { "Dusky metallic scales" },
+                commonOther: new[] { "Resembles a bull" });
             //Source: https://www.d20srd.org/srd/monsters/ooze.htm#grayOoze
             appearances[CreatureConstants.GrayOoze][Rarity.Common] = new[] { "A thick puddle of gray sludge resembling wet stone",
                 "A thick puddle of gray sludge resembling an amorphous rock formation" };
@@ -2871,41 +2694,41 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 uncommonSkin: new[] { "Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Warts on the face",
                     "Rough, bark-like, pallid-green skin with knobby, cancerous protrusions. Exaggerated facial features",
                     "Rough, bark-like, pallid-green skin with knobby, cancerous protrusions" },
-                allHair: new[] { "Tangled, vine-like, black hair", "Tangled, vine-like, gray hair", "Tangled, vine-like, white hair",
+                commonHair: new[] { "Tangled, vine-like, black hair", "Tangled, vine-like, gray hair", "Tangled, vine-like, white hair",
                     "Tangled, vine-like, moldy-olive-green hair" },
-                allEyes: new[] { "Orange eyes", "Amber eyes" },
-                allOther: new[] { "Needle-sharp fangs, black talons covered in filth", "Needle-sharp fangs, yellow talons covered in filth" });
+                commonEyes: new[] { "Orange eyes", "Amber eyes" },
+                commonOther: new[] { "Needle-sharp fangs, black talons covered in filth", "Needle-sharp fangs, yellow talons covered in filth" });
             //Source: https://forgottenrealms.fandom.com/wiki/Grick
             appearances[CreatureConstants.Grick] = GetWeightedAppearances(
-                allSkin: new[] { "Rubbery, uniform, dark green skin with a pale underbelly", "Rubbery, uniform, dark blue skin with a pale underbelly",
+                commonSkin: new[] { "Rubbery, uniform, dark green skin with a pale underbelly", "Rubbery, uniform, dark blue skin with a pale underbelly",
                     "Rubbery, uniform, blue skin with a pale underbelly" },
-                allOther: new[] { "Snapping beak surrounded by large barbed tentacles" });
+                commonOther: new[] { "Snapping beak surrounded by large barbed tentacles" });
             //Source: https://forgottenrealms.fandom.com/wiki/Griffon
             appearances[CreatureConstants.Griffon] = GetWeightedAppearances(
-                allSkin: new[] { "Dusky yellow fur", "TODO Lion skin" },
-                allHair: new[] { "Golden feathers", "TODO Eagle feathers" },
-                allEyes: new[] { "TODO Eagle eyes" },
-                allOther: new[] { "Body of a lion. Wings, forelegs, and head of an eagle." });
+                commonSkin: new[] { "Dusky yellow fur", "TODO Lion skin" },
+                commonHair: new[] { "Golden feathers", "TODO Eagle feathers" },
+                commonEyes: new[] { "TODO Eagle eyes" },
+                commonOther: new[] { "Body of a lion. Wings, forelegs, and head of an eagle." });
             //Source: https://forgottenrealms.fandom.com/wiki/Grig
             appearances[CreatureConstants.Grig] = GetWeightedAppearances(
-                allSkin: new[] { "Light blue skin on the torso, brown cricket-like body from the waist-down" },
-                allHair: new[] { "Forest green hair" },
-                allOther: new[] { "Gossamer wings, hairy legs" });
+                commonSkin: new[] { "Light blue skin on the torso, brown cricket-like body from the waist-down" },
+                commonHair: new[] { "Forest green hair" },
+                commonOther: new[] { "Gossamer wings, hairy legs" });
             appearances[CreatureConstants.Grig_WithFiddle] = GetWeightedAppearances(
-                allSkin: new[] { "Light blue skin on the torso, brown cricket-like body from the waist-down" },
-                allHair: new[] { "Forest green hair" },
-                allOther: new[] { "Gossamer wings, hairy legs" });
+                commonSkin: new[] { "Light blue skin on the torso, brown cricket-like body from the waist-down" },
+                commonHair: new[] { "Forest green hair" },
+                commonOther: new[] { "Gossamer wings, hairy legs" });
             //Source: https://forgottenrealms.fandom.com/wiki/Grimlock
             appearances[CreatureConstants.Grimlock] = GetWeightedAppearances(
                 commonSkin: new[] { "Slightly-scaled, thick, scarred, gray skin" },
                 uncommonSkin: new[] { "Slightly-scaled, thick gray skin", "Slightly-scaled, thick gray skin with decorative designs scarred into the skin" },
-                allHair: new[] { "Black hair, long and unkempt" },
-                allEyes: new[] { "Completely white eyes", "Face devoid of eyes, skin stretching across where its eye sockets should be" },
-                allOther: new[] { "Sharp teeth" });
+                commonHair: new[] { "Black hair, long and unkempt" },
+                commonEyes: new[] { "Completely white eyes", "Face devoid of eyes, skin stretching across where its eye sockets should be" },
+                commonOther: new[] { "Sharp teeth" });
             //Source: https://forgottenrealms.fandom.com/wiki/Gynosphinx
             appearances[CreatureConstants.Gynosphinx] = GetWeightedAppearances(
-                allHair: new[] { "Tawny fur" },
-                allOther: new[] { "Lion body, falcon wings" });
+                commonHair: new[] { "Tawny fur" },
+                commonOther: new[] { "Lion body, falcon wings" });
             //Source: https://forgottenrealms.fandom.com/wiki/Lightfoot_halfling
             //https://www.d20srd.org/srd/monsters/halfling.htm
             appearances[CreatureConstants.Halfling_Deep] = GetWeightedAppearances(
@@ -2949,10 +2772,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 uncommonEyes: new[] { "TODO Human eyes" });
             //Source: https://www.5esrd.com/database/race/harpy/
             appearances[CreatureConstants.Harpy] = GetWeightedAppearances(
-                allSkin: new[] { "TODO Human skin" },
-                allHair: new[] { "Filthy, tangled, TODO Human hair crusted with old, dry blood" },
-                allEyes: new[] { "Coal black eyes" },
-                allOther: new[] { "Scaly legs, clawed feet, and clawed hands with knotty fingers. Leathery wings. Breasts",
+                commonSkin: new[] { "TODO Human skin" },
+                commonHair: new[] { "Filthy, tangled, TODO Human hair crusted with old, dry blood" },
+                commonEyes: new[] { "Coal black eyes" },
+                commonOther: new[] { "Scaly legs, clawed feet, and clawed hands with knotty fingers. Leathery wings. Breasts",
                     "Scaly legs, clawed feet, and clawed hands with knotty fingers. Feathery wings. Breasts" });
             //Source: https://www.dimensions.com/element/osprey-pandion-haliaetus
             appearances[CreatureConstants.Hawk][Rarity.Common] = new[] { "Red-tailed hawk", "Eurasian sparrowhawk", "Sharp-shinned hawk", "Osprey", "Harris' hawk", "Eurasian goshawk",
@@ -2963,55 +2786,55 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             };
             //Source: https://forgottenrealms.fandom.com/wiki/Hellcat
             appearances[CreatureConstants.Hellcat_Bezekira] = GetWeightedAppearances(
-                allSkin: new[] { "Form of a lion", "Form of a tiger-sized domestic cat" },
-                allEyes: new[] { "Crimson eyes", "Crimson eyes, backed by the literal fires of Hell" },
-                allOther: new[] { "Faint, wraith-like outlines with bodies composed of bright light and flickers of fire - only visible in total darkness" });
+                commonSkin: new[] { "Form of a lion", "Form of a tiger-sized domestic cat" },
+                commonEyes: new[] { "Crimson eyes", "Crimson eyes, backed by the literal fires of Hell" },
+                commonOther: new[] { "Faint, wraith-like outlines with bodies composed of bright light and flickers of fire - only visible in total darkness" });
             //Source: https://forgottenrealms.fandom.com/wiki/Hell_hound
             appearances[CreatureConstants.HellHound] = GetWeightedAppearances(
-                allHair: new[] { "Rust-red fur with soot-colored markings", "Red-brown fur with soot-colored markings" },
-                allEyes: new[] { "Glowing red eyes" },
-                allOther: new[] { "Resembles monstrous dog. Soot-colored fangs and tongues. Reek of sulfurous smoke." });
+                commonHair: new[] { "Rust-red fur with soot-colored markings", "Red-brown fur with soot-colored markings" },
+                commonEyes: new[] { "Glowing red eyes" },
+                commonOther: new[] { "Resembles monstrous dog. Soot-colored fangs and tongues. Reek of sulfurous smoke." });
             appearances[CreatureConstants.HellHound_NessianWarhound] = GetWeightedAppearances(
-                allHair: new[] { "Coal-black fur with soot-colored markings" },
-                allEyes: new[] { "Glowing red eyes" },
-                allOther: new[] { "Resembles monstrous dog. Soot-colored fangs and tongues. Reek of sulfurous smoke." });
+                commonHair: new[] { "Coal-black fur with soot-colored markings" },
+                commonEyes: new[] { "Glowing red eyes" },
+                commonOther: new[] { "Resembles monstrous dog. Soot-colored fangs and tongues. Reek of sulfurous smoke." });
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
             appearances[CreatureConstants.Hellwasp_Swarm][Rarity.Common] = new[] { "5,000 Hellwasps" };
             //Source: https://forgottenrealms.fandom.com/wiki/Hezrou
             appearances[CreatureConstants.Hezrou] = GetWeightedAppearances(
-                allSkin: new[] { "Orange skin", "Yellow-green skin", "Mottled brown skin" },
-                allEyes: new[] { "Glowing yellow eyes", "Glowing red eyes" },
-                allOther: new[] { "Resemble a humanoid toad, wide maw with rows of blunt teeth, long spikes running down the back" });
+                commonSkin: new[] { "Orange skin", "Yellow-green skin", "Mottled brown skin" },
+                commonEyes: new[] { "Glowing yellow eyes", "Glowing red eyes" },
+                commonOther: new[] { "Resemble a humanoid toad, wide maw with rows of blunt teeth, long spikes running down the back" });
             //Source: https://www.mojobob.com/roleplay/monstrousmanual/s/sphinx.html
             appearances[CreatureConstants.Hieracosphinx] = GetWeightedAppearances(
-                allHair: new[] { "TODO Lion fur", "TODO Hawk feathers" },
-                allOther: new[] { "Body of a lion, great feathery wings, head of a hawk" });
+                commonHair: new[] { "TODO Lion fur", "TODO Hawk feathers" },
+                commonOther: new[] { "Body of a lion, great feathery wings, head of a hawk" });
             //Source: https://forgottenrealms.fandom.com/wiki/Hippogriff
             appearances[CreatureConstants.Hippogriff] = GetWeightedAppearances(
-                allSkin: new[] { "Ivory beak", "Golden yellow beak" },
-                allHair: new[] { "Russet fur, russet feathers", "Golden tan fur, russet feathers", "Brown fur, russet feathers",
+                commonSkin: new[] { "Ivory beak", "Golden yellow beak" },
+                commonHair: new[] { "Russet fur, russet feathers", "Golden tan fur, russet feathers", "Brown fur, russet feathers",
                     "Russet fur, golden tan feathers", "Golden tan fur, golden tan feathers", "Brown fur, golden tan feathers",
                     "Russet fur, brown feathers", "Golden tan fur, brown feathers", "Brown fur, brown feathers" },
-                allOther: [ "Body of a horse, wings and head of a hawk, forelegs ending in sharp talons, hind legs end in hooves",
+                commonOther: [ "Body of a horse, wings and head of a hawk, forelegs ending in sharp talons, hind legs end in hooves",
                     "Body of a horse, wings and head of a eagle, forelegs ending in sharp talons, hind legs end in hooves" ]);
             //Source: https://forgottenrealms.fandom.com/wiki/Hobgoblin
             //https://www.d20srd.org/srd/monsters/hobgoblin.htm
             appearances[CreatureConstants.Hobgoblin] = GetWeightedAppearances(
-                allSkin: [ "Orange skin", "Reddish-brown skin", "Orange-brown skin", "Orange-red skin", "Dark orange skin", "Red-orange skin",
+                commonSkin: [ "Orange skin", "Reddish-brown skin", "Orange-brown skin", "Orange-red skin", "Dark orange skin", "Red-orange skin",
                     "TODO MALE Blue nose", "TODO MALE red nose" ],
-                allHair: ["Dark brown hair", "Dark gray hair", "Orange hair", "Red hair", "Dark reddish-brown hair", "Reddish-brown hair"],
-                allEyes: ["Yellow eyes", "Dark brown eyes"],
-                allOther: ["Yellow teeth"]);
+                commonHair: ["Dark brown hair", "Dark gray hair", "Orange hair", "Red hair", "Dark reddish-brown hair", "Reddish-brown hair"],
+                commonEyes: ["Yellow eyes", "Dark brown eyes"],
+                commonOther: ["Yellow teeth"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Homunculus
             appearances[CreatureConstants.Homunculus] = GetWeightedAppearances(
-                allSkin: ["Beige skin", "Dark gray skin", "Pale green skin", "Yellow-green skin"],
-                allEyes: ["Yellow eyes", "Green eyes", "Blue eyes", "Blue-green eyes", "Red eyes", "Black eyes"],
-                allOther: ["Leathery wings, large bat-like ears"]);
+                commonSkin: ["Beige skin", "Dark gray skin", "Pale green skin", "Yellow-green skin"],
+                commonEyes: ["Yellow eyes", "Green eyes", "Blue eyes", "Blue-green eyes", "Red eyes", "Black eyes"],
+                commonOther: ["Leathery wings, large bat-like ears"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Cornugon
             appearances[CreatureConstants.HornedDevil_Cornugon] = GetWeightedAppearances(
-                allSkin: ["Repulsive red scales", "Repulsive yellow scales", "Repulsive orange scales", "Repulsive black scales", "Repulsive blue scales"],
-                allEyes: ["Yellow eyes", "Green eyes", "Blue eyes", "Blue-green eyes", "Red eyes", "Black eyes"],
-                allOther: ["Sweeping horns, wings, prehensile, serpentine tail"]);
+                commonSkin: ["Repulsive red scales", "Repulsive yellow scales", "Repulsive orange scales", "Repulsive black scales", "Repulsive blue scales"],
+                commonEyes: ["Yellow eyes", "Green eyes", "Blue eyes", "Blue-green eyes", "Red eyes", "Black eyes"],
+                commonOther: ["Sweeping horns, wings, prehensile, serpentine tail"]);
             //Source: https://www.google.com/search?q=draft+horse+breeds
             //https://equineworld.co.uk/about-horses/horse-colours-and-markings/horse-coat-colours-and-patterns
             appearances[CreatureConstants.Horse_Heavy][Rarity.Common] = [ "Belgian Draught", "Shire horse", "Clydesdale horse", "Percheron", "Suffolk Punch",
@@ -3304,58 +3127,58 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             ];
             //Source: https://forgottenrealms.fandom.com/wiki/Hound_archon
             appearances[CreatureConstants.HoundArchon] = GetWeightedAppearances(
-                allSkin: ["Red skin", "Brown skin", "Light brown skin", "Tan skin", "Cream-colored skin"],
-                allEyes: ["Black eyes", "Yellow eyes"],
-                allOther: ["Humanoid body; head of a dog"]);
+                commonSkin: ["Red skin", "Brown skin", "Light brown skin", "Tan skin", "Cream-colored skin"],
+                commonEyes: ["Black eyes", "Yellow eyes"],
+                commonOther: ["Humanoid body; head of a dog"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Howler
             appearances[CreatureConstants.Howler] = GetWeightedAppearances(
-                allSkin: ["Light brown scales", "Tan scales"],
-                allHair: ["Tangled, red fur, spreading into mane of trembling quills on the back of the neck and surrounding the face"],
-                allEyes: ["Black eyes", "Yellow eyes"],
-                allOther: ["Bruised, crushed digits ending in claws on the front legs. Back legs end in hooves. Back like an ox. Muzzled, simian face."]);
+                commonSkin: ["Light brown scales", "Tan scales"],
+                commonHair: ["Tangled, red fur, spreading into mane of trembling quills on the back of the neck and surrounding the face"],
+                commonEyes: ["Black eyes", "Yellow eyes"],
+                commonOther: ["Bruised, crushed digits ending in claws on the front legs. Back legs end in hooves. Back like an ox. Muzzled, simian face."]);
             //Source: https://forgottenrealms.fandom.com/wiki/Human
             appearances[CreatureConstants.Human] = GetWeightedAppearances(
-                allSkin: reusableAppearances[CreatureConstants.Human][Rarity.Common][AppearanceCategory.Skin],
-                commonHair: reusableAppearances[CreatureConstants.Human][Rarity.Common][AppearanceCategory.Hair],
-                uncommonHair: reusableAppearances[CreatureConstants.Human][Rarity.Uncommon][AppearanceCategory.Hair],
-                allEyes: reusableAppearances[CreatureConstants.Human][Rarity.Common][AppearanceCategory.Eyes]);
+                commonSkin: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common],
+                commonHair: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Common],
+                uncommonHair: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Uncommon],
+                commonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Common]);
             //Source: https://forgottenrealms.fandom.com/wiki/Hydra
             appearances[CreatureConstants.Hydra_5Heads] = GetWeightedAppearances(
-                allSkin: [ "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
+                commonSkin: [ "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
                     "Yellow-green skin", "Green skin, yellow underbelly", "Tan skin" ],
-                allEyes: ["Amber eyes"]);
+                commonEyes: ["Amber eyes"]);
             appearances[CreatureConstants.Hydra_6Heads] = GetWeightedAppearances(
-                allSkin: [ "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
+                commonSkin: [ "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
                     "Yellow-green skin", "Green skin, yellow underbelly", "Tan skin" ],
-                allEyes: ["Amber eyes"]);
+                commonEyes: ["Amber eyes"]);
             appearances[CreatureConstants.Hydra_7Heads] = GetWeightedAppearances(
-                allSkin: [ "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
+                commonSkin: [ "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
                     "Yellow-green skin", "Green skin, yellow underbelly", "Tan skin" ],
-                allEyes: ["Amber eyes"]);
+                commonEyes: ["Amber eyes"]);
             appearances[CreatureConstants.Hydra_8Heads] = GetWeightedAppearances(
-                allSkin: [ "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
+                commonSkin: [ "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
                     "Yellow-green skin", "Green skin, yellow underbelly", "Tan skin" ],
-                allEyes: new[] { "Amber eyes" });
+                commonEyes: new[] { "Amber eyes" });
             appearances[CreatureConstants.Hydra_9Heads] = GetWeightedAppearances(
-                allSkin: new[] { "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
+                commonSkin: new[] { "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
                     "Yellow-green skin", "Green skin, yellow underbelly", "Tan skin" },
-                allEyes: new[] { "Amber eyes" });
+                commonEyes: new[] { "Amber eyes" });
             appearances[CreatureConstants.Hydra_10Heads] = GetWeightedAppearances(
-                allSkin: new[] { "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
+                commonSkin: new[] { "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
                     "Yellow-green skin", "Green skin, yellow underbelly", "Tan skin" },
-                allEyes: new[] { "Amber eyes" });
+                commonEyes: new[] { "Amber eyes" });
             appearances[CreatureConstants.Hydra_11Heads] = GetWeightedAppearances(
-                allSkin: new[] { "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
+                commonSkin: new[] { "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
                     "Yellow-green skin", "Green skin, yellow underbelly", "Tan skin" },
-                allEyes: new[] { "Amber eyes" });
+                commonEyes: new[] { "Amber eyes" });
             appearances[CreatureConstants.Hydra_12Heads] = GetWeightedAppearances(
-                allSkin: new[] { "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
+                commonSkin: new[] { "Gray-brown skin", "Brown skin", "Dark brown skin", "Dark gray-brown skin",
                     "Yellow-green skin", "Green skin, yellow underbelly", "Tan skin" },
-                allEyes: new[] { "Amber eyes" });
+                commonEyes: new[] { "Amber eyes" });
             //Source: https://www.dimensions.com/element/striped-hyena-hyaena-hyaena
             //https://en.wikipedia.org/wiki/Striped_hyena#Description
             appearances[CreatureConstants.Hyena] = GetWeightedAppearances(
-                allHair: new[] { "Coarse, bristly, light brown fur with darker brown striping. Mane hair is light gray at the base and black at the tips. Muzzle is dark, grayish brown",
+                commonHair: new[] { "Coarse, bristly, light brown fur with darker brown striping. Mane hair is light gray at the base and black at the tips. Muzzle is dark, grayish brown",
                     "Coarse, bristly, light brown fur with darker brown striping. Mane hair is light gray at the base and dark brown at the tips. Muzzle is dark, grayish brown",
                     "Coarse, bristly, light brown fur with darker brown striping. Mane hair is white at the base and black at the tips. Muzzle is dark, grayish brown",
                     "Coarse, bristly, light brown fur with darker brown striping. Mane hair is white at the base and dark brown at the tips. Muzzle is dark, grayish brown",
@@ -3379,87 +3202,87 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is light gray at the base and dark brown at the tips. Muzzle is black",
                     "Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is white at the base and black at the tips. Muzzle is black",
                     "Coarse, bristly, dirty-gray fur with darker gray striping. Mane hair is white at the base and dark brown at the tips. Muzzle is black" },
-                allEyes: new[] { "Small eyes" },
-                allOther: new[] { "Short torso, long legs, thick and elongated neck, large and high-set ears" });
+                commonEyes: new[] { "Small eyes" },
+                commonOther: new[] { "Short torso, long legs, thick and elongated neck, large and high-set ears" });
             //Source: https://forgottenrealms.fandom.com/wiki/Gelugon
             appearances[CreatureConstants.IceDevil_Gelugon] = GetWeightedAppearances(
-                allSkin: new[] { "Blue and white skin", "Blue skin", "White skin" },
-                allEyes: new[] { "Multifaceted yellow eyes", "Multifaceted green eyes" },
-                allOther: new[] { "Insectoid. Hands and feet end in claws. Long thick tail surrounded in spikes. Set of antennae on the head. Sharp mandibles" });
+                commonSkin: new[] { "Blue and white skin", "Blue skin", "White skin" },
+                commonEyes: new[] { "Multifaceted yellow eyes", "Multifaceted green eyes" },
+                commonOther: new[] { "Insectoid. Hands and feet end in claws. Long thick tail surrounded in spikes. Set of antennae on the head. Sharp mandibles" });
             //Source: https://forgottenrealms.fandom.com/wiki/Imp
             appearances[CreatureConstants.Imp] = GetWeightedAppearances(
                 commonSkin: new[] { "Dark red skin" },
                 uncommonSkin: new[] { "Red skin", "Light red skin", "Orange skin", "Blue skin", "Brown skin", "Green skin", "Purple skin", "White skin", "Gray skin",
                     "Black skin", "Yellow skin" },
-                allEyes: new[] { "Yellow eyes", "White eyes", "Green eyes" },
-                allOther: new[] { "Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs." });
+                commonEyes: new[] { "Yellow eyes", "White eyes", "Green eyes" },
+                commonOther: new[] { "Leathery bat-like wings. Prehensile tail ending in stinger. Small, sharp, twisting, gleaming-white horns. White fangs." });
             //Source: https://www.d20srd.org/srd/monsters/invisibleStalker.htm
             appearances[CreatureConstants.InvisibleStalker][Rarity.Common] = new[] { "Amorphous form. See Invisibility reveals a dim outline of a cloud. True Seeing reveals a roiling cloud of vapor" };
             //Source: https://forgottenrealms.fandom.com/wiki/Janni
             appearances[CreatureConstants.Janni] = GetWeightedAppearances(
-                allSkin: ["Skin the color of golden sand", "Earth-colored skin"],
-                allHair: ["TODO HUMAN hair", "TODO HALF-ELF hair"],
-                allEyes: ["TODO HUMAN eyes with supernatural intensity", "TODO HALF-ELF eyes with supernatural intensity"]);
+                commonSkin: ["Skin the color of golden sand", "Earth-colored skin"],
+                commonHair: ["TODO HUMAN hair", "TODO HALF-ELF hair"],
+                commonEyes: ["TODO HUMAN eyes with supernatural intensity", "TODO HALF-ELF eyes with supernatural intensity"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Kobold
             appearances[CreatureConstants.Kobold] = GetWeightedAppearances(
-                allSkin: [ "Reddish-brown scaled skin", "Rusty black scaled skin", "Rusty brown scaled skin", "Reddish-black scaled skin",
+                commonSkin: [ "Reddish-brown scaled skin", "Rusty black scaled skin", "Rusty brown scaled skin", "Reddish-black scaled skin",
                     "Brown-black scaled skin", "Black scaled skin" ],
-                allEyes: ["Red eyes", "Burnt orange eyes", "Orange-red eyes", "Burnt red eyes"],
-                allOther: [ "Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail",
+                commonEyes: ["Red eyes", "Burnt orange eyes", "Orange-red eyes", "Burnt red eyes"],
+                commonOther: [ "Long, clawed fingers. Jaw like a crocodile. Small white horns on the head. Rat-like tail",
                     "Long, clawed fingers. Jaw like a crocodile. Small tan horns on the head. Rat-like tail" ]);
             //Source: https://forgottenrealms.fandom.com/wiki/Kolyarut
             appearances[CreatureConstants.Kolyarut][Rarity.Common] = [ "Red skin. Golden-hued banded-mail armor. Flowing red robe.",
                 "Black skin. Golden-hued banded-mail armor. Flowing red robe." ];
             //Source: https://forgottenrealms.fandom.com/wiki/Kraken
             appearances[CreatureConstants.Kraken] = GetWeightedAppearances(
-                allSkin: [ "Brown skin", "Light brown skin", "Reddish-brown skin", "Blue skin", "Purple skin", "Yellow-green skin",
+                commonSkin: [ "Brown skin", "Light brown skin", "Reddish-brown skin", "Blue skin", "Purple skin", "Yellow-green skin",
                     "Yellow-green skin with a black head, black tips on tentacles"],
-                allEyes: ["Large yellow eyes", "Large red eyes", "Large blue eyes", "Large green eyes"],
-                allOther: ["Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body"]);
+                commonEyes: ["Large yellow eyes", "Large red eyes", "Large blue eyes", "Large green eyes"],
+                commonOther: ["Squid-like. Two of the ten tentacles are longer and have deadly barbs. Fins protrude from the upper part of the elongated central body"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Krenshar
             appearances[CreatureConstants.Krenshar] = GetWeightedAppearances(
-                allHair: [ "Light brown shaggy fur with dark brown spots, dark-red spiky mane", "Light brown shaggy fur with dark brown spots, dark-brown spiky mane",
+                commonHair: [ "Light brown shaggy fur with dark brown spots, dark-red spiky mane", "Light brown shaggy fur with dark brown spots, dark-brown spiky mane",
                     "Light gray shaggy fur with dark brown spots, brown spiky mane", "Light gray shaggy fur with dark brown spots, dark-brown spiky mane",
                     "Light gray shaggy fur with dark gray spots, brown spiky mane", "Light gray shaggy fur with dark gray spots, dark-brown spiky mane" ],
-                allOther: ["Long, bushy tail. Skin over the skull is a sheath that can be pulled back to reveal the underlying muscles and bones"]);
+                commonOther: ["Long, bushy tail. Skin over the skull is a sheath that can be pulled back to reveal the underlying muscles and bones"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Kuo-toa
             appearances[CreatureConstants.KuoToa] = GetWeightedAppearances(
-                allSkin: [ "Silver-gray scales", "Gray scales", "Gray scales with yellow undertones", "Gray scales with dark red undertones",
+                commonSkin: [ "Silver-gray scales", "Gray scales", "Gray scales with yellow undertones", "Gray scales with dark red undertones",
                     "Gray scales with ghostly white undertones" ],
-                allEyes: ["Bulging silver-black eyes"],
-                allOther: ["Broad, distended, partially-webbed hands and feet. Four digits per hand and feet. Bullet-shaped, piscine head. Sharp teeth."]);
+                commonEyes: ["Bulging silver-black eyes"],
+                commonOther: ["Broad, distended, partially-webbed hands and feet. Four digits per hand and feet. Bullet-shaped, piscine head. Sharp teeth."]);
             //Source: https://forgottenrealms.fandom.com/wiki/Lamia
             appearances[CreatureConstants.Lamia] = GetWeightedAppearances(
-                allSkin: ["TODO HUMAN skin"],
+                commonSkin: ["TODO HUMAN skin"],
                 commonHair: ["TODO LION fur"],
                 uncommonHair: ["TODO GOAT fur", "TODO DEER fur"],
-                allEyes: ["TODO HUMAN eyes"],
+                commonEyes: ["TODO HUMAN eyes"],
                 commonOther: ["Human from the waist-up, lion from the waist-down"],
                 uncommonOther: ["Human from the waist-up, goat from the waist-down", "Human from the waist-up, deer from the waist-down"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Lammasu
             appearances[CreatureConstants.Lammasu] = GetWeightedAppearances(
-                allSkin: ["TODO HUMAN skin"],
-                allHair: ["TODO LION fur", "TODO EAGLE feathers"],
-                allEyes: ["TODO HUMAN eyes"],
-                allOther: ["Human from the waist-up, lion from the waist-down, pair of wings on the back"]);
+                commonSkin: ["TODO HUMAN skin"],
+                commonHair: ["TODO LION fur", "TODO EAGLE feathers"],
+                commonEyes: ["TODO HUMAN eyes"],
+                commonOther: ["Human from the waist-up, lion from the waist-down, pair of wings on the back"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Lantern_archon
             appearances[CreatureConstants.LanternArchon][Rarity.Common] = ["Sphere of soft, glowing light"];
             //Source: https://forgottenrealms.fandom.com/wiki/Lemure
             appearances[CreatureConstants.Lemure] = GetWeightedAppearances(
-                allSkin: new[] { "Orange skin", "Pink skin" },
-                allOther: new[] { "Blob of molten, stinking flesh. Formless, shivering mass below the waist. Head and torso is vaguely humanoid." });
+                commonSkin: new[] { "Orange skin", "Pink skin" },
+                commonOther: new[] { "Blob of molten, stinking flesh. Formless, shivering mass below the waist. Head and torso is vaguely humanoid." });
             //Source: https://forgottenrealms.fandom.com/wiki/Leonal
             appearances[CreatureConstants.Leonal] = GetWeightedAppearances(
-                allSkin: new[] { "TODO HUMAN skin" },
-                allHair: new[] { "TODO LION fur" },
-                allEyes: new[] { "TODO HUMAN eyes", "TODO LION eyes" });
+                commonSkin: new[] { "TODO HUMAN skin" },
+                commonHair: new[] { "TODO LION fur" },
+                commonEyes: new[] { "TODO HUMAN eyes", "TODO LION eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Leopard
             appearances[CreatureConstants.Leopard][Rarity.Common] = new[] { "Yellow fur with rosette-shaped spots" };
             //Source: https://forgottenrealms.fandom.com/wiki/Lillend
             appearances[CreatureConstants.Lillend] = GetWeightedAppearances(
-                allSkin: new[] { "TODO HUMAN skin",
+                commonSkin: new[] { "TODO HUMAN skin",
                     "Bright blue scales", "Bright purple scales", "Bright red scales", "Bright orange scales", "Bright yellow scales", "Bright green scales" },
-                allHair: new[] { "Bright blue hair, bright blue feathers", "Bright blue hair, bright purple feathers", "Bright blue hair, bright red feathers",
+                commonHair: new[] { "Bright blue hair, bright blue feathers", "Bright blue hair, bright purple feathers", "Bright blue hair, bright red feathers",
                         "Bright blue hair, bright orange feathers", "Bright blue hair, bright yellow feathers", "Bright blue hair, bright green feathers",
                     "Bright purple hair, bright blue feathers", "Bright purple hair, bright purple feathers", "Bright purple hair, bright red feathers",
                         "Bright purple hair, bright orange feathers", "Bright purple hair, bright yellow feathers", "Bright purple hair, bright green feathers",
@@ -3471,15 +3294,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                         "Bright yellow hair, bright orange feathers", "Bright yellow hair, bright yellow feathers", "Bright yellow hair, bright green feathers",
                     "Bright green hair, bright blue feathers", "Bright green hair, bright purple feathers", "Bright green hair, bright red feathers",
                         "Bright green hair, bright orange feathers", "Bright green hair, bright yellow feathers", "Bright green hair, bright green feathers" },
-                allEyes: new[] { "TODO HUMAN eyes" },
-                allOther: new[] { "Torso is humanoid, waist-down is serpentine" });
+                commonEyes: new[] { "TODO HUMAN eyes" },
+                commonOther: new[] { "Torso is humanoid, waist-down is serpentine" });
             //Source: https://forgottenrealms.fandom.com/wiki/Lion
             appearances[CreatureConstants.Lion] = GetWeightedAppearances(
-                allHair: new[] { "Golden fur", "Tawny fur", "TODO MALE brown mane" });
+                commonHair: new[] { "Golden fur", "Tawny fur", "TODO MALE brown mane" });
             //Source: https://forgottenrealms.fandom.com/wiki/Dire_lion
             appearances[CreatureConstants.Lion_Dire] = GetWeightedAppearances(
-                allHair: new[] { "Golden fur", "Tawny fur", "TODO MALE brown mane" },
-                allOther: new[] { "Bony spine and brow ridges" });
+                commonHair: new[] { "Golden fur", "Tawny fur", "TODO MALE brown mane" },
+                commonOther: new[] { "Bony spine and brow ridges" });
             //Source: https://www.d20srd.org/srd/monsters/lizard.htm
             //https://www.petcoach.co/article/green-iguana-color-change-causes/
             appearances[CreatureConstants.Lizard] = GetWeightedAppearances(
@@ -3491,13 +3314,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonSkin: new[] { "Blue skin", "Black skin", "Green skin", "Yellow skin" });
             //Source: https://forgottenrealms.fandom.com/wiki/Lizardfolk
             appearances[CreatureConstants.Lizardfolk] = GetWeightedAppearances(
-                allSkin: new[] { "Green scales", "Black scales", "Gray scales", "Brown scales", "Dark green scales", "Dark brown scales", "Dark gray scales",
+                commonSkin: new[] { "Green scales", "Black scales", "Gray scales", "Brown scales", "Dark green scales", "Dark brown scales", "Dark gray scales",
                     "Green-brown scales", "Green-gray scales" },
-                allEyes: new[] { "Yellow eyes" },
-                allOther: new[] { "Tail, sharp claws and teeth" });
+                commonEyes: new[] { "Yellow eyes" },
+                commonOther: new[] { "Tail, sharp claws and teeth" });
             //Source: https://forgottenrealms.fandom.com/wiki/Locathah
             appearances[CreatureConstants.Locathah] = GetWeightedAppearances(
-                allSkin: new[] { "Fine yellow-green scales with sea-green scales on the stomach", "Fine ochre scales with sea-green scales on the stomach",
+                commonSkin: new[] { "Fine yellow-green scales with sea-green scales on the stomach", "Fine ochre scales with sea-green scales on the stomach",
                         "Fine yellow scales with sea-green scales on the stomach", "Fine olive-green scales with sea-green scales on the stomach",
                     "Fine yellow-green scales with pale-yellow scales on the stomach", "Fine ochre scales with pale-yellow scales on the stomach",
                         "Fine yellow scales with pale-yellow scales on the stomach", "Fine olive-green scales with pale-yellow scales on the stomach",
@@ -3507,8 +3330,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                         "Fine yellow scales with yellow scales on the stomach", "Fine olive-green scales with yellow scales on the stomach",
                     "Fine yellow-green scales with green scales on the stomach", "Fine ochre scales with green scales on the stomach",
                         "Fine yellow scales with green scales on the stomach", "Fine olive-green scales with green scales on the stomach" },
-                allEyes: new[] { "All-black eyes", "All-white eyes" },
-                allOther: new[] { "slender, large fins on arms and legs. Toothless mouth" });
+                commonEyes: new[] { "All-black eyes", "All-white eyes" },
+                commonOther: new[] { "slender, large fins on arms and legs. Toothless mouth" });
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
             appearances[CreatureConstants.Locust_Swarm][Rarity.Common] = new[] { "5,000 locusts" };
             //Source: https://forgottenrealms.fandom.com/wiki/Magmin
@@ -3517,23 +3340,23 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.MantaRay][Rarity.Common] = new[] { "Black top with white underbelly" };
             //Source: https://forgottenrealms.fandom.com/wiki/Manticore
             appearances[CreatureConstants.Manticore] = GetWeightedAppearances(
-                allSkin: new[] { "TODO HUMAN skin", "TODO DRAGON wings" },
-                allHair: new[] { "TODO LION fur", "TODO HUMAN hair" },
-                allEyes: new[] { "Yellow eyes" },
-                allOther: new[] { "Tail ends in a mass of deadly spikes. Mouth full of rows and rows of razor-sharp teeth, similar to that of a great white shark" });
+                commonSkin: new[] { "TODO HUMAN skin", "TODO DRAGON wings" },
+                commonHair: new[] { "TODO LION fur", "TODO HUMAN hair" },
+                commonEyes: new[] { "Yellow eyes" },
+                commonOther: new[] { "Tail ends in a mass of deadly spikes. Mouth full of rows and rows of razor-sharp teeth, similar to that of a great white shark" });
             //Source: https://forgottenrealms.fandom.com/wiki/Marilith
             appearances[CreatureConstants.Marilith] = GetWeightedAppearances(
-                allSkin: new[] { "TODO HUMAN skin, lower half has green scales" },
-                allHair: new[] { "TODO HUMAN hair" },
-                allEyes: new[] { "TODO HUMAN eyes" },
-                allOther: new[] { "Top half is human, bottom half is a serpent" });
+                commonSkin: new[] { "TODO HUMAN skin, lower half has green scales" },
+                commonHair: new[] { "TODO HUMAN hair" },
+                commonEyes: new[] { "TODO HUMAN eyes" },
+                commonOther: new[] { "Top half is human, bottom half is a serpent" });
             //Source: https://forgottenrealms.fandom.com/wiki/Marut
             appearances[CreatureConstants.Marut][Rarity.Common] = new[] { "Resembles a massive statue made entirely of onyx, humanoid in form but composed of mechanical components. Clad in golden armor." };
             //Source: https://www.d20srd.org/srd/monsters/medusa.htm
             appearances[CreatureConstants.Medusa] = GetWeightedAppearances(
-                allSkin: new[] { "Pale gray, scaly skin", "Earthy-brown, scaly skin", "Pale-green, scaly skin" },
-                allHair: new[] { "Hair is mass of 1‑foot-long living venomous serpents" },
-                allEyes: new[] { "Intense red eyes" });
+                commonSkin: new[] { "Pale gray, scaly skin", "Earthy-brown, scaly skin", "Pale-green, scaly skin" },
+                commonHair: new[] { "Hair is mass of 1‑foot-long living venomous serpents" },
+                commonEyes: new[] { "Intense red eyes" });
             //Source: https://jurassicworld-evolution.fandom.com/wiki/Velociraptor
             appearances[CreatureConstants.Megaraptor] = GetWeightedAppearances(
                 commonSkin: new[] { "Dull pale green skin", "Ashy gray skin", "Yellow skin", "Orange skin", "Beige skin", "Stone gray skin", "Dark gray skin" },
@@ -3543,55 +3366,55 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 rareSkin: new[] { "Ashy-gray skin with a blue stripe running the length of the back and down the tail",
                     "Forest-green skin with dark green stripes across the back",
                     "Ashy-gray skin", "Sandy-brown skin with turquoise markings" },
-                allOther: new[] { "Large sickle claw on its foot. Large, sharp teeth." });
+                commonOther: new[] { "Large sickle claw on its foot. Large, sharp teeth." });
             //Source: https://forgottenrealms.fandom.com/wiki/Air_mephit
             appearances[CreatureConstants.Mephit_Air] = GetWeightedAppearances(
-                allSkin: new[] { "Pale white skin" },
-                allOther: new[] { "Wings, whirlwinds instead of wings" });
+                commonSkin: new[] { "Pale white skin" },
+                commonOther: new[] { "Wings, whirlwinds instead of wings" });
             //Source: https://forgottenrealms.fandom.com/wiki/Dust_mephit
             appearances[CreatureConstants.Mephit_Dust] = GetWeightedAppearances(
-                allSkin: new[] { "Rough gray skin", "Flaky gray skin" },
-                allOther: new[] { "Wings, emits dust and grit" });
+                commonSkin: new[] { "Rough gray skin", "Flaky gray skin" },
+                commonOther: new[] { "Wings, emits dust and grit" });
             //Source: https://forgottenrealms.fandom.com/wiki/Earth_mephit
             appearances[CreatureConstants.Mephit_Earth] = GetWeightedAppearances(
-                allSkin: new[] { "Bumpy, rough, earthy skin", "Bumpy, rough, rocky skin", "Bumpy, rough, stony skin" },
-                allOther: new[] { "Wings" });
+                commonSkin: new[] { "Bumpy, rough, earthy skin", "Bumpy, rough, rocky skin", "Bumpy, rough, stony skin" },
+                commonOther: new[] { "Wings" });
             //Source: https://forgottenrealms.fandom.com/wiki/Fire_mephit
             appearances[CreatureConstants.Mephit_Fire] = GetWeightedAppearances(
-                allSkin: new[] { "Red skin", "Red skin streaked with black" },
+                commonSkin: new[] { "Red skin", "Red skin streaked with black" },
                 uncommonHair: new[] { "Flaming mustache", "Flaming goatee" },
                 commonOther: new[] { "Imp-like wings covered in a halo of fire, body covered in flames" },
                 uncommonOther: new[] { "Bat-like wings covered in a halo of fire, body covered in flames" });
             //Source: https://forgottenrealms.fandom.com/wiki/Ice_mephit
             appearances[CreatureConstants.Mephit_Ice] = GetWeightedAppearances(
-                allSkin: new[] { "Blue skin", "Blue-white skin", "White skin" },
-                allOther: new[] { "Wings, body seemingly composed of ice" });
+                commonSkin: new[] { "Blue skin", "Blue-white skin", "White skin" },
+                commonOther: new[] { "Wings, body seemingly composed of ice" });
             //Source: https://forgottenrealms.fandom.com/wiki/Magma_mephit
             appearances[CreatureConstants.Mephit_Magma] = GetWeightedAppearances(
-                allSkin: new[] { "Dull red skin" },
-                allOther: new[] { "Wings, body oozes molten lava (like sweat)" });
+                commonSkin: new[] { "Dull red skin" },
+                commonOther: new[] { "Wings, body oozes molten lava (like sweat)" });
             //Source: https://forgottenrealms.fandom.com/wiki/Ooze_mephit
             appearances[CreatureConstants.Mephit_Ooze] = GetWeightedAppearances(
-                allSkin: new[] { "Ochre skin", "Green skin" },
-                allEyes: new[] { "Dark green eyes", "Red eyes" },
-                allOther: new[] { "Wings are green bubble membranes, body is mucky and filthy, dripping in slime" });
+                commonSkin: new[] { "Ochre skin", "Green skin" },
+                commonEyes: new[] { "Dark green eyes", "Red eyes" },
+                commonOther: new[] { "Wings are green bubble membranes, body is mucky and filthy, dripping in slime" });
             //Source: https://forgottenrealms.fandom.com/wiki/Salt_mephit
             appearances[CreatureConstants.Mephit_Salt] = GetWeightedAppearances(
-                allSkin: new[] { "Pale beige crystalline skin", "White, grainy, crystalline skin" },
-                allEyes: new[] { "Red eyes" },
-                allOther: new[] { "Wings composed of small cubic crystals" });
+                commonSkin: new[] { "Pale beige crystalline skin", "White, grainy, crystalline skin" },
+                commonEyes: new[] { "Red eyes" },
+                commonOther: new[] { "Wings composed of small cubic crystals" });
             //Source: https://forgottenrealms.fandom.com/wiki/Steam_mephit
             appearances[CreatureConstants.Mephit_Steam] = GetWeightedAppearances(
-                allSkin: new[] { "Transluscent white skin", "Billowing steamy skin" },
+                commonSkin: new[] { "Transluscent white skin", "Billowing steamy skin" },
                 uncommonHair: new[] { "Flames like hair on the head", "Flames engulfing the head" },
-                allEyes: new[] { "White eyes", "Yellow eyes" },
-                allOther: new[] { "Wings composed of steam, body dripping with steamy moisture",
+                commonEyes: new[] { "White eyes", "Yellow eyes" },
+                commonOther: new[] { "Wings composed of steam, body dripping with steamy moisture",
                     "Wings composed of steam, body is billowing steam, a flame roars in the stomach", "Wings composed of flames, body dripping with steamy moisture" });
             //Source: https://forgottenrealms.fandom.com/wiki/Water_mephit
             appearances[CreatureConstants.Mephit_Water] = GetWeightedAppearances(
-                allSkin: new[] { "Blue scaly skin", "Sea-green scaly skin", "Light-blue scaly skin" },
-                allEyes: new[] { "Large, bulbous, black eyes", "Large, bulbous, sea-green eyes", "Large, bulbous, red eyes" },
-                allOther: new[] { "Fin-like wings, body dripping with salt water" });
+                commonSkin: new[] { "Blue scaly skin", "Sea-green scaly skin", "Light-blue scaly skin" },
+                commonEyes: new[] { "Large, bulbous, black eyes", "Large, bulbous, sea-green eyes", "Large, bulbous, red eyes" },
+                commonOther: new[] { "Fin-like wings, body dripping with salt water" });
             //Source: https://forgottenrealms.fandom.com/wiki/Merfolk
             appearances[CreatureConstants.Merfolk] = GetWeightedAppearances(
                 commonSkin: new[] { "Pale pink skin, deep kelly-green scales", "Pale pink skin, brilliant silver scales", "Pale pink skin, kelly-green scales",
@@ -3683,7 +3506,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonHair: new[] { "Light brown hair", "Blond hair" },
                 uncommonHair: new[] { "TODO HUMAN hair" },
                 rareHair: new[] { "Blue hair", "Silver hair" },
-                allEyes: new[] { "TODO HUMAN eyes with ice-blue pupils",
+                commonEyes: new[] { "TODO HUMAN eyes with ice-blue pupils",
                     "TODO HUMAN eyes with pale-silver pupils" },
                 commonOther: new[] { "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers" },
                 uncommonOther: new[] { "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers, tattoos on the arms",
@@ -3713,16 +3536,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "Shaped like a gleaming suit of armor (full plate)", "Shaped like a gleaming suit of armor (half plate)", "Shaped like a workbench" };
             //Source: https://forgottenrealms.fandom.com/wiki/Mind_flayer
             appearances[CreatureConstants.MindFlayer] = GetWeightedAppearances(
-                allSkin: new[] { "Soft, supple, moist, rubbery, mauve skin", "Soft, supple, moist, rubbery, greenish-violet skin",
+                commonSkin: new[] { "Soft, supple, moist, rubbery, mauve skin", "Soft, supple, moist, rubbery, greenish-violet skin",
                     "Soft, supple, moist, rubbery, pale purple skin", "Soft, supple, moist, rubbery, pale violet skin", "Soft, supple, moist, rubbery, violet skin",
                     "Soft, supple, moist, rubbery, purple skin", "Soft, supple, moist, rubbery, greenish-purple skin",
                     "Soft, supple, moist, rubbery, pale greenish-purple skin" },
-                allEyes: new[] { "Solid white eyes" },
-                allOther: new[] { "Four purplish-black facial tentacles" });
+                commonEyes: new[] { "Solid white eyes" },
+                commonOther: new[] { "Four purplish-black facial tentacles" });
             //Source: https://forgottenrealms.fandom.com/wiki/Minotaur
             appearances[CreatureConstants.Minotaur] = GetWeightedAppearances(
-                allSkin: new[] { "Black skin", "Brown skin", "Fair skin", "Pale skin" },
-                allHair: new[] { "Black hair and fur", "Brown hair and fur", "Dark brown hair and fur" },
+                commonSkin: new[] { "Black skin", "Brown skin", "Fair skin", "Pale skin" },
+                commonHair: new[] { "Black hair and fur", "Brown hair and fur", "Dark brown hair and fur" },
                 commonOther: new[] { "Hooves on legs, dark yellow horns", "Hooves on legs, brown horns", "Hooves on legs, yellow horns",
                     "Hooves on legs, yellow-brown horns", "Hooves on legs, black horns", "Hooves on legs, dark brown horns", "Hooves on legs, white horns",
                     "Hooves on legs, beige horns" },
@@ -3771,16 +3594,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.Naga_Guardian] = GetWeightedAppearances(
                 commonSkin: new[] { "Green-gold scales with silvery triangles down the spine" },
                 uncommonSkin: new[] { "Green-gold scales with silvery triangles down the spine, golden frill runs down the length of the spine" },
-                allEyes: new[] { "Bright golden eyes" },
+                commonEyes: new[] { "Bright golden eyes" },
                 uncommonOther: new[] { "Smells of flowers" });
             //Source: https://forgottenrealms.fandom.com/wiki/Spirit_naga
             appearances[CreatureConstants.Naga_Spirit] = GetWeightedAppearances(
-                allSkin: new[] { "Black scales with red bands" },
-                allHair: new[] { "Stringy black hair" },
-                allOther: new[] { "Emits the stench of carrion" });
+                commonSkin: new[] { "Black scales with red bands" },
+                commonHair: new[] { "Stringy black hair" },
+                commonOther: new[] { "Emits the stench of carrion" });
             //Source: https://forgottenrealms.fandom.com/wiki/Water_naga
             appearances[CreatureConstants.Naga_Water] = GetWeightedAppearances(
-                allSkin: new[] { "Emerald-green skin, with reticulated rings of light olive and dark emerald green",
+                commonSkin: new[] { "Emerald-green skin, with reticulated rings of light olive and dark emerald green",
                     "Turquoise skin, with reticulated rings of light olive and dark emerald green",
                     "Blue-green skin, with reticulated rings of light olive and dark emerald green",
                     "Green skin, with reticulated rings of light olive and dark emerald green",
@@ -3790,95 +3613,95 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Blue-green skin, with reticulated rings of dark brown and gray",
                     "Green skin, with reticulated rings of dark brown and gray",
                     "Blue skin, with reticulated rings of dark brown and gray"},
-                allEyes: new[] { "Pale green eyes", "Bright amber eyes" },
-                allOther: new[] { "Fiery red and orange spines" });
+                commonEyes: new[] { "Pale green eyes", "Bright amber eyes" },
+                commonOther: new[] { "Fiery red and orange spines" });
             //Source: https://forgottenrealms.fandom.com/wiki/Nalfeshnee
             appearances[CreatureConstants.Nalfeshnee][Rarity.Common] = new[] { "Corpulent, combining the most abysmal features of a boar and ape into a bipedal monstrosity. Small, feathered wings." };
             //Source: https://forgottenrealms.fandom.com/wiki/Night_hag
             appearances[CreatureConstants.NightHag] = GetWeightedAppearances(
-                allSkin: new[] { "Blue-violet skin", "Light blue-violet skin", "Dark blue-violet skin", "Blue-black skin", "Purple-black skin" },
-                allHair: new[] { "Jet-black hair", "Pitch-black hair" },
-                allEyes: new[] { "Red eyes" },
+                commonSkin: new[] { "Blue-violet skin", "Light blue-violet skin", "Dark blue-violet skin", "Blue-black skin", "Purple-black skin" },
+                commonHair: new[] { "Jet-black hair", "Pitch-black hair" },
+                commonEyes: new[] { "Red eyes" },
                 commonOther: new[] { "Long, night-black nails. Tattoo-like scars. Grotesque warts, open sores, diseased blisters" },
                 uncommonOther: new[] { "Long, night-black nails. Tattoo-like scars" });
             //Source: https://forgottenrealms.fandom.com/wiki/Nightcrawler
             appearances[CreatureConstants.Nightcrawler] = GetWeightedAppearances(
-                allSkin: new[] { "Solid black skin" },
-                allOther: new[] { "Black teeth" });
+                commonSkin: new[] { "Solid black skin" },
+                commonOther: new[] { "Black teeth" });
             //Source: https://forgottenrealms.fandom.com/wiki/Nightmare_(creature)
             appearances[CreatureConstants.Nightmare] = GetWeightedAppearances(
-                allSkin: new[] { "Night-black coat" },
-                allHair: new[] { "Red and orange flames for mane and tail" },
-                allEyes: new[] { "Glowing red eyes", "Dark eyes illuminated with flames" },
-                allOther: new[] { "Viper fangs" });
+                commonSkin: new[] { "Night-black coat" },
+                commonHair: new[] { "Red and orange flames for mane and tail" },
+                commonEyes: new[] { "Glowing red eyes", "Dark eyes illuminated with flames" },
+                commonOther: new[] { "Viper fangs" });
             appearances[CreatureConstants.Nightmare_Cauchemar] = GetWeightedAppearances(
-                allSkin: new[] { "Night-black coat" },
-                allHair: new[] { "Red and orange flames for mane and tail" },
-                allEyes: new[] { "Glowing red eyes", "Dark eyes illuminated with flames" },
-                allOther: new[] { "Viper fangs" });
+                commonSkin: new[] { "Night-black coat" },
+                commonHair: new[] { "Red and orange flames for mane and tail" },
+                commonEyes: new[] { "Glowing red eyes", "Dark eyes illuminated with flames" },
+                commonOther: new[] { "Viper fangs" });
             //Source: https://forgottenrealms.fandom.com/wiki/Nightwalker
             appearances[CreatureConstants.Nightwalker][Rarity.Common] = new[] { "Body looks as if it is made of shadow-stuff, with a vaguely humanoid form. Smooth and hairless." };
             //Source: https://forgottenrealms.fandom.com/wiki/Nightwing
             appearances[CreatureConstants.Nightwing][Rarity.Common] = new[] { "Bat-shaped darkness" };
             //Source: https://forgottenrealms.fandom.com/wiki/Nixie
             appearances[CreatureConstants.Nixie] = GetWeightedAppearances(
-                allSkin: new[] { "Pale green skin" },
-                allHair: new[] { "Dark green hair" },
-                allEyes: new[] { "Wide, silver eyes" },
-                allOther: new[] { "Webbed fingers and toes, pointed ears" });
+                commonSkin: new[] { "Pale green skin" },
+                commonHair: new[] { "Dark green hair" },
+                commonEyes: new[] { "Wide, silver eyes" },
+                commonOther: new[] { "Webbed fingers and toes, pointed ears" });
             //Source: https://forgottenrealms.fandom.com/wiki/Nymph
             appearances[CreatureConstants.Nymph] = GetWeightedAppearances(
-                allSkin: new[] { "Vibrant green skin", "Autumnal orange skin", "Autumnal red skin", "Brown skin", "Yellow skin",
+                commonSkin: new[] { "Vibrant green skin", "Autumnal orange skin", "Autumnal red skin", "Brown skin", "Yellow skin",
                     "TODO HIGH ELF skin" },
-                allHair: new[] { "Green hair" , "Orange hair", "Red hair", "Orange-brown hair", "Red-brown hair",
+                commonHair: new[] { "Green hair" , "Orange hair", "Red hair", "Orange-brown hair", "Red-brown hair",
                     "TODO HIGH ELF hair" },
-                allEyes: new[] { "Yellow eyes", "Green eyes",
+                commonEyes: new[] { "Yellow eyes", "Green eyes",
                     "TODO HIGH ELF eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Ochre_jelly
             appearances[CreatureConstants.OchreJelly] = GetWeightedAppearances(
-                allSkin: new[] { "Dark yellow skin" },
-                allOther: new[] { "Resembles giant amoeba" });
+                commonSkin: new[] { "Dark yellow skin" },
+                commonOther: new[] { "Resembles giant amoeba" });
             //Source: https://kids.nationalgeographic.com/animals/invertebrates/facts/octopus
             appearances[CreatureConstants.Octopus] = GetWeightedAppearances(
-                allSkin: new[] { "Gray skin", "Brown skin", "Pink skin", "Blue skin", "Green skin", "Reddish-brown skin" });
+                commonSkin: new[] { "Gray skin", "Brown skin", "Pink skin", "Blue skin", "Green skin", "Reddish-brown skin" });
             //Source: https://www.nationalgeographic.com/animals/invertebrates/facts/giant-pacific-octopus
             appearances[CreatureConstants.Octopus_Giant] = GetWeightedAppearances(
-                allSkin: new[] { "Gray skin", "Brown skin", "Pink skin", "Blue skin", "Green skin", "Reddish-brown skin" });
+                commonSkin: new[] { "Gray skin", "Brown skin", "Pink skin", "Blue skin", "Green skin", "Reddish-brown skin" });
             //Source: https://forgottenrealms.fandom.com/wiki/Ogre
             appearances[CreatureConstants.Ogre] = GetWeightedAppearances(
-                allSkin: new[] { "Beige skin", "Pale beige skin", "White skin", "Pale gray skin", "Pale pink skin", "Pink skin", "Red-brown skin" },
-                allEyes: new[] { "Yellow eyes", "Green eyes" });
+                commonSkin: new[] { "Beige skin", "Pale beige skin", "White skin", "Pale gray skin", "Pale pink skin", "Pink skin", "Red-brown skin" },
+                commonEyes: new[] { "Yellow eyes", "Green eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Merrow_(ogre)
             appearances[CreatureConstants.Ogre_Merrow] = GetWeightedAppearances(
-                allSkin: new[] { "Green scales" },
-                allHair: new[] { "Seaweed-green, slimy hair" },
-                allEyes: new[] { "Dark green eyes", "Green eyes" },
+                commonSkin: new[] { "Green scales" },
+                commonHair: new[] { "Seaweed-green, slimy hair" },
+                commonEyes: new[] { "Dark green eyes", "Green eyes" },
                 commonOther: new[] { "Black teeth and nails, webbed hands and feet, underbite, sloping shoulders, covered in tattoos" },
                 rareOther: new[] { "Black teeth and nails, webbed hands and feet, underbite, sloping shoulders, ivory horns, covered in tattoos" });
             //Source: https://forgottenrealms.fandom.com/wiki/Oni_mage
             appearances[CreatureConstants.OgreMage] = GetWeightedAppearances(
-                allSkin: new[] { "Turquoise skin", "Pale turquoise skin" },
-                allHair: new[] { "White hair", "Light gray hair", "Black hair", "Blue-black hair" },
-                allEyes: new[] { "Yellow eyes", "Green eyes" },
-                allOther: new[] { "Black nails", "Black nails, white horns", "Black nails, black horns" });
+                commonSkin: new[] { "Turquoise skin", "Pale turquoise skin" },
+                commonHair: new[] { "White hair", "Light gray hair", "Black hair", "Blue-black hair" },
+                commonEyes: new[] { "Yellow eyes", "Green eyes" },
+                commonOther: new[] { "Black nails", "Black nails, white horns", "Black nails, black horns" });
             //Source: https://forgottenrealms.fandom.com/wiki/Orc
             appearances[CreatureConstants.Orc] = GetWeightedAppearances(
-                allSkin: new[] { "Gray skin" },
-                allHair: new[] { "Coarse black hair" },
-                allEyes: new[] { "Reddish eyes" },
-                allOther: new[] { "Low forehead, tusks" });
+                commonSkin: new[] { "Gray skin" },
+                commonHair: new[] { "Coarse black hair" },
+                commonEyes: new[] { "Reddish eyes" },
+                commonOther: new[] { "Low forehead, tusks" });
             //Source: https://forgottenrealms.fandom.com/wiki/Half-orc
             appearances[CreatureConstants.Orc_Half] = GetWeightedAppearances(
                 commonSkin: new[] { "Grayish skin" },
                 uncommonSkin: new[] { "TODO HUMAN skin" },
                 commonHair: new[] { "Coarse black hair on head and body" },
                 uncommonHair: new[] { "Coarse dark gray hair on head and body", "Coarse gray hair on head and body", "TODO HUMAN hair" },
-                allEyes: new[] { "TODO HUMAN eyes", "TODO ORC eyes" },
-                allOther: new[] { "Jutting jaw, sloping forehead, small tusks" });
+                commonEyes: new[] { "TODO HUMAN eyes", "TODO ORC eyes" },
+                commonOther: new[] { "Jutting jaw, sloping forehead, small tusks" });
             //Source: https://forgottenrealms.fandom.com/wiki/Otyugh
             appearances[CreatureConstants.Otyugh] = GetWeightedAppearances(
-                allSkin: new[] { "Disgusting light brown rock-like hide", "Disgusting green rock-like hide", "Disgusting brown rock-like hide" },
-                allOther: new[] { "Bloated, oval-shaped body. Three shuffling elephantine legs. Long tentacles bedecked in rough thorny growths ending in leaf-shaped pads with rows of more sharp spikes. Third tentacle sprouts from the top of the body, forming a vine-like stalk, ending in pair of eyes and olfactory organ. Fang-filled mouth." });
+                commonSkin: new[] { "Disgusting light brown rock-like hide", "Disgusting green rock-like hide", "Disgusting brown rock-like hide" },
+                commonOther: new[] { "Bloated, oval-shaped body. Three shuffling elephantine legs. Long tentacles bedecked in rough thorny growths ending in leaf-shaped pads with rows of more sharp spikes. Third tentacle sprouts from the top of the body, forming a vine-like stalk, ending in pair of eyes and olfactory organ. Fang-filled mouth." });
             //Source: https://www.dimensions.com/element/great-horned-owl-bubo-virginianus
             //https://www.allaboutbirds.org/guide/Great_Horned_Owl/species-compare/
             //https://carnivora.net/great-horned-owl-v-powerful-owl-t7257.html
@@ -3889,40 +3712,40 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "Resembles a Great Gray Owl", "Resembles a Long-Eared Owl", "Resembles a Powerful Owl" };
             //Source: https://forgottenrealms.fandom.com/wiki/Owlbear
             appearances[CreatureConstants.Owlbear] = GetWeightedAppearances(
-                allHair: new[] { "Brown-black feathers and fur", "Yellow-brown feathers and fur", "Brown feathers and fur", "Dark brown feathers and fur" },
-                allEyes: new[] { "Eyes rimmed in red with limpid pupils" },
-                allOther: new[] { "Bear-like body, avian head, hooked yellow beak", "Bear-like body, avian head, serrated yellow beak",
+                commonHair: new[] { "Brown-black feathers and fur", "Yellow-brown feathers and fur", "Brown feathers and fur", "Dark brown feathers and fur" },
+                commonEyes: new[] { "Eyes rimmed in red with limpid pupils" },
+                commonOther: new[] { "Bear-like body, avian head, hooked yellow beak", "Bear-like body, avian head, serrated yellow beak",
                     "Bear-like body, avian head, hooked yellow-white beak", "Bear-like body, avian head, serrated yellow-white beak",
                     "Bear-like body, avian head, hooked dull ivory beak", "Bear-like body, avian head, serrated dull ivory beak" });
             //Source: https://forgottenrealms.fandom.com/wiki/Pegasus
             appearances[CreatureConstants.Pegasus] = GetWeightedAppearances(
-                allHair: new[] { "White hair on the body, white feathers for mane and tail, white feathered legs" },
-                allOther: new[] { "Resembles horse with bird-like wings" });
+                commonHair: new[] { "White hair on the body, white feathers for mane and tail, white feathered legs" },
+                commonOther: new[] { "Resembles horse with bird-like wings" });
             //Source: https://forgottenrealms.fandom.com/wiki/Phantom_fungus
             appearances[CreatureConstants.PhantomFungus] = GetWeightedAppearances(
-                allSkin: new[] { "Brown skin", "Greenish-brown skin" },
-                allOther: new[] { "Fungal mass supported by four stumpy legs. Cluster of nodules atop the body. Gaping maw lined with row of teeth." });
+                commonSkin: new[] { "Brown skin", "Greenish-brown skin" },
+                commonOther: new[] { "Fungal mass supported by four stumpy legs. Cluster of nodules atop the body. Gaping maw lined with row of teeth." });
             //Source: https://forgottenrealms.fandom.com/wiki/Phase_spider
             appearances[CreatureConstants.PhaseSpider] = GetWeightedAppearances(
-                allSkin: new[] { "Dark green/white skin", "Green/white skin", "Blue-green/white skin" },
-                allOther: new[] { "Spindly-legged spider" });
+                commonSkin: new[] { "Dark green/white skin", "Green/white skin", "Blue-green/white skin" },
+                commonOther: new[] { "Spindly-legged spider" });
             //Source: https://forgottenrealms.fandom.com/wiki/Phasm
             appearances[CreatureConstants.Phasm][Rarity.Common] = new[] { "In its true form, resembles an amorphous, colorful ooze. However, is a natural shapechanger that can take the form of almost any creature or object." };
             //Source: https://forgottenrealms.fandom.com/wiki/Pit_fiend
             appearances[CreatureConstants.PitFiend] = GetWeightedAppearances(
-                allSkin: new[] { "Red scales" },
-                allOther: new[] { "Massive bat-like wings. Huge fangs drop with green venom. Prehensile tail." });
+                commonSkin: new[] { "Red scales" },
+                commonOther: new[] { "Massive bat-like wings. Huge fangs drop with green venom. Prehensile tail." });
             //Source: https://forgottenrealms.fandom.com/wiki/Pixie
             appearances[CreatureConstants.Pixie] = GetWeightedAppearances(
-                allSkin: new[] { "TODO HIGH ELF skin", "Green skin" },
-                allHair: new[] { "TODO HIGH ELF hair", "Green hair", "Red hair" },
-                allEyes: new[] { "TODO HIGH ELF eyes" },
-                allOther: new[] { "Silvery, moth-like wings" });
+                commonSkin: new[] { "TODO HIGH ELF skin", "Green skin" },
+                commonHair: new[] { "TODO HIGH ELF hair", "Green hair", "Red hair" },
+                commonEyes: new[] { "TODO HIGH ELF eyes" },
+                commonOther: new[] { "Silvery, moth-like wings" });
             appearances[CreatureConstants.Pixie_WithIrresistibleDance] = GetWeightedAppearances(
-                allSkin: new[] { "TODO HIGH ELF skin", "Green skin" },
-                allHair: new[] { "TODO HIGH ELF hair", "Green hair", "Red hair" },
-                allEyes: new[] { "TODO HIGH ELF eyes" },
-                allOther: new[] { "Silvery, moth-like wings" });
+                commonSkin: new[] { "TODO HIGH ELF skin", "Green skin" },
+                commonHair: new[] { "TODO HIGH ELF hair", "Green hair", "Red hair" },
+                commonEyes: new[] { "TODO HIGH ELF eyes" },
+                commonOther: new[] { "Silvery, moth-like wings" });
             //Source: https://www.google.com/search?q=breeds+of+pony
             appearances[CreatureConstants.Pony][Rarity.Common] = new[] { "Shetland Pony", "Connemara Pony", "Pony of the Americas", "New Forest Pony", "Dartmoor Pony", "Exmoor Pony",
                 "Fell Pony", "Asturcon", "Burmese Pony" };
@@ -3933,42 +3756,42 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "Indo-Pacific finless porpoise", "Narrow-ridged finless porpoise" };
             //Source: https://forgottenrealms.fandom.com/wiki/Giant_praying_mantis
             appearances[CreatureConstants.PrayingMantis_Giant] = GetWeightedAppearances(
-                allSkin: new[] { "Brown coloration", "Green coloration", "Yellow coloration", "Yellow-brown coloration", "Yellow-green coloration",
+                commonSkin: new[] { "Brown coloration", "Green coloration", "Yellow coloration", "Yellow-brown coloration", "Yellow-green coloration",
                     "Brown-green coloration" });
             //Source: https://forgottenrealms.fandom.com/wiki/Pseudodragon
             appearances[CreatureConstants.Pseudodragon] = GetWeightedAppearances(
-                allSkin: new[] { "Brownish-red skin" });
+                commonSkin: new[] { "Brownish-red skin" });
             //Source: https://forgottenrealms.fandom.com/wiki/Purple_worm
             appearances[CreatureConstants.PurpleWorm] = GetWeightedAppearances(
-                allSkin: new[] { "Deep purple skin" });
+                commonSkin: new[] { "Deep purple skin" });
             //Source: https://forgottenrealms.fandom.com/wiki/Pyrohydra
             appearances[CreatureConstants.Pyrohydra_5Heads] = GetWeightedAppearances(
-                allSkin: new[] { "Reddish skin, yellow underbelly" },
-                allEyes: new[] { "Amber eyes" });
+                commonSkin: new[] { "Reddish skin, yellow underbelly" },
+                commonEyes: new[] { "Amber eyes" });
             appearances[CreatureConstants.Pyrohydra_6Heads] = GetWeightedAppearances(
-                allSkin: new[] { "Reddish skin, yellow underbelly" },
-                allEyes: new[] { "Amber eyes" });
+                commonSkin: new[] { "Reddish skin, yellow underbelly" },
+                commonEyes: new[] { "Amber eyes" });
             appearances[CreatureConstants.Pyrohydra_7Heads] = GetWeightedAppearances(
-                allSkin: new[] { "Reddish skin, yellow underbelly" },
-                allEyes: new[] { "Amber eyes" });
+                commonSkin: new[] { "Reddish skin, yellow underbelly" },
+                commonEyes: new[] { "Amber eyes" });
             appearances[CreatureConstants.Pyrohydra_8Heads] = GetWeightedAppearances(
-                allSkin: new[] { "Reddish skin, yellow underbelly" },
-                allEyes: new[] { "Amber eyes" });
+                commonSkin: new[] { "Reddish skin, yellow underbelly" },
+                commonEyes: new[] { "Amber eyes" });
             appearances[CreatureConstants.Pyrohydra_9Heads] = GetWeightedAppearances(
-                allSkin: new[] { "Reddish skin, yellow underbelly" },
-                allEyes: new[] { "Amber eyes" });
+                commonSkin: new[] { "Reddish skin, yellow underbelly" },
+                commonEyes: new[] { "Amber eyes" });
             appearances[CreatureConstants.Pyrohydra_10Heads] = GetWeightedAppearances(
-                allSkin: new[] { "Reddish skin, yellow underbelly" },
-                allEyes: new[] { "Amber eyes" });
+                commonSkin: new[] { "Reddish skin, yellow underbelly" },
+                commonEyes: new[] { "Amber eyes" });
             appearances[CreatureConstants.Pyrohydra_11Heads] = GetWeightedAppearances(
-                allSkin: new[] { "Reddish skin, yellow underbelly" },
-                allEyes: new[] { "Amber eyes" });
+                commonSkin: new[] { "Reddish skin, yellow underbelly" },
+                commonEyes: new[] { "Amber eyes" });
             appearances[CreatureConstants.Pyrohydra_12Heads] = GetWeightedAppearances(
-                allSkin: new[] { "Reddish skin, yellow underbelly" },
-                allEyes: new[] { "Amber eyes" });
+                commonSkin: new[] { "Reddish skin, yellow underbelly" },
+                commonEyes: new[] { "Amber eyes" });
             //Source: https://forgottenrealms.fandom.com/wiki/Quasit
             appearances[CreatureConstants.Quasit] = GetWeightedAppearances(
-                allSkin: new[] { "Green skin covered in warts and postules" },
+                commonSkin: new[] { "Green skin covered in warts and postules" },
                 commonOther: new[] { "Tail covered in barbs, spiky horns" },
                 uncommonOther: new[] { "Tail covered in barbs, spiky horns, bat-like wings" });
             //Source: https://forgottenrealms.fandom.com/wiki/Rakshasa
@@ -4048,16 +3871,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.RazorBoar][Rarity.Common] = new[] { "Black-bristled hide marked by hundreds of old scars. Its eyes are wild and bloodshot, and its tusks are more than three feet long, gleaming like polished ivory and sharper than many swords." };
             //Source: https://forgottenrealms.fandom.com/wiki/Remorhaz
             appearances[CreatureConstants.Remorhaz] = GetWeightedAppearances(
-                allSkin: new[] { "Ice-blue scales" },
-                allEyes: new[] { "White eyes" },
-                allOther: new[] { "Tough leathery wings, insect-like head, dozens of legs, back glows red, horns along its body, dagger-like teeth" });
+                commonSkin: new[] { "Ice-blue scales" },
+                commonEyes: new[] { "White eyes" },
+                commonOther: new[] { "Tough leathery wings, insect-like head, dozens of legs, back glows red, horns along its body, dagger-like teeth" });
             //Source: https://forgottenrealms.fandom.com/wiki/Retriever
             appearances[CreatureConstants.Retriever][Rarity.Common] = new[] { "Resembles a giant spider with four forelegs ending in large cleaver-like blades, and four rear limbs for walking and carrying most of the weight. Two primary eyes and four smaller eyes that gleam malevolently as they peak out from the carapace." };
             //Source: https://www.d20srd.org/srd/monsters/rhinoceros.htm
             //https://denverzoo.org/animals/black-rhinoceros/
             appearances[CreatureConstants.Rhinoceras] = GetWeightedAppearances(
-                allSkin: new[] { "Dark gray skin", "Dark brown skin" },
-                allOther: new[] { "Two horns on the nose, with the anterior horn being larger" });
+                commonSkin: new[] { "Dark gray skin", "Dark brown skin" },
+                commonOther: new[] { "Two horns on the nose, with the anterior horn being larger" });
             //Source: https://forgottenrealms.fandom.com/wiki/Roc
             appearances[CreatureConstants.Roc] = GetWeightedAppearances(
                 commonHair: new[] { "Dark brown feathers", "Golden feathers", "Golden-brown feathers", "Dark golden-brown feathers", "Dark golden feathers" },
@@ -4068,7 +3891,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.RustMonster][Rarity.Common] = new[] { "Four insectlike legs and a squat, humped body. Thick, lumpy hide is yellowish-tan on the belly and rust-red on the back. Tail ends in what looks like a double-ended paddle. Two long antennae come out of its head, one under each eye" };
             //Source: https://forgottenrealms.fandom.com/wiki/Sahuagin
             appearances[CreatureConstants.Sahuagin] = GetWeightedAppearances(
-                allSkin: new[] { "Green skin, darker on the back and lighter in the front", "Green skin, darker on the back and lighter in the front, with dark stripes",
+                commonSkin: new[] { "Green skin, darker on the back and lighter in the front", "Green skin, darker on the back and lighter in the front, with dark stripes",
                     "Green skin, darker on the back and lighter in the front, with dark bands",
                     "Green skin, darker on the back and lighter in the front, with dark spots",
                     "TODO FEMALE speckled yellow tail",
@@ -4077,15 +3900,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "TODO FEMALE mostly yellow tail",
                     "TODO FEMALE fully yellow tail",
                 },
-                allEyes: ["Silvery-black eyes"],
-                allOther: ["Webbed feet and hands; gills; finned tail; additional webbing down the back, on elbows, and where ears would be"]);
+                commonEyes: ["Silvery-black eyes"],
+                commonOther: ["Webbed feet and hands; gills; finned tail; additional webbing down the back, on elbows, and where ears would be"]);
             appearances[CreatureConstants.Sahuagin_Malenti] = GetWeightedAppearances(
-                allSkin: ["Greenish-silver skin"],
-                allHair: ["Green hair", "Blue hair"],
-                allEyes: ["Silvery-black eyes"],
-                allOther: ["Resembles an Aquatic Elf"]);
+                commonSkin: ["Greenish-silver skin"],
+                commonHair: ["Green hair", "Blue hair"],
+                commonEyes: ["Silvery-black eyes"],
+                commonOther: ["Resembles an Aquatic Elf"]);
             appearances[CreatureConstants.Sahuagin_Mutant] = GetWeightedAppearances(
-                allSkin: [ "Black skin on the back and gray in the front", "Black skin on the back and gray in the front, with dark stripes",
+                commonSkin: [ "Black skin on the back and gray in the front", "Black skin on the back and gray in the front, with dark stripes",
                     "Black skin on the back and gray in the front, with dark bands",
                     "Black skin on the back and gray in the front, with dark spots",
                     "TODO FEMALE speckled yellow tail",
@@ -4094,26 +3917,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "TODO FEMALE mostly yellow tail",
                     "TODO FEMALE fully yellow tail",
                 ],
-                allEyes: ["Silvery-black eyes"],
-                allOther: ["Webbed feet and hands; gills; finned tail; additional webbing down the back, on elbows, and where ears would be; four arms"]);
+                commonEyes: ["Silvery-black eyes"],
+                commonOther: ["Webbed feet and hands; gills; finned tail; additional webbing down the back, on elbows, and where ears would be; four arms"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Salamander
             appearances[CreatureConstants.Salamander_Flamebrother][Rarity.Common] = ["Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. Red fiery skin"];
             appearances[CreatureConstants.Salamander_Average][Rarity.Common] = ["Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. Red fiery skin"];
             appearances[CreatureConstants.Salamander_Noble][Rarity.Common] = ["Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. Red fiery skin"];
             //Source: https://forgottenrealms.fandom.com/wiki/Satyr
             appearances[CreatureConstants.Satyr] = GetWeightedAppearances(
-                allSkin: ["Tan skin", "Light brown skin", "Brown skin", "Lightly tan skin", "TODO GOAT fur"],
-                allHair: ["Red hair", "Chestnut brown hair"],
-                allOther: [ "Small nubs for horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
+                commonSkin: ["Tan skin", "Light brown skin", "Brown skin", "Lightly tan skin", "TODO GOAT fur"],
+                commonHair: ["Red hair", "Chestnut brown hair"],
+                commonOther: [ "Small nubs for horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
                     "Large curling ram horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
                     "Small curling ram horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
                     "Small straight horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
                     "Large straight horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
                 ]);
             appearances[CreatureConstants.Satyr_WithPipes] = GetWeightedAppearances(
-                allSkin: ["Tan skin", "Light brown skin", "Brown skin", "Lightly tan skin", "TODO GOAT fur"],
-                allHair: ["Red hair", "Chestnut brown hair"],
-                allOther: [ "Small nubs for horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
+                commonSkin: ["Tan skin", "Light brown skin", "Brown skin", "Lightly tan skin", "TODO GOAT fur"],
+                commonHair: ["Red hair", "Chestnut brown hair"],
+                commonOther: [ "Small nubs for horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
                     "Large curling ram horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
                     "Small curling ram horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
                     "Small straight horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
@@ -4123,42 +3946,42 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.Scorpion_Monstrous_Tiny] = GetWeightedAppearances(
                 commonSkin: new[] { "Yellow exoskeleton", "Black exoskeleton" },
                 uncommonSkin: new[] { "Brown exoskeleton", "Red exoskeleton", "White exoskeleton", "Orange exoskeleton" },
-                allOther: new[] { "Front pincers and the tail with a stinger" });
+                commonOther: new[] { "Front pincers and the tail with a stinger" });
             appearances[CreatureConstants.Scorpion_Monstrous_Small] = GetWeightedAppearances(
                 commonSkin: new[] { "Yellow exoskeleton", "Black exoskeleton" },
                 uncommonSkin: new[] { "Brown exoskeleton", "Red exoskeleton", "White exoskeleton", "Orange exoskeleton" },
-                allOther: new[] { "Front pincers and the tail with a stinger" });
+                commonOther: new[] { "Front pincers and the tail with a stinger" });
             appearances[CreatureConstants.Scorpion_Monstrous_Medium] = GetWeightedAppearances(
                 commonSkin: new[] { "Yellow exoskeleton", "Black exoskeleton" },
                 uncommonSkin: new[] { "Brown exoskeleton", "Red exoskeleton", "White exoskeleton", "Orange exoskeleton" },
-                allOther: new[] { "Front pincers and the tail with a stinger" });
+                commonOther: new[] { "Front pincers and the tail with a stinger" });
             appearances[CreatureConstants.Scorpion_Monstrous_Large] = GetWeightedAppearances(
                 commonSkin: new[] { "Yellow exoskeleton", "Black exoskeleton" },
                 uncommonSkin: new[] { "Brown exoskeleton", "Red exoskeleton", "White exoskeleton", "Orange exoskeleton" },
-                allOther: new[] { "Front pincers and the tail with a stinger" });
+                commonOther: new[] { "Front pincers and the tail with a stinger" });
             appearances[CreatureConstants.Scorpion_Monstrous_Huge] = GetWeightedAppearances(
                 commonSkin: new[] { "Yellow exoskeleton", "Black exoskeleton" },
                 uncommonSkin: new[] { "Brown exoskeleton", "Red exoskeleton", "White exoskeleton", "Orange exoskeleton" },
-                allOther: new[] { "Front pincers and the tail with a stinger" });
+                commonOther: new[] { "Front pincers and the tail with a stinger" });
             appearances[CreatureConstants.Scorpion_Monstrous_Gargantuan] = GetWeightedAppearances(
                 commonSkin: new[] { "Yellow exoskeleton", "Black exoskeleton" },
                 uncommonSkin: new[] { "Brown exoskeleton", "Red exoskeleton", "White exoskeleton", "Orange exoskeleton" },
-                allOther: new[] { "Front pincers and the tail with a stinger" });
+                commonOther: new[] { "Front pincers and the tail with a stinger" });
             appearances[CreatureConstants.Scorpion_Monstrous_Colossal] = GetWeightedAppearances(
                 commonSkin: new[] { "Yellow exoskeleton", "Black exoskeleton" },
                 uncommonSkin: new[] { "Brown exoskeleton", "Red exoskeleton", "White exoskeleton", "Orange exoskeleton" },
-                allOther: new[] { "Front pincers and the tail with a stinger" });
+                commonOther: new[] { "Front pincers and the tail with a stinger" });
             //Source: https://forgottenrealms.fandom.com/wiki/Tlincalli
             appearances[CreatureConstants.Scorpionfolk] = GetWeightedAppearances(
-                allSkin: new[] { "... red skin on the scorpion half", "TODO HUMAN skin" },
-                allHair: new[] { "Completely hairless" },
-                allEyes: new[] { "Red eyes" },
-                allOther: new[] { "Upper body of a human, lower body of a six-legged giant scorpion; Plates of armor made from bone cover the body from the upper abdomen down. Two large fingers and a thumb for hands. Human-like facial features except for segmented, insect-like eyes." });
+                commonSkin: new[] { "... red skin on the scorpion half", "TODO HUMAN skin" },
+                commonHair: new[] { "Completely hairless" },
+                commonEyes: new[] { "Red eyes" },
+                commonOther: new[] { "Upper body of a human, lower body of a six-legged giant scorpion; Plates of armor made from bone cover the body from the upper abdomen down. Two large fingers and a thumb for hands. Human-like facial features except for segmented, insect-like eyes." });
             //Source: https://forgottenrealms.fandom.com/wiki/Sea_cat
             appearances[CreatureConstants.SeaCat] = GetWeightedAppearances(
-                allSkin: new[] { "Tan fur and fish-like scales", "Green skin and reptilian scales" },
-                allHair: new[] { "Mane of silky hair running from the top of its head and down its back to its tail flukes" },
-                allOther: new[]
+                commonSkin: new[] { "Tan fur and fish-like scales", "Green skin and reptilian scales" },
+                commonHair: new[] { "Mane of silky hair running from the top of its head and down its back to its tail flukes" },
+                commonOther: new[]
                 {
                     "Head and forepaws of a lion, but a body and tail similar to those of a fish",
                     "Head and forepaws of a lion, but a body and tail similar to those of a porpoise",
@@ -4166,10 +3989,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 });
             //Source: https://forgottenrealms.fandom.com/wiki/Sea_hag
             appearances[CreatureConstants.SeaHag] = GetWeightedAppearances(
-                allSkin: new[] { "Complexion of a rotting fish: pallid yellow skin with patches of green, slimy scales and bony protrusions" },
-                allHair: new[] { "Long, limp, hair that resembles rancid seaweed" },
-                allEyes: new[] { "Piscine eyes, devoid of life, with deep black pupils surrounded by red" },
-                allOther: new[] { "Emaciated appearance, flesh was rife with warts and oozing cankers" });
+                commonSkin: new[] { "Complexion of a rotting fish: pallid yellow skin with patches of green, slimy scales and bony protrusions" },
+                commonHair: new[] { "Long, limp, hair that resembles rancid seaweed" },
+                commonEyes: new[] { "Piscine eyes, devoid of life, with deep black pupils surrounded by red" },
+                commonOther: new[] { "Emaciated appearance, flesh was rife with warts and oozing cankers" });
             //Source: https://forgottenrealms.fandom.com/wiki/Shadow
             appearances[CreatureConstants.Shadow][Rarity.Common] = new[] { "A sentient shadow" };
             appearances[CreatureConstants.Shadow_Greater][Rarity.Common] = new[] { "A sentient shadow" };
@@ -4444,7 +4267,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                         "Khaki-colored scales with a purplish sheen and dark mottling toward the posterior in the form of diagonal crossbands, greyish-white underbelly",
                         "Gunmetal-colored scales with a purplish sheen and dark mottling toward the posterior in the form of diagonal crossbands, greyish-white underbelly",
                 },
-                allEyes: new[] { "Medium-sized eyes, grayish-brown irises surrounded by silvery-white",
+                commonEyes: new[] { "Medium-sized eyes, grayish-brown irises surrounded by silvery-white",
                     "Medium-sized eyes, dark black irises surrounded by silvery-white",
                     "Medium-sized eyes, dark gray irises surrounded by silvery-white", "Medium-sized eyes, gray irises surrounded by silvery-white",
                     "Medium-sized eyes, light gray irises surrounded by silvery-white", "Medium-sized eyes, brown irises surrounded by silvery-white",
@@ -4456,7 +4279,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Medium-sized eyes, light gray irises surrounded by yellow", "Medium-sized eyes, brown irises surrounded by yellow",
                     "Medium-sized eyes, dark brown irises surrounded by yellow",
                     "Medium-sized eyes, dark grayish-brown irises surrounded by yellow"},
-                allOther: new[] { "Mamba: Coffin-shaped head with somewhat-pronounced brow ridge" }
+                commonOther: new[] { "Mamba: Coffin-shaped head with somewhat-pronounced brow ridge" }
             );
             //Source: https://www.dimensions.com/element/king-cobra-ophiophagus-hannah
             //https://nationalzoo.si.edu/animals/king-cobra
@@ -4656,9 +4479,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             };
             //Source: https://forgottenrealms.fandom.com/wiki/Succubus
             appearances[CreatureConstants.Succubus] = GetWeightedAppearances(
-                allSkin: new[] { "TODO HUMAN flawless skin" },
-                allHair: new[] { "Red hair", "Raven-black hair" },
-                allEyes: new[] { "TODO HUMAN smoldering eyes" },
+                commonSkin: new[] { "TODO HUMAN flawless skin" },
+                commonHair: new[] { "Red hair", "Raven-black hair" },
+                commonEyes: new[] { "TODO HUMAN smoldering eyes" },
                 commonOther: new[] { "Clawed fingers, large black bat-like wings", "Clawed fingers, large dark red bat-like wings",
                     "Clawed fingers, large dark gray bat-like wings", "Clawed fingers, large dark green bat-like wings", "Clawed fingers, large dark blue bat-like wings",
                     "Clawed fingers, large dark purple bat-like wings", "Clawed fingers, large reddish bat-like wings"
@@ -4749,7 +4572,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonSkin: new[] { "Olive brown, dry, warty skin", "Green, dry, warty skin", "Dark brown, dry, warty skin", "Gray, dry, warty skin" },
                 uncommonSkin: new[] { "Olive brown, dry, warty skin with dark markings", "Green, dry, warty skin with dark markings",
                     "Dark brown, dry, warty skinn with dark markings", "Gray, dry, warty skin with dark markings" },
-                allEyes: new[] { "Copper-colored eyes with horizontal pupils" }
+                commonEyes: new[] { "Copper-colored eyes with horizontal pupils" }
             );
             //Source: https://forgottenrealms.fandom.com/wiki/Tojanida
             //https://www.d20pfsrd.com/bestiary/monster-listings/outsiders/tojanida/
@@ -4770,7 +4593,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Dull red skin, yellow underbelly, mottled spots down the back",
                     "Orange skin, yellow underbelly, mottled spots down the back",
                     "Sandy-yellow skin, lighter underbelly, mottled spots down the back" },
-                allOther: new[] { "Large bony neck frill and three horns on its head" });
+                commonOther: new[] { "Large bony neck frill and three horns on its head" });
             //Source: https://forgottenrealms.fandom.com/wiki/Triton
             appearances[CreatureConstants.Triton] = GetWeightedAppearances(
                 commonSkin: new[] { "Silver skin", "Silver-blue skin", "Deep blue skin" },
@@ -4778,26 +4601,26 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 rareSkin: new[] { "Dark green skin", "Bright green skin", "Gray skin", "Dark gray skin", "Night-black skin", "Red skin", "Orange skin", "Yellow skin" },
                 commonHair: new[] { "Deep blue hair", "Green-blue hair", "Dark blue hair", "Dark green hair" },
                 uncommonHair: new[] { "Light blue hair", "Light green hair" },
-                allEyes: new[] { "Brilliant green eyes with a nictitating membrane", "Brilliant blue-green eyes with a nictitating membrane",
+                commonEyes: new[] { "Brilliant green eyes with a nictitating membrane", "Brilliant blue-green eyes with a nictitating membrane",
                     "Brilliant blue eyes with a nictitating membrane", "Brilliant dark green eyes with a nictitating membrane",
                     "Brilliant dark blue eyes with a nictitating membrane", "Brilliant light green eyes with a nictitating membrane",
                     "Brilliant light blue eyes with a nictitating membrane" },
-                allOther: new[] { "Hands and feet are webbed, minor dorsal fins that run from the mid-calf to the ankle" });
+                commonOther: new[] { "Hands and feet are webbed, minor dorsal fins that run from the mid-calf to the ankle" });
             //Source: https://forgottenrealms.fandom.com/wiki/Troglodyte
             appearances[CreatureConstants.Troglodyte] = GetWeightedAppearances(
-                allSkin: new[] { "Grayish-brown leathery scales" },
-                allEyes: new[] { "Black beady eyes" },
-                allOther: new[] { "Spindly but muscular arms, squat legs, long slender tail, lizard-like head, claws and fangs", "TODO MALE crowned with frills extending from forehead to neck" });
+                commonSkin: new[] { "Grayish-brown leathery scales" },
+                commonEyes: new[] { "Black beady eyes" },
+                commonOther: new[] { "Spindly but muscular arms, squat legs, long slender tail, lizard-like head, claws and fangs", "TODO MALE crowned with frills extending from forehead to neck" });
             //Source: https://forgottenrealms.fandom.com/wiki/Troll
             appearances[CreatureConstants.Troll] = GetWeightedAppearances(
-                allSkin: new[] { "Thick, rubbery, moss-green scales", "Thick, rubbery, putrid gray scales", "Thick, rubbery, mottled gray and green scales" },
-                allHair: new[] { "Iron-gray hair", "Greenish-black hair", "Steel gray hair", "Black hair" },
-                allOther: new[] { "Severe hunch, backs of the hands dragging on the ground" });
+                commonSkin: new[] { "Thick, rubbery, moss-green scales", "Thick, rubbery, putrid gray scales", "Thick, rubbery, mottled gray and green scales" },
+                commonHair: new[] { "Iron-gray hair", "Greenish-black hair", "Steel gray hair", "Black hair" },
+                commonOther: new[] { "Severe hunch, backs of the hands dragging on the ground" });
             //Source: https://forgottenrealms.fandom.com/wiki/Scrag
             appearances[CreatureConstants.Troll_Scrag] = GetWeightedAppearances(
-                allSkin: new[] { "Blue-green scales", "Olive-green scales" },
-                allHair: new[] { "Iron-gray hair", "Greenish-black hair", "Steel gray hair", "Black hair" },
-                allOther: new[] { "Severe hunch, backs of the hands dragging on the ground, gills" });
+                commonSkin: new[] { "Blue-green scales", "Olive-green scales" },
+                commonHair: new[] { "Iron-gray hair", "Greenish-black hair", "Steel gray hair", "Black hair" },
+                commonOther: new[] { "Severe hunch, backs of the hands dragging on the ground, gills" });
             //Source: https://forgottenrealms.fandom.com/wiki/Trumpet_archon
             appearances[CreatureConstants.TrumpetArchon] = GetWeightedAppearances(
                 commonSkin: new[] { "TODO HIGH ELF" },
@@ -4806,7 +4629,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 uncommonHair: new[] { "TODO LIGHTFOOT HALFLING" },
                 commonEyes: new[] { "TODO HIGH ELF" },
                 uncommonEyes: new[] { "TODO LIGHTFOOT HALFLING" },
-                allOther: new[] { "Wings" });
+                commonOther: new[] { "Wings" });
             //Source: https://jurassicworld-evolution.fandom.com/wiki/Tyrannosaurus
             appearances[CreatureConstants.Tyrannosaurus] = GetWeightedAppearances(
                 commonSkin: new[] { "Dark brown skin", "Light brown skin", "White skin with dark gray stripes across the back", "Dark brown-gray skin, lighter underbelly",
@@ -4814,36 +4637,36 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Yellow skin with black stripes across the back" },
                 uncommonSkin: new[] { "Gray skin, lighter underbelly", "Dark gray skin, slightly-lighter underbelly", "Turquoise-gray skin, yellow underbelly",
                     "Green skin, yellow underbelly", "Orange skin, white underbelly", "Brown-red skin, yellow underbelly" },
-                allOther: new[] { "Massive head, powerful jaw, rows of large serrated teeth, small non-functional arms" });
+                commonOther: new[] { "Massive head, powerful jaw, rows of large serrated teeth, small non-functional arms" });
             //Source: https://forgottenrealms.fandom.com/wiki/Umber_hulk
             appearances[CreatureConstants.UmberHulk] = GetWeightedAppearances(
-                allSkin: new[] { "Black chitinous armor, front is burnt brown", "Black chitinous armor, front is yellowish-gray" },
-                allEyes: new[] { "Two sets of evenly-spaced eyes: compound eyes on the side of the head, forehead eyes that are small and apelike" },
-                allOther: new[] { "Looks like a cross between a gorilla and a beetle, huge mandibles, mouth filled with rows of sharp triangular teeth" });
+                commonSkin: new[] { "Black chitinous armor, front is burnt brown", "Black chitinous armor, front is yellowish-gray" },
+                commonEyes: new[] { "Two sets of evenly-spaced eyes: compound eyes on the side of the head, forehead eyes that are small and apelike" },
+                commonOther: new[] { "Looks like a cross between a gorilla and a beetle, huge mandibles, mouth filled with rows of sharp triangular teeth" });
             appearances[CreatureConstants.UmberHulk_TrulyHorrid] = GetWeightedAppearances(
-                allSkin: new[] { "Black chitinous armor, front is burnt brown", "Black chitinous armor, front is yellowish-gray" },
-                allEyes: new[] { "Two sets of evenly-spaced eyes: compound eyes on the side of the head, forehead eyes that are small and apelike" },
-                allOther: new[] { "Looks like a cross between a gorilla and a beetle, huge mandibles, mouth filled with rows of sharp triangular teeth" });
+                commonSkin: new[] { "Black chitinous armor, front is burnt brown", "Black chitinous armor, front is yellowish-gray" },
+                commonEyes: new[] { "Two sets of evenly-spaced eyes: compound eyes on the side of the head, forehead eyes that are small and apelike" },
+                commonOther: new[] { "Looks like a cross between a gorilla and a beetle, huge mandibles, mouth filled with rows of sharp triangular teeth" });
             //Source: https://forgottenrealms.fandom.com/wiki/Unicorn
             appearances[CreatureConstants.Unicorn] = GetWeightedAppearances(
-                allHair: new[] { "White coat, mane, and tail", "White coat, mane, and tail TODO MALE white beard" },
-                allEyes: new[] { "Deep sea-blue eyes", "Violet eyes", "Brown eyes", "Golden eyes", "Pink eyes" },
-                allOther: new[] { "Cloven hooves, long ivory-colored horn protruding from the forehead" });
+                commonHair: new[] { "White coat, mane, and tail", "White coat, mane, and tail TODO MALE white beard" },
+                commonEyes: new[] { "Deep sea-blue eyes", "Violet eyes", "Brown eyes", "Golden eyes", "Pink eyes" },
+                commonOther: new[] { "Cloven hooves, long ivory-colored horn protruding from the forehead" });
             //Source: https://forgottenrealms.fandom.com/wiki/Vampire_spawn
             appearances[CreatureConstants.VampireSpawn] = GetWeightedAppearances(
-                allSkin: new[] { "TODO HUMAN skin" },
-                allHair: new[] { "TODO HUMAN hair" },
-                allEyes: new[] { "TODO HUMAN eyes" },
-                allOther: new[] { "Hardened features, appearing predatory" });
+                commonSkin: new[] { "TODO HUMAN skin" },
+                commonHair: new[] { "TODO HUMAN hair" },
+                commonEyes: new[] { "TODO HUMAN eyes" },
+                commonOther: new[] { "Hardened features, appearing predatory" });
             //Source: https://forgottenrealms.fandom.com/wiki/Vargouille
             appearances[CreatureConstants.Vargouille] = GetWeightedAppearances(
-                allSkin: new[] { "TODO HUMAN skin" },
-                allEyes: new[] { "TODO HUMAN eyes with an unnerving green glow" },
-                allOther: new[] { "Grotesquely deformed human-like head, leathery bat-like wings instead of ears, flailing tendrils crown and fringe the head in place of hair, jagged teeth" });
+                commonSkin: new[] { "TODO HUMAN skin" },
+                commonEyes: new[] { "TODO HUMAN eyes with an unnerving green glow" },
+                commonOther: new[] { "Grotesquely deformed human-like head, leathery bat-like wings instead of ears, flailing tendrils crown and fringe the head in place of hair, jagged teeth" });
             //Source: https://forgottenrealms.fandom.com/wiki/Violet_fungus
             appearances[CreatureConstants.VioletFungus] = GetWeightedAppearances(
-                allSkin: new[] { "Deep purple coloration", "Dull gray coloration", "Violet coloration and covered in purple spots" },
-                allOther: new[] { "Mass of root-like feelers, four leafy tendrils" });
+                commonSkin: new[] { "Deep purple coloration", "Dull gray coloration", "Violet coloration and covered in purple spots" },
+                commonOther: new[] { "Mass of root-like feelers, four leafy tendrils" });
             //Source: https://forgottenrealms.fandom.com/wiki/Vrock
             appearances[CreatureConstants.Vrock][Rarity.Common] = new[] { "A cross between a vulture and a human. Twisted and gnarled with a long neck and limbs covered in sinew. Covered in small gray feathers. Stinks of offal and carrion. Long talons and vulture head." };
             //Source: https://activepestcontrol.com/pest-info/bees-and-hornets/red-paper-wasp/
@@ -4856,7 +4679,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonHair: ["Chestnut-brown fur with white-cream underparts"],
                 uncommonHair: ["White fur with white-cream underparts"],
                 rareHair: ["Black fur with black underparts"],
-                allOther: ["Long, slim body ending in a short tail"]);
+                commonOther: ["Long, slim body ending in a short tail"]);
             //Source: https://www.d20srd.org/srd/monsters/whale.htm
             //https://www.fisheries.noaa.gov/species/humpback-whale
             //https://www.fisheries.noaa.gov/species/gray-whale
@@ -4881,17 +4704,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             ];
             //Source: https://forgottenrealms.fandom.com/wiki/Wight
             appearances[CreatureConstants.Wight] = GetWeightedAppearances(
-                allSkin: ["TODO HUMAN mummified skin"],
-                allHair: ["TODO HUMAN hair"],
-                allEyes: ["Calcified, all-white eyes"],
-                allOther: ["Hands end in claws, teeth are sharp and jagged like needles"]);
+                commonSkin: ["TODO HUMAN mummified skin"],
+                commonHair: ["TODO HUMAN hair"],
+                commonEyes: ["Calcified, all-white eyes"],
+                commonOther: ["Hands end in claws, teeth are sharp and jagged like needles"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Will-o'-wisp
             appearances[CreatureConstants.WillOWisp] = GetWeightedAppearances(
-                allSkin: [ "Hazy ball of white light", "Hazy ball of blue light", "Hazy ball of violet light", "Hazy ball of green light",
+                commonSkin: [ "Hazy ball of white light", "Hazy ball of blue light", "Hazy ball of violet light", "Hazy ball of green light",
                     "Hazy ball of yellow light" ]);
             //Source: https://forgottenrealms.fandom.com/wiki/Winter_wolf
             appearances[CreatureConstants.WinterWolf] = GetWeightedAppearances(
-                allHair: ["Glistening white fur", "Glistening silvery fur"],
+                commonHair: ["Glistening white fur", "Glistening silvery fur"],
                 commonEyes: ["Blue eyes", "Very pale blue eyes"],
                 uncommonEyes: ["Silvery eyes"]);
             //Source: https://seaworld.org/animals/facts/mammals/gray-wolf/
@@ -4902,11 +4725,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Dark gray fur interspersed with black and white with a thick, dense underfur"
                 ],
                 uncommonHair: ["Solid black fur with a thick, dense underfur", "Solid white fur with a thick, dense underfur"],
-                allOther: ["High body, long legs, broad skull tapering to a narrow muzzle, bushy tail"]);
+                commonOther: ["High body, long legs, broad skull tapering to a narrow muzzle, bushy tail"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Dire_wolf
             appearances[CreatureConstants.Wolf_Dire] = GetWeightedAppearances(
-                allHair: ["Thick mottled gray fur", "Thick black fur", "Thick mottled black fur", "Thick gray fur"],
-                allEyes: ["Eyes like fire"]);
+                commonHair: ["Thick mottled gray fur", "Thick black fur", "Thick mottled black fur", "Thick gray fur"],
+                commonEyes: ["Eyes like fire"]);
             //Source: https://www.adfg.alaska.gov/index.cfm?adfg=wolverine.printerfriendly
             appearances[CreatureConstants.Wolverine] = GetWeightedAppearances(
                 commonHair: [
@@ -4921,7 +4744,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Long, dense, black fur with a creamy white stripe running from each shoulder along the flanks to the base of the tail",
                     "Long, dense, black fur with a gold stripe running from each shoulder along the flanks to the base of the tail",
                 },
-                allOther: new[] { "Thick body, short legs, short ears, broad flat head" });
+                commonOther: new[] { "Thick body, short legs, short ears, broad flat head" });
             appearances[CreatureConstants.Wolverine_Dire] = GetWeightedAppearances(
                 commonHair: new[] {
                     "Long, dense, dark brown fur with a creamy white stripe running from each shoulder along the flanks to the base of the tail, with a white hair patch on the neck and chest",
@@ -4935,86 +4758,86 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Long, dense, black fur with a creamy white stripe running from each shoulder along the flanks to the base of the tail",
                     "Long, dense, black fur with a gold stripe running from each shoulder along the flanks to the base of the tail",
                 },
-                allOther: new[] { "Thick body, short legs, short ears, broad flat head" });
+                commonOther: new[] { "Thick body, short legs, short ears, broad flat head" });
             //Source: https://forgottenrealms.fandom.com/wiki/Worg
             appearances[CreatureConstants.Worg] = GetWeightedAppearances(
                 commonHair: new[] { "Gray fur", "Black fur" },
                 uncommonHair: new[] { "Gray, particularly-glossy fur", "Black, particularly-glossy fur" },
-                allOther: new[] { "High body, long legs, broad skull tapering to a narrow muzzle, bushy tail" });
+                commonOther: new[] { "High body, long legs, broad skull tapering to a narrow muzzle, bushy tail" });
             //Source: https://forgottenrealms.fandom.com/wiki/Wraith
             appearances[CreatureConstants.Wraith][Rarity.Common] = new[] { "A sinister, spectral figure robed in darkness, no visual features or appendages, except for their glowing red eyes" };
             appearances[CreatureConstants.Wraith_Dread][Rarity.Common] = new[] { "A sinister, spectral figure robed in darkness, no visual features or appendages, except for their glowing red eyes" };
             //Source: https://forgottenrealms.fandom.com/wiki/Wyvern
             appearances[CreatureConstants.Wyvern] = GetWeightedAppearances(
-                allSkin: new[] { "Dark brown scales", "Gray scales", "Dark gray scales", "Gray-brown scales" },
-                allEyes: new[] { "Orange eyes", "Red eyes" },
-                allOther: new[] { "Jaw filled with long, sharp teeth" });
+                commonSkin: new[] { "Dark brown scales", "Gray scales", "Dark gray scales", "Gray-brown scales" },
+                commonEyes: new[] { "Orange eyes", "Red eyes" },
+                commonOther: new[] { "Jaw filled with long, sharp teeth" });
             //Source: https://forgottenrealms.fandom.com/wiki/Xill
             appearances[CreatureConstants.Xill][Rarity.Common] = new[] { "Vaguely reptilian with flame-red, leathery skin and solid black eyes. Roughly humanoid body with four clawed arms." };
             //Source: https://forgottenrealms.fandom.com/wiki/Xorn
             appearances[CreatureConstants.Xorn_Minor] = GetWeightedAppearances(
                 commonSkin: new[] { "Brown stonelike skin", "Brown pebbly, rocky skin", "Gray stonelike skin", "Gray pebbly, rocky skin" },
                 uncommonSkin: new[] { "Dark gray, metallic-like skin" },
-                allOther: new[] { "Large mouth on top of head, radially-symmetric body, three arms with talons at the end, three eyes, three legs" });
+                commonOther: new[] { "Large mouth on top of head, radially-symmetric body, three arms with talons at the end, three eyes, three legs" });
             appearances[CreatureConstants.Xorn_Average] = GetWeightedAppearances(
                 commonSkin: new[] { "Brown stonelike skin", "Brown pebbly, rocky skin", "Gray stonelike skin", "Gray pebbly, rocky skin" },
                 uncommonSkin: new[] { "Dark gray, metallic-like skin" },
-                allOther: new[] { "Large mouth on top of head, radially-symmetric body, three arms with talons at the end, three eyes, three legs" });
+                commonOther: new[] { "Large mouth on top of head, radially-symmetric body, three arms with talons at the end, three eyes, three legs" });
             appearances[CreatureConstants.Xorn_Elder] = GetWeightedAppearances(
                 commonSkin: new[] { "Brown stonelike skin", "Brown pebbly, rocky skin", "Gray stonelike skin", "Gray pebbly, rocky skin" },
                 uncommonSkin: new[] { "Dark gray, metallic-like skin" },
-                allOther: new[] { "Large mouth on top of head, radially-symmetric body, three arms with talons at the end, three eyes, three legs" });
+                commonOther: new[] { "Large mouth on top of head, radially-symmetric body, three arms with talons at the end, three eyes, three legs" });
             //Source: https://forgottenrealms.fandom.com/wiki/Yeth_hound
             appearances[CreatureConstants.YethHound] = GetWeightedAppearances(
-                allHair: new[] { "Dull, nonreflective night-black fur" },
-                allEyes: new[] { "Cherry-red eyes" },
-                allOther: new[] { "Resembles a greyhound, smells of chilled smoke, oddly human-like visage with protruding nose, short pointed ears that curve upward and away resembling horns" });
+                commonHair: new[] { "Dull, nonreflective night-black fur" },
+                commonEyes: new[] { "Cherry-red eyes" },
+                commonOther: new[] { "Resembles a greyhound, smells of chilled smoke, oddly human-like visage with protruding nose, short pointed ears that curve upward and away resembling horns" });
             //Source: https://forgottenrealms.fandom.com/wiki/Yrthak
             appearances[CreatureConstants.Yrthak] = GetWeightedAppearances(
-                allSkin: new[] { "Tough yellowish-green skin, with yellow leathery wings and yellow back-fin" },
-                allOther: new[] {
+                commonSkin: new[] { "Tough yellowish-green skin, with yellow leathery wings and yellow back-fin" },
+                commonOther: new[] {
                     "Akin to a winged crocodile, eyeless head, disproportionately large mouth filled with yellow teeth, distinctive twisting horn",
                     "Akin to a sickly dragon, eyeless head, disproportionately large mouth filled with yellow teeth, distinctive twisting horn",
                 });
             //Source: https://forgottenrealms.fandom.com/wiki/Yuan-ti_pureblood
             appearances[CreatureConstants.YuanTi_Pureblood] = GetWeightedAppearances(
-                allSkin: new[] { "TODO HUMAN skin", "TODO HUMAN skin with patches of scales" },
-                allHair: new[] { "TODO HUMAN hair" },
-                allEyes: new[] { "TODO HUMAN eyes", "TODO HUMAN snake-like eyes" },
+                commonSkin: new[] { "TODO HUMAN skin", "TODO HUMAN skin with patches of scales" },
+                commonHair: new[] { "TODO HUMAN hair" },
+                commonEyes: new[] { "TODO HUMAN eyes", "TODO HUMAN snake-like eyes" },
                 commonOther: new[] { "Fangs", "Forked tongue" },
                 uncommonOther: new[] { "Fangs and forked tongue" }
             );
             //Source: https://forgottenrealms.fandom.com/wiki/Yuan-ti_malison
             appearances[CreatureConstants.YuanTi_Halfblood_SnakeArms] = GetWeightedAppearances(
-                allSkin: new[] { "TODO HUMAN skin, distinctly-patterned scales" },
-                allHair: new[] { "TODO HUMAN hair" },
-                allEyes: new[] { "TODO HUMAN snake-like eyes" },
-                allOther: new[] { "Snake arms, fangs and forked tongue" }
+                commonSkin: new[] { "TODO HUMAN skin, distinctly-patterned scales" },
+                commonHair: new[] { "TODO HUMAN hair" },
+                commonEyes: new[] { "TODO HUMAN snake-like eyes" },
+                commonOther: new[] { "Snake arms, fangs and forked tongue" }
             );
             appearances[CreatureConstants.YuanTi_Halfblood_SnakeHead] = GetWeightedAppearances(
-                allSkin: new[] { "TODO HUMAN skin, distinctly-patterned scales" },
-                allEyes: new[] { "TODO HUMAN snake-like eyes" },
+                commonSkin: new[] { "TODO HUMAN skin, distinctly-patterned scales" },
+                commonEyes: new[] { "TODO HUMAN snake-like eyes" },
                 commonOther: new[] { "Snake head" },
                 uncommonOther: new[] { "Snake head with hood like a cobra" }
             );
             appearances[CreatureConstants.YuanTi_Halfblood_SnakeTail] = GetWeightedAppearances(
-                allSkin: new[] { "TODO HUMAN skin, distinctly-patterned scales" },
-                allHair: new[] { "TODO HUMAN hair" },
-                allEyes: new[] { "TODO HUMAN snake-like eyes" },
-                allOther: new[] { "Snake tail instead of human legs, fangs and forked tongue" }
+                commonSkin: new[] { "TODO HUMAN skin, distinctly-patterned scales" },
+                commonHair: new[] { "TODO HUMAN hair" },
+                commonEyes: new[] { "TODO HUMAN snake-like eyes" },
+                commonOther: new[] { "Snake tail instead of human legs, fangs and forked tongue" }
             );
             appearances[CreatureConstants.YuanTi_Halfblood_SnakeTailAndHumanLegs] = GetWeightedAppearances(
-                allSkin: new[] { "TODO HUMAN skin, distinctly-patterned scales" },
-                allHair: new[] { "TODO HUMAN hair" },
-                allEyes: new[] { "TODO HUMAN snake-like eyes" },
-                allOther: new[] { "Snake tail and human legs, fangs and forked tongue" }
+                commonSkin: new[] { "TODO HUMAN skin, distinctly-patterned scales" },
+                commonHair: new[] { "TODO HUMAN hair" },
+                commonEyes: new[] { "TODO HUMAN snake-like eyes" },
+                commonOther: new[] { "Snake tail and human legs, fangs and forked tongue" }
             );
             //Source: https://forgottenrealms.fandom.com/wiki/Yuan-ti_abomination
             appearances[CreatureConstants.YuanTi_Abomination] = GetWeightedAppearances(
-                allSkin: [ "Turquoise scales with pale yellow underbelly", "Bright green scales with yellow underbelly", "Yellow-green scales",
+                commonSkin: [ "Turquoise scales with pale yellow underbelly", "Bright green scales with yellow underbelly", "Yellow-green scales",
                     "Gray scales with black-outlined red diamonds along the back" ],
-                allEyes: ["Yellow snake-like eyes", "Red snake-like eyes", "Green snake-like eyes"],
-                allOther: ["Resembles massive snake with scale-covered humanoid arms, wedge-shaped head, fangs, forked tongue"]
+                commonEyes: ["Yellow snake-like eyes", "Red snake-like eyes", "Green snake-like eyes"],
+                commonOther: ["Resembles massive snake with scale-covered humanoid arms, wedge-shaped head, fangs, forked tongue"]
             );
             //Source: https://forgottenrealms.fandom.com/wiki/Zelekhut
             appearances[CreatureConstants.Zelekhut][Rarity.Common] = [
@@ -5026,16 +4849,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         }
 
         private Dictionary<Rarity, IEnumerable<string>> GetWeightedAppearances(
-            IEnumerable<string> allSkin = null, IEnumerable<string> commonSkin = null, IEnumerable<string> uncommonSkin = null, IEnumerable<string> rareSkin = null,
-            IEnumerable<string> allHair = null, IEnumerable<string> commonHair = null, IEnumerable<string> uncommonHair = null, IEnumerable<string> rareHair = null,
-            IEnumerable<string> allEyes = null, IEnumerable<string> commonEyes = null, IEnumerable<string> uncommonEyes = null, IEnumerable<string> rareEyes = null,
-            IEnumerable<string> allOther = null, IEnumerable<string> commonOther = null, IEnumerable<string> uncommonOther = null, IEnumerable<string> rareOther = null)
+            IEnumerable<string> commonSkin = null, IEnumerable<string> uncommonSkin = null, IEnumerable<string> rareSkin = null,
+            IEnumerable<string> commonHair = null, IEnumerable<string> uncommonHair = null, IEnumerable<string> rareHair = null,
+            IEnumerable<string> commonEyes = null, IEnumerable<string> uncommonEyes = null, IEnumerable<string> rareEyes = null,
+            IEnumerable<string> commonOther = null, IEnumerable<string> uncommonOther = null, IEnumerable<string> rareOther = null)
         {
             var prototype = new List<(string Appearance, Rarity Rarity)>();
-            var appearances = Build(allSkin, commonSkin, uncommonSkin, rareSkin, prototype)
-                .SelectMany(a => Build(allHair, commonHair, uncommonHair, rareHair, a))
-                .SelectMany(a => Build(allEyes, commonEyes, uncommonEyes, rareEyes, a))
-                .SelectMany(a => Build(allOther, commonOther, uncommonOther, rareOther, a))
+            var appearances = Build(commonSkin, uncommonSkin, rareSkin, prototype)
+                .SelectMany(a => Build(commonHair, uncommonHair, rareHair, a))
+                .SelectMany(a => Build(commonEyes, uncommonEyes, rareEyes, a))
+                .SelectMany(a => Build(commonOther, uncommonOther, rareOther, a))
                 .Select(Collapse)
                 .Where(a => !string.IsNullOrEmpty(a.Appearance));
 
@@ -5070,16 +4893,12 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         }
 
         private IEnumerable<List<(string Appearance, Rarity Rarity)>> Build(
-            IEnumerable<string> all, IEnumerable<string> common, IEnumerable<string> uncommon, IEnumerable<string> rare,
+            IEnumerable<string> common, IEnumerable<string> uncommon, IEnumerable<string> rare,
             List<(string Appearance, Rarity Rarity)> prototype)
         {
-            all ??= [string.Empty];
             common ??= [string.Empty];
             uncommon ??= [string.Empty];
             rare ??= [string.Empty];
-
-            if (all.Any(a => !string.IsNullOrEmpty(a)))
-                return all.Select(a => AddToPrototype(a, Rarity.Common, prototype));
 
             if (common.Concat(uncommon).Concat(rare).Any() == false)
                 return [prototype];
@@ -5296,7 +5115,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         }
 
         [Test]
-        public void BUG_GetWeightedAppearances_BasedOnAasimar_ReturnsCorrectCollections()
+        public void BUG_GetWeightedAppearances_ReturnsCorrectCollections_BasedOnAasimar()
         {
             var appearances = GetWeightedAppearances(
                 commonSkin: ["My common skin"],
@@ -5367,17 +5186,17 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
         [Test]
         public void ReusableAppearnces_CombinedMatch_HighElf()
         {
-            Assert.That(reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Skin],
+            Assert.That(reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Skin][Rarity.Common],
                 Is.EquivalentTo(new[] { "Brown skin", "Tan skin", "White skin", "Pink skin",
                     "Light brown skin", "Light tan skin", "Pale white skin" }));
-            Assert.That(reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Skin],
+            Assert.That(reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Skin][Rarity.Uncommon],
                 Is.EquivalentTo(new[] { "Dark brown skin", "Dark tan skin" }));
-            Assert.That(reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Hair],
+            Assert.That(reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Hair][Rarity.Common],
                 Is.EquivalentTo(new[] { "Straight black hair", "Curly black hair", "Kinky black hair",
                     "Straight white hair", "Curly white hair", "Kinky white hair",
                     "Straight silver hair", "Curly silver hair", "Kinky silver hair",
                     "Straight pale gold hair", "Curly pale gold hair", "Kinky pale gold hair" }));
-            Assert.That(reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Hair],
+            Assert.That(reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Hair][Rarity.Uncommon],
                 Is.EquivalentTo(new[] { "Straight black hair with silvery hues",
                         "Curly black hair with silvery hues", "Kinky black hair with silvery hues",
                     "Straight black hair with blond hues", "Curly black hair with blond hues", "Kinky black hair with blond hues",
@@ -5397,11 +5216,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                         "Kinky pale gold hair with blond hues",
                     "Straight pale gold hair with copper hues", "Curly pale gold hair with copper hues",
                         "Kinky pale gold hair with copper hues" }));
-            Assert.That(reusableAppearances[CreatureConstants.Elf_High][Rarity.Common][AppearanceCategory.Eyes],
+            Assert.That(reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Eyes][Rarity.Common],
                 Is.EquivalentTo(new[] { "Green eyes" }));
-            Assert.That(reusableAppearances[CreatureConstants.Elf_High][Rarity.Uncommon][AppearanceCategory.Eyes],
+            Assert.That(reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Eyes][Rarity.Uncommon],
                 Is.EquivalentTo(new[] { "Golden eyes", "Blue eyes", "Light Blue eyes", "Green eyes speckled with gold" }));
-            Assert.That(reusableAppearances[CreatureConstants.Elf_High][Rarity.Rare][AppearanceCategory.Eyes],
+            Assert.That(reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Eyes][Rarity.Rare],
                 Is.EquivalentTo(new[] { "Violet eyes", "Blue eyes speckled with gold", "Light Blue eyes speckled with gold", "Violet eyes speckled with gold",
                     "Solid green eyes, lacking pupils", "Solid golden eyes, lacking pupils", "Solid blue eyes, lacking pupils", "Solid light blue eyes, lacking pupils",
                     "Solid violet eyes, lacking pupils", "Solid green eyes speckled with gold, lacking pupils", "Solid golden eyes speckled with gold, lacking pupils",
