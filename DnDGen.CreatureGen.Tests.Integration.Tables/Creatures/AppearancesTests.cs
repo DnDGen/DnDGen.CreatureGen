@@ -393,6 +393,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             appearances[CreatureConstants.Lion] = InitializeReusableAppearance();
             appearances[CreatureConstants.Lion][AppearanceCategory.Hair][Rarity.Common] = ["Golden fur", "Tawny fur"];
+            appearances[CreatureConstants.Lion][AppearanceCategory.Eyes][Rarity.Common] = ["Large amber eyes"];
 
             appearances[CreatureConstants.Eagle] = InitializeReusableAppearance();
             appearances[CreatureConstants.Eagle][AppearanceCategory.Skin][Rarity.Common] = [
@@ -434,6 +435,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 .Concat(["Straight black hair with mustache", "Straight brown hair with mustache"]);
             appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Male][AppearanceCategory.Eyes] =
                 appearances[CreatureConstants.Halfling_Lightfoot + GenderConstants.Female][AppearanceCategory.Eyes];
+
+            appearances[CreatureConstants.Hawk] = InitializeReusableAppearance();
+            appearances[CreatureConstants.Hawk][AppearanceCategory.Skin][Rarity.Common] = [ "Red-tailed hawk", "Eurasian sparrowhawk", "Sharp-shinned hawk", "Osprey",
+                "Harris' hawk", "Eurasian goshawk",
+                "Black kite", "Red-shouldered hawk", "Cooper's hawk", "Broad-winged hawk", "Ferruginous hawk", "Swainson's hawk", "Tiny hawk", "White-tailed hawk",
+                "Northern harrier", "Roadside hawk", "Great black hawk", "Common black hawk", "Crested goshawk", "Red kite", "Shikra", "Collared sparrowhawk",
+                "Japanese sparrowhawk", "Chinese sparrowhawk", "Hen harrier", "Black-winged kite", "White-tailed kite", "Zone-tailed hawk", "Brahminy kite", "Besra",
+                "Western marsh harrier", "Red-backed hawk", "Montagu's harrier", "Swamp harrier"
+            ];
 
             return appearances;
         }
@@ -636,28 +646,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
 
             //Source: https://forgottenrealms.fandom.com/wiki/Aasimar
             appearances[CreatureConstants.Aasimar] = GetWeightedAppearances(
-                commonSkin: [ "Dark brown skin", "Brown skin", "Light brown skin",
-                    "Dark tan skin", "Tan skin", "Light tan skin",
-                    "Pink skin", "White skin", "Pale white skin" ],
-                uncommonSkin: [ "Emerald skin", "Gold skin", "Silver skin",
-                    "Dark brown skin with small iridescent scales", "Brown skin with small iridescent scales", "Light brown skin with small iridescent scales",
-                        "Dark tan skin with small iridescent scales", "Tan skin with small iridescent scales", "Light tan skin with small iridescent scales",
-                        "Pink skin with small iridescent scales", "White skin with small iridescent scales", "Pale white skin with small iridescent scales",
-                ],
+                commonSkin: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common],
+                uncommonSkin: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common].Select(s => $"{s} with small iridescent scales")
+                    .Concat(["Emerald skin", "Gold skin", "Silver skin"]),
                 rareSkin: ["Emerald skin with small iridescent scales", "Gold skin with small iridescent scales", "Silver skin with small iridescent scales"],
-                commonHair: [ "Straight red hair", "Straight blond hair", "Straight brown hair", "Straight black hair",
-                    "Curly red hair", "Curly blond hair", "Curly brown hair", "Curly black hair",
-                    "Kinky red hair", "Kinky blond hair", "Kinky brown hair", "Kinky black hair",
-                    "Straight silver hair", "Curly silver hair", "Kinky silver hair" ],
-                uncommonHair: [
-                    "Bald",
-                    "Straight red hair with feathers mixed in", "Straight blond hair with feathers mixed in", "Straight brown hair with feathers mixed in",
-                        "Straight black hair with feathers mixed in",
-                    "Curly red hair with feathers mixed in", "Curly blond hair with feathers mixed in", "Curly brown hair with feathers mixed in",
-                        "Curly black hair with feathers mixed in",
-                    "Kinky red hair with feathers mixed in", "Kinky blond hair with feathers mixed in", "Kinky brown hair with feathers mixed in",
-                        "Kinky black hair with feathers mixed in",
-                    "Straight silver hair with feathers mixed in", "Curly silver hair with feathers mixed in", "Kinky silver hair with feathers mixed in" ],
+                commonHair: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Common]
+                    .Concat(["Straight silver hair", "Curly silver hair", "Kinky silver hair"]),
+                uncommonHair: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Uncommon]
+                    .Concat(reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Common].Select(h => $"{h} with feathers mized in"))
+                    .Concat(["Straight silver hair with feathers mixed in", "Curly silver hair with feathers mixed in", "Kinky silver hair with feathers mixed in"]),
                 commonEyes: ["Pupil-less pale white eyes", "Pupil-less golden eyes", "Pupil-less gray eyes"],
                 uncommonEyes: ["Pupil-less topaz eyes", "Pupil-less pearly opalescent eyes"],
                 uncommonOther: ["A light covering of feathers on the shoulders, where an angel's wings might sprout"]);
@@ -2722,12 +2719,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonOther: [ "Scaly legs, clawed feet, and clawed hands with knotty fingers. Leathery wings. Breasts",
                     "Scaly legs, clawed feet, and clawed hands with knotty fingers. Feathery wings. Breasts" ]);
             //Source: https://www.dimensions.com/element/osprey-pandion-haliaetus
-            appearances[CreatureConstants.Hawk][Rarity.Common] = [ "Red-tailed hawk", "Eurasian sparrowhawk", "Sharp-shinned hawk", "Osprey", "Harris' hawk", "Eurasian goshawk",
-                "Black kite", "Red-shouldered hawk", "Cooper's hawk", "Broad-winged hawk", "Ferruginous hawk", "Swainson's hawk", "Tiny hawk", "White-tailed hawk",
-                "Northern harrier", "Roadside hawk", "Great black hawk", "Common black hawk", "Crested goshawk", "Red kite", "Shikra", "Collared sparrowhawk",
-                "Japanese sparrowhawk", "Chinese sparrowhawk", "Hen harrier", "Black-winged kite", "White-tailed kite", "Zone-tailed hawk", "Brahminy kite", "Besra",
-                "Western marsh harrier", "Red-backed hawk", "Montagu's harrier", "Swamp harrier"
-            ];
+            appearances[CreatureConstants.Hawk] = GetWeightedAppearances(reusableAppearances[CreatureConstants.Hawk]);
             //Source: https://forgottenrealms.fandom.com/wiki/Hellcat
             appearances[CreatureConstants.Hellcat_Bezekira] = GetWeightedAppearances(
                 commonSkin: new[] { "Form of a lion", "Form of a tiger-sized domestic cat" },
@@ -2749,10 +2741,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonSkin: new[] { "Orange skin", "Yellow-green skin", "Mottled brown skin" },
                 commonEyes: new[] { "Glowing yellow eyes", "Glowing red eyes" },
                 commonOther: new[] { "Resemble a humanoid toad, wide maw with rows of blunt teeth, long spikes running down the back" });
-            //Source: https://www.mojobob.com/roleplay/monstrousmanual/s/sphinx.html
+            //Source: https://forgottenrealms.fandom.com/wiki/Hieracosphinx
             appearances[CreatureConstants.Hieracosphinx] = GetWeightedAppearances(
-                commonHair: new[] { "TODO Lion fur", "TODO Hawk feathers" },
-                commonOther: new[] { "Body of a lion, great feathery wings, head of a hawk" });
+                commonHair: Combine(", ",
+                    reusableAppearances[CreatureConstants.Lion][AppearanceCategory.Hair][Rarity.Common]
+                        .Select(h => $"{h} on the body"),
+                    reusableAppearances[CreatureConstants.Hawk][AppearanceCategory.Skin][Rarity.Common]
+                        .Select(h => $"head and wings of {h}")),
+                commonOther: ["Body of a lion, great feathery wings, head of a hawk"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Hippogriff
             appearances[CreatureConstants.Hippogriff] = GetWeightedAppearances(
                 commonSkin: new[] { "Ivory beak", "Golden yellow beak" },
@@ -3197,17 +3193,20 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonOther: ["Broad, distended, partially-webbed hands and feet. Four digits per hand and feet. Bullet-shaped, piscine head. Sharp teeth."]);
             //Source: https://forgottenrealms.fandom.com/wiki/Lamia
             appearances[CreatureConstants.Lamia] = GetWeightedAppearances(
-                commonSkin: ["TODO HUMAN skin"],
-                commonHair: ["TODO LION fur"],
-                uncommonHair: ["TODO GOAT fur", "TODO DEER fur"],
-                commonEyes: ["TODO HUMAN eyes"],
-                commonOther: ["Human from the waist-up, lion from the waist-down"],
-                uncommonOther: ["Human from the waist-up, goat from the waist-down", "Human from the waist-up, deer from the waist-down"]);
+                commonSkin: ["TODO HUMAN skin waist-up, TODO LION waist-down"],
+                uncommonSkin: ["TODO HUMAN skin waist-up, TODO GOAT waist-down", "TODO HUMAN skin waist-up, TODO DEER waist-down"],
+                commonHair: ["TODO HUMAN hair, TODO LION fur"],
+                uncommonHair: ["TODO HUMAN hair, TODO GOAT fur", "TODO HUMAN hair, TODO DEER fur"],
+                commonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Common]);
             //Source: https://forgottenrealms.fandom.com/wiki/Lammasu
             appearances[CreatureConstants.Lammasu] = GetWeightedAppearances(
-                commonSkin: ["TODO HUMAN skin"],
-                commonHair: ["TODO LION fur", "TODO EAGLE feathers"],
-                commonEyes: ["TODO HUMAN eyes"],
+                commonSkin: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common],
+                commonHair: Combine(", ",
+                    reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Common].Select(h => $"{h} on head"),
+                    Combine(", ",
+                        reusableAppearances[CreatureConstants.Lion][AppearanceCategory.Hair][Rarity.Common].Select(h => $"{h} on body"),
+                        reusableAppearances[CreatureConstants.Eagle][AppearanceCategory.Hair][Rarity.Common].Select(w => $"wings of {w}"))),
+                commonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Common],
                 commonOther: ["Human from the waist-up, lion from the waist-down, pair of wings on the back"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Lantern_archon
             appearances[CreatureConstants.LanternArchon][Rarity.Common] = ["Sphere of soft, glowing light"];
@@ -3217,40 +3216,37 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonOther: new[] { "Blob of molten, stinking flesh. Formless, shivering mass below the waist. Head and torso is vaguely humanoid." });
             //Source: https://forgottenrealms.fandom.com/wiki/Leonal
             appearances[CreatureConstants.Leonal] = GetWeightedAppearances(
-                commonSkin: new[] { "TODO HUMAN skin" },
-                commonHair: new[] { "TODO LION fur" },
-                commonEyes: new[] { "TODO HUMAN eyes", "TODO LION eyes" });
+                commonSkin: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common],
+                commonHair: reusableAppearances[CreatureConstants.Lion][AppearanceCategory.Hair][Rarity.Common],
+                commonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Common]
+                    .Concat(reusableAppearances[CreatureConstants.Lion][AppearanceCategory.Skin][Rarity.Common]));
             //Source: https://forgottenrealms.fandom.com/wiki/Leopard
             appearances[CreatureConstants.Leopard][Rarity.Common] = new[] { "Yellow fur with rosette-shaped spots" };
             //Source: https://forgottenrealms.fandom.com/wiki/Lillend
             appearances[CreatureConstants.Lillend] = GetWeightedAppearances(
-                commonSkin: new[] { "TODO HUMAN skin",
-                    "Bright blue scales", "Bright purple scales", "Bright red scales", "Bright orange scales", "Bright yellow scales", "Bright green scales" },
-                commonHair: new[] { "Bright blue hair, bright blue feathers", "Bright blue hair, bright purple feathers", "Bright blue hair, bright red feathers",
-                        "Bright blue hair, bright orange feathers", "Bright blue hair, bright yellow feathers", "Bright blue hair, bright green feathers",
-                    "Bright purple hair, bright blue feathers", "Bright purple hair, bright purple feathers", "Bright purple hair, bright red feathers",
-                        "Bright purple hair, bright orange feathers", "Bright purple hair, bright yellow feathers", "Bright purple hair, bright green feathers",
-                    "Bright red hair, bright blue feathers", "Bright red hair, bright purple feathers", "Bright red hair, bright red feathers",
-                        "Bright red hair, bright orange feathers", "Bright red hair, bright yellow feathers", "Bright red hair, bright green feathers",
-                    "Bright orange hair, bright blue feathers", "Bright orange hair, bright purple feathers", "Bright orange hair, bright red feathers",
-                        "Bright orange hair, bright orange feathers", "Bright orange hair, bright yellow feathers", "Bright orange hair, bright green feathers",
-                    "Bright yellow hair, bright blue feathers", "Bright yellow hair, bright purple feathers", "Bright yellow hair, bright red feathers",
-                        "Bright yellow hair, bright orange feathers", "Bright yellow hair, bright yellow feathers", "Bright yellow hair, bright green feathers",
-                    "Bright green hair, bright blue feathers", "Bright green hair, bright purple feathers", "Bright green hair, bright red feathers",
-                        "Bright green hair, bright orange feathers", "Bright green hair, bright yellow feathers", "Bright green hair, bright green feathers" },
-                commonEyes: new[] { "TODO HUMAN eyes" },
-                commonOther: new[] { "Torso is humanoid, waist-down is serpentine" });
+                commonSkin: Combine(", ",
+                    reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common].Select(s => $"Waist-up is {s}"),
+                    ["waist-down is bright blue scales", "waist-down is bright purple scales", "waist-down is bright red scales", "waist-down is bright orange scales",
+                        "waist-down is bright yellow scales", "waist-down is bright green scales"]),
+                commonHair: Combine(", ",
+                    ["Bright blue hair", "Bright purple hair", "Bright red hair", "Bright orange hair", "Bright yellow hair", "Bright green hair"],
+                    ["bright blue feathers", "bright purple feathers", "bright red feathers", "bright orange feathers", "bright yellow feathers", "bright green feathers"]),
+                commonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Common],
+                commonOther: ["Torso is humanoid, waist-down is serpentine"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Lion
-            appearances[CreatureConstants.Lion] = GetWeightedAppearances(
-                commonHair: ["Golden fur", "Tawny fur"]);
+            //https://www.lionlandscapes.org/lion-vision
+            appearances[CreatureConstants.Lion] = GetWeightedAppearances(reusableAppearances[CreatureConstants.Lion]);
             appearances[CreatureConstants.Lion + GenderConstants.Male] = GetWeightedAppearances(
-                commonHair: ["Golden fur with brown mane", "Tawny fur with brown mane"]);
+                commonHair: reusableAppearances[CreatureConstants.Lion][AppearanceCategory.Hair][Rarity.Common].Select(h => $"{h} with brown mane"),
+                commonEyes: reusableAppearances[CreatureConstants.Lion][AppearanceCategory.Eyes][Rarity.Common]);
             //Source: https://forgottenrealms.fandom.com/wiki/Dire_lion
             appearances[CreatureConstants.Lion_Dire] = GetWeightedAppearances(
-                commonHair: ["Golden fur", "Tawny fur"],
+                commonHair: reusableAppearances[CreatureConstants.Lion][AppearanceCategory.Hair][Rarity.Common],
+                commonEyes: reusableAppearances[CreatureConstants.Lion][AppearanceCategory.Eyes][Rarity.Common],
                 commonOther: ["Bony spine and brow ridges"]);
             appearances[CreatureConstants.Lion_Dire + GenderConstants.Male] = GetWeightedAppearances(
-                commonHair: ["Golden fur with brown mane", "Tawny fur with brown mane"],
+                commonHair: reusableAppearances[CreatureConstants.Lion][AppearanceCategory.Hair][Rarity.Common].Select(h => $"{h} with brown mane"),
+                commonEyes: reusableAppearances[CreatureConstants.Lion][AppearanceCategory.Eyes][Rarity.Common],
                 commonOther: ["Bony spine and brow ridges"]);
             //Source: https://www.d20srd.org/srd/monsters/lizard.htm
             //https://www.petcoach.co/article/green-iguana-color-change-causes/
@@ -4418,40 +4414,47 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 }
             );
             //Source: https://forgottenrealms.fandom.com/wiki/Tarrasque
-            appearances[CreatureConstants.Tarrasque][Rarity.Common] = new[] { "Two long horns extend from its forehead; thick carapace; mighty tail; many spikes cover its large body; wide, toothy maw. Two small eyes." };
+            appearances[CreatureConstants.Tarrasque][Rarity.Common] = ["Two long horns extend from its forehead; thick carapace; mighty tail; many spikes cover its large body; wide, toothy maw. Two small eyes."];
             //Source: https://forgottenrealms.fandom.com/wiki/Tendriculos
-            appearances[CreatureConstants.Tendriculos][Rarity.Common] = new[] { "Mound of vegetation, supported by various branches and vines. Large opening filled with sharp branches and horns, acting sort of like teeth." };
+            appearances[CreatureConstants.Tendriculos][Rarity.Common] = ["Mound of vegetation, supported by various branches and vines. Large opening filled with sharp branches and horns, acting sort of like teeth."];
             //Source: https://forgottenrealms.fandom.com/wiki/Thoqqua
-            appearances[CreatureConstants.Thoqqua][Rarity.Common] = new[] { "Worm-like, made of earth and fire. brown and red skin. Glowing, molten-hot beak." };
+            appearances[CreatureConstants.Thoqqua][Rarity.Common] = ["Worm-like, made of earth and fire. brown and red skin. Glowing, molten-hot beak."];
             //Source: https://forgottenrealms.fandom.com/wiki/Tiefling
             appearances[CreatureConstants.Tiefling] = GetWeightedAppearances(
-                commonSkin: new[] { "TODO HUMAN skin" },
-                uncommonSkin: new[] { "Light red skin", "Red skin", "Dark red skin",
-                    "TODO HUMAN furred skin",
-                    "TODO HUMAN leathery skin",
-                    "TODO HUMAN scaly skin",
-                    "TODO HUMAN skin, unusually warm",
-                },
-                rareSkin: new[] { "Light red skin, unusually warm", "Red skin, unusually warm", "Dark red skin, unusually warm",
-                    "TODO HUMAN furred skin, unusually warm",
-                    "TODO HUMAN leathery skin, unusually warm",
-                    "TODO HUMAN scaly skin, unusually warm",
-                },
-                commonHair: new[] { "Red hair", "Brown hair", "Black hair", "Dark blue hair", "Purple hair" },
-                uncommonHair: new[] { "Pale white hair" },
-                commonEyes: new[] { "TODO HUMAN eyes" },
-                uncommonEyes: new[] { "Solid black eyes with no pupils", "Solid gold eyes with no pupils", "Solid red eyes with no pupils",
-                    "Solid silver eyes with no pupils", "Solid white eyes with no pupils",
-                    "TODO HUMAN feline eyes" },
-                commonOther: new[] { "Horns", "Prehensile tail", "Non-prehensile tail", "Pointed teeth" },
-                uncommonOther: new[] { "No other demonic qualities",
+                commonSkin: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common],
+                uncommonSkin: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common].Select(s => s.Replace("skin", "furred skin"))
+                    .Concat(reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common].Select(s => s.Replace("skin", "leathery skin")))
+                    .Concat(reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common].Select(s => s.Replace("skin", "scaly skin")))
+                    .Concat(reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common].Select(s => $"{s}, unusually warm"))
+                    .Concat(["Light red skin", "Red skin", "Dark red skin"]),
+                rareSkin: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common]
+                        .Select(s => s.Replace("skin", "furred skin, unusually warm"))
+                    .Concat(reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common]
+                        .Select(s => s.Replace("skin", "leathery skin, unusually warm")))
+                    .Concat(reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common]
+                        .Select(s => s.Replace("skin", "scaly skin, unusually warm")))
+                    .Concat(["Light red skin, unusually warm", "Red skin, unusually warm", "Dark red skin, unusually warm",
+                        "Light red furred skin", "Red furred skin", "Dark red furred skin",
+                        "Light red leathery skin", "Red leathery skin", "Dark red leathery skin",
+                        "Light red scaly skin", "Red scaly skin", "Dark red scaly skin",
+                        "Light red furred skin, unusually warm", "Red furred skin, unusually warm", "Dark red furred skin, unusually warm",
+                        "Light red leathery skin, unusually warm", "Red leathery skin, unusually warm", "Dark red leathery skin, unusually warm",
+                        "Light red scaly skin, unusually warm", "Red scaly skin, unusually warm", "Dark red scaly skin, unusually warm"]),
+                commonHair: ["Red hair", "Brown hair", "Black hair", "Dark blue hair", "Purple hair"],
+                uncommonHair: ["Pale white hair"],
+                commonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Common],
+                uncommonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Common].Select(e => e.Replace("eyes", "feline eyes"))
+                    .Concat(["Solid black eyes with no pupils", "Solid gold eyes with no pupils", "Solid red eyes with no pupils",
+                        "Solid silver eyes with no pupils", "Solid white eyes with no pupils"]),
+                commonOther: ["Horns", "Prehensile tail", "Non-prehensile tail", "Pointed teeth"],
+                uncommonOther: [ "No other demonic qualities",
                     "Sulfurous odor", "Cloven feet",
                     "Horns and prehensile tail", "Horns and non-prehensile tail", "Horns and pointed teeth",
                     "Prehensile tail and pointed teeth", "Non-prehensile tail and pointed teeth",
                     "Forked tongue", "Odor of brimstone", "Goat-like legs", "Hooves",
                     "Antlers",
-                },
-                rareOther: new[] { "Horns, prehensile tail, and pointed teeth", "Horns, non-prehensile tail, and pointed teeth",
+                ],
+                rareOther: [ "Horns, prehensile tail, and pointed teeth", "Horns, non-prehensile tail, and pointed teeth",
                     "Horns and sulfurous odor", "Horns and cloven feet", "Horns, sulfurous odor, and cloven feet",
                     "Prehensile tail and sulfurous odor", "Prehensile tail and cloven feet", "Prehensile tail, sulfurous odor, and cloven feet",
                     "Non-prehensile tail and sulfurous odor", "Non-prehensile tail and cloven feet", "Non-prehensile tail, sulfurous odor, and cloven feet",
@@ -4476,7 +4479,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Antlers, non-prehensile tail, and sulfurous odor", "Antlers, non-prehensile tail, and cloven feet",
                         "Antlers, non-prehensile tail, sulfurous odor, and cloven feet",
                     "Antlers, pointed teeth, and sulfurous odor", "Antlers, pointed teeth, and cloven feet", "Antlers, pointed teeth, sulfurous odor, and cloven feet",
-                }
+                ]
             );
             //Source: https://nationalzoo.si.edu/animals/tiger
             appearances[CreatureConstants.Tiger][Rarity.Common] = new[] { "Reddish-orange coat with prominent black stripes, white bellies and white spots on the ears." };
