@@ -518,6 +518,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     CreatureConstants.Halfling_Lightfoot + GenderConstants.Male,
                     CreatureConstants.Halfling_Tallfellow + GenderConstants.Female,
                     CreatureConstants.Halfling_Tallfellow + GenderConstants.Male,
+                    CreatureConstants.Hobgoblin + GenderConstants.Male,
                 ]);
         }
 
@@ -2760,8 +2761,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Hobgoblin
             //https://www.d20srd.org/srd/monsters/hobgoblin.htm
             appearances[CreatureConstants.Hobgoblin] = GetWeightedAppearances(
-                commonSkin: [ "Orange skin", "Reddish-brown skin", "Orange-brown skin", "Orange-red skin", "Dark orange skin", "Red-orange skin",
-                    "TODO MALE Blue nose", "TODO MALE red nose" ],
+                commonSkin: ["Orange skin", "Reddish-brown skin", "Orange-brown skin", "Orange-red skin", "Dark orange skin", "Red-orange skin"],
+                commonHair: ["Dark brown hair", "Dark gray hair", "Orange hair", "Red hair", "Dark reddish-brown hair", "Reddish-brown hair"],
+                commonEyes: ["Yellow eyes", "Dark brown eyes"],
+                commonOther: ["Yellow teeth"]);
+            appearances[CreatureConstants.Hobgoblin + GenderConstants.Male] = GetWeightedAppearances(
+                commonSkin: Combine(", ",
+                    ["Orange skin", "Reddish-brown skin", "Orange-brown skin", "Orange-red skin", "Dark orange skin", "Red-orange skin"],
+                    ["blue nose", "red nose"]),
                 commonHair: ["Dark brown hair", "Dark gray hair", "Orange hair", "Red hair", "Dark reddish-brown hair", "Reddish-brown hair"],
                 commonEyes: ["Yellow eyes", "Dark brown eyes"],
                 commonOther: ["Yellow teeth"]);
@@ -3161,8 +3168,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Janni
             appearances[CreatureConstants.Janni] = GetWeightedAppearances(
                 commonSkin: ["Skin the color of golden sand", "Earth-colored skin"],
-                commonHair: ["TODO HUMAN hair", "TODO HALF-ELF hair"],
-                commonEyes: ["TODO HUMAN eyes with supernatural intensity", "TODO HALF-ELF eyes with supernatural intensity"]);
+                commonHair: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Common]
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Half][AppearanceCategory.Hair][Rarity.Common]),
+                uncommonHair: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Uncommon]
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Half][AppearanceCategory.Hair][Rarity.Uncommon]),
+                rareHair: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Rare]
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Half][AppearanceCategory.Hair][Rarity.Rare]),
+                commonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Common].Select(e => $"{e} with supernatural intensity")
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Half][AppearanceCategory.Eyes][Rarity.Common].Select(e => $"{e} with supernatural intensity")),
+                uncommonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Uncommon].Select(e => $"{e} with supernatural intensity")
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Half][AppearanceCategory.Eyes][Rarity.Uncommon].Select(e => $"{e} with supernatural intensity")),
+                rareEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Rare].Select(e => $"{e} with supernatural intensity")
+                    .Concat(reusableAppearances[CreatureConstants.Elf_Half][AppearanceCategory.Eyes][Rarity.Rare].Select(e => $"{e} with supernatural intensity")));
             //Source: https://forgottenrealms.fandom.com/wiki/Kobold
             appearances[CreatureConstants.Kobold] = GetWeightedAppearances(
                 commonSkin: [ "Reddish-brown scaled skin", "Rusty black scaled skin", "Rusty brown scaled skin", "Reddish-black scaled skin",
@@ -3193,10 +3210,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonOther: ["Broad, distended, partially-webbed hands and feet. Four digits per hand and feet. Bullet-shaped, piscine head. Sharp teeth."]);
             //Source: https://forgottenrealms.fandom.com/wiki/Lamia
             appearances[CreatureConstants.Lamia] = GetWeightedAppearances(
-                commonSkin: ["TODO HUMAN skin waist-up, TODO LION waist-down"],
-                uncommonSkin: ["TODO HUMAN skin waist-up, TODO GOAT waist-down", "TODO HUMAN skin waist-up, TODO DEER waist-down"],
-                commonHair: ["TODO HUMAN hair, TODO LION fur"],
-                uncommonHair: ["TODO HUMAN hair, TODO GOAT fur", "TODO HUMAN hair, TODO DEER fur"],
+                commonSkin: Combine(", ",
+                    reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common].Select(s => $"{s} waist-up"),
+                    reusableAppearances[CreatureConstants.Lion][AppearanceCategory.Skin][Rarity.Common].Select(s => $"{s} of a lion waist-down")),
+                //TODO: When goats and deer are creatures, update these skins
+                uncommonSkin: Combine(", ",
+                    reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common].Select(s => $"{s} waist-up"),
+                    ["fur of a goat waist-down", "fur of a deer waist-down"]),
+                commonHair: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Common].Select(h => $"{h} on head"),
+                uncommonHair: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Uncommon].Select(h => $"{h} on head"),
                 commonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Common]);
             //Source: https://forgottenrealms.fandom.com/wiki/Lammasu
             appearances[CreatureConstants.Lammasu] = GetWeightedAppearances(
@@ -3285,16 +3307,21 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.MantaRay][Rarity.Common] = new[] { "Black top with white underbelly" };
             //Source: https://forgottenrealms.fandom.com/wiki/Manticore
             appearances[CreatureConstants.Manticore] = GetWeightedAppearances(
-                commonSkin: new[] { "TODO HUMAN skin", "TODO DRAGON wings" },
-                commonHair: new[] { "TODO LION fur", "TODO HUMAN hair" },
-                commonEyes: new[] { "Yellow eyes" },
-                commonOther: new[] { "Tail ends in a mass of deadly spikes. Mouth full of rows and rows of razor-sharp teeth, similar to that of a great white shark" });
+                commonSkin: Combine(", ",
+                    reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common].Select(s => $"{s} for the face"),
+                    ["Blue Dragon wings", "Black Dragon wings", "Green Dragon wings", "Red Dragon wings", "White Dragon wings"]),
+                commonHair: Combine(", ",
+                    reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Common].Select(s => $"{s} on the head"),
+                    reusableAppearances[CreatureConstants.Lion][AppearanceCategory.Hair][Rarity.Common].Select(s => $"{s} on the body")),
+                commonEyes: ["Yellow eyes"],
+                commonOther: ["Tail ends in a mass of deadly spikes. Mouth full of rows and rows of razor-sharp teeth, similar to that of a great white shark"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Marilith
             appearances[CreatureConstants.Marilith] = GetWeightedAppearances(
-                commonSkin: new[] { "TODO HUMAN skin, lower half has green scales" },
-                commonHair: new[] { "TODO HUMAN hair" },
-                commonEyes: new[] { "TODO HUMAN eyes" },
-                commonOther: new[] { "Top half is human, bottom half is a serpent" });
+                commonSkin: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common].Select(s => $"{s}, lower half has green scales"),
+                commonHair: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Common],
+                uncommonHair: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Uncommon],
+                commonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Common],
+                commonOther: ["Top half is human, bottom half is a serpent"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Marut
             appearances[CreatureConstants.Marut][Rarity.Common] = new[] { "Resembles a massive statue made entirely of onyx, humanoid in form but composed of mechanical components. Clad in golden armor." };
             //Source: https://www.d20srd.org/srd/monsters/medusa.htm
