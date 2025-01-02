@@ -3377,121 +3377,68 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonOther: new[] { "Wings composed of small cubic crystals" });
             //Source: https://forgottenrealms.fandom.com/wiki/Steam_mephit
             appearances[CreatureConstants.Mephit_Steam] = GetWeightedAppearances(
-                commonSkin: new[] { "Transluscent white skin", "Billowing steamy skin" },
-                uncommonHair: new[] { "Flames like hair on the head", "Flames engulfing the head" },
-                commonEyes: new[] { "White eyes", "Yellow eyes" },
-                commonOther: new[] { "Wings composed of steam, body dripping with steamy moisture",
-                    "Wings composed of steam, body is billowing steam, a flame roars in the stomach", "Wings composed of flames, body dripping with steamy moisture" });
+                commonSkin: ["Transluscent white skin", "Billowing steamy skin"],
+                uncommonHair: ["Flames like hair on the head", "Flames engulfing the head"],
+                commonEyes: ["White eyes", "Yellow eyes"],
+                commonOther: [ "Wings composed of steam, body dripping with steamy moisture",
+                    "Wings composed of steam, body is billowing steam, a flame roars in the stomach", "Wings composed of flames, body dripping with steamy moisture" ]);
             //Source: https://forgottenrealms.fandom.com/wiki/Water_mephit
             appearances[CreatureConstants.Mephit_Water] = GetWeightedAppearances(
-                commonSkin: new[] { "Blue scaly skin", "Sea-green scaly skin", "Light-blue scaly skin" },
-                commonEyes: new[] { "Large, bulbous, black eyes", "Large, bulbous, sea-green eyes", "Large, bulbous, red eyes" },
-                commonOther: new[] { "Fin-like wings, body dripping with salt water" });
+                commonSkin: ["Blue scaly skin", "Sea-green scaly skin", "Light-blue scaly skin"],
+                commonEyes: ["Large, bulbous, black eyes", "Large, bulbous, sea-green eyes", "Large, bulbous, red eyes"],
+                commonOther: ["Fin-like wings, body dripping with salt water"]);
+
             //Source: https://forgottenrealms.fandom.com/wiki/Merfolk
+            var commonMerfolkSkin = new[] { "Pale pink skin", "Pale tan skin", "Tan skin" };
+            var commonMerfolkScales = new[] { "deep kelly-green scales", "brilliant silver scales", "kelly-green scales", "dark silver scales", "green-silver scales",
+                "pale green scales", "brilliant green scales" };
+            var commonMerfolkSkinAndScales = Combine(", ",
+                commonMerfolkSkin,
+                commonMerfolkScales);
+            var uncommonMerfolkScales = new[] { "orange scales", "yellow scales", "red scales", "blue scales", "purple scales", "copper scales", "bronze scales",
+                "golden scales" };
+            var uncommonMerfolkScalesDecoration = new[] { "with darker stripes", "with lighter stripes", "with darker speckles", "with lighter speckles" };
+            var commonMerfolkOther = new[] { "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers" };
             appearances[CreatureConstants.Merfolk] = GetWeightedAppearances(
-                commonSkin: new[] { "Pale pink skin, deep kelly-green scales", "Pale pink skin, brilliant silver scales", "Pale pink skin, kelly-green scales",
-                        "Pale pink skin, dark silver scales", "Pale pink skin, green-silver scales", "Pale pink skin, pale green scales",
-                        "Pale pink skin, brilliant green scales",
-                    "Pale tan skin, deep kelly-green scales", "Pale tan skin, brilliant silver scales", "Pale tan skin, kelly-green scales",
-                        "Pale tan skin, dark silver scales", "Pale tan skin, green-silver scales", "Pale tan skin, pale green scales",
-                        "Pale tan skin, brilliant green scales",
-                    "Tan skin, deep kelly-green scales", "Tan skin, brilliant silver scales", "Tan skin, kelly-green scales",
-                        "Tan skin, dark silver scales", "Tan skin, green-silver scales", "Tan skin, pale green scales",
-                        "Tan skin, brilliant green scales" },
-                uncommonSkin: new[] { "TODO HUMAN skin",
-                    "... deep kelly-green scales", "... brilliant silver scales", "... kelly-green scales",
-                        "... dark silver scales", "... green-silver scales", "... pale green scales",
-                        "... brilliant green scales",
-                    "Pale pink skin, orange scales", "Pale pink skin, yellow scales", "Pale pink skin, red scales",
-                        "Pale pink skin, blue scales", "Pale pink skin, purple scales",
-                    "Pale tan skin, orange scales", "Pale tan skin, yellow scales", "Pale tan skin, red scales",
-                        "Pale tan skin, blue scales", "Pale tan skin, purple scales",
-                    "Tan skin, orange scales", "Tan skin, yellow scales", "Tan skin, red scales",
-                        "Tan skin, blue scales", "Tan skin, purple scales",
-                    "Pale pink skin, deep kelly-green scales with darker stripes", "Pale pink skin, brilliant silver scales with darker stripes",
-                        "Pale pink skin, kelly-green scales with darker stripes", "Pale pink skin, dark silver scales with darker stripes",
-                        "Pale pink skin, green-silver scales with darker stripes", "Pale pink skin, pale green scales with darker stripes",
-                        "Pale pink skin, brilliant green scales with darker stripes",
-                    "Pale pink skin, deep kelly-green scales with lighter stripes", "Pale pink skin, brilliant silver scales with lighter stripes",
-                        "Pale pink skin, kelly-green scales with lighter stripes", "Pale pink skin, dark silver scales with lighter stripes",
-                        "Pale pink skin, green-silver scales with lighter stripes", "Pale pink skin, pale green scales with lighter stripes",
-                        "Pale pink skin, brilliant green scales with lighter stripes",
-                    "Pale pink skin, deep kelly-green scales with darker speckles", "Pale pink skin, brilliant silver scales with darker speckles",
-                        "Pale pink skin, kelly-green scales with darker speckles", "Pale pink skin, dark silver scales with darker speckles",
-                        "Pale pink skin, green-silver scales with darker speckles", "Pale pink skin, pale green scales with darker speckles",
-                        "Pale pink skin, brilliant green scales with darker speckles",
-                    "Pale pink skin, deep kelly-green scales with lighter speckles", "Pale pink skin, brilliant silver scales with lighter speckles",
-                        "Pale pink skin, kelly-green scales with lighter speckles", "Pale pink skin, dark silver scales with lighter speckles",
-                        "Pale pink skin, green-silver scales with lighter speckles", "Pale pink skin, pale green scales with lighter speckles",
-                        "Pale pink skin, brilliant green scales with lighter speckles",
-                    "Pale tan skin, deep kelly-green scales with darker stripes", "Pale tan skin, brilliant silver scales with darker stripes",
-                        "Pale tan skin, kelly-green scales with darker stripes", "Pale tan skin, dark silver scales with darker stripes",
-                        "Pale tan skin, green-silver scales with darker stripes", "Pale tan skin, pale green scales with darker stripes",
-                        "Pale tan skin, brilliant green scales with darker stripes",
-                    "Pale tan skin, deep kelly-green scales with lighter stripes", "Pale tan skin, brilliant silver scales with lighter stripes",
-                        "Pale tan skin, kelly-green scales with lighter stripes", "Pale tan skin, dark silver scales with lighter stripes",
-                        "Pale tan skin, green-silver scales with lighter stripes", "Pale tan skin, pale green scales with lighter stripes",
-                        "Pale tan skin, brilliant green scales with lighter stripes",
-                    "Pale tan skin, deep kelly-green scales with darker speckles", "Pale tan skin, brilliant silver scales with darker speckles",
-                        "Pale tan skin, kelly-green scales with darker speckles", "Pale tan skin, dark silver scales with darker speckles",
-                        "Pale tan skin, green-silver scales with darker speckles", "Pale tan skin, pale green scales with darker speckles",
-                        "Pale tan skin, brilliant green scales with darker speckles",
-                    "Pale tan skin, deep kelly-green scales with lighter speckles", "Pale tan skin, brilliant silver scales with lighter speckles",
-                        "Pale tan skin, kelly-green scales with lighter speckles", "Pale tan skin, dark silver scales with lighter speckles",
-                        "Pale tan skin, green-silver scales with lighter speckles", "Pale tan skin, pale green scales with lighter speckles",
-                        "Pale tan skin, brilliant green scales with lighter speckles",
-                    "Tan skin, deep kelly-green scales with darker stripes", "Tan skin, brilliant silver scales with darker stripes",
-                        "tan skin, kelly-green scales with darker stripes", "Tan skin, dark silver scales with darker stripes",
-                        "tan skin, green-silver scales with darker stripes", "Tan skin, pale green scales with darker stripes",
-                        "tan skin, brilliant green scales with darker stripes",
-                    "Tan skin, deep kelly-green scales with lighter stripes", "Tan skin, brilliant silver scales with lighter stripes",
-                        "Tan skin, kelly-green scales with lighter stripes", "Tan skin, dark silver scales with lighter stripes",
-                        "Tan skin, green-silver scales with lighter stripes", "Tan skin, pale green scales with lighter stripes",
-                        "Tan skin, brilliant green scales with lighter stripes",
-                    "Tan skin, deep kelly-green scales with darker speckles", "Tan skin, brilliant silver scales with darker speckles",
-                        "Tan skin, kelly-green scales with darker speckles", "Tan skin, dark silver scales with darker speckles",
-                        "Tan skin, green-silver scales with darker speckles", "Tan skin, pale green scales with darker speckles",
-                        "Tan skin, brilliant green scales with darker speckles",
-                    "Tan skin, deep kelly-green scales with lighter speckles", "Tan skin, brilliant silver scales with lighter speckles",
-                        "Tan skin, kelly-green scales with lighter speckles", "Tan skin, dark silver scales with lighter speckles",
-                        "Tan skin, green-silver scales with lighter speckles", "Tan skin, pale green scales with lighter speckles",
-                        "Tan skin, brilliant green scales with lighter speckles",
-                    "Pale pink skin, copper scales", "Pale pink skin, bronze scales", "Pale pink skin, golden scales",
-                    "Pale tan skin, copper scales", "Pale tan skin, bronze scales", "Pale tan skin, golden scales",
-                    "Tan skin, copper scales", "Tan skin, bronze scales", "Tan skin, golden scales", },
-                rareSkin: new[] { "TODO HUMAN skin",
-                    "... orange scales", "... yellow scales", "... red scales",
-                        "... blue scales", "... purple scales",
-                        "... copper scales", "... bronze scales", "... golden scales",
-                    "... orange scales with darker stripes", "... yellow scales with darker stripes", "... red scales with darker stripes",
-                        "... blue scales with darker stripes", "... purple scales with darker stripes",
-                        "... copper scales with darker stripes", "... bronze scales with darker stripes", "... golden scales with darker stripes",
-                    "... orange scales with lighter stripes", "... yellow scales with lighter stripes", "... red scales with lighter stripes",
-                        "... blue scales with lighter stripes", "... purple scales with lighter stripes",
-                        "... copper scales with lighter stripes", "... bronze scales with lighter stripes", "... golden scales with lighter stripes",
-                    "... orange scales with darker speckles", "... yellow scales with darker speckles", "... red scales with darker speckles",
-                        "... blue scales with darker speckles", "... purple scales with darker speckles",
-                        "... copper scales with darker speckles", "... bronze scales with darker speckles", "... golden scales with darker speckles",
-                    "... orange scales with lighter speckles", "... yellow scales with lighter speckles", "... red scales with lighter speckles",
-                        "... blue scales with lighter speckles", "... purple scales with lighter speckles",
-                        "... copper scales with lighter speckles", "... bronze scales with lighter speckles", "... golden scales with lighter speckles", },
-                commonHair: new[] { "Light brown hair", "Blond hair" },
-                uncommonHair: new[] { "TODO HUMAN hair" },
-                rareHair: new[] { "Blue hair", "Silver hair" },
-                commonEyes: new[] { "TODO HUMAN eyes with ice-blue pupils",
-                    "TODO HUMAN eyes with pale-silver pupils" },
-                commonOther: new[] { "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers" },
-                uncommonOther: new[] { "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers, tattoos on the arms",
-                    "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers, tattoos on the chest",
-                    "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers, tattoos on the back",
-                    "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers, tattoos on the face",
-                    "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers, tattoos on the arms and chest",
-                    "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers, tattoos on the arms and back",
-                    "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers, tattoos on the arms and face",
-                    "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers, tattoos on the chest and back",
-                    "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers, tattoos on the chest and face",
-                    "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers, tattoos on the back and face",
-                    "Fish-like tail instead of legs, gill slits along the neck, slight webbing between fingers, covered in tattoos" });
+                commonSkin: commonMerfolkSkinAndScales,
+                uncommonSkin: Combine(", ",
+                        reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common],
+                        commonMerfolkScales
+                    ).Concat(Combine(", ",
+                        commonMerfolkSkin,
+                        uncommonMerfolkScales
+                    )).Concat(Combine(" ",
+                        commonMerfolkSkinAndScales,
+                        uncommonMerfolkScalesDecoration
+                    )),
+                rareSkin: Combine(", ",
+                        reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common],
+                        uncommonMerfolkScales
+                    ).Concat(Combine(" ",
+                        Combine(", ",
+                            commonMerfolkSkin,
+                            uncommonMerfolkScales
+                        ),
+                        uncommonMerfolkScalesDecoration
+                    )).Concat(Combine(" ",
+                        Combine(", ",
+                            reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common],
+                            uncommonMerfolkScales
+                        ),
+                        uncommonMerfolkScalesDecoration
+                    )),
+                commonHair: ["Light brown hair", "Blond hair"],
+                uncommonHair: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Common],
+                rareHair: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Uncommon].Concat(["Blue hair", "Silver hair"]),
+                commonEyes: Combine(" ",
+                    reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Common],
+                    ["with ice-blue pupils", "with pale-silver pupils"]),
+                commonOther: commonMerfolkOther,
+                uncommonOther: Combine(", ",
+                    commonMerfolkOther,
+                    ["tattoos on the arms", "tattoos on the chest", "tattoos on the back", "tattoos on the face", "tattoos on the arms and chest",
+                        "tattoos on the arms and back", "tattoos on the arms and face", "tattoos on the chest and back", "tattoos on the chest and face",
+                        "tattoos on the back and face", "covered in tattoos"]));
             //Source: https://www.d20srd.org/srd/monsters/mimic.htm
             //https://forgottenrealms.fandom.com/wiki/Mimic
             appearances[CreatureConstants.Mimic][Rarity.Common] = new[] { "Shaped like a door", "Shaped like a treasure chest, closed and locked", "Shaped like a rug",
@@ -3598,55 +3545,55 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 uncommonOther: new[] { "Long, night-black nails. Tattoo-like scars" });
             //Source: https://forgottenrealms.fandom.com/wiki/Nightcrawler
             appearances[CreatureConstants.Nightcrawler] = GetWeightedAppearances(
-                commonSkin: new[] { "Solid black skin" },
-                commonOther: new[] { "Black teeth" });
+                commonSkin: ["Solid black skin"],
+                commonOther: ["Black teeth"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Nightmare_(creature)
             appearances[CreatureConstants.Nightmare] = GetWeightedAppearances(
-                commonSkin: new[] { "Night-black coat" },
-                commonHair: new[] { "Red and orange flames for mane and tail" },
-                commonEyes: new[] { "Glowing red eyes", "Dark eyes illuminated with flames" },
-                commonOther: new[] { "Viper fangs" });
+                commonSkin: ["Night-black coat"],
+                commonHair: ["Red and orange flames for mane and tail"],
+                commonEyes: ["Glowing red eyes", "Dark eyes illuminated with flames"],
+                commonOther: ["Viper fangs"]);
             appearances[CreatureConstants.Nightmare_Cauchemar] = GetWeightedAppearances(
-                commonSkin: new[] { "Night-black coat" },
-                commonHair: new[] { "Red and orange flames for mane and tail" },
-                commonEyes: new[] { "Glowing red eyes", "Dark eyes illuminated with flames" },
-                commonOther: new[] { "Viper fangs" });
+                commonSkin: ["Night-black coat"],
+                commonHair: ["Red and orange flames for mane and tail"],
+                commonEyes: ["Glowing red eyes", "Dark eyes illuminated with flames"],
+                commonOther: ["Viper fangs"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Nightwalker
-            appearances[CreatureConstants.Nightwalker][Rarity.Common] = new[] { "Body looks as if it is made of shadow-stuff, with a vaguely humanoid form. Smooth and hairless." };
+            appearances[CreatureConstants.Nightwalker][Rarity.Common] = ["Body looks as if it is made of shadow-stuff, with a vaguely humanoid form. Smooth and hairless."];
             //Source: https://forgottenrealms.fandom.com/wiki/Nightwing
-            appearances[CreatureConstants.Nightwing][Rarity.Common] = new[] { "Bat-shaped darkness" };
+            appearances[CreatureConstants.Nightwing][Rarity.Common] = ["Bat-shaped darkness"];
             //Source: https://forgottenrealms.fandom.com/wiki/Nixie
             appearances[CreatureConstants.Nixie] = GetWeightedAppearances(
-                commonSkin: new[] { "Pale green skin" },
-                commonHair: new[] { "Dark green hair" },
-                commonEyes: new[] { "Wide, silver eyes" },
-                commonOther: new[] { "Webbed fingers and toes, pointed ears" });
+                commonSkin: ["Pale green skin"],
+                commonHair: ["Dark green hair"],
+                commonEyes: ["Wide, silver eyes"],
+                commonOther: ["Webbed fingers and toes, pointed ears"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Nymph
             appearances[CreatureConstants.Nymph] = GetWeightedAppearances(
-                commonSkin: new[] { "Vibrant green skin", "Autumnal orange skin", "Autumnal red skin", "Brown skin", "Yellow skin",
-                    "TODO HIGH ELF skin" },
-                commonHair: new[] { "Green hair" , "Orange hair", "Red hair", "Orange-brown hair", "Red-brown hair",
-                    "TODO HIGH ELF hair" },
-                commonEyes: new[] { "Yellow eyes", "Green eyes",
-                    "TODO HIGH ELF eyes" });
+                commonSkin: reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Skin][Rarity.Common]
+                    .Concat(["Vibrant green skin", "Autumnal orange skin", "Autumnal red skin", "Brown skin", "Yellow skin"]),
+                commonHair: reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Hair][Rarity.Common]
+                    .Concat(["Green hair", "Orange hair", "Red hair", "Orange-brown hair", "Red-brown hair"]),
+                commonEyes: reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Eyes][Rarity.Common]
+                    .Concat(["Yellow eyes", "Green eyes"]));
             //Source: https://forgottenrealms.fandom.com/wiki/Ochre_jelly
             appearances[CreatureConstants.OchreJelly] = GetWeightedAppearances(
-                commonSkin: new[] { "Dark yellow skin" },
-                commonOther: new[] { "Resembles giant amoeba" });
+                commonSkin: ["Dark yellow skin"],
+                commonOther: ["Resembles giant amoeba"]);
             //Source: https://kids.nationalgeographic.com/animals/invertebrates/facts/octopus
             appearances[CreatureConstants.Octopus] = GetWeightedAppearances(
-                commonSkin: new[] { "Gray skin", "Brown skin", "Pink skin", "Blue skin", "Green skin", "Reddish-brown skin" });
+                commonSkin: ["Gray skin", "Brown skin", "Pink skin", "Blue skin", "Green skin", "Reddish-brown skin"]);
             //Source: https://www.nationalgeographic.com/animals/invertebrates/facts/giant-pacific-octopus
             appearances[CreatureConstants.Octopus_Giant] = GetWeightedAppearances(
-                commonSkin: new[] { "Gray skin", "Brown skin", "Pink skin", "Blue skin", "Green skin", "Reddish-brown skin" });
+                commonSkin: ["Gray skin", "Brown skin", "Pink skin", "Blue skin", "Green skin", "Reddish-brown skin"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Ogre
             appearances[CreatureConstants.Ogre] = GetWeightedAppearances(
-                commonSkin: new[] { "Beige skin", "Pale beige skin", "White skin", "Pale gray skin", "Pale pink skin", "Pink skin", "Red-brown skin" },
-                commonEyes: new[] { "Yellow eyes", "Green eyes" });
+                commonSkin: ["Beige skin", "Pale beige skin", "White skin", "Pale gray skin", "Pale pink skin", "Pink skin", "Red-brown skin"],
+                commonEyes: ["Yellow eyes", "Green eyes"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Merrow_(ogre)
             appearances[CreatureConstants.Ogre_Merrow] = GetWeightedAppearances(
-                commonSkin: new[] { "Green scales" },
-                commonHair: new[] { "Seaweed-green, slimy hair" },
+                commonSkin: ["Green scales"],
+                commonHair: ["Seaweed-green, slimy hair"],
                 commonEyes: new[] { "Dark green eyes", "Green eyes" },
                 commonOther: new[] { "Black teeth and nails, webbed hands and feet, underbite, sloping shoulders, covered in tattoos" },
                 rareOther: new[] { "Black teeth and nails, webbed hands and feet, underbite, sloping shoulders, ivory horns, covered in tattoos" });
@@ -3660,12 +3607,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.Orc] = GetWeightedAppearances(reusableAppearances[CreatureConstants.Orc]);
             //Source: https://forgottenrealms.fandom.com/wiki/Half-orc
             appearances[CreatureConstants.Orc_Half] = GetWeightedAppearances(
-                commonSkin: new[] { "Grayish skin" },
-                uncommonSkin: new[] { "TODO HUMAN skin" },
-                commonHair: new[] { "Coarse black hair on head and body" },
-                uncommonHair: new[] { "Coarse dark gray hair on head and body", "Coarse gray hair on head and body", "TODO HUMAN hair" },
-                commonEyes: new[] { "TODO HUMAN eyes", "TODO ORC eyes" },
-                commonOther: new[] { "Jutting jaw, sloping forehead, small tusks" });
+                commonSkin: ["Grayish skin"],
+                uncommonSkin: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common],
+                commonHair: ["Coarse black hair on head and body"],
+                uncommonHair: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Common]
+                    .Concat(["Coarse dark gray hair on head and body", "Coarse gray hair on head and body"]),
+                rareHair: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Hair][Rarity.Uncommon],
+                commonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Common]
+                    .Concat(reusableAppearances[CreatureConstants.Orc][AppearanceCategory.Eyes][Rarity.Common]),
+                commonOther: ["Jutting jaw, sloping forehead, small tusks"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Otyugh
             appearances[CreatureConstants.Otyugh] = GetWeightedAppearances(
                 commonSkin: new[] { "Disgusting light brown rock-like hide", "Disgusting green rock-like hide", "Disgusting brown rock-like hide" },
@@ -3682,53 +3632,58 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.Owlbear] = GetWeightedAppearances(
                 commonHair: new[] { "Brown-black feathers and fur", "Yellow-brown feathers and fur", "Brown feathers and fur", "Dark brown feathers and fur" },
                 commonEyes: new[] { "Eyes rimmed in red with limpid pupils" },
-                commonOther: new[] { "Bear-like body, avian head, hooked yellow beak", "Bear-like body, avian head, serrated yellow beak",
+                commonOther: [ "Bear-like body, avian head, hooked yellow beak", "Bear-like body, avian head, serrated yellow beak",
                     "Bear-like body, avian head, hooked yellow-white beak", "Bear-like body, avian head, serrated yellow-white beak",
-                    "Bear-like body, avian head, hooked dull ivory beak", "Bear-like body, avian head, serrated dull ivory beak" });
+                    "Bear-like body, avian head, hooked dull ivory beak", "Bear-like body, avian head, serrated dull ivory beak" ]);
             //Source: https://forgottenrealms.fandom.com/wiki/Pegasus
             appearances[CreatureConstants.Pegasus] = GetWeightedAppearances(
-                commonHair: new[] { "White hair on the body, white feathers for mane and tail, white feathered legs" },
-                commonOther: new[] { "Resembles horse with bird-like wings" });
+                commonHair: ["White hair on the body, white feathers for mane and tail, white feathered legs"],
+                commonOther: ["Resembles horse with bird-like wings"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Phantom_fungus
             appearances[CreatureConstants.PhantomFungus] = GetWeightedAppearances(
-                commonSkin: new[] { "Brown skin", "Greenish-brown skin" },
-                commonOther: new[] { "Fungal mass supported by four stumpy legs. Cluster of nodules atop the body. Gaping maw lined with row of teeth." });
+                commonSkin: ["Brown skin", "Greenish-brown skin"],
+                commonOther: ["Fungal mass supported by four stumpy legs. Cluster of nodules atop the body. Gaping maw lined with row of teeth."]);
             //Source: https://forgottenrealms.fandom.com/wiki/Phase_spider
             appearances[CreatureConstants.PhaseSpider] = GetWeightedAppearances(
-                commonSkin: new[] { "Dark green/white skin", "Green/white skin", "Blue-green/white skin" },
-                commonOther: new[] { "Spindly-legged spider" });
+                commonSkin: ["Dark green/white skin", "Green/white skin", "Blue-green/white skin"],
+                commonOther: ["Spindly-legged spider"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Phasm
             appearances[CreatureConstants.Phasm][Rarity.Common] = new[] { "In its true form, resembles an amorphous, colorful ooze. However, is a natural shapechanger that can take the form of almost any creature or object." };
             //Source: https://forgottenrealms.fandom.com/wiki/Pit_fiend
             appearances[CreatureConstants.PitFiend] = GetWeightedAppearances(
-                commonSkin: new[] { "Red scales" },
-                commonOther: new[] { "Massive bat-like wings. Huge fangs drop with green venom. Prehensile tail." });
+                commonSkin: ["Red scales"],
+                commonOther: ["Massive bat-like wings. Huge fangs drop with green venom. Prehensile tail."]);
+            var weightedPixieAppearances = GetWeightedAppearances(
+                commonSkin: reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Skin][Rarity.Common]
+                    .Concat(["Green skin"]),
+                uncommonSkin: reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Skin][Rarity.Uncommon],
+                rareSkin: reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Skin][Rarity.Rare],
+                commonHair: reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Hair][Rarity.Common]
+                    .Concat(["Green hair", "Red hair"]),
+                uncommonHair: reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Hair][Rarity.Uncommon],
+                rareHair: reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Hair][Rarity.Rare],
+                commonEyes: reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Eyes][Rarity.Common],
+                uncommonEyes: reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Eyes][Rarity.Uncommon],
+                rareEyes: reusableAppearances[CreatureConstants.Elf_High][AppearanceCategory.Eyes][Rarity.Rare],
+                commonOther: ["Silvery, moth-like wings"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Pixie
-            appearances[CreatureConstants.Pixie] = GetWeightedAppearances(
-                commonSkin: new[] { "TODO HIGH ELF skin", "Green skin" },
-                commonHair: new[] { "TODO HIGH ELF hair", "Green hair", "Red hair" },
-                commonEyes: new[] { "TODO HIGH ELF eyes" },
-                commonOther: new[] { "Silvery, moth-like wings" });
-            appearances[CreatureConstants.Pixie_WithIrresistibleDance] = GetWeightedAppearances(
-                commonSkin: new[] { "TODO HIGH ELF skin", "Green skin" },
-                commonHair: new[] { "TODO HIGH ELF hair", "Green hair", "Red hair" },
-                commonEyes: new[] { "TODO HIGH ELF eyes" },
-                commonOther: new[] { "Silvery, moth-like wings" });
+            appearances[CreatureConstants.Pixie] = weightedPixieAppearances;
+            appearances[CreatureConstants.Pixie_WithIrresistibleDance] = weightedPixieAppearances;
             //Source: https://www.google.com/search?q=breeds+of+pony
-            appearances[CreatureConstants.Pony][Rarity.Common] = new[] { "Shetland Pony", "Connemara Pony", "Pony of the Americas", "New Forest Pony", "Dartmoor Pony", "Exmoor Pony",
-                "Fell Pony", "Asturcon", "Burmese Pony" };
-            appearances[CreatureConstants.Pony_War][Rarity.Common] = new[] { "Shetland Pony", "Connemara Pony", "Pony of the Americas", "New Forest Pony", "Dartmoor Pony", "Exmoor Pony",
-                "Fell Pony", "Asturcon", "Burmese Pony" };
+            appearances[CreatureConstants.Pony][Rarity.Common] = [ "Shetland Pony", "Connemara Pony", "Pony of the Americas", "New Forest Pony", "Dartmoor Pony", "Exmoor Pony",
+                "Fell Pony", "Asturcon", "Burmese Pony" ];
+            appearances[CreatureConstants.Pony_War][Rarity.Common] = [ "Shetland Pony", "Connemara Pony", "Pony of the Americas", "New Forest Pony", "Dartmoor Pony", "Exmoor Pony",
+                "Fell Pony", "Asturcon", "Burmese Pony" ];
             //Source: https://www.google.com/search?q=species+of+porpoise
-            appearances[CreatureConstants.Porpoise][Rarity.Common] = new[] { "Harbour porpoise", "Vaquita", "Dall's porpoise", "Spectacles porpoise", "Burmeister's porpoise",
-                "Indo-Pacific finless porpoise", "Narrow-ridged finless porpoise" };
+            appearances[CreatureConstants.Porpoise][Rarity.Common] = [ "Harbour porpoise", "Vaquita", "Dall's porpoise", "Spectacles porpoise", "Burmeister's porpoise",
+                "Indo-Pacific finless porpoise", "Narrow-ridged finless porpoise" ];
             //Source: https://forgottenrealms.fandom.com/wiki/Giant_praying_mantis
             appearances[CreatureConstants.PrayingMantis_Giant] = GetWeightedAppearances(
-                commonSkin: new[] { "Brown coloration", "Green coloration", "Yellow coloration", "Yellow-brown coloration", "Yellow-green coloration",
-                    "Brown-green coloration" });
+                commonSkin: [ "Brown coloration", "Green coloration", "Yellow coloration", "Yellow-brown coloration", "Yellow-green coloration",
+                    "Brown-green coloration" ]);
             //Source: https://forgottenrealms.fandom.com/wiki/Pseudodragon
             appearances[CreatureConstants.Pseudodragon] = GetWeightedAppearances(
-                commonSkin: new[] { "Brownish-red skin" });
+                commonSkin: ["Brownish-red skin"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Purple_worm
             appearances[CreatureConstants.PurpleWorm] = GetWeightedAppearances(
                 commonSkin: new[] { "Deep purple skin" });
@@ -3741,46 +3696,50 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonEyes: new[] { "Amber eyes" });
             appearances[CreatureConstants.Pyrohydra_7Heads] = GetWeightedAppearances(
                 commonSkin: new[] { "Reddish skin, yellow underbelly" },
-                commonEyes: new[] { "Amber eyes" });
+                commonEyes: ["Amber eyes"]);
             appearances[CreatureConstants.Pyrohydra_8Heads] = GetWeightedAppearances(
-                commonSkin: new[] { "Reddish skin, yellow underbelly" },
-                commonEyes: new[] { "Amber eyes" });
+                commonSkin: ["Reddish skin, yellow underbelly"],
+                commonEyes: ["Amber eyes"]);
             appearances[CreatureConstants.Pyrohydra_9Heads] = GetWeightedAppearances(
-                commonSkin: new[] { "Reddish skin, yellow underbelly" },
-                commonEyes: new[] { "Amber eyes" });
+                commonSkin: ["Reddish skin, yellow underbelly"],
+                commonEyes: ["Amber eyes"]);
             appearances[CreatureConstants.Pyrohydra_10Heads] = GetWeightedAppearances(
-                commonSkin: new[] { "Reddish skin, yellow underbelly" },
-                commonEyes: new[] { "Amber eyes" });
+                commonSkin: ["Reddish skin, yellow underbelly"],
+                commonEyes: ["Amber eyes"]);
             appearances[CreatureConstants.Pyrohydra_11Heads] = GetWeightedAppearances(
-                commonSkin: new[] { "Reddish skin, yellow underbelly" },
-                commonEyes: new[] { "Amber eyes" });
+                commonSkin: ["Reddish skin, yellow underbelly"],
+                commonEyes: ["Amber eyes"]);
             appearances[CreatureConstants.Pyrohydra_12Heads] = GetWeightedAppearances(
-                commonSkin: new[] { "Reddish skin, yellow underbelly" },
-                commonEyes: new[] { "Amber eyes" });
+                commonSkin: ["Reddish skin, yellow underbelly"],
+                commonEyes: ["Amber eyes"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Quasit
             appearances[CreatureConstants.Quasit] = GetWeightedAppearances(
-                commonSkin: new[] { "Green skin covered in warts and postules" },
-                commonOther: new[] { "Tail covered in barbs, spiky horns" },
-                uncommonOther: new[] { "Tail covered in barbs, spiky horns, bat-like wings" });
+                commonSkin: ["Green skin covered in warts and postules"],
+                commonOther: ["Tail covered in barbs, spiky horns"],
+                uncommonOther: ["Tail covered in barbs, spiky horns, bat-like wings"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Rakshasa
             appearances[CreatureConstants.Rakshasa] = GetWeightedAppearances(
-                uncommonSkin: new[] { "TODO CROCODILE skin", "TODO MANTIS skin" },
-                commonHair: new[] { "TODO TIGER fur" },
-                uncommonHair: new[] { "TODO APE fur" },
-                commonOther: new[] { "Reversed hands, tiger head" },
-                uncommonOther: new[] { "Reversed hands, ape head", "Reversed hands, crocodile head", "Reversed hands, mantis head" });
+                commonSkin: ["Reddish-orange coat with prominent black stripes and a tiger head"],
+                uncommonSkin: ["Jet-black fur and an ape head",
+                    "Dark bronze colouration on the scaley skin and a crocodile head",
+                    "Brown coloration on the exoskeleton and a mantis head", "Green coloration on the exoskeleton and a mantis head",
+                        "Yellow coloration on the exoskeleton and a mantis head", "Yellow-brown coloration on the exoskeleton and a mantis head",
+                        "Yellow-green coloration on the exoskeleton and a mantis head", "Brown-green coloration on the exoskeleton and a mantis head"],
+                rareSkin: ["Grey fur and an ape head", "Silver fur and an ape head",
+                    "Bronze colouration on the scaley skin and a crocodile head", "Very dark bronze colouration on the scaley skin and a crocodile head"],
+                commonOther: ["Reversed hands"]);
             //Source: https://dungeonsdragons.fandom.com/wiki/Rast
-            appearances[CreatureConstants.Rast][Rarity.Common] = new[]
-            {
+            appearances[CreatureConstants.Rast][Rarity.Common] =
+            [
                 "Central body about the size of a large dog, with 10 spindly spider's legs coming out of it. Each of these legs is tipped with a claw. The head is almost exactly the same size as the central body, and resembles a cross between a snake, a vulture and a goblin (some would say it is almost monkey-like). The central body and legs of the Rast are brown, while the head and claws are rust red.",
                 "Central body about the size of a large dog, with 11 spindly spider's legs coming out of it. Each of these legs is tipped with a claw. The head is almost exactly the same size as the central body, and resembles a cross between a snake, a vulture and a goblin (some would say it is almost monkey-like). The central body and legs of the Rast are brown, while the head and claws are rust red.",
                 "Central body about the size of a large dog, with 12 spindly spider's legs coming out of it. Each of these legs is tipped with a claw. The head is almost exactly the same size as the central body, and resembles a cross between a snake, a vulture and a goblin (some would say it is almost monkey-like). The central body and legs of the Rast are brown, while the head and claws are rust red.",
                 "Central body about the size of a large dog, with 13 spindly spider's legs coming out of it. Each of these legs is tipped with a claw. The head is almost exactly the same size as the central body, and resembles a cross between a snake, a vulture and a goblin (some would say it is almost monkey-like). The central body and legs of the Rast are brown, while the head and claws are rust red.",
                 "Central body about the size of a large dog, with 14 spindly spider's legs coming out of it. Each of these legs is tipped with a claw. The head is almost exactly the same size as the central body, and resembles a cross between a snake, a vulture and a goblin (some would say it is almost monkey-like). The central body and legs of the Rast are brown, while the head and claws are rust red.",
                 "Central body about the size of a large dog, with 15 spindly spider's legs coming out of it. Each of these legs is tipped with a claw. The head is almost exactly the same size as the central body, and resembles a cross between a snake, a vulture and a goblin (some would say it is almost monkey-like). The central body and legs of the Rast are brown, while the head and claws are rust red.",
-            };
+            ];
             //Source: https://rockypointrattery.com/rat-colors-%26-markings
-            appearances[CreatureConstants.Rat][Rarity.Common] = new[] { "Standard coat: short, smooth, and glossy black fur",
+            appearances[CreatureConstants.Rat][Rarity.Common] = [ "Standard coat: short, smooth, and glossy black fur",
                 "Rex coat: evenly curled black fur, slightly curled white belly", "Rex coat: evenly curled black fur, slightly curled white belly, curled whiskers",
                 "Double rex coat: Very short curly white coat", "Double rex coat: peach fuzz white fur", "Double rex coat: mostly hairless, white fur",
                 "Silvermane coat: Soft, silvered fur",
@@ -3826,7 +3785,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Siamese: medium beige fur; darker points on nose, ears, feet, tail, and tail root; black eyes",
                 "Himalayan: white fur; rich dark sepia points on nose, ears, feet, tail, and tail root; red eyes",
                 "Dalmation: white fur with numerous ragged black splotches",
-            };
+            ];
             //Source: https://forgottenrealms.fandom.com/wiki/Giant_rat
             appearances[CreatureConstants.Rat_Dire][Rarity.Common] = new[] { "Coarse brown-black fur" };
             //Source: https://www.d20srd.org/srd/monsters/swarm.htm
@@ -3836,38 +3795,43 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://eberron.fandom.com/wiki/Ravid
             appearances[CreatureConstants.Ravid][Rarity.Common] = new[] { "Long and serpentine, floating above the ground. One single claw juts out of its body just beneath its head. Pale white, scaley skin." };
             //Source: https://www.d20srd.org/srd/monsters/razorBoar.htm 
-            appearances[CreatureConstants.RazorBoar][Rarity.Common] = new[] { "Black-bristled hide marked by hundreds of old scars. Its eyes are wild and bloodshot, and its tusks are more than three feet long, gleaming like polished ivory and sharper than many swords." };
+            appearances[CreatureConstants.RazorBoar][Rarity.Common] = ["Black-bristled hide marked by hundreds of old scars. Its eyes are wild and bloodshot, and its tusks are more than three feet long, gleaming like polished ivory and sharper than many swords."];
             //Source: https://forgottenrealms.fandom.com/wiki/Remorhaz
             appearances[CreatureConstants.Remorhaz] = GetWeightedAppearances(
-                commonSkin: new[] { "Ice-blue scales" },
-                commonEyes: new[] { "White eyes" },
-                commonOther: new[] { "Tough leathery wings, insect-like head, dozens of legs, back glows red, horns along its body, dagger-like teeth" });
+                commonSkin: ["Ice-blue scales"],
+                commonEyes: ["White eyes"],
+                commonOther: ["Tough leathery wings, insect-like head, dozens of legs, back glows red, horns along its body, dagger-like teeth"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Retriever
-            appearances[CreatureConstants.Retriever][Rarity.Common] = new[] { "Resembles a giant spider with four forelegs ending in large cleaver-like blades, and four rear limbs for walking and carrying most of the weight. Two primary eyes and four smaller eyes that gleam malevolently as they peak out from the carapace." };
+            appearances[CreatureConstants.Retriever][Rarity.Common] = ["Resembles a giant spider with four forelegs ending in large cleaver-like blades, and four rear limbs for walking and carrying most of the weight. Two primary eyes and four smaller eyes that gleam malevolently as they peak out from the carapace."];
             //Source: https://www.d20srd.org/srd/monsters/rhinoceros.htm
             //https://denverzoo.org/animals/black-rhinoceros/
             appearances[CreatureConstants.Rhinoceras] = GetWeightedAppearances(
-                commonSkin: new[] { "Dark gray skin", "Dark brown skin" },
-                commonOther: new[] { "Two horns on the nose, with the anterior horn being larger" });
+                commonSkin: ["Dark gray skin", "Dark brown skin"],
+                commonOther: ["Two horns on the nose, with the anterior horn being larger"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Roc
             appearances[CreatureConstants.Roc] = GetWeightedAppearances(
-                commonHair: new[] { "Dark brown feathers", "Golden feathers", "Golden-brown feathers", "Dark golden-brown feathers", "Dark golden feathers" },
-                rareHair: new[] { "Black feathers", "Red feathers", "White feathers" });
+                commonHair: ["Dark brown feathers", "Golden feathers", "Golden-brown feathers", "Dark golden-brown feathers", "Dark golden feathers"],
+                rareHair: ["Black feathers", "Red feathers", "White feathers"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Roper
-            appearances[CreatureConstants.Roper][Rarity.Common] = new[] { "Earthy brown skin, resembling a stalagmite" };
+            appearances[CreatureConstants.Roper][Rarity.Common] = ["Earthy brown skin, resembling a stalagmite"];
             //Source: https://forgottenrealms.fandom.com/wiki/Rust_monster
-            appearances[CreatureConstants.RustMonster][Rarity.Common] = new[] { "Four insectlike legs and a squat, humped body. Thick, lumpy hide is yellowish-tan on the belly and rust-red on the back. Tail ends in what looks like a double-ended paddle. Two long antennae come out of its head, one under each eye" };
+            appearances[CreatureConstants.RustMonster][Rarity.Common] = ["Four insectlike legs and a squat, humped body. Thick, lumpy hide is yellowish-tan on the belly and rust-red on the back. Tail ends in what looks like a double-ended paddle. Two long antennae come out of its head, one under each eye"];
+
             //Source: https://forgottenrealms.fandom.com/wiki/Sahuagin
+            var commonSahuaginSkin = new[] { "Green skin, darker on the back and lighter in the front",
+                "Green skin, darker on the back and lighter in the front, with dark stripes",
+                "Green skin, darker on the back and lighter in the front, with dark bands", "Green skin, darker on the back and lighter in the front, with dark spots" };
+            var commonSahuaginMutantSkin = new[] { "Black skin on the back and gray in the front", "Black skin on the back and gray in the front, with dark stripes",
+                    "Black skin on the back and gray in the front, with dark bands",
+                    "Black skin on the back and gray in the front, with dark spots" };
             appearances[CreatureConstants.Sahuagin] = GetWeightedAppearances(
-                commonSkin: new[] { "Green skin, darker on the back and lighter in the front", "Green skin, darker on the back and lighter in the front, with dark stripes",
-                    "Green skin, darker on the back and lighter in the front, with dark bands",
-                    "Green skin, darker on the back and lighter in the front, with dark spots",
-                    "TODO FEMALE speckled yellow tail",
-                    "TODO FEMALE spotted yellow tail",
-                    "TODO FEMALE mottled yellow tail",
-                    "TODO FEMALE mostly yellow tail",
-                    "TODO FEMALE fully yellow tail",
-                },
+                commonSkin: commonSahuaginSkin,
+                commonEyes: ["Silvery-black eyes"],
+                commonOther: ["Webbed feet and hands; gills; finned tail; additional webbing down the back, on elbows, and where ears would be"]);
+            appearances[CreatureConstants.Sahuagin + GenderConstants.Female] = GetWeightedAppearances(
+                commonSkin: Combine(" ",
+                    commonSahuaginSkin,
+                    ["with speckled yellow tail", "with spotted yellow tail", "with mottled yellow tail", "with mostly yellow tail", "with fully yellow tail"]),
                 commonEyes: ["Silvery-black eyes"],
                 commonOther: ["Webbed feet and hands; gills; finned tail; additional webbing down the back, on elbows, and where ears would be"]);
             appearances[CreatureConstants.Sahuagin_Malenti] = GetWeightedAppearances(
@@ -3876,15 +3840,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonEyes: ["Silvery-black eyes"],
                 commonOther: ["Resembles an Aquatic Elf"]);
             appearances[CreatureConstants.Sahuagin_Mutant] = GetWeightedAppearances(
-                commonSkin: [ "Black skin on the back and gray in the front", "Black skin on the back and gray in the front, with dark stripes",
-                    "Black skin on the back and gray in the front, with dark bands",
-                    "Black skin on the back and gray in the front, with dark spots",
-                    "TODO FEMALE speckled yellow tail",
-                    "TODO FEMALE spotted yellow tail",
-                    "TODO FEMALE mottled yellow tail",
-                    "TODO FEMALE mostly yellow tail",
-                    "TODO FEMALE fully yellow tail",
-                ],
+                commonSkin: commonSahuaginMutantSkin,
+                commonEyes: ["Silvery-black eyes"],
+                commonOther: ["Webbed feet and hands; gills; finned tail; additional webbing down the back, on elbows, and where ears would be; four arms"]);
+            appearances[CreatureConstants.Sahuagin_Mutant + GenderConstants.Female] = GetWeightedAppearances(
+                commonSkin: Combine(" ",
+                    commonSahuaginMutantSkin,
+                    ["with speckled yellow tail", "with spotted yellow tail", "with mottled yellow tail", "with mostly yellow tail", "with fully yellow tail"]),
                 commonEyes: ["Silvery-black eyes"],
                 commonOther: ["Webbed feet and hands; gills; finned tail; additional webbing down the back, on elbows, and where ears would be; four arms"]);
             //Source: https://forgottenrealms.fandom.com/wiki/Salamander

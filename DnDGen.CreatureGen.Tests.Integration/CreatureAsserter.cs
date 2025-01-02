@@ -210,19 +210,19 @@ namespace DnDGen.CreatureGen.Tests.Integration
 
             if (creature.Equipment.Armor != null)
             {
-                var armorMessage = $"{message}\nArmor: {creature.Equipment.Armor.Description}";
+                var armorMessage = $"{message}\nArmor: {creature.Equipment.Armor.Summary}";
                 Assert.That(creature.Equipment.Armor.ArmorBonus, Is.Positive, armorMessage);
                 Assert.That(armorNames, Contains.Item(creature.Equipment.Armor.Name), armorMessage);
             }
 
             if (creature.Equipment.Shield != null)
             {
-                var shieldMessage = $"{message}\nShield: {creature.Equipment.Shield.Description}";
+                var shieldMessage = $"{message}\nShield: {creature.Equipment.Shield.Summary}";
                 Assert.That(creature.Equipment.Shield.ArmorBonus, Is.Positive, shieldMessage);
                 Assert.That(shieldNames, Contains.Item(creature.Equipment.Shield.Name), shieldMessage);
             }
 
-            var unnaturalAttacks = creature.Attacks.Where(a => !a.IsNatural && creature.Equipment.Weapons.Any(w => a.Name.StartsWith(w.Description)));
+            var unnaturalAttacks = creature.Attacks.Where(a => !a.IsNatural && creature.Equipment.Weapons.Any(w => a.Name.StartsWith(w.Summary)));
 
             foreach (var attack in unnaturalAttacks)
             {
@@ -231,16 +231,16 @@ namespace DnDGen.CreatureGen.Tests.Integration
                 //INFO: Lycanthropes have a modifed name for the attack based on their form
                 if (creature.Templates.Any(t => t.Contains("Lycanthrope")))
                 {
-                    weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name.StartsWith($"{w.Description} ("));
+                    weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name.StartsWith($"{w.Summary} ("));
                 }
                 else
                 {
-                    weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name == w.Description);
+                    weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name == w.Summary);
                 }
 
                 Assert.That(weapon, Is.Not.Null, $"{message}\nAttack: {attack.Name}");
 
-                var weaponMessage = $"{message}\nWeapon: {weapon.Description}";
+                var weaponMessage = $"{message}\nWeapon: {weapon.Summary}";
                 Assert.That(weapon.DamageDescription, Is.Not.Empty, weaponMessage);
                 Assert.That(weaponNames, Contains.Item(weapon.Name), weaponMessage);
 
@@ -533,9 +533,9 @@ namespace DnDGen.CreatureGen.Tests.Integration
         {
             var attackMessage = $"{message}\nAttack: {attack.Name}";
             var meleeEquipmentAttacks = creature.Attacks.Where(a => a.IsMelee
-                && (creature.Equipment.Weapons.Any(w => a.Name.StartsWith(w.Description)) || a.Name.StartsWith(AttributeConstants.Melee)));
+                && (creature.Equipment.Weapons.Any(w => a.Name.StartsWith(w.Summary)) || a.Name.StartsWith(AttributeConstants.Melee)));
             var rangedEquipmentAttacks = creature.Attacks.Where(a => !a.IsMelee
-                && (creature.Equipment.Weapons.Any(w => a.Name.StartsWith(w.Description)) || a.Name.StartsWith(AttributeConstants.Ranged)));
+                && (creature.Equipment.Weapons.Any(w => a.Name.StartsWith(w.Summary)) || a.Name.StartsWith(AttributeConstants.Ranged)));
 
             Assert.That(attack.Name, Is.Not.Empty, attackMessage);
             Assert.That(attack.AttackType, Is.Not.Empty, attackMessage);
@@ -604,30 +604,30 @@ namespace DnDGen.CreatureGen.Tests.Integration
             //INFO: Lycanthropes have a modifed name for the attack based on their form
             if (creature.Templates.Any(t => t.Contains("Lycanthrope")))
             {
-                weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name.StartsWith($"{w.Description} ("));
+                weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name.StartsWith($"{w.Summary} ("));
             }
             else
             {
-                weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name == w.Description);
+                weapon = creature.Equipment.Weapons.FirstOrDefault(w => attack.Name == w.Summary);
             }
 
             if (weapon != null)
             {
                 Assert.That(attack.Damages,
                     Is.Not.Empty.And.Count.EqualTo(weapon.Damages.Count),
-                    $"{attackMessage}\nWeapon: {weapon.Description} ({weapon.DamageDescription})\nAttack Damage: {attack.DamageDescription}");
+                    $"{attackMessage}\nWeapon: {weapon.Summary} ({weapon.DamageDescription})\nAttack Damage: {attack.DamageDescription}");
 
                 for (var i = 0; i < weapon.Damages.Count; i++)
                 {
                     if (i == 0)
                     {
-                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Roll), $"{attackMessage}\nWeapon: {weapon.Description}");
-                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Type), $"{attackMessage}\nWeapon: {weapon.Description}");
-                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Condition), $"{attackMessage}\nWeapon: {weapon.Description}");
+                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Roll), $"{attackMessage}\nWeapon: {weapon.Summary}");
+                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Type), $"{attackMessage}\nWeapon: {weapon.Summary}");
+                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Condition), $"{attackMessage}\nWeapon: {weapon.Summary}");
                     }
                     else
                     {
-                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Description), $"{attackMessage}\nWeapon: {weapon.Description}");
+                        Assert.That(attack.DamageDescription, Contains.Substring(weapon.Damages[i].Description), $"{attackMessage}\nWeapon: {weapon.Summary}");
                     }
                 }
 
