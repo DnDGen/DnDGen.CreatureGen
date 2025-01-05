@@ -445,6 +445,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 "Western marsh harrier", "Red-backed hawk", "Montagu's harrier", "Swamp harrier"
             ];
 
+            appearances[CreatureConstants.VioletFungus] = InitializeReusableAppearance();
+            appearances[CreatureConstants.VioletFungus][AppearanceCategory.Skin][Rarity.Common] = [
+                "Deep purple coloration", "Dull gray coloration", "Violet coloration and covered in purple spots"
+            ];
+            appearances[CreatureConstants.VioletFungus][AppearanceCategory.Other][Rarity.Common] = [
+                "Mass of root-like feelers, four leafy tendrils"
+            ];
+
             return appearances;
         }
 
@@ -519,6 +527,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     CreatureConstants.Halfling_Tallfellow + GenderConstants.Female,
                     CreatureConstants.Halfling_Tallfellow + GenderConstants.Male,
                     CreatureConstants.Hobgoblin + GenderConstants.Male,
+                    CreatureConstants.Sahuagin + GenderConstants.Female,
+                    CreatureConstants.Sahuagin_Mutant + GenderConstants.Female,
                 ]);
         }
 
@@ -3855,7 +3865,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             appearances[CreatureConstants.Salamander_Noble][Rarity.Common] = ["Serpentine with a humanoid torso, head, and arms, albeit with spines rising from their head, arms, and spine. Red fiery skin"];
             //Source: https://forgottenrealms.fandom.com/wiki/Satyr
             appearances[CreatureConstants.Satyr] = GetWeightedAppearances(
-                commonSkin: ["Tan skin", "Light brown skin", "Brown skin", "Lightly tan skin", "TODO GOAT fur"],
+                //TODO: When goats are creatures, update these skins
+                commonSkin: ["Tan skin, goat fur from the waist-down", "Light brown skin, goat fur from the waist-down", "Brown skin, goat fur from the waist-down",
+                    "Lightly tan skin, goat fur from the waist-down"],
                 commonHair: ["Red hair", "Chestnut brown hair"],
                 commonOther: [ "Small nubs for horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
                     "Large curling ram horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
@@ -3864,7 +3876,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                     "Large straight horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
                 ]);
             appearances[CreatureConstants.Satyr_WithPipes] = GetWeightedAppearances(
-                commonSkin: ["Tan skin", "Light brown skin", "Brown skin", "Lightly tan skin", "TODO GOAT fur"],
+                //TODO: When goats are creatures, update these skins
+                commonSkin: ["Tan skin, goat fur from the waist-down", "Light brown skin, goat fur from the waist-down", "Brown skin, goat fur from the waist-down",
+                    "Lightly tan skin, goat fur from the waist-down"],
                 commonHair: ["Red hair", "Chestnut brown hair"],
                 commonOther: [ "Small nubs for horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
                     "Large curling ram horns, fur-covered lower bodies and legs and cloven hooves similar to those of a goat",
@@ -3903,7 +3917,15 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
                 commonOther: new[] { "Front pincers and the tail with a stinger" });
             //Source: https://forgottenrealms.fandom.com/wiki/Tlincalli
             appearances[CreatureConstants.Scorpionfolk] = GetWeightedAppearances(
-                commonSkin: new[] { "... red skin on the scorpion half", "TODO HUMAN skin" },
+                commonSkin: Combine(", ",
+                    reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common],
+                    ["red skin on the scorpion half"]),
+                uncommonSkin: Combine(", ",
+                    reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Uncommon],
+                    ["red skin on the scorpion half"]),
+                rareSkin: Combine(", ",
+                    reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Rare],
+                    ["red skin on the scorpion half"]),
                 commonHair: new[] { "Completely hairless" },
                 commonEyes: new[] { "Red eyes" },
                 commonOther: new[] { "Upper body of a human, lower body of a six-legged giant scorpion; Plates of armor made from bone cover the body from the upper abdomen down. Two large fingers and a thumb for hands. Human-like facial features except for segmented, insect-like eyes." });
@@ -3944,7 +3966,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //Source: https://forgottenrealms.fandom.com/wiki/Shocker_lizard
             appearances[CreatureConstants.ShockerLizard][Rarity.Common] = new[] { "Blue skin, with light blue belly" };
             //Source: https://forgottenrealms.fandom.com/wiki/Shrieker
-            appearances[CreatureConstants.Shrieker][Rarity.Common] = new[] { "TODO VIOLET FUNGI, but did not have tentacles with which to poison prey" };
+            appearances[CreatureConstants.Shrieker] = GetWeightedAppearances(
+                commonSkin: reusableAppearances[CreatureConstants.VioletFungus][AppearanceCategory.Skin][Rarity.Common]);
             //Source: https://forgottenrealms.fandom.com/wiki/Skum
             appearances[CreatureConstants.Skum][Rarity.Common] = new[] { "Resembles horrific hybrid of human and fish. Spiny frill on the back, bulbous eyes, and a tail." };
             //Source: https://forgottenrealms.fandom.com/wiki/Blue_slaad
@@ -4381,9 +4404,9 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             };
             //Source: https://forgottenrealms.fandom.com/wiki/Succubus
             appearances[CreatureConstants.Succubus] = GetWeightedAppearances(
-                commonSkin: new[] { "TODO HUMAN flawless skin" },
+                commonSkin: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Skin][Rarity.Common].Select(s => s.Replace("skin", "flawless skin")),
                 commonHair: new[] { "Red hair", "Raven-black hair" },
-                commonEyes: new[] { "TODO HUMAN smoldering eyes" },
+                commonEyes: reusableAppearances[CreatureConstants.Human][AppearanceCategory.Eyes][Rarity.Common].Select(s => s.Replace("eyes", "smoldering eyes")),
                 commonOther: new[] { "Clawed fingers, large black bat-like wings", "Clawed fingers, large dark red bat-like wings",
                     "Clawed fingers, large dark gray bat-like wings", "Clawed fingers, large dark green bat-like wings", "Clawed fingers, large dark blue bat-like wings",
                     "Clawed fingers, large dark purple bat-like wings", "Clawed fingers, large reddish bat-like wings"
@@ -4475,7 +4498,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures
             //https://forgottenrealms.fandom.com/wiki/Dire_tiger
             appearances[CreatureConstants.Tiger_Dire][Rarity.Common] = new[] { "Reddish-orange coat with prominent black stripes, white bellies and white spots on the ears, pair of huge fangs jutting from powerful jaws" };
             //Source: https://forgottenrealms.fandom.com/wiki/Titan
-            appearances[CreatureConstants.Titan][Rarity.Common] = new[] { "TODO HUMAN all appearances" };
+            appearances[CreatureConstants.Titan] = GetWeightedAppearances(reusableAppearances[CreatureConstants.Human]);
             //Source: https://www.woodlandtrust.org.uk/trees-woods-and-wildlife/animals/reptiles-and-amphibians/common-toad/
             appearances[CreatureConstants.Toad] = GetWeightedAppearances(
                 commonSkin: new[] { "Olive brown, dry, warty skin", "Green, dry, warty skin", "Dark brown, dry, warty skin", "Gray, dry, warty skin" },
