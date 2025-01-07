@@ -1,0 +1,59 @@
+﻿using DnDGen.CreatureGen.Tables;
+using DnDGen.CreatureGen.Tests.Integration.TestData;
+using NUnit.Framework;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
+{
+    [TestFixture]
+    internal class SkinAppearancesTests : AppearancesTests
+    {
+        protected override string tableName => TableNameConstants.Collection.Appearances(AppearanceCategory.Skin.ToString());
+
+        [Test]
+        public void SkinAppearancesNames()
+        {
+            var creatureKeys = GetCollectionCreatureKeys();
+            var names = new List<string>();
+
+            foreach (var creatureKey in creatureKeys)
+            {
+                names.Add(creatureKey + Rarity.Common.ToString());
+                names.Add(creatureKey + Rarity.Uncommon.ToString());
+                names.Add(creatureKey + Rarity.Rare.ToString());
+            }
+
+            AssertCollectionNames(names);
+        }
+
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.Creatures))]
+        public void SkinAppearances(string creature)
+        {
+            var genders = collectionSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Genders, creature);
+            var creatureKeys = GetCollectionCreatureKeys();
+            var keys = genders
+                .Select(g => creature + g)
+                .Concat([creature])
+                .Intersect(creatureKeys);
+
+            foreach (var key in keys)
+            {
+                AssertCreatureAppearance(AppearanceCategory.Skin, key);
+            }
+        }
+
+        [Test]
+        [Ignore("Don't run this unless you need to bulk update the appearances file")]
+        public void DEBUG_WriteXml()
+        {
+            WriteXml(AppearanceCategory.Skin);
+        }
+
+        [Test]
+        public void NoAppearancesIncludeTODO()
+        {
+            AssertNoAppearancesIncludeTODO(AppearanceCategory.Skin);
+        }
+    }
+}

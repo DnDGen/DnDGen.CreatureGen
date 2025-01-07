@@ -16,7 +16,6 @@
             public const string AbilityGroups = "AbilityGroups";
             public const string AerialManeuverability = "AerialManeuverability";
             public const string AlignmentGroups = "AlignmentGroups";
-            public const string Appearances = "Appearances";
             public const string AttackData = "AttackData";
             public const string CasterGroups = "CasterGroups";
             public const string CreatureData = "CreatureData";
@@ -40,6 +39,8 @@
             public const string SpellGroups = "SpellGroups";
             public const string TemplateGroups = "TemplateGroups";
             public const string WeightRolls = "WeightRolls";
+
+            public static string Appearances(string category) => $"{category}Appearances";
         }
 
         internal static class TypeAndAmount
