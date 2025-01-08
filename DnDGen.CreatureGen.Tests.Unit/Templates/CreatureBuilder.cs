@@ -332,7 +332,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             creature.Languages = new[] { "English", "Deutsch" };
 
             creature.Demographics.Age.Value = random.Next(100) + 20;
-            creature.Demographics.Appearance = $"appearance {Guid.NewGuid()}";
+            creature.Demographics.Skin = $"skin {Guid.NewGuid()}";
+            creature.Demographics.Hair = $"hair {Guid.NewGuid()}";
+            creature.Demographics.Eyes = $"eyes {Guid.NewGuid()}";
+            creature.Demographics.Other = $"other {Guid.NewGuid()}";
             creature.Demographics.Gender = $"gender {Guid.NewGuid()}";
             creature.Demographics.Height.Value = random.Next(20) + 50;
             creature.Demographics.MaximumAge.Value = creature.Demographics.Age.Value + random.Next(100);

@@ -635,17 +635,44 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_ReturnsCreature_WithAdjustedDemographics()
         {
-            baseCreature.Demographics.Appearance = "I look like a potato.";
+            baseCreature.Demographics.Skin = "I look like a potato skin.";
+            baseCreature.Demographics.Hair = "I look like a potato hair.";
+            baseCreature.Demographics.Eyes = "I look like a potato eyes.";
+            baseCreature.Demographics.Other = "I look like a potato other.";
 
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, "my lycanthrope"))
-                .Returns("I am the furriest boi.");
+                .Setup(s => s.SelectRandomFrom(
+                    Config.Name,
+                    TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Skin),
+                    "my lycanthrope"))
+                .Returns("I am the furriest boi skin.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    Config.Name,
+                    TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Hair),
+                    "my lycanthrope"))
+                .Returns("I am the furriest boi hair.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    Config.Name,
+                    TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Eyes),
+                    "my lycanthrope"))
+                .Returns("I am the furriest boi eyes.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    Config.Name,
+                    TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Other),
+                    "my lycanthrope"))
+                .Returns("I am the furriest boi other.");
 
             SetUpAnimal("my animal");
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the furriest boi."));
+            Assert.That(creature.Demographics.Skin, Is.EqualTo("I look like a potato skin. I am the furriest boi skin."));
+            Assert.That(creature.Demographics.Hair, Is.EqualTo("I look like a potato hair. I am the furriest boi hair."));
+            Assert.That(creature.Demographics.Eyes, Is.EqualTo("I look like a potato eyes. I am the furriest boi eyes."));
+            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the furriest boi other."));
         }
 
         [Test]

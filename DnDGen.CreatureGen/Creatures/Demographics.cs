@@ -9,7 +9,10 @@
         public Measurement Length { get; set; }
         public Measurement Weight { get; set; }
         public Measurement Wingspan { get; set; }
-        public string Appearance { get; set; }
+        public string Skin { get; set; }
+        public string Hair { get; set; }
+        public string Eyes { get; set; }
+        public string Other { get; set; }
 
         public Demographics()
         {
@@ -20,7 +23,10 @@
             Length = new Measurement("inches");
             Wingspan = new Measurement("inches");
             Weight = new Measurement("pounds");
-            Appearance = string.Empty;
+            Skin = string.Empty;
+            Hair = string.Empty;
+            Eyes = string.Empty;
+            Other = string.Empty;
         }
     }
 }

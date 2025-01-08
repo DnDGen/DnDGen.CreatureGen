@@ -314,14 +314,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(SizeConstants.Colossal)]
         public void ApplyTo_ReturnsCreature_WithAdjustedDemographics_WithWingspan(string size)
         {
-            baseCreature.Demographics.Appearance = "I look like a potato.";
+            baseCreature.Demographics.Skin = "I look like a potato skin.";
+            baseCreature.Demographics.Hair = "I look like a potato hair.";
+            baseCreature.Demographics.Eyes = "I look like a potato eyes.";
+            baseCreature.Demographics.Other = "I look like a potato other.";
             baseCreature.Demographics.Age.Value = 42;
             baseCreature.Demographics.MaximumAge.Value = 600;
             baseCreature.Size = size;
 
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, "my dragon species"))
-                .Returns("I am the scaliest boi.");
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), "my dragon species"))
+                .Returns("I am the scaliest boi skin.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), "my dragon species"))
+                .Returns("I am the scaliest boi hair.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), "my dragon species"))
+                .Returns("I am the scaliest boi eyes.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), "my dragon species"))
+                .Returns("I am the scaliest boi other.");
 
             var ageRolls = new List<TypeAndAmountSelection>();
             ageRolls.Add(new TypeAndAmountSelection { Type = "my only age description", Amount = 9266, RawAmount = "raw 9266" });
@@ -340,7 +352,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi. Has dragon wings."));
+            Assert.That(creature.Demographics.Skin, Is.EqualTo("I look like a potato skin. I am the scaliest boi skin."));
+            Assert.That(creature.Demographics.Hair, Is.EqualTo("I look like a potato hair. I am the scaliest boi hair."));
+            Assert.That(creature.Demographics.Eyes, Is.EqualTo("I look like a potato eyes. I am the scaliest boi eyes."));
+            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the scaliest boi other. Has dragon wings."));
             Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 * multiplier));
             Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(600 * multiplier));
             Assert.That(creature.Demographics.Wingspan, Is.EqualTo(wingspan));
@@ -351,14 +366,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(SizeConstants.Medium)]
         public void ApplyTo_ReturnsCreature_WithAdjustedDemographics_WithoutWingspan(string size)
         {
-            baseCreature.Demographics.Appearance = "I look like a potato.";
+            baseCreature.Demographics.Skin = "I look like a potato skin.";
+            baseCreature.Demographics.Hair = "I look like a potato hair.";
+            baseCreature.Demographics.Eyes = "I look like a potato eyes.";
+            baseCreature.Demographics.Other = "I look like a potato other.";
             baseCreature.Demographics.Age.Value = 42;
             baseCreature.Demographics.MaximumAge.Value = 600;
             baseCreature.Size = size;
 
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, "my dragon species"))
-                .Returns("I am the scaliest boi.");
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), "my dragon species"))
+                .Returns("I am the scaliest boi skin.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), "my dragon species"))
+                .Returns("I am the scaliest boi hair.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), "my dragon species"))
+                .Returns("I am the scaliest boi eyes.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), "my dragon species"))
+                .Returns("I am the scaliest boi other.");
 
             var ageRolls = new List<TypeAndAmountSelection>();
             ageRolls.Add(new TypeAndAmountSelection { Type = "my only age description", Amount = 9266, RawAmount = "raw 9266" });
@@ -377,7 +404,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi."));
+            Assert.That(creature.Demographics.Skin, Is.EqualTo("I look like a potato skin. I am the scaliest boi skin."));
+            Assert.That(creature.Demographics.Hair, Is.EqualTo("I look like a potato hair. I am the scaliest boi hair."));
+            Assert.That(creature.Demographics.Eyes, Is.EqualTo("I look like a potato eyes. I am the scaliest boi eyes."));
+            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the scaliest boi other."));
             Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 * multiplier));
             Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(600 * multiplier));
             Assert.That(creature.Demographics.Wingspan, Is.Not.EqualTo(wingspan));
@@ -389,14 +419,26 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(SizeConstants.Colossal)]
         public async Task ApplyToAsync_ReturnsCreature_WithAdjustedDemographics_WithWingspan(string size)
         {
-            baseCreature.Demographics.Appearance = "I look like a potato.";
+            baseCreature.Demographics.Skin = "I look like a potato skin.";
+            baseCreature.Demographics.Hair = "I look like a potato hair.";
+            baseCreature.Demographics.Eyes = "I look like a potato eyes.";
+            baseCreature.Demographics.Other = "I look like a potato other.";
             baseCreature.Demographics.Age.Value = 42;
             baseCreature.Demographics.MaximumAge.Value = 600;
             baseCreature.Size = size;
 
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, "my dragon species"))
-                .Returns("I am the scaliest boi.");
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), "my dragon species"))
+                .Returns("I am the scaliest boi skin.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), "my dragon species"))
+                .Returns("I am the scaliest boi hair.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), "my dragon species"))
+                .Returns("I am the scaliest boi eyes.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), "my dragon species"))
+                .Returns("I am the scaliest boi other.");
 
             var ageRolls = new List<TypeAndAmountSelection>();
             ageRolls.Add(new TypeAndAmountSelection { Type = "my only age description", Amount = 9266, RawAmount = "raw 9266" });
@@ -415,7 +457,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi. Has dragon wings."));
+            Assert.That(creature.Demographics.Skin, Is.EqualTo("I look like a potato skin. I am the scaliest boi skin."));
+            Assert.That(creature.Demographics.Hair, Is.EqualTo("I look like a potato hair. I am the scaliest boi hair."));
+            Assert.That(creature.Demographics.Eyes, Is.EqualTo("I look like a potato eyes. I am the scaliest boi eyes."));
+            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the scaliest boi other. Has dragon wings."));
             Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 * multiplier));
             Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(600 * multiplier));
             Assert.That(creature.Demographics.Wingspan, Is.EqualTo(wingspan));
@@ -426,13 +471,25 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [TestCase(SizeConstants.Medium)]
         public async Task ApplyToAsync_ReturnsCreature_WithAdjustedDemographics_WithoutWingspan(string size)
         {
-            baseCreature.Demographics.Appearance = "I look like a potato.";
+            baseCreature.Demographics.Skin = "I look like a potato skin.";
+            baseCreature.Demographics.Hair = "I look like a potato hair.";
+            baseCreature.Demographics.Eyes = "I look like a potato eyes.";
+            baseCreature.Demographics.Other = "I look like a potato other.";
             baseCreature.Demographics.Age.Value = 42;
             baseCreature.Demographics.MaximumAge.Value = 600;
 
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, "my dragon species"))
-                .Returns("I am the scaliest boi.");
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), "my dragon species"))
+                .Returns("I am the scaliest boi skin.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), "my dragon species"))
+                .Returns("I am the scaliest boi hair.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), "my dragon species"))
+                .Returns("I am the scaliest boi eyes.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), "my dragon species"))
+                .Returns("I am the scaliest boi other.");
 
             var ageRolls = new List<TypeAndAmountSelection>();
             ageRolls.Add(new TypeAndAmountSelection { Type = "my only age description", Amount = 9266, RawAmount = "raw 9266" });
@@ -451,7 +508,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi."));
+            Assert.That(creature.Demographics.Skin, Is.EqualTo("I look like a potato skin. I am the scaliest boi skin."));
+            Assert.That(creature.Demographics.Hair, Is.EqualTo("I look like a potato hair. I am the scaliest boi hair."));
+            Assert.That(creature.Demographics.Eyes, Is.EqualTo("I look like a potato eyes. I am the scaliest boi eyes."));
+            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the scaliest boi other."));
             Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 * multiplier));
             Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(600 * multiplier));
             Assert.That(creature.Demographics.Wingspan, Is.Not.EqualTo(wingspan));
@@ -542,11 +602,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Size = size;
             baseCreature.Speeds[SpeedConstants.Land].Value = landSpeed;
-            baseCreature.Demographics.Appearance = "I look like a potato.";
+            baseCreature.Demographics.Other = "I look like a potato other.";
 
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, "my dragon species"))
-                .Returns("I am the scaliest boi.");
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), "my dragon species"))
+                .Returns("I am the scaliest boi skin.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), "my dragon species"))
+                .Returns("I am the scaliest boi hair.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), "my dragon species"))
+                .Returns("I am the scaliest boi eyes.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), "my dragon species"))
+                .Returns("I am the scaliest boi other.");
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
@@ -556,7 +625,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("the goodest"));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo($"my dragon species furlongs"));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(flySpeed));
-            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi. Has dragon wings."));
+            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the scaliest boi other. Has dragon wings."));
         }
 
         private static IEnumerable GainFlySpeed
@@ -604,18 +673,27 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Size = size;
             baseCreature.Speeds[SpeedConstants.Land].Value = 42;
-            baseCreature.Demographics.Appearance = "I look like a potato.";
+            baseCreature.Demographics.Other = "I look like a potato other.";
 
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, "my dragon species"))
-                .Returns("I am the scaliest boi.");
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), "my dragon species"))
+                .Returns("I am the scaliest boi skin.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), "my dragon species"))
+                .Returns("I am the scaliest boi hair.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), "my dragon species"))
+                .Returns("I am the scaliest boi eyes.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), "my dragon species"))
+                .Returns("I am the scaliest boi other.");
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(1)
                 .And.Not.ContainKey(SpeedConstants.Fly)
                 .And.ContainKey(SpeedConstants.Land));
             Assert.That(creature.Speeds[SpeedConstants.Land].Value, Is.EqualTo(42));
-            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi."));
+            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the scaliest boi other."));
         }
 
         private static IEnumerable DoNotGainFlySpeed
@@ -644,11 +722,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Size = SizeConstants.Large;
             baseCreature.Speeds.Clear();
             baseCreature.Speeds[SpeedConstants.Swim] = new Measurement("feet per round") { Value = 42 };
-            baseCreature.Demographics.Appearance = "I look like a potato.";
+            baseCreature.Demographics.Other = "I look like a potato other.";
 
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, "my dragon species"))
-                .Returns("I am the scaliest boi.");
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), "my dragon species"))
+                .Returns("I am the scaliest boi skin.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), "my dragon species"))
+                .Returns("I am the scaliest boi hair.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), "my dragon species"))
+                .Returns("I am the scaliest boi eyes.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), "my dragon species"))
+                .Returns("I am the scaliest boi other.");
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(1)
@@ -656,7 +743,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
                 .And.ContainKey(SpeedConstants.Swim));
             Assert.That(creature.Speeds[SpeedConstants.Swim].Value, Is.EqualTo(42));
             Assert.That(creature.Speeds[SpeedConstants.Swim].Unit, Is.EqualTo("feet per round"));
-            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi."));
+            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the scaliest boi other."));
         }
 
         [Test]
@@ -665,11 +752,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             baseCreature.Size = SizeConstants.Large;
             baseCreature.Speeds[SpeedConstants.Land].Value = 600;
             baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 42, Description = "so-so maneuverability" };
-            baseCreature.Demographics.Appearance = "I look like a potato.";
+            baseCreature.Demographics.Other = "I look like a potato other.";
 
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, "my dragon species"))
-                .Returns("I am the scaliest boi.");
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), "my dragon species"))
+                .Returns("I am the scaliest boi skin.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), "my dragon species"))
+                .Returns("I am the scaliest boi hair.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), "my dragon species"))
+                .Returns("I am the scaliest boi eyes.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), "my dragon species"))
+                .Returns("I am the scaliest boi other.");
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
@@ -679,41 +775,72 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(42));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo("feet per round"));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("so-so maneuverability"));
-            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi. Has dragon wings."));
+            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the scaliest boi other. Has dragon wings."));
         }
 
-        [Test]
-        public async Task ApplyToAsync_DoNotGainFlySpeed_HasNoLandSpeed()
-        {
-            baseCreature.Size = SizeConstants.Large;
-            baseCreature.Speeds.Clear();
-            baseCreature.Speeds[SpeedConstants.Swim] = new Measurement("feet per round") { Value = 42 };
-            baseCreature.Demographics.Appearance = "I look like a potato.";
-
-            mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, "my dragon species"))
-                .Returns("I am the scaliest boi.");
-
-            var creature = await applicator.ApplyToAsync(baseCreature, false);
-            Assert.That(creature.Speeds, Has.Count.EqualTo(1)
-                .And.Not.ContainKey(SpeedConstants.Fly)
-                .And.ContainKey(SpeedConstants.Swim));
-            Assert.That(creature.Speeds[SpeedConstants.Swim].Value, Is.EqualTo(42));
-            Assert.That(creature.Speeds[SpeedConstants.Swim].Unit, Is.EqualTo("feet per round"));
-            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi."));
-        }
-
-        [Test]
-        public async Task ApplyToAsync_DoNotGainFlySpeed_AlreadyHasFlySpeed()
+        [TestCase("")]
+        [TestCase(".")]
+        public void ApplyTo_HasWings_HandlesPeriodInOtherAppearance(string appearanceEnd)
         {
             baseCreature.Size = SizeConstants.Large;
             baseCreature.Speeds[SpeedConstants.Land].Value = 600;
             baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 42, Description = "so-so maneuverability" };
-            baseCreature.Demographics.Appearance = "I look like a potato.";
+            baseCreature.Demographics.Skin = "I look like a potato skin" + appearanceEnd;
+            baseCreature.Demographics.Hair = "I look like a potato hair" + appearanceEnd;
+            baseCreature.Demographics.Eyes = "I look like a potato eyes" + appearanceEnd;
+            baseCreature.Demographics.Other = "I look like a potato other" + appearanceEnd;
 
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, "my dragon species"))
-                .Returns("I am the scaliest boi.");
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), "my dragon species"))
+                .Returns("I am the scaliest boi skin" + appearanceEnd);
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), "my dragon species"))
+                .Returns("I am the scaliest boi hair" + appearanceEnd);
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), "my dragon species"))
+                .Returns("I am the scaliest boi eyes" + appearanceEnd);
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), "my dragon species"))
+                .Returns("I am the scaliest boi other" + appearanceEnd);
+
+            var creature = applicator.ApplyTo(baseCreature, false);
+            Assert.That(creature.Speeds, Has.Count.EqualTo(2)
+                .And.ContainKey(SpeedConstants.Fly)
+                .And.ContainKey(SpeedConstants.Land));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Value, Is.EqualTo(600));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(42));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo("feet per round"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("so-so maneuverability"));
+            Assert.That(creature.Demographics.Skin, Is.EqualTo("I look like a potato skin. I am the scaliest boi skin" + appearanceEnd));
+            Assert.That(creature.Demographics.Hair, Is.EqualTo("I look like a potato hair. I am the scaliest boi hair" + appearanceEnd));
+            Assert.That(creature.Demographics.Eyes, Is.EqualTo("I look like a potato eyes. I am the scaliest boi eyes" + appearanceEnd));
+            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the scaliest boi other. Has dragon wings."));
+        }
+
+        [TestCase("")]
+        [TestCase(".")]
+        public async Task ApplyToAsync_HasWings_HandlesPeriodInOtherAppearance(string appearanceEnd)
+        {
+            baseCreature.Size = SizeConstants.Large;
+            baseCreature.Speeds[SpeedConstants.Land].Value = 600;
+            baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 42, Description = "so-so maneuverability" };
+            baseCreature.Demographics.Skin = "I look like a potato skin" + appearanceEnd;
+            baseCreature.Demographics.Hair = "I look like a potato hair" + appearanceEnd;
+            baseCreature.Demographics.Eyes = "I look like a potato eyes" + appearanceEnd;
+            baseCreature.Demographics.Other = "I look like a potato other" + appearanceEnd;
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), "my dragon species"))
+                .Returns("I am the scaliest boi skin" + appearanceEnd);
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), "my dragon species"))
+                .Returns("I am the scaliest boi hair" + appearanceEnd);
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), "my dragon species"))
+                .Returns("I am the scaliest boi eyes" + appearanceEnd);
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), "my dragon species"))
+                .Returns("I am the scaliest boi other" + appearanceEnd);
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
@@ -723,7 +850,72 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(42));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo("feet per round"));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("so-so maneuverability"));
-            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi. Has dragon wings."));
+            Assert.That(creature.Demographics.Skin, Is.EqualTo("I look like a potato skin. I am the scaliest boi skin" + appearanceEnd));
+            Assert.That(creature.Demographics.Hair, Is.EqualTo("I look like a potato hair. I am the scaliest boi hair" + appearanceEnd));
+            Assert.That(creature.Demographics.Eyes, Is.EqualTo("I look like a potato eyes. I am the scaliest boi eyes" + appearanceEnd));
+            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the scaliest boi other. Has dragon wings."));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_DoNotGainFlySpeed_HasNoLandSpeed()
+        {
+            baseCreature.Size = SizeConstants.Large;
+            baseCreature.Speeds.Clear();
+            baseCreature.Speeds[SpeedConstants.Swim] = new Measurement("feet per round") { Value = 42 };
+            baseCreature.Demographics.Other = "I look like a potato other.";
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), "my dragon species"))
+                .Returns("I am the scaliest boi skin.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), "my dragon species"))
+                .Returns("I am the scaliest boi hair.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), "my dragon species"))
+                .Returns("I am the scaliest boi eyes.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), "my dragon species"))
+                .Returns("I am the scaliest boi other.");
+
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            Assert.That(creature.Speeds, Has.Count.EqualTo(1)
+                .And.Not.ContainKey(SpeedConstants.Fly)
+                .And.ContainKey(SpeedConstants.Swim));
+            Assert.That(creature.Speeds[SpeedConstants.Swim].Value, Is.EqualTo(42));
+            Assert.That(creature.Speeds[SpeedConstants.Swim].Unit, Is.EqualTo("feet per round"));
+            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the scaliest boi other."));
+        }
+
+        [Test]
+        public async Task ApplyToAsync_DoNotGainFlySpeed_AlreadyHasFlySpeed()
+        {
+            baseCreature.Size = SizeConstants.Large;
+            baseCreature.Speeds[SpeedConstants.Land].Value = 600;
+            baseCreature.Speeds[SpeedConstants.Fly] = new Measurement("feet per round") { Value = 42, Description = "so-so maneuverability" };
+            baseCreature.Demographics.Other = "I look like a potato other.";
+
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), "my dragon species"))
+                .Returns("I am the scaliest boi skin.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), "my dragon species"))
+                .Returns("I am the scaliest boi hair.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), "my dragon species"))
+                .Returns("I am the scaliest boi eyes.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), "my dragon species"))
+                .Returns("I am the scaliest boi other.");
+
+            var creature = await applicator.ApplyToAsync(baseCreature, false);
+            Assert.That(creature.Speeds, Has.Count.EqualTo(2)
+                .And.ContainKey(SpeedConstants.Fly)
+                .And.ContainKey(SpeedConstants.Land));
+            Assert.That(creature.Speeds[SpeedConstants.Land].Value, Is.EqualTo(600));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(42));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo("feet per round"));
+            Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("so-so maneuverability"));
+            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the scaliest boi other. Has dragon wings."));
         }
 
         [Test]
@@ -1684,11 +1876,20 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Size = size;
             baseCreature.Speeds[SpeedConstants.Land].Value = landSpeed;
-            baseCreature.Demographics.Appearance = "I look like a potato.";
+            baseCreature.Demographics.Other = "I look like a potato other.";
 
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, "my dragon species"))
-                .Returns("I am the scaliest boi.");
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), "my dragon species"))
+                .Returns("I am the scaliest boi skin.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), "my dragon species"))
+                .Returns("I am the scaliest boi hair.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), "my dragon species"))
+                .Returns("I am the scaliest boi eyes.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), "my dragon species"))
+                .Returns("I am the scaliest boi other.");
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(2)
@@ -1696,7 +1897,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature.Speeds[SpeedConstants.Fly].Description, Is.EqualTo("the goodest"));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Unit, Is.EqualTo($"my dragon species furlongs"));
             Assert.That(creature.Speeds[SpeedConstants.Fly].Value, Is.EqualTo(flySpeed));
-            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi. Has dragon wings."));
+            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the scaliest boi other. Has dragon wings."));
         }
 
         [TestCaseSource(nameof(DoNotGainFlySpeed))]
@@ -1704,16 +1905,25 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         {
             baseCreature.Size = size;
             baseCreature.Speeds[SpeedConstants.Land].Value = 42;
-            baseCreature.Demographics.Appearance = "I look like a potato.";
+            baseCreature.Demographics.Other = "I look like a potato other.";
 
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, "my dragon species"))
-                .Returns("I am the scaliest boi.");
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), "my dragon species"))
+                .Returns("I am the scaliest boi skin.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), "my dragon species"))
+                .Returns("I am the scaliest boi hair.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), "my dragon species"))
+                .Returns("I am the scaliest boi eyes.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), "my dragon species"))
+                .Returns("I am the scaliest boi other.");
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature.Speeds, Has.Count.EqualTo(1)
                 .And.Not.ContainKey(SpeedConstants.Fly));
-            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the scaliest boi."));
+            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the scaliest boi other."));
         }
 
         [Test]

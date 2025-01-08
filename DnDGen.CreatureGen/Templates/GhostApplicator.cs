@@ -152,8 +152,14 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            var appearance = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, CreatureConstants.Templates.Ghost);
-            creature.Demographics.Appearance += " " + appearance;
+            var skin = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), CreatureConstants.Templates.Ghost);
+            var hair = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), CreatureConstants.Templates.Ghost);
+            var eyes = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), CreatureConstants.Templates.Ghost);
+            var other = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), CreatureConstants.Templates.Ghost);
+            creature.Demographics.Skin += " " + skin;
+            creature.Demographics.Hair += " " + hair;
+            creature.Demographics.Eyes += " " + eyes;
+            creature.Demographics.Other += " " + other;
 
             var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, CreatureConstants.Templates.Ghost);
             var undeadAgeRoll = ageRolls.FirstOrDefault(r => r.Type == AgeConstants.Categories.Undead);

@@ -41,6 +41,13 @@
             public const string WeightRolls = "WeightRolls";
 
             public static string Appearances(string category) => $"{category}Appearances";
+            public static class AppearanceCategories
+            {
+                public const string Skin = "Skin";
+                public const string Hair = "Hair";
+                public const string Eyes = "Eyes";
+                public const string Other = "Other";
+            }
         }
 
         internal static class TypeAndAmount

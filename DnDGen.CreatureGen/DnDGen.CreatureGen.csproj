@@ -95,7 +95,16 @@
     <EmbeddedResource Include="Tables\Creatures\Advancements.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tables\Creatures\Appearances.xml">
+    <EmbeddedResource Include="Tables\Creatures\Appearances\HairAppearances.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Creatures\Appearances\EyesAppearances.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Creatures\Appearances\OtherAppearances.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tables\Creatures\Appearances\SkinAppearances.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Tables\Creatures\MaxAgeDescriptions.xml" />

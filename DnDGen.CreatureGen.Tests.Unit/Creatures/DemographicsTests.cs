@@ -30,7 +30,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Creatures
             Assert.That(demographics.Weight.Unit, Is.EqualTo("pounds"));
             Assert.That(demographics.Wingspan, Is.Not.Null);
             Assert.That(demographics.Wingspan.Unit, Is.EqualTo("inches"));
-            Assert.That(demographics.Appearance, Is.Empty);
+            Assert.That(demographics.Skin, Is.Empty);
+            Assert.That(demographics.Hair, Is.Empty);
+            Assert.That(demographics.Eyes, Is.Empty);
+            Assert.That(demographics.Other, Is.Empty);
         }
     }
 }

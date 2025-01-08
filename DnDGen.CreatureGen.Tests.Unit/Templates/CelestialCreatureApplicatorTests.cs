@@ -255,11 +255,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_DemographicsAreAdjusted()
         {
-            baseCreature.Demographics.Appearance = "I look like a potato.";
+            baseCreature.Demographics.Skin = "I look like a potato skin.";
+            baseCreature.Demographics.Hair = "I look like a potato hair.";
+            baseCreature.Demographics.Eyes = "I look like a potato eyes.";
+            baseCreature.Demographics.Other = "I look like a potato other.";
 
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, CreatureConstants.Templates.CelestialCreature))
-                .Returns("I am the prettiest princess.");
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), CreatureConstants.Templates.CelestialCreature))
+                .Returns("I am the prettiest princess skin.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), CreatureConstants.Templates.CelestialCreature))
+                .Returns("I am the prettiest princess hair.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), CreatureConstants.Templates.CelestialCreature))
+                .Returns("I am the prettiest princess eyes.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), CreatureConstants.Templates.CelestialCreature))
+                .Returns("I am the prettiest princess other.");
 
             var smiteEvil = new Attack
             {
@@ -278,7 +290,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var creature = applicator.ApplyTo(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the prettiest princess."));
+            Assert.That(creature.Demographics.Skin, Is.EqualTo("I look like a potato skin. I am the prettiest princess skin."));
+            Assert.That(creature.Demographics.Hair, Is.EqualTo("I look like a potato hair. I am the prettiest princess hair."));
+            Assert.That(creature.Demographics.Eyes, Is.EqualTo("I look like a potato eyes. I am the prettiest princess eyes."));
+            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the prettiest princess other."));
         }
 
         [Test]
@@ -1515,11 +1530,23 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_DemographicsAreAdjusted()
         {
-            baseCreature.Demographics.Appearance = "I look like a potato.";
+            baseCreature.Demographics.Skin = "I look like a potato skin.";
+            baseCreature.Demographics.Hair = "I look like a potato hair.";
+            baseCreature.Demographics.Eyes = "I look like a potato eyes.";
+            baseCreature.Demographics.Other = "I look like a potato other.";
 
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, CreatureConstants.Templates.CelestialCreature))
-                .Returns("I am the prettiest princess.");
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), CreatureConstants.Templates.CelestialCreature))
+                .Returns("I am the prettiest princess skin.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), CreatureConstants.Templates.CelestialCreature))
+                .Returns("I am the prettiest princess hair.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), CreatureConstants.Templates.CelestialCreature))
+                .Returns("I am the prettiest princess eyes.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), CreatureConstants.Templates.CelestialCreature))
+                .Returns("I am the prettiest princess other.");
 
             var smiteEvil = new Attack
             {
@@ -1538,7 +1565,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
 
             var creature = await applicator.ApplyToAsync(baseCreature, false);
             Assert.That(creature, Is.EqualTo(baseCreature));
-            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the prettiest princess."));
+            Assert.That(creature.Demographics.Skin, Is.EqualTo("I look like a potato skin. I am the prettiest princess skin."));
+            Assert.That(creature.Demographics.Hair, Is.EqualTo("I look like a potato hair. I am the prettiest princess hair."));
+            Assert.That(creature.Demographics.Eyes, Is.EqualTo("I look like a potato eyes. I am the prettiest princess eyes."));
+            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the prettiest princess other."));
         }
 
         [Test]

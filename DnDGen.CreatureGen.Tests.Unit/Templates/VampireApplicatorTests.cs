@@ -200,13 +200,37 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public void ApplyTo_DemographicsAdjusted()
         {
-            baseCreature.Demographics.Appearance = "I look like a potato.";
+            baseCreature.Demographics.Skin = "I look like a potato skin.";
+            baseCreature.Demographics.Hair = "I look like a potato hair.";
+            baseCreature.Demographics.Eyes = "I look like a potato eyes.";
+            baseCreature.Demographics.Other = "I look like a potato other.";
             baseCreature.Demographics.Age.Value = 42;
             baseCreature.Demographics.MaximumAge.Value = 600;
 
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, CreatureConstants.Templates.Vampire))
-                .Returns("I am the suckiest boi.");
+                .Setup(s => s.SelectRandomFrom(
+                    Config.Name,
+                    TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Skin),
+                    CreatureConstants.Templates.Vampire))
+                .Returns("I am the suckiest boi skin.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    Config.Name,
+                    TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Hair),
+                    CreatureConstants.Templates.Vampire))
+                .Returns("I am the suckiest boi hair.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    Config.Name,
+                    TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Eyes),
+                    CreatureConstants.Templates.Vampire))
+                .Returns("I am the suckiest boi eyes.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    Config.Name,
+                    TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Other),
+                    CreatureConstants.Templates.Vampire))
+                .Returns("I am the suckiest boi other.");
 
             var ageRolls = new List<TypeAndAmountSelection>();
             ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Undead, Amount = 9266, RawAmount = "raw 9266" });
@@ -220,7 +244,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 + 9266));
             Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(AgeConstants.Ageless));
-            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the suckiest boi."));
+            Assert.That(creature.Demographics.Skin, Is.EqualTo("I look like a potato skin. I am the suckiest boi skin."));
+            Assert.That(creature.Demographics.Hair, Is.EqualTo("I look like a potato hair. I am the suckiest boi hair."));
+            Assert.That(creature.Demographics.Eyes, Is.EqualTo("I look like a potato eyes. I am the suckiest boi eyes."));
+            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the suckiest boi other."));
         }
 
         [TestCase(4)]
@@ -1143,13 +1170,37 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
         [Test]
         public async Task ApplyToAsync_DemographicsAdjusted()
         {
-            baseCreature.Demographics.Appearance = "I look like a potato.";
+            baseCreature.Demographics.Skin = "I look like a potato skin.";
+            baseCreature.Demographics.Hair = "I look like a potato hair.";
+            baseCreature.Demographics.Eyes = "I look like a potato eyes.";
+            baseCreature.Demographics.Other = "I look like a potato other.";
             baseCreature.Demographics.Age.Value = 42;
             baseCreature.Demographics.MaximumAge.Value = 600;
 
             mockCollectionSelector
-                .Setup(s => s.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, CreatureConstants.Templates.Vampire))
-                .Returns("I am the suckiest boi.");
+                .Setup(s => s.SelectRandomFrom(
+                    Config.Name,
+                    TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Skin),
+                    CreatureConstants.Templates.Vampire))
+                .Returns("I am the suckiest boi skin.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    Config.Name,
+                    TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Hair),
+                    CreatureConstants.Templates.Vampire))
+                .Returns("I am the suckiest boi hair.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    Config.Name,
+                    TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Eyes),
+                    CreatureConstants.Templates.Vampire))
+                .Returns("I am the suckiest boi eyes.");
+            mockCollectionSelector
+                .Setup(s => s.SelectRandomFrom(
+                    Config.Name,
+                    TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Other),
+                    CreatureConstants.Templates.Vampire))
+                .Returns("I am the suckiest boi other.");
 
             var ageRolls = new List<TypeAndAmountSelection>();
             ageRolls.Add(new TypeAndAmountSelection { Type = AgeConstants.Categories.Undead, Amount = 9266, RawAmount = "raw 9266" });
@@ -1163,7 +1214,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Templates
             Assert.That(creature, Is.EqualTo(baseCreature));
             Assert.That(creature.Demographics.Age.Value, Is.EqualTo(42 + 9266));
             Assert.That(creature.Demographics.MaximumAge.Value, Is.EqualTo(AgeConstants.Ageless));
-            Assert.That(creature.Demographics.Appearance, Is.EqualTo("I look like a potato. I am the suckiest boi."));
+            Assert.That(creature.Demographics.Skin, Is.EqualTo("I look like a potato skin. I am the suckiest boi skin."));
+            Assert.That(creature.Demographics.Hair, Is.EqualTo("I look like a potato hair. I am the suckiest boi hair."));
+            Assert.That(creature.Demographics.Eyes, Is.EqualTo("I look like a potato eyes. I am the suckiest boi eyes."));
+            Assert.That(creature.Demographics.Other, Is.EqualTo("I look like a potato other. I am the suckiest boi other."));
         }
 
         [TestCase(4)]

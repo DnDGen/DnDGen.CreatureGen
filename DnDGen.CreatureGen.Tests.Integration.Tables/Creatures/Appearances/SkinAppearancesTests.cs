@@ -9,7 +9,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
     [TestFixture]
     internal class SkinAppearancesTests : AppearancesTests
     {
-        protected override string tableName => TableNameConstants.Collection.Appearances(AppearanceCategory.Skin.ToString());
+        protected override string tableName =>
+            TableNameConstants.Collection.Appearances(TableNameConstants.Collection.AppearanceCategories.Skin);
 
         [Test]
         public void SkinAppearancesNames()
@@ -39,7 +40,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
 
             foreach (var key in keys)
             {
-                AssertCreatureAppearance(AppearanceCategory.Skin, key);
+                AssertCreatureAppearance(TableNameConstants.Collection.AppearanceCategories.Skin, key);
             }
         }
 
@@ -47,13 +48,13 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
         [Ignore("Don't run this unless you need to bulk update the appearances file")]
         public void DEBUG_WriteXml()
         {
-            WriteXml(AppearanceCategory.Skin);
+            WriteXml(TableNameConstants.Collection.AppearanceCategories.Skin);
         }
 
         [Test]
         public void NoAppearancesIncludeTODO()
         {
-            AssertNoAppearancesIncludeTODO(AppearanceCategory.Skin);
+            AssertNoAppearancesIncludeTODO(TableNameConstants.Collection.AppearanceCategories.Skin);
         }
     }
 }

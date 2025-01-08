@@ -671,16 +671,16 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             var bison = creatureGenerator.Generate(false, CreatureConstants.Bison);
             creatureAsserter.AssertCreature(bison);
 
-            Assert.That(bison.Demographics.Appearance, Is.Not.Empty);
+            Assert.That(bison.Demographics.Other, Is.Not.Empty);
             Assert.That(bison.Demographics.Gender, Is.EqualTo(GenderConstants.Male).Or.EqualTo(GenderConstants.Female));
 
             if (bison.Demographics.Gender == GenderConstants.Male)
             {
-                Assert.That(bison.Demographics.Appearance, Contains.Substring("chin with a black beard-like growth"));
+                Assert.That(bison.Demographics.Other, Contains.Substring("chin with a black beard-like growth"));
             }
             else if (bison.Demographics.Gender == GenderConstants.Female)
             {
-                Assert.That(bison.Demographics.Appearance, Does.Not.Contain("chin with a black beard-like growth"));
+                Assert.That(bison.Demographics.Other, Does.Not.Contain("chin with a black beard-like growth"));
             }
         }
 

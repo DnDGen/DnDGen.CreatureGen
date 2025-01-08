@@ -173,8 +173,14 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            var appearance = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, LycanthropeSpecies);
-            creature.Demographics.Appearance += " " + appearance;
+            var skin = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), LycanthropeSpecies);
+            var hair = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), LycanthropeSpecies);
+            var eyes = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), LycanthropeSpecies);
+            var other = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), LycanthropeSpecies);
+            creature.Demographics.Skin += " " + skin;
+            creature.Demographics.Hair += " " + hair;
+            creature.Demographics.Eyes += " " + eyes;
+            creature.Demographics.Other += " " + other;
         }
 
         private void UpdateCreatureType(CreaturePrototype creature)

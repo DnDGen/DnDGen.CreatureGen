@@ -4,7 +4,6 @@
     {
         Common,
         Uncommon,
-        Rare,
-        VeryRare = 4
+        Rare
     }
 }

@@ -162,8 +162,14 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            var appearance = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, DragonSpecies);
-            creature.Demographics.Appearance += " " + appearance;
+            var skin = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), DragonSpecies);
+            var hair = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), DragonSpecies);
+            var eyes = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), DragonSpecies);
+            var other = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), DragonSpecies);
+            creature.Demographics.Skin += GetAppearanceSeparator(creature.Demographics.Skin) + skin;
+            creature.Demographics.Hair += GetAppearanceSeparator(creature.Demographics.Hair) + hair;
+            creature.Demographics.Eyes += GetAppearanceSeparator(creature.Demographics.Eyes) + eyes;
+            creature.Demographics.Other += GetAppearanceSeparator(creature.Demographics.Other) + other;
 
             var ageRolls = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.AgeRolls, DragonSpecies);
             var maxAgeRoll = ageRolls.FirstOrDefault(r => r.Type == AgeConstants.Categories.Maximum);
@@ -195,6 +201,8 @@ namespace DnDGen.CreatureGen.Templates
                 .Union(new[] { CreatureConstants.Types.Subtypes.Augmented, creatureType });
         }
 
+        private string GetAppearanceSeparator(string appearance) => appearance.EndsWith('.') ? " " : ". ";
+
         private void UpdateCreatureSpeeds(Creature creature)
         {
             var sizes = SizeConstants.GetOrdered();
@@ -203,7 +211,7 @@ namespace DnDGen.CreatureGen.Templates
 
             if (sizeIndex >= largeIndex && creature.Speeds.ContainsKey(SpeedConstants.Land))
             {
-                creature.Demographics.Appearance += " Has dragon wings.";
+                creature.Demographics.Other += $"{GetAppearanceSeparator(creature.Demographics.Other)}Has dragon wings.";
 
                 if (!creature.Speeds.ContainsKey(SpeedConstants.Fly))
                 {

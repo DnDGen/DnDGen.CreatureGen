@@ -14,7 +14,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         [TestCase(TableNameConstants.Collection.AbilityGroups, "AbilityGroups")]
         [TestCase(TableNameConstants.Collection.AerialManeuverability, "AerialManeuverability")]
         [TestCase(TableNameConstants.Collection.AlignmentGroups, "AlignmentGroups")]
-        [TestCase(TableNameConstants.Collection.Appearances, "Appearances")]
         [TestCase(TableNameConstants.Collection.AttackData, "AttackData")]
         [TestCase(TableNameConstants.Collection.CasterGroups, "CasterGroups")]
         [TestCase(TableNameConstants.Collection.CreatureData, "CreatureData")]
@@ -38,6 +37,10 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         [TestCase(TableNameConstants.Collection.SpellGroups, "SpellGroups")]
         [TestCase(TableNameConstants.Collection.TemplateGroups, "TemplateGroups")]
         [TestCase(TableNameConstants.Collection.WeightRolls, "WeightRolls")]
+        [TestCase(TableNameConstants.Collection.AppearanceCategories.Skin, "Skin")]
+        [TestCase(TableNameConstants.Collection.AppearanceCategories.Hair, "Hair")]
+        [TestCase(TableNameConstants.Collection.AppearanceCategories.Eyes, "Eyes")]
+        [TestCase(TableNameConstants.Collection.AppearanceCategories.Other, "Other")]
         [TestCase(TableNameConstants.TypeAndAmount.AbilityAdjustments, "AbilityAdjustments")]
         [TestCase(TableNameConstants.TypeAndAmount.Advancements, "Advancements")]
         [TestCase(TableNameConstants.TypeAndAmount.AgeRolls, "AgeRolls")]
@@ -59,6 +62,16 @@ namespace DnDGen.CreatureGen.Tests.Unit.Tables
         public void TableNameConstant(string constant, string value)
         {
             Assert.That(constant, Is.EqualTo(value));
+        }
+
+        [TestCase(TableNameConstants.Collection.AppearanceCategories.Skin)]
+        [TestCase(TableNameConstants.Collection.AppearanceCategories.Hair)]
+        [TestCase(TableNameConstants.Collection.AppearanceCategories.Eyes)]
+        [TestCase(TableNameConstants.Collection.AppearanceCategories.Other)]
+        public void AppearanceTableName_ReturnsTableName(string category)
+        {
+            var tableName = TableNameConstants.Collection.Appearances(category);
+            Assert.That(tableName, Is.EqualTo($"{category}Appearances"));
         }
     }
 }

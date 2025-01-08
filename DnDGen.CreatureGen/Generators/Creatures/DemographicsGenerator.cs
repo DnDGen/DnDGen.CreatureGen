@@ -33,10 +33,11 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         public Demographics Generate(string creatureName)
         {
-            var demographics = new Demographics();
-
-            demographics.Gender = collectionsSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, creatureName);
-            demographics.Age = DetermineAge(creatureName);
+            var demographics = new Demographics
+            {
+                Gender = collectionsSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Genders, creatureName),
+                Age = DetermineAge(creatureName),
+            };
             demographics.MaximumAge = DetermineMaximumAge(creatureName, demographics.Age);
 
             var heights = typeAndAmountSelector.Select(TableNameConstants.TypeAndAmount.Heights, creatureName);
@@ -65,24 +66,27 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             demographics.Weight.Description = dice.Describe(rawWeightRoll, (int)demographics.Weight.Value, weightDescriptions);
 
             demographics.Wingspan = GenerateWingspan(creatureName, demographics.Gender);
-            demographics.Appearance = GetRandomAppearance(creatureName, demographics.Gender);
+            demographics.Skin = GetRandomAppearance(creatureName, demographics.Gender, "Skin");
+            demographics.Hair = GetRandomAppearance(creatureName, demographics.Gender, "Hair");
+            demographics.Eyes = GetRandomAppearance(creatureName, demographics.Gender, "Eyes");
+            demographics.Other = GetRandomAppearance(creatureName, demographics.Gender, "Other");
 
             return demographics;
         }
 
-        private string GetRandomAppearance(string creatureName, string gender)
+        private string GetRandomAppearance(string creatureName, string gender, string category)
         {
             var collectionName = creatureName;
+            var tableName = TableNameConstants.Collection.Appearances(category);
 
-            if (collectionsSelector.IsCollection(Config.Name, TableNameConstants.Collection.Appearances, creatureName + gender + Rarity.Common.ToString()))
+            if (collectionsSelector.IsCollection(Config.Name, tableName, creatureName + gender + Rarity.Common.ToString()))
                 collectionName += gender;
 
-            var common = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Appearances, collectionName + Rarity.Common.ToString());
-            var uncommon = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Appearances, collectionName + Rarity.Uncommon.ToString());
-            var rare = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Appearances, collectionName + Rarity.Rare.ToString());
-            var veryRare = collectionsSelector.SelectFrom(Config.Name, TableNameConstants.Collection.Appearances, collectionName + Rarity.VeryRare.ToString());
+            var common = collectionsSelector.SelectFrom(Config.Name, tableName, collectionName + Rarity.Common.ToString());
+            var uncommon = collectionsSelector.SelectFrom(Config.Name, tableName, collectionName + Rarity.Uncommon.ToString());
+            var rare = collectionsSelector.SelectFrom(Config.Name, tableName, collectionName + Rarity.Rare.ToString());
 
-            var appearance = collectionsSelector.SelectRandomFrom(common, uncommon, rare, veryRare);
+            var appearance = collectionsSelector.SelectRandomFrom(common, uncommon, rare);
             return appearance;
         }
 
@@ -90,9 +94,11 @@ namespace DnDGen.CreatureGen.Generators.Creatures
         {
             var ageRoll = GetRandomAgeRoll(creatureName);
 
-            var age = new Measurement("years");
-            age.Value = ageRoll.Amount;
-            age.Description = ageRoll.Type;
+            var age = new Measurement("years")
+            {
+                Value = ageRoll.Amount,
+                Description = ageRoll.Type
+            };
 
             return age;
         }
@@ -118,8 +124,10 @@ namespace DnDGen.CreatureGen.Generators.Creatures
 
         private Measurement DetermineMaximumAge(string creatureName, Measurement age)
         {
-            var maxAge = new Measurement("years");
-            maxAge.Value = GetMaximumAge(creatureName);
+            var maxAge = new Measurement("years")
+            {
+                Value = GetMaximumAge(creatureName)
+            };
 
             if (age.Value > maxAge.Value)
                 maxAge.Value = age.Value;
@@ -147,8 +155,11 @@ namespace DnDGen.CreatureGen.Generators.Creatures
             var baseWingspan = wingspans.First(h => h.Type == baseKey);
             var wingspanModifier = wingspans.First(h => h.Type == creatureName);
 
-            var wingspan = new Measurement("inches");
-            wingspan.Value = baseWingspan.Amount + wingspanModifier.Amount;
+            var wingspan = new Measurement("inches")
+            {
+                Value = baseWingspan.Amount + wingspanModifier.Amount
+            };
+
             var rawWingspanRoll = $"{baseWingspan.RawAmount}+{wingspanModifier.RawAmount}";
             wingspan.Description = dice.Describe(rawWingspanRoll, (int)wingspan.Value, wingspanDescriptions);
 

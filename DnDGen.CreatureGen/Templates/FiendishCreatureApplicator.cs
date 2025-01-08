@@ -158,8 +158,14 @@ namespace DnDGen.CreatureGen.Templates
 
         private void UpdateCreatureDemographics(Creature creature)
         {
-            var appearance = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances, CreatureConstants.Templates.FiendishCreature);
-            creature.Demographics.Appearance += " " + appearance;
+            var skin = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Skin"), CreatureConstants.Templates.FiendishCreature);
+            var hair = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Hair"), CreatureConstants.Templates.FiendishCreature);
+            var eyes = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Eyes"), CreatureConstants.Templates.FiendishCreature);
+            var other = collectionSelector.SelectRandomFrom(Config.Name, TableNameConstants.Collection.Appearances("Other"), CreatureConstants.Templates.FiendishCreature);
+            creature.Demographics.Skin += " " + skin;
+            creature.Demographics.Hair += " " + hair;
+            creature.Demographics.Eyes += " " + eyes;
+            creature.Demographics.Other += " " + other;
         }
 
         private void UpdateCreatureAbilities(Creature creature)
