@@ -36,6 +36,7 @@
   </collection>
   <collection>
     <name>AllipCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>AllipUncommon</name>
@@ -45,6 +46,7 @@
   </collection>
   <collection>
     <name>AndrosphinxCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>AndrosphinxUncommon</name>
@@ -54,6 +56,7 @@
   </collection>
   <collection>
     <name>Animated Object, ColossalCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, ColossalUncommon</name>
@@ -63,6 +66,7 @@
   </collection>
   <collection>
     <name>Animated Object, Colossal (Flexible)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Colossal (Flexible)Uncommon</name>
@@ -72,6 +76,7 @@
   </collection>
   <collection>
     <name>Animated Object, Colossal (More Than Two Legs)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Colossal (More Than Two Legs)Uncommon</name>
@@ -81,6 +86,7 @@
   </collection>
   <collection>
     <name>Animated Object, Colossal (More Than Two Legs, Wooden)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Colossal (More Than Two Legs, Wooden)Uncommon</name>
@@ -90,6 +96,7 @@
   </collection>
   <collection>
     <name>Animated Object, Colossal (Sheetlike)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Colossal (Sheetlike)Uncommon</name>
@@ -119,6 +126,7 @@
   </collection>
   <collection>
     <name>Animated Object, Colossal (Wheels, Wooden)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Colossal (Wheels, Wooden)Uncommon</name>
@@ -128,6 +136,7 @@
   </collection>
   <collection>
     <name>Animated Object, Colossal (Wooden)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Colossal (Wooden)Uncommon</name>
@@ -137,6 +146,7 @@
   </collection>
   <collection>
     <name>Animated Object, GargantuanCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, GargantuanUncommon</name>
@@ -146,6 +156,7 @@
   </collection>
   <collection>
     <name>Animated Object, Gargantuan (Flexible)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Gargantuan (Flexible)Uncommon</name>
@@ -155,6 +166,7 @@
   </collection>
   <collection>
     <name>Animated Object, Gargantuan (More Than Two Legs)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Gargantuan (More Than Two Legs)Uncommon</name>
@@ -164,6 +176,7 @@
   </collection>
   <collection>
     <name>Animated Object, Gargantuan (More Than Two Legs, Wooden)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Gargantuan (More Than Two Legs, Wooden)Uncommon</name>
@@ -173,6 +186,7 @@
   </collection>
   <collection>
     <name>Animated Object, Gargantuan (Sheetlike)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Gargantuan (Sheetlike)Uncommon</name>
@@ -202,6 +216,7 @@
   </collection>
   <collection>
     <name>Animated Object, Gargantuan (Wheels, Wooden)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Gargantuan (Wheels, Wooden)Uncommon</name>
@@ -211,6 +226,7 @@
   </collection>
   <collection>
     <name>Animated Object, Gargantuan (Wooden)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Gargantuan (Wooden)Uncommon</name>
@@ -220,6 +236,7 @@
   </collection>
   <collection>
     <name>Animated Object, HugeCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, HugeUncommon</name>
@@ -229,6 +246,7 @@
   </collection>
   <collection>
     <name>Animated Object, Huge (Flexible)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Huge (Flexible)Uncommon</name>
@@ -238,6 +256,7 @@
   </collection>
   <collection>
     <name>Animated Object, Huge (More Than Two Legs)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Huge (More Than Two Legs)Uncommon</name>
@@ -247,6 +266,7 @@
   </collection>
   <collection>
     <name>Animated Object, Huge (More Than Two Legs, Wooden)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Huge (More Than Two Legs, Wooden)Uncommon</name>
@@ -256,6 +276,7 @@
   </collection>
   <collection>
     <name>Animated Object, Huge (Sheetlike)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Huge (Sheetlike)Uncommon</name>
@@ -285,6 +306,7 @@
   </collection>
   <collection>
     <name>Animated Object, Huge (Wheels, Wooden)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Huge (Wheels, Wooden)Uncommon</name>
@@ -294,6 +316,7 @@
   </collection>
   <collection>
     <name>Animated Object, Huge (Wooden)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Huge (Wooden)Uncommon</name>
@@ -303,6 +326,7 @@
   </collection>
   <collection>
     <name>Animated Object, LargeCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, LargeUncommon</name>
@@ -312,6 +336,7 @@
   </collection>
   <collection>
     <name>Animated Object, Large (Flexible)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Large (Flexible)Uncommon</name>
@@ -321,6 +346,7 @@
   </collection>
   <collection>
     <name>Animated Object, Large (More Than Two Legs)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Large (More Than Two Legs)Uncommon</name>
@@ -330,6 +356,7 @@
   </collection>
   <collection>
     <name>Animated Object, Large (More Than Two Legs, Wooden)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Large (More Than Two Legs, Wooden)Uncommon</name>
@@ -339,6 +366,7 @@
   </collection>
   <collection>
     <name>Animated Object, Large (Sheetlike)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Large (Sheetlike)Uncommon</name>
@@ -368,6 +396,7 @@
   </collection>
   <collection>
     <name>Animated Object, Large (Wheels, Wooden)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Large (Wheels, Wooden)Uncommon</name>
@@ -377,6 +406,7 @@
   </collection>
   <collection>
     <name>Animated Object, Large (Wooden)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Large (Wooden)Uncommon</name>
@@ -386,6 +416,7 @@
   </collection>
   <collection>
     <name>Animated Object, MediumCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, MediumUncommon</name>
@@ -395,6 +426,7 @@
   </collection>
   <collection>
     <name>Animated Object, Medium (Flexible)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Medium (Flexible)Uncommon</name>
@@ -404,6 +436,7 @@
   </collection>
   <collection>
     <name>Animated Object, Medium (More Than Two Legs)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Medium (More Than Two Legs)Uncommon</name>
@@ -413,6 +446,7 @@
   </collection>
   <collection>
     <name>Animated Object, Medium (More Than Two Legs, Wooden)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Medium (More Than Two Legs, Wooden)Uncommon</name>
@@ -422,6 +456,7 @@
   </collection>
   <collection>
     <name>Animated Object, Medium (Sheetlike)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Medium (Sheetlike)Uncommon</name>
@@ -451,6 +486,7 @@
   </collection>
   <collection>
     <name>Animated Object, Medium (Wheels, Wooden)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Medium (Wheels, Wooden)Uncommon</name>
@@ -460,6 +496,7 @@
   </collection>
   <collection>
     <name>Animated Object, Medium (Wooden)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Medium (Wooden)Uncommon</name>
@@ -469,6 +506,7 @@
   </collection>
   <collection>
     <name>Animated Object, SmallCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, SmallUncommon</name>
@@ -478,6 +516,7 @@
   </collection>
   <collection>
     <name>Animated Object, Small (Flexible)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Small (Flexible)Uncommon</name>
@@ -487,6 +526,7 @@
   </collection>
   <collection>
     <name>Animated Object, Small (More Than Two Legs)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Small (More Than Two Legs)Uncommon</name>
@@ -496,6 +536,7 @@
   </collection>
   <collection>
     <name>Animated Object, Small (More Than Two Legs, Wooden)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Small (More Than Two Legs, Wooden)Uncommon</name>
@@ -505,6 +546,7 @@
   </collection>
   <collection>
     <name>Animated Object, Small (Sheetlike)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Small (Sheetlike)Uncommon</name>
@@ -534,6 +576,7 @@
   </collection>
   <collection>
     <name>Animated Object, Small (Wheels, Wooden)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Small (Wheels, Wooden)Uncommon</name>
@@ -543,6 +586,7 @@
   </collection>
   <collection>
     <name>Animated Object, Small (Wooden)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Small (Wooden)Uncommon</name>
@@ -552,6 +596,7 @@
   </collection>
   <collection>
     <name>Animated Object, TinyCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, TinyUncommon</name>
@@ -561,6 +606,7 @@
   </collection>
   <collection>
     <name>Animated Object, Tiny (Flexible)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Tiny (Flexible)Uncommon</name>
@@ -570,6 +616,7 @@
   </collection>
   <collection>
     <name>Animated Object, Tiny (More Than Two Legs)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Tiny (More Than Two Legs)Uncommon</name>
@@ -579,6 +626,7 @@
   </collection>
   <collection>
     <name>Animated Object, Tiny (More Than Two Legs, Wooden)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Tiny (More Than Two Legs, Wooden)Uncommon</name>
@@ -588,6 +636,7 @@
   </collection>
   <collection>
     <name>Animated Object, Tiny (Sheetlike)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Tiny (Sheetlike)Uncommon</name>
@@ -617,6 +666,7 @@
   </collection>
   <collection>
     <name>Animated Object, Tiny (Wheels, Wooden)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Tiny (Wheels, Wooden)Uncommon</name>
@@ -626,6 +676,7 @@
   </collection>
   <collection>
     <name>Animated Object, Tiny (Wooden)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Animated Object, Tiny (Wooden)Uncommon</name>
@@ -655,6 +706,7 @@
   </collection>
   <collection>
     <name>Giant Ant, QueenCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Giant Ant, QueenUncommon</name>
@@ -664,6 +716,7 @@
   </collection>
   <collection>
     <name>Giant Ant, SoldierCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Giant Ant, SoldierUncommon</name>
@@ -673,6 +726,7 @@
   </collection>
   <collection>
     <name>Giant Ant, WorkerCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Giant Ant, WorkerUncommon</name>
@@ -790,6 +844,7 @@
   </collection>
   <collection>
     <name>Adult ArrowhawkCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Adult ArrowhawkUncommon</name>
@@ -799,6 +854,7 @@
   </collection>
   <collection>
     <name>Elder ArrowhawkCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Elder ArrowhawkUncommon</name>
@@ -808,6 +864,7 @@
   </collection>
   <collection>
     <name>Juvenile ArrowhawkCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Juvenile ArrowhawkUncommon</name>
@@ -817,6 +874,7 @@
   </collection>
   <collection>
     <name>Assassin VineCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Assassin VineUncommon</name>
@@ -836,6 +894,7 @@
   </collection>
   <collection>
     <name>AthachCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>AthachUncommon</name>
@@ -895,6 +954,7 @@
   </collection>
   <collection>
     <name>BaboonCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>BaboonUncommon</name>
@@ -904,6 +964,7 @@
   </collection>
   <collection>
     <name>BadgerCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>BadgerUncommon</name>
@@ -923,6 +984,7 @@
   </collection>
   <collection>
     <name>BalorCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>BalorUncommon</name>
@@ -1044,6 +1106,7 @@
   </collection>
   <collection>
     <name>Dire BatCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Dire BatUncommon</name>
@@ -1053,6 +1116,7 @@
   </collection>
   <collection>
     <name>Bat SwarmCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Bat SwarmUncommon</name>
@@ -1062,6 +1126,7 @@
   </collection>
   <collection>
     <name>Black BearCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Black BearUncommon</name>
@@ -1071,6 +1136,7 @@
   </collection>
   <collection>
     <name>Brown BearCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Brown BearUncommon</name>
@@ -1090,6 +1156,7 @@
   </collection>
   <collection>
     <name>Polar BearCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Polar BearUncommon</name>
@@ -1109,6 +1176,7 @@
   </collection>
   <collection>
     <name>BebilithCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>BebilithUncommon</name>
@@ -1118,6 +1186,7 @@
   </collection>
   <collection>
     <name>Giant BeeCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Giant BeeUncommon</name>
@@ -1127,6 +1196,7 @@
   </collection>
   <collection>
     <name>BehirCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>BehirUncommon</name>
@@ -1156,6 +1226,7 @@
   </collection>
   <collection>
     <name>BelkerCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>BelkerUncommon</name>
@@ -1165,6 +1236,7 @@
   </collection>
   <collection>
     <name>BisonMaleCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>BisonMaleUncommon</name>
@@ -1174,6 +1246,7 @@
   </collection>
   <collection>
     <name>BisonCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>BisonUncommon</name>
@@ -1243,6 +1316,7 @@
   </collection>
   <collection>
     <name>Giant Bombardier BeetleCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Giant Bombardier BeetleUncommon</name>
@@ -1252,6 +1326,7 @@
   </collection>
   <collection>
     <name>Bone Devil (Osyluth)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Bone Devil (Osyluth)Uncommon</name>
@@ -1325,6 +1400,7 @@
   </collection>
   <collection>
     <name>CatCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>CatUncommon</name>
@@ -1348,6 +1424,7 @@
   </collection>
   <collection>
     <name>Monstrous Centipede, ColossalCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, ColossalUncommon</name>
@@ -1357,6 +1434,7 @@
   </collection>
   <collection>
     <name>Monstrous Centipede, GargantuanCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, GargantuanUncommon</name>
@@ -1366,6 +1444,7 @@
   </collection>
   <collection>
     <name>Monstrous Centipede, HugeCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, HugeUncommon</name>
@@ -1375,6 +1454,7 @@
   </collection>
   <collection>
     <name>Monstrous Centipede, LargeCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, LargeUncommon</name>
@@ -1384,6 +1464,7 @@
   </collection>
   <collection>
     <name>Monstrous Centipede, MediumCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, MediumUncommon</name>
@@ -1393,6 +1474,7 @@
   </collection>
   <collection>
     <name>Monstrous Centipede, SmallCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, SmallUncommon</name>
@@ -1402,6 +1484,7 @@
   </collection>
   <collection>
     <name>Monstrous Centipede, TinyCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Monstrous Centipede, TinyUncommon</name>
@@ -1411,6 +1494,7 @@
   </collection>
   <collection>
     <name>Centipede SwarmCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Centipede SwarmUncommon</name>
@@ -1420,6 +1504,7 @@
   </collection>
   <collection>
     <name>Chain Devil (Kyton)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Chain Devil (Kyton)Uncommon</name>
@@ -1429,6 +1514,7 @@
   </collection>
   <collection>
     <name>Chaos BeastCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Chaos BeastUncommon</name>
@@ -1438,6 +1524,7 @@
   </collection>
   <collection>
     <name>CheetahCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>CheetahUncommon</name>
@@ -1447,6 +1534,7 @@
   </collection>
   <collection>
     <name>Chimera (Black Dragon head)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Chimera (Black Dragon head)Uncommon</name>
@@ -1456,6 +1544,7 @@
   </collection>
   <collection>
     <name>Chimera (Blue Dragon head)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Chimera (Blue Dragon head)Uncommon</name>
@@ -1465,6 +1554,7 @@
   </collection>
   <collection>
     <name>Chimera (Green Dragon head)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Chimera (Green Dragon head)Uncommon</name>
@@ -1474,6 +1564,7 @@
   </collection>
   <collection>
     <name>Chimera (Red Dragon head)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Chimera (Red Dragon head)Uncommon</name>
@@ -1483,6 +1574,7 @@
   </collection>
   <collection>
     <name>Chimera (White Dragon head)Common</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Chimera (White Dragon head)Uncommon</name>
@@ -1542,6 +1634,7 @@
   </collection>
   <collection>
     <name>CouatlCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>CouatlUncommon</name>
@@ -1551,6 +1644,7 @@
   </collection>
   <collection>
     <name>CriosphinxCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>CriosphinxUncommon</name>
@@ -1680,6 +1774,7 @@
   </collection>
   <collection>
     <name>DelverCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>DelverUncommon</name>
@@ -1709,6 +1804,7 @@
   </collection>
   <collection>
     <name>DestrachanCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>DestrachanUncommon</name>
@@ -1718,6 +1814,7 @@
   </collection>
   <collection>
     <name>DevourerCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>DevourerUncommon</name>
@@ -1727,6 +1824,7 @@
   </collection>
   <collection>
     <name>DigesterCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>DigesterUncommon</name>
@@ -3041,6 +3139,7 @@
   </collection>
   <collection>
     <name>Dragon TurtleCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Dragon TurtleUncommon</name>
@@ -3062,6 +3161,7 @@
   </collection>
   <collection>
     <name>DretchCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>DretchUncommon</name>
@@ -3115,6 +3215,7 @@
   </collection>
   <collection>
     <name>DryadCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>DryadUncommon</name>
@@ -3201,6 +3302,7 @@
   </collection>
   <collection>
     <name>EfreetiCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>EfreetiUncommon</name>
@@ -3210,6 +3312,7 @@
   </collection>
   <collection>
     <name>ElasmosaurusCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>ElasmosaurusUncommon</name>
@@ -3219,6 +3322,7 @@
   </collection>
   <collection>
     <name>Air Elemental, ElderCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Air Elemental, ElderUncommon</name>
@@ -3228,6 +3332,7 @@
   </collection>
   <collection>
     <name>Air Elemental, GreaterCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Air Elemental, GreaterUncommon</name>
@@ -3237,6 +3342,7 @@
   </collection>
   <collection>
     <name>Air Elemental, HugeCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Air Elemental, HugeUncommon</name>
@@ -3246,6 +3352,7 @@
   </collection>
   <collection>
     <name>Air Elemental, LargeCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Air Elemental, LargeUncommon</name>
@@ -3255,6 +3362,7 @@
   </collection>
   <collection>
     <name>Air Elemental, MediumCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Air Elemental, MediumUncommon</name>
@@ -3264,6 +3372,7 @@
   </collection>
   <collection>
     <name>Air Elemental, SmallCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Air Elemental, SmallUncommon</name>
@@ -3333,6 +3442,7 @@
   </collection>
   <collection>
     <name>Fire Elemental, ElderCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Fire Elemental, ElderUncommon</name>
@@ -3342,6 +3452,7 @@
   </collection>
   <collection>
     <name>Fire Elemental, GreaterCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Fire Elemental, GreaterUncommon</name>
@@ -3351,6 +3462,7 @@
   </collection>
   <collection>
     <name>Fire Elemental, HugeCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Fire Elemental, HugeUncommon</name>
@@ -3360,6 +3472,7 @@
   </collection>
   <collection>
     <name>Fire Elemental, LargeCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Fire Elemental, LargeUncommon</name>
@@ -3369,6 +3482,7 @@
   </collection>
   <collection>
     <name>Fire Elemental, MediumCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Fire Elemental, MediumUncommon</name>
@@ -3378,6 +3492,7 @@
   </collection>
   <collection>
     <name>Fire Elemental, SmallCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Fire Elemental, SmallUncommon</name>
@@ -3387,6 +3502,7 @@
   </collection>
   <collection>
     <name>Water Elemental, ElderCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Water Elemental, ElderUncommon</name>
@@ -3396,6 +3512,7 @@
   </collection>
   <collection>
     <name>Water Elemental, GreaterCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Water Elemental, GreaterUncommon</name>
@@ -3405,6 +3522,7 @@
   </collection>
   <collection>
     <name>Water Elemental, HugeCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Water Elemental, HugeUncommon</name>
@@ -3414,6 +3532,7 @@
   </collection>
   <collection>
     <name>Water Elemental, LargeCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Water Elemental, LargeUncommon</name>
@@ -3423,6 +3542,7 @@
   </collection>
   <collection>
     <name>Water Elemental, MediumCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Water Elemental, MediumUncommon</name>
@@ -3432,6 +3552,7 @@
   </collection>
   <collection>
     <name>Water Elemental, SmallCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Water Elemental, SmallUncommon</name>
@@ -3441,6 +3562,7 @@
   </collection>
   <collection>
     <name>ElephantCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>ElephantUncommon</name>
@@ -3624,6 +3746,7 @@
   </collection>
   <collection>
     <name>Ethereal FilcherCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Ethereal FilcherUncommon</name>
@@ -3633,6 +3756,7 @@
   </collection>
   <collection>
     <name>Ethereal MarauderCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Ethereal MarauderUncommon</name>
@@ -3642,6 +3766,7 @@
   </collection>
   <collection>
     <name>EttercapCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>EttercapUncommon</name>
@@ -3721,6 +3846,7 @@
   </collection>
   <collection>
     <name>KolyarutCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>KolyarutUncommon</name>
@@ -3730,6 +3856,7 @@
   </collection>
   <collection>
     <name>MarutCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>MarutUncommon</name>
@@ -3739,6 +3866,7 @@
   </collection>
   <collection>
     <name>ZelekhutCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>ZelekhutUncommon</name>
@@ -3971,6 +4099,7 @@
   </collection>
   <collection>
     <name>GithzeraiCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>GithzeraiUncommon</name>
@@ -4068,6 +4197,7 @@
   </collection>
   <collection>
     <name>Clay GolemCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Clay GolemUncommon</name>
@@ -4077,6 +4207,7 @@
   </collection>
   <collection>
     <name>Flesh GolemCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Flesh GolemUncommon</name>
@@ -4242,6 +4373,7 @@
   </collection>
   <collection>
     <name>Deep HalflingCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Deep HalflingUncommon</name>
@@ -4285,6 +4417,7 @@
   </collection>
   <collection>
     <name>Lightfoot HalflingCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Lightfoot HalflingUncommon</name>
@@ -4328,6 +4461,7 @@
   </collection>
   <collection>
     <name>Tallfellow HalflingCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Tallfellow HalflingUncommon</name>
@@ -4347,6 +4481,7 @@
   </collection>
   <collection>
     <name>HawkCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>HawkUncommon</name>
@@ -4377,6 +4512,7 @@
   </collection>
   <collection>
     <name>Hellwasp SwarmCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Hellwasp SwarmUncommon</name>
@@ -4469,6 +4605,7 @@
   </collection>
   <collection>
     <name>Heavy HorseCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Heavy HorseUncommon</name>
@@ -4478,6 +4615,7 @@
   </collection>
   <collection>
     <name>Heavy WarhorseCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Heavy WarhorseUncommon</name>
@@ -4487,6 +4625,7 @@
   </collection>
   <collection>
     <name>Light HorseCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Light HorseUncommon</name>
@@ -4496,6 +4635,7 @@
   </collection>
   <collection>
     <name>Light WarhorseCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Light WarhorseUncommon</name>
@@ -4644,6 +4784,7 @@
   </collection>
   <collection>
     <name>Invisible StalkerCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Invisible StalkerUncommon</name>
@@ -4802,6 +4943,7 @@
   </collection>
   <collection>
     <name>Lantern ArchonCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Lantern ArchonUncommon</name>
@@ -4826,6 +4968,7 @@
     <entry>Gray eyes</entry>
     <entry>Green eyes</entry>
     <entry>Hazel eyes</entry>
+    <entry></entry>
   </collection>
   <collection>
     <name>LeonalUncommon</name>
@@ -4835,6 +4978,7 @@
   </collection>
   <collection>
     <name>LeopardCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>LeopardUncommon</name>
@@ -4939,6 +5083,7 @@
   </collection>
   <collection>
     <name>Locust SwarmCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Locust SwarmUncommon</name>
@@ -4948,6 +5093,7 @@
   </collection>
   <collection>
     <name>MagminCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>MagminUncommon</name>
@@ -4957,6 +5103,7 @@
   </collection>
   <collection>
     <name>Manta RayCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Manta RayUncommon</name>
@@ -5133,6 +5280,7 @@
   </collection>
   <collection>
     <name>MimicCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>MimicUncommon</name>
@@ -5162,6 +5310,7 @@
   </collection>
   <collection>
     <name>MohrgCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>MohrgUncommon</name>
@@ -5171,6 +5320,7 @@
   </collection>
   <collection>
     <name>MonkeyCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>MonkeyUncommon</name>
@@ -5241,6 +5391,7 @@
   </collection>
   <collection>
     <name>NalfeshneeCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>NalfeshneeUncommon</name>
@@ -5302,6 +5453,7 @@
   </collection>
   <collection>
     <name>NightwalkerCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>NightwalkerUncommon</name>
@@ -5311,6 +5463,7 @@
   </collection>
   <collection>
     <name>NightwingCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>NightwingUncommon</name>
@@ -5395,6 +5548,7 @@
   </collection>
   <collection>
     <name>Gray OozeCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Gray OozeUncommon</name>
@@ -5449,6 +5603,7 @@
   </collection>
   <collection>
     <name>OwlCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>OwlUncommon</name>
@@ -5458,6 +5613,7 @@
   </collection>
   <collection>
     <name>Giant OwlCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Giant OwlUncommon</name>
@@ -5507,6 +5663,7 @@
   </collection>
   <collection>
     <name>PhasmCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>PhasmUncommon</name>
@@ -5592,6 +5749,7 @@
   </collection>
   <collection>
     <name>PonyCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>PonyUncommon</name>
@@ -5601,6 +5759,7 @@
   </collection>
   <collection>
     <name>WarponyCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>WarponyUncommon</name>
@@ -5610,6 +5769,7 @@
   </collection>
   <collection>
     <name>PorpoiseCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>PorpoiseUncommon</name>
@@ -5749,6 +5909,7 @@
   </collection>
   <collection>
     <name>RastCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>RastUncommon</name>
@@ -5758,6 +5919,7 @@
   </collection>
   <collection>
     <name>RatCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>RatUncommon</name>
@@ -5767,6 +5929,7 @@
   </collection>
   <collection>
     <name>Dire RatCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Dire RatUncommon</name>
@@ -5776,6 +5939,7 @@
   </collection>
   <collection>
     <name>Rat SwarmCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Rat SwarmUncommon</name>
@@ -5785,6 +5949,7 @@
   </collection>
   <collection>
     <name>RavenCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>RavenUncommon</name>
@@ -5794,6 +5959,7 @@
   </collection>
   <collection>
     <name>RavidCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>RavidUncommon</name>
@@ -5823,6 +5989,7 @@
   </collection>
   <collection>
     <name>RetrieverCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>RetrieverUncommon</name>
@@ -5852,6 +6019,7 @@
   </collection>
   <collection>
     <name>RoperCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>RoperUncommon</name>
@@ -5861,6 +6029,7 @@
   </collection>
   <collection>
     <name>Rust MonsterCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Rust MonsterUncommon</name>
@@ -5940,6 +6109,7 @@
   </collection>
   <collection>
     <name>Average SalamanderCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Average SalamanderUncommon</name>
@@ -5949,6 +6119,7 @@
   </collection>
   <collection>
     <name>Flamebrother SalamanderCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Flamebrother SalamanderUncommon</name>
@@ -5958,6 +6129,7 @@
   </collection>
   <collection>
     <name>Noble SalamanderCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Noble SalamanderUncommon</name>
@@ -6067,6 +6239,7 @@
   </collection>
   <collection>
     <name>ShadowCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>ShadowUncommon</name>
@@ -6076,6 +6249,7 @@
   </collection>
   <collection>
     <name>Greater ShadowCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Greater ShadowUncommon</name>
@@ -6085,6 +6259,7 @@
   </collection>
   <collection>
     <name>Shadow MastiffCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Shadow MastiffUncommon</name>
@@ -6094,6 +6269,7 @@
   </collection>
   <collection>
     <name>Dire SharkCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Dire SharkUncommon</name>
@@ -6103,6 +6279,7 @@
   </collection>
   <collection>
     <name>Shark, MediumCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Shark, MediumUncommon</name>
@@ -6112,6 +6289,7 @@
   </collection>
   <collection>
     <name>Shark, LargeCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Shark, LargeUncommon</name>
@@ -6121,6 +6299,7 @@
   </collection>
   <collection>
     <name>Shark, HugeCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Shark, HugeUncommon</name>
@@ -6130,6 +6309,7 @@
   </collection>
   <collection>
     <name>Shambling MoundCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Shambling MoundUncommon</name>
@@ -6139,6 +6319,7 @@
   </collection>
   <collection>
     <name>Shield GuardianCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Shield GuardianUncommon</name>
@@ -6148,6 +6329,7 @@
   </collection>
   <collection>
     <name>Shocker LizardCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Shocker LizardUncommon</name>
@@ -6167,6 +6349,7 @@
   </collection>
   <collection>
     <name>SkumCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>SkumUncommon</name>
@@ -6176,6 +6359,7 @@
   </collection>
   <collection>
     <name>Blue SlaadCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Blue SlaadUncommon</name>
@@ -6185,6 +6369,7 @@
   </collection>
   <collection>
     <name>Death SlaadCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Death SlaadUncommon</name>
@@ -6194,6 +6379,7 @@
   </collection>
   <collection>
     <name>Gray SlaadCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Gray SlaadUncommon</name>
@@ -6203,6 +6389,7 @@
   </collection>
   <collection>
     <name>Green SlaadCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Green SlaadUncommon</name>
@@ -6212,6 +6399,7 @@
   </collection>
   <collection>
     <name>Red SlaadCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Red SlaadUncommon</name>
@@ -6221,6 +6409,7 @@
   </collection>
   <collection>
     <name>Constrictor SnakeCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Constrictor SnakeUncommon</name>
@@ -6230,6 +6419,7 @@
   </collection>
   <collection>
     <name>Giant Constrictor SnakeCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Giant Constrictor SnakeUncommon</name>
@@ -6239,6 +6429,7 @@
   </collection>
   <collection>
     <name>Viper Snake, HugeCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Viper Snake, HugeUncommon</name>
@@ -6273,6 +6464,7 @@
   </collection>
   <collection>
     <name>Viper Snake, MediumCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Viper Snake, MediumUncommon</name>
@@ -6282,6 +6474,7 @@
   </collection>
   <collection>
     <name>Viper Snake, SmallCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Viper Snake, SmallUncommon</name>
@@ -6291,6 +6484,7 @@
   </collection>
   <collection>
     <name>Viper Snake, TinyCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Viper Snake, TinyUncommon</name>
@@ -6310,6 +6504,7 @@
   </collection>
   <collection>
     <name>SpectreCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>SpectreUncommon</name>
@@ -6319,6 +6514,7 @@
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, ColossalCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, ColossalUncommon</name>
@@ -6328,6 +6524,7 @@
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, GargantuanCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, GargantuanUncommon</name>
@@ -6337,6 +6534,7 @@
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, HugeCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, HugeUncommon</name>
@@ -6346,6 +6544,7 @@
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, LargeCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, LargeUncommon</name>
@@ -6355,6 +6554,7 @@
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, MediumCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, MediumUncommon</name>
@@ -6364,6 +6564,7 @@
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, SmallCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, SmallUncommon</name>
@@ -6373,6 +6574,7 @@
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, TinyCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Hunter, TinyUncommon</name>
@@ -6382,6 +6584,7 @@
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, ColossalCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, ColossalUncommon</name>
@@ -6391,6 +6594,7 @@
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, GargantuanCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, GargantuanUncommon</name>
@@ -6400,6 +6604,7 @@
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, HugeCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, HugeUncommon</name>
@@ -6409,6 +6614,7 @@
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, LargeCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, LargeUncommon</name>
@@ -6418,6 +6624,7 @@
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, MediumCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, MediumUncommon</name>
@@ -6427,6 +6634,7 @@
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, SmallCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, SmallUncommon</name>
@@ -6436,6 +6644,7 @@
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, TinyCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Monstrous Spider, Web-Spinner, TinyUncommon</name>
@@ -6445,6 +6654,7 @@
   </collection>
   <collection>
     <name>Spider SwarmCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Spider SwarmUncommon</name>
@@ -6454,6 +6664,7 @@
   </collection>
   <collection>
     <name>Spider EaterCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Spider EaterUncommon</name>
@@ -6463,6 +6674,7 @@
   </collection>
   <collection>
     <name>SquidCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>SquidUncommon</name>
@@ -6472,6 +6684,7 @@
   </collection>
   <collection>
     <name>Giant SquidCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Giant SquidUncommon</name>
@@ -6491,6 +6704,7 @@
   </collection>
   <collection>
     <name>StirgeCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>StirgeUncommon</name>
@@ -6536,6 +6750,7 @@
   </collection>
   <collection>
     <name>SvirfneblinCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>SvirfneblinUncommon</name>
@@ -6545,6 +6760,7 @@
   </collection>
   <collection>
     <name>TarrasqueCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>TarrasqueUncommon</name>
@@ -6554,6 +6770,7 @@
   </collection>
   <collection>
     <name>TendriculosCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>TendriculosUncommon</name>
@@ -6563,6 +6780,7 @@
   </collection>
   <collection>
     <name>ThoqquaCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>ThoqquaUncommon</name>
@@ -6596,6 +6814,7 @@
   </collection>
   <collection>
     <name>TigerCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>TigerUncommon</name>
@@ -6605,6 +6824,7 @@
   </collection>
   <collection>
     <name>Dire TigerCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Dire TigerUncommon</name>
@@ -6638,6 +6858,7 @@
   </collection>
   <collection>
     <name>Adult TojanidaCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Adult TojanidaUncommon</name>
@@ -6647,6 +6868,7 @@
   </collection>
   <collection>
     <name>Elder TojanidaCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Elder TojanidaUncommon</name>
@@ -6656,6 +6878,7 @@
   </collection>
   <collection>
     <name>Juvenile TojanidaCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Juvenile TojanidaUncommon</name>
@@ -6665,6 +6888,7 @@
   </collection>
   <collection>
     <name>TreantCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>TreantUncommon</name>
@@ -6802,6 +7026,7 @@
   </collection>
   <collection>
     <name>Trumpet ArchonCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Trumpet ArchonUncommon</name>
@@ -6893,6 +7118,7 @@
   </collection>
   <collection>
     <name>VrockCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>VrockUncommon</name>
@@ -6902,6 +7128,7 @@
   </collection>
   <collection>
     <name>Giant WaspCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Giant WaspUncommon</name>
@@ -6911,6 +7138,7 @@
   </collection>
   <collection>
     <name>WeaselCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>WeaselUncommon</name>
@@ -6950,6 +7178,7 @@
   </collection>
   <collection>
     <name>Orca WhaleCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Orca WhaleUncommon</name>
@@ -7041,6 +7270,7 @@
   </collection>
   <collection>
     <name>WraithCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>WraithUncommon</name>
@@ -7050,6 +7280,7 @@
   </collection>
   <collection>
     <name>Dread WraithCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>Dread WraithUncommon</name>
@@ -7070,6 +7301,7 @@
   </collection>
   <collection>
     <name>XillCommon</name>
+    <entry></entry>
   </collection>
   <collection>
     <name>XillUncommon</name>

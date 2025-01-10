@@ -8,11 +8,11 @@ using DnDGen.CreatureGen.Generators.Creatures;
 using DnDGen.CreatureGen.Items;
 using DnDGen.CreatureGen.Skills;
 using DnDGen.CreatureGen.Templates;
+using DnDGen.CreatureGen.Tests.Unit.TestCaseSources;
 using DnDGen.CreatureGen.Verifiers.Exceptions;
 using Moq;
 using NUnit.Framework;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -372,7 +372,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.IsAdvanced, Is.True);
         }
 
-        [TestCaseSource(nameof(SizeIncreases))]
+        [TestCaseSource(typeof(CreatureTestData), nameof(CreatureTestData.SizeIncreases))]
         public async Task GenerateAsync_GenerateAdvancedCreature_AdjustDemographics(string originalSize, string advancedSize, int heightMultiplier, int weightMultiplier)
         {
             creatureData.Size = originalSize;
@@ -410,24 +410,6 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             Assert.That(creature.Demographics.Length.Value, Is.EqualTo(922 * heightMultiplier));
             Assert.That(creature.Demographics.Wingspan.Value, Is.EqualTo(2022 * heightMultiplier));
             Assert.That(creature.Demographics.Weight.Value, Is.EqualTo(2 * weightMultiplier));
-        }
-
-        private static IEnumerable SizeIncreases
-        {
-            get
-            {
-                var sizes = SizeConstants.GetOrdered();
-
-                for (var o = 0; o < sizes.Length; o++)
-                {
-                    for (var a = o; a < sizes.Length; a++)
-                    {
-                        var heightMultiplier = (int)Math.Pow(2, a - o);
-                        var weightMultiplier = (int)Math.Pow(8, a - o);
-                        yield return new TestCaseData(sizes[o], sizes[a], heightMultiplier, weightMultiplier);
-                    }
-                }
-            }
         }
 
         [TestCase(true)]

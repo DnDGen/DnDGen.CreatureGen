@@ -29,25 +29,25 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
             {
                 [TableNameConstants.Collection.AppearanceCategories.Skin] = new Dictionary<Rarity, IEnumerable<string>>
                 {
-                    [Rarity.Common] = [],
+                    [Rarity.Common] = [string.Empty],
                     [Rarity.Uncommon] = [],
                     [Rarity.Rare] = [],
                 },
                 [TableNameConstants.Collection.AppearanceCategories.Hair] = new Dictionary<Rarity, IEnumerable<string>>
                 {
-                    [Rarity.Common] = [],
+                    [Rarity.Common] = [string.Empty],
                     [Rarity.Uncommon] = [],
                     [Rarity.Rare] = [],
                 },
                 [TableNameConstants.Collection.AppearanceCategories.Eyes] = new Dictionary<Rarity, IEnumerable<string>>
                 {
-                    [Rarity.Common] = [],
+                    [Rarity.Common] = [string.Empty],
                     [Rarity.Uncommon] = [],
                     [Rarity.Rare] = [],
                 },
                 [TableNameConstants.Collection.AppearanceCategories.Other] = new Dictionary<Rarity, IEnumerable<string>>
                 {
-                    [Rarity.Common] = [],
+                    [Rarity.Common] = [string.Empty],
                     [Rarity.Uncommon] = [],
                     [Rarity.Rare] = [],
                 },
@@ -68,8 +68,6 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                     CreatureConstants.Gnome_Rock + GenderConstants.Male,
                     CreatureConstants.Gnome_Svirfneblin + GenderConstants.Female,
                     CreatureConstants.Gnome_Svirfneblin + GenderConstants.Male,
-                    CreatureConstants.Lion + GenderConstants.Male,
-                    CreatureConstants.Lion_Dire + GenderConstants.Male,
                     CreatureConstants.Halfling_Deep + GenderConstants.Female,
                     CreatureConstants.Halfling_Deep + GenderConstants.Male,
                     CreatureConstants.Halfling_Lightfoot + GenderConstants.Female,
@@ -77,10 +75,14 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                     CreatureConstants.Halfling_Tallfellow + GenderConstants.Female,
                     CreatureConstants.Halfling_Tallfellow + GenderConstants.Male,
                     CreatureConstants.Hobgoblin + GenderConstants.Male,
+                    CreatureConstants.Lion + GenderConstants.Male,
+                    CreatureConstants.Lion_Dire + GenderConstants.Male,
                     CreatureConstants.Sahuagin + GenderConstants.Female,
                     CreatureConstants.Sahuagin_Mutant + GenderConstants.Female,
+                    CreatureConstants.Troglodyte + GenderConstants.Male,
                     CreatureConstants.TrumpetArchon + GenderConstants.Female,
                     CreatureConstants.TrumpetArchon + GenderConstants.Male,
+                    CreatureConstants.Unicorn + GenderConstants.Male,
                 ]);
         }
 
@@ -114,7 +116,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                 }
             }
 
-            var path = Path.Combine(Environment.CurrentDirectory, $"{tableName}-{Guid.NewGuid()}.xml");
+            var path = Path.Combine(Environment.CurrentDirectory, $"{tableName}.xml");
             collections.Save(path);
         }
 
@@ -4310,7 +4312,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
             appearances[CreatureConstants.Troglodyte] = GetAppearances(
                 commonSkin: new[] { "Grayish-brown leathery scales" },
                 commonEyes: new[] { "Black beady eyes" },
-                commonOther: new[] { "Spindly but muscular arms, squat legs, long slender tail, lizard-like head, claws and fangs", "TODO MALE crowned with frills extending from forehead to neck" });
+                commonOther: new[] { "Spindly but muscular arms, squat legs, long slender tail, lizard-like head, claws and fangs" });
+            appearances[CreatureConstants.Troglodyte + GenderConstants.Male] = GetAppearances(
+                commonSkin: new[] { "Grayish-brown leathery scales" },
+                commonEyes: new[] { "Black beady eyes" },
+                commonOther: new[] { "Spindly but muscular arms, squat legs, long slender tail, lizard-like head, claws and fangs, head crowned with frills extending from forehead to neck" });
             //Source: https://forgottenrealms.fandom.com/wiki/Troll
             appearances[CreatureConstants.Troll] = GetAppearances(
                 commonSkin: new[] { "Thick, rubbery, moss-green scales", "Thick, rubbery, putrid gray scales", "Thick, rubbery, mottled gray and green scales" },
@@ -4383,7 +4389,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                 commonOther: new[] { "Looks like a cross between a gorilla and a beetle, huge mandibles, mouth filled with rows of sharp triangular teeth" });
             //Source: https://forgottenrealms.fandom.com/wiki/Unicorn
             appearances[CreatureConstants.Unicorn] = GetAppearances(
-                commonHair: new[] { "White coat, mane, and tail", "White coat, mane, and tail TODO MALE white beard" },
+                commonHair: ["White coat, mane, and tail", "White coat, mane, and tail"],
+                commonEyes: new[] { "Deep sea-blue eyes", "Violet eyes", "Brown eyes", "Golden eyes", "Pink eyes" },
+                commonOther: new[] { "Cloven hooves, long ivory-colored horn protruding from the forehead" });
+            appearances[CreatureConstants.Unicorn + GenderConstants.Male] = GetAppearances(
+                commonHair: ["White coat, mane, and tail", "White coat, mane, tail, and beard"],
                 commonEyes: new[] { "Deep sea-blue eyes", "Violet eyes", "Brown eyes", "Golden eyes", "Pink eyes" },
                 commonOther: new[] { "Cloven hooves, long ivory-colored horn protruding from the forehead" });
             //Source: https://forgottenrealms.fandom.com/wiki/Vampire_spawn
@@ -4610,13 +4620,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
             IEnumerable<string> commonEyes = null, IEnumerable<string> uncommonEyes = null, IEnumerable<string> rareEyes = null,
             IEnumerable<string> commonOther = null, IEnumerable<string> uncommonOther = null, IEnumerable<string> rareOther = null)
         {
-            var appearances = new Dictionary<string, Dictionary<Rarity, IEnumerable<string>>>
-            {
-                [TableNameConstants.Collection.AppearanceCategories.Skin] = [],
-                [TableNameConstants.Collection.AppearanceCategories.Hair] = [],
-                [TableNameConstants.Collection.AppearanceCategories.Eyes] = [],
-                [TableNameConstants.Collection.AppearanceCategories.Other] = []
-            };
+            var appearances = InitializeAppearancesCollection();
 
             appearances[TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Common] = commonSkin ?? [string.Empty];
             appearances[TableNameConstants.Collection.AppearanceCategories.Skin][Rarity.Uncommon] = uncommonSkin ?? [];
