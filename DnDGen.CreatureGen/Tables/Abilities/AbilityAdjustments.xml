@@ -5648,4 +5648,67 @@
     <entry>Strength@10</entry>
     <entry>Wisdom@6</entry>
   </collection>
+	<collection>
+		<name>Adulthood</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Middle Age</name>
+		<entry>Charisma@1</entry>
+		<entry>Intelligence@1</entry>
+		<entry>Wisdom@1</entry>
+		<entry>Constitution@-1</entry>
+		<entry>Dexterity@-1</entry>
+		<entry>Strength@-1</entry>
+	</collection>
+	<collection>
+		<name>Old</name>
+		<entry>Charisma@2</entry>
+		<entry>Intelligence@2</entry>
+		<entry>Wisdom@2</entry>
+		<entry>Constitution@-3</entry>
+		<entry>Dexterity@-3</entry>
+		<entry>Strength@-3</entry>
+	</collection>
+	<collection>
+		<name>Venerable</name>
+		<entry>Charisma@3</entry>
+		<entry>Intelligence@3</entry>
+		<entry>Wisdom@3</entry>
+		<entry>Constitution@-6</entry>
+		<entry>Dexterity@-6</entry>
+		<entry>Strength@-6</entry>
+	</collection>
+	<collection>
+		<name>Construct</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Undead</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
+	<collection>
+		<name>Swarm</name>
+		<entry>Charisma@0</entry>
+		<entry>Constitution@0</entry>
+		<entry>Dexterity@0</entry>
+		<entry>Intelligence@0</entry>
+		<entry>Strength@0</entry>
+		<entry>Wisdom@0</entry>
+	</collection>
 </collections>

@@ -29,7 +29,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         public void AbilityAdjustmentsNames()
         {
             var creatures = CreatureConstants.GetAll();
-            var names = creatures.Union(new[] { GroupConstants.All });
+            var names = creatures
+                .Union(
+                [
+                    GroupConstants.All,
+                    AgeConstants.Categories.Adulthood,
+                    AgeConstants.Categories.MiddleAge,
+                    AgeConstants.Categories.Old,
+                    AgeConstants.Categories.Venerable,
+                    AgeConstants.Categories.Construct,
+                    AgeConstants.Categories.Swarm,
+                    AgeConstants.Categories.Undead,
+                ]);
 
             AssertCollectionNames(names);
         }
@@ -54,6 +65,10 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
             Assert.That(typesAndAmounts, Is.Not.Empty);
             Assert.That(typesAndAmounts.Keys, Is.Unique.And.SubsetOf(allAbilities));
 
+            var creatures = CreatureConstants.GetAll();
+            if (!creatures.Contains(name))
+                Assert.Pass();
+
             foreach (var kvp in typesAndAmounts)
             {
                 Assert.That(kvp.Value % 2, Is.Zero, $"{name} {kvp.Key} {kvp.Value}");
@@ -64,8 +79,18 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
         {
             get
             {
-                var testCases = new Dictionary<string, Dictionary<string, int>>();
-                testCases[GroupConstants.All] = new Dictionary<string, int>();
+                var testCases = new Dictionary<string, Dictionary<string, int>>
+                {
+                    [GroupConstants.All] = new Dictionary<string, int>(),
+                    [AgeConstants.Categories.Adulthood] = new Dictionary<string, int>(),
+                    [AgeConstants.Categories.MiddleAge] = new Dictionary<string, int>(),
+                    [AgeConstants.Categories.Old] = new Dictionary<string, int>(),
+                    [AgeConstants.Categories.Venerable] = new Dictionary<string, int>(),
+                    [AgeConstants.Categories.Construct] = new Dictionary<string, int>(),
+                    [AgeConstants.Categories.Swarm] = new Dictionary<string, int>(),
+                    [AgeConstants.Categories.Undead] = new Dictionary<string, int>(),
+                };
+
                 testCases[GroupConstants.All][AbilityConstants.Charisma] = 0;
                 testCases[GroupConstants.All][AbilityConstants.Constitution] = 0;
                 testCases[GroupConstants.All][AbilityConstants.Dexterity] = 0;
@@ -73,11 +98,54 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
                 testCases[GroupConstants.All][AbilityConstants.Strength] = 0;
                 testCases[GroupConstants.All][AbilityConstants.Wisdom] = 0;
 
+                testCases[AgeConstants.Categories.Adulthood][AbilityConstants.Charisma] = 0;
+                testCases[AgeConstants.Categories.Adulthood][AbilityConstants.Constitution] = 0;
+                testCases[AgeConstants.Categories.Adulthood][AbilityConstants.Dexterity] = 0;
+                testCases[AgeConstants.Categories.Adulthood][AbilityConstants.Intelligence] = 0;
+                testCases[AgeConstants.Categories.Adulthood][AbilityConstants.Strength] = 0;
+                testCases[AgeConstants.Categories.Adulthood][AbilityConstants.Wisdom] = 0;
+                testCases[AgeConstants.Categories.MiddleAge][AbilityConstants.Charisma] = 1;
+                testCases[AgeConstants.Categories.MiddleAge][AbilityConstants.Constitution] = -1;
+                testCases[AgeConstants.Categories.MiddleAge][AbilityConstants.Dexterity] = -1;
+                testCases[AgeConstants.Categories.MiddleAge][AbilityConstants.Intelligence] = 1;
+                testCases[AgeConstants.Categories.MiddleAge][AbilityConstants.Strength] = -1;
+                testCases[AgeConstants.Categories.MiddleAge][AbilityConstants.Wisdom] = 1;
+                testCases[AgeConstants.Categories.Old][AbilityConstants.Charisma] = 1 + 1;
+                testCases[AgeConstants.Categories.Old][AbilityConstants.Constitution] = -1 + -2;
+                testCases[AgeConstants.Categories.Old][AbilityConstants.Dexterity] = -1 + -2;
+                testCases[AgeConstants.Categories.Old][AbilityConstants.Intelligence] = 1 + 1;
+                testCases[AgeConstants.Categories.Old][AbilityConstants.Strength] = -1 + -2;
+                testCases[AgeConstants.Categories.Old][AbilityConstants.Wisdom] = 1 + 1;
+                testCases[AgeConstants.Categories.Venerable][AbilityConstants.Charisma] = 1 + 1 + 1;
+                testCases[AgeConstants.Categories.Venerable][AbilityConstants.Constitution] = -1 + -2 + -3;
+                testCases[AgeConstants.Categories.Venerable][AbilityConstants.Dexterity] = -1 + -2 + -3;
+                testCases[AgeConstants.Categories.Venerable][AbilityConstants.Intelligence] = 1 + 1 + 1;
+                testCases[AgeConstants.Categories.Venerable][AbilityConstants.Strength] = -1 + -2 + -3;
+                testCases[AgeConstants.Categories.Venerable][AbilityConstants.Wisdom] = 1 + 1 + 1;
+                testCases[AgeConstants.Categories.Construct][AbilityConstants.Charisma] = 0;
+                testCases[AgeConstants.Categories.Construct][AbilityConstants.Constitution] = 0;
+                testCases[AgeConstants.Categories.Construct][AbilityConstants.Dexterity] = 0;
+                testCases[AgeConstants.Categories.Construct][AbilityConstants.Intelligence] = 0;
+                testCases[AgeConstants.Categories.Construct][AbilityConstants.Strength] = 0;
+                testCases[AgeConstants.Categories.Construct][AbilityConstants.Wisdom] = 0;
+                testCases[AgeConstants.Categories.Swarm][AbilityConstants.Charisma] = 0;
+                testCases[AgeConstants.Categories.Swarm][AbilityConstants.Constitution] = 0;
+                testCases[AgeConstants.Categories.Swarm][AbilityConstants.Dexterity] = 0;
+                testCases[AgeConstants.Categories.Swarm][AbilityConstants.Intelligence] = 0;
+                testCases[AgeConstants.Categories.Swarm][AbilityConstants.Strength] = 0;
+                testCases[AgeConstants.Categories.Swarm][AbilityConstants.Wisdom] = 0;
+                testCases[AgeConstants.Categories.Undead][AbilityConstants.Charisma] = 0;
+                testCases[AgeConstants.Categories.Undead][AbilityConstants.Constitution] = 0;
+                testCases[AgeConstants.Categories.Undead][AbilityConstants.Dexterity] = 0;
+                testCases[AgeConstants.Categories.Undead][AbilityConstants.Intelligence] = 0;
+                testCases[AgeConstants.Categories.Undead][AbilityConstants.Strength] = 0;
+                testCases[AgeConstants.Categories.Undead][AbilityConstants.Wisdom] = 0;
+
                 var creatures = CreatureConstants.GetAll();
 
                 foreach (var creature in creatures)
                 {
-                    testCases[creature] = new Dictionary<string, int>();
+                    testCases[creature] = [];
                 }
 
                 testCases[CreatureConstants.Aasimar][AbilityConstants.Charisma] = 0;

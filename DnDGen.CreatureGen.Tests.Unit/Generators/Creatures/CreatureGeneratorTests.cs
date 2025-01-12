@@ -161,7 +161,7 @@ namespace DnDGen.CreatureGen.Tests.Unit.Generators.Creatures
             mockCollectionSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> c) => c.First());
             mockCollectionSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<TypeAndAmountSelection>>())).Returns((IEnumerable<TypeAndAmountSelection> c) => c.First());
             mockCollectionSelector.Setup(s => s.SelectRandomFrom(It.IsAny<IEnumerable<(string, string)>>())).Returns((IEnumerable<(string, string)> c) => c.First());
-            mockCollectionSelector.Setup(s => s.FindCollectionOf(TableNameConstants.Collection.CreatureGroups, types[0],
+            mockCollectionSelector.Setup(s => s.FindCollectionOf(Config.Name, TableNameConstants.Collection.CreatureGroups, types[0],
                 GroupConstants.GoodBaseAttack,
                 GroupConstants.AverageBaseAttack,
                 GroupConstants.PoorBaseAttack)).Returns(GroupConstants.PoorBaseAttack);

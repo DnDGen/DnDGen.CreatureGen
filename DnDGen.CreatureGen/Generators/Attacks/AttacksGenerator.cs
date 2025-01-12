@@ -31,7 +31,11 @@ namespace DnDGen.CreatureGen.Generators.Attacks
             if (hitPoints.RoundedHitDiceQuantity == 0)
                 return 0;
 
-            var baseAttackQuality = collectionSelector.FindCollectionOf(TableNameConstants.Collection.CreatureGroups, creatureType.Name, GroupConstants.GoodBaseAttack, GroupConstants.AverageBaseAttack, GroupConstants.PoorBaseAttack);
+            var baseAttackQuality = collectionSelector.FindCollectionOf(
+                Config.Name,
+                TableNameConstants.Collection.CreatureGroups,
+                creatureType.Name,
+                GroupConstants.GoodBaseAttack, GroupConstants.AverageBaseAttack, GroupConstants.PoorBaseAttack);
 
             switch (baseAttackQuality)
             {

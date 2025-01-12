@@ -708,7 +708,7 @@ namespace DnDGen.CreatureGen.Tests.Integration.Generators.Creatures
             }
             else
             {
-                Assert.That(creature.Demographics.Height.Value, Is.Zero);
+                Assert.That(creature.Demographics.Height.Value, Is.EqualTo(1));
             }
 
             if (hasLength)

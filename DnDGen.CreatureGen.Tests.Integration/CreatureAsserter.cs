@@ -294,12 +294,13 @@ namespace DnDGen.CreatureGen.Tests.Integration
             Assert.That(creature.Demographics.Gender, Is.Not.Empty, message);
             Assert.That(creature.Demographics.Height, Is.Not.Null, message);
             Assert.That(creature.Demographics.Height.Unit, Is.EqualTo("inches"), message);
-            Assert.That(creature.Demographics.Height.Value, Is.Positive, message);
+            Assert.That(creature.Demographics.Height.Value, Is.Not.Negative, message);
             Assert.That(creature.Demographics.Height.Description, Is.Not.Empty, message);
             Assert.That(creature.Demographics.Length, Is.Not.Null, message);
             Assert.That(creature.Demographics.Length.Unit, Is.EqualTo("inches"), message);
             Assert.That(creature.Demographics.Length.Value, Is.Not.Negative, message);
             Assert.That(creature.Demographics.Length.Description, Is.Not.Empty, message);
+            Assert.That(creature.Demographics.Height.Value + creature.Demographics.Length.Value, Is.Positive, message);
             Assert.That(creature.Demographics.MaximumAge, Is.Not.Null, message);
             Assert.That(creature.Demographics.MaximumAge.Unit, Is.EqualTo("years"), message);
             Assert.That(creature.Demographics.MaximumAge.Value, Is.Positive, message);
