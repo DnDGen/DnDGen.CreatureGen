@@ -70,7 +70,7 @@ namespace DnDGen.CreatureGen.Templates
                     creature.Templates.Union(new[] { CreatureConstants.Templates.None }).ToArray());
             }
 
-            return creature;
+            return await Task.FromResult(creature);
         }
 
         private bool IsCompatible(

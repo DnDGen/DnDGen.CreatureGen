@@ -6932,6 +6932,16 @@
   <collection>
     <name>TroglodyteRare</name>
   </collection>
+	<collection>
+		<name>TroglodyteMaleCommon</name>
+		<entry>Black beady eyes</entry>
+	</collection>
+	<collection>
+		<name>TroglodyteMaleUncommon</name>
+	</collection>
+	<collection>
+		<name>TroglodyteMaleRare</name>
+	</collection>
   <collection>
     <name>TrollCommon</name>
     <entry></entry>
@@ -7078,6 +7088,20 @@
   <collection>
     <name>UnicornRare</name>
   </collection>
+	<collection>
+		<name>UnicornMaleCommon</name>
+		<entry>Deep sea-blue eyes</entry>
+		<entry>Violet eyes</entry>
+		<entry>Brown eyes</entry>
+		<entry>Golden eyes</entry>
+		<entry>Pink eyes</entry>
+	</collection>
+	<collection>
+		<name>UnicornMaleUncommon</name>
+	</collection>
+	<collection>
+		<name>UnicornMaleRare</name>
+	</collection>
   <collection>
     <name>Vampire SpawnCommon</name>
     <entry>Blue eyes</entry>

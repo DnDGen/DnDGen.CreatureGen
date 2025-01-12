@@ -10329,6 +10329,16 @@
   <collection>
     <name>TroglodyteRare</name>
   </collection>
+	<collection>
+		<name>TroglodyteMaleCommon</name>
+		<entry>Grayish-brown leathery scales</entry>
+	</collection>
+	<collection>
+		<name>TroglodyteMaleUncommon</name>
+	</collection>
+	<collection>
+		<name>TroglodyteMaleRare</name>
+	</collection>
   <collection>
     <name>TrollCommon</name>
     <entry>Thick, rubbery, moss-green scales</entry>
@@ -10474,6 +10484,16 @@
   <collection>
     <name>UnicornRare</name>
   </collection>
+	<collection>
+		<name>UnicornMaleCommon</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>UnicornMaleUncommon</name>
+	</collection>
+	<collection>
+		<name>UnicornMaleRare</name>
+	</collection>
   <collection>
     <name>Vampire SpawnCommon</name>
     <entry>Dark brown skin</entry>

@@ -8305,6 +8305,16 @@
   <collection>
     <name>TroglodyteRare</name>
   </collection>
+	<collection>
+		<name>TroglodyteMaleCommon</name>
+		<entry></entry>
+	</collection>
+	<collection>
+		<name>TroglodyteMaleUncommon</name>
+	</collection>
+	<collection>
+		<name>TroglodyteMaleRare</name>
+	</collection>
   <collection>
     <name>TrollCommon</name>
     <entry>Iron-gray hair</entry>
@@ -8600,7 +8610,6 @@
   <collection>
     <name>UnicornCommon</name>
     <entry>White coat, mane, and tail</entry>
-    <entry>White coat, mane, and tail TODO MALE white beard</entry>
   </collection>
   <collection>
     <name>UnicornUncommon</name>
@@ -8608,6 +8617,16 @@
   <collection>
     <name>UnicornRare</name>
   </collection>
+	<collection>
+		<name>UnicornMaleCommon</name>
+		<entry>White coat, mane, tail, and beard</entry>
+	</collection>
+	<collection>
+		<name>UnicornMaleUncommon</name>
+	</collection>
+	<collection>
+		<name>UnicornMaleRare</name>
+	</collection>
   <collection>
     <name>Vampire SpawnCommon</name>
     <entry>Straight red hair</entry>

@@ -8682,7 +8682,6 @@
   <collection>
     <name>TroglodyteCommon</name>
     <entry>Spindly but muscular arms, squat legs, long slender tail, lizard-like head, claws and fangs</entry>
-    <entry>TODO MALE crowned with frills extending from forehead to neck</entry>
   </collection>
   <collection>
     <name>TroglodyteUncommon</name>
@@ -8690,6 +8689,16 @@
   <collection>
     <name>TroglodyteRare</name>
   </collection>
+	<collection>
+		<name>TroglodyteMaleCommon</name>
+		<entry>Spindly but muscular arms, squat legs, long slender tail, lizard-like head, claws and fangs, head crowned with frills extending from forehead to neck</entry>
+	</collection>
+	<collection>
+		<name>TroglodyteMaleUncommon</name>
+	</collection>
+	<collection>
+		<name>TroglodyteMaleRare</name>
+	</collection>
   <collection>
     <name>TrollCommon</name>
     <entry>Severe hunch, backs of the hands dragging on the ground</entry>
@@ -8780,6 +8789,16 @@
   <collection>
     <name>UnicornRare</name>
   </collection>
+	<collection>
+		<name>UnicornMaleCommon</name>
+		<entry>Cloven hooves, long ivory-colored horn protruding from the forehead</entry>
+	</collection>
+	<collection>
+		<name>UnicornMaleUncommon</name>
+	</collection>
+	<collection>
+		<name>UnicornMaleRare</name>
+	</collection>
   <collection>
     <name>Vampire SpawnCommon</name>
     <entry>Hardened features, appearing predatory</entry>

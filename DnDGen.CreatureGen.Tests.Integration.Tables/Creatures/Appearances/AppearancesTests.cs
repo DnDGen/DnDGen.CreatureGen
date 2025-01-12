@@ -4389,11 +4389,11 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Creatures.Appearances
                 commonOther: new[] { "Looks like a cross between a gorilla and a beetle, huge mandibles, mouth filled with rows of sharp triangular teeth" });
             //Source: https://forgottenrealms.fandom.com/wiki/Unicorn
             appearances[CreatureConstants.Unicorn] = GetAppearances(
-                commonHair: ["White coat, mane, and tail", "White coat, mane, and tail"],
+                commonHair: ["White coat, mane, and tail"],
                 commonEyes: new[] { "Deep sea-blue eyes", "Violet eyes", "Brown eyes", "Golden eyes", "Pink eyes" },
                 commonOther: new[] { "Cloven hooves, long ivory-colored horn protruding from the forehead" });
             appearances[CreatureConstants.Unicorn + GenderConstants.Male] = GetAppearances(
-                commonHair: ["White coat, mane, and tail", "White coat, mane, tail, and beard"],
+                commonHair: ["White coat, mane, tail, and beard"],
                 commonEyes: new[] { "Deep sea-blue eyes", "Violet eyes", "Brown eyes", "Golden eyes", "Pink eyes" },
                 commonOther: new[] { "Cloven hooves, long ivory-colored horn protruding from the forehead" });
             //Source: https://forgottenrealms.fandom.com/wiki/Vampire_spawn
