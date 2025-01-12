@@ -42,6 +42,8 @@ namespace DnDGen.CreatureGen.Tests.Integration.Tables.Abilities
                     AgeConstants.Categories.Undead,
                 ]);
 
+            Assert.Fail("TODO: Instead of manually specifying the age categories, grt the ages from the age table, compress to distinct entries, and use that");
+
             AssertCollectionNames(names);
         }
 
